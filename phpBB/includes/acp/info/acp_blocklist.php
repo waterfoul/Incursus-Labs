@@ -20,7 +20,7 @@ class acp_blocklist_info
 			'title'		=> 'ACP_BLOCKLIST_TITLE',
 			'version'	=> '1.0.0',
 			'modes'		=> array(
-				'info'		=> array('title' => 'ACP_BLOCKLIST_TITLE', 'auth' => 'acl_a_blocklist', 'cat' => array('')),
+				'info'		=> array('title' => 'ACP_BLOCKLIST_TITLE', 'auth' => 'acl_a_', 'cat' => array('')),
 			),
 		);
 	}

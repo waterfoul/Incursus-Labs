@@ -30,13 +30,12 @@ class acp_blocklist
 		
 		var_dump($mode);
 		
-		switch($mode)
+		if ($mode != 'info')
 		{
-			case 'index':
-				$this->page_title = 'ACP_BLOCKLIST_TITLE';
-				$this->tpl_name = 'acp_blocklist';
-			break;
+			trigger_error('NO_MODE', E_USER_ERROR);
 		}
+		$this->page_title = 'ACP_BLOCKLIST_TITLE';
+		$this->tpl_name = 'acp_blocklist';
 		
 	}
 }
