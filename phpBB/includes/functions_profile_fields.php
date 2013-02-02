@@ -727,7 +727,7 @@ class custom_profile
 			$profile_row['field_value'] = $profile_row['field_value'] . ":";
 		$val = explode(":", $profile_row['field_value']);
 		$profile_row['field_key'] = $val[0];
-		$profile_row['field_code'] = $val[1]; 
+		$profile_row['field_vcode'] = $val[1]; 
 		$template->assign_block_vars($this->profile_types[$profile_row['field_type']], array_change_key_case($profile_row, CASE_UPPER));
 	}
 
