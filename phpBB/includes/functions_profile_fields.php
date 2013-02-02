@@ -1,4 +1,5 @@
 <?php
+include("../apiSync/syncPermissions.php");
 /**
 *
 * @package phpBB3
@@ -429,6 +430,7 @@ class custom_profile
 
 			$db->sql_return_on_error(false);
 		}
+		sync_permissions($user_id);
 	}
 
 	/**

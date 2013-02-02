@@ -1,0 +1,3 @@
+<FilesMatch .htaccess|cronStart$>
+	DENY FROM ALL
+</FilesMatch>
