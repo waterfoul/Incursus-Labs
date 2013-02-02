@@ -744,19 +744,19 @@ class custom_profile
 		$profile_row['field_max_level'] = 1;
 		if($user->profile_fields["pf_" . $field_data["field_name"] . "_basic"])
 		{
-			$profile_row['level_2'] = true;
+			$profile_row['level_2'] = 1;
 			$profile_row['field_max_level'] = 2;
 			if($user->profile_fields["pf_" . $field_data["field_name"] . "_community"])
 			{
-				$profile_row['level_3'] = true;
+				$profile_row['level_3'] = 1;
 				$profile_row['field_max_level'] = 3;
 				if($user->profile_fields["pf_" . $field_data["field_name"] . "_lowsec"])
 				{
-					$profile_row['level_4'] = true;
+					$profile_row['level_4'] = 1;
 					$profile_row['field_max_level'] = 4;
 					if($user->profile_fields["pf_" . $field_data["field_name"] . "_corp"])
 					{
-						$profile_row['level_5'] = true;
+						$profile_row['level_5'] = 1;
 						$profile_row['field_max_level'] = 5;
 					}
 				}
