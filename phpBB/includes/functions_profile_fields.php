@@ -969,8 +969,8 @@ class custom_profile
 				}
 				else
 				{
-					$key = request_var($var_name . '_key', 0);
-					$vcode = request_var($var_name . '_vcode', 0);
+					$key = request_var($var_name . '_key', "");
+					$vcode = request_var($var_name . '_vcode', "");
 				}
 
 				$var = $key . ":" . $vcode;
