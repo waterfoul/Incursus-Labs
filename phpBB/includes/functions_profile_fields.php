@@ -724,9 +724,9 @@ class custom_profile
  		// TODO: generate
 		$profile_row['field_value'] = $this->get_var('eveAPIkey', $profile_row, $profile_row['lang_default_value'], $preview);
 		$template->assign_block_vars($this->profile_types[$profile_row['field_type']], array_change_key_case($profile_row, CASE_UPPER));
-		print($this->profile_types[$profile_row['field_type']]);
-		print(array_change_key_case($profile_row, CASE_UPPER));
-		print($profile_row['field_value']);
+		var_dump($this->profile_types[$profile_row['field_type']]);
+		var_dump(array_change_key_case($profile_row, CASE_UPPER));
+		var_dump($profile_row['field_value']);
 	}
 
 	/**
