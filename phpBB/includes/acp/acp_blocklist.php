@@ -33,7 +33,7 @@ class acp_blocklist
 		switch($mode)
 		{
 			case 'index':
-				$this->page_title = 'ACP_BLOCKLIST';
+				$this->page_title = 'ACP_BLOCKLIST_TITLE';
 				$this->tpl_name = 'acp_blocklist';
 			break;
 		}
