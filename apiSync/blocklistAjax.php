@@ -26,7 +26,7 @@ if(!$auth->acl_get('a_'))
 		print($phpBB->insert_id);
 	}
 	if($_GET["REMOVE"])
-		$phpBB->query("DELETE FROM `Incusus_phpBB`.`eve_blocklist` WHERE `eve_blocklist`.`id` = " . $phpBB->escape_string($_GET["REMOVE"]) . ");");
+		$phpBB->query("DELETE FROM `Incusus_phpBB`.`eve_blocklist` WHERE `eve_blocklist`.`id` = " . $phpBB->escape_string($_GET["REMOVE"]) . ",this);");
 
 
 garbage_collection();

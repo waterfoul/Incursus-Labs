@@ -6,14 +6,18 @@
 		sendRequest("../../apiSync/blocklistAjax.php?ADD=" + document.getElementById("newName").value + "&TYPE=" + document.getElementById("newType").value,function(req)
 		{
 			tr=document.createElement("tr");
-			tr.innerHTML="<td>" + document.getElementById("newType").value + "</td><td>" + document.getElementById("newName").value + "</td><td><input type='button' value='Remove' onclick='remove_item(" + req.responseText + ")' style='width:100%'/></td>";
+			tr.innerHTML="<td>" + document.getElementById("newType").value + "</td><td>" + document.getElementById("newName").value + "</td><td><input type='button' value='Remove' onclick='remove_item(" + req.responseText + ",this)' style='width:100%'/></td>";
 			document.getElementById("maintable").insertBefore(tr,document.getElementById("lastRow"));
 			document.getElementById("newName").value = "";
 		}, null);
 	}
-	function remove_item(i)
+	function remove_item(i,ele)
 	{
-		
+		sendRequest("../../apiSync/blocklistAjax.php?REMOVE=" + i,function(req)
+		{
+			row=ele.parentNode.parentNode
+			row.parentNode.removeChild(row);
+		}, null);
 	}
 	function sendRequest(url,callback,postData) {
 	    var req = createXMLHTTPObject();
