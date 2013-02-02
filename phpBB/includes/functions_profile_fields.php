@@ -721,8 +721,13 @@ class custom_profile
 	function generate_eveAPIkey($profile_row, $preview = false)
 	{
 		global $template;
- 		// TODO: generate
+ 		
 		$profile_row['field_value'] = $this->get_var('eveAPIkey', $profile_row, $profile_row['lang_default_value'], $preview);
+		if(strpos($profile_row['field_value'], ":") === FALSE)
+			$profile_row['field_value'] = $profile_row['field_value'] . ":";
+		$val = explode(":", $profile_row['field_value']);
+		$profile_row['field_key'] = $val[0];
+		$profile_row['field_code'] = $val[1]; 
 		$template->assign_block_vars($this->profile_types[$profile_row['field_type']], array_change_key_case($profile_row, CASE_UPPER));
 	}
 
@@ -957,7 +962,18 @@ class custom_profile
 		switch ($profile_row['field_type'])
 		{
 			case FIELD_EVEAPIKEY:
-				// TODO: get field
+				if (!isset($_REQUEST[$var_name . '_day']))
+				{
+					$key = "";
+					$vcode = "";
+				}
+				else
+				{
+					$key = request_var($var_name . '_key', 0);
+					$vcode = request_var($var_name . '_vcode', 0);
+				}
+
+				$var = $key . ":" . $vcode;
 			case FIELD_DATE:
 
 				if (!isset($_REQUEST[$var_name . '_day']))
