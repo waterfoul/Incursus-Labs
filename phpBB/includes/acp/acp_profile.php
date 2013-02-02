@@ -1401,6 +1401,7 @@ class acp_profile
 
 				switch ($field_type)
 				{
+					case FIELD_EVEAPIKEY:
 					case FIELD_STRING:
 						$sql .= ' VARCHAR(255) ';
 					break;
@@ -1426,10 +1427,6 @@ class acp_profile
 					case FIELD_INT:
 						$sql .= 'BIGINT(20) ';
 					break;
-					
-					case FIELD_EVEAPIKEY:
-						$sql .= 'TEXT';
-					break;
 				}
 
 			break;
@@ -1438,6 +1435,7 @@ class acp_profile
 
 				switch ($field_type)
 				{
+					case FIELD_EVEAPIKEY:
 					case FIELD_STRING:
 						$type = ' VARCHAR(255) ';
 					break;
@@ -1445,8 +1443,7 @@ class acp_profile
 					case FIELD_DATE:
 						$type = 'VARCHAR(10) ';
 					break;
-
-					case FIELD_EVEAPIKEY:
+					
 					case FIELD_TEXT:
 						$type = "TEXT(65535)";
 		//						ADD {$field_ident}_bbcode_uid VARCHAR(5) NOT NULL,
@@ -1524,6 +1521,7 @@ class acp_profile
 
 				switch ($field_type)
 				{
+					case FIELD_EVEAPIKEY:
 					case FIELD_STRING:
 						$sql .= ' [VARCHAR] (255) ';
 					break;
@@ -1561,6 +1559,7 @@ class acp_profile
 
 				switch ($field_type)
 				{
+					case FIELD_EVEAPIKEY:
 					case FIELD_STRING:
 						$sql .= ' VARCHAR(255) ';
 					break;
@@ -1597,6 +1596,7 @@ class acp_profile
 
 				switch ($field_type)
 				{
+					case FIELD_EVEAPIKEY:
 					case FIELD_STRING:
 						$sql .= ' VARCHAR(255) ';
 					break;
@@ -1630,6 +1630,7 @@ class acp_profile
 
 				switch ($field_type)
 				{
+					case FIELD_EVEAPIKEY:
 					case FIELD_STRING:
 						$sql .= ' VARCHAR2(255) ';
 					break;

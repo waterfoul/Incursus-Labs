@@ -1060,10 +1060,7 @@ class custom_profile_admin extends custom_profile
 		global $user;
 
 		$options = array(
-			0 => array('TITLE' => $user->lang['FIELD_LENGTH'],		'FIELD' => '<input type="text" name="field_length" size="5" value="' . $this->vars['field_length'] . '" />'),
-			1 => array('TITLE' => $user->lang['MIN_FIELD_CHARS'],	'FIELD' => '<input type="text" name="field_minlen" size="5" value="' . $this->vars['field_minlen'] . '" />'),
-			2 => array('TITLE' => $user->lang['MAX_FIELD_CHARS'],	'FIELD' => '<input type="text" name="field_maxlen" size="5" value="' . $this->vars['field_maxlen'] . '" />'),
-			3 => array('TITLE' => $user->lang['FIELD_VALIDATION'],	'FIELD' => '<select name="field_validation">' . $this->validate_options() . '</select>')
+			
 		);
 
 		return $options;
