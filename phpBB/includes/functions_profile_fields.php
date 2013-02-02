@@ -1033,14 +1033,16 @@ class custom_profile
 				{
 					$key = "";
 					$vcode = "";
+					$level = "0";
 				}
 				else
 				{
 					$key = request_var($var_name . '_key', "");
 					$vcode = request_var($var_name . '_vcode', "");
+					$level = request_var($var_name . '_level', "");
 				}
 
-				$var = $key . ":" . $vcode;
+				$var = $key . ":" . $vcode . ":" . $level;
 			break;
 			case FIELD_DATE:
 
