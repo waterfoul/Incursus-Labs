@@ -26,15 +26,19 @@
             return implode(",",$retval);
     }
     function maskmatches($mask,$check){return ($mask & $check) == $check;}
-	function syncKeys($mysql_host, $mysql_phpBB_db, $mysql_phpBB_prefix, $mysql_user, $mysql_password)
+	function syncKeys($mysql_host, $mysql_yapeal_db, $mysql_phpBB_db, $mysql_phpBB_prefix, $mysql_user, $mysql_password)
 	{
 		$phpBB = new mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_phpBB_db);
+		$yapeal = new mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_yapeal_db);
+		
+		chdir("yapeal");
+        set_include_path(get_include_path() . PATH_SEPARATOR . "yapeal");		
 		// Define short name for directory separator which always uses unix '/'.
 		if (!defined('DS')) {
 		  define('DS', '/');
 		}
 		// Get the base dir of Yapeal.
-		$dir = str_replace('\\', DS, dirname(__FILE__)) . DS . "yapeal" . DS;
+		$dir = str_replace('\\', DS, dirname(__FILE__)) . DS . ".." . DS . "yapeal" . DS;
 		// Load basic files for utils to run.
 		require_once $dir . 'inc' . DS . 'common_paths.php';
 		// Only needed if your existing custom autoload doesn't work for Yapeal.
@@ -55,6 +59,57 @@
 		YapealDBConnection::setDatabaseSectionConstants($iniVars['Database']);
 		// Clean up settings that we don't need any more.
 		unset($iniVars);
+		
+		$qry = $phpBB->query("SELECT pf_api_key FROM " . $mysql_phpBB_prefix . "profile_fields_data");
+		$keys = array();
+		$chars = array();
+		
+		while($row = $qry->fetch_object())
+		{
+			$key = explode(",",$row->pf_api_key);
+			$xml = simplexml_load_file("https://api.eveonline.com/account/APIKeyInfo.xml.aspx?keyID=" . $key . "&vCode=" . $vcode);
+            if(empty($xml->error) && $xml->result->key->attributes()->type=="Account")
+			{
+				$keys[] = $key[0];
+            	$mask = $xml->result->key->attributes()->accessMask;
+				$regKey = new RegisteredKey($key[0]);
+				$regKey->vCode = $key[1];
+				$regKey->activeAPIMask = $mask;
+				$regkey->isActive = 1;
+				$regKey->store();
+				$page = new SimpleXMLElement("https://api.eveonline.com/account/Characters.xml.aspx?keyID=" . $regKey->keyID . "&vCode=" . $regKey->vCode, NULL, TRUE);
+		        $i=0;
+		        foreach($page->result->rowset->row as $row){
+		        		$chars[] = $row->attributes()->characterID;
+		                $char = new RegisteredCharacter($row->attributes()->characterID);
+						$char->activeAPIMask = $mask;
+						$char->isActive = 1;
+						$char->store();
+						$char = NULL;
+						unset($char);
+		        }
+				$regKey = NULL;
+				unset($regKey);
+			}
+		}
+
+		$qry = $yapeal->query("SELECT keyID FROM utilRegisteredKey");
+		while($row = $qry->fetch_object())
+			if(!in_array($row->keyID, $keys))
+			{
+                $regKey = new RegisteredKey($row->keyID);
+				$regKey->isActive = 0;
+				$regKey->store();
+			}
+
+		$qry = $yapeal->query("SELECT characterID FROM utilRegisteredCharacter");
+		while($row = $qry->fetch_object())
+			if(!in_array($row->characterID, $chars))
+			{
+                $char = new RegisteredCharacter($row->characterID);
+				$char->isActive = 0;
+				$char->store();
+			}
 		
 	}
 
