@@ -22,7 +22,7 @@ if (!defined('IN_PHPBB'))
 */
 class custom_profile
 {
-	var $profile_types = array(FIELD_INT => 'int', FIELD_STRING => 'string', FIELD_TEXT => 'text', FIELD_BOOL => 'bool', FIELD_DROPDOWN => 'dropdown', FIELD_DATE => 'date');
+	var $profile_types = array(FIELD_INT => 'int', FIELD_STRING => 'string', FIELD_TEXT => 'text', FIELD_BOOL => 'bool', FIELD_DROPDOWN => 'dropdown', FIELD_DATE => 'date', FIELD_EVEAPIKEY => "eveAPIkey");
 	var $profile_cache = array();
 	var $options_lang = array();
 
@@ -92,6 +92,9 @@ class custom_profile
 	{
 		switch ($field_type)
 		{
+			case FIELD_EVEAPIKEY:
+				/* TODO: VALIDATION */
+			break;
 			case FIELD_DATE:
 				$field_validate = explode('-', $field_value);
 
@@ -939,6 +942,8 @@ class custom_profile
 
 		switch ($profile_row['field_type'])
 		{
+			case FIELD_EVEAPIKEY:
+				// TODO: get field
 			case FIELD_DATE:
 
 				if (!isset($_REQUEST[$var_name . '_day']))
@@ -1032,6 +1037,25 @@ class custom_profile_admin extends custom_profile
 	* Get string options for second step in ACP
 	*/
 	function get_string_options()
+	{
+		global $user;
+
+		$options = array(
+			0 => array('TITLE' => $user->lang['FIELD_LENGTH'],		'FIELD' => '<input type="text" name="field_length" size="5" value="' . $this->vars['field_length'] . '" />'),
+			1 => array('TITLE' => $user->lang['MIN_FIELD_CHARS'],	'FIELD' => '<input type="text" name="field_minlen" size="5" value="' . $this->vars['field_minlen'] . '" />'),
+			2 => array('TITLE' => $user->lang['MAX_FIELD_CHARS'],	'FIELD' => '<input type="text" name="field_maxlen" size="5" value="' . $this->vars['field_maxlen'] . '" />'),
+			3 => array('TITLE' => $user->lang['FIELD_VALIDATION'],	'FIELD' => '<select name="field_validation">' . $this->validate_options() . '</select>')
+		);
+
+		return $options;
+	}
+	
+	
+
+	/**
+	* Get eve api key options for second step in ACP
+	*/
+	function get_eveapikey_options()
 	{
 		global $user;
 

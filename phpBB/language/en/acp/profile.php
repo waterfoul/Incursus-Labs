@@ -80,6 +80,7 @@ $lang = array_merge($lang, array(
 
 	'FIELD_BOOL'				=> 'Boolean (Yes/No)',
 	'FIELD_DATE'				=> 'Date',
+	'FIELD_EVEAPIKEY'			=> 'EVE API Key',
 	'FIELD_DESCRIPTION'			=> 'Field description',
 	'FIELD_DESCRIPTION_EXPLAIN'	=> 'The explanation for this field presented to the user.',
 	'FIELD_DROPDOWN'			=> 'Dropdown box',

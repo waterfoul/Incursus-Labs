@@ -52,6 +52,7 @@ class acp_profile
 			FIELD_DATE		=> array('field_length' => 10, 'field_minlen' => 10, 'field_maxlen' => 10, 'field_validation' => '', 'field_novalue' => ' 0- 0-   0', 'field_default_value' => ' 0- 0-   0'),
 			FIELD_BOOL		=> array('field_length' => 1, 'field_minlen' => 0, 'field_maxlen' => 0, 'field_validation' => '', 'field_novalue' => 0, 'field_default_value' => 0),
 			FIELD_DROPDOWN	=> array('field_length' => 0, 'field_minlen' => 0, 'field_maxlen' => 5, 'field_validation' => '', 'field_novalue' => 0, 'field_default_value' => 0),
+			FIELD_EVEAPIKEY	=> array('field_length' => 0, 'field_minlen' => 0, 'field_maxlen' => 0, 'field_validation' => '', 'field_novalue' => 0, 'field_default_value' => 0), // TODO: modify these? (defaults)
 		);
 
 		$cp = new custom_profile_admin();
@@ -1425,6 +1426,10 @@ class acp_profile
 					case FIELD_INT:
 						$sql .= 'BIGINT(20) ';
 					break;
+					
+					case FIELD_EVEAPIKEY:
+						$sql .= 'TEXT';
+					break;
 				}
 
 			break;
@@ -1441,6 +1446,7 @@ class acp_profile
 						$type = 'VARCHAR(10) ';
 					break;
 
+					case FIELD_EVEAPIKEY:
 					case FIELD_TEXT:
 						$type = "TEXT(65535)";
 		//						ADD {$field_ident}_bbcode_uid VARCHAR(5) NOT NULL,
@@ -1539,6 +1545,10 @@ class acp_profile
 
 					case FIELD_INT:
 						$sql .= '[FLOAT] ';
+					break;
+					
+					case FIELD_EVEAPIKEY:
+						$sql .= '[TEXT]';
 					break;
 				}
 
