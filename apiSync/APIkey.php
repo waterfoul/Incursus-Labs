@@ -66,50 +66,47 @@
 		
 		while($row = $qry->fetch_object())
 		{
-			$key = explode(",",$row->pf_api_key);
-			$xml = simplexml_load_file("https://api.eveonline.com/account/APIKeyInfo.xml.aspx?keyID=" . $key . "&vCode=" . $vcode);
-            if(empty($xml->error) && $xml->result->key->attributes()->type=="Account")
-			{
+			$key = explode(":",$row->pf_api_key);
+			$regKey = new RegisteredKey($key[0]);
+			if ($regKey->recordExists() && $regKey->isActive)
 				$keys[] = $key[0];
-            	$mask = $xml->result->key->attributes()->accessMask;
-				$regKey = new RegisteredKey($key[0]);
-				$regKey->vCode = $key[1];
-				$regKey->activeAPIMask = $mask;
-				$regkey->isActive = 1;
-				$regKey->store();
-				$page = new SimpleXMLElement("https://api.eveonline.com/account/Characters.xml.aspx?keyID=" . $regKey->keyID . "&vCode=" . $regKey->vCode, NULL, TRUE);
-		        $i=0;
-		        foreach($page->result->rowset->row as $row){
-		        		$chars[] = $row->attributes()->characterID;
-		                $char = new RegisteredCharacter($row->attributes()->characterID);
-						$char->activeAPIMask = $mask;
-						$char->isActive = 1;
-						$char->store();
-						$char = NULL;
-						unset($char);
-		        }
-				$regKey = NULL;
-				unset($regKey);
+			else {
+				$xml = simplexml_load_file("https://api.eveonline.com/account/APIKeyInfo.xml.aspx?keyID=" . $key[0] . "&vCode=" . $key[1]);
+	            if(empty($xml->error) && $xml->result->key->attributes()->type=="Account")
+				{
+					$keys[] = $key[0];
+	            	$mask = $xml->result->key->attributes()->accessMask;
+					$regKey->vCode = $key[1];
+					$regKey->activeAPIMask = $mask;
+					$regKey->isActive = 1;
+					$regKey->store();
+					$page = new SimpleXMLElement("https://api.eveonline.com/account/Characters.xml.aspx?keyID=" . $regKey->keyID . "&vCode=" . $regKey->vCode, NULL, TRUE);
+			        $i=0;
+			        foreach($page->result->rowset->row as $row){
+			        		$chars[] = $row->attributes()->characterID;
+			                $char = new RegisteredCharacter($row->attributes()->characterID);
+							$char->activeAPIMask = $mask;
+							$char->isActive = 1;
+							$char->store();
+							$char = NULL;
+							unset($char);
+			        }
+					$regKey = NULL;
+					unset($regKey);
+				}
 			}
 		}
 
-		$qry = $yapeal->query("SELECT keyID FROM utilRegisteredKey");
+		$qry = $yapeal->query("SELECT keyID, isActive FROM utilRegisteredKey");
 		while($row = $qry->fetch_object())
-			if(!in_array($row->keyID, $keys))
+			if($row->isActive && !in_array($row->keyID, $keys))
 			{
                 $regKey = new RegisteredKey($row->keyID);
 				$regKey->isActive = 0;
 				$regKey->store();
 			}
-
-		$qry = $yapeal->query("SELECT characterID FROM utilRegisteredCharacter");
-		while($row = $qry->fetch_object())
-			if(!in_array($row->characterID, $chars))
-			{
-                $char = new RegisteredCharacter($row->characterID);
-				$char->isActive = 0;
-				$char->store();
-			}
+	
+		chdir("..");
 		
 	}
 
@@ -120,6 +117,5 @@
                             print(getAPIStatus($_GET["key"], $_GET["vcode"]));
                             break;
             }
-	
 	
 ?>
