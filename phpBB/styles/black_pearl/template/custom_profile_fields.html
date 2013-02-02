@@ -43,18 +43,33 @@
 	VCode:<input type="text" class="post" name="{eveapikey.FIELD_IDENT}_vcode" id="{eveapikey.FIELD_IDENT}_vcode" size="64" maxlength="64" value="{eveapikey.FIELD_VCODE}" onchange="resetApiLevel('{eveapikey.FIELD_IDENT}')" /><br>
 	<input type="button" value="Check" onclick="checkAPI('{eveapikey.FIELD_IDENT}')" /> <span id="{eveapikey.FIELD_IDENT}_check_return"> </span><br>
 	Requested Permissions Level (refresh to update):<select name="{eveapikey.FIELD_IDENT}_level" id="{eveapikey.FIELD_IDENT}_level">
-		<option value="1" <!-- IF bool.FIELD_LEVEL eq 1 --> selected="true"<!-- ENDIF -->>Public (Level 1)</option>
+		<option
+			<!-- IF bool.FIELD_MAX_LEVEL eq 1 -->value="0" <!-- IF bool.FIELD_LEVEL eq 0 --> selected="true"<!-- ENDIF --><!-- ELSE -->value="1"<!-- ENDIF -->
+			<!-- IF bool.FIELD_LEVEL eq 1 --> selected="true"<!-- ENDIF -->
+		>Public (Level 1)</option>
 		<!-- IF eveapikey.LEVEL_2 eq 1 -->
-			<option value="2" <!-- IF bool.FIELD_LEVEL eq 2 --> selected="true"<!-- ENDIF -->>Basic User (Level 2)</option>
+			<option
+				<!-- IF bool.FIELD_MAX_LEVEL eq 1 -->value="0" <!-- IF bool.FIELD_LEVEL eq 0 --> selected="true"<!-- ENDIF --><!-- ELSE -->value="1"<!-- ENDIF -->
+				<!-- IF bool.FIELD_LEVEL eq 1 --> selected="true"<!-- ENDIF -->
+			>Basic User (Level 2)</option>
 		<!-- ENDIF -->
 		<!-- IF eveapikey.LEVEL_3 eq 1 -->
-			<option value="3" <!-- IF bool.FIELD_LEVEL eq 3 --> selected="true"<!-- ENDIF -->>Incursion Community Member (Level 3)</option>
+			<option
+				<!-- IF bool.FIELD_MAX_LEVEL eq 1 -->value="0" <!-- IF bool.FIELD_LEVEL eq 0 --> selected="true"<!-- ENDIF --><!-- ELSE -->value="1"<!-- ENDIF -->
+				<!-- IF bool.FIELD_LEVEL eq 1 --> selected="true"<!-- ENDIF -->
+			>Incursion Community Member (Level 3)</option>
 		<!-- ENDIF -->
 		<!-- IF eveapikey.LEVEL_4 eq 1 -->
-			<option value="4" <!-- IF bool.FIELD_LEVEL eq 4 --> selected="true"<!-- ENDIF -->>Lowsec Community Capable (Level 4)</option>
+			<option
+				<!-- IF bool.FIELD_MAX_LEVEL eq 1 -->value="0" <!-- IF bool.FIELD_LEVEL eq 0 --> selected="true"<!-- ENDIF --><!-- ELSE -->value="1"<!-- ENDIF -->
+				<!-- IF bool.FIELD_LEVEL eq 1 --> selected="true"<!-- ENDIF -->
+			>Lowsec Community Capable (Level 4)</option>
 		<!-- ENDIF -->
 		<!-- IF eveapikey.LEVEL_5 eq 1 -->
-			<option value="5" <!-- IF bool.FIELD_LEVEL eq 5 --> selected="true"<!-- ENDIF -->>Corporation Member (Level 5)</option>
+			<option
+				<!-- IF bool.FIELD_MAX_LEVEL eq 1 -->value="0" <!-- IF bool.FIELD_LEVEL eq 0 --> selected="true"<!-- ENDIF --><!-- ELSE -->value="1"<!-- ENDIF -->
+				<!-- IF bool.FIELD_LEVEL eq 1 --> selected="true"<!-- ENDIF -->
+			>Corporation Member (Level 5)</option>
 		<!-- ENDIF -->
 	</select>
 <!-- END eveapikey -->
