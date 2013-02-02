@@ -711,6 +711,20 @@ class custom_profile
 		$profile_row['field_value'] = $this->get_var('int', $profile_row, $profile_row['field_default_value'], $preview);
 		$template->assign_block_vars($this->profile_types[$profile_row['field_type']], array_change_key_case($profile_row, CASE_UPPER));
 	}
+	
+	
+
+	/**
+	* Process int-type
+	* @access private
+	*/
+	function generate_eveAPIkey($profile_row, $preview = false)
+	{
+		global $template;
+
+		$profile_row['field_value'] = $this->get_var('string', $profile_row, $profile_row['lang_default_value'], $preview);
+		$template->assign_block_vars($this->profile_types[$profile_row['field_type']], array_change_key_case($profile_row, CASE_UPPER));
+	}
 
 	/**
 	* Process date-type
