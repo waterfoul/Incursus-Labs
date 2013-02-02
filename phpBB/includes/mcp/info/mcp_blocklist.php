@@ -11,16 +11,15 @@
 /**
 * @package module_install
 */
-class mcp_ban_info
+class mcp_blocklist_info
 {
 	function module()
 	{
 		return array(
-			'filename'	=> 'mcp_blocklisen',
-			'title'		=> 'MCP_BAN',
+			'filename'	=> 'mcp_blocklist',
+			'title'		=> 'MCP_BLOCKLIST',
 			'version'	=> '1.0.0',
 			'modes'		=> array(
-				'user'		=> array('title' => 'MCP_BAN_USERNAMES', 'auth' => 'acl_m_ban', 'cat' => array('MCP_BAN'))
 			),
 		);
 	}

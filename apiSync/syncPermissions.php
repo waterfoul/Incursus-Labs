@@ -41,7 +41,7 @@
 			{
 				if(($mask & 8913152)==8913152)
 				{
-					print("DEFCON 3");
+					
 					if(($mask & 90179600)==90179600)
 					{
 						print("DEFCON 2");
