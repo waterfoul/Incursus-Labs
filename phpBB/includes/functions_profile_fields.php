@@ -131,6 +131,10 @@ class custom_profile
 			break;
 
 			case FIELD_DISABLED_BOOL:
+				global $user;
+                $user->get_profile_fields( $user->data['user_id'] );
+				$field_value = $user->profile_fields["pf_" . $field_data["field_name"]];
+			break;
 			case FIELD_BOOL:
 				$field_value = (bool) $field_value;
 
