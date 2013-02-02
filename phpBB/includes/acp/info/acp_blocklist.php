@@ -17,10 +17,10 @@ class acp_blocklist_info
 	{
 		return array(
 			'filename'	=> 'acp_blocklist',
-			'title'		=> 'ACP_BLOCKLIST',
+			'title'		=> 'ACP_BLOCKLIST_TITLE',
 			'version'	=> '1.0.0',
 			'modes'		=> array(
-				'info'		=> array('title' => 'ACP_BLOCKLIST', 'auth' => 'acl_a_blocklist', 'cat' => array('')),
+				'info'		=> array('title' => 'ACP_BLOCKLIST_TITLE', 'auth' => 'acl_a_blocklist', 'cat' => array('')),
 			),
 		);
 	}
