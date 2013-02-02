@@ -19,7 +19,7 @@
 			}
 			
 			$qry2 = $yapeal->query("SELECT characterID FROM  `accountKeyBridge` WHERE keyID = " . $row->keyID);
-			while($row2 -> $qry2->fetch_object())
+			while($row2=$qry2->fetch_object())
 			{
 				$char = new RegisteredCharacter($row2->characterID);
 				if(!$char->recordExists() || !$char->isActive || $regKey->activeAPIMask != $row->accessMask)
