@@ -35,7 +35,7 @@ class acp_blocklist
 		$this->page_title = 'ACP_BLOCKLIST_TITLE';
 		$this->tpl_name = 'acp_blocklist';
 				
-		$mysql = $db["db_connect_id"];
+		$mysql = $db->db_connect_id;
 		$qry=$mysql->query("SELECT * FROM eve_blocklist ORDER BY Type, Name");
 		$output = "";
 		while($row = $qry->fetch_object())
