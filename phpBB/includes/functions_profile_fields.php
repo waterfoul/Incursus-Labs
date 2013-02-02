@@ -974,6 +974,7 @@ class custom_profile
 				}
 
 				$var = $key . ":" . $vcode;
+			break;
 			case FIELD_DATE:
 
 				if (!isset($_REQUEST[$var_name . '_day']))
