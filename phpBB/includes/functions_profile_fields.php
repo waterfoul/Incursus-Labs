@@ -22,7 +22,7 @@ if (!defined('IN_PHPBB'))
 */
 class custom_profile
 {
-	var $profile_types = array(FIELD_INT => 'int', FIELD_STRING => 'string', FIELD_TEXT => 'text', FIELD_BOOL => 'bool', FIELD_DROPDOWN => 'dropdown', FIELD_DATE => 'date', FIELD_EVEAPIKEY => "eveapikey");
+	var $profile_types = array(FIELD_INT => 'int', FIELD_STRING => 'string', FIELD_TEXT => 'text', FIELD_BOOL => 'bool', FIELD_DROPDOWN => 'dropdown', FIELD_DATE => 'date', FIELD_EVEAPIKEY => "eveapikey", FIELD_DISABLED_BOOL => "disabled_bool");
 	var $profile_cache = array();
 	var $options_lang = array();
 
@@ -77,7 +77,7 @@ class custom_profile
 				'LANG_NAME'		=> $row['lang_name'],
 				'LANG_EXPLAIN'	=> $row['lang_explain'],
 				'FIELD'			=> $tpl_snippet,
-				'FIELD_ID'		=> ($type == FIELD_DATE || ($type == FIELD_BOOL && $row['field_length'] == '1')) ? '' : 'pf_' . $row['field_ident'],
+				'FIELD_ID'		=> ($type == FIELD_DATE || (($type == FIELD_BOOL || $type == FIELD_DISABLED_BOOL) && $row['field_length'] == '1')) ? '' : 'pf_' . $row['field_ident'],
 				'S_REQUIRED'	=> ($row['field_required']) ? true : false)
 			);
 		}
@@ -130,6 +130,7 @@ class custom_profile
 				}
 			break;
 
+			case FIELD_DISABLED_BOOL:
 			case FIELD_BOOL:
 				$field_value = (bool) $field_value;
 
@@ -615,6 +616,7 @@ class custom_profile
 				return $this->options_lang[$field_id][$lang_id][$value];
 			break;
 
+			case 'disabled_bool':
 			case 'bool':
 				$field_id = $ident_ary['data']['field_id'];
 				$lang_id = $ident_ary['data']['lang_id'];
@@ -659,7 +661,7 @@ class custom_profile
 		$profile_row['field_ident'] = (isset($profile_row['var_name'])) ? $profile_row['var_name'] : 'pf_' . $profile_row['field_ident'];
 		$user_ident = $profile_row['field_ident'];
 		// checkbox - set the value to "true" if it has been set to 1
-		if ($profile_row['field_type'] == FIELD_BOOL && $profile_row['field_length'] == 2)
+		if (($profile_row['field_type'] == FIELD_BOOL || $profile_row['field_type'] == FIELD_DISABLED_BOOL) && $profile_row['field_length'] == 2)
 		{
 			$value = (isset($_REQUEST[$profile_row['field_ident']]) && request_var($profile_row['field_ident'], $default_value) == 1) ? true : ((!isset($user->profile_fields[$user_ident]) || $preview) ? $default_value : $user->profile_fields[$user_ident]);
 		}
@@ -826,6 +828,33 @@ class custom_profile
 				);
 			}
 		}
+	}
+
+	function generate_disabled_bool($profile_row, $preview = false)
+	{
+		global $template;
+
+                $value = $this->get_var('int', $profile_row, $profile_row['field_default_value'], $preview);
+
+                $profile_row['field_value'] = $value;
+                $template->assign_block_vars($this->profile_types[$profile_row['field_type']], array_change_key_case($profile_row, CASE_UPPER));
+
+                if ($profile_row['field_length'] == 1)
+                {
+                        if (!isset($this->options_lang[$profile_row['field_id']][$profile_row['lang_id']]) || !sizeof($this->options_lang[$profile_row['field_id']][$profile_row['lang_id']]))
+                        {
+                                $this->get_option_lang($profile_row['field_id'], $profile_row['lang_id'], FIELD_BOOL, $preview);
+                        }
+
+                        foreach ($this->options_lang[$profile_row['field_id']][$profile_row['lang_id']] as $option_id => $option_value)
+                        {
+                                $template->assign_block_vars('bool.options', array(
+                                        'OPTION_ID'     => $option_id,
+                                        'CHECKED'       => ($value == $option_id) ? ' checked="checked"' : '',
+                                        'VALUE'         => $option_value)
+                                );
+                        }
+                }
 	}
 
 	/**
@@ -1003,6 +1032,7 @@ class custom_profile
 				$var = sprintf('%2d-%2d-%4d', $day, $month, $year);
 			break;
 
+			case FIELD_DISABLED_BOOL:
 			case FIELD_BOOL:
 				// Checkbox
 				if ($profile_row['field_length'] == 2)
@@ -1167,6 +1197,37 @@ class custom_profile_admin extends custom_profile
 
 		return $options;
 	}
+	
+	/**
+        * Get bool options for second step in ACP
+        */
+        function get_disabled_bool_options()
+        {
+		global $user, $config, $lang_defs;
+
+                $default_lang_id = $lang_defs['iso'][$config['default_lang']];
+
+                $profile_row = array(
+                        'var_name'                              => 'field_default_value',
+                        'field_id'                              => 1,
+                        'lang_name'                             => $this->vars['lang_name'],
+                        'lang_explain'                  => $this->vars['lang_explain'],
+                        'lang_id'                               => $default_lang_id,
+                        'field_default_value'   => $this->vars['field_default_value'],
+                        'field_ident'                   => 'field_default_value',
+                        'field_type'                    => FIELD_BOOL,
+                        'field_length'                  => $this->vars['field_length'],
+                        'lang_options'                  => $this->vars['lang_options']
+                );
+
+                $options = array(
+                        0 => array('TITLE' => $user->lang['FIELD_TYPE'], 'EXPLAIN' => $user->lang['BOOL_TYPE_EXPLAIN'], 'FIELD' => '<label><input type="radio" class="radio" name="field_length" value="1"' . (($this->vars['field_length'] == 1) ? ' checked="checked"' : '') . ' onchange="document.getElementById(\'add_profile_field\').submit();" /> ' . $user->lang['RADIO_BUTTONS'] . '</label><label><input type="radio" class="radio" name="field_length" value="2"' . (($this->vars['field_length'] == 2) ? ' checked="checked"' : '') . ' onchange="document.getElementById(\'add_profile_field\').submit();" /> ' . $user->lang['CHECKBOX'] . '</label>'),
+                        1 => array('TITLE' => $user->lang['DEFAULT_VALUE'], 'FIELD' => $this->process_field_row('preview', $profile_row))
+                );
+
+                return $options;
+        }
+
 
 	/**
 	* Get dropdown options for second step in ACP

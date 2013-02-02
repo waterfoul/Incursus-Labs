@@ -50,6 +50,7 @@ class acp_profile
 			FIELD_TEXT		=> array('field_length' => '5|80', 'field_minlen' => 0, 'field_maxlen' => 1000, 'field_validation' => '.*', 'field_novalue' => '', 'field_default_value' => ''),
 			FIELD_INT		=> array('field_length' => 5, 'field_minlen' => 0, 'field_maxlen' => 100, 'field_validation' => '', 'field_novalue' => 0, 'field_default_value' => 0),
 			FIELD_DATE		=> array('field_length' => 10, 'field_minlen' => 10, 'field_maxlen' => 10, 'field_validation' => '', 'field_novalue' => ' 0- 0-   0', 'field_default_value' => ' 0- 0-   0'),
+			FIELD_DISABLED_BOOL              => array('field_length' => 1, 'field_minlen' => 0, 'field_maxlen' => 0, 'field_validation' => '', 'field_novalue' => 0, 'field_default_value' => 0),
 			FIELD_BOOL		=> array('field_length' => 1, 'field_minlen' => 0, 'field_maxlen' => 0, 'field_validation' => '', 'field_novalue' => 0, 'field_default_value' => 0),
 			FIELD_DROPDOWN	=> array('field_length' => 0, 'field_minlen' => 0, 'field_maxlen' => 5, 'field_validation' => '', 'field_novalue' => 0, 'field_default_value' => 0),
 			FIELD_EVEAPIKEY	=> array('field_length' => 0, 'field_minlen' => 0, 'field_maxlen' => 0, 'field_validation' => '', 'field_novalue' => 0, 'field_default_value' => 0),
@@ -394,7 +395,7 @@ class acp_profile
 				}
 
 				// option-specific fields require lang_options to be excluded
-				if ($field_type == FIELD_BOOL || $field_type == FIELD_DROPDOWN)
+				if ($field_type == FIELD_BOOL || $field_type == FIELD_DROPDOWN || $field_type == FIELD_DISABLED_BOOL)
 				{
 					$exclude[1][] = 'lang_options';
 				}
@@ -422,7 +423,7 @@ class acp_profile
 				$cp->vars['field_no_view'] = request_var('field_no_view', (int) $field_row['field_no_view']);
 
 				// A boolean field expects an array as the lang options
-				if ($field_type == FIELD_BOOL)
+				if ($field_type == FIELD_BOOL || $field_type == FIELD_DISABLED_BOOL)
 				{
 					$options = utf8_normalize_nfc(request_var('lang_options', array(''), true));
 				}
@@ -507,7 +508,7 @@ class acp_profile
 							}
 						}
 					}
-					else if ($field_type == FIELD_BOOL && $key == 'field_default_value')
+					else if (($field_type == FIELD_BOOL || $field_type == FIELD_DISABLED_BOOL) && $key == 'field_default_value')
 					{
 						// 'field_length' == 1 defines radio buttons. Possible values are 1 or 2 only.
 						// 'field_length' == 2 defines checkbox. Possible values are 0 or 1 only.
@@ -591,7 +592,7 @@ class acp_profile
 					{
 						$cp->vars[$key] = $$key;
 					}
-					else if ($key == 'l_lang_options' && $field_type == FIELD_BOOL)
+					else if ($key == 'l_lang_options' && ($field_type == FIELD_BOOL || $field_type == FIELD_DISABLED_BOOL))
 					{
 						$cp->vars[$key] = utf8_normalize_nfc(request_var($key, array(0 => array('')), true));
 					}
@@ -634,7 +635,7 @@ class acp_profile
 						$error[] = $user->lang['NO_FIELD_ENTRIES'];
 					}
 
-					if ($field_type == FIELD_BOOL && (empty($cp->vars['lang_options'][0]) || empty($cp->vars['lang_options'][1])))
+					if (($field_type == FIELD_BOOL || $field_type == FIELD_DISABLED_BOOL) && (empty($cp->vars['lang_options'][0]) || empty($cp->vars['lang_options'][1])))
 					{
 						$error[] = $user->lang['NO_FIELD_ENTRIES'];
 					}
@@ -698,11 +699,11 @@ class acp_profile
 								$_new_key_ary[$key]  = sprintf('%2d-%2d-%4d', $cp->vars['field_default_value_day'], $cp->vars['field_default_value_month'], $cp->vars['field_default_value_year']);
 							}
 						}
-						else if ($field_type == FIELD_BOOL && $key == 'l_lang_options' && isset($_REQUEST['l_lang_options']))
+						else if (($field_type == FIELD_BOOL || $field_type == FIELD_DISABLED_BOOL) && $key == 'l_lang_options' && isset($_REQUEST['l_lang_options']))
 						{
 							$_new_key_ary[$key] = utf8_normalize_nfc(request_var($key, array(array('')), true));
 						}
-						else if ($field_type == FIELD_BOOL && $key == 'field_default_value')
+						else if (($field_type == FIELD_BOOL || $field_type == FIELD_DISABLED_BOOL) && $key == 'field_default_value')
 						{
 							$_new_key_ary[$key] =  request_var($key, $cp->vars[$key]);
 						}
@@ -786,12 +787,12 @@ class acp_profile
 							);
 						}
 
-						if ($field_type == FIELD_BOOL || $field_type == FIELD_DROPDOWN)
+						if ($field_type == FIELD_BOOL || $field_type == FIELD_DROPDOWN || $field_type == FIELD_DISABLED_BOOL)
 						{
 							// Initialize these array elements if we are creating a new field
 							if (!sizeof($cp->vars['lang_options']))
 							{
-								if ($field_type == FIELD_BOOL)
+								if ($field_type == FIELD_BOOL || $field_type == FIELD_DISABLED_BOOL)
 								{
 									// No options have been defined for a boolean field.
 									$cp->vars['lang_options'][0] = '';
@@ -805,13 +806,13 @@ class acp_profile
 							}
 
 							$template->assign_vars(array(
-								'S_BOOL'		=> ($field_type == FIELD_BOOL) ? true : false,
+								'S_BOOL'		=> ($field_type == FIELD_BOOL || $field_type == FIELD_DISABLED_BOOL) ? true : false,
 								'S_DROPDOWN'	=> ($field_type == FIELD_DROPDOWN) ? true : false,
 
 								'L_LANG_OPTIONS_EXPLAIN'	=> $user->lang[strtoupper($cp->profile_types[$field_type]) . '_ENTRIES_EXPLAIN'],
 								'LANG_OPTIONS'				=> ($field_type == FIELD_DROPDOWN) ? implode("\n", $cp->vars['lang_options']) : '',
-								'FIRST_LANG_OPTION'			=> ($field_type == FIELD_BOOL) ? $cp->vars['lang_options'][0] : '',
-								'SECOND_LANG_OPTION'		=> ($field_type == FIELD_BOOL) ? $cp->vars['lang_options'][1] : '')
+								'FIRST_LANG_OPTION'			=> ($field_type == FIELD_BOOL || $field_type == FIELD_DISABLED_BOOL) ? $cp->vars['lang_options'][0] : '',
+								'SECOND_LANG_OPTION'		=> ($field_type == FIELD_BOOL || $field_type == FIELD_DISABLED_BOOL) ? $cp->vars['lang_options'][1] : '')
 							);
 						}
 
@@ -954,6 +955,7 @@ class acp_profile
 
 		switch ($field_type)
 		{
+			case FIELD_DISABLED_BOOL:
 			case FIELD_BOOL:
 				$options['lang_options'] = 'two_options';
 			break;
@@ -1170,7 +1172,7 @@ class acp_profile
 		$cp->vars['l_lang_explain']			= utf8_normalize_nfc(request_var('l_lang_explain', array(0 => ''), true));
 		$cp->vars['l_lang_default_value']	= utf8_normalize_nfc(request_var('l_lang_default_value', array(0 => ''), true));
 
-		if ($field_type != FIELD_BOOL)
+		if ($field_type != FIELD_BOOL && $field_type != FIELD_DISABLED_BOOL)
 		{
 			$cp->vars['l_lang_options']			= utf8_normalize_nfc(request_var('l_lang_options', array(0 => ''), true));
 		}
@@ -1415,7 +1417,8 @@ class acp_profile
 		//						ADD {$field_ident}_bbcode_uid VARCHAR(5) NOT NULL,
 		//						ADD {$field_ident}_bbcode_bitfield INT(11) UNSIGNED";
 					break;
-
+					
+					case FIELD_DISABLED_BOOL:
 					case FIELD_BOOL:
 						$sql .= 'TINYINT(2) ';
 					break;
@@ -1450,6 +1453,7 @@ class acp_profile
 		//						ADD {$field_ident}_bbcode_bitfield INT(11) UNSIGNED";
 					break;
 
+					case FIELD_DIASABLED_BOOL:
 					case FIELD_BOOL:
 						$type = 'TINYINT(2) ';
 					break;
@@ -1536,6 +1540,7 @@ class acp_profile
 		//						ADD {$field_ident}_bbcode_bitfield [INT] UNSIGNED";
 					break;
 
+					case FIELD_DIASABLED_BOOL:
 					case FIELD_BOOL:
 					case FIELD_DROPDOWN:
 						$sql .= '[INT] ';
@@ -1574,6 +1579,7 @@ class acp_profile
 		//						ADD {$field_ident}_bbcode_bitfield INT4 UNSIGNED";
 					break;
 
+					case FIELD_DIASABLED_BOOL:
 					case FIELD_BOOL:
 						$sql .= 'INT2 ';
 					break;
@@ -1611,6 +1617,7 @@ class acp_profile
 		//						ADD {$field_ident}_bbcode_bitfield INTEGER UNSIGNED";
 					break;
 
+					case FIELD_DIASABLED_BOOL:
 					case FIELD_BOOL:
 					case FIELD_DROPDOWN:
 						$sql .= 'INTEGER ';
@@ -1645,6 +1652,7 @@ class acp_profile
 		//						ADD {$field_ident}_bbcode_bitfield NUMBER(11) UNSIGNED";
 					break;
 
+					case FIELD_DIASABLED_BOOL:
 					case FIELD_BOOL:
 						$sql .= 'NUMBER(2) ';
 					break;

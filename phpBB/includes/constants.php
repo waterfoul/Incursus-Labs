@@ -193,6 +193,7 @@ define('FIELD_BOOL', 4);
 define('FIELD_DROPDOWN', 5);
 define('FIELD_DATE', 6);
 define('FIELD_EVEAPIKEY', 7);
+define('FIELD_DISABLED_BOOL', 8);
 
 // referer validation
 define('REFERER_VALIDATE_NONE', 0);

@@ -20,6 +20,14 @@
 	<!-- ENDIF -->
 <!-- END bool -->
 
+<!-- BEGIN disabled_bool -->
+        <!-- IF disabled_bool.FIELD_LENGTH eq 1 -->
+                <!-- BEGIN options --><input type="radio" class="radio" name="{bool.FIELD_IDENT}" value="{disabled_bool.options.OPTION_ID}"{disabled_bool.options.CHECKED} disabled="disabled" /><span class="genmed">{disabled_bool.options.VALUE}</span>&nbsp; &nbsp;<!-- END options -->
+        <!-- ELSE -->
+                <input type="checkbox" class="radio" name="{disabled_bool.FIELD_IDENT}" value="1"<!-- IF disabled_bool.FIELD_VALUE eq 1 --> checked="checked"<!-- ENDIF --> disabled="disabled" />
+        <!-- ENDIF -->
+<!-- END bool -->
+
 <!-- BEGIN int -->
 	<input type="text" class="post" name="{int.FIELD_IDENT}" size="{int.FIELD_LENGTH}" value="{int.FIELD_VALUE}" />
 <!-- END int -->

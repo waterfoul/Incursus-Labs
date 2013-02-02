@@ -79,6 +79,7 @@ $lang = array_merge($lang, array(
 	'EVERYTHING_OK'					=> 'Everything OK',
 
 	'FIELD_BOOL'				=> 'Boolean (Yes/No)',
+        'FIELD_DISABLED_BOOL'                            => 'Disabled Boolean (Yes/No)',
 	'FIELD_DATE'				=> 'Date',
 	'FIELD_EVEAPIKEY'			=> 'EVE API Key',
 	'FIELD_DESCRIPTION'			=> 'Field description',
