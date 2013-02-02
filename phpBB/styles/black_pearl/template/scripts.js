@@ -230,8 +230,8 @@ function checkAPI(ident)
   	{
   		if (this.readyState==4 && this.status==200)
     	{
-    		$val = this.responseText.split(",");
-    		if($val[0] == "BAD KEY OR VCODE")
+    		val = this.responseText.split(",");
+    		if(val[0] == "BAD KEY OR VCODE")
     			getElementFromID(this.ident + "_check_return").innerHTML="Bad API Credentials, please retry";
     		else
     		{
@@ -239,7 +239,7 @@ function checkAPI(ident)
     				getElementFromID(this.ident + "_check_return").innerHTML="Incursion Community Verified Capable";
     			if(val.contains("DEFCON 2"))
     				getElementFromID(this.ident + "_check_return").innerHTML="Lowsec Community Capable";
-    			if(val.contains("DEFCON 2"))
+    			if(val.contains("DEFCON 1"))
     				getElementFromID(this.ident + "_check_return").innerHTML="Corporation Capable";
     			if(val.contains("SKILLS"))
     				getElementFromID(this.ident + "_check_return").innerHTML+=", Skill Features Enabled";
