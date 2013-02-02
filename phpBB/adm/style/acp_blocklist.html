@@ -3,19 +3,65 @@
 <script type="text/javascript">
 	function add_item()
 	{
-		
+		sendRequest("../blocklistAjax.php?ADD=" + document.getElementById("newName").value + "&TYPE=" + document.getElementById("newType").value,function(req)
+		{
+			tr=document.createElement("tr");
+			tr.innerHTML="<td>" + document.getElementById("newName").value + "</td><td>" + + "</td><td><input type='button' value='Delete' onclick='remove_item(" + req.responseText + ")' /></td>";
+			document.getElementById("maintable").insertBefore(tr,document.getElementById("lastRow"));
+			document.getElementById("newName").value = "";
+		}, null);
 	}
 	function remove_item(i)
 	{
 		
 	}
+	function sendRequest(url,callback,postData) {
+	    var req = createXMLHTTPObject();
+	    if (!req) return;
+	    var method = (postData) ? "POST" : "GET";
+	    req.open(method,url,true);
+	    req.setRequestHeader('User-Agent','XMLHTTP/1.0');
+	    if (postData)
+	        req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+	    req.onreadystatechange = function () {
+	        if (req.readyState != 4) return;
+	        if (req.status != 200 && req.status != 304) {
+	//          alert('HTTP error ' + req.status);
+	            return;
+	        }
+	        callback(req);
+	    }
+	    if (req.readyState == 4) return;
+	    req.send(postData);
+	}
+	
+	var XMLHttpFactories = [
+	    function () {return new XMLHttpRequest()},
+	    function () {return new ActiveXObject("Msxml2.XMLHTTP")},
+	    function () {return new ActiveXObject("Msxml3.XMLHTTP")},
+	    function () {return new ActiveXObject("Microsoft.XMLHTTP")}
+	];
+	
+	function createXMLHTTPObject() {
+	    var xmlhttp = false;
+	    for (var i=0;i<XMLHttpFactories.length;i++) {
+	        try {
+	            xmlhttp = XMLHttpFactories[i]();
+	        }
+	        catch (e) {
+	            continue;
+	        }
+	        break;
+	    }
+	    return xmlhttp;
+	}
 </script>
 
-<a name="maincontent"></a>
-<table>
+<a name="maincontent"> </a>
+<table id="maintable">
 	<tr><th>Type</th><th>Name</th><th>&nbsp;</th></tr>
 {STUFF}
-	<tr>
+	<tr id="lastRow">
 		<td><select id="newType" style="width:100%">
 			<option>Character</option>
 			<option>Corporation</option>

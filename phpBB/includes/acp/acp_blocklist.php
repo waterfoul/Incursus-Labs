@@ -39,7 +39,7 @@ class acp_blocklist
 		$qry=$mysql->query("SELECT * FROM eve_blocklist ORDER BY Type, Name");
 		$output = "";
 		while($row = $qry->fetch_object())
-			$output .= "<tr><td>" . $row->Type . "</td><td>" . $row->Name . "</td><td><input type='button' value='remove' onclick='remove_item(" . $row->id . ")' style='width:100%' /></td><tr>";
+			$output .= "<tr><td>" . $row->Type . "</td><td>" . $row->Name . "</td><td><input type='button' value='Remove' onclick='remove_item(" . $row->id . ")' style='width:100%' /></td><tr>";
 		
 		$template->assign_var('STUFF', $output);
 	}
