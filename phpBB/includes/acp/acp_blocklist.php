@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* @package mcp
+* @package acp
 * @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -17,21 +17,18 @@ if (!defined('IN_PHPBB'))
 }
 
 /**
-* @package mcp
+* @package acp
 */
-class mcp_blocklist
+class acp_blocklist
 {
 	var $u_action;
 
 	function main($id, $mode)
 	{
-		global $config, $db, $user, $auth, $template, $cache;
-		global $phpbb_root_path, $phpEx;
-		
-		
-        $this->page_title = 'MCP_BLOCKLIST';
-        $this->tpl_name = 'mcp_blocklist';
+		global $db, $user, $auth, $template;
+		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
 
+		
 	}
 }
 
