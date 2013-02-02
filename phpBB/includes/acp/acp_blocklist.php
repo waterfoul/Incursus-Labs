@@ -34,7 +34,10 @@ class acp_blocklist
 		}
 		$this->page_title = 'ACP_BLOCKLIST_TITLE';
 		$this->tpl_name = 'acp_blocklist';
+				
+		$output = var_dump($db,true);
 		
+		$template->assign_var('STUFF', $output);
 	}
 }
 
