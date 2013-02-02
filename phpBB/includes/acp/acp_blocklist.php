@@ -28,8 +28,6 @@ class acp_blocklist
 		global $db, $user, $auth, $template;
 		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
 		
-		var_dump($mode);
-		
 		if ($mode != 'info')
 		{
 			trigger_error('NO_MODE', E_USER_ERROR);
