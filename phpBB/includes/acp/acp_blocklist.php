@@ -27,7 +27,14 @@ class acp_blocklist
 	{
 		global $db, $user, $auth, $template;
 		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
-
+		
+		switch($mode)
+		{
+			case 'index':
+			$this->page_title = 'ACP_BLOCKLIST';
+			$this->tpl_name = 'acp_blocklist';
+			break;
+		}
 		
 	}
 }
