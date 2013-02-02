@@ -220,3 +220,56 @@ function select_text(obj)
 		s.addRange(r);
 	}
 }
+
+function checkAPI(ident)
+{
+	getElementFromID(ident + "_check_return").innerHTML = "Checking....";
+	xhr = getXmlHttp();
+	xhr.ident = ident;
+	xhr.onreadystatechange=function()
+  	{
+  		if (this.readyState==4 && this.status==200)
+    	{
+    		getElementFromID(this.ident + "_check_return").innerHTML=this.responseText;
+    	}
+ 	}
+	xhr.open("GET","../apiSync/APIkey.php?eveAPIgrab=STATUS&key=" + getElementFromID(ident + "_key").value + "&vcode=" + getElementFromID(ident + "_vcode").value,true);
+	xhr.send();
+}
+
+function resetApiLevel(ident)
+{
+	getElementFromID(ident + "_level").selectedIndex = 0;
+	getElementFromID(ident + "_level").disabled = true;
+}
+
+function getElementFromID(id)
+{
+	 var itm = null;
+	if (document.getElementById)
+	{
+		itm = document.getElementById(id);
+	}
+	else if (document.all)
+	{
+		itm = document.all[id];
+	}
+	else if (document.layers)
+	{
+		itm = document.layers[id];
+	}
+	return itm;
+}
+
+function getXmlHttp(){
+	var xmlhttp;
+    if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+  		xmlhttp=new XMLHttpRequest();
+  	}
+	else
+  	{// code for IE6, IE5
+  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  	}
+  	return xmlhttp;
+}
