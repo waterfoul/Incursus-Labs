@@ -6,8 +6,8 @@
 		sendRequest("../../apiSync/blocklistAjax.php?ADD=" + document.getElementById("newName").value + "&TYPE=" + document.getElementById("newType").value,function(req)
 		{
 			tr=document.createElement("tr");
-			tr.innerHTML="<td>" + document.getElementById("newName").value + "</td><td>" + + "</td><td><input type='button' value='Delete' onclick='remove_item(" + req.responseText + ")' /></td>";
-			document.getElementById("maintable").insertBefore(tr,document.getElementById("lastRow"));
+			tr.innerHTML="<td>" + document.getElementById("newName").value + "</td><td>" + document.getElementById("newType").value + "</td><td><input type='button' value='Delete' onclick='remove_item(" + req.responseText + ")' /></td>";
+			document.getElementById("maintable").insertBefore(tr,document.getElementById("maintable").lastChild);
 			document.getElementById("newName").value = "";
 		}, null);
 	}
