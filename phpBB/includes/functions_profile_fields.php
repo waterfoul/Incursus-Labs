@@ -22,7 +22,7 @@ if (!defined('IN_PHPBB'))
 */
 class custom_profile
 {
-	var $profile_types = array(FIELD_INT => 'int', FIELD_STRING => 'string', FIELD_TEXT => 'text', FIELD_BOOL => 'bool', FIELD_DROPDOWN => 'dropdown', FIELD_DATE => 'date', FIELD_EVEAPIKEY => "eveAPIkey");
+	var $profile_types = array(FIELD_INT => 'int', FIELD_STRING => 'string', FIELD_TEXT => 'text', FIELD_BOOL => 'bool', FIELD_DROPDOWN => 'dropdown', FIELD_DATE => 'date', FIELD_EVEAPIKEY => "eveapikey");
 	var $profile_cache = array();
 	var $options_lang = array();
 
@@ -962,7 +962,7 @@ class custom_profile
 		switch ($profile_row['field_type'])
 		{
 			case FIELD_EVEAPIKEY:
-				if (!isset($_REQUEST[$var_name . '_day']))
+				if (!isset($_REQUEST[$var_name . '_key']))
 				{
 					$key = "";
 					$vcode = "";
