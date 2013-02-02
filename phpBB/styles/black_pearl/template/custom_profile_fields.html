@@ -33,8 +33,8 @@
 <!-- BEGIN eveapikey -->
 	Key:<input type="text" class="post" name="{eveapikey.FIELD_IDENT}_key" id="{eveapikey.FIELD_IDENT}_key" size="12" maxlength="12" value="{eveapikey.FIELD_KEY}" onchange="resetApiLevel('{eveapikey.FIELD_IDENT}')" /><br>
 	VCode:<input type="text" class="post" name="{eveapikey.FIELD_IDENT}_vcode" id="{eveapikey.FIELD_IDENT}_vcode" size="64" maxlength="64" value="{eveapikey.FIELD_VCODE}" onchange="resetApiLevel('{eveapikey.FIELD_IDENT}')" /><br>
-	<input type="button" value="Check" onclick="checkAPI('{eveapikey.FIELD_IDENT}')" /><span id="{eveapikey.FIELD_IDENT}_check_return">&nsbp;</span>
-	<select name="{eveapikey.FIELD_IDENT}_level" id="{eveapikey.FIELD_IDENT}_level">
+	<input type="button" value="Check" onclick="checkAPI('{eveapikey.FIELD_IDENT}')" /> <span id="{eveapikey.FIELD_IDENT}_check_return"> </span><br>
+	Requested Permissions Level (refresh to update):<select name="{eveapikey.FIELD_IDENT}_level" id="{eveapikey.FIELD_IDENT}_level">
 		<option value="1" <!-- IF bool.FIELD_LEVEL eq 1 --> selected="true"<!-- ENDIF -->>Public (Level 1)</option>
 		<!-- IF eveapikey.LEVEL_2 eq 1 -->
 			<option value="2" <!-- IF bool.FIELD_LEVEL eq 2 --> selected="true"<!-- ENDIF -->>Basic User (Level 2)</option>

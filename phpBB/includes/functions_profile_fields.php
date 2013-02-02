@@ -99,6 +99,7 @@ class custom_profile
 				$newval = explode(":",$field_value);
 				if($oldval[0] != $newval[0] || $oldval[1] != $newval[1])
 					$newval[2] = "1";
+				// TODO: validate permissions level, give permissions
 				$field_value = implode(":", $newval);
 			break;
 			case FIELD_DATE:

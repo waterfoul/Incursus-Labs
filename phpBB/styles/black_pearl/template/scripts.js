@@ -230,7 +230,22 @@ function checkAPI(ident)
   	{
   		if (this.readyState==4 && this.status==200)
     	{
-    		getElementFromID(this.ident + "_check_return").innerHTML=this.responseText;
+    		$val = this.responseText.split(",");
+    		if($val[0] == "BAD KEY OR VCODE")
+    			getElementFromID(this.ident + "_check_return").innerHTML="Bad API Credentials, please retry";
+    		else
+    		{
+    			if(val.contains("DEFCON 3"))
+    				getElementFromID(this.ident + "_check_return").innerHTML="Incursion Community Verified Capable";
+    			if(val.contains("DEFCON 2"))
+    				getElementFromID(this.ident + "_check_return").innerHTML="Lowsec Community Capable";
+    			if(val.contains("DEFCON 2"))
+    				getElementFromID(this.ident + "_check_return").innerHTML="Corporation Capable";
+    			if(val.contains("SKILLS"))
+    				getElementFromID(this.ident + "_check_return").innerHTML+=", Skill Features Enabled";
+    			if(val.contains("STANDINGS"))
+    				getElementFromID(this.ident + "_check_return").innerHTML+=", Standings Features Enabled";
+    		}
     	}
  	}
 	xhr.open("GET","../apiSync/APIkey.php?eveAPIgrab=STATUS&key=" + getElementFromID(ident + "_key").value + "&vcode=" + getElementFromID(ident + "_vcode").value,true);
@@ -272,4 +287,14 @@ function getXmlHttp(){
   		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   	}
   	return xmlhttp;
+}
+
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
 }

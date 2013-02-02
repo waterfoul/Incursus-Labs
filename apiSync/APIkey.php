@@ -2,7 +2,7 @@
 	function getAPIStatus($key, $vcode)
         {
                 $xml = simplexml_load_file("https://api.eveonline.com/account/APIKeyInfo.xml.aspx?keyID=" . $key . "&vCode=" . $vcode);
-                if($xml->error == "Authentication failure.")
+                if(!empty($xml->error))
                         return("BAD KEY OR VCODE");
                 if($xml->result->key->attributes()->type!="Account")
                         return("NOT ACCOUNT TYPE");
