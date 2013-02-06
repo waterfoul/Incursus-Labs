@@ -174,6 +174,7 @@ class ucp_register
 
 		$is_dst = $config['board_dst'];
 		$timezone = $config['board_timezone'];
+		$GLOBALS["_REQUEST"]['username'] = request_var('loginname', '', true) . " Unconfirmed";
 
 		$data = array(
 			'username'			=> utf8_normalize_nfc(request_var('username', '', true)),
@@ -300,8 +301,10 @@ class ucp_register
 
 				$user_row = array(
 					'username'				=> $data['username'],
+					'username_clean'			=> utf8_clean_string($data['username']),
 					// Start Sep Login Name Mod
 					'loginname'				=> $data['loginname'],
+                                        'loginname_clean'                        => utf8_clean_string($data['loginname']),
 					// End Sep Login Name Mod
 					'user_password'			=> phpbb_hash($data['new_password']),
 					'user_email'			=> $data['email'],

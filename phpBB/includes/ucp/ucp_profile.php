@@ -98,7 +98,7 @@ class ucp_profile
 						        "Incursus_yapeal.accountKeyBridge" => 'b',
 						        "Incursus_yapeal.accountCharacters" => 'c',
 						        ),
-						    'WHERE'        => 'b.characterID = c.characterID AND b.keyID = ' . $key,
+						    'WHERE'        => 'b.characterID = c.characterID AND b.keyID = "' . $key . '"',
 						    );
 						$sql = $db->sql_build_query('SELECT', $sql_arr);
 						$result = $db->sql_query($sql);
@@ -338,7 +338,7 @@ class ucp_profile
 				        "Incursus_yapeal.accountKeyBridge" => 'b',
 				        "Incursus_yapeal.accountCharacters" => 'c',
 				        ),
-				    'WHERE'        => 'b.characterID = c.characterID AND b.keyID = ' . $key,
+				    'WHERE'        => 'b.characterID = c.characterID AND b.keyID = "' . $key . '"',
 				    );
 				$sql = $db->sql_build_query('SELECT', $sql_arr);
 				$result = $db->sql_query($sql);
@@ -363,7 +363,7 @@ class ucp_profile
 					'L_CHANGE_PASSWORD_EXPLAIN'	=> sprintf($user->lang[$config['pass_complex'] . '_EXPLAIN'], $config['min_pass_chars'], $config['max_pass_chars']),
 
 					'S_FORCE_PASSWORD'	=> ($auth->acl_get('u_chgpasswd') && $config['chg_passforce'] && $user->data['user_passchg'] < time() - ($config['chg_passforce'] * 86400)) ? true : false,
-					'S_CHANGE_USERNAME' => ($config['allow_namechange'] && $auth->acl_get('u_chgname')) ? true : false,
+					'S_CHANGE_USERNAME' => $config['allow_namechange'] ? true : false,
 					// Start Sep Login Name Mod
 					'S_CHANGE_LOGINNAME' => $config['allow_loginnamechange'] ? true : false,
 					// End Sep Login Name Mod	
