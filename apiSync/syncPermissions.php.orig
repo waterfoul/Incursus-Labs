@@ -235,8 +235,13 @@
 	    			`charWalletJournal` as w 
 				 WHERE
 					w.`verifiedOK` = 0
+<<<<<<< HEAD
 	     			AND w.`refTypeID` IN (0, 1, 6, 10, 35, 37, 71)
+	      			AND w.`ownerID1` = " . $char
+=======
+	     			AND w.`refTypeID` IN (0, 1, 6, 10, 35, 71)
 	      			AND w.`ownerID1` = " + $char
+>>>>>>> b71940a10c3dd729abb26c7fabe46699b61db6c3
 			);
 			$char = true;
 			while($row = $qry->fetch_object())
