@@ -143,18 +143,23 @@
 		{
 			case 1:
 				$groupid =  10;
+				$phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 1, pf_api_key_community = 1 WHERE user_id = " . $user_id);
 				break;
 			case 2:
 				$groupid =  9;
+                                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 1, pf_api_key_community = 1 WHERE user_id = " . $user_id);
 				break;
 			case 3:
 				$groupid =  8;
+                                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 1, pf_api_key_community = 1 WHERE user_id = " . $user_id);
 				break;
 			case 4:
 				$groupid =  11;
+                                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 1, pf_api_key_community = 0 WHERE user_id = " . $user_id);
 				break;
 			case 5:
 				$groupid =  2;
+                                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 0, pf_api_key_community = 0 WHERE user_id = " . $user_id);
 				break;
 		}
 		$phpBB->query("UPDATE phpbb_users SET group_id = " . $groupid . " WHERE user_id = " . $user_id );
@@ -162,7 +167,7 @@
 		{
 			$phpBB->query("DELETE FROM `phpbb_user_group` WHERE `phpbb_user_group`.`group_id` = " . $g . " AND `phpbb_user_group`.`user_id` = " . $user_id . ";" );
 			if($g == $groupid)
-				$phpBB->query("INSERT INTO `Incusus_phpBB`.`phpbb_user_group` (`group_id`, `user_id`, `group_leader`, `user_pending`) VALUES ('" . $user_id . "', '" . $g . "', '0', '0');");
+				$phpBB->query("INSERT INTO `Incusus_phpBB`.`phpbb_user_group` (`group_id`, `user_id`, `group_leader`, `user_pending`) VALUES ('" . $g . "', '" . $user_id . "', '0', '0');");
 		}	
 	}
 	function isGanking($characterIds, $mysql_eve_dbDump, $yapeal)
