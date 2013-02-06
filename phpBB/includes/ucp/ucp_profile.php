@@ -46,6 +46,19 @@ class ucp_profile
 		{
 			case 'reg_details':
 				
+				$pair = split(":",$_POST["username"]);
+                $_POST["username"] = $pair[1];
+				
+				$data = array(
+				    'user_avatar'     => 'http://img.eve.is/serv.asp?s=64&c=' . $pair[0],
+				    'user_avatar_type'     => 2,
+				    'user_avatar_width'     => 64,
+				    'user_avatar_height'     => 64,
+				);
+				
+				$sql = 'UPDATE ' . USERS_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $data) . ' WHERE user_id = ' . (int) $user->data['user_id'];
+				$db->sql_query($sql);
+				
 				$data = array(
 					'username'			=> utf8_normalize_nfc(request_var('username', $user->data['username'], true)),
 					// Start Sep Login Name Mod
