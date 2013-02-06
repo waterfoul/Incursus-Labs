@@ -1,0 +1,10 @@
+<div class="bc-tbl bc-div">
+	<p class="bc-header">
+		<a href="{U_INDEX}">{L_INDEX}</a>&nbsp;&#187;&nbsp;<a href="#" class="nav-current">{PAGE_TITLE}</a>
+	</p>
+	<div class="bc-links">
+		<div class="bc-links-left">{CURRENT_TIME}<!-- IF S_USER_LOGGED_IN -->&nbsp;|&nbsp;{LAST_VISIT_DATE}<!-- ENDIF --><br />{S_TIMEZONE}</div>
+		<!-- IF S_DISPLAY_SEARCH --><a href="{U_SEARCH_UNANSWERED}">{L_SEARCH_UNANSWERED}</a>&nbsp;|&nbsp;<a href="{U_SEARCH_ACTIVE_TOPICS}">{L_SEARCH_ACTIVE_TOPICS}</a><!-- ENDIF --><br />
+		<!-- IF not S_IS_BOT and U_MARK_FORUMS --><a href="{U_MARK_FORUMS}">{L_MARK_FORUMS_READ}</a><!-- IF S_USER_LOGGED_IN or S_LOAD_UNREADS -->&nbsp;|&nbsp;<!-- ENDIF --><!-- ENDIF --><!-- IF S_USER_LOGGED_IN or S_LOAD_UNREADS --><!-- IF S_LOAD_UNREADS --><a href="{U_SEARCH_UNREAD}">{L_SEARCH_UNREAD}</a><!-- IF S_USER_LOGGED_IN -->&nbsp;|&nbsp;<!-- ENDIF --><!-- ENDIF --><!-- IF S_USER_LOGGED_IN --><a href="{U_SEARCH_NEW}">{L_SEARCH_NEW}</a>&nbsp;|&nbsp;<a href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a><!-- ENDIF --><!-- ELSE --><!-- IF S_IS_BOT or not U_MARK_FORUMS -->&nbsp;<!-- ENDIF --><!-- ENDIF -->
+	</div>
+</div>
