@@ -274,7 +274,7 @@ class ucp_profile
 					'NEW_PASSWORD'		=> $data['new_password'],
 					'CUR_PASSWORD'		=> '',
 
-					'L_USERNAME_EXPLAIN'		=> sprintf($user->lang[$config['allow_name_chars'] . '_EXPLAIN'], $config['min_name_chars'], $config['max_name_chars']) + "(Will only display if no eve character is selected)",
+					'L_USERNAME_EXPLAIN'		=> sprintf($user->lang[$config['allow_name_chars'] . '_EXPLAIN'], $config['min_name_chars'], $config['max_name_chars']) . "(Will only display if no eve character is selected)",
 					// Start Sep Login Name Mod
 					'L_LOGINNAME_EXPLAIN'		=> sprintf($user->lang[$config['allow_loginname_chars'] . '_EXPLAIN'], $config['min_loginname_chars'], $config['max_loginname_chars']),
 					// End Sep Login Name Mod
