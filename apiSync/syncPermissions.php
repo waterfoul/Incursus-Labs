@@ -67,7 +67,7 @@
 			$mask=$yapeal->query("SELECT accessMask FROM  `accountAPIKeyInfo` WHERE keyID = " . $key[0]);
 			if(!$mask)
 			{
-				setRoles($row->user_id,5);
+				setRoles($row->user_id,5,$phpBB);
 				continue;
 			}
 			$mask = $mask->fetch_object()->accessMask;
@@ -236,7 +236,7 @@
 				 WHERE
 					w.`verifiedOK` = 0
 	     			AND w.`refTypeID` IN (0, 1, 6, 10, 35, 37, 71)
-	      			AND w.`ownerID1` = " + $char
+	      			AND w.`ownerID1` = " . $char
 			);
 			$char = true;
 			while($row = $qry->fetch_object())
