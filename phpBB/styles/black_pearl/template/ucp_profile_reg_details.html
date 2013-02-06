@@ -13,7 +13,9 @@
 <tr>
 	<td class="row1" width="35%"><b class="genmed">{L_LOGINNAME}:</b><br /><span class="gensmall">{L_LOGINNAME_EXPLAIN}</span></td>
 	<td class="row2"><!-- IF S_CHANGE_LOGINNAME -->
-		{CHARACTERS}
+		<!-- BEGIN CHARACTERS -->
+			markup, {CHARACTERS}, etc.
+		<!-- END CHARACTERS -->
 		<input type="text" class="post" name="loginname" id="loginname" value="{LOGINNAME}" class="inputbox" title="{L_LOGINNAME}" />
 	<!-- ELSE -->
 		<b class="gen">{LOGINNAME}</b>

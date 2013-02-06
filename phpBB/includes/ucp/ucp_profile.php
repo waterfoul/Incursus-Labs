@@ -289,11 +289,10 @@ class ucp_profile
 				$sql = $db->sql_build_query('SELECT', $sql_arr);
 				$result = $db->sql_query($sql);
 	             while($row = $db->sql_fetchrow($result))
-                        $chars[] = $row;
+                        $template->assign_block_vars('CHARACTERS', $row);
 
 
 				$template->assign_vars(array(
-					'CHARACTERS'        => $chars,
 					'ERROR'				=> (sizeof($error)) ? implode('<br />', $error) : '',
 
 					'USERNAME'			=> $data['username'],
@@ -312,7 +311,7 @@ class ucp_profile
 					'S_FORCE_PASSWORD'	=> ($auth->acl_get('u_chgpasswd') && $config['chg_passforce'] && $user->data['user_passchg'] < time() - ($config['chg_passforce'] * 86400)) ? true : false,
 					'S_CHANGE_USERNAME' => ($config['allow_namechange'] && $auth->acl_get('u_chgname')) ? true : false,
 					// Start Sep Login Name Mod
-					'S_CHANGE_LOGINNAME' => ($config['allow_loginnamechange'] && $auth->acl_get('u_chgloginname')) ? true : false,
+					'S_CHANGE_LOGINNAME' => $config['allow_loginnamechange'] ? true : false,
 					// End Sep Login Name Mod	
 					'S_CHANGE_EMAIL'	=> ($auth->acl_get('u_chgemail')) ? true : false,
 					'S_CHANGE_PASSWORD'	=> ($auth->acl_get('u_chgpasswd')) ? true : false)
