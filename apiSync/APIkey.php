@@ -67,6 +67,8 @@
 		while($row = $qry->fetch_object())
 		{
 			$key = explode(":",$row->pf_api_key);
+			if((string)((int)$key[0]) != $key[0])
+				continue;
 			$regKey = new RegisteredKey($key[0]);
 			if ($regKey->recordExists() && $regKey->isActive)
 				$keys[] = $key[0];
