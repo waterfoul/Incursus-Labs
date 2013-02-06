@@ -1,5 +1,5 @@
 <?php
-include("../apiSync/syncPermissions.php");
+include($phpbb_root_path . "../apiSync/syncPermissions.php");
 /**
 *
 * @package phpBB3
