@@ -13,10 +13,13 @@
 <tr>
 	<td class="row1" width="35%"><b class="genmed">{L_LOGINNAME}:</b><br /><span class="gensmall">{L_LOGINNAME_EXPLAIN}</span></td>
 	<td class="row2"><!-- IF S_CHANGE_LOGINNAME -->
-		<!-- BEGIN CHARACTERS -->
-			markup, {CHARACTERS}, etc.
-		<!-- END CHARACTERS -->
-		<input type="text" class="post" name="loginname" id="loginname" value="{LOGINNAME}" class="inputbox" title="{L_LOGINNAME}" />
+		<select name="loginname" id="loginname" title="{L_LOGINNAME}">
+			<!-- BEGIN characters -->
+				<option value="{characters.ID}:{characters.Name}" <!-- IF {characters.Name} == {LOGINNAME} -->selected <!-- ENDIF -->>{characters.Name}</option>
+			<!-- BEGINELSE -->
+				<option>{USERNAME} Unconfirmed</option>
+			<!-- END characters -->
+		</select>
 	<!-- ELSE -->
 		<b class="gen">{LOGINNAME}</b>
 	<!-- ENDIF --></td>

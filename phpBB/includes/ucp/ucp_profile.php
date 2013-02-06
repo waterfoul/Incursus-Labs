@@ -289,7 +289,7 @@ class ucp_profile
 				$sql = $db->sql_build_query('SELECT', $sql_arr);
 				$result = $db->sql_query($sql);
 	             while($row = $db->sql_fetchrow($result))
-                        $template->assign_block_vars('CHARACTERS', $row);
+                        $template->assign_block_vars('CHARACTERS', array("ID"=>$row["characterID"],"NAME"=>$row["characterName"]));
 
 
 				$template->assign_vars(array(
