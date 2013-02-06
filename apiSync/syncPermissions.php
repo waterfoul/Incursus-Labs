@@ -8,6 +8,7 @@
 		$phpBB = new mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_phpBB_db);
 		$yapeal = new mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_yapeal_db);
 		
+		/* Sync the api and character lists */
 		$qry = $yapeal->query("SELECT keyID, accessMask FROM  `accountAPIKeyInfo`");
 		while($row = $qry->fetch_object())
 		{
@@ -31,6 +32,7 @@
 			}
 		}
 		
+		/* Determine roles */
 		$qry=$phpBB->query('SELECT user_id,pf_api_key FROM  `phpbb_profile_fields_data`');
 		while($row = $qry->fetch_object())
 		{
