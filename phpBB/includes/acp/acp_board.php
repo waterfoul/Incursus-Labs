@@ -31,6 +31,7 @@ class acp_board
 		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
 		global $cache;
 
+		$user->add_lang('acp/board');
 		// Start Sep Login Name Mod
 		$user->add_lang('acp/separate_login_username');
 		// End Sep Login Name Mod
