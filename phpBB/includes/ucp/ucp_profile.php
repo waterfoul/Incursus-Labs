@@ -75,7 +75,32 @@ class ucp_profile
 					);
 					
 					$pair = split(":",$data["username"]);
-           				$data["username"] = $pair[1];
+           			if(count($pair) == 2)
+					{
+						$name_ok = false;
+						$sql_arr = array(
+						    'SELECT'    => 'c.characterID,c.characterName',
+						    'FROM'        => array(
+						        "Incursus_yapeal.accountKeyBridge" => 'b',
+						        "Incursus_yapeal.accountCharacters" => 'c',
+						        ),
+						    'WHERE'        => 'b.characterID = c.characterID AND b.keyID = ' . $key,
+						    );
+						$sql = $db->sql_build_query('SELECT', $sql_arr);
+						$result = $db->sql_query($sql);
+			            while($row = $db->sql_fetchrow($result))
+							if($row["characterName"] == $pair[1] && $row["characterID"] == $pair[0])
+								$name_ok = true;
+						if($name_ok)
+           					$data["username"] = $pair[1];
+						else 
+						{
+							$data["username"] = $data["loginname"] . " Unconfirmed";
+							$pair = array();
+						}
+					}
+					else 
+						$data["username"] = $data["loginname"] . " Unconfirmed";
 					
 					if ($auth->acl_get('u_chgname') && $config['allow_namechange'])
 					{
@@ -125,14 +150,17 @@ class ucp_profile
 
 					if (!sizeof($error))
 					{
-						$sqldata = array(
+						if(count($pair) == 2)
+						{
+							$sqldata = array(
                                 	            'user_avatar'     => 'http://image.eveonline.com/Character/' . $pair[0] . '_128.jpg',
                         	                    'user_avatar_type'     => 2,
                 	                            'user_avatar_width'     => 128,
         	                                    'user_avatar_height'     => 128,
 	                                        );
-						$sql = 'UPDATE ' . USERS_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $sqldata) . ' WHERE user_id = ' . (int) $user->data['user_id'];
-		                                $db->sql_query($sql);
+							$sql = 'UPDATE ' . USERS_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $sqldata) . ' WHERE user_id = ' . (int) $user->data['user_id'];
+                            $db->sql_query($sql);
+						}
 
 						$sql_ary = array(
 							'username'			=> ($auth->acl_get('u_chgname') && $config['allow_namechange']) ? $data['username'] : $user->data['username'],
@@ -314,9 +342,9 @@ class ucp_profile
 					'NEW_PASSWORD'		=> $data['new_password'],
 					'CUR_PASSWORD'		=> '',
 
-					'L_USERNAME_EXPLAIN'		=> sprintf($user->lang[$config['allow_name_chars'] . '_EXPLAIN'], $config['min_name_chars'], $config['max_name_chars']) . "(Will only display if no eve character is selected)",
+					'L_USERNAME_EXPLAIN'		=> sprintf($user->lang[$config['allow_name_chars'] . '_EXPLAIN'], $config['min_name_chars'], $config['max_name_chars']),
 					// Start Sep Login Name Mod
-					'L_LOGINNAME_EXPLAIN'		=> sprintf($user->lang[$config['allow_loginname_chars'] . '_EXPLAIN'], $config['min_loginname_chars'], $config['max_loginname_chars']),
+					'L_LOGINNAME_EXPLAIN'		=> sprintf($user->lang[$config['allow_loginname_chars'] . '_EXPLAIN'], $config['min_loginname_chars'], $config['max_loginname_chars']) . "(Will only display if no eve character is selected)",
 					// End Sep Login Name Mod
 					'L_CHANGE_PASSWORD_EXPLAIN'	=> sprintf($user->lang[$config['pass_complex'] . '_EXPLAIN'], $config['min_pass_chars'], $config['max_pass_chars']),
 
