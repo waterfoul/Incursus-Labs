@@ -21,6 +21,8 @@ class acp_blocklist_info
 			'version'	=> '1.0.0',
 			'modes'		=> array(
 				'info'		=> array('title' => 'ACP_BLOCKLIST_TITLE', 'auth' => 'acl_a_', 'cat' => array('')),
+				'info2'		=> array('title' => 'ACP_BLOCKLIST_TITLE2', 'auth' => 'acl_a_', 'cat' => array('')),
+				'info3'		=> array('title' => 'ACP_BLOCKLIST_TITLE3', 'auth' => 'acl_a_', 'cat' => array('')),
 			),
 		);
 	}

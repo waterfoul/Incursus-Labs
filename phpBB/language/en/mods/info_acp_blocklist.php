@@ -19,6 +19,8 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-    'ACP_BLOCKLIST_TITLE'                        => 'EVE Blocklist',
+    'ACP_BLOCKLIST_TITLE'                        => 'EVE Blocklist (Basic Access)',
+    'ACP_BLOCKLIST_TITLE2'                       => 'EVE Blocklist (Incursion)',
+    'ACP_BLOCKLIST_TITLE3'                       => 'EVE Blocklist (Lowsec)',
 ));
 ?>
