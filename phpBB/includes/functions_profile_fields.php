@@ -745,9 +745,9 @@ class custom_profile
 		$profile_row['field_level'] = @$val[2];
 		
 		global $user;
-        $user->get_profile_fields( $user->data['user_id'] );
+		$user->get_profile_fields( $user->data['user_id'] );
 		$profile_row['field_max_level'] = 1;
-		if($user->profile_fields["pf_" . $profile_row["field_name"] . "_basic"])
+		if(@$user->profile_fields["pf_" . $profile_row["field_name"] . "_basic"])
 		{
 			$profile_row['level_2'] = 1;
 			$profile_row['field_max_level'] = 2;

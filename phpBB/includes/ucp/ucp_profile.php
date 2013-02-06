@@ -46,19 +46,6 @@ class ucp_profile
 		{
 			case 'reg_details':
 				
-				$pair = split(":",$_POST["username"]);
-                $_POST["username"] = $pair[1];
-				
-				$data = array(
-				    'user_avatar'     => 'http://img.eve.is/serv.asp?s=64&c=' . $pair[0],
-				    'user_avatar_type'     => 2,
-				    'user_avatar_width'     => 64,
-				    'user_avatar_height'     => 64,
-				);
-				
-				$sql = 'UPDATE ' . USERS_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $data) . ' WHERE user_id = ' . (int) $user->data['user_id'];
-				$db->sql_query($sql);
-				
 				$data = array(
 					'username'			=> utf8_normalize_nfc(request_var('username', $user->data['username'], true)),
 					// Start Sep Login Name Mod
@@ -86,7 +73,10 @@ class ucp_profile
 							array('email')),
 						'email_confirm'		=> array('string', true, 6, 60),
 					);
-
+					
+					$pair = split(":",$data["username"]);
+           				$data["username"] = $pair[1];
+					
 					if ($auth->acl_get('u_chgname') && $config['allow_namechange'])
 					{
 						$check_ary['username'] = array(
@@ -135,6 +125,15 @@ class ucp_profile
 
 					if (!sizeof($error))
 					{
+						$sqldata = array(
+                                	            'user_avatar'     => 'http://image.eveonline.com/Character/' . $pair[0] . '_128.jpg',
+                        	                    'user_avatar_type'     => 2,
+                	                            'user_avatar_width'     => 128,
+        	                                    'user_avatar_height'     => 128,
+	                                        );
+						$sql = 'UPDATE ' . USERS_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $sqldata) . ' WHERE user_id = ' . (int) $user->data['user_id'];
+		                                $db->sql_query($sql);
+
 						$sql_ary = array(
 							'username'			=> ($auth->acl_get('u_chgname') && $config['allow_namechange']) ? $data['username'] : $user->data['username'],
 							'username_clean'	=> ($auth->acl_get('u_chgname') && $config['allow_namechange']) ? utf8_clean_string($data['username']) : $user->data['username_clean'],
