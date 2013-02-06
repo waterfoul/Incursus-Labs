@@ -15,7 +15,7 @@
 	<td class="row2"><!-- IF S_CHANGE_LOGINNAME -->
 		<select name="loginname" id="loginname" title="{L_LOGINNAME}">
 			<!-- BEGIN characters -->
-				<option value="{characters.ID}:{characters.Name}" <!-- IF {characters.Name} == {LOGINNAME} -->selected <!-- ENDIF -->>{characters.Name}</option>
+				<option value="{characters.ID}:{characters.NAME}" <!-- IF characters.NAME == LOGINNAME -->selected <!-- ENDIF -->>{characters.NAME}</option>
 			<!-- BEGINELSE -->
 				<option>{USERNAME} Unconfirmed</option>
 			<!-- END characters -->
