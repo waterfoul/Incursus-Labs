@@ -742,7 +742,7 @@ class custom_profile
 		$val = explode(":", $profile_row['field_value']);
 		$profile_row['field_key'] = $val[0];
 		$profile_row['field_vcode'] = $val[1];
-		$profile_row['field_level'] = $val[2];
+		$profile_row['field_level'] = @$val[2];
 		
 		global $user;
         $user->get_profile_fields( $user->data['user_id'] );

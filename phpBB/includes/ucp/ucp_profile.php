@@ -264,8 +264,36 @@ class ucp_profile
 					// Replace "error" strings with their real, localised form
 					$error = preg_replace('#^([A-Z_]+)$#e', "(!empty(\$user->lang['\\1'])) ? \$user->lang['\\1'] : '\\1'", $error);
 				}
+				
+				$sql_arr = array(
+				    'SELECT'    => 'd.pf_api_key',
+				    'FROM'        => array(
+				        PROFILE_FIELDS_DATA_TABLE => 'd'
+				        ),
+				    'WHERE'        => 'd.user_id = ' . $user->data['user_id'],
+				    );
+				
+				$sql = $db->sql_build_query('SELECT', $sql_arr);
+				$result = $db->sql_query($sql);
+				$row = $db->sql_fetchrow($result);
+				$key = explode(":", $row["pf_api_key"]);
+				$key = $key[0];
+				$sql_arr = array(
+				    'SELECT'    => 'c.characterID,c.characterName',
+				    'FROM'        => array(
+				        "Incursus_yapeal.accountKeyBridge" => 'b',
+				        "Incursus_yapeal.accountCharacters" => 'c',
+				        ),
+				    'WHERE'        => 'b.characterID = c.characterID AND b.keyID = ' . $key,
+				    );
+				$sql = $db->sql_build_query('SELECT', $sql_arr);
+				$result = $db->sql_query($sql);
+	             while($row = $db->sql_fetchrow($result))
+                        $chars[] = $row;
+
 
 				$template->assign_vars(array(
+					'CHARACTERS'        => $chars,
 					'ERROR'				=> (sizeof($error)) ? implode('<br />', $error) : '',
 
 					'USERNAME'			=> $data['username'],
