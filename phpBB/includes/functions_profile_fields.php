@@ -95,12 +95,15 @@ class custom_profile
 		{
 			case FIELD_EVEAPIKEY:
 				global $user;
-                $user->get_profile_fields( $user->data['user_id'] );
-				$oldval = explode(":",$user->profile_fields["pf_" . $field_data["field_name"]]);
-				$newval = explode(":",$field_value);
-				if($oldval[0] != $newval[0] || $oldval[1] != $newval[1])
-					$newval[2] = "1";
-				$field_value = implode(":", $newval);
+		                $user->get_profile_fields( $user->data['user_id'] );
+				if(@$user->profile_fields["pf_" . $field_data["field_name"]])
+				{
+					$oldval = explode(":",$user->profile_fields["pf_" . $field_data["field_name"]]);
+					$newval = explode(":",$field_value);
+					if($oldval[0] != $newval[0] || $oldval[1] != $newval[1])
+						$newval[2] = "1";
+					$field_value = implode(":", $newval);
+				}
 			break;
 			case FIELD_DATE:
 				$field_validate = explode('-', $field_value);
