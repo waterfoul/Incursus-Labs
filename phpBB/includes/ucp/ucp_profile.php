@@ -269,6 +269,7 @@ class ucp_profile
 					'ERROR'				=> (sizeof($error)) ? implode('<br />', $error) : '',
 
 					'USERNAME'			=> $data['username'],
+					'LOGINNAME'			=> $data['loginname'],
 					'EMAIL'				=> $data['email'],
 					'PASSWORD_CONFIRM'	=> $data['password_confirm'],
 					'NEW_PASSWORD'		=> $data['new_password'],
