@@ -13,13 +13,7 @@
 <tr>
 	<td class="row1" width="35%"><b class="genmed">{L_LOGINNAME}:</b><br /><span class="gensmall">{L_LOGINNAME_EXPLAIN}</span></td>
 	<td class="row2"><!-- IF S_CHANGE_LOGINNAME -->
-		<select name="loginname" id="loginname" title="{L_LOGINNAME}">
-			<!-- BEGIN characters -->
-				<option value="{characters.ID}:{characters.NAME}" <!-- IF characters.NAME == LOGINNAME -->selected <!-- ENDIF -->>{characters.NAME}</option>
-			<!-- BEGINELSE -->
-				<option>{USERNAME} Unconfirmed</option>
-			<!-- END characters -->
-		</select>
+		<input type="text" class="post" name="loginname" size="30" value="{LOGINNAME}" />
 	<!-- ELSE -->
 		<b class="gen">{LOGINNAME}</b>
 	<!-- ENDIF --></td>
@@ -28,7 +22,17 @@
 
 <tr>
 	<td class="row1" width="35%"><b class="genmed">{L_USERNAME}: </b><br /><span class="gensmall">{L_USERNAME_EXPLAIN}</span></td>
-	<td class="row2"><!-- IF S_CHANGE_USERNAME --><input type="text" class="post" name="username" size="30" value="{USERNAME}" /><!-- ELSE --><b class="gen">{USERNAME}</b><!-- ENDIF --></td>
+	<td class="row2"><!-- IF S_CHANGE_USERNAME -->
+		<select class="post" name="username">
+			<!-- BEGIN characters -->
+				<option value="{characters.ID}:{characters.NAME}" <!-- IF characters.NAME == USERNAME -->selected <!-- ENDIF -->>{characters.NAME}</option>
+			<!-- BEGINELSE -->
+				<option>{USERNAME} Unconfirmed</option>
+			<!-- END characters -->
+		</select>
+	<!-- ELSE -->
+		<b class="gen">{USERNAME}</b>
+	<!-- ENDIF --></td>
 </tr>
 <tr>
 	<td class="row1" width="35%"><b class="genmed">{L_EMAIL_ADDRESS}: </b></td>

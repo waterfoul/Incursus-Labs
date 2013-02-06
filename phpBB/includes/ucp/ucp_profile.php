@@ -45,7 +45,7 @@ class ucp_profile
 		switch ($mode)
 		{
 			case 'reg_details':
-
+				
 				$data = array(
 					'username'			=> utf8_normalize_nfc(request_var('username', $user->data['username'], true)),
 					// Start Sep Login Name Mod
