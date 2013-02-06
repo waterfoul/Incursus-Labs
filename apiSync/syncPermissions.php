@@ -64,7 +64,13 @@
 		while($row = $qry->fetch_object())
 		{
 			$key = explode(":",$row->pf_api_key);
-			$mask=$yapeal->query("SELECT accessMask FROM  `accountAPIKeyInfo` WHERE keyID = " . $key[0])->fetch_object()->accessMask;
+			$mask=$yapeal->query("SELECT accessMask FROM  `accountAPIKeyInfo` WHERE keyID = " . $key[0]);
+			if(!$mask)
+			{
+				setRoles($row->user_id,5);
+				continue;
+			}
+			$mask = $mask->fetch_object()->accessMask;
 			$qry2=$yapeal->query("SELECT characterID FROM  `accountKeyBridge` WHERE keyID = " . $key[0]);
 			$chars = array();
 			$charIds = array();
@@ -195,6 +201,7 @@
 	}
 	function isSendingIsk($characterIds, $yapeal, $blocklist)
 	{
+		$utc = new DateTimeZone("UTC");
 		foreach($characterIds as $char)
 		{
 			$qry = $yapeal->query(
@@ -203,7 +210,7 @@
 				 WHERE
 					w.`verifiedOK` = 0
 	     			AND w.`refTypeID` IN (0, 1, 6, 10, 35, 37, 71)
-	      			AND w.`ownerID1` = " + $char
+	      			AND w.`ownerID1` = " . $char
 			);
 			while($row = $qry->fetch_object())
 			{
@@ -214,7 +221,7 @@
 						characterID = " . $row->ownerID2
 				);
 				$row2 = null;
-				if(!($row2 = $qry2->fetch_object()) || DateTime::createFromFormat("Y-m-d H:i:s", $row2->cachedUntil, DateTimeZone::UTC) < new DateTime())
+				if(!($row2 = $qry2->fetch_object()) || DateTime::createFromFormat("Y-m-d H:i:s", $row2->cachedUntil, $utc) < new DateTime())
 				{
 					$xml = simplexml_load_file("https://api.eveonline.com/eve/CharacterInfo.xml.aspx?characterID=" . $row->ownerID2);
 					if(!empty($xml->error))
