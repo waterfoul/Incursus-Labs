@@ -375,31 +375,33 @@ class cache extends acm
 		return $parsed_items;
 	}
 
+	// Start Sep Login Name Mod
 	/**
-	* Obtain disallowed usernames
+	* Obtain disallowed login names
 	*/
-	function obtain_disallowed_usernames()
+	function obtain_disallowed_loginnames()
 	{
-		if (($usernames = $this->get('_disallowed_usernames')) === false)
+		if (($loginnames = $this->get('_disallowed_loginnames')) === false)
 		{
 			global $db;
 
-			$sql = 'SELECT disallow_username
-				FROM ' . DISALLOW_TABLE;
+			$sql = 'SELECT disallow_loginname
+				FROM ' . DISALLOW_LOGIN_TABLE;
 			$result = $db->sql_query($sql);
 
-			$usernames = array();
+			$loginnames = array();
 			while ($row = $db->sql_fetchrow($result))
 			{
-				$usernames[] = str_replace('%', '.*?', preg_quote(utf8_clean_string($row['disallow_username']), '#'));
+				$loginnames[] = str_replace('%', '.*?', preg_quote(utf8_clean_string($row['disallow_loginname']), '#'));
 			}
 			$db->sql_freeresult($result);
 
-			$this->put('_disallowed_usernames', $usernames);
+			$this->put('_disallowed_loginnames', $loginnames);
 		}
 
-		return $usernames;
+		return $loginnames;
 	}
+	// End Sep Login Name Mod
 
 	/**
 	* Obtain hooks...

@@ -1,6 +1,6 @@
 Subject: Inactive account reminder
 
-Hello {USERNAME},
+Hello {LOGINNAME},
 
 This notification is a reminder that your account at "{SITENAME}", created on {REGISTER_DATE}, remains inactive. If you would like to activate this account, please visit the following link:
 

@@ -15,7 +15,7 @@ OR mail it to:
 ------------------------------ CUT HERE ------------------------------
 Permission to participate at "{SITENAME}" - {U_BOARD}
 
-Username: {USERNAME}
+Login Name: {LOGINNAME}
 E-mail: {EMAIL_ADDRESS}
 
 I HAVE REVIEWED THE INFORMATION PROVIDED BY MY CHILD AND HEREBY GRANT PERMISSION TO "{SITENAME}" TO STORE THIS INFORMATION. 

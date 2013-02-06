@@ -6,7 +6,7 @@ Please follow the steps listed here to reactivate your account.
 Please keep this e-mail for your records. Your account information is as follows:
 
 ----------------------------
-Username: {USERNAME}
+Login Name: {LOGINNAME}
 ----------------------------
 
 Your password has been securely stored in our database and cannot be retrieved. In the event that it is forgotten, you will be able to reset it using the email address associated with your account.

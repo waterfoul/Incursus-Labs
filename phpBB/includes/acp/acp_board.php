@@ -31,7 +31,9 @@ class acp_board
 		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
 		global $cache;
 
-		$user->add_lang('acp/board');
+		// Start Sep Login Name Mod
+		$user->add_lang('acp/separate_login_username');
+		// End Sep Login Name Mod
 
 		$action	= request_var('action', '');
 		$submit = (isset($_POST['submit']) || isset($_POST['allow_quick_reply_enable'])) ? true : false;
@@ -80,6 +82,9 @@ class acp_board
 						'allow_topic_notify'	=> array('lang' => 'ALLOW_TOPIC_NOTIFY',	'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => false),
 						'allow_forum_notify'	=> array('lang' => 'ALLOW_FORUM_NOTIFY',	'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => false),
 						'allow_namechange'		=> array('lang' => 'ALLOW_NAME_CHANGE',		'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => false),
+						// Start Sep Login Name Mod
+						'allow_loginnamechange'	=> array('lang' => 'ALLOW_LOGINNAME_CHANGE','validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => false),
+						// End Sep Login Name Mod
 						'allow_attachments'		=> array('lang' => 'ALLOW_ATTACHMENTS',		'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => false),
 						'allow_pm_attach'		=> array('lang' => 'ALLOW_PM_ATTACHMENTS',	'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => false),
 						'allow_pm_report'		=> array('lang' => 'ALLOW_PM_REPORT',		'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => true),
@@ -232,19 +237,31 @@ class acp_board
 					'vars'	=> array(
 						'legend1'				=> 'GENERAL_SETTINGS',
 						'max_name_chars'		=> array('lang' => 'USERNAME_LENGTH', 'validate' => 'int:8:180', 'type' => false, 'method' => false, 'explain' => false,),
+						// Start Sep Login Name Mod
+						'max_loginname_chars'	=> array('lang' => 'LOGINNAME_LENGTH', 'validate' => 'int:8:180', 'type' => false, 'method' => false, 'explain' => false,),
+						// End Sep Login Name Mod
 						'max_pass_chars'		=> array('lang' => 'PASSWORD_LENGTH', 'validate' => 'int:8:255', 'type' => false, 'method' => false, 'explain' => false,),
 
 						'require_activation'	=> array('lang' => 'ACC_ACTIVATION',	'validate' => 'int',	'type' => 'select', 'method' => 'select_acc_activation', 'explain' => true),
 						'new_member_post_limit'	=> array('lang' => 'NEW_MEMBER_POST_LIMIT', 'validate' => 'int:0:255', 'type' => 'text:4:4', 'explain' => true, 'append' => ' ' . $user->lang['POSTS']),
 						'new_member_group_default'=> array('lang' => 'NEW_MEMBER_GROUP_DEFAULT', 'validate' => 'bool', 'type' => 'radio:yes_no', 'explain' => true),
 						'min_name_chars'		=> array('lang' => 'USERNAME_LENGTH',	'validate' => 'int:1',	'type' => 'custom:5:180', 'method' => 'username_length', 'explain' => true),
+						// Start Sep Login Name Mod
+						'min_loginname_chars'		=> array('lang' => 'LOGINNAME_LENGTH',	'validate' => 'int:1',	'type' => 'custom:5:180', 'method' => 'loginname_length', 'explain' => true),
+						// End Sep Login Name Mod
 						'min_pass_chars'		=> array('lang' => 'PASSWORD_LENGTH',	'validate' => 'int:1',	'type' => 'custom', 'method' => 'password_length', 'explain' => true),
 						'allow_name_chars'		=> array('lang' => 'USERNAME_CHARS',	'validate' => 'string',	'type' => 'select', 'method' => 'select_username_chars', 'explain' => true),
+						// Start Sep Login Name Mod
+						'allow_loginname_chars'		=> array('lang' => 'LOGINNAME_CHARS',	'validate' => 'string',	'type' => 'select', 'method' => 'select_loginname_chars', 'explain' => true),
+						// End Sep Login Name Mod
 						'pass_complex'			=> array('lang' => 'PASSWORD_TYPE',		'validate' => 'string',	'type' => 'select', 'method' => 'select_password_chars', 'explain' => true),
 						'chg_passforce'			=> array('lang' => 'FORCE_PASS_CHANGE',	'validate' => 'int:0',	'type' => 'text:3:3', 'explain' => true, 'append' => ' ' . $user->lang['DAYS']),
 
 						'legend2'				=> 'GENERAL_OPTIONS',
 						'allow_namechange'		=> array('lang' => 'ALLOW_NAME_CHANGE',		'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => false),
+						// Start Sep Login Name Mod
+						'allow_loginnamechange'	=> array('lang' => 'ALLOW_LOGINNAME_CHANGE',		'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => false),
+						// End Sep Login Name Mod
 						'allow_emailreuse'		=> array('lang' => 'ALLOW_EMAIL_REUSE',		'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => true),
 						'enable_confirm'		=> array('lang' => 'VISUAL_CONFIRM_REG',	'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => true),
 						'max_login_attempts'	=> array('lang' => 'MAX_LOGIN_ATTEMPTS',	'validate' => 'int:0',	'type' => 'text:3:3', 'explain' => true),
@@ -794,6 +811,18 @@ class acp_board
 		return $act_options;
 	}
 
+	// Start Sep Login Name mod
+	/**
+	* Maximum/Minimum login name length
+	*/
+	function loginname_length($value, $key = '')
+	{
+		global $user;
+
+		return '<input id="' . $key . '" type="text" size="3" maxlength="3" name="config[min_loginname_chars]" value="' . $value . '" /> ' . $user->lang['MIN_CHARS'] . '&nbsp;&nbsp;<input type="text" size="3" maxlength="3" name="config[max_loginname_chars]" value="' . $this->new_config['max_loginname_chars'] . '" /> ' . $user->lang['MAX_CHARS'];
+	}
+	// End Sep Login Name Mod
+	
 	/**
 	* Maximum/Minimum username length
 	*/
@@ -804,6 +833,26 @@ class acp_board
 		return '<input id="' . $key . '" type="text" size="3" maxlength="3" name="config[min_name_chars]" value="' . $value . '" /> ' . $user->lang['MIN_CHARS'] . '&nbsp;&nbsp;<input type="text" size="3" maxlength="3" name="config[max_name_chars]" value="' . $this->new_config['max_name_chars'] . '" /> ' . $user->lang['MAX_CHARS'];
 	}
 
+	// Start Sep Login Name Mod
+	/**
+	* Allowed chars in login names
+	*/
+	function select_loginname_chars($selected_value, $key)
+	{
+		global $user;
+
+		$login_char_ary = array('LOGINNAME_CHARS_ANY', 'LOGINNAME_ALPHA_ONLY', 'LOGINNAME_ALPHA_SPACERS', 'LOGINNAME_LETTER_NUM', 'LOGINNAME_LETTER_NUM_SPACERS', 'LOGINNAME_ASCII');
+		$login_char_options = '';
+		foreach ($login_char_ary as $login_type)
+		{
+			$selected = ($selected_value == $login_type) ? ' selected="selected"' : '';
+			$login_char_options .= '<option value="' . $login_type . '"' . $selected . '>' . $user->lang[$login_type] . '</option>';
+		}
+
+		return $login_char_options;
+	}
+	// End Sep Login Name Mod
+	
 	/**
 	* Allowed chars in usernames
 	*/

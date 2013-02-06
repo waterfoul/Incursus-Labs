@@ -153,21 +153,33 @@ function user_add($user_row, $cp_data = false)
 {
 	global $db, $user, $auth, $config, $phpbb_root_path, $phpEx;
 
-	if (empty($user_row['username']) || !isset($user_row['group_id']) || !isset($user_row['user_email']) || !isset($user_row['user_type']))
+	// Start Sep Login Name Mod
+	// if (empty($user_row['username']) || !isset($user_row['group_id']) || !isset($user_row['user_email']) || !isset($user_row['user_type']))
+	if (empty($user_row['username']) || empty($user_row['loginname']) || !isset($user_row['group_id']) || !isset($user_row['user_email']) || !isset($user_row['user_type']))
 	{
 		return false;
 	}
 
 	$username_clean = utf8_clean_string($user_row['username']);
+	$loginname_clean = utf8_clean_string($user_row['loginname']);
 
 	if (empty($username_clean))
 	{
 		return false;
 	}
-
+	
+	if (empty($loginname_clean))
+	{
+		return false;
+	}
+	// End Sep Login Name Mod
+	
 	$sql_ary = array(
 		'username'			=> $user_row['username'],
-		'username_clean'	=> $username_clean,
+		// Start Sep Login Name Mod
+		'loginname'			=> $user_row['loginname'],
+		'loginname_clean'	=> $loginname_clean,		
+		// End Sep Login Name Mod
 		'user_password'		=> (isset($user_row['user_password'])) ? $user_row['user_password'] : '',
 		'user_pass_convert'	=> 0,
 		'user_email'		=> strtolower($user_row['user_email']),
@@ -1406,18 +1418,26 @@ function validate_language_iso_name($lang_iso)
 *
 * @return	mixed	Either false if validation succeeded or a string which will be used as the error message (with the variable name appended)
 */
-function validate_username($username, $allowed_username = false)
+// Start Sep Login Name Mod
+function validate_username($username, $allowed_username = false, $new_user_name = false)
 {
 	global $config, $db, $user, $cache;
 
 	$clean_username = utf8_clean_string($username);
+	$clean_loginname = utf8_clean_string($username);
 	$allowed_username = ($allowed_username === false) ? $user->data['username_clean'] : utf8_clean_string($allowed_username);
-
+	$new_user_name = ($new_user_name === false) ? $user->data['loginname_clean'] : utf8_clean_string($new_user_name);	
+			
 	if ($allowed_username == $clean_username)
 	{
 		return false;
 	}
-
+	
+	if ($new_user_name == $clean_loginname)
+	{
+		return false;
+	}
+	
 	// ... fast checks first.
 	if (strpos($username, '&quot;') !== false || strpos($username, '"') !== false || empty($clean_username))
 	{
@@ -1520,8 +1540,22 @@ function validate_username($username, $allowed_username = false)
 	{
 		return 'USERNAME_TAKEN';
 	}
-
-	$sql = 'SELECT group_name
+	
+		// Check if username or loginname already used
+		$sql = 'SELECT loginname, username, loginname_clean, username_clean 
+			FROM ' . USERS_TABLE . "
+			WHERE loginname_clean = '" .  $db->sql_escape(utf8_strtolower($username)) . "'";
+			$result = $db->sql_query($sql);
+			$row = $db->sql_fetchrow($result);
+			$db->sql_freeresult($result);
+			
+			if ($row)
+			{
+				return 'USERNAME_IS_ALREADY_LOGINNAME';
+			} 
+		
+					
+		$sql = 'SELECT group_name
 		FROM ' . GROUPS_TABLE . "
 		WHERE LOWER(group_name) = '" . $db->sql_escape(utf8_strtolower($username)) . "'";
 	$result = $db->sql_query($sql);
@@ -1532,7 +1566,7 @@ function validate_username($username, $allowed_username = false)
 	{
 		return 'USERNAME_TAKEN';
 	}
-
+	
 	$bad_usernames = $cache->obtain_disallowed_usernames();
 
 	foreach ($bad_usernames as $bad_username)
@@ -1545,6 +1579,169 @@ function validate_username($username, $allowed_username = false)
 
 	return false;
 }
+// End Sep Login Name Mod
+
+// Start Sep Login Name Mod
+function validate_loginname($loginname, $allowed_loginname = false, $new_login_name = false)
+{
+	global $config, $db, $user, $cache;
+
+	$clean_loginname = utf8_clean_string($loginname);
+	$clean_username = utf8_clean_string($loginname);
+	$allowed_loginname = ($allowed_loginname === false) ? $user->data['loginname_clean'] : utf8_clean_string($allowed_loginname);
+	$new_login_name = ($new_login_name === false) ? $user->data['username_clean'] : utf8_clean_string($new_login_name);
+	
+	if ($allowed_loginname == $clean_loginname)
+	{
+		return false;
+	}
+	
+	if ($new_login_name == $clean_username)
+	{
+		return false;
+	}	
+
+	// ... fast checks first.
+	if (strpos($loginname, '&quot;') !== false || strpos($loginname, '"') !== false || empty($clean_loginname))
+	{
+		return 'INVALID_CHARS';
+	}
+
+	$mbstring = $pcre = false;
+
+	// generic UTF-8 character types supported?
+	if ((version_compare(PHP_VERSION, '5.1.0', '>=') || (version_compare(PHP_VERSION, '5.0.0-dev', '<=') && version_compare(PHP_VERSION, '4.4.0', '>='))) && @preg_match('/\p{L}/u', 'a') !== false)
+	{
+		$pcre = true;
+	}
+	else if (function_exists('mb_ereg_match'))
+	{
+		mb_regex_encoding('UTF-8');
+		$mbstring = true;
+	}
+
+	switch ($config['allow_loginname_chars'])
+	{
+		case 'LOGINNAME_CHARS_ANY':
+			$pcre = true;
+			$regex = '.+';
+		break;
+
+		case 'LOGINNAME_ALPHA_ONLY':
+			$pcre = true;
+			$regex = '[A-Za-z0-9]+';
+		break;
+
+		case 'LOGINNAME_ALPHA_SPACERS':
+			$pcre = true;
+			$regex = '[A-Za-z0-9-[\]_+ ]+';
+		break;
+
+		case 'LOGINNAME_LETTER_NUM':
+			if ($pcre)
+			{
+				$regex = '[\p{Lu}\p{Ll}\p{N}]+';
+			}
+			else if ($mbstring)
+			{
+				$regex = '[[:upper:][:lower:][:digit:]]+';
+			}
+			else
+			{
+				$pcre = true;
+				$regex = '[a-zA-Z0-9]+';
+			}
+		break;
+
+		case 'LOGINNAME_LETTER_NUM_SPACERS':
+			if ($pcre)
+			{
+				$regex = '[-\]_+ [\p{Lu}\p{Ll}\p{N}]+';
+			}
+			else if ($mbstring)
+			{
+				$regex = '[-\]_+ \[[:upper:][:lower:][:digit:]]+';
+			}
+			else
+			{
+				$pcre = true;
+				$regex = '[-\]_+ [a-zA-Z0-9]+';
+			}
+		break;
+
+		case 'LOGINNAME_ASCII':
+		default:
+			$pcre = true;
+			$regex = '[\x01-\x7F]+';
+		break;
+	}
+
+	if ($pcre)
+	{
+		if (!preg_match('#^' . $regex . '$#u', $loginname))
+		{
+			return 'INVALID_CHARS';
+		}
+	}
+	else if ($mbstring)
+	{
+		mb_ereg_search_init($loginname, '^' . $regex . '$');
+		if (!mb_ereg_search())
+		{
+			return 'INVALID_CHARS';
+		}
+	}
+
+	$sql = 'SELECT loginname
+		FROM ' . USERS_TABLE . "
+		WHERE loginname_clean = '" . $db->sql_escape($clean_loginname) . "'";
+	$result = $db->sql_query($sql);
+	$row = $db->sql_fetchrow($result);
+	$db->sql_freeresult($result);
+
+	if ($row)
+	{
+		return 'LOGINNAME_TAKEN';
+	}
+	
+		// Check if login name or username already used
+		$sql = 'SELECT loginname, username, loginname_clean, username_clean 
+			FROM ' . USERS_TABLE . "
+			WHERE username_clean = '" .  $db->sql_escape(utf8_strtolower($loginname)) . "'";
+			$result = $db->sql_query($sql);
+			$row = $db->sql_fetchrow($result);
+			$db->sql_freeresult($result);
+			
+			if ($row)
+			{
+				return 'LOGINNAME_IS_ALREADY_USERNAME';
+			} 
+
+	$sql = 'SELECT group_name
+		FROM ' . GROUPS_TABLE . "
+		WHERE LOWER(group_name) = '" . $db->sql_escape(utf8_strtolower($loginname)) . "'";
+	$result = $db->sql_query($sql);
+	$row = $db->sql_fetchrow($result);
+	$db->sql_freeresult($result);
+
+	if ($row)
+	{
+		return 'LOGINNAME_TAKEN';
+	}
+
+	$bad_loginnames = $cache->obtain_disallowed_loginnames();
+
+	foreach ($bad_loginnames as $bad_loginname)
+	{
+		if (preg_match('#^' . $bad_loginname . '$#', $clean_loginname))
+		{
+			return 'LOGINNAME_DISALLOWED';
+		}
+	}
+
+	return false;
+}
+// End Sep Login Name Mod
 
 /**
 * Check to see if the password meets the complexity settings

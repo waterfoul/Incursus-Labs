@@ -30,16 +30,25 @@ class ucp_remind
 		global $config, $phpbb_root_path, $phpEx;
 		global $db, $user, $auth, $template;
 
-		$username	= request_var('username', '', true);
+		// Start Sep Login Name Mod
+		//$username	= request_var('username', '', true);
+		$loginname	= request_var('loginname', '', true);
+		// End Sep Login Name Mod
 		$email		= strtolower(request_var('email', ''));
 		$submit		= (isset($_POST['submit'])) ? true : false;
 
 		if ($submit)
 		{
-			$sql = 'SELECT user_id, username, user_permissions, user_email, user_jabber, user_notify_type, user_type, user_lang, user_inactive_reason
+			// Start Sep Login Name Mod
+			//$sql = 'SELECT user_id, username, user_permissions, user_email, user_jabber, user_notify_type, user_type, user_lang, user_inactive_reason
+			//	FROM ' . USERS_TABLE . "
+			//	WHERE user_email_hash = '" . $db->sql_escape(phpbb_email_hash($email)) . "'
+			//		AND username_clean = '" . $db->sql_escape(utf8_clean_string($username)) . "'";
+			$sql = 'SELECT user_id, loginname, user_permissions, user_email, user_jabber, user_notify_type, user_type, user_lang, user_inactive_reason
 				FROM ' . USERS_TABLE . "
 				WHERE user_email_hash = '" . $db->sql_escape(phpbb_email_hash($email)) . "'
-					AND username_clean = '" . $db->sql_escape(utf8_clean_string($username)) . "'";
+					AND loginname_clean = '" . $db->sql_escape(utf8_clean_string($loginname)) . "'";
+			// End Sep Login Name Mod
 			$result = $db->sql_query($sql);
 			$user_row = $db->sql_fetchrow($result);
 			$db->sql_freeresult($result);
@@ -95,11 +104,18 @@ class ucp_remind
 
 			$messenger->template('user_activate_passwd', $user_row['user_lang']);
 
-			$messenger->to($user_row['user_email'], $user_row['username']);
-			$messenger->im($user_row['user_jabber'], $user_row['username']);
+			// Start Sep Login Name Mod
+			//$messenger->to($user_row['user_email'], $user_row['username']);
+			//$messenger->im($user_row['user_jabber'], $user_row['username']);
+			$messenger->to($user_row['user_email'], $user_row['loginname']);
+			$messenger->im($user_row['user_jabber'], $user_row['loginname']);
+			// End Sep Login Name Mod
 
 			$messenger->assign_vars(array(
-				'USERNAME'		=> htmlspecialchars_decode($user_row['username']),
+				// Start Sep Login Name Mod
+				//'USERNAME'		=> htmlspecialchars_decode($user_row['username']),
+				'LOGINNAME'		=> htmlspecialchars_decode($user_row['loginname']),
+				// End Sep Login Name Mod
 				'PASSWORD'		=> htmlspecialchars_decode($user_password),
 				'U_ACTIVATE'	=> "$server_url/ucp.$phpEx?mode=activate&u={$user_row['user_id']}&k=$user_actkey")
 			);
@@ -113,7 +129,10 @@ class ucp_remind
 		}
 
 		$template->assign_vars(array(
-			'USERNAME'			=> $username,
+			// Start Sep Login Name Mod
+			//'USERNAME'		=> $username,
+			'LOGINNAME'			=> $loginname,
+			// End Sep Login Name Mod	
 			'EMAIL'				=> $email,
 			'S_PROFILE_ACTION'	=> append_sid($phpbb_root_path . 'ucp.' . $phpEx, 'mode=sendpassword'))
 		);

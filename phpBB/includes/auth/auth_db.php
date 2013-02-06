@@ -37,7 +37,8 @@ if (!defined('IN_PHPBB'))
 *								'user_row' => array
 *							)
 */
-function login_db($username, $password, $ip = '', $browser = '', $forwarded_for = '')
+//function login_db($username, $password, $ip = '', $browser = '', $forwarded_for = '')
+function login_db($loginname, $password, $ip = '', $browser = '', $forwarded_for = '')
 {
 	global $db, $config;
 
@@ -51,20 +52,32 @@ function login_db($username, $password, $ip = '', $browser = '', $forwarded_for 
 		);
 	}
 
-	if (!$username)
+	//if (!$username)
+	if (!$loginname)
 	{
 		return array(
-			'status'	=> LOGIN_ERROR_USERNAME,
-			'error_msg'	=> 'LOGIN_ERROR_USERNAME',
+			// Start Sep Login Name Mod
+			// 'status'	=> LOGIN_ERROR_USERNAME,
+			// 'error_msg'	=> 'LOGIN_ERROR_USERNAME',
+			'status'	=> LOGIN_ERROR_LOGINNAME,
+			'error_msg'	=> 'LOGIN_ERROR_LOGINNAME',
+			// End Sep Login Name Mod
 			'user_row'	=> array('user_id' => ANONYMOUS),
 		);
 	}
 
 	$username_clean = utf8_clean_string($username);
 
+	// Start Sep Login Name mod
+	/*
 	$sql = 'SELECT user_id, username, user_password, user_passchg, user_pass_convert, user_email, user_type, user_login_attempts
 		FROM ' . USERS_TABLE . "
 		WHERE username_clean = '" . $db->sql_escape($username_clean) . "'";
+	 */
+	$sql = 'SELECT user_id, loginname, user_password, user_passchg, user_pass_convert, user_email, user_type, user_login_attempts
+		FROM ' . USERS_TABLE . "
+		WHERE loginname_clean = '" . $db->sql_escape(utf8_clean_string($loginname)) . "'";
+	// End Sep Login Name Mod
 	$result = $db->sql_query($sql);
 	$row = $db->sql_fetchrow($result);
 	$db->sql_freeresult($result);
@@ -117,8 +130,12 @@ function login_db($username, $password, $ip = '', $browser = '', $forwarded_for 
 		}
 
 		return array(
-			'status'	=> LOGIN_ERROR_USERNAME,
-			'error_msg'	=> 'LOGIN_ERROR_USERNAME',
+			// Start Sep Login Name Mod
+			// 'status'	=> LOGIN_ERROR_USERNAME,
+			// 'error_msg'	=> 'LOGIN_ERROR_USERNAME',
+			'status'	=> LOGIN_ERROR_LOGINNAME,
+			'error_msg'	=> 'LOGIN_ERROR_LOGINNAME',
+			// End Sep Login Name Mod
 			'user_row'	=> array('user_id' => ANONYMOUS),
 		);
 	}

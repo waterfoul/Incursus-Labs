@@ -121,7 +121,15 @@
 		<div><div class="tbl-h-l"><div class="tbl-h-r"><div class="tbl-h-c"><div class="tbl-title"><h4><a href="{U_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a></h4></div></div></div></div>
 		<table class="tablebg" width="100%" cellpadding="0" cellspacing="0">
 		<tr>
-			<td class="row1" align="center"><span class="genmed">{L_USERNAME}:</span> <input class="post" type="text" name="username" size="10" />&nbsp; <span class="genmed">{L_PASSWORD}:</span> <input class="post" type="password" name="password" size="10" /><!-- IF S_AUTOLOGIN_ENABLED -->&nbsp; <span class="gensmall">{L_LOG_ME_IN}</span> <input type="checkbox" class="radio" name="autologin" /><!-- ENDIF -->&nbsp; <input type="submit" class="btnmain" name="login" value="{L_LOGIN}" /></td>
+			<td class="row1" align="center">
+				<!--<span class="genmed">{L_USERNAME}:</span> <input class="post" type="text" name="username" size="10" />&nbsp;-->
+				<span class="genmed">{L_LOGINNAME}:</span> <input class="post" type="text" name="loginname" size="10" />&nbsp;
+				<span class="genmed">{L_PASSWORD}:</span> <input class="post" type="password" name="password" size="10" />
+				<!-- IF S_AUTOLOGIN_ENABLED -->&nbsp;
+					<span class="gensmall">{L_LOG_ME_IN}</span> <input type="checkbox" class="radio" name="autologin" />
+				<!-- ENDIF -->&nbsp;
+				<input type="submit" class="btnmain" name="login" value="{L_LOGIN}" />
+			</td>
 		</tr>
 		<tr><td class="cat-bottom">&nbsp;</td></tr>
 		</table>

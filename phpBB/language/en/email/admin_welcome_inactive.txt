@@ -5,7 +5,7 @@ Subject: Welcome to "{SITENAME}"
 Please keep this e-mail for your records. Your account information is as follows:
 
 ----------------------------
-Username: {USERNAME}
+Login Name: {LOGINNAME}
 
 Board URL: {U_BOARD}
 ----------------------------

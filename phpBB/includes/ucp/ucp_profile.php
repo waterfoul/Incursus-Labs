@@ -32,6 +32,9 @@ class ucp_profile
 		global $config, $db, $user, $auth, $template, $phpbb_root_path, $phpEx;
 
 		$user->add_lang('posting');
+		// Start Sep Login Name Mod
+		$user->add_lang('mods/info_acp_separate_login_username');
+		// Emd Sep Login Name Mod
 
 		$preview	= (!empty($_POST['preview'])) ? true : false;
 		$submit		= (!empty($_POST['submit'])) ? true : false;
@@ -45,6 +48,9 @@ class ucp_profile
 
 				$data = array(
 					'username'			=> utf8_normalize_nfc(request_var('username', $user->data['username'], true)),
+					// Start Sep Login Name Mod
+					'loginname'			=> utf8_normalize_nfc(request_var('loginname', $user->data['loginname'], true)),
+					// End Sep Login Name Mod	
 					'email'				=> strtolower(request_var('email', $user->data['user_email'])),
 					'email_confirm'		=> strtolower(request_var('email_confirm', '')),
 					'new_password'		=> request_var('new_password', '', true),
@@ -76,6 +82,16 @@ class ucp_profile
 						);
 					}
 
+					// Start Sep Login Name Mod
+					if ($auth->acl_get('u_chgloginname') && $config['allow_loginnamechange'])
+					{
+						$check_ary['loginname'] = array(
+							array('string', false, $config['min_loginname_chars'], $config['max_loginname_chars']),
+							array('loginname'),
+						);
+					}
+					// End Sep Login Name Mod
+					
 					$error = validate_data($data, $check_ary);
 
 					if ($auth->acl_get('u_chgemail') && $data['email'] != $user->data['user_email'] && $data['email_confirm'] != $data['email'])
@@ -109,6 +125,10 @@ class ucp_profile
 						$sql_ary = array(
 							'username'			=> ($auth->acl_get('u_chgname') && $config['allow_namechange']) ? $data['username'] : $user->data['username'],
 							'username_clean'	=> ($auth->acl_get('u_chgname') && $config['allow_namechange']) ? utf8_clean_string($data['username']) : $user->data['username_clean'],
+							// Start Sep Login Name Mod
+							'loginname'	=> ($auth->acl_get('u_chgloginname') && $config['allow_loginnamechange']) ? $data['loginname'] : $user->data['loginname'],					
+							'loginname_clean'	=> ($auth->acl_get('u_chgloginname') && $config['allow_loginnamechange']) ? utf8_clean_string($data['loginname']) : $user->data['loginname_clean'],	
+							// End Sep Login Name Mod
 							'user_email'		=> ($auth->acl_get('u_chgemail')) ? $data['email'] : $user->data['user_email'],
 							'user_email_hash'	=> ($auth->acl_get('u_chgemail')) ? phpbb_email_hash($data['email']) : $user->data['user_email_hash'],
 							'user_password'		=> ($auth->acl_get('u_chgpasswd') && $data['new_password']) ? phpbb_hash($data['new_password']) : $user->data['user_password'],
@@ -119,6 +139,13 @@ class ucp_profile
 						{
 							add_log('user', $user->data['user_id'], 'LOG_USER_UPDATE_NAME', $user->data['username'], $data['username']);
 						}
+
+						// Start Sep Login Name Mod
+						if ($auth->acl_get('u_chgloginname') && $config['allow_loginnamechange'] && $data['loginname'] != $user->data['loginname'])
+						{
+							add_log('user', $user->data['user_id'], 'LOG_USER_UPDATE_LOGINNAME', $user->data['loginname'], $data['loginname']);
+						}
+						// End Sep Login Name Mod
 
 						if ($auth->acl_get('u_chgpasswd') && $data['new_password'] && !phpbb_check_hash($data['new_password'], $user->data['user_password']))
 						{
@@ -248,10 +275,16 @@ class ucp_profile
 					'CUR_PASSWORD'		=> '',
 
 					'L_USERNAME_EXPLAIN'		=> sprintf($user->lang[$config['allow_name_chars'] . '_EXPLAIN'], $config['min_name_chars'], $config['max_name_chars']) + "(Will only display if no eve character is selected)",
+					// Start Sep Login Name Mod
+					'L_LOGINNAME_EXPLAIN'		=> sprintf($user->lang[$config['allow_loginname_chars'] . '_EXPLAIN'], $config['min_loginname_chars'], $config['max_loginname_chars']),
+					// End Sep Login Name Mod
 					'L_CHANGE_PASSWORD_EXPLAIN'	=> sprintf($user->lang[$config['pass_complex'] . '_EXPLAIN'], $config['min_pass_chars'], $config['max_pass_chars']),
 
 					'S_FORCE_PASSWORD'	=> ($auth->acl_get('u_chgpasswd') && $config['chg_passforce'] && $user->data['user_passchg'] < time() - ($config['chg_passforce'] * 86400)) ? true : false,
 					'S_CHANGE_USERNAME' => ($config['allow_namechange'] && $auth->acl_get('u_chgname')) ? true : false,
+					// Start Sep Login Name Mod
+					'S_CHANGE_LOGINNAME' => ($config['allow_loginnamechange'] && $auth->acl_get('u_chgloginname')) ? true : false,
+					// End Sep Login Name Mod	
 					'S_CHANGE_EMAIL'	=> ($auth->acl_get('u_chgemail')) ? true : false,
 					'S_CHANGE_PASSWORD'	=> ($auth->acl_get('u_chgpasswd')) ? true : false)
 				);

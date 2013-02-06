@@ -2999,23 +2999,32 @@ function login_box($redirect = '', $l_explain = '', $l_success = '', $admin = fa
 			$password	= request_var('password', '', true);
 		}
 
-		$username	= request_var('username', '', true);
+		// Start Sep Login Name Mod
+		//$username	= request_var('username', '', true);
+		$loginname	= request_var('loginname', '', true);
+		// End Sep Login Name Mod
 		$autologin	= (!empty($_POST['autologin'])) ? true : false;
 		$viewonline = (!empty($_POST['viewonline'])) ? 0 : 1;
 		$admin 		= ($admin) ? 1 : 0;
 		$viewonline = ($admin) ? $user->data['session_viewonline'] : $viewonline;
 
+		// Start Sep Login Name Mod
 		// Check if the supplied username is equal to the one stored within the database if re-authenticating
-		if ($admin && utf8_clean_string($username) != utf8_clean_string($user->data['username']))
+		// if ($admin && utf8_clean_string($username) != utf8_clean_string($user->data['username']))
+		// Check if the supplied loginname is equal to the one stored within the database if re-authenticating
+		if ($admin && utf8_clean_string($loginname) != utf8_clean_string($user->data['loginname']))
 		{
-			// We log the attempt to use a different username...
+		// We log the attempt to use a different username... (original)
+		// We log the attempt to use a different loginname...
 			add_log('admin', 'LOG_ADMIN_AUTH_FAIL');
 			trigger_error('NO_AUTH_ADMIN_USER_DIFFER');
 		}
 
 		// If authentication is successful we redirect user to previous page
-		$result = $auth->login($username, $password, $autologin, $viewonline, $admin);
-
+		// $result = $auth->login($username, $password, $autologin, $viewonline, $admin);
+		// If authentication is successful we redirect user to previous page
+		$result = $auth->login($loginname, $password, $autologin, $viewonline, $admin);	
+		// End Sep Login Name Mod
 		// If admin authentication and login, we will log if it was a success or not...
 		// We also break the operation on the first non-success login - it could be argued that the user already knows
 		if ($admin)
@@ -3092,7 +3101,10 @@ function login_box($redirect = '', $l_explain = '', $l_success = '', $admin = fa
 				$err = $user->lang[$result['error_msg']];
 
 				// Assign admin contact to some error messages
-				if ($result['error_msg'] == 'LOGIN_ERROR_USERNAME' || $result['error_msg'] == 'LOGIN_ERROR_PASSWORD')
+				// Start Sep Login Name Mod
+				// if ($result['error_msg'] == 'LOGIN_ERROR_USERNAME' || $result['error_msg'] == 'LOGIN_ERROR_PASSWORD')
+				if ($result['error_msg'] == 'LOGIN_ERROR_LOGINNAME' || $result['error_msg'] == 'LOGIN_ERROR_PASSWORD')
+				// End Sep Login Name Mod
 				{
 					$err = (!$config['board_contact']) ? sprintf($user->lang[$result['error_msg']], '', '') : sprintf($user->lang[$result['error_msg']], '<a href="mailto:' . htmlspecialchars($config['board_contact']) . '">', '</a>');
 				}
@@ -3133,9 +3145,13 @@ function login_box($redirect = '', $l_explain = '', $l_success = '', $admin = fa
 		'S_HIDDEN_FIELDS' 		=> $s_hidden_fields,
 
 		'S_ADMIN_AUTH'			=> $admin,
-		'USERNAME'				=> ($admin) ? $user->data['username'] : '',
-
-		'USERNAME_CREDENTIAL'	=> 'username',
+		// Start Sep Login Name Mod
+		// 'USERNAME'				=> ($admin) ? $user->data['username'] : '',
+		'LOGINNAME'				=> ($admin) ? $user->data['loginname'] : '',
+		
+		// 'USERNAME_CREDENTIAL'	=> 'username',
+		'LOGINNAME_CREDENTIAL'	=> 'loginname',
+		// End Sep Login Name Mod
 		'PASSWORD_CREDENTIAL'	=> ($admin) ? 'password_' . $credential : 'password',
 	));
 

@@ -33,12 +33,21 @@
 		<!-- ENDIF -->
 
 		<tr>
-			<td valign="top" <!-- IF S_ADMIN_AUTH -->style="width: 50%; text-align: {S_CONTENT_FLOW_END};"<!-- ENDIF -->><b class="gensmall">{L_USERNAME}:</b></td>
-			<td><input class="post" type="text" name="{USERNAME_CREDENTIAL}" size="25" value="{USERNAME}" tabindex="1" />
+			<!-- Start Sep Login Name Mod
+				<td valign="top" <!-- IF S_ADMIN_AUTH ->style="width: 50%; text-align: {S_CONTENT_FLOW_END};"<!-- ENDIF ->><b class="gensmall">{L_USERNAME}:</b></td>
+				<td><input class="post" type="text" name="{USERNAME_CREDENTIAL}" size="25" value="{USERNAME}" tabindex="1" />
+					<!-- IF not S_ADMIN_AUTH and S_REGISTER_ENABLED ->
+						<br /><a class="gensmall" href="{U_REGISTER}">{L_REGISTER}</a>
+					<!-- ENDIF ->
+				</td>
+			-->
+			<td valign="top" <!-- IF S_ADMIN_AUTH -->style="width: 50%; text-align: {S_CONTENT_FLOW_END};"<!-- ENDIF -->><b class="gensmall">{L_LOGINNAME}:</b></td>
+			<td><input class="post" type="text" name="{LOGINNAME_CREDENTIAL}" size="25" value="{LOGINNAME}" tabindex="1" />
 				<!-- IF not S_ADMIN_AUTH and S_REGISTER_ENABLED -->
 					<br /><a class="gensmall" href="{U_REGISTER}">{L_REGISTER}</a>
 				<!-- ENDIF -->
 			</td>
+			
 		</tr>
 		<tr>
 			<td valign="top" <!-- IF S_ADMIN_AUTH -->style="width: 50%; text-align: {S_CONTENT_FLOW_END};"<!-- ENDIF -->><b class="gensmall">{L_PASSWORD}:</b></td>
@@ -94,7 +103,7 @@
 // <![CDATA[
 	(function()
 	{
-				var elements = document.getElementsByName("<!-- IF S_ADMIN_AUTH -->{PASSWORD_CREDENTIAL}<!-- ELSE -->{USERNAME_CREDENTIAL}<!-- ENDIF -->");
+				var elements = document.getElementsByName("<!-- IF S_ADMIN_AUTH -->{PASSWORD_CREDENTIAL}<!-- ELSE -->{LOGINNAME_CREDENTIAL}<!-- ENDIF -->");
 		for (var i = 0; i < elements.length; ++i)
 		{
 			if (elements[i].tagName.toLowerCase() == 'input')

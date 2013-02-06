@@ -8,6 +8,14 @@
 <!-- IF ERROR -->
 	<tr><td class="row3" colspan="2" align="center"><span class="gensmall error">{ERROR}</span></td></tr>
 <!-- ENDIF -->
+
+<!-- Start Sep Login Name Mod -->
+<tr>
+	<td class="row1" width="35%"><b class="genmed">{L_LOGINNAME}:</b><br /><span class="gensmall">{L_LOGINNAME_EXPLAIN}</span></td>
+	<td class="row2"><!-- IF S_CHANGE_LOGINNAME --><input type="text" class="post" name="loginname" id="loginname" value="{LOGINNAME}" class="inputbox" title="{L_LOGINNAME}" /><!-- ELSE --><b class="gen">{LOGINNAME}</b><!-- ENDIF --></td>
+</tr>
+<!-- End Sep Login Name Mod -->
+
 <tr>
 	<td class="row1" width="35%"><b class="genmed">{L_USERNAME}: </b><br /><span class="gensmall">{L_USERNAME_EXPLAIN}</span></td>
 	<td class="row2"><!-- IF S_CHANGE_USERNAME --><input type="text" class="post" name="username" size="30" value="{USERNAME}" /><!-- ELSE --><b class="gen">{USERNAME}</b><!-- ENDIF --></td>

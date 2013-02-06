@@ -131,7 +131,16 @@ if(GetCookie(tmp) == '2')
 <table class="tablebg" width="100%" cellpadding="0" cellspacing="0">
 <tr>
 	<td class="row1" align="center" valign="middle"><img src="{T_THEME_PATH}/images/login.png" alt="{L_STATISTICS}" /></td>
-	<td class="row1" align="center"><span class="genmed">{L_USERNAME}:</span> <input class="post" type="text" name="username" size="10" />&nbsp; <span class="genmed">{L_PASSWORD}:</span> <input class="post" type="password" name="password" size="10" />&nbsp; <!-- IF S_AUTOLOGIN_ENABLED --> <span class="gensmall">{L_LOG_ME_IN}</span> <input type="checkbox" class="radio" name="autologin" /><!-- ENDIF -->&nbsp; <input type="submit" class="btnmain" name="login" value="{L_LOGIN}" /></td>
+	<td class="row1" align="center">
+		<!-- Start Sep Login Name Mod 
+			<span class="genmed">{L_USERNAME}:</span> <input class="post" type="text" name="username" size="10" />&nbsp;
+		-->
+			<span class="genmed">{L_LOGINNAME}:</span> <input class="post" type="text" name="loginname" size="10" />&nbsp;
+		<!-- End Sep Login Name Mod -->
+		<span class="genmed">{L_PASSWORD}:</span> <input class="post" type="password" name="password" size="10" />&nbsp;
+		<!-- IF S_AUTOLOGIN_ENABLED --> <span class="gensmall">{L_LOG_ME_IN}</span> <input type="checkbox" class="radio" name="autologin" /><!-- ENDIF -->&nbsp;
+		<input type="submit" class="btnmain" name="login" value="{L_LOGIN}" />
+	</td>
 </tr>
 <tr><td class="cat-bottom" colspan="2">&nbsp;</td></tr>
 </table>

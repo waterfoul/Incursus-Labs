@@ -28,6 +28,10 @@ class ucp_register
 	function main($id, $mode)
 	{
 		global $config, $db, $user, $auth, $template, $phpbb_root_path, $phpEx;
+		
+		// Start Sep Login Name Mod
+		$user->add_lang('mods/info_acp_separate_login_username');
+		// End Sep Login Name Mod
 
 		//
 		if ($config['require_activation'] == USER_ACTIVATION_DISABLE)
@@ -98,6 +102,9 @@ class ucp_register
 				// We do not include the password
 				$s_hidden_fields = array_merge($s_hidden_fields, array(
 					'username'			=> utf8_normalize_nfc(request_var('username', '', true)),
+					// Start Sep Login Name Mod
+					'loginname'		=> utf8_normalize_nfc(request_var('loginname', '', true)),
+					// End Sep Login Name Mod
 					'email'				=> strtolower(request_var('email', '')),
 					'email_confirm'		=> strtolower(request_var('email_confirm', '')),
 					'lang'				=> $user->lang_name,
@@ -170,6 +177,9 @@ class ucp_register
 
 		$data = array(
 			'username'			=> utf8_normalize_nfc(request_var('username', '', true)),
+			// Start Sep Login Name Mod
+			'loginname'		=> utf8_normalize_nfc(request_var('loginname', '', true)),
+			// End Sep Login Name Mod
 			'new_password'		=> request_var('new_password', '', true),
 			'password_confirm'	=> request_var('password_confirm', '', true),
 			'email'				=> strtolower(request_var('email', '')),
@@ -185,6 +195,11 @@ class ucp_register
 				'username'			=> array(
 					array('string', false, $config['min_name_chars'], $config['max_name_chars']),
 					array('username', '')),
+				// Start Sep Login Name Mod
+				'loginname'			=> array(
+					array('string', false, $config['min_loginname_chars'], $config['max_loginname_chars']),
+					array('loginname', '')),
+				// End Sep Login Name Mod	
 				'new_password'		=> array(
 					array('string', false, $config['min_pass_chars'], $config['max_pass_chars']),
 					array('password')),
@@ -285,6 +300,9 @@ class ucp_register
 
 				$user_row = array(
 					'username'				=> $data['username'],
+					// Start Sep Login Name Mod
+					'loginname'				=> $data['loginname'],
+					// End Sep Login Name Mod
 					'user_password'			=> phpbb_hash($data['new_password']),
 					'user_email'			=> $data['email'],
 					'group_id'				=> (int) $group_id,
@@ -355,6 +373,9 @@ class ucp_register
 					$messenger->assign_vars(array(
 						'WELCOME_MSG'	=> htmlspecialchars_decode(sprintf($user->lang['WELCOME_SUBJECT'], $config['sitename'])),
 						'USERNAME'		=> htmlspecialchars_decode($data['username']),
+						// Start Sep Login Name Mod
+						'LOGINNAME'		=> htmlspecialchars_decode($data['loginname']),
+						// End Sep Login Name Mod
 						'PASSWORD'		=> htmlspecialchars_decode($data['new_password']),
 						'U_ACTIVATE'	=> "$server_url/ucp.$phpEx?mode=activate&u=$user_id&k=$user_actkey")
 					);
@@ -453,6 +474,9 @@ class ucp_register
 		$template->assign_vars(array(
 			'ERROR'				=> (sizeof($error)) ? implode('<br />', $error) : '',
 			'USERNAME'			=> $data['username'],
+			// Start Sep Login Name Mod
+			'LOGINNAME'			=> $data['loginname'],
+			// End Sep Login Name Mod
 			'PASSWORD'			=> $data['new_password'],
 			'PASSWORD_CONFIRM'	=> $data['password_confirm'],
 			'EMAIL'				=> $data['email'],
@@ -460,6 +484,9 @@ class ucp_register
 
 			'L_REG_COND'				=> $l_reg_cond,
 			'L_USERNAME_EXPLAIN'		=> sprintf($user->lang[$config['allow_name_chars'] . '_EXPLAIN'], $config['min_name_chars'], $config['max_name_chars']),
+			// Start Sep Login Name Mod
+			'L_LOGINNAME_EXPLAIN'		=> sprintf($user->lang[$config['allow_loginname_chars'] . '_EXPLAIN'], $config['min_loginname_chars'], $config['max_loginname_chars']),
+			// End Sep Login Name Mod
 			'L_PASSWORD_EXPLAIN'		=> sprintf($user->lang[$config['pass_complex'] . '_EXPLAIN'], $config['min_pass_chars'], $config['max_pass_chars']),
 
 			'S_LANG_OPTIONS'	=> language_select($data['lang']),

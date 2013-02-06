@@ -58,7 +58,7 @@ $lang = array_merge($lang, array(
 	'ACCOUNT_NOT_ACTIVATED'			=> 'Your account has not been activated yet.',
 	'ACP'							=> 'Administration Control Panel',
 	'ACTIVE'						=> 'active',
-	'ACTIVE_ERROR'					=> 'The specified username is currently inactive. If you have problems activating your account, please contact a board administrator.',
+	'ACTIVE_ERROR'					=> 'The specified login name is currently inactive. If you have problems activating your account, please contact a board administrator.',
 	'ADMINISTRATOR'					=> 'Administrator',
 	'ADMINISTRATORS'				=> 'Administrators',
 	'AGE'							=> 'Age',
@@ -170,7 +170,7 @@ $lang = array_merge($lang, array(
 	'ERR_CONNECTING_SERVER'				=> 'Error connecting to the server.',
 	'ERR_JAB_AUTH'						=> 'Could not authorise on Jabber server.',
 	'ERR_JAB_CONNECT'					=> 'Could not connect to Jabber server.',
-	'ERR_UNABLE_TO_LOGIN'				=> 'The specified username or password is incorrect.',
+	'ERR_UNABLE_TO_LOGIN'				=> 'The specified login name or password is incorrect.',
 	'ERR_UNWATCHING'					=> 'An error occured while trying to unsubscribe.',
 	'ERR_WATCHING'						=> 'An error occured while trying to subscribe.',
 	'ERR_WRONG_PATH_TO_PHPBB'			=> 'The phpBB path specified appears to be invalid.',
@@ -307,11 +307,11 @@ $lang = array_merge($lang, array(
 	'LOGIN_CHECK_PM'					=> 'Log in to check your private messages.',
 	'LOGIN_CONFIRMATION'				=> 'Confirmation of login',
 	'LOGIN_CONFIRM_EXPLAIN'				=> 'To prevent brute forcing accounts the board requires you to enter a confirmation code after a maximum amount of failed logins. The code is displayed in the image you should see below. If you are visually impaired or cannot otherwise read this code please contact the %sBoard Administrator%s.', // unused
-	'LOGIN_ERROR_ATTEMPTS'				=> 'You exceeded the maximum allowed number of login attempts. In addition to your username and password you now also have to solve the CAPTCHA below.',
+	'LOGIN_ERROR_ATTEMPTS'				=> 'You exceeded the maximum allowed number of login attempts. In addition to your login name and password you now also have to solve the CAPTCHA below.',
 	'LOGIN_ERROR_EXTERNAL_AUTH_APACHE'	=> 'You have not been authenticated by Apache.',
 	'LOGIN_ERROR_PASSWORD'				=> 'You have specified an incorrect password. Please check your password and try again. If you continue to have problems please contact the %sBoard Administrator%s.',
 	'LOGIN_ERROR_PASSWORD_CONVERT'		=> 'It was not possible to convert your password when updating this bulletin board’s software. Please %srequest a new password%s. If you continue to have problems please contact the %sBoard Administrator%s.',
-	'LOGIN_ERROR_USERNAME'				=> 'You have specified an incorrect username. Please check your username and try again. If you continue to have problems please contact the %sBoard Administrator%s.',
+	'LOGIN_ERROR_USERNAME'				=> 'You have specified an incorrect username. Please check your login name and try again. If you continue to have problems please contact the %sBoard Administrator%s.',
 	'LOGIN_FORUM'						=> 'To view or post in this forum you must enter its password.',
 	'LOGIN_INFO'						=> 'In order to login you must be registered. Registering takes only a few moments but gives you increased capabilities. The board administrator may also grant additional permissions to registered users. Before you register please ensure you are familiar with our terms of use and related policies. Please ensure you read any forum rules as you navigate around the board.',
 	'LOGIN_VIEWFORUM'					=> 'The board requires you to be registered and logged in to view this forum.',
@@ -890,5 +890,15 @@ $lang = array_merge($lang, array(
 	'default_dateformat'	=> 'D M d, Y g:i a', // Mon Jan 01, 2007 1:37 pm
 
 ));
+
+// Start Sep Login Name Mod
+$lang = array_merge($lang, array(
+
+	'INVALID_CHARS_LOGINNAME'		=> 'The login name contains forbidden characters.',	
+	'LOGINNAME'						=> 'Login name',
+	'TOO_LONG_LOGINNAME'			=> 'The login name you entered is too long.',	
+	'TOO_SHORT_LOGINNAME'			=> 'The login name you entered is too short.',
+));
+// End Sep Login Name Mod
 
 ?>
