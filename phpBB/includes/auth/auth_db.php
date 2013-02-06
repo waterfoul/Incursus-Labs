@@ -66,7 +66,7 @@ function login_db($loginname, $password, $ip = '', $browser = '', $forwarded_for
 		);
 	}
 
-	$username_clean = utf8_clean_string($username);
+	$loginname_clean = utf8_clean_string($loginname);
 
 	// Start Sep Login Name mod
 	/*
@@ -76,7 +76,7 @@ function login_db($loginname, $password, $ip = '', $browser = '', $forwarded_for
 	 */
 	$sql = 'SELECT user_id, loginname, user_password, user_passchg, user_pass_convert, user_email, user_type, user_login_attempts
 		FROM ' . USERS_TABLE . "
-		WHERE loginname_clean = '" . $db->sql_escape(utf8_clean_string($loginname)) . "'";
+		WHERE loginname_clean = '" . $db->sql_escape(utf8_clean_string($loginname_clean)) . "'";
 	// End Sep Login Name Mod
 	$result = $db->sql_query($sql);
 	$row = $db->sql_fetchrow($result);
@@ -107,8 +107,8 @@ function login_db($loginname, $password, $ip = '', $browser = '', $forwarded_for
 			'attempt_forwarded_for'	=> $forwarded_for,
 			'attempt_time'			=> time(),
 			'user_id'				=> ($row) ? (int) $row['user_id'] : 0,
-			'username'				=> $username,
-			'username_clean'		=> $username_clean,
+			'username'				=> $loginname,
+			'username_clean'		=> $loginname_clean,
 		);
 		$sql = 'INSERT INTO ' . LOGIN_ATTEMPT_TABLE . $db->sql_build_array('INSERT', $attempt_data);
 		$result = $db->sql_query($sql);
