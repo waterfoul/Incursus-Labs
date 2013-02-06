@@ -1567,7 +1567,7 @@ function validate_username($username, $allowed_username = false, $new_user_name 
 		return 'USERNAME_TAKEN';
 	}
 	
-	$bad_usernames = $cache->obtain_disallowed_usernames();
+	$bad_usernames = $cache->obtain_disallowed_loginnames();
 
 	foreach ($bad_usernames as $bad_username)
 	{
