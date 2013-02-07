@@ -198,13 +198,14 @@
 		foreach($characterIds as $char)
 		{
 			$qry = $yapeal->query(
-				"SELECT w.`refID`, w.`ownerID2` FROM
+				"SELECT w.`refID`, w.`ownerID2`, w.`ownerName2` FROM
 	    			`charWalletJournal` as w 
 				 WHERE
 					w.`verifiedOK` = 0
-	     			AND w.`refTypeID` IN (0, 1, 6, 10, 35, 37, 71)
+	     			AND w.`refTypeID` IN (0, 1, 6, 10, 35, 71)
 	      			AND w.`ownerID1` = " + $char
 			);
+			$char = true;
 			while($row = $qry->fetch_object())
 			{
 				$qry2 = $yapeal->query(
@@ -235,10 +236,55 @@
 					);
 					$row2 = $qry2->fetch_object();
 					if(!$row2)
-						continue;
+						$char = false;
 				}
-				
-				if(
+				if(!$char || strtolower($row2->characterName) != strtolower($row->ownerName2))
+				{
+					$qry3 = $yapeal->query(
+						"SELECT * FROM
+			    			`custom_corpInfo` as i
+						 WHERE
+							corpID = " . $row->ownerID2
+					);
+					$row3 = null;
+					if(!($row3 = $qry3->fetch_object()) || DateTime::createFromFormat("Y-m-d H:i:s", $row3->cachedUntil, DateTimeZone::UTC) < new DateTime())
+					{
+						$xml = simplexml_load_file("https://api.eveonline.com/corp/CorporationSheet.xml.aspx?corporationID=" . $row->ownerID2);
+						if(!empty($xml->error))
+							continue;
+						$yapeal->query(
+							"INSERT INTO `Incursus_yapeal`.`custom_corpInfo`
+							(`corpID`, `corpName`, `cachedUntil`) VALUES
+							('" . $xml->result->corporationID . "', '" . $xml->result->corporationName . "', '" . $xml->cachedUntil . "');"
+						);
+						
+						$qry3 = $yapeal->query(
+							"SELECT * FROM
+				    			`custom_corpInfo` as i
+							 WHERE
+								corpID = " . $row->ownerID2
+						);
+						$row3 = $qry3->fetch_object();
+						if(!$row3)
+							$corp = false;
+					}
+					if(!$corp || strtolower($row3->corpName) != strtolower($row->ownerName2))
+					{
+						if(in_array(strtolower($row->ownerName2), $blocklist["Alliance"]))
+							return $row->refID;
+					}
+					else
+					{
+						$qry4=$yapeal->query("SELECT l.name FROM  `eveMemberCorporations` as m LEFT JOIN eveAllianceList as l ON m.allianceID = l.allianceID WHERE m.corporationID = " . $row3->corpID);
+						if(($row4 = $qry4->fetch_object() && in_array(strtolower($row4->name), $blocklist["Alliance"])) ||
+							in_array(strtolower($row3->corpID), $blocklist["Corporation"])
+							
+						)
+							return $row->refID;
+					}
+					
+				}
+				else if(
 					in_array(strtolower($row2->characterName), $blocklist["Character"]) ||
 					in_array(strtolower($row2->corporation), $blocklist["Corporation"]) ||
 					in_array(strtolower($row2->alliance), $blocklist["Alliance"])
