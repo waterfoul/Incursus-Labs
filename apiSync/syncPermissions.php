@@ -302,7 +302,7 @@
 					$qry4=$yapeal->query("SELECT l.name FROM `eveMemberCorporations` as m LEFT JOIN eveAllianceList as l ON m.allianceID = l.allianceID WHERE m.corporationID = " . $corp->corpID);
 					if($row4 = $qry4->fetch_object() && in_array(strtolower($row4->name), $blocklist["Alliance"]))
 						$sendmail = $corp->corpName . " (" . $row4->name . ")";
-					
+				}
 				$alliance=$yapeal->query("SELECT l.name FROM eveAllianceList as l WHERE l.allianceID = " . $id);
 				if($sendmail === false && $alliance != null && in_array(strtolower($alliance->name), $blocklist["Alliance"]))
 					$sendmail = $alliance->name;
