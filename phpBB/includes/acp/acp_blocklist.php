@@ -31,9 +31,9 @@ class acp_blocklist
 		if($mode == 'info')
 			$list = 0;
 		else if($mode == 'info2')
-			$list = 2;
+			$list = 1;
 		else if($mode == 'info3')
-			$list = 3;
+			$list = 2;
 		else
 			trigger_error('NO_MODE', E_USER_ERROR);
 		$this->page_title = 'ACP_BLOCKLIST_TITLE';
