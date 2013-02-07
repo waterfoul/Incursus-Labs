@@ -23,6 +23,7 @@ class acp_blocklist_info
 				'info'		=> array('title' => 'ACP_BLOCKLIST_TITLE', 'auth' => 'acl_a_', 'cat' => array('')),
 				'info2'		=> array('title' => 'ACP_BLOCKLIST_TITLE2', 'auth' => 'acl_a_', 'cat' => array('')),
 				'info3'		=> array('title' => 'ACP_BLOCKLIST_TITLE3', 'auth' => 'acl_a_', 'cat' => array('')),
+				'info3'		=> array('title' => 'ACP_BLOCKLIST_TITLE4', 'auth' => 'acl_a_', 'cat' => array('')),
 			),
 		);
 	}
