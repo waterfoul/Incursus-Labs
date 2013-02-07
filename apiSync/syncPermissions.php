@@ -57,7 +57,7 @@
 		);
 		$qry=$phpBB->query('SELECT Type,Name,list FROM  `eve_blocklist`');
 		while($row = $qry->fetch_object())
-			$block[$row->list][$row->Type] = strtolower($row->Name);
+			$block[$row->list][$row->Type][] = strtolower($row->Name);
 		
 		/* Determine roles */
 		$qry=$phpBB->query('SELECT d.user_id, d.pf_api_key, d.pf_api_key_corp, d.pf_api_key_lowsec, d.pf_override_min_time, u.user_regdate FROM `phpbb_profile_fields_data` as d LEFT JOIN phpbb_users as u ON d.user_id = u.user_id');
