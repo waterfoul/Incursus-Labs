@@ -285,7 +285,7 @@
 				$chars = split(",", $row->toCharacterIDs);
 				foreach($chars as $c)
 				{
-					$char = get_char_from_cust($c, $utc);
+					$char = get_char_from_cust($c, $utc, $yapeal);
 					if(	$char != null && (
 						in_array(strtolower($char->characterName), $blocklist["Character"]) ||
 						in_array(strtolower($char->corporation), $blocklist["Corporation"]) ||
@@ -294,7 +294,7 @@
 						$sendmail = $char->characterName . " (" . $char->corporation . "/" . $char->alliance . ")";
 				}
 				$corpOrAlliance = $row->toCorpOrAllianceID;
-				$corp = get_corp_from_cust($id, $utc);
+				$corp = get_corp_from_cust($id, $utc, $yapeal);
 				if($sendmail === false && $corp != null)
 				{
 					if(in_array(strtolower($corp->corpName), $blocklist["Corporation"]))
@@ -321,10 +321,10 @@
 	function id_on_blocklist($id, $name, $yapeal, $blocklist)
 	{
 		$utc = new DateTimeZone("UTC");
-		$row2 = get_char_from_cust($id, $utc);
+		$row2 = get_char_from_cust($id, $utc, $yapeal);
 		if($row2 == null || strtolower($row2->characterName) != strtolower($name))
 		{
-			$row3 = get_corp_from_cust($id, $utc);
+			$row3 = get_corp_from_cust($id, $utc, $yapeal);
 			if($row3 == null || strtolower($row3->corpName) != strtolower($name))
 			{
 				if(in_array(strtolower($name), $blocklist["Alliance"]))
@@ -348,7 +348,7 @@
 			return true;
 		return false;
 	}
-	function get_char_from_cust($id, $utc)
+	function get_char_from_cust($id, $utc, $yapeal)
 	{
 		$qry2 = $yapeal->query(
 			"SELECT i.`characterName`, i.`corporation`, i.`alliance`, i.`cachedUntil` FROM
@@ -382,7 +382,7 @@
 		}
 		return $row2;
 	}
-	function get_corp_from_cust($id, $utc)
+	function get_corp_from_cust($id, $utc, $yapeal)
 	{
 		$qry3 = $yapeal->query(
 			"SELECT * FROM
