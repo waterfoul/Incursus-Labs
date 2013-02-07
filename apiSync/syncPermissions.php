@@ -116,22 +116,48 @@
 						mailNotify($charIds);
 						if(($mask & 393226)==393226 && $blocklevel < 1 && $row->pf_api_key_corp == 1)
 						{
-							setRoles($row->user_id,1);
+							/*TODO:Add corp check*/
+							setRoles($row->user_id,1,$phpBB);
 						}
 						else
-							setRoles($row->user_id,2);
+							setRoles($row->user_id,2,$phpBB);
 					}
 					else
-						setRoles($row->user_id,3);
+						setRoles($row->user_id,3,$phpBB);
 				else
-					setRoles($row->user_id,4);
+					setRoles($row->user_id,4,$phpBB);
 			else
-				setRoles($row->user_id,5);
+				setRoles($row->user_id,5,$phpBB);
 		}
 	}
-	function setRoles($user_id,$defcon)
+	function setRoles($user_id,$defcon,$phpBB)
 	{
-		
+		$groupid = -1;
+		switch($defcon)
+		{
+			case 1:
+				$groupid =  10;
+				break;
+			case 2:
+				$groupid =  9;
+				break;
+			case 3:
+				$groupid =  8;
+				break;
+			case 4:
+				$groupid =  11;
+				break;
+			case 5:
+				$groupid =  2;
+				break;
+		}
+		$phpBB->query("UPDATE phpbb_users SET group_id = " . $groupid . " WHERE user_id = " . $user_id );
+		foreach(array(10,9,8,11,2) as $g)
+		{
+			$phpBB->query("DELETE FROM `phpbb_user_group` WHERE `phpbb_user_group`.`group_id` = " . $g . " AND `phpbb_user_group`.`user_id` = " . $user_id . ";" );
+			if($g == $groupid)
+				$phpBB->query("INSERT INTO `Incusus_phpBB`.`phpbb_user_group` (`group_id`, `user_id`, `group_leader`, `user_pending`) VALUES ('" . $user_id . "', '" . $g . "', '0', '0');");
+		}	
 	}
 	function isGanking($characterIds, $mysql_eve_dbDump, $yapeal)
 	{
