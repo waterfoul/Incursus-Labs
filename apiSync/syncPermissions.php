@@ -3,10 +3,11 @@
 	{
 		
 	}
-	function sync_all_permissions($mysql_host, $mysql_yapeal_db, $mysql_phpBB_db, $mysql_phpBB_prefix, $mysql_user, $mysql_password)
+	function sync_all_permissions($mysql_host, $mysql_yapeal_db, $mysql_eve_dbDump, $mysql_phpBB_db, $mysql_phpBB_prefix, $mysql_user, $mysql_password)
 	{
 		$phpBB = new mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_phpBB_db);
 		$yapeal = new mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_yapeal_db);
+		$dbDump = new mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_eve_dbDump);
 		
 		/* Sync the api and character lists */
 		$qry = $yapeal->query("SELECT keyID, accessMask FROM  `accountAPIKeyInfo`");
@@ -48,47 +49,207 @@
 				"Corporation"=>array(),
 				"Alliance"=>array(),
 			),
+			3=>array(
+				"Character"=>array(),
+				"Corporation"=>array(),
+				"Alliance"=>array(),
+			),
 		);
 		$qry=$phpBB->query('SELECT Type,Name,list FROM  `eve_blocklist`');
 		while($row = $qry->fetch_object())
 			$block[$row->list][$row->Type] = strtolower($row->Name);
 		
 		/* Determine roles */
-		$qry=$phpBB->query('SELECT user_id,pf_api_key FROM  `phpbb_profile_fields_data`');
+		$qry=$phpBB->query('SELECT d.user_id, d.pf_api_key, d.pf_api_key_corp, d.pf_api_key_lowsec, d.pf_override_min_time, u.user_regdate FROM `phpbb_profile_fields_data` as d LEFT JOIN phpbb_users as u ON d.user_id = u.user_id');
 		while($row = $qry->fetch_object())
 		{
 			$key = explode(":",$row->pf_api_key);
 			$mask=$yapeal->query("SELECT accessMask FROM  `accountAPIKeyInfo` WHERE keyID = " . $key[0])->fetch_object()->accessMask;
 			$qry2=$yapeal->query("SELECT characterID FROM  `accountKeyBridge` WHERE keyID = " . $key[0]);
 			$chars = array();
+			$charIds = array();
 			$corps = array();
 			$alliances = array();
 			while($row2=$qry2->fetch_object())
 			{
 				$qry3=$yapeal->query("SELECT characterName,corporationID,corporationName FROM  `accountCharacters` WHERE characterID = " . $row2->characterID);
 				$row3 = $qry3->fetch_object();
+				$charIds[] = $row2->characterID;
 				$chars[] = strtolower($row3->characterName);
 				$corps[] = strtolower($row3->corporationName);
 				$qry4=$yapeal->query("SELECT l.name FROM  `eveMemberCorporations` as m LEFT JOIN eveAllianceList as l ON m.allianceID = l.allianceID WHERE m.corporationID = " . $row3->corporationID);
 				if($row4 = $qry4->fetch_object())
 					$alliances[] = strtolower($row4->name);
 			}
-			var_dump($block);
-			var_dump($chars);
-			var_dump($corps);
-			var_dump($alliances);
-			exit();
-			if(($mask & 8913152)==8913152)
-			{
-				if(($mask & 90179600)==90179600)
-				{
-					print("DEFCON 2");
-					if(($mask & 393226)==393226)
+			$blocklevel = 0;
+			foreach($chars as $v)
+				if($blocklevel < 3 && in_array($v, $block[0]["Character"]))
+					$blocklevel = 3;
+				else if($blocklevel < 2 && in_array($v, $block[1]["Character"]))
+					$blocklevel = 2;
+				else if($blocklevel < 1 && in_array($v, $block[2]["Character"]))
+					$blocklevel = 1;
+			foreach($corps as $v)
+				if($blocklevel < 3 && in_array($v, $block[0]["Corporation"]))
+					$blocklevel = 3;
+				else if($blocklevel < 2 && in_array($v, $block[1]["Corporation"]))
+					$blocklevel = 2;
+				else if($blocklevel < 1 && in_array($v, $block[2]["Corporation"]))
+					$blocklevel = 1;
+			foreach($alliances as $v)
+				if($blocklevel < 3 && in_array($v, $block[0]["Alliance"]))
+					$blocklevel = 3;
+				else if($blocklevel < 2 && in_array($v, $block[1]["Alliance"]))
+					$blocklevel = 2;
+				else if($blocklevel < 1 && in_array($v, $block[2]["Alliance"]))
+					$blocklevel = 1;
+			
+			if(blocklevel < 3 && isGanking($charIds, $mysql_eve_dbDump, $yapeal) === false)
+				if(($mask & 8913152)==8913152  &&
+				(
+					$row->pf_api_key_corp == 1 ||
+					$row->pf_override_min_time == 1 ||
+					((time() - $row->user_regdate)/60/60/24) > 30
+				))
+					if(($mask & 90179600)==90179600 && blocklevel < 2 && isSendingIsk($charIds, $yapeal, $block[3]) === false && $row->pf_api_key_lowsec == 1)
 					{
-						print("DEFCON 1");
+						mailNotify($charIds);
+						if(($mask & 393226)==393226 && blocklevel < 1 && $row->pf_api_key_corp == 1)
+						{
+							setRoles($row->user_id,1);
+						}
+						else
+							setRoles($row->user_id,2);
 					}
-				}
+					else
+						setRoles($row->user_id,3);
+				else
+					setRoles($row->user_id,4);
+			else
+				setRoles($row->user_id,5);
+		}
+	}
+	function setRoles($user_id,$defcon)
+	{
+		
+	}
+	function isGanking($characterIds, $mysql_eve_dbDump, $yapeal)
+	{
+		foreach($characterIds as $char)
+		{
+			$qry = $yapeal->query("
+			SELECT
+				a.killID				
+			FROM
+				charAttackers as a
+				LEFT JOIN charVictim as v ON a.killID = v.killID
+				LEFT JOIN charKillLog as k ON a.killID = k.killID
+				LEFT JOIN " . $mysql_eve_dbDump . ".mapSolarSystems as s ON k.solarSystemID = s.solarSystemID
+				LEFT JOIN " . $mysql_eve_dbDump . ".invItems as i ON v.shipTypeID = i.typeID
+				LEFT JOIN " . $mysql_eve_dbDump . ".invTypes as t ON i.typeID = t.typeID
+			WHERE
+				a.characterID = " . $char . "
+				AND a.verifiedOK = 0
+				AND s.security > 0.4
+				AND t.groupID NOT IN (28, 29, 31, 237, 380, 463, 513, 543, 902, 941)" //Industrial, Capsule, Shuttle, Rookie ship, Transport Ship, Mining Barge, Freighter, Exhumer, Jump Freighter, Industrial Command Ship 
+			);
+			if($row = $qry->fetch_object())
+				return $row->killID;
+			$qry = $yapeal->query("
+			SELECT
+				a.killID				
+			FROM
+				charAttackers as a
+				LEFT JOIN charVictim as v ON a.killID = v.killID
+				LEFT JOIN charKillLog as k ON a.killID = k.killID
+				LEFT JOIN " . $mysql_eve_dbDump . ".mapSolarSystems as s ON k.solarSystemID = s.solarSystemID
+				LEFT JOIN " . $mysql_eve_dbDump . ".invItems as i ON v.shipTypeID = i.typeID
+				LEFT JOIN " . $mysql_eve_dbDump . ".invTypes as t ON i.typeID = t.typeID
+			WHERE
+				a.characterID = " . $char . "
+				AND a.verifiedOK = 0
+				AND s.security > 0.4
+				AND t.groupID IN (28, 380, 513, 902, 941)" //Industrial, Transport Ship, Freighter, Jump Freighter, Industrial Command Ship 
+			);
+			if($row = $qry->fetch_object())
+			{
+				$qry2 = $yapeal->query("
+				SELECT
+					c.killID
+				FROM
+					charItems as c
+					LEFT JOIN " . $mysql_eve_dbDump . ".invItems as i ON v.shipTypeID = i.typeID
+					LEFT JOIN " . $mysql_eve_dbDump . ".invTypes as t ON i.typeID = t.typeID
+					LEFT JOIN " . $mysql_eve_dbDump . ".invGroups as g ON t.groupID = g.groupID
+				WHERE
+					c.killID = " . $row->killID . "
+					AND `lft` != `rgt`-1
+					AND g.categoryID = 6
+					AND t.groupID NOT IN (28, 29, 31, 237, 380, 463, 513, 543, 902, 941)" //Industrial, Capsule, Shuttle, Rookie ship, Transport Ship, Mining Barge, Freighter, Exhumer, Jump Freighter, Industrial Command Ship
+				);
+				if($row2 = $qry->fetch_object())
+					return $row->killID;
 			}
 		}
+		return false;
+	}
+	function isSendingIsk($characterIds, $yapeal, $blocklist)
+	{
+		foreach($characterIds as $char)
+		{
+			$qry = $yapeal->query(
+				"SELECT w.`refID`, w.`ownerID2` FROM
+	    			`charWalletJournal` as w 
+				 WHERE
+					w.`verifiedOK` = 0
+	     			AND w.`refTypeID` IN (0, 1, 6, 10, 35, 37, 71)
+	      			AND w.`ownerID1` = " + $char
+			);
+			while($row = $qry->fetch_object())
+			{
+				$qry2 = $yapeal->query(
+					"SELECT i.`characterName`, i.`corporation`, i.`alliance`, i.`cachedUntil` FROM
+		    			`custom_characterInfo` as i
+					 WHERE
+						characterID = " . $row->ownerID2
+				);
+				$row2 = null;
+				if(!($row2 = $qry2->fetch_object()) || DateTime::createFromFormat("Y-m-d H:i:s", $row2->cachedUntil, DateTimeZone::UTC) < new DateTime())
+				{
+					$xml = simplexml_load_file("https://api.eveonline.com/eve/CharacterInfo.xml.aspx?characterID=" . $row->ownerID2);
+					if(!empty($xml->error))
+						continue;
+					$yapeal->query(
+						"INSERT INTO `Incursus_yapeal`.`custom_characterInfo`
+						(`characterID`, `characterName`, `race`, `bloodline`, `corporationID`, `corporation`,
+							`corporationDate`, `allianceID`, `alliance`, `allianceDate`, `securityStatus`, `cachedUntil`) VALUES
+						('" . $xml->result->characterID . "', '" . $xml->result->characterName . "', '" . $xml->result->race . "', '" . $xml->result->bloodline . "', '" . $xml->result->corporationID . "', '" . $xml->result->corporation . "',
+							'" . $xml->result->corporationDate . "', '" . $xml->result->allianceID . "', '" . $xml->result->alliance . "', '" . $xml->result->allianceDate . "', '" . $xml->result->securityStatus . "', '" . $xml->cachedUntil . "');"
+					);
+					
+					$qry2 = $yapeal->query(
+						"SELECT i.`characterName`, i.`corporation`, i.`alliance`, i.`cachedUntil` FROM
+			    			`custom_characterInfo` as i
+						 WHERE
+							characterID = " . $row->ownerID2
+					);
+					$row2 = $qry2->fetch_object();
+					if(!$row2)
+						continue;
+				}
+				
+				if(
+					in_array(strtolower($row2->characterName), $blocklist["Character"]) ||
+					in_array(strtolower($row2->corporation), $blocklist["Corporation"]) ||
+					in_array(strtolower($row2->alliance), $blocklist["Alliance"])
+				)
+					return $row->refID;
+			}
+		}
+		return false;
+	}
+	function mailNotify($characterIds)
+	{
+		
 	}
 ?>
