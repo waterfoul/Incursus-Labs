@@ -104,17 +104,17 @@
 				else if($blocklevel < 1 && in_array($v, $block[2]["Alliance"]))
 					$blocklevel = 1;
 			
-			if(blocklevel < 3 && isGanking($charIds, $mysql_eve_dbDump, $yapeal) === false)
+			if($blocklevel < 3 && isGanking($charIds, $mysql_eve_dbDump, $yapeal) === false)
 				if(($mask & 8913152)==8913152  &&
 				(
 					$row->pf_api_key_corp == 1 ||
 					$row->pf_override_min_time == 1 ||
 					((time() - $row->user_regdate)/60/60/24) > 30
 				))
-					if(($mask & 90179600)==90179600 && blocklevel < 2 && isSendingIsk($charIds, $yapeal, $block[3]) === false && $row->pf_api_key_lowsec == 1)
+					if(($mask & 90179600)==90179600 && $blocklevel < 2 && isSendingIsk($charIds, $yapeal, $block[3]) === false && $row->pf_api_key_lowsec == 1)
 					{
 						mailNotify($charIds);
-						if(($mask & 393226)==393226 && blocklevel < 1 && $row->pf_api_key_corp == 1)
+						if(($mask & 393226)==393226 && $blocklevel < 1 && $row->pf_api_key_corp == 1)
 						{
 							setRoles($row->user_id,1);
 						}
