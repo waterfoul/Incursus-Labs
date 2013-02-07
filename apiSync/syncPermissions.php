@@ -60,14 +60,14 @@
 			$block[$row->list][$row->Type][] = strtolower($row->Name);
 		
 		/* Determine roles */
-		$qry=$phpBB->query('SELECT d.user_id, d.pf_api_key, d.pf_api_key_corp, d.pf_api_key_lowsec, d.pf_override_min_time, u.user_regdate FROM `phpbb_profile_fields_data` as d LEFT JOIN phpbb_users as u ON d.user_id = u.user_id');
+		$qry=$phpBB->query('SELECT d.user_id, u.username, d.pf_api_key, d.pf_api_key_corp, d.pf_api_key_lowsec, d.pf_override_min_time, u.user_regdate, u.group_id FROM `phpbb_profile_fields_data` as d LEFT JOIN phpbb_users as u ON d.user_id = u.user_id');
 		while($row = $qry->fetch_object())
 		{
 			$key = explode(":",$row->pf_api_key);
 			$mask=$yapeal->query("SELECT accessMask FROM  `accountAPIKeyInfo` WHERE keyID = " . $key[0]);
 			if(!$mask)
 			{
-				setRoles($row->user_id,5,$phpBB);
+				setRoles($row->user_id,$row->username,5,$row->group_id,$phpBB);
 				continue;
 			}
 			$mask = $mask->fetch_object()->accessMask;
@@ -123,20 +123,20 @@
 						if(($mask & 393226)==393226 && $blocklevel < 1 && $row->pf_api_key_corp == 1)
 						{
 							/*TODO:Add corp check*/
-							setRoles($row->user_id,1,$phpBB);
+							setRoles($row->user_id,$row->username,1,$row->group_id,$phpBB);
 						}
 						else
-							setRoles($row->user_id,2,$phpBB);
+							setRoles($row->user_id,$row->username,2,$row->group_id,$phpBB);
 					}
 					else
-						setRoles($row->user_id,3,$phpBB);
+						setRoles($row->user_id,$row->username,3,$row->group_id,$phpBB);
 				else
-					setRoles($row->user_id,4,$phpBB);
+					setRoles($row->user_id,$row->username,4,$row->group_id,$phpBB);
 			else
-				setRoles($row->user_id,5,$phpBB);
+				setRoles($row->user_id,$row->username,5,$row->group_id,$phpBB);
 		}
 	}
-	function setRoles($user_id,$defcon,$phpBB)
+	function setRoles($user_id,$user_name,$defcon,$oldgroup,$phpBB)
 	{
 		$groupid = -1;
 		switch($defcon)
@@ -147,28 +147,41 @@
 				break;
 			case 2:
 				$groupid =  9;
-                                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 1, pf_api_key_community = 1 WHERE user_id = " . $user_id);
+                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 1, pf_api_key_community = 1 WHERE user_id = " . $user_id);
 				break;
 			case 3:
 				$groupid =  8;
-                                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 1, pf_api_key_community = 1 WHERE user_id = " . $user_id);
+                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 1, pf_api_key_community = 1 WHERE user_id = " . $user_id);
 				break;
 			case 4:
 				$groupid =  11;
-                                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 1, pf_api_key_community = 0 WHERE user_id = " . $user_id);
+                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 1, pf_api_key_community = 0 WHERE user_id = " . $user_id);
 				break;
 			case 5:
 				$groupid =  2;
-                                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 0, pf_api_key_community = 0 WHERE user_id = " . $user_id);
+                $phpBB->query("UPDATE phpbb_profile_fields_data SET pf_api_key_basic = 0, pf_api_key_community = 0 WHERE user_id = " . $user_id);
 				break;
 		}
-		$phpBB->query("UPDATE phpbb_users SET group_id = " . $groupid . " WHERE user_id = " . $user_id );
 		foreach(array(10,9,8,11,2) as $g)
 		{
-			$phpBB->query("DELETE FROM `phpbb_user_group` WHERE `phpbb_user_group`.`group_id` = " . $g . " AND `phpbb_user_group`.`user_id` = " . $user_id . ";" );
 			if($g == $groupid)
 				$phpBB->query("INSERT INTO `Incusus_phpBB`.`phpbb_user_group` (`group_id`, `user_id`, `group_leader`, `user_pending`) VALUES ('" . $g . "', '" . $user_id . "', '0', '0');");
-		}	
+			$phpBB->query("DELETE FROM `phpbb_user_group` WHERE `phpbb_user_group`.`group_id` = " . $g . " AND `phpbb_user_group`.`user_id` = " . $user_id . ";" );
+		}
+		$phpBB->query("UPDATE phpbb_users SET group_id = " . $groupid . " WHERE user_id = " . $user_id );
+		if($groupid != $oldgroup)
+		{
+			if(
+				($oldgroup == 10) ||
+				($oldgroup == 9 && $groupid != 10) ||
+				($oldgroup == 8 && $groupid != 10 && $groupid != 9) ||
+				($oldgroup == 11 && $groupid == 2)
+			)
+			{
+				mail("IncursusForums@gmail.com", "USER DEMOTED", $user_name);
+			}
+		}
+		
 	}
 	function isGanking($characterIds, $mysql_eve_dbDump, $yapeal)
 	{

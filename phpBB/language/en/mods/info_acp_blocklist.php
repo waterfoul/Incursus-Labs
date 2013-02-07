@@ -22,6 +22,6 @@ $lang = array_merge($lang, array(
     'ACP_BLOCKLIST_TITLE'                        => 'EVE Blocklist (Basic Access)',
     'ACP_BLOCKLIST_TITLE2'                       => 'EVE Blocklist (Incursion)',
     'ACP_BLOCKLIST_TITLE3'                       => 'EVE Blocklist (Lowsec)',
-    'ACP_BLOCKLIST_TITLE3'                       => 'EVE Blocklist (Transactions)',
+    'ACP_BLOCKLIST_TITLE3'                       => 'EVE Blocklist (Transactions/Mail)',
 ));
 ?>
