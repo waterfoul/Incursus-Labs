@@ -40,7 +40,7 @@ class acp_blocklist
 		$this->tpl_name = 'acp_blocklist';
 				
 		$mysql = $db->db_connect_id;
-		$qry=$mysql->query("SELECT * FROM eve_blocklist ORDER BY Type, Name WHERE list = " . $list);
+		$qry=$mysql->query("SELECT * FROM eve_blocklist WHERE list = " . $list . " ORDER BY Type, Name");
 		$output = "";
 		while($row = $qry->fetch_object())
 			$output .= "<tr><td>" . $row->Type . "</td><td>" . $row->Name . "</td><td><input type='button' value='Remove' onclick='remove_item(" . $row->id . ",this)' style='width:100%' /></td><tr>";
