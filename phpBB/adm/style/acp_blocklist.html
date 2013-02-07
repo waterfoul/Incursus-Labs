@@ -3,7 +3,7 @@
 <script type="text/javascript">
 	function add_item()
 	{
-		sendRequest("../../apiSync/blocklistAjax.php?ADD=" + document.getElementById("newName").value + "&TYPE=" + document.getElementById("newType").value,function(req)
+		sendRequest("../../apiSync/blocklistAjax.php?LIST={LIST}&ADD=" + document.getElementById("newName").value + "&TYPE=" + document.getElementById("newType").value,function(req)
 		{
 			tr=document.createElement("tr");
 			tr.innerHTML="<td>" + document.getElementById("newType").value + "</td><td>" + document.getElementById("newName").value + "</td><td><input type='button' value='Remove' onclick='remove_item(" + req.responseText + ",this)' style='width:100%'/></td>";

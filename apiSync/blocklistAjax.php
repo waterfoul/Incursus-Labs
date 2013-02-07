@@ -22,7 +22,7 @@ if(!$auth->acl_get('a_'))
 	include("../config.php");
 	$phpBB = new mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_phpBB_db);
 	if($_GET["ADD"]){
-		$phpBB->query("INSERT INTO  `Incusus_phpBB`.`eve_blocklist` (`id` ,`Type` ,`Name`) VALUES (NULL ,  '" . $phpBB->escape_string($_GET["TYPE"]) . "',  '" . $phpBB->escape_string($_GET["ADD"]) . "')");
+		$phpBB->query("INSERT INTO  `Incusus_phpBB`.`eve_blocklist` (`id` ,`Type` ,`Name`, `list`) VALUES (NULL ,  '" . $phpBB->escape_string($_GET["TYPE"]) . "',  '" . $phpBB->escape_string($_GET["ADD"]) . "',  '" . $phpBB->escape_string($_GET["LIST"]) . "')");
 		print($phpBB->insert_id);
 	}
 	if($_GET["REMOVE"])
