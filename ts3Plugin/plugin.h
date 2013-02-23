@@ -12,10 +12,13 @@
 #else
 #define PLUGINS_EXPORTDLL __attribute__ ((visibility("default")))
 #endif
-
+#define CURL_STATICLIB
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#define serverUrl "http://inner.waterfoul.net:81/getTS3UserName.php"
+#define serverName "Incursion Server"
 
 /* Required functions */
 PLUGINS_EXPORTDLL const char* ts3plugin_name();
@@ -142,5 +145,6 @@ PLUGINS_EXPORTDLL void ts3plugin_onHotkeyRecordedEvent(const char* keyword, cons
 #endif
 
 void updateUsername(void);
+DWORD WINAPI get_ts3_user_name( LPVOID lpParam );
 
 #endif

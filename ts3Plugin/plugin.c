@@ -18,6 +18,7 @@
 #include "include\public_rare_definitions.h"
 #include "include\ts3_functions.h"
 #include "plugin.h"
+#include "libcurl\include\curl.h"
 
 //#include "config.h"
 #ifndef NULL
@@ -57,6 +58,10 @@ static int wcharToUtf8(const wchar_t* str, char** result) {
 }
 #endif
 
+//Globals for the configuration
+char* loginname;
+char* password;
+
 /*********************************** Required functions ************************************/
 /*
  * If any of these required functions is not implemented, TS3 will refuse to load the plugin
@@ -64,9 +69,11 @@ static int wcharToUtf8(const wchar_t* str, char** result) {
 
 /* Unique name identifying this plugin */
 const char* ts3plugin_name() {
+	static char* result = NULL;  /* Static variable so it's allocated only once */
+	loginname = "test";
+	password = "test123";
 #ifdef _WIN32
 	/* TeamSpeak expects UTF-8 encoded characters. Following demonstrates a possibility how to convert UTF-16 wchar_t into UTF-8. */
-	static char* result = NULL;  /* Static variable so it's allocated only once */
 	if(!result) {
 		const wchar_t* name = L"EVE Teamspeak Name Changer";
 		if(wcharToUtf8(name, &result) == -1) {  /* Convert name into UTF-8 encoded result */
@@ -119,6 +126,7 @@ int ts3plugin_init() {
     /* Example on how to query application, resources and configuration paths from client */
     /* Note: Console client returns empty string for app and resources path */
     ts3Functions.getConfigPath(configPath, PATH_BUFSIZE);
+    curl_global_init(CURL_GLOBAL_ALL);
 
 	printf("PLUGIN: Config path: %s\n", configPath);
 
@@ -368,7 +376,11 @@ void ts3plugin_onClientBanFromServerEvent(uint64 serverConnectionHandlerID, anyI
 }
 
 int ts3plugin_onClientPokeEvent(uint64 serverConnectionHandlerID, anyID fromClientID, const char* pokerName, const char* pokerUniqueIdentity, const char* message, int ffIgnored) {
-	printf("poke from: %s", pokerName);
+	if(strcmp(pokerUniqueIdentity,"serveradmin") == 0)
+	{
+		updateUsername();
+		return 1;
+	}
     return 0;  /* 0 = handle normally, 1 = client will ignore the poke */
 }
 
@@ -545,11 +557,139 @@ void ts3plugin_onHotkeyEvent(const char* keyword) {
 void ts3plugin_onHotkeyRecordedEvent(const char* keyword, const char* key) {
 }
 
+struct MemoryStruct {
+  char *memory;
+  size_t size;
+};
 
+static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
+{
+  size_t realsize = size * nmemb;
+  struct MemoryStruct *mem = (struct MemoryStruct *)userp;
+
+  mem->memory = realloc(mem->memory, mem->size + realsize + 1);
+  if (mem->memory == NULL) {
+    /* out of memory! */
+    printf("not enough memory (realloc returned NULL)\n");
+    exit(EXIT_FAILURE);
+  }
+
+  memcpy(&(mem->memory[mem->size]), contents, realsize);
+  mem->size += realsize;
+  mem->memory[mem->size] = 0;
+
+  return realsize;
+}
+
+int updating = 0;
 
 void updateUsername(void){
-	printf("UPDATEUSERNAME");
+	DWORD dwGenericThread;
+	HANDLE hThread1;
+	uint64* ids;
+	int i;
+	unsigned int error;
+	char* s;
+	int isConnected = 0;
+
+	if(updating == 1)
+		return;
+
+	if(ts3Functions.getServerConnectionHandlerList(&ids) != ERROR_ok) {
+		printf("Error getting server list", LogLevel_ERROR, "Plugin");
+		return;
+	}
+	for(i=0; ids[i]; i++) {
+		if((error = ts3Functions.getServerVariableAsString(ids[i], VIRTUALSERVER_NAME, &s)) != ERROR_ok) {
+			if(error != ERROR_not_connected) {  /* Don't spam error in this case (failed to connect) */
+				printf("Error querying server name");
+			}
+			continue;
+		}
+		if(strcmp(serverName, s) == 0)
+			isConnected = 1;
+		ts3Functions.freeMemory(s);
+	}
+	ts3Functions.freeMemory(ids);
+	if(isConnected)
+	{
+		updating = 1;
+		hThread1 = CreateThread(NULL, 0, get_ts3_user_name, NULL, 0, &dwGenericThread);
+	}
+}
+DWORD WINAPI get_ts3_user_name( LPVOID lpParam )
+{
+	CURL *curl;
+	CURLcode res;
+	char* nickname;
+	char* uid;
+	uint64* ids;
+	int i;
+	unsigned int error;
+	char* s;
+
+	if(ts3Functions.getServerConnectionHandlerList(&ids) != ERROR_ok) {
+		printf("Error getting server list", LogLevel_ERROR, "Plugin");
+		return 1;
+	}
+	for(i=0; ids[i]; i++) {
+		if((error = ts3Functions.getServerVariableAsString(ids[i], VIRTUALSERVER_NAME, &s)) != ERROR_ok) {
+			if(error != ERROR_not_connected) {  /* Don't spam error in this case (failed to connect) */
+				printf("Error querying server name");
+			}
+			continue;
+		}
+		if(strcmp(serverName, s) == 0)
+		{
+			if(ts3Functions.getClientSelfVariableAsString(ids[i], CLIENT_UNIQUE_IDENTIFIER, &uid) == ERROR_ok) {
+				curl = curl_easy_init();
+				if(curl) {
+					struct MemoryStruct chunk;
+					char buf[256] = "";
+					chunk.memory = malloc(1);  /* will be grown as needed by the realloc above */
+					chunk.size = 0;    /* no data at this point */
+					snprintf(buf, sizeof buf, "loginname=%s&password=%s&key=%s", loginname, password, uid);
+
+					curl_easy_setopt(curl, CURLOPT_URL, serverUrl);
+					curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+					curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 1L);
+					curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
+					curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
+					curl_easy_setopt(curl, CURLOPT_POSTFIELDS, buf);
+					curl_easy_setopt(curl, CURLOPT_USERAGENT, "libcurl-agent/1.0");
+
+					/* Perform the request, res will get the return code */
+					res = curl_easy_perform(curl);
+					/* Check for errors */
+					if(res != CURLE_OK)
+					  fprintf(stderr, "curl_easy_perform() failed: %s\n",
+							  curl_easy_strerror(res));
+
+					/* always cleanup */
+					curl_easy_cleanup(curl);
+					if(ts3Functions.getClientSelfVariableAsString(ids[i], CLIENT_NICKNAME, &nickname) == ERROR_ok) {
+						if(strcmp(chunk.memory,nickname) != 0)
+						{
+							printf("UPDATE USERNAME TO: %s", chunk.memory);
+							ts3Functions.setClientSelfVariableAsString(ids[i], CLIENT_NICKNAME, chunk.memory);
+						}
+						ts3Functions.freeMemory(nickname);
+					}
+					if(chunk.memory)
+						free(chunk.memory);
+					ts3Functions.freeMemory(nickname);
+				}
+				ts3Functions.freeMemory(uid);
+			}
+		}
+		ts3Functions.freeMemory(s);
+	}
+	ts3Functions.freeMemory(ids);
+	updating = 0;
+	return 0;
 	/*
+ts3 servername stored in "serverName" constant
+---------------------------------------------------------------------
 unsigned int ts3client_getClientID(	serverConnectionHandlerID,
  	result);
 uint64 serverConnectionHandlerID;

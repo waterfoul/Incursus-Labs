@@ -83,6 +83,10 @@
 							</tool>
 							<tool id="org.eclipse.cdt.msvc.link.dll.debug.2032415074" name="Linker (link)" superClass="org.eclipse.cdt.msvc.link.dll.debug">
 								<option defaultValue="true" id="org.eclipse.cdt.msvc.link.option.dll.1931409900" name="Build a DLL" superClass="org.eclipse.cdt.msvc.link.option.dll" valueType="boolean"/>
+								<option id="org.eclipse.cdt.msvc.link.option.libraries.1409625524" name="Libraries" superClass="org.eclipse.cdt.msvc.link.option.libraries" valueType="libs">
+									<listOptionValue builtIn="false" value="&quot;C:\Progra~1\Micros~4\Windows\v7.1\Lib\x64\WS2_32.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Incursus-Labs-TS3-Plugin/libcurl/lib/x64/libcurl_a.lib}&quot;"/>
+								</option>
 								<inputType id="org.eclipse.cdt.msvc.link.inputType.2048319910" superClass="org.eclipse.cdt.msvc.link.inputType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.msvc.lib.1351190132" name="Library Manager (lib)" superClass="org.eclipse.cdt.msvc.lib"/>
