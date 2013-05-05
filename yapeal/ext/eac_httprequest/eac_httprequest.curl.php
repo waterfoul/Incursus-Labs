@@ -151,10 +151,10 @@ class curlRequest {
 		$this->options['CURLOPT_ENCODING'] = 'gzip';// allow gzip compression
 		$this->options['CURLOPT_RETURNTRANSFER'] = 1;// return results as string
 		$this->options['CURLOPT_BINARYTRANSFER'] = 0;// no binary transfer
-    $this->options['CURLOPT_SSL_VERIFYPEER'] = 1; // verify ssl certs
-    $this->options['CURLOPT_SSL_VERIFYHOST'] = 1; // verify ssl host
-    $this->options['CURLOPT_SSL_CIPHER_LIST'] = 'rsa_aes_128_sha,rsa_aes_256_sha,rsa_3des_sha,rsa_rc4_128_sha,rsa_rc4_128_md5'; // use these ciphers only
-    $this->options['CURLOPT_CAINFO'] =  YAPEAL_CONFIG . 'eveonline.crt';
+//    $this->options['CURLOPT_SSL_VERIFYPEER'] = 1; // verify ssl certs
+//    $this->options['CURLOPT_SSL_VERIFYHOST'] = 1; // verify ssl host
+//    $this->options['CURLOPT_SSL_CIPHER_LIST'] = 'rsa_aes_128_sha,rsa_aes_256_sha,rsa_3des_sha,rsa_rc4_128_sha,rsa_rc4_128_md5'; // use these ciphers only
+//    $this->options['CURLOPT_CAINFO'] =  YAPEAL_CONFIG . 'eveonline.crt';
     $this->options['CURLOPT_COOKIEJAR'] = YAPEAL_CACHE . 'curl_cookies.txt';
 		$this->options['CURLOPT_REFERER'] = 'http://code.google.com/p/yapeal/';
 		$this->options['CURLOPT_UNRESTRICTED_AUTH'] = 1;// do not pass authentication to multiple locations

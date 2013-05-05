@@ -25,7 +25,7 @@
 	<td class="row2"><!-- IF S_CHANGE_USERNAME -->
 		<select class="post" name="username">
 			<!-- BEGIN characters -->
-				<option value="{characters.ID}:{characters.NAME}" <!-- IF characters.NAME == USERNAME -->selected <!-- ENDIF -->>{characters.NAME}</option>
+				<option value="{characters.ID}:{characters.NAME}" <!-- IF characters.NAMECOMPARE == USERNAME -->selected <!-- ENDIF -->>{characters.NAME}</option>
 			<!-- BEGINELSE -->
 				<option>{LOGINNAME} Unconfirmed</option>
 			<!-- END characters -->

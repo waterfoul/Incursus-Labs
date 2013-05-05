@@ -82,6 +82,13 @@ $lang = array_merge($lang, array(
         'FIELD_DISABLED_BOOL'                            => 'Disabled Boolean (Yes/No)',
 	'FIELD_DATE'				=> 'Date',
 	'FIELD_EVEAPIKEY'			=> 'EVE API Key',
+	'FIELD_EVEAPIKEY_EXPLAIN'		=> 'Your eve API Key, Only account level apis will work (all characters). You can use the following links to generate your keys.
+		<a href="http://support.eveonline.com/api/Key/CreatePredefined/0">Basic (add character and standings to get more features)</a>
+		<a href="http://support.eveonline.com/api/Key/CreatePredefined/8913152">Incursion Community Verified Capable</a>
+		<a href="http://support.eveonline.com/api/Key/CreatePredefined/99092752">Lowsec Community Capable</a>
+		<a href="http://support.eveonline.com/api/Key/CreatePredefined/99485978">Corporation Capable</a>
+
+	',
 	'FIELD_DESCRIPTION'			=> 'Field description',
 	'FIELD_DESCRIPTION_EXPLAIN'	=> 'The explanation for this field presented to the user.',
 	'FIELD_DROPDOWN'			=> 'Dropdown box',
