@@ -18,34 +18,35 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
-$wgSitename      = "Warp To Me";
-$wgMetaNamespace = "Warp_To_Me";
+$wgSitename      = "Not Another Acronym";
+$wgMetaNamespace = "Not_Another_Acronym";
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## http://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath       = "/_/wiki";
+$wgScriptPath       = "/w";
+$wgArticlePath = "/wiki/$1";
 $wgScriptExtension  = ".php";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer           = "http://warptome.com";
+$wgServer           = "https://naa.waterfoul.net";
 
 ## The relative URL path to the skins directory
 $wgStylePath        = "$wgScriptPath/skins";
 
 ## The relative URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
-$wgLogo             = "images/2/2a/WTM1-2.png";
+$wgLogo             = "https://image.eveonline.com/Corporation/98176508_128.png";
 
 ## UPO means: this is also a user preference option
 
 $wgEnableEmail      = true;
 $wgEnableUserEmail  = true; # UPO
 
-$wgEmergencyContact = "admin@warptome.com";
-$wgPasswordSender   = "admin@warptome.com";
+$wgEmergencyContact = "waterfoul@gmail.com";
+$wgPasswordSender   = "waterfoul@gmail.com";
 
 $wgEnotifUserTalk      = false; # UPO
 $wgEnotifWatchlist     = false; # UPO
@@ -54,9 +55,9 @@ $wgEmailAuthentication = true;
 ## Database settings
 $wgDBtype           = "mysql";
 $wgDBserver         = "localhost";
-$wgDBname           = "warptome_wiki";
-$wgDBuser           = "warptome_incurs";
-$wgDBpassword       = "[QF%OSV)dy&B";
+$wgDBname           = "naa_wiki";
+$wgDBuser           = "naa";
+$wgDBpassword       = "CvVTWbwdaqUsV78L";
 
 # MySQL specific settings
 $wgDBprefix         = "";
@@ -159,9 +160,9 @@ $wgAuth_Config['UseExtDatabase'] = true;       // This tells the plugin that the
                                                 // The default settings is false.
  
 $wgAuth_Config['MySQL_Host']        = 'localhost';      // phpBB MySQL Host Name.
-$wgAuth_Config['MySQL_Username']    = 'warptome_incurs';       // phpBB MySQL Username.
-$wgAuth_Config['MySQL_Password']    = '[QF%OSV)dy&B';       // phpBB MySQL Password.
-$wgAuth_Config['MySQL_Database']    = 'warptome_phpBB';       // phpBB MySQL Database Name.
+$wgAuth_Config['MySQL_Username']    = 'naa';       // phpBB MySQL Username.
+$wgAuth_Config['MySQL_Password']    = 'CvVTWbwdaqUsV78L';       // phpBB MySQL Password.
+$wgAuth_Config['MySQL_Database']    = 'naa_phpBB';       // phpBB MySQL Database Name.
  
 $wgAuth_Config['UserTB']         = 'phpbb_users';       // Name of your PHPBB user table. (i.e. phpbb_users)
 $wgAuth_Config['GroupsTB']       = 'phpbb_groups';      // Name of your PHPBB groups table. (i.e. phpbb_groups)

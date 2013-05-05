@@ -164,9 +164,9 @@
 		}
 		foreach(array(10,9,8,11,2) as $g)
 		{
-			if($g == $groupid)
-				$phpBB->query("INSERT INTO `Incusus_phpBB`.`phpbb_user_group` (`group_id`, `user_id`, `group_leader`, `user_pending`) VALUES ('" . $g . "', '" . $user_id . "', '0', '0');");
 			$phpBB->query("DELETE FROM `phpbb_user_group` WHERE `phpbb_user_group`.`group_id` = " . $g . " AND `phpbb_user_group`.`user_id` = " . $user_id . ";" );
+			if($g == $groupid)
+				$phpBB->query("INSERT INTO `phpbb_user_group` (`group_id`, `user_id`, `group_leader`, `user_pending`) VALUES ('" . $g . "', '" . $user_id . "', '0', '0');");
 		}
 		$phpBB->query("UPDATE phpbb_users SET group_id = " . $groupid . " WHERE user_id = " . $user_id );
 		if($groupid != $oldgroup)

@@ -7,6 +7,7 @@
 yapeal/config/yapeal.ini
 yapeal/cache
 yapeal/log
+yapeal/error_log
 phpBB/cache
 pbpBB/config.php
 phpBBOriginal/cache

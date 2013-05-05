@@ -95,18 +95,18 @@ class ucp_profile
 						$sql_arr = array(
 						    'SELECT'    => 'c.characterID,c.characterName',
 						    'FROM'        => array(
-						        "Incursus_yapeal.accountKeyBridge" => 'b',
-						        "Incursus_yapeal.accountCharacters" => 'c',
+						        "warptome_yapeal.accountKeyBridge" => 'b',
+						        "warptome_yapeal.accountCharacters" => 'c',
 						        ),
 						    'WHERE'        => 'b.characterID = c.characterID AND b.keyID = "' . $key . '"',
 						    );
 						$sql = $db->sql_build_query('SELECT', $sql_arr);
 						$result = $db->sql_query($sql);
-			            while($row = $db->sql_fetchrow($result))
+				            	while($row = $db->sql_fetchrow($result))
 							if($row["characterName"] == $pair[1] && $row["characterID"] == $pair[0])
 								$name_ok = true;
 						if($name_ok)
-           					$data["username"] = $pair[1];
+           						$data["username"] = $pair[1] . "&#01;";
 						else 
 						{
 							$data["username"] = $data["loginname"] . " Unconfirmed";
@@ -115,14 +115,13 @@ class ucp_profile
 					}
 					else 
 						$data["username"] = $data["loginname"] . " Unconfirmed";
-					
-					if ($auth->acl_get('u_chgname') && $config['allow_namechange'])
-					{
+					//if ($auth->acl_get('u_chgname') && $config['allow_namechange'])
+					//{
 						$check_ary['username'] = array(
 							array('string', false, $config['min_name_chars'], $config['max_name_chars']),
 							array('username'),
 						);
-					}
+					//}
 
 					// Start Sep Login Name Mod
 					if ($auth->acl_get('u_chgloginname') && $config['allow_loginnamechange'])
@@ -177,8 +176,8 @@ class ucp_profile
 						}
 
 						$sql_ary = array(
-							'username'			=> ($auth->acl_get('u_chgname') && $config['allow_namechange']) ? $data['username'] : $user->data['username'],
-							'username_clean'	=> ($auth->acl_get('u_chgname') && $config['allow_namechange']) ? utf8_clean_string($data['username']) : $user->data['username_clean'],
+							'username'			=> /*($auth->acl_get('u_chgname') && $config['allow_namechange']) ?*/ $data['username'] /*: $user->data['username']*/,
+							'username_clean'	=> /*($auth->acl_get('u_chgname') && $config['allow_namechange']) ?*/ utf8_clean_string($data['username']) /*: $user->data['username_clean']*/,
 							// Start Sep Login Name Mod
 							'loginname'	=> ($auth->acl_get('u_chgloginname') && $config['allow_loginnamechange']) ? $data['loginname'] : $user->data['loginname'],					
 							'loginname_clean'	=> ($auth->acl_get('u_chgloginname') && $config['allow_loginnamechange']) ? utf8_clean_string($data['loginname']) : $user->data['loginname_clean'],	
@@ -335,15 +334,15 @@ class ucp_profile
 				$sql_arr = array(
 				    'SELECT'    => 'c.characterID,c.characterName',
 				    'FROM'        => array(
-				        "Incursus_yapeal.accountKeyBridge" => 'b',
-				        "Incursus_yapeal.accountCharacters" => 'c',
+				        "warptome_yapeal.accountKeyBridge" => 'b',
+				        "warptome_yapeal.accountCharacters" => 'c',
 				        ),
 				    'WHERE'        => 'b.characterID = c.characterID AND b.keyID = "' . $key . '"',
 				    );
 				$sql = $db->sql_build_query('SELECT', $sql_arr);
 				$result = $db->sql_query($sql);
 	             while($row = $db->sql_fetchrow($result))
-                        $template->assign_block_vars('characters', array("ID"=>$row["characterID"],"NAME"=>$row["characterName"]));
+                        $template->assign_block_vars('characters', array("ID"=>$row["characterID"],"NAME"=>$row["characterName"],"NAMECOMPARE"=>$row["characterName"]."&#01;"));
 
 
 				$template->assign_vars(array(
