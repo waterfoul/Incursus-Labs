@@ -95,8 +95,8 @@ class ucp_profile
 						$sql_arr = array(
 						    'SELECT'    => 'c.characterID,c.characterName',
 						    'FROM'        => array(
-						        "warptome_yapeal.accountKeyBridge" => 'b',
-						        "warptome_yapeal.accountCharacters" => 'c',
+						        "naa_yapeal.accountKeyBridge" => 'b',
+						        "naa_yapeal.accountCharacters" => 'c',
 						        ),
 						    'WHERE'        => 'b.characterID = c.characterID AND b.keyID = "' . $key . '"',
 						    );
@@ -334,8 +334,8 @@ class ucp_profile
 				$sql_arr = array(
 				    'SELECT'    => 'c.characterID,c.characterName',
 				    'FROM'        => array(
-				        "warptome_yapeal.accountKeyBridge" => 'b',
-				        "warptome_yapeal.accountCharacters" => 'c',
+				        "naa_yapeal.accountKeyBridge" => 'b',
+				        "naa_yapeal.accountCharacters" => 'c',
 				        ),
 				    'WHERE'        => 'b.characterID = c.characterID AND b.keyID = "' . $key . '"',
 				    );

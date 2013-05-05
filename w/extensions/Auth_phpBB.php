@@ -100,7 +100,7 @@
          *
          * @var string
          */
-        private $_GroupsTB;
+        public $_GroupsTB;
 
         /**
          * Message user sees when logging in.
@@ -179,12 +179,12 @@
          *
          * @var string
          */
-        private $_User_GroupTB;
+        public $_User_GroupTB;
 
         /**
          * UserID of our current user.
          *
-         * @var int
+         /* @var int
          */
         private $_UserID;
 
@@ -193,7 +193,7 @@
          *
          * @var string
          */
-        private $_UserTB;
+        public $_UserTB;
 
         /**
          * This tells the Plugin to require
@@ -412,7 +412,7 @@
          * {@source }
          * @return resource
          */
-        private function connect(&$fresMySQLConnection_wiki)
+        public function connect(&$fresMySQLConnection_wiki)
         {
             // Connect to database.
             $fresMySQLConnection_wiki = mysql_connect($GLOBALS['wgDBserver'], $GLOBALS['wgDBuser'], $GLOBALS['wgDBpassword'], true);
@@ -576,9 +576,11 @@
     	    {
     	        return true;
     	    }
+            
+            $a = null;
 
             // Connect to the database.
-    		$fresMySQLConnection = $this->connect();
+    	    $fresMySQLConnection = $this->connect($a);
     	    $username = $this->utf8($username); // Convert to UTF8
     	    $username = mysql_real_escape_string($username, $fresMySQLConnection); // Clean username.
 
@@ -868,7 +870,7 @@
     	{
 
     	    // Connect to the database.
-    		$fresMySQLConnection = $this->connect();
+    		$fresMySQLConnection = $this->connect($other);
 
             // If debug is on print the username entered by the user and the one from the datebase to the screen.
             if ($this->_debug)

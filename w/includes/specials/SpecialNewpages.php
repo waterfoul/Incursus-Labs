@@ -311,6 +311,12 @@ class SpecialNewpages extends IncludableSpecialPage {
 		$lang = $this->getLanguage();
 		$dm = $lang->getDirMark();
 
+		// <IntraACL>
+		if ( !$title->userCanReadEx() ) {
+			return '';
+		}
+		// </IntraACL>
+		
 		$spanTime = Html::element( 'span', array( 'class' => 'mw-newpages-time' ),
 			$lang->userTimeAndDate( $result->rc_timestamp, $this->getUser() )
 		);

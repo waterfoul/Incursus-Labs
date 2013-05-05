@@ -109,6 +109,11 @@ class ListredirectsPage extends QueryPage {
 		# Find out where the redirect leads
 		$target = $this->getRedirectTarget( $result );
 		if( $target ) {
+			// <IntraACL>
+			if ( !$target->userCanReadEx() ) {
+				return '';
+			}
+			// </IntraACL>
 			# Make a link to the destination page
 			$lang = $this->getLanguage();
 			$arr = $lang->getArrow() . $lang->getDirMark();

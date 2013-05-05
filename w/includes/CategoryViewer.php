@@ -177,6 +177,11 @@ class CategoryViewer extends ContextSource {
 	 */
 	function addSubcategory( Title $title, $sortkey, $pageLength ) {
 		wfDeprecated( __METHOD__, '1.17' );
+		// <IntraACL>
+		if ( !$title->userCanReadEx() ) {
+			return;
+		}
+		// </IntraACL>
 		$this->addSubcategoryObject( Category::newFromTitle( $title ), $sortkey, $pageLength );
 	}
 
@@ -243,6 +248,11 @@ class CategoryViewer extends ContextSource {
 	 * @param $isRedirect bool
 	 */
 	function addPage( $title, $sortkey, $pageLength, $isRedirect = false ) {
+		/*op-patch|TS|2009-06-19|HaloACL|SafeTitle|start*/
+		if (!$title->userCanReadEx()) {
+			return;
+		}
+		/*op-patch|TS|2009-06-19|end*/  
 		global $wgContLang;
 
 		$link = Linker::link( $title );

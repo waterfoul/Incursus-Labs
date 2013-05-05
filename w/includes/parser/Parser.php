@@ -1876,7 +1876,18 @@ class Parser {
 
 			wfProfileOut( __METHOD__."-misc" );
 			wfProfileIn( __METHOD__."-title" );
+			// <IntraACL>
+			// Do not check permissions for links, except image links
+			if ( defined( 'HACL_HALOACL_VERSION' ) ) {
+				$etc = haclfDisableTitlePatch();
+			}
+			// </IntraACL>
 			$nt = Title::newFromText( $this->mStripState->unstripNoWiki( $link ) );
+			// <IntraACL>
+			if ( defined( 'HACL_HALOACL_VERSION' ) ) {
+				haclfRestoreTitlePatch( $etc );
+			}
+			// </IntraACL>
 			if ( $nt === null ) {
 				$s .= $prefix . '[[' . $line;
 				wfProfileOut( __METHOD__."-title" );
@@ -1958,7 +1969,10 @@ class Parser {
 
 				if ( $ns == NS_FILE ) {
 					wfProfileIn( __METHOD__."-image" );
-					if ( !wfIsBadImage( $nt->getDBkey(), $this->mTitle ) ) {
+					// <IntraACL>
+					if ( !wfIsBadImage( $nt->getDBkey(), $this->mTitle ) &&
+						( $canRead = $nt->userCanRead() ) ) {
+					// </IntraACL>
 						if ( $wasblank ) {
 							# if no parameters were passed, $text
 							# becomes something like "File:Foo.png",
@@ -1975,6 +1989,13 @@ class Parser {
 						# cloak any absolute URLs inside the image markup, so replaceExternalLinks() won't touch them
 						$s .= $prefix . $this->armorLinks(
 							$this->makeImage( $nt, $text, $holders ) ) . $trail;
+					// <IntraACL>
+					} elseif ( !$canRead ) {
+						# Still register dependency on a nonreadable image
+						$time = $sha1 = $descQuery = false;
+						list( $file, $nt ) = $this->fetchFileAndTitle( $nt, $time, $sha1 );
+						$s .= $prefix . $trail;
+					// </IntraACL>
 					} else {
 						$s .= $prefix . $trail;
 					}
@@ -3284,7 +3305,18 @@ class Parser {
 			if ( $subpage !== '' ) {
 				$ns = $this->mTitle->getNamespace();
 			}
+			// <IntraACL>
+			// Template access check is done in statelessFetchTemplate()
+			if ( defined( 'HACL_HALOACL_VERSION' ) ) {
+				$etc = haclfDisableTitlePatch();
+			}
+			// </IntraACL>
 			$title = Title::newFromText( $part1, $ns );
+			// <IntraACL>
+			if ( defined( 'HACL_HALOACL_VERSION' ) ) {
+				haclfRestoreTitlePatch( $etc );
+			}
+			// </IntraACL>
 			if ( $title ) {
 				$titleText = $title->getPrefixedText();
 				# Check for language variants if the template is not found
@@ -3547,6 +3579,7 @@ class Parser {
 		$text = $skip = false;
 		$finalTitle = $title;
 		$deps = array();
+		$canRead = true;
 
 		# Loop to fetch the article, with up to 1 redirect
 		for ( $i = 0; $i < 2 && is_object( $title ); $i++ ) {
@@ -3554,7 +3587,8 @@ class Parser {
 			$id = false; # Assume current
 			wfRunHooks( 'BeforeParserFetchTemplateAndtitle',
 				array( $parser, $title, &$skip, &$id ) );
-
+			
+			$canRead = $canRead && $title->userCanRead();
 			if ( $skip ) {
 				$text = false;
 				$deps[] = array(
@@ -3564,11 +3598,23 @@ class Parser {
 				);
 				break;
 			}
+			// <IntraACL>
+			if ( defined( 'HACL_HALOACL_VERSION' ) ) {
+				$etc = haclfDisableTitlePatch();
+			}
+			// </IntraACL>
+
 			# Get the revision
 			$rev = $id
 				? Revision::newFromId( $id )
 				: Revision::newFromTitle( $title, false, Revision::READ_NORMAL );
 			$rev_id = $rev ? $rev->getId() : 0;
+			// <IntraACL>
+			if ( defined( 'HACL_HALOACL_VERSION' ) ) {
+				haclfRestoreTitlePatch( $etc );
+			}
+			// </IntraACL>
+			
 			# If there is no current revision, there is no page
 			if ( $id === false && !$rev ) {
 				$linkCache = LinkCache::singleton();
@@ -3605,8 +3651,28 @@ class Parser {
 			}
 			# Redirect?
 			$finalTitle = $title;
+			// <IntraACL>
+			if ( defined( 'HACL_HALOACL_VERSION' ) ) {
+				$etc = haclfDisableTitlePatch();
+			}
+			// </IntraACL>
 			$title = Title::newFromRedirect( $text );
+			// <IntraACL>
+			if ( defined( 'HACL_HALOACL_VERSION' ) ) {
+				haclfRestoreTitlePatch( $etc );
+			}
+			// </IntraACL>
 		}
+		// <IntraACL>
+		if ( !$canRead ) {
+			global $haclgInclusionDeniedMessage;
+			if ( $haclgInclusionDeniedMessage ) {
+				$text = wfMsg( $haclgInclusionDeniedMessage );
+			} elseif ( $haclgInclusionDeniedMessage === '' ) {
+				$text = '';
+			}
+		}
+		// </IntraACL>
 		return array(
 			'text' => $text,
 			'finalTitle' => $finalTitle,

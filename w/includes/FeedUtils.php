@@ -113,11 +113,8 @@ class FeedUtils {
 					$actiontext,
 					Linker::formatComment( $comment ) ) ) ) . "</p>\n";
 
-		// NOTE: Check permissions for anonymous users, not current user.
-		//       No "privileged" version should end up in the cache.
-		//       Most feed readers will not log in anway.
-		$anon = new User();
-		$accErrors = $title->getUserPermissionsErrors( 'read', $anon, true );
+		// NOTE: Check permissions for current user. -- HaloACL
+		$accErrors = $title->getUserPermissionsErrors( 'read', $wgUser, true );
 
 		// Can't diff special pages, unreadable pages or pages with no new revision
 		// to compare against: just return the text.

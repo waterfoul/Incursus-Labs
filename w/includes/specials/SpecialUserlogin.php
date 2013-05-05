@@ -961,7 +961,9 @@ class LoginForm extends SpecialPage {
 		}
 
 		$returnToTitle = Title::newFromText( $returnTo );
-		if ( !$returnToTitle ) {
+		/*patch|2011-04-05|IntraACL|start*/
+		if ( !$titleObj instanceof Title || method_exists( $titleObj, 'userCanReadEx' ) && !$titleObj->userCanReadEx() ) {
+		/*patch|2011-04-05|IntraACL|end*/
 			$returnToTitle = Title::newMainPage();
 		}
 

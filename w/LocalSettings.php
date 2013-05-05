@@ -137,7 +137,7 @@ require_once './extensions/Auth_phpBB.php';
  
 $wgAuth_Config = array(); // Clean.
  
-$wgAuth_Config['WikiGroupName'] = 'Wiki';       // Name of your PHPBB group
+$wgAuth_Config['WikiGroupName'] = '';       // Name of your PHPBB group
                                                 // users need to be a member
                                                 // of to use the wiki. (i.e. wiki)
                                                 // This can also be set to an array 
@@ -149,7 +149,7 @@ $wgAuth_Config['WikiGroupName'] = 'Wiki';       // Name of your PHPBB group
                                                 // $wgAuth_Config['WikiGroupName'] = array('Wiki', 'Wiki2');
                                                 // )
  
-$wgAuth_Config['UseWikiGroup'] = true;          // This tells the Plugin to require
+$wgAuth_Config['UseWikiGroup'] = false;          // This tells the Plugin to require
                                                 // a user to be a member of the above
                                                 // phpBB group. (ie. wiki) Setting
                                                 // this to false will let any phpBB
@@ -178,4 +178,5 @@ $wgAuth = new Auth_phpBB($wgAuth_Config);     // Auth_phpBB Plugin.
 
 require_once("$IP/extensions/Realnames/Realnames.php");
 
-
+require_once('extensions/IntraACL/includes/HACL_Initialize.php');
+enableIntraACL();

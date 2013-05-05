@@ -67,6 +67,10 @@ class RandomPage extends SpecialPage {
 			$this->getOutput()->addWikiMsg( strtolower( $this->getName() ) . '-nopages',
 				$this->getNsList(), count( $this->namespaces ) );
 			return;
+		} elseif ( method_exists( $title, 'userCanReadEx' ) && !$title->userCanReadEx() ) {
+			$article = new Article( $title );
+			$article->view();
+			return;
 		}
 
 		$redirectParam = $this->isRedirect() ? array( 'redirect' => 'no' ) : array();

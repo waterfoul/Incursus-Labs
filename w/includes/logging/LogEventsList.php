@@ -308,6 +308,12 @@ class LogEventsList extends ContextSource {
 		$formatter->setShowUserToolLinks( !( $this->flags & self::NO_EXTRA_USER_LINKS ) );
 
 		$title = $entry->getTarget();
+		// <IntraACL>
+		if ( !$title->userCanReadEx() ) {
+			return '';
+		}
+		// </IntraACL>
+		
 		$time = htmlspecialchars( $this->getLanguage()->userTimeAndDate(
 			$entry->getTimestamp(), $this->getUser() ) );
 

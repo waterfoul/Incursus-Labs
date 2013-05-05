@@ -512,7 +512,14 @@ class SpecialSearch extends SpecialPage {
 		$out .= "<ul class='mw-search-results'>\n";
 		$result = $matches->next();
 		while( $result ) {
-			$out .= $this->showHit( $result, $terms );
+			/*op-patch|TS|2011-02-08|HaloACL|SafeTitle|start*/
+			if (($result->getTitle() != NULL) 
+			    && ($result->getTitle()->userCanReadEx())) {
+			/*op-patch|TS|2011-02-08|end*/  
+				$out .= $this->showHit( $result, $terms );
+			/*op-patch|TS|2011-02-08|HaloACL|SafeTitle|start*/
+			}
+			/*op-patch|TS|2011-02-08|end*/  
 			$result = $matches->next();
 		}
 		$out .= "</ul>\n";
