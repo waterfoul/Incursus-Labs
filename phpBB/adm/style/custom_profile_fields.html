@@ -21,6 +21,14 @@
 	<!-- ENDIF -->
 <!-- END bool -->
 
+<!-- BEGIN disabled_bool -->
+        <!-- IF disabled_bool.FIELD_LENGTH eq 1 -->
+                <!-- BEGIN options --><input type="radio" class="radio" name="{bool.FIELD_IDENT}" value="{disabled_bool.options.OPTION_ID}"{disabled_bool.options.CHECKED} disabled="disabled" /><span class="genmed">{disabled_bool.options.VALUE}</span>&nbsp; &nbsp;<!-- END options -->
+        <!-- ELSE -->
+                <input type="checkbox" class="radio"name="{disabled_bool.FIELD_IDENT}" value="1"<!-- IF disabled_bool.FIELD_VALUE eq 1 --> checked="checked"<!-- ENDIF --> disabled="disabled" />
+        <!-- ENDIF -->
+<!-- END disabled_bool -->
+
 <!-- BEGIN int -->
 	<input type="text" name="{int.FIELD_IDENT}" id="{int.FIELD_IDENT}" size="{int.FIELD_LENGTH}" value="{int.FIELD_VALUE}" />
 <!-- END int -->
@@ -30,3 +38,39 @@
 	<span>{L_MONTH}:</span> <select name="{date.FIELD_IDENT}_month" id="{date.FIELD_IDENT}_month">{date.S_MONTH_OPTIONS}</select>
 	<span>{L_YEAR}:</span> <select name="{date.FIELD_IDENT}_year" id="{date.FIELD_IDENT}_year">{date.S_YEAR_OPTIONS}</select>
 <!-- END date -->
+<!-- BEGIN eveapikey -->
+        Key:<input type="text" class="post" name="{eveapikey.FIELD_IDENT}_key" id="{eveapikey.FIELD_IDENT}_key" size="12" maxlength="12" value="{eveapikey.FIELD_KEY}" onchange="resetApiLevel('{eveapikey.FIELD_IDENT}')" /><br>
+        VCode:<input type="text" class="post" name="{eveapikey.FIELD_IDENT}_vcode" id="{eveapikey.FIELD_IDENT}_vcode" size="64" maxlength="64" value="{eveapikey.FIELD_VCODE}" onchange="resetApiLevel('{eveapikey.FIELD_IDENT}')" /><br>
+        <input type="button" value="Check" onclick="checkAPI('{eveapikey.FIELD_IDENT}')" /> <span id="{eveapikey.FIELD_IDENT}_check_return"> </span><br>
+        Requested Permissions Level (refresh to update):<select name="{eveapikey.FIELD_IDENT}_level" id="{eveapikey.FIELD_IDENT}_level">
+                <option
+                        <!-- IF eveapikey.FIELD_MAX_LEVEL eq 1 -->value="0" <!-- IF eveapikey.FIELD_LEVEL eq 0 --> selected="true"<!-- ENDIF --><!-- ELSE -->value="1"<!-- ENDIF -->
+                        <!-- IF eveapikey.FIELD_LEVEL eq 1 --> selected="true"<!-- ENDIF -->
+                >Public (Level 1)</option>
+                <!-- IF eveapikey.LEVEL_2 eq 1 -->
+                        <option
+                                <!-- IF eveapikey.FIELD_MAX_LEVEL eq 2 -->value="0" <!-- IF eveapikey.FIELD_LEVEL eq 0 --> selected="true"<!-- ENDIF --><!-- ELSE -->value="2"<!-- ENDIF -->
+                                <!-- IF eveapikey.FIELD_LEVEL eq 2 --> selected="true"<!-- ENDIF -->
+                        >Basic User (Level 2)</option>
+                <!-- ENDIF -->
+                <!-- IF eveapikey.LEVEL_3 eq 1 -->
+                        <option
+                                <!-- IF eveapikey.FIELD_MAX_LEVEL eq 3 -->value="0" <!-- IF eveapikey.FIELD_LEVEL eq 0 --> selected="true"<!-- ENDIF --><!-- ELSE -->value="3"<!-- ENDIF -->
+                                <!-- IF eveapikey.FIELD_LEVEL eq 3 --> selected="true"<!-- ENDIF -->
+                        >Incursion Community Member (Level 3)</option>
+                <!-- ENDIF -->
+                <!-- IF eveapikey.LEVEL_4 eq 1 -->
+                        <option
+                                <!-- IF eveapikey.FIELD_MAX_LEVEL eq 4 -->value="0" <!-- IF eveapikey.FIELD_LEVEL eq 0 --> selected="true"<!-- ENDIF --><!-- ELSE -->value="4"<!-- ENDIF -->
+                                <!-- IF eveapikey.FIELD_LEVEL eq 4 --> selected="true"<!-- ENDIF -->
+                        >Lowsec Community Capable (Level 4)</option>
+                <!-- ENDIF -->
+                <!-- IF eveapikey.LEVEL_5 eq 1 -->
+                        <option
+                                <!-- IF eveapikey.FIELD_MAX_LEVEL eq 5 -->value="0" <!-- IF eveapikey.FIELD_LEVEL eq 0 --> selected="true"<!-- ENDIF --><!-- ELSE -->value="5"<!-- ENDIF -->
+                                <!-- IF eveapikey.FIELD_LEVEL eq 5 --> selected="true"<!-- ENDIF -->
+                        >Corporation Member (Level 5)</option>
+                <!-- ENDIF -->
+        </select>
+<!-- END eveapikey -->
+

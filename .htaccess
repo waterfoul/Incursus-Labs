@@ -1,3 +1,5 @@
-<FilesMatch .htaccess|cronStart$>
-	DENY FROM ALL
+<FilesMatch .htaccess|cronJob$>
+        DENY FROM ALL
 </FilesMatch>
+RewriteEngine On
+RewriteRule ^/?wiki(/.*)?$ %{DOCUMENT_ROOT}/w/index.php [L]

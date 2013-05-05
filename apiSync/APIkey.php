@@ -32,7 +32,7 @@
 		$yapeal = new mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_yapeal_db);
 		
 		chdir("yapeal");
-        set_include_path(get_include_path() . PATH_SEPARATOR . "yapeal");		
+	        set_include_path(get_include_path() . PATH_SEPARATOR . "yapeal");		
 		// Define short name for directory separator which always uses unix '/'.
 		if (!defined('DS')) {
 		  define('DS', '/');
