@@ -64,7 +64,7 @@ $messages = array(
 'toolbox' => 'Lebokoso la dithulusu',
 'otherlanguages' => 'Ka dipuo di sele',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Ditiragalo tsa sešeng',
 'disclaimers' => 'Tlhapa diatla',
 'edithelp' => 'Thuso ya go fetola',
@@ -96,9 +96,9 @@ O ipuletse akhaonte. O seka wa lebala go fetola tse o di dikgatlhegelo tsa gago 
 'yourpasswordagain' => 'Kwala selotlolo sa gago sa sephiri gape:',
 'remembermypassword' => 'Gakologelwa ikwadiso yame mo khompiutareng e (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'Ikwadise',
-'userlogin' => 'Ikwadise / ipulela tsebe',
+'wiki_userlogin' => 'Ikwadise / ipulela tsebe',
 'logout' => 'Tswala',
-'userlogout' => 'Tswala',
+'wiki_userlogout' => 'Tswala',
 'notloggedin' => 'Ga o a ikwadisa',
 'createaccount' => 'Ipulela tsebe',
 
@@ -117,7 +117,7 @@ O ipuletse akhaonte. O seka wa lebala go fetola tse o di dikgatlhegelo tsa gago 
 # Preferences page
 'mypreferences' => 'Dikgatlhegelo tsa me',
 'youremail' => 'E-mail:',
-'username' => 'Leina la modirisi:',
+'wiki_username' => 'Leina la modirisi:',
 
 # Recent changes
 'recentchanges' => 'Diphetogo tsa sešeng',

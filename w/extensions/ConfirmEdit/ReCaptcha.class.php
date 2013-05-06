@@ -19,8 +19,8 @@ class ReCaptcha extends SimpleCaptcha {
 	}
 
 	/**
-	 * Calls the library function recaptcha_check_answer to verify the users input.
-	 * Sets $this->recaptcha_error if the user is incorrect.
+	 * Calls the library function recaptcha_check_answer to verify the wiki_users input.
+	 * Sets $this->recaptcha_error if the wiki_user is incorrect.
 	 * @return boolean
 	 *
 	 */
@@ -66,7 +66,7 @@ class ReCaptcha extends SimpleCaptcha {
 	}
 
 	/**
-	 * Show a message asking the user to enter a captcha on edit
+	 * Show a message asking the wiki_user to enter a captcha on edit
 	 * The result will be treated as wiki text
 	 *
 	 * @param $action string Action being performed

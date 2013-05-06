@@ -16,7 +16,7 @@ $messages = array(
 'searchbutton' => 'Ṱolani',
 'talk'         => 'Ambani',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'mainpage'             => 'Hayani',
 'mainpage-description' => 'Hayani',
 
@@ -32,10 +32,10 @@ $messages = array(
 
 # Preferences page
 'changepassword' => 'Shandukisani phasiwede',
-'username'       => 'Dzina ḽa mushumisi:',
+'wiki_username'       => 'Dzina ḽa mushumisi:',
 
 # Miscellaneous special pages
-'newpages-username' => 'Dzina ḽa mushumisi:',
+'newpages-wiki_username' => 'Dzina ḽa mushumisi:',
 
 'exif-meteringmode-255' => 'Zwiṅwe',
 

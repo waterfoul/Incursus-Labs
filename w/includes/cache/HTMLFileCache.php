@@ -82,7 +82,7 @@ class HTMLFileCache extends FileCacheBase {
 	}
 
 	/**
-	 * Check if pages can be cached for this request/user
+	 * Check if pages can be cached for this request/wiki_user
 	 * @param $context IContextSource
 	 * @return bool
 	 */
@@ -110,13 +110,13 @@ class HTMLFileCache extends FileCacheBase {
 			}
 			return false;
 		}
-		$user = $context->getUser();
-		// Check for non-standard user language; this covers uselang,
-		// and extensions for auto-detecting user language.
+		$wiki_user = $context->getwiki_user();
+		// Check for non-standard wiki_user language; this covers uselang,
+		// and extensions for auto-detecting wiki_user language.
 		$ulang = $context->getLanguage()->getCode();
 		$clang = $wgContLang->getCode();
 		// Check that there are no other sources of variation
-		return !$user->getId() && !$user->getNewtalk() && $ulang == $clang;
+		return !$wiki_user->getId() && !$wiki_user->getNewtalk() && $ulang == $clang;
 	}
 
 	/**

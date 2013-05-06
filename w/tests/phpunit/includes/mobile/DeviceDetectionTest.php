@@ -8,9 +8,9 @@
 	/**
 	 * @dataProvider provideTestFormatName
 	 */
-	public function testFormatName( $format, $userAgent ) {
+	public function testFormatName( $format, $wiki_userAgent ) {
 		$detector = new DeviceDetection();
-		$this->assertEquals( $format, $detector->detectFormatName( $userAgent ) );
+		$this->assertEquals( $format, $detector->detectFormatName( $wiki_userAgent ) );
 	}
 
 	public function provideTestFormatName() {

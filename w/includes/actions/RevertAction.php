@@ -1,6 +1,6 @@
 <?php
 /**
- * File reversion user interface
+ * File reversion wiki_user interface
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,8 +57,8 @@ class RevertFileAction extends FormAction {
 		return 'upload';
 	}
 
-	protected function checkCanExecute( User $user ) {
-		parent::checkCanExecute( $user );
+	protected function checkCanExecute( wiki_user $wiki_user ) {
+		parent::checkCanExecute( $wiki_user );
 
 		$oldimage = $this->getRequest()->getText( 'oldimage' );
 		if ( strlen( $oldimage ) < 16
@@ -85,10 +85,10 @@ class RevertFileAction extends FormAction {
 
 		$timestamp = $this->oldFile->getTimestamp();
 
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		$lang = $this->getLanguage();
-		$userDate = $lang->userDate( $timestamp, $user );
-		$userTime = $lang->userTime( $timestamp, $user );
+		$wiki_userDate = $lang->wiki_userDate( $timestamp, $wiki_user );
+		$wiki_userTime = $lang->wiki_userTime( $timestamp, $wiki_user );
 		$siteDate = $wgContLang->date( $timestamp, false, false );
 		$siteTime = $wgContLang->time( $timestamp, false, false );
 
@@ -98,7 +98,7 @@ class RevertFileAction extends FormAction {
 				'vertical-label' => true,
 				'raw' => true,
 				'default' => $this->msg( 'filerevert-intro',
-					$this->getTitle()->getText(), $userDate, $userTime,
+					$this->getTitle()->getText(), $wiki_userDate, $wiki_userTime,
 					wfExpandUrl( $this->page->getFile()->getArchiveUrl( $this->getRequest()->getText( 'oldimage' ) ),
 						PROTO_CURRENT ) )->parseAsBlock()
 			),
@@ -120,13 +120,13 @@ class RevertFileAction extends FormAction {
 
 	public function onSuccess() {
 		$timestamp = $this->oldFile->getTimestamp();
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		$lang = $this->getLanguage();
-		$userDate = $lang->userDate( $timestamp, $user );
-		$userTime = $lang->userTime( $timestamp, $user );
+		$wiki_userDate = $lang->wiki_userDate( $timestamp, $wiki_user );
+		$wiki_userTime = $lang->wiki_userTime( $timestamp, $wiki_user );
 	
 		$this->getOutput()->addWikiMsg( 'filerevert-success', $this->getTitle()->getText(),
-			$userDate, $userTime,
+			$wiki_userDate, $wiki_userTime,
 			wfExpandUrl( $this->page->getFile()->getArchiveUrl( $this->getRequest()->getText( 'oldimage' ) ),
 				PROTO_CURRENT
 		) );

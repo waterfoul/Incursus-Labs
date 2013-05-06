@@ -29,7 +29,7 @@
  *		Type: Array of strings
  * maxRows: Maximum number of suggestions to display at one time
  *		Type: Number, Range: 1 - 100, Default: 7
- * delay: Number of ms to wait for the user to stop typing
+ * delay: Number of ms to wait for the wiki_user to stop typing
  *		Type: Number, Range: 0 - 1200, Default: 120
  * submitOnClick: Whether to submit the form containing the textbox when a suggestion is clicked
  *		Type: Boolean, Default: false
@@ -49,7 +49,7 @@
 
 $.suggestions = {
 	/**
-	 * Cancel any delayed updateSuggestions() call and inform the user so
+	 * Cancel any delayed updateSuggestions() call and inform the wiki_user so
 	 * they can cancel their result fetching if they use AJAX or something
 	 */
 	cancel: function ( context ) {
@@ -61,7 +61,7 @@ $.suggestions = {
 		}
 	},
 	/**
-	 * Restore the text the user originally typed in the textbox, before it was overwritten by highlight(). This
+	 * Restore the text the wiki_user originally typed in the textbox, before it was overwritten by highlight(). This
 	 * restores the value the currently displayed suggestions are based on, rather than the value just before
 	 * highlight() overwrote it; the former is arguably slightly more sensible.
 	 */
@@ -69,7 +69,7 @@ $.suggestions = {
 		context.data.$textbox.val( context.data.prevText );
 	},
 	/**
-	 * Ask the user-specified callback for new suggestions. Any previous delayed call to this function still pending
+	 * Ask the wiki_user-specified callback for new suggestions. Any previous delayed call to this function still pending
 	 * will be canceled. If the value in the textbox is empty or hasn't changed since the last time suggestions were fetched, this
 	 * function does nothing.
 	 * @param {Boolean} delayed Whether or not to delay this by the currently configured amount of time

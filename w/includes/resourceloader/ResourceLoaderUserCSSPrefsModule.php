@@ -1,6 +1,6 @@
 <?php
 /**
- * Resource loader module for user preference customizations.
+ * Resource loader module for wiki_user preference customizations.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
  */
 
 /**
- * Module for user preference customizations
+ * Module for wiki_user preference customizations
  */
 class ResourceLoaderUserCSSPrefsModule extends ResourceLoaderModule {
 
@@ -45,8 +45,8 @@ class ResourceLoaderUserCSSPrefsModule extends ResourceLoaderModule {
 			return $this->modifiedTime[$hash];
 		}
 
-		global $wgUser;
-		return $this->modifiedTime[$hash] = wfTimestamp( TS_UNIX, $wgUser->getTouched() );
+		global $wgwiki_user;
+		return $this->modifiedTime[$hash] = wfTimestamp( TS_UNIX, $wgwiki_user->getTouched() );
 	}
 	
 	/**
@@ -54,10 +54,10 @@ class ResourceLoaderUserCSSPrefsModule extends ResourceLoaderModule {
 	 * @return array
 	 */
 	public function getStyles( ResourceLoaderContext $context ) {
-		global $wgAllowUserCssPrefs, $wgUser;
+		global $wgAllowwiki_userCssPrefs, $wgwiki_user;
 
-		if ( $wgAllowUserCssPrefs ) {
-			$options = $wgUser->getOptions();
+		if ( $wgAllowwiki_userCssPrefs ) {
+			$options = $wgwiki_user->getOptions();
 
 			// Build CSS rules
 			$rules = array();
@@ -106,6 +106,6 @@ class ResourceLoaderUserCSSPrefsModule extends ResourceLoaderModule {
 	 * @return array
 	 */
 	public function getDependencies() {
-		return array( 'mediawiki.user' );
+		return array( 'mediawiki.wiki_user' );
 	}
 }

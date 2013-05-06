@@ -50,7 +50,7 @@ class TestRecorder {
 
 class DbTestPreviewer extends TestRecorder  {
 	protected $lb;      // /< Database load balancer
-	protected $db;      // /< Database connection to the main DB
+	protected ;      // /< Database connection to the main DB
 	protected $curRun;  // /< run ID number for the current run
 	protected $prevRun; // /< run ID number for the previous run, if any
 	protected $results; // /< Result array

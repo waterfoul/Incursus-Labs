@@ -36,8 +36,8 @@ function wfInstallerMain() {
 
 	if ( !is_null( $wgRequest->getVal( 'uselang' ) ) ) {
 		$langCode = $wgRequest->getVal( 'uselang' );
-	} elseif ( isset( $session['settings']['_UserLang'] ) ) {
-		$langCode = $session['settings']['_UserLang'];
+	} elseif ( isset( $session['settings']['_wiki_userLang'] ) ) {
+		$langCode = $session['settings']['_wiki_userLang'];
 	} else {
 		$langCode = 'en';
 	}

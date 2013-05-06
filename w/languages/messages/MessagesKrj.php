@@ -15,7 +15,7 @@
  */
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => "Koritan ang dalum kang manga ''link'':",
 'tog-justify' => 'Tururupungun ang kilid kang manga paragraph',
 'tog-hideminor' => "Tagoon ang gagmay nga ''edit'' sa mga bag-o nga ilis",
@@ -31,12 +31,12 @@ $messages = array(
 'tog-nocache' => "Ontatun ang ''page caching''",
 'tog-enotifwatchlistpages' => 'Padarhan ako kang e-mail kon may nag-ilis kang pahina nga akun ginabantayan',
 'tog-enotifminoredits' => "Padarhan man ako kang ''e-mail'' tohay sa manga gagmay nga pag-ilis sa manga pahina",
-'tog-shownumberswatching' => "Ipakita ang karakuun kang manga ''user'' nga galantaw",
+'tog-shownumberswatching' => "Ipakita ang karakuun kang manga ''wiki_user'' nga galantaw",
 'tog-forceeditsummary' => "Paman-an ako kon blanko nga ''edit summary'' ang akun ginapasulud",
 'tog-watchlisthideown' => "Indi pagpakita sa ''watchlist'' ang akun nga manga gin-islan",
 'tog-watchlisthidebots' => "Indi pagpakita sa ''watchlist'' ang manga gin-islan kang bot",
 'tog-watchlisthideminor' => "Indi pagpakita sa ''watchlist'' ang mga gagmay nga inislan",
-'tog-ccmeonemails' => "Padarhi man ako kang manga ''e-mail'' nga ginpadara ko sa iban nga manga ''user''",
+'tog-ccmeonemails' => "Padarhi man ako kang manga ''e-mail'' nga ginpadara ko sa iban nga manga ''wiki_user''",
 
 'underline-always' => 'Pirme gid',
 'underline-never' => 'Indi gid',
@@ -154,7 +154,7 @@ $messages = array(
 'jumpto' => 'Lompat sa:',
 'jumptosearch' => 'sagap',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Tunggəd sa {{SITENAME}}',
 'aboutpage' => 'Project:Tunggəd',
 'disclaimers' => 'Mga Panginwala',
@@ -168,7 +168,7 @@ $messages = array(
 
 'badaccess' => 'Sayup sa lisensya',
 'badaccess-group0' => 'Indi kaw ginpasogtan nga himoon ang lihuk nga ginalaum mo.',
-'badaccess-groups' => 'Ang imo ginpangayo nga lihuk ay para lang sa mga users sa {{PLURAL:$2|nga grupo|sara sa mga grupo}}: $1.',
+'badaccess-groups' => 'Ang imo ginpangayo nga lihuk ay para lang sa mga wiki_users sa {{PLURAL:$2|nga grupo|sara sa mga grupo}}: $1.',
 
 'versionrequired' => 'Version $1 kang MediaWiki kinahanglan',
 'versionrequiredtext' => 'Version $1 of MediaWiki kinahanglan para magamit ang page nga ja.
@@ -253,10 +253,10 @@ Lantawa sa [[Special:Version|version kang page]].',
 # Special:LinkSearch
 'linksearch-ok' => 'Sagap',
 
-# Special:ListUsers
-'listusers-submit' => 'Ipakita',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Ipakita',
 
-# E-mail user
+# E-mail wiki_user
 'emailmessage' => 'Mensahe',
 
 # Delete
@@ -292,8 +292,8 @@ Lantawa sa [[Special:Version|version kang page]].',
 'tooltip-t-recentchangeslinked' => 'Mga bag-o lng ilis nga mga page nga naka-link halin sa page nga ja',
 'tooltip-feed-rss' => 'RSS feed para sa page nga ja',
 'tooltip-feed-atom' => 'Atom feed para sa page nga ja',
-'tooltip-t-contributions' => 'Lantawa ang listahan kang mga ginbulig kang user nga ja',
-'tooltip-t-emailuser' => 'Padarhi kang e-mail ang user nga ja',
+'tooltip-t-contributions' => 'Lantawa ang listahan kang mga ginbulig kang wiki_user nga ja',
+'tooltip-t-emailwiki_user' => 'Padarhi kang e-mail ang wiki_user nga ja',
 
 # Special:NewFiles
 'ilsubmit' => 'Sagap',

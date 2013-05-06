@@ -34,14 +34,14 @@ class SearchMySQL extends SearchEngine {
 
 	/**
 	 * Creates an instance of this class
-	 * @param $db DatabaseMysql: database object
+	 * @param  DatabaseMysql: database object
 	 */
-	function __construct( $db ) {
-		parent::__construct( $db );
+	function __construct(  ) {
+		parent::__construct(  );
 	}
 
 	/**
-	 * Parse the user's query and transform it into an SQL fragment which will
+	 * Parse the wiki_user's query and transform it into an SQL fragment which will
 	 * become part of a WHERE clause
 	 *
 	 * @param $filteredText string
@@ -336,8 +336,8 @@ class SearchMySQL extends SearchEngine {
 	 * @param $text String
 	 */
 	function update( $id, $title, $text ) {
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->replace( 'searchindex',
+		w = wfGetDB( DB_MASTER );
+		w->replace( 'searchindex',
 			array( 'si_page' ),
 			array(
 				'si_page' => $id,
@@ -354,13 +354,13 @@ class SearchMySQL extends SearchEngine {
 	 * @param $title String
 	 */
 	function updateTitle( $id, $title ) {
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
-		$dbw->update( 'searchindex',
+		w->update( 'searchindex',
 			array( 'si_title' => $this->normalizeText( $title ) ),
 			array( 'si_page'  => $id ),
 			__METHOD__,
-			array( $dbw->lowPriorityOption() ) );
+			array( w->lowPriorityOption() ) );
 	}
 
 	/**
@@ -430,8 +430,8 @@ class SearchMySQL extends SearchEngine {
 		if( is_null( self::$mMinSearchLength ) ) {
 			$sql = "SHOW GLOBAL VARIABLES LIKE 'ft\\_min\\_word\\_len'";
 
-			$dbr = wfGetDB( DB_SLAVE );
-			$result = $dbr->query( $sql );
+			r = wfGetDB( DB_SLAVE );
+			$result = r->query( $sql );
 			$row = $result->fetchObject();
 			$result->free();
 

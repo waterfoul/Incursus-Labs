@@ -30,7 +30,7 @@ if( !defined( 'MEDIAWIKI' ) ) die( -1 );
 /**
  * @ingroup Templates
  */
-class UsercreateTemplate extends QuickTemplate {
+class wiki_usercreateTemplate extends QuickTemplate {
 	function addInputItem( $name, $value, $type, $msg, $helptext = false ) {
 		$this->data['extraInput'][] = array(
 			'name' => $name,
@@ -54,11 +54,11 @@ class UsercreateTemplate extends QuickTemplate {
 <?php } ?>
 
 <div id="signupstart"><?php $this->msgWiki( 'signupstart' ); ?></div>
-<div id="userlogin">
+<div id="wiki_userlogin">
 
-<form name="userlogin2" id="userlogin2" method="post" action="<?php $this->text('action') ?>">
+<form name="wiki_userlogin2" id="wiki_userlogin2" method="post" action="<?php $this->text('action') ?>">
 	<h2><?php $this->msg('createaccount') ?></h2>
-	<p id="userloginlink"><?php $this->html('link') ?></p>
+	<p id="wiki_userloginlink"><?php $this->html('link') ?></p>
 	<?php $this->html('header'); /* pre-table point for form plugins... */ ?>
 	<?php if( $this->haveData( 'languages' ) ) { ?><div id="languagelinks"><p><?php $this->html( 'languages' ); ?></p></div><?php } ?>
 	<table>
@@ -85,7 +85,7 @@ class UsercreateTemplate extends QuickTemplate {
 				'id' => 'wpPassword2',
 				'tabindex' => '2',
 				'size' => '20'
-			) + User::passwordChangeInputAttribs() ); ?>
+			) + wiki_user::passwordChangeInputAttribs() ); ?>
 			</td>
 		</tr>
 	<?php if( $this->data['usedomain'] ) {
@@ -113,7 +113,7 @@ class UsercreateTemplate extends QuickTemplate {
 			'id' => 'wpRetype',
 			'tabindex' => '4',
 			'size' => '20'
-		) + User::passwordChangeInputAttribs() ); ?>
+		) + wiki_user::passwordChangeInputAttribs() ); ?>
 			</td>
 		</tr>
 		<tr>
@@ -140,7 +140,7 @@ class UsercreateTemplate extends QuickTemplate {
 					</div>
 				</td>
 			<?php } ?>
-			<?php if( $this->data['userealname'] ) { ?>
+			<?php if( $this->data['wiki_userealname'] ) { ?>
 				</tr>
 				<tr>
 					<td class="mw-label"><label for='wpRealName'><?php $this->msg('yourrealname') ?></label></td>
@@ -153,7 +153,7 @@ class UsercreateTemplate extends QuickTemplate {
 						</div>
 					</td>
 			<?php } ?>
-			<?php if( $this->data['usereason'] ) { ?>
+			<?php if( $this->data['wiki_usereason'] ) { ?>
 				</tr>
 				<tr>
 					<td class="mw-label"><label for='wpReason'><?php $this->msg('createaccountreason') ?></label></td>

@@ -67,7 +67,7 @@ $specialPageAliases = array(
 	'Listbots'                  => array( 'BotListası' ),
 	'Listfiles'                 => array( 'DosyeListası', 'PätretListası' ),
 	'Listredirects'             => array( 'YönnedirmeListası', 'YönndermäListası' ),
-	'Listusers'                 => array( 'KullanıcıListası' ),
+	'Listwiki_users'                 => array( 'KullanıcıListası' ),
 	'Mycontributions'           => array( 'Katılmaklarım' ),
 	'Mytalk'                    => array( 'SözleşmäkSayfam', 'SözleşmäkYapraım' ),
 	'Newimages'                 => array( 'EniDosyeler', 'EniPätretler' ),
@@ -97,7 +97,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Baalantıların altını çiz',
 'tog-justify' => 'Paragrafları düz',
 'tog-hideminor' => 'Küçük diişmäkleri "Bitki diişmäkler" sayfasında sakla',
@@ -119,7 +119,7 @@ $messages = array(
 'tog-previewonfirst' => 'İlk kerä diiştirär känä ön siiri göster',
 'tog-nocache' => 'Sayfaları keş etmää yasakla',
 'tog-enotifwatchlistpages' => 'Sayfa diişär känä bana e-mail gönder',
-'tog-enotifusertalkpages' => 'Kullanıcı sayfamda diişmäk olar kana bana e-mail gönder',
+'tog-enotifwiki_usertalkpages' => 'Kullanıcı sayfamda diişmäk olar kana bana e-mail gönder',
 'tog-enotifminoredits' => 'Sayfalardaki küçük diişmäklerdä dä bana e-mail gönder',
 'tog-enotifrevealaddr' => 'Bildirmää maillerinde e-mail adresimi göster.',
 'tog-shownumberswatching' => 'İzlään kullanıcı sayısın göster',
@@ -263,7 +263,7 @@ $messages = array(
 'talk' => 'Dartışma',
 'views' => 'Görünüşler',
 'toolbox' => 'İnstrumentlär',
-'userpage' => 'Kullanıcı sayfasını göster',
+'wiki_userpage' => 'Kullanıcı sayfasını göster',
 'projectpage' => 'Proekt sayfasına bak',
 'imagepage' => 'Resim sayfasın göster',
 'mediawikipage' => 'Mesaj sayfasını göster',
@@ -281,7 +281,7 @@ $messages = array(
 'jumptonavigation' => 'kullan',
 'jumptosearch' => 'ara',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} için',
 'aboutpage' => 'Project:Uurunda',
 'copyright' => 'İçersindeki $1 altında.',
@@ -335,7 +335,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Yazı',
-'nstab-user' => 'kullanıcı sayfası',
+'nstab-wiki_user' => 'kullanıcı sayfası',
 'nstab-media' => 'Media',
 'nstab-special' => 'Maasus yaprak',
 'nstab-project' => 'Proekt sayfası',
@@ -360,7 +360,7 @@ $messages = array(
 Bu hal var nasıl peydalansın açan sayfa olêr geçmiş reviziyası o sayfanın angısı silindi.
 
 Herliim sebep diilsä bu, bekim karşılaştınız bir yannışlan angısı yapıldı açan programma yazıldı.
-Yalvarêrız benneyiniz URL - i hem raport ediniz bunu bir [[Special:ListUsers/sysop|izmetliyä]]',
+Yalvarêrız benneyiniz URL - i hem raport ediniz bunu bir [[Special:Listwiki_users/sysop|izmetliyä]]',
 'missingarticle-rev' => '(reviziya#: $1)',
 'internalerror' => 'İç yannış',
 'internalerror_info' => 'İç yannış: $1',
@@ -376,7 +376,7 @@ Yalvarêrız benneyiniz URL - i hem raport ediniz bunu bir [[Special:ListUsers/s
 
 # Login and logout pages
 'logouttext' => 'Sessiyayı kapattınız.
-Şindi var nicä devam etmää kullanmaa {{SITENAME}} saytını kimlik göstermedän yaki [[Special:UserLogin|enidän sessiya açmaa]] (ister hep o kullanıcı adıylan, ister başka bir kullanıcı adıylan). O zamana kadar ani web brauzerinizin keşi temizlenecek bir takım sayfalar var nicä görünsün sansın sessiya hep açık.',
+Şindi var nicä devam etmää kullanmaa {{SITENAME}} saytını kimlik göstermedän yaki [[Special:wiki_userLogin|enidän sessiya açmaa]] (ister hep o kullanıcı adıylan, ister başka bir kullanıcı adıylan). O zamana kadar ani web brauzerinizin keşi temizlenecek bir takım sayfalar var nicä görünsün sansın sessiya hep açık.',
 'welcomecreation' => '== Hoş geldiniz $1! ==
 
 Esapınız açıldı. Unutmayın [[Special:Preferences|{{SITENAME}} preferences]] seçimnerin diiştirmää.',
@@ -389,9 +389,9 @@ Esapınız açıldı. Unutmayın [[Special:Preferences|{{SITENAME}} preferences]
 'nav-login-createaccount' => 'Gir / esap yarat',
 'loginprompt' => "Bak: {{SITENAME}} saytında sessiya açmaa için tarayıcınızda läazım cookies aktivat olsun. <br />
 Kullanıcı adınız '''var nicä içersin'''gagauzça nışan, boşluk . Savaşın kullanıcı adınıza e-mail adresi '''girmemää'''.",
-'userlogin' => 'Gir / esap yarat',
+'wiki_userlogin' => 'Gir / esap yarat',
 'logout' => 'Sessiyanı kapat',
-'userlogout' => 'Oturmaa kapat',
+'wiki_userlogout' => 'Oturmaa kapat',
 'notloggedin' => 'Sessiya diil açık',
 'nologin' => "Henez aza olmadınız? '''$1'''.",
 'nologinlink' => 'Esap yarat',
@@ -400,14 +400,14 @@ Kullanıcı adınız '''var nicä içersin'''gagauzça nışan, boşluk . Savaş
 'gotaccountlink' => 'Herliim ilerdän esap açtıysanız girin bu baalantıdan.',
 'createaccountmail' => 'e-maillan',
 'badretype' => 'Parollar angılarını girdiniz uymêêr.',
-'userexists' => 'Kullanıcı adı ani girdiniz kullanılêr. Yalvarêrız farklı bir kullanıcı adı seçin.',
+'wiki_userexists' => 'Kullanıcı adı ani girdiniz kullanılêr. Yalvarêrız farklı bir kullanıcı adı seçin.',
 'loginerror' => 'Sessiya açmaa yannışı.',
 'noname' => 'Geçerli bir kullanıcı adı girmediniz.',
 'loginsuccesstitle' => 'Sessiya başarılan açıldı',
 'loginsuccess' => '{{SITENAME}} saytında "$1" kullanıcı adılan sessiya açtınız.',
-'nosuchuser' => 'Burada "$1" adlı kullanıcı yok. Yokla bir taa nesoy yazdın, yaki eni esap yarat.',
-'nosuchusershort' => 'Burada "$1" adlı kullanıcı yok. Yoklayın ani ad nesoy yazıldı.',
-'nouserspecified' => 'Läazım bir kullanıcı adı göstermää.',
+'nosuchwiki_user' => 'Burada "$1" adlı kullanıcı yok. Yokla bir taa nesoy yazdın, yaki eni esap yarat.',
+'nosuchwiki_usershort' => 'Burada "$1" adlı kullanıcı yok. Yoklayın ani ad nesoy yazıldı.',
+'nowiki_userspecified' => 'Läazım bir kullanıcı adı göstermää.',
 'wrongpassword' => 'Parolu yannış girdiniz. Yalvarerêz tekrar denämää.',
 'wrongpasswordempty' => 'Boş parol girdiniz. Yalvarerez tekrar denämää.',
 'passwordtooshort' => 'Parolunuz çok kısa. En az $1 bukva hem/yaki țifra läazım olsun.',
@@ -484,7 +484,7 @@ Herliim girmediniz [[Special:Preferences|seçimner]] bölümünde geçerli bir e
 'loginreqlink' => 'sessiya aç',
 'loginreqpagetext' => 'Lääzım $1 görmää übür sayfaları.',
 'accmailtitle' => 'Parol gönderildi.',
-'accmailtext' => '[[User talk:$1|$1]] kullanıcısın parolu $2 adresine gönderildi.',
+'accmailtext' => '[[wiki_user talk:$1|$1]] kullanıcısın parolu $2 adresine gönderildi.',
 'newarticle' => '(Eni)',
 'newarticletext' => "Henez var olmayan bir sayfaya konulmuş baalantıya tuşladınız. Bu sayfayı yaratmaa deyni aşaadaki tekst kutusunu kullanınız. Bilgi için [[{{MediaWiki:Helppage}}|yardım sayfasına]] bakınız. Herliim buraya yannış geldiniz, läazım tuşlamaa programınızın '''Geeri''' tuşuna.",
 'noarticletext' => 'Bu sayfa boş.
@@ -510,7 +510,7 @@ Hem siz garantiyada bulunêrsiniz ani eklemäklerin avtorusunuz, yaki onnarı ko
 'template-semiprotected' => '(yarı-korunmaa)',
 'hiddencategories' => 'Bu sayfa {{PLURAL:$1|1 saklı kategoriyaya|$1 saklı kategoriyaya}} baalı:',
 'nocreatetext' => '{{SITENAME}} eni yazılar yaratmaa yasaklandı.
-Sizä yakışêr geeri dönmää hem düzmää var olan yapraa, yaki [[Special:UserLogin|sessiya açmaa yaki esap yaratmaa]].',
+Sizä yakışêr geeri dönmää hem düzmää var olan yapraa, yaki [[Special:wiki_userLogin|sessiya açmaa yaki esap yaratmaa]].',
 'permissionserrors' => 'İzin yannışları',
 'permissionserrorstext-withaction' => 'Aşaadaki {{PLURAL:$1|sebep|sebepler}}ä deyni yok $2 kuvediniz:',
 'recreate-moveddeleted-warn' => "'''Bak: Siz yarattınız o sayfayı angısı ilerdän silindi.'''
@@ -550,7 +550,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 
 # Revision deletion
 'rev-deleted-comment' => '(yorum silindi)',
-'rev-deleted-user' => '(kullanıcı adı silindi)',
+'rev-deleted-wiki_user' => '(kullanıcı adı silindi)',
 'rev-deleted-event' => '(giriş silindi)',
 'rev-delundel' => 'göster/sakla',
 'revdel-restore' => 'Görümü diiştir',
@@ -601,7 +601,7 @@ Aaramaanızın önünä ''all:'' prefiksini koyun da deneyin hepsi içlii aarama
 'mypreferences' => 'Seçimnerim',
 'skin-preview' => 'Ön siir',
 'youremail' => 'E-mail adresiniz*',
-'username' => 'Kullanıcı adı:',
+'wiki_username' => 'Kullanıcı adı:',
 'uid' => 'Registrațiya nomeri:',
 'yourrealname' => 'Haliz adınız:',
 'yourlanguage' => 'Dil:',
@@ -612,15 +612,15 @@ Aaramaanızın önünä ''all:'' prefiksini koyun da deneyin hepsi içlii aarama
 'prefs-help-realname' => '* Aslı ad (istemää baalı): herliim seçersäniz aslı adı vermää, işinize görä sizin için kullanılacêk.',
 'prefs-help-email-required' => 'E-mail adres istenildi.',
 
-# User rights
-'editinguser' => "'''[[User:$1|$1]]''' sayfasını diiştirersiniz ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+# wiki_user rights
+'editingwiki_user' => "'''[[wiki_user:$1|$1]]''' sayfasını diiştirersiniz ([[wiki_user talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Groups
 'group-sysop' => 'Administratorlar',
 
 'grouppage-sysop' => '{{ns:project}}:Önderciler',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Kullanıcı hakları jurnalı',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -679,7 +679,7 @@ Sizin bakmaa [[Special:Watchlist|listasındaki]] sayfalar verildi '''kalın''' b
 'filehist-datetime' => 'Gün/Zaman',
 'filehist-thumb' => 'Küçük resim',
 'filehist-thumbtext' => '$1 versiyası için küçültülmüş halı',
-'filehist-user' => 'Kullanıcı',
+'filehist-wiki_user' => 'Kullanıcı',
 'filehist-dimensions' => 'Masştablar',
 'filehist-filesize' => 'Fayl ölçüleri',
 'filehist-comment' => 'Kommentariya',
@@ -709,7 +709,7 @@ Sizin bakmaa [[Special:Watchlist|listasındaki]] sayfalar verildi '''kalın''' b
 'statistics-header-pages' => 'Sayfa istatistikaları',
 'statistics-header-edits' => 'Diişmäkleri istatistikaları',
 'statistics-header-views' => 'Resim istatikaları',
-'statistics-header-users' => 'Kullanıcı istatistikaları',
+'statistics-header-wiki_users' => 'Kullanıcı istatistikaları',
 'statistics-header-hooks' => 'Başka istatistakalar',
 'statistics-articles' => 'Yazılar',
 'statistics-pages' => 'Yapraklar',
@@ -720,9 +720,9 @@ Sizin bakmaa [[Special:Watchlist|listasındaki]] sayfalar verildi '''kalın''' b
 'statistics-views-total' => 'Hepsi resimlär',
 'statistics-views-total-desc' => 'Var nica olmadı hem maasus yapraklarından resim eklenmee',
 'statistics-views-peredit' => 'Diişmäk başına resimlär',
-'statistics-users' => 'Registratlı [[Special:ListUsers|kullanıcılar]]',
-'statistics-users-active' => 'Aktivli kullanıcılar',
-'statistics-users-active-desc' => 'Bitki {{PLURAL:$1|gün|$1 günde}} çalışmaa yapmaa kullanıcılar',
+'statistics-wiki_users' => 'Registratlı [[Special:Listwiki_users|kullanıcılar]]',
+'statistics-wiki_users-active' => 'Aktivli kullanıcılar',
+'statistics-wiki_users-active-desc' => 'Bitki {{PLURAL:$1|gün|$1 günde}} çalışmaa yapmaa kullanıcılar',
 'statistics-mostpopular' => 'En anılmış yazılar',
 
 'disambiguations' => 'Maana aydınnatmak yaprakları',
@@ -759,7 +759,7 @@ Sizin bakmaa [[Special:Watchlist|listasındaki]] sayfalar verildi '''kalın''' b
 'longpages' => 'Uzun sayfalar',
 'deadendpages' => 'Başka sayfalara baalantısız sayfalar',
 'protectedpages' => 'Korunma altındaki sayfalar',
-'listusers' => 'Kullanıcı listası',
+'listwiki_users' => 'Kullanıcı listası',
 'newpages' => 'Eni sayfalar',
 'ancientpages' => 'En bitki diişmäk datası en eski olan yazılar',
 'move' => 'Aadını diiştir',
@@ -773,7 +773,7 @@ Sizin bakmaa [[Special:Watchlist|listasındaki]] sayfalar verildi '''kalın''' b
 'booksources-go' => 'Git',
 
 # Special:Log
-'specialloguserlabel' => 'Kullanıcı:',
+'speciallogwiki_userlabel' => 'Kullanıcı:',
 'speciallogtitlelabel' => 'Yazı adı:',
 'log' => 'Jurnallar',
 'all-logs-page' => 'Hepsi jurnallar',
@@ -795,14 +795,14 @@ Sizin bakmaa [[Special:Watchlist|listasındaki]] sayfalar verildi '''kalın''' b
 # Special:LinkSearch
 'linksearch' => 'İç baalantlar',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Eni kullanıcı bennemäkleri',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Eni kullanıcı bennemäkleri',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(azaların listası)',
 
-# E-mail user
-'emailuser' => 'Gönder bu kullanıcıya bir e-mail',
+# E-mail wiki_user
+'emailwiki_user' => 'Gönder bu kullanıcıya bir e-mail',
 
 # Watchlist
 'watchlist' => 'Bakmaa listam',
@@ -891,7 +891,7 @@ Burada bitki seçimner '''$1''' yazı diiştirmää deyni:",
 'sp-contributions-blocklog' => 'Köstek jurnalı',
 'sp-contributions-talk' => 'Konuşmaa',
 'sp-contributions-search' => 'Katılmakları aara',
-'sp-contributions-username' => 'IP adres yaki kullanıcı adı',
+'sp-contributions-wiki_username' => 'IP adres yaki kullanıcı adı',
 'sp-contributions-submit' => 'Ara',
 
 # What links here
@@ -973,7 +973,7 @@ Yalvarêrêz başka bir ad seçmää.',
 'importlogpage' => 'Fayl aktarmaa jurnalı',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Kullanıcı sayfam',
+'tooltip-pt-wiki_userpage' => 'Kullanıcı sayfam',
 'tooltip-pt-mytalk' => 'Sözleşmäk sayfam',
 'tooltip-pt-preferences' => 'Seçimnerim',
 'tooltip-pt-watchlist' => 'İzlemää aldıım sayfalar',
@@ -1007,13 +1007,13 @@ Dönün baş yapraa',
 'tooltip-feed-rss' => 'Bu sayfa için RSS beslemää',
 'tooltip-feed-atom' => 'Bu sayfa için atom beslemää',
 'tooltip-t-contributions' => 'Kullanıcının katılmak listasını gör',
-'tooltip-t-emailuser' => 'Bu kullanıcı için e-mail gönder',
+'tooltip-t-emailwiki_user' => 'Bu kullanıcı için e-mail gönder',
 'tooltip-t-upload' => 'Faylları ükle',
 'tooltip-t-specialpages' => 'Hepsi maasus yaprakların listasını göster',
 'tooltip-t-print' => 'Bu sayfanın tiparlanmaa uygun versiyası',
 'tooltip-t-permalink' => 'Sayfanın bu versiyasına deyni dayma baalantı',
 'tooltip-ca-nstab-main' => 'Yazıya bak',
-'tooltip-ca-nstab-user' => 'Kullanıcı sayfasın göster',
+'tooltip-ca-nstab-wiki_user' => 'Kullanıcı sayfasın göster',
 'tooltip-ca-nstab-special' => 'Bu maasus sayfa olduuna deyni yok nasıl yapmaa diişler.',
 'tooltip-ca-nstab-project' => 'Proekt sayfasın göster',
 'tooltip-ca-nstab-image' => 'Pätret sayfasın göster',

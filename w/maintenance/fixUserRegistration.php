@@ -1,6 +1,6 @@
 <?php
 /**
- * Fix the user_registration field.
+ * Fix the wiki_user_registration field.
  * In particular, for values which are NULL, set them to the date of the first edit
  *
  * This program is free software; you can redistribute it and/or modify
@@ -25,29 +25,29 @@
 require_once( __DIR__ . '/Maintenance.php' );
 
 /**
- * Maintenance script that fixes the user_registration field.
+ * Maintenance script that fixes the wiki_user_registration field.
  *
  * @ingroup Maintenance
  */
-class FixUserRegistration extends Maintenance {
+class Fixwiki_userRegistration extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Fix the user_registration field";
+		$this->mDescription = "Fix the wiki_user_registration field";
 	}
 
 	public function execute() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$dbw = wfGetDB( DB_MASTER );
+		r = wfGetDB( DB_SLAVE );
+		w = wfGetDB( DB_MASTER );
 
-		// Get user IDs which need fixing
-		$res = $dbr->select( 'user', 'user_id', 'user_registration IS NULL', __METHOD__ );
+		// Get wiki_user IDs which need fixing
+		$res = r->select( 'wiki_user', 'wiki_user_id', 'wiki_user_registration IS NULL', __METHOD__ );
 		foreach ( $res as $row ) {
-			$id = $row->user_id;
+			$id = $row->wiki_user_id;
 			// Get first edit time
-			$timestamp = $dbr->selectField( 'revision', 'MIN(rev_timestamp)', array( 'rev_user' => $id ), __METHOD__ );
+			$timestamp = r->selectField( 'revision', 'MIN(rev_timestamp)', array( 'rev_wiki_user' => $id ), __METHOD__ );
 			// Update
 			if ( !empty( $timestamp ) ) {
-				$dbw->update( 'user', array( 'user_registration' => $timestamp ), array( 'user_id' => $id ), __METHOD__ );
+				w->update( 'wiki_user', array( 'wiki_user_registration' => $timestamp ), array( 'wiki_user_id' => $id ), __METHOD__ );
 				$this->output( "$id $timestamp\n" );
 			} else {
 				$this->output( "$id NULL\n" );
@@ -57,5 +57,5 @@ class FixUserRegistration extends Maintenance {
 	}
 }
 
-$maintClass = "FixUserRegistration";
+$maintClass = "Fixwiki_userRegistration";
 require_once( RUN_MAINTENANCE_IF_MAIN );

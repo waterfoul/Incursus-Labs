@@ -22,7 +22,7 @@
  */
 
 /**
- * Special page allowing users with the appropriate permissions to view
+ * Special page allowing wiki_users with the appropriate permissions to view
  * and hide revisions. Log items can also be hidden.
  *
  * @ingroup SpecialPage
@@ -120,7 +120,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		$this->checkReadOnly();
 
 		$output = $this->getOutput();
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 
 		$this->setHeaders();
 		$this->outputHeader();
@@ -184,7 +184,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 			throw new ErrorPageError( 'revdelete-nooldid-title', 'revdelete-nooldid-text' );
 		}
 		$this->typeInfo = self::$allowedTypes[$this->typeName];
-		$this->mIsAllowed = $user->isAllowed( $this->typeInfo['permission'] );
+		$this->mIsAllowed = $wiki_user->isAllowed( $this->typeInfo['permission'] );
 
 		# If we have revisions, get the title from the first one
 		# since they should all be from the same page. This allows
@@ -207,9 +207,9 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		$this->checks = array(
 			array( $this->typeInfo['check-label'], 'wpHidePrimary', $this->typeInfo['deletion-bits'] ),
 			array( 'revdelete-hide-comment', 'wpHideComment', Revision::DELETED_COMMENT ),
-			array( 'revdelete-hide-user', 'wpHideUser', Revision::DELETED_USER )
+			array( 'revdelete-hide-wiki_user', 'wpHidewiki_user', Revision::DELETED_USER )
 		);
-		if( $user->isAllowed('suppressrevision') ) {
+		if( $wiki_user->isAllowed('suppressrevision') ) {
 			$this->checks[] = array( 'revdelete-hide-restricted',
 				'wpHideRestricted', Revision::DELETED_RESTRICTED );
 		}
@@ -228,7 +228,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		LogEventsList::showLogExtract( $output, 'delete',
 			$this->targetObj, '', array( 'lim' => 25, 'conds' => $qc ) );
 		# Show relevant lines from the suppression log
-		if( $user->isAllowed( 'suppressionlog' ) ) {
+		if( $wiki_user->isAllowed( 'suppressionlog' ) ) {
 			$suppressLogPage = new LogPage( 'suppress' );
 			$output->addHTML( "<h2>" . $suppressLogPage->getName()->escaped()  . "</h2>\n" );
 			LogEventsList::showLogExtract( $output, 'suppress',
@@ -258,7 +258,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 					array( 'action' => 'history' )
 				);
 				# Link to deleted edits
-				if( $this->getUser()->isAllowed('undelete') ) {
+				if( $this->getwiki_user()->isAllowed('undelete') ) {
 					$undelete = SpecialPage::getTitleFor( 'Undelete' );
 					$links[] = Linker::linkKnown(
 						$undelete,
@@ -295,32 +295,32 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		$repo = RepoGroup::singleton()->getLocalRepo();
 		$oimage = $repo->newFromArchiveName( $this->targetObj, $archiveName );
 		$oimage->load();
-		// Check if user is allowed to see this file
+		// Check if wiki_user is allowed to see this file
 		if ( !$oimage->exists() ) {
 			$this->getOutput()->addWikiMsg( 'revdelete-no-file' );
 			return;
 		}
-		$user = $this->getUser();
-		if( !$oimage->userCan( File::DELETED_FILE, $user ) ) {
+		$wiki_user = $this->getwiki_user();
+		if( !$oimage->wiki_userCan( File::DELETED_FILE, $wiki_user ) ) {
 			if( $oimage->isDeleted( File::DELETED_RESTRICTED ) ) {
 				throw new PermissionsError( 'suppressrevision' );
 			} else {
 				throw new PermissionsError( 'deletedtext' );
 			}
 		}
-		if ( !$user->matchEditToken( $this->token, $archiveName ) ) {
+		if ( !$wiki_user->matchEditToken( $this->token, $archiveName ) ) {
 			$lang = $this->getLanguage();
 			$this->getOutput()->addWikiMsg( 'revdelete-show-file-confirm',
 				$this->targetObj->getText(),
-				$lang->userDate( $oimage->getTimestamp(), $user ),
-				$lang->userTime( $oimage->getTimestamp(), $user ) );
+				$lang->wiki_userDate( $oimage->getTimestamp(), $wiki_user ),
+				$lang->wiki_userTime( $oimage->getTimestamp(), $wiki_user ) );
 			$this->getOutput()->addHTML(
 				Xml::openElement( 'form', array(
 					'method' => 'POST',
 					'action' => $this->getTitle()->getLocalUrl(
 						'target=' . urlencode( $this->targetObj->getPrefixedDBkey() ) .
 						'&file=' . urlencode( $archiveName ) .
-						'&token=' . urlencode( $user->getEditToken( $archiveName ) ) )
+						'&token=' . urlencode( $wiki_user->getEditToken( $archiveName ) ) )
 					)
 				) .
 				Xml::submitButton( $this->msg( 'revdelete-show-file-submit' )->text() ) .
@@ -331,7 +331,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		$this->getOutput()->disable();
 		# We mustn't allow the output to be Squid cached, otherwise
 		# if an admin previews a deleted image, and it's cached, then
-		# a user without appropriate permissions can toddle off and
+		# a wiki_user without appropriate permissions can toddle off and
 		# nab the image, and Squid will serve it
 		$this->getRequest()->response()->header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', 0 ) . ' GMT' );
 		$this->getRequest()->response()->header( 'Cache-Control: no-cache, no-store, max-age=0, must-revalidate' );
@@ -355,10 +355,10 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 
 	/**
 	 * Show a list of items that we will operate on, and show a form with checkboxes
-	 * which will allow the user to choose new visibility settings.
+	 * which will allow the wiki_user to choose new visibility settings.
 	 */
 	protected function showForm() {
-		$UserAllowed = true;
+		$wiki_userAllowed = true;
 
 		if ( $this->typeName == 'logging' ) {
 			$this->getOutput()->addWikiMsg( 'logdelete-selected', $this->getLanguage()->formatNum( count($this->ids) ) );
@@ -378,7 +378,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 				if( !$this->submitClicked ) {
 					throw new PermissionsError( 'suppressrevision' );
 				}
-				$UserAllowed = false;
+				$wiki_userAllowed = false;
 			}
 			$numRevisions++;
 			$this->getOutput()->addHTML( $item->getHTML() );
@@ -393,9 +393,9 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		$this->addUsageText();
 
 		// Normal sysops can always see what they did, but can't always change it
-		if( !$UserAllowed ) return;
+		if( !$wiki_userAllowed ) return;
 
-		// Show form if the user can submit
+		// Show form if the wiki_user can submit
 		if( $this->mIsAllowed ) {
 			$out = Xml::openElement( 'form', array( 'method' => 'post',
 					'action' => $this->getTitle()->getLocalUrl( array( 'action' => 'submit' ) ),
@@ -429,7 +429,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 					'</td>' .
 				"</tr>\n" .
 				Xml::closeElement( 'table' ) .
-				Html::hidden( 'wpEditToken', $this->getUser()->getEditToken() ) .
+				Html::hidden( 'wpEditToken', $this->getwiki_user()->getEditToken() ) .
 				Html::hidden( 'target', $this->targetObj->getPrefixedText() ) .
 				Html::hidden( 'type', $this->typeName ) .
 				Html::hidden( 'ids', implode( ',', $this->ids ) ) .
@@ -440,7 +440,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		if( $this->mIsAllowed ) {
 			$out .= Xml::closeElement( 'form' ) . "\n";
 			// Show link to edit the dropdown reasons
-			if( $this->getUser()->isAllowed( 'editinterface' ) ) {
+			if( $this->getwiki_user()->isAllowed( 'editinterface' ) ) {
 				$title = Title::makeTitle( NS_MEDIAWIKI, 'Revdelete-reason-dropdown' );
 				$link = Linker::link(
 					$title,
@@ -460,7 +460,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 	 */
 	protected function addUsageText() {
 		$this->getOutput()->addWikiMsg( 'revdelete-text' );
-		if( $this->getUser()->isAllowed( 'suppressrevision' ) ) {
+		if( $this->getwiki_user()->isAllowed( 'suppressrevision' ) ) {
 			$this->getOutput()->addWikiMsg( 'revdelete-suppress-text' );
 		}
 		if( $this->mIsAllowed ) {
@@ -527,7 +527,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 	protected function submit() {
 		# Check edit token on submission
 		$token = $this->getRequest()->getVal('wpEditToken');
-		if( $this->submitClicked && !$this->getUser()->matchEditToken( $token ) ) {
+		if( $this->submitClicked && !$this->getwiki_user()->matchEditToken( $token ) ) {
 			$this->getOutput()->addWikiMsg( 'sessionfailure' );
 			return false;
 		}
@@ -540,8 +540,8 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		} elseif( $comment == 'other' ) {
 			$comment = $this->otherReason;
 		}
-		# Can the user set this field?
-		if( $bitParams[Revision::DELETED_RESTRICTED]==1 && !$this->getUser()->isAllowed('suppressrevision') ) {
+		# Can the wiki_user set this field?
+		if( $bitParams[Revision::DELETED_RESTRICTED]==1 && !$this->getwiki_user()->isAllowed('suppressrevision') ) {
 			throw new PermissionsError( 'suppressrevision' );
 		}
 		# If the save went through, go to success message...

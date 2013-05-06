@@ -19,14 +19,14 @@
 $fallback = 'fr';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Souligner les liens:',
 'tog-justify' => 'Égalisez les paragraphes',
 'tog-hideminor' => 'Cachez les petits changements dans la liste des derniers changements',
 'tog-hidepatrolled' => '↓ Cachez les petits changements dans la liste des derniers changements',
 'tog-newpageshidepatrolled' => '↓Cache pages patrollés de la list des pages nouveau',
 'tog-extendwatchlist' => 'Agrandir la liste des pages guettées pour montrer tous les changements',
-'tog-usenewrc' => 'User les derniers changements improuvés (JavaScript)',
+'tog-usenewrc' => 'wiki_user les derniers changements improuvés (JavaScript)',
 'tog-numberheadings' => 'Mettre les numéros sus les en-têtes',
 'tog-showtoolbar' => "Montrer la barre d'outils des changements (JavaScript)",
 'tog-editondblclick' => 'Faire un clic-double pour changer la page (JavaScript)',
@@ -43,16 +43,16 @@ $messages = array(
 'tog-previewonfirst' => "Montrer la vue d'avance au temps du premier changement",
 'tog-nocache' => 'Arrêter le cache des pages',
 'tog-enotifwatchlistpages' => 'Envoyer un e-mail quand une de mes pages guettées est changée',
-'tog-enotifusertalkpages' => 'Envoyer un e-mail quand ma page de discussion est changée',
+'tog-enotifwiki_usertalkpages' => 'Envoyer un e-mail quand ma page de discussion est changée',
 'tog-enotifminoredits' => 'Envoyer un e-mail même pour les petits changements',
 'tog-enotifrevealaddr' => "Montrer mon adresse e-mail dans les e-mails d'avertissement",
 'tog-shownumberswatching' => 'Montrer le montant de guetteurs',
 'tog-oldsig' => '↓ Preview du signature existant:',
 'tog-fancysig' => 'Signature brute (sans liens préparés)',
 'tog-externaleditor' => 'Utiliser par défaut un éditeur de texte externe (pour les utilisateurs avancés, nécessite des réglages spécifiques sur votre ordinateur)',
-'tog-externaldiff' => 'User un autre comparateur comme réglage ordinaire',
+'tog-externaldiff' => 'wiki_user un autre comparateur comme réglage ordinaire',
 'tog-showjumplinks' => 'Mettre les "liens vites" en haut de la page',
-'tog-uselivepreview' => "User la vue d'avance vite (JavaScript) (En assai)",
+'tog-uselivepreview' => "wiki_user la vue d'avance vite (JavaScript) (En assai)",
 'tog-forceeditsummary' => "M'avertir quand j'ai laissé la boëte de commentaires vide",
 'tog-watchlisthideown' => 'Cacher mes changements dans la liste des pages guettées',
 'tog-watchlisthidebots' => 'Cacher les changements faits par les bots dans la liste des pages guettées',
@@ -185,7 +185,7 @@ $messages = array(
 'talk' => 'Discussion',
 'views' => 'Vues',
 'toolbox' => "Boëte d'outils",
-'userpage' => "Page d'useur",
+'wiki_userpage' => "Page d'useur",
 'projectpage' => 'Page des projets',
 'imagepage' => 'Page des images',
 'mediawikipage' => 'Page des messages',
@@ -202,7 +202,7 @@ $messages = array(
 'jumpto' => 'Aller à:',
 'jumptosearch' => 'charcher',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => "Qui c'est {{SITENAME}}?",
 'aboutpage' => 'Project:Info',
 'copyright' => 'Les matières sont avalable en accord avec $1',
@@ -250,7 +250,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Page',
-'nstab-user' => 'Useur',
+'nstab-wiki_user' => 'Useur',
 'nstab-media' => 'Média',
 'nstab-special' => 'Page espécial',
 'nstab-project' => 'Info',
@@ -314,7 +314,7 @@ Demande: $2',
 'viewsourcetext' => 'Vous pouvez voir et copier la source de cette page:',
 'protectedinterface' => "Cette page crée le texte de l'interface pour le software, et est barrée pour empêcher l'abus.",
 'editinginterface' => "'''Warning:''' You are editing a page which is used to provide interface text for the software.
-Changes to this page will affect the appearance of the user interface for other users.
+Changes to this page will affect the appearance of the wiki_user interface for other wiki_users.
 For translations, please consider using [//translatewiki.net/wiki/Main_Page?setlang=en translatewiki.net], the MediaWiki localisation project.",
 'sqlhidden' => '(Demande SQL cachée)',
 'cascadeprotected' => 'Cette page est protégée parce qu’elle est incluse par {{PLURAL:$1|la page suivante, qui est protégée|les pages suivantes, qui sont protégées}} avec l’option « protection en cascade » activée :
@@ -325,7 +325,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''Vous êtes déconnecté asteur.'''
 
-Vous pouvez continuer à user {{SITENAME}} sans nom ou vous pouvez connecter encore une fois avec le même nom ou un autre nom.
+Vous pouvez continuer à wiki_user {{SITENAME}} sans nom ou vous pouvez connecter encore une fois avec le même nom ou un autre nom.
 Notez: certaines pages pourriont être vues comme si vous êtes connecté, jusqu'à vous videz l'information de votre navigateur.",
 'welcomecreation' => '== Bonjour, $1! ==
 
@@ -339,19 +339,19 @@ Votre compte a été créé.  Oubliez pas de changer votre réglage sus {{SITENA
 'login' => 'Connecter',
 'nav-login-createaccount' => 'Connecter / créer un compte',
 'loginprompt' => 'Il faut partir les cookies pour connecter à {{SITENAME}}.',
-'userlogin' => 'Connecter / créer un compte',
+'wiki_userlogin' => 'Connecter / créer un compte',
 'logout' => 'Déconnecter',
-'userlogout' => 'Déconnecter',
+'wiki_userlogout' => 'Déconnecter',
 'notloggedin' => 'Pas connecté',
 'nologin' => "Vous avez pas de compte? '''$1'''.",
 'nologinlink' => 'Créez un compte',
 'createaccount' => 'Créer un compte',
 'gotaccount' => "Vous avez un compte déjà? '''$1'''.",
 'gotaccountlink' => 'Connectez',
-'userlogin-resetlink' => 'Oublié vôtre détailes de log in?',
+'wiki_userlogin-resetlink' => 'Oublié vôtre détailes de log in?',
 'createaccountmail' => 'par e-mail',
 'badretype' => 'Les mots de passe que vous avez mis sont pas pareils.',
-'userexists' => "Le nom d'useur choisi est déjà usé.  Choissez donc un autre nom.",
+'wiki_userexists' => "Le nom d'useur choisi est déjà usé.  Choissez donc un autre nom.",
 'loginerror' => "Erreur d'identification",
 'nocookiesnew' => "Votre compte a été créé, mais vous êtes pas connecté.  {{SITENAME}} use les cookies pour connecter les useurs.  Partez les cookies et connectez avec votre nouveau nom d'useur et votre mot de passe, s'il vous plaît.",
 'nocookieslogin' => '{{SITENAME}} use les cookies pour connecter les useurs.  Partez donc les cookies et assayez encore.',
@@ -359,10 +359,10 @@ Votre compte a été créé.  Oubliez pas de changer votre réglage sus {{SITENA
 'noname' => "Vous avez pas mis un bon nom d'useur.",
 'loginsuccesstitle' => 'Vous êtes connecté',
 'loginsuccess' => "'''Asteur vous êtes connecté à {{SITENAME}} comme \"\$1\".'''",
-'nosuchuser' => 'Y a aucun utilisateur avec le nom "$1".  Les noms d\'utilisateur respectent les majuscules et minuscules. Vérifiez l\'orthographe, ou créez un nouveau compte.',
-'nosuchusershort' => 'Y a aucun useur avec le nom "$1".  Regardez donc l\'espellage.',
-'nouserspecified' => "Il faut mettre un nom d'useur.",
-'login-userblocked' => 'Cet useur est blockée.  Log in pas accépté.',
+'nosuchwiki_user' => 'Y a aucun utilisateur avec le nom "$1".  Les noms d\'utilisateur respectent les majuscules et minuscules. Vérifiez l\'orthographe, ou créez un nouveau compte.',
+'nosuchwiki_usershort' => 'Y a aucun useur avec le nom "$1".  Regardez donc l\'espellage.',
+'nowiki_userspecified' => "Il faut mettre un nom d'useur.",
+'login-wiki_userblocked' => 'Cet useur est blockée.  Log in pas accépté.',
 'wrongpassword' => "Mauvais mot de passe.  Assayez encore s'il vous plaît.",
 'wrongpasswordempty' => "Le mot de passe était vide.  Assayez encore s'il vous plaît.",
 'passwordtooshort' => "Votre mot de passe est soit pas bon ou trop court.  Un mot de passe devrait avoir au moins $1 caractères et être différent de votre nom d'useur.",
@@ -370,10 +370,10 @@ Votre compte a été créé.  Oubliez pas de changer votre réglage sus {{SITENA
 'passwordremindertitle' => 'Votre nouveau mot de passe sus {{SITENAME}}',
 'passwordremindertext' => 'Quèqu\'une (peut-être vous, de l\'adresse IP $1) a demandé qu\'on vous envoye un nouveau mot de passe pour {{SITENAME}} ($4).  Le mot de passe pour useur "$2" est "$3" asteur.  Vous devrait connecter et changer votre mot de passe asteur.
 
-Si quèqu\'une d\'autre a demandé ce mot de passe ou si vous vous rappelez de votre mot de passe et vous voulez p\'us le changer, vous pouvez ignorer ce message et continuer à user votre vieux mot de passe.',
+Si quèqu\'une d\'autre a demandé ce mot de passe ou si vous vous rappelez de votre mot de passe et vous voulez p\'us le changer, vous pouvez ignorer ce message et continuer à wiki_user votre vieux mot de passe.',
 'noemail' => 'Y a aucune adresse e-mail pour l\'useur "$1".',
 'passwordsent' => 'Un nouveau mot de passe a été envoyé à l\'adresse e-mail de l\'useur "$1".  Reconnectez donc après que vous l\'avez reçu.',
-'blocked-mailpassword' => "Votre adresse IP est bloquée.  Pour empêcher l'abus, vous pouvez ni faire des changements ni user la fonction de rappel du mot de passe.",
+'blocked-mailpassword' => "Votre adresse IP est bloquée.  Pour empêcher l'abus, vous pouvez ni faire des changements ni wiki_user la fonction de rappel du mot de passe.",
 'eauthentsent' => "Un message de confirmation a été envoyé à l'adresse e-mail choisie.  Avant qu'on peuve envoyer des autres e-mails à ce compte, il faut que vous suivez les instructions dans le message pour confirmer que le compte est le vôtre.",
 'throttled-mailpassword' => "On a déjà envoyé un e-mail de rappel avec votre mot de passe dans les $1 dernières heures.  Pour empêcher l'abus, juste un seul e-mail de rappel va être envoyé en $1 heures.",
 'mailerror' => 'On pouvait pas envoyer votre e-mail: $1',
@@ -441,7 +441,7 @@ Le blocage a été fait par $1.  La raison donnée est ''$2''.
 * Le blocage va être ôté: $6
 * L'useur bloqué: $7
 
-Vous pouvez contacter $1 ou un autre [[{{MediaWiki:Grouppage-sysop}}|administrateur]] pour discuter le blocage.  Vous pouvez pas user la fonction 'envoyer un e-mail à cet useur' hormis que vous avez une adresse e-mail confirmée dans votre [[Special:Preferences|réglage de compte]] et vous avez la permission de l'user.  Votre adresse IP est $3, et le numéro du blocage est #$5.  Mettez donc cette information dans toutes vos demandes.",
+Vous pouvez contacter $1 ou un autre [[{{MediaWiki:Grouppage-sysop}}|administrateur]] pour discuter le blocage.  Vous pouvez pas wiki_user la fonction 'envoyer un e-mail à cet useur' hormis que vous avez une adresse e-mail confirmée dans votre [[Special:Preferences|réglage de compte]] et vous avez la permission de l'wiki_user.  Votre adresse IP est $3, et le numéro du blocage est #$5.  Mettez donc cette information dans toutes vos demandes.",
 'autoblockedtext' => "Le système a bloqué votre adresse IP parce qu'alle a été usée par un autre useur qu'était bloqué par $1.
 
 La raison donnée est: ''$2''
@@ -451,7 +451,7 @@ La raison donnée est: ''$2''
 
 Vous pouvez contacter $1 ou un autre [[{{MediaWiki:Grouppage-sysop}}|administrateur]] pour discuter le blocage.
 
-Notez donc que vous pouvez pas user la fonction 'envoyer un e-mail à cet useur' hormis que vous avez une adresse e-mail confirmée dans votre [[Special:Preferences|réglage de compte]] et vous avez la permission de l'user.
+Notez donc que vous pouvez pas wiki_user la fonction 'envoyer un e-mail à cet useur' hormis que vous avez une adresse e-mail confirmée dans votre [[Special:Preferences|réglage de compte]] et vous avez la permission de l'wiki_user.
 
 Votre numéro de blocage est #$5.  Mettez donc cette information dans toutes vos demandes.",
 'whitelistedittext' => 'Il faut $1 pour faire des changements.',
@@ -467,16 +467,16 @@ Votre numéro de blocage est #$5.  Mettez donc cette information dans toutes vos
 'newarticletext' => "Vous avez suit un lien à une page qu'existe pas encore.
 Pour créer la page, mettez des mots dans la boëte en bas (voyez la [[{{MediaWiki:Helppage}}|page d'aide]] pour plus d'information).
 Si vous êtes ici par erreur, cliquez le bouton \"back\" sus votre navigateur.",
-'anontalkpagetext' => "----''Ça ici, c'est la page de discussion pour un useur sans nom qu'a pas encore créé un compte ou qui l'use pas.  Ça fait, il faut user l'adresse IP numérique pour l'identifier.  Une adresse comme ça pourrait être usée par plusieurs useurs.  Si vous êtes un useur sans nom et vous croyez que des messages sans rapport ont été envoyés à vous, [[Special:UserLogin|créer un compte ou connecter]] pour empêcher la confusion avec des autres useurs sans nom dans l'avenir.''",
+'anontalkpagetext' => "----''Ça ici, c'est la page de discussion pour un useur sans nom qu'a pas encore créé un compte ou qui l'use pas.  Ça fait, il faut wiki_user l'adresse IP numérique pour l'identifier.  Une adresse comme ça pourrait être usée par plusieurs useurs.  Si vous êtes un useur sans nom et vous croyez que des messages sans rapport ont été envoyés à vous, [[Special:wiki_userLogin|créer un compte ou connecter]] pour empêcher la confusion avec des autres useurs sans nom dans l'avenir.''",
 'noarticletext' => 'À présent, y a pas de texte sus cette page.
 Vous pouvez [[Special:Search/{{PAGENAME}}|charcher pour le titre de cette page]] dans des autres pages, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} charcher dans les notes parents], ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} changer cette page]</span>.',
 'clearyourcache' => "'''Notez:''' Après que vous avez sauvé votres changements, il foudra peut-être dépasser le cache de votre navigateur pour voir les changements.  '''Mozilla / Firefox / Safari:''' Tenez le bouton ''Shift'' en pèsant ''Reload'', ou pèsez ''Ctrl-Shift-R'' (''Cmd-Shift-R'' sus Apple Mac); '''IE:''' Tenez ''Ctrl'' en pèsant ''Refresh'', ou pèsez ''Ctrl-F5''; '''Konqueror:''' Simplement pèsez le bouton ''Reload'', ou pèsez ''F5''; Pour les useurs de '''Opera''', il foudra peut-être vider complètement le cache dans ''Tools→Preferences''.",
-'usercssyoucanpreview' => "'''Conseil:''' Usez le bouton \"Vue d'avance\" pour tester votre nouvelle feuille CSS avant de la sauver.",
-'userjsyoucanpreview' => "'''Conseil:''' Usez le bouton \"Vue d'avance\" pour tester votre nouvelle feuille JS avant de la sauver.",
-'usercsspreview' => "'''Rappelez-vous que vous êtes après regarder votre feuille CSS qu'a pas encore été sauvée!'''",
-'userjspreview' => "'''Rappelez-vous que vous êtes juste après regarder ou tester votre code JavaScript qu'a pas encore été sauvé!'''",
-'userinvalidcssjstitle' => "'''Attention:''' Y a pas de style \"\$1\".  Rappelez-vous qu'il faut user les petites lettres dans le sujet des pages personnelles avec les extensions .css et .js.
-Exemple:  {{ns:user}}:Foo/vector.css (bon)  {{ns:user}}:Foo/Vector.css (mauvais)",
+'wiki_usercssyoucanpreview' => "'''Conseil:''' Usez le bouton \"Vue d'avance\" pour tester votre nouvelle feuille CSS avant de la sauver.",
+'wiki_userjsyoucanpreview' => "'''Conseil:''' Usez le bouton \"Vue d'avance\" pour tester votre nouvelle feuille JS avant de la sauver.",
+'wiki_usercsspreview' => "'''Rappelez-vous que vous êtes après regarder votre feuille CSS qu'a pas encore été sauvée!'''",
+'wiki_userjspreview' => "'''Rappelez-vous que vous êtes juste après regarder ou tester votre code JavaScript qu'a pas encore été sauvé!'''",
+'wiki_userinvalidcssjstitle' => "'''Attention:''' Y a pas de style \"\$1\".  Rappelez-vous qu'il faut wiki_user les petites lettres dans le sujet des pages personnelles avec les extensions .css et .js.
+Exemple:  {{ns:wiki_user}}:Foo/vector.css (bon)  {{ns:wiki_user}}:Foo/Vector.css (mauvais)",
 'updated' => '(Renouvelé)',
 'note' => "'''Notez:'''",
 'previewnote' => "'''Ça ici, c'est juste une vue d'avance; les changements ont pas encore été sauvés!'''",
@@ -487,7 +487,7 @@ Exemple:  {{ns:user}}:Foo/vector.css (bon)  {{ns:user}}:Foo/Vector.css (mauvais)
 ''La vue d'avance est cachée pour empêcher les attaques JavaScript parce que ce wiki use le HTML brute.''
 
 '''Si ça ici est un changement juste, assayez donc encore.  Si ça travaille pas toujours, assayez de déconnecter et reconnecter.'''",
-'token_suffix_mismatch' => "'''Votre changement pouvait pas être accepté parce que votre navigateur a mélangé les caractères de ponctuation dans l'indication des changements.  Le changement a été rejeté pour empêcher la corruption du texte de l'article.  Ça arrive des fois quand vous êtes après user un proxy sans nom.'''",
+'token_suffix_mismatch' => "'''Votre changement pouvait pas être accepté parce que votre navigateur a mélangé les caractères de ponctuation dans l'indication des changements.  Le changement a été rejeté pour empêcher la corruption du texte de l'article.  Ça arrive des fois quand vous êtes après wiki_user un proxy sans nom.'''",
 'editing' => 'Changement de $1',
 'editingsection' => 'Changement de $1 (section)',
 'editingcomment' => 'Changement de $1 (remarque)',
@@ -518,7 +518,7 @@ Il foudra que vous mettez vos changements dans le texte qu'est là asteur.
 'template-semiprotected' => '(demi-protégé)',
 'edittools' => "<!-- Le texte que vous mettez ici va être montré sous les boëttes de changements ou d'import de dossier. -->",
 'nocreatetitle' => 'Création de page limitée',
-'nocreatetext' => "La création des pages est limitée.  Vous pouvez changer une page qu'a été déjà créée ou [[Special:UserLogin|connecter ou créer un compte]].",
+'nocreatetext' => "La création des pages est limitée.  Vous pouvez changer une page qu'a été déjà créée ou [[Special:wiki_userLogin|connecter ou créer un compte]].",
 'nocreate-loggedin' => 'Vous avez pas la permission de créer des nouvelles pages.',
 'permissionserrors' => 'Erreur de permissions',
 'permissionserrorstext' => 'Vous avez pas la permission de faire ça pour {{PLURAL:$1|cette raison|ces raisons}}:',
@@ -531,7 +531,7 @@ Les notes d'ôtage pour cette page sont données ici pour vous aider:",
 # "Undo" feature
 'undo-success' => "Le changement peut être renversé.  Regardez donc la comparaison en bas pour être sûr que c'est comme vous voulez, et puis sauvez les changements en bas pour finir le renversage du changement.",
 'undo-failure' => "Le changement pouvait pas être renversé à cause d'une dispute de changements.",
-'undo-summary' => 'Défaire la révision $1 par [[Special:Contributions/$2|$2]] ([[User talk:$2|Discussion]])',
+'undo-summary' => 'Défaire la révision $1 par [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Discussion]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Impossible de créer le compte',
@@ -566,14 +566,14 @@ Assayez de [[Special:Search|charcher dans le wiki]] pour des nouvelles pages.',
 
 # Revision deletion
 'rev-deleted-comment' => '(remarque ôtée)',
-'rev-deleted-user' => "(nom d'useur ôté)",
+'rev-deleted-wiki_user' => "(nom d'useur ôté)",
 'rev-deleted-event' => '(message ôté)',
 'rev-deleted-text-permission' => "Cette page a été ôtée de la liste des pages publiques.  Il pourrait y avoir des détails dans les [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} notes d'ôtage].",
 'rev-deleted-text-view' => "Cette version de la page a été ôtée de la liste des pages publiques.  Comme administrateur sus ce wiki vous pouvez le voir; il pourrait y avoir des détails dans les [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} notes d'ôtage].",
 'rev-delundel' => 'montrer/cacher',
 'revisiondelete' => 'Supprimer/rétablir les changements',
 'revdelete-nooldid-title' => 'Aucun changement choisi',
-'revdelete-nooldid-text' => 'Vous avez pas choisi le ou les changement(s) pour user cette fonction.',
+'revdelete-nooldid-text' => 'Vous avez pas choisi le ou les changement(s) pour wiki_user cette fonction.',
 'revdelete-selected' => "'''{{PLURAL:$2|Changement choisi|Changements choisis}} de [[:$1]]'''",
 'logdelete-selected' => "'''{{PLURAL:$1|Événement de notes choisi|Événements de notes choisis}}:'''",
 'revdelete-text' => "'''La liste des changements va sauver les versions ôtées, mais le public pourra pas voir certains morceaux de ces versions.'''
@@ -584,7 +584,7 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 'revdelete-hide-image' => "Cacher l'information du dossier",
 'revdelete-hide-name' => "Cacher l'action et l'objet",
 'revdelete-hide-comment' => 'Cacher la remarque du changement',
-'revdelete-hide-user' => "Cacher le nom ou l'adresse IP de l'useur",
+'revdelete-hide-wiki_user' => "Cacher le nom ou l'adresse IP de l'useur",
 'revdelete-hide-restricted' => 'Appliquer ces restrictions aux administrateurs et les autres useurs',
 'revdelete-suppress' => 'Supprimer les données des administrateurs ainsi que celles des autres utilisateurs',
 'revdelete-unsuppress' => 'Enlever les restrictions des versions rétablies',
@@ -614,7 +614,7 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 'prefs-custom-css' => 'Custom CSS',
 'prefs-custom-js' => 'Custom JavaScript',
 'youremail' => 'E-mail:',
-'username' => "Nom d'useur:",
+'wiki_username' => "Nom d'useur:",
 'uid' => "Numéro d'useur:",
 'yourrealname' => 'Vrai nom:',
 'yourlanguage' => 'Langue:',
@@ -627,8 +627,8 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 'prefs-help-realname' => 'Votre vrai nom est pas nécessaire.  Si vous choisirait de le mettre, ça serait usé pour vous donner du crédit pour votre ouvrage.',
 'prefs-help-email' => "Votre adresse e-mail est pas nécessaire, mais ça quitte le monde vous contacter par votre page d'useur ou votre page de discussion sans montrer votre identité.",
 
-# User rights
-'editinguser' => "Changement de '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+# wiki_user rights
+'editingwiki_user' => "Changement de '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Associated actions - in the sentence "You do not have permission to X"
 'action-edit' => 'Faire un changement',
@@ -651,8 +651,8 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 # Special:Categories
 'categories' => 'Classes',
 
-# E-mail user
-'emailuser' => 'E-mail cet useur',
+# E-mail wiki_user
+'emailwiki_user' => 'E-mail cet useur',
 
 # Watchlist
 'watchlist' => 'Mes pages guettées',

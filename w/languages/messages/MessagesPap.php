@@ -89,7 +89,7 @@ $messages = array(
 'talk' => 'Diskushon',
 'views' => 'Kantidat di biaha mirá',
 'toolbox' => 'Kaha di Hèrmènt',
-'userpage' => 'Wak página di uzadó',
+'wiki_userpage' => 'Wak página di uzadó',
 'projectpage' => 'Wak página di e proyekto',
 'imagepage' => 'Mira página di e dokumento',
 'mediawikipage' => 'Mira paginanan di mensahe',
@@ -107,7 +107,7 @@ $messages = array(
 'jumptonavigation' => 'Nabegashon',
 'jumptosearch' => 'Buska',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Tokante {{SITENAME}}',
 'aboutpage' => 'Project:Info',
 'copyright' => 'E kontenido ta disponibel bou di $1.',
@@ -140,7 +140,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Artíkulo',
-'nstab-user' => 'Página personal',
+'nstab-wiki_user' => 'Página personal',
 'nstab-media' => 'Media',
 'nstab-special' => 'Spesial',
 'nstab-image' => 'Imagen',
@@ -171,8 +171,8 @@ No lubidá di kambia bo [[Special:Preferences|{{SITENAME}} preferensianan]].',
 'yourpassword' => 'Kontraseña',
 'yourpasswordagain' => 'Hinka kontraseña atrobe',
 'remembermypassword' => 'Kordá mi (for a maximum of $1 {{PLURAL:$1|day|days}})',
-'userlogin' => 'Traha un kuenta nobo òf outentiká',
-'userlogout' => 'Terminá sesion',
+'wiki_userlogin' => 'Traha un kuenta nobo òf outentiká',
+'wiki_userlogout' => 'Terminá sesion',
 'badretype' => 'E kontraseñanan hinká no ta kuadra.',
 'wrongpassword' => 'Kontraseña no ta korekto. Por fabor purba atrobe.',
 'wrongpasswordempty' => 'Kontraseña tabata bashí. Por fabor purba atrobe.',
@@ -192,7 +192,7 @@ Bo por kambia página libremente, pero tene kuenta ku lo nota bo IP adrès den e
 'accmailtitle' => 'Kontraseña mandá.',
 'accmailtext' => "E kontraseña pa '$1' tabata mandá pa $2.",
 'newarticle' => '(Nobo)',
-'anontalkpagetext' => "----''Esaki ta e página di diskushon pa un uzadó anonimo ku no a traha un kuenta ahinda, òf no sa uza e. Ta pa e rason aki nos tin ku uza IP adrès pa identifiká e persona. Diferente uzadó por uza e IP adrès aki. Si bo ta un uzadó anonimo i ta sinti ku komentario irelevante tabata mandá pa bo, por fabor [[Special:UserLogin|registrá un kuenta nobo òf outentiká bo mes]] pa evitá konfushon den futuro.''",
+'anontalkpagetext' => "----''Esaki ta e página di diskushon pa un uzadó anonimo ku no a traha un kuenta ahinda, òf no sa uza e. Ta pa e rason aki nos tin ku uza IP adrès pa identifiká e persona. Diferente uzadó por uza e IP adrès aki. Si bo ta un uzadó anonimo i ta sinti ku komentario irelevante tabata mandá pa bo, por fabor [[Special:wiki_userLogin|registrá un kuenta nobo òf outentiká bo mes]] pa evitá konfushon den futuro.''",
 'yourtext' => 'Bo teksto',
 'yourdiff' => 'Diferensianan',
 
@@ -218,7 +218,7 @@ Bo por kambia página libremente, pero tene kuenta ku lo nota bo IP adrès den e
 'timezonelegend' => 'Zona di tempu',
 'allowemail' => 'Akseptá e-mail di otro uzadó',
 'youremail' => 'E-mail:',
-'username' => 'Nòmber di uzadó:',
+'wiki_username' => 'Nòmber di uzadó:',
 'uid' => 'ID di uzadó:',
 'yourrealname' => 'Nòmber berdadero:',
 'yourlanguage' => 'Idioma:',
@@ -245,7 +245,7 @@ Bo por kambia página libremente, pero tene kuenta ku lo nota bo IP adrès den e
 
 # Statistics
 'statistics' => 'Estadístika',
-'statistics-header-users' => 'Estadístika di uzadónan',
+'statistics-header-wiki_users' => 'Estadístika di uzadónan',
 
 # Miscellaneous special pages
 'ncategories' => '$1 {{PLURAL:$1|kategoria|kategorianan}}',
@@ -278,8 +278,8 @@ Bo por skohe un tipo di registro tambe, òf filtrá e bista ku un nòmber di uza
 [[Special:UnusedCategories|Unused categories]] are not shown here.
 Also see [[Special:WantedCategories|wanted categories]].',
 
-# E-mail user
-'emailuser' => 'Manda e-mail pa e uzadó aki',
+# E-mail wiki_user
+'emailwiki_user' => 'Manda e-mail pa e uzadó aki',
 'emailpage' => 'Manda e-mail',
 'emailpagetext' => 'E formulario aki lo manda un e-mail pa e uzadò aki.
 Bo e-mail adrès (manera ta pará den bo preferensianan) lo aparesé den e e-mail pa e resipiente por respondé na bo direktamente.',
@@ -295,7 +295,7 @@ Bo e-mail adrès (manera ta pará den bo preferensianan) lo aparesé den e e-mai
 # Watchlist
 'watchlist' => 'Mi lista di observashon',
 'nowatchlist' => 'Bo lista di observashon ta bashí.',
-'watchnologintext' => 'Bo mester [[Special:UserLogin|outentiká bo mes]] pa modifiká bo lista di observashon.',
+'watchnologintext' => 'Bo mester [[Special:wiki_userLogin|outentiká bo mes]] pa modifiká bo lista di observashon.',
 'addedwatchtext' => "E página \"[[:\$1]]\" tabata añadí na bo [[Special:Watchlist|lista di observashon]].
 Lo lista kambionan hasí na e página aki i su página di diskushon einan,
 i e página lo aparesé '''vet''' den e [[Special:RecentChanges|lista di kambionan resien]] pa
@@ -344,7 +344,7 @@ Wak e [[Special:BlockList|lista di blokeonan]] pa wak tur blokeo aktivo.',
 'blocklink' => 'blokia',
 'unblocklink' => 'desblokia',
 'contribslink' => "kontrib'nan",
-'autoblocker' => 'Bo tabata outomatikamente blokiá pasombra "[[User:$1|$1]]" a uza e IP adrès aki resientemente. E rason ku $1 tabata blokiá ta: "\'\'\'$2\'\'\'"',
+'autoblocker' => 'Bo tabata outomatikamente blokiá pasombra "[[wiki_user:$1|$1]]" a uza e IP adrès aki resientemente. E rason ku $1 tabata blokiá ta: "\'\'\'$2\'\'\'"',
 'unblocklogentry' => 'a desblokia $1',
 
 # Move page
@@ -399,7 +399,7 @@ $5
 E kódigo di konfirmashon aki lo kaduká riba $4.',
 
 # Delete conflict
-'confirmrecreate' => "[[User:$1|$1]] ([[User talk:$1|diskushon]]) a kita e artíkulo aki despues ku bo ta kuminsá editá. E rason ta:
+'confirmrecreate' => "[[wiki_user:$1|$1]] ([[wiki_user talk:$1|diskushon]]) a kita e artíkulo aki despues ku bo ta kuminsá editá. E rason ta:
 : ''$2''
 Por fabor konfirmá ku bo ke traha e artíkulo aki di nobo.",
 

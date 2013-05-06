@@ -23,7 +23,7 @@
  */
 
 /**
- * Special page to direct the user to a random redirect page (minus the second redirect)
+ * Special page to direct the wiki_user to a random redirect page (minus the second redirect)
  *
  * @ingroup SpecialPage
  */

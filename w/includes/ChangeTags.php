@@ -96,26 +96,26 @@ class ChangeTags {
 			throw new MWException( "At least one of: RCID, revision ID, and log ID MUST be specified when adding a tag to a change!" );
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 
 		// Might as well look for rcids and so on.
 		if( !$rc_id ) {
-			$dbr = wfGetDB( DB_MASTER ); // Info might be out of date, somewhat fractionally, on slave.
+			r = wfGetDB( DB_MASTER ); // Info might be out of date, somewhat fractionally, on slave.
 			if( $log_id ) {
-				$rc_id = $dbr->selectField( 'recentchanges', 'rc_id', array( 'rc_logid' => $log_id ), __METHOD__ );
+				$rc_id = r->selectField( 'recentchanges', 'rc_id', array( 'rc_logid' => $log_id ), __METHOD__ );
 			} elseif( $rev_id ) {
-				$rc_id = $dbr->selectField( 'recentchanges', 'rc_id', array( 'rc_this_oldid' => $rev_id ), __METHOD__ );
+				$rc_id = r->selectField( 'recentchanges', 'rc_id', array( 'rc_this_oldid' => $rev_id ), __METHOD__ );
 			}
 		} elseif( !$log_id && !$rev_id ) {
-			$dbr = wfGetDB( DB_MASTER ); // Info might be out of date, somewhat fractionally, on slave.
-			$log_id = $dbr->selectField( 'recentchanges', 'rc_logid', array( 'rc_id' => $rc_id ), __METHOD__ );
-			$rev_id = $dbr->selectField( 'recentchanges', 'rc_this_oldid', array( 'rc_id' => $rc_id ), __METHOD__ );
+			r = wfGetDB( DB_MASTER ); // Info might be out of date, somewhat fractionally, on slave.
+			$log_id = r->selectField( 'recentchanges', 'rc_logid', array( 'rc_id' => $rc_id ), __METHOD__ );
+			$rev_id = r->selectField( 'recentchanges', 'rc_this_oldid', array( 'rc_id' => $rc_id ), __METHOD__ );
 		}
 
 		$tsConds = array_filter( array( 'ts_rc_id' => $rc_id, 'ts_rev_id' => $rev_id, 'ts_log_id' => $log_id ) );
 
 		## Update the summary row.
-		$prevTags = $dbr->selectField( 'tag_summary', 'ts_tags', $tsConds, __METHOD__ );
+		$prevTags = r->selectField( 'tag_summary', 'ts_tags', $tsConds, __METHOD__ );
 		$prevTags = $prevTags ? $prevTags : '';
 		$prevTags = array_filter( explode( ',', $prevTags ) );
 		$newTags = array_unique( array_merge( $prevTags, $tags ) );
@@ -127,8 +127,8 @@ class ChangeTags {
 			return false;
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->replace(
+		w = wfGetDB( DB_MASTER );
+		w->replace(
 			'tag_summary',
 			array( 'ts_rev_id', 'ts_rc_id', 'ts_log_id' ),
 			array_filter( array_merge( $tsConds, array( 'ts_tags' => implode( ',', $newTags ) ) ) ),
@@ -149,7 +149,7 @@ class ChangeTags {
 			);
 		}
 
-		$dbw->insert( 'change_tag', $tagsRows, __METHOD__, array( 'IGNORE' ) );
+		w->insert( 'change_tag', $tagsRows, __METHOD__, array( 'IGNORE' ) );
 
 		return true;
 	}
@@ -263,8 +263,8 @@ class ChangeTags {
 		$emptyTags = array();
 
 		// Some DB stuff
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'valid_tag', 'vt_tag', array(), __METHOD__ );
+		r = wfGetDB( DB_SLAVE );
+		$res = r->select( 'valid_tag', 'vt_tag', array(), __METHOD__ );
 		foreach ( $res as $row ) {
 			$emptyTags[] = $row->vt_tag;
 		}

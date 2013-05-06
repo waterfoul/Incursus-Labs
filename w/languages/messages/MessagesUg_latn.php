@@ -75,7 +75,7 @@ $messages = array(
 'otherlanguages' => 'Bashqa tillarda',
 'jumptosearch' => 'izdash',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Hazirqi weqeler',
 'edithelp' => 'Uzgartish yardemi',
 'mainpage' => 'Bash Bet',
@@ -89,7 +89,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Bet',
-'nstab-user' => 'Ishletkuqi tor beti',
+'nstab-wiki_user' => 'Ishletkuqi tor beti',
 'nstab-special' => 'Alahide betleri',
 'nstab-help' => 'Yardem beti',
 
@@ -99,12 +99,12 @@ $messages = array(
 'yourpasswordagain' => 'Achkuchni khayta besing:',
 'login' => 'Kirish',
 'logout' => 'Chiqish',
-'userlogout' => 'Chikish',
+'wiki_userlogout' => 'Chikish',
 'gotaccountlink' => 'Kirish',
 'loginlanguagelabel' => 'Til: $1',
 
 # Special:PasswordReset
-'passwordreset-username' => 'Ishletkuchi ismi:',
+'passwordreset-wiki_username' => 'Ishletkuchi ismi:',
 
 # Edit pages
 'summary' => 'Hulasa:',
@@ -127,7 +127,7 @@ $messages = array(
 'timezoneregion-asia' => 'Asiya',
 'timezoneregion-europe' => 'Yawropa',
 'youremail' => 'Élxet:',
-'username' => 'Ishletkuqi ismi:',
+'wiki_username' => 'Ishletkuqi ismi:',
 'yourlanguage' => 'Til:',
 'email' => 'Élxet:',
 
@@ -147,7 +147,7 @@ $messages = array(
 'watchthisupload' => 'Bu Batka Kharang',
 
 # File description page
-'filehist-user' => 'Ishletkuchi',
+'filehist-wiki_user' => 'Ishletkuchi',
 
 # File deletion
 'filedelete-submit' => 'Yukhutush',
@@ -160,7 +160,7 @@ $messages = array(
 
 # Miscellaneous special pages
 'newpages' => 'Yéngi betler',
-'newpages-username' => 'Ishletkuqi ismi:',
+'newpages-wiki_username' => 'Ishletkuqi ismi:',
 'move' => 'Yotkash',
 'movethispage' => 'Bu batni yotkang',
 

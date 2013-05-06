@@ -23,7 +23,7 @@
 $fallback = 'ka';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'რცხუეფიშ ათოღაზუა:',
 'tog-justify' => 'გამანგი აბზაცეფი',
 'tog-hideminor' => 'დოფული ციქა რედაქტირაფა ეკონია თირაფეფს',
@@ -181,7 +181,7 @@ $messages = array(
 'jumptonavigation' => 'ნავიგაცია',
 'jumptosearch' => 'გორუა',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}}-შენი',
 'aboutpage' => 'Project:შენი',
 'copyright' => 'დინორე მიწორინაფილი რე $1–იშ ჯოხოთ.',
@@ -224,7 +224,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'ხასჷლა',
-'nstab-user' => 'მახვარებუშ ხასჷლა',
+'nstab-wiki_user' => 'მახვარებუშ ხასჷლა',
 'nstab-media' => 'მედიაშ ხასილა',
 'nstab-special' => 'გჷშაკერძაფილი ხასჷლა',
 'nstab-project' => 'პროექტიშ ხასჷლა',
@@ -240,7 +240,7 @@ $messages = array(
 
 თენა, მუჭოთ წესინი, მოხვადუ თი ბორჯის, მუჟამს მახვარებუ გიაჸუნუუ თი ხასჷლაშ ისტორიაშ რცხუს, ნამუთ ლასირი რე. 
 თენა თაშ ვა რე-და, შილებე თქვა ძირით ჩილათა სისტემაშ კოდის. 
-ქორთხიინთ, ქატყვინუათ თენა [[Special:ListUsers/sysop|administrator]]–ს, URL–შ მეწურაფათ.',
+ქორთხიინთ, ქატყვინუათ თენა [[Special:Listwiki_users/sysop|administrator]]–ს, URL–შ მეწურაფათ.',
 'missingarticle-rev' => '(რედაქტირაფა#: $1)',
 'badtitle' => 'ცაგანა სათაური',
 'badtitletext' => 'მოთხილ ხასილაშ ჯოხო ჩილათირ რდუ, ვარა ჩოლიერ, ვარა ხოლო გოხოლუდეს ჩილათირო გინორცხუაფილ ინტერ–ნინა ვარა ინტერ–წიკი ჯოხო. 
@@ -257,17 +257,17 @@ $messages = array(
 'login' => 'მიშულა',
 'nav-login-createaccount' => 'მიშულა/ანგარიშიშ გონწყუმა',
 'loginprompt' => '{{SITENAME}}-შა მიშაულარო ოხვილუთ ეკაკილეფიშ (cookies) გოაქტიურაფას.',
-'userlogin' => 'მიშულა/ანგარიშიშ გონწყუმა',
+'wiki_userlogin' => 'მიშულა/ანგარიშიშ გონწყუმა',
 'logout' => 'გიშულა',
-'userlogout' => 'გიშულა',
+'wiki_userlogout' => 'გიშულა',
 'nologin' => 'დიორდე ვარეთო რეგისტრირებული? $1.',
 'nologinlink' => 'გონწყით ანგარიში',
 'createaccount' => 'ანგარიშიშ გონწყუმა',
 'gotaccount' => "უკვე რეგისტრირებული რეთო? '''$1'''",
 'gotaccountlink' => 'მინულა',
-'userlogin-resetlink' => 'გუგოჭყორდესო მიშაულარო საჭირო ინფორმაციაქ?',
+'wiki_userlogin-resetlink' => 'გუგოჭყორდესო მიშაულარო საჭირო ინფორმაციაქ?',
 'loginsuccess' => "'''ასე მიშულირ რეთ {{SITENAME}}-ს მუჭოთ \"\$1\".'''",
-'nouserspecified' => 'საჭირო რე მახვარებუშ ჯოხოშ მიშაჭარუა.',
+'nowiki_userspecified' => 'საჭირო რე მახვარებუშ ჯოხოშ მიშაჭარუა.',
 'mailmypassword' => 'ახალ პაროლიშ მოჯღონა',
 'noemail' => '"$1" მახვარებუშ ელ-ფოშტა წურაფილი ვარე.',
 'loginlanguagelabel' => 'ნინა: $1',
@@ -338,7 +338,7 @@ $messages = array(
 'template-protected' => '(თხილერი)',
 'template-semiprotected' => '(გვერდო თხილერი)',
 'hiddencategories' => 'თე ხასილა ოკათუ {{PLURAL:$1|1 ტყობინაფილ კატეგორიას|$1 ტყობინაფილ კატეგორიეფს}}:',
-'nocreatetext' => 'თე ხასილას ვა შილებე ახალ ხასილაშ გექიმინუა დორცხუაფილ ვარიაშ გეშა. თქვა შეგილებუნა კინორთა დო გექიმინელ ხასილაშ რედაქტირაფა, ვარა [[სპეციალურ:Userlogin|მიშულა დო ანგარიშიშ დორცხუაფა]]',
+'nocreatetext' => 'თე ხასილას ვა შილებე ახალ ხასილაშ გექიმინუა დორცხუაფილ ვარიაშ გეშა. თქვა შეგილებუნა კინორთა დო გექიმინელ ხასილაშ რედაქტირაფა, ვარა [[სპეციალურ:wiki_userlogin|მიშულა დო ანგარიშიშ დორცხუაფა]]',
 'permissionserrorstext-withaction' => 'თქვა ვა გიღუნა $2–იშ ღოლამაშ ალობა თე გეჸვენჯი {{PLURAL:$1|სამანჯელით|სამანჯელეფით}}:',
 'recreate-moveddeleted-warn' => "'''გართხილება: თქვა კინე ახალშო ორსხუანთ ხასჷლას, ნამუქჷთ ლასირქ იჸუ ოწოხოლე'''
 
@@ -453,13 +453,13 @@ $messages = array(
 'prefs-help-email-others' => 'თქვა შეილებუნა ალობა მეჩათ შხვეფს დჷგეკონტაქტან ელ-ფოშტათ თქვან ანგარიშის ვარა ოჩიებელ ხასჷლაშ ლინკიშ გეჸუნათ. თქვანი ელ-ფოშტაშ მიოწურაფუ ვანკორჩქინდჷ მუჟამს შხვა მახვარებუეფი დჷგეკავშირებუნანი.',
 
 # Groups
-'group-user' => 'მახვარებუეფი',
+'group-wiki_user' => 'მახვარებუეფი',
 'group-sysop' => 'ადმინისტრატორეფი',
 
-'grouppage-user' => '{{ns:project}}:მახვარებუეფ',
+'grouppage-wiki_user' => '{{ns:project}}:მახვარებუეფ',
 'grouppage-sysop' => '{{ns:project}}:ხემანჯღვერეფი',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'მახვარებუშ ნებეფიშ ჟურნალ',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -528,7 +528,7 @@ $messages = array(
 'filehist-datetime' => 'რიცხვი/ბორჯი',
 'filehist-thumb' => 'ჭკუდი',
 'filehist-thumbtext' => 'ჭკუდი $1-შო რსებულ ვერსიაშო',
-'filehist-user' => 'მახვარებუ',
+'filehist-wiki_user' => 'მახვარებუ',
 'filehist-dimensions' => 'განზომილებეფ',
 'filehist-filesize' => 'ფაილიშ ზომა',
 'filehist-comment' => 'კომენტარ',
@@ -565,7 +565,7 @@ $messages = array(
 'prefixindex' => 'არძო ხასილა პრეფიქსით',
 'shortpages' => 'ჭიჭე ხასილეფ',
 'longpages' => 'გინძე ხასილეფ',
-'usercreated' => '{{GENDER:$3|დირსხუ}} $2-ის $1-ს',
+'wiki_usercreated' => '{{GENDER:$3|დირსხუ}} $2-ის $1-ს',
 'newpages' => 'ახალ ხასილეფ',
 'ancientpages' => 'ჯვეშ ხასილეფ',
 'move' => 'გინოღალა',
@@ -579,7 +579,7 @@ $messages = array(
 'booksources-go' => 'გინულა',
 
 # Special:Log
-'specialloguserlabel' => 'მახვარებუ:',
+'speciallogwiki_userlabel' => 'მახვარებუ:',
 'speciallogtitlelabel' => 'სათაურ:',
 'log' => 'ჟურნალეფ',
 'all-logs-page' => 'ირ ჟურნალ',
@@ -601,14 +601,14 @@ $messages = array(
 'linksearch' => 'გალენ რცხიეფ',
 'linksearch-line' => '$1 მერცხიილი რე $2-შე',
 
-# Special:Log/newusers
-'newuserlogpage' => 'მახვარებუშ რეგისტრაციაშ ჟურნალ',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'მახვარებუშ რეგისტრაციაშ ჟურნალ',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(მაკათურეფიშ ერკებული)',
 
-# E-mail user
-'emailuser' => 'მიდუჯღონით ელ.ფოშტა ათე მახვარებუს',
+# E-mail wiki_user
+'emailwiki_user' => 'მიდუჯღონით ელ.ფოშტა ათე მახვარებუს',
 
 # Watchlist
 'watchlist' => 'ჩქიმ ოკონტროლებულეფიშ ერკებულ',
@@ -697,7 +697,7 @@ $messages = array(
 'sp-contributions-logs' => 'ჟურნალეფი',
 'sp-contributions-talk' => 'ოჩიებელი',
 'sp-contributions-search' => 'მიშაღალირ თიაშ გორუა',
-'sp-contributions-username' => 'IP მიოწურაფუ ვარა მახვარებუშ ჯოხო:',
+'sp-contributions-wiki_username' => 'IP მიოწურაფუ ვარა მახვარებუშ ჯოხო:',
 'sp-contributions-toponly' => 'ქაძირი ხვალე ეკონია რევიზიეფი რენ ფერი რედაქტირაფეფი',
 'sp-contributions-submit' => 'გორუა',
 
@@ -786,7 +786,7 @@ $messages = array(
 'importlogpage' => 'იმპორტიშ ჟურნალ',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'თქვანი მახვარებუშ ხასილა',
+'tooltip-pt-wiki_userpage' => 'თქვანი მახვარებუშ ხასილა',
 'tooltip-pt-mytalk' => 'თქვანი სხუნუაშ ხასილა',
 'tooltip-pt-preferences' => 'ჩქიმ კონფიგურაციეფ',
 'tooltip-pt-watchlist' => 'ხასილეფიშ ერკებულ, ნამუთუშ მონიტორინგის ორთუთ თირაფაშ მიზანით',
@@ -820,13 +820,13 @@ $messages = array(
 'tooltip-feed-rss' => 'მოჩამილი ხასილაშ RSS არხიშ ტრანსლაცია',
 'tooltip-feed-atom' => 'ათე ხასილაშ ატომ არხიშ ტრანსლაცია',
 'tooltip-t-contributions' => 'თე მახვარებუშ მიშაღალირ თიაშ ერკებულიშ ძირაფა',
-'tooltip-t-emailuser' => 'მიდუჯღონით ელ.ფოშტა ათე მახვარებუს',
+'tooltip-t-emailwiki_user' => 'მიდუჯღონით ელ.ფოშტა ათე მახვარებუს',
 'tooltip-t-upload' => 'გეხარგე ფაილი',
 'tooltip-t-specialpages' => 'არძო სპეციალურ ხასილაშ ერკებულ',
 'tooltip-t-print' => 'თე ხასილაშ ობეშტალი ვერსია',
 'tooltip-t-permalink' => 'პერმანენტულ რცხი ხასილაშ თე ვერსიაშა',
 'tooltip-ca-nstab-main' => 'დინორეშ ხასილაშ ძირაფა',
-'tooltip-ca-nstab-user' => 'მახვარებუშ ხასილაშ ძირაფა',
+'tooltip-ca-nstab-wiki_user' => 'მახვარებუშ ხასილაშ ძირაფა',
 'tooltip-ca-nstab-special' => 'თქვა ასე რეთ სპეციალურ ხასილას, თქვა ვა შეილებუნა ათე ხასილაშ რედაქტირაფა',
 'tooltip-ca-nstab-project' => 'პროექტიშ ხასილაშ ძირაფა',
 'tooltip-ca-nstab-image' => 'ფაილიშ ხასილაშ ძირაფა',

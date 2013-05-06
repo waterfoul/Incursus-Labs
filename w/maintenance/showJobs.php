@@ -40,9 +40,9 @@ class ShowJobs extends Maintenance {
 		$this->addOption( 'group', 'Show number of jobs per job type' );
 	}
 	public function execute() {
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 		if ( $this->hasOption( 'group' ) ) {
-			$res = $dbw->select(
+			$res = w->select(
 				'job',
 				array( 'job_cmd', 'count(*) as count' ),
 				array(),
@@ -53,7 +53,7 @@ class ShowJobs extends Maintenance {
 				$this->output( $row->job_cmd . ': ' . $row->count . "\n" );
 			}
 		} else {
-			$this->output( $dbw->selectField( 'job', 'count(*)', '', __METHOD__ ) . "\n" );
+			$this->output( w->selectField( 'job', 'count(*)', '', __METHOD__ ) . "\n" );
 		}
 	}
 }

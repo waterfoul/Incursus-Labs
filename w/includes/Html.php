@@ -475,7 +475,7 @@ class Html {
 
 			# Bug 23769: Blacklist all form validation attributes for now.  Current
 			# (June 2010) WebKit has no UI, so the form just refuses to submit
-			# without telling the user why, which is much worse than failing
+			# without telling the wiki_user why, which is much worse than failing
 			# server-side validation.  Opera is the only other implementation at
 			# this time, and has ugly UI, so just kill the feature entirely until
 			# we have at least one good implementation.
@@ -798,8 +798,8 @@ class Html {
 		$options = array();
 
 		if ( isset( $params['all'] ) ) {
-			// add an option that would let the user select all namespaces.
-			// Value is provided by user, the name shown is localized for the user.
+			// add an option that would let the wiki_user select all namespaces.
+			// Value is provided by wiki_user, the name shown is localized for the wiki_user.
 			$options[$params['all']] = wfMessage( 'namespacesall' )->text();
 		}
 		// Add all namespaces as options (in the content langauge)
@@ -813,7 +813,7 @@ class Html {
 			}
 			if ( $nsId === 0 ) {
 				// For other namespaces use use the namespace prefix as label, but for
-				// main we don't use "" but the user message descripting it (e.g. "(Main)" or "(Article)")
+				// main we don't use "" but the wiki_user message descripting it (e.g. "(Main)" or "(Article)")
 				$nsName = wfMessage( 'blanknamespace' )->text();
 			}
 			$optionsHtml[] = Html::element(

@@ -36,7 +36,7 @@ class ResourceLoaderContext {
 	protected $language;
 	protected $direction;
 	protected $skin;
-	protected $user;
+	protected $wiki_user;
 	protected $debug;
 	protected $only;
 	protected $version;
@@ -61,7 +61,7 @@ class ResourceLoaderContext {
 		$this->modules   = $modules ? self::expandModuleNames( $modules ) : array();
 		// Various parameters
 		$this->skin      = $request->getVal( 'skin' );
-		$this->user      = $request->getVal( 'user' );
+		$this->wiki_user      = $request->getVal( 'wiki_user' );
 		$this->debug     = $request->getFuzzyBool( 'debug', $wgResourceLoaderDebug );
 		$this->only      = $request->getVal( 'only' );
 		$this->version   = $request->getVal( 'version' );
@@ -160,7 +160,7 @@ class ResourceLoaderContext {
 		if ( $this->direction === null ) {
 			$this->direction = $this->request->getVal( 'dir' );
 			if ( !$this->direction ) {
-				# directionality based on user language (see bug 6100)
+				# directionality based on wiki_user language (see bug 6100)
 				$this->direction = Language::factory( $this->getLanguage() )->getDir();
 			}
 		}
@@ -177,8 +177,8 @@ class ResourceLoaderContext {
 	/**
 	 * @return string|null
 	 */
-	public function getUser() {
-		return $this->user;
+	public function getwiki_user() {
+		return $this->wiki_user;
 	}
 
 	/**
@@ -236,7 +236,7 @@ class ResourceLoaderContext {
 	public function getHash() {
 		if ( !isset( $this->hash ) ) {
 			$this->hash = implode( '|', array(
-				$this->getLanguage(), $this->getDirection(), $this->skin, $this->user,
+				$this->getLanguage(), $this->getDirection(), $this->skin, $this->wiki_user,
 				$this->debug, $this->only, $this->version
 			) );
 		}

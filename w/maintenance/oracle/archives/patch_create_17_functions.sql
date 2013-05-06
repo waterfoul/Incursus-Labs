@@ -26,7 +26,7 @@ BEGIN
                       ' WHERE ROWNUM = 0';
   END IF;
   FOR rc IN (SELECT column_name, data_default
-               FROM user_tab_columns
+               FROM wiki_user_tab_columns
               WHERE table_name = p_oldprefix || p_tabname
                 AND data_default IS NOT NULL) LOOP
     EXECUTE IMMEDIATE 'ALTER TABLE ' || p_newprefix || p_tabname ||
@@ -42,7 +42,7 @@ BEGIN
                             '"' || constraint_name || '"',
                             '"' || p_newprefix || constraint_name || '"') DDLVC2,
                     constraint_name
-               FROM user_constraints uc
+               FROM wiki_user_constraints uc
               WHERE table_name = p_oldprefix || p_tabname
                 AND constraint_type = 'P') LOOP
     l_temp_ei_sql := SUBSTR(rc.ddlvc2, 1, INSTR(rc.ddlvc2, 'PCTFREE') - 1);
@@ -57,7 +57,7 @@ BEGIN
                             USER || '"."' || p_oldprefix,
                             USER || '"."' || p_newprefix) DDLVC2,
                     constraint_name
-               FROM user_constraints uc
+               FROM wiki_user_constraints uc
               WHERE table_name = p_oldprefix || p_tabname
                 AND constraint_type = 'R') LOOP
     EXECUTE IMMEDIATE rc.ddlvc2;
@@ -73,12 +73,12 @@ BEGIN
                             '"' || p_newprefix || index_name || '"') DDLVC2,
                     index_name,
                     index_type
-               FROM user_indexes ui
+               FROM wiki_user_indexes ui
               WHERE table_name = p_oldprefix || p_tabname
                 AND index_type NOT IN ('LOB', 'DOMAIN')
                 AND NOT EXISTS
               (SELECT NULL
-                       FROM user_constraints
+                       FROM wiki_user_constraints
                       WHERE table_name = ui.table_name
                         AND constraint_name = ui.index_name)) LOOP
     l_temp_ei_sql := SUBSTR(rc.ddlvc2, 1, INSTR(rc.ddlvc2, 'PCTFREE') - 1);
@@ -94,7 +94,7 @@ BEGIN
                             ' ON ' || p_oldprefix || p_tabname,
                             ' ON ' || p_newprefix || p_tabname) DDLVC2,
                     trigger_name
-               FROM user_triggers
+               FROM wiki_user_triggers
               WHERE table_name = p_oldprefix || p_tabname) LOOP
     l_temp_ei_sql := SUBSTR(rc.ddlvc2, 1, INSTR(rc.ddlvc2, 'ALTER ') - 1);
     dbms_output.put_line(l_temp_ei_sql);

@@ -71,7 +71,7 @@ class ApiQueryStashImageInfo extends ApiQueryImageInfo {
 	}
 
 	private $propertyFilter = array(
-		'user', 'userid', 'comment', 'parsedcomment',
+		'wiki_user', 'wiki_userid', 'comment', 'parsedcomment',
 		'mediatype', 'archivename',
 	);
 

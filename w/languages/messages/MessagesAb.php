@@ -167,7 +167,7 @@ $messages = array(
 'jumptonavigation' => 'Анавигациа',
 'jumptosearch' => 'Аҧшаара',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} иазкны',
 'currentevents' => 'Ииасуа ахҭысқәа',
 'mainpage' => 'Ихадоу Адаҟьа',
@@ -184,7 +184,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Адаҟьа',
-'nstab-user' => 'Алахәыла',
+'nstab-wiki_user' => 'Алахәыла',
 'nstab-special' => 'Цастәи адаҟьа',
 'nstab-image' => 'Афаил',
 'nstab-template' => 'Ашаблон',
@@ -197,9 +197,9 @@ $messages = array(
 # Login and logout pages
 'login' => 'Урдырра',
 'nav-login-createaccount' => 'Урдырра / Арегистрациара',
-'userlogin' => 'Урдырра/Арегистрациара',
+'wiki_userlogin' => 'Урдырра/Арегистрациара',
 'logout' => 'Асеанс дәылҵра',
-'userlogout' => 'Асеанс дәылҵра',
+'wiki_userlogout' => 'Асеанс дәылҵра',
 'loginlanguagelabel' => 'Абызшәа: $1',
 
 # Edit pages
@@ -219,9 +219,9 @@ $messages = array(
 'prefs-signature' => 'Анапынҵамҭа',
 
 # Groups
-'group-user' => 'Алахәылацәа',
+'group-wiki_user' => 'Алахәылацәа',
 
-'group-user-member' => '{{GENDER:$1|алахәыла}}',
+'group-wiki_user-member' => '{{GENDER:$1|алахәыла}}',
 
 'grouppage-sysop' => '{{ns:project}}:Администраторцәа',
 
@@ -238,7 +238,7 @@ $messages = array(
 'upload' => 'Афаил аҭагалара',
 
 # File description page
-'filehist-user' => 'Алахәыла',
+'filehist-wiki_user' => 'Алахәыла',
 
 # Random page
 'randompage' => 'Машәырлатәи аҩымҭа',
@@ -246,12 +246,12 @@ $messages = array(
 'brokenredirects-edit' => 'ариашамҭа',
 
 # Miscellaneous special pages
-'newpages-username' => 'Алахәыла:',
+'newpages-wiki_username' => 'Алахәыла:',
 'move' => 'Ахьӡ аҧсахра',
 'movethispage' => 'Ахьӡ аҧсахра ари адаҟьа',
 
 # Special:Log
-'specialloguserlabel' => 'Алахәыла:',
+'speciallogwiki_userlabel' => 'Алахәыла:',
 
 # Special:AllPages
 'alphaindexline' => '$1 ... $2',

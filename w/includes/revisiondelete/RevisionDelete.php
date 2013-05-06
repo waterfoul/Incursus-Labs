@@ -42,14 +42,14 @@ class RevDel_RevisionList extends RevDel_List {
 	}
 
 	/**
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @return mixed
 	 */
-	public function doQuery( $db ) {
+	public function doQuery(  ) {
 		$ids = array_map( 'intval', $this->ids );
-		$live = $db->select(
-			array( 'revision', 'page', 'user' ),
-			array_merge( Revision::selectFields(), Revision::selectUserFields() ),
+		$live = ->select(
+			array( 'revision', 'page', 'wiki_user' ),
+			array_merge( Revision::selectFields(), Revision::selectwiki_userFields() ),
 			array(
 				'rev_page' => $this->title->getArticleID(),
 				'rev_id'   => $ids,
@@ -58,7 +58,7 @@ class RevDel_RevisionList extends RevDel_List {
 			array( 'ORDER BY' => 'rev_id DESC' ),
 			array(
 				'page' => Revision::pageJoinCond(),
-				'user' => Revision::userJoinCond() )
+				'wiki_user' => Revision::wiki_userJoinCond() )
 		);
 
 		if ( $live->numRows() >= count( $ids ) ) {
@@ -67,7 +67,7 @@ class RevDel_RevisionList extends RevDel_List {
 		}
 
 		// Check if any requested revisions are available fully deleted.
-		$archived = $db->select( array( 'archive' ), '*',
+		$archived = ->select( array( 'archive' ), '*',
 			array(
 				'ar_rev_id' => $ids
 			),
@@ -106,8 +106,8 @@ class RevDel_RevisionList extends RevDel_List {
 
 	public function getCurrent() {
 		if ( is_null( $this->currentRevId ) ) {
-			$dbw = wfGetDB( DB_MASTER );
-			$this->currentRevId = $dbw->selectField(
+			w = wfGetDB( DB_MASTER );
+			$this->currentRevId = w->selectField(
 				'page', 'page_latest', $this->title->pageCond(), __METHOD__ );
 		}
 		return $this->currentRevId;
@@ -150,19 +150,19 @@ class RevDel_RevisionItem extends RevDel_Item {
 	}
 
 	public function getAuthorIdField() {
-		return 'rev_user';
+		return 'rev_wiki_user';
 	}
 
 	public function getAuthorNameField() {
-		return 'user_name'; // see Revision::selectUserFields()
+		return 'wiki_user_name'; // see Revision::selectwiki_userFields()
 	}
 
 	public function canView() {
-		return $this->revision->userCan( Revision::DELETED_RESTRICTED, $this->list->getUser() );
+		return $this->revision->wiki_userCan( Revision::DELETED_RESTRICTED, $this->list->getwiki_user() );
 	}
 
 	public function canViewContent() {
-		return $this->revision->userCan( Revision::DELETED_TEXT, $this->list->getUser() );
+		return $this->revision->wiki_userCan( Revision::DELETED_TEXT, $this->list->getwiki_user() );
 	}
 
 	public function getBits() {
@@ -170,9 +170,9 @@ class RevDel_RevisionItem extends RevDel_Item {
 	}
 
 	public function setBits( $bits ) {
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 		// Update revision table
-		$dbw->update( 'revision',
+		w->update( 'revision',
 			array( 'rev_deleted' => $bits ),
 			array(
 				'rev_id' => $this->revision->getId(),
@@ -181,12 +181,12 @@ class RevDel_RevisionItem extends RevDel_Item {
 			),
 			__METHOD__
 		);
-		if ( !$dbw->affectedRows() ) {
+		if ( !w->affectedRows() ) {
 			// Concurrent fail!
 			return false;
 		}
 		// Update recentchanges table
-		$dbw->update( 'recentchanges',
+		w->update( 'recentchanges',
 			array(
 				'rc_deleted' => $bits,
 				'rc_patrolled' => 1
@@ -194,7 +194,7 @@ class RevDel_RevisionItem extends RevDel_Item {
 			array(
 				'rc_this_oldid' => $this->revision->getId(), // condition
 				// non-unique timestamp index
-				'rc_timestamp' => $dbw->timestamp( $this->revision->getTimestamp() ),
+				'rc_timestamp' => w->timestamp( $this->revision->getTimestamp() ),
 			),
 			__METHOD__
 		);
@@ -216,8 +216,8 @@ class RevDel_RevisionItem extends RevDel_Item {
 	 * @return string
 	 */
 	protected function getRevisionLink() {
-		$date = htmlspecialchars( $this->list->getLanguage()->userTimeAndDate(
-			$this->revision->getTimestamp(), $this->list->getUser() ) );
+		$date = htmlspecialchars( $this->list->getLanguage()->wiki_userTimeAndDate(
+			$this->revision->getTimestamp(), $this->list->getwiki_user() ) );
 
 		if ( $this->isDeleted() && !$this->canViewContent() ) {
 			return $date;
@@ -260,12 +260,12 @@ class RevDel_RevisionItem extends RevDel_Item {
 		$difflink = $this->list->msg( 'parentheses' )
 			->rawParams( $this->getDiffLink() )->escaped();
 		$revlink = $this->getRevisionLink();
-		$userlink = Linker::revUserLink( $this->revision );
+		$wiki_userlink = Linker::revwiki_userLink( $this->revision );
 		$comment = Linker::revComment( $this->revision );
 		if ( $this->isDeleted() ) {
 			$revlink = "<span class=\"history-deleted\">$revlink</span>";
 		}
-		return "<li>$difflink $revlink $userlink $comment</li>";
+		return "<li>$difflink $revlink $wiki_userlink $comment</li>";
 	}
 }
 
@@ -282,15 +282,15 @@ class RevDel_ArchiveList extends RevDel_RevisionList {
 	}
 
 	/**
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @return mixed
 	 */
-	public function doQuery( $db ) {
+	public function doQuery(  ) {
 		$timestamps = array();
 		foreach ( $this->ids as $id ) {
-			$timestamps[] = $db->timestamp( $id );
+			$timestamps[] = ->timestamp( $id );
 		}
-		return $db->select( 'archive', '*',
+		return ->select( 'archive', '*',
 				array(
 					'ar_namespace' => $this->title->getNamespace(),
 					'ar_title'     => $this->title->getDBkey(),
@@ -333,11 +333,11 @@ class RevDel_ArchiveItem extends RevDel_RevisionItem {
 	}
 
 	public function getAuthorIdField() {
-		return 'ar_user';
+		return 'ar_wiki_user';
 	}
 
 	public function getAuthorNameField() {
-		return 'ar_user_text';
+		return 'ar_wiki_user_text';
 	}
 
 	public function getId() {
@@ -346,8 +346,8 @@ class RevDel_ArchiveItem extends RevDel_RevisionItem {
 	}
 
 	public function setBits( $bits ) {
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update( 'archive',
+		w = wfGetDB( DB_MASTER );
+		w->update( 'archive',
 			array( 'ar_deleted' => $bits ),
 			array(
 				'ar_namespace' 	=> $this->list->title->getNamespace(),
@@ -358,12 +358,12 @@ class RevDel_ArchiveItem extends RevDel_RevisionItem {
 				'ar_deleted' 	=> $this->getBits()
 			),
 			__METHOD__ );
-		return (bool)$dbw->affectedRows();
+		return (bool)w->affectedRows();
 	}
 
 	protected function getRevisionLink() {
-		$date = htmlspecialchars( $this->list->getLanguage()->userTimeAndDate(
-			$this->revision->getTimestamp(), $this->list->getUser() ) );
+		$date = htmlspecialchars( $this->list->getLanguage()->wiki_userTimeAndDate(
+			$this->revision->getTimestamp(), $this->list->getwiki_user() ) );
 
 		if ( $this->isDeleted() && !$this->canViewContent() ) {
 			return $date;
@@ -420,14 +420,14 @@ class RevDel_ArchivedRevisionItem extends RevDel_ArchiveItem {
 	}
 
 	public function setBits( $bits ) {
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update( 'archive',
+		w = wfGetDB( DB_MASTER );
+		w->update( 'archive',
 			array( 'ar_deleted' => $bits ),
 			array( 'ar_rev_id' => $this->row->ar_rev_id,
 				   'ar_deleted' => $this->getBits()
 			),
 			__METHOD__ );
-		return (bool)$dbw->affectedRows();
+		return (bool)w->affectedRows();
 	}
 }
 
@@ -446,15 +446,15 @@ class RevDel_FileList extends RevDel_List {
 	var $storeBatch, $deleteBatch, $cleanupBatch;
 
 	/**
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @return mixed
 	 */
-	public function doQuery( $db ) {
+	public function doQuery(  ) {
 		$archiveNames = array();
 		foreach( $this->ids as $timestamp ) {
 			$archiveNames[] = $timestamp . '!' . $this->title->getDBkey();
 		}
-		return $db->select( 'oldimage', '*',
+		return ->select( 'oldimage', '*',
 			array(
 				'oi_name'         => $this->title->getDBkey(),
 				'oi_archive_name' => $archiveNames
@@ -533,11 +533,11 @@ class RevDel_FileItem extends RevDel_Item {
 	}
 
 	public function getAuthorIdField() {
-		return 'oi_user';
+		return 'oi_wiki_user';
 	}
 
 	public function getAuthorNameField() {
-		return 'oi_user_text';
+		return 'oi_wiki_user_text';
 	}
 
 	public function getId() {
@@ -546,11 +546,11 @@ class RevDel_FileItem extends RevDel_Item {
 	}
 
 	public function canView() {
-		return $this->file->userCan( File::DELETED_RESTRICTED, $this->list->getUser() );
+		return $this->file->wiki_userCan( File::DELETED_RESTRICTED, $this->list->getwiki_user() );
 	}
 
 	public function canViewContent() {
-		return $this->file->userCan( File::DELETED_FILE, $this->list->getUser() );
+		return $this->file->wiki_userCan( File::DELETED_FILE, $this->list->getwiki_user() );
 	}
 
 	public function getBits() {
@@ -582,8 +582,8 @@ class RevDel_FileItem extends RevDel_Item {
 		}
 
 		# Do the database operations
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update( 'oldimage',
+		w = wfGetDB( DB_MASTER );
+		w->update( 'oldimage',
 			array( 'oi_deleted' => $bits ),
 			array(
 				'oi_name' => $this->row->oi_name,
@@ -592,7 +592,7 @@ class RevDel_FileItem extends RevDel_Item {
 			),
 			__METHOD__
 		);
-		return (bool)$dbw->affectedRows();
+		return (bool)w->affectedRows();
 	}
 
 	public function isDeleted() {
@@ -605,8 +605,8 @@ class RevDel_FileItem extends RevDel_Item {
 	 * @return string
 	 */
 	protected function getLink() {
-		$date = htmlspecialchars( $this->list->getLanguage()->userTimeAndDate(
-			$this->file->getTimestamp(), $this->list->getUser() ) );
+		$date = htmlspecialchars( $this->list->getLanguage()->wiki_userTimeAndDate(
+			$this->file->getTimestamp(), $this->list->getwiki_user() ) );
 
 		if ( !$this->isDeleted() ) {
 			# Regular files...
@@ -624,7 +624,7 @@ class RevDel_FileItem extends RevDel_Item {
 				array(
 					'target' => $this->list->title->getPrefixedText(),
 					'file'   => $this->file->getArchiveName(),
-					'token'  => $this->list->getUser()->getEditToken(
+					'token'  => $this->list->getwiki_user()->getEditToken(
 						$this->file->getArchiveName() )
 				)
 			);
@@ -632,15 +632,15 @@ class RevDel_FileItem extends RevDel_Item {
 		return '<span class="history-deleted">' . $link . '</span>';
 	}
 	/**
-	 * Generate a user tool link cluster if the current user is allowed to view it
+	 * Generate a wiki_user tool link cluster if the current wiki_user is allowed to view it
 	 * @return string HTML
 	 */
-	protected function getUserTools() {
-		if( $this->file->userCan( Revision::DELETED_USER, $this->list->getUser() ) ) {
-			$link = Linker::userLink( $this->file->user, $this->file->user_text ) .
-				Linker::userToolLinks( $this->file->user, $this->file->user_text );
+	protected function getwiki_userTools() {
+		if( $this->file->wiki_userCan( Revision::DELETED_USER, $this->list->getwiki_user() ) ) {
+			$link = Linker::wiki_userLink( $this->file->wiki_user, $this->file->wiki_user_text ) .
+				Linker::wiki_userToolLinks( $this->file->wiki_user, $this->file->wiki_user_text );
 		} else {
-			$link = $this->list->msg( 'rev-deleted-user' )->escaped();
+			$link = $this->list->msg( 'rev-deleted-wiki_user' )->escaped();
 		}
 		if( $this->file->isDeleted( Revision::DELETED_USER ) ) {
 			return '<span class="history-deleted">' . $link . '</span>';
@@ -650,12 +650,12 @@ class RevDel_FileItem extends RevDel_Item {
 
 	/**
 	 * Wrap and format the file's comment block, if the current
-	 * user is allowed to view it.
+	 * wiki_user is allowed to view it.
 	 *
 	 * @return string HTML
 	 */
 	protected function getComment() {
-		if( $this->file->userCan( File::DELETED_COMMENT, $this->list->getUser() ) ) {
+		if( $this->file->wiki_userCan( File::DELETED_COMMENT, $this->list->getwiki_user() ) ) {
 			$block = Linker::commentBlock( $this->file->description );
 		} else {
 			$block = ' ' . $this->list->msg( 'rev-deleted-comment' )->escaped();
@@ -672,7 +672,7 @@ class RevDel_FileItem extends RevDel_Item {
 				$this->file->getWidth(), $this->file->getHeight() )->text() .
 			' (' . $this->list->msg( 'nbytes' )->numParams( $this->file->getSize() )->text() . ')';
 
-		return '<li>' . $this->getLink() . ' ' . $this->getUserTools() . ' ' .
+		return '<li>' . $this->getLink() . ' ' . $this->getwiki_userTools() . ' ' .
 			$data . ' ' . $this->getComment(). '</li>';
 	}
 }
@@ -690,12 +690,12 @@ class RevDel_ArchivedFileList extends RevDel_FileList {
 	}
 
 	/**
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @return mixed
 	 */
-	public function doQuery( $db ) {
+	public function doQuery(  ) {
 		$ids = array_map( 'intval', $this->ids );
-		return $db->select( 'filearchive', '*',
+		return ->select( 'filearchive', '*',
 			array(
 				'fa_name' => $this->title->getDBkey(),
 				'fa_id'   => $ids
@@ -728,11 +728,11 @@ class RevDel_ArchivedFileItem extends RevDel_FileItem {
 	}
 
 	public function getAuthorIdField() {
-		return 'fa_user';
+		return 'fa_wiki_user';
 	}
 
 	public function getAuthorNameField() {
-		return 'fa_user_text';
+		return 'fa_wiki_user_text';
 	}
 
 	public function getId() {
@@ -740,8 +740,8 @@ class RevDel_ArchivedFileItem extends RevDel_FileItem {
 	}
 
 	public function setBits( $bits ) {
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update( 'filearchive',
+		w = wfGetDB( DB_MASTER );
+		w->update( 'filearchive',
 			array( 'fa_deleted' => $bits ),
 			array(
 				'fa_id' => $this->row->fa_id,
@@ -749,12 +749,12 @@ class RevDel_ArchivedFileItem extends RevDel_FileItem {
 			),
 			__METHOD__
 		);
-		return (bool)$dbw->affectedRows();
+		return (bool)w->affectedRows();
 	}
 
 	protected function getLink() {
-		$date = htmlspecialchars( $this->list->getLanguage()->userTimeAndDate(
-			$this->file->getTimestamp(), $this->list->getUser() ) );
+		$date = htmlspecialchars( $this->list->getLanguage()->wiki_userTimeAndDate(
+			$this->file->getTimestamp(), $this->list->getwiki_user() ) );
 
 		# Hidden files...
 		if( !$this->canViewContent() ) {
@@ -766,7 +766,7 @@ class RevDel_ArchivedFileItem extends RevDel_FileItem {
 				array(
 					'target' => $this->list->title->getPrefixedText(),
 					'file' => $key,
-					'token' => $this->list->getUser()->getEditToken( $key )
+					'token' => $this->list->getwiki_user()->getEditToken( $key )
 				)
 			);
 		}
@@ -790,12 +790,12 @@ class RevDel_LogList extends RevDel_List {
 	}
 
 	/**
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @return mixed
 	 */
-	public function doQuery( $db ) {
+	public function doQuery(  ) {
 		$ids = array_map( 'intval', $this->ids );
-		return $db->select( 'logging', '*',
+		return ->select( 'logging', '*',
 			array( 'log_id' => $ids ),
 			__METHOD__,
 			array( 'ORDER BY' => 'log_id DESC' )
@@ -836,15 +836,15 @@ class RevDel_LogItem extends RevDel_Item {
 	}
 
 	public function getAuthorIdField() {
-		return 'log_user';
+		return 'log_wiki_user';
 	}
 
 	public function getAuthorNameField() {
-		return 'log_user_text';
+		return 'log_wiki_user_text';
 	}
 
 	public function canView() {
-		return LogEventsList::userCan( $this->row, Revision::DELETED_RESTRICTED, $this->list->getUser() );
+		return LogEventsList::wiki_userCan( $this->row, Revision::DELETED_RESTRICTED, $this->list->getwiki_user() );
 	}
 
 	public function canViewContent() {
@@ -856,8 +856,8 @@ class RevDel_LogItem extends RevDel_Item {
 	}
 
 	public function setBits( $bits ) {
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update( 'recentchanges',
+		w = wfGetDB( DB_MASTER );
+		w->update( 'recentchanges',
 			array(
 				'rc_deleted' => $bits,
 				'rc_patrolled' => 1
@@ -868,7 +868,7 @@ class RevDel_LogItem extends RevDel_Item {
 			),
 			__METHOD__
 		);
-		$dbw->update( 'logging',
+		w->update( 'logging',
 			array( 'log_deleted' => $bits ),
 			array(
 				'log_id' => $this->row->log_id,
@@ -876,12 +876,12 @@ class RevDel_LogItem extends RevDel_Item {
 			),
 			__METHOD__
 		);
-		return (bool)$dbw->affectedRows();
+		return (bool)w->affectedRows();
 	}
 
 	public function getHTML() {
-		$date = htmlspecialchars( $this->list->getLanguage()->userTimeAndDate(
-			$this->row->log_timestamp, $this->list->getUser() ) );
+		$date = htmlspecialchars( $this->list->getLanguage()->wiki_userTimeAndDate(
+			$this->row->log_timestamp, $this->list->getwiki_user() ) );
 		$title = Title::makeTitle( $this->row->log_namespace, $this->row->log_title );
 		$formatter = LogFormatter::newFromRow( $this->row );
 		$formatter->setContext( $this->list->getContext() );
@@ -895,7 +895,7 @@ class RevDel_LogItem extends RevDel_Item {
 			array( 'page' => $title->getPrefixedText() )
 		);
 		$loglink = $this->list->msg( 'parentheses' )->rawParams( $loglink )->escaped();
-		// User links and action text
+		// wiki_user links and action text
 		$action = $formatter->getActionText();
 		// Comment
 		$comment = $this->list->getLanguage()->getDirMark() . Linker::commentBlock( $this->row->log_comment );

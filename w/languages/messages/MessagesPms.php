@@ -41,7 +41,7 @@ $namespaceNames = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Anliure con la sotliniadura',
 'tog-justify' => 'Paràgraf: giustificà',
 'tog-hideminor' => 'Stërma le modìfiche cite<br />ant sla pàgina "Ùltime Modìfiche"',
@@ -65,7 +65,7 @@ $messages = array(
 'tog-previewonfirst' => 'Smon na preuva la prima vira che as fa na modìfica',
 'tog-nocache' => 'Disabilité la memòria local ëd le pàgine dël navigador',
 'tog-enotifwatchlistpages' => "Mandeme un mëssagi an pòsta eletrònica quand a-i son dle modìfiche a le pàgine ch'im ten-o sot euj",
-'tog-enotifusertalkpages' => 'Mand-me un messagi ëd pòsta eletrònica quand a-i son dle modìfiche a mia pàgina dle ciaciarade',
+'tog-enotifwiki_usertalkpages' => 'Mand-me un messagi ëd pòsta eletrònica quand a-i son dle modìfiche a mia pàgina dle ciaciarade',
 'tog-enotifminoredits' => "Mandeme un mëssagi an pòsta eletrònica bele che për le modìfiche cite dle pàgine o dj'archivi",
 'tog-enotifrevealaddr' => 'Lassa che a së s-ciàira mia adrëssa ëd pòsta eletrònica ant ij messagi ëd notìfica',
 'tog-shownumberswatching' => "Smon ël nùmer d'utent che as ten-o la pàgina sot euj",
@@ -247,7 +247,7 @@ $messages = array(
 'talk' => 'Discussion',
 'views' => 'vìsite',
 'toolbox' => 'utiss',
-'userpage' => 'Che a varda la pàgina Utent',
+'wiki_userpage' => 'Che a varda la pàgina Utent',
 'projectpage' => 'Che a varda la pàgina ëd servissi',
 'imagepage' => "Varda la pàgina dl'archivi",
 'mediawikipage' => 'Mostra ël mëssagi',
@@ -273,7 +273,7 @@ $1",
 'pool-queuefull' => "La coa ëd travaj a l'é pien-a",
 'pool-errorunknown' => 'Eror pa conossù',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'A propòsit ëd {{SITENAME}}',
 'aboutpage' => 'Project:A propòsit',
 'copyright' => 'Ël contnù a resta disponìbil sota a na licensa $1.',
@@ -305,8 +305,8 @@ $1",
 'youhavenewmessages' => "A l'ha $1 ($2).",
 'newmessageslink' => 'mëssagi neuv',
 'newmessagesdifflink' => "A-i é chèich-còs ëd diferent da 'nt l'ùltima revision",
-'youhavenewmessagesfromusers' => "It l'has $1 da {{PLURAL:$3|n'autr utent|$3 utent}} ($2).",
-'youhavenewmessagesmanyusers' => "A l'ha $1 da vàire utent ($2).",
+'youhavenewmessagesfromwiki_users' => "It l'has $1 da {{PLURAL:$3|n'autr utent|$3 utent}} ($2).",
+'youhavenewmessagesmanywiki_users' => "A l'ha $1 da vàire utent ($2).",
 'newmessageslinkplural' => '{{PLURAL:$1|un mëssagi neuv|$1 mëssagi neuv}}',
 'newmessagesdifflinkplural' => 'ùltime {{PLURAL:$1|modìfica|modìfiche}}',
 'youhavenewmessagesmulti' => "A l'ha dij neuv mëssagi an $1",
@@ -337,7 +337,7 @@ $1",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Artìcol',
-'nstab-user' => "Pàgina dl'utent",
+'nstab-wiki_user' => "Pàgina dl'utent",
 'nstab-media' => 'Pàgina multimedial',
 'nstab-special' => 'Pàgina special',
 'nstab-project' => 'Pàgina ëd servissi',
@@ -382,7 +382,7 @@ L'aministrator che a l'ha blocala a l'ha lassà sto messagi-sì:
 Sossì ëd sòlit a l'é causà përché a l'é ciamasse na diferensa o n'anliura stòrica a na paginà scancelà.
 
 Se cost a l'é nen ël cas, it podrìe avèj trovà un bigat ant ël programa.
-Për piasì, fa rapòrt a n'[[Special:ListUsers/sysop|aministrator]], pijand nòta ëd la URL.",
+Për piasì, fa rapòrt a n'[[Special:Listwiki_users/sysop|aministrator]], pijand nòta ëd la URL.",
 'missingarticle-rev' => '(revision#: $1)',
 'missingarticle-diff' => '(Diff: $1, $2)',
 'readonly_lag' => "La base dat a l'é staita blocà n'automàtich antramentr che le màchine dël sircùit secondari (slave) as buto an pari con cole dël prinsipal (master)",
@@ -429,7 +429,7 @@ Për gionté o cangé dle tradussion për tute le wiki, për piasì ch'a deuvra 
 'customcssprotected' => "Ch'a varda ch'a l'ha pa ël përmess ëd modifiché sta pàgina ëd CSS, për via ch'a l'ha andrinta ij gust ëd n'àutr utent.",
 'customjsprotected' => "Ch'a varda ch'a l'ha pa ël përmess ëd modifiché sta pàgina ëd JavaScript, për via ch'a l'ha andrinta ij gust ëd n'àutr utent.",
 'ns-specialprotected' => 'As peulo nen modifichesse le pàgine dlë spassi nominal {{ns:special}}.',
-'titleprotected' => "La creassion ëd pàgine con ës tìtol-sì a l'é stàita proibìa da [[User:$1|$1]].
+'titleprotected' => "La creassion ëd pàgine con ës tìtol-sì a l'é stàita proibìa da [[wiki_user:$1|$1]].
 Coma rason a l'ha butà: ''$2''.",
 'filereadonlyerror' => "As peul pa modifichesse l'archivi «$1» përchè ël depòsit d'archivi «$2» a l'é an sola letura.
 
@@ -447,7 +447,7 @@ L'aministrator ch'a l'ha blocalo a l'ha lassà sta spiegassion: «$3».",
 # Login and logout pages
 'logouttext' => "'''A l'é sortù da 'nt ël sistema.'''
 
-A peul tiré anans a dovré {{SITENAME}} coma Utent anonim, ò pura a peul [[Special:UserLogin|rintré torna ant ël sistema]] con l'istess stranòm che a dovrava prima, ò con un diferent.
+A peul tiré anans a dovré {{SITENAME}} coma Utent anonim, ò pura a peul [[Special:wiki_userLogin|rintré torna ant ël sistema]] con l'istess stranòm che a dovrava prima, ò con un diferent.
 Ch'a nòta che chèich pàgine a peulo continué a esse visualisà com s'a fussa ancó ant ël sistema, fin ch'a scancela pa la cache ëd sò navigador.",
 'welcomecreation' => '==Bin ëvnù, $1!==
 Sò cont a l\'é stàit creà.
@@ -463,21 +463,21 @@ Che as dësmentia pa ëd cambié ij [[Special:Preferences|"sò gust" an {{SITENA
 'login' => 'Rintré ant ël sistema',
 'nav-login-createaccount' => 'rintré ant ël sistema',
 'loginprompt' => 'Che a varda mach che a venta avèj ij cookies abilità për podèj rintré an {{SITENAME}}.',
-'userlogin' => 'rintré ant ël sistema',
-'userloginnocreate' => 'Intra',
+'wiki_userlogin' => 'rintré ant ël sistema',
+'wiki_userloginnocreate' => 'Intra',
 'logout' => "Seurte da 'nt ël sistema",
-'userlogout' => 'seurte dal sistema',
+'wiki_userlogout' => 'seurte dal sistema',
 'notloggedin' => "a l'é pa ant ël sistema",
 'nologin' => "Ha-lo ancó nen un cont? '''$1'''.",
 'nologinlink' => 'creésse un cont.',
 'createaccount' => 'Crea un cont neuv',
 'gotaccount' => "Ha-lo già un sò cont? '''$1'''.",
 'gotaccountlink' => 'Rintré ant ël sistema',
-'userlogin-resetlink' => "A l'ha dësmentià ij sò detaj për intré ant ël sistema?",
+'wiki_userlogin-resetlink' => "A l'ha dësmentià ij sò detaj për intré ant ël sistema?",
 'createaccountmail' => 'për pòsta eletrònica',
 'createaccountreason' => 'Rason:',
 'badretype' => "Le doe ciav che a l'ha scrivù a resto diferente antra lor, e a venta che a sio mideme.",
-'userexists' => "Lë stranòm anserì a l'é già dovrà.
+'wiki_userexists' => "Lë stranòm anserì a l'é già dovrà.
 Për piasì sern në stranòm diferent.",
 'loginerror' => 'Eror ën rintrand ant ël sistema',
 'createaccounterror' => 'As peul pa creesse ël cont: $1',
@@ -490,12 +490,12 @@ Ch'a contròla d'avèj ij bëscotin abilità, ch'a caria torna la pàgina e ch'a
 'noname' => "Lë stranòm che a l'ha batù as peul pa dovresse, as peul nen creésse un cont Utent con ës nòm-sì.",
 'loginsuccesstitle' => "Compliment! A l'é pen-a rintrà ant ël sistema. A-i é pa staje gnun eror.",
 'loginsuccess' => 'A l\'ha avù ël përmess ëd conession al servent ëd {{SITENAME}} con lë stranòm utent ëd "$1".',
-'nosuchuser' => 'A-i é pa gnun utent con ël nòm "$1".
+'nosuchwiki_user' => 'A-i é pa gnun utent con ël nòm "$1".
 Ij nòm ëd j\'utent a son sensìbij a le majùscole.
-Controla ël nòm che it l\'has batù, o [[Special:UserLogin/signup|fà un neuv cont]].',
-'nosuchusershort' => 'A-i é pa gnun utent che as ciama "$1". Për piasì, che a contròla se a l\'ha scrit tut giust.',
-'nouserspecified' => 'A venta che a specìfica në stranòm utent',
-'login-userblocked' => "St'utent-sì a l'é blocà. A peul pa intré ant ël sistema.",
+Controla ël nòm che it l\'has batù, o [[Special:wiki_userLogin/signup|fà un neuv cont]].',
+'nosuchwiki_usershort' => 'A-i é pa gnun utent che as ciama "$1". Për piasì, che a contròla se a l\'ha scrit tut giust.',
+'nowiki_userspecified' => 'A venta che a specìfica në stranòm utent',
+'login-wiki_userblocked' => "St'utent-sì a l'é blocà. A peul pa intré ant ël sistema.",
 'wrongpassword' => "La ciav batùa a l'é pa giusta.<br /><br />Che a preuva torna, për piasì.",
 'wrongpasswordempty' => "A l'ha butà na ciav veujda. Për piasì, che a preuva torna.",
 'passwordtooshort' => 'Le ciav a devo avèj almanch {{PLURAL:$1|1 caràter|$1 caràter}}.',
@@ -537,16 +537,16 @@ Për piasì che a buta n'adrëssa scrita giusta ò che a lassa ël camp veujd.",
 'createaccount-text' => 'Cheidun a l\'ha dorbù un cont për st\'adrëssa ëd pòsta eletrònica-sì ansima a {{SITENAME}} ($4) butand da stranòm "$2" e da ciav "$3". A dovrìa rintré ant ël sistema e cambiesse soa ciav pì ampressa ch\'a peul.
 
 Se sòn a l\'é rivà për eror, a peul lassé sté e fe gnente sensa problema.',
-'usernamehasherror' => "Un nòm utent a peul pa conten-e caràter ciapulà (''hash'')",
+'wiki_usernamehasherror' => "Un nòm utent a peul pa conten-e caràter ciapulà (''hash'')",
 'login-throttled' => "It l'has fàit tròpi tentativ recent d'intré.
 Për piasì speta prima ëd prové torna.",
 'login-abort-generic' => "Sò tentitiv d'intré ant ël sistema a l'é falì - Abortì",
 'loginlanguagelabel' => 'Lenga: $1',
-'suspicious-userlogout' => "Soa arcesta ëd seurte dal sistema a l'é stàita arfudà përchè a smija com s'a fussa stàita mandà da 'n navigador scolegà o da l'archiviassion an local d'un proxy.",
+'suspicious-wiki_userlogout' => "Soa arcesta ëd seurte dal sistema a l'é stàita arfudà përchè a smija com s'a fussa stàita mandà da 'n navigador scolegà o da l'archiviassion an local d'un proxy.",
 
 # E-mail sending
 'php-mail-error-unknown' => 'Eror pa conossù ant la funsion PHP mail()',
-'user-mail-no-addy' => 'Provà a spedì un mëssagi sensa adrëssa ëd pòsta eletrònica.',
+'wiki_user-mail-no-addy' => 'Provà a spedì un mëssagi sensa adrëssa ëd pòsta eletrònica.',
 
 # Change password dialog
 'resetpass' => 'Cambia la ciav',
@@ -572,7 +572,7 @@ Miraco it l'has già cambià la ciav o it l'has ciamà na neuva ciav a temp.",
 'passwordreset-legend' => 'Cambié la ciav',
 'passwordreset-disabled' => 'Ij cangiament ëd ciav a son stàit disabilità su sta wiki.',
 'passwordreset-pretext' => "{{PLURAL:$1||Ch'a anserissa un dij tòch ëd dat sì-sota}}",
-'passwordreset-username' => 'Stranòm:',
+'passwordreset-wiki_username' => 'Stranòm:',
 'passwordreset-domain' => 'Domini:',
 'passwordreset-capture' => 'Vardé ël mëssagi arzultant?',
 'passwordreset-capture-help' => "S'a marca costa casela, ël mëssagi ëd pòsta eletrònica (con la ciav temporania) a-j sarà smonù e ant l'istess temp a sarà mandà a l'utent.",
@@ -585,7 +585,7 @@ $2
 
 {{PLURAL:$3|Costa ciav|Coste ciav}} a temp a scadran da sì {{PLURAL:$5|un di|$5 di}}.
 A dovrìa intré ant ël sistema e serne na ciav neuva adess. Se quaidun d'àutr a l'ha fàit costa arcesta, o s'a l'é arcordasse soa ciav original, e a veul pa pi cangela, a peule ignoré ës mëssagi e continué a dovré soa veja ciav.",
-'passwordreset-emailtext-user' => "L'utent $1 ansima a {{SITENAME}} a l'ha ciamà d'arcordé ij detaj ëd sò cont për {{SITENAME}} ($4). {{PLURAL:$3|Ël cont utent sì-sota a l'é|Ij cont utent sì-sota a son}} associà a st'adrëssa ëd pòsta eletrònica:
+'passwordreset-emailtext-wiki_user' => "L'utent $1 ansima a {{SITENAME}} a l'ha ciamà d'arcordé ij detaj ëd sò cont për {{SITENAME}} ($4). {{PLURAL:$3|Ël cont utent sì-sota a l'é|Ij cont utent sì-sota a son}} associà a st'adrëssa ëd pòsta eletrònica:
 
 $2
 
@@ -685,14 +685,14 @@ A peul essa stàita tramudà o scancelà an mente ch'a vëdìa la pàgina.",
 'loginreqlink' => 'rintré ant ël sistema',
 'loginreqpagetext' => "Che a pòrta passiensa, ma a dev $1 për podèj vëdde dj'àutre pàgine.",
 'accmailtitle' => 'Ciav spedìa.',
-'accmailtext' => "Na ciav generà a cas për [[User talk:$1|$1]] a l'é stàita mandà a $2.
+'accmailtext' => "Na ciav generà a cas për [[wiki_user talk:$1|$1]] a l'é stàita mandà a $2.
 
 La ciav për cost neuv cont a peul esse cambià an duvertand la pàgina ''[[Special:ChangePassword|cambia ciav]]''",
 'newarticle' => '(Neuv)',
 'newarticletext' => "It ses andàit daré a un colegament a na pàgina che a esist ancó pa.
 Për creé la pàgina, ancamin-a a scrive ant lë spassi sì-sota (varda la [[{{MediaWiki:Helppage}}|pàgina d'agiut]] për savèjne ëd pì).
 S'it ses sì për eror, sgnaca ël boton '''andaré''' ëd tò navigador.",
-'anontalkpagetext' => "----''Costa a l'é la pàgina ëd ciaciarade për n'utent anònim che a l'é ancó pa dorbusse un cont, ò pura che a lo deuvra nen. Alora i l'oma da dovré ël nùmer d'adrëssa IP për deje n'identificassion a chiel/chila. S'it ses n'utent anònim e it l'has l'impression d'arsèive dij coment sensa sust, për piasì [[Special:UserLogin/signup|crea un cont]] o [[Special:UserLogin|Intra]] për evité dë fé confusion con dj'àutri utent anònim.''",
+'anontalkpagetext' => "----''Costa a l'é la pàgina ëd ciaciarade për n'utent anònim che a l'é ancó pa dorbusse un cont, ò pura che a lo deuvra nen. Alora i l'oma da dovré ël nùmer d'adrëssa IP për deje n'identificassion a chiel/chila. S'it ses n'utent anònim e it l'has l'impression d'arsèive dij coment sensa sust, për piasì [[Special:wiki_userLogin/signup|crea un cont]] o [[Special:wiki_userLogin|Intra]] për evité dë fé confusion con dj'àutri utent anònim.''",
 'noarticletext' => 'Al moment costa pàgina a l\'é veuida.
 It peule [[Special:Search/{{PAGENAME}}|sërché costa vos]] andrinta a d\'àutre pàgine, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} sërché ant ij registr colegà],
 o purament [{{fullurl:{{FULLPAGENAME}}|action=edit}} modìfiché la pàgina adess]</span>.',
@@ -702,8 +702,8 @@ o <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}
 'missing-revision' => "La revision #\$1 dla pàgina ciamà \"{{PAGENAME}}\" a esist pa.
 
 Sòn a l'é normalment causà da l'andèje dapress a na vej liura stòrica a na pàgina ch'a l'é stàita scancelà. Ij detaj a peulo esse trovà ant ël [registr ëd jë scancelament ëd {{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}}].",
-'userpage-userdoesnotexist' => 'Lë stranòm "<nowiki>$1</nowiki>" a l\'é pa registrà. Për piasì ch\'a varda se da bon a veul creé/modifiché sta pàgina.',
-'userpage-userdoesnotexist-view' => 'Ël cont utent "$1" a l\'é pa registrà.',
+'wiki_userpage-wiki_userdoesnotexist' => 'Lë stranòm "<nowiki>$1</nowiki>" a l\'é pa registrà. Për piasì ch\'a varda se da bon a veul creé/modifiché sta pàgina.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Ël cont utent "$1" a l\'é pa registrà.',
 'blocked-notice-logextract' => "S'utent a l'é al moment blocà.
 'Me arferiment, sì-sota a-i é la dariera anotassion da l'argistr dij blocagi.",
 'clearyourcache' => "'''Nòta:''' na vira che a l'ha salvà, a peul esse che a-j fasa da manca ëd passé via la memorisassion ëd sò programa ëd navigassion për podèj ës-ciairé le modìfiche.
@@ -712,16 +712,16 @@ Sòn a l'é normalment causà da l'andèje dapress a na vej liura stòrica a na 
 * '''Internet Explorer:''' Che a ten-a sgnacà ''Ctrl'' antramentre che a sgnaca col rat ansima a ''Agiorné'', ò pura che a sgnaca tut ansema ''Ctrl-F5'';
 * '''Konqueror:''': A basta mach sgnaché ël boton ''Agiorné'', ò pura sgnaché ''F5'';
 *'''Opera''' J'utent a peulo avèj da manca ëd dësvujdé 'd continuo soa memorisassion andrinta a ''Utiss → Gust''.",
-'usercssyoucanpreview' => "'''Drita:''' che a deuvra ël boton \"{{int:showpreview}}\" për controlé l'efet ëd sò còdes CSS dnans ëd salvelo.",
-'userjsyoucanpreview' => "'''Drita:''' che a deuvra ël boton «{{int:showpreview}}» për controlé l'efet ëd sò còdes JS dnans ëd salvelo.",
-'usercsspreview' => "'''Che a varda che lòn che a s-ciàira a l'é nomach na preuva ëd sò CSS.'''
+'wiki_usercssyoucanpreview' => "'''Drita:''' che a deuvra ël boton \"{{int:showpreview}}\" për controlé l'efet ëd sò còdes CSS dnans ëd salvelo.",
+'wiki_userjsyoucanpreview' => "'''Drita:''' che a deuvra ël boton «{{int:showpreview}}» për controlé l'efet ëd sò còdes JS dnans ëd salvelo.",
+'wiki_usercsspreview' => "'''Che a varda che lòn che a s-ciàira a l'é nomach na preuva ëd sò CSS.'''
 '''A l'é ancó nen stàit salvà!'''",
-'userjspreview' => "'''Che as visa che a l'é mach antramentr che as fa na preuva ëd sò Javascript, che a l'é ancó pa stàit salvà!'''",
+'wiki_userjspreview' => "'''Che as visa che a l'é mach antramentr che as fa na preuva ëd sò Javascript, che a l'é ancó pa stàit salvà!'''",
 'sitecsspreview' => "'''Che a varda che a l'é mach an mente ch'a preuva sto CSS.'''
 '''A l'é ancó pa stàit salvà!'''",
 'sitejspreview' => "'''Che a varda che a l'é mach an mente ch'a preuva sto còdes JavaScript.'''
 '''A l'é ancó pa stàit salvà!'''",
-'userinvalidcssjstitle' => "'''Avis:''' A-i é pa gnun-a pel \"\$1\". Che as visa che le pàgine .css e .js che un as fa daspërchiel a deuvro tute minùscole për tìtol, pr'esempi {{ns:user}}:Scaramacaj/vector.css nopà che {{ns:user}}:Scaramacaj/Vector.css.",
+'wiki_userinvalidcssjstitle' => "'''Avis:''' A-i é pa gnun-a pel \"\$1\". Che as visa che le pàgine .css e .js che un as fa daspërchiel a deuvro tute minùscole për tìtol, pr'esempi {{ns:wiki_user}}:Scaramacaj/vector.css nopà che {{ns:wiki_user}}:Scaramacaj/Vector.css.",
 'updated' => '(Agiornà)',
 'note' => "'''NÒTA:'''",
 'previewnote' => "'''Che a ten-a present che costa-sì a l'é mach na preuva.'''
@@ -734,7 +734,7 @@ Për piasì che a preuva n'àutra vira. Se a dovèissa mai torna riveje sossì, 
 
 ''Për via che {{SITENAME}} a lassa mostré còdes HTML nen filtrà, la preuva a l'é stërmà coma precaussion contra a dij possìbij atach fàit an Javascript.''
 
-'''Se sòn a l'era na modìfica normal, për piasì che a preuva a fela n'àutra vira. Se a dovèissa mai torna deje dle gran-e, che a preuva a [[Special:UserLogout|seurte da 'nt ël sistema]] e peuj torna a rintré.'''",
+'''Se sòn a l'era na modìfica normal, për piasì che a preuva a fela n'àutra vira. Se a dovèissa mai torna deje dle gran-e, che a preuva a [[Special:wiki_userLogout|seurte da 'nt ël sistema]] e peuj torna a rintré.'''",
 'token_suffix_mismatch' => "'''Soa modìfica a l'é nen stàita acetà përché sò navigator a l'hai fàit ciadel con ij pont e le vìrgole
 ant ël quàder ëd modìfica. La rason che a l'é nen stàit acetà a l'é për evité ch'a-i fasa darmagi al
 test ch'a-i é già. Sossì dle vire a riva quand un a deuvra un programa proxy ëd coj un pòch dla Bajòna.'''",
@@ -783,7 +783,7 @@ L'ùltima vos dël registr a l'é smonùa sì-sota për arferiment:",
 'edittools' => "<!-- Test ch'a së s-ciàira sot a ij mòduj ëd mòdifica e 'd càrich d'archivi. -->",
 'nocreatetitle' => 'Creassion ëd pàgine limità',
 'nocreatetext' => "Cost sit-sì a l'ha limità la possibilità ëd creé dle pàgine neuve.
-A peul torné andaré e modifiché na pàgina che a-i é già, ò pura [[Special:UserLogin|rintré ant ël sistema ò deurb-se un cont]].",
+A peul torné andaré e modifiché na pàgina che a-i é già, ò pura [[Special:wiki_userLogin|rintré ant ël sistema ò deurb-se un cont]].",
 'nocreate-loggedin' => "A l'ha pa ij përmess për creé dle pàgine neuve.",
 'sectioneditnotsupported-title' => "La modìfica dla session a l'é nen prevëdùa",
 'sectioneditnotsupported-text' => "La modìfica dla session a l'é nen prevëdùa an costa pàgina ëd modìfica.",
@@ -833,11 +833,11 @@ Costi paràmeter a son stàit lassà fòra.",
 'undo-success' => "Sta modìfica-sì as peul scancelesse. Për piasì, ch'a contròla ambelessì sota për esse sigur che a l'é pro lòn che a veul fé, e peuj ch'as salva lòn ch'a l'ha butà chiel/chila për finì dë scancelé la modìfica ch'a-i era.",
 'undo-failure' => "Sta modìfica a l'é nen podusse scancelé për via che a-i son dle contradission antra version antrames.",
 'undo-norev' => "La modìfica a peul nen esse anulà përchè a esist pa o a l'é stàita anulà.",
-'undo-summary' => 'Gavà la revision $1 fàita da [[Special:Contributions/$2|$2]] ([[User talk:$2|Ciaciarade]])',
+'undo-summary' => 'Gavà la revision $1 fàita da [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Ciaciarade]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => "As peul pa registresse d'utent",
-'cantcreateaccount-text' => "La cression ëd cont neuv a parte da st'adrëssa IP-sì ('''$1''') a l'é stàita blocà da [[User:$3|$3]].
+'cantcreateaccount-text' => "La cression ëd cont neuv a parte da st'adrëssa IP-sì ('''$1''') a l'é stàita blocà da [[wiki_user:$3|$3]].
 
 La rason butà da $3 për ël blocagi a l'é stàita: ''$2''",
 
@@ -876,9 +876,9 @@ Che a verìfica con la [[Special:Search|pàgina d'arserca]] se a-i fusso mai dj'
 
 # Revision deletion
 'rev-deleted-comment' => '(resumé dla modìfica gavà)',
-'rev-deleted-user' => '(stranòm gavà)',
+'rev-deleted-wiki_user' => '(stranòm gavà)',
 'rev-deleted-event' => '(assion dël registr gavà)',
-'rev-deleted-user-contribs' => '[nòm utent o adrëssa IP gavà - modìfica stërmà ai contributor]',
+'rev-deleted-wiki_user-contribs' => '[nòm utent o adrëssa IP gavà - modìfica stërmà ai contributor]',
 'rev-deleted-text-permission' => "Sta revision-sì dla pàgina a l'é staita '''scancelà'''.
 A-i peulo essnie dle marche ant ël [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} registr ëd jë scancelament].",
 'rev-deleted-text-unhide' => "Sta version-sì dla pàgina a l'é stàita '''scancelà'''.
@@ -929,7 +929,7 @@ J'àutri aministrator dzora a {{SITENAME}} a saran ancó sempe bon a s-ciairé �
 'revdelete-hide-image' => "Stërma ël contnù dl'archivi",
 'revdelete-hide-name' => 'Stërma assion e oget',
 'revdelete-hide-comment' => 'Stërma ël coment a la modìfica',
-'revdelete-hide-user' => "Stërma lë stranòm ò l'adrëssa IP dël contributor",
+'revdelete-hide-wiki_user' => "Stërma lë stranòm ò l'adrëssa IP dël contributor",
 'revdelete-hide-restricted' => "Stërmé j'anformassion a j'aministrator tan-me a j'àutri",
 'revdelete-radio-same' => '(cambia pa)',
 'revdelete-radio-set' => 'É!',
@@ -1013,7 +1013,7 @@ Ch'a varda mach che a-i ven-a nen fòra un rabel ant la continuità stòrica.",
 'showhideselectedversions' => 'Smon-e/stërmé le version selessionà',
 'editundo' => "buta 'me ch'a l'era",
 'diff-multi' => "({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} ëd {{PLURAL:$2|n'utent|$2 utent}} pa mostrà)",
-'diff-multi-manyusers' => "({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} da pi che $2 {{PLURAL:$2|n'utent|utent}} pa mostrà)",
+'diff-multi-manywiki_users' => "({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} da pi che $2 {{PLURAL:$2|n'utent|utent}} pa mostrà)",
 'difference-missing-revision' => "{{PLURAL:$2|Na revision|$2 revision}} dë sta diferensa ($1) a {{PLURAL:$2|l'é pa stàita|son pa stàite}} trovà.
 
 
@@ -1097,7 +1097,7 @@ Ch'a preuva a gionté dnans a soa arserca ël prefiss ''all:'' për sërché an 
 'mypreferences' => 'Gust',
 'prefs-edits' => 'Nùmer ëd modìfiche fàite:',
 'prefsnologin' => "A l'é ancó pa rintrà ant ël sistema",
-'prefsnologintext' => 'A deuv esse <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} intrà ant ël sistema]</span> për amposté ij sò gust.',
+'prefsnologintext' => 'A deuv esse <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} intrà ant ël sistema]</span> për amposté ij sò gust.',
 'changepassword' => 'Cangé la ciav',
 'prefs-skin' => 'Facia',
 'skin-preview' => 'Preuva',
@@ -1105,7 +1105,7 @@ Ch'a preuva a gionté dnans a soa arserca ël prefiss ''all:'' për sërché an 
 'prefs-beta' => 'Caraterìstiche dla Beta',
 'prefs-datetime' => 'Data e ora',
 'prefs-labs' => 'Caraterìstiche dël laboratòri',
-'prefs-user-pages' => 'Pàgine utent',
+'prefs-wiki_user-pages' => 'Pàgine utent',
 'prefs-personal' => "Profil dl'utent",
 'prefs-rc' => 'Ùltime modìfiche',
 'prefs-watchlist' => 'Ròba che as ten sot euj',
@@ -1170,7 +1170,7 @@ Sòn a peul pa esse anulà.',
 'prefs-emailconfirm-label' => "Conferma dl'adrëssa ëd pòsta eletrònica:",
 'prefs-textboxsize' => 'Dimension ëd la fnestra ëd modìfica',
 'youremail' => 'Soa adrëssa ëd pòsta eletrònica:',
-'username' => 'Stranòm:',
+'wiki_username' => 'Stranòm:',
 'uid' => "ID dl'utent:",
 'prefs-memberingroups' => 'Mèmber {{PLURAL:$1|dla partìa|dle partìe}}:',
 'prefs-memberingroups-type' => '$1',
@@ -1211,36 +1211,36 @@ Costa anformassion a sarà pùblica.",
 'prefs-displaywatchlist' => 'Opsion ëd visualisassion',
 'prefs-diffs' => 'Diferense',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'A smija bon',
 'email-address-validity-invalid' => "A-i é da manca ëd n'adrëssa bon-a!",
 
-# User rights
-'userrights' => "Gestion dij drit dj'utent",
-'userrights-lookup-user' => "Gestion dle partìe d'utent",
-'userrights-user-editname' => 'Che a buta në stranòm:',
-'editusergroup' => "Modifiché le partìe d'utent",
-'editinguser' => "Modìfiché ij drit d'utent ëd l'utent '''[[User:$1|$1]]''' $2",
-'userrights-editusergroup' => "Modifiché le partìe dl'utent",
-'saveusergroups' => "Salvé le partìe d'utent",
-'userrights-groupsmember' => "A l'é andrinta a:",
-'userrights-groupsmember-auto' => 'Mèmber amplìssit ëd:',
-'userrights-groups-help' => "A peul cambié le partìe anté ch'a l'é st'utent-sì:
+# wiki_user rights
+'wiki_userrights' => "Gestion dij drit dj'utent",
+'wiki_userrights-lookup-wiki_user' => "Gestion dle partìe d'utent",
+'wiki_userrights-wiki_user-editname' => 'Che a buta në stranòm:',
+'editwiki_usergroup' => "Modifiché le partìe d'utent",
+'editingwiki_user' => "Modìfiché ij drit d'utent ëd l'utent '''[[wiki_user:$1|$1]]''' $2",
+'wiki_userrights-editwiki_usergroup' => "Modifiché le partìe dl'utent",
+'savewiki_usergroups' => "Salvé le partìe d'utent",
+'wiki_userrights-groupsmember' => "A l'é andrinta a:",
+'wiki_userrights-groupsmember-auto' => 'Mèmber amplìssit ëd:',
+'wiki_userrights-groups-help' => "A peul cambié le partìe anté ch'a l'é st'utent-sì:
 * Na casela marcà a veul dì che l'utent a l'é an cola partìa.
 * Na casela nen marcà a veul dì che l'utent a l'é pa an cola partìa.
 * N'asterisch (*) a veul dì che a peul pa gavé cola partìa na vira ch'a l'abia giontala, o viceversa.",
-'userrights-reason' => 'Rason:',
-'userrights-no-interwiki' => "A l'ha pa ij përmess dont a fa da manca për podèj cambieje ij drit a dj'utent ansima a dj'àutre wiki.",
-'userrights-nodatabase' => "La base ëd dat $1 a-i é pa, ò pura a l'é nen local.",
-'userrights-nologin' => "A l'ha da [[Special:UserLogin|rintré ant ël sistema]] con un cont da aministrator për podej-je dé dij drit a j'utent.",
-'userrights-notallowed' => "Sòò cont a l'ha pa ij përmess për dé o gavé dij drit a j'utent.",
-'userrights-changeable-col' => "Partìe ch'a peul cambié",
-'userrights-unchangeable-col' => "Partìe ch'a peul pa cambié",
-'userrights-irreversible-marker' => '$1*',
+'wiki_userrights-reason' => 'Rason:',
+'wiki_userrights-no-interwiki' => "A l'ha pa ij përmess dont a fa da manca për podèj cambieje ij drit a dj'utent ansima a dj'àutre wiki.",
+'wiki_userrights-nodatabase' => "La base ëd dat $1 a-i é pa, ò pura a l'é nen local.",
+'wiki_userrights-nologin' => "A l'ha da [[Special:wiki_userLogin|rintré ant ël sistema]] con un cont da aministrator për podej-je dé dij drit a j'utent.",
+'wiki_userrights-notallowed' => "Sòò cont a l'ha pa ij përmess për dé o gavé dij drit a j'utent.",
+'wiki_userrights-changeable-col' => "Partìe ch'a peul cambié",
+'wiki_userrights-unchangeable-col' => "Partìe ch'a peul pa cambié",
+'wiki_userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'Partìa:',
-'group-user' => 'Utent',
+'group-wiki_user' => 'Utent',
 'group-autoconfirmed' => "Utent ch'a son convalidasse daspërlor",
 'group-bot' => 'Trigomiro',
 'group-sysop' => 'Aministrator',
@@ -1248,14 +1248,14 @@ Costa anformassion a sarà pùblica.",
 'group-suppress' => 'Supervisor',
 'group-all' => '(utent)',
 
-'group-user-member' => '{{GENDER:$1|utent}}',
+'group-wiki_user-member' => '{{GENDER:$1|utent}}',
 'group-autoconfirmed-member' => "{{GENDER:$1|utent ch'a l'é convalidasse daspërchiel|utent ch'a l'é convalidasse daspërchila}}",
 'group-bot-member' => '{{GENDER:$1|trigomiro}}',
 'group-sysop-member' => '{{GENDER:$1|aministrator|aministratris}}',
 'group-bureaucrat-member' => '{{GENDER:$1|mangiapapé}}',
 'group-suppress-member' => '{{GENDER:$1|supervisor}}',
 
-'grouppage-user' => '{{ns:project}}:Utent',
+'grouppage-wiki_user' => '{{ns:project}}:Utent',
 'grouppage-autoconfirmed' => "{{ns:project}}:Utent ch'a son convalidasse daspërlor",
 'grouppage-bot' => '{{ns:project}}:Trigomiro',
 'grouppage-sysop' => '{{ns:project}}:Aministrator',
@@ -1271,7 +1271,7 @@ Costa anformassion a sarà pùblica.",
 'right-minoredit' => 'Marché le modìfiche com cite',
 'right-move' => 'Tramudé le pàgine',
 'right-move-subpages' => 'Tramudé dle pàgine con soe sot-pàgine',
-'right-move-rootuserpages' => "Tramudé le pàgine prinsipaj ëd j'utent",
+'right-move-rootwiki_userpages' => "Tramudé le pàgine prinsipaj ëd j'utent",
 'right-movefile' => "Tramudé j'archivi",
 'right-suppressredirect' => 'Creé nen ëd ridiression da la pàgina sorgiss an tramudand le pàgine',
 'right-upload' => "Carié d'archivi",
@@ -1297,16 +1297,16 @@ Costa anformassion a sarà pùblica.",
 'right-suppressionlog' => 'Vardé ij registr privà',
 'right-block' => "Bloché le modìfiche d'àutri utent",
 'right-blockemail' => "Bloché n'utent da mandé 'd mëssagi an pòsta eletrònica",
-'right-hideuser' => 'Bloché un nòm utent, stërmandlo al pùblich',
+'right-hidewiki_user' => 'Bloché un nòm utent, stërmandlo al pùblich',
 'right-ipblock-exempt' => "Dëscavalché ij blocagi ëd j'IP, ij blocagi automàtich e ij blocagi ëd partìe d'IP",
 'right-proxyunbannable' => "Dëscavalché ij blòch automatich dij servent d'anonimà",
 'right-unblockself' => 'Dësblochesse da soj',
 'right-protect' => 'Cambié ij livej ëd protession e modifiché le pàgine protegiùe',
 'right-editprotected' => 'Modifiché le pàgine protegiùe (sensa protession a cascada)',
 'right-editinterface' => "Modifiché l'antërfacia utent",
-'right-editusercssjs' => "Modifiché j'archivi CSS e JavaScript d'àutri utent",
-'right-editusercss' => "Modifiché j'archivi CSS d'àutri utent",
-'right-edituserjs' => "Modifiché j'archivi JavaScript d'àutri utent",
+'right-editwiki_usercssjs' => "Modifiché j'archivi CSS e JavaScript d'àutri utent",
+'right-editwiki_usercss' => "Modifiché j'archivi CSS d'àutri utent",
+'right-editwiki_userjs' => "Modifiché j'archivi JavaScript d'àutri utent",
 'right-rollback' => "Gavé an pressa le modìfiche ëd l'ùltim utent che a l'ha modificà na pàgina particolar",
 'right-markbotedits' => "Marché le modìfiche tirà andré com modìfiche d'un trigomiro",
 'right-noratelimit' => "Nen esse tocà dal lìmit d'assion",
@@ -1317,14 +1317,14 @@ Costa anformassion a sarà pùblica.",
 'right-patrolmarks' => "Vëdde le marche ëd verìfica ant j'ùltime modìfiche",
 'right-unwatchedpages' => 'Vëdde na lista dle pàgine nen cudìe',
 'right-mergehistory' => 'Fonde la stòria dle pàgine',
-'right-userrights' => "Modifiché tùit ij drit ëd n'utent",
-'right-userrights-interwiki' => "Modifiché ij drit utent dj'utent ansima a d'àutre wiki",
+'right-wiki_userrights' => "Modifiché tùit ij drit ëd n'utent",
+'right-wiki_userrights-interwiki' => "Modifiché ij drit utent dj'utent ansima a d'àutre wiki",
 'right-siteadmin' => 'Bloché e dësbloché la base ëd dàit',
 'right-override-export-depth' => 'Esporté le pàgine ancludend le pàgine colegà fin-a a na profondeur ëd 5',
 'right-sendemail' => "Mandé un mëssagi an pòsta eletrònica a j'àutri utent",
 'right-passwordreset' => 'Vëdde ij mëssagi ëd pòsta eletrònica ëd riampostassion dle ciav',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => "Argistr dij drit ëd j'utent",
 'rightslogtext' => "Costa a l'é na lista dij cambiament aj drit ëd j'utent.",
 'rightslogentry' => "a l'ha tramudà $1 da 'nt la partìa $2 a la partìa $3",
@@ -1340,7 +1340,7 @@ Costa anformassion a sarà pùblica.",
 'action-minoredit' => 'marché sta modìfica-sì com minor',
 'action-move' => 'tramudé sta pàgina-sì',
 'action-move-subpages' => 'tramudé sta pàgina-sì e soe sot-pàgine',
-'action-move-rootuserpages' => "tramudé le pàgine prinsipaj dj'utent",
+'action-move-rootwiki_userpages' => "tramudé le pàgine prinsipaj dj'utent",
 'action-movefile' => "tramudé cost'archivi",
 'action-upload' => "carié st'archivi",
 'action-reupload' => 'coaté cost archivi esistent',
@@ -1363,8 +1363,8 @@ Costa anformassion a sarà pùblica.",
 'action-autopatrol' => 'avèj soe modìfiche marcà com verificà',
 'action-unwatchedpages' => 'vardé la lista dle pàgine che gnun a ten sot-euj',
 'action-mergehistory' => 'fonde la stòria dë sta pàgina-sì',
-'action-userrights' => "modifiché tùit ij drit dj'utent",
-'action-userrights-interwiki' => "modifiché ij drit ëd j'utent ansima a d'àutre wiki",
+'action-wiki_userrights' => "modifiché tùit ij drit dj'utent",
+'action-wiki_userrights-interwiki' => "modifiché ij drit ëd j'utent ansima a d'àutre wiki",
 'action-siteadmin' => 'bloché o dësbloché la base ëd dàit',
 'action-sendemail' => 'mandé dij mëssage an pòsta eletrònica',
 
@@ -1395,7 +1395,7 @@ Costa anformassion a sarà pùblica.",
 'minoreditletter' => 'c',
 'newpageletter' => 'N',
 'boteditletter' => 't',
-'number_of_watching_users_pageview' => "[tnùa sot-euj da {{PLURAL:$1|n'utent|$1 utent}}]",
+'number_of_watching_wiki_users_pageview' => "[tnùa sot-euj da {{PLURAL:$1|n'utent|$1 utent}}]",
 'rc_categories' => 'Limité a le categorìe (che a jë scriva separand-je antra \'d lor con un "|")',
 'rc_categories_any' => 'Qualsëssìa',
 'rc-change-size-new' => '$1 {{PLURAL:$1|byte|byte}} apress ij cambi',
@@ -1421,7 +1421,7 @@ Le pàgine dzora a [[Special:Watchlist|la lista ëd lòn ch'as ten sot-euj]] a r
 'reuploaddesc' => "Chité e torné al formolari për carié dj'archivi",
 'upload-tryagain' => "Mandé la descrission ëd l'archivi modificà",
 'uploadnologin' => 'Nen rintrà ant ël sistema',
-'uploadnologintext' => "A dev [[Special:UserLogin|rintré ant ël sistema]] për podèj carié dj'archivi.",
+'uploadnologintext' => "A dev [[Special:wiki_userLogin|rintré ant ël sistema]] për podèj carié dj'archivi.",
 'upload_directory_missing' => 'Ël repertòri ëd caria ($1) a-i é nen e a peul pa esse creà dal servent.',
 'upload_directory_read_only' => "Ël servent ëd l'aragnà a-i la fa nen a scrive ansima a la diretris ëd càrich ($1).",
 'uploaderror' => 'Eror dëmentré che as cariava',
@@ -1555,11 +1555,11 @@ $1",
 'upload-proto-error-text' => "Për carié da dij servent lontan a venta buté dj'anliure ch'as anandio për <code>http://</code> ò pura <code>ftp://</code>.",
 'upload-file-error' => 'Eror antern',
 'upload-file-error-text' => "A l'é rivaie n'eror antern dëmentrè che as fasìa n'archivi provisòri ant sël servent.
-Për piasì, ch'as butà an comunicassion con n'[[Special:ListUsers/sysop|aministrator]].",
+Për piasì, ch'as butà an comunicassion con n'[[Special:Listwiki_users/sysop|aministrator]].",
 'upload-misc-error' => "Eror nen identificà antramentr ch'as cariava",
 'upload-misc-error-text' => "A l'é staie n'eror nen identificà dëmentrè ch'as cariava chèich-còs.
 Për piasì, ch'a varda che soa anliura a sia bon-a e che a rësponda e peuj ch'a preuva torna.
-Se a-i riva sossì n'àotra vira, ch'as buta an comunicassion con n'[[Special:ListUsers/sysop|aministrator]].",
+Se a-i riva sossì n'àotra vira, ch'as buta an comunicassion con n'[[Special:Listwiki_users/sysop|aministrator]].",
 'upload-too-many-redirects' => "L'adrëssa dl'aragnà a l'avìa tròpe ridiression",
 'upload-unknown-size' => 'Dimension pa conossùa',
 'upload-http-error' => "A l'é staje n'eror HTTP: $1.",
@@ -1676,7 +1676,7 @@ Quand a l'é filtrà da l'utent, a son mostrà mach j'archivi anté che l'utent 
 'listfiles_thumb' => 'Miniadura',
 'listfiles_date' => 'Data',
 'listfiles_name' => 'Nòm',
-'listfiles_user' => 'Utent',
+'listfiles_wiki_user' => 'Utent',
 'listfiles_size' => 'Amzura an otet',
 'listfiles_description' => 'Descrission',
 'listfiles_count' => 'Version',
@@ -1693,7 +1693,7 @@ Quand a l'é filtrà da l'utent, a son mostrà mach j'archivi anté che l'utent 
 'filehist-thumb' => 'Miniadura',
 'filehist-thumbtext' => 'Miniadura dla version ëd $1',
 'filehist-nothumb' => 'Gnun-e miniadure',
-'filehist-user' => 'Utent',
+'filehist-wiki_user' => 'Utent',
 'filehist-dimensions' => 'Amzure',
 'filehist-filesize' => "Amzure dl'archivi",
 'filehist-comment' => 'Coment',
@@ -1785,7 +1785,7 @@ Ch'as visa ëd controlé che në stamp a-j serva nen a dj'àutri stamp anans che
 'statistics-header-pages' => 'Statìstiche dla pàgina',
 'statistics-header-edits' => 'Statìstiche dle modìfiche',
 'statistics-header-views' => 'Statìstiche dle visualisassion',
-'statistics-header-users' => 'Statìstiche ëd {{SITENAME}}',
+'statistics-header-wiki_users' => 'Statìstiche ëd {{SITENAME}}',
 'statistics-header-hooks' => 'Àutre statìstiche',
 'statistics-articles' => 'Pàgine ëd contnù',
 'statistics-pages' => 'Pàgine',
@@ -1796,9 +1796,9 @@ Ch'as visa ëd controlé che në stamp a-j serva nen a dj'àutri stamp anans che
 'statistics-views-total' => 'Total dle visualisassion',
 'statistics-views-total-desc' => 'Le visualisassion ëd le pàgine pa esistente e ëd le pàgine speciaj a son nen comprèise',
 'statistics-views-peredit' => 'Visualisassion për modìfica',
-'statistics-users' => '[[Special:ListUsers|Utent]] argistrà',
-'statistics-users-active' => 'Utent ativ',
-'statistics-users-active-desc' => "Utent che a l'han fàit n'assion ant {{PLURAL:$1|l'ùltim di|j'ùltim $1 di}}",
+'statistics-wiki_users' => '[[Special:Listwiki_users|Utent]] argistrà',
+'statistics-wiki_users-active' => 'Utent ativ',
+'statistics-wiki_users-active-desc' => "Utent che a l'han fàit n'assion ant {{PLURAL:$1|l'ùltim di|j'ùltim $1 di}}",
 'statistics-mostpopular' => "Pàgine ch'a 'ncontro dë pì",
 
 'disambiguations' => "Pàgine ch'a men-o vers dle pàgine d'omonimìe",
@@ -1876,13 +1876,13 @@ Adess a l'é na ridiression a [[$2]].",
 'protectedtitles' => 'Tìtoj protegiù',
 'protectedtitlestext' => 'Ij tìtoj ambelessì-sota as peulo pa creesse',
 'protectedtitlesempty' => "A-i é pa gnun tìtol protegiù ch'a-i intra coi criteri ch'a l'ha butà.",
-'listusers' => "Lista dj'utent",
-'listusers-editsonly' => "Mostré mach j'utent ch'a l'han fàit dle modìfiche",
-'listusers-creationsort' => 'Ordiné për data ëd creassion',
-'usereditcount' => '$1 {{PLURAL:$1|modìfica|modìfiche}}',
-'usercreated' => '{{GENDER:$3|Creà}}  ël $1 a $2',
+'listwiki_users' => "Lista dj'utent",
+'listwiki_users-editsonly' => "Mostré mach j'utent ch'a l'han fàit dle modìfiche",
+'listwiki_users-creationsort' => 'Ordiné për data ëd creassion',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|modìfica|modìfiche}}',
+'wiki_usercreated' => '{{GENDER:$3|Creà}}  ël $1 a $2',
 'newpages' => 'Pàgine neuve',
-'newpages-username' => 'Stranòm:',
+'newpages-wiki_username' => 'Stranòm:',
 'ancientpages' => 'Le pàgine pì veje',
 'move' => 'Tramudé',
 'movethispage' => 'Tramudé costa pàgina',
@@ -1906,7 +1906,7 @@ Për piasì, ch'a nòta che d'àutri sit an sl'aragnà a peulo coleghesse a n'ar
 'booksources-invalid-isbn' => "L'ISBN dàit a smija che a sia pa vàlid; ch'a contròla s'a-i é n'eror an copiand da la sorgiss original.",
 
 # Special:Log
-'specialloguserlabel' => 'Esecutor:',
+'speciallogwiki_userlabel' => 'Esecutor:',
 'speciallogtitlelabel' => 'Obietiv (tìtol o utent):',
 'log' => 'Registr',
 'all-logs-page' => 'Tùit ij registr pùblich',
@@ -1964,24 +1964,24 @@ Protocòj ch\'as peulo dovresse: <code>$1</code> (predefinì http:// se gnun pro
 'linksearch-line' => "$1 a l'ha n'anliura ch'a-j riva dzora da $2",
 'linksearch-error' => 'Ij ciapatut as peulo butesse mach an prinsipi dël nòm dël sërvent.',
 
-# Special:ListUsers
-'listusersfrom' => "Smon-me j'utent a parte da:",
-'listusers-submit' => 'Smon-e',
-'listusers-noresult' => 'Gnun utent përparèj.',
-'listusers-blocked' => '(blocà)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => "Smon-me j'utent a parte da:",
+'listwiki_users-submit' => 'Smon-e',
+'listwiki_users-noresult' => 'Gnun utent përparèj.',
+'listwiki_users-blocked' => '(blocà)',
 
-# Special:ActiveUsers
-'activeusers' => "Lista dj'utent ativ",
-'activeusers-intro' => "Costa a l'é na lista d'utent ch'a l'han avù n'atività qualsëssìa ant j'ùltim $1 {{PLURAL:$1|di|di}}.",
-'activeusers-count' => "$1 {{PLURAL:$1|modìfica neuva|modìfiche neuve}} ant {{PLURAL:$3|l'ùltim di|j'ùltim $3 di}}",
-'activeusers-from' => "Smon-me j'utent a parte da:",
-'activeusers-hidebots' => 'Stërmé ij trigomiro',
-'activeusers-hidesysops' => "Stërmé j'aministrator",
-'activeusers-noresult' => 'Pa gnun utent trovà.',
+# Special:Activewiki_users
+'activewiki_users' => "Lista dj'utent ativ",
+'activewiki_users-intro' => "Costa a l'é na lista d'utent ch'a l'han avù n'atività qualsëssìa ant j'ùltim $1 {{PLURAL:$1|di|di}}.",
+'activewiki_users-count' => "$1 {{PLURAL:$1|modìfica neuva|modìfiche neuve}} ant {{PLURAL:$3|l'ùltim di|j'ùltim $3 di}}",
+'activewiki_users-from' => "Smon-me j'utent a parte da:",
+'activewiki_users-hidebots' => 'Stërmé ij trigomiro',
+'activewiki_users-hidesysops' => "Stërmé j'aministrator",
+'activewiki_users-noresult' => 'Pa gnun utent trovà.',
 
-# Special:Log/newusers
-'newuserlogpage' => "Registr dla creassion dj'utent",
-'newuserlogpagetext' => "Sossì a l'é un registr andova ch'as marco le creassion dj'utent.",
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => "Registr dla creassion dj'utent",
+'newwiki_userlogpagetext' => "Sossì a l'é un registr andova ch'as marco le creassion dj'utent.",
 
 # Special:ListGroupRights
 'listgrouprights' => "Drit dël grup d'utent",
@@ -2002,28 +2002,28 @@ A peulo ess-ie d'[[{{MediaWiki:Listgrouprights-helppage}}|anformassion adissiona
 'listgrouprights-addgroup-self-all' => 'Gionté tute le partìe a sò cont',
 'listgrouprights-removegroup-self-all' => 'Gavé tute le partìe da sò cont',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => "A-i é pa l'adrëssa për mandé ël mëssagi",
-'mailnologintext' => "A dev [[Special:UserLogin|rintré ant ël sistema]]
+'mailnologintext' => "A dev [[Special:wiki_userLogin|rintré ant ël sistema]]
 e avèj registrà n'adrëssa ëd pòsta eletrònica vàlida ant ij [[Special:Preferences|sò gust]] për podèj mandé dij mëssagi ëd pòsta eletrònica a j'àutri Utent.",
-'emailuser' => "Mandeje un mëssagi eletrònich a st'utent-sì",
-'emailuser-title-target' => 'Mandé un mëssagi ëd pòsta eletrònica a cost {{GENDER:$1|utent}}',
-'emailuser-title-notarget' => "Mandeje un mëssagi ëd pòsta eletrònica a st'utent-sì",
+'emailwiki_user' => "Mandeje un mëssagi eletrònich a st'utent-sì",
+'emailwiki_user-title-target' => 'Mandé un mëssagi ëd pòsta eletrònica a cost {{GENDER:$1|utent}}',
+'emailwiki_user-title-notarget' => "Mandeje un mëssagi ëd pòsta eletrònica a st'utent-sì",
 'emailpage' => "Mandeje un mëssagi ëd pòsta eletrònica a st'utent-sì",
 'emailpagetext' => "A peul dovré ël formolari sì-sota për mandé un mëssagi ëd pòsta eletrònica a st'{{GENDER:$1|utent}}-sì.
 L'adrëssa ëd pòsta eletrònica ch'a l'ha butà ant ij [[Special:Preferences|sò gust]] a sarà butà ant l'adrëssa «Da» ëd sò mëssagi, parèj chi ch'a l'arsèiv a podrà rësponde diretament a chiel.",
-'usermailererror' => "L'oget che a goèrna la pòsta eletrònica a l'ha dàit eror:",
+'wiki_usermailererror' => "L'oget che a goèrna la pòsta eletrònica a l'ha dàit eror:",
 'defemailsubject' => 'Mëssagi da l\'utent "$1"',
-'usermaildisabled' => "Pòsta eletrònica dl'utent disabilità",
-'usermaildisabledtext' => "A peul pa mandé ëd mëssagi ëd pòsta eletrònica a d'àutri utent ansima a costa wiki",
+'wiki_usermaildisabled' => "Pòsta eletrònica dl'utent disabilità",
+'wiki_usermaildisabledtext' => "A peul pa mandé ëd mëssagi ëd pòsta eletrònica a d'àutri utent ansima a costa wiki",
 'noemailtitle' => 'Gnun-a adrëssa ëd pòsta eletrònica',
 'noemailtext' => "Cost utent-sì a l'ha pa spessificà n'adrëssa ëd pòsta eletrònica vàlida.",
 'nowikiemailtitle' => "Gnun mëssagi ëd pòsta eletrònica a l'é autorisà",
 'nowikiemailtext' => "Cost utent a l'ha sërnù ëd nen arsèive dij mëssagi ëd pòsta eletrònica da j'àutri utent.",
 'emailnotarget' => 'Stranòm dël destinatari pa esistent o pa bon.',
 'emailtarget' => "Ch'a anserissa lë stranòm dël destinatari",
-'emailusername' => 'Stranòm:',
-'emailusernamesubmit' => 'Spedì',
+'emailwiki_username' => 'Stranòm:',
+'emailwiki_usernamesubmit' => 'Spedì',
 'email-legend' => "Mandé un mëssagi ëd pòsta eletrònica a n'àutr utent ëd {{SITENAME}}",
 'emailfrom' => 'Da:',
 'emailto' => 'A:',
@@ -2034,11 +2034,11 @@ L'adrëssa ëd pòsta eletrònica ch'a l'ha butà ant ij [[Special:Preferences|s
 'emailccsubject' => 'Còpia dël mëssagi mandà a $1: $2',
 'emailsent' => 'Mëssagi eletrònich mandà',
 'emailsenttext' => "Sò mëssagi eletrònich a l'é stàit mandà",
-'emailuserfooter' => "Ës mëssagi eletrònich a l'é stàit mandà da $1 a $2 con la fonsion «Mandé un mëssagi eletrònich a l'utent» ëd {{SITENAME}}.",
+'emailwiki_userfooter' => "Ës mëssagi eletrònich a l'é stàit mandà da $1 a $2 con la fonsion «Mandé un mëssagi eletrònich a l'utent» ëd {{SITENAME}}.",
 
-# User Messenger
-'usermessage-summary' => "A l'ha lassà un mëssagi ëd sistema.",
-'usermessage-editor' => 'Mëssagerìa ëd sistema',
+# wiki_user Messenger
+'wiki_usermessage-summary' => "A l'ha lassà un mëssagi ëd sistema.",
+'wiki_usermessage-editor' => 'Mëssagerìa ëd sistema',
 
 # Watchlist
 'watchlist' => 'Ròba che im ten-o sot-euj',
@@ -2047,7 +2047,7 @@ L'adrëssa ëd pòsta eletrònica ch'a l'ha butà ant ij [[Special:Preferences|s
 'nowatchlist' => "A l'ha ancó pa marcà dj'artìcoj coma ròba da tnì sot-euj.",
 'watchlistanontext' => "Për piasì, $1 për ës-ciairé ò pura modifiché j'element ëd soa lista dla ròba che as ten sot-euj.",
 'watchnologin' => "A l'é ancó nen rintrà ant ël sistema",
-'watchnologintext' => "A l'ha da manca prima ëd tut ëd [[Special:UserLogin|rintré ant ël sistema]]
+'watchnologintext' => "A l'ha da manca prima ëd tut ëd [[Special:wiki_userLogin|rintré ant ël sistema]]
 për podèj modifiché soa lista dla ròba dë tnì sot-euj.",
 'addwatch' => "Gionté a la lista ëd lòn ch'as ten sot-euj",
 'addedwatchtext' => "La pàgina «[[:$1]]» a l'é staita giontà a soa [[Special:Watchlist|lista dla ròba da tnì sot-euj]].
@@ -2158,13 +2158,13 @@ ch'a daga da ment a lòn ch'a fa.",
 'rollbacklinkcount-morethan' => 'tiré andré pi che $1 {{PLURAL:$1|modìfica|modìfiche}}',
 'rollbackfailed' => "A l'é pa podusse ripristiné",
 'cantrollback' => "As peul pa tornesse a na version pì veja: l'ùltima modìfica a l'ha fala l'ùnich utent che a l'abia travajà a cost artìcol-sì.",
-'alreadyrolled' => "As peulo pa anulé j'ultime modìfiche ëd [[:$1]] fàite da [[User:$2|$2]] ([[User talk:$2|Talk]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
+'alreadyrolled' => "As peulo pa anulé j'ultime modìfiche ëd [[:$1]] fàite da [[wiki_user:$2|$2]] ([[wiki_user talk:$2|Talk]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
 cheidun d'àutr a l'ha già modificà ò pura anulà le modìfiche a sta pàgina-sì.
 
-L'ùltima modìfica a la pàgina a l'é stàita fàita da [[User:$3|$3]] ([[User talk:$3|Talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).",
+L'ùltima modìfica a la pàgina a l'é stàita fàita da [[wiki_user:$3|$3]] ([[wiki_user talk:$3|Talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).",
 'editcomment' => "Ël coment dla modìfica a l'era: \"''\$1''\".",
-'revertpage' => "Gavà via le modìfiche ëd [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); ël contnù a l'é stàit tirà andarè a l'ùltima version dl'utent [[User:$1|$1]]",
-'revertpage-nouser' => "Révoca dle modìfiche da part ëd (stranòm gavà) a l'ùltima version ëd [[User:$1|$1]]",
+'revertpage' => "Gavà via le modìfiche ëd [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Talk]]); ël contnù a l'é stàit tirà andarè a l'ùltima version dl'utent [[wiki_user:$1|$1]]",
+'revertpage-nowiki_user' => "Révoca dle modìfiche da part ëd (stranòm gavà) a l'ùltima version ëd [[wiki_user:$1|$1]]",
 'rollback-success' => "Modìfiche anulà da $1; tirà andré a l'ùltima version da $2.",
 
 # Edit tokens
@@ -2314,12 +2314,12 @@ $1",
 'sp-contributions-uploads' => 'cariagi',
 'sp-contributions-logs' => 'registr',
 'sp-contributions-talk' => 'discussion',
-'sp-contributions-userrights' => "gestion dij drit ëd j'utent",
+'sp-contributions-wiki_userrights' => "gestion dij drit ëd j'utent",
 'sp-contributions-blocked-notice' => "St'utent-sì a l'é al moment blocà. L'ùltima vos dël registr dij blocagi a l'é butà sì-sota 'me arferiment:",
 'sp-contributions-blocked-notice-anon' => "St'adrëssa IP a l'é blocà al moment.
 L'ùltima intrada dël registr dij blocagi a l'é butà sì-sota për arferiment:",
 'sp-contributions-search' => 'Arserché le contribussion',
-'sp-contributions-username' => "Adrëssa IP ò stranòm dl'utent:",
+'sp-contributions-wiki_username' => "Adrëssa IP ò stranòm dl'utent:",
 'sp-contributions-toponly' => "Mostré mach le modìfiche ch'a son j'ùltime revision",
 'sp-contributions-submit' => 'Arserché',
 
@@ -2354,7 +2354,7 @@ L'ùltima intrada dël registr dij blocagi a l'é butà sì-sota për arferiment
 Ël blocagi a peul ën gnun-a manera esse dovrà për dle question d'ideologìa.
 
 Che a scriva codì che st'adrëssa IP o së stranòm a dev second chiel esse blocà (pr'esempi, che a buta ij tìtoj ëd pàgine che a l'abio già patì dj'at vandàlich da cost'adrëssa IP o së stranòm).",
-'ipadressorusername' => 'Adrëssa IP ò stranòm',
+'ipadressorwiki_username' => 'Adrëssa IP ò stranòm',
 'ipbexpiry' => 'Fin-a al',
 'ipbreason' => 'Rason:',
 'ipbreasonotherlist' => 'Àotr motiv',
@@ -2376,8 +2376,8 @@ Che a scriva codì che st'adrëssa IP o së stranòm a dev second chiel esse blo
 'ipbotheroption' => "d'àutr",
 'ipbotherreason' => 'Àotri motiv/spiegon',
 'ipbhidename' => "Stërmé lë stranòm da 'nt le modìfiche e da 'nt j'elench",
-'ipbwatchuser' => "Ten-e d'euj le pàgine utent e ëd discussion dë st'utent-sì",
-'ipb-disableusertalk' => "Proibì a st'utent ëd modifiché soa pàgina ëd discussion quand a l'é blocà",
+'ipbwatchwiki_user' => "Ten-e d'euj le pàgine utent e ëd discussion dë st'utent-sì",
+'ipb-disablewiki_usertalk' => "Proibì a st'utent ëd modifiché soa pàgina ëd discussion quand a l'é blocà",
 'ipb-change-block' => "Bloché l'utent con coste ampostassion",
 'ipb-confirm' => 'Confermé ël blocagi',
 'badipaddress' => "L'adrëssa IP che a l'ha dane a l'é nen giusta.",
@@ -2385,7 +2385,7 @@ Che a scriva codì che st'adrëssa IP o së stranòm a dev second chiel esse blo
 'blockipsuccesstext' => "[[Special:Contributions/$1|$1]] a l'é stàit blocà.<br />
 Ch'a consulta la [[Special:BlockList|lista dij blocagi]] për rivëdde ij blocagi.",
 'ipb-blockingself' => "A l'é an camin ch'as blòca chiel-midem! É-lo sigur ëd vorèj fé lòn?",
-'ipb-confirmhideuser' => "A l'é an camin ch'a blòca n'utent con «stërmé l'utent» abilità. Sòn a gaverà lë stranòm ëd l'utent da tute le liste e le vos ëd registr. É-lo sigur ëd vorèj fé lòn?",
+'ipb-confirmhidewiki_user' => "A l'é an camin ch'a blòca n'utent con «stërmé l'utent» abilità. Sòn a gaverà lë stranòm ëd l'utent da tute le liste e le vos ëd registr. É-lo sigur ëd vorèj fé lòn?",
 'ipb-edit-dropdown' => 'Modifiché le rason dël blocagi',
 'ipb-unblock-addr' => 'Dësbloché $1',
 'ipb-unblock' => "Dësbloché n'utent ò n'adrëssa IP",
@@ -2394,13 +2394,13 @@ Ch'a consulta la [[Special:BlockList|lista dij blocagi]] për rivëdde ij blocag
 'unblockip' => "Dësbloché n'utent",
 'unblockiptext' => "Che a deuvra ël formolari ambelessì-sota për deje andré ël drit dë scritura a n'adrëssa IP o në stranòm che a l'era stàit blocà.",
 'ipusubmit' => 'Gavé ës blocagi',
-'unblocked' => "[[User:$1|$1]] a l'é stait dësblocà",
+'unblocked' => "[[wiki_user:$1|$1]] a l'é stait dësblocà",
 'unblocked-range' => "$1 a l'é stàit dësblocà",
 'unblocked-id' => "Ël blocagi $1 a l'é stait gavà via",
 'blocklist' => 'Utent blocà',
 'ipblocklist' => 'Utent blocà',
 'ipblocklist-legend' => "Trové n'utent blocà",
-'blocklist-userblocks' => 'Stërmé ij blocagi dij cont',
+'blocklist-wiki_userblocks' => 'Stërmé ij blocagi dij cont',
 'blocklist-tempblocks' => 'Stërmé ij blocagi a temp',
 'blocklist-addressblocks' => "Stërmé ij blocagi d'adrësse IP ùniche",
 'blocklist-rangeblocks' => "Stërmé ij blocagi d'antërval",
@@ -2419,7 +2419,7 @@ Ch'a consulta la [[Special:BlockList|lista dij blocagi]] për rivëdde ij blocag
 'noautoblockblock' => 'blocagi automàtich nen ativ',
 'createaccountblock' => 'creassion dij cont blocà',
 'emailblock' => 'pòsta eletrònica blocà',
-'blocklist-nousertalk' => 'a peul nen modifiché soa pàgina ëd discussion',
+'blocklist-nowiki_usertalk' => 'a peul nen modifiché soa pàgina ëd discussion',
 'ipblocklist-empty' => "La lista dij blocagi a l'é veujda.",
 'ipblocklist-no-results' => "L'adrëssa IP ò lë stranòm ch'a l'ha ciamà a l'é pa blocà.",
 'blocklink' => 'bloché',
@@ -2427,7 +2427,7 @@ Ch'a consulta la [[Special:BlockList|lista dij blocagi]] për rivëdde ij blocag
 'change-blocklink' => 'modifiché ël blocagi',
 'contribslink' => 'contribussion',
 'emaillink' => 'mandé un mëssagi eletrònich',
-'autoblocker' => "A l'é scataje un blocagi përchè soa adrëssa IP a l'é staita dovrà ant j'ùltim temp da l'Utent «[[User:$1|$1]]». Ël motiv për bloché $1 a l'é stait: «'''$2'''»",
+'autoblocker' => "A l'é scataje un blocagi përchè soa adrëssa IP a l'é staita dovrà ant j'ùltim temp da l'Utent «[[wiki_user:$1|$1]]». Ël motiv për bloché $1 a l'é stait: «'''$2'''»",
 'blocklogpage' => 'Registr dij blocagi',
 'blocklog-showlog' => "St'utent-sì a l'é già stàit blocà ant ël passà. Ël registr dij blocagi a l'é disponìbil sì-sota 'me arferiment:",
 'blocklog-showsuppresslog' => "St'utent-sì a l'é già stàit blocà e stërmà. Ël registr ëd j'eliminassion a l'é smonù sì-sota për arferiment:",
@@ -2442,7 +2442,7 @@ coj che sio ij blocagi ativ al dì d'ancheuj.",
 'block-log-flags-nocreate' => 'creassion ëd cont neuv blocà',
 'block-log-flags-noautoblock' => "blocagi n'autòmatich dësmòrt",
 'block-log-flags-noemail' => 'pòsta eletrònica blocà',
-'block-log-flags-nousertalk' => 'a peul nen modifiché soa pàgina ëd discussion',
+'block-log-flags-nowiki_usertalk' => 'a peul nen modifiché soa pàgina ëd discussion',
 'block-log-flags-angry-autoblock' => 'blocagi automàtich avansà ativà',
 'block-log-flags-hiddenname' => 'stranòm stërmà',
 'range_block_disabled' => "La possibilità che n'aministrator a fasa dij blocagi a ragg a l'é disabilità.",
@@ -2452,7 +2452,7 @@ coj che sio ij blocagi ativ al dì d'ancheuj.",
 'ipb_already_blocked' => "«$1» a l'é già blocà",
 'ipb-needreblock' => "$1 a l'é già blocà. Veul-lo cambié j'ampostassion?",
 'ipb-otherblocks-header' => '{{PLURAL:$1|Àutr|Àutri}} blocagi',
-'unblock-hideuser' => "A peul pa dësbloché st'utent, da già che sò nòm a l'é stàit stërmà.",
+'unblock-hidewiki_user' => "A peul pa dësbloché st'utent, da già che sò nòm a l'é stàit stërmà.",
 'ipb_cant_unblock' => 'Eror: As treuva nen ël blocagi con identificativ $1. A peul esse che a sia un blocagi già gavà via.',
 'ipb_blocked_as_range' => "Eror: L'adrëssa IP $1 a l'ha gnun blocagi diret ansima e donca a peul pa esse dësblocà. A resta blocà mach për via ch'a l'é ciapà andrinta al ragg $2, e lolì as peul pa dësblochesse.",
 'ip_range_invalid' => 'Nùmer IP nen bon.',
@@ -2466,7 +2466,7 @@ Për piasì che a contata sò fornitor ëd conession e che a lo anforma. As trat
 'sorbsreason' => "Soa adrëssa IP a l'é listà coma arpetitor duvert (open proxy) ansima al DNSBL dovrà da {{SITENAME}}.",
 'sorbs_create_account_reason' => "Soa adrëssa IP a l'é listà coma arpetitor duvèrt (open proxy) ansima al DNSBL dovrà da {{SITENAME}}. A peul nen creésse un cont.",
 'cant-block-while-blocked' => "A peul pa bloché d'àutri utent antramentre che chiel a l'é blocà.",
-'cant-see-hidden-user' => "L'utent ch'a l'é an camin ch'a preuva a bloché a l'é già stàit blocà e stërmà. Da già ch'a l'ha pa ël drit hideuser, a peul pa vëdde o modifiché ël blocagi ëd cost utent.",
+'cant-see-hidden-wiki_user' => "L'utent ch'a l'é an camin ch'a preuva a bloché a l'é già stàit blocà e stërmà. Da già ch'a l'ha pa ël drit hidewiki_user, a peul pa vëdde o modifiché ël blocagi ëd cost utent.",
 'ipbblocked' => "A peul pa bloché o dësbloché d'àutri utent, përchè a l'é blocà chiel-midem",
 'ipbnounblockself' => "A l'é nen autorisà a dësblochesse da sol",
 
@@ -2524,14 +2524,14 @@ për piasì ch'as renda bin cont ëd le conseguense ëd sòn prima d'andé anans
 
 Ant costi cas-sì, se a chërd dë felo, a-j farà da manca dë tramudesse la pàgina ëd discussion daspërchiel, a man.",
 'movearticle' => "Cangeje nòm a l'artìcol:",
-'moveuserpage-warning' => "'''Atension:''' A sta për tramudé na pàgina d'utent. Për piasì ch'a nòta che a sarà tramudà mach la pàgina e che l'utent a sarà ''pa'' arbatjà.",
+'movewiki_userpage-warning' => "'''Atension:''' A sta për tramudé na pàgina d'utent. Për piasì ch'a nòta che a sarà tramudà mach la pàgina e che l'utent a sarà ''pa'' arbatjà.",
 'movenologin' => "Che a varda che chiel a l'é pa rintrà ant ël sistema",
-'movenologintext' => "A venta esse n'Utent registrà e esse [[Special:UserLogin|rintrà ant ël sistema]]
+'movenologintext' => "A venta esse n'Utent registrà e esse [[Special:wiki_userLogin|rintrà ant ël sistema]]
 për podèj tramudé na pàgina.",
 'movenotallowed' => "A l'ha pa ij përmess dont a fa da manca për tramudé le pàgine.",
 'movenotallowedfile' => "A l'ha pa ij përmess për tramudé j'archivi.",
-'cant-move-user-page' => "A l'ha pa ij përmess për tramudé le pàgine d'utent (gavà le sot-pàgine).",
-'cant-move-to-user-page' => "A l'ha pa ël përmess për tramudé na pàgina a na pàgina utent (gavà a na sot-pàgina utent).",
+'cant-move-wiki_user-page' => "A l'ha pa ij përmess për tramudé le pàgine d'utent (gavà le sot-pàgine).",
+'cant-move-to-wiki_user-page' => "A l'ha pa ël përmess për tramudé na pàgina a na pàgina utent (gavà a na sot-pàgina utent).",
 'newtitle' => 'Neuv tìtol ëd',
 'move-watch' => 'Ten-e sot-euj la pàgina sorgiss e la pàgina selessionà',
 'movepagebtn' => 'Tramudé la pàgina',
@@ -2710,8 +2710,8 @@ Për piasì, ch'a preuva torna.",
 'javascripttest-qunit-heading' => 'Sequensa ëd preuve QUnit ëd JavaScript su MediaWiki',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Soa pàgina utent',
-'tooltip-pt-anonuserpage' => "La pàgina utent për l'IP con ël qual chiel a contribuiss",
+'tooltip-pt-wiki_userpage' => 'Soa pàgina utent',
+'tooltip-pt-anonwiki_userpage' => "La pàgina utent për l'IP con ël qual chiel a contribuiss",
 'tooltip-pt-mytalk' => 'Soa pàgina ëd discussion e ciaciarade',
 'tooltip-pt-anontalk' => 'La pàgina ëd ciaciarade an sle contribussion da costa adrëssa IP',
 'tooltip-pt-preferences' => 'Coma che i veuj mia {{SITENAME}}.',
@@ -2749,13 +2749,13 @@ A peul visualisene la sorgiss",
 'tooltip-feed-rss' => 'Fluss RSS për costa pàgina',
 'tooltip-feed-atom' => 'Fluss Atom për costa pàgina.',
 'tooltip-t-contributions' => 'Vardé la lista dle contribussion ëd cost utent',
-'tooltip-t-emailuser' => "Mandeje un mëssagi ëd pòsta a st'utent",
+'tooltip-t-emailwiki_user' => "Mandeje un mëssagi ëd pòsta a st'utent",
 'tooltip-t-upload' => "Carié n'archivi ëd figure ò son.",
 'tooltip-t-specialpages' => 'Lista ëd tute le pàgine speciaj.',
 'tooltip-t-print' => 'Version bon-a da stampé dë sta pàgina',
 'tooltip-t-permalink' => 'Anliura fissa a sta version-sì dla pàgina',
 'tooltip-ca-nstab-main' => 'Vardé la pàgina ëd contnù.',
-'tooltip-ca-nstab-user' => 'Vardé la pàgina Utent.',
+'tooltip-ca-nstab-wiki_user' => 'Vardé la pàgina Utent.',
 'tooltip-ca-nstab-media' => 'Vardé la pàgina dël mojen',
 'tooltip-ca-nstab-special' => "Costa a l'é na pàgina special, a peul nen modifichela.",
 'tooltip-ca-nstab-project' => 'Vardé la pàgina proteta.',
@@ -2793,13 +2793,13 @@ A lassa gionté na spiegassion ant ël resumé.",
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|Utent|Utent}} anònim ëd {{SITENAME}}',
-'siteuser' => '$1, utent ëd {{SITENAME}}',
-'anonuser' => "l'utent anònim $1 ëd {{SITENAME}}",
+'sitewiki_user' => '$1, utent ëd {{SITENAME}}',
+'anonwiki_user' => "l'utent anònim $1 ëd {{SITENAME}}",
 'lastmodifiedatby' => "Costa pàgina-sì a l'é staita modificà l'ùltima vira a $2, $1 da $3.",
 'othercontribs' => 'Basà ant sëj travaj ëd $1.',
 'others' => 'àutri',
-'siteusers' => '$1, {{PLURAL:$2|utent|utent}} ëd {{SITENAME}}',
-'anonusers' => '{{SITENAME}} {{PLURAL:$2|utent|utent}} anònim $1',
+'sitewiki_users' => '$1, {{PLURAL:$2|utent|utent}} ëd {{SITENAME}}',
+'anonwiki_users' => '{{SITENAME}} {{PLURAL:$2|utent|utent}} anònim $1',
 'creditspage' => 'Paternità dla pàgina',
 'nocredits' => "A-i é gnun-a anformassion d'atribussion disponìbil për costa pàgina.",
 
@@ -2808,7 +2808,7 @@ A lassa gionté na spiegassion ant ël resumé.",
 'spamprotectiontext' => "Ël test che a vorìa salvé a l'é stàit blocà dal filtror dla rumenta.
 Sòn a l'é motobin belfé che a sia rivà përchè a-i era n'anliura a un sit estern ëd coj blocà.",
 'spamprotectionmatch' => "Cost-sì a l'é ël test che a l'é restà ciapà andrinta al filtror dla rumenta: $1",
-'spambot_username' => 'MediaWiki - trigomiro che a-j dà deuit a la rumenta',
+'spambot_wiki_username' => 'MediaWiki - trigomiro che a-j dà deuit a la rumenta',
 'spam_reverting' => "Butà andaré a l'ùltima version che a l'avèissa pa andrinta dj'anliure a $1",
 'spam_blanking' => "Pàgina dësvujdà, che tute le version a l'avìo andrinta dj'anliure a $1",
 'spam_deleting' => 'Scancelà, dagià che tute le revision a contnisìo dle liure a $1',
@@ -2832,9 +2832,9 @@ Sòn a l'é motobin belfé che a sia rivà përchè a-i era n'anliura a un sit e
 'pageinfo-redirects-name' => 'Ridiression a sta pàgina-sì',
 'pageinfo-subpages-name' => 'Sot-pàgine ëd costa pàgina',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|ridiression|ridiression}}; $3 {{PLURAL:$3|nen ridiression|nen ridiression}})',
-'pageinfo-firstuser' => 'Creator ëd la pàgina',
+'pageinfo-firstwiki_user' => 'Creator ëd la pàgina',
 'pageinfo-firsttime' => 'Data ëd creassion ëd la pàgina',
-'pageinfo-lastuser' => 'Ùltim contributor',
+'pageinfo-lastwiki_user' => 'Ùltim contributor',
 'pageinfo-lasttime' => "Data ëd l'ùltima modìfica",
 'pageinfo-edits' => 'Nùmer ëd modìfiche',
 'pageinfo-authors' => "Nùmer d'autor diferent",
@@ -2981,7 +2981,7 @@ J'àutri a saran stërmà coma stàndard.
 'exif-compressedbitsperpixel' => 'Sistema ëd compression dle figure',
 'exif-pixelydimension' => 'Larghëssa dla figura',
 'exif-pixelxdimension' => 'Autëssa dla figura',
-'exif-usercomment' => 'Nòte lìbere',
+'exif-wiki_usercomment' => 'Nòte lìbere',
 'exif-relatedsoundfile' => 'Archivi sonor colegà',
 'exif-datetimeoriginal' => 'Data e ora dla generassion dij dat',
 'exif-datetimedigitized' => 'Data e ora dla digitalisassion',
@@ -3372,7 +3372,7 @@ Che a controla l'adrëssa che a l'ha dane, mai che a-i fusso dij caràter nen v�
 Ël programa ëd pòsta a l'ha rëspondù: $1",
 'confirmemail_invalid' => 'Còdes ëd conferma nen vàlid. A podrìa ëdcò mach esse scadù.',
 'confirmemail_needlogin' => 'A venta $1 për confermé soa adrëssa ëd pòsta eletrònica.',
-'confirmemail_success' => "Soa adrëssa a l'é stàita confermà, adess a peul [[Special:UserLogin|rintré ant ël sistema]] e i-j auguroma da fessla bin ant la wiki!",
+'confirmemail_success' => "Soa adrëssa a l'é stàita confermà, adess a peul [[Special:wiki_userLogin|rintré ant ël sistema]] e i-j auguroma da fessla bin ant la wiki!",
 'confirmemail_loggedin' => "Motobin mersì. Soa adrëssa ëd pòsta eletrònica adess a l'é confermà.",
 'confirmemail_error' => "Cheicòs a l'é andà mal ën salvand soa conferma.",
 'confirmemail_subject' => "Conferma dl'adrëssa postal da 'nt la {{SITENAME}}",
@@ -3428,10 +3428,10 @@ Cost còdes ëd conferma a scad ai $4.",
 
 # Delete conflict
 'deletedwhileediting' => "'''Avertensa''': sta pàgina-sì a l'é stàita scancelà quand che chiel a l'avìa già anandiasse a modifichela!",
-'confirmrecreate' => "L'utent [[User:$1|$1]] ([[User talk:$1|talk]]) a l'ha scancelà st'articol-sì quand che chiel a l'avia già anandiasse a modifichelo, dasend coma motiv ëd lë scancelament:
+'confirmrecreate' => "L'utent [[wiki_user:$1|$1]] ([[wiki_user talk:$1|talk]]) a l'ha scancelà st'articol-sì quand che chiel a l'avia già anandiasse a modifichelo, dasend coma motiv ëd lë scancelament:
 ''$2''
 Për piasì, che an conferma che da bon a veul torna creélo.",
-'confirmrecreate-noreason' => "L'utent [[User:$1|$1]] ([[User talk:$1|ciaciarade]]) a l'ha scancelà sta pàgina apress che chiel a l'ha ancaminà a modifiché.  Për piasì, ch'a confirma ch'a veul pròpi torna creé sta pàgina.",
+'confirmrecreate-noreason' => "L'utent [[wiki_user:$1|$1]] ([[wiki_user talk:$1|ciaciarade]]) a l'ha scancelà sta pàgina apress che chiel a l'ha ancaminà a modifiché.  Për piasì, ch'a confirma ch'a veul pròpi torna creé sta pàgina.",
 'recreate' => 'Creé torna',
 
 # action=purge
@@ -3527,7 +3527,7 @@ As peul ëdcò [[Special:EditWatchlist|dovré l'editor sòlit]].",
 'iranian-calendar-m12' => "Meis Jalāli ch'a fa dódes",
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|ciaciarade]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|ciaciarade]])',
 
 # Core parser functions
 'unknown_extension_tag' => "Tichëtta d'estension «$1» pa conossùa",
@@ -3595,7 +3595,7 @@ Le figure a së smon-o a amzura pijn-a, j'àotre sòrt d'archivi a ven-o fàite 
 'specialpages-group-login' => 'Intré ant ël sistema / creé un cont',
 'specialpages-group-changes' => 'Ùltime modìfiche e registr',
 'specialpages-group-media' => "Rapòrt e amportassion d'archivi multimojen",
-'specialpages-group-users' => 'Utent e drit',
+'specialpages-group-wiki_users' => 'Utent e drit',
 'specialpages-group-highuse' => 'Pàgine motobin dovrà',
 'specialpages-group-pages' => 'Liste ëd pàgine',
 'specialpages-group-pagetools' => 'Utiss për le pàgine',
@@ -3694,11 +3694,11 @@ Le figure a së smon-o a amzura pijn-a, j'àotre sòrt d'archivi a ven-o fàite 
 'logentry-move-move_redir-noredirect' => "$1 a l'ha tramudà la pàgina $3 a $4 ansima a na ridiression sensa lassé na ridiression",
 'logentry-patrol-patrol' => "$1 a l'ha marcà la revision $4 dla pàgina $3 'me controlà",
 'logentry-patrol-patrol-auto' => "$1 a l'ha marcà automaticament la revision $4 dla pàgina $3 'me controlà",
-'logentry-newusers-newusers' => "Ël cont utent $1 a l'é stàit creà",
-'logentry-newusers-create' => "Ël cont utent $1 a l'é stàit creà",
-'logentry-newusers-create2' => "Ël cont utent $3 a l'é stàit creà da $1",
-'logentry-newusers-autocreate' => "Ël cont $1 a l'é stàit creà an automàtich",
-'newuserlog-byemail' => 'ciav spedìa për pòsta eletrònica',
+'logentry-newwiki_users-newwiki_users' => "Ël cont utent $1 a l'é stàit creà",
+'logentry-newwiki_users-create' => "Ël cont utent $1 a l'é stàit creà",
+'logentry-newwiki_users-create2' => "Ël cont utent $3 a l'é stàit creà da $1",
+'logentry-newwiki_users-autocreate' => "Ël cont $1 a l'é stàit creà an automàtich",
+'newwiki_userlog-byemail' => 'ciav spedìa për pòsta eletrònica',
 
 # Feedback
 'feedback-bugornote' => "S'a l'é pront a descrive un problema técnich an detaj, për piasì ch'a [$1 signala un bigat]. 

@@ -63,7 +63,7 @@ $specialPageAliases = array(
 	'Allpages'                  => array( 'MochīntīnZāzaniltin', 'TodasPáginas' ),
 	'Ancientpages'              => array( 'HuēhuehZāzaniltin', 'PáginasViejas' ),
 	'Categories'                => array( 'Neneuhcāyōtl', 'Categorías' ),
-	'Emailuser'                 => array( 'EmailTlācatl', 'CorreoUsuario' ),
+	'Emailwiki_user'                 => array( 'EmailTlācatl', 'CorreoUsuario' ),
 	'Longpages'                 => array( 'HuēiyacZāzaniltin', 'PáginasLargas' ),
 	'Mycontributions'           => array( 'Notlahcuilōl', 'MisContribuciones' ),
 	'Mypage'                    => array( 'Nozāzanil', 'MiPágina' ),
@@ -73,11 +73,11 @@ $specialPageAliases = array(
 	'Shortpages'                => array( 'Zāzaniltōn', 'PáginasCortas' ),
 	'Specialpages'              => array( 'NōncuahquīzquiĀmatl', 'PáginasEspeciales' ),
 	'Upload'                    => array( 'Quetza', 'Subir' ),
-	'Userlogin'                 => array( 'Tlacalaquiliztli', 'Registrarse' ),
+	'wiki_userlogin'                 => array( 'Tlacalaquiliztli', 'Registrarse' ),
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Mokìnxòîkuilòtzàswis tzòwilistìn:',
 'tog-justify' => 'Mokintêtènyèktlàlis in tlâkuilispaltìn',
 'tog-hideminor' => 'Motlàtìs tepỉtzìn tlayèktlàlilistli ìpan welok tlapảtlalistli',
@@ -97,7 +97,7 @@ $messages = array(
 'tog-previewontop' => 'Tiquittāz achtochīhualiztli achtopa tlapatlaliztli caxitl',
 'tog-previewonfirst' => 'Xiquitta achtochīhualiztli inic cē tlapatlalizpan',
 'tog-enotifwatchlistpages' => 'Notech moēhualtia cē maltzinteyōtl netitlaniztli ihcuāc mopatla zāzanilli in notlachiyaliz.',
-'tog-enotifusertalkpages' => 'Nēchihtoa ihcuāc tlecpatla motēixnāmiquiliz',
+'tog-enotifwiki_usertalkpages' => 'Nēchihtoa ihcuāc tlecpatla motēixnāmiquiliz',
 'tog-enotifminoredits' => 'Notech moēhualtia cē maltzinteyōtl netitlaniztli nō ihcuāc mopatla tepitōn zāzanilli in notlachiyaliz.',
 'tog-enotifrevealaddr' => 'Ticnēxtīz mo e-mailcān āxcāncayōtechcopa āmatlacuilizpan',
 'tog-shownumberswatching' => 'Tiquinttāz tlatequitiltilīlli tlein tlachiyacateh',
@@ -259,7 +259,7 @@ $messages = array(
 'talk' => 'tēixnāmiquiliztli',
 'views' => 'Tlachiyaliztli',
 'toolbox' => 'In tlein motequitiltia',
-'userpage' => 'Xiquitta tlatequitiltilīlli zāzanilli',
+'wiki_userpage' => 'Xiquitta tlatequitiltilīlli zāzanilli',
 'projectpage' => 'Xiquitta tlachīhualiztli zāzanilli',
 'imagepage' => 'Tiquittaz in zāzanilli īāma',
 'mediawikipage' => 'Xiquitta tlahcuilōltzin zāzanilli',
@@ -277,7 +277,7 @@ $messages = array(
 'jumptonavigation' => 'nènemòwalistli',
 'jumptosearch' => 'tlatēmoliztli',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Ītechcopa {{SITENAME}}',
 'aboutpage' => 'Project:Ītechcopa',
 'copyright' => 'Tlahcuilōltzin cah yōllōxoxouhqui īpan $1',
@@ -329,7 +329,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Tlaìxtlapalli',
-'nstab-user' => 'Tlatequitiltilīlli',
+'nstab-wiki_user' => 'Tlatequitiltilīlli',
 'nstab-media' => 'Mēdiatl',
 'nstab-special' => 'Nònkuâkìskàtlaìxtlapalli',
 'nstab-project' => 'Ìtlaìxtlapal in tlayẻkàntekitl',
@@ -370,7 +370,7 @@ Hueliz quimpiya tlahtōl tlein ahmo mohuelītih motequitiltia tōcāpan.',
 'sqlhidden' => '(Tlatēmoliztli SQL omotlāti)',
 'namespaceprotected' => "Ahmo tiquihuelīti tiquimpatla zāzaniltin īpan '''$1'''.",
 'ns-specialprotected' => 'In nònkuâkìskàtlaìxtlapaltìn awel ìmpan nemàtilòs mokinyèktlàlis.',
-'titleprotected' => "Inīn zāzanilli ōmoquīxti ic tlachīhualiztli ic [[User:$1|$1]].
+'titleprotected' => "Inīn zāzanilli ōmoquīxti ic tlachīhualiztli ic [[wiki_user:$1|$1]].
 Ōquihto: ''$2''",
 
 # Virus scanner
@@ -390,10 +390,10 @@ Ye tihuelīti titēchihtoa [[Special:Preferences|motlaēlēhuiliz]].',
 'login' => 'Ximomachiyōmaca/Ximocalaqui',
 'nav-login-createaccount' => 'Ximocalaqui / ximomachiyōmaca',
 'loginprompt' => 'Tihuīquilia tiquimpiyāz cookies ic ticalaquīz {{SITENAME}}.',
-'userlogin' => 'Ximomachiyōmaca/Ximocalaqui',
-'userloginnocreate' => 'Ximocalaqui',
+'wiki_userlogin' => 'Ximomachiyōmaca/Ximocalaqui',
+'wiki_userloginnocreate' => 'Ximocalaqui',
 'logout' => 'Tiquīzāz',
-'userlogout' => 'Tiquīzāz',
+'wiki_userlogout' => 'Tiquīzāz',
 'notloggedin' => 'Ahmo ōtimocalac',
 'nologin' => "¿Ahmo ticpiya cuentah? '''$1'''.",
 'nologinlink' => 'Ticchīhuāz cē cuentah',
@@ -403,18 +403,18 @@ Ye tihuelīti titēchihtoa [[Special:Preferences|motlaēlēhuiliz]].',
 'createaccountmail' => 'e-mailcopa',
 'createaccountreason' => 'Tlèka:',
 'badretype' => 'Ahneneuhqui motlahtōlichtacāyo.',
-'userexists' => 'In tlatequitiltilīltōcāitl in ōquipehpen ye ia.
+'wiki_userexists' => 'In tlatequitiltilīltōcāitl in ōquipehpen ye ia.
 Timitztlātlauhtiah xicpehpena occē.',
 'loginerror' => 'Ahcuallōtl tlacalaquiliztechcopa',
 'noname' => 'Ahmo ōtiquihto cualli tlatequitiltilīlli tōcāitl.',
 'loginsuccesstitle' => 'Cualli calaquiliztli',
 'loginsuccess' => "'''Ōticalac {{SITENAME}} quemeh \"\$1\".'''",
-'nosuchuser' => 'Ayāc tlatequitiltilīlli motōcāitia "$1".
+'nosuchwiki_user' => 'Ayāc tlatequitiltilīlli motōcāitia "$1".
 In tlatequitiltilīltōcāitl quimati in huēyimachiyōtlahtōliztli.
-Xiquitta in yēquihcuilōlli, ahnozo [[Special:UserLogin/signup|xicchīhua yancuīc cuenta]].',
-'nosuchusershort' => 'Ayāc tlatequitiltilīlli motōcāitia "$1". Xiquitta in tlein ōtitlahcuiloh melāhuacā cah.
+Xiquitta in yēquihcuilōlli, ahnozo [[Special:wiki_userLogin/signup|xicchīhua yancuīc cuenta]].',
+'nosuchwiki_usershort' => 'Ayāc tlatequitiltilīlli motōcāitia "$1". Xiquitta in tlein ōtitlahcuiloh melāhuacā cah.
 Xiquitta moyēquihcuilōl.',
-'nouserspecified' => 'Mohuīquilia tiquihtoa cualli tlatequitiltilīltōcāitl.',
+'nowiki_userspecified' => 'Mohuīquilia tiquihtoa cualli tlatequitiltilīltōcāitl.',
 'wrongpassword' => 'Ahcualli motlahtōlichtacāyo.
 Timitztlātlauhtia xicchīhua occeppa.',
 'wrongpasswordempty' => 'Ayāc motlahtōlichtacāyo.
@@ -443,7 +443,7 @@ Occeppa xicalaqui niman ticmatīz.',
 'resetpass-submit-cancel' => 'Ticcuepāz',
 
 # Special:PasswordReset
-'passwordreset-username' => 'Tlatequitiltilīltōcāitl:',
+'passwordreset-wiki_username' => 'Tlatequitiltilīltōcāitl:',
 
 # Edit page toolbar
 'bold_sample' => 'Tlīltic tlahcuilōlli',
@@ -482,7 +482,7 @@ Occeppa xicalaqui niman ticmatīz.',
 'loginreqlink' => 'ximocalaqui',
 'loginreqpagetext' => 'Tihuīquilia $1 ic tiquintta occequīntīn zāzaniltin.',
 'accmailtitle' => 'Tlahtōlichtacāyōtl ōmoihuah.',
-'accmailtext' => "Cē zāzotlahtōlichtacāyōtl ōcyōcox [[User talk:$1|$1]]  moquitītlani īhuīc $2.
+'accmailtext' => "Cē zāzotlahtōlichtacāyōtl ōcyōcox [[wiki_user talk:$1|$1]]  moquitītlani īhuīc $2.
 
 In tlahtōlichtacāyōtl īpal inīn yancuīc cuenta hueliti ticpatlalo zāzanilpan ''[[Special:ChangePassword|tlahtōlichtacāyōtl patlaliztli]]'' zatepan ōticalac.",
 'newarticle' => '(Yancuīc)',
@@ -490,10 +490,10 @@ In tlahtōlichtacāyōtl īpal inīn yancuīc cuenta hueliti ticpatlalo zāzanil
 'noarticletext' => 'In āxcān, ahmō onca tlahcuilōlli inīn zāzanilpan.
 Tihuelīti [[Special:Search/{{PAGENAME}}|tictēmoa inīn zāzaniltōcācopa]] occequīntīn zāzanilpan,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} machiyōmacalpan], ahnozo [{{fullurl:{{FULLPAGENAME}}|action=edit}} ticpatla inīn zāzanilli]</span>.',
-'userpage-userdoesnotexist' => 'Ahmo ia cuentah "<nowiki>$1</nowiki>" ītōca. Timitztlātlauhtiah xitēchquinōtza intlā ticchīhuāz intlā nozo ticpatlāz inīn zāzanilli.',
-'usercsspreview' => "'''Ca inīn moachtochīhualiz ītechcopa moCSS.'''
+'wiki_userpage-wiki_userdoesnotexist' => 'Ahmo ia cuentah "<nowiki>$1</nowiki>" ītōca. Timitztlātlauhtiah xitēchquinōtza intlā ticchīhuāz intlā nozo ticpatlāz inīn zāzanilli.',
+'wiki_usercsspreview' => "'''Ca inīn moachtochīhualiz ītechcopa moCSS.'''
 '''¡Ahmo ōmochīuh nozan!'''",
-'userjspreview' => "'''Ca inīn moachtochīhualiz ītechcopa moJavaScript.'''
+'wiki_userjspreview' => "'''Ca inīn moachtochīhualiz ītechcopa moJavaScript.'''
 '''¡Ahmo ōmochīuh nozan!'''",
 'updated' => '(Ōmoyancuīli)',
 'note' => "'''Tlahtōlcaquiliztilōni:'''",
@@ -513,7 +513,7 @@ Tihuelīti [[Special:Search/{{PAGENAME}}|tictēmoa inīn zāzaniltōcācopa]] oc
 'templatesusedsection' => '{{PLURAL:$1|Nemachiòtl tlèn motekìuhtia|Nemachiòmë tlèn mokìntekìuhtiä}} ìpan inìn tlaxélòlistli:',
 'template-protected' => '(ōmoquīxti)',
 'hiddencategories' => 'Inīn zāzanilli mopiya {{PLURAL:$1|1 neneuhcāyōc ōmotlāti|$1 neneuhcāyōc ōmotlāti}}:',
-'nocreatetext' => 'Inīn huiqui ōquitzacuili tlahuelītiliztli ic tlachīhua yancuīc zāzaniltin. Tichuelīti ticcuepa auh ticpatla cē zāzanilli, [[Special:UserLogin|xicalaqui nozo xicchīhua cē cuentah]].',
+'nocreatetext' => 'Inīn huiqui ōquitzacuili tlahuelītiliztli ic tlachīhua yancuīc zāzaniltin. Tichuelīti ticcuepa auh ticpatla cē zāzanilli, [[Special:wiki_userLogin|xicalaqui nozo xicchīhua cē cuentah]].',
 'nocreate-loggedin' => 'Ahmo tihuelīti tiquinchīhua yancuīc zāzaniltin.',
 'permissionserrors' => 'Huelītiliztechcopa ahcuallōtl',
 'permissionserrorstext' => 'Ahmo tihuelīti quichīhua inōn, inīn {{PLURAL:$1|īxtlamatilizpampa|īxtlamatilizpampa}}:',
@@ -528,7 +528,7 @@ Ye ia.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Ahmo huelītih mochīhua cuentah',
-'cantcreateaccount-text' => "[[User:$3|$3]] ōcquīxti cuentah tlachīhualiztli īpal inīn IP ('''$1''').
+'cantcreateaccount-text' => "[[wiki_user:$3|$3]] ōcquīxti cuentah tlachīhualiztli īpal inīn IP ('''$1''').
 
 Īxtlamatiliztli īpal $3 cah ''$2''",
 
@@ -677,7 +677,7 @@ Hueliz ōmopolo huiqui nozo ōmozacac.
 'default' => 'ic default',
 'prefs-files' => 'Tlahcuilōlli',
 'youremail' => 'Maltzinteyōtl netitlanizyeyāntli:',
-'username' => 'Tlatequitiltilīltōcāitl:',
+'wiki_username' => 'Tlatequitiltilīltōcāitl:',
 'uid' => 'Tlatequitiltilīlli ID:',
 'prefs-memberingroups' => 'Tlācatl {{PLURAL:$1|olōlco|olōlco}}:',
 'yourrealname' => 'Melāhuac motōcā:',
@@ -692,27 +692,27 @@ Ahmo quihuīquilia quimpiya achi $1 {{PLURAL:$1|machiyōtlahtōliztli|machiyōtl
 Intlā ticnequi, tlācah quimatīzqueh motequi.',
 'prefs-help-email-required' => 'Tihuīquilia quihcuiloa mo e-mailcān.',
 
-# User rights
-'userrights-user-editname' => 'Xihcuiloa cē tlatequitiltilīltōcāitl:',
-'editusergroup' => 'Tiquimpatlāz tlatequitiltilīlli olōlli',
-'userrights-editusergroup' => 'Tiquimpatlāz tlatequitiltilīlli olōlli',
-'saveusergroups' => 'Tiquimpiyāz tlatequitiltilīlli olōlli',
-'userrights-groupsmember' => 'Olōlco:',
-'userrights-reason' => 'Īxtlamatiliztli:',
-'userrights-no-interwiki' => 'Ahmo tihuelīti ticpatla tlatequitiltilīlli huelītiliztli occequīntīn huiquipan.',
+# wiki_user rights
+'wiki_userrights-wiki_user-editname' => 'Xihcuiloa cē tlatequitiltilīltōcāitl:',
+'editwiki_usergroup' => 'Tiquimpatlāz tlatequitiltilīlli olōlli',
+'wiki_userrights-editwiki_usergroup' => 'Tiquimpatlāz tlatequitiltilīlli olōlli',
+'savewiki_usergroups' => 'Tiquimpiyāz tlatequitiltilīlli olōlli',
+'wiki_userrights-groupsmember' => 'Olōlco:',
+'wiki_userrights-reason' => 'Īxtlamatiliztli:',
+'wiki_userrights-no-interwiki' => 'Ahmo tihuelīti ticpatla tlatequitiltilīlli huelītiliztli occequīntīn huiquipan.',
 
 # Groups
 'group' => 'Olōlli:',
-'group-user' => 'Tlatequitiltilīlli',
+'group-wiki_user' => 'Tlatequitiltilīlli',
 'group-bot' => 'Tepoztlācah',
 'group-sysop' => 'Tlahcuilōlpixqueh',
 'group-all' => '(mochīntīn)',
 
-'group-user-member' => '{{GENDER:$1|tlatequitiltilīlli}}',
+'group-wiki_user-member' => '{{GENDER:$1|tlatequitiltilīlli}}',
 'group-bot-member' => '{{GENDER:$1|tepozcuāyōllōtl}}',
 'group-sysop-member' => '{{GENDER:$1|tētlamahmacani}}',
 
-'grouppage-user' => '{{ns:project}}:Tlatequitiltilīlli',
+'grouppage-wiki_user' => '{{ns:project}}:Tlatequitiltilīlli',
 'grouppage-bot' => '{{ns:project}}:Tepoztlācah',
 'grouppage-sysop' => '{{ns:project}}:Tlahcuilōlpixqueh',
 
@@ -735,15 +735,15 @@ Intlā ticnequi, tlācah quimatīzqueh motequi.',
 'right-suppressionlog' => 'Tiquinttāz ichtatlahcuilōlloh',
 'right-block' => 'Tiquintzacuilīz occequīntīn tlatequitiltilīlli',
 'right-blockemail' => 'Titēquīxtīz tlatequitiltilīlli ic tēch-e-mailīz',
-'right-hideuser' => 'Ticquīxtīz cē tlatequitiltilīltōcāitl, āuh ichtac',
+'right-hidewiki_user' => 'Ticquīxtīz cē tlatequitiltilīltōcāitl, āuh ichtac',
 'right-import' => 'Ticcōhuāz zāzaniltin occequīntīn huiquihuīcpa',
 'right-importupload' => 'Tiquincōhuāz zāzaniltin tlahcuilōlquetzalizhuīcpa',
 'right-patrolmarks' => 'Tiquinttāz tlapiyalizmachiyōtl īpan yancuīc tlapatlaliztli',
 'right-unwatchedpages' => 'Tiquinttāz mochi zāzanilli tlein ahmo mochiya',
-'right-userrights' => 'Tiquimpatlāz mochīntīn tlatequitiltilīlli huelītiliztli',
-'right-userrights-interwiki' => 'Tiquimpatlāz tlatequitiltilīlli huelītiliztli occequīntīn huiquipan',
+'right-wiki_userrights' => 'Tiquimpatlāz mochīntīn tlatequitiltilīlli huelītiliztli',
+'right-wiki_userrights-interwiki' => 'Tiquimpatlāz tlatequitiltilīlli huelītiliztli occequīntīn huiquipan',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Tlatequitiltilīlli huelītiliztli tlahcuilōlloh',
 'rightsnone' => 'ahtlein',
 
@@ -764,7 +764,7 @@ Intlā ticnequi, tlācah quimatīzqueh motequi.',
 'action-undelete' => 'ahticpolōz inīn zāzanilli',
 'action-suppressionlog' => 'tiquittāz inīn ichtac tlahcuilōlloh',
 'action-block' => 'tiquitzacuilīz inīn tlatequitiltilīlli',
-'action-userrights' => 'tiquimpatlāz mochi tlatequitiltilīlli huelītiliztli',
+'action-wiki_userrights' => 'tiquimpatlāz mochi tlatequitiltilīlli huelītiliztli',
 
 # Recent changes
 'nchanges' => '$1 {{PLURAL:$1|tlapatlaliztli|tlapatlaliztli}}',
@@ -789,7 +789,7 @@ Intlā ticnequi, tlācah quimatīzqueh motequi.',
 'minoreditletter' => 'p',
 'newpageletter' => 'Y',
 'boteditletter' => 'T',
-'number_of_watching_users_pageview' => '[$1 tlatequitiltilīlli {{PLURAL:$1|tlachiya|tlachiyah}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 tlatequitiltilīlli {{PLURAL:$1|tlachiya|tlachiyah}}]',
 'rc_categories_any' => 'Zāzo',
 'newsectionsummary' => 'Yancuīc tlahtōltzintli: /* $1 */',
 
@@ -840,7 +840,7 @@ Timitztlātlauhtiah, xitlahcuiloa occē tōcāitl.',
 'imgfile' => 'īxiptli',
 'listfiles' => 'Mochīntīn īxiptli',
 'listfiles_name' => 'Tōcāitl',
-'listfiles_user' => 'Tlatequitiltilīlli',
+'listfiles_wiki_user' => 'Tlatequitiltilīlli',
 'listfiles_size' => 'Octacayōtl (bytes)',
 
 # File description page
@@ -852,7 +852,7 @@ Timitztlātlauhtiah, xitlahcuiloa occē tōcāitl.',
 'filehist-current' => 'āxcān',
 'filehist-datetime' => 'Tlapōhualpan/Cāhuitl',
 'filehist-thumb' => 'Īxiptlahtōn',
-'filehist-user' => 'Tlatequitiltilīlli',
+'filehist-wiki_user' => 'Tlatequitiltilīlli',
 'filehist-dimensions' => 'Octacayōtl',
 'filehist-comment' => 'TlahtōIcaquiliztīlōni',
 'imagelinks' => 'Tlahcuilōlli tlanemītīliztli',
@@ -907,7 +907,7 @@ Timitztlātlauhtiah, xitlahcuiloa occē tōcāitl.',
 'statistics-header-pages' => 'Zāzaniltin tlapōhualli',
 'statistics-header-edits' => 'Tlapatlaliztli tlapōhualli',
 'statistics-header-views' => 'Tlahpololiztli tlapōhualli',
-'statistics-header-users' => 'Tlatequitiltilīlli ītlapōhualiz',
+'statistics-header-wiki_users' => 'Tlatequitiltilīlli ītlapōhualiz',
 'statistics-articles' => 'Tlapiyaliztli zāzanilli',
 'statistics-pages' => 'Zāzaniltin',
 'statistics-pages-desc' => 'Mochīntīn zāzaniltin huiquipan, mopiyah tēixnāmiquiliztli, tlacuepaliztli, etz.',
@@ -958,9 +958,9 @@ Timitztlātlauhtiah, xitlahcuiloa occē tōcāitl.',
 'protectedpagestext' => 'Inīn zāzaniltin ōmoquīxtih, auh ahmo mohuelītih mozacah nozo mopatlah',
 'protectedtitles' => 'Tōcāitl ōmoquīxtih',
 'protectedtitlestext' => 'Inīn tōcāitl ōmoquīxtih, auh ahmo mohuelītih mochīhuah',
-'listusers' => 'Tlatequitiltilīlli',
+'listwiki_users' => 'Tlatequitiltilīlli',
 'newpages' => 'Yancuīc zāzaniltin',
-'newpages-username' => 'Tlatequitiltilīltōcāitl:',
+'newpages-wiki_username' => 'Tlatequitiltilīltōcāitl:',
 'ancientpages' => 'Huēhuehzāzanilli',
 'move' => 'Ticzacāz',
 'movethispage' => 'Ticzacāz inīn zāzanilli',
@@ -972,7 +972,7 @@ Timitztlātlauhtiah, xitlahcuiloa occē tōcāitl.',
 'booksources-go' => 'Yāuh',
 
 # Special:Log
-'specialloguserlabel' => 'Tlatequitiltilīlli:',
+'speciallogwiki_userlabel' => 'Tlatequitiltilīlli:',
 'speciallogtitlelabel' => 'Tōcāitl:',
 'log' => 'Tlahcuilōlloh',
 'all-logs-page' => 'Mochīntīn tlācah īntlahcuilōlloh',
@@ -1004,15 +1004,15 @@ Nò mà mỏta in tlèn [[Special:WantedCategories|ìpan kineki tlaìxmatkàtlà
 'linksearch-ok' => 'Tictēmōz',
 'linksearch-line' => '$1 tzonhuīlo īxquichca $2',
 
-# Special:ListUsers
-'listusers-submit' => 'Tiquittāz',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Tiquittāz',
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'Olōlli',
 'listgrouprights-rights' => 'Huelītiliztli',
 
-# E-mail user
-'emailuser' => 'Tiquēhualtlīz maltzinteyōtl netitlaniztli inīn tlatequitiltilīlli',
+# E-mail wiki_user
+'emailwiki_user' => 'Tiquēhualtlīz maltzinteyōtl netitlaniztli inīn tlatequitiltilīlli',
 'defemailsubject' => '{{SITENAME}} correo tlatequitiltilīlhuīc $1',
 'emailfrom' => 'Īhuīcpa:',
 'emailto' => 'Īhuīc:',
@@ -1050,8 +1050,8 @@ $NEWPAGE
 In tlapatlaliztli īxtlamatiliztli cah: $PAGESUMMARY $PAGEMINOREDIT
  
 Xicnotzāz in tlapatlani:
-Correo electrónico: {{canonicalurl:Special:Emailuser|target=$PAGEEDITOR}}
-Huiqui: {{canonicalurl:User:$PAGEEDITOR}}
+Correo electrónico: {{canonicalurl:Special:Emailwiki_user|target=$PAGEEDITOR}}
+Huiqui: {{canonicalurl:wiki_user:$PAGEEDITOR}}
 
 Ahmo onyez occē tēmachitīliztli ītech occē tlapatlaliztli, zan mā tiquihitta inīn āmoxtli yancuīcān.
 Nō tihuelīti quitlahtlālīz, in tēmachitīliztli in mochi tlachixqui mozāzanilhuīc in motlachiyaliz āmatl.
@@ -1144,7 +1144,7 @@ Xiquitta $2 ic yancuīc tlapololiztli.',
 'sp-contributions-uploads' => 'tlahcuilōlquetzaliztli',
 'sp-contributions-talk' => 'tēixnāmiquiliztli',
 'sp-contributions-search' => 'Tiquintlatēmōz tlapatlaliztli',
-'sp-contributions-username' => 'IP nozo tlatequitiltilīlli ītōcā:',
+'sp-contributions-wiki_username' => 'IP nozo tlatequitiltilīlli ītōcā:',
 'sp-contributions-submit' => 'Tlatēmōz',
 
 # What links here
@@ -1165,7 +1165,7 @@ Xiquitta $2 ic yancuīc tlapololiztli.',
 # Block/unblock
 'blockip' => 'Tiquitzacuilīz tlatequitiltilīlli',
 'blockip-legend' => 'Tiquitzacuilīz tlatequitiltilīlli',
-'ipadressorusername' => 'IP nozo tlatequitiltilīlli ītōcā:',
+'ipadressorwiki_username' => 'IP nozo tlatequitiltilīlli ītōcā:',
 'ipbexpiry' => 'Motlamia:',
 'ipbreason' => 'Īxtlamatiliztli:',
 'ipbreasonotherlist' => 'Occē īxtlamatiliztli',
@@ -1174,7 +1174,7 @@ Xiquitta $2 ic yancuīc tlapololiztli.',
 'ipboptions' => '2 cāhuitl:2 hours,1 tōnalli:1 day,3 tōnaltin:3 days,1 chicuēyilhuitl:1 week,2 chicuēyilhuitl:2 weeks,1 mētztli:1 month,3 mētztli:3 months,6 mētztli:6 months,1 xihuitl:1 year,mochipa:infinite',
 'ipbotheroption' => 'occē',
 'ipbotherreason' => 'Occē īxtlamatiliztli:',
-'ipbwatchuser' => 'Tiquinchiyāz inīn tlatequitiltilīlli in ītlatequitiltilīlzāzanil auh in ītēixnāmiquiliz',
+'ipbwatchwiki_user' => 'Tiquinchiyāz inīn tlatequitiltilīlli in ītlatequitiltilīlzāzanil auh in ītēixnāmiquiliz',
 'badipaddress' => 'Ahcualli IP',
 'blockipsuccesssub' => 'Cualli tlatzacuiliztli',
 'ipb-unblock-addr' => 'Ahtiquitzacuilīz $1',
@@ -1263,7 +1263,7 @@ Hueliz cah inīn huēyi tlapatlaliztli. Timitztlātlauhtia ticmatīz cuallōtl a
 'importlogpage' => 'Tiquincōhuāz tlahcuilōlloh',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Notlatequitiltilīlzāzanil',
+'tooltip-pt-wiki_userpage' => 'Notlatequitiltilīlzāzanil',
 'tooltip-pt-mytalk' => 'Notēixnāmiquiliz',
 'tooltip-pt-preferences' => 'Notlaēlēhuiliz',
 'tooltip-pt-watchlist' => 'Zāzaniltin tiquintlachiya ic tlapatlaliztli',
@@ -1297,12 +1297,12 @@ Hueliz cah inīn huēyi tlapatlaliztli. Timitztlātlauhtia ticmatīz cuallōtl a
 'tooltip-feed-rss' => 'RSS tlachicāhualiztli inīn zāzaniltechcopa',
 'tooltip-feed-atom' => 'Atom tlachicāhualiztli inīn zāzaniltechcopa',
 'tooltip-t-contributions' => 'Xiquitta inīn tlatequitiltilīlli ītlahcuilōl',
-'tooltip-t-emailuser' => 'Tiquihcuilōz inīn tlatequitiltililhuīc',
+'tooltip-t-emailwiki_user' => 'Tiquihcuilōz inīn tlatequitiltililhuīc',
 'tooltip-t-upload' => 'Tiquinquetzāz tlahcuilōlli',
 'tooltip-t-specialpages' => 'Ìntlapòpòwaltekpànal mochtìn in nònkuâkìskàtlaìxtlapaltìn',
 'tooltip-t-print' => 'Tepoztlahcuilōlli',
 'tooltip-ca-nstab-main' => 'Xiquitta in tlahcuilōlli',
-'tooltip-ca-nstab-user' => 'Xiquitta tlatequitiltilīlli īzāzanil',
+'tooltip-ca-nstab-wiki_user' => 'Xiquitta tlatequitiltilīlli īzāzanil',
 'tooltip-ca-nstab-special' => 'Inìn sè nònkuâkìskàtlaìxtlapalli, yêìka awel nemàtilòs moyêyèktlàlis in tlaìxtlapalli',
 'tooltip-ca-nstab-project' => 'Xiquitta tlachīhualiztli īzāzanil',
 'tooltip-ca-nstab-image' => 'Xiquittāz īxipzāzanilli',
@@ -1321,10 +1321,10 @@ Hueliz cah inīn huēyi tlapatlaliztli. Timitztlātlauhtia ticmatīz cuallōtl a
 
 # Attribution
 'anonymous' => 'Ahtōcāitl {{PLURAL:$1|tlatequitiltilīlli|tlatequitiltilīlli}} īpan {{SITENAME}}',
-'siteuser' => '$1 tlatequitiltilīlli īpan {{SITENAME}}',
+'sitewiki_user' => '$1 tlatequitiltilīlli īpan {{SITENAME}}',
 'lastmodifiedatby' => 'Inīn zāzanilli ōtlapatlac catca īpan $2, $1 īpal $3.',
 'others' => 'occequīntīn',
-'siteusers' => '$1 {{PLURAL:$2|tlatequitiltilīlli|tlatequitiltilīlli}} īpan {{SITENAME}}',
+'sitewiki_users' => '$1 {{PLURAL:$2|tlatequitiltilīlli|tlatequitiltilīlli}} īpan {{SITENAME}}',
 
 # Spam protection
 'spam_reverting' => 'Mocuepacah īhuīc xōcoyōc tlapatlaliztli ahmo tzonhuilizca īhuīc $1',
@@ -1358,7 +1358,7 @@ Hueliz cah inīn huēyi tlapatlaliztli. Timitztlātlauhtia ticmatīz cuallōtl a
 'exif-imagedescription' => 'Īxiptli ītōcā',
 'exif-software' => 'Software ōmotēquitilti',
 'exif-artist' => 'Chīhualōni',
-'exif-usercomment' => 'Quihtoa tlatequitiltilīlli',
+'exif-wiki_usercomment' => 'Quihtoa tlatequitiltilīlli',
 'exif-exposuretime' => 'Cāuhcāyōtl',
 'exif-fnumber' => 'F Tlapōhualli',
 'exif-isospeedratings' => 'ISO iciuhquiliztli tlapōhualcāyōtl',
@@ -1422,7 +1422,7 @@ Hueliz cah inīn huēyi tlapatlaliztli. Timitztlātlauhtia ticmatīz cuallōtl a
 'confirmemail' => 'Ticchicāhuāz e-mail',
 'confirmemail_needlogin' => 'Tihuīquilia $1 ic ticchicāhua mo e-mail.',
 'confirmemail_success' => 'Mocorreo ōmotlahtōlneltilih
-Niman tihuelīti [[Special:UserLogin|timocalaqui]] auh ticpactiāz huiquitica.',
+Niman tihuelīti [[Special:wiki_userLogin|timocalaqui]] auh ticpactiāz huiquitica.',
 'confirmemail_loggedin' => 'Mo e-mailcān ōmochicāuh.',
 'confirmemail_error' => 'Achi ōcatcah ahcualli mochicāhualiztechcopa.',
 'confirmemail_subject' => 'e-mailcān {{SITENAME}} ītlachicāhualiz',
@@ -1501,7 +1501,7 @@ Niman tihuelīti [[Special:UserLogin|timocalaqui]] auh ticpactiāz huiquitica.',
 'specialpages-group-other' => 'Oksẻki nònkuâkìskàtlaìxtlapaltìn',
 'specialpages-group-login' => 'Ximocalaqui / ximomachiyōmaca',
 'specialpages-group-changes' => 'Yancuīc tlapatlaliztli īhuān tlahcuilōlloh',
-'specialpages-group-users' => 'Tlatequitiltilīlli īhuān huelītiliztli',
+'specialpages-group-wiki_users' => 'Tlatequitiltilīlli īhuān huelītiliztli',
 'specialpages-group-highuse' => 'Zāzaniltin tlatequitiliztechcopa',
 'specialpages-group-pages' => 'Mochīntīn zāzaniltin',
 'specialpages-group-redirects' => 'Tlatēmoliztli īhuān  tlacuepaliztli',

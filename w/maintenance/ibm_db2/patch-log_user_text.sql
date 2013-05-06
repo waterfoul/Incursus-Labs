@@ -4,10 +4,10 @@ CREATE TABLE logging (
   log_type			VARCHAR(32)         NOT NULL,
   log_action		VARCHAR(32)         NOT NULL,
   log_timestamp		TIMESTAMP(3)  NOT NULL,
-  log_user			BIGINT NOT NULL DEFAULT 0,
-  --                REFERENCES user(user_id) ON DELETE SET NULL,
-  -- Name of the user who performed this action
-  log_user_text		VARCHAR(255) NOT NULL default '',
+  log_wiki_user			BIGINT NOT NULL DEFAULT 0,
+  --                REFERENCES wiki_user(wiki_user_id) ON DELETE SET NULL,
+  -- Name of the wiki_user who performed this action
+  log_wiki_user_text		VARCHAR(255) NOT NULL default '',
   log_namespace		SMALLINT     NOT NULL,
   log_title			VARCHAR(255)         NOT NULL,
   log_page			BIGINT,

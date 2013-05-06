@@ -43,10 +43,10 @@ class ApiTokens extends ApiBase {
 		foreach ( $params['type'] as $type ) {
 			$type = strtolower( $type );
 
-			$val = call_user_func( $types[$type], null, null );
+			$val = call_wiki_user_func( $types[$type], null, null );
 
 			if ( $val === false ) {
-				$this->setWarning( "Action '$type' is not allowed for the current user" );
+				$this->setWarning( "Action '$type' is not allowed for the current wiki_user" );
 			} else {
 				$res[$type . 'token'] = $val;
 			}

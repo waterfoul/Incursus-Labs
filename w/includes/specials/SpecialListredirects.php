@@ -65,10 +65,10 @@ class ListredirectsPage extends QueryPage {
 	/**
 	 * Cache page existence for performance
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $res ResultWrapper
 	 */
-	function preprocessResults( $db, $res ) {
+	function preprocessResults( , $res ) {
 		$batch = new LinkBatch;
 		foreach ( $res as $row ) {
 			$batch->add( $row->namespace, $row->title );
@@ -77,9 +77,9 @@ class ListredirectsPage extends QueryPage {
 		$batch->execute();
 
 		// Back to start for display
-		if ( $db->numRows( $res ) > 0 ) {
+		if ( ->numRows( $res ) > 0 ) {
 			// If there are no rows we get an error seeking.
-			$db->dataSeek( $res, 0 );
+			->dataSeek( $res, 0 );
 		}
 	}
 
@@ -110,7 +110,7 @@ class ListredirectsPage extends QueryPage {
 		$target = $this->getRedirectTarget( $result );
 		if( $target ) {
 			// <IntraACL>
-			if ( !$target->userCanReadEx() ) {
+			if ( !$target->wiki_userCanReadEx() ) {
 				return '';
 			}
 			// </IntraACL>

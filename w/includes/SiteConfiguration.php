@@ -458,13 +458,13 @@ class SiteConfiguration {
 
 	/**
 	 * Work out the site and language name from a database name
-	 * @param $db
+	 * @param 
 	 *
 	 * @return array
 	 */
-	public function siteFromDB( $db ) {
+	public function siteFromDB(  ) {
 		// Allow override
-		$def = $this->getWikiParams( $db );
+		$def = $this->getWikiParams(  );
 		if( !is_null( $def['suffix'] ) && !is_null( $def['lang'] ) ) {
 			return array( $def['suffix'], $def['lang'] );
 		}
@@ -474,11 +474,11 @@ class SiteConfiguration {
 		foreach ( $this->suffixes as $suffix ) {
 			if ( $suffix === '' ) {
 				$site = '';
-				$lang = $db;
+				$lang = ;
 				break;
-			} elseif ( substr( $db, -strlen( $suffix ) ) == $suffix ) {
+			} elseif ( substr( , -strlen( $suffix ) ) == $suffix ) {
 				$site = $suffix == 'wiki' ? 'wikipedia' : $suffix;
-				$lang = substr( $db, 0, strlen( $db ) - strlen( $suffix ) );
+				$lang = substr( , 0, strlen(  ) - strlen( $suffix ) );
 				break;
 			}
 		}
@@ -525,7 +525,7 @@ class SiteConfiguration {
 
 	public function loadFullData() {
 		if ( $this->fullLoadCallback && !$this->fullLoadDone ) {
-			call_user_func( $this->fullLoadCallback, $this );
+			call_wiki_user_func( $this->fullLoadCallback, $this );
 			$this->fullLoadDone = true;
 		}
 	}

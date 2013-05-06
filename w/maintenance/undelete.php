@@ -27,15 +27,15 @@ class Undelete extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Undelete a page";
-		$this->addOption( 'user', 'The user to perform the undeletion', false, true, 'u' );
+		$this->addOption( 'wiki_user', 'The wiki_user to perform the undeletion', false, true, 'u' );
 		$this->addOption( 'reason', 'The reason to undelete', false, true, 'r' );
 		$this->addArg( 'pagename', 'Page to undelete' );
 	}
 
 	public function execute() {
-		global $wgUser;
+		global $wgwiki_user;
 
-		$user = $this->getOption( 'user', 'Command line script' );
+		$wiki_user = $this->getOption( 'wiki_user', 'Command line script' );
 		$reason = $this->getOption( 'reason', '' );
 		$pageName = $this->getArg();
 
@@ -43,9 +43,9 @@ class Undelete extends Maintenance {
 		if ( !$title ) {
 			$this->error( "Invalid title", true );
 		}
-		$wgUser = User::newFromName( $user );
-		if ( !$wgUser ) {
-			$this->error( "Invalid username", true );
+		$wgwiki_user = wiki_user::newFromName( $wiki_user );
+		if ( !$wgwiki_user ) {
+			$this->error( "Invalid wiki_username", true );
 		}
 		$archive = new PageArchive( $title );
 		$this->output( "Undeleting " . $title->getPrefixedDBkey() . '...' );

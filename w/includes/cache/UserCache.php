@@ -1,6 +1,6 @@
 <?php
 /**
- * Caches current user names and other info based on user IDs.
+ * Caches current wiki_user names and other info based on wiki_user IDs.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,12 +24,12 @@
 /**
  * @since 1.20
  */
-class UserCache {
+class wiki_userCache {
 	protected $cache = array(); // (uid => property => value)
 	protected $typesCached = array(); // (uid => cache type => 1)
 
 	/**
-	 * @return UserCache
+	 * @return wiki_userCache
 	 */
 	public static function singleton() {
 		static $instance = null;
@@ -42,77 +42,77 @@ class UserCache {
 	protected function __construct() {}
 
 	/**
-	 * Get a property of a user based on their user ID
+	 * Get a property of a wiki_user based on their wiki_user ID
 	 *
-	 * @param $userId integer User ID
-	 * @param $prop string User property
-	 * @return mixed The property or false if the user does not exist
+	 * @param $wiki_userId integer wiki_user ID
+	 * @param $prop string wiki_user property
+	 * @return mixed The property or false if the wiki_user does not exist
 	 */
-	public function getProp( $userId, $prop ) {
-		if ( !isset( $this->cache[$userId][$prop] ) ) {
-			wfDebug( __METHOD__ . ": querying DB for prop '$prop' for user ID '$userId'.\n" );
-			$this->doQuery( array( $userId ) ); // cache miss
+	public function getProp( $wiki_userId, $prop ) {
+		if ( !isset( $this->cache[$wiki_userId][$prop] ) ) {
+			wfDebug( __METHOD__ . ": querying DB for prop '$prop' for wiki_user ID '$wiki_userId'.\n" );
+			$this->doQuery( array( $wiki_userId ) ); // cache miss
 		}
-		return isset( $this->cache[$userId][$prop] )
-			? $this->cache[$userId][$prop]
-			: false; // user does not exist?
+		return isset( $this->cache[$wiki_userId][$prop] )
+			? $this->cache[$wiki_userId][$prop]
+			: false; // wiki_user does not exist?
 	}
 
 	/**
-	 * Preloads user names for given list of users.
-	 * @param $userIds Array List of user IDs
-	 * @param $options Array Option flags; include 'userpage' and 'usertalk'
+	 * Preloads wiki_user names for given list of wiki_users.
+	 * @param $wiki_userIds Array List of wiki_user IDs
+	 * @param $options Array Option flags; include 'wiki_userpage' and 'wiki_usertalk'
 	 * @param $caller String: the calling method
 	 */
-	public function doQuery( array $userIds, $options = array(), $caller = '' ) {
+	public function doQuery( array $wiki_userIds, $options = array(), $caller = '' ) {
 		wfProfileIn( __METHOD__ );
 
-		$usersToCheck = array();
-		$usersToQuery = array();
+		$wiki_usersToCheck = array();
+		$wiki_usersToQuery = array();
 
-		foreach ( $userIds as $userId ) {
-			$userId = (int)$userId;
-			if ( $userId <= 0 ) {
+		foreach ( $wiki_userIds as $wiki_userId ) {
+			$wiki_userId = (int)$wiki_userId;
+			if ( $wiki_userId <= 0 ) {
 				continue; // skip anons
 			}
-			if ( isset( $this->cache[$userId]['name'] ) ) {
-				$usersToCheck[$userId] = $this->cache[$userId]['name']; // already have name
+			if ( isset( $this->cache[$wiki_userId]['name'] ) ) {
+				$wiki_usersToCheck[$wiki_userId] = $this->cache[$wiki_userId]['name']; // already have name
 			} else {
-				$usersToQuery[] = $userId; // we need to get the name
+				$wiki_usersToQuery[] = $wiki_userId; // we need to get the name
 			}
 		}
 
-		// Lookup basic info for users not yet loaded...
-		if ( count( $usersToQuery ) ) {
-			$dbr = wfGetDB( DB_SLAVE );
-			$table = array( 'user' );
-			$conds = array( 'user_id' => $usersToQuery );
-			$fields = array( 'user_name', 'user_real_name', 'user_registration', 'user_id' );
+		// Lookup basic info for wiki_users not yet loaded...
+		if ( count( $wiki_usersToQuery ) ) {
+			r = wfGetDB( DB_SLAVE );
+			$table = array( 'wiki_user' );
+			$conds = array( 'wiki_user_id' => $wiki_usersToQuery );
+			$fields = array( 'wiki_user_name', 'wiki_user_real_name', 'wiki_user_registration', 'wiki_user_id' );
 
 			$comment = __METHOD__;
 			if ( strval( $caller ) !== '' ) {
 				$comment .= "/$caller";
 			}
 
-			$res = $dbr->select( $table, $fields, $conds, $comment );
-			foreach ( $res as $row ) { // load each user into cache
-				$userId = (int)$row->user_id;
-				$this->cache[$userId]['name'] = $row->user_name;
-				$this->cache[$userId]['real_name'] = $row->user_real_name;
-				$this->cache[$userId]['registration'] = $row->user_registration;
-				$usersToCheck[$userId] = $row->user_name;
+			$res = r->select( $table, $fields, $conds, $comment );
+			foreach ( $res as $row ) { // load each wiki_user into cache
+				$wiki_userId = (int)$row->wiki_user_id;
+				$this->cache[$wiki_userId]['name'] = $row->wiki_user_name;
+				$this->cache[$wiki_userId]['real_name'] = $row->wiki_user_real_name;
+				$this->cache[$wiki_userId]['registration'] = $row->wiki_user_registration;
+				$wiki_usersToCheck[$wiki_userId] = $row->wiki_user_name;
 			}
 		}
 
 		$lb = new LinkBatch();
-		foreach ( $usersToCheck as $userId => $name ) {
-			if ( $this->queryNeeded( $userId, 'userpage', $options ) ) {
-				$lb->add( NS_USER, str_replace( ' ', '_', $row->user_name ) );
-				$this->typesCached[$userId]['userpage'] = 1;
+		foreach ( $wiki_usersToCheck as $wiki_userId => $name ) {
+			if ( $this->queryNeeded( $wiki_userId, 'wiki_userpage', $options ) ) {
+				$lb->add( NS_USER, str_replace( ' ', '_', $row->wiki_user_name ) );
+				$this->typesCached[$wiki_userId]['wiki_userpage'] = 1;
 			}
-			if ( $this->queryNeeded( $userId, 'usertalk', $options ) ) {
-				$lb->add( NS_USER_TALK, str_replace( ' ', '_', $row->user_name ) );
-				$this->typesCached[$userId]['usertalk'] = 1;
+			if ( $this->queryNeeded( $wiki_userId, 'wiki_usertalk', $options ) ) {
+				$lb->add( NS_USER_TALK, str_replace( ' ', '_', $row->wiki_user_name ) );
+				$this->typesCached[$wiki_userId]['wiki_usertalk'] = 1;
 			}
 		}
 		$lb->execute();
@@ -121,9 +121,9 @@ class UserCache {
 	}
 
 	/**
-	 * Check if a cache type is in $options and was not loaded for this user
+	 * Check if a cache type is in $options and was not loaded for this wiki_user
 	 *
-	 * @param $uid integer user ID
+	 * @param $uid integer wiki_user ID
 	 * @param $type string Cache type
 	 * @param $options Array Requested cache types
 	 * @return bool

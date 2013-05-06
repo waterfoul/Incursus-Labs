@@ -41,21 +41,21 @@ class wfAssembleUrl extends MediaWikiTestCase {
 				'port' => 123,
 			),
 			'id@example.com' => array(
-				'user' => 'id',
+				'wiki_user' => 'id',
 				'host' => 'example.com',
 			),
 			'id@example.com:123' => array(
-				'user' => 'id',
+				'wiki_user' => 'id',
 				'host' => 'example.com',
 				'port' => 123,
 			),
 			'id:key@example.com' => array(
-				'user' => 'id',
+				'wiki_user' => 'id',
 				'pass' => 'key',
 				'host' => 'example.com',
 			),
 			'id:key@example.com:123' => array(
-				'user' => 'id',
+				'wiki_user' => 'id',
 				'pass' => 'key',
 				'host' => 'example.com',
 				'port' => 123,

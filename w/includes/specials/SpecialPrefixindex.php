@@ -161,19 +161,19 @@ class SpecialPrefixindex extends SpecialAllpages {
 
 			### @todo FIXME: Should complain if $fromNs != $namespace
 
-			$dbr = wfGetDB( DB_SLAVE );
+			r = wfGetDB( DB_SLAVE );
 
 			$conds = array(
 				'page_namespace' => $namespace,
-				'page_title' . $dbr->buildLike( $prefixKey, $dbr->anyString() ),
-				'page_title >= ' . $dbr->addQuotes( $fromKey ),
+				'page_title' . r->buildLike( $prefixKey, r->anyString() ),
+				'page_title >= ' . r->addQuotes( $fromKey ),
 			);
 
 			if ( $hideredirects ) {
 				$conds['page_is_redirect'] = 0;
 			}
 
-			$res = $dbr->select( 'page',
+			$res = r->select( 'page',
 				array( 'page_namespace', 'page_title', 'page_is_redirect' ),
 				$conds,
 				__METHOD__,
@@ -193,7 +193,7 @@ class SpecialPrefixindex extends SpecialAllpages {
 				while( ( $n < $this->maxPerPage ) && ( $s = $res->fetchObject() ) ) {
 					$t = Title::makeTitle( $s->page_namespace, $s->page_title );
 					/*op-patch|TS|2009-06-19|HaloACL|SafeTitle|start*/
-					if ($t && !$t->userCanReadEx()) {
+					if ($t && !$t->wiki_userCanReadEx()) {
 						continue; 
 					}
 					/*op-patch|TS|2009-06-19|end*/ 

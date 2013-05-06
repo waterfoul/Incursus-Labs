@@ -52,7 +52,7 @@ class MediaWikiErrorsConnectToDatabasePageTestCase extends MediaWikiInstallation
         parent::clickContinueButton();
         $this->assertEquals( "DB connection error: php_network_getaddresses: getaddrinfo failed: No such host is known. (".INVALID_DB_HOST.").",
                 $this->getText( LINK_DIV."div[2]/div[2]/p[1]" ));
-        $this->assertEquals( "Check the host, username and password below and try again.",
+        $this->assertEquals( "Check the host, wiki_username and password below and try again.",
                 $this->getText( LINK_DIV."div[2]/div[2]/p[2]" ));
         // Verify warning message for the blank database host
         $this->type( "mysql_wgDBserver", "" );
@@ -87,45 +87,45 @@ class MediaWikiErrorsConnectToDatabasePageTestCase extends MediaWikiInstallation
         // Valid Database prefix
         $this->type( "mysql_wgDBprefix", VALID_DB_PREFIX );
 
-        // Verify warning message for the invalid database user name
-        $this->type( "mysql__InstallUser", INVALID_DB_USER_NAME );
+        // Verify warning message for the invalid database wiki_user name
+        $this->type( "mysql__Installwiki_user", INVALID_DB_USER_NAME );
         parent::clickContinueButton();
-        $this->assertEquals( "DB connection error: Access denied for user '".INVALID_DB_USER_NAME."'@'localhost' (using password: NO) (localhost).",
+        $this->assertEquals( "DB connection error: Access denied for wiki_user '".INVALID_DB_USER_NAME."'@'localhost' (using password: NO) (localhost).",
                 $this->getText( LINK_DIV."div[2]/div[2]/p[1]" ));
-        $this->assertEquals( "Check the host, username and password below and try again.",
+        $this->assertEquals( "Check the host, wiki_username and password below and try again.",
                 $this->getText( LINK_DIV."div[2]/div[2]/p[2]"));
 
-        // Verify warning message for the blank database user name
-        $this->type( "mysql__InstallUser", "" );
+        // Verify warning message for the blank database wiki_user name
+        $this->type( "mysql__Installwiki_user", "" );
         parent::clickContinueButton();
-        $this->assertEquals( "DB connection error: Access denied for user 'SYSTEM'@'localhost' (using password: NO) (localhost).",
+        $this->assertEquals( "DB connection error: Access denied for wiki_user 'SYSTEM'@'localhost' (using password: NO) (localhost).",
                 $this->getText( LINK_DIV."div[2]/div[2]/p[1]" ));
-        $this->assertEquals( "Check the host, username and password below and try again.",
+        $this->assertEquals( "Check the host, wiki_username and password below and try again.",
                 $this->getText( LINK_DIV."div[2]/div[2]/p[2]" ));
 
-        // Valid Database username
-        $this->type( "mysql__InstallUser",  VALID_DB_USER_NAME );
+        // Valid Database wiki_username
+        $this->type( "mysql__Installwiki_user",  VALID_DB_USER_NAME );
 
         // Verify warning message for the invalid password
         $this->type( "mysql__InstallPassword", INVALID_DB_PASSWORD );
         parent::clickContinueButton();
 
-        $this->assertEquals( "DB connection error: Access denied for user 'root'@'localhost' (using password: YES) (localhost).",
+        $this->assertEquals( "DB connection error: Access denied for wiki_user 'root'@'localhost' (using password: YES) (localhost).",
                 $this->getText( LINK_DIV."div[2]/div[2]/p[1]" ));
-        $this->assertEquals( "Check the host, username and password below and try again.",
+        $this->assertEquals( "Check the host, wiki_username and password below and try again.",
                 $this->getText( LINK_DIV."div[2]/div[2]/p[2]" ));
 
-        // Verify warning message for the invalid username and password
-        $this->type( "mysql__InstallUser", INVALID_DB_USER_NAME );
+        // Verify warning message for the invalid wiki_username and password
+        $this->type( "mysql__Installwiki_user", INVALID_DB_USER_NAME );
         $this->type( "mysql__InstallPassword", INVALID_DB_PASSWORD );
         parent::clickContinueButton();
-        $this->assertEquals( "DB connection error: Access denied for user '".INVALID_DB_USER_NAME."'@'localhost' (using password: YES) (localhost).",
+        $this->assertEquals( "DB connection error: Access denied for wiki_user '".INVALID_DB_USER_NAME."'@'localhost' (using password: YES) (localhost).",
                 $this->getText( LINK_DIV."div[2]/div[2]/p[1]" ));
-        $this->assertEquals( "Check the host, username and password below and try again.",
+        $this->assertEquals( "Check the host, wiki_username and password below and try again.",
                 $this->getText( LINK_DIV."div[2]/div[2]/p[2]" ));
 
-        // Valid username and valid password
-        $this->type( "mysql__InstallUser", VALID_DB_USER_NAME );
+        // Valid wiki_username and valid password
+        $this->type( "mysql__Installwiki_user", VALID_DB_USER_NAME );
         $this->type( "mysql__InstallPassword", "" );
         parent::clickContinueButton();
 

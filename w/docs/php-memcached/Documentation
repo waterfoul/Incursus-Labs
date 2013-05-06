@@ -28,8 +28,8 @@ MemCachedClient::set_servers($servers);
 // unserialized, if necessary) or FALSE if it fails.
 // The $key can optionally be an array, with the first element being the
 // hash value, if you want to avoid making this module calculate a hash
-// value.  You may prefer, for example, to keep all of a given user's
-// objects on the same memcache server, so you could use the user's
+// value.  You may prefer, for example, to keep all of a given wiki_user's
+// objects on the same memcache server, so you could use the wiki_user's
 // unique id as the hash value.
 // Possible errors set are:
 // 		MC_ERR_GET

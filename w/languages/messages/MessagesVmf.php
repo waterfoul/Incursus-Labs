@@ -39,7 +39,7 @@ $specialPageAliases = array(
 	'Confirmemail'              => array( 'Iimäjl_bschdädigâ' ),
 	'Contributions'             => array( 'Bajdräächâ' ),
 	'DoubleRedirects'           => array( 'Dobâldâ_Wajdârlajdungân' ),
-	'Emailuser'                 => array( 'Iimäjlâ' ),
+	'Emailwiki_user'                 => array( 'Iimäjlâ' ),
 	'Export'                    => array( 'Ägsbordiirn' ),
 	'Import'                    => array( 'Imbordiirn' ),
 	'Movepage'                  => array( 'Sajdâ_färschiibâ' ),
@@ -52,13 +52,13 @@ $specialPageAliases = array(
 	'Undelete'                  => array( 'Wiidârhärschdälâ' ),
 	'Unwatchedpages'            => array( 'Unbäoobôchdâdâ_Sajdn' ),
 	'Upload'                    => array( 'Hoochlaadâ' ),
-	'Userlogin'                 => array( 'Ôômäldâ' ),
-	'Userlogout'                => array( 'Ôbmäldâ' ),
+	'wiki_userlogin'                 => array( 'Ôômäldâ' ),
+	'wiki_userlogout'                => array( 'Ôbmäldâ' ),
 	'Watchlist'                 => array( 'Bäoobôchdungslisdâ' ),
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Linggs undârschdrajchn:',
 'tog-justify' => 'Dhägsd in Blogsads',
 'tog-hideminor' => 'Glaane ändrungn ned ôôdsajchn',
@@ -74,7 +74,7 @@ $messages = array(
 'tog-previewonfirst' => 'Baj dr ärschdn ändrung imâr ärschd â foorschau ôôdsajchn',
 'tog-nocache' => 'Sajdn-cache ausschaldn',
 'tog-enotifwatchlistpages' => 'Ii wil â iimejl griign, wen sich was beoobachdeds ändârd',
-'tog-enotifusertalkpages' => 'Ii wil â iimejl griign, wen sich uf majnâr disghusjoons-sajdn was duud',
+'tog-enotifwiki_usertalkpages' => 'Ii wil â iimejl griign, wen sich uf majnâr disghusjoons-sajdn was duud',
 'tog-enotifminoredits' => 'I wil aa baj bloos glaanân ädrungn â iimejl griign',
 'tog-enotifrevealaddr' => 'Maj iimejl-adresn in iimejls dsur benoochrichdichungs dâdsuu-schrajwn',
 'tog-shownumberswatching' => 'Dii andsôôl dr beoobachdâr ôôdsajchn',
@@ -211,7 +211,7 @@ ausghenn, mr mus dâdsuu ufm ajchnen rächnâr was âjrichdn ghenn)',
 'talk' => 'Disghusjoon',
 'views' => 'Ôôsichdn',
 'toolbox' => 'Werchdsajch-ghisdn',
-'userpage' => "D'benudsârsajdn dsajchn",
+'wiki_userpage' => "D'benudsârsajdn dsajchn",
 'projectpage' => "D'brojägdsajdn dsjachn",
 'imagepage' => "D'dadhaj-sajdn dsajchn",
 'mediawikipage' => "D'meldungs-sajdn dsajchn",
@@ -233,7 +233,7 @@ sajdn ham woln. Ward n'bôôr minuudn un brobiir's dan nochâmôôl.
 
 $1",
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Was {{SITENAME}} is',
 'aboutpage' => 'Project:Iibär',
 'copyright' => 'Was hiir schdäd däfmâr benudsn nach $1',
@@ -284,7 +284,7 @@ $1",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Sajdn',
-'nstab-user' => 'Benudsä-sajdn',
+'nstab-wiki_user' => 'Benudsä-sajdn',
 'nstab-media' => 'Meedjân-sajdn',
 'nstab-special' => 'Sonda-sajdn',
 'nstab-project' => 'Brojägd-sajdn',
@@ -327,7 +327,7 @@ Gschbärd is se desdâweechn: $1",
 
 Wen des basiird, dan massdn`s, wemma â dsu alde bearbajdung ôôschaua wil odâ ane fonra gleschdn sajdn.
 
-Wen's des ned is, bisd womeeglich iwa ân feela in dr sofdwäâr gschdolbäd. In dämm Fall melds´däs, bidde mid där URL, am [[Special:ListUsers/sysop|Administrator]].",
+Wen's des ned is, bisd womeeglich iwa ân feela in dr sofdwäâr gschdolbäd. In dämm Fall melds´däs, bidde mid där URL, am [[Special:Listwiki_users/sysop|Administrator]].",
 'missingarticle-rev' => '(wärsjoonsnumâr: $1)',
 'badtitletext' => "Dii fârlangde sajdn gibd's ned, odâr sii had ân uugildichn sajdnnôôma ghabd, odâr s'wôôr â gschlambdâr fârwajs fonâm andârn wighi häär. Filajchd is aa â buuchschdôôb drin'n, däär in sajdnnôôm gôôr ned schdena däf.",
 'viewsource' => 'Gwäl-dhägsd ôôgugn',
@@ -338,9 +338,9 @@ Wen's des ned is, bisd womeeglich iwa ân feela in dr sofdwäâr gschdolbäd. In
 'remembermypassword' => 'Af dem ghombjuudâr schdändich ôôgmäld blajm (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'Ôômeldn',
 'nav-login-createaccount' => 'Oomeldn / Ghondoo ooleeng',
-'userlogin' => 'Ôômeldn / Als Bajdräächâr ajschrajm',
+'wiki_userlogin' => 'Ôômeldn / Als Bajdräächâr ajschrajm',
 'logout' => 'Abmeldn',
-'userlogout' => 'Abmeldn',
+'wiki_userlogout' => 'Abmeldn',
 'nologinlink' => 'Sich als najâr Ôôgmeldâr ôômäldn',
 'mailmypassword' => 'Â najs passwôrd iwâr iimejl dsuschign lasn',
 
@@ -496,7 +496,7 @@ Hirmid sagsd, das Du den dhägsd '''selbâr gschriim''' hasd, das däär dhägsd
 'mypreferences' => 'Maj ajschdelunga',
 'prefs-edits' => 'So ofd umgmoodld:',
 'prefsnologin' => 'Ned ôôgmäld',
-'prefsnologintext' => 'Ärschd wen\'d <span class="plainlinks">[{{fullurl:{{#special:UserLogin}}|returnto=$1}} ôôgmäld]</span> bisch, ghôôsch dâj âjschdelungn ändârn.',
+'prefsnologintext' => 'Ärschd wen\'d <span class="plainlinks">[{{fullurl:{{#special:wiki_userLogin}}|returnto=$1}} ôôgmäld]</span> bisch, ghôôsch dâj âjschdelungn ändârn.',
 'changepassword' => "S'bhaswôrd ändârn",
 'prefs-skin' => 'Schaale',
 'skin-preview' => 'Môôl schbign',
@@ -549,7 +549,7 @@ Hirmid sagsd, das Du den dhägsd '''selbâr gschriim''' hasd, das däär dhägsd
 
 'grouppage-sysop' => '{{ns:project}}:Adminisdradoorn',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Brodoghol fo rächde-dsuudaalung an bearbajdâr',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -597,7 +597,7 @@ Hirmid sagsd, das Du den dhägsd '''selbâr gschriim''' hasd, das däär dhägsd
 'filehist-datetime' => 'Âjschdlungs-daadum un -dsajd',
 'filehist-thumb' => 'Schbigbildlâ',
 'filehist-thumbtext' => "Wii d'fasung fom $2, $3 Uur grâub aussiid",
-'filehist-user' => 'Ôôgmeldâr',
+'filehist-wiki_user' => 'Ôôgmeldâr',
 'filehist-dimensions' => 'Maase',
 'filehist-filesize' => 'Dadajgräâs',
 'filehist-comment' => 'Sembf dâdsuâ',
@@ -648,14 +648,14 @@ S'gajd awâr aa â [[Special:WhatLinksHere/$2|lisdn mid alâ fârwajs]].",
 # Special:LinkSearch
 'linksearch' => 'Linggs nach ausârhalb',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Brodoghol iwâr dii naja bearbajdâr-ôômeldunga',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Brodoghol iwâr dii naja bearbajdâr-ôômeldunga',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(Lisdn fon dâ midgliidâr)',
 
-# E-mail user
-'emailuser' => 'Dem ôôgmeldn â iimejl schign',
+# E-mail wiki_user
+'emailwiki_user' => 'Dem ôôgmeldn â iimejl schign',
 
 # Watchlist
 'watchlist' => 'Maj beoobachdungs-lisdn',
@@ -743,7 +743,7 @@ Wenns'd dii sajdn irchendwan amôl nimä fârfolchn wilsd, musd bloos af „{{in
 'sp-contributions-newbies' => 'Bloos bajdrääch fo naj Ôôgmeldâ dsajchn',
 'sp-contributions-blocklog' => 'Schbär-brodoghol',
 'sp-contributions-search' => 'Bajdreech suchng',
-'sp-contributions-username' => 'IP-adresn odär nôômâ fom Ôôgmeldn:',
+'sp-contributions-wiki_username' => 'IP-adresn odär nôômâ fom Ôôgmeldn:',
 'sp-contributions-submit' => 'Suchng',
 
 # What links here
@@ -814,7 +814,7 @@ Schrajb bide den '''naja'' nôômâ fo dâr sajdn undârals '''Dsiil'' nâj un '
 'thumbnail-more' => 'Grässär machng',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Daj benudsâr-sajdn',
+'tooltip-pt-wiki_userpage' => 'Daj benudsâr-sajdn',
 'tooltip-pt-mytalk' => 'Daj disghusjoons-sajdn',
 'tooltip-pt-preferences' => 'Daj Âjschdelunga',
 'tooltip-pt-watchlist' => 'Dôô ghummsd dsu dâjnâr beoobachdungslisdn',
@@ -848,13 +848,13 @@ Bidde gug's mi´m foorschau-gnobf ôô fôrm schbajchan",
 'tooltip-feed-rss' => 'RSS-Feed fä´ dii sajdn',
 'tooltip-feed-atom' => 'Atom-Feed fä` dii sajdn',
 'tooltip-t-contributions' => 'Dsajchn, was däär benudsâr alâs gmachd had',
-'tooltip-t-emailuser' => 'Dem ôôgneldn â E-mejl schign',
+'tooltip-t-emailwiki_user' => 'Dem ôôgneldn â E-mejl schign',
 'tooltip-t-upload' => 'Dadaia nauflôôdn',
 'tooltip-t-specialpages' => 'Lisdn fo alle Schbedsjalsajdn',
 'tooltip-t-print' => 'Dii sajdn in drugôôsichd ôôdsajchn',
 'tooltip-t-permalink' => 'Bermanendär lingh zo derä Sajdnwärsjoon',
 'tooltip-ca-nstab-main' => 'Sajdninhald dsajchn',
-'tooltip-ca-nstab-user' => 'Dii Benudsârsajdn ôôdsajchn',
+'tooltip-ca-nstab-wiki_user' => 'Dii Benudsârsajdn ôôdsajchn',
 'tooltip-ca-nstab-media' => 'Dii sajdn fir dii meedjendadaj ôôdsajchn',
 'tooltip-ca-nstab-special' => 'Des is â sonda-sajdn, dii ghôôsch ned ändârn',
 'tooltip-ca-nstab-project' => 'Aaf di bhôrdaalsajdn geä´',

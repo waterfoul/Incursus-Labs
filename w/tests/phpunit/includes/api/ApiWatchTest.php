@@ -13,7 +13,7 @@ class ApiWatchTest extends ApiTestCase {
 	}
 
 	function getTokens() {
-		$data = $this->getTokenList( self::$users['sysop'] );
+		$data = $this->getTokenList( self::$wiki_users['sysop'] );
 
 		$keys = array_keys( $data[0]['query']['pages'] );
 		$key = array_pop( $keys );
@@ -140,7 +140,7 @@ class ApiWatchTest extends ApiTestCase {
 			$data = $this->doApiRequest( array(
 				'action' => 'rollback',
 				'title' => 'UTPage',
-				'user' => $revinfo['user'],
+				'wiki_user' => $revinfo['wiki_user'],
 				'token' => $pageinfo['rollbacktoken'],
 				'watchlist' => 'watch' ) );
 
@@ -171,6 +171,6 @@ class ApiWatchTest extends ApiTestCase {
 			'action' => 'query',
 			'list' => 'watchlist' ) );
 
-		$this->markTestIncomplete( 'This test needs to verify the deleted article was added to the users watchlist' );
+		$this->markTestIncomplete( 'This test needs to verify the deleted article was added to the wiki_users watchlist' );
 	}
 }

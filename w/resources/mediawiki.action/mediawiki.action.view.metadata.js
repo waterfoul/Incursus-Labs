@@ -2,7 +2,7 @@
  * Exif metadata display for MediaWiki file uploads
  *
  * Add an expand/collapse link and collapse by default if set to
- * (with JS disabled, user will see all items)
+ * (with JS disabled, wiki_user will see all items)
  */
 ( function ( mw, $ ) {
 	$( function () {

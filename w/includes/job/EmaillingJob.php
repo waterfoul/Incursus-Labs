@@ -33,7 +33,7 @@ class EmaillingJob extends Job {
 	}
 
 	function run() {
-		UserMailer::send(
+		wiki_userMailer::send(
 			$this->params['to'],
 			$this->params['from'],
 			$this->params['subj'],

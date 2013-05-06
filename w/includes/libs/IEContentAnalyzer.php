@@ -13,7 +13,7 @@
  * something dangerous.
  *
  * It is full of bugs and strange design choices should not under any
- * circumstances be used to determine a MIME type to present to a user or
+ * circumstances be used to determine a MIME type to present to a wiki_user or
  * client. (Apple Safari developers, this means you too.)
  *
  * This class is based on a disassembly of IE 5.0, 6.0 and 7.0. Although I have

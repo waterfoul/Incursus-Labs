@@ -35,7 +35,7 @@ $namespaceNames = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'ئۇلانما ئاستى سىزىقى:',
 'tog-justify' => 'ئابزاس توغرىلا',
 'tog-hideminor' => 'يېقىنقى ئۆزگەرتىشتە ئازراقلا تەھرىرنى يوشۇر',
@@ -59,7 +59,7 @@ $messages = array(
 'tog-previewonfirst' => 'تۇنجى قېتىم تەھرىرلىگەندە ئالدىن كۆزىتىشنى كۆرسەت',
 'tog-nocache' => 'توركۆرگۈ بەت غەملەشنى چەكلە',
 'tog-enotifwatchlistpages' => 'كۆزەت تىزىملىكىمدىكى بەت ۋە ھۆججەت ئۆزگەرگەندە ئېلخەت يوللا',
-'tog-enotifusertalkpages' => 'مۇنازىرە بېتىم ئۆزگەرگەندە ئېلخەت يوللا',
+'tog-enotifwiki_usertalkpages' => 'مۇنازىرە بېتىم ئۆزگەرگەندە ئېلخەت يوللا',
 'tog-enotifminoredits' => 'بەت ۋە ھۆججەت ئازراقلا تەھرىرلەنگەندىمۇ ئېلخەت يوللا',
 'tog-enotifrevealaddr' => 'ئۇقتۇرۇش ئېلخەت تىزىملىكىدە ئېلخەت ئادرېسىمنى ئاشكارىلا',
 'tog-shownumberswatching' => 'بۇ بەتنى كۆزىتىۋاتقان ئىشلەتكۈچى سانىنى كۆرسەت',
@@ -245,7 +245,7 @@ $messages = array(
 'talk' => 'مۇنازىرە',
 'views' => 'كۆرۈنۈش',
 'toolbox' => 'قورال ساندۇقى',
-'userpage' => 'ئىشلەتكۈچى بېتىنى كۆرسەت',
+'wiki_userpage' => 'ئىشلەتكۈچى بېتىنى كۆرسەت',
 'projectpage' => 'قۇرۇلۇش بېتىنى كۆرسەت',
 'imagepage' => 'ھۆججەت بېتىنى كۆرسەت',
 'mediawikipage' => 'ئۇچۇر بېتىنى كۆرسەت',
@@ -271,7 +271,7 @@ $1',
 'pool-queuefull' => 'قاچا ئۆچرىتى توشتى',
 'pool-errorunknown' => 'نامەلۇم خاتالىق',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} ھەققىدە',
 'aboutpage' => 'Project:ھەققىدە',
 'copyright' => 'بۇ بېكەتتىكى بارلىق تېكست مەزمۇنى $1 ماددىسىغا ئاساسەن تەمىنلىنىدۇ.',
@@ -308,8 +308,8 @@ $1',
 'youhavenewmessages' => 'سىزدە $1 ($2) بار.',
 'newmessageslink' => 'يېڭى ئۇچۇر',
 'newmessagesdifflink' => 'ئاخىرقى ئۆزگەرتىش',
-'youhavenewmessagesfromusers' => 'سىزنىڭ {{PLURAL:$3|باشقا ئىشلەتكۈچى|$3 ئىشلەتكۈچى}} $1  ($2)ڭىز بار.',
-'youhavenewmessagesmanyusers' => 'سىزنىڭ نۇرغۇن ئىشلەتكۈچىدىن كەلگەن $1  ($2) بار.',
+'youhavenewmessagesfromwiki_users' => 'سىزنىڭ {{PLURAL:$3|باشقا ئىشلەتكۈچى|$3 ئىشلەتكۈچى}} $1  ($2)ڭىز بار.',
+'youhavenewmessagesmanywiki_users' => 'سىزنىڭ نۇرغۇن ئىشلەتكۈچىدىن كەلگەن $1  ($2) بار.',
 'newmessageslinkplural' => '{{PLURAL:$1|بىر يېڭى |يېڭى ئۇچۇر}}ئۇچۇر',
 'newmessagesdifflinkplural' => 'ئاخىرقى $1 {{PLURAL:$1|ئۆزگەرتىش|ئۆزگەرتىش}}',
 'youhavenewmessagesmulti' => '$1 يېڭى ئۇچۇرىڭىز بار',
@@ -343,7 +343,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'بەت',
-'nstab-user' => 'ئىشلەتكۈچى بېتى',
+'nstab-wiki_user' => 'ئىشلەتكۈچى بېتى',
 'nstab-media' => 'ۋاسىتە بېتى',
 'nstab-special' => 'ئالاھىدە بەت',
 'nstab-project' => 'قۇرۇلۇش بېتى',
@@ -392,7 +392,7 @@ MySQL قايتۇرغان خاتالىقى"$3: $4"',
  بۇ ئادەتتە ئۆزگەرتىش تارىخ بېتىدىكى ۋاقتى ئۆتكەن ئۇلانمىنىڭ ئۆچۈرۈلگەن بەتكە ئۇلانغانلىقىدىن كېلىپ چىقىدۇ.
 
  ئەگەر بۇ خىل ئەھۋال بولمىسا، يۇمشاق دېتالنىڭ خاتالىقىدىن بىرنى بايقىغان بولۇشىڭىز مۇمكىن.
- سىز URL ئادرېسنى خاتىرىلىۋېلىپ، [[Special:ListUsers/sysop|باشقۇرغۇچى]] غا مەلۇم قىلىڭ.',
+ سىز URL ئادرېسنى خاتىرىلىۋېلىپ، [[Special:Listwiki_users/sysop|باشقۇرغۇچى]] غا مەلۇم قىلىڭ.',
 'missingarticle-rev' => '(تۈزىتىش#: $1)',
 'missingarticle-diff' => '(پەرق: $1، $2)',
 'readonly_lag' => 'قوشۇمچە ساندان مۇلازىمىتىر غەملەكنى ئاساسىي مۇلازىمىتىرغا يېڭىلاۋاتىدۇ، ساندان ئۆزلۈكىدىن قۇلۇپلاندى',
@@ -452,7 +452,7 @@ $2',
 'customcssprotected' => 'بۇ CSS بەتنى تەھرىرلەش ھوقۇقىڭىز يوق، چۈنكى ئۇ باشقا بىر ئىشلەتكۈچىنىڭ شەخسىي تەڭشىكىنى ئۆز ئىچىگە ئالغان.',
 'customjsprotected' => 'بۇ JavaScript بەتنى تەھرىرلەش ھوقۇقىڭىز يوق، چۈنكى ئۇ باشقا بىر ئىشلەتكۈچىنىڭ شەخسىي تەڭشىكىنى ئۆز ئىچىگە ئالغان.',
 'ns-specialprotected' => 'ئالاھىدە بەتنى تەھرىرلىگىلى بولمايدۇ.',
-'titleprotected' => 'بۇ ماۋزۇ قايتا قۇرۇشتىن ساقلىنىش ئۈچۈن [[User:$1|$1]] تەرىپىدىن قوغدالغان.
+'titleprotected' => 'بۇ ماۋزۇ قايتا قۇرۇشتىن ساقلىنىش ئۈچۈن [[wiki_user:$1|$1]] تەرىپىدىن قوغدالغان.
 
 سەۋەبى"\'\'$2\'\'" .',
 'filereadonlyerror' => 'بۇ ھۆججەت "$1" نى ئۆزگەرتەلمەيدۇ چۈنكى ھۆججەت خەزىنە "$2" سى پەقەت ئوقۇشقىلا بولىدىغان ھالەتتە.
@@ -471,7 +471,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''ھازىر تىزىمدىن چىقتىڭىز.'''
 
-سىز نامسىز ھالەتتە {{SITENAME}} نى ئىشلىتەلەيسىز ياكى ئوخشاش ۋە ياكى ئوخشاش بولمىغان ئىشلەتكۈچى سالاھىيىتىدە [[Special:UserLogin|تىزىمغا كىر]]ەلەيسىز.
+سىز نامسىز ھالەتتە {{SITENAME}} نى ئىشلىتەلەيسىز ياكى ئوخشاش ۋە ياكى ئوخشاش بولمىغان ئىشلەتكۈچى سالاھىيىتىدە [[Special:wiki_userLogin|تىزىمغا كىر]]ەلەيسىز.
 دىققەت، بەزى بەتلەر توركۆرگۈنىڭ غەملىكى تازىلانمىغۇچە يەنىلا سىزنى تىزىمغا كىرگەن ھالەتتە كۆرسىتىشى مۇمكىن.",
 'welcomecreation' => '==  $1! خۇش كەپسىز ==
 
@@ -489,21 +489,21 @@ $2',
 'login' => 'تىزىمغا كىر',
 'nav-login-createaccount' => 'تىزىمغا كىر/ھېسابات قۇر',
 'loginprompt' => 'سىز cookies نى قوزغاتقاندىلا ئاندىن   {{SITENAME}} غا كىرەلەيسىز.',
-'userlogin' => 'تىزىمغا كىر/ھېسابات قۇر',
-'userloginnocreate' => 'تىزىمغا كىر',
+'wiki_userlogin' => 'تىزىمغا كىر/ھېسابات قۇر',
+'wiki_userloginnocreate' => 'تىزىمغا كىر',
 'logout' => 'تىزىمدىن چىق',
-'userlogout' => 'تىزىمدىن چىق',
+'wiki_userlogout' => 'تىزىمدىن چىق',
 'notloggedin' => 'تىزىمغا كىرمىدى',
 'nologin' => "ھېساباتىڭىز يوقمۇ؟ '''$1'''.",
 'nologinlink' => 'ھېساباتتىن بىرنى قۇر',
 'createaccount' => 'ھېسابات قۇر',
 'gotaccount' => "ھېساباتىم بار؟ '''$1'''.",
 'gotaccountlink' => 'تىزىمغا كىر',
-'userlogin-resetlink' => 'تىزىمغا كىرىش تەپسىلاتىنى ئۇنۇتتىڭىز؟',
+'wiki_userlogin-resetlink' => 'تىزىمغا كىرىش تەپسىلاتىنى ئۇنۇتتىڭىز؟',
 'createaccountmail' => 'ئېلخەتتە',
 'createaccountreason' => 'سەۋەب:',
 'badretype' => 'سىز كىرگۈزگەن ئىم ماس كەلمىدى.',
-'userexists' => 'كىرگۈزگەن ئىشلەتكۈچى ئاتى ئىشلىتىلىۋاتىدۇ.
+'wiki_userexists' => 'كىرگۈزگەن ئىشلەتكۈچى ئاتى ئىشلىتىلىۋاتىدۇ.
 باشقا ئاتنى تاللاڭ.',
 'loginerror' => 'تىزىمغا كىرىش خاتالىقى',
 'createaccounterror' => 'ھېسابات قۇرالمىدى: $1',
@@ -525,13 +525,13 @@ cookies نى قوزغاتقانلىقىڭىزنى جەزملەڭ، بۇ بەتن
 'noname' => 'سىز تېخى ئىناۋەتلىك ئىشلەتكۈچى ئاتىنى بەلگىلىمىدىڭىز.',
 'loginsuccesstitle' => 'تىزىمغا كىرىش مۇۋەپپەقىيەتلىك',
 'loginsuccess' => "'''سىز {{SITENAME}} غا \"\$1\" سالاھىيىتىدە كىردىڭىز.'''",
-'nosuchuser' => '"$1" ئاتلىق ئىشلەتكۈچىنى تاپالمىدى.
+'nosuchwiki_user' => '"$1" ئاتلىق ئىشلەتكۈچىنى تاپالمىدى.
 ئىشلەتكۈچى ئاتىنى تەكشۈرۈڭ.
-ياكى [[Special:UserLogin/signup|يېڭى ھېسابات قۇرۇڭ]].',
-'nosuchusershort' => '"$1" ئاتلىق ئىشلەتكۈچى يوق.
+ياكى [[Special:wiki_userLogin/signup|يېڭى ھېسابات قۇرۇڭ]].',
+'nosuchwiki_usershort' => '"$1" ئاتلىق ئىشلەتكۈچى يوق.
 كىرگۈزگىنىڭىزنى تەكشۈرۈڭ.',
-'nouserspecified' => 'ئىشلەتكۈچى ئاتىدىن بىرنى بەلگىلەڭ.',
-'login-userblocked' => 'بۇ ئىشلەتكۈچى چەكلەنگەن. تىزىمغا كىرىشكە يول قويۇلمايدۇ.',
+'nowiki_userspecified' => 'ئىشلەتكۈچى ئاتىدىن بىرنى بەلگىلەڭ.',
+'login-wiki_userblocked' => 'بۇ ئىشلەتكۈچى چەكلەنگەن. تىزىمغا كىرىشكە يول قويۇلمايدۇ.',
 'wrongpassword' => 'كىرگۈزگەن ئىم خاتا.
 قايتا سىناڭ.',
 'wrongpasswordempty' => 'ئىم كىرگۈزمىدىڭىز
@@ -578,16 +578,16 @@ cookies نى قوزغاتقانلىقىڭىزنى جەزملەڭ، بۇ بەتن
 سىز تىزىمغا كىرىپ ئىم ئۆزگەرتىڭ.
 
 ئەگەر بۇ ھېسابات خاتا قۇرۇلغان بولسا بۇ ئۇچۇرغا پەرۋا قىلماڭ.',
-'usernamehasherror' => 'ئىشلەتكۈچى ئاتىدا مۇكەممەللىك كود ھەرپلىرى بولماسلىقى لازىم',
+'wiki_usernamehasherror' => 'ئىشلەتكۈچى ئاتىدا مۇكەممەللىك كود ھەرپلىرى بولماسلىقى لازىم',
 'login-throttled' => 'سىز بۇ ھېساباتنىڭ ئىمنى كۆپ قېتىم سىنىدىڭىز.
 سەل تەخىر قىلىپ، ئاندىن قايتا سىناڭ.',
 'login-abort-generic' => 'تىزىمغا كىرەلمىدىڭىز - چېكىندى',
 'loginlanguagelabel' => 'تىل: $1',
-'suspicious-userlogout' => 'تىزىمدىن چىقىش ئىلتىماسىڭىز رەت قىلىندى، چۈنكى ئۇ بەلكىم بۇزۇلغان توركۆرگۈ ياكى غەملەك ۋاكالەتچىسى يوللىغان بولۇشى مۇمكىن.',
+'suspicious-wiki_userlogout' => 'تىزىمدىن چىقىش ئىلتىماسىڭىز رەت قىلىندى، چۈنكى ئۇ بەلكىم بۇزۇلغان توركۆرگۈ ياكى غەملەك ۋاكالەتچىسى يوللىغان بولۇشى مۇمكىن.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'PHP نىڭ mail() فونكسىيەسىدىكى يوچۇن خاتالىق',
-'user-mail-no-addy' => 'ئېلخەت ئادرېسسىز خەت يوللاشنى سىنىدى.',
+'wiki_user-mail-no-addy' => 'ئېلخەت ئادرېسسىز خەت يوللاشنى سىنىدى.',
 
 # Change password dialog
 'resetpass' => 'ئىم ئۆزگەرت',
@@ -616,7 +616,7 @@ cookies نى قوزغاتقانلىقىڭىزنى جەزملەڭ، بۇ بەتن
 'passwordreset-legend' => 'ئىمنى ئەسلىگە قايتۇرماق',
 'passwordreset-disabled' => 'بۇ ۋىكىدا ئىمنى ئەسلىگە قايتۇرۇش چەكلەنگەن.',
 'passwordreset-pretext' => '{{PLURAL:$1||تۆۋەندىكى سانلىق مەلۇماتتىن بىرنى كىرگۈزۈڭ}}',
-'passwordreset-username' => 'ئىشلەتكۈچى ئاتى:',
+'passwordreset-wiki_username' => 'ئىشلەتكۈچى ئاتى:',
 'passwordreset-domain' => 'دائىرە:',
 'passwordreset-capture' => 'ھاسىل قىلىنغان ئېلخەتنى كۆرسىتەمدۇ؟',
 'passwordreset-capture-help' => 'ئەگەر بۇ رامكا تاللانسا، ئېلخەت (ۋاقىتلىق ئىمنى ئۆز ئىچىگە ئالىدۇ) كۆرسىتىپ ئىشلەتكۈچىگە يوللايدۇ.',
@@ -631,7 +631,7 @@ $2
 {{PLURAL:$3|بۇ ۋاقىتلىق ئىم|بۇ ۋاقىتلىق ئىم}} {{PLURAL:$5|بىر كۈن|$5 كۈن}}دە ۋاقتى ئۆتىدۇ. ئەگەر بۇ مەشغۇلاتنى سىز ئىلتىماس قىلغان بولسىڭىز، دەرھال تىزىمغا كىرىپ يېڭى ئىمدىن بىرنى تاللاڭ.
 سىز بەلگىلىگەن يېڭى ئىم  {{PLURAL:$5|كۈن|$5 كۈن}}دە ۋاقتى توشىدۇ. ئەگەر باشقىلار ئىلتىماس قىلغان بولسا ياكى ئۆزىڭىز بەلگىلىگەن ئىم ئېسىڭىزگە كېلىپ ئۇنى ئۆزگەرتمىسىڭىز، 
 بۇ ئۇچۇرغا پەرۋا قىلماي ئۆزىڭىزنىڭ كونا ئىمنى ئىشلىتىۋېرىڭ.',
-'passwordreset-emailtext-user' => '{{SITENAME}} دىكى $1 ئىشلەتكۈچى ھېسابات تەپسىلات ئەسكەرتىشىنى ئىلتىماس قىلدى .
+'passwordreset-emailtext-wiki_user' => '{{SITENAME}} دىكى $1 ئىشلەتكۈچى ھېسابات تەپسىلات ئەسكەرتىشىنى ئىلتىماس قىلدى .
 تۆۋەندىكى ئىشلەتكۈچىنىڭ {{PLURAL:$3|ھېسابات|ھېسابات}}($4)ى مۇشۇ ئېلخەتكە باغلانغان:
 
 $2
@@ -734,7 +734,7 @@ $2
 'loginreqlink' => 'تىزىمغا كىر',
 'loginreqpagetext' => '$1 بولغاندىلا ئاندىن باشقا بەتلەرنى كۆرەلەيسىز.',
 'accmailtitle' => 'ئىم يوللاندى.',
-'accmailtext' => "[[User talk:$1|$1]] ئىختىيارىي قۇرۇلغان ئىم  $2 غا يوللاندى.
+'accmailtext' => "[[wiki_user talk:$1|$1]] ئىختىيارىي قۇرۇلغان ئىم  $2 غا يوللاندى.
 
 يېڭى ھېساباتقا قۇرغان ئىمنى تىزىمغا كىرىپ''[[Special:ChangePassword|ئىم ئۆزگەرت]]'' بېتىدىن ئۆزگەرتەلەيسىز.",
 'newarticle' => '(يېڭى)',
@@ -743,7 +743,7 @@ $2
 'anontalkpagetext' => "----''بۇ تېخى ھېسابات قۇرمىغان ئاتسىز ئىشلەتكۈچىنىڭ مۇنازىرە بېتى ياكى ئۇنى ئىشلەتمەڭ..
 بىز ئۇنىڭ بىلەن پەقەت IP ئادرېسى بىلەنلا ئالاقە قىلالايمىز..
 بۇ خىل IP ئادرېسنى بىر قانچە ئىشلەتكۈچى ئىشلىتىشى ئورتاق ئىشلىتىشى مۇمكىن.
-ئەگەر سىز ئاتسىز ئىشلەتكۈچى بولسىڭىز ھەمدە بۇ بەتتىكى مۇنازىرە سىز بىلەن مۇناسىۋەتلىك بولسا،  [[Special:UserLogin/signup|ھېسابات قۇر]] ياكى [[Special:UserLogin|تىزىمغا كىر]]  ئارقىلىق كەلگۈسىدىكى باشقا ئاتسىز ئىشلەتكۈچى بىلەن ئارىلىشىپ كېتىشنىڭ ئالدىنى ئېلىڭ.''",
+ئەگەر سىز ئاتسىز ئىشلەتكۈچى بولسىڭىز ھەمدە بۇ بەتتىكى مۇنازىرە سىز بىلەن مۇناسىۋەتلىك بولسا،  [[Special:wiki_userLogin/signup|ھېسابات قۇر]] ياكى [[Special:wiki_userLogin|تىزىمغا كىر]]  ئارقىلىق كەلگۈسىدىكى باشقا ئاتسىز ئىشلەتكۈچى بىلەن ئارىلىشىپ كېتىشنىڭ ئالدىنى ئېلىڭ.''",
 'noarticletext' => 'بۇ بەتتە ھازىرچە مەزمۇن يوق.
  سىز باشقا بەتتە [[Special:Search/{{PAGENAME}}|بۇ بەتنىڭ ماۋزۇسىنى ئىزدىيەلەيسىز]] ياكى
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} مۇناسىۋەتلىك خاتىرىسىنى ئىزدىيەلەيسىز،],
@@ -754,9 +754,9 @@ $2
 
 ئادەتتە بۇ ئۆچۈرۈلگەن بىر بەتنىڭ ئۇلانمىسىغا كىرگەنلىك سەۋەبىدىن بولىدۇ.
 تەپسىلىي ئۇچۇرنى [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} ئۆچۈرۈش خاتىرىسى] دىن تاپقىلى بولىدۇ.',
-'userpage-userdoesnotexist' => '"<nowiki>$1</nowiki>" ئىشلەتكۈچى خەتلەتمىگەن.
+'wiki_userpage-wiki_userdoesnotexist' => '"<nowiki>$1</nowiki>" ئىشلەتكۈچى خەتلەتمىگەن.
 بۇ بەتنى قۇرۇش/تەھرىرلەشتىن ئىلگىرى تەكشۈرۈپ بېقىڭ.',
-'userpage-userdoesnotexist-view' => '"$1" ئىشلەتكۈچى ھېساباتى خەتلەتمىگەن.',
+'wiki_userpage-wiki_userdoesnotexist-view' => '"$1" ئىشلەتكۈچى ھېساباتى خەتلەتمىگەن.',
 'blocked-notice-logextract' => 'بۇ ئىشلەتكۈچى نۆۋەتتە چەكلەنگەن.
 پايدىلىنىش ئۈچۈن يېقىنقى چەكلەش خاتىرە تۈرلىرى تۆۋەندە تەمىنلەندى:',
 'clearyourcache' => "'''دىققەت''' - ساقلىغاندىن كېيىن، تور كۆرگۈنىڭ غەملىكىنى تازىلىغاندىن كېيىنلا ئاندىن ئېلىپ بارغان ئۆزگەرتىشنى كۆرەلەيسىز.
@@ -764,18 +764,18 @@ $2
 * '''Google Chrome:''' دا ''Ctrl-Shift-R'' (''⌘-Shift-R''  Mac)
 *'''Internet Explorer:''' دا ''Ctrl'' نى بېسىپ تۇرۇپ ''يېڭىلا,'' ياكى ''Ctrl-F5''؛
 * '''Opera:''' دا ''قورال → مايىللىقلار''؛ نى بېسىپ غەملەكنى تازىلاڭ.",
-'usercssyoucanpreview' => "ئەسكەرتىش:''' ساقلاشتىن ئىلگىرى  \"{{int:showpreview}}\" توپچىنى ئىشلىتىپ يېڭى CSS نى سىناڭ.",
-'userjsyoucanpreview' => "ئەسكەرتىش:''' ساقلاشتىن ئىلگىرى  \"{{int:showpreview}}\" توپچىنى ئىشلىتىپ يېڭى JS نى سىناڭ.",
-'usercsspreview' => "'''دىققەت سىز پەقەت ئۆزىڭىزنىڭ شەخسىي CSS نى ئالدىن كۆزىتىۋاتىسىز.'''
+'wiki_usercssyoucanpreview' => "ئەسكەرتىش:''' ساقلاشتىن ئىلگىرى  \"{{int:showpreview}}\" توپچىنى ئىشلىتىپ يېڭى CSS نى سىناڭ.",
+'wiki_userjsyoucanpreview' => "ئەسكەرتىش:''' ساقلاشتىن ئىلگىرى  \"{{int:showpreview}}\" توپچىنى ئىشلىتىپ يېڭى JS نى سىناڭ.",
+'wiki_usercsspreview' => "'''دىققەت سىز پەقەت ئۆزىڭىزنىڭ شەخسىي CSS نى ئالدىن كۆزىتىۋاتىسىز.'''
 '''ئۇ تېخى ساقلانمىدى!'''",
-'userjspreview' => "'''دىققەت سىز پەقەت ئۆزىڭىزنىڭ شەخسىي JavaScript نى ئالدىن كۆزىتىۋاتىسىز/سىناۋاتىسىز.'''
+'wiki_userjspreview' => "'''دىققەت سىز پەقەت ئۆزىڭىزنىڭ شەخسىي JavaScript نى ئالدىن كۆزىتىۋاتىسىز/سىناۋاتىسىز.'''
 '''ئۇ تېخى ساقلانمىدى!'''",
 'sitecsspreview' => "'''دىققەت سىز پەقەت بۇ CSS نى ئالدىن كۆزىتىۋاتىسىز.'''
 '''ئۇ تېخى ساقلانمىدى!'''",
 'sitejspreview' => "'''دىققەت سىز پەقەت بۇ JavaScript كودنى ئالدىن كۆزىتىۋاتىسىز.'''
 '''ئۇ تېخى ساقلانمىدى!'''",
-'userinvalidcssjstitle' => "'''ئاگاھلاندۇرۇش:''' تېرە\\\"\$1\" مەۋجۇد ئەمەس.
-ئادەتلەنگەن .css ۋە .js تور بەت ماۋزۇسىغا كىچىك يېزىلىشتىكى ھەرپ ئىشلىتىلىدۇ، مەسىلەن، {{ns:user}}:Foo/vector.css بىلەن {{ns:user}}:Foo/Vector.css ئوخشاش ئەمەس.",
+'wiki_userinvalidcssjstitle' => "'''ئاگاھلاندۇرۇش:''' تېرە\\\"\$1\" مەۋجۇد ئەمەس.
+ئادەتلەنگەن .css ۋە .js تور بەت ماۋزۇسىغا كىچىك يېزىلىشتىكى ھەرپ ئىشلىتىلىدۇ، مەسىلەن، {{ns:wiki_user}}:Foo/vector.css بىلەن {{ns:wiki_user}}:Foo/Vector.css ئوخشاش ئەمەس.",
 'updated' => '(يېڭىلاندى)',
 'note' => "'''ئىزاھات:'''",
 'previewnote' => "'''ئېسىڭىزدە بولسۇنكى بۇ پەقەتلا ئالدىن كۆزىتىش.'''
@@ -784,13 +784,13 @@ $2
 'previewconflict' => 'بۇ ئالدىن كۆزىتىشتە ئۈستىدىكى تېكست تەھرىرلەش رايونىدىكى مەزمۇننى كۆرسەتتى. ئۇ ساقلانى تاللىغاندىن كېيىن كۆرۈنىدۇ.',
 'session_fail_preview' => "'''كەچۈرۈڭ! سىزنىڭ جەريان سانلىق مەلۇماتىڭىز يوقاپ كەتكەندە ئېلىپ بارغان تەھرىرىڭىزنى بىر تەرەپ قىلالمايمىز.'''
 قايتا سىناڭ.
-ئەگەر يەنىلا مەغلۇپ بولسا، [[Special:UserLogout|تىزىمدىن چىق]]قاندىن كېيىن قايتا تىزىمغا كىرىڭ.",
+ئەگەر يەنىلا مەغلۇپ بولسا، [[Special:wiki_userLogout|تىزىمدىن چىق]]قاندىن كېيىن قايتا تىزىمغا كىرىڭ.",
 'session_fail_preview_html' => "'''كەچۈرۈڭ! سىزنىڭ جەريان سانلىق مەلۇماتىڭىز يوقاپ كەتكەندە ئېلىپ بارغان تەھرىرىڭىزنى بىر تەرەپ قىلالمايمىز.'''
 
 ''چۈنكى {{SITENAME}} بېكىتى ئەسلى HTML ئىشلىتىشكە يول قويىدۇ،   JavaScript ھۇجۇمىنىڭ ئالدىنى ئېلىش ئۈچۈن، ئالدىن كۆزىتىش يوشۇرۇلدى.''
 
 '''ئەگەر بۇ قانۇنلۇق تەھرىرلەش بولسا قايتا سىناڭ'''
-ئەگەر ئۇنداق بولمىسا [[Special:UserLogout|تىزىمدىن چىق]]ىپ قايتا تىزىمغا كىرىڭ.",
+ئەگەر ئۇنداق بولمىسا [[Special:wiki_userLogout|تىزىمدىن چىق]]ىپ قايتا تىزىمغا كىرىڭ.",
 'token_suffix_mismatch' => "'''سىزنىڭ ئىشلەتكۈچى تەرەپتىكى تەھرىر بۇيرۇقى بىر قىسىم تىنىش بەلگىلىرىنى بۇزۇۋەتتى، '''
 بەتتىكى تەھرىرلەۋاتقان تېكستنىڭ بۇزۇلۇشىنىڭ ئالدىنى ئېلىش ئۈچۈن تەھرىرىڭىز رەت قىلىندى.
 بۇ خىل ئەھۋال ئادەتتە نۇرغۇن خاتالىق بار تورنى ئاساس قىلغان ئاتسىز ۋاكالەتچىنى ئىشلەتكەندە كۆرۈلىدۇ.",
@@ -842,7 +842,7 @@ $2
 'edittools-upload' => '-',
 'nocreatetitle' => 'بەت قۇرۇش چەكلىمىسى',
 'nocreatetext' => '{{SITENAME}} يېڭى بەت قۇرۇش ئىقتىدارىنى چەكلىگەن.
-كەينىگە قايتىپ مەۋجۇد بەتنى تەھرىرلىيەلەيسىز ياكى [[Special:UserLogin|تىزىمغا كىر ياكى يېڭى بىر ھېسابات قۇر]]الايسىز.',
+كەينىگە قايتىپ مەۋجۇد بەتنى تەھرىرلىيەلەيسىز ياكى [[Special:wiki_userLogin|تىزىمغا كىر ياكى يېڭى بىر ھېسابات قۇر]]الايسىز.',
 'nocreate-loggedin' => 'يېڭى بەت قۇرۇش ھوقۇقىڭىز يوق.',
 'sectioneditnotsupported-title' => 'ئابزاس تەھرىرلەشنى قوللىمايدۇ',
 'sectioneditnotsupported-text' => 'بۇ بەت ئابزاس تەھرىرلەشنى قوللىمايدۇ.',
@@ -893,11 +893,11 @@ $2
 تۆۋەندىكى سېلىشتۇرۇشنى تەكشۈرۈپ بۇنىڭ ئۆزىڭىزنىڭ ئويى ئىكەنلىكىنى دەلىللەڭ، ئاندىن تۆۋەندىكى ئۆزگەرتىشنى ساقلاپ تەھرىرلەشتىن يېنىۋىلىڭ.',
 'undo-failure' => 'ئوتتۇرىلىقتا بىردەك بولماسلىق سەۋەبىدىن بۇ تەھرىردىن يېنىۋالغىلى بولمايدۇ.',
 'undo-norev' => 'تۈزىتىلگەن نەشرى مەۋجۇد ئەمەس ياكى ئۆچۈرۈلگەنلىكتىن، بۇ تەھرىردىن يېنىۋالغىلى بولمايدۇ.',
-'undo-summary' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|مۇنازىرە]]) ئېلىپ بارغان تۈزىتىش $1',
+'undo-summary' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|مۇنازىرە]]) ئېلىپ بارغان تۈزىتىش $1',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'ھېسابات قۇرالمىدى',
-'cantcreateaccount-text' => "بۇ IP ئادرېستىن قۇرۇلغان ('''$1''')  ھېسابات [[User:$3|$3]] تەرىپىدىن چەكلەنگەن.
+'cantcreateaccount-text' => "بۇ IP ئادرېستىن قۇرۇلغان ('''$1''')  ھېسابات [[wiki_user:$3|$3]] تەرىپىدىن چەكلەنگەن.
 
 $3 تەمىنلىگەن چەكلەش سەۋەبى ''$2''",
 
@@ -937,9 +937,9 @@ $3 تەمىنلىگەن چەكلەش سەۋەبى ''$2''",
 
 # Revision deletion
 'rev-deleted-comment' => '(تەھرىرلەش ئۈزۈندىسى چىقىرىۋېتىلدى)',
-'rev-deleted-user' => '(ئىشلەتكۈچى ئاتى چىقىرىۋېتىلدى)',
+'rev-deleted-wiki_user' => '(ئىشلەتكۈچى ئاتى چىقىرىۋېتىلدى)',
 'rev-deleted-event' => '(خاتىرە مەشغۇلاتى چىقىرىۋېتىلدى)',
-'rev-deleted-user-contribs' => '[ئىشلەتكۈچى ئاتى ياكى IP ئادرېس چىقىرىۋېتىلدى - تۆھپىدىن تەھرىرنى يوشۇر]',
+'rev-deleted-wiki_user-contribs' => '[ئىشلەتكۈچى ئاتى ياكى IP ئادرېس چىقىرىۋېتىلدى - تۆھپىدىن تەھرىرنى يوشۇر]',
 'rev-deleted-text-permission' => "'''ئاگاھلاندۇرۇش: بۇ بەتنىڭ تۈزىتىلگەن نەشرى'''ئۆچۈرۈلگەن'''
 [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} ئۆچۈرۈش خاتىرىسى]دىن تەپسىلىي ئۇچۇرنى تاپقىلى بولىدۇ.",
 'rev-deleted-text-unhide' => "بۇ بەتنىڭ تۈزىتىلگەن نەشرى '''ئۆچۈرۈلگەن'''.
@@ -989,7 +989,7 @@ $3 تەمىنلىگەن چەكلەش سەۋەبى ''$2''",
 'revdelete-hide-image' => 'ھۆججەت مەزمۇنىنى يوشۇر',
 'revdelete-hide-name' => 'مەشغۇلات ۋە نىشاننى يوشۇر',
 'revdelete-hide-comment' => 'تەھرىر ئىزاھاتىنى يوشۇر',
-'revdelete-hide-user' => 'تەھرىرلىگۈچىنىڭ ئىشلەتكۈچى ئاتى/IP ئادرېس يوشۇر',
+'revdelete-hide-wiki_user' => 'تەھرىرلىگۈچىنىڭ ئىشلەتكۈچى ئاتى/IP ئادرېس يوشۇر',
 'revdelete-hide-restricted' => 'مەشغۇلاتچى ۋە باشقا ئىشلەتكۈچىنىڭ سانلىق مەلۇمات كۆرۈشىنىمۇ چەكلە',
 'revdelete-radio-same' => '(ئۆزگەرتمە)',
 'revdelete-radio-set' => 'ھەئە',
@@ -1075,7 +1075,7 @@ $1",
 'showhideselectedversions' => 'تاللانغان تۈزىتىلگەن نەشرىنى كۆرسەت/يوشۇر',
 'editundo' => 'يېنىۋال',
 'diff-multi' => '({{PLURAL:$2|ئىشلەتكۈچى|$2 ئىشلەتكۈچى}} نىڭ{{PLURAL:$1|تۈزىتىلگەن نەشرى|$1 تۈزىتىلگەن نەشرى}} كۆرسىتىلمىدى)',
-'diff-multi-manyusers' => '( $2  دىن كۆپ{{PLURAL:$2|ئىشلەتكۈچى|ئىشلەتكۈچى}} نىڭ {{PLURAL:$1|تۈزىتىلگەن نەشرى|$1 تۈزىتىلگەن نەشرى}}  كۆرسىتىلمىدى)',
+'diff-multi-manywiki_users' => '( $2  دىن كۆپ{{PLURAL:$2|ئىشلەتكۈچى|ئىشلەتكۈچى}} نىڭ {{PLURAL:$1|تۈزىتىلگەن نەشرى|$1 تۈزىتىلگەن نەشرى}}  كۆرسىتىلمىدى)',
 'difference-missing-revision' => '{{PLURAL:$2|نەشر|$2 نەشىر لەر}} نىڭ ($1) پەرق سېلىشتۇرما {{PLURAL:$2}} تېپىلمىدى.
 
 ئادەتتە بۇ ئۆچۈرۈلگەن بەتنىڭ ئۇلانمىسىغا كىرگەنلىك سەۋەبىدىن بولىدۇ.
@@ -1159,7 +1159,7 @@ $1",
 'mypreferences' => 'مايىللىق',
 'prefs-edits' => 'تەھرىر سانى:',
 'prefsnologin' => 'تىزىمغا كىرمىدى',
-'prefsnologintext' => 'سىز ئالدى بىلەن <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} تىزىمغا كىر]</span>سىڭىز ئاندىن ئىشلەتكۈچى مايىللىقنى تەڭشىيەلەيسىز.',
+'prefsnologintext' => 'سىز ئالدى بىلەن <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} تىزىمغا كىر]</span>سىڭىز ئاندىن ئىشلەتكۈچى مايىللىقنى تەڭشىيەلەيسىز.',
 'changepassword' => 'ئىم ئۆزگەرت',
 'prefs-skin' => 'تېرە',
 'skin-preview' => 'ئالدىن كۆزەت',
@@ -1167,7 +1167,7 @@ $1",
 'prefs-beta' => 'سىناق ئىقتىدارلىرى',
 'prefs-datetime' => 'چېسلا ۋە ۋاقىت',
 'prefs-labs' => 'تەجرىبە ئىقتىدارلىرى',
-'prefs-user-pages' => 'ئىشلەتكۈچى بېتى',
+'prefs-wiki_user-pages' => 'ئىشلەتكۈچى بېتى',
 'prefs-personal' => 'ئىشلەتكۈچى سەپلىمە ھۆججىتى',
 'prefs-rc' => 'ئاخىرقى ئۆزگەرتىشلەر',
 'prefs-watchlist' => 'كۆزەت تىزىملىكى',
@@ -1232,7 +1232,7 @@ $1",
 'prefs-emailconfirm-label' => 'ئېلخەت جەزملەش:',
 'prefs-textboxsize' => 'تەھرىر كۆزنەك چوڭلۇقى',
 'youremail' => 'ئېلخەت:',
-'username' => 'ئىشلەتكۇچى ئىسمى:',
+'wiki_username' => 'ئىشلەتكۇچى ئىسمى:',
 'uid' => 'ئىشلەتكۈچى كىملىك:',
 'prefs-memberingroups' => '{{PLURAL:$1|بىر|كۆپ}} گۇرۇپپا ئەزاسى:',
 'prefs-memberingroups-type' => '$1',
@@ -1279,36 +1279,36 @@ HTML بەلگىسىنى تەكشۈرۈڭ.',
 'prefs-displaywatchlist' => 'كۆرسىتىش تاللانما',
 'prefs-diffs' => 'پەرقلەر',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'ئېلخەت ئادرېسى ئىناۋەتلىك',
 'email-address-validity-invalid' => 'ئىناۋەتلىك ئېلخەت ئادرېسىدىن بىرنى كىرگۈزۈڭ',
 
-# User rights
-'userrights' => 'ئىشلەتكۈچى ھوقۇقى باشقۇرۇش',
-'userrights-lookup-user' => 'ئىشلەتكۈچى گۇرۇپپىسى باشقۇرۇش',
-'userrights-user-editname' => 'ئىشلەتكۈچى ئاتى كىرگۈزۈڭ:',
-'editusergroup' => 'ئىشلەتكۈچى گۇرۇپپىسى تەھرىر',
-'editinguser' => "ئىشلەتكۈچى '''[[User:$1|$1]]''' $2 نىڭ ھوقۇقىنى ئۆزگەرتىۋاتىدۇ",
-'userrights-editusergroup' => 'ئىشلەتكۈچى گۇرۇپپىسى تەھرىر',
-'saveusergroups' => 'ئىشلەتكۈچى گۇرۇپپىسى ساقلا',
-'userrights-groupsmember' => 'ئەزاسى:',
-'userrights-groupsmember-auto' => 'مۇقىم ئەزاسى:',
-'userrights-groups-help' => 'سىز بۇ ئىشلەتكۈچى تەۋە گۇرۇپپىنى ئۆزگەرتەلەيسىز:\\n
+# wiki_user rights
+'wiki_userrights' => 'ئىشلەتكۈچى ھوقۇقى باشقۇرۇش',
+'wiki_userrights-lookup-wiki_user' => 'ئىشلەتكۈچى گۇرۇپپىسى باشقۇرۇش',
+'wiki_userrights-wiki_user-editname' => 'ئىشلەتكۈچى ئاتى كىرگۈزۈڭ:',
+'editwiki_usergroup' => 'ئىشلەتكۈچى گۇرۇپپىسى تەھرىر',
+'editingwiki_user' => "ئىشلەتكۈچى '''[[wiki_user:$1|$1]]''' $2 نىڭ ھوقۇقىنى ئۆزگەرتىۋاتىدۇ",
+'wiki_userrights-editwiki_usergroup' => 'ئىشلەتكۈچى گۇرۇپپىسى تەھرىر',
+'savewiki_usergroups' => 'ئىشلەتكۈچى گۇرۇپپىسى ساقلا',
+'wiki_userrights-groupsmember' => 'ئەزاسى:',
+'wiki_userrights-groupsmember-auto' => 'مۇقىم ئەزاسى:',
+'wiki_userrights-groups-help' => 'سىز بۇ ئىشلەتكۈچى تەۋە گۇرۇپپىنى ئۆزگەرتەلەيسىز:\\n
 * تاللاش رامكىسى تاللاغلىق بولسا ئىشلەتكۈچى شۇ  گۇرۇپپىغا تەۋە:
 * تاللاش رامكىسى تاللاغلىق بولمىسا ئىشلەتكۈچى شۇ  گۇرۇپپىغا تەۋە ئەمەس.
 * يۇلتۇز * بەلگىسى قويۇلغان گۇرۇپپىغا ئەزە بولغاندىن كېيىن چىقىرىۋەتكىلى بولمايدۇ، ئەكسىچە بولسا بولىدۇ.',
-'userrights-reason' => 'سەۋەب:',
-'userrights-no-interwiki' => 'باشقا wiki دىكى ئىشلەتكۈچىلەرنىڭ ھوقۇقىنى ئۆزگەرتىش ھوقۇقىڭىز يوق.',
-'userrights-nodatabase' => '$1 ساندان مەۋجۇد ئەمەس ياكى يەرلىك ئوروندا ئەمەس.',
-'userrights-nologin' => 'سىز چوقۇم باشقۇرغۇچى سۈپىتىدە [[Special:UserLogin|تىزىمغا كىر]]ىپ ئاندىن ئىشلەتكۈچى ھوقۇقىنى بەلگىلىيەلەيسىز.',
-'userrights-notallowed' => 'ھېساباتىڭىزنىڭ ئىشلەتكۈچى ھوقۇقىنى قوشۇش ياكى ئۆزگەرتىش ھوقۇقى يوق.',
-'userrights-changeable-col' => 'سىز ئۆزگەرتەلەيدىغان گۇرۇپپا',
-'userrights-unchangeable-col' => 'سىز ئۆزگەرتەلمەيدىغان گۇرۇپپا',
-'userrights-irreversible-marker' => '$1*',
+'wiki_userrights-reason' => 'سەۋەب:',
+'wiki_userrights-no-interwiki' => 'باشقا wiki دىكى ئىشلەتكۈچىلەرنىڭ ھوقۇقىنى ئۆزگەرتىش ھوقۇقىڭىز يوق.',
+'wiki_userrights-nodatabase' => '$1 ساندان مەۋجۇد ئەمەس ياكى يەرلىك ئوروندا ئەمەس.',
+'wiki_userrights-nologin' => 'سىز چوقۇم باشقۇرغۇچى سۈپىتىدە [[Special:wiki_userLogin|تىزىمغا كىر]]ىپ ئاندىن ئىشلەتكۈچى ھوقۇقىنى بەلگىلىيەلەيسىز.',
+'wiki_userrights-notallowed' => 'ھېساباتىڭىزنىڭ ئىشلەتكۈچى ھوقۇقىنى قوشۇش ياكى ئۆزگەرتىش ھوقۇقى يوق.',
+'wiki_userrights-changeable-col' => 'سىز ئۆزگەرتەلەيدىغان گۇرۇپپا',
+'wiki_userrights-unchangeable-col' => 'سىز ئۆزگەرتەلمەيدىغان گۇرۇپپا',
+'wiki_userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'گۇرۇپپا:',
-'group-user' => 'ئىشلەتكۈچىلەر',
+'group-wiki_user' => 'ئىشلەتكۈچىلەر',
 'group-autoconfirmed' => 'ئۆزلۈكىدىن جەزملەنگەن ئىشلەتكۈچىلەر',
 'group-bot' => 'ماشىنا ئادەملەر',
 'group-sysop' => 'باشقۇرغۇچى',
@@ -1316,14 +1316,14 @@ HTML بەلگىسىنى تەكشۈرۈڭ.',
 'group-suppress' => 'نازارەتچىلەر',
 'group-all' => '(ھەممىسى)',
 
-'group-user-member' => '{{GENDER:$1|ئىشلەتكۈچى}}',
+'group-wiki_user-member' => '{{GENDER:$1|ئىشلەتكۈچى}}',
 'group-autoconfirmed-member' => 'ئۆزلۈكىدىن جەزملەنگەن ئىشلەتكۈچى',
 'group-bot-member' => '{{GENDER:$1|ماشىنا ئادەم}}',
 'group-sysop-member' => '{{GENDER:$1|باشقۇرغۇچى}}',
 'group-bureaucrat-member' => '{{GENDER:$1|بيۇرۇكرات}}',
 'group-suppress-member' => '{{GENDER:$1|نازارەتچى}}',
 
-'grouppage-user' => '{{ns:project}}: ئىشلەتكۈچىلەر',
+'grouppage-wiki_user' => '{{ns:project}}: ئىشلەتكۈچىلەر',
 'grouppage-autoconfirmed' => '{{ns:project}}:ئۆزلۈكىدىن جەزملەنگەن ئىشلەتكۈچىلەر',
 'grouppage-bot' => '{{ns:project}}:ماشىنا ئادەملەر',
 'grouppage-sysop' => '{{ns:project}}:باشقۇرغۇچى',
@@ -1339,7 +1339,7 @@ HTML بەلگىسىنى تەكشۈرۈڭ.',
 'right-minoredit' => 'ئازراقلا تەھرىر بەلگىسى قوي',
 'right-move' => 'بەت يۆتكە',
 'right-move-subpages' => 'بەتنى تاماق بەتلىرى بىلەن قوشۇپ يۆتكە',
-'right-move-rootuserpages' => 'غول ئىشلەتكۈچى بېتىنى يۆەتكە',
+'right-move-rootwiki_userpages' => 'غول ئىشلەتكۈچى بېتىنى يۆەتكە',
 'right-movefile' => 'ھۆججەت يۆتكە',
 'right-suppressredirect' => 'ھۆججەت يۈتكىگەندە مەنبە بەتنىڭ قايتا نىشان بەلگىلىنىشىنى قۇرما.',
 'right-upload' => 'ھۆججەتلەرنى يۈكلە',
@@ -1365,16 +1365,16 @@ HTML بەلگىسىنى تەكشۈرۈڭ.',
 'right-suppressionlog' => 'شەخسىي خاتىرىنى كۆرسەت',
 'right-block' => 'باشقا ئىشلەتكۈچى تەھرىرلەشنى چەكلە',
 'right-blockemail' => 'ئىشلەتكۈچى ئېلخەت يوللاشنى چەكلە',
-'right-hideuser' => 'ئىشلەتكۈچى ئاتىنى چەكلە، كۆپچىلىككە نىسبەتەن يوشۇر',
+'right-hidewiki_user' => 'ئىشلەتكۈچى ئاتىنى چەكلە، كۆپچىلىككە نىسبەتەن يوشۇر',
 'right-ipblock-exempt' => 'IP چەكلەش، ئاپتوماتىك چەكلەش ۋە دائىرە چەكلەشتىن ئايلىنىپ ئۆت',
 'right-proxyunbannable' => 'ۋاكالەتچىنى ئاپتوماتىك چەكلەشتىن ئايلىنىپ ئۆت',
 'right-unblockself' => 'چەكلەشنى بىكار قىل',
 'right-protect' => 'قوغداش دەرىجىسىنى ئۆزگەرتىپ، قوغدالغان بەتنى تەھرىرلە',
 'right-editprotected' => 'قوغدالغان بەتنى تەھرىرلە (زەنجىرسىمان قۇلۇپلانمىغان)',
 'right-editinterface' => 'ئىشلەتكۈچى كۆرۈنمە يۈزىنى تەھرىرلە',
-'right-editusercssjs' => 'باشقا ئىشلەتكۈچىنىڭ CSS ۋە JS ھۆججىتىنى تەھرىرلە',
-'right-editusercss' => 'باشقا ئىشلەتكۈچىنىڭ CSS ھۆججىتىنى تەھرىرلە',
-'right-edituserjs' => 'باشقا ئىشلەتكۈچىنىڭ  JS ھۆججىتىنى تەھرىرلە',
+'right-editwiki_usercssjs' => 'باشقا ئىشلەتكۈچىنىڭ CSS ۋە JS ھۆججىتىنى تەھرىرلە',
+'right-editwiki_usercss' => 'باشقا ئىشلەتكۈچىنىڭ CSS ھۆججىتىنى تەھرىرلە',
+'right-editwiki_userjs' => 'باشقا ئىشلەتكۈچىنىڭ  JS ھۆججىتىنى تەھرىرلە',
 'right-rollback' => 'ئاخىرقى ئىشلەتكۈچىنىڭ مەلۇم بەتكە ئېلىپ بارغان تەھرىرىنى تېزلىكتە ئەسلىگە كەلتۈر',
 'right-markbotedits' => 'ئەسلىگە كەلتۈرۈلگەن تەھرىرنى ماشىنا ئادەم تەھرىرى دەپ بەلگە قوي',
 'right-noratelimit' => 'چاستوتا چەكلىمىسى ئىشلىتىلمىدى',
@@ -1385,14 +1385,14 @@ HTML بەلگىسىنى تەكشۈرۈڭ.',
 'right-patrolmarks' => 'يېقىنقى نازارەت بەلگىسىنىڭ ئۆزگۈرۈشىنى كۆرسەت',
 'right-unwatchedpages' => 'كۆزىتىلمىگەن بەت تىزىملىكىنى كۆرسەت',
 'right-mergehistory' => 'بەت تارىخىنى بىرلەشتۈر',
-'right-userrights' => 'ھەممە ئىشلەتكۈچىنىڭ ھوقۇقىنى تەھرىرلە',
-'right-userrights-interwiki' => 'باشقا wiki دىكى ئىشلەتكۈچى ھوقۇقىنى تەھرىرلە',
+'right-wiki_userrights' => 'ھەممە ئىشلەتكۈچىنىڭ ھوقۇقىنى تەھرىرلە',
+'right-wiki_userrights-interwiki' => 'باشقا wiki دىكى ئىشلەتكۈچى ھوقۇقىنى تەھرىرلە',
 'right-siteadmin' => 'ساندان قۇلۇپلا ۋە قۇلۇپ ئاچ',
 'right-override-export-depth' => 'بەت قەۋەتلىك ئۇلىنىشى بار بەتنى چىقار',
 'right-sendemail' => 'باشقا ئىشلەتكۈچىگە ئېلخەت يوللا',
 'right-passwordreset' => 'پارول ئەسلىگە قايتۇرۇش ئېلخەت ئادرېس كۆرۈش.',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'ئىشلەتكۈچى ھوقۇق خاتىرىسى',
 'rightslogtext' => 'ئىشلەتكۈچى ھوقۇق خاتىرىسى',
 'rightslogentry' => 'گۇرۇپپا ئەزاسى $1  نىڭ ھوقۇقىنى $2 دىن $3 غا ئۆزگەرت',
@@ -1408,7 +1408,7 @@ HTML بەلگىسىنى تەكشۈرۈڭ.',
 'action-minoredit' => 'بۇنىڭغا ئازراقلا تەھرىر بەلگىسى قوي',
 'action-move' => 'بۇ بەتنى يۆتكە',
 'action-move-subpages' => 'بۇ بەتنىڭ تارماق بەتلىرىنى قوشۇپ يۆتكە',
-'action-move-rootuserpages' => 'غول ئىشلەتكۈچى بېتىنى يۆتكە',
+'action-move-rootwiki_userpages' => 'غول ئىشلەتكۈچى بېتىنى يۆتكە',
 'action-movefile' => 'بۇ ھۆججەتنى يۆتكە',
 'action-upload' => 'بۇ ھۆججەتنى يۈكلە',
 'action-reupload' => 'مەۋجۇد ھۆججەتنى قاپلا',
@@ -1431,8 +1431,8 @@ HTML بەلگىسىنى تەكشۈرۈڭ.',
 'action-autopatrol' => 'ئۆزەمنىڭ تەھرىرىگە چارلاش بەلگىسى قوي',
 'action-unwatchedpages' => 'كۆزىتىلمىگەن بەت تىزىملىكىنى كۆرسەت',
 'action-mergehistory' => 'بۇ بەتنىڭ تارىخىنى بىرلەشتۈر',
-'action-userrights' => 'ھەممە ئىشلەتكۈچىنىڭ ھوقۇقىنى تەھرىرلە',
-'action-userrights-interwiki' => 'باشقا wiki دىكى ئىشلەتكۈچى ھوقۇقىنى تەھرىرلە',
+'action-wiki_userrights' => 'ھەممە ئىشلەتكۈچىنىڭ ھوقۇقىنى تەھرىرلە',
+'action-wiki_userrights-interwiki' => 'باشقا wiki دىكى ئىشلەتكۈچى ھوقۇقىنى تەھرىرلە',
 'action-siteadmin' => 'ساندان قۇلۇپلا ۋە قۇلۇپ ئاچ',
 'action-sendemail' => 'ئېلخەت يوللا',
 
@@ -1464,7 +1464,7 @@ HTML بەلگىسىنى تەكشۈرۈڭ.',
 'newpageletter' => 'يېڭى',
 'boteditletter' => 'ماشىنا ئادەم',
 'unpatrolledletter' => '!',
-'number_of_watching_users_pageview' => '[$1  {{PLURAL:$1|ئىشلەتكۈچى|ئىشلەتكۈچى}}كۆزىتىۋاتىدۇ]',
+'number_of_watching_wiki_users_pageview' => '[$1  {{PLURAL:$1|ئىشلەتكۈچى|ئىشلەتكۈچى}}كۆزىتىۋاتىدۇ]',
 'rc_categories' => 'تۈر چېگرىسى ("|" بىلەن ئايرىلىدۇ )',
 'rc_categories_any' => 'خالىغان',
 'rc-change-size' => '$1',
@@ -1491,7 +1491,7 @@ HTML بەلگىسىنى تەكشۈرۈڭ.',
 'reuploaddesc' => 'يۈكلەشتىن ۋاز كېچىپ، يۈكلەش كۆزنىكىگە قايت',
 'upload-tryagain' => 'ئۆزگەرتىلگەن ھۆججەت چۈشەندۈرۈشى يوللا',
 'uploadnologin' => 'تىزىمغا كىرمىدى',
-'uploadnologintext' => ' سىز [[Special:UserLogin|تىزىمغا كىر]]سىڭىز ئاندىن ھۆججەت يوللىيالايسىز.',
+'uploadnologintext' => ' سىز [[Special:wiki_userLogin|تىزىمغا كىر]]سىڭىز ئاندىن ھۆججەت يوللىيالايسىز.',
 'upload_directory_missing' => 'يۈكلەش مۇندەرىجىسى ($1) يوقالغان، تور بەت مۇلازىمىتىرى قۇرالمايدۇ.',
 'upload_directory_read_only' => 'تور مۇلازىمىتىرىنىڭ يۈكلەش مۇندەرىجىسى ($1) گە يېزىش  ھوقۇقى يوق.',
 'uploaderror' => 'يۈكلەش خاتالىقى',
@@ -1616,11 +1616,11 @@ $1',
 'upload-proto-error-text' => 'يىراقتىن يۈكلەيدىغان  URL <code>http://</code> ياكى <code>ftp://</code> دىن باشلىنىدۇ.',
 'upload-file-error' => 'ئىچكى خاتالىق',
 'upload-file-error-text' => 'مۇلازىمىتىردا ۋاقىتلىق ھۆججەت قۇرۇۋاتقاندا ئىچكى خاتالىق يۈز بەردى.
- [[Special:ListUsers/sysop|باشقۇرغۇچى]] بىلەن ئالاقىلىشىڭ.',
+ [[Special:Listwiki_users/sysop|باشقۇرغۇچى]] بىلەن ئالاقىلىشىڭ.',
 'upload-misc-error' => 'نامەلۇم يۈكلەش خاتالىقى',
 'upload-misc-error-text' => 'يۈكلىگەندە نامەلۇم خاتالىق يۈز بەردى.
 سىز ئىشلەتكەن URL نىڭ توغرا ھەمدە زىيارەت قىلغىلى بولىدىغانلىقىنى جەزملەپ ئاندىن قايتا سىناڭ.
-ئەگەر مەسىلە يەنىلا مەۋجۇد بولسا [[Special:ListUsers/sysop|باشقۇرغۇچى]] بىلەن ئالاقىلىشىڭ.',
+ئەگەر مەسىلە يەنىلا مەۋجۇد بولسا [[Special:Listwiki_users/sysop|باشقۇرغۇچى]] بىلەن ئالاقىلىشىڭ.',
 'upload-too-many-redirects' => 'URL دا بەك كۆپ قايتا نىشانلاش مەۋجۇد',
 'upload-unknown-size' => 'نامەلۇم چوڭلۇق',
 'upload-http-error' => 'بىر HTTP خاتالىقى مەۋجۇد: $1',
@@ -1740,7 +1740,7 @@ URL نىڭ توغرىلىقى ۋە تور بېكەتنى زىيارەت قىلى
 'listfiles_thumb' => 'كىچىك سۈرەت',
 'listfiles_date' => 'چېسلا',
 'listfiles_name' => 'ئاتى',
-'listfiles_user' => 'ئىشلەتكۈچى',
+'listfiles_wiki_user' => 'ئىشلەتكۈچى',
 'listfiles_size' => 'چوڭلۇقى',
 'listfiles_description' => 'چۈشەندۈرۈش',
 'listfiles_count' => 'نەشرى',
@@ -1757,7 +1757,7 @@ URL نىڭ توغرىلىقى ۋە تور بېكەتنى زىيارەت قىلى
 'filehist-thumb' => 'كىچىك سۈرەت',
 'filehist-thumbtext' => '$1 نىڭ كىچىك سۈرەت نەشرى',
 'filehist-nothumb' => 'كىچىك سۈرەت يوق',
-'filehist-user' => 'ئىشلەتكۈچى',
+'filehist-wiki_user' => 'ئىشلەتكۈچى',
 'filehist-dimensions' => 'ئۆلچەم',
 'filehist-filesize' => 'ھۆججەت چوڭلۇقى',
 'filehist-comment' => 'ئىزاھات',
@@ -1850,7 +1850,7 @@ URL نىڭ توغرىلىقى ۋە تور بېكەتنى زىيارەت قىلى
 'statistics-header-pages' => 'بەت ستاتىستىكا',
 'statistics-header-edits' => 'تەھرىر ستاتىستىكا',
 'statistics-header-views' => 'كۆرۈش ستاتىستىكا',
-'statistics-header-users' => 'ئىشلەتكۈچى ستاتىستىكا',
+'statistics-header-wiki_users' => 'ئىشلەتكۈچى ستاتىستىكا',
 'statistics-header-hooks' => 'باشقا سىتاتىستىكا',
 'statistics-articles' => 'مەزمۇن بېتى',
 'statistics-pages' => 'بەتلەر',
@@ -1861,9 +1861,9 @@ URL نىڭ توغرىلىقى ۋە تور بېكەتنى زىيارەت قىلى
 'statistics-views-total' => 'كۆرسىتىش ئومۇمى سانى',
 'statistics-views-total-desc' => 'مەۋجۇت بولمىغان بەت ۋە ئالاھىدە بەتلەرنىڭ كۆرۈلۈش سانىنى ئۆز ئىچىگە ئالمايدۇ',
 'statistics-views-peredit' => 'ھەر قېتىملىق تەھرىرنى كۆرسىتىش سانى',
-'statistics-users' => 'خەتلەتكەن [[Special:ListUsers|ئىشلەتكۈچى]]',
-'statistics-users-active' => 'ئاكتىپ ئىشلەتكۈچى',
-'statistics-users-active-desc' => 'ئالدىنقى {{PLURAL:$1|كۈن|$1 كۈن}} دىكى مەشغۇلات قىلغان ئىشلەتكۈچىلەر',
+'statistics-wiki_users' => 'خەتلەتكەن [[Special:Listwiki_users|ئىشلەتكۈچى]]',
+'statistics-wiki_users-active' => 'ئاكتىپ ئىشلەتكۈچى',
+'statistics-wiki_users-active-desc' => 'ئالدىنقى {{PLURAL:$1|كۈن|$1 كۈن}} دىكى مەشغۇلات قىلغان ئىشلەتكۈچىلەر',
 'statistics-mostpopular' => 'ئەڭ كۆپ كۆرۈلگەن بەتلەر',
 
 'disambiguations' => 'ئىككى بىسلىق بەتكە ئۇلانغلىكبەتلەر.',
@@ -1940,13 +1940,13 @@ URL نىڭ توغرىلىقى ۋە تور بېكەتنى زىيارەت قىلى
 'protectedtitles' => 'قوغدالغان ماۋزۇلار',
 'protectedtitlestext' => 'تۆۋەندىكى بەتلەر قۇرۇشتىن ساقلىنىش ئۈچۈن قوغدالغان',
 'protectedtitlesempty' => 'بۇ پارامېتىرلاردا قوغدالغان ماۋزۇ يوق',
-'listusers' => 'ئىشلەتكۈچى تىزىملىكى',
-'listusers-editsonly' => 'تەھرىرلەنگەن ئىشلەتكۈچىلەرنىلا كۆرسەت',
-'listusers-creationsort' => 'قۇرۇلغان ۋاقتى بويىچە تەرتىپلە',
-'usereditcount' => '$1 {{PLURAL:$1|قېتىم|قېتىم}} تەھرىرلەنگەن',
-'usercreated' => '$1 دا $2 دە {{GENDER:$3|قۇرغان}}',
+'listwiki_users' => 'ئىشلەتكۈچى تىزىملىكى',
+'listwiki_users-editsonly' => 'تەھرىرلەنگەن ئىشلەتكۈچىلەرنىلا كۆرسەت',
+'listwiki_users-creationsort' => 'قۇرۇلغان ۋاقتى بويىچە تەرتىپلە',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|قېتىم|قېتىم}} تەھرىرلەنگەن',
+'wiki_usercreated' => '$1 دا $2 دە {{GENDER:$3|قۇرغان}}',
 'newpages' => 'يېڭى بەتلەر',
-'newpages-username' => 'ئىشلەتكۇچى ئىسمى:',
+'newpages-wiki_username' => 'ئىشلەتكۇچى ئىسمى:',
 'ancientpages' => 'ئەڭ كونا بەتلەر',
 'move' => 'يۆتكە',
 'movethispage' => 'بۇ بەتنى يۆتكە',
@@ -1970,7 +1970,7 @@ URL نىڭ توغرىلىقى ۋە تور بېكەتنى زىيارەت قىلى
 'booksources-invalid-isbn' => 'تەمىنلىگەن ISBN نومۇرى توغرا ئەمەس. ئەسلى كۆچۈرگەن مەنبەدىكى نومۇردا خاتالىق بار يوقلۇقىنى تەكشۈرۈڭ.',
 
 # Special:Log
-'specialloguserlabel' => 'ئىشلەتكۈچى:',
+'speciallogwiki_userlabel' => 'ئىشلەتكۈچى:',
 'speciallogtitlelabel' => 'ماۋزۇ(تىما ياكى ئىشلەتكۈچى):',
 'log' => 'خاتىرە',
 'all-logs-page' => 'بارلىق ئاممىۋى خاتىرە',
@@ -2028,24 +2028,24 @@ URL نىڭ توغرىلىقى ۋە تور بېكەتنى زىيارەت قىلى
 'linksearch-line' => '$1 بولسا $2 دىن ئۇلانغان',
 'linksearch-error' => 'ئورتاق بەلگەنى پەقەت ئاساسىي ئاپپارات ئاتىنىڭ باشىدىلا ئىشلەتكىلى بولىدۇ.',
 
-# Special:ListUsers
-'listusersfrom' => 'بېرىلگەن ئىشلەتكۈچى كۆرسىتىش شەرتى:',
-'listusers-submit' => 'كۆرسەت',
-'listusers-noresult' => 'ئىشلەتكۈچى تېپىلمىدى.',
-'listusers-blocked' => '(چەكلەنگەن)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'بېرىلگەن ئىشلەتكۈچى كۆرسىتىش شەرتى:',
+'listwiki_users-submit' => 'كۆرسەت',
+'listwiki_users-noresult' => 'ئىشلەتكۈچى تېپىلمىدى.',
+'listwiki_users-blocked' => '(چەكلەنگەن)',
 
-# Special:ActiveUsers
-'activeusers' => 'ئاكتىپ ئەزالار تىزىملىكى',
-'activeusers-intro' => 'بۇ يېقىنقى $1 {{PLURAL:$1| كۈن|كۈن}}دىكى مەشغۇلات قىلغان ئىشلەتكۈچىلەر تىزىملىكى.',
-'activeusers-count' => 'يېقىنقى {{PLURAL:$3|كۈن|$3 كۈن}}دىكى $1 {{PLURAL:$1|تەھرىر|تەھرىر}}  قېتىم سانى',
-'activeusers-from' => 'باشلانغان ئىشلەتكۈچىنى كۆرسەت:',
-'activeusers-hidebots' => 'ماشىنا ئادەمنى يوشۇر',
-'activeusers-hidesysops' => 'باشقۇرغۇچىنى يوشۇر',
-'activeusers-noresult' => 'ئىشلەتكۈچى تېپىلمىدى.',
+# Special:Activewiki_users
+'activewiki_users' => 'ئاكتىپ ئەزالار تىزىملىكى',
+'activewiki_users-intro' => 'بۇ يېقىنقى $1 {{PLURAL:$1| كۈن|كۈن}}دىكى مەشغۇلات قىلغان ئىشلەتكۈچىلەر تىزىملىكى.',
+'activewiki_users-count' => 'يېقىنقى {{PLURAL:$3|كۈن|$3 كۈن}}دىكى $1 {{PLURAL:$1|تەھرىر|تەھرىر}}  قېتىم سانى',
+'activewiki_users-from' => 'باشلانغان ئىشلەتكۈچىنى كۆرسەت:',
+'activewiki_users-hidebots' => 'ماشىنا ئادەمنى يوشۇر',
+'activewiki_users-hidesysops' => 'باشقۇرغۇچىنى يوشۇر',
+'activewiki_users-noresult' => 'ئىشلەتكۈچى تېپىلمىدى.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'ئىشلەتكۈچى قۇرغان خاتىرە',
-'newuserlogpagetext' => '(چەكلەنگەن)',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'ئىشلەتكۈچى قۇرغان خاتىرە',
+'newwiki_userlogpagetext' => '(چەكلەنگەن)',
 
 # Special:ListGroupRights
 'listgrouprights' => 'ئىشلەتكۈچى گۇرۇپپا ھوقۇقى',
@@ -2068,27 +2068,27 @@ URL نىڭ توغرىلىقى ۋە تور بېكەتنى زىيارەت قىلى
 'listgrouprights-addgroup-self-all' => 'شەخسىي ھېساباتىمغا ھەممە گۇرۇپپىنى قوش',
 'listgrouprights-removegroup-self-all' => 'شەخسىي ھېساباتىمدىن ھەممە گۇرۇپپىنى چىقىرىۋەت',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'يوللايدىغان ئادرېس يوق',
-'mailnologintext' => 'سىز ئالدى بىلەن [[Special:UserLogin|تىزىمغا كىر]]ىپ، [[Special:Preferences|مايىللىق]] تەڭشىكىدە ئىناۋەتلىك ئېلخەت ئادرېسىڭىزدىن بىرسى بولغاندا ئاندىن باشقا ئىشلەتكۈچىلەرگە ئېلخەت يوللىيالايسىز.',
-'emailuser' => 'بۇ ئىشلەتكۈچىگە ئېلخەت يوللا',
-'emailuser-title-target' => 'بۇ {{ئىشلەتكۈچى|GENDER:$1}} گە ئېلخەت يوللا',
-'emailuser-title-notarget' => 'ئېلخەت ئىشلەتكۈچى',
+'mailnologintext' => 'سىز ئالدى بىلەن [[Special:wiki_userLogin|تىزىمغا كىر]]ىپ، [[Special:Preferences|مايىللىق]] تەڭشىكىدە ئىناۋەتلىك ئېلخەت ئادرېسىڭىزدىن بىرسى بولغاندا ئاندىن باشقا ئىشلەتكۈچىلەرگە ئېلخەت يوللىيالايسىز.',
+'emailwiki_user' => 'بۇ ئىشلەتكۈچىگە ئېلخەت يوللا',
+'emailwiki_user-title-target' => 'بۇ {{ئىشلەتكۈچى|GENDER:$1}} گە ئېلخەت يوللا',
+'emailwiki_user-title-notarget' => 'ئېلخەت ئىشلەتكۈچى',
 'emailpage' => 'بۇ ئىشلەتكۈچىگە ئېلخەت يوللا',
 'emailpagetext' => 'سىز تۆۋەندىكى جەدۋەلنى ئىشلىتىپ، بۇ {{GENDER:$1|ئىشلەتكۈچى}} گە ئېلخەت يوللىيالايسىز.
  [[Special:Preferences|ئىشلەتكۈچى مايىللىقىڭىز]]دىكى ئېلخەت ئادرېسى  "يوللىغۇچى" ستونىدا كۆرۈنىدۇ، مۇشۇنداق بولغاندا شۇ ئىشلەتكۈچى سىزگە بىۋاسىتە جاۋاب قايتۇرالايدۇ.',
-'usermailererror' => 'Mail ئوبيېكتى خاتالىق قايتۇردى:',
+'wiki_usermailererror' => 'Mail ئوبيېكتى خاتالىق قايتۇردى:',
 'defemailsubject' => '{{SITENAME}}بېكەتتىكى "$1" ئىشلەتكۈچىنىڭ ئېلخەت',
-'usermaildisabled' => 'ئىشلەتكۈچى ئېلخەت چەكلەنگەن',
-'usermaildisabledtext' => 'سىز بۇ wiki دىكى باشقا ئىشلەتكۈچىگە ئېلخەت يوللىيالمايسىز.',
+'wiki_usermaildisabled' => 'ئىشلەتكۈچى ئېلخەت چەكلەنگەن',
+'wiki_usermaildisabledtext' => 'سىز بۇ wiki دىكى باشقا ئىشلەتكۈچىگە ئېلخەت يوللىيالمايسىز.',
 'noemailtitle' => 'ئېلخەت ئادرېس يوق',
 'noemailtext' => 'بۇ ئىشلەتكۈچى تېخى ئىناۋەتلىك ئېلخەت ئادرېسى بەلگىلىمىگەن.',
 'nowikiemailtitle' => 'ئېلخەتكە يول قويمايدۇ',
 'nowikiemailtext' => 'بۇ ئىشلەتكۈچى باشقىلارنىڭ ئېلخىتىنى قوبۇل قىلماسلىقنى تاللىغان.',
 'emailnotarget' => 'قوبۇللىغۇچى مەۋجۇت ئەمەس ياكى ئىشلەتكۈچى ئاتى ئىناۋەتسىز.',
 'emailtarget' => 'قوبۇللىغۇچىنىڭ ئىشلەتكۈچى ئاتىنى كىرگۈزۈڭ',
-'emailusername' => 'ئىشلەتكۈچى ئاتى:',
-'emailusernamesubmit' => 'تاپشۇر',
+'emailwiki_username' => 'ئىشلەتكۈچى ئاتى:',
+'emailwiki_usernamesubmit' => 'تاپشۇر',
 'email-legend' => 'باشقا {{SITENAME}} ئىشلەتكۈچىگە ئېلخەت يوللا',
 'emailfrom' => 'يوللىغۇچى:',
 'emailto' => 'قوبۇللىغۇچى:',
@@ -2099,12 +2099,12 @@ URL نىڭ توغرىلىقى ۋە تور بېكەتنى زىيارەت قىلى
 'emailccsubject' => 'ئۇچۇرىڭىزنى كۆچۈرۈدىغان ئورۇن: $1: $2',
 'emailsent' => 'ئېلخەت يوللاندى',
 'emailsenttext' => 'ئېلخىتىڭىز يوللاندى.',
-'emailuserfooter' => '$1 بۇ ئېلخەتنى $2 غا {{SITENAME}} نىڭ "ئېلخەت ئىشلەتكۈچى" ئىقتىدارى ئارقىلىق يوللانغان.',
+'emailwiki_userfooter' => '$1 بۇ ئېلخەتنى $2 غا {{SITENAME}} نىڭ "ئېلخەت ئىشلەتكۈچى" ئىقتىدارى ئارقىلىق يوللانغان.',
 
-# User Messenger
-'usermessage-summary' => 'سىستېما ئۇچۇرىنى ساقلاپ قال',
-'usermessage-editor' => 'سىستېما خەۋەرچىسى',
-'usermessage-template' => 'MediaWiki:UserMessage',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'سىستېما ئۇچۇرىنى ساقلاپ قال',
+'wiki_usermessage-editor' => 'سىستېما خەۋەرچىسى',
+'wiki_usermessage-template' => 'MediaWiki:wiki_userMessage',
 
 # Watchlist
 'watchlist' => 'كۆزەت تىزىملىكىم',
@@ -2113,7 +2113,7 @@ URL نىڭ توغرىلىقى ۋە تور بېكەتنى زىيارەت قىلى
 'nowatchlist' => 'كۆزەت تىزىملىكىڭىز بوش.',
 'watchlistanontext' => '$1 كۆزەت تىزىملىكىڭىزنى كۆرۈپ تەھرىرلەڭ.',
 'watchnologin' => 'تىزىمغا كىرمىدى',
-'watchnologintext' => 'سىز [[Special:UserLogin|تىزىمغا كىر]]گەندىلا ئاندىن كۆزەت تىزىملىكىڭىزنى ئۆزگەرتەلەيسىز.',
+'watchnologintext' => 'سىز [[Special:wiki_userLogin|تىزىمغا كىر]]گەندىلا ئاندىن كۆزەت تىزىملىكىڭىزنى ئۆزگەرتەلەيسىز.',
 'addwatch' => 'كۆزەت تىزىملىكىگە قوش',
 'addedwatchtext' => '"[[:$1]]" بېتى [[Special:Watchlist|كۆزەت تىزىملىكى]]ڭىزگە قوشۇلدى.
 كەلگۈسىدە بۇ بەت ۋە ئۇنىڭ مۇنازىرە بېتىگە مۇناسىۋەتلىك ھەر قانداق ئۆزگەرتىش شۇ جايدا كۆرسىتىلدۇ.',
@@ -2222,13 +2222,13 @@ $UNWATCHURL نى زىيارەت قىلىڭ
 'rollbackfailed' => 'ئەسلىگە قايتۇرۇش مەغلۇپ بولدى',
 'cantrollback' => 'تەھرىرنى ئەسلىگە كەلتۈرەلمىدى؛
 ئاخىرقى تۆھپىكار بۇ بەتنىڭ بىردىنبىر ئاپتورى.',
-'alreadyrolled' => ' [[User:$2|$2]] ([[User talk:$2|مۇنازىرە]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]])ئېلىپ بارغان [[:$1]] ئاخىرقى تەھرىرلەشنى ئەسلىگە كەلتۈرەلمەيدۇ;
+'alreadyrolled' => ' [[wiki_user:$2|$2]] ([[wiki_user talk:$2|مۇنازىرە]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]])ئېلىپ بارغان [[:$1]] ئاخىرقى تەھرىرلەشنى ئەسلىگە كەلتۈرەلمەيدۇ;
 باشقىلار بۇ بەتنى تەھرىرلىگەن ياكى ئەسلىگە كەلتۈرگەن.
 
-ئاخىرقى قېتىم تەھرىرلىگۈچى: [[User:$3|$3]] ([[User talk:$3|مۇنازىرە]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+ئاخىرقى قېتىم تەھرىرلىگۈچى: [[wiki_user:$3|$3]] ([[wiki_user talk:$3|مۇنازىرە]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "تەھرىرلەش ئۈزۈندىسى: \"''\$1''\".",
-'revertpage' => ' [[Special:Contributions/$2|$2]] ([[User talk:$2|مۇنازىرە]]) نىڭ تەھرىرىدىن ئاخىرقى تۈزىتىلگەن نەشرى [[User:$1|$1]] غا ئەسلىگە كەلتۈرىدۇ.',
-'revertpage-nouser' => '(چىقىرىۋېتىلگەن ئىشلەتكۈچى)نىڭ تەھرىرىدىن [[User:$1|$1]] نىڭ ئاخىرقى تۈزىتىلگەن نەشرىگە ئەاسلىگە كەلتۈرۈلدى',
+'revertpage' => ' [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|مۇنازىرە]]) نىڭ تەھرىرىدىن ئاخىرقى تۈزىتىلگەن نەشرى [[wiki_user:$1|$1]] غا ئەسلىگە كەلتۈرىدۇ.',
+'revertpage-nowiki_user' => '(چىقىرىۋېتىلگەن ئىشلەتكۈچى)نىڭ تەھرىرىدىن [[wiki_user:$1|$1]] نىڭ ئاخىرقى تۈزىتىلگەن نەشرىگە ئەاسلىگە كەلتۈرۈلدى',
 'rollback-success' => '$1 نىڭ تەھرىرى ئەسلىگە كەلتۈرۈلدى؛
 $2 نىڭ ئاخىرقى تۈزىتىلگەن نەشرىگە ئۆزگەرتىلدى.',
 
@@ -2387,13 +2387,13 @@ $1',
 'sp-contributions-uploads' => 'يۈكلەر',
 'sp-contributions-logs' => 'خاتىرە',
 'sp-contributions-talk' => 'مۇنازىرە',
-'sp-contributions-userrights' => 'ئىشلەتكۈچى ھوقۇقى باشقۇرۇش',
+'sp-contributions-wiki_userrights' => 'ئىشلەتكۈچى ھوقۇقى باشقۇرۇش',
 'sp-contributions-blocked-notice' => 'بۇ ئىشلەتكۈچى نۆۋەتتە چەكلەنگەن.
 پايدىلىنىش ئۈچۈن يېقىنقى چەكلەش خاتىرە تۈرلىرى تۆۋەندە تەمىنلەندى:',
 'sp-contributions-blocked-notice-anon' => 'بۇ IP ئادرېس نۆۋەتتە چەكلەنگەن.
 پايدىلىنىش ئۈچۈن  تۆۋەندە يېقىنقى چەكلەش خاتىرە تۈرلىرى تەمىنلەندى:',
 'sp-contributions-search' => 'تۆھپە ئىزدە',
-'sp-contributions-username' => 'IP ئادرېس ياكى ئىشلەتكۈچى ئاتى:',
+'sp-contributions-wiki_username' => 'IP ئادرېس ياكى ئىشلەتكۈچى ئاتى:',
 'sp-contributions-toponly' => 'ئەڭ يېڭى تۈزىتىلگەن نەشرىنىلا كۆرسەت',
 'sp-contributions-submit' => 'ئىزدە',
 
@@ -2426,7 +2426,7 @@ $1',
 'blockiptext' => 'تۆۋەندىكى جەدۋەلنى ئىشلىتىپ بەلگىلىك IP ئادرېس ياكى ئىشلەتكۈچى ئاتىدىن كەلگەن يېزىش زىيارىتىنى چەكلەشكە بولىدۇ.
 پەقەت بۇزغۇنچىلىكنىڭ ئالدىنى ئېلىش ھەمدە [[{{MediaWiki:Policy-url}}|تاكتىكا]].
 سىغا ئۇيغۇن بولغان ئەھۋالدا ئاندىن بۇ مەشغۇلاتنى ئېلىپ بېرىشقا بولىدۇ. تۆۋەندە ئەمەلىي سەۋەب (مەسىلەن، بۇزۇۋېتىلگەن بەتتىن بىرنى نەقىل ئېلىش)تىن بىرنى كىرگۈزۈڭ.',
-'ipadressorusername' => 'IP ئادرېس ياكى ئىشلەتكۈچى ئاتى:',
+'ipadressorwiki_username' => 'IP ئادرېس ياكى ئىشلەتكۈچى ئاتى:',
 'ipbexpiry' => 'مۇددىتى:',
 'ipbreason' => 'سەۋەب:',
 'ipbreasonotherlist' => 'باشقا سەۋەب',
@@ -2448,8 +2448,8 @@ $1',
 'ipbotheroption' => 'باشقا',
 'ipbotherreason' => 'باشقا/قوشۇمچە سەۋەب:',
 'ipbhidename' => 'تەھرىر ۋە تىزىملىكتىن ئىشلەتكۈچى ئاتىنى يوشۇر',
-'ipbwatchuser' => 'بۇ ئىشلەتكۈچىنىڭ ئىشلەتكۈچى بېتى ۋە مۇنازىرە بېتىنى كۆزەت',
-'ipb-disableusertalk' => 'چەكلەنگەن ئىشلەتكۈچىنىڭ ئۆزىنىڭ سۆزلىشىش بېتىنى تەھرىرلىشى چەكلىنىدۇ',
+'ipbwatchwiki_user' => 'بۇ ئىشلەتكۈچىنىڭ ئىشلەتكۈچى بېتى ۋە مۇنازىرە بېتىنى كۆزەت',
+'ipb-disablewiki_usertalk' => 'چەكلەنگەن ئىشلەتكۈچىنىڭ ئۆزىنىڭ سۆزلىشىش بېتىنى تەھرىرلىشى چەكلىنىدۇ',
 'ipb-change-block' => 'بۇ تەڭشەكلەردىن پايدىلىنىپ ئىشلەتكۈچىنى قايتىدىن چەكلە',
 'ipb-confirm' => 'چەكلەشنى جەزملە',
 'badipaddress' => 'IP ئادرېس ئىناۋەتسىز',
@@ -2457,7 +2457,7 @@ $1',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] چەكلەندى.<br />
  [[Special:BlockList|چەكلەنگەن IP تىزىملىكى]] نى كۆرۈپ چەكلەشنى تەكشۈرۈڭ.',
 'ipb-blockingself' => 'سىز ئۆزىڭىزنى چەكلەمسىز! راستىنلا مۇشۇنداق قىلامسىز؟',
-'ipb-confirmhideuser' => 'سىز ئىشلەتكۈچىنى يوشۇرۇش ھوقۇقى بار ئىشلەتكۈچىنى چەكلىمەكچى. بۇنداق بولغاندا ھەممە تىزىمدىكى ئىشلەتكۈچىلەرنىڭ ئاتى ۋە خاتىرە تۈرلىرى چەكلىنىدۇ. راستىنلا مۇشۇنداق قىلامسىز؟',
+'ipb-confirmhidewiki_user' => 'سىز ئىشلەتكۈچىنى يوشۇرۇش ھوقۇقى بار ئىشلەتكۈچىنى چەكلىمەكچى. بۇنداق بولغاندا ھەممە تىزىمدىكى ئىشلەتكۈچىلەرنىڭ ئاتى ۋە خاتىرە تۈرلىرى چەكلىنىدۇ. راستىنلا مۇشۇنداق قىلامسىز؟',
 'ipb-edit-dropdown' => 'چەكلەش سەۋەبىنى تەھرىرلە',
 'ipb-unblock-addr' => '$1 چەكلەشنى بىكار قىل',
 'ipb-unblock' => 'چەكلەش بىكار قىلىغان ئىشلەتكۈچى ئاتى ياكى IP ئادرېس',
@@ -2466,13 +2466,13 @@ $1',
 'unblockip' => 'چەكلەش بىكار قىلىنغان ئىشلەتكۈچى',
 'unblockiptext' => 'تۆۋەندىكى جەدۋەلنى ئىشلىتىپ ئىلگىرى چەكلەنگەن IP ئادرېس ياكى ئىشلەتكۈچىنىڭ يېزىش ھوقۇقىنى ئەسلىگە كەلتۈر.',
 'ipusubmit' => 'بۇ چەكلەشنى چىقىرىۋەت',
-'unblocked' => '[[User:$1|$1]] چەكلەش بىكار قىلىندى',
+'unblocked' => '[[wiki_user:$1|$1]] چەكلەش بىكار قىلىندى',
 'unblocked-range' => '$1 چەكلەنمەيدۇ',
 'unblocked-id' => '$1 نى چەكلەش بىكار قىلىندى',
 'blocklist' => 'چەكلەنگەن ئىشلەتكۈچىلەر',
 'ipblocklist' => 'چەكلەنگەن ئىشلەتكۈچىلەر',
 'ipblocklist-legend' => 'چەكلەنگەن ئىشلەتكۈچىدىن بىرنى ئىزدە',
-'blocklist-userblocks' => 'ھېسابات چەكلەشنى يوشۇر',
+'blocklist-wiki_userblocks' => 'ھېسابات چەكلەشنى يوشۇر',
 'blocklist-tempblocks' => 'ۋاقىتلىق چەكلەشنى يوشۇر',
 'blocklist-addressblocks' => 'يەككە IP چەكلەشنى يوشۇر',
 'blocklist-rangeblocks' => 'دائىرە چەكلىمىسىنى يوشۇر',
@@ -2491,7 +2491,7 @@ $1',
 'noautoblockblock' => 'ئۆزلۈكىدىن چەكلەشنى چەكلە',
 'createaccountblock' => 'ھېسابات قۇرۇش چەكلەنگەن',
 'emailblock' => 'ئېلخەت چەكلەنگەن',
-'blocklist-nousertalk' => 'شەخسىي مۇنازىرە بېتىنى تەھرىرلىگىلى بولمايدۇ',
+'blocklist-nowiki_usertalk' => 'شەخسىي مۇنازىرە بېتىنى تەھرىرلىگىلى بولمايدۇ',
 'ipblocklist-empty' => 'چەكلەش تىزىملىكى بوش.',
 'ipblocklist-no-results' => 'تەلەپ قىلغان IP ئادرېس ياكى ئىشلەتكۈچى ئاتى چەكلەنمىگەن.',
 'blocklink' => 'چەكلە',
@@ -2499,7 +2499,7 @@ $1',
 'change-blocklink' => 'ئۆزگەرتىش چەكلەنگەن',
 'contribslink' => 'تۆھپىكارلار',
 'emaillink' => 'ئېلخەت يوللا',
-'autoblocker' => 'سىز "[[User:$1|$1]]" بىلەن بىر IP ئادرېسنى ئورتاق ئىشلەتكەچكە ئۆزلۈكىدىن چەكلىدى.
+'autoblocker' => 'سىز "[[wiki_user:$1|$1]]" بىلەن بىر IP ئادرېسنى ئورتاق ئىشلەتكەچكە ئۆزلۈكىدىن چەكلىدى.
  $1 نىڭ چەكلەنگەنلىك سەۋەبى:  "$2"',
 'blocklogpage' => 'چەكلەنگەن خاتىرە',
 'blocklog-showlog' => 'بۇ ئىشلەتكۈچى ئىلگىرى چەكلەنگەن.
@@ -2516,7 +2516,7 @@ $1',
 'block-log-flags-nocreate' => 'ھېسابات قۇرۇش چەكلەنگەن',
 'block-log-flags-noautoblock' => 'ئۆزلۈكىدىن چەكلەشنى چەكلە',
 'block-log-flags-noemail' => 'ئېلخەت چەكلەنگەن',
-'block-log-flags-nousertalk' => 'شەخسىي مۇنازىرە بېتىنى تەھرىرلىگىلى بولمايدۇ',
+'block-log-flags-nowiki_usertalk' => 'شەخسىي مۇنازىرە بېتىنى تەھرىرلىگىلى بولمايدۇ',
 'block-log-flags-angry-autoblock' => 'كۈچەيتىلگەن ئۆزلۈكىدىن چەكلەش قوزغىتىلدى',
 'block-log-flags-hiddenname' => 'ئىشلەتكۈچى ئاتىنى يوشۇر',
 'range_block_disabled' => 'پەقەت باشقۇرغۇچىلا چەكلەنمەيدىغان دائىرىنى قۇرالايدۇ.',
@@ -2527,7 +2527,7 @@ $1',
 'ipb-needreblock' => '$1 ئاللىبۇرۇن چەكلەنگەن.
 بۇ تەڭشەكنى ئۆزگەرتەمسىز؟',
 'ipb-otherblocks-header' => 'باشقا {{PLURAL:$1|چەكلەنگەن|چەكلەنگەن}}',
-'unblock-hideuser' => 'بۇ ئىشلەتكۈچىنى توسالمايسىز، ئۇنىڭ ئىشلەتكۈچى ئاتى يوشۇرۇلغان.',
+'unblock-hidewiki_user' => 'بۇ ئىشلەتكۈچىنى توسالمايسىز، ئۇنىڭ ئىشلەتكۈچى ئاتى يوشۇرۇلغان.',
 'ipb_cant_unblock' => 'خاتالىق: چەكلەنگەن ID $1 تاپالمىدى.
 چەكلەش بىكار قىلىنغان بولۇشى مۇمكىن.',
 'ipb_blocked_as_range' => 'خاتالىق: بۇ IP $1 بىۋاسىتە چەكلەنمىگەن، چەكلەشنى بىكار قىلغىلى بولمايدۇ.
@@ -2545,7 +2545,7 @@ $1',
 'sorbs_create_account_reason' => 'IP ئادرېسىڭىز {{SITENAME}} دا DNSBL تەرىپىدىن ئوچۇق ۋاكالەتچى تىزىملىكىگە قوشۇلغان.
 شۇڭا سىز يېڭى ھېسابات قۇرالمايسىز.',
 'cant-block-while-blocked' => 'ئەگەر سىز چەكلەنسىڭىز باشقىلارنى چەكلىيەلمەيسىز.',
-'cant-see-hidden-user' => 'سىز چەكلىمەكچى بولغان ئىشلەتكۈچى ئاللىبۇرۇن چەكلىنىپ يوشۇرۇلغان.
+'cant-see-hidden-wiki_user' => 'سىز چەكلىمەكچى بولغان ئىشلەتكۈچى ئاللىبۇرۇن چەكلىنىپ يوشۇرۇلغان.
 ھازىر سىزنىڭ ئىشلەتكۈچى يوشۇرۇش ھوقۇقىڭىز يوق، سىز بۇ چەكلەنگەن ئىشلەتكۈچىنى كۆرسىتىپ ياكى تەھرىرلىيەلمەيسىز.',
 'ipbblocked' => 'سىز بااشقا ئىشلەتكۈچىنى چەكلەپ ياكى چەكلەشنى بىكار قىلالمايسىز چۈنكى ئۆزىڭىز چەكلەندىڭىز.',
 'ipbnounblockself' => 'سىز ئۆزىڭىزنىڭ چەكلىنىشىنى بىكارقىلالمايسىز.',
@@ -2608,13 +2608,13 @@ $1',
 
 بۇ خىل ئەھۋاللاردا، زۆرۈر تېپىلغاندا ئۆزىڭىز بەتنى يۆتكىشىڭىز ياكى بىرلەشتۈرۈشىڭىز لازىم.",
 'movearticle' => 'بەت يۆتكە:',
-'moveuserpage-warning' => "'''ئاگاھلاندۇرۇش:''' سىز ئىشلەتكۈچى بېتىنى يۆتكىمەكچى. بۇ بەت يۆتكەلگەندىن كېيىن شۇ ئىشلەتكۈچىنىڭ ئاتى ئۆزگەرمەيدىغانلىقىغا دىققەت قىلىڭ.",
+'movewiki_userpage-warning' => "'''ئاگاھلاندۇرۇش:''' سىز ئىشلەتكۈچى بېتىنى يۆتكىمەكچى. بۇ بەت يۆتكەلگەندىن كېيىن شۇ ئىشلەتكۈچىنىڭ ئاتى ئۆزگەرمەيدىغانلىقىغا دىققەت قىلىڭ.",
 'movenologin' => 'تىزىمغا كىرمىدى',
-'movenologintext' => 'سىز چوقۇم تىزىمغا كىرگەن ئىشلەتكۈچى ھەمدە [[Special:UserLogin|تىزىمغا كىر]]گەندىن كېيىن ئاندىن بەتنى يۆتكىيەلەيسىز.',
+'movenologintext' => 'سىز چوقۇم تىزىمغا كىرگەن ئىشلەتكۈچى ھەمدە [[Special:wiki_userLogin|تىزىمغا كىر]]گەندىن كېيىن ئاندىن بەتنى يۆتكىيەلەيسىز.',
 'movenotallowed' => 'سىزنىڭ بەت يۆتكەش ھوقۇقىڭىز يوق.',
 'movenotallowedfile' => 'سىزنىڭ ھۆججەت يۆتكەش ھوقۇقىڭىز يوق.',
-'cant-move-user-page' => 'سىزنىڭ ئىشلەتكۈچى بېتىنى يۆتكەش ھوقۇقىڭىز يوق (ئۇنىڭ تارماق بېتى بۇنىڭ سىرتىدا)',
-'cant-move-to-user-page' => 'سىزنىڭ ئىشلەتكۈچى بېتىگە يۆتكەش ھوقۇقىڭىز يوق (تارماق بېتى بۇنىڭ سىرتىدا)',
+'cant-move-wiki_user-page' => 'سىزنىڭ ئىشلەتكۈچى بېتىنى يۆتكەش ھوقۇقىڭىز يوق (ئۇنىڭ تارماق بېتى بۇنىڭ سىرتىدا)',
+'cant-move-to-wiki_user-page' => 'سىزنىڭ ئىشلەتكۈچى بېتىگە يۆتكەش ھوقۇقىڭىز يوق (تارماق بېتى بۇنىڭ سىرتىدا)',
 'newtitle' => 'يېڭى ماۋزۇ:',
 'move-watch' => 'بۇ بەتنى كۆزەت',
 'movepagebtn' => 'بەت يۆتكە',
@@ -2793,8 +2793,8 @@ $1',
 'javascripttest-qunit-heading' => 'MediaWiki JavaScript QUnit سىناش يۈرۈشلۈكى',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'ئىشلەتكۈچى بېتىڭىز',
-'tooltip-pt-anonuserpage' => 'بۇ بېكەتنى تەھرىرلىگەندە ئىشلەتكەن IP ماس كەلگەن ئىشلەتكۈچى بېتى',
+'tooltip-pt-wiki_userpage' => 'ئىشلەتكۈچى بېتىڭىز',
+'tooltip-pt-anonwiki_userpage' => 'بۇ بېكەتنى تەھرىرلىگەندە ئىشلەتكەن IP ماس كەلگەن ئىشلەتكۈچى بېتى',
 'tooltip-pt-mytalk' => 'مۇنازىرە بېتىڭىز',
 'tooltip-pt-anontalk' => 'مەزكۇر IP ئادرېستىن كەلگەن تەھرىرنىڭ مۇنازىرىسى',
 'tooltip-pt-preferences' => 'مايىللىق تەڭشىىڭىز',
@@ -2833,13 +2833,13 @@ $1',
 'tooltip-feed-rss' => 'بۇ بەتنىڭ RSS قانىلى',
 'tooltip-feed-atom' => 'بۇ بەتنىڭ Atom قانىلى',
 'tooltip-t-contributions' => 'بۇ ئىشلەتكۈچىنىڭ تۆھپە تىزىملىكىنى كۆرسەت',
-'tooltip-t-emailuser' => 'بۇ ئىشلەتكۈچىگە ئېلخەت يوللا',
+'tooltip-t-emailwiki_user' => 'بۇ ئىشلەتكۈچىگە ئېلخەت يوللا',
 'tooltip-t-upload' => 'ھۆججەتلەرنى يۈكلە',
 'tooltip-t-specialpages' => 'بارلىق ئالاھىدە بەتلەر تىزىملىكى',
 'tooltip-t-print' => 'بۇ بەتنىڭ باسقىلى بولىدىغان نەشرى',
 'tooltip-t-permalink' => 'ئۆزگەرتىلگەن نەشرىدىكى بۇ بەتنىڭ مەڭگۈلۈك ئۇلانمىسى',
 'tooltip-ca-nstab-main' => 'مەزمۇن بېتىنى كۆرسەت',
-'tooltip-ca-nstab-user' => 'ئىشلەتكۈچى بېتىنى كۆرسەت',
+'tooltip-ca-nstab-wiki_user' => 'ئىشلەتكۈچى بېتىنى كۆرسەت',
 'tooltip-ca-nstab-media' => 'ۋاسىتە بېتىنى كۆرسەت',
 'tooltip-ca-nstab-special' => 'بۇ ئالاھىدە بەت، بۇ بەتنى تەھرىرلىيەلمەيسىز.',
 'tooltip-ca-nstab-project' => 'قۇرۇلۇش بېتىنى كۆرسەت',
@@ -2866,34 +2866,34 @@ $1',
 
 # Stylesheets
 'common.css' => '/* CSS placed here will be applied to all skins */',
-'standard.css' => '/* CSS placed here will affect users of the Standard skin */',
-'nostalgia.css' => '/* CSS placed here will affect users of the Nostalgia skin */',
-'cologneblue.css' => '/* CSS placed here will affect users of the Cologne Blue skin */',
-'monobook.css' => '/* CSS placed here will affect users of the Monobook skin */',
-'myskin.css' => '/* CSS placed here will affect users of the MySkin skin */',
-'chick.css' => '/* CSS placed here will affect users of the Chick skin */',
-'simple.css' => '/* CSS placed here will affect users of the Simple skin */',
-'modern.css' => '/* CSS placed here will affect users of the Modern skin */',
-'vector.css' => '/* CSS placed here will affect users of the Vector skin */',
+'standard.css' => '/* CSS placed here will affect wiki_users of the Standard skin */',
+'nostalgia.css' => '/* CSS placed here will affect wiki_users of the Nostalgia skin */',
+'cologneblue.css' => '/* CSS placed here will affect wiki_users of the Cologne Blue skin */',
+'monobook.css' => '/* CSS placed here will affect wiki_users of the Monobook skin */',
+'myskin.css' => '/* CSS placed here will affect wiki_users of the MySkin skin */',
+'chick.css' => '/* CSS placed here will affect wiki_users of the Chick skin */',
+'simple.css' => '/* CSS placed here will affect wiki_users of the Simple skin */',
+'modern.css' => '/* CSS placed here will affect wiki_users of the Modern skin */',
+'vector.css' => '/* CSS placed here will affect wiki_users of the Vector skin */',
 'print.css' => '/* CSS placed here will affect the print output */',
-'noscript.css' => '/* CSS placed here will affect users with JavaScript disabled */',
-'group-autoconfirmed.css' => '/* CSS placed here will affect autoconfirmed users only */',
+'noscript.css' => '/* CSS placed here will affect wiki_users with JavaScript disabled */',
+'group-autoconfirmed.css' => '/* CSS placed here will affect autoconfirmed wiki_users only */',
 'group-bot.css' => '/* CSS placed here will affect bots only */',
 'group-sysop.css' => '/* CSS placed here will affect sysops only */',
 'group-bureaucrat.css' => '/* CSS placed here will affect bureaucrats only */',
 
 # Scripts
-'common.js' => '/* Any JavaScript here will be loaded for all users on every page load. */',
-'standard.js' => '/* Any JavaScript here will be loaded for users using the Standard skin */',
-'nostalgia.js' => '/* Any JavaScript here will be loaded for users using the Nostalgia skin */',
-'cologneblue.js' => '/* Any JavaScript here will be loaded for users using the Cologne Blue skin */',
-'monobook.js' => '/* Any JavaScript here will be loaded for users using the MonoBook skin */',
-'myskin.js' => '/* Any JavaScript here will be loaded for users using the MySkin skin */',
-'chick.js' => '/* Any JavaScript here will be loaded for users using the Chick skin */',
-'simple.js' => '/* Any JavaScript here will be loaded for users using the Simple skin */',
-'modern.js' => '/* Any JavaScript here will be loaded for users using the Modern skin */',
-'vector.js' => '/* Any JavaScript here will be loaded for users using the Vector skin */',
-'group-autoconfirmed.js' => '/* Any JavaScript here will be loaded for autoconfirmed users only */',
+'common.js' => '/* Any JavaScript here will be loaded for all wiki_users on every page load. */',
+'standard.js' => '/* Any JavaScript here will be loaded for wiki_users using the Standard skin */',
+'nostalgia.js' => '/* Any JavaScript here will be loaded for wiki_users using the Nostalgia skin */',
+'cologneblue.js' => '/* Any JavaScript here will be loaded for wiki_users using the Cologne Blue skin */',
+'monobook.js' => '/* Any JavaScript here will be loaded for wiki_users using the MonoBook skin */',
+'myskin.js' => '/* Any JavaScript here will be loaded for wiki_users using the MySkin skin */',
+'chick.js' => '/* Any JavaScript here will be loaded for wiki_users using the Chick skin */',
+'simple.js' => '/* Any JavaScript here will be loaded for wiki_users using the Simple skin */',
+'modern.js' => '/* Any JavaScript here will be loaded for wiki_users using the Modern skin */',
+'vector.js' => '/* Any JavaScript here will be loaded for wiki_users using the Vector skin */',
+'group-autoconfirmed.js' => '/* Any JavaScript here will be loaded for autoconfirmed wiki_users only */',
 'group-bot.js' => '/* Any JavaScript here will be loaded for bots only */',
 'group-sysop.js' => '/* Any JavaScript here will be loaded for sysops only */',
 'group-bureaucrat.js' => '/* Any JavaScript here will be loaded for bureaucrats only */',
@@ -2903,13 +2903,13 @@ $1',
 
 # Attribution
 'anonymous' => ' {{SITENAME}} نىڭ ئىمزاسىز {{PLURAL:$1|ئىشلەتكۈچى|ئىشلەتكۈچى}}',
-'siteuser' => '{{SITENAME}} ئىشلەتكۈچى $1',
-'anonuser' => '{{SITENAME}} ئاتسىز ئىشلەتكۈچى $1',
+'sitewiki_user' => '{{SITENAME}} ئىشلەتكۈچى $1',
+'anonwiki_user' => '{{SITENAME}} ئاتسىز ئىشلەتكۈچى $1',
 'lastmodifiedatby' => 'بۇ بەتنى $3 ئاخىرقى قېتىم $2 ئۆزگەرتكەن $1',
 'othercontribs' => '$1 نىڭ خىزمىتى ئاساسىدا.',
 'others' => 'باشقا',
-'siteusers' => '{{SITENAME}} {{PLURAL:$2|ئىشلەتكۈچى|ئىشلەتكۈچى}} $1',
-'anonusers' => '{{SITENAME}} ئاتسىز  {{PLURAL:$2|ئىشلەتكۈچى|ئىشلەتكۈچى}} $1',
+'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|ئىشلەتكۈچى|ئىشلەتكۈچى}} $1',
+'anonwiki_users' => '{{SITENAME}} ئاتسىز  {{PLURAL:$2|ئىشلەتكۈچى|ئىشلەتكۈچى}} $1',
 'creditspage' => 'بەت تەشەككۈرى',
 'nocredits' => 'بۇ بەتنىڭ تەشەككۈر تىزىملىك ئۇچۇرى يوق.',
 
@@ -2918,7 +2918,7 @@ $1',
 'spamprotectiontext' => 'سىز ساقلىماقچى بولغان بەتنى ئېلان سۈزگۈچ چەكلىدى.
 بۇ سىرتقى تور بېكەت ئۇلانمىسىدىن كېلىپ چىققان بولۇشى مۇمكىن.',
 'spamprotectionmatch' => 'تۆۋەندىكىسى ئېلان سۈزگۈچىگە ئۇرۇلغاندىكى تېكست: $1',
-'spambot_username' => 'MediaWiki ئېلان تازىلىغۇچ',
+'spambot_wiki_username' => 'MediaWiki ئېلان تازىلىغۇچ',
 'spam_reverting' => 'ئۇلانمىسى يوق $1 نىڭ ئاخىرقى تۈزىتىلگەن نەشرىگە ئەسلىگە كەلتۈرۈۋاتىدۇ',
 'spam_blanking' => 'ھەممە ئۇلانمىنى ئۆز ئىچىگە ئالغان $1 نىڭ تۈزىتىلگەن نەشرى، توسۇۋاتىدۇ',
 'spam_deleting' => '$1 باغلىنىشى بار ھەممە تۈزىتىلگەن نەشرىنى ئۆچۈرۈۋاتىدۇ',
@@ -2943,9 +2943,9 @@ $1',
 'pageinfo-redirects-value' => '$1',
 'pageinfo-subpages-name' => 'بۇ بەتنىڭ تارماق بېتى',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|قايتا نىشانلاش}}; $3 {{PLURAL:$3|قايتا نىشانلىماسلىق}})',
-'pageinfo-firstuser' => 'بەت قۇرغۇچى',
+'pageinfo-firstwiki_user' => 'بەت قۇرغۇچى',
 'pageinfo-firsttime' => 'بەت قۇرۇلغان ۋاقتى',
-'pageinfo-lastuser' => 'يېقىنقى تەھرىرلىگۈچى',
+'pageinfo-lastwiki_user' => 'يېقىنقى تەھرىرلىگۈچى',
 'pageinfo-lasttime' => 'يېقىنقى تەھرىر  ۋاقتى',
 'pageinfo-edits' => 'تەھرىر سانى',
 'pageinfo-authors' => 'يازغۇچىلار سانى',
@@ -3145,7 +3145,7 @@ Variants for Chinese language
 'exif-compressedbitsperpixel' => 'سۈرەت پرىسلاش شەكلى',
 'exif-pixelydimension' => 'سۈرەت كەڭلىكى',
 'exif-pixelxdimension' => 'سۈرەت ئېگىزلىكى',
-'exif-usercomment' => 'ئىشلەتكۈچى ئىزاھاتى',
+'exif-wiki_usercomment' => 'ئىشلەتكۈچى ئىزاھاتى',
 'exif-relatedsoundfile' => 'مۇناسىۋەتلىك ئۈن ھۆججىتى',
 'exif-datetimeoriginal' => 'سانلىق مەلۇمات قۇرۇلغان چېسلا ۋە ۋاقىت',
 'exif-datetimedigitized' => 'رەقەملەشتۈرۈلگەن چېسلا ۋە ۋاقىت',
@@ -3510,7 +3510,7 @@ Variants for Chinese language
 
 # E-mail address confirmation
 'confirmemail' => 'جەزملەش ئېلخەت ئادرېسى',
-'confirmemail_noemail' => 'سىز ئۆزىڭىزنىڭ [[Special:Preferences|user مايىللىق]] تەڭشىكىڭىزگە ئىناۋەتلىك ئېلخەت ئادرېسى كىرگۈزمەپسىز.',
+'confirmemail_noemail' => 'سىز ئۆزىڭىزنىڭ [[Special:Preferences|wiki_user مايىللىق]] تەڭشىكىڭىزگە ئىناۋەتلىك ئېلخەت ئادرېسى كىرگۈزمەپسىز.',
 'confirmemail_text' => '{{SITENAME}} ئېلخەت ئىقتىدارى ئىشلىتىشتىن ئىلگىرى ئېلخەت ئادرېسىڭىزنى دەلىللەشنى تەلەپ قىلىدۇ.
 تۆۋەندىكى كۇنۇپكىنى چەكسىڭىز ئاكتىپلاش ئېلخىتىدىن بىرنى سىزگە ئەۋەتىدۇ.
 ئۇ ئىلخەتتە بىر قۇر ئۇلانما كود بار؛
@@ -3529,7 +3529,7 @@ Variants for Chinese language
 بۇ كودنىڭ ۋاقتى ئۆتكەن بولۇشى مۇمكىن.',
 'confirmemail_needlogin' => 'سىز $1 ئارقىلىق ئېلخەت ئادرېسىڭىزنى جەزملەڭ.',
 'confirmemail_success' => 'ئېلخەت ئادرېسىڭىز جەزملەندى.
-سىز ھازىر [[Special:UserLogin|تىزىمغا كىر]]ىپ، wiki بېكەتنى ئىشلىتەلەيسىز.',
+سىز ھازىر [[Special:wiki_userLogin|تىزىمغا كىر]]ىپ، wiki بېكەتنى ئىشلىتەلەيسىز.',
 'confirmemail_loggedin' => 'ئېلخەت ئادرېسىڭىز ھازىر جەزملەندى.',
 'confirmemail_error' => 'جەزملەش جەريانىدا خاتالىق كۆرۈلدى.',
 'confirmemail_subject' => '{{SITENAME}} ئېلخەت ئادرېس جەزملەش',
@@ -3579,10 +3579,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''ئاگاھلاندۇرۇش''': بۇ بەت تەھرىرلەشكە باشلىغاندىن كېيىن ئۆچۈرۈلگەن!",
-'confirmrecreate' => "سىز بۇ بەتنى تەھرىرلىگەندىن كېيىن ئىشلەتكۈچى [[User:$1|$1]] ([[User talk:$1|مۇنازىرە]])  تۆۋەندىكى سەۋەب تۈپەيلىدىن بۇ بەت ئۆچۈرۈلدى:
+'confirmrecreate' => "سىز بۇ بەتنى تەھرىرلىگەندىن كېيىن ئىشلەتكۈچى [[wiki_user:$1|$1]] ([[wiki_user talk:$1|مۇنازىرە]])  تۆۋەندىكى سەۋەب تۈپەيلىدىن بۇ بەت ئۆچۈرۈلدى:
 : ''$2''
 راستىنلا بۇ بەتنى قايتا قۇرۇشتىن ئىلگىرى ئويلىنىڭ.",
-'confirmrecreate-noreason' => 'سىز بۇ بەتنى تەھرىرلىگەندىن كېيىن ئىشلەتكۈچى [[User:$1|$1]] ([[User talk:$1|مۇنازىرە]])  بۇ بەتنى ئۆچۈردى:
+'confirmrecreate-noreason' => 'سىز بۇ بەتنى تەھرىرلىگەندىن كېيىن ئىشلەتكۈچى [[wiki_user:$1|$1]] ([[wiki_user talk:$1|مۇنازىرە]])  بۇ بەتنى ئۆچۈردى:
 راستىنلا بۇ بەتنى قايتا قۇرىدىغانلىقىڭىزنى جەزملەڭ.',
 'recreate' => 'قايتا قۇر',
 
@@ -3660,7 +3660,7 @@ $5
 'watchlisttools-raw' => 'ئەسلى كۆزەت تىزىملىك تەھرىرى',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|سۆزلىشىش]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|سۆزلىشىش]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'نامەلۇم كېڭەيتىلگەن خەتكۈچ "$1"',
@@ -3726,7 +3726,7 @@ MediaWiki ئىشلىتىش مەقسىتىنى ئاساس قىلىپ ئېلان �
 'specialpages-group-login' => 'تىزىملىتىش / كىرىش',
 'specialpages-group-changes' => 'يېقىنقى ئۆزگەرتىش ۋە خاتىرە',
 'specialpages-group-media' => 'ۋاسىتە دوكلاتى ۋە يۈكلەر',
-'specialpages-group-users' => 'ئىشلەتكۈچى ۋە ھوقۇقى',
+'specialpages-group-wiki_users' => 'ئىشلەتكۈچى ۋە ھوقۇقى',
 'specialpages-group-highuse' => 'كۆپ ئىشلىتىلگەن بەت',
 'specialpages-group-pages' => 'بەت تىزىملىكى',
 'specialpages-group-pagetools' => 'بەت قورالى',
@@ -3825,11 +3825,11 @@ MediaWiki ئىشلىتىش مەقسىتىنى ئاساس قىلىپ ئېلان �
 'logentry-move-move_redir-noredirect' => 'قايتا نىشانلاش ئارقىلىق $1 نى $3 بەتتىن $4 غا يۆتكىدى قايتا نىشانلاشنى قالدۇرمىدى',
 'logentry-patrol-patrol' => '$3 بەتنىڭ $4 تۈزىتىلگەن نەشرىگە $1 چارلاش بەلگىسى سالدى',
 'logentry-patrol-patrol-auto' => '$3 بەتنىڭ $4 تۈزىتىلگەن نەشرىگە $1 چارلاش بەلگىسى ئاپتوماتىك سالدى',
-'logentry-newusers-newusers' => 'ئەزا $1 قۇرۇلبولدى',
-'logentry-newusers-create' => 'ئەزا $1 قۇرۇلبولدى',
-'logentry-newusers-create2' => 'ئىشلەتكۈچى ھېساباتى $3 نى $1 قۇردى',
-'logentry-newusers-autocreate' => 'ئىشلەتكۈچى $1 ئاپتوماتلىق قۇرۇلدى',
-'newuserlog-byemail' => 'ئىم ئىلخەتتە يوللاندى',
+'logentry-newwiki_users-newwiki_users' => 'ئەزا $1 قۇرۇلبولدى',
+'logentry-newwiki_users-create' => 'ئەزا $1 قۇرۇلبولدى',
+'logentry-newwiki_users-create2' => 'ئىشلەتكۈچى ھېساباتى $3 نى $1 قۇردى',
+'logentry-newwiki_users-autocreate' => 'ئىشلەتكۈچى $1 ئاپتوماتلىق قۇرۇلدى',
+'newwiki_userlog-byemail' => 'ئىم ئىلخەتتە يوللاندى',
 
 # Feedback
 'feedback-bugornote' => 'ئەگەر بىر تېخنىكىلىق مەسىلىنى تەپسىلىي بايان قىلىشقا تەييارلانماقچى بولسىڭىز، [$1 خاتالىق دوكلات]ى يوللاڭ. ياكى تۆۋەندىكى ئاددىي جەدۋەلنى ئىشلىتىڭ. ئىنكاسىڭىز "[$3 $2]" بەتكە قوشۇلىدۇ، ئىشلەتكۈچى ئاتىڭىز ۋە ئىشلەتكەن توركۆرگۈڭىز قوشۇپ قويۇلىدۇ.',

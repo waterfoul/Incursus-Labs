@@ -3,7 +3,7 @@ This extension is pay-what-you want, please consider purchasing it.
 
   http://olivierbeaton.com/mediawiki#realnames
 
-I always love hearing from my users,
+I always love hearing from my wiki_users,
 
   email olivier.beaton@gmail.com
 
@@ -12,12 +12,12 @@ any comments, issues, suggestions or complaints.
 == 0.2 (2011-09-22) ==
 
 features:
-* replaces username in personnal url bar (where you click login top right vector)
+* replaces wiki_username in personnal url bar (where you click login top right vector)
 * allows custom namespace detection $wgRealnamesNamespaces
 * adds support for Extension:Configure (undoc at release)
 
 bugfix:
-* i18n links User: namespaces (thanks Nilsy)
+* i18n links wiki_user: namespaces (thanks Nilsy)
 * support for upcoming 1.18 gendered namespaces
 * title handling for pre 1.16 wiki's
 * custom namespace names
@@ -29,7 +29,7 @@ testing:
 
 bugfix:
 * eliminated use of create_function due speed implications (thanks Dantman)
-* changed user caching to realname cache for a smaller memory footprint (thanks Dantman)
+* changed wiki_user caching to realname cache for a smaller memory footprint (thanks Dantman)
 * moved debug handling into class and uses $wgRequest, can expand later for 1.18+ (thanks Dantman)
 * license change to BSD, cc is not recommended for software (says them) (thanks Dantman)
 * fixed author link (backported to 0.1, thanks Dantman)
@@ -43,16 +43,16 @@ issues:
 == 0.1 (2011-09-17) ==
 
 initial tested pages:
-* Special:ListUsers
+* Special:Listwiki_users
 * old and new Special:RecentChanges
-* Special:Search of the User: space
+* Special:Search of the wiki_user: space
 * History of page
 * Revisions list of page
 * Revision view of page
 * Revision Compare
 * Page header + html title (limited)
-* Should integrate into any page where user links are found
+* Should integrate into any page where wiki_user links are found
 
 issues:
-*Always destructive of User: text, new config in future release?
-*improve bare detection on users with spaces or underscores in names (article titles and html title)
+*Always destructive of wiki_user: text, new config in future release?
+*improve bare detection on wiki_users with spaces or underscores in names (article titles and html title)

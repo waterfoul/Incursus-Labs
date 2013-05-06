@@ -88,24 +88,24 @@ class SpecialRecentchangeslinked extends SpecialRecentChanges {
 		 * expects only one result set so we use UNION instead.
 		 */
 
-		$dbr = wfGetDB( DB_SLAVE, 'recentchangeslinked' );
+		r = wfGetDB( DB_SLAVE, 'recentchangeslinked' );
 		$id = $title->getArticleID();
 		$ns = $title->getNamespace();
-		$dbkey = $title->getDBkey();
+		key = $title->getDBkey();
 
 		$tables = array( 'recentchanges' );
-		$select = array( $dbr->tableName( 'recentchanges' ) . '.*' );
+		$select = array( r->tableName( 'recentchanges' ) . '.*' );
 		$join_conds = array();
 		$query_options = array();
 
 		// left join with watchlist table to highlight watched rows
-		$uid = $this->getUser()->getId();
+		$uid = $this->getwiki_user()->getId();
 		if( $uid ) {
 			$tables[] = 'watchlist';
-			$select[] = 'wl_user';
-			$join_conds['watchlist'] = array( 'LEFT JOIN', "wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace" );
+			$select[] = 'wl_wiki_user';
+			$join_conds['watchlist'] = array( 'LEFT JOIN', "wl_wiki_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace" );
 		}
-		if ( $this->getUser()->isAllowed( 'rollback' ) ) {
+		if ( $this->getwiki_user()->isAllowed( 'rollback' ) ) {
 			$tables[] = 'page';
 			$join_conds['page'] = array('LEFT JOIN', 'rc_cur_id=page_id');
 			$select[] = 'page_latest';
@@ -164,9 +164,9 @@ class SpecialRecentchangeslinked extends SpecialRecentChanges {
 					if( $ns != $link_ns ) {
 						continue;
 					} // should never happen, but check anyway
-					$subconds = array( "{$pfx}_to" => $dbkey );
+					$subconds = array( "{$pfx}_to" => key );
 				} else {
-					$subconds = array( "{$pfx}_namespace" => $ns, "{$pfx}_title" => $dbkey );
+					$subconds = array( "{$pfx}_namespace" => $ns, "{$pfx}_title" => key );
 				}
 				$subjoin = "rc_cur_id = {$pfx}_from";
 			} else {
@@ -180,13 +180,13 @@ class SpecialRecentchangeslinked extends SpecialRecentChanges {
 				}
 			}
 
-			if( $dbr->unionSupportsOrderAndLimit()) {
+			if( r->unionSupportsOrderAndLimit()) {
 				$order = array( 'ORDER BY' => 'rc_timestamp DESC' );
 			} else {
 				$order = array();
 			}
 
-			$query = $dbr->selectSQLText(
+			$query = r->selectSQLText(
 				array_merge( $tables, array( $link_table ) ),
 				$select,
 				$conds + $subconds,
@@ -195,8 +195,8 @@ class SpecialRecentchangeslinked extends SpecialRecentChanges {
 				$join_conds + array( $link_table => array( 'INNER JOIN', $subjoin ) )
 			);
 
-			if( $dbr->unionSupportsOrderAndLimit())
-				$query = $dbr->limitResult( $query, $limit );
+			if( r->unionSupportsOrderAndLimit())
+				$query = r->limitResult( $query, $limit );
 
 			$subsql[] = $query;
 		}
@@ -204,15 +204,15 @@ class SpecialRecentchangeslinked extends SpecialRecentChanges {
 		if( count($subsql) == 0 ) {
 			return false; // should never happen
 		}
-		if( count($subsql) == 1 && $dbr->unionSupportsOrderAndLimit() ) {
+		if( count($subsql) == 1 && r->unionSupportsOrderAndLimit() ) {
 			$sql = $subsql[0];
 		} else {
 			// need to resort and relimit after union
-			$sql = $dbr->unionQueries($subsql, false).' ORDER BY rc_timestamp DESC';
-			$sql = $dbr->limitResult($sql, $limit, false);
+			$sql = r->unionQueries($subsql, false).' ORDER BY rc_timestamp DESC';
+			$sql = r->limitResult($sql, $limit, false);
 		}
 
-		$res = $dbr->query( $sql, __METHOD__ );
+		$res = r->query( $sql, __METHOD__ );
 
 		if( $res->numRows() == 0 ) {
 			$this->mResultEmpty = true;

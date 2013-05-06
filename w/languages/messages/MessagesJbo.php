@@ -17,7 +17,7 @@
  */
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-justify' => 'jufmei co mulno selkuspe',
 
 'underline-always' => 'roroi',
@@ -141,7 +141,7 @@ $messages = array(
 'jumptonavigation' => 'ckupau',
 'jumptosearch' => 'sisku',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'About {{SITENAME}}',
 'aboutpage' => "Project:sera'a",
 'copyright' => "lo selvau cu gubni ja'i la'o gy. $1 .gy.",
@@ -185,7 +185,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'lo ckupau',
-'nstab-user' => 'pilno kibypapri',
+'nstab-wiki_user' => 'pilno kibypapri',
 'nstab-media' => 'Media page',
 'nstab-special' => 'steci ckupau',
 'nstab-project' => 'gungunma ckupau',
@@ -201,15 +201,15 @@ $messages = array(
 'yourname' => 'to pilno cmene toi',
 'login' => "co'a se jaspu",
 'nav-login-createaccount' => 'jaspu nerkla / vreji lo cnino pilno',
-'userlogin' => "co'a pilno lo jaspu / zbasu lo jaspu",
+'wiki_userlogin' => "co'a pilno lo jaspu / zbasu lo jaspu",
 'logout' => "co'u se jaspu",
-'userlogout' => "co'u se jaspu",
+'wiki_userlogout' => "co'u se jaspu",
 'nologinlink' => 'zbasu lo jaspu',
 'gotaccountlink' => "co'a se jaspu",
 'loginlanguagelabel' => 'to bangu toi $1',
 
 # Special:PasswordReset
-'passwordreset-username' => 'to pilno cmene toi',
+'passwordreset-wiki_username' => 'to pilno cmene toi',
 
 # Edit page toolbar
 'extlink_sample' => 'http://www.example.com link title',
@@ -294,7 +294,7 @@ $messages = array(
 'filehist' => 'lo vreji citri',
 'filehist-current' => 'cabna',
 'filehist-datetime' => 'detytcika',
-'filehist-user' => 'pilno',
+'filehist-wiki_user' => 'pilno',
 'filehist-comment' => 'pinka',
 'imagelinks' => 'vreji nu pilno',
 
@@ -374,7 +374,7 @@ $messages = array(
 'allmessagesname' => 'cmene',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'ckupau pe do poi pilno',
+'tooltip-pt-wiki_userpage' => 'ckupau pe do poi pilno',
 'tooltip-pt-mytalk' => 'pe do nu casnu ckupau',
 'tooltip-pt-watchlist' => 'le liste be lo kibypapri poi do zgana',
 'tooltip-pt-mycontris' => 'le liste be le do selstika',

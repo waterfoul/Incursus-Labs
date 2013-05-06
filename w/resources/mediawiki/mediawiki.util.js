@@ -451,7 +451,7 @@
 		},
 
 		/**
-		 * Add a little box at the top of the screen to inform the user of
+		 * Add a little box at the top of the screen to inform the wiki_user of
 		 * something, replacing any previous message.
 		 * Calling with no arguments, with an empty string or null will hide the message
 		 *
@@ -530,7 +530,7 @@
 				// start of string
 				'^'
 				+
-				// User part which is liberal :p
+				// wiki_user part which is liberal :p
 				'[' + rfc5322_atext + '\\.]+'
 				+
 				// 'at'

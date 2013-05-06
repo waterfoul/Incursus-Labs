@@ -27,8 +27,8 @@ class DumpRev extends Maintenance {
 	}
 
 	public function execute() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow(
+		r = wfGetDB( DB_SLAVE );
+		$row = r->selectRow(
 			array( 'text', 'revision' ),
 			array( 'old_flags', 'old_text' ),
 			array( 'old_id=rev_text_id', 'rev_id' => $this->getArg() )

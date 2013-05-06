@@ -36,19 +36,19 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 	}
 
 	public function execute() {
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		// Before doing anything at all, let's check permissions
-		if ( !$user->isAllowed( 'deletedhistory' ) ) {
+		if ( !$wiki_user->isAllowed( 'deletedhistory' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view deleted revision information', 'permissiondenied' );
 		}
 
-		$db = $this->getDB();
+		 = $this->getDB();
 		$params = $this->extractRequestParams( false );
 		$prop = array_flip( $params['prop'] );
 		$fld_parentid = isset( $prop['parentid'] );
 		$fld_revid = isset( $prop['revid'] );
-		$fld_user = isset( $prop['user'] );
-		$fld_userid = isset( $prop['userid'] );
+		$fld_wiki_user = isset( $prop['wiki_user'] );
+		$fld_wiki_userid = isset( $prop['wiki_userid'] );
 		$fld_comment = isset( $prop['comment'] );
 		$fld_parsedcomment = isset ( $prop['parsedcomment'] );
 		$fld_minor = isset( $prop['minor'] );
@@ -63,16 +63,16 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 
 		// This module operates in three modes:
 		// 'revs': List deleted revs for certain titles (1)
-		// 'user': List deleted revs by a certain user (2)
+		// 'wiki_user': List deleted revs by a certain wiki_user (2)
 		// 'all': List all deleted revs in NS (3)
 		$mode = 'all';
 		if ( count( $titles ) > 0 ) {
 			$mode = 'revs';
-		} elseif ( !is_null( $params['user'] ) ) {
-			$mode = 'user';
+		} elseif ( !is_null( $params['wiki_user'] ) ) {
+			$mode = 'wiki_user';
 		}
 
-		if ( $mode == 'revs' || $mode == 'user' ) {
+		if ( $mode == 'revs' || $mode == 'wiki_user' ) {
 			// Ignore namespace and unique due to inability to know whether they were purposely set
 			foreach( array( 'from', 'to', 'prefix', /*'namespace',*/ 'continue', /*'unique'*/ ) as $p ) {
 				if ( !is_null( $params[$p] ) ) {
@@ -87,8 +87,8 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			}
 		}
 
-		if ( !is_null( $params['user'] ) && !is_null( $params['excludeuser'] ) ) {
-			$this->dieUsage( 'user and excludeuser cannot be used together', 'badparams' );
+		if ( !is_null( $params['wiki_user'] ) && !is_null( $params['excludewiki_user'] ) ) {
+			$this->dieUsage( 'wiki_user and excludewiki_user cannot be used together', 'badparams' );
 		}
 
 		$this->addTables( 'archive' );
@@ -97,8 +97,8 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 
 		$this->addFieldsIf( 'ar_parent_id', $fld_parentid );
 		$this->addFieldsIf( 'ar_rev_id', $fld_revid );
-		$this->addFieldsIf( 'ar_user_text', $fld_user );
-		$this->addFieldsIf( 'ar_user', $fld_userid );
+		$this->addFieldsIf( 'ar_wiki_user_text', $fld_wiki_user );
+		$this->addFieldsIf( 'ar_wiki_user', $fld_wiki_userid );
 		$this->addFieldsIf( 'ar_comment', $fld_comment || $fld_parsedcomment );
 		$this->addFieldsIf( 'ar_minor_edit', $fld_minor );
 		$this->addFieldsIf( 'ar_len', $fld_len );
@@ -110,26 +110,26 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			$this->addWhere( 'ar_text_id = old_id' );
 
 			// This also means stricter restrictions
-			if ( !$user->isAllowed( 'undelete' ) ) {
+			if ( !$wiki_user->isAllowed( 'undelete' ) ) {
 				$this->dieUsage( 'You don\'t have permission to view deleted revision content', 'permissiondenied' );
 			}
 		}
 		// Check limits
-		$userMax = $fld_content ? ApiBase::LIMIT_SML1 : ApiBase::LIMIT_BIG1;
+		$wiki_userMax = $fld_content ? ApiBase::LIMIT_SML1 : ApiBase::LIMIT_BIG1;
 		$botMax  = $fld_content ? ApiBase::LIMIT_SML2 : ApiBase::LIMIT_BIG2;
 
 		$limit = $params['limit'];
 
 		if ( $limit == 'max' ) {
-			$limit = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
+			$limit = $this->getMain()->canApiHighLimits() ? $botMax : $wiki_userMax;
 			$this->getResult()->setParsedLimit( $this->getModuleName(), $limit );
 		}
 
-		$this->validateLimit( 'limit', $limit, 1, $userMax, $botMax );
+		$this->validateLimit( 'limit', $limit, 1, $wiki_userMax, $botMax );
 
 		if ( $fld_token ) {
 			// Undelete tokens are identical for all pages, so we cache one here
-			$token = $user->getEditToken( '', $this->getMain()->getRequest() );
+			$token = $wiki_user->getEditToken( '', $this->getMain()->getRequest() );
 		}
 
 		$dir = $params['dir'];
@@ -137,7 +137,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 		// We need a custom WHERE clause that matches all titles.
 		if ( $mode == 'revs' ) {
 			$lb = new LinkBatch( $titles );
-			$where = $lb->constructSet( 'ar', $db );
+			$where = $lb->constructSet( 'ar',  );
 			$this->addWhere( $where );
 		} elseif ( $mode == 'all' ) {
 			$this->addWhereFld( 'ar_namespace', $params['namespace'] );
@@ -147,15 +147,15 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			$this->addWhereRange( 'ar_title', $dir, $from, $to );
 
 			if ( isset( $params['prefix'] ) ) {
-				$this->addWhere( 'ar_title' . $db->buildLike( $this->titlePartToKey( $params['prefix'] ), $db->anyString() ) );
+				$this->addWhere( 'ar_title' . ->buildLike( $this->titlePartToKey( $params['prefix'] ), ->anyString() ) );
 			}
 		}
 
-		if ( !is_null( $params['user'] ) ) {
-			$this->addWhereFld( 'ar_user_text', $params['user'] );
-		} elseif ( !is_null( $params['excludeuser'] ) ) {
-			$this->addWhere( 'ar_user_text != ' .
-				$db->addQuotes( $params['excludeuser'] ) );
+		if ( !is_null( $params['wiki_user'] ) ) {
+			$this->addWhereFld( 'ar_wiki_user_text', $params['wiki_user'] );
+		} elseif ( !is_null( $params['excludewiki_user'] ) ) {
+			$this->addWhere( 'ar_wiki_user_text != ' .
+				->addQuotes( $params['excludewiki_user'] ) );
 		}
 
 		if ( !is_null( $params['continue'] ) && ( $mode == 'all' || $mode == 'revs' ) ) {
@@ -164,8 +164,8 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 				$this->dieUsage( 'Invalid continue param. You should pass the original value returned by the previous query', 'badcontinue' );
 			}
 			$ns = intval( $cont[0] );
-			$title = $db->addQuotes( $cont[1] );
-			$ts = $db->addQuotes( $db->timestamp( $cont[2] ) );
+			$title = ->addQuotes( $cont[1] );
+			$ts = ->addQuotes( ->timestamp( $cont[2] ) );
 			$op = ( $dir == 'newer' ? '>' : '<' );
 			$this->addWhere( "ar_namespace $op $ns OR " .
 					"(ar_namespace = $ns AND " .
@@ -175,7 +175,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 		}
 
 		$this->addOption( 'LIMIT', $limit + 1 );
-		$this->addOption( 'USE INDEX', array( 'archive' => ( $mode == 'user' ? 'usertext_timestamp' : 'name_title_timestamp' ) ) );
+		$this->addOption( 'USE INDEX', array( 'archive' => ( $mode == 'wiki_user' ? 'wiki_usertext_timestamp' : 'name_title_timestamp' ) ) );
 		if ( $mode == 'all' ) {
 			if ( $params['unique'] ) {
 				$this->addOption( 'GROUP BY', 'ar_title' );
@@ -218,11 +218,11 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			if ( $fld_parentid && !is_null( $row->ar_parent_id ) ) {
 				$rev['parentid'] = intval( $row->ar_parent_id );
 			}
-			if ( $fld_user ) {
-				$rev['user'] = $row->ar_user_text;
+			if ( $fld_wiki_user ) {
+				$rev['wiki_user'] = $row->ar_wiki_user_text;
 			}
-			if ( $fld_userid ) {
-				$rev['userid'] = $row->ar_user;
+			if ( $fld_wiki_userid ) {
+				$rev['wiki_userid'] = $row->ar_wiki_user;
 			}
 			if ( $fld_comment ) {
 				$rev['comment'] = $row->ar_comment;
@@ -299,11 +299,11 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			'prefix' => null,
 			'continue' => null,
 			'unique' => false,
-			'user' => array(
-				ApiBase::PARAM_TYPE => 'user'
+			'wiki_user' => array(
+				ApiBase::PARAM_TYPE => 'wiki_user'
 			),
-			'excludeuser' => array(
-				ApiBase::PARAM_TYPE => 'user'
+			'excludewiki_user' => array(
+				ApiBase::PARAM_TYPE => 'wiki_user'
 			),
 			'namespace' => array(
 				ApiBase::PARAM_TYPE => 'namespace',
@@ -317,12 +317,12 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			),
 			'prop' => array(
-				ApiBase::PARAM_DFLT => 'user|comment',
+				ApiBase::PARAM_DFLT => 'wiki_user|comment',
 				ApiBase::PARAM_TYPE => array(
 					'revid',
 					'parentid',
-					'user',
-					'userid',
+					'wiki_user',
+					'wiki_userid',
 					'comment',
 					'parsedcomment',
 					'minor',
@@ -349,8 +349,8 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 				'Which properties to get',
 				' revid          - Adds the revision ID of the deleted revision',
 				' parentid       - Adds the revision ID of the previous revision to the page',
-				' user           - Adds the user who made the revision',
-				' userid         - Adds the user ID whom made the revision',
+				' wiki_user           - Adds the wiki_user who made the revision',
+				' wiki_userid         - Adds the wiki_user ID whom made the revision',
 				' comment        - Adds the comment of the revision',
 				' parsedcomment  - Adds the parsed comment of the revision',
 				' minor          - Tags if the revision is minor',
@@ -360,8 +360,8 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 				' token          - Gives the edit token',
 			),
 			'namespace' => 'Only list pages in this namespace (3)',
-			'user' => 'Only list revisions by this user',
-			'excludeuser' => 'Don\'t list revisions by this user',
+			'wiki_user' => 'Only list revisions by this wiki_user',
+			'excludewiki_user' => 'Don\'t list revisions by this wiki_user',
 			'continue' => 'When more results are available, use this to continue (3)',
 			'unique' => 'List only one revision for each page (3)',
 		);
@@ -385,8 +385,8 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			'List deleted revisions.',
 			'Operates in three modes:',
 			' 1) List deleted revisions for the given title(s), sorted by timestamp',
-			' 2) List deleted contributions for the given user, sorted by timestamp (no titles specified)',
-			" 3) List all deleted revisions in the given namespace, sorted by title and timestamp (no titles specified, {$p}user not set)",
+			' 2) List deleted contributions for the given wiki_user, sorted by timestamp (no titles specified)',
+			" 3) List all deleted revisions in the given namespace, sorted by title and timestamp (no titles specified, {$p}wiki_user not set)",
 			'Certain parameters only apply to some modes and are ignored in others.',
 			'For instance, a parameter marked (1) only applies to mode 1 and is ignored in modes 2 and 3',
 		);
@@ -395,7 +395,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view deleted revision information' ),
-			array( 'code' => 'badparams', 'info' => 'user and excludeuser cannot be used together' ),
+			array( 'code' => 'badparams', 'info' => 'wiki_user and excludewiki_user cannot be used together' ),
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view deleted revision content' ),
 			array( 'code' => 'badcontinue', 'info' => 'Invalid continue param. You should pass the original value returned by the previous query' ),
 			array( 'code' => 'badparams', 'info' => "The 'from' parameter cannot be used in modes 1 or 2" ),
@@ -409,9 +409,9 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=query&list=deletedrevs&titles=Main%20Page|Talk:Main%20Page&drprop=user|comment|content'
+			'api.php?action=query&list=deletedrevs&titles=Main%20Page|Talk:Main%20Page&drprop=wiki_user|comment|content'
 				=> 'List the last deleted revisions of Main Page and Talk:Main Page, with content (mode 1)',
-			'api.php?action=query&list=deletedrevs&druser=Bob&drlimit=50'
+			'api.php?action=query&list=deletedrevs&drwiki_user=Bob&drlimit=50'
 				=> 'List the last 50 deleted contributions by Bob (mode 2)',
 			'api.php?action=query&list=deletedrevs&drdir=newer&drlimit=50'
 				=> 'List the first 50 deleted revisions in the main namespace (mode 3)',

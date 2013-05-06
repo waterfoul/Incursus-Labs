@@ -57,8 +57,8 @@ class Category {
 			# Already initialized
 			return true;
 		}
-		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow(
+		r = wfGetDB( DB_SLAVE );
+		$row = r->selectRow(
 			'category',
 			array( 'cat_id', 'cat_title', 'cat_pages', 'cat_subcats', 'cat_files' ),
 			$where,
@@ -225,7 +225,7 @@ class Category {
 	 * @return TitleArray object for category members.
 	 */
 	public function getMembers( $limit = false, $offset = '' ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 
 		$conds = array( 'cl_to' => $this->getName(), 'cl_from = page_id' );
 		$options = array( 'ORDER BY' => 'cl_sortkey' );
@@ -235,11 +235,11 @@ class Category {
 		}
 
 		if ( $offset !== '' ) {
-			$conds[] = 'cl_sortkey > ' . $dbr->addQuotes( $offset );
+			$conds[] = 'cl_sortkey > ' . r->addQuotes( $offset );
 		}
 
 		return TitleArray::newFromResult(
-			$dbr->select(
+			r->select(
 				array( 'page', 'categorylinks' ),
 				array( 'page_id', 'page_namespace', 'page_title', 'page_len',
 					'page_is_redirect', 'page_latest' ),
@@ -278,16 +278,16 @@ class Category {
 			}
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin( __METHOD__  );
+		w = wfGetDB( DB_MASTER );
+		w->begin( __METHOD__  );
 
 		# Insert the row if it doesn't exist yet (e.g., this is being run via
 		# update.php from a pre-1.16 schema).  TODO: This will cause lots and
 		# lots of gaps on some non-MySQL DBMSes if you run populateCategory.php
 		# repeatedly.  Plus it's an extra query that's unneeded almost all the
 		# time.  This should be rewritten somehow, probably.
-		$seqVal = $dbw->nextSequenceValue( 'category_cat_id_seq' );
-		$dbw->insert(
+		$seqVal = w->nextSequenceValue( 'category_cat_id_seq' );
+		w->insert(
 			'category',
 			array(
 				'cat_id' => $seqVal,
@@ -297,9 +297,9 @@ class Category {
 			'IGNORE'
 		);
 
-		$cond1 = $dbw->conditional( array( 'page_namespace' => NS_CATEGORY ), 1, 'NULL' );
-		$cond2 = $dbw->conditional( array( 'page_namespace' => NS_FILE ), 1, 'NULL' );
-		$result = $dbw->selectRow(
+		$cond1 = w->conditional( array( 'page_namespace' => NS_CATEGORY ), 1, 'NULL' );
+		$cond2 = w->conditional( array( 'page_namespace' => NS_FILE ), 1, 'NULL' );
+		$result = w->selectRow(
 			array( 'categorylinks', 'page' ),
 			array( 'pages' => 'COUNT(*)',
 				   'subcats' => "COUNT($cond1)",
@@ -309,7 +309,7 @@ class Category {
 			__METHOD__,
 			'LOCK IN SHARE MODE'
 		);
-		$ret = $dbw->update(
+		$ret = w->update(
 			'category',
 			array(
 				'cat_pages' => $result->pages,
@@ -319,7 +319,7 @@ class Category {
 			array( 'cat_title' => $this->mName ),
 			__METHOD__
 		);
-		$dbw->commit( __METHOD__ );
+		w->commit( __METHOD__ );
 
 		# Now we should update our local counts.
 		$this->mPages   = $result->pages;

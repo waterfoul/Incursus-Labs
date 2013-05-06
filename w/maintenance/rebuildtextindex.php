@@ -38,7 +38,7 @@ class RebuildTextIndex extends Maintenance {
 	/**
 	 * @var DatabaseBase
 	 */
-	private $db;
+	private ;
 
 	public function __construct() {
 		parent::__construct();

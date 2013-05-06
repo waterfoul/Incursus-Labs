@@ -35,19 +35,19 @@ class UploadFromUrl extends UploadBase {
 	protected $mTempPath, $mTmpHandle;
 
 	/**
-	 * Checks if the user is allowed to use the upload-by-URL feature. If the
-	 * user is not allowed, return the name of the user right as a string. If
-	 * the user is allowed, have the parent do further permissions checking.
+	 * Checks if the wiki_user is allowed to use the upload-by-URL feature. If the
+	 * wiki_user is not allowed, return the name of the wiki_user right as a string. If
+	 * the wiki_user is allowed, have the parent do further permissions checking.
 	 *
-	 * @param $user User
+	 * @param $wiki_user wiki_user
 	 *
 	 * @return bool|string
 	 */
-	public static function isAllowed( $user ) {
-		if ( !$user->isAllowed( 'upload_by_url' ) ) {
+	public static function isAllowed( $wiki_user ) {
+		if ( !$wiki_user->isAllowed( 'upload_by_url' ) ) {
 			return 'upload_by_url';
 		}
-		return parent::isAllowed( $user );
+		return parent::isAllowed( $wiki_user );
 	}
 
 	/**
@@ -129,12 +129,12 @@ class UploadFromUrl extends UploadBase {
 	 * @return bool
 	 */
 	public static function isValidRequest( $request ) {
-		global $wgUser;
+		global $wgwiki_user;
 
 		$url = $request->getVal( 'wpUploadFileURL' );
 		return !empty( $url )
 			&& Http::isValidURI( $url )
-			&& $wgUser->isAllowed( 'upload_by_url' );
+			&& $wgwiki_user->isAllowed( 'upload_by_url' );
 	}
 
 	/**
@@ -262,14 +262,14 @@ class UploadFromUrl extends UploadBase {
 	/**
 	 * Wrapper around the parent function in order to defer checking protection
 	 * until we are sure that the file can actually be uploaded
-	 * @param $user User
+	 * @param $wiki_user wiki_user
 	 * @return bool|mixed
 	 */
-	public function verifyTitlePermissions( $user ) {
+	public function verifyTitlePermissions( $wiki_user ) {
 		if ( $this->mAsync ) {
 			return true;
 		}
-		return parent::verifyTitlePermissions( $user );
+		return parent::verifyTitlePermissions( $wiki_user );
 	}
 
 	/**
@@ -278,34 +278,34 @@ class UploadFromUrl extends UploadBase {
 	 * @param $comment string
 	 * @param $pageText string
 	 * @param $watch bool
-	 * @param $user User
+	 * @param $wiki_user wiki_user
 	 * @return Status
 	 */
-	public function performUpload( $comment, $pageText, $watch, $user ) {
+	public function performUpload( $comment, $pageText, $watch, $wiki_user ) {
 		if ( $this->mAsync ) {
-			$sessionKey = $this->insertJob( $comment, $pageText, $watch, $user );
+			$sessionKey = $this->insertJob( $comment, $pageText, $watch, $wiki_user );
 
 			return Status::newFatal( 'async', $sessionKey );
 		}
 
-		return parent::performUpload( $comment, $pageText, $watch, $user );
+		return parent::performUpload( $comment, $pageText, $watch, $wiki_user );
 	}
 
 	/**
 	 * @param $comment
 	 * @param $pageText
 	 * @param $watch
-	 * @param $user User
+	 * @param $wiki_user wiki_user
 	 * @return String
 	 */
-	protected function insertJob( $comment, $pageText, $watch, $user ) {
+	protected function insertJob( $comment, $pageText, $watch, $wiki_user ) {
 		$sessionKey = $this->stashSession();
 		$job = new UploadFromUrlJob( $this->getTitle(), array(
 			'url' => $this->mUrl,
 			'comment' => $comment,
 			'pageText' => $pageText,
 			'watch' => $watch,
-			'userName' => $user->getName(),
+			'wiki_userName' => $wiki_user->getName(),
 			'leaveMessage' => $this->mAsync == 'async-leavemessage',
 			'ignoreWarnings' => $this->mIgnoreWarnings,
 			'sessionId' => session_id(),

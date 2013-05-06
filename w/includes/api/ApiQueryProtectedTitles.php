@@ -54,7 +54,7 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 		$this->addFields( array( 'pt_namespace', 'pt_title', 'pt_timestamp' ) );
 
 		$prop = array_flip( $params['prop'] );
-		$this->addFieldsIf( 'pt_user', isset( $prop['user'] ) || isset( $prop['userid'] ) );
+		$this->addFieldsIf( 'pt_wiki_user', isset( $prop['wiki_user'] ) || isset( $prop['wiki_userid'] ) );
 		$this->addFieldsIf( 'pt_reason', isset( $prop['comment'] ) || isset( $prop['parsedcomment'] ) );
 		$this->addFieldsIf( 'pt_expiry', isset( $prop['expiry'] ) );
 		$this->addFieldsIf( 'pt_create_perm', isset( $prop['level'] ) );
@@ -63,11 +63,11 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 		$this->addWhereFld( 'pt_namespace', $params['namespace'] );
 		$this->addWhereFld( 'pt_create_perm', $params['level'] );
 
-		if ( isset( $prop['user'] ) ) {
-			$this->addTables( 'user' );
-			$this->addFields( 'user_name' );
-			$this->addJoinConds( array( 'user' => array( 'LEFT JOIN',
-				'user_id=pt_user'
+		if ( isset( $prop['wiki_user'] ) ) {
+			$this->addTables( 'wiki_user' );
+			$this->addFields( 'wiki_user_name' );
+			$this->addJoinConds( array( 'wiki_user' => array( 'LEFT JOIN',
+				'wiki_user_id=pt_wiki_user'
 			) ) );
 		}
 
@@ -94,12 +94,12 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 					$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $row->pt_timestamp );
 				}
 
-				if ( isset( $prop['user'] ) && !is_null( $row->user_name ) ) {
-					$vals['user'] = $row->user_name;
+				if ( isset( $prop['wiki_user'] ) && !is_null( $row->wiki_user_name ) ) {
+					$vals['wiki_user'] = $row->wiki_user_name;
 				}
 
-				if ( isset( $prop['user'] ) ) {
-					$vals['userid'] = $row->pt_user;
+				if ( isset( $prop['wiki_user'] ) ) {
+					$vals['wiki_userid'] = $row->pt_wiki_user;
 				}
 
 				if ( isset( $prop['comment'] ) ) {
@@ -140,7 +140,7 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 	public function getCacheMode( $params ) {
 		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
 			// formatComment() calls wfMessage() among other things
-			return 'anon-public-user-private';
+			return 'anon-public-wiki_user-private';
 		} else {
 			return 'public';
 		}
@@ -182,8 +182,8 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_DFLT => 'timestamp|level',
 				ApiBase::PARAM_TYPE => array(
 					'timestamp',
-					'user',
-					'userid',
+					'wiki_user',
+					'wiki_userid',
 					'comment',
 					'parsedcomment',
 					'expiry',
@@ -203,8 +203,8 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 			'prop' => array(
 				'Which properties to get',
 				' timestamp      - Adds the timestamp of when protection was added',
-				' user           - Adds the user that added the protection',
-				' userid         - Adds the user id that added the protection',
+				' wiki_user           - Adds the wiki_user that added the protection',
+				' wiki_userid         - Adds the wiki_user id that added the protection',
 				' comment        - Adds the comment for the protection',
 				' parsedcomment  - Adds the parsed comment for the protection',
 				' expiry         - Adds the timestamp of when the protection will be lifted',
@@ -224,12 +224,12 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 			'timestamp' => array(
 				'timestamp' => 'timestamp'
 			),
-			'user' => array(
-				'user' => array(
+			'wiki_user' => array(
+				'wiki_user' => array(
 					ApiBase::PROP_TYPE => 'string',
 					ApiBase::PROP_NULLABLE => true
 				),
-				'userid' => 'integer'
+				'wiki_userid' => 'integer'
 			),
 			'comment' => array(
 				'comment' => 'string'

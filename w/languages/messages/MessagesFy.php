@@ -75,7 +75,7 @@ $specialPageAliases = array(
 	'Deadendpages'              => array( 'Siden sûnder keppelings', 'Siden sûnder ferwizings', 'Siden sûnder links' ),
 	'Disambiguations'           => array( 'Betsjuttingssiden', 'Trochferwizings' ),
 	'DoubleRedirects'           => array( 'Dûbele trochferwizings', 'Dûbeletrochferwizings' ),
-	'Emailuser'                 => array( 'Skriuw meidogger', 'Skriuw dizze brûker', 'Skriuw dizze meidogger' ),
+	'Emailwiki_user'                 => array( 'Skriuw meidogger', 'Skriuw dizze brûker', 'Skriuw dizze meidogger' ),
 	'Export'                    => array( 'Eksportearje' ),
 	'Fewestrevisions'           => array( 'Siden mei de minste bewurkings', 'Siden mei de minste ferzjes', 'Siden mei de minste wizigings' ),
 	'Filepath'                  => array( 'Triempad' ),
@@ -85,7 +85,7 @@ $specialPageAliases = array(
 	'Listbots'                  => array( 'Meidoggerlist Bots' ),
 	'Listfiles'                 => array( 'Ofbyld list', 'Ofbyldlist' ),
 	'Listredirects'             => array( 'List fan trochferwizings' ),
-	'Listusers'                 => array( 'Meidoggerlist', 'Brûkerlist' ),
+	'Listwiki_users'                 => array( 'Meidoggerlist', 'Brûkerlist' ),
 	'Lockdb'                    => array( 'Meitsje de database \'Net-skriuwe\'', 'Meitsje de databank \'Net-skriuwe\'' ),
 	'Log'                       => array( 'Loch', 'Logboek', 'Logboeken', 'Lochs' ),
 	'Lonelypages'               => array( 'Lossteande siden' ),
@@ -126,9 +126,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'Net brûkte sjabloanen', 'Net brûkte berjochten' ),
 	'Unwatchedpages'            => array( 'Siden dy\'t net op in folchlist steane' ),
 	'Upload'                    => array( 'Bied triem oan', 'Oanbied', 'Bied bestân oan' ),
-	'Userlogin'                 => array( 'Oanmelde', 'Oanmeld' ),
-	'Userlogout'                => array( 'Ofmelde', 'Ofmeld', 'Ôfmelde', 'Ôfmeld' ),
-	'Userrights'                => array( 'Meidoggerrjochten', 'Behear fan meidoggerrjochten' ),
+	'wiki_userlogin'                 => array( 'Oanmelde', 'Oanmeld' ),
+	'wiki_userlogout'                => array( 'Ofmelde', 'Ofmeld', 'Ôfmelde', 'Ôfmeld' ),
+	'wiki_userrights'                => array( 'Meidoggerrjochten', 'Behear fan meidoggerrjochten' ),
 	'Version'                   => array( 'Ferzje', 'Programmatuerferzje' ),
 	'Wantedcategories'          => array( 'Nedige kategoryen', 'Net-besteande kategoryen dêr\'t it meast nei ferwiisd wurdt' ),
 	'Wantedpages'               => array( 'Nedige siden' ),
@@ -141,7 +141,7 @@ $separatorTransformTable = array( ',' => '.', '.' => ',' );
 $linkTrail = '/^([a-zàáèéìíòóùúâêîôûäëïöü]+)(.*)$/sDu';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Keppelings ûnderstreekje:',
 'tog-justify' => 'Paragrafen útfolje',
 'tog-hideminor' => "Tekstwizigings wei litte út 'Koartlyn feroare'",
@@ -165,7 +165,7 @@ $messages = array(
 'tog-previewonfirst' => 'Lit foarbyld sjen by earste wiziging',
 'tog-nocache' => 'Gjin oerslach brûke',
 'tog-enotifwatchlistpages' => 'E-mail my as in side op myn folchlist feroare is.',
-'tog-enotifusertalkpages' => 'E-mail my as myn oerlisside feroare wurdt',
+'tog-enotifwiki_usertalkpages' => 'E-mail my as myn oerlisside feroare wurdt',
 'tog-enotifminoredits' => 'E-mail my ek by lytse feroarings fan siden op myn folchlist',
 'tog-enotifrevealaddr' => 'Myn e-mailadres sjen litte yn e-mailberjochten',
 'tog-shownumberswatching' => 'It tal brûkers sjen litte dat dizze side folget',
@@ -337,7 +337,7 @@ $messages = array(
 'talk' => 'Oerlis',
 'views' => 'Aspekten/aksjes',
 'toolbox' => 'Arkkiste',
-'userpage' => 'Meidoggerside',
+'wiki_userpage' => 'Meidoggerside',
 'projectpage' => 'Metaside',
 'imagepage' => 'Besjoch triemside',
 'mediawikipage' => 'Berjochtside sjen litte',
@@ -360,7 +360,7 @@ Wachtsje efkes foardatsto op 'e nij tagong ta dizze side probearrest te krijen.
 
 $1",
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Oer de {{SITENAME}}',
 'aboutpage' => 'Project:Ynfo',
 'copyright' => 'Ynhâld is beskikber ûnder de $1.',
@@ -416,7 +416,7 @@ $1",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Side',
-'nstab-user' => 'Meidogger',
+'nstab-wiki_user' => 'Meidogger',
 'nstab-media' => 'Mediaside',
 'nstab-special' => 'Bysûndere side',
 'nstab-project' => 'Projektside',
@@ -457,7 +457,7 @@ De behearder hat dizze útlis jûn:
 Dat kin foarkomme as Jo in ferâldere ferwizing nei it ferskil tusken twa ferzjes fan in side folgje of in ferzje opfreegje dy\'t wiske is.
 
 As dat net sa is, hawwe Jo faaks in fout yn \'e software fûn.
-Meitsje dêr melding fan by in [[Special:ListUsers/sysop|systeembehearder]] fan {{SITENAME}} en neam dêrby de URL fan dizze side.',
+Meitsje dêr melding fan by in [[Special:Listwiki_users/sysop|systeembehearder]] fan {{SITENAME}} en neam dêrby de URL fan dizze side.',
 'missingarticle-rev' => '(ferzjenûmer: $1)',
 'missingarticle-diff' => '(Feroaring: $1, $2)',
 'readonly_lag' => 'De database is automatysk beskoattele wylst de ûndergeskikte databaseservers syngronisearje mei de haadserver.',
@@ -493,7 +493,7 @@ Query: $2',
 'cascadeprotected' => 'Dizze side is skoattele tsjin wizigjen, om\'t der in ûnderdiel útmakket fan de neikommende {{PLURAL:$1|side|siden}}, dy\'t skoattele {{PLURAL:$1|is|binne}} mei de "ûnderlizzende siden" opsje ynskeakele: $2',
 'namespaceprotected' => "Jo hawwe gjin rjochten om siden yn'e nammerûmte '''$1''' te bewurkjen.",
 'ns-specialprotected' => "Siden yn'e nammerûmte {{ns:special}} kinne net bewurke wurde.",
-'titleprotected' => "It oanmeitsjen fan dizze side is befeilige troch [[User:$1|$1]].
+'titleprotected' => "It oanmeitsjen fan dizze side is befeilige troch [[wiki_user:$1|$1]].
 De oanfierde reden is ''$2''.",
 
 # Virus scanner
@@ -504,7 +504,7 @@ De oanfierde reden is ''$2''.",
 # Login and logout pages
 'logouttext' => "'''Jo binne no ôfmeld.'''
 
-Jo kinne de {{SITENAME}} fierders anonym brûke, of jo op 'e [[Special:UserLogin|nij oanmelde]] ûnder deselde of in oare namme.
+Jo kinne de {{SITENAME}} fierders anonym brûke, of jo op 'e [[Special:wiki_userLogin|nij oanmelde]] ûnder deselde of in oare namme.
 Mûglik wurdt noch in tal siden werjûn as wiene Jo oanmeld, oant Jo de cache fan Jo browser leegje.",
 'welcomecreation' => '<h2>Wolkom, $1!</h2><p>Jo ynstellings binne oanmakke.
 Ferjit net se oan jo foarkar oan te passen.',
@@ -517,9 +517,9 @@ Ferjit net se oan jo foarkar oan te passen.',
 'login' => 'Oanmelde',
 'nav-login-createaccount' => 'Oanmelde',
 'loginprompt' => "Jo moatte 'cookies' oanstean hawwe om yn jo oan te melden by {{SITENAME}}.",
-'userlogin' => 'Oanmelde',
+'wiki_userlogin' => 'Oanmelde',
 'logout' => 'Ofmelde',
-'userlogout' => 'Ofmelde',
+'wiki_userlogout' => 'Ofmelde',
 'notloggedin' => 'Net oanmelde',
 'nologin' => "Noch net oanmelden as meidogger? '''$1'''.",
 'nologinlink' => 'Meitsje in brûker oan',
@@ -528,17 +528,17 @@ Ferjit net se oan jo foarkar oan te passen.',
 'gotaccountlink' => 'Oanmelde',
 'createaccountmail' => 'troch e-mail',
 'badretype' => 'De ynfierde wachtwurden binne net lyk.',
-'userexists' => 'Dy meidochnamme wurdt al brûkt. Besykje in oarenien.',
+'wiki_userexists' => 'Dy meidochnamme wurdt al brûkt. Besykje in oarenien.',
 'loginerror' => 'Oanmeldflater',
 'nocookiesnew' => 'De brûker is oanmakke mar net oanmeld. {{SITENAME}} brûkt cookies foar it oanmelden fan brûkers. Skeakelje dy yn en meld jo dan oan mei jo nije brûkersnamme en wachtwurd.',
 'nocookieslogin' => '{{SITENAME}} brûkt cookies foar it oanmelden fan brûkers. Jo hawwe cookies útskeakele. Skeakelje dy opsje oan en besykje it nochris.',
 'noname' => 'Jo moatte in meidognamme opjaan.',
 'loginsuccesstitle' => 'Oanmelden slagge.',
 'loginsuccess' => "'''Jo binne no oanmelden op de {{SITENAME}} as: \"\$1.\"'''",
-'nosuchuser' => 'Der is gjin meidogger "$1".
-Kontrolearje de stavering, of [[Special:UserLogin/signup|meitsje in nije meidogger oan]].',
-'nosuchusershort' => 'Der is gjin meidogger mei de namme "$1". It is goed skreaun?',
-'nouserspecified' => 'Jo moatte in brûkersnamme opjaan.',
+'nosuchwiki_user' => 'Der is gjin meidogger "$1".
+Kontrolearje de stavering, of [[Special:wiki_userLogin/signup|meitsje in nije meidogger oan]].',
+'nosuchwiki_usershort' => 'Der is gjin meidogger mei de namme "$1". It is goed skreaun?',
+'nowiki_userspecified' => 'Jo moatte in brûkersnamme opjaan.',
 'wrongpassword' => "Meidochnamme en wachtwurd hearre net by elkoar. Besykje op 'e nij, of fier it wachtwurd twa kear yn en meitsje nije meidoggersynstellings.",
 'wrongpasswordempty' => 'It opjûne wachtwurd wie leech. Besykje it nochris.',
 'passwordtooshort' => 'Jo wachtwurd is te koart.
@@ -596,7 +596,7 @@ Mûglik hawwe Jo Jo wachtwurd al feroare of in nij tydlik wachtwurd oanfrege.',
 'resetpass-temp-password' => 'Tydlik wachtwurd:',
 
 # Special:PasswordReset
-'passwordreset-username' => 'Meidoggernamme',
+'passwordreset-wiki_username' => 'Meidoggernamme',
 
 # Edit page toolbar
 'bold_sample' => 'Fette tekst',
@@ -672,31 +672,31 @@ Jo tsjintwurdich e-postadres is $3 en it útsletnûmer is #$5. Neam beide gegeve
 Om sels tekst te meistjsen kinne jo dy gewoan yntype in dit bewurkingsfjild
 ([[{{MediaWiki:Helppage}}|Mear ynformaasje oer bewurkjen]].)
 Oars kinne jo tebek mei de tebek-knop fan jo blêder.",
-'anontalkpagetext' => "----''Dit is de oerlisside fan in ûnbekende meidogger; in meidogger dy't him/har net oanmeld hat. Om't der gjin namme bekend is, wurdt it ynternet-adres brûkt om oan te jaan wa. Mar faak is it sa dat sa'n adres net altyd troch deselde persoan brûkt wurdt. As jo it idee hawwe dat jo as ûnbekende meidogger opmerkings foar in oar krije, dan kinne jo jo [[Special:UserLogin/signup|registrearje]], of jo [[Special:UserLogin|oanmelde]]. Fan in oanmelde meidogger is it ynternet-adres net sichtber, en as oanmelde meidogger krije jo allinnich opmerkings dy't foar josels bedoeld binne.''",
+'anontalkpagetext' => "----''Dit is de oerlisside fan in ûnbekende meidogger; in meidogger dy't him/har net oanmeld hat. Om't der gjin namme bekend is, wurdt it ynternet-adres brûkt om oan te jaan wa. Mar faak is it sa dat sa'n adres net altyd troch deselde persoan brûkt wurdt. As jo it idee hawwe dat jo as ûnbekende meidogger opmerkings foar in oar krije, dan kinne jo jo [[Special:wiki_userLogin/signup|registrearje]], of jo [[Special:wiki_userLogin|oanmelde]]. Fan in oanmelde meidogger is it ynternet-adres net sichtber, en as oanmelde meidogger krije jo allinnich opmerkings dy't foar josels bedoeld binne.''",
 'noarticletext' => 'Der stjit noch gjin tekst op dizze side. Jo kinne
 [[Special:Search/{{PAGENAME}}|hjirboppe nei dy tekst sykje]], of [{{fullurl:{{FULLPAGENAME}}|action=edit}} de side skriuwe].',
-'userpage-userdoesnotexist' => 'Jo bewurkje in brûkersside fan in brûker dy\'t net bestiet (brûker "<nowiki>$1</nowiki>").
+'wiki_userpage-wiki_userdoesnotexist' => 'Jo bewurkje in brûkersside fan in brûker dy\'t net bestiet (brûker "<nowiki>$1</nowiki>").
 Kontrolearje oft jo dizze side wol oanmeitsje/bewurkje wolle.',
 'clearyourcache' => "'''Opmerking:''' Nei it fêstlizzen kin it nedich wêze de oerslach fan dyn blêder te leegjen foardat de wizigings te sjen binne.
 
 '''Mozilla / Firefox / Safari:''' hâld ''Shift'' yntreaun wylst jo op ''Dizze side fernije'' klikke, of typ ''Ctrl-F5'' of ''Ctrl-R'' (''Command-R'' op in Mac); '''Konqueror: '''klik ''Reload'' of typ ''F5;'' '''Opera:''' leegje jo cache yn ''Extra → Voorkeuren;'' '''Internet Explorer:''' hâld ''Ctrl'' yntreaun wylst jo ''Vernieuwen'' klikke of typ ''Ctrl-F5.''",
-'usercssyoucanpreview' => "'''Tip:''' Brûk de knop 'Earst oerlêze' om jo nije CSS te testen foar it fêstlizzen.",
-'userjsyoucanpreview' => "'''Tip:''' Brûk de knop 'Earst oerlêze' om jo nije JS te testen foar it fêstlizzen.",
-'usercsspreview' => "'''Dit is allinne mar it oerlêzen fan jo persoanlike CSS. Hy is noch net fêstlein!'''",
-'userjspreview' => "'''Tink derom: jo besjogge no jo persoanlike JavaScript. De side is net fêstlein!'''",
-'userinvalidcssjstitle' => "'''Warskôging:''' der is gjin skin \"\$1\". Tink derom: jo eigen .css- en .js-siden begjinne mei in lytse letter, bygelyks {{ns:user}}:Namme/vector.css ynsté fan {{ns:user}}:Namme/Vector.css.",
+'wiki_usercssyoucanpreview' => "'''Tip:''' Brûk de knop 'Earst oerlêze' om jo nije CSS te testen foar it fêstlizzen.",
+'wiki_userjsyoucanpreview' => "'''Tip:''' Brûk de knop 'Earst oerlêze' om jo nije JS te testen foar it fêstlizzen.",
+'wiki_usercsspreview' => "'''Dit is allinne mar it oerlêzen fan jo persoanlike CSS. Hy is noch net fêstlein!'''",
+'wiki_userjspreview' => "'''Tink derom: jo besjogge no jo persoanlike JavaScript. De side is net fêstlein!'''",
+'wiki_userinvalidcssjstitle' => "'''Warskôging:''' der is gjin skin \"\$1\". Tink derom: jo eigen .css- en .js-siden begjinne mei in lytse letter, bygelyks {{ns:wiki_user}}:Namme/vector.css ynsté fan {{ns:wiki_user}}:Namme/Vector.css.",
 'updated' => '(Bewurke)',
 'note' => "'''Opmerking:'''",
 'previewnote' => "'''Tink der om dat dizze side noch net fêstlein is!'''",
 'previewconflict' => 'Dizze side belanget allinich it earste bewurkingsfjild oan.',
 'session_fail_preview' => "'''Jo bewurking is net ferwurke, om't de sessygegevens ferlern gien binne.
-Besykje it nochris. As it dan noch net slagget, [[Special:UserLogout|meld jo dan ôf]] en wer oan.'''",
+Besykje it nochris. As it dan noch net slagget, [[Special:wiki_userLogout|meld jo dan ôf]] en wer oan.'''",
 'session_fail_preview_html' => "'''Jo bewurking is net ferwurke, om't sesjegegevens ferlern gien binne.'''
 
 ''Om't yn {{SITENAME}} rûge HTML ynskeakele is, is in foarfertoaning net mûglik as beskerming tsjin oanfallen mei JavaScript.''
 
 '''As dit in legitime bewurking is, besykje it dan fannijs.
-As it dan  noch net slagget, [[Special:UserLogout|meld jo dan ôf]] en wer oan.'''",
+As it dan  noch net slagget, [[Special:wiki_userLogout|meld jo dan ôf]] en wer oan.'''",
 'token_suffix_mismatch' => "'''Jo bewurking is wegere om't jo blêder de lêstekens yn it bewurkingstoken ûnkrekt behannele hat.
 De bewurking is wegere om skeinen fan 'e sidetekst tefoaren te kommen.
 Dat bart soms as der in webbasearre proxytsjinst brûkt wurdt dy't flaters befettet.'''",
@@ -742,7 +742,7 @@ In  behearder hat de database blokkearre om de folgjende reden: $1",
 'edittools' => '<!-- Tekst hjir stiet ûnder bewurkingsfjilden en oanbringfjilden.  -->',
 'nocreatetitle' => 'It oanmeitsjen fan siden is beheind',
 'nocreatetext' => '{{SITENAME}} hat de mûglikheid beheind om nije siden te meitsjen.
-Jo kinne al besteande siden feroarje of jo kinne [[Special:UserLogin|jo oanmelde of in brûker oanmeitsje]].',
+Jo kinne al besteande siden feroarje of jo kinne [[Special:wiki_userLogin|jo oanmelde of in brûker oanmeitsje]].',
 'nocreate-loggedin' => 'Jo meie gjin nije siden meitsje',
 'permissionserrors' => 'Flaters yn rjochten',
 'permissionserrorstext' => 'Jo hawwe gjin rjochtem dit te dwaan om de folgjende {{PLURAL:$1|reden|redenen}}:',
@@ -779,11 +779,11 @@ Dy parameters binne weilitten.',
 'undo-success' => 'De feroaring kin werom set wurde. Kontrolearje de ferliking hjirûnder om wis te wêzen dat jo dit feroarje wolle en druk dan op fêstlizze om it werom setten troch te fieren.',
 'undo-failure' => 'De feroarings kinne net werom set wurde troch in konflikt mei oare feroarings tuskentroch.',
 'undo-norev' => 'De feroaring kin werom set wurde, omdat it net bestiet of is wiske.',
-'undo-summary' => 'Werom sette fan ferzje $1 fan [[Special:Contributions/$2|$2]] ([[User talk:$2|Oerlis]])',
+'undo-summary' => 'Werom sette fan ferzje $1 fan [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Oerlis]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Registrearjen is mislearre.',
-'cantcreateaccount-text' => "Registraasje fan in brûker fia dit IP-adres ('''$1''') is blokkearre troch [[User:$3|$3]].
+'cantcreateaccount-text' => "Registraasje fan in brûker fia dit IP-adres ('''$1''') is blokkearre troch [[wiki_user:$3|$3]].
 
 De fan $3 opjûne reden is ''$2''",
 
@@ -820,7 +820,7 @@ Faaks is dy fuorthelle of omneamd.
 
 # Revision deletion
 'rev-deleted-comment' => '(opmerking wiske)',
-'rev-deleted-user' => '(meidoggernamme wiske)',
+'rev-deleted-wiki_user' => '(meidoggernamme wiske)',
 'rev-deleted-event' => '(logboekrigel fuorthelle)',
 'rev-deleted-text-permission' => 'Dy bewurking fan de side is fuorthelle út de publike argiven.
 Der kinne details oanwêzich wêze yn it [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} fuorthel-logboek].',
@@ -846,7 +846,7 @@ Oare behearders fan {{SITENAME}} kinne de ferburgen ynhâld benaderje en it fuor
 'revdelete-hide-image' => 'Triem ynhâld ferskûlje',
 'revdelete-hide-name' => 'Aksje en doel ferskûlje',
 'revdelete-hide-comment' => 'De bewurkingsgearfetting ferskûlje',
-'revdelete-hide-user' => 'Meidoggernamme/IP fan de meidogger ferskûlje',
+'revdelete-hide-wiki_user' => 'Meidoggernamme/IP fan de meidogger ferskûlje',
 'revdelete-hide-restricted' => 'Dizze beheinings tapasse op behearders en dizze ynterface ôfslute',
 'revdelete-suppress' => 'Gegevens foar behearders likegoed as oaren ûnderdrukke',
 'revdelete-unsuppress' => 'Beheinings op tebeksette feroarings fuorthelje',
@@ -977,7 +977,7 @@ Jo kinne ek in nammerûmte as foarheaksel brûke.",
 'mypreferences' => 'Myn foarkarynstellings',
 'prefs-edits' => 'Tal bewurkings:',
 'prefsnologin' => 'Net oanmeld',
-'prefsnologintext' => 'Jo moatte <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} oanmeld]</span> wêze om jo foarkar-ynstellings te feroarje te kinnen.',
+'prefsnologintext' => 'Jo moatte <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} oanmeld]</span> wêze om jo foarkar-ynstellings te feroarje te kinnen.',
 'changepassword' => 'Wachtwurd feroarje',
 'prefs-skin' => 'Side-oansjen',
 'skin-preview' => 'Proefbyld',
@@ -1033,7 +1033,7 @@ Jo kinne ek in nammerûmte as foarheaksel brûke.",
 'prefs-emailconfirm-label' => 'Netpostbefêstiging:',
 'prefs-textboxsize' => 'Ofmjittings bewurkingsskerm',
 'youremail' => 'Jo netpostadres:',
-'username' => 'Meidochnamme:',
+'wiki_username' => 'Meidochnamme:',
 'uid' => 'Wikinûmer:',
 'prefs-memberingroups' => 'Lid fan {{PLURAL:$1|groep|groepen}}:',
 'yourrealname' => 'Jo wiere namme:',
@@ -1056,30 +1056,30 @@ Jo kinne ek oaren de mûglikheid jaan kontakt mei jo op te nimmen troch in ferwi
 'prefs-dateformat' => 'Datumopmaak',
 'prefs-timeoffset' => 'Tiidsferskil',
 
-# User rights
-'userrights' => 'Behear fan meidoggerrjochten',
-'userrights-lookup-user' => 'Behear fan meidoggerrjochten',
-'userrights-user-editname' => 'Meidoggernamme:',
-'editusergroup' => 'Wizigje meidoggerrjochten',
-'editinguser' => "Bewurkje meidoggerrjochten fan '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup' => 'Wizigje meidoggerrjochten',
-'saveusergroups' => 'Meidoggerrjochten fêstlizze',
-'userrights-groupsmember' => 'Sit yn group:',
-'userrights-groups-help' => "Jo kinne de groepen feroarje dêr't dizze brûker lid fan is.
+# wiki_user rights
+'wiki_userrights' => 'Behear fan meidoggerrjochten',
+'wiki_userrights-lookup-wiki_user' => 'Behear fan meidoggerrjochten',
+'wiki_userrights-wiki_user-editname' => 'Meidoggernamme:',
+'editwiki_usergroup' => 'Wizigje meidoggerrjochten',
+'editingwiki_user' => "Bewurkje meidoggerrjochten fan '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'wiki_userrights-editwiki_usergroup' => 'Wizigje meidoggerrjochten',
+'savewiki_usergroups' => 'Meidoggerrjochten fêstlizze',
+'wiki_userrights-groupsmember' => 'Sit yn group:',
+'wiki_userrights-groups-help' => "Jo kinne de groepen feroarje dêr't dizze brûker lid fan is.
 * In oankrúst fekje betsjut dat de brûker lid is fan 'e groep.
 * In net oankrúst fekje betsjut dat de brûker gjin lid is fan 'e groep.
 * In \"*\" betsjut dat jo in brûker net út in groep weihelje kinne nei't jo dy tafoege hawwe, of oarsom.",
-'userrights-reason' => 'Reden:',
-'userrights-no-interwiki' => 'Jo hawwe gjin foech om rjochten fan meidoggers op oare wikis te wizigjen.',
-'userrights-nodatabase' => 'Databank $1 bestiet net of is net lokaal.',
-'userrights-nologin' => 'Jo moatte jo [[Special:UserLogin|oanmelde]] as rjochtenútfurder om rjochten fan meidoggers wizigje te kinnen.',
-'userrights-notallowed' => 'Jo hawwe gjin rjochten om rjochten fan meidoggers te wizigjen.',
-'userrights-changeable-col' => "Groepen dy't jo beheare kinne",
-'userrights-unchangeable-col' => "Groepen dy't jo net beheare kinne",
+'wiki_userrights-reason' => 'Reden:',
+'wiki_userrights-no-interwiki' => 'Jo hawwe gjin foech om rjochten fan meidoggers op oare wikis te wizigjen.',
+'wiki_userrights-nodatabase' => 'Databank $1 bestiet net of is net lokaal.',
+'wiki_userrights-nologin' => 'Jo moatte jo [[Special:wiki_userLogin|oanmelde]] as rjochtenútfurder om rjochten fan meidoggers wizigje te kinnen.',
+'wiki_userrights-notallowed' => 'Jo hawwe gjin rjochten om rjochten fan meidoggers te wizigjen.',
+'wiki_userrights-changeable-col' => "Groepen dy't jo beheare kinne",
+'wiki_userrights-unchangeable-col' => "Groepen dy't jo net beheare kinne",
 
 # Groups
 'group' => 'Groep:',
-'group-user' => 'Meidoggers',
+'group-wiki_user' => 'Meidoggers',
 'group-autoconfirmed' => 'befêstige brûkers',
 'group-bot' => 'Bots',
 'group-sysop' => 'Behearders',
@@ -1087,14 +1087,14 @@ Jo kinne ek oaren de mûglikheid jaan kontakt mei jo op te nimmen troch in ferwi
 'group-suppress' => 'tasichthâlders',
 'group-all' => '(eltsenien)',
 
-'group-user-member' => '{{GENDER:$1|Meidogger}}',
+'group-wiki_user-member' => '{{GENDER:$1|Meidogger}}',
 'group-autoconfirmed-member' => 'Registrearre brûker',
 'group-bot-member' => 'Bot',
 'group-sysop-member' => 'Behearder',
 'group-bureaucrat-member' => 'Rjochtenútfurder',
 'group-suppress-member' => 'Tasichthâlder',
 
-'grouppage-user' => '{{ns:project}}:Meidoggers',
+'grouppage-wiki_user' => '{{ns:project}}:Meidoggers',
 'grouppage-autoconfirmed' => '{{ns:project}}:Registrearre brûkers',
 'grouppage-bot' => '{{ns:project}}:Bots',
 'grouppage-sysop' => '{{ns:project}}:Behearders',
@@ -1110,7 +1110,7 @@ Jo kinne ek oaren de mûglikheid jaan kontakt mei jo op te nimmen troch in ferwi
 'right-minoredit' => 'Bydragen markearje as tekstwiziging',
 'right-move' => 'Siden werneamen',
 'right-move-subpages' => 'Siden ynklusyf har subsiden ferpleatse.',
-'right-move-rootuserpages' => 'Brûkerssiden fan it heechste nivo in oare namme jaan',
+'right-move-rootwiki_userpages' => 'Brûkerssiden fan it heechste nivo in oare namme jaan',
 'right-movefile' => 'Triemmen in oare namme jaan',
 'right-suppressredirect' => "In trochferwizing op 'e doelside fuorthelje by werneamen fan in side",
 'right-upload' => 'Triemmen oanbieden',
@@ -1134,15 +1134,15 @@ Jo kinne ek oaren de mûglikheid jaan kontakt mei jo op te nimmen troch in ferwi
 'right-suppressionlog' => 'Net-publike logboeken besjen',
 'right-block' => 'Oare brûkers de mûglikheid ta bewurkjen ôfnimme',
 'right-blockemail' => 'In brûker it rjocht ta it ferstjoeren fan e-mail ôfnimme',
-'right-hideuser' => 'In brûkersnamme foar oare brûkers ferskûlje',
+'right-hidewiki_user' => 'In brûkersnamme foar oare brûkers ferskûlje',
 'right-ipblock-exempt' => "IP-blokkades út 'e wei gean",
 'right-proxyunbannable' => "Blokkades foar proxy's jilde net",
 'right-protect' => "Befeiligingsnivo's feroarje en beskerme siden bewurkje",
 'right-editprotected' => 'Befeilige siden bewurkje (sûnder cascading-befeiliging)',
 'right-editinterface' => 'Brûkersinterface bewurkje',
-'right-editusercssjs' => 'De CSS- en JS-triemmen fan oare brûkers bewurkje',
-'right-editusercss' => 'De CSS-JS-triemmen fan oare brûkers bewurkje',
-'right-edituserjs' => 'De JS-triemmen fan oare brûkers bewurkje',
+'right-editwiki_usercssjs' => 'De CSS- en JS-triemmen fan oare brûkers bewurkje',
+'right-editwiki_usercss' => 'De CSS-JS-triemmen fan oare brûkers bewurkje',
+'right-editwiki_userjs' => 'De JS-triemmen fan oare brûkers bewurkje',
 'right-rollback' => 'Gau de lêste bewurking(s) fan in brûker fan in side tebekdraaie',
 'right-markbotedits' => 'Tebekdraaide bewurkings markearje as botbewurkings',
 'right-noratelimit' => 'Hat gjin tiidsôfhinklike beheinings',
@@ -1153,12 +1153,12 @@ Jo kinne ek oaren de mûglikheid jaan kontakt mei jo op te nimmen troch in ferwi
 'right-patrolmarks' => 'Kontroletekens yn resinte feroarings besjen',
 'right-unwatchedpages' => "In list mei siden besjen dy't net op in folchlist steane",
 'right-mergehistory' => 'De skiednis fan siden gearfoegje',
-'right-userrights' => 'Alle meidoggerrjochten bywurkje',
-'right-userrights-interwiki' => "Wizigje meidoggerrjochten fan meidoggers yn oare wiki's",
+'right-wiki_userrights' => 'Alle meidoggerrjochten bywurkje',
+'right-wiki_userrights-interwiki' => "Wizigje meidoggerrjochten fan meidoggers yn oare wiki's",
 'right-siteadmin' => 'De database blokkearje en wer frij jaan',
 'right-override-export-depth' => 'Alle siden oant en mei in keppelingsdjipte fan fiif fuortskriuwe',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Rjochten-loch',
 'rightslogtext' => 'Dit is in loch fan feroarings fan meidoggerrjochten.',
 'rightslogentry' => 'groep foar $1 feroare fan $2 yn $3',
@@ -1173,7 +1173,7 @@ Jo kinne ek oaren de mûglikheid jaan kontakt mei jo op te nimmen troch in ferwi
 'action-minoredit' => 'dizze bewurking as lyts te markearjen',
 'action-move' => 'dizze side in oare namme te jaan',
 'action-move-subpages' => 'dizze side en de derby hearrende subsiden in oare namme te jaan',
-'action-move-rootuserpages' => 'brûkerssiden fan it heechste nivo in oare namme te jaan',
+'action-move-rootwiki_userpages' => 'brûkerssiden fan it heechste nivo in oare namme te jaan',
 'action-movefile' => 'dizze triem in oare namme te jaan',
 'action-upload' => 'dizze triem te opladen',
 'action-reupload' => 'dizze besteande triem te oerskriuwen',
@@ -1195,8 +1195,8 @@ Jo kinne ek oaren de mûglikheid jaan kontakt mei jo op te nimmen troch in ferwi
 'action-autopatrol' => 'eigen bewurkings as kontrolearre markearje litte',
 'action-unwatchedpages' => "de list mei siden dy't net op in folchlist steane besjen",
 'action-mergehistory' => 'de skiednis fan dizze side gearfoegje',
-'action-userrights' => 'alle brûkersrjochten bewurkje',
-'action-userrights-interwiki' => "brûkersrjochten fan brûkers fan oare wiki's bewurkje",
+'action-wiki_userrights' => 'alle brûkersrjochten bewurkje',
+'action-wiki_userrights-interwiki' => "brûkersrjochten fan brûkers fan oare wiki's bewurkje",
 'action-siteadmin' => 'de database ôfslute of iepenstelle',
 
 # Recent changes
@@ -1226,7 +1226,7 @@ Jo kinne ek oaren de mûglikheid jaan kontakt mei jo op te nimmen troch in ferwi
 'minoreditletter' => 'T',
 'newpageletter' => 'N',
 'boteditletter' => 'b',
-'number_of_watching_users_pageview' => '[$1 folgjende {{PLURAL:$1|meidogger|meidoggers}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 folgjende {{PLURAL:$1|meidogger|meidoggers}}]',
 'rc_categories' => 'Alline kategoryen (skiede mei in "|")',
 'rc_categories_any' => 'Elk',
 'newsectionsummary' => '/* $1 */ nije seksje',
@@ -1248,7 +1248,7 @@ Jo kinne ek oaren de mûglikheid jaan kontakt mei jo op te nimmen troch in ferwi
 'uploadbtn' => 'Bied triem oan',
 'reuploaddesc' => 'Werom nei oanbied-side.',
 'uploadnologin' => 'Net oanmelde',
-'uploadnologintext' => 'Jo moatte [[Special:UserLogin|oanmeld]] wêze om in triem oanbiede te kinnen.',
+'uploadnologintext' => 'Jo moatte [[Special:wiki_userLogin|oanmeld]] wêze om in triem oanbiede te kinnen.',
 'upload_directory_missing' => 'De heechlaadmap ($1) is der net en koe net oanmakke wurde troch de webserver.',
 'upload_directory_read_only' => 'De webserver kin net skriuwe yn de oanbiedpad ($1).',
 'uploaderror' => 'Oanbiedfout',
@@ -1352,12 +1352,12 @@ PICT # ferskaat
 'upload-proto-error-text' => "Oanbieden mei dizze metoade freget URL's dy't begjinne mei <code>http://</code> of <code>ftp://</code>.",
 'upload-file-error' => 'Ynterne fout',
 'upload-file-error-text' => "Der wie in ynterne fout doe't in tydlike triem op'e server oanmakke waard.
-Nim kontakt op mei in [[Special:ListUsers/sysop|systeembehearder]].",
+Nim kontakt op mei in [[Special:Listwiki_users/sysop|systeembehearder]].",
 'upload-misc-error' => 'Unbekende oanbiedfout',
 'upload-misc-error-text' => 'Der is by it oanbieden in ûnbekende fout optreden.
 Kontrolearje of de URL krekt en beskikber is en besykje it nochris.
 As it probleem oanhâldt, nim dan kontakt op mei in
-[[Special:ListUsers/sysop|systeembehearder]].',
+[[Special:Listwiki_users/sysop|systeembehearder]].',
 'upload-unknown-size' => 'Unbekinde grutte',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
@@ -1385,7 +1385,7 @@ Klikken op in kolomkop feroaret de sortearring.',
 'listfiles' => 'Ofbyld list',
 'listfiles_date' => 'Datum',
 'listfiles_name' => 'Namme',
-'listfiles_user' => 'Meidogger',
+'listfiles_wiki_user' => 'Meidogger',
 'listfiles_size' => 'Grutte',
 'listfiles_description' => 'Beskriuwing',
 'listfiles_count' => 'Ferzjes',
@@ -1402,7 +1402,7 @@ Klikken op in kolomkop feroaret de sortearring.',
 'filehist-thumb' => 'Miniatuerôfbylding',
 'filehist-thumbtext' => 'Miniatuerôfbylding foar ferzje fan $1 ôf',
 'filehist-nothumb' => 'Gjin miniatuerôfbylding',
-'filehist-user' => 'Meidogger',
+'filehist-wiki_user' => 'Meidogger',
 'filehist-dimensions' => 'Ofmjittings',
 'filehist-filesize' => 'Triem grutte',
 'filehist-comment' => 'Opmerkings',
@@ -1481,7 +1481,7 @@ Ferjit net de "Wat is hjirmei keppele" nei te gean foar it fuortheljen fan dit s
 'statistics-header-pages' => 'Sidestatistiken',
 'statistics-header-edits' => 'Bewurkingsstatistiken',
 'statistics-header-views' => 'Sidewerjefte-statistiken',
-'statistics-header-users' => 'Meidogger-statistyk',
+'statistics-header-wiki_users' => 'Meidogger-statistyk',
 'statistics-articles' => 'Ynhâldlike siden',
 'statistics-pages' => 'Siden',
 'statistics-pages-desc' => "Alle siden yn 'e wiki, ynbegrepen oerlissiden, trochferwizings ens.",
@@ -1490,9 +1490,9 @@ Ferjit net de "Wat is hjirmei keppele" nei te gean foar it fuortheljen fan dit s
 'statistics-edits-average' => 'Trochstrings tal bewurkings per side',
 'statistics-views-total' => 'Totaal oantal werjûne siden',
 'statistics-views-peredit' => 'Werjûne siden per bewurking',
-'statistics-users' => 'Registrearre [[Special:ListUsers|brûkers]]',
-'statistics-users-active' => 'Aktive brûkers',
-'statistics-users-active-desc' => "Brûkers dy't yn 'e ôfrûne {{PLURAL:$1|dei|$1 dagen}} in hanneling útfierd hawwe",
+'statistics-wiki_users' => 'Registrearre [[Special:Listwiki_users|brûkers]]',
+'statistics-wiki_users-active' => 'Aktive brûkers',
+'statistics-wiki_users-active-desc' => "Brûkers dy't yn 'e ôfrûne {{PLURAL:$1|dei|$1 dagen}} in hanneling útfierd hawwe",
 'statistics-mostpopular' => 'Meast besjoene siden',
 
 'disambiguations' => 'Betsjuttingssiden',
@@ -1558,12 +1558,12 @@ De siden binne ek net as sjabloan opnommen.',
 'protectedtitles' => 'Skoattele titels',
 'protectedtitlestext' => 'De folgjende sidenammen binne befeilige en kinne net oanmakke wurde',
 'protectedtitlesempty' => "Der binne op it stuit gjin sidenammen befeilige, dy't oan dizze betingsten foldogge.",
-'listusers' => 'Meidoggerlist',
-'listusers-editsonly' => 'Allinne brûkers mei bewurkings werjaan',
-'listusers-creationsort' => 'Oarderje op dei fan oanmeitsjen',
-'usereditcount' => '$1 {{PLURAL:$1|bewurking|bewurkings}}',
+'listwiki_users' => 'Meidoggerlist',
+'listwiki_users-editsonly' => 'Allinne brûkers mei bewurkings werjaan',
+'listwiki_users-creationsort' => 'Oarderje op dei fan oanmeitsjen',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|bewurking|bewurkings}}',
 'newpages' => 'Nije siden',
-'newpages-username' => 'Meidoggernamme:',
+'newpages-wiki_username' => 'Meidoggernamme:',
 'ancientpages' => 'Alde siden',
 'move' => 'Werneam',
 'movethispage' => 'Werneam dizze side',
@@ -1586,7 +1586,7 @@ De siden binne ek net as sjabloan opnommen.',
 Kontrolearje oft jo faaks in flater makke hawwe by de ynfier.',
 
 # Special:Log
-'specialloguserlabel' => 'Meidogger:',
+'speciallogwiki_userlabel' => 'Meidogger:',
 'speciallogtitlelabel' => 'Sidenamme:',
 'log' => 'Lochs',
 'all-logs-page' => 'Alle lochboeken',
@@ -1637,19 +1637,19 @@ Stipe protokollen: <code>$1</code>',
 'linksearch-line' => '$1 hat in ferwizing yn $2',
 'linksearch-error' => 'Wildcards binne allinne tastien oan it begjin fan in hostnamme.',
 
-# Special:ListUsers
-'listusersfrom' => 'Lit meidoggers sjen fanôf:',
-'listusers-submit' => 'Sjen litte',
-'listusers-noresult' => 'Gjin brûker fûn.',
-'listusers-blocked' => '(blokkearre)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'Lit meidoggers sjen fanôf:',
+'listwiki_users-submit' => 'Sjen litte',
+'listwiki_users-noresult' => 'Gjin brûker fûn.',
+'listwiki_users-blocked' => '(blokkearre)',
 
-# Special:ActiveUsers
-'activeusers' => 'Aktive meidoggers',
-'activeusers-noresult' => 'Gjin meidoggers fûn.',
+# Special:Activewiki_users
+'activewiki_users' => 'Aktive meidoggers',
+'activewiki_users-noresult' => 'Gjin meidoggers fûn.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Ynskriuwingsloch',
-'newuserlogpagetext' => "Dit is in loch fan meidoggers dy't de lêste tiid ynskreaun binne.",
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Ynskriuwingsloch',
+'newwiki_userlogpagetext' => "Dit is in loch fan meidoggers dy't de lêste tiid ynskreaun binne.",
 
 # Special:ListGroupRights
 'listgrouprights' => 'Rjochten fan brûkersgroepen',
@@ -1664,15 +1664,15 @@ Der kin [[{{MediaWiki:Listgrouprights-helppage}}|ekstra ynformaasje]] oer yndivi
 'listgrouprights-addgroup-all' => 'Kin brûkers oan alle groepen tafoegje',
 'listgrouprights-removegroup-all' => 'Kin brûkers út alle groepen fuorthelje',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'Gjin adres beskikber',
-'mailnologintext' => 'Jo moatte [[Special:UserLogin|oanmelden]] wêze, en in jildich e-postadres [[Special:Preferences|ynsteld]] hawwe, om oan oare meidoggers e-post stjoere te kinnen.',
-'emailuser' => 'Skriuw meidogger',
+'mailnologintext' => 'Jo moatte [[Special:wiki_userLogin|oanmelden]] wêze, en in jildich e-postadres [[Special:Preferences|ynsteld]] hawwe, om oan oare meidoggers e-post stjoere te kinnen.',
+'emailwiki_user' => 'Skriuw meidogger',
 'emailpage' => 'E-post nei meidogger',
 'emailpagetext' => 'Fia dit berjocht kinne jo in e-mail oan dizze brûker ferstjoere.
 It e-mailadres dat jo opjûn hawwe by [[Special:Preferences|jo foarkarren]] wurdt as ôfstjoerder  brûkt.
 De ûntfanger kin dus daliks nei jo reagearje.',
-'usermailererror' => 'Flatermelding by ferstjoeren:',
+'wiki_usermailererror' => 'Flatermelding by ferstjoeren:',
 'defemailsubject' => 'E-post fan {{SITENAME}}',
 'noemailtitle' => 'Gjin e-postadres',
 'noemailtext' => 'Dizze meidogger hat gjin jildich e-postadres ynsteld, of hat oanjûn gjin post fan oare meidoggers krije te wollen.',
@@ -1692,7 +1692,7 @@ De ûntfanger kin dus daliks nei jo reagearje.',
 'mywatchlist' => 'Folchlist',
 'nowatchlist' => 'Jo hawwe gjin siden op jo folchlist.',
 'watchnologin' => 'Net oanmeld yn',
-'watchnologintext' => 'Jo moatte [[Special:UserLogin|oanmeld]] wêze om jo folchlist te feroarjen.',
+'watchnologintext' => 'Jo moatte [[Special:wiki_userLogin|oanmeld]] wêze om jo folchlist te feroarjen.',
 'addedwatchtext' => "De side \"'''[[:\$1]]'''\" is tafoege oan jo [[Special:Watchlist|folchlist]]. Bewurkings fan dizze side en oerlisside wurde yn de takomst op jo folchlist oanjûn. Hja wurde foar jo ek '''fet''' printe op [[Special:RecentChanges|Koartlyn feroare]].
 
 At jo letter in side net mear folgje wolle, dan brûke jo op dy side de keppeling \"Ferjit dizze side.\" Jo [[Special:Watchlist|folchlist]] hat ek in keppeling \"Jo folchlist bewurkje,\" foar at jo mear as ien side \"ferjitte\" wolle.",
@@ -1780,12 +1780,12 @@ Sjoch "$2" foar in list fan wat resint wiske is.',
 'rollbackfailed' => 'Feroaring werom sette net slagge',
 'cantrollback' => "Dizze feroaring kin net werom setten wurde, om't der mar ien skriuwer is.",
 'alreadyrolled' => 'Kin de feroaring fan [[:$1]]
-troch [[User:$2|$2]] ([[User talk:$2|Oerlis]]) net werom sette;
+troch [[wiki_user:$2|$2]] ([[wiki_user talk:$2|Oerlis]]) net werom sette;
 in oar hat de feroaring werom set, of oars wat oan de side feroare.
 
-De lêste feroaring wie fan [[User:$3|$3]] ([[User talk:$3|Oerlis]]).',
+De lêste feroaring wie fan [[wiki_user:$3|$3]] ([[wiki_user talk:$3|Oerlis]]).',
 'editcomment' => "De gearfetting wie: \"''\$1''\".",
-'revertpage' => 'Bewurkings fan [[Special:Contributions/$2|$2]] ([[User talk:$2|Oerlis]]) werom set ta de ferzje fan [[User:$1|$1]]',
+'revertpage' => 'Bewurkings fan [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Oerlis]]) werom set ta de ferzje fan [[wiki_user:$1|$1]]',
 'rollback-success' => 'Feroarings werom set fan $1; werom set nei de lêste ferzje fan $2.',
 
 # Protect
@@ -1879,9 +1879,9 @@ Dit binne de rinnende ynstellings foar de side '''$1''':",
 'sp-contributions-blocklog' => 'Blokkearlochboek',
 'sp-contributions-deleted' => 'Wiske meidogger bydragen',
 'sp-contributions-talk' => 'Oerlis',
-'sp-contributions-userrights' => 'Behear fan meidoggerrjochten',
+'sp-contributions-wiki_userrights' => 'Behear fan meidoggerrjochten',
 'sp-contributions-search' => 'Sykje nei bydragen',
-'sp-contributions-username' => 'IP Adres of meidoggernamme:',
+'sp-contributions-wiki_username' => 'IP Adres of meidoggernamme:',
 'sp-contributions-submit' => 'Sykje',
 
 # What links here
@@ -1908,7 +1908,7 @@ Dit binne de rinnende ynstellings foar de side '''$1''':",
 Dat soe allinnich fanwege fandalisme dien wurde moatte, sa't de
 [[{{MediaWiki:Policy-url}}|útslut-rie]] it oanjout.
 Meld de krekte reden! Neam bygelyks de siden dy't oantaaste waarden.",
-'ipadressorusername' => 'IP Adres of meidoggernamme:',
+'ipadressorwiki_username' => 'IP Adres of meidoggernamme:',
 'ipbexpiry' => 'Ferrint nei:',
 'ipbreason' => 'Reden:',
 'ipbreasonotherlist' => 'Oare reden',
@@ -1944,7 +1944,7 @@ Meld de krekte reden! Neam bygelyks de siden dy't oantaaste waarden.",
 'unblocklink' => 'lit yn',
 'change-blocklink' => 'blokkade feroarje',
 'contribslink' => 'bydragen',
-'autoblocker' => 'Jo wiene útsletten om\'t jo ynternet-adres oerienkomt mei dat fan "[[User:$1|$1]]". Foar it útsluten fan dy meidogger waard dizze reden jûn: "$2".',
+'autoblocker' => 'Jo wiene útsletten om\'t jo ynternet-adres oerienkomt mei dat fan "[[wiki_user:$1|$1]]". Foar it útsluten fan dy meidogger waard dizze reden jûn: "$2".',
 'blocklogpage' => 'Utslútloch',
 'blocklogentry' => '"[[$1]]" útsletten foar $2 $3',
 'blocklogtext' => 'Dit is in loch fan it útsluten en talitten fan meidoggers. Fansels útsletten net-adressen binne net opnaam. Sjoch de [[Special:BlockList|útsletlist]] foar de no jildende utslettings.',
@@ -1992,7 +1992,7 @@ daalks weromneame as jo in flater meitsje, mar jo kinne in oare side net oerskri
 In dizze gefallen is it oan jo hoe't jo de oerlisside werneame of ynfoegje wolle.",
 'movearticle' => 'Werneam side',
 'movenologin' => 'Net oameld',
-'movenologintext' => 'Jo moatte [[Special:UserLogin|oanmeld]] wêze om in side wer te neamen.',
+'movenologintext' => 'Jo moatte [[Special:wiki_userLogin|oanmeld]] wêze om in side wer te neamen.',
 'newtitle' => 'As nij titel',
 'move-watch' => 'Folch dizze side',
 'movepagebtn' => 'Werneam side',
@@ -2060,7 +2060,7 @@ Sjoch: [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation], [//transl
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|ferzje|ferzjes}} fan $2',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Myn brûkersside',
+'tooltip-pt-wiki_userpage' => 'Myn brûkersside',
 'tooltip-pt-mytalk' => 'Jo oerlisside',
 'tooltip-pt-preferences' => 'Myn foarkarynstellings',
 'tooltip-pt-watchlist' => "List fan siden dy'sto besjochst op feroarings",
@@ -2092,10 +2092,10 @@ Sjoch: [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation], [//transl
 'tooltip-feed-rss' => 'RSS-feed foar dizze side',
 'tooltip-feed-atom' => 'Atom-feed foar dizze side',
 'tooltip-t-contributions' => 'Bydragen fan dizze brûker',
-'tooltip-t-emailuser' => 'Stjoer in e-mail nei dizze brûker',
+'tooltip-t-emailwiki_user' => 'Stjoer in e-mail nei dizze brûker',
 'tooltip-t-upload' => 'Triemmen oplade',
 'tooltip-t-specialpages' => 'List fan alle spesjale siden',
-'tooltip-ca-nstab-user' => 'Brûkersside sjen litte',
+'tooltip-ca-nstab-wiki_user' => 'Brûkersside sjen litte',
 'tooltip-ca-nstab-special' => 'Dit is in spesjale side; jo kinne de side sels net feroarje',
 'tooltip-ca-nstab-project' => 'Projektside sjen litte',
 'tooltip-ca-nstab-image' => 'De triemside sjen litte',
@@ -2115,10 +2115,10 @@ Sjoch: [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation], [//transl
 
 # Attribution
 'anonymous' => 'Anonime {{PLURAL:$1|meidogger|meidoggers}} fan {{SITENAME}}',
-'siteuser' => '{{SITENAME}} meidogger $1',
+'sitewiki_user' => '{{SITENAME}} meidogger $1',
 'othercontribs' => 'Basearre op wurk fan $1.',
 'others' => 'Oaren',
-'siteusers' => '{{SITENAME}} {{PLURAL:$2|meidogger|meidoggers}} $1',
+'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|meidogger|meidoggers}} $1',
 
 # Spam protection
 'spamprotectiontext' => "De side dy't jo fêstlizze woene is blokkearre troch in spam filter. Dit wurdt wierskynlik feroarsake troch in ferwizing nei in ekstern webstee.",
@@ -2194,7 +2194,7 @@ Alle folgjende links dy't op deselde rigel steane, wurde behannele as útsûnder
 'exif-artist' => 'Auteur',
 'exif-colorspace' => 'Kleurromte',
 'exif-compressedbitsperpixel' => 'Ofbylding kompresjemetoade',
-'exif-usercomment' => 'Opmerkings',
+'exif-wiki_usercomment' => 'Opmerkings',
 'exif-relatedsoundfile' => 'Besibbe audiotriem',
 'exif-exposuretime-format' => '$1 sek ($2)',
 'exif-flash' => 'Flits',
@@ -2274,7 +2274,7 @@ Dizze befêstigingskoade ferrint dan op $4.',
 'scarytranscludetoolong' => '[URL-adres is te lang]',
 
 # Delete conflict
-'confirmrecreate' => "Sûnt jo begûn binne dizze side te bewurkjen, hat meidogger [[User:$1|$1]] ([[User talk:$1|oerlis]]) de side wiske. De reden dy't derfoar jûn waard wie:
+'confirmrecreate' => "Sûnt jo begûn binne dizze side te bewurkjen, hat meidogger [[wiki_user:$1|$1]] ([[wiki_user talk:$1|oerlis]]) de side wiske. De reden dy't derfoar jûn waard wie:
 : ''$2''
 Wolle jo de side wier op 'e nij skriuwe?",
 
@@ -2347,7 +2347,7 @@ Wolle jo de side wier op 'e nij skriuwe?",
 'specialpages-group-login' => 'Oanmelde',
 'specialpages-group-changes' => 'Koartlyn feroare en lochs',
 'specialpages-group-media' => 'Oanbieden en oare triemsiden',
-'specialpages-group-users' => 'Meidoggers en rjochten',
+'specialpages-group-wiki_users' => 'Meidoggers en rjochten',
 'specialpages-group-highuse' => "Siden dy't in protte brûkt wurde",
 'specialpages-group-pages' => 'List fan siden',
 'specialpages-group-pagetools' => 'Sidehelpmiddels',
@@ -2362,6 +2362,6 @@ Wolle jo de side wier op 'e nij skriuwe?",
 # New logging system
 'revdelete-restricted' => 'hat beheinings oplein oan behearders',
 'revdelete-unrestricted' => 'hat beheinings foar behearders goedmakke',
-'newuserlog-byemail' => 'wachtwurd is ferstjoerd oer e-mail',
+'newwiki_userlog-byemail' => 'wachtwurd is ferstjoerd oer e-mail',
 
 );

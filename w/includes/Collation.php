@@ -339,8 +339,8 @@ class IcuCollation extends Collation {
 		$max = $valueCount - 1;
 		do {
 			$mid = $min + ( ( $max - $min ) >> 1 );
-			$item = call_user_func( $valueCallback, $mid );
-			$comparison = call_user_func( $comparisonCallback, $target, $item );
+			$item = call_wiki_user_func( $valueCallback, $mid );
+			$comparison = call_wiki_user_func( $comparisonCallback, $target, $item );
 			if ( $comparison > 0 ) {
 				$min = $mid;
 			} elseif ( $comparison == 0 ) {

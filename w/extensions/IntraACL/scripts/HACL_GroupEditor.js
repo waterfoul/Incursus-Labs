@@ -14,9 +14,9 @@ var htmlspecialchars = function(s)
 // Parameters:
 // msg: hash of localisation messages in form { KEY : wfMsgNoTrans('hacl_KEY') }
 //  Needs following keys:
-//   grp_save grp_create no_member_user no_member_group no_manager_user no_manager_group
-//   current_member_user current_member_group current_manager_user current_manager_group
-//   regexp_user regexp_group start_typing_user start_typing_group
+//   grp_save grp_create no_member_wiki_user no_member_group no_manager_wiki_user no_manager_group
+//   current_member_wiki_user current_member_group current_manager_wiki_user current_manager_group
+//   regexp_wiki_user regexp_group start_typing_wiki_user start_typing_group
 //  Plus group_prefix = $haclgContLang->mGroupPrefix
 //  Plus NS_ACL = getNsText(HACL_NS_ACL)
 // initial_group: name of group we are currently editing
@@ -31,7 +31,7 @@ var HACLGroupEditor = function(msg, initial_group)
     this.ind_managers = {};
     this.group_cache = {};
     this.limit = 11;
-    this.regexp_user = msg.regexp_user ? new RegExp(msg.regexp_user, 'gi') : '';
+    this.regexp_wiki_user = msg.regexp_wiki_user ? new RegExp(msg.regexp_wiki_user, 'gi') : '';
     this.regexp_group = msg.regexp_group ? new RegExp(msg.regexp_group, 'gi') : '';
 
     // initialize
@@ -81,7 +81,7 @@ HACLGroupEditor.prototype.exists_ajax = function(request)
 };
 
 // parse PF parameter text into array of comma separated values
-// is_assigned_to=true means it is the list of users/groups
+// is_assigned_to=true means it is the list of wiki_users/groups
 HACLGroupEditor.prototype.pf_param = function(name, value, is_assigned_to)
 {
     var re = new RegExp('[:\\|]\\s*' + name.replace(' ', '\\s+') + '\\s*=\\s*([^\\|\\}]*)', 'i');
@@ -91,8 +91,8 @@ HACLGroupEditor.prototype.pf_param = function(name, value, is_assigned_to)
     ass = (ass[1] || '');
     if (is_assigned_to)
     {
-        if (this.regexp_user)
-            ass = ass.replace(this.regexp_user, '$1User:');
+        if (this.regexp_wiki_user)
+            ass = ass.replace(this.regexp_wiki_user, '$1wiki_user:');
         if (this.regexp_group)
             ass = ass.replace(this.regexp_group, '$1Group/');
     }
@@ -180,7 +180,7 @@ HACLGroupEditor.prototype.fill_indirect = function(h)
 // Refresh hints
 HACLGroupEditor.prototype.refresh_hints = function(what)
 {
-    var x = [ ['member', 'user'], ['member', 'group'], ['manager', 'user'], ['manager', 'group'] ];
+    var x = [ ['member', 'wiki_user'], ['member', 'group'], ['manager', 'wiki_user'], ['manager', 'group'] ];
     var hint;
     for (var i in x)
     {
@@ -190,7 +190,7 @@ HACLGroupEditor.prototype.refresh_hints = function(what)
             if (!hint.element.value.trim().length)
                 hint.change_ajax(this.get_empty_hint(x[i][0], x[i][1]));
             else
-                this.find_set(x[i][0], x[i][1] == 'group' ? 'Group/' : 'User:', hint, hint.tip_div);
+                this.find_set(x[i][0], x[i][1] == 'group' ? 'Group/' : 'wiki_user:', hint, hint.tip_div);
         }
     }
 };
@@ -305,9 +305,9 @@ HACLGroupEditor.prototype.get_empty_hint = function(who, what)
         if (i != '*' && i != '#')
             cur_names.push(i);
     var empty = !cur_names.length;
-    if (what == 'user')
+    if (what == 'wiki_user')
     {
-        // add all users, registered users
+        // add all wiki_users, registered wiki_users
         if (current_hash['*'] !== undefined || current_hash['#'] !== undefined)
         {
             var g = current_hash['*'] !== undefined ? '*' : '#';
@@ -331,7 +331,7 @@ HACLGroupEditor.prototype.get_empty_hint = function(who, what)
             else if (i == '#')
                 rn = '#: '+this.msg.edit_reg;
             else
-                rn = n = htmlspecialchars(i.replace(/^User:|^Group\//, ''));
+                rn = n = htmlspecialchars(i.replace(/^wiki_user:|^Group\//, ''));
             current.push(
                 '<div id="'+pref+'_'+j+'" class="hacl_ti'+(current_hash[i] ? ' hacl_dis' : '')+'" title="'+n+
                 '"><input style="cursor: pointer" type="checkbox" id="c'+pref+'_'+j+
@@ -350,8 +350,8 @@ HACLGroupEditor.prototype.get_empty_hint = function(who, what)
 // autocomplete load handler for all autocompleters
 HACLGroupEditor.prototype.load_handler = function(ge, h, v)
 {
-    var what = h.element.id == 'member_groups' || h.element.id == 'manager_groups' ? 'group' : 'user';
-    var who = h.element.id == 'member_groups' || h.element.id == 'member_users' ? 'member' : 'manager';
+    var what = h.element.id == 'member_groups' || h.element.id == 'manager_groups' ? 'group' : 'wiki_user';
+    var who = h.element.id == 'member_groups' || h.element.id == 'member_wiki_users' ? 'member' : 'manager';
     if (!v.length)
         h.change_ajax(ge.get_empty_hint(who, what));
     else
@@ -361,7 +361,7 @@ HACLGroupEditor.prototype.load_handler = function(ge, h, v)
                 if (request.status == 200)
                 {
                     h.change_ajax(request.responseText);
-                    ge.find_set(who, what == 'group' ? 'Group/' : 'User:', h, h.tip_div);
+                    ge.find_set(who, what == 'group' ? 'Group/' : 'wiki_user:', h, h.tip_div);
                 }
             });
 };
@@ -414,16 +414,16 @@ HACLGroupEditor.prototype.set_handler = function(ge, hint, ev, e)
     if (chk != old_target)
         chk.checked = !chk.checked;
     var grp = hint.element.id == 'member_groups' || hint.element.id == 'manager_groups';
-    var hash = hint.element.id == 'member_groups' || hint.element.id == 'member_users'
+    var hash = hint.element.id == 'member_groups' || hint.element.id == 'member_wiki_users'
         ? this.members : this.managers;
-    to = e.title == '*' || e.title == '#' ? e.title : (grp ? 'Group/' : 'User:')+e.title;
+    to = e.title == '*' || e.title == '#' ? e.title : (grp ? 'Group/' : 'wiki_user:')+e.title;
     if (chk.checked)
         hash[to] = true;
     else
         delete hash[to];
     ge.save();
     if (grp || to == '*' || to == '#')
-        ge.reload_indirect('user');
+        ge.reload_indirect('wiki_user');
 };
 
 // Initialize group editor
@@ -435,17 +435,17 @@ HACLGroupEditor.prototype.init = function(initial_group)
     // use ge.XX instead of this.XX because methods are often called in element or SHint context
     var ge = this;
     // create autocompleters
-    ge.hint_member_users = new SHint('member_users', 'hacl', function(h, v) { ge.load_handler(ge, h, v) });
+    ge.hint_member_wiki_users = new SHint('member_wiki_users', 'hacl', function(h, v) { ge.load_handler(ge, h, v) });
     ge.hint_member_groups = new SHint('member_groups', 'hacl', function(h, v) { ge.load_handler(ge, h, v) });
-    ge.hint_manager_users = new SHint('manager_users', 'hacl', function(h, v) { ge.load_handler(ge, h, v) });
+    ge.hint_manager_wiki_users = new SHint('manager_wiki_users', 'hacl', function(h, v) { ge.load_handler(ge, h, v) });
     ge.hint_manager_groups = new SHint('manager_groups', 'hacl', function(h, v) { ge.load_handler(ge, h, v) });
-    ge.hint_member_users.set = function(ev, e) { ge.set_handler(ge, ge.hint_member_users, ev, e) };
+    ge.hint_member_wiki_users.set = function(ev, e) { ge.set_handler(ge, ge.hint_member_wiki_users, ev, e) };
     ge.hint_member_groups.set = function(ev, e) { ge.set_handler(ge, ge.hint_member_groups, ev, e) };
-    ge.hint_manager_users.set = function(ev, e) { ge.set_handler(ge, ge.hint_manager_users, ev, e) };
+    ge.hint_manager_wiki_users.set = function(ev, e) { ge.set_handler(ge, ge.hint_manager_wiki_users, ev, e) };
     ge.hint_manager_groups.set = function(ev, e) { ge.set_handler(ge, ge.hint_manager_groups, ev, e) };
-    ge.hint_member_users.init();
+    ge.hint_member_wiki_users.init();
     ge.hint_member_groups.init();
-    ge.hint_manager_users.init();
+    ge.hint_manager_wiki_users.init();
     ge.hint_manager_groups.init();
     // init group name
     document.getElementById('grp_name').value = initial_group;

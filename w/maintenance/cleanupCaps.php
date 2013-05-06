@@ -44,13 +44,13 @@ class CapsCleanup extends TableCleanup {
 	}
 
 	public function execute() {
-		global $wgCapitalLinks, $wgUser;
+		global $wgCapitalLinks, $wgwiki_user;
 
 		if ( $wgCapitalLinks ) {
 			$this->error( "\$wgCapitalLinks is on -- no need for caps links cleanup.", true );
 		}
 
-		$wgUser = User::newFromName( 'Conversion script' );
+		$wgwiki_user = wiki_user::newFromName( 'Conversion script' );
 
 		$this->namespace = intval( $this->getOption( 'namespace', 0 ) );
 		$this->dryrun = $this->hasOption( 'dry-run' );

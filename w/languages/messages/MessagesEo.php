@@ -76,7 +76,7 @@ $namespaceAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'Aktivaj_uzantoj' ),
+	'Activewiki_users'               => array( 'Aktivaj_uzantoj' ),
 	'Allmessages'               => array( 'Ĉiuj_mesaĝoj' ),
 	'Allpages'                  => array( 'Ĉiuj_paĝoj' ),
 	'Ancientpages'              => array( 'Malnovaj_paĝoj' ),
@@ -97,7 +97,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'Apartigiloj' ),
 	'DoubleRedirects'           => array( 'Duoblaj_alidirektiloj' ),
 	'EditWatchlist'             => array( 'Redakti_atenatron' ),
-	'Emailuser'                 => array( 'Retpoŝti_uzanton' ),
+	'Emailwiki_user'                 => array( 'Retpoŝti_uzanton' ),
 	'Export'                    => array( 'Eksporti' ),
 	'Fewestrevisions'           => array( 'Plej_malmultaj_revizioj' ),
 	'FileDuplicateSearch'       => array( 'Serĉi_pri_duoblaj_dosieroj' ),
@@ -111,7 +111,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Bildolisto' ),
 	'Listgrouprights'           => array( 'Gruprajtoj_de_uzantoj' ),
 	'Listredirects'             => array( 'Listigi_alidirektojn' ),
-	'Listusers'                 => array( 'Listo_de_uzantoj' ),
+	'Listwiki_users'                 => array( 'Listo_de_uzantoj' ),
 	'Lockdb'                    => array( 'Ŝlosi_datumbazon' ),
 	'Log'                       => array( 'Protokolo', 'Protokoloj' ),
 	'Lonelypages'               => array( 'Neligitaj_paĝoj' ),
@@ -161,9 +161,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'Neuzataj_ŝablonoj' ),
 	'Unwatchedpages'            => array( 'Neatentitaj_paĝoj' ),
 	'Upload'                    => array( 'Alŝuti' ),
-	'Userlogin'                 => array( 'Ensaluti' ),
-	'Userlogout'                => array( 'Elsaluti' ),
-	'Userrights'                => array( 'Rajtoj_de_uzantoj' ),
+	'wiki_userlogin'                 => array( 'Ensaluti' ),
+	'wiki_userlogout'                => array( 'Elsaluti' ),
+	'wiki_userrights'                => array( 'Rajtoj_de_uzantoj' ),
 	'Version'                   => array( 'Versio' ),
 	'Wantedcategories'          => array( 'Dezirataj_kategorioj' ),
 	'Wantedfiles'               => array( 'Dezirataj_dosieroj' ),
@@ -207,8 +207,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'NOMBRODEPAĜOJ', 'NOMBRODEPAGXOJ', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'NOMBRODEARTIKOLOJ', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'NOMBRODEDOSIEROJ', 'NUMBEROFFILES' ),
-	'numberofusers'             => array( '1', 'NOMBRODEUZANTOJ', 'NUMBEROFUSERS' ),
-	'numberofactiveusers'       => array( '1', 'NOMBRODEAKTIVAJUZANTOJ', 'NUMBEROFACTIVEUSERS' ),
+	'numberofwiki_users'             => array( '1', 'NOMBRODEUZANTOJ', 'NUMBEROFUSERS' ),
+	'numberofactivewiki_users'       => array( '1', 'NOMBRODEAKTIVAJUZANTOJ', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'NOMBRODEREDAKTOJ', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'NOMBRODEVIZITOJ', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'PAĜONOMO', 'PAGXONOMO', 'PAĜNOMO', 'PAGXNOMO', 'PAGENAME' ),
@@ -311,7 +311,7 @@ $dateFormats = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Substreki ligilojn',
 'tog-justify' => 'Alkadrigi liniojn',
 'tog-hideminor' => 'Kaŝi malgrandajn redaktetojn ĉe <i>Lastaj ŝanĝoj</i>',
@@ -335,7 +335,7 @@ $messages = array(
 'tog-previewonfirst' => 'Montri antaŭrigardon je unua redakto',
 'tog-nocache' => 'Malŝalti retumilan kaŝmemoron de paĝoj',
 'tog-enotifwatchlistpages' => 'Sendi al mi retmesaĝon kiam tiu paĝo en mia atentaro estas ŝanĝita',
-'tog-enotifusertalkpages' => 'Sendi al mi retmesaĝon kiam mia diskutpaĝo estas ŝanĝita',
+'tog-enotifwiki_usertalkpages' => 'Sendi al mi retmesaĝon kiam mia diskutpaĝo estas ŝanĝita',
 'tog-enotifminoredits' => 'Sendi al mi ankaŭ retmesaĝojn pro malgrandaj redaktoj de paĝoj',
 'tog-enotifrevealaddr' => 'Malkaŝi mian retadreson en informaj retpoŝtaĵoj',
 'tog-shownumberswatching' => 'Montri la nombron da priatentaj uzantoj',
@@ -517,7 +517,7 @@ $messages = array(
 'talk' => 'Diskuto',
 'views' => 'Vidoj',
 'toolbox' => 'Iloj',
-'userpage' => 'Rigardi personan paĝon',
+'wiki_userpage' => 'Rigardi personan paĝon',
 'projectpage' => 'Rigardi projektopaĝon',
 'imagepage' => 'Vidi dosieropaĝon',
 'mediawikipage' => 'Vidi mesaĝopaĝon',
@@ -543,7 +543,7 @@ $1',
 'pool-queuefull' => 'Atendovico de servilaro estas plena.',
 'pool-errorunknown' => 'Nekonata eraro',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Pri {{SITENAME}}',
 'aboutpage' => 'Project:Enkonduko',
 'copyright' => 'La enhavo estas disponebla laŭ $1.',
@@ -575,8 +575,8 @@ $1',
 'youhavenewmessages' => 'Por vi estas $1 ($2).',
 'newmessageslink' => 'novaj mesaĝoj',
 'newmessagesdifflink' => 'ŝanĝoj kompare kun antaŭlasta versio',
-'youhavenewmessagesfromusers' => 'Riceviĝis $1 de {{PLURAL:$3|alia uzanto|$3 uzantoj}} ($2).',
-'youhavenewmessagesmanyusers' => 'Riceviĝis $1 de multaj uzantoj ($2).',
+'youhavenewmessagesfromwiki_users' => 'Riceviĝis $1 de {{PLURAL:$3|alia uzanto|$3 uzantoj}} ($2).',
+'youhavenewmessagesmanywiki_users' => 'Riceviĝis $1 de multaj uzantoj ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|nova mesaĝo|novaj mesaĝoj}}',
 'newmessagesdifflinkplural' => '{{PLURAL:$1|lasta ŝanĝo|lastaj ŝanĝoj}}',
 'youhavenewmessagesmulti' => 'Vi havas novajn mesaĝojn ĉe $1',
@@ -607,7 +607,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Paĝo',
-'nstab-user' => 'Uzantopaĝo',
+'nstab-wiki_user' => 'Uzantopaĝo',
 'nstab-media' => 'Media paĝo',
 'nstab-special' => 'Speciala paĝo',
 'nstab-project' => 'Projektpaĝo',
@@ -656,7 +656,7 @@ La ŝlosinta administranto lasis la jenan klarigon:
 Ĉi tiel ofte estas kaŭzite de sekvado de malfreŝa \'\'diff\'\' aŭ historia ligilo al paĝo kiu estis forigita.
 
 Se ĉi tiel ne okazis, verŝajne vi trovis cimon en la softvaro.
-Bonvolu raporti ĉi tiun al [[Special:ListUsers/sysop|administranto]], notante la TTT-adreson.',
+Bonvolu raporti ĉi tiun al [[Special:Listwiki_users/sysop|administranto]], notante la TTT-adreson.',
 'missingarticle-rev' => '(versio#: $1)',
 'missingarticle-diff' => '(Diferenco inter versioj: $1, $2)',
 'readonly_lag' => 'La datumbazo estis aŭtomate ŝlosita dum la subdatumbazo atingas la ĉefan datumbazon.',
@@ -705,7 +705,7 @@ $2',
 'customcssprotected' => 'Vi ne rajtas redakti ĉi tiun CSS-paĝon, ĉar ĝi enhavas personajn alĝustigojn de alia uzanto.',
 'customjsprotected' => 'Vi ne rajtas redakti ĉi tiun JavaScript-paĝon, ĉar ĝi enhavas personajn alĝustigojn de alia uzanto.',
 'ns-specialprotected' => 'Paĝoj en la {{ns:special}} nomspaco ne povas esti redaktataj.',
-'titleprotected' => "Ĉi titolo estas protektita de kreado de [[User:$1|$1]].
+'titleprotected' => "Ĉi titolo estas protektita de kreado de [[wiki_user:$1|$1]].
 La kialo donata estis ''$2''.",
 'filereadonlyerror' => 'La dosiero "$1" ne estas modifebla, ĉar la datumbazujo "$2" estas en nurlegebla modo.
 
@@ -723,7 +723,7 @@ La administranto kiu ŝlosis ĝin proponis tiun klarigon: "$3".',
 # Login and logout pages
 'logouttext' => "'''Vi nun estas elsalutita.'''
 
-Vi rajtas daŭre vikiumi sennome, aŭ vi povas [[Special:UserLogin|reensaluti]] kiel la sama aŭ kiel alia uzanto.
+Vi rajtas daŭre vikiumi sennome, aŭ vi povas [[Special:wiki_userLogin|reensaluti]] kiel la sama aŭ kiel alia uzanto.
 Notu ke iuj paĝoj daŭre ŝajnos kvazaŭ vi ankoraŭ estas ensalutita, ĝis vi refreŝigu vian retumilan kaŝmemoron.",
 'welcomecreation' => '== Bonvenon, $1! ==
 Via konto estas kreita.
@@ -739,21 +739,21 @@ Ne forgesu fari viajn [[Special:Preferences|{{SITENAME}}-preferojn]].',
 'login' => 'Ensaluti',
 'nav-login-createaccount' => 'Ensaluti / Krei novan konton',
 'loginprompt' => 'Via foliumilo nepre permesu kuketojn por ensaluti en la {{SITENAME}}.',
-'userlogin' => 'Ensaluti / Krei novan konton',
-'userloginnocreate' => 'Ensaluti',
+'wiki_userlogin' => 'Ensaluti / Krei novan konton',
+'wiki_userloginnocreate' => 'Ensaluti',
 'logout' => 'Elsaluti',
-'userlogout' => 'Elsaluti',
+'wiki_userlogout' => 'Elsaluti',
 'notloggedin' => 'Ne ensalutinta',
 'nologin' => "Ĉu vi ne havas konton? '''$1'''.",
 'nologinlink' => 'Krei konton',
 'createaccount' => 'Krei novan konton',
 'gotaccount' => "Ĉu vi jam havas konton? '''$1'''.",
 'gotaccountlink' => 'Ensaluti',
-'userlogin-resetlink' => 'Ĉu vi forgesis ensalutajn detalojn?',
+'wiki_userlogin-resetlink' => 'Ĉu vi forgesis ensalutajn detalojn?',
 'createaccountmail' => 'retpoŝte',
 'createaccountreason' => 'Kialo:',
 'badretype' => 'La pasvortojn kiujn vi tajpis ne egalas.',
-'userexists' => 'Salutnomo enigita jam estas uzata.
+'wiki_userexists' => 'Salutnomo enigita jam estas uzata.
 Bonvolu elekti alian nomon.',
 'loginerror' => 'Ensaluta eraro',
 'createaccounterror' => 'Ne eblis krei konton: $1',
@@ -763,12 +763,12 @@ Bonvolu elekti alian nomon.',
 'noname' => 'Vi ne tajpis validan salutnomon.',
 'loginsuccesstitle' => 'Ensalutado sukcesis',
 'loginsuccess' => 'Vi ensalutis ĉe {{SITENAME}} kiel uzanto "$1".',
-'nosuchuser' => 'Neniu uzanto havas nomon "$1".
+'nosuchwiki_user' => 'Neniu uzanto havas nomon "$1".
 Nomoj por uzantoj estas usklecodistinga.
-Kontrolu vian literumadon, aŭ [[Special:UserLogin/signup|kreu novan konton]].',
-'nosuchusershort' => 'Ne ekzistas uzanto kun la nomo "$1". Bonvolu kontroli vian ortografion.',
-'nouserspecified' => 'Vi devas entajpi salutnomon.',
-'login-userblocked' => 'Ĉi tiu uzanto estas forbarita. Ensalutado ne estas permesita.',
+Kontrolu vian literumadon, aŭ [[Special:wiki_userLogin/signup|kreu novan konton]].',
+'nosuchwiki_usershort' => 'Ne ekzistas uzanto kun la nomo "$1". Bonvolu kontroli vian ortografion.',
+'nowiki_userspecified' => 'Vi devas entajpi salutnomon.',
+'login-wiki_userblocked' => 'Ĉi tiu uzanto estas forbarita. Ensalutado ne estas permesita.',
 'wrongpassword' => 'Vi tajpis malĝustan pasvorton. Bonvolu provi denove.',
 'wrongpasswordempty' => 'Vi tajpis malplenan pasvorton. Bonvolu provi denove.',
 'passwordtooshort' => 'Pasvortoj devas esti almenaŭ  $1 {{PLURAL:$1|1 signon|$1 signojn}}.',
@@ -811,16 +811,16 @@ Enigi bone formatita adreso aŭ malplenigi tiun kampon.',
 'createaccount-text' => 'Iu kreis konton por via retadreso en {{SITENAME}} ($4) nomata "$2", kun pasvorto "$3". Vi ensalutu kaj ŝanĝu vian pasvorton nun.
 
 Vi povas ignori ĉi mesaĝon, se ĉi konto estis kreita erare.',
-'usernamehasherror' => 'Salutnomo ne povas enhavi kriphaketaĵajn signojn',
+'wiki_usernamehasherror' => 'Salutnomo ne povas enhavi kriphaketaĵajn signojn',
 'login-throttled' => 'Vi tro ofte provis eniri la pasvorton por ĉi tiu konto.
 Bonvolu ĝisatendi antaŭ retrovi.',
 'login-abort-generic' => 'Via ensaluto malsukcesis - Ĉesigita',
 'loginlanguagelabel' => 'Lingvo: $1',
-'suspicious-userlogout' => 'Via peto por elsaluti estis malpermesita ĉar verŝajne ĝi estis sendita de trompita retumilo aŭ kaŝiganta proksima servilo.',
+'suspicious-wiki_userlogout' => 'Via peto por elsaluti estis malpermesita ĉar verŝajne ĝi estis sendita de trompita retumilo aŭ kaŝiganta proksima servilo.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'Nekonata eraro en la funkcio mail() de PHP',
-'user-mail-no-addy' => 'Provis sendi retpoŝton sen retpoŝtadreso.',
+'wiki_user-mail-no-addy' => 'Provis sendi retpoŝton sen retpoŝtadreso.',
 
 # Change password dialog
 'resetpass' => 'Ŝanĝi pasvorton',
@@ -846,7 +846,7 @@ Vi eble jam ŝanĝis vian pasvorton aŭ petis novan provizoran pasvorton.',
 'passwordreset-legend' => 'Refari pasvorton',
 'passwordreset-disabled' => 'Pasvortaj restarigoj estis malŝaltitaj en ĉi tiu vikio.',
 'passwordreset-pretext' => '{{PLURAL:$1||Enigi unu el la jenaj datenoj}}',
-'passwordreset-username' => 'Salutnomo:',
+'passwordreset-wiki_username' => 'Salutnomo:',
 'passwordreset-domain' => 'Domajno:',
 'passwordreset-capture' => 'Vidi la rezultan retpoŝton?',
 'passwordreset-capture-help' => 'Se vi marki ĉi tiun skatoleton, la retpoŝto (kun provizora pasvorto) estos montrita al vi kaj estos sendita al la uzanto.',
@@ -863,7 +863,7 @@ Vi ensalutu kaj elektu novan pasvorton nun. Se iu alia petis ĉi tion,
 aŭ se vi memoris vian originalan pasvorton, kaj vi ne plu volas
 ŝanĝi ĝin, vi povas ignori ĉi tiun mesaĝon kaj plu uzi vian 
 malnovan pasvorton.',
-'passwordreset-emailtext-user' => 'Uzanto $1 de {{SITENAME}} petis rememoraĵo de viaj kontaj detaloj por {{SITENAME}}
+'passwordreset-emailtext-wiki_user' => 'Uzanto $1 de {{SITENAME}} petis rememoraĵo de viaj kontaj detaloj por {{SITENAME}}
 ($4). La {{PLURAL:$3|jena uzanto-konto|jenaj uzanto-kontoj}} estas asociita kun ĉi tiu retpoŝtadreso:
 
 $2
@@ -966,7 +966,7 @@ Bonvolu inkluzivi tiujn detalojn en iuj ajn demandoj kiun vi farus.',
 'loginreqlink' => 'ensaluti',
 'loginreqpagetext' => 'Vi devas $1 por rigardi aliajn paĝojn.',
 'accmailtitle' => 'Pasvorto sendita.',
-'accmailtext' => "Hazarde generita pasvorto por [[User talk:$1|$1]] estis sendita al $2.
+'accmailtext' => "Hazarde generita pasvorto por [[wiki_user talk:$1|$1]] estis sendita al $2.
 
 La pasvorto por ĉi tiu nova konto povas esti ŝanĝita en la paĝo ''[[Special:ChangePassword|ŝanĝi pasvorton]]'' dum ensalutado.",
 'newarticle' => '(Nova)',
@@ -974,7 +974,7 @@ La pasvorto por ĉi tiu nova konto povas esti ŝanĝita en la paĝo ''[[Special:
 'anontalkpagetext' => "---- ''Jen diskutopaĝo por anonima kontribuanto kiu ne jam kreis konton aŭ ne uzas ĝin.
 Ni tial devas uzi la cifran IP-adreson por identigi lin/ŝin.
 Ĉi tia IP-adreso povas esti uzata de pluraj uzantoj.
-Se vi estas anonimulo kaj preferus eviti tiajn mistrafajn komentojn al vi, bonvolu [[Special:UserLogin/signup|krei konton]] aŭ [[Special:UserLogin|ensaluti]] por eviti estontan konfuzon pro aliaj anonimaj uzantoj.''",
+Se vi estas anonimulo kaj preferus eviti tiajn mistrafajn komentojn al vi, bonvolu [[Special:wiki_userLogin/signup|krei konton]] aŭ [[Special:wiki_userLogin|ensaluti]] por eviti estontan konfuzon pro aliaj anonimaj uzantoj.''",
 'noarticletext' => 'Mankas teksto en ĉi tiu paĝo.
 Vi povas [[Special:Search/{{PAGENAME}}|serĉi ĉi tiun paĝtitolon]] en aliaj paĝoj,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} serĉi la rilatajn protokolojn],
@@ -986,8 +986,8 @@ aŭ <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}
 
 La kutima kaŭzo estas sekvi malaktualan historio-ligilon al paĝo forviŝita.
 Detaloj troveblos en la [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} registro de forviŝoj].',
-'userpage-userdoesnotexist' => 'Uzantokonto "<nowiki>$1</nowiki>" ne estas registrita. Bonvolu konfirmi se vi volas krei/redakti ĉi tiun paĝon.',
-'userpage-userdoesnotexist-view' => 'Uzanto-konto "$1" ne estas registrita.',
+'wiki_userpage-wiki_userdoesnotexist' => 'Uzantokonto "<nowiki>$1</nowiki>" ne estas registrita. Bonvolu konfirmi se vi volas krei/redakti ĉi tiun paĝon.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Uzanto-konto "$1" ne estas registrita.',
 'blocked-notice-logextract' => 'Ĉi tiu uzanto estas ĉi-momente forbarita.
 La lasta protokolero estas jene montrata por via referenco:',
 'clearyourcache' => "Notu:''' Post konservado, vi forviŝu la kaŝmemoron de via foliumilo por vidi la ŝanĝojn. 
@@ -995,16 +995,16 @@ La lasta protokolero estas jene montrata por via referenco:',
 * '''Google Chrome:''' Premu ''Stir-majuskligklavon-R'' (''⌘-Majuskligklavo-R'' kun Makintoŝo)
 * '''Interreta Esplorilo''': Premu ''Stir'' klakante ''Refreŝu'', aŭ premu ''Stir-F5'' 
 * '''Opera:''' Nuligi la kaŝmemoro en ''Iloj → Preferoj''",
-'usercssyoucanpreview' => "'''Konsileto:''' Uzu la butonon \"Antaŭrigardi\" por provi vian novan CSS-kodon antaŭ konservado.",
-'userjsyoucanpreview' => "'''Konsileto:''' Uzu la butonon \"{{int:showpreview}}\" por provi vian novan JS-kodon antaŭ konservado.",
-'usercsspreview' => "'''Notu ke vi nur antaŭvidas vian uzanto-CSS.
+'wiki_usercssyoucanpreview' => "'''Konsileto:''' Uzu la butonon \"Antaŭrigardi\" por provi vian novan CSS-kodon antaŭ konservado.",
+'wiki_userjsyoucanpreview' => "'''Konsileto:''' Uzu la butonon \"{{int:showpreview}}\" por provi vian novan JS-kodon antaŭ konservado.",
+'wiki_usercsspreview' => "'''Notu ke vi nur antaŭvidas vian uzanto-CSS.
 Ĝi ne jam estis konservita!'''",
-'userjspreview' => "'''Memoru ke vi nun nur provas kaj antaŭrigardas vian uzantan javaskripton, ĝi ne estas jam konservita'''",
+'wiki_userjspreview' => "'''Memoru ke vi nun nur provas kaj antaŭrigardas vian uzantan javaskripton, ĝi ne estas jam konservita'''",
 'sitecsspreview' => "'''Konsciu ke vi nur antaŭrigardas tiun ĉi CSS.'''
 '''Ĝi ne jam estis savita!''",
 'sitejspreview' => "'''Konsciu ke vi nur antaŭrigardas tiun ĉi Ĝavaskripta kodon''. ''Ĝi ne jam estis konservita''.",
-'userinvalidcssjstitle' => "'''Averto:''' Ne ekzistas etoso \"\$1\".
-Rememoru ke individuaj .css-aj kaj .js-aj paĝoj uzas minusklan titolon, ekz. {{ns:user}}:Foo/vector.css kontraŭe al {{ns:user}}:Foo/Vector.css.",
+'wiki_userinvalidcssjstitle' => "'''Averto:''' Ne ekzistas etoso \"\$1\".
+Rememoru ke individuaj .css-aj kaj .js-aj paĝoj uzas minusklan titolon, ekz. {{ns:wiki_user}}:Foo/vector.css kontraŭe al {{ns:wiki_user}}:Foo/Vector.css.",
 'updated' => '(Ŝanĝo registrita)',
 'note' => "'''Noto:'''",
 'previewnote' => "'''Memoru, ke ĉi tio estas nur antaŭrigardo.''' 
@@ -1014,13 +1014,13 @@ Viaj ŝanĝoj ne ankoraŭ estas konservitaj!",
 kiel ĝi aperos se vi elektos konservi la paĝon.',
 'session_fail_preview' => "'''Ni ne povas procezi vian redakton pro perdo de seancaj datenoj.
 Bonvolu reprovi.
-Se ankoraŭ ne funkcios, provu [[Special:UserLogout|elsaluti]] kaj reensaluti.'''",
+Se ankoraŭ ne funkcios, provu [[Special:wiki_userLogout|elsaluti]] kaj reensaluti.'''",
 'session_fail_preview_html' => "'''Bedaŭrinde, ne povas trakti vian redakton pro manko de seancaj datenoj.'''
 
 ''Ĉar {{SITENAME}} ebligas krudan HTML-kodon, ĉi tiu antaŭrigardo estas kaŝita kiel prevento kontraŭ Javascript-atakoj.''
 
 '''Se ĉi tiu estas taŭga provo por redakti, bonvolu reprovi.'''
-Se ankoraŭ ne funkcias, provu [[Special:UserLogout|elsaluti]] kaj reensaluti.",
+Se ankoraŭ ne funkcias, provu [[Special:wiki_userLogout|elsaluti]] kaj reensaluti.",
 'token_suffix_mismatch' => "'''Via redakto estis malpermesita ĉar via klienta fuŝis la interpunkcio en la redakto-signo.
 La redakto estis malpermesita por preventi koruptado de la teksto de la paĝo.
 Ĉi tiel malofte okazas kiam vi uzas fuŝan TTT-an anoniman prokurilon.'''",
@@ -1068,7 +1068,7 @@ Jen la lasta protokolero por via referenco:",
 'hiddencategories' => 'Ĉi tiu paĝo estas membro de {{PLURAL:$1|1 kaŝita kategorio|$1 kaŝitaj kategorioj}}:',
 'edittools' => '<!-- Teksto ĉi tie estas montrata sub redaktaj kaj alŝutaj formularoj. -->',
 'nocreatetitle' => 'Paĝa kreado estas limigita',
-'nocreatetext' => '{{SITENAME}} restriktas la eblecon krei novajn paĝojn. Vi povas reiri kaj redakti faritan paĝon, aŭ [[Special:UserLogin|ensaluti aŭ krei konton]].',
+'nocreatetext' => '{{SITENAME}} restriktas la eblecon krei novajn paĝojn. Vi povas reiri kaj redakti faritan paĝon, aŭ [[Special:wiki_userLogin|ensaluti aŭ krei konton]].',
 'nocreate-loggedin' => 'Vi ne rajtas krei novajn paĝojn.',
 'sectioneditnotsupported-title' => 'Redaktado de ĉi tiu sekcio ne estas subtenata',
 'sectioneditnotsupported-text' => 'Redaktado de sekcioj ne estas subtenata en ĉi tiu redakta paĝo.',
@@ -1119,11 +1119,11 @@ Iuj ŝablonoj ne estos inkluzivitaj.',
 Bonvolu konfirmi la jenan komparaĵon por verigi ĉi tiel vi volas, kaj konservi la ŝanĝojn suben fini malfarante la redakton.',
 'undo-failure' => 'Ne povis nuligi redakton pro konfliktaj intermezaj redaktoj.',
 'undo-norev' => 'La redakto ne eblis esti malfarita ĉar ĝi aŭ ne ekzistas aŭ estis forigita.',
-'undo-summary' => 'Nuligis version $1 de [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskuto]] | [[Special:Contributions/$2|{{MediaWiki:Contribslink}}]])',
+'undo-summary' => 'Nuligis version $1 de [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Diskuto]] | [[Special:Contributions/$2|{{MediaWiki:Contribslink}}]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Ne povas krei konton',
-'cantcreateaccount-text' => "Konto-kreado de ĉi tiu IP-adreso ('''$1''') estis forbarita de [[User:$3|$3]].
+'cantcreateaccount-text' => "Konto-kreado de ĉi tiu IP-adreso ('''$1''') estis forbarita de [[wiki_user:$3|$3]].
 
 La kialo donata de $3 estas ''$2''.",
 
@@ -1160,9 +1160,9 @@ Provu [[Special:Search|serĉi en la vikio]] por rilataj novaj paĝoj.',
 
 # Revision deletion
 'rev-deleted-comment' => '(komento forigita)',
-'rev-deleted-user' => '(uzanto-nomo forigita)',
+'rev-deleted-wiki_user' => '(uzanto-nomo forigita)',
 'rev-deleted-event' => '(protokola ago forigita)',
-'rev-deleted-user-contribs' => '[salutnomo aŭ IP-adreso estis forigita - redakto estas kaŝita en kontribuoj]',
+'rev-deleted-wiki_user-contribs' => '[salutnomo aŭ IP-adreso estis forigita - redakto estas kaŝita en kontribuoj]',
 'rev-deleted-text-permission' => "Ĉi tiu revizio de la paĝo estis '''forigita'''.
 Eble estas detaloj en la [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolo pri forigado].",
 'rev-deleted-text-unhide' => "Ĉi tiu revizio de la paĝo estis '''forigita'''.
@@ -1214,7 +1214,7 @@ Aliaj administrantoj ĉe {{SITENAME}} plu povos aliri la kaŝitan entenon kaj re
 'revdelete-hide-image' => 'Kaŝi enhavon de dosieroj',
 'revdelete-hide-name' => 'Kaŝi agon kaj celon',
 'revdelete-hide-comment' => 'Kaŝi komenton de redakto',
-'revdelete-hide-user' => 'Kaŝi nomon aŭ IP-adreson de redaktinto',
+'revdelete-hide-wiki_user' => 'Kaŝi nomon aŭ IP-adreson de redaktinto',
 'revdelete-hide-restricted' => 'Subpremi ĉi tiujn datenojn de administrantoj kaj ankaŭ aliaj',
 'revdelete-radio-same' => '(ne ŝanĝi)',
 'revdelete-radio-set' => 'Jes',
@@ -1299,7 +1299,7 @@ Certigu ke ĉi tiu ŝanĝo tenos kontinuecon de la historia paĝo.',
 'showhideselectedversions' => 'Montri/kaŝi elektitajn versiojn',
 'editundo' => 'malfari',
 'diff-multi' => '({{PLURAL:$1|Unu intermeza versio|$1 intermezaj versioj}} de {{PLURAL:$2|unu uzanto|$2 uzantoj}} ne estas {{PLURAL:$1|montrata|montrataj}}.)',
-'diff-multi-manyusers' => '({{PLURAL:$1|Unu intermeza versio|$1 intermezaj versioj}} de pli ol {{PLURAL:$2|unu uzanto|$2 uzantoj}} ne estas {{PLURAL:$1|montrata|montrataj}}.)',
+'diff-multi-manywiki_users' => '({{PLURAL:$1|Unu intermeza versio|$1 intermezaj versioj}} de pli ol {{PLURAL:$2|unu uzanto|$2 uzantoj}} ne estas {{PLURAL:$1|montrata|montrataj}}.)',
 'difference-missing-revision' => '{{PLURAL:$2|Unu revizio|$2 revizioj}} de ĉi tiu malsameco ($1) ne {{PLURAL:$2|estis|estis}} trovebla.
 
 La kutima kaŭzo estas sekvi malaktualan malsamo-ligilon al paĝo forviŝita.
@@ -1383,7 +1383,7 @@ indekso pro troŝarĝita servilo. Intertempe, vi povas serĉi per <i>guglo</i> a
 'mypreferences' => 'Preferoj',
 'prefs-edits' => 'Nombro de redaktoj:',
 'prefsnologin' => 'Ne jam salutis!',
-'prefsnologintext' => 'Vi devas esti <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} ensalutita]</span> por fari viajn preferojn.',
+'prefsnologintext' => 'Vi devas esti <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} ensalutita]</span> por fari viajn preferojn.',
 'changepassword' => 'Ŝanĝi pasvorton',
 'prefs-skin' => 'Etoso',
 'skin-preview' => 'Antaŭrigardo',
@@ -1391,7 +1391,7 @@ indekso pro troŝarĝita servilo. Intertempe, vi povas serĉi per <i>guglo</i> a
 'prefs-beta' => 'Ecoj de Beta',
 'prefs-datetime' => 'Dato kaj horo',
 'prefs-labs' => 'Ecoj el Laboratorio',
-'prefs-user-pages' => 'Uzantopaĝoj',
+'prefs-wiki_user-pages' => 'Uzantopaĝoj',
 'prefs-personal' => 'Uzanta profilo',
 'prefs-rc' => 'Lastaj ŝanĝoj',
 'prefs-watchlist' => 'Atentaro',
@@ -1456,7 +1456,7 @@ Jen hazarde generita valoro por via uzo: $1',
 'prefs-emailconfirm-label' => 'Retpoŝta konfirmado:',
 'prefs-textboxsize' => 'Grandeco de redakta fenestro',
 'youremail' => 'Retadreso:',
-'username' => 'Salutnomo:',
+'wiki_username' => 'Salutnomo:',
 'uid' => 'Uzant-ID:',
 'prefs-memberingroups' => 'Ano de {{PLURAL:$1|grupo|grupoj}}:',
 'prefs-registration' => 'Tempo de registrado:',
@@ -1494,35 +1494,35 @@ Jen hazarde generita valoro por via uzo: $1',
 'prefs-displaywatchlist' => 'Montraj opcioj',
 'prefs-diffs' => 'Diferencoj',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'Ŝajnas ke la retpoŝtadreso estas valida',
 'email-address-validity-invalid' => 'Tajpu validan retpoŝtadreson',
 
-# User rights
-'userrights' => 'Prizorgi rajtojn de uzantoj',
-'userrights-lookup-user' => 'Administri grupojn de uzantoj',
-'userrights-user-editname' => 'Entajpu salutnomon:',
-'editusergroup' => 'Redakti grupojn de uzantoj',
-'editinguser' => "Ŝanĝante uzanto-rajtojn de uzanto '''[[User:$1|$1]]''' $2",
-'userrights-editusergroup' => 'Redakti grupojn de uzantoj',
-'saveusergroups' => 'Konservi grupojn de uzantoj',
-'userrights-groupsmember' => 'Membro de:',
-'userrights-groupsmember-auto' => 'Implica membro de:',
-'userrights-groups-help' => 'Vi povas modifi la grupojn kiun ĉi uzanto enestas.
+# wiki_user rights
+'wiki_userrights' => 'Prizorgi rajtojn de uzantoj',
+'wiki_userrights-lookup-wiki_user' => 'Administri grupojn de uzantoj',
+'wiki_userrights-wiki_user-editname' => 'Entajpu salutnomon:',
+'editwiki_usergroup' => 'Redakti grupojn de uzantoj',
+'editingwiki_user' => "Ŝanĝante uzanto-rajtojn de uzanto '''[[wiki_user:$1|$1]]''' $2",
+'wiki_userrights-editwiki_usergroup' => 'Redakti grupojn de uzantoj',
+'savewiki_usergroups' => 'Konservi grupojn de uzantoj',
+'wiki_userrights-groupsmember' => 'Membro de:',
+'wiki_userrights-groupsmember-auto' => 'Implica membro de:',
+'wiki_userrights-groups-help' => 'Vi povas modifi la grupojn kiun ĉi uzanto enestas.
 * Markita markbutono signifas ke la uzanto estas en tiu grupo.
 * Nemarkita markbutono signifas ke la uzanto ne estas in tiu grupo.
 * Steleto (*) signifas ke vi ne povas forigi la grupon post vi aldonis ĝin, aŭ male.',
-'userrights-reason' => 'Kialo:',
-'userrights-no-interwiki' => 'Vi ne rajtas redakti uzanto-rajtojn en aliaj vikioj.',
-'userrights-nodatabase' => 'Datumbazo $1 ne ekzistas aŭ ne estas loka.',
-'userrights-nologin' => 'Vi nepre [[Special:UserLogin|ensalutu]] kun administranto-konto doni uzanto-rajtojn.',
-'userrights-notallowed' => 'Via konto ne rajtas doni aŭ forigi uzanto-rajtojn.',
-'userrights-changeable-col' => 'Grupoj kiujn vi povas ŝanĝi',
-'userrights-unchangeable-col' => 'Grupoj kiujn vi ne povas ŝanĝi',
+'wiki_userrights-reason' => 'Kialo:',
+'wiki_userrights-no-interwiki' => 'Vi ne rajtas redakti uzanto-rajtojn en aliaj vikioj.',
+'wiki_userrights-nodatabase' => 'Datumbazo $1 ne ekzistas aŭ ne estas loka.',
+'wiki_userrights-nologin' => 'Vi nepre [[Special:wiki_userLogin|ensalutu]] kun administranto-konto doni uzanto-rajtojn.',
+'wiki_userrights-notallowed' => 'Via konto ne rajtas doni aŭ forigi uzanto-rajtojn.',
+'wiki_userrights-changeable-col' => 'Grupoj kiujn vi povas ŝanĝi',
+'wiki_userrights-unchangeable-col' => 'Grupoj kiujn vi ne povas ŝanĝi',
 
 # Groups
 'group' => 'Grupo:',
-'group-user' => 'Uzantoj',
+'group-wiki_user' => 'Uzantoj',
 'group-autoconfirmed' => 'Aŭtomate konfirmitaj uzantoj',
 'group-bot' => 'Robotoj',
 'group-sysop' => 'Administrantoj',
@@ -1530,14 +1530,14 @@ Jen hazarde generita valoro por via uzo: $1',
 'group-suppress' => 'Superrigardoj',
 'group-all' => '(ĉiuj)',
 
-'group-user-member' => '{{GENDER:$1|uzanto|uzantino}}',
+'group-wiki_user-member' => '{{GENDER:$1|uzanto|uzantino}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|aŭtomate konfirmita uzanto|aŭtomate konfirmita uzantino}}',
 'group-bot-member' => '{{GENDER:$1|roboto}}',
 'group-sysop-member' => '{{GENDER:$1|Administranto|Administrantino}}',
 'group-bureaucrat-member' => '{{GENDER:$1|Burokrato|Burokratino}}',
 'group-suppress-member' => '{{GENDER:$1|Superrigardanto|Superrigardantino}}',
 
-'grouppage-user' => '{{ns:project}}:Uzantoj',
+'grouppage-wiki_user' => '{{ns:project}}:Uzantoj',
 'grouppage-autoconfirmed' => '{{ns:project}}:Aŭtomate konfirmitaj uzantoj',
 'grouppage-bot' => '{{ns:project}}:Robotoj',
 'grouppage-sysop' => '{{ns:project}}:Administrantoj',
@@ -1553,7 +1553,7 @@ Jen hazarde generita valoro por via uzo: $1',
 'right-minoredit' => 'Marki redaktojn kiel etajn',
 'right-move' => 'Movi paĝojn',
 'right-move-subpages' => 'Alinomigi paĝojn kun ĝiaj subpaĝoj',
-'right-move-rootuserpages' => 'Movi radikajn uzanto-paĝojn',
+'right-move-rootwiki_userpages' => 'Movi radikajn uzanto-paĝojn',
 'right-movefile' => 'Alinomigi dosierojn',
 'right-suppressredirect' => 'Ne krei alidirektilon de la malnova nomo kiam movante paĝon',
 'right-upload' => 'Alŝuti dosierojn',
@@ -1579,16 +1579,16 @@ Jen hazarde generita valoro por via uzo: $1',
 'right-suppressionlog' => 'Vidi privatajn protokolojn',
 'right-block' => 'Forbari aliajn uzantoj de redaktado',
 'right-blockemail' => 'Forbari uzanton de retpoŝta sendado',
-'right-hideuser' => 'Forbari salutnomon, kaŝante ĝin de la publiko',
+'right-hidewiki_user' => 'Forbari salutnomon, kaŝante ĝin de la publiko',
 'right-ipblock-exempt' => 'Preterpasi IP-forbarojn, aŭtomatajn forbarojn, kaj ĝeneralajn forbarojn',
 'right-proxyunbannable' => 'Preterpasi aŭtomatajn forbarojn de prokuriloj',
 'right-unblockself' => 'Malforbari oni mem',
 'right-protect' => 'Ŝanĝi protektniveloj kaj redakti protektitajn paĝojn',
 'right-editprotected' => 'Redakti protektitajn paĝojn (sen kaskada protektado)',
 'right-editinterface' => 'Redakti la uzantointerfacon',
-'right-editusercssjs' => 'Redaktu CSS- kaj JS-dosierojn de aliaj uzantoj',
-'right-editusercss' => 'Redaktu CSS-dosierojn de aliaj uzantoj',
-'right-edituserjs' => 'Redaktu JS-dosierojn de aliaj uzantoj',
+'right-editwiki_usercssjs' => 'Redaktu CSS- kaj JS-dosierojn de aliaj uzantoj',
+'right-editwiki_usercss' => 'Redaktu CSS-dosierojn de aliaj uzantoj',
+'right-editwiki_userjs' => 'Redaktu JS-dosierojn de aliaj uzantoj',
 'right-rollback' => 'Tuj malfari la redaktojn de la lasta uzanto kiu redaktis specifan paĝon',
 'right-markbotedits' => 'Marki restarigitajn redaktojn kiel robotajn redaktojn',
 'right-noratelimit' => 'Ne influita de po-limoj',
@@ -1599,14 +1599,14 @@ Jen hazarde generita valoro por via uzo: $1',
 'right-patrolmarks' => 'Rigardi patrolmarkojn de lastaj ŝanĝoj',
 'right-unwatchedpages' => 'Vidi la liston de nepriatentitaj paĝoj',
 'right-mergehistory' => 'Kunfandigi la historiojn de paĝoj',
-'right-userrights' => 'Redakti ĉiujn uzanto-rajtojn',
-'right-userrights-interwiki' => 'Redakti la rajtojn de uzantoj en aliaj vikioj',
+'right-wiki_userrights' => 'Redakti ĉiujn uzanto-rajtojn',
+'right-wiki_userrights-interwiki' => 'Redakti la rajtojn de uzantoj en aliaj vikioj',
 'right-siteadmin' => 'Ŝlosi kaj malŝlosi la datumbazon',
 'right-override-export-depth' => 'Eksporti paĝojn inkluzivante ligitajn paĝojn ĝis profundeco de 5',
 'right-sendemail' => 'Sendi retpoŝton al aliaj uzantoj',
 'right-passwordreset' => 'Vidi retpoŝtojn de pasvorta restarado.',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Protokolo de uzanto-rajtoj',
 'rightslogtext' => 'Ĉi tio estas protokolo pri la ŝanĝoj de uzantorajtoj.',
 'rightslogentry' => 'ŝanĝis grupan membrecon por $1 de $2 al $3',
@@ -1622,7 +1622,7 @@ Jen hazarde generita valoro por via uzo: $1',
 'action-minoredit' => 'marki ĉi tiun redakton kiel malgravan',
 'action-move' => 'movi ĉi tiun paĝon',
 'action-move-subpages' => 'movi ĉi tiun paĝon, kaj ties subpaĝojn',
-'action-move-rootuserpages' => 'movi radikajn uzanto-paĝojn',
+'action-move-rootwiki_userpages' => 'movi radikajn uzanto-paĝojn',
 'action-movefile' => 'alinomigi ĉi tiun dosieron',
 'action-upload' => 'alŝuti ĉi tiun dosieron',
 'action-reupload' => 'anstataŭigi ĉi tiun ekzistantan dosieron',
@@ -1645,8 +1645,8 @@ Jen hazarde generita valoro por via uzo: $1',
 'action-autopatrol' => 'fari vian redakton markitan kiel patrolitan',
 'action-unwatchedpages' => 'vidi la liston de neatentitaj paĝoj',
 'action-mergehistory' => 'kunigi la historion de ĉi tiu paĝo',
-'action-userrights' => 'redakti ĉiujn rajtojn de uzantoj',
-'action-userrights-interwiki' => 'redakti la rajtojn de uzantoj en aliaj vikioj',
+'action-wiki_userrights' => 'redakti ĉiujn rajtojn de uzantoj',
+'action-wiki_userrights-interwiki' => 'redakti la rajtojn de uzantoj en aliaj vikioj',
 'action-siteadmin' => 'ŝlosi aŭ malŝlosi la datumbazon',
 'action-sendemail' => 'sendi retpoŝtojn',
 
@@ -1677,7 +1677,7 @@ Jen hazarde generita valoro por via uzo: $1',
 'minoreditletter' => 'E',
 'newpageletter' => 'N',
 'boteditletter' => 'R',
-'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|priatentanta uzanto|priatentantaj uzantoj}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|priatentanta uzanto|priatentantaj uzantoj}}]',
 'rc_categories' => 'Nur por jenaj kategorioj (disigu per "|")',
 'rc_categories_any' => 'ĉiu',
 'rc-change-size-new' => '$1 {{PLURAL:$1|bajto|bajtoj}} post ŝanĝo',
@@ -1703,7 +1703,7 @@ Paĝoj en [[Special:Watchlist|via atentaro]] estas '''grasaj'''.",
 'reuploaddesc' => 'Reveni al la alŝuta formularo.',
 'upload-tryagain' => 'Enigi ŝanĝitan dosieran priskribon',
 'uploadnologin' => 'Ne ensalutinta',
-'uploadnologintext' => 'Se vi volas alŝuti dosierojn, vi devas [[Special:UserLogin|ensaluti]].',
+'uploadnologintext' => 'Se vi volas alŝuti dosierojn, vi devas [[Special:wiki_userLogin|ensaluti]].',
 'upload_directory_missing' => 'La alŝuta dosierujo ($1) estas nek trovebla nek kreebla de la retservilo.',
 'upload_directory_read_only' => 'La TTT-servilo ne povas alskribi la alŝuto-dosierujon ($1).',
 'uploaderror' => 'Eraro okazis dum alŝuto',
@@ -1820,11 +1820,11 @@ $1',
 'upload-proto-error' => 'Malvalida protokolo',
 'upload-proto-error-text' => 'Fora alŝuto devas URL-on komence de <code>http://</code> aŭ <code>ftp://</code>.',
 'upload-file-error' => 'Interna eraro',
-'upload-file-error-text' => 'Interna eraro okazis provante krei labordosieron ĉe la servilo. Bonvolu kontakti [[Special:ListUsers/sysop|sistem-administranton]].',
+'upload-file-error-text' => 'Interna eraro okazis provante krei labordosieron ĉe la servilo. Bonvolu kontakti [[Special:Listwiki_users/sysop|sistem-administranton]].',
 'upload-misc-error' => 'Nekonata eraro pri alŝutado.',
 'upload-misc-error-text' => 'Nekonata eraro okazis dum la alŝuto.
 Bonvolu kontroli ke la URL-o estas valida kaj atingebla tiam reprovu.
-Se la problemo kontinuas, kontaku [[Special:ListUsers/sysop|sisteman administranton]].',
+Se la problemo kontinuas, kontaku [[Special:Listwiki_users/sysop|sisteman administranton]].',
 'upload-too-many-redirects' => 'La URL-o enhavis tro multajn alidirektilojn',
 'upload-unknown-size' => 'Nekonata grandeco',
 'upload-http-error' => 'HTTP-eraro okazis: $1',
@@ -1941,7 +1941,7 @@ Kiam oni filtras ĝin laŭ uzanto, nur la lasta versio de la dosiero estos montr
 'listfiles_thumb' => 'Bildeto',
 'listfiles_date' => 'Dato',
 'listfiles_name' => 'Nomo',
-'listfiles_user' => 'Uzanto',
+'listfiles_wiki_user' => 'Uzanto',
 'listfiles_size' => 'Grandeco',
 'listfiles_description' => 'Priskribo',
 'listfiles_count' => 'Versioj',
@@ -1958,7 +1958,7 @@ Kiam oni filtras ĝin laŭ uzanto, nur la lasta versio de la dosiero estos montr
 'filehist-thumb' => 'Bildeto',
 'filehist-thumbtext' => 'Bildeto por versio ekde $1',
 'filehist-nothumb' => 'Neniu bildeto',
-'filehist-user' => 'Uzanto',
+'filehist-wiki_user' => 'Uzanto',
 'filehist-dimensions' => 'Dimensioj',
 'filehist-filesize' => 'Grando de dosiero',
 'filehist-comment' => 'Komento',
@@ -2049,7 +2049,7 @@ Bonvolu kontroli aliajn ligilojn al la ŝablonoj antaŭ ol forigi ilin.',
 'statistics-header-pages' => 'Paĝaj statistikoj',
 'statistics-header-edits' => 'Redaktaj statistikoj',
 'statistics-header-views' => 'Vidi statistikojn',
-'statistics-header-users' => 'Pri la uzantaro',
+'statistics-header-wiki_users' => 'Pri la uzantaro',
 'statistics-header-hooks' => 'Aliaj statistikoj',
 'statistics-articles' => 'Enhavaj paĝoj',
 'statistics-pages' => 'Paĝoj',
@@ -2060,9 +2060,9 @@ Bonvolu kontroli aliajn ligilojn al la ŝablonoj antaŭ ol forigi ilin.',
 'statistics-views-total' => 'Vidoj entutaj',
 'statistics-views-total-desc' => 'Ne inkluzivante vidojn al ne-ekzistantaj paĝoj kaj specialaj paĝoj',
 'statistics-views-peredit' => 'Po rigardoj por redakto',
-'statistics-users' => 'Registritaj [[Special:ListUsers|uzantoj]]',
-'statistics-users-active' => 'Aktivaj uzantoj',
-'statistics-users-active-desc' => 'Uzantoj kiuj faris agon en la {{PLURAL:$1|lasta tago|lastaj $1 tagoj}}',
+'statistics-wiki_users' => 'Registritaj [[Special:Listwiki_users|uzantoj]]',
+'statistics-wiki_users-active' => 'Aktivaj uzantoj',
+'statistics-wiki_users-active-desc' => 'Uzantoj kiuj faris agon en la {{PLURAL:$1|lasta tago|lastaj $1 tagoj}}',
 'statistics-mostpopular' => 'Plej ofte montrataj paĝoj',
 
 'disambiguations' => 'Paĝoj ligitaj al apartigiloj',
@@ -2139,13 +2139,13 @@ Paĝo estas traktata kiel apartigilo se ĝi uzas ŝablonon kiu estas ligita de [
 'protectedtitles' => 'Protektitaj titoloj',
 'protectedtitlestext' => 'La jenaj titoloj estas protektitaj kontraŭ kreado',
 'protectedtitlesempty' => 'Neniuj titoloj estas nune protektitaj kun ĉi parametroj.',
-'listusers' => 'Uzantaro',
-'listusers-editsonly' => 'Montri uzantojn kun redaktoj nur',
-'listusers-creationsort' => 'Ordigi laŭ dato de kreado',
-'usereditcount' => '$1 {{PLURAL:$1|redakto|redaktoj}}',
-'usercreated' => '{{GENDER:$3|Kreita}} je $1, $2',
+'listwiki_users' => 'Uzantaro',
+'listwiki_users-editsonly' => 'Montri uzantojn kun redaktoj nur',
+'listwiki_users-creationsort' => 'Ordigi laŭ dato de kreado',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|redakto|redaktoj}}',
+'wiki_usercreated' => '{{GENDER:$3|Kreita}} je $1, $2',
 'newpages' => 'Novaj paĝoj',
-'newpages-username' => 'Salutnomo:',
+'newpages-wiki_username' => 'Salutnomo:',
 'ancientpages' => 'Plej malnovaj artikoloj',
 'move' => 'Alinomigi',
 'movethispage' => 'Alinomigi ĉi tiun paĝon',
@@ -2172,7 +2172,7 @@ komprenata kiel rekomendo aŭ reklamo.',
 'booksources-invalid-isbn' => 'La donata ISBN verŝajne esats nevalida; kontroli por eraroj kopiitaj el la originala fonto.',
 
 # Special:Log
-'specialloguserlabel' => 'Faranto:',
+'speciallogwiki_userlabel' => 'Faranto:',
 'speciallogtitlelabel' => 'Celo (titolo aŭ uzanto):',
 'log' => 'Protokoloj',
 'all-logs-page' => 'Ĉiuj publikaj protokoloj',
@@ -2229,24 +2229,24 @@ Subtenataj protokoloj: <code>$1</code> (ne aldonu ĉi tiujn ajn en via serĉo-me
 'linksearch-line' => '$1 ligita de $2',
 'linksearch-error' => 'Regulesprimoj povas aperi nur ĉe la komenco de la retnoda nomo.',
 
-# Special:ListUsers
-'listusersfrom' => 'Montri uzantojn ekde:',
-'listusers-submit' => 'Montri',
-'listusers-noresult' => 'Neniu uzanto trovita.',
-'listusers-blocked' => '(forbarita)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'Montri uzantojn ekde:',
+'listwiki_users-submit' => 'Montri',
+'listwiki_users-noresult' => 'Neniu uzanto trovita.',
+'listwiki_users-blocked' => '(forbarita)',
 
-# Special:ActiveUsers
-'activeusers' => 'Listo de aktivaj uzantoj',
-'activeusers-intro' => 'Jen listo de uzantoj kiu faris iom da agoj dum la lastaj $1 {{PLURAL:$1|tago|tagoj}}.',
-'activeusers-count' => '$1 {{PLURAL:$1|redakto|redaktoj}} dum la {{PLURAL:$3|lasta tago|lastaj $3 tagoj}}',
-'activeusers-from' => 'Montri uzantojn ekde:',
-'activeusers-hidebots' => 'kaŝi robotojn',
-'activeusers-hidesysops' => 'Kaŝi administrantojn',
-'activeusers-noresult' => 'Neniuj uzantoj trovitaj.',
+# Special:Activewiki_users
+'activewiki_users' => 'Listo de aktivaj uzantoj',
+'activewiki_users-intro' => 'Jen listo de uzantoj kiu faris iom da agoj dum la lastaj $1 {{PLURAL:$1|tago|tagoj}}.',
+'activewiki_users-count' => '$1 {{PLURAL:$1|redakto|redaktoj}} dum la {{PLURAL:$3|lasta tago|lastaj $3 tagoj}}',
+'activewiki_users-from' => 'Montri uzantojn ekde:',
+'activewiki_users-hidebots' => 'kaŝi robotojn',
+'activewiki_users-hidesysops' => 'Kaŝi administrantojn',
+'activewiki_users-noresult' => 'Neniuj uzantoj trovitaj.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Protokolo de uzanto-kreado',
-'newuserlogpagetext' => 'Jen protokolo de lastaj kreadoj de uzantoj.',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Protokolo de uzanto-kreado',
+'newwiki_userlogpagetext' => 'Jen protokolo de lastaj kreadoj de uzantoj.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Gruprajtoj de uzantoj',
@@ -2267,27 +2267,27 @@ Estas [[{{MediaWiki:Listgrouprights-helppage}}|aldona informo]] pri individuaj r
 'listgrouprights-addgroup-self-all' => 'Povas aldoni ĉiujn grupojn al propra konto',
 'listgrouprights-removegroup-self-all' => 'Povas forigi ĉiujn grupojn de propra konto',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'Neniu alsendota adreso',
-'mailnologintext' => 'Vi nepre estu [[Special:UserLogin|salutanta]] kaj havanta validan retpoŝtadreson en viaj [[Special:Preferences|preferoj]] por retpoŝti al aliaj uzantoj.',
-'emailuser' => 'Retpoŝti ĉi tiun uzanton',
-'emailuser-title-target' => 'Retpoŝti ĉi tiun {{GENDER:$1|uzanton}}',
-'emailuser-title-notarget' => 'Retpoŝti uzanton',
+'mailnologintext' => 'Vi nepre estu [[Special:wiki_userLogin|salutanta]] kaj havanta validan retpoŝtadreson en viaj [[Special:Preferences|preferoj]] por retpoŝti al aliaj uzantoj.',
+'emailwiki_user' => 'Retpoŝti ĉi tiun uzanton',
+'emailwiki_user-title-target' => 'Retpoŝti ĉi tiun {{GENDER:$1|uzanton}}',
+'emailwiki_user-title-notarget' => 'Retpoŝti uzanton',
 'emailpage' => 'Retpoŝti uzanton',
 'emailpagetext' => 'Vi povas uzi la jenan paĝon por sendi retpoŝtan mesaĝon al ĉi tiu {{GENDER:$1|uzanto|uzantino}}.
 La retadreso kiun vi enigis en [[Special:Preferences|viaj preferoj]] aperos kiel la "De" adreso de la retpoŝto, do la ricevonto eblos respondi rekte al vi.',
-'usermailererror' => 'Resendita retmesaĝa erarsubjekto:',
+'wiki_usermailererror' => 'Resendita retmesaĝa erarsubjekto:',
 'defemailsubject' => '{{SITENAME}} retmesaĝo de uzanto "$1"',
-'usermaildisabled' => 'Retpoŝto de uzantoj estas malŝaltita',
-'usermaildisabledtext' => 'Vi ne povas sendi retpoŝton al aliaj uzantoj en ĉi tiu vikio',
+'wiki_usermaildisabled' => 'Retpoŝto de uzantoj estas malŝaltita',
+'wiki_usermaildisabledtext' => 'Vi ne povas sendi retpoŝton al aliaj uzantoj en ĉi tiu vikio',
 'noemailtitle' => 'Neniu retpoŝtadreso',
 'noemailtext' => 'Ĉi tiu uzanto ne donis validan retadreson.',
 'nowikiemailtitle' => 'Retpoŝto ne permesita',
 'nowikiemailtext' => 'Ĉi tiu uzanto elektis ne ricevi retpoŝton de aliaj uzantoj.',
 'emailnotarget' => 'Neekzistanta aŭ malvalida salutnomo por ricevanto.',
 'emailtarget' => 'Enigi salutnomon de ricevonto',
-'emailusername' => 'Salutnomo:',
-'emailusernamesubmit' => 'Enigi',
+'emailwiki_username' => 'Salutnomo:',
+'emailwiki_usernamesubmit' => 'Enigi',
 'email-legend' => 'Sendi retpoŝton al alia {{SITENAME}}-uzanto',
 'emailfrom' => 'De:',
 'emailto' => 'Al:',
@@ -2298,11 +2298,11 @@ La retadreso kiun vi enigis en [[Special:Preferences|viaj preferoj]] aperos kiel
 'emailccsubject' => 'Kopio de via mesaĝo al $1: $2',
 'emailsent' => 'Retmesaĝo sendita',
 'emailsenttext' => 'Via retmesaĝo estas sendita.',
-'emailuserfooter' => 'Ĉi tiun retpoŝton sendis $1 al $2 per funkcio "Email user" ĉe {{SITENAME}}.',
+'emailwiki_userfooter' => 'Ĉi tiun retpoŝton sendis $1 al $2 per funkcio "Email wiki_user" ĉe {{SITENAME}}.',
 
-# User Messenger
-'usermessage-summary' => 'Lasanta sisteman mesaĝon.',
-'usermessage-editor' => 'Mesaĝanto de sistemo',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'Lasanta sisteman mesaĝon.',
+'wiki_usermessage-editor' => 'Mesaĝanto de sistemo',
 
 # Watchlist
 'watchlist' => 'Atentaro',
@@ -2311,7 +2311,7 @@ La retadreso kiun vi enigis en [[Special:Preferences|viaj preferoj]] aperos kiel
 'nowatchlist' => 'Vi ne jam elektis priatenti iun ajn paĝon.',
 'watchlistanontext' => 'Bonvolu $1 por vidi aŭ redakti erojn en via atentaro.',
 'watchnologin' => 'Ne ensalutinta',
-'watchnologintext' => 'Nepras [[Special:UserLogin|ensaluti]] por ŝanĝi vian atentaron.',
+'watchnologintext' => 'Nepras [[Special:wiki_userLogin|ensaluti]] por ŝanĝi vian atentaron.',
 'addwatch' => 'Aldoniĝi al atentaro',
 'addedwatchtext' => 'La paĝo "[[:$1]]" aldoniĝis al via [[Special:Watchlist|atentaro]]. Estontaj ŝanĝoj de tiu paĝo kaj de ĝia rilata diskutpaĝo aperos tie.',
 'removewatch' => 'Forigi el atentaro',
@@ -2417,12 +2417,12 @@ Vidu la paĝon $2 por registro de lastatempaj forigoj.',
 'rollbacklinkcount-morethan' => 'nuligi pli ol $1 {{PLURAL:$1|redakton|redaktojn}}',
 'rollbackfailed' => 'Malfaro malsukcesis',
 'cantrollback' => 'Ne povas restarigi antaŭan redakton; la redaktinto lasta estas la sola aŭtoro de la paĝo.',
-'alreadyrolled' => 'Ne povas restarigi la lastan redakton de [[:$1]] de la [[User:$2|$2]] ([[User talk:$2|diskuto]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
+'alreadyrolled' => 'Ne povas restarigi la lastan redakton de [[:$1]] de la [[wiki_user:$2|$2]] ([[wiki_user talk:$2|diskuto]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
 pro tio, ke oni intertempe redaktis aŭ restarigis la paĝon.
-La lasta redaktinto estis [[User:$3|$3]] ([[User talk:$3|diskuto]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+La lasta redaktinto estis [[wiki_user:$3|$3]] ([[wiki_user talk:$3|diskuto]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "La resumo de la komento estis: \"''\$1''\".",
-'revertpage' => 'Malfaris redaktojn de [[Special:Contributions/$2|$2]] ([[User talk:$2|diskuto]]) al la lasta versio de [[User:$1|$1]]',
-'revertpage-nouser' => 'Restarigita redaktoj de (salutnomo forigita) al lasta revizio de [[User:$1|$1]]',
+'revertpage' => 'Malfaris redaktojn de [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|diskuto]]) al la lasta versio de [[wiki_user:$1|$1]]',
+'revertpage-nowiki_user' => 'Restarigita redaktoj de (salutnomo forigita) al lasta revizio de [[wiki_user:$1|$1]]',
 'rollback-success' => 'Restaris redaktojn de $1; ŝanĝis al lasta versio de $2.',
 
 # Edit tokens
@@ -2574,12 +2574,12 @@ $1',
 'sp-contributions-uploads' => 'alŝutoj',
 'sp-contributions-logs' => 'protokoloj',
 'sp-contributions-talk' => 'diskuto',
-'sp-contributions-userrights' => 'administri rajtojn de uzantoj',
+'sp-contributions-wiki_userrights' => 'administri rajtojn de uzantoj',
 'sp-contributions-blocked-notice' => 'La uzanto nune estas forbarita. Jen la lasta blokada listero en protokolo:',
 'sp-contributions-blocked-notice-anon' => 'Ĉi tiu IP-adreso estas nune forbarita.
 Jen la lasta ero de la forbara protokolo:',
 'sp-contributions-search' => 'Serĉado de kontribuoj',
-'sp-contributions-username' => 'IP-adreso aŭ salutnomo:',
+'sp-contributions-wiki_username' => 'IP-adreso aŭ salutnomo:',
 'sp-contributions-toponly' => 'Montru nur ŝanĝojn kiuj estas la plej lastaj revizioj',
 'sp-contributions-submit' => 'Serĉi',
 
@@ -2610,7 +2610,7 @@ Jen la lasta ero de la forbara protokolo:',
 'blockip-title' => 'Forbari uzanton',
 'blockip-legend' => 'Forbari uzanton',
 'blockiptext' => "Per jena formularo vi povas forpreni de ajna nomo aŭ IP-adreso la rajton skribi en la vikio. Oni faru tion ''nur'' por eviti vandalismon, kaj sekvante la [[{{MediaWiki:Policy-url}}|regulojn pri forbarado]]. Klarigu la precizan kialon malsupre (ekzemple, citu paĝojn, kiuj estis vandaligitaj).",
-'ipadressorusername' => 'IP-adreso aŭ salutnomo:',
+'ipadressorwiki_username' => 'IP-adreso aŭ salutnomo:',
 'ipbexpiry' => 'Blokdaŭro',
 'ipbreason' => 'Kialo:',
 'ipbreasonotherlist' => 'Alia kaŭzo',
@@ -2632,8 +2632,8 @@ Jen la lasta ero de la forbara protokolo:',
 'ipbotheroption' => 'alia',
 'ipbotherreason' => 'Alia/kroma kialo:',
 'ipbhidename' => 'Kaŝi salutnomon de redaktoj kaj listoj',
-'ipbwatchuser' => 'Atenti la paĝojn por uzanto kaj diskuto de ĉi tiu uzanto.',
-'ipb-disableusertalk' => 'Preventi ĉi tiun uzanton de redaktante ties propran diskuto-paĝon kiam forbarita',
+'ipbwatchwiki_user' => 'Atenti la paĝojn por uzanto kaj diskuto de ĉi tiu uzanto.',
+'ipb-disablewiki_usertalk' => 'Preventi ĉi tiun uzanton de redaktante ties propran diskuto-paĝon kiam forbarita',
 'ipb-change-block' => 'Reforbari la uzanton kun ĉi tiuj preferoj',
 'ipb-confirm' => 'Konfirmi forbaron',
 'badipaddress' => 'Neniu uzanto, aŭ la IP-adreso estas misformita.',
@@ -2641,7 +2641,7 @@ Jen la lasta ero de la forbara protokolo:',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] estas forbarita. <br />
 Vidu la [[Special:BlockList|liston de forbaroj]] por kontroli.',
 'ipb-blockingself' => 'Vi preskaŭ forbaros vin mem! Ĉu vi certas ke vi volas fari ĉi tiel?',
-'ipb-confirmhideuser' => 'Vi preskaŭ forbaras uzanto kun "kaŝi uzanton" ŝalta. Ĉi tiu kaŝi la nomon de uzanto en ĉiuj listoj ka protokoloj. Ĉu vi certas ke vi volas fari ĉi tiel?',
+'ipb-confirmhidewiki_user' => 'Vi preskaŭ forbaras uzanto kun "kaŝi uzanton" ŝalta. Ĉi tiu kaŝi la nomon de uzanto en ĉiuj listoj ka protokoloj. Ĉu vi certas ke vi volas fari ĉi tiel?',
 'ipb-edit-dropdown' => 'Redakti kialojn por forbaro.',
 'ipb-unblock-addr' => 'Restarigi $1',
 'ipb-unblock' => 'Malforbari salutnomon aŭ IP-adreson',
@@ -2651,13 +2651,13 @@ Vidu la [[Special:BlockList|liston de forbaroj]] por kontroli.',
 'unblockiptext' => 'Per la jena formulo vi povas repovigi al iu
 forbarita IP-adreso/nomo la povon enskribi en la vikio.',
 'ipusubmit' => 'Forigi ĉi tiun forbaron',
-'unblocked' => '[[User:$1|$1]] estas restarigita.',
+'unblocked' => '[[wiki_user:$1|$1]] estas restarigita.',
 'unblocked-range' => '$1 estis malforbarita',
 'unblocked-id' => 'Forbaro $1 estas forigita.',
 'blocklist' => 'Forbaritaj uzantoj',
 'ipblocklist' => 'Forbaritaj uzantoj',
 'ipblocklist-legend' => 'Trovi forbaritan uzanton.',
-'blocklist-userblocks' => 'Kaŝi konto-forbarojn',
+'blocklist-wiki_userblocks' => 'Kaŝi konto-forbarojn',
 'blocklist-tempblocks' => 'Kaŝi provizorajn forbarojn',
 'blocklist-addressblocks' => 'Kaŝi unuopajn IP-adresajn forbarojn',
 'blocklist-rangeblocks' => 'Kaŝi blokojn de intervalo',
@@ -2676,7 +2676,7 @@ forbarita IP-adreso/nomo la povon enskribi en la vikio.',
 'noautoblockblock' => 'aŭtomata forbaro malŝaltiĝis',
 'createaccountblock' => 'Kreado de kontoj forbarita',
 'emailblock' => 'retpoŝto forbarita',
-'blocklist-nousertalk' => 'ne povas redakti sian propran diskuto-paĝon',
+'blocklist-nowiki_usertalk' => 'ne povas redakti sian propran diskuto-paĝon',
 'ipblocklist-empty' => 'La forbarlibro estas malplena.',
 'ipblocklist-no-results' => 'Ĉi tiu IP-adreso aŭ salutnomo ne estas forbarita.',
 'blocklink' => 'forbari',
@@ -2684,7 +2684,7 @@ forbarita IP-adreso/nomo la povon enskribi en la vikio.',
 'change-blocklink' => 'ŝanĝi forbaron',
 'contribslink' => 'kontribuoj',
 'emaillink' => 'sendi retpoŝton',
-'autoblocker' => 'Aŭtomate forbarita ĉar via IP-adreso estis lastatempe uzita de "[[User:$1|$1]]".
+'autoblocker' => 'Aŭtomate forbarita ĉar via IP-adreso estis lastatempe uzita de "[[wiki_user:$1|$1]]".
 La kialo donita por la forbaro de $1 estis: "$2"',
 'blocklogpage' => 'Protokolo pri forbaroj',
 'blocklog-showlog' => 'Ĉi tiu uzanto estis forbarita antaŭe. Jen la forbara protokolo por referenco:',
@@ -2697,7 +2697,7 @@ La kialo donita por la forbaro de $1 estis: "$2"',
 'block-log-flags-nocreate' => 'kreado de kontoj malebligita',
 'block-log-flags-noautoblock' => 'aŭtomata forbaro malŝaltita',
 'block-log-flags-noemail' => 'retpoŝto blokita',
-'block-log-flags-nousertalk' => 'ne povas redakti propran diskuto-paĝon',
+'block-log-flags-nowiki_usertalk' => 'ne povas redakti propran diskuto-paĝon',
 'block-log-flags-angry-autoblock' => 'progresa aŭtoforbaro ebliĝis',
 'block-log-flags-hiddenname' => 'salutnomo kaŝita',
 'range_block_disabled' => 'La ebleco de administranto krei forbaritajn intervalojn da IP-adresoj estas malebligita.',
@@ -2707,7 +2707,7 @@ La kialo donita por la forbaro de $1 estis: "$2"',
 'ipb_already_blocked' => '"$1" estas jam forbarita',
 'ipb-needreblock' => '$1 estas jam forbarita. Ĉu vi volas ŝanĝi la opciojn?',
 'ipb-otherblocks-header' => '{{PLURAL:$1|Alia forbaro|Aliaj forbaroj}}',
-'unblock-hideuser' => 'Vi ne povas malforbari ĉi tiun uzanton, pro ties salutnomo estis kaŝita.',
+'unblock-hidewiki_user' => 'Vi ne povas malforbari ĉi tiun uzanton, pro ties salutnomo estis kaŝita.',
 'ipb_cant_unblock' => 'Eraro: Forbar-identigo $1 ne estas trovita. Ĝi eble estis jam malforbarita.',
 'ipb_blocked_as_range' => 'Eraro: La IP-adreso $1 ne estas forbarita rekte kaj ne povas esti malforbarita. Tamen ĝi estas forbarita kiel parto de la intervalo $2, kiu ne povas esti malforbarita.',
 'ip_range_invalid' => 'Malvalida IP-adresa intervalo.',
@@ -2720,7 +2720,7 @@ La kialo donita por la forbaro de $1 estis: "$2"',
 'sorbsreason' => 'Via IP-adreso estas listigita kiel malferma prokurilo en la DNSBL uzata de {{SITENAME}}.',
 'sorbs_create_account_reason' => 'Via IP-adreso estas listigita kiel malferma prokurilo en la DNSBL uzata de {{SITENAME}}. Vi ne rajtas krei konton.',
 'cant-block-while-blocked' => 'Vi ne povas forbari aliajn uzantojn dum vi estas forbarita.',
-'cant-see-hidden-user' => 'La uzanto kiun vi provas forbari jam estis forbarita kaj kaŝita. Kiel vi ne havas la rajton kaŝi uzanton, vi ne povas vidi aŭ redakti la forbaron de la uzanto.',
+'cant-see-hidden-wiki_user' => 'La uzanto kiun vi provas forbari jam estis forbarita kaj kaŝita. Kiel vi ne havas la rajton kaŝi uzanton, vi ne povas vidi aŭ redakti la forbaron de la uzanto.',
 'ipbblocked' => 'Vi ne povas forbari aŭ malforbari aliajn uzantojn, ĉar vi mem estas forbarita',
 'ipbnounblockself' => 'Vi ne rajtas malforbari vin mem',
 
@@ -2777,19 +2777,19 @@ Tio ĉi signifas ke vi povas alinomigi paĝon reen al antaŭa nomo se vi eraras,
 Eblas ke tio ĉi estas drasta kaj neatendita ŝanĝo de populara paĝo;
 Antaŭ daŭrigi, bonvolu certiĝi, ke vi komprenas la konsekvencojn de tiuj ĉi ŝanĝo.",
 'movepagetalktext' => "La movo aŭtomate kunportos la diskuto-paĝon, se tia ekzistas, '''krom se:'''
-*Vi movas la paĝon tra nomspacoj (ekz de ''Nomo'' je ''User:Nomo''),
+*Vi movas la paĝon tra nomspacoj (ekz de ''Nomo'' je ''wiki_user:Nomo''),
 *Ne malplena diskuto-paĝo jam ekzistas je la nova nomo, aŭ
 *Vi malelektas la suban ŝaltilon.
 
 Tiujokaze, vi nepre permane kunigu la diskuto-paĝojn se vi tion deziras.",
 'movearticle' => 'Alinomigi paĝon',
-'moveuserpage-warning' => "'''Averto:''' Vi preskaŭ alinomigas paĝon de uzanto. Bonvolu noti ke nur la paĝo estos alinomigita kaj la uzanto mem ''ne'' estos alinomigita.",
+'movewiki_userpage-warning' => "'''Averto:''' Vi preskaŭ alinomigas paĝon de uzanto. Bonvolu noti ke nur la paĝo estos alinomigita kaj la uzanto mem ''ne'' estos alinomigita.",
 'movenologin' => 'Ne ensalutinta',
-'movenologintext' => 'Vi nepre estu registrita uzanto kaj [[Special:UserLogin|ensalutu]] por rajti movi paĝojn.',
+'movenologintext' => 'Vi nepre estu registrita uzanto kaj [[Special:wiki_userLogin|ensalutu]] por rajti movi paĝojn.',
 'movenotallowed' => 'Vi ne rajtas movi paĝojn.',
 'movenotallowedfile' => 'Vi ne havas rajton alinomigi dosierojn.',
-'cant-move-user-page' => 'Vi ne rajtas movi radikajn uzanto-paĝojn.',
-'cant-move-to-user-page' => 'Vi ne rajtas movi paĝon al uzantopaĝo (krom al uzantosubpaĝo).',
+'cant-move-wiki_user-page' => 'Vi ne rajtas movi radikajn uzanto-paĝojn.',
+'cant-move-to-wiki_user-page' => 'Vi ne rajtas movi paĝon al uzantopaĝo (krom al uzantosubpaĝo).',
 'newtitle' => 'Al nova titolo',
 'move-watch' => 'Atenti ĉi tiun paĝon',
 'movepagebtn' => 'Alinomigi paĝon',
@@ -2966,8 +2966,8 @@ Datoj de versioj kaj nomoj de redaktantoj estos preservitaj.
 'javascripttest-qunit-heading' => 'Testaro QUnit por JavaScript de MediaWiki',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Via uzantopaĝo',
-'tooltip-pt-anonuserpage' => 'La uzantopaĝo por la IP adreso sub kiu vi estas redaktanta',
+'tooltip-pt-wiki_userpage' => 'Via uzantopaĝo',
+'tooltip-pt-anonwiki_userpage' => 'La uzantopaĝo por la IP adreso sub kiu vi estas redaktanta',
 'tooltip-pt-mytalk' => 'Via diskutpaĝo',
 'tooltip-pt-anontalk' => 'Diskuto pri redaktoj sub tiu ĉi IP adreso',
 'tooltip-pt-preferences' => 'Miaj preferoj',
@@ -3004,13 +3004,13 @@ Datoj de versioj kaj nomoj de redaktantoj estos preservitaj.
 'tooltip-feed-rss' => 'RSS-fonto por tiu ĉi paĝo',
 'tooltip-feed-atom' => 'Atom-fonto por ĉi tiu paĝo',
 'tooltip-t-contributions' => 'Rigardi la liston de kontribuoj de tiu ĉi uzanto',
-'tooltip-t-emailuser' => 'Sendi retmesaĝon al tiu ĉi uzanto',
+'tooltip-t-emailwiki_user' => 'Sendi retmesaĝon al tiu ĉi uzanto',
 'tooltip-t-upload' => 'Alŝuti bildojn aŭ dosierojn',
 'tooltip-t-specialpages' => 'Listo de ĉiuj specialaj paĝoj',
 'tooltip-t-print' => 'Printebla versio de ĉi tiu paĝo',
 'tooltip-t-permalink' => 'Konstanta ligilo al ĉi versio de la paĝo',
 'tooltip-ca-nstab-main' => 'Vidi la artikolon',
-'tooltip-ca-nstab-user' => 'Vidi la personan paĝon de la uzanto',
+'tooltip-ca-nstab-wiki_user' => 'Vidi la personan paĝon de la uzanto',
 'tooltip-ca-nstab-media' => 'Vidi la paĝon de la dosiero',
 'tooltip-ca-nstab-special' => 'Estas speciala paĝo, vi ne rajtas redakti ĝin.',
 'tooltip-ca-nstab-project' => 'Rigardi la paĝon de la projekto',
@@ -3074,13 +3074,13 @@ Datoj de versioj kaj nomoj de redaktantoj estos preservitaj.
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|Anonima uzanto|Anonimaj uzantoj}} de {{SITENAME}}',
-'siteuser' => '{{SITENAME}} uzanto $1',
-'anonuser' => '{{SITENAME}}-anonimulo $1',
+'sitewiki_user' => '{{SITENAME}} uzanto $1',
+'anonwiki_user' => '{{SITENAME}}-anonimulo $1',
 'lastmodifiedatby' => 'Ĉi paĝo estis laste ŝanĝita je $2, $1 de $3.',
 'othercontribs' => 'Bazita sur la laboro de $1.',
 'others' => 'aliaj',
-'siteusers' => '{{PLURAL:$2|uzanto|uzantoj}} de {{SITENAME}} $1',
-'anonusers' => '{{SITENAME}}-{{PLURAL:$2|anonimulo|anonimuloj}} $1',
+'sitewiki_users' => '{{PLURAL:$2|uzanto|uzantoj}} de {{SITENAME}} $1',
+'anonwiki_users' => '{{SITENAME}}-{{PLURAL:$2|anonimulo|anonimuloj}} $1',
 'creditspage' => 'Atribuoj de paĝo',
 'nocredits' => 'Ne estas informo pri atribuoj por ĉi paĝo.',
 
@@ -3089,7 +3089,7 @@ Datoj de versioj kaj nomoj de redaktantoj estos preservitaj.
 'spamprotectiontext' => 'La paĝo kiun vi volis konservi estis blokita per la spam-filtrilo.
 Ĉi tia eraro estas verŝajne kaŭzata pro ekstera ligilo al malpermesata (nigralistigita) ekstera retejo.',
 'spamprotectionmatch' => 'La jena teksto ekagigis la spam-filtrilon: $1',
-'spambot_username' => 'Trudmesaĝa forigo de MediaWiki',
+'spambot_wiki_username' => 'Trudmesaĝa forigo de MediaWiki',
 'spam_reverting' => 'Restarigo de lasta versio ne entenante ligilojn al $1',
 'spam_blanking' => 'Forviŝo de ĉiuj versioj entenantaj ligilojn al $1',
 'spam_deleting' => 'Ĉiuj versioj enhavis ligilojn al $1 - forigante',
@@ -3113,9 +3113,9 @@ Datoj de versioj kaj nomoj de redaktantoj estos preservitaj.
 'pageinfo-redirects-name' => 'Alidirektoj al ĉi tiu paĝo',
 'pageinfo-subpages-name' => 'Subpaĝoj de ĉi tiu paĝo',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|alidirektilo|alidirektiloj}}; $3 {{PLURAL:$3|ne-alidirektilo|ne-alidirektiloj}})',
-'pageinfo-firstuser' => 'Kreinto de la paĝo',
+'pageinfo-firstwiki_user' => 'Kreinto de la paĝo',
 'pageinfo-firsttime' => 'Dato de paĝkreado',
-'pageinfo-lastuser' => 'Lasta redaktinto',
+'pageinfo-lastwiki_user' => 'Lasta redaktinto',
 'pageinfo-lasttime' => 'Dato de lasta redakto',
 'pageinfo-edits' => 'Suma nombro de redaktoj',
 'pageinfo-authors' => 'Suma nombro de malsamaj aŭtoroj',
@@ -3273,7 +3273,7 @@ Aliaj estos kaŝitaj defaŭlte.
 'exif-compressedbitsperpixel' => 'Reĝimo de bilda densigado',
 'exif-pixelydimension' => 'Larĝeco de bildo',
 'exif-pixelxdimension' => 'Alteco de bildo',
-'exif-usercomment' => 'Komentoj de uzanto',
+'exif-wiki_usercomment' => 'Komentoj de uzanto',
 'exif-relatedsoundfile' => 'Rilata son-dosiero',
 'exif-datetimeoriginal' => 'Dato kaj tempo de datuma generado',
 'exif-datetimedigitized' => 'Dato kaj tempo de ciferecigado',
@@ -3708,10 +3708,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''Averto''': Ĉi tiu paĝo estis forigita post vi ekredaktis!",
-'confirmrecreate' => "Uzanto [[User:$1|$1]] ([[User talk:$1|diskuto]]) forigis ĉi tiun paĝon post vi ekredaktis ĝin kun kialo:
+'confirmrecreate' => "Uzanto [[wiki_user:$1|$1]] ([[wiki_user talk:$1|diskuto]]) forigis ĉi tiun paĝon post vi ekredaktis ĝin kun kialo:
 : ''$2''
 Bonvolu konfirmi ke vi ja volas rekrei la paĝon.",
-'confirmrecreate-noreason' => 'Uzanto [[User:$1|$1]] ([[User talk:$1|diskuto-paĝo]]) forigis ĉi tiun paĝon post vi ekredaktis ĝin.
+'confirmrecreate-noreason' => 'Uzanto [[wiki_user:$1|$1]] ([[wiki_user talk:$1|diskuto-paĝo]]) forigis ĉi tiun paĝon post vi ekredaktis ĝin.
 Bonvolu konfirmi ke vi ja volas rekrei la paĝon.',
 'recreate' => 'Rekrei',
 
@@ -3844,7 +3844,7 @@ Vi povas ankaŭ [[Special:EditWatchlist|redakti norme]].',
 'hebrew-calendar-m12-gen' => 'elulo',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|diskuto]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|diskuto]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Nekonata etend-etikedo "$1"',
@@ -3911,7 +3911,7 @@ Bildoj montriĝas en plena distingivo, aliaj dosiertipoj estas malfermataj rekte
 'specialpages-group-login' => 'Ensaluti /  registriĝi',
 'specialpages-group-changes' => 'Lastaj ŝanĝoj kaj protokoloj',
 'specialpages-group-media' => 'Raportoj pri dosieroj kaj alŝutoj',
-'specialpages-group-users' => 'Uzantoj kaj rajtoj',
+'specialpages-group-wiki_users' => 'Uzantoj kaj rajtoj',
 'specialpages-group-highuse' => 'Plej uzitaj paĝoj',
 'specialpages-group-pages' => 'Listoj de paĝoj',
 'specialpages-group-pagetools' => 'Paĝaj iloj',
@@ -4009,11 +4009,11 @@ Bildoj montriĝas en plena distingivo, aliaj dosiertipoj estas malfermataj rekte
 'logentry-move-move_redir-noredirect' => '$1 movis paĝon $3 al $4 anstataŭigante alidirektilon sen lasante alidirektilon',
 'logentry-patrol-patrol' => '$1 markis revizion $4 de paĝo $3 kiel patrolita',
 'logentry-patrol-patrol-auto' => '$1 aŭtomate markis revizion $4 de paĝo $3 kiel patrolita',
-'logentry-newusers-newusers' => '$1 kreis konton',
-'logentry-newusers-create' => '$1 kreis konton',
-'logentry-newusers-create2' => '$1 kreis uzanton $3',
-'logentry-newusers-autocreate' => 'Konto $1 estis kreita aŭtomate',
-'newuserlog-byemail' => 'pasvorto sendita retpoŝte',
+'logentry-newwiki_users-newwiki_users' => '$1 kreis konton',
+'logentry-newwiki_users-create' => '$1 kreis konton',
+'logentry-newwiki_users-create2' => '$1 kreis uzanton $3',
+'logentry-newwiki_users-autocreate' => 'Konto $1 estis kreita aŭtomate',
+'newwiki_userlog-byemail' => 'pasvorto sendita retpoŝte',
 
 # Feedback
 'feedback-bugornote' => 'Se vi pretas priskribi teknikan problemon detale, bonvolu [$1 raporti cimon].

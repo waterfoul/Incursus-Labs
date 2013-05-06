@@ -1,30 +1,30 @@
 -- This is a copy of SQLite schema from MediaWiki 1.13 used for updater testing
 
-CREATE TABLE /*$wgDBprefix*/user (
-  user_id INTEGER  PRIMARY KEY AUTOINCREMENT,
-  user_name varchar(255)   default '',
-  user_real_name varchar(255)   default '',
-  user_password tinyblob ,
-  user_newpassword tinyblob ,
-  user_newpass_time BLOB,
-  user_email tinytext ,
-  user_options blob ,
-  user_touched BLOB  default '',
-  user_token BLOB  default '',
-  user_email_authenticated BLOB,
-  user_email_token BLOB,
-  user_email_token_expires BLOB,
-  user_registration BLOB,
-  user_editcount int) /*$wgDBTableOptions*/;
+CREATE TABLE /*$wgDBprefix*/wiki_user (
+  wiki_user_id INTEGER  PRIMARY KEY AUTOINCREMENT,
+  wiki_user_name varchar(255)   default '',
+  wiki_user_real_name varchar(255)   default '',
+  wiki_user_password tinyblob ,
+  wiki_user_newpassword tinyblob ,
+  wiki_user_newpass_time BLOB,
+  wiki_user_email tinytext ,
+  wiki_user_options blob ,
+  wiki_user_touched BLOB  default '',
+  wiki_user_token BLOB  default '',
+  wiki_user_email_authenticated BLOB,
+  wiki_user_email_token BLOB,
+  wiki_user_email_token_expires BLOB,
+  wiki_user_registration BLOB,
+  wiki_user_editcount int) /*$wgDBTableOptions*/;
 
-CREATE TABLE /*$wgDBprefix*/user_groups (
-  ug_user INTEGER  default '0',
+CREATE TABLE /*$wgDBprefix*/wiki_user_groups (
+  ug_wiki_user INTEGER  default '0',
   ug_group varBLOB  default '') /*$wgDBTableOptions*/;
 
-CREATE TABLE /*$wgDBprefix*/user_newtalk (
-  user_id INTEGER  default '0',
-  user_ip varBLOB  default '',
-  user_last_timestamp BLOB  default '') /*$wgDBTableOptions*/;
+CREATE TABLE /*$wgDBprefix*/wiki_user_newtalk (
+  wiki_user_id INTEGER  default '0',
+  wiki_user_ip varBLOB  default '',
+  wiki_user_last_timestamp BLOB  default '') /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/page (
   page_id INTEGER  PRIMARY KEY AUTOINCREMENT,
@@ -44,8 +44,8 @@ CREATE TABLE /*$wgDBprefix*/revision (
   rev_page INTEGER ,
   rev_text_id INTEGER ,
   rev_comment tinyblob ,
-  rev_user INTEGER  default '0',
-  rev_user_text varchar(255)   default '',
+  rev_wiki_user INTEGER  default '0',
+  rev_wiki_user_text varchar(255)   default '',
   rev_timestamp BLOB  default '',
   rev_minor_edit tinyint  default '0',
   rev_deleted tinyint  default '0',
@@ -62,8 +62,8 @@ CREATE TABLE /*$wgDBprefix*/archive (
   ar_title varchar(255)   default '',
   ar_text mediumblob ,
   ar_comment tinyblob ,
-  ar_user INTEGER  default '0',
-  ar_user_text varchar(255)  ,
+  ar_wiki_user INTEGER  default '0',
+  ar_wiki_user_text varchar(255)  ,
   ar_timestamp BLOB  default '',
   ar_minor_edit tinyint  default '0',
   ar_flags tinyblob ,
@@ -118,7 +118,7 @@ CREATE TABLE /*$wgDBprefix*/site_stats (
   ss_total_edits bigint default '0',
   ss_good_articles bigint default '0',
   ss_total_pages bigint default '-1',
-  ss_users bigint default '-1',
+  ss_wiki_users bigint default '-1',
   ss_admins INTEGER default '-1',
   ss_images INTEGER default '0') /*$wgDBTableOptions*/;
 
@@ -129,7 +129,7 @@ CREATE TABLE /*$wgDBprefix*/hitcounter (
 CREATE TABLE /*$wgDBprefix*/ipblocks (
   ipb_id INTEGER  PRIMARY KEY AUTOINCREMENT,
   ipb_address tinyblob ,
-  ipb_user INTEGER  default '0',
+  ipb_wiki_user INTEGER  default '0',
   ipb_by INTEGER  default '0',
   ipb_by_text varchar(255)   default '',
   ipb_reason tinyblob ,
@@ -155,8 +155,8 @@ CREATE TABLE /*$wgDBprefix*/image (
   img_major_mime TEXT  default "unknown",
   img_minor_mime varBLOB  default "unknown",
   img_description tinyblob ,
-  img_user INTEGER  default '0',
-  img_user_text varchar(255)  ,
+  img_wiki_user INTEGER  default '0',
+  img_wiki_user_text varchar(255)  ,
   img_timestamp varBLOB  default '',
   img_sha1 varBLOB  default '') /*$wgDBTableOptions*/;
 
@@ -168,8 +168,8 @@ CREATE TABLE /*$wgDBprefix*/oldimage (
   oi_height INTEGER  default 0,
   oi_bits INTEGER  default 0,
   oi_description tinyblob ,
-  oi_user INTEGER  default '0',
-  oi_user_text varchar(255)  ,
+  oi_wiki_user INTEGER  default '0',
+  oi_wiki_user_text varchar(255)  ,
   oi_timestamp BLOB  default '',
   oi_metadata mediumblob ,
   oi_media_type TEXT default NULL,
@@ -184,7 +184,7 @@ CREATE TABLE /*$wgDBprefix*/filearchive (
   fa_archive_name varchar(255)  default '',
   fa_storage_group varBLOB,
   fa_storage_key varBLOB default '',
-  fa_deleted_user int,
+  fa_deleted_wiki_user int,
   fa_deleted_timestamp BLOB default '',
   fa_deleted_reason text,
   fa_size INTEGER default '0',
@@ -196,8 +196,8 @@ CREATE TABLE /*$wgDBprefix*/filearchive (
   fa_major_mime TEXT default "unknown",
   fa_minor_mime varBLOB default "unknown",
   fa_description tinyblob,
-  fa_user INTEGER default '0',
-  fa_user_text varchar(255) ,
+  fa_wiki_user INTEGER default '0',
+  fa_wiki_user_text varchar(255) ,
   fa_timestamp BLOB default '',
   fa_deleted tinyint  default '0') /*$wgDBTableOptions*/;
 
@@ -205,8 +205,8 @@ CREATE TABLE /*$wgDBprefix*/recentchanges (
   rc_id INTEGER  PRIMARY KEY AUTOINCREMENT,
   rc_timestamp varBLOB  default '',
   rc_cur_time varBLOB  default '',
-  rc_user INTEGER  default '0',
-  rc_user_text varchar(255)  ,
+  rc_wiki_user INTEGER  default '0',
+  rc_wiki_user_text varchar(255)  ,
   rc_namespace INTEGER  default '0',
   rc_title varchar(255)   default '',
   rc_comment varchar(255)   default '',
@@ -230,7 +230,7 @@ CREATE TABLE /*$wgDBprefix*/recentchanges (
   rc_params blob NULL) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/watchlist (
-  wl_user INTEGER ,
+  wl_wiki_user INTEGER ,
   wl_namespace INTEGER  default '0',
   wl_title varchar(255)   default '',
   wl_notificationtimestamp varBLOB) /*$wgDBTableOptions*/;
@@ -274,7 +274,7 @@ CREATE TABLE /*$wgDBprefix*/logging (
   log_type varBLOB  default '',
   log_action varBLOB  default '',
   log_timestamp BLOB  default '19700101000000',
-  log_user INTEGER  default 0,
+  log_wiki_user INTEGER  default 0,
   log_namespace INTEGER  default 0,
   log_title varchar(255)   default '',
   log_comment varchar(255)  default '',
@@ -318,14 +318,14 @@ CREATE TABLE /*$wgDBprefix*/page_restrictions (
   pr_type varBLOB ,
   pr_level varBLOB ,
   pr_cascade tinyint ,
-  pr_user INTEGER NULL,
+  pr_wiki_user INTEGER NULL,
   pr_expiry varBLOB NULL,
   pr_id INTEGER  PRIMARY KEY AUTOINCREMENT) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/protected_titles (
   pt_namespace INTEGER ,
   pt_title varchar(255)  ,
-  pt_user INTEGER ,
+  pt_wiki_user INTEGER ,
   pt_reason tinyblob,
   pt_timestamp BLOB ,
   pt_expiry varBLOB  default '',

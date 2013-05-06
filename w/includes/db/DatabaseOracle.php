@@ -50,16 +50,16 @@ class ORAResult {
 	}
 
 	/**
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $stmt
 	 * @param bool $unique
 	 */
-	function __construct( &$db, $stmt, $unique = false ) {
-		$this->db =& $db;
+	function __construct( &, $stmt, $unique = false ) {
+		$this->db =& ;
 
 		if ( ( $this->nrows = oci_fetch_all( $stmt, $this->rows, 0, - 1, OCI_FETCHSTATEMENT_BY_ROW | OCI_NUM ) ) === false ) {
 			$e = oci_error( $stmt );
-			$db->reportQueryError( $e['message'], $e['code'], '', __METHOD__ );
+			->reportQueryError( $e['message'], $e['code'], '', __METHOD__ );
 			$this->free();
 			return;
 		}
@@ -196,12 +196,12 @@ class DatabaseOracle extends DatabaseBase {
 
 	var $mFieldInfoCache = array();
 
-	function __construct( $server = false, $user = false, $password = false, $dbName = false,
+	function __construct( $server = false, $wiki_user = false, $password = false, Name = false,
 		$flags = 0, $tablePrefix = 'get from global' )
 	{
 		global $wgDBprefix;
 		$tablePrefix = $tablePrefix == 'get from global' ? strtoupper( $wgDBprefix ) : strtoupper( $tablePrefix );
-		parent::__construct( $server, $user, $password, $dbName, $flags, $tablePrefix );
+		parent::__construct( $server, $wiki_user, $password, Name, $flags, $tablePrefix );
 		wfRunHooks( 'DatabaseOraclePostInit', array( $this ) );
 	}
 
@@ -243,44 +243,44 @@ class DatabaseOracle extends DatabaseBase {
 	 * Usually aborts on failure
 	 * @return DatabaseBase|null
 	 */
-	function open( $server, $user, $password, $dbName ) {
+	function open( $server, $wiki_user, $password, Name ) {
 		if ( !function_exists( 'oci_connect' ) ) {
 			throw new DBConnectionError( $this, "Oracle functions missing, have you compiled PHP with the --with-oci8 option?\n (Note: if you recently installed PHP, you may need to restart your webserver and database)\n" );
 		}
 
 		$this->close();
-		$this->mUser = $user;
+		$this->mwiki_user = $wiki_user;
 		$this->mPassword = $password;
 		// changed internal variables functions
 		// mServer now holds the TNS endpoint
-		// mDBname is schema name if different from username
+		// mDBname is schema name if different from wiki_username
 		if ( !$server ) {
 			// backward compatibillity (server used to be null and TNS was supplied in dbname)
-			$this->mServer = $dbName;
-			$this->mDBname = $user;
+			$this->mServer = Name;
+			$this->mDBname = $wiki_user;
 		} else {
 			$this->mServer = $server;
-			if ( !$dbName ) {
-				$this->mDBname = $user;
+			if ( !Name ) {
+				$this->mDBname = $wiki_user;
 			} else {
-				$this->mDBname = $dbName;
+				$this->mDBname = Name;
 			}
 		}
 
-		if ( !strlen( $user ) ) { # e.g. the class is being loaded
+		if ( !strlen( $wiki_user ) ) { # e.g. the class is being loaded
 			return;
 		}
 
 		$session_mode = $this->mFlags & DBO_SYSDBA ? OCI_SYSDBA : OCI_DEFAULT;
 		wfSuppressWarnings();
 		if ( $this->mFlags & DBO_DEFAULT ) {
-			$this->mConn = oci_new_connect( $this->mUser, $this->mPassword, $this->mServer, $this->defaultCharset, $session_mode );
+			$this->mConn = oci_new_connect( $this->mwiki_user, $this->mPassword, $this->mServer, $this->defaultCharset, $session_mode );
 		} else {
-			$this->mConn = oci_connect( $this->mUser, $this->mPassword, $this->mServer, $this->defaultCharset, $session_mode );
+			$this->mConn = oci_connect( $this->mwiki_user, $this->mPassword, $this->mServer, $this->defaultCharset, $session_mode );
 		}
 		wfRestoreWarnings();
 
-		if ( $this->mUser != $this->mDBname ) {
+		if ( $this->mwiki_user != $this->mDBname ) {
 			//change current schema in session
 			$this->selectDB( $this->mDBname );
 		}
@@ -673,7 +673,7 @@ class DatabaseOracle extends DatabaseBase {
 		quoted tablenames
 		*/
 		switch( $name ) {
-			case 'user':
+			case 'wiki_user':
 				$name = 'MWUSER';
 				break;
 			case 'text':
@@ -990,7 +990,7 @@ class DatabaseOracle extends DatabaseBase {
 
 		while ( ! feof( $fp ) ) {
 			if ( $lineCallback ) {
-				call_user_func( $lineCallback );
+				call_wiki_user_func( $lineCallback );
 			}
 			$line = trim( fgets( $fp, 1024 ) );
 			$sl = strlen( $line ) - 1;
@@ -1036,11 +1036,11 @@ class DatabaseOracle extends DatabaseBase {
 
 					$cmd = $this->replaceVars( $cmd );
 					if ( $inputCallback ) {
-						call_user_func( $inputCallback, $cmd );
+						call_wiki_user_func( $inputCallback, $cmd );
 					}
 					$res = $this->doQuery( $cmd );
 					if ( $resultCallback ) {
-						call_user_func( $resultCallback, $res, $this );
+						call_wiki_user_func( $resultCallback, $res, $this );
 					}
 
 					if ( false === $res ) {
@@ -1056,12 +1056,12 @@ class DatabaseOracle extends DatabaseBase {
 		return true;
 	}
 
-	function selectDB( $db ) {
-		$this->mDBname = $db;
-		if ( $db == null || $db == $this->mUser ) {
+	function selectDB(  ) {
+		$this->mDBname = ;
+		if (  == null ||  == $this->mwiki_user ) {
 			return true;
 		}
-		$sql = 'ALTER SESSION SET CURRENT_SCHEMA=' . strtoupper($db);
+		$sql = 'ALTER SESSION SET CURRENT_SCHEMA=' . strtoupper();
 		$stmt = oci_parse( $this->mConn, $sql );
 		wfSuppressWarnings();
 		$success = oci_execute( $stmt );
@@ -1187,19 +1187,19 @@ class DatabaseOracle extends DatabaseBase {
 		if ( is_array($conds) ) {
 			$conds = $this->wrapConditionsForWhere( $table, $conds );
 		}
-		// a hack for deleting pages, users and images (which have non-nullable FKs)
+		// a hack for deleting pages, wiki_users and images (which have non-nullable FKs)
 		// all deletions on these tables have transactions so final failure rollbacks these updates
 		$table = $this->tableName( $table );
-		if ( $table == $this->tableName( 'user' )  ) {
-				$this->update( 'archive', array( 'ar_user' => 0 ), array( 'ar_user' => $conds['user_id'] ), $fname );
-				$this->update( 'ipblocks', array( 'ipb_user' => 0 ), array( 'ipb_user' => $conds['user_id'] ), $fname );
-				$this->update( 'image', array( 'img_user' => 0 ), array( 'img_user' => $conds['user_id'] ), $fname );
-				$this->update( 'oldimage', array( 'oi_user' => 0 ), array( 'oi_user' => $conds['user_id'] ), $fname );
-				$this->update( 'filearchive', array( 'fa_deleted_user' => 0 ), array( 'fa_deleted_user' => $conds['user_id'] ), $fname );
-				$this->update( 'filearchive', array( 'fa_user' => 0 ), array( 'fa_user' => $conds['user_id'] ), $fname );
-				$this->update( 'uploadstash', array( 'us_user' => 0 ), array( 'us_user' => $conds['user_id'] ), $fname );
-				$this->update( 'recentchanges', array( 'rc_user' => 0 ), array( 'rc_user' => $conds['user_id'] ), $fname );
-				$this->update( 'logging', array( 'log_user' => 0 ), array( 'log_user' => $conds['user_id'] ), $fname );
+		if ( $table == $this->tableName( 'wiki_user' )  ) {
+				$this->update( 'archive', array( 'ar_wiki_user' => 0 ), array( 'ar_wiki_user' => $conds['wiki_user_id'] ), $fname );
+				$this->update( 'ipblocks', array( 'ipb_wiki_user' => 0 ), array( 'ipb_wiki_user' => $conds['wiki_user_id'] ), $fname );
+				$this->update( 'image', array( 'img_wiki_user' => 0 ), array( 'img_wiki_user' => $conds['wiki_user_id'] ), $fname );
+				$this->update( 'oldimage', array( 'oi_wiki_user' => 0 ), array( 'oi_wiki_user' => $conds['wiki_user_id'] ), $fname );
+				$this->update( 'filearchive', array( 'fa_deleted_wiki_user' => 0 ), array( 'fa_deleted_wiki_user' => $conds['wiki_user_id'] ), $fname );
+				$this->update( 'filearchive', array( 'fa_wiki_user' => 0 ), array( 'fa_wiki_user' => $conds['wiki_user_id'] ), $fname );
+				$this->update( 'uploadstash', array( 'us_wiki_user' => 0 ), array( 'us_wiki_user' => $conds['wiki_user_id'] ), $fname );
+				$this->update( 'recentchanges', array( 'rc_wiki_user' => 0 ), array( 'rc_wiki_user' => $conds['wiki_user_id'] ), $fname );
+				$this->update( 'logging', array( 'log_wiki_user' => 0 ), array( 'log_wiki_user' => $conds['wiki_user_id'] ), $fname );
 		} elseif ( $table == $this->tableName( 'image' )  ) {
 				$this->update( 'oldimage', array( 'oi_name' => 0 ), array( 'oi_name' => $conds['img_name'] ), $fname );
 		}

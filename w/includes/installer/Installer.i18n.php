@@ -76,7 +76,7 @@ See the GNU General Public License for more details.
 
 You should have received <doclink href=Copying>a copy of the GNU General Public License</doclink> along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. or [http://www.gnu.org/copyleft/gpl.html read it online].",
 	'config-sidebar'                  => "* [//www.mediawiki.org MediaWiki home]
-* [//www.mediawiki.org/wiki/Help:Contents User's Guide]
+* [//www.mediawiki.org/wiki/Help:Contents wiki_user's Guide]
 * [//www.mediawiki.org/wiki/Manual:Contents Administrator's Guide]
 * [//www.mediawiki.org/wiki/Manual:FAQ FAQ]
 ----
@@ -139,7 +139,7 @@ The installation may fail!",
 	'config-wincache'                 => '[http://www.iis.net/download/WinCacheForPhp WinCache] is installed',
 	'config-no-cache'                 => "'''Warning:''' Could not find [http://www.php.net/apc APC], [http://xcache.lighttpd.net/ XCache] or [http://www.iis.net/download/WinCacheForPhp WinCache].
 Object caching is not enabled.",
-	'config-mod-security'             => "'''Warning''': Your web server has [http://modsecurity.org/ mod_security] enabled. If misconfigured, it can cause problems for MediaWiki or other software that allows users to post arbitrary content.
+	'config-mod-security'             => "'''Warning''': Your web server has [http://modsecurity.org/ mod_security] enabled. If misconfigured, it can cause problems for MediaWiki or other software that allows wiki_users to post arbitrary content.
 Refer to [http://modsecurity.org/documentation/ mod_security documentation] or contact your host's support if you encounter random errors.",
 	'config-diff3-bad'                => 'GNU diff3 not found.',
 	'config-imagemagick'              => 'Found ImageMagick: <code>$1</code>.
@@ -187,20 +187,20 @@ If you are using shared web hosting, your hosting provider will either give you 
 If you wish to create database account as part of the installation process, please supply an account with SYSDBA role as database account for installation and specify the desired credentials for the web-access account, otherwise you can either create the web-access account manually and supply only that account (if it has required permissions to create the schema objects) or supply two different accounts, one with create privileges and a restricted one for web access.
 
 Script for creating an account with required privileges can be found in \"maintenance/oracle/\" directory of this installation. Keep in mind that using a restricted account will disable all maintenance capabilities with the default account.",
-	'config-db-install-account'       => 'User account for installation',
-	'config-db-username'              => 'Database username:',
+	'config-db-install-account'       => 'wiki_user account for installation',
+	'config-db-wiki_username'              => 'Database wiki_username:',
 	'config-db-password'              => 'Database password:',
-	'config-db-password-empty'        => 'Please enter a password for the new database user: $1.
-While it may be possible to create users with no passwords, it is not secure.',
-	'config-db-install-username'	  => 'Enter the username that will be used to connect to the database during the installation process.
-This is not the username of the MediaWiki account; this is the username for your database.',
+	'config-db-password-empty'        => 'Please enter a password for the new database wiki_user: $1.
+While it may be possible to create wiki_users with no passwords, it is not secure.',
+	'config-db-install-wiki_username'	  => 'Enter the wiki_username that will be used to connect to the database during the installation process.
+This is not the wiki_username of the MediaWiki account; this is the wiki_username for your database.',
 	'config-db-install-password'	  => 'Enter the password that will be used to connect to the database during the installation process.
 This is not the password for the MediaWiki account; this is the password for your database.',
-	'config-db-install-help'          => 'Enter the username and password that will be used to connect to the database during the installation process.',
-	'config-db-account-lock'          => 'Use the same username and password during normal operation',
-	'config-db-wiki-account'          => 'User account for normal operation',
-	'config-db-wiki-help'             => 'Enter the username and password that will be used to connect to the database during normal wiki operation.
-If the account does not exist, and the installation account has sufficient privileges, this user account will be created with the minimum privileges required to operate the wiki.',
+	'config-db-install-help'          => 'Enter the wiki_username and password that will be used to connect to the database during the installation process.',
+	'config-db-account-lock'          => 'Use the same wiki_username and password during normal operation',
+	'config-db-wiki-account'          => 'wiki_user account for normal operation',
+	'config-db-wiki-help'             => 'Enter the wiki_username and password that will be used to connect to the database during normal wiki operation.
+If the account does not exist, and the installation account has sufficient privileges, this wiki_user account will be created with the minimum privileges required to operate the wiki.',
 	'config-db-prefix'                => 'Database table prefix:',
 	'config-db-prefix-help'           => 'If you need to share one database between multiple wikis, or between MediaWiki and another web application, you may choose to add a prefix to all the table names to avoid conflicts.
 Do not use spaces.
@@ -230,7 +230,7 @@ The directory you provide must be writable by the webserver during installation.
 It should '''not''' be accessible via the web, this is why we're not putting it where your PHP files are.
 
 The installer will write a <code>.htaccess</code> file along with it, but if that fails someone can gain access to your raw database.
-That includes raw user data (e-mail addresses, hashed passwords) as well as deleted revisions and other restricted data on the wiki.
+That includes raw wiki_user data (e-mail addresses, hashed passwords) as well as deleted revisions and other restricted data on the wiki.
 
 Consider putting the database somewhere else altogether, for example in <code>/var/lib/mediawiki/yourwiki</code>.",
 	'config-oracle-def-ts'            => 'Default tablespace:',
@@ -267,18 +267,18 @@ Use only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_) and hyphens (-
 Use only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_) and hyphens (-).',
 	'config-connection-error'         => '$1.
 
-Check the host, username and password and try again.',
+Check the host, wiki_username and password and try again.',
 	'config-invalid-schema'           => 'Invalid schema for MediaWiki "$1".
 Use only ASCII letters (a-z, A-Z), numbers (0-9) and underscores (_).',
 	'config-db-sys-create-oracle' => 'Installer only supports using a SYSDBA account for creating a new account.',
-	'config-db-sys-user-exists-oracle' => 'User account "$1" already exists. SYSDBA can only be used for creating of a new account!',
+	'config-db-sys-wiki_user-exists-oracle' => 'wiki_user account "$1" already exists. SYSDBA can only be used for creating of a new account!',
 	'config-postgres-old'             => 'PostgreSQL $1 or later is required, you have $2.',
 	'config-sqlite-name-help'         => 'Choose a name that identifies your wiki.
 Do not use spaces or hyphens.
 This will be used for the SQLite data file name.',
 	'config-sqlite-parent-unwritable-group' => 'Cannot create the data directory <code><nowiki>$1</nowiki></code>, because the parent directory <code><nowiki>$2</nowiki></code> is not writable by the webserver.
 
-The installer has determined the user your webserver is running as.
+The installer has determined the wiki_user your webserver is running as.
 Make the <code><nowiki>$3</nowiki></code> directory writable by it to continue.
 On a Unix/Linux system do:
 
@@ -288,7 +288,7 @@ chgrp $4 $3
 chmod g+w $3</pre>',
 	'config-sqlite-parent-unwritable-nogroup' => 'Cannot create the data directory <code><nowiki>$1</nowiki></code>, because the parent directory <code><nowiki>$2</nowiki></code> is not writable by the webserver.
 
-The installer could not determine the user your webserver is running as.
+The installer could not determine the wiki_user your webserver is running as.
 Make the <code><nowiki>$3</nowiki></code> directory globally writable by it (and others!) to continue.
 On a Unix/Linux system do:
 
@@ -320,7 +320,7 @@ You can now [$1 start using your wiki].",
 	'config-show-table-status'        => 'SHOW TABLE STATUS query failed!',
 	'config-unknown-collation'        => "'''Warning:''' Database is using unrecognised collation.",
 	'config-db-web-account'           => 'Database account for web access',
-	'config-db-web-help'              => 'Select the username and password that the web server will use to connect to the database server, during ordinary operation of the wiki.',
+	'config-db-web-help'              => 'Select the wiki_username and password that the web server will use to connect to the database server, during ordinary operation of the wiki.',
 	'config-db-web-account-same'      => 'Use the same account as for installation',
 	'config-db-web-create'            => 'Create the account if it does not already exist',
 	'config-db-web-no-create-privs'   => 'The account you specified for installation does not have enough privileges to create an account.
@@ -337,7 +337,7 @@ If your MySQL installation supports InnoDB, it is highly recommended that you ch
 If your MySQL installation does not support InnoDB, maybe it's time for an upgrade.",
 	'config-mysql-engine-help'        => "'''InnoDB''' is almost always the best option, since it has good concurrency support.
 
-'''MyISAM''' may be faster in single-user or read-only installations.
+'''MyISAM''' may be faster in single-wiki_user or read-only installations.
 MyISAM databases tend to get corrupted more often than InnoDB databases.",
 	'config-mysql-charset'            => 'Database character set:',
 	'config-mysql-binary'             => 'Binary',
@@ -368,17 +368,17 @@ Specify a different project namespace.',
 	'config-admin-name'               => 'Your name:',
 	'config-admin-password'           => 'Password:',
 	'config-admin-password-confirm'   => 'Password again:',
-	'config-admin-help'               => 'Enter your preferred username here, for example "Joe Bloggs".
+	'config-admin-help'               => 'Enter your preferred wiki_username here, for example "Joe Bloggs".
 This is the name you will use to log in to the wiki.',
-	'config-admin-name-blank'         => 'Enter an administrator username.',
-	'config-admin-name-invalid'       => 'The specified username "<nowiki>$1</nowiki>" is invalid.
-Specify a different username.',
+	'config-admin-name-blank'         => 'Enter an administrator wiki_username.',
+	'config-admin-name-invalid'       => 'The specified wiki_username "<nowiki>$1</nowiki>" is invalid.
+Specify a different wiki_username.',
 	'config-admin-password-blank'     => 'Enter a password for the administrator account.',
-	'config-admin-password-same'      => 'The password must not be the same as the username.',
+	'config-admin-password-same'      => 'The password must not be the same as the wiki_username.',
 	'config-admin-password-mismatch'  => 'The two passwords you entered do not match.',
 	'config-admin-email'              => 'E-mail address:',
-	'config-admin-email-help'         => 'Enter an e-mail address here to allow you to receive e-mail from other users on the wiki, reset your password, and be notified of changes to pages on your watchlist. You can leave this field empty.',
-	'config-admin-error-user'         => 'Internal error when creating an admin with the name "<nowiki>$1</nowiki>".',
+	'config-admin-email-help'         => 'Enter an e-mail address here to allow you to receive e-mail from other wiki_users on the wiki, reset your password, and be notified of changes to pages on your watchlist. You can leave this field empty.',
+	'config-admin-error-wiki_user'         => 'Internal error when creating an admin with the name "<nowiki>$1</nowiki>".',
 	'config-admin-error-password'     => 'Internal error when setting a password for the admin "<nowiki>$1</nowiki>": <pre>$2</pre>',
 	'config-admin-error-bademail'     => 'You have entered an invalid e-mail address.',
 	'config-subscribe'                => 'Subscribe to the [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce release announcements mailing list].',
@@ -390,13 +390,13 @@ Please provide an e-mail address if you wish to subscribe to the mailing list.',
 You can now skip the remaining configuration and install the wiki right now.',
 	'config-optional-continue'        => 'Ask me more questions.',
 	'config-optional-skip'            => "I'm bored already, just install the wiki.",
-	'config-profile'                  => 'User rights profile:',
+	'config-profile'                  => 'wiki_user rights profile:',
 	'config-profile-wiki'             => 'Traditional wiki',
 	'config-profile-no-anon'          => 'Account creation required',
 	'config-profile-fishbowl'         => 'Authorized editors only',
 	'config-profile-private'          => 'Private wiki',
 	'config-profile-help'             => "Wikis work best when you let as many people edit them as possible.
-In MediaWiki, it is easy to review the recent changes, and to revert any damage that is done by naive or malicious users.
+In MediaWiki, it is easy to review the recent changes, and to revert any damage that is done by naive or malicious wiki_users.
 
 However, many have found MediaWiki to be useful in a wide variety of roles, and sometimes it is not easy to convince everyone of the benefits of the wiki way.
 So you have the choice.
@@ -404,10 +404,10 @@ So you have the choice.
 A '''{{int:config-profile-wiki}}''' allows anyone to edit, without even logging in.
 A wiki with '''{{int:config-profile-no-anon}}''' provides extra accountability, but may deter casual contributors.
 
-The '''{{int:config-profile-fishbowl}}''' scenario allows approved users to edit, but the public can view the pages, including history.
-A '''{{int:config-profile-private}}''' only allows approved users to view pages, with the same group allowed to edit.
+The '''{{int:config-profile-fishbowl}}''' scenario allows approved wiki_users to edit, but the public can view the pages, including history.
+A '''{{int:config-profile-private}}''' only allows approved wiki_users to view pages, with the same group allowed to edit.
 
-More complex user rights configurations are available after installation, see the [//www.mediawiki.org/wiki/Manual:User_rights relevant manual entry].",
+More complex wiki_user rights configurations are available after installation, see the [//www.mediawiki.org/wiki/Manual:wiki_user_rights relevant manual entry].",
 	'config-license'                  => 'Copyright and license:',
 	'config-license-none'             => 'No license footer',
 	'config-license-cc-by-sa'         => 'Creative Commons Attribution Share Alike',
@@ -430,15 +430,15 @@ It is also difficult to reuse content licensed under the GFDL.",
 	'config-enable-email'             => 'Enable outbound e-mail',
 	'config-enable-email-help'        => "If you want e-mail to work, [http://www.php.net/manual/en/mail.configuration.php PHP's mail settings] need to be configured correctly.
 If you do not want any e-mail features, you can disable them here.",
-	'config-email-user'               => 'Enable user-to-user e-mail',
-	'config-email-user-help'          => 'Allow all users to send each other e-mail if they have enabled it in their preferences.',
-	'config-email-usertalk'           => 'Enable user talk page notification',
-	'config-email-usertalk-help'      => 'Allow users to receive notifications on user talk page changes, if they have enabled it in their preferences.',
+	'config-email-wiki_user'               => 'Enable wiki_user-to-wiki_user e-mail',
+	'config-email-wiki_user-help'          => 'Allow all wiki_users to send each other e-mail if they have enabled it in their preferences.',
+	'config-email-wiki_usertalk'           => 'Enable wiki_user talk page notification',
+	'config-email-wiki_usertalk-help'      => 'Allow wiki_users to receive notifications on wiki_user talk page changes, if they have enabled it in their preferences.',
 	'config-email-watchlist'          => 'Enable watchlist notification',
-	'config-email-watchlist-help'     => 'Allow users to receive notifications about their watched pages if they have enabled it in their preferences.',
+	'config-email-watchlist-help'     => 'Allow wiki_users to receive notifications about their watched pages if they have enabled it in their preferences.',
 	'config-email-auth'               => 'Enable e-mail authentication',
-	'config-email-auth-help'          => "If this option is enabled, users have to confirm their e-mail address using a link sent to them whenever they set or change it.
-Only authenticated e-mail addresses can receive e-mails from other users or change notification e-mails.
+	'config-email-auth-help'          => "If this option is enabled, wiki_users have to confirm their e-mail address using a link sent to them whenever they set or change it.
+Only authenticated e-mail addresses can receive e-mails from other wiki_users or change notification e-mails.
 Setting this option is '''recommended''' for public wikis because of potential abuse of the e-mail features.",
 	'config-email-sender'             => 'Return e-mail address:',
 	'config-email-sender-help'        => 'Enter the e-mail address to use as the return address on outbound e-mail.
@@ -500,21 +500,21 @@ If you still want to make changes, press back.',
 	'config-install-schema'           => 'Creating schema',
 	'config-install-pg-schema-not-exist' => 'PostgreSQL schema does not exist.',
 	'config-install-pg-schema-failed' => 'Tables creation failed.
-Make sure that the user "$1" can write to the schema "$2".',
+Make sure that the wiki_user "$1" can write to the schema "$2".',
 	'config-install-pg-commit'        => 'Committing changes',
 	'config-install-pg-plpgsql'       => 'Checking for language PL/pgSQL',
 	'config-pg-no-plpgsql'            => 'You need to install the language PL/pgSQL in the database $1',
 	'config-pg-no-create-privs'       => 'The account you specified for installation does not have enough privileges to create an account.',
-	'config-pg-not-in-role'           => 'The account you specified for the web user already exists.
-The account you specified for installation is not a superuser and is not a member of the web user\'s role, so it is unable to create objects owned by the web user.
+	'config-pg-not-in-role'           => 'The account you specified for the web wiki_user already exists.
+The account you specified for installation is not a superwiki_user and is not a member of the web wiki_user\'s role, so it is unable to create objects owned by the web wiki_user.
 
-MediaWiki currently requires that the tables be owned by the web user. Please specify another web account name, or click "back" and specify a suitably privileged install user.',
-	'config-install-user'             => 'Creating database user',
-	'config-install-user-alreadyexists' => 'User "$1" already exists',
-	'config-install-user-create-failed' => 'Creating user "$1" failed: $2',
-	'config-install-user-grant-failed'  => 'Granting permission to user "$1" failed: $2',
-	'config-install-user-missing'     => 'The specified user "$1" does not exist.',
-	'config-install-user-missing-create' => 'The specified user "$1" does not exist.
+MediaWiki currently requires that the tables be owned by the web wiki_user. Please specify another web account name, or click "back" and specify a suitably privileged install wiki_user.',
+	'config-install-wiki_user'             => 'Creating database wiki_user',
+	'config-install-wiki_user-alreadyexists' => 'wiki_user "$1" already exists',
+	'config-install-wiki_user-create-failed' => 'Creating wiki_user "$1" failed: $2',
+	'config-install-wiki_user-grant-failed'  => 'Granting permission to wiki_user "$1" failed: $2',
+	'config-install-wiki_user-missing'     => 'The specified wiki_user "$1" does not exist.',
+	'config-install-wiki_user-missing-create' => 'The specified wiki_user "$1" does not exist.
 Please click the "create account" checkbox below if you want to create it.',
 	'config-install-tables'           => 'Creating tables',
 	'config-install-tables-exist'     => "'''Warning''': MediaWiki tables seem to already exist.
@@ -527,7 +527,7 @@ Skipping default list.",
 	'config-install-stats'            => 'Initializing statistics',
 	'config-install-keys'             => 'Generating secret keys',
 	'config-insecure-keys'            => "'''Warning:''' {{PLURAL:$2|A secure key|Secure keys}} ($1) generated during installation {{PLURAL:$2|is|are}} not completely safe. Consider changing {{PLURAL:$2|it|them}} manually.",
-	'config-install-sysop'            => 'Creating administrator user account',
+	'config-install-sysop'            => 'Creating administrator wiki_user account',
 	'config-install-subscribe-fail'   => 'Unable to subscribe to mediawiki-announce: $1',
 	'config-install-subscribe-notpossible' => 'cURL is not installed and allow_url_fopen is not available.',
 	'config-install-mainpage'         => 'Creating main page with default content',
@@ -552,7 +552,7 @@ When that has been done, you can '''[$2 enter your wiki]'''.",
 	'config-help' => 'help',
 	'config-nofile'     => 'File "$1" could not be found. Has it been deleted?',
 	'mainpagetext'      => "'''MediaWiki has been successfully installed.'''",
-	'mainpagedocfooter' => "Consult the [//meta.wikimedia.org/wiki/Help:Contents User's Guide] for information on using the wiki software.
+	'mainpagedocfooter' => "Consult the [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] for information on using the wiki software.
 
 == Getting started ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
@@ -606,7 +606,7 @@ Do not translate: <code>php5-mysql</code>.
 
 Parameters:
 * $1 is comma separated list of database types supported by MediaWiki.',
-	'config-no-fts3' => 'A "[[:wikipedia:Front and back ends|backend]]" is a system or component that ordinary users don\'t interact with directly and don\'t need to know about, and that is responsible for a distinct task or service - for example, a storage back-end is a generic system for storing data which other applications can use. Possible alternatives for back-end are "system" or "service", or (depending on context and language) even leave it untranslated.',
+	'config-no-fts3' => 'A "[[:wikipedia:Front and back ends|backend]]" is a system or component that ordinary wiki_users don\'t interact with directly and don\'t need to know about, and that is responsible for a distinct task or service - for example, a storage back-end is a generic system for storing data which other applications can use. Possible alternatives for back-end are "system" or "service", or (depending on context and language) even leave it untranslated.',
 	'config-pcre' => 'PCRE is an initialism for "Perl-compatible regular expression". Perl is programming language whose [[:w:regular expression|regular expression]] syntax is popular and used in other languages using a library called PCRE.',
 	'config-pcre-no-utf8' => "PCRE is a name of a programmers' library for supporting regular expressions. It can probably be translated without change.",
 	'config-memory-raised' => 'Parameters:
@@ -627,7 +627,7 @@ Add dir="ltr" to the <nowiki><code></nowiki> for right-to-left languages.',
 	'config-suhosin-max-value-length' => 'Message shown when PHP parameter suhosin.get.max_value_length is between 0 and 1023 (that max value is hard set in MediaWiki software)',
 	'config-db-host-oracle' => 'TNS = [[:wikipedia:Transparent Network Substrate|Transparent Network Substrate]] (<== wikipedia link)',
 	'config-db-wiki-settings' => 'This is more acurate: "Enter identifying or distinguishing data for this wiki" since a MySQL database can host tables of several wikis.',
-	'config-db-account-oracle-warn' => 'A "[[:wikipedia:Front and back ends|backend]]" is a system or component that ordinary users don\'t interact with directly and don\'t need to know about, and that is responsible for a distinct task or service - for example, a storage back-end is a generic system for storing data which other applications can use. Possible alternatives for back-end are "system" or "service", or (depending on context and language) even leave it untranslated.',
+	'config-db-account-oracle-warn' => 'A "[[:wikipedia:Front and back ends|backend]]" is a system or component that ordinary wiki_users don\'t interact with directly and don\'t need to know about, and that is responsible for a distinct task or service - for example, a storage back-end is a generic system for storing data which other applications can use. Possible alternatives for back-end are "system" or "service", or (depending on context and language) even leave it untranslated.',
 	'config-db-account-lock' => "It might be easier to translate ''normal operation'' as \"also after the installation process\"",
 	'config-type-mysql' => '{{optional}}',
 	'config-type-postgres' => '{{optional}}',
@@ -643,7 +643,7 @@ Add dir="ltr" to the <nowiki><code></nowiki> for right-to-left languages.',
 * $1 - a link to the SQLite home page having the anchor text "SQLite".',
 	'config-support-oracle' => 'Parameters:
 * $1 - a link to the Oracle home page, the anchor text of which is "Oracle".',
-	'config-connection-error' => '$1 is the external error from the database, such as "DB connection error: Access denied for user \'dba\'@\'localhost\' (using password: YES) (localhost)."
+	'config-connection-error' => '$1 is the external error from the database, such as "DB connection error: Access denied for wiki_user \'dba\'@\'localhost\' (using password: YES) (localhost)."
 
 If you\'re translating this message to a right-to-left language, consider writing <nowiki><div dir="ltr">$1.</div></nowiki>. (When the bidi features for HTML5 will be implemented in the browsers, it will probably be a good idea to write it as <nowiki><div dir="auto">$1.</div></nowiki>.)',
 	'config-invalid-schema' => '*$1 - schema name',
@@ -663,7 +663,7 @@ If you\'re translating this message to a right-to-left language, consider writin
 * {{msg-mw|config-profile-no-anon}}
 * {{msg-mw|config-profile-fishbowl}}
 * {{msg-mw|config-profile-private}}',
-	'config-upload-help' => 'The word "mode" here refers to the access rights given to various user groups when attempting to create and store files and/or subdiretories in the said directory on the server. It also refers to the <code>mode</code> command used to maipulate said right mask under Unix, Linux, and similar operating systems. A less operating-system-centric translation is fine.',
+	'config-upload-help' => 'The word "mode" here refers to the access rights given to various wiki_user groups when attempting to create and store files and/or subdiretories in the said directory on the server. It also refers to the <code>mode</code> command used to maipulate said right mask under Unix, Linux, and similar operating systems. A less operating-system-centric translation is fine.',
 	'config-logo-help' => '',
 	'config-cc-not-chosen' => 'Do not translate the <code>"proceed".</code> part.
 This message refers to a block of HTML being embedded into the installer page. It comes from the Creative Commons Web site. The block is in the English language. It is a scripted license chooser. When an individual license has been selected, it asks you to klick "proceed" so as to return to the MediaWiki installer page.',
@@ -672,7 +672,7 @@ This message refers to a block of HTML being embedded into the installer page. I
 	'config-install-database' => '*{{msg-mw|Config-install-database}}
 *{{msg-mw|Config-install-tables}}
 *{{msg-mw|Config-install-schema}}
-*{{msg-mw|Config-install-user}}
+*{{msg-mw|Config-install-wiki_user}}
 *{{msg-mw|Config-install-interwiki}}
 *{{msg-mw|Config-install-stats}}
 *{{msg-mw|Config-install-keys}}
@@ -681,29 +681,29 @@ This message refers to a block of HTML being embedded into the installer page. I
 	'config-install-schema' => '*{{msg-mw|Config-install-database}}
 *{{msg-mw|Config-install-tables}}
 *{{msg-mw|Config-install-schema}}
-*{{msg-mw|Config-install-user}}
+*{{msg-mw|Config-install-wiki_user}}
 *{{msg-mw|Config-install-interwiki}}
 *{{msg-mw|Config-install-stats}}
 *{{msg-mw|Config-install-keys}}
 *{{msg-mw|Config-install-sysop}}
 *{{msg-mw|Config-install-mainpage}}',
 	'config-install-pg-schema-failed' => 'Parameters:
-* $1 = database user name (usernames in the database are unrelated to wiki user names)
+* $1 = database wiki_user name (wiki_usernames in the database are unrelated to wiki wiki_user names)
 * $2 =',
-	'config-install-user' => 'Message indicates that the user is being created
+	'config-install-wiki_user' => 'Message indicates that the wiki_user is being created
 
 See also:
 *{{msg-mw|Config-install-database}}
 *{{msg-mw|Config-install-tables}}
 *{{msg-mw|Config-install-schema}}
-*{{msg-mw|Config-install-user}}
+*{{msg-mw|Config-install-wiki_user}}
 *{{msg-mw|Config-install-interwiki}}
 *{{msg-mw|Config-install-stats}}
 *{{msg-mw|Config-install-keys}}
 *{{msg-mw|Config-install-sysop}}
 *{{msg-mw|Config-install-mainpage}}',
-	'config-install-user-grant-failed' => 'Parameters:
-* $1 is the database username for which granting rights failed
+	'config-install-wiki_user-grant-failed' => 'Parameters:
+* $1 is the database wiki_username for which granting rights failed
 * $2 is the error message',
 	'config-install-tables' => 'Message indicates that the tables are being created
 
@@ -711,7 +711,7 @@ See also:
 *{{msg-mw|Config-install-database}}
 *{{msg-mw|Config-install-tables}}
 *{{msg-mw|Config-install-schema}}
-*{{msg-mw|Config-install-user}}
+*{{msg-mw|Config-install-wiki_user}}
 *{{msg-mw|Config-install-interwiki}}
 *{{msg-mw|Config-install-stats}}
 *{{msg-mw|Config-install-keys}}
@@ -723,7 +723,7 @@ See also:
 *{{msg-mw|Config-install-database}}
 *{{msg-mw|Config-install-tables}}
 *{{msg-mw|Config-install-schema}}
-*{{msg-mw|Config-install-user}}
+*{{msg-mw|Config-install-wiki_user}}
 *{{msg-mw|Config-install-interwiki}}
 *{{msg-mw|Config-install-stats}}
 *{{msg-mw|Config-install-keys}}
@@ -732,7 +732,7 @@ See also:
 	'config-install-stats' => '*{{msg-mw|Config-install-database}}
 *{{msg-mw|Config-install-tables}}
 *{{msg-mw|Config-install-schema}}
-*{{msg-mw|Config-install-user}}
+*{{msg-mw|Config-install-wiki_user}}
 *{{msg-mw|Config-install-interwiki}}
 *{{msg-mw|Config-install-stats}}
 *{{msg-mw|Config-install-keys}}
@@ -741,7 +741,7 @@ See also:
 	'config-install-keys' => '*{{msg-mw|Config-install-database}}
 *{{msg-mw|Config-install-tables}}
 *{{msg-mw|Config-install-schema}}
-*{{msg-mw|Config-install-user}}
+*{{msg-mw|Config-install-wiki_user}}
 *{{msg-mw|Config-install-interwiki}}
 *{{msg-mw|Config-install-stats}}
 *{{msg-mw|Config-install-keys}}
@@ -750,13 +750,13 @@ See also:
 	'config-insecure-keys' => 'Parameters:
 * $1 - A list of names of the secret keys that were generated.
 * $2 - the number of items in the list $1, to be used with PLURAL.',
-	'config-install-sysop' => 'Message indicates that the administrator user account is being created
+	'config-install-sysop' => 'Message indicates that the administrator wiki_user account is being created
 
 See also:
 *{{msg-mw|Config-install-database}}
 *{{msg-mw|Config-install-tables}}
 *{{msg-mw|Config-install-schema}}
-*{{msg-mw|Config-install-user}}
+*{{msg-mw|Config-install-wiki_user}}
 *{{msg-mw|Config-install-interwiki}}
 *{{msg-mw|Config-install-stats}}
 *{{msg-mw|Config-install-keys}}
@@ -766,7 +766,7 @@ See also:
 	'config-install-mainpage' => '*{{msg-mw|Config-install-database}}
 *{{msg-mw|Config-install-tables}}
 *{{msg-mw|Config-install-schema}}
-*{{msg-mw|Config-install-user}}
+*{{msg-mw|Config-install-wiki_user}}
 *{{msg-mw|Config-install-interwiki}}
 *{{msg-mw|Config-install-stats}}
 *{{msg-mw|Config-install-keys}}
@@ -848,7 +848,7 @@ Die installasie mag moontlik faal!",
 	'config-db-name' => 'Databasisnaam:',
 	'config-db-name-oracle' => 'Databasis-skema:',
 	'config-db-install-account' => 'Gebruiker vir die installasie',
-	'config-db-username' => 'Databasis gebruikersnaam:',
+	'config-db-wiki_username' => 'Databasis gebruikersnaam:',
 	'config-db-password' => 'Databasis wagwoord:',
 	'config-db-prefix' => 'Voorvoegsel vir databasistabelle:',
 	'config-db-charset' => 'Karakterstelsel vir databasis',
@@ -928,10 +928,10 @@ Maak seker dat die gebruiker "$1" na skema "$2" mag skryf.',
 	'config-install-pg-commit' => 'Wysigings word gestoor',
 	'config-install-pg-plpgsql' => 'Kontroleer vir taal PL/pgSQL',
 	'config-pg-no-plpgsql' => 'U moet die taal PL/pgSQL in die database $1 installeer',
-	'config-install-user' => 'Besig om die databasisgebruiker te skep',
-	'config-install-user-alreadyexists' => 'Gebruiker "$1" bestaan al reeds',
-	'config-install-user-create-failed' => 'Skep van gebruiker "$1" het gefaal: $2',
-	'config-install-user-grant-failed' => 'Die toekenning van regte aan gebruiker "$1" het gefaal: $2',
+	'config-install-wiki_user' => 'Besig om die databasisgebruiker te skep',
+	'config-install-wiki_user-alreadyexists' => 'Gebruiker "$1" bestaan al reeds',
+	'config-install-wiki_user-create-failed' => 'Skep van gebruiker "$1" het gefaal: $2',
+	'config-install-wiki_user-grant-failed' => 'Die toekenning van regte aan gebruiker "$1" het gefaal: $2',
 	'config-install-tables' => 'Skep tabelle',
 	'config-install-tables-exist' => "'''Waarskuwing''': Dit lyk of MediaWiki se tabelle reeds bestaan.
 Die skep van tabelle word oorgeslaan.",
@@ -960,7 +960,7 @@ As dit gedoen is, kan u '''[u $2 wiki besoek]'''.", # Fuzzy
 	'config-download-localsettings' => 'Laai LocalSettings.php af',
 	'config-help' => 'hulp',
 	'mainpagetext' => "'''MediaWiki is suksesvol geïnstalleer.'''",
-	'mainpagedocfooter' => "Konsulteer '''[//meta.wikimedia.org/wiki/Help:Contents User's Guide]''' vir inligting oor hoe om die wikisagteware te gebruik.
+	'mainpagedocfooter' => "Konsulteer '''[//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide]''' vir inligting oor hoe om die wikisagteware te gebruik.
 
 == Hoe om te Begin ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
@@ -987,7 +987,7 @@ $messages['aln'] = array(
  */
 $messages['am'] = array(
 	'mainpagetext' => "'''MediaWiki በትክክል ማስገባቱ ተከናወነ።'''",
-	'mainpagedocfooter' => "ስለ ዊኪ ሶፍትዌር ጥቅም ለመረዳት፣ [//meta.wikimedia.org/wiki/Help:Contents User's Guide] ያንብቡ።
+	'mainpagedocfooter' => "ስለ ዊኪ ሶፍትዌር ጥቅም ለመረዳት፣ [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] ያንብቡ።
 
 == ለመጀመር ==
 
@@ -1036,7 +1036,7 @@ $messages['ar'] = array(
 	'config-continue' => 'استمر ←',
 	'config-page-language' => 'اللغة',
 	'config-page-name' => 'الاسم',
-	'config-db-username' => 'اسم مستخدم قاعدة البيانات:',
+	'config-db-wiki_username' => 'اسم مستخدم قاعدة البيانات:',
 	'config-db-password' => 'كلمة سر قاعدة البيانات:',
 	'config-db-port' => 'منفذ قاعدة البيانات:',
 	'config-type-mysql' => 'ماي إس كيو إل',
@@ -1199,7 +1199,7 @@ $messages['bar'] = array(
  */
 $messages['bcc'] = array(
 	'mainpagetext' => "'''مدیا وی کی گون موفقیت نصب بوت.'''",
-	'mainpagedocfooter' => "مشورت کنیت گون  [//meta.wikimedia.org/wiki/Help:Contents User's Guide] په گشیترین اطلاعات په استفاده چه برنامه ویکی.
+	'mainpagedocfooter' => "مشورت کنیت گون  [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] په گشیترین اطلاعات په استفاده چه برنامه ویکی.
 
 == شروع بیت ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
@@ -1211,7 +1211,7 @@ $messages['bcc'] = array(
  */
 $messages['bcl'] = array(
 	'mainpagetext' => "'''Instalado na an MediaWiki.'''",
-	'mainpagedocfooter' => "Konsultarón tabì an [//meta.wikimedia.org/wiki/Help:Contents User's Guide] para sa impormasyon sa paggamit nin progama kaining wiki.
+	'mainpagedocfooter' => "Konsultarón tabì an [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] para sa impormasyon sa paggamit nin progama kaining wiki.
 
 == Pagpopoon ==
 
@@ -1416,11 +1416,11 @@ MediaWiki патрабуе падтрымкі UTF-8 для слушнай пра
 
 Скрыпт для стварэньня рахунку з патрабуемымі правамі можна знайсьці ў дырэкторыі гэтага ўсталяваньня «maintenance/oracle/». Памятайце, што выкарыстаньне рахунку з абмежаваньнямі адключыць усе падтрымліваемыя магчымасьці даступныя па змоўчваньні.',
 	'config-db-install-account' => 'Імя карыстальніка для ўсталяваньня',
-	'config-db-username' => 'Імя карыстальніка базы зьвестак:',
+	'config-db-wiki_username' => 'Імя карыстальніка базы зьвестак:',
 	'config-db-password' => 'Пароль базы зьвестак:',
 	'config-db-password-empty' => 'Калі ласка, увядзіце пароль для новага карыстальніка базы зьвестак: $1.
 Магчыма стварыць карыстальніка без паролю, але гэта небясьпечна.',
-	'config-db-install-username' => 'Увядзіце імя карыстальніка, якое будзе выкарыстоўвацца для злучэньня з базай зьвестак падчас усталяваньня. Гэта не назва рахунку MediaWiki; гэта імя карыстальніка Вашай базы зьвестак.',
+	'config-db-install-wiki_username' => 'Увядзіце імя карыстальніка, якое будзе выкарыстоўвацца для злучэньня з базай зьвестак падчас усталяваньня. Гэта не назва рахунку MediaWiki; гэта імя карыстальніка Вашай базы зьвестак.',
 	'config-db-install-password' => 'Увядзіце пароль, які будзе выкарыстоўвацца для злучэньня з базай зьвестак падчас усталяваньня. Гэта не пароль рахунку MediaWiki; гэта пароль Вашай базы зьвестак.',
 	'config-db-install-help' => 'Увядзіце імя карыстальніка і пароль, якія будуць выкарыстаныя для далучэньня да базы зьвестак падчас працэсу ўсталяваньня.',
 	'config-db-account-lock' => 'Выкарыстоўваць тыя ж імя карыстальніка і пароль пасьля ўсталяваньня',
@@ -1497,7 +1497,7 @@ $1
 	'config-invalid-schema' => 'Няслушная схема для MediaWiki «$1».
 Выкарыстоўвайце толькі ASCII-літары (a-z, A-Z), лічбы (0-9) і сымбалі падкрэсьліваньня (_).',
 	'config-db-sys-create-oracle' => 'Праграма ўсталяваньня падтрымлівае толькі выкарыстаньне рахунку SYSDBA для стварэньня новага рахунку.',
-	'config-db-sys-user-exists-oracle' => 'Рахунак карыстальніка «$1» ужо існуе. SYSDBA можа выкарыстоўвацца толькі для стварэньня новых рахункаў!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Рахунак карыстальніка «$1» ужо існуе. SYSDBA можа выкарыстоўвацца толькі для стварэньня новых рахункаў!',
 	'config-postgres-old' => 'Патрабуецца PostgreSQL $1 ці навейшая, усталяваная вэрсія $2.',
 	'config-sqlite-name-help' => 'Выберыце назву, якая будзе ідэнтыфікаваць Вашую вікі.
 Не выкарыстоўвайце прагалы ці злучкі.
@@ -1602,7 +1602,7 @@ chmod a+w $3</pre>',
 	'config-admin-password-mismatch' => 'Уведзеныя Вамі паролі не супадаюць.',
 	'config-admin-email' => 'Адрас электроннай пошты:',
 	'config-admin-email-help' => 'Увядзіце тут адрас электроннай пошты, каб атрымліваць электронныя лісты ад іншых удзельнікаў вікі, скідваць Ваш пароль і атрымліваць абвешчаньні пра зьмены старонак, якія знаходзяцца ў Вашым сьпісе назіраньня. Вы можаце пакінуць гэтае поле пустым.',
-	'config-admin-error-user' => 'Унутраная памылка падчас стварэньня рахунку адміністратара зь іменем «<nowiki>$1</nowiki>».',
+	'config-admin-error-wiki_user' => 'Унутраная памылка падчас стварэньня рахунку адміністратара зь іменем «<nowiki>$1</nowiki>».',
 	'config-admin-error-password' => 'Унутраная памылка падчас устаноўкі паролю для адміністратара «<nowiki>$1</nowiki>»: <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Вы ўвялі няслушны адрас электроннай пошты',
 	'config-subscribe' => 'Падпісацца на [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce сьпіс распаўсюджаньня навінаў пра зьяўленьне новых вэрсіяў].',
@@ -1631,7 +1631,7 @@ chmod a+w $3</pre>',
 Сцэнар '''{{int:config-profile-fishbowl}}''' дазваляе рэдагаваць зацьверджаным удзельнікам, але ўсе могуць праглядаць старонкі іх гісторыю.
 '''{{int:config-profile-private}}''' дазваляе праглядаць і рэдагаваць старонкі толькі зацьверджаным удзельнікам.
 
-Больш складаныя правы ўдзельнікаў даступныя пасьля ўсталяваньня, глядзіце [//www.mediawiki.org/wiki/Manual:User_rights адпаведную старонку дакумэнтацыі].",
+Больш складаныя правы ўдзельнікаў даступныя пасьля ўсталяваньня, глядзіце [//www.mediawiki.org/wiki/Manual:wiki_user_rights адпаведную старонку дакумэнтацыі].",
 	'config-license' => 'Аўтарскія правы і ліцэнзія:',
 	'config-license-none' => 'Без інфармацыі пра ліцэнзію',
 	'config-license-cc-by-sa' => 'Creative Commons Attribution Share Alike',
@@ -1654,10 +1654,10 @@ chmod a+w $3</pre>',
 	'config-enable-email' => 'Дазволіць выходзячыя электронныя лісты',
 	'config-enable-email-help' => 'Калі Вы жадаеце, каб працавала электронная пошта, неабходна сканфігураваць PHP [http://www.php.net/manual/en/mail.configuration.php адпаведным чынам].
 Калі Вы не жадаеце выкарыстоўваць магчымасьці электроннай пошты, Вы можаце яе адключыць.',
-	'config-email-user' => 'Дазволіць электронную пошту для сувязі паміж удзельнікамі',
-	'config-email-user-help' => 'Дазволіць усім удзельнікам дасылаць адзін аднаму электронныя лісты, калі ўключаная адпаведная магчымасьць ў іх наладах.',
-	'config-email-usertalk' => 'Уключыць абвяшчэньні пра паведамленьні на старонцы абмеркаваньня',
-	'config-email-usertalk-help' => 'Дазваляе ўдзельнікам атрымліваць абвяшчэньні пра зьмены на старонцы абмеркаваньня, калі гэтая магчымасьць уключаная ў іх наладах.',
+	'config-email-wiki_user' => 'Дазволіць электронную пошту для сувязі паміж удзельнікамі',
+	'config-email-wiki_user-help' => 'Дазволіць усім удзельнікам дасылаць адзін аднаму электронныя лісты, калі ўключаная адпаведная магчымасьць ў іх наладах.',
+	'config-email-wiki_usertalk' => 'Уключыць абвяшчэньні пра паведамленьні на старонцы абмеркаваньня',
+	'config-email-wiki_usertalk-help' => 'Дазваляе ўдзельнікам атрымліваць абвяшчэньні пра зьмены на старонцы абмеркаваньня, калі гэтая магчымасьць уключаная ў іх наладах.',
 	'config-email-watchlist' => 'Уключыць абвяшчэньні пра зьмены ў сьпісе назіраньня',
 	'config-email-watchlist-help' => 'Дазваляе ўдзельнікам атрымліваць абвяшчэньні пра зьмены ў іх сьпісе назіраньня, калі гэтая магчымасьць уключаная ў іх наладах.',
 	'config-email-auth' => 'Уключыць аўтэнтыфікацыю праз электронную пошту',
@@ -1733,12 +1733,12 @@ chmod a+w $3</pre>',
 Пазначаны Вамі рахунак для ўсталяваньня ня мае правоў і не зьяўляецца сябрам ролі ўэб-карыстальніка, таму немагчыма стварыць аб’екты, якія належаць ўэб-карыстальніку.
 
 Цяпер MediaWiki патрабуе, каб табліцы належалі да ўэб-карыстальніку. Калі ласка, пазначце іншы рахунак, ці націсьніце кнопку «Вярнуцца» і пазначце карыстальніка з неабходнымі для ўсталяваньня правамі.',
-	'config-install-user' => 'Стварэньне карыстальніка базы зьвестак',
-	'config-install-user-alreadyexists' => 'Удзельнік «$1» ужо існуе',
-	'config-install-user-create-failed' => 'Немагчыма стварыць ўдзельніка «$1»: $2',
-	'config-install-user-grant-failed' => 'Немагчыма даць правы удзельніку «$1»: $2',
-	'config-install-user-missing' => 'Пазначаны карыстальнік «$1» не існуе.',
-	'config-install-user-missing-create' => 'Пазначаны карыстальнік «$1» не існуе.
+	'config-install-wiki_user' => 'Стварэньне карыстальніка базы зьвестак',
+	'config-install-wiki_user-alreadyexists' => 'Удзельнік «$1» ужо існуе',
+	'config-install-wiki_user-create-failed' => 'Немагчыма стварыць ўдзельніка «$1»: $2',
+	'config-install-wiki_user-grant-failed' => 'Немагчыма даць правы удзельніку «$1»: $2',
+	'config-install-wiki_user-missing' => 'Пазначаны карыстальнік «$1» не існуе.',
+	'config-install-wiki_user-missing-create' => 'Пазначаны карыстальнік «$1» не існуе.
 Калі ласка, пазначце «стварыць рахунак», калі Вы жадаеце яго стварыць.',
 	'config-install-tables' => 'Стварэньне табліцаў',
 	'config-install-tables-exist' => "'''Папярэджаньне''': Выглядае, што табліцы MediaWiki ужо існуюць.
@@ -1952,11 +1952,11 @@ $1
 Ако се използва споделен хостинг, доставчикът на услугата би трябвало да е предоставил или име на базата от данни, която да бъде използвана, или да позволява създаването на бази от данни чрез контролния панел.',
 	'config-db-name-oracle' => 'Схема на базата от данни:',
 	'config-db-install-account' => 'Потребителска сметка за инсталацията',
-	'config-db-username' => 'Потребителско име за базата от данни:',
+	'config-db-wiki_username' => 'Потребителско име за базата от данни:',
 	'config-db-password' => 'Парола за базата от данни:',
 	'config-db-password-empty' => 'Въведете парола за новия потребител на базата от данни: $1.
 Въпреки че е допустимо да се създават потребители без пароли, това е незащитено действие.',
-	'config-db-install-username' => 'Въвежда се потребителско име, което ще се използва за свързване с базата от данни по време на процеса по инсталация.
+	'config-db-install-wiki_username' => 'Въвежда се потребителско име, което ще се използва за свързване с базата от данни по време на процеса по инсталация.
 Това не е потребителско име за сметка в МедияУики; това е потребителско име за базата от данни.',
 	'config-db-install-password' => 'Въвежда се парола, която ще бъде използвана за свързване с базата от данни по време на инсталационния процес.
 Това не е парола за сметка в МедияУики; това е парола за базата от данни.',
@@ -2022,7 +2022,7 @@ $1
 	'config-invalid-schema' => 'Невалидна схема за МедияУики "$1".
 Допустими са само ASCII букви (a-z, A-Z), цифри (0-9) и долни черти (_).',
 	'config-db-sys-create-oracle' => 'Инсталаторът поддържа само сметка SYSDBA за създаване на нова сметка.',
-	'config-db-sys-user-exists-oracle' => 'Потребителската сметка "$1" вече съществува. SYSDBA може да се използва само за създаване на нова сметка!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Потребителската сметка "$1" вече съществува. SYSDBA може да се използва само за създаване на нова сметка!',
 	'config-postgres-old' => 'Изисква се PostgreSQL $1 или по-нова версия, наличната версия е $2.',
 	'config-sqlite-name-help' => 'Избира се име, което да идентифицира уикито.
 Не се използват интервали или тирета.
@@ -2126,7 +2126,7 @@ chmod a+w $3</pre>',
 	'config-admin-password-mismatch' => 'Двете въведени пароли не съвпадат.',
 	'config-admin-email' => 'Адрес за електронна поща:',
 	'config-admin-email-help' => 'Въвеждането на адрес за е-поща позволява получаване на е-писма от другите потребители на уикито, възстановяване на изгубена или забравена парола, оповестяване при промени в страниците от списъка за наблюдение. Това поле може да бъде оставено празно.',
-	'config-admin-error-user' => 'Възникна вътрешна грешка при създаване на администратор с името "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Възникна вътрешна грешка при създаване на администратор с името "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Възникна вътрешна грешка при задаване на парола за администратора "<nowiki>$1</nowiki>": <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Въведен е невалиден адрес за електронна поща',
 	'config-subscribe' => 'Абониране за [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce пощенския списък за нови версии].',
@@ -2155,7 +2155,7 @@ chmod a+w $3</pre>',
 Уики, което е '''{{int:config-profile-fishbowl}}''' позволява на всички да преглеждат страниците, но само предварително одобрени редактори могат да редактират съдържанието.
 В '''{{int:config-profile-private}}''' само предварително одобрени потребители могат да четат и редактират съдържанието.
 
-Детайлно обяснение на конфигурациите на потребителските права е достъпно след инсталацията в [//www.mediawiki.org/wiki/Manual:User_rights Наръчника за потребителски права].",
+Детайлно обяснение на конфигурациите на потребителските права е достъпно след инсталацията в [//www.mediawiki.org/wiki/Manual:wiki_user_rights Наръчника за потребителски права].",
 	'config-license' => 'Авторски права и лиценз:',
 	'config-license-none' => 'Без лиценз',
 	'config-license-cc-by-sa' => 'Криейтив Комънс Признание-Споделяне на споделеното',
@@ -2177,10 +2177,10 @@ chmod a+w $3</pre>',
 	'config-enable-email' => 'Разрешаване на изходящи е-писма',
 	'config-enable-email-help' => 'За да работят възможностите за използване на е-поща, необходимо е [http://www.php.net/manual/en/mail.configuration.php настройките за поща на PHP] да бъдат конфигурирани правилно.
 Ако няма да се използват услугите за е-поща в уикито, те могат да бъдат изключени тук.',
-	'config-email-user' => 'Позволяване на потребителите да си изпращат е-писма през уикито',
-	'config-email-user-help' => 'Позволяване на потребителите да си изпращат е-писма ако са разрешили това в настройките си.',
-	'config-email-usertalk' => 'Оповестяване при промяна на потребителската беседа',
-	'config-email-usertalk-help' => 'Позволява на потребителите да получават оповестяване при промяна на беседата им, ако това е разрешено в настройките им.',
+	'config-email-wiki_user' => 'Позволяване на потребителите да си изпращат е-писма през уикито',
+	'config-email-wiki_user-help' => 'Позволяване на потребителите да си изпращат е-писма ако са разрешили това в настройките си.',
+	'config-email-wiki_usertalk' => 'Оповестяване при промяна на потребителската беседа',
+	'config-email-wiki_usertalk-help' => 'Позволява на потребителите да получават оповестяване при промяна на беседата им, ако това е разрешено в настройките им.',
 	'config-email-watchlist' => 'Оповестяване за списъка за наблюдение',
 	'config-email-watchlist-help' => 'Позволява на потребителите да получават оповестяване за техните наблюдавани страници, ако това е разрешено в настройките им.',
 	'config-email-auth' => 'Потвърждаване на адреса за електронна поща',
@@ -2255,12 +2255,12 @@ chmod a+w $3</pre>',
 Посочената сметка за инсталация не с права на суперпотребител и не е член на ролите на уеб потребителя и не може да създава обекти, собственост на уеб потребителя.
 
 Текущо МедияУики изисква таблиците да са собственост на уеб потребителя. Необходимо е да се посочи друго потребителско име за уеб или да се натисне "връщане" и да се избере друг потребител за инсталацията с подходящите права.',
-	'config-install-user' => 'Създаване на потребител за базата от данни',
-	'config-install-user-alreadyexists' => 'Потребител „$1“ вече съществува',
-	'config-install-user-create-failed' => 'Създаването на потребител „$1“ беше неуспешно: $2',
-	'config-install-user-grant-failed' => 'Предоставянето на права на потребител "$1" беше неуспешно: $2',
-	'config-install-user-missing' => 'Посоченият потребител " $1 "не съществува.',
-	'config-install-user-missing-create' => 'Посоченият потребител "$1" не съществува.
+	'config-install-wiki_user' => 'Създаване на потребител за базата от данни',
+	'config-install-wiki_user-alreadyexists' => 'Потребител „$1“ вече съществува',
+	'config-install-wiki_user-create-failed' => 'Създаването на потребител „$1“ беше неуспешно: $2',
+	'config-install-wiki_user-grant-failed' => 'Предоставянето на права на потребител "$1" беше неуспешно: $2',
+	'config-install-wiki_user-missing' => 'Посоченият потребител " $1 "не съществува.',
+	'config-install-wiki_user-missing-create' => 'Посоченият потребител "$1" не съществува.
 Ако желаете да го създадете, поставете отметка на "създаване на сметка".',
 	'config-install-tables' => 'Създаване на таблиците',
 	'config-install-tables-exist' => "'''Предупреждение''': Таблиците за МедияУики изглежда вече съществуват.
@@ -2354,7 +2354,7 @@ $messages['bn'] = array(
 	'config-db-type' => 'ডেটাবেজের ধরন:',
 	'config-db-host' => 'ডেটাবেজের হোস্ট:',
 	'config-db-install-account' => 'ইন্সটলের জন্য ব্যবহারকারী অ্যাকাউন্ট',
-	'config-db-username' => 'ডেটাবেজের ব্যবহারকারী নাম:',
+	'config-db-wiki_username' => 'ডেটাবেজের ব্যবহারকারী নাম:',
 	'config-db-password' => 'ডেটাবেজের শব্দচাবি:',
 	'config-db-charset' => 'ডেটাবেজের অক্ষর সেট',
 	'config-db-port' => 'ডেটাবেজ পোর্ট:',
@@ -2409,7 +2409,7 @@ $messages['bn'] = array(
 	'config-license-pd' => 'পাবলিক ডোমেইন',
 	'config-license-cc-choose' => 'একটি স্বনির্ধারিত ক্রিয়েটিভ কমন্স লাইসেন্ট নির্বাচন করুন',
 	'config-email-settings' => 'ই-মেইল সেটিংস',
-	'config-email-user' => 'ব্যবহারকারী-থেকে-ব্যবহারকারী ই-মেইল সুবিধা সক্রিয় করো',
+	'config-email-wiki_user' => 'ব্যবহারকারী-থেকে-ব্যবহারকারী ই-মেইল সুবিধা সক্রিয় করো',
 	'config-upload-settings' => 'চিত্র এবং ফাইল আপলোড',
 	'config-upload-enable' => 'ফাইল আপলোড সক্রিয় করো',
 	'config-upload-deleted' => 'অপসারণকৃত ফাইলের ডিরেক্টরি:',
@@ -2611,11 +2611,11 @@ Na lakait ket a esaouennoù ennañ.
 Ma ri gant un herberc'hiañ kenrannet e vo pourchaset deoc'h un anv diaz roadennoù dibar da vezañ graet gantañ gant ho herberc'hier pe e lezo ac'hanoc'h da grouiñ diazoù roadennoù dre ur banell gontrolliñ.",
 	'config-db-name-oracle' => 'Brastres diaz roadennoù :',
 	'config-db-install-account' => 'Kont implijer evit ar staliadur',
-	'config-db-username' => 'Anv implijer an diaz roadennoù :',
+	'config-db-wiki_username' => 'Anv implijer an diaz roadennoù :',
 	'config-db-password' => 'Ger-tremen an diaz roadennoù :',
 	'config-db-password-empty' => "Lakait ur ger-tremen evit kont nevez an diaz roadennoù : $1.
 Ha pa vefe posupl da grouiñ kontoù hep ger-tremen, n'eo ket erbedet evit abegoù surentez.",
-	'config-db-install-username' => "Ebarzhit an anv implijer a vo implijet da gevreañ ouzh an diaz roadennoù e-pad an argerzh staliañ.
+	'config-db-install-wiki_username' => "Ebarzhit an anv implijer a vo implijet da gevreañ ouzh an diaz roadennoù e-pad an argerzh staliañ.
 N'eo ket anv implijer ar gont MediaWiki, an anv implijer evit ho tiaz roadennoù eo.",
 	'config-db-install-password' => "Ebarzhit ar ger-tremen a vo implijet da gevreañ ouzh an diaz roadennoù e-pad an argerzh staliañ.
 N'eo ket ar ger-tremen evit ar gont MediaWiki, ar ger-tremen evit ho tiaz roadennoù eo.",
@@ -2672,7 +2672,7 @@ Gwiriit anv an ostiz, an anv implijer, ar ger-tremen ha klaskit en-dro.',
 	'config-invalid-schema' => 'Chema direizh evit MediaWiki "$1".
 Grit hepken gant lizherennoù ASCII (a-z, A-Z), sifroù (0-9) hag arouezennoù islinennañ (_).',
 	'config-db-sys-create-oracle' => "N'anavez ar stalier nemet ar c'hontoù SYSDBA evit krouiñ kontoù nevez.",
-	'config-db-sys-user-exists-oracle' => 'Bez\' ez eus eus ar gont "$1" c\'hoazh. N\'haller ober gant SYSDBA nemet evit krouiñ kontoù nevez !',
+	'config-db-sys-wiki_user-exists-oracle' => 'Bez\' ez eus eus ar gont "$1" c\'hoazh. N\'haller ober gant SYSDBA nemet evit krouiñ kontoù nevez !',
 	'config-postgres-old' => "Rekis eo PostgreSQL $1 pe ur stumm nevesoc'h; ober a rit gant $2.",
 	'config-sqlite-name-help' => "Dibabit un anv dibar d'ho wiki.
 Arabat ober gant esaouennoù pe barrennigoù-stagañ.
@@ -2731,7 +2731,7 @@ Merkit un anv implijer all.',
 	'config-admin-password-mismatch' => "Ne glot ket ar gerioù-tremen hoc'h eus merket an eil gant egile.",
 	'config-admin-email' => "Chomlec'h postel :",
 	'config-admin-email-help' => "Merkit ur chomlec'h postel amañ evit gallout resev posteloù a-berzh implijerien all eus ar wiki, adderaouekaat ho ker-tremen ha bezañ kelaouet eus ar c'hemmoù degaset d'ar pajennoù zo en ho roll evezhiañ. Gallout a rit lezel ar vaezienn-mañ goullo.",
-	'config-admin-error-user' => 'Fazi diabarzh en ur grouiñ ur merer gant an anv "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Fazi diabarzh en ur grouiñ ur merer gant an anv "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Fazi diabarzh o lakaat ur ger-tremen evit ar merour « <nowiki>$1</nowiki> » : <pre>$2</pre>',
 	'config-admin-error-bademail' => "Ebarzhet hoc'h eus ur chomlec'h postel direizh.",
 	'config-subscribe' => 'Koumanantit da [https://lists.wikimedia.org/mailman/listinfo/mediawiki-listenn kemennadoù evit ar stummoù nevez].',
@@ -2756,10 +2756,10 @@ Gellout a rit tremen ar c'hefluniadur nevez ha staliañ ar wiki war-eeun.",
 	'config-enable-email' => 'Gweredekaat ar posteloù a ya kuit',
 	'config-enable-email-help' => "Mar fell deoc'h ober gant ar posteler eo ret deoc'h [http://www.php.net/manual/en/mail.configuration.php kefluniañ arventennoù postel PHP] ervat.
 Mar ne fell ket deoc'h ober gant ar servij posteloù e c'hall bezañ diweredekaet amañ.",
-	'config-email-user' => 'Gweredekaat ar posteloù a implijer da implijer',
-	'config-email-user-help' => "Aotren a ra an holl implijerien da gas posteloù an eil d'egile mard eo bet gweredekaet an arc'hwel ganto en ho penndibaboù.",
-	'config-email-usertalk' => 'Gweredekaat kemennadur pajennoù kaozeal an implijerien',
-	'config-email-usertalk-help' => "Talvezout a ra d'an implijerien da resev kemennadennoù ma vez kemmet o fajennoù kaozeal, ma vez gweredekaet en o fenndibaboù.",
+	'config-email-wiki_user' => 'Gweredekaat ar posteloù a implijer da implijer',
+	'config-email-wiki_user-help' => "Aotren a ra an holl implijerien da gas posteloù an eil d'egile mard eo bet gweredekaet an arc'hwel ganto en ho penndibaboù.",
+	'config-email-wiki_usertalk' => 'Gweredekaat kemennadur pajennoù kaozeal an implijerien',
+	'config-email-wiki_usertalk-help' => "Talvezout a ra d'an implijerien da resev kemennadennoù ma vez kemmet o fajennoù kaozeal, ma vez gweredekaet en o fenndibaboù.",
 	'config-email-watchlist' => "Gweredekaat ar c'hemenn listenn evezhiañ",
 	'config-email-watchlist-help' => "Talvezout a ra d'an implijerien da resev kemennadennoù diwar-benn ar pajennoù evezhiet ganto, ma vez gweredekaet en o fenndibaboù.",
 	'config-email-auth' => 'Gweredekaat an dilesadur dre bostel',
@@ -2810,10 +2810,10 @@ Gwiriit hag-eñ e c'hall an implijer « $1 » skrivañ er brastres « $2 ».",
 	'config-install-pg-plpgsql' => 'O wiriañ ar yezh PL/pgSQL',
 	'config-pg-no-plpgsql' => "Ret eo deoc'h staliañ ar yezh PL/pgSQL en diaz roadennoù $1",
 	'config-pg-no-create-privs' => "N'eus ket gwirioù a-walc'h gant ar gont hoc'h eus merket evit ar staliadur evit gallout krouiñ ur gont.",
-	'config-install-user' => 'O krouiñ an diaz roadennoù implijer',
-	'config-install-user-alreadyexists' => 'An implijer "$1" zo anezhañ dija',
-	'config-install-user-create-failed' => 'Fazi e-ser krouiñ an implijer "$1" : $2',
-	'config-install-user-grant-failed' => 'N\'eus ket bet gallet reiñ an aotre d\'an implijer "$1" : $2',
+	'config-install-wiki_user' => 'O krouiñ an diaz roadennoù implijer',
+	'config-install-wiki_user-alreadyexists' => 'An implijer "$1" zo anezhañ dija',
+	'config-install-wiki_user-create-failed' => 'Fazi e-ser krouiñ an implijer "$1" : $2',
+	'config-install-wiki_user-grant-failed' => 'N\'eus ket bet gallet reiñ an aotre d\'an implijer "$1" : $2',
 	'config-install-tables' => 'Krouiñ taolennoù',
 	'config-install-tables-failed' => "'''Fazi :''' c'hwitet eo krouidigezh an daolenn gant ar fazi-mañ : $1",
 	'config-install-interwiki' => 'O leuniañ dre ziouer an daolenn etrewiki',
@@ -2995,7 +2995,7 @@ $messages['cps'] = array(
  */
 $messages['crh-cyrl'] = array(
 	'mainpagetext' => "'''MediaWiki мувафакъиетнен къурулды.'''",
-	'mainpagedocfooter' => "Бу викининъ ёл-ёругъыны [//meta.wikimedia.org/wiki/Help:Contents User's Guide къулланыджы къылавузындан] огренип оласынъыз.
+	'mainpagedocfooter' => "Бу викининъ ёл-ёругъыны [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide къулланыджы къылавузындан] огренип оласынъыз.
 
 == Базы файдалы сайтлар ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Олуджы сазламалар джедвели];
@@ -3007,7 +3007,7 @@ $messages['crh-cyrl'] = array(
  */
 $messages['crh-latn'] = array(
 	'mainpagetext' => "'''MediaWiki muvafaqiyetnen quruldı.'''",
-	'mainpagedocfooter' => "Bu vikiniñ yol-yoruğını [//meta.wikimedia.org/wiki/Help:Contents User's Guide qullanıcı qılavuzından] ögrenip olasıñız.
+	'mainpagedocfooter' => "Bu vikiniñ yol-yoruğını [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide qullanıcı qılavuzından] ögrenip olasıñız.
 
 == Bazı faydalı saytlar ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Olucı sazlamalar cedveli];
@@ -3193,11 +3193,11 @@ Pokud chcete v rámci instalace založit databázový účet, zadejte jako datab
 
 Skript pro založení účtu s potřebnými privilegii můžete v této instalaci nalézt v adresáři „maintenance/oracle/“. Nezapomeňte, že použití omezeného účtu znepřístupní veškeré možnosti údržby přes implicitní účet.',
 	'config-db-install-account' => 'Uživatelský účet pro instalaci',
-	'config-db-username' => 'Databázové uživatelské jméno:',
+	'config-db-wiki_username' => 'Databázové uživatelské jméno:',
 	'config-db-password' => 'Databázové heslo:',
 	'config-db-password-empty' => 'Zadejte heslo pro nového databázového uživatele: $1.
 Přestože může jít zakládat nové uživatele i bez hesel, není to bezpečné.',
-	'config-db-install-username' => 'Zadejte uživatelské jméno, které se použije pro připojení k databázi v průběhu instalace.
+	'config-db-install-wiki_username' => 'Zadejte uživatelské jméno, které se použije pro připojení k databázi v průběhu instalace.
 Toto není jméno uživatelského účtu MediaWiki; toto je uživatelské jméno k vaší databázi.',
 	'config-db-install-password' => 'Zadejte heslo, které se použije pro připojení k databázi v průběhu instalace.
 Toto není heslo uživatelského účtu MediaWiki; toto je heslo k vaší databázi.',
@@ -3276,7 +3276,7 @@ Zkontrolujte server, uživatelské jméno a heslo a zkuste to znovu.',
 	'config-invalid-schema' => 'Neplatné schéma pro MediaWiki „$1“.
 Používejte pouze ASCII písmena (a-z, A-Z), čísla (0-9) a podtržítko (_).',
 	'config-db-sys-create-oracle' => 'Instalátor podporuje zakládání nového účtu pouze prostřednictvím účtu SYSDBA.',
-	'config-db-sys-user-exists-oracle' => 'Uživatelský účet „$1“ již existuje. SYSDBA lze použít pouze pro založení nového účtu!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Uživatelský účet „$1“ již existuje. SYSDBA lze použít pouze pro založení nového účtu!',
 	'config-postgres-old' => 'Je vyžadován PostgreSQL $1 nebo novější, vy máte $2.',
 	'config-sqlite-name-help' => 'Zvolte jméno, které označuje vaši wiki.
 Nepoužívejte mezery a spojovníky.
@@ -3381,7 +3381,7 @@ Zadejte jiné uživatelské jméno.',
 	'config-admin-password-mismatch' => 'Uvedená hesla se neshodují.',
 	'config-admin-email' => 'E-mailová adresa:',
 	'config-admin-email-help' => 'Zde zadejte e-mailovou adresu, která vám umožní přijímat e-maily od ostatních uživatelů wiki, získat nové heslo a přijímat notifikace o změnách sledovaných stránek. Tohle pole můžete nechat prázdné.',
-	'config-admin-error-user' => 'Vnitřní chyba při vytváření správce se jménem „<nowiki>$1</nowiki>“.',
+	'config-admin-error-wiki_user' => 'Vnitřní chyba při vytváření správce se jménem „<nowiki>$1</nowiki>“.',
 	'config-admin-error-password' => 'Vnitřní chyba při nastavování hesla správci se jménem „<nowiki>$1</nowiki>“: <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Zadali jste neplatnou e-mailovou adresu.',
 	'config-subscribe' => 'Přihlásit se k odběru [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce e-mailové konference pro oznamování nových verzí].',
@@ -3410,7 +3410,7 @@ Na wiki, kde je '''{{int:config-profile-no-anon}}''', se lépe řídí zodpověd
 Profil '''{{int:config-profile-fishbowl}}''' umožňuje schváleným uživatelům editovat, ale veřejnost si může stránky prohlížet včetně jejich historie.
 '''{{int:config-profile-private}}''' dovoluje stránky prohlížet jen schváleným uživatelům, kteří je i mohou editovat.
 
-Po instalaci je možná komplexní konfigurace uživatelských práv; vizte [//www.mediawiki.org/wiki/Manual:User_rights odpovídající stránku příručky].",
+Po instalaci je možná komplexní konfigurace uživatelských práv; vizte [//www.mediawiki.org/wiki/Manual:wiki_user_rights odpovídající stránku příručky].",
 	'config-license' => 'Autorská práva a licence:',
 	'config-license-none' => 'Bez patičky s licencí',
 	'config-license-cc-by-sa' => 'Creative Commons Uveďte autora-Zachovejte licenci',
@@ -3433,10 +3433,10 @@ Také je komplikované používat obsah licencovaný pod GFDL.",
 	'config-enable-email' => 'Zapnout odchozí e-mail',
 	'config-enable-email-help' => 'Pokud chcete, aby e-mail fungoval, je potřeba správně nakonfigurovat [http://www.php.net/manual/en/mail.configuration.php e-mailová nastavení PHP].
 Pokud nechcete žádné e-mailové funkce, můžete je zde vypnout.',
-	'config-email-user' => 'Umožnit vzájemné e-maily mezi uživateli',
-	'config-email-user-help' => 'Umožní všem uživatelům posílat si navzájem e-maily, pokud si to zapnout v uživatelském nastavení.',
-	'config-email-usertalk' => 'Umožnit notifikace k uživatelským diskusím',
-	'config-email-usertalk-help' => 'Umožní uživatelům přijímat notifikace o změnách uživatelských diskusí, pokud si to zapnou v nastavení.',
+	'config-email-wiki_user' => 'Umožnit vzájemné e-maily mezi uživateli',
+	'config-email-wiki_user-help' => 'Umožní všem uživatelům posílat si navzájem e-maily, pokud si to zapnout v uživatelském nastavení.',
+	'config-email-wiki_usertalk' => 'Umožnit notifikace k uživatelským diskusím',
+	'config-email-wiki_usertalk-help' => 'Umožní uživatelům přijímat notifikace o změnách uživatelských diskusí, pokud si to zapnou v nastavení.',
 	'config-email-watchlist' => 'Umožnit notifikace ke sledovaným stránkám',
 	'config-email-watchlist-help' => 'Umožní uživatelům přijímat notifikace o změnách sledovaných stránek, pokud si to zapnou v nastavení.',
 	'config-email-auth' => 'Zapnout ověřování e-mailů',
@@ -3512,12 +3512,12 @@ Ujistěte se, že uživatel „$1“ může zapisovat do schématu „$2“.',
 Účet zadaný pro instalaci není superuživatelský a není členem role webového uživatele, takže nemůže zakládat objekty vlastněné webovým uživatelem.
 
 MediaWiki v současné době vyžaduje, aby byl vlastníkem tabulek webový uživatel. Uveďte jiný název účtu webového uživatele nebo klikněte na „zpět“ a zadejte instalačního uživatele s odpovídajícími oprávněními.',
-	'config-install-user' => 'Vytváří se databázový uživatel',
-	'config-install-user-alreadyexists' => 'Uživatel „$1“ už existuje',
-	'config-install-user-create-failed' => 'Vytváření uživatele „$1“ selhalo: $2',
-	'config-install-user-grant-failed' => 'Uživateli „$1“ se nepodařilo přidělit oprávnění: $2',
-	'config-install-user-missing' => 'Zadaný uživatel „$1“ neexistuje.',
-	'config-install-user-missing-create' => 'Zadaný uživatel „$1“ neexistuje.
+	'config-install-wiki_user' => 'Vytváří se databázový uživatel',
+	'config-install-wiki_user-alreadyexists' => 'Uživatel „$1“ už existuje',
+	'config-install-wiki_user-create-failed' => 'Vytváření uživatele „$1“ selhalo: $2',
+	'config-install-wiki_user-grant-failed' => 'Uživateli „$1“ se nepodařilo přidělit oprávnění: $2',
+	'config-install-wiki_user-missing' => 'Zadaný uživatel „$1“ neexistuje.',
+	'config-install-wiki_user-missing-create' => 'Zadaný uživatel „$1“ neexistuje.
 Pokud ho chcete založit, zaškrtněte možnost „založit účet“ níže.',
 	'config-install-tables' => 'Vytvářejí se tabulky',
 	'config-install-tables-exist' => "'''Upozornění''': Vypadá to, že tabulky MediaWiki již existují.
@@ -3791,11 +3791,11 @@ Sofern das Datenbankbenutzerkonto während des Installationsvorgangs erstellt we
 
 Ein Skript zum Anlegen eines Datenbankbenutzerkontos mit den notwendigen Berechtigungen findet man unter dem Pfad „…/maintenance/oracle/“ dieser MediaWiki-Installation. Es ist dabei zu bedenken, dass die Verwendung eines Datenbankbenutzerkontos mit beschränkten Berechtigungen die Nutzung der Wartungsfunktionen für das Standarddatenbankbenutzerkonto deaktiviert.',
 	'config-db-install-account' => 'Benutzerkonto für die Installation',
-	'config-db-username' => 'Name des Datenbankbenutzers:',
+	'config-db-wiki_username' => 'Name des Datenbankbenutzers:',
 	'config-db-password' => 'Passwort des Datenbankbenutzers:',
 	'config-db-password-empty' => 'Bitte ein Passwort für den neuen Datenbankbenutzer angeben: $1
 Obzwar es möglich ist Datenbankbenutzer ohne Passwort anzulegen, so ist dies aber nicht sicher.',
-	'config-db-install-username' => 'Den Benutzernamen angeben, der für die Verbindung mit der Datenbank während des Installationsvorgangs genutzt werden soll. Es handelt sich dabei nicht um den Benutzernamen für das MediaWiki-Konto, sondern um den Benutzernamen der vorgesehenen Datenbank.',
+	'config-db-install-wiki_username' => 'Den Benutzernamen angeben, der für die Verbindung mit der Datenbank während des Installationsvorgangs genutzt werden soll. Es handelt sich dabei nicht um den Benutzernamen für das MediaWiki-Konto, sondern um den Benutzernamen der vorgesehenen Datenbank.',
 	'config-db-install-password' => 'Das Passwort angeben, das für die Verbindung mit der Datenbank während des Installationsvorgangs genutzt werden soll. Es handelt sich dabei nicht um das Passwort für das MediaWiki-Konto, sondern um das Passwort der vorgesehenen Datenbank.',
 	'config-db-install-help' => 'Benutzername und Passwort, die während des Installationsvorgangs, für die Verbindung mit der Datenbank, genutzt werden sollen, sind nun anzugeben.',
 	'config-db-account-lock' => 'Derselbe Benutzername und das Passwort müssen während des Normalbetriebs des Wikis verwendet werden.',
@@ -3872,7 +3872,7 @@ Bitte unten angegebenen Servernamen, Benutzernamen sowie das Passwort überprüf
 	'config-invalid-schema' => 'Ungültiges Datenschema für MediaWiki „$1“.
 Es dürfen nur ASCII-codierte Buchstaben (a-z, A-Z), Zahlen (0-9) und Unterstriche (_) verwendet werden.',
 	'config-db-sys-create-oracle' => 'Das Installationsprogramm unterstützt nur die Verwendung eines Datenbankbenutzerkontos mit SYSDBA-Berechtigung zum Anlegen eines neuen Datenbankbenutzerkontos.',
-	'config-db-sys-user-exists-oracle' => 'Das Datenbankbenutzerkonto „$1“ ist bereits vorhanden. Ein Datenbankbenutzerkontos mit SYSDBA-Berechtigung kann nur zum Anlegen eines neuen Datenbankbenutzerkontos genutzt werden.',
+	'config-db-sys-wiki_user-exists-oracle' => 'Das Datenbankbenutzerkonto „$1“ ist bereits vorhanden. Ein Datenbankbenutzerkontos mit SYSDBA-Berechtigung kann nur zum Anlegen eines neuen Datenbankbenutzerkontos genutzt werden.',
 	'config-postgres-old' => 'PostgreSQL $1 oder höher wird benötigt. PostgreSQL $2 ist momentan vorhanden.',
 	'config-sqlite-name-help' => 'Bitten einen Namen angeben, mit dem das Wiki identifiziert werden kann.
 Dabei bitte keine Leerzeichen oder Bindestriche verwenden.
@@ -3979,7 +3979,7 @@ Bitte einen abweichenden Benutzernamen angeben.',
 	'config-admin-password-mismatch' => 'Die beiden Passwörter stimmen nicht überein.',
 	'config-admin-email' => 'E-Mail-Adresse:',
 	'config-admin-email-help' => 'Bitte hier eine E-Mail-Adresse angeben, die den E-Mail-Empfang von anderen Benutzern des Wikis, das Zurücksetzen des Passwortes sowie Benachrichtigungen zu Änderungen an beobachteten Seiten ermöglicht. Diese Feld kann leer gelassen werden.',
-	'config-admin-error-user' => 'Es ist beim Erstellen des Administrators mit dem Namen „<nowiki>$1</nowiki>“ ein interner Fehler aufgetreten.',
+	'config-admin-error-wiki_user' => 'Es ist beim Erstellen des Administrators mit dem Namen „<nowiki>$1</nowiki>“ ein interner Fehler aufgetreten.',
 	'config-admin-error-password' => 'Es ist beim Setzen des Passworts für den Administrator „<nowiki>$1</nowiki>“ ein interner Fehler aufgetreten: <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Es wurde eine ungültige E-Mail-Adresse angegeben',
 	'config-subscribe' => 'Bitte die Mailingliste [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mitteilungen zu Versionsveröffentlichungen] abonnieren.',
@@ -4004,7 +4004,7 @@ Allerdings finden etliche Menschen Wikis auch mit anderen Bearbeitungskonzepten 
 Ein '''{{int:config-profile-wiki}}''' ermöglicht es jedermann, sogar ohne über ein Benutzerkonto zu verfügen, Bearbeitungen vorzunehmen.
 Ein Wiki bei dem die '''{{int:config-profile-no-anon}}''' ist, fordert von den Benutzern eine höhere Verantwortung für ihre Bearbeitungen ein, könnte allerdings Personen abschrecken, die nur gelegentlich Bearbeitungen vornehmen wollen. Ein Wiki für '''{{int:config-profile-fishbowl}}''' gestattet es nur bestimmten Benutzern, Bearbeitungen vorzunehmen. Allerdings kann dabei die Allgemeinheit die Seiten immer noch betrachten und Änderungen nachvollziehen. Ein '''{{int:config-profile-private}}''' gestattet es nur ausgewählten Benutzern, Seiten zu betrachten sowie zu bearbeiten.
 
-Komplexere Konzepte zur Zugriffssteuerung können erst nach abgeschlossenem Installationsvorgang eingerichtet werden. Hierzu gibt es weitere Informationen auf der Website mit der [//www.mediawiki.org/wiki/Manual:User_rights entsprechenden Anleitung].",
+Komplexere Konzepte zur Zugriffssteuerung können erst nach abgeschlossenem Installationsvorgang eingerichtet werden. Hierzu gibt es weitere Informationen auf der Website mit der [//www.mediawiki.org/wiki/Manual:wiki_user_rights entsprechenden Anleitung].",
 	'config-license' => 'Lizenz:',
 	'config-license-none' => 'Keine Lizenzangabe in der Fußzeile',
 	'config-license-cc-by-sa' => 'Creative Commons „Namensnennung, Weitergabe unter gleichen Bedingungen“',
@@ -4027,10 +4027,10 @@ Es ist zudem schwierig gemäß dieser Lizenz lizenzierte Inhalten wiederzuverwen
 	'config-enable-email' => 'Ausgehende E-Mails ermöglichen',
 	'config-enable-email-help' => 'Sofern die E-Mail-Funktionen genutzt werden sollen, müssen die entsprechenden [http://www.php.net/manual/en/mail.configuration.php PHP-E-Mail-Einstellungen] richtig konfiguriert werden.
 Für den Fall, dass die E-Mail-Funktionen nicht benötigt werden, können sie hier deaktiviert werden.',
-	'config-email-user' => 'E-Mail-Versand von Benutzer zu Benutzer aktivieren',
-	'config-email-user-help' => 'Allen Benutzern ermöglichen, sich gegenseitig E-Mails zu schicken, sofern sie es in ihren Einstellungen aktiviert haben.',
-	'config-email-usertalk' => 'Benachrichtigungen zu Änderungen an Benutzerdiskussionsseiten ermöglichen',
-	'config-email-usertalk-help' => 'Ermöglicht es Benutzern, Benachrichtigungen zu Änderungen an ihren Benutzerdiskussionsseiten zu erhalten, sofern sie dies in ihren Einstellungen aktiviert haben.',
+	'config-email-wiki_user' => 'E-Mail-Versand von Benutzer zu Benutzer aktivieren',
+	'config-email-wiki_user-help' => 'Allen Benutzern ermöglichen, sich gegenseitig E-Mails zu schicken, sofern sie es in ihren Einstellungen aktiviert haben.',
+	'config-email-wiki_usertalk' => 'Benachrichtigungen zu Änderungen an Benutzerdiskussionsseiten ermöglichen',
+	'config-email-wiki_usertalk-help' => 'Ermöglicht es Benutzern, Benachrichtigungen zu Änderungen an ihren Benutzerdiskussionsseiten zu erhalten, sofern sie dies in ihren Einstellungen aktiviert haben.',
 	'config-email-watchlist' => 'Benachrichtigungen zu Änderungen an Seiten auf der Beobachtungsliste ermöglichen',
 	'config-email-watchlist-help' => 'Ermöglicht es Benutzern, Benachrichtigungen zu Änderungen an Seiten auf ihrer Beobachtungsliste zu erhalten, sofern sie dies in ihren Einstellungen aktiviert haben.',
 	'config-email-auth' => 'E-Mail-Authentifizierung ermöglichen',
@@ -4106,12 +4106,12 @@ Es muss sichergestellt sein, dass der Benutzer „$1“ Schreibzugriff auf das D
 Das für den Installationsvorgang angegebene Benutzerkonto ist kein Superbenutzer und nicht Mitglied der Benutzergruppe der Webbenutzer, so dass keine dem Webbenutzer zugeordneten Datenobjekte erstellt werden können.
 
 Für MediaWiki ist es momentan erforderlich, dass die Tabellen dem Webbenutzer rechtemäßig zugeordnet sind. Bitte einen anderen Namen für den Wikibenutzer angeben oder „← Zurück“ anklicken, um einen ausreichend berechtigten Benutzer für den Installationsvorgang anzugeben.',
-	'config-install-user' => 'Datenbankbenutzer wird erstellt',
-	'config-install-user-alreadyexists' => 'Datenbankbenutzer „$1“ ist bereits vorhanden',
-	'config-install-user-create-failed' => 'Das Anlegen des Datenbankbenutzers „$1“ ist gescheitert: $2',
-	'config-install-user-grant-failed' => 'Die Gewährung der Berechtigung für Datenbankbenutzer „$1“ ist gescheitert: $2',
-	'config-install-user-missing' => 'Der angegebene Benutzer „$1“ ist nicht vorhanden.',
-	'config-install-user-missing-create' => 'Der angegebene Benutzer „$1“ ist nicht vorhanden.
+	'config-install-wiki_user' => 'Datenbankbenutzer wird erstellt',
+	'config-install-wiki_user-alreadyexists' => 'Datenbankbenutzer „$1“ ist bereits vorhanden',
+	'config-install-wiki_user-create-failed' => 'Das Anlegen des Datenbankbenutzers „$1“ ist gescheitert: $2',
+	'config-install-wiki_user-grant-failed' => 'Die Gewährung der Berechtigung für Datenbankbenutzer „$1“ ist gescheitert: $2',
+	'config-install-wiki_user-missing' => 'Der angegebene Benutzer „$1“ ist nicht vorhanden.',
+	'config-install-wiki_user-missing-create' => 'Der angegebene Benutzer „$1“ ist nicht vorhanden.
 Bitte das Auswahlkästchen „Benutzerkonto erstellen“ anklicken, sofern dieser erstellt werden soll.',
 	'config-install-tables' => 'Datentabellen werden erstellt',
 	'config-install-tables-exist' => "'''Warnung:''' Es wurden MediaWiki-Datentabellen gefunden.
@@ -4188,7 +4188,7 @@ $messages['diq'] = array(
 	'config-page-readme' => 'Mı bıwane',
 	'config-restart' => 'E, fına dest pekê',
 	'config-sidebar' => "* [//www.mediawiki.org MediaWiki keye]
-* [//www.mediawiki.org/wiki/Help:Contents User's Şınasiye]
+* [//www.mediawiki.org/wiki/Help:Contents wiki_user's Şınasiye]
 * [//www.mediawiki.org/wiki/Manual:Contents Xizmetkara şınasiye]
 * [//www.mediawiki.org/wiki/Manual:FAQ Peşti]
 ----
@@ -4233,7 +4233,7 @@ $messages['diq'] = array(
  */
 $messages['dsb'] = array(
 	'mainpagetext' => "'''MediaWiki jo se wuspěšnje instalěrowało.'''",
-	'mainpagedocfooter' => "Pomoc pśi wužywanju softwary wiki namakajoš pód [//meta.wikimedia.org/wiki/Help:Contents User's Guide].
+	'mainpagedocfooter' => "Pomoc pśi wužywanju softwary wiki namakajoš pód [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide].
 
 == Na zachopjenje ==
 
@@ -4259,7 +4259,7 @@ $messages['dtp'] = array(
  */
 $messages['el'] = array(
 	'mainpagetext' => "'''To λογισμικό MediaWiki εγκαταστάθηκε με επιτυχία.'''",
-	'mainpagedocfooter' => 'Περισσότερες πληροφορίες σχετικά με τη χρήση και με τη ρύθμιση παραμέτρων θα βρείτε στους συνδέσμους: [//meta.wikimedia.org/wiki/MediaWiki_localisation Οδηγίες για τροποποίηση του περιβάλλοντος εργασίας] και [//meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Εγχειρίδιο χρήστη].',
+	'mainpagedocfooter' => 'Περισσότερες πληροφορίες σχετικά με τη χρήση και με τη ρύθμιση παραμέτρων θα βρείτε στους συνδέσμους: [//meta.wikimedia.org/wiki/MediaWiki_localisation Οδηγίες για τροποποίηση του περιβάλλοντος εργασίας] και [//meta.wikimedia.org/wiki/MediaWiki_wiki_user%27s_Guide Εγχειρίδιο χρήστη].',
 );
 
 /** Esperanto (Esperanto)
@@ -4278,7 +4278,7 @@ $messages['eo'] = array(
 	'config-page-install' => 'Instali',
 	'config-page-complete' => 'Farita!',
 	'mainpagetext' => "'''MediaWiki estis sukcese instalita.'''",
-	'mainpagedocfooter' => "Konsultu la [//meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] por informo pri uzado de vikia programaro.
+	'mainpagedocfooter' => "Konsultu la [//meta.wikimedia.org/wiki/MediaWiki_wiki_user%27s_Guide wiki_user's Guide] por informo pri uzado de vikia programaro.
 
 ==Kiel komenci==
 
@@ -4471,11 +4471,11 @@ Si desea crear una cuenta de base de datos como parte del proceso de instalació
 
 La secuencia de comandos (script) para crear una cuenta con los privilegios necesarios puede encontrarse en el directorio "maintenance/oracle/" de esta instalación. Tenga en cuenta que utilizando una cuenta restringida desactivará todas las capacidades de mantenimiento con la cuenta predeterminada.',
 	'config-db-install-account' => 'Cuenta de usuario para instalación',
-	'config-db-username' => 'Nombre de usuario de base de datos:',
+	'config-db-wiki_username' => 'Nombre de usuario de base de datos:',
 	'config-db-password' => 'contraseña de base de datos:',
 	'config-db-password-empty' => 'Introduzca una contraseña para el nuevo usuario de base de datos:  $1.
 Aunque es posible crear usuarios sin contraseña, esto no es seguro.',
-	'config-db-install-username' => 'Introduzca el nombre de usuario que se utilizará para conectarse a la base de datos durante el proceso de instalación.
+	'config-db-install-wiki_username' => 'Introduzca el nombre de usuario que se utilizará para conectarse a la base de datos durante el proceso de instalación.
 Este no es el nombre de usuario de la cuenta de MediaWiki; Este es el nombre de usuario para la base de datos.',
 	'config-db-install-password' => 'Introduzca la contraseña que se utilizará para conectarse a la base de datos durante el proceso de instalación.
 Esta no es la contraseña para la cuenta de MediaWiki; esta es la contraseña para la base de datos.',
@@ -4553,7 +4553,7 @@ Verifique el servidor, el nombre de usuario y la contraseña, e intente de nuevo
 	'config-invalid-schema' => 'El esquema de la base de datos "$1"  es inválido.
 Use sólo carateres ASCII: letras (a-z, A-Z), guarismos (0-9) y guiones bajos (_).',
 	'config-db-sys-create-oracle' => 'El instalador sólo admite el empleo de cuentas SYSDBA como método para crear una cuenta nueva.',
-	'config-db-sys-user-exists-oracle' => 'La cuenta de usuario "$1" ya existe. ¡SYSDBA sólo puede utilizarse para crear una nueva cuenta!',
+	'config-db-sys-wiki_user-exists-oracle' => 'La cuenta de usuario "$1" ya existe. ¡SYSDBA sólo puede utilizarse para crear una nueva cuenta!',
 	'config-postgres-old' => 'Se necesita PostgreSQL $1 o una versión más reciente; tienes la versión $2.',
 	'config-sqlite-name-help' => 'Elige el nombre que identificará tu wiki.
 No uses espacios o guiones.
@@ -4659,7 +4659,7 @@ Especifique un nombre de usuario diferente.',
 	'config-admin-password-mismatch' => 'Las dos contraseñas que ingresaste no coinciden.',
 	'config-admin-email' => 'Dirección de correo electrónico:',
 	'config-admin-email-help' => 'Introduce aquí un correo electrónico que te permita recibir mensajes de otros usuarios del wiki, vuelve a configurar tu contraseña y recibe notificaciones de cambios realizados a tus páginas vigiladas. Puedes dejar este campo vacío.',
-	'config-admin-error-user' => 'Error interno al crear un administrador con el nombre "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Error interno al crear un administrador con el nombre "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Error interno al establecer una contraseña para el administrador " <nowiki>$1</nowiki> ": <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Ha introducido una dirección de correo electrónico inválida.',
 	'config-subscribe' => 'Suscribirse para recibir [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce avisos de nuevas versiones].',
@@ -4687,7 +4687,7 @@ Un wiki con '''{{int:config-profile-no-anon}}''' ofrece rendición de cuentas ad
 El escenario '''{{int:config-profile-fishbowl}}''' permite editar a los usuarios autorizados, pero el público puede ver las páginas, incluyendo el historial.
 Un '''{{int:config-profile-private}}''' sólo permite ver páginas a los usuarios autorizados, el mismo grupo al que le está permitido editar.
 
-Configuraciones más complejas de derechos de usuario están disponibles después de la instalación, consulte [//www.mediawiki.org/wiki/Manual:User_rights esta entrada en el manual].",
+Configuraciones más complejas de derechos de usuario están disponibles después de la instalación, consulte [//www.mediawiki.org/wiki/Manual:wiki_user_rights esta entrada en el manual].",
 	'config-license' => 'Copyright and licencia:',
 	'config-license-none' => 'Pie sin licencia',
 	'config-license-cc-by-sa' => 'Creative Commons Reconocimiento Compartir Igual',
@@ -4710,10 +4710,10 @@ También es difícil reutilizar el contenido licenciado bajo la GFDL.",
 	'config-enable-email' => 'Activar el envío de correos electrónicos',
 	'config-enable-email-help' => 'Si quieres que el correo electrónico funcione, la [http://www.php.net/manual/en/mail.configuration.php configuración PHP de correo electrónico] debe ser la correcta.
 Si no quieres la funcionalidad de correo electrónico, puedes desactivarla aquí.',
-	'config-email-user' => 'Habilitar correo electrónico de usuario a usuario',
-	'config-email-user-help' => 'Permitir que todos los usuarios intercambien correos electrónicos si lo han activado en sus preferencias.',
-	'config-email-usertalk' => 'Activar notificaciones de páginas de discusión de usuarios',
-	'config-email-usertalk-help' => 'Permitir a los usuarios recibir notificaciones de cambios en la página de discusión de usuario, si lo han activado en sus preferencias.',
+	'config-email-wiki_user' => 'Habilitar correo electrónico de usuario a usuario',
+	'config-email-wiki_user-help' => 'Permitir que todos los usuarios intercambien correos electrónicos si lo han activado en sus preferencias.',
+	'config-email-wiki_usertalk' => 'Activar notificaciones de páginas de discusión de usuarios',
+	'config-email-wiki_usertalk-help' => 'Permitir a los usuarios recibir notificaciones de cambios en la página de discusión de usuario, si lo han activado en sus preferencias.',
 	'config-email-watchlist' => 'Activar notificación de alteraciones a la páginas vigiladas',
 	'config-email-watchlist-help' => 'Permitir a los usuarios recibir notificaciones de cambios en la páginas que vigilan, si lo han activado en sus preferencias.',
 	'config-email-auth' => 'Activar autenticación del correo electrónico',
@@ -4789,12 +4789,12 @@ Asegúrate de que el usuario "$1" puede escribir en el esquema "$2".',
 La cuenta especificada para la instalación no es de un superusuario y no es miembro del grupo de usuarios con acceso a la web, por lo que es incapaz de crear objetos pertenecientes al usuario web.
 
 MediaWiki requiere actualmente que las tablas sean propiedad del usuario web. Especifique otro nombre de cuenta web, o haga clic en "atrás" y especifique un usuario de instalación con los privilegios convenientes.',
-	'config-install-user' => 'Creando el usuario de la base de datos',
-	'config-install-user-alreadyexists' => 'El usuario "$1" ya existe',
-	'config-install-user-create-failed' => 'La creación del usuario "$1" falló:  $2',
-	'config-install-user-grant-failed' => 'La concesión de permisos para el usuario "$1" ha fallado: $2',
-	'config-install-user-missing' => 'El usuario especificado "$1" no existe.',
-	'config-install-user-missing-create' => 'El usuario especificado "$1" no existe.
+	'config-install-wiki_user' => 'Creando el usuario de la base de datos',
+	'config-install-wiki_user-alreadyexists' => 'El usuario "$1" ya existe',
+	'config-install-wiki_user-create-failed' => 'La creación del usuario "$1" falló:  $2',
+	'config-install-wiki_user-grant-failed' => 'La concesión de permisos para el usuario "$1" ha fallado: $2',
+	'config-install-wiki_user-missing' => 'El usuario especificado "$1" no existe.',
+	'config-install-wiki_user-missing-create' => 'El usuario especificado "$1" no existe.
 Por favor, haga clic en la casilla "Crear cuenta" que aparece a continuación si desea crearlo.',
 	'config-install-tables' => 'Creando tablas',
 	'config-install-tables-exist' => "'''Advertencia''': Al parecer, las tablas de MediaWiki ya existen. Saltándose su creación.",
@@ -4863,7 +4863,7 @@ $messages['et'] = array(
 	'config-page-install' => 'Paigaldamine',
 	'config-page-complete' => 'Valmis!',
 	'config-db-name' => 'Andmebaasi nimi:',
-	'config-db-username' => 'Andmebaasi kasutajanimi:',
+	'config-db-wiki_username' => 'Andmebaasi kasutajanimi:',
 	'config-db-password' => 'Andmebaasi parool:',
 	'config-admin-email' => 'E-posti aadress:',
 	'config-optional-continue' => 'Küsi minult veel küsimusi.',
@@ -4871,7 +4871,7 @@ $messages['et'] = array(
 	'config-install-step-failed' => 'ebaõnnestus',
 	'mainpagetext' => "'''MediaWiki tarkvara on edukalt paigaldatud.'''",
 	'mainpagedocfooter' => 'Juhiste saamiseks kasutamise ning konfigureerimise kohta vaata palun inglisekeelset [//meta.wikimedia.org/wiki/MediaWiki_localisation dokumentatsiooni liidese kohaldamisest]
-ning [//meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].',
+ning [//meta.wikimedia.org/wiki/MediaWiki_wiki_user%27s_Guide kasutusjuhendit].',
 );
 
 /** Basque (euskara)
@@ -4918,7 +4918,7 @@ $messages['eu'] = array(
 	'config-db-type' => 'Datu-base mota:',
 	'config-db-wiki-settings' => 'Wiki hau identifikatu',
 	'config-db-name' => 'Datu-base izena:',
-	'config-db-username' => 'Datu-base lankide izena:',
+	'config-db-wiki_username' => 'Datu-base lankide izena:',
 	'config-db-password' => 'Datu-base pasahitza:',
 	'config-charset-mysql5-binary' => 'MySQL 4.1/5.0 bitarra',
 	'config-charset-mysql5' => 'MySQL 4.1/5.0 UTF-8',
@@ -4967,7 +4967,7 @@ $messages['eu'] = array(
  */
 $messages['ext'] = array(
 	'mainpagetext' => "'''MeyaGüiqui s'á istalau satihatoriamenti.'''",
-	'mainpagedocfooter' => "Consurta la [//meta.wikimedia.org/wiki/Help:Contents User's Guide] pa sabel mas al tentu el huncionamientu el software güiqui.
+	'mainpagedocfooter' => "Consurta la [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] pa sabel mas al tentu el huncionamientu el software güiqui.
 
 == Esminciandu ==
 
@@ -5011,7 +5011,7 @@ $messages['fa'] = array(
 در هر صورت، مدیاویکی نیاز به پی‌اچ‌پی نسخهٔ $2 یا بالاتر دارد.',
 	'config-db-type' => 'نوع پایگاه اطلاعات:',
 	'config-db-host' => 'میزبان پایگاه اطلاعات:',
-	'config-db-username' => 'نام کاربری پایگاه اطلاعات:',
+	'config-db-wiki_username' => 'نام کاربری پایگاه اطلاعات:',
 	'config-db-password' => 'کلمه عبور پایگاه اطلاعات:',
 	'config-header-mysql' => 'تنظیمات مای‌اس‌کیو‌ال',
 	'config-connection-error' => '$1.
@@ -5131,7 +5131,7 @@ Asennus saattaa epäonnistua!",
 	'config-db-type' => 'Tietokannan tyyppi',
 	'config-db-host' => 'Tietokantapalvelin',
 	'config-db-name' => 'Tietokannan nimi',
-	'config-db-username' => 'Tietokannan käyttäjätunnus',
+	'config-db-wiki_username' => 'Tietokannan käyttäjätunnus',
 	'config-db-password' => 'Tietokannan salasana',
 	'config-db-install-help' => 'Anna käyttäjätunnus ja salasana, joita käytetään asennuksen aikana.',
 	'config-db-account-lock' => 'Käytä samaa tunnusta ja salasanaa myös asennuksen jälkeen',
@@ -5206,12 +5206,12 @@ Voit ohittaa jäljellä olevat määritykset ja asentaa wikin juuri nyt.',
 	'config-extensions' => 'Laajennukset',
 	'config-install-step-done' => 'valmis',
 	'config-install-step-failed' => 'epäonnistui',
-	'config-install-user-alreadyexists' => 'Käyttäjä $1 on jo olemassa',
+	'config-install-wiki_user-alreadyexists' => 'Käyttäjä $1 on jo olemassa',
 	'config-install-interwiki-list' => 'Tiedostoa <code>interwiki.list</code> ei voitu lukea.',
 	'config-download-localsettings' => 'Lataa LocalSettings.php',
 	'config-help' => 'ohje',
 	'mainpagetext' => "'''MediaWiki on onnistuneesti asennettu.'''",
-	'mainpagedocfooter' => "Lisätietoja käytöstä on sivulla [//meta.wikimedia.org/wiki/Help:Contents User's Guide].
+	'mainpagedocfooter' => "Lisätietoja käytöstä on sivulla [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide].
 
 === Lisäohjeita ===
 
@@ -5364,7 +5364,7 @@ Vous ne pouvez pas installer ou utiliser MediaWiki tant que cette option est act
 Cette option provoque des bugs horribles avec MediaWiki.
 Vous ne pouvez pas installer ou utiliser MediaWiki tant que cette option est activée.",
 	'config-safe-mode' => "'''Attention : le « [http://www.php.net/features.safe-mode safe mode] » est activé !'''
-Ceci peut causer des problèmes, en particulier si vous utilisez le téléversement de fichiers et le support de <code>math</code>.",
+Ceci peut cawiki_user des problèmes, en particulier si vous utilisez le téléversement de fichiers et le support de <code>math</code>.",
 	'config-xml-bad' => 'Le module XML de PHP est manquant.
 MediaWiki requiert des fonctions de ce module et ne fonctionnera pas avec cette configuration.
 Si vous êtes sous Mandrake, installez le paquet php-xml.',
@@ -5430,11 +5430,11 @@ Si vous souhaitez créer un compte de base de données dans le cadre de la proc�
 
 Un script pour créer un compte avec des privilèges requis peut être trouvé dans le répertoire « entretien/oracle/ » de cette installation. N’oubliez pas que le fait de l’utilisation d’un compte limité désactive toutes les fonctionnalités d’entretien avec le compte par défaut.",
 	'config-db-install-account' => "Compte d'utilisateur pour l'installation",
-	'config-db-username' => 'Nom d’utilisateur de la base de données :',
+	'config-db-wiki_username' => 'Nom d’utilisateur de la base de données :',
 	'config-db-password' => 'Mot de passe de la base de données :',
 	'config-db-password-empty' => "Veuillez entrer un mot de passe pour le nouvel compte de la base de données : $1.
 Bien qu'il soit possible de créer un compte sans mot de passe, ce n'est pas recommandé pour des questions de sécurité.",
-	'config-db-install-username' => "Entrez le nom d’utilisateur qui sera utilisé pour se connecter à la base de données pendant le processus d'installation. Il ne s’agit pas du nom d’utilisateur du compte MediaWiki, mais du nom d’utilisateur pour votre base de données.",
+	'config-db-install-wiki_username' => "Entrez le nom d’utilisateur qui sera utilisé pour se connecter à la base de données pendant le processus d'installation. Il ne s’agit pas du nom d’utilisateur du compte MediaWiki, mais du nom d’utilisateur pour votre base de données.",
 	'config-db-install-password' => "Entrez le mot de passe qui sera utilisé pour se connecter à la base de données pendant le processus d'installation. Il ne s’agit pas du mot de passe du compte MediaWiki, mais du mot de passe pour votre base de données.",
 	'config-db-install-help' => "Entrez le nom d'utilisateur et le mot de passe qui seront utilisés pour se connecter à la base de données pendant le processus d'installation.",
 	'config-db-account-lock' => "Utiliser le même nom d'utilisateur et le même mot de passe pendant le fonctionnement habituel",
@@ -5509,7 +5509,7 @@ Vérifier le nom d’hôte, le nom d’utilisateur et le mot de passe ci-dessous
 	'config-invalid-schema' => 'Schéma invalide pour MediaWiki « $1 ».
 Utilisez seulement des lettres latines (a-z, A-Z), des chiffres (0-9) et des caractères de soulignement (_).',
 	'config-db-sys-create-oracle' => "L'installateur ne reconnaît que les compte SYSDBA lors de la création d'un nouveau compte.",
-	'config-db-sys-user-exists-oracle' => 'Le compte « $1 » existe déjà. Un SYSDBA peut seulement servir à créer un nouveau compte.',
+	'config-db-sys-wiki_user-exists-oracle' => 'Le compte « $1 » existe déjà. Un SYSDBA peut seulement servir à créer un nouveau compte.',
 	'config-postgres-old' => 'PostgreSQL $1 ou version ultérieure est requis, vous avez $2.',
 	'config-sqlite-name-help' => "Choisir un nom qui identifie votre wiki.
 Ne pas utiliser des espaces ou des traits d'union.
@@ -5611,7 +5611,7 @@ Indiquez un nom d'utilisateur différent.",
 	'config-admin-password-mismatch' => 'Les deux mots de passe que vous avez saisis ne correspondent pas.',
 	'config-admin-email' => 'Adresse de courriel :',
 	'config-admin-email-help' => "Entrez une adresse de courriel ici pour vous permettre de recevoir des courriels d'autres utilisateurs du wiki, réinitialiser votre mot de passe, et être informé des modifications apportées aux pages de votre liste de suivi. Vous pouvez laisser ce champ vide.",
-	'config-admin-error-user' => "Erreur interne lors de la création d'un administrateur avec le nom « <nowiki>$1</nowiki> ».",
+	'config-admin-error-wiki_user' => "Erreur interne lors de la création d'un administrateur avec le nom « <nowiki>$1</nowiki> ».",
 	'config-admin-error-password' => "Erreur interne lors de l'inscription d'un mot de passe pour l'administrateur « <nowiki>$1</nowiki> » : <pre>$2</pre>",
 	'config-admin-error-bademail' => 'Vous avez entré une adresse de courriel invalide',
 	'config-subscribe' => "Abonnez-vous à la [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce liste d'annonce des nouvelles versions] (la page peut afficher le texte en français).",
@@ -5639,7 +5639,7 @@ Vous avez donc le choix.
 '''{{int:config-profile-fishbowl}}''' autorise la modification par les utilisateurs approuvés, mais le public peut toujours lire les pages et leur historique.
 '''{{int:config-profile-private}}''' n’autorise que les utilisateurs approuvés à voir et modifier les pages.
 
-Des configurations de droits d’utilisateurs plus complexes sont disponibles après l'installation, voir la [//www.mediawiki.org/wiki/Manual:User_rights page correspondante du manuel].",
+Des configurations de droits d’utilisateurs plus complexes sont disponibles après l'installation, voir la [//www.mediawiki.org/wiki/Manual:wiki_user_rights page correspondante du manuel].",
 	'config-license' => "Droits d'auteur et licence :",
 	'config-license-none' => 'Aucune licence en bas de page',
 	'config-license-cc-by-sa' => "Creative Commons attribution partage à l'identique",
@@ -5661,10 +5661,10 @@ C'est une licence valide, mais elle est difficile à comprendre. De plus, elle p
 	'config-enable-email' => 'Activer les courriels sortants',
 	'config-enable-email-help' => 'Si vous souhaitez utiliser le courriel, vous devez [http://www.php.net/manual/en/mail.configuration.php configurer des paramètres PHP] (texte en anglais).
 Si vous ne voulez pas du service de courriel, vous pouvez le désactiver ici.',
-	'config-email-user' => "Activer les courriers électroniques d'utilisateur à utilisateur",
-	'config-email-user-help' => "Permet à tous les utilisateurs d'envoyer des courriels à d'autres utilisateurs si cela est activé dans leurs préférences.",
-	'config-email-usertalk' => 'Activer la notification des pages de discussion des utilisateurs',
-	'config-email-usertalk-help' => 'Permet aux utilisateurs de recevoir une notification en cas de modification de leurs pages de discussion, si cela est activé dans leurs préférences.',
+	'config-email-wiki_user' => "Activer les courriers électroniques d'utilisateur à utilisateur",
+	'config-email-wiki_user-help' => "Permet à tous les utilisateurs d'envoyer des courriels à d'autres utilisateurs si cela est activé dans leurs préférences.",
+	'config-email-wiki_usertalk' => 'Activer la notification des pages de discussion des utilisateurs',
+	'config-email-wiki_usertalk-help' => 'Permet aux utilisateurs de recevoir une notification en cas de modification de leurs pages de discussion, si cela est activé dans leurs préférences.',
 	'config-email-watchlist' => 'Activer la notification de la liste de suivi',
 	'config-email-watchlist-help' => "Permet aux utilisateurs de recevoir des notifications à propos des pages qu'ils ont en suivi (si cette préférence est activée).",
 	'config-email-auth' => "Activer l'authentification par courriel",
@@ -5740,12 +5740,12 @@ Assurez-vous que l'utilisateur « $1 » peut écrire selon le schéma « $2 »."
 Le compte que vous avez spécifié pour l'installation n'est pas un super-utilisateur et n'est pas membre du rôle de l'internaute, il est donc incapable de créer des objets appartenant à l'utilisateur web.!
 
 MediaWiki exige actuellement que les tableaux soient possédés par un utilisateur web. S'il vous plaît, spécifier un autre nom de compte web, ou cliquez sur \"retour\" et spécifier un utilisateur avec les privilèges suffisants.",
-	'config-install-user' => "Création d'un utilisateur de la base de données",
-	'config-install-user-alreadyexists' => "L'utilisateur « $1 » existe déjà.",
-	'config-install-user-create-failed' => "Échec lors de la création de l'utilisateur « $1 » : $2",
-	'config-install-user-grant-failed' => "Échec lors de l'ajout de permissions à l'utilisateur « $1 » : $2",
-	'config-install-user-missing' => 'L\'utilisateur "$1" n\'existe pas.',
-	'config-install-user-missing-create' => 'L\'utilisateur "$1" n\'existe pas !
+	'config-install-wiki_user' => "Création d'un utilisateur de la base de données",
+	'config-install-wiki_user-alreadyexists' => "L'utilisateur « $1 » existe déjà.",
+	'config-install-wiki_user-create-failed' => "Échec lors de la création de l'utilisateur « $1 » : $2",
+	'config-install-wiki_user-grant-failed' => "Échec lors de l'ajout de permissions à l'utilisateur « $1 » : $2",
+	'config-install-wiki_user-missing' => 'L\'utilisateur "$1" n\'existe pas.',
+	'config-install-wiki_user-missing-create' => 'L\'utilisateur "$1" n\'existe pas !
 S\'il vous plaît, cocher "Compte de créer" dans la case ci-dessous si vous voulez le créer.',
 	'config-install-tables' => 'Création des tables',
 	'config-install-tables-exist' => "'''Avertissement:''' Les tables MediaWiki semblent déjà exister.
@@ -5792,7 +5792,7 @@ Lorsque c'est fait, vous pouvez '''[$2 accéder à votre wiki]'''.",
  */
 $messages['frc'] = array(
 	'mainpagetext' => "'''Vous avez bien installé MediaWiki.'''",
-	'mainpagedocfooter' => 'Lisez la [//meta.wikimedia.org/wiki/Help:Contents Guide des Useurs] pour apprendre à user le wiki software.
+	'mainpagedocfooter' => 'Lisez la [//meta.wikimedia.org/wiki/Help:Contents Guide des Useurs] pour apprendre à wiki_user le wiki software.
 
 == Pour Commencer ==
 
@@ -5844,7 +5844,7 @@ Portant, MediaWiki at fôta de PHP $2 ou ben ples hôt.',
 	'config-db-name' => 'Nom de la bâsa de balyês :',
 	'config-db-name-oracle' => 'Plan de bâsa de balyês :',
 	'config-db-install-account' => 'Compto usanciér por l’enstalacion',
-	'config-db-username' => 'Nom d’usanciér de la bâsa de balyês :',
+	'config-db-wiki_username' => 'Nom d’usanciér de la bâsa de balyês :',
 	'config-db-password' => 'Contresegno de la bâsa de balyês :',
 	'config-db-wiki-account' => 'Compto usanciér por l’opèracion normala',
 	'config-db-prefix' => 'Prèfixo de les trâbles de la bâsa de balyês :',
@@ -5912,8 +5912,8 @@ Portant, MediaWiki at fôta de PHP $2 ou ben ples hôt.',
 	'config-license-cc-choose' => 'Chouèsir una licence Creative Commons pèrsonalisâ',
 	'config-email-settings' => 'Paramètres de mèssageria èlèctronica',
 	'config-enable-email' => 'Activar los mèssâjos que sôrtont',
-	'config-email-user' => 'Activar los mèssâjos d’usanciér a usanciér',
-	'config-email-usertalk' => 'Activar la notificacion de les pâges de discussion ux usanciérs',
+	'config-email-wiki_user' => 'Activar los mèssâjos d’usanciér a usanciér',
+	'config-email-wiki_usertalk' => 'Activar la notificacion de les pâges de discussion ux usanciérs',
 	'config-email-watchlist' => 'Activar la notificacion de la lista de survelyence',
 	'config-email-auth' => 'Activar l’ôtenticacion per mèssageria èlèctronica',
 	'config-email-sender' => 'Adrèce èlèctronica de retôrn :',
@@ -5936,10 +5936,10 @@ Portant, MediaWiki at fôta de PHP $2 ou ben ples hôt.',
 	'config-install-pg-schema-not-exist' => 'Lo plan PostgreSQL ègziste pas',
 	'config-install-pg-commit' => 'Validacion des changements',
 	'config-install-pg-plpgsql' => 'Contrôlo du lengâjo PL/pgSQL',
-	'config-install-user' => 'Crèacion d’un usanciér de la bâsa de balyês',
-	'config-install-user-alreadyexists' => 'L’usanciér « $1 » ègziste ja',
-	'config-install-user-create-failed' => 'Falyita pendent la crèacion de l’usanciér « $1 » : $2',
-	'config-install-user-grant-failed' => 'Falyita pendent l’aponsa de pèrmissions a l’usanciér « $1 » : $2',
+	'config-install-wiki_user' => 'Crèacion d’un usanciér de la bâsa de balyês',
+	'config-install-wiki_user-alreadyexists' => 'L’usanciér « $1 » ègziste ja',
+	'config-install-wiki_user-create-failed' => 'Falyita pendent la crèacion de l’usanciér « $1 » : $2',
+	'config-install-wiki_user-grant-failed' => 'Falyita pendent l’aponsa de pèrmissions a l’usanciér « $1 » : $2',
 	'config-install-tables' => 'Crèacion de les trâbles',
 	'config-install-interwiki' => 'Remplissâjo per dèfôt de la trâbla des entèrvouiquis',
 	'config-install-interwiki-list' => 'Empossiblo de trovar lo fichiér <code>interwiki.list</code>.',
@@ -6005,14 +6005,14 @@ $messages['ga'] = array(
 	'config-help' => 'Cuidiú',
 	'mainpagetext' => "'''D'éirigh le suiteáil MediaWiki.'''",
 	'mainpagedocfooter' => 'Féach ar [//meta.wikimedia.org/wiki/MediaWiki_localisation doiciméid um conas an chomhéadán a athrú]
-agus an [//meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar úsáideora] chun cabhair úsáide agus fíoraíochta a fháil.',
+agus an [//meta.wikimedia.org/wiki/MediaWiki_wiki_user%27s_Guide Lámhleabhar úsáideora] chun cabhair úsáide agus fíoraíochta a fháil.',
 );
 
 /** Gagauz (Gagauz)
  */
 $messages['gag'] = array(
 	'mainpagetext' => "'''MediaWiki başarılan kuruldu.'''",
-	'mainpagedocfooter' => "Vikilän iş uurunda bilgi almaa için [//meta.wikimedia.org/wiki/Help:Contents User's Guide] sayfasına bakınız
+	'mainpagedocfooter' => "Vikilän iş uurunda bilgi almaa için [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] sayfasına bakınız
 
 == Eni başlayanlar için ==
 
@@ -6240,11 +6240,11 @@ Se quere crear unha conta para a base de datos como parte do proceso de instalac
 
 A escritura para crear unha conta cos privilexios necesarios atópase no directorio "maintenance/oracle/" desta instalación. Teña en conta que o emprego de contas restrinxidas desactivará todas as operacións de mantemento da conta predeterminada.',
 	'config-db-install-account' => 'Conta de usuario para a instalación',
-	'config-db-username' => 'Nome de usuario da base de datos:',
+	'config-db-wiki_username' => 'Nome de usuario da base de datos:',
 	'config-db-password' => 'Contrasinal da base de datos:',
 	'config-db-password-empty' => 'Introduza un contrasinal para o novo usuario da base de datos: $1.
 Malia que é posible crear usuarios sen contrasinal, esta práctica non é segura.',
-	'config-db-install-username' => 'Escriba o nome de usuario que empregará para conectarse á base de datos durante o proceso de instalación. Este non é o nome de usuario da conta de MediaWiki, trátase do nome de usuario para a súa base de datos.',
+	'config-db-install-wiki_username' => 'Escriba o nome de usuario que empregará para conectarse á base de datos durante o proceso de instalación. Este non é o nome de usuario da conta de MediaWiki, trátase do nome de usuario para a súa base de datos.',
 	'config-db-install-password' => 'Escriba o contrasinal que empregará para conectarse á base de datos durante o proceso de instalación. Este non é o contrasinal da conta de MediaWiki, trátase do contrasinal para a súa base de datos.',
 	'config-db-install-help' => 'Introduza o nome de usuario e contrasinal que se usará para conectar á base de datos durante o proceso de instalación.',
 	'config-db-account-lock' => 'Use o mesmo nome de usuario e contrasinal despois do proceso de instalación',
@@ -6321,7 +6321,7 @@ Comprobe o servidor, nome de usuario e contrasinal que hai a continuación e int
 	'config-invalid-schema' => 'O esquema de MediaWiki, "$1", é incorrecto.
 Só pode conter letras ASCII (a-z, A-Z), números (0-9) e guións baixos (_).',
 	'config-db-sys-create-oracle' => 'O programa de instalación soamente soporta o emprego de contas SYSDBA como método para crear unha nova conta.',
-	'config-db-sys-user-exists-oracle' => 'A conta de usuario "$1" xa existe. SYSDBA soamente se pode empregar para a creación dunha nova conta!',
+	'config-db-sys-wiki_user-exists-oracle' => 'A conta de usuario "$1" xa existe. SYSDBA soamente se pode empregar para a creación dunha nova conta!',
 	'config-postgres-old' => 'Necesítase PostgreSQL $1 ou posterior; ten a versión $2.',
 	'config-sqlite-name-help' => 'Escolla un nome que identifique o seu wiki.
 Non utilice espazos ou guións.
@@ -6427,7 +6427,7 @@ Especifique un nome de usuario diferente.',
 	'config-admin-password-mismatch' => 'Os contrasinais non coinciden.',
 	'config-admin-email' => 'Enderezo de correo electrónico:',
 	'config-admin-email-help' => 'Escriba aquí un enderezo de correo electrónico para que poida recibir mensaxes doutros usuarios a través do wiki, restablecer o contrasinal e ser notificado das modificacións feitas nas páxinas presentes na súa lista de vixilancia. Pode deixar este campo en branco.',
-	'config-admin-error-user' => 'Erro interno ao crear un administrador co nome "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Erro interno ao crear un administrador co nome "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Erro interno ao establecer un contrasinal para o administrador "<nowiki>$1</nowiki>": <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Escribiu un enderezo de correo electrónico non válido.',
 	'config-subscribe' => 'Subscríbase á [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce lista de correo de anuncios sobre lanzamentos].',
@@ -6455,7 +6455,7 @@ A opción '''{{int:config-profile-no-anon}}''' proporciona un control maior, per
 O escenario '''{{int:config-profile-fishbowl}}''' restrinxe a edición aos usuarios aprobados, pero o público pode ollar as páxinas, incluíndo os historiais.
 O tipo '''{{int:config-profile-private}}''' só deixa que os usuarios aprobados vexan e editen as páxinas.
 
-Hai dispoñibles configuracións de dereitos de usuario máis complexas despois da instalación; bótelle un ollo a [//www.mediawiki.org/wiki/Manual:User_rights esta entrada no manual].",
+Hai dispoñibles configuracións de dereitos de usuario máis complexas despois da instalación; bótelle un ollo a [//www.mediawiki.org/wiki/Manual:wiki_user_rights esta entrada no manual].",
 	'config-license' => 'Dereitos de autor e licenza:',
 	'config-license-none' => 'Sen licenza ao pé',
 	'config-license-cc-by-sa' => 'Creative Commons recoñecemento compartir igual',
@@ -6478,10 +6478,10 @@ Tamén é difícil reusar contidos baixo esta licenza.",
 	'config-enable-email' => 'Activar os correos electrónicos de saída',
 	'config-enable-email-help' => 'Se quere que o correo electrónico funcione, cómpre configurar os [http://www.php.net/manual/en/mail.configuration.php parámetros PHP] correctamente.
 Se non quere ningunha característica no correo, pode desactivalas aquí.',
-	'config-email-user' => 'Activar o intercambio de correos electrónicos entre usuarios',
-	'config-email-user-help' => 'Permitir que todos os usuarios intercambien correos electrónicos, se o teñen activado nas súas preferencias.',
-	'config-email-usertalk' => 'Activar a notificación da páxina de conversa de usuario',
-	'config-email-usertalk-help' => 'Permitir que os usuarios reciban notificacións cando a súa páxina de conversa de usuario sufra modificacións, se o teñen activado nas súas preferencias.',
+	'config-email-wiki_user' => 'Activar o intercambio de correos electrónicos entre usuarios',
+	'config-email-wiki_user-help' => 'Permitir que todos os usuarios intercambien correos electrónicos, se o teñen activado nas súas preferencias.',
+	'config-email-wiki_usertalk' => 'Activar a notificación da páxina de conversa de usuario',
+	'config-email-wiki_usertalk-help' => 'Permitir que os usuarios reciban notificacións cando a súa páxina de conversa de usuario sufra modificacións, se o teñen activado nas súas preferencias.',
 	'config-email-watchlist' => 'Activar a notificación da lista de vixilancia',
 	'config-email-watchlist-help' => 'Permitir que os usuarios reciban notificacións sobre modificacións nas páxinas que vixían, se o teñen activado nas súas preferencias.',
 	'config-email-auth' => 'Activar a autenticación do correo electrónico',
@@ -6557,12 +6557,12 @@ Asegúrese de que o usuario "$1" pode escribir no esquema "$2".',
 A conta que especificou para a instalación non é un superusuario e non pertence ao grupo de usuarios con acceso á web, polo que non pode crear obxectos pertencentes ao usuario da rede.
 
 Actualmente, MediaWiki necesita que as táboas sexan propiedade do usuario da rede. Especifique outro nome de conta web ou prema no botón "Atrás" e dea un usuario de instalación cos privilexios axeitados.',
-	'config-install-user' => 'Creando o usuario da base de datos',
-	'config-install-user-alreadyexists' => 'O usuario "$1" xa existe',
-	'config-install-user-create-failed' => 'A creación do usuario "$1" fallou: $2',
-	'config-install-user-grant-failed' => 'Fallou a concesión de permisos ao usuario "$1": $2',
-	'config-install-user-missing' => 'O usuario especificado, "$1", non existe.',
-	'config-install-user-missing-create' => 'O usuario especificado, "$1", non existe.
+	'config-install-wiki_user' => 'Creando o usuario da base de datos',
+	'config-install-wiki_user-alreadyexists' => 'O usuario "$1" xa existe',
+	'config-install-wiki_user-create-failed' => 'A creación do usuario "$1" fallou: $2',
+	'config-install-wiki_user-grant-failed' => 'Fallou a concesión de permisos ao usuario "$1": $2',
+	'config-install-wiki_user-missing' => 'O usuario especificado, "$1", non existe.',
+	'config-install-wiki_user-missing-create' => 'O usuario especificado, "$1", non existe.
 Prema na caixa de verificación "crear unha conta" que hai a continuación se quere crear unha.',
 	'config-install-tables' => 'Creando as táboas',
 	'config-install-tables-exist' => "'''Atención:''' Semella que as táboas de MediaWiki xa existen.
@@ -6960,11 +6960,11 @@ $1
 
 סקריפט ליצירת חשבון עם ההרשאות הנדרשות ניתן למצוא בתיקייה "<span dir="ltr">maintenance/oracle/</span>" של ההתקנה זו. זכרו כי שימוש בחשבון מוגבל יגרום להשבתת כל יכולות תחזוקה עם חשבון בררת המחדל.',
 	'config-db-install-account' => 'חשבון משתמש להתקנה',
-	'config-db-username' => 'שם המשתמש במסד הנתונים:',
+	'config-db-wiki_username' => 'שם המשתמש במסד הנתונים:',
 	'config-db-password' => 'הססמה במסד הנתונים:',
 	'config-db-password-empty' => 'נא להזין ססמה למשתמש מסד הנתונים החדש: $1.
 אף־על־פי שאפשר ליצור חשבונות ללא ססמה, זה לא מאובטח.',
-	'config-db-install-username' => 'הכניסו שם משתמש שישמש אתכם לחיבור למסד נתונים במהלך ההתקנה.
+	'config-db-install-wiki_username' => 'הכניסו שם משתמש שישמש אתכם לחיבור למסד נתונים במהלך ההתקנה.
 זהו לא שם משתמש לחשבון במדיה־ויקי; זהו שם משתמש בשרת מסד נתונים.',
 	'config-db-install-password' => 'הקלידו ססמה שתשמש אתכם לצורך חיבור למסד נתונים במהלך ההתקנה.
 זוהי לא ססמה של חשבון במדיה־ויקי; זוהי ססמה לשרת מסד נתונים.',
@@ -7037,7 +7037,7 @@ $1
 	'config-invalid-schema' => '"$1" היא סכמה לא תקינה עבור מדיה־ויקי.
 יש להשתמש רק באותיות ASCII&rlm; (a עד z&rlm;, A עד Z), סְפָרוֹת (0 עד 9) וקווים תחתיים (_).',
 	'config-db-sys-create-oracle' => 'תוכנית ההתקנה תומכת רק בשימוש בחשבון SYSDBA ליצירת חשבון חדש.',
-	'config-db-sys-user-exists-oracle' => 'חשבון המשתמש "$1" כבר קיים. SYSDBA יכול לשמש רק ליצירת חשבון חדש!',
+	'config-db-sys-wiki_user-exists-oracle' => 'חשבון המשתמש "$1" כבר קיים. SYSDBA יכול לשמש רק ליצירת חשבון חדש!',
 	'config-postgres-old' => 'נדרש PostgreSQL $1 או גרסה חדשה יותר, הגרסה הנוכחית שלכם היא $2.',
 	'config-sqlite-name-help' => 'בחרו בשם שמזהה את הוויקי שלכם.
 אל תשתמשו ברווחים או במינוסים.
@@ -7142,7 +7142,7 @@ chmod a+w $3</pre></div>',
 	'config-admin-password-mismatch' => 'שתי הססמאות שהוזנו אינן מתאימות.',
 	'config-admin-email' => 'כתובת הדוא״ל:',
 	'config-admin-email-help' => 'הקלידו כתובת דוא״ל שתאפשר לכם לקבל מכתבים ממשתמשים אחרים בוויקי, לאתחל את הססמה, ולקבל הודעות על שינויים בדפים ברשימת המעקב שלכם. אפשר להשאיר את השדה הזה ריק.',
-	'config-admin-error-user' => 'שגיאה פנימית ביצירת מפעיל בשם "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'שגיאה פנימית ביצירת מפעיל בשם "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'שגיאה פנימית בהגדרת ססמה עבור המפעיל "<nowiki>$1</nowiki>"&rlm;: <pre>$2</pre>',
 	'config-admin-error-bademail' => 'הכנסתם כתובת דוא״ל לא תקינה.',
 	'config-subscribe' => 'להירשם ל[https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce רשימת התפוצה עם הודעות על גרסאות חדשות].',
@@ -7170,7 +7170,7 @@ chmod a+w $3</pre></div>',
 בתסריט '''{{int:config-profile-fishbowl}}''' רק משתמשים שקיבלו אישור יכולים לערוך, אבל כל הגולשים יכולים לקרוא את הדפים ואת גרסאותיהם הקודמות.
 ב'''{{int:config-profile-private}}''' רק משתמשים שקיבלו אישור יכולים לקרוא ולערוך דפים.
 
-הגדרות מורכבות של הרשאות אפשריות אחרי ההתקנה, ר׳ את [//www.mediawiki.org/wiki/Manual:User_rights הפרק על הנושא הזה בספר ההדרכה].",
+הגדרות מורכבות של הרשאות אפשריות אחרי ההתקנה, ר׳ את [//www.mediawiki.org/wiki/Manual:wiki_user_rights הפרק על הנושא הזה בספר ההדרכה].",
 	'config-license' => 'זכויות יוצרים ורישיון:',
 	'config-license-none' => 'ללא כותרת תחתית עם רישיון',
 	'config-license-cc-by-sa' => 'קריאייטיב קומונז–ייחוס–שיתוף זהה',
@@ -7193,10 +7193,10 @@ chmod a+w $3</pre></div>',
 	'config-enable-email' => 'להפעיל דוא״ל יוצא',
 	'config-enable-email-help' => 'אם אתם רוצים שדוא״ל יעבוד, [http://www.php.net/manual/en/mail.configuration.php אפשרויות הדוא״ל של PHP] צריכות להיות מוגדרות נכון.
 אם אינכם רוצים להפעיל שום אפשרויות דוא״ל, כבו אותן כאן ועכשיו.',
-	'config-email-user' => 'להפעיל שליחת דוא״ל ממשתמש למשתמש',
-	'config-email-user-help' => 'לאפשר לכל המשתמשים לשלוח אחד לשני דוא״ל אם הם הפעילו את זה בהעדפות שלהם.',
-	'config-email-usertalk' => 'להפעיל הודעות על דף שיחת משתמש',
-	'config-email-usertalk-help' => 'לאפשר למשתמשים לקבל הודעות על שינויים בדפי המשתמש שלהם, אם הם הפעילו את זה בהעדפות שלהם.',
+	'config-email-wiki_user' => 'להפעיל שליחת דוא״ל ממשתמש למשתמש',
+	'config-email-wiki_user-help' => 'לאפשר לכל המשתמשים לשלוח אחד לשני דוא״ל אם הם הפעילו את זה בהעדפות שלהם.',
+	'config-email-wiki_usertalk' => 'להפעיל הודעות על דף שיחת משתמש',
+	'config-email-wiki_usertalk-help' => 'לאפשר למשתמשים לקבל הודעות על שינויים בדפי המשתמש שלהם, אם הם הפעילו את זה בהעדפות שלהם.',
 	'config-email-watchlist' => 'הפעלת התרעה על רשימת המעקב',
 	'config-email-watchlist-help' => 'לאפשר למשתמשים לקבל הודעות על הדפים ברשימת המעקב שלהם אם הם הפעילו את זה בהעדפות שלהם.',
 	'config-email-auth' => 'הפעלת התרעה בדוא״ל',
@@ -7269,15 +7269,15 @@ chmod a+w $3</pre></div>',
 	'config-pg-no-plpgsql' => 'צריך להתקין את שפת PL/pgSQL במסד הנתונים $1',
 	'config-pg-no-create-privs' => 'לחשבון שהגדרתם להתקנה אין מספיק הרשאות ליצירת חשבון.',
 	'config-pg-not-in-role' => 'החשבון שציינתם עבור משתמש שרת הווב כבר קיים.
-החשבון שסיפקתם להתקנה אינו חשבון בעל הרשאות (superuser) ואינו חבר בתפקיד (role) של משתמש שרת הווב, אז אין אפשרות ליצור עצמים בבעלות משתמש שרת הווב.
+החשבון שסיפקתם להתקנה אינו חשבון בעל הרשאות (superwiki_user) ואינו חבר בתפקיד (role) של משתמש שרת הווב, אז אין אפשרות ליצור עצמים בבעלות משתמש שרת הווב.
 
 כעת נדרש במדיה־ויקי שהטבלאות יהיו בבעלות של משתמש שרת הווב. נא לציין שם חשבון שרת וב אחר או ללחוץ על כפתור "אחורה" ולציין משתמש התקנה בעל הרשאות מתאימות.',
-	'config-install-user' => 'יצירת חשבון במסד נתונים',
-	'config-install-user-alreadyexists' => 'המשתמש "$1" כבר קיים',
-	'config-install-user-create-failed' => 'יצירת משתמש "$1" נכשלה: $2',
-	'config-install-user-grant-failed' => 'מתן הרשאות למשתמש "$1" נכשל: $2',
-	'config-install-user-missing' => 'המשתמש "$1" שצוין אינו קיים.',
-	'config-install-user-missing-create' => 'המשתמש "$1" שצוין אינו קיים.
+	'config-install-wiki_user' => 'יצירת חשבון במסד נתונים',
+	'config-install-wiki_user-alreadyexists' => 'המשתמש "$1" כבר קיים',
+	'config-install-wiki_user-create-failed' => 'יצירת משתמש "$1" נכשלה: $2',
+	'config-install-wiki_user-grant-failed' => 'מתן הרשאות למשתמש "$1" נכשל: $2',
+	'config-install-wiki_user-missing' => 'המשתמש "$1" שצוין אינו קיים.',
+	'config-install-wiki_user-missing-create' => 'המשתמש "$1" שצוין אינו קיים.
 נא ללחוץ על תיבת בסימון "יצירת חשבון" להלן אם אתם רוצים ליצור אותו.',
 	'config-install-tables' => 'יצירת טבלאות',
 	'config-install-tables-exist' => "'''אזהרה:''' נראה שטבלאות מדיה־ויקי כבר קיימות.
@@ -7340,7 +7340,7 @@ $messages['hi'] = array(
  */
 $messages['hif-latn'] = array(
 	'mainpagetext' => "'''MediaWiki ke safalta se install kar dewa gais hai.'''",
-	'mainpagedocfooter' => "Wiki software ke use kare ke aur jaankari ke khatir [//meta.wikimedia.org/wiki/Help:Contents User's Guide] ke dekho.
+	'mainpagedocfooter' => "Wiki software ke use kare ke aur jaankari ke khatir [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] ke dekho.
 
 == Getting started ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
@@ -7353,7 +7353,7 @@ $messages['hif-latn'] = array(
  */
 $messages['hil'] = array(
 	'mainpagetext' => "'''Ang MediaWiki madinalag-on nga na-instala.'''",
-	'mainpagedocfooter' => " Magkonsulta sa [//meta.wikimedia.org/wiki/Help:Contents User's Guide] para sa mga impormasyon sa paggamit sang wiki nga software.
+	'mainpagedocfooter' => " Magkonsulta sa [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] para sa mga impormasyon sa paggamit sang wiki nga software.
 
 == Pag-umpisa ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Lista sang mga konpigorasyon sang pagkay-o]
@@ -7366,7 +7366,7 @@ $messages['hil'] = array(
 $messages['hr'] = array(
 	'mainpagetext' => "'''Softver MediaWiki je uspješno instaliran.'''",
 	'mainpagedocfooter' => 'Pogledajte [//meta.wikimedia.org/wiki/MediaWiki_localisation dokumentaciju o prilagodbi sučelja]
-i [//meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] za pomoć pri uporabi i podešavanju.',
+i [//meta.wikimedia.org/wiki/MediaWiki_wiki_user%27s_Guide Vodič za suradnike] za pomoć pri uporabi i podešavanju.',
 );
 
 /** Upper Sorbian (hornjoserbsce)
@@ -7485,11 +7485,11 @@ Instalacija bu přetorhnjena.",
 	'config-db-name' => 'Mjeno datoweje banki:',
 	'config-db-name-oracle' => 'Šema datoweje banki:',
 	'config-db-install-account' => 'Wužiwarske konto za instalaciju',
-	'config-db-username' => 'Wužiwarske mjeno datoweje banki:',
+	'config-db-wiki_username' => 'Wužiwarske mjeno datoweje banki:',
 	'config-db-password' => 'Hesło datoweje banki:',
 	'config-db-password-empty' => 'Prošu zapodaj hesło za noweho wužiwarja datoweje banki: $1.
 Byrnjež było móžno wužiwarjow bjez hesłow wutworić, njeje to wěste.',
-	'config-db-install-username' => 'Zapodaj wužiwarske mjeno, kotrež budźe so za zwisk z datowej banku za instalaciski proces wužiwać.
+	'config-db-install-wiki_username' => 'Zapodaj wužiwarske mjeno, kotrež budźe so za zwisk z datowej banku za instalaciski proces wužiwać.
 To njeje wužiwarske mjeno konta MediaWiki; to je wužiwarske mjeno za twoju datowu banku.',
 	'config-db-install-password' => 'Zapodaj hesło, kotrež budźe so za zwisk z datowej banku za instalaciski proces wužiwać.
 To njeje hesło konta MediaWiki; to je hesło za twoju datowu banku.',
@@ -7540,7 +7540,7 @@ Skontroluj serwer, wužiwarske a hesło a spytaj hišće raz.',
 	'config-invalid-schema' => 'Njepłaćiwe šema za MediaWiki "$1".
 Wužij jenož pismiki ASCII (a-z, A-Z), ličby (0-9) a podsmužki (_).',
 	'config-db-sys-create-oracle' => 'Instalaciski program podpěruje jenož wužiwanje SYSDBA-konta za zakoženje noweho konta.',
-	'config-db-sys-user-exists-oracle' => 'Wužiwarske konto "$1" hižo eksistuje. SYSDBA hodźi so jenož za załoženje noweho konta wužiwać!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Wužiwarske konto "$1" hižo eksistuje. SYSDBA hodźi so jenož za załoženje noweho konta wužiwać!',
 	'config-postgres-old' => 'PostgreSQL $1 abo nowši trěbny, maš $2.',
 	'config-sqlite-name-help' => 'Wubjer mjeno, kotrež twój wiki identifikuje.
 Njewužij mjezery abo wjazawki.
@@ -7601,7 +7601,7 @@ Podaj druhe wužiwarske mjeno.',
 	'config-admin-password-mismatch' => 'Wobě hesle, kotrejž sy zapodał, njejstej jenakej.',
 	'config-admin-email' => 'E-mejlowa adresa:',
 	'config-admin-email-help' => 'Zapodaj tu e-mejlowu adresu, zo by přijimanje e-mejlow wot druhich wužiwarjow w tutym wikiju zmóžnił, swoje hesło wróćo stajił a zdźělenki wo změnach na swojich wobkedźbowanych stronach  dostał. Móžeš polo prózdne wostajić.',
-	'config-admin-error-user' => 'Interny zmylk při wutworjenju administratora z mjenom "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Interny zmylk při wutworjenju administratora z mjenom "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Interny zmylk při nastajenju hesła za administratora "<nowiki>$1</nowiki>": <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Sy njepłaćiwu e-mejlowu adresu zapodał.',
 	'config-subscribe' => '[https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Rozesyłansku lisćinu wo připowědźenjach nowych wersijow ].abonować',
@@ -7627,10 +7627,10 @@ Móžeš nětko zbytnu konfiguraciju přeskočić a wiki hnydom instalować.',
 	'config-enable-email' => 'Wuchadźace e-mejlki zmóžnić',
 	'config-enable-email-help' => 'Jeli chceš e-mejl wužiwać, dyrbja so [http://www.php.net/manual/en/mail.configuration.php e-mejlowe nastajenja PHP] prawje konfigurować.
 Jeli nochceš e-mejlowe funkcije wužiwać, móžeš je tu znjemóžnić.',
-	'config-email-user' => 'E-mejl mjez wužiwarjemi zmóžnić',
-	'config-email-user-help' => 'Wšěm wužiwarjam dowolić, jednomu druhemu e-mejlki pósłać, jeli su tutu funkciju w swojich nastajenjach zmóžnili.',
-	'config-email-usertalk' => 'Zdźělenja za wužiwarske diskusijne strony zmóžnić',
-	'config-email-usertalk-help' => 'Wužiwarjam dowolić zdźělenki wo změnach na wužiwarskich diskusijnych stronach dóstać, jeli woni su to w swojich nastajenjach zmóžnili.',
+	'config-email-wiki_user' => 'E-mejl mjez wužiwarjemi zmóžnić',
+	'config-email-wiki_user-help' => 'Wšěm wužiwarjam dowolić, jednomu druhemu e-mejlki pósłać, jeli su tutu funkciju w swojich nastajenjach zmóžnili.',
+	'config-email-wiki_usertalk' => 'Zdźělenja za wužiwarske diskusijne strony zmóžnić',
+	'config-email-wiki_usertalk-help' => 'Wužiwarjam dowolić zdźělenki wo změnach na wužiwarskich diskusijnych stronach dóstać, jeli woni su to w swojich nastajenjach zmóžnili.',
 	'config-email-watchlist' => 'Zdźělenja za wobkedźbowanki zmóžnić',
 	'config-email-watchlist-help' => 'Wužiwarjam dowolić zdźělenki wo jich wobked´bowanych stronach dóstać, jeli woni su to w swojich nastajenjach zmóžnili.',
 	'config-email-auth' => 'E-mejlowu awtentifikaciju zmóžnić',
@@ -7681,12 +7681,12 @@ Zawěsć, zo wužiwar "$1" móže do šemy "$2" pisać.',
 	'config-install-pg-plpgsql' => 'Pruwowanje za rěču PL/pgSQL',
 	'config-pg-no-plpgsql' => 'Dyrbiš rěč PL/pgSQL w datowej bance $1 instalować',
 	'config-pg-no-create-privs' => 'Konto, kotrež sy za instalaciju podał, nima dosahace prawa za wutworjenje konta.',
-	'config-install-user' => 'Tworjenje wužiwarja datoweje banki',
-	'config-install-user-alreadyexists' => 'Wužiwar "$1" hižo eksistuje',
-	'config-install-user-create-failed' => 'Wutworjenje wužiwarja "$1" je so njeporadźiło: $2',
-	'config-install-user-grant-failed' => 'Prawo njeda so wužiwarjej "$1" dać: $2',
-	'config-install-user-missing' => 'Podaty wužiwar "$1" njeeksistuje.',
-	'config-install-user-missing-create' => 'Podaty wužiwar "$1" njeeksistuje.
+	'config-install-wiki_user' => 'Tworjenje wužiwarja datoweje banki',
+	'config-install-wiki_user-alreadyexists' => 'Wužiwar "$1" hižo eksistuje',
+	'config-install-wiki_user-create-failed' => 'Wutworjenje wužiwarja "$1" je so njeporadźiło: $2',
+	'config-install-wiki_user-grant-failed' => 'Prawo njeda so wužiwarjej "$1" dać: $2',
+	'config-install-wiki_user-missing' => 'Podaty wužiwar "$1" njeeksistuje.',
+	'config-install-wiki_user-missing-create' => 'Podaty wužiwar "$1" njeeksistuje.
 Prošu klikń na slědowacy kontrolny kašćik "konto załožić", jeli chceš jo wutworić.',
 	'config-install-tables' => 'Tworjenje tabelow',
 	'config-install-tables-exist' => "'''Warnowanje''': Zda so, zo tabele MediaWiki hižo eksistuja.
@@ -7899,11 +7899,11 @@ Ha a telepítési folyamat során adatbázisfiókot szeretnél létrehozni, akko
 
 A megfelelő jogosultságokkal rendelkező fiók létrehozásához használható szkript a szoftver „maintenance/oracle/” könyvtárában található. Ne feledd, hogy korlátozott fiók használatakor az alapértelmezett fiókkal nem végezhetőek el a karbantartási műveletek.',
 	'config-db-install-account' => 'A telepítéshez használt felhasználói fiók adatai',
-	'config-db-username' => 'Felhasználónév:',
+	'config-db-wiki_username' => 'Felhasználónév:',
 	'config-db-password' => 'Jelszó:',
 	'config-db-password-empty' => 'Írd be az új adatbázis-felhasználó jelszavát: $1
 Van lehetőség jelszó nélküli felhasználók létrehozására, azonban ez nem ajánlott.',
-	'config-db-install-username' => 'Írd be az adatbázisrendszerhez való csatlakozáshoz használt felhasználónevet.
+	'config-db-install-wiki_username' => 'Írd be az adatbázisrendszerhez való csatlakozáshoz használt felhasználónevet.
 Ez nem a MediaWiki fiók felhasználóneve; ez az adatbázisrendszeren használt felhasználóneved.',
 	'config-db-install-password' => 'Írd be az adatbázisrendszerhez való csatlakozáshoz használt jelszót.
 Ez nem a MediaWiki-fiók jelszava; ez az adatbázisrendszeren használt jelszavad.',
@@ -7977,7 +7977,7 @@ Ellenőrizd a hosztot, felhasználónevet és jelszót, majd próbáld újra.',
 	'config-invalid-schema' => 'Érvénytelen MediaWiki-séma: „$1”.
 Csak ASCII-karakterek (a-z, A-Z), számok (0-9) és alulvonás (_) használható.',
 	'config-db-sys-create-oracle' => 'A telepítő csak a SYSDBA fiókkal tud új felhasználói fiókot létrehozni.',
-	'config-db-sys-user-exists-oracle' => 'Már létezik „$1” nevű felhasználói fiók. A SYSDBA csak új fiók létrehozására használható!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Már létezik „$1” nevű felhasználói fiók. A SYSDBA csak új fiók létrehozására használható!',
 	'config-postgres-old' => 'A PostgreSQL $1 vagy újabb verziója szükséges, a rendszeren $2 van.',
 	'config-sqlite-name-help' => 'Válassz egy nevet a wiki azonosítására.
 Ne tartalmazzon szóközt vagy kötőjelet.
@@ -8081,7 +8081,7 @@ Adj meg egy másik felhasználónevet.',
 	'config-admin-password-mismatch' => 'A megadott jelszavak nem egyeznek.',
 	'config-admin-email' => 'E-mail cím:',
 	'config-admin-email-help' => 'Add meg az e-mail címedet, hogy más felhasználók küldhessenek e-maileket a wikin keresztül, új jelszót tudj kérni, és értesülhess a figyelőlistádon lévő lapokon történt változásokról. Üresen is hagyhatod ezt a mezőt.',
-	'config-admin-error-user' => 'Belső hiba történt a(z) „<nowiki>$1</nowiki>” nevű adminisztrátor létrehozásakor.',
+	'config-admin-error-wiki_user' => 'Belső hiba történt a(z) „<nowiki>$1</nowiki>” nevű adminisztrátor létrehozásakor.',
 	'config-admin-error-password' => 'Belső hiba történt a(z) „<nowiki>$1</nowiki>” nevű adminisztrátor jelszavának beállításakor: <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Érvénytelen e-mail címet adtál meg.',
 	'config-subscribe' => 'Feliratkozás a [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce kiadási bejelentések levelezőlistájára].',
@@ -8108,7 +8108,7 @@ Választhatsz!
 
 Lehetőség van arra is, hogy '''{{lc:{{int:config-profile-fishbowl}}}}''' módosíthassák a lapokat, de a nyilvánosság ekkor megtekintheti a lapokat és azok laptörténetét is. '''{{int:config-profile-private}}''' esetén csak az engedélyezett szerkesztők tekinthetik meg a lapokat, és ugyanez a csoport szerkeszthet.
 
-Telepítés után jóval összetettebb jogosultságrendszer állítható össze, további információ a [//www.mediawiki.org/wiki/Manual:User_rights kézikönyv kapcsolódó bejegyzésében].",
+Telepítés után jóval összetettebb jogosultságrendszer állítható össze, további információ a [//www.mediawiki.org/wiki/Manual:wiki_user_rights kézikönyv kapcsolódó bejegyzésében].",
 	'config-license' => 'Szerzői jog és licenc:',
 	'config-license-none' => 'Nincs licencjelzés',
 	'config-license-cc-by-sa' => 'Creative Commons Nevezd meg! - Így add tovább!',
@@ -8131,10 +8131,10 @@ továbbá a GFDL alatt közzétett tartalom újrafelhasználása nehézkes.",
 	'config-enable-email' => 'Kimenő e-mailek engedélyezése',
 	'config-enable-email-help' => 'E-mailek küldéséhez [http://www.php.net/manual/en/mail.configuration.php a PHP mail beállításait] megfelelően meg kell adni.
 Ha nem akarsz semmilyen e-mailes funkciót használni, itt tilthatod le őket.',
-	'config-email-user' => 'A felhasználók küldhetnek egymásnak e-maileket',
-	'config-email-user-help' => 'Bármelyik felhasználó küldhet másiknak e-mail üzenetet, amennyiben engedélyezték a lehetőséget a beállításaiknál.',
-	'config-email-usertalk' => 'Vitalapi értesítések engedélyezése',
-	'config-email-usertalk-help' => 'A felhasználók értesítéseket kapnak a vitalapjuk változásairól, amennyiben engedélyezték ezt a lehetőséget a beállításaiknál.',
+	'config-email-wiki_user' => 'A felhasználók küldhetnek egymásnak e-maileket',
+	'config-email-wiki_user-help' => 'Bármelyik felhasználó küldhet másiknak e-mail üzenetet, amennyiben engedélyezték a lehetőséget a beállításaiknál.',
+	'config-email-wiki_usertalk' => 'Vitalapi értesítések engedélyezése',
+	'config-email-wiki_usertalk-help' => 'A felhasználók értesítéseket kapnak a vitalapjuk változásairól, amennyiben engedélyezték ezt a lehetőséget a beállításaiknál.',
 	'config-email-watchlist' => 'Figyelőlistai értesítések engedélyezése',
 	'config-email-watchlist-help' => 'A felhasználók értesítéseket kapnak a figyelt lapjaik változásairól, amennyiben engedélyezték ezt a lehetőséget a beállításaiknál.',
 	'config-email-auth' => 'E-mailes hitelesítés engedélyezése',
@@ -8205,12 +8205,12 @@ Ellenőrizd, hogy „$1” felhasználó írhat-e a következő adatbázisba: �
 	'config-install-pg-plpgsql' => 'PL/pgSQL nyelv meglétének ellenőrzése',
 	'config-pg-no-plpgsql' => 'Telepítened kell a PL/pgSQL nyelvet a következő adatbázishoz: $1',
 	'config-pg-no-create-privs' => 'A telepítéshez megadott felhasználói fiók nem rendelkezik új fiók létrehozásához szükséges jogosultságokkal.',
-	'config-install-user' => 'Adatbázis-felhasználó létrehozása',
-	'config-install-user-alreadyexists' => 'Már létezik „$1” nevű felhasználó',
-	'config-install-user-create-failed' => 'Nem sikerült a(z) „$1” nevű felhasználó létrehozása: $2',
-	'config-install-user-grant-failed' => 'Nem sikerült jogosultságokkal felruházni a(z) „$1” nevű felhasználót: $2',
-	'config-install-user-missing' => 'A megadott felhasználó („$1”) nem létezik.',
-	'config-install-user-missing-create' => 'A megadott felhasználó („$1”) nem létezik.
+	'config-install-wiki_user' => 'Adatbázis-felhasználó létrehozása',
+	'config-install-wiki_user-alreadyexists' => 'Már létezik „$1” nevű felhasználó',
+	'config-install-wiki_user-create-failed' => 'Nem sikerült a(z) „$1” nevű felhasználó létrehozása: $2',
+	'config-install-wiki_user-grant-failed' => 'Nem sikerült jogosultságokkal felruházni a(z) „$1” nevű felhasználót: $2',
+	'config-install-wiki_user-missing' => 'A megadott felhasználó („$1”) nem létezik.',
+	'config-install-wiki_user-missing-create' => 'A megadott felhasználó („$1”) nem létezik.
 Pipáld ki a „Fiók létrehozása” dobozt, ha létre szeretnéd hozni.',
 	'config-install-tables' => 'Táblák létrehozása',
 	'config-install-tables-exist' => "'''Figyelmeztetés''': úgy tűnik, hogy a MediaWiki táblái már léteznek.
@@ -8246,7 +8246,7 @@ Ha végeztél a fájl elhelyezésével, '''[$2 beléphetsz a wikibe]'''.",
 	'config-download-localsettings' => 'LocalSettings.php letöltése',
 	'config-help' => 'segítség',
 	'mainpagetext' => "'''A MediaWiki telepítése sikeresen befejeződött.'''",
-	'mainpagedocfooter' => "Ha segítségre van szükséged a wikiszoftver használatához, akkor keresd fel a [//meta.wikimedia.org/wiki/Help:Contents User's Guide] oldalt.
+	'mainpagedocfooter' => "Ha segítségre van szükséged a wikiszoftver használatához, akkor keresd fel a [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] oldalt.
 
 == Alapok (angol nyelven) ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Beállítások listája]
@@ -8325,7 +8325,7 @@ Ez tartalmazza az összes beállítást.
 '''Megjegyzés''': Ha ezt most nem teszi meg, és kilép, a generált fájl nem lesz elérhető a későbbiekben.
 
 Ha ezzel készen van, '''[$2 beléphet a wikibe]'''.", # Fuzzy
-	'mainpagedocfooter' => "Ha segítségre van szüksége a wikiszoftver használatához, akkor keresse fel a [//meta.wikimedia.org/wiki/Help:Contents User's Guide] oldalt.
+	'mainpagedocfooter' => "Ha segítségre van szüksége a wikiszoftver használatához, akkor keresse fel a [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] oldalt.
 
 == Alapok (angol nyelven) ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Beállítások listája]
@@ -8337,7 +8337,7 @@ Ha ezzel készen van, '''[$2 beléphet a wikibe]'''.", # Fuzzy
  */
 $messages['hy'] = array(
 	'mainpagetext' => "'''«MediaWiki» ծրագիրը հաջողությամբ տեղադրվեց։'''",
-	'mainpagedocfooter' => "Այցելեք [//meta.wikimedia.org/wiki/Help:Contents User's Guide]՝ վիքի ծրագրային ապահովման օգտագործման մասին տեղեկությունների համար։
+	'mainpagedocfooter' => "Այցելեք [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide]՝ վիքի ծրագրային ապահովման օգտագործման մասին տեղեկությունների համար։
 
 == Որոշ օգտակար ռեսուրսներ ==
 
@@ -8526,11 +8526,11 @@ Si tu vole crear un conto del base de datos como parte del processo de installat
 
 Un script pro crear un conto con le privilegios requisite se trova in le directorio "maintenance/oracle/" de iste installation. Non oblida que le uso de un conto restringite disactiva tote le capacitates de mantenentia in le conto predefinite.',
 	'config-db-install-account' => 'Conto de usator pro installation',
-	'config-db-username' => 'Nomine de usator del base de datos:',
+	'config-db-wiki_username' => 'Nomine de usator del base de datos:',
 	'config-db-password' => 'Contrasigno del base de datos:',
 	'config-db-password-empty' => 'Per favor entra un contrasigno pro le nove usator del base de datos: $1.
 Ben que il es possibile crear usatores sin contrasigno, isto non es secur.',
-	'config-db-install-username' => 'Entra le nomine de usator que essera usate pro connecter al base de datos durante le processo de installation. Isto non es le nomine de usator del conto MediaWiki; isto es le nomine de usator pro tu base de datos.',
+	'config-db-install-wiki_username' => 'Entra le nomine de usator que essera usate pro connecter al base de datos durante le processo de installation. Isto non es le nomine de usator del conto MediaWiki; isto es le nomine de usator pro tu base de datos.',
 	'config-db-install-password' => 'Entra le contrasigno que essera usate pro connecter al base de datos durante le processo de installation. Isto non es le contrasigno del conto MediaWiki; isto es le contrasigno pro tu base de datos.',
 	'config-db-install-help' => 'Entra le nomine de usator e contrasigno que essera usate pro connecter al base de datos durante le processo de installation.',
 	'config-db-account-lock' => 'Usar le mesme nomine de usator e contrasigno durante le operation normal',
@@ -8607,7 +8607,7 @@ Verifica le servitor, nomine de usator e contrasigno hic infra e reproba.',
 	'config-invalid-schema' => 'Schema invalide pro MediaWiki "$1".
 Usa solmente litteras ASCII (a-z, A-Z), numeros (0-9) e characteres de sublineamento (_).',
 	'config-db-sys-create-oracle' => 'Le installator supporta solmente le uso de un conto SYSDBA pro le creation de un nove conto.',
-	'config-db-sys-user-exists-oracle' => 'Le conto de usator "$1" ja existe. SYSDBA pote solmente esser usate pro le creation de un nove conto!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Le conto de usator "$1" ja existe. SYSDBA pote solmente esser usate pro le creation de un nove conto!',
 	'config-postgres-old' => 'PostgreSQL $1 o plus recente es requirite, tu ha $2.',
 	'config-sqlite-name-help' => 'Selige un nomine que identifica tu wiki.
 Non usar spatios o tractos de union.
@@ -8712,7 +8712,7 @@ Specifica un altere nomine de usator.',
 	'config-admin-password-mismatch' => 'Le duo contrasignos que tu scribeva non es identic.',
 	'config-admin-email' => 'Adresse de e-mail:',
 	'config-admin-email-help' => 'Entra un adresse de e-mail hic pro permitter le reception de e-mail ab altere usatores del wiki, pro poter reinitialisar tu contrasigno, e pro reciper notification de cambios a paginas in tu observatorio. Iste campo pote esser lassate vacue.',
-	'config-admin-error-user' => 'Error interne durante le creation de un administrator con le nomine "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Error interne durante le creation de un administrator con le nomine "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Error interne durante le definition de un contrasigno pro le administrator "<nowiki>$1</nowiki>": <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Tu ha entrate un adresse de e-mail invalide',
 	'config-subscribe' => 'Subscribe al [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce lista de diffusion pro annuncios de nove versiones].',
@@ -8741,7 +8741,7 @@ Un wiki con '''{{int:config-profile-no-anon}}''' attribue additional responsabil
 Le scenario '''{{int:config-profile-fishbowl}}''' permitte al usatores approbate de modificar, ma le publico pote vider le paginas, includente lor historia.
 Un '''{{int:config-profile-private}}''' permitte solmente al usatores approbate de vider le paginas e de modificar los.
 
-Configurationes de derectos de usator plus complexe es disponibile post installation, vide le [//www.mediawiki.org/wiki/Manual:User_rights pertinente section del manual].",
+Configurationes de derectos de usator plus complexe es disponibile post installation, vide le [//www.mediawiki.org/wiki/Manual:wiki_user_rights pertinente section del manual].",
 	'config-license' => 'Copyright e licentia:',
 	'config-license-none' => 'Nulle licentia in pede de paginas',
 	'config-license-cc-by-sa' => 'Creative Commons Attribution Share Alike',
@@ -8764,10 +8764,10 @@ Il es anque difficile reusar le contento licentiate sub GFDL.",
 	'config-enable-email' => 'Activar le e-mail sortiente',
 	'config-enable-email-help' => 'Si tu vole que e-mail functiona, [http://www.php.net/manual/en/mail.configuration.php le optiones de e-mail de PHP] debe esser configurate correctemente.
 Si tu non vole functiones de e-mail, tu pote disactivar los hic.',
-	'config-email-user' => 'Activar le e-mail de usator a usator',
-	'config-email-user-help' => 'Permitter a tote le usatores de inviar e-mail inter se, si illes lo ha activate in lor preferentias.',
-	'config-email-usertalk' => 'Activar notification de cambios in paginas de discussion de usatores',
-	'config-email-usertalk-help' => 'Permitter al usatores de reciper notification de modificationes in lor paginas de discussion personal, si illes lo ha activate in lor preferentias.',
+	'config-email-wiki_user' => 'Activar le e-mail de usator a usator',
+	'config-email-wiki_user-help' => 'Permitter a tote le usatores de inviar e-mail inter se, si illes lo ha activate in lor preferentias.',
+	'config-email-wiki_usertalk' => 'Activar notification de cambios in paginas de discussion de usatores',
+	'config-email-wiki_usertalk-help' => 'Permitter al usatores de reciper notification de modificationes in lor paginas de discussion personal, si illes lo ha activate in lor preferentias.',
 	'config-email-watchlist' => 'Activar notification de observatorio',
 	'config-email-watchlist-help' => 'Permitter al usatores de reciper notification super lor paginas sub observation, si illes lo ha activate in lor preferentias.',
 	'config-email-auth' => 'Activar authentication de e-mail',
@@ -8843,12 +8843,12 @@ Assecura te que le usator "$1" pote scriber in le schema "$2".',
 Le conto que tu specificava pro installation non es superusator e non es membro del rolo de usator web, dunque es incapace de crear objectos possedite per le usator web.
 
 MediaWiki require actualmente que le tabellas sia possedite per le usator web. Per favor specifica un altere nomine de conto web, o clicca super "retornar" e specifica un usator de installation con sufficiente privilegios.',
-	'config-install-user' => 'Crea usator pro base de datos',
-	'config-install-user-alreadyexists' => 'Le usator "$1" ja existe',
-	'config-install-user-create-failed' => 'Le creation del usator "$1" ha fallite: $2',
-	'config-install-user-grant-failed' => 'Le concession de permission al usator "$1" falleva: $2',
-	'config-install-user-missing' => 'Le usator specificate, "$1", non existe.',
-	'config-install-user-missing-create' => 'Le usator specificate, "$1", non existe.
+	'config-install-wiki_user' => 'Crea usator pro base de datos',
+	'config-install-wiki_user-alreadyexists' => 'Le usator "$1" ja existe',
+	'config-install-wiki_user-create-failed' => 'Le creation del usator "$1" ha fallite: $2',
+	'config-install-wiki_user-grant-failed' => 'Le concession de permission al usator "$1" falleva: $2',
+	'config-install-wiki_user-missing' => 'Le usator specificate, "$1", non existe.',
+	'config-install-wiki_user-missing-create' => 'Le usator specificate, "$1", non existe.
 Per favor marca le quadrato "crear conto" hic infra si tu vole crear lo.',
 	'config-install-tables' => 'Crea tabellas',
 	'config-install-tables-exist' => "'''Aviso''': Il pare que le tabellas de MediaWiki jam existe.
@@ -9066,11 +9066,11 @@ Jika Anda ingin membuat akun basis data sebagai bagian dari proses instalasi, si
 
 Skrip untuk membuat akun dengan privilese yang diperlukan dapat ditemukan pada direktori "maintenance/oracle/" instalasi ini. Harap diingat bahwa penggunaan akun terbatas akan menonaktifkan semua kemampuan pemeliharaan dengan akun bawaan.',
 	'config-db-install-account' => 'Akun pengguna untuk instalasi',
-	'config-db-username' => 'Nama pengguna basis data:',
+	'config-db-wiki_username' => 'Nama pengguna basis data:',
 	'config-db-password' => 'Kata sandi basis data:',
 	'config-db-password-empty' => 'Silakan masukkan sandi untuk pengguna basis data baru: $1.
 Meskipun dimungkinkan untuk membuat pengguna tanpa sandi, hal itu tidak aman.',
-	'config-db-install-username' => 'Masukkan nama pengguna yang akan digunakan untuk terhubung ke basis data selama proses instalasi.
+	'config-db-install-wiki_username' => 'Masukkan nama pengguna yang akan digunakan untuk terhubung ke basis data selama proses instalasi.
 Ini bukan nama pengguna akun MediaWiki, melainkan nama pengguna untuk basis data Anda.',
 	'config-db-install-password' => 'Masukkan sandi yang akan digunakan untuk terhubung ke basis data selama proses instalasi.
 Ini bukan sandi untuk akun MediaWiki, melainkan sandi untuk basis data Anda.',
@@ -9147,7 +9147,7 @@ Periksa nama inang, pengguna, dan sandi di bawah ini dan coba lagi.',
 	'config-invalid-schema' => 'Skema MediaWiki "$1" tidak sah.
 Gunakan hanya huruf ASCII (a-z, A-Z), angka (0-9), dan garis bawah (_).',
 	'config-db-sys-create-oracle' => 'Penginstal hanya mendukung penggunaan akun SYSDBA untuk membuat akun baru.',
-	'config-db-sys-user-exists-oracle' => 'Akun pengguna "$1"sudah ada. SYSDBA hanya dapat digunakan untuk membuat akun baru!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Akun pengguna "$1"sudah ada. SYSDBA hanya dapat digunakan untuk membuat akun baru!',
 	'config-postgres-old' => 'PostgreSQL $1 atau versi terbaru diperlukan, Anda menggunakan $2.',
 	'config-sqlite-name-help' => 'Pilih nama yang mengidentifikasi wiki Anda.
 Jangan gunakan spasi atau tanda hubung.
@@ -9245,7 +9245,7 @@ Berikan nama pengguna lain.',
 	'config-admin-password-mismatch' => 'Dua kata sandi yang Anda masukkan tidak cocok.',
 	'config-admin-email' => 'Alamat surel:',
 	'config-admin-email-help' => 'Masukkan alamat surel untuk memungkinkan Anda menerima surel dari pengguna lain, menyetel ulang sandi, dan mendapat pemberitahuan tentang perubahan atas daftar pantauan Anda. Anda dapat mengosongkan bidang ini.',
-	'config-admin-error-user' => 'Kesalahan internal saat membuat admin dengan nama "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Kesalahan internal saat membuat admin dengan nama "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Kesalahan internal saat membuat sandi untuk admin "<nowiki>$1</nowiki>":<pre>$2</pre>',
 	'config-admin-error-bademail' => 'Anda memasukkan alamat surel yang tidak sah',
 	'config-subscribe' => 'Berlangganan ke [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce milis pengumuman rilis].',
@@ -9270,7 +9270,7 @@ Namun, berbagai kegunaan lain dari MediaWiki telah ditemukan, dan kadang tidak m
 '''{{int:config-profile-fishbowl}}''' memungkinkan pengguna yang disetujui untuk menyunting, tetapi publik dapat melihat halaman, termasuk riwayatnya.
 '''{{int:config-profile-private}}''' hanya memungkinkan pengguna yang disetujui untuk melihat dan menyunting halaman.
 
-Konfigurasi hak pengguna yang lebih kompleks tersedia setelah instalasi. Lihat [//www.mediawiki.org/wiki/Manual:User_rights/id entri manual terkait].",
+Konfigurasi hak pengguna yang lebih kompleks tersedia setelah instalasi. Lihat [//www.mediawiki.org/wiki/Manual:wiki_user_rights/id entri manual terkait].",
 	'config-license' => 'Hak cipta dan lisensi:',
 	'config-license-none' => 'Tidak ada lisensi',
 	'config-license-cc-by-sa' => 'Creative Commons Atribusi Berbagi Serupa',
@@ -9293,10 +9293,10 @@ Selain itu, sulit untuk menggunakan ulang konten yang dilisensikan di bawah GFDL
 	'config-enable-email' => 'Aktifkan surel keluar',
 	'config-enable-email-help' => 'Jika Anda ingin mengaktifkan surel, [http://www.php.net/manual/en/mail.configuration.php setelah surel PHP] perlu dikonfigurasi dengan benar.
 Jika Anda tidak perlu fitur surel, Anda dapat menonaktifkannya di sini.',
-	'config-email-user' => 'Aktifkan surel antarpengguna',
-	'config-email-user-help' => 'Memungkinkan semua pengguna untuk saling berkirim surel jika mereka mengaktifkan pilihan tersebut dalam preferensi mereka.',
-	'config-email-usertalk' => 'Aktifkan pemberitahuan perubahan halaman pembicaraan pengguna',
-	'config-email-usertalk-help' => 'Memungkinkan pengguna untuk menerima pemberitahuan tentang perubahan halaman pembicaraan pengguna, jika pilihan tersebut telah diaktifkan dalam preferensi mereka.',
+	'config-email-wiki_user' => 'Aktifkan surel antarpengguna',
+	'config-email-wiki_user-help' => 'Memungkinkan semua pengguna untuk saling berkirim surel jika mereka mengaktifkan pilihan tersebut dalam preferensi mereka.',
+	'config-email-wiki_usertalk' => 'Aktifkan pemberitahuan perubahan halaman pembicaraan pengguna',
+	'config-email-wiki_usertalk-help' => 'Memungkinkan pengguna untuk menerima pemberitahuan tentang perubahan halaman pembicaraan pengguna, jika pilihan tersebut telah diaktifkan dalam preferensi mereka.',
 	'config-email-watchlist' => 'Aktifkan pemberitahuan daftar pantau',
 	'config-email-watchlist-help' => 'Memungkinkan pengguna untuk menerima pemberitahuan tentang perubahan halaman yang ada dalam daftar pantauan mereka, jika pilihan tersebut telah diaktifkan dalam preferensi mereka.',
 	'config-email-auth' => 'Aktifkan otentikasi surel',
@@ -9367,10 +9367,10 @@ Pastikan bahwa pengguna "$1" dapat menulis ke skema "$2".',
 	'config-install-pg-plpgsql' => 'Memeriksa bahasa PL / pgSQL',
 	'config-pg-no-plpgsql' => 'Anda perlu menginstal bahasa PL/pgSQL pada basis data $1',
 	'config-pg-no-create-privs' => 'Akun yang Anda tetapkan untuk instalasi tidak memiliki hak yang cukup untuk membuat akun.',
-	'config-install-user' => 'Membuat pengguna basis data',
-	'config-install-user-alreadyexists' => 'Pengguna "$1" sudah ada',
-	'config-install-user-create-failed' => 'Pembuatan pengguna "$1" gagal: $2',
-	'config-install-user-grant-failed' => 'Memberikan izin untuk pengguna "$1" gagal: $2',
+	'config-install-wiki_user' => 'Membuat pengguna basis data',
+	'config-install-wiki_user-alreadyexists' => 'Pengguna "$1" sudah ada',
+	'config-install-wiki_user-create-failed' => 'Pembuatan pengguna "$1" gagal: $2',
+	'config-install-wiki_user-grant-failed' => 'Memberikan izin untuk pengguna "$1" gagal: $2',
 	'config-install-tables' => 'Membuat tabel',
 	'config-install-tables-exist' => "'''Peringatan''': Tabel MediaWiki sepertinya sudah ada.
 Melompati pembuatan.",
@@ -9599,7 +9599,7 @@ Da cambiare solamente se si è sicuri di averne bisogno.',
 	'config-admin-password' => 'Password:',
 	'config-admin-password-confirm' => 'Ripeti la password:',
 	'config-admin-help' => 'Inserisci il tuo nome utente scelto qui, ad esempio "Mario Rossi".
-Questo è il nome che userai per accedere al wiki.',
+Questo è il nome che wiki_userai per accedere al wiki.',
 	'config-admin-name-blank' => "Inserisci un nome utente per l'amministratore.",
 	'config-admin-name-invalid' => 'Il nome utente specificato "<nowiki>$1</nowiki>" non è valido.
 Specificare un nome utente diverso.',
@@ -9630,9 +9630,9 @@ Adesso puoi saltare la rimanente parte della configurazione e semplicemente inst
 	'config-advanced-settings' => 'Configurazione avanzata',
 	'config-memcache-badip' => 'È stato inserito un indirizzo IP non valido per Memcached: $1.',
 	'config-extensions' => 'Estensioni',
-	'config-install-user-alreadyexists' => 'L\'utente "$1" è già presente',
-	'config-install-user-create-failed' => 'Creazione dell\'utente "$1" non riuscita: $2',
-	'config-install-user-missing' => 'L\'utente indicato "$1" non esiste.',
+	'config-install-wiki_user-alreadyexists' => 'L\'utente "$1" è già presente',
+	'config-install-wiki_user-create-failed' => 'Creazione dell\'utente "$1" non riuscita: $2',
+	'config-install-wiki_user-missing' => 'L\'utente indicato "$1" non esiste.',
 	'config-install-tables-failed' => "'''Errore''': La creazione della tabella non è riuscita: $1",
 	'config-install-interwiki-list' => 'Impossibile leggere il file <code>interwiki.list</code>.',
 	'config-install-stats' => 'Inizializzazione delle statistiche',
@@ -9828,11 +9828,11 @@ PostgreSQLを使用している場合、UNIXソケットで接続するにはこ
 共有ウェブホストを利用している場合、ホスティングプロバイダーが特定の使用可能なデータベース名を提供するか、あるいは管理パネルからデータベースを作成できるようにしているでしょう。',
 	'config-db-name-oracle' => 'データベースのスキーマ:',
 	'config-db-install-account' => 'インストールで使用する利用者アカウント',
-	'config-db-username' => 'データベースのユーザー名:',
+	'config-db-wiki_username' => 'データベースのユーザー名:',
 	'config-db-password' => 'データベースのパスワード:',
 	'config-db-password-empty' => '新しいデータベースの利用者名 $1 のパスワードを入力してください。
 パスワードを設定しないでユーザを作ることもできるかもしれませんが、安全ではありません。',
-	'config-db-install-username' => 'インストール中にデータベースに接続するために使うユーザ名を入力してください。これは MediaWiki アカウントのユーザ名 (利用者名) のことではありません。あなたのデータベースでのユーザ名です。',
+	'config-db-install-wiki_username' => 'インストール中にデータベースに接続するために使うユーザ名を入力してください。これは MediaWiki アカウントのユーザ名 (利用者名) のことではありません。あなたのデータベースでのユーザ名です。',
 	'config-db-install-password' => 'インストール中にデータベースに接続するために使うパスワードを入力してください。これは MediaWiki アカウントパスワードのことではありません。あなたのデータベースでのパスワードです。',
 	'config-db-install-help' => 'インストール作業中にデータベースに接続するための利用者名とパスワードを入力してください。',
 	'config-db-account-lock' => 'インストール作業終了後も同じ利用者名とパスワードを使用する',
@@ -10002,7 +10002,7 @@ chmod a+w $3</pre>',
 	'config-admin-password-mismatch' => '入力された2つのパスワードが一致しません。',
 	'config-admin-email' => 'メールアドレス:',
 	'config-admin-email-help' => 'メールアドレスを入力してください。他の利用者からのメールの受け取り、パスワードのリセット、ウォッチリストに登録したページの更新通知に使用します。空欄のままにすることもできます。',
-	'config-admin-error-user' => '"<nowiki>$1</nowiki>"という名前の管理者を作成する際に内部エラーが発生しました。',
+	'config-admin-error-wiki_user' => '"<nowiki>$1</nowiki>"という名前の管理者を作成する際に内部エラーが発生しました。',
 	'config-admin-error-password' => '管理者"<nowiki>$1</nowiki>"のパスワードを設定する際に内部エラーが発生しました: <pre>$2</pre>',
 	'config-subscribe' => '[https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce リリース告知のメーリングリスト]を購読する。',
 	'config-subscribe-help' => 'これは、リリースの告知（重要なセキュリティに関する案内を含む）に使われる、低容量のメーリングリストです。
@@ -10028,7 +10028,7 @@ MediaWikiでは、最近の更新を確認し、神経質な、もしくは悪�
 '''{{int:config-profile-fishbowl}}'''のウィキは、承認された利用者が編集でき、一方、一般の人はページ（とその履歴）を閲覧できます。
 '''{{int:config-profile-private}}'''は、承認された利用者のみがページを閲覧でき、そのグループが編集できます。
 
-より複雑な利用者権限の設定は、インストール後に設定できます。詳細は[//www.mediawiki.org/wiki/Manual:User_rights 関連するマニュアル]をご覧ください。",
+より複雑な利用者権限の設定は、インストール後に設定できます。詳細は[//www.mediawiki.org/wiki/Manual:wiki_user_rights 関連するマニュアル]をご覧ください。",
 	'config-license' => '著作権とライセンス:',
 	'config-license-none' => 'ライセンスのフッターを付けない',
 	'config-license-cc-by-sa' => 'クリエイティブ・コモンズ 表示-継承',
@@ -10050,10 +10050,10 @@ GFDL は有効なライセンスですが、内容を理解するのは困難で
 	'config-enable-email' => 'メール送信を有効にする',
 	'config-enable-email-help' => 'メールを使用したい場合は、[http://www.php.net/manual/en/mail.configuration.php PHP のメール設定]が正しく設定されている必要があります。
 メールの機能を使用しない場合は、ここで無効にすることができます。',
-	'config-email-user' => '利用者間のメールを有効にする',
-	'config-email-user-help' => '設定において有効になっている場合、すべてのユーザがお互いにメールのやりとりを行うことを許可する。',
-	'config-email-usertalk' => 'ユーザのトークページにおける通知を有効にする',
-	'config-email-usertalk-help' => '設定で有効にしているならば、ユーザのトークページの変更の通知を受けることをユーザに許可する。',
+	'config-email-wiki_user' => '利用者間のメールを有効にする',
+	'config-email-wiki_user-help' => '設定において有効になっている場合、すべてのユーザがお互いにメールのやりとりを行うことを許可する。',
+	'config-email-wiki_usertalk' => 'ユーザのトークページにおける通知を有効にする',
+	'config-email-wiki_usertalk-help' => '設定で有効にしているならば、ユーザのトークページの変更の通知を受けることをユーザに許可する。',
 	'config-email-watchlist' => 'ウォッチリストの通知を有効にする',
 	'config-email-watchlist-help' => '利用者が設定で有効にしている場合、閲覧されたページに関する通知を受け取ることを許可する。',
 	'config-email-auth' => 'メールの認証を有効にする',
@@ -10117,12 +10117,12 @@ GFDL は有効なライセンスですが、内容を理解するのは困難で
 	'config-install-pg-schema-failed' => 'テーブルの作成に失敗しました。
 利用者「$1」がスキーマ「$2」に書き込めるようにしてください。',
 	'config-install-pg-commit' => '変更を送信',
-	'config-install-user' => 'データベースユーザーの作成',
-	'config-install-user-alreadyexists' => 'ユーザー「$1」は既に存在します',
-	'config-install-user-create-failed' => 'ユーザー「$1」の作成に失敗しました: $2',
-	'config-install-user-grant-failed' => 'ユーザー「$1」に許可を与えることに失敗しました: $2',
-	'config-install-user-missing' => '指定したユーザー「$1」は存在しません。',
-	'config-install-user-missing-create' => '指定したユーザー「$1」は存在しません。
+	'config-install-wiki_user' => 'データベースユーザーの作成',
+	'config-install-wiki_user-alreadyexists' => 'ユーザー「$1」は既に存在します',
+	'config-install-wiki_user-create-failed' => 'ユーザー「$1」の作成に失敗しました: $2',
+	'config-install-wiki_user-grant-failed' => 'ユーザー「$1」に許可を与えることに失敗しました: $2',
+	'config-install-wiki_user-missing' => '指定したユーザー「$1」は存在しません。',
+	'config-install-wiki_user-missing-create' => '指定したユーザー「$1」は存在しません。
 アカウントを作成する場合は、下の「アカウント作成」をクリックしてください。',
 	'config-install-tables' => 'テーブルの作成',
 	'config-install-tables-exist' => "'''警告'''：MediaWikiテーブルは既に存在するようです。
@@ -10168,7 +10168,7 @@ $3
  */
 $messages['jam'] = array(
 	'mainpagetext' => "'''MediaWiki don instaal soksesful.'''",
-	'mainpagedocfooter' => "Kansolt di [//meta.wikimedia.org/wiki/Help:Contents User's Guide] fi infamieshan ou fi yuuz di wiki saafwier.
+	'mainpagedocfooter' => "Kansolt di [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] fi infamieshan ou fi yuuz di wiki saafwier.
 
 == Taatop ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
@@ -10181,14 +10181,14 @@ $messages['jam'] = array(
  */
 $messages['jut'] = array(
 	'mainpagetext' => "'''MediaWiki er nu installeret.'''",
-	'mainpagedocfooter' => "Se vores engelskspråĝede [//meta.wikimedia.org/wiki/MediaWiki_localisation dokumentåsje tilpasnenge'm åf æ brugergrænseflade] og [//meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide æ brugervejlednenge] før åplysnenger åpsætnenge'm og anvendelse.",
+	'mainpagedocfooter' => "Se vores engelskspråĝede [//meta.wikimedia.org/wiki/MediaWiki_localisation dokumentåsje tilpasnenge'm åf æ brugergrænseflade] og [//meta.wikimedia.org/wiki/MediaWiki_wiki_user%27s_Guide æ brugervejlednenge] før åplysnenger åpsætnenge'm og anvendelse.",
 );
 
 /** Javanese (Basa Jawa)
  */
 $messages['jv'] = array(
 	'mainpagetext' => "'''Prangkat empuk wiki wis suksès dipasang.'''",
-	'mainpagedocfooter' => "Mangga maca [//meta.wikimedia.org/wiki/Help:Contents User's Guide] kanggo katrangan luwih langkung prakara panggunan prangkat empuk wiki
+	'mainpagedocfooter' => "Mangga maca [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] kanggo katrangan luwih langkung prakara panggunan prangkat empuk wiki
 == Miwiti panggunan  ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Daftar pangaturan préférènsi]
 * [//www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
@@ -10230,7 +10230,7 @@ $messages['ka'] = array(
 	'config-db-host-oracle' => 'მონაცემთა ბაზის TNS:',
 	'config-db-name' => 'მონაცემთა ბაზის სახელი:',
 	'config-db-name-oracle' => 'მონაცემთა ბაზის სქემა:',
-	'config-db-username' => 'მონაცემთა ბაზის მომხმარებლის სახელი:',
+	'config-db-wiki_username' => 'მონაცემთა ბაზის მომხმარებლის სახელი:',
 	'config-db-password' => 'მონაცემთა ბაზის პაროლი:',
 	'config-charset-mysql5-binary' => 'MySQL 4.1/5.0 ორობითი',
 	'config-charset-mysql5' => 'MySQL 4.1/5.0 UTF-8',
@@ -10594,11 +10594,11 @@ PostgreSQL을 사용할 경우 유닉스 소켓을 통해 연결되도록 입력
 
 필요한 권한을 가진 계정을 만드는 스크립트는 이 설치의 "maintenance/oracle/" 디렉토리에서 찾을 수 있습니다. 제한된 계정을 사용하면 기본 계정으로 모든 관리 기능을 비활성화할 것을 염두해 두십시오.',
 	'config-db-install-account' => '설치를 위한 사용자 계정',
-	'config-db-username' => '데이터베이스 사용자 이름:',
+	'config-db-wiki_username' => '데이터베이스 사용자 이름:',
 	'config-db-password' => '데이터베이스 비밀번호:',
 	'config-db-password-empty' => '새 데이터베이스 사용자의 비밀번호를 입력하세요: $1.
 비밀번호 없이 사용자를 만들 수도 있지만 이는 안전하지 않습니다.',
-	'config-db-install-username' => '설치 과정 중에 데이터베이스에 연결할 때 사용할 사용자 이름을 입력하세요.
+	'config-db-install-wiki_username' => '설치 과정 중에 데이터베이스에 연결할 때 사용할 사용자 이름을 입력하세요.
 이는 미디어위키 계정의 사용자 이름이 아닌 데이터베이스에 대한 사용자 이름입니다.',
 	'config-db-install-password' => '설치 과정 중에 데이터베이스에 연결할 때 사용할 비밀번호을 입력하세요. 이는 미디어위키 계정의 비밀번호가 아닌 데이터베이스에 대한 비밀번호입니다.',
 	'config-db-install-help' => '설치 과정 중에 데이터베이스에 연결할 때 사용할 사용자 이름과 비밀번호를 입력하세요.',
@@ -10673,7 +10673,7 @@ ASCII 글자 (a-z, A-Z), 숫자 (0-9), 밑줄 (_)과 하이픈 (-)만 사용하�
 	'config-invalid-schema' => '미디어위키 "$1"에 대한 스키마가 잘못됐습니다.
 ASCII 글자 (a-z, A-Z), 숫자 (0-9), 밑줄 (_)과 하이픈 (-)만 사용하세요.',
 	'config-db-sys-create-oracle' => '설치 마법사는 새 계정을 만들기 위한 SYSDBA 계정만을 지원합니다.',
-	'config-db-sys-user-exists-oracle' => '"$1" 사용자 계정이 이미 존재합니다. SYSDBA는 새 계정을 만드는 데에만 사용할 수 있습니다!',
+	'config-db-sys-wiki_user-exists-oracle' => '"$1" 사용자 계정이 이미 존재합니다. SYSDBA는 새 계정을 만드는 데에만 사용할 수 있습니다!',
 	'config-postgres-old' => 'PostgreSQL $1 이상이 필요하나 $2(이)가 있습니다.',
 	'config-sqlite-name-help' => '위키를 식별하기 위한 이름을 선택하세요.
 공백이나 하이픈을 사용하지 마십시오.
@@ -10778,7 +10778,7 @@ MyISAM 데이터베이스는 InnoDB 데이터베이스보다 더 자주 손실�
 	'config-admin-password-mismatch' => '입력한 비밀번호 두 개가 일치하지 않습니다.',
 	'config-admin-email' => '이메일 주소:',
 	'config-admin-email-help' => '위키의 다른 사용자로부터 이메일을 전달받거나 비밀번호를 재설정하고 주시문서 목록에 대한 바뀜 알림을 받기 위해 여기에 이메일 주소를 입력하세요. 이 필드를 비워 둘 수 있습니다.',
-	'config-admin-error-user' => '"<nowiki>$1</nowiki>" 이름의 관리자를 만드는 중 내부 오류가 발생했습니다.',
+	'config-admin-error-wiki_user' => '"<nowiki>$1</nowiki>" 이름의 관리자를 만드는 중 내부 오류가 발생했습니다.',
 	'config-admin-error-password' => '"<nowiki>$1</nowiki>" 관리자의 비밀번호를 설정하는 중 내부 오류가 발생했습니다: <pre>$2</pre>',
 	'config-admin-error-bademail' => '이메일 주소를 잘못 입력하였습니다.',
 	'config-subscribe' => '[https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce 배포 발표 메일링 리스트]에 가입합니다.',
@@ -10806,7 +10806,7 @@ MyISAM 데이터베이스는 InnoDB 데이터베이스보다 더 자주 손실�
 
 '''{{int:config-profile-fishbowl}}''' 같은 경우는 승인된 사용자만 편집할 수 있지만, 대중은 역사를 포함하여 페이지를 볼 수 있습니다. '''{{int:config-profile-private}}'''는 승인된 사용자만 같은 그룹에서 편집할 수 있고 볼 수 있습니다.
 
-더 복잡한 사용자 권한을 설정하여 설치한 후 사용할 수 있도록 하려면 [//www.mediawiki.org/wiki/Manual:User_rights 관련 매뉴얼 항목]을 참고하세요.",
+더 복잡한 사용자 권한을 설정하여 설치한 후 사용할 수 있도록 하려면 [//www.mediawiki.org/wiki/Manual:wiki_user_rights 관련 매뉴얼 항목]을 참고하세요.",
 	'config-license' => '저작권 및 라이선스:',
 	'config-license-none' => '라이선스 바닥글 없음',
 	'config-license-cc-by-sa' => '크리에이티브 커먼즈 저작자표시-동일조건변경허락',
@@ -10829,10 +10829,10 @@ GFDL은 유효한 라이선스이지만 이는 이해하기 어렵습니다.
 	'config-enable-email' => '발신 이메일 활성화',
 	'config-enable-email-help' => '이메일을 작동하려면 [http://www.php.net/manual/en/mail.configuration.php PHP의 메일 설정]을 올바르게 설정해야 합니다.
 이메일 기능을 사용하지 않으려면 이를 비활성화할 수 있습니다.',
-	'config-email-user' => '사용자와 사용자 간 이메일 활성화',
-	'config-email-user-help' => '환경 설정에서 활성화한 경우 모든 사용자가 이메일을 서로 보내도록 활성화합니다.',
-	'config-email-usertalk' => '사용자 토론 문서 알림 활성화',
-	'config-email-usertalk-help' => '환경 설정에서 활성화한 경우 사용자는 사용자 토론 문서의 바뀜 알림을 받도록 활성화합니다.',
+	'config-email-wiki_user' => '사용자와 사용자 간 이메일 활성화',
+	'config-email-wiki_user-help' => '환경 설정에서 활성화한 경우 모든 사용자가 이메일을 서로 보내도록 활성화합니다.',
+	'config-email-wiki_usertalk' => '사용자 토론 문서 알림 활성화',
+	'config-email-wiki_usertalk-help' => '환경 설정에서 활성화한 경우 사용자는 사용자 토론 문서의 바뀜 알림을 받도록 활성화합니다.',
 	'config-email-watchlist' => '주시문서 목록 알림 활성화',
 	'config-email-watchlist-help' => '환경 설정에서 활성화한 경우 사용자가 주시한 문서에 대한 알림을 받도록 활성화합니다.',
 	'config-email-auth' => '이메일 인증 활성화',
@@ -10908,12 +10908,12 @@ GFDL은 유효한 라이선스이지만 이는 이해하기 어렵습니다.
 설치에 대한 지정한 사용자는 슈퍼 사용자가 아니고, 그것은 웹 사용자의 역할의 구성원이 아니며, 그래서 웹 사용자가 소유한 개체를 만들 수 없습니다.
 
 현재 미디어위키는 테이블을 웹 사용자가 소유해야 합니다. 다른 웹 계정 이름을 지정하거나 "뒤로"를 클릭하고 적절한 권한의 설치할 사용자를 지정하세요.',
-	'config-install-user' => '데이터베이스 사용자를 만드는 중',
-	'config-install-user-alreadyexists' => '"$1" 사용자가 이미 있음',
-	'config-install-user-create-failed' => '"$1" 사용자 만드는 중 실패: $2',
-	'config-install-user-grant-failed' => '"$1" 사용자에 대한 권한 부여 실패: $2',
-	'config-install-user-missing' => '지정한 "$1" 사용자가 존재하지 않습니다.',
-	'config-install-user-missing-create' => '지정된 "$1" 사용자가 존재하지 않습니다.
+	'config-install-wiki_user' => '데이터베이스 사용자를 만드는 중',
+	'config-install-wiki_user-alreadyexists' => '"$1" 사용자가 이미 있음',
+	'config-install-wiki_user-create-failed' => '"$1" 사용자 만드는 중 실패: $2',
+	'config-install-wiki_user-grant-failed' => '"$1" 사용자에 대한 권한 부여 실패: $2',
+	'config-install-wiki_user-missing' => '지정한 "$1" 사용자가 존재하지 않습니다.',
+	'config-install-wiki_user-missing-create' => '지정된 "$1" 사용자가 존재하지 않습니다.
 이를 만드는 것을 원하면 아래의 "계정 만들기" 확인 상자를 클릭하세요.',
 	'config-install-tables' => '테이블을 만드는 중',
 	'config-install-tables-exist' => "'''경고''': 미디어위키 테이블이 이미 있는 것 같습니다.
@@ -10965,7 +10965,7 @@ $3
  */
 $messages['krc'] = array(
 	'mainpagetext' => "'''«MediaWiki» тыйыншлы салынды.'''",
-	'mainpagedocfooter' => "Бу вики бла къалай ишлерге ангылатхан информацияны [//meta.wikimedia.org/wiki/Help:Contents_User's_Guide къошулуучугъа юретиуде] табаргъа боллукъду.
+	'mainpagedocfooter' => "Бу вики бла къалай ишлерге ангылатхан информацияны [//meta.wikimedia.org/wiki/Help:Contents_wiki_user's_Guide къошулуучугъа юретиуде] табаргъа боллукъду.
 
 == Файдалы ресурсла ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings тюрлендириулени списогу (ингил.)];
@@ -11161,12 +11161,12 @@ Udder De jiß zwei ongerscheidlijje Zohjäng op de Daatenbangk aan, woh eine vun
 
 En Skrep, wat ene Zohjang op de Daatenbangk aanlääsch met all dä nüüdejje Rääschde, fengks De em Verzeishneß <code lang="en">maintenance/oracle/</code> vun Dingem MediaWiki. Donn draan dengke, dat ene Zohjang met beschrängkte Rääschde all di Müjjeleschkeite för et Waade un Repareere nit hät, di de jewöhnlejje Zoot Zohjang met sesh brängk.',
 	'config-db-install-account' => 'Der Zohjang för en Enreeschte',
-	'config-db-username' => 'Dä Name vun däm Aanwender för dä Zohjref op de Daatebangk:',
+	'config-db-wiki_username' => 'Dä Name vun däm Aanwender för dä Zohjref op de Daatebangk:',
 	'config-db-password' => 'Et Paßwoot vun däm Aanwender för dä Zohjref op de Daatebangk:',
 	'config-db-password-empty' => 'Jiv e Paßwoot aan, för dä neue Aanwender för dä Zohjref op de Daatebangk, $1.
 Ed es zwa müjjelesch, Aanwender för dä Zohjref op de Daatebangk der ohne e Paßwoot aanzelääje,
 ävver dat wöhr en schwere Jevah för de Sescherheit vum Wiki.',
-	'config-db-install-username' => 'Jiv ene Name aan för dä Aanwender för dä Zohjref op de Daatebangk beim Enshtalleere.
+	'config-db-install-wiki_username' => 'Jiv ene Name aan för dä Aanwender för dä Zohjref op de Daatebangk beim Enshtalleere.
 Dat es keine Metmaacher_Name em Wiki — heh dä Name es alleins en der Daatebangk bikannt.',
 	'config-db-install-password' => 'Jiv e Paßwoot aan för dä Aanwender för dä Zohjref op de Daatebangk beim Enshtalleere.
 Dat es kei Paßwoot för ene Metmaacher em Wiki — et es alleins en der Daatebangk bikannt.',
@@ -11248,7 +11248,7 @@ Donn de Name för dä Rääschner, vun däm Aanwender för dä Zohjref op de Daa
 	'config-invalid-schema' => 'Dat Schema för MediaWiki kann nit „$1“ sin, dä Name wöhr esu nit jöltesch.
 Döh dörve bloß <i lang="en" title="American Standard Code for Information Interchange">ASCII</i> Boochshtaabe (a-z, A-Z), Zahle (0-9), un Ongerstreshe (_) dren vörkumme.',
 	'config-db-sys-create-oracle' => 'Dat Projramm för MediaWiki opzesäze kann bloß <i lang="en">SYSDBA</i> bruche för ene neue Zohjang zor Daatebangk enzereeschte!',
-	'config-db-sys-user-exists-oracle' => 'Dä Aanwender „$1“ för dä Zohjref op de Daatebangk jidd_et ald. <i lang="en">SYSDBA</i> kam_mer bloß bruche, för ene neue Zohjang enzereeschte!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Dä Aanwender „$1“ för dä Zohjref op de Daatebangk jidd_et ald. <i lang="en">SYSDBA</i> kam_mer bloß bruche, för ene neue Zohjang enzereeschte!',
 	'config-postgres-old' => 'Mer bruche <i lang="en">PostgreSQL</i> $1 udder neuer. Em Momang es <i lang="en">PostgreSQL</i> $2 aam Loufe.',
 	'config-sqlite-name-help' => 'Söhk enen Name uß, dä Ding Wiki beschrief.
 Donn kein Bendeschresch un Zweschräum en däm Name bruche.
@@ -11322,7 +11322,7 @@ Beim Shpeishere em '''UTF-8 Fomaat''' deiht et <i lang=\"en\">MySQL</i> der Zeis
 allerdengs künne kein Zeishe ußerhalv vum [//de.wikipedia.org/wiki/Basic_Multilingual_Plane#Gliederung_in_Ebenen_und_Bl.C3.B6cke jrundlääje Knubbel för vill Shprooche (<i lang=\"en\">Basic Multilingual Plane — BMP</i>)] afjeshpeishert wääde.",
 	'config-ibm_db2-low-db-pagesize' => "De <i lang=\"en\">DB2</i> Daatebangk heh hät ene standattmääßeje Plaz för Tabälle met zoh klein Sigge. Dä Plaz en de Sigge moß '''32K''' udder mieh sin.",
 	'config-site-name' => 'Däm Wiki singe Name:',
-	'config-site-name-help' => 'Dä douch em Tittel vun de Brauserfinstere un aan ätlije andere Shtälle op.',
+	'config-site-name-help' => 'Dä douch em Tittel vun de Brawiki_userfinstere un aan ätlije andere Shtälle op.',
 	'config-site-name-blank' => 'Donn ene Name för di Sait aanjävve.',
 	'config-project-namespace' => 'Dä Name för et Appachtemang övver et Projäk:',
 	'config-ns-generic' => 'Projäk',
@@ -11351,7 +11351,7 @@ Jiv ene joode Name en!',
 	'config-admin-email' => 'Addräß för de <i lang="en">e-mail</i>:',
 	'config-admin-email-help' => 'Jiv heh di Adräß för de <i lang="en">e-mail</i> aan, woh De <i lang="en">e-mail</i> vun ander Metmaacher uss_em Wiki hen krijje wells, di et Der müjjelesh määt, Ding Paßwoot automatetsch truusche ze lohße, un woh Nohreeshte övver veränderte Sigge op Dinge Oppaßleß hen jescheck wääde sulle.
 De kanns dat Fäld ävver och läddesch lohße.',
-	'config-admin-error-user' => 'Beim Enreeshte vum Zohjang för dä Wiki_Köbes „<nowiki>$1</nowiki>“ es ene Fähler em Wiki opjetrodde.',
+	'config-admin-error-wiki_user' => 'Beim Enreeshte vum Zohjang för dä Wiki_Köbes „<nowiki>$1</nowiki>“ es ene Fähler em Wiki opjetrodde.',
 	'config-admin-error-password' => 'Beim Paßwoot-Säze för dä Wiki_Köbes „<nowiki>$1</nowiki>“ es ene Fähler em Wiki opjetrodde.: <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Do häs_en onjöltijje Addräß för de <i lang="en">e-mail</i> aanjejovve.',
 	'config-subscribe' => 'Donn de [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce <i lang="en">e-mail</i>-Leß met de Aanköndijunge vum MediaWiki] abonnere.',
@@ -11381,7 +11381,7 @@ Esu häß De de Wahl:
 
 '''{{int:config-profile-private}}''' kann nur lässe, wäh en et Wiki zohjelohße es, un desellve Jropp kann uch schrieve.
 
-Noch ander un un opwändijere Enshtellunge för de Rääschte sin müjjelesch, wann et Wiki ens aam Loufe es. Loor Der doför de [//www.mediawiki.org/wiki/Manual:User_rights zopaß Hölp em Handbooch] aan.",
+Noch ander un un opwändijere Enshtellunge för de Rääschte sin müjjelesch, wann et Wiki ens aam Loufe es. Loor Der doför de [//www.mediawiki.org/wiki/Manual:wiki_user_rights zopaß Hölp em Handbooch] aan.",
 	'config-license' => 'Urhävverrääsch un Lizänz:',
 	'config-license-none' => 'Kein Fooßreih övver de Lizänz',
 	'config-license-cc-by-sa' => '<i lang="en">Creative Commons</i> Der Name moß jenannt sin, et Wiggerjävve es zohjelohße onger dersellve Bedengunge',
@@ -11402,10 +11402,10 @@ De su jenannte '''<i lang=\"en\">GNU Free Documentation License</i>''' (de freij
 	'config-enable-email' => 'De <i lang="en">e-mail</i> noh druße zohlohße',
 	'config-enable-email-help' => 'Sulle <i lang="en">e-mails</i> zohjelohße sin, moß mer, domet et noher flupp, de [http://www.php.net/manual/en/mail.configuration.php Enschtellunge em PHP för de <i lang="en">e-mails</i>] zopaß jemaat han.
 Wann kein <i lang="en">e-mails</i> nüüdesch sin, kam_mer se heh afschallde.',
-	'config-email-user' => '<i lang="en">e-mails</i> zwesche de Metmaacher zohlohße',
-	'config-email-user-help' => 'Määt et müjjelesch, dat sesch de Metmaacher jääjesiggesch <i lang="en">e-mails</i> schecke künne, wann se dat en iehre eije Enschtellunge och enjeschalldt han.',
-	'config-email-usertalk' => '<i lang="en">e-mails</i> mem Bescheid zohlohße, dat einem sing Klaafsigg verändert woodt',
-	'config-email-usertalk-help' => 'Maach et müjjelesch, dat Metmaaacher en iere Enstellunge <i lang="en">e-mails</i> mem Bescheid zohlohße, dat einem sing Klaafsigg verändert woodt.',
+	'config-email-wiki_user' => '<i lang="en">e-mails</i> zwesche de Metmaacher zohlohße',
+	'config-email-wiki_user-help' => 'Määt et müjjelesch, dat sesch de Metmaacher jääjesiggesch <i lang="en">e-mails</i> schecke künne, wann se dat en iehre eije Enschtellunge och enjeschalldt han.',
+	'config-email-wiki_usertalk' => '<i lang="en">e-mails</i> mem Bescheid zohlohße, dat einem sing Klaafsigg verändert woodt',
+	'config-email-wiki_usertalk-help' => 'Maach et müjjelesch, dat Metmaaacher en iere Enstellunge <i lang="en">e-mails</i> mem Bescheid zohlohße, dat einem sing Klaafsigg verändert woodt.',
 	'config-email-watchlist' => 'Nohreeschte övver Änderonge aan Sigg op de Opaßleßte zohlohße',
 	'config-email-watchlist-help' => 'Lohß Metmaacher Nohreeshte övver de Sigge op dänne iehr Oppaßleß krijje, wann se et en iehre Enschtellonge ußjewählt han.',
 	'config-email-auth' => 'Donn de Övverprööfung för Zohjangsberääschtejunge övver de <i lang="en">e-mail</i> zohlohße',
@@ -11478,16 +11478,16 @@ Donn doför sorrje, dat dä Daatebangk-Aanwänder „$1“ en dämm Daatebangksc
 	'config-pg-no-plpgsql' => 'Do moß de Daatebangkshprooch <code lang="en">PL/pgSQL</code> en dä Daatebangk $1 enreeschte.',
 	'config-pg-no-create-privs' => 'Dä Daatebangk-Aanwänder för et Enreeschte hät nit jenooch Rääschde, öm ene andere Daatebangk-Aanwänder en dä Daatebangk aanzelääje.',
 	'config-pg-not-in-role' => 'Dä aanjejovve Zohjang för et Web jiddet ald.
-Dä aanjejovve Zohjang för et Enschtalleere es keine <i lang="en">superuser<i> un es nit en de Web-Jropp, dröm kam_mer domet kein Dateije aanlääje, di däm Zohjang för et Web jehüüre.
+Dä aanjejovve Zohjang för et Enschtalleere es keine <i lang="en">superwiki_user<i> un es nit en de Web-Jropp, dröm kam_mer domet kein Dateije aanlääje, di däm Zohjang för et Web jehüüre.
 
 För MeedijaWiki mößße dämm ävver em Momang di Tabälle jehüüre.
 Dröm donn ene andere Name för dä Zohjang zom Wäb nämme, udder donn „retuur“ klicke, un jivv ene Zohjang för et Enschtalleere aan, dä jenooch Rääschte hät.',
-	'config-install-user' => 'Ben unse Daatebangk-Aanwänder en de Daatebangk am aanlääje.',
-	'config-install-user-alreadyexists' => 'Dä Aanwender „$1“ för dä Zohjref op de Daatebangk kann nit aanjelaat wääde, et jidd_en alld.',
-	'config-install-user-create-failed' => 'Dä Aanwender „$1“ för dä Zohjref op de Daatebangk kunnt nit aanjelaat wääde, wäje: <code lang="en">$2</code>',
-	'config-install-user-grant-failed' => 'Däm Daatebangk-Aanwänder sing Beräschtijunge ze säze däät nit fluppe wääje: $2',
-	'config-install-user-missing' => 'Dä aanjejovve Metmaacher „$1“ jidd_et nit.',
-	'config-install-user-missing-create' => '{{int:Config-install-user-missing}}<!-- $1 -->
+	'config-install-wiki_user' => 'Ben unse Daatebangk-Aanwänder en de Daatebangk am aanlääje.',
+	'config-install-wiki_user-alreadyexists' => 'Dä Aanwender „$1“ för dä Zohjref op de Daatebangk kann nit aanjelaat wääde, et jidd_en alld.',
+	'config-install-wiki_user-create-failed' => 'Dä Aanwender „$1“ för dä Zohjref op de Daatebangk kunnt nit aanjelaat wääde, wäje: <code lang="en">$2</code>',
+	'config-install-wiki_user-grant-failed' => 'Däm Daatebangk-Aanwänder sing Beräschtijunge ze säze däät nit fluppe wääje: $2',
+	'config-install-wiki_user-missing' => 'Dä aanjejovve Metmaacher „$1“ jidd_et nit.',
+	'config-install-wiki_user-missing-create' => '{{int:Config-install-wiki_user-missing}}<!-- $1 -->
 Donn e Höhksche en et Käßje „{{int:Createaccount}}“ onge, wann De dä aanlääje wells.',
 	'config-install-tables' => 'Ben de Daatebangk-Tabälle aam aanlääje.',
 	'config-install-tables-exist' => "'''Opjepaß''': Et schingk, dem MediaWiki sing Tabälle sin alt doh.
@@ -11652,7 +11652,7 @@ Installatioun ofgebrach.",
 	'config-db-name' => 'Numm vun der Datebank:',
 	'config-db-name-oracle' => 'Datebankschema:',
 	'config-db-install-account' => "Benotzerkont fir d'Installatioun",
-	'config-db-username' => 'Datebank-Benotzernumm:',
+	'config-db-wiki_username' => 'Datebank-Benotzernumm:',
 	'config-db-password' => 'Passwuert vun der Datebank:',
 	'config-db-install-help' => 'Gitt de Benotzernumm an Passwuert an dat wàhrend der Installatioun benotzt gëtt fir sech mat der Datebank ze verbannen.',
 	'config-db-account-lock' => 'De selwechte Benotzernumm a Passwuert fir déi normal Operatioune benotzen',
@@ -11686,7 +11686,7 @@ Wann et de Kont net gëtt, a wann den Installatiouns-Kont genuch Rechter huet, g
 	'config-missing-db-name' => 'Dir musst en Numm fir de Wäert "Numm vun der Datebank" uginn',
 	'config-missing-db-host' => 'Dir musst e Wäert fir "Database host" uginn',
 	'config-missing-db-server-oracle' => 'Dir musst e Wäert fir "Datebank-TNS" uginn',
-	'config-db-sys-user-exists-oracle' => 'De Benotzerkont "$1" gëtt et schonn. SYSDBA kann nëmme benotzt gi fir en neie Benotzerkont opzemaachen.',
+	'config-db-sys-wiki_user-exists-oracle' => 'De Benotzerkont "$1" gëtt et schonn. SYSDBA kann nëmme benotzt gi fir en neie Benotzerkont opzemaachen.',
 	'config-postgres-old' => 'PostgreSQL $1 oder eng méi nei Versioun gëtt gebraucht, Dir hutt $2.',
 	'config-sqlite-name-help' => 'Sicht en Numm deen Är wiki identifizéiert.
 Benotzt keng Espacen a Bindestrécher.
@@ -11725,7 +11725,7 @@ Spezifizéiert en anere Benotzernumm.',
 	'config-admin-password-same' => "D'Passwuert däerf net dat selwecht si wéi de Benotzernumm.",
 	'config-admin-password-mismatch' => 'Déi zwee Passwierder Déi dir aginn stëmmen net iwwerteneen.',
 	'config-admin-email' => 'E-Mailadress:',
-	'config-admin-error-user' => 'Interne Feeler beim uleeë vun engem Administrateur mam Numm "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Interne Feeler beim uleeë vun engem Administrateur mam Numm "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Interne Feeler beim Setze vum Passwuert fir den Admin "<nowiki>$1</nowiki>": <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Dir hutt eng E-Mailadress aginn déi net valabel ass',
 	'config-subscribe' => "Sech op d'[https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Ukënnegunge vun neie Versiounen] abonnéieren.",
@@ -11743,8 +11743,8 @@ Dir kënnt elo déi Astellungen déi nach iwwreg sinn iwwersprangen an d'Wiki el
 	'config-license-pd' => 'Ëffentlechen Domaine',
 	'config-email-settings' => 'E-Mail-Astellungen',
 	'config-enable-email' => 'E-Mailen déi no bausse ginn aschalten',
-	'config-email-user' => 'Benotzer-op-Benotzer E-Mail aschalten',
-	'config-email-usertalk' => 'Benoriichtege bäi Ännerung vun der Benotzerdiskussiounssäit aschalten',
+	'config-email-wiki_user' => 'Benotzer-op-Benotzer E-Mail aschalten',
+	'config-email-wiki_usertalk' => 'Benoriichtege bäi Ännerung vun der Benotzerdiskussiounssäit aschalten',
 	'config-email-watchlist' => 'Benoriichtigung vun der Iwwerwaachungslëscht aschalten',
 	'config-email-auth' => 'E-Mail-Authentifizéierung aschalten',
 	'config-email-sender' => 'E-Mailadress fir Äntwerten:',
@@ -11761,10 +11761,10 @@ Dir kënnt elo déi Astellungen déi nach iwwreg sinn iwwersprangen an d'Wiki el
 	'config-install-extensions' => 'Mat den Ereiderungen',
 	'config-install-database' => 'Datebank gëtt installéiert',
 	'config-pg-no-plpgsql' => "Fir d'Datebank $1 muss d'Datebanksprooch PL/pgSQL installéiert ginn",
-	'config-install-user' => 'Datebank Benotzer uleeën',
-	'config-install-user-alreadyexists' => 'De Benotzer "$1" gëtt et schonn!',
-	'config-install-user-create-failed' => 'D\'Opmaache vum Benotzer "$1" huet net fonctionnéiert: $2',
-	'config-install-user-missing' => 'De Benotzer "$1" deen ugi gouf gëtt et net.',
+	'config-install-wiki_user' => 'Datebank Benotzer uleeën',
+	'config-install-wiki_user-alreadyexists' => 'De Benotzer "$1" gëtt et schonn!',
+	'config-install-wiki_user-create-failed' => 'D\'Opmaache vum Benotzer "$1" huet net fonctionnéiert: $2',
+	'config-install-wiki_user-missing' => 'De Benotzer "$1" deen ugi gouf gëtt et net.',
 	'config-install-tables' => 'Tabelle ginn ugeluecht',
 	'config-install-interwiki' => 'Standard Interwiki-Tabell gëtt ausgefëllt',
 	'config-install-interwiki-list' => 'De Fichier <code>interwiki.list</code> gouf net fonnt.',
@@ -11874,7 +11874,7 @@ $messages['lv'] = array(
  */
 $messages['lzh'] = array(
 	'mainpagetext' => "'''共筆臺已立'''",
-	'mainpagedocfooter' => "欲識維基，見[//meta.wikimedia.org/wiki/Help:Contents User's Guide]
+	'mainpagedocfooter' => "欲識維基，見[//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide]
 
 == 始 ==
 
@@ -11901,7 +11901,7 @@ $messages['lzz'] = array(
  */
 $messages['mai'] = array(
 	'mainpagetext' => "'''मीडियाविकी नीक जकाँ प्रस्थापित भेल।'''",
-	'mainpagedocfooter' => "सम्पर्क करू [//meta.wikimedia.org/wiki/Help:Contents User's Guide] विकी तंत्रांशक प्रयोगक जानकारी लेल।
+	'mainpagedocfooter' => "सम्पर्क करू [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] विकी तंत्रांशक प्रयोगक जानकारी लेल।
 
 ==प्रारम्भ कोना करी==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
@@ -11941,7 +11941,7 @@ $messages['mg'] = array(
 	'config-page-existingwiki' => 'Wiki efa misy',
 	'config-help-restart' => "Tianao hofafana avokoa ve ny data voaangona natsofokao ary hamerina ny fizotran'ny fametrahana ?",
 	'config-restart' => 'Eny, avereno atao',
-	'config-db-username' => "Anaram-pikamban'ny banky angona :",
+	'config-db-wiki_username' => "Anaram-pikamban'ny banky angona :",
 	'config-db-password' => "Tenimiafin'ny banky angona :",
 	'config-header-mysql' => "Parametatr'i MySQL",
 	'config-header-sqlite' => "Parametatr'i SQLite",
@@ -11959,13 +11959,13 @@ $messages['mg'] = array(
 	'config-profile-private' => 'Wiki tsy sarababem-bahoaka',
 	'config-license' => 'Zom-pamorona ary lisansa :',
 	'config-license-none' => 'Tsy misy lisansa any an-tongom-pejy',
-	'config-email-user' => 'Avela mifandefa imailaka ny mpikambana',
-	'config-email-user-help' => "Hahafahan'ny mpikambana mifandefa imailaka raha omen'ny mpikambana alalana ao amin'ny safidiny.",
+	'config-email-wiki_user' => 'Avela mifandefa imailaka ny mpikambana',
+	'config-email-wiki_user-help' => "Hahafahan'ny mpikambana mifandefa imailaka raha omen'ny mpikambana alalana ao amin'ny safidiny.",
 	'config-upload-deleted' => "Petra-drakitra ho an'ny rakitra voafafa :",
 	'config-extensions' => 'Fanitarana',
 	'config-install-step-done' => 'vita',
 	'config-install-step-failed' => 'hadisoana',
-	'config-install-user' => "Famoronana mpapiasan'ny banky angona",
+	'config-install-wiki_user' => "Famoronana mpapiasan'ny banky angona",
 	'config-install-tables' => 'Famoronana tabilao',
 	'config-install-stats' => 'Fanombohana ny statistika',
 	'config-install-keys' => 'Fanamboarana lakile miafina',
@@ -12179,11 +12179,11 @@ $1
 
 Скриптата за создавање сметка со задолжителни привилегии ќе ја најдете во папката „maintenance/oracle/“ од оваа инсталација. Имајте на ум дека ако користите ограничена сметка ќе ги оневозможите сите функции за одржување со основната сметка.',
 	'config-db-install-account' => 'Корисничка смета за инсталација',
-	'config-db-username' => 'Корисничко име за базата:',
+	'config-db-wiki_username' => 'Корисничко име за базата:',
 	'config-db-password' => 'Лозинка за базата:',
 	'config-db-password-empty' => 'Внесете лозинка за новиот корисник на базата: $1.
 Иако може да се создаваат корисници без лозинка, тоа не е безбедно.',
-	'config-db-install-username' => 'Внесете корисничко име што ќе се користи за поврзување со базата во текот на инсталацијата. Ова не е корисничкото име од сметката на МедијаВики, туку посебно корисничко име за вашата база на податоци.',
+	'config-db-install-wiki_username' => 'Внесете корисничко име што ќе се користи за поврзување со базата во текот на инсталацијата. Ова не е корисничкото име од сметката на МедијаВики, туку посебно корисничко име за вашата база на податоци.',
 	'config-db-install-password' => 'Внесете клозинка што ќе се користи за поврзување со базата во текот на инсталацијата. Ова не е лозинката од сметката на МедијаВики, туку посебна лозинка за вашата база на податоци.',
 	'config-db-install-help' => 'Внесете го корисничкото име и лозинката што ќе се користи за поврзување со базата на податоци во текот на инсталацијата.',
 	'config-db-account-lock' => 'Користи го истото корисничко име и лозинка за редовна работа',
@@ -12260,7 +12260,7 @@ $1
 	'config-invalid-schema' => 'Неважечка шема за МедијаВики „$1“.
 Користете само букви, бројки и долни црти.',
 	'config-db-sys-create-oracle' => 'Инсталаторот поддржува само употреба на SYSDBA-сметка за создавање на нова сметка.',
-	'config-db-sys-user-exists-oracle' => 'Корисничката сметка „$1“ веќе постои. SYSDBA служи само за создавање на нова сметка!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Корисничката сметка „$1“ веќе постои. SYSDBA служи само за создавање на нова сметка!',
 	'config-postgres-old' => 'Се бара PostgreSQL $1 или поново, а вие имате $2.',
 	'config-sqlite-name-help' => 'Одберете име кое ќе го претставува вашето вики.
 Не користете празни простори и црти.
@@ -12365,7 +12365,7 @@ chmod a+w $3</pre>',
 	'config-admin-password-mismatch' => 'Лозинките што ги внесовте не се совпаѓаат.',
 	'config-admin-email' => 'Е-поштенска адреса:',
 	'config-admin-email-help' => 'Тука внесете е-поштенска адреса за да можете да добивате е-пошта од други корисници на викито, да ја менувате лозинката, и да бидете известувани за промени во страниците на вашиот список на набљудувања. Можете и да го оставите празно.',
-	'config-admin-error-user' => 'Се појави внатрешна грешка при создавањето на администраторот со име „<nowiki>$1</nowiki>“.',
+	'config-admin-error-wiki_user' => 'Се појави внатрешна грешка при создавањето на администраторот со име „<nowiki>$1</nowiki>“.',
 	'config-admin-error-password' => 'Се појави внатрешна грешка при задавање на лозинката за администраторот „<nowiki>$1</nowiki>“: <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Внесовте неважечка е-поштенска адреса',
 	'config-subscribe' => 'Претплатете се на [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce release поштенскиот список за известувања].',
@@ -12394,7 +12394,7 @@ chmod a+w $3</pre>',
 '''{{int:config-profile-fishbowl}}''' — може да уредуваат само уредници што имаат добиено дозвола за тоа, но јавноста може да ги гледа страниците, вклучувајќи ја нивната историја.
 '''{{int:config-profile-private}}''' — страниците се видливи и уредливи само за овластени корисници.
 
-По инсталацијата имате на избор и посложени кориснички права и поставки. Погледајте во [//www.mediawiki.org/wiki/Manual:User_rights прирачникот].",
+По инсталацијата имате на избор и посложени кориснички права и поставки. Погледајте во [//www.mediawiki.org/wiki/Manual:wiki_user_rights прирачникот].",
 	'config-license' => 'Авторски права и лиценца:',
 	'config-license-none' => 'Без подножје за лиценца',
 	'config-license-cc-by-sa' => 'Creative Commons НаведиИзвор СподелиПодИстиУслови',
@@ -12417,10 +12417,10 @@ chmod a+w $3</pre>',
 	'config-enable-email' => 'Овозможи излезна е-пошта',
 	'config-enable-email-help' => 'Ако сакате да работи е-поштата, [http://www.php.net/manual/en/mail.configuration.php поштенските нагодувања на PHP] треба да се правилно наместени.
 Ако воопшто не сакате никакви функции за е-пошта, тогаш можете да ги оневозможите тука.',
-	'config-email-user' => 'Овозможи е-пошта од корисник до корисник',
-	'config-email-user-help' => 'Дозволи сите корисници да можат да си праќаат е-пошта ако ја имаат овозможено во нагодувањата.',
-	'config-email-usertalk' => 'Овозможи известувања за промени во кориснички страници за разговор',
-	'config-email-usertalk-help' => 'Овозможи корисниците да добиваат известувања за промени во нивните кориснички страници за разговор ако ги имаат овозможено во нагодувањата.',
+	'config-email-wiki_user' => 'Овозможи е-пошта од корисник до корисник',
+	'config-email-wiki_user-help' => 'Дозволи сите корисници да можат да си праќаат е-пошта ако ја имаат овозможено во нагодувањата.',
+	'config-email-wiki_usertalk' => 'Овозможи известувања за промени во кориснички страници за разговор',
+	'config-email-wiki_usertalk-help' => 'Овозможи корисниците да добиваат известувања за промени во нивните кориснички страници за разговор ако ги имаат овозможено во нагодувањата.',
 	'config-email-watchlist' => 'Овозможи известувања за список на набљудувања',
 	'config-email-watchlist-help' => 'Овозможи корисниците да добиваат известувања за нивните набљудувани страници ако ги имаат овозможено во нагодувањата.',
 	'config-email-auth' => 'Овозможи потврдување на е-пошта',
@@ -12496,12 +12496,12 @@ chmod a+w $3</pre>',
 Сметката што ја наведовте за инсталација не е суперкорисник и не ѝ припаѓа на улогата на мрежниот корисник, па затоа не може да создава објекти во негова  сопственост.
 
 МедијаВики налага дека табелите мора да се во сопственост на мрежниот корисник. Наведете друга мрежна сметка, или стиснете на „назад“ и наведете соодветно привилегиран корисник за инталацијата.',
-	'config-install-user' => 'Создавам корисник за базата',
-	'config-install-user-alreadyexists' => 'Корисникот „$1“ веќе постои',
-	'config-install-user-create-failed' => 'Создавањето на корисникот „$1“ не успеа: $2',
-	'config-install-user-grant-failed' => 'Доделувањето на дозвола на корисникот „$1“ не успеа: $2',
-	'config-install-user-missing' => 'Наведениот корисник „$1“ не постои.',
-	'config-install-user-missing-create' => 'Наведениот корисник „$1“ не постои.
+	'config-install-wiki_user' => 'Создавам корисник за базата',
+	'config-install-wiki_user-alreadyexists' => 'Корисникот „$1“ веќе постои',
+	'config-install-wiki_user-create-failed' => 'Создавањето на корисникот „$1“ не успеа: $2',
+	'config-install-wiki_user-grant-failed' => 'Доделувањето на дозвола на корисникот „$1“ не успеа: $2',
+	'config-install-wiki_user-missing' => 'Наведениот корисник „$1“ не постои.',
+	'config-install-wiki_user-missing-create' => 'Наведениот корисник „$1“ не постои.
 Ако сакате да го создадете, штиклирајте ја можноста „создај сметка“.',
 	'config-install-tables' => 'Создавам табели',
 	'config-install-tables-exist' => "'''Предупредување''': Изгледа дека табелите за МедијаВики веќе постојат.
@@ -12598,7 +12598,7 @@ $messages['ml'] = array(
 	'config-db-name' => 'ഡേറ്റാബേസിന്റെ പേര്:',
 	'config-db-name-oracle' => 'ഡേറ്റാബേസ് സ്കീമ:',
 	'config-db-install-account' => 'ഇൻസ്റ്റലേഷനുള്ള ഉപയോക്തൃ അംഗത്വം',
-	'config-db-username' => 'ഡേറ്റാബേസ് ഉപയോക്തൃനാമം:',
+	'config-db-wiki_username' => 'ഡേറ്റാബേസ് ഉപയോക്തൃനാമം:',
 	'config-db-password' => 'ഡേറ്റാബേസ് രഹസ്യവാക്ക്:',
 	'config-mysql-old' => 'മൈഎസ്‌ക്യൂഎൽ $1 അഥവാ അതിലും പുതിയത് ആവശ്യമാണ്, താങ്കളുടെ പക്കൽ ഉള്ളത് $2 ആണ്.',
 	'config-db-port' => 'ഡേറ്റാബേസ് പോർട്ട്:',
@@ -12637,7 +12637,7 @@ $1
 	'config-admin-password-same' => 'രഹസ്യവാക്കും ഉപയോക്തൃനാമവും ഒന്നാകരുത്.',
 	'config-admin-password-mismatch' => 'താങ്കൾ നൽകിയ രഹസ്യവാക്കുകൾ രണ്ടും തമ്മിൽ യോജിക്കുന്നില്ല.',
 	'config-admin-email' => 'ഇമെയിൽ വിലാസം:',
-	'config-admin-error-user' => '"<nowiki>$1</nowiki>" എന്ന പേരിലുള്ള കാര്യനിർവഹണ അംഗത്വ നിർമ്മിതിയ്ക്കിടെ ആന്തരികമായ പിഴവുണ്ടായി.',
+	'config-admin-error-wiki_user' => '"<nowiki>$1</nowiki>" എന്ന പേരിലുള്ള കാര്യനിർവഹണ അംഗത്വ നിർമ്മിതിയ്ക്കിടെ ആന്തരികമായ പിഴവുണ്ടായി.',
 	'config-admin-error-password' => '"<nowiki>$1</nowiki>" എന്ന പേരിലുള്ള കാര്യനിർവാഹക അംഗത്വത്തിനു രഹസ്യവാക്ക് സജ്ജീകരിച്ചപ്പോൾ ആന്തരികമായ പിഴവുണ്ടായി: <pre>$2</pre>',
 	'config-subscribe' => '[https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce പ്രകാശന അറിയിപ്പ് മെയിലിങ് ലിസ്റ്റിൽ] വരിക്കാരാകുക.',
 	'config-subscribe-help' => 'പുറത്തിറക്കൽ അറിയിപ്പുകളും, പ്രധാന സുരക്ഷാ അറിയിപ്പുകളും പ്രസിദ്ധീകരിക്കുന്ന വളരെ എഴുത്തുകളൊന്നും ഉണ്ടാകാറില്ലാത്ത മെയിലിങ് ലിസ്റ്റ് ആണിത്.
@@ -12657,9 +12657,9 @@ $1
 	'config-email-settings' => 'ഇമെയിൽ സജ്ജീകരണങ്ങൾ',
 	'config-enable-email-help' => "ഇമെയിൽ പ്രവർത്തിക്കണമെങ്കിൽ, [http://www.php.net/manual/en/mail.configuration.php PHP's മെയിൽ സജ്ജീകരണങ്ങൾ] ശരിയായി ക്രമീകരിക്കേണ്ടതുണ്ട്.
 ഇമെയിൽ സൗകര്യം ആവശ്യമില്ലെങ്കിൽ, ഇവിടെത്തന്നെ അത് നിർജ്ജീവമാക്കാം.",
-	'config-email-user' => 'ഉപയോക്താക്കൾ തമ്മിലുള്ള ഇമെയിൽ പ്രവർത്തനസജ്ജമാക്കുക',
-	'config-email-user-help' => 'സ്വന്തം ക്രമീകരണങ്ങളിൽ ഇമെയിൽ സജ്ജമാക്കിയിട്ടുണ്ടെങ്കിൽ ഉപയോക്താക്കളെ മറ്റുള്ളവർക്ക് ഇമെയിൽ അയയ്ക്കാൻ അനുവദിക്കുക.',
-	'config-email-usertalk' => 'ഉപയോക്തൃസംവാദം താളിൽ മാറ്റങ്ങളുണ്ടായാൽ അറിയിക്കുക',
+	'config-email-wiki_user' => 'ഉപയോക്താക്കൾ തമ്മിലുള്ള ഇമെയിൽ പ്രവർത്തനസജ്ജമാക്കുക',
+	'config-email-wiki_user-help' => 'സ്വന്തം ക്രമീകരണങ്ങളിൽ ഇമെയിൽ സജ്ജമാക്കിയിട്ടുണ്ടെങ്കിൽ ഉപയോക്താക്കളെ മറ്റുള്ളവർക്ക് ഇമെയിൽ അയയ്ക്കാൻ അനുവദിക്കുക.',
+	'config-email-wiki_usertalk' => 'ഉപയോക്തൃസംവാദം താളിൽ മാറ്റങ്ങളുണ്ടായാൽ അറിയിക്കുക',
 	'config-email-watchlist' => 'ശ്രദ്ധിക്കുന്നവയിൽ മാറ്റം വന്നാൽ അറിയിക്കുക',
 	'config-email-auth' => 'ഇമെയിലിന്റെ സാധുതാപരിശോധന സജ്ജമാക്കുക',
 	'config-email-sender' => 'മറുപടിയ്ക്കുള്ള ഇമെയിൽ വിലാസം:',
@@ -12679,7 +12679,7 @@ $1
 	'config-install-extensions' => 'അനുബന്ധങ്ങൾ ഉൾപ്പെടുത്തുന്നു',
 	'config-install-database' => 'ഡേറ്റാബേസ് സജ്ജമാക്കുന്നു',
 	'config-install-pg-commit' => 'മാറ്റങ്ങൾ സ്വീകരിക്കുന്നു',
-	'config-install-user' => 'ഡേറ്റാബേസ് ഉപയോക്താവിനെ സൃഷ്ടിക്കുന്നു',
+	'config-install-wiki_user' => 'ഡേറ്റാബേസ് ഉപയോക്താവിനെ സൃഷ്ടിക്കുന്നു',
 	'config-install-sysop' => 'കാര്യനിർവാഹക അംഗത്വം സൃഷ്ടിക്കുന്നു',
 	'config-install-mainpage' => 'സ്വാഭാവിക ഉള്ളടക്കത്തോടുകൂടി പ്രധാനതാൾ സൃഷ്ടിക്കുന്നു',
 	'config-install-mainpage-failed' => 'പ്രധാന താൾ ഉൾപ്പെടുത്താൻ കഴിഞ്ഞില്ല: $1',
@@ -13017,7 +13017,7 @@ Installasjon abortert.',
 	'config-using531' => 'MediaWiki kan ikke brukes med PHP $1 på grunn av en feil med referanseparametere til <code>__call()</code>.
 Oppgrader til PHP 5.3.2 eller høyere, eller nedgrader til PHP 5.3.0 for å løse dette.
 Installasjonen avbrutt.',
-	'config-suhosin-max-value-length' => 'Suhosin er installert og begrenser GET-parameterlengder til $1 bytes. MediaWiki\'s ResourceLoader-komponent klarer å komme rundt denne begrensningen, med med redusert ytelse. På mulig bør du sette suhosin.get.max_value_length til minst 1024 i php.ini, og sette $wgResourceLoaderMaxQueryLength til samme verdi i LocalSettings.php.',
+	'config-suhosin-max-value-length' => 'Suhosin er installert og begrenser GET-parameterlengder til $1 bytes. MediaWiki\'s ResourceLoader-komponent klarer å komme rundt denne begrensningen, med med redwiki_usert ytelse. På mulig bør du sette suhosin.get.max_value_length til minst 1024 i php.ini, og sette $wgResourceLoaderMaxQueryLength til samme verdi i LocalSettings.php.',
 	'config-db-type' => 'Databasetype:',
 	'config-db-host' => 'Databasevert:',
 	'config-db-host-help' => 'Hvis databasen kjører på en annen tjenermaskin, skriv inn vertsnavnet eller IP-adressen her.
@@ -13042,11 +13042,11 @@ Hvis du ønsker å opprette en databasekonto som del av installasjonsprosessen, 
 
 Skript for å opprette en konto med påkrevde privilegier finnes i "maintenance/oracle/"-folderen av denne installasjonen. Husk at det å bruke en begrenset konto vil blokkere all vedlikeholdsfunksjonalitet med standard konto.',
 	'config-db-install-account' => 'Brukerkonto for installasjon',
-	'config-db-username' => 'Databasebrukernavn:',
+	'config-db-wiki_username' => 'Databasebrukernavn:',
 	'config-db-password' => 'Databasepassord:',
 	'config-db-password-empty' => 'Skriv inn et passord for den nye databasebrukeren: $1.
 Det er mulig å opprette brukere uten passord, men dette er ikke sikkert.',
-	'config-db-install-username' => 'Skriv inn brukernavnet som vil bli brukt til å koble til databasen under installasjonsprosessen.
+	'config-db-install-wiki_username' => 'Skriv inn brukernavnet som vil bli brukt til å koble til databasen under installasjonsprosessen.
 Dette er ikke brukernavnet på MediaWiki-kontoen; dette er brukernavnet for databasen din.',
 	'config-db-install-password' => 'Skriv inn passordet som vil bli brukt til å koble til databasen under installasjonsprosessen.
 Dette er ikke passordet på MediaWiki-kontoen; dette er passordet for databasen din.',
@@ -13124,7 +13124,7 @@ Sjekk verten, brukernavnet og passordet nedenfor og prøv igjen.',
 	'config-invalid-schema' => 'Ugyldig skjema for MediaWiki «$1».
 Bruk bare ASCII-bokstaver (a-z, A-Z), tall (0-9) og undestreker (_).',
 	'config-db-sys-create-oracle' => 'Installasjonsprogrammet støtter kun bruk av en SYSDBA-konto for opprettelse av en ny konto.',
-	'config-db-sys-user-exists-oracle' => 'Brukerkontoen «$1» finnes allerede. SYSDBA kan kun brukes for oppretting av nye kontoer!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Brukerkontoen «$1» finnes allerede. SYSDBA kan kun brukes for oppretting av nye kontoer!',
 	'config-postgres-old' => 'PostgreSQL $1 eller senere kreves, du har $2.',
 	'config-sqlite-name-help' => 'Velg et navn som identifiserer wikien din.
 Ikke bruk mellomrom eller bindestreker.
@@ -13223,7 +13223,7 @@ Angi et annet brukernavn.',
 	'config-admin-password-mismatch' => 'De to passordene du skrev inn samsvarte ikke.',
 	'config-admin-email' => 'E-postadresse:',
 	'config-admin-email-help' => 'Skriv inn en e-postadresse her for at du skal kunne motta e-post fra andre brukere på wikien, tilbakestille passordet ditt, og bli varslet om endringer på sider på overvåkningslisten din. Du kan la dette feltet stå tomt.',
-	'config-admin-error-user' => 'Intern feil ved opprettelse av en admin med navnet «<nowiki>$1</nowiki>».',
+	'config-admin-error-wiki_user' => 'Intern feil ved opprettelse av en admin med navnet «<nowiki>$1</nowiki>».',
 	'config-admin-error-password' => 'Intern feil ved opprettelse av passord for admin «<nowiki>$1</nowiki>»: <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Du har skrevet inn en ugyldig e-postadresse.',
 	'config-subscribe' => 'Abonner på [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce e-postlisten for utgivelsesannonseringer].',
@@ -13250,7 +13250,7 @@ En wiki med '''{{int:config-profile-no-anon}}''' tilbyr ekstra ansvarlighet, men
 '''{{int:config-profile-fishbowl}}'''-scenariet tillater godkjente brukere å redigere, mens publikum kan se sider, og også historikken.
 En '''{{int:config-profile-private}}''' tillater kun godkjente brukere å se sider, den samme gruppen som får lov til å redigere dem.
 
-Mer komplekse konfigurasjoner av brukerrettigheter er tilgjengelig etter installasjon, se det [//www.mediawiki.org/wiki/Manual:User_rights relevante manualavsnittet].",
+Mer komplekse konfigurasjoner av brukerrettigheter er tilgjengelig etter installasjon, se det [//www.mediawiki.org/wiki/Manual:wiki_user_rights relevante manualavsnittet].",
 	'config-license' => 'Opphavsrett og lisens:',
 	'config-license-none' => 'Ingen lisensbunntekst',
 	'config-license-cc-by-sa' => 'Creative Commons Navngivelse Del på samme vilkår',
@@ -13263,10 +13263,10 @@ Mer komplekse konfigurasjoner av brukerrettigheter er tilgjengelig etter install
 	'config-enable-email' => 'Aktiver utgående e-post',
 	'config-enable-email-help' => 'Hvis du vil at e-post skal virke må [http://www.php.net/manual/en/mail.configuration.php PHPs e-postinnstillinger] bli konfigurert riktig.
 Hvis du ikke ønsker noen e-postfunksjoner kan du deaktivere dem her.',
-	'config-email-user' => 'Aktiver e-post mellom brukere',
-	'config-email-user-help' => 'Tillat alle brukere å sende hverandre e-post hvis de har aktivert det i deres innstillinger.',
-	'config-email-usertalk' => 'Aktiver brukerdiskusjonssidevarsler',
-	'config-email-usertalk-help' => 'Tillat brukere å motta varsler ved endringer på deres brukerdiskusjonsside hvis de har aktivert dette i deres innstillinger.',
+	'config-email-wiki_user' => 'Aktiver e-post mellom brukere',
+	'config-email-wiki_user-help' => 'Tillat alle brukere å sende hverandre e-post hvis de har aktivert det i deres innstillinger.',
+	'config-email-wiki_usertalk' => 'Aktiver brukerdiskusjonssidevarsler',
+	'config-email-wiki_usertalk-help' => 'Tillat brukere å motta varsler ved endringer på deres brukerdiskusjonsside hvis de har aktivert dette i deres innstillinger.',
 	'config-email-watchlist' => 'Aktiver overvåkningslistevarsler',
 	'config-email-watchlist-help' => 'Tillat brukere å motta varsler ved endringer på deres overvåkede sider hvis de har aktivert dette i deres innstillinger.',
 	'config-email-auth' => 'Aktiver e-postautentisering',
@@ -13305,10 +13305,10 @@ For mer informasjon om denne funksjonen, inklusive instruksjoner om hvordan man 
 	'config-install-step-failed' => 'mislyktes',
 	'config-install-extensions' => 'Inkludert utvidelser',
 	'config-install-database' => 'Setter opp database',
-	'config-install-user' => 'Oppretter databasebruker',
-	'config-install-user-alreadyexists' => 'Brukeren «$1» finnes allerede',
-	'config-install-user-create-failed' => 'Opprettelse av brukeren «$1» mislyktes: $2',
-	'config-install-user-grant-failed' => 'Å gi tillatelse til brukeren «$1» mislyktes: $2',
+	'config-install-wiki_user' => 'Oppretter databasebruker',
+	'config-install-wiki_user-alreadyexists' => 'Brukeren «$1» finnes allerede',
+	'config-install-wiki_user-create-failed' => 'Opprettelse av brukeren «$1» mislyktes: $2',
+	'config-install-wiki_user-grant-failed' => 'Å gi tillatelse til brukeren «$1» mislyktes: $2',
 	'config-install-tables' => 'Oppretter tabeller',
 	'config-install-mainpage-failed' => 'Kunne ikke sette inn hovedside: $1',
 	'config-download-localsettings' => 'Last ned LocalSettings.php',
@@ -13328,7 +13328,7 @@ For mer informasjon om denne funksjonen, inklusive instruksjoner om hvordan man 
 $messages['nds'] = array(
 	'mainpagetext' => "'''De MediaWiki-Software is mit Spood installeert worrn.'''",
 	'mainpagedocfooter' => 'Kiek de [//meta.wikimedia.org/wiki/MediaWiki_localisation Dokumentatschoon för dat Anpassen vun de Brukerböversiet]
-un dat [//meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] för Hülp to de Bruuk un Konfiguratschoon.',
+un dat [//meta.wikimedia.org/wiki/MediaWiki_wiki_user%27s_Guide Brukerhandbook] för Hülp to de Bruuk un Konfiguratschoon.',
 );
 
 /** Nedersaksisch (Nedersaksisch)
@@ -13543,11 +13543,11 @@ Als u een databasegebruiker wilt aanmaken als onderdeel van het installatieproce
 
 Een script voor het aanmaken van een gebruiker met de vereiste rechten is te vinden in de map "maintenance/oracle/" van deze installatie. Onthoud dat het gebruiken van een gebruiker met beperkte rechten alle mogelijkheden om beheerscripts uit te voeren met de standaard gebruiker onmogelijk maakt.',
 	'config-db-install-account' => 'Gebruiker voor installatie',
-	'config-db-username' => 'Gebruikersnaam voor database:',
+	'config-db-wiki_username' => 'Gebruikersnaam voor database:',
 	'config-db-password' => 'Wachtwoord voor database:',
 	'config-db-password-empty' => 'Voer een wachtwoord in voor de nieuwe databasegebruiker: $1.
 Hoewel het wellicht mogelijk is gebruikers aan te maken zonder wachtwoord, is dit niet veilig.',
-	'config-db-install-username' => 'Voer de gebruikersnaam in die gebruikt moet worden om te verbinden met de database tijdens het installatieproces. Dit is niet de gebruikersnaam van de MediaWikigebruiker. Dit is de gebruikersnaam voor de database.',
+	'config-db-install-wiki_username' => 'Voer de gebruikersnaam in die gebruikt moet worden om te verbinden met de database tijdens het installatieproces. Dit is niet de gebruikersnaam van de MediaWikigebruiker. Dit is de gebruikersnaam voor de database.',
 	'config-db-install-password' => 'Voer het wachtwoord in dat gebruikt moet worden om te verbinden met de database tijdens het installatieproces. Dit is niet het wachtwoord van de MediaWikigebruiker. Dit is het wachtwoord voor de database.',
 	'config-db-install-help' => 'Voer de gebruikersnaam en het wachtwoord in die worden gebruikt voor de databaseverbinding tijdens het installatieproces.',
 	'config-db-account-lock' => 'Dezelfde gebruiker en wachwoord gebruiken na de installatie',
@@ -13625,7 +13625,7 @@ Controleer de host, gebruikersnaam en wachtwoord hieronder in en probeer het opn
 	'config-invalid-schema' => 'Ongeldig schema voor MediaWiki "$1".
 Gebruik alleen letters (a-z, A-Z), cijfers (0-9) en liggende streepjes (_).',
 	'config-db-sys-create-oracle' => 'Het installatieprogramma biedt alleen de mogelijkheid een nieuwe gebruiker aan te maken met de SYSDBA-gebruiker.',
-	'config-db-sys-user-exists-oracle' => 'De gebruiker "$1" bestaat al. SYSDBA kan alleen gebruikt worden voor het aanmaken van een nieuwe gebruiker!',
+	'config-db-sys-wiki_user-exists-oracle' => 'De gebruiker "$1" bestaat al. SYSDBA kan alleen gebruikt worden voor het aanmaken van een nieuwe gebruiker!',
 	'config-postgres-old' => 'PostgreSQL $1 of hoger is vereist.
 U gebruikt $2.',
 	'config-sqlite-name-help' => 'Kies een naam die uw wiki identificeert.
@@ -13733,7 +13733,7 @@ Kies een andere gebruikersnaam.',
 	'config-admin-password-mismatch' => 'De twee door u ingevoerde wachtwoorden komen niet overeen.',
 	'config-admin-email' => 'E-mailadres:',
 	'config-admin-email-help' => "Voer hier een e-mailadres in om e-mail te kunnen ontvangen van andere gebruikers op de wiki, uw wachtwoord opnieuw in te kunnen stellen en op de hoogte te worden gehouden van wijzigingen van pagina's op uw volglijst. U kunt het veld leeg laten.",
-	'config-admin-error-user' => 'Interne fout bij het aanmaken van een beheerder met de naam "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Interne fout bij het aanmaken van een beheerder met de naam "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Interne fout bij het instellen van een wachtwoord voor de bejeerder "<nowiki>$1</nowiki>": <pre>$2</pre>',
 	'config-admin-error-bademail' => 'U hebt een ongeldig e-mailadres opgegeven',
 	'config-subscribe' => 'Abonneren op de [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce mailinglijst releaseaankondigen].',
@@ -13762,7 +13762,7 @@ Een wiki met '''{{int:config-profile-no-anon}}\" biedt extra verantwoordelijkhei
 Het scenario '''{{int:config-profile-fishbowl}}''' laat gebruikers waarvoor dat is ingesteld bewerkt, maar andere gebruikers kunnen alleen pagina's bekijken, inclusief de bewerkingsgeschiedenis.
 In een '''{{int:config-profile-private}}''' kunnen alleen goedgekeurde gebruikers pagina's bekijken en bewerken.
 
-Meer complexe instellingen voor gebruikersrechten zijn te maken na de installatie; hierover is meer te lezen in de [//www.mediawiki.org/wiki/Manual:User_rights handleiding].",
+Meer complexe instellingen voor gebruikersrechten zijn te maken na de installatie; hierover is meer te lezen in de [//www.mediawiki.org/wiki/Manual:wiki_user_rights handleiding].",
 	'config-license' => 'Auteursrechten en licentie:',
 	'config-license-none' => 'Geen licentie in de voettekst',
 	'config-license-cc-by-sa' => 'Creative Commons Naamsvermelding-Gelijk delen',
@@ -13785,10 +13785,10 @@ Het is ook lastig inhoud te hergebruiken onder de GFDL.",
 	'config-enable-email' => 'Uitgaande e-mail inschakelen',
 	'config-enable-email-help' => "Als u wilt dat e-mailen mogelijk is, dan moeten [http://www.php.net/manual/en/mail.configuration.php PHP's e-mailinstellingen] correct zijn.
 Als u niet wilt dat e-mailen mogelijk is, dan kunt u de instellingen hier uitschakelen.",
-	'config-email-user' => 'E-mail tussen gebruikers inschakelen',
-	'config-email-user-help' => 'Gebruikers toestaan e-mail aan elkaar te verzenden als dit in de voorkeuren is ingesteld.',
-	'config-email-usertalk' => 'Gebruikersoverlegnotificatie inschakelen',
-	'config-email-usertalk-help' => 'Gebruikers toestaan notificaties te ontvangen bij wijzigingen op de eigen overlegpagina als dit in de voorkeuren is ingesteld',
+	'config-email-wiki_user' => 'E-mail tussen gebruikers inschakelen',
+	'config-email-wiki_user-help' => 'Gebruikers toestaan e-mail aan elkaar te verzenden als dit in de voorkeuren is ingesteld.',
+	'config-email-wiki_usertalk' => 'Gebruikersoverlegnotificatie inschakelen',
+	'config-email-wiki_usertalk-help' => 'Gebruikers toestaan notificaties te ontvangen bij wijzigingen op de eigen overlegpagina als dit in de voorkeuren is ingesteld',
 	'config-email-watchlist' => 'Volglijstnotificatie inschakelen',
 	'config-email-watchlist-help' => "Gebruikers toestaan notificaties te ontvangen bij wijzigingen van pagina's op hun volglijst als dit in de voorkeuren is ingesteld",
 	'config-email-auth' => 'E-mailbevestiging inschakelen',
@@ -13863,15 +13863,15 @@ Zorg dat de gebruiker "$1" in het schema "$2" mag schrijven.',
 	'config-pg-no-plpgsql' => 'U moet de taal PL/pgSQL installeren in de database $1',
 	'config-pg-no-create-privs' => 'De gebruiker die u hebt opgegeven door de installatie heeft niet voldoende rechten om een gebruiker aan te maken.',
 	'config-pg-not-in-role' => 'De gebruiker die u hebt opgegeven voor de webgebruiker bestaat al.
-De gebruiker die u hebt opgegeven voor installatie is geen superuser en geen lid van de rol van de webgebruiker, en kan het dus geen objecten aanmaken die van de webgebruiker zijn.
+De gebruiker die u hebt opgegeven voor installatie is geen superwiki_user en geen lid van de rol van de webgebruiker, en kan het dus geen objecten aanmaken die van de webgebruiker zijn.
 
 MediaWiki vereist momenteel dat de tabellen van de webgebruiker zijn. Geef een andere webgebruikersnaam op, of klik op "terug" en geef een gebruiker op die voldoende installatierechten heeft.',
-	'config-install-user' => 'Databasegebruiker aan het aanmaken',
-	'config-install-user-alreadyexists' => 'Gebruiker "$1" bestaat al',
-	'config-install-user-create-failed' => 'Het aanmaken van de gebruiker "$1" is mislukt: $2',
-	'config-install-user-grant-failed' => 'Het geven van rechten aan gebruiker "$1" is mislukt: $2',
-	'config-install-user-missing' => 'De opgegeven gebruiker "$1" bestaat niet.',
-	'config-install-user-missing-create' => 'De opgegeven gebruiker "$1" bestaat niet.
+	'config-install-wiki_user' => 'Databasegebruiker aan het aanmaken',
+	'config-install-wiki_user-alreadyexists' => 'Gebruiker "$1" bestaat al',
+	'config-install-wiki_user-create-failed' => 'Het aanmaken van de gebruiker "$1" is mislukt: $2',
+	'config-install-wiki_user-grant-failed' => 'Het geven van rechten aan gebruiker "$1" is mislukt: $2',
+	'config-install-wiki_user-missing' => 'De opgegeven gebruiker "$1" bestaat niet.',
+	'config-install-wiki_user-missing-create' => 'De opgegeven gebruiker "$1" bestaat niet.
 Klik op "registreren" onderaan als u het wilt aanmaken.',
 	'config-install-tables' => 'Tabellen aanmaken',
 	'config-install-tables-exist' => "'''Waarschuwing''': de MediaWiki-tabellen lijken al te bestaan.
@@ -13937,7 +13937,7 @@ Installasjonen kan mislukkast!",
 	'config-apc' => '[http://www.php.net/apc APC] er innstallert',
 	'config-wincache' => '[http://www.iis.net/download/WinCacheForPhp WinCache] er installert',
 	'config-db-name' => 'Databasenamn:',
-	'config-db-username' => 'Databasebrukarnamn:',
+	'config-db-wiki_username' => 'Databasebrukarnamn:',
 	'config-db-password' => 'Databasepassord:',
 	'config-db-charset' => 'Databaseteiknsett',
 	'config-charset-mysql5-binary' => 'MySQL 4.1/5.0 binær',
@@ -14017,7 +14017,7 @@ $messages['pa'] = array(
  */
 $messages['pam'] = array(
 	'mainpagetext' => "'''Melaus ing pamipalyari ning MediaWiki.'''",
-	'mainpagedocfooter' => "Basan me ing [//meta.wikimedia.org/wiki/Help:Contents User's Guide] para king impormasiun keng pamangamit ning wiki software.
+	'mainpagedocfooter' => "Basan me ing [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] para king impormasiun keng pamangamit ning wiki software.
 
 == Pamagumpisa ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
@@ -14040,7 +14040,7 @@ $messages['pdc'] = array(
 	'config-admin-password' => 'Paesswatt:',
 	'config-install-step-done' => 'geduh',
 	'config-help' => 'Hilf',
-	'mainpagedocfooter' => "Hilf fer's Yuuse unn Konfiguriere vun de Wiki-Software kansch finne im [//meta.wikimedia.org/wiki/Help:Contents Handbuch fer Yuuser].
+	'mainpagedocfooter' => "Hilf fer's Yuuse unn Konfiguriere vun de Wiki-Software kansch finne im [//meta.wikimedia.org/wiki/Help:Contents Handbuch fer Yuwiki_user].
 
 == Hilf zum Schtaerte ==
 
@@ -14233,11 +14233,11 @@ Możesz również skorzystać z konta użytkownika bazy danych utworzonego bezpo
 
 W podkatalogu "maintenance/oracle" znajduje się skrypt do tworzenia konta użytkownika. Korzystanie z konta użytkownika z ograniczonymi uprawnieniami spowoduje wyłączenie funkcji związanych z aktualizacją oprogramowania MediaWiki.',
 	'config-db-install-account' => 'Konto użytkownika dla instalatora',
-	'config-db-username' => 'Nazwa użytkownika bazy danych',
+	'config-db-wiki_username' => 'Nazwa użytkownika bazy danych',
 	'config-db-password' => 'Hasło bazy danych',
 	'config-db-password-empty' => 'Wprowadź hasło dla nowego użytkownika bazy danych: $1.
 Choć istnieje możliwość tworzenia użytkowników bez hasła, nie jest to bezpieczne.',
-	'config-db-install-username' => 'Wprowadź nazwę użytkownika, który będzie używany do łączenia się z bazą danych podczas procesu instalacji.
+	'config-db-install-wiki_username' => 'Wprowadź nazwę użytkownika, który będzie używany do łączenia się z bazą danych podczas procesu instalacji.
 Nie jest to nazwa konta MediaWiki, a użytkownika bazy danych.',
 	'config-db-install-password' => 'Wprowadź hasło, które będzie wykorzystywane do łączenia się z bazą danych w procesie instalacji.
 To nie jest hasło konta MediaWiki, lecz hasło do bazy danych.',
@@ -14310,7 +14310,7 @@ Sprawdź adres serwera, nazwę użytkownika i hasło, a następnie spróbuj pono
 	'config-invalid-schema' => 'Nieprawidłowa nazwa schematu dla MediaWiki „$1”.
 Nazwa może zawierać wyłącznie liter ASCII (a-z, A-Z), cyfr (0-9) i podkreślenia (_).',
 	'config-db-sys-create-oracle' => 'Instalator może wykorzystać wyłącznie konto SYSDBA do tworzenia nowych kont użytkowników.',
-	'config-db-sys-user-exists-oracle' => 'Konto użytkownika „$1“ już istnieje. SYSDBA można użyć tylko do utworzenia nowego konta!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Konto użytkownika „$1“ już istnieje. SYSDBA można użyć tylko do utworzenia nowego konta!',
 	'config-postgres-old' => 'Korzystasz z wersji $2 oprogramowania PostgreSQL, a potrzebna jest wersja co najmniej $1.',
 	'config-sqlite-name-help' => 'Wybierz nazwę, która będzie identyfikować Twoją wiki.
 Nie wolno używać spacji ani myślników.
@@ -14415,7 +14415,7 @@ Podaj inną nazwę.',
 	'config-admin-password-mismatch' => 'Wprowadzone dwa hasła różnią się między sobą.',
 	'config-admin-email' => 'Adres e‐mail',
 	'config-admin-email-help' => 'Wpisz adres e‐mail, aby mieć możliwość odbierania e‐maili od innych użytkowników wiki, zresetowania hasła oraz otrzymywania powiadomień o zmianach na stronach z listy obserwowanych. Możesz pozostawić to pole niewypełnione.',
-	'config-admin-error-user' => 'Błąd wewnętrzny podczas tworzenia konta administratora o nazwie „<nowiki>$1</nowiki>”.',
+	'config-admin-error-wiki_user' => 'Błąd wewnętrzny podczas tworzenia konta administratora o nazwie „<nowiki>$1</nowiki>”.',
 	'config-admin-error-password' => 'Wewnętrzny błąd podczas ustawiania hasła dla administratora „<nowiki>$1</nowiki>”: <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Wpisałeś nieprawidłowy adres e‐mail',
 	'config-subscribe' => 'Zapisz się na [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce listę pocztową z ogłaszaniami o nowych wersjach].',
@@ -14443,7 +14443,7 @@ Wiki z '''{{int:config-profile-no-anon}}''' zawiera dodatkowe funkcje rozliczani
 Scenariusz '''{{int:config-profile-fishbowl}}''' umożliwia zatwierdzonym użytkownikom edycję, ale wyświetlanie stron jest powszechnie dostępne, włącznie z historią.
 Ustawienie '''{{int:config-profile-private}}'' ' pozwala na wyświetlanie stron tylko zatwierdzonym użytkownikom, ta sama grupa może edytować.
 
-Bardziej skomplikowane konfiguracje uprawnień użytkowników są dostępne po zakończeniu instalacji, zobacz [//www.mediawiki.org/wiki/Manual:User_rights odpowiednią część podręcznika].",
+Bardziej skomplikowane konfiguracje uprawnień użytkowników są dostępne po zakończeniu instalacji, zobacz [//www.mediawiki.org/wiki/Manual:wiki_user_rights odpowiednią część podręcznika].",
 	'config-license' => 'Prawa autorskie i licencja',
 	'config-license-none' => 'Brak stopki z licencją',
 	'config-license-cc-by-sa' => 'Creative Commons – za uznaniem autora, na tych samych zasadach',
@@ -14466,10 +14466,10 @@ Trudno także ponowne użyć zawartości na licencji GFDL.",
 	'config-enable-email' => 'Włącz wychodzące wiadomości e–mail',
 	'config-enable-email-help' => 'Jeśli chcesz, aby działał e-mail, [http://www.php.net/manual/en/mail.configuration.php Ustawienia poczty PHP] muszą być poprawnie wprowadzone.
 Jeśli nie chcesz jakichś funkcji poczty e-mail, można je wyłączyć tutaj.',
-	'config-email-user' => 'Włącz możliwość przesyłania e‐maili pomiędzy użytkownikami',
-	'config-email-user-help' => 'Zezwalaj użytkownikom na wysyłanie wzajemnie e‐maili, jeśli będą mieć włączoną tę funkcję w swoich preferencjach.',
-	'config-email-usertalk' => 'Włącz powiadamianie o zmianach na stronie dyskusji użytkownika',
-	'config-email-usertalk-help' => 'Pozwól użytkownikom otrzymywać powiadomienia o zmianach na stronie dyskusji użytkownika, jeśli będą mieć włączoną tę funkcję w swoich preferencjach.',
+	'config-email-wiki_user' => 'Włącz możliwość przesyłania e‐maili pomiędzy użytkownikami',
+	'config-email-wiki_user-help' => 'Zezwalaj użytkownikom na wysyłanie wzajemnie e‐maili, jeśli będą mieć włączoną tę funkcję w swoich preferencjach.',
+	'config-email-wiki_usertalk' => 'Włącz powiadamianie o zmianach na stronie dyskusji użytkownika',
+	'config-email-wiki_usertalk-help' => 'Pozwól użytkownikom otrzymywać powiadomienia o zmianach na stronie dyskusji użytkownika, jeśli będą mieć włączoną tę funkcję w swoich preferencjach.',
 	'config-email-watchlist' => 'Włącz powiadomienie o zmianach stron obserwowanych',
 	'config-email-watchlist-help' => 'Pozwól użytkownikom otrzymywać powiadomienia o zmianach na stronach obserwowanych, jeśli będą mieć włączoną tę funkcję w swoich preferencjach.',
 	'config-email-auth' => 'Włącz uwierzytelnianie e‐mailem',
@@ -14545,12 +14545,12 @@ Upewnij się, że użytkownik „$1” może zapisywać do schematu „$2”.',
 Konto określone dla instalacji nie ma uprawnień administratora ani nie jest przynależy do roli użytkownika sieci web, więc nie można utworzyć obiektów stanowiących własność użytkownika sieci.
 
 MediaWiki wymaga obecnie, by tabele były własnością konta zwykłego użytkownika. Podaj inną nazwę konta użytkownika, lub kliknij przycisk "Wstecz" i podaj nazwę konta użytkownika instalatora, które posiada odpowiednie uprawnienia.',
-	'config-install-user' => 'Tworzenie użytkownika bazy danych',
-	'config-install-user-alreadyexists' => 'Konto użytkownika „$1“ już istnieje',
-	'config-install-user-create-failed' => 'Tworzenie użytkownika "$1" nie powiodło się: $2',
-	'config-install-user-grant-failed' => 'Przyznanie uprawnień użytkownikowi „$1” nie powiodło się – $2',
-	'config-install-user-missing' => 'Nie istnieje konto użytkownika „$1“.',
-	'config-install-user-missing-create' => 'Określony użytkownik "$1" nie istnieje.
+	'config-install-wiki_user' => 'Tworzenie użytkownika bazy danych',
+	'config-install-wiki_user-alreadyexists' => 'Konto użytkownika „$1“ już istnieje',
+	'config-install-wiki_user-create-failed' => 'Tworzenie użytkownika "$1" nie powiodło się: $2',
+	'config-install-wiki_user-grant-failed' => 'Przyznanie uprawnień użytkownikowi „$1” nie powiodło się – $2',
+	'config-install-wiki_user-missing' => 'Nie istnieje konto użytkownika „$1“.',
+	'config-install-wiki_user-missing-create' => 'Określony użytkownik "$1" nie istnieje.
 Kliknij poniższe pole wyboru „utwórz konto" jeśli chcesz go utworzyć.',
 	'config-install-tables' => 'Tworzenie tabel',
 	'config-install-tables-exist' => "'''Uwaga''' – wygląda na to, że tabele MediaWiki już istnieją.
@@ -14732,7 +14732,7 @@ A dovrìa conten-e gnun ëspassi o tratin.
 S'a deuvra n'ospitalità partagià, sò fornidor ëd l'ospitalità a-j darà un nòm ëd base ëd dàit specìfich da dovré, o a lassrà ch'a lo crea via un panel ëd contròl.", # Fuzzy
 	'config-db-name-oracle' => 'Schema dla base ëd dàit:',
 	'config-db-install-account' => "Cont d'utent për l'instalassion.",
-	'config-db-username' => "Nòm d'utent dla base ëd dàit:",
+	'config-db-wiki_username' => "Nòm d'utent dla base ëd dàit:",
 	'config-db-password' => 'Ciav dla base ëd dàit:',
 	'config-db-install-help' => "Ch'a anserissa lë stranòm d'utent e la ciav che a saran dovrà për coleghesse a la base ëd dàit durant ël process d'instalassion.",
 	'config-db-account-lock' => "Dovré ij midem stranòm d'utent e ciav durant j'operassion normaj",
@@ -14887,7 +14887,7 @@ Specìfica un nòm utent diferent.',
 	'config-admin-password-mismatch' => "Le doe ciav che a l'ha scrivù a son diferente antra 'd lor.",
 	'config-admin-email' => 'Adrëssa ëd pòsta eletrònica:',
 	'config-admin-email-help' => "Ch'a anserissa ambelessì n'adrëssa ëd pòsta eletrònica për përmëtt-je d'arsèive ëd mëssagi da d'àutri utent an sla wiki, riamposté soa ciav, e esse anformà ëd camgiament a le pàgine ch'a ten sot-euj.", # Fuzzy
-	'config-admin-error-user' => 'Eror antern an creand n\'aministrator con lë stranòm "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Eror antern an creand n\'aministrator con lë stranòm "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Eror antern an ampostand na ciav për l\'admin "<nowiki>$1</nowiki>": <pre>$2</pre>',
 	'config-subscribe' => "Ch'a sot-scriva la [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce lista ëd discussion ëd j'anonsi ëd publicassion].",
 	'config-subscribe-help' => "Costa a l'é na lista ëd discussion a bass tràfich dovrà për j'anonsi ëd publicassion, comprèis d'amportant anonsi ëd sicurëssa.
@@ -14913,7 +14913,7 @@ Na wiki con  '''{{int:config-profile-no-anon}}''' a dà pì 'd contròl, ma a pe
 Ël senari '''{{int:config-profile-fishbowl}}''' a përmët a j'utent aprovà ëd modifiché, ma ël pùblich a peul vëdde le pàgine, comprèisa la stòria.
 Un '''{{int:config-profile-private}}''' a përmët mach a j'utent aprovà ëd vëdde le pàgine, con la midema partìa ch'a peul modifiché.
 
-Configurassion ëd drit d'utent pi complicà a son disponìbij apress l'instalassion, vëdde la [//www.mediawiki.org/wiki/Manual:User_rights pàgina a pòsta dël manual].",
+Configurassion ëd drit d'utent pi complicà a son disponìbij apress l'instalassion, vëdde la [//www.mediawiki.org/wiki/Manual:wiki_user_rights pàgina a pòsta dël manual].",
 	'config-license' => "Drit d'autor e licensa",
 	'config-license-none' => 'Gnun-a licensa an nòta an bass',
 	'config-license-cc-by-sa' => 'Creative Commons atribussion an part uguaj',
@@ -14931,10 +14931,10 @@ A l'é anco' na licensa bon-a, an tùit ij cas, sta licensa a l'ha chèich funsi
 	'config-enable-email' => 'Abilité ij mëssagi ëd pòsta eletrònica an surtìa',
 	'config-enable-email-help' => "S'a veul che la pòsta eletrònica a marcia, j'[http://www.php.net/manual/en/mail.configuration.php ampostassion ëd pòsta eletrònica PHP] a devo esse configurà për da bin.
 S'a veul pa 'd funsion ëd pòsta eletrònica, a dev disabiliteje ambelessì.",
-	'config-email-user' => 'Abilité ij mëssagi ëd pòsta eletrònica da utent a utent',
-	'config-email-user-help' => "A përmët a tùit j'utent ëd mandesse ëd mëssagi ëd pòsta eletrònica se lor a l'han abilità sòn an soe preferense.",
-	'config-email-usertalk' => "Abilité notìfica dle pàgine ëd discussion dj'utent",
-	'config-email-usertalk-help' => "A përmët a j'utent d'arsèive na notìfica dle modìfiche dle pàgine ëd discussion d'utent, s'a l'han abilitalo ant soe preferense.",
+	'config-email-wiki_user' => 'Abilité ij mëssagi ëd pòsta eletrònica da utent a utent',
+	'config-email-wiki_user-help' => "A përmët a tùit j'utent ëd mandesse ëd mëssagi ëd pòsta eletrònica se lor a l'han abilità sòn an soe preferense.",
+	'config-email-wiki_usertalk' => "Abilité notìfica dle pàgine ëd discussion dj'utent",
+	'config-email-wiki_usertalk-help' => "A përmët a j'utent d'arsèive na notìfica dle modìfiche dle pàgine ëd discussion d'utent, s'a l'han abilitalo ant soe preferense.",
 	'config-email-watchlist' => "Abilité la notìfica ëd lòn ch'as ten sot euj",
 	'config-email-watchlist-help' => "A përmët a j'utent d'arsèive dle notificassion a propòsit dle pàgine ch'a ten-o sot euj s'a l'han abilitalo ant soe preferense.",
 	'config-email-auth' => "Abilité l'autenticassion për pòsta eletrònica",
@@ -14991,8 +14991,8 @@ Për piasì, ch'a vada a la pàgina ch'a-i ven.",
 	'config-install-database' => 'Creassion ëd la base ëd dàit',
 	'config-install-pg-schema-failed' => 'Creassion dle tàule falìa.
 Sigurte che l\'utent "$1" a peussa scrive lë schema "$2".',
-	'config-install-user' => "Creassion ëd n'utent ëd la base ëd dàit",
-	'config-install-user-grant-failed' => 'Falì a dé ij përmess a l\'utent "$1": $2',
+	'config-install-wiki_user' => "Creassion ëd n'utent ëd la base ëd dàit",
+	'config-install-wiki_user-grant-failed' => 'Falì a dé ij përmess a l\'utent "$1": $2',
 	'config-install-tables' => 'Creassion dle tàule',
 	'config-install-tables-exist' => "'''Avis''': A smija che le tàule ëd mediaWiki a esisto già.
 Sauté la creassion.",
@@ -15015,7 +15015,7 @@ A dovrà [$1 dëscarielo] e butelo ant la bas ëd l'instalassion ëd soa wiki (�
 Quand che a l'é stàit fàit, a peul '''[$2 intré an soa wiki]'''.", # Fuzzy
 	'config-help' => 'agiut',
 	'mainpagetext' => "'''MediaWiki a l'é staita anstalà a la përfession.'''",
-	'mainpagedocfooter' => "Che a varda la [//meta.wikimedia.org/wiki/Help:Contents User's Guide] për avèj dj'anformassion ant sël coma dovré ël programa dla wiki.
+	'mainpagedocfooter' => "Che a varda la [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] për avèj dj'anformassion ant sël coma dovré ël programa dla wiki.
 
 == Për anandiesse a travajé ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Lista dij paràmeter ëd configurassion]
@@ -15061,7 +15061,7 @@ $messages['ps'] = array(
 	'config-db-host' => 'د توکبنسټ کوربه:',
 	'config-db-host-oracle' => 'د توکبنسټ TNS:',
 	'config-db-name' => 'د توکبنسټ نوم:',
-	'config-db-username' => 'د توکبنسټ کارن-نوم:',
+	'config-db-wiki_username' => 'د توکبنسټ کارن-نوم:',
 	'config-db-password' => 'د توکبنسټ پټنوم:',
 	'config-header-mysql' => 'د MySQL امستنې',
 	'config-header-postgres' => 'د PostgreSQL امستنې',
@@ -15277,11 +15277,11 @@ Se pretende criar a conta de acesso pela internet na base de dados durante o pro
 
 Existe um script para criação de uma conta com os privilégios necessários no directório \"maintenance/oracle/\" desta instalação. Mantenha em mente que usar uma conta com privilégios limitados impossibilita todas as operações de manutenção com a conta padrão.",
 	'config-db-install-account' => 'Conta do utilizador para a instalação',
-	'config-db-username' => 'Nome do utilizador da base de dados:',
+	'config-db-wiki_username' => 'Nome do utilizador da base de dados:',
 	'config-db-password' => 'Palavra-chave do utilizador da base de dados:',
 	'config-db-password-empty' => 'Introduza a palavra-chave do novo utilizador da base de dados: $1.
 Embora seja possível criar utilizadores sem palavra-chave, fazê-lo não é seguro.',
-	'config-db-install-username' => 'Introduza o nome de utilizador que será usado para aceder à base de dados durante o processo de instalação. Este utilizador não é o do MediaWiki; é o utilizador da base de dados.',
+	'config-db-install-wiki_username' => 'Introduza o nome de utilizador que será usado para aceder à base de dados durante o processo de instalação. Este utilizador não é o do MediaWiki; é o utilizador da base de dados.',
 	'config-db-install-password' => 'Introduza a palavra-chave do utilizador que será usado para aceder à base de dados durante o processo de instalação. Esta palavra-chave não é a do utilizador do MediaWiki; é a palavra-chave do utilizador da base de dados.',
 	'config-db-install-help' => 'Introduza o nome de utilizador e a palavra-chave que serão usados para aceder à base de dados durante o processo de instalação.',
 	'config-db-account-lock' => 'Usar o mesmo nome de utilizador e palavra-chave durante a operação normal',
@@ -15358,7 +15358,7 @@ Verifique o servidor, o nome do utilizador e a palavra-chave abaixo e tente nova
 	'config-invalid-schema' => "O esquema ''(schema)'' do MediaWiki, \"\$1\", é inválido.
 Use só letras (a-z, A-Z), algarismos (0-9) e sublinhados (_) dos caracteres ASCII.",
 	'config-db-sys-create-oracle' => 'O instalador só permite criar uma conta nova usando uma conta SYSDBA.',
-	'config-db-sys-user-exists-oracle' => 'A conta "$1" já existe. A conta SYSDBA só pode criar uma conta nova!',
+	'config-db-sys-wiki_user-exists-oracle' => 'A conta "$1" já existe. A conta SYSDBA só pode criar uma conta nova!',
 	'config-postgres-old' => 'É necessário o PostgreSQL $1 ou posterior; tem a versão $2.',
 	'config-sqlite-name-help' => 'Escolha o nome que identificará a sua wiki.
 Não use espaços ou hífens.
@@ -15464,7 +15464,7 @@ Introduza um nome de utilizador diferente.',
 	'config-admin-password-mismatch' => 'As duas palavras-chave que introduziu não coincidem.',
 	'config-admin-email' => 'Correio electrónico:',
 	'config-admin-email-help' => 'Introduza aqui um correio electrónico que lhe permita receber mensagens de outros utilizadores da wiki, reiniciar a sua palavra-chave e receber notificações de alterações às suas páginas vigiadas. Pode deixar o campo vazio.',
-	'config-admin-error-user' => 'Ocorreu um erro interno ao criar um administrador com o nome "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Ocorreu um erro interno ao criar um administrador com o nome "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Ocorreu um erro interno ao definir uma palavra-chave para o administrador "<nowiki>$1</nowiki>": <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Introduziu um correio electrónico inválido',
 	'config-subscribe' => 'Subscreva a [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce lista de divulgação de anúncios de lançamento].',
@@ -15493,7 +15493,7 @@ Uma wiki com '''{{int:config-profile-no-anon}}''' atribui mais responsabilidade,
 Um cenário '''{{int:config-profile-fishbowl}}''' permite que os utilizadores aprovados editem, mas que o público visione as páginas, incluindo o historial das mesmas.
 Uma '''{{int:config-profile-private}}''' só permite que os utilizadores aprovados visionem as páginas e as editem.
 
-Após a instalação, estarão disponíveis mais configurações de privilégios. Consulte [//www.mediawiki.org/wiki/Manual:User_rights a entrada relevante no Manual].",
+Após a instalação, estarão disponíveis mais configurações de privilégios. Consulte [//www.mediawiki.org/wiki/Manual:wiki_user_rights a entrada relevante no Manual].",
 	'config-license' => 'Direitos de autor e licença:',
 	'config-license-none' => 'Sem rodapé com a licença',
 	'config-license-cc-by-sa' => 'Creative Commons - Atribuição - Partilha nos Mesmos Termos',
@@ -15516,10 +15516,10 @@ Também é difícil reutilizar conteúdos licenciados com a GFDL.',
 	'config-enable-email' => 'Activar mensagens electrónicas de saída',
 	'config-enable-email-help' => 'Se quer que o correio electrónico funcione, as [http://www.php.net/manual/en/mail.configuration.php definições de correio electrónico do PHP] têm de estar configuradas correctamente.
 Se não pretende viabilizar qualquer funcionalidade de correio electrónico, pode desactivá-lo aqui.',
-	'config-email-user' => 'Activar mensagens electrónicas entre utilizadores',
-	'config-email-user-help' => 'Permitir que todos os utilizadores troquem entre si mensagens de correio electrónico, se tiverem activado esta funcionalidade nas suas preferências.',
-	'config-email-usertalk' => 'Activar notificações de alterações à página de discussão dos utilizadores',
-	'config-email-usertalk-help' => 'Permitir que os utilizadores recebam notificações de alterações à sua página de discussão, se tiverem activado esta funcionalidade nas suas preferências.',
+	'config-email-wiki_user' => 'Activar mensagens electrónicas entre utilizadores',
+	'config-email-wiki_user-help' => 'Permitir que todos os utilizadores troquem entre si mensagens de correio electrónico, se tiverem activado esta funcionalidade nas suas preferências.',
+	'config-email-wiki_usertalk' => 'Activar notificações de alterações à página de discussão dos utilizadores',
+	'config-email-wiki_usertalk-help' => 'Permitir que os utilizadores recebam notificações de alterações à sua página de discussão, se tiverem activado esta funcionalidade nas suas preferências.',
 	'config-email-watchlist' => 'Activar notificação de alterações às páginas vigiadas',
 	'config-email-watchlist-help' => 'Permitir que os utilizadores recebam notificações de alterações às suas páginas vigiadas, se tiverem activado esta funcionalidade nas suas preferências.',
 	'config-email-auth' => 'Activar autenticação do correio electrónico',
@@ -15595,12 +15595,12 @@ Certifique-se de que o utilizador "$1" pode escrever no esquema \'\'(schema)\'\'
 A conta que especificou para a instalação não é a de um super-utilizador e não pertence ao grupo de utilizadores de acesso pela internet, por isso não pode criar objectos que pertencem ao utilizador da internet.
 
 O MediaWiki necessita que as tabelas pertençam ao utilizador da internet. Especifique outra conta de internet, ou clique "voltar" e especifique um utilizador com os privilégios necessários para a instalação.',
-	'config-install-user' => 'A criar o utilizador da base de dados',
-	'config-install-user-alreadyexists' => 'O utilizador "$1" já existe',
-	'config-install-user-create-failed' => 'A criação do utilizador "$1" falhou: $2',
-	'config-install-user-grant-failed' => 'A atribuição das permissões ao utilizador "$1" falhou: $2',
-	'config-install-user-missing' => 'O utilizador especificado, "$1", não existe.',
-	'config-install-user-missing-create' => 'O utilizador especificado, "$1", não existe.
+	'config-install-wiki_user' => 'A criar o utilizador da base de dados',
+	'config-install-wiki_user-alreadyexists' => 'O utilizador "$1" já existe',
+	'config-install-wiki_user-create-failed' => 'A criação do utilizador "$1" falhou: $2',
+	'config-install-wiki_user-grant-failed' => 'A atribuição das permissões ao utilizador "$1" falhou: $2',
+	'config-install-wiki_user-missing' => 'O utilizador especificado, "$1", não existe.',
+	'config-install-wiki_user-missing-create' => 'O utilizador especificado, "$1", não existe.
 Marque a caixa de selecção "criar conta" abaixo se pretende criá-la, por favor.',
 	'config-install-tables' => 'A criar as tabelas',
 	'config-install-tables-exist' => "'''Aviso''': As tabelas do MediaWiki parecem já existir.
@@ -15746,7 +15746,7 @@ Se você não pretende usar um logotipo, deixe este campo em branco.', # Fuzzy
  */
 $messages['qu'] = array(
 	'mainpagetext' => "'''MediaWiki nisqa llamp'u kaqqa aypaylla takyachisqañam.'''",
-	'mainpagedocfooter' => "Wiki llamp'u kaqmanta willasunaykipaqqa [//meta.wikimedia.org/wiki/Help:Contents Ruraqpaq yanapana] ''(User's Guide)'' sutiyuq p'anqata qhaway.
+	'mainpagedocfooter' => "Wiki llamp'u kaqmanta willasunaykipaqqa [//meta.wikimedia.org/wiki/Help:Contents Ruraqpaq yanapana] ''(wiki_user's Guide)'' sutiyuq p'anqata qhaway.
 
 == Qallarichkaspa ==
 
@@ -15836,7 +15836,7 @@ $messages['roa-tara'] = array(
 	'config-install-step-failed' => 'fallite',
 	'config-help' => 'ajute',
 	'mainpagetext' => "'''MediaUicchi ha state 'nstallete.'''",
-	'mainpagedocfooter' => "Vè vide [//meta.wikimedia.org/wiki/Help:Contents User's Guide] pe l'mbormaziune sus a cumme s'ause 'u softuer wiki.
+	'mainpagedocfooter' => "Vè vide [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] pe l'mbormaziune sus a cumme s'ause 'u softuer wiki.
 
 == Pe accumenzà ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Liste pe le configuraziune]
@@ -16031,11 +16031,11 @@ MediaWiki требует поддержки UTF-8 для корректной р
 
 Сценарий для создания учётной записи с необходимыми привилегиями можно найти в папке «maintenance/oracle/» этой программы установки. Имейте в виду, что использование ограниченной учётной записи приведёт к отключению всех возможностей обслуживания с учётной записи по умолчанию.',
 	'config-db-install-account' => 'Учётная запись для установки',
-	'config-db-username' => 'Имя пользователя базы данных:',
+	'config-db-wiki_username' => 'Имя пользователя базы данных:',
 	'config-db-password' => 'Пароль базы данных:',
 	'config-db-password-empty' => 'Пожалуйста, введите пароль для нового пользователя базы данных «$1».
 Хотя и возможно создание пользователей без паролей, это небезопасно.',
-	'config-db-install-username' => 'Введите имя пользователя, которое будет использоваться для подключения к базе данных в процессе установки.
+	'config-db-install-wiki_username' => 'Введите имя пользователя, которое будет использоваться для подключения к базе данных в процессе установки.
 Это не имя пользователя MediaWiki, это имя пользователя для базы данных.',
 	'config-db-install-password' => 'Введите пароль, который будет использоваться для подключения к базе данных в процессе установки.
 Это не пароль пользователя MediaWiki, это пароль для базы данных.',
@@ -16114,7 +16114,7 @@ $1
 	'config-invalid-schema' => 'Неправильная схема для MediaWiki «$1».
 Используйте только ASCII символы (a-z, A-Z), цифры(0-9) и знаки подчёркивания(_).',
 	'config-db-sys-create-oracle' => 'Программа установки поддерживает только использование SYSDBA для создания новой учётной записи.',
-	'config-db-sys-user-exists-oracle' => 'Учётная запись «$1». SYSDBA может использоваться только для создания новой учётной записи!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Учётная запись «$1». SYSDBA может использоваться только для создания новой учётной записи!',
 	'config-postgres-old' => 'Необходим PostgreSQL $1 или более поздняя версия. У вас установлен PostgreSQL $2.',
 	'config-sqlite-name-help' => 'Выберите имя-идентификатор для вашей вики.
 Не используйте дефисы и пробелы.
@@ -16218,7 +16218,7 @@ chmod a+w $3</pre>',
 	'config-admin-password-mismatch' => 'Введённые вами пароли не совпадают.',
 	'config-admin-email' => 'Адрес электронной почты:',
 	'config-admin-email-help' => 'Введите адрес электронной почты, чтобы получать сообщения от других пользователей вики, иметь возможность восстановить пароль, а также получать уведомления об изменениях страниц из списка наблюдения. Вы можете оставить это поле пустым.',
-	'config-admin-error-user' => 'Внутренняя ошибка при создании учётной записи администратора с именем «<nowiki>$1</nowiki>».',
+	'config-admin-error-wiki_user' => 'Внутренняя ошибка при создании учётной записи администратора с именем «<nowiki>$1</nowiki>».',
 	'config-admin-error-password' => 'Внутренняя ошибка при установке пароля для учётной записи администратора «<nowiki>$1</nowiki>»: <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Вы ввели неправильный адрес электронной почты',
 	'config-subscribe' => 'Подписаться на [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce рассылку новостей о появлении новых версий MediaWiki].',
@@ -16245,7 +16245,7 @@ chmod a+w $3</pre>',
 
 Сценарий '''«{{int:config-profile-fishbowl}}»''' разрешает редактирование только определённым участникам, но общедоступным остаётся просмотр страниц, в том числе просмотр истории изменения. В режиме '''«{{int:config-profile-private}}»''' просмотр страниц разрешён только определённым пользователям, какая-то их часть может иметь также права на редактирование.
 
-Более сложные схемы разграничения прав можно настроить после установки, см. [//www.mediawiki.org/wiki/Manual:User_rights соответствующее руководство].",
+Более сложные схемы разграничения прав можно настроить после установки, см. [//www.mediawiki.org/wiki/Manual:wiki_user_rights соответствующее руководство].",
 	'config-license' => 'Авторские права и лицензии:',
 	'config-license-none' => 'Не указывать лицензию в колонтитуле внизу страницы',
 	'config-license-cc-by-sa' => 'Creative Commons Attribution Share Alike',
@@ -16267,10 +16267,10 @@ GFDL может быть использована, но она сложна дл
 	'config-enable-email' => 'Включить исходящие e-mail',
 	'config-enable-email-help' => 'Если вы хотите, чтобы электронная почта работала, необходимо выполнить [http://www.php.net/manual/en/mail.configuration.php соответствующие настройки PHP].
 Если вы не хотите использовать возможности электронной почты в вики, вы можете её отключить.',
-	'config-email-user' => 'Включить электронную почту от участника к участнику',
-	'config-email-user-help' => 'Разрешить всем пользователям отправлять друг другу электронные письма, если выставлена соответствующая настройка в профиле.',
-	'config-email-usertalk' => 'Включить уведомления пользователей о сообщениях на их странице обсуждения',
-	'config-email-usertalk-help' => 'Разрешить пользователям получать уведомления об изменениях своих страниц обсуждения, если они разрешат это в своих настройках.',
+	'config-email-wiki_user' => 'Включить электронную почту от участника к участнику',
+	'config-email-wiki_user-help' => 'Разрешить всем пользователям отправлять друг другу электронные письма, если выставлена соответствующая настройка в профиле.',
+	'config-email-wiki_usertalk' => 'Включить уведомления пользователей о сообщениях на их странице обсуждения',
+	'config-email-wiki_usertalk-help' => 'Разрешить пользователям получать уведомления об изменениях своих страниц обсуждения, если они разрешат это в своих настройках.',
 	'config-email-watchlist' => 'Включить уведомление на электронную почту об изменении списка наблюдения',
 	'config-email-watchlist-help' => 'Разрешить пользователям получать уведомления об отслеживаемых ими страницах, если они разрешили это в своих настройках.',
 	'config-email-auth' => 'Включить аутентификацию через электронную почту',
@@ -16346,12 +16346,12 @@ GFDL может быть использована, но она сложна дл
 Указанная для установки учётная запись не является записью суперпользователя, и не относится к роли веб-пользователя, поэтому не получается создать объекты, принадлежащие веб-пользователю.
 
 MediaWiki в настоящее время требует, чтобы владельцем таблиц был веб-пользователь. Пожалуйста, укажите другое имя учётной записи для веб, или нажмите кнопку «назад» и укажите пользователя с достаточными для установки правами.',
-	'config-install-user' => 'Создание базы данных пользователей',
-	'config-install-user-alreadyexists' => 'Участник «$1» уже существует',
-	'config-install-user-create-failed' => 'Не получилось создать участника «$1»: $2',
-	'config-install-user-grant-failed' => 'Ошибка предоставления прав пользователю «$1»: $2',
-	'config-install-user-missing' => 'Указанного пользователя «$1» не существует.',
-	'config-install-user-missing-create' => 'Указанного пользователя «$1» не существует.
+	'config-install-wiki_user' => 'Создание базы данных пользователей',
+	'config-install-wiki_user-alreadyexists' => 'Участник «$1» уже существует',
+	'config-install-wiki_user-create-failed' => 'Не получилось создать участника «$1»: $2',
+	'config-install-wiki_user-grant-failed' => 'Ошибка предоставления прав пользователю «$1»: $2',
+	'config-install-wiki_user-missing' => 'Указанного пользователя «$1» не существует.',
+	'config-install-wiki_user-missing-create' => 'Указанного пользователя «$1» не существует.
 Пожалуйста поставьте ниже отметку «Создать учётную запись», если вы хотите создать его.',
 	'config-install-tables' => 'Создание таблиц',
 	'config-install-tables-exist' => "'''Предупреждение''': таблицы MediaWiki, возможно, уже существуют.
@@ -16671,7 +16671,7 @@ Vendar pa MediaWiki zahteva PHP $2 ali višji.',
 	'config-db-wiki-settings' => 'Prepoznaj ta wiki:',
 	'config-db-name' => 'Ime zbirke podatkov:',
 	'config-db-name-oracle' => 'Shema zbirke podatkov:',
-	'config-db-username' => 'Uporabniško ime zbirke podatkov:',
+	'config-db-wiki_username' => 'Uporabniško ime zbirke podatkov:',
 	'config-db-password' => 'Geslo zbirke podatkov:',
 	'config-db-prefix' => 'Predpona tabel zbirke podatkov:',
 	'config-db-charset' => 'Nabor znakov zbirke podatkov',
@@ -16754,7 +16754,7 @@ Določite drugo uporabniško ime.',
 	'config-admin-password-same' => 'Geslo ne sme biti enako kot uporabniško ime.',
 	'config-admin-password-mismatch' => 'Vneseni gesli se ne ujemata.',
 	'config-admin-email' => 'E-poštni naslov:',
-	'config-admin-error-user' => 'Med ustvarjanjem administratorja »<nowiki>$1</nowiki>« je prišlo do notranje napake.',
+	'config-admin-error-wiki_user' => 'Med ustvarjanjem administratorja »<nowiki>$1</nowiki>« je prišlo do notranje napake.',
 	'config-admin-error-password' => 'Med nastavljanjem gesla za administratorja »<nowiki>$1</nowiki>« je prišlo do notranje napake: <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Vnesli ste neveljaven e-poštni naslov.',
 	'config-subscribe' => 'Naročite se na [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce poštni seznam obvestil o izdajah].',
@@ -16777,7 +16777,7 @@ Sedaj lahko preskočite preostalo konfiguriranje in zdaj namestite wiki.',
 	'config-license-cc-choose' => 'Izberite dovoljenje Creative Commons po meri',
 	'config-email-settings' => 'Nastavitve e-pošte',
 	'config-enable-email' => 'Omogoči odhodno e-pošto',
-	'config-email-user' => 'Omogoči e-pošto med uporabniki',
+	'config-email-wiki_user' => 'Omogoči e-pošto med uporabniki',
 	'config-email-auth' => 'Omogoči overitev preko e-pošte',
 	'config-email-sender' => 'E-poštni naslov za vrnjeno pošto:',
 	'config-upload-settings' => 'Nalaganje slike in datotek',
@@ -16800,13 +16800,13 @@ Vnesite ime dovoljenja ročno.',
 	'config-install-step-failed' => 'spodletelo',
 	'config-install-database' => 'Vzpostavljanje zbirke podatkov',
 	'config-install-pg-schema-not-exist' => 'Shema PostgreSQL ne obstaja.',
-	'config-install-user-alreadyexists' => 'Uporabnik »$1« že obstaja',
+	'config-install-wiki_user-alreadyexists' => 'Uporabnik »$1« že obstaja',
 	'config-install-tables' => 'Ustvarjanje tabel',
 	'config-download-localsettings' => 'Prenesi LocalSettings.php',
 	'config-help' => 'pomoč',
 	'mainpagetext' => "'''Programje MediaWiki je bilo uspešno nameščeno.'''",
 	'mainpagedocfooter' => 'Za uporabo in pomoč pri nastavitvi, prosimo, preglejte [//meta.wikimedia.org/wiki/MediaWiki_localisation dokumentacijo za prilagajanje vmesnika]
-in [//meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priročnik].',
+in [//meta.wikimedia.org/wiki/MediaWiki_wiki_user%27s_Guide Uporabniški priročnik].',
 );
 
 /** Lower Silesian (Schläsch)
@@ -16828,7 +16828,7 @@ $messages['sli'] = array(
  */
 $messages['so'] = array(
 	'mainpagetext' => "'''MediaWiki Si fiican oo kuugu install gareeyay.'''",
-	'mainpagedocfooter' => "Meeshaan ka akhriso sidii aad u isticmaali leheed brogramka wiki [//meta.wikimedia.org/wiki/Help:Contents User's Guide]  .
+	'mainpagedocfooter' => "Meeshaan ka akhriso sidii aad u isticmaali leheed brogramka wiki [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide]  .
 == Bilaaw ==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
 * [//www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
@@ -16968,7 +16968,7 @@ $messages['stq'] = array(
  */
 $messages['su'] = array(
 	'mainpagetext' => "'''''Software'' MediaWiki geus diinstal.'''",
-	'mainpagedocfooter' => "Mangga tingal ''[//meta.wikimedia.org/wiki/MediaWiki_localisation documentation on customizing the interface]'' jeung [//meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Tungtunan Pamaké] pikeun pitulung maké jeung konfigurasi.",
+	'mainpagedocfooter' => "Mangga tingal ''[//meta.wikimedia.org/wiki/MediaWiki_localisation documentation on customizing the interface]'' jeung [//meta.wikimedia.org/wiki/MediaWiki_wiki_user%27s_Guide Tungtunan Pamaké] pikeun pitulung maké jeung konfigurasi.",
 );
 
 /** Swedish (svenska)
@@ -17031,7 +17031,7 @@ MediaWiki kräver PHP $2 eller högre.',
 	'config-db-name' => 'Databasnamn:',
 	'config-db-name-oracle' => 'Databasschema:',
 	'config-db-install-account' => 'Användarkonto för installation',
-	'config-db-username' => 'Databas-användarnamn:',
+	'config-db-wiki_username' => 'Databas-användarnamn:',
 	'config-db-password' => 'Databas-lösenord:',
 	'config-db-schema' => 'Schema för MediaWiki',
 	'config-header-mysql' => 'MySQL-inställningar',
@@ -17050,7 +17050,7 @@ Använd bara ASCII-bokstäver (a-z, A-Z), siffror (0-9), understreck (_) och bin
 Kontrollera värden, användarnamnet och lösenordet nedan och försök igen',
 	'config-invalid-schema' => '"$1" är ett ogiltigt schema för MediaWiki.
 Använd bara ASCII-bokstäver (a-z, A-Z), siffror (0-9), understreck (_) och bindestreck (-).',
-	'config-db-sys-user-exists-oracle' => 'Användarkontot "$1" finns redan. SYSDBA kan endast användas för att skapa ett nytt konto!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Användarkontot "$1" finns redan. SYSDBA kan endast användas för att skapa ett nytt konto!',
 	'config-postgres-old' => 'PostgreSQL $1 eller senare krävs, du har $2.',
 	'config-upgrade-done' => "Uppgraderingen slutfördes.
 
@@ -17165,7 +17165,7 @@ $messages['ta'] = array(
 	'config-db-wiki-settings' => 'இந்த விக்கியைக் கண்டுபிடி',
 	'config-db-name' => 'தரவுதளப் பெயர்:',
 	'config-db-install-account' => 'நிறுவலுக்கான பயனர் கணக்கு',
-	'config-db-username' => 'தரவுத்தள பயனர்பெயர்:',
+	'config-db-wiki_username' => 'தரவுத்தள பயனர்பெயர்:',
 	'config-db-password' => 'தரவுத்தள கடவுச்சொல்:',
 	'config-db-prefix' => 'தரவுத் தள வரிசைப் பட்டியல் முன்னொட்டு:',
 	'config-db-charset' => 'தரவுத் தள வரியுருத் தொகுதி',
@@ -17199,8 +17199,8 @@ $messages['ta'] = array(
 	'config-license' => 'பதிப்புரிமை மற்றும் உரிமம்:',
 	'config-license-pd' => 'பொதுக்களம்',
 	'config-email-settings' => 'மின்னஞ்சல் அமைப்புகள்',
-	'config-email-user' => 'பயனர்-பயனர் மின்னஞ்சலைச் செயற்படுத்தவும்',
-	'config-email-usertalk' => 'பயனர் பேச்சுப் பக்க அறிவிப்பைச் செயற்படுத்தவும்',
+	'config-email-wiki_user' => 'பயனர்-பயனர் மின்னஞ்சலைச் செயற்படுத்தவும்',
+	'config-email-wiki_usertalk' => 'பயனர் பேச்சுப் பக்க அறிவிப்பைச் செயற்படுத்தவும்',
 	'config-email-watchlist' => 'கவனிப்புப் பட்டியல் அறிவிப்பைச் செயற்படுத்தவும்',
 	'config-upload-settings' => 'படிமம் மற்றும் கோப்பு பதிவேற்றங்கள்',
 	'config-upload-enable' => 'கோப்புப் பதிவேற்றங்களைச் செயற்படுத்தவும்',
@@ -17209,8 +17209,8 @@ $messages['ta'] = array(
 	'config-extensions' => 'நீட்சிகள்',
 	'config-install-step-done' => 'முடிந்தது',
 	'config-install-step-failed' => 'தோல்வியுற்றது',
-	'config-install-user' => 'தரவுத் தளப் பயனரை உருவாக்குகிறது',
-	'config-install-user-alreadyexists' => 'பயனர் "$1" ஏற்கனவே உள்ளது',
+	'config-install-wiki_user' => 'தரவுத் தளப் பயனரை உருவாக்குகிறது',
+	'config-install-wiki_user-alreadyexists' => 'பயனர் "$1" ஏற்கனவே உள்ளது',
 	'config-install-tables' => 'வரிசைப் பட்டியல்களை உருவாக்குகிறது',
 	'config-install-mainpage' => 'இயல்புநிலை உள்ளடக்கத்துடன் முதற்பக்கத்தை உருவாக்குகிறது',
 	'config-install-extension-tables' => 'செயற்படுத்தப்பட்ட நீட்சிகளுக்கு வரிசைப் பட்டியல்களை உருவாக்குகிறது',
@@ -17542,11 +17542,11 @@ Kung nais mong lumikha ng akawnt ng kalipunan ng dato bilang bahagi ng proseso n
 
 Ang panitik sa paglikha ng isang akawnt na mayroon ng kinakailangang mga pribilehiyo ay matatagpuan sa loob ng direktoryong "maintenance/oracle/" ng pagluluklok na ito. Pakatandaan na ang paggamit ng isang akawnt na may pagbabawal ay hindi magpapagana isa lahat ng mga kakayahang pampananatili sa piling ng likas na nakatakdang akawnt.',
 	'config-db-install-account' => 'Akawnt ng tagagamit para sa pagluluklok',
-	'config-db-username' => 'Pangalang pangtagagamit ng kalipunan ng dato:',
+	'config-db-wiki_username' => 'Pangalang pangtagagamit ng kalipunan ng dato:',
 	'config-db-password' => 'Hudyat sa kalipunan ng dato:',
 	'config-db-password-empty' => 'Paki magpasok ng isang hudyat para sa bagong tagagamit ng kalipunan ng dato: $1.
 Habang maging maaari na makalikha ng mga tagagamit na walang mga hudyat, hindi ito ligtas.',
-	'config-db-install-username' => 'Ipasok ang pangalan ng tagagamit na gagamitin upang kumabit sa kalipunan ng dato habang isinasagawa ang pagluluklok.
+	'config-db-install-wiki_username' => 'Ipasok ang pangalan ng tagagamit na gagamitin upang kumabit sa kalipunan ng dato habang isinasagawa ang pagluluklok.
 Hindi ito ang pangalan ng tagagamit ng akawnt ng MediaWiki; ito ang pangalan ng tagagamit para sa iyong kalipunan ng dato.',
 	'config-db-install-password' => 'Ipasok ang hudyat na gagamitin upang kumabit sa kalipunan ng dato habang isinasagawa ang pagluluklok.
 Hindi ito ang hudyat para sa akawnt ng MediaWiki; ito ang hudyat para sa iyong kalipunan ng dato.',
@@ -17624,7 +17624,7 @@ Suriin ang punong-abala, pangalan ng tagagamit at hudyat na nasa ibaba at subuka
 	'config-invalid-schema' => 'Hindi katanggap-tanggap na panukala para sa "$1" ng MediaWiki.
 Gumamit lamang ng mga titik ng ASCII (a-z, A-Z), mga bilang (0-9), at mga salungguhit (_).',
 	'config-db-sys-create-oracle' => 'Ang panluklok ay tumatangkilik lamang sa paggamit ng isang akawnt ng SYSDBA para sa paglikha ng isang bagong akawnt.',
-	'config-db-sys-user-exists-oracle' => 'Umiiral na ang akawnt ng tagagamit na "$1". Magagamit lamang ang SYSDBA para sa paglikha ng isang bagong akawnt!',
+	'config-db-sys-wiki_user-exists-oracle' => 'Umiiral na ang akawnt ng tagagamit na "$1". Magagamit lamang ang SYSDBA para sa paglikha ng isang bagong akawnt!',
 	'config-postgres-old' => 'Kailangan ang PostgreSQL $1 o mas bago, mayroon kang $2.',
 	'config-sqlite-name-help' => 'Pumili ng isang pangalan na pangkilala na wiki mo.
 Huwag gumamit ng mga puwang o mga gitling.
@@ -17729,7 +17729,7 @@ Tumukoy ng ibang pangalan ng tagagamit.',
 	'config-admin-password-mismatch' => 'Hindi magkatugma ang ipinasok mong dalawang mga hudyat.',
 	'config-admin-email' => 'Tirahan ng e-liham:',
 	'config-admin-email-help' => 'Magpasok dito ng isang tirahan ng e-liham upang mapahintulutan kang makatanggap ng e-liham mula sa iba pang mga tagagamit sa ibabaw ng wiki, itakdang muli ang hudyat mo, at mapabatiran ng mga pagbabago sa mga pahinang nasa ibabaw ng iyong tala ng mga binabantayan. Maiiwanan mo na walang laman ang hanay na ito.',
-	'config-admin-error-user' => 'Panloob na kamalian kapag nililikha ang isang tagapangasiwa na may pangalang "<nowiki>$1</nowiki>".',
+	'config-admin-error-wiki_user' => 'Panloob na kamalian kapag nililikha ang isang tagapangasiwa na may pangalang "<nowiki>$1</nowiki>".',
 	'config-admin-error-password' => 'Panloob na kamalian kapag nagtatakda ng isang hudyat na para sa tagapangasiwang "<nowiki>$1</nowiki>": <pre>$2</pre>',
 	'config-admin-error-bademail' => 'Nagpasok ka ng isang hindi katanggap-tanggap na tirahan ng e-liham.',
 	'config-subscribe' => 'Tumanggap mula sa [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce talaan ng mga pinadadalhan ng mga nilalabas na mga pabatid].',
@@ -17756,7 +17756,7 @@ Ang isang wiki na mayroong '''{{int:config-profile-no-anon}}''' ay nagbibigay ng
 Ang tagpo na '''{{int:config-profile-fishbowl}}''' ay nagpapahintulot lamang sa pinayagang mga tagagamit na makatingin ng mga pahina, na kapiling ang pangkat na pinayagang  makapamatnugot.
 Ang isang '''{{int:config-profile-private}}''' ay nagpapahintulot lamang sa pinayagang mga tagagamit na makatingin ng mga pahina, na kapiling ang pangkat na pinayagang makapamatnugot.
 
-Ang mas masasalimuot na mga kaayusan ng mga karapatan ng tagagamit ay makukuha pagkaraan ng pagluluklok, tingnan ang [//www.mediawiki.org/wiki/Manual:User_rights may kaugnayang kinamay na lahok].",
+Ang mas masasalimuot na mga kaayusan ng mga karapatan ng tagagamit ay makukuha pagkaraan ng pagluluklok, tingnan ang [//www.mediawiki.org/wiki/Manual:wiki_user_rights may kaugnayang kinamay na lahok].",
 	'config-license' => 'Karapatang-ari at lisensiya:',
 	'config-license-none' => 'Walang talababa ng lisensiya',
 	'config-license-cc-by-sa' => 'Malikhaing Pangkaraniwang Pagtukoy Pamamahaging Magkatulad',
@@ -17779,10 +17779,10 @@ Mahirap din ang paggamit na muli ng nilalaman na nasa ilalim ng GFDL.",
 	'config-enable-email' => 'Paganahin ang palabas na e-liham',
 	'config-enable-email-help' => 'Kung nais mong gumana ang e-liham, ang mga katakdaan ng liham ng [http://www.php.net/manual/en/mail.configuration.php PHP] ay kailangang maging wasto ang pagkakaayos.
 Kung ayaw mo nang anumang mga katampukan ng e-liham, maaari mong huwag paganahin ang mga ito rito.',
-	'config-email-user' => 'Paganahin ang tagagamit-sa-tagagamit na e-liham',
-	'config-email-user-help' => 'Payagan ang lahat ng mga tagagamit na magpadala ng e-liham sa bawat isa kapag pinagana nila ito sa kanilang mga nais.',
-	'config-email-usertalk' => 'Paganahin ang pabatid na pampahina ng usapan ng tagagamit',
-	'config-email-usertalk-help' => 'Payagan ang mga tagagamit na tumanggap ng mga pabatid sa mga pagbabago ng pahina ng usapan ng tagagamit, kapag pinagana nila ito sa kanilang mga nais.',
+	'config-email-wiki_user' => 'Paganahin ang tagagamit-sa-tagagamit na e-liham',
+	'config-email-wiki_user-help' => 'Payagan ang lahat ng mga tagagamit na magpadala ng e-liham sa bawat isa kapag pinagana nila ito sa kanilang mga nais.',
+	'config-email-wiki_usertalk' => 'Paganahin ang pabatid na pampahina ng usapan ng tagagamit',
+	'config-email-wiki_usertalk-help' => 'Payagan ang mga tagagamit na tumanggap ng mga pabatid sa mga pagbabago ng pahina ng usapan ng tagagamit, kapag pinagana nila ito sa kanilang mga nais.',
 	'config-email-watchlist' => 'Paganahin ang pabatid ng talaan ng bantayan',
 	'config-email-watchlist-help' => 'Payagan ang mga tagagamit na tumanggap ng mga pabatid tungkol sa kanilang binabantayang mga pahina kapag pinagana nila ito sa kanilang mga nais.',
 	'config-email-auth' => 'Paganahin ang pagpapatunay ng e-liham',
@@ -17858,12 +17858,12 @@ Tiyakin na ang tagagamit na "$1" ay maaaring makasulat sa balangkas na "$2".',
 Ang tinukoy mong akawnt para sa pagluluklok ay hindi isang tagagamit na super at hindi isang kasapi sa gampanin ng tagagamit ng sangkasaputan, kung kaya\'t hindi nito nagawang makalikha ng mga bagay na pag-aari ng tagagamit ng sangkasaputan.
 
 Sa kasalukuyan, nangangailangan ang MediaWiki na ang mga talahanayan ay maging pag-aari ng tagagamit ng sangkasaputan. Paki tumukoy ng isa pang pangalan ng akawnt na pangsangkasaputan, o pindutin ang "bumalik" at tumukoy ng isang tagagamit na may kaangkupang pribilehiyo ng pagluluklok.',
-	'config-install-user' => 'Nililikha ang tagagamit ng kalipunan ng dato',
-	'config-install-user-alreadyexists' => 'Umiiral na ang tagagamit na "$1"',
-	'config-install-user-create-failed' => 'Nabigo ang paglikha ng tagagamit na "$1": $2',
-	'config-install-user-grant-failed' => 'Nabigo ang pagbibigay ng pahintulot sa tagagamit na "$1": $2',
-	'config-install-user-missing' => 'Hindi umiiral ang tinukoy na tagagamit na si "$1".',
-	'config-install-user-missing-create' => 'Hindi umiiral ang tinukoy na tagagamit na si "$1".
+	'config-install-wiki_user' => 'Nililikha ang tagagamit ng kalipunan ng dato',
+	'config-install-wiki_user-alreadyexists' => 'Umiiral na ang tagagamit na "$1"',
+	'config-install-wiki_user-create-failed' => 'Nabigo ang paglikha ng tagagamit na "$1": $2',
+	'config-install-wiki_user-grant-failed' => 'Nabigo ang pagbibigay ng pahintulot sa tagagamit na "$1": $2',
+	'config-install-wiki_user-missing' => 'Hindi umiiral ang tinukoy na tagagamit na si "$1".',
+	'config-install-wiki_user-missing-create' => 'Hindi umiiral ang tinukoy na tagagamit na si "$1".
 Paki lagitikin ang nasa ibabang kahong natsetsekan na "likhain ang akawnt" kung nais mong likhain ito.',
 	'config-install-tables' => 'Nililikha ang mga talahanayan',
 	'config-install-tables-exist' => "'''Babala''': Tila umiiral na ang mga talahanayan ng MediaWiki.
@@ -17901,7 +17901,7 @@ Kapag nagawa na iyan, maaari ka nang '''[$2 pumasok sa wiki mo]'''.",
 	'config-help' => 'saklolo',
 	'config-nofile' => 'Hindi matagpuan ang talaksang "$1". Binura na ba ito?',
 	'mainpagetext' => "'''Matagumpay na ininstala ang MediaWiki.'''",
-	'mainpagedocfooter' => "Silipin ang [//meta.wikimedia.org/wiki/Help:Contents Patnubay sa Tagagamit] (''\"User's Guide\"'') para sa kaalaman sa paggamit ng wiking ''software''.
+	'mainpagedocfooter' => "Silipin ang [//meta.wikimedia.org/wiki/Help:Contents Patnubay sa Tagagamit] (''\"wiki_user's Guide\"'') para sa kaalaman sa paggamit ng wiking ''software''.
 
 == Pagsisimula ==
 
@@ -18094,9 +18094,9 @@ $messages['ur'] = array(
 	'config-profile-fishbowl' => 'صرف مجاز ایڈیٹرز',
 	'config-license-pd' => 'پبلک ڈومین',
 	'config-email-settings' => 'ای میل کی ترتیبات',
-	'config-email-user-help' => 'تمام صارفین ای میل بھیجنے کیلئے ایک دوسرے اگر وہ یہ ان کی ترجیحات میں فعال ہے کی اجازت دیتے ہیں.',
-	'config-email-usertalk' => 'صارف بات صفحہ کی اطلاع فعال',
-	'config-email-usertalk-help' => 'اگر وہ یہ ان کی ترجیحات میں فعال ہے صارف بات صفحہ تبدیلی پر اطلاعات حاصل کرنے کے لئے صارفین کی اجازت دیں.',
+	'config-email-wiki_user-help' => 'تمام صارفین ای میل بھیجنے کیلئے ایک دوسرے اگر وہ یہ ان کی ترجیحات میں فعال ہے کی اجازت دیتے ہیں.',
+	'config-email-wiki_usertalk' => 'صارف بات صفحہ کی اطلاع فعال',
+	'config-email-wiki_usertalk-help' => 'اگر وہ یہ ان کی ترجیحات میں فعال ہے صارف بات صفحہ تبدیلی پر اطلاعات حاصل کرنے کے لئے صارفین کی اجازت دیں.',
 	'config-email-watchlist' => 'دیکھنی والی فہرست کی اطلاع فعال',
 	'config-email-auth' => 'فعال ای میل کی تصدیق',
 	'config-email-sender' => 'ای میل ایڈریس پر واپس:',
@@ -18197,7 +18197,7 @@ $messages['vo'] = array(
 $messages['vro'] = array(
 	'mainpagetext' => "'''MediaWiki tarkvara paika säet.'''",
 	'mainpagedocfooter' => 'Vikitarkvara pruukmisõ kotsilõ loeq mano:
-* [//meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide MediaWiki pruukmisoppus (inglüse keelen)].
+* [//meta.wikimedia.org/wiki/MediaWiki_wiki_user%27s_Guide MediaWiki pruukmisoppus (inglüse keelen)].
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Säädmiisi oppus (inglüse keelen)]
 * [//www.mediawiki.org/wiki/Manual:FAQ MediaWiki kõgõ küsütümbäq küsümiseq (inglüse keelen)]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce E-postilist, minka andas teedäq MediaWiki vahtsist kujõst].',
@@ -18215,7 +18215,7 @@ $messages['wa'] = array(
  */
 $messages['war'] = array(
 	'mainpagetext' => "'''Malinamposon an pag-instalar han MediaWiki.'''",
-	'mainpagedocfooter' => "Kitaa an [//meta.wikimedia.org/wiki/Help:Contents User's Guide] para hin impormasyon ha paggamit han wiki nga softweyr.
+	'mainpagedocfooter' => "Kitaa an [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] para hin impormasyon ha paggamit han wiki nga softweyr.
 
 == Ha pagtikang==
 * [//www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
@@ -18289,7 +18289,7 @@ $messages['yi'] = array(
  */
 $messages['yo'] = array(
 	'mainpagetext' => "'''MediaWiki ti jẹ́ gbígbékọ́sínú láyọrísírere.'''",
-	'mainpagedocfooter' => "Ẹ ṣàbẹ̀wò sí [//meta.wikimedia.org/wiki/Help:Contents User's Guide] fún ìfitólétí nípa líló atòlànà wíkì.
+	'mainpagedocfooter' => "Ẹ ṣàbẹ̀wò sí [//meta.wikimedia.org/wiki/Help:Contents wiki_user's Guide] fún ìfitólétí nípa líló atòlànà wíkì.
 
 == Láti bẹ̀rẹ̀ ==
 *  [//www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
@@ -18462,10 +18462,10 @@ Object caching is not enabled.",
 
 具有所需权限账户的创建脚本存放于本程序的“maintenance/oracle/”目录下。请注意，使用受限制的帐户将禁用默认帐户的所有维护性功能。',
 	'config-db-install-account' => '用于安装的用户帐号',
-	'config-db-username' => '数据库用户名：',
+	'config-db-wiki_username' => '数据库用户名：',
 	'config-db-password' => '数据库密码：',
 	'config-db-password-empty' => '请为新数据库用户$1输入密码。尽管您可以创建不使用密码的用户，但这样做并不安全。',
-	'config-db-install-username' => '请输入在安装过程中用于连接数据库的用户名。请勿输入MediaWiki帐号的用户名，请输入您数据库的用户名。',
+	'config-db-install-wiki_username' => '请输入在安装过程中用于连接数据库的用户名。请勿输入MediaWiki帐号的用户名，请输入您数据库的用户名。',
 	'config-db-install-password' => '请输入在安装过程中用于连接数据库的密码。请勿输入MediaWiki帐号的密码，请输入您数据库的密码。',
 	'config-db-install-help' => '请输入在安装过程中用于连接数据库的用户名和密码。',
 	'config-db-account-lock' => '在普通操作中使用相同的用户名和密码',
@@ -18529,7 +18529,7 @@ $1
 请检查下列的主机、用户名和密码设置后重试。',
 	'config-invalid-schema' => '无效的MediaWiki数据库模式“$1”。请只使用ASCII字母（a-z、A-Z）、数字（0-9）和下划线（_）。',
 	'config-db-sys-create-oracle' => '安装程序仅支持使用SYSDBA帐户创建新帐户。',
-	'config-db-sys-user-exists-oracle' => '用户帐户“$1”已经存在。SYSDBA仅可用于创建新帐户！',
+	'config-db-sys-wiki_user-exists-oracle' => '用户帐户“$1”已经存在。SYSDBA仅可用于创建新帐户！',
 	'config-postgres-old' => '需要PostgreSQL $1或更新的版本，您的版本为$2。',
 	'config-sqlite-name-help' => '请为您的wiki指定一个用于标识的名称。请勿使用空格或连字号，该名称将被用作SQLite的数据文件名。',
 	'config-sqlite-parent-unwritable-group' => '由于父目录<code><nowiki>$2</nowiki></code>对网页服务器不可写，无法创建数据目录<code><nowiki>$1</nowiki></code>。
@@ -18615,7 +18615,7 @@ chmod a+w $3</pre>',
 	'config-admin-password-mismatch' => '两次输入的密码并不相同。',
 	'config-admin-email' => '电子邮件地址：',
 	'config-admin-email-help' => '输入电子邮件地址后，您可以收到此wiki上其他用户发来的电子邮件，并能重置您的密码，还可在监视列表中页面被更改时收到邮件通知。您可以将此字段留空。',
-	'config-admin-error-user' => '在创建用户名为“<nowiki>$1</nowiki>”的管理员帐号时发生内部错误。',
+	'config-admin-error-wiki_user' => '在创建用户名为“<nowiki>$1</nowiki>”的管理员帐号时发生内部错误。',
 	'config-admin-error-password' => '在为管理员“<nowiki>$1</nowiki>”设置密码时发生内部错误：<pre>$2</pre>',
 	'config-admin-error-bademail' => '您输入了无效的电子邮件地址。',
 	'config-subscribe' => '订阅[https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce 发行公告邮件列表]。',
@@ -18637,7 +18637,7 @@ chmod a+w $3</pre>',
 
 '''{{int:config-profile-fishbowl}}'''模式只允许获批准的用户编辑，但对公众开放页面浏览（包括历史记录）。'''{{int:config-profile-private}}'''则只允许获批准的用户浏览、编辑页面。
 
-安装完成后，您还可以对用户权限进行更多、更复杂的配置，参见[//www.mediawiki.org/wiki/Manual:User_rights 相关的使用手册]。",
+安装完成后，您还可以对用户权限进行更多、更复杂的配置，参见[//www.mediawiki.org/wiki/Manual:wiki_user_rights 相关的使用手册]。",
 	'config-license' => '版权和许可证：',
 	'config-license-none' => '页脚无许可证',
 	'config-license-cc-by-sa' => '知识共享署名-相同方式分享',
@@ -18655,10 +18655,10 @@ GNU自由文档许可证是维基百科曾经使用过的许可证，并迄今�
 	'config-email-settings' => '电子邮件设置',
 	'config-enable-email' => '启用出站电子邮件',
 	'config-enable-email-help' => '如果您希望使用电子邮件功能，请正确配置[http://www.php.net/manual/en/mail.configuration.php PHP的邮件设定]。如果您不需要任何电子邮件功能，请在此处禁用它。',
-	'config-email-user' => '启用用户到用户的电子邮件',
-	'config-email-user-help' => '允许所有用户互发邮件，假若他们启用了该功能。',
-	'config-email-usertalk' => '启用用户讨论页通知',
-	'config-email-usertalk-help' => '允许用户收到用户讨论页被修改的通知，假若他们启用了该功能。',
+	'config-email-wiki_user' => '启用用户到用户的电子邮件',
+	'config-email-wiki_user-help' => '允许所有用户互发邮件，假若他们启用了该功能。',
+	'config-email-wiki_usertalk' => '启用用户讨论页通知',
+	'config-email-wiki_usertalk-help' => '允许用户收到用户讨论页被修改的通知，假若他们启用了该功能。',
 	'config-email-watchlist' => '启用监视列表通知',
 	'config-email-watchlist-help' => '允许用户收到与其监视列表有关的通知，假若他们启用了该功能。',
 	'config-email-auth' => '启用电子邮件身份验证',
@@ -18718,12 +18718,12 @@ GNU自由文档许可证是维基百科曾经使用过的许可证，并迄今�
 您给本程序指定的帐户不是超级用户，也不是web用户角色的成员，所以它不能创建web用户所拥有的对象。
 
 MediaWiki当前需要使用由web用户所有的表。请指定另一个web帐户名称，或点击“后退”并指定具有适当权限的安装用户。',
-	'config-install-user' => '正在创建数据库用户',
-	'config-install-user-alreadyexists' => '用户“$1”已存在',
-	'config-install-user-create-failed' => '创建用户“$1”失败：$2',
-	'config-install-user-grant-failed' => '授予用户“$1”权限失败：$2',
-	'config-install-user-missing' => '指定的用户“$1”不存在。',
-	'config-install-user-missing-create' => '指定的用户“$1”不存在。如果您想要创建一名，请点选“创建帐户”下面的复选框。',
+	'config-install-wiki_user' => '正在创建数据库用户',
+	'config-install-wiki_user-alreadyexists' => '用户“$1”已存在',
+	'config-install-wiki_user-create-failed' => '创建用户“$1”失败：$2',
+	'config-install-wiki_user-grant-failed' => '授予用户“$1”权限失败：$2',
+	'config-install-wiki_user-missing' => '指定的用户“$1”不存在。',
+	'config-install-wiki_user-missing-create' => '指定的用户“$1”不存在。如果您想要创建一名，请点选“创建帐户”下面的复选框。',
 	'config-install-tables' => '正在创建数据表',
 	'config-install-tables-exist' => "'''警告'''：MediaWiki的数据表似乎已经存在，跳过创建。",
 	'config-install-tables-failed' => "'''错误'''：创建数据表出错，下为错误信息：$1",
@@ -18901,10 +18901,10 @@ Object caching is not enabled.",
 
 具有所需權限賬戶的創建腳本存放於本程序的“maintenance/oracle/”目錄下。請注意，使用受限制的帳戶將禁用默認帳戶的所有維護性功能。',
 	'config-db-install-account' => '用於安裝的用戶帳號',
-	'config-db-username' => '資料庫使用者名稱：',
+	'config-db-wiki_username' => '資料庫使用者名稱：',
 	'config-db-password' => '資料庫密碼：',
 	'config-db-password-empty' => '請為新數據庫用戶$1輸入密碼。儘管您可以創建不使用密碼的用戶，但這樣做並不安全。',
-	'config-db-install-username' => '請輸入在安裝過程中用於連接數據庫的用戶名。請勿輸入MediaWiki帳號的用戶名，請輸入您數據庫的用戶名。',
+	'config-db-install-wiki_username' => '請輸入在安裝過程中用於連接數據庫的用戶名。請勿輸入MediaWiki帳號的用戶名，請輸入您數據庫的用戶名。',
 	'config-db-install-password' => '請輸入在安裝過程中用於連接數據庫的密碼。請勿輸入MediaWiki帳號的密碼，請輸入您數據庫的密碼。',
 	'config-db-install-help' => '請輸入在安裝過程中用於連接數據庫的用戶名和密碼。',
 	'config-db-account-lock' => '在普通操作中使用相同的用戶名和密碼',
@@ -18968,7 +18968,7 @@ $1
 請檢查下列的主機、用戶名和密碼設置後重試。',
 	'config-invalid-schema' => '無效的MediaWiki數據庫模式“$1”。請只使用ASCII字母（a-z、A-Z）、數字（0-9）和下劃線（_）。',
 	'config-db-sys-create-oracle' => '安裝程序僅支持使用SYSDBA帳戶創建新帳戶。',
-	'config-db-sys-user-exists-oracle' => '用戶帳戶“$1”已經存在。SYSDBA僅可用於創建新帳戶！',
+	'config-db-sys-wiki_user-exists-oracle' => '用戶帳戶“$1”已經存在。SYSDBA僅可用於創建新帳戶！',
 	'config-postgres-old' => '需要PostgreSQL $1或更新的版本，您的版本為$2。',
 	'config-sqlite-name-help' => '請為您的wiki指定一個用於標識的名稱。請勿使用空格或連字號，該名稱將被用作SQLite的數據文件名。',
 	'config-sqlite-parent-unwritable-group' => '由於父目錄<code><nowiki>$2</nowiki></code>對網頁服務器不可寫，無法創建數據目錄<code><nowiki>$1</nowiki></code>。
@@ -19054,7 +19054,7 @@ chmod a+w $3</pre>',
 	'config-admin-password-mismatch' => '兩次輸入的密碼並不相同。',
 	'config-admin-email' => 'E-mail 地址：',
 	'config-admin-email-help' => '輸入電子郵件地址後，您可以收到此wiki上其他用戶發來的電子郵件，並能重置您的密碼，還可在監視列表中頁面被更改時收到郵件通知。您可以將此字段留空。',
-	'config-admin-error-user' => '在創建用戶名為“<nowiki>$1</nowiki>”的管理員帳號時發生內部錯誤。',
+	'config-admin-error-wiki_user' => '在創建用戶名為“<nowiki>$1</nowiki>”的管理員帳號時發生內部錯誤。',
 	'config-admin-error-password' => '在為管理員“<nowiki>$1</nowiki>”設置密碼時發生內部錯誤：<pre>$2</pre>',
 	'config-admin-error-bademail' => '你輸入了一個無效的電子郵件地址。',
 	'config-subscribe' => '訂閱[https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce 發行公告郵件列表]。',
@@ -19076,7 +19076,7 @@ chmod a+w $3</pre>',
 
 '''{{int:config-profile-fishbowl}}'''模式只允許獲批准的用戶編輯，但對公眾開放頁面瀏覽（包括歷史記錄）。'''{{int:config-profile-private}}'''則只允許獲批准的用戶瀏覽、編輯頁面。
 
-安裝完成後，您還可以對用戶權限進行更多、更複雜的配置，參見[//www.mediawiki.org/wiki/Manual:User_rights 相關的使用手冊]。",
+安裝完成後，您還可以對用戶權限進行更多、更複雜的配置，參見[//www.mediawiki.org/wiki/Manual:wiki_user_rights 相關的使用手冊]。",
 	'config-license' => '版權和許可證：',
 	'config-license-none' => '頁腳無許可證',
 	'config-license-cc-by-sa' => '知識共享署名-相同方式分享',
@@ -19094,10 +19094,10 @@ GNU自由文檔許可證是維基百科曾經使用過的許可證，並迄今�
 	'config-email-settings' => 'E-mail 設定',
 	'config-enable-email' => '啟用出站電子郵件',
 	'config-enable-email-help' => '如果您希望使用電子郵件功能，請正確配置[http://www.php.net/manual/en/mail.configuration.php PHP的郵件設定]。如果您不需要任何電子郵件功能，請在此處禁用它。',
-	'config-email-user' => '啟用用戶到用戶的電子郵件',
-	'config-email-user-help' => '允許所有用戶互發郵件，假若他們啟用了該功能。',
-	'config-email-usertalk' => '啟用用戶討論頁通知',
-	'config-email-usertalk-help' => '允許用戶收到用戶討論頁被修改的通知，假若他們啟用了該功能。',
+	'config-email-wiki_user' => '啟用用戶到用戶的電子郵件',
+	'config-email-wiki_user-help' => '允許所有用戶互發郵件，假若他們啟用了該功能。',
+	'config-email-wiki_usertalk' => '啟用用戶討論頁通知',
+	'config-email-wiki_usertalk-help' => '允許用戶收到用戶討論頁被修改的通知，假若他們啟用了該功能。',
 	'config-email-watchlist' => '啟用監視列表通知',
 	'config-email-watchlist-help' => '允許用戶收到與其監視列表有關的通知，假若他們啟用了該功能。',
 	'config-email-auth' => '啟用電子郵件認證',
@@ -19157,12 +19157,12 @@ GNU自由文檔許可證是維基百科曾經使用過的許可證，並迄今�
 您給本程序指定的帳戶不是超級用戶，也不是web用戶角色的成員，所以它不能創建web用戶所擁有的對象。
 
 MediaWiki當前需要使用由web用戶所有的表。請指定另一個web帳戶名稱，或點擊“後退”並指定具有適當權限的安裝用戶。',
-	'config-install-user' => '正在創建數據庫用戶',
-	'config-install-user-alreadyexists' => '用戶“$1”已存在',
-	'config-install-user-create-failed' => '創建用戶“$1”失敗：$2',
-	'config-install-user-grant-failed' => '授予用戶“$1”權限失敗：$2',
-	'config-install-user-missing' => '指定的用戶“$1”不存在。',
-	'config-install-user-missing-create' => '指定的用戶“$1”不存在。如果您想要創建一名，請點選“創建帳戶”下面的複選框。',
+	'config-install-wiki_user' => '正在創建數據庫用戶',
+	'config-install-wiki_user-alreadyexists' => '用戶“$1”已存在',
+	'config-install-wiki_user-create-failed' => '創建用戶“$1”失敗：$2',
+	'config-install-wiki_user-grant-failed' => '授予用戶“$1”權限失敗：$2',
+	'config-install-wiki_user-missing' => '指定的用戶“$1”不存在。',
+	'config-install-wiki_user-missing-create' => '指定的用戶“$1”不存在。如果您想要創建一名，請點選“創建帳戶”下面的複選框。',
 	'config-install-tables' => '正在創建數據表',
 	'config-install-tables-exist' => "'''警告'''：MediaWiki的數據表似乎已經存在，跳過創建。",
 	'config-install-tables-failed' => "'''錯誤'''：創建數據表出錯，下為錯誤信息：$1",

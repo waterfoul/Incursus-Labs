@@ -20,7 +20,7 @@ $fallback = 'de';
 $separatorTransformTable = array( ',' => "'", '.' => ',' );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-hideminor' => 'Kleine Änderungen in den «Letzten Änderungen» ausblenden',
 'tog-hidepatrolled' => 'Kontrollierte Änderungen in den «Letzten Änderungen» ausblenden',
 'tog-newpageshidepatrolled' => 'Kontrollierte Seiten bei den «Neuen Seiten» ausblenden',
@@ -55,7 +55,7 @@ Die Datenbank meldete den Fehler: «<tt>$3: $4</tt>».',
 
 Die Seite ist möglicherweise gelöscht oder verschoben worden.
 
-Falls dies nicht  zutrifft, hast du eventuell einen Fehler in der Software gefunden. Bitte melde dies einem [[Special:ListUsers/sysop|Administrator]] unter Nennung der URL.',
+Falls dies nicht  zutrifft, hast du eventuell einen Fehler in der Software gefunden. Bitte melde dies einem [[Special:Listwiki_users/sysop|Administrator]] unter Nennung der URL.',
 'fileappenderrorread' => '«$1» konnte während des Hinzufügens nicht gelesen werden.',
 'fileappenderror' => 'Konnte «$1» nicht an «$2» anhängen.',
 'filecopyerror' => 'Die Datei «$1» konnte nicht nach «$2» kopiert werden.',
@@ -74,16 +74,16 @@ Bitte versuche es in ein paar Minuten erneut.',
 Änderungen auf dieser Seite wirken sich auf die Benutzeroberfläche aus.
 Ziehe bitte im Fall von Übersetzungen in Betracht, diese bei [//translatewiki.net/wiki/Main_Page?setlang=de-ch translatewiki.net], der Lokalisierungsplattform für MediaWiki, durchzuführen.",
 'titleprotected' => "Eine Seite mit diesem Namen kann nicht angelegt werden.
-Die Sperre wurde durch [[User:$1|$1]] mit der Begründung ''«$2»'' eingerichtet.",
+Die Sperre wurde durch [[wiki_user:$1|$1]] mit der Begründung ''«$2»'' eingerichtet.",
 'filereadonlyerror' => 'Die Datei «$1» kann nicht verändert werden, da auf das Dateirepositorium «$2» nur Lesezugriff möglich ist.
 
 Der Administrator, der den Schreibzugriff sperrte, gab folgenden Grund an: «$3».',
 
 # Login and logout pages
 'loginsuccess' => 'Du bist jetzt als «$1» bei {{SITENAME}} angemeldet.',
-'nosuchuser' => 'Der Benutzername «$1» existiert nicht.
-Überprüfe die Schreibweise (Gross-/Kleinschreibung beachten) oder [[Special:UserLogin/signup|melde dich als neuer Benutzer an]].',
-'nosuchusershort' => 'Der Benutzername «$1» ist nicht vorhanden. Bitte überprüfe die Schreibweise.',
+'nosuchwiki_user' => 'Der Benutzername «$1» existiert nicht.
+Überprüfe die Schreibweise (Gross-/Kleinschreibung beachten) oder [[Special:wiki_userLogin/signup|melde dich als neuer Benutzer an]].',
+'nosuchwiki_usershort' => 'Der Benutzername «$1» ist nicht vorhanden. Bitte überprüfe die Schreibweise.',
 'passwordremindertext' => 'Jemand mit der IP-Adresse $1, wahrscheinlich du selbst, hat ein neues Passwort für die Anmeldung bei {{SITENAME}} ($4) angefordert.
 
 Das automatisch generierte Passwort für Benutzer „$2“ lautet nun: $3
@@ -104,7 +104,7 @@ Bevor ein E-Mail von anderen Benutzern über die E-Mail-Funktion empfangen werde
 Falls das Benutzerkonto irrtümlich angelegt wurde, kannst du diese Nachricht ignorieren.',
 
 # E-mail sending
-'user-mail-no-addy' => 'Versuchte ein E-Mail ohne Angabe einer E-Mail-Adresse zu versenden',
+'wiki_user-mail-no-addy' => 'Versuchte ein E-Mail ohne Angabe einer E-Mail-Adresse zu versenden',
 
 # Change password dialog
 'resetpass_announce' => 'Anmeldung mit dem per E-Mail zugesandten Code. Um die Anmeldung abzuschliessen, musst du jetzt ein neues Passwort wählen.',
@@ -141,19 +141,19 @@ Du kannst die «E-Mail an diesen Benutzer»-Funktion nicht nutzen, solange keine
 Deine aktuelle IP-Adresse ist $3, und die Sperr-ID ist $5.
 Bitte füge alle Informationen jeder Anfrage hinzu, die du stellst.",
 'confirmedittext' => 'Du musst deine E-Mail-Adresse erst bestätigen, bevor du Bearbeitungen durchführen kannst. Bitte ergänze und bestätige dein E-Mail in den [[Special:Preferences|Einstellungen]].',
-'accmailtext' => 'Ein zufällig generiertes Passwort für [[User talk:$1|$1]] wurde an $2 versandt.
+'accmailtext' => 'Ein zufällig generiertes Passwort für [[wiki_user talk:$1|$1]] wurde an $2 versandt.
 
 Das Passwort für dieses neue Benutzerkonto kann auf der Spezialseite «[[Special:ChangePassword|Passwort ändern]]» geändert werden.',
-'userpage-userdoesnotexist' => 'Das Benutzerkonto «<nowiki>$1</nowiki>» ist nicht vorhanden. Bitte prüfe, ob du diese Seite wirklich erstellen/bearbeiten willst.',
-'userpage-userdoesnotexist-view' => 'Das Benutzerkonto «$1» ist nicht vorhanden.',
+'wiki_userpage-wiki_userdoesnotexist' => 'Das Benutzerkonto «<nowiki>$1</nowiki>» ist nicht vorhanden. Bitte prüfe, ob du diese Seite wirklich erstellen/bearbeiten willst.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Das Benutzerkonto «$1» ist nicht vorhanden.',
 'clearyourcache' => "'''Hinweis:''' Leere nach dem Speichern den Browser-Cache, um die Änderungen sehen zu können.
 * '''Firefox/Safari:''' ''Umschalttaste'' drücken und gleichzeitig ''Aktualisieren'' anklicken oder entweder ''Ctrl+F5'' oder ''Ctrl+R'' (''⌘+R'' auf dem Mac) drücken
 * '''Google Chrome:''' ''Umschalttaste+Ctrl+R'' (''⌘+Umschalttaste+R'' auf dem Mac) drücken
 * '''Internet Explorer:''' ''Ctrl+F5'' drücken oder ''Ctrl'' drücken und gleichzeitig ''Aktualisieren'' anklicken
 * '''Opera:''' ''Extras → Internetspuren löschen … → Individuelle Auswahl → Den kompletten Cache löschen''",
-'usercssyoucanpreview' => "'''Tipp:''' Benutze den «{{int:showpreview}}»-Button, um dein neues CSS vor dem Speichern zu testen.",
-'userjsyoucanpreview' => "'''Tipp:''' Benutze den «{{int:showpreview}}»-Button, um dein neues JavaScript vor dem Speichern zu testen.",
-'userinvalidcssjstitle' => "'''Achtung:''' Die Benutzeroberfläche «$1» existiert nicht. Bedenke, dass benutzerspezifische .css- und .js-Seiten mit einem Kleinbuchstaben anfangen müssen, also beispielsweise ''{{ns:user}}:Mustermann/vector.css'' an Stelle von ''{{ns:user}}:Mustermann/Vector.css''.",
+'wiki_usercssyoucanpreview' => "'''Tipp:''' Benutze den «{{int:showpreview}}»-Button, um dein neues CSS vor dem Speichern zu testen.",
+'wiki_userjsyoucanpreview' => "'''Tipp:''' Benutze den «{{int:showpreview}}»-Button, um dein neues JavaScript vor dem Speichern zu testen.",
+'wiki_userinvalidcssjstitle' => "'''Achtung:''' Die Benutzeroberfläche «$1» existiert nicht. Bedenke, dass benutzerspezifische .css- und .js-Seiten mit einem Kleinbuchstaben anfangen müssen, also beispielsweise ''{{ns:wiki_user}}:Mustermann/vector.css'' an Stelle von ''{{ns:wiki_user}}:Mustermann/Vector.css''.",
 'editing' => 'Bearbeiten von «$1»',
 'editingsection' => 'Bearbeiten von «$1» (Abschnitt)',
 'editingcomment' => 'Bearbeiten von «$1» (Neuer Abschnitt)',
@@ -223,7 +223,7 @@ Du hast darauf keinen Zugriff.',
 'right-override-export-depth' => 'Exportiere Seiten einschliesslich verlinkter Seiten bis zu einer Tiefe von 5',
 'right-passwordreset' => 'Passwort eines Benutzers zurücksetzen und das dazu verschickte E-Mail einsehen',
 
-# User rights log
+# wiki_user rights log
 'rightslogentry' => 'änderte die Benutzerrechte für «$1» von «$2» auf «$3»',
 'rightslogentry-autopromote' => 'wurde automatisch von «$2» nach «$3» zugeordnet',
 
@@ -348,14 +348,14 @@ Die Ausgabe kann durch die Auswahl des Logbuchtyps, des Benutzers oder des Seite
 # Special:LinkSearch
 'linksearch-text' => 'Diese Spezialseite ermöglicht die Suche nach Seiten, in denen bestimmte Weblinks enthalten sind. Dabei können Platzhalter wie beispielsweise <code>*.beispiel.ch</code> benutzt werden. Es muss mindestens eine Top-Level-Domain, z. B. «*.org». angegeben werden. <br />Unterstützte Protokolle: <code>$1</code> (Diese bitte nicht bei der Suchanfrage angeben.)',
 
-# E-mail user
+# E-mail wiki_user
 'emailpagetext' => 'Du kannst dem Benutzer mit dem unten stehenden Formular ein E-Mail senden.
 Als Absender wird die E-Mail-Adresse aus deinen [[Special:Preferences|Einstellungen]] eingetragen, damit der Benutzer dir antworten kann.',
 'defemailsubject' => '{{SITENAME}} - E-Mail von Benutzer «$1»',
 'emailnotarget' => 'Nicht vorhandener oder ungültiger Benutzername für den Empfang eines E-Mails.',
 'emailccme' => 'Sende eine Kopie des E-Mails an mich',
 'emailsenttext' => 'Dein E-Mail wurde verschickt.',
-'emailuserfooter' => 'Dieses E-Mail wurde von {{SITENAME}}-Benutzer «$1» an «$2» gesendet.',
+'emailwiki_userfooter' => 'Dieses E-Mail wurde von {{SITENAME}}-Benutzer «$1» an «$2» gesendet.',
 
 # Watchlist
 'addedwatchtext' => 'Die Seite «[[:$1]]» wurde zu deiner [[Special:Watchlist|Beobachtungsliste]] hinzugefügt.
@@ -410,16 +410,16 @@ Im [[Special:Log/delete|Lösch-Logbuch]] findest du eine Übersicht der gelösch
 'nolinkshere-ns' => "Keine Seite verlinkt auf '''«[[:$1]]»''' im gewählten Namensraum.",
 
 # Block/unblock
-'ipb-confirmhideuser' => 'Du bist gerade dabei, einen Benutzer im Modus «Benutzer verstecken» zu sperren. Dies führt dazu, dass der Benutzername in allen Listen und Logbüchern unterdrückt wird. Möchtest du das wirklich tun?',
+'ipb-confirmhidewiki_user' => 'Du bist gerade dabei, einen Benutzer im Modus «Benutzer verstecken» zu sperren. Dies führt dazu, dass der Benutzername in allen Listen und Logbüchern unterdrückt wird. Möchtest du das wirklich tun?',
 'ipb-blocklist-contribs' => 'Benutzerbeiträge von «$1»',
-'autoblocker' => 'Automatische Sperre, da du eine gemeinsame IP-Adresse mit [[User:$1|$1]] benutzt. Grund der Benutzersperre: «$2».',
+'autoblocker' => 'Automatische Sperre, da du eine gemeinsame IP-Adresse mit [[wiki_user:$1|$1]] benutzt. Grund der Benutzersperre: «$2».',
 'blocklogentry' => 'sperrte «[[$1]]» für den Zeitraum: $2 $3',
 'reblock-logentry' => 'änderte die Sperre von «[[$1]]» für den Zeitraum: $2 $3',
 'unblocklogentry' => 'hob die Sperre von «$1» auf',
 'ipb_already_blocked' => '«$1» wurde bereits gesperrt.',
 'ipb-needreblock' => '«$1» ist bereits gesperrt. Möchtest du die Sperrparameter ändern?',
 'ip_range_toolarge' => 'Adressbereiche, die größer als /$1 sind, sind nicht erlaubt.',
-'cant-see-hidden-user' => 'Der Benutzer, den du versuchst zu sperren, wurde bereits gesperrt und verborgen. Da du das «hideuser»-Recht nicht hast, kannst du die Benutzersperre nicht sehen und nicht bearbeiten.',
+'cant-see-hidden-wiki_user' => 'Der Benutzer, den du versuchst zu sperren, wurde bereits gesperrt und verborgen. Da du das «hidewiki_user»-Recht nicht hast, kannst du die Benutzersperre nicht sehen und nicht bearbeiten.',
 
 # Move page
 'move-page' => 'Verschieben von «$1»',
@@ -455,7 +455,7 @@ Die Seite «[[:$1]]» existiert bereits. Möchtest du diese löschen, um die Sei
 'javascripttest-pagetext-unknownframework' => 'Unbekanntes Framework «$1».',
 
 # Tooltip help for the actions
-'tooltip-t-emailuser' => 'Ein E-Mail an diesen Benutzer senden',
+'tooltip-t-emailwiki_user' => 'Ein E-Mail an diesen Benutzer senden',
 
 # Info page
 'pageinfo-title' => 'Informationen zu «$1»',

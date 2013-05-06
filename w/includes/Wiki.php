@@ -179,14 +179,14 @@ class MediaWiki {
 		$request = $this->context->getRequest();
 		$title = $this->context->getTitle();
 		$output = $this->context->getOutput();
-		$user = $this->context->getUser();
+		$wiki_user = $this->context->getwiki_user();
 
 		if ( $request->getVal( 'printable' ) === 'yes' ) {
 			$output->setPrintable();
 		}
 
 		$unused = null; // To pass it by reference
-		wfRunHooks( 'BeforeInitialize', array( &$title, &$unused, &$output, &$user, $request, $this ) );
+		wfRunHooks( 'BeforeInitialize', array( &$title, &$unused, &$output, &$wiki_user, $request, $this ) );
 
 		// Invalid titles. Bug 21776: The interwikis must redirect even if the page name is empty.
 		if ( is_null( $title ) || ( $title->getDBkey() == '' && $title->getInterwiki() == '' ) ||
@@ -197,13 +197,13 @@ class MediaWiki {
 			throw new BadTitleError();
 		}
 
-		// Check user's permissions to read this page.
+		// Check wiki_user's permissions to read this page.
 		// We have to check here to catch special pages etc.
 		// We will check again in Article::view().
-		$permErrors = $title->getUserPermissionsErrors( 'read', $user );
+		$permErrors = $title->getwiki_userPermissionsErrors( 'read', $wiki_user );
 		if ( count( $permErrors ) ) {
 			// Bug 32276: allowing the skin to generate output with $wgTitle or
-			// $this->context->title set to the input title would allow anonymous users to
+			// $this->context->title set to the input title would allow anonymous wiki_users to
 			// determine whether a page exists, potentially leaking private data. In fact, the
 			// curid and oldid request  parameters would allow page titles to be enumerated even
 			// when they are not guessable. So we reset the title to Special:Badtitle before the
@@ -311,8 +311,8 @@ class MediaWiki {
 		}
 
 		if ( $pageView ) {
-			// Promote user to any groups they meet the criteria for
-			$user->addAutopromoteOnceGroups( 'onView' );
+			// Promote wiki_user to any groups they meet the criteria for
+			$wiki_user->addAutopromoteOnceGroups( 'onView' );
 		}
 
 		wfProfileOut( __METHOD__ );
@@ -404,10 +404,10 @@ class MediaWiki {
 		$request = $this->context->getRequest();
 		$output = $this->context->getOutput();
 		$title = $this->context->getTitle();
-		$user = $this->context->getUser();
+		$wiki_user = $this->context->getwiki_user();
 
 		if ( !wfRunHooks( 'MediaWikiPerformAction',
-			array( $output, $page, $title, $user, $request, $this ) ) )
+			array( $output, $page, $title, $wiki_user, $request, $this ) ) )
 		{
 			wfProfileOut( __METHOD__ );
 			return;
@@ -522,7 +522,7 @@ class MediaWiki {
 						$cache->loadFromFileCache( $this->context );
 					}
 					// Do any stats increment/watchlist stuff
-					$this->context->getWikiPage()->doViewUpdates( $this->context->getUser() );
+					$this->context->getWikiPage()->doViewUpdates( $this->context->getwiki_user() );
 					// Tell OutputPage that output is taken care of
 					$this->context->getOutput()->disable();
 					wfProfileOut( 'main-try-filecache' );

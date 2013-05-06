@@ -81,12 +81,12 @@ abstract class Maintenance {
 
 	// Special vars for params that are always used
 	protected $mQuiet = false;
-	protected $mDbUser, $mDbPass;
+	protected $mDbwiki_user, $mDbPass;
 
 	// A description of the script, children should change this
 	protected $mDescription = '';
 
-	// Have we already loaded our user input?
+	// Have we already loaded our wiki_user input?
 	protected $mInputLoaded = false;
 
 	/**
@@ -309,9 +309,9 @@ abstract class Maintenance {
 	}
 
 	/**
-	 * Throw some output to the user. Scripts can call this with no fears,
+	 * Throw some output to the wiki_user. Scripts can call this with no fears,
 	 * as we handle all --quiet stuff here
-	 * @param $out String: the text to show to the user
+	 * @param $out String: the text to show to the wiki_user
 	 * @param $channel Mixed: unique identifier for the channel. See
 	 *     function outputChanneled.
 	 */
@@ -329,7 +329,7 @@ abstract class Maintenance {
 	}
 
 	/**
-	 * Throw an error to the user. Doesn't respect --quiet, so don't use
+	 * Throw an error to the wiki_user. Doesn't respect --quiet, so don't use
 	 * this for non-error output
 	 * @param $err String: the error to display
 	 * @param $die Int: if > 0, go ahead and die out using this int as the code
@@ -428,7 +428,7 @@ abstract class Maintenance {
 
 		// If we support a DB, show the options
 		if ( $this->getDbType() > 0 ) {
-			$this->addOption( 'dbuser', 'The DB user to use for this script', false, true );
+			$this->addOption( 'dbwiki_user', 'The DB wiki_user to use for this script', false, true );
 			$this->addOption( 'dbpass', 'The password to use for this script', false, true );
 		}
 
@@ -582,7 +582,7 @@ abstract class Maintenance {
 			$this->mInputLoaded = true;
 		}
 
-		# If we've already loaded input (either by user values or from $argv)
+		# If we've already loaded input (either by wiki_user values or from $argv)
 		# skip on loading it again. The array_shift() will corrupt values if
 		# it's run again and again
 		if ( $this->mInputLoaded ) {
@@ -692,8 +692,8 @@ abstract class Maintenance {
 	 * Handle the special variables that are global to all scripts
 	 */
 	protected function loadSpecialVars() {
-		if ( $this->hasOption( 'dbuser' ) ) {
-			$this->mDbUser = $this->getOption( 'dbuser' );
+		if ( $this->hasOption( 'dbwiki_user' ) ) {
+			$this->mDbwiki_user = $this->getOption( 'dbwiki_user' );
 		}
 		if ( $this->hasOption( 'dbpass' ) ) {
 			$this->mDbPass = $this->getOption( 'dbpass' );
@@ -827,8 +827,8 @@ abstract class Maintenance {
 	 */
 	public function finalSetup() {
 		global $wgCommandLineMode, $wgShowSQLErrors, $wgServer;
-		global $wgDBadminuser, $wgDBadminpassword;
-		global $wgDBuser, $wgDBpassword, $wgDBservers, $wgLBFactoryConf;
+		global $wgDBadminwiki_user, $wgDBadminpassword;
+		global $wgDBwiki_user, $wgDBpassword, $wgDBservers, $wgLBFactoryConf;
 
 		# Turn off output buffering again, it might have been turned on in the settings files
 		if ( ob_get_level() ) {
@@ -843,15 +843,15 @@ abstract class Maintenance {
 		}
 
 		# If these were passed, use them
-		if ( $this->mDbUser ) {
-			$wgDBadminuser = $this->mDbUser;
+		if ( $this->mDbwiki_user ) {
+			$wgDBadminwiki_user = $this->mDbwiki_user;
 		}
 		if ( $this->mDbPass ) {
 			$wgDBadminpassword = $this->mDbPass;
 		}
 
-		if ( $this->getDbType() == self::DB_ADMIN && isset( $wgDBadminuser ) ) {
-			$wgDBuser = $wgDBadminuser;
+		if ( $this->getDbType() == self::DB_ADMIN && isset( $wgDBadminwiki_user ) ) {
+			$wgDBwiki_user = $wgDBadminwiki_user;
 			$wgDBpassword = $wgDBadminpassword;
 
 			if ( $wgDBservers ) {
@@ -859,12 +859,12 @@ abstract class Maintenance {
 				 * @var $wgDBservers array
 				 */
 				foreach ( $wgDBservers as $i => $server ) {
-					$wgDBservers[$i]['user'] = $wgDBuser;
+					$wgDBservers[$i]['wiki_user'] = $wgDBwiki_user;
 					$wgDBservers[$i]['password'] = $wgDBpassword;
 				}
 			}
 			if ( isset( $wgLBFactoryConf['serverTemplate'] ) ) {
-				$wgLBFactoryConf['serverTemplate']['user'] = $wgDBuser;
+				$wgLBFactoryConf['serverTemplate']['wiki_user'] = $wgDBwiki_user;
 				$wgLBFactoryConf['serverTemplate']['password'] = $wgDBpassword;
 			}
 			LBFactory::destroyInstance();
@@ -882,7 +882,7 @@ abstract class Maintenance {
 	 */
 	protected function afterFinalSetup() {
 		if ( defined( 'MW_CMDLINE_CALLBACK' ) ) {
-			call_user_func( MW_CMDLINE_CALLBACK );
+			call_wiki_user_func( MW_CMDLINE_CALLBACK );
 		}
 	}
 
@@ -935,16 +935,16 @@ abstract class Maintenance {
 	 */
 	public function purgeRedundantText( $delete = true ) {
 		# Data should come off the master, wrapped in a transaction
-		$dbw = $this->getDB( DB_MASTER );
-		$dbw->begin( __METHOD__ );
+		w = $this->getDB( DB_MASTER );
+		w->begin( __METHOD__ );
 
-		$tbl_arc = $dbw->tableName( 'archive' );
-		$tbl_rev = $dbw->tableName( 'revision' );
-		$tbl_txt = $dbw->tableName( 'text' );
+		$tbl_arc = w->tableName( 'archive' );
+		$tbl_rev = w->tableName( 'revision' );
+		$tbl_txt = w->tableName( 'text' );
 
 		# Get "active" text records from the revisions table
 		$this->output( 'Searching for active text records in revisions table...' );
-		$res = $dbw->query( "SELECT DISTINCT rev_text_id FROM $tbl_rev" );
+		$res = w->query( "SELECT DISTINCT rev_text_id FROM $tbl_rev" );
 		foreach ( $res as $row ) {
 			$cur[] = $row->rev_text_id;
 		}
@@ -952,7 +952,7 @@ abstract class Maintenance {
 
 		# Get "active" text records from the archive table
 		$this->output( 'Searching for active text records in archive table...' );
-		$res = $dbw->query( "SELECT DISTINCT ar_text_id FROM $tbl_arc" );
+		$res = w->query( "SELECT DISTINCT ar_text_id FROM $tbl_arc" );
 		foreach ( $res as $row ) {
 			$cur[] = $row->ar_text_id;
 		}
@@ -961,14 +961,14 @@ abstract class Maintenance {
 		# Get the IDs of all text records not in these sets
 		$this->output( 'Searching for inactive text records...' );
 		$set = implode( ', ', $cur );
-		$res = $dbw->query( "SELECT old_id FROM $tbl_txt WHERE old_id NOT IN ( $set )" );
+		$res = w->query( "SELECT old_id FROM $tbl_txt WHERE old_id NOT IN ( $set )" );
 		$old = array();
 		foreach ( $res as $row ) {
 			$old[] = $row->old_id;
 		}
 		$this->output( "done.\n" );
 
-		# Inform the user of what we're going to do
+		# Inform the wiki_user of what we're going to do
 		$count = count( $old );
 		$this->output( "$count inactive items found.\n" );
 
@@ -976,12 +976,12 @@ abstract class Maintenance {
 		if ( $delete && $count ) {
 			$this->output( 'Deleting...' );
 			$set = implode( ', ', $old );
-			$dbw->query( "DELETE FROM $tbl_txt WHERE old_id IN ( $set )" );
+			w->query( "DELETE FROM $tbl_txt WHERE old_id IN ( $set )" );
 			$this->output( "done.\n" );
 		}
 
 		# Done
-		$dbw->commit( __METHOD__ );
+		w->commit( __METHOD__ );
 	}
 
 	/**
@@ -1045,9 +1045,9 @@ abstract class Maintenance {
 	 *
 	 * @return DatabaseBase
 	 */
-	protected function &getDB( $db, $groups = array(), $wiki = false ) {
+	protected function &getDB( , $groups = array(), $wiki = false ) {
 		if ( is_null( $this->mDb ) ) {
-			return wfGetDB( $db, $groups, $wiki );
+			return wfGetDB( , $groups, $wiki );
 		} else {
 			return $this->mDb;
 		}
@@ -1056,54 +1056,54 @@ abstract class Maintenance {
 	/**
 	 * Sets database object to be returned by getDB().
 	 *
-	 * @param $db DatabaseBase: Database object to be used
+	 * @param  DatabaseBase: Database object to be used
 	 */
-	public function setDB( &$db ) {
-		$this->mDb = $db;
+	public function setDB( & ) {
+		$this->mDb = ;
 	}
 
 	/**
 	 * Lock the search index
-	 * @param &$db DatabaseBase object
+	 * @param & DatabaseBase object
 	 */
-	private function lockSearchindex( &$db ) {
+	private function lockSearchindex( & ) {
 		$write = array( 'searchindex' );
 		$read = array( 'page', 'revision', 'text', 'interwiki', 'l10n_cache' );
-		$db->lockTables( $read, $write, __CLASS__ . '::' . __METHOD__ );
+		->lockTables( $read, $write, __CLASS__ . '::' . __METHOD__ );
 	}
 
 	/**
 	 * Unlock the tables
-	 * @param &$db DatabaseBase object
+	 * @param & DatabaseBase object
 	 */
-	private function unlockSearchindex( &$db ) {
-		$db->unlockTables(  __CLASS__ . '::' . __METHOD__ );
+	private function unlockSearchindex( & ) {
+		->unlockTables(  __CLASS__ . '::' . __METHOD__ );
 	}
 
 	/**
 	 * Unlock and lock again
 	 * Since the lock is low-priority, queued reads will be able to complete
-	 * @param &$db DatabaseBase object
+	 * @param & DatabaseBase object
 	 */
-	private function relockSearchindex( &$db ) {
-		$this->unlockSearchindex( $db );
-		$this->lockSearchindex( $db );
+	private function relockSearchindex( & ) {
+		$this->unlockSearchindex(  );
+		$this->lockSearchindex(  );
 	}
 
 	/**
 	 * Perform a search index update with locking
 	 * @param $maxLockTime Integer: the maximum time to keep the search index locked.
 	 * @param $callback callback String: the function that will update the function.
-	 * @param $dbw DatabaseBase object
+	 * @param w DatabaseBase object
 	 * @param $results
 	 */
-	public function updateSearchIndex( $maxLockTime, $callback, $dbw, $results ) {
+	public function updateSearchIndex( $maxLockTime, $callback, w, $results ) {
 		$lockTime = time();
 
 		# Lock searchindex
 		if ( $maxLockTime ) {
 			$this->output( "   --- Waiting for lock ---" );
-			$this->lockSearchindex( $dbw );
+			$this->lockSearchindex( w );
 			$lockTime = time();
 			$this->output( "\n" );
 		}
@@ -1113,17 +1113,17 @@ abstract class Maintenance {
 			# Allow reads to be processed
 			if ( $maxLockTime && time() > $lockTime + $maxLockTime ) {
 				$this->output( "    --- Relocking ---" );
-				$this->relockSearchindex( $dbw );
+				$this->relockSearchindex( w );
 				$lockTime = time();
 				$this->output( "\n" );
 			}
-			call_user_func( $callback, $dbw, $row );
+			call_wiki_user_func( $callback, w, $row );
 		}
 
 		# Unlock searchindex
 		if ( $maxLockTime ) {
 			$this->output( "    --- Unlocking --" );
-			$this->unlockSearchindex( $dbw );
+			$this->unlockSearchindex( w );
 			$this->output( "\n" );
 		}
 
@@ -1131,13 +1131,13 @@ abstract class Maintenance {
 
 	/**
 	 * Update the searchindex table for a given pageid
-	 * @param $dbw DatabaseBase a database write handle
+	 * @param w DatabaseBase a database write handle
 	 * @param $pageId Integer: the page ID to update.
 	 * @return null|string
 	 */
-	public function updateSearchIndexForPage( $dbw, $pageId ) {
+	public function updateSearchIndexForPage( w, $pageId ) {
 		// Get current revision
-		$rev = Revision::loadFromPageId( $dbw, $pageId );
+		$rev = Revision::loadFromPageId( w, $pageId );
 		$title = null;
 		if ( $rev ) {
 			$titleObj = $rev->getTitle();
@@ -1253,11 +1253,11 @@ abstract class LoggedUpdateMaintenance extends Maintenance {
 	}
 
 	public function execute() {
-		$db = $this->getDB( DB_MASTER );
+		 = $this->getDB( DB_MASTER );
 		$key = $this->getUpdateKey();
 
 		if ( !$this->hasOption( 'force' ) &&
-			$db->selectRow( 'updatelog', '1', array( 'ul_key' => $key ), __METHOD__ ) )
+			->selectRow( 'updatelog', '1', array( 'ul_key' => $key ), __METHOD__ ) )
 		{
 			$this->output( "..." . $this->updateSkippedMessage() . "\n" );
 			return true;
@@ -1268,7 +1268,7 @@ abstract class LoggedUpdateMaintenance extends Maintenance {
 		}
 
 		if (
-			$db->insert( 'updatelog', array( 'ul_key' => $key ), __METHOD__, 'IGNORE' ) )
+			->insert( 'updatelog', array( 'ul_key' => $key ), __METHOD__, 'IGNORE' ) )
 		{
 			return true;
 		} else {

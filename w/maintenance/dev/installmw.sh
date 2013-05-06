@@ -14,5 +14,5 @@ cd "$DEV/../../"; # $IP
 mkdir -p "$DEV/data"
 "$PHP" maintenance/install.php --server="http://localhost:$PORT" --scriptpath="" --dbtype=sqlite --dbpath="$DEV/data" --pass=admin "Trunk Test" "$USER"
 echo ""
-echo "Development wiki created with admin user $USER and password 'admin'."
+echo "Development wiki created with admin wiki_user $USER and password 'admin'."
 echo ""

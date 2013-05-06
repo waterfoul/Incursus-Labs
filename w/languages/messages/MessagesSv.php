@@ -102,7 +102,7 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( 'Raderade_bidrag' ),
 	'Disambiguations'           => array( 'Förgreningssidor' ),
 	'DoubleRedirects'           => array( 'Dubbla_omdirigeringar' ),
-	'Emailuser'                 => array( 'E-mail' ),
+	'Emailwiki_user'                 => array( 'E-mail' ),
 	'Export'                    => array( 'Exportera' ),
 	'Fewestrevisions'           => array( 'Minst_versioner' ),
 	'FileDuplicateSearch'       => array( 'Dublettfilsökning' ),
@@ -116,7 +116,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Fillista', 'Bildlista' ),
 	'Listgrouprights'           => array( 'Grupprättighetslista' ),
 	'Listredirects'             => array( 'Omdirigeringar' ),
-	'Listusers'                 => array( 'Användare', 'Användarlista' ),
+	'Listwiki_users'                 => array( 'Användare', 'Användarlista' ),
 	'Lockdb'                    => array( 'Lås_databasen' ),
 	'Log'                       => array( 'Logg' ),
 	'Lonelypages'               => array( 'Föräldralösa_sidor', 'Övergivna_sidor', 'Sidor_utan_länkar_till' ),
@@ -162,9 +162,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'Oanvända_mallar' ),
 	'Unwatchedpages'            => array( 'Obevakade_sidor' ),
 	'Upload'                    => array( 'Uppladdning' ),
-	'Userlogin'                 => array( 'Inloggning' ),
-	'Userlogout'                => array( 'Utloggning' ),
-	'Userrights'                => array( 'Rättigheter' ),
+	'wiki_userlogin'                 => array( 'Inloggning' ),
+	'wiki_userlogout'                => array( 'Utloggning' ),
+	'wiki_userrights'                => array( 'Rättigheter' ),
 	'Wantedcategories'          => array( 'Önskade_kategorier' ),
 	'Wantedfiles'               => array( 'Önskade_filer' ),
 	'Wantedpages'               => array( 'Önskade_sidor', 'Trasiga_länkar' ),
@@ -205,8 +205,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'ANTALSIDOR', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'ANTALARTIKLAR', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'ANTALFILER', 'NUMBEROFFILES' ),
-	'numberofusers'             => array( '1', 'ANTALANVÄNDARE', 'NUMBEROFUSERS' ),
-	'numberofactiveusers'       => array( '1', 'ANTALAKTIVAANVÄNDARE', 'NUMBEROFACTIVEUSERS' ),
+	'numberofwiki_users'             => array( '1', 'ANTALANVÄNDARE', 'NUMBEROFUSERS' ),
+	'numberofactivewiki_users'       => array( '1', 'ANTALAKTIVAANVÄNDARE', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'ANTALREDIGERINGAR', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'ANTALVISNINGAR', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'SIDNAMN', 'PAGENAME' ),
@@ -266,7 +266,7 @@ $magicWords = array(
 	'revisionmonth'             => array( '1', 'REVISIONSMÅNAD', 'REVISIONMONTH' ),
 	'revisionyear'              => array( '1', 'REVISIONSÅR', 'REVISIONYEAR' ),
 	'revisiontimestamp'         => array( '1', 'REVISIONSTIDSSTÄMPEL', 'REVISIONTIMESTAMP' ),
-	'revisionuser'              => array( '1', 'REVISIONSANVÄNDARE', 'REVISIONUSER' ),
+	'revisionwiki_user'              => array( '1', 'REVISIONSANVÄNDARE', 'REVISIONUSER' ),
 	'fullurl'                   => array( '0', 'FULLTURL:', 'FULLURL:' ),
 	'fullurle'                  => array( '0', 'FULLTURLE:', 'FULLURLE:' ),
 	'lcfirst'                   => array( '0', 'LBFÖRST:', 'LCFIRST:' ),
@@ -319,7 +319,7 @@ $dateFormats = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Stryk under länkar',
 'tog-justify' => 'Marginaljustera stycken',
 'tog-hideminor' => 'Visa inte mindre redigeringar i senaste ändringar',
@@ -343,7 +343,7 @@ $messages = array(
 'tog-previewonfirst' => 'Visa förhandsgranskning när redigering påbörjas',
 'tog-nocache' => 'Stäng av cachelagring för sidor',
 'tog-enotifwatchlistpages' => 'Skicka e-post till mig när en sida på min bevakningslista ändras',
-'tog-enotifusertalkpages' => 'Skicka e-post till mig när något händer på min diskussionssida',
+'tog-enotifwiki_usertalkpages' => 'Skicka e-post till mig när något händer på min diskussionssida',
 'tog-enotifminoredits' => 'Skicka mig e-post även för mindre ändringar av sidor och filer',
 'tog-enotifrevealaddr' => 'Visa min e-postadress i e-postmeddelanden om ändringar som skickas till andra',
 'tog-shownumberswatching' => 'Visa antalet användare som bevakar',
@@ -526,7 +526,7 @@ $messages = array(
 'talk' => 'Diskussion',
 'views' => 'Visningar',
 'toolbox' => 'Verktygslåda',
-'userpage' => 'Visa användarsida',
+'wiki_userpage' => 'Visa användarsida',
 'projectpage' => 'Visa projektsida',
 'imagepage' => 'Visa filsida',
 'mediawikipage' => 'Visa meddelandesida',
@@ -552,7 +552,7 @@ $1',
 'pool-queuefull' => 'Kön är full',
 'pool-errorunknown' => 'Okänt fel',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Om {{SITENAME}}',
 'aboutpage' => 'Project:Om',
 'copyright' => 'Innehållet är tillgängligt under $1.',
@@ -584,8 +584,8 @@ $1',
 'youhavenewmessages' => 'Du har $1 ($2).',
 'newmessageslink' => 'nya meddelanden',
 'newmessagesdifflink' => 'senaste ändringen',
-'youhavenewmessagesfromusers' => 'Du har $1 från {{PLURAL:$3|en annan användare|$3 användare}} ($2).',
-'youhavenewmessagesmanyusers' => 'Du har $1 från många användare ($2).',
+'youhavenewmessagesfromwiki_users' => 'Du har $1 från {{PLURAL:$3|en annan användare|$3 användare}} ($2).',
+'youhavenewmessagesmanywiki_users' => 'Du har $1 från många användare ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|ett nytt meddelande|nya meddelanden}}',
 'newmessagesdifflinkplural' => 'senaste {{PLURAL:$1|ändring|ändringar}}',
 'youhavenewmessagesmulti' => 'Du har nya meddelanden på $1',
@@ -616,7 +616,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Sida',
-'nstab-user' => 'Användarsida',
+'nstab-wiki_user' => 'Användarsida',
 'nstab-media' => 'Media',
 'nstab-special' => 'Specialsida',
 'nstab-project' => 'Projektsida',
@@ -661,7 +661,7 @@ Den administratör som låste den har angivit följande förklaring: $1',
 Detta orsakas oftast av att man följer en inaktuell länk till en jämförelse mellan versioner (diff) eller en historiklänk för en sida som raderats.
 
 Om inte så är fallet, kan du ha hittat en bugg i mjukvaran.
-Rapportera gärna problemet till någon [[Special:ListUsers/sysop|administratör]], ange då URL:en (webbadressen).',
+Rapportera gärna problemet till någon [[Special:Listwiki_users/sysop|administratör]], ange då URL:en (webbadressen).',
 'missingarticle-rev' => '(version $1)',
 'missingarticle-diff' => '(jämförelse mellan version $1 och $2)',
 'readonly_lag' => 'Databasen har automatiskt skrivskyddats medan slavdatabasservrarna synkroniseras med huvudservern.',
@@ -709,7 +709,7 @@ $2',
 'customcssprotected' => 'Du har inte behörighet att redigera denna CSS-sidan eftersom den innehåller en annan användares personliga inställningar.',
 'customjsprotected' => 'Du har inte behörighet att redigera denna JavaScript-sidan eftersom den innehåller en annan användares personliga inställningar.',
 'ns-specialprotected' => 'Specialsidor kan inte redigeras.',
-'titleprotected' => 'Denna sidtitel har skyddats från att skapas av [[User:$1|$1]].
+'titleprotected' => 'Denna sidtitel har skyddats från att skapas av [[wiki_user:$1|$1]].
 Den uppgivna anledningen är "\'\'$2\'\'".',
 'filereadonlyerror' => 'Det går inte att ändra filen "$1", eftersom fildatabasen "$2" är i skrivskyddat läge.
 
@@ -727,7 +727,7 @@ Den administratören som låste den gav denna anledning: "\'\'$3\'\'".',
 # Login and logout pages
 'logouttext' => "'''Du är nu utloggad.'''
 
-Du kan fortsätta att använda {{SITENAME}} anonymt, eller så kan du [[Special:UserLogin|logga in igen]] som samma eller som en annan användare.
+Du kan fortsätta att använda {{SITENAME}} anonymt, eller så kan du [[Special:wiki_userLogin|logga in igen]] som samma eller som en annan användare.
 Observera att det, tills du tömmer din webbläsares cache, på vissa sidor kan se ut som att du fortfarande är inloggad.",
 'welcomecreation' => '== Välkommen, $1! ==
 Ditt konto har skapats.
@@ -743,21 +743,21 @@ Glöm inte att justera dina [[Special:Preferences|{{SITENAME}}-inställningar]].
 'login' => 'Logga in',
 'nav-login-createaccount' => 'Logga in / skapa konto',
 'loginprompt' => 'Du måste tillåta cookies för att logga in på {{SITENAME}}.',
-'userlogin' => 'Logga in / skapa konto',
-'userloginnocreate' => 'Logga in',
+'wiki_userlogin' => 'Logga in / skapa konto',
+'wiki_userloginnocreate' => 'Logga in',
 'logout' => 'Logga ut',
-'userlogout' => 'Logga ut',
+'wiki_userlogout' => 'Logga ut',
 'notloggedin' => 'Inte inloggad',
 'nologin' => "Har du inget användarkonto? '''$1'''.",
 'nologinlink' => 'Skapa ett användarkonto',
 'createaccount' => 'Skapa ett konto',
 'gotaccount' => "Har du redan ett användarkonto? '''$1'''.",
 'gotaccountlink' => 'Logga in',
-'userlogin-resetlink' => 'Har du glömt dina inloggningsuppgifter?',
+'wiki_userlogin-resetlink' => 'Har du glömt dina inloggningsuppgifter?',
 'createaccountmail' => 'med e-post',
 'createaccountreason' => 'Orsak:',
 'badretype' => 'De lösenord du uppgett överensstämmer inte med varandra.',
-'userexists' => 'Det valda användarnamnet används redan.
+'wiki_userexists' => 'Det valda användarnamnet används redan.
 Var god välj ett annat namn.',
 'loginerror' => 'Inloggningsproblem',
 'createaccounterror' => 'Kunde inte skapa konto: $1',
@@ -771,12 +771,12 @@ Se till att du har aktiverat cookies, ladda om denna sida och försök igen.',
 'noname' => 'Du har angett ett ogiltigt användarnamn.',
 'loginsuccesstitle' => 'Inloggningen lyckades',
 'loginsuccess' => "'''Du är nu inloggad på {{SITENAME}} som \"\$1\".'''",
-'nosuchuser' => 'Det finns ingen användare med namnet "$1".
+'nosuchwiki_user' => 'Det finns ingen användare med namnet "$1".
 Användarnamn är skiftlägeskänsliga.
-Kontrollera din stavning, eller [[Special:UserLogin/signup|skapa ett nytt konto]].',
-'nosuchusershort' => 'Det finns ingen användare som heter "$1". Kontrollera att du stavat rätt.',
-'nouserspecified' => 'Du måste ange ett användarnamn.',
-'login-userblocked' => 'Denna användare är blockerad. Inloggning är inte tillåtet.',
+Kontrollera din stavning, eller [[Special:wiki_userLogin/signup|skapa ett nytt konto]].',
+'nosuchwiki_usershort' => 'Det finns ingen användare som heter "$1". Kontrollera att du stavat rätt.',
+'nowiki_userspecified' => 'Du måste ange ett användarnamn.',
+'login-wiki_userblocked' => 'Denna användare är blockerad. Inloggning är inte tillåtet.',
 'wrongpassword' => 'Lösenordet du angav är felaktigt. Försök igen.',
 'wrongpasswordempty' => 'Lösenordet som angavs var blankt. Var god försök igen.',
 'passwordtooshort' => 'Lösenord måste innehålla minst {{PLURAL:$1|$1 tecken}}.',
@@ -814,16 +814,16 @@ Skriv in en adress med korrekt format eller töm fältet.',
 'createaccount-text' => 'Någon har skapat ett konto åt din e-postadress på {{SITENAME}} ($4) med namnet "$2" och lösenordet "$3". Du bör nu logga in och ändra ditt lösenord.
 
 Du kan ignorera detta meddelande om kontot skapats av misstag.',
-'usernamehasherror' => 'Användarnamnet får inte innehålla #.',
+'wiki_usernamehasherror' => 'Användarnamnet får inte innehålla #.',
 'login-throttled' => 'Du har gjort för många misslyckade inloggningsförsök till det här kontot.
 Vänta innan du försöker igen.',
 'login-abort-generic' => 'Din inloggning misslyckades - Avbröts',
 'loginlanguagelabel' => 'Språk: $1',
-'suspicious-userlogout' => 'Din begäran om att logga ut nekades eftersom det ser ut som det skickades av en trasig webbläsare eller cachande proxy.',
+'suspicious-wiki_userlogout' => 'Din begäran om att logga ut nekades eftersom det ser ut som det skickades av en trasig webbläsare eller cachande proxy.',
 
 # E-mail sending
 'php-mail-error-unknown' => "Okänt fel i PHP's mail()-funktion",
-'user-mail-no-addy' => 'Försökte skicka e-post utan en e-postadress',
+'wiki_user-mail-no-addy' => 'Försökte skicka e-post utan en e-postadress',
 
 # Change password dialog
 'resetpass' => 'Ändra lösenord',
@@ -849,7 +849,7 @@ Du kanske redan har lyckats ändra ditt lösenord eller begärt ett nytt tillfä
 'passwordreset-legend' => 'Återställ lösenord',
 'passwordreset-disabled' => 'Lösenordsåterställning har inaktiverats på denna wiki.',
 'passwordreset-pretext' => '{{PLURAL:$1||Ange en av datadelarna nedan}}',
-'passwordreset-username' => 'Användarnamn:',
+'passwordreset-wiki_username' => 'Användarnamn:',
 'passwordreset-domain' => 'Domän:',
 'passwordreset-capture' => 'Visa resulterande e-post?',
 'passwordreset-capture-help' => 'Om du markerar den här rutan kommer e-postmeddelandet (med det tillfälliga lösenordet) visas för dig och skickas till användaren.',
@@ -861,7 +861,7 @@ $2
 
 {{PLURAL:$3|Detta|Dessa}} tillfälliga lösenord kommer att gå ut om {{PLURAL:$5|en dag|$5 dagar}}.
 Du bör logga in och välja ett nytt lösenord nu. Om någon annan gjorde denna begäran, eller om du kommer ihåg ditt ursprungliga lösenord, och du önskar inte att ändra det, kan du ignorera detta meddelande och fortsätta använda ditt gamla lösenord.',
-'passwordreset-emailtext-user' => 'Användaren $1 på {{SITENAME}} begärde en påminnelse om dina kontodetaljer för {{SITENAME}} ($4). Följande användar{{PLURAL:$3|konto är förknippad|konton är förknippade}} med denna e-postadress:
+'passwordreset-emailtext-wiki_user' => 'Användaren $1 på {{SITENAME}} begärde en påminnelse om dina kontodetaljer för {{SITENAME}} ($4). Följande användar{{PLURAL:$3|konto är förknippad|konton är förknippade}} med denna e-postadress:
 
 $2
 
@@ -963,7 +963,7 @@ Det kan ha flyttats eller raderats medan du tittade på sidan.',
 'loginreqlink' => 'logga in',
 'loginreqpagetext' => 'Du måste $1 för att visa andra sidor.',
 'accmailtitle' => 'Lösenord skickat.',
-'accmailtext' => "Ett slumpgenererat lösenord för [[User talk:$1|$1]] har skickats till $2.
+'accmailtext' => "Ett slumpgenererat lösenord för [[wiki_user talk:$1|$1]] har skickats till $2.
 
 Lösenordet för det här nya användarkontot kan ändras på sidan ''[[Special:ChangePassword|ändra lösenord]]'' när du loggar in.",
 'newarticle' => '(Ny)',
@@ -971,7 +971,7 @@ Lösenordet för det här nya användarkontot kan ändras på sidan ''[[Special:
 'anontalkpagetext' => "----''Detta är diskussionssidan för en anonym användare som inte ännu skapat ett konto, eller som inte använder det.
 Därför måste vi använda den numeriska IP-adressen för att identifiera honom/henne.
 En sådan IP-adress kan delas av flera användare.
-Om du är en anonym användare och känner att irrelevanta kommentarer har riktats mot dig, vänligen [[Special:UserLogin/signup|skapa ett konto]] eller [[Special:UserLogin|logga in]] för att undvika framtida förväxlingar med andra anonyma användare.''",
+Om du är en anonym användare och känner att irrelevanta kommentarer har riktats mot dig, vänligen [[Special:wiki_userLogin/signup|skapa ett konto]] eller [[Special:wiki_userLogin|logga in]] för att undvika framtida förväxlingar med andra anonyma användare.''",
 'noarticletext' => 'Det finns just nu ingen text på denna sida.
 Du kan [[Special:Search/{{PAGENAME}}|söka efter denna sidtitel]] på andra sidor, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} söka i loggarna], eller [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigera denna sida]</span>.',
 'noarticletext-nopermission' => 'Det finns för tillfället ingen text på denna sida.
@@ -981,8 +981,8 @@ eller <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}
 
 Detta orsakas vanligen av efter en gammal historiklänk till en sida som har raderats.
 Detaljer kan hittas i [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} raderingsloggen].',
-'userpage-userdoesnotexist' => '"<nowiki>$1</nowiki>" är inte ett registrerat användarkonto. Tänk efter om du vill skapa/redigera den här sidan.',
-'userpage-userdoesnotexist-view' => 'Kontot "$1" är inte registrerat.',
+'wiki_userpage-wiki_userdoesnotexist' => '"<nowiki>$1</nowiki>" är inte ett registrerat användarkonto. Tänk efter om du vill skapa/redigera den här sidan.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Kontot "$1" är inte registrerat.',
 'blocked-notice-logextract' => 'Användaren är blockerad.
 Orsaken till senaste blockeringen kan ses nedan:',
 'clearyourcache' => "'''OBS:''' Efter du sparat sidan kan du behöva tömma din webbläsares cache för att se ändringarna.
@@ -990,16 +990,16 @@ Orsaken till senaste blockeringen kan ses nedan:',
 *'''Google Chrome:''' Tryck ''Ctrl-Skift-R''  (''⌘-Shift-R'' på Mac)
 *'''Internet Explorer:'''  Håll ned ''Ctrl'' och klicka på ''Uppdatera'' eller tryck ''Ctrl-F5''
 *'''Opera:''' Rensa cachen i ''Verktyg → Inställningar''",
-'usercssyoucanpreview' => "'''Tips:''' Använd \"{{int:showpreview}}\"-knappen för att testa din nya css innan du sparar.",
-'userjsyoucanpreview' => "'''Tips:''' Använd \"{{int:showpreview}}\"-knappen för att testa din nya JavaScript innan du sparar.",
-'usercsspreview' => "'''Kom ihåg att du bara förhandsgranskar din användar-CSS.
+'wiki_usercssyoucanpreview' => "'''Tips:''' Använd \"{{int:showpreview}}\"-knappen för att testa din nya css innan du sparar.",
+'wiki_userjsyoucanpreview' => "'''Tips:''' Använd \"{{int:showpreview}}\"-knappen för att testa din nya JavaScript innan du sparar.",
+'wiki_usercsspreview' => "'''Kom ihåg att du bara förhandsgranskar din användar-CSS.
 Den har inte sparats än!'''",
-'userjspreview' => "'''Kom ihåg att du bara testar/förhandsgranskar ditt JavaScript, det har inte sparats än!'''",
+'wiki_userjspreview' => "'''Kom ihåg att du bara testar/förhandsgranskar ditt JavaScript, det har inte sparats än!'''",
 'sitecsspreview' => "'''Kom ihåg att du bara förhandsgranskar detta CSS.''' 
 '''Det har ännu inte sparats!'''",
 'sitejspreview' => "'''Kom ihåg att du bara förhandsgranskar denna JavaScript-kod.'''
 '''Det har ännu inte sparats!'''",
-'userinvalidcssjstitle' => "'''Varning:''' Skalet \"\$1\" finns inte. Kom ihåg att .css- och .js-sidor för enskilda användare börjar på liten bokstav. Exempel: {{ns:user}}:Foo/vector.css i stället för {{ns:user}}:Foo/Vector.css.",
+'wiki_userinvalidcssjstitle' => "'''Varning:''' Skalet \"\$1\" finns inte. Kom ihåg att .css- och .js-sidor för enskilda användare börjar på liten bokstav. Exempel: {{ns:wiki_user}}:Foo/vector.css i stället för {{ns:wiki_user}}:Foo/Vector.css.",
 'updated' => '(Uppdaterad)',
 'note' => "'''Obs!'''",
 'previewnote' => "'''Kom ihåg att detta bara är en förhandsvisning.'''
@@ -1010,13 +1010,13 @@ redigerbara texten ovanför,
 så som det kommer att se ut om du väljer att spara.',
 'session_fail_preview' => "'''Vi kunde inte behandla din redigering eftersom sessionsdata gått förlorad.
 Var god försök igen.
-Om det fortfarande inte fungerar, pröva att [[Special:UserLogout|logga ut]] och logga in igen.'''",
+Om det fortfarande inte fungerar, pröva att [[Special:wiki_userLogout|logga ut]] och logga in igen.'''",
 'session_fail_preview_html' => "'''Vi kunde inte behandla din redigering eftersom sessionsdata gått förlorad.'''
 
 ''Eftersom {{SITENAME}} har aktiverat rå HTML, så döljs förhandsvisningen som en förebyggande säkerhetsåtgärd mot JavaScript-attacker.''
 
 '''Om detta är ett försök att göra en rättmätig redigering, så försök igen.
-Om det fortfarande inte fungerar, pröva att [[Special:UserLogout|logga ut]] och logga in igen.'''",
+Om det fortfarande inte fungerar, pröva att [[Special:wiki_userLogout|logga ut]] och logga in igen.'''",
 'token_suffix_mismatch' => "'''Din redigering har stoppats eftersom din klient har ändrat tecknen
 i redigeringens \"edit token\". Redigeringen stoppades för att förhindra att sidtexten skadas.
 Detta händer ibland om du använder buggiga webbaserade anonyma proxytjänster.'''",
@@ -1063,7 +1063,7 @@ Den senaste loggposten tillhandahålls nedan som referens:",
 'edittools' => '<!-- Denna text kommer att visas nedanför redigeringsrutor och uppladdningsformulär. -->',
 'nocreatetitle' => 'Skapande av sidor begränsat',
 'nocreatetext' => '{{SITENAME}} har begränsat möjligheterna att skapa nya sidor.
-Du kan redigera existerande sidor, eller [[Special:UserLogin|logga in eller skapa ett användarkonto]].',
+Du kan redigera existerande sidor, eller [[Special:wiki_userLogin|logga in eller skapa ett användarkonto]].',
 'nocreate-loggedin' => 'Du har inte behörighet att skapa nya sidor.',
 'sectioneditnotsupported-title' => 'Sektionsredigering stöds inte',
 'sectioneditnotsupported-text' => 'Sektionsredigering stöds inte på denna sida.',
@@ -1114,11 +1114,11 @@ Dessa parametrar har uteslutits.',
 Var god och kontrollera jämförelsen nedan för att bekräfta att detta är vad du avser att göra, och spara sedan ändringarna nedan för att göra redigeringen ogjord.',
 'undo-failure' => 'Redigeringen kunde inte göras ogjord på grund av konflikt med mellanliggande redigeringar.',
 'undo-norev' => 'Redigeringen kan inte göras ogjord eftersom den inte finns eller har raderats.',
-'undo-summary' => 'Gör version $1 av [[Special:Contributions/$2|$2]] ([[User talk:$2|diskussion]]) ogjord',
+'undo-summary' => 'Gör version $1 av [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|diskussion]]) ogjord',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Kan inte skapa konto',
-'cantcreateaccount-text' => '[[User:$3|$3]] har blockerat den här IP-adressen (\'\'\'$1\'\'\') från att registrera konton.
+'cantcreateaccount-text' => '[[wiki_user:$3|$3]] har blockerat den här IP-adressen (\'\'\'$1\'\'\') från att registrera konton.
 
 Anledningen till blockeringen var "$2".',
 
@@ -1156,9 +1156,9 @@ Prova att [[Special:Search|söka på wikin]] för relevanta nya sidor.',
 
 # Revision deletion
 'rev-deleted-comment' => '(redigeringssammanfattning togs bort)',
-'rev-deleted-user' => '(användarnamn borttaget)',
+'rev-deleted-wiki_user' => '(användarnamn borttaget)',
 'rev-deleted-event' => '(loggåtgärd borttagen)',
-'rev-deleted-user-contribs' => '[användarnamn eller IP-adress har tagits bort - redigeringen visas ej bland bidragen]',
+'rev-deleted-wiki_user-contribs' => '[användarnamn eller IP-adress har tagits bort - redigeringen visas ej bland bidragen]',
 'rev-deleted-text-permission' => "Denna version av sidan har '''raderats'''.
 Det kan finnas mer information i [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} raderingsloggen].",
 'rev-deleted-text-unhide' => "Den här versionen av sidan har '''raderats'''.
@@ -1211,7 +1211,7 @@ Andra administratörer på {{SITENAME}} kommer fortfarande att kunna läsa det d
 'revdelete-hide-image' => 'Dölj filinnehåll',
 'revdelete-hide-name' => 'Dölj åtgärd och sidnamn',
 'revdelete-hide-comment' => 'Dölj redigeringskommentar',
-'revdelete-hide-user' => 'Dölj skribentens användarnamn/IP-adress',
+'revdelete-hide-wiki_user' => 'Dölj skribentens användarnamn/IP-adress',
 'revdelete-hide-restricted' => 'Undanhåll data från administratörer så väl som från övriga',
 'revdelete-radio-same' => '(låt vara)',
 'revdelete-radio-set' => 'Ja',
@@ -1296,7 +1296,7 @@ Se till att sidhistorikens kontinuitet behålls när du sammanfogar historik.',
 'showhideselectedversions' => 'Visa/dölj valda versioner',
 'editundo' => 'gör ogjord',
 'diff-multi' => '({{PLURAL:$1|En mellanliggande version|$1 mellanliggande versioner}} av {{PLURAL:$2|en användare|$2 användare}} visas inte)',
-'diff-multi-manyusers' => '({{PLURAL:$1|En mellanliggande version|$1 mellanliggande versioner}} av mer än $2 användare visas inte)',
+'diff-multi-manywiki_users' => '({{PLURAL:$1|En mellanliggande version|$1 mellanliggande versioner}} av mer än $2 användare visas inte)',
 'difference-missing-revision' => '{{PLURAL:$2|En revision|$2 revisioner}} av denna skillnad ($1) kunde inte hittas.
 
 Detta orsakas vanligtvis av att följa en utgången difflänk till en sida som har raderats.
@@ -1380,7 +1380,7 @@ Notera dock att deras indexering av {{SITENAME}} kan vara något föråldrad.',
 'mypreferences' => 'Inställningar',
 'prefs-edits' => 'Antal redigeringar:',
 'prefsnologin' => 'Inte inloggad',
-'prefsnologintext' => 'Du måste vara <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} inloggad]</span> för att kunna ändra dina inställningar.',
+'prefsnologintext' => 'Du måste vara <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} inloggad]</span> för att kunna ändra dina inställningar.',
 'changepassword' => 'Byt lösenord',
 'prefs-skin' => 'Utseende',
 'skin-preview' => 'förhandsvisning',
@@ -1388,7 +1388,7 @@ Notera dock att deras indexering av {{SITENAME}} kan vara något föråldrad.',
 'prefs-beta' => 'Betafunktioner',
 'prefs-datetime' => 'Datum och tid',
 'prefs-labs' => 'Testfunktioner',
-'prefs-user-pages' => 'Användarsidor',
+'prefs-wiki_user-pages' => 'Användarsidor',
 'prefs-personal' => 'Mitt konto',
 'prefs-rc' => 'Senaste ändringar',
 'prefs-watchlist' => 'Bevakningslista',
@@ -1453,7 +1453,7 @@ Detta kan inte återställas.',
 'prefs-emailconfirm-label' => 'E-postbekräftelse:',
 'prefs-textboxsize' => 'Storlek på redigeringsrutan',
 'youremail' => 'E-post:',
-'username' => 'Användarnamn:',
+'wiki_username' => 'Användarnamn:',
 'uid' => 'Användar-ID:',
 'prefs-memberingroups' => 'Medlem av {{PLURAL:$1|gruppen|grupperna}}:',
 'prefs-registration' => 'Registreringstid:',
@@ -1492,35 +1492,35 @@ Om du väljer att ange ditt riktiga namn, kommer det att användas för att till
 'prefs-displaywatchlist' => 'Visningalternativ',
 'prefs-diffs' => 'Skillnader',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'Ser giltig ut',
 'email-address-validity-invalid' => 'Giltig adress krävs!',
 
-# User rights
-'userrights' => 'Hantering av användarrättigheter',
-'userrights-lookup-user' => 'Hantera användargrupper',
-'userrights-user-editname' => 'Skriv in ett användarnamn:',
-'editusergroup' => 'Ändra användargrupper',
-'editinguser' => "Ändrar rättigheter för användaren '''[[User:$1|$1]]''' $2",
-'userrights-editusergroup' => 'Ändra användargrupper',
-'saveusergroups' => 'Spara användargrupper',
-'userrights-groupsmember' => 'Medlem i:',
-'userrights-groupsmember-auto' => 'Implicit medlem av:',
-'userrights-groups-help' => 'Du kan ändra vilka grupper denna användare är medlem i.
+# wiki_user rights
+'wiki_userrights' => 'Hantering av användarrättigheter',
+'wiki_userrights-lookup-wiki_user' => 'Hantera användargrupper',
+'wiki_userrights-wiki_user-editname' => 'Skriv in ett användarnamn:',
+'editwiki_usergroup' => 'Ändra användargrupper',
+'editingwiki_user' => "Ändrar rättigheter för användaren '''[[wiki_user:$1|$1]]''' $2",
+'wiki_userrights-editwiki_usergroup' => 'Ändra användargrupper',
+'savewiki_usergroups' => 'Spara användargrupper',
+'wiki_userrights-groupsmember' => 'Medlem i:',
+'wiki_userrights-groupsmember-auto' => 'Implicit medlem av:',
+'wiki_userrights-groups-help' => 'Du kan ändra vilka grupper denna användare är medlem i.
 * En ikryssad ruta betyder användaren är medlem i den gruppen.
 * En okryssad ruta betyder att användaren inte är medlem i den gruppen.
 * En asterisk (*) markerar att du inte kan ta bort gruppen när du har lagt till den, eller vice versa.',
-'userrights-reason' => 'Anledning:',
-'userrights-no-interwiki' => 'Du har inte behörighet att ändra användarrättigheter på andra wikis.',
-'userrights-nodatabase' => 'Databasen $1 finns inte eller så är den inte lokal.',
-'userrights-nologin' => 'Du måste [[Special:UserLogin|logga in]] med ett administratörskonto för att ändra användarrättigheter.',
-'userrights-notallowed' => 'Ditt konto har inte behörighet till att lägga till eller ta bort användarrättigheter.',
-'userrights-changeable-col' => 'Grupper du kan ändra',
-'userrights-unchangeable-col' => 'Grupper du inte kan ändra',
+'wiki_userrights-reason' => 'Anledning:',
+'wiki_userrights-no-interwiki' => 'Du har inte behörighet att ändra användarrättigheter på andra wikis.',
+'wiki_userrights-nodatabase' => 'Databasen $1 finns inte eller så är den inte lokal.',
+'wiki_userrights-nologin' => 'Du måste [[Special:wiki_userLogin|logga in]] med ett administratörskonto för att ändra användarrättigheter.',
+'wiki_userrights-notallowed' => 'Ditt konto har inte behörighet till att lägga till eller ta bort användarrättigheter.',
+'wiki_userrights-changeable-col' => 'Grupper du kan ändra',
+'wiki_userrights-unchangeable-col' => 'Grupper du inte kan ändra',
 
 # Groups
 'group' => 'Grupp:',
-'group-user' => 'Användare',
+'group-wiki_user' => 'Användare',
 'group-autoconfirmed' => 'Bekräftade användare',
 'group-bot' => 'Robotar',
 'group-sysop' => 'Administratörer',
@@ -1528,14 +1528,14 @@ Om du väljer att ange ditt riktiga namn, kommer det att användas för att till
 'group-suppress' => 'Censorer',
 'group-all' => '(alla)',
 
-'group-user-member' => '{{GENDER:$1|användare}}',
+'group-wiki_user-member' => '{{GENDER:$1|användare}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|bekräftad användare}}',
 'group-bot-member' => '{{GENDER:$1|robot}}',
 'group-sysop-member' => '{{GENDER:$1|administratör}}',
 'group-bureaucrat-member' => '{{GENDER:$1|byråkrat}}',
 'group-suppress-member' => '{{GENDER:$1|censor}}',
 
-'grouppage-user' => '{{ns:project}}:Användare',
+'grouppage-wiki_user' => '{{ns:project}}:Användare',
 'grouppage-autoconfirmed' => '{{ns:project}}:Bekräftade användare',
 'grouppage-bot' => '{{ns:project}}:Robotar',
 'grouppage-sysop' => '{{ns:project}}:Administratörer',
@@ -1551,7 +1551,7 @@ Om du väljer att ange ditt riktiga namn, kommer det att användas för att till
 'right-minoredit' => 'Markera mindre ändringar',
 'right-move' => 'Flytta sidor',
 'right-move-subpages' => 'Flytta sidor med deras undersidor',
-'right-move-rootuserpages' => 'Flytta root-användarsidor',
+'right-move-rootwiki_userpages' => 'Flytta root-användarsidor',
 'right-movefile' => 'Flytta filer',
 'right-suppressredirect' => 'Behöver inte skapa omdirigeringar vid sidflyttning',
 'right-upload' => 'Ladda upp filer',
@@ -1577,16 +1577,16 @@ Om du väljer att ange ditt riktiga namn, kommer det att användas för att till
 'right-suppressionlog' => 'Se privata loggar',
 'right-block' => 'Blockera andra användare från att redigera',
 'right-blockemail' => 'Blockera användare från att skicka e-post',
-'right-hideuser' => 'Blockera användarnamn och dölja det från blockeringsloggen',
+'right-hidewiki_user' => 'Blockera användarnamn och dölja det från blockeringsloggen',
 'right-ipblock-exempt' => 'Kan redigera från blockerade IP-adresser',
 'right-proxyunbannable' => 'Kan redigera från blockerade proxyer',
 'right-unblockself' => 'Avblockera sig själva',
 'right-protect' => 'Ändra skyddsnivåer och redigera skyddade sidor',
 'right-editprotected' => 'Redigera skyddade sidor',
 'right-editinterface' => 'Redigera användargränssnittet',
-'right-editusercssjs' => 'Redigera andra användares CSS- och JS-filer',
-'right-editusercss' => 'Redigera andra användares CSS-filer',
-'right-edituserjs' => 'Redigera andra användares JS-filer',
+'right-editwiki_usercssjs' => 'Redigera andra användares CSS- och JS-filer',
+'right-editwiki_usercss' => 'Redigera andra användares CSS-filer',
+'right-editwiki_userjs' => 'Redigera andra användares JS-filer',
 'right-rollback' => 'Rulla tillbaka den användare som senast redigerat en sida',
 'right-markbotedits' => 'Markera tillbakarullningar som robotändringar',
 'right-noratelimit' => 'Påverkas inte av hastighetsgränser',
@@ -1597,14 +1597,14 @@ Om du väljer att ange ditt riktiga namn, kommer det att användas för att till
 'right-patrolmarks' => 'Se markeringar av opatrullerade ändringar i senaste ändringarna',
 'right-unwatchedpages' => 'Se listan över obevakade sidor',
 'right-mergehistory' => 'Sammanfoga sidhistoriker',
-'right-userrights' => 'Ändra alla användarrättigheter',
-'right-userrights-interwiki' => 'Ändra rättigheter för användare på andra wikier',
+'right-wiki_userrights' => 'Ändra alla användarrättigheter',
+'right-wiki_userrights-interwiki' => 'Ändra rättigheter för användare på andra wikier',
 'right-siteadmin' => 'Låsa och låsa upp databasen',
 'right-override-export-depth' => 'Exportera sidor inklusive länkade sidor till ett djup på 5',
 'right-sendemail' => 'Skicka e-post till andra användare',
 'right-passwordreset' => 'Visa e-postmeddelanden med lösenordsåterställning',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Användarrättighetslogg',
 'rightslogtext' => 'Detta är en logg över ändringar av användares rättigheter.',
 'rightslogentry' => 'ändrade grupptillhörighet för $1 från $2 till $3',
@@ -1620,7 +1620,7 @@ Om du väljer att ange ditt riktiga namn, kommer det att användas för att till
 'action-minoredit' => 'markera denna redigering som mindre',
 'action-move' => 'flytta denna sida',
 'action-move-subpages' => 'flytta denna sida, och dess undersidor',
-'action-move-rootuserpages' => 'flytta root-användarsidor',
+'action-move-rootwiki_userpages' => 'flytta root-användarsidor',
 'action-movefile' => 'flytta den här filen',
 'action-upload' => 'ladda upp denna fil',
 'action-reupload' => 'skriva över denna existerade fil',
@@ -1643,8 +1643,8 @@ Om du väljer att ange ditt riktiga namn, kommer det att användas för att till
 'action-autopatrol' => 'få din redigering märkt som patrullerad',
 'action-unwatchedpages' => 'se listan över obevakade sidor',
 'action-mergehistory' => 'slå ihop historiken för denna sida',
-'action-userrights' => 'ändra alla användarrättigheter',
-'action-userrights-interwiki' => 'ändra rättigheter för användare på andra wikier',
+'action-wiki_userrights' => 'ändra alla användarrättigheter',
+'action-wiki_userrights-interwiki' => 'ändra rättigheter för användare på andra wikier',
 'action-siteadmin' => 'låsa eller låsa upp databasen',
 'action-sendemail' => 'skicka e-post',
 
@@ -1675,7 +1675,7 @@ Om du väljer att ange ditt riktiga namn, kommer det att användas för att till
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'boteditletter' => 'b',
-'number_of_watching_users_pageview' => '[$1 bevakande {{PLURAL:$1|användare|användare}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 bevakande {{PLURAL:$1|användare|användare}}]',
 'rc_categories' => 'Begränsa till följande kategorier (separera med "|")',
 'rc_categories_any' => 'Vilken som helst',
 'rc-change-size-new' => '$1 {{PLURAL:$1|byte|bytes}} efter ändring',
@@ -1701,7 +1701,7 @@ Sidor på [[Special:Watchlist|din bevakningslista]] är markerade med '''fetstil
 'reuploaddesc' => 'Avbryt uppladdningen och gå tillbaka till uppladdningsformuläret.',
 'upload-tryagain' => 'Skicka modifierad filbeskrivning',
 'uploadnologin' => 'Inte inloggad',
-'uploadnologintext' => 'Du måste vara [[Special:UserLogin|inloggad]] för att kunna ladda upp filer.',
+'uploadnologintext' => 'Du måste vara [[Special:wiki_userLogin|inloggad]] för att kunna ladda upp filer.',
 'upload_directory_missing' => 'Uppladdningskatalogen ($1) saknas och kunde inte skapas av webbservern.',
 'upload_directory_read_only' => 'Webbservern kan inte skriva till uppladdningskatalogen ($1).',
 'uploaderror' => 'Fel vid uppladdningen',
@@ -1832,11 +1832,11 @@ $1',
 'upload-proto-error' => 'Felaktigt protokoll',
 'upload-proto-error-text' => 'Fjärruppladdning kräver URL:ar som börjar med <code>http://</code> eller <code>ftp://</code>.',
 'upload-file-error' => 'Internt fel',
-'upload-file-error-text' => 'Ett internt fel inträffade när en temporär fil skulle skapas på servern. Kontakta en [[Special:ListUsers/sysop|systemadministratör]].',
+'upload-file-error-text' => 'Ett internt fel inträffade när en temporär fil skulle skapas på servern. Kontakta en [[Special:Listwiki_users/sysop|systemadministratör]].',
 'upload-misc-error' => 'Okänt uppladdningsfel',
 'upload-misc-error-text' => 'Ett okänt fel inträffade under uppladdningen.
 Kontrollera att URL:en giltig och försök igen.
-Om problemet kvarstår, kontakta en [[Special:ListUsers/sysop|administratör]].',
+Om problemet kvarstår, kontakta en [[Special:Listwiki_users/sysop|administratör]].',
 'upload-too-many-redirects' => 'URL-en innehöll för många omdirigeringar',
 'upload-unknown-size' => 'Okänd storlek',
 'upload-http-error' => 'Ett HTTP-fel uppstod: $1',
@@ -1953,7 +1953,7 @@ När den filtreras av en användare visas endast den senast uppladdade versionen
 'listfiles_thumb' => 'Miniatyrbild',
 'listfiles_date' => 'Datum',
 'listfiles_name' => 'Namn',
-'listfiles_user' => 'Användare',
+'listfiles_wiki_user' => 'Användare',
 'listfiles_size' => 'Storlek (byte)',
 'listfiles_description' => 'Beskrivning',
 'listfiles_count' => 'Versioner',
@@ -1970,7 +1970,7 @@ När den filtreras av en användare visas endast den senast uppladdade versionen
 'filehist-thumb' => 'Miniatyrbild',
 'filehist-thumbtext' => 'Miniatyrbild för versionen från den $1',
 'filehist-nothumb' => 'Ingen miniatyrbild',
-'filehist-user' => 'Användare',
+'filehist-wiki_user' => 'Användare',
 'filehist-dimensions' => 'Dimensioner',
 'filehist-filesize' => 'Filstorlek',
 'filehist-comment' => 'Kommentar',
@@ -2062,7 +2062,7 @@ Innan mallarna raderas, kontrollera att det inte finns andra länkar till dem.',
 'statistics-header-pages' => 'Sidstatistik',
 'statistics-header-edits' => 'Redigeringsstatistik',
 'statistics-header-views' => 'Sidvisningsstatistik',
-'statistics-header-users' => 'Användarstatistik',
+'statistics-header-wiki_users' => 'Användarstatistik',
 'statistics-header-hooks' => 'Övrig statistik',
 'statistics-articles' => 'Sidor med innehåll',
 'statistics-pages' => 'Sidor',
@@ -2073,9 +2073,9 @@ Innan mallarna raderas, kontrollera att det inte finns andra länkar till dem.',
 'statistics-views-total' => 'Totalt antal sidvisningar',
 'statistics-views-total-desc' => 'Visningar av icke-existerande sidor och specialsidor ingår inte',
 'statistics-views-peredit' => 'Antal sidvisningar per redigering',
-'statistics-users' => 'Registrerade [[Special:ListUsers|användare]]',
-'statistics-users-active' => 'Aktiva användare',
-'statistics-users-active-desc' => 'Användare som utfört någon åtgärd under {{PLURAL:$1|det senaste dygnet|de senaste $1 dygnen}}',
+'statistics-wiki_users' => 'Registrerade [[Special:Listwiki_users|användare]]',
+'statistics-wiki_users-active' => 'Aktiva användare',
+'statistics-wiki_users-active-desc' => 'Användare som utfört någon åtgärd under {{PLURAL:$1|det senaste dygnet|de senaste $1 dygnen}}',
 'statistics-mostpopular' => 'Mest besökta sidor',
 
 'disambiguations' => 'Sidor som länkar till förgreningssidor',
@@ -2151,13 +2151,13 @@ En sida anses vara en förgreningssida om den inkluderar en mall som länkas til
 'protectedtitles' => 'Skyddade titlar',
 'protectedtitlestext' => 'Följande sidtitlar är skyddade från att skapas',
 'protectedtitlesempty' => 'Just nu finns inga skyddade sidtitlar med de parametrarna.',
-'listusers' => 'Användarlista',
-'listusers-editsonly' => 'Visa endast användare som redigerat',
-'listusers-creationsort' => 'Sortera efter datum skapat',
-'usereditcount' => '$1 {{PLURAL:$1|redigering|redigeringar}}',
-'usercreated' => '{{GENDER:$3|Skapat}} $1 $2',
+'listwiki_users' => 'Användarlista',
+'listwiki_users-editsonly' => 'Visa endast användare som redigerat',
+'listwiki_users-creationsort' => 'Sortera efter datum skapat',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|redigering|redigeringar}}',
+'wiki_usercreated' => '{{GENDER:$3|Skapat}} $1 $2',
 'newpages' => 'Nya sidor',
-'newpages-username' => 'Användare:',
+'newpages-wiki_username' => 'Användare:',
 'ancientpages' => 'Äldsta sidorna',
 'move' => 'Flytta',
 'movethispage' => 'Flytta denna sida',
@@ -2181,7 +2181,7 @@ Lägg märke till att andra webbplatser kan länka till en fil med en direkt URL
 'booksources-invalid-isbn' => 'Det angivna ISBN-numret verkar inte vara giltigt. Kontrollera källan för eventuella fel.',
 
 # Special:Log
-'specialloguserlabel' => 'Utförare:',
+'speciallogwiki_userlabel' => 'Utförare:',
 'speciallogtitlelabel' => 'Mål (titel eller användare):',
 'log' => 'Loggar',
 'all-logs-page' => 'Alla publika loggar',
@@ -2239,24 +2239,24 @@ Protokoll som stöds: <code>$1</code> (sätts till http:// om inget protokoll an
 'linksearch-line' => '$1 länkas från $2',
 'linksearch-error' => 'Jokertecken kan bara användas i början av domännamnet.',
 
-# Special:ListUsers
-'listusersfrom' => 'Visa användare från och med:',
-'listusers-submit' => 'Visa',
-'listusers-noresult' => 'Ingen användare hittades.',
-'listusers-blocked' => '(blockerad)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'Visa användare från och med:',
+'listwiki_users-submit' => 'Visa',
+'listwiki_users-noresult' => 'Ingen användare hittades.',
+'listwiki_users-blocked' => '(blockerad)',
 
-# Special:ActiveUsers
-'activeusers' => 'Lista över aktiva användare',
-'activeusers-intro' => 'Detta är en lista på användare som har haft någon form av aktivitet inom de senaste $1 {{PLURAL:$1|dygnet|dygnen}}.',
-'activeusers-count' => '$1 {{PLURAL:$1|handling|handlingar}} {{PLURAL:$3|det senaste dygnet|de senaste $3 dygnen}}',
-'activeusers-from' => 'Visa användare från och med:',
-'activeusers-hidebots' => 'Göm botar',
-'activeusers-hidesysops' => 'Dölj administratörer',
-'activeusers-noresult' => 'Inga användare funna.',
+# Special:Activewiki_users
+'activewiki_users' => 'Lista över aktiva användare',
+'activewiki_users-intro' => 'Detta är en lista på användare som har haft någon form av aktivitet inom de senaste $1 {{PLURAL:$1|dygnet|dygnen}}.',
+'activewiki_users-count' => '$1 {{PLURAL:$1|handling|handlingar}} {{PLURAL:$3|det senaste dygnet|de senaste $3 dygnen}}',
+'activewiki_users-from' => 'Visa användare från och med:',
+'activewiki_users-hidebots' => 'Göm botar',
+'activewiki_users-hidesysops' => 'Dölj administratörer',
+'activewiki_users-noresult' => 'Inga användare funna.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Logg över nya användare',
-'newuserlogpagetext' => 'Detta är en logg över skapade användarkonton.',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Logg över nya användare',
+'newwiki_userlogpagetext' => 'Detta är en logg över skapade användarkonton.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Behörigheter för användargrupper',
@@ -2277,27 +2277,27 @@ Det kan finnas [[{{MediaWiki:Listgrouprights-helppage}}|ytterligare information]
 'listgrouprights-addgroup-self-all' => 'Kan lägga till alla grupperna till sitt eget konto',
 'listgrouprights-removegroup-self-all' => 'Kan ta bort alla grupperna från sitt eget konto',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'Ingen adress att skicka till',
-'mailnologintext' => 'För att kunna skicka e-post till andra användare, måste du vara [[Special:UserLogin|inloggad]] och ha angivit en korrekt e-postadress i dina [[Special:Preferences|användarinställningar]].',
-'emailuser' => 'Skicka e-post till den här användaren',
-'emailuser-title-target' => 'Skicka e-post till denna {{GENDER:$1|användare}}',
-'emailuser-title-notarget' => 'E-postanvändare',
+'mailnologintext' => 'För att kunna skicka e-post till andra användare, måste du vara [[Special:wiki_userLogin|inloggad]] och ha angivit en korrekt e-postadress i dina [[Special:Preferences|användarinställningar]].',
+'emailwiki_user' => 'Skicka e-post till den här användaren',
+'emailwiki_user-title-target' => 'Skicka e-post till denna {{GENDER:$1|användare}}',
+'emailwiki_user-title-notarget' => 'E-postanvändare',
 'emailpage' => 'Skicka e-post till användare',
 'emailpagetext' => 'Du kan använda formuläret nedan för att skicka e-post till den här {{GENDER:$1|användaren}}.
 Den e-postadress du har angivit i [[Special:Preferences|dina användarinställningar]] kommer att visas som "Från"-adress i meddelandet, så att mottagaren har möjlighet att svara direkt till dig.',
-'usermailererror' => 'Fel i hanteringen av mail:',
+'wiki_usermailererror' => 'Fel i hanteringen av mail:',
 'defemailsubject' => '{{SITENAME}} e-post från användare "$1"',
-'usermaildisabled' => 'Användar-epost avaktiverat',
-'usermaildisabledtext' => 'Du kan inte skicka e-post till andra användare på den här wikin',
+'wiki_usermaildisabled' => 'Användar-epost avaktiverat',
+'wiki_usermaildisabledtext' => 'Du kan inte skicka e-post till andra användare på den här wikin',
 'noemailtitle' => 'Ingen e-postadress',
 'noemailtext' => 'Den här användaren har inte angivit en giltig e-postadress.',
 'nowikiemailtitle' => 'Ingen e-post tillåten',
 'nowikiemailtext' => 'Den här användaren har valt att inte motta e-post från andra användare.',
 'emailnotarget' => 'Icke-existerande eller ogiltigt användarnamn för mottagaren.',
 'emailtarget' => 'Ange mottagarens användarnamn',
-'emailusername' => 'Användarnamn:',
-'emailusernamesubmit' => 'Skicka',
+'emailwiki_username' => 'Användarnamn:',
+'emailwiki_usernamesubmit' => 'Skicka',
 'email-legend' => 'Skicka ett mail till en annan användare på {{SITENAME}}',
 'emailfrom' => 'Från:',
 'emailto' => 'Till:',
@@ -2308,11 +2308,11 @@ Den e-postadress du har angivit i [[Special:Preferences|dina användarinställni
 'emailccsubject' => 'Kopia av ditt meddelande till $1: $2',
 'emailsent' => 'E-post har nu skickats',
 'emailsenttext' => 'Ditt e-postmeddelande har skickats',
-'emailuserfooter' => 'Detta e-brev skickades av $1 till $2 genom "Skicka e-post"-funktionen på {{SITENAME}}.',
+'emailwiki_userfooter' => 'Detta e-brev skickades av $1 till $2 genom "Skicka e-post"-funktionen på {{SITENAME}}.',
 
-# User Messenger
-'usermessage-summary' => 'Lämnar systemmeddelande.',
-'usermessage-editor' => 'Systemmeddelare',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'Lämnar systemmeddelande.',
+'wiki_usermessage-editor' => 'Systemmeddelare',
 
 # Watchlist
 'watchlist' => 'Bevakningslista',
@@ -2321,7 +2321,7 @@ Den e-postadress du har angivit i [[Special:Preferences|dina användarinställni
 'nowatchlist' => 'Du har inga sidor i din bevakningslista.',
 'watchlistanontext' => 'Du måste $1 för att se eller redigera din bevakningslista.',
 'watchnologin' => 'Inte inloggad',
-'watchnologintext' => 'Du måste vara [[Special:UserLogin|inloggad]] för att kunna ändra din bevakningslista.',
+'watchnologintext' => 'Du måste vara [[Special:wiki_userLogin|inloggad]] för att kunna ändra din bevakningslista.',
 'addwatch' => 'Lägg till i bevakningslistan',
 'addedwatchtext' => 'Sidan "[[:$1]]" har lagts till på din [[Special:Watchlist|bevakningslista]].
 Framtida ändringar av den här sidan och dess diskussionssida kommer att listas där.',
@@ -2429,12 +2429,12 @@ Se $2 för noteringar om de senaste raderingarna.',
 'rollbacklinkcount-morethan' => 'rulla tillbaka mer än $1 {{PLURAL:$1|redigering|redigeringar}}',
 'rollbackfailed' => 'Tillbakarullning misslyckades',
 'cantrollback' => 'Det gick inte att rulla tillbaka, då sidan endast redigerats av en användare.',
-'alreadyrolled' => 'Det gick inte att rulla tillbaka den senaste redigeringen av [[User:$2|$2]] ([[User talk:$2|diskussion]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) på sidan [[:$1|$1]]. Någon annan har redan rullat tillbaka eller redigerat sidan.
+'alreadyrolled' => 'Det gick inte att rulla tillbaka den senaste redigeringen av [[wiki_user:$2|$2]] ([[wiki_user talk:$2|diskussion]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) på sidan [[:$1|$1]]. Någon annan har redan rullat tillbaka eller redigerat sidan.
 
-Sidan ändrades senast av [[User:$3|$3]] ([[User talk:$3|diskussion]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]).',
+Sidan ändrades senast av [[wiki_user:$3|$3]] ([[wiki_user talk:$3|diskussion]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]).',
 'editcomment' => "Redigeringskommentaren var: \"''\$1''\".",
-'revertpage' => 'Återställde redigeringar av  [[Special:Contributions/$2|$2]] ([[User talk:$2|användardiskussion]]) till senaste versionen av [[User:$1|$1]]',
-'revertpage-nouser' => 'Återställda redigeringar av (användarnamn borttaget) till senaste version av [[User:$1|$1]]',
+'revertpage' => 'Återställde redigeringar av  [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|användardiskussion]]) till senaste versionen av [[wiki_user:$1|$1]]',
+'revertpage-nowiki_user' => 'Återställda redigeringar av (användarnamn borttaget) till senaste version av [[wiki_user:$1|$1]]',
 'rollback-success' => 'Återställde ändringar av $1;
 ändrade tillbaka till senaste version av $2.',
 
@@ -2585,13 +2585,13 @@ $1',
 'sp-contributions-uploads' => 'uppladdningar',
 'sp-contributions-logs' => 'loggar',
 'sp-contributions-talk' => 'diskussion',
-'sp-contributions-userrights' => 'hantering av användarrättigheter',
+'sp-contributions-wiki_userrights' => 'hantering av användarrättigheter',
 'sp-contributions-blocked-notice' => 'Användaren är blockerad.
 Orsaken till senaste blockeringen kan ses nedan:',
 'sp-contributions-blocked-notice-anon' => 'Denna IP-adress är för närvarande blockerad.
 Den senaste posten i blockeringsloggen visas nedan som referens:',
 'sp-contributions-search' => 'Sök efter användarbidrag',
-'sp-contributions-username' => 'IP-adress eller användarnamn:',
+'sp-contributions-wiki_username' => 'IP-adress eller användarnamn:',
 'sp-contributions-toponly' => 'Visa endast aktuella sidversioner',
 'sp-contributions-submit' => 'Sök',
 
@@ -2624,7 +2624,7 @@ Den senaste posten i blockeringsloggen visas nedan som referens:',
 'blockiptext' => 'Använd formuläret nedan för att blockera möjligheten att redigera sidor från en specifik IP-adress eller ett användarnamn.
 Detta bör endast göras för att förhindra vandalisering, och i överensstämmelse med gällande [[{{MediaWiki:Policy-url}}|policy]].
 Ange orsak nedan (exempelvis genom att nämna sidor som blivit vandaliserade).',
-'ipadressorusername' => 'IP-adress eller användarnamn:',
+'ipadressorwiki_username' => 'IP-adress eller användarnamn:',
 'ipbexpiry' => 'Varaktighet:',
 'ipbreason' => 'Anledning:',
 'ipbreasonotherlist' => 'Annan anledning',
@@ -2646,8 +2646,8 @@ Ange orsak nedan (exempelvis genom att nämna sidor som blivit vandaliserade).',
 'ipbotheroption' => 'annan tidsperiod',
 'ipbotherreason' => 'Annan/ytterligare anledning:',
 'ipbhidename' => 'Dölj användarnamnet från redigeringar och listor',
-'ipbwatchuser' => 'Bevaka användarens användarsida och diskussionssida',
-'ipb-disableusertalk' => 'Hindra användaren från att redigera sina egna diskussionssida under blockeringen',
+'ipbwatchwiki_user' => 'Bevaka användarens användarsida och diskussionssida',
+'ipb-disablewiki_usertalk' => 'Hindra användaren från att redigera sina egna diskussionssida under blockeringen',
 'ipb-change-block' => 'Återblockera användaren med de här inställningarna',
 'ipb-confirm' => 'Bekräfta blockering',
 'badipaddress' => 'Du har inte skrivit IP-adressen korrekt.',
@@ -2655,7 +2655,7 @@ Ange orsak nedan (exempelvis genom att nämna sidor som blivit vandaliserade).',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] har blockerats.<br />
 För att se alla aktuella blockeringar, gå till [[Special:BlockList|listan över blockeringar]].',
 'ipb-blockingself' => 'Du håller på att blockera dig själv! Är du säker på att du vill göra det?',
-'ipb-confirmhideuser' => 'Du är på väg att blockera en användare med "göm användare" aktiverat. Detta kommer upphäva användarens namn i alla listor och loggar. Är du säker på att du vill göra det?',
+'ipb-confirmhidewiki_user' => 'Du är på väg att blockera en användare med "göm användare" aktiverat. Detta kommer upphäva användarens namn i alla listor och loggar. Är du säker på att du vill göra det?',
 'ipb-edit-dropdown' => 'Redigera blockeringsanledningar',
 'ipb-unblock-addr' => 'Ta bort blockering av $1',
 'ipb-unblock' => 'Ta bort blockering av en användare eller IP-adress',
@@ -2664,13 +2664,13 @@ För att se alla aktuella blockeringar, gå till [[Special:BlockList|listan öve
 'unblockip' => 'Ta bort blockering av användare/IP-adress',
 'unblockiptext' => 'Använd formuläret nedan för att ta bort blockeringen av en IP-adress.',
 'ipusubmit' => 'Upphäv denna blockering',
-'unblocked' => 'Blockeringen av [[User:$1|$1]] har hävts',
+'unblocked' => 'Blockeringen av [[wiki_user:$1|$1]] har hävts',
 'unblocked-range' => '$1 har avblockerats',
 'unblocked-id' => 'Blockeringen $1 har hävts',
 'blocklist' => 'Blockerade användare',
 'ipblocklist' => 'Blockerade användare',
 'ipblocklist-legend' => 'Sök efter en blockerad användare',
-'blocklist-userblocks' => 'Göm kontoblockeringar',
+'blocklist-wiki_userblocks' => 'Göm kontoblockeringar',
 'blocklist-tempblocks' => 'Dölj tillfälliga blockeringar',
 'blocklist-addressblocks' => 'Göm enskilda IP-blockeringar',
 'blocklist-rangeblocks' => 'Göm intervallblokeringar',
@@ -2689,7 +2689,7 @@ För att se alla aktuella blockeringar, gå till [[Special:BlockList|listan öve
 'noautoblockblock' => 'utan automatisk blockering',
 'createaccountblock' => 'kontoregistrering blockerad',
 'emailblock' => 'e-post blockerad',
-'blocklist-nousertalk' => 'kan inte redigera sin egen diskussionssida',
+'blocklist-nowiki_usertalk' => 'kan inte redigera sin egen diskussionssida',
 'ipblocklist-empty' => 'Listan över blockerade IP-adresser är tom.',
 'ipblocklist-no-results' => 'Den angivna IP-adressen eller användaren är inte blockerad.',
 'blocklink' => 'blockera',
@@ -2697,7 +2697,7 @@ För att se alla aktuella blockeringar, gå till [[Special:BlockList|listan öve
 'change-blocklink' => 'ändra blockering',
 'contribslink' => 'bidrag',
 'emaillink' => 'skicka e-post',
-'autoblocker' => 'Automatisk blockerad eftersom din IP-adress nyligen använts av "[[User:$1|$1]]".
+'autoblocker' => 'Automatisk blockerad eftersom din IP-adress nyligen använts av "[[wiki_user:$1|$1]]".
 Motiveringen som angavs för blockeringen av $1 var: "$2".',
 'blocklogpage' => 'Blockeringslogg',
 'blocklog-showlog' => 'Denna användare har blivit blockerad tidigare.
@@ -2714,7 +2714,7 @@ Se [[Special:BlockList|blockeringslistan]] för en översikt av gällande blocke
 'block-log-flags-nocreate' => 'hindrar kontoregistrering',
 'block-log-flags-noautoblock' => 'utan automatblockering',
 'block-log-flags-noemail' => 'e-post blockerad',
-'block-log-flags-nousertalk' => 'kan inte redigera sin diskussionssida',
+'block-log-flags-nowiki_usertalk' => 'kan inte redigera sin diskussionssida',
 'block-log-flags-angry-autoblock' => 'utökad automatblockering aktiverad',
 'block-log-flags-hiddenname' => 'användarnamn gömt',
 'range_block_disabled' => 'Möjligheten för administratörer att blockera intervall av IP-adresser har stängts av.',
@@ -2724,7 +2724,7 @@ Se [[Special:BlockList|blockeringslistan]] för en översikt av gällande blocke
 'ipb_already_blocked' => '"$1" är redan blockerad',
 'ipb-needreblock' => '$1 är redan blockerad. Vill du ändra inställningarna?',
 'ipb-otherblocks-header' => 'Andra {{PLURAL:$1|blockering|blockeringar}}',
-'unblock-hideuser' => 'Du kan inte ta bort blockeringen här användaren, eftersom dens användarnamn har dolts.',
+'unblock-hidewiki_user' => 'Du kan inte ta bort blockeringen här användaren, eftersom dens användarnamn har dolts.',
 'ipb_cant_unblock' => 'Fel: Hittade inte blockering $1. Det är möjligt att den redan har upphävts.',
 'ipb_blocked_as_range' => 'Fel: IP-adressen $1 är inte direkt blockerad, och kan därför inte avblockeras. Adressen är blockerad som en del av IP-intervallet $2, som kan avblockeras.',
 'ip_range_invalid' => 'Ogiltigt IP-intervall.',
@@ -2738,7 +2738,7 @@ Se [[Special:BlockList|blockeringslistan]] för en översikt av gällande blocke
 'sorbs_create_account_reason' => 'Din IP-adress är listad som en öppen proxy i den DNSBL som används av {{SITENAME}}.
 Du får inte skapa ett användarkonto',
 'cant-block-while-blocked' => 'Du kan inte blockera andra användare medan du är blockerad.',
-'cant-see-hidden-user' => 'Användaren du försöker blockera är redan blockerad och gömd. Eftersom du inte har hideuser-rättigheter, kan du inte se eller redigera användarens blockering.',
+'cant-see-hidden-wiki_user' => 'Användaren du försöker blockera är redan blockerad och gömd. Eftersom du inte har hidewiki_user-rättigheter, kan du inte se eller redigera användarens blockering.',
 'ipbblocked' => 'Du kan inte blockera eller avblockera andra användare, eftersom du själv är blockerad',
 'ipbnounblockself' => 'Du har inte tillåtelse att avblockera dig själv',
 
@@ -2794,13 +2794,13 @@ se till att du förstår konsekvenserna av detta innan du fortsätter.",
 
 I de fallen måste du flytta eller sammanfoga sidan manuellt, om det önskas.",
 'movearticle' => 'Flytta sidan:',
-'moveuserpage-warning' => "'''Varning:''' Du håller på att flytta en användarsida. Observera att endast sidan kommer att flyttas och att användaren ''inte'' kommer att byta namn.",
+'movewiki_userpage-warning' => "'''Varning:''' Du håller på att flytta en användarsida. Observera att endast sidan kommer att flyttas och att användaren ''inte'' kommer att byta namn.",
 'movenologin' => 'Inte inloggad',
-'movenologintext' => 'För att flytta en sida måste du vara registrerad användare och [[Special:UserLogin|inloggad]].',
+'movenologintext' => 'För att flytta en sida måste du vara registrerad användare och [[Special:wiki_userLogin|inloggad]].',
 'movenotallowed' => 'Du har inte behörighet att flytta sidor på den här wikin.',
 'movenotallowedfile' => 'Du har inte tillåtelse att flytta filer.',
-'cant-move-user-page' => 'Du har inte behörighet att flytta användarsidor (bortsett från undersidor).',
-'cant-move-to-user-page' => 'Du har inte behörighet att flytta en sida till en användarsida (förutom till en användarundersida).',
+'cant-move-wiki_user-page' => 'Du har inte behörighet att flytta användarsidor (bortsett från undersidor).',
+'cant-move-to-wiki_user-page' => 'Du har inte behörighet att flytta en sida till en användarsida (förutom till en användarundersida).',
 'newtitle' => 'Till nya titeln:',
 'move-watch' => 'Bevaka denna sida',
 'movepagebtn' => 'Flytta sidan',
@@ -2976,8 +2976,8 @@ Spara den på din dator och ladda upp den här.',
 'javascripttest-qunit-heading' => 'MediaWiki JavaScript QUnit testsvit',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Din användarsida',
-'tooltip-pt-anonuserpage' => 'Användarsida för ip-numret du redigerar från',
+'tooltip-pt-wiki_userpage' => 'Din användarsida',
+'tooltip-pt-anonwiki_userpage' => 'Användarsida för ip-numret du redigerar från',
 'tooltip-pt-mytalk' => 'Din diskussionssida',
 'tooltip-pt-anontalk' => 'Diskussion om redigeringar från det här ip-numret',
 'tooltip-pt-preferences' => 'Dina inställningar',
@@ -3015,13 +3015,13 @@ Vänligen använd förhandsgranskningsknappen innan du sparar.',
 'tooltip-feed-rss' => 'RSS-matning för den här sidan',
 'tooltip-feed-atom' => 'Atom-matning för den här sidan',
 'tooltip-t-contributions' => 'Visa lista över bidrag från den här användaren',
-'tooltip-t-emailuser' => 'Skicka e-post till den här användaren',
+'tooltip-t-emailwiki_user' => 'Skicka e-post till den här användaren',
 'tooltip-t-upload' => 'Ladda upp filer',
 'tooltip-t-specialpages' => 'Lista över alla specialsidor',
 'tooltip-t-print' => 'Utskriftvänlig version av den här sidan',
 'tooltip-t-permalink' => 'Permanent länk till den här versionen av sidan',
 'tooltip-ca-nstab-main' => 'Visa innehållssidan',
-'tooltip-ca-nstab-user' => 'Visa användarsidan',
+'tooltip-ca-nstab-wiki_user' => 'Visa användarsidan',
 'tooltip-ca-nstab-media' => 'Visa mediesidan',
 'tooltip-ca-nstab-special' => 'Detta är en specialsida; du kan inte redigera själva sidan',
 'tooltip-ca-nstab-project' => 'Visa projektsidan',
@@ -3086,13 +3086,13 @@ Ger möjlighet att skriva en motivering i redigeringssammanfattningen',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|Anonym användare|Anonyma användare}} på {{SITENAME}}',
-'siteuser' => 'användaren $1 på {{SITENAME}}',
-'anonuser' => '{{SITENAME}} anonym användare $1',
+'sitewiki_user' => 'användaren $1 på {{SITENAME}}',
+'anonwiki_user' => '{{SITENAME}} anonym användare $1',
 'lastmodifiedatby' => 'Den här sidan ändrades senast kl. $2 den $1 av $3.',
 'othercontribs' => 'Baserad på arbete av $1.',
 'others' => 'andra',
-'siteusers' => '{{SITENAME}}-{{PLURAL:$2|användaren|användarna}} $1',
-'anonusers' => '{{SITENAME}} {{PLURAL:$2|anonym|anonyma}} användare $1',
+'sitewiki_users' => '{{SITENAME}}-{{PLURAL:$2|användaren|användarna}} $1',
+'anonwiki_users' => '{{SITENAME}} {{PLURAL:$2|anonym|anonyma}} användare $1',
 'creditspage' => 'Användare som bidragit till sidan',
 'nocredits' => 'Det finns ingen information tillgänglig om vem som bidragit till denna sida.',
 
@@ -3101,7 +3101,7 @@ Ger möjlighet att skriva en motivering i redigeringssammanfattningen',
 'spamprotectiontext' => 'Sidan du ville spara blockerades av spamfiltret.
 Detta orsakades troligen av en länk till en svartlistad webbplats.',
 'spamprotectionmatch' => 'Följande text aktiverade vårt spamfilter: $1',
-'spambot_username' => 'MediaWikis spampatrull',
+'spambot_wiki_username' => 'MediaWikis spampatrull',
 'spam_reverting' => 'Återställer till den senaste versionen som inte innehåller länkar till $1',
 'spam_blanking' => 'Alla versioner innehöll en länk till $1, blankar',
 'spam_deleting' => 'Alla ändringar innehöll länkar till $1, raderar',
@@ -3125,9 +3125,9 @@ Detta orsakades troligen av en länk till en svartlistad webbplats.',
 'pageinfo-redirects-name' => 'Omdirigeringar till denna sida',
 'pageinfo-subpages-name' => 'Undersidor till denna sida',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|omdirigering|omdirigeringar}}; $3 {{PLURAL:$3|icke-omdirigering|icke-omdirigeringar}})',
-'pageinfo-firstuser' => 'Sidskapare',
+'pageinfo-firstwiki_user' => 'Sidskapare',
 'pageinfo-firsttime' => 'Datum när sidan skapades',
-'pageinfo-lastuser' => 'Senaste redigeraren',
+'pageinfo-lastwiki_user' => 'Senaste redigeraren',
 'pageinfo-lasttime' => 'Datum för senaste redigeringen',
 'pageinfo-edits' => 'Totalt antal redigeringar',
 'pageinfo-authors' => 'Totalt antal olika författare',
@@ -3287,7 +3287,7 @@ Andra kommer att gömmas som standard
 'exif-compressedbitsperpixel' => 'Bildkomprimeringsläge',
 'exif-pixelydimension' => 'Bildbredd',
 'exif-pixelxdimension' => 'Bildhöjd',
-'exif-usercomment' => 'Kommentarer',
+'exif-wiki_usercomment' => 'Kommentarer',
 'exif-relatedsoundfile' => 'Relaterad ljudfil',
 'exif-datetimeoriginal' => 'Exponeringstidpunkt',
 'exif-datetimedigitized' => 'Tidpunkt för digitalisering',
@@ -3464,7 +3464,7 @@ Andra kommer att gömmas som standard
 'exif-exposureprogram-4' => 'Prioritet för slutare',
 'exif-exposureprogram-5' => 'Konstnärligt program (prioriterar skärpedjup)',
 'exif-exposureprogram-6' => 'Rörelseprogram (prioriterar kortare slutartid)',
-'exif-exposureprogram-7' => 'Porträttläge (för närbilder med bakgrunden ofokuserad)',
+'exif-exposureprogram-7' => 'Porträttläge (för närbilder med bakgrunden ofokwiki_userad)',
 'exif-exposureprogram-8' => 'Landskapsläge (för foton av landskap med bakgrunden i fokus)',
 
 'exif-subjectdistance-value' => '$1 meter',
@@ -3666,7 +3666,7 @@ Mailservern svarade: $1',
 'confirmemail_invalid' => 'Ogiltig bekräftelsekod. Dess giltighetstid kan ha löpt ut.',
 'confirmemail_needlogin' => 'Du behöver $1 för att bekräfta din e-postadress',
 'confirmemail_success' => 'Din e-postadress har bekräftats.
-Du kan nu [[Special:UserLogin|logga in]] och använda wikin.',
+Du kan nu [[Special:wiki_userLogin|logga in]] och använda wikin.',
 'confirmemail_loggedin' => 'Din e-postadress är nu bekräftad.',
 'confirmemail_error' => 'Någonting gick fel när din bekräftelse skulle sparas.',
 'confirmemail_subject' => 'Bekräftelse av e-postadress på {{SITENAME}}',
@@ -3719,10 +3719,10 @@ Denna bekräftelsekod kommer att sluta fungera efter $4.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Varning''': Denna sida raderades efter att du började redigera!",
-'confirmrecreate' => "Användaren [[User:$1|$1]] ([[User talk:$1|diskussion]]) raderade den här sidan efter att du började redigera den med motiveringen:
+'confirmrecreate' => "Användaren [[wiki_user:$1|$1]] ([[wiki_user talk:$1|diskussion]]) raderade den här sidan efter att du började redigera den med motiveringen:
 : ''$2''
 Bekräfta att du verkligen vill återskapa sidan.",
-'confirmrecreate-noreason' => 'Användare [[User:$1|$1]] ([[User talk:$1|diskussion]]) raderade den här sidan efter att du började redigera. Bekräfta att du verkligen vill återskapa sidan.',
+'confirmrecreate-noreason' => 'Användare [[wiki_user:$1|$1]] ([[wiki_user talk:$1|diskussion]]) raderade den här sidan efter att du började redigera. Bekräfta att du verkligen vill återskapa sidan.',
 'recreate' => 'Återskapa',
 
 # action=purge
@@ -3806,7 +3806,7 @@ Du kan också [[Special:EditWatchlist|använda standardeditorn]].',
 'watchlisttools-raw' => 'Redigera bevakningslistan i råformat',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|diskussion]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|diskussion]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Okänd tagg "$1"',
@@ -3873,7 +3873,7 @@ Bilder visas i full upplösning, andra filtyper öppnas direkt i de program som 
 'specialpages-group-login' => 'Logga in / skapa konto',
 'specialpages-group-changes' => 'Senaste ändringar och loggar',
 'specialpages-group-media' => 'Filer och uppladdning',
-'specialpages-group-users' => 'Användare och behörigheter',
+'specialpages-group-wiki_users' => 'Användare och behörigheter',
 'specialpages-group-highuse' => 'Sidor som används mycket',
 'specialpages-group-pages' => 'Listor över sidor',
 'specialpages-group-pagetools' => 'Sidverktyg',
@@ -3971,11 +3971,11 @@ Bilder visas i full upplösning, andra filtyper öppnas direkt i de program som 
 'logentry-move-move_redir-noredirect' => '$1 flyttade sidan $3 till $4 över en omdirigering utan att lämna en omdirigering',
 'logentry-patrol-patrol' => '$1 markerade versionen $4 av sidan $3 som patrullerad',
 'logentry-patrol-patrol-auto' => '$1 markerade automatiskt versionen $4 av sidan $3 som patrullerad',
-'logentry-newusers-newusers' => 'Användarkonto $1 skapades',
-'logentry-newusers-create' => 'Användarkonto $1 skapades',
-'logentry-newusers-create2' => 'Användarkonto $3 skapades av $1',
-'logentry-newusers-autocreate' => 'Kontot $1 skapades automatiskt',
-'newuserlog-byemail' => 'lösenord skickat med e-post',
+'logentry-newwiki_users-newwiki_users' => 'Användarkonto $1 skapades',
+'logentry-newwiki_users-create' => 'Användarkonto $1 skapades',
+'logentry-newwiki_users-create2' => 'Användarkonto $3 skapades av $1',
+'logentry-newwiki_users-autocreate' => 'Kontot $1 skapades automatiskt',
+'newwiki_userlog-byemail' => 'lösenord skickat med e-post',
 
 # Feedback
 'feedback-bugornote' => 'Om du är redo att beskriva ett tekniskt problem detaljerat, var god [$1 rapporterar en bugg].

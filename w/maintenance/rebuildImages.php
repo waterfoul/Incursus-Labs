@@ -42,7 +42,7 @@ class ImageBuilder extends Maintenance {
 	/**
 	 * @var DatabaseBase
 	 */
-	protected $dbw;
+	protected w;
 
 	function __construct() {
 		parent::__construct();
@@ -130,7 +130,7 @@ class ImageBuilder extends Maintenance {
 		$result = wfGetDB( DB_SLAVE )->select( $table, '*', array(), __METHOD__ );
 
 		foreach ( $result as $row ) {
-			$update = call_user_func( $callback, $row, null );
+			$update = call_wiki_user_func( $callback, $row, null );
 			if ( $update ) {
 				$this->progress( 1 );
 			} else {

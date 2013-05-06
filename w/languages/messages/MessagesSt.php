@@ -68,7 +68,7 @@ $messages = array(
 'otherlanguages' => 'Ka maleme a mang',
 'jumptosearch' => 'phuputso',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'mainpage' => 'Leqephe la pele',
 'mainpage-description' => 'Leqephe la pele',
 'portal' => 'Potjho e kopano',
@@ -138,8 +138,8 @@ $messages = array(
 [[Special:UnusedCategories|Unused categories]] are not shown here.
 Also see [[Special:WantedCategories|wanted categories]].',
 
-# E-mail user
-'emailuser' => 'Romela motho enwa email',
+# E-mail wiki_user
+'emailwiki_user' => 'Romela motho enwa email',
 'emailfrom' => 'E tswa ho:',
 'emailto' => 'Ho:',
 'emailsubject' => 'Ka:',

@@ -72,7 +72,7 @@ class BacklinkCache {
 	 * Mutator : BacklinkCache::setDB()
 	 * Cleared with BacklinkCache::clear()
 	 */
-	protected $db;
+	protected ;
 
 	/**
 	 * Local copy of a Title object
@@ -102,11 +102,11 @@ class BacklinkCache {
 		if ( !self::$cache ) { // init cache
 			self::$cache = new ProcessCacheLRU( 1 );
 		}
-		$dbKey = $title->getPrefixedDBkey();
-		if ( !self::$cache->has( $dbKey, 'obj' ) ) {
-			self::$cache->set( $dbKey, 'obj', new self( $title ) );
+		Key = $title->getPrefixedDBkey();
+		if ( !self::$cache->has( Key, 'obj' ) ) {
+			self::$cache->set( Key, 'obj', new self( $title ) );
 		}
-		return self::$cache->get( $dbKey, 'obj' );
+		return self::$cache->get( Key, 'obj' );
 	}
 
 	/**
@@ -132,10 +132,10 @@ class BacklinkCache {
 	/**
 	 * Set the Database object to use
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 */
-	public function setDB( $db ) {
-		$this->db = $db;
+	public function setDB(  ) {
+		$this->db = ;
 	}
 
 	/**

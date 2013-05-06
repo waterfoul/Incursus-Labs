@@ -153,7 +153,7 @@ class BitmapHandler extends ImageHandler {
 				$scalerParams['physicalWidth'] == $scalerParams['srcWidth']
 				&& $scalerParams['physicalHeight'] == $scalerParams['srcHeight'] ) {
 
-			# normaliseParams (or the user) wants us to return the unscaled image
+			# normaliseParams (or the wiki_user) wants us to return the unscaled image
 			wfDebug( __METHOD__ . ": returning unscaled image\n" );
 			return $this->getClientScalingThumbnailImage( $image, $scalerParams );
 		}
@@ -552,7 +552,7 @@ class BitmapHandler extends ImageHandler {
 			return $this->getMediaTransformError( $params, $errMsg );
 		}
 
-		$src_image = call_user_func( $loader, $params['srcPath'] );
+		$src_image = call_wiki_user_func( $loader, $params['srcPath'] );
 
 		$rotation = function_exists( 'imagerotate' ) ? $this->getRotation( $image ) : 0;
 		list( $width, $height ) = $this->extractPreRotationDimensions( $params, $rotation );
@@ -586,7 +586,7 @@ class BitmapHandler extends ImageHandler {
 
 		imagesavealpha( $dst_image, true );
 
-		call_user_func( $saveType, $dst_image, $params['dstPath'] );
+		call_wiki_user_func( $saveType, $dst_image, $params['dstPath'] );
 		imagedestroy( $dst_image );
 		imagedestroy( $src_image );
 
@@ -620,7 +620,7 @@ class BitmapHandler extends ImageHandler {
 	 * Glob character unescaping is broken in ImageMagick before 6.6.1-5, but
 	 * it's broken in a way that doesn't involve trying to convert every file
 	 * in a directory, so we're better off escaping and waiting for the bugfix
-	 * to filter down to users.
+	 * to filter down to wiki_users.
 	 *
 	 * @param $path string The file path
 	 * @param $scene string The scene specification, or false if there is none

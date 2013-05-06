@@ -180,7 +180,7 @@ class SquidPurgeClient {
 		$this->requests[] = "PURGE $url HTTP/1.0\r\n" .
 			"Connection: Keep-Alive\r\n" .
 			"Proxy-Connection: Keep-Alive\r\n" .
-			"User-Agent: " . Http::userAgent() . ' ' . __CLASS__ . "\r\n\r\n";
+			"wiki_user-Agent: " . Http::wiki_userAgent() . ' ' . __CLASS__ . "\r\n\r\n";
 		if ( $this->currentRequestIndex === null ) {
 			$this->nextRequest();
 		}

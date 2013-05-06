@@ -99,9 +99,9 @@ class DumpRenderer extends Maintenance {
 			$sanitized );
 		$this->output( sprintf( "%s\n", $filename, $display ) );
 
-		$user = new User();
+		$wiki_user = new wiki_user();
 		$parser = new $wgParserConf['class']();
-		$options = ParserOptions::newFromUser( $user );
+		$options = ParserOptions::newFromwiki_user( $wiki_user );
 
 		$output = $parser->parse( $rev->getText(), $title, $options );
 

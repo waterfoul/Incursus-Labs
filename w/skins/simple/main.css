@@ -119,7 +119,7 @@ fieldset {
 	margin: 1em 0em 1em 0em;
 	padding: 0em 1em 1em 1em;
 }
-.usermessage {
+.wiki_usermessage {
 	background-color: #ffce7b;
 	border: 1px solid #ffa500;
 	color: black;
@@ -352,7 +352,7 @@ li.new {
 	text-decoration: line-through;
 }
 /**
- * Overrides text justification (user preference)
+ * Overrides text justification (wiki_user preference)
  * See bug 31990
  */
 #catlinks {

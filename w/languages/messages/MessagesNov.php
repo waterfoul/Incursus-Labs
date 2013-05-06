@@ -121,7 +121,7 @@ $messages = array(
 'articlepage' => 'Regarda pagine de kontenaje',
 'talk' => 'Diskusione',
 'toolbox' => 'Utensiles',
-'userpage' => 'Vida useren pagine',
+'wiki_userpage' => 'Vida wiki_useren pagine',
 'imagepage' => 'Regarda imajal pagine',
 'mediawikipage' => 'Regarda mesajal pagine',
 'templatepage' => 'Vida shablonal pagine',
@@ -131,7 +131,7 @@ $messages = array(
 'jumptonavigation' => 'navigatione',
 'jumptosearch' => 'sercha',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Pri {{SITENAME}}',
 'aboutpage' => 'Project:Pri',
 'currentevents' => 'Nuni eventes',
@@ -157,7 +157,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Artikle',
-'nstab-user' => 'Useren pagine',
+'nstab-wiki_user' => 'wiki_useren pagine',
 'nstab-special' => 'Spesial pagine',
 'nstab-project' => 'Projetal pagine',
 'nstab-mediawiki' => 'Mesaje',
@@ -173,18 +173,18 @@ $messages = array(
 # Login and logout pages
 'logouttext' => "'''Vu es nun eksignatat.'''
 
-Vu pove kontinua usa {{SITENAME}} anonimim, o vu pove riensignata kom li sami o altri usere.",
-'yourname' => 'Usere-nome:',
+Vu pove kontinua usa {{SITENAME}} anonimim, o vu pove riensignata kom li sami o altri wiki_usere.",
+'yourname' => 'wiki_usere-nome:',
 'yourpassword' => 'Pasa-vorde:',
 'remembermypassword' => 'Memora men pasa-vorde (kun kuke) (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'Ensignata',
 'loginprompt' => 'Vu mus lasa cookies de ensignata en {{SITENAME}}.',
-'userlogin' => 'Ensignata / krea usere-registre',
+'wiki_userlogin' => 'Ensignata / krea wiki_usere-registre',
 'logout' => 'Eksignata',
-'userlogout' => 'Eksignata',
+'wiki_userlogout' => 'Eksignata',
 'notloggedin' => 'Non ensignatat',
 'nologin' => "Ob vu non have registre? '''$1'''.",
-'nologinlink' => 'Krea usere-registre',
+'nologinlink' => 'Krea wiki_usere-registre',
 'gotaccountlink' => 'Ensignata',
 'loginerror' => 'Erore de ensignato',
 'loginsuccesstitle' => 'Ensignato suksesosi',
@@ -193,7 +193,7 @@ Vu pove kontinua usa {{SITENAME}} anonimim, o vu pove riensignata kom li sami o 
 'acct_creation_throttle_hit' => 'Visitors to this wiki using your IP address have created {{PLURAL:$1|1 account|$1 accounts}} in the last day, which is the maximum allowed in this time period.
 As a result, visitors using this IP address cannot create any more accounts at the moment.',
 'accountcreated' => 'Registre kreat',
-'accountcreatedtext' => 'Li usere-registre por $1 ha bli krea.',
+'accountcreatedtext' => 'Li wiki_usere-registre por $1 ha bli krea.',
 
 # Edit page toolbar
 'bold_sample' => 'Diki texte',
@@ -247,7 +247,7 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'preferences' => 'Preferos',
 'mypreferences' => 'Men preferos',
 'prefsnologin' => 'Non ensignatat',
-'prefsnologintext' => 'Vu mus es <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} ensignatat] por determina useren preferos.',
+'prefsnologintext' => 'Vu mus es <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} ensignatat] por determina wiki_useren preferos.',
 'prefs-rc' => 'Resenti chanjos',
 'searchresultshead' => 'Sercha',
 'timezoneregion-africa' => 'Afrika',
@@ -257,7 +257,7 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'recentchanges' => 'Resenti chanjos',
 'rcnote' => "Subu es {{PLURAL:$1| '''1''' chanje|li lasti '''$1''' chanjes}} in li lasti {{PLURAL:$2|die|'''$2''' dies}}, fro $4, $5.",
 'rcshowhideminor' => '$1 minori modifikos',
-'rcshowhideanons' => '$1 anonimi useres',
+'rcshowhideanons' => '$1 anonimi wiki_useres',
 'rcshowhidemine' => '$1 men modifikos',
 'rclinks' => 'Montra lasti $1 chanjes in lasti $2 dies<br />$3',
 'hist' => 'hist',
@@ -281,12 +281,12 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 # Special:ListFiles
 'listfiles_search_for' => 'Sercha imaje nome:',
 'listfiles_name' => 'Nome',
-'listfiles_user' => 'Usere',
+'listfiles_wiki_user' => 'wiki_usere',
 'listfiles_size' => 'Grandeso (bites)',
 'listfiles_description' => 'Deskriptione',
 
 # File description page
-'filehist-user' => 'Usere',
+'filehist-wiki_user' => 'wiki_usere',
 'imagelinks' => 'Linkes',
 
 # Random page
@@ -311,7 +311,7 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'shortpages' => 'Kurti pagines',
 'longpages' => 'Longi pagines',
 'deadendpages' => 'Pagines sin kuplures',
-'listusers' => 'Liste de useres',
+'listwiki_users' => 'Liste de wiki_useres',
 'newpages' => 'Novi pagines',
 'ancientpages' => 'Maxim ansieni pagines',
 'move' => 'Mova',
@@ -323,7 +323,7 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'booksources-go' => 'Vada',
 
 # Special:Log
-'specialloguserlabel' => 'Usere:',
+'speciallogwiki_userlabel' => 'wiki_usere:',
 
 # Special:AllPages
 'allpages' => 'Omni pagines',
@@ -373,7 +373,7 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 'deletecomment' => 'Resone:',
 
 # Rollback
-'revertpage' => 'Riverted modifikos da [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); restaurad lasti versione da [[User:$1|$1]]',
+'revertpage' => 'Riverted modifikos da [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Talk]]); restaurad lasti versione da [[wiki_user:$1|$1]]',
 
 # Protect
 'prot_1movedto2' => '[[$1]] movat a [[$2]]',
@@ -384,10 +384,10 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 'blanknamespace' => '(Chefi)',
 
 # Contributions
-'contributions' => 'Useren kontributiones',
+'contributions' => 'wiki_useren kontributiones',
 'mycontris' => 'Men kontributiones',
 
-'sp-contributions-newbies' => 'Montra kontributiones nur de novi useres',
+'sp-contributions-newbies' => 'Montra kontributiones nur de novi wiki_useres',
 'sp-contributions-talk' => 'Diskusione',
 'sp-contributions-search' => 'Sercha kontributiones',
 'sp-contributions-submit' => 'Sercha',

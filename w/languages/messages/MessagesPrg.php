@@ -13,7 +13,7 @@
  */
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Autengīnsenin paglaubasnā',
 'tog-justify' => 'Izlīginais tekstan prei abbans pāusans',
 'tog-hideminor' => 'Kliptinais malkans tikrisnans en panzdaumamans kitawīdinsnans',
@@ -37,7 +37,7 @@ $messages = array(
 'tog-previewonfirst' => 'Waidinnais pirmādiran prei pirman redigīsenin',
 'tog-nocache' => 'Izklaūjais rānkas minīsnan',
 'tog-enotifwatchlistpages' => 'Tenginnais mi e-mail, ik pāusan iz majjan listin stēisan nadirītan ast kitawīdintan',
-'tog-enotifusertalkpages' => 'Iztenginnais mi e-mail, ik majjan diskusiōnis pāusan wīrst būwun kitawīdintan',
+'tog-enotifwiki_usertalkpages' => 'Iztenginnais mi e-mail, ik majjan diskusiōnis pāusan wīrst būwun kitawīdintan',
 'tog-enotifminoredits' => 'Tenginnais mi e-mail dīgi kaddan kitawīdinsnas as malkan',
 'tog-enotifrevealaddr' => 'Ni kliptinais majjan e-mail adressin en pawakīsenins',
 'tog-shownumberswatching' => 'Waidinnais gīrbin stēisan nadirīntin tērpautajan',
@@ -208,7 +208,7 @@ Pāusai en kategōrijai "$1"',
 'talk' => 'Diskusiōni',
 'views' => 'Pawīda',
 'toolbox' => 'Pagaptis',
-'userpage' => 'Tērpautajas pāusan',
+'wiki_userpage' => 'Tērpautajas pāusan',
 'projectpage' => 'Prōjaktas pāusan',
 'imagepage' => 'Zūrbrukes pāusan',
 'mediawikipage' => 'Wīdais waīstis pāusan',
@@ -226,7 +226,7 @@ Pāusai en kategōrijai "$1"',
 'jumptonavigation' => 'nawigaciōni',
 'jumptosearch' => 'laukīsna',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Ezze {{SITENAME}}',
 'aboutpage' => 'Project:Ezze',
 'copyright' => 'Ēnturs preiēiminan pa $1 licēncin.',
@@ -282,7 +282,7 @@ Pāusai en kategōrijai "$1"',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Pāusan',
-'nstab-user' => 'Tērpautajas pāusan',
+'nstab-wiki_user' => 'Tērpautajas pāusan',
 'nstab-media' => 'Zūrbrukei',
 'nstab-special' => 'Speciālin pāusan',
 'nstab-project' => 'Prōjaktas pāusan',
@@ -328,7 +328,7 @@ Perwaldītajs, kas ast izklaūwuns dātanbazin, ast dāwuns ripīntin eīskinsna
 Sta ast jāuku dīlintan pra niaktuālin šlaitīntan anga istōrijan autengināntin prei pāusan, kawīdan pastāi āupausintan.
 
 Ik sta ni ast brewīnsli, mazīngi tū aupalla blāndan en prōgraminimans.
-Madli pawakēis di [[Special:ListUsers/sysop|perwaldītaju]], preidāntei URL.',
+Madli pawakēis di [[Special:Listwiki_users/sysop|perwaldītaju]], preidāntei URL.',
 'missingarticle-rev' => '(wersiōni#: $1)',
 'missingarticle-diff' => '(šlaitīntan: $1, $2)',
 'internalerror' => 'Ēntrewingi blānda',
@@ -365,7 +365,7 @@ Per tulkausnans, madli endirēis tērpautun [//translatewiki.net/wiki/Main_Page?
 $2',
 'namespaceprotected' => "Tū ni assei preiwērptan, kāi redigīlai pāusans en '''$1''' tītelin plattibei.",
 'ns-specialprotected' => 'Speciālai pāusai ni mazzi būtwei redigītan.',
-'titleprotected' => 'Šis tītels pastāi drēuditan pra [[User:$1|$1]].
+'titleprotected' => 'Šis tītels pastāi drēuditan pra [[wiki_user:$1|$1]].
 Drēudisnas pagrintinsna: "$2".',
 
 # Virus scanner
@@ -376,7 +376,7 @@ Drēudisnas pagrintinsna: "$2".',
 # Login and logout pages
 'logouttext' => "'''Tū assei teinū izgūbun.'''
 
-Tū mazzi ēmpirsin sadīntun tērpautun {{SITENAME}} kāigi niengūbuns tērpautajs, anga [[Special:UserLogin|enēitwei etkūmps]] kāigi šis sūbs anga kits tērpautajs.
+Tū mazzi ēmpirsin sadīntun tērpautun {{SITENAME}} kāigi niengūbuns tērpautajs, anga [[Special:wiki_userLogin|enēitwei etkūmps]] kāigi šis sūbs anga kits tērpautajs.
 Endirēis, kāi ainuntai pāusai mazzi būtwei waidīntan ikāigi tū būlai ainatīngi engūbun, ērgi tū wīrst skistinnuns lasātlas rānkas minīsnan.",
 'welcomecreation' => '== Kaīls, $1! ==
 Twājs rekkens pastāi teīktan.
@@ -390,10 +390,10 @@ Ni izmīrstais kitawīdintun Twajjans [[Special:Preferences|pirminiskwans per {{
 'login' => 'Enjaīs',
 'nav-login-createaccount' => 'Enjaīs / teīkeis rekkenan',
 'loginprompt' => 'Tu turri turītun <i>cookies</i> enklaūtan, kāi enēilai en {{SITENAME}}.',
-'userlogin' => 'Enjaīs / teīkeis rekkenan',
-'userloginnocreate' => 'Enjaīs',
+'wiki_userlogin' => 'Enjaīs / teīkeis rekkenan',
+'wiki_userloginnocreate' => 'Enjaīs',
 'logout' => 'Izjaīs',
-'userlogout' => 'Izjaīs',
+'wiki_userlogout' => 'Izjaīs',
 'notloggedin' => 'Ni assei engūbun',
 'nologin' => "Ni turri tū rekkenan? '''$1'''.",
 'nologinlink' => 'Registrīs si',
@@ -402,7 +402,7 @@ Ni izmīrstais kitawīdintun Twajjans [[Special:Preferences|pirminiskwans per {{
 'gotaccountlink' => 'Enjaīs',
 'createaccountmail' => 'Tenginnais e-mail',
 'badretype' => 'Enwestai kliptaswīrdai šlaitinna si.',
-'userexists' => 'Etrīnkta tērpautajas pabilisnā jāu ekzistijja.
+'wiki_userexists' => 'Etrīnkta tērpautajas pabilisnā jāu ekzistijja.
 Etrīnkais kittan tērpautajas pabilīsnan.',
 'loginerror' => 'Enēisnas blānda',
 'createaccounterror' => 'Ni mazīngi teīktun rekkenan: $1',
@@ -416,12 +416,12 @@ Madli enklaūjais tennans be bandais etkūmps.',
 'noname' => 'Sta ni ast tikrōmiska tērpautajas pabilisnā.',
 'loginsuccesstitle' => 'Enēisenis izpalla',
 'loginsuccess' => "'''Assei teinū engūbun {{SITENAME}} kāigi \"\$1\".'''",
-'nosuchuser' => 'Ni ast tērpautajs sen pabilīsnan "$1".
+'nosuchwiki_user' => 'Ni ast tērpautajs sen pabilīsnan "$1".
 Zentlin debban en tērpautajas pabilīsnai ast zentlawingi.
-Izbandais peisāsnan anga [[Special:UserLogin/signup|teīkeis nāunan rekkenan]].',
-'nosuchusershort' => 'Ni ast tērpautajs sen pabilīsnan "$1".
+Izbandais peisāsnan anga [[Special:wiki_userLogin/signup|teīkeis nāunan rekkenan]].',
+'nosuchwiki_usershort' => 'Ni ast tērpautajs sen pabilīsnan "$1".
 Izbandais peisāsnan.',
-'nouserspecified' => 'Tu turri enpeisātun tērpautajas pabilīsnan.',
+'nowiki_userspecified' => 'Tu turri enpeisātun tērpautajas pabilīsnan.',
 'wrongpassword' => 'Nitikrōmiskas kliptaswīrds. Bandais dabber rēizan.',
 'wrongpasswordempty' => 'Enpeisāts kliptaswīrds ast pāustan. Bandais etkūmps.',
 'passwordtooshort' => 'Twājs kliptawīrds ast per īnsan.
@@ -561,23 +561,23 @@ Ik tū ni kwaitīwuns(si) teīktun nāunan pāusan, gnetteis "Etwārtai" knuppan
 'anontalkpagetext' => "----''Sta ast anōnimas tērpautajas diskusiōnis pāusan - stawīdan, kawīds ni turri dabber swajjan rekkenan anga ni tērpaui din.
 Kāi identificīlai tennan, tērpawimai IP adressins.
 Adder IP adressi mazzi būtwei dallautan pra tūlin tērpautajans.
-Ik tu assei anōnims tērpautajs be tu mīri, kāi kumentārai stwi ni ast wartīntan prei tin, [[Special:UserLogin/signup|teīkeis rekkenan]] anga [[Special:UserLogin|enēis]] kāi aulānktun perejīngins kurtīsenins sen kittans anōnimans tērpautajs.''",
+Ik tu assei anōnims tērpautajs be tu mīri, kāi kumentārai stwi ni ast wartīntan prei tin, [[Special:wiki_userLogin/signup|teīkeis rekkenan]] anga [[Special:wiki_userLogin|enēis]] kāi aulānktun perejīngins kurtīsenins sen kittans anōnimans tērpautajs.''",
 'noarticletext' => 'Tēnti šin pāusan ni turri ēn sen tekstan.
 Tu mazzi [[Special:Search/{{PAGENAME}}|laukītun šisse pāusas tītelin]] en kitēimans pāusans,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} pralaukītun registerin],
 anga [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigītun šin pāusan]</span>.',
-'userpage-userdoesnotexist' => 'Tērpautajs "<nowiki>$1</nowiki>" ni ast registrītan.
+'wiki_userpage-wiki_userdoesnotexist' => 'Tērpautajs "<nowiki>$1</nowiki>" ni ast registrītan.
 Izbāndais, anga tū perarwi kwaitīwuns teīktun/redigītun šin pāusan.',
-'userpage-userdoesnotexist-view' => 'Tērpautajas rekkens "$1" ni ast registrītan.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Tērpautajas rekkens "$1" ni ast registrītan.',
 'clearyourcache' => "'''Nōda: Kitawīdinsnas pa enpeisāsnan stēisan nāunan ensadīnsenin mazzi ni būtwei widāminan. Prawerru skistīntun lasāltas rānkas minīsnan.'''
 *'''Mozilla, Firefox anga Safari - ''' zabāis \"Shift\" gnestan ne gnetteis \"Etnauninnais\" anga gnetteis \"Ctrl-F5\" anga \"Ctrl-R\" (\"Command-R\" en Macu);
 *'''Konqueror:''' gnetteis '''Etwārtai kraūneis\" anga \"F5\";
 '''Opera:''' skistinnais rānkas minīsnan en \"Ēnrankis-Pirminiskwas\";
 '''Internet Explorer:''' zabāis \"Ctrl\" gnetīntei \"Etnauninnais\" anga gnetteis \"Ctrl-F5\".",
-'usercsspreview' => "'''Pamēnais, kāi sta ast tēr twāise CSS pirmādira - nika dabber ni pastāi enpeisātan!'''",
-'userjspreview' => "'''Pamēnais, kāi sta ast tēr twāise JS kōdas pirmādira - nika dabber ni pastāi enpeisātan!'''",
-'userinvalidcssjstitle' => "'''Ēmpirsergīsenis:''' Ni ast prusna \"\$1\".
-Pamēnais kāi tērpautajas .css be .js pāusai turri pagaūtun si sen līkutan litteran, p. e.g. {{ns:user}}:Foo/vector.css, ni {{ns:user}}:Foo/Vector.css.",
+'wiki_usercsspreview' => "'''Pamēnais, kāi sta ast tēr twāise CSS pirmādira - nika dabber ni pastāi enpeisātan!'''",
+'wiki_userjspreview' => "'''Pamēnais, kāi sta ast tēr twāise JS kōdas pirmādira - nika dabber ni pastāi enpeisātan!'''",
+'wiki_userinvalidcssjstitle' => "'''Ēmpirsergīsenis:''' Ni ast prusna \"\$1\".
+Pamēnais kāi tērpautajas .css be .js pāusai turri pagaūtun si sen līkutan litteran, p. e.g. {{ns:wiki_user}}:Foo/vector.css, ni {{ns:wiki_user}}:Foo/Vector.css.",
 'updated' => '(Ernaunīntan)',
 'note' => "'''Endirīsenis:'''",
 'previewnote' => "'''Sta ast tēr pirmādira.'''
@@ -585,13 +585,13 @@ Kitawīdinsnas dabber ni pastāi enpeisātan!\"",
 'previewconflict' => 'Pirmādira waidinna tekstan iz aūktan redigīsnas laūkan. Tīt pawaidīnlai pāusan, ik tū prestlai din enpeisātun.',
 'session_fail_preview' => "'''Etwinūjais! Mes ni mazēimai karwintun twajjan redigīsenin, sesiōnis dātas izmāitinsnas paggan.'''
 Madli bandais etkūmps.
-Ik sta aīnat ni dīlilai, bandais [[Special:UserLogout|izēitwei]] be etwārtai enēitwei.",
+Ik sta aīnat ni dīlilai, bandais [[Special:wiki_userLogout|izēitwei]] be etwārtai enēitwei.",
 'session_fail_preview_html' => "'''Etwinūjais! Mes ni mazēimai karwintun twajjan redigīsenin, sesiōnis dātas izmāitinsnas paggan.'''
 
 '' Beggi {{SITENAME}} turri \"jāls HTML\" enklaūtan, pirmādira ast kliptintan, kai pakūntlai si ezze JavaScript atakkimans.''
 
 '''Ik sta ast tikrōmiskas redigīsenes bandāsenis, madli bandais etkūmps.'''
-Ik sta aīnat ni dīlilai, bandais [[Special:UserLogout|izēitwei]] be etkūmps enēitwei.",
+Ik sta aīnat ni dīlilai, bandais [[Special:wiki_userLogout|izēitwei]] be etkūmps enēitwei.",
 'editing' => 'Tū redigijja $1',
 'editingsection' => 'Tū redigijja $1 (sekciōni)',
 'editingcomment' => 'Tū redigijja $1 (naunā sekciōni)',
@@ -630,7 +630,7 @@ Teksts ni mazzi būtwei enpeisātan.",
 'hiddencategories' => 'Šin pāusan ast en {{PLURAL:$1|ainassei kliptan kategōrijan|$1 kliptan kategōrijan}}:',
 'nocreatetitle' => 'Kānkē di mazīngiskwan stesses segīsnan stēisan nāunan pāusan',
 'nocreatetext' => 'Nāunan pāusan teīksnas mazīngisku en {{SITENAME}} pastāi arāikintan.
-Tū mazzi redigītun ekzistīntins pāusans anga [[Special:UserLogin|enēitwei anga teīktun nāunan rekkenan]].',
+Tū mazzi redigītun ekzistīntins pāusans anga [[Special:wiki_userLogin|enēitwei anga teīktun nāunan rekkenan]].',
 'nocreate-loggedin' => 'Tū ni turri preiwērpsenin, kāi teīklai nāunans pāusans.',
 'permissionserrors' => 'Preiwērpsenin blānda',
 'permissionserrorstext' => 'Tū ni turri preiwērpsenin, kāi segīlai stan, {{PLURAL:$1|stawīdses brewīnslis|stawīdan brewīnslin}} paggan:',
@@ -660,11 +660,11 @@ Ainuntas šablōnis ni wīrst pastāwuns tērpautan.',
 'undo-success' => 'Redigīsenis mazzi būtwei etwartīntan. Palīginais waidīntans šlaitīntans sirzdau wersiōnins be enpeisāis kitawīdinsnans.',
 'undo-failure' => 'Ni mazīngi etwārtai wartīntun redigīsenin, kōnfliktas sen persirzdausnas wersiōnins paggan.',
 'undo-norev' => 'Redigīsenis ni mazzi būtwei etwārtai wartīntan, beggi ni ekzistijja anga pastāi āupausintan.',
-'undo-summary' => 'Etwārtai wartīnsna stēisan wersiōnin $1 teīktan pra [[Special:Contributions/$2|$2]] ([[User talk:$2|diskusiōni]])',
+'undo-summary' => 'Etwārtai wartīnsna stēisan wersiōnin $1 teīktan pra [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|diskusiōni]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Ni mazīngi teīktun rekkenan',
-'cantcreateaccount-text' => 'Rekkenas teīksenis iz šan IP adressin ("$1") pastāi drēuditan pra [[User:$3|$3]].
+'cantcreateaccount-text' => 'Rekkenas teīksenis iz šan IP adressin ("$1") pastāi drēuditan pra [[wiki_user:$3|$3]].
 
 Brewīnsli dātan pra $3 ast "$2"',
 
@@ -702,7 +702,7 @@ Bandais [[Special:Search|laukītun]] sirzdau nāunans pāusans en wiki',
 
 # Revision deletion
 'rev-deleted-comment' => '(kumentārs āupausintan)',
-'rev-deleted-user' => '(tērpautajas pabilisnā āupausintan)',
+'rev-deleted-wiki_user' => '(tērpautajas pabilisnā āupausintan)',
 'rev-deleted-event' => '(registeres enpeisāsenis āupausintan)',
 'rev-delundel' => 'waidinnais/kliptinais',
 'rev-showdeleted' => 'waidinnais',
@@ -724,7 +724,7 @@ Bandais [[Special:Search|laukītun]] sirzdau nāunans pāusans en wiki',
 'revdelete-hide-image' => 'Kliptinais zūrbrukes ēnturan',
 'revdelete-hide-name' => 'Kliptinnais dīlasenin be kakīnslin',
 'revdelete-hide-comment' => 'Kliptinais redigīsenes kumentāran',
-'revdelete-hide-user' => 'Kliptinais tērpautajas pabilīsnan/IP adressin',
+'revdelete-hide-wiki_user' => 'Kliptinais tērpautajas pabilīsnan/IP adressin',
 'revdelete-hide-restricted' => 'Kliptinais infōrmaciōnins ezze perwaldītajamans tīt kāigi ezze kitēimans',
 'revdelete-radio-same' => '(ni kitawīdinais)',
 'revdelete-radio-set' => 'Jā',
@@ -915,7 +915,7 @@ Pamēnais, kāi tenēisan indicai mazzi ni būtwei aktuālin.',
 'prefs-emailconfirm-label' => 'E-mailas padruktinsna:',
 'prefs-textboxsize' => 'Redigīsnas langstas debban',
 'youremail' => 'Twajā e-mail adressi:',
-'username' => 'Tērpautajas pabilisnā:',
+'wiki_username' => 'Tērpautajas pabilisnā:',
 'uid' => 'Tērpautajas ID:',
 'prefs-memberingroups' => 'Perlānke prei {{PLURAL:$1|gruppin|gruppins:}}',
 'prefs-registration' => 'Registraciōnis kerdā:',
@@ -948,41 +948,41 @@ Tū mazzi dīgi etrīnktun dātun kitēimans drāugautwei sen tin pra tērpautaj
 'prefs-advancedwatchlist' => 'Ēmpirsin treppušas opciōnis',
 'prefs-displayrc' => 'Waidīnsnas opciōnis',
 
-# User rights
-'userrights' => 'Perwāldais enwarīnsenins stēisan tērpautajan',
-'userrights-lookup-user' => 'Perwāldais tērpautajas gruppins',
-'userrights-user-editname' => 'Enweddais tērpautajas pabilīsnan:',
-'editusergroup' => 'Redigīs tērpautajas gruppins',
-'editinguser' => "Kitawīdinsna stēisan tērpautajas '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) enwarīnsenin",
-'userrights-editusergroup' => 'Redigīs tērpautajas gruppins',
-'saveusergroups' => 'Enpeisāis tērpautajas gruppins',
-'userrights-groupsmember' => 'perlānke prei:',
-'userrights-groups-help' => 'Tu mazzi kitawīdintun gruppins, prei kawīdans šis tērpautajs perlānke:
+# wiki_user rights
+'wiki_userrights' => 'Perwāldais enwarīnsenins stēisan tērpautajan',
+'wiki_userrights-lookup-wiki_user' => 'Perwāldais tērpautajas gruppins',
+'wiki_userrights-wiki_user-editname' => 'Enweddais tērpautajas pabilīsnan:',
+'editwiki_usergroup' => 'Redigīs tērpautajas gruppins',
+'editingwiki_user' => "Kitawīdinsna stēisan tērpautajas '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) enwarīnsenin",
+'wiki_userrights-editwiki_usergroup' => 'Redigīs tērpautajas gruppins',
+'savewiki_usergroups' => 'Enpeisāis tērpautajas gruppins',
+'wiki_userrights-groupsmember' => 'perlānke prei:',
+'wiki_userrights-groups-help' => 'Tu mazzi kitawīdintun gruppins, prei kawīdans šis tērpautajs perlānke:
 *Ebzentlits laūks zentli, kāi tērpautajs perlānke prei šan gruppin
 *Niebzentlits laūks zentli, kāi tērpautajs ni perlānke prei šan gruppin
 *Lāuksna * zentli, kāi ni mazīngi āupausintun tērpautajan iz gruppin pa preidāsenin anga preidātun pa āupausinsenin.',
-'userrights-reason' => 'Brewīnsli:',
-'userrights-no-interwiki' => 'Ni assei enwarīntan kāi kitawīdinlai stēisan enwarīnsenin en kitēimans wiki.',
-'userrights-nodatabase' => 'Dātanbazi $1 ni ekzistijja anga ni ast lōkalin.',
-'userrights-nologin' => 'Tū turri [[Special:UserLogin|enēitwei]] kāigi perwaldītajs, kāi dātun tērpautajamans enwarīnsenins.',
-'userrights-notallowed' => 'Tū ni assei enwarīntan, kāi dālai tērpautajans enwarīnsenins.',
-'userrights-changeable-col' => 'Gruppis, kawīdans tu mazzi kitawīdintun',
-'userrights-unchangeable-col' => 'Gruppis, kawīdans tu ni mazzi kitawīdintun',
+'wiki_userrights-reason' => 'Brewīnsli:',
+'wiki_userrights-no-interwiki' => 'Ni assei enwarīntan kāi kitawīdinlai stēisan enwarīnsenin en kitēimans wiki.',
+'wiki_userrights-nodatabase' => 'Dātanbazi $1 ni ekzistijja anga ni ast lōkalin.',
+'wiki_userrights-nologin' => 'Tū turri [[Special:wiki_userLogin|enēitwei]] kāigi perwaldītajs, kāi dātun tērpautajamans enwarīnsenins.',
+'wiki_userrights-notallowed' => 'Tū ni assei enwarīntan, kāi dālai tērpautajans enwarīnsenins.',
+'wiki_userrights-changeable-col' => 'Gruppis, kawīdans tu mazzi kitawīdintun',
+'wiki_userrights-unchangeable-col' => 'Gruppis, kawīdans tu ni mazzi kitawīdintun',
 
 # Groups
 'group' => 'Gruppi:',
-'group-user' => 'Tērpautajai',
+'group-wiki_user' => 'Tērpautajai',
 'group-autoconfirmed' => 'Autōmatiskai padrūktintai tērpautajai',
 'group-bot' => 'Bōtai',
 'group-sysop' => 'Perwaldītajai',
 'group-all' => '(wisāi)',
 
-'group-user-member' => 'Tērpautajs',
+'group-wiki_user-member' => 'Tērpautajs',
 'group-autoconfirmed-member' => 'Autōmatiskai padrūktints tērpautajs',
 'group-bot-member' => 'Bōts',
 'group-sysop-member' => 'Perwaldītajs',
 
-'grouppage-user' => '{{ns:project}}:Tērpautajai',
+'grouppage-wiki_user' => '{{ns:project}}:Tērpautajai',
 'grouppage-autoconfirmed' => '{{ns:project}}:Autōmatiskai padrūktintai tērpautajai',
 'grouppage-bot' => '{{ns:project}}:Bōtai',
 'grouppage-sysop' => '{{ns:project}}:Perwaldītajai',
@@ -996,7 +996,7 @@ Tū mazzi dīgi etrīnktun dātun kitēimans drāugautwei sen tin pra tērpautaj
 'right-minoredit' => 'Ebzentlis redigīsenins kāigi malkans',
 'right-move' => 'Praskajjinais pāusans',
 'right-move-subpages' => 'Praskajjinais pāusans ēmpiri sen tenēisan pōpausans',
-'right-move-rootuserpages' => 'Praskajjinais tērpautajan pāusans',
+'right-move-rootwiki_userpages' => 'Praskajjinais tērpautajan pāusans',
 'right-movefile' => 'Praskajjinais zūrbrukins',
 'right-suppressredirect' => 'Pāusan praskajjinsna šlāit prawessenes teīksnan en deīktu wūras tītelas',
 'right-upload' => 'Enkraūneis zūrbrukins na sērwerin',
@@ -1021,15 +1021,15 @@ Tū mazzi dīgi etrīnktun dātun kitēimans drāugautwei sen tin pra tērpautaj
 'right-suppressionlog' => 'Wīdais priwātans registerins',
 'right-block' => 'Drēudeis tērpautajamans redigītun',
 'right-blockemail' => 'Drēudeis tērpuatajamans e-mailin tengīntun',
-'right-hideuser' => 'Tērpautajas blōkisna, niwidāminan perōnewingi',
+'right-hidewiki_user' => 'Tērpautajas blōkisna, niwidāminan perōnewingi',
 'right-ipblock-exempt' => 'Ebjaīs blōkisenins, autōmatiskans blōkisenins be blōkisenins stēisan IP adressin ebīmtan',
 'right-proxyunbannable' => 'Ebjaīs autōmatiskans proxy blōkisnans',
 'right-protect' => 'Pakūnsnas klādas kitawīdinsna be preiēisenis prei redigīsnan stēisan pakūnstan pāusan',
 'right-editprotected' => 'Redigīs pakūnstans pāusans (šlāit weldītan pakūnsenin)',
 'right-editinterface' => 'Redigīs tērpautajas interfācan',
-'right-editusercssjs' => 'Redigīs CSS be JavaScript zūrbrukins kitēisan tērpautajan',
-'right-editusercss' => 'Redigīs CSS zūrbrukins kitēisan tērpautajan',
-'right-edituserjs' => 'Redigīs JS zūrbrukins kitēisan tērpautajan',
+'right-editwiki_usercssjs' => 'Redigīs CSS be JavaScript zūrbrukins kitēisan tērpautajan',
+'right-editwiki_usercss' => 'Redigīs CSS zūrbrukins kitēisan tērpautajan',
+'right-editwiki_userjs' => 'Redigīs JS zūrbrukins kitēisan tērpautajan',
 'right-rollback' => 'Dīwai etwārtai wartinnais redigīsenin stesse tērpautajan, kawīds redigijja ainuntan pāusan kāigi panzdaums',
 'right-markbotedits' => 'Ebzentlis naikīntans redigīsenins kāigi bōtas redigīsenins',
 'right-import' => 'Impōrtis pāusans iz kittans wiki',
@@ -1039,13 +1039,13 @@ Tū mazzi dīgi etrīnktun dātun kitēimans drāugautwei sen tin pra tērpautaj
 'right-patrolmarks' => 'Wīdais izbandāsnas zentlitajans stēisan panzdauman kitawīdinsnan',
 'right-unwatchedpages' => 'Wīdais listin stēisan ninadirītan pāusan',
 'right-mergehistory' => 'Senlajjais istōrijans stēisan pāusan',
-'right-userrights' => 'Redigīs enwarīnsenins wisēisan tērpautajan',
-'right-userrights-interwiki' => 'Redigīs enwarīnsenins stēisan tērpautajan en kitēimans wiki',
+'right-wiki_userrights' => 'Redigīs enwarīnsenins wisēisan tērpautajan',
+'right-wiki_userrights-interwiki' => 'Redigīs enwarīnsenins stēisan tērpautajan en kitēimans wiki',
 'right-siteadmin' => 'Dātanbazin auklausnā be etklausnā',
 'right-override-export-depth' => 'Ekspōrtis pāusans ēmpiri sen pāusans prei kawīdans tenēi autenginna, ērgi gilluwan stēisan 5 autengīnsenin',
 'right-sendemail' => 'Tenginnais e-mailin kitēimans tērpautajans',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Registerin stēisan tērpautajan enwarīnsenin',
 'rightslogtext' => 'Sta ast registerin stēisan tērpautajan ewarīnsenin kitawīdinsnan.',
 'rightslogentry' => 'ast kitawīdinuns(si) $1 perlānksnan prei gruppins ($2 → $3)',
@@ -1060,7 +1060,7 @@ Tū mazzi dīgi etrīnktun dātun kitēimans drāugautwei sen tin pra tērpautaj
 'action-minoredit' => 'ebzentlitun šin redigīsenin per malkan',
 'action-move' => 'praskajjintun šin pāusan',
 'action-move-subpages' => 'praskajjintun šin pāusan be tenesse pōpausans',
-'action-move-rootuserpages' => 'praskajjintun pāusans stēisan tērpautajan (šlāit pōpausans)',
+'action-move-rootwiki_userpages' => 'praskajjintun pāusans stēisan tērpautajan (šlāit pōpausans)',
 'action-movefile' => 'praskajjintun šin zūrbrukin',
 'action-upload' => 'enkraūtun šin zūrbrukin',
 'action-reupload' => 'kīrsai peisāis šin ekzistīntin zūrbrukin',
@@ -1082,8 +1082,8 @@ Tū mazzi dīgi etrīnktun dātun kitēimans drāugautwei sen tin pra tērpautaj
 'action-autopatrol' => 'ebzentlitun swajjan redigīsenin per izbandātan',
 'action-unwatchedpages' => 'widātun listin stēisan ninadirītan pāusan',
 'action-mergehistory' => 'Senlajjais šisse pāusas istōrijan',
-'action-userrights' => 'redigītun enwarīnsenins wisēisan tērpautajan',
-'action-userrights-interwiki' => 'redigītun enwarīnsnans stēisan tērpautajan en kitēimans wiki',
+'action-wiki_userrights' => 'redigītun enwarīnsenins wisēisan tērpautajan',
+'action-wiki_userrights-interwiki' => 'redigītun enwarīnsnans stēisan tērpautajan en kitēimans wiki',
 'action-siteadmin' => 'auklaūtun anga izklaūtun dātanbazin',
 
 # Recent changes
@@ -1113,7 +1113,7 @@ Tū mazzi dīgi etrīnktun dātun kitēimans drāugautwei sen tin pra tērpautaj
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'boteditletter' => 'b',
-'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|nadirīnts tērpautajs|nadirīntei tērpautajai}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|nadirīnts tērpautajs|nadirīntei tērpautajai}}]',
 'rc_categories' => 'Arāikinais prei kategōrijan (izsklaitinnais sen "|")',
 'rc_categories_any' => 'Wisāi',
 'newsectionsummary' => '/* $1 */ naunā sekciōni',
@@ -1135,7 +1135,7 @@ Pāusai iz [[Special:Watchlist|nadirītan listin]] ast pastarīntan.',
 'reuploaddesc' => 'Naikinnais enkraūsenin be etwartinnais si en enkraūsenes fōrmularan.',
 'upload-tryagain' => 'Tenginnais kitawīdintan zūrbrukes ebpeisāsenin',
 'uploadnologin' => 'Ni assei engūbun',
-'uploadnologintext' => 'Tu turri [[Special:UserLogin|enēitwei]] pirzdau tū wīrst tenginnuns(si) zūrbrukins.',
+'uploadnologintext' => 'Tu turri [[Special:wiki_userLogin|enēitwei]] pirzdau tū wīrst tenginnuns(si) zūrbrukins.',
 'upload_directory_missing' => 'Fōlderis per enkraūtans zūrbrukins ($1) ni ekzistijja be ni mazzi būtwei teīktan pra WWW sērwerin.',
 'upload_directory_read_only' => 'Sērweris ni mazzi enpeisātun en fōlderin ($1), palīkitan per enkraūtans zūrbrukins.',
 'uploaderror' => 'Enkraūsnas blānda',
@@ -1227,11 +1227,11 @@ Madli etrīnkais swajasmu zūrbrukin spārtais deskriptīwan pabilīsnan.",
 'upload-proto-error-text' => 'Iztāliska enkrausnā izkīnina, kāi URL adressi pagaūlai si sen <code>http://</code> anga <code>ftp://</code>.',
 'upload-file-error' => 'Ēntrewingi blānda',
 'upload-file-error-text' => 'Ēntrewingi blānda tikka prēi kīsmingiskas zūrbrukes teīksenes izbandāsnan en sērweŗu.
-Drāugaus sen [[Special:ListUsers/sysop|sistēmas perwaldītajan]].',
+Drāugaus sen [[Special:Listwiki_users/sysop|sistēmas perwaldītajan]].',
 'upload-misc-error' => 'Niwaistā enkraūsnas blānda',
 'upload-misc-error-text' => 'Tikka niwaistā blānda enkērdas enkraūsenes.
 Izbandais, anga padatā URL adressi ast tikrōmiskan be preiēiminan be bandais etkūmps.
-Ik prōblaman wīrst āntrinus, drāugaus sen [[Special:ListUsers/sysop|sistēmas perwaldītajan]].',
+Ik prōblaman wīrst āntrinus, drāugaus sen [[Special:Listwiki_users/sysop|sistēmas perwaldītajan]].',
 'upload-unknown-size' => 'Niwaīstan debban',
 'upload-http-error' => 'HTTP blānda tikka: $1',
 
@@ -1263,7 +1263,7 @@ Gnessenin na kōlunis tītelin kitawīdina rīkan.',
 'listfiles' => 'Zūrbrukin listi',
 'listfiles_date' => 'Dātan',
 'listfiles_name' => 'Emmens',
-'listfiles_user' => 'Tērpautajs',
+'listfiles_wiki_user' => 'Tērpautajs',
 'listfiles_size' => 'Debban',
 'listfiles_description' => 'Ebpeisāsenis',
 'listfiles_count' => 'Wersiōnis',
@@ -1280,7 +1280,7 @@ Gnessenin na kōlunis tītelin kitawīdina rīkan.',
 'filehist-thumb' => 'Miniatūri',
 'filehist-thumbtext' => 'Wersiōnis iz $1 miniatūri',
 'filehist-nothumb' => 'Nist miniatūri',
-'filehist-user' => 'Tērpautajs',
+'filehist-wiki_user' => 'Tērpautajs',
 'filehist-dimensions' => 'Ermattausnas',
 'filehist-filesize' => 'Zūrbrukes debban',
 'filehist-comment' => 'Kumentārs',
@@ -1359,7 +1359,7 @@ Tērpausna: ēnturas_tīps/pōtips, perw. <code>image/jpeg</code>.',
 'statistics-header-pages' => 'Pāusan statistiki',
 'statistics-header-edits' => 'Redigīsenin statistiki',
 'statistics-header-views' => 'Kāimalukisenin statistiki',
-'statistics-header-users' => 'Tērpautajan statistiki',
+'statistics-header-wiki_users' => 'Tērpautajan statistiki',
 'statistics-header-hooks' => 'Kitā statistiki',
 'statistics-articles' => 'Ēnturas pāusai',
 'statistics-pages' => 'Pāusai',
@@ -1369,9 +1369,9 @@ Tērpausna: ēnturas_tīps/pōtips, perw. <code>image/jpeg</code>.',
 'statistics-edits-average' => 'Sirzds gīrbis stēisan redigīsenin per pāusan',
 'statistics-views-total' => 'Gīrbis wisēisan kāimalukisenei:',
 'statistics-views-peredit' => 'Gīrbis stēisan kāimalukisenin per redigīsenin',
-'statistics-users' => 'Registrītai [[Special:ListUsers|tērpautajai]]',
-'statistics-users-active' => 'Aktīwai tērpautajai',
-'statistics-users-active-desc' => 'Tērpautajai sēntei aktīwai en {{PLURAL:$1|panzdauman dēinan|panzdaumans dēinans}}',
+'statistics-wiki_users' => 'Registrītai [[Special:Listwiki_users|tērpautajai]]',
+'statistics-wiki_users-active' => 'Aktīwai tērpautajai',
+'statistics-wiki_users-active-desc' => 'Tērpautajai sēntei aktīwai en {{PLURAL:$1|panzdauman dēinan|panzdaumans dēinans}}',
 'statistics-mostpopular' => 'Ukadeznimai kāimalukitai pāusai',
 
 'disambiguations' => 'Ainapreslinsnas pāusai',
@@ -1441,13 +1441,13 @@ Teinū tennan prawedda prei [[$2]].',
 'protectedtitles' => 'Pakūstai pāusan tītelai',
 'protectedtitlestext' => 'Ripīntei pāusan tītelai ast pakūnstan prīki teīksnan',
 'protectedtitlesempty' => 'Niaīnai tītelai ast tēntiskai pakūnstan sen šins parāmeterins.',
-'listusers' => 'Tērpautajan listi',
-'listusers-editsonly' => 'Waidinnais tēr tērpautajans sen redigīsenins',
-'listusers-creationsort' => 'Rikaūjais pa teīksnas dātan',
-'usereditcount' => '$1 {{PLURAL:$1|redigīsenis|redigīsenei}}',
-'usercreated' => 'Teīktan $1, $2',
+'listwiki_users' => 'Tērpautajan listi',
+'listwiki_users-editsonly' => 'Waidinnais tēr tērpautajans sen redigīsenins',
+'listwiki_users-creationsort' => 'Rikaūjais pa teīksnas dātan',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|redigīsenis|redigīsenei}}',
+'wiki_usercreated' => 'Teīktan $1, $2',
 'newpages' => 'Nāunai pāusai',
-'newpages-username' => 'Tērpautajas pabilisnā:',
+'newpages-wiki_username' => 'Tērpautajas pabilisnā:',
 'ancientpages' => 'Ukawūraišai pāusai',
 'move' => 'Praskajjinais',
 'movethispage' => 'Praskajjinais šin pāusan',
@@ -1469,7 +1469,7 @@ Kitāi pāusai mazzi autengīntun prei šins zūrbrukins pra entikriskans URL ad
 'booksources-invalid-isbn' => 'Padatā ISBN nummeri ast erzinātan kāigi nitikrōmiska. Izbandais, anga padatā nummeri preitāra prei nummerin īmtan iz appun.',
 
 # Special:Log
-'specialloguserlabel' => 'Tērpautajs:',
+'speciallogwiki_userlabel' => 'Tērpautajs:',
 'speciallogtitlelabel' => 'Tītels:',
 'log' => 'Registerei',
 'all-logs-page' => 'Wisāi perōniskai preiēiminai registerei',
@@ -1516,23 +1516,23 @@ Ebšlūzitai prōtokulai: <code>$1</code>',
 'linksearch-line' => 'Prei $1 autenginna $2',
 'linksearch-error' => 'Mazīngi tērpautun tulapresliskan simbōlin "*" tēr en hostas pabilīsnas pagaūseņu.',
 
-# Special:ListUsers
-'listusersfrom' => 'Waidinnais tērpautajans pagaūnintei ezze:',
-'listusers-submit' => 'Waidinnais',
-'listusers-noresult' => 'Ni aupalā di niaīnan tērpautajan.',
-'listusers-blocked' => '(blōkitan)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'Waidinnais tērpautajans pagaūnintei ezze:',
+'listwiki_users-submit' => 'Waidinnais',
+'listwiki_users-noresult' => 'Ni aupalā di niaīnan tērpautajan.',
+'listwiki_users-blocked' => '(blōkitan)',
 
-# Special:ActiveUsers
-'activeusers' => 'Aktīwan tērpautajan listi',
-'activeusers-count' => '$1 {{PLURAL:$1|redigīsenis|redigīsenei}} en {{PLURAL:$3|panzdauman dēinan|$3 panzdaumans dēinans}}',
-'activeusers-from' => 'Waidinnais tērpautajans pagaūnintins sen:',
-'activeusers-hidebots' => 'Kliptinais bōtans',
-'activeusers-hidesysops' => 'Kliptinais perwaldītajans',
-'activeusers-noresult' => 'Ni aupalā di tērpautajans',
+# Special:Activewiki_users
+'activewiki_users' => 'Aktīwan tērpautajan listi',
+'activewiki_users-count' => '$1 {{PLURAL:$1|redigīsenis|redigīsenei}} en {{PLURAL:$3|panzdauman dēinan|$3 panzdaumans dēinans}}',
+'activewiki_users-from' => 'Waidinnais tērpautajans pagaūnintins sen:',
+'activewiki_users-hidebots' => 'Kliptinais bōtans',
+'activewiki_users-hidesysops' => 'Kliptinais perwaldītajans',
+'activewiki_users-noresult' => 'Ni aupalā di tērpautajans',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Nāunai tērpautajai',
-'newuserlogpagetext' => 'Sta ast registerin stēisan nāunai teīkatan rekkenan stēisan tērpautajan',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Nāunai tērpautajai',
+'newwiki_userlogpagetext' => 'Sta ast registerin stēisan nāunai teīkatan rekkenan stēisan tērpautajan',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Tērpautajan gruppin enwarīnsenei',
@@ -1551,14 +1551,14 @@ Izbandais pāausan sen [[{{MediaWiki:Listgrouprights-helppage}}|papilniminans in
 'listgrouprights-addgroup-self-all' => 'Preidāis wissans gruppins prei swajjan rekkenan',
 'listgrouprights-removegroup-self-all' => 'Āupausinais wissans gruppins iz swajjan rekkenan',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'Ni ast adressi',
-'mailnologintext' => 'Tu turri [[Special:UserLogin|enēitwei]] be turītun aktuālin e-mail adressin en twajamans [[Special:Preferences|pirminiskwans]] kāi tengīnlai e-mailins kitēimans tērpautajans.',
-'emailuser' => 'Tenginnais e-mailin šismu tērpautajan',
+'mailnologintext' => 'Tu turri [[Special:wiki_userLogin|enēitwei]] be turītun aktuālin e-mail adressin en twajamans [[Special:Preferences|pirminiskwans]] kāi tengīnlai e-mailins kitēimans tērpautajans.',
+'emailwiki_user' => 'Tenginnais e-mailin šismu tērpautajan',
 'emailpage' => 'Tenginnais e-mailin tērpautaju',
 'emailpagetext' => 'Tu mazzi tērpautun zemmaisin fōrmularan kāi tengīntun e-mail waīstin šismu tērpautaju.
 E-mail adressi kawīdan tū enpeisāi en [[Special:Preferences|twajjans pirminiskwans]] wīrst tikkusi en "Ezze" lāuku be gauwiks wīrst mazīwuns ti etrātwei entikriskai.',
-'usermailererror' => 'Pustis ōbjaktan ast etwārtai wartinnun blāndan:',
+'wiki_usermailererror' => 'Pustis ōbjaktan ast etwārtai wartinnun blāndan:',
 'defemailsubject' => 'e-mail waīstis ezze {{SITENAME}}',
 'noemailtitle' => 'Ni ast e-mail adressi',
 'noemailtext' => 'Šis tērpautajs ni ast dāwuns tikrōmiskan e-mail adressin.',
@@ -1574,7 +1574,7 @@ E-mail adressi kawīdan tū enpeisāi en [[Special:Preferences|twajjans pirminis
 'emailccsubject' => 'Twājase waīstis stesmu $1 kōpija : $2',
 'emailsent' => 'Waīštis pastāi tengīntan',
 'emailsenttext' => 'Twajā waīstis pastāi tengīntan.',
-'emailuserfooter' => 'Šī e-mail waīstis pastāi tengīntan stesmu $2 pra $1 tērpawintei funkciōnin "Tenginnais e-mail waīstin šismu tērpautajan" en {{SITENAME}}.',
+'emailwiki_userfooter' => 'Šī e-mail waīstis pastāi tengīntan stesmu $2 pra $1 tērpawintei funkciōnin "Tenginnais e-mail waīstin šismu tērpautajan" en {{SITENAME}}.',
 
 # Watchlist
 'watchlist' => 'Listi stēisan nadirītan',
@@ -1582,7 +1582,7 @@ E-mail adressi kawīdan tū enpeisāi en [[Special:Preferences|twajjans pirminis
 'nowatchlist' => 'Twajā listi stēisan nadirītan pāusan ast pāustan.',
 'watchlistanontext' => 'Madli $1, kāi widālai elamēntans stesse listin stēisan nadirītan.',
 'watchnologin' => 'Ni assei engūbun',
-'watchnologintext' => 'Tū turri būtwei[[Special:UserLogin|engūbun]], kāi kitawīdintun listin stēisan nadirītan.',
+'watchnologintext' => 'Tū turri būtwei[[Special:wiki_userLogin|engūbun]], kāi kitawīdintun listin stēisan nadirītan.',
 'addedwatchtext' => "Pāusan \"[[:\$1]]\" pastāi preidātan prei twajjan [[Special:Watchlist|nadirītan listin]].
 Eraīna šisse pāusas ēnturas kitawīdinsna anga diskusiōnis pāusas sēitan sen tennan kitawīdinsna wīrst būwusi enpeisātan en šissei listin. Pāusas tītels wīrst būwuns '''pastarīntan''' en [[Special:RecentChanges|listei stēisan panzdauman kitawīdinsnan]], kāi lānginlai ti endirītun kitawīdinsnan.",
 'removedwatchtext' => 'Pāusan "[[:$1]]" pastāi āupausintan iz [[Special:Watchlist|twajjan listin stēisan āupausintan]].',
@@ -1657,7 +1657,7 @@ Tenesse āupausinsenins mazīlai dīlintun ārdisenins en dīlasnan stesse {{SIT
 'rollbackfailed' => 'Kitawīdisnas etwārtai wartīnsna ni izpalla',
 'cantrollback' => 'Ni mazīngi etwārtai wartīntun redigīsenin, beggi ast tēr aīna šisse pāusas wersiōni.',
 'editcomment' => "Redigīsenes kumentārs: \"''\$1''\".",
-'revertpage' => 'Etwārtai wartinnā di redigīsenins stesse tērpautajan [[Special:Contributions/$2|$2]] ([[User talk:$2|diskusiōni]]). Etwārtai wartīntas wersiōnis autōrs ast [[User:$1|$1]]',
+'revertpage' => 'Etwārtai wartinnā di redigīsenins stesse tērpautajan [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|diskusiōni]]). Etwārtai wartīntas wersiōnis autōrs ast [[wiki_user:$1|$1]]',
 'rollback-success' => 'Naikinnā di redigīsenins stesse(s) $1.
 Etwārtai wartinnā di panzdauman wersiōnin, kawīdse autōrs ast $2.',
 
@@ -1794,9 +1794,9 @@ $1',
 'sp-contributions-deleted' => 'aupausintā tērpautajas ēndija',
 'sp-contributions-logs' => 'registerei',
 'sp-contributions-talk' => 'diskusiōni',
-'sp-contributions-userrights' => 'Tērpautajan tikrōmin perwaldisnā',
+'sp-contributions-wiki_userrights' => 'Tērpautajan tikrōmin perwaldisnā',
 'sp-contributions-search' => 'Laukīs endījan',
-'sp-contributions-username' => 'IP adressi anga tērpautajas pabilisnā:',
+'sp-contributions-wiki_username' => 'IP adressi anga tērpautajas pabilisnā:',
 'sp-contributions-submit' => 'Laukīs',
 
 # What links here
@@ -1825,7 +1825,7 @@ $1',
 'blockiptext' => 'Tērpaus zemmaisin fōrmularan, kāi blōkilai enpeisāsenes mazīngiskwan iz kōnkretai IP adressin anga kōnkretasmu tērpautajan.
 Blōkitun prawerru tēr kāi ebsergītun ezze wandalisman be preitarīngi sen [[{{MediaWiki:Policy-url}}|pōlitikin]].
 Padāis brewīnslin zemmais (p. endījanei tītelins stēisan wandalizītan pāusan).',
-'ipadressorusername' => 'IP adressi anga tērpautajas pabilisnā:',
+'ipadressorwiki_username' => 'IP adressi anga tērpautajas pabilisnā:',
 'ipbexpiry' => 'Blōkisenis wanginna:',
 'ipbreason' => 'Brewīnsli:',
 'ipbreasonotherlist' => 'Kitā brewīnsli',
@@ -1838,7 +1838,7 @@ Padāis brewīnslin zemmais (p. endījanei tītelins stēisan wandalizītan pāu
 'ipbotheroption' => 'kits',
 'ipbotherreason' => 'Kitā/papilnimina brewīnsli:',
 'ipbhidename' => 'Kliptinais tērpautajas pabilīsnan en redigīsenimans be listimans',
-'ipbwatchuser' => 'Nadirēis šisse tērpautajas persōniskan pāusan be diskusiōnis pāusan',
+'ipbwatchwiki_user' => 'Nadirēis šisse tērpautajas persōniskan pāusan be diskusiōnis pāusan',
 'ipb-change-block' => 'Kitawīdinais blōkisenes ensadīnsenins',
 'badipaddress' => 'Nitikrōmiska IP adressi',
 'blockipsuccesssub' => 'Blōkisenis izpalla',
@@ -1852,7 +1852,7 @@ Jaīs en [[Special:BlockList|listin stēisan IP adressin]] kai widālai blōkise
 'unblockip' => 'Etblōkis tērpautajan',
 'unblockiptext' => 'Tērpaus zemmaisin fōrmularan, kāi etwārtai wartīnlai redigīsnas mazīngiskwan iz ānkstais blōkitan IP adressin anga blōkitasmu tērpautajan.',
 'ipusubmit' => 'Etblōkis šan adressin',
-'unblocked' => '[[User:$1|$1]] pastāi etblōkitan',
+'unblocked' => '[[wiki_user:$1|$1]] pastāi etblōkitan',
 'unblocked-id' => 'Blōkisenis $1 pastāi izklaūtan',
 'ipblocklist' => 'Listi stēisan blōkitan IP adressin be tērpautajan pabilīsnan',
 'ipblocklist-legend' => 'Aupallais blōkitan tērpautajan',
@@ -1865,14 +1865,14 @@ Jaīs en [[Special:BlockList|listin stēisan IP adressin]] kai widālai blōkise
 'noautoblockblock' => 'autōmatiska blōkisna izklaūtan',
 'createaccountblock' => 'rekkenas teīksnas blōkisenis',
 'emailblock' => 'e-mail blōkitan',
-'blocklist-nousertalk' => 'ni mazzi redigītun swajjans diskusiōnis pāusans',
+'blocklist-nowiki_usertalk' => 'ni mazzi redigītun swajjans diskusiōnis pāusans',
 'ipblocklist-empty' => 'Blōkisenin listi ast pāustan',
 'ipblocklist-no-results' => 'Padatā IP adressi anga tērpautajs ni ast blōkitan.',
 'blocklink' => 'blōkis',
 'unblocklink' => 'etblōkis',
 'change-blocklink' => 'kitawīdinais blōkisenin',
 'contribslink' => 'endīja',
-'autoblocker' => 'Assei autōmatiskai blōkitan, beggi ši IP adressi bēi panzdaumai tērpautan pra "[[User:$1|$1]]".
+'autoblocker' => 'Assei autōmatiskai blōkitan, beggi ši IP adressi bēi panzdaumai tērpautan pra "[[wiki_user:$1|$1]]".
 Tērpautajas $1 blōkisenes brewīnsli ast: "$2"',
 'blocklogpage' => 'Blōkisnas registerin',
 'blocklogentry' => 'ast blōkiwuns(si) [[$1]] sen blōkisnas kērdan: $2 $3',
@@ -1885,7 +1885,7 @@ Jaīs en [[Special:BlockList|IP blōkisenin listin]] ki widālai wissans tēnti 
 'block-log-flags-nocreate' => 'rekkenas teiksnā izklaūtan',
 'block-log-flags-noautoblock' => 'autōmatiska blōkisna izklaūtan',
 'block-log-flags-noemail' => 'e-mail blōkitan',
-'block-log-flags-nousertalk' => 'ni mazzi redigītun swajjan diskusiōnis pāusan',
+'block-log-flags-nowiki_usertalk' => 'ni mazzi redigītun swajjan diskusiōnis pāusan',
 'block-log-flags-angry-autoblock' => 'paplatintā autōmatiska blōkisna enklaūtan',
 'block-log-flags-hiddenname' => 'tērpautajas pabilisnā ast kliptintan',
 'range_block_disabled' => 'Perwaldītajas mazīngisku, kāi blōkitun ebīmtans stēisan IP adressin pastāi izklaūtan.',
@@ -1948,11 +1948,11 @@ madli seīs aušaudīwingi, kāi tū izpresta rīplins pirzdau tū ēilai tālis
 En kitēimans prēipalins tū mazzi praskajjintun anga senlaītun pāusan ter rānkiskai.',
 'movearticle' => 'Praskajjinais pāusan:',
 'movenologin' => 'Ni assei engūbun',
-'movenologintext' => 'Tu turri būtwei registrītan be [[Special:UserLogin|engūbun]] kāi praskajjinlai pāusan.',
+'movenologintext' => 'Tu turri būtwei registrītan be [[Special:wiki_userLogin|engūbun]] kāi praskajjinlai pāusan.',
 'movenotallowed' => 'Tū ni assei enwarīntan, kāi praskajjinlai pāusans.',
 'movenotallowedfile' => 'Tū ni assei enwarīntan, kāi praskajjinlai zūrbrukins.',
-'cant-move-user-page' => 'Tū ni assei enwarīntan kāi praskajjinlai tērpautajan pāusans (izimāntei pōpausans).',
-'cant-move-to-user-page' => 'Tū ni assei enwarīntan, kāi praskajjinlai pāusan en tērpautajas pāusan (izimāntei tērpautajas pōpausan).',
+'cant-move-wiki_user-page' => 'Tū ni assei enwarīntan kāi praskajjinlai tērpautajan pāusans (izimāntei pōpausans).',
+'cant-move-to-wiki_user-page' => 'Tū ni assei enwarīntan, kāi praskajjinlai pāusan en tērpautajas pāusan (izimāntei tērpautajas pōpausan).',
 'newtitle' => 'Nāuns tītels:',
 'move-watch' => 'Nadirēis šin pāusan',
 'movepagebtn' => 'Praskajjinais pāusan',
@@ -2088,8 +2088,8 @@ Madli bandais etkūmps.',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|wersiōni|wersiōnis}} iz $2',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Majjan persōniskan pāusan',
-'tooltip-pt-anonuserpage' => 'Tērpautajas pāusan per IP adressin, iz kawīdan tū redigijja',
+'tooltip-pt-wiki_userpage' => 'Majjan persōniskan pāusan',
+'tooltip-pt-anonwiki_userpage' => 'Tērpautajas pāusan per IP adressin, iz kawīdan tū redigijja',
 'tooltip-pt-mytalk' => 'Twajjan diskusiōnis pāusan',
 'tooltip-pt-anontalk' => 'Diskusiōni ezze redigīsnan iz šan IP adressin',
 'tooltip-pt-preferences' => 'Majjas pirminiskwas',
@@ -2127,13 +2127,13 @@ Pirzdau enpeisāsnan, tērpaus pirmādiras knuppan.',
 'tooltip-feed-rss' => 'RSS aps per šin pāusan',
 'tooltip-feed-atom' => 'Atom aps per šin pāusan',
 'tooltip-t-contributions' => 'Wīdais šisse tērpautajas ēndijas listin',
-'tooltip-t-emailuser' => 'Tenginnais e-mail šismu tērpautajan',
+'tooltip-t-emailwiki_user' => 'Tenginnais e-mail šismu tērpautajan',
 'tooltip-t-upload' => 'Enkraūneis zūrbrukins',
 'tooltip-t-specialpages' => 'Listi wisēisan speciālin pāusan',
 'tooltip-t-print' => 'Drukkaumina pāusas wersiōni',
 'tooltip-t-permalink' => 'Ainatīngis autengīnsenis prei šin pāusas wersiōnin',
 'tooltip-ca-nstab-main' => 'Wīdais pāusas ēnturan',
-'tooltip-ca-nstab-user' => 'Wīdais tērpautajas persōniskan pāusan',
+'tooltip-ca-nstab-wiki_user' => 'Wīdais tērpautajas persōniskan pāusan',
 'tooltip-ca-nstab-media' => 'Wīdais zūrbrukes pāusan',
 'tooltip-ca-nstab-special' => 'Sta ast speciālin pāusan. Tū ni mazzi redigītun din.',
 'tooltip-ca-nstab-project' => 'Wīdais prōjaktas pāusan',
@@ -2159,13 +2159,13 @@ Sta preiwērpja enpeisātun brewīnslin en kitawīdisnan ebpeisāseņu.',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|Anōnims tērpautajs|Anōnimai tērpautajai}} stesse {{SITENAME}}',
-'siteuser' => 'Tērpautajs stesse {{SITENAME}} - $1',
-'anonuser' => '{{SITENAME}} anōnims tērpautajs $1',
+'sitewiki_user' => 'Tērpautajs stesse {{SITENAME}} - $1',
+'anonwiki_user' => '{{SITENAME}} anōnims tērpautajs $1',
 'lastmodifiedatby' => 'Šin pāusan bēi panzdaumai kitawīdintan en $2, $1, pra $3.',
 'othercontribs' => 'Kitāi autōrai: $1.',
 'others' => 'kitāi',
-'siteusers' => '$2 {{PLURAL:$2|tērpautajs|tērpautajai}} stesse {{SITENAME}} $1',
-'anonusers' => '{{SITENAME}} {{PLURAL:$2|anōnims tērpautajs|anōnimai tērpautajai}} $1',
+'sitewiki_users' => '$2 {{PLURAL:$2|tērpautajs|tērpautajai}} stesse {{SITENAME}} $1',
+'anonwiki_users' => '{{SITENAME}} {{PLURAL:$2|anōnims tērpautajs|anōnimai tērpautajai}} $1',
 'creditspage' => 'Autōrai',
 'nocredits' => 'Ni ast infōrmaciōni ezze šisse pāusas autōrans.',
 
@@ -2174,7 +2174,7 @@ Sta preiwērpja enpeisātun brewīnslin en kitawīdisnan ebpeisāseņu.',
 'spamprotectiontext' => 'Pāusan, kawīdan tū kwaitēi enpeisātun pastāi blōkitan pra spammas filterin.
 Sta ast druwīminai dīlintan pra autengīnsenin prēi izwinaīnan pāusan iz kīrsnan listin.',
 'spamprotectionmatch' => 'Ripīnts teksts ast enskattinuns spammas filterin: $1',
-'spambot_username' => 'MediaWiki - spammas skistīnsna',
+'spambot_wiki_username' => 'MediaWiki - spammas skistīnsna',
 'spam_reverting' => 'Etwārtai wartīnsna stesses panzdauman wersiōnin, ni turrintes ēn sin autengīnsenins prei $1',
 'spam_blanking' => 'Wissas wesiōnis turēi en sin autengīnsenins prei $1. Pāusas skistīnsna.',
 
@@ -2298,7 +2298,7 @@ Kitāi wīrst būwusis kliptan auprestaminai.
 'exif-compressedbitsperpixel' => 'Bildes kōmpresiōnis wīds',
 'exif-pixelydimension' => 'Tikrōmiskan bildes plattu',
 'exif-pixelxdimension' => 'Tikrōmiskan bildes aūktan',
-'exif-usercomment' => 'Tērpautajas kumentārai',
+'exif-wiki_usercomment' => 'Tērpautajas kumentārai',
 'exif-relatedsoundfile' => 'Sēitan audiō zūrbrukis',
 'exif-datetimeoriginal' => 'Ōriginālas teīksnas dātan be kerdā',
 'exif-datetimedigitized' => 'Digitālas dātas teikāsnas dātan be kerdā',
@@ -2528,7 +2528,7 @@ Pustis sistēman ast etwārtai wartīwus pawakīsenin: $1',
 Kōdan mazzi būtwei jāu ni aktuālin.',
 'confirmemail_needlogin' => 'Tu turri $1 kāi padrūktinlai swajjan e-mail adressin.',
 'confirmemail_success' => 'Twajā e-mail adressi pastāi padrūktintan.
-Tu mazzi jāu [[Special:UserLogin|enēitwei]] be tuldītun si sen wiki.',
+Tu mazzi jāu [[Special:wiki_userLogin|enēitwei]] be tuldītun si sen wiki.',
 'confirmemail_loggedin' => 'Twajā e-mail adressi pastāi padrūktintan.',
 'confirmemail_error' => 'Tikka blāndas prei twāise padrūktinsnas enpeisāsnan.',
 'confirmemail_subject' => '{{SITENAME}} e-mail adressis',
@@ -2542,7 +2542,7 @@ Tu mazzi jāu [[Special:UserLogin|enēitwei]] be tuldītun si sen wiki.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Ēmpirsergīsenis''': Šin pāusan pastāi āupausintan panzdau tū pagaūwa redigītun!",
-'confirmrecreate' => 'Tērpautajs [[User:$1|$1]] ([[User talk:$1|diskusiōni]]) ast aupausīnuns(si) šin pāusan, enkērdai tū pagaūwa redigītun din sen brewīnslin:
+'confirmrecreate' => 'Tērpautajs [[wiki_user:$1|$1]] ([[wiki_user talk:$1|diskusiōni]]) ast aupausīnuns(si) šin pāusan, enkērdai tū pagaūwa redigītun din sen brewīnslin:
 :  "$2"
 Madli padrūktinais, anga tū perarwi kwaitēi etteīktun šin pāusan.',
 'recreate' => 'Etteīkeis',
@@ -2661,7 +2661,7 @@ Enpeisāis zūrbrukes pabilīsnan šlāit "{{ns:file}}:" prefiksan.',
 'specialpages-group-login' => 'Enēis / registrīs si',
 'specialpages-group-changes' => 'Panzdaumas kitawīdinsnas be registerei',
 'specialpages-group-media' => 'Zūrbrukin repōrtai be enkraūsenei',
-'specialpages-group-users' => 'Tērpautajai be enwarīnsenei',
+'specialpages-group-wiki_users' => 'Tērpautajai be enwarīnsenei',
 'specialpages-group-highuse' => 'Deznimai tērpautas listis',
 'specialpages-group-pages' => 'Pāusan listis',
 'specialpages-group-pagetools' => 'Pāusas pagabtis',
@@ -2716,6 +2716,6 @@ Enpeisāis zūrbrukes pabilīsnan šlāit "{{ns:file}}:" prefiksan.',
 # New logging system
 'revdelete-restricted' => 'ensadinnais arāikinsenins per perwaldītajans',
 'revdelete-unrestricted' => 'āupausinais arāikinsenins per perwaldītajans',
-'newuserlog-byemail' => 'kliptaswīrds tengīntan pra e-mail',
+'newwiki_userlog-byemail' => 'kliptaswīrds tengīntan pra e-mail',
 
 );

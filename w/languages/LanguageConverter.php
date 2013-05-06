@@ -65,7 +65,7 @@ class LanguageConverter {
 	var $mUcfirst = false;
 	var $mConvRuleTitle = false;
 	var $mURLVariant;
-	var $mUserVariant;
+	var $mwiki_userVariant;
 	var $mHeaderVariant;
 	var $mMaxDepth = 10;
 	var $mVarSeparatorPattern;
@@ -158,12 +158,12 @@ class LanguageConverter {
 	 * @return String: the preferred language code
 	 */
 	public function getPreferredVariant() {
-		global $wgDefaultLanguageVariant, $wgUser;
+		global $wgDefaultLanguageVariant, $wgwiki_user;
 
 		$req = $this->getURLVariant();
 
-		if ( $wgUser->isLoggedIn() && !$req ) {
-			$req = $this->getUserVariant();
+		if ( $wgwiki_user->isLoggedIn() && !$req ) {
+			$req = $this->getwiki_userVariant();
 		} elseif ( !$req ) {
 			$req = $this->getHeaderVariant();
 		}
@@ -184,7 +184,7 @@ class LanguageConverter {
 
 	/**
 	 * Get default variant.
-	 * This function would not be affected by user's settings or headers
+	 * This function would not be affected by wiki_user's settings or headers
 	 * @return String: the default variant code
 	 */
 	public function getDefaultVariant() {
@@ -237,32 +237,32 @@ class LanguageConverter {
 	}
 
 	/**
-	 * Determine if the user has a variant set.
+	 * Determine if the wiki_user has a variant set.
 	 *
 	 * @return Mixed: variant if one found, false otherwise.
 	 */
-	protected function getUserVariant() {
-		global $wgUser;
+	protected function getwiki_userVariant() {
+		global $wgwiki_user;
 
 		// memoizing this function wreaks havoc on parserTest.php
 		/*
-		if ( $this->mUserVariant ) {
-			return $this->mUserVariant;
+		if ( $this->mwiki_userVariant ) {
+			return $this->mwiki_userVariant;
 		}
 		*/
 
-		// Get language variant preference from logged in users
+		// Get language variant preference from logged in wiki_users
 		// Don't call this on stub objects because that causes infinite
 		// recursion during initialisation
-		if ( $wgUser->isLoggedIn() )  {
-			$ret = $wgUser->getOption( 'variant' );
+		if ( $wgwiki_user->isLoggedIn() )  {
+			$ret = $wgwiki_user->getOption( 'variant' );
 		} else {
-			// figure out user lang without constructing wgLang to avoid
+			// figure out wiki_user lang without constructing wgLang to avoid
 			// infinite recursion
-			$ret = $wgUser->getOption( 'language' );
+			$ret = $wgwiki_user->getOption( 'language' );
 		}
 
-		return $this->mUserVariant = $this->validateVariant( $ret );
+		return $this->mwiki_userVariant = $this->validateVariant( $ret );
 	}
 
 	/**
@@ -737,7 +737,7 @@ class LanguageConverter {
 		}
 
 		global $wgDisableLangConversion, $wgDisableTitleConversion, $wgRequest,
-			$wgUser;
+			$wgwiki_user;
 		$isredir = $wgRequest->getText( 'redirect', 'yes' );
 		$action = $wgRequest->getText( 'action' );
 		$linkconvert = $wgRequest->getText( 'linkconvert', 'yes' );
@@ -753,7 +753,7 @@ class LanguageConverter {
 				 || $action == 'edit'
 				 || $action == 'submit'
 				 || $linkconvert == 'no'
-				 || $wgUser->getOption( 'noconvertlink' ) == 1 ) ) ) {
+				 || $wgwiki_user->getOption( 'noconvertlink' ) == 1 ) ) ) {
 			return;
 		}
 
@@ -1036,17 +1036,17 @@ class LanguageConverter {
 	 * @private
 	 *
 	 * @param $article Article object
-	 * @param $user Object: User object for the current user
+	 * @param $wiki_user Object: wiki_user object for the current wiki_user
 	 * @param $text String: article text (?)
 	 * @param $summary String: edit summary of the edit
 	 * @param $isMinor Boolean: was the edit marked as minor?
-	 * @param $isWatch Boolean: did the user watch this page or not?
+	 * @param $isWatch Boolean: did the wiki_user watch this page or not?
 	 * @param $section
 	 * @param $flags int Bitfield
 	 * @param $revision Object: new Revision object or null
 	 * @return Boolean: true
 	 */
-	function OnArticleSaveComplete( $article, $user, $text, $summary, $isMinor,
+	function OnArticleSaveComplete( $article, $wiki_user, $text, $summary, $isMinor,
 			$isWatch, $section, $flags, $revision ) {
 		$titleobj = $article->getTitle();
 		if ( $titleobj->getNamespace() == NS_MEDIAWIKI ) {

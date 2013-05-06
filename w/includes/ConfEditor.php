@@ -856,7 +856,7 @@ class ConfEditor {
 	}
 
 	/**
-	 * Returns true if the user input path is valid.
+	 * Returns true if the wiki_user input path is valid.
 	 * This exists to allow "/" and "@" to be reserved for string path keys
 	 * @return bool
 	 */

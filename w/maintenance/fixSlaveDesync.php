@@ -64,10 +64,10 @@ class FixSlaveDesync extends Maintenance {
 	private function findPageLatestCorruption() {
 		$desync = array();
 		$n = 0;
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 		$masterIDs = array();
-		$res = $dbw->select( 'page', array( 'page_id', 'page_latest' ), array( 'page_id<6054123' ), __METHOD__ );
-		$this->output( "Number of pages: " . $dbw->numRows( $res ) . "\n" );
+		$res = w->select( 'page', array( 'page_id', 'page_latest' ), array( 'page_id<6054123' ), __METHOD__ );
+		$this->output( "Number of pages: " . w->numRows( $res ) . "\n" );
 		foreach ( $res as $row ) {
 			$masterIDs[$row->page_id] = $row->page_latest;
 			if ( !( ++$n % 10000 ) ) {
@@ -77,8 +77,8 @@ class FixSlaveDesync extends Maintenance {
 		$this->output( "\n" );
 
 		foreach ( $this->slaveIndexes as $i ) {
-			$db = wfGetDB( $i );
-			$res = $db->select( 'page', array( 'page_id', 'page_latest' ), array( 'page_id<6054123' ), __METHOD__ );
+			 = wfGetDB( $i );
+			$res = ->select( 'page', array( 'page_id', 'page_latest' ), array( 'page_id<6054123' ), __METHOD__ );
 			foreach ( $res as $row ) {
 				if ( isset( $masterIDs[$row->page_id] ) && $masterIDs[$row->page_id] != $row->page_latest ) {
 					$desync[$row->page_id] = true;
@@ -96,23 +96,23 @@ class FixSlaveDesync extends Maintenance {
 	 */
 	private function desyncFixPage( $pageID ) {
 		# Check for a corrupted page_latest
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin( __METHOD__ );
-		$realLatest = $dbw->selectField( 'page', 'page_latest', array( 'page_id' => $pageID ),
+		w = wfGetDB( DB_MASTER );
+		w->begin( __METHOD__ );
+		$realLatest = w->selectField( 'page', 'page_latest', array( 'page_id' => $pageID ),
 			__METHOD__, 'FOR UPDATE' );
-		# list( $masterFile, $masterPos ) = $dbw->getMasterPos();
+		# list( $masterFile, $masterPos ) = w->getMasterPos();
 		$found = false;
 		foreach ( $this->slaveIndexes as $i ) {
-			$db = wfGetDB( $i );
+			 = wfGetDB( $i );
 			/*
-			if ( !$db->masterPosWait( $masterFile, $masterPos, 10 ) ) {
+			if ( !->masterPosWait( $masterFile, $masterPos, 10 ) ) {
 				   $this->output( "Slave is too lagged, aborting\n" );
-				   $dbw->commit( __METHOD__ );
+				   w->commit( __METHOD__ );
 				   sleep(10);
 				   return;
 			}*/
-			$latest = $db->selectField( 'page', 'page_latest', array( 'page_id' => $pageID ), __METHOD__ );
-			$max = $db->selectField( 'revision', 'MAX(rev_id)', false, __METHOD__ );
+			$latest = ->selectField( 'page', 'page_latest', array( 'page_id' => $pageID ), __METHOD__ );
+			$max = ->selectField( 'revision', 'MAX(rev_id)', false, __METHOD__ );
 			if ( $latest != $realLatest && $realLatest < $max ) {
 				$this->output( "page_latest corrupted in page $pageID, server $i\n" );
 				$found = true;
@@ -121,19 +121,19 @@ class FixSlaveDesync extends Maintenance {
 		}
 		if ( !$found ) {
 			$this->output( "page_id $pageID seems fine\n" );
-			$dbw->commit( __METHOD__ );
+			w->commit( __METHOD__ );
 			return;
 		}
 
 		# Find the missing revisions
-		$res = $dbw->select( 'revision', array( 'rev_id' ), array( 'rev_page' => $pageID ),
+		$res = w->select( 'revision', array( 'rev_id' ), array( 'rev_page' => $pageID ),
 			__METHOD__, 'FOR UPDATE' );
 		$masterIDs = array();
 		foreach ( $res as $row ) {
 			$masterIDs[] = $row->rev_id;
 		}
 
-		$res = $dbw->select( 'revision', array( 'rev_id' ), array( 'rev_page' => $pageID ), __METHOD__ );
+		$res = w->select( 'revision', array( 'rev_id' ), array( 'rev_page' => $pageID ), __METHOD__ );
 		$slaveIDs = array();
 		foreach ( $res as $row ) {
 			$slaveIDs[] = $row->rev_id;
@@ -142,7 +142,7 @@ class FixSlaveDesync extends Maintenance {
 			$missingIDs = array_diff( $slaveIDs, $masterIDs );
 			if ( count( $missingIDs ) ) {
 				$this->output( "Found " . count( $missingIDs ) . " lost in master, copying from slave... " );
-				$dbFrom = $dbw;
+				From = w;
 				$found = true;
 				$toMaster = true;
 			} else {
@@ -152,7 +152,7 @@ class FixSlaveDesync extends Maintenance {
 			$missingIDs = array_diff( $masterIDs, $slaveIDs );
 			if ( count( $missingIDs ) ) {
 				$this->output( "Found " . count( $missingIDs ) . " missing revision(s), copying from master... " );
-				$dbFrom = $dbw;
+				From = w;
 				$found = true;
 				$toMaster = false;
 			} else {
@@ -164,32 +164,32 @@ class FixSlaveDesync extends Maintenance {
 			foreach ( $missingIDs as $rid ) {
 				$this->output( "$rid " );
 				# Revision
-				$row = $dbFrom->selectRow( 'revision', '*', array( 'rev_id' => $rid ), __METHOD__ );
+				$row = From->selectRow( 'revision', '*', array( 'rev_id' => $rid ), __METHOD__ );
 				if ( $toMaster ) {
-					$id = $dbw->selectField( 'revision', 'rev_id', array( 'rev_id' => $rid ),
+					$id = w->selectField( 'revision', 'rev_id', array( 'rev_id' => $rid ),
 						__METHOD__, 'FOR UPDATE' );
 					if ( $id ) {
 						$this->output( "Revision already exists\n" );
 						$found = false;
 						break;
 					} else {
-						$dbw->insert( 'revision', get_object_vars( $row ), __METHOD__, 'IGNORE' );
+						w->insert( 'revision', get_object_vars( $row ), __METHOD__, 'IGNORE' );
 					}
 				} else {
 					foreach ( $this->slaveIndexes as $i ) {
-						$db = wfGetDB( $i );
-						$db->insert( 'revision', get_object_vars( $row ), __METHOD__, 'IGNORE' );
+						 = wfGetDB( $i );
+						->insert( 'revision', get_object_vars( $row ), __METHOD__, 'IGNORE' );
 					}
 				}
 
 				# Text
-				$row = $dbFrom->selectRow( 'text', '*', array( 'old_id' => $row->rev_text_id ), __METHOD__ );
+				$row = From->selectRow( 'text', '*', array( 'old_id' => $row->rev_text_id ), __METHOD__ );
 				if ( $toMaster ) {
-					$dbw->insert( 'text', get_object_vars( $row ), __METHOD__, 'IGNORE' );
+					w->insert( 'text', get_object_vars( $row ), __METHOD__, 'IGNORE' );
 				} else {
 					foreach ( $this->slaveIndexes as $i ) {
-						$db = wfGetDB( $i );
-						$db->insert( 'text', get_object_vars( $row ), __METHOD__, 'IGNORE' );
+						 = wfGetDB( $i );
+						->insert( 'text', get_object_vars( $row ), __METHOD__, 'IGNORE' );
 					}
 				}
 			}
@@ -199,16 +199,16 @@ class FixSlaveDesync extends Maintenance {
 		if ( $found ) {
 			$this->output( "Fixing page_latest... " );
 			if ( $toMaster ) {
-				# $dbw->update( 'page', array( 'page_latest' => $realLatest ), array( 'page_id' => $pageID ), __METHOD__ );
+				# w->update( 'page', array( 'page_latest' => $realLatest ), array( 'page_id' => $pageID ), __METHOD__ );
 			} else {
 				foreach ( $this->slaveIndexes as $i ) {
-					$db = wfGetDB( $i );
-					$db->update( 'page', array( 'page_latest' => $realLatest ), array( 'page_id' => $pageID ), __METHOD__ );
+					 = wfGetDB( $i );
+					->update( 'page', array( 'page_latest' => $realLatest ), array( 'page_id' => $pageID ), __METHOD__ );
 				}
 			}
 			$this->output( "done\n" );
 		}
-		$dbw->commit( __METHOD__ );
+		w->commit( __METHOD__ );
 	}
 }
 

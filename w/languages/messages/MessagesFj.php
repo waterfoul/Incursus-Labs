@@ -85,7 +85,7 @@ $messages = array(
 'jumptonavigation' => 'Vakatasosoko',
 'jumptosearch' => 'Vaqaqara',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Tukutuku kuruvaki',
 'currentevents-url' => 'Project:Tukutuku kuruvaki',
 'edithelp' => 'Veivukei',
@@ -105,9 +105,9 @@ $messages = array(
 'yourpasswordagain' => 'Vola tale na Yaca vuni',
 'remembermypassword' => 'Nanuma na yacaqu ena komipiuta oqo (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'Curu mai',
-'userlogin' => 'Curu mai / Dolava nomu Akaude',
+'wiki_userlogin' => 'Curu mai / Dolava nomu Akaude',
 'logout' => 'Curu yani',
-'userlogout' => 'Curu yani',
+'wiki_userlogout' => 'Curu yani',
 'nologinlink' => 'Dolava nomu Akaude',
 'createaccount' => 'Dolava nomu Akaude',
 'gotaccountlink' => 'Curu mai',
@@ -127,7 +127,7 @@ $messages = array(
 'mypreferences' => 'Ulutaga taleitaki',
 'searchresultshead' => 'Vaqaqara',
 'youremail' => 'I vola livaliva *:',
-'username' => 'Yaca vakayagataki:',
+'wiki_username' => 'Yaca vakayagataki:',
 'email' => 'I vola livaliva',
 
 # Recent changes
@@ -152,14 +152,14 @@ $messages = array(
 'brokenredirects-delete' => 'Vakarusa',
 
 # Miscellaneous special pages
-'newpages-username' => 'Yaca vakayagataki:',
+'newpages-wiki_username' => 'Yaca vakayagataki:',
 'move' => 'Toso',
 'movethispage' => 'Toso na tabana oqo',
 
 # Special:AllPages
 'allpagessubmit' => 'Lako',
 
-# E-mail user
+# E-mail wiki_user
 'defemailsubject' => '{{SITENAME}} I vola livaliva',
 
 # Watchlist

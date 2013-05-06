@@ -43,7 +43,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Tsenya mothalafase go dihlomaganyo:',
 'tog-hideminor' => 'Fihla diphetogo tše nnyenyane',
 'tog-showtoolbar' => "Bontšha ''toolbar'' yago fetola (JavaScript)",
@@ -61,7 +61,7 @@ $messages = array(
 'tog-previewonfirst' => 'Bontšha Ponopeleka phetogo ya pele',
 'tog-nocache' => "Thibela go tsenya matlakala go segakolodi (''cache'')",
 'tog-enotifwatchlistpages' => 'Nthomele molaetša ge letlaka leo ke le tlhapetšego le eba le diphetogo',
-'tog-enotifusertalkpages' => 'Nromele molaetša ge letlakala la Dipoledišano laka le fetoga',
+'tog-enotifwiki_usertalkpages' => 'Nromele molaetša ge letlakala la Dipoledišano laka le fetoga',
 'tog-enotifminoredits' => 'Ethomele e-mail ge goba le diphetogo tše nnyenyane go matlakala',
 'tog-enotifrevealaddr' => 'Bonagatša email atrese go temošo tša poso',
 'tog-shownumberswatching' => 'Laetša palo bašomiši bao ba tlhapetšego',
@@ -207,7 +207,7 @@ $messages = array(
 'talk' => 'Poledišano',
 'views' => 'Dinyakorêtšo',
 'toolbox' => 'Lepokisi la dithulusu',
-'userpage' => 'Nyakorela letlakala la mošomiši',
+'wiki_userpage' => 'Nyakorela letlakala la mošomiši',
 'projectpage' => 'Nyakoretša letlakala la tirotherwa',
 'imagepage' => "Nyakoretša letlakala la ''file''",
 'mediawikipage' => 'Nyakoretša letlakala la melaetša',
@@ -226,7 +226,7 @@ $messages = array(
 'jumptosearch' => 'fetleka',
 'pool-errorunknown' => 'Phošo yago setsebege',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Mabapi le {{SITENAME}}',
 'aboutpage' => 'Project:Mabapi',
 'copyright' => 'Mateng a hwetšagala tlase ga $1.',
@@ -279,7 +279,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Letlakala',
-'nstab-user' => 'Letlakala la mošomiši',
+'nstab-wiki_user' => 'Letlakala la mošomiši',
 'nstab-special' => 'Letlakala le le kgethegilego',
 'nstab-project' => 'Letlakala la tirotherwa',
 'nstab-image' => 'Faele',
@@ -302,7 +302,7 @@ Se, gantši se hlolwa ke ge o latela hlomanyo goba history ya kgale goya letlaka
 
 
 Gaeba lebaka e se leo, go ka be go na le tšhikidi go "software".
-Bega se go  [[Special:ListUsers/sysop|administrator]], o fana ka URL.',
+Bega se go  [[Special:Listwiki_users/sysop|administrator]], o fana ka URL.',
 'missingarticle-rev' => '(Thumeletšo#: $1)',
 'internalerror' => 'Phošo ya ka gare',
 'internalerror_info' => 'Phošo ya ka gare :$1',
@@ -329,31 +329,31 @@ Tšhupaleloko (''account'') ya gago e tlhodilwe. O seke wa lebala go fetola [[Sp
 'login' => 'Tsena',
 'nav-login-createaccount' => "Tsena / Tlhola tšhupaleloko (''account'')",
 'loginprompt' => "O swanela ke go dumella ''cookies'' go ''browser'' go tsena go {{SITENAME}}.",
-'userlogin' => "Tsena / tlhola tšhupaleloko (''account'')",
+'wiki_userlogin' => "Tsena / tlhola tšhupaleloko (''account'')",
 'logout' => 'Etšwa/Tswalela',
-'userlogout' => 'Etšwa/Tswalela',
+'wiki_userlogout' => 'Etšwa/Tswalela',
 'notloggedin' => 'Ga wa tsena',
 'nologin' => "A  o nale sedi ya go tsena? '''$1'''.",
 'nologinlink' => "Bula tšhupaleloko (''account'')",
 'createaccount' => 'Bula tšhupaleloko',
 'gotaccount' => "O šetše o nale tšhupaleloko? '''$1'''.",
 'gotaccountlink' => 'Tsena',
-'userlogin-resetlink' => 'O lebetše dintlha tšago tsena?',
+'wiki_userlogin-resetlink' => 'O lebetše dintlha tšago tsena?',
 'createaccountmail' => 'ka e-mail',
 'createaccountreason' => 'Lebaka:',
 'badretype' => 'Ditlhaka-tša-siphiri tše o di šomišitšego ga di swane.',
 'noname' => 'Gawa fana ka leina la mošomiši la go loka.',
 'loginsuccesstitle' => 'O tsene ka katlego',
 'loginsuccess' => "'''Bjale o tsene go {{SITENAME}} bjalo ka \"\$1\".'''",
-'nosuchuser' => 'Ga gona mošomiši wa leina la "$1".
+'nosuchwiki_user' => 'Ga gona mošomiši wa leina la "$1".
 Maina a huduetša ke ditlhaka.
-Lebele mopeleto wa gago goba [[Special:UserLogin/signup|o tlhome mošomiši yo mophsa]].',
-'nosuchusershort' => 'Ga gona mošomiši wa leina la "$1". Hlokomela mopeleto wa gago.',
-'nouserspecified' => 'O swanela ke go fana ka leina la mošomiši.',
+Lebele mopeleto wa gago goba [[Special:wiki_userLogin/signup|o tlhome mošomiši yo mophsa]].',
+'nosuchwiki_usershort' => 'Ga gona mošomiši wa leina la "$1". Hlokomela mopeleto wa gago.',
+'nowiki_userspecified' => 'O swanela ke go fana ka leina la mošomiši.',
 'wrongpassword' => 'O loketše ditlhaka-tša-siphiri tšeo e sego tšona. Ka kgopelo, leka gape.',
 'wrongpasswordempty' => 'Ga wa lokela ditlhaka-tša-siphiri. Ka kgopelo, leka gape.',
 'passwordtooshort' => "Ditlhaka-tša-siphiri tša gago ga tša dumelega goba di kopana.
-Go nyakega gore e be le {{PLURAL:$1|tlhaka ye tee|$1 ya ditlhaka}} gape  e seke ya swana le leina la gago (''username'').",
+Go nyakega gore e be le {{PLURAL:$1|tlhaka ye tee|$1 ya ditlhaka}} gape  e seke ya swana le leina la gago (''wiki_username'').",
 'mailmypassword' => 'Romela ditlhaka-tša-siphiri tše mpšha ka e-mail',
 'passwordremindertitle' => "''Password'' ye mphsa ya nakonyana go {{SITENAME}}",
 'passwordremindertext' => 'Motho yo mongwe (goba wena, gotšwa IP atrese $1) o
@@ -474,7 +474,7 @@ Gape o re holofetša  gore mengwalo ye e ngwadile ke wena, goba o e kopiša moth
 'template-semiprotected' => '(lota-ka-seripa)',
 'hiddencategories' => 'Letlakala le, ke setho sa {{PLURAL:$1|1 sehlopha sago uta|$1 dihlopha tšago uta}}:',
 'nocreatetext' => '{{SITENAME}} e nale dithibelo tše itšego go tlholeng ga matlakala a maphsa.
-O ka boela morago wa felola matlakala a lego gona, goba o [[Special:UserLogin|tsene]].',
+O ka boela morago wa felola matlakala a lego gona, goba o [[Special:wiki_userLogin|tsene]].',
 'nocreate-loggedin' => 'Ga ona tumello ya go tlhola matlakala a mampsha.',
 'permissionserrors' => 'Phošo ya ditumello',
 'permissionserrorstext' => 'Gawa dumelwa go pheta seo,ka {{PLURAL:$1|lebaka|mabaka}} a latelago:',
@@ -615,7 +615,7 @@ Leka go fetleka ka go ngwala ''all:'' go fetleka mateng ka moka, goba o šumiše
 'allowemail' => 'Dumella melaetša ya e-mail go tšwa go bašomiši ba bangwe',
 'prefs-files' => 'Difaele',
 'youremail' => 'E-Poso',
-'username' => 'Mošomiši:',
+'wiki_username' => 'Mošomiši:',
 'uid' => 'Nomoro ya mošomiši:',
 'prefs-memberingroups' => 'Leloko la {{PLURAL:$1|ya sehlopha|ya dihlopha}}:',
 'yourrealname' => 'Leina la mmakgonthe:',
@@ -629,14 +629,14 @@ Le swanela goba fase ga $1 {{PLURAL:$1|ya tlhaka|tša ditlhaka}}',
 Ga re fane ka e-poso ya gago go bašumiši ba bangwe ge ba polela le wena ka yona.',
 'prefs-help-email-required' => 'E-mail atrese eya nyakega.',
 
-# User rights
-'editusergroup' => 'Fetola sehlopha sa bašomiši',
-'editinguser' => "O fetola mošomiši '''[[User:$1|$1]]''' $2",
-'userrights-editusergroup' => 'Fetola sehlopha sa bašomiši',
-'saveusergroups' => 'Boloko Dihlopha tša bašomiši',
-'userrights-groupsmember' => 'Leloko la:',
-'userrights-reason' => 'Lebaka:',
-'userrights-no-interwiki' => 'Gawa dumelwa go fetola di dumello tša mošumiši go di wiki tše dingwe.',
+# wiki_user rights
+'editwiki_usergroup' => 'Fetola sehlopha sa bašomiši',
+'editingwiki_user' => "O fetola mošomiši '''[[wiki_user:$1|$1]]''' $2",
+'wiki_userrights-editwiki_usergroup' => 'Fetola sehlopha sa bašomiši',
+'savewiki_usergroups' => 'Boloko Dihlopha tša bašomiši',
+'wiki_userrights-groupsmember' => 'Leloko la:',
+'wiki_userrights-reason' => 'Lebaka:',
+'wiki_userrights-no-interwiki' => 'Gawa dumelwa go fetola di dumello tša mošumiši go di wiki tše dingwe.',
 
 # Groups
 'group' => 'Sehlopha:',
@@ -650,7 +650,7 @@ Ga re fane ka e-poso ya gago go bašumiši ba bangwe ge ba polela le wena ka yon
 'right-edit' => 'Fetola matlakala',
 'right-move' => 'Huduša matlakala',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => "''log'' ya ditumello tša mošomiši",
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -719,7 +719,7 @@ Matlakala ago ba [[Special:Watchlist|lenanong la gago la matlakala ditlhapetšo]
 'listfiles' => 'Lenano la difaele',
 'listfiles_date' => 'Letšatšikgwedi',
 'listfiles_name' => 'Leina',
-'listfiles_user' => 'Mošumiši',
+'listfiles_wiki_user' => 'Mošumiši',
 'listfiles_size' => 'Bogolo',
 
 # File description page
@@ -733,7 +733,7 @@ Matlakala ago ba [[Special:Watchlist|lenanong la gago la matlakala ditlhapetšo]
 'filehist-datetime' => 'LetšatšiKgwedi/Nako',
 'filehist-thumb' => 'Nkgogorupo-Nala',
 'filehist-thumbtext' => 'Nkgogorupo-Nala ya "version" go tloga $1',
-'filehist-user' => 'Mošomiši',
+'filehist-wiki_user' => 'Mošomiši',
 'filehist-dimensions' => 'Bogolo',
 'filehist-filesize' => 'Bogolo ba faele',
 'filehist-comment' => 'Comment',
@@ -778,7 +778,7 @@ Matlakala ago ba [[Special:Watchlist|lenanong la gago la matlakala ditlhapetšo]
 
 # Statistics
 'statistics' => 'Dipalopalo',
-'statistics-header-users' => 'Dipalopalo tša mošomiši',
+'statistics-header-wiki_users' => 'Dipalopalo tša mošomiši',
 
 'disambiguations' => "Matlakala a ''Disambiguation''",
 'disambiguationspage' => 'Template:"disambig"',
@@ -820,8 +820,8 @@ Matlakala ago ba [[Special:Watchlist|lenanong la gago la matlakala ditlhapetšo]
 'longpages' => 'Matlakala a matelele',
 'deadendpages' => "Matlakala a seye felo(''Dead-end'')",
 'protectedpages' => 'Matlakala a go lotiwa',
-'listusers' => 'Lanano la mošomiši',
-'usercreated' => '{{GENDER:$3|Hlodilwe}} ka $1 go $2',
+'listwiki_users' => 'Lanano la mošomiši',
+'wiki_usercreated' => '{{GENDER:$3|Hlodilwe}} ka $1 go $2',
 'newpages' => 'Matlakala a mampsha',
 'ancientpages' => 'Matlakala a kgalekgale',
 'move' => 'Huduša',
@@ -835,7 +835,7 @@ Matlakala ago ba [[Special:Watchlist|lenanong la gago la matlakala ditlhapetšo]
 'booksources-go' => 'Sepela',
 
 # Special:Log
-'specialloguserlabel' => 'Modiri:',
+'speciallogwiki_userlabel' => 'Modiri:',
 'speciallogtitlelabel' => 'Thaetlele (goba mošumiši):',
 'log' => "Di-''log''",
 'all-logs-page' => "Di-''log'' tša bohle ka moka",
@@ -863,17 +863,17 @@ Matlakala ago ba [[Special:Watchlist|lenanong la gago la matlakala ditlhapetšo]
 'linksearch-ok' => 'Fetleka',
 'linksearch-line' => '$1 e kgokaganywa gotšwa $2',
 
-# Special:ListUsers
-'listusers-submit' => 'Bontšha',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Bontšha',
 
-# Special:Log/newusers
-'newuserlogpage' => '"Log" yago hlola mošumiši',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => '"Log" yago hlola mošumiši',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(Lenano la ditho)',
 
-# E-mail user
-'emailuser' => 'Romela mošomiši yo molaetša',
+# E-mail wiki_user
+'emailwiki_user' => 'Romela mošomiši yo molaetša',
 'emailpage' => 'Romela email go mošomiši',
 'noemailtitle' => 'Gago email atrese',
 'emailfrom' => 'Go tšwa go:',
@@ -997,7 +997,7 @@ Seemo sa go lota ga letlakala '''$1''':",
 'sp-contributions-logs' => "Di-''log''",
 'sp-contributions-talk' => 'Poledišano',
 'sp-contributions-search' => 'Fetleka diabe',
-'sp-contributions-username' => 'IP Atrese goba leina la mošomiši:',
+'sp-contributions-wiki_username' => 'IP Atrese goba leina la mošomiši:',
 'sp-contributions-toponly' => 'Laetša diphetogo tša dipušeletšo tša bjale',
 'sp-contributions-submit' => 'Fetleka',
 
@@ -1101,7 +1101,7 @@ Ka kgopelo, kgetha leina le lengwe.',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|poeletšo|dipoeletšo}} gotšwa go $2',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Letlakala (la mošomiši) lago',
+'tooltip-pt-wiki_userpage' => 'Letlakala (la mošomiši) lago',
 'tooltip-pt-mytalk' => 'Letlakala la gago la dipolelo',
 'tooltip-pt-preferences' => "Dikgetho (''preference'') tša ka",
 'tooltip-pt-watchlist' => 'Lenano la matlakala ago tlhapetšwa diphetogo ke wena',
@@ -1134,13 +1134,13 @@ Ka kgopelo, kgetha leina le lengwe.',
 'tooltip-feed-rss' => 'RSS feed tša letlakala le',
 'tooltip-feed-atom' => 'Atom "feed" tša letlakala le',
 'tooltip-t-contributions' => 'Lebelela lenano la diabe tša mošomiši yo',
-'tooltip-t-emailuser' => 'Romela molaetša go mošomiši yo',
+'tooltip-t-emailwiki_user' => 'Romela molaetša go mošomiši yo',
 'tooltip-t-upload' => 'Lokela senepe goba difaele',
 'tooltip-t-specialpages' => 'Lenano la matlakala kamoka a kgethegilego',
 'tooltip-t-print' => 'Seemo sa letlakala le seo se ka gatišwago',
 'tooltip-t-permalink' => 'Hlomaganyo go poeletšo ye ya letlakala',
 'tooltip-ca-nstab-main' => 'Nyakoretša boteng bja letlakala',
-'tooltip-ca-nstab-user' => 'Lebelela letlakala la mošomiši',
+'tooltip-ca-nstab-wiki_user' => 'Lebelela letlakala la mošomiši',
 'tooltip-ca-nstab-special' => 'Letlakala le le kgethegile, gago kgonege go le fetola',
 'tooltip-ca-nstab-project' => 'Lebelela letlakala la tirotherwa',
 'tooltip-ca-nstab-image' => 'Lebelela  letlakala',
@@ -1158,10 +1158,10 @@ Ka kgopelo, kgetha leina le lengwe.',
 'tooltip-summary' => 'Lokela kakaretšo e kopana',
 
 # Attribution
-'siteuser' => '{{SITENAME}} mošumiši $1',
+'sitewiki_user' => '{{SITENAME}} mošumiši $1',
 'lastmodifiedatby' => 'Letlakala le  fetotšwe la mafelelo ka $2, $1 ke $3.',
 'others' => 'tše dingwe',
-'siteusers' => '{{SITENAME}} {{PLURAL:$2|mošumiši|bašumiši}} $1',
+'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|mošumiši|bašumiši}} $1',
 
 # Image deletion
 'filedeleteerror-short' => 'Phošo go phumuleng faele: $1',

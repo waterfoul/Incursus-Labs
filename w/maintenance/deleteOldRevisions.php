@@ -45,11 +45,11 @@ class DeleteOldRevisions extends Maintenance {
 	function doDelete( $delete = false, $args = array() ) {
 
 		# Data should come off the master, wrapped in a transaction
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin( __METHOD__ );
+		w = wfGetDB( DB_MASTER );
+		w->begin( __METHOD__ );
 
-		$tbl_pag = $dbw->tableName( 'page' );
-		$tbl_rev = $dbw->tableName( 'revision' );
+		$tbl_pag = w->tableName( 'page' );
+		$tbl_rev = w->tableName( 'revision' );
 
 		$pageIdClause = '';
 		$revPageClause = '';
@@ -64,7 +64,7 @@ class DeleteOldRevisions extends Maintenance {
 
 		# Get "active" revisions from the page table
 		$this->output( "Searching for active revisions..." );
-		$res = $dbw->query( "SELECT page_latest FROM $tbl_pag{$pageIdClause}" );
+		$res = w->query( "SELECT page_latest FROM $tbl_pag{$pageIdClause}" );
 		$cur = array();
 		foreach ( $res as $row ) {
 			$cur[] = $row->page_latest;
@@ -75,13 +75,13 @@ class DeleteOldRevisions extends Maintenance {
 		$old = array();
 		$this->output( "Searching for inactive revisions..." );
 		$set = implode( ', ', $cur );
-		$res = $dbw->query( "SELECT rev_id FROM $tbl_rev WHERE rev_id NOT IN ( $set ){$revPageClause}" );
+		$res = w->query( "SELECT rev_id FROM $tbl_rev WHERE rev_id NOT IN ( $set ){$revPageClause}" );
 		foreach ( $res as $row ) {
 			$old[] = $row->rev_id;
 		}
 		$this->output( "done.\n" );
 
-		# Inform the user of what we're going to do
+		# Inform the wiki_user of what we're going to do
 		$count = count( $old );
 		$this->output( "$count old revisions found.\n" );
 
@@ -89,13 +89,13 @@ class DeleteOldRevisions extends Maintenance {
 		if ( $delete && $count ) {
 			$this->output( "Deleting..." );
 			$set = implode( ', ', $old );
-			$dbw->query( "DELETE FROM $tbl_rev WHERE rev_id IN ( $set )" );
+			w->query( "DELETE FROM $tbl_rev WHERE rev_id IN ( $set )" );
 			$this->output( "done.\n" );
 		}
 
 		# This bit's done
 		# Purge redundant text records
-		$dbw->commit( __METHOD__ );
+		w->commit( __METHOD__ );
 		if ( $delete ) {
 			$this->purgeRedundantText( true );
 		}

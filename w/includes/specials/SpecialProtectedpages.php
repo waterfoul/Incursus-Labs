@@ -100,12 +100,12 @@ class SpecialProtectedpages extends SpecialPage {
 
 		$expiry = $lang->formatExpiry( $row->pr_expiry, TS_MW );
 		if( $expiry != $infinity ) {
-			$user = $this->getUser();
+			$wiki_user = $this->getwiki_user();
 			$description_items[] = $this->msg(
 				'protect-expiring-local',
-				$lang->userTimeAndDate( $expiry, $user ),
-				$lang->userDate( $expiry, $user ),
-				$lang->userTime( $expiry, $user )
+				$lang->wiki_userTimeAndDate( $expiry, $wiki_user ),
+				$lang->wiki_userDate( $expiry, $wiki_user ),
+				$lang->wiki_userTime( $expiry, $wiki_user )
 			)->escaped();
 		}
 
@@ -113,8 +113,8 @@ class SpecialProtectedpages extends SpecialPage {
 			$stxt = $lang->getDirMark() . ' ' . Linker::formatRevisionSize( $size );
 		}
 
-		# Show a link to the change protection form for allowed users otherwise a link to the protection log
-		if( $this->getUser()->isAllowed( 'protect' ) ) {
+		# Show a link to the change protection form for allowed wiki_users otherwise a link to the protection log
+		if( $this->getwiki_user()->isAllowed( 'protect' ) ) {
 			$changeProtection = Linker::linkKnown(
 				$title,
 				$this->msg( 'protect_change' )->escaped(),
@@ -343,8 +343,8 @@ class ProtectedPagesPager extends AlphabeticPager {
 		}
 
 		if( $this->indefonly ) {
-			$db = wfGetDB( DB_SLAVE );
-			$conds[] = "pr_expiry = {$db->addQuotes( $db->getInfinity() )} OR pr_expiry IS NULL";
+			 = wfGetDB( DB_SLAVE );
+			$conds[] = "pr_expiry = {->addQuotes( ->getInfinity() )} OR pr_expiry IS NULL";
 		}
 		if( $this->cascadeonly ) {
 			$conds[] = "pr_cascade = '1'";

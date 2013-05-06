@@ -55,7 +55,7 @@ class SpecialGadgets extends SpecialPage {
 
 		$listOpen = false;
 
-		$editInterfaceMessage = $this->getUser()->isAllowed( 'editinterface' )
+		$editInterfaceMessage = $this->getwiki_user()->isAllowed( 'editinterface' )
 			? 'edit'
 			: 'viewsource';
 

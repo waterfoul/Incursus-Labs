@@ -29,13 +29,13 @@
 class DeleteArchivedFilesImplementation {
 	static public function doDelete( $output, $force ) {
 		# Data should come off the master, wrapped in a transaction
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin( __METHOD__ );
-		$tbl_arch = $dbw->tableName( 'filearchive' );
+		w = wfGetDB( DB_MASTER );
+		w->begin( __METHOD__ );
+		$tbl_arch = w->tableName( 'filearchive' );
 		$repo = RepoGroup::singleton()->getLocalRepo();
 		# Get "active" revisions from the filearchive table
 		$output->handleOutput( "Searching for and deleting archived files...\n" );
-		$res = $dbw->query( "SELECT fa_id,fa_storage_group,fa_storage_key FROM $tbl_arch" );
+		$res = w->query( "SELECT fa_id,fa_storage_group,fa_storage_key FROM $tbl_arch" );
 		$count = 0;
 		foreach ( $res as $row ) {
 			$key = $row->fa_storage_key;
@@ -44,7 +44,7 @@ class DeleteArchivedFilesImplementation {
 			$path = $repo->getZonePath( 'deleted' ) . '/' . $repo->getDeletedHashPath( $key ) . $key;
 			$sha1 = substr( $key, 0, strcspn( $key, '.' ) );
 			// Check if the file is used anywhere...
-			$inuse = $dbw->selectField( 'oldimage', '1',
+			$inuse = w->selectField( 'oldimage', '1',
 				array( 'oi_sha1' => $sha1,
 				'oi_deleted & ' . File::DELETED_FILE => File::DELETED_FILE ),
 				__METHOD__,
@@ -53,7 +53,7 @@ class DeleteArchivedFilesImplementation {
 			if ( $path && $repo->fileExists( $path ) && !$inuse ) {
 				if ( $repo->quickPurge( $path ) ) {
 					$count++;
-					$dbw->query( "DELETE FROM $tbl_arch WHERE fa_id = $id" );
+					w->query( "DELETE FROM $tbl_arch WHERE fa_id = $id" );
 				} else {
 					$output->handleOutput( "Unable to remove file $path, skipping\n" );
 				}
@@ -61,11 +61,11 @@ class DeleteArchivedFilesImplementation {
 				$output->handleOutput( "Notice - file '$key' not found in group '$group'\n" );
 				if ( $force ) {
 					$output->handleOutput( "Got --force, deleting DB entry\n" );
-					$dbw->query( "DELETE FROM $tbl_arch WHERE fa_id = $id" );
+					w->query( "DELETE FROM $tbl_arch WHERE fa_id = $id" );
 				}
 			}
 		}
-		$dbw->commit( __METHOD__ );
+		w->commit( __METHOD__ );
 		$output->handleOutput( "Done! [$count file(s)]\n" );
 	}
 }

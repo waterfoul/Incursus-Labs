@@ -82,9 +82,9 @@ if ( !$wgEnableProfileInfo ) {
 	exit( 1 );
 }
 
-$dbr = wfGetDB( DB_SLAVE );
+r = wfGetDB( DB_SLAVE );
 
-if( !$dbr->tableExists( 'profiling' ) ) {
+if( !r->tableExists( 'profiling' ) ) {
 	echo "<p>No 'profiling' table exists, so we can't show you anything.</p>\n";
 	echo "<p>If you want to log profiling data, create the table using "
 		. "<tt>maintenance/archives/patch-profiling.sql</tt> and enable "
@@ -233,7 +233,7 @@ $sort = 'time';
 if ( isset( $_REQUEST['sort'] ) && in_array( $_REQUEST['sort'], $sorts ) )
 	$sort = $_REQUEST['sort'];
 
-$res = $dbr->select( 'profiling', '*', array(), 'profileinfo.php', array( 'ORDER BY' => 'pf_name ASC' ) );
+$res = r->select( 'profiling', '*', array(), 'profileinfo.php', array( 'ORDER BY' => 'pf_name ASC' ) );
 
 if (isset( $_REQUEST['filter'] ) )
 	$filter = $_REQUEST['filter'];

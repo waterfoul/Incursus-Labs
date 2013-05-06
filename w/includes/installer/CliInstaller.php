@@ -34,7 +34,7 @@ class CliInstaller extends Installer {
 		'dbtype' => 'wgDBtype',
 		'dbserver' => 'wgDBserver',
 		'dbname' => 'wgDBname',
-		'dbuser' => 'wgDBuser',
+		'dbwiki_user' => 'wgDBwiki_user',
 		'dbpass' => 'wgDBpassword',
 		'dbprefix' => 'wgDBprefix',
 		'dbtableoptions' => 'wgDBTableOptions',
@@ -71,7 +71,7 @@ class CliInstaller extends Installer {
 
 		if ( isset( $option['lang'] ) ) {
 			global $wgLang, $wgLanguageCode;
-			$this->setVar( '_UserLang', $option['lang'] );
+			$this->setVar( '_wiki_userLang', $option['lang'] );
 			$wgContLang = Language::factory( $option['lang'] );
 			$wgLang = Language::factory( $option['lang'] );
 			$wgLanguageCode = $option['lang'];
@@ -89,18 +89,18 @@ class CliInstaller extends Installer {
 			$this->setVar( '_AdminName', $admin );
 		}
 
-		if ( !isset( $option['installdbuser'] ) ) {
-			$this->setVar( '_InstallUser',
-				$this->getVar( 'wgDBuser' ) );
+		if ( !isset( $option['installdbwiki_user'] ) ) {
+			$this->setVar( '_Installwiki_user',
+				$this->getVar( 'wgDBwiki_user' ) );
 			$this->setVar( '_InstallPassword',
 				$this->getVar( 'wgDBpassword' ) );
 		} else {
-			$this->setVar( '_InstallUser',
-				$option['installdbuser'] );
+			$this->setVar( '_Installwiki_user',
+				$option['installdbwiki_user'] );
 			$this->setVar( '_InstallPassword',
 				isset( $option['installdbpass'] ) ? $option['installdbpass'] : "" );
 
-			// Assume that if we're given the installer user, we'll create the account.
+			// Assume that if we're given the installer wiki_user, we'll create the account.
 			$this->setVar( '_CreateDBAccount', true );
 		}
 

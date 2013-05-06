@@ -44,15 +44,15 @@ class SpecialBlockme extends UnlistedSpecialPage {
 			return;
 		}
 
-		$user = User::newFromName( $this->msg( 'proxyblocker' )->inContentLanguage()->text() );
+		$wiki_user = wiki_user::newFromName( $this->msg( 'proxyblocker' )->inContentLanguage()->text() );
 		# FIXME: newFromName could return false on a badly configured wiki.
-		if ( !$user->isLoggedIn() ) {
-			$user->addToDatabase();
+		if ( !$wiki_user->isLoggedIn() ) {
+			$wiki_user->addToDatabase();
 		}
 
 		$block = new Block();
 		$block->setTarget( $ip );
-		$block->setBlocker( $user );
+		$block->setBlocker( $wiki_user );
 		$block->mReason = $this->msg( 'proxyblockreason' )->inContentLanguage()->text();
 
 		$block->insert();

@@ -56,7 +56,7 @@ $messages = array(
 'otherlanguages' => 'na otro maga lenguaje',
 'lastmodifiedat' => 'Ya modifica con este pagina por ultimo vez en hora $2 del $1.',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Acerca de {{SITENAME}}',
 'aboutpage' => 'Project:Acerca de',
 'copyright' => 'Obtenible el maga texto de este Wikipedia bajo los terminos y maga condicion del <i>$1</i>.',
@@ -85,7 +85,7 @@ $messages = array(
 # Edit pages
 'blockedtitle' => 'El usuario es prohibido o bloqueado',
 'accmailtitle' => 'Enviao ya el contraseña.',
-'accmailtext' => "El contraseña que el sistema ya escogi automatico por usuario [[User talk:$1|$1]] enviado ya a $2.
+'accmailtext' => "El contraseña que el sistema ya escogi automatico por usuario [[wiki_user talk:$1|$1]] enviado ya a $2.
 
 El contraseña de este nuevo cuenta puede cambia na pagina ''[[Special:ChangePassword|cambia el contraseña]]'' despues el autenticacion.",
 

@@ -68,8 +68,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'AANTALBLADSYE', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'AANTALARTIKELS', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'AANTALLêERS', 'NUMBEROFFILES' ),
-	'numberofusers'             => array( '1', 'AANTALGEBRUIKERS', 'NUMBEROFUSERS' ),
-	'numberofactiveusers'       => array( '1', 'AANTALAKTIEWEGEBRUIKERS', 'NUMBEROFACTIVEUSERS' ),
+	'numberofwiki_users'             => array( '1', 'AANTALGEBRUIKERS', 'NUMBEROFUSERS' ),
+	'numberofactivewiki_users'       => array( '1', 'AANTALAKTIEWEGEBRUIKERS', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'AANTALWYSIGINGS', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'AANTALKEERGESIEN', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'BLADSYNAAM', 'PAGENAME' ),
@@ -110,7 +110,7 @@ $magicWords = array(
 );
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'AktieweGebruikers' ),
+	'Activewiki_users'               => array( 'AktieweGebruikers' ),
 	'Allmessages'               => array( 'Stelselboodskappe', 'Alle_stelselboodskappe', 'Allestelselboodskappe', 'Boodskappe' ),
 	'Allpages'                  => array( 'Alle_bladsye', 'Allebladsye' ),
 	'Ancientpages'              => array( 'OuBladsye' ),
@@ -128,7 +128,7 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( 'GeskrapteBydraes' ),
 	'Disambiguations'           => array( 'Dubbelsinnig' ),
 	'DoubleRedirects'           => array( 'Dubbele_aansture', 'Dubbeleaansture' ),
-	'Emailuser'                 => array( 'Stuur_e-pos', 'Stuure-pos', 'Stuur_epos', 'Stuurepos' ),
+	'Emailwiki_user'                 => array( 'Stuur_e-pos', 'Stuure-pos', 'Stuur_epos', 'Stuurepos' ),
 	'Export'                    => array( 'Eksporteer' ),
 	'Fewestrevisions'           => array( 'MinsteWysigings' ),
 	'FileDuplicateSearch'       => array( 'LerDuplikaatSoek' ),
@@ -142,7 +142,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Beeldelys', 'Prentelys', 'Lêerslys' ),
 	'Listgrouprights'           => array( 'LysGroepRegte' ),
 	'Listredirects'             => array( 'LysAansture' ),
-	'Listusers'                 => array( 'Gebruikerslys', 'Lysgebruikers' ),
+	'Listwiki_users'                 => array( 'Gebruikerslys', 'Lysgebruikers' ),
 	'Lockdb'                    => array( 'SluitDB' ),
 	'Log'                       => array( 'Logboek', 'Logboeke' ),
 	'Lonelypages'               => array( 'EensaamBladsye' ),
@@ -188,9 +188,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'OngebruikteSjablone' ),
 	'Unwatchedpages'            => array( 'NieDopgehoudeBladsye' ),
 	'Upload'                    => array( 'Laai', 'Oplaai' ),
-	'Userlogin'                 => array( 'Teken_in', 'Tekenin' ),
-	'Userlogout'                => array( 'Teken_uit', 'Tekenuit' ),
-	'Userrights'                => array( 'GebruikersRegte' ),
+	'wiki_userlogin'                 => array( 'Teken_in', 'Tekenin' ),
+	'wiki_userlogout'                => array( 'Teken_uit', 'Tekenuit' ),
+	'wiki_userrights'                => array( 'GebruikersRegte' ),
 	'Version'                   => array( 'Weergawe' ),
 	'Wantedcategories'          => array( 'GesoekteKategorieë' ),
 	'Wantedfiles'               => array( 'GesoekteLêers' ),
@@ -208,7 +208,7 @@ $separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 $linkTrail = "/^([a-z]+)(.*)$/sD";
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Onderstreep skakels.',
 'tog-justify' => 'Justeer paragrawe.',
 'tog-hideminor' => 'Moenie klein wysigings in die onlangse wysigingslys wys nie.',
@@ -232,7 +232,7 @@ $messages = array(
 'tog-previewonfirst' => 'Wys voorskou met eerste wysiging',
 'tog-nocache' => 'Deaktiveer blaaier se bladsykas',
 'tog-enotifwatchlistpages' => "Stuur my e-pos as 'n bladsye of lêer op my dophoulys verander",
-'tog-enotifusertalkpages' => 'Stuur vir my e-pos as my eie besprekingsblad verander word',
+'tog-enotifwiki_usertalkpages' => 'Stuur vir my e-pos as my eie besprekingsblad verander word',
 'tog-enotifminoredits' => 'Stuur my ook e-pos vir klein wysigings aan bladsye en lêers',
 'tog-enotifrevealaddr' => 'Stel my e-posadres bloot in kennisgewingspos',
 'tog-shownumberswatching' => 'Wys die aantal gebruikers wat dophou',
@@ -413,7 +413,7 @@ $messages = array(
 'talk' => 'Bespreking',
 'views' => 'Weergawes',
 'toolbox' => 'Gereedskap',
-'userpage' => 'Lees gebruikersbladsy',
+'wiki_userpage' => 'Lees gebruikersbladsy',
 'projectpage' => 'Lees metabladsy',
 'imagepage' => 'Lees bladsy oor lêer',
 'mediawikipage' => 'Bekyk boodskapsbladsy',
@@ -439,7 +439,7 @@ $1",
 'pool-queuefull' => 'Die poel se wagtou is vol',
 'pool-errorunknown' => 'Onbekende fout',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Inligting oor {{SITENAME}}',
 'aboutpage' => 'Project:Omtrent',
 'copyright' => 'Teks is beskikbaar onderhewig aan $1.',
@@ -471,8 +471,8 @@ $1",
 'youhavenewmessages' => 'U het $1 (sien $2).',
 'newmessageslink' => 'nuwe boodskappe',
 'newmessagesdifflink' => 'die laaste wysiging',
-'youhavenewmessagesfromusers' => "U het $1 van {{PLURAL:$3|'n ander gebruiker|$3 gebruikers}} ($2).",
-'youhavenewmessagesmanyusers' => 'U het $1 van baie gebruikers ($2).',
+'youhavenewmessagesfromwiki_users' => "U het $1 van {{PLURAL:$3|'n ander gebruiker|$3 gebruikers}} ($2).",
+'youhavenewmessagesmanywiki_users' => 'U het $1 van baie gebruikers ($2).',
 'newmessageslinkplural' => "{{PLURAL:$1|'n nuwe boodskap|nuwe boodskappe}}",
 'newmessagesdifflinkplural' => 'laaste {{PLURAL:$1|wysiging|wysigings}}',
 'youhavenewmessagesmulti' => 'U het nuwe boodskappe op $1',
@@ -503,7 +503,7 @@ $1",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Bladsy',
-'nstab-user' => 'Gebruikerblad',
+'nstab-wiki_user' => 'Gebruikerblad',
 'nstab-media' => 'Mediablad',
 'nstab-special' => 'Spesiale bladsy',
 'nstab-project' => 'Projekblad',
@@ -549,7 +549,7 @@ Die administrateur wat dit gesluit het se verduideliking: $1',
 
 Dit gebeur gewoonlik as mens 'n verouderde verskil- of geskiedenis-skakel volg na 'n bladsy wat reeds verwyder is.
 
-Indien dit nie die geval is nie, het u moontlik 'n fout in die sagteware ontdek. Rapporteer asseblief die probleem aan 'n [[Special:ListUsers/sysop|administrateur]], en maak 'n nota van die URL.",
+Indien dit nie die geval is nie, het u moontlik 'n fout in die sagteware ontdek. Rapporteer asseblief die probleem aan 'n [[Special:Listwiki_users/sysop|administrateur]], en maak 'n nota van die URL.",
 'missingarticle-rev' => '(weergawe#: $1)',
 'missingarticle-diff' => '(Wysiging: $1, $2)',
 'readonly_lag' => 'Die databasis is outomaties gesluit terwyl die slaafdatabasisse met die meester gesinchroniseer word',
@@ -597,7 +597,7 @@ Gebruik asseblief [//translatewiki.net/ translatewiki.net] om vertalings by te v
 'customcssprotected' => "U het nie toestemming om hierdie CSS-bladsy te redigeer nie, want dit bevat 'n ander gebruiker se persoonlike verstellings.",
 'customjsprotected' => "U het nie toestemming om hierdie JavaScript-bladsy te redigeer nie, want dit bevat 'n ander gebruiker se persoonlike verstellings.",
 'ns-specialprotected' => 'Spesiale bladsye kan nie geredigeer word nie.',
-'titleprotected' => "Hierdie titel is beskerm teen skepping deur [[User:$1|$1]].
+'titleprotected' => "Hierdie titel is beskerm teen skepping deur [[wiki_user:$1|$1]].
 Die rede gegee is ''$2''.",
 'filereadonlyerror' => 'Dit was nie moontlik om die lêer "$1" te wysig nie omdat die lêerstoor "$2" tans lees-alleen is.
 
@@ -615,7 +615,7 @@ Die rede hiervoor is "\'\'$3\'\'".',
 # Login and logout pages
 'logouttext' => "'''U is nou uitgeteken'''
 
-U kan aanhou om {{SITENAME}} anoniem te gebruik; of u kan weer [[Special:UserLogin|inteken]] as dieselfde of 'n ander gebruiker.
+U kan aanhou om {{SITENAME}} anoniem te gebruik; of u kan weer [[Special:wiki_userLogin|inteken]] as dieselfde of 'n ander gebruiker.
 Dit is moontlik dat sommige bladsye nog sal aandui dat u aangeteken is totdat u u webblaaier se kas skoonmaak.",
 'welcomecreation' => '== Welkom, $1! ==
 U rekening is geskep;
@@ -631,21 +631,21 @@ moenie vergeet om u [[Special:Preferences|persoonlike voorkeure vir {{SITENAME}}
 'login' => 'Teken in',
 'nav-login-createaccount' => 'Teken in',
 'loginprompt' => 'U blaaier moet koekies toelaat om by {{SITENAME}} te kan aanteken.',
-'userlogin' => 'Teken in / registreer',
-'userloginnocreate' => 'Teken in',
+'wiki_userlogin' => 'Teken in / registreer',
+'wiki_userloginnocreate' => 'Teken in',
 'logout' => 'Teken uit',
-'userlogout' => 'Teken uit',
+'wiki_userlogout' => 'Teken uit',
 'notloggedin' => 'Nie ingeteken nie',
 'nologin' => "Nog nie geregistreer nie? '''$1'''.",
 'nologinlink' => "Skep gerus 'n rekening",
 'createaccount' => 'Skep nuwe rekening',
 'gotaccount' => "Het u reeds 'n rekening? '''$1'''.",
 'gotaccountlink' => 'Teken in',
-'userlogin-resetlink' => 'U aanmeld besonderhede vergeet?',
+'wiki_userlogin-resetlink' => 'U aanmeld besonderhede vergeet?',
 'createaccountmail' => 'deur e-pos',
 'createaccountreason' => 'Rede:',
 'badretype' => 'Die ingetikte wagwoorde is nie dieselfde nie.',
-'userexists' => "Die gebruikersnaam wat u gekies het is reeds geneem.
+'wiki_userexists' => "Die gebruikersnaam wat u gekies het is reeds geneem.
 Kies asseblief 'n ander naam.",
 'loginerror' => 'Intekenfout',
 'createaccounterror' => "Kon nie 'n rekening skep nie: $1",
@@ -659,12 +659,12 @@ Maak seker dat u koekies aangeskakel het, herlaai die bladsy en probeer dan weer
 'noname' => 'Ongeldige gebruikersnaam.',
 'loginsuccesstitle' => 'Suksesvolle intekening',
 'loginsuccess' => 'U is nou by {{SITENAME}} as "$1" ingeteken.',
-'nosuchuser' => 'Die gebruiker "$1" bestaan nie.
+'nosuchwiki_user' => 'Die gebruiker "$1" bestaan nie.
 Gebruikersname is gevoelig vir hoofletters.
-Maak seker dit is reg gespel of [[Special:UserLogin/signup|skep \'n nuwe rekening]].',
-'nosuchusershort' => 'Daar is geen gebruikersnaam "$1" nie. Maak seker dit is reg gespel.',
-'nouserspecified' => "U moet 'n gebruikersnaam spesifiseer.",
-'login-userblocked' => 'Hierdie gebruiker is geblokkeer.
+Maak seker dit is reg gespel of [[Special:wiki_userLogin/signup|skep \'n nuwe rekening]].',
+'nosuchwiki_usershort' => 'Daar is geen gebruikersnaam "$1" nie. Maak seker dit is reg gespel.',
+'nowiki_userspecified' => "U moet 'n gebruikersnaam spesifiseer.",
+'login-wiki_userblocked' => 'Hierdie gebruiker is geblokkeer.
 Intekening word verbied.',
 'wrongpassword' => 'Ongeldige wagwoord, probeer weer.',
 'wrongpasswordempty' => 'Die wagwoord was leeg. Probeer asseblief weer.',
@@ -703,16 +703,16 @@ Voer asseblief 'n geldige e-posadres in, of laat die veld leeg.",
 U word aangeraai om in te teken so gou as moontlik u wagwoord te verander.
 
 Indien hierdie rekening foutief geskep is, kan u hierdie boodskap ignoreer.',
-'usernamehasherror' => "'n Gebruikersnaam mag nie 'n hekkie-karakter (#) in hê nie",
+'wiki_usernamehasherror' => "'n Gebruikersnaam mag nie 'n hekkie-karakter (#) in hê nie",
 'login-throttled' => "U het al te veel kere met 'n ongeldige wagwoord probeer aanteken.
 Wag asseblief alvorens u weer probeer.",
 'login-abort-generic' => 'U is nie aangemeld nie. Die prosedure is gestaak.',
 'loginlanguagelabel' => 'Taal: $1',
-'suspicious-userlogout' => "U versoek om af te teken is geïgnoreer omdat dit lyk asof dit deur 'n gebreekte webleser of instaanbediener gestuur is.",
+'suspicious-wiki_userlogout' => "U versoek om af te teken is geïgnoreer omdat dit lyk asof dit deur 'n gebreekte webleser of instaanbediener gestuur is.",
 
 # E-mail sending
 'php-mail-error-unknown' => 'Onbekende fout in PHP se mail()-funksie',
-'user-mail-no-addy' => "Geprobeer om e-pos te stuur sonder 'n e-posadres.",
+'wiki_user-mail-no-addy' => "Geprobeer om e-pos te stuur sonder 'n e-posadres.",
 
 # Change password dialog
 'resetpass' => 'Verander wagwoord',
@@ -739,7 +739,7 @@ U het moontlik reeds u wagwoord gewysig of 'n nuwe tydelike wagwoord aangevra.",
 'passwordreset-legend' => 'Kry nuwe wagwoord',
 'passwordreset-disabled' => 'Die herskik van U wagwoord is gedeaktiveer op hierdie wiki.',
 'passwordreset-pretext' => '{{PLURAL:$1| | Voer een van die onderstaande velde in}}',
-'passwordreset-username' => 'Gebruiker:',
+'passwordreset-wiki_username' => 'Gebruiker:',
 'passwordreset-domain' => 'Domein:',
 'passwordreset-capture' => 'Wys resulterende e-pos?',
 'passwordreset-capture-help' => 'As u die boks merk, word die e-pos (met die tydelike wagwoord) aan u getoon en aan die gebruiker gestuur.',
@@ -752,7 +752,7 @@ $2
 
 {{PLURAL:$3|Die tydelike wagwoord verval|Hierdie tydelike wagwoorde verval}} oor {{PLURAL:$5|een dag|$5 dae}}.
 Meld asseblief nou aan en wysig u wagwoord. As u dit nie versoek het nie, of as u die oorspronklike wagwoord nog ken en dit nie wil verander nie, ignoreer die berig en hou aan om u ou wagwoord te gebruik.',
-'passwordreset-emailtext-user' => 'Gebruiker $1 op die webtuiste {{SITENAME}} het u gebruikersgegewens vir {{SITENAME}} ($4) opgevra.
+'passwordreset-emailtext-wiki_user' => 'Gebruiker $1 op die webtuiste {{SITENAME}} het u gebruikersgegewens vir {{SITENAME}} ($4) opgevra.
 Die volgende {{PLURAL:$3|gebruiker is|gebruikers is}} aan die e-posadres gekoppel:
 
 $2
@@ -853,14 +853,14 @@ Dis was moontlik geskuif of verwyder terwyl u die bladsy gelees het.",
 'loginreqlink' => 'teken in',
 'loginreqpagetext' => 'U moet $1 om ander bladsye te bekyk.',
 'accmailtitle' => 'Wagwoord gestuur.',
-'accmailtext' => "'n Lukraakgegenereerde wagwoord vir [[User talk:$1|$1]] is na $2 gestuur.
+'accmailtext' => "'n Lukraakgegenereerde wagwoord vir [[wiki_user talk:$1|$1]] is na $2 gestuur.
 
 Die wagwoord vir hierdie nuwe gebruiker kan verander word op die ''[[Special:ChangePassword|verander wagwoord]]'' bladsy nadat ingeteken is.",
 'newarticle' => '(Nuut)',
 'newarticletext' => "Hierdie bladsy bestaan nie.
 Tik iets in die invoerboks hier onder om 'n nuwe bladsy te skep. Meer inligting is op die [[{{MediaWiki:Helppage}}|hulpbladsy]] beskikbaar.
 As u per ongeluk hier uitgekom het, gebruik u blaaier se '''terug'''-knoppie.",
-'anontalkpagetext' => "----''Hierdie is die besprekingsblad vir 'n anonieme gebruiker wat nog nie 'n rekening geskep het nie of wat dit nie gebruik nie. Daarom moet ons sy/haar numeriese IP-adres gebruik vir identifikasie. Só 'n adres kan deur verskeie gebruikers gedeel word. Indien u 'n anonieme gebruiker is wat voel dat ontoepaslike kommentaar teen u gerig is, [[Special:UserLogin/signup|skep 'n rekening]] of [[Special:UserLogin|teken in]] om verwarring met ander anonieme gebruikers te voorkom.''",
+'anontalkpagetext' => "----''Hierdie is die besprekingsblad vir 'n anonieme gebruiker wat nog nie 'n rekening geskep het nie of wat dit nie gebruik nie. Daarom moet ons sy/haar numeriese IP-adres gebruik vir identifikasie. Só 'n adres kan deur verskeie gebruikers gedeel word. Indien u 'n anonieme gebruiker is wat voel dat ontoepaslike kommentaar teen u gerig is, [[Special:wiki_userLogin/signup|skep 'n rekening]] of [[Special:wiki_userLogin|teken in]] om verwarring met ander anonieme gebruikers te voorkom.''",
 'noarticletext' => 'Hierdie bladsy bevat geen teks nie.
 U kan [[Special:Search/{{PAGENAME}}|vir die bladsytitel in ander bladsye soek]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} die verwante logboeke deursoek]
@@ -872,8 +872,8 @@ U kan vir die term [[Special:Search/{{PAGENAME}}|in ander bladsye soek]] of
 
 Dit word meestal veroorsaak deur die volg van \'n verouderde verwysing na \'n bladsy wat verwyder is.
 Meer gegewens kan moontlik in die [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} skraplogboek] gevind word.',
-'userpage-userdoesnotexist' => 'U is besig om \'n gebruikersblad wat nie bestaan nie te wysig (gebruiker "<nowiki>$1</nowiki>"). Maak asseblief seker of u die bladsy wil skep/ wysig.',
-'userpage-userdoesnotexist-view' => 'Die gebruiker "$1" is nie geregistreer nie.',
+'wiki_userpage-wiki_userdoesnotexist' => 'U is besig om \'n gebruikersblad wat nie bestaan nie te wysig (gebruiker "<nowiki>$1</nowiki>"). Maak asseblief seker of u die bladsy wil skep/ wysig.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Die gebruiker "$1" is nie geregistreer nie.',
 'blocked-notice-logextract' => 'Hierdie gebruiker is tans geblokkeer.
 Die laaste inskrywing in die blokkeerlogboek word hieronder vertoon:',
 'clearyourcache' => "'''Let wel''': Na die voorkeure gestoor is, moet u blaaier se kasgeheue verfris word om die veranderinge te sien:
@@ -881,17 +881,17 @@ Die laaste inskrywing in die blokkeerlogboek word hieronder vertoon:',
 * '''Google Chrome:''' druk ''Ctrl-Shift-R'' (''⌘-Shift-R'' op 'n Mac)
 * '''Internet Explorer:''' hou ''Ctrl'' en kliek ''Refresh'', of druk ''Ctrl-F5''
 * '''Opera:''' maak die kas skoon by ''Tools → Preferences''",
-'usercssyoucanpreview' => "'''Wenk:''' Gebruik die \"{{int:showpreview}}\"-knoppie om u nuwe CSS te toets voor u dit stoor.",
-'userjsyoucanpreview' => "'''Wenk:''' Gebruik die \"{{int:showpreview}}\"-knoppie om u nuwe JS te toets voor u dit stoor.",
-'usercsspreview' => "'''Onthou hierdie is slegs 'n voorskou van u persoonlike CSS.'''
+'wiki_usercssyoucanpreview' => "'''Wenk:''' Gebruik die \"{{int:showpreview}}\"-knoppie om u nuwe CSS te toets voor u dit stoor.",
+'wiki_userjsyoucanpreview' => "'''Wenk:''' Gebruik die \"{{int:showpreview}}\"-knoppie om u nuwe JS te toets voor u dit stoor.",
+'wiki_usercsspreview' => "'''Onthou hierdie is slegs 'n voorskou van u persoonlike CSS.'''
 '''Dit is nog nie gestoor nie!'''",
-'userjspreview' => "'''Onthou hierdie is slegs 'n toets/voorskou van u gebruiker-JavaScript, dit is nog nie gestoor nie.'''",
+'wiki_userjspreview' => "'''Onthou hierdie is slegs 'n toets/voorskou van u gebruiker-JavaScript, dit is nog nie gestoor nie.'''",
 'sitecsspreview' => "'''Onthou dat u na 'n voorskou van die CSS-kode kyk.'''
 '''Dit is nog nie gestoor nie!'''",
 'sitejspreview' => "'''Onthou dat u na 'n voorskou van die JavaScript-kode kyk.'''
 '''Dit is nog nie gestoor nie!'''",
-'userinvalidcssjstitle' => "'''Waarskuwing:''' daar is nie 'n omslag \"\$1\" nie.
-Onthou dat u eie .css- en .js-bladsye met 'n kleinletter begin, byvoorbeeld {{ns:user}}:Naam/vector.css in plaas van {{ns:user}}:Naam/Vector.css.",
+'wiki_userinvalidcssjstitle' => "'''Waarskuwing:''' daar is nie 'n omslag \"\$1\" nie.
+Onthou dat u eie .css- en .js-bladsye met 'n kleinletter begin, byvoorbeeld {{ns:wiki_user}}:Naam/vector.css in plaas van {{ns:wiki_user}}:Naam/Vector.css.",
 'updated' => '(Gewysig)',
 'note' => "'''Nota:'''",
 'previewnote' => "'''Onthou dat hierdie slegs 'n voorskou is.'''
@@ -899,12 +899,12 @@ U teks is nog nie gestoor nie!",
 'continue-editing' => 'Wysig verder',
 'previewconflict' => 'Hierdie voorskou vertoon die teks in die boonste teksarea soos dit sou lyk indien u die bladsy stoor.',
 'session_fail_preview' => "'''Jammer! Weens verlies aan sessie-inligting is die wysiging nie verwerk nie.
-Probeer asseblief weer. As dit steeds nie werk nie, probeer om [[Special:UserLogout|af te teken]] en dan weer aan te teken.'''",
+Probeer asseblief weer. As dit steeds nie werk nie, probeer om [[Special:wiki_userLogout|af te teken]] en dan weer aan te teken.'''",
 'session_fail_preview_html' => "'''Jammer! U wysigings is nie verwerk nie omdat sessie-data verlore gegaan het.'''
 
 ''Omrede rou HTML hier by {{SITENAME}} ingevoer kan word, kan die voorskou nie gesien word nie ter beskerming teen aanvalle met JavaScript.''
 
-'''As dit 'n regmatige wysiging is, probeer asseblief weer. As dit daarna nog nie werk nie, [[Special:UserLogout|teken dan af]] en weer aan.'''",
+'''As dit 'n regmatige wysiging is, probeer asseblief weer. As dit daarna nog nie werk nie, [[Special:wiki_userLogout|teken dan af]] en weer aan.'''",
 'token_suffix_mismatch' => "'''U wysiging is geweier omdat u webblaaier leestekens in die wysigingsveld verkeerdelik geïnterpreteer het.
 Die bewerking is geweier om verminking van die bladsy se teks te voorkom.
 Dit gebeur soms as 'n webgebaseerde instaandiens (proxy) gebruik word wat foute bevat.",
@@ -952,7 +952,7 @@ Die nuutste logboekinskrywing word hieronder ter verwysing vertoon:",
 'edittools' => '<!-- Die teks hier sal onderaan wysiging- en oplaaivorms vertoon word. -->',
 'nocreatetitle' => 'Bladsy skepping beperk',
 'nocreatetext' => '{{SITENAME}} het die skep van nuwe bladsye beperk.
-U kan slegs bestaande bladsye wysig, of u kan [[Special:UserLogin|aanteken of registreer]].',
+U kan slegs bestaande bladsye wysig, of u kan [[Special:wiki_userLogin|aanteken of registreer]].',
 'nocreate-loggedin' => 'U het nie regte om nuwe blaaie te skep nie.',
 'sectioneditnotsupported-title' => 'Dit is nie moontlik om paragrawe te wysig nie',
 'sectioneditnotsupported-text' => 'Dit is nie moontlik om paragrawe op hierdie bladsy te wysig nie.',
@@ -1003,11 +1003,11 @@ Hierdie parameters is uitgelaat.",
 Kontroleer die vergelyking hieronder om seker te maak dis wat u wil doen, en stoor dan om die terugrol te voltooi.',
 'undo-failure' => 'Die wysiging kan nie ongedaan gemaak word nie omdat dit met intermediêre wysigings bots.',
 'undo-norev' => 'Die wysiging kon nie ongedaan gemaak word nie omdat dit nie bestaan nie of reeds verwyder is.',
-'undo-summary' => 'Rol weergawe $1 deur [[Special:Contributions/$2|$2]] ([[User talk:$2|bespreek]]) terug.',
+'undo-summary' => 'Rol weergawe $1 deur [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|bespreek]]) terug.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Kan nie rekening skep nie',
-'cantcreateaccount-text' => "Die registrasie van nuwe rekeninge vanaf die IP-adres ('''$1''') is geblok deur [[User:$3|$3]].
+'cantcreateaccount-text' => "Die registrasie van nuwe rekeninge vanaf die IP-adres ('''$1''') is geblok deur [[wiki_user:$3|$3]].
 
 Die rede verskaf deur $3 is ''$2''",
 
@@ -1045,9 +1045,9 @@ Dit was moontlik geskrap of geskuif.
 
 # Revision deletion
 'rev-deleted-comment' => '(opmerking verwyder)',
-'rev-deleted-user' => '(gebruikersnaam geskrap)',
+'rev-deleted-wiki_user' => '(gebruikersnaam geskrap)',
 'rev-deleted-event' => '(stawingsaksie verwyder)',
-'rev-deleted-user-contribs' => '[gebruikersnaam of IP-adres is verwyder - wysiging versteek in bydraes]',
+'rev-deleted-wiki_user-contribs' => '[gebruikersnaam of IP-adres is verwyder - wysiging versteek in bydraes]',
 'rev-deleted-text-permission' => "Die weergawe van die bladsy is '''verwyder'''.
 Vir meer besonderhede, raadpleeg die [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} skrapingslogboek].",
 'rev-deleted-text-unhide' => "Hierdie weergawe van die bladsy is '''verwyder'''.
@@ -1099,7 +1099,7 @@ Ander administrateurs van {{SITENAME}} kan steeds die verborge inhoud sien en di
 'revdelete-hide-image' => 'Steek lêer inhoud weg',
 'revdelete-hide-name' => 'Steek aksie en teiken weg',
 'revdelete-hide-comment' => 'Versteek wysigopsomming',
-'revdelete-hide-user' => 'Steek redigeerder se gebruikersnaam/IP weg',
+'revdelete-hide-wiki_user' => 'Steek redigeerder se gebruikersnaam/IP weg',
 'revdelete-hide-restricted' => 'Onderdruk data van administrateurs asook andere',
 'revdelete-radio-same' => '(moenie verander nie)',
 'revdelete-radio-set' => 'Ja',
@@ -1184,7 +1184,7 @@ Let op dat die gebruik van navigasieskakels hierdie kolom se waardes sal herstel
 'showhideselectedversions' => 'Wys/versteek gekose weergawes',
 'editundo' => 'maak ongedaan',
 'diff-multi' => '({{PLURAL:$1|Een tussenin wysiging|$1 tussenin wysigings}} deur {{PLURAL:$2|een gebruiker|$2 gebruikers}} word nie gewys nie)',
-'diff-multi-manyusers' => '({{PLURAL:$1|Een tussenin wysiging|$1 tussenin wysigings}} deur meer as $2 {{PLURAL:$2|gebruiker|gebruikers}} nie gewys nie)',
+'diff-multi-manywiki_users' => '({{PLURAL:$1|Een tussenin wysiging|$1 tussenin wysigings}} deur meer as $2 {{PLURAL:$2|gebruiker|gebruikers}} nie gewys nie)',
 'difference-missing-revision' => "{{PLURAL:$2|'n Weergawe|$2 weergawes}} van die verskil ($1) {{PLURAL:$2|is|is}} nie gevind nie.
 
 Dit word meestal veroorsaak deur die volg van 'n verouderde verwysing na 'n bladsy wat verwyder is.
@@ -1268,7 +1268,7 @@ U kan ook 'n naamruimte as voorvoegsel gebruik.",
 'mypreferences' => 'Voorkeure',
 'prefs-edits' => 'Aantal wysigings:',
 'prefsnologin' => 'Nie ingeteken nie',
-'prefsnologintext' => 'U moet <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} aanteken]</span> om voorkeure te kan verander.',
+'prefsnologintext' => 'U moet <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} aanteken]</span> om voorkeure te kan verander.',
 'changepassword' => 'Verander wagwoord',
 'prefs-skin' => 'Omslag',
 'skin-preview' => 'Voorskou',
@@ -1276,7 +1276,7 @@ U kan ook 'n naamruimte as voorvoegsel gebruik.",
 'prefs-beta' => 'Beta-funksies',
 'prefs-datetime' => 'Datum en tyd',
 'prefs-labs' => 'Labs-funksies',
-'prefs-user-pages' => 'Gebruikersbladsye',
+'prefs-wiki_user-pages' => 'Gebruikersbladsye',
 'prefs-personal' => 'Gebruikersdata',
 'prefs-rc' => 'Onlangse wysigings',
 'prefs-watchlist' => 'Dophoulys',
@@ -1341,7 +1341,7 @@ Die aksie kan nie ongedaan gemaak word nie.',
 'prefs-emailconfirm-label' => 'E-posbevestiging:',
 'prefs-textboxsize' => 'Afmetings van die wysigingsvenster',
 'youremail' => 'E-pos',
-'username' => 'Gebruikersnaam:',
+'wiki_username' => 'Gebruikersnaam:',
 'uid' => 'Gebruiker-ID:',
 'prefs-memberingroups' => 'Lid van {{PLURAL:$1|groep|groepe}}:',
 'prefs-registration' => 'Registrasiedatum:',
@@ -1381,35 +1381,35 @@ Die inligting is vir ander gebruikers sigbaar.',
 'prefs-displaywatchlist' => 'Weergaweopsies',
 'prefs-diffs' => 'Verskille',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'Die e-posadres lyk geldig',
 'email-address-validity-invalid' => "Verskaf 'n geldige e-posadres",
 
-# User rights
-'userrights' => 'Bestuur gebruikersregte',
-'userrights-lookup-user' => 'Beheer gebruikersgroepe',
-'userrights-user-editname' => 'Voer gebruikersnaam in:',
-'editusergroup' => 'Wysig gebruikersgroepe',
-'editinguser' => "Besig om gebruikersregte van gebruiker '''[[User:$1|$1]]''' $2 te wysig",
-'userrights-editusergroup' => 'Wysig gebruikersgroepe',
-'saveusergroups' => 'Stoor gebruikersgroepe',
-'userrights-groupsmember' => 'Lid van:',
-'userrights-groupsmember-auto' => 'Implisiete lid van:',
-'userrights-groups-help' => "U kan die groepe waarvan die gebruiker 'n lid is verander.
+# wiki_user rights
+'wiki_userrights' => 'Bestuur gebruikersregte',
+'wiki_userrights-lookup-wiki_user' => 'Beheer gebruikersgroepe',
+'wiki_userrights-wiki_user-editname' => 'Voer gebruikersnaam in:',
+'editwiki_usergroup' => 'Wysig gebruikersgroepe',
+'editingwiki_user' => "Besig om gebruikersregte van gebruiker '''[[wiki_user:$1|$1]]''' $2 te wysig",
+'wiki_userrights-editwiki_usergroup' => 'Wysig gebruikersgroepe',
+'savewiki_usergroups' => 'Stoor gebruikersgroepe',
+'wiki_userrights-groupsmember' => 'Lid van:',
+'wiki_userrights-groupsmember-auto' => 'Implisiete lid van:',
+'wiki_userrights-groups-help' => "U kan die groepe waarvan die gebruiker 'n lid is verander.
 * 'n Geselekteerde boks beteken dat die gebruiker lid is van die groep.
 * 'n Ongeselekteerde boks beteken dat die gebruiker nie 'n lid van die groep is nie.
 * 'n Ster (*) beteken dat u nie die gebruiker uit 'n groep kan verwyder as hy eers daaraan behoort nie, of vice versa.",
-'userrights-reason' => 'Rede:',
-'userrights-no-interwiki' => 'U het nie toestemming om gebruikersregte op ander wikis te verander nie.',
-'userrights-nodatabase' => 'Databasis $1 bestaan nie of is nie hier beskikbaar nie.',
-'userrights-nologin' => "U moet [[Special:UserLogin|aanteken]] as 'n administrateur om gebruikersregte te mag toeken.",
-'userrights-notallowed' => 'U het nie magtiging om gebruikersregte by te sit of weg te neem nie.',
-'userrights-changeable-col' => 'Groepe wat u kan verander',
-'userrights-unchangeable-col' => 'Groepe wat u nie kan verander nie',
+'wiki_userrights-reason' => 'Rede:',
+'wiki_userrights-no-interwiki' => 'U het nie toestemming om gebruikersregte op ander wikis te verander nie.',
+'wiki_userrights-nodatabase' => 'Databasis $1 bestaan nie of is nie hier beskikbaar nie.',
+'wiki_userrights-nologin' => "U moet [[Special:wiki_userLogin|aanteken]] as 'n administrateur om gebruikersregte te mag toeken.",
+'wiki_userrights-notallowed' => 'U het nie magtiging om gebruikersregte by te sit of weg te neem nie.',
+'wiki_userrights-changeable-col' => 'Groepe wat u kan verander',
+'wiki_userrights-unchangeable-col' => 'Groepe wat u nie kan verander nie',
 
 # Groups
 'group' => 'Groep:',
-'group-user' => 'Gebruikers',
+'group-wiki_user' => 'Gebruikers',
 'group-autoconfirmed' => 'Bevestigde gebruikers',
 'group-bot' => 'Robotte',
 'group-sysop' => 'Administrateurs',
@@ -1417,14 +1417,14 @@ Die inligting is vir ander gebruikers sigbaar.',
 'group-suppress' => 'Toesighouers',
 'group-all' => '(alle)',
 
-'group-user-member' => '{{GENDER:$1|gebruiker}}',
+'group-wiki_user-member' => '{{GENDER:$1|gebruiker}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|geregistreerde gebruiker}}',
 'group-bot-member' => '{{GENDER:$1|robot}}',
 'group-sysop-member' => '{{GENDER:$1|administrateur}}',
 'group-bureaucrat-member' => '{{GENDER:$1|burokraat}}',
 'group-suppress-member' => '{{GENDER:$1|toesighouer}}',
 
-'grouppage-user' => '{{ns:project}}:Gebruikers',
+'grouppage-wiki_user' => '{{ns:project}}:Gebruikers',
 'grouppage-autoconfirmed' => '{{ns:project}}:Geregistreerde gebruikers',
 'grouppage-bot' => '{{ns:project}}:Robotte',
 'grouppage-sysop' => '{{ns:project}}:Administrateurs',
@@ -1440,7 +1440,7 @@ Die inligting is vir ander gebruikers sigbaar.',
 'right-minoredit' => "Merk as 'n klein verandering",
 'right-move' => 'Skuif bladsye',
 'right-move-subpages' => 'skuif bladsye met hul subblaaie',
-'right-move-rootuserpages' => 'Skuif gebruikersblaaie op hoogste vlak',
+'right-move-rootwiki_userpages' => 'Skuif gebruikersblaaie op hoogste vlak',
 'right-movefile' => 'Skuif lêers',
 'right-suppressredirect' => 'Geen aansture agterlaat by die skuif van bladsye nie',
 'right-upload' => 'Laai lêers op',
@@ -1466,16 +1466,16 @@ Die inligting is vir ander gebruikers sigbaar.',
 'right-suppressionlog' => 'Besigtig privaat logboeke',
 'right-block' => 'Ontneem ander gebruikers die reg om te wysig',
 'right-blockemail' => "Ontneem 'n gebruiker die reg om E-pos te stuur",
-'right-hideuser' => "Blokkeer 'n gebruiker, versteek dit van die publiek",
+'right-hidewiki_user' => "Blokkeer 'n gebruiker, versteek dit van die publiek",
 'right-ipblock-exempt' => 'Omseil IP-blokkades',
 'right-proxyunbannable' => "Blokkades vir instaanbedieners (proxy's) geld nie",
 'right-unblockself' => 'Eie gebruiker deblokkeer',
 'right-protect' => 'Verander beskermingsvlakke en wysig beskermde bladsye',
 'right-editprotected' => 'Wysig beskermde bladsye (sonder kaskade-beskerming)',
 'right-editinterface' => 'Wysig die gebruikerskoppelvlak',
-'right-editusercssjs' => 'Wysig ander gebruikers se CSS- en JS-lêers',
-'right-editusercss' => 'Wysig ander gebruikers se CSS-lêers',
-'right-edituserjs' => 'Wysig ander gebruikers se JS-lêers',
+'right-editwiki_usercssjs' => 'Wysig ander gebruikers se CSS- en JS-lêers',
+'right-editwiki_usercss' => 'Wysig ander gebruikers se CSS-lêers',
+'right-editwiki_userjs' => 'Wysig ander gebruikers se JS-lêers',
 'right-rollback' => "Rol wysigings van die laaste gebruiker wat 'n bladsy gewysig het vinnig terug",
 'right-markbotedits' => 'Merk teruggerolde wysigings as botbywerkings',
 'right-noratelimit' => 'Negeer tydsafhanklike beperkings',
@@ -1486,14 +1486,14 @@ Die inligting is vir ander gebruikers sigbaar.',
 'right-patrolmarks' => 'Wys kontroleermerke in onlangse wysigings',
 'right-unwatchedpages' => 'Wys lys van bladsye wat nie dopgehou word nie',
 'right-mergehistory' => 'Versmelt die geskiedenis van bladsye',
-'right-userrights' => 'Wysig alle gebruiker regte',
-'right-userrights-interwiki' => 'Wysig gebruikersregte van gebruikers op ander wikis',
+'right-wiki_userrights' => 'Wysig alle gebruiker regte',
+'right-wiki_userrights-interwiki' => 'Wysig gebruikersregte van gebruikers op ander wikis',
 'right-siteadmin' => 'Sluit en ontsluit die datbasis',
 'right-override-export-depth' => "Eksporteer bladsye insluitend geskakelde bladsye tot 'n diepte van 5",
 'right-sendemail' => 'Stuur e-pos aan ander gebruikers',
 'right-passwordreset' => 'Wys e-posse vir herstel van wagwoord',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Gebruikersregtelogboek',
 'rightslogtext' => 'Hier onder is die logboek van gebruikersregte wat verander is.',
 'rightslogentry' => 'wysig gebruikersregte vir $1 van $2 na $3',
@@ -1509,7 +1509,7 @@ Die inligting is vir ander gebruikers sigbaar.',
 'action-minoredit' => "merk die wysiging as 'n klein verandering",
 'action-move' => 'skuif die bladsy',
 'action-move-subpages' => 'skuif die bladsy met sy subbladsye',
-'action-move-rootuserpages' => 'gebruikersbladsye van die hoogste vlak te skuif nie',
+'action-move-rootwiki_userpages' => 'gebruikersbladsye van die hoogste vlak te skuif nie',
 'action-movefile' => 'skuif die lêer',
 'action-upload' => 'laai die lêer op',
 'action-reupload' => 'oorskryf die bestaande lêer',
@@ -1532,8 +1532,8 @@ Die inligting is vir ander gebruikers sigbaar.',
 'action-autopatrol' => 'eie wysiging as gekontroleerd te laat merk',
 'action-unwatchedpages' => 'wys die lys van blaaie wat deur niemand dopgehou word nie',
 'action-mergehistory' => 'versmelt die geskiedenis van die bladsy',
-'action-userrights' => 'Wysig alle gebruikersregte',
-'action-userrights-interwiki' => 'wysig gebruikersregte van gebruikers op ander wikis',
+'action-wiki_userrights' => 'Wysig alle gebruikersregte',
+'action-wiki_userrights-interwiki' => 'wysig gebruikersregte van gebruikers op ander wikis',
 'action-siteadmin' => 'sluit of ontsluit die databasis',
 'action-sendemail' => 'stuur e-posse',
 
@@ -1564,7 +1564,7 @@ Die inligting is vir ander gebruikers sigbaar.',
 'minoreditletter' => 'k',
 'newpageletter' => 'N',
 'boteditletter' => 'b',
-'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|gebruiker|gebruikers}} hou die bladsy dop]',
+'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|gebruiker|gebruikers}} hou die bladsy dop]',
 'rc_categories' => 'Beperk tot kategorië (skei met "|")',
 'rc_categories_any' => 'Enige',
 'rc-change-size-new' => '$1 {{PLURAL:$1|greep|grepe}} na die wysiging',
@@ -1590,7 +1590,7 @@ Bladsye op [[Special:Watchlist|u dophoulys]] word in '''vetdruk''' uitgewys.",
 'reuploaddesc' => 'Keer terug na die laaivorm.',
 'upload-tryagain' => 'Stuur gewysigde lêerbeskrywing',
 'uploadnologin' => 'Nie ingeteken nie',
-'uploadnologintext' => 'Teken eers in [[Special:UserLogin|logged in]]
+'uploadnologintext' => 'Teken eers in [[Special:wiki_userLogin|logged in]]
 om lêers te laai.',
 'upload_directory_missing' => 'Die oplaaigids ($1) bestaan nie en kon nie deur die webbediener geskep word nie.',
 'upload_directory_read_only' => 'Die webbediener kan nie na die oplaai gids ($1) skryf nie.',
@@ -1724,11 +1724,11 @@ Gaan terug na die [[Special:Upload/stash/$1|oplaaivorm]] om die probleem op te l
 'upload-proto-error-text' => 'Oplaaie via hierdie metode vereis dat die URL met <code>http://</code> of <code>ftp://</code> begin.',
 'upload-file-error' => 'Interne fout',
 'upload-file-error-text' => "'n Interne fout het plaasgevind in die poging om 'n tydelike lêer op die bediener te skep.
-Kontak asseblief 'n [[Special:ListUsers/sysop|administrateur]].",
+Kontak asseblief 'n [[Special:Listwiki_users/sysop|administrateur]].",
 'upload-misc-error' => 'Onbekende laai fout',
 'upload-misc-error-text' => "'n Onbekende fout het tydens die oplaaiproses voorgekom.
 Maak asseblief seker dat die adres (URL) geldig en toeganklik is en probeer dan weer.
-As daar steeds probleme is, kontak 'n [[Special:ListUsers/sysop|administrateur]].",
+As daar steeds probleme is, kontak 'n [[Special:Listwiki_users/sysop|administrateur]].",
 'upload-too-many-redirects' => 'Die URL bevat te veel aansture',
 'upload-unknown-size' => 'Onbekende grootte',
 'upload-http-error' => "'n HTTP-fout het voorgekom: $1",
@@ -1849,7 +1849,7 @@ Kliek op die opskrifte om die tabel te hersorteer.',
 'listfiles_thumb' => 'Duimnael',
 'listfiles_date' => 'Datum',
 'listfiles_name' => 'Naam',
-'listfiles_user' => 'Gebruiker',
+'listfiles_wiki_user' => 'Gebruiker',
 'listfiles_size' => 'Grootte',
 'listfiles_description' => 'Beskrywing',
 'listfiles_count' => 'Weergawes',
@@ -1866,7 +1866,7 @@ Kliek op die opskrifte om die tabel te hersorteer.',
 'filehist-thumb' => 'Duimnaelskets',
 'filehist-thumbtext' => 'Duimnaelskets vir weergawe vanaf $1',
 'filehist-nothumb' => 'Geen duimnaelskets',
-'filehist-user' => 'Gebruiker',
+'filehist-wiki_user' => 'Gebruiker',
 'filehist-dimensions' => 'Dimensies',
 'filehist-filesize' => 'Lêergrootte',
 'filehist-comment' => 'Opmerking',
@@ -1956,7 +1956,7 @@ Miskien wil u eerder die beskrywing daar op die [$2 lêerbeskrywing] bywerk.',
 'statistics-header-pages' => 'Bladsy statistieke',
 'statistics-header-edits' => 'Wysig statistieke',
 'statistics-header-views' => 'Wys statistieke',
-'statistics-header-users' => 'Gebruikerstatistiek',
+'statistics-header-wiki_users' => 'Gebruikerstatistiek',
 'statistics-header-hooks' => 'Ander statistieke',
 'statistics-articles' => 'Inhoudelike bladsye',
 'statistics-pages' => 'Bladsye',
@@ -1967,9 +1967,9 @@ Miskien wil u eerder die beskrywing daar op die [$2 lêerbeskrywing] bywerk.',
 'statistics-views-total' => 'Totale aantal bladsye vertoon',
 'statistics-views-total-desc' => 'Die wys van nie-bestaande bladsye en spesiale bladsye is nie ingesluit nie',
 'statistics-views-peredit' => 'Bladsye besigtig per wysiging',
-'statistics-users' => 'Geregistreerde [[Special:ListUsers|gebruikers]]',
-'statistics-users-active' => 'Aktiewe grbruikers',
-'statistics-users-active-desc' => "Gebruikers wat in die afgelope {{PLURAL:$1|dag|$1 dae}} 'n handeling uitgevoer het",
+'statistics-wiki_users' => 'Geregistreerde [[Special:Listwiki_users|gebruikers]]',
+'statistics-wiki_users-active' => 'Aktiewe grbruikers',
+'statistics-wiki_users-active-desc' => "Gebruikers wat in die afgelope {{PLURAL:$1|dag|$1 dae}} 'n handeling uitgevoer het",
 'statistics-mostpopular' => 'Mees bekykte bladsye',
 
 'disambiguations' => 'Bladsye wat na dubbelsinnigheidsbladsye skakel',
@@ -2046,13 +2046,13 @@ Elke ry bevat skakels na die eerste en die tweede aanstuur, asook die eerste re�
 'protectedtitles' => 'Beskermde titels',
 'protectedtitlestext' => 'Die volgende titels is beveilig en kan nie geskep word nie',
 'protectedtitlesempty' => 'Geen titels is tans met die parameters beveilig nie.',
-'listusers' => 'Gebruikerslys',
-'listusers-editsonly' => 'Slegs gebruikers met wysigings',
-'listusers-creationsort' => 'Sorteer volgens registrasiedatum',
-'usereditcount' => '$1 {{PLURAL:$1|wysiging|wysigings}}',
-'usercreated' => '{{GENDER:$3|Geregistreer}} op $1 om $2',
+'listwiki_users' => 'Gebruikerslys',
+'listwiki_users-editsonly' => 'Slegs gebruikers met wysigings',
+'listwiki_users-creationsort' => 'Sorteer volgens registrasiedatum',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|wysiging|wysigings}}',
+'wiki_usercreated' => '{{GENDER:$3|Geregistreer}} op $1 om $2',
 'newpages' => 'Nuwe bladsye',
-'newpages-username' => 'Gebruikersnaam:',
+'newpages-wiki_username' => 'Gebruikersnaam:',
 'ancientpages' => 'Oudste bladsye',
 'move' => 'Skuif',
 'movethispage' => 'Skuif hierdie bladsy',
@@ -2077,7 +2077,7 @@ Dit is dus moontlik dat 'n lêer hier gelys word terwyl dit tog in gebruik is.",
 'booksources-invalid-isbn' => 'Die ingevoerde ISBN-kode blyk asof dit ongeldig is; maak asseblief seker dat u dit sonder fout oorgekopiëer het vanaf die oorspronklike bron.',
 
 # Special:Log
-'specialloguserlabel' => 'Uitvoerende gebruiker:',
+'speciallogwiki_userlabel' => 'Uitvoerende gebruiker:',
 'speciallogtitlelabel' => 'Doel (bladsynaam of gebruiker):',
 'log' => 'Logboeke',
 'all-logs-page' => 'Alle openbare logboeke',
@@ -2136,24 +2136,24 @@ Ondersteunde protokolle: <code>$1</code> (moenie hierdie in u soektog gebruik ni
 'linksearch-line' => '$1 geskakel vanaf $2',
 'linksearch-error' => 'Patrone kan slegs aan die begin van die rekenaarnaam geplaas word.',
 
-# Special:ListUsers
-'listusersfrom' => 'Wys gebruikers, beginnende by:',
-'listusers-submit' => 'Wys',
-'listusers-noresult' => 'Geen gebruiker gevind.',
-'listusers-blocked' => '(geblokkeer)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'Wys gebruikers, beginnende by:',
+'listwiki_users-submit' => 'Wys',
+'listwiki_users-noresult' => 'Geen gebruiker gevind.',
+'listwiki_users-blocked' => '(geblokkeer)',
 
-# Special:ActiveUsers
-'activeusers' => 'Aktiewe gebruikers',
-'activeusers-intro' => "Hierdie is 'n lys van gebruikers wat die laaste {{PLURAL:$1|dag|$1 dae}} enige aktiwiteit getoon het.",
-'activeusers-count' => '$1 onlangse {{PLURAL:$1|wysiging|wysigings}} in die {{PLURAL:$3|afgelope dag|laatste $3 dae}}',
-'activeusers-from' => 'Wys gebruikers, beginnende by:',
-'activeusers-hidebots' => 'Versteek bots',
-'activeusers-hidesysops' => 'Versteek administrateurs',
-'activeusers-noresult' => 'Geen gebruikers gevind nie.',
+# Special:Activewiki_users
+'activewiki_users' => 'Aktiewe gebruikers',
+'activewiki_users-intro' => "Hierdie is 'n lys van gebruikers wat die laaste {{PLURAL:$1|dag|$1 dae}} enige aktiwiteit getoon het.",
+'activewiki_users-count' => '$1 onlangse {{PLURAL:$1|wysiging|wysigings}} in die {{PLURAL:$3|afgelope dag|laatste $3 dae}}',
+'activewiki_users-from' => 'Wys gebruikers, beginnende by:',
+'activewiki_users-hidebots' => 'Versteek bots',
+'activewiki_users-hidesysops' => 'Versteek administrateurs',
+'activewiki_users-noresult' => 'Geen gebruikers gevind nie.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Logboek van nuwe gebruikers',
-'newuserlogpagetext' => "Dit is 'n logboek van gebruikers wat onlangs ingeteken het.",
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Logboek van nuwe gebruikers',
+'newwiki_userlogpagetext' => "Dit is 'n logboek van gebruikers wat onlangs ingeteken het.",
 
 # Special:ListGroupRights
 'listgrouprights' => 'Gebruikersgroepregte',
@@ -2174,26 +2174,26 @@ Daar kan [[{{MediaWiki:Listgrouprights-helppage}}|extra inligting]] oor individu
 'listgrouprights-addgroup-self-all' => 'Alle groepe byvoeg tot eie gebruiker',
 'listgrouprights-removegroup-self-all' => 'Alle groepe verwyder van eie gebruiker',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'Geen versendadres beskikbaar',
-'mailnologintext' => "U moet [[Special:UserLogin|ingeteken]] wees en 'n geldige e-posadres in die [[Special:Preferences|voorkeure]] hê om e-pos aan ander gebruikers te stuur.",
-'emailuser' => 'Stuur e-pos na hierdie gebruiker',
-'emailuser-title-target' => 'E-pos die {{GENDER:$1|gebruiker}}',
-'emailuser-title-notarget' => 'E-pos gebruiker',
+'mailnologintext' => "U moet [[Special:wiki_userLogin|ingeteken]] wees en 'n geldige e-posadres in die [[Special:Preferences|voorkeure]] hê om e-pos aan ander gebruikers te stuur.",
+'emailwiki_user' => 'Stuur e-pos na hierdie gebruiker',
+'emailwiki_user-title-target' => 'E-pos die {{GENDER:$1|gebruiker}}',
+'emailwiki_user-title-notarget' => 'E-pos gebruiker',
 'emailpage' => 'Stuur e-pos na gebruiker',
 'emailpagetext' => 'As {{GENDER:$1|dié gebruiker}} \'n geldige e-posadres in sy/haar gebruikersvoorkeure het, sal hierdie vorm \'n enkele boodskap stuur. Die e-posadres in u [[Special:Preferences|gebruikersvoorkeure]] sal verskyn as die "Van"-adres van die pos. Dus sal die ontvanger kan terug antwoord.',
-'usermailererror' => 'Fout met versending van e-pos:',
+'wiki_usermailererror' => 'Fout met versending van e-pos:',
 'defemailsubject' => 'E-pos van {{SITENAME}}-gebruiker "$1"',
-'usermaildisabled' => 'E-pos deur gebruikers is gedeaktiveer.',
-'usermaildisabledtext' => 'U kan nie e-pos aan ander gebruikers op hierdie wiki stuur nie',
+'wiki_usermaildisabled' => 'E-pos deur gebruikers is gedeaktiveer.',
+'wiki_usermaildisabledtext' => 'U kan nie e-pos aan ander gebruikers op hierdie wiki stuur nie',
 'noemailtitle' => 'Geen e-posadres',
 'noemailtext' => "Hierdie gebruiker het nie 'n geldige e-posadres gespesifiseer nie.",
 'nowikiemailtitle' => 'Geen E-pos toegelaat nie',
 'nowikiemailtext' => 'Hierdie gebruiker wil geen e-pos van andere gebruikers ontvang nie.',
 'emailnotarget' => 'Nie-bestaande of ongeldige gebruikernaam vir ontvanger.',
 'emailtarget' => 'Verskaf ontvanger se gebruikersnaam',
-'emailusername' => 'Gebruikernaam:',
-'emailusernamesubmit' => 'Dien in',
+'emailwiki_username' => 'Gebruikernaam:',
+'emailwiki_usernamesubmit' => 'Dien in',
 'email-legend' => "Stuur 'n E-pos na 'n ander gebruiker van {{SITENAME}}",
 'emailfrom' => 'Van:',
 'emailto' => 'Aan:',
@@ -2204,11 +2204,11 @@ Daar kan [[{{MediaWiki:Listgrouprights-helppage}}|extra inligting]] oor individu
 'emailccsubject' => 'Kopie van u boodskap aan $1: $2',
 'emailsent' => 'E-pos gestuur',
 'emailsenttext' => 'U e-pos is gestuur.',
-'emailuserfooter' => 'Hierdie e-pos is gestuur deur $1 aan $2 met behulp van die "Stuur e-pos aan die gebruiker"-funksie van {{SITENAME}}.',
+'emailwiki_userfooter' => 'Hierdie e-pos is gestuur deur $1 aan $2 met behulp van die "Stuur e-pos aan die gebruiker"-funksie van {{SITENAME}}.',
 
-# User Messenger
-'usermessage-summary' => 'Verlaat stelselboodskap.',
-'usermessage-editor' => 'Stelselboodskapper',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'Verlaat stelselboodskap.',
+'wiki_usermessage-editor' => 'Stelselboodskapper',
 
 # Watchlist
 'watchlist' => 'My dophoulys',
@@ -2217,7 +2217,7 @@ Daar kan [[{{MediaWiki:Listgrouprights-helppage}}|extra inligting]] oor individu
 'nowatchlist' => 'U het geen items in u dophoulys nie.',
 'watchlistanontext' => '$1 is noodsaaklik om u dophoulys te sien of te wysig.',
 'watchnologin' => 'Nie ingeteken nie',
-'watchnologintext' => 'U moet [[Special:UserLogin|ingeteken]]
+'watchnologintext' => 'U moet [[Special:wiki_userLogin|ingeteken]]
 wees om u dophoulys te verander.',
 'addwatch' => 'Voeg by dophoulys',
 'addedwatchtext' => 'Die bladsy "[[:$1]]" is by u [[Special:Watchlist|dophoulys]] bygevoeg.
@@ -2329,13 +2329,13 @@ Tree asseblief versigtig op.",
 'rollbacklinkcount-morethan' => 'rol meer as {{PLURAL:$1|een wysiging|$1 wysigings}} terug',
 'rollbackfailed' => 'Terugrol onsuksesvol',
 'cantrollback' => 'Kan nie na verandering terug keer nie; die laaste bydraer is die enigste outer van hierdie bladsy.',
-'alreadyrolled' => "Dit is nie moontlik om die laaste wysiging van die bladsy [[:$1]] deur [[User:$2|$2]] ([[User talk:$2|bespreking]]{{int:pipe-separator}}[[Special:Contributions/$2|bydraes]]) ongedaan te maak nie.
+'alreadyrolled' => "Dit is nie moontlik om die laaste wysiging van die bladsy [[:$1]] deur [[wiki_user:$2|$2]] ([[wiki_user talk:$2|bespreking]]{{int:pipe-separator}}[[Special:Contributions/$2|bydraes]]) ongedaan te maak nie.
 Iemand anders het reeds hierdie bladsy gewysig of teruggerol na 'n vroeëre weergawe.
 
-Die mees onlangse wysiging is gemaak deur [[User:$3|$3]] ([[User talk:$3|bespreking]]{{int:pipe-separator}}[[Special:Contributions/$3|bydraes]]).",
+Die mees onlangse wysiging is gemaak deur [[wiki_user:$3|$3]] ([[wiki_user talk:$3|bespreking]]{{int:pipe-separator}}[[Special:Contributions/$3|bydraes]]).",
 'editcomment' => "Die wysigsopsomming was: \"''\$1''\".",
 'revertpage' => 'Wysigings deur [[Special:Contributions/$2|$2]] teruggerol na laaste weergawe deur $1',
-'revertpage-nouser' => 'Rol wysigings deur (gebruikersnaam verwyder) terug na die laaste weergawe deur [[User:$1|$1]]',
+'revertpage-nowiki_user' => 'Rol wysigings deur (gebruikersnaam verwyder) terug na die laaste weergawe deur [[wiki_user:$1|$1]]',
 'rollback-success' => 'Wysigings deur $1 teruggerol; terugverander na laaste weergawe deur $2.',
 
 # Edit tokens
@@ -2489,12 +2489,12 @@ $1',
 'sp-contributions-uploads' => 'oplaaie',
 'sp-contributions-logs' => 'logboeke',
 'sp-contributions-talk' => 'bespreking',
-'sp-contributions-userrights' => 'bestuur gebruikersregte',
+'sp-contributions-wiki_userrights' => 'bestuur gebruikersregte',
 'sp-contributions-blocked-notice' => 'Hierdie gebruiker is tans geblokkeer. Die laaste inskrywing in die blokkeerlogboek word hieronder vertoon:',
 'sp-contributions-blocked-notice-anon' => 'Hierdie IP-adres is tans geblokkeer.
 Die laaste inskrywing uit die blokkeerlogboek word hier ter inligting weergegee:',
 'sp-contributions-search' => 'Soek na bydraes',
-'sp-contributions-username' => 'IP-adres of gebruikersnaam:',
+'sp-contributions-wiki_username' => 'IP-adres of gebruikersnaam:',
 'sp-contributions-toponly' => 'Wys slegs die nuutste weergawes',
 'sp-contributions-submit' => 'Vertoon',
 
@@ -2527,7 +2527,7 @@ Die laaste inskrywing uit die blokkeerlogboek word hier ter inligting weergegee:
 'blockiptext' => "Gebruik die vorm hier onder om skryftoegang van 'n sekere IP-adres te blok.
 Dit moet net gedoen word om vandalisme te voorkom en in ooreenstemming met [[{{MediaWiki:Policy-url}}|{{SITENAME}}-beleid]].
 Vul 'n spesifieke rede hier onder in (haal byvoorbeeld spesifieke bladsye wat gevandaliseer is, aan).",
-'ipadressorusername' => 'IP-adres of gebruikersnaam:',
+'ipadressorwiki_username' => 'IP-adres of gebruikersnaam:',
 'ipbexpiry' => 'Duur:',
 'ipbreason' => 'Rede:',
 'ipbreasonotherlist' => 'Ander rede',
@@ -2549,8 +2549,8 @@ Vul 'n spesifieke rede hier onder in (haal byvoorbeeld spesifieke bladsye wat ge
 'ipbotheroption' => 'ander',
 'ipbotherreason' => 'Ander/ekstra rede:',
 'ipbhidename' => 'Verberg gebruiker van wysigings en lyste',
-'ipbwatchuser' => 'Hou die gebruiker se bladsy en besprekingsbladsy dop.',
-'ipb-disableusertalk' => 'Voorkom dat die gebruiker tydens die blokkade sy eie besprekingsblad kan wysig',
+'ipbwatchwiki_user' => 'Hou die gebruiker se bladsy en besprekingsbladsy dop.',
+'ipb-disablewiki_usertalk' => 'Voorkom dat die gebruiker tydens die blokkade sy eie besprekingsblad kan wysig',
 'ipb-change-block' => 'Herblokkeer die gebruiker met hierdie instellings',
 'ipb-confirm' => 'Bevestig blokkade',
 'badipaddress' => 'Die IP-adres is nie in die regte formaat nie.',
@@ -2558,7 +2558,7 @@ Vul 'n spesifieke rede hier onder in (haal byvoorbeeld spesifieke bladsye wat ge
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] is geblokkeer.<br />
 Sien die [[Special:BlockList|bloklys]] vir onlangse blokkades.',
 'ipb-blockingself' => 'U is besig om uself te blokkeer! Is u seker u wil dit doen?',
-'ipb-confirmhideuser' => 'U staan op die punt om \'n "versteekte gebruiker" te blokkeer. Dit sal die gebruiker se naam vanaf alle lyste en logboeke onderdruk. Is u seker u wil om dit te doen?',
+'ipb-confirmhidewiki_user' => 'U staan op die punt om \'n "versteekte gebruiker" te blokkeer. Dit sal die gebruiker se naam vanaf alle lyste en logboeke onderdruk. Is u seker u wil om dit te doen?',
 'ipb-edit-dropdown' => 'Werk lys van redes by',
 'ipb-unblock-addr' => 'Deblokkeer $1',
 'ipb-unblock' => "Deblokkeer 'n gebruiker of IP-adres",
@@ -2567,13 +2567,13 @@ Sien die [[Special:BlockList|bloklys]] vir onlangse blokkades.',
 'unblockip' => 'Maak IP-adres oop',
 'unblockiptext' => "Gebruik die vorm hier onder om skryftoegang te herstel vir 'n voorheen geblokkeerde IP-adres.",
 'ipusubmit' => 'Hef blokkade op',
-'unblocked' => 'Blokkade van [[User:$1|$1]] is opgehef',
+'unblocked' => 'Blokkade van [[wiki_user:$1|$1]] is opgehef',
 'unblocked-range' => '$1 is gedeblokkeer',
 'unblocked-id' => 'Blokkade $1 is opgehef',
 'blocklist' => 'Geblokkeerde gebruikers',
 'ipblocklist' => 'Geblokkeerde IP-adresse en gebruikers',
 'ipblocklist-legend' => "Soek 'n geblokkeerde gebruiker",
-'blocklist-userblocks' => 'Versteek geblokkeerde gebruikers',
+'blocklist-wiki_userblocks' => 'Versteek geblokkeerde gebruikers',
 'blocklist-tempblocks' => 'Versteek tydelike blokkades',
 'blocklist-addressblocks' => 'Versteek blokkades met een IP-adres',
 'blocklist-rangeblocks' => 'Versteek blokke IP-adresse',
@@ -2592,7 +2592,7 @@ Sien die [[Special:BlockList|bloklys]] vir onlangse blokkades.',
 'noautoblockblock' => 'autoblok afgeskakel',
 'createaccountblock' => 'skep van gebruikersrekeninge is geblokkeer',
 'emailblock' => 'e-pos versper',
-'blocklist-nousertalk' => 'kan nie eie besprekingsblad wysig nie',
+'blocklist-nowiki_usertalk' => 'kan nie eie besprekingsblad wysig nie',
 'ipblocklist-empty' => 'Die blokkeerlys is leeg.',
 'ipblocklist-no-results' => 'Die IP-adres of gebruikersnaam is nie geblokkeer nie.',
 'blocklink' => 'blok',
@@ -2600,7 +2600,7 @@ Sien die [[Special:BlockList|bloklys]] vir onlangse blokkades.',
 'change-blocklink' => 'versperring wysig',
 'contribslink' => 'bydraes',
 'emaillink' => 'Stuur E-pos',
-'autoblocker' => "Outomaties geblokkeer omdat u IP-adres ooreenkom met die van [[User:\$1|\$1]], wat om die volgende rede geblokkeer is: \"'''\$2'''\"",
+'autoblocker' => "Outomaties geblokkeer omdat u IP-adres ooreenkom met die van [[wiki_user:\$1|\$1]], wat om die volgende rede geblokkeer is: \"'''\$2'''\"",
 'blocklogpage' => 'Blokkeer-logboek',
 'blocklog-showlog' => 'Hierdie gebruiker is al vantevore geblokkeer.
 Die blokkeerlogboek word hieronder ter verwysing weergegee:',
@@ -2616,7 +2616,7 @@ Sien die [[Special:BlockList|bloklys]] vir tans geblokkeerde adresse.",
 'block-log-flags-nocreate' => 'registrasie van gebruikers geblokkeer',
 'block-log-flags-noautoblock' => 'outoblokkering is afgeskakel',
 'block-log-flags-noemail' => 'e-pos versper',
-'block-log-flags-nousertalk' => 'kan nie eie besprekingsblad wysig nie',
+'block-log-flags-nowiki_usertalk' => 'kan nie eie besprekingsblad wysig nie',
 'block-log-flags-angry-autoblock' => 'uitgebreide outomatiese blokkade aangeskakel',
 'block-log-flags-hiddenname' => 'gebruikernaam versteek',
 'range_block_disabled' => "Die administrateur se vermoë om 'n groep IP-adresse te blokkeer is gedeaktiveer.",
@@ -2627,7 +2627,7 @@ Sien die [[Special:BlockList|bloklys]] vir tans geblokkeerde adresse.",
 'ipb-needreblock' => '$1 is al geblokkeer.
 Wil u die instellings wysig?',
 'ipb-otherblocks-header' => 'Ander {{PLURAL:$1|blokkade|blokkades}}',
-'unblock-hideuser' => 'U kan nie die gebruiker deblokkeer nie, omdat die gebruikersnaam versteek is.',
+'unblock-hidewiki_user' => 'U kan nie die gebruiker deblokkeer nie, omdat die gebruikersnaam versteek is.',
 'ipb_cant_unblock' => 'Fout: Blokkade-ID $1 kan nie gevind word nie.
 Die blokkade is moontlik reeds opgehef.',
 'ipb_blocked_as_range' => "Fout: die IP-adres $1 is nie direk geblokkeer nie en die blokkade kan nie opgehef word nie.
@@ -2644,8 +2644,8 @@ Kontak asseblief u internet-diensverskaffer of tegniese ondersteuning en lig hul
 'sorbs_create_account_reason' => "U IP-adres is gelys as 'n oop instaanbediener (proxy) in die DNS-swartlys wat op {{SITENAME}} gebruik word.
 U kan nie 'n rekening skep nie.",
 'cant-block-while-blocked' => 'U kan nie ander gebruikers blokkeer terwyl u self geblokkeer is nie.',
-'cant-see-hidden-user' => "Die gebruiker wat u probeer blokkeer is reeds geblokkeer en weggesteek.
-Aangesien u nie die 'hideuser'-reg het nie, kan u nie die blokkade van die gebruiker sien of wysig nie.",
+'cant-see-hidden-wiki_user' => "Die gebruiker wat u probeer blokkeer is reeds geblokkeer en weggesteek.
+Aangesien u nie die 'hidewiki_user'-reg het nie, kan u nie die blokkade van die gebruiker sien of wysig nie.",
 'ipbblocked' => 'U kan nie ander gebruikers (de)blokkeer nie, omdat u self geblokkeer is',
 'ipbnounblockself' => 'U mag uself nie deblokkeer nie',
 
@@ -2699,15 +2699,15 @@ maak asseblief seker dat u die gevolge van hierdie aksie verstaan voordat u voor
 
 Indien wel sal u self die blad moet skuif of versmelt (indien nodig).",
 'movearticle' => 'Skuif bladsy',
-'moveuserpage-warning' => "'''Waarskuwing:''' U gaan 'n gebruikersblad skuif.
+'movewiki_userpage-warning' => "'''Waarskuwing:''' U gaan 'n gebruikersblad skuif.
 Let daarop dat slegs die bladsy geskuif sal word. Die gebruiker self sal ''nie'' hernoem word ''nie''.",
 'movenologin' => 'Nie ingeteken nie',
-'movenologintext' => "U moet 'n geregistreerde gebruiker wees en [[Special:UserLogin|ingeteken]]
+'movenologintext' => "U moet 'n geregistreerde gebruiker wees en [[Special:wiki_userLogin|ingeteken]]
 wees om 'n bladsy te skuif.",
 'movenotallowed' => 'U het nie regte om bladsye te skuif nie.',
 'movenotallowedfile' => 'U het nie die nodige regte om lêers te kan skuif nie.',
-'cant-move-user-page' => 'U het nie die nodige regte om gebruikersbladsye te kan skuif nie.',
-'cant-move-to-user-page' => "U het nie die nodige regte om 'n bladsy na 'n gebruikersbladsy te kan skuif nie.",
+'cant-move-wiki_user-page' => 'U het nie die nodige regte om gebruikersbladsye te kan skuif nie.',
+'cant-move-to-wiki_user-page' => "U het nie die nodige regte om 'n bladsy na 'n gebruikersbladsy te kan skuif nie.",
 'newtitle' => 'Na nuwe titel',
 'move-watch' => 'Hou hierdie bladsy dop',
 'movepagebtn' => 'Skuif bladsy',
@@ -2884,8 +2884,8 @@ Die lêer is slegs gedeeltelik opgelaai.',
 'javascripttest-qunit-heading' => 'QUnit toetssuite vir MediaWiki JavaScript',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'U gebruikerbladsy',
-'tooltip-pt-anonuserpage' => 'Die gebruikerbladsy vir die IP-adres waaronder u redigeer',
+'tooltip-pt-wiki_userpage' => 'U gebruikerbladsy',
+'tooltip-pt-anonwiki_userpage' => 'Die gebruikerbladsy vir die IP-adres waaronder u redigeer',
 'tooltip-pt-mytalk' => 'U besprekingsbladsy',
 'tooltip-pt-anontalk' => 'Bespreking oor bydraes van hierdie IP-adres',
 'tooltip-pt-preferences' => 'My voorkeure',
@@ -2922,13 +2922,13 @@ Die lêer is slegs gedeeltelik opgelaai.',
 'tooltip-feed-rss' => 'RSS-voed vir hierdie bladsy',
 'tooltip-feed-atom' => 'Atom-voed vir hierdie bladsy',
 'tooltip-t-contributions' => "Bekyk 'n lys van bydraes deur hierdie gebruiker",
-'tooltip-t-emailuser' => "Stuur 'n e-pos aan hierdie gebruiker",
+'tooltip-t-emailwiki_user' => "Stuur 'n e-pos aan hierdie gebruiker",
 'tooltip-t-upload' => 'Laai lêers op',
 'tooltip-t-specialpages' => "'n Lys van al die spesiale bladsye",
 'tooltip-t-print' => 'Drukbare weergawe van hierdie bladsy',
 'tooltip-t-permalink' => "'n Permanente skakel na hierdie weergawe van die bladsy",
 'tooltip-ca-nstab-main' => 'Bekyk die inhoudbladsy',
-'tooltip-ca-nstab-user' => 'Bekyk die gebruikerbladsy',
+'tooltip-ca-nstab-wiki_user' => 'Bekyk die gebruikerbladsy',
 'tooltip-ca-nstab-media' => 'Bekyk die mediabladsy',
 'tooltip-ca-nstab-special' => "Hierdie is 'n spesiale bladsy; u kan dit nie wysig nie",
 'tooltip-ca-nstab-project' => 'Bekyk die projekbladsy',
@@ -2961,13 +2961,13 @@ U kan daar \'n wysigingsopsomming byvoeg.',
 
 # Attribution
 'anonymous' => 'Anonieme {{PLURAL:$1|gebruiker|gebruikers}} van {{SITENAME}}',
-'siteuser' => '{{SITENAME}} gebruiker $1',
-'anonuser' => 'Anonieme {{SITENAME}}-gebruiker $1',
+'sitewiki_user' => '{{SITENAME}} gebruiker $1',
+'anonwiki_user' => 'Anonieme {{SITENAME}}-gebruiker $1',
 'lastmodifiedatby' => 'Hierdie bladsy is laas op $1 om $2 deur $3 gewysig.',
 'othercontribs' => 'Gebaseer op werk van $1.',
 'others' => 'ander',
-'siteusers' => '{{SITENAME}}-{{PLURAL:$2|gebruikers|gebruikers}} $1',
-'anonusers' => 'Anonieme {{SITENAME}}-{{PLURAL:$2|gebruiker|gebruikers}} $1',
+'sitewiki_users' => '{{SITENAME}}-{{PLURAL:$2|gebruikers|gebruikers}} $1',
+'anonwiki_users' => 'Anonieme {{SITENAME}}-{{PLURAL:$2|gebruiker|gebruikers}} $1',
 'creditspage' => 'Outeursblad',
 'nocredits' => 'Geen outeursinligting is vir hierdie bladsy nie beskikbaar nie.',
 
@@ -2976,7 +2976,7 @@ U kan daar \'n wysigingsopsomming byvoeg.',
 'spamprotectiontext' => "Die bladsy wat u wou stoor was geblok deur die gemorspos-filter.
 Hierdie situasie was waarskynlik deur 'n skakel na 'n eksterne webtuiste op ons swartlys veroorsaak.",
 'spamprotectionmatch' => 'Die volgende teks is wat ons gemorspos-filter geaktiveer het: $1',
-'spambot_username' => 'MediaWiki opruiming van spam',
+'spambot_wiki_username' => 'MediaWiki opruiming van spam',
 'spam_reverting' => 'Besig met terugrol na die laaste weergawe wat nie skakels na $1 bevat nie',
 'spam_blanking' => "Alle weergawes met 'n skakel na $1 word verwyder",
 'spam_deleting' => 'Alle weergawes bevat verwysings na $1. Bladsy verwyder',
@@ -3000,9 +3000,9 @@ Hierdie situasie was waarskynlik deur 'n skakel na 'n eksterne webtuiste op ons 
 'pageinfo-redirects-name' => 'Aansture na die bladsy',
 'pageinfo-subpages-name' => 'Subblaaie van die bladsy',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|aanstuur|aansture}}; $3 {{PLURAL:$3|nie-aanstuur|nie-aansture}})',
-'pageinfo-firstuser' => 'Gebruiker wat die bladsy geskep het',
+'pageinfo-firstwiki_user' => 'Gebruiker wat die bladsy geskep het',
 'pageinfo-firsttime' => 'Datum waarop die bladsy geskep is',
-'pageinfo-lastuser' => 'Laatste wysiger',
+'pageinfo-lastwiki_user' => 'Laatste wysiger',
 'pageinfo-lasttime' => 'Datum van laatste wysiging',
 'pageinfo-edits' => 'Totale aantal wysigings',
 'pageinfo-authors' => 'Totale aantal verskillende outeurs',
@@ -3155,7 +3155,7 @@ Ander velde sal versteek wees.
 'exif-compressedbitsperpixel' => 'Beeldkompressiemetode',
 'exif-pixelydimension' => 'Beeldwydte',
 'exif-pixelxdimension' => 'Beeldhoogte',
-'exif-usercomment' => 'Opmerkings',
+'exif-wiki_usercomment' => 'Opmerkings',
 'exif-relatedsoundfile' => 'Verwante klanklêer',
 'exif-datetimeoriginal' => 'Gegewens opgestel op',
 'exif-datetimedigitized' => 'Datum en tyd van digitalisering',
@@ -3584,9 +3584,9 @@ Die bevestigingskode sal om $4 verval.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Let op''': die bladsy is verwyder terwyl u besig was om dit te wysig!",
-'confirmrecreate' => "Gebruiker [[User:$1|$1]] ([[User talk:$1|bespreek]]) het hierdie blad uitgevee ná u begin redigeer het met rede: : ''$2''
+'confirmrecreate' => "Gebruiker [[wiki_user:$1|$1]] ([[wiki_user talk:$1|bespreek]]) het hierdie blad uitgevee ná u begin redigeer het met rede: : ''$2''
 Bevestig asseblief dat u regtig hierdie blad oor wil skep.",
-'confirmrecreate-noreason' => 'Gebruiker [[User:$1|$1]] ([[User talk:$1|bespreking]]) het die bladsy geskrap nadat u dit begin wysig het.
+'confirmrecreate-noreason' => 'Gebruiker [[wiki_user:$1|$1]] ([[wiki_user talk:$1|bespreking]]) het die bladsy geskrap nadat u dit begin wysig het.
 Bevestig dat u die bladsy wil herskep.',
 'recreate' => 'Herskep',
 
@@ -3671,7 +3671,7 @@ U kan ook die [[Special:EditWatchlist|standaard opdaterigskerm gebruik]].',
 'watchlisttools-raw' => 'Wysig bronkode',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|bespreek]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|bespreek]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Onbekende etiket "$1"',
@@ -3738,7 +3738,7 @@ Beelde word in hulle volle resolusie gewys. Ander lêertipes word direk met hull
 'specialpages-group-login' => 'Meld aan / registreer',
 'specialpages-group-changes' => 'Onlangse wysigings en boekstawings',
 'specialpages-group-media' => 'Media verslae en oplaai',
-'specialpages-group-users' => 'Gebruikers en regte',
+'specialpages-group-wiki_users' => 'Gebruikers en regte',
 'specialpages-group-highuse' => 'Baie gebruikte bladsye',
 'specialpages-group-pages' => 'Lyste van bladsye',
 'specialpages-group-pagetools' => 'Bladsyhulpmiddels',
@@ -3836,11 +3836,11 @@ Beelde word in hulle volle resolusie gewys. Ander lêertipes word direk met hull
 'logentry-move-move_redir-noredirect' => "$1 het bladsy $3 na $4 oor 'n bestaande aanstuur geskuif sonder om 'n aanstuur agter te laat",
 'logentry-patrol-patrol' => '$1 het weergawe $4 van bladsy $3 as gekontroleerd gemerk',
 'logentry-patrol-patrol-auto' => '$1 het weergawe $4 van bladsy $3 outomaties as gekontroleerd gemerk',
-'logentry-newusers-newusers' => 'Gebruiker $1 is geskep',
-'logentry-newusers-create' => 'Gebruiker $1 is geskep',
-'logentry-newusers-create2' => 'Gebruiker $3 is deur $1 geskep',
-'logentry-newusers-autocreate' => 'Die gebruiker $1 is outomaties geskep',
-'newuserlog-byemail' => 'wagwoord is per e-pos versend',
+'logentry-newwiki_users-newwiki_users' => 'Gebruiker $1 is geskep',
+'logentry-newwiki_users-create' => 'Gebruiker $1 is geskep',
+'logentry-newwiki_users-create2' => 'Gebruiker $3 is deur $1 geskep',
+'logentry-newwiki_users-autocreate' => 'Die gebruiker $1 is outomaties geskep',
+'newwiki_userlog-byemail' => 'wagwoord is per e-pos versend',
 
 # Feedback
 'feedback-bugornote' => 'As u reg is om \'n tegniese probleem in detail te beskryf, [$1 rapporteer \'n fout].

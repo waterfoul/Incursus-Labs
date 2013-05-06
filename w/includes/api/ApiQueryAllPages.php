@@ -60,7 +60,7 @@ class ApiQueryAllPages extends ApiQueryGeneratorBase {
 	 * @return void
 	 */
 	private function run( $resultPageSet = null ) {
-		$db = $this->getDB();
+		 = $this->getDB();
 
 		$params = $this->extractRequestParams();
 
@@ -74,7 +74,7 @@ class ApiQueryAllPages extends ApiQueryGeneratorBase {
 					"original value returned by the previous query", "_badcontinue" );
 			}
 			$op = $params['dir'] == 'descending' ? '<' : '>';
-			$cont_from = $db->addQuotes( $cont[0] );
+			$cont_from = ->addQuotes( $cont[0] );
 			$this->addWhere( "page_title $op= $cont_from" );
 		}
 
@@ -91,7 +91,7 @@ class ApiQueryAllPages extends ApiQueryGeneratorBase {
 		$this->addWhereRange( 'page_title', $dir, $from, $to );
 
 		if ( isset( $params['prefix'] ) ) {
-			$this->addWhere( 'page_title' . $db->buildLike( $this->titlePartToKey( $params['prefix'] ), $db->anyString() ) );
+			$this->addWhere( 'page_title' . ->buildLike( $this->titlePartToKey( $params['prefix'] ), ->anyString() ) );
 		}
 
 		if ( is_null( $resultPageSet ) ) {
@@ -120,7 +120,7 @@ class ApiQueryAllPages extends ApiQueryGeneratorBase {
 		if ( count( $params['prtype'] ) || $params['prexpiry'] != 'all' ) {
 			$this->addTables( 'page_restrictions' );
 			$this->addWhere( 'page_id=pr_page' );
-			$this->addWhere( 'pr_expiry>' . $db->addQuotes( $db->timestamp() ) );
+			$this->addWhere( 'pr_expiry>' . ->addQuotes( ->timestamp() ) );
 
 			if ( count( $params['prtype'] ) ) {
 				$this->addWhereFld( 'pr_type', $params['prtype'] );
@@ -144,9 +144,9 @@ class ApiQueryAllPages extends ApiQueryGeneratorBase {
 			$forceNameTitleIndex = false;
 
 			if ( $params['prexpiry'] == 'indefinite' ) {
-				$this->addWhere( "pr_expiry = {$db->addQuotes( $db->getInfinity() )} OR pr_expiry IS NULL" );
+				$this->addWhere( "pr_expiry = {->addQuotes( ->getInfinity() )} OR pr_expiry IS NULL" );
 			} elseif ( $params['prexpiry'] == 'definite' ) {
-				$this->addWhere( "pr_expiry != {$db->addQuotes( $db->getInfinity() )}" );
+				$this->addWhere( "pr_expiry != {->addQuotes( ->getInfinity() )}" );
 			}
 
 		} elseif ( isset( $params['prlevel'] ) ) {
@@ -178,11 +178,11 @@ class ApiQueryAllPages extends ApiQueryGeneratorBase {
 
 		//Get gender information
 		if( MWNamespace::hasGenderDistinction( $params['namespace'] ) ) {
-			$users = array();
+			$wiki_users = array();
 			foreach ( $res as $row ) {
-				$users[] = $row->page_title;
+				$wiki_users[] = $row->page_title;
 			}
-			GenderCache::singleton()->doQuery( $users, __METHOD__ );
+			GenderCache::singleton()->doQuery( $wiki_users, __METHOD__ );
 			$res->rewind(); //reset
 		}
 

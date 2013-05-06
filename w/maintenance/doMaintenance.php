@@ -1,7 +1,7 @@
 <?php
 /**
  * We want to make this whole thing as seamless as possible to the
- * end-user. Unfortunately, we can't do _all_ of the work in the class
+ * end-wiki_user. Unfortunately, we can't do _all_ of the work in the class
  * because A) included files are not in global scope, but in the scope
  * of their caller, and B) MediaWiki has way too many globals. So instead
  * we'll kinda fake it, and do the requires() inline. <3 PHP

@@ -61,9 +61,9 @@ abstract class ApiBase extends ContextSource {
 	const PROP_TYPE = 0; // Type of the property, uses same format as PARAM_TYPE
 	const PROP_NULLABLE = 1; // Boolean, can the property be not included in the result? Defaults to false
 
-	const LIMIT_BIG1 = 500; // Fast query, std user limit
+	const LIMIT_BIG1 = 500; // Fast query, std wiki_user limit
 	const LIMIT_BIG2 = 5000; // Fast query, bot/sysop limit
-	const LIMIT_SML1 = 50; // Slow query, std user limit
+	const LIMIT_SML1 = 50; // Slow query, std wiki_user limit
 	const LIMIT_SML2 = 500; // Slow query, bot/sysop limit
 
 	private $mMainModule, $mModuleName, $mModulePrefix;
@@ -134,12 +134,12 @@ abstract class ApiBase extends ContextSource {
 	/**
 	 * Get the name of the module as shown in the profiler log
 	 *
-	 * @param $db DatabaseBase|bool
+	 * @param  DatabaseBase|bool
 	 *
 	 * @return string
 	 */
-	public function getModuleProfileName( $db = false ) {
-		if ( $db ) {
+	public function getModuleProfileName(  = false ) {
+		if (  ) {
 			return 'API:' . $this->mModuleName . '-DB';
 		} else {
 			return 'API:' . $this->mModuleName;
@@ -187,7 +187,7 @@ abstract class ApiBase extends ContextSource {
 	/**
 	 * Create a new RequestContext object to use e.g. for calls to other parts
 	 * the software.
-	 * The object will have the WebRequest and the User object set to the ones
+	 * The object will have the WebRequest and the wiki_user object set to the ones
 	 * used in this instance.
 	 *
 	 * @deprecated since 1.19 use getContext to get the current context
@@ -199,7 +199,7 @@ abstract class ApiBase extends ContextSource {
 	}
 
 	/**
-	 * Set warning section for this module. Users should monitor this
+	 * Set warning section for this module. wiki_users should monitor this
 	 * section to notice any changes in API. Multiple calls to this
 	 * function will result in the warning messages being separated by
 	 * newlines
@@ -654,8 +654,8 @@ abstract class ApiBase extends ContextSource {
 
 	/**
 	 * Using getAllowedParams(), this function makes an array of the values
-	 * provided by the user, with key being the name of the variable, and
-	 * value - validated value from user or default. limits will not be
+	 * provided by the wiki_user, with key being the name of the variable, and
+	 * value - validated value from wiki_user or default. limits will not be
 	 * parsed if $parseLimit is set to false; use this when the max
 	 * limit is not definitive yet, e.g. when getting revisions.
 	 * @param $parseLimit Boolean: true by default
@@ -829,13 +829,13 @@ abstract class ApiBase extends ContextSource {
 	 * Return true if we're to watch the page, false if not, null if no change.
 	 * @param $watchlist String Valid values: 'watch', 'unwatch', 'preferences', 'nochange'
 	 * @param $titleObj Title the page under consideration
-	 * @param $userOption String The user option to consider when $watchlist=preferences.
+	 * @param $wiki_userOption String The wiki_user option to consider when $watchlist=preferences.
 	 * 	If not set will magically default to either watchdefault or watchcreations
 	 * @return bool
 	 */
-	protected function getWatchlistValue ( $watchlist, $titleObj, $userOption = null ) {
+	protected function getWatchlistValue ( $watchlist, $titleObj, $wiki_userOption = null ) {
 
-		$userWatching = $this->getUser()->isWatched( $titleObj );
+		$wiki_userWatching = $this->getwiki_user()->isWatched( $titleObj );
 
 		switch ( $watchlist ) {
 			case 'watch':
@@ -845,23 +845,23 @@ abstract class ApiBase extends ContextSource {
 				return false;
 
 			case 'preferences':
-				# If the user is already watching, don't bother checking
-				if ( $userWatching ) {
+				# If the wiki_user is already watching, don't bother checking
+				if ( $wiki_userWatching ) {
 					return true;
 				}
-				# If no user option was passed, use watchdefault or watchcreation
-				if ( is_null( $userOption ) ) {
-					$userOption = $titleObj->exists()
+				# If no wiki_user option was passed, use watchdefault or watchcreation
+				if ( is_null( $wiki_userOption ) ) {
+					$wiki_userOption = $titleObj->exists()
 							? 'watchdefault' : 'watchcreations';
 				}
-				# Watch the article based on the user preference
-				return (bool)$this->getUser()->getOption( $userOption );
+				# Watch the article based on the wiki_user preference
+				return (bool)$this->getwiki_user()->getOption( $wiki_userOption );
 
 			case 'nochange':
-				return $userWatching;
+				return $wiki_userWatching;
 
 			default:
-				return $userWatching;
+				return $wiki_userWatching;
 		}
 	}
 
@@ -869,19 +869,19 @@ abstract class ApiBase extends ContextSource {
 	 * Set a watch (or unwatch) based the based on a watchlist parameter.
 	 * @param $watch String Valid values: 'watch', 'unwatch', 'preferences', 'nochange'
 	 * @param $titleObj Title the article's title to change
-	 * @param $userOption String The user option to consider when $watch=preferences
+	 * @param $wiki_userOption String The wiki_user option to consider when $watch=preferences
 	 */
-	protected function setWatch( $watch, $titleObj, $userOption = null ) {
-		$value = $this->getWatchlistValue( $watch, $titleObj, $userOption );
+	protected function setWatch( $watch, $titleObj, $wiki_userOption = null ) {
+		$value = $this->getWatchlistValue( $watch, $titleObj, $wiki_userOption );
 		if ( $value === null ) {
 			return;
 		}
 
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		if ( $value ) {
-			WatchAction::doWatch( $titleObj, $user );
+			WatchAction::doWatch( $titleObj, $wiki_user );
 		} else {
-			WatchAction::doUnwatch( $titleObj, $user );
+			WatchAction::doUnwatch( $titleObj, $wiki_user );
 		}
 	}
 
@@ -1009,7 +1009,7 @@ abstract class ApiBase extends ContextSource {
 							$value = $this->validateTimestamp( $value, $encParamName );
 						}
 						break;
-					case 'user':
+					case 'wiki_user':
 						if ( !is_array( $value ) ) {
 							$value = array( $value );
 						}
@@ -1017,7 +1017,7 @@ abstract class ApiBase extends ContextSource {
 						foreach ( $value as $key => $val ) {
 							$title = Title::makeTitleSafe( NS_USER, $val );
 							if ( is_null( $title ) ) {
-								$this->dieUsage( "Invalid value for user parameter $encParamName", "baduser_{$encParamName}" );
+								$this->dieUsage( "Invalid value for wiki_user parameter $encParamName", "badwiki_user_{$encParamName}" );
 							}
 							$value[$key] = $title->getText();
 						}
@@ -1065,7 +1065,7 @@ abstract class ApiBase extends ContextSource {
 			return array();
 		}
 
-		// This is a bit awkward, but we want to avoid calling canApiHighLimits() because it unstubs $wgUser
+		// This is a bit awkward, but we want to avoid calling canApiHighLimits() because it unstubs $wgwiki_user
 		$valuesList = explode( '|', $value, self::LIMIT_SML2 + 1 );
 		$sizeLimit = count( $valuesList ) > self::LIMIT_SML1 && $this->mMainModule->canApiHighLimits() ?
 				self::LIMIT_SML2 : self::LIMIT_SML1;
@@ -1104,12 +1104,12 @@ abstract class ApiBase extends ContextSource {
 	}
 
 	/**
-	 * Validate the value against the minimum and user/bot maximum limits.
+	 * Validate the value against the minimum and wiki_user/bot maximum limits.
 	 * Prints usage info on failure.
 	 * @param $paramName string Parameter name
 	 * @param $value int Parameter value
 	 * @param $min int|null Minimum value
-	 * @param $max int|null Maximum value for users
+	 * @param $max int|null Maximum value for wiki_users
 	 * @param $botMax int Maximum value for sysops/bots
 	 * @param $enforceLimits Boolean Whether to enforce (die) if value is outside limits
 	 */
@@ -1126,7 +1126,7 @@ abstract class ApiBase extends ContextSource {
 			return;
 		}
 
-		// Optimization: do not check user's bot status unless really needed -- skips db query
+		// Optimization: do not check wiki_user's bot status unless really needed -- skips db query
 		// assumes $botMax >= $max
 		if ( !is_null( $max ) && $value > $max ) {
 			if ( !is_null( $botMax ) && $this->getMain()->canApiHighLimits() ) {
@@ -1136,7 +1136,7 @@ abstract class ApiBase extends ContextSource {
 					$value = $botMax;
 				}
 			} else {
-				$msg = $this->encodeParamName( $paramName ) . " may not be over $max (set to $value) for users";
+				$msg = $this->encodeParamName( $paramName ) . " may not be over $max (set to $value) for wiki_users";
 				$this->warnOrDie( $msg, $enforceLimits );
 				$value = $max;
 			}
@@ -1210,7 +1210,7 @@ abstract class ApiBase extends ContextSource {
 		'unknownerror' => array( 'code' => 'unknownerror', 'info' => "Unknown error: \"\$1\"" ),
 		'unknownerror-nocode' => array( 'code' => 'unknownerror', 'info' => 'Unknown error' ),
 
-		// Messages from Title::getUserPermissionsErrors()
+		// Messages from Title::getwiki_userPermissionsErrors()
 		'ns-specialprotected' => array( 'code' => 'unsupportednamespace', 'info' => "Pages in the Special namespace can't be edited" ),
 		'protectedinterface' => array( 'code' => 'protectednamespace-interface', 'info' => "You're not allowed to edit interface messages" ),
 		'namespaceprotected' => array( 'code' => 'protectednamespace', 'info' => "You're not allowed to edit pages in the \"\$1\" namespace" ),
@@ -1223,12 +1223,12 @@ abstract class ApiBase extends ContextSource {
 		'badaccess-groups' => array( 'code' => 'permissiondenied', 'info' => "Permission denied" ),
 		'titleprotected' => array( 'code' => 'protectedtitle', 'info' => "This title has been protected from creation" ),
 		'nocreate-loggedin' => array( 'code' => 'cantcreate', 'info' => "You don't have permission to create new pages" ),
-		'nocreatetext' => array( 'code' => 'cantcreate-anon', 'info' => "Anonymous users can't create new pages" ),
-		'movenologintext' => array( 'code' => 'cantmove-anon', 'info' => "Anonymous users can't move pages" ),
+		'nocreatetext' => array( 'code' => 'cantcreate-anon', 'info' => "Anonymous wiki_users can't create new pages" ),
+		'movenologintext' => array( 'code' => 'cantmove-anon', 'info' => "Anonymous wiki_users can't move pages" ),
 		'movenotallowed' => array( 'code' => 'cantmove', 'info' => "You don't have permission to move pages" ),
 		'confirmedittext' => array( 'code' => 'confirmemail', 'info' => "You must confirm your e-mail address before you can edit" ),
 		'blockedtext' => array( 'code' => 'blocked', 'info' => "You have been blocked from editing" ),
-		'autoblockedtext' => array( 'code' => 'autoblocked', 'info' => "Your IP address has been blocked automatically, because it was used by a blocked user" ),
+		'autoblockedtext' => array( 'code' => 'autoblocked', 'info' => "Your IP address has been blocked automatically, because it was used by a blocked wiki_user" ),
 
 		// Miscellaneous interface messages
 		'actionthrottledtext' => array( 'code' => 'ratelimited', 'info' => "You've exceeded your rate limit. Please wait some time and try again" ),
@@ -1250,27 +1250,27 @@ abstract class ApiBase extends ContextSource {
 		// 'badtitletext' => shouldn't happen
 		'ip_range_invalid' => array( 'code' => 'invalidrange', 'info' => "Invalid IP range" ),
 		'range_block_disabled' => array( 'code' => 'rangedisabled', 'info' => "Blocking IP ranges has been disabled" ),
-		'nosuchusershort' => array( 'code' => 'nosuchuser', 'info' => "The user you specified doesn't exist" ),
+		'nosuchwiki_usershort' => array( 'code' => 'nosuchwiki_user', 'info' => "The wiki_user you specified doesn't exist" ),
 		'badipaddress' => array( 'code' => 'invalidip', 'info' => "Invalid IP address specified" ),
 		'ipb_expiry_invalid' => array( 'code' => 'invalidexpiry', 'info' => "Invalid expiry time" ),
-		'ipb_already_blocked' => array( 'code' => 'alreadyblocked', 'info' => "The user you tried to block was already blocked" ),
+		'ipb_already_blocked' => array( 'code' => 'alreadyblocked', 'info' => "The wiki_user you tried to block was already blocked" ),
 		'ipb_blocked_as_range' => array( 'code' => 'blockedasrange', 'info' => "IP address \"\$1\" was blocked as part of range \"\$2\". You can't unblock the IP invidually, but you can unblock the range as a whole." ),
 		'ipb_cant_unblock' => array( 'code' => 'cantunblock', 'info' => "The block you specified was not found. It may have been unblocked already" ),
-		'mailnologin' => array( 'code' => 'cantsend', 'info' => "You are not logged in, you do not have a confirmed e-mail address, or you are not allowed to send e-mail to other users, so you cannot send e-mail" ),
-		'ipbblocked' => array( 'code' => 'ipbblocked', 'info' => 'You cannot block or unblock users while you are yourself blocked' ),
+		'mailnologin' => array( 'code' => 'cantsend', 'info' => "You are not logged in, you do not have a confirmed e-mail address, or you are not allowed to send e-mail to other wiki_users, so you cannot send e-mail" ),
+		'ipbblocked' => array( 'code' => 'ipbblocked', 'info' => 'You cannot block or unblock wiki_users while you are yourself blocked' ),
 		'ipbnounblockself' => array( 'code' => 'ipbnounblockself', 'info' => 'You are not allowed to unblock yourself' ),
-		'usermaildisabled' => array( 'code' => 'usermaildisabled', 'info' => "User email has been disabled" ),
-		'blockedemailuser' => array( 'code' => 'blockedfrommail', 'info' => "You have been blocked from sending e-mail" ),
+		'wiki_usermaildisabled' => array( 'code' => 'wiki_usermaildisabled', 'info' => "wiki_user email has been disabled" ),
+		'blockedemailwiki_user' => array( 'code' => 'blockedfrommail', 'info' => "You have been blocked from sending e-mail" ),
 		'notarget' => array( 'code' => 'notarget', 'info' => "You have not specified a valid target for this action" ),
-		'noemail' => array( 'code' => 'noemail', 'info' => "The user has not specified a valid e-mail address, or has chosen not to receive e-mail from other users" ),
+		'noemail' => array( 'code' => 'noemail', 'info' => "The wiki_user has not specified a valid e-mail address, or has chosen not to receive e-mail from other wiki_users" ),
 		'rcpatroldisabled' => array( 'code' => 'patroldisabled', 'info' => "Patrolling is disabled on this wiki" ),
 		'markedaspatrollederror-noautopatrol' => array( 'code' => 'noautopatrol', 'info' => "You don't have permission to patrol your own changes" ),
 		'delete-toobig' => array( 'code' => 'bigdelete', 'info' => "You can't delete this page because it has more than \$1 revisions" ),
 		'movenotallowedfile' => array( 'code' => 'cantmovefile', 'info' => "You don't have permission to move files" ),
-		'userrights-no-interwiki' => array( 'code' => 'nointerwikiuserrights', 'info' => "You don't have permission to change user rights on other wikis" ),
-		'userrights-nodatabase' => array( 'code' => 'nosuchdatabase', 'info' => "Database \"\$1\" does not exist or is not local" ),
-		'nouserspecified' => array( 'code' => 'invaliduser', 'info' => "Invalid username \"\$1\"" ),
-		'noname' => array( 'code' => 'invaliduser', 'info' => "Invalid username \"\$1\"" ),
+		'wiki_userrights-no-interwiki' => array( 'code' => 'nointerwikiwiki_userrights', 'info' => "You don't have permission to change wiki_user rights on other wikis" ),
+		'wiki_userrights-nodatabase' => array( 'code' => 'nosuchdatabase', 'info' => "Database \"\$1\" does not exist or is not local" ),
+		'nowiki_userspecified' => array( 'code' => 'invalidwiki_user', 'info' => "Invalid wiki_username \"\$1\"" ),
+		'noname' => array( 'code' => 'invalidwiki_user', 'info' => "Invalid wiki_username \"\$1\"" ),
 		'summaryrequired' => array( 'code' => 'summaryrequired', 'info' => 'Summary required' ),
 		'import-rootpage-invalid' => array( 'code' => 'import-rootpage-invalid', 'info' => 'Root page is an invalid title' ),
 		'import-rootpage-nosubpage' => array( 'code' => 'import-rootpage-nosubpage', 'info' => 'Namespace "$1" of the root page does not allow subpages' ),
@@ -1283,18 +1283,18 @@ abstract class ApiBase extends ContextSource {
 		'invalidtitle' => array( 'code' => 'invalidtitle', 'info' => "Bad title \"\$1\"" ),
 		'nosuchpageid' => array( 'code' => 'nosuchpageid', 'info' => "There is no page with ID \$1" ),
 		'nosuchrevid' => array( 'code' => 'nosuchrevid', 'info' => "There is no revision with ID \$1" ),
-		'nosuchuser' => array( 'code' => 'nosuchuser', 'info' => "User \"\$1\" doesn't exist" ),
-		'invaliduser' => array( 'code' => 'invaliduser', 'info' => "Invalid username \"\$1\"" ),
+		'nosuchwiki_user' => array( 'code' => 'nosuchwiki_user', 'info' => "wiki_user \"\$1\" doesn't exist" ),
+		'invalidwiki_user' => array( 'code' => 'invalidwiki_user', 'info' => "Invalid wiki_username \"\$1\"" ),
 		'invalidexpiry' => array( 'code' => 'invalidexpiry', 'info' => "Invalid expiry time \"\$1\"" ),
 		'pastexpiry' => array( 'code' => 'pastexpiry', 'info' => "Expiry time \"\$1\" is in the past" ),
 		'create-titleexists' => array( 'code' => 'create-titleexists', 'info' => "Existing titles can't be protected with 'create'" ),
 		'missingtitle-createonly' => array( 'code' => 'missingtitle-createonly', 'info' => "Missing titles can only be protected with 'create'" ),
-		'cantblock' => array( 'code' => 'cantblock', 'info' => "You don't have permission to block users" ),
-		'canthide' => array( 'code' => 'canthide', 'info' => "You don't have permission to hide user names from the block log" ),
-		'cantblock-email' => array( 'code' => 'cantblock-email', 'info' => "You don't have permission to block users from sending e-mail through the wiki" ),
-		'unblock-notarget' => array( 'code' => 'notarget', 'info' => "Either the id or the user parameter must be set" ),
-		'unblock-idanduser' => array( 'code' => 'idanduser', 'info' => "The id and user parameters can't be used together" ),
-		'cantunblock' => array( 'code' => 'permissiondenied', 'info' => "You don't have permission to unblock users" ),
+		'cantblock' => array( 'code' => 'cantblock', 'info' => "You don't have permission to block wiki_users" ),
+		'canthide' => array( 'code' => 'canthide', 'info' => "You don't have permission to hide wiki_user names from the block log" ),
+		'cantblock-email' => array( 'code' => 'cantblock-email', 'info' => "You don't have permission to block wiki_users from sending e-mail through the wiki" ),
+		'unblock-notarget' => array( 'code' => 'notarget', 'info' => "Either the id or the wiki_user parameter must be set" ),
+		'unblock-idandwiki_user' => array( 'code' => 'idandwiki_user', 'info' => "The id and wiki_user parameters can't be used together" ),
+		'cantunblock' => array( 'code' => 'permissiondenied', 'info' => "You don't have permission to unblock wiki_users" ),
 		'cannotundelete' => array( 'code' => 'cantundelete', 'info' => "Couldn't undelete: the requested revisions may not exist, or may have been undeleted already" ),
 		'permdenied-undelete' => array( 'code' => 'permissiondenied', 'info' => "You don't have permission to restore deleted revisions" ),
 		'createonly-exists' => array( 'code' => 'articleexists', 'info' => "The article you tried to create has been created already" ),
@@ -1325,11 +1325,11 @@ abstract class ApiBase extends ContextSource {
 		'filerevert-badversion' => array( 'code' => 'filerevert-badversion', 'info' => 'There is no previous local version of this file with the provided timestamp.' ),
 
 		// ApiEditPage messages
-		'noimageredirect-anon' => array( 'code' => 'noimageredirect-anon', 'info' => "Anonymous users can't create image redirects" ),
+		'noimageredirect-anon' => array( 'code' => 'noimageredirect-anon', 'info' => "Anonymous wiki_users can't create image redirects" ),
 		'noimageredirect-logged' => array( 'code' => 'noimageredirect', 'info' => "You don't have permission to create image redirects" ),
 		'spamdetected' => array( 'code' => 'spamdetected', 'info' => "Your edit was refused because it contained a spam fragment: \"\$1\"" ),
 		'contenttoobig' => array( 'code' => 'contenttoobig', 'info' => "The content you supplied exceeds the article size limit of \$1 kilobytes" ),
-		'noedit-anon' => array( 'code' => 'noedit-anon', 'info' => "Anonymous users can't edit pages" ),
+		'noedit-anon' => array( 'code' => 'noedit-anon', 'info' => "Anonymous wiki_users can't edit pages" ),
 		'noedit' => array( 'code' => 'noedit', 'info' => "You don't have permission to edit pages" ),
 		'wasdeleted' => array( 'code' => 'pagedeleted', 'info' => "The page has been deleted since you fetched its timestamp" ),
 		'blankpage' => array( 'code' => 'emptypage', 'info' => "Creating new, empty pages is not allowed" ),
@@ -1372,7 +1372,7 @@ abstract class ApiBase extends ContextSource {
 
 	/**
 	 * Output the error message related to a certain array
-	 * @param $error (array|string) Element of a getUserPermissionsErrors()-style array
+	 * @param $error (array|string) Element of a getwiki_userPermissionsErrors()-style array
 	 */
 	public function dieUsageMsg( $error ) {
 		# most of the time we send a 1 element, so we might as well send it as
@@ -1386,7 +1386,7 @@ abstract class ApiBase extends ContextSource {
 
 	/**
 	 * Return the error message related to a certain array
-	 * @param $error array Element of a getUserPermissionsErrors()-style array
+	 * @param $error array Element of a getwiki_userPermissionsErrors()-style array
 	 * @return array('code' => code, 'info' => info)
 	 */
 	public function parseMsg( $error ) {
@@ -1466,7 +1466,7 @@ abstract class ApiBase extends ContextSource {
 	 * '' if the module doesn't require a salt,
 	 * else false if the module doesn't need a token
 	 * You have also to override needsToken()
-	 * Value is passed to User::getEditToken
+	 * Value is passed to wiki_user::getEditToken
 	 * @return bool|string|array
 	 */
 	public function getTokenSalt() {
@@ -1474,28 +1474,28 @@ abstract class ApiBase extends ContextSource {
 	}
 
 	/**
-	 * Gets the user for whom to get the watchlist
+	 * Gets the wiki_user for whom to get the watchlist
 	 *
 	 * @param $params array
-	 * @return User
+	 * @return wiki_user
 	 */
-	public function getWatchlistUser( $params ) {
+	public function getWatchlistwiki_user( $params ) {
 		if ( !is_null( $params['owner'] ) && !is_null( $params['token'] ) ) {
-			$user = User::newFromName( $params['owner'], false );
-			if ( !($user && $user->getId()) ) {
-				$this->dieUsage( 'Specified user does not exist', 'bad_wlowner' );
+			$wiki_user = wiki_user::newFromName( $params['owner'], false );
+			if ( !($wiki_user && $wiki_user->getId()) ) {
+				$this->dieUsage( 'Specified wiki_user does not exist', 'bad_wlowner' );
 			}
-			$token = $user->getOption( 'watchlisttoken' );
+			$token = $wiki_user->getOption( 'watchlisttoken' );
 			if ( $token == '' || $token != $params['token'] ) {
 				$this->dieUsage( 'Incorrect watchlist token provided -- please set a correct token in Special:Preferences', 'bad_wltoken' );
 			}
 		} else {
-			if ( !$this->getUser()->isLoggedIn() ) {
+			if ( !$this->getwiki_user()->isLoggedIn() ) {
 				$this->dieUsage( 'You must be logged-in to have a watchlist', 'notloggedin' );
 			}
-			$user = $this->getUser();
+			$wiki_user = $this->getwiki_user();
 		}
-		return $user;
+		return $wiki_user;
 	}
 
 	/**

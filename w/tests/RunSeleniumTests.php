@@ -57,8 +57,8 @@ class SeleniumTester extends Maintenance {
 		$this->addOption( 'host', 'Host selenium server. Default: $wgServer . $wgScriptPath', false, true );
 		$this->addOption( 'testBrowser', 'The browser used during testing. Default: firefox', false, true );
 		$this->addOption( 'wikiUrl', 'The Mediawiki installation to point to. Default: http://localhost', false, true );
-		$this->addOption( 'username', 'The login username for sunning tests. Default: empty', false, true );
-		$this->addOption( 'userPassword', 'The login password for running tests. Default: empty', false, true );
+		$this->addOption( 'wiki_username', 'The login wiki_username for sunning tests. Default: empty', false, true );
+		$this->addOption( 'wiki_userPassword', 'The login password for running tests. Default: empty', false, true );
 		$this->addOption( 'seleniumConfig', 'Location of the selenium config file. Default: empty', false, true );
 		$this->addOption( 'list-browsers', 'List the available browsers.' );
 		$this->addOption( 'verbose', 'Be noisier.' );
@@ -67,7 +67,7 @@ class SeleniumTester extends Maintenance {
 		$this->addOption( 'jUnitLogFile', 'Log results in a specified JUnit log file. Default: empty', false, true );
 		$this->addOption( 'runAgainstGrid', 'The test will be run against a Selenium Grid. Default: false.', false, true );
 		$this->deleteOption( 'dbpass' );
-		$this->deleteOption( 'dbuser' );
+		$this->deleteOption( 'dbwiki_user' );
 		$this->deleteOption( 'globals' );
 		$this->deleteOption( 'wiki' );
 	}
@@ -190,8 +190,8 @@ class SeleniumTester extends Maintenance {
 		if ( !isset( $seleniumSettings['host'] ) ) $seleniumSettings['host'] = $wgServer . $wgScriptPath;
 		if ( !isset( $seleniumSettings['port'] ) ) $seleniumSettings['port'] = '4444';
 		if ( !isset( $seleniumSettings['wikiUrl'] ) ) $seleniumSettings['wikiUrl'] = 'http://localhost';
-		if ( !isset( $seleniumSettings['username'] ) ) $seleniumSettings['username'] = '';
-		if ( !isset( $seleniumSettings['userPassword'] ) ) $seleniumSettings['userPassword'] = '';
+		if ( !isset( $seleniumSettings['wiki_username'] ) ) $seleniumSettings['wiki_username'] = '';
+		if ( !isset( $seleniumSettings['wiki_userPassword'] ) ) $seleniumSettings['wiki_userPassword'] = '';
 		if ( !isset( $seleniumSettings['testBrowser'] ) ) $seleniumSettings['testBrowser'] = 'firefox';
 		if ( !isset( $seleniumSettings['jUnitLogFile'] ) ) $seleniumSettings['jUnitLogFile'] = false;
 		if ( !isset( $seleniumSettings['runAgainstGrid'] ) ) $seleniumSettings['runAgainstGrid'] = false;
@@ -204,8 +204,8 @@ class SeleniumTester extends Maintenance {
 		$this->selenium->setBrowser( $this->getOption( 'testBrowser', $seleniumSettings['testBrowser'] ) );
 		$this->selenium->setPort( $this->getOption( 'port', $seleniumSettings['port'] ) );
 		$this->selenium->setHost( $this->getOption( 'host', $seleniumSettings['host'] ) );
-		$this->selenium->setUser( $this->getOption( 'username', $seleniumSettings['username'] ) );
-		$this->selenium->setPass( $this->getOption( 'userPassword', $seleniumSettings['userPassword'] ) );
+		$this->selenium->setwiki_user( $this->getOption( 'wiki_username', $seleniumSettings['wiki_username'] ) );
+		$this->selenium->setPass( $this->getOption( 'wiki_userPassword', $seleniumSettings['wiki_userPassword'] ) );
 		$this->selenium->setVerbose( $this->hasOption( 'verbose' ) );
 		$this->selenium->setJUnitLogFile( $this->getOption( 'jUnitLogFile', $seleniumSettings['jUnitLogFile'] ) );
 

@@ -49,12 +49,12 @@ class MostlinkedCategoriesPage extends QueryPage {
 	function sortDescending() { return true; }
 
 	/**
-	 * Fetch user page links and cache their existence
+	 * Fetch wiki_user page links and cache their existence
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $res DatabaseResult
 	 */
-	function preprocessResults( $db, $res ) {
+	function preprocessResults( , $res ) {
 		if ( !$res->numRows() ) {
 			return;
 		}

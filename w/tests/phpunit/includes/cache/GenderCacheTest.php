@@ -7,79 +7,79 @@
 class GenderCacheTest extends MediaWikiLangTestCase {
 
 	function setUp() {
-		global $wgDefaultUserOptions;
+		global $wgDefaultwiki_userOptions;
 		parent::setUp();
 		//ensure the correct default gender
-		$wgDefaultUserOptions['gender'] = 'unknown';
+		$wgDefaultwiki_userOptions['gender'] = 'unknown';
 	}
 
 	function addDBData() {
-		$user = User::newFromName( 'UTMale' );
-		if( $user->getID() == 0 ) {
-			$user->addToDatabase();
-			$user->setPassword( 'UTMalePassword' );
+		$wiki_user = wiki_user::newFromName( 'UTMale' );
+		if( $wiki_user->getID() == 0 ) {
+			$wiki_user->addToDatabase();
+			$wiki_user->setPassword( 'UTMalePassword' );
 		}
 		//ensure the right gender
-		$user->setOption( 'gender', 'male' );
-		$user->saveSettings();
+		$wiki_user->setOption( 'gender', 'male' );
+		$wiki_user->saveSettings();
 
-		$user = User::newFromName( 'UTFemale' );
-		if( $user->getID() == 0 ) {
-			$user->addToDatabase();
-			$user->setPassword( 'UTFemalePassword' );
+		$wiki_user = wiki_user::newFromName( 'UTFemale' );
+		if( $wiki_user->getID() == 0 ) {
+			$wiki_user->addToDatabase();
+			$wiki_user->setPassword( 'UTFemalePassword' );
 		}
 		//ensure the right gender
-		$user->setOption( 'gender', 'female' );
-		$user->saveSettings();
+		$wiki_user->setOption( 'gender', 'female' );
+		$wiki_user->saveSettings();
 
-		$user = User::newFromName( 'UTDefaultGender' );
-		if( $user->getID() == 0 ) {
-			$user->addToDatabase();
-			$user->setPassword( 'UTDefaultGenderPassword' );
+		$wiki_user = wiki_user::newFromName( 'UTDefaultGender' );
+		if( $wiki_user->getID() == 0 ) {
+			$wiki_user->addToDatabase();
+			$wiki_user->setPassword( 'UTDefaultGenderPassword' );
 		}
 		//ensure the default gender
-		$user->setOption( 'gender', null );
-		$user->saveSettings();
+		$wiki_user->setOption( 'gender', null );
+		$wiki_user->saveSettings();
 	}
 
 	/**
-	 * test usernames
+	 * test wiki_usernames
 	 *
-	 * @dataProvider dataUserName
+	 * @dataProvider datawiki_userName
 	 */
-	function testUserName( $username, $expectedGender ) {
+	function testwiki_userName( $wiki_username, $expectedGender ) {
 		$genderCache = GenderCache::singleton();
-		$gender = $genderCache->getGenderOf( $username );
+		$gender = $genderCache->getGenderOf( $wiki_username );
 		$this->assertEquals( $gender, $expectedGender, "GenderCache normal" );
 	}
 
 	/**
-	 * genderCache should work with user objects, too
+	 * genderCache should work with wiki_user objects, too
 	 *
-	 * @dataProvider dataUserName
+	 * @dataProvider datawiki_userName
 	 */
-	function testUserObjects( $username, $expectedGender ) {
+	function testwiki_userObjects( $wiki_username, $expectedGender ) {
 		$genderCache = GenderCache::singleton();
-		$user = User::newFromName( $username );
-		$gender = $genderCache->getGenderOf( $user );
+		$wiki_user = wiki_user::newFromName( $wiki_username );
+		$gender = $genderCache->getGenderOf( $wiki_user );
 		$this->assertEquals( $gender, $expectedGender, "GenderCache normal" );
 	}
 
-	function dataUserName() {
+	function datawiki_userName() {
 		return array(
 			array( 'UTMale', 'male' ),
 			array( 'UTFemale', 'female' ),
 			array( 'UTDefaultGender', 'unknown' ),
 			array( 'UTNotExist', 'unknown' ),
-			//some not valid user
+			//some not valid wiki_user
 			array( '127.0.0.1', 'unknown' ),
-			array( 'user@test', 'unknown' ),
+			array( 'wiki_user@test', 'unknown' ),
 		);
 	}
 
 	/**
 	 * test strip of subpages to avoid unnecessary queries
-	 * against the never existing username
+	 * against the never existing wiki_username
 	 *
 	 * @dataProvider dataStripSubpages
 	 */

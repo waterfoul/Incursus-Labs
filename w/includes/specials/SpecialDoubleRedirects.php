@@ -80,13 +80,13 @@ class DoubleRedirectsPage extends QueryPage {
 		$titleA = Title::makeTitle( $result->namespace, $result->title );
 
 		if ( $result && !isset( $result->nsb ) ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			r = wfGetDB( DB_SLAVE );
 			$qi = $this->reallyGetQueryInfo( $result->namespace,
 					$result->title );
-			$res = $dbr->select($qi['tables'], $qi['fields'],
+			$res = r->select($qi['tables'], $qi['fields'],
 					$qi['conds'], __METHOD__ );
 			if ( $res ) {
-				$result = $dbr->fetchObject( $res );
+				$result = r->fetchObject( $res );
 			}
 		}
 		if ( !$result ) {

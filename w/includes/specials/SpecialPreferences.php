@@ -22,7 +22,7 @@
  */
 
 /**
- * A special page that allows users to change their preferences
+ * A special page that allows wiki_users to change their preferences
  *
  * @ingroup SpecialPage
  */
@@ -35,10 +35,10 @@ class SpecialPreferences extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 		$out = $this->getOutput();
-		$out->disallowUserJs();  # Prevent hijacked user scripts from sniffing passwords etc.
+		$out->disallowwiki_userJs();  # Prevent hijacked wiki_user scripts from sniffing passwords etc.
 
-		$user = $this->getUser();
-		if ( $user->isAnon() ) {
+		$wiki_user = $this->getwiki_user();
+		if ( $wiki_user->isAnon() ) {
 			throw new ErrorPageError( 'prefsnologin', 'prefsnologintext', array( $this->getTitle()->getPrefixedDBkey() ) );
 		}
 		$this->checkReadOnly();
@@ -57,7 +57,7 @@ class SpecialPreferences extends SpecialPage {
 			);
 		}
 
-		$htmlForm = Preferences::getFormObject( $user, $this->getContext() );
+		$htmlForm = Preferences::getFormObject( $wiki_user, $this->getContext() );
 		$htmlForm->setSubmitCallback( array( 'Preferences', 'tryUISubmit' ) );
 
 		$htmlForm->show();
@@ -77,9 +77,9 @@ class SpecialPreferences extends SpecialPage {
 	}
 
 	public function submitReset( $formData ) {
-		$user = $this->getUser();
-		$user->resetOptions();
-		$user->saveSettings();
+		$wiki_user = $this->getwiki_user();
+		$wiki_user->resetOptions();
+		$wiki_user->saveSettings();
 
 		$url = $this->getTitle()->getFullURL( 'success' );
 

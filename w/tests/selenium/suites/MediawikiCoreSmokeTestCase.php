@@ -3,11 +3,11 @@
  * Stub of tests be need as part of the hack-a-ton
  */
 class MediawikiCoreSmokeTestCase extends SeleniumTestCase {
-	public function testUserLogin() {
+	public function testwiki_userLogin() {
 
 	}
 
-	public function testChangeUserPreference() {
+	public function testChangewiki_userPreference() {
 
 	}
 

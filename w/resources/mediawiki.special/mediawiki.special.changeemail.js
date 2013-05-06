@@ -25,8 +25,8 @@ function updateMailValidityLabel( mail ) {
 }
 
 $( document ).ready( function () {
-	// Lame tip to let user know if its email is valid. See bug 22449
-	// Only bind once for 'blur' so that the user can fill it in without errors
+	// Lame tip to let wiki_user know if its email is valid. See bug 22449
+	// Only bind once for 'blur' so that the wiki_user can fill it in without errors
 	// After that look at every keypress for direct feedback if it was invalid onblur
 	$( '#wpNewEmail' ).one( 'blur', function () {
 		if ( $( '#mw-emailaddress-validity' ).length === 0 ) {

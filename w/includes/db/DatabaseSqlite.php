@@ -41,20 +41,20 @@ class DatabaseSqlite extends DatabaseBase {
 
 	/**
 	 * Constructor.
-	 * Parameters $server, $user and $password are not used.
+	 * Parameters $server, $wiki_user and $password are not used.
 	 * @param $server string
-	 * @param $user string
+	 * @param $wiki_user string
 	 * @param $password string
-	 * @param $dbName string
+	 * @param Name string
 	 * @param $flags int
 	 */
-	function __construct( $server = false, $user = false, $password = false, $dbName = false, $flags = 0 ) {
-		$this->mName = $dbName;
-		parent::__construct( $server, $user, $password, $dbName, $flags );
-		// parent doesn't open when $user is false, but we can work with $dbName
-		if( $dbName ) {
+	function __construct( $server = false, $wiki_user = false, $password = false, Name = false, $flags = 0 ) {
+		$this->mName = Name;
+		parent::__construct( $server, $wiki_user, $password, Name, $flags );
+		// parent doesn't open when $wiki_user is false, but we can work with Name
+		if( Name ) {
 			global $wgSharedDB;
-			if( $this->open( $server, $user, $password, $dbName ) && $wgSharedDB ) {
+			if( $this->open( $server, $wiki_user, $password, Name ) && $wgSharedDB ) {
 				$this->attachDatabase( $wgSharedDB );
 			}
 		}
@@ -77,19 +77,19 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 
 	/** Open an SQLite database and return a resource handle to it
-	 *  NOTE: only $dbName is used, the other parameters are irrelevant for SQLite databases
+	 *  NOTE: only Name is used, the other parameters are irrelevant for SQLite databases
 	 *
 	 * @param $server
-	 * @param $user
+	 * @param $wiki_user
 	 * @param $pass
-	 * @param $dbName
+	 * @param Name
 	 *
 	 * @return PDO
 	 */
-	function open( $server, $user, $pass, $dbName ) {
+	function open( $server, $wiki_user, $pass, Name ) {
 		global $wgSQLiteDataDir;
 
-		$fileName = self::generateFileName( $wgSQLiteDataDir, $dbName );
+		$fileName = self::generateFileName( $wgSQLiteDataDir, Name );
 		if ( !is_readable( $fileName ) ) {
 			$this->mConn = false;
 			throw new DBConnectionError( $this, "SQLite database not accessible" );
@@ -141,11 +141,11 @@ class DatabaseSqlite extends DatabaseBase {
 	/**
 	 * Generates a database file name. Explicitly public for installer.
 	 * @param $dir String: Directory where database resides
-	 * @param $dbName String: Database name
+	 * @param Name String: Database name
 	 * @return String
 	 */
-	public static function generateFileName( $dir, $dbName ) {
-		return "$dir/$dbName.sqlite";
+	public static function generateFileName( $dir, Name ) {
+		return "$dir/Name.sqlite";
 	}
 
 	/**
@@ -177,12 +177,12 @@ class DatabaseSqlite extends DatabaseBase {
 		$cachedResult = false;
 		$table = 'dummy_search_test';
 
-		$db = new DatabaseSqliteStandalone( ':memory:' );
+		 = new DatabaseSqliteStandalone( ':memory:' );
 
-		if ( $db->query( "CREATE VIRTUAL TABLE $table USING FTS3(dummy_field)", __METHOD__, true ) ) {
+		if ( ->query( "CREATE VIRTUAL TABLE $table USING FTS3(dummy_field)", __METHOD__, true ) ) {
 			$cachedResult = 'FTS3';
 		}
-		$db->close();
+		->close();
 		return $cachedResult;
 	}
 
@@ -619,7 +619,7 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 
 	/**
-	 * @return string User-friendly database information
+	 * @return string wiki_user-friendly database information
 	 */
 	public function getServerInfo() {
 		return wfMessage( self::getFulltextSearchModule() ? 'sqlite-has-fts' : 'sqlite-no-fts', $this->getServerVersion() )->text();

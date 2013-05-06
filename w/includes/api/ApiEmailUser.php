@@ -25,10 +25,10 @@
  */
 
 /**
- * API Module to facilitate sending of emails to users
+ * API Module to facilitate sending of emails to wiki_users
  * @ingroup API
  */
-class ApiEmailUser extends ApiBase {
+class ApiEmailwiki_user extends ApiBase {
 
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );
@@ -38,27 +38,27 @@ class ApiEmailUser extends ApiBase {
 		$params = $this->extractRequestParams();
 
 		// Validate target
-		$targetUser = SpecialEmailUser::getTarget( $params['target'] );
-		if ( !( $targetUser instanceof User ) ) {
-			$this->dieUsageMsg( array( $targetUser ) );
+		$targetwiki_user = SpecialEmailwiki_user::getTarget( $params['target'] );
+		if ( !( $targetwiki_user instanceof wiki_user ) ) {
+			$this->dieUsageMsg( array( $targetwiki_user ) );
 		}
 
 		// Check permissions and errors
-		$error = SpecialEmailUser::getPermissionsError( $this->getUser(), $params['token'] );
+		$error = SpecialEmailwiki_user::getPermissionsError( $this->getwiki_user(), $params['token'] );
 		if ( $error ) {
 			$this->dieUsageMsg( array( $error ) );
 		}
 
 		$data = array(
-			'Target' => $targetUser->getName(),
+			'Target' => $targetwiki_user->getName(),
 			'Text' => $params['text'],
 			'Subject' => $params['subject'],
 			'CCMe' => $params['ccme'],
 		);
-		$retval = SpecialEmailUser::submit( $data, $this->getContext() );
+		$retval = SpecialEmailwiki_user::submit( $data, $this->getContext() );
 
 		if ( $retval instanceof Status ) {
-			// SpecialEmailUser sometimes returns a status
+			// SpecialEmailwiki_user sometimes returns a status
 			// sometimes it doesn't.
 			if ( $retval->isGood() ) {
 				$retval = true;
@@ -108,7 +108,7 @@ class ApiEmailUser extends ApiBase {
 
 	public function getParamDescription() {
 		return array(
-			'target' => 'User to send email to',
+			'target' => 'wiki_user to send email to',
 			'subject' => 'Subject header',
 			'text' => 'Mail body',
 			'token' => 'A token previously acquired via prop=info',
@@ -134,12 +134,12 @@ class ApiEmailUser extends ApiBase {
 	}
 
 	public function getDescription() {
-		return 'Email a user.';
+		return 'Email a wiki_user.';
 	}
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'usermaildisabled' ),
+			array( 'wiki_usermaildisabled' ),
 		) );
 	}
 
@@ -153,7 +153,7 @@ class ApiEmailUser extends ApiBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=emailuser&target=WikiSysop&text=Content' => 'Send an email to the User "WikiSysop" with the text "Content"',
+			'api.php?action=emailwiki_user&target=WikiSysop&text=Content' => 'Send an email to the wiki_user "WikiSysop" with the text "Content"',
 		);
 	}
 

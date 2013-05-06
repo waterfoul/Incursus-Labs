@@ -52,7 +52,7 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 	 * @return void
 	 */
 	private function run( $resultPageSet = null ) {
-		$db = $this->getDB();
+		 = $this->getDB();
 		$params = $this->extractRequestParams();
 
 		$prop = array_flip( $params['prop'] );
@@ -82,13 +82,13 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 				if ( count( $continueArr ) != 1 ) {
 					$this->dieUsage( 'Invalid continue parameter', 'badcontinue' );
 				}
-				$continueTitle = $db->addQuotes( $continueArr[0] );
+				$continueTitle = ->addQuotes( $continueArr[0] );
 				$this->addWhere( "pl_title $op= $continueTitle" );
 			} else {
 				if ( count( $continueArr ) != 2 ) {
 					$this->dieUsage( 'Invalid continue parameter', 'badcontinue' );
 				}
-				$continueTitle = $db->addQuotes( $continueArr[0] );
+				$continueTitle = ->addQuotes( $continueArr[0] );
 				$continueFrom = intval( $continueArr[1] );
 				$this->addWhere(
 					"pl_title $op $continueTitle OR " .
@@ -103,7 +103,7 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 		$this->addWhereRange( 'pl_title', 'newer', $from, $to );
 
 		if ( isset( $params['prefix'] ) ) {
-			$this->addWhere( 'pl_title' . $db->buildLike( $this->titlePartToKey( $params['prefix'] ), $db->anyString() ) );
+			$this->addWhere( 'pl_title' . ->buildLike( $this->titlePartToKey( $params['prefix'] ), ->anyString() ) );
 		}
 
 		$this->addFields( 'pl_title' );

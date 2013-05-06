@@ -5,7 +5,7 @@
  * This is how I see the log system history:
  * - appending to plain wiki pages
  * - formatting log entries based on database fields
- * - user is now part of the action message
+ * - wiki_user is now part of the action message
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,8 +59,8 @@ interface LogEntry {
 	public function getParameters();
 
 	/**
-	 * Get the user for performed this action.
-	 * @return User
+	 * Get the wiki_user for performed this action.
+	 * @return wiki_user
 	 */
 	public function getPerformer();
 
@@ -77,7 +77,7 @@ interface LogEntry {
 	public function getTimestamp();
 
 	/**
-	 * Get the user provided comment.
+	 * Get the wiki_user provided comment.
 	 * @return string
 	 */
 	public function getComment();
@@ -134,18 +134,18 @@ class DatabaseLogEntry extends LogEntryBase {
 	 * @return array
 	 */
 	public static function getSelectQueryData() {
-		$tables = array( 'logging', 'user' );
+		$tables = array( 'logging', 'wiki_user' );
 		$fields = array(
 			'log_id', 'log_type', 'log_action', 'log_timestamp',
-			'log_user', 'log_user_text',
+			'log_wiki_user', 'log_wiki_user_text',
 			'log_namespace', 'log_title', // unused log_page
 			'log_comment', 'log_params', 'log_deleted',
-			'user_id', 'user_name', 'user_editcount',
+			'wiki_user_id', 'wiki_user_name', 'wiki_user_editcount',
 		);
 
 		$joins = array(
-			// IP's don't have an entry in user table
-			'user' => array( 'LEFT JOIN', 'log_user=user_id' ),
+			// IP's don't have an entry in wiki_user table
+			'wiki_user' => array( 'LEFT JOIN', 'log_wiki_user=wiki_user_id' ),
 		);
 
 		return array(
@@ -232,16 +232,16 @@ class DatabaseLogEntry extends LogEntryBase {
 	}
 
 	public function getPerformer() {
-		$userId = (int) $this->row->log_user;
-		if ( $userId !== 0 ) { // logged-in users
-			if ( isset( $this->row->user_name ) ) {
-				return User::newFromRow( $this->row );
+		$wiki_userId = (int) $this->row->log_wiki_user;
+		if ( $wiki_userId !== 0 ) { // logged-in wiki_users
+			if ( isset( $this->row->wiki_user_name ) ) {
+				return wiki_user::newFromRow( $this->row );
 			} else {
-				return User::newFromId( $userId );
+				return wiki_user::newFromId( $wiki_userId );
 			}
-		} else { // IP users
-			$userText = $this->row->log_user_text;
-			return User::newFromName( $userText, false );
+		} else { // IP wiki_users
+			$wiki_userText = $this->row->log_wiki_user_text;
+			return wiki_user::newFromName( $wiki_userText, false );
 		}
 	}
 
@@ -287,13 +287,13 @@ class RCDatabaseLogEntry extends DatabaseLogEntry {
 	}
 
 	public function getPerformer() {
-		$userId = (int) $this->row->rc_user;
-		if ( $userId !== 0 ) {
-			return User::newFromId( $userId );
+		$wiki_userId = (int) $this->row->rc_wiki_user;
+		if ( $wiki_userId !== 0 ) {
+			return wiki_user::newFromId( $wiki_userId );
 		} else {
-			$userText = $this->row->rc_user_text;
-			// Might be an IP, don't validate the username
-			return User::newFromName( $userText, false );
+			$wiki_userText = $this->row->rc_wiki_user_text;
+			// Might be an IP, don't validate the wiki_username
+			return wiki_user::newFromName( $wiki_userText, false );
 		}
 	}
 
@@ -327,7 +327,7 @@ class ManualLogEntry extends LogEntryBase {
 	protected $type; ///!< @var string
 	protected $subtype; ///!< @var string
 	protected $parameters = array(); ///!< @var array
-	protected $performer; ///!< @var User
+	protected $performer; ///!< @var wiki_user
 	protected $target; ///!< @var Title
 	protected $timestamp; ///!< @var string
 	protected $comment = ''; ///!< @var string
@@ -367,13 +367,13 @@ class ManualLogEntry extends LogEntryBase {
 	}
 
 	/**
-	 * Set the user that performed the action being logged.
+	 * Set the wiki_user that performed the action being logged.
 	 * 
 	 * @since 1.19
 	 * 
-	 * @param User $performer
+	 * @param wiki_user $performer
 	 */
-	public function setPerformer( User $performer ) {
+	public function setPerformer( wiki_user $performer ) {
 		$this->performer = $performer;
 	}
 
@@ -428,8 +428,8 @@ class ManualLogEntry extends LogEntryBase {
 	public function insert() {
 		global $wgContLang;
 
-		$dbw = wfGetDB( DB_MASTER );
-		$id = $dbw->nextSequenceValue( 'logging_log_id_seq' );
+		w = wfGetDB( DB_MASTER );
+		$id = w->nextSequenceValue( 'logging_log_id_seq' );
 
 		if ( $this->timestamp === null ) {
 			$this->timestamp = wfTimestampNow();
@@ -442,17 +442,17 @@ class ManualLogEntry extends LogEntryBase {
 			'log_id' => $id,
 			'log_type' => $this->getType(),
 			'log_action' => $this->getSubtype(),
-			'log_timestamp' => $dbw->timestamp( $this->getTimestamp() ),
-			'log_user' => $this->getPerformer()->getId(),
-			'log_user_text' => $this->getPerformer()->getName(),
+			'log_timestamp' => w->timestamp( $this->getTimestamp() ),
+			'log_wiki_user' => $this->getPerformer()->getId(),
+			'log_wiki_user_text' => $this->getPerformer()->getName(),
 			'log_namespace' => $this->getTarget()->getNamespace(),
 			'log_title' => $this->getTarget()->getDBkey(),
 			'log_page' => $this->getTarget()->getArticleID(),
 			'log_comment' => $comment,
 			'log_params' => serialize( (array) $this->getParameters() ),
 		);
-		$dbw->insert( 'logging', $data, __METHOD__ );
-		$this->id = !is_null( $id ) ? $id : $dbw->insertId();
+		w->insert( 'logging', $data, __METHOD__ );
+		$this->id = !is_null( $id ) ? $id : w->insertId();
 		return $this->id;
 	}
 
@@ -472,21 +472,21 @@ class ManualLogEntry extends LogEntryBase {
 		$formatter->setContext( $context );
 
 		$logpage = SpecialPage::getTitleFor( 'Log', $this->getType() );
-		$user = $this->getPerformer();
+		$wiki_user = $this->getPerformer();
 		$ip = "";
-		if ( $user->isAnon() ) {
+		if ( $wiki_user->isAnon() ) {
 			/*
 			 * "MediaWiki default" and friends may have
 			 * no IP address in their name
 			 */
-			if ( IP::isIPAddress( $user->getName() ) ) {
-				$ip = $user->getName();
+			if ( IP::isIPAddress( $wiki_user->getName() ) ) {
+				$ip = $wiki_user->getName();
 			}
 		}
 		$rc = RecentChange::newLogEntry(
 			$this->getTimestamp(),
 			$logpage,
-			$user,
+			$wiki_user,
 			$formatter->getPlainActionText(),
 			$ip,
 			$this->getType(),
@@ -522,7 +522,7 @@ class ManualLogEntry extends LogEntryBase {
 	}
 
 	/**
-	 * @return User
+	 * @return wiki_user
 	 */
 	public function getPerformer() {
 		return $this->performer;

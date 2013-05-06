@@ -1,6 +1,6 @@
 <?php
 /**
- * Backend functions for suppressing and unsuppressing all references to a given user.
+ * Backend functions for suppressing and unsuppressing all references to a given wiki_user.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,115 +22,115 @@
  */
 
 /**
- * Backend functions for suppressing and unsuppressing all references to a given user,
- * used when blocking with HideUser enabled.  This was spun out of SpecialBlockip.php
+ * Backend functions for suppressing and unsuppressing all references to a given wiki_user,
+ * used when blocking with Hidewiki_user enabled.  This was spun out of SpecialBlockip.php
  * in 1.18; at some point it needs to be rewritten to either use RevisionDelete abstraction,
  * or at least schema abstraction.
  *
  * @ingroup RevisionDelete
  */
-class RevisionDeleteUser {
+class RevisionDeletewiki_user {
 
 	/**
-	 * Update *_deleted bitfields in various tables to hide or unhide usernames
-	 * @param  $name String username
-	 * @param  $userId Int user id
+	 * Update *_deleted bitfields in various tables to hide or unhide wiki_usernames
+	 * @param  $name String wiki_username
+	 * @param  $wiki_userId Int wiki_user id
 	 * @param  $op String operator '|' or '&'
-	 * @param  $dbw null|DatabaseBase, if you happen to have one lying around
+	 * @param  w null|DatabaseBase, if you happen to have one lying around
 	 * @return bool
 	 */
-	private static function setUsernameBitfields( $name, $userId, $op, $dbw ) {
-		if ( !$userId || ( $op !== '|' && $op !== '&' ) ) {
+	private static function setwiki_usernameBitfields( $name, $wiki_userId, $op, w ) {
+		if ( !$wiki_userId || ( $op !== '|' && $op !== '&' ) ) {
 			return false; // sanity check
 		}
-		if ( !$dbw instanceof DatabaseBase ) {
-			$dbw = wfGetDB( DB_MASTER );
+		if ( !w instanceof DatabaseBase ) {
+			w = wfGetDB( DB_MASTER );
 		}
 
 		# To suppress, we OR the current bitfields with Revision::DELETED_USER
-		# to put a 1 in the username *_deleted bit. To unsuppress we AND the
+		# to put a 1 in the wiki_username *_deleted bit. To unsuppress we AND the
 		# current bitfields with the inverse of Revision::DELETED_USER. The
-		# username bit is made to 0 (x & 0 = 0), while others are unchanged (x & 1 = x).
+		# wiki_username bit is made to 0 (x & 0 = 0), while others are unchanged (x & 1 = x).
 		# The same goes for the sysop-restricted *_deleted bit.
-		$delUser = Revision::DELETED_USER | Revision::DELETED_RESTRICTED;
+		$delwiki_user = Revision::DELETED_USER | Revision::DELETED_RESTRICTED;
 		$delAction = LogPage::DELETED_ACTION | Revision::DELETED_RESTRICTED;
 		if( $op == '&' ) {
-			$delUser = "~{$delUser}";
+			$delwiki_user = "~{$delwiki_user}";
 			$delAction = "~{$delAction}";
 		}
 
-		# Normalize user name
-		$userTitle = Title::makeTitleSafe( NS_USER, $name );
-		$userDbKey = $userTitle->getDBkey();
+		# Normalize wiki_user name
+		$wiki_userTitle = Title::makeTitleSafe( NS_USER, $name );
+		$wiki_userDbKey = $wiki_userTitle->getDBkey();
 
 		# Hide name from live edits
-		$dbw->update(
+		w->update(
 			'revision',
-			array( "rev_deleted = rev_deleted $op $delUser" ),
-			array( 'rev_user' => $userId ),
+			array( "rev_deleted = rev_deleted $op $delwiki_user" ),
+			array( 'rev_wiki_user' => $wiki_userId ),
 			__METHOD__ );
 
 		# Hide name from deleted edits
-		$dbw->update(
+		w->update(
 			'archive',
-			array( "ar_deleted = ar_deleted $op $delUser" ),
-			array( 'ar_user_text' => $name ),
+			array( "ar_deleted = ar_deleted $op $delwiki_user" ),
+			array( 'ar_wiki_user_text' => $name ),
 			__METHOD__
 		);
 
 		# Hide name from logs
-		$dbw->update(
+		w->update(
 			'logging',
-			array( "log_deleted = log_deleted $op $delUser" ),
-			array( 'log_user' => $userId, "log_type != 'suppress'" ),
+			array( "log_deleted = log_deleted $op $delwiki_user" ),
+			array( 'log_wiki_user' => $wiki_userId, "log_type != 'suppress'" ),
 			__METHOD__
 		);
-		$dbw->update(
+		w->update(
 			'logging',
 			array( "log_deleted = log_deleted $op $delAction" ),
-			array( 'log_namespace' => NS_USER, 'log_title' => $userDbKey,
+			array( 'log_namespace' => NS_USER, 'log_title' => $wiki_userDbKey,
 				"log_type != 'suppress'" ),
 			__METHOD__
 		);
 
 		# Hide name from RC
-		$dbw->update(
+		w->update(
 			'recentchanges',
-			array( "rc_deleted = rc_deleted $op $delUser" ),
-			array( 'rc_user_text' => $name ),
+			array( "rc_deleted = rc_deleted $op $delwiki_user" ),
+			array( 'rc_wiki_user_text' => $name ),
 			__METHOD__
 		);
-		$dbw->update(
+		w->update(
 			'recentchanges',
 			array( "rc_deleted = rc_deleted $op $delAction" ),
-			array( 'rc_namespace' => NS_USER, 'rc_title' => $userDbKey, 'rc_logid > 0' ),
+			array( 'rc_namespace' => NS_USER, 'rc_title' => $wiki_userDbKey, 'rc_logid > 0' ),
 			__METHOD__
 		);
 
 		# Hide name from live images
-		$dbw->update(
+		w->update(
 			'oldimage',
-			array( "oi_deleted = oi_deleted $op $delUser" ),
-			array( 'oi_user_text' => $name ),
+			array( "oi_deleted = oi_deleted $op $delwiki_user" ),
+			array( 'oi_wiki_user_text' => $name ),
 			__METHOD__
 		);
 
 		# Hide name from deleted images
-		$dbw->update(
+		w->update(
 			'filearchive',
-			array( "fa_deleted = fa_deleted $op $delUser" ),
-			array( 'fa_user_text' => $name ),
+			array( "fa_deleted = fa_deleted $op $delwiki_user" ),
+			array( 'fa_wiki_user_text' => $name ),
 			__METHOD__
 		);
 		# Done!
 		return true;
 	}
 
-	public static function suppressUserName( $name, $userId, $dbw = null ) {
-		return self::setUsernameBitfields( $name, $userId, '|', $dbw );
+	public static function suppresswiki_userName( $name, $wiki_userId, w = null ) {
+		return self::setwiki_usernameBitfields( $name, $wiki_userId, '|', w );
 	}
 
-	public static function unsuppressUserName( $name, $userId, $dbw = null ) {
-		return self::setUsernameBitfields( $name, $userId, '&', $dbw );
+	public static function unsuppresswiki_userName( $name, $wiki_userId, w = null ) {
+		return self::setwiki_usernameBitfields( $name, $wiki_userId, '&', w );
 	}
 }

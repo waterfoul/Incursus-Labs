@@ -54,7 +54,7 @@ class ScopedPHPTimeout {
 			} elseif ( self::$stackDepth > 0 ) { // recursion guard
 				trigger_error( "Resursive invocation of " . __CLASS__ . " attempted." );
 			} else {
-				$this->oldIgnoreAbort = ignore_user_abort( true );
+				$this->oldIgnoreAbort = ignore_wiki_user_abort( true );
 				$this->oldTimeout = ini_set( 'max_execution_time', $seconds );
 				$this->startTime = microtime( true );
 				++self::$stackDepth;
@@ -78,7 +78,7 @@ class ScopedPHPTimeout {
 			// take some measures to prevent this. Track total time and calls.
 			self::$totalElapsed += $elapsed;
 			--self::$stackDepth;
-			ignore_user_abort( $this->oldIgnoreAbort );
+			ignore_wiki_user_abort( $this->oldIgnoreAbort );
 		}
 	}
 }

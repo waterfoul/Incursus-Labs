@@ -59,7 +59,7 @@ details.
 The Wikimedia Foundation currently has no legal rights to the software.
 
 Sections of code written exclusively by Lee Crocker or Erik Moeller are also
-released into the public domain, which does not impair the obligations of users
+released into the public domain, which does not impair the obligations of wiki_users
 under the GPL for use of the whole code or other sections thereof.
 
 MediaWiki makes use of the Sajax Toolkit by modernmethod, 
@@ -119,4 +119,4 @@ Developer discussion takes place at:
 * https://lists.wikimedia.org/mailman/listinfo/wikitech-l
 
 There is also a development and support channel #mediawiki on irc.freenode.net,
-and an unoffical support forum at www.mwusers.com.
+and an unoffical support forum at www.mwwiki_users.com.

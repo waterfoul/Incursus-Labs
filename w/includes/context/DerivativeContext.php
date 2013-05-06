@@ -52,9 +52,9 @@ class DerivativeContext extends ContextSource {
 	private $output;
 
 	/**
-	 * @var User
+	 * @var wiki_user
 	 */
-	private $user;
+	private $wiki_user;
 
 	/**
 	 * @var Language
@@ -186,24 +186,24 @@ class DerivativeContext extends ContextSource {
 	}
 
 	/**
-	 * Set the User object
+	 * Set the wiki_user object
 	 *
-	 * @param $u User
+	 * @param $u wiki_user
 	 */
-	public function setUser( User $u ) {
-		$this->user = $u;
+	public function setwiki_user( wiki_user $u ) {
+		$this->wiki_user = $u;
 	}
 
 	/**
-	 * Get the User object
+	 * Get the wiki_user object
 	 *
-	 * @return User
+	 * @return wiki_user
 	 */
-	public function getUser() {
-		if ( !is_null( $this->user ) ) {
-			return $this->user;
+	public function getwiki_user() {
+		if ( !is_null( $this->wiki_user ) ) {
+			return $this->wiki_user;
 		} else {
-			return $this->getContext()->getUser();
+			return $this->getContext()->getwiki_user();
 		}
 	}
 

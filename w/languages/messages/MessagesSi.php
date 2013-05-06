@@ -56,7 +56,7 @@ $namespaceAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'ක්‍රියාකාරී_පරිශීලකයන්' ),
+	'Activewiki_users'               => array( 'ක්‍රියාකාරී_පරිශීලකයන්' ),
 	'Allmessages'               => array( 'සියළු_පණිවුඩ' ),
 	'Allpages'                  => array( 'සියළු_පිටු' ),
 	'Ancientpages'              => array( 'පුරාතන_පිටු' ),
@@ -75,7 +75,7 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( 'මකාදැමුණු_දායකත්වයන්' ),
 	'Disambiguations'           => array( 'වක්‍රෝත්තිහරණයන්' ),
 	'DoubleRedirects'           => array( 'ද්විත්ව_යළි-යොමුකිරීම්' ),
-	'Emailuser'                 => array( 'පරිශීලකට_විද්‍යුත්-තැපැලක්_යැවිම' ),
+	'Emailwiki_user'                 => array( 'පරිශීලකට_විද්‍යුත්-තැපැලක්_යැවිම' ),
 	'Export'                    => array( 'නිර්යාතකරන්න' ),
 	'Fewestrevisions'           => array( 'අතිස්වල්ප_සංශෝධන' ),
 	'FileDuplicateSearch'       => array( 'ගොනු_අනුපිටපත්_ගවේෂණය' ),
@@ -89,7 +89,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'රූප_ලැයිස්තුව' ),
 	'Listgrouprights'           => array( 'කණ්ඩායම්_හිමිකම්_ලැයිස්තුගතකරන්න' ),
 	'Listredirects'             => array( 'යළි-යොමුකිරීම්_ලැයිස්තුගතකරන්න' ),
-	'Listusers'                 => array( 'පරිශීලකයන්_ලැයිස්තු_ගත_කරන්න', 'පරිශීලක_ලැයිස්තුව' ),
+	'Listwiki_users'                 => array( 'පරිශීලකයන්_ලැයිස්තු_ගත_කරන්න', 'පරිශීලක_ලැයිස්තුව' ),
 	'Lockdb'                    => array( 'දත්ත_සංචිතය_අවුරන්න' ),
 	'Log'                       => array( 'ලඝු_සටහන', 'ලඝු_සටහන්' ),
 	'Lonelypages'               => array( 'හුදකලා_පිටු' ),
@@ -135,9 +135,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'භාවිත_නොකල_සැකිලි' ),
 	'Unwatchedpages'            => array( 'මුර_නොකල_පිටු' ),
 	'Upload'                    => array( 'උඩුගත_කිරීම' ),
-	'Userlogin'                 => array( 'පරිශීලක_ප්‍රවිෂ්ටය' ),
-	'Userlogout'                => array( 'පරිශීලක_නිෂ්ක්‍රමණය' ),
-	'Userrights'                => array( 'පරිශීලක_හිමිකම්' ),
+	'wiki_userlogin'                 => array( 'පරිශීලක_ප්‍රවිෂ්ටය' ),
+	'wiki_userlogout'                => array( 'පරිශීලක_නිෂ්ක්‍රමණය' ),
+	'wiki_userrights'                => array( 'පරිශීලක_හිමිකම්' ),
 	'Version'                   => array( 'සංශෝධනය' ),
 	'Wantedcategories'          => array( 'අවශ්‍ය_ප්‍රවර්ග' ),
 	'Wantedfiles'               => array( 'අවශ්‍ය_ගොනු' ),
@@ -174,7 +174,7 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'පිටුසංඛ්‍යාව', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'ලිපිසංඛ්‍යාව', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'ගොනුසංඛ්‍යාව', 'NUMBEROFFILES' ),
-	'numberofusers'             => array( '1', 'පරිශීලකයන්සංඛ්‍යාව', 'NUMBEROFUSERS' ),
+	'numberofwiki_users'             => array( '1', 'පරිශීලකයන්සංඛ්‍යාව', 'NUMBEROFUSERS' ),
 	'numberofedits'             => array( '1', 'සංස්කරණසංඛ්‍යාව', 'NUMBEROFEDITS' ),
 	'pagename'                  => array( '1', 'පිටුනාමය', 'PAGENAME' ),
 	'namespace'                 => array( '1', 'නාමඅවකාශය', 'NAMESPACE' ),
@@ -192,7 +192,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'සබැඳි යටීර කිරීම:',
 'tog-justify' => 'ඡේදයන් පේළ ගස්වන්න',
 'tog-hideminor' => 'මෑත වෙනස් කිරීම්වල සුළු සංස්කරණ සඟවන්න',
@@ -216,7 +216,7 @@ $messages = array(
 'tog-previewonfirst' => 'පළමු සංස්කරණයෙහිදී පෙර-දසුන පෙන්වන්න',
 'tog-nocache' => 'ගවේශක පිටු මතක තබා ගැනීම අක්‍රීය කරන්න',
 'tog-enotifwatchlistpages' => 'මාගේ මුර ලැයිස්තුවෙහි පිටුවක් හෝ ගොනුවක් හෝ වෙනස්වූ විට මා හට විද්‍යුත් තැපැල් පණිවුඩයක් එවන්න',
-'tog-enotifusertalkpages' => 'මගේ පරිශීලක සාකච්ඡා පිටුව වෙනස් වූ විට මා හට විද්‍යුත්-තැපෑලක් එවන්න',
+'tog-enotifwiki_usertalkpages' => 'මගේ පරිශීලක සාකච්ඡා පිටුව වෙනස් වූ විට මා හට විද්‍යුත්-තැපෑලක් එවන්න',
 'tog-enotifminoredits' => 'පිටුවල හෝ ගොනුවල හෝ  සුළු-සංස්කරණයකදී පවා මට විද්‍යුත් තැපැල් පණිවුඩයක් එවන්න',
 'tog-enotifrevealaddr' => 'දැනුම්දීමේ විද්‍යුත්-ලිපි වල මාගේ විද්‍යුත්-ලිපිනය හෙළි කරන්න',
 'tog-shownumberswatching' => 'මුර කරනු ලබන පරිශීලකයන් සංඛ්‍යාව පෙන්වන්න',
@@ -400,7 +400,7 @@ $messages = array(
 'talk' => 'සාකච්ඡාව',
 'views' => 'දසුන්',
 'toolbox' => 'මෙවලම් ගොන්න',
-'userpage' => 'පරිශීලක පිටුව නරඹන්න',
+'wiki_userpage' => 'පරිශීලක පිටුව නරඹන්න',
 'projectpage' => 'ව්‍යාපෘති පිටුව නරඹන්න',
 'imagepage' => 'ගොනු පිටුව නරඹන්න',
 'mediawikipage' => 'පණිවුඩ පිටුව නරඹන්න',
@@ -426,7 +426,7 @@ $1",
 'pool-queuefull' => 'පොරොත්තු ලේඛනය පිරී ඇත',
 'pool-errorunknown' => 'හඳුනා නොගත් දෝෂය',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} පිළිබඳ',
 'aboutpage' => 'Project:පිළිබඳ',
 'copyright' => ' $1 යටතේ අන්තර්ගතය දැක ගත හැක.',
@@ -459,8 +459,8 @@ $1",
 'youhavenewmessages' => 'ඔබ හට $1 ($2)',
 'newmessageslink' => 'නව පණිවුඩ',
 'newmessagesdifflink' => 'අවසාන වෙනස',
-'youhavenewmessagesfromusers' => '{{PLURAL:$3|තවත් එක් පරිශීලකයෙකුගෙන්|පරිශීලකයන් $3 දෙනෙකුගෙන්}} ඔබ හට $1 ඇත ($2).',
-'youhavenewmessagesmanyusers' => 'බොහෝ පරිශීලකයන් වෙතින් ඔබ හට $1 ඇත ($2).',
+'youhavenewmessagesfromwiki_users' => '{{PLURAL:$3|තවත් එක් පරිශීලකයෙකුගෙන්|පරිශීලකයන් $3 දෙනෙකුගෙන්}} ඔබ හට $1 ඇත ($2).',
+'youhavenewmessagesmanywiki_users' => 'බොහෝ පරිශීලකයන් වෙතින් ඔබ හට $1 ඇත ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|නව පණිවුඩයක්|නව පණිවුඩ}}',
 'newmessagesdifflinkplural' => 'අවසන් {{PLURAL:$1|වෙනස්වීම|වෙනස්වීම්}}',
 'youhavenewmessagesmulti' => 'ඔබ හට $1 හි නව පණිවුඩ ඇත',
@@ -494,7 +494,7 @@ $1",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'පිටුව',
-'nstab-user' => 'පරිශීලක පිටුව',
+'nstab-wiki_user' => 'පරිශීලක පිටුව',
 'nstab-media' => 'මාධ්‍ය පිටුව',
 'nstab-special' => 'විශේෂ පිටුව',
 'nstab-project' => 'ව්‍යාපෘති පිටුව',
@@ -539,7 +539,7 @@ $1",
 මකා දැමූ පිටුවක ඉතිහාසය සබැඳියන් හෝ යල් පැන ගිය වෙනස හෝ ඔස්සේ පැමිණීම, මෙවැන්නක් සාමාන්‍යයෙන් ඇති කරයි.
 
 හේතුව මෙය නොවේ නම්, ඔබ විසින් මෘදුකාංගයෙහි දෝෂයක්(bug) සොයාගෙන ඇත.
-URL  සඳහන් කරමින්, මෙම කරුණ [[Special:ListUsers/sysop|පරිපාලකවරයෙකුට]] වාර්තාකරන්න.',
+URL  සඳහන් කරමින්, මෙම කරුණ [[Special:Listwiki_users/sysop|පරිපාලකවරයෙකුට]] වාර්තාකරන්න.',
 'missingarticle-rev' => '(සංශෝධන#: $1)',
 'missingarticle-diff' => '(වෙනස: $1, $2)',
 'readonly_lag' => 'ගෝල(slave) දත්තසංචිත සර්වරයන්හි ක්‍රියාශීලිත්වය  ගුරු(master) සර්වර මට්ටමට පත් වන තෙක් දත්තසංචිතය ස්වයංක්‍රීව අගළුලා ඇත',
@@ -590,7 +590,7 @@ $2',
 'customcssprotected' => 'මෙම CSS පිටුව සංස්කරණය කිරීමට ඔබට අවසර නොමැත්තේ එහි අනෙකුත් පරිශීලකයෙකුගේ පුද්ගලික පරිස්ථිතීන් අඩංගු බැවිනි.',
 'customjsprotected' => 'මෙම ජාවාස්ක්‍රිට් පිටුව සංස්කරණය කිරීමට ඔබට අවසර නොමැත්තේ එහි අනෙකුත් පරිශීලකයෙකුගේ පුද්ගලික පරිස්ථිතීන් අඩංගු බැවිනි.',
 'ns-specialprotected' => 'විශේෂ පිටු සංස්කරණය කිරීම සිදු කල නොහැක.',
-'titleprotected' => "මෙම ශීර්ෂ-නාමය තැනීම  [[User:$1|$1]] විසින් වාරණය කොට ඇත.
+'titleprotected' => "මෙම ශීර්ෂ-නාමය තැනීම  [[wiki_user:$1|$1]] විසින් වාරණය කොට ඇත.
 මේ සඳහා  ''$2''  හේතුව දක්වා ඇත.",
 'exception-nologin' => 'ප්‍රවිෂ්ට වී නොමැත',
 
@@ -602,7 +602,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''ඔබ දැන් ගිණුමෙන් නික්මී ඇත.'''
 
-ඔබට නිර්නාමිකව {{SITENAME}} කටයුතු කරගෙන යාහැක, නැතහොත් පෙර පරිශීලක ලෙස හෝ වෙනත් පරිශීලකයෙකු ලෙස [[Special:UserLogin|නැවත ගිණුමක‍ට පිවිසිය හැක]].
+ඔබට නිර්නාමිකව {{SITENAME}} කටයුතු කරගෙන යාහැක, නැතහොත් පෙර පරිශීලක ලෙස හෝ වෙනත් පරිශීලකයෙකු ලෙස [[Special:wiki_userLogin|නැවත ගිණුමක‍ට පිවිසිය හැක]].
 ඔබගේ බ්‍රවුසරයෙහි පූර්වාපේක්‍ෂී සංචිතය (කෑෂය) පිරිසිදුකරන තෙක්, සමහරක් පිටු විසින් ඔබ තවදුරටත් පිවිසී ඇති බවක් දිගටම පෙන්නුම් කිරීමට ඉඩ ඇත.",
 'welcomecreation' => '== ආයුබෝවන්, $1! ==
 
@@ -619,21 +619,21 @@ $2',
 'login' => 'පිවිසෙන්න',
 'nav-login-createaccount' => 'පිවිසෙන්න / නව ගිණුමක් තනන්න',
 'loginprompt' => '{{SITENAME}} වෙත ප්‍රවිෂ්ට වීම සඳහා ඔබ විසින් කුකීස් සක්‍රීය කොට තිබිය යුතුය.',
-'userlogin' => 'පිවිසෙන්න / නව ගිණුමක් තනන්න',
-'userloginnocreate' => 'ප්‍රවිෂ්ට වන්න',
+'wiki_userlogin' => 'පිවිසෙන්න / නව ගිණුමක් තනන්න',
+'wiki_userloginnocreate' => 'ප්‍රවිෂ්ට වන්න',
 'logout' => 'නික්මීම',
-'userlogout' => 'නික්මීම',
+'wiki_userlogout' => 'නික්මීම',
 'notloggedin' => 'ප්‍රවිසී නැත',
 'nologin' => "ඔබ හට ගිණුමක් නොමැතිද? '''$1'''.",
 'nologinlink' => 'ගිණුමක් තනන්න',
 'createaccount' => 'අලුත් ගිණුමක් තනන්න',
 'gotaccount' => 'දැනටමත් ගිණුමක් තිබේද? $1.',
 'gotaccountlink' => 'පිවිසෙන්න',
-'userlogin-resetlink' => 'ඔබේ පිවිසුම් තොරතුරු අමතකද?',
+'wiki_userlogin-resetlink' => 'ඔබේ පිවිසුම් තොරතුරු අමතකද?',
 'createaccountmail' => 'විද්‍යුත් තැපෑල මගින්',
 'createaccountreason' => 'හේතුව:',
 'badretype' => 'ඔබ ඇතුළු කල මුරපදය නොගැලපේ.',
-'userexists' => 'ඔබ ඇතුළු කල පරිශීලක නාමය දැනටමත් භාවිතයෙහි ඇත.
+'wiki_userexists' => 'ඔබ ඇතුළු කල පරිශීලක නාමය දැනටමත් භාවිතයෙහි ඇත.
 කරුණාකර වෙනත් නමක් තෝරා ගන්න.',
 'loginerror' => 'පිවිසීමේ දෝෂයකි',
 'createaccounterror' => 'ගිණුම නිර්මාණය කළ නොහැකි විය:$1',
@@ -649,13 +649,13 @@ $2',
 'noname' => 'වලංගු පරිශීලක-නාමයක් සඳහන් කිරීමට ඔබ අසමත් වී ඇත.',
 'loginsuccesstitle' => 'පිවිසුම සාර්ථකයි!',
 'loginsuccess' => "'''දැන් ඔබ , \"\$1\" ලෙස, {{SITENAME}} වෙත පිවිස සිටී.'''",
-'nosuchuser' => '"$1" යන නමැති පරිශීලකයෙකු නොමැත.
+'nosuchwiki_user' => '"$1" යන නමැති පරිශීලකයෙකු නොමැත.
 පරිශීලක නාමයන්හි මහාප්‍රාණ ආදිය සැලකේ (case sensitive).
-ඔබගේ අක්ෂර-වින්‍යාසය පිරික්සා බැලීම හෝ, [[Special:UserLogin/signup|නව ගිණුමක් තැනීම]] හෝ සිදුකරන්න.',
-'nosuchusershort' => '"$1" නමින් පරිශීලකයෙකු නොමැත.
+ඔබගේ අක්ෂර-වින්‍යාසය පිරික්සා බැලීම හෝ, [[Special:wiki_userLogin/signup|නව ගිණුමක් තැනීම]] හෝ සිදුකරන්න.',
+'nosuchwiki_usershort' => '"$1" නමින් පරිශීලකයෙකු නොමැත.
 අක්‍ෂර-වින්‍යාසය පිරික්සා බලන්න.',
-'nouserspecified' => 'ඔබ විසින් පරිශීලක-නාමයක් සඳහන් කල යුතු වේ.',
-'login-userblocked' => 'මෙම පරිශීලකයා වාරණය කොට ඇත. පිවිසීමට ඉඩ දෙනු නොලැබේ.',
+'nowiki_userspecified' => 'ඔබ විසින් පරිශීලක-නාමයක් සඳහන් කල යුතු වේ.',
+'login-wiki_userblocked' => 'මෙම පරිශීලකයා වාරණය කොට ඇත. පිවිසීමට ඉඩ දෙනු නොලැබේ.',
 'wrongpassword' => 'ඇතුලත් කල මුරපදයක් වැරදියි.
 නැවත උත්සාහකරන්න.',
 'wrongpasswordempty' => 'මුරපදයක් ඇතුලත් කර නැත
@@ -696,16 +696,16 @@ $2',
 ඔබ දැන් ගිණුම‍ට පිවිස, ඔබගේ මුර-පදය වෙනස් කල යුතුව ඇත.
 
 මෙම ගිණුම තැනී ඇත්තේ වැරදීමකින් නම්, මෙම පණිවුඩය නොසලකා හැරිය හැක.',
-'usernamehasherror' => 'පරිශීලක නාමයේ පූරක අනුලකුණු අඩංගු විය නොහැකිය',
+'wiki_usernamehasherror' => 'පරිශීලක නාමයේ පූරක අනුලකුණු අඩංගු විය නොහැකිය',
 'login-throttled' => 'ඔබ විසින් මෑතදී  පමණට වඩා වාර ගණනක් පිවිසීමෙහි උත්සාහයන් දරා ඇත.
 යළි උත්සාහ කිරීමට පෙර මඳ වේලාවක් රැඳී සිටින්න.',
 'login-abort-generic' => 'ඔබගේ පිවිසීම අසාර්ථකයි - අතහැර දමනලදී',
 'loginlanguagelabel' => 'භාෂාව: $1',
-'suspicious-userlogout' => 'නිෂ්ක්‍රමණය සඳහා ඔබගේ අයැදුම නිෂ්ප්‍රභා කෙරුනේ එය යොමු කොට ඇත්තේ භින්න(කැඩුනු) බ්‍රවුසරයකින් හෝ නිවේෂණය කෙරෙමින් පවතින ප්‍රොක්සියක් වෙතින් යැයි බැලූ බැල්මට පෙනෙන බැවිනි.',
+'suspicious-wiki_userlogout' => 'නිෂ්ක්‍රමණය සඳහා ඔබගේ අයැදුම නිෂ්ප්‍රභා කෙරුනේ එය යොමු කොට ඇත්තේ භින්න(කැඩුනු) බ්‍රවුසරයකින් හෝ නිවේෂණය කෙරෙමින් පවතින ප්‍රොක්සියක් වෙතින් යැයි බැලූ බැල්මට පෙනෙන බැවිනි.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'php mail() ශ්‍රිතයේ හඳුනානොගත් ගැටළුවකි',
-'user-mail-no-addy' => 'විද්‍යුත් තැපැල් ලිපිනයක් නොමැතිව විද්‍යුත් තැපැල් පණිවුඩයක් යැවීමට උත්සහ දරා ඇත.',
+'wiki_user-mail-no-addy' => 'විද්‍යුත් තැපැල් ලිපිනයක් නොමැතිව විද්‍යුත් තැපැල් පණිවුඩයක් යැවීමට උත්සහ දරා ඇත.',
 
 # Change password dialog
 'resetpass' => 'මුරපදය වෙනස් කරන්න',
@@ -732,7 +732,7 @@ $2',
 'passwordreset-legend' => 'මුරපදය යළි පිහිටුවන්න',
 'passwordreset-disabled' => 'මෙම විකියෙහි මුර පද ප්‍රත්‍යාරම්භ කිරීම් අක්‍රීය කොට ඇත.',
 'passwordreset-pretext' => '{{PLURAL:$1||පහත දැක්වෙන දත්ත කණ්ඩ වලින් එකක් ඇතුල් කරන්න}}',
-'passwordreset-username' => 'පරිශීලක නාමය:',
+'passwordreset-wiki_username' => 'පරිශීලක නාමය:',
 'passwordreset-domain' => 'වසම:',
 'passwordreset-capture' => 'ප්‍රතිපලදායක විද්‍යුත් තැපෑල නරඹනවාද?',
 'passwordreset-capture-help' => 'ඔබ මෙම කොටුව සලකුණු කලොත්, විද්‍යුත් තැපෑලක් (තාවකාලික මුරපදය සමඟ) ඔබට සහ යවන පුද්ගලයට දිස්වනු ඇත.',
@@ -842,7 +842,7 @@ $2
 'loginreqlink' => 'පිවිසෙන්න',
 'loginreqpagetext' => 'අනෙකුත් පිටු නරඹනු වස් ඔබ  $1 විය යුතුය.',
 'accmailtitle' => 'මුර-පදය යවන ලදි',
-'accmailtext' => "[[User talk:$1|$1]] සඳහා අහඹු ලෙස ජනනය කරන ලද මුරපදයක් $2 වෙත යවා ඇත.
+'accmailtext' => "[[wiki_user talk:$1|$1]] සඳහා අහඹු ලෙස ජනනය කරන ලද මුරපදයක් $2 වෙත යවා ඇත.
 
 මෙම නව ගිණුම සඳහා මුරපදය, ප්‍රවිෂ්ට වීමෙන් අනතුරුව, ''[[Special:ChangePassword|මුර පදය වෙනස් කරන්න]]''  පිටුව තුලදී වෙනස් කල හැක.",
 'newarticle' => '(නව)',
@@ -852,16 +852,16 @@ $2
 'anontalkpagetext' => "----''මෙම සංවාද පිටුව අයත් වන්නේ තවමත් ගිණුමක් තනා නැති හෝ එසේ කොට එනමුදු එය භාවිතා නොකරන හෝ නිර්නාමික පරිශීලකයෙකුටය.
 එබැවින්, ඔහු/ඇය හැඳින්වීමට සංඛ්‍යාත්මක IP ලිපිනය භාවිතා කිරීමට අප හට සිදුවේ.
 පරිශීලකයන් කිහිප දෙනෙකු විසින් මෙවැනි IP ලිපිනයක් හවුලේ පරිහරණය කරනවා විය හැක.
-ඔබ නිර්නාමික පරිශීලකයෙකු නම් හා ඔබ පිළිබඳ අනනුකූල පරිකථනයන් සිදුවෙන බවක් ඔබට හැ‍ඟේ නම්, අනෙකුත් නිර්නාමික පරිශීලකයන් හා සමග  මෙවැනි සංකූලතා ඇතිවීම වලක්වනු වස්,  කරුණාකර  [[Special:UserLogin/signup|ගිණුමක් තැනීමට]] හෝ [[Special:UserLogin|ප්‍රවිෂ්ට වීමට]]  කාරුණික වන්න.''",
+ඔබ නිර්නාමික පරිශීලකයෙකු නම් හා ඔබ පිළිබඳ අනනුකූල පරිකථනයන් සිදුවෙන බවක් ඔබට හැ‍ඟේ නම්, අනෙකුත් නිර්නාමික පරිශීලකයන් හා සමග  මෙවැනි සංකූලතා ඇතිවීම වලක්වනු වස්,  කරුණාකර  [[Special:wiki_userLogin/signup|ගිණුමක් තැනීමට]] හෝ [[Special:wiki_userLogin|ප්‍රවිෂ්ට වීමට]]  කාරුණික වන්න.''",
 'noarticletext' => 'දැනට මෙම පිටුවෙහි කිසිදු පෙළක් නොමැත.
 අනෙකුත් පිටුවල  [[Special:Search/{{PAGENAME}}|මෙම පිටු ශීර්ෂය සඳහා ගවේශනය කිරීම]] හෝ,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} අදාළ ලඝු-සටහන් සඳහා ගවේෂණය කිරීම],
 හෝ [{{fullurl:{{FULLPAGENAME}}|action=edit}} මෙම පිටුව සංස්කරණය කිරීම] හෝ ඔබ විසින් සිදු කල හැක</span>.',
 'noarticletext-nopermission' => 'දැනට මෙම පිටුවෙහි කිසිදු පෙළක් නොමැත.
 අනෙකුත් පිටුවල [[Special:Search/{{PAGENAME}}|මෙම පිටු ශීර්ෂය සඳහා ගවේශනය කිරීම]] හෝ, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}}අදාළ ලඝු-සටහන් සඳහා ගවේෂණය කිරීම]</span>, හෝ මෙම පිටුව සංස්කරණය කිරීම හෝ ඔබට කල හැක.',
-'userpage-userdoesnotexist' => '"<nowiki>$1</nowiki>" යන පරිශීලක ගිණුම ලේඛනගත කොට නොමැත.
+'wiki_userpage-wiki_userdoesnotexist' => '"<nowiki>$1</nowiki>" යන පරිශීලක ගිණුම ලේඛනගත කොට නොමැත.
 ඔබ හට මෙම පිටුව තැනීමට/සංස්කරණය කිරීමට ඇවැසිද යන බව විමසා බලන්න.',
-'userpage-userdoesnotexist-view' => '"$1" පරිශීලක ගිණුම ලියාපදිංචි කර නොමැත.',
+'wiki_userpage-wiki_userdoesnotexist-view' => '"$1" පරිශීලක ගිණුම ලියාපදිංචි කර නොමැත.',
 'blocked-notice-logextract' => 'මෙම පරිශීලකයා දැනට අවහිර කරනු ලැබ ඇත.
 ආශ්‍රය තකා නවතම අවහිර කිරීම් ලඝු-සටහන පහත සැපයේ:',
 'clearyourcache' => "'''සටහන:''' සුරැකීමෙන් පසුව, වෙනස් කම් දැකගැනුමට ඔබගේ බ්‍රවුසරයෙහි කෑෂය මගහැරයෑමට ඔබට සිදුවිය හැක.
@@ -869,18 +869,18 @@ $2
 * '''ගූගල් ක්‍රෝම්:''' ''Ctrl-Shift-R'' ඔබන්න(මැක්හී ''Command-Shift-R'' )
 * '''ඉන්ටර්නෙට් එක්ස්ප්ලෝර:''' ''Refresh'' ඔබන අතරතුර  ''Ctrl''  ඔබන්න, නැතහොත් ''Ctrl-F5'' ඔබන්න
 * '''ඔපෙරා:''' ''Tools → Preferences'' හි කෑෂය හිස් කරන්න",
-'usercssyoucanpreview' => "'''හෝඩුවාව:'''සුරැකුමට පෙර, ඔබගේ නව  CSS පරික්ෂා කරනු වස්, \"{{int:පෙර-දසුන පෙන්වන්න}}\" බොත්තම භාවිතා කරන්න.",
-'userjsyoucanpreview' => "'''හෝඩුවාව:'''සුරැකුමට පෙර, ඔබගේ නව  ජාවා ස්ක්‍රිප්ට් පරික්ෂා කරනු වස්, \"{{int:පෙර-දසුන පෙන්වන්න}}\" බොත්තම භාවිතා කරන්න.",
-'usercsspreview' => "'''ඔබගේ පරිශීලක CSS මත පෙර-දසුනක් පමණක් ඔබ විසින් සිදුකෙරෙන බව ධාරණය කරන්න.'''
+'wiki_usercssyoucanpreview' => "'''හෝඩුවාව:'''සුරැකුමට පෙර, ඔබගේ නව  CSS පරික්ෂා කරනු වස්, \"{{int:පෙර-දසුන පෙන්වන්න}}\" බොත්තම භාවිතා කරන්න.",
+'wiki_userjsyoucanpreview' => "'''හෝඩුවාව:'''සුරැකුමට පෙර, ඔබගේ නව  ජාවා ස්ක්‍රිප්ට් පරික්ෂා කරනු වස්, \"{{int:පෙර-දසුන පෙන්වන්න}}\" බොත්තම භාවිතා කරන්න.",
+'wiki_usercsspreview' => "'''ඔබගේ පරිශීලක CSS මත පෙර-දසුනක් පමණක් ඔබ විසින් සිදුකෙරෙන බව ධාරණය කරන්න.'''
 '''එය තවමත් සුරැකීමට ලක් කොට නොමැත!'''",
-'userjspreview' => "'''ඔබ සිදුකරන්නේ ඔබගේ පරිශීලක ජාවාස්ක්‍රිප්ට් පරික්ෂා කිරීම/පෙර-දසුන පමණක් බව ධාරණය කරන්න.'''
+'wiki_userjspreview' => "'''ඔබ සිදුකරන්නේ ඔබගේ පරිශීලක ජාවාස්ක්‍රිප්ට් පරික්ෂා කිරීම/පෙර-දසුන පමණක් බව ධාරණය කරන්න.'''
 '''එය තවමත් සුරැකීමට ලක් කොට නොමැත!'''",
 'sitecsspreview' => "'''ඔබ දකින්නේ මෙම CSS හි පෙරදසුනක් පමණක් බව සිහි තබාගන්න.'''
 '''එය තවමත් සුරැකීමට ලක් කොට නොමැත!'''",
 'sitejspreview' => "'''ඔබ දකින්නේ මෙම JavaScript කේතයෙහි පෙරදසුනක් පමණක් බව සිහි තබාගන්න.'''
 '''එය තවමත් සුරැකීමට ලක් කොට නොමැත!'''",
-'userinvalidcssjstitle' => "'''අවවාදයයි:''' ඡවියක් නොමැත \"\$1\".
-රීති ප්‍රකාරව .css හා .js පිටු විසින් ඉංග්‍රීසි කුඩා-අකුරු ශීර්ෂ භාවිතා කෙරෙන බව සිහි තබා ගන්න, නිදසුන. {{ns:user}}:Foo/vector.css මිස {{ns:user}}:Foo/Vector.css නොවන බව.",
+'wiki_userinvalidcssjstitle' => "'''අවවාදයයි:''' ඡවියක් නොමැත \"\$1\".
+රීති ප්‍රකාරව .css හා .js පිටු විසින් ඉංග්‍රීසි කුඩා-අකුරු ශීර්ෂ භාවිතා කෙරෙන බව සිහි තබා ගන්න, නිදසුන. {{ns:wiki_user}}:Foo/vector.css මිස {{ns:wiki_user}}:Foo/Vector.css නොවන බව.",
 'updated' => '(යාවත්කාලීන)',
 'note' => "'''සටහන:'''",
 'previewnote' => "'''මෙය පෙරදසුනක් පමණක් බව සිහිතබාගන්න.'''
@@ -889,13 +889,13 @@ $2
 'previewconflict' => 'ඔබ විසින් සුරැකීම තෝරාගත්තොත්,  ඉහළ පෙළ සංස්කරණ සරියෙහි,  පෙළ දර්ශනය විය හැකි අයුර මෙම පෙර-දසුනෙන් ආවර්ජනය වේ.',
 'session_fail_preview' => "'''කණගාටුයි! සැසි දත්ත හානියක් හේතුවෙන් අප විසින් ඔබගේ  සංස්කරණය ක්‍රියායයනය කිරීමට නොහැකි වී ඇත.
 කරුණාකර නැවත උත්සාහ කරන්න.
-එයද ප්‍රතිඵල විරහිත නම්, [[Special:UserLogout|නිෂ්ක්‍රමණය වීම]] හා නැවත ප්‍රවිෂ්ට වීම අත්හදා බලන්න.'''",
+එයද ප්‍රතිඵල විරහිත නම්, [[Special:wiki_userLogout|නිෂ්ක්‍රමණය වීම]] හා නැවත ප්‍රවිෂ්ට වීම අත්හදා බලන්න.'''",
 'session_fail_preview_html' => "'''කණගාටුයි! සැසි දත්ත හානියක් හේතුවෙන්, අප විසින් ඔබගේ සංස්කරණය ක්‍රියායනය කිරීම සිදු කල නොහැකි විය.'''
 
 ''{{SITENAME}} විසින් නොනිමි HTML සක්‍රීය කොට ඇති බැවින්, ජාවාස්ක්‍රිප්ට් ප්‍රහාරයන්ගෙන් වැලකීමේ පූර්වොපායයක් ලෙස, පෙර-දසුන සඟවා ඇත.''
 
 '''මෙය නීත්‍යානුකූල සංස්කරණ උත්සාහයයක් නම්,  නැවත උත්සාහ කරන්න.
-එසේ කල තන්හීද අසාර්ථක නම්, [[Special:UserLogout|නිෂ්ක්‍රමණය වී]] නැවත ප්‍රවිෂ්ට වීම අත්හදා බලන්න.'''",
+එසේ කල තන්හීද අසාර්ථක නම්, [[Special:wiki_userLogout|නිෂ්ක්‍රමණය වී]] නැවත ප්‍රවිෂ්ට වීම අත්හදා බලන්න.'''",
 'token_suffix_mismatch' => "''' ඔබගේ සේවාලාභියා විසින් සංස්කරණ ටෝකනයෙහි විරාම අක්ෂර  කලවම් කිරීම නිසා ඔබගේ සංස්කරණය නිෂ්ප්‍රභා කර ඇත.
 සංස්කරණය නිෂ්ප්‍රභා කරන ලද්දේ පිටු පෙළ දූෂණය වීම වැලැක්වීමටය.
 දෝෂ-සපිරි වෙබ්-පාදක නිර්නාමික නියුතු සේවාවක් ඔබ විසින් භාවිත කිරීම නිසා මෙය සමහරවිට සිදුවිය හැක.'''",
@@ -944,7 +944,7 @@ $2
 'edittools' => '<!-- මෙම පෙළ සංස්කරණ හා උඩුගත ආකෘතින්ට පහළින් පෙන්නුම් කෙරේ. -->',
 'nocreatetitle' => 'පිටු තැනීම සීමා කර ඇත',
 'nocreatetext' => 'නව පිටු තැනීමේ හැකියාව {{SITENAME}} විසින් සීමාකර ඇත.
-ඔබ හට පෙරළා ගොස්,  දැනට පවතින පිටුවක් සංස්කරණය කිරීම හෝ,  [[Special:UserLogin|ගිණුමකට ප්‍රවිෂ්ට වීම හෝ  නව ගිණුමක් තැනීම හෝ]] සිදුකල හැක.',
+ඔබ හට පෙරළා ගොස්,  දැනට පවතින පිටුවක් සංස්කරණය කිරීම හෝ,  [[Special:wiki_userLogin|ගිණුමකට ප්‍රවිෂ්ට වීම හෝ  නව ගිණුමක් තැනීම හෝ]] සිදුකල හැක.',
 'nocreate-loggedin' => '{{SITENAME}} හි නව පිටු තැනීමට අවසරයක් ඔබ හට ප්‍රදානය කොට නොමැත.',
 'sectioneditnotsupported-title' => 'කොටසක් සංස්කරණය කිරීම සඳහා සහාය නොදක්වයි',
 'sectioneditnotsupported-text' => 'මෙම පිටුවේදී කොටසක් සංස්කරණය කිරීම සඳහා සහාය නොදක්වයි',
@@ -988,11 +988,11 @@ $2
 පහත දක්වා ඇති සැසැඳුම පරික්ෂා කර බලා ඔබගේ අභිලාෂය මෙයමැයි තහවුරු කොට ගෙන, සංස්කරණය අහෝසිකිරීම සඳහා පහත දැක්වෙන වෙනස්වීම් සුරකින්න.',
 'undo-failure' => 'පරස්පර විරෝධී අතරමැදි සංස්කරණ හේතුවෙන් මෙම සංස්කරණය අහෝසි කල නොහැක.',
 'undo-norev' => 'එය නොපැවතීම නිසාවෙන් හෝ එය මකා දමා ඇති නිසාවෙන් මෙම සංස්කරණය අහෝසි කිරීම කල නොහැකි විය.',
-'undo-summary' => ' [[Special:Contributions/$2|$2]] මගින් සිදුකල  $1 සංශෝධනය අහෝසි කරන්න ([[User talk:$2|සාකච්ඡා]])',
+'undo-summary' => ' [[Special:Contributions/$2|$2]] මගින් සිදුකල  $1 සංශෝධනය අහෝසි කරන්න ([[wiki_user talk:$2|සාකච්ඡා]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'ගිණුම තැනිය නොහැක',
-'cantcreateaccount-text' => "මෙම IP ලිපිනය ('''$1''') මගින් ගිණුම් තැනීම [[User:$3|$3]] විසින් වාරණය කොට ඇත.
+'cantcreateaccount-text' => "මෙම IP ලිපිනය ('''$1''') මගින් ගිණුම් තැනීම [[wiki_user:$3|$3]] විසින් වාරණය කොට ඇත.
 
 $3 විසින් සපයා ඇති හේතුව ''$2'' වේ",
 
@@ -1031,9 +1031,9 @@ $3 විසින් සපයා ඇති හේතුව ''$2'' වේ",
 
 # Revision deletion
 'rev-deleted-comment' => '(සංස්කරණ සාරාංශය ඉවත් කරන ලදි)',
-'rev-deleted-user' => '(පරිශීලක-නාමය ඉවත් කරන ලදි)',
+'rev-deleted-wiki_user' => '(පරිශීලක-නාමය ඉවත් කරන ලදි)',
 'rev-deleted-event' => '(ලඝු-සටහන් තැබීමේ  ක්‍රියාව අත්හිටුවන ලදි)',
-'rev-deleted-user-contribs' => '[පරිශීපක නාමය හෝ ලිපිනය ඉවත් කළා - දායකත්ව මඟින් සඟවන ලද සංස්කරණය]',
+'rev-deleted-wiki_user-contribs' => '[පරිශීපක නාමය හෝ ලිපිනය ඉවත් කළා - දායකත්ව මඟින් සඟවන ලද සංස්කරණය]',
 'rev-deleted-text-permission' => "මෙම පිටු සංශෝධනය '''මකා දමා ඇත'''.
 වැඩි විස්තර බොහෝ විට [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} මකාදැමීම් ලඝු-සටහන] වෙත තිබීමට ඉඩ ඇත.",
 'rev-deleted-text-unhide' => "මෙම පිටුව සංශෝධනය කිරීම '''මකා දමා ඇත'''.
@@ -1084,7 +1084,7 @@ $3 විසින් සපයා ඇති හේතුව ''$2'' වේ",
 'revdelete-hide-image' => 'ගොනු අන්තර්ගතය සඟවන්න',
 'revdelete-hide-name' => 'ක්‍රියාව හා ඉලක්කය සඟවන්න',
 'revdelete-hide-comment' => 'සංස්කරණ පරිකථනය සඟවන්න',
-'revdelete-hide-user' => 'සංස්කාරකගේ පරිශීලක නාමය/IP ලිපිනය සඟවන්න',
+'revdelete-hide-wiki_user' => 'සංස්කාරකගේ පරිශීලක නාමය/IP ලිපිනය සඟවන්න',
 'revdelete-hide-restricted' => 'අනෙකුන් මෙන්ම පරිපාලකවරුන් ගෙන්ද මෙම දත්ත යටපත්කරන්න',
 'revdelete-radio-same' => '(වෙනස් නොකරන්න)',
 'revdelete-radio-set' => 'ඔව්',
@@ -1169,7 +1169,7 @@ $1",
 'showhideselectedversions' => 'තෝරාගත් සංශෝධන පෙන්වන්න/සඟවන්න',
 'editundo' => 'අහෝසිය',
 'diff-multi' => '({{PLURAL:$2|එක් පරිශීලකයෙක්|පරිශීලකයන් $2 ක්}} විසින් සිදුකල {{PLURAL:$1|එක් අතරමැදි සංශෝධනයක්|අතරමැදි සංශෝධන $1 ක්}} පෙන්නුම් කර නොමැත.)',
-'diff-multi-manyusers' => '(පරිශීලකයන් $2 කට වඩා වැඩි ගණනකගේ ආසන්න පුනරීක්‍ෂණ $1ක් පෙන්වා නොමැත)',
+'diff-multi-manywiki_users' => '(පරිශීලකයන් $2 කට වඩා වැඩි ගණනකගේ ආසන්න පුනරීක්‍ෂණ $1ක් පෙන්වා නොමැත)',
 
 # Search results
 'searchresults' => 'ගවේෂණ ප්‍රතිඵල',
@@ -1249,7 +1249,7 @@ $1",
 'mypreferences' => 'අභිරුචීන්',
 'prefs-edits' => 'සංස්කරණයන් සංඛ්‍යාව:',
 'prefsnologin' => 'පිවිසී නැත (Not logged in)',
-'prefsnologintext' => 'පරිශීලක අභිරුචි සැකසීමට නම්, ඔබ  <span class="plainlinks">[{{fullurl:Special:Userlogin|returnto=$1}} ප්‍රවිෂ්ටවී]</span> සිටිය යුතුය.',
+'prefsnologintext' => 'පරිශීලක අභිරුචි සැකසීමට නම්, ඔබ  <span class="plainlinks">[{{fullurl:Special:wiki_userlogin|returnto=$1}} ප්‍රවිෂ්ටවී]</span> සිටිය යුතුය.',
 'changepassword' => 'මුරපදය වෙනස් කරන්න',
 'prefs-skin' => 'ඡවිය',
 'skin-preview' => 'පෙරදසුන',
@@ -1257,7 +1257,7 @@ $1",
 'prefs-beta' => 'බීටා අනුවාදයේ ලක්ෂණ',
 'prefs-datetime' => 'දිනය සහ වේලාව',
 'prefs-labs' => 'Labs features',
-'prefs-user-pages' => 'පරිශීලක පිටු',
+'prefs-wiki_user-pages' => 'පරිශීලක පිටු',
 'prefs-personal' => 'පරිශීලක පැතිකඩ',
 'prefs-rc' => '‍නව වෙනස්වීම්',
 'prefs-watchlist' => 'මුර-ලැයිස්තුව',
@@ -1322,7 +1322,7 @@ $1",
 'prefs-emailconfirm-label' => 'විද්‍යුත්-ලිපිනය තහවුරුකිරීම:',
 'prefs-textboxsize' => 'සංස්කරණ කවුළුවෙහි ප්‍රමාණය',
 'youremail' => 'විද්‍යුත් තැපෑල:',
-'username' => 'පරිශීලක නාමය:',
+'wiki_username' => 'පරිශීලක නාමය:',
 'uid' => 'පරිශීලක අනන්‍යාංකය:',
 'prefs-memberingroups' => 'ඉදිරියේ දැක්වෙන {{PLURAL:$1|කණ්ඩායමෙහි|කණ්ඩායම් වල}} සාමාජිකයෙකි:',
 'prefs-registration' => 'ලියාපදිංචිවූ වේලාව:',
@@ -1363,36 +1363,36 @@ HTML ටැගයන් පිරික්සන්න.',
 'prefs-displaywatchlist' => 'විකල්ප පෙන්වන්න',
 'prefs-diffs' => 'වෙනස',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'විද්‍යුත්-තැපැල් ලිපිනය අනීතික බවක් පෙනෙයි.',
 'email-address-validity-invalid' => 'වලංගු විද්‍යුත් ලිපිනයක් ඇතුලත් කරන්න',
 
-# User rights
-'userrights' => 'පරිශීලක හිමිකම් කළමනාකරණය',
-'userrights-lookup-user' => 'පරිශීලක කණ්ඩායම් කළමනාකරණය කරන්න',
-'userrights-user-editname' => 'පරිශීලක-නාමයක් ආදායනය කරන්න:',
-'editusergroup' => 'පරිශීලක කණ්ඩායම් සංස්කරණය කරන්න',
-'editinguser' => "'''[[User:$1|$1]]''' $2 පරිශීලකයාගේ පරිශීලක හිමිකම්",
-'userrights-editusergroup' => 'පරිශීලක කණ්ඩායම් සංස්කරණය කරන්න',
-'saveusergroups' => 'පරිශීලක කණ්ඩායම් සුරකින්න',
-'userrights-groupsmember' => 'ඉදිරි කාණ්ඩයන්හි සාමාජිකයෙකි:',
-'userrights-groupsmember-auto' => 'මෙහි ව්‍යංග්‍ය සාමාජීක:',
-'userrights-groups-help' => 'මෙම පරිශීලකයා අයත් වන කණ්ඩායම් ඔබ හට වෙනස් කල හැක:
+# wiki_user rights
+'wiki_userrights' => 'පරිශීලක හිමිකම් කළමනාකරණය',
+'wiki_userrights-lookup-wiki_user' => 'පරිශීලක කණ්ඩායම් කළමනාකරණය කරන්න',
+'wiki_userrights-wiki_user-editname' => 'පරිශීලක-නාමයක් ආදායනය කරන්න:',
+'editwiki_usergroup' => 'පරිශීලක කණ්ඩායම් සංස්කරණය කරන්න',
+'editingwiki_user' => "'''[[wiki_user:$1|$1]]''' $2 පරිශීලකයාගේ පරිශීලක හිමිකම්",
+'wiki_userrights-editwiki_usergroup' => 'පරිශීලක කණ්ඩායම් සංස්කරණය කරන්න',
+'savewiki_usergroups' => 'පරිශීලක කණ්ඩායම් සුරකින්න',
+'wiki_userrights-groupsmember' => 'ඉදිරි කාණ්ඩයන්හි සාමාජිකයෙකි:',
+'wiki_userrights-groupsmember-auto' => 'මෙහි ව්‍යංග්‍ය සාමාජීක:',
+'wiki_userrights-groups-help' => 'මෙම පරිශීලකයා අයත් වන කණ්ඩායම් ඔබ හට වෙනස් කල හැක:
 * කතිර යෙදූ කොටුවකින් ගම්‍ය වන්නේ පරිශීලකයා එම කණ්ඩායමට අයත් බවය.
 * කතිර නෙයෙදූ කොටුවකින් ගම්‍ය වන්නේ පරිශීලකයා මෙම කණ්ඩායමට අයත් නොවන බවය.
 * * යන්නක් අඟවනුයේ ඔබ විසින් එක් කල පසු කණ්ඩායම ඉවත් කල නොහැකි බවද එය ප්‍රතිලෝම වශයෙන්ද සත්‍ය වන බවත්ය.',
-'userrights-reason' => 'හේතුව:',
-'userrights-no-interwiki' => 'අනෙකුත් විකියන්හි පරිශීලක හිමිකම් සංස්කරණය කිරීමට ඔබහට අවසර නොමැත.',
-'userrights-nodatabase' => '$1 දත්ත-ගබඩාව නොපවතියි හෝ ස්ථානීක නොවෙයි.',
-'userrights-nologin' => 'පරිශීලක හිමිකම් ප්‍රදානය කරනු වස්, ඔබ පරිපාලක ගිණුමකින්  [[Special:UserLogin|පුවිෂ්ට විය]] යුතුය.',
-'userrights-notallowed' => 'පරිශීලක හිමිකම් එක් කිරීමට හෝ ඉවත් කිරීමට ඔබගේ ගිණුමට අවසර නැත.',
-'userrights-changeable-col' => 'ඔබට වෙනස් කල හැකි කණ්ඩායම්',
-'userrights-unchangeable-col' => 'ඔබට වෙනස් කල නොහැකි කණ්ඩායම්',
-'userrights-irreversible-marker' => '$1*',
+'wiki_userrights-reason' => 'හේතුව:',
+'wiki_userrights-no-interwiki' => 'අනෙකුත් විකියන්හි පරිශීලක හිමිකම් සංස්කරණය කිරීමට ඔබහට අවසර නොමැත.',
+'wiki_userrights-nodatabase' => '$1 දත්ත-ගබඩාව නොපවතියි හෝ ස්ථානීක නොවෙයි.',
+'wiki_userrights-nologin' => 'පරිශීලක හිමිකම් ප්‍රදානය කරනු වස්, ඔබ පරිපාලක ගිණුමකින්  [[Special:wiki_userLogin|පුවිෂ්ට විය]] යුතුය.',
+'wiki_userrights-notallowed' => 'පරිශීලක හිමිකම් එක් කිරීමට හෝ ඉවත් කිරීමට ඔබගේ ගිණුමට අවසර නැත.',
+'wiki_userrights-changeable-col' => 'ඔබට වෙනස් කල හැකි කණ්ඩායම්',
+'wiki_userrights-unchangeable-col' => 'ඔබට වෙනස් කල නොහැකි කණ්ඩායම්',
+'wiki_userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'කණ්ඩායම:',
-'group-user' => 'පරිශීලකයෝ',
+'group-wiki_user' => 'පරිශීලකයෝ',
 'group-autoconfirmed' => 'ස්වයංක්‍රීයව-චිරස්ථිතවූ පරිශීලකයෝ',
 'group-bot' => 'රොබෝවරු',
 'group-sysop' => 'පරිපාලකවරු',
@@ -1400,14 +1400,14 @@ HTML ටැගයන් පිරික්සන්න.',
 'group-suppress' => 'ප්‍රමාද දෝෂයන්',
 'group-all' => '(සියල්ල)',
 
-'group-user-member' => '{{GENDER:$1|පරිශීලක}}',
+'group-wiki_user-member' => '{{GENDER:$1|පරිශීලක}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|ස්වයංක්‍රීයව-චිරස්ථිත පරිශීලක}}',
 'group-bot-member' => '{{GENDER:$1|රොබෝවරයා}}',
 'group-sysop-member' => '{{GENDER:$1|පරිපාලකවරයා}}',
 'group-bureaucrat-member' => '{{GENDER:$1|නිලබලධාරියා}}',
 'group-suppress-member' => '{{GENDER:$1|ප්‍රමාදද්‍යෝෂය}}',
 
-'grouppage-user' => '{{ns:project}}:පරිශිලකයෝ',
+'grouppage-wiki_user' => '{{ns:project}}:පරිශිලකයෝ',
 'grouppage-autoconfirmed' => '{{ns:project}}:ස්වයං-චිරස්ථිත පරිශීලකයෝ',
 'grouppage-bot' => '{{ns:project}}:රොබෝවරු',
 'grouppage-sysop' => '{{ns:project}}:පරිපාලකවරු',
@@ -1423,7 +1423,7 @@ HTML ටැගයන් පිරික්සන්න.',
 'right-minoredit' => 'සංස්කරණ සුළු ලෙස සළකුණු කරන්න',
 'right-move' => 'පිටු ගෙනයන්න',
 'right-move-subpages' => 'පිටු ඒවායේ උපපිටු ද සමග ගෙනයන්න',
-'right-move-rootuserpages' => 'මූල පරිශීලක පිටු ගෙනයන්න',
+'right-move-rootwiki_userpages' => 'මූල පරිශීලක පිටු ගෙනයන්න',
 'right-movefile' => 'ගොනු ගෙනයන්න',
 'right-suppressredirect' => 'පිටුවක් ගෙනයන විට පැරණි නම වෙතින් යළි-යොමුවක් නොතනන්න',
 'right-upload' => 'ගොනු උඩුගත කරන්න',
@@ -1448,16 +1448,16 @@ HTML ටැගයන් පිරික්සන්න.',
 'right-suppressionlog' => 'පෞද්ගලික සටහන් නරඹන්න',
 'right-block' => 'අනෙකුත් පරිශීලකයන් සංස්කරණය කිරීමෙන් වාරණය කරන්න',
 'right-blockemail' => 'පරිශීලකයාගේ විද්‍යුත්-තැපැල් යැවීමේ හැකියාව වාරණය කරන්න',
-'right-hideuser' => 'පරිශීලක නාමයක් වාරණය කරමින්, එය ප්‍රජාව වෙතින් සඟවන්න',
+'right-hidewiki_user' => 'පරිශීලක නාමයක් වාරණය කරමින්, එය ප්‍රජාව වෙතින් සඟවන්න',
 'right-ipblock-exempt' => 'අන්තර්ජාල ලිපින වාරණයන්, ස්වයංක්‍රීය-වාරණයන් හා පරාස වාරණයන් මඟ හරින්න',
 'right-proxyunbannable' => 'ප්‍රතියුක්තයන්ගේ ස්වයංක්‍රීයව වාරණයන් මඟහරින්න',
 'right-unblockself' => 'ඔවුන් විසින්ම වාරණයෙන් මුදවීම',
 'right-protect' => 'ආරක්ෂණ මට්ටම් වෙනස් කරමින් ආරක්ෂිත පිටු සංස්කරණය කරන්න',
 'right-editprotected' => 'ආරක්ෂිත පිටු සංස්කරණය කරන්න (තීරු-දර්ශන ආරක්ෂණය විරහිත)',
 'right-editinterface' => 'පරිශීලක අතුරු-මුව සංස්කරණය කරන්න',
-'right-editusercssjs' => 'අනෙකුත් පරිශීලකයන්ගේ  CSS හා JS ගොනු සංස්කරණය කරන්න',
-'right-editusercss' => 'අනෙකුත් පරිශීලකයන්ගේ  CSS ගොනු සංස්කරණය කරන්න',
-'right-edituserjs' => 'අනෙකුත් පරිශීලකයන්ගේ  JS ගොනු සංස්කරණය කරන්න',
+'right-editwiki_usercssjs' => 'අනෙකුත් පරිශීලකයන්ගේ  CSS හා JS ගොනු සංස්කරණය කරන්න',
+'right-editwiki_usercss' => 'අනෙකුත් පරිශීලකයන්ගේ  CSS ගොනු සංස්කරණය කරන්න',
+'right-editwiki_userjs' => 'අනෙකුත් පරිශීලකයන්ගේ  JS ගොනු සංස්කරණය කරන්න',
 'right-rollback' => 'සුවිශේෂ පිටුවක් අවසන් වරට සංස්කරණය කල පරිශීලකයෙකුගේ සංස්කරණයන් විගසින් පුනරාවර්තනය කරන්න',
 'right-markbotedits' => 'පුනරාවර්තනය-කෙරුනු සංස්කරණයන් රොබෝ සංස්කරණයන් ලෙස සලකුණු කරන්න',
 'right-noratelimit' => '‍සීඝ්‍රතා සීමාවන්ගෙක් බලපෑම් ඇතිනොවන්න',
@@ -1468,14 +1468,14 @@ HTML ටැගයන් පිරික්සන්න.',
 'right-patrolmarks' => 'මෑත වෙනස්වීම් පරික්ෂාකරබැලීම් ලකුණුකිරීම් නරඹන්න',
 'right-unwatchedpages' => 'මුර-නොකෙරෙන පිටු ලැයිස්තුවක් නරඹන්න',
 'right-mergehistory' => 'පිටුවල ඉතිහාසයන් ඒකාබද්ධ කරන්න',
-'right-userrights' => 'පරිශීලක හිමිකම් සියල්ල සංස්කරණය කරන්න',
-'right-userrights-interwiki' => 'අනෙකුත් විකියන්හි පරිශීලකයන්ගේ හිමිකම් සංස්කරණය කරන්න',
+'right-wiki_userrights' => 'පරිශීලක හිමිකම් සියල්ල සංස්කරණය කරන්න',
+'right-wiki_userrights-interwiki' => 'අනෙකුත් විකියන්හි පරිශීලකයන්ගේ හිමිකම් සංස්කරණය කරන්න',
 'right-siteadmin' => 'දත්ත-ගබඩාව අවුරන්න හා ඇවුරුම ඉවත් කරන්න',
 'right-override-export-depth' => '5වන මට්ටම දක්වා සබැඳි පිටු ද සහිතව පිටු නිර්යාත කරන්න',
 'right-sendemail' => 'අනෙක් පරිශීලකයන්ට ඊ-ලිපි යවන්න',
 'right-passwordreset' => 'මුරපද යලි සැකසීම් විද්‍යුත් තැපෑලයන් නරඹන්න',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'පරිශීලක හිමිකම් සටහන',
 'rightslogtext' => 'මෙය පරිශීලකයන්ගේ හිමිකම් වෙනස්වීම් පිළිබඳ ලඝු-සටහනකි.',
 'rightslogentry' => '$1 සඳහා කණ්ඩායම් සාමාජිකත්වය $2 සිට $3 දක්වා වෙනස්කෙරිණි',
@@ -1491,7 +1491,7 @@ HTML ටැගයන් පිරික්සන්න.',
 'action-minoredit' => 'මෙම සංස්කරණය සුළු ලෙස සලකුණු කරන්න',
 'action-move' => 'මෙම පිටුව ගෙනයන්න',
 'action-move-subpages' => 'මෙම පිටුව හා එහි උප පිටු ගෙන යන්න',
-'action-move-rootuserpages' => 'මූල පරිශීලක පිටු ගෙනයන්න',
+'action-move-rootwiki_userpages' => 'මූල පරිශීලක පිටු ගෙනයන්න',
 'action-movefile' => 'මෙම ගොනුව ගෙනයන්න',
 'action-upload' => 'මෙම ගොනුව උඩුගත කරන්න',
 'action-reupload' => 'දැනට පවතින මෙම ගොනුව අධිලිවීමකට ලක්කරන්න',
@@ -1513,8 +1513,8 @@ HTML ටැගයන් පිරික්සන්න.',
 'action-autopatrol' => 'ඔබගේ සංස්කරණය, පරික්‍ෂාකර බැලූ ලෙස සලකුණු කරවාගන්න',
 'action-unwatchedpages' => 'මුර-නොකෙරෙන පිටු ලැයිස්තුව නරඹන්න',
 'action-mergehistory' => 'මෙම පිටුවේ ඉතිහාසය ඒකාබද්ධ කරන්න',
-'action-userrights' => 'සියළු පරිශීලක හිමිකම් සංස්කරණය කරන්න',
-'action-userrights-interwiki' => 'අනෙකුත් විකියන්ගේ පරිශීලකයන්ගේ පරිශීලක හිමිකම් සංස්කරණය කරන්න',
+'action-wiki_userrights' => 'සියළු පරිශීලක හිමිකම් සංස්කරණය කරන්න',
+'action-wiki_userrights-interwiki' => 'අනෙකුත් විකියන්ගේ පරිශීලකයන්ගේ පරිශීලක හිමිකම් සංස්කරණය කරන්න',
 'action-siteadmin' => 'දත්ත-සංචිතය අවහිරකරන්න හෝ අවහිරය ඉවත් කරන්න',
 'action-sendemail' => 'ඊ-තැපැල් පණිවුඩ යවන්න',
 
@@ -1545,7 +1545,7 @@ HTML ටැගයන් පිරික්සන්න.',
 'minoreditletter' => 'සුළු',
 'newpageletter' => 'නව',
 'boteditletter' => 'රොබෝ',
-'number_of_watching_users_pageview' => '[ {{PLURAL:$1| එක් පරිශීලකයෙක් මුර-කරයි|පරිශීලකවරුන් $1 ක් මුර-කරති}} ]',
+'number_of_watching_wiki_users_pageview' => '[ {{PLURAL:$1| එක් පරිශීලකයෙක් මුර-කරයි|පරිශීලකවරුන් $1 ක් මුර-කරති}} ]',
 'rc_categories' => 'ප්‍රවර්ගයන්ට සීමා කරන්න ("|" මගින් වෙන් කරන්න)',
 'rc_categories_any' => 'ඕනෑම',
 'rc-change-size' => '$1',
@@ -1570,7 +1570,7 @@ HTML ටැගයන් පිරික්සන්න.',
 'reuploaddesc' => 'උඩුගත කිරීම අත්හැරදමා උඩුගත කිරීම් ආකෘති පත්‍රය වෙත යන්න',
 'upload-tryagain' => 'වෙනස් කරන ලද ගොනු විස්තරය ඉදිරිපත් කරන්න',
 'uploadnologin' => 'පිවිසී නැත (Not logged in)',
-'uploadnologintext' => 'ගොනු උඩුගත කිරීමට පෙර ඔබ  [[Special:UserLogin|ප්‍රවිෂ්ට වී]] සිටිය යුතුය.',
+'uploadnologintext' => 'ගොනු උඩුගත කිරීමට පෙර ඔබ  [[Special:wiki_userLogin|ප්‍රවිෂ්ට වී]] සිටිය යුතුය.',
 'upload_directory_missing' => 'උඩුගත ඩිරෙක්ටරිය ($1) සොයාගත නොහැකි අතර එය වෙබ්-සේවාදායකය විමින් තැනිය නොහැකි විය.',
 'upload_directory_read_only' => 'වෙබ්-සේවාදායකය විසින් උඩුගත ඩිරෙක්ටරිය ($1) වෙත ලිවීමට නොහැකි විය.',
 'uploaderror' => 'උඩුගත කිරීම් දෝෂයක්',
@@ -1708,11 +1708,11 @@ $1',
 'upload-proto-error-text' => 'දුරස්ථ උඩුගත කිරීම් සඳහා,  කලාප ලිපිනයන් (URLලයන්)  <code>http://</code> හෝ <code>ftp://</code> යන්නෙන් ආරම්භ විය යුතුයි.',
 'upload-file-error' => 'අභ්‍යන්තර දෝෂය',
 'upload-file-error-text' => 'සේවාදායකයෙහි තාවකාලික ගොනුවක් තැනීමට උත්සාහ දැරීමෙහිදී අභ්‍යන්තර දෝෂයක් හට ගැනිණි.
-කරුණාකර [[Special:ListUsers/sysop|පරිපාලකවරයෙක්]] වෙත යොමුවන්න.',
+කරුණාකර [[Special:Listwiki_users/sysop|පරිපාලකවරයෙක්]] වෙත යොමුවන්න.',
 'upload-misc-error' => 'හඳුනා නොගත් උඩුගත කිරීම් දෝෂය',
 'upload-misc-error-text' => 'උඩුගත කිරීමේදී හඳුනාගත නොහැකි දෝෂයක් සිදුවිය.
 URLහි නීතික බව හා ප්‍රවේශ්‍ය බව තහවුරුකරගෙන නැවත උත්සාහ කරන්න.
-ගැටළුව තවදුරටත් පවතී නම්, [[Special:ListUsers/sysop|පරිපාලකවරයෙකු]] අමතන්න.',
+ගැටළුව තවදුරටත් පවතී නම්, [[Special:Listwiki_users/sysop|පරිපාලකවරයෙකු]] අමතන්න.',
 'upload-too-many-redirects' => 'අන්තර්ජාල ලිපිනයෙහි පමණට වඩා යළි-යොමුවීම් අඩංගු වෙයි',
 'upload-unknown-size' => 'ප්‍රමාණය නොදනී',
 'upload-http-error' => 'HTTP දෝෂයක් හට ගැනිණි: $1',
@@ -1813,14 +1813,14 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization බලන්න.',
 
 # Special:ListFiles
 'listfiles-summary' => 'මෙම විශේෂ පිටුවෙහි දැක්වෙන්නේ සියළු උඩුගත කල ගොනුය.
-When filtered by user, only files where that user uploaded the most recent version of the file are shown.',
+When filtered by wiki_user, only files where that wiki_user uploaded the most recent version of the file are shown.',
 'listfiles_search_for' => 'මාධ්‍ය නාමය සඳහා ගවේෂණය කරන්න:',
 'imgfile' => 'ගොනුව',
 'listfiles' => 'ගොනු ලැයිස්තුව',
 'listfiles_thumb' => 'සිඟිති-රූපය',
 'listfiles_date' => 'දිනය',
 'listfiles_name' => 'නම',
-'listfiles_user' => 'පරිශීලක',
+'listfiles_wiki_user' => 'පරිශීලක',
 'listfiles_size' => 'විශාලත්වය',
 'listfiles_description' => 'විස්තරය',
 'listfiles_count' => 'සංස්කරනය',
@@ -1837,7 +1837,7 @@ When filtered by user, only files where that user uploaded the most recent versi
 'filehist-thumb' => 'සිඟිති-රූපය',
 'filehist-thumbtext' => ' $1වන විට අනුවාදය සඳහා සිඟිති-රූපය',
 'filehist-nothumb' => 'සිඟිති-රූපයක් නොමැත',
-'filehist-user' => 'පරිශීලක',
+'filehist-wiki_user' => 'පරිශීලක',
 'filehist-dimensions' => 'මාන',
 'filehist-filesize' => 'ගොනුවේ විශාලත්වය',
 'filehist-comment' => 'පරිකථනය',
@@ -1924,7 +1924,7 @@ When filtered by user, only files where that user uploaded the most recent versi
 'statistics-header-pages' => 'පිටුවල සංඛ්‍යාන දත්ත',
 'statistics-header-edits' => 'සංස්කරණ වල සංඛ්‍යාන දත්ත',
 'statistics-header-views' => 'නැරඹුම් වල සංඛ්‍යාන දත්ත',
-'statistics-header-users' => 'පරිශීලකයන් පිළිබඳ සංඛ්‍යාන දත්ත',
+'statistics-header-wiki_users' => 'පරිශීලකයන් පිළිබඳ සංඛ්‍යාන දත්ත',
 'statistics-header-hooks' => 'අනෙක් සංඛ්‍යා ලේඛන',
 'statistics-articles' => 'අන්තර්ගත  පිටු',
 'statistics-pages' => 'පිටු',
@@ -1935,9 +1935,9 @@ When filtered by user, only files where that user uploaded the most recent versi
 'statistics-views-total' => 'නැරඹුම් එකතුව',
 'statistics-views-total-desc' => 'විශේෂ හා දැනට නොපවතින පිටු වල දසුන් එක් කොට නැත',
 'statistics-views-peredit' => 'එක් සංස්කරණයකට නැරඹුම් ගණන',
-'statistics-users' => 'ලේඛනගත  [[Special:ListUsers|පරිශීලකයෝ]]',
-'statistics-users-active' => 'ක්‍රියාශීලි පරිශීලකයන්',
-'statistics-users-active-desc' => 'පසුගිය {{PLURAL:$1|දිනය|දින $1}} තුලදී කිසියම් ක්‍රියාවක් සිදු කල පරිශීලකයන්',
+'statistics-wiki_users' => 'ලේඛනගත  [[Special:Listwiki_users|පරිශීලකයෝ]]',
+'statistics-wiki_users-active' => 'ක්‍රියාශීලි පරිශීලකයන්',
+'statistics-wiki_users-active-desc' => 'පසුගිය {{PLURAL:$1|දිනය|දින $1}} තුලදී කිසියම් ක්‍රියාවක් සිදු කල පරිශීලකයන්',
 'statistics-mostpopular' => 'බෙහෙවින් නරඹනු ලබන පිටු',
 
 'disambiguations' => 'නිරාකරණ පිටු සඳහා සබැදෙන පිටු',
@@ -2010,13 +2010,13 @@ When filtered by user, only files where that user uploaded the most recent versi
 'protectedtitles' => 'ආරක්‍ෂිත ශීර්ෂයන්',
 'protectedtitlestext' => 'පහත දැක්වෙන ශීර්ෂයන් තැනිය නොහැකි වන පරිදි ආරක්‍ෂණය කොට ඇත',
 'protectedtitlesempty' => 'මෙම පරාමිතීන් හා සමග සැලකූ කල, කිසිදු ශීර්ෂයක් දැනට ආරක්ෂිත වී නොමැත.',
-'listusers' => 'පරිශීලක ලැයිස්තුව',
-'listusers-editsonly' => 'සංස්කරණයන් සිදුකර ඇති පරිශීලකයන් පමණක් පෙන්වන්න',
-'listusers-creationsort' => 'තැනූ දින අනුව සුබෙදන්න',
-'usereditcount' => ' {{PLURAL:$1|සංස්කරණ එකකි|සංස්කරණ $1 කි}}',
-'usercreated' => '$1 දින $2 වේලාවේදී {{GENDER:$3|තනන ලදි}}',
+'listwiki_users' => 'පරිශීලක ලැයිස්තුව',
+'listwiki_users-editsonly' => 'සංස්කරණයන් සිදුකර ඇති පරිශීලකයන් පමණක් පෙන්වන්න',
+'listwiki_users-creationsort' => 'තැනූ දින අනුව සුබෙදන්න',
+'wiki_usereditcount' => ' {{PLURAL:$1|සංස්කරණ එකකි|සංස්කරණ $1 කි}}',
+'wiki_usercreated' => '$1 දින $2 වේලාවේදී {{GENDER:$3|තනන ලදි}}',
 'newpages' => 'අළුත් පිටු',
-'newpages-username' => 'පරිශීලක-නාමය:',
+'newpages-wiki_username' => 'පරිශීලක-නාමය:',
 'ancientpages' => 'පැරණිම පිටු',
 'move' => 'ගෙනයන්න',
 'movethispage' => 'මෙම පිටුව ගෙන යන්න',
@@ -2041,7 +2041,7 @@ When filtered by user, only files where that user uploaded the most recent versi
 'booksources-invalid-isbn' => 'සපයන ලද ISBN අංකය නීතික බවක් නොපෙන්වයි; මුල් මුලාශ්‍රය වෙතින් පිටපත් කිරීමේදී සිදුවූ දෝෂ සඳහා පරික්ෂා කරන්න.',
 
 # Special:Log
-'specialloguserlabel' => 'ඉටුකරන්නා:',
+'speciallogwiki_userlabel' => 'ඉටුකරන්නා:',
 'speciallogtitlelabel' => 'ඉලක්කය (ශීර්ෂය හෝ පරිශීලකයා):',
 'log' => 'සටහන්',
 'all-logs-page' => 'සියළු පොදු ලඝු-සටහන්',
@@ -2097,24 +2097,24 @@ When filtered by user, only files where that user uploaded the most recent versi
 'linksearch-line' => '$2 වෙතින් $1 සබැඳිණි',
 'linksearch-error' => 'ආදේශක  පෙනීසිටිය හැක්කේ සත්කාරකනාමය ආරම්භයෙහි පමණයි.',
 
-# Special:ListUsers
-'listusersfrom' => '‍මෙම අකුරෙන් පටන්ගෙන පරිශීලකයන් ප්‍රදර්ශනය කරන්න:',
-'listusers-submit' => 'පෙන්වන්න',
-'listusers-noresult' => 'පරිශීලකයෙකු සොයාගත නොහැකි විය.',
-'listusers-blocked' => '(වාරණය කොට)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => '‍මෙම අකුරෙන් පටන්ගෙන පරිශීලකයන් ප්‍රදර්ශනය කරන්න:',
+'listwiki_users-submit' => 'පෙන්වන්න',
+'listwiki_users-noresult' => 'පරිශීලකයෙකු සොයාගත නොහැකි විය.',
+'listwiki_users-blocked' => '(වාරණය කොට)',
 
-# Special:ActiveUsers
-'activeusers' => 'සක්‍රීය පරිශීලකයන් ලැයිස්තුව',
-'activeusers-intro' => 'මෙය පසුගිය $1 {{PLURAL:$1|දිනය|දින}}තුළ යම් ක්‍රියාකාරකමක් කළ පරිශීලකයන්ගේ ලැයිස්තුවකි.',
-'activeusers-count' => '{{PLURAL:$1|එක් සංස්කරණයක්|සංස්කරණ $1 ක්}} අවසන් {{PLURAL:$3|දිනය|දින $3}} තුළ',
-'activeusers-from' => 'මෙයින් ඇරඹෙන පරිශීලකයන් පෙන්වන්න:',
-'activeusers-hidebots' => ' bots සඟවන්න',
-'activeusers-hidesysops' => 'පරිපාලකයින් සඟවන්න',
-'activeusers-noresult' => 'කිසිදු පරිශීලකයෙකු හමුනොවිණි.',
+# Special:Activewiki_users
+'activewiki_users' => 'සක්‍රීය පරිශීලකයන් ලැයිස්තුව',
+'activewiki_users-intro' => 'මෙය පසුගිය $1 {{PLURAL:$1|දිනය|දින}}තුළ යම් ක්‍රියාකාරකමක් කළ පරිශීලකයන්ගේ ලැයිස්තුවකි.',
+'activewiki_users-count' => '{{PLURAL:$1|එක් සංස්කරණයක්|සංස්කරණ $1 ක්}} අවසන් {{PLURAL:$3|දිනය|දින $3}} තුළ',
+'activewiki_users-from' => 'මෙයින් ඇරඹෙන පරිශීලකයන් පෙන්වන්න:',
+'activewiki_users-hidebots' => ' bots සඟවන්න',
+'activewiki_users-hidesysops' => 'පරිපාලකයින් සඟවන්න',
+'activewiki_users-noresult' => 'කිසිදු පරිශීලකයෙකු හමුනොවිණි.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'පරිශීලකයන් තැනීමේ සටහන',
-'newuserlogpagetext' => 'මෙය පරිශිලකයන් තැනීම පිළිබඳ සටහනකි.',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'පරිශීලකයන් තැනීමේ සටහන',
+'newwiki_userlogpagetext' => 'මෙය පරිශිලකයන් තැනීම පිළිබඳ සටහනකි.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'පරිශීලක කාණ්ඩ හිමිකම්',
@@ -2135,25 +2135,25 @@ When filtered by user, only files where that user uploaded the most recent versi
 'listgrouprights-addgroup-self-all' => 'සි‍යළු කාණ්ඩයන් ස්වීය ගිණුමට එක්කරන්න',
 'listgrouprights-removegroup-self-all' => 'සියළු කාණ්ඩයන් ස්වීය ගිණුමෙන් ඉවත් කරන්න',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'යායුතු ලිපිනය නොමැත',
-'mailnologintext' => 'අනෙකුත් පරිශීලකයන්හට  විද්‍යුත්-තැපැල් යැවුමට පෙරාතුව, ඔබ [[Special:UserLogin|ප්‍රවිෂ්ට වී]], ඔබගේ  [[Special:Preferences|අභිරුචියන්හි]]  නීතික විද්‍යුත්-තැපැල් ලිපිනයක් සඳහන් කර තිබිය යුතුය.',
-'emailuser' => 'මෙම පරිශීලක වෙත විද්‍යුත්-ලිපියක් යවන්න',
+'mailnologintext' => 'අනෙකුත් පරිශීලකයන්හට  විද්‍යුත්-තැපැල් යැවුමට පෙරාතුව, ඔබ [[Special:wiki_userLogin|ප්‍රවිෂ්ට වී]], ඔබගේ  [[Special:Preferences|අභිරුචියන්හි]]  නීතික විද්‍යුත්-තැපැල් ලිපිනයක් සඳහන් කර තිබිය යුතුය.',
+'emailwiki_user' => 'මෙම පරිශීලක වෙත විද්‍යුත්-ලිපියක් යවන්න',
 'emailpage' => ' පරිශීලකට විද්‍යුත්-ලිපියක් යවන්න',
 'emailpagetext' => 'මෙම පරිශීලකයා හට විද්‍යුත්-තැපෑල් පණිවුඩයක් යැවීම සඳහා මෙම ආකෘති පත්‍රය භාවිතා කිරීමට ඔබ හට හැක.
 ලබන්නා විසින් සෘජු ලෙස ඔබ හට පිළිතුරු එවනු හැකි වන පරිදි, ඔබ විසින් [[Special:Preferences|ඔබගේ පරිශීලක අභිරුචියන්]] හි ඇතුළත් කල විද්‍යුත්-තැපැල් ලිපිනය,  විද්‍යුත්-තැපෑලෙහි "වෙතින්" ලිපිනයෙහි පෙන්නුම් කරනු ඇත.',
-'usermailererror' => 'Mail object විසින් පහත දෝෂය එවනලදී:',
+'wiki_usermailererror' => 'Mail object විසින් පහත දෝෂය එවනලදී:',
 'defemailsubject' => '{{SITENAME}} පරිශීලක "$1" වෙතින් විද්‍යුත්-තැපෑල',
-'usermaildisabled' => 'ඔබගේ විද්‍යුත්-තැපෑල අක්‍රීය කොට ඇත',
-'usermaildisabledtext' => 'මෙම විකියෙහි අනෙකුත් පරිශීලකයන් හට විද්‍යුත්-ගැපැල් යැවීමට ඔබ හට නොහැක',
+'wiki_usermaildisabled' => 'ඔබගේ විද්‍යුත්-තැපෑල අක්‍රීය කොට ඇත',
+'wiki_usermaildisabledtext' => 'මෙම විකියෙහි අනෙකුත් පරිශීලකයන් හට විද්‍යුත්-ගැපැල් යැවීමට ඔබ හට නොහැක',
 'noemailtitle' => 'විද්‍යුත්-ලිපිනයක් නොමැත',
 'noemailtext' => 'මෙම පරිශීලකයා නීතික විද්‍යුත්-තැපැල් ලිපිනයක් සඳහන් කර නැත.',
 'nowikiemailtitle' => 'විද්‍යුත්-තැපෑලයන් කිසිවක් සඳහා අවසර නොමැත',
 'nowikiemailtext' => 'අනෙකුත් පරිශීලකයන්ගෙන් විද්‍යුත්-තැපැල් ලැබ නොගැනුම මෙම පරිශිලකයා විසින් තෝරාගෙන ඇත.',
 'emailnotarget' => 'ලාභියා සඳහා නොපවතින හෝ අනීතික පරිශීලක නාමයකි.',
 'emailtarget' => 'ලබන්නාගේ පරිශීලක නාමය ඇතුල් කරන්න',
-'emailusername' => 'පරිශීලක නාමය:',
-'emailusernamesubmit' => 'යොමුකරන්න',
+'emailwiki_username' => 'පරිශීලක නාමය:',
+'emailwiki_usernamesubmit' => 'යොමුකරන්න',
 'email-legend' => 'වෙනත් {{SITENAME}} පරිශීලකයෙකුට විද්‍යුත්-තැපෑලක් යවන්න',
 'emailfrom' => 'වෙතින්:',
 'emailto' => 'වෙතට:',
@@ -2164,11 +2164,11 @@ When filtered by user, only files where that user uploaded the most recent versi
 'emailccsubject' => '$1: $2 වෙත ඔබගේ පණිවුඩය පිටපත් කරන්න',
 'emailsent' => 'විද්‍යුත්-තැපෑල යවන ලදි',
 'emailsenttext' => 'ඔබගේ  විද්‍යුත්-තැපැල්  පණිවුඩය යවා ඇත.',
-'emailuserfooter' => '{{SITENAME}} හි  " පරිශීලකට විද්‍යුත්-තැපැලක් යවන්න" ශ්‍රිතය අනුසාරයෙන් $1 විසින්  $2  වෙත  විද්‍යුත්-තැපෑලක් යවන ලදි.',
+'emailwiki_userfooter' => '{{SITENAME}} හි  " පරිශීලකට විද්‍යුත්-තැපැලක් යවන්න" ශ්‍රිතය අනුසාරයෙන් $1 විසින්  $2  වෙත  විද්‍යුත්-තැපෑලක් යවන ලදි.',
 
-# User Messenger
-'usermessage-summary' => 'පද්ධති පණිවුඩයක් තබමි.',
-'usermessage-editor' => 'පද්ධති පණිවුඩ කරු',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'පද්ධති පණිවුඩයක් තබමි.',
+'wiki_usermessage-editor' => 'පද්ධති පණිවුඩ කරු',
 
 # Watchlist
 'watchlist' => 'මගේ මුර-ලැයිස්තුව',
@@ -2177,7 +2177,7 @@ When filtered by user, only files where that user uploaded the most recent versi
 'nowatchlist' => 'ඔබගේ මුර-ලැයිස්තුවේ කිසිදු අයිතමයක් නොමැත.',
 'watchlistanontext' => 'ඔබගේ මුර-ලැයිස්තුවෙහි අයිතම නැරඹීමට හෝ සංස්කරණය කිරීමට හෝ කරුණාකර $1 සපුරන්න.',
 'watchnologin' => 'ප්‍රවිෂ්ට වී නොමැත',
-'watchnologintext' => 'ඔබගේ මුරලැයිස්තුව විකරණය කිරීමට පෙරාතුව ඔබ [[Special:UserLogin|ප්‍රවිෂ්ට වී]] සිටිය යුතුය.',
+'watchnologintext' => 'ඔබගේ මුරලැයිස්තුව විකරණය කිරීමට පෙරාතුව ඔබ [[Special:wiki_userLogin|ප්‍රවිෂ්ට වී]] සිටිය යුතුය.',
 'addwatch' => 'මුර ලැයිස්තුවට එක් කරන්න',
 'addedwatchtext' => "\"[[:\$1]]\" පිටුව ඔබගේ [[Special:Watchlist|මුර-ලැයිස්තුවට]] එක් කොට ඇත.
 මෙම පිටුවට සහ එයට අදාළ සාකච්ඡා පිටුවට ඉදිරියෙහිදී සිදු කෙරෙන වෙනස්කිරීම් ලයිස්තුගත වන අතර, ‍තෝරාගැනීමේගැනීමෙහි පහසුව තකා,  [[Special:RecentChanges|මෑත වෙනස්වීම් ලැයිස්තුව]]  තුල මෙම පිටුව  '''තදකුරු''' වලින් දක්වනු ඇත.",
@@ -2288,13 +2288,13 @@ Feedback and further assistance:
 'rollbackfailed' => 'පුනරාවර්තනය අසාර්ථකයි',
 'cantrollback' => 'සංස්කරණය ප්‍රතිවර්තනය කල නොහැක;
 අවසන් දායකයා මෙම පිටුවේ එකම කතෘවරයාද වෙයි.',
-'alreadyrolled' => '[[User:$2|$2]] ([[User talk:$2|සාකච්ඡාව]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) විසින් සිදුකල  [[:$1]] හි අවසාන සංශෝධනය  පුනරාවර්තනය කල නොහැක;
+'alreadyrolled' => '[[wiki_user:$2|$2]] ([[wiki_user talk:$2|සාකච්ඡාව]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) විසින් සිදුකල  [[:$1]] හි අවසාන සංශෝධනය  පුනරාවර්තනය කල නොහැක;
 වෙනත් අයෙකු අතින් පිටුව දැනටමත් සංස්කරණය වී හෝ පුනරාවර්තනය වී ඇත.
 
-පිටුවට අවසන් සංස්කරණය සිදුකොට ඇත්තේ [[User:$3|$3]] ([[User talk:$3|සාකච්ඡාව]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) විසිනි.',
+පිටුවට අවසන් සංස්කරණය සිදුකොට ඇත්තේ [[wiki_user:$3|$3]] ([[wiki_user talk:$3|සාකච්ඡාව]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) විසිනි.',
 'editcomment' => "සංස්කරණ සාරාංශය වූයේ: \"''\$1''\".",
-'revertpage' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|සාකච්ඡාව]]) ගේ සංස්කරණයන්  [[User:$1|$1]] ගේ අවසන් අනුවාදය වෙත ප්‍රතිවර්තනය කෙරිණි',
-'revertpage-nouser' => '(පරිශිලක නම ඉවත් කිරීමෙන්) සංස්කරණයන්  [[User:$1|$1]] මඟින් කළ අවසන් සංශෝධනයට ප්‍රතිවර්තනය කෙරිණි',
+'revertpage' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|සාකච්ඡාව]]) ගේ සංස්කරණයන්  [[wiki_user:$1|$1]] ගේ අවසන් අනුවාදය වෙත ප්‍රතිවර්තනය කෙරිණි',
+'revertpage-nowiki_user' => '(පරිශිලක නම ඉවත් කිරීමෙන්) සංස්කරණයන්  [[wiki_user:$1|$1]] මඟින් කළ අවසන් සංශෝධනයට ප්‍රතිවර්තනය කෙරිණි',
 'rollback-success' => ' $1 විසින් සිදුකල සංස්කරණයන් ප්‍රතිවර්තනය කරන ලදි;
 $2 ගේ අවසන් අනුවාදය වෙතට යළි වෙනස් කරන ලදි .',
 
@@ -2450,13 +2450,13 @@ $1',
 'sp-contributions-uploads' => 'උඩුගත කිරීම්',
 'sp-contributions-logs' => 'සටහන්',
 'sp-contributions-talk' => 'සාකච්ඡාව',
-'sp-contributions-userrights' => 'පරිශීලක හිමිකම් කළමනාකරණය',
+'sp-contributions-wiki_userrights' => 'පරිශීලක හිමිකම් කළමනාකරණය',
 'sp-contributions-blocked-notice' => 'මෙම පරිශීලකයා දැනට අවහිර කරනු ලැබ තිබේ.
 නවතම අවහිර කිරීම් ලඝු සටහන පහත යොමුවෙන් සපයනු ලැබේ:',
 'sp-contributions-blocked-notice-anon' => 'මෙම අන්තර්ජාල ලිපිනය දැනට වාරණය කොට ඇත.
 ඔබගේ උපමානයන් සඳහා නවතම වාරණ ලඝු නිවේශිතය මෙහි පහත දක්වා ඇත:',
 'sp-contributions-search' => 'දායකත්ව පිළිබඳ ගවේෂණය කරන්න',
-'sp-contributions-username' => 'පරිශීලක නාමය හෝ IP ලිපිනය:',
+'sp-contributions-wiki_username' => 'පරිශීලක නාමය හෝ IP ලිපිනය:',
 'sp-contributions-toponly' => 'නවතම අනුවාදයන් වන සංස්කරණයන් පමණක් පෙන්වයි',
 'sp-contributions-submit' => 'සොයන්න',
 
@@ -2489,7 +2489,7 @@ $1',
 'blockiptext' => 'විශේෂිත අන්තර්ජාල ලිපිනයකින් හෝ ප්‍රතිශීලක නාමයකින් ලිවීම් ප්‍රවේශය වාරණය කෙරුමට පහත ආකෘති පත්‍රය භාවිතා කරන්න.
 වන්ධල්‍යය වැලැක්වීමේ හුදු  අභිලාෂයෙන් හා, [[{{MediaWiki:Policy-url}}|ප්‍රතිපත්ති]] ප්‍රකාරව මෙය සිදුකල යුත්තේය.
 විශේෂිත  හේතුවක් මෙහි පහත ඇතුලත් කරන්න (නිදසුනක් ලෙස, වන්ධල්‍ය්‍යට ලක්වුනු විශේෂිත පිටු හඳුන්වමින්).',
-'ipadressorusername' => 'පරිශීලක නාමය හෝ IP ලිපිනය:',
+'ipadressorwiki_username' => 'පරිශීලක නාමය හෝ IP ලිපිනය:',
 'ipbexpiry' => 'කල් ඉකුත්වීම:',
 'ipbreason' => 'හේතුව:',
 'ipbreasonotherlist' => 'අනෙකුත් හේතුව',
@@ -2511,8 +2511,8 @@ $1',
 'ipbotheroption' => 'අනෙකුත්',
 'ipbotherreason' => 'අනෙකුත්/අමතර හේතුව:',
 'ipbhidename' => 'පරිශීලක-නාමය සංස්තරණයන් ගෙන් හා ලැයිස්තු වලින් සඟවන්න',
-'ipbwatchuser' => 'මෙම පරිශීලකයාගේ පරිශීලක හා සාකච්ඡා පිටු මුර-කරන්න',
-'ipb-disableusertalk' => 'මෙම පරිශීලකයා වාරණය කර තැබෙන විට ඔවුන්ගේම සාකච්ඡා පිටුව සංස්කරණය කිරීම වලක්වන්න',
+'ipbwatchwiki_user' => 'මෙම පරිශීලකයාගේ පරිශීලක හා සාකච්ඡා පිටු මුර-කරන්න',
+'ipb-disablewiki_usertalk' => 'මෙම පරිශීලකයා වාරණය කර තැබෙන විට ඔවුන්ගේම සාකච්ඡා පිටුව සංස්කරණය කිරීම වලක්වන්න',
 'ipb-change-block' => 'මෙම පරිස්ථිතීන් සහිතව පරිශීලකයා යළි-වාරණය කරන්න',
 'ipb-confirm' => 'වාරණය සනාථ කරන්න',
 'badipaddress' => 'අනීතික අන්තර්ජාල ලිපිනයකි',
@@ -2528,13 +2528,13 @@ $1',
 'unblockip' => 'පරිශීලකයාගේ වාරණය අත්හිටුවන්න',
 'unblockiptext' => 'පෙරදී වාරණයට ලක්වූ අන්තර්ජාල ලිපිනය හෝ පරිශීලක නාමය හෝ වෙත ලිවීමේ බලය ප්‍රතිෂ්ඨාපනය කෙරුමට පහත ආකෘතිය භාවිත කරන්න.',
 'ipusubmit' => 'මෙම වාරණය කිරීම අත්හිටුවන්න',
-'unblocked' => '[[User:$1|$1]]  වාරණය අත්හිටුවා ඇත',
+'unblocked' => '[[wiki_user:$1|$1]]  වාරණය අත්හිටුවා ඇත',
 'unblocked-range' => '$1 ගේ වාරණය අවලංගු කර ඇත',
 'unblocked-id' => '$1 වාරණය ඉවත් කරගන්නා ලදි',
 'blocklist' => 'වාරණය කල පරිශීලකයන්',
 'ipblocklist' => 'වාරණය කල පරිශීලකයන්',
 'ipblocklist-legend' => 'වාරණය කෙරුනු පරිශීලකයා සොයන්න',
-'blocklist-userblocks' => 'ගිණුම් වාරණ සඟවන්න',
+'blocklist-wiki_userblocks' => 'ගිණුම් වාරණ සඟවන්න',
 'blocklist-tempblocks' => 'තාවකාලික වාරණ සඟවන්න',
 'blocklist-addressblocks' => 'ඒක IP ලිපින වාරණ සඟවන්න',
 'blocklist-rangeblocks' => 'සැඟවුණු පරාස වාරණයන්',
@@ -2553,7 +2553,7 @@ $1',
 'noautoblockblock' => 'ස්වයංක්‍රීය වාරණය අක්‍රීය කෙරිණි',
 'createaccountblock' => 'ගිණුම් තැනීම වාරණය කෙරිණි',
 'emailblock' => 'විද්‍යුත්-තැපෑල වාරණය කෙරිණි',
-'blocklist-nousertalk' => 'ස්වීය සාකච්ඡා පිටුව සංස්කරණය කල නොහැක',
+'blocklist-nowiki_usertalk' => 'ස්වීය සාකච්ඡා පිටුව සංස්කරණය කල නොහැක',
 'ipblocklist-empty' => 'වාරණ-ලැයිස්තුව හිස්ය.',
 'ipblocklist-no-results' => 'අයැදුනු අන්තර්ජාල ලිපිනය හෝ පරිශීලක නාමය හෝ වාරණයකට ලක්ව නොමැත.',
 'blocklink' => 'වාරණය',
@@ -2561,7 +2561,7 @@ $1',
 'change-blocklink' => 'වාරකය වෙනස් කරන්න',
 'contribslink' => 'දායකත්ව',
 'emaillink' => 'ඊ-තැපෑලක් යවන්න',
-'autoblocker' => 'ඔබගේ අන්තර්ජාල ලිපිනය "[[User:$1|$1]]" විසින් මෑතකදී භාවිතා කර ඇති බැවින් ඔබ ස්වයංක්‍රීය-වාරණයකට ලක් කර ඇත.
+'autoblocker' => 'ඔබගේ අන්තර්ජාල ලිපිනය "[[wiki_user:$1|$1]]" විසින් මෑතකදී භාවිතා කර ඇති බැවින් ඔබ ස්වයංක්‍රීය-වාරණයකට ලක් කර ඇත.
 $1 ගේ වාරණයට හේතුව මෙය වේ: "$2"',
 'blocklogpage' => 'වාරණ සටහන',
 'blocklog-showlog' => 'මෙම පරිශීලකයා මීට පෙර අවහිර කරනු ලැබ ඇත.
@@ -2578,7 +2578,7 @@ $1 ගේ වාරණයට හේතුව මෙය වේ: "$2"',
 'block-log-flags-nocreate' => 'ගිණුම් තැනීම අක්‍රීය කර ඇත',
 'block-log-flags-noautoblock' => 'ස්වයංක්‍රීය වාරණය අක්‍රීය කොට ඇත',
 'block-log-flags-noemail' => 'විද්‍යුත්-තැපෑල වාරණය කොට ඇත',
-'block-log-flags-nousertalk' => 'ස්වීය සාකච්ඡා පිටුව සංස්කරණය කල නොහැක',
+'block-log-flags-nowiki_usertalk' => 'ස්වීය සාකච්ඡා පිටුව සංස්කරණය කල නොහැක',
 'block-log-flags-angry-autoblock' => 'ආවර්ධිත ස්වයංක්‍රීය වාරණය සක්‍රීය කරන ලදි',
 'block-log-flags-hiddenname' => 'පරිශීලක-නාමය  සඟවා ඇත',
 'range_block_disabled' => 'පරාස වාරණයන් සිදුකිරීමට පරිපාලක වරුන්ට ඇති හැකියාව අක්‍රීය කරන ලදි.',
@@ -2589,7 +2589,7 @@ $1 ගේ වාරණයට හේතුව මෙය වේ: "$2"',
 'ipb-needreblock' => '$1 දැනටමත් වාරණය කොට ඇත.
 ඔබට සැකසුම් වෙනස්කිරීම  අවශ්‍යද?',
 'ipb-otherblocks-header' => 'අනෙකුත් {{PLURAL:$1|වාරණය|වාරණයන්}}',
-'unblock-hideuser' => 'මෙම පරිශීලකයාගේ වාරණය අවලංගු කිරීමට ඔබට නොහැකි වන්නේ ඔවුන්ගේ පරිශීලක නාමය සඟවා ඇති බැවිණි',
+'unblock-hidewiki_user' => 'මෙම පරිශීලකයාගේ වාරණය අවලංගු කිරීමට ඔබට නොහැකි වන්නේ ඔවුන්ගේ පරිශීලක නාමය සඟවා ඇති බැවිණි',
 'ipb_cant_unblock' => 'දෝෂය: වාරණ අනන්‍යනාංකය $1 සොයා ගත නොහැකි විය.
 මෙය දැනටමත් වාරණ අත්හිටුවීමකට භාජනය වී ඇතිවා විය හැක.',
 'ipb_blocked_as_range' => 'දෝෂය: $1 අන්තර්ජාල ලිපිනය සෘජුව වාරණය කොට නොමැති අතර එහි වාරණ‍ය අත්හිටුවිය නොහැක.
@@ -2607,7 +2607,7 @@ $1 ගේ වාරණයට හේතුව මෙය වේ: "$2"',
 'sorbs_create_account_reason' => 'ඔබගේ අන්තර්ජාල ලිපිනය, {{SITENAME}} විසින් භාවිත වන DNSBL හි විවෘත නියුතුවක් (ප්‍රොක්සියක්) ලෙස ලැයිස්තුගත කොට ඇත.
 ඔබ හට ගිණුමක් තැනිය නොහැක',
 'cant-block-while-blocked' => 'ඔබ වාරණයට ලක්ව සිටින අතරතුර අනෙක් පරිශීලකයන් වාරණය කිරීමට ඔබ හට නොහැක.',
-'cant-see-hidden-user' => 'අවහිර කිරීමට උත්සාහ කරන පරිශීලකයා දැනටමත් අවහිර කර සඟවා ඇත.පරිශීලක සැඟවුම් අයිතිය ඔබ සතු නොවන බැවින් ,ඔබට පරිශීලක අවහිරය නැරඹීමට හෝ සංස්කරණය කිරීමට නොහැකිය.',
+'cant-see-hidden-wiki_user' => 'අවහිර කිරීමට උත්සාහ කරන පරිශීලකයා දැනටමත් අවහිර කර සඟවා ඇත.පරිශීලක සැඟවුම් අයිතිය ඔබ සතු නොවන බැවින් ,ඔබට පරිශීලක අවහිරය නැරඹීමට හෝ සංස්කරණය කිරීමට නොහැකිය.',
 'ipbblocked' => 'ඔබද වාරණය කොට ඇති බැවින් අනෙකුත් පරිශීලකයන් වාරණය කිරීම හෝ වාරණයෙන් මුදවීම ඔබ හට කල නොහැක',
 'ipbnounblockself' => 'ඔබ විසින්ම ඔබගේ වාරණයෙන් බැහැර වීමට ඉඩදෙනු නොලැබේ',
 
@@ -2666,13 +2666,13 @@ $1 ගේ වාරණයට හේතුව මෙය වේ: "$2"',
 
 මෙවන් අවස්ථා වලදී, අවශ්‍යතාවය පැන නගී නම්, හස්තීය ලෙස ගෙන යාම හෝ ඒකාබද්ධ කිරීම හෝ සිදු කිරීමට ඔබ හට සිදුවේ.",
 'movearticle' => 'පිටුව ගෙනයන්න:',
-'moveuserpage-warning' => "'''අවවාදයයි:''' ඔබ යත්න දරමින් සිටිනුයේ පරිශීලක පිටුවක් ගෙන යෑමටයි. පිටුව ගෙන යෑම පමණක් සිදුවන බවද පරිශීලකයා යළි-නම්කෙරුම සිදු ''නොවන'' බවද කරුණාවෙන් සිහි තබා ගන්න.",
+'movewiki_userpage-warning' => "'''අවවාදයයි:''' ඔබ යත්න දරමින් සිටිනුයේ පරිශීලක පිටුවක් ගෙන යෑමටයි. පිටුව ගෙන යෑම පමණක් සිදුවන බවද පරිශීලකයා යළි-නම්කෙරුම සිදු ''නොවන'' බවද කරුණාවෙන් සිහි තබා ගන්න.",
 'movenologin' => 'ප්‍රවිෂ්ටවී නොමැත',
-'movenologintext' => 'පිටුවක් ගෙනයෑමට පෙර, ඔබ ලේඛනගත පරිශීලකයෙකු වී [[Special:UserLogin|ප්‍රවිෂ්ට වී]] සිටිය යුතුය.',
+'movenologintext' => 'පිටුවක් ගෙනයෑමට පෙර, ඔබ ලේඛනගත පරිශීලකයෙකු වී [[Special:wiki_userLogin|ප්‍රවිෂ්ට වී]] සිටිය යුතුය.',
 'movenotallowed' => 'පිටු ගෙනයෑමට ඔබ හට අවසර නොමැත.',
 'movenotallowedfile' => 'ගොනු ගෙන යෑමට අවසර ඔබ සතුව නොමැත.',
-'cant-move-user-page' => 'පරිශීලක පිටු ගෙනයෑමට  (උපපිටු වලින් හැරෙන්නට) ඔබ හට අවසර නොමැත.',
-'cant-move-to-user-page' => 'පිටුවක් පරිශීලක පිටුවක් වෙතට ගෙනයෑමට  (පරිශීලක උපපිටුවක් වෙත හැරෙන්නට) ඔබ හට අවසර නොමැත.',
+'cant-move-wiki_user-page' => 'පරිශීලක පිටු ගෙනයෑමට  (උපපිටු වලින් හැරෙන්නට) ඔබ හට අවසර නොමැත.',
+'cant-move-to-wiki_user-page' => 'පිටුවක් පරිශීලක පිටුවක් වෙතට ගෙනයෑමට  (පරිශීලක උපපිටුවක් වෙත හැරෙන්නට) ඔබ හට අවසර නොමැත.',
 'newtitle' => 'නව පිටු නාමය:',
 'move-watch' => 'මෙම පිටුව මුර කරන්න',
 'movepagebtn' => 'පිටුව ගෙනයන්න',
@@ -2842,8 +2842,8 @@ $1 ගේ වාරණයට හේතුව මෙය වේ: "$2"',
 'javascripttest-pagetext-noframework' => 'මෙම පිටුව ජාවාස්ක්‍රිප්ට් පරික්ෂණ සිදුකිරීම සඳහා වෙන්කර ඇත.',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'ඔබගේ පරිශීලක පිටුව',
-'tooltip-pt-anonuserpage' => 'සංස්කරණයට ඔබ භාවිතා කරමින් පවතින අන්තර්ජාල ලිපිනය සඳහා පරිශීලක පිටුව',
+'tooltip-pt-wiki_userpage' => 'ඔබගේ පරිශීලක පිටුව',
+'tooltip-pt-anonwiki_userpage' => 'සංස්කරණයට ඔබ භාවිතා කරමින් පවතින අන්තර්ජාල ලිපිනය සඳහා පරිශීලක පිටුව',
 'tooltip-pt-mytalk' => 'ඔබගේ සංවාද පිටුව',
 'tooltip-pt-anontalk' => 'මෙම අන්තර්ජාල ලිපිනයෙන් කර ඇති සංස්කරණයන් පිළිබඳ සාකච්ඡාව',
 'tooltip-pt-preferences' => 'මගේ අභිරුචි',
@@ -2881,13 +2881,13 @@ $1 ගේ වාරණයට හේතුව මෙය වේ: "$2"',
 'tooltip-feed-rss' => 'මෙම පිටුව සඳහා RSS පෝෂකය',
 'tooltip-feed-atom' => 'මෙම පිටුව සඳහා අටෝම් පෝෂකය',
 'tooltip-t-contributions' => 'මෙම පරිශීලකයාගේ දායකත්ව ලැයිස්තුව නරඹන්න',
-'tooltip-t-emailuser' => 'මෙම පරිශීලකයාට විද්‍යුත්-තැපෑලක් යවන්න',
+'tooltip-t-emailwiki_user' => 'මෙම පරිශීලකයාට විද්‍යුත්-තැපෑලක් යවන්න',
 'tooltip-t-upload' => 'ගොනු උඩුගත කරන්න',
 'tooltip-t-specialpages' => 'සියලු විශේෂ පිටු ලැයිස්තුව',
 'tooltip-t-print' => 'මෙම පිටුවෙහි මුද්‍රණය කල හැකි අනුවාදය',
 'tooltip-t-permalink' => 'පිටුවෙහි මෙම අනුවාදයට, ස්ථාවර බැඳිය',
 'tooltip-ca-nstab-main' => 'අන්තර්ගත පිටුව නරඹන්න',
-'tooltip-ca-nstab-user' => 'පරිශීලක පිටුව නරඹන්න',
+'tooltip-ca-nstab-wiki_user' => 'පරිශීලක පිටුව නරඹන්න',
 'tooltip-ca-nstab-media' => 'මාධ්‍ය පිටුව නරඹන්න',
 'tooltip-ca-nstab-special' => 'මෙය විශේෂ පිටුවකි, එයම සංස්කරණය කිරීමට ඔබට නොහැක',
 'tooltip-ca-nstab-project' => 'ව්‍යාපෘති පිටුව නරඹන්න',
@@ -2941,13 +2941,13 @@ $1 ගේ වාරණයට හේතුව මෙය වේ: "$2"',
 
 # Attribution
 'anonymous' => '{{SITENAME}} හි නිර්නාමික {{PLURAL:$1|පරිශීලකයා|පරිශීලකයෝ}}',
-'siteuser' => '{{SITENAME}} පරිශීලක $1',
-'anonuser' => '{{SITENAME}} නිර්නාමික පරිශීලක $1',
+'sitewiki_user' => '{{SITENAME}} පරිශීලක $1',
+'anonwiki_user' => '{{SITENAME}} නිර්නාමික පරිශීලක $1',
 'lastmodifiedatby' => 'මෙම පිටුව අවසන් වරට විකරණය කරන ලද්දේ  $3 විසින්  $1 දින  $2 වේලාවේදීය .',
 'othercontribs' => '$1ගේ කෘතිය මත පදනම් විය.',
 'others' => 'අනෙකුන්',
-'siteusers' => '{{SITENAME}} {{PLURAL:$2|පරිශීලකයා|පරිශීලකයෝ}} $1',
-'anonusers' => '{{SITENAME}} නිර්නාමික {{PLURAL:$2|පරිශිලකයා|පරිශීලකයින්}} $1',
+'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|පරිශීලකයා|පරිශීලකයෝ}} $1',
+'anonwiki_users' => '{{SITENAME}} නිර්නාමික {{PLURAL:$2|පරිශිලකයා|පරිශීලකයින්}} $1',
 'creditspage' => 'පිටුවෙහි කර්තෘ-බුහුමන්',
 'nocredits' => 'මෙම පිටුව සඳහා ස්තුතිපූර්වක තොරතුරු නැත.',
 
@@ -2956,7 +2956,7 @@ $1 ගේ වාරණයට හේතුව මෙය වේ: "$2"',
 'spamprotectiontext' => 'ඔබ හට සුරැකීමට අවශ්‍ය පිටුව අයාචිත-තැපැල් පෙරහන විසින් වාරණය කෙරිණි.
 මෙය බොහෝදුරට අපලේඛිත බාහිර අඩවියක් වෙත වූ සබැඳියක් හේතුවෙන් සිදුවන්නට ඇත.',
 'spamprotectionmatch' => 'ඔබගේ අයාචිත-තැපෑල  පෙරහන පූරනය කර ඇත්තේ ඉදිරියේ දැක්වෙන පෙළය: $1',
-'spambot_username' => 'මීඩියාවිකි ස්පෑම් ඉවත්කිරීම',
+'spambot_wiki_username' => 'මීඩියාවිකි ස්පෑම් ඉවත්කිරීම',
 'spam_reverting' => ' $1 හට සබැඳියන් නොමැති අවසන් අනුවාදය වෙත ප්‍රතිවර්තනය වෙමින්',
 'spam_blanking' => 'සියළු සංශෝධනයන්හි  $1 වෙතවූ සබැඳියන් අඩංගු විය, හිස්කරමින්',
 
@@ -2978,9 +2978,9 @@ $1 ගේ වාරණයට හේතුව මෙය වේ: "$2"',
 'pageinfo-redirects-name' => 'මෙම පිටුවට යළියොමු ගණන',
 'pageinfo-subpages-name' => 'මෙම පිටුවෙහි උපපිටු',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|යළියොමු වෙයි|යළියොමු වෙති}}; $3 {{PLURAL:$3|යළියොමු-නොවෙයි|යළියොමු-නොවෙති}})',
-'pageinfo-firstuser' => 'පිටු තැනූ තැනැත්තේ',
+'pageinfo-firstwiki_user' => 'පිටු තැනූ තැනැත්තේ',
 'pageinfo-firsttime' => 'පිටු තැනූ දිනය',
-'pageinfo-lastuser' => 'අවසන් සංස්කාරක',
+'pageinfo-lastwiki_user' => 'අවසන් සංස්කාරක',
 'pageinfo-lasttime' => 'අවසන් සංස්කරණය වූ දිනය',
 'pageinfo-edits' => 'මුළු සංස්කරණ සංඛ්‍යාව',
 'pageinfo-authors' => 'ප්‍රභින්න කර්තෘවරුන් මුළු සංඛ්‍යාව',
@@ -3168,7 +3168,7 @@ Others will be hidden by default.
 'exif-compressedbitsperpixel' => 'රූප සම්පීඩන මාදිලිය',
 'exif-pixelydimension' => 'ප්‍රතිබිම්බයෙහි පළල',
 'exif-pixelxdimension' => 'ප්‍රතිබිම්බයෙහි උස',
-'exif-usercomment' => 'පරිශීලක පරිකථනයන්',
+'exif-wiki_usercomment' => 'පරිශීලක පරිකථනයන්',
 'exif-relatedsoundfile' => 'සහසම්බන්ධිත ශ්‍රව්‍ය ගොනුව',
 'exif-datetimeoriginal' => 'දත්ත ජනන දිනය හා වේලාව',
 'exif-datetimedigitized' => 'ඩිජිටල්කරන දිනය හා වේලාව',
@@ -3570,7 +3570,7 @@ Others will be hidden by default.
 කේතය කල් ඉකුත්වූ එකක් විය හැක.',
 'confirmemail_needlogin' => 'ඔබගේ විද්‍යුත්-තැපැල් ලිපිනය තහවුරුකිරීමට ඔබ  $1 වී සිටිය යුතුය.',
 'confirmemail_success' => 'ඔබගේ විද්‍යුත්-තැපැල් ලිපිනය තහවුරුකොට ඇත.
-ඔබහට දැන් [[Special:UserLogin|පුවිෂ්ට වී]] විකිය භුක්තිවිඳිය හැක.',
+ඔබහට දැන් [[Special:wiki_userLogin|පුවිෂ්ට වී]] විකිය භුක්තිවිඳිය හැක.',
 'confirmemail_loggedin' => 'ඔබගේ විද්‍යුත්-තැපැල් ලිපිනය දැන් තහවුරුකොට ඇත.',
 'confirmemail_error' => 'ඔබගේ තහවුරුකිරීම සුරැකීමට උත්සාහ කිරීමේදී යම් ගැටළුවක් පැනනැගුණි.',
 'confirmemail_subject' => '{{SITENAME}} විද්‍යුත්-තැපැල් ලිපිනය තහවුරුකිරීම',
@@ -3626,7 +3626,7 @@ This confirmation code will expire at $4.',
 
 # Delete conflict
 'deletedwhileediting' => "'''අවවාදයයි''': ඔබ විසින් මෙම පිටුව සංස්කරණය ඇරැඹි පසුව එය මකා දමන ලදි!",
-'confirmrecreate' => "ඔබ විසින් මේ පිටුව සංස්කරණය කිරීම ඇරඹූ පසු, පරිශීලක [[User:$1|$1]] ([[User talk:$1|සාකච්ඡාව]]) විසින් එය මකාදමා පහත හේතුව සපයන ලදි:
+'confirmrecreate' => "ඔබ විසින් මේ පිටුව සංස්කරණය කිරීම ඇරඹූ පසු, පරිශීලක [[wiki_user:$1|$1]] ([[wiki_user talk:$1|සාකච්ඡාව]]) විසින් එය මකාදමා පහත හේතුව සපයන ලදි:
 : ''$2''
 ඔබ එට සත්‍යවශයෙන්ම මෙම පිටුව යළිතැනීමට අවශ්‍ය බව තහවුරුකරන්න.",
 'recreate' => 'යළිතැනීම',
@@ -3770,7 +3770,7 @@ This confirmation code will expire at $4.',
 'hebrew-calendar-m12-gen' => 'එලුල්',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|සාකච්ඡාව]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|සාකච්ඡාව]])',
 'timezone-utc' => 'යූටීසී',
 
 # Core parser functions
@@ -3838,7 +3838,7 @@ MediaWiki බෙදාහැර ඇත්තේ එය ප්‍රයෝජන�
 'specialpages-group-login' => 'පිවිසෙන්න / ගිණුමක් තනන්න',
 'specialpages-group-changes' => 'මෑත වෙනස්වීම් හා ලඝු-සටහන්',
 'specialpages-group-media' => 'මාධ්‍ය වාර්තා හා උඩුගත කිරීම්',
-'specialpages-group-users' => 'පරිශීලකයන් හා හිමිකම්',
+'specialpages-group-wiki_users' => 'පරිශීලකයන් හා හිමිකම්',
 'specialpages-group-highuse' => 'බෙහෙවින් භාවිත වන පිටු',
 'specialpages-group-pages' => 'පිටු ලැයිස්තු',
 'specialpages-group-pagetools' => 'පිටු මෙවලම්',
@@ -3930,11 +3930,11 @@ MediaWiki බෙදාහැර ඇත්තේ එය ප්‍රයෝජන�
 'logentry-move-move-noredirect' => '$1 විසින් යලියොමුවක් නොදමාම $3 පිටුව $4 වෙත ගෙනයන ලදී',
 'logentry-move-move_redir' => '$1 විසින් යලියොමුවක් දමා $3 පිටුව $4 වෙත ගෙනයන ලදී',
 'logentry-move-move_redir-noredirect' => '$1 විසින් යලියොමුවක් නොදමාම යලියොමුවක් හරහා $3 පිටුව $4 වෙත ගෙනයන ලදී',
-'logentry-newusers-newusers' => '$1 පරිශීලක ගිණුමක් තනන ලදී',
-'logentry-newusers-create' => '$1 පරිශීලක ගිණුමක් තනන ලදී',
-'logentry-newusers-create2' => '$1 විසින් $3 පරිශීලක ගිණුම තනන ලදී',
-'logentry-newusers-autocreate' => '$1 ගිණුම ස්වංක්‍රීයව නිර්මිතය',
-'newuserlog-byemail' => 'විද්‍යුත්-තැපෑලෙන් මුර-පදය යවන ලදි',
+'logentry-newwiki_users-newwiki_users' => '$1 පරිශීලක ගිණුමක් තනන ලදී',
+'logentry-newwiki_users-create' => '$1 පරිශීලක ගිණුමක් තනන ලදී',
+'logentry-newwiki_users-create2' => '$1 විසින් $3 පරිශීලක ගිණුම තනන ලදී',
+'logentry-newwiki_users-autocreate' => '$1 ගිණුම ස්වංක්‍රීයව නිර්මිතය',
+'newwiki_userlog-byemail' => 'විද්‍යුත්-තැපෑලෙන් මුර-පදය යවන ලදි',
 
 # Feedback
 'feedback-subject' => 'විෂයය:',

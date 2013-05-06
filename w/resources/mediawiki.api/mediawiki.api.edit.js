@@ -66,7 +66,7 @@
 				},
 				ok = function ( data ) {
 					var token;
-					// If token type is not available for this user,
+					// If token type is not available for this wiki_user,
 					// key 'edittoken' is missing or can contain Boolean false
 					if ( data.tokens && data.tokens.edittoken ) {
 						token = data.tokens.edittoken;

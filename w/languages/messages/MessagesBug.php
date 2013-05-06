@@ -115,7 +115,7 @@ $messages = array(
 'articlepage' => 'Ita lontara',
 'talk' => 'Bicara',
 'toolbox' => 'Toolbox',
-'userpage' => 'Ita leppa papaké',
+'wiki_userpage' => 'Ita leppa papaké',
 'projectpage' => 'Ita leppa proyék',
 'imagepage' => 'Ita leppa rapaŋ',
 'mediawikipage' => 'Ita leppa méséje',
@@ -128,7 +128,7 @@ $messages = array(
 'jumpto' => 'Luppe lao:',
 'jumptosearch' => 'sappa',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Tentang {{SITENAME}}',
 'currentevents' => 'Accanjingeŋ kokkoro',
 'currentevents-url' => 'Project:Accanjingeŋ kokkoro',
@@ -150,7 +150,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Leppa',
-'nstab-user' => 'Leppa papaké',
+'nstab-wiki_user' => 'Leppa papaké',
 'nstab-media' => 'Leppa média',
 'nstab-special' => 'Leppa spésiala',
 'nstab-project' => 'Proyek',
@@ -181,9 +181,9 @@ $messages = array(
 'yourpassword' => 'Adacili:',
 'login' => 'log attama',
 'nav-login-createaccount' => 'Log attama / ebbu akun',
-'userlogin' => 'Log attama / ebbu akun',
+'wiki_userlogin' => 'Log attama / ebbu akun',
 'logout' => 'Log essu',
-'userlogout' => 'Log essu',
+'wiki_userlogout' => 'Log essu',
 'notloggedin' => 'Déppa log attama',
 'nologin' => "Dé' gaga akaun? '''$1'''.",
 'nologinlink' => 'Ebbu akun',
@@ -211,7 +211,7 @@ $messages = array(
 'blockedtitle' => 'Papaké riblok',
 'accmailtitle' => 'Ada sandi ni riantarak.',
 'accmailtext' => 'Ada sandi "$1" riantarak ri $2.',
-'anontalkpagetext' => "----''Ini adalah halaman diskusi untuk pengguna anonim yang belum membuat rekening atau tidak menggunakannya. Karena tidak membuat rekening, kami terpaksa memakai alamat IP untuk mengenalinya. Alamat IP seperti ini dapat dipakai oleh beberapa pengguna yang berbeda. Jika Anda adalah pengguna anonim dan merasa mendapatkan komentar-komentar yang tidak berkaitan dengan anda, kami anjurkan untuk [[Special:UserLogin|membuat rekening atau masuk log]] untuk menghindari kerancuan dengan pengguna anonim lain.''",
+'anontalkpagetext' => "----''Ini adalah halaman diskusi untuk pengguna anonim yang belum membuat rekening atau tidak menggunakannya. Karena tidak membuat rekening, kami terpaksa memakai alamat IP untuk mengenalinya. Alamat IP seperti ini dapat dipakai oleh beberapa pengguna yang berbeda. Jika Anda adalah pengguna anonim dan merasa mendapatkan komentar-komentar yang tidak berkaitan dengan anda, kami anjurkan untuk [[Special:wiki_userLogin|membuat rekening atau masuk log]] untuk menghindari kerancuan dengan pengguna anonim lain.''",
 'editing' => 'Mapadécéŋ $1',
 
 # History pages
@@ -228,14 +228,14 @@ $messages = array(
 
 # Revision deletion
 'rev-deleted-comment' => '(komentar ripeddé)',
-'rev-deleted-user' => '(ripeddéni aseŋna papakeë)',
+'rev-deleted-wiki_user' => '(ripeddéni aseŋna papakeë)',
 'rev-deleted-event' => '(log gau ripeddéni)',
 'rev-delundel' => "pakitaï/tapo'",
 'revdelete-selected' => "'''{{PLURAL:$2|Revisi|Revisi-revisi}} ripiléna [[$1]]ë:'''",
 'logdelete-selected' => "'''{{PLURAL:$1|Log|Log-log}} ripilé:'''",
 'revdelete-hide-text' => 'Tapoïki text revisië',
 'revdelete-hide-comment' => 'Tapo komentar mapadecéŋ',
-'revdelete-hide-user' => 'Tapo aseŋ papakéna/IPna papadéceŋë',
+'revdelete-hide-wiki_user' => 'Tapo aseŋ papakéna/IPna papadéceŋë',
 'revdelete-log' => 'Saba:',
 
 # Diffs
@@ -261,7 +261,7 @@ $messages = array(
 'prefs-editing' => 'Mapadécéŋ',
 'searchresultshead' => 'Masappa',
 'youremail' => 'E-mail:',
-'username' => 'Aseŋ papaké:',
+'wiki_username' => 'Aseŋ papaké:',
 'uid' => 'ID papaké:',
 'email' => 'E-mail',
 
@@ -269,10 +269,10 @@ $messages = array(
 'group-sysop' => 'Puŋgawa',
 'group-all' => '(sininna)',
 
-'group-user-member' => '{{GENDER:$1|Pappaké}}',
+'group-wiki_user-member' => '{{GENDER:$1|Pappaké}}',
 'group-sysop-member' => 'Puŋgawa',
 
-'grouppage-user' => '{{ns:project}}:Pappaké',
+'grouppage-wiki_user' => '{{ns:project}}:Pappaké',
 'grouppage-sysop' => '{{ns:project}}:Puŋgawa',
 
 # Rights
@@ -304,7 +304,7 @@ $messages = array(
 
 # File description page
 'file-anchor-link' => 'Rapang',
-'filehist-user' => 'Papaké',
+'filehist-wiki_user' => 'Papaké',
 'filehist-dimensions' => 'Dimensi',
 'imagelinks' => 'Liŋke',
 
@@ -337,7 +337,7 @@ $messages = array(
 'movethispage' => 'Paleccé leppa iyyé',
 
 # Special:Log
-'specialloguserlabel' => 'Papaké:',
+'speciallogwiki_userlabel' => 'Papaké:',
 'log' => 'Log',
 'all-logs-page' => 'Maneŋ log',
 
@@ -407,7 +407,7 @@ Eloko peddéï supaya weddiŋi mapalecé?',
 'allmessagescurrent' => 'Teks kokkoro',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => "Leppa papaké iya'",
+'tooltip-pt-wiki_userpage' => "Leppa papaké iya'",
 'tooltip-pt-mytalk' => "Leppa bicara iya'",
 'tooltip-pt-preferences' => "Preferencena iya'",
 'tooltip-pt-logout' => 'Log maessu',
@@ -467,7 +467,7 @@ Eloko peddéï supaya weddiŋi mapalecé?',
 'specialpages-group-other' => 'Leppa spésiala laiŋë',
 'specialpages-group-login' => 'Log attama / mendaftar',
 'specialpages-group-changes' => 'Pinrana tanappaë sibawa logeë',
-'specialpages-group-users' => 'Papaké sibawa hak-hak',
+'specialpages-group-wiki_users' => 'Papaké sibawa hak-hak',
 'specialpages-group-pages' => 'Sininna leppaë',
 'specialpages-group-pagetools' => 'Tool leppaë',
 'specialpages-group-wiki' => 'Data sibawa tool wiki',

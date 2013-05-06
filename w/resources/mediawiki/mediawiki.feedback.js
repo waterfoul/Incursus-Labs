@@ -5,8 +5,8 @@
  * @author Neil Kandalgaonkar, 2010-11
  * @since 1.19
  *
- * This is a way of getting simple feedback from users. It's useful
- * for testing new features -- users can give you feedback without
+ * This is a way of getting simple feedback from wiki_users. It's useful
+ * for testing new features -- wiki_users can give you feedback without
  * the difficulty of opening a whole new talk page. For this reason,
  * it also tends to collect a wider range of both positive and negative
  * comments. However you do need to tend to the feedback page. It will
@@ -29,7 +29,7 @@
  */
 ( function ( mw, $ ) {
 	/**
-	 * Thingy for collecting user feedback on a wiki page
+	 * Thingy for collecting wiki_user feedback on a wiki page
 	 * @param {Array} options -- optional, all properties optional.
 	 *  api: {mw.Api} if omitted, will just create a standard API
 	 *  title: {mw.Title} the title of the page where you collect feedback. Defaults to "Feedback".
@@ -239,7 +239,7 @@
 			// Get the values to submit.
 			subject = this.subjectInput.value;
 
-			// We used to include "mw.html.escape( navigator.userAgent )" but there are legal issues
+			// We used to include "mw.html.escape( navigator.wiki_userAgent )" but there are legal issues
 			// with posting this without their explicit consent
 			message = this.messageInput.value;
 			if ( message.indexOf( '~~~' ) === -1 ) {

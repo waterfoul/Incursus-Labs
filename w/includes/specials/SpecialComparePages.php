@@ -41,7 +41,7 @@ class SpecialComparePages extends SpecialPage {
 	}
 
 	/**
-	 * Show a form for filtering namespace and username
+	 * Show a form for filtering namespace and wiki_username
 	 *
 	 * @param $par String
 	 * @return String

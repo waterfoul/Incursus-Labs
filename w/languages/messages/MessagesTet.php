@@ -43,13 +43,13 @@ $specialPageAliases = array(
 	'Categories'                => array( 'Kategoria' ),
 	'Contributions'             => array( 'Kontribuisaun' ),
 	'CreateAccount'             => array( 'Rejista' ),
-	'Emailuser'                 => array( 'Haruka_korreiu_eletróniku' ),
+	'Emailwiki_user'                 => array( 'Haruka_korreiu_eletróniku' ),
 	'Export'                    => array( 'Esporta' ),
 	'Import'                    => array( 'Importa' ),
 	'BlockList'                 => array( 'Lista_ema_sira-ne\'ebé_blokeiu_tiha' ),
 	'Listadmins'                => array( 'Lista_administradór' ),
 	'Listfiles'                 => array( 'Lista_imajen' ),
-	'Listusers'                 => array( 'Lista_uza-na\'in' ),
+	'Listwiki_users'                 => array( 'Lista_uza-na\'in' ),
 	'Longpages'                 => array( 'Pájina_naruk' ),
 	'Movepage'                  => array( 'Book' ),
 	'Mypage'                    => array( 'Ha\'u-nia_pájina' ),
@@ -64,7 +64,7 @@ $specialPageAliases = array(
 	'Statistics'                => array( 'Estatístika' ),
 	'Undelete'                  => array( 'Restaurar' ),
 	'Upload'                    => array( 'Tau_iha_arkivu_laran' ),
-	'Userrights'                => array( 'Priviléjiu' ),
+	'wiki_userrights'                => array( 'Priviléjiu' ),
 	'Version'                   => array( 'Versaun' ),
 	'Watchlist'                 => array( 'Lista_hateke' ),
 	'Whatlinkshere'             => array( 'Pájina_sira_ne\'ebé_bá_iha_ne\'e' ),
@@ -72,7 +72,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Subliña ligasaun sira:',
 'tog-justify' => 'Justifika parágrafu sira',
 'tog-hideminor' => "Lá'os hatudu muda ki-ki'ik iha mudansa foufoun sira",
@@ -210,7 +210,7 @@ $messages = array(
 'postcomment' => 'Seksaun foun',
 'talk' => 'Diskusaun',
 'toolbox' => 'Kaixa besi nian',
-'userpage' => "Haree pájina uza-na'in",
+'wiki_userpage' => "Haree pájina uza-na'in",
 'projectpage' => 'Haree pájina projetu nian',
 'imagepage' => 'Haree pájina imajen nian',
 'mediawikipage' => 'Haree pájina mensajen nian',
@@ -224,7 +224,7 @@ $messages = array(
 'jumptonavigation' => 'hatudu-dalan',
 'jumptosearch' => 'buka',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Kona-ba {{SITENAME}}',
 'aboutpage' => 'Project:Kona-ba',
 'copyright' => 'Testu pájina nian iha $1 okos.',
@@ -273,7 +273,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Pájina',
-'nstab-user' => "Pájina uza-na'in",
+'nstab-wiki_user' => "Pájina uza-na'in",
 'nstab-special' => 'Pájina espesiál',
 'nstab-project' => 'Pájina projetu nian',
 'nstab-image' => 'Fail',
@@ -303,20 +303,20 @@ La haluha muda Ita-nia [[Special:Preferences|preferénsia]].",
 'yourname' => "Naran uza-na'in:",
 'login' => 'Log in',
 'nav-login-createaccount' => 'Log in / kriar konta ida',
-'userlogin' => 'Log in / kriar konta ida',
+'wiki_userlogin' => 'Log in / kriar konta ida',
 'logout' => 'Husik',
-'userlogout' => 'Husik',
+'wiki_userlogout' => 'Husik',
 'nologin' => "La iha konta ida? '''$1'''.",
 'nologinlink' => 'Registrar',
 'createaccount' => "Registrar uza-na'in",
 'gotaccount' => "Ó iha konta ona? '''$1'''.",
 'gotaccountlink' => 'Log in',
-'userexists' => "Naran uza-na'in ne'e ona iha wiki.
+'wiki_userexists' => "Naran uza-na'in ne'e ona iha wiki.
 Favór ida lori naran seluk.",
-'nosuchuser' => 'Konta uza-na\'in (naran "$1") la iha.
-User names are case sensitive.
-Check your spelling, ka [[Special:UserLogin/signup|kria konta foun]].',
-'nouserspecified' => "Ó tenke espesífiku naran uza-na'in ida.",
+'nosuchwiki_user' => 'Konta uza-na\'in (naran "$1") la iha.
+wiki_user names are case sensitive.
+Check your spelling, ka [[Special:wiki_userLogin/signup|kria konta foun]].',
+'nowiki_userspecified' => "Ó tenke espesífiku naran uza-na'in ida.",
 'accountcreated' => "Registrar tiha uza-na'in",
 'loginlanguagelabel' => 'Lian: $1',
 
@@ -324,7 +324,7 @@ Check your spelling, ka [[Special:UserLogin/signup|kria konta foun]].',
 'resetpass_text' => "<!-- Hakerek testu iha ne'e -->",
 
 # Special:PasswordReset
-'passwordreset-username' => "Naran uza-na'in:",
+'passwordreset-wiki_username' => "Naran uza-na'in:",
 'passwordreset-email' => 'Diresaun korreiu eletróniku:',
 
 # Edit page toolbar
@@ -359,7 +359,7 @@ Ita-nia mudansa la armazenadu seidauk!",
 'template-semiprotected' => '(proteje tiha balun)',
 'hiddencategories' => "Pájina ne'e iha {{PLURAL:$1|kategoria ida-ne'ebé subar|kategoria $1 sira-ne'ebé subar}}:",
 'nocreatetext' => "Ó la bele kria pájina foun iha {{SITENAME}}.
-Ó bele edita pájina sira-ne'ebé {{SITENAME}} iha ona ka [[Special:UserLogin|log in ka kria konta uza-na'in]].",
+Ó bele edita pájina sira-ne'ebé {{SITENAME}} iha ona ka [[Special:wiki_userLogin|log in ka kria konta uza-na'in]].",
 'nocreate-loggedin' => 'Ó la bele kria pájina foun.',
 'permissionserrorstext' => "Ó la bele halo ne'e; {{PLURAL:$1|motivu|motivu sira}}:",
 'permissionserrorstext-withaction' => 'Ita la bele $2. {{PLURAL:$1|Razaun|Razaun sira}}:',
@@ -389,7 +389,7 @@ Ita-nia mudansa la armazenadu seidauk!",
 'rev-delundel' => 'hatudu/subar',
 'revisiondelete' => 'Halakon/restaurar versaun',
 'revdelete-show-file-submit' => 'Sin',
-'revdelete-hide-user' => "Subar naran edita-na'in/IP",
+'revdelete-hide-wiki_user' => "Subar naran edita-na'in/IP",
 'revdelete-radio-set' => 'Sin',
 'revdelete-radio-unset' => 'Lae',
 'revdelete-edit-reasonlist' => 'Edita lista motivu nian',
@@ -431,7 +431,7 @@ Ita-nia mudansa la armazenadu seidauk!",
 'timezoneregion-australia' => 'Austrália',
 'timezoneregion-europe' => 'Europa',
 'youremail' => 'Korreiu eletróniku:',
-'username' => "Naran uza-na'in:",
+'wiki_username' => "Naran uza-na'in:",
 'uid' => "Númeru uza-na'in:",
 'yourlanguage' => 'Lian:',
 'gender-male' => 'Mane',
@@ -439,33 +439,33 @@ Ita-nia mudansa la armazenadu seidauk!",
 'email' => 'Korreiu eletróniku',
 'prefs-help-email-required' => 'Haruka diresaun korreiu eletróniku.',
 
-# User rights
-'userrights' => "Muda priviléjiu uza-na'in sira",
-'userrights-lookup-user' => "Muda grupu uza-na'in",
-'userrights-user-editname' => "Fó naran uza-na'in ida:",
-'editusergroup' => "Muda grupu uza-na'in",
-'editinguser' => "Muda grupu '''[[User:$1|$1]]''' nian $2",
-'userrights-editusergroup' => "Muda grupu uza-na'in",
-'userrights-groupsmember' => 'Membru iha:',
-'userrights-reason' => 'Motivu:',
-'userrights-no-interwiki' => "Ó la bele muda priviléjiu uza-na'in iha wiki seluk.",
+# wiki_user rights
+'wiki_userrights' => "Muda priviléjiu uza-na'in sira",
+'wiki_userrights-lookup-wiki_user' => "Muda grupu uza-na'in",
+'wiki_userrights-wiki_user-editname' => "Fó naran uza-na'in ida:",
+'editwiki_usergroup' => "Muda grupu uza-na'in",
+'editingwiki_user' => "Muda grupu '''[[wiki_user:$1|$1]]''' nian $2",
+'wiki_userrights-editwiki_usergroup' => "Muda grupu uza-na'in",
+'wiki_userrights-groupsmember' => 'Membru iha:',
+'wiki_userrights-reason' => 'Motivu:',
+'wiki_userrights-no-interwiki' => "Ó la bele muda priviléjiu uza-na'in iha wiki seluk.",
 
 # Groups
 'group' => 'Grupu:',
-'group-user' => "Uza-na'in sira",
+'group-wiki_user' => "Uza-na'in sira",
 'group-bot' => 'Bot sira',
 'group-sysop' => 'Administradór sira',
 'group-bureaucrat' => 'Burokrata sira',
 'group-suppress' => "Oversight-na'in sira",
 'group-all' => '(hotu)',
 
-'group-user-member' => "{{GENDER:$1|Uza-na'in}}",
+'group-wiki_user-member' => "{{GENDER:$1|Uza-na'in}}",
 'group-bot-member' => '{{GENDER:$1|Bot}}',
 'group-sysop-member' => '{{GENDER:$1|Administradór|Administradóra}}',
 'group-bureaucrat-member' => '{{GENDER:$1|Burokrata}}',
 'group-suppress-member' => "{{GENDER:$1|Oversight-na'in}}",
 
-'grouppage-user' => "{{ns:project}}:Uza-na'in sira",
+'grouppage-wiki_user' => "{{ns:project}}:Uza-na'in sira",
 'grouppage-bot' => '{{ns:project}}:Bot sira',
 'grouppage-sysop' => '{{ns:project}}:Administradór sira',
 'grouppage-bureaucrat' => '{{ns:project}}:Burokrata sira',
@@ -481,10 +481,10 @@ Ita-nia mudansa la armazenadu seidauk!",
 'right-delete' => 'Halakon pájina sira',
 'right-bigdelete' => "Halakon pájina sira-ne'ebé iha istória boot",
 'right-undelete' => 'Restaurar pájina ida',
-'right-userrights' => "Edita priviléjiu uza-na'in hotu",
-'right-userrights-interwiki' => "Edita priviléjiu uza-na'in iha wiki seluk sira",
+'right-wiki_userrights' => "Edita priviléjiu uza-na'in hotu",
+'right-wiki_userrights-interwiki' => "Edita priviléjiu uza-na'in iha wiki seluk sira",
 
-# User rights log
+# wiki_user rights log
 'rightslog' => "Lista mudansa priviléjiu uza-na'in",
 'rightslogtext' => "Ne'e lista mudansa priviléjiu uza-na'in sira nian.",
 'rightslogentry' => 'muda grupu "$1" nian husi "$2" ba "$3"',
@@ -499,8 +499,8 @@ Ita-nia mudansa la armazenadu seidauk!",
 'action-move-subpages' => "book pájina ne'e ho sub-pájina",
 'action-delete' => "halakon pájina ne'e",
 'action-undelete' => "restaurar pájina ne'e",
-'action-userrights' => "edita priviléjiu uza-na'in hotu",
-'action-userrights-interwiki' => "edita priviléjiu uza-na'in iha wiki seluk sira",
+'action-wiki_userrights' => "edita priviléjiu uza-na'in hotu",
+'action-wiki_userrights-interwiki' => "edita priviléjiu uza-na'in iha wiki seluk sira",
 
 # Recent changes
 'nchanges' => '$1 {{PLURAL:$1|diferensa|diferensa}}',
@@ -542,7 +542,7 @@ Ita-nia mudansa la armazenadu seidauk!",
 'imgfile' => 'fail',
 'listfiles_date' => 'Tempu',
 'listfiles_name' => 'Naran',
-'listfiles_user' => "Uza-na'in",
+'listfiles_wiki_user' => "Uza-na'in",
 
 # File description page
 'file-anchor-link' => 'Fail',
@@ -550,7 +550,7 @@ Ita-nia mudansa la armazenadu seidauk!",
 'filehist-deleteone' => 'halakon',
 'filehist-current' => 'atuál',
 'filehist-datetime' => 'Loron/Tempu',
-'filehist-user' => "Uza-na'in",
+'filehist-wiki_user' => "Uza-na'in",
 'filehist-comment' => 'Komentáriu',
 'imagelinks' => "Pájina iha ne'ebá fixeiru ne'e",
 'uploadnewversion-linktext' => 'Tau versaun foun imajen nian',
@@ -586,9 +586,9 @@ Ita-nia mudansa la armazenadu seidauk!",
 'prefixindex' => 'Pájina hotu ho prefiksu',
 'shortpages' => 'Pájina badak',
 'longpages' => 'Pájina naruk',
-'listusers' => "Lista uza-na'in",
+'listwiki_users' => "Lista uza-na'in",
 'newpages' => 'Pájina foun',
-'newpages-username' => "Naran uza-na'in:",
+'newpages-wiki_username' => "Naran uza-na'in:",
 'ancientpages' => 'Pájina tuan liu hotu sira',
 'move' => 'Book',
 'movethispage' => "Book pájina ne'e",
@@ -597,7 +597,7 @@ Ita-nia mudansa la armazenadu seidauk!",
 'booksources-go' => 'Bá',
 
 # Special:Log
-'specialloguserlabel' => "Uza-na'in ne'ebé halo:",
+'speciallogwiki_userlabel' => "Uza-na'in ne'ebé halo:",
 'speciallogtitlelabel' => "Objetivu (títulu ka uza-na'in):",
 
 # Special:AllPages
@@ -623,27 +623,27 @@ Ita-nia mudansa la armazenadu seidauk!",
 'linksearch-ns' => 'Espasu pájina nian:',
 'linksearch-ok' => 'Buka',
 
-# Special:ListUsers
-'listusers-submit' => 'Hatudu',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Hatudu',
 
-# Special:ActiveUsers
-'activeusers-hidebots' => 'Subar bot sira',
-'activeusers-hidesysops' => 'Subar administradór sira',
+# Special:Activewiki_users
+'activewiki_users-hidebots' => 'Subar bot sira',
+'activewiki_users-hidesysops' => 'Subar administradór sira',
 
-# Special:Log/newusers
-'newuserlogpage' => "Lista kria uza-na'in",
-'newuserlogpagetext' => "Ne'e lista kria uza-na'in.",
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => "Lista kria uza-na'in",
+'newwiki_userlogpagetext' => "Ne'e lista kria uza-na'in.",
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'Grupu',
 'listgrouprights-rights' => 'Priviléjiu',
 'listgrouprights-members' => '(lista membru nian)',
 
-# E-mail user
-'emailuser' => "Haruka korreiu eletróniku ba uza-na'in ne'e",
+# E-mail wiki_user
+'emailwiki_user' => "Haruka korreiu eletróniku ba uza-na'in ne'e",
 'defemailsubject' => '{{SITENAME}} - korreiu eletróniku husi uza-na\'in "$1"',
 'noemailtitle' => "Lá'os diresaun korreiu eletróniku",
-'emailusername' => "Naran uza-na'in:",
+'emailwiki_username' => "Naran uza-na'in:",
 'emailsend' => 'Haruka',
 
 # Watchlist
@@ -730,7 +730,7 @@ Ita-nia mudansa la armazenadu seidauk!",
 'sp-contributions-newbies' => "Hatudu de'it kontribuisaun uza-na'in foun sira-nia",
 'sp-contributions-talk' => 'diskusaun',
 'sp-contributions-search' => 'Buka kontribuisaun',
-'sp-contributions-username' => "Diresaun IP ka naran uza-na'in:",
+'sp-contributions-wiki_username' => "Diresaun IP ka naran uza-na'in:",
 'sp-contributions-submit' => 'Buka',
 
 # What links here
@@ -762,7 +762,7 @@ Ita-nia mudansa la armazenadu seidauk!",
 'contribslink' => 'kontribuisaun',
 'block-log-flags-nocreate' => 'la bele kria konta foun',
 'block-log-flags-noemail' => 'korreiu eletróniku blokeiu',
-'block-log-flags-nousertalk' => 'la bele edita pájina diskusaun rasik',
+'block-log-flags-nowiki_usertalk' => 'la bele edita pájina diskusaun rasik',
 'ipb_already_blocked' => 'Ema ruma blokeiu "$1" tiha ona',
 
 # Move page
@@ -801,7 +801,7 @@ Ita-nia mudansa la armazenadu seidauk!",
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|versaun|versaun}} husi $2',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => "Ó-nia pájina uza-na'in",
+'tooltip-pt-wiki_userpage' => "Ó-nia pájina uza-na'in",
 'tooltip-pt-mytalk' => 'Ó-nia pájina diskusaun',
 'tooltip-pt-preferences' => "Ha'u-nia preferénsia",
 'tooltip-pt-mycontris' => 'Ó-nia kontribuisaun (lista)',
@@ -829,12 +829,12 @@ Ita-nia mudansa la armazenadu seidauk!",
 'tooltip-n-help' => 'Hatudu pájina ajuda.',
 'tooltip-t-whatlinkshere' => "Lista pájina nian ne'ebé bá iha ne'e",
 'tooltip-t-contributions' => "Haree lista kontribuisaun uza-na'in ne'e nian",
-'tooltip-t-emailuser' => 'Haruka korreiu eletróniku',
+'tooltip-t-emailwiki_user' => 'Haruka korreiu eletróniku',
 'tooltip-t-upload' => 'Tau iha arkivu laran',
 'tooltip-t-specialpages' => 'Lista pájina espesiál hotu nian',
 'tooltip-t-print' => "Versaun pájina ne'e nian ba imprime/prin",
 'tooltip-ca-nstab-main' => 'Haree konteúdu pájina nian',
-'tooltip-ca-nstab-user' => "Haree pájina uza-na'in",
+'tooltip-ca-nstab-wiki_user' => "Haree pájina uza-na'in",
 'tooltip-ca-nstab-special' => "Ne'e pájina espesiál – Ita la bele edita",
 'tooltip-ca-nstab-project' => 'Haree pájina projetu nian',
 'tooltip-ca-nstab-category' => 'Lee pájina kategoria',
@@ -842,9 +842,9 @@ Ita-nia mudansa la armazenadu seidauk!",
 'tooltip-watch' => 'Tau pájina ne\'e ba Ita-nia "lista hateke"',
 
 # Attribution
-'siteuser' => "uza-na'in {{SITENAME}} nian $1",
+'sitewiki_user' => "uza-na'in {{SITENAME}} nian $1",
 'lastmodifiedatby' => "Pájina ne'e $3 mak muda ba dala ikus iha $1, $2.",
-'siteusers' => "{{PLURAL:$2|uza-na'in|uza-na'in}} {{SITENAME}} nian $1",
+'sitewiki_users' => "{{PLURAL:$2|uza-na'in|uza-na'in}} {{SITENAME}} nian $1",
 
 # Skin names
 'skinname-standard' => 'Klásiku',
@@ -963,7 +963,7 @@ Ligasaun seluk iha liña - ne'e pájina sira iha ne'ebé bele inklui imajen aat.
 'specialpages-group-other' => 'Pájina espesiál seluk',
 'specialpages-group-login' => 'Login / kria konta',
 'specialpages-group-changes' => 'Mudansa foufoun sira no lista sira',
-'specialpages-group-users' => "Uza-na'in no priviléjiu sira",
+'specialpages-group-wiki_users' => "Uza-na'in no priviléjiu sira",
 'specialpages-group-pages' => 'Lista pájina nian',
 
 # Special:BlankPage

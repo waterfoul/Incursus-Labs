@@ -21,7 +21,7 @@ $fallback8bitEncoding = 'windows-1256';
 $rtl = true;
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'حوڑ تھلے لین:',
 'tog-justify' => 'پیراگراف ثابت کرو',
 'tog-hideminor' => 'چھوٹیاں تبدیلیاں چھپاؤ',
@@ -45,7 +45,7 @@ $messages = array(
 'tog-previewonfirst' => 'پہلی تبدیلی تے پریویو وکھاؤ',
 'tog-nocache' => 'براؤزر چ صفحے دی کیشنگ روک دیو',
 'tog-enotifwatchlistpages' => 'اگر میری اکھ تھلیاں صفحیاں چوں کسے چ تبدیلی ہوۓ، تے مینوں ای میل کر دیو',
-'tog-enotifusertalkpages' => 'اگر میرے گلاں باتاں آلے صفحے چ کوئی تبدیلی کرے، تے مینوں ای میل کر دیو',
+'tog-enotifwiki_usertalkpages' => 'اگر میرے گلاں باتاں آلے صفحے چ کوئی تبدیلی کرے، تے مینوں ای میل کر دیو',
 'tog-enotifminoredits' => 'صفحیاں چ چھوٹیاں موٹیاں تبدیلیاں تے وی مینوں ای میل کر دیو',
 'tog-enotifrevealaddr' => 'میرے ای میل دے پتے نوں سندیسے آلی ای میل دے وچ وکھاؤ۔',
 'tog-shownumberswatching' => 'ویکھن آلے لوکاں دی گنتی وکھاؤ۔',
@@ -227,7 +227,7 @@ $messages = array(
 'talk' => 'گل بات',
 'views' => 'وکھالے',
 'toolbox' => 'اوزار ڈبہ',
-'userpage' => 'ورتن آلے دا صفہ ویکھو',
+'wiki_userpage' => 'ورتن آلے دا صفہ ویکھو',
 'projectpage' => 'ویونت والا صفہ ویکھو',
 'imagepage' => 'فائل آلا صفہ ویکھو',
 'mediawikipage' => 'سنیعا آلا صفحہ ویکھو',
@@ -250,7 +250,7 @@ $messages = array(
 'pool-queuefull' => 'چنوتی کرن ل‏ئی بندے پورے نیں۔',
 'pool-errorunknown' => 'انجان غلطی',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'بارے چ {{SITENAME}}',
 'aboutpage' => 'Project:بارے وچ',
 'copyright' => 'مال $1 دے تھلے ہے گا اے۔',
@@ -311,7 +311,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'صفہ',
-'nstab-user' => 'ورتن والے دا صفہ',
+'nstab-wiki_user' => 'ورتن والے دا صفہ',
 'nstab-media' => 'میڈیا آلا صفہ',
 'nstab-special' => 'خاص صفہ',
 'nstab-project' => 'ویونت دا صفہ',
@@ -401,7 +401,7 @@ $messages = array(
 'customcssprotected' => 'تسی اے CSS صفحے نوں تبدیل نئیں کر سکدے کیونجے ایدے کسے دوجے ورتن آلے دیاں من پسند تانگاں نیں۔',
 'customjsprotected' => 'تسی اے JavaScript  صفحے نوں تبدیل نئیں کر سکدے کیونجے ایدے کسے دوجے ورتن آلے دیاں من پسند تانگاں نیں۔',
 'ns-specialprotected' => 'خاص صفے تبدیل نئیں کیتے جاسکدے۔',
-'titleprotected' => 'اس ناں نوں [[User:$1|$1]] نئیں بناسکدا۔
+'titleprotected' => 'اس ناں نوں [[wiki_user:$1|$1]] نئیں بناسکدا۔
 اس دی وجہ اے دسی گئی اے: "\'\'$2\'\'"۔',
 
 # Virus scanner
@@ -411,8 +411,8 @@ $messages = array(
 
 # Login and logout pages
 'logouttext' => "'''تسی لاگ آؤٹ ہوگۓ او.'''
-تسی   {{SITENAME}} نوں گمنامی چ ورت سکدے او یا تسی [[Special:UserLogin|لاگ ان دوبارہ]] ہوجاؤ اوسے ناں توں یا وکھرے ورتن والے توں۔ اے گل چیتے رکھنا جے کج صفیاں تے تسی لاگ ان دسے جاؤگے جدوں تک تسی اپنے براؤزر دے کاشے نوں صاف ناں کرلو۔
-You can continue to use {{SITENAME}} anonymously, or you can [[Special:UserLogin|log in again]] as the same or as a different user.
+تسی   {{SITENAME}} نوں گمنامی چ ورت سکدے او یا تسی [[Special:wiki_userLogin|لاگ ان دوبارہ]] ہوجاؤ اوسے ناں توں یا وکھرے ورتن والے توں۔ اے گل چیتے رکھنا جے کج صفیاں تے تسی لاگ ان دسے جاؤگے جدوں تک تسی اپنے براؤزر دے کاشے نوں صاف ناں کرلو۔
+You can continue to use {{SITENAME}} anonymously, or you can [[Special:wiki_userLogin|log in again]] as the same or as a different wiki_user.
 Note that some pages may continue to be displayed as if you were still logged in, until you clear your browser cache.",
 'welcomecreation' => '== جی آیاں نوں, $1! ==
 تواڈا کھاتا بن گیا اے۔
@@ -427,21 +427,21 @@ Note that some pages may continue to be displayed as if you were still logged in
 'login' => 'اندر آؤ جی',
 'nav-login-createaccount' => 'اندر آؤ / کھاتہ کھولو',
 'loginprompt' => 'اندر آنے آستے تواڈیاں کوکیز آن ہونیاں چائیدیاں نے {{SITENAME}}.',
-'userlogin' => 'اندر آؤ / کھاتہ کھولو',
-'userloginnocreate' => 'اندر آؤ جی',
+'wiki_userlogin' => 'اندر آؤ / کھاتہ کھولو',
+'wiki_userloginnocreate' => 'اندر آؤ جی',
 'logout' => 'لاگ توں باہر',
-'userlogout' => 'باہر آؤ',
+'wiki_userlogout' => 'باہر آؤ',
 'notloggedin' => 'لاگ ان نئیں ہوۓ او',
 'nologin' => "تواڈا کھاتہ نہیں اے؟ '''$1'''۔",
 'nologinlink' => 'کھاتہ بناؤ',
 'createaccount' => 'کھاتہ بناؤ',
 'gotaccount' => "تواڈا پہلے توں کھاتہ ہے؟ '''$1'''",
 'gotaccountlink' => 'اندر آؤ',
-'userlogin-resetlink' => 'اپنے لاگ ان ہون دیاں شیواں پل گۓ؟',
+'wiki_userlogin-resetlink' => 'اپنے لاگ ان ہون دیاں شیواں پل گۓ؟',
 'createaccountmail' => 'ای میل دے نال',
 'createaccountreason' => 'وجہ:',
 'badretype' => 'تواڈی کنجی صحیح نئیں۔',
-'userexists' => 'اے ورتن ناں پہلاں توں ای کوئی ورت ریا اے۔
+'wiki_userexists' => 'اے ورتن ناں پہلاں توں ای کوئی ورت ریا اے۔
 مہربانی کر کے کوئی دوجا چن لو۔',
 'loginerror' => 'لاگ ان چ مسئلا اے',
 'createaccounterror' => 'اے کھاتا نئیں بنایا جا سکیا: $1',
@@ -457,13 +457,13 @@ Note that some pages may continue to be displayed as if you were still logged in
 'noname' => 'تسی کوئی پکا ورتن آلا ناں نئیں رکھ رۓ۔',
 'loginsuccesstitle' => 'تسی لاگن ہوگۓ او',
 'loginsuccess' => "'''ہن تسی {{SITENAME}} تے \"\$1\" دے ناں توں لاگ ان او'''",
-'nosuchuser' => 'اس $1 ناں نال کوئی ورتن آلا نہیں۔
-اپنی لکھائی درست کرو یا نیا [[Special:UserLogin/signup|کھاتہ بناؤ]]۔',
-'nosuchusershort' => 'اس "$1" ناں دا کوئی ورتن آلا نہيں اے۔
+'nosuchwiki_user' => 'اس $1 ناں نال کوئی ورتن آلا نہیں۔
+اپنی لکھائی درست کرو یا نیا [[Special:wiki_userLogin/signup|کھاتہ بناؤ]]۔',
+'nosuchwiki_usershort' => 'اس "$1" ناں دا کوئی ورتن آلا نہيں اے۔
 
 اپنی الف، بے چیک کرو۔',
-'nouserspecified' => 'توانوں اپنا ورتن آلا ناں دسنا ہوۓ گا۔',
-'login-userblocked' => 'اے ورتن آلے روکیا ہویا اے۔ اے لاگ ان نئیں کرسکدا۔',
+'nowiki_userspecified' => 'توانوں اپنا ورتن آلا ناں دسنا ہوۓ گا۔',
+'login-wiki_userblocked' => 'اے ورتن آلے روکیا ہویا اے۔ اے لاگ ان نئیں کرسکدا۔',
 'wrongpassword' => 'تواڈی کنجی ٹھیک نہیں۔<br />
 فیر ٹرائی مارو۔',
 'wrongpasswordempty' => 'تواڈی کنجی کم نہیں کر رہی۔<br />
@@ -500,16 +500,16 @@ Note that some pages may continue to be displayed as if you were still logged in
 'createaccount-title' => '{{SITENAME}} لئی کھاتے دا بننا۔',
 'createaccount-text' => 'کسے نیں تھواڈے ای-میل پتے تے {{SITENAME}} تے  ($4)، ناں "$2"، تے کنجی "$3" نال کھاتہ کھولیا اے۔ تسی ہن ای لاگ ان ہووو تے اپنی کنجی بدلو۔
 تسی ایس سنیعے نوں رہن دیو اگر کھاتہ غلطی نال کھلیا جے۔',
-'usernamehasherror' => 'ورتن والے ناں چ ہیش کیریکٹر نئیں ہوسکدے۔',
+'wiki_usernamehasherror' => 'ورتن والے ناں چ ہیش کیریکٹر نئیں ہوسکدے۔',
 'login-throttled' => 'تسی تھوڑا چر پہلے لاگ ان ہون دی چوکھی واری کوشش کرچکے او۔
 تھوڑا صبر کرو تے فیر کوشش کرنا۔',
 'login-abort-generic' => 'تسی لاگ ان نئیں ہوسکے۔',
 'loginlanguagelabel' => 'بولی: $1',
-'suspicious-userlogout' => 'تھواڈی لاگ آؤٹ ہوں دی کوشش رک گئی اینج لگدا اے  جیویں اے ٹٹے براؤزر یا کیشنگ پراکسی توں پیجیا گیا سی۔',
+'suspicious-wiki_userlogout' => 'تھواڈی لاگ آؤٹ ہوں دی کوشش رک گئی اینج لگدا اے  جیویں اے ٹٹے براؤزر یا کیشنگ پراکسی توں پیجیا گیا سی۔',
 
 # E-mail sending
 'php-mail-error-unknown' => 'PHP میل دے کم چ کوئی انجانی غلطی۔',
-'user-mail-no-addy' => 'ای-میل پتے بنا ای-میل کلن دی کوشش۔',
+'wiki_user-mail-no-addy' => 'ای-میل پتے بنا ای-میل کلن دی کوشش۔',
 
 # Change password dialog
 'resetpass' => 'کنجی بدلو',
@@ -536,7 +536,7 @@ Note that some pages may continue to be displayed as if you were still logged in
 'passwordreset-legend' => 'کنجی واپس لیاؤ',
 'passwordreset-disabled' => 'اس وکی تے کنجی واپس نئیں لیائی جاسکدی۔',
 'passwordreset-pretext' => '{{PLURAL:$1||تھلے دتے ہوۓ ڈیٹا چوں اک ایتھے دیو}}',
-'passwordreset-username' => 'ورتن ناں:',
+'passwordreset-wiki_username' => 'ورتن ناں:',
 'passwordreset-domain' => 'ڈومین',
 'passwordreset-capture' => 'آن والی ای-میل ویکھو؟',
 'passwordreset-capture-help' => 'اگر تسیں اے ڈبہ چیک کروگے ای-میل (عارضی کنجی نال) وکھائی جاۓ گی توانوں تے پیجی وی جاۓ گی۔',
@@ -547,7 +547,7 @@ Note that some pages may continue to be displayed as if you were still logged in
 $2
 
 {{PLURAL:$3|اے عارضی کنجی|اے عارضی کنجیاں}} {{PLURAL:$5|اک دن|$5 دناں}} چ مک جاوے گی۔ تسیں لاگان ہوو تے اپنی اک نويں کنجی چنو. اگر کسے ہور نے اے کنجی والی چٹھی پیجی اے یا توانوں پرانی کنجی یاد آگئی اے تے تسیں پرانی کنجی نال ای کم چلانا چاندے او تے تسیں ایس سنیعے نوں پل جاؤ تے پرانی کنجی ای ورتو۔',
-'passwordreset-emailtext-user' => 'ورتنوالے $1 نے {{سائیٹناں}} تے تواڈے کھاتے بارے پچھیا اے {{SITENAME}} لئی ($4)۔ تھلے دتا گیا ورتن {{PLURAL:$3|کھاتہ|کھاتے}} ایس ای-میل نال جڑدا اے۔
+'passwordreset-emailtext-wiki_user' => 'ورتنوالے $1 نے {{سائیٹناں}} تے تواڈے کھاتے بارے پچھیا اے {{SITENAME}} لئی ($4)۔ تھلے دتا گیا ورتن {{PLURAL:$3|کھاتہ|کھاتے}} ایس ای-میل نال جڑدا اے۔
 
 $2
 
@@ -630,13 +630,13 @@ $2
 
 تسیں $1 نال گل کرو یا کسے [[{{MediaWiki:Grouppage-sysop}}|administrators]] مکھۓ نال روک تے گل کرو۔
 
-ایہ گل یاد رکھو جے تسیں "ایس ورتن والے نوں ای-میل کرو" والا فیخر نئیں ورت سکدے جدوں تک تواڈے کول اک پکا ای-میل پتہ [[Special:Preferences|user preferences]] تے جینوں ورتن تے  روک ناں لگی ہووے۔
+ایہ گل یاد رکھو جے تسیں "ایس ورتن والے نوں ای-میل کرو" والا فیخر نئیں ورت سکدے جدوں تک تواڈے کول اک پکا ای-میل پتہ [[Special:Preferences|wiki_user preferences]] تے جینوں ورتن تے  روک ناں لگی ہووے۔
 تھواڈا ہن دا آئی پی پتہ $3 اے تے روکی آئی ڈی #$5۔
 کسے وی سوال جواب لئي اوپر دسیاں گلاں وی شامل کرو۔',
 'blockednoreason' => 'کوئی وجہ نئیں دسی گئی',
 'whitelistedittext' => 'تھواڈے کول $1 ہونا چآغیدا اے صفے تبدیل کرن لئی۔',
 'confirmedittext' => 'توانوں اپنا ای-میل پتہ پکا کرنا چائیدا اے تبدیلیاں کرن توں پہلے۔
-مہربانی کرکے اپنا ای-میل پتہ بناؤ تے پکا کرو [[Special:Preferences|user preferences]]',
+مہربانی کرکے اپنا ای-میل پتہ بناؤ تے پکا کرو [[Special:Preferences|wiki_user preferences]]',
 'nosuchsectiontitle' => 'اے ہو جیا کوئی ٹوٹا نئیں',
 'nosuchsectiontext' => 'تساں اک ایسے پاسے نوں بدلن دی کوشش کیتی اے جیہڑا ہے ای نئیں۔
 خورے جدوں تسی تک رۓ سے اودوں اینوں مٹادتا گیا ہووۓ یا بدل دتا گیا ہووے۔',
@@ -644,7 +644,7 @@ $2
 'loginreqlink' => 'لاگ ان ہو جاو',
 'loginreqpagetext' => 'دوجے صفے ویکھن لئی $1 لازمی اے۔',
 'accmailtitle' => 'کنجی پیج دتی گئی اے۔',
-'accmailtext' => "اک کنجی [[User talk:$1|$1]] $2 نوں پیج دتی گئی اے۔
+'accmailtext' => "اک کنجی [[wiki_user talk:$1|$1]] $2 نوں پیج دتی گئی اے۔
 ایس نویں کھاتے دی کنجی بدلی جاسکدی  اے ''[[Special:ChangePassword|change password]]'' صفے تے لاگ ان ہون تے۔",
 'newarticle' => '(نواں)',
 'newarticletext' => 'تسی ایسے صفحے دے جوڑ توں ایتھے پہنچے او جیڑا ھلے تک نہیں بنیا۔<br />
@@ -652,14 +652,14 @@ $2
 اگر تسی ایتھے غلطی نال پہنچے او تے اپنے کھوجی توں "بیک" دا بٹن دبا دیو۔',
 'anontalkpagetext' => "----'' ایہ اک گمنام ورتن والے دا گل بات دا صفہ اے جینے ہلے کھاتہ نئیں کھولیا یا او اینون ورتدا نئیں۔
 سانوں فیر نمبراں والا آئی پی پتہ ورتنا پوے گا اونوں لئی. ایہو جیا آئی پی پتہ گئی ورتن والے ورت سکدے نیں۔ 
-اگر تسیں اک گمنام ورتن والے او تے اے مسوس کردے او جے پیڑی گل بات تواڈی بارے ہوئی اے، مہربانی کرکے [[Special:UserLogin/signup|create an account]] یا [[Special:UserLogin|log in]] اگے کسے مسلے توں بچن گمنام ورتن والیاں کولوں",
+اگر تسیں اک گمنام ورتن والے او تے اے مسوس کردے او جے پیڑی گل بات تواڈی بارے ہوئی اے، مہربانی کرکے [[Special:wiki_userLogin/signup|create an account]] یا [[Special:wiki_userLogin|log in]] اگے کسے مسلے توں بچن گمنام ورتن والیاں کولوں",
 'noarticletext' => 'اس ویلے اس صفحے تے کج نہیں لکھیا ہویا تسیں [[Special:Search/{{PAGENAME}}|اس صفحے دے ناں نوں دوجے صفحیاں تے کھوج سکدے او]] یا فیر [{{fullurl:{{FULLPAGENAME}}|action=edit}} اس صفحے نوں لکھ سکدے او۔]',
 'noarticletext-nopermission' => 'ایس ویلے ایس صفے تے کوئی لکھت نئیں۔ 
 تسیں [[Special:Search/{{PAGENAME}}|search for this page title]] دوسریاں صفیاں تے،
 یا <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} search the related logs]</span>۔',
-'userpage-userdoesnotexist' => 'ورتن کھاتہ "$1" رجسٹر نئیں ہویا۔
+'wiki_userpage-wiki_userdoesnotexist' => 'ورتن کھاتہ "$1" رجسٹر نئیں ہویا۔
 مہربانی کرکے دسو جے تسیں ای ھفا بنانا/بدلنا چاندے او۔',
-'userpage-userdoesnotexist-view' => "''$1'' کھاتا رجسٹرڈ نئیں اے۔",
+'wiki_userpage-wiki_userdoesnotexist-view' => "''$1'' کھاتا رجسٹرڈ نئیں اے۔",
 'blocked-notice-logextract' => 'اے ورتن آلے تے روک اے۔
 روکن دی وجہ اے دسی گئی اے:',
 'clearyourcache' => "'''نوٹ:''' بچان مگروں توانوں اپنے براؤزر دے کاشے توں بار جانا پوے گا تبدیلیاں ویکھن لئی۔
@@ -668,29 +668,29 @@ $2
 '''Internet Explorer:''' hold ''Ctrl'' کلک کردیاں ''Refresh'', یا دباؤ ''Ctrl-F5''
 '''Konqueror:'''کلک ریلوڈ یا ''F5'' دباؤ۔
 '''Opera:''' کاشے نوں صاف کرو ''آوزار → تانگاں''",
-'usercssyoucanpreview' => "'''ٹوٹکہ:''' ورتو بٹن اپنی نویں  \"{{int:showpreview}}\"  CSS بچان توں پہلے.",
-'userjsyoucanpreview' => "'''ٹوٹکہ:''' ورتو بٹن اپنی نویں  \"{{int:showpreview}}\"  JavaScript  بچان توں پہلے.",
-'usercsspreview' => "'''یادرکھو جے تسی اپنی ورتن  CSS دا کچا کم ویکھ رۓ او.'''
+'wiki_usercssyoucanpreview' => "'''ٹوٹکہ:''' ورتو بٹن اپنی نویں  \"{{int:showpreview}}\"  CSS بچان توں پہلے.",
+'wiki_userjsyoucanpreview' => "'''ٹوٹکہ:''' ورتو بٹن اپنی نویں  \"{{int:showpreview}}\"  JavaScript  بچان توں پہلے.",
+'wiki_usercsspreview' => "'''یادرکھو جے تسی اپنی ورتن  CSS دا کچا کم ویکھ رۓ او.'''
 '''Iاے ہلے بچائی نئیں گئ!'''",
-'userjspreview' => "'''یاد رکھو بے  تسی صرف اپنی ورتن 'JavaScript چیک کررۓ او''
+'wiki_userjspreview' => "'''یاد رکھو بے  تسی صرف اپنی ورتن 'JavaScript چیک کررۓ او''
 '''اینوں ہجے بچایا نئیں گیا!'''",
 'sitecsspreview' => "'''یادرکھو جے تسی اپنی ورتن  CSS دا کچا کم ویکھ رۓ او.'''
 '''Iاے ہلے بچائی نئیں گئ!'''",
 'sitejspreview' => "'''یاد رکھو بے  تسی صرف ایہ 'JavaScript کوڈ چیک کررۓ او''
 '''اینوں ہجے بچایا نئیں گیا!'''",
-'userinvalidcssjstitle' => "'''خبردار:''' \"\$1\" سکن نئیں اے۔
-Custom .css تے .js pages use a lowercase title, e.g. {{ns:user}}:Foo/vector.css as opposed to {{ns:user}}:Foo/Vector.css.",
+'wiki_userinvalidcssjstitle' => "'''خبردار:''' \"\$1\" سکن نئیں اے۔
+Custom .css تے .js pages use a lowercase title, e.g. {{ns:wiki_user}}:Foo/vector.css as opposed to {{ns:wiki_user}}:Foo/Vector.css.",
 'updated' => '(نواں کیتا گیا)',
 'note' => "'''نوٹ:'''",
 'previewnote' => "'''اے ہلے کچا کم اے؛ تبدیلیاں بچائیاں نہیں گئیاں'''",
 'previewconflict' => 'اے وکھالہ لکھت نوں تبدیلی ایریا تے اے اینج لگے گا اگر تسیں بچان دی چنوتی کردے او۔',
 'session_fail_preview' => "'''معاف کرنا! اسیں تواڈی لکھت اگے نیں کرسکدے جے ڈیٹا کم کيا جے'''
 مہربانی کرکے فیر کوشش کرو.
-اگر ہلے وی اے کم نئیں کردا کوشش کرو  [[Special:UserLogout|logging out]] تے اندر آ رۓ او.",
+اگر ہلے وی اے کم نئیں کردا کوشش کرو  [[Special:wiki_userLogout|logging out]] تے اندر آ رۓ او.",
 'session_fail_preview_html' => "'''معاف کرن! ایس سینش دے ڈیٹ دے کم ہون باجوں تواڈیاں لکھتاں سانبھ نئیں سکدے۔'''
 '' کیوں جے {{سائیٹناں}} نے گجا آیج ثی ایم ایل قابل کیتا اے، وکھالہ لکیا اے  جاواسکرپٹ دے ہلے توں بچن لئی''
 '''اگ تاں اے ٹھیک لکھت کوشش اے تے فیر کوشش کرو'''
-اگر اے ہلے وی نئیں چل رئی [[Special:UserLogout|logging out]] تے کوشش کرو تے فیر لاگ ان ہوو۔",
+اگر اے ہلے وی نئیں چل رئی [[Special:wiki_userLogout|logging out]] تے کوشش کرو تے فیر لاگ ان ہوو۔",
 'token_suffix_mismatch' => "'''تواڈی لکھت نئیں منی گئی کیوں جے تواڈے بندے نے پنکچوایشن کیریکٹر لکھت ٹوکن چ رلاۓ.'''
 ایس تبدیلی نوں لکھت چ خرابی نوں روکن لئی روکیا گیا اے۔.
 اے اودوں ہوندا اے جدوں تسیں گمنام سرور ورتدے او۔.",
@@ -741,7 +741,7 @@ Custom .css تے .js pages use a lowercase title, e.g. {{ns:user}}:Foo/vector.cs
 'hiddencategories' => 'اے صفہ {{PLURAL:$1|1 چھپی گٹھ|$1 چپھی گٹھیاں}} دا رکن اے:',
 'nocreatetitle' => 'صفحہ بنانے دی حد اے',
 'nocreatetext' => '{{SITENAME}} نے نۓ صفحے بنانے تے پابندی لائی اے۔<br />
-تسی واپس جا کے پہلاں توں موجود صفحیاں تے لکھ سکدے او یا فیر [[Special:UserLogin|اندر آؤ یا نواں کھاتہ کھولو۔]]',
+تسی واپس جا کے پہلاں توں موجود صفحیاں تے لکھ سکدے او یا فیر [[Special:wiki_userLogin|اندر آؤ یا نواں کھاتہ کھولو۔]]',
 'nocreate-loggedin' => 'توانوں نواں صفحہ بنانے دی اجازت نئیں۔',
 'sectioneditnotsupported-title' => 'سیکشن ایڈیٹنگ ناٹ سپورٹڈ',
 'sectioneditnotsupported-text' => 'ایس صفے تے پاسہ تبدیلی نئیں ہوسکدی۔',
@@ -782,11 +782,11 @@ Custom .css تے .js pages use a lowercase title, e.g. {{ns:user}}:Foo/vector.cs
 تھلے فرق ویکھو اے ویکھن لئی جے ایہو ای تسی چاندے او، تے تھلے تبدیلیاں بچاؤ، تبدیلیاں مکاں دی روک نوں۔',
 'undo-failure' => 'تبدیلی واپس نئیں ہوسکدی وشکار ہویاں تبدیلیاں ہون دی وجہ توں۔',
 'undo-norev' => 'تبدیلی واپس نئیں ہوسکدی کیوں جے ایہ ہے ای نئیں یا مٹا دتی گئی اے۔',
-'undo-summary' => '$1 دی کیتی ہوئی ریوین [[Special:Contributions/$2|$2]] ([[User talk:$2|گل]]) واپس کرو',
+'undo-summary' => '$1 دی کیتی ہوئی ریوین [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|گل]]) واپس کرو',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'کھاتہ نئیں کھول سکدے',
-'cantcreateaccount-text' => "کھاتہ بنانا ایس آئی پی پتے  ('''$1''')  لئی  [[User:$3|$3]] نے روک دتی اے۔
+'cantcreateaccount-text' => "کھاتہ بنانا ایس آئی پی پتے  ('''$1''')  لئی  [[wiki_user:$3|$3]] نے روک دتی اے۔
 $3 نے ''$2'' وجہ دسی اے۔",
 
 # History pages
@@ -824,9 +824,9 @@ $3 نے ''$2'' وجہ دسی اے۔",
 
 # Revision deletion
 'rev-deleted-comment' => 'تبدیلی سمری مٹادتی گئی۔',
-'rev-deleted-user' => '(ورتن آلا ناں مٹ گیا)',
+'rev-deleted-wiki_user' => '(ورتن آلا ناں مٹ گیا)',
 'rev-deleted-event' => '(لاگ ایکشن ہٹادتا گیا)',
-'rev-deleted-user-contribs' => 'ورتن ناں یا آئی پی پتہ ہٹا دتا گیا - تبدیلیاں کماں دی لسٹ چوں لکائیاں',
+'rev-deleted-wiki_user-contribs' => 'ورتن ناں یا آئی پی پتہ ہٹا دتا گیا - تبدیلیاں کماں دی لسٹ چوں لکائیاں',
 'rev-deleted-text-permission' => 'ایس صفے دیاں ریویناں مٹا دتیاں گیاں نیں۔
 اوناں بارے پوری کل [{{fullurl:{{#Special:Log}}/مٹاؤ|صفہ={{FULLPAGENAMEE}}}} مٹان لاگ] لبی جاسکدی اے۔',
 'rev-deleted-text-unhide' => 'ایس ڈف دیاں ریویناں چوں اک دبا دتی گئی اے۔ لمیاں گلاں [{{fullurl:{{#خاص:Log}}/suppress|page={{FULLPAGENAMEE}}}} دبن لاگ] چ لبیاں جاسکدیاں نیں۔
@@ -877,7 +877,7 @@ $3 نے ''$2'' وجہ دسی اے۔",
 'revdelete-hide-image' => 'فائل دا مواد لکاؤ',
 'revdelete-hide-name' => 'کم تے نشانہ چھپاؤ',
 'revdelete-hide-comment' => 'لکھن دے بارے چ صلاع لکاؤ',
-'revdelete-hide-user' => 'لکھن آلے دا ناں/آئی پی پتہ لکاؤ',
+'revdelete-hide-wiki_user' => 'لکھن آلے دا ناں/آئی پی پتہ لکاؤ',
 'revdelete-hide-restricted' => 'ایڈمنسٹریٹراں تے ہوراں کولاں ڈیٹا لکاؤ۔',
 'revdelete-radio-same' => '(اینوں ناں بدلو)',
 'revdelete-radio-set' => 'ہاں',
@@ -959,7 +959,7 @@ $1",
 'showhideselectedversions' => 'وکھاؤ/لکاؤ چنیاں دہرائیاں',
 'editundo' => 'واپس',
 'diff-multi' => '({{PLURAL:$1|اک درمیانی تبدیلی|$1 درمیانی تبدیلی}} {{PLURAL:$2|اک ورتن والا|$2 ورتن والے}} کولوں نئیں وکھائی گئی۔)',
-'diff-multi-manyusers' => '({{انیک:$1|اک وشکارلی ریوین|$1 وشکارلیاں ریویناں}} توں ود $2 {{انیک:$2|ورتن والا|ورتن والا}} نئیں دسی گئی)',
+'diff-multi-manywiki_users' => '({{انیک:$1|اک وشکارلی ریوین|$1 وشکارلیاں ریویناں}} توں ود $2 {{انیک:$2|ورتن والا|ورتن والا}} نئیں دسی گئی)',
 
 # Search results
 'searchresults' => 'کھوج دا نتارا',
@@ -1040,7 +1040,7 @@ $1",
 'mypreferences' => 'میریاں تانگاں',
 'prefs-edits' => 'تبدیلیاں دی گنتی:',
 'prefsnologin' => 'لاگ ان نئیں او',
-'prefsnologintext' => 'تسیں لازمی <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} لاگ ان]</span> ورتن تانگاں سیٹ کرنا.',
+'prefsnologintext' => 'تسیں لازمی <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} لاگ ان]</span> ورتن تانگاں سیٹ کرنا.',
 'changepassword' => 'کنجی بدلو',
 'prefs-skin' => 'چھاڑ',
 'skin-preview' => 'کچا کم',
@@ -1112,7 +1112,7 @@ $1",
 'prefs-emailconfirm-label' => 'ای-میل کنفرمیشن:',
 'prefs-textboxsize' => 'تبدیلی کرن والی ونڈو دا ناپ',
 'youremail' => 'ای میل:',
-'username' => 'ورتن آلے دا ناں:',
+'wiki_username' => 'ورتن آلے دا ناں:',
 'uid' => 'ورتن والے دی آئی ڈی',
 'prefs-memberingroups' => 'سنگی {{PLURAL:$1|ٹولی|ٹولیاں}}:',
 'prefs-registration' => 'رجسٹریشن ویلہ:',
@@ -1155,35 +1155,35 @@ $1",
 'prefs-displaywatchlist' => 'چنوتیاں دسو',
 'prefs-diffs' => 'ڈفز',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'ای_میل پتہ ٹھیک لگدا اے۔',
 'email-address-validity-invalid' => 'چلن والا ای-میل پتہ دسو',
 
-# User rights
-'userrights' => 'ورتن والیاں دے حقاں دا سعاب کتاب',
-'userrights-lookup-user' => 'ورتن ٹولی بچاؤ',
-'userrights-user-editname' => 'اک ورتن والا ناں لکھو:',
-'editusergroup' => 'ورتن ٹولی چ تبدیلی',
-'editinguser' => "تواڈے ورتن حق بدل رۓ آں '''[[User:$1|$1]]''' $2۔",
-'userrights-editusergroup' => 'ورتن ٹولی',
-'saveusergroups' => 'ورتن ٹولی بچاؤ',
-'userrights-groupsmember' => 'سنگی اے:',
-'userrights-groupsmember-auto' => 'سنگی اے:',
-'userrights-groups-help' => 'تسیں ایس ورتن والے دیاں ٹولیاں بدل سکدے او:
+# wiki_user rights
+'wiki_userrights' => 'ورتن والیاں دے حقاں دا سعاب کتاب',
+'wiki_userrights-lookup-wiki_user' => 'ورتن ٹولی بچاؤ',
+'wiki_userrights-wiki_user-editname' => 'اک ورتن والا ناں لکھو:',
+'editwiki_usergroup' => 'ورتن ٹولی چ تبدیلی',
+'editingwiki_user' => "تواڈے ورتن حق بدل رۓ آں '''[[wiki_user:$1|$1]]''' $2۔",
+'wiki_userrights-editwiki_usergroup' => 'ورتن ٹولی',
+'savewiki_usergroups' => 'ورتن ٹولی بچاؤ',
+'wiki_userrights-groupsmember' => 'سنگی اے:',
+'wiki_userrights-groupsmember-auto' => 'سنگی اے:',
+'wiki_userrights-groups-help' => 'تسیں ایس ورتن والے دیاں ٹولیاں بدل سکدے او:
 * اک چیکڈ ڈبی دا اے مطلب اے جے ورتن والا ایس ٹولی ج اے۔
 * اک ناں چیک ڈبی دا ایہ مطلب اے جے ورتن والا ایس ٹولی چ نئیں۔
 *اے* دسدا اے جے  تسیں ٹولی ہٹا نئیں سکدے جدوں تسیں اینوں جوڑ دیو یا ایس توں الٹ۔',
-'userrights-reason' => 'وجہ:',
-'userrights-no-interwiki' => 'تساں نوں ورتن حق بدلن دی اجازت دوسرے وکی تے نئیں۔',
-'userrights-nodatabase' => 'ڈیٹابیس $1 ہے ای نئیں یا لوکل نئیں۔',
-'userrights-nologin' => 'تسیں لازمی [[Special:UserLogin|log in]] اک مکھیا کھاتے نال  اپنے ح‍اں لئی۔',
-'userrights-notallowed' => 'تواڈے کھاتے نوں اے اجازت نئیں جے اے ورتن حق دے سکے۔',
-'userrights-changeable-col' => 'ٹولیاں جیہڑیاں تسی بدل ےکدے او۔',
-'userrights-unchangeable-col' => 'ٹولیاں جیہڑیاں تسی بدل نئیں سکدے',
+'wiki_userrights-reason' => 'وجہ:',
+'wiki_userrights-no-interwiki' => 'تساں نوں ورتن حق بدلن دی اجازت دوسرے وکی تے نئیں۔',
+'wiki_userrights-nodatabase' => 'ڈیٹابیس $1 ہے ای نئیں یا لوکل نئیں۔',
+'wiki_userrights-nologin' => 'تسیں لازمی [[Special:wiki_userLogin|log in]] اک مکھیا کھاتے نال  اپنے ح‍اں لئی۔',
+'wiki_userrights-notallowed' => 'تواڈے کھاتے نوں اے اجازت نئیں جے اے ورتن حق دے سکے۔',
+'wiki_userrights-changeable-col' => 'ٹولیاں جیہڑیاں تسی بدل ےکدے او۔',
+'wiki_userrights-unchangeable-col' => 'ٹولیاں جیہڑیاں تسی بدل نئیں سکدے',
 
 # Groups
 'group' => 'ٹولی:',
-'group-user' => 'ورتن آلے',
+'group-wiki_user' => 'ورتن آلے',
 'group-autoconfirmed' => 'اپنے آپ منے گۓ ورتن والے',
 'group-bot' => 'بوٹ',
 'group-sysop' => 'مکھیۓ',
@@ -1191,14 +1191,14 @@ $1",
 'group-suppress' => 'چھڈیا گیا',
 'group-all' => '(سارے)',
 
-'group-user-member' => '{{جنس:$1|ورتن والا}}',
+'group-wiki_user-member' => '{{جنس:$1|ورتن والا}}',
 'group-autoconfirmed-member' => '{{جنس:$1|اپنے آپ منے گۓ ورتن والے}}',
 'group-bot-member' => '{{جنس:$1|بوٹ}}',
 'group-sysop-member' => '{{جنس:$1|مکھیا}}',
 'group-bureaucrat-member' => '{{جنس:$1|بیوروکریٹ}}',
 'group-suppress-member' => '{{جنس:$1|چھڈی گئی}}',
 
-'grouppage-user' => '{{ns:project}}:ورتن آلے',
+'grouppage-wiki_user' => '{{ns:project}}:ورتن آلے',
 'grouppage-autoconfirmed' => '{{ns:project}}:اپنے آپ پکا ہون والا ورتن والا',
 'grouppage-bot' => '{{ns:project}}:بوٹ',
 'grouppage-sysop' => '{{ns:project}}:ایڈمنسٹریٹر',
@@ -1214,7 +1214,7 @@ $1",
 'right-minoredit' => 'لکھائی نوں چھوٹیاں موٹیاں قرار دے دیو',
 'right-move' => 'صفحے لے چلو',
 'right-move-subpages' => 'اس صفحے نوں تے ایدے نال دے جڑے صفحیاں نوں لے چلو',
-'right-move-rootuserpages' => 'ورتن جڑ صفے لے چلو',
+'right-move-rootwiki_userpages' => 'ورتن جڑ صفے لے چلو',
 'right-movefile' => 'فائلاں لے چلو۔',
 'right-suppressredirect' => 'جدوں صفے بل رۓ ہوو تے سورس توں ریڈائرکٹس ناں بناؤ',
 'right-upload' => 'فائل چڑہاؤ',
@@ -1239,16 +1239,16 @@ $1",
 'right-suppressionlog' => 'پرائیویٹ لاگز ویکھو',
 'right-block' => 'دوجے ورتن والیاں نوں لکھن توں روکو',
 'right-blockemail' => 'ورتن آلے نوں ای میل پیجن توں روکو',
-'right-hideuser' => 'لوکاں توں چھپاندے ہویاں اک ورتن آلے نوں روکو',
+'right-hidewiki_user' => 'لوکاں توں چھپاندے ہویاں اک ورتن آلے نوں روکو',
 'right-ipblock-exempt' => 'آئی پی روک، اپنے آپ روکاں تے رینج روکاں ول تعیاں ناں دیو',
 'right-proxyunbannable' => 'پراکسیز دے اپنے آپ روکاں تے تعیاں ناں دیو',
 'right-unblockself' => 'اپنے آپ کھولو',
 'right-protect' => 'بچاؤ پدھر نوں بدلو تے بچاۓ صفیاں نوں بدلو',
 'right-editprotected' => 'بچاۓ صفے بدلو',
 'right-editinterface' => 'ورتن وکھالہ بدلو',
-'right-editusercssjs' => 'دوجے ورتن والیاں دیاں  CSS  تے JavaScript  فائلاں بدلو',
-'right-editusercss' => 'دوجے ورتن والیاں دیاں CSS  فائلاں بدلو',
-'right-edituserjs' => 'دوجے ورتن والیاں دیاں  JavaScript  فائلاں بدلو',
+'right-editwiki_usercssjs' => 'دوجے ورتن والیاں دیاں  CSS  تے JavaScript  فائلاں بدلو',
+'right-editwiki_usercss' => 'دوجے ورتن والیاں دیاں CSS  فائلاں بدلو',
+'right-editwiki_userjs' => 'دوجے ورتن والیاں دیاں  JavaScript  فائلاں بدلو',
 'right-rollback' => 'جلدی نال آخری ورتن والے دیاں تبدیلیاں اک خاص صفے تے واپس کرو۔',
 'right-markbotedits' => 'پچھے کیتیاں تبدیلیاں تے بوٹ دی تبدیلی دا نشان لگاؤ',
 'right-noratelimit' => 'ریٹ حد تے ناں پریشان ہوو',
@@ -1259,14 +1259,14 @@ $1",
 'right-patrolmarks' => 'ہن ہوئیاں تبدیلیاں تے گشت نشان ویکھو',
 'right-unwatchedpages' => 'بنا اکھ تھلے رکھیاں صفیاں دی لسٹ ویکھو',
 'right-mergehistory' => 'صفیاں دا رکارڈ رلاؤ',
-'right-userrights' => 'تمام ورتن آلیاں دے حق رلکھو',
-'right-userrights-interwiki' => 'ورتن والے دے تبدیلی دے حقاں نوں دوجے وکی تے ورتو۔',
+'right-wiki_userrights' => 'تمام ورتن آلیاں دے حق رلکھو',
+'right-wiki_userrights-interwiki' => 'ورتن والے دے تبدیلی دے حقاں نوں دوجے وکی تے ورتو۔',
 'right-siteadmin' => 'ڈیٹابیس نوں کھولو تے بند کرو',
 'right-override-export-depth' => '5 تک صفے تے جڑے صفے لے کے جاؤ',
 'right-sendemail' => 'دوجے ورتن والیاں نوں ای-میل کرو',
 'right-passwordreset' => 'کنجی بدلی ای-میلاں نوں وکھاؤ',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'ورتن والے دے حقاں دی لاگ',
 'rightslogtext' => 'ورتن حقاں چ تبدیلیاں دی اے لاگ اے۔',
 'rightslogentry' => 'ٹولی ممرشپ $1 لئی $2 توں $3 تک بدلو۔',
@@ -1282,7 +1282,7 @@ $1",
 'action-minoredit' => 'ایس تبدیلی نوں نکا دسو۔',
 'action-move' => 'اس صفحے نوں لے جاؤ',
 'action-move-subpages' => 'اس صفحے نوں تے ایدے نال دے جڑے صفحیاں نوں لے چلو',
-'action-move-rootuserpages' => 'ورتن جڑ صفے لے چلو',
+'action-move-rootwiki_userpages' => 'ورتن جڑ صفے لے چلو',
 'action-movefile' => 'اس فائل نوں لے جاؤ',
 'action-upload' => 'اس فائل نوں اتے چاڑو',
 'action-reupload' => 'اس پہلاں توں موجود فائل دے اتے لکھو',
@@ -1305,8 +1305,8 @@ $1",
 'action-autopatrol' => 'کیا تساں تبدیلی دے نشاں تے گشت دا نشان لایا',
 'action-unwatchedpages' => 'بنا اکھ تھلے رکھیاں صفیاں دی لسٹ ویکھو',
 'action-mergehistory' => 'ایس صفے دا رکارڈ رلاؤ',
-'action-userrights' => 'ورتن ح‌ق چ تبدیلی کرو',
-'action-userrights-interwiki' => 'ورتن حقاں نوں دوجے وکیاں تے تبدیل کرو۔',
+'action-wiki_userrights' => 'ورتن ح‌ق چ تبدیلی کرو',
+'action-wiki_userrights-interwiki' => 'ورتن حقاں نوں دوجے وکیاں تے تبدیل کرو۔',
 'action-siteadmin' => 'ڈیٹابیس نوں کھولو یا بند کرو',
 'action-sendemail' => 'ای-میلاں پیجو',
 
@@ -1337,7 +1337,7 @@ $1",
 'minoreditletter' => 'چھوٹا کم',
 'newpageletter' => 'نواں',
 'boteditletter' => 'بوٹ',
-'number_of_watching_users_pageview' => '[ $1 ویکہ ریا اے{{PLURAL:$1|ورتن والا|والے}}]',
+'number_of_watching_wiki_users_pageview' => '[ $1 ویکہ ریا اے{{PLURAL:$1|ورتن والا|والے}}]',
 'rc_categories' => 'گٹھاں دی حد (وکھرے کرو "|")',
 'rc_categories_any' => 'کوئی',
 'rc-change-size-new' => '$1 {{PLURAL:$1|بائٹ|بائٹاں}} تبدیلی مگروں',
@@ -1362,7 +1362,7 @@ $1",
 'reuploaddesc' => 'فائل چڑانا چھڑو تے فائل چڑانے آلے فارم تے واپس ٹرو',
 'upload-tryagain' => 'فائل دی بدلی لکھت دسو',
 'uploadnologin' => 'لاگ ان نئیں ہوۓ',
-'uploadnologintext' => 'تسی لازمی [[Special:UserLogin|logged in]] فائلاں چڑھان لئی.',
+'uploadnologintext' => 'تسی لازمی [[Special:wiki_userLogin|logged in]] فائلاں چڑھان لئی.',
 'upload_directory_missing' => 'چڑھان ڈائریکٹری ($1) نئیں لب رئی تے ویبسرور کولوں نئیں بن سکدی۔',
 'upload_directory_read_only' => 'چرھان ڈائریکٹری ($1) ویبسرور ہتھوں نئیں لکھی جاسکدی۔',
 'uploaderror' => 'فائل چڑاندیاں مسئلا ہویا اے',
@@ -1488,11 +1488,11 @@ $1",
 'upload-proto-error' => 'غلط پروٹوکول',
 'upload-proto-error-text' => 'دوروں چڑھائی لئی فائل لئی ضروری اے جے اودی یوآرایل <code>http://</code> یا <code>ftp://</code> توں ٹرے۔',
 'upload-file-error' => 'اندر دا مسئلا',
-'upload-file-error-text' => ' سرور تے اک کچی فائل بناندیاں ہویا ں اک انٹرنل غلطی ہوگئی۔ مہربانی کرکے اک  [[Special:ListUsers/sysop|مکھۓ]] نال گل کرو۔',
+'upload-file-error-text' => ' سرور تے اک کچی فائل بناندیاں ہویا ں اک انٹرنل غلطی ہوگئی۔ مہربانی کرکے اک  [[Special:Listwiki_users/sysop|مکھۓ]] نال گل کرو۔',
 'upload-misc-error' => 'اتے چڑاندیاں انجان مسئلا اے',
 'upload-misc-error-text' => 'فائل جڑھاندیاں ہویاں اک انجانی غلطی ہوگئی اے
 مہربانی کرکے ویکھو جے یو آر ایل ٹھیک اے  تے اودے تک اپڑیا جاسکدا اے تے دوبارہ کوشش کرو۔
-اگر غلطی ریندی اے، [[Special:ListUsers/sysop|مکھۓ]]  نوں ملو۔',
+اگر غلطی ریندی اے، [[Special:Listwiki_users/sysop|مکھۓ]]  نوں ملو۔',
 'upload-too-many-redirects' => 'یو آر ایل چ  وچ چوکھے سارے ریڈائرکس نیں۔',
 'upload-unknown-size' => 'انجان تاریخ',
 'upload-http-error' => 'اک ایچ ٹی ٹی پی غلطی ہوئی:$1',
@@ -1605,7 +1605,7 @@ $1",
 'listfiles_thumb' => 'نکی مورت',
 'listfiles_date' => 'تریخ',
 'listfiles_name' => 'ناں',
-'listfiles_user' => 'ورتن آلا',
+'listfiles_wiki_user' => 'ورتن آلا',
 'listfiles_size' => 'ناپ',
 'listfiles_description' => 'تفصیل',
 'listfiles_count' => 'ورژن',
@@ -1622,7 +1622,7 @@ $1",
 'filehist-thumb' => 'نکی مورت',
 'filehist-thumbtext' => '$1 ورثن دی نکی مورت',
 'filehist-nothumb' => 'کوئی تھمبنیل نئیں۔',
-'filehist-user' => 'ورتن والا',
+'filehist-wiki_user' => 'ورتن والا',
 'filehist-dimensions' => 'پاسے',
 'filehist-filesize' => 'فائل دا ناپ',
 'filehist-comment' => 'راۓ',
@@ -1708,7 +1708,7 @@ $1",
 'statistics-header-pages' => 'صفے دے آنکڑے',
 'statistics-header-edits' => 'تبدیلیاں دا آنکڑہ',
 'statistics-header-views' => 'ویکھن دا سعاب کتاب',
-'statistics-header-users' => 'ورتن آلیاں دا سعاب کتاب',
+'statistics-header-wiki_users' => 'ورتن آلیاں دا سعاب کتاب',
 'statistics-header-hooks' => 'دوجے سعاب کتاب',
 'statistics-articles' => 'لسٹ صفے',
 'statistics-pages' => 'صفحے',
@@ -1719,9 +1719,9 @@ $1",
 'statistics-views-total' => 'کل وکھالے۔',
 'statistics-views-total-desc' => 'ناں ہون والے صفیاں تے خاص صفیاں دے وکھالے نئیں ہیگے۔',
 'statistics-views-peredit' => 'تبدیلی سعاب نال وکھالے',
-'statistics-users' => 'رجسٹر [[Special:ListUsers|ورتنوالا]]',
-'statistics-users-active' => 'اجکل دے کامے',
-'statistics-users-active-desc' => 'ورتنوالے جناں نیں پچھلے {{PLURAL:$1|دن|$1 دناں}}  چ کم کیتا اے۔',
+'statistics-wiki_users' => 'رجسٹر [[Special:Listwiki_users|ورتنوالا]]',
+'statistics-wiki_users-active' => 'اجکل دے کامے',
+'statistics-wiki_users-active-desc' => 'ورتنوالے جناں نیں پچھلے {{PLURAL:$1|دن|$1 دناں}}  چ کم کیتا اے۔',
 'statistics-mostpopular' => 'سب توں بوتے ویکھے گۓ صفے',
 
 'disambiguations' => 'اوہ صفے جیہڑے گنجل کھول صفیاں نال جڑدے نیں۔',
@@ -1797,13 +1797,13 @@ $1",
 'protectedtitles' => 'بچاۓ ہوۓ صفحے',
 'protectedtitlestext' => 'تھلے دتے گۓ سرناویں بنان توں بچاۓ گۓ نیں۔',
 'protectedtitlesempty' => 'ایناں ولگناں نال کوئی سرناویں نئیں بچاۓ گۓ۔',
-'listusers' => 'ورتن والیاں دے ناں',
-'listusers-editsonly' => 'تبدیلیاں کرن والے ورتن والے ای دسو۔',
-'listusers-creationsort' => 'بنان تریخ توں وکھریاں کرو۔',
-'usereditcount' => '$1 {{PLURAL:$1|تبدیلی|تبدیلیاں}}',
-'usercreated' => '{{جنس:$3|بنائی گئی}} نوں $1 تے $2',
+'listwiki_users' => 'ورتن والیاں دے ناں',
+'listwiki_users-editsonly' => 'تبدیلیاں کرن والے ورتن والے ای دسو۔',
+'listwiki_users-creationsort' => 'بنان تریخ توں وکھریاں کرو۔',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|تبدیلی|تبدیلیاں}}',
+'wiki_usercreated' => '{{جنس:$3|بنائی گئی}} نوں $1 تے $2',
 'newpages' => 'نویں صفے',
-'newpages-username' => 'ورتن آلا ناں:',
+'newpages-wiki_username' => 'ورتن آلا ناں:',
 'ancientpages' => 'سب توں پرانے صفے',
 'move' => 'لے چلو',
 'movethispage' => 'اس صفے نوں لے چلو',
@@ -1827,7 +1827,7 @@ $1",
 'booksources-invalid-isbn' => 'دتی گئی آئی ایس بی این چلدی نئیں لکدی ؛ اصل سورس نوں چیک کرو کاپی کرن توں پہلے۔',
 
 # Special:Log
-'specialloguserlabel' => 'کرن والا:',
+'speciallogwiki_userlabel' => 'کرن والا:',
 'speciallogtitlelabel' => 'تارگٹ (ٹائٹل یا ورتن والا):',
 'log' => 'لاگز',
 'all-logs-page' => 'سارے لاگ پبلک',
@@ -1879,24 +1879,24 @@ $1",
 'linksearch-line' => '$1 نوں $2 نال جوڑیا',
 'linksearch-error' => 'وکیکارڈو میزبان دے ناں دے شروع چ دس سکدے نیں۔',
 
-# Special:ListUsers
-'listusersfrom' => 'ورتن والے ایس توں شروع ہون والے دسو:',
-'listusers-submit' => 'وکھاؤ',
-'listusers-noresult' => 'ورتن آلا نئیں لبیا۔',
-'listusers-blocked' => '(روکیا گیا)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'ورتن والے ایس توں شروع ہون والے دسو:',
+'listwiki_users-submit' => 'وکھاؤ',
+'listwiki_users-noresult' => 'ورتن آلا نئیں لبیا۔',
+'listwiki_users-blocked' => '(روکیا گیا)',
 
-# Special:ActiveUsers
-'activeusers' => 'کم کرن والیاں دی لسٹ',
-'activeusers-intro' => 'اے اوناں ورتن والیاں دی لسٹ اے جنان پچھلے $1 {{PLURAL:$1|دن|دناں}} چ کم کیتا اے۔',
-'activeusers-count' => '$1 {{PLURAL:$1|تبدیلی|تبدیلیاں}} پچھلے{{PLURAL:$3|دن|$3 دن}} چ',
-'activeusers-from' => 'ورتن والے ایس توں شروع ہون والے دسو:',
-'activeusers-hidebots' => 'بوٹ چھپاؤ',
-'activeusers-hidesysops' => 'مکھۓ لکاؤ',
-'activeusers-noresult' => 'کوئی ورتن والا نئیں لبیا۔',
+# Special:Activewiki_users
+'activewiki_users' => 'کم کرن والیاں دی لسٹ',
+'activewiki_users-intro' => 'اے اوناں ورتن والیاں دی لسٹ اے جنان پچھلے $1 {{PLURAL:$1|دن|دناں}} چ کم کیتا اے۔',
+'activewiki_users-count' => '$1 {{PLURAL:$1|تبدیلی|تبدیلیاں}} پچھلے{{PLURAL:$3|دن|$3 دن}} چ',
+'activewiki_users-from' => 'ورتن والے ایس توں شروع ہون والے دسو:',
+'activewiki_users-hidebots' => 'بوٹ چھپاؤ',
+'activewiki_users-hidesysops' => 'مکھۓ لکاؤ',
+'activewiki_users-noresult' => 'کوئی ورتن والا نئیں لبیا۔',
 
-# Special:Log/newusers
-'newuserlogpage' => 'ورتاوا بنان آلی لاگ',
-'newuserlogpagetext' => 'اے ورتن والا بنان دی لاگ اے۔',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'ورتاوا بنان آلی لاگ',
+'newwiki_userlogpagetext' => 'اے ورتن والا بنان دی لاگ اے۔',
 
 # Special:ListGroupRights
 'listgrouprights' => 'ورتن ٹرلی حق',
@@ -1918,25 +1918,25 @@ $1",
 'listgrouprights-addgroup-self-all' => 'ساریاں ٹولیاں کٹھیاں کرو کھاتہ لئی',
 'listgrouprights-removegroup-self-all' => 'ایس کھاتے توں ساریاں ٹولیاں ہٹاؤ',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'ناں پیح پتہ',
-'mailnologintext' => 'تسیں لازمی [[Special:UserLogin|لاگان]] ہوو تے اک پکا ای-میل پتہ تواڈی [[Special:Preferences|تانگ]] چ ہووے تاں جے دوجے ورتن والے توانوں ای-میل کرسکن۔',
-'emailuser' => 'اس ورتن والے نو ای میل کرو',
+'mailnologintext' => 'تسیں لازمی [[Special:wiki_userLogin|لاگان]] ہوو تے اک پکا ای-میل پتہ تواڈی [[Special:Preferences|تانگ]] چ ہووے تاں جے دوجے ورتن والے توانوں ای-میل کرسکن۔',
+'emailwiki_user' => 'اس ورتن والے نو ای میل کرو',
 'emailpage' => 'ای-میل ورتن والا',
 'emailpagetext' => 'تسیں تھلے دتا گیا فارم  ورت سکدے اوہ ایس ورتن والے نوں ای-میل سنیعہ کلن لئی۔ 
 ای-میل پتہ تساں [[Special:Preferences|تواڈے ورتن تانکآں]] چ پایا اے  ای-میل توں تواڈا پتہ دسے گا جتھے چٹھی چلی تاں جے چٹھی لین والا توانوں سدا جواب دے سکے۔',
-'usermailererror' => 'میل واپسی غلطی:',
+'wiki_usermailererror' => 'میل واپسی غلطی:',
 'defemailsubject' => '{{SITENAME}}ای-میل ورتن والے "$1" توں',
-'usermaildisabled' => 'ورتن ای-میل ناکارہ',
-'usermaildisabledtext' => 'ایس وکی تے تسیں دوجے ورتن والیاں نوں ای-میل نئیں پیج سکدے۔',
+'wiki_usermaildisabled' => 'ورتن ای-میل ناکارہ',
+'wiki_usermaildisabledtext' => 'ایس وکی تے تسیں دوجے ورتن والیاں نوں ای-میل نئیں پیج سکدے۔',
 'noemailtitle' => 'کوئی ای-میل پتہ نئیں۔',
 'noemailtext' => 'ایس ورتن والے نیں کوئی پکا ای-میل پتہ نئیں دسیا۔',
 'nowikiemailtitle' => 'ای-میل اجازت نئیں۔',
 'nowikiemailtext' => 'ایس ورتن والے نیں دوجے ورتن والیاں کولوں ای-میل لین دا نئیں کیا۔',
 'emailnotarget' => 'لین والے ۂئی ناں ہون والا ورتن ناں۔',
 'emailtarget' => 'لین والے دا ورتن ناں لکھو',
-'emailusername' => 'ورتن آلے دا ناں:',
-'emailusernamesubmit' => 'پیجو',
+'emailwiki_username' => 'ورتن آلے دا ناں:',
+'emailwiki_usernamesubmit' => 'پیجو',
 'email-legend' => 'دوجے ورتن والے نوں {{سائٹ ناں}} ای-میل پیجو',
 'emailfrom' => 'توں:',
 'emailto' => 'نوں:',
@@ -1947,11 +1947,11 @@ $1",
 'emailccsubject' => 'تھواڈے سنیعے دی کاپی $1 نوں:$2',
 'emailsent' => 'ای-میل پیج دتی گئی۔',
 'emailsenttext' => 'تھواڈا ای-میل سنیعہ پیج دتا گیا اے۔',
-'emailuserfooter' => 'ایہ ای-میل $1 نے پیجی $2  نوں {{SITENAME}} تے "ای-میل ورتن" فنکشن نال',
+'emailwiki_userfooter' => 'ایہ ای-میل $1 نے پیجی $2  نوں {{SITENAME}} تے "ای-میل ورتن" فنکشن نال',
 
-# User Messenger
-'usermessage-summary' => 'پربندھ چھڈن سنیعہ',
-'usermessage-editor' => 'پربندھ ڈاکیا۔',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'پربندھ چھڈن سنیعہ',
+'wiki_usermessage-editor' => 'پربندھ ڈاکیا۔',
 
 # Watchlist
 'watchlist' => 'میریاں اکھاں تھلے رکھی لسٹ',
@@ -1960,7 +1960,7 @@ $1",
 'nowatchlist' => 'تھواڈی اکھ تھلے لسٹ چ کوئی شے نئیں۔',
 'watchlistanontext' => 'مہربانی کرکے $1 نوں ویکھو یا اپنی اکھ تھلے رکھی لسٹ نوں بدلو۔',
 'watchnologin' => 'لاگ ان نئیں ہوۓ او',
-'watchnologintext' => 'توانوں لازمی [[Special:UserLogin|لاگان]] ہونا پووے گا اپنی اکھ تھلے رکھی لسٹ نوں بدلن لئی۔',
+'watchnologintext' => 'توانوں لازمی [[Special:wiki_userLogin|لاگان]] ہونا پووے گا اپنی اکھ تھلے رکھی لسٹ نوں بدلن لئی۔',
 'addwatch' => 'اکھ تھلے کرو',
 'addedwatchtext' => 'اے صفحہ "[[:$1]] تواڈیاں اکھاں تھلے آگیا اے۔<br />
 مستقبل وچ اس صفحہ تے ایدے بارے چ گل بات نویاں تبدیلیاں وچ موٹے نظر آن گے تا کہ آسانی نال کھوجیا جا سکے۔',
@@ -2073,13 +2073,13 @@ $UNWATCHURL
 'rollbackfailed' => 'واپس کرن ناکام',
 'cantrollback' => 'تبدیلی واپس نئیں ہوسکدی؛
 آخری لکھاری ای ایدا اکو لکھاری سی۔',
-'alreadyrolled' => '[[:$1]] دی آخری تبدیلی جیہڑی [[User:$2|$2]]  نے ([[User talk:$2|talk|]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]); کیتی؛ واپس نئیں ہوسکدی
+'alreadyrolled' => '[[:$1]] دی آخری تبدیلی جیہڑی [[wiki_user:$2|$2]]  نے ([[wiki_user talk:$2|talk|]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]); کیتی؛ واپس نئیں ہوسکدی
 کسے ہور نے تبدیلی یا پچھے نوں پہلے ای کردتا اے۔
 
-صفے تے آخری تبدیلی [[User:$3|$3]] ([[User talk:$3|talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) نے کیتی.',
+صفے تے آخری تبدیلی [[wiki_user:$3|$3]] ([[wiki_user talk:$3|talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) نے کیتی.',
 'editcomment' => "تبدیلی دی سمری:\"''\$1''\".",
-'revertpage' => 'پلٹائیاں گیاں تبدیلیاں [[Special:Contributions/$2|$2]] ([[User talk:$2|گل بات]]) [[User:$1|$1]] دی آخری ریوین تک',
-'revertpage-nouser' => 'بدلیاں گیاں تبدیلیاں (ورتن ناں ہٹادتا گیا) واپس آخری ریوین تک [[User:$1|$1]]',
+'revertpage' => 'پلٹائیاں گیاں تبدیلیاں [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|گل بات]]) [[wiki_user:$1|$1]] دی آخری ریوین تک',
+'revertpage-nowiki_user' => 'بدلیاں گیاں تبدیلیاں (ورتن ناں ہٹادتا گیا) واپس آخری ریوین تک [[wiki_user:$1|$1]]',
 'rollback-success' => '$1 دیاں بدلیاں گیاں تبدیلیاں؛
 $2 نے آخری ریوین تک واپس کیتا۔',
 
@@ -2237,13 +2237,13 @@ $1',
 'sp-contributions-uploads' => 'چڑھائیاں فائلاں',
 'sp-contributions-logs' => 'لاگز',
 'sp-contributions-talk' => 'گل بات',
-'sp-contributions-userrights' => 'ورتن والیاں دے حقاں دا سعاب کتاب',
+'sp-contributions-wiki_userrights' => 'ورتن والیاں دے حقاں دا سعاب کتاب',
 'sp-contributions-blocked-notice' => 'ایس ورتن والے تے اجکل روک اے۔ 
 روکن لاگ چ ایدے بارے تھلے لکھیا اے۔',
 'sp-contributions-blocked-notice-anon' => 'ایس آئی پی پتے تے اجکل روک اے۔ 
 روکن لاگ چ ایدے بارے تھلے لکھیا اے۔',
 'sp-contributions-search' => 'حصے پان آلیاں دی تلاش',
-'sp-contributions-username' => 'آئی پی پتہ یا ورتن آلا ناں:',
+'sp-contributions-wiki_username' => 'آئی پی پتہ یا ورتن آلا ناں:',
 'sp-contributions-toponly' => 'صرف اوہ تبدیلیاں وکھاؤ جیہڑیاں سب توں نیڑے ویلے ہویاں نیں۔',
 'sp-contributions-submit' => 'کھوجو',
 
@@ -2275,7 +2275,7 @@ $1',
 'blockip-legend' => 'ورتن آلے نوں روکو',
 'blockiptext' => 'تھلے دتا گیا فارم ورتو کسے خاص آئی پی پتے یا ورتن ناں  نوں لکھن روک لئی۔ ایہ صرف ونڈالزم توں بچن لئی اے، تے [[{{MediaWiki:Policy-url}}|policy]] دے نال اے۔ 
 تھلے خاص وجہاں دسو (ادھارن لئی خاص صفیاں دی دس دیو جیہڑے خراب کیتے گۓ۔)',
-'ipadressorusername' => 'آئی پی پتہ یا ورتن آلے دا ناں:',
+'ipadressorwiki_username' => 'آئی پی پتہ یا ورتن آلے دا ناں:',
 'ipbexpiry' => 'انت:',
 'ipbreason' => 'وجہ:',
 'ipbreasonotherlist' => 'ہور وجہ',
@@ -2297,8 +2297,8 @@ $1',
 'ipbotheroption' => 'دوجا',
 'ipbotherreason' => 'دوجیاں ہور وجہ:',
 'ipbhidename' => 'ورتن ناں نوں تبدیلیاں تے لسٹاں توں بچاؤ',
-'ipbwatchuser' => 'ایس ورتن والے دے ورتن تے گل بات صفے تے اکھ رکھو۔',
-'ipb-disableusertalk' => 'ایس ورتن والے نوں جدوں تک ایدے تے روک اے اپنے گلبات صفے چ تبدیلی کرن توں روکو',
+'ipbwatchwiki_user' => 'ایس ورتن والے دے ورتن تے گل بات صفے تے اکھ رکھو۔',
+'ipb-disablewiki_usertalk' => 'ایس ورتن والے نوں جدوں تک ایدے تے روک اے اپنے گلبات صفے چ تبدیلی کرن توں روکو',
 'ipb-change-block' => 'ایناں تبدیلیاں نال ایس ورتن والے نوں فیر روکو',
 'ipb-confirm' => 'روک پکی کرو',
 'badipaddress' => 'آئی پی پتہ ٹھیک نئیں',
@@ -2306,7 +2306,7 @@ $1',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] روک دتے گۓ نیں.<br />
 ویکھو [[Special:BlockList|IP block list]] روکاں ویکھن لئی۔.',
 'ipb-blockingself' => 'تسیں اپنے آپ تے آپ روک لان والے او! توانوں یقین اے جے تسیں ایہ کرنا جاندے او؟',
-'ipb-confirmhideuser' => "تسیں اک ورتن والے تے روک لان لگے 'لکیا ورتن والا' نال۔ ایہ ایس ورتن والے دا ناں ساریاں لسٹاں تے لاگاں چوں دبالوے گا۔ کیا توانوں یقین اے جے تسیں ایہو ای کرنا چاندے او۔",
+'ipb-confirmhidewiki_user' => "تسیں اک ورتن والے تے روک لان لگے 'لکیا ورتن والا' نال۔ ایہ ایس ورتن والے دا ناں ساریاں لسٹاں تے لاگاں چوں دبالوے گا۔ کیا توانوں یقین اے جے تسیں ایہو ای کرنا چاندے او۔",
 'ipb-edit-dropdown' => 'روک دی وجہ تبدیل کرو',
 'ipb-unblock-addr' => '$1 توں روک ہٹاؤ',
 'ipb-unblock' => 'ورتن والا یا آئی پی پتہ کھولو',
@@ -2315,13 +2315,13 @@ $1',
 'unblockip' => 'ورتن آلے تے روک بند کرو',
 'unblockiptext' => 'تھلے دتا گیا فارم ورتو لکھن دی ازادی لین لئی پہلاں توں روکے آئی پی پتے  یا ورتن ناں لئی۔',
 'ipusubmit' => 'ایس روک نوں ہٹاؤ',
-'unblocked' => '[[User:$1|$1]] توں روک ہٹا دتی گئی۔',
+'unblocked' => '[[wiki_user:$1|$1]] توں روک ہٹا دتی گئی۔',
 'unblocked-range' => '$1 توں روک ہٹا دتی گئی اے',
 'unblocked-id' => 'روک $1 ہٹادتی گئی اے۔',
 'blocklist' => 'روکے گۓ ورتن والے',
 'ipblocklist' => 'بند کیتے گۓ آئی پی پتے تے ورتن والیاں دے ناں',
 'ipblocklist-legend' => 'روکیا گیا ورتن والا لبو',
-'blocklist-userblocks' => 'روکے کۓ کھاتے لکاؤ',
+'blocklist-wiki_userblocks' => 'روکے کۓ کھاتے لکاؤ',
 'blocklist-tempblocks' => 'تھوڑے چر لئی روکے گۓ لکاؤ',
 'blocklist-addressblocks' => 'کلے آئی پی بلاکس لکاؤ',
 'blocklist-rangeblocks' => 'رینج روکے گۓ لکاؤ',
@@ -2340,7 +2340,7 @@ $1',
 'noautoblockblock' => 'اپنے آپ روک نکارہ',
 'createaccountblock' => 'کھاتا کھولنے تے پابندی اے',
 'emailblock' => 'ای میل روک دتی گئی اے',
-'blocklist-nousertalk' => 'اپنا گل بات والا صفہ آپ تبدیل نئیں کرسکدا۔',
+'blocklist-nowiki_usertalk' => 'اپنا گل بات والا صفہ آپ تبدیل نئیں کرسکدا۔',
 'ipblocklist-empty' => 'روک لسٹ خالی اے۔',
 'ipblocklist-no-results' => 'پچھیا گیا IP پتے نوں نئیں روکیا گیا۔',
 'blocklink' => 'روک',
@@ -2348,7 +2348,7 @@ $1',
 'change-blocklink' => 'روک نوں بدلو',
 'contribslink' => 'حصے داری',
 'emaillink' => 'ای-میل پیجو',
-'autoblocker' => 'اپنے آپ روکیا گیا کیوں جے تواڈا آئی پی پتہ "[[User:$1|$11]]" نے ورتی ا۔ $1 دی روک دی وجہ :"$2"',
+'autoblocker' => 'اپنے آپ روکیا گیا کیوں جے تواڈا آئی پی پتہ "[[wiki_user:$1|$11]]" نے ورتی ا۔ $1 دی روک دی وجہ :"$2"',
 'blocklogpage' => 'لاگ روکو',
 'blocklog-showlog' => 'ایس ورتن والے نوں پہلے روکیا گیا سی۔
 تھلے اتے پتے لئی روک لاگ دتی گئی اے۔',
@@ -2364,7 +2364,7 @@ $1',
 'block-log-flags-nocreate' => 'کھاتا کھولنے تے پابندی اے',
 'block-log-flags-noautoblock' => 'اپنے آپ روک نکارہ',
 'block-log-flags-noemail' => 'ای میل روکی گئی اے',
-'block-log-flags-nousertalk' => 'اپنا گل بات والا صفہ آپ تبدیل نئیں کرسکدا۔',
+'block-log-flags-nowiki_usertalk' => 'اپنا گل بات والا صفہ آپ تبدیل نئیں کرسکدا۔',
 'block-log-flags-angry-autoblock' => 'ودیا روک کم کر رئی اے۔',
 'block-log-flags-hiddenname' => 'ورتن والے دا ناں لکیا',
 'range_block_disabled' => 'رینج روک دی پربندھک طاقت کم نئیں کردی۔',
@@ -2374,7 +2374,7 @@ $1',
 'ipb_already_blocked' => '"$1" پہلاں توں ہی روکیا ہویا اے۔',
 'ipb-needreblock' => '$1 پہلے ای روکیا ہویا اے۔ تسیں سیٹنک بدلنا چاندے او۔',
 'ipb-otherblocks-header' => 'دوجیاں {{PLURAL:$1|روک|روکاں}}',
-'unblock-hideuser' => 'تسین ایس ورتن والے تے لگی روک نئیں کھول سکدے ایدا ورتن ناں لکیا اے۔',
+'unblock-hidewiki_user' => 'تسین ایس ورتن والے تے لگی روک نئیں کھول سکدے ایدا ورتن ناں لکیا اے۔',
 'ipb_cant_unblock' => 'غلطی: روکی آئی ڈی $1 نئیں لبی۔  ایدی روک پہلے ای کھول دتی گئی ہووے۔',
 'ipb_blocked_as_range' => 'غلطی: آئی پی پتہ $1 سدا نئیں روکیا گیا تے اینج نئیں کھولیا جاسکدا۔
 اینوں $2 دی رینج چ روکیا گیا، جینوں کھولیا جاسکدا اے۔',
@@ -2390,7 +2390,7 @@ $1',
 'sorbs_create_account_reason' => 'تواڈا پتہ اک کھلا پراکسی لسٹ چ اے ڈی این ایس بی ایل نال {{سائیٹناں}} چ۔
 تسیں اک کھاتہ نئیں کھول سکدے۔',
 'cant-block-while-blocked' => 'جدوں تواڈے تے روک لگی ہووے تے تسیں دوجیاں تے روک نئیں لاسکدے۔',
-'cant-see-hidden-user' => 'جس ورتن والے تے تسیں روک لارۓ اوہ اوہ پہلے روکیا جا چکیا اے تے لکیا اے۔
+'cant-see-hidden-wiki_user' => 'جس ورتن والے تے تسیں روک لارۓ اوہ اوہ پہلے روکیا جا چکیا اے تے لکیا اے۔
 کیوں جے تواڈے کول لکن ورتن والے دے ح‌ نئیں  تسیں ورتن والے دے روک ناں ویکھ سکدے او ناں بدل سکدے او۔',
 'ipbblocked' => 'تسیں دوجے ورتن والیاں تے ناں ای روک لا سکدے اوہ تے ناں ای دوجیاں دی روک کھول سکدے او، کیوں جے تسیں آپ ای روکے ہووے اوہ۔',
 'ipbnounblockself' => 'تسیں اپنے آپ تے روک نئیں ہٹا سکدے۔',
@@ -2444,13 +2444,13 @@ $1',
 
 ایوجیاں مسئلیاں چ توانوں دوویں صفحیاں نوں آپے ہی ملانے ہوۓ گا اگر تسی چاندے او۔",
 'movearticle' => 'صفحہ لے چلو:',
-'moveuserpage-warning' => "'''خبردار''' تسیں اک ورتن صفہ ہلا رۓ اوہ۔ مہربانی کرکے اے گل یادرکھو جے صفہ ہلایا جائیگا تے ورتن والے دا ناں نئیں بدلیا جائیگا۔",
+'movewiki_userpage-warning' => "'''خبردار''' تسیں اک ورتن صفہ ہلا رۓ اوہ۔ مہربانی کرکے اے گل یادرکھو جے صفہ ہلایا جائیگا تے ورتن والے دا ناں نئیں بدلیا جائیگا۔",
 'movenologin' => 'لاگ ان نئیں ہوۓ او',
-'movenologintext' => 'تواڈا لازمی رجسٹرڈ ورتنوالا ہونا چائیدا اے [[Special:UserLogin|لاگڈان]] صفے نوں ہلان لئی۔',
+'movenologintext' => 'تواڈا لازمی رجسٹرڈ ورتنوالا ہونا چائیدا اے [[Special:wiki_userLogin|لاگڈان]] صفے نوں ہلان لئی۔',
 'movenotallowed' => 'تواڈے کول صفحے لے چلن دی اجازت نئیں اے۔',
 'movenotallowedfile' => 'تواڈے کول صفحے لے چلن دی اجازت نئیں اے۔',
-'cant-move-user-page' => 'تھواڈے کول ورتن والے صفے (نکیاں نوں چھڈ کے) نوں دوجے تھاں لجان دی اجازت نئیں۔',
-'cant-move-to-user-page' => 'تھوانوں اک صفے نوں ورتن والے صفے ول لجان دی اجازت نئیں (سواے نکے ورتن والے صفے دے)',
+'cant-move-wiki_user-page' => 'تھواڈے کول ورتن والے صفے (نکیاں نوں چھڈ کے) نوں دوجے تھاں لجان دی اجازت نئیں۔',
+'cant-move-to-wiki_user-page' => 'تھوانوں اک صفے نوں ورتن والے صفے ول لجان دی اجازت نئیں (سواے نکے ورتن والے صفے دے)',
 'newtitle' => 'نویں ناں ول:',
 'move-watch' => 'صفحے اکھ تھلے رکھو',
 'movepagebtn' => 'صفحہ لے جاؤ',
@@ -2624,8 +2624,8 @@ $1',
 'javascripttest-qunit-heading' => 'MediaWiki JavaScript QUnit test suite',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'میرا صفہ',
-'tooltip-pt-anonuserpage' => 'ورتن صفہ IP  پتے لئی تسی تبدیل کر رۓ او۔۔۔',
+'tooltip-pt-wiki_userpage' => 'میرا صفہ',
+'tooltip-pt-anonwiki_userpage' => 'ورتن صفہ IP  پتے لئی تسی تبدیل کر رۓ او۔۔۔',
 'tooltip-pt-mytalk' => 'میریاں گلاں',
 'tooltip-pt-anontalk' => 'ایس IP  پتے دیاں تبدیلیاں تے گل بات',
 'tooltip-pt-preferences' => 'میریاں تانگاں',
@@ -2664,13 +2664,13 @@ $1',
 'tooltip-feed-rss' => 'RSS feed for this page',
 'tooltip-feed-atom' => 'Atom feed for this page',
 'tooltip-t-contributions' => 'اس ورتن والے دے کم ویکھو',
-'tooltip-t-emailuser' => 'اس ورتن والے نو ای میل کرو',
+'tooltip-t-emailwiki_user' => 'اس ورتن والے نو ای میل کرو',
 'tooltip-t-upload' => 'فائل چڑھاؤ',
 'tooltip-t-specialpages' => 'سارے خاص صفحے',
 'tooltip-t-print' => 'اس صفے دا چھپنے آلا ورژن ویکھو',
 'tooltip-t-permalink' => 'اس صفحے دے اس ورژن نال پرماننٹ لنک',
 'tooltip-ca-nstab-main' => 'مواد آلا صفحہ ویکھو',
-'tooltip-ca-nstab-user' => 'ورتن آلے دا صفحہ ویکھو',
+'tooltip-ca-nstab-wiki_user' => 'ورتن آلے دا صفحہ ویکھو',
 'tooltip-ca-nstab-media' => 'میڈیا آلا صفحہ ویکھو',
 'tooltip-ca-nstab-special' => 'اے اک خاص صفحہ اے، تےی اے صفحہ آپے نئیں لکھ سکدے',
 'tooltip-ca-nstab-project' => 'منصوبے دا صفحہ ویکھو',
@@ -2700,13 +2700,13 @@ $1',
 
 # Attribution
 'anonymous' => '{{SITENAME}} دے گمنام {{PLURAL:$1|ورتن والا|ورتنوالے}}۔',
-'siteuser' => '{{SITENAME}} ورتن والا $1',
-'anonuser' => '{{SITENAME}} گمنام ورتن والا $1',
+'sitewiki_user' => '{{SITENAME}} ورتن والا $1',
+'anonwiki_user' => '{{SITENAME}} گمنام ورتن والا $1',
 'lastmodifiedatby' => 'ایہ صفہ آخری واری $1 $2 تے $3 نوں تبدیل کیتا گیا۔',
 'othercontribs' => '$1 دے کم تے چلدا اے۔',
 'others' => 'دوجے',
-'siteusers' => '{{SITENAME}} {{PLURAL:$2|ورتن والا}} $1',
-'anonusers' => '{{SITENAME}} گمنام {{PLURAL:$2|ورتن وال|ورتن والےا}} $1',
+'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|ورتن والا}} $1',
+'anonwiki_users' => '{{SITENAME}} گمنام {{PLURAL:$2|ورتن وال|ورتن والےا}} $1',
 'creditspage' => 'صفہ کریڈٹس',
 'nocredits' => 'ایس صفے لئی کوئی کریڈٹ جانکاری نئیں اے۔',
 
@@ -2715,7 +2715,7 @@ $1',
 'spamprotectiontext' => 'لکھت جیہڑی تسی بچانا چاندے او اونوں سپام فلٹر نے روکیا اے۔
 ایہ خورے کسے جوڑ دی بارلے  بلیکلسٹڈ سائٹ نال ہون توں ہوئی اے۔',
 'spamprotectionmatch' => 'تھلے دتی گئی لکھت نے ساڈے سپام فلٹر نوں چلایا: $1',
-'spambot_username' => 'میڈیاوکی سپام سفائی',
+'spambot_wiki_username' => 'میڈیاوکی سپام سفائی',
 'spam_reverting' => 'آخری ریوین ول جیدے چ $1 دے جوڑ ناں ہون۔',
 'spam_blanking' => 'سارے ریوین جناں چ $1 نوں جوڑ نیں، طاف کیتا جاریا اے۔',
 
@@ -2859,7 +2859,7 @@ $1',
 'exif-compressedbitsperpixel' => 'امیج کمپریشن موڈ',
 'exif-pixelydimension' => 'امیج چوڑائی',
 'exif-pixelxdimension' => 'امیج اچائی',
-'exif-usercomment' => 'ورتن آلے دی صلاع',
+'exif-wiki_usercomment' => 'ورتن آلے دی صلاع',
 'exif-relatedsoundfile' => 'رلدی آڈیو فائل',
 'exif-datetimeoriginal' => 'تریخ تے ویلہ ڈیٹا جنریشن دا',
 'exif-datetimedigitized' => 'ڈجیٹائزنگ دا ویلہ تے تریخ',
@@ -3241,7 +3241,7 @@ $1',
 کوڈ لگدا اے ایکسپائر ہوچکیا اے۔',
 'confirmemail_needlogin' => 'تھوانوں $1 دی لوڑ اے اپنا ای-میل کنفرم کرن لئی۔',
 'confirmemail_success' => 'تھواڈا ای-میل پتہ پکا ہوچکیا اے۔
-تسی ہن [[Special:UserLogin|لاگان]] ہوسکدے اے تے وکی دے مزے کن سکدے او۔',
+تسی ہن [[Special:wiki_userLogin|لاگان]] ہوسکدے اے تے وکی دے مزے کن سکدے او۔',
 'confirmemail_loggedin' => 'تھواڈا ای-میل پتہ ہن پکا ہوچکیا اے۔',
 'confirmemail_error' => 'تھواڈی کنفرمیشن نوں بچاندیاں ہویاں کوئی چیز غلط ہوگئی اے۔',
 'confirmemail_subject' => '{{SITENAME}} ای-میل پتہ کنفرمیشن',
@@ -3291,10 +3291,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''خبردار''': تھواڈے لکھن مکرون اے صفہ مٹا دتا گیا!",
-'confirmrecreate' => "ورتن والا [[User:$1|$1]]([[User talk:$1|گل بات]]) ایہ صفہ مٹادتا اے جدوں تساں وجہ دس کے تبدیل کرن شروع کیتا:
+'confirmrecreate' => "ورتن والا [[wiki_user:$1|$1]]([[wiki_user talk:$1|گل بات]]) ایہ صفہ مٹادتا اے جدوں تساں وجہ دس کے تبدیل کرن شروع کیتا:
 : ''$2''
 مہربانی کرکے کنفرم کرو جے تسی اے صفہ واقعی بنانا چاندے او۔",
-'confirmrecreate-noreason' => 'ورتن والا [[User:$1|$1]] ([[User talk:$1|گل بات]]) نے تواڈے تبدیلی کرن مگروں اے صفہ مٹا دتا اے۔
+'confirmrecreate-noreason' => 'ورتن والا [[wiki_user:$1|$1]] ([[wiki_user talk:$1|گل بات]]) نے تواڈے تبدیلی کرن مگروں اے صفہ مٹا دتا اے۔
 مہربانی کرکے اے گل پکی کرو جے تسی واقعی اے صفہ بنانا چاندے او۔',
 'recreate' => 'دوبارہ بناؤ',
 
@@ -3374,7 +3374,7 @@ $5
 'watchlisttools-raw' => 'کچی اکھ تھلے رکھی ہوئی نو تبدیل کرو',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|talk]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|talk]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'انجان ایکسٹنشن ٹیگ "$1"',
@@ -3439,7 +3439,7 @@ the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
 'specialpages-group-login' => 'لاگان / کھاتہ کھولو',
 'specialpages-group-changes' => 'اج کل ہون والیاں تبدیلیاں تے لاگز',
 'specialpages-group-media' => 'میڈیا رپورٹس تے چڑھیاں فائلاں',
-'specialpages-group-users' => 'ورتن والے تے حق',
+'specialpages-group-wiki_users' => 'ورتن والے تے حق',
 'specialpages-group-highuse' => 'بعوت ورتے جان والے صفے',
 'specialpages-group-pages' => 'صفیاں دی لسٹ',
 'specialpages-group-pagetools' => 'صفہ اوزار',
@@ -3538,11 +3538,11 @@ the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
 'logentry-move-move_redir-noredirect' => '$1 {{جنس:$2|پلٹی}} صفہ $3 توں $4 اک ریڈائرکٹ دے بنا کسے ریڈائرکٹ دتیاں',
 'logentry-patrol-patrol' => '$1 {{جنس:$2|نشان لگی}} ریوین $4 صفہ $3 ویکھی گئی۔',
 'logentry-patrol-patrol-auto' => 'اپنے آپ $1 {{جنس:$2|نشان لگی}} $4 ریوین صفہ $3 دی ویکھی گئی',
-'logentry-newusers-newusers' => '$1 {{جنس:$2|بنایا گیا}} اک ورتن والا کھاتہ۔',
-'logentry-newusers-create' => '$1 {{جنس:$2|بنایا}} اک ورتن والا کھاتہ',
-'logentry-newusers-create2' => '$1 {{جنس:$2|بنایا}} {{جنس:$4|اک ورتن کھاتہ}} $3',
-'logentry-newusers-autocreate' => 'کھاتہ $1 اپنے آپ ای {{جنس:$2|بنایا گیا}} بنایا گیا۔',
-'newuserlog-byemail' => 'کنجی ای-میل راہ پیج دتی گئی۔',
+'logentry-newwiki_users-newwiki_users' => '$1 {{جنس:$2|بنایا گیا}} اک ورتن والا کھاتہ۔',
+'logentry-newwiki_users-create' => '$1 {{جنس:$2|بنایا}} اک ورتن والا کھاتہ',
+'logentry-newwiki_users-create2' => '$1 {{جنس:$2|بنایا}} {{جنس:$4|اک ورتن کھاتہ}} $3',
+'logentry-newwiki_users-autocreate' => 'کھاتہ $1 اپنے آپ ای {{جنس:$2|بنایا گیا}} بنایا گیا۔',
+'newwiki_userlog-byemail' => 'کنجی ای-میل راہ پیج دتی گئی۔',
 
 # Feedback
 'feedback-bugornote' => 'اگر تسیں اک تکنیکی مسلے نوں  پوری طراں دسن لئی تیار او تے فیر مہربانی کرکے [$1 بگ بارے دسو]۔  ںئیں تے تسیں تھلے دتا گیا فارم ورتو۔ تواڈی گل صفہ "[$3 $2]" تے جڑے گی،  تواڈے ورتن والے ناں تے براؤزر جیہڑا تسیں ورت رۓ او۔',

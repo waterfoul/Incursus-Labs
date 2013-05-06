@@ -16,7 +16,7 @@
 $fallback = 'fa';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'لینکهای خط به زیر',
 'tog-justify' => 'فاصله نهادن سی پاراگرافها',
 'tog-hideminor' => 'من ته نبیدن تغییرات کوچیک',
@@ -38,7 +38,7 @@ $messages = array(
 'tog-previewonfirst' => 'نشو دادن پیش نمایش  دراصلاح اول',
 'tog-nocache' => 'ناتوان کردن صفحه  درحال کچ',
 'tog-enotifwatchlistpages' => 'امیل به مو وقتی که  صفحه ای که منه فهرست نمایش مونه تغییر کرد',
-'tog-enotifusertalkpages' => 'امیل به مو وقتی که صفحه گفتگوی مو تغییر کرد',
+'tog-enotifwiki_usertalkpages' => 'امیل به مو وقتی که صفحه گفتگوی مو تغییر کرد',
 'tog-enotifminoredits' => 'امیل به مو سی صفحات ناقص اصلاح شده',
 'tog-enotifrevealaddr' => 'نشودادن امیل مو درامیلهای آگاهی-خبری',
 'tog-shownumberswatching' => 'نشودادن شماره کاربران درحال کار یاتماشا',
@@ -166,7 +166,7 @@ $messages = array(
 'views' => 'مشاهدات',
 'toolbox' => '
 جعبه ابزار',
-'userpage' => 'دیدن صفحه کاربر',
+'wiki_userpage' => 'دیدن صفحه کاربر',
 'projectpage' => 'دیدن صفحه پروژه',
 'imagepage' => 'دیدن صفحه مدیا',
 'mediawikipage' => 'دیدن صفحه پیام',
@@ -184,7 +184,7 @@ $messages = array(
 'jumptonavigation' => 'راندن یا هدایت کردن',
 'jumptosearch' => 'جستن',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'درباره {{SITENAME}}',
 'aboutpage' => 'Project:درباره',
 'copyright' => 'محتوا باای شماره قابل دسترسیه
@@ -240,7 +240,7 @@ $1',
 'page-rss-feed' => 'خبرخو RSS سی «$1»',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-user' => 'صفحه کاربر',
+'nstab-wiki_user' => 'صفحه کاربر',
 'nstab-project' => 'صفحه پروژه',
 'nstab-image' => 'فایل',
 'nstab-template' => 'قالب یا الگو',
@@ -260,9 +260,9 @@ $1',
 'login' => 'اویدن به سیستم',
 'nav-login-createaccount' => 'اویدن به سیستم',
 'loginprompt' => 'ایسا وا کوکی ها رافعال کنین سی اویدن به  {{SITENAME}}.',
-'userlogin' => 'اویدن به سیستم / درست کردن حساب کاربری',
+'wiki_userlogin' => 'اویدن به سیستم / درست کردن حساب کاربری',
 'logout' => 'رهدن زه سیستم',
-'userlogout' => 'رهدن زه سیستم',
+'wiki_userlogout' => 'رهدن زه سیستم',
 'nologin' => "آیا ایسا حساب کاربری ندارین? '''$1'''.",
 'nologinlink' => 'درست کردن یه حساب کاربری',
 'createaccount' => 'درست کردن حساب کاربری',
@@ -270,11 +270,11 @@ $1',
 'gotaccountlink' => 'اویدن به',
 'loginsuccesstitle' => 'اویدن با بخت وتوفیق به سیستم',
 'loginsuccess' => "''' ایسا اویدن به داخل سایت {{SITENAME}} بعنوان \"\$1\".'''",
-'nosuchuser' => 'کاربری به ای نام وجود نداره "$1".
-حروف نام را چک کنین, یا [[Special:UserLogin/signup|درست کنین یه حساب کاربری تازه]].',
-'nosuchusershort' => 'کاربری به ای نام وجود نداره"$1".
+'nosuchwiki_user' => 'کاربری به ای نام وجود نداره "$1".
+حروف نام را چک کنین, یا [[Special:wiki_userLogin/signup|درست کنین یه حساب کاربری تازه]].',
+'nosuchwiki_usershort' => 'کاربری به ای نام وجود نداره"$1".
 حروف نام راچک کنین.',
-'nouserspecified' => 'ایسا دارین یه نام کاربر ذکر اکنین.',
+'nowiki_userspecified' => 'ایسا دارین یه نام کاربر ذکر اکنین.',
 'wrongpassword' => 'رمز وارد وابیده درست نه.
 لطفا دوباره سعی کنین.',
 'wrongpasswordempty' => 'رمز وارد وابیده عقیم یامبهم بی.
@@ -360,7 +360,7 @@ $1',
 'templatesusedpreview' => 'قالبها  یا الگوهای استفاده وابیده در ای پیش نمایش:',
 'template-protected' => '(تحت حمایت)',
 'template-semiprotected' => '(نیمه حمایت وابیده)',
-'nocreatetext' => '{{SITENAME}}قابلیت درست کردن صفحات تازه را محدود کرده‌. ترین برگردین و صفحه‌ موجود را اصلاح کنین یا اینکه  [[Special:UserLogin|به سیستم داخل بوین یا حساب کاربری درست کنین]].',
+'nocreatetext' => '{{SITENAME}}قابلیت درست کردن صفحات تازه را محدود کرده‌. ترین برگردین و صفحه‌ موجود را اصلاح کنین یا اینکه  [[Special:wiki_userLogin|به سیستم داخل بوین یا حساب کاربری درست کنین]].',
 'recreate-moveddeleted-warn' => "'''هشدار: ایسا در حال درست کردن دوباره صفحه‌ای هدین که قبلاً حذف وابیده '''در نظر داشته بوین که ادامه اصلاح ای صفحه کار درستی هده یا نه. نمایه حذف مربوط به ای صفحه سی راحتی کار در ادامه اویده",
 
 # History pages
@@ -406,7 +406,7 @@ $1',
 
 'grouppage-sysop' => '{{ns:project}}:مدیران',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'نمایه حقوق کاربر',
 
 # Recent changes
@@ -455,7 +455,7 @@ $1',
 'filehist-help' => 'رو تاریخ‌ها کلیک کنید تا نسخه مرتبط را ببینین.',
 'filehist-current' => 'جاری',
 'filehist-datetime' => 'تاریخ/زمان',
-'filehist-user' => 'کاربر',
+'filehist-wiki_user' => 'کاربر',
 'filehist-dimensions' => 'ابعاد',
 'filehist-filesize' => 'اندازه فایل',
 'filehist-comment' => 'توضیح',
@@ -517,7 +517,7 @@ $1',
 'longpages' => 'صفحات بلند',
 'deadendpages' => 'صفحات بن بست ولاینحل',
 'protectedpages' => 'صفحات حفاظت وحمایت وابیده',
-'listusers' => 'لیست کاربر',
+'listwiki_users' => 'لیست کاربر',
 'newpages' => 'صفحات تازه',
 'ancientpages' => 'کهنه ترین صفحات',
 'move' => 'جابجا کردن',
@@ -527,7 +527,7 @@ $1',
 'booksources' => 'منابع کتاب',
 
 # Special:Log
-'specialloguserlabel' => 'کاربر:',
+'speciallogwiki_userlabel' => 'کاربر:',
 'speciallogtitlelabel' => 'عنوان:',
 'log' => 'نمایه ها',
 'all-logs-page' => 'همه نمایه ها',
@@ -546,8 +546,8 @@ $2',
 # Special:Categories
 'categories' => 'دسته ها',
 
-# E-mail user
-'emailuser' => 'امیل ای کاربر',
+# E-mail wiki_user
+'emailwiki_user' => 'امیل ای کاربر',
 
 # Watchlist
 'watchlist' => 'لیست پیگیریهای مو',
@@ -705,7 +705,7 @@ $2',
 'importlogpage' => 'داخل نمایه کردن',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'صفحه کاربری مو',
+'tooltip-pt-wiki_userpage' => 'صفحه کاربری مو',
 'tooltip-pt-mytalk' => 'صفحه صحبت مو',
 'tooltip-pt-preferences' => 'اولویت های مو',
 'tooltip-pt-watchlist' => 'لیست صفحه‌هایی که ایسا تغییرات هونو  دنبال اکنین',
@@ -733,13 +733,13 @@ $2',
 'tooltip-feed-rss' => 'تغذیه آراس اس برای ای صفحه',
 'tooltip-feed-atom' => 'تغذیه کوچیک ترین جزء  ای صفحه',
 'tooltip-t-contributions' => 'دیدن فهرست مشارکت کننده ها ومقاله دهنده های ای صفحه',
-'tooltip-t-emailuser' => 'ارسال یه امیل به ای کاربر',
+'tooltip-t-emailwiki_user' => 'ارسال یه امیل به ای کاربر',
 'tooltip-t-upload' => 'آپلودکردن فایلها',
 'tooltip-t-specialpages' => 'فهرست همه صفحات مخصوص',
 'tooltip-t-print' => 'نسخه فابل پرینت ای صفحه',
 'tooltip-t-permalink' => 'لینک دایمی به ای نسخه از صفحه',
 'tooltip-ca-nstab-main' => 'دیدن آن صفحه محتوا',
-'tooltip-ca-nstab-user' => 'دیدن صفحه کاربر',
+'tooltip-ca-nstab-wiki_user' => 'دیدن صفحه کاربر',
 'tooltip-ca-nstab-media' => 'دیدن صفحه مدیا',
 'tooltip-ca-nstab-special' => 'ای صفحه مخصوصه وایسا نترین خود ای صفحه رااصلاح کنین',
 'tooltip-ca-nstab-project' => 'دیدن صفحه پروژه',

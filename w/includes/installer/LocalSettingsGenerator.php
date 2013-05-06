@@ -32,7 +32,7 @@ class LocalSettingsGenerator {
 	protected $extensions = array();
 	protected $values = array();
 	protected $groupPermissions = array();
-	protected $dbSettings = '';
+	protected Settings = '';
 	protected $safeMode = false;
 
 	/**
@@ -50,26 +50,26 @@ class LocalSettingsGenerator {
 
 		$this->extensions = $installer->getVar( '_Extensions' );
 
-		$db = $installer->getDBInstaller( $installer->getVar( 'wgDBtype' ) );
+		 = $installer->getDBInstaller( $installer->getVar( 'wgDBtype' ) );
 
 		$confItems = array_merge(
 			array(
 				'wgServer', 'wgScriptPath', 'wgScriptExtension',
 				'wgPasswordSender', 'wgImageMagickConvertCommand', 'wgShellLocale',
-				'wgLanguageCode', 'wgEnableEmail', 'wgEnableUserEmail', 'wgDiff3',
-				'wgEnotifUserTalk', 'wgEnotifWatchlist', 'wgEmailAuthentication',
+				'wgLanguageCode', 'wgEnableEmail', 'wgEnablewiki_userEmail', 'wgDiff3',
+				'wgEnotifwiki_userTalk', 'wgEnotifWatchlist', 'wgEmailAuthentication',
 				'wgDBtype', 'wgSecretKey', 'wgRightsUrl', 'wgSitename', 'wgRightsIcon',
 				'wgRightsText', 'wgMainCacheType', 'wgEnableUploads',
-				'wgMainCacheType', '_MemCachedServers', 'wgDBserver', 'wgDBuser',
+				'wgMainCacheType', '_MemCachedServers', 'wgDBserver', 'wgDBwiki_user',
 				'wgDBpassword', 'wgUseInstantCommons', 'wgUpgradeKey', 'wgDefaultSkin',
 				'wgMetaNamespace', 'wgResourceLoaderMaxQueryLength'
 			),
-			$db->getGlobalNames()
+			->getGlobalNames()
 		);
 
 		$unescaped = array( 'wgRightsIcon' );
 		$boolItems = array(
-			'wgEnableEmail', 'wgEnableUserEmail', 'wgEnotifUserTalk',
+			'wgEnableEmail', 'wgEnablewiki_userEmail', 'wgEnotifwiki_userTalk',
 			'wgEnotifWatchlist', 'wgEmailAuthentication', 'wgEnableUploads', 'wgUseInstantCommons'
 		);
 
@@ -87,7 +87,7 @@ class LocalSettingsGenerator {
 			$this->values[$c] = $val;
 		}
 
-		$this->dbSettings = $db->getLocalSettings();
+		$this->dbSettings = ->getLocalSettings();
 		$this->safeMode = $installer->getVar( '_SafeMode' );
 		$this->values['wgEmergencyContact'] = $this->values['wgPasswordSender'];
 	}
@@ -275,15 +275,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ## or else you'll overwrite your logo when you upgrade!
 \$wgLogo             = \"\$wgStylePath/common/images/wiki.png\";
 
-## UPO means: this is also a user preference option
+## UPO means: this is also a wiki_user preference option
 
 \$wgEnableEmail      = {$this->values['wgEnableEmail']};
-\$wgEnableUserEmail  = {$this->values['wgEnableUserEmail']}; # UPO
+\$wgEnablewiki_userEmail  = {$this->values['wgEnablewiki_userEmail']}; # UPO
 
 \$wgEmergencyContact = \"{$this->values['wgEmergencyContact']}\";
 \$wgPasswordSender   = \"{$this->values['wgPasswordSender']}\";
 
-\$wgEnotifUserTalk      = {$this->values['wgEnotifUserTalk']}; # UPO
+\$wgEnotifwiki_userTalk      = {$this->values['wgEnotifwiki_userTalk']}; # UPO
 \$wgEnotifWatchlist     = {$this->values['wgEnotifWatchlist']}; # UPO
 \$wgEmailAuthentication = {$this->values['wgEmailAuthentication']};
 
@@ -291,7 +291,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 \$wgDBtype           = \"{$this->values['wgDBtype']}\";
 \$wgDBserver         = \"{$this->values['wgDBserver']}\";
 \$wgDBname           = \"{$this->values['wgDBname']}\";
-\$wgDBuser           = \"{$this->values['wgDBuser']}\";
+\$wgDBwiki_user           = \"{$this->values['wgDBwiki_user']}\";
 \$wgDBpassword       = \"{$this->values['wgDBpassword']}\";
 
 {$this->dbSettings}

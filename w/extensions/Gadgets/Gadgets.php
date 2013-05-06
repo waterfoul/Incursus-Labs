@@ -1,6 +1,6 @@
 <?php
 /**
- * Gadgets extension - lets users select custom javascript gadgets
+ * Gadgets extension - lets wiki_users select custom javascript gadgets
  *
  * For more info see http://mediawiki.org/wiki/Extension:Gadgets
  *
@@ -30,7 +30,7 @@ $wgExtensionCredits['other'][] = array(
 
 $wgHooks['ArticleSaveComplete'][]           = 'GadgetHooks::articleSaveComplete';
 $wgHooks['BeforePageDisplay'][]             = 'GadgetHooks::beforePageDisplay';
-$wgHooks['UserGetDefaultOptions'][]         = 'GadgetHooks::userGetDefaultOptions';
+$wgHooks['wiki_userGetDefaultOptions'][]         = 'GadgetHooks::wiki_userGetDefaultOptions';
 $wgHooks['GetPreferences'][]                = 'GadgetHooks::getPreferences';
 $wgHooks['ResourceLoaderRegisterModules'][] = 'GadgetHooks::registerModules';
 $wgHooks['UnitTestsList'][]                 = 'GadgetHooks::unitTestsList';

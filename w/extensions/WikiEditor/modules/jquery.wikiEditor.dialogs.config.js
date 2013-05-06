@@ -151,7 +151,7 @@ $.wikiEditor.modules.dialogs.config = {
 						}
 					}
 
-					// Updates the UI to show if the page title being inputed by the user exists or not
+					// Updates the UI to show if the page title being inputed by the wiki_user exists or not
 					// accepts parameter internal for bypassing external link detection
 					function updateExistence( internal ) {
 						// ensure the internal parameter is a boolean
@@ -282,7 +282,7 @@ $.wikiEditor.modules.dialogs.config = {
 						});
 
 					// Automatically copy the value of the internal link page title field to the link text field unless the
-					// user has changed the link text field - this is a convenience thing since most link texts are going to
+					// wiki_user has changed the link text field - this is a convenience thing since most link texts are going to
 					// be the the same as the page title - Also change the internal/external radio button accordingly
 					$( '#wikieditor-toolbar-link-int-target' ).bind( 'change keydown paste cut', function () {
 						// $(this).val() is the old value, before the keypress - Defer this until $(this).val() has
@@ -587,7 +587,7 @@ $.wikiEditor.modules.dialogs.config = {
 						);
 						$( '#wikieditor-toolbar-link-int-target' ).suggestions();
 
-						// don't overwrite user's text
+						// don't overwrite wiki_user's text
 						if ( selection !== '' ){
 							$( '#wikieditor-toolbar-link-int-text' ).data( 'untouched', false );
 						}
@@ -601,7 +601,7 @@ $.wikiEditor.modules.dialogs.config = {
 						if ( !$(this).data( 'dialogkeypressset' ) ) {
 							$(this).data( 'dialogkeypressset', true );
 							// Execute the action associated with the first button
-							// when the user presses Enter
+							// when the wiki_user presses Enter
 							$(this).closest( '.ui-dialog' ).keypress( function ( e ) {
 								if ( ( e.keyCode || e.which ) == 13 ) {
 									var button = $(this).data( 'dialogaction' ) || $(this).find( 'button:first' );
@@ -699,7 +699,7 @@ $.wikiEditor.modules.dialogs.config = {
 						if ( !( $( this ).data( 'dialogkeypressset' ) ) ) {
 							$( this ).data( 'dialogkeypressset', true );
 							// Execute the action associated with the first button
-							// when the user presses Enter
+							// when the wiki_user presses Enter
 							$( this ).closest( '.ui-dialog' ).keypress( function ( e ) {
 								if ( ( e.keyCode || e.which ) == 13 ) {
 									var button = $( this ).data( 'dialogaction' ) || $( this ).find( 'button:first' );
@@ -844,7 +844,7 @@ $.wikiEditor.modules.dialogs.config = {
 						if ( !( $( this ).data( 'dialogkeypressset' ) ) ) {
 							$( this ).data( 'dialogkeypressset', true );
 							// Execute the action associated with the first button
-							// when the user presses Enter
+							// when the wiki_user presses Enter
 							$( this ).closest( '.ui-dialog' ).keypress( function( e ) {
 								if ( e.which === 13 ) {
 									var button = $( this ).data( 'dialogaction' ) ||
@@ -1062,7 +1062,7 @@ $.wikiEditor.modules.dialogs.config = {
 						if ( !( $(this).data( 'dialogkeypressset' ) ) ) {
 							$(this).data( 'dialogkeypressset', true );
 							// Execute the action associated with the first button
-							// when the user presses Enter
+							// when the wiki_user presses Enter
 							$(this).closest( '.ui-dialog' ).keypress( function ( e ) {
 								if ( ( e.keyCode || e.which ) == 13 ) {
 									var button = $(this).data( 'dialogaction' ) || $(this).find( 'button:first' );
@@ -1322,7 +1322,7 @@ $.wikiEditor.modules.dialogs.config = {
 						if ( !( $(this).data( 'onetimeonlystuff' ) ) ) {
 							$(this).data( 'onetimeonlystuff', true );
 							// Execute the action associated with the first button
-							// when the user presses Enter
+							// when the wiki_user presses Enter
 							$(this).closest( '.ui-dialog' ).keypress( function ( e ) {
 								if ( ( e.keyCode || e.which ) == 13 ) {
 									var button = $(this).data( 'dialogaction' ) || $(this).find( 'button:first' );

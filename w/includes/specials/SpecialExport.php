@@ -24,7 +24,7 @@
  */
 
 /**
- * A special page that allows users to export pages in a XML file
+ * A special page that allows wiki_users to export pages in a XML file
  *
  * @ingroup SpecialPage
  */
@@ -235,7 +235,7 @@ class SpecialExport extends SpecialPage {
 			$request->wasPosted() ? $request->getCheck( 'templates' ) : false
 		) . '<br />';
 
-		if( $wgExportMaxLinkDepth || $this->userCanOverrideExportDepth() ) {
+		if( $wgExportMaxLinkDepth || $this->wiki_userCanOverrideExportDepth() ) {
 			$form .= Xml::inputLabel( $this->msg( 'export-pagelinks' )->text(), 'pagelink-depth', 'pagelink-depth', 20, 0 ) . '<br />';
 		}
 		// Enable this when we can do something useful exporting/importing image information. :)
@@ -265,14 +265,14 @@ class SpecialExport extends SpecialPage {
 	/**
 	 * @return bool
 	 */
-	private function userCanOverrideExportDepth() {
-		return $this->getUser()->isAllowed( 'override-export-depth' );
+	private function wiki_userCanOverrideExportDepth() {
+		return $this->getwiki_user()->isAllowed( 'override-export-depth' );
 	}
 
 	/**
 	 * Do the actual page exporting
 	 *
-	 * @param $page String: user input on what page(s) to export
+	 * @param $page String: wiki_user input on what page(s) to export
 	 * @param $history Mixed: one of the WikiExporter history export constants
 	 * @param $list_authors Boolean: Whether to add distinct author list (when
 	 *                      not returning full history)
@@ -329,12 +329,12 @@ class SpecialExport extends SpecialPage {
 		/* Ok, let's get to it... */
 		if( $history == WikiExporter::CURRENT ) {
 			$lb = false;
-			$db = wfGetDB( DB_SLAVE );
+			 = wfGetDB( DB_SLAVE );
 			$buffer = WikiExporter::BUFFER;
 		} else {
 			// Use an unbuffered query; histories may be very long!
 			$lb = wfGetLBFactory()->newMainLB();
-			$db = $lb->getConnection( DB_SLAVE );
+			 = $lb->getConnection( DB_SLAVE );
 			$buffer = WikiExporter::STREAM;
 
 			// This might take a while... :D
@@ -343,7 +343,7 @@ class SpecialExport extends SpecialPage {
 			wfRestoreWarnings();
 		}
 
-		$exporter = new WikiExporter( $db, $history, $buffer );
+		$exporter = new WikiExporter( , $history, $buffer );
 		$exporter->list_authors = $list_authors;
 		$exporter->openStream();
 
@@ -355,7 +355,7 @@ class SpecialExport extends SpecialPage {
 			 if( $wgExportMaxHistory && !$this->curonly ) {
 			 $title = Title::newFromText( $page );
 			 if( $title ) {
-			 $count = Revision::countByTitle( $db, $title );
+			 $count = Revision::countByTitle( , $title );
 			 if( $count > $wgExportMaxHistory ) {
 			 wfDebug( __FUNCTION__ .
 			 ": Skipped $page, $count revisions too big\n" );
@@ -363,12 +363,12 @@ class SpecialExport extends SpecialPage {
 			 }
 			 }
 			 }*/
-			#Bug 8824: Only export pages the user can read
+			#Bug 8824: Only export pages the wiki_user can read
 				$title = Title::newFromText( $page );
 				if( is_null( $title ) ) {
 					continue; #TODO: perhaps output an <error> tag or something.
 				}
-				if( !$title->userCan( 'read', $this->getUser() ) ) {
+				if( !$title->wiki_userCan( 'read', $this->getwiki_user() ) ) {
 					continue; #TODO: perhaps output an <error> tag or something.
 				}
 
@@ -392,8 +392,8 @@ class SpecialExport extends SpecialPage {
 
 		$name = $title->getDBkey();
 
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select(
+		r = wfGetDB( DB_SLAVE );
+		$res = r->select(
 			array( 'page', 'categorylinks' ),
 			array( 'page_namespace', 'page_title' ),
 			array( 'cl_from=page_id', 'cl_to' => $name ),
@@ -422,8 +422,8 @@ class SpecialExport extends SpecialPage {
 	private function getPagesFromNamespace( $nsindex ) {
 		global $wgContLang;
 
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select(
+		r = wfGetDB( DB_SLAVE );
+		$res = r->select(
 			'page',
 			array( 'page_namespace', 'page_title' ),
 			array( 'page_namespace' => $nsindex ),
@@ -472,7 +472,7 @@ class SpecialExport extends SpecialPage {
 			return 0;
 		}
 
-		if ( !$this->userCanOverrideExportDepth() ) {
+		if ( !$this->wiki_userCanOverrideExportDepth() ) {
 			if( $depth > $wgExportMaxLinkDepth ) {
 				return $wgExportMaxLinkDepth;
 			}
@@ -529,7 +529,7 @@ class SpecialExport extends SpecialPage {
 	 * @return array
 	 */
 	private function getLinks( $inputPages, $pageSet, $table, $fields, $join ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 
 		foreach( $inputPages as $page ) {
 			$title = Title::newFromText( $page );
@@ -538,7 +538,7 @@ class SpecialExport extends SpecialPage {
 				$pageSet[$title->getPrefixedText()] = true;
 				/// @todo FIXME: May or may not be more efficient to batch these
 				///        by namespace when given multiple input pages.
-				$result = $dbr->select(
+				$result = r->select(
 					array( 'page', $table ),
 					$fields,
 					array_merge(

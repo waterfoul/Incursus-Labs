@@ -1,1 +1,1 @@
- ALTER TABLE /*$wgDBprefix*/user ADD INDEX ( `user_name` );
+ ALTER TABLE /*$wgDBprefix*/wiki_user ADD INDEX ( `wiki_user_name` );

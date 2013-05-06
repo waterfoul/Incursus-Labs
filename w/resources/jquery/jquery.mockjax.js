@@ -66,7 +66,7 @@
 					// Inspect the URL of the request and check if the mock handler's url 
 					// matches the url for this ajax request
 					if ( $.isFunction(m.url.test) ) {
-						// The user provided a regex for the url, test it
+						// The wiki_user provided a regex for the url, test it
 						if ( !m.url.test( s.url ) ) {
 							m = null;
 						}

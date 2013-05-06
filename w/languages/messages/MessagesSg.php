@@ -14,7 +14,7 @@
 $fallback = 'fr';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Gbënëngö-gbê',
 'tog-justify' => 'Lôngbi yângâ tî âsurä',
 'tog-hideminor' => 'Hônde âkêtê lönzïngö-sû sô asï fadê na yâ tî gbâsû',
@@ -38,7 +38,7 @@ $messages = array(
 'tog-previewonfirst' => 'Fa piabängö kôzo sepesû',
 'tog-nocache' => 'Zî höndëngö-lêmbëtï na kpëlidimbä',
 'tog-enotifwatchlistpages' => '¨To na mbï mbëtïsînga töngana mbênî lêmbetï asanzêe na yâ tî molongö tî mbï tî bängö-pekô.',
-'tog-enotifusertalkpages' => 'To na mbï mbëtïsînga töngana mbênî lêmbëtë asanzêe na yâ tî dalisoro tî mbï',
+'tog-enotifwiki_usertalkpages' => 'To na mbï mbëtïsînga töngana mbênî lêmbëtë asanzêe na yâ tî dalisoro tî mbï',
 'tog-enotifminoredits' => 'To na mbï mbëtïsînga lâkûê sô mbênî kêtê sänzëmä asï na yâ tî âlêmbëtï tî mbï.',
 'tog-enotifrevealaddr' => 'Fa lindosînga tî mbï na yâ tî âmbëtïsînga tî zënngö-zo',
 'tog-shownumberswatching' => 'Fa wüngö tî ânyîmbâ sô ayeke bâa lêmbëtï sô',
@@ -192,7 +192,7 @@ $messages = array(
 'jumptonavigation' => 'Simba',
 'jumptosearch' => 'Gi',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Na ndö tî {{SITENAME}}',
 'aboutpage' => 'Project:Na ndö tî...',
 'currentevents' => 'Âsango',
@@ -217,15 +217,15 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Lêmbëtï',
-'nstab-user' => 'Lêmbëtï tî Nyîmbâ',
+'nstab-wiki_user' => 'Lêmbëtï tî Nyîmbâ',
 'nstab-special' => 'Lêmbëtï ndê',
 
 # Login and logout pages
 'yourpassword' => 'Pafungûla',
 'nav-login-createaccount' => 'Linda wala Zî kônde',
-'userlogin' => 'Linda wala  Zî kônde',
+'wiki_userlogin' => 'Linda wala  Zî kônde',
 'logout' => 'Sïgî',
-'userlogout' => 'Sigî',
+'wiki_userlogout' => 'Sigî',
 
 # Edit pages
 'watchthis' => 'Bâa pekô tî lêmbëtï sô',
@@ -247,8 +247,8 @@ $messages = array(
 'prefs-rc' => 'Tanga ti yé so a gbion ya ni',
 'yournick' => 'Nyîmbâ:',
 
-# User rights
-'editinguser' => "Mo fa na mbi nyîmbâ '''[[User:$1|$1]]''' $2",
+# wiki_user rights
+'editingwiki_user' => "Mo fa na mbi nyîmbâ '''[[wiki_user:$1|$1]]''' $2",
 
 # Recent changes
 'recentchanges' => 'Ndângbâ sänzëmä',

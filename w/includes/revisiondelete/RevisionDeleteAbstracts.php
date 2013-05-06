@@ -57,9 +57,9 @@ abstract class RevDel_List extends RevisionListBase {
 		$comment = $params['comment'];
 
 		$this->res = false;
-		$dbw = wfGetDB( DB_MASTER );
-		$this->doQuery( $dbw );
-		$dbw->begin( __METHOD__ );
+		w = wfGetDB( DB_MASTER );
+		$this->doQuery( w );
+		w->begin( __METHOD__ );
 		$status = Status::newGood();
 		$missing = array_flip( $this->ids );
 		$this->clearFileOps();
@@ -132,7 +132,7 @@ abstract class RevDel_List extends RevisionListBase {
 
 		if ( $status->successCount == 0 ) {
 			$status->ok = false;
-			$dbw->rollback( __METHOD__ );
+			w->rollback( __METHOD__ );
 			return $status;
 		}
 
@@ -143,7 +143,7 @@ abstract class RevDel_List extends RevisionListBase {
 		$status->merge( $this->doPreCommitUpdates() );
 		if ( !$status->isOK() ) {
 			// Fatal error, such as no configured archive directory
-			$dbw->rollback( __METHOD__ );
+			w->rollback( __METHOD__ );
 			return $status;
 		}
 
@@ -158,7 +158,7 @@ abstract class RevDel_List extends RevisionListBase {
 			'authorIds' => $authorIds,
 			'authorIPs' => $authorIPs
 		) );
-		$dbw->commit( __METHOD__ );
+		w->commit( __METHOD__ );
 
 		// Clear caches
 		$status->merge( $this->doPostCommitUpdates() );
@@ -170,8 +170,8 @@ abstract class RevDel_List extends RevisionListBase {
 	 * to allow $item->getHTML() to show the new data.
 	 */
 	function reloadFromMaster() {
-		$dbw = wfGetDB( DB_MASTER );
-		$this->res = $this->doQuery( $dbw );
+		w = wfGetDB( DB_MASTER );
+		$this->res = $this->doQuery( w );
 	}
 
 	/**
@@ -182,8 +182,8 @@ abstract class RevDel_List extends RevisionListBase {
 	 *     title:           The target title
 	 *     ids:             The ID list
 	 *     comment:         The log comment
-	 *     authorsIds:      The array of the user IDs of the offenders
-	 *     authorsIPs:      The array of the IP/anon user offenders
+	 *     authorsIds:      The array of the wiki_user IDs of the offenders
+	 *     authorsIPs:      The array of the IP/anon wiki_user offenders
 	 */
 	protected function updateLog( $params ) {
 		// Get the URL param's corresponding DB field

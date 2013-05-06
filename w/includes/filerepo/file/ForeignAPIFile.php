@@ -86,7 +86,7 @@ class ForeignAPIFile extends File {
 	 * @return string
 	 */
 	static function getProps() {
-		return 'timestamp|user|comment|url|size|sha1|metadata|mime';
+		return 'timestamp|wiki_user|comment|url|size|sha1|metadata|mime';
 	}
 
 	// Dummy functions...
@@ -189,14 +189,14 @@ class ForeignAPIFile extends File {
 	 * @param string $method
 	 * @return int|null|string
 	 */
-	public function getUser( $method='text' ) {
-		return isset( $this->mInfo['user'] ) ? strval( $this->mInfo['user'] ) : null;
+	public function getwiki_user( $method='text' ) {
+		return isset( $this->mInfo['wiki_user'] ) ? strval( $this->mInfo['wiki_user'] ) : null;
 	}
 
 	/**
 	 * @return null|string
 	 */
-	public function getDescription( $audience = self::FOR_PUBLIC, User $user = null ) {
+	public function getDescription( $audience = self::FOR_PUBLIC, wiki_user $wiki_user = null ) {
 		return isset( $this->mInfo['comment'] ) ? strval( $this->mInfo['comment'] ) : null;
 	}
 

@@ -50,8 +50,8 @@ class DeleteArchivedRevisions extends Maintenance {
 		if ( $this->hasOption( 'delete' ) ) {
 			DeleteArchivedRevisionsImplementation::doDelete( $this );
 		} else {
-			$dbw = wfGetDB( DB_MASTER );
-			$res = $dbw->selectRow( 'archive', 'COUNT(*) as count', array(), __FUNCTION__ );
+			w = wfGetDB( DB_MASTER );
+			$res = w->selectRow( 'archive', 'COUNT(*) as count', array(), __FUNCTION__ );
 			$this->output( "Found {$res->count} revisions to delete.\n" );
 			$this->output( "Please run the script again with the --delete option to really delete the revisions.\n" );
 		}

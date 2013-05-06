@@ -56,12 +56,12 @@ n
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Accesskey-anontalk</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Accesskey-anonuserpage&amp;action=edit accesskey-anonuserpage]&lt;br&gt;
-[[MediaWiki_talk:Accesskey-anonuserpage|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Accesskey-anonwiki_userpage&amp;action=edit accesskey-anonwiki_userpage]&lt;br&gt;
+[[MediaWiki_talk:Accesskey-anonwiki_userpage|Talk]]
 &lt;/td&gt;&lt;td&gt;
 .
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Accesskey-anonuserpage</title></template>
+<template lineStart="1"><title>int:Accesskey-anonwiki_userpage</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Accesskey-article&amp;action=edit accesskey-article]&lt;br&gt;
 [[MediaWiki_talk:Accesskey-article|Talk]]
@@ -105,12 +105,12 @@ e
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Accesskey-edit</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Accesskey-emailuser&amp;action=edit accesskey-emailuser]&lt;br&gt;
-[[MediaWiki_talk:Accesskey-emailuser|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Accesskey-emailwiki_user&amp;action=edit accesskey-emailwiki_user]&lt;br&gt;
+[[MediaWiki_talk:Accesskey-emailwiki_user|Talk]]
 &lt;/td&gt;&lt;td&gt;
-&amp;amp;lt;accesskey-emailuser&amp;amp;gt;
+&amp;amp;lt;accesskey-emailwiki_user&amp;amp;gt;
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Accesskey-emailuser</title></template>
+<template lineStart="1"><title>int:Accesskey-emailwiki_user</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Accesskey-help&amp;action=edit accesskey-help]&lt;br&gt;
 [[MediaWiki_talk:Accesskey-help|Talk]]
@@ -287,12 +287,12 @@ u
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Accesskey-upload</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Accesskey-userpage&amp;action=edit accesskey-userpage]&lt;br&gt;
-[[MediaWiki_talk:Accesskey-userpage|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Accesskey-wiki_userpage&amp;action=edit accesskey-wiki_userpage]&lt;br&gt;
+[[MediaWiki_talk:Accesskey-wiki_userpage|Talk]]
 &lt;/td&gt;&lt;td&gt;
 .
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Accesskey-userpage</title></template>
+<template lineStart="1"><title>int:Accesskey-wiki_userpage</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Accesskey-viewsource&amp;action=edit accesskey-viewsource]&lt;br&gt;
 [[MediaWiki_talk:Accesskey-viewsource|Talk]]
@@ -422,7 +422,7 @@ $1 to $2
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Alreadyloggedin&amp;action=edit alreadyloggedin]&lt;br&gt;
 [[MediaWiki_talk:Alreadyloggedin|Talk]]
 &lt;/td&gt;&lt;td&gt;
-&amp;lt;font color=red&amp;gt;&amp;lt;b&amp;gt;User $1, you are already logged in!&amp;lt;/b&amp;gt;&amp;lt;/font&amp;gt;&amp;lt;br /&amp;gt;
+&amp;lt;font color=red&amp;gt;&amp;lt;b&amp;gt;wiki_user $1, you are already logged in!&amp;lt;/b&amp;gt;&amp;lt;/font&amp;gt;&amp;lt;br /&amp;gt;
 
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Alreadyloggedin</title></template>
@@ -431,9 +431,9 @@ $1 to $2
 [[MediaWiki_talk:Alreadyrolled|Talk]]
 &lt;/td&gt;&lt;td&gt;
 Cannot rollback last edit of &amp;#91;&amp;#91;$1]]
-by &amp;#91;&amp;#91;User:$2&amp;#124;$2]] (&amp;#91;&amp;#91;User talk:$2&amp;#124;Talk]]); someone else has edited or rolled back the page already. 
+by &amp;#91;&amp;#91;wiki_user:$2&amp;#124;$2]] (&amp;#91;&amp;#91;wiki_user talk:$2&amp;#124;Talk]]); someone else has edited or rolled back the page already. 
 
-Last edit was by &amp;#91;&amp;#91;User:$3&amp;#124;$3]] (&amp;#91;&amp;#91;User talk:$3&amp;#124;Talk]]). 
+Last edit was by &amp;#91;&amp;#91;wiki_user:$3&amp;#124;$3]] (&amp;#91;&amp;#91;wiki_user talk:$3&amp;#124;Talk]]). 
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Alreadyrolled</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -461,14 +461,14 @@ Talk for this IP
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Anontalkpagetext&amp;action=edit anontalkpagetext]&lt;br&gt;
 [[MediaWiki_talk:Anontalkpagetext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-----&amp;#39;&amp;#39;This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical &amp;#91;&amp;#91;IP address]] to identify him/her. Such an IP address can be shared by several users. If you are an anonymous user and feel that irrelevant comments have been directed at you, please &amp;#91;&amp;#91;Special:Userlogin&amp;#124;create an account or log in]] to avoid future confusion with other anonymous users.&amp;#39;&amp;#39; 
+----&amp;#39;&amp;#39;This is the discussion page for an anonymous wiki_user who has not created an account yet or who does not use it. We therefore have to use the numerical &amp;#91;&amp;#91;IP address]] to identify him/her. Such an IP address can be shared by several wiki_users. If you are an anonymous wiki_user and feel that irrelevant comments have been directed at you, please &amp;#91;&amp;#91;Special:wiki_userlogin&amp;#124;create an account or log in]] to avoid future confusion with other anonymous wiki_users.&amp;#39;&amp;#39; 
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Anontalkpagetext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Anonymous&amp;action=edit anonymous]&lt;br&gt;
 [[MediaWiki_talk:Anonymous|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Anonymous user(s) of Wiktionary
+Anonymous wiki_user(s) of Wiktionary
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Anonymous</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -599,11 +599,11 @@ an incorrectly linked inter-language or inter-wiki title.
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Blockedtext&amp;action=edit blockedtext]&lt;br&gt;
 [[MediaWiki_talk:Blockedtext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Your user name or IP address has been blocked by $1.
+Your wiki_user name or IP address has been blocked by $1.
 The reason given is this:&amp;lt;br /&amp;gt;&amp;#39;&amp;#39;$2&amp;#39;&amp;#39;&amp;lt;p&amp;gt;You may contact $1 or one of the other
 &amp;#91;&amp;#91;Wiktionary:Administrators&amp;#124;administrators]] to discuss the block.
 
-Note that you may not use the &amp;quot;email this user&amp;quot; feature unless you have a valid email address registered in your &amp;#91;&amp;#91;Special:Preferences&amp;#124;user preferences]].
+Note that you may not use the &amp;quot;email this wiki_user&amp;quot; feature unless you have a valid email address registered in your &amp;#91;&amp;#91;Special:Preferences&amp;#124;wiki_user preferences]].
 
 Your IP address is $3. Please include this address in any queries you make.
 
@@ -613,14 +613,14 @@ Your IP address is $3. Please include this address in any queries you make.
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Blockedtitle&amp;action=edit blockedtitle]&lt;br&gt;
 [[MediaWiki_talk:Blockedtitle|Talk]]
 &lt;/td&gt;&lt;td&gt;
-User is blocked
+wiki_user is blocked
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Blockedtitle</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Blockip&amp;action=edit blockip]&lt;br&gt;
 [[MediaWiki_talk:Blockip|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Block user
+Block wiki_user
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Blockip</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -643,7 +643,7 @@ Block succeeded
 [[MediaWiki_talk:Blockiptext|Talk]]
 &lt;/td&gt;&lt;td&gt;
 Use the form below to block write access
-from a specific IP address or username.
+from a specific IP address or wiki_username.
 This should be done only only to prevent vandalism, and in
 accordance with &amp;#91;&amp;#91;Wiktionary:Policy&amp;#124;policy]].
 Fill in a specific reason below (for example, citing particular
@@ -682,7 +682,7 @@ Block_log
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Blocklogtext&amp;action=edit blocklogtext]&lt;br&gt;
 [[MediaWiki_talk:Blocklogtext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-This is a log of user blocking and unblocking actions. Automatically 
+This is a log of wiki_user blocking and unblocking actions. Automatically 
 blocked IP addresses are not be listed. See the &amp;#91;&amp;#91;Special:Ipblocklist&amp;#124;IP block list]] for
 the list of currently operational bans and blocks.
 &lt;/td&gt;&lt;td&gt;
@@ -757,7 +757,7 @@ Bureaucrat_log
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Bureaucratlogentry&amp;action=edit bureaucratlogentry]&lt;br&gt;
 [[MediaWiki_talk:Bureaucratlogentry|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Rights for user &amp;quot;$1&amp;quot; set &amp;quot;$2&amp;quot;
+Rights for wiki_user &amp;quot;$1&amp;quot; set &amp;quot;$2&amp;quot;
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Bureaucratlogentry</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -972,7 +972,7 @@ For $1
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Contributions&amp;action=edit contributions]&lt;br&gt;
 [[MediaWiki_talk:Contributions|Talk]]
 &lt;/td&gt;&lt;td&gt;
-User contributions
+wiki_user contributions
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Contributions</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -1213,7 +1213,7 @@ For developer use only
 [[MediaWiki_talk:Developertext|Talk]]
 &lt;/td&gt;&lt;td&gt;
 The action you have requested can only be
-performed by users with &amp;quot;developer&amp;quot; status.
+performed by wiki_users with &amp;quot;developer&amp;quot; status.
 See $1.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Developertext</title></template>
@@ -1365,7 +1365,7 @@ Edit this page
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Emailflag&amp;action=edit emailflag]&lt;br&gt;
 [[MediaWiki_talk:Emailflag|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Disable e-mail from other users
+Disable e-mail from other wiki_users
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Emailflag</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -1394,16 +1394,16 @@ Message
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Emailpage&amp;action=edit emailpage]&lt;br&gt;
 [[MediaWiki_talk:Emailpage|Talk]]
 &lt;/td&gt;&lt;td&gt;
-E-mail user
+E-mail wiki_user
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Emailpage</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Emailpagetext&amp;action=edit emailpagetext]&lt;br&gt;
 [[MediaWiki_talk:Emailpagetext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-If this user has entered a valid e-mail address in
-his or her user preferences, the form below will send a single message.
-The e-mail address you entered in your user preferences will appear
+If this wiki_user has entered a valid e-mail address in
+his or her wiki_user preferences, the form below will send a single message.
+The e-mail address you entered in your wiki_user preferences will appear
 as the &amp;quot;From&amp;quot; address of the mail, so the recipient will be able
 to reply.
 &lt;/td&gt;&lt;td&gt;
@@ -1444,12 +1444,12 @@ To
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Emailto</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Emailuser&amp;action=edit emailuser]&lt;br&gt;
-[[MediaWiki_talk:Emailuser|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Emailwiki_user&amp;action=edit emailwiki_user]&lt;br&gt;
+[[MediaWiki_talk:Emailwiki_user|Talk]]
 &lt;/td&gt;&lt;td&gt;
-E-mail this user
+E-mail this wiki_user
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Emailuser</title></template>
+<template lineStart="1"><title>int:Emailwiki_user</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Enterlockreason&amp;action=edit enterlockreason]&lt;br&gt;
 [[MediaWiki_talk:Enterlockreason|Talk]]
@@ -1967,7 +1967,7 @@ Invalid IP range.
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Ipaddress&amp;action=edit ipaddress]&lt;br&gt;
 [[MediaWiki_talk:Ipaddress|Talk]]
 &lt;/td&gt;&lt;td&gt;
-IP Address/username
+IP Address/wiki_username
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Ipaddress</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -1988,7 +1988,7 @@ Expiry
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Ipblocklist&amp;action=edit ipblocklist]&lt;br&gt;
 [[MediaWiki_talk:Ipblocklist|Talk]]
 &lt;/td&gt;&lt;td&gt;
-List of blocked IP addresses and usernames
+List of blocked IP addresses and wiki_usernames
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Ipblocklist</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -2002,7 +2002,7 @@ Reason
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Ipbsubmit&amp;action=edit ipbsubmit]&lt;br&gt;
 [[MediaWiki_talk:Ipbsubmit|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Block this user
+Block this wiki_user
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Ipbsubmit</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -2139,12 +2139,12 @@ list
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Listform</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Listusers&amp;action=edit listusers]&lt;br&gt;
-[[MediaWiki_talk:Listusers|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Listwiki_users&amp;action=edit listwiki_users]&lt;br&gt;
+[[MediaWiki_talk:Listwiki_users|Talk]]
 &lt;/td&gt;&lt;td&gt;
-User list
+wiki_user list
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Listusers</title></template>
+<template lineStart="1"><title>int:Listwiki_users</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Loadhist&amp;action=edit loadhist]&lt;br&gt;
 [[MediaWiki_talk:Loadhist|Talk]]
@@ -2207,7 +2207,7 @@ The database has been locked.
 [[MediaWiki_talk:Lockdbtext|Talk]]
 &lt;/td&gt;&lt;td&gt;
 Locking the database will suspend the ability of all
-users to edit pages, change their preferences, edit their watchlists, and
+wiki_users to edit pages, change their preferences, edit their watchlists, and
 other things requiring changes in the database.
 Please confirm that this is what you intend to do, and that you will
 unlock the database when your maintenance is done.
@@ -2245,7 +2245,7 @@ Login error
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Loginpagetitle&amp;action=edit loginpagetitle]&lt;br&gt;
 [[MediaWiki_talk:Loginpagetitle|Talk]]
 &lt;/td&gt;&lt;td&gt;
-User login
+wiki_user login
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Loginpagetitle</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -2266,7 +2266,7 @@ You must have cookies enabled to log in to Wiktionary.
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Loginreqtext&amp;action=edit loginreqtext]&lt;br&gt;
 [[MediaWiki_talk:Loginreqtext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-You must &amp;#91;&amp;#91;special:Userlogin&amp;#124;login]] to view other pages.
+You must &amp;#91;&amp;#91;special:wiki_userlogin&amp;#124;login]] to view other pages.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Loginreqtext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -2303,7 +2303,7 @@ Log out
 &lt;/td&gt;&lt;td&gt;
 You are now logged out.
 You can continue to use Wiktionary anonymously, or you can log in
-again as the same or as a different user. Note that some pages may
+again as the same or as a different wiki_user. Note that some pages may
 continue to be displayed as if you were still logged in, until you clear
 your browser cache
 
@@ -2313,7 +2313,7 @@ your browser cache
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Logouttitle&amp;action=edit logouttitle]&lt;br&gt;
 [[MediaWiki_talk:Logouttitle|Talk]]
 &lt;/td&gt;&lt;td&gt;
-User logout
+wiki_user logout
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Logouttitle</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -2364,9 +2364,9 @@ No send address
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Mailnologintext&amp;action=edit mailnologintext]&lt;br&gt;
 [[MediaWiki_talk:Mailnologintext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-You must be &amp;lt;a href=&amp;quot;{{localurl:Special:Userlogin&amp;quot;&amp;gt;logged in&amp;lt;/a&amp;gt;
+You must be &amp;lt;a href=&amp;quot;{{localurl:Special:wiki_userlogin&amp;quot;&amp;gt;logged in&amp;lt;/a&amp;gt;
 and have a valid e-mail address in your &amp;lt;a href=&amp;quot;/wiki/Special:Preferences&amp;quot;&amp;gt;preferences&amp;lt;/a&amp;gt;
-to send e-mail to other users.
+to send e-mail to other wiki_users.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Mailnologintext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -2381,7 +2381,7 @@ Main Page
 [[MediaWiki_talk:Mainpagedocfooter|Talk]]
 &lt;/td&gt;&lt;td&gt;
 Please see &amp;#91;http&amp;#58;//meta.wikipedia.org/wiki/MediaWiki_i18n documentation on customizing the interface]
-and the &amp;#91;http&amp;#58;//meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide User&amp;#39;s Guide] for usage and configuration help.
+and the &amp;#91;http&amp;#58;//meta.wikipedia.org/wiki/MediaWiki_wiki_user%27s_Guide wiki_user&amp;#39;s Guide] for usage and configuration help.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Mainpagedocfooter</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -2416,50 +2416,50 @@ This page includes several handy tools for everyday maintenance. Some of these f
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Makesysop&amp;action=edit makesysop]&lt;br&gt;
 [[MediaWiki_talk:Makesysop|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Make a user into a sysop
+Make a wiki_user into a sysop
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Makesysop</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Makesysopfail&amp;action=edit makesysopfail]&lt;br&gt;
 [[MediaWiki_talk:Makesysopfail|Talk]]
 &lt;/td&gt;&lt;td&gt;
-&amp;lt;b&amp;gt;User &amp;quot;$1&amp;quot; could not be made into a sysop. (Did you enter the name correctly?)&amp;lt;/b&amp;gt;
+&amp;lt;b&amp;gt;wiki_user &amp;quot;$1&amp;quot; could not be made into a sysop. (Did you enter the name correctly?)&amp;lt;/b&amp;gt;
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Makesysopfail</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Makesysopname&amp;action=edit makesysopname]&lt;br&gt;
 [[MediaWiki_talk:Makesysopname|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Name of the user:
+Name of the wiki_user:
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Makesysopname</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Makesysopok&amp;action=edit makesysopok]&lt;br&gt;
 [[MediaWiki_talk:Makesysopok|Talk]]
 &lt;/td&gt;&lt;td&gt;
-&amp;lt;b&amp;gt;User &amp;quot;$1&amp;quot; is now a sysop&amp;lt;/b&amp;gt;
+&amp;lt;b&amp;gt;wiki_user &amp;quot;$1&amp;quot; is now a sysop&amp;lt;/b&amp;gt;
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Makesysopok</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Makesysopsubmit&amp;action=edit makesysopsubmit]&lt;br&gt;
 [[MediaWiki_talk:Makesysopsubmit|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Make this user into a sysop
+Make this wiki_user into a sysop
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Makesysopsubmit</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Makesysoptext&amp;action=edit makesysoptext]&lt;br&gt;
 [[MediaWiki_talk:Makesysoptext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-This form is used by bureaucrats to turn ordinary users into administrators. 
-Type the name of the user in the box and press the button to make the user an administrator
+This form is used by bureaucrats to turn ordinary wiki_users into administrators. 
+Type the name of the wiki_user in the box and press the button to make the wiki_user an administrator
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Makesysoptext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Makesysoptitle&amp;action=edit makesysoptitle]&lt;br&gt;
 [[MediaWiki_talk:Makesysoptitle|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Make a user into a sysop
+Make a wiki_user into a sysop
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Makesysoptitle</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -2692,7 +2692,7 @@ Not logged in
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Movenologintext&amp;action=edit movenologintext]&lt;br&gt;
 [[MediaWiki_talk:Movenologintext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-You must be a registered user and &amp;lt;a href=&amp;quot;/wiki/Special:Userlogin&amp;quot;&amp;gt;logged in&amp;lt;/a&amp;gt;
+You must be a registered wiki_user and &amp;lt;a href=&amp;quot;/wiki/Special:wiki_userlogin&amp;quot;&amp;gt;logged in&amp;lt;/a&amp;gt;
 to move a page.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Movenologintext</title></template>
@@ -2869,12 +2869,12 @@ To new title
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Newtitle</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Newusersonly&amp;action=edit newusersonly]&lt;br&gt;
-[[MediaWiki_talk:Newusersonly|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Newwiki_usersonly&amp;action=edit newwiki_usersonly]&lt;br&gt;
+[[MediaWiki_talk:Newwiki_usersonly|Talk]]
 &lt;/td&gt;&lt;td&gt;
- (new users only)
+ (new wiki_users only)
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Newusersonly</title></template>
+<template lineStart="1"><title>int:Newwiki_usersonly</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Next&amp;action=edit next]&lt;br&gt;
 [[MediaWiki_talk:Next|Talk]]
@@ -2936,14 +2936,14 @@ No changes were found matching these criteria.
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Nocookieslogin&amp;action=edit nocookieslogin]&lt;br&gt;
 [[MediaWiki_talk:Nocookieslogin|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Wiktionary uses cookies to log in users. You have cookies disabled. Please enable them and try again.
+Wiktionary uses cookies to log in wiki_users. You have cookies disabled. Please enable them and try again.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Nocookieslogin</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Nocookiesnew&amp;action=edit nocookiesnew]&lt;br&gt;
 [[MediaWiki_talk:Nocookiesnew|Talk]]
 &lt;/td&gt;&lt;td&gt;
-The user account was created, but you are not logged in. Wiktionary uses cookies to log in users. You have cookies disabled. Please enable them, then log in with your new username and password.
+The wiki_user account was created, but you are not logged in. Wiktionary uses cookies to log in wiki_users. You have cookies disabled. Please enable them, then log in with your new wiki_username and password.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Nocookiesnew</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -2971,15 +2971,15 @@ Dublin Core RDF metadata disabled for this server.
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Noemail&amp;action=edit noemail]&lt;br&gt;
 [[MediaWiki_talk:Noemail|Talk]]
 &lt;/td&gt;&lt;td&gt;
-There is no e-mail address recorded for user &amp;quot;$1&amp;quot;.
+There is no e-mail address recorded for wiki_user &amp;quot;$1&amp;quot;.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Noemail</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Noemailtext&amp;action=edit noemailtext]&lt;br&gt;
 [[MediaWiki_talk:Noemailtext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-This user has not specified a valid e-mail address,
-or has chosen not to receive e-mail from other users.
+This wiki_user has not specified a valid e-mail address,
+or has chosen not to receive e-mail from other wiki_users.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Noemailtext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -3021,7 +3021,7 @@ There are no pages that link to this image.
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Noname&amp;action=edit noname]&lt;br&gt;
 [[MediaWiki_talk:Noname|Talk]]
 &lt;/td&gt;&lt;td&gt;
-You have not specified a valid user name.
+You have not specified a valid wiki_user name.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Noname</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -3065,13 +3065,13 @@ No such special page
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Nosuchspecialpage</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Nosuchuser&amp;action=edit nosuchuser]&lt;br&gt;
-[[MediaWiki_talk:Nosuchuser|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Nosuchwiki_user&amp;action=edit nosuchwiki_user]&lt;br&gt;
+[[MediaWiki_talk:Nosuchwiki_user|Talk]]
 &lt;/td&gt;&lt;td&gt;
-There is no user by the name &amp;quot;$1&amp;quot;.
-Check your spelling, or use the form below to create a new user account.
+There is no wiki_user by the name &amp;quot;$1&amp;quot;.
+Check your spelling, or use the form below to create a new wiki_user account.
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Nosuchuser</title></template>
+<template lineStart="1"><title>int:Nosuchwiki_user</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Notacceptable&amp;action=edit notacceptable]&lt;br&gt;
 [[MediaWiki_talk:Notacceptable|Talk]]
@@ -3090,7 +3090,7 @@ Not a content page
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Notargettext&amp;action=edit notargettext]&lt;br&gt;
 [[MediaWiki_talk:Notargettext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-You have not specified a target page or user
+You have not specified a target page or wiki_user
 to perform this function on.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Notargettext</title></template>
@@ -3207,12 +3207,12 @@ Template
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Nstab-template</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Nstab-user&amp;action=edit nstab-user]&lt;br&gt;
-[[MediaWiki_talk:Nstab-user|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Nstab-wiki_user&amp;action=edit nstab-wiki_user]&lt;br&gt;
+[[MediaWiki_talk:Nstab-wiki_user|Talk]]
 &lt;/td&gt;&lt;td&gt;
-User page
+wiki_user page
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Nstab-user</title></template>
+<template lineStart="1"><title>int:Nstab-wiki_user</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Nstab-wp&amp;action=edit nstab-wp]&lt;br&gt;
 [[MediaWiki_talk:Nstab-wp|Talk]]
@@ -3296,7 +3296,7 @@ $1 - Wiktionary
 &lt;/td&gt;&lt;td&gt;
 Someone (probably you, from IP address $1)
 requested that we send you a new Wiktionary login password.
-The password for user &amp;quot;$2&amp;quot; is now &amp;quot;$3&amp;quot;.
+The password for wiki_user &amp;quot;$2&amp;quot; is now &amp;quot;$3&amp;quot;.
 You should log in and change your password now.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Passwordremindertext</title></template>
@@ -3406,14 +3406,14 @@ Preferences
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Preferences</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Prefs-help-userdata&amp;action=edit prefs-help-userdata]&lt;br&gt;
-[[MediaWiki_talk:Prefs-help-userdata|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Prefs-help-wiki_userdata&amp;action=edit prefs-help-wiki_userdata]&lt;br&gt;
+[[MediaWiki_talk:Prefs-help-wiki_userdata|Talk]]
 &lt;/td&gt;&lt;td&gt;
 * &amp;lt;strong&amp;gt;Real name&amp;lt;/strong&amp;gt; (optional): if you choose to provide it this will be used for giving you attribution for your work.&amp;lt;br/&amp;gt;
 * &amp;lt;strong&amp;gt;Email&amp;lt;/strong&amp;gt; (optional): Enables people to contact you through the website without you having to reveal your 
 email address to them, and it can be used to send you a new password if you forget it.
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Prefs-help-userdata</title></template>
+<template lineStart="1"><title>int:Prefs-help-wiki_userdata</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Prefs-misc&amp;action=edit prefs-misc]&lt;br&gt;
 [[MediaWiki_talk:Prefs-misc|Talk]]
@@ -3425,7 +3425,7 @@ Misc settings
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Prefs-personal&amp;action=edit prefs-personal]&lt;br&gt;
 [[MediaWiki_talk:Prefs-personal|Talk]]
 &lt;/td&gt;&lt;td&gt;
-User data
+wiki_user data
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Prefs-personal</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -3442,7 +3442,7 @@ Recent changes and stub display
 You are logged in as &amp;quot;$1&amp;quot;.
 Your internal ID number is $2.
 
-See &amp;#91;&amp;#91;Wiktionary:User preferences help]] for help deciphering the options.
+See &amp;#91;&amp;#91;Wiktionary:wiki_user preferences help]] for help deciphering the options.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Prefslogintext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -3456,8 +3456,8 @@ Not logged in
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Prefsnologintext&amp;action=edit prefsnologintext]&lt;br&gt;
 [[MediaWiki_talk:Prefsnologintext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-You must be &amp;lt;a href=&amp;quot;/wiki/Special:Userlogin&amp;quot;&amp;gt;logged in&amp;lt;/a&amp;gt;
-to set user preferences.
+You must be &amp;lt;a href=&amp;quot;/wiki/Special:wiki_userlogin&amp;quot;&amp;gt;logged in&amp;lt;/a&amp;gt;
+to set wiki_user preferences.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Prefsnologintext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -3543,7 +3543,7 @@ Protected page
 [[MediaWiki_talk:Protectedpagewarning|Talk]]
 &lt;/td&gt;&lt;td&gt;
 WARNING:  This page has been locked so that only
-users with sysop privileges can edit it. Be sure you are following the
+wiki_users with sysop privileges can edit it. Be sure you are following the
 &amp;lt;a href=&amp;#39;/w/wiki.phtml/Wiktionary:Protected_page_guidelines&amp;#39;&amp;gt;protected page
 guidelines&amp;lt;/a&amp;gt;.
 &lt;/td&gt;&lt;td&gt;
@@ -3733,7 +3733,7 @@ Show new changes starting from $1
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Rcliu&amp;action=edit rcliu]&lt;br&gt;
 [[MediaWiki_talk:Rcliu|Talk]]
 &lt;/td&gt;&lt;td&gt;
-; $1 edits from logged in users
+; $1 edits from logged in wiki_users
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Rcliu</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -4161,16 +4161,16 @@ Server time is now
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Set_rights_fail&amp;action=edit set_rights_fail]&lt;br&gt;
 [[MediaWiki_talk:Set_rights_fail|Talk]]
 &lt;/td&gt;&lt;td&gt;
-&amp;lt;b&amp;gt;User rights for &amp;quot;$1&amp;quot; could not be set. (Did you enter the name correctly?)&amp;lt;/b&amp;gt;
+&amp;lt;b&amp;gt;wiki_user rights for &amp;quot;$1&amp;quot; could not be set. (Did you enter the name correctly?)&amp;lt;/b&amp;gt;
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Set_rights_fail</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Set_user_rights&amp;action=edit set_user_rights]&lt;br&gt;
-[[MediaWiki_talk:Set_user_rights|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Set_wiki_user_rights&amp;action=edit set_wiki_user_rights]&lt;br&gt;
+[[MediaWiki_talk:Set_wiki_user_rights|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Set user rights
+Set wiki_user rights
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Set_user_rights</title></template>
+<template lineStart="1"><title>int:Set_wiki_user_rights</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Setbureaucratflag&amp;action=edit setbureaucratflag]&lt;br&gt;
 [[MediaWiki_talk:Setbureaucratflag|Talk]]
@@ -4196,7 +4196,7 @@ show
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Showhideminor&amp;action=edit showhideminor]&lt;br&gt;
 [[MediaWiki_talk:Showhideminor|Talk]]
 &lt;/td&gt;&lt;td&gt;
-$1 minor edits &amp;#124; $2 bots &amp;#124; $3 logged in users 
+$1 minor edits &amp;#124; $2 bots &amp;#124; $3 logged in wiki_users 
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Showhideminor</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -4285,19 +4285,19 @@ Wiktionary
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Sitetitle</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Siteuser&amp;action=edit siteuser]&lt;br&gt;
-[[MediaWiki_talk:Siteuser|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Sitewiki_user&amp;action=edit sitewiki_user]&lt;br&gt;
+[[MediaWiki_talk:Sitewiki_user|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Wiktionary user $1
+Wiktionary wiki_user $1
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Siteuser</title></template>
+<template lineStart="1"><title>int:Sitewiki_user</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Siteusers&amp;action=edit siteusers]&lt;br&gt;
-[[MediaWiki_talk:Siteusers|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Sitewiki_users&amp;action=edit sitewiki_users]&lt;br&gt;
+[[MediaWiki_talk:Sitewiki_users|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Wiktionary user(s) $1
+Wiktionary wiki_user(s) $1
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Siteusers</title></template>
+<template lineStart="1"><title>int:Sitewiki_users</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Skin&amp;action=edit skin]&lt;br&gt;
 [[MediaWiki_talk:Skin|Talk]]
@@ -4339,7 +4339,7 @@ Special pages
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Spheading&amp;action=edit spheading]&lt;br&gt;
 [[MediaWiki_talk:Spheading|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Special pages for all users
+Special pages for all wiki_users
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Spheading</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -4424,7 +4424,7 @@ For sysop use only
 [[MediaWiki_talk:Sysoptext|Talk]]
 &lt;/td&gt;&lt;td&gt;
 The action you have requested can only be
-performed by users with &amp;quot;sysop&amp;quot; status.
+performed by wiki_users with &amp;quot;sysop&amp;quot; status.
 See $1.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Sysoptext</title></template>
@@ -4572,12 +4572,12 @@ Discussion about edits from this ip address &amp;#91;alt-n]
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Tooltip-anontalk</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Tooltip-anonuserpage&amp;action=edit tooltip-anonuserpage]&lt;br&gt;
-[[MediaWiki_talk:Tooltip-anonuserpage|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Tooltip-anonwiki_userpage&amp;action=edit tooltip-anonwiki_userpage]&lt;br&gt;
+[[MediaWiki_talk:Tooltip-anonwiki_userpage|Talk]]
 &lt;/td&gt;&lt;td&gt;
-The user page for the ip you&amp;#39;re editing as &amp;#91;alt-.]
+The wiki_user page for the ip you&amp;#39;re editing as &amp;#91;alt-.]
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Tooltip-anonuserpage</title></template>
+<template lineStart="1"><title>int:Tooltip-anonwiki_userpage</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Tooltip-article&amp;action=edit tooltip-article]&lt;br&gt;
 [[MediaWiki_talk:Tooltip-article|Talk]]
@@ -4603,7 +4603,7 @@ See the differences between the two selected versions of this page. &amp;#91;alt
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Tooltip-contributions&amp;action=edit tooltip-contributions]&lt;br&gt;
 [[MediaWiki_talk:Tooltip-contributions|Talk]]
 &lt;/td&gt;&lt;td&gt;
-View the list of contributions of this user
+View the list of contributions of this wiki_user
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Tooltip-contributions</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -4628,12 +4628,12 @@ You can edit this page. Please use the preview button before saving. &amp;#91;al
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Tooltip-edit</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Tooltip-emailuser&amp;action=edit tooltip-emailuser]&lt;br&gt;
-[[MediaWiki_talk:Tooltip-emailuser|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Tooltip-emailwiki_user&amp;action=edit tooltip-emailwiki_user]&lt;br&gt;
+[[MediaWiki_talk:Tooltip-emailwiki_user|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Send a mail to this user
+Send a mail to this wiki_user
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Tooltip-emailuser</title></template>
+<template lineStart="1"><title>int:Tooltip-emailwiki_user</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Tooltip-help&amp;action=edit tooltip-help]&lt;br&gt;
 [[MediaWiki_talk:Tooltip-help|Talk]]
@@ -4824,12 +4824,12 @@ Upload images or media files &amp;#91;alt-u]
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Tooltip-upload</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Tooltip-userpage&amp;action=edit tooltip-userpage]&lt;br&gt;
-[[MediaWiki_talk:Tooltip-userpage|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Tooltip-wiki_userpage&amp;action=edit tooltip-wiki_userpage]&lt;br&gt;
+[[MediaWiki_talk:Tooltip-wiki_userpage|Talk]]
 &lt;/td&gt;&lt;td&gt;
-My user page &amp;#91;alt-.]
+My wiki_user page &amp;#91;alt-.]
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Tooltip-userpage</title></template>
+<template lineStart="1"><title>int:Tooltip-wiki_userpage</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Tooltip-viewsource&amp;action=edit tooltip-viewsource]&lt;br&gt;
 [[MediaWiki_talk:Tooltip-viewsource|Talk]]
@@ -4869,7 +4869,7 @@ View the last $1 changes; view the last $2 days.
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Ucnote&amp;action=edit ucnote]&lt;br&gt;
 [[MediaWiki_talk:Ucnote|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Below are this user&amp;#39;s last &amp;lt;b&amp;gt;$1&amp;lt;/b&amp;gt; changes in the last &amp;lt;b&amp;gt;$2&amp;lt;/b&amp;gt; days.
+Below are this wiki_user&amp;#39;s last &amp;lt;b&amp;gt;$1&amp;lt;/b&amp;gt; changes in the last &amp;lt;b&amp;gt;$2&amp;lt;/b&amp;gt; days.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Ucnote</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -4883,7 +4883,7 @@ Below are this user&amp;#39;s last &amp;lt;b&amp;gt;$1&amp;lt;/b&amp;gt; changes
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Unblockip&amp;action=edit unblockip]&lt;br&gt;
 [[MediaWiki_talk:Unblockip|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Unblock user
+Unblock wiki_user
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Unblockip</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -4891,7 +4891,7 @@ Unblock user
 [[MediaWiki_talk:Unblockiptext|Talk]]
 &lt;/td&gt;&lt;td&gt;
 Use the form below to restore write access
-to a previously blocked IP address or username.
+to a previously blocked IP address or wiki_username.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Unblockiptext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -5037,7 +5037,7 @@ The database has been unlocked.
 [[MediaWiki_talk:Unlockdbtext|Talk]]
 &lt;/td&gt;&lt;td&gt;
 Unlocking the database will restore the ability of all
-users to edit pages, change their preferences, edit their watchlists, and
+wiki_users to edit pages, change their preferences, edit their watchlists, and
 other things requiring changes in the database.
 Please confirm that this is what you intend to do.
 &lt;/td&gt;&lt;td&gt;
@@ -5206,7 +5206,7 @@ Not logged in
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Uploadnologintext&amp;action=edit uploadnologintext]&lt;br&gt;
 [[MediaWiki_talk:Uploadnologintext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-You must be &amp;lt;a href=&amp;quot;/wiki/Special:Userlogin&amp;quot;&amp;gt;logged in&amp;lt;/a&amp;gt;
+You must be &amp;lt;a href=&amp;quot;/wiki/Special:wiki_userlogin&amp;quot;&amp;gt;logged in&amp;lt;/a&amp;gt;
 to upload files.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Uploadnologintext</title></template>
@@ -5252,90 +5252,90 @@ Upload warning
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Uploadwarning</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:User_rights_set&amp;action=edit user_rights_set]&lt;br&gt;
-[[MediaWiki_talk:User_rights_set|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_user_rights_set&amp;action=edit wiki_user_rights_set]&lt;br&gt;
+[[MediaWiki_talk:wiki_user_rights_set|Talk]]
 &lt;/td&gt;&lt;td&gt;
-&amp;lt;b&amp;gt;User rights for &amp;quot;$1&amp;quot; updated&amp;lt;/b&amp;gt;
+&amp;lt;b&amp;gt;wiki_user rights for &amp;quot;$1&amp;quot; updated&amp;lt;/b&amp;gt;
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:User_rights_set</title></template>
+<template lineStart="1"><title>int:wiki_user_rights_set</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Usercssjs&amp;action=edit usercssjs]&lt;br&gt;
-[[MediaWiki_talk:Usercssjs|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_usercssjs&amp;action=edit wiki_usercssjs]&lt;br&gt;
+[[MediaWiki_talk:wiki_usercssjs|Talk]]
 &lt;/td&gt;&lt;td&gt;
 &amp;#39;&amp;#39;&amp;#39;Note:&amp;#39;&amp;#39;&amp;#39; After saving, you have to tell your bowser to get the new version: &amp;#39;&amp;#39;&amp;#39;Mozilla:&amp;#39;&amp;#39;&amp;#39; click &amp;#39;&amp;#39;reload&amp;#39;&amp;#39;(or &amp;#39;&amp;#39;ctrl-r&amp;#39;&amp;#39;), &amp;#39;&amp;#39;&amp;#39;IE / Opera:&amp;#39;&amp;#39;&amp;#39; &amp;#39;&amp;#39;ctrl-f5&amp;#39;&amp;#39;, &amp;#39;&amp;#39;&amp;#39;Safari:&amp;#39;&amp;#39;&amp;#39; &amp;#39;&amp;#39;cmd-r&amp;#39;&amp;#39;, &amp;#39;&amp;#39;&amp;#39;Konqueror&amp;#39;&amp;#39;&amp;#39; &amp;#39;&amp;#39;ctrl-r&amp;#39;&amp;#39;.
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Usercssjs</title></template>
+<template lineStart="1"><title>int:wiki_usercssjs</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Usercssjsyoucanpreview&amp;action=edit usercssjsyoucanpreview]&lt;br&gt;
-[[MediaWiki_talk:Usercssjsyoucanpreview|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_usercssjsyoucanpreview&amp;action=edit wiki_usercssjsyoucanpreview]&lt;br&gt;
+[[MediaWiki_talk:wiki_usercssjsyoucanpreview|Talk]]
 &lt;/td&gt;&lt;td&gt;
 &amp;lt;strong&amp;gt;Tip:&amp;lt;/strong&amp;gt; Use the &amp;#39;Show preview&amp;#39; button to test your new css/js before saving.
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Usercssjsyoucanpreview</title></template>
+<template lineStart="1"><title>int:wiki_usercssjsyoucanpreview</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Usercsspreview&amp;action=edit usercsspreview]&lt;br&gt;
-[[MediaWiki_talk:Usercsspreview|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_usercsspreview&amp;action=edit wiki_usercsspreview]&lt;br&gt;
+[[MediaWiki_talk:wiki_usercsspreview|Talk]]
 &lt;/td&gt;&lt;td&gt;
-&amp;#39;&amp;#39;&amp;#39;Remember that you are only previewing your user css, it has not yet been saved!&amp;#39;&amp;#39;&amp;#39;
+&amp;#39;&amp;#39;&amp;#39;Remember that you are only previewing your wiki_user css, it has not yet been saved!&amp;#39;&amp;#39;&amp;#39;
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Usercsspreview</title></template>
+<template lineStart="1"><title>int:wiki_usercsspreview</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Userexists&amp;action=edit userexists]&lt;br&gt;
-[[MediaWiki_talk:Userexists|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_userexists&amp;action=edit wiki_userexists]&lt;br&gt;
+[[MediaWiki_talk:wiki_userexists|Talk]]
 &lt;/td&gt;&lt;td&gt;
-The user name you entered is already in use. Please choose a different name.
+The wiki_user name you entered is already in use. Please choose a different name.
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Userexists</title></template>
+<template lineStart="1"><title>int:wiki_userexists</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Userjspreview&amp;action=edit userjspreview]&lt;br&gt;
-[[MediaWiki_talk:Userjspreview|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_userjspreview&amp;action=edit wiki_userjspreview]&lt;br&gt;
+[[MediaWiki_talk:wiki_userjspreview|Talk]]
 &lt;/td&gt;&lt;td&gt;
-&amp;#39;&amp;#39;&amp;#39;Remember that you are only testing/previewing your user javascript, it has not yet been saved!&amp;#39;&amp;#39;&amp;#39;
+&amp;#39;&amp;#39;&amp;#39;Remember that you are only testing/previewing your wiki_user javascript, it has not yet been saved!&amp;#39;&amp;#39;&amp;#39;
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Userjspreview</title></template>
+<template lineStart="1"><title>int:wiki_userjspreview</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Userlogin&amp;action=edit userlogin]&lt;br&gt;
-[[MediaWiki_talk:Userlogin|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_userlogin&amp;action=edit wiki_userlogin]&lt;br&gt;
+[[MediaWiki_talk:wiki_userlogin|Talk]]
 &lt;/td&gt;&lt;td&gt;
 Log in
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Userlogin</title></template>
+<template lineStart="1"><title>int:wiki_userlogin</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Userlogout&amp;action=edit userlogout]&lt;br&gt;
-[[MediaWiki_talk:Userlogout|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_userlogout&amp;action=edit wiki_userlogout]&lt;br&gt;
+[[MediaWiki_talk:wiki_userlogout|Talk]]
 &lt;/td&gt;&lt;td&gt;
 Log out
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Userlogout</title></template>
+<template lineStart="1"><title>int:wiki_userlogout</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Usermailererror&amp;action=edit usermailererror]&lt;br&gt;
-[[MediaWiki_talk:Usermailererror|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_usermailererror&amp;action=edit wiki_usermailererror]&lt;br&gt;
+[[MediaWiki_talk:wiki_usermailererror|Talk]]
 &lt;/td&gt;&lt;td&gt;
 Mail object returned error: 
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Usermailererror</title></template>
+<template lineStart="1"><title>int:wiki_usermailererror</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Userpage&amp;action=edit userpage]&lt;br&gt;
-[[MediaWiki_talk:Userpage|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_userpage&amp;action=edit wiki_userpage]&lt;br&gt;
+[[MediaWiki_talk:wiki_userpage|Talk]]
 &lt;/td&gt;&lt;td&gt;
-View user page
+View wiki_user page
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Userpage</title></template>
+<template lineStart="1"><title>int:wiki_userpage</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Userstats&amp;action=edit userstats]&lt;br&gt;
-[[MediaWiki_talk:Userstats|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_userstats&amp;action=edit wiki_userstats]&lt;br&gt;
+[[MediaWiki_talk:wiki_userstats|Talk]]
 &lt;/td&gt;&lt;td&gt;
-User statistics
+wiki_user statistics
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Userstats</title></template>
+<template lineStart="1"><title>int:wiki_userstats</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
-[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Userstatstext&amp;action=edit userstatstext]&lt;br&gt;
-[[MediaWiki_talk:Userstatstext|Talk]]
+[http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:wiki_userstatstext&amp;action=edit wiki_userstatstext]&lt;br&gt;
+[[MediaWiki_talk:wiki_userstatstext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-There are &amp;#39;&amp;#39;&amp;#39;$1&amp;#39;&amp;#39;&amp;#39; registered users.
+There are &amp;#39;&amp;#39;&amp;#39;$1&amp;#39;&amp;#39;&amp;#39; registered wiki_users.
 &amp;#39;&amp;#39;&amp;#39;$2&amp;#39;&amp;#39;&amp;#39; of these are administrators (see $3).
 &lt;/td&gt;&lt;td&gt;
-<template lineStart="1"><title>int:Userstatstext</title></template>
+<template lineStart="1"><title>int:wiki_userstatstext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Version&amp;action=edit version]&lt;br&gt;
 [[MediaWiki_talk:Version|Talk]]
@@ -5423,7 +5423,7 @@ Your watchlist contains $1 pages.
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Watchlistsub&amp;action=edit watchlistsub]&lt;br&gt;
 [[MediaWiki_talk:Watchlistsub|Talk]]
 &lt;/td&gt;&lt;td&gt;
-(for user &amp;quot;$1&amp;quot;)
+(for wiki_user &amp;quot;$1&amp;quot;)
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Watchlistsub</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -5458,7 +5458,7 @@ Not logged in
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Watchnologintext&amp;action=edit watchnologintext]&lt;br&gt;
 [[MediaWiki_talk:Watchnologintext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-You must be &amp;lt;a href=&amp;quot;/wiki/Special:Userlogin&amp;quot;&amp;gt;logged in&amp;lt;/a&amp;gt;
+You must be &amp;lt;a href=&amp;quot;/wiki/Special:wiki_userlogin&amp;quot;&amp;gt;logged in&amp;lt;/a&amp;gt;
 to modify your watchlist.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Watchnologintext</title></template>
@@ -5495,7 +5495,7 @@ What links here
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Whitelistacctext&amp;action=edit whitelistacctext]&lt;br&gt;
 [[MediaWiki_talk:Whitelistacctext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-To be allowed to create accounts in this Wiki you have to &amp;#91;&amp;#91;Special:Userlogin&amp;#124;log]] in and have the appropriate permissions.
+To be allowed to create accounts in this Wiki you have to &amp;#91;&amp;#91;Special:wiki_userlogin&amp;#124;log]] in and have the appropriate permissions.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Whitelistacctext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -5509,7 +5509,7 @@ You are not allowed to create an account
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Whitelistedittext&amp;action=edit whitelistedittext]&lt;br&gt;
 [[MediaWiki_talk:Whitelistedittext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-You have to &amp;#91;&amp;#91;Special:Userlogin&amp;#124;login]] to edit pages.
+You have to &amp;#91;&amp;#91;Special:wiki_userlogin&amp;#124;login]] to edit pages.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Whitelistedittext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -5523,7 +5523,7 @@ Login required to edit
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Whitelistreadtext&amp;action=edit whitelistreadtext]&lt;br&gt;
 [[MediaWiki_talk:Whitelistreadtext|Talk]]
 &lt;/td&gt;&lt;td&gt;
-You have to &amp;#91;&amp;#91;Special:Userlogin&amp;#124;login]] to read pages.
+You have to &amp;#91;&amp;#91;Special:wiki_userlogin&amp;#124;login]] to read pages.
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Whitelistreadtext</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;
@@ -5603,7 +5603,7 @@ Your email*
 [http://tl.wiktionary.org/w/wiki.phtml?title=MediaWiki:Yourname&amp;action=edit yourname]&lt;br&gt;
 [[MediaWiki_talk:Yourname|Talk]]
 &lt;/td&gt;&lt;td&gt;
-Your user name
+Your wiki_user name
 &lt;/td&gt;&lt;td&gt;
 <template lineStart="1"><title>int:Yourname</title></template>
 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;

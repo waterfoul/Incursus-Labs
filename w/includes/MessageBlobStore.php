@@ -80,21 +80,21 @@ class MessageBlobStore {
 			return false;
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
-		$success = $dbw->insert( 'msg_resource', array(
+		w = wfGetDB( DB_MASTER );
+		$success = w->insert( 'msg_resource', array(
 				'mr_lang' => $lang,
 				'mr_resource' => $name,
 				'mr_blob' => $blob,
-				'mr_timestamp' => $dbw->timestamp()
+				'mr_timestamp' => w->timestamp()
 			),
 			__METHOD__,
 			array( 'IGNORE' )
 		);
 
 		if ( $success ) {
-			if ( $dbw->affectedRows() == 0 ) {
+			if ( w->affectedRows() == 0 ) {
 				// Blob was already present, fetch it
-				$blob = $dbw->selectField( 'msg_resource', 'mr_blob', array(
+				$blob = w->selectField( 'msg_resource', 'mr_blob', array(
 						'mr_resource' => $name,
 						'mr_lang' => $lang,
 					),
@@ -110,7 +110,7 @@ class MessageBlobStore {
 						'mrl_message' => $key
 					);
 				}
-				$dbw->insert( 'msg_resource_links', $rows,
+				w->insert( 'msg_resource_links', $rows,
 					__METHOD__, array( 'IGNORE' )
 				);
 			}
@@ -128,8 +128,8 @@ class MessageBlobStore {
 	 * @return String Regenerated message blob, or null if there was no blob for the given module/language pair
 	 */
 	public static function updateModule( $name, ResourceLoaderModule $module, $lang ) {
-		$dbw = wfGetDB( DB_MASTER );
-		$row = $dbw->selectRow( 'msg_resource', 'mr_blob',
+		w = wfGetDB( DB_MASTER );
+		$row = w->selectRow( 'msg_resource', 'mr_blob',
 			array( 'mr_resource' => $name, 'mr_lang' => $lang ),
 			__METHOD__
 		);
@@ -145,10 +145,10 @@ class MessageBlobStore {
 			'mr_resource' => $name,
 			'mr_lang' => $lang,
 			'mr_blob' => $newBlob,
-			'mr_timestamp' => $dbw->timestamp()
+			'mr_timestamp' => w->timestamp()
 		);
 
-		$dbw->replace( 'msg_resource',
+		w->replace( 'msg_resource',
 			array( array( 'mr_resource', 'mr_lang' ) ),
 			$newRow, __METHOD__
 		);
@@ -161,7 +161,7 @@ class MessageBlobStore {
 
 		// Delete removed messages, insert added ones
 		if ( $removed ) {
-			$dbw->delete( 'msg_resource_links', array(
+			w->delete( 'msg_resource_links', array(
 					'mrl_resource' => $name,
 					'mrl_message' => $removed
 				), __METHOD__
@@ -178,7 +178,7 @@ class MessageBlobStore {
 		}
 
 		if ( $newLinksRows ) {
-			$dbw->insert( 'msg_resource_links', $newLinksRows, __METHOD__,
+			w->insert( 'msg_resource_links', $newLinksRows, __METHOD__,
 				 array( 'IGNORE' ) // just in case
 			);
 		}
@@ -192,7 +192,7 @@ class MessageBlobStore {
 	 * @param $key String: message key
 	 */
 	public static function updateMessage( $key ) {
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
 		// Keep running until the updates queue is empty.
 		// Due to update conflicts, the queue might not be emptied
@@ -205,10 +205,10 @@ class MessageBlobStore {
 				// Update the row on the condition that it
 				// didn't change since we fetched it by putting
 				// the timestamp in the WHERE clause.
-				$success = $dbw->update( 'msg_resource',
+				$success = w->update( 'msg_resource',
 					array(
 						'mr_blob' => $update['newBlob'],
-						'mr_timestamp' => $dbw->timestamp() ),
+						'mr_timestamp' => w->timestamp() ),
 					array(
 						'mr_resource' => $update['resource'],
 						'mr_lang' => $update['lang'],
@@ -219,7 +219,7 @@ class MessageBlobStore {
 				// Only requeue conflicted updates.
 				// If update() returned false, don't retry, for
 				// fear of getting into an infinite loop
-				if ( !( $success && $dbw->affectedRows() == 0 ) ) {
+				if ( !( $success && w->affectedRows() == 0 ) ) {
 					// Not conflicted
 					unset( $updates[$k] );
 				}
@@ -233,9 +233,9 @@ class MessageBlobStore {
 	public static function clear() {
 		// TODO: Give this some more thought
 		// TODO: Is TRUNCATE better?
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->delete( 'msg_resource', '*', __METHOD__ );
-		$dbw->delete( 'msg_resource_links', '*', __METHOD__ );
+		w = wfGetDB( DB_MASTER );
+		w->delete( 'msg_resource', '*', __METHOD__ );
+		w->delete( 'msg_resource_links', '*', __METHOD__ );
 	}
 
 	/**
@@ -246,11 +246,11 @@ class MessageBlobStore {
 	 * @return Array: updates queue
 	 */
 	private static function getUpdatesForMessage( $key, $prevUpdates = null ) {
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
 		if ( is_null( $prevUpdates ) ) {
 			// Fetch all blobs referencing $key
-			$res = $dbw->select(
+			$res = w->select(
 				array( 'msg_resource', 'msg_resource_links' ),
 				array( 'mr_resource', 'mr_lang', 'mr_blob', 'mr_timestamp' ),
 				array( 'mrl_message' => $key, 'mr_resource=mrl_resource' ),
@@ -267,9 +267,9 @@ class MessageBlobStore {
 				$twoD[$update['resource']][$update['lang']] = true;
 			}
 
-			$res = $dbw->select( 'msg_resource',
+			$res = w->select( 'msg_resource',
 				array( 'mr_resource', 'mr_lang', 'mr_blob', 'mr_timestamp' ),
-				$dbw->makeWhereFrom2d( $twoD, 'mr_resource', 'mr_lang' ),
+				w->makeWhereFrom2d( $twoD, 'mr_resource', 'mr_lang' ),
 				__METHOD__
 			);
 		}
@@ -316,8 +316,8 @@ class MessageBlobStore {
 	private static function getFromDB( ResourceLoader $resourceLoader, $modules, $lang ) {
 		global $wgCacheEpoch;
 		$retval = array();
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'msg_resource',
+		r = wfGetDB( DB_SLAVE );
+		$res = r->select( 'msg_resource',
 			array( 'mr_blob', 'mr_resource', 'mr_timestamp' ),
 			array( 'mr_resource' => $modules, 'mr_lang' => $lang ),
 			__METHOD__

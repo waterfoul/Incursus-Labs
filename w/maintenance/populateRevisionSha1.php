@@ -42,11 +42,11 @@ class PopulateRevisionSha1 extends LoggedUpdateMaintenance {
 	}
 
 	protected function doDBUpdates() {
-		$db = $this->getDB( DB_MASTER );
+		 = $this->getDB( DB_MASTER );
 
-		if ( !$db->tableExists( 'revision' ) ) {
+		if ( !->tableExists( 'revision' ) ) {
 			$this->error( "revision table does not exist", true );
-		} elseif ( !$db->tableExists( 'archive' ) ) {
+		} elseif ( !->tableExists( 'archive' ) ) {
 			$this->error( "archive table does not exist", true );
 		}
 
@@ -69,9 +69,9 @@ class PopulateRevisionSha1 extends LoggedUpdateMaintenance {
 	 * @return Integer Rows changed
 	 */
 	protected function doSha1Updates( $table, $idCol, $prefix ) {
-		$db = $this->getDB( DB_MASTER );
-		$start = $db->selectField( $table, "MIN($idCol)", false, __METHOD__ );
-		$end = $db->selectField( $table, "MAX($idCol)", false, __METHOD__ );
+		 = $this->getDB( DB_MASTER );
+		$start = ->selectField( $table, "MIN($idCol)", false, __METHOD__ );
+		$end = ->selectField( $table, "MAX($idCol)", false, __METHOD__ );
 		if ( !$start || !$end ) {
 			$this->output( "...$table table seems to be empty.\n" );
 			return 0;
@@ -86,15 +86,15 @@ class PopulateRevisionSha1 extends LoggedUpdateMaintenance {
 			$this->output( "...doing $idCol from $blockStart to $blockEnd\n" );
 			$cond = "$idCol BETWEEN $blockStart AND $blockEnd
 				AND $idCol IS NOT NULL AND {$prefix}_sha1 = ''";
-			$res = $db->select( $table, '*', $cond, __METHOD__ );
+			$res = ->select( $table, '*', $cond, __METHOD__ );
 
-			$db->begin( __METHOD__ );
+			->begin( __METHOD__ );
 			foreach ( $res as $row ) {
 				if ( $this->upgradeRow( $row, $table, $idCol, $prefix ) ) {
 					$count++;
 				}
 			}
-			$db->commit( __METHOD__ );
+			->commit( __METHOD__ );
 
 			$blockStart += $this->mBatchSize;
 			$blockEnd += $this->mBatchSize;
@@ -108,25 +108,25 @@ class PopulateRevisionSha1 extends LoggedUpdateMaintenance {
 	 */
 	protected function doSha1LegacyUpdates() {
 		$count = 0;
-		$db = $this->getDB( DB_MASTER );
-		$res = $db->select( 'archive', '*',
+		 = $this->getDB( DB_MASTER );
+		$res = ->select( 'archive', '*',
 			array( 'ar_rev_id IS NULL', 'ar_sha1' => '' ), __METHOD__ );
 
 		$updateSize = 0;
-		$db->begin( __METHOD__ );
+		->begin( __METHOD__ );
 		foreach ( $res as $row ) {
 			if ( $this->upgradeLegacyArchiveRow( $row ) ) {
 				++$count;
 			}
 			if ( ++$updateSize >= 100 ) {
 				$updateSize = 0;
-				$db->commit( __METHOD__ );
+				->commit( __METHOD__ );
 				$this->output( "Commited row with ar_timestamp={$row->ar_timestamp}\n" );
 				wfWaitForSlaves();
-				$db->begin( __METHOD__ );
+				->begin( __METHOD__ );
 			}
 		}
-		$db->commit( __METHOD__ );
+		->commit( __METHOD__ );
 		return $count;
 	}
 
@@ -138,7 +138,7 @@ class PopulateRevisionSha1 extends LoggedUpdateMaintenance {
 	 * @return bool
 	 */
 	protected function upgradeRow( $row, $table, $idCol, $prefix ) {
-		$db = $this->getDB( DB_MASTER );
+		 = $this->getDB( DB_MASTER );
 		try {
 			$rev = ( $table === 'archive' )
 				? Revision::newFromArchiveRow( $row )
@@ -153,7 +153,7 @@ class PopulateRevisionSha1 extends LoggedUpdateMaintenance {
 			$this->output( "Text of revision with {$idCol}={$row->$idCol} unavailable!\n" );
 			return false;
 		} else {
-			$db->update( $table,
+			->update( $table,
 				array( "{$prefix}_sha1" => Revision::base36Sha1( $text ) ),
 				array( $idCol => $row->$idCol ),
 				__METHOD__
@@ -167,7 +167,7 @@ class PopulateRevisionSha1 extends LoggedUpdateMaintenance {
 	 * @return bool
 	 */
 	protected function upgradeLegacyArchiveRow( $row ) {
-		$db = $this->getDB( DB_MASTER );
+		 = $this->getDB( DB_MASTER );
 		try {
 			$rev = Revision::newFromArchiveRow( $row );
 		} catch ( MWException $e ) {
@@ -182,7 +182,7 @@ class PopulateRevisionSha1 extends LoggedUpdateMaintenance {
 		} else {
 			# Archive table as no PK, but (NS,title,time) should be near unique.
 			# Any duplicates on those should also have duplicated text anyway.
-			$db->update( 'archive',
+			->update( 'archive',
 				array( 'ar_sha1' => Revision::base36Sha1( $text ) ),
 				array(
 					'ar_namespace' => $row->ar_namespace,

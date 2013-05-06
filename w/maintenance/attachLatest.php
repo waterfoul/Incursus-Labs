@@ -42,8 +42,8 @@ class AttachLatest extends Maintenance {
 
 	public function execute() {
 		$this->output( "Looking for pages with page_latest set to 0...\n" );
-		$dbw = wfGetDB( DB_MASTER );
-		$result = $dbw->select( 'page',
+		w = wfGetDB( DB_MASTER );
+		$result = w->select( 'page',
 			array( 'page_id', 'page_namespace', 'page_title' ),
 			array( 'page_latest' => 0 ),
 			__METHOD__ );
@@ -53,7 +53,7 @@ class AttachLatest extends Maintenance {
 			$pageId = intval( $row->page_id );
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 			$name = $title->getPrefixedText();
-			$latestTime = $dbw->selectField( 'revision',
+			$latestTime = w->selectField( 'revision',
 				'MAX(rev_timestamp)',
 				array( 'rev_page' => $pageId ),
 				__METHOD__ );
@@ -62,7 +62,7 @@ class AttachLatest extends Maintenance {
 				continue;
 			}
 
-			$revision = Revision::loadFromTimestamp( $dbw, $title, $latestTime );
+			$revision = Revision::loadFromTimestamp( w, $title, $latestTime );
 			if ( is_null( $revision ) ) {
 				$this->output( wfWikiID() . " $pageId [[$name]] latest time $latestTime, can't find revision id\n" );
 				continue;
@@ -71,7 +71,7 @@ class AttachLatest extends Maintenance {
 			$this->output( wfWikiID() . " $pageId [[$name]] latest time $latestTime, rev id $id\n" );
 			if ( $this->hasOption( 'fix' ) ) {
 				$page = WikiPage::factory( $title );
-				$page->updateRevisionOn( $dbw, $revision );
+				$page->updateRevisionOn( w, $revision );
 			}
 			$n++;
 		}

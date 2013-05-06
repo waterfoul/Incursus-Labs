@@ -45,64 +45,64 @@ class ViewCountUpdate implements DeferrableUpdate {
 	public function doUpdate() {
 		global $wgHitcounterUpdateFreq;
 
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
-		if ( $wgHitcounterUpdateFreq <= 1 || $dbw->getType() == 'sqlite' ) {
-			$dbw->update( 'page', array( 'page_counter = page_counter + 1' ), array( 'page_id' => $this->id ), __METHOD__ );
+		if ( $wgHitcounterUpdateFreq <= 1 || w->getType() == 'sqlite' ) {
+			w->update( 'page', array( 'page_counter = page_counter + 1' ), array( 'page_id' => $this->id ), __METHOD__ );
 			return;
 		}
 
 		# Not important enough to warrant an error page in case of failure
-		$oldignore = $dbw->ignoreErrors( true );
+		$oldignore = w->ignoreErrors( true );
 
-		$dbw->insert( 'hitcounter', array( 'hc_id' => $this->id ), __METHOD__ );
+		w->insert( 'hitcounter', array( 'hc_id' => $this->id ), __METHOD__ );
 
 		$checkfreq = intval( $wgHitcounterUpdateFreq / 25 + 1 );
-		if ( rand() % $checkfreq == 0 && $dbw->lastErrno() == 0 ) {
+		if ( rand() % $checkfreq == 0 && w->lastErrno() == 0 ) {
 			$this->collect();
 		}
 
-		$dbw->ignoreErrors( $oldignore );
+		w->ignoreErrors( $oldignore );
 	}
 
 	protected function collect() {
 		global $wgHitcounterUpdateFreq;
 
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
-		$rown = $dbw->selectField( 'hitcounter', 'COUNT(*)', array(), __METHOD__ );
+		$rown = w->selectField( 'hitcounter', 'COUNT(*)', array(), __METHOD__ );
 
 		if ( $rown < $wgHitcounterUpdateFreq ) {
 			return;
 		}
 
 		wfProfileIn( __METHOD__ . '-collect' );
-		$old_user_abort = ignore_user_abort( true );
+		$old_wiki_user_abort = ignore_wiki_user_abort( true );
 
-		$dbw->lockTables( array(), array( 'hitcounter' ), __METHOD__, false );
+		w->lockTables( array(), array( 'hitcounter' ), __METHOD__, false );
 
-		$dbType = $dbw->getType();
-		$tabletype = $dbType == 'mysql' ? "ENGINE=HEAP " : '';
-		$hitcounterTable = $dbw->tableName( 'hitcounter' );
-		$acchitsTable = $dbw->tableName( 'acchits' );
-		$pageTable = $dbw->tableName( 'page' );
+		Type = w->getType();
+		$tabletype = Type == 'mysql' ? "ENGINE=HEAP " : '';
+		$hitcounterTable = w->tableName( 'hitcounter' );
+		$acchitsTable = w->tableName( 'acchits' );
+		$pageTable = w->tableName( 'page' );
 
-		$dbw->query( "CREATE TEMPORARY TABLE $acchitsTable $tabletype AS " .
+		w->query( "CREATE TEMPORARY TABLE $acchitsTable $tabletype AS " .
 			"SELECT hc_id,COUNT(*) AS hc_n FROM $hitcounterTable " .
 			'GROUP BY hc_id', __METHOD__ );
-		$dbw->delete( 'hitcounter', '*', __METHOD__ );
-		$dbw->unlockTables( __METHOD__ );
+		w->delete( 'hitcounter', '*', __METHOD__ );
+		w->unlockTables( __METHOD__ );
 
-		if ( $dbType == 'mysql' ) {
-			$dbw->query( "UPDATE $pageTable,$acchitsTable SET page_counter=page_counter + hc_n " .
+		if ( Type == 'mysql' ) {
+			w->query( "UPDATE $pageTable,$acchitsTable SET page_counter=page_counter + hc_n " .
 				'WHERE page_id = hc_id', __METHOD__ );
 		} else {
-			$dbw->query( "UPDATE $pageTable SET page_counter=page_counter + hc_n " .
+			w->query( "UPDATE $pageTable SET page_counter=page_counter + hc_n " .
 				"FROM $acchitsTable WHERE page_id = hc_id", __METHOD__ );
 		}
-		$dbw->query( "DROP TABLE $acchitsTable", __METHOD__ );
+		w->query( "DROP TABLE $acchitsTable", __METHOD__ );
 
-		ignore_user_abort( $old_user_abort );
+		ignore_wiki_user_abort( $old_wiki_user_abort );
 		wfProfileOut( __METHOD__ . '-collect' );
 	}
 }

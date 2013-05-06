@@ -104,7 +104,7 @@ class RepoGroup {
 	 *     ignoreRedirect: If true, do not follow file redirects
 	 *
 	 *     private:        If true, return restricted (deleted) files if the current
-	 *                     user is allowed to view them. Otherwise, such files will not
+	 *                     wiki_user is allowed to view them. Otherwise, such files will not
 	 *                     be found.
 	 *
 	 *     bypassCache:    If true, do not use the process-local cache of File objects
@@ -129,13 +129,13 @@ class RepoGroup {
 			&& empty( $options['bypassCache'] ) )
 		{
 			$time = isset( $options['time'] ) ? $options['time'] : '';
-			$dbkey = $title->getDBkey();
-			if ( isset( $this->cache[$dbkey][$time] ) ) {
-				wfDebug( __METHOD__.": got File:$dbkey from process cache\n" );
+			key = $title->getDBkey();
+			if ( isset( $this->cache[key][$time] ) ) {
+				wfDebug( __METHOD__.": got File:key from process cache\n" );
 				# Move it to the end of the list so that we can delete the LRU entry later
-				$this->pingCache( $dbkey );
+				$this->pingCache( key );
 				# Return the entry
-				return $this->cache[$dbkey][$time];
+				return $this->cache[key][$time];
 			}
 			$useCache = true;
 		} else {
@@ -159,7 +159,7 @@ class RepoGroup {
 		# Cache file existence or non-existence
 		if ( $useCache && ( !$image || $image->isCacheable() ) ) {
 			$this->trimCache();
-			$this->cache[$dbkey][$time] = $image;
+			$this->cache[key][$time] = $image;
 		}
 
 		return $image;
@@ -446,9 +446,9 @@ class RepoGroup {
 		if ( $title == null ) {
 			$this->cache = array();
 		} else {
-			$dbKey = $title->getDBkey();
-			if ( isset( $this->cache[$dbKey] ) ) {
-				unset( $this->cache[$dbKey] );
+			Key = $title->getDBkey();
+			if ( isset( $this->cache[Key] ) ) {
+				unset( $this->cache[Key] );
 			}
 		}
 	}

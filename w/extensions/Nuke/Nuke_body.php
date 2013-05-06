@@ -7,15 +7,15 @@ class SpecialNuke extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		if ( !$this->userCanExecute( $this->getUser() ) ) {
+		if ( !$this->wiki_userCanExecute( $this->getwiki_user() ) ) {
 			$this->displayRestrictionError();
 		}
 		$this->setHeaders();
 		$this->outputHeader();
 
-		if ( $this->getUser()->isBlocked() ) {
-			$block = $this->getUser()->getBlock();
-			throw new UserBlockedError( $block );
+		if ( $this->getwiki_user()->isBlocked() ) {
+			$block = $this->getwiki_user()->getBlock();
+			throw new wiki_userBlockedError( $block );
 		}
 
 		if ( method_exists( $this, 'checkReadOnly' ) ) {
@@ -29,8 +29,8 @@ class SpecialNuke extends SpecialPage {
 
 		// Normalise name
 		if ( $target !== '' ) {
-			$user = User::newFromName( $target );
-			if ( $user ) $target = $user->getName();
+			$wiki_user = wiki_user::newFromName( $target );
+			if ( $wiki_user ) $target = $wiki_user->getName();
 		}
 
 		$msg = $target === '' ?
@@ -44,7 +44,7 @@ class SpecialNuke extends SpecialPage {
 		$namespace = ctype_digit( $namespace ) ? (int)$namespace : null;
 
 		if ( $req->wasPosted()
-			&& $this->getUser()->matchEditToken( $req->getVal( 'wpEditToken' ) ) ) {
+			&& $this->getwiki_user()->matchEditToken( $req->getVal( 'wpEditToken' ) ) ) {
 
 			if ( $req->getVal( 'action' ) == 'delete' ) {
 				$pages = $req->getArray( 'pages' );
@@ -66,11 +66,11 @@ class SpecialNuke extends SpecialPage {
 	}
 
 	/**
-	 * Prompt for a username or IP address.
+	 * Prompt for a wiki_username or IP address.
 	 *
-	 * @param $userName string
+	 * @param $wiki_userName string
 	 */
-	protected function promptForm( $userName = '' ) {
+	protected function promptForm( $wiki_userName = '' ) {
 		$out = $this->getOutput();
 
 		$out->addWikiMsg( 'nuke-tools' );
@@ -84,8 +84,8 @@ class SpecialNuke extends SpecialPage {
 				)
 			)
 			. '<table><tr>'
-				. '<td>' . Xml::label( $this->msg( 'nuke-userorip' )->text(), 'nuke-target' ) . '</td>'
-				. '<td>' . Xml::input( 'target', 40, $userName, array( 'id' => 'nuke-target' ) ) . '</td>'
+				. '<td>' . Xml::label( $this->msg( 'nuke-wiki_userorip' )->text(), 'nuke-target' ) . '</td>'
+				. '<td>' . Xml::input( 'target', 40, $wiki_userName, array( 'id' => 'nuke-target' ) ) . '</td>'
 			. '</tr><tr>'
 				. '<td>' . Xml::label( $this->msg( 'nuke-pattern' )->text(), 'nuke-pattern' ) . '</td>'
 				. '<td>' . Xml::input( 'pattern', 40, '', array( 'id' => 'nuke-pattern' ) ) . '</td>'
@@ -97,9 +97,9 @@ class SpecialNuke extends SpecialPage {
 				. '<td>' . Xml::input( 'limit', 7, '500', array( 'id' => 'nuke-limit' ) ) . '</td>'
 			. '</tr><tr>'
 				. '<td></td>'
-				. '<td>' . Xml::submitButton( $this->msg( 'nuke-submit-user' )->text() ) . '</td>'
+				. '<td>' . Xml::submitButton( $this->msg( 'nuke-submit-wiki_user' )->text() ) . '</td>'
 			. '</tr></table>'
-			. Html::hidden( 'wpEditToken', $this->getUser()->getEditToken() )
+			. Html::hidden( 'wpEditToken', $this->getwiki_user()->getEditToken() )
 			. Xml::closeElement( 'form' )
 		);
 	}
@@ -107,31 +107,31 @@ class SpecialNuke extends SpecialPage {
 	/**
 	 * Display list of pages to delete.
 	 *
-	 * @param string $username
+	 * @param string $wiki_username
 	 * @param string $reason
 	 * @param integer $limit
 	 * @param integer|null $namespace
 	 */
-	protected function listForm( $username, $reason, $limit, $namespace = null ) {
+	protected function listForm( $wiki_username, $reason, $limit, $namespace = null ) {
 		$out = $this->getOutput();
 
-		$pages = $this->getNewPages( $username, $limit, $namespace );
+		$pages = $this->getNewPages( $wiki_username, $limit, $namespace );
 
 		if ( count( $pages ) == 0 ) {
-			if ( $username === '' ) {
+			if ( $wiki_username === '' ) {
 				$out->addWikiMsg( 'nuke-nopages-global' );
 			} else {
-				$out->addWikiMsg( 'nuke-nopages', $username );
+				$out->addWikiMsg( 'nuke-nopages', $wiki_username );
 			}
 
-			$this->promptForm( $username );
+			$this->promptForm( $wiki_username );
 			return;
 		}
 
-		if ( $username === '' ) {
+		if ( $wiki_username === '' ) {
 			$out->addWikiMsg( 'nuke-list-multiple' );
 		} else {
-			$out->addWikiMsg( 'nuke-list', $username );
+			$out->addWikiMsg( 'nuke-list', $wiki_username );
 		}
 
 		$nuke = $this->getTitle();
@@ -144,7 +144,7 @@ class SpecialNuke extends SpecialPage {
 				'method' => 'post',
 				'name' => 'nukelist' )
 			) .
-			Html::hidden( 'wpEditToken', $this->getUser()->getEditToken() ) .
+			Html::hidden( 'wpEditToken', $this->getwiki_user()->getEditToken() ) .
 			Xml::tags( 'p',
 				null,
 				Xml::inputLabel(
@@ -180,12 +180,12 @@ class SpecialNuke extends SpecialPage {
 			/**
 			 * @var $title Title
 			 */
-			list( $title, $userName ) = $info;
+			list( $title, $wiki_userName ) = $info;
 
 			$image = $title->getNamespace() == NS_IMAGE ? wfLocalFile( $title ) : false;
 			$thumb = $image && $image->exists() ? $image->transform( array( 'width' => 120, 'height' => 120 ), 0 ) : false;
 
-			$userNameText = $userName ? $this->msg( 'nuke-editby', $userName )->parse() . $commaSeparator : '';
+			$wiki_userNameText = $wiki_userName ? $this->msg( 'nuke-editby', $wiki_userName )->parse() . $commaSeparator : '';
 			$changesLink = Linker::linkKnown(
 				$title,
 				$this->msg( 'nuke-viewchanges' )->text(),
@@ -200,7 +200,7 @@ class SpecialNuke extends SpecialPage {
 				) . '&#160;' .
 				( $thumb ? $thumb->toHtml( array( 'desc-link' => true ) ) : '' ) .
 				Linker::linkKnown( $title ) . $wordSeparator .
-				$this->msg( 'parentheses' )->rawParams( $userNameText . $changesLink )->escaped() .
+				$this->msg( 'parentheses' )->rawParams( $wiki_userNameText . $changesLink )->escaped() .
 				"</li>\n" );
 		}
 
@@ -212,16 +212,16 @@ class SpecialNuke extends SpecialPage {
 	}
 
 	/**
-	 * Gets a list of new pages by the specified user or everyone when none is specified.
+	 * Gets a list of new pages by the specified wiki_user or everyone when none is specified.
 	 *
-	 * @param string $username
+	 * @param string $wiki_username
 	 * @param integer $limit
 	 * @param integer|null $namespace
 	 *
 	 * @return array
 	 */
-	protected function getNewPages( $username, $limit, $namespace = null ) {
-		$dbr = wfGetDB( DB_SLAVE );
+	protected function getNewPages( $wiki_username, $limit, $namespace = null ) {
+		r = wfGetDB( DB_SLAVE );
 
 		$what = array(
 			'rc_namespace',
@@ -231,10 +231,10 @@ class SpecialNuke extends SpecialPage {
 
 		$where = array( "(rc_new = 1) OR (rc_log_type = 'upload' AND rc_log_action = 'upload')" );
 
-		if ( $username === '' ) {
-			$what[] = 'rc_user_text';
+		if ( $wiki_username === '' ) {
+			$what[] = 'rc_wiki_user_text';
 		} else {
-			$where['rc_user_text'] = $username;
+			$where['rc_wiki_user_text'] = $wiki_username;
 		}
 
 		if ( $namespace !== null ) {
@@ -243,11 +243,11 @@ class SpecialNuke extends SpecialPage {
 
 		$pattern = $this->getRequest()->getText( 'pattern' );
 		if ( !is_null( $pattern ) && trim( $pattern ) !== '' ) {
-			$where[] = 'rc_title LIKE ' . $dbr->addQuotes( $pattern );
+			$where[] = 'rc_title LIKE ' . r->addQuotes( $pattern );
 		}
 		$group = implode( ', ', $what );
 
-		$result = $dbr->select( 'recentchanges',
+		$result = r->select( 'recentchanges',
 			$what,
 			$where,
 			__METHOD__,
@@ -263,7 +263,7 @@ class SpecialNuke extends SpecialPage {
 		foreach ( $result as $row ) {
 			$pages[] = array(
 				Title::makeTitle( $row->rc_namespace, $row->rc_title ),
-				$username === '' ? $row->rc_user_text : false
+				$wiki_username === '' ? $row->rc_wiki_user_text : false
 			);
 		}
 
@@ -284,7 +284,7 @@ class SpecialNuke extends SpecialPage {
 			$title = Title::newFromURL( $page );
 			$file = $title->getNamespace() == NS_FILE ? wfLocalFile( $title ) : false;
 
-			$permission_errors = $title->getUserPermissionsErrors( 'delete', $this->getUser() );
+			$permission_errors = $title->getwiki_userPermissionsErrors( 'delete', $this->getwiki_user() );
 
 			if ( $permission_errors !== array() ) {
 				throw new PermissionsError( 'delete', $permission_errors );

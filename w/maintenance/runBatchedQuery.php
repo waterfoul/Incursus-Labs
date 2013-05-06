@@ -43,12 +43,12 @@ class BatchedQueryRunner extends Maintenance {
 
 		$query = $this->getArg();
 		$n = 1;
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 		do {
 			$this->output( "Batch $n: " );
 			$n++;
-			$dbw->query( $query, __METHOD__ );
-			$affected = $dbw->affectedRows();
+			w->query( $query, __METHOD__ );
+			$affected = w->affectedRows();
 			$this->output( "$affected rows\n" );
 			wfWaitForSlaves();
 		} while ( $affected > 0 );

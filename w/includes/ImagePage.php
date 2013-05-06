@@ -106,7 +106,7 @@ class ImagePage extends Article {
 		$out = $this->getContext()->getOutput();
 		$request = $this->getContext()->getRequest();
 		$diff = $request->getVal( 'diff' );
-		$diffOnly = $request->getBool( 'diffonly', $this->getContext()->getUser()->getOption( 'diffonly' ) );
+		$diffOnly = $request->getBool( 'diffonly', $this->getContext()->getwiki_user()->getOption( 'diffonly' ) );
 
 		if ( $this->getTitle()->getNamespace() != NS_FILE || ( isset( $diff ) && $diffOnly ) ) {
 			parent::view();
@@ -128,7 +128,7 @@ class ImagePage extends Article {
 				$out->setPageTitle( $this->getTitle()->getPrefixedText() );
 				$out->addHTML( $this->viewRedirect( Title::makeTitle( NS_FILE, $this->mPage->getFile()->getName() ),
 					/* $appendSubtitle */ true, /* $forceKnown */ true ) );
-				$this->mPage->doViewUpdates( $this->getContext()->getUser() );
+				$this->mPage->doViewUpdates( $this->getContext()->getwiki_user() );
 				return;
 			}
 		}
@@ -151,7 +151,7 @@ class ImagePage extends Article {
 
 		# No need to display noarticletext, we use our own message, output in openShowImage()
 		if ( $this->mPage->getID() ) {
-			# NS_FILE is in the user language, but this section (the actual wikitext)
+			# NS_FILE is in the wiki_user language, but this section (the actual wikitext)
 			# should be in page content language
 			$pageLang = $this->getTitle()->getPageViewLanguage();
 			$out->addHTML( Xml::openElement( 'div', array( 'id' => 'mw-imagepage-content',
@@ -163,7 +163,7 @@ class ImagePage extends Article {
 			# Just need to set the right headers
 			$out->setArticleFlag( true );
 			$out->setPageTitle( $this->getTitle()->getPrefixedText() );
-			$this->mPage->doViewUpdates( $this->getContext()->getUser() );
+			$this->mPage->doViewUpdates( $this->getContext()->getwiki_user() );
 		}
 
 		# Show shared description, if needed
@@ -291,16 +291,16 @@ class ImagePage extends Article {
 
 		$this->loadFile();
 		$out = $this->getContext()->getOutput();
-		$user = $this->getContext()->getUser();
+		$wiki_user = $this->getContext()->getwiki_user();
 		$lang = $this->getContext()->getLanguage();
 		$dirmark = $lang->getDirMarkEntity();
 		$request = $this->getContext()->getRequest();
 
-		$sizeSel = intval( $user->getOption( 'imagesize' ) );
+		$sizeSel = intval( $wiki_user->getOption( 'imagesize' ) );
 		if ( !isset( $wgImageLimits[$sizeSel] ) ) {
-			$sizeSel = User::getDefaultOption( 'imagesize' );
+			$sizeSel = wiki_user::getDefaultOption( 'imagesize' );
 
-			// The user offset might still be incorrect, specially if
+			// The wiki_user offset might still be incorrect, specially if
 			// $wgImageLimits got changed (see bug #8858).
 			if ( !isset( $wgImageLimits[$sizeSel] ) ) {
 				// Default to the first offset in $wgImageLimits
@@ -354,11 +354,11 @@ class ImagePage extends Article {
 						$thumbSizes = $wgImageLimits;
 					} else {
 						# Creating thumb links triggers thumbnail generation.
-						# Just generate the thumb for the current users prefs.
-						$thumbOption = $user->getOption( 'thumbsize' );
+						# Just generate the thumb for the current wiki_users prefs.
+						$thumbOption = $wiki_user->getOption( 'thumbsize' );
 						$thumbSizes = array( isset( $wgImageLimits[$thumbOption] )
 							? $wgImageLimits[$thumbOption]
-							: $wgImageLimits[User::getDefaultOption( 'thumbsize' )] );
+							: $wgImageLimits[wiki_user::getDefaultOption( 'thumbsize' )] );
 					}
 					# Generate thumbnails or thumbnail links as needed...
 					$otherSizes = array();
@@ -553,8 +553,8 @@ EOT
 				);
 			}
 
-			if ( $wgEnableUploads && $user->isAllowed( 'upload' ) ) {
-				// Only show an upload link if the user can upload
+			if ( $wgEnableUploads && $wiki_user->isAllowed( 'upload' ) ) {
+				// Only show an upload link if the wiki_user can upload
 				$uploadTitle = SpecialPage::getTitleFor( 'Upload' );
 				$nofile = array(
 					'filepage-nofile-link',
@@ -660,8 +660,8 @@ EOT
 		$out->addHTML( "<ul>\n" );
 
 		# "Upload a new version of this file" link
-		$canUpload = $this->getTitle()->userCan( 'upload', $this->getContext()->getUser() );
-		if ( $canUpload && UploadBase::userCanReUpload( $this->getContext()->getUser(), $this->mPage->getFile()->name ) ) {
+		$canUpload = $this->getTitle()->wiki_userCan( 'upload', $this->getContext()->getwiki_user() );
+		if ( $canUpload && UploadBase::wiki_userCanReUpload( $this->getContext()->getwiki_user(), $this->mPage->getFile()->name ) ) {
 			$ulink = Linker::makeExternalLink( $this->getUploadUrl(), wfMessage( 'uploadnewversion-linktext' )->text() );
 			$out->addHTML( "<li id=\"mw-imagepage-reupload-link\"><div class=\"plainlinks\">{$ulink}</div></li>\n" );
 		} else {
@@ -718,9 +718,9 @@ EOT
 	 * @return ResultWrapper
 	 */
 	protected function queryImageLinks( $target, $limit ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 
-		return $dbr->select(
+		return r->select(
 			array( 'imagelinks', 'page' ),
 			array( 'page_namespace', 'page_title', 'page_is_redirect', 'il_to' ),
 			array( 'il_to' => $target, 'il_from = page_id' ),
@@ -978,11 +978,11 @@ class ImageHistoryList extends ContextSource {
 			. $navLinks . "\n"
 			. Xml::openElement( 'table', array( 'class' => 'wikitable filehistory' ) ) . "\n"
 			. '<tr><td></td>'
-			. ( $this->current->isLocal() && ( $this->getUser()->isAllowedAny( 'delete', 'deletedhistory' ) ) ? '<td></td>' : '' )
+			. ( $this->current->isLocal() && ( $this->getwiki_user()->isAllowedAny( 'delete', 'deletedhistory' ) ) ? '<td></td>' : '' )
 			. '<th>' . $this->msg( 'filehist-datetime' )->escaped() . '</th>'
 			. ( $this->showThumb ? '<th>' . $this->msg( 'filehist-thumb' )->escaped() . '</th>' : '' )
 			. '<th>' . $this->msg( 'filehist-dimensions' )->escaped() . '</th>'
-			. '<th>' . $this->msg( 'filehist-user' )->escaped() . '</th>'
+			. '<th>' . $this->msg( 'filehist-wiki_user' )->escaped() . '</th>'
 			. '<th>' . $this->msg( 'filehist-comment' )->escaped() . '</th>'
 			. "</tr>\n";
 	}
@@ -1003,22 +1003,22 @@ class ImageHistoryList extends ContextSource {
 	public function imageHistoryLine( $iscur, $file ) {
 		global $wgContLang;
 
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		$lang = $this->getLanguage();
 		$timestamp = wfTimestamp( TS_MW, $file->getTimestamp() );
 		$img = $iscur ? $file->getName() : $file->getArchiveName();
-		$userId = $file->getUser( 'id' );
-		$userText = $file->getUser( 'text' );
-		$description = $file->getDescription( File::FOR_THIS_USER, $user );
+		$wiki_userId = $file->getwiki_user( 'id' );
+		$wiki_userText = $file->getwiki_user( 'text' );
+		$description = $file->getDescription( File::FOR_THIS_USER, $wiki_user );
 
 		$local = $this->current->isLocal();
 		$row = $selected = '';
 
 		// Deletion link
-		if ( $local && ( $user->isAllowedAny( 'delete', 'deletedhistory' ) ) ) {
+		if ( $local && ( $wiki_user->isAllowedAny( 'delete', 'deletedhistory' ) ) ) {
 			$row .= '<td>';
 			# Link to remove from history
-			if ( $user->isAllowed( 'delete' ) ) {
+			if ( $wiki_user->isAllowed( 'delete' ) ) {
 				$q = array( 'action' => 'delete' );
 				if ( !$iscur ) {
 					$q['oldimage'] = $img;
@@ -1030,13 +1030,13 @@ class ImageHistoryList extends ContextSource {
 				);
 			}
 			# Link to hide content. Don't show useless link to people who cannot hide revisions.
-			$canHide = $user->isAllowed( 'deleterevision' );
-			if ( $canHide || ( $user->isAllowed( 'deletedhistory' ) && $file->getVisibility() ) ) {
-				if ( $user->isAllowed( 'delete' ) ) {
+			$canHide = $wiki_user->isAllowed( 'deleterevision' );
+			if ( $canHide || ( $wiki_user->isAllowed( 'deletedhistory' ) && $file->getVisibility() ) ) {
+				if ( $wiki_user->isAllowed( 'delete' ) ) {
 					$row .= '<br />';
 				}
-				// If file is top revision or locked from this user, don't link
-				if ( $iscur || !$file->userCan( File::DELETED_RESTRICTED, $user ) ) {
+				// If file is top revision or locked from this wiki_user, don't link
+				if ( $iscur || !$file->wiki_userCan( File::DELETED_RESTRICTED, $wiki_user ) ) {
 					$del = Linker::revDeleteLinkDisabled( $canHide );
 				} else {
 					list( $ts, ) = explode( '!', $img, 2 );
@@ -1057,8 +1057,8 @@ class ImageHistoryList extends ContextSource {
 		$row .= '<td>';
 		if ( $iscur ) {
 			$row .= $this->msg( 'filehist-current' )->escaped();
-		} elseif ( $local && $this->title->quickUserCan( 'edit', $user )
-			&& $this->title->quickUserCan( 'upload', $user )
+		} elseif ( $local && $this->title->quickwiki_userCan( 'edit', $wiki_user )
+			&& $this->title->quickwiki_userCan( 'upload', $wiki_user )
 		) {
 			if ( $file->isDeleted( File::DELETED_FILE ) ) {
 				$row .= $this->msg( 'filehist-revert' )->escaped();
@@ -1070,7 +1070,7 @@ class ImageHistoryList extends ContextSource {
 					array(
 						'action' => 'revert',
 						'oldimage' => $img,
-						'wpEditToken' => $user->getEditToken( $img )
+						'wpEditToken' => $wiki_user->getEditToken( $img )
 					)
 				);
 			}
@@ -1082,9 +1082,9 @@ class ImageHistoryList extends ContextSource {
 			$selected = "class='filehistory-selected'";
 		}
 		$row .= "<td $selected style='white-space: nowrap;'>";
-		if ( !$file->userCan( File::DELETED_FILE, $user ) ) {
+		if ( !$file->wiki_userCan( File::DELETED_FILE, $wiki_user ) ) {
 			# Don't link to unviewable files
-			$row .= '<span class="history-deleted">' . $lang->userTimeAndDate( $timestamp, $user ) . '</span>';
+			$row .= '<span class="history-deleted">' . $lang->wiki_userTimeAndDate( $timestamp, $wiki_user ) . '</span>';
 		} elseif ( $file->isDeleted( File::DELETED_FILE ) ) {
 			if ( $local ) {
 				$this->preventClickjacking();
@@ -1092,21 +1092,21 @@ class ImageHistoryList extends ContextSource {
 				# Make a link to review the image
 				$url = Linker::linkKnown(
 					$revdel,
-					$lang->userTimeAndDate( $timestamp, $user ),
+					$lang->wiki_userTimeAndDate( $timestamp, $wiki_user ),
 					array(),
 					array(
 						'target' => $this->title->getPrefixedText(),
 						'file' => $img,
-						'token' => $user->getEditToken( $img )
+						'token' => $wiki_user->getEditToken( $img )
 					)
 				);
 			} else {
-				$url = $lang->userTimeAndDate( $timestamp, $user );
+				$url = $lang->wiki_userTimeAndDate( $timestamp, $wiki_user );
 			}
 			$row .= '<span class="history-deleted">' . $url . '</span>';
 		} else {
 			$url = $iscur ? $this->current->getUrl() : $this->current->getArchiveUrl( $img );
-			$row .= Xml::element( 'a', array( 'href' => $url ), $lang->userTimeAndDate( $timestamp, $user ) );
+			$row .= Xml::element( 'a', array( 'href' => $url ), $lang->wiki_userTimeAndDate( $timestamp, $wiki_user ) );
 		}
 		$row .= "</td>";
 
@@ -1124,20 +1124,20 @@ class ImageHistoryList extends ContextSource {
 		$row .= '</span>';
 		$row .= '</td>';
 
-		// Uploading user
+		// Uploading wiki_user
 		$row .= '<td>';
-		// Hide deleted usernames
+		// Hide deleted wiki_usernames
 		if ( $file->isDeleted( File::DELETED_USER ) ) {
-			$row .= '<span class="history-deleted">' . $this->msg( 'rev-deleted-user' )->escaped() . '</span>';
+			$row .= '<span class="history-deleted">' . $this->msg( 'rev-deleted-wiki_user' )->escaped() . '</span>';
 		} else {
 			if ( $local ) {
-				$row .= Linker::userLink( $userId, $userText );
+				$row .= Linker::wiki_userLink( $wiki_userId, $wiki_userText );
 				$row .= $this->msg( 'word-separator' )->plain();
 				$row .= '<span style="white-space: nowrap;">';
-				$row .= Linker::userToolLinks( $userId, $userText );
+				$row .= Linker::wiki_userToolLinks( $wiki_userId, $wiki_userText );
 				$row .= '</span>';
 			} else {
-				$row .= htmlspecialchars( $userText );
+				$row .= htmlspecialchars( $wiki_userText );
 			}
 		}
 		$row .= '</td>';
@@ -1162,8 +1162,8 @@ class ImageHistoryList extends ContextSource {
 	 */
 	protected function getThumbForLine( $file ) {
 		$lang = $this->getLanguage();
-		$user = $this->getUser();
-		if ( $file->allowInlineDisplay() && $file->userCan( File::DELETED_FILE,$user )
+		$wiki_user = $this->getwiki_user();
+		if ( $file->allowInlineDisplay() && $file->wiki_userCan( File::DELETED_FILE,$wiki_user )
 			&& !$file->isDeleted( File::DELETED_FILE ) )
 		{
 			$params = array(
@@ -1175,9 +1175,9 @@ class ImageHistoryList extends ContextSource {
 			$thumbnail = $file->transform( $params );
 			$options = array(
 				'alt' => $this->msg( 'filehist-thumbtext',
-					$lang->userTimeAndDate( $timestamp, $user ),
-					$lang->userDate( $timestamp, $user ),
-					$lang->userTime( $timestamp, $user ) )->text(),
+					$lang->wiki_userTimeAndDate( $timestamp, $wiki_user ),
+					$lang->wiki_userDate( $timestamp, $wiki_user ),
+					$lang->wiki_userTime( $timestamp, $wiki_user ) )->text(),
 				'file-link' => true,
 			);
 

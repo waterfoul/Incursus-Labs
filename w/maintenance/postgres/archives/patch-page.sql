@@ -15,7 +15,7 @@ CREATE TABLE page (
 CREATE UNIQUE INDEX page_unique_name ON page (page_namespace, page_title);
 CREATE INDEX page_main_title         ON page (page_title) WHERE page_namespace = 0;
 CREATE INDEX page_talk_title         ON page (page_title) WHERE page_namespace = 1;
-CREATE INDEX page_user_title         ON page (page_title) WHERE page_namespace = 2;
+CREATE INDEX page_wiki_user_title         ON page (page_title) WHERE page_namespace = 2;
 CREATE INDEX page_utalk_title        ON page (page_title) WHERE page_namespace = 3;
 CREATE INDEX page_project_title      ON page (page_title) WHERE page_namespace = 4;
 CREATE INDEX page_mediawiki_title    ON page (page_title) WHERE page_namespace = 8;

@@ -140,7 +140,7 @@ class SeleniumServerManager {
 	private function startServerOnUnix() {
 
 		$output = array();
-		$user = $_ENV['USER'];
+		$wiki_user = $_ENV['USER'];
 		// @todo FIXME: This should be a little more generalized :)
 		if (PHP_OS == 'Darwin') {
 			// Mac OS X's ps barfs on the 'w' param, but doesn't need it.
@@ -149,7 +149,7 @@ class SeleniumServerManager {
 			// Good on Linux
 			$ps = "ps -U %s w";
 		}
-		$psCommand = sprintf($ps, escapeshellarg($user));
+		$psCommand = sprintf($ps, escapeshellarg($wiki_user));
 		exec($psCommand . " | grep -i selenium-server", $output);
 
 		// Start server. If there is already a server running,

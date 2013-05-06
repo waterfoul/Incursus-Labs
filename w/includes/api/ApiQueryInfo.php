@@ -109,73 +109,73 @@ class ApiQueryInfo extends ApiQueryBase {
 	}
 
 	public static function getEditToken( $pageid, $title ) {
-		// We could check for $title->userCan('edit') here,
+		// We could check for $title->wiki_userCan('edit') here,
 		// but that's too expensive for this purpose
 		// and would break caching
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'edit' ) ) {
+		global $wgwiki_user;
+		if ( !$wgwiki_user->isAllowed( 'edit' ) ) {
 			return false;
 		}
 
 		// The token is always the same, let's exploit that
 		if ( !isset( ApiQueryInfo::$cachedTokens[ 'edit' ] ) ) {
-			ApiQueryInfo::$cachedTokens[ 'edit' ] = $wgUser->getEditToken();
+			ApiQueryInfo::$cachedTokens[ 'edit' ] = $wgwiki_user->getEditToken();
 		}
 
 		return ApiQueryInfo::$cachedTokens[ 'edit' ];
 	}
 
 	public static function getDeleteToken( $pageid, $title ) {
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'delete' ) ) {
+		global $wgwiki_user;
+		if ( !$wgwiki_user->isAllowed( 'delete' ) ) {
 			return false;
 		}
 
 		// The token is always the same, let's exploit that
 		if ( !isset( ApiQueryInfo::$cachedTokens[ 'delete' ] ) ) {
-			ApiQueryInfo::$cachedTokens[ 'delete' ] = $wgUser->getEditToken();
+			ApiQueryInfo::$cachedTokens[ 'delete' ] = $wgwiki_user->getEditToken();
 		}
 
 		return ApiQueryInfo::$cachedTokens[ 'delete' ];
 	}
 
 	public static function getProtectToken( $pageid, $title ) {
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'protect' ) ) {
+		global $wgwiki_user;
+		if ( !$wgwiki_user->isAllowed( 'protect' ) ) {
 			return false;
 		}
 
 		// The token is always the same, let's exploit that
 		if ( !isset( ApiQueryInfo::$cachedTokens[ 'protect' ] ) ) {
-			ApiQueryInfo::$cachedTokens[ 'protect' ] = $wgUser->getEditToken();
+			ApiQueryInfo::$cachedTokens[ 'protect' ] = $wgwiki_user->getEditToken();
 		}
 
 		return ApiQueryInfo::$cachedTokens[ 'protect' ];
 	}
 
 	public static function getMoveToken( $pageid, $title ) {
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'move' ) ) {
+		global $wgwiki_user;
+		if ( !$wgwiki_user->isAllowed( 'move' ) ) {
 			return false;
 		}
 
 		// The token is always the same, let's exploit that
 		if ( !isset( ApiQueryInfo::$cachedTokens[ 'move' ] ) ) {
-			ApiQueryInfo::$cachedTokens[ 'move' ] = $wgUser->getEditToken();
+			ApiQueryInfo::$cachedTokens[ 'move' ] = $wgwiki_user->getEditToken();
 		}
 
 		return ApiQueryInfo::$cachedTokens[ 'move' ];
 	}
 
 	public static function getBlockToken( $pageid, $title ) {
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'block' ) ) {
+		global $wgwiki_user;
+		if ( !$wgwiki_user->isAllowed( 'block' ) ) {
 			return false;
 		}
 
 		// The token is always the same, let's exploit that
 		if ( !isset( ApiQueryInfo::$cachedTokens[ 'block' ] ) ) {
-			ApiQueryInfo::$cachedTokens[ 'block' ] = $wgUser->getEditToken();
+			ApiQueryInfo::$cachedTokens[ 'block' ] = $wgwiki_user->getEditToken();
 		}
 
 		return ApiQueryInfo::$cachedTokens[ 'block' ];
@@ -187,56 +187,56 @@ class ApiQueryInfo extends ApiQueryBase {
 	}
 
 	public static function getEmailToken( $pageid, $title ) {
-		global $wgUser;
-		if ( !$wgUser->canSendEmail() || $wgUser->isBlockedFromEmailUser() ) {
+		global $wgwiki_user;
+		if ( !$wgwiki_user->canSendEmail() || $wgwiki_user->isBlockedFromEmailwiki_user() ) {
 			return false;
 		}
 
 		// The token is always the same, let's exploit that
 		if ( !isset( ApiQueryInfo::$cachedTokens[ 'email' ] ) ) {
-			ApiQueryInfo::$cachedTokens[ 'email' ] = $wgUser->getEditToken();
+			ApiQueryInfo::$cachedTokens[ 'email' ] = $wgwiki_user->getEditToken();
 		}
 
 		return ApiQueryInfo::$cachedTokens[ 'email' ];
 	}
 
 	public static function getImportToken( $pageid, $title ) {
-		global $wgUser;
-		if ( !$wgUser->isAllowedAny( 'import', 'importupload' ) ) {
+		global $wgwiki_user;
+		if ( !$wgwiki_user->isAllowedAny( 'import', 'importupload' ) ) {
 			return false;
 		}
 
 		// The token is always the same, let's exploit that
 		if ( !isset( ApiQueryInfo::$cachedTokens[ 'import' ] ) ) {
-			ApiQueryInfo::$cachedTokens[ 'import' ] = $wgUser->getEditToken();
+			ApiQueryInfo::$cachedTokens[ 'import' ] = $wgwiki_user->getEditToken();
 		}
 
 		return ApiQueryInfo::$cachedTokens[ 'import' ];
 	}
 
 	public static function getWatchToken( $pageid, $title ) {
-		global $wgUser;
-		if ( !$wgUser->isLoggedIn() ) {
+		global $wgwiki_user;
+		if ( !$wgwiki_user->isLoggedIn() ) {
 			return false;
 		}
 
 		// The token is always the same, let's exploit that
 		if ( !isset( ApiQueryInfo::$cachedTokens[ 'watch' ] ) ) {
-			ApiQueryInfo::$cachedTokens[ 'watch' ] = $wgUser->getEditToken( 'watch' );
+			ApiQueryInfo::$cachedTokens[ 'watch' ] = $wgwiki_user->getEditToken( 'watch' );
 		}
 
 		return ApiQueryInfo::$cachedTokens[ 'watch' ];
 	}
 
 	public static function getOptionsToken( $pageid, $title ) {
-		global $wgUser;
-		if ( !$wgUser->isLoggedIn() ) {
+		global $wgwiki_user;
+		if ( !$wgwiki_user->isLoggedIn() ) {
 			return false;
 		}
 
 		// The token is always the same, let's exploit that
 		if ( !isset( ApiQueryInfo::$cachedTokens[ 'options' ] ) ) {
-			ApiQueryInfo::$cachedTokens[ 'options' ] = $wgUser->getEditToken();
+			ApiQueryInfo::$cachedTokens[ 'options' ] = $wgwiki_user->getEditToken();
 		}
 
 		return ApiQueryInfo::$cachedTokens[ 'options' ];
@@ -342,7 +342,7 @@ class ApiQueryInfo extends ApiQueryBase {
 		$pageInfo = array();
 		$titleExists = $pageid > 0; //$title->exists() needs pageid, which is not set for all title objects
 		$ns = $title->getNamespace();
-		$dbkey = $title->getDBkey();
+		key = $title->getDBkey();
 		if ( $titleExists ) {
 			global $wgDisableCounters;
 
@@ -365,9 +365,9 @@ class ApiQueryInfo extends ApiQueryBase {
 			$tokenFunctions = $this->getTokenFunctions();
 			$pageInfo['starttimestamp'] = wfTimestamp( TS_ISO_8601, time() );
 			foreach ( $this->params['token'] as $t ) {
-				$val = call_user_func( $tokenFunctions[$t], $pageid, $title );
+				$val = call_wiki_user_func( $tokenFunctions[$t], $pageid, $title );
 				if ( $val === false ) {
-					$this->setWarning( "Action '$t' is not allowed for the current user" );
+					$this->setWarning( "Action '$t' is not allowed for the current wiki_user" );
 				} else {
 					$pageInfo[$t . 'token'] = $val;
 				}
@@ -376,37 +376,37 @@ class ApiQueryInfo extends ApiQueryBase {
 
 		if ( $this->fld_protection ) {
 			$pageInfo['protection'] = array();
-			if ( isset( $this->protections[$ns][$dbkey] ) ) {
+			if ( isset( $this->protections[$ns][key] ) ) {
 				$pageInfo['protection'] =
-					$this->protections[$ns][$dbkey];
+					$this->protections[$ns][key];
 			}
 			$this->getResult()->setIndexedTagName( $pageInfo['protection'], 'pr' );
 		}
 
-		if ( $this->fld_watched && isset( $this->watched[$ns][$dbkey] ) ) {
+		if ( $this->fld_watched && isset( $this->watched[$ns][key] ) ) {
 			$pageInfo['watched'] = '';
 		}
 
 		if ( $this->fld_notificationtimestamp ) {
 			$pageInfo['notificationtimestamp'] = '';
-			if ( isset( $this->notificationtimestamps[$ns][$dbkey] ) ) {
-				$pageInfo['notificationtimestamp'] = wfTimestamp( TS_ISO_8601, $this->notificationtimestamps[$ns][$dbkey] );
+			if ( isset( $this->notificationtimestamps[$ns][key] ) ) {
+				$pageInfo['notificationtimestamp'] = wfTimestamp( TS_ISO_8601, $this->notificationtimestamps[$ns][key] );
 			}
 		}
 
-		if ( $this->fld_talkid && isset( $this->talkids[$ns][$dbkey] ) )	{
-			$pageInfo['talkid'] = $this->talkids[$ns][$dbkey];
+		if ( $this->fld_talkid && isset( $this->talkids[$ns][key] ) )	{
+			$pageInfo['talkid'] = $this->talkids[$ns][key];
 		}
 
-		if ( $this->fld_subjectid && isset( $this->subjectids[$ns][$dbkey] ) ) {
-			$pageInfo['subjectid'] = $this->subjectids[$ns][$dbkey];
+		if ( $this->fld_subjectid && isset( $this->subjectids[$ns][key] ) ) {
+			$pageInfo['subjectid'] = $this->subjectids[$ns][key];
 		}
 
 		if ( $this->fld_url ) {
 			$pageInfo['fullurl'] = wfExpandUrl( $title->getFullURL(), PROTO_CURRENT );
 			$pageInfo['editurl'] = wfExpandUrl( $title->getFullURL( 'action=edit' ), PROTO_CURRENT );
 		}
-		if ( $this->fld_readable && $title->userCan( 'read' ) ) {
+		if ( $this->fld_readable && $title->wiki_userCan( 'read' ) ) {
 			$pageInfo['readable'] = '';
 		}
 
@@ -438,7 +438,7 @@ class ApiQueryInfo extends ApiQueryBase {
 	private function getProtectionInfo() {
 		global $wgContLang;
 		$this->protections = array();
-		$db = $this->getDB();
+		 = $this->getDB();
 
 		// Get normal protections for existing titles
 		if ( count( $this->titles ) ) {
@@ -465,7 +465,7 @@ class ApiQueryInfo extends ApiQueryBase {
 			foreach( $this->titles as $pageId => $title ) {
 				if ( $this->pageRestrictions[$pageId] ) {
 					$namespace = $title->getNamespace();
-					$dbKey = $title->getDBkey();
+					Key = $title->getDBkey();
 					$restrictions = explode( ':', trim( $this->pageRestrictions[$pageId] ) );
 					foreach ( $restrictions as $restrict ) {
 						$temp = explode( '=', trim( $restrict ) );
@@ -476,12 +476,12 @@ class ApiQueryInfo extends ApiQueryBase {
 							if ( $restriction == '' ) {
 								continue;
 							}
-							$this->protections[$namespace][$dbKey][] = array(
+							$this->protections[$namespace][Key][] = array(
 								'type' => 'edit',
 								'level' => $restriction,
 								'expiry' => 'infinity',
 							);
-							$this->protections[$namespace][$dbKey][] = array(
+							$this->protections[$namespace][Key][] = array(
 								'type' => 'move',
 								'level' => $restriction,
 								'expiry' => 'infinity',
@@ -491,7 +491,7 @@ class ApiQueryInfo extends ApiQueryBase {
 							if ( $restriction == '' ) {
 								continue;
 							}
-							$this->protections[$namespace][$dbKey][] = array(
+							$this->protections[$namespace][Key][] = array(
 								'type' => $temp[0],
 								'level' => $restriction,
 								'expiry' => 'infinity',
@@ -508,7 +508,7 @@ class ApiQueryInfo extends ApiQueryBase {
 			$lb = new LinkBatch( $this->missing );
 			$this->addTables( 'protected_titles' );
 			$this->addFields( array( 'pt_title', 'pt_namespace', 'pt_create_perm', 'pt_expiry' ) );
-			$this->addWhere( $lb->constructSet( 'pt', $db ) );
+			$this->addWhere( $lb->constructSet( 'pt',  ) );
 			$res = $this->select( __METHOD__ );
 			foreach ( $res as $row ) {
 				$this->protections[$row->pt_namespace][$row->pt_title][] = array(
@@ -537,7 +537,7 @@ class ApiQueryInfo extends ApiQueryBase {
 			$this->addFields( array( 'pr_type', 'pr_level', 'pr_expiry',
 					'page_title', 'page_namespace',
 					'tl_title', 'tl_namespace' ) );
-			$this->addWhere( $lb->constructSet( 'tl', $db ) );
+			$this->addWhere( $lb->constructSet( 'tl',  ) );
 			$this->addWhere( 'pr_page = page_id' );
 			$this->addWhere( 'pr_page = tl_from' );
 			$this->addWhereFld( 'pr_cascade', 1 );
@@ -598,7 +598,7 @@ class ApiQueryInfo extends ApiQueryBase {
 			return;
 		}
 
-		$db = $this->getDB();
+		 = $this->getDB();
 
 		// Construct a custom WHERE clause that matches
 		// all titles in $getTitles
@@ -606,7 +606,7 @@ class ApiQueryInfo extends ApiQueryBase {
 		$this->resetQueryParams();
 		$this->addTables( 'page' );
 		$this->addFields( array( 'page_title', 'page_namespace', 'page_id' ) );
-		$this->addWhere( $lb->constructSet( 'page', $db ) );
+		$this->addWhere( $lb->constructSet( 'page',  ) );
 		$res = $this->select( __METHOD__ );
 		foreach ( $res as $row ) {
 			if ( MWNamespace::isTalk( $row->page_namespace ) ) {
@@ -645,15 +645,15 @@ class ApiQueryInfo extends ApiQueryBase {
 	 * and $this->notificationtimestamps
 	 */
 	private function getWatchedInfo() {
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 
-		if ( $user->isAnon() || count( $this->everything ) == 0 ) {
+		if ( $wiki_user->isAnon() || count( $this->everything ) == 0 ) {
 			return;
 		}
 
 		$this->watched = array();
 		$this->notificationtimestamps = array();
-		$db = $this->getDB();
+		 = $this->getDB();
 
 		$lb = new LinkBatch( $this->everything );
 
@@ -662,8 +662,8 @@ class ApiQueryInfo extends ApiQueryBase {
 		$this->addFields( array( 'wl_title', 'wl_namespace' ) );
 		$this->addFieldsIf( 'wl_notificationtimestamp', $this->fld_notificationtimestamp );
 		$this->addWhere( array(
-			$lb->constructSet( 'wl', $db ),
-			'wl_user' => $user->getID()
+			$lb->constructSet( 'wl',  ),
+			'wl_wiki_user' => $wiki_user->getID()
 		) );
 
 		$res = $this->select( __METHOD__ );
@@ -737,7 +737,7 @@ class ApiQueryInfo extends ApiQueryBase {
 				' notificationtimestamp - The watchlist notification timestamp of each page',
 				' subjectid             - The page ID of the parent page for each talk page',
 				' url                   - Gives a full URL to the page, and also an edit URL',
-				' readable              - Whether the user can read this page',
+				' readable              - Whether the wiki_user can read this page',
 				' preload               - Gives the text returned by EditFormPreloadText',
 				' displaytitle          - Gives the way the page title is actually displayed',
 			),

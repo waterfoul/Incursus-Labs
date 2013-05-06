@@ -21,8 +21,8 @@
       <namespace key="-1" case="first-letter">Special</namespace>
       <namespace key="0" case="first-letter" />
       <namespace key="1" case="first-letter">Talk</namespace>
-      <namespace key="2" case="first-letter">User</namespace>
-      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="2" case="first-letter">wiki_user</namespace>
+      <namespace key="3" case="first-letter">wiki_user talk</namespace>
       <namespace key="4" case="first-letter">DemoWiki</namespace>
       <namespace key="5" case="first-letter">DemoWIki talk</namespace>
       <namespace key="6" case="first-letter">File</namespace>
@@ -74,7 +74,7 @@
       <parentid>99</parentid>
       <timestamp>2001-01-15T13:15:00Z</timestamp>
       <contributor>
-        <username>Foobar</username>
+        <wiki_username>Foobar</wiki_username>
         <id>42</id>
       </contributor>
       <minor />
@@ -116,14 +116,14 @@
     <revision>
       <id>102</id>
       <timestamp>2001-01-15T20:34:12Z</timestamp>
-      <contributor><username>Foobar</username><id>42</id></contributor>
+      <contributor><wiki_username>Foobar</wiki_username><id>42</id></contributor>
       <comment>My awesomeest image!</comment>
       <sha1>mehom37npwkpzhaiwu3wyr0egalumki</sha1>
       <text xml:space="preserve" bytes="52">This is an awesome little imgae. I lurves it. {{PD}}</text>
     </revision>
     <upload>
       <timestamp>2001-01-15T20:34:12Z</timestamp>
-      <contributor><username>Foobar</username><id>42</id></contributor>
+      <contributor><wiki_username>Foobar</wiki_username><id>42</id></contributor>
       <comment>My awesomeest image!</comment>
       <filename>Some_image.jpg</filename>
       <src>http://upload.wikimedia.org/commons/2/22/Some_image.jpg</src>
@@ -136,7 +136,7 @@
     <id>15</id>
     <timestamp>2008-10-23T03:20:32Z</timestamp>
     <contributor>
-      <username>Wikimedian</username>
+      <wiki_username>Wikimedian</wiki_username>
       <id>12345</id>
     </contributor>
     <comment>content was: 'I think this was a silly edit'</comment>

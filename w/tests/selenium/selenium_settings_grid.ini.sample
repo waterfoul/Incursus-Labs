@@ -3,8 +3,8 @@
 host			= "grid.tesla.usability.wikimedia.org"
 port			= "4444"
 wikiUrl			= "http://208.80.152.253:5001"
-username		= "wikiuser"
-userPassword	= "wikipass"
+wiki_username		= "wikiwiki_user"
+wiki_userPassword	= "wikipass"
 testBrowser		= "Safari on OS X Snow Leopard"
 jUnitLogFile	=
 runAgainstGrid	= true

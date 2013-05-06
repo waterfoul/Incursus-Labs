@@ -377,7 +377,7 @@ class BadTitleError extends ErrorPageError {
 }
 
 /**
- * Show an error when a user tries to do something they do not have the necessary
+ * Show an error when a wiki_user tries to do something they do not have the necessary
  * permissions for.
  *
  * @since 1.18
@@ -393,8 +393,8 @@ class PermissionsError extends ErrorPageError {
 
 		if ( !count( $errors ) ) {
 			$groups = array_map(
-				array( 'User', 'makeGroupLinkWiki' ),
-				User::getGroupsWithPermission( $this->permission )
+				array( 'wiki_user', 'makeGroupLinkWiki' ),
+				wiki_user::getGroupsWithPermission( $this->permission )
 			);
 
 			if ( $groups ) {
@@ -416,7 +416,7 @@ class PermissionsError extends ErrorPageError {
 }
 
 /**
- * Show an error when the wiki is locked/read-only and the user tries to do
+ * Show an error when the wiki is locked/read-only and the wiki_user tries to do
  * something that requires write access.
  *
  * @since 1.18
@@ -433,7 +433,7 @@ class ReadOnlyError extends ErrorPageError {
 }
 
 /**
- * Show an error when the user hits a rate limit.
+ * Show an error when the wiki_user hits a rate limit.
  *
  * @since 1.18
  * @ingroup Exception
@@ -454,20 +454,20 @@ class ThrottledError extends ErrorPageError {
 }
 
 /**
- * Show an error when the user tries to do something whilst blocked.
+ * Show an error when the wiki_user tries to do something whilst blocked.
  *
  * @since 1.18
  * @ingroup Exception
  */
-class UserBlockedError extends ErrorPageError {
+class wiki_userBlockedError extends ErrorPageError {
 	public function __construct( Block $block ){
 		global $wgLang, $wgRequest;
 
 		$blocker = $block->getBlocker();
-		if ( $blocker instanceof User ) { // local user
-			$blockerUserpage = $block->getBlocker()->getUserPage();
-			$link = "[[{$blockerUserpage->getPrefixedText()}|{$blockerUserpage->getText()}]]";
-		} else { // foreign user
+		if ( $blocker instanceof wiki_user ) { // local wiki_user
+			$blockerwiki_userpage = $block->getBlocker()->getwiki_userPage();
+			$link = "[[{$blockerwiki_userpage->getPrefixedText()}|{$blockerwiki_userpage->getText()}]]";
+		} else { // foreign wiki_user
 			$link = $blocker;
 		}
 
@@ -477,7 +477,7 @@ class UserBlockedError extends ErrorPageError {
 		}
 
 		/* $ip returns who *is* being blocked, $intended contains who was meant to be blocked.
-		 * This could be a username, an IP range, or a single IP. */
+		 * This could be a wiki_username, an IP range, or a single IP. */
 		$intended = $block->getTarget();
 
 		parent::__construct(
@@ -498,7 +498,7 @@ class UserBlockedError extends ErrorPageError {
 }
 
 /**
- * Shows a generic "user is not logged in" error page.
+ * Shows a generic "wiki_user is not logged in" error page.
  *
  * This is essentially an ErrorPageError exception which by default use the
  * 'exception-nologin' as a title and 'exception-nologin-text' for the message.
@@ -507,8 +507,8 @@ class UserBlockedError extends ErrorPageError {
  *
  * @par Example:
  * @code
- * if( $user->isAnon ) {
- * 	throw new UserNotLoggedIn();
+ * if( $wiki_user->isAnon ) {
+ * 	throw new wiki_userNotLoggedIn();
  * }
  * @endcode
  *
@@ -518,14 +518,14 @@ class UserBlockedError extends ErrorPageError {
  *
  * @par Example:
  * @code
- * if( $user->isAnon ) {
- * 	throw new UserNotLoggedIn( 'action-require-loggedin' );
+ * if( $wiki_user->isAnon ) {
+ * 	throw new wiki_userNotLoggedIn( 'action-require-loggedin' );
  * }
  * @endcode
  *
  * @ingroup Exception
  */
-class UserNotLoggedIn extends ErrorPageError {
+class wiki_userNotLoggedIn extends ErrorPageError {
 
 	/**
 	 * @param $reasonMsg A message key containing the reason for the error.
@@ -607,7 +607,7 @@ class MWExceptionHandler {
 	}
 
 	/**
-	 * Report an exception to the user
+	 * Report an exception to the wiki_user
 	 */
 	protected static function report( Exception $e ) {
 		global $wgShowExceptionDetails;

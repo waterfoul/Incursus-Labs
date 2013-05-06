@@ -29,7 +29,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-watchlisthidebots' => '監視列表中隱藏機械人的編輯',
 
 # Dates
@@ -57,7 +57,7 @@ $messages = array(
 'jumpto'           => '跳到：',
 'jumptosearch'     => '搜尋',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutpage'   => 'Project:關於我們',
 'privacy'     => '私隱政策',
 'privacypage' => 'Project:私隱政策',
@@ -69,7 +69,7 @@ $messages = array(
 
 # Login and logout pages
 'nav-login-createaccount' => '登入／創造帳戶',
-'userlogin'               => '登入／創造帳戶',
+'wiki_userlogin'               => '登入／創造帳戶',
 
 # Edit pages
 'editing' => '正在編輯 $1',
@@ -101,8 +101,8 @@ $messages = array(
 'recentchanges-label-bot' => '這次編輯是由機械人進行',
 'rcshowhidebots'          => '$1機械人的編輯',
 
-# Special:ActiveUsers
-'activeusers-hidebots' => '隱藏機械人',
+# Special:Activewiki_users
+'activewiki_users-hidebots' => '隱藏機械人',
 
 # Block/unblock
 'contribslink' => '貢獻',

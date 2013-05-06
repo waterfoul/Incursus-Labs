@@ -42,7 +42,7 @@ $specialPageAliases = array(
 	'Unblock'                   => array( '解除封鎖' ),
 	'Unlockdb'                  => array( '解除數據庫鎖定' ),
 	'Unwatchedpages'            => array( '未被監視的頁面' ),
-	'Userrights'                => array( '用戶權限' ),
+	'wiki_userrights'                => array( '用戶權限' ),
 	'Withoutinterwiki'          => array( '沒有跨語言鏈接的頁面' ),
 );
 
@@ -104,7 +104,7 @@ $dateFormats = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline'            => '連結標注底線',
 'tog-justify'              => '段落對齊',
 'tog-hideminor'            => '近期變動中隱藏細微修改',
@@ -115,7 +115,7 @@ $messages = array(
 'tog-watchdefault'         => '將我更改的頁面添加到我的監視列表中',
 'tog-minordefault'         => '預設將編輯設定為細微修改',
 'tog-enotifwatchlistpages' => '當我監視的頁面改變時發電子郵件給我',
-'tog-enotifusertalkpages'  => '當我的對話頁有更動時發電子郵件通知我',
+'tog-enotifwiki_usertalkpages'  => '當我的對話頁有更動時發電子郵件通知我',
 'tog-shownumberswatching'  => '顯示監視數目',
 'tog-uselivepreview'       => '使用即時預覽 (JavaScript) (試驗中)',
 'tog-watchlisthideminor'   => '監視列表中隱藏細微修改',
@@ -188,12 +188,12 @@ $messages = array(
 'protect_change' => '更改',
 'postcomment'    => '新段落',
 'toolbox'        => '工具箱',
-'userpage'       => '檢視使用者頁面',
+'wiki_userpage'       => '檢視使用者頁面',
 'projectpage'    => '檢視計畫頁面',
 'lastmodifiedat' => '本頁最後更動時間在 $1 $2。',
 'jumptosearch'   => '搜尋',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'   => '關於 {{SITENAME}}',
 'copyright'   => '本站的文字內容除另有聲明外，全部以 $1 條款授權使用。',
 'disclaimers' => '免責聲明',
@@ -217,7 +217,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => '頁面',
-'nstab-user'      => '使用者頁面',
+'nstab-wiki_user'      => '使用者頁面',
 'nstab-special'   => '特殊頁面',
 'nstab-project'   => '計畫頁面',
 'nstab-mediawiki' => '介面',
@@ -242,7 +242,7 @@ $messages = array(
 # Login and logout pages
 'logouttext'                 => '您現在已經登出。
 
-您可以以匿名方式繼續使用{{SITENAME}}，或者以相同或不同用戶身份[[Special:UserLogin|登入]]。
+您可以以匿名方式繼續使用{{SITENAME}}，或者以相同或不同用戶身份[[Special:wiki_userLogin|登入]]。
 請注意，如果你再次登入，此頁或會繼續顯示，直到您清除瀏覽器快取。',
 'welcomecreation'            => '== 歡迎，$1！ ==
 您的帳號已經建立。
@@ -251,23 +251,23 @@ $messages = array(
 'yourpassword'               => '密碼：',
 'login'                      => '登入',
 'nav-login-createaccount'    => '登入／建立新帳號',
-'userlogin'                  => '登入／建立新帳號',
+'wiki_userlogin'                  => '登入／建立新帳號',
 'logout'                     => '登出',
-'userlogout'                 => '登出',
+'wiki_userlogout'                 => '登出',
 'nologin'                    => '您還沒有帳號嗎？$1。',
 'nologinlink'                => '建立新帳號',
 'createaccount'              => '建立新帳號',
 'gotaccount'                 => '已經擁有帳號？$1。',
 'badretype'                  => '你所輸入的密碼並不相同。',
-'userexists'                 => '您所輸入的使用者名稱已經存在，請另選一個名稱。',
+'wiki_userexists'                 => '您所輸入的使用者名稱已經存在，請另選一個名稱。',
 'nocookiesnew'               => '已成功建立新帳號！偵測到您已關閉 Cookies，請開啟它並登入。',
 'nocookieslogin'             => '本站利用 Cookies 進行使用者登入，偵測到您已關閉 Cookies，請開啟它並重新登入。',
 'noname'                     => '你沒有輸入一個有效的使用者帳號。',
 'loginsuccess'               => '你現在以 "$1"的身份登入{{SITENAME}}。',
-'nosuchuser'                 => '找不到使用者 "$1"。
-檢查您的拼寫，或者用下面的表格[[Special:UserLogin/signup|建立一個新帳號]]。',
-'nosuchusershort'            => '沒有一個名為「$1」的使用者。請檢查您輸入的文字是否有錯誤。',
-'nouserspecified'            => '你需要指定一個使用者帳號。',
+'nosuchwiki_user'                 => '找不到使用者 "$1"。
+檢查您的拼寫，或者用下面的表格[[Special:wiki_userLogin/signup|建立一個新帳號]]。',
+'nosuchwiki_usershort'            => '沒有一個名為「$1」的使用者。請檢查您輸入的文字是否有錯誤。',
+'nowiki_userspecified'            => '你需要指定一個使用者帳號。',
 'passwordtooshort'           => '您的密碼不正確或太短，不能少於$1個字元，而且必須跟使用者名不同。',
 'passwordremindertitle'      => '{{SITENAME}}密碼提醒',
 'passwordremindertext'       => '有人（來自IP位址$1，可能是您）已請求{{SITENAME}}的新密碼 （$4）。
@@ -314,23 +314,23 @@ $messages = array(
 'savearticle'                => '儲存頁面',
 'blockedtitle'               => '使用者被封鎖',
 'confirmedittext'            => '在編輯此頁之前您必須確認您的電子郵件地址。請透過[[Special:Preferences|偏好設定]]設定並驗證您的電子郵件地址。',
-'accmailtext'                => "'[[User talk:$1|$1]]'的隨機產生密碼已經寄到$2。
+'accmailtext'                => "'[[wiki_user talk:$1|$1]]'的隨機產生密碼已經寄到$2。
 
 這個新帳號的密碼可以在登入後的''[[Special:ChangePassword|更改密碼]]''頁面中更改。",
 'newarticletext'             => '您進入了一個尚未建立的頁面。
 要建立該頁面，請在下面的編輯框中輸入內容(詳情參見[[{{MediaWiki:Helppage}}|說明]])。
 如果您是不小心來到此頁面，直接點擊您瀏覽器中的「返回」按鈕返回。',
-'anontalkpagetext'           => "---- ''這是一個還未建立帳號的匿名使用者的對話頁。我們因此只能用IP地址來與他／她聯絡。該IP地址可能由幾名使用者共享。如果您是一名匿名使用者並認為本頁上的評語與您無關，請[[Special:UserLogin|建立新帳號或登入]]以避免在未來於其他匿名使用者混淆。''",
+'anontalkpagetext'           => "---- ''這是一個還未建立帳號的匿名使用者的對話頁。我們因此只能用IP地址來與他／她聯絡。該IP地址可能由幾名使用者共享。如果您是一名匿名使用者並認為本頁上的評語與您無關，請[[Special:wiki_userLogin|建立新帳號或登入]]以避免在未來於其他匿名使用者混淆。''",
 'noarticletext'              => '此頁目前沒有內容，您可以在其它頁[[Special:Search/{{PAGENAME}}|搜索此頁標題]]，
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 搜索有關日誌]，
 或[{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯此頁]</span>。',
-'userpage-userdoesnotexist'  => '使用者帳號「<nowiki>$1</nowiki>」未曾建立。請在建立／編輯這個頁面前先檢查一下。',
-'usercsspreview'             => "'''注意您只是在預覽您的個人 CSS, 還沒有儲存﹗'''",
-'userjspreview'              => "'''注意您只是在測試／預覽您的個人 JavaScript，還沒有儲存﹗'''",
+'wiki_userpage-wiki_userdoesnotexist'  => '使用者帳號「<nowiki>$1</nowiki>」未曾建立。請在建立／編輯這個頁面前先檢查一下。',
+'wiki_usercsspreview'             => "'''注意您只是在預覽您的個人 CSS, 還沒有儲存﹗'''",
+'wiki_userjspreview'              => "'''注意您只是在測試／預覽您的個人 JavaScript，還沒有儲存﹗'''",
 'previewnote'                => "'''請記住這只是預覽，內容尚未儲存！'''",
 'session_fail_preview'       => "'''很抱歉！由於部份資料遺失，我們無法處理您的編輯。'''
 請再試一次。
-如果仍然失敗，請[[Special:UserLogout|登出]]後重新登入。",
+如果仍然失敗，請[[Special:wiki_userLogout|登出]]後重新登入。",
 'session_fail_preview_html'  => "'''很抱歉！部份資料已遺失，我們無法處理您的編輯。''''''如果這個編輯過程沒有問題，請再試一次。如果仍然有問題，請登出後再重新登入一次。'''",
 'token_suffix_mismatch'      => "'''由於您使用者端中的編輯信符毀損了一些標點符號字元，為防止編輯的文字損壞，您的編輯已經被拒絕。
 這種情況通常出現於使用含有很多臭蟲、以網路為主的匿名代理服務的時候。'''",
@@ -345,7 +345,7 @@ $messages = array(
 'semiprotectedpagewarning'   => "'''注意:''' 本頁面被鎖定，僅限註冊使用者編輯。",
 'cascadeprotectedwarning'    => '警告: 本頁已經被保護，只有擁有管理員權限的使用者才可修改，因為本頁已被以下連鎖保護的{{PLURAL:$1|一個|多個}}頁面所包含:',
 'nocreatetitle'              => '建立頁面受限',
-'nocreatetext'               => '此網站限制了建立新頁面的功能。你可以返回並編輯已有的頁面，或者[[Special:UserLogin|登錄或建立新帳號]]。',
+'nocreatetext'               => '此網站限制了建立新頁面的功能。你可以返回並編輯已有的頁面，或者[[Special:wiki_userLogin|登錄或建立新帳號]]。',
 'nocreate-loggedin'          => '您在這個wiki中並無許可權去建立新頁面。',
 'recreate-moveddeleted-warn' => "'''警告: 你現在重新建立一個先前曾經刪除過的頁面。'''
 
@@ -359,7 +359,7 @@ $messages = array(
 
 # Account creation failure
 'cantcreateaccounttitle' => '無法建立帳號',
-'cantcreateaccount-text' => "從這個IP地址 (<b>$1</b>) 建立帳號已經被[[User:$3|$3]]禁止。
+'cantcreateaccount-text' => "從這個IP地址 (<b>$1</b>) 建立帳號已經被[[wiki_user:$3|$3]]禁止。
 
 當中被$3封鎖的原因是''$2''",
 
@@ -375,7 +375,7 @@ $messages = array(
 
 # Revision deletion
 'rev-deleted-comment'         => '（註釋已除）',
-'rev-deleted-user'            => '(使用者名已移除)',
+'rev-deleted-wiki_user'            => '(使用者名已移除)',
 'rev-deleted-event'           => '（日誌已除）',
 'rev-deleted-text-permission' => '該頁面修訂已經被從公共文件中移除。
 在[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。',
@@ -389,7 +389,7 @@ $messages = array(
 
 在此網站的其他管理員將仍能訪問隱藏的內容並透過與此相同的介面復原刪除，除非網站工作者進行了一些附加的限制。",
 'revdelete-legend'            => '設定修訂限制:',
-'revdelete-hide-user'         => '隱藏編輯者的使用者名/IP',
+'revdelete-hide-wiki_user'         => '隱藏編輯者的使用者名/IP',
 'revdelete-hide-restricted'   => '將此限制同樣應用於管理員',
 'revdelete-suppress'          => '同時壓制由操作員以及其他使用者的資料',
 'revdelete-unsuppress'        => '在已復原的修訂中移除限制',
@@ -422,7 +422,7 @@ $messages = array(
 # Preferences page
 'preferences'          => '偏好設定',
 'mypreferences'        => '我的偏好設定',
-'prefsnologintext'     => '您必須先[[Special:UserLogin|登入]]才能設定個人參數。',
+'prefsnologintext'     => '您必須先[[Special:wiki_userLogin|登入]]才能設定個人參數。',
 'prefs-personal'       => '使用者資料',
 'prefs-rc'             => '近期變動',
 'prefs-watchlist-days' => '監視列表中顯示記錄的最長天數:',
@@ -438,7 +438,7 @@ $messages = array(
 'servertime'           => '伺服器時間',
 'allowemail'           => '接受來自其他使用者的郵件',
 'defaultns'            => '否則在這些名字空間搜尋：',
-'username'             => '使用者名:',
+'wiki_username'             => '使用者名:',
 'uid'                  => '使用者ID:',
 'yournick'             => '暱稱:',
 'badsig'               => '錯誤的原始簽名；請檢查HTML標籤。',
@@ -447,14 +447,14 @@ $messages = array(
 'prefs-help-realname'  => '真實姓名是選填的，如果您選擇提供它，那它便用以對您的貢獻署名。',
 'prefs-help-email'     => '電子郵件是選填的，但當啟用它後可以在您忘記您的個密碼時需要將新密碼重設寄回給您。而在您未公開自己的使用者身分時也能透過您的用戶頁或用戶討論頁與您聯繫。',
 
-# User rights
-'userrights'               => '使用者權限管理',
-'userrights-lookup-user'   => '管理使用者群組',
-'userrights-user-editname' => '輸入使用者帳號:',
-'editusergroup'            => '編輯使用者群組',
-'editinguser'              => "正在編輯使用者'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup' => '編輯使用者群組',
-'saveusergroups'           => '保存使用者群組',
+# wiki_user rights
+'wiki_userrights'               => '使用者權限管理',
+'wiki_userrights-lookup-wiki_user'   => '管理使用者群組',
+'wiki_userrights-wiki_user-editname' => '輸入使用者帳號:',
+'editwiki_usergroup'            => '編輯使用者群組',
+'editingwiki_user'              => "正在編輯使用者'''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'wiki_userrights-editwiki_usergroup' => '編輯使用者群組',
+'savewiki_usergroups'           => '保存使用者群組',
 
 # Groups
 'group-autoconfirmed' => '自動確認使用者',
@@ -463,7 +463,7 @@ $messages = array(
 
 'grouppage-autoconfirmed' => '{{ns:project}}:自動確認使用者',
 
-# User rights log
+# wiki_user rights log
 'rightslog'     => '使用者權限日誌',
 'rightslogtext' => '以下記錄了使用者權限的更改記錄。',
 
@@ -476,7 +476,7 @@ $messages = array(
 'rcshowhideliu'                     => '$1具名使用者的編輯',
 'rcshowhideanons'                   => '$1匿名使用者的編輯',
 'rcshowhidepatr'                    => ' $1檢查過的編輯',
-'number_of_watching_users_pageview' => '[$1個關注使用者]',
+'number_of_watching_wiki_users_pageview' => '[$1個關注使用者]',
 
 # Recent changes linked
 'recentchangeslinked'         => '相關頁面修訂記錄',
@@ -518,14 +518,14 @@ $messages = array(
 
 # Special:ListFiles
 'listfiles_search_for' => '按圖片名稱搜尋:',
-'listfiles_user'       => '使用者',
+'listfiles_wiki_user'       => '使用者',
 
 # File description page
 'filehist'           => '檔案歷史',
 'filehist-deleteone' => '刪除這個',
 'filehist-revert'    => '復原',
 'filehist-datetime'  => '日期/時間',
-'filehist-user'      => '使用者',
+'filehist-wiki_user'      => '使用者',
 'imagelinks'         => '連結',
 
 # File reversion
@@ -556,7 +556,7 @@ $messages = array(
 'randomredirect-nopages' => '在這個名字空間中沒有重定向頁面。',
 
 # Statistics
-'statistics-header-users' => '使用者統計',
+'statistics-header-wiki_users' => '使用者統計',
 
 'disambiguations'      => '消歧義',
 'disambiguations-text' => '以下的頁面都有到<b>消歧義頁</b>的鏈接,
@@ -573,29 +573,29 @@ $messages = array(
 'mostimages'          => '最多連結圖片',
 'prefixindex'         => '所有頁面之前綴',
 'deadendpagestext'    => '以下頁面沒有連結到這個wiki中的其它頁面。',
-'listusers'           => '使用者列表',
-'newpages-username'   => '使用者帳號:',
+'listwiki_users'           => '使用者列表',
+'newpages-wiki_username'   => '使用者帳號:',
 'move'                => '移動',
 'unusedimagestext'    => '請注意其它網站可能直接透過 URL 連結此圖片，所以這裡列出的圖片有可能依然被使用。',
 'notargettext'        => '您還沒有指定一個目標頁面或使用者以進行此項操作。',
 
 # Special:Log
-'specialloguserlabel' => '使用者:',
+'speciallogwiki_userlabel' => '使用者:',
 'alllogstext'         => '綜合顯示 {{SITENAME}} 的上傳、刪除、保護、查封以及站務日誌。',
 
-# Special:ListUsers
-'listusersfrom'      => '給定顯示使用者條件:',
-'listusers-noresult' => '找不到使用者。',
+# Special:Listwiki_users
+'listwiki_usersfrom'      => '給定顯示使用者條件:',
+'listwiki_users-noresult' => '找不到使用者。',
 
-# Special:ActiveUsers
-'activeusers-hidebots' => '隱藏機器人',
+# Special:Activewiki_users
+'activewiki_users-hidebots' => '隱藏機器人',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin'     => '無E-mail地址',
-'mailnologintext' => '您必須先[[Special:UserLogin|登入]]
+'mailnologintext' => '您必須先[[Special:wiki_userLogin|登入]]
 並在[[Special:Preferences|偏好設定]]
 中有一個有效的e-mail地址才可以E-mail其他使用者。',
-'emailuser'       => 'E-mail該使用者',
+'emailwiki_user'       => 'E-mail該使用者',
 'emailpage'       => 'E-mail使用者',
 'emailpagetext'   => '如果該使用者已經在他或她的偏好設定頁中輸入了有效的e-mail地址，以下的表格將寄一個訊息給該使用者。您在您偏好設定中所輸入的e-mail地址將出現在郵件「發件人」一欄中，這樣該使用者就可以回覆您。',
 'noemailtext'     => '該使用者還沒有指定一個有效的e-mail地址，
@@ -654,12 +654,12 @@ $NEWPAGE
 'rollbacklink'     => '復原',
 'rollbackfailed'   => '無法復原',
 'cantrollback'     => '無法復原編輯；最後的貢獻者是本文的唯一作者。',
-'alreadyrolled'    => '無法復原由[[User:$2|$2]] ([[User talk:$2|討論]])進行的[[$1]]的最後編輯；
+'alreadyrolled'    => '無法復原由[[wiki_user:$2|$2]] ([[wiki_user talk:$2|討論]])進行的[[$1]]的最後編輯；
 其他人已經編輯或是復原了該頁。
 
-最後編輯者: [[User:$3|$3]] ([[User talk:$3|討論]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]])。',
+最後編輯者: [[wiki_user:$3|$3]] ([[wiki_user talk:$3|討論]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]])。',
 'editcomment'      => "編輯說明: \"''\$1''\"。",
-'revertpage'       => '復原由[[Special:Contributions/$2|$2]] ([[User talk:$2|對話]])的編輯；更改回[[User:$1|$1]]的最後一個版本',
+'revertpage'       => '復原由[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|對話]])的編輯；更改回[[wiki_user:$1|$1]]的最後一個版本',
 'rollback-success' => '復原由$1的編輯；更改回$2的最後一個版本。',
 
 # Protect
@@ -702,15 +702,15 @@ $NEWPAGE
 
 'sp-contributions-newbies'    => '只顯示新建立之使用者的編修記錄',
 'sp-contributions-blocklog'   => '封鎖記錄',
-'sp-contributions-userrights' => '使用者權限管理',
-'sp-contributions-username'   => 'IP位址或使用者名稱：',
+'sp-contributions-wiki_userrights' => '使用者權限管理',
+'sp-contributions-wiki_username'   => 'IP位址或使用者名稱：',
 
 # What links here
 'whatlinkshere-title' => '鏈接到$1的頁面',
 
 # Block/unblock
 'blockip'                     => '封鎖使用者',
-'ipadressorusername'          => 'IP地址或使用者名:',
+'ipadressorwiki_username'          => 'IP地址或使用者名:',
 'ipbreason-dropdown'          => '*一般的封鎖理由
 ** 屢次增加不實資料
 ** 刪除頁面內容
@@ -734,7 +734,7 @@ $NEWPAGE
 'unblockip'                   => '解除禁封IP地址',
 'unblockiptext'               => '用下面的表單來復原先前被禁封的IP地址的書寫權。',
 'ipusubmit'                   => '解除禁封',
-'unblocked'                   => '[[User:$1|$1]] 的封鎖已經解除。',
+'unblocked'                   => '[[wiki_user:$1|$1]] 的封鎖已經解除。',
 'unblocked-id'                => '封鎖 $1 已經被移除',
 'ipblocklist-legend'          => '搜尋一位已經被封鎖的使用者',
 'anononlyblock'               => '僅限匿名使用者',
@@ -776,7 +776,7 @@ $NEWPAGE
 <b>警告！</b>
 對一個經常被訪問的頁面而言這可能是一個重大與唐突的更改；
 請在行動前先了結其所可能帶來的後果。",
-'movenologintext' => '您必須是一名登記使用者並且[[Special:UserLogin|登入]]
+'movenologintext' => '您必須是一名登記使用者並且[[Special:wiki_userLogin|登入]]
 後才可移動一個頁面。',
 'movenotallowed'  => '您在這個wiki中度並沒有許可權去移動頁面。',
 'movetalk'        => '如果可能的話，請同時移動對話頁。',
@@ -810,8 +810,8 @@ $NEWPAGE
 'importhistoryconflict'      => '存在衝突的修訂沿革(可能在之前已經匯入過此頁面)',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage'             => '用戶頁',
-'tooltip-pt-anonuserpage'         => '您編輯本站所用IP的對應使用者頁',
+'tooltip-pt-wiki_userpage'             => '用戶頁',
+'tooltip-pt-anonwiki_userpage'         => '您編輯本站所用IP的對應使用者頁',
 'tooltip-pt-mytalk'               => '討論頁',
 'tooltip-pt-preferences'          => '我的偏好設定',
 'tooltip-pt-watchlist'            => '我的監視列表',
@@ -824,10 +824,10 @@ $NEWPAGE
 'tooltip-feed-rss'                => '訂閱本修訂記錄的RSS資訊',
 'tooltip-feed-atom'               => '訂閱本修訂記錄的Atom訊息',
 'tooltip-t-contributions'         => '檢視該使用者的編修記錄',
-'tooltip-t-emailuser'             => '向該使用者發送電子郵件',
+'tooltip-t-emailwiki_user'             => '向該使用者發送電子郵件',
 'tooltip-t-upload'                => '上傳圖片或多媒體檔',
 'tooltip-t-permalink'             => '這個頁面版本的永久連結',
-'tooltip-ca-nstab-user'           => '檢視使用者頁',
+'tooltip-ca-nstab-wiki_user'           => '檢視使用者頁',
 'tooltip-ca-nstab-image'          => '查詢圖片頁面',
 'tooltip-ca-nstab-template'       => '檢視模板',
 'tooltip-ca-nstab-help'           => '檢視說明頁面',
@@ -839,10 +839,10 @@ $NEWPAGE
 
 # Attribution
 'anonymous' => '{{SITENAME}}的匿名{{PLURAL:$1|使用者|使用者}}',
-'siteuser'  => '{{SITENAME}}使用者$1',
-'anonuser'  => '{{SITENAME}}匿名使用者$1',
-'siteusers' => '{{SITENAME}}{{PLURAL:$2|使用者|使用者}}$1',
-'anonusers' => '{{SITENAME}}匿名{{PLURAL:$2|使用者|使用者}}$1',
+'sitewiki_user'  => '{{SITENAME}}使用者$1',
+'anonwiki_user'  => '{{SITENAME}}匿名使用者$1',
+'sitewiki_users' => '{{SITENAME}}{{PLURAL:$2|使用者|使用者}}$1',
+'anonwiki_users' => '{{SITENAME}}匿名{{PLURAL:$2|使用者|使用者}}$1',
 
 # Spam protection
 'spamprotectiontext' => '垃圾過濾器禁止保存您剛才提交的頁面，這可能是由於您所加入的外部網站連結所產生的問題。',
@@ -899,7 +899,7 @@ Variants for Chinese language
 'exif-compressedbitsperpixel'    => '圖片壓縮模式',
 'exif-pixelydimension'           => '有效圖片寬度',
 'exif-pixelxdimension'           => '有效圖片高度',
-'exif-usercomment'               => '使用者註釋',
+'exif-wiki_usercomment'               => '使用者註釋',
 'exif-focalplanexresolution'     => 'X軸焦平面解析度',
 'exif-focalplaneyresolution'     => 'Y軸焦平面解析度',
 'exif-focalplaneresolutionunit'  => '焦平面解析度單位',
@@ -936,7 +936,7 @@ Variants for Chinese language
 'scarytranscludetoolong' => '[抱歉，URL 地址太長]',
 
 # Delete conflict
-'confirmrecreate' => '在您編輯這個頁面後，使用者[[User:$1|$1]]([[User talk:$1|對話]])以下列原因刪除了這個頁面: $2。請在重新建立頁面前三思。',
+'confirmrecreate' => '在您編輯這個頁面後，使用者[[wiki_user:$1|$1]]([[wiki_user talk:$1|對話]])以下列原因刪除了這個頁面: $2。請在重新建立頁面前三思。',
 
 # Auto-summaries
 'autosumm-blank'   => '移除所有頁面內容',

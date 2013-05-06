@@ -1,6 +1,6 @@
 <?php
 /**
- * Change the password of a given user
+ * Change the password of a given wiki_user
  *
  * Copyright © 2005, Ævar Arnfjörð Bjarmason
  *
@@ -27,34 +27,34 @@
 require_once( __DIR__ . '/Maintenance.php' );
 
 /**
- * Maintenance script to change the password of a given user.
+ * Maintenance script to change the password of a given wiki_user.
  *
  * @ingroup Maintenance
  */
 class ChangePassword extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->addOption( "user", "The username to operate on", false, true );
-		$this->addOption( "userid", "The user id to operate on", false, true );
+		$this->addOption( "wiki_user", "The wiki_username to operate on", false, true );
+		$this->addOption( "wiki_userid", "The wiki_user id to operate on", false, true );
 		$this->addOption( "password", "The password to use", true, true );
-		$this->mDescription = "Change a user's password";
+		$this->mDescription = "Change a wiki_user's password";
 	}
 
 	public function execute() {
-		if ( $this->hasOption( "user" ) ) {
-			$user = User::newFromName( $this->getOption( 'user' ) );
-		} elseif ( $this->hasOption( "userid" ) ) {
-			$user = User::newFromId( $this->getOption( 'userid' ) );
+		if ( $this->hasOption( "wiki_user" ) ) {
+			$wiki_user = wiki_user::newFromName( $this->getOption( 'wiki_user' ) );
+		} elseif ( $this->hasOption( "wiki_userid" ) ) {
+			$wiki_user = wiki_user::newFromId( $this->getOption( 'wiki_userid' ) );
 		} else {
-			$this->error( "A \"user\" or \"userid\" must be set to change the password for" , true );
+			$this->error( "A \"wiki_user\" or \"wiki_userid\" must be set to change the password for" , true );
 		}
-		if ( !$user || !$user->getId() ) {
-			$this->error( "No such user: " . $this->getOption( 'user' ), true );
+		if ( !$wiki_user || !$wiki_user->getId() ) {
+			$this->error( "No such wiki_user: " . $this->getOption( 'wiki_user' ), true );
 		}
 		try {
-			$user->setPassword( $this->getOption( 'password' ) );
-			$user->saveSettings();
-			$this->output( "Password set for " . $user->getName() . "\n" );
+			$wiki_user->setPassword( $this->getOption( 'password' ) );
+			$wiki_user->saveSettings();
+			$this->output( "Password set for " . $wiki_user->getName() . "\n" );
 		} catch ( PasswordError $pwe ) {
 			$this->error( $pwe->getText(), true );
 		}

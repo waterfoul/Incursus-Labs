@@ -56,21 +56,21 @@ class SpecialImport extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$user = $this->getUser();
-		if ( !$user->isAllowedAny( 'import', 'importupload' ) ) {
+		$wiki_user = $this->getwiki_user();
+		if ( !$wiki_user->isAllowedAny( 'import', 'importupload' ) ) {
 			throw new PermissionsError( 'import' );
 		}
 
-		# @todo Allow Title::getUserPermissionsErrors() to take an array
+		# @todo Allow Title::getwiki_userPermissionsErrors() to take an array
 		# @todo FIXME: Title::checkSpecialsAndNSPermissions() has a very wierd expectation of what
-		# getUserPermissionsErrors() might actually be used for, hence the 'ns-specialprotected'
+		# getwiki_userPermissionsErrors() might actually be used for, hence the 'ns-specialprotected'
 		$errors = wfMergeErrorArrays(
-			$this->getTitle()->getUserPermissionsErrors(
-				'import', $user, true,
+			$this->getTitle()->getwiki_userPermissionsErrors(
+				'import', $wiki_user, true,
 				array( 'ns-specialprotected', 'badaccess-group0', 'badaccess-groups' )
 			),
-			$this->getTitle()->getUserPermissionsErrors(
-				'importupload', $user, true,
+			$this->getTitle()->getwiki_userPermissionsErrors(
+				'importupload', $wiki_user, true,
 				array( 'ns-specialprotected', 'badaccess-group0', 'badaccess-groups' )
 			)
 		);
@@ -103,18 +103,18 @@ class SpecialImport extends SpecialPage {
 		$this->pageLinkDepth = $wgExportMaxLinkDepth == 0 ? 0 : $request->getIntOrNull( 'pagelink-depth' );
 		$this->rootpage = $request->getText( 'rootpage' );
 
-		$user = $this->getUser();
-		if ( !$user->matchEditToken( $request->getVal( 'editToken' ) ) ) {
+		$wiki_user = $this->getwiki_user();
+		if ( !$wiki_user->matchEditToken( $request->getVal( 'editToken' ) ) ) {
 			$source = Status::newFatal( 'import-token-mismatch' );
 		} elseif ( $sourceName == 'upload' ) {
 			$isUpload = true;
-			if( $user->isAllowed( 'importupload' ) ) {
+			if( $wiki_user->isAllowed( 'importupload' ) ) {
 				$source = ImportStreamSource::newFromUpload( "xmlimport" );
 			} else {
 				throw new PermissionsError( 'importupload' );
 			}
 		} elseif ( $sourceName == "interwiki" ) {
-			if( !$user->isAllowed( 'import' ) ){
+			if( !$wiki_user->isAllowed( 'import' ) ){
 				throw new PermissionsError( 'import' );
 			}
 			$this->interwiki = $request->getVal( 'interwiki' );
@@ -183,10 +183,10 @@ class SpecialImport extends SpecialPage {
 		global $wgImportSources, $wgExportMaxLinkDepth;
 
 		$action = $this->getTitle()->getLocalUrl( array( 'action' => 'submit' ) );
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		$out = $this->getOutput();
 
-		if( $user->isAllowed( 'importupload' ) ) {
+		if( $wiki_user->isAllowed( 'importupload' ) ) {
 			$out->addHTML(
 				Xml::fieldset( $this->msg( 'import-upload' )->text() ).
 				Xml::openElement( 'form', array( 'enctype' => 'multipart/form-data', 'method' => 'post',
@@ -229,7 +229,7 @@ class SpecialImport extends SpecialPage {
 					"</td>
 				</tr>" .
 				Xml::closeElement( 'table' ).
-				Html::hidden( 'editToken', $user->getEditToken() ) .
+				Html::hidden( 'editToken', $wiki_user->getEditToken() ) .
 				Xml::closeElement( 'form' ) .
 				Xml::closeElement( 'fieldset' )
 			);
@@ -239,7 +239,7 @@ class SpecialImport extends SpecialPage {
 			}
 		}
 
-		if( $user->isAllowed( 'import' ) && !empty( $wgImportSources ) ) {
+		if( $wiki_user->isAllowed( 'import' ) && !empty( $wgImportSources ) ) {
 			# Show input field for import depth only if $wgExportMaxLinkDepth > 0
 			$importDepth = '';
 			if( $wgExportMaxLinkDepth > 0 ) {
@@ -259,7 +259,7 @@ class SpecialImport extends SpecialPage {
 				$this->msg( 'import-interwiki-text' )->parseAsBlock() .
 				Html::hidden( 'action', 'submit' ) .
 				Html::hidden( 'source', 'interwiki' ) .
-				Html::hidden( 'editToken', $user->getEditToken() ) .
+				Html::hidden( 'editToken', $wiki_user->getEditToken() ) .
 				Xml::openElement( 'table', array( 'id' => 'mw-import-table' ) ) .
 				"<tr>
 					<td class='mw-label'>" .
@@ -425,15 +425,15 @@ class ImportReporter extends ContextSource {
 			}
 
 			$comment = $detail; // quick
-			$dbw = wfGetDB( DB_MASTER );
+			w = wfGetDB( DB_MASTER );
 			$latest = $title->getLatestRevID();
-			$nullRevision = Revision::newNullRevision( $dbw, $title->getArticleID(), $comment, true );
+			$nullRevision = Revision::newNullRevision( w, $title->getArticleID(), $comment, true );
 			if (!is_null($nullRevision)) {
-				$nullRevision->insertOn( $dbw );
+				$nullRevision->insertOn( w );
 				$page = WikiPage::factory( $title );
 				# Update page record
-				$page->updateRevisionOn( $dbw, $nullRevision );
-				wfRunHooks( 'NewRevisionFromEditComplete', array( $page, $nullRevision, $latest, $this->getUser() ) );
+				$page->updateRevisionOn( w, $nullRevision );
+				wfRunHooks( 'NewRevisionFromEditComplete', array( $page, $nullRevision, $latest, $this->getwiki_user() ) );
 			}
 		} else {
 			$this->getOutput()->addHTML( "<li>" . Linker::linkKnown( $title ) . " " .

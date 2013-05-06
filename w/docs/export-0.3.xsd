@@ -125,7 +125,7 @@
 
 	<complexType name="ContributorType">
 		<sequence>
-			<element name="username" type="string" minOccurs="0"/>
+			<element name="wiki_username" type="string" minOccurs="0"/>
 			<element name="id" type="positiveInteger" minOccurs="0" />
 
 			<element name="ip" type="string" minOccurs="0"/>

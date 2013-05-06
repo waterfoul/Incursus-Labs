@@ -43,7 +43,7 @@ $namespaceAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'Usatores_active' ),
+	'Activewiki_users'               => array( 'Usatores_active' ),
 	'Allmessages'               => array( 'Tote_le_messages' ),
 	'Allpages'                  => array( 'Tote_le_paginas' ),
 	'Ancientpages'              => array( 'Paginas_ancian' ),
@@ -65,7 +65,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'Disambiguationes' ),
 	'DoubleRedirects'           => array( 'Redirectiones_duple' ),
 	'EditWatchlist'             => array( 'Modificar_observatorio' ),
-	'Emailuser'                 => array( 'Inviar_e-mail_a_un_usator' ),
+	'Emailwiki_user'                 => array( 'Inviar_e-mail_a_un_usator' ),
 	'Export'                    => array( 'Exportar' ),
 	'Fewestrevisions'           => array( 'Le_minus_versiones' ),
 	'FileDuplicateSearch'       => array( 'Recerca_de_files_duplice' ),
@@ -79,7 +79,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Lista_de_files', 'Lista_de_imagines' ),
 	'Listgrouprights'           => array( 'Lista_del_derectos_de_gruppos' ),
 	'Listredirects'             => array( 'Lista_de_redirectiones' ),
-	'Listusers'                 => array( 'Lista_de_usatores' ),
+	'Listwiki_users'                 => array( 'Lista_de_usatores' ),
 	'Lockdb'                    => array( 'Blocar_BDD' ),
 	'Log'                       => array( 'Registro', 'Registros' ),
 	'Lonelypages'               => array( 'Paginas_orphanate' ),
@@ -130,9 +130,9 @@ $specialPageAliases = array(
 	'Unwatchedpages'            => array( 'Paginas_non_observate' ),
 	'Upload'                    => array( 'Incargar', 'Cargar' ),
 	'UploadStash'               => array( 'Pila_de_files_incargate' ),
-	'Userlogin'                 => array( 'Aperir_session', 'Identificar' ),
-	'Userlogout'                => array( 'Clauder_session', 'Disconnecter' ),
-	'Userrights'                => array( 'Derectos_de_usatores' ),
+	'wiki_userlogin'                 => array( 'Aperir_session', 'Identificar' ),
+	'wiki_userlogout'                => array( 'Clauder_session', 'Disconnecter' ),
+	'wiki_userrights'                => array( 'Derectos_de_usatores' ),
 	'Wantedcategories'          => array( 'Categorias_desirate' ),
 	'Wantedfiles'               => array( 'Files_desirate' ),
 	'Wantedpages'               => array( 'Paginas_desirate', 'Ligamines_rupte' ),
@@ -143,7 +143,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Sublinear ligamines:',
 'tog-justify' => 'Justificar paragraphos',
 'tog-hideminor' => 'Celar le modificationes minor in le modificationes recente',
@@ -167,7 +167,7 @@ $messages = array(
 'tog-previewonfirst' => 'Monstrar previsualisation al prime modification',
 'tog-nocache' => "Disactivar le ''cache'' de paginas in le navigator",
 'tog-enotifwatchlistpages' => 'Notificar me per e-mail quando un pagina o file in mi observatorio es modificate',
-'tog-enotifusertalkpages' => 'Notificar me via e-mail quando mi pagina de discussion es modificate',
+'tog-enotifwiki_usertalkpages' => 'Notificar me via e-mail quando mi pagina de discussion es modificate',
 'tog-enotifminoredits' => 'Notificar me etiam de modificationes minor de paginas e files',
 'tog-enotifrevealaddr' => 'Revelar mi adresse de e-mail in messages de notification',
 'tog-shownumberswatching' => 'Monstrar le numero de usatores que observa le pagina',
@@ -349,7 +349,7 @@ $messages = array(
 'talk' => 'Discussion',
 'views' => 'Representationes',
 'toolbox' => 'Instrumentario',
-'userpage' => 'Vider pagina del usator',
+'wiki_userpage' => 'Vider pagina del usator',
 'projectpage' => 'Vider pagina de projecto',
 'imagepage' => 'Vider le pagina del file',
 'mediawikipage' => 'Vider pagina de message',
@@ -375,7 +375,7 @@ $1',
 'pool-queuefull' => 'Le cauda commun de processos es plen',
 'pool-errorunknown' => 'Error incognite',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'A proposito de {{SITENAME}}',
 'aboutpage' => 'Project:A proposito',
 'copyright' => 'Le contento es disponibile sub $1.',
@@ -407,8 +407,8 @@ $1',
 'youhavenewmessages' => 'Tu ha $1 ($2).',
 'newmessageslink' => 'nove messages',
 'newmessagesdifflink' => 'ultime modification',
-'youhavenewmessagesfromusers' => 'Tu ha $1 de {{PLURAL:$3|un altere usator|$3 usatores}} ($2).',
-'youhavenewmessagesmanyusers' => 'Tu ha $1 de multe usatores ($2).',
+'youhavenewmessagesfromwiki_users' => 'Tu ha $1 de {{PLURAL:$3|un altere usator|$3 usatores}} ($2).',
+'youhavenewmessagesmanywiki_users' => 'Tu ha $1 de multe usatores ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|un nove message|$1 nove messages}}',
 'newmessagesdifflinkplural' => 'ultime {{PLURAL:$1|modification|modificationes}}',
 'youhavenewmessagesmulti' => 'Tu ha nove messages in $1',
@@ -439,7 +439,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Pagina',
-'nstab-user' => 'Pagina de usator',
+'nstab-wiki_user' => 'Pagina de usator',
 'nstab-media' => 'Pagina multimedia',
 'nstab-special' => 'Pagina special',
 'nstab-project' => 'Pagina de projecto',
@@ -485,7 +485,7 @@ Le administrator responsabile dava iste explication: $1',
 Causas normal de iste problema es: tu ha consultate un \'\'diff\'\' obsolete, o tu sequeva un ligamine de historia verso un pagina que ha essite delite.
 
 Si isto non es le caso, es possibile que tu ha trovate un error in le software.
-Per favor reporta isto a un [[Special:ListUsers/sysop|administrator]], faciente nota del adresse URL.',
+Per favor reporta isto a un [[Special:Listwiki_users/sysop|administrator]], faciente nota del adresse URL.',
 'missingarticle-rev' => '(numero del version: $1)',
 'missingarticle-diff' => '(Diff: $1, $2)',
 'readonly_lag' => 'Le base de datos ha essite automaticamente blocate durante que le servitores de base de datos secundari se synchronisa con le servitor principal.',
@@ -535,7 +535,7 @@ $2',
 'customcssprotected' => 'Tu non ha le permission de modificar iste pagina de CSS perque illo contine le configuration personal de un altere usator.',
 'customjsprotected' => 'Tu non ha le permission de modificar iste pagina de JavaScript perque illo contine le configuration personal de un altere usator.',
 'ns-specialprotected' => 'Le paginas special non es modificabile.',
-'titleprotected' => "Iste titulo ha essite protegite contra creation per [[User:$1|$1]].
+'titleprotected' => "Iste titulo ha essite protegite contra creation per [[wiki_user:$1|$1]].
 Le motivo specificate es ''$2''.",
 'filereadonlyerror' => 'Impossibile modificar le file "$1" perque le repositorio de files "$2" es in modo de lectura sol.
 
@@ -553,7 +553,7 @@ Le administrator qui lo blocava offereva iste explication: "$3".',
 # Login and logout pages
 'logouttext' => "'''Tu ha claudite le session.'''
 
-Tu pote continuar a usar {{SITENAME}} anonymemente, o tu pote [[Special:UserLogin|aperir un nove session]] con le mesme nomine de usator o con un altere.
+Tu pote continuar a usar {{SITENAME}} anonymemente, o tu pote [[Special:wiki_userLogin|aperir un nove session]] con le mesme nomine de usator o con un altere.
 Nota que alcun paginas pote continuar a apparer como si tu esserea ancora authenticate. Pro remediar isto, tu pote vacuar le cache de tu navigator.",
 'welcomecreation' => '== Benvenite, $1! ==
 Tu conto ha essite create.
@@ -569,21 +569,21 @@ Non oblida personalisar tu [[Special:Preferences|preferentias in {{SITENAME}}]].
 'login' => 'Aperir session',
 'nav-login-createaccount' => 'Aperir session / crear conto',
 'loginprompt' => 'Tu debe haber activate le cookies pro poter aperir un session in {{SITENAME}}.',
-'userlogin' => 'Aperir session / crear conto',
-'userloginnocreate' => 'Aperir session',
+'wiki_userlogin' => 'Aperir session / crear conto',
+'wiki_userloginnocreate' => 'Aperir session',
 'logout' => 'Clauder session',
-'userlogout' => 'Clauder session',
+'wiki_userlogout' => 'Clauder session',
 'notloggedin' => 'Tu non ha aperite un session',
 'nologin' => "Tu non ha un conto? '''$1'''.",
 'nologinlink' => 'Crear un conto',
 'createaccount' => 'Crear conto',
 'gotaccount' => "Tu jam ha un conto? '''$1'''.",
 'gotaccountlink' => 'Aperir session',
-'userlogin-resetlink' => 'Datos de authentication oblidate?',
+'wiki_userlogin-resetlink' => 'Datos de authentication oblidate?',
 'createaccountmail' => 'per e-mail',
 'createaccountreason' => 'Motivo:',
 'badretype' => 'Le duo contrasignos que tu scribeva non es identic.',
-'userexists' => 'Iste nomine de usator es jam in uso.
+'wiki_userexists' => 'Iste nomine de usator es jam in uso.
 Selige un altere nomine.',
 'loginerror' => 'Error in le apertura del session',
 'createaccounterror' => 'Non poteva crear le conto: $1',
@@ -599,13 +599,13 @@ Verifica que tu ha activate le "cookies", recarga iste pagina e reproba.',
 'noname' => 'Tu non specificava un nomine de usator valide.',
 'loginsuccesstitle' => 'Session aperite con successo',
 'loginsuccess' => "'''Tu es ora authenticate in {{SITENAME}} como \"\$1\".'''",
-'nosuchuser' => 'Non existe un usator con le nomine "$1".
+'nosuchwiki_user' => 'Non existe un usator con le nomine "$1".
 In le nomines de usator se distingue inter majusculas e minusculas.
-Verifica le orthographia, o [[Special:UserLogin/signup|crea un nove conto]].',
-'nosuchusershort' => 'Non existe un usator con le nomine "$1".
+Verifica le orthographia, o [[Special:wiki_userLogin/signup|crea un nove conto]].',
+'nosuchwiki_usershort' => 'Non existe un usator con le nomine "$1".
 Verifica le orthographia.',
-'nouserspecified' => 'Tu debe specificar un nomine de usator.',
-'login-userblocked' => 'Iste usator es blocate. Apertura de session non permittite.',
+'nowiki_userspecified' => 'Tu debe specificar un nomine de usator.',
+'login-wiki_userblocked' => 'Iste usator es blocate. Apertura de session non permittite.',
 'wrongpassword' => 'Le contrasigno que tu entrava es incorrecte. Per favor reprova.',
 'wrongpasswordempty' => 'Tu non entrava un contrasigno. Per favor reprova.',
 'passwordtooshort' => 'Le contrasignos debe continer al minus {{PLURAL:$1|1 character|$1 characteres}}.',
@@ -651,16 +651,16 @@ Entra un adresse ben formatate, o vacua ille campo.',
 Tu deberea aperir un session e cambiar tu contrasigno ora.
 
 Tu pote ignorar iste message si iste conto ha essite create in error.',
-'usernamehasherror' => 'Le nomine de usator non pote continer grillias/cardinales/signos de numero ("#")',
+'wiki_usernamehasherror' => 'Le nomine de usator non pote continer grillias/cardinales/signos de numero ("#")',
 'login-throttled' => 'Tu ha facite troppo de tentativas de identification.
 Per favor attende ante de probar lo novemente.',
 'login-abort-generic' => 'Apertura de session non succedite - Abortate',
 'loginlanguagelabel' => 'Lingua: $1',
-'suspicious-userlogout' => 'Le requesta de clauder le session ha essite refusate proque illo pare haber essite inviate per un navigator o proxy de cache defectuose.',
+'suspicious-wiki_userlogout' => 'Le requesta de clauder le session ha essite refusate proque illo pare haber essite inviate per un navigator o proxy de cache defectuose.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'Error incognite in le function mail() de PHP',
-'user-mail-no-addy' => 'Tentava inviar e-mail sin adresse de e-mail.',
+'wiki_user-mail-no-addy' => 'Tentava inviar e-mail sin adresse de e-mail.',
 
 # Change password dialog
 'resetpass' => 'Cambiar contrasigno',
@@ -687,7 +687,7 @@ Es possibile que tu ha ja cambiate tu contrasigno o requestate un nove contrasig
 'passwordreset-legend' => 'Reinitialisar contrasigno',
 'passwordreset-disabled' => 'Le reinitialisation de contrasignos ha essite disactivate in iste wiki.',
 'passwordreset-pretext' => '{{PLURAL:$1||Entra un del elementos de datos hic infra}}',
-'passwordreset-username' => 'Nomine de usator:',
+'passwordreset-wiki_username' => 'Nomine de usator:',
 'passwordreset-domain' => 'Dominio:',
 'passwordreset-capture' => 'Vider le e-mail resultante?',
 'passwordreset-capture-help' => 'Si tu marca iste quadrato, le e-mail (con le contrasigno temporari) non solmente essera inviate al usator, ma anque monstrate a te.',
@@ -704,7 +704,7 @@ Tu deberea ora aperir session e eliger un nove contrasigno. Si un altere persona
 requesta, o si tu te ha rememorate tu contrasigno original e non plus
 vole cambiar lo, tu pote ignorar iste message e continuar a usar le ancian
 contrasigno.',
-'passwordreset-emailtext-user' => 'Le usator $1 in {{SITENAME}} requestava un rememoration del detalios de tu conto in {{SITENAME}}
+'passwordreset-emailtext-wiki_user' => 'Le usator $1 in {{SITENAME}} requestava un rememoration del detalios de tu conto in {{SITENAME}}
 ($4). Le {{PLURAL:$3|conto|contos}} de usator sequente es associate con iste adresse de e-mail:
 
 $2
@@ -812,7 +812,7 @@ Illo pote haber essite displaciate o delite durante que tu legeva le pagina.',
 'loginreqlink' => 'aperir un session',
 'loginreqpagetext' => 'Tu debe $1 pro poter vider altere paginas.',
 'accmailtitle' => 'Contrasigno inviate.',
-'accmailtext' => "Un contrasigno generate aleatorimente pro [[User talk:$1|$1]] ha essite inviate a $2.
+'accmailtext' => "Un contrasigno generate aleatorimente pro [[wiki_user talk:$1|$1]] ha essite inviate a $2.
 
 Le contrasigno de iste nove conto pote esser cambiate in le pagina ''[[Special:ChangePassword|Cambiar contrasigno]]'' post que tu ha aperite un session.",
 'newarticle' => '(Nove)',
@@ -821,7 +821,7 @@ Pro crear iste pagina, comencia a scriber in le quadro infra (consulta le [[{{Me
 Si tu ha arrivate a iste pagina per error, clicca le button '''Retornar''' de tu navigator.",
 'anontalkpagetext' => "---- ''Isto es le pagina de discussion pro un usator anonyme qui non ha ancora create un conto, o qui non lo usa. Consequentemente nos debe usar le adresse IP numeric pro identificar le/la.
 Un tal adresse IP pote esser usate in commun per varie personas.
-Si tu es un usator anonyme e pensa que commentos irrelevante ha essite dirigite a te, per favor [[Special:UserLogin/signup|crea un conto]] o [[Special:UserLogin|aperi un session]] pro evitar futur confusiones con altere usatores anonyme.''",
+Si tu es un usator anonyme e pensa que commentos irrelevante ha essite dirigite a te, per favor [[Special:wiki_userLogin/signup|crea un conto]] o [[Special:wiki_userLogin|aperi un session]] pro evitar futur confusiones con altere usatores anonyme.''",
 'noarticletext' => 'Al momento il non ha texto in iste pagina.
 Tu pote [[Special:Search/{{PAGENAME}}|cercar le titulo de iste pagina]] in altere paginas,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} cercar in le registros pertinente],
@@ -833,8 +833,8 @@ o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 
 
 Isto es generalmente causate per sequer un ligamine de historia obsolete a un pagina que ha essite delite.
 Detalios se trova in le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} registro de deletiones].',
-'userpage-userdoesnotexist' => 'Le conto de usator "<nowiki>$1</nowiki>" non es registrate. Per favor verifica que tu vole crear/modificar iste pagina.',
-'userpage-userdoesnotexist-view' => 'Le conto de usator "$1" non es registrate.',
+'wiki_userpage-wiki_userdoesnotexist' => 'Le conto de usator "<nowiki>$1</nowiki>" non es registrate. Per favor verifica que tu vole crear/modificar iste pagina.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Le conto de usator "$1" non es registrate.',
 'blocked-notice-logextract' => 'Iste usator es actualmente blocate.
 Le ultime entrata del registro de blocadas es reproducite ci infra pro information:',
 'clearyourcache' => "'''Nota:''' Post confirmar, il pote esser necessari refrescar le ''cache'' de tu navigator pro vider le cambiamentos.
@@ -842,18 +842,18 @@ Le ultime entrata del registro de blocadas es reproducite ci infra pro informati
 * '''Google Chrome:''' Preme ''Ctrl-Shift-R'' (''⌘-Shift-R'' sur Mac)
 * '''Internet Explorer:''' Tenente ''Ctrl'' clicca ''Refresh (Refrescar)'', o preme ''Ctrl-F5'' 
 * '''Opera:''' Vacua le ''cache'' in ''Tools → Preferences (Utensiles → Preferentias)''",
-'usercssyoucanpreview' => "'''Consilio:''' Usa le button \"{{int:showpreview}}\" pro testar tu nove CSS ante de salveguardar lo.",
-'userjsyoucanpreview' => "'''Consilio:''' Usa le button \"{{int:showpreview}}\" pro testar tu nove JavaScript ante de salveguardar lo.",
-'usercsspreview' => "'''Non oblida que isto es solmente un previsualisation de tu CSS personalisate.'''
+'wiki_usercssyoucanpreview' => "'''Consilio:''' Usa le button \"{{int:showpreview}}\" pro testar tu nove CSS ante de salveguardar lo.",
+'wiki_userjsyoucanpreview' => "'''Consilio:''' Usa le button \"{{int:showpreview}}\" pro testar tu nove JavaScript ante de salveguardar lo.",
+'wiki_usercsspreview' => "'''Non oblida que isto es solmente un previsualisation de tu CSS personalisate.'''
 '''Le modificationes non ha ancora essite salveguardate!'''",
-'userjspreview' => "'''Non oblida que isto es solmente un test/previsualisation de tu JavaScript personalisate.'''
+'wiki_userjspreview' => "'''Non oblida que isto es solmente un test/previsualisation de tu JavaScript personalisate.'''
 '''Illo non ha ancora essite salveguardate!'''",
 'sitecsspreview' => "'''Non oblida que isto es solmente un previsualisation de iste CSS.'''
 '''Le modificationes non ha ancora essite salveguardate!'''",
 'sitejspreview' => "'''Non oblida que isto es solmente un previsualisation de iste codice JavaScript.'''
 '''Le modificationes non ha ancora essite salveguardate!'''",
-'userinvalidcssjstitle' => "'''Attention:''' Le apparentia \"\$1\" non existe.
-Memora que le paginas .css and .js personalisate usa un titulo in minusculas, p.ex. {{ns:user}}:Foo/vector.css e non {{ns:user}}:Foo/Vector.css.",
+'wiki_userinvalidcssjstitle' => "'''Attention:''' Le apparentia \"\$1\" non existe.
+Memora que le paginas .css and .js personalisate usa un titulo in minusculas, p.ex. {{ns:wiki_user}}:Foo/vector.css e non {{ns:wiki_user}}:Foo/Vector.css.",
 'updated' => '(Actualisate)',
 'note' => "'''Nota:'''",
 'previewnote' => "'''Isto es solmente un previsualisation.'''
@@ -863,13 +863,13 @@ Le modificationes non ha ancora essite publicate!",
 si tu opta pro publicar lo.',
 'session_fail_preview' => "'''Nos non poteva processar tu modification proque nos perdeva le datos del session.
 Per favor reprova.
-Si illo ancora non va, prova [[Special:UserLogout|clauder tu session]] e aperir un nove session.'''",
+Si illo ancora non va, prova [[Special:wiki_userLogout|clauder tu session]] e aperir un nove session.'''",
 'session_fail_preview_html' => "'''Nos non poteva processar tu modification proque nos perdeva le datos del session.'''
 
 ''Post que HTML crude es active in {{SITENAME}}, le previsualisation es celate como precaution contra attaccos via JavaScript.''
 
 '''Si isto es un tentativa de modification legitime, per favor reprova lo.
-Si illo ancora non va, prova [[Special:UserLogout|clauder tu session]] e aperir un nove session.'''",
+Si illo ancora non va, prova [[Special:wiki_userLogout|clauder tu session]] e aperir un nove session.'''",
 'token_suffix_mismatch' => "'''Tu modification ha essite refusate proque tu cliente corrumpeva le characteres de punctuation in le indicio de modification.
 Iste refusa es pro evitar le corruption del texto del pagina.
 Isto pote occurrer quando tu usa un servicio problematic de ''proxy'' anonyme a base de web.'''",
@@ -919,7 +919,7 @@ Le administrator qui lo blocava dava iste explication: $1",
 'edittools' => '<!-- Iste texto se monstrara sub le formularios de modificar articulos e de incargar files. -->',
 'nocreatetitle' => 'Creation de paginas limitate',
 'nocreatetext' => '{{SITENAME}} ha restringite le possibilitate de crear nove paginas.
-Tu pote retornar e modificar un pagina existente, o [[Special:UserLogin|aperir un session, o crear un conto]].',
+Tu pote retornar e modificar un pagina existente, o [[Special:wiki_userLogin|aperir un session, o crear un conto]].',
 'nocreate-loggedin' => 'Tu non ha le permission de crear nove paginas.',
 'sectioneditnotsupported-title' => 'Modification de sectiones non supportate',
 'sectioneditnotsupported-text' => 'Non es possibile modificar sectiones individual in iste pagina de modification.',
@@ -970,11 +970,11 @@ Iste parametros ha essite omittite.",
 Per favor controla le comparation infra pro verificar que tu vole facer isto, e postea salveguarda le modificationes infra pro assi disfacer le modification.',
 'undo-failure' => 'Le modification non poteva esser annullate a causa de conflicto con modificationes intermedie.',
 'undo-norev' => 'Impossibile annullar le modification proque illo non existe o esseva delite.',
-'undo-summary' => 'Annullava le version $1 per [[Special:Contributions/$2|$2]] ([[User talk:$2|Discussion]] | [[Special:Contributions/$2|{{MediaWiki:Contribslink}}]])',
+'undo-summary' => 'Annullava le version $1 per [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Discussion]] | [[Special:Contributions/$2|{{MediaWiki:Contribslink}}]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Non pote crear conto',
-'cantcreateaccount-text' => "Le creation de contos desde iste adresse IP ('''$1''') ha essite blocate per [[User:$3|$3]].
+'cantcreateaccount-text' => "Le creation de contos desde iste adresse IP ('''$1''') ha essite blocate per [[wiki_user:$3|$3]].
 
 Le motivo que $3 dava es ''$2''",
 
@@ -1013,9 +1013,9 @@ Prova [[Special:Search|cercar nove paginas relevante]] in le wiki.',
 
 # Revision deletion
 'rev-deleted-comment' => '(summario del modification removite)',
-'rev-deleted-user' => '(nomine de usator eliminate)',
+'rev-deleted-wiki_user' => '(nomine de usator eliminate)',
 'rev-deleted-event' => '(entrata eliminate)',
-'rev-deleted-user-contribs' => '[nomine de usator o adresse IP removite - modification celate ab contributiones]',
+'rev-deleted-wiki_user-contribs' => '[nomine de usator o adresse IP removite - modification celate ab contributiones]',
 'rev-deleted-text-permission' => "Iste version del pagina ha essite '''delite'''.
 Es possibile que se trova detalios in le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} registro de deletiones].",
 'rev-deleted-text-unhide' => "Iste version del pagina ha essite '''delite'''.
@@ -1068,7 +1068,7 @@ Altere administratores in {{SITENAME}} continuara a poter acceder al contento ce
 'revdelete-hide-image' => 'Celar le contento del file',
 'revdelete-hide-name' => 'Celar action e objectivo',
 'revdelete-hide-comment' => 'Celar le summario del modification',
-'revdelete-hide-user' => 'Celar le nomine de usator o adresse IP del modificator',
+'revdelete-hide-wiki_user' => 'Celar le nomine de usator o adresse IP del modificator',
 'revdelete-hide-restricted' => 'Supprimer le datos a administratores assi como a alteres',
 'revdelete-radio-same' => '(non cambiar)',
 'revdelete-radio-set' => 'Si',
@@ -1155,7 +1155,7 @@ Nota que le uso del ligamines de navigation causara le perdita de tote cambios i
 'showhideselectedversions' => 'Revelar/celar le versiones seligite',
 'editundo' => 'disfacer',
 'diff-multi' => '({{PLURAL:$1|Un version intermedie|$1 versiones intermedie}} facite per {{PLURAL:$2|un usator|$2 usatores}} non es monstrate)',
-'diff-multi-manyusers' => '({{PLURAL:$1|Un version intermedie|$1 versiones intermedie}} facite per plus de $2 {{PLURAL:$2|usator|usatores}} non es monstrate)',
+'diff-multi-manywiki_users' => '({{PLURAL:$1|Un version intermedie|$1 versiones intermedie}} facite per plus de $2 {{PLURAL:$2|usator|usatores}} non es monstrate)',
 'difference-missing-revision' => '{{PLURAL:$2|Un version|$2 versiones}} de iste differentia ($1) non ha essite trovate.
 
 Isto es generalmente causate per sequer un ligamine de diff obsolete a un pagina que ha essite delite.
@@ -1240,7 +1240,7 @@ Nota que lor indices del contento de {{SITENAME}} pote esser obsolete.',
 'mypreferences' => 'Preferentias',
 'prefs-edits' => 'Numero de modificationes:',
 'prefsnologin' => 'Tu non ha aperite un session',
-'prefsnologintext' => 'Tu debe <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} aperir session]</span> pro configurar preferentias de usator.',
+'prefsnologintext' => 'Tu debe <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} aperir session]</span> pro configurar preferentias de usator.',
 'changepassword' => 'Cambiar contrasigno',
 'prefs-skin' => 'Apparentia',
 'skin-preview' => 'Previsualisation',
@@ -1248,7 +1248,7 @@ Nota que lor indices del contento de {{SITENAME}} pote esser obsolete.',
 'prefs-beta' => 'Functiones beta',
 'prefs-datetime' => 'Data e hora',
 'prefs-labs' => 'Functiones experimental',
-'prefs-user-pages' => 'Paginas de usator',
+'prefs-wiki_user-pages' => 'Paginas de usator',
 'prefs-personal' => 'Profilo del usator',
 'prefs-rc' => 'Modificationes recente',
 'prefs-watchlist' => 'Observatorio',
@@ -1313,7 +1313,7 @@ Le operation non pote esser disfacite.',
 'prefs-emailconfirm-label' => 'Confirmation del e-mail:',
 'prefs-textboxsize' => 'Dimension del fenestra de modification',
 'youremail' => 'E-mail:',
-'username' => 'Nomine de usator:',
+'wiki_username' => 'Nomine de usator:',
 'uid' => 'ID del usator:',
 'prefs-memberingroups' => 'Membro de {{PLURAL:$1|gruppo|gruppos}}:',
 'prefs-registration' => 'Data de registration:',
@@ -1352,35 +1352,35 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'prefs-displaywatchlist' => 'Optiones de presentation',
 'prefs-diffs' => 'Differentias',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'Sembla valide',
 'email-address-validity-invalid' => 'Un adresse valide es obligatori!',
 
-# User rights
-'userrights' => 'Gestion de derectos de usator',
-'userrights-lookup-user' => 'Gerer gruppos de usatores',
-'userrights-user-editname' => 'Entra un nomine de usator:',
-'editusergroup' => 'Modificar gruppos de usatores',
-'editinguser' => "Cambia le derectos del usator '''[[User:$1|$1]]''' $2",
-'userrights-editusergroup' => 'Modificar gruppos de usatores',
-'saveusergroups' => 'Salveguardar gruppos de usatores',
-'userrights-groupsmember' => 'Membro de:',
-'userrights-groupsmember-auto' => 'Membro implicite de:',
-'userrights-groups-help' => 'Tu pote alterar le gruppos del quales iste usator es membro:
+# wiki_user rights
+'wiki_userrights' => 'Gestion de derectos de usator',
+'wiki_userrights-lookup-wiki_user' => 'Gerer gruppos de usatores',
+'wiki_userrights-wiki_user-editname' => 'Entra un nomine de usator:',
+'editwiki_usergroup' => 'Modificar gruppos de usatores',
+'editingwiki_user' => "Cambia le derectos del usator '''[[wiki_user:$1|$1]]''' $2",
+'wiki_userrights-editwiki_usergroup' => 'Modificar gruppos de usatores',
+'savewiki_usergroups' => 'Salveguardar gruppos de usatores',
+'wiki_userrights-groupsmember' => 'Membro de:',
+'wiki_userrights-groupsmember-auto' => 'Membro implicite de:',
+'wiki_userrights-groups-help' => 'Tu pote alterar le gruppos del quales iste usator es membro:
 * Un quadrato marcate significa que le usator es membro del gruppo in question.
 * Un non marcate significa que ille non es membro de illo.
 * Un * indica que tu non potera eliminar le gruppo quando tu lo ha addite, o vice versa.',
-'userrights-reason' => 'Motivo:',
-'userrights-no-interwiki' => 'Tu non ha le permission de modificar le derectos de usatores in altere wikis.',
-'userrights-nodatabase' => 'Le base de datos $1 non existe o non es local.',
-'userrights-nologin' => 'Tu debe [[Special:UserLogin|aperir un session]] con un conto de administrator pro poter assignar derectos de usator.',
-'userrights-notallowed' => 'Tu conto non ha le permission de adder o remover derectos de usator.',
-'userrights-changeable-col' => 'Gruppos que tu pote modificar',
-'userrights-unchangeable-col' => 'Gruppos que tu non pote modificar',
+'wiki_userrights-reason' => 'Motivo:',
+'wiki_userrights-no-interwiki' => 'Tu non ha le permission de modificar le derectos de usatores in altere wikis.',
+'wiki_userrights-nodatabase' => 'Le base de datos $1 non existe o non es local.',
+'wiki_userrights-nologin' => 'Tu debe [[Special:wiki_userLogin|aperir un session]] con un conto de administrator pro poter assignar derectos de usator.',
+'wiki_userrights-notallowed' => 'Tu conto non ha le permission de adder o remover derectos de usator.',
+'wiki_userrights-changeable-col' => 'Gruppos que tu pote modificar',
+'wiki_userrights-unchangeable-col' => 'Gruppos que tu non pote modificar',
 
 # Groups
 'group' => 'Gruppo:',
-'group-user' => 'Usatores',
+'group-wiki_user' => 'Usatores',
 'group-autoconfirmed' => 'Usatores autoconfirmate',
 'group-bot' => 'Bots',
 'group-sysop' => 'Administratores',
@@ -1388,14 +1388,14 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'group-suppress' => 'Supervisores',
 'group-all' => '(totes)',
 
-'group-user-member' => '{{GENDER:$1|usator|usatrice|usator}}',
+'group-wiki_user-member' => '{{GENDER:$1|usator|usatrice|usator}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|usator|usatrice|usator}} autoconfirmate',
 'group-bot-member' => '{{GENDER:$1|robot}}',
 'group-sysop-member' => '{{GENDER:$1|administrator|administratrice|administrator}}',
 'group-bureaucrat-member' => '{{GENDER:$1|bureaucrate}}',
 'group-suppress-member' => '{{GENDER:$1|supervisor|supervisora}}',
 
-'grouppage-user' => '{{ns:project}}:Usatores',
+'grouppage-wiki_user' => '{{ns:project}}:Usatores',
 'grouppage-autoconfirmed' => '{{ns:project}}:Usatores autoconfirmate',
 'grouppage-bot' => '{{ns:project}}:Bots',
 'grouppage-sysop' => '{{ns:project}}:Administratores',
@@ -1411,7 +1411,7 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'right-minoredit' => 'Marcar modificationes como minor',
 'right-move' => 'Renominar paginas',
 'right-move-subpages' => 'Renominar paginas con lor subpaginas',
-'right-move-rootuserpages' => 'Renominar le paginas radice de usator',
+'right-move-rootwiki_userpages' => 'Renominar le paginas radice de usator',
 'right-movefile' => 'Renominar files',
 'right-suppressredirect' => 'Non rediriger le ancian nomine verso le nove quando se renomina un pagina',
 'right-upload' => 'Incargar files',
@@ -1437,16 +1437,16 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'right-suppressionlog' => 'Vider registros private',
 'right-block' => 'Blocar altere usatores de facer modificationes',
 'right-blockemail' => 'Blocar un usator de inviar e-mail',
-'right-hideuser' => 'Blocar un nomine de usator, celante lo del publico',
+'right-hidewiki_user' => 'Blocar un nomine de usator, celante lo del publico',
 'right-ipblock-exempt' => 'Contornar le blocadas de adresses IP, blocadas automatic e blocadas de intervallos IP',
 'right-proxyunbannable' => 'Contornar le blocadas automatic de proxy',
 'right-unblockself' => 'Disblocar se mesme',
 'right-protect' => 'Cambiar nivellos de protection e modificar paginas protegite',
 'right-editprotected' => 'Modificar paginas protegite (sin cascada)',
 'right-editinterface' => 'Modificar le interfacie de usator',
-'right-editusercssjs' => 'Modificar le files CSS e JS de altere usatores',
-'right-editusercss' => 'Modificar le files CSS de altere usatores',
-'right-edituserjs' => 'Modificar le files JS de altere usatores',
+'right-editwiki_usercssjs' => 'Modificar le files CSS e JS de altere usatores',
+'right-editwiki_usercss' => 'Modificar le files CSS de altere usatores',
+'right-editwiki_userjs' => 'Modificar le files JS de altere usatores',
 'right-rollback' => 'Rapidemente revocar le modificationes del ultime usator que modificava un pagina particular',
 'right-markbotedits' => 'Marcar modificationes de reversion como facite per un bot',
 'right-noratelimit' => 'Non esser subjecte al limites de frequentia de actiones',
@@ -1457,14 +1457,14 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'right-patrolmarks' => 'Vider marcas de patrulia in le modificationes recente',
 'right-unwatchedpages' => 'Vider un lista de paginas non observate',
 'right-mergehistory' => 'Fusionar le historia de paginas',
-'right-userrights' => 'Modificar tote le derectos de usator',
-'right-userrights-interwiki' => 'Modificar le derectos de usatores in altere wikis',
+'right-wiki_userrights' => 'Modificar tote le derectos de usator',
+'right-wiki_userrights-interwiki' => 'Modificar le derectos de usatores in altere wikis',
 'right-siteadmin' => 'Blocar e disblocar le base de datos',
 'right-override-export-depth' => 'Exportar paginas includente paginas ligate usque a un profunditate de 5',
 'right-sendemail' => 'Inviar e-mail a altere usatores',
 'right-passwordreset' => 'Vider le e-mails pro reinitialisar le contrasigno',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Registro de derectos de usator',
 'rightslogtext' => 'Isto es un registro de cambios in derectos de usator.',
 'rightslogentry' => 'cambiava le gruppos del quales $1 es membro de $2 a $3',
@@ -1480,7 +1480,7 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'action-minoredit' => 'marcar iste modification como minor',
 'action-move' => 'renominar iste pagina',
 'action-move-subpages' => 'renominar iste pagina e su subpaginas',
-'action-move-rootuserpages' => 'renominar le paginas radice de usator',
+'action-move-rootwiki_userpages' => 'renominar le paginas radice de usator',
 'action-movefile' => 'renominar iste file',
 'action-upload' => 'incargar iste file',
 'action-reupload' => 'superscriber iste file existente',
@@ -1503,8 +1503,8 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'action-autopatrol' => 'haber tu modification marcate como patruliate',
 'action-unwatchedpages' => 'vider le lista de paginas non observate',
 'action-mergehistory' => 'fusionar le historia de iste pagina',
-'action-userrights' => 'modificar tote le derectos de usator',
-'action-userrights-interwiki' => 'modificar le derectos de usatores in altere wikis',
+'action-wiki_userrights' => 'modificar tote le derectos de usator',
+'action-wiki_userrights-interwiki' => 'modificar le derectos de usatores in altere wikis',
 'action-siteadmin' => 'blocar e disblocar le base de datos',
 'action-sendemail' => 'inviar e-mail',
 
@@ -1535,7 +1535,7 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'boteditletter' => 'b',
-'number_of_watching_users_pageview' => '[observate per $1 {{PLURAL:$1|usator|usatores}}]',
+'number_of_watching_wiki_users_pageview' => '[observate per $1 {{PLURAL:$1|usator|usatores}}]',
 'rc_categories' => 'Limite a categorias (separar con "|")',
 'rc_categories_any' => 'Qualcunque',
 'rc-change-size-new' => '$1 {{PLURAL:$1|byte|bytes}} post cambio',
@@ -1561,7 +1561,7 @@ Le paginas presente in [[Special:Watchlist|tu observatorio]] appare in litteras 
 'reuploaddesc' => 'Cancellar e retornar al formulario de incargamento',
 'upload-tryagain' => 'Submitter description modificate del file',
 'uploadnologin' => 'Tu non ha aperite un session',
-'uploadnologintext' => 'Tu debe [[Special:UserLogin|aperir un session]] pro poter incargar files.',
+'uploadnologintext' => 'Tu debe [[Special:wiki_userLogin|aperir un session]] pro poter incargar files.',
 'upload_directory_missing' => 'Le directorio de incargamento ($1) manca, e le servitor de web non poteva crear lo.',
 'upload_directory_read_only' => 'Le servitor web non ha le permission de scriber in le directorio de incargamento ($1).',
 'uploaderror' => 'Error de incargamento',
@@ -1698,11 +1698,11 @@ $1',
 'upload-proto-error-text' => 'Le incargamento remote require que le adresses URL comencia con <code>http://</code> o <code>ftp://</code>.',
 'upload-file-error' => 'Error interne',
 'upload-file-error-text' => 'Un error interne occurreva quando se tentava crear un file temporari in le servitor.
-Per favor contacta un [[Special:ListUsers/sysop|administrator]].',
+Per favor contacta un [[Special:Listwiki_users/sysop|administrator]].',
 'upload-misc-error' => 'Error incognite de incargamento',
 'upload-misc-error-text' => 'Un error non cognoscite occurreva durante le incargamento.
 Per favor verifica que le adresse URL sia valide e accessibile, e reproba.
-Si le problema persiste, contacta un [[Special:ListUsers/sysop|administrator]].',
+Si le problema persiste, contacta un [[Special:Listwiki_users/sysop|administrator]].',
 'upload-too-many-redirects' => 'Le URL contineva troppo de redirectiones',
 'upload-unknown-size' => 'Dimension incognite',
 'upload-http-error' => 'Un error HTTP occurreva: $1',
@@ -1822,7 +1822,7 @@ Si un filtro per usator es active, es monstrate solmente le files del quales le 
 'listfiles_thumb' => 'Miniatura',
 'listfiles_date' => 'Data',
 'listfiles_name' => 'Nomine',
-'listfiles_user' => 'Usator',
+'listfiles_wiki_user' => 'Usator',
 'listfiles_size' => 'Grandor',
 'listfiles_description' => 'Description',
 'listfiles_count' => 'Versiones',
@@ -1839,7 +1839,7 @@ Si un filtro per usator es active, es monstrate solmente le files del quales le 
 'filehist-thumb' => 'Miniatura',
 'filehist-thumbtext' => 'Miniatura pro le version de $1',
 'filehist-nothumb' => 'Nulle miniatura',
-'filehist-user' => 'Usator',
+'filehist-wiki_user' => 'Usator',
 'filehist-dimensions' => 'Dimensiones',
 'filehist-filesize' => 'Dimension del file',
 'filehist-comment' => 'Commento',
@@ -1931,7 +1931,7 @@ Memora verificar que non existe altere ligamines al patronos ante que tu los del
 'statistics-header-pages' => 'Statisticas de paginas',
 'statistics-header-edits' => 'Statisticas de modificationes',
 'statistics-header-views' => 'Statisticas de visitas',
-'statistics-header-users' => 'Statisticas de usatores',
+'statistics-header-wiki_users' => 'Statisticas de usatores',
 'statistics-header-hooks' => 'Altere statisticas',
 'statistics-articles' => 'Paginas de contento',
 'statistics-pages' => 'Paginas',
@@ -1942,9 +1942,9 @@ Memora verificar que non existe altere ligamines al patronos ante que tu los del
 'statistics-views-total' => 'Visitas total',
 'statistics-views-total-desc' => 'Le visitas a paginas inexistente e special non es includite',
 'statistics-views-peredit' => 'Visitas per modification',
-'statistics-users' => '[[Special:ListUsers|Usatores]] registrate',
-'statistics-users-active' => 'Usatores active',
-'statistics-users-active-desc' => 'Usatores qui ha facite un action durante le {{PLURAL:$1|die|$1 dies}} passate',
+'statistics-wiki_users' => '[[Special:Listwiki_users|Usatores]] registrate',
+'statistics-wiki_users-active' => 'Usatores active',
+'statistics-wiki_users-active-desc' => 'Usatores qui ha facite un action durante le {{PLURAL:$1|die|$1 dies}} passate',
 'statistics-mostpopular' => 'Le paginas plus visitate',
 
 'disambiguations' => 'Paginas con ligamines a paginas de disambiguation',
@@ -2022,13 +2022,13 @@ Le entratas <del>cancellate</del> ha essite resolvite.',
 'protectedtitles' => 'Titulos protegite',
 'protectedtitlestext' => 'Le sequente titulos es protegite de esser create',
 'protectedtitlesempty' => 'Nulle titulos es actualmente protegite con iste parametros.',
-'listusers' => 'Lista de usatores',
-'listusers-editsonly' => 'Monstrar solmente usatores con modificationes',
-'listusers-creationsort' => 'Ordinar per data de creation',
-'usereditcount' => '$1 {{PLURAL:$1|modification|modificationes}}',
-'usercreated' => '{{GENDER:$3|Create}} le $1 a $2',
+'listwiki_users' => 'Lista de usatores',
+'listwiki_users-editsonly' => 'Monstrar solmente usatores con modificationes',
+'listwiki_users-creationsort' => 'Ordinar per data de creation',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|modification|modificationes}}',
+'wiki_usercreated' => '{{GENDER:$3|Create}} le $1 a $2',
 'newpages' => 'Nove paginas',
-'newpages-username' => 'Nomine de usator:',
+'newpages-wiki_username' => 'Nomine de usator:',
 'ancientpages' => 'Paginas le plus ancian',
 'move' => 'Renominar',
 'movethispage' => 'Renominar iste pagina',
@@ -2053,7 +2053,7 @@ executar iste function.',
 'booksources-invalid-isbn' => 'Le ISBN date non pare esser valide; verifica que tu non ha facite errores copiante lo del fonte original.',
 
 # Special:Log
-'specialloguserlabel' => 'Executor:',
+'speciallogwiki_userlabel' => 'Executor:',
 'speciallogtitlelabel' => 'Objectivo (titulo o usator):',
 'log' => 'Registros',
 'all-logs-page' => 'Tote le registros public',
@@ -2112,24 +2112,24 @@ Protocollos supportate: <code>$1</code> (http:// es assumite si nulle protocollo
 'linksearch-line' => '$1 ligate ab $2',
 'linksearch-error' => 'Le metacharacteres pote apparer solmente al initio del nomine de host.',
 
-# Special:ListUsers
-'listusersfrom' => 'Monstrar usatores a partir de:',
-'listusers-submit' => 'Revelar',
-'listusers-noresult' => 'Nulle usator trovate.',
-'listusers-blocked' => '(blocate)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'Monstrar usatores a partir de:',
+'listwiki_users-submit' => 'Revelar',
+'listwiki_users-noresult' => 'Nulle usator trovate.',
+'listwiki_users-blocked' => '(blocate)',
 
-# Special:ActiveUsers
-'activeusers' => 'Lista de usatores active',
-'activeusers-intro' => 'Isto es un lista de usatores que habeva alcun typo de activitate intra le ultime $1 {{PLURAL:$1|die|dies}}.',
-'activeusers-count' => '$1 {{PLURAL:$1|modification|modificationes}} in le ultime {{PLURAL:$3|die|$3 dies}}',
-'activeusers-from' => 'Presentar usatores a partir de:',
-'activeusers-hidebots' => 'Celar bots',
-'activeusers-hidesysops' => 'Celar administratores',
-'activeusers-noresult' => 'Nulle usator trovate.',
+# Special:Activewiki_users
+'activewiki_users' => 'Lista de usatores active',
+'activewiki_users-intro' => 'Isto es un lista de usatores que habeva alcun typo de activitate intra le ultime $1 {{PLURAL:$1|die|dies}}.',
+'activewiki_users-count' => '$1 {{PLURAL:$1|modification|modificationes}} in le ultime {{PLURAL:$3|die|$3 dies}}',
+'activewiki_users-from' => 'Presentar usatores a partir de:',
+'activewiki_users-hidebots' => 'Celar bots',
+'activewiki_users-hidesysops' => 'Celar administratores',
+'activewiki_users-noresult' => 'Nulle usator trovate.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Registro de creation de usatores',
-'newuserlogpagetext' => 'Isto es un registro de creation de usatores.',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Registro de creation de usatores',
+'newwiki_userlogpagetext' => 'Isto es un registro de creation de usatores.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Derectos del gruppos de usatores',
@@ -2150,30 +2150,30 @@ Il pote haber [[{{MediaWiki:Listgrouprights-helppage}}|informationes additional]
 'listgrouprights-addgroup-self-all' => 'Pote adder tote le gruppos al proprie conto',
 'listgrouprights-removegroup-self-all' => 'Pote remover tote le gruppos del proprie conto',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'Necun adresse de invio',
-'mailnologintext' => 'Tu debe [[Special:UserLogin|aperir un session]]
+'mailnologintext' => 'Tu debe [[Special:wiki_userLogin|aperir un session]]
 e haber un adresse de e-mail valide in tu [[Special:Preferences|preferentias]]
 pro inviar e-mail a altere usatores.',
-'emailuser' => 'Inviar e-mail a iste usator',
-'emailuser-title-target' => 'Inviar e-mail a iste {{GENDER:$1|usator|usatrice}}',
-'emailuser-title-notarget' => 'Inviar e-mail al usator',
+'emailwiki_user' => 'Inviar e-mail a iste usator',
+'emailwiki_user-title-target' => 'Inviar e-mail a iste {{GENDER:$1|usator|usatrice}}',
+'emailwiki_user-title-notarget' => 'Inviar e-mail al usator',
 'emailpage' => 'Inviar e-mail al usator',
 'emailpagetext' => 'Le formulario sequente es pro inviar un message de e-mail a iste {{GENDER:$1|usator}}.
 Le adresse de e-mail que tu specificava in [[Special:Preferences|tu preferentias de usator]] apparera
 como le adresse del expeditor, de sorta que le destinatario potera responder te directemente.',
-'usermailererror' => 'Le objecto de e-mail retornava le error:',
+'wiki_usermailererror' => 'Le objecto de e-mail retornava le error:',
 'defemailsubject' => 'E-mail del usator "$1" de {{SITENAME}}',
-'usermaildisabled' => 'E-mail a usatores disactivate',
-'usermaildisabledtext' => 'Tu non pote inviar e-mail a altere usatores in iste wiki',
+'wiki_usermaildisabled' => 'E-mail a usatores disactivate',
+'wiki_usermaildisabledtext' => 'Tu non pote inviar e-mail a altere usatores in iste wiki',
 'noemailtitle' => 'Nulle adresse de e-mail',
 'noemailtext' => 'Iste usator non ha specificate un adresse de e-mail valide.',
 'nowikiemailtitle' => 'E-mail non permittite',
 'nowikiemailtext' => 'Iste usator ha optate pro non reciper e-mail de altere usatores.',
 'emailnotarget' => 'Nomine de usator inexistente o invalide pro le destinatario.',
 'emailtarget' => 'Specifica le nomine de usator del destinatario.',
-'emailusername' => 'Nomine de usator:',
-'emailusernamesubmit' => 'Submitter',
+'emailwiki_username' => 'Nomine de usator:',
+'emailwiki_usernamesubmit' => 'Submitter',
 'email-legend' => 'Inviar e-mail a un altere usator de {{SITENAME}}',
 'emailfrom' => 'Expeditor:',
 'emailto' => 'Destinatario:',
@@ -2184,11 +2184,11 @@ como le adresse del expeditor, de sorta que le destinatario potera responder te 
 'emailccsubject' => 'Copia de tu message a $1: $2',
 'emailsent' => 'E-mail inviate',
 'emailsenttext' => 'Tu message de e-mail ha essite inviate.',
-'emailuserfooter' => 'Iste e-mail esseva inviate per $1 a $2 con le function "Inviar e-mail al usator" a {{SITENAME}}.',
+'emailwiki_userfooter' => 'Iste e-mail esseva inviate per $1 a $2 con le function "Inviar e-mail al usator" a {{SITENAME}}.',
 
-# User Messenger
-'usermessage-summary' => 'Lassante un message de systema.',
-'usermessage-editor' => 'Messagero del systema',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'Lassante un message de systema.',
+'wiki_usermessage-editor' => 'Messagero del systema',
 
 # Watchlist
 'watchlist' => 'Mi observatorio',
@@ -2197,7 +2197,7 @@ como le adresse del expeditor, de sorta que le destinatario potera responder te 
 'nowatchlist' => 'Tu non ha paginas sub observation.',
 'watchlistanontext' => 'Tu debe $1 pro poter vider o modificar entratas in tu observatorio.',
 'watchnologin' => 'Tu non ha aperite un session',
-'watchnologintext' => 'Tu debe [[Special:UserLogin|aperir un session]] pro modificar tu observatorio.',
+'watchnologintext' => 'Tu debe [[Special:wiki_userLogin|aperir un session]] pro modificar tu observatorio.',
 'addwatch' => 'Adder al observatorio',
 'addedwatchtext' => "Le pagina \"[[:\$1]]\" ha essite addite a tu [[Special:Watchlist|observatorio]].
 Le modificationes futur in iste pagina e in su pagina de discussion essera listate ibi,
@@ -2313,13 +2313,13 @@ procede con caution.',
 'rollbackfailed' => 'Revocation fallite',
 'cantrollback' => 'Impossibile revocar le modification;
 le ultime contributor es le sol autor de iste pagina.',
-'alreadyrolled' => 'Non pote revocar le ultime modification de [[:$1]] per [[User:$2|$2]] ([[User talk:$2|discussion]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
+'alreadyrolled' => 'Non pote revocar le ultime modification de [[:$1]] per [[wiki_user:$2|$2]] ([[wiki_user talk:$2|discussion]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
 un altere persona ha ja modificate o revocate le pagina.
 
-Le ultime modification esseva facite per [[User:$3|$3]] ([[User talk:$3|discussion]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+Le ultime modification esseva facite per [[wiki_user:$3|$3]] ([[wiki_user talk:$3|discussion]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "Le summario del modification esseva: \"''\$1''\".",
-'revertpage' => 'Reverteva modificationes per [[Special:Contributions/$2|$2]] ([[User talk:$2|Discussion]]) al ultime version per [[User:$1|$1]]',
-'revertpage-nouser' => 'Reverteva modificationes per (nomine de usator removite) al ultime version per [[User:$1|$1]]',
+'revertpage' => 'Reverteva modificationes per [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Discussion]]) al ultime version per [[wiki_user:$1|$1]]',
+'revertpage-nowiki_user' => 'Reverteva modificationes per (nomine de usator removite) al ultime version per [[wiki_user:$1|$1]]',
 'rollback-success' => 'Revocava modificationes per $1;
 retornava al version per $2.',
 
@@ -2478,12 +2478,12 @@ $1',
 'sp-contributions-uploads' => 'incargamentos',
 'sp-contributions-logs' => 'registros',
 'sp-contributions-talk' => 'discussion',
-'sp-contributions-userrights' => 'gestion de derectos de usator',
+'sp-contributions-wiki_userrights' => 'gestion de derectos de usator',
 'sp-contributions-blocked-notice' => 'Iste usator es actualmente blocate. Le ultime entrata del registro de blocadas es reproducite ci infra pro information:',
 'sp-contributions-blocked-notice-anon' => 'Iste adresse IP es actualmente blocate.
 Le ultime entrata del registro de blocadas es reproducite hic infra pro information:',
 'sp-contributions-search' => 'Cercar contributiones',
-'sp-contributions-username' => 'Adresse IP o nomine de usator:',
+'sp-contributions-wiki_username' => 'Adresse IP o nomine de usator:',
 'sp-contributions-toponly' => 'Monstrar solmente le versiones recente',
 'sp-contributions-submit' => 'Cercar',
 
@@ -2519,7 +2519,7 @@ Isto debe esser facite solmente pro impedir vandalismo, e de
 accordo con le [[{{MediaWiki:Policy-url}}|politica de {{SITENAME}}]].
 Scribe un motivo specific infra (per exemplo, citante paginas
 specific que ha essite vandalisate).',
-'ipadressorusername' => 'Adresse IP o nomine de usator:',
+'ipadressorwiki_username' => 'Adresse IP o nomine de usator:',
 'ipbexpiry' => 'Expiration:',
 'ipbreason' => 'Motivo:',
 'ipbreasonotherlist' => 'Altere motivo',
@@ -2541,8 +2541,8 @@ specific que ha essite vandalisate).',
 'ipbotheroption' => 'altere',
 'ipbotherreason' => 'Motivo altere/additional:',
 'ipbhidename' => 'Celar le nomine del usator del modificationes e del listas',
-'ipbwatchuser' => 'Observar le paginas de usator e de discussion de iste usator',
-'ipb-disableusertalk' => 'Impedir iste usator de modificar su proprie pagina de discussion durante que ille es blocate',
+'ipbwatchwiki_user' => 'Observar le paginas de usator e de discussion de iste usator',
+'ipb-disablewiki_usertalk' => 'Impedir iste usator de modificar su proprie pagina de discussion durante que ille es blocate',
 'ipb-change-block' => 'Reblocar le usator con iste configurationes',
 'ipb-confirm' => 'Confirmar blocada',
 'badipaddress' => 'Adresse IP mal formate.',
@@ -2550,7 +2550,7 @@ specific que ha essite vandalisate).',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] ha essite blocate.<br />
 Vide le [[Special:BlockList|lista de blocadas]] pro revider le blocadas.',
 'ipb-blockingself' => 'Tu sta super le puncto de blocar te mesme! Es tu secur de voler facer isto?',
-'ipb-confirmhideuser' => 'Tu es super le puncto de blocar un usator con le option "celar usator" activate. Isto supprimera le nomine del usator in tote le listas e entratas de registro. Es tu secur de voler facer isto?',
+'ipb-confirmhidewiki_user' => 'Tu es super le puncto de blocar un usator con le option "celar usator" activate. Isto supprimera le nomine del usator in tote le listas e entratas de registro. Es tu secur de voler facer isto?',
 'ipb-edit-dropdown' => 'Modificar le motivos pro blocar',
 'ipb-unblock-addr' => 'Disblocar $1',
 'ipb-unblock' => 'Disblocar un nomine de usator o un adresse IP',
@@ -2560,13 +2560,13 @@ Vide le [[Special:BlockList|lista de blocadas]] pro revider le blocadas.',
 'unblockiptext' => 'Usa le formulario infra pro restaurar le accesso de scriptura
 a un adresse IP blocate previemente.',
 'ipusubmit' => 'Cancellar iste blocada',
-'unblocked' => '[[User:$1|$1]] ha essite disblocate',
+'unblocked' => '[[wiki_user:$1|$1]] ha essite disblocate',
 'unblocked-range' => '$1 ha essite disblocate',
 'unblocked-id' => 'Le blocada $1 ha essite eliminate',
 'blocklist' => 'Usatores blocate',
 'ipblocklist' => 'Usatores blocate',
 'ipblocklist-legend' => 'Cercar un usator blocate',
-'blocklist-userblocks' => 'Celar blocadas de conto',
+'blocklist-wiki_userblocks' => 'Celar blocadas de conto',
 'blocklist-tempblocks' => 'Celar blocadas temporari',
 'blocklist-addressblocks' => 'Celar blocadas de singule adresse IP',
 'blocklist-rangeblocks' => 'Celar blocadas de gruppos de adresses IP',
@@ -2585,7 +2585,7 @@ a un adresse IP blocate previemente.',
 'noautoblockblock' => 'autoblocadas disactivate',
 'createaccountblock' => 'creation de contos blocate',
 'emailblock' => 'e-mail blocate',
-'blocklist-nousertalk' => 'non pote modificar su proprie pagina de discussion',
+'blocklist-nowiki_usertalk' => 'non pote modificar su proprie pagina de discussion',
 'ipblocklist-empty' => 'Le lista de blocadas es vacue.',
 'ipblocklist-no-results' => 'Le adresse IP o nomine de usator que tu requestava non es blocate.',
 'blocklink' => 'blocar',
@@ -2593,7 +2593,7 @@ a un adresse IP blocate previemente.',
 'change-blocklink' => 'cambiar blocada',
 'contribslink' => 'contributiones',
 'emaillink' => 'inviar e-mail',
-'autoblocker' => 'Automaticamente blocate proque tu adresse IP ha recentemente essite usate per "[[User:$1|$1]]".
+'autoblocker' => 'Automaticamente blocate proque tu adresse IP ha recentemente essite usate per "[[wiki_user:$1|$1]]".
 Le motivo specificate pro le blocada de $1 es: "$2"',
 'blocklogpage' => 'Registro de blocadas',
 'blocklog-showlog' => 'Iste usator ha essite blocate previemente. Le registro de blocadas es providite ci infra pro referentia:',
@@ -2608,7 +2608,7 @@ Vide le [[Special:BlockList|lista de blocadas]] pro le lista de bannimentos e bl
 'block-log-flags-nocreate' => 'creation de contos disactivate',
 'block-log-flags-noautoblock' => 'autoblocadas disactivate',
 'block-log-flags-noemail' => 'e-mail blocate',
-'block-log-flags-nousertalk' => 'non pote modificar su proprie pagina de discussion',
+'block-log-flags-nowiki_usertalk' => 'non pote modificar su proprie pagina de discussion',
 'block-log-flags-angry-autoblock' => 'autoblocadas avantiate activate',
 'block-log-flags-hiddenname' => 'nomine de usator celate',
 'range_block_disabled' => 'Le capacitate del administratores a blocar intervallos de adresses IP es disactivate.',
@@ -2618,7 +2618,7 @@ Vide le [[Special:BlockList|lista de blocadas]] pro le lista de bannimentos e bl
 'ipb_already_blocked' => '"$1" es ja blocate',
 'ipb-needreblock' => '$1 es ja blocate. Esque tu vole cambiar le configurationes?',
 'ipb-otherblocks-header' => 'Altere {{PLURAL:$1|blocada|blocadas}}',
-'unblock-hideuser' => 'Tu non pote disblocar iste usator, proque su nomine de usator ha essite celate.',
+'unblock-hidewiki_user' => 'Tu non pote disblocar iste usator, proque su nomine de usator ha essite celate.',
 'ipb_cant_unblock' => 'Error: ID de blocada $1 non trovate. Es possibile que illo ha ja essite disblocate.',
 'ipb_blocked_as_range' => 'Error: Le IP $1 non es blocate directemente e non pote esser disblocate.
 Illo es, nonobstante, blocate como parte del intervallo $2, le qual pote esser disblocate.',
@@ -2634,7 +2634,7 @@ Per favor contacta tu providitor de servicio internet o supporto technic e infor
 'sorbs_create_account_reason' => 'Tu adresse IP es listate como proxy aperte in le DNSBL usate per {{SITENAME}}.
 Tu non pote crear un conto',
 'cant-block-while-blocked' => 'Tu non pote blocar altere usatores durante que tu mesme es blocate.',
-'cant-see-hidden-user' => 'Le usator que tu tenta blocar ha ja essite blocate e celate. Post que tu non ha le derecto hideuser, tu non pote vider o modificar le blocada del usator.',
+'cant-see-hidden-wiki_user' => 'Le usator que tu tenta blocar ha ja essite blocate e celate. Post que tu non ha le derecto hidewiki_user, tu non pote vider o modificar le blocada del usator.',
 'ipbblocked' => 'Tu non pote blocar o disblocar altere usatores, proque tu mesme es blocate',
 'ipbnounblockself' => 'Tu non ha le permission de disblocar te mesme',
 
@@ -2697,13 +2697,13 @@ per favor assecura te de haber comprendite le consequentias de isto ante de cont
 
 Il tal casos, tu debera renominar o fusionar le pagina manualmente si desirate.",
 'movearticle' => 'Renominar pagina:',
-'moveuserpage-warning' => "'''Attention:''' Tu es super le puncto de renominar un pagina de usator. Nota ben que solmente le pagina, e ''non'' le usator, essera renominate.",
+'movewiki_userpage-warning' => "'''Attention:''' Tu es super le puncto de renominar un pagina de usator. Nota ben que solmente le pagina, e ''non'' le usator, essera renominate.",
 'movenologin' => 'Tu non ha aperite un session',
-'movenologintext' => 'Tu debe esser un usator registrate e [[Special:UserLogin|aperir un session]] pro poter renominar un pagina.',
+'movenologintext' => 'Tu debe esser un usator registrate e [[Special:wiki_userLogin|aperir un session]] pro poter renominar un pagina.',
 'movenotallowed' => 'Tu non ha le permission de renominar paginas.',
 'movenotallowedfile' => 'Tu non ha le permission de renominar files.',
-'cant-move-user-page' => 'Tu non ha le permission de renominar paginas principal de usatores.',
-'cant-move-to-user-page' => 'Tu non ha le permission de renominar un pagina verso un pagina de usator (excepte un subpagina de usator).',
+'cant-move-wiki_user-page' => 'Tu non ha le permission de renominar paginas principal de usatores.',
+'cant-move-to-wiki_user-page' => 'Tu non ha le permission de renominar un pagina verso un pagina de usator (excepte un subpagina de usator).',
 'newtitle' => 'Al nove titulo:',
 'move-watch' => 'Observar le paginas de origine e de destination',
 'movepagebtn' => 'Renominar pagina',
@@ -2878,8 +2878,8 @@ Salveguarda lo in tu computator e incarga lo hic.',
 'javascripttest-qunit-heading' => 'Programmas de test QUnit de JavaScript de MediaWiki',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Tu pagina de usator',
-'tooltip-pt-anonuserpage' => 'Le pagina de usator pro le adresse IP desde le qual tu face modificationes',
+'tooltip-pt-wiki_userpage' => 'Tu pagina de usator',
+'tooltip-pt-anonwiki_userpage' => 'Le pagina de usator pro le adresse IP desde le qual tu face modificationes',
 'tooltip-pt-mytalk' => 'Tu pagina de discussion',
 'tooltip-pt-anontalk' => 'Discussion super le modificationes facite desde iste adresse IP',
 'tooltip-pt-preferences' => 'Mi preferentias',
@@ -2917,13 +2917,13 @@ Per favor usa le previsualisation ante de publicar.',
 'tooltip-feed-rss' => 'Syndication RSS pro iste pagina',
 'tooltip-feed-atom' => 'Syndication Atom pro iste pagina',
 'tooltip-t-contributions' => 'Vider le lista de contributiones de iste usator',
-'tooltip-t-emailuser' => 'Inviar un e-mail a iste usator',
+'tooltip-t-emailwiki_user' => 'Inviar un e-mail a iste usator',
 'tooltip-t-upload' => 'Incargar files',
 'tooltip-t-specialpages' => 'Lista de tote le paginas special',
 'tooltip-t-print' => 'Version imprimibile de iste pagina',
 'tooltip-t-permalink' => 'Ligamine permanente a iste version del pagina',
 'tooltip-ca-nstab-main' => 'Vider le pagina de contento',
-'tooltip-ca-nstab-user' => 'Vider le pagina de usator',
+'tooltip-ca-nstab-wiki_user' => 'Vider le pagina de usator',
 'tooltip-ca-nstab-media' => 'Vider le pagina de media',
 'tooltip-ca-nstab-special' => 'Isto es un pagina special, tu non pote modificar le pagina mesme',
 'tooltip-ca-nstab-project' => 'Vider le pagina de projecto',
@@ -2979,13 +2979,13 @@ Es possibile adder un motivo in le summario.',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|Usator|Usatores}} anonyme de {{SITENAME}}',
-'siteuser' => 'Usator $1 de {{SITENAME}}',
-'anonuser' => 'le usator anonyme $1 de {{SITENAME}}',
+'sitewiki_user' => 'Usator $1 de {{SITENAME}}',
+'anonwiki_user' => 'le usator anonyme $1 de {{SITENAME}}',
 'lastmodifiedatby' => 'Le modification le plus recente de iste pagina esseva facite le $1 a $2 per $3.',
 'othercontribs' => 'A base de contributiones per $1.',
 'others' => 'alteres',
-'siteusers' => 'le {{PLURAL:$2|usator|usatores}} $1 de {{SITENAME}}',
-'anonusers' => 'le {{PLURAL:$2|usator|usatores}} anonyme $1 de {{SITENAME}}',
+'sitewiki_users' => 'le {{PLURAL:$2|usator|usatores}} $1 de {{SITENAME}}',
+'anonwiki_users' => 'le {{PLURAL:$2|usator|usatores}} anonyme $1 de {{SITENAME}}',
 'creditspage' => 'Autores del pagina',
 'nocredits' => 'Nulle information es disponibile super le autores de iste pagina.',
 
@@ -2994,7 +2994,7 @@ Es possibile adder un motivo in le summario.',
 'spamprotectiontext' => 'Le pagina que tu voleva salveguardar esseva blocate per le filtro antispam.
 Le causa es probabilemente un ligamine verso un sito externe que es presente in un lista nigre.',
 'spamprotectionmatch' => 'Le sequente texto es lo que activava nostre filtro antispam: $1',
-'spambot_username' => 'Nettamento de spam in MediaWiki',
+'spambot_wiki_username' => 'Nettamento de spam in MediaWiki',
 'spam_reverting' => 'Revertite al ultime version que non contine ligamines a $1',
 'spam_blanking' => 'Tote le versiones contineva ligamines a $1. Le pagina es vacuate.',
 'spam_deleting' => 'Tote le versiones contineva ligamines a $1. Le pagina es delite.',
@@ -3018,9 +3018,9 @@ Le causa es probabilemente un ligamine verso un sito externe que es presente in 
 'pageinfo-redirects-name' => 'Redirectiones verso iste pagina',
 'pageinfo-subpages-name' => 'Subpaginas de iste pagina',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|redirection|redirectiones}}; $3 {{PLURAL:$3|non-redirection|non-redirectiones}})',
-'pageinfo-firstuser' => 'Creator del pagina',
+'pageinfo-firstwiki_user' => 'Creator del pagina',
 'pageinfo-firsttime' => 'Data de creation del pagina',
-'pageinfo-lastuser' => 'Ultime contributor',
+'pageinfo-lastwiki_user' => 'Ultime contributor',
 'pageinfo-lasttime' => 'Data del ultime modification',
 'pageinfo-edits' => 'Numero total de modificationes',
 'pageinfo-authors' => 'Numero total de autores distincte',
@@ -3179,7 +3179,7 @@ Le alteres essera initialmente celate.
 'exif-compressedbitsperpixel' => 'Modo de compression del imagine',
 'exif-pixelydimension' => 'Latitude del imagine',
 'exif-pixelxdimension' => 'Altitude del imagine',
-'exif-usercomment' => 'Commentos del usator',
+'exif-wiki_usercomment' => 'Commentos del usator',
 'exif-relatedsoundfile' => 'File audio connexe',
 'exif-datetimeoriginal' => 'Data e hora del generation del datos',
 'exif-datetimedigitized' => 'Data e hora del digitalisation',
@@ -3619,10 +3619,10 @@ Iste codice de confirmation expirara a $4.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Attention:''' Iste pagina esseva delite post que tu comenciava a modificar lo!",
-'confirmrecreate' => "Le usator [[User:$1|$1]] ([[User talk:$1|discussion]]) ha delite iste pagina post que tu comenciava a modificar lo, dante le motivo:
+'confirmrecreate' => "Le usator [[wiki_user:$1|$1]] ([[wiki_user talk:$1|discussion]]) ha delite iste pagina post que tu comenciava a modificar lo, dante le motivo:
 : ''$2''
 Per favor confirma que tu realmente vole recrear iste pagina.",
-'confirmrecreate-noreason' => 'Le usator [[User:$1|$1]] ([[User talk:$1|discussion]]) ha delite iste pagina post que tu comenciava a modificar lo. Per favor confirma que tu realmente vole recrear iste pagina.',
+'confirmrecreate-noreason' => 'Le usator [[wiki_user:$1|$1]] ([[wiki_user talk:$1|discussion]]) ha delite iste pagina post que tu comenciava a modificar lo. Per favor confirma que tu realmente vole recrear iste pagina.',
 'recreate' => 'Recrear',
 
 # action=purge
@@ -3698,7 +3698,7 @@ Tu pote etiam [[Special:EditWatchlist|usar le editor standard]].',
 'watchlisttools-raw' => 'Modificar observatorio crude',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|discussion]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|discussion]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Etiquetta de extension incognite "$1"',
@@ -3767,7 +3767,7 @@ Le imagines se monstra in plen resolution, le altere typos de file se executa di
 'specialpages-group-login' => 'Aperir session / crear conto',
 'specialpages-group-changes' => 'Modificationes recente e registros',
 'specialpages-group-media' => 'Reportos e incargamentos de multimedia',
-'specialpages-group-users' => 'Usatores e derectos',
+'specialpages-group-wiki_users' => 'Usatores e derectos',
 'specialpages-group-highuse' => 'Paginas multo usate',
 'specialpages-group-pages' => 'Listas de paginas',
 'specialpages-group-pagetools' => 'Instrumentos pro paginas',
@@ -3865,11 +3865,11 @@ Le imagines se monstra in plen resolution, le altere typos de file se executa di
 'logentry-move-move_redir-noredirect' => '$1 renominava le pagina $3 a $4, superscribente un redirection sin lassar un nove redirection',
 'logentry-patrol-patrol' => '$1 marcava le version $4 del pagina $3 como patruliate',
 'logentry-patrol-patrol-auto' => '$1 automaticamente marcava le version $4 del pagina $3 como patruliate',
-'logentry-newusers-newusers' => 'Le conto de usator $1 ha essite create',
-'logentry-newusers-create' => 'Le conto de usator $1 ha essite create',
-'logentry-newusers-create2' => 'Le conto de usator $3 ha essite create per $1',
-'logentry-newusers-autocreate' => 'Le conto $1 ha essite create automaticamente',
-'newuserlog-byemail' => 'contrasigno inviate per e-mail',
+'logentry-newwiki_users-newwiki_users' => 'Le conto de usator $1 ha essite create',
+'logentry-newwiki_users-create' => 'Le conto de usator $1 ha essite create',
+'logentry-newwiki_users-create2' => 'Le conto de usator $3 ha essite create per $1',
+'logentry-newwiki_users-autocreate' => 'Le conto $1 ha essite create automaticamente',
+'newwiki_userlog-byemail' => 'contrasigno inviate per e-mail',
 
 # Feedback
 'feedback-bugornote' => 'Si tu es preste a describer un problema technic in detalio, per favor [$1 reporta un falta].

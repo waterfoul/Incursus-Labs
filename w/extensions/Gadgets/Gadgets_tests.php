@@ -45,7 +45,7 @@ class GadgetsTest extends PHPUnit_Framework_TestCase {
 	}
 
 	function testPreferences() {
-		global $wgUser, $wgOut, $wgTitle;
+		global $wgwiki_user, $wgOut, $wgTitle;
 
 		// This test makes call to the parser which requires valids Outputpage
 		// and Title objects. Set them up there, they will be released at the
@@ -67,7 +67,7 @@ class GadgetsTest extends PHPUnit_Framework_TestCase {
 * baz [rights=embezzle] |baz.js
 ==keep-section2==
 * quux [rights=read] | quux.js' );
-		$this->assertTrue( GadgetHooks::getPreferences( $wgUser, $prefs ), 'GetPrefences hook should return true' );
+		$this->assertTrue( GadgetHooks::getPreferences( $wgwiki_user, $prefs ), 'GetPrefences hook should return true' );
 
 		$options = $prefs['gadgets']['options'];
 		$this->assertFalse( isset( $options['&lt;gadget-section-remove-section&gt;'] ), 'Must not show empty sections' );

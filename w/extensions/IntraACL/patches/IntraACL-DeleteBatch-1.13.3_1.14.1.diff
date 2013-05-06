@@ -8,16 +8,16 @@ diff -r ef0692d273b2 extensions/DeleteBatch/DeleteBatch.body.php
 --- extensions/DeleteBatch/DeleteBatch.body.php	Mon Feb 28 20:10:45 2011 +0300
 +++ extensions/DeleteBatch/DeleteBatch.body.php	Mon Feb 28 20:15:47 2011 +0300
 @@ -232,8 +232,8 @@
- 	function deletePage($line, $reason = '', &$db, $multi = false, $linenum = 0, $user = null) {
- 		global $wgOut, $wgUser;
+ 	function deletePage($line, $reason = '', &, $multi = false, $linenum = 0, $wiki_user = null) {
+ 		global $wgOut, $wgwiki_user;
  		$page = Title::newFromText ($line);
 -			if (is_null($page)) { /* invalid title? */
 -			   	$wgOut->addWikiText( wfMsg('deletebatch-omitting-invalid', $line) );
 +		if (is_null($page)) { /* invalid title? */
 +			$wgOut->addWikiText( wfMsg('deletebatch-omitting-invalid', $line) );
  			if (!$multi) {
- 				if (!is_null($user)) {
- 					$wgUser = $user;
+ 				if (!is_null($wiki_user)) {
+ 					$wgwiki_user = $wiki_user;
 @@ -242,7 +242,18 @@
  			return false;
  		}
@@ -25,19 +25,19 @@ diff -r ef0692d273b2 extensions/DeleteBatch/DeleteBatch.body.php
 -				$wgOut->addWikiText( wfMsg('deletebatch-omitting-nonexistant', $line) );
 +			$wgOut->addWikiText( wfMsg('deletebatch-omitting-nonexistant', $line) );
 +			if (!$multi) {
-+				if (!is_null($user)) {
-+					$wgUser = $user;
++				if (!is_null($wiki_user)) {
++					$wgwiki_user = $wiki_user;
 +				}
 +			}
 +			return false;
 +		}
 +
-+		$allowed = wfRunHooks( 'userCan', array( &$page, &$wgUser, "delete", &$result ) );
++		$allowed = wfRunHooks( 'wiki_userCan', array( &$page, &$wgwiki_user, "delete", &$result ) );
 +		if( !$allowed ) {
 +			$wgOut->addWikiText( wfMsg('deletebatch-permission-denied', $line) );
  			if (!$multi) {
- 				if (!is_null($user)) {
- 					$wgUser = $user;
+ 				if (!is_null($wiki_user)) {
+ 					$wgwiki_user = $wiki_user;
 diff -r ef0692d273b2 extensions/DeleteBatch/DeleteBatch.i18n.php
 --- extensions/DeleteBatch/DeleteBatch.i18n.php	Mon Feb 28 20:10:45 2011 +0300
 +++ extensions/DeleteBatch/DeleteBatch.i18n.php	Mon Feb 28 20:15:47 2011 +0300

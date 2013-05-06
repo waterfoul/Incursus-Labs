@@ -32,13 +32,13 @@
  *  rc_type         is new entry, used to determine whether updating is necessary
  *  rc_minor        is minor
  *  rc_cur_id       page_id of associated page entry
- *  rc_user         user id who made the entry
- *  rc_user_text    user name who made the entry
+ *  rc_wiki_user         wiki_user id who made the entry
+ *  rc_wiki_user_text    wiki_user name who made the entry
  *  rc_comment      edit summary
  *  rc_this_oldid   rev_id associated with this entry (or zero)
  *  rc_last_oldid   rev_id associated with the entry before this one (or zero)
  *  rc_bot          is bot, hidden
- *  rc_ip           IP address of the user in dotted quad notation
+ *  rc_ip           IP address of the wiki_user in dotted quad notation
  *  rc_new          obsolete, use rc_type==RC_NEW
  *  rc_patrolled    boolean whether or not someone has marked this edit as patrolled
  *  rc_old_len      integer byte length of the text before the edit
@@ -58,7 +58,7 @@
  *
  * temporary:       not stored in the database
  *      notificationtimestamp
- *      numberofWatchingusers
+ *      numberofWatchingwiki_users
  *
  * @todo document functions and variables
  */
@@ -71,7 +71,7 @@ class RecentChange {
 	var $mTitle = false;
 
 	/**
-	 * @var User
+	 * @var wiki_user
 	 */
 	private $mPerformer = false;
 
@@ -79,7 +79,7 @@ class RecentChange {
 	 * @var Title
 	 */
 	var $mMovedToTitle = false;
-	var $numberofWatchingusers = 0 ; # Dummy to prevent error message in SpecialRecentchangeslinked
+	var $numberofWatchingwiki_users = 0 ; # Dummy to prevent error message in SpecialRecentchangeslinked
 	var $notificationtimestamp;
 
 	# Factory methods
@@ -102,7 +102,7 @@ class RecentChange {
 		$rc = new RecentChange;
 		$rc->loadFromCurRow( $row );
 		$rc->notificationtimestamp = false;
-		$rc->numberofWatchingusers = false;
+		$rc->numberofWatchingwiki_users = false;
 		return $rc;
 	}
 
@@ -124,8 +124,8 @@ class RecentChange {
 	 * @return RecentChange
 	 */
 	public static function newFromConds( $conds, $fname = __METHOD__ ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow( 'recentchanges', '*', $conds, $fname );
+		r = wfGetDB( DB_SLAVE );
+		$row = r->selectRow( 'recentchanges', '*', $conds, $fname );
 		if ( $row !== false ) {
 			return self::newFromRow( $row );
 		} else {
@@ -174,16 +174,16 @@ class RecentChange {
 	}
 
 	/**
-	 * Get the User object of the person who performed this change.
+	 * Get the wiki_user object of the person who performed this change.
 	 *
-	 * @return User
+	 * @return wiki_user
 	 */
 	public function getPerformer() {
 		if ( $this->mPerformer === false ) {
-			if ( $this->mAttribs['rc_user'] ) {
-				$this->mPerformer = User::newFromID( $this->mAttribs['rc_user'] );
+			if ( $this->mAttribs['rc_wiki_user'] ) {
+				$this->mPerformer = wiki_user::newFromID( $this->mAttribs['rc_wiki_user'] );
 			} else {
-				$this->mPerformer = User::newFromName( $this->mAttribs['rc_user_text'], false );
+				$this->mPerformer = wiki_user::newFromName( $this->mAttribs['rc_wiki_user_text'], false );
 			}
 		}
 		return $this->mPerformer;
@@ -196,7 +196,7 @@ class RecentChange {
 	public function save( $noudp = false ) {
 		global $wgLocalInterwiki, $wgPutIPinRC, $wgUseEnotif, $wgShowUpdatedMarker, $wgContLang;
 
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 		if( !is_array($this->mExtra) ) {
 			$this->mExtra = array();
 		}
@@ -207,7 +207,7 @@ class RecentChange {
 		}
 
 		# If our database is strict about IP addresses, use NULL instead of an empty string
-		if( $dbw->strictIPs() and $this->mAttribs['rc_ip'] == '' ) {
+		if( w->strictIPs() and $this->mAttribs['rc_ip'] == '' ) {
 			unset( $this->mAttribs['rc_ip'] );
 		}
 
@@ -215,20 +215,20 @@ class RecentChange {
 		$this->mAttribs['rc_comment'] = $wgContLang->truncate( $this->mAttribs['rc_comment'], 255 );
 
 		# Fixup database timestamps
-		$this->mAttribs['rc_timestamp'] = $dbw->timestamp($this->mAttribs['rc_timestamp']);
-		$this->mAttribs['rc_cur_time'] = $dbw->timestamp($this->mAttribs['rc_cur_time']);
-		$this->mAttribs['rc_id'] = $dbw->nextSequenceValue( 'recentchanges_rc_id_seq' );
+		$this->mAttribs['rc_timestamp'] = w->timestamp($this->mAttribs['rc_timestamp']);
+		$this->mAttribs['rc_cur_time'] = w->timestamp($this->mAttribs['rc_cur_time']);
+		$this->mAttribs['rc_id'] = w->nextSequenceValue( 'recentchanges_rc_id_seq' );
 
 		## If we are using foreign keys, an entry of 0 for the page_id will fail, so use NULL
-		if( $dbw->cascadingDeletes() and $this->mAttribs['rc_cur_id']==0 ) {
+		if( w->cascadingDeletes() and $this->mAttribs['rc_cur_id']==0 ) {
 			unset( $this->mAttribs['rc_cur_id'] );
 		}
 
 		# Insert new row
-		$dbw->insert( 'recentchanges', $this->mAttribs, __METHOD__ );
+		w->insert( 'recentchanges', $this->mAttribs, __METHOD__ );
 
 		# Set the ID
-		$this->mAttribs['rc_id'] = $dbw->insertId();
+		$this->mAttribs['rc_id'] = w->insertId();
 
 		# Notify extensions
 		wfRunHooks( 'RecentChange_save', array( &$this ) );
@@ -311,7 +311,7 @@ class RecentChange {
 	 * @return Array See doMarkPatrolled(), or null if $change is not an existing rc_id
 	 */
 	public static function markPatrolled( $change, $auto = false ) {
-		global $wgUser;
+		global $wgwiki_user;
 
 		$change = $change instanceof RecentChange
 			? $change
@@ -320,18 +320,18 @@ class RecentChange {
 		if( !$change instanceof RecentChange ) {
 			return null;
 		}
-		return $change->doMarkPatrolled( $wgUser, $auto );
+		return $change->doMarkPatrolled( $wgwiki_user, $auto );
 	}
 
 	/**
 	 * Mark this RecentChange as patrolled
 	 *
 	 * NOTE: Can also return 'rcpatroldisabled', 'hookaborted' and 'markedaspatrollederror-noautopatrol' as errors
-	 * @param $user User object doing the action
+	 * @param $wiki_user wiki_user object doing the action
 	 * @param $auto Boolean: for automatic patrol
-	 * @return array of permissions errors, see Title::getUserPermissionsErrors()
+	 * @return array of permissions errors, see Title::getwiki_userPermissionsErrors()
 	 */
-	public function doMarkPatrolled( User $user, $auto = false ) {
+	public function doMarkPatrolled( wiki_user $wiki_user, $auto = false ) {
 		global $wgUseRCPatrol, $wgUseNPPatrol;
 		$errors = array();
 		// If recentchanges patrol is disabled, only new pages
@@ -341,13 +341,13 @@ class RecentChange {
 		}
 		// Automatic patrol needs "autopatrol", ordinary patrol needs "patrol"
 		$right = $auto ? 'autopatrol' : 'patrol';
-		$errors = array_merge( $errors, $this->getTitle()->getUserPermissionsErrors( $right, $user ) );
-		if( !wfRunHooks('MarkPatrolled', array($this->getAttribute('rc_id'), &$user, false)) ) {
+		$errors = array_merge( $errors, $this->getTitle()->getwiki_userPermissionsErrors( $right, $wiki_user ) );
+		if( !wfRunHooks('MarkPatrolled', array($this->getAttribute('rc_id'), &$wiki_user, false)) ) {
 			$errors[] = array('hookaborted');
 		}
-		// Users without the 'autopatrol' right can't patrol their
+		// wiki_users without the 'autopatrol' right can't patrol their
 		// own revisions
-		if( $user->getName() == $this->getAttribute('rc_user_text') && !$user->isAllowed('autopatrol') ) {
+		if( $wiki_user->getName() == $this->getAttribute('rc_wiki_user_text') && !$wiki_user->isAllowed('autopatrol') ) {
 			$errors[] = array('markedaspatrollederror-noautopatrol');
 		}
 		if( $errors ) {
@@ -360,8 +360,8 @@ class RecentChange {
 		// Actually set the 'patrolled' flag in RC
 		$this->reallyMarkPatrolled();
 		// Log this patrol event
-		PatrolLog::record( $this, $auto, $user );
-		wfRunHooks( 'MarkPatrolledComplete', array($this->getAttribute('rc_id'), &$user, false) );
+		PatrolLog::record( $this, $auto, $wiki_user );
+		wfRunHooks( 'MarkPatrolledComplete', array($this->getAttribute('rc_id'), &$wiki_user, false) );
 		return array();
 	}
 
@@ -370,8 +370,8 @@ class RecentChange {
 	 * @return Integer: number of affected rows
 	 */
 	public function reallyMarkPatrolled() {
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update(
+		w = wfGetDB( DB_MASTER );
+		w->update(
 			'recentchanges',
 			array(
 				'rc_patrolled' => 1
@@ -381,7 +381,7 @@ class RecentChange {
 			),
 			__METHOD__
 		);
-		return $dbw->affectedRows();
+		return w->affectedRows();
 	}
 
 	/**
@@ -390,7 +390,7 @@ class RecentChange {
 	 * @param $timestamp
 	 * @param $title Title
 	 * @param $minor
-	 * @param $user User
+	 * @param $wiki_user wiki_user
 	 * @param $comment
 	 * @param $oldId
 	 * @param $lastTimestamp
@@ -402,11 +402,11 @@ class RecentChange {
 	 * @param $patrol int
 	 * @return RecentChange
 	 */
-	public static function notifyEdit( $timestamp, &$title, $minor, &$user, $comment, $oldId,
+	public static function notifyEdit( $timestamp, &$title, $minor, &$wiki_user, $comment, $oldId,
 		$lastTimestamp, $bot, $ip='', $oldSize=0, $newSize=0, $newId=0, $patrol=0 ) {
 		$rc = new RecentChange;
 		$rc->mTitle = $title;
-		$rc->mPerformer = $user;
+		$rc->mPerformer = $wiki_user;
 		$rc->mAttribs = array(
 			'rc_timestamp'  => $timestamp,
 			'rc_cur_time'   => $timestamp,
@@ -415,8 +415,8 @@ class RecentChange {
 			'rc_type'       => RC_EDIT,
 			'rc_minor'      => $minor ? 1 : 0,
 			'rc_cur_id'     => $title->getArticleID(),
-			'rc_user'       => $user->getId(),
-			'rc_user_text'  => $user->getName(),
+			'rc_wiki_user'       => $wiki_user->getId(),
+			'rc_wiki_user_text'  => $wiki_user->getName(),
 			'rc_comment'    => $comment,
 			'rc_this_oldid' => $newId,
 			'rc_last_oldid' => $oldId,
@@ -453,7 +453,7 @@ class RecentChange {
 	 * @param $timestamp
 	 * @param $title Title
 	 * @param $minor
-	 * @param $user User
+	 * @param $wiki_user wiki_user
 	 * @param $comment
 	 * @param $bot
 	 * @param $ip string
@@ -462,11 +462,11 @@ class RecentChange {
 	 * @param $patrol int
 	 * @return RecentChange
 	 */
-	public static function notifyNew( $timestamp, &$title, $minor, &$user, $comment, $bot,
+	public static function notifyNew( $timestamp, &$title, $minor, &$wiki_user, $comment, $bot,
 		$ip='', $size=0, $newId=0, $patrol=0 ) {
 		$rc = new RecentChange;
 		$rc->mTitle = $title;
-		$rc->mPerformer = $user;
+		$rc->mPerformer = $wiki_user;
 		$rc->mAttribs = array(
 			'rc_timestamp'      => $timestamp,
 			'rc_cur_time'       => $timestamp,
@@ -475,8 +475,8 @@ class RecentChange {
 			'rc_type'           => RC_NEW,
 			'rc_minor'          => $minor ? 1 : 0,
 			'rc_cur_id'         => $title->getArticleID(),
-			'rc_user'           => $user->getId(),
-			'rc_user_text'      => $user->getName(),
+			'rc_wiki_user'           => $wiki_user->getId(),
+			'rc_wiki_user_text'      => $wiki_user->getName(),
 			'rc_comment'        => $comment,
 			'rc_this_oldid'     => $newId,
 			'rc_last_oldid'     => 0,
@@ -508,7 +508,7 @@ class RecentChange {
 	/**
 	 * @param $timestamp
 	 * @param $title
-	 * @param $user
+	 * @param $wiki_user
 	 * @param $actionComment
 	 * @param $ip string
 	 * @param $type
@@ -520,7 +520,7 @@ class RecentChange {
 	 * @param $actionCommentIRC string
 	 * @return bool
 	 */
-	public static function notifyLog( $timestamp, &$title, &$user, $actionComment, $ip, $type,
+	public static function notifyLog( $timestamp, &$title, &$wiki_user, $actionComment, $ip, $type,
 		$action, $target, $logComment, $params, $newId=0, $actionCommentIRC='' )
 	{
 		global $wgLogRestrictions;
@@ -528,7 +528,7 @@ class RecentChange {
 		if( isset($wgLogRestrictions[$type]) && $wgLogRestrictions[$type] != '*' ) {
 			return false;
 		}
-		$rc = self::newLogEntry( $timestamp, $title, $user, $actionComment, $ip, $type, $action,
+		$rc = self::newLogEntry( $timestamp, $title, $wiki_user, $actionComment, $ip, $type, $action,
 			$target, $logComment, $params, $newId, $actionCommentIRC );
 		$rc->save();
 		return true;
@@ -537,7 +537,7 @@ class RecentChange {
 	/**
 	 * @param $timestamp
 	 * @param $title Title
-	 * @param $user User
+	 * @param $wiki_user wiki_user
 	 * @param $actionComment
 	 * @param $ip string
 	 * @param $type
@@ -549,13 +549,13 @@ class RecentChange {
 	 * @param $actionCommentIRC string
 	 * @return RecentChange
 	 */
-	public static function newLogEntry( $timestamp, &$title, &$user, $actionComment, $ip,
+	public static function newLogEntry( $timestamp, &$title, &$wiki_user, $actionComment, $ip,
 		$type, $action, $target, $logComment, $params, $newId=0, $actionCommentIRC='' ) {
 		global $wgRequest;
 
 		$rc = new RecentChange;
 		$rc->mTitle = $target;
-		$rc->mPerformer = $user;
+		$rc->mPerformer = $wiki_user;
 		$rc->mAttribs = array(
 			'rc_timestamp'  => $timestamp,
 			'rc_cur_time'   => $timestamp,
@@ -564,12 +564,12 @@ class RecentChange {
 			'rc_type'       => RC_LOG,
 			'rc_minor'      => 0,
 			'rc_cur_id'     => $target->getArticleID(),
-			'rc_user'       => $user->getId(),
-			'rc_user_text'  => $user->getName(),
+			'rc_wiki_user'       => $wiki_user->getId(),
+			'rc_wiki_user_text'  => $wiki_user->getName(),
 			'rc_comment'    => $logComment,
 			'rc_this_oldid' => 0,
 			'rc_last_oldid' => 0,
-			'rc_bot'        => $user->isAllowed( 'bot' ) ? $wgRequest->getBool( 'bot', true ) : 0,
+			'rc_bot'        => $wiki_user->isAllowed( 'bot' ) ? $wgRequest->getBool( 'bot', true ) : 0,
 			'rc_moved_to_ns' => 0,
 			'rc_moved_to_title' => '',
 			'rc_ip'         => self::checkIPAddress( $ip ),
@@ -613,8 +613,8 @@ class RecentChange {
 		$this->mAttribs = array(
 			'rc_timestamp' => wfTimestamp(TS_MW, $row->rev_timestamp),
 			'rc_cur_time' => $row->rev_timestamp,
-			'rc_user' => $row->rev_user,
-			'rc_user_text' => $row->rev_user_text,
+			'rc_wiki_user' => $row->rev_wiki_user,
+			'rc_wiki_user_text' => $row->rev_wiki_user_text,
 			'rc_namespace' => $row->page_namespace,
 			'rc_title' => $row->page_title,
 			'rc_comment' => $row->rev_comment,
@@ -725,7 +725,7 @@ class RecentChange {
 			$szdiff = '';
 		}
 
-		$user = self::cleanupForIRC( $this->mAttribs['rc_user_text'] );
+		$wiki_user = self::cleanupForIRC( $this->mAttribs['rc_wiki_user_text'] );
 
 		if ( $this->mAttribs['rc_type'] == RC_LOG ) {
 			$targetText = $this->getTitle()->getPrefixedText();
@@ -756,7 +756,7 @@ class RecentChange {
 		# see http://www.irssi.org/documentation/formats for some colour codes. prefix is \003,
 		# no colour (\003) switches back to the term default
 		$fullString = "$titleString\0034 $flag\00310 " .
-					  "\00302$url\003 \0035*\003 \00303$user\003 \0035*\003 $szdiff \00310$comment\003\n";
+					  "\00302$url\003 \0035*\003 \00303$wiki_user\003 \0035*\003 $szdiff \00310$comment\003\n";
 
 		return $fullString;
 	}

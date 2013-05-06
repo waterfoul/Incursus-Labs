@@ -32,8 +32,8 @@ CREATE TABLE /*$wgDBprefix*/revision (
   rev_id int unsigned NOT NULL auto_increment,
   rev_page int unsigned NOT NULL,
   rev_comment tinyblob NOT NULL,
-  rev_user int unsigned NOT NULL default '0',
-  rev_user_text varchar(255) binary NOT NULL default '',
+  rev_wiki_user int unsigned NOT NULL default '0',
+  rev_wiki_user_text varchar(255) binary NOT NULL default '',
   rev_timestamp binary(14) NOT NULL default '',
   rev_minor_edit tinyint unsigned NOT NULL default '0',
   rev_deleted tinyint unsigned NOT NULL default '0',
@@ -43,8 +43,8 @@ CREATE TABLE /*$wgDBprefix*/revision (
   UNIQUE INDEX rev_id (rev_id),
   INDEX rev_timestamp (rev_timestamp),
   INDEX page_timestamp (rev_page,rev_timestamp),
-  INDEX user_timestamp (rev_user,rev_timestamp),
-  INDEX usertext_timestamp (rev_user_text,rev_timestamp)
+  INDEX wiki_user_timestamp (rev_wiki_user,rev_timestamp),
+  INDEX wiki_usertext_timestamp (rev_wiki_user_text,rev_timestamp)
 );
 
 -- If creating new 'text' table it would look like this:
@@ -71,8 +71,8 @@ INSERT
     old_title,
     old_text,
     old_comment,
-    old_user,
-    old_user_text,
+    old_wiki_user,
+    old_wiki_user_text,
     old_timestamp,
     old_minor_edit,
     old_flags)
@@ -81,8 +81,8 @@ INSERT
     cur_title,
     cur_text,
     cur_comment,
-    cur_user,
-    cur_user_text,
+    cur_wiki_user,
+    cur_wiki_user_text,
     cur_timestamp,
     cur_minor_edit,
     ''
@@ -94,16 +94,16 @@ INSERT
     (rev_id,
     rev_page,
     rev_comment,
-    rev_user,
-    rev_user_text,
+    rev_wiki_user,
+    rev_wiki_user_text,
     rev_timestamp,
     rev_minor_edit)
   SELECT
     old_id,
     cur_id,
     old_comment,
-    old_user,
-    old_user_text,
+    old_wiki_user,
+    old_wiki_user_text,
     old_timestamp,
     old_minor_edit
   FROM /*$wgDBprefix*/old,/*$wgDBprefix*/cur

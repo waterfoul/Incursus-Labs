@@ -48,13 +48,13 @@ class DeletedContribsPager extends IndexPager {
 	}
 
 	function getQueryInfo() {
-		list( $index, $userCond ) = $this->getUserCond();
-		$conds = array_merge( $userCond, $this->getNamespaceCond() );
-		$user = $this->getUser();
+		list( $index, $wiki_userCond ) = $this->getwiki_userCond();
+		$conds = array_merge( $wiki_userCond, $this->getNamespaceCond() );
+		$wiki_user = $this->getwiki_user();
 		// Paranoia: avoid brute force searches (bug 17792)
-		if( !$user->isAllowed( 'deletedhistory' ) ) {
+		if( !$wiki_user->isAllowed( 'deletedhistory' ) ) {
 			$conds[] = $this->mDb->bitAnd( 'ar_deleted', Revision::DELETED_USER ) . ' = 0';
-		} elseif( !$user->isAllowed( 'suppressrevision' ) ) {
+		} elseif( !$wiki_user->isAllowed( 'suppressrevision' ) ) {
 			$conds[] = $this->mDb->bitAnd( 'ar_deleted', Revision::SUPPRESSED_USER ) .
 				' != ' . Revision::SUPPRESSED_USER;
 		}
@@ -62,18 +62,18 @@ class DeletedContribsPager extends IndexPager {
 			'tables' => array( 'archive' ),
 			'fields' => array(
 				'ar_rev_id', 'ar_namespace', 'ar_title', 'ar_timestamp', 'ar_comment', 'ar_minor_edit',
-				'ar_user', 'ar_user_text', 'ar_deleted'
+				'ar_wiki_user', 'ar_wiki_user_text', 'ar_deleted'
 			),
 			'conds' => $conds,
 			'options' => array( 'USE INDEX' => $index )
 		);
 	}
 
-	function getUserCond() {
+	function getwiki_userCond() {
 		$condition = array();
 
-		$condition['ar_user_text'] = $this->target;
-		$index = 'usertext_timestamp';
+		$condition['ar_wiki_user_text'] = $this->target;
+		$index = 'wiki_usertext_timestamp';
 
 		return array( $index, $condition );
 	}
@@ -124,9 +124,9 @@ class DeletedContribsPager extends IndexPager {
 	 * Generates each row in the contributions list.
 	 *
 	 * Contributions which are marked "top" are currently on top of the history.
-	 * For these contributions, a [rollback] link is shown for users with sysop
+	 * For these contributions, a [rollback] link is shown for wiki_users with sysop
 	 * privileges. The rollback link restores the most recent version that was not
-	 * written by the target user.
+	 * written by the target wiki_user.
 	 *
 	 * @todo This would probably look a lot nicer in a table.
 	 * @param $row
@@ -138,8 +138,8 @@ class DeletedContribsPager extends IndexPager {
 		$rev = new Revision( array(
 				'id'         => $row->ar_rev_id,
 				'comment'    => $row->ar_comment,
-				'user'       => $row->ar_user,
-				'user_text'  => $row->ar_user_text,
+				'wiki_user'       => $row->ar_wiki_user,
+				'wiki_user_text'  => $row->ar_wiki_user_text,
 				'timestamp'  => $row->ar_timestamp,
 				'minor_edit' => $row->ar_minor_edit,
 				'deleted'    => $row->ar_deleted,
@@ -165,9 +165,9 @@ class DeletedContribsPager extends IndexPager {
 			$this->messages['undeleteviewlink']
 		);
 
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 
-		if( $user->isAllowed('deletedtext') ) {
+		if( $wiki_user->isAllowed('deletedtext') ) {
 			$last = Linker::linkKnown(
 				$undelete,
 				$this->messages['diff'],
@@ -183,9 +183,9 @@ class DeletedContribsPager extends IndexPager {
 		}
 
 		$comment = Linker::revComment( $rev );
-		$date = htmlspecialchars( $this->getLanguage()->userTimeAndDate( $rev->getTimestamp(), $user ) );
+		$date = htmlspecialchars( $this->getLanguage()->wiki_userTimeAndDate( $rev->getTimestamp(), $wiki_user ) );
 
-		if( !$user->isAllowed( 'undelete' ) || !$rev->userCan( Revision::DELETED_TEXT, $user ) ) {
+		if( !$wiki_user->isAllowed( 'undelete' ) || !$rev->wiki_userCan( Revision::DELETED_TEXT, $wiki_user ) ) {
 			$link = $date; // unusable link
 		} else {
 			$link = Linker::linkKnown(
@@ -216,7 +216,7 @@ class DeletedContribsPager extends IndexPager {
 		}
 
 		// Revision delete link
-		$del = Linker::getRevDeleteLink( $user, $rev, $page );
+		$del = Linker::getRevDeleteLink( $wiki_user, $rev, $page );
 		if ( $del ) $del .= ' ';
 
 		$tools = Html::rawElement(
@@ -229,9 +229,9 @@ class DeletedContribsPager extends IndexPager {
 		$separator = '<span class="mw-changeslist-separator">. .</span>';
 		$ret = "{$del}{$link} {$tools} {$separator} {$mflag} {$pagelink} {$comment}";
 
-		# Denote if username is redacted for this edit
+		# Denote if wiki_username is redacted for this edit
 		if( $rev->isDeleted( Revision::DELETED_USER ) ) {
-			$ret .= " <strong>" . $this->msg( 'rev-deleted-user-contribs' )->escaped() . "</strong>";
+			$ret .= " <strong>" . $this->msg( 'rev-deleted-wiki_user-contribs' )->escaped() . "</strong>";
 		}
 
 		$ret = Html::rawElement( 'li', array(), $ret ) . "\n";
@@ -257,19 +257,19 @@ class DeletedContributionsPage extends SpecialPage {
 	}
 
 	/**
-	 * Special page "deleted user contributions".
-	 * Shows a list of the deleted contributions of a user.
+	 * Special page "deleted wiki_user contributions".
+	 * Shows a list of the deleted contributions of a wiki_user.
 	 *
-	 * @param	$par	String: (optional) user name of the user for which to show the contributions
+	 * @param	$par	String: (optional) wiki_user name of the wiki_user for which to show the contributions
 	 */
 	function execute( $par ) {
 		global $wgQueryPageDefaultLimit;
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 
-		if ( !$this->userCanExecute( $user ) ) {
+		if ( !$this->wiki_userCanExecute( $wiki_user ) ) {
 			$this->displayRestrictionError();
 			return;
 		}
@@ -294,15 +294,15 @@ class DeletedContributionsPage extends SpecialPage {
 		$options['limit'] = $request->getInt( 'limit', $wgQueryPageDefaultLimit );
 		$options['target'] = $target;
 
-		$userObj = User::newFromName( $target, false );
-		if ( !$userObj ) {
+		$wiki_userObj = wiki_user::newFromName( $target, false );
+		if ( !$wiki_userObj ) {
 			$out->addHTML( $this->getForm( '' ) );
 			return;
 		}
-		$this->getSkin()->setRelevantUser( $userObj );
+		$this->getSkin()->setRelevantwiki_user( $wiki_userObj );
 
-		$target = $userObj->getName();
-		$out->addSubtitle( $this->getSubTitle( $userObj ) );
+		$target = $wiki_userObj->getName();
+		$out->addSubtitle( $this->getSubTitle( $wiki_userObj ) );
 
 		if ( ( $ns = $request->getVal( 'namespace', null ) ) !== null && $ns !== '' ) {
 			$options['namespace'] = intval( $ns );
@@ -328,7 +328,7 @@ class DeletedContributionsPage extends SpecialPage {
 			$pager->getBody() .
 			'<p>' . $pager->getNavigationBar() . '</p>' );
 
-		# If there were contributions, and it was a valid user or IP, show
+		# If there were contributions, and it was a valid wiki_user or IP, show
 		# the appropriate "footer" message - WHOIS tools, etc.
 		if( $target != 'newbies' ) {
 			$message = IP::isIPAddress( $target )
@@ -343,26 +343,26 @@ class DeletedContributionsPage extends SpecialPage {
 
 	/**
 	 * Generates the subheading with links
-	 * @param $userObj User object for the target
+	 * @param $wiki_userObj wiki_user object for the target
 	 * @return String: appropriately-escaped HTML to be output literally
 	 * @todo FIXME: Almost the same as contributionsSub in SpecialContributions.php. Could be combined.
 	 */
-	function getSubTitle( $userObj ) {
-		if ( $userObj->isAnon() ) {
-			$user = htmlspecialchars( $userObj->getName() );
+	function getSubTitle( $wiki_userObj ) {
+		if ( $wiki_userObj->isAnon() ) {
+			$wiki_user = htmlspecialchars( $wiki_userObj->getName() );
 		} else {
-			$user = Linker::link( $userObj->getUserPage(), htmlspecialchars( $userObj->getName() ) );
+			$wiki_user = Linker::link( $wiki_userObj->getwiki_userPage(), htmlspecialchars( $wiki_userObj->getName() ) );
 		}
 		$links = '';
-		$nt = $userObj->getUserPage();
-		$id = $userObj->getID();
+		$nt = $wiki_userObj->getwiki_userPage();
+		$id = $wiki_userObj->getID();
 		$talk = $nt->getTalkPage();
 		if( $talk ) {
 			# Talk page link
 			$tools[] = Linker::link( $talk, $this->msg( 'sp-contributions-talk' )->escaped() );
 			if( ( $id !== null ) || ( $id === null && IP::isIPAddress( $nt->getText() ) ) ) {
-				if( $this->getUser()->isAllowed( 'block' ) ) { # Block / Change block / Unblock links
-					if ( $userObj->isBlocked() ) {
+				if( $this->getwiki_user()->isAllowed( 'block' ) ) { # Block / Change block / Unblock links
+					if ( $wiki_userObj->isBlocked() ) {
 						$tools[] = Linker::linkKnown( # Change block link
 							SpecialPage::getTitleFor( 'Block', $nt->getDBkey() ),
 							$this->msg( 'change-blocklink' )->escaped()
@@ -377,7 +377,7 @@ class DeletedContributionsPage extends SpecialPage {
 							)
 						);
 					}
-					else { # User is not blocked
+					else { # wiki_user is not blocked
 						$tools[] = Linker::linkKnown( # Block link
 							SpecialPage::getTitleFor( 'Block', $nt->getDBkey() ),
 							$this->msg( 'blocklink' )->escaped()
@@ -398,7 +398,7 @@ class DeletedContributionsPage extends SpecialPage {
 
 			# Uploads
 			$tools[] = Linker::linkKnown(
-				SpecialPage::getTitleFor( 'Listfiles', $userObj->getName() ),
+				SpecialPage::getTitleFor( 'Listfiles', $wiki_userObj->getName() ),
 				$this->msg( 'sp-contributions-uploads' )->escaped()
 			);
 
@@ -407,7 +407,7 @@ class DeletedContributionsPage extends SpecialPage {
 				SpecialPage::getTitleFor( 'Log' ),
 				$this->msg( 'sp-contributions-logs' )->escaped(),
 				array(),
-				array( 'user' => $nt->getText() )
+				array( 'wiki_user' => $nt->getText() )
 			);
 			# Link to contributions
 			$tools[] = Linker::linkKnown(
@@ -415,13 +415,13 @@ class DeletedContributionsPage extends SpecialPage {
 				$this->msg( 'sp-deletedcontributions-contribs' )->escaped()
 			);
 
-			# Add a link to change user rights for privileged users
-			$userrightsPage = new UserrightsPage();
-			$userrightsPage->setContext( $this->getContext() );
-			if( $userrightsPage->userCanChangeRights( $userObj ) ) {
+			# Add a link to change wiki_user rights for privileged wiki_users
+			$wiki_userrightsPage = new wiki_userrightsPage();
+			$wiki_userrightsPage->setContext( $this->getContext() );
+			if( $wiki_userrightsPage->wiki_userCanChangeRights( $wiki_userObj ) ) {
 				$tools[] = Linker::linkKnown(
-					SpecialPage::getTitleFor( 'Userrights', $nt->getDBkey() ),
-					$this->msg( 'sp-contributions-userrights' )->escaped()
+					SpecialPage::getTitleFor( 'wiki_userrights', $nt->getDBkey() ),
+					$this->msg( 'sp-contributions-wiki_userrights' )->escaped()
 				);
 			}
 
@@ -429,8 +429,8 @@ class DeletedContributionsPage extends SpecialPage {
 
 			$links = $this->getLanguage()->pipeList( $tools );
 
-			// Show a note if the user is blocked and display the last block log entry.
-			if ( $userObj->isBlocked() ) {
+			// Show a note if the wiki_user is blocked and display the last block log entry.
+			if ( $wiki_userObj->isBlocked() ) {
 				$out = $this->getOutput(); // LogEventsList::showLogExtract() wants the first parameter by ref
 				LogEventsList::showLogExtract(
 					$out,
@@ -451,14 +451,14 @@ class DeletedContributionsPage extends SpecialPage {
 		}
 
 		// Old message 'contribsub' had one parameter, but that doesn't work for
-		// languages that want to put the "for" bit right after $user but before
+		// languages that want to put the "for" bit right after $wiki_user but before
 		// $links.  If 'contribsub' is around, use it for reverse compatibility,
 		// otherwise use 'contribsub2'.
 		$oldMsg = $this->msg( 'contribsub' );
 		if ( $oldMsg->exists() ) {
-			return $oldMsg->rawParams( "$user ($links)" );
+			return $oldMsg->rawParams( "$wiki_user ($links)" );
 		} else {
-			return $this->msg( 'contribsub2' )->rawParams( $user, $links );
+			return $this->msg( 'contribsub2' )->rawParams( $wiki_user, $links );
 		}
 	}
 
@@ -482,7 +482,7 @@ class DeletedContributionsPage extends SpecialPage {
 		}
 
 		if ( !isset( $options['contribs'] ) ) {
-			$options['contribs'] = 'user';
+			$options['contribs'] = 'wiki_user';
 		}
 
 		if ( $options['contribs'] == 'newbie' ) {
@@ -500,7 +500,7 @@ class DeletedContributionsPage extends SpecialPage {
 
 		$f .=  Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), $this->msg( 'sp-contributions-search' )->text() ) .
-			Xml::tags( 'label', array( 'for' => 'target' ), $this->msg( 'sp-contributions-username' )->parse() ) . ' ' .
+			Xml::tags( 'label', array( 'for' => 'target' ), $this->msg( 'sp-contributions-wiki_username' )->parse() ) . ' ' .
 			Html::input( 'target', $options['target'], 'text', array(
 				'size' => '20',
 				'required' => ''

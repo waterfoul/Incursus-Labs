@@ -71,7 +71,7 @@ $messages = array(
 'jumptonavigation' => 'Navigatsia',
 'jumptosearch' => 'Caftã',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Evenimente di tora',
 'disclaimers' => 'Nipricunuschire',
 'edithelp' => 'Agiutor ti alãxire',
@@ -86,7 +86,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Articlu',
-'nstab-user' => 'Frãndza-a ufilizitirolui',
+'nstab-wiki_user' => 'Frãndza-a ufilizitirolui',
 'nstab-template' => 'Shablon',
 
 # General errors
@@ -101,9 +101,9 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 'yourpasswordagain' => 'Bãgats-u cljao iara:',
 'remembermypassword' => 'Apurã-u ligãtura-a mea pi compiuterlu aistu (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'Ligats-vã',
-'userlogin' => 'Ligats-vã / Fãtsets Isape',
+'wiki_userlogin' => 'Ligats-vã / Fãtsets Isape',
 'logout' => 'Disligats-vã',
-'userlogout' => 'Disligats-vã',
+'wiki_userlogout' => 'Disligats-vã',
 'notloggedin' => 'Nu hits ligats',
 'createaccount' => 'Fãtsets Isape',
 'gotaccountlink' => 'Ligats-vã',
@@ -126,7 +126,7 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 'prefsnologin' => 'Nu hits ligats',
 'searchresultshead' => 'Caftã',
 'youremail' => 'E-mail:',
-'username' => 'Numa di ufilizitor:',
+'wiki_username' => 'Numa di ufilizitor:',
 
 # Recent changes
 'recentchanges' => 'Alãxiri',
@@ -150,7 +150,7 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 'brokenredirects-delete' => 'Ashcirdzire',
 
 # Miscellaneous special pages
-'newpages-username' => 'Numa di ufilizitor:',
+'newpages-wiki_username' => 'Numa di ufilizitor:',
 'move' => 'Tradzets',
 'movethispage' => 'Tradzets-u frãndza aistã',
 

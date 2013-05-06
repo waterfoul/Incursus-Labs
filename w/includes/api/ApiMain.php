@@ -76,11 +76,11 @@ class ApiMain extends ApiBase {
 		'edit' => 'ApiEditPage',
 		'upload' => 'ApiUpload',
 		'filerevert' => 'ApiFileRevert',
-		'emailuser' => 'ApiEmailUser',
+		'emailwiki_user' => 'ApiEmailwiki_user',
 		'watch' => 'ApiWatch',
 		'patrol' => 'ApiPatrol',
 		'import' => 'ApiImport',
-		'userrights' => 'ApiUserrights',
+		'wiki_userrights' => 'Apiwiki_userrights',
 		'options' => 'ApiOptions',
 	);
 
@@ -108,7 +108,7 @@ class ApiMain extends ApiBase {
 	);
 
 	/**
-	 * List of user roles that are specifically relevant to the API.
+	 * List of wiki_user roles that are specifically relevant to the API.
 	 * array( 'right' => array ( 'msg'    => 'Some message with a $1',
 	 *                           'params' => array ( $someVarToSubst ) ),
 	 *                          );
@@ -164,16 +164,16 @@ class ApiMain extends ApiBase {
 
 		if ( !$this->mInternalMode ) {
 			// Impose module restrictions.
-			// If the current user cannot read,
+			// If the current wiki_user cannot read,
 			// Remove all modules other than login
-			global $wgUser;
+			global $wgwiki_user;
 
 			if ( $this->getRequest()->getVal( 'callback' ) !== null ) {
 				// JSON callback allows cross-site reads.
-				// For safety, strip user credentials.
-				wfDebug( "API: stripping user credentials for JSON callback\n" );
-				$wgUser = new User();
-				$this->getContext()->setUser( $wgUser );
+				// For safety, strip wiki_user credentials.
+				wfDebug( "API: stripping wiki_user credentials for JSON callback\n" );
+				$wgwiki_user = new wiki_user();
+				$this->getContext()->setwiki_user( $wgwiki_user );
 			}
 		}
 
@@ -247,31 +247,31 @@ class ApiMain extends ApiBase {
 	 *         parameter is set, or if setCacheMaxAge() was called. If a maximum age is
 	 *         not provided by any of these means, the object will be private.
 	 *    - 'private':    Cache this object only in private client-side caches.
-	 *    - 'anon-public-user-private': Make this object cacheable for logged-out
-	 *         users, but private for logged-in users. IMPORTANT: If this is set, it must be
+	 *    - 'anon-public-wiki_user-private': Make this object cacheable for logged-out
+	 *         wiki_users, but private for logged-in wiki_users. IMPORTANT: If this is set, it must be
 	 *         set consistently for a given URL, it cannot be set differently depending on
-	 *         things like the contents of the database, or whether the user is logged in.
+	 *         things like the contents of the database, or whether the wiki_user is logged in.
 	 *
-	 *  If the wiki does not allow anonymous users to read it, the mode set here
+	 *  If the wiki does not allow anonymous wiki_users to read it, the mode set here
 	 *  will be ignored, and private caching headers will always be sent. In other words,
 	 *  the "public" mode is equivalent to saying that the data sent is as public as a page
 	 *  view.
 	 *
-	 *  For user-dependent data, the private mode should generally be used. The
-	 *  anon-public-user-private mode should only be used where there is a particularly
+	 *  For wiki_user-dependent data, the private mode should generally be used. The
+	 *  anon-public-wiki_user-private mode should only be used where there is a particularly
 	 *  good performance reason for caching the anonymous response, but where the
-	 *  response to logged-in users may differ, or may contain private data.
+	 *  response to logged-in wiki_users may differ, or may contain private data.
 	 *
 	 *  If this function is never called, then the default will be the private mode.
 	 */
 	public function setCacheMode( $mode ) {
-		if ( !in_array( $mode, array( 'private', 'public', 'anon-public-user-private' ) ) ) {
+		if ( !in_array( $mode, array( 'private', 'public', 'anon-public-wiki_user-private' ) ) ) {
 			wfDebug( __METHOD__ . ": unrecognised cache mode \"$mode\"\n" );
 			// Ignore for forwards-compatibility
 			return;
 		}
 
-		if ( !in_array( 'read', User::getGroupPermissions( array( '*' ) ), true ) ) {
+		if ( !in_array( 'read', wiki_user::getGroupPermissions( array( '*' ) ), true ) ) {
 			// Private wiki, only private headers
 			if ( $mode !== 'private' ) {
 				wfDebug( __METHOD__ . ": ignoring request for $mode cache mode, private wiki\n" );
@@ -309,17 +309,17 @@ class ApiMain extends ApiBase {
 
 	/**
 	 * Make sure Vary: Cookie and friends are set. Use this when the output of a request
-	 * may be cached for anons but may not be cached for logged-in users.
+	 * may be cached for anons but may not be cached for logged-in wiki_users.
 	 *
 	 * WARNING: This function must be called CONSISTENTLY for a given URL. This means that a
 	 * given URL must either always or never call this function; if it sometimes does and
 	 * sometimes doesn't, stuff will break.
 	 *
-	 * @deprecated since 1.17 Use setCacheMode( 'anon-public-user-private' )
+	 * @deprecated since 1.17 Use setCacheMode( 'anon-public-wiki_user-private' )
 	 */
 	public function setVaryCookie() {
 		wfDeprecated( __METHOD__, '1.17' );
-		$this->setCacheMode( 'anon-public-user-private' );
+		$this->setCacheMode( 'anon-public-wiki_user-private' );
 	}
 
 	/**
@@ -513,7 +513,7 @@ class ApiMain extends ApiBase {
 			return;
 		}
 
-		if ( $this->mCacheMode == 'anon-public-user-private' ) {
+		if ( $this->mCacheMode == 'anon-public-wiki_user-private' ) {
 			$out->addVaryHeader( 'Cookie' );
 			$response->header( $out->getVaryHeader() );
 			if ( $wgUseXVO ) {
@@ -525,7 +525,7 @@ class ApiMain extends ApiBase {
 				}
 				// Logged out, send normal public headers below
 			} elseif ( session_id() != '' ) {
-				// Logged in or otherwise has session (e.g. anonymous users who have edited)
+				// Logged in or otherwise has session (e.g. anonymous wiki_users who have edited)
 				// Mark request private
 				$response->header( 'Cache-Control: private' );
 				return;
@@ -604,7 +604,7 @@ class ApiMain extends ApiBase {
 		}
 
 		if ( $e instanceof UsageException ) {
-			// User entered incorrect parameters - print usage screen
+			// wiki_user entered incorrect parameters - print usage screen
 			$errMessage = $e->getMessageArray();
 
 			// Only print the help message when this is for the developer, not runtime
@@ -684,7 +684,7 @@ class ApiMain extends ApiBase {
 	 * @return ApiBase The module that will handle this action
 	 */
 	protected function setupModule() {
-		// Instantiate the module requested by the user
+		// Instantiate the module requested by the wiki_user
 		$module = new $this->mModules[$this->mAction] ( $this, $this->mAction );
 		$this->mModule = $module;
 
@@ -702,7 +702,7 @@ class ApiMain extends ApiBase {
 			if ( !isset( $moduleParams['token'] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', 'token' ) );
 			} else {
-				if ( !$this->getUser()->matchEditToken( $moduleParams['token'], $salt, $this->getContext()->getRequest() ) ) {
+				if ( !$this->getwiki_user()->matchEditToken( $moduleParams['token'], $salt, $this->getContext()->getRequest() ) ) {
 					$this->dieUsageMsg( 'sessionfailure' );
 				}
 			}
@@ -744,9 +744,9 @@ class ApiMain extends ApiBase {
 	 * @param $module ApiBase An Api module
 	 */
 	protected function checkExecutePermissions( $module ) {
-		$user = $this->getUser();
-		if ( $module->isReadMode() && !in_array( 'read', User::getGroupPermissions( array( '*' ) ), true ) &&
-			!$user->isAllowed( 'read' ) )
+		$wiki_user = $this->getwiki_user();
+		if ( $module->isReadMode() && !in_array( 'read', wiki_user::getGroupPermissions( array( '*' ) ), true ) &&
+			!$wiki_user->isAllowed( 'read' ) )
 		{
 			$this->dieUsageMsg( 'readrequired' );
 		}
@@ -754,7 +754,7 @@ class ApiMain extends ApiBase {
 			if ( !$this->mEnableWrite ) {
 				$this->dieUsageMsg( 'writedisabled' );
 			}
-			if ( !$user->isAllowed( 'writeapi' ) ) {
+			if ( !$wiki_user->isAllowed( 'writeapi' ) ) {
 				$this->dieUsageMsg( 'writerequired' );
 			}
 			if ( wfReadOnly() ) {
@@ -764,7 +764,7 @@ class ApiMain extends ApiBase {
 
 		// Allow extensions to stop execution for arbitrary reasons.
 		$message = false;
-		if( !wfRunHooks( 'ApiCheckCanExecute', array( $module, $user, &$message ) ) ) {
+		if( !wfRunHooks( 'ApiCheckCanExecute', array( $module, $wiki_user, &$message ) ) ) {
 			$this->dieUsageMsg( $message );
 		}
 	}
@@ -1052,7 +1052,7 @@ class ApiMain extends ApiBase {
 
 		$msg .= "\n$astriks Permissions $astriks\n\n";
 		foreach ( self::$mRights as $right => $rightMsg ) {
-			$groups = User::getGroupsWithPermission( $right );
+			$groups = wiki_user::getGroupsWithPermission( $right );
 			$msg .= "* " . $right . " *\n  " . wfMsgReplaceArgs( $rightMsg[ 'msg' ], $rightMsg[ 'params' ] ) .
 						"\nGranted to:\n  " . str_replace( '*', 'all', implode( ', ', $groups ) ) . "\n\n";
 
@@ -1091,19 +1091,19 @@ class ApiMain extends ApiBase {
 	private $mCanApiHighLimits = null;
 
 	/**
-	 * Check whether the current user is allowed to use high limits
+	 * Check whether the current wiki_user is allowed to use high limits
 	 * @return bool
 	 */
 	public function canApiHighLimits() {
 		if ( !isset( $this->mCanApiHighLimits ) ) {
-			$this->mCanApiHighLimits = $this->getUser()->isAllowed( 'apihighlimits' );
+			$this->mCanApiHighLimits = $this->getwiki_user()->isAllowed( 'apihighlimits' );
 		}
 
 		return $this->mCanApiHighLimits;
 	}
 
 	/**
-	 * Check whether the user wants us to show version information in the API help
+	 * Check whether the wiki_user wants us to show version information in the API help
 	 * @return bool
 	 */
 	public function getShowVersions() {

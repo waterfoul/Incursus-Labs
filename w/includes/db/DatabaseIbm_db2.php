@@ -37,12 +37,12 @@ class IBM_DB2Field implements Field {
 
 	/**
 	 * Builder method for the class
-	 * @param $db DatabaseIbm_db2: Database interface
+	 * @param  DatabaseIbm_db2: Database interface
 	 * @param $table String: table name
 	 * @param $field String: column name
 	 * @return IBM_DB2Field
 	 */
-	static function fromText( $db, $table, $field ) {
+	static function fromText( , $table, $field ) {
 		global $wgDBmwschema;
 
 		$q = <<<SQL
@@ -52,14 +52,14 @@ nulls AS attnotnull, length AS attlen
 FROM sysibm.syscolumns
 WHERE tbcreator=%s AND tbname=%s AND name=%s;
 SQL;
-		$res = $db->query(
+		$res = ->query(
 			sprintf( $q,
-				$db->addQuotes( $wgDBmwschema ),
-				$db->addQuotes( $table ),
-				$db->addQuotes( $field )
+				->addQuotes( $wgDBmwschema ),
+				->addQuotes( $table ),
+				->addQuotes( $field )
 			)
 		);
-		$row = $db->fetchObject( $res );
+		$row = ->fetchObject( $res );
 		if ( !$row ) {
 			return null;
 		}
@@ -125,7 +125,7 @@ class IBM_DB2Blob {
  * @since 1.19
  */
 class IBM_DB2Result{
-	private $db;
+	private ;
 	private $result;
 	private $num_rows;
 	private $current_pos;
@@ -137,14 +137,14 @@ class IBM_DB2Result{
 
 	/**
 	 * Construct and initialize a wrapper for DB2 query results
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $result Object
 	 * @param $num_rows Integer
 	 * @param $sql String
 	 * @param $columns Array
 	 */
-	public function __construct( $db, $result, $num_rows, $sql, $columns ){
-		$this->db = $db;
+	public function __construct( , $result, $num_rows, $sql, $columns ){
+		$this->db = ;
 
 		if( $result instanceof ResultWrapper ){
 			$this->result = $result->result;
@@ -269,7 +269,7 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	protected $mLastQuery = '';
 	protected $mPHPError = false;
 
-	protected $mServer, $mUser, $mPassword, $mConn = null, $mDBname;
+	protected $mServer, $mwiki_user, $mPassword, $mConn = null, $mDBname;
 	protected $mOpened = false;
 
 	protected $mTablePrefix;
@@ -427,15 +427,15 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	/**
 	 *
 	 * @param $server String: hostname of database server
-	 * @param $user String: username
+	 * @param $wiki_user String: wiki_username
 	 * @param $password String: password
-	 * @param $dbName String: database name on the server
+	 * @param Name String: database name on the server
 	 * @param $flags Integer: database behaviour flags (optional, unused)
 	 * @param $schema String
 	 */
-	public function __construct( $server = false, $user = false,
+	public function __construct( $server = false, $wiki_user = false,
 							$password = false,
-							$dbName = false, $flags = 0,
+							Name = false, $flags = 0,
 							$schema = self::USE_GLOBAL )
 	{
 		global $wgDBmwschema;
@@ -453,7 +453,7 @@ class DatabaseIbm_db2 extends DatabaseBase {
 			self::STMT_OPTION );
 		$this->setDB2Option( 'rowcount', 'DB2_ROWCOUNT_PREFETCH_ON',
 			self::STMT_OPTION );
-		parent::__construct( $server, $user, $password, $dbName, DBO_TRX | $flags );
+		parent::__construct( $server, $wiki_user, $password, Name, DBO_TRX | $flags );
 	}
 
 	/**
@@ -493,12 +493,12 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	 * Closes any existing connection
 	 *
 	 * @param $server String: hostname
-	 * @param $user String
+	 * @param $wiki_user String
 	 * @param $password String
-	 * @param $dbName String: database name
+	 * @param Name String: database name
 	 * @return DatabaseBase a fresh connection
 	 */
-	public function open( $server, $user, $password, $dbName ) {
+	public function open( $server, $wiki_user, $password, Name ) {
 		wfProfileIn( __METHOD__ );
 
 		# Load IBM DB2 driver if missing
@@ -516,21 +516,21 @@ class DatabaseIbm_db2 extends DatabaseBase {
 		// Cache conn info
 		$this->mServer = $server;
 		$this->mPort = $port = $wgDBport;
-		$this->mUser = $user;
+		$this->mwiki_user = $wiki_user;
 		$this->mPassword = $password;
-		$this->mDBname = $dbName;
+		$this->mDBname = Name;
 
-		$this->openUncataloged( $dbName, $user, $password, $server, $port );
+		$this->openUncataloged( Name, $wiki_user, $password, $server, $port );
 
 		if ( !$this->mConn ) {
 			$this->installPrint( "DB connection error\n" );
 			$this->installPrint(
-				"Server: $server, Database: $dbName, User: $user, Password: "
+				"Server: $server, Database: Name, wiki_user: $wiki_user, Password: "
 				. substr( $password, 0, 3 ) . "...\n" );
 			$this->installPrint( $this->lastError() . "\n" );
 			wfProfileOut( __METHOD__ );
 			wfDebug( "DB connection error\n" );
-			wfDebug( "Server: $server, Database: $dbName, User: $user, Password: " . substr( $password, 0, 3 ) . "...\n" );
+			wfDebug( "Server: $server, Database: Name, wiki_user: $wiki_user, Password: " . substr( $password, 0, 3 ) . "...\n" );
 			wfDebug( $this->lastError() . "\n" );
 			throw new DBConnectionError( $this, $this->lastError() );
 		}
@@ -550,18 +550,18 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	/**
 	 * Opens a cataloged database connection, sets mConn
 	 */
-	protected function openCataloged( $dbName, $user, $password ) {
+	protected function openCataloged( Name, $wiki_user, $password ) {
 		wfSuppressWarnings();
-		$this->mConn = db2_pconnect( $dbName, $user, $password );
+		$this->mConn = db2_pconnect( Name, $wiki_user, $password );
 		wfRestoreWarnings();
 	}
 
 	/**
 	 * Opens an uncataloged database connection, sets mConn
 	 */
-	protected function openUncataloged( $dbName, $user, $password, $server, $port )
+	protected function openUncataloged( Name, $wiki_user, $password, $server, $port )
 	{
-		$dsn = "DRIVER={IBM DB2 ODBC DRIVER};DATABASE=$dbName;CHARSET=UTF-8;HOSTNAME=$server;PORT=$port;PROTOCOL=TCPIP;UID=$user;PWD=$password;";
+		$dsn = "DRIVER={IBM DB2 ODBC DRIVER};DATABASE=Name;CHARSET=UTF-8;HOSTNAME=$server;PORT=$port;PROTOCOL=TCPIP;UID=$wiki_user;PWD=$password;";
 		wfSuppressWarnings();
 		$this->mConn = db2_pconnect( $dsn, "", "", array() );
 		wfRestoreWarnings();
@@ -1433,7 +1433,7 @@ class DatabaseIbm_db2 extends DatabaseBase {
 		// db2_ping() doesn't exist
 		// Emulate
 		$this->close();
-		$this->openUncataloged( $this->mDBName, $this->mUser,
+		$this->openUncataloged( $this->mDBName, $this->mwiki_user,
 			$this->mPassword, $this->mServer, $this->mPort );
 
 		return false;

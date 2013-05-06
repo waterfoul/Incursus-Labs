@@ -53,7 +53,7 @@ $namespaceAliases = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => "Sottolinia 'e jonte:",
 'tog-justify' => "Alliniamento d''e paracrafe mpare",
 'tog-hideminor' => "Annascunne 'e cagne piccirille  'int'a ll'úrdeme cagne",
@@ -175,7 +175,7 @@ $messages = array(
 'jumptonavigation' => 'navigazione',
 'jumptosearch' => 'truova',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => "'Nfrummazione ncòpp'a {{SITENAME}}",
 'aboutpage' => "Project:'Nfrummazione",
 'disclaimers' => 'Avvertimiènte',
@@ -201,7 +201,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Articulo',
-'nstab-user' => 'Paggena utente',
+'nstab-wiki_user' => 'Paggena utente',
 'nstab-project' => "Paggena 'e servizio",
 'nstab-image' => 'Fiura',
 'nstab-mediawiki' => "'Mmasciata",
@@ -223,9 +223,9 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'remembermypassword' => 'Allicuordate d"a password (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname' => "Spiecà 'o dumminio",
 'login' => 'Tràse',
-'userlogin' => "Tràse o cria n'acciesso nuovo",
+'wiki_userlogin' => "Tràse o cria n'acciesso nuovo",
 'logout' => 'Jèsce',
-'userlogout' => 'Jèsce',
+'wiki_userlogout' => 'Jèsce',
 'notloggedin' => 'Acciesso nun affettuato',
 'nologin' => "Nun haje ancora n'acciesso? '''$1'''.",
 'nologinlink' => 'Crialo mmo',
@@ -234,8 +234,8 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'gotaccountlink' => 'Tràse',
 'loginerror' => "Probblema 'e accièsso",
 'loginsuccesstitle' => 'Acciesso affettuato',
-'nosuchusershort' => 'Nun ce stanno utente cu o nòmme "$1". Cuntrolla si scrivìste buòno.',
-'nouserspecified' => "Tiene 'a dìcere nu nomme pricìso.",
+'nosuchwiki_usershort' => 'Nun ce stanno utente cu o nòmme "$1". Cuntrolla si scrivìste buòno.',
+'nowiki_userspecified' => "Tiene 'a dìcere nu nomme pricìso.",
 'acct_creation_throttle_hit' => 'Ce dispiace, haje già criato $1 utente. Nun ne pô crià ate.',
 'accountcreated' => 'Cunto criato',
 'loginlanguagelabel' => 'Lengua: $1',
@@ -261,7 +261,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'templatesused' => "Template ausate 'a chesta paggena:",
 
 # "Undo" feature
-'undo-summary' => "Canciella 'o cagnamiento $1 'e [[Special:Contributions/$2|$2]] ([[User talk:$2|Chiàcchiera]])",
+'undo-summary' => "Canciella 'o cagnamiento $1 'e [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Chiàcchiera]])",
 
 # History pages
 'currentrev' => "Verzione 'e mmo",
@@ -284,10 +284,10 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'prefs-watchlist' => 'Asservate speciale',
 'columns' => 'Culonne:',
 'timezoneregion-africa' => 'Afreca',
-'username' => 'Nomme utente',
+'wiki_username' => 'Nomme utente',
 'yourlanguage' => 'Lengua:',
 
-# User rights log
+# wiki_user rights log
 'rightsnone' => '(nisciuno)',
 
 # Recent changes
@@ -319,7 +319,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 
 # File description page
 'file-anchor-link' => 'Fiura',
-'filehist-user' => 'Utente',
+'filehist-wiki_user' => 'Utente',
 'imagelinks' => 'Jonte ê ffiure',
 
 # Random page
@@ -377,7 +377,7 @@ Also see [[Special:WantedCategories|wanted categories]].",
 
 # Rollback
 'rollback' => "Ausa na revizione 'e primma",
-'revertpage' => "Cangiaje 'e cagnamiénte 'e [[Special:Contributions/$2|$2]] ([[User talk:$2|discussione]]), cu â verzione 'e pprimma 'e  [[User:$1|$1]]",
+'revertpage' => "Cangiaje 'e cagnamiénte 'e [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|discussione]]), cu â verzione 'e pprimma 'e  [[wiki_user:$1|$1]]",
 
 # Protect
 'prot_1movedto2' => 'ha spustato [[$1]] a [[$2]]',
@@ -402,7 +402,7 @@ Also see [[Special:WantedCategories|wanted categories]].",
 
 # Block/unblock
 'blockip' => 'Ferma utelizzatóre',
-'ipadressorusername' => 'Nnerizzo IP o nomme utente',
+'ipadressorwiki_username' => 'Nnerizzo IP o nomme utente',
 'ipboptions' => '2 ore:2 hours,1 juorno:1 day,3 juorne:3 days,1 semmana:1 week,2 semmane:2 weeks,1 mise:1 month,3 mese:3 months,6 mese:6 months,1 anno:1 year,infinito:infinite',
 'blockipsuccesssub' => 'Blocco aseguito',
 'blocklink' => 'ferma',

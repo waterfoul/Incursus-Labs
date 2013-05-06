@@ -118,7 +118,7 @@ class GIFMetadataExtractor {
 					// Graphics Control Extension.
 					fread( $fh, 1 ); // Block size
 
-					fread( $fh, 1 ); // Transparency, disposal method, user input
+					fread( $fh, 1 ); // Transparency, disposal method, wiki_user input
 
 					$buf = fread( $fh, 2 ); // Delay, in hundredths of seconds.
 					if ( strlen( $buf ) < 2 ) throw new Exception( "Ran out of input" );

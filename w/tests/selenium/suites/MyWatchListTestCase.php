@@ -31,7 +31,7 @@ require_once dirname( __DIR__ ) . '/SeleniumTestConstants.php';
 
 class MyWatchListTestCase extends SeleniumTestCase {
 
-    // Verify user watchlist
+    // Verify wiki_user watchlist
     public function testMyWatchlist() {
 
         $pageName = $this->createNewTestPage( "MyWatchListTest", true );

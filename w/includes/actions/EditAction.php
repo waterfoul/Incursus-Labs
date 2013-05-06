@@ -36,10 +36,10 @@ class EditAction extends FormlessAction {
 	public function show(){
 		$page = $this->page;
 		$request = $this->getRequest();
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		$context = $this->getContext();
 
-		if ( wfRunHooks( 'CustomEditor', array( $page, $user ) ) ) {
+		if ( wfRunHooks( 'CustomEditor', array( $page, $wiki_user ) ) ) {
 			if ( ExternalEdit::useExternalEngine( $context, 'edit' )
 				&& $this->getName() == 'edit' && !$request->getVal( 'section' )
 				&& !$request->getVal( 'oldid' ) )

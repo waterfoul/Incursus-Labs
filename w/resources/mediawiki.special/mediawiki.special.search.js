@@ -29,7 +29,7 @@ $('#mw-search-togglebox').append(
 		} )
 );
 
-// Change the header search links to what user entered
+// Change the header search links to what wiki_user entered
 var headerLinks = $('.search-types a');
 $('#searchText, #powerSearchText').change(function() {
 	var searchterm = $(this).val();

@@ -161,11 +161,11 @@ class StubContLang extends StubObject {
 }
 
 /**
- * Stub object for the user language. It depends of the user preferences and
+ * Stub object for the wiki_user language. It depends of the wiki_user preferences and
  * "uselang" parameter that can be passed to index.php. This object have to be
  * in $wgLang global.
  */
-class StubUserLang extends StubObject {
+class Stubwiki_userLang extends StubObject {
 
 	function __construct() {
 		parent::__construct( 'wgLang' );

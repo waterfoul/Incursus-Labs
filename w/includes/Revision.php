@@ -26,9 +26,9 @@
 class Revision implements IDBAccessObject {
 	protected $mId;
 	protected $mPage;
-	protected $mUserText;
-	protected $mOrigUserText;
-	protected $mUser;
+	protected $mwiki_userText;
+	protected $mOrigwiki_userText;
+	protected $mwiki_user;
 	protected $mMinorEdit;
 	protected $mTimestamp;
 	protected $mDeleted;
@@ -142,8 +142,8 @@ class Revision implements IDBAccessObject {
 			'page'       => isset( $row->ar_page_id ) ? $row->ar_page_id : null,
 			'id'         => isset( $row->ar_rev_id ) ? $row->ar_rev_id : null,
 			'comment'    => $row->ar_comment,
-			'user'       => $row->ar_user,
-			'user_text'  => $row->ar_user_text,
+			'wiki_user'       => $row->ar_wiki_user,
+			'wiki_user_text'  => $row->ar_wiki_user_text,
 			'timestamp'  => $row->ar_timestamp,
 			'minor_edit' => $row->ar_minor_edit,
 			'text_id'    => isset( $row->ar_text_id ) ? $row->ar_text_id : null,
@@ -175,12 +175,12 @@ class Revision implements IDBAccessObject {
 	 * Load a page revision from a given revision ID number.
 	 * Returns null if no such revision can be found.
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $id Integer
 	 * @return Revision or null
 	 */
-	public static function loadFromId( $db, $id ) {
-		return self::loadFromConds( $db, array( 'rev_id' => intval( $id ) ) );
+	public static function loadFromId( , $id ) {
+		return self::loadFromConds( , array( 'rev_id' => intval( $id ) ) );
 	}
 
 	/**
@@ -188,19 +188,19 @@ class Revision implements IDBAccessObject {
 	 * that's attached to a given page. If not attached
 	 * to that page, will return null.
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $pageid Integer
 	 * @param $id Integer
 	 * @return Revision or null
 	 */
-	public static function loadFromPageId( $db, $pageid, $id = 0 ) {
+	public static function loadFromPageId( , $pageid, $id = 0 ) {
 		$conds = array( 'rev_page' => intval( $pageid ), 'page_id'  => intval( $pageid ) );
 		if( $id ) {
 			$conds['rev_id'] = intval( $id );
 		} else {
 			$conds[] = 'rev_id=page_latest';
 		}
-		return self::loadFromConds( $db, $conds );
+		return self::loadFromConds( , $conds );
 	}
 
 	/**
@@ -208,18 +208,18 @@ class Revision implements IDBAccessObject {
 	 * that's attached to a given page. If not attached
 	 * to that page, will return null.
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $title Title
 	 * @param $id Integer
 	 * @return Revision or null
 	 */
-	public static function loadFromTitle( $db, $title, $id = 0 ) {
+	public static function loadFromTitle( , $title, $id = 0 ) {
 		if( $id ) {
 			$matchId = intval( $id );
 		} else {
 			$matchId = 'page_latest';
 		}
-		return self::loadFromConds( $db,
+		return self::loadFromConds( ,
 			array( "rev_id=$matchId",
 				   'page_namespace' => $title->getNamespace(),
 				   'page_title'     => $title->getDBkey() )
@@ -231,14 +231,14 @@ class Revision implements IDBAccessObject {
 	 * WARNING: Timestamps may in some circumstances not be unique,
 	 * so this isn't the best key to use.
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $title Title
 	 * @param $timestamp String
 	 * @return Revision or null
 	 */
-	public static function loadFromTimestamp( $db, $title, $timestamp ) {
-		return self::loadFromConds( $db,
-			array( 'rev_timestamp'  => $db->timestamp( $timestamp ),
+	public static function loadFromTimestamp( , $title, $timestamp ) {
+		return self::loadFromConds( ,
+			array( 'rev_timestamp'  => ->timestamp( $timestamp ),
 				   'page_namespace' => $title->getNamespace(),
 				   'page_title'     => $title->getDBkey() )
 		);
@@ -252,12 +252,12 @@ class Revision implements IDBAccessObject {
 	 * @return Revision or null
 	 */
 	private static function newFromConds( $conditions, $flags = 0 ) {
-		$db = wfGetDB( ( $flags & self::READ_LATEST ) ? DB_MASTER : DB_SLAVE );
-		$rev = self::loadFromConds( $db, $conditions, $flags );
+		 = wfGetDB( ( $flags & self::READ_LATEST ) ? DB_MASTER : DB_SLAVE );
+		$rev = self::loadFromConds( , $conditions, $flags );
 		if ( is_null( $rev ) && wfGetLB()->getServerCount() > 1 ) {
 			if ( !( $flags & self::READ_LATEST ) ) {
-				$dbw = wfGetDB( DB_MASTER );
-				$rev = self::loadFromConds( $dbw, $conditions, $flags );
+				w = wfGetDB( DB_MASTER );
+				$rev = self::loadFromConds( w, $conditions, $flags );
 			}
 		}
 		return $rev;
@@ -267,13 +267,13 @@ class Revision implements IDBAccessObject {
 	 * Given a set of conditions, fetch a revision from
 	 * the given database connection.
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $conditions Array
 	 * @param $flags integer (optional)
 	 * @return Revision or null
 	 */
-	private static function loadFromConds( $db, $conditions, $flags = 0 ) {
-		$res = self::fetchFromConds( $db, $conditions, $flags );
+	private static function loadFromConds( , $conditions, $flags = 0 ) {
+		$res = self::fetchFromConds( , $conditions, $flags );
 		if( $res ) {
 			$row = $res->fetchObject();
 			if( $row ) {
@@ -307,39 +307,39 @@ class Revision implements IDBAccessObject {
 	 * which will return matching database rows with the
 	 * fields necessary to build Revision objects.
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $conditions Array
 	 * @param $flags integer (optional)
 	 * @return ResultWrapper
 	 */
-	private static function fetchFromConds( $db, $conditions, $flags = 0 ) {
+	private static function fetchFromConds( , $conditions, $flags = 0 ) {
 		$fields = array_merge(
 			self::selectFields(),
 			self::selectPageFields(),
-			self::selectUserFields()
+			self::selectwiki_userFields()
 		);
 		$options = array( 'LIMIT' => 1 );
 		if ( ( $flags & self::READ_LOCKING ) == self::READ_LOCKING ) {
 			$options[] = 'FOR UPDATE';
 		}
-		return $db->select(
-			array( 'revision', 'page', 'user' ),
+		return ->select(
+			array( 'revision', 'page', 'wiki_user' ),
 			$fields,
 			$conditions,
 			__METHOD__,
 			$options,
-			array( 'page' => self::pageJoinCond(), 'user' => self::userJoinCond() )
+			array( 'page' => self::pageJoinCond(), 'wiki_user' => self::wiki_userJoinCond() )
 		);
 	}
 
 	/**
-	 * Return the value of a select() JOIN conds array for the user table.
-	 * This will get user table rows for logged-in users.
+	 * Return the value of a select() JOIN conds array for the wiki_user table.
+	 * This will get wiki_user table rows for logged-in wiki_users.
 	 * @since 1.19
 	 * @return Array
 	 */
-	public static function userJoinCond() {
-		return array( 'LEFT JOIN', array( 'rev_user != 0', 'user_id = rev_user' ) );
+	public static function wiki_userJoinCond() {
+		return array( 'LEFT JOIN', array( 'rev_wiki_user != 0', 'wiki_user_id = rev_wiki_user' ) );
 	}
 
 	/**
@@ -364,8 +364,8 @@ class Revision implements IDBAccessObject {
 			'rev_text_id',
 			'rev_timestamp',
 			'rev_comment',
-			'rev_user_text',
-			'rev_user',
+			'rev_wiki_user_text',
+			'rev_wiki_user',
 			'rev_minor_edit',
 			'rev_deleted',
 			'rev_len',
@@ -402,26 +402,26 @@ class Revision implements IDBAccessObject {
 	}
 
 	/**
-	 * Return the list of user fields that should be selected from user table
+	 * Return the list of wiki_user fields that should be selected from wiki_user table
 	 * @return array
 	 */
-	public static function selectUserFields() {
-		return array( 'user_name' );
+	public static function selectwiki_userFields() {
+		return array( 'wiki_user_name' );
 	}
 
 	/**
 	 * Do a batched query to get the parent revision lengths
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $revIds Array
 	 * @return array
 	 */
-	public static function getParentLengths( $db, array $revIds ) {
+	public static function getParentLengths( , array $revIds ) {
 		$revLens = array();
 		if ( !$revIds ) {
 			return $revLens; // empty
 		}
 		wfProfileIn( __METHOD__ );
-		$res = $db->select( 'revision',
+		$res = ->select( 'revision',
 			array( 'rev_id', 'rev_len' ),
 			array( 'rev_id' => $revIds ),
 			__METHOD__ );
@@ -444,7 +444,7 @@ class Revision implements IDBAccessObject {
 			$this->mPage      = intval( $row->rev_page );
 			$this->mTextId    = intval( $row->rev_text_id );
 			$this->mComment   =         $row->rev_comment;
-			$this->mUser      = intval( $row->rev_user );
+			$this->mwiki_user      = intval( $row->rev_wiki_user );
 			$this->mMinorEdit = intval( $row->rev_minor_edit );
 			$this->mTimestamp =         $row->rev_timestamp;
 			$this->mDeleted   = intval( $row->rev_deleted );
@@ -484,23 +484,23 @@ class Revision implements IDBAccessObject {
 				$this->mTextRow = null;
 			}
 
-			// Use user_name for users and rev_user_text for IPs...
-			$this->mUserText = null; // lazy load if left null
-			if ( $this->mUser == 0 ) {
-				$this->mUserText = $row->rev_user_text; // IP user
-			} elseif ( isset( $row->user_name ) ) {
-				$this->mUserText = $row->user_name; // logged-in user
+			// Use wiki_user_name for wiki_users and rev_wiki_user_text for IPs...
+			$this->mwiki_userText = null; // lazy load if left null
+			if ( $this->mwiki_user == 0 ) {
+				$this->mwiki_userText = $row->rev_wiki_user_text; // IP wiki_user
+			} elseif ( isset( $row->wiki_user_name ) ) {
+				$this->mwiki_userText = $row->wiki_user_name; // logged-in wiki_user
 			}
-			$this->mOrigUserText = $row->rev_user_text;
+			$this->mOrigwiki_userText = $row->rev_wiki_user_text;
 		} elseif( is_array( $row ) ) {
 			// Build a new revision to be saved...
-			global $wgUser; // ugh
+			global $wgwiki_user; // ugh
 
 			$this->mId        = isset( $row['id']         ) ? intval( $row['id']         ) : null;
 			$this->mPage      = isset( $row['page']       ) ? intval( $row['page']       ) : null;
 			$this->mTextId    = isset( $row['text_id']    ) ? intval( $row['text_id']    ) : null;
-			$this->mUserText  = isset( $row['user_text']  ) ? strval( $row['user_text']  ) : $wgUser->getName();
-			$this->mUser      = isset( $row['user']       ) ? intval( $row['user']       ) : $wgUser->getId();
+			$this->mwiki_userText  = isset( $row['wiki_user_text']  ) ? strval( $row['wiki_user_text']  ) : $wgwiki_user->getName();
+			$this->mwiki_user      = isset( $row['wiki_user']       ) ? intval( $row['wiki_user']       ) : $wgwiki_user->getId();
 			$this->mMinorEdit = isset( $row['minor_edit'] ) ? intval( $row['minor_edit'] ) : 0;
 			$this->mTimestamp = isset( $row['timestamp']  ) ? strval( $row['timestamp']  ) : wfTimestampNow();
 			$this->mDeleted   = isset( $row['deleted']    ) ? intval( $row['deleted']    ) : 0;
@@ -596,8 +596,8 @@ class Revision implements IDBAccessObject {
 			return $this->mTitle;
 		}
 		if( !is_null( $this->mId ) ) { //rev_id is defined as NOT NULL
-			$dbr = wfGetDB( DB_SLAVE );
-			$row = $dbr->selectRow(
+			r = wfGetDB( DB_SLAVE );
+			$row = r->selectRow(
 				array( 'page', 'revision' ),
 				self::selectPageFields(),
 				array( 'page_id=rev_page',
@@ -629,75 +629,75 @@ class Revision implements IDBAccessObject {
 	}
 
 	/**
-	 * Fetch revision's user id if it's available to the specified audience.
+	 * Fetch revision's wiki_user id if it's available to the specified audience.
 	 * If the specified audience does not have access to it, zero will be
 	 * returned.
 	 *
 	 * @param $audience Integer: one of:
-	 *      Revision::FOR_PUBLIC       to be displayed to all users
-	 *      Revision::FOR_THIS_USER    to be displayed to the given user
+	 *      Revision::FOR_PUBLIC       to be displayed to all wiki_users
+	 *      Revision::FOR_THIS_USER    to be displayed to the given wiki_user
 	 *      Revision::RAW              get the ID regardless of permissions
-	 * @param $user User object to check for, only if FOR_THIS_USER is passed
+	 * @param $wiki_user wiki_user object to check for, only if FOR_THIS_USER is passed
 	 *              to the $audience parameter
 	 * @return Integer
 	 */
-	public function getUser( $audience = self::FOR_PUBLIC, User $user = null ) {
+	public function getwiki_user( $audience = self::FOR_PUBLIC, wiki_user $wiki_user = null ) {
 		if( $audience == self::FOR_PUBLIC && $this->isDeleted( self::DELETED_USER ) ) {
 			return 0;
-		} elseif( $audience == self::FOR_THIS_USER && !$this->userCan( self::DELETED_USER, $user ) ) {
+		} elseif( $audience == self::FOR_THIS_USER && !$this->wiki_userCan( self::DELETED_USER, $wiki_user ) ) {
 			return 0;
 		} else {
-			return $this->mUser;
+			return $this->mwiki_user;
 		}
 	}
 
 	/**
-	 * Fetch revision's user id without regard for the current user's permissions
+	 * Fetch revision's wiki_user id without regard for the current wiki_user's permissions
 	 *
 	 * @return String
 	 */
-	public function getRawUser() {
-		return $this->mUser;
+	public function getRawwiki_user() {
+		return $this->mwiki_user;
 	}
 
 	/**
-	 * Fetch revision's username if it's available to the specified audience.
-	 * If the specified audience does not have access to the username, an
+	 * Fetch revision's wiki_username if it's available to the specified audience.
+	 * If the specified audience does not have access to the wiki_username, an
 	 * empty string will be returned.
 	 *
 	 * @param $audience Integer: one of:
-	 *      Revision::FOR_PUBLIC       to be displayed to all users
-	 *      Revision::FOR_THIS_USER    to be displayed to the given user
+	 *      Revision::FOR_PUBLIC       to be displayed to all wiki_users
+	 *      Revision::FOR_THIS_USER    to be displayed to the given wiki_user
 	 *      Revision::RAW              get the text regardless of permissions
-	 * @param $user User object to check for, only if FOR_THIS_USER is passed
+	 * @param $wiki_user wiki_user object to check for, only if FOR_THIS_USER is passed
 	 *              to the $audience parameter
 	 * @return string
 	 */
-	public function getUserText( $audience = self::FOR_PUBLIC, User $user = null ) {
+	public function getwiki_userText( $audience = self::FOR_PUBLIC, wiki_user $wiki_user = null ) {
 		if( $audience == self::FOR_PUBLIC && $this->isDeleted( self::DELETED_USER ) ) {
 			return '';
-		} elseif( $audience == self::FOR_THIS_USER && !$this->userCan( self::DELETED_USER, $user ) ) {
+		} elseif( $audience == self::FOR_THIS_USER && !$this->wiki_userCan( self::DELETED_USER, $wiki_user ) ) {
 			return '';
 		} else {
-			return $this->getRawUserText();
+			return $this->getRawwiki_userText();
 		}
 	}
 
 	/**
-	 * Fetch revision's username without regard for view restrictions
+	 * Fetch revision's wiki_username without regard for view restrictions
 	 *
 	 * @return String
 	 */
-	public function getRawUserText() {
-		if ( $this->mUserText === null ) {
-			$this->mUserText = User::whoIs( $this->mUser ); // load on demand
-			if ( $this->mUserText === false ) {
+	public function getRawwiki_userText() {
+		if ( $this->mwiki_userText === null ) {
+			$this->mwiki_userText = wiki_user::whoIs( $this->mwiki_user ); // load on demand
+			if ( $this->mwiki_userText === false ) {
 				# This shouldn't happen, but it can if the wiki was recovered
-				# via importing revs and there is no user table entry yet.
-				$this->mUserText = $this->mOrigUserText;
+				# via importing revs and there is no wiki_user table entry yet.
+				$this->mwiki_userText = $this->mOrigwiki_userText;
 			}
 		}
-		return $this->mUserText;
+		return $this->mwiki_userText;
 	}
 
 	/**
@@ -706,17 +706,17 @@ class Revision implements IDBAccessObject {
 	 * empty string will be returned.
 	 *
 	 * @param $audience Integer: one of:
-	 *      Revision::FOR_PUBLIC       to be displayed to all users
-	 *      Revision::FOR_THIS_USER    to be displayed to the given user
+	 *      Revision::FOR_PUBLIC       to be displayed to all wiki_users
+	 *      Revision::FOR_THIS_USER    to be displayed to the given wiki_user
 	 *      Revision::RAW              get the text regardless of permissions
-	 * @param $user User object to check for, only if FOR_THIS_USER is passed
+	 * @param $wiki_user wiki_user object to check for, only if FOR_THIS_USER is passed
 	 *              to the $audience parameter
 	 * @return String
 	 */
-	function getComment( $audience = self::FOR_PUBLIC, User $user = null ) {
+	function getComment( $audience = self::FOR_PUBLIC, wiki_user $wiki_user = null ) {
 		if( $audience == self::FOR_PUBLIC && $this->isDeleted( self::DELETED_COMMENT ) ) {
 			return '';
-		} elseif( $audience == self::FOR_THIS_USER && !$this->userCan( self::DELETED_COMMENT, $user ) ) {
+		} elseif( $audience == self::FOR_THIS_USER && !$this->wiki_userCan( self::DELETED_COMMENT, $wiki_user ) ) {
 			return '';
 		} else {
 			return $this->mComment;
@@ -724,7 +724,7 @@ class Revision implements IDBAccessObject {
 	}
 
 	/**
-	 * Fetch revision comment without regard for the current user's permissions
+	 * Fetch revision comment without regard for the current wiki_user's permissions
 	 *
 	 * @return String
 	 */
@@ -746,12 +746,12 @@ class Revision implements IDBAccessObject {
 		if( $this->mUnpatrolled !== null ) {
 			return $this->mUnpatrolled;
 		}
-		$dbr = wfGetDB( DB_SLAVE );
-		$this->mUnpatrolled = $dbr->selectField( 'recentchanges',
+		r = wfGetDB( DB_SLAVE );
+		$this->mUnpatrolled = r->selectField( 'recentchanges',
 			'rc_id',
-			array( // Add redundant user,timestamp condition so we can use the existing index
-				'rc_user_text'  => $this->getRawUserText(),
-				'rc_timestamp'  => $dbr->timestamp( $this->getTimestamp() ),
+			array( // Add redundant wiki_user,timestamp condition so we can use the existing index
+				'rc_wiki_user_text'  => $this->getRawwiki_userText(),
+				'rc_timestamp'  => r->timestamp( $this->getTimestamp() ),
 				'rc_this_oldid' => $this->getId(),
 				'rc_patrolled'  => 0
 			),
@@ -784,17 +784,17 @@ class Revision implements IDBAccessObject {
 	 * revision, an empty string will be returned.
 	 *
 	 * @param $audience Integer: one of:
-	 *      Revision::FOR_PUBLIC       to be displayed to all users
-	 *      Revision::FOR_THIS_USER    to be displayed to the given user
+	 *      Revision::FOR_PUBLIC       to be displayed to all wiki_users
+	 *      Revision::FOR_THIS_USER    to be displayed to the given wiki_user
 	 *      Revision::RAW              get the text regardless of permissions
-	 * @param $user User object to check for, only if FOR_THIS_USER is passed
+	 * @param $wiki_user wiki_user object to check for, only if FOR_THIS_USER is passed
 	 *              to the $audience parameter
 	 * @return String
 	 */
-	public function getText( $audience = self::FOR_PUBLIC, User $user = null ) {
+	public function getText( $audience = self::FOR_PUBLIC, wiki_user $wiki_user = null ) {
 		if( $audience == self::FOR_PUBLIC && $this->isDeleted( self::DELETED_TEXT ) ) {
 			return '';
-		} elseif( $audience == self::FOR_THIS_USER && !$this->userCan( self::DELETED_TEXT, $user ) ) {
+		} elseif( $audience == self::FOR_THIS_USER && !$this->wiki_userCan( self::DELETED_TEXT, $wiki_user ) ) {
 			return '';
 		} else {
 			return $this->getRawText();
@@ -873,20 +873,20 @@ class Revision implements IDBAccessObject {
 	 * Get previous revision Id for this page_id
 	 * This is used to populate rev_parent_id on save
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @return Integer
 	 */
-	private function getPreviousRevisionId( $db ) {
+	private function getPreviousRevisionId(  ) {
 		if( is_null( $this->mPage ) ) {
 			return 0;
 		}
 		# Use page_latest if ID is not given
 		if( !$this->mId ) {
-			$prevId = $db->selectField( 'page', 'page_latest',
+			$prevId = ->selectField( 'page', 'page_latest',
 				array( 'page_id' => $this->mPage ),
 				__METHOD__ );
 		} else {
-			$prevId = $db->selectField( 'revision', 'rev_id',
+			$prevId = ->selectField( 'revision', 'rev_id',
 				array( 'rev_page' => $this->mPage, 'rev_id < ' . $this->mId ),
 				__METHOD__,
 				array( 'ORDER BY' => 'rev_id DESC' ) );
@@ -1003,10 +1003,10 @@ class Revision implements IDBAccessObject {
 	 * Insert a new revision into the database, returning the new revision ID
 	 * number on success and dies horribly on failure.
 	 *
-	 * @param $dbw DatabaseBase: (master connection)
+	 * @param w DatabaseBase: (master connection)
 	 * @return Integer
 	 */
-	public function insertOn( $dbw ) {
+	public function insertOn( w ) {
 		global $wgDefaultExternalStore;
 
 		wfProfileIn( __METHOD__ );
@@ -1029,15 +1029,15 @@ class Revision implements IDBAccessObject {
 
 		# Record the text (or external storage URL) to the text table
 		if( !isset( $this->mTextId ) ) {
-			$old_id = $dbw->nextSequenceValue( 'text_old_id_seq' );
-			$dbw->insert( 'text',
+			$old_id = w->nextSequenceValue( 'text_old_id_seq' );
+			w->insert( 'text',
 				array(
 					'old_id'    => $old_id,
 					'old_text'  => $data,
 					'old_flags' => $flags,
 				), __METHOD__
 			);
-			$this->mTextId = $dbw->insertId();
+			$this->mTextId = w->insertId();
 		}
 
 		if ( $this->mComment === null ) $this->mComment = "";
@@ -1045,21 +1045,21 @@ class Revision implements IDBAccessObject {
 		# Record the edit in revisions
 		$rev_id = isset( $this->mId )
 			? $this->mId
-			: $dbw->nextSequenceValue( 'revision_rev_id_seq' );
-		$dbw->insert( 'revision',
+			: w->nextSequenceValue( 'revision_rev_id_seq' );
+		w->insert( 'revision',
 			array(
 				'rev_id'         => $rev_id,
 				'rev_page'       => $this->mPage,
 				'rev_text_id'    => $this->mTextId,
 				'rev_comment'    => $this->mComment,
 				'rev_minor_edit' => $this->mMinorEdit ? 1 : 0,
-				'rev_user'       => $this->mUser,
-				'rev_user_text'  => $this->mUserText,
-				'rev_timestamp'  => $dbw->timestamp( $this->mTimestamp ),
+				'rev_wiki_user'       => $this->mwiki_user,
+				'rev_wiki_user_text'  => $this->mwiki_userText,
+				'rev_timestamp'  => w->timestamp( $this->mTimestamp ),
 				'rev_deleted'    => $this->mDeleted,
 				'rev_len'        => $this->mSize,
 				'rev_parent_id'  => is_null( $this->mParentId )
-					? $this->getPreviousRevisionId( $dbw )
+					? $this->getPreviousRevisionId( w )
 					: $this->mParentId,
 				'rev_sha1'       => is_null( $this->mSha1 )
 					? self::base36Sha1( $this->mText )
@@ -1067,7 +1067,7 @@ class Revision implements IDBAccessObject {
 			), __METHOD__
 		);
 
-		$this->mId = !is_null( $rev_id ) ? $rev_id : $dbw->insertId();
+		$this->mId = !is_null( $rev_id ) ? $rev_id : w->insertId();
 
 		wfRunHooks( 'RevisionInsertComplete', array( &$this, $data, $flags ) );
 
@@ -1116,8 +1116,8 @@ class Revision implements IDBAccessObject {
 
 		if( !$row ) {
 			// Text data is immutable; check slaves first.
-			$dbr = wfGetDB( DB_SLAVE );
-			$row = $dbr->selectRow( 'text',
+			r = wfGetDB( DB_SLAVE );
+			$row = r->selectRow( 'text',
 				array( 'old_text', 'old_flags' ),
 				array( 'old_id' => $this->getTextId() ),
 				__METHOD__ );
@@ -1125,8 +1125,8 @@ class Revision implements IDBAccessObject {
 
 		if( !$row && wfGetLB()->getServerCount() > 1 ) {
 			// Possible slave lag!
-			$dbw = wfGetDB( DB_MASTER );
-			$row = $dbw->selectRow( 'text',
+			w = wfGetDB( DB_MASTER );
+			$row = w->selectRow( 'text',
 				array( 'old_text', 'old_flags' ),
 				array( 'old_id' => $this->getTextId() ),
 				__METHOD__ );
@@ -1152,16 +1152,16 @@ class Revision implements IDBAccessObject {
 	 * Such revisions can for instance identify page rename
 	 * operations and other such meta-modifications.
 	 *
-	 * @param $dbw DatabaseBase
+	 * @param w DatabaseBase
 	 * @param $pageId Integer: ID number of the page to read from
 	 * @param $summary String: revision's summary
 	 * @param $minor Boolean: whether the revision should be considered as minor
 	 * @return Revision|null on error
 	 */
-	public static function newNullRevision( $dbw, $pageId, $summary, $minor ) {
+	public static function newNullRevision( w, $pageId, $summary, $minor ) {
 		wfProfileIn( __METHOD__ );
 
-		$current = $dbw->selectRow(
+		$current = w->selectRow(
 			array( 'page', 'revision' ),
 			array( 'page_latest', 'page_namespace', 'page_title',
 				'rev_text_id', 'rev_len', 'rev_sha1' ),
@@ -1191,21 +1191,21 @@ class Revision implements IDBAccessObject {
 	}
 
 	/**
-	 * Determine if the current user is allowed to view a particular
+	 * Determine if the current wiki_user is allowed to view a particular
 	 * field of this revision, if it's marked as deleted.
 	 *
 	 * @param $field Integer:one of self::DELETED_TEXT,
 	 *                              self::DELETED_COMMENT,
 	 *                              self::DELETED_USER
-	 * @param $user User object to check, or null to use $wgUser
+	 * @param $wiki_user wiki_user object to check, or null to use $wgwiki_user
 	 * @return Boolean
 	 */
-	public function userCan( $field, User $user = null ) {
-		return self::userCanBitfield( $this->mDeleted, $field, $user );
+	public function wiki_userCan( $field, wiki_user $wiki_user = null ) {
+		return self::wiki_userCanBitfield( $this->mDeleted, $field, $wiki_user );
 	}
 
 	/**
-	 * Determine if the current user is allowed to view a particular
+	 * Determine if the current wiki_user is allowed to view a particular
 	 * field of this revision, if it's marked as deleted. This is used
 	 * by various classes to avoid duplication.
 	 *
@@ -1213,10 +1213,10 @@ class Revision implements IDBAccessObject {
 	 * @param $field Integer: one of self::DELETED_TEXT = File::DELETED_FILE,
 	 *                               self::DELETED_COMMENT = File::DELETED_COMMENT,
 	 *                               self::DELETED_USER = File::DELETED_USER
-	 * @param $user User object to check, or null to use $wgUser
+	 * @param $wiki_user wiki_user object to check, or null to use $wgwiki_user
 	 * @return Boolean
 	 */
-	public static function userCanBitfield( $bitfield, $field, User $user = null ) {
+	public static function wiki_userCanBitfield( $bitfield, $field, wiki_user $wiki_user = null ) {
 		if( $bitfield & $field ) { // aspect is deleted
 			if ( $bitfield & self::DELETED_RESTRICTED ) {
 				$permission = 'suppressrevision';
@@ -1226,11 +1226,11 @@ class Revision implements IDBAccessObject {
 				$permission = 'deletedhistory';
 			}
 			wfDebug( "Checking for $permission due to $field match on $bitfield\n" );
-			if ( $user === null ) {
-				global $wgUser;
-				$user = $wgUser;
+			if ( $wiki_user === null ) {
+				global $wgwiki_user;
+				$wiki_user = $wgwiki_user;
 			}
-			return $user->isAllowed( $permission );
+			return $wiki_user->isAllowed( $permission );
 		} else {
 			return true;
 		}
@@ -1244,18 +1244,18 @@ class Revision implements IDBAccessObject {
 	 * @return String
 	 */
 	static function getTimestampFromId( $title, $id ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 		// Casting fix for DB2
 		if ( $id == '' ) {
 			$id = 0;
 		}
 		$conds = array( 'rev_id' => $id );
 		$conds['rev_page'] = $title->getArticleID();
-		$timestamp = $dbr->selectField( 'revision', 'rev_timestamp', $conds, __METHOD__ );
+		$timestamp = r->selectField( 'revision', 'rev_timestamp', $conds, __METHOD__ );
 		if ( $timestamp === false && wfGetLB()->getServerCount() > 1 ) {
 			# Not in slave, try master
-			$dbw = wfGetDB( DB_MASTER );
-			$timestamp = $dbw->selectField( 'revision', 'rev_timestamp', $conds, __METHOD__ );
+			w = wfGetDB( DB_MASTER );
+			$timestamp = w->selectField( 'revision', 'rev_timestamp', $conds, __METHOD__ );
 		}
 		return wfTimestamp( TS_MW, $timestamp );
 	}
@@ -1263,12 +1263,12 @@ class Revision implements IDBAccessObject {
 	/**
 	 * Get count of revisions per page...not very efficient
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $id Integer: page id
 	 * @return Integer
 	 */
-	static function countByPageId( $db, $id ) {
-		$row = $db->selectRow( 'revision', array( 'revCount' => 'COUNT(*)' ),
+	static function countByPageId( , $id ) {
+		$row = ->selectRow( 'revision', array( 'revCount' => 'COUNT(*)' ),
 			array( 'rev_page' => $id ), __METHOD__ );
 		if( $row ) {
 			return $row->revCount;
@@ -1279,50 +1279,50 @@ class Revision implements IDBAccessObject {
 	/**
 	 * Get count of revisions per page...not very efficient
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param $title Title
 	 * @return Integer
 	 */
-	static function countByTitle( $db, $title ) {
+	static function countByTitle( , $title ) {
 		$id = $title->getArticleID();
 		if( $id ) {
-			return self::countByPageId( $db, $id );
+			return self::countByPageId( , $id );
 		}
 		return 0;
 	}
 
 	/**
-	 * Check if no edits were made by other users since
-	 * the time a user started editing the page. Limit to
+	 * Check if no edits were made by other wiki_users since
+	 * the time a wiki_user started editing the page. Limit to
 	 * 50 revisions for the sake of performance.
 	 *
 	 * @since 1.20
 	 *
-	 * @param DatabaseBase|int $db the Database to perform the check on. May be given as a Database object or
+	 * @param DatabaseBase|int  the Database to perform the check on. May be given as a Database object or
 	 *        a database identifier usable with wfGetDB.
 	 * @param int $pageId the ID of the page in question
-	 * @param int $userId the ID of the user in question
+	 * @param int $wiki_userId the ID of the wiki_user in question
 	 * @param string $since look at edits since this time
 	 *
-	 * @return bool True if the given user was the only one to edit since the given timestamp
+	 * @return bool True if the given wiki_user was the only one to edit since the given timestamp
 	 */
-	public static function userWasLastToEdit( $db, $pageId, $userId, $since ) {
-		if ( !$userId ) return false;
+	public static function wiki_userWasLastToEdit( , $pageId, $wiki_userId, $since ) {
+		if ( !$wiki_userId ) return false;
 
-		if ( is_int( $db ) ) {
-			$db = wfGetDB( $db );
+		if ( is_int(  ) ) {
+			 = wfGetDB(  );
 		}
 
-		$res = $db->select( 'revision',
-			'rev_user',
+		$res = ->select( 'revision',
+			'rev_wiki_user',
 			array(
 				'rev_page' => $pageId,
-				'rev_timestamp > ' . $db->addQuotes( $db->timestamp( $since ) )
+				'rev_timestamp > ' . ->addQuotes( ->timestamp( $since ) )
 			),
 			__METHOD__,
 			array( 'ORDER BY' => 'rev_timestamp ASC', 'LIMIT' => 50 ) );
 		foreach ( $res as $row ) {
-			if ( $row->rev_user != $userId ) {
+			if ( $row->rev_wiki_user != $wiki_userId ) {
 				return false;
 			}
 		}

@@ -1594,7 +1594,7 @@ jQuery.extend({
 		thisCache = cache[ id ];
 
 		// jQuery data() is stored in a separate object inside the object's internal data
-		// cache in order to avoid key collisions between internal data and user-defined
+		// cache in order to avoid key collisions between internal data and wiki_user-defined
 		// data.
 		if ( !pvt ) {
 			if ( !thisCache.data ) {
@@ -3380,7 +3380,7 @@ if ( !jQuery.support.submitBubbles ) {
 		},
 
 		postDispatch: function( event ) {
-			// If form was submitted by the user, bubble the event up the tree
+			// If form was submitted by the wiki_user, bubble the event up the tree
 			if ( event._submit_bubble ) {
 				delete event._submit_bubble;
 				if ( this.parentNode && !event.isTrigger ) {
@@ -4071,7 +4071,7 @@ Sizzle.attr = function( elem, name ) {
 
 Expr = Sizzle.selectors = {
 
-	// Can be adjusted by the user
+	// Can be adjusted by the wiki_user
 	cacheLength: 50,
 
 	createPseudo: markFunction,
@@ -4361,7 +4361,7 @@ Expr = Sizzle.selectors = {
 				fn = Expr.pseudos[ pseudo ] || Expr.setFilters[ pseudo.toLowerCase() ] ||
 					Sizzle.error( "unsupported pseudo: " + pseudo );
 
-			// The user may use createPseudo to indicate that
+			// The wiki_user may use createPseudo to indicate that
 			// arguments are needed to create the filter function
 			// just as Sizzle does
 			if ( fn[ expando ] ) {
@@ -6483,7 +6483,7 @@ jQuery.uaMatch = function( ua ) {
 	};
 };
 
-matched = jQuery.uaMatch( navigator.userAgent );
+matched = jQuery.uaMatch( navigator.wiki_userAgent );
 browser = {};
 
 if ( matched.browser ) {
@@ -7540,7 +7540,7 @@ jQuery.extend({
 		timeout: 0,
 		data: null,
 		dataType: null,
-		username: null,
+		wiki_username: null,
 		password: null,
 		cache: null,
 		throws: false,
@@ -8375,9 +8375,9 @@ if ( jQuery.support.ajax ) {
 						xhr = s.xhr();
 
 					// Open the socket
-					// Passing null username, generates a login popup on Opera (#2865)
-					if ( s.username ) {
-						xhr.open( s.type, s.url, s.async, s.username, s.password );
+					// Passing null wiki_username, generates a login popup on Opera (#2865)
+					if ( s.wiki_username ) {
+						xhr.open( s.type, s.url, s.async, s.wiki_username, s.password );
 					} else {
 						xhr.open( s.type, s.url, s.async );
 					}

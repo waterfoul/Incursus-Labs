@@ -163,10 +163,10 @@
 				// Return without namespace prefix
 				return new mw.Title( String( val ) ).getMain();
 			} ),
-		sample: 'User:Sample',
+		sample: 'wiki_user:Sample',
 		hasLimit: true,
 		limit: 6, // 'Sample' length
-		expected: 'User:Sample'
+		expected: 'wiki_user:Sample'
 	});
 
 	byteLimitTest({
@@ -182,10 +182,10 @@
 				// Return without namespace prefix
 				return new mw.Title( String( val ) ).getMain();
 			} ),
-		sample: 'User:Sample',
+		sample: 'wiki_user:Sample',
 		hasLimit: true,
 		limit: 6, // 'Sample' length
-		expected: 'User:Sample'
+		expected: 'wiki_user:Sample'
 	});
 
 	QUnit.test( 'Confirm properties and attributes set', 4, function ( assert ) {

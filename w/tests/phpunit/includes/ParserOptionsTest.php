@@ -6,9 +6,9 @@ class ParserOptionsTest extends MediaWikiTestCase {
 	private $pcache;
 
 	function setUp() {
-		global $wgContLang, $wgUser, $wgLanguageCode;
+		global $wgContLang, $wgwiki_user, $wgLanguageCode;
 		$wgContLang = Language::factory( $wgLanguageCode );
-		$this->popts = ParserOptions::newFromUserAndLang( $wgUser, $wgContLang );
+		$this->popts = ParserOptions::newFromwiki_userAndLang( $wgwiki_user, $wgContLang );
 		$this->pcache = ParserCache::singleton();
 	}
 

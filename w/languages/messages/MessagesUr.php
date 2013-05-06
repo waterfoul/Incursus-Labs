@@ -47,7 +47,7 @@ $namespaceNames = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'ربط کی خط کشیدگی:',
 'tog-justify' => 'سطور کی برابری',
 'tog-hideminor' => 'حالیہ تبدیلیوں میں معمولی ترمیمات چُھپاؤ',
@@ -71,7 +71,7 @@ $messages = array(
 'tog-previewonfirst' => 'پہلی ترمیم پر نمائش دکھاؤ',
 'tog-nocache' => 'متصفح کا صفحی ابطن سازی غیرفعال',
 'tog-enotifwatchlistpages' => 'جب میری زیرِنظرفہرست پر کوئی صفحہ میں تبدیلی واقع ہو تو مجھے برقی ڈاک بھیجو',
-'tog-enotifusertalkpages' => 'جب میرا تبادلۂ خیال صفحہ میں تبدیلی واقع ہو تو مجھے برقی ڈاک بھیجو',
+'tog-enotifwiki_usertalkpages' => 'جب میرا تبادلۂ خیال صفحہ میں تبدیلی واقع ہو تو مجھے برقی ڈاک بھیجو',
 'tog-enotifminoredits' => 'صفحات میں معمولی ترمیمات کے بارے میں بھی مجھے برقی ڈاک بھیجو',
 'tog-enotifrevealaddr' => 'خبرداری برقی خطوط میں میرا برقی ڈاک پتہ ظاہر کرو',
 'tog-shownumberswatching' => 'دیکھنے والے صارفین کی تعداد دکھاؤ',
@@ -244,7 +244,7 @@ $messages = array(
 'talk' => 'تبادلہٴ خیال',
 'views' => 'خیالات',
 'toolbox' => 'اوزاردان',
-'userpage' => 'صفحۂ صارف دیکھئے',
+'wiki_userpage' => 'صفحۂ صارف دیکھئے',
 'projectpage' => 'صفحۂ منصوبہ دیکھئے',
 'imagepage' => 'صفحۂ مسل دیکھئے',
 'mediawikipage' => 'صفحۂ پیغام دیکھئے',
@@ -268,7 +268,7 @@ $messages = array(
 $1',
 'pool-errorunknown' => 'نامعلوم خطا',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'کا تعارف {{SITENAME}}',
 'aboutpage' => 'Project:تعارف',
 'copyright' => 'تمام مواد $1 کے تحت میسر ہے۔',
@@ -335,7 +335,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'صفحہ',
-'nstab-user' => 'صفحۂ صارف',
+'nstab-wiki_user' => 'صفحۂ صارف',
 'nstab-media' => 'صفحۂ وسیط',
 'nstab-special' => 'خاص صفحہ',
 'nstab-project' => 'صفحۂ منصوبہ',
@@ -381,7 +381,7 @@ Warning: Page may not contain recent updates.',
 یہ عموماً کسی صفحے کے تاریخی یا پرانے حذف شدہ ربط کی وجہ سے ہوسکتا ہے.
 
 اگر یہ وجہ نہیں، تو آپ نے مصنع‌لطیف میں کھٹمل پایا ہے.
-برائے مہربانی، URL کی نشاندہی کرتے ہوئے کسی [[Special:ListUsers/sysop|منتظم]] کو اِس کا سندیس کیجئے.',
+برائے مہربانی، URL کی نشاندہی کرتے ہوئے کسی [[Special:Listwiki_users/sysop|منتظم]] کو اِس کا سندیس کیجئے.',
 'missingarticle-rev' => '(نظرثانی#: $1)',
 'readonly_lag' => 'ڈیٹابیس خودکار طور پر مقفل ہوچکا ہے تاکہ ماتحت ڈیٹابیسی معیلات کا درجہ آقا کا ہوجائے.',
 'internalerror' => 'خطائے اندرونی',
@@ -416,7 +416,7 @@ Warning: Page may not contain recent updates.',
 'sqlhidden' => '(SQL استفسارہ پوشیدہ)',
 'namespaceprotected' => "آپ کو '''$1''' فضائے نام میں صفحات تدوین کرنے کی اِجازت نہیں ہے.",
 'ns-specialprotected' => 'خاص صفحات کی تدوین نہیں کی جاسکتی.',
-'titleprotected' => 'اس عنوان کو [[User:$1|$1]] نے تخلیق سے محفوظ کیا ہے.
+'titleprotected' => 'اس عنوان کو [[wiki_user:$1|$1]] نے تخلیق سے محفوظ کیا ہے.
 وجہ یہ بتائی گئی ہے: "\'\'$2\'\'"',
 'exception-nologin' => 'غیر داخل نوشتہ',
 
@@ -428,7 +428,7 @@ Warning: Page may not contain recent updates.',
 # Login and logout pages
 'logouttext' => "'''اب آپ خارج ہوچکے ہیں'''
 
-آپ گمنام طور پر {{SITENAME}}  کا استعمال جاری رکھ سکتے ہیں، یا دوبارہ اسی نام یا مختلف نام سے [[Special:UserLogin|دوبارہ داخلِ نوشتہ]] بھی ہو سکتے ہیں۔  یہ یاد آوری کرلیجیۓ کہ کچھ صفحات ایسے نظر آتے رہیں گے کہ جیسے ابھی آپ خارج نہیں ہوئے ، جب تک آپ اپنے متصفح کا ابطن صاف نہ کردیں۔",
+آپ گمنام طور پر {{SITENAME}}  کا استعمال جاری رکھ سکتے ہیں، یا دوبارہ اسی نام یا مختلف نام سے [[Special:wiki_userLogin|دوبارہ داخلِ نوشتہ]] بھی ہو سکتے ہیں۔  یہ یاد آوری کرلیجیۓ کہ کچھ صفحات ایسے نظر آتے رہیں گے کہ جیسے ابھی آپ خارج نہیں ہوئے ، جب تک آپ اپنے متصفح کا ابطن صاف نہ کردیں۔",
 'welcomecreation' => '== خوش آمدید، $1 ! ==
 آپ کا کھاتہ بنا دیا گیا ہے۔ اپنی [[Special:Preferences|{{SITENAME}} ترجیحات]] مرتب کرنا مت بھولئے گا.',
 'yourname' => 'اسمِ رکنیت',
@@ -441,21 +441,21 @@ Warning: Page may not contain recent updates.',
 'login' => 'داخل ہوں',
 'nav-login-createaccount' => 'کھاتہ کھولیں یا اندراج کریں',
 'loginprompt' => '{{SITENAME}} میں داخلے کیلۓ آپکے پاس قند (کوکیز) مجازہوناچاہیں۔',
-'userlogin' => 'کھاتہ کھولیں یا اندراج کریں',
-'userloginnocreate' => 'داخلِ نوشتہ ہوجائیے',
+'wiki_userlogin' => 'کھاتہ کھولیں یا اندراج کریں',
+'wiki_userloginnocreate' => 'داخلِ نوشتہ ہوجائیے',
 'logout' => 'اخراج',
-'userlogout' => 'خارج ہوجائیں',
+'wiki_userlogout' => 'خارج ہوجائیں',
 'notloggedin' => 'داخلہ نہیں ہوا',
 'nologin' => "کیا آپ نے کھاتہ نہیں بنایا ہوا؟ '''$1'''۔",
 'nologinlink' => 'کھاتا بنائیں',
 'createaccount' => 'کھاتہ کھولیں',
 'gotaccount' => "پہلے سے کھاتہ بنا ہوا ہے? '''$1'''.",
 'gotaccountlink' => 'داخل ہوجائیے',
-'userlogin-resetlink' => 'داخلِ نوشتہ ہونے کی تفاصیل بھول گئے ہیں؟',
+'wiki_userlogin-resetlink' => 'داخلِ نوشتہ ہونے کی تفاصیل بھول گئے ہیں؟',
 'createaccountmail' => 'بذریعۂ برقی ڈاک',
 'createaccountreason' => 'وجہ:',
 'badretype' => 'درج شدہ کلمۂ شناخت اصل سے مطابقت نہیں رکھتا۔',
-'userexists' => 'داخل کردہ اسم صارف پہلے سے مستعمل ہے۔
+'wiki_userexists' => 'داخل کردہ اسم صارف پہلے سے مستعمل ہے۔
 براہِ کرم! کوئی دوسرا اسم منتخب کیجئے۔',
 'loginerror' => 'داخلے میں غلطی',
 'createaccounterror' => 'کھاتہ $1 بنایا نہیں جاسکا',
@@ -469,13 +469,13 @@ Warning: Page may not contain recent updates.',
 'noname' => 'آپ نے صحیح اسم صارف نہیں چنا.',
 'loginsuccesstitle' => 'داخلہ کامیاب',
 'loginsuccess' => "'''اب آپ {{SITENAME}} میں بنام \"\$1\" داخل ہوچکے ہیں۔'''",
-'nosuchuser' => '"$1" کے نام سے کوئی صارف موجود نہیں ہے.
+'nosuchwiki_user' => '"$1" کے نام سے کوئی صارف موجود نہیں ہے.
 برائے مہربانی! ہجوں کے درست اندراج کی تصدیق کرلیجئے.
-اگر آپ چاہیں تو [[Special:UserLogin/signup|نیا کھاتہ بھی بناسکتے ہیں]].',
-'nosuchusershort' => '"$1" کے نام سے کوئی صارف موجود نہیں.
+اگر آپ چاہیں تو [[Special:wiki_userLogin/signup|نیا کھاتہ بھی بناسکتے ہیں]].',
+'nosuchwiki_usershort' => '"$1" کے نام سے کوئی صارف موجود نہیں.
 اپنا ہجہ جانچئے.',
-'nouserspecified' => 'آپ کو ایک اسمِ صارف مخصوص کرنا ہے.',
-'login-userblocked' => 'اِس صارف پر پابندی ہے. داخلِ نوشتہ ہونے کی اجازت نہیں.',
+'nowiki_userspecified' => 'آپ کو ایک اسمِ صارف مخصوص کرنا ہے.',
+'login-wiki_userblocked' => 'اِس صارف پر پابندی ہے. داخلِ نوشتہ ہونے کی اجازت نہیں.',
 'wrongpassword' => 'آپ نے غلط کلمۂ شناخت درج کیا ہے۔ دوبارہ کو شش کریں۔',
 'wrongpasswordempty' => 'کلمۂ شناخت ندارد۔ دوبارہ کوشش کریں۔',
 'passwordtooshort' => 'آپکا منتخب کردہ پارلفظ مختصر ہے. پارلفظ کم از کم {{PLURAL:$1|1 محرف|$1 محارف}} ہونا چاہئے.',
@@ -517,13 +517,13 @@ Warning: Page may not contain recent updates.',
 آپ کو چاہئے کہ ابھی داخلِ نوشتہ ہوکر اپنا پارلفظ تبدیل کردیں.
 
 اگر یہ کھاتہ غلطی سے بنا تھا تو آپ یہ پیغام نظرانداز کرسکتے ہیں.',
-'usernamehasherror' => 'اسمِ صارف میں خلط ملط محارف استعمال نہیں کئے جاسکتے',
+'wiki_usernamehasherror' => 'اسمِ صارف میں خلط ملط محارف استعمال نہیں کئے جاسکتے',
 'login-throttled' => 'آپ نے داخلِ نوشتہ ہونے کیلئے بہت زیادہ حالیہ کوششیں کیں.
 دوبارہ کوشش کرنے سے پہلے انتظار فرمائیے.',
 'loginlanguagelabel' => 'زبان: $1',
 
 # E-mail sending
-'user-mail-no-addy' => 'برقی ڈاک بھیجنے کی کوشش بغیر برقی ڈاک پتہ',
+'wiki_user-mail-no-addy' => 'برقی ڈاک بھیجنے کی کوشش بغیر برقی ڈاک پتہ',
 
 # Change password dialog
 'resetpass' => 'پارلفظ تبدیل کریں',
@@ -546,7 +546,7 @@ Warning: Page may not contain recent updates.',
 
 # Special:PasswordReset
 'passwordreset' => 'پارلفظ کی بازتعینی',
-'passwordreset-username' => 'اسمِ صارف:',
+'passwordreset-wiki_username' => 'اسمِ صارف:',
 'passwordreset-domain' => 'ساحہ:',
 'passwordreset-email' => 'برقی ڈاک پتہ:',
 
@@ -618,14 +618,14 @@ $1 نے پابندی لگائی تھی.
 'loginreqlink' => 'داخلہ',
 'loginreqpagetext' => 'دوسرے صفحات ملاحظہ کرنے کیلئے آپکا $1 ضروری ہے.',
 'accmailtitle' => 'کلمہ شناخت بھیج دیا گیا۔',
-'accmailtext' => "[[User talk:$1|$1]] کیلئے خودکار طریقے سے تخلیق کیا گیا پارلفظ $2 کو بھیج دیا گیا ہے.
+'accmailtext' => "[[wiki_user talk:$1|$1]] کیلئے خودکار طریقے سے تخلیق کیا گیا پارلفظ $2 کو بھیج دیا گیا ہے.
 
 داخلِ نوشتہ ہونے پر اِس جدید کھاتے کیلئے پارلفظ ''[[Special:ChangePassword|پارلفظ کی تبدیلی]]'' میں تبدیل کیا جاسکتا ہے.",
 'newarticle' => '(نیا)',
 'newarticletext' => "آپ نے ایک ایسے صفحے کے ربط کی پیروی کی ہے جو کہ ابھی موجود نہیں ہے.
 یہ صفحہ تخلیق کرنے کیلئے درج ذیل خانہ میں متن درج کیجئے (مزید معلومات کیلئے [[{{MediaWiki:Helppage}}|صفحۂ معاونت]] ملاحظہ فرمائیے).
 اگر آپ یہاں غلطی سے پہنچے ہیں تو پچھلے صفحے پر واپس جانے کیلئے اپنے متصفح پر '''back''' کا بٹن ٹک کیجئے.",
-'anontalkpagetext' => "----''یہ صفحہ ایک ایسے صارف کا ہے جنہوں نے یا تو اب تک اپنا کھاتا نہیں بنایا یا پھر وہ اسے استعمال نہیں کر رہے/ رہی ہیں۔ لہٰذا ہمیں انکی شناخت کے لئے ایک عددی آئی پی پتہ استعمال کرنا پڑرہا ہے۔ اس قسم کا آئی پی پتہ ایک سے زائد صارفین کے لئے مشترک بھی ہوسکتا ہے۔ اگر آپکی موجودہ حیثیت ایک گمنام صارف کی ہے اور آپ محسوس کریں کہ اس صفحہ پر آپکی جانب منسوب یہ بیان غیرضروری ہے تو براہ کرم [[Special:UserLogin/signup|کھاتہ بنائیں]] یا [[Special:UserLogin|داخلِ نوشتہ]] ہوجائیے تاکہ مستقبل میں آپکو گمنام صارفین میں شمار کرنے سے پرہیز کیا جاسکے۔\"",
+'anontalkpagetext' => "----''یہ صفحہ ایک ایسے صارف کا ہے جنہوں نے یا تو اب تک اپنا کھاتا نہیں بنایا یا پھر وہ اسے استعمال نہیں کر رہے/ رہی ہیں۔ لہٰذا ہمیں انکی شناخت کے لئے ایک عددی آئی پی پتہ استعمال کرنا پڑرہا ہے۔ اس قسم کا آئی پی پتہ ایک سے زائد صارفین کے لئے مشترک بھی ہوسکتا ہے۔ اگر آپکی موجودہ حیثیت ایک گمنام صارف کی ہے اور آپ محسوس کریں کہ اس صفحہ پر آپکی جانب منسوب یہ بیان غیرضروری ہے تو براہ کرم [[Special:wiki_userLogin/signup|کھاتہ بنائیں]] یا [[Special:wiki_userLogin|داخلِ نوشتہ]] ہوجائیے تاکہ مستقبل میں آپکو گمنام صارفین میں شمار کرنے سے پرہیز کیا جاسکے۔\"",
 'noarticletext' => 'اِس صفحہ میں فی الحال کوئی متن موجود نہیں ہے.
 آپ دیگں صفحات میں [[Special:Search/{{PAGENAME}}|اِس صفحہ کے عنوان کیلئے تلاش کرسکتے ہیں]]، <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} متعلقہ نوشتہ جات تلاش کرسکتے ہیں],
 یا [{{fullurl:{{FULLPAGENAME}}|action=edit}} اِس صفحہ میں ترمیم کرسکتے ہیں]</span>',
@@ -636,7 +636,7 @@ $1 نے پابندی لگائی تھی.
 'previewnote' => "'''یاد رکھیں، یہ صرف نمائش ہے ۔آپ کی ترامیم ابھی محفوظ نہیں کی گئیں۔'''",
 'session_fail_preview' => 'معاف کیجئے! نشست کے مواد میں خامی کی وجہ سے آپکی  ترمیم پر عمل نہیں کیا جاسکا.
 برائے مہربانی دوبارہ کوشش کیجئے.
-اگر آپکو پھر بھی مشکل پیش آرہی ہے تو [[Special:UserLogout|خارجِ نوشتہ]] ہوکر واپس داخلِ نوشتہ ہوجایئے.',
+اگر آپکو پھر بھی مشکل پیش آرہی ہے تو [[Special:wiki_userLogout|خارجِ نوشتہ]] ہوکر واپس داخلِ نوشتہ ہوجایئے.',
 'editing' => 'آپ "$1" میں ترمیم کر رہے ہیں۔',
 'editingsection' => '$1 کے قطعہ کی تدوین',
 'editingcomment' => 'زیرترمیم $1 (تبصرہ)',
@@ -731,7 +731,7 @@ $1 نے پابندی لگائی تھی.
 'revdelete-hide-image' => 'مشمولاتِ ملف چھپاؤ',
 'revdelete-hide-name' => 'عمل اور ہدف کو چھپاؤ',
 'revdelete-hide-comment' => 'ترمیمی تبصرہ چھپاؤ',
-'revdelete-hide-user' => 'ترمیم کار کا اسمِ صارف / آئی.پی پتہ چُھپاؤ',
+'revdelete-hide-wiki_user' => 'ترمیم کار کا اسمِ صارف / آئی.پی پتہ چُھپاؤ',
 'revdelete-radio-same' => '(تبدیل مت کرو)',
 'revdelete-radio-set' => 'ہاں',
 'revdelete-radio-unset' => 'نہیں',
@@ -844,13 +844,13 @@ $1",
 'mypreferences' => 'میری ترجیہات',
 'prefs-edits' => 'تدوینات کی تعداد:',
 'prefsnologin' => 'نا داخل شدہ حالت',
-'prefsnologintext' => 'ترجیحات ترتیب دینے کیلئے <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} داخل نوشتہ]</span> ہونا لازمی ہے.',
+'prefsnologintext' => 'ترجیحات ترتیب دینے کیلئے <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} داخل نوشتہ]</span> ہونا لازمی ہے.',
 'changepassword' => 'کلمۂ شناخت تبدیل کریں',
 'prefs-skin' => 'جِلد',
 'skin-preview' => 'پیش منظر',
 'datedefault' => 'کوئی ترجیحات نہیں',
 'prefs-datetime' => 'تاریخ و وقت',
-'prefs-user-pages' => 'صارف صفحات',
+'prefs-wiki_user-pages' => 'صارف صفحات',
 'prefs-personal' => 'نمایۂ صارف',
 'prefs-rc' => 'حالیہ تبدیلیاں',
 'prefs-watchlist' => 'زیرِنظر فہرست',
@@ -898,7 +898,7 @@ $1",
 'prefs-emailconfirm-label' => 'برقی پتہ کی تصدیق:',
 'prefs-textboxsize' => 'خانۂ تدوین کی جسامت',
 'youremail' => '٭ برقی خط',
-'username' => 'اسم صارف',
+'wiki_username' => 'اسم صارف',
 'uid' => 'صارف نمبر:',
 'prefs-memberingroups' => '{{PLURAL:$1|گروہ|گروہوں}} کا رُکن:',
 'prefs-registration' => 'وقتِ اندراج:',
@@ -933,28 +933,28 @@ HTML tags جانچئے.',
 'prefs-advancedwatchlist' => 'اعلی اختیارات',
 'prefs-diffs' => 'فروق',
 
-# User rights
-'userrights' => 'حقوقِ صارف کی نظامت',
-'userrights-lookup-user' => 'گروہائے صارف کا انتظام',
-'userrights-user-editname' => 'کوئی اسم‌صارف داخل کیجئے:',
-'editusergroup' => 'ترمیم گروہائے صارف',
-'editinguser' => "تبدیلئ حقوق برائے صارف '''[[صارف:$1|$1]]''' $2",
-'userrights-editusergroup' => 'ترمیم گروہائے صارف',
-'saveusergroups' => 'گروہائے صارف محفوظ',
-'userrights-groupsmember' => 'رکنِ:',
-'userrights-groupsmember-auto' => 'اعتباری صارف در',
-'userrights-groups-help' => 'آپ ان گروہان میں تبدیلی کرسکتے ہیں جن سے صارف متعلق ہے: 
+# wiki_user rights
+'wiki_userrights' => 'حقوقِ صارف کی نظامت',
+'wiki_userrights-lookup-wiki_user' => 'گروہائے صارف کا انتظام',
+'wiki_userrights-wiki_user-editname' => 'کوئی اسم‌صارف داخل کیجئے:',
+'editwiki_usergroup' => 'ترمیم گروہائے صارف',
+'editingwiki_user' => "تبدیلئ حقوق برائے صارف '''[[صارف:$1|$1]]''' $2",
+'wiki_userrights-editwiki_usergroup' => 'ترمیم گروہائے صارف',
+'savewiki_usergroups' => 'گروہائے صارف محفوظ',
+'wiki_userrights-groupsmember' => 'رکنِ:',
+'wiki_userrights-groupsmember-auto' => 'اعتباری صارف در',
+'wiki_userrights-groups-help' => 'آپ ان گروہان میں تبدیلی کرسکتے ہیں جن سے صارف متعلق ہے: 
 * نشان زد خانہ کا مطلب یہ ہے کہ صارف کا تعلق اس گروہ سے ہے۔ 
 * غیر نشان زد خانہ کا مطلب یہ ہے کہ صارف کا تعلق اس گروہ سے نہیں ہے۔ 
 * یہ * علامت اس بات کا اشارہ ہے کہ آپ اس گروہ کو نہیں ہٹا سکتے جسے ایک مرتبہ آپ نے شامل کردیا ہو، یا اس کے بر عکس۔',
-'userrights-reason' => 'وجہ:',
-'userrights-no-interwiki' => 'دوسرے ویکیوں پر حقوقِ صارف میں ترمیم کی آپ کو اجازت نہیں ہے.',
-'userrights-changeable-col' => 'مجموعات جو آپ تبدیل کرسکتے ہیں',
-'userrights-unchangeable-col' => 'مجموعات جو آپ تبدیل نہیں کرسکتے',
+'wiki_userrights-reason' => 'وجہ:',
+'wiki_userrights-no-interwiki' => 'دوسرے ویکیوں پر حقوقِ صارف میں ترمیم کی آپ کو اجازت نہیں ہے.',
+'wiki_userrights-changeable-col' => 'مجموعات جو آپ تبدیل کرسکتے ہیں',
+'wiki_userrights-unchangeable-col' => 'مجموعات جو آپ تبدیل نہیں کرسکتے',
 
 # Groups
 'group' => 'گروہ:',
-'group-user' => 'صارفین',
+'group-wiki_user' => 'صارفین',
 'group-autoconfirmed' => 'خود توثیق شدہ صارفین',
 'group-bot' => 'روبالات',
 'group-sysop' => 'منتظمین',
@@ -962,14 +962,14 @@ HTML tags جانچئے.',
 'group-suppress' => 'نگران',
 'group-all' => '(تمام)',
 
-'group-user-member' => 'صارف',
+'group-wiki_user-member' => 'صارف',
 'group-autoconfirmed-member' => 'خودتصدیق شدہ صارف',
 'group-bot-member' => 'خودکار صارف',
 'group-sysop-member' => 'منتظم',
 'group-bureaucrat-member' => '{{GENDER:$1|مامور اداری}}',
 'group-suppress-member' => '{{GENDER:$1|نگران}}',
 
-'grouppage-user' => '{{ns:project}}:صارفین',
+'grouppage-wiki_user' => '{{ns:project}}:صارفین',
 'grouppage-autoconfirmed' => '{{ns:project}}:خود توثیق شدہ صارف',
 'grouppage-bot' => '{{ns:project}}:روبہ جات',
 'grouppage-sysop' => '{{ns:project}}:منتظمین',
@@ -979,7 +979,7 @@ HTML tags جانچئے.',
 'right-delete' => 'صفحات حذف کریں',
 'right-sendemail' => 'دیگر صارفین کو برقی ڈاک بھیجیں',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'نوشتہ صارفی اختیارات',
 'rightslogtext' => 'یہ صارفی اختیارات میں تبدیلیوں کا نوشتہ ہے۔',
 'rightslogentry' => 'گروہ رکنیت میں برائے $1 از $2 تا $3 تبدیلی ہوئی',
@@ -1033,7 +1033,7 @@ HTML tags جانچئے.',
 'uploadbtn' => 'زبراثقال ملف (اپ لوڈ فائل)',
 'reuploaddesc' => 'زبراثقال ورقہ (فارم) کیجانب واپس۔',
 'uploadnologin' => 'آپ داخل شدہ حالت میں نہیں',
-'uploadnologintext' => 'زبراثقال ملف (فائل اپ لوڈ) کے لیۓ آپکو  [[Special:UserLogin|داخل شدہ]] حالت میں ہونا لازم ہے۔',
+'uploadnologintext' => 'زبراثقال ملف (فائل اپ لوڈ) کے لیۓ آپکو  [[Special:wiki_userLogin|داخل شدہ]] حالت میں ہونا لازم ہے۔',
 'uploadtext' => "
 '''یادآوری''': اگر آپ اپنی ملف (فائل) زبراثقال کرتے وقت ، خلاصہ کے خانے میں ،  درج ذیل دو باتوں کی وضاحت نہیں کرتے تو ملف کو حذف کیا جاسکتا ہے:
 #ملف یا فائل کا '''مـاخـذ''' ، یعنی:
@@ -1089,7 +1089,7 @@ HTML tags جانچئے.',
 'filehist-current' => 'حالیہ',
 'filehist-datetime' => 'تاریخ/وقت',
 'filehist-thumb' => 'اظفورہ',
-'filehist-user' => 'صارف',
+'filehist-wiki_user' => 'صارف',
 'filehist-dimensions' => 'ابعاد',
 'filehist-comment' => 'تبصرہ',
 'imagelinks' => 'ملف کا استعمال',
@@ -1110,7 +1110,7 @@ HTML tags جانچئے.',
 
 # Statistics
 'statistics' => 'اعداد و شمار',
-'statistics-header-users' => 'ارکان کے اعداد و شمار',
+'statistics-header-wiki_users' => 'ارکان کے اعداد و شمار',
 
 'disambiguations' => 'ضد ابہام صفحات',
 'disambiguationspage' => 'سانچہ:ضدابہام',
@@ -1142,8 +1142,8 @@ HTML tags جانچئے.',
 'shortpages' => 'چھوٹے صفحات',
 'longpages' => 'طویل ترین صفحات',
 'deadendpages' => 'مردہ صفحات',
-'listusers' => 'فہرست ارکان',
-'usercreated' => '{{GENDER:$3|تخلیق شدہ}}  بتاریخ $1 بوقت $2',
+'listwiki_users' => 'فہرست ارکان',
+'wiki_usercreated' => '{{GENDER:$3|تخلیق شدہ}}  بتاریخ $1 بوقت $2',
 'newpages' => 'جدید صفحات',
 'ancientpages' => 'قدیم ترین صفحات',
 'move' => 'منتقـل',
@@ -1157,7 +1157,7 @@ HTML tags جانچئے.',
 'booksources-go' => 'چلو',
 
 # Special:Log
-'specialloguserlabel' => 'صارف:',
+'speciallogwiki_userlabel' => 'صارف:',
 'speciallogtitlelabel' => 'عنوان:',
 'log' => 'نوشتہ جات',
 
@@ -1182,16 +1182,16 @@ Also see [[Special:WantedCategories|wanted categories]].',
 # Special:LinkSearch
 'linksearch-line' => '$1 مربوط ہے $2 سے',
 
-# Special:Log/newusers
-'newuserlogpage' => 'نوشتۂ آمد صارف',
-'newuserlogpagetext' => 'یہ نۓ صارفوں کی آمد کا نوشتہ ہے',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'نوشتۂ آمد صارف',
+'newwiki_userlogpagetext' => 'یہ نۓ صارفوں کی آمد کا نوشتہ ہے',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(اراکین کی فہرست)',
 
-# E-mail user
-'mailnologintext' => 'دیگر ارکان کو برقی خط ارسال کرنے کیلیۓ لازم ہے کہ آپ [[Special:UserLogin|داخل شدہ]] حالت میں ہوں اور آپ کی [[Special:Preferences|ترجیحات]] ایک درست برقی خط کا پتا درج ہو۔',
-'emailuser' => 'صارف کو برقی خط لکھیں',
+# E-mail wiki_user
+'mailnologintext' => 'دیگر ارکان کو برقی خط ارسال کرنے کیلیۓ لازم ہے کہ آپ [[Special:wiki_userLogin|داخل شدہ]] حالت میں ہوں اور آپ کی [[Special:Preferences|ترجیحات]] ایک درست برقی خط کا پتا درج ہو۔',
+'emailwiki_user' => 'صارف کو برقی خط لکھیں',
 'defemailsubject' => '{{SITENAME}} سے برقی خط',
 'noemailtext' => 'اس صارف نے برقی خط کے لیے کوئی پتہ فراہم نہیں کیا، یا یہ چاہتا ہے کا اس سے کوئی صارف رابطہ نہ کرے۔',
 'emailsubject' => 'عنوان',
@@ -1286,9 +1286,9 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'sp-contributions-uploads' => 'آپلوڈ',
 'sp-contributions-logs' => 'نوشتہ جات',
 'sp-contributions-talk' => 'گفتگو',
-'sp-contributions-userrights' => 'صارف کے حقوق کا انتظام',
+'sp-contributions-wiki_userrights' => 'صارف کے حقوق کا انتظام',
 'sp-contributions-search' => 'تلاش برائے مساہمات',
-'sp-contributions-username' => 'آئی.پی پتہ یا اسمِ صارف:',
+'sp-contributions-wiki_username' => 'آئی.پی پتہ یا اسمِ صارف:',
 'sp-contributions-toponly' => 'صرف حالیہ ترین نظرثانی ترمیمات دِکھاؤ',
 'sp-contributions-submit' => 'تلاش',
 
@@ -1379,7 +1379,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'import' => 'درآمد صفحات',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'آپ کا صارفی صفحہ',
+'tooltip-pt-wiki_userpage' => 'آپ کا صارفی صفحہ',
 'tooltip-pt-mytalk' => 'آپ کا صفحۂ گفتگو',
 'tooltip-pt-preferences' => 'آپ کی ترجیحات',
 'tooltip-pt-watchlist' => 'اُن صفحات کی فہرست جن کی تبدیلیاں آپ کی زیرِنظر ہیں',
@@ -1414,13 +1414,13 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'tooltip-feed-rss' => 'اِس صفحہ کیلئے اسس خورد',
 'tooltip-feed-atom' => 'اِس صفحہ کیلئے اٹوم خورد',
 'tooltip-t-contributions' => 'نئی تدوین →',
-'tooltip-t-emailuser' => 'اِس صارف کو برقی خط ارسال کریں',
+'tooltip-t-emailwiki_user' => 'اِس صارف کو برقی خط ارسال کریں',
 'tooltip-t-upload' => 'زبراثقالِ ملفات',
 'tooltip-t-specialpages' => 'تمام خاص صفحات کی فہرست',
 'tooltip-t-print' => 'اِس صفحہ کا قابلِ طبعہ نسخہ',
 'tooltip-t-permalink' => 'صفحہ کے موجودہ نظرثانی کا مستقل ربط',
 'tooltip-ca-nstab-main' => 'صفحۂ مضمون دیکھئے',
-'tooltip-ca-nstab-user' => 'اِس صارف کے مساہمات کی فہرست دیکھئے',
+'tooltip-ca-nstab-wiki_user' => 'اِس صارف کے مساہمات کی فہرست دیکھئے',
 'tooltip-ca-nstab-special' => 'یہ ایک خاص صفحہ ہے، آپ اِس میں ترمیم نہیں کرسکتے',
 'tooltip-ca-nstab-project' => 'صفحۂ صارف دیکھئے',
 'tooltip-ca-nstab-image' => 'صفحۂ ملف دیکھئے',

@@ -18,7 +18,7 @@
 $fallback = 'fi';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Link underlining',
 
 'underline-always' => 'Alõzii',
@@ -155,7 +155,7 @@ $messages = array(
 'jumptonavigation' => 'valittsõmisiisõ',
 'jumptosearch' => 'ettsüse',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Tääteja {{GRAMMAR:elative|{{SITENAME}}}}',
 'aboutpage' => 'Project:Täätühsed',
 'copyright' => 'Sisälto on $1 litsentsii mukka svobodnoi.',
@@ -198,7 +198,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Artikkeli',
-'nstab-user' => 'Cäüttijäcülci',
+'nstab-wiki_user' => 'Cäüttijäcülci',
 'nstab-media' => 'Media-cülci',
 'nstab-special' => 'Osoobennoi cülci',
 'nstab-project' => 'Projekticülci',
@@ -213,7 +213,7 @@ $messages = array(
 
 Ussassi se johtub ustaŕeloi sravńoi- vai istorilinkissä roocittulõõ cüľľelee.
 
-Kui cüsümüssessä ebõõ roocittu cülci, võib õlla õlõttõ löütännü ošipkaa sistemalla. Õõ nii üvä ilmuttõma cüľľee adressia vikii [[Special:ListUsers/sysop|praviťeľalõõ]].',
+Kui cüsümüssessä ebõõ roocittu cülci, võib õlla õlõttõ löütännü ošipkaa sistemalla. Õõ nii üvä ilmuttõma cüľľee adressia vikii [[Special:Listwiki_users/sysop|praviťeľalõõ]].',
 'missingarticle-rev' => '(verzija: $1)',
 'badtitle' => 'Paha zagolofkka',
 'badtitletext' => 'Cüzüttü artikkelizagolofkka õli vilpilliin, tühjä vai väärii linkitettü ceelijeväliin vai vikiiväliin linkki.',
@@ -227,16 +227,16 @@ Kui cüsümüssessä ebõõ roocittu cülci, võib õlla õlõttõ löütännü 
 'login' => 'Cirjut süäme',
 'nav-login-createaccount' => 'Cirjut süäme vai registriiroit cäüttijässi',
 'loginprompt' => 'Tüü piättä «cookies» võttamin luvata, štobõ entä sisteema ete esitellä.',
-'userlogin' => 'Cirjut süäme',
-'userloginnocreate' => 'Cirjut süäme',
+'wiki_userlogin' => 'Cirjut süäme',
+'wiki_userloginnocreate' => 'Cirjut süäme',
 'logout' => 'Cirjut uloz',
-'userlogout' => 'Cirjut uloz',
+'wiki_userlogout' => 'Cirjut uloz',
 'nologin' => "Kui Teille veel ebõõ cäüttijänimi, '''$1'''.",
 'nologinlink' => 'võitta loovva luguu',
 'createaccount' => 'Uusi cäüttijää',
 'gotaccount' => 'Tüü õõttõ jo registreerittu? $1.',
 'gotaccountlink' => 'Cirjut süäme',
-'userlogin-resetlink' => 'Vai unõhtittõ õma loginass?',
+'wiki_userlogin-resetlink' => 'Vai unõhtittõ õma loginass?',
 'createaccountreason' => 'Süü:',
 'mailmypassword' => 'Lähet uusi salasõna elektropoštiikaa',
 'loginlanguagelabel' => 'Ceeli: $1',
@@ -245,7 +245,7 @@ Kui cüsümüssessä ebõõ roocittu cülci, võib õlla õlõttõ löütännü 
 'resetpass-submit-cancel' => 'Otmeńoit',
 
 # Special:PasswordReset
-'passwordreset-username' => 'Cäüttijänimi:',
+'passwordreset-wiki_username' => 'Cäüttijänimi:',
 
 # Special:ChangeEmail
 'changeemail-newemail' => 'Vassõn e-mail:',
@@ -411,7 +411,7 @@ Proovvi lizät etsün alkuu ''all:'', nii ettsü etsib kõikkõõ sisältoo (taa
 'mypreferences' => 'Minu koozid',
 'skin-preview' => 'Prestavleńńa',
 'prefs-datetime' => 'Kuupäivä i aika',
-'prefs-user-pages' => 'Cäüttijäcülcid',
+'prefs-wiki_user-pages' => 'Cäüttijäcülcid',
 'prefs-rc' => 'Viimõizõd muutussõd',
 'searchresultshead' => 'Etsi',
 'timezoneregion-africa' => 'Afrikka',
@@ -421,7 +421,7 @@ Proovvi lizät etsün alkuu ''all:'', nii ettsü etsib kõikkõõ sisältoo (taa
 'timezoneregion-europe' => 'Evrooppaa',
 'prefs-files' => 'Failid',
 'youremail' => 'E-mail:',
-'username' => 'Cäüttijänimi:',
+'wiki_username' => 'Cäüttijänimi:',
 'yourrealname' => 'Minu nimi:',
 'yourlanguage' => 'Ceeli:',
 'yourgender' => 'Sukupooli',
@@ -431,20 +431,20 @@ Proovvi lizät etsün alkuu ''all:'', nii ettsü etsib kõikkõõ sisältoo (taa
 'prefs-help-email' => 'E-mail eb õõ pakollin, ain se leeb vajallin, kui tüü unõhtattõ salain-sõnass.',
 'prefs-help-email-others' => 'Se lupabci muilõ õsa-võttajilõ võtta ühteüttä tejjeka tejje personaaliss lehocülless viittau kautta, ilma tejje e-mail’a tääotusõ vajaussa.',
 
-# User rights
-'userrights-reason' => 'Süü:',
+# wiki_user rights
+'wiki_userrights-reason' => 'Süü:',
 
 # Groups
-'group-user' => 'Сäüttijäd',
+'group-wiki_user' => 'Сäüttijäd',
 'group-sysop' => 'Praviťeľad',
 'group-all' => '(kõik)',
 
-'group-user-member' => 'cäüttijä',
+'group-wiki_user-member' => 'cäüttijä',
 
-'grouppage-user' => '{{ns:project}}:Сäüttijäd',
+'grouppage-wiki_user' => '{{ns:project}}:Сäüttijäd',
 'grouppage-sysop' => '{{ns:project}}:Praviťeľad',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Cäütteminõikuslogi',
 'rightsnone' => '(eb õõ)',
 
@@ -508,7 +508,7 @@ Cüľľed, kummad õmad teďďellä [[Special:Watchlist|kattsõspiizgalla]] on c
 'listfiles_thumb' => 'Peenikuva',
 'listfiles_date' => 'Kuupäivä',
 'listfiles_name' => 'Nimi',
-'listfiles_user' => 'Сäüttijä',
+'listfiles_wiki_user' => 'Сäüttijä',
 
 # File description page
 'file-anchor-link' => 'Faili',
@@ -520,7 +520,7 @@ Cüľľed, kummad õmad teďďellä [[Special:Watchlist|kattsõspiizgalla]] on c
 'filehist-datetime' => 'Päiväсisla/Сelloaika',
 'filehist-thumb' => 'Peenikuva',
 'filehist-thumbtext' => 'Peenikuva $1 verzijalõõ',
-'filehist-user' => 'Сäüttijä',
+'filehist-wiki_user' => 'Сäüttijä',
 'filehist-dimensions' => 'Mitad',
 'filehist-comment' => 'Zametšańńa',
 'imagelinks' => 'Faililinkid',
@@ -557,9 +557,9 @@ Seness [$2 kuvauhsõ lehocülless] informaattsija on alapallõ annõttu.',
 'nbytes' => '$1 {{PLURAL:$1|baitti|baittia}}',
 'nmembers' => '$1 {{PLURAL:$1|selttsilain|selttsilaizõd}}',
 'prefixindex' => 'Kõik cüľľed prefiksiikaa',
-'usercreated' => '33. $3 on entä cirjannu $1 $2-na',
+'wiki_usercreated' => '33. $3 on entä cirjannu $1 $2-na',
 'newpages' => 'Uuvvõd cüľľed',
-'newpages-username' => 'Cäüttijänimi:',
+'newpages-wiki_username' => 'Cäüttijänimi:',
 'move' => 'Liikut',
 'movethispage' => 'Liikut kase cülci',
 'pager-newer-n' => '{{PLURAL:$1|uuvvõpi 1|uuvvõpad $1}}',
@@ -594,18 +594,18 @@ Seness [$2 kuvauhsõ lehocülless] informaattsija on alapallõ annõttu.',
 'linksearch-ok' => 'Etsi',
 'linksearch-line' => 'Linki $1-sõ $2-ss',
 
-# Special:ListUsers
-'listusers-submit' => 'Näüt väľľää',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Näüt väľľää',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Uuvvõd cäüttijäd',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Uuvvõd cäüttijäd',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(selttsilainspiiska)',
 
-# E-mail user
-'emailuser' => 'Lähettega elektropoštia selle cäüttijälle',
-'emailusername' => 'Cäüttijänimi:',
+# E-mail wiki_user
+'emailwiki_user' => 'Lähettega elektropoštia selle cäüttijälle',
+'emailwiki_username' => 'Cäüttijänimi:',
 'emailmessage' => 'Ilmottamin:',
 
 # Watchlist
@@ -704,7 +704,7 @@ Cüľľellä $2 on spiiska viimeiziss pühcimühsiiss.',
 'sp-contributions-logs' => 'logid',
 'sp-contributions-talk' => 'Juttu',
 'sp-contributions-search' => 'Etsi avittamisiit',
-'sp-contributions-username' => 'IP-adressi vai cäüttijänimi',
+'sp-contributions-wiki_username' => 'IP-adressi vai cäüttijänimi',
 'sp-contributions-toponly' => 'Viimeized verssijad näüttä',
 'sp-contributions-submit' => 'Etsi',
 
@@ -793,7 +793,7 @@ Neill kõhtoill piättä liikuttaa vai ühissää cüľľee cäzi.",
 'import-comment' => 'Zamecańńa:',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Teďďee cäüttijäcülci',
+'tooltip-pt-wiki_userpage' => 'Teďďee cäüttijäcülci',
 'tooltip-pt-mytalk' => 'Teďďee juttu-cülci',
 'tooltip-pt-preferences' => 'Teďďee koozid',
 'tooltip-pt-watchlist' => 'Spiiska cülcissä, kummad muutussia kattsõõtta',
@@ -828,13 +828,13 @@ Että või muuttaa cülcia, mutta võittõ kattsoa sene lähtekoodi.',
 'tooltip-feed-rss' => 'RSS-söötte selle cüľľelle',
 'tooltip-feed-atom' => 'Atom-söötte selle cüľľelle',
 'tooltip-t-contributions' => 'Näüt spiiska sene cäüttijää avittamiss',
-'tooltip-t-emailuser' => 'Lähettega elektropoštia selle cäüttijälle',
+'tooltip-t-emailwiki_user' => 'Lähettega elektropoštia selle cäüttijälle',
 'tooltip-t-upload' => 'Laajõngoit failia ülez',
 'tooltip-t-specialpages' => 'Spiiska kõikkissa osoobenoissa cülcissä',
 'tooltip-t-print' => 'Sene cüľľee pecatoittõva verzija',
 'tooltip-t-permalink' => 'Postojannoi linkki cüľľee selle verzijalõõ',
 'tooltip-ca-nstab-main' => 'Näüt artikkelia',
-'tooltip-ca-nstab-user' => 'Näüt cäüttijäcülci',
+'tooltip-ca-nstab-wiki_user' => 'Näüt cäüttijäcülci',
 'tooltip-ca-nstab-special' => 'Kase on osoobennoi cülci, tüü ed saa sitä muuttõma',
 'tooltip-ca-nstab-project' => 'Näüt projekticülci',
 'tooltip-ca-nstab-image' => 'Näüt failicülci',

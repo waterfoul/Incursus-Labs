@@ -1,6 +1,6 @@
 <?php
 /**
- * User interface for the difference engine.
+ * wiki_user interface for the difference engine.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -147,9 +147,9 @@ class DifferenceEngine extends ContextSource {
 	 * @return mixed URL or false
 	 */
 	function deletedLink( $id ) {
-		if ( $this->getUser()->isAllowed( 'deletedhistory' ) ) {
-			$dbr = wfGetDB( DB_SLAVE );
-			$row = $dbr->selectRow('archive', '*',
+		if ( $this->getwiki_user()->isAllowed( 'deletedhistory' ) ) {
+			r = wfGetDB( DB_SLAVE );
+			$row = r->selectRow('archive', '*',
 				array( 'ar_rev_id' => $id ),
 				__METHOD__ );
 			if ( $row ) {
@@ -209,18 +209,18 @@ class DifferenceEngine extends ContextSource {
 			return;
 		}
 
-		$user = $this->getUser();
-		$permErrors = $this->mNewPage->getUserPermissionsErrors( 'read', $user );
+		$wiki_user = $this->getwiki_user();
+		$permErrors = $this->mNewPage->getwiki_userPermissionsErrors( 'read', $wiki_user );
 		if ( $this->mOldPage ) { # mOldPage might not be set, see below.
 			$permErrors = wfMergeErrorArrays( $permErrors,
-				$this->mOldPage->getUserPermissionsErrors( 'read', $user ) );
+				$this->mOldPage->getwiki_userPermissionsErrors( 'read', $wiki_user ) );
 		}
 		if ( count( $permErrors ) ) {
 			wfProfileOut( __METHOD__ );
 			throw new PermissionsError( 'read', $permErrors );
 		}
 
-		# If external diffs are enabled both globally and for the user,
+		# If external diffs are enabled both globally and for the wiki_user,
 		# we'll use the application/x-external-editor interface to call
 		# an external diff tool like kompare, kdiff3, etc.
 		if ( ExternalEdit::useExternalEngine( $this->getContext(), 'diff' ) ) {
@@ -248,7 +248,7 @@ class DifferenceEngine extends ContextSource {
 
 		$query = array();
 		# Carry over 'diffonly' param via navigation links
-		if ( $diffOnly != $user->getBoolOption( 'diffonly' ) ) {
+		if ( $diffOnly != $wiki_user->getBoolOption( 'diffonly' ) ) {
 			$query['diffonly'] = $diffOnly;
 		}
 		# Cascade unhide param in links for easy deletion browsing
@@ -258,7 +258,7 @@ class DifferenceEngine extends ContextSource {
 
 		# Check if one of the revisions is deleted/suppressed
 		$deleted = $suppressed = false;
-		$allowed = $this->mNewRev->userCan( Revision::DELETED_TEXT, $user );
+		$allowed = $this->mNewRev->wiki_userCan( Revision::DELETED_TEXT, $wiki_user );
 
 		# mOldRev is false if the difference engine is called with a "vague" query for
 		# a diff between a version V and its previous version V' AND the version V
@@ -285,8 +285,8 @@ class DifferenceEngine extends ContextSource {
 				$samePage = false;
 			}
 
-			if ( $samePage && $this->mNewPage->quickUserCan( 'edit', $user ) ) {
-				if ( $this->mNewRev->isCurrent() && $this->mNewPage->userCan( 'rollback', $user ) ) {
+			if ( $samePage && $this->mNewPage->quickwiki_userCan( 'edit', $wiki_user ) ) {
+				if ( $this->mNewRev->isCurrent() && $this->mNewPage->wiki_userCan( 'rollback', $wiki_user ) ) {
 					$out->preventClickjacking();
 					$rollback = '&#160;&#160;&#160;' . Linker::generateRollback( $this->mNewRev, $this->getContext() );
 				}
@@ -327,7 +327,7 @@ class DifferenceEngine extends ContextSource {
 
 			$oldHeader = '<div id="mw-diff-otitle1"><strong>' . $oldRevisionHeader . '</strong></div>' .
 				'<div id="mw-diff-otitle2">' .
-					Linker::revUserTools( $this->mOldRev, !$this->unhide ) . '</div>' .
+					Linker::revwiki_userTools( $this->mOldRev, !$this->unhide ) . '</div>' .
 				'<div id="mw-diff-otitle3">' . $oldminor .
 					Linker::revComment( $this->mOldRev, !$diffOnly, !$this->unhide ) . $ldel . '</div>' .
 				'<div id="mw-diff-otitle4">' . $prevlink . '</div>';
@@ -339,8 +339,8 @@ class DifferenceEngine extends ContextSource {
 				}
 			}
 
-			# Check if this user can see the revisions
-			if ( !$this->mOldRev->userCan( Revision::DELETED_TEXT, $user ) ) {
+			# Check if this wiki_user can see the revisions
+			if ( !$this->mOldRev->wiki_userCan( Revision::DELETED_TEXT, $wiki_user ) ) {
 				$allowed = false;
 			}
 		}
@@ -369,7 +369,7 @@ class DifferenceEngine extends ContextSource {
 		$newRevisionHeader = $this->getRevisionHeader( $this->mNewRev, 'complete' ) . $undoLink;
 
 		$newHeader = '<div id="mw-diff-ntitle1"><strong>' . $newRevisionHeader . '</strong></div>' .
-			'<div id="mw-diff-ntitle2">' . Linker::revUserTools( $this->mNewRev, !$this->unhide ) .
+			'<div id="mw-diff-ntitle2">' . Linker::revwiki_userTools( $this->mNewRev, !$this->unhide ) .
 				" $rollback</div>" .
 			'<div id="mw-diff-ntitle3">' . $newminor .
 				Linker::revComment( $this->mNewRev, !$diffOnly, !$this->unhide ) . $rdel . '</div>' .
@@ -400,7 +400,7 @@ class DifferenceEngine extends ContextSource {
 			}
 		# Otherwise, output a regular diff...
 		} else {
-			# Add deletion notice if the user is viewing deleted content
+			# Add deletion notice if the wiki_user is viewing deleted content
 			$notice = '';
 			if ( $deleted ) {
 				$msg = $suppressed ? 'rev-suppressed-diff-view' : 'rev-deleted-diff-view';
@@ -416,7 +416,7 @@ class DifferenceEngine extends ContextSource {
 
 	/**
 	 * Get a link to mark the change as patrolled, or '' if there's either no
-	 * revision to patrol or the user is not allowed to to it.
+	 * revision to patrol or the wiki_user is not allowed to to it.
 	 * Side effect: this method will call OutputPage::preventClickjacking()
 	 * when a link is builded.
 	 *
@@ -427,7 +427,7 @@ class DifferenceEngine extends ContextSource {
 
 		if ( $this->mMarkPatrolledLink === null ) {
 			// Prepare a change patrol link, if applicable
-			if ( $wgUseRCPatrol && $this->mNewPage->quickUserCan( 'patrol', $this->getUser() ) ) {
+			if ( $wgUseRCPatrol && $this->mNewPage->quickwiki_userCan( 'patrol', $this->getwiki_user() ) ) {
 				// If we've been given an explicit change identifier, use it; saves time
 				if ( $this->mRcidMarkPatrolled ) {
 					$rcid = $this->mRcidMarkPatrolled;
@@ -436,12 +436,12 @@ class DifferenceEngine extends ContextSource {
 					$rcid = is_object( $rc ) && !$rc->getAttribute( 'rc_patrolled' ) ? $rcid : 0;
 				} else {
 					// Look for an unpatrolled change corresponding to this diff
-					$db = wfGetDB( DB_SLAVE );
+					 = wfGetDB( DB_SLAVE );
 					$change = RecentChange::newFromConds(
 						array(
-						// Redundant user,timestamp condition so we can use the existing index
-							'rc_user_text'  => $this->mNewRev->getRawUserText(),
-							'rc_timestamp'  => $db->timestamp( $this->mNewRev->getTimestamp() ),
+						// Redundant wiki_user,timestamp condition so we can use the existing index
+							'rc_wiki_user_text'  => $this->mNewRev->getRawwiki_userText(),
+							'rc_timestamp'  => ->timestamp( $this->mNewRev->getTimestamp() ),
 							'rc_this_oldid' => $this->mNewid,
 							'rc_last_oldid' => $this->mOldid,
 							'rc_patrolled'  => 0
@@ -459,7 +459,7 @@ class DifferenceEngine extends ContextSource {
 				// Build the link
 				if ( $rcid ) {
 					$this->getOutput()->preventClickjacking();
-					$token = $this->getUser()->getEditToken( $rcid );
+					$token = $this->getwiki_user()->getEditToken( $rcid );
 					$this->mMarkPatrolledLink = ' <span class="patrollink">[' . Linker::linkKnown(
 						$this->mNewPage,
 						$this->msg( 'markaspatrolleddiff' )->escaped(),
@@ -486,7 +486,7 @@ class DifferenceEngine extends ContextSource {
 	 * @return String
 	 */
 	protected function revisionDeleteLink( $rev ) {
-		$link = Linker::getRevDeleteLink( $this->getUser(), $rev, $rev->getTitle() );
+		$link = Linker::getRevDeleteLink( $this->getwiki_user(), $rev, $rev->getTitle() );
 		if ( $link !== '' ) {
 			$link = '&#160;&#160;&#160;' . $link . ' ';
 		}
@@ -608,14 +608,14 @@ class DifferenceEngine extends ContextSource {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );
 		$this->mCacheHit = true;
-		// Check if the diff should be hidden from this user
+		// Check if the diff should be hidden from this wiki_user
 		if ( !$this->loadRevisionData() ) {
 			wfProfileOut( __METHOD__ );
 			return false;
-		} elseif ( $this->mOldRev && !$this->mOldRev->userCan( Revision::DELETED_TEXT, $this->getUser() ) ) {
+		} elseif ( $this->mOldRev && !$this->mOldRev->wiki_userCan( Revision::DELETED_TEXT, $this->getwiki_user() ) ) {
 			wfProfileOut( __METHOD__ );
 			return false;
-		} elseif ( $this->mNewRev && !$this->mNewRev->userCan( Revision::DELETED_TEXT, $this->getUser() ) ) {
+		} elseif ( $this->mNewRev && !$this->mNewRev->wiki_userCan( Revision::DELETED_TEXT, $this->getwiki_user() ) ) {
 			wfProfileOut( __METHOD__ );
 			return false;
 		}
@@ -663,7 +663,7 @@ class DifferenceEngine extends ContextSource {
 		} else {
 			wfIncrStats( 'diff_uncacheable' );
 		}
-		// Replace line numbers with the text in the user's language
+		// Replace line numbers with the text in the wiki_user's language
 		if ( $difftext !== false ) {
 			$difftext = $this->localiseLineNumbers( $difftext );
 		}
@@ -791,7 +791,7 @@ class DifferenceEngine extends ContextSource {
 	}
 
 	/**
-	 * Replace line numbers with the text in the user's language
+	 * Replace line numbers with the text in the wiki_user's language
 	 * @return mixed
 	 */
 	function localiseLineNumbers( $text ) {
@@ -827,28 +827,28 @@ class DifferenceEngine extends ContextSource {
 
 		$nEdits = $this->mNewPage->countRevisionsBetween( $oldRev, $newRev );
 		if ( $nEdits > 0 ) {
-			$limit = 100; // use diff-multi-manyusers if too many users
-			$numUsers = $this->mNewPage->countAuthorsBetween( $oldRev, $newRev, $limit );
-			return self::intermediateEditsMsg( $nEdits, $numUsers, $limit );
+			$limit = 100; // use diff-multi-manywiki_users if too many wiki_users
+			$numwiki_users = $this->mNewPage->countAuthorsBetween( $oldRev, $newRev, $limit );
+			return self::intermediateEditsMsg( $nEdits, $numwiki_users, $limit );
 		}
 		return ''; // nothing
 	}
 
 	/**
-	 * Get a notice about how many intermediate edits and users there are
+	 * Get a notice about how many intermediate edits and wiki_users there are
 	 * @param $numEdits int
-	 * @param $numUsers int
+	 * @param $numwiki_users int
 	 * @param $limit int
 	 * @return string
 	 */
-	public static function intermediateEditsMsg( $numEdits, $numUsers, $limit ) {
-		if ( $numUsers > $limit ) {
-			$msg = 'diff-multi-manyusers';
-			$numUsers = $limit;
+	public static function intermediateEditsMsg( $numEdits, $numwiki_users, $limit ) {
+		if ( $numwiki_users > $limit ) {
+			$msg = 'diff-multi-manywiki_users';
+			$numwiki_users = $limit;
 		} else {
 			$msg = 'diff-multi';
 		}
-		return wfMessage( $msg )->numParams( $numEdits, $numUsers )->parse();
+		return wfMessage( $msg )->numParams( $numEdits, $numwiki_users )->parse();
 	}
 
 	/**
@@ -861,11 +861,11 @@ class DifferenceEngine extends ContextSource {
 	 */
 	private function getRevisionHeader( Revision $rev, $complete = '' ) {
 		$lang = $this->getLanguage();
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		$revtimestamp = $rev->getTimestamp();
-		$timestamp = $lang->userTimeAndDate( $revtimestamp, $user );
-		$dateofrev = $lang->userDate( $revtimestamp, $user );
-		$timeofrev = $lang->userTime( $revtimestamp, $user );
+		$timestamp = $lang->wiki_userTimeAndDate( $revtimestamp, $wiki_user );
+		$dateofrev = $lang->wiki_userDate( $revtimestamp, $wiki_user );
+		$timeofrev = $lang->wiki_userTime( $revtimestamp, $wiki_user );
 
 		$header = $this->msg(
 			$rev->isCurrent() ? 'currentrev-asof' : 'revisionasof',
@@ -883,13 +883,13 @@ class DifferenceEngine extends ContextSource {
 		$header = Linker::linkKnown( $title, $header, array(),
 			array( 'oldid' => $rev->getID() ) );
 
-		if ( $rev->userCan( Revision::DELETED_TEXT, $user ) ) {
+		if ( $rev->wiki_userCan( Revision::DELETED_TEXT, $wiki_user ) ) {
 			$editQuery = array( 'action' => 'edit' );
 			if ( !$rev->isCurrent() ) {
 				$editQuery['oldid'] = $rev->getID();
 			}
 
-			$msg = $this->msg( $title->quickUserCan( 'edit', $user ) ? 'editold' : 'viewsourceold' )->escaped();
+			$msg = $this->msg( $title->quickwiki_userCan( 'edit', $wiki_user ) ? 'editold' : 'viewsourceold' )->escaped();
 			$header .= ' ' . $this->msg( 'parentheses' )->rawParams(
 				Linker::linkKnown( $title, $msg, array(), $editQuery ) )->plain();
 			if ( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
@@ -1010,7 +1010,7 @@ class DifferenceEngine extends ContextSource {
 	 * value of newid).
 	 *
 	 * If oldid is false, leave the corresponding revision object set
-	 * to false. This is impossible via ordinary user input, and is provided for
+	 * to false. This is impossible via ordinary wiki_user input, and is provided for
 	 * API convenience.
 	 *
 	 * @return bool

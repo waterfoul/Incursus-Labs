@@ -74,7 +74,7 @@ $namespaceAliases = array(
 $namespaceGenderAliases = array();
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'UsadoresAktivos' ),
+	'Activewiki_users'               => array( 'UsadoresAktivos' ),
 	'Allmessages'               => array( 'TodosLosMessajes' ),
 	'Allpages'                  => array( 'TodasLasHojas' ),
 	'Ancientpages'              => array( 'HojasViejas' ),
@@ -94,7 +94,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'Apartamiento_de_senso' ),
 	'DoubleRedirects'           => array( 'DireksionesDobles' ),
 	'EditWatchlist'             => array( 'TrocarLista_de_Akavidamiento' ),
-	'Emailuser'                 => array( 'MandarLetralUsador' ),
+	'Emailwiki_user'                 => array( 'MandarLetralUsador' ),
 	'Export'                    => array( 'AktarearAfuera' ),
 	'Fewestrevisions'           => array( 'MankoEddisyones' ),
 	'FileDuplicateSearch'       => array( 'BuscarDosyasDobles' ),
@@ -108,7 +108,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'ListaDosyas' ),
 	'Listgrouprights'           => array( 'DerechosGruposUsadores' ),
 	'Listredirects'             => array( 'TodasLasDireksyones' ),
-	'Listusers'                 => array( 'ListaUsadores' ),
+	'Listwiki_users'                 => array( 'ListaUsadores' ),
 	'Lockdb'                    => array( 'BloquearBasa_de_dados' ),
 	'Log'                       => array( 'Rējistro' ),
 	'Lonelypages'               => array( 'HojasHuérfanas' ),
@@ -159,9 +159,9 @@ $specialPageAliases = array(
 	'Unwatchedpages'            => array( 'HojasSinKudiadas' ),
 	'Upload'                    => array( 'KargarDosya' ),
 	'UploadStash'               => array( 'Muchedumbre_de_kargamientos' ),
-	'Userlogin'                 => array( 'Entrada_del_usador' ),
-	'Userlogout'                => array( 'Salida_del_usador' ),
-	'Userrights'                => array( 'DerechosUsadores' ),
+	'wiki_userlogin'                 => array( 'Entrada_del_usador' ),
+	'wiki_userlogout'                => array( 'Salida_del_usador' ),
+	'wiki_userrights'                => array( 'DerechosUsadores' ),
 	'Version'                   => array( 'Versión' ),
 	'Wantedcategories'          => array( 'KatēggoríasDemandadas' ),
 	'Wantedfiles'               => array( 'DosyasDemandadas' ),
@@ -182,7 +182,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Suliñar los atamientos:',
 'tog-justify' => 'Arrimar los paraggrafos de dos vandas',
 'tog-hideminor' => 'Esconder los trocamientos chiquiticos en la hoja de los "trocamientos freskos"',
@@ -206,7 +206,7 @@ $messages = array(
 'tog-previewonfirst' => 'Àmostar el previsteo al primer trocamiento',
 'tog-nocache' => 'Desaktivar la kaxé de las hojas del navigador',
 'tog-enotifwatchlistpages' => 'Cada vez que y ay un trocamiento en una hoja que está en mi lista de akavidamiento, mándame una letral (e-mail)',
-'tog-enotifusertalkpages' => 'Cuando y ay un trocamineto en mi hoja de diskusyón, mándame una letral (e-mail)',
+'tog-enotifwiki_usertalkpages' => 'Cuando y ay un trocamineto en mi hoja de diskusyón, mándame una letral (e-mail)',
 'tog-enotifminoredits' => 'I para los trocamientos chiquiticos de las hojas, mándame una letral (e-mail)',
 'tog-enotifrevealaddr' => 'En las letrales de avizo, amóstrame á mi el adresso de letral mío',
 'tog-shownumberswatching' => 'Àmostrar el kadhar de usadores que están akavidando las hojas',
@@ -387,7 +387,7 @@ $messages = array(
 'talk' => 'Diskusyón',
 'views' => 'Vistas',
 'toolbox' => 'Cuadro de Aparatos',
-'userpage' => 'Ver la hoja del usador',
+'wiki_userpage' => 'Ver la hoja del usador',
 'projectpage' => 'Ver la hoja del projeto',
 'imagepage' => 'Ver la hoja de la dosya',
 'mediawikipage' => 'Ver la hoja de messaje',
@@ -404,7 +404,7 @@ $messages = array(
 'jumptonavigation' => 'navigación',
 'jumptosearch' => 'búsqueda',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Encima de la {{SITENAME}}',
 'aboutpage' => 'Project:Encima de',
 'copyright' => 'El contenido se puede topar debaxo de la <i>$1</i>',
@@ -451,7 +451,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Hoja',
-'nstab-user' => 'Hoja de empleador',
+'nstab-wiki_user' => 'Hoja de empleador',
 'nstab-media' => 'Hoja de Meddia',
 'nstab-special' => 'Hoja special',
 'nstab-project' => 'Hoja del proyecto',
@@ -472,7 +472,7 @@ $messages = array(
 En lo más muńcho, esto se cavza de un "dif" anakróniko ou de un atamiento á la storia de una hoja que s\'efaçó.
 
 Si esto no es el cavso, puede ser que topates una chincha en el lojikal.
-Si puede ser mete un [[Special:ListUsers/sysop|administrador]] en corriente y también ànota la URL.',
+Si puede ser mete un [[Special:Listwiki_users/sysop|administrador]] en corriente y también ànota la URL.',
 'missingarticle-rev' => '(nº. de revisión: $1)',
 'missingarticle-diff' => '(Dif.: $1, $2)',
 'filecopyerror' => 'No se pudo copiar el arxiv "$1" a "$2".',
@@ -489,17 +489,17 @@ Puede ser que contiene uno o más caracteres que no se pueden usar en los títul
 'login' => 'Entrar',
 'nav-login-createaccount' => 'Entrar / Crîar un cuento',
 'loginprompt' => 'Kale tener "cookies" aktivadas enel navegador para enrejistrarse en {{SITENAME}}',
-'userlogin' => 'Entrar / Registrarse',
+'wiki_userlogin' => 'Entrar / Registrarse',
 'logout' => 'Salir',
-'userlogout' => 'Salir',
+'wiki_userlogout' => 'Salir',
 'nologin' => "¿No tienes un cuento? '''$1'''.",
 'nologinlink' => 'Crea un cuento',
 'createaccount' => 'Crea un nuevo cuento',
 'gotaccount' => "¿Ya tienes un cuento? '''$1'''.",
 'gotaccountlink' => 'Entrar',
-'userlogin-resetlink' => 'Olvidates tus detalyos de akseso?',
+'wiki_userlogin-resetlink' => 'Olvidates tus detalyos de akseso?',
 'createaccountmail' => 'por una letra electrónica',
-'userexists' => 'El nombre que entrates ya se usa.
+'wiki_userexists' => 'El nombre que entrates ya se usa.
 Si puede ser, escoge un otro nombre.',
 'createaccounterror' => 'No se pudo crear el cuento: $1',
 'mailmypassword' => 'Embiar una nueva koddiche por e-mail',
@@ -514,7 +514,7 @@ Si puede ser, escoge un otro nombre.',
 'resetpass-submit-cancel' => 'Anular',
 
 # Special:PasswordReset
-'passwordreset-username' => 'Nombre de usador:',
+'passwordreset-wiki_username' => 'Nombre de usador:',
 'passwordreset-domain' => 'Dominio:',
 'passwordreset-email' => 'Adresso de letral:',
 
@@ -572,7 +572,7 @@ ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} trocar esta hoja]</span>.',
 'noarticletext-nopermission' => 'No ay teksto en esta oja.
 Puedes [[Special:Search/{{PAGENAME}}|bushkar este titolo de oja]] en otras pajinas,
 o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} bushkar en los rejistros relasyonados]</span>.',
-'userpage-userdoesnotexist-view' => 'El cuento del usador $1 no está enrejistrado.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'El cuento del usador $1 no está enrejistrado.',
 'note' => "'''Nota:'''",
 'previewnote' => "¡Akórdate ke esto es sólo una previsualizasion i aínda no se enrejistró!'''
 Los tus trokamientos no se tienen guadrados!",
@@ -730,7 +730,7 @@ Las búsquedas producen más o munco a buscar biervos comunes como «la» o «de
 'timezoneregion-europe' => 'Europa',
 'prefs-files' => 'Dosyas',
 'youremail' => 'El adderesso de tu letra electrόnica:',
-'username' => 'Nombre de usuario:',
+'wiki_username' => 'Nombre de usuario:',
 'yourrealname' => 'Nombre verdadero:',
 'yourlanguage' => 'Lingua:',
 'yournick' => 'Firma mueva:',
@@ -740,7 +740,7 @@ Las búsquedas producen más o munco a buscar biervos comunes como «la» o «de
 'prefs-signature' => 'Firma',
 
 # Groups
-'group-user' => 'Usadorers',
+'group-wiki_user' => 'Usadorers',
 'group-sysop' => 'Administradores',
 'group-all' => '(todos)',
 
@@ -751,7 +751,7 @@ Las búsquedas producen más o munco a buscar biervos comunes como «la» o «de
 'right-minoredit' => 'Marcar trocamientos como "chiquiticos"',
 'right-delete' => 'Efassar hojas',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Trocamientos de profil de usuario',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -812,7 +812,7 @@ Las hojas en tu [[Special:Watchlist|lista de akavidamiento]] son escritas '''con
 
 # Special:ListFiles
 'listfiles_name' => 'Nombre',
-'listfiles_user' => 'Usuario',
+'listfiles_wiki_user' => 'Usuario',
 'listfiles_size' => 'Boy',
 
 # File description page
@@ -824,7 +824,7 @@ Las hojas en tu [[Special:Watchlist|lista de akavidamiento]] son escritas '''con
 'filehist-datetime' => 'Data/Ora',
 'filehist-thumb' => 'Minyatura',
 'filehist-thumbtext' => 'Minyatura de la versión á las $1',
-'filehist-user' => 'Usador',
+'filehist-wiki_user' => 'Usador',
 'filehist-dimensions' => 'Dimensiones',
 'filehist-filesize' => 'El boy de la dosya',
 'filehist-comment' => 'Comentario',
@@ -848,7 +848,7 @@ La descripción en su [$2 hoja de descripción del arxivo] está amostrada debax
 'nbytes' => '$1 {{PLURAL:$1|bayt|baytes}}',
 'nmembers' => '$1 {{PLURAL:$1|miembro|miembros}}',
 'prefixindex' => 'Todas las hojas con prefixo',
-'usercreated' => '{{GENDER:$3|Enrejistrado|Enrejistrada}} el $1 a las $2',
+'wiki_usercreated' => '{{GENDER:$3|Enrejistrado|Enrejistrada}} el $1 a las $2',
 'newpages' => 'Hojas muevas',
 'ancientpages' => 'Artikolos mas viejos',
 'move' => 'taxirea',
@@ -884,14 +884,14 @@ La descripción en su [$2 hoja de descripción del arxivo] está amostrada debax
 'linksearch' => 'Linkes eksternos',
 'linksearch-line' => 'Atamiento para $1 en la ója $2',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Registro de creación de usuarios',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Registro de creación de usuarios',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(ver los miembros de este grupo)',
 
-# E-mail user
-'emailuser' => 'Embia e-mail a este usuario',
+# E-mail wiki_user
+'emailwiki_user' => 'Embia e-mail a este usuario',
 
 # Watchlist
 'watchlist' => 'Mi lista de escogidas',
@@ -982,7 +982,7 @@ A continuación se mostran las opciones actuales de la hoja '''$1''':",
 'sp-contributions-logs' => 'enrejistros',
 'sp-contributions-talk' => 'Diskusyón',
 'sp-contributions-search' => 'Buscar ajustamientos',
-'sp-contributions-username' => 'Dirección IP o nombre de usuario:',
+'sp-contributions-wiki_username' => 'Dirección IP o nombre de usuario:',
 'sp-contributions-toponly' => "Amostrar solo revisiones d'alkavo",
 'sp-contributions-submit' => 'Buscar',
 
@@ -1065,7 +1065,7 @@ Si puede ser, escoge otro nombre.',
 'thumbnail_error' => 'Yerro kriando la imej chika: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Tu hoja de usador',
+'tooltip-pt-wiki_userpage' => 'Tu hoja de usador',
 'tooltip-pt-mytalk' => 'Tu hoja de diskusyón',
 'tooltip-pt-preferences' => 'Mis preferencias',
 'tooltip-pt-watchlist' => 'La lista de los trocamientos acontècidos en las hojas akavidadas.',
@@ -1099,13 +1099,13 @@ Puedes ver su manadero',
 'tooltip-feed-rss' => 'Sindicación RSS de esta hoja',
 'tooltip-feed-atom' => "Fuente de Atom d'esta hoja",
 'tooltip-t-contributions' => 'Ver la lista de ajustamientos de este usuario',
-'tooltip-t-emailuser' => 'A este usuario, mándale una letra electrόnica (ímey)',
+'tooltip-t-emailwiki_user' => 'A este usuario, mándale una letra electrόnica (ímey)',
 'tooltip-t-upload' => 'Suve dosyas por aquí',
 'tooltip-t-specialpages' => 'La lista de todas las hojas especiales',
 'tooltip-t-print' => "Versión apropiada para imprimir d'esta hoja",
 'tooltip-t-permalink' => "Atamiento permanente á est'enderechamiento de la hoja",
 'tooltip-ca-nstab-main' => 'Ve el artícůlo de contènido',
-'tooltip-ca-nstab-user' => 'Ve la hoja de usuario',
+'tooltip-ca-nstab-wiki_user' => 'Ve la hoja de usuario',
 'tooltip-ca-nstab-special' => 'Esta es una hoja especial, la hoja ya no se puede trocar',
 'tooltip-ca-nstab-project' => 'Ver la hoja del prodjekto',
 'tooltip-ca-nstab-image' => 'Ver la hoja de la dosya',
@@ -1252,7 +1252,7 @@ Los otros campos se van a guardar por defecto.
 
 # Special:SpecialPages
 'specialpages' => 'Hojas especiales',
-'specialpages-group-users' => 'Usadores y derechos',
+'specialpages-group-wiki_users' => 'Usadores y derechos',
 
 # External image whitelist
 'external_image_whitelist' => ' #Desha esta linea ansina komo esta<pre>
@@ -1280,8 +1280,8 @@ Los otros campos se van a guardar por defecto.
 'htmlform-selectorother-other' => 'Otro',
 
 # New logging system
-'logentry-newusers-autocreate' => 'El cuento $1 fue crîado otomatika mente',
-'newuserlog-byemail' => 'kóddiche mandado con letral',
+'logentry-newwiki_users-autocreate' => 'El cuento $1 fue crîado otomatika mente',
+'newwiki_userlog-byemail' => 'kóddiche mandado con letral',
 
 # Feedback
 'feedback-subject' => 'Sujeto',

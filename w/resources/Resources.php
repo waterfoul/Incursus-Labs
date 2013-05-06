@@ -9,17 +9,17 @@ return array(
 	'noscript' => array( 'class' => 'ResourceLoaderNoscriptModule' ),
 	'startup' => array( 'class' => 'ResourceLoaderStartUpModule' ),
 	'filepage' => array( 'class' => 'ResourceLoaderFilePageModule' ),
-	'user.groups' => array( 'class' => 'ResourceLoaderUserGroupsModule' ),
+	'wiki_user.groups' => array( 'class' => 'ResourceLoaderUserGroupsModule' ),
 
-	// Scripts managed by the current user (stored in their user space)
-	'user' => array( 'class' => 'ResourceLoaderUserModule' ),
+	// Scripts managed by the current wiki_user (stored in their wiki_user space)
+	'wiki_user' => array( 'class' => 'ResourceLoaderUserModule' ),
 
-	// Scripts generated based on the current user's preferences
-	'user.cssprefs' => array( 'class' => 'ResourceLoaderUserCSSPrefsModule' ),
+	// Scripts generated based on the current wiki_user's preferences
+	'wiki_user.cssprefs' => array( 'class' => 'ResourceLoaderUserCSSPrefsModule' ),
 
-	// Populate mediawiki.user placeholders with information about the current user
-	'user.options' => array( 'class' => 'ResourceLoaderUserOptionsModule' ),
-	'user.tokens' => array( 'class' => 'ResourceLoaderUserTokensModule' ),
+	// Populate mediawiki.wiki_user placeholders with information about the current wiki_user
+	'wiki_user.options' => array( 'class' => 'ResourceLoaderUserOptionsModule' ),
+	'wiki_user.tokens' => array( 'class' => 'ResourceLoaderUserTokensModule' ),
 
 	// Scripts for the dynamic language specific data, like grammar forms.
 	'mediawiki.language.data' => array( 'class' => 'ResourceLoaderLanguageDataModule' ),
@@ -560,7 +560,7 @@ return array(
 		'scripts' => 'resources/mediawiki.api/mediawiki.api.watch.js',
 		'dependencies' => array(
 			'mediawiki.api',
-			'user.tokens',
+			'wiki_user.tokens',
 		),
 	),
 	'mediawiki.debug' => array(
@@ -634,8 +634,8 @@ return array(
 	'mediawiki.Uri' => array(
 		'scripts' => 'resources/mediawiki/mediawiki.Uri.js',
 	),
-	'mediawiki.user' => array(
-		'scripts' => 'resources/mediawiki/mediawiki.user.js',
+	'mediawiki.wiki_user' => array(
+		'scripts' => 'resources/mediawiki/mediawiki.wiki_user.js',
 		'dependencies' => array(
 			'jquery.cookie',
 			'mediawiki.api',

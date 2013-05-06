@@ -186,7 +186,7 @@ class IP {
 	}
 
 	/**
-	 * Prettify an IP for display to end users.
+	 * Prettify an IP for display to end wiki_users.
 	 * This will make it more compact and lower-case.
 	 *
 	 * @param $ip string

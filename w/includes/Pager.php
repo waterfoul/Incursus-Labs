@@ -51,13 +51,13 @@ interface Pager {
  *      index value equal to the offset will never be shown.
  *    * The query may either be done backwards, where the rows are returned by
  *      the database in the opposite order to which they are displayed to the
- *      user, or forwards. This is specified by the "dir" parameter, dir=prev
+ *      wiki_user, or forwards. This is specified by the "dir" parameter, dir=prev
  *      means backwards, anything else means forwards. The offset value
  *      specifies the start of the database result set, which may be either
  *      the start or end of the displayed data set. This allows "previous"
  *      links to be implemented without knowledge of the index value at the
  *      start of the previous page.
- *    * An additional row beyond the user-specified limit is always requested.
+ *    * An additional row beyond the wiki_user-specified limit is always requested.
  *      This allows us to tell whether we should display a "next" link in the
  *      case of forwards mode, or a "previous" link in the case of backwards
  *      mode. Determining whether to display the other link (the one for the
@@ -143,7 +143,7 @@ abstract class IndexPager extends ContextSource implements Pager {
 		$this->mOffset = $this->mRequest->getText( 'offset' );
 
 		# Use consistent behavior for the limit options
-		$this->mDefaultLimit = intval( $this->getUser()->getOption( 'rclimit' ) );
+		$this->mDefaultLimit = intval( $this->getwiki_user()->getOption( 'rclimit' ) );
 		if ( !$this->mLimit ) {
 			// Don't override if a subclass calls $this->setLimit() in its constructor.
 			list( $this->mLimit, /* $offset */ ) = $this->mRequest->getLimitOffset();
@@ -257,7 +257,7 @@ abstract class IndexPager extends ContextSource implements Pager {
 	/**
 	 * Set whether a row matching exactly the offset should be also included
 	 * in the result or not. By default this is not the case, but when the
-	 * offset is user-supplied this might be wanted.
+	 * offset is wiki_user-supplied this might be wanted.
 	 *
 	 * @param $include bool
 	 */
@@ -673,7 +673,7 @@ abstract class IndexPager extends ContextSource implements Pager {
 	/**
 	 * This function should be overridden to return the names of secondary columns
 	 * to order by in addition to the column in getIndexField(). These fields will
-	 * not be used in the pager offset or in any links for users.
+	 * not be used in the pager offset or in any links for wiki_users.
 	 *
 	 * If getIndexField() returns an array of 'querykey' => 'indexfield' pairs then
 	 * this must return a corresponding array of 'querykey' => array( fields...) pairs
@@ -893,7 +893,7 @@ abstract class ReverseChronologicalPager extends IndexPager {
 }
 
 /**
- * Table-based display with a user-selectable sort order
+ * Table-based display with a wiki_user-selectable sort order
  * @ingroup Pager
  */
 abstract class TablePager extends IndexPager {

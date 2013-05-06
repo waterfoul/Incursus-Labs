@@ -79,11 +79,11 @@ class ExternalStoreDB {
 	/**
 	 * Get the 'blobs' table name for this database
 	 *
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @return String: table name ('blobs' by default)
 	 */
-	function getTable( &$db ) {
-		$table = $db->getLBInfo( 'blobs table' );
+	function getTable( & ) {
+		$table = ->getLBInfo( 'blobs table' );
 		if ( is_null( $table ) ) {
 			$table = 'blobs';
 		}
@@ -140,13 +140,13 @@ class ExternalStoreDB {
 
 		wfDebug( "ExternalStoreDB::fetchBlob cache miss on $cacheID\n" );
 
-		$dbr =& $this->getSlave( $cluster );
-		$ret = $dbr->selectField( $this->getTable( $dbr ), 'blob_text', array( 'blob_id' => $id ), __METHOD__ );
+		r =& $this->getSlave( $cluster );
+		$ret = r->selectField( $this->getTable( r ), 'blob_text', array( 'blob_id' => $id ), __METHOD__ );
 		if ( $ret === false ) {
 			wfDebugLog( 'ExternalStoreDB', "ExternalStoreDB::fetchBlob master fallback on $cacheID\n" );
 			// Try the master
-			$dbw =& $this->getMaster( $cluster );
-			$ret = $dbw->selectField( $this->getTable( $dbw ), 'blob_text', array( 'blob_id' => $id ), __METHOD__ );
+			w =& $this->getMaster( $cluster );
+			$ret = w->selectField( $this->getTable( w ), 'blob_text', array( 'blob_id' => $id ), __METHOD__ );
 			if( $ret === false) {
 				wfDebugLog( 'ExternalStoreDB', "ExternalStoreDB::fetchBlob master failed to find $cacheID\n" );
 			}
@@ -168,17 +168,17 @@ class ExternalStoreDB {
 	 * @return string URL
 	 */
 	function store( $cluster, $data ) {
-		$dbw = $this->getMaster( $cluster );
-		$id = $dbw->nextSequenceValue( 'blob_blob_id_seq' );
-		$dbw->insert( $this->getTable( $dbw ),
+		w = $this->getMaster( $cluster );
+		$id = w->nextSequenceValue( 'blob_blob_id_seq' );
+		w->insert( $this->getTable( w ),
 			array( 'blob_id' => $id, 'blob_text' => $data ),
 			__METHOD__ );
-		$id = $dbw->insertId();
+		$id = w->insertId();
 		if ( !$id ) {
 			throw new MWException( __METHOD__.': no insert ID' );
 		}
-		if ( $dbw->getFlag( DBO_TRX ) ) {
-			$dbw->commit( __METHOD__ );
+		if ( w->getFlag( DBO_TRX ) ) {
+			w->commit( __METHOD__ );
 		}
 		return "DB://$cluster/$id";
 	}

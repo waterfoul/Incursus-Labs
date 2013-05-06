@@ -26,7 +26,7 @@
 
 /**
  * This query action allows clients to retrieve a list of recently modified pages
- * that are part of the logged-in user's watchlist.
+ * that are part of the logged-in wiki_user's watchlist.
  *
  * @ingroup API
  */
@@ -45,8 +45,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 	}
 
 	private $fld_ids = false, $fld_title = false, $fld_patrol = false, $fld_flags = false,
-			$fld_timestamp = false, $fld_user = false, $fld_comment = false, $fld_parsedcomment = false, $fld_sizes = false,
-			$fld_notificationtimestamp = false, $fld_userid = false, $fld_loginfo = false;
+			$fld_timestamp = false, $fld_wiki_user = false, $fld_comment = false, $fld_parsedcomment = false, $fld_sizes = false,
+			$fld_notificationtimestamp = false, $fld_wiki_userid = false, $fld_loginfo = false;
 
 	/**
 	 * @param $resultPageSet ApiPageSet
@@ -57,7 +57,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 		$params = $this->extractRequestParams();
 
-		$user = $this->getWatchlistUser( $params );
+		$wiki_user = $this->getWatchlistwiki_user( $params );
 
 		if ( !is_null( $params['prop'] ) && is_null( $resultPageSet ) ) {
 			$prop = array_flip( $params['prop'] );
@@ -65,8 +65,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->fld_ids = isset( $prop['ids'] );
 			$this->fld_title = isset( $prop['title'] );
 			$this->fld_flags = isset( $prop['flags'] );
-			$this->fld_user = isset( $prop['user'] );
-			$this->fld_userid = isset( $prop['userid'] );
+			$this->fld_wiki_user = isset( $prop['wiki_user'] );
+			$this->fld_wiki_userid = isset( $prop['wiki_userid'] );
 			$this->fld_comment = isset( $prop['comment'] );
 			$this->fld_parsedcomment = isset ( $prop['parsedcomment'] );
 			$this->fld_timestamp = isset( $prop['timestamp'] );
@@ -76,7 +76,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->fld_loginfo = isset( $prop['loginfo'] );
 
 			if ( $this->fld_patrol ) {
-				if ( !$user->useRCPatrol() && !$user->useNPPatrol() ) {
+				if ( !$wiki_user->useRCPatrol() && !$wiki_user->useNPPatrol() ) {
 					$this->dieUsage( 'patrol property is not available', 'patrol' );
 				}
 			}
@@ -97,8 +97,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			) );
 
 			$this->addFieldsIf( array( 'rc_type', 'rc_minor', 'rc_bot' ), $this->fld_flags );
-			$this->addFieldsIf( 'rc_user', $this->fld_user || $this->fld_userid );
-			$this->addFieldsIf( 'rc_user_text', $this->fld_user );
+			$this->addFieldsIf( 'rc_wiki_user', $this->fld_wiki_user || $this->fld_wiki_userid );
+			$this->addFieldsIf( 'rc_wiki_user_text', $this->fld_wiki_user );
 			$this->addFieldsIf( 'rc_comment', $this->fld_comment || $this->fld_parsedcomment );
 			$this->addFieldsIf( 'rc_patrolled', $this->fld_patrol );
 			$this->addFieldsIf( array( 'rc_old_len', 'rc_new_len' ), $this->fld_sizes );
@@ -115,10 +115,10 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			'watchlist',
 		) );
 
-		$userId = $user->getId();
+		$wiki_userId = $wiki_user->getId();
 		$this->addJoinConds( array( 'watchlist' => array('INNER JOIN',
 			array(
-				'wl_user' => $userId,
+				'wl_wiki_user' => $wiki_userId,
 				'wl_namespace=rc_namespace',
 				'wl_title=rc_title'
 		) ) ) );
@@ -127,7 +127,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			'rc_deleted' => 0,
 		) );
 
-		$db = $this->getDB();
+		 = $this->getDB();
 
 		$this->addTimestampWhereRange( 'rc_timestamp', $params['dir'],
 			$params['start'], $params['end'] );
@@ -154,8 +154,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 			// Check permissions.
 			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
-				$user = $this->getUser();
-				if ( !$user->useRCPatrol() && !$user->useNPPatrol() ) {
+				$wiki_user = $this->getwiki_user();
+				if ( !$wiki_user->useRCPatrol() && !$wiki_user->useNPPatrol() ) {
 					$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
 				}
 			}
@@ -165,24 +165,24 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->addWhereIf( 'rc_minor != 0', isset( $show['minor'] ) );
 			$this->addWhereIf( 'rc_bot = 0', isset( $show['!bot'] ) );
 			$this->addWhereIf( 'rc_bot != 0', isset( $show['bot'] ) );
-			$this->addWhereIf( 'rc_user = 0', isset( $show['anon'] ) );
-			$this->addWhereIf( 'rc_user != 0', isset( $show['!anon'] ) );
+			$this->addWhereIf( 'rc_wiki_user = 0', isset( $show['anon'] ) );
+			$this->addWhereIf( 'rc_wiki_user != 0', isset( $show['!anon'] ) );
 			$this->addWhereIf( 'rc_patrolled = 0', isset( $show['!patrolled'] ) );
 			$this->addWhereIf( 'rc_patrolled != 0', isset( $show['patrolled'] ) );
 		}
 
-		if ( !is_null( $params['user'] ) && !is_null( $params['excludeuser'] ) ) {
-			$this->dieUsage( 'user and excludeuser cannot be used together', 'user-excludeuser' );
+		if ( !is_null( $params['wiki_user'] ) && !is_null( $params['excludewiki_user'] ) ) {
+			$this->dieUsage( 'wiki_user and excludewiki_user cannot be used together', 'wiki_user-excludewiki_user' );
 		}
-		if ( !is_null( $params['user'] ) ) {
-			$this->addWhereFld( 'rc_user_text', $params['user'] );
+		if ( !is_null( $params['wiki_user'] ) ) {
+			$this->addWhereFld( 'rc_wiki_user_text', $params['wiki_user'] );
 		}
-		if ( !is_null( $params['excludeuser'] ) ) {
-			$this->addWhere( 'rc_user_text != ' . $db->addQuotes( $params['excludeuser'] ) );
+		if ( !is_null( $params['excludewiki_user'] ) ) {
+			$this->addWhere( 'rc_wiki_user_text != ' . ->addQuotes( $params['excludewiki_user'] ) );
 		}
 
 		// This is an index optimization for mysql, as done in the Special:Watchlist page
-		$this->addWhereIf( "rc_timestamp > ''", !isset( $params['start'] ) && !isset( $params['end'] ) && $db->getType() == 'mysql' );
+		$this->addWhereIf( "rc_timestamp > ''", !isset( $params['start'] ) && !isset( $params['end'] ) && ->getType() == 'mysql' );
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
@@ -238,17 +238,17 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			ApiQueryBase::addTitleInfo( $vals, $title );
 		}
 
-		if ( $this->fld_user || $this->fld_userid ) {
+		if ( $this->fld_wiki_user || $this->fld_wiki_userid ) {
 
-			if ( $this->fld_user ) {
-				$vals['user'] = $row->rc_user_text;
+			if ( $this->fld_wiki_user ) {
+				$vals['wiki_user'] = $row->rc_wiki_user_text;
 			}
 
-			if ( $this->fld_userid ) {
-				$vals['user'] = $row->rc_user;
+			if ( $this->fld_wiki_userid ) {
+				$vals['wiki_user'] = $row->rc_wiki_user;
 			}
 
-			if ( !$row->rc_user ) {
+			if ( !$row->rc_wiki_user ) {
 				$vals['anon'] = '';
 			}
 		}
@@ -323,11 +323,11 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_ISMULTI => true,
 				ApiBase::PARAM_TYPE => 'namespace'
 			),
-			'user' => array(
-				ApiBase::PARAM_TYPE => 'user',
+			'wiki_user' => array(
+				ApiBase::PARAM_TYPE => 'wiki_user',
 			),
-			'excludeuser' => array(
-				ApiBase::PARAM_TYPE => 'user',
+			'excludewiki_user' => array(
+				ApiBase::PARAM_TYPE => 'wiki_user',
 			),
 			'dir' => array(
 				ApiBase::PARAM_DFLT => 'older',
@@ -350,8 +350,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 					'ids',
 					'title',
 					'flags',
-					'user',
-					'userid',
+					'wiki_user',
+					'wiki_userid',
 					'comment',
 					'parsedcomment',
 					'timestamp',
@@ -375,7 +375,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				)
 			),
 			'owner' => array(
-				ApiBase::PARAM_TYPE => 'user'
+				ApiBase::PARAM_TYPE => 'wiki_user'
 			),
 			'token' => array(
 				ApiBase::PARAM_TYPE => 'string'
@@ -390,8 +390,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			'start' => 'The timestamp to start enumerating from',
 			'end' => 'The timestamp to end enumerating',
 			'namespace' => 'Filter changes to only the given namespace(s)',
-			'user' => 'Only list changes by this user',
-			'excludeuser' => 'Don\'t list changes by this user',
+			'wiki_user' => 'Only list changes by this wiki_user',
+			'excludewiki_user' => 'Don\'t list changes by this wiki_user',
 			'dir' => $this->getDirectionDescription( $p ),
 			'limit' => 'How many total results to return per request',
 			'prop' => array(
@@ -399,22 +399,22 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				' ids                    - Adds revision ids and page ids',
 				' title                  - Adds title of the page',
 				' flags                  - Adds flags for the edit',
-				' user                   - Adds the user who made the edit',
-				' userid                 - Adds user id of whom made the edit',
+				' wiki_user                   - Adds the wiki_user who made the edit',
+				' wiki_userid                 - Adds wiki_user id of whom made the edit',
 				' comment                - Adds comment of the edit',
 				' parsedcomment          - Adds parsed comment of the edit',
 				' timestamp              - Adds timestamp of the edit',
 				' patrol                 - Tags edits that are patrolled',
 				' sizes                  - Adds the old and new lengths of the page',
-				' notificationtimestamp  - Adds timestamp of when the user was last notified about the edit',
+				' notificationtimestamp  - Adds timestamp of when the wiki_user was last notified about the edit',
 				' loginfo                - Adds log information where appropriate',
 			),
 			'show' => array(
 				'Show only items that meet this criteria.',
-				"For example, to see only minor edits done by logged-in users, set {$p}show=minor|!anon"
+				"For example, to see only minor edits done by logged-in wiki_users, set {$p}show=minor|!anon"
 			),
-			'owner' => 'The name of the user whose watchlist you\'d like to access',
-			'token' => 'Give a security token (settable in preferences) to allow access to another user\'s watchlist'
+			'owner' => 'The name of the wiki_user whose watchlist you\'d like to access',
+			'token' => 'Give a security token (settable in preferences) to allow access to another wiki_user\'s watchlist'
 		);
 	}
 
@@ -430,12 +430,12 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				'ns' => 'namespace',
 				'title' => 'string'
 			),
-			'user' => array(
-				'user' => 'string',
+			'wiki_user' => array(
+				'wiki_user' => 'string',
 				'anon' => 'boolean'
 			),
-			'userid' => array(
-				'userid' => 'integer',
+			'wiki_userid' => array(
+				'wiki_userid' => 'integer',
 				'anon' => 'boolean'
 			),
 			'flags' => array(
@@ -489,28 +489,28 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 	}
 
 	public function getDescription() {
-		return "Get all recent changes to pages in the logged in user's watchlist";
+		return "Get all recent changes to pages in the logged in wiki_user's watchlist";
 	}
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'bad_wlowner', 'info' => 'Specified user does not exist' ),
+			array( 'code' => 'bad_wlowner', 'info' => 'Specified wiki_user does not exist' ),
 			array( 'code' => 'bad_wltoken', 'info' => 'Incorrect watchlist token provided -- please set a correct token in Special:Preferences' ),
 			array( 'code' => 'notloggedin', 'info' => 'You must be logged-in to have a watchlist' ),
 			array( 'code' => 'patrol', 'info' => 'patrol property is not available' ),
 			array( 'show' ),
 			array( 'code' => 'permissiondenied', 'info' => 'You need the patrol right to request the patrolled flag' ),
-			array( 'code' => 'user-excludeuser', 'info' => 'user and excludeuser cannot be used together' ),
+			array( 'code' => 'wiki_user-excludewiki_user', 'info' => 'wiki_user and excludewiki_user cannot be used together' ),
 		) );
 	}
 
 	public function getExamples() {
 		return array(
 			'api.php?action=query&list=watchlist',
-			'api.php?action=query&list=watchlist&wlprop=ids|title|timestamp|user|comment',
-			'api.php?action=query&list=watchlist&wlallrev=&wlprop=ids|title|timestamp|user|comment',
+			'api.php?action=query&list=watchlist&wlprop=ids|title|timestamp|wiki_user|comment',
+			'api.php?action=query&list=watchlist&wlallrev=&wlprop=ids|title|timestamp|wiki_user|comment',
 			'api.php?action=query&generator=watchlist&prop=info',
-			'api.php?action=query&generator=watchlist&gwlallrev=&prop=revisions&rvprop=timestamp|user',
+			'api.php?action=query&generator=watchlist&gwlallrev=&prop=revisions&rvprop=timestamp|wiki_user',
 			'api.php?action=query&list=watchlist&wlowner=Bob_Smith&wltoken=d8d562e9725ea1512894cdab28e5ceebc7f20237'
 		);
 	}

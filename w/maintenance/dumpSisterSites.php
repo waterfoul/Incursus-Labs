@@ -39,9 +39,9 @@ class DumpSisterSites extends Maintenance {
 	}
 
 	public function execute() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$dbr->bufferResults( false );
-		$result = $dbr->select( 'page',
+		r = wfGetDB( DB_SLAVE );
+		r->bufferResults( false );
+		$result = r->select( 'page',
 			array( 'page_namespace', 'page_title' ),
 			array( 'page_namespace'   => NS_MAIN,
 				   'page_is_redirect' => 0,

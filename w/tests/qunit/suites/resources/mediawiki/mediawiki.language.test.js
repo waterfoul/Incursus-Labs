@@ -388,7 +388,7 @@ var grammarTests = {
 };
 
 $.each( grammarTests, function ( langCode, test ) {
-	if ( langCode === mw.config.get( 'wgUserLanguage' ) ) {
+	if ( langCode === mw.config.get( 'wgwiki_userLanguage' ) ) {
 		grammarTest( langCode, test );
 	}
 });

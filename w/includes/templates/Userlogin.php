@@ -1,6 +1,6 @@
 <?php
 /**
- * Html form for user login.
+ * Html form for wiki_user login.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,10 +28,10 @@
 if( !defined( 'MEDIAWIKI' ) ) die( -1 );
 
 /**
- * HTML template for Special:Userlogin form
+ * HTML template for Special:wiki_userlogin form
  * @ingroup Templates
  */
-class UserloginTemplate extends QuickTemplate {
+class wiki_userloginTemplate extends QuickTemplate {
 	function execute() {
 		if( $this->data['message'] ) {
 ?>
@@ -45,12 +45,12 @@ class UserloginTemplate extends QuickTemplate {
 <?php } ?>
 
 <div id="loginstart"><?php $this->msgWiki( 'loginstart' ); ?></div>
-<div id="userloginForm">
-<form name="userlogin" method="post" action="<?php $this->text('action') ?>">
+<div id="wiki_userloginForm">
+<form name="wiki_userlogin" method="post" action="<?php $this->text('action') ?>">
 	<h2><?php $this->msg('login') ?></h2>
-	<p id="userloginlink"><?php $this->html('link') ?></p>
+	<p id="wiki_userloginlink"><?php $this->html('link') ?></p>
 	<?php $this->html('header'); /* pre-table point for form plugins... */ ?>
-	<div id="userloginprompt"><?php  $this->msgWiki('loginprompt') ?></div>
+	<div id="wiki_userloginprompt"><?php  $this->msgWiki('loginprompt') ?></div>
 	<?php if( $this->haveData( 'languages' ) ) { ?><div id="languagelinks"><p><?php $this->html( 'languages' ); ?></p></div><?php } ?>
 	<table>
 		<tr>
@@ -88,7 +88,7 @@ class UserloginTemplate extends QuickTemplate {
 			$doms .= "<option>" . htmlspecialchars( $dom ) . "</option>";
 		}
 	?>
-		<tr id="mw-user-domain-section">
+		<tr id="mw-wiki_user-domain-section">
 			<td class="mw-label"><?php $this->msg( 'yourdomainname' ) ?></td>
 			<td class="mw-input">
 				<select name="wpDomain" value="<?php $this->text( 'domain' ) ?>"
@@ -150,7 +150,7 @@ class UserloginTemplate extends QuickTemplate {
 				echo '&#160;';
 				echo Linker::link(
 					SpecialPage::getTitleFor( 'PasswordReset' ),
-					wfMessage( 'userlogin-resetlink' )
+					wfMessage( 'wiki_userlogin-resetlink' )
 				);
 			} elseif( $this->data['resetlink'] === null ) {
 				echo '&#160;';

@@ -47,7 +47,7 @@ class ApiFileRevert extends ApiBase {
 		$this->validateParameters();
 
 		// Check whether we're allowed to revert this file
-		$this->checkPermissions( $this->getUser() );
+		$this->checkPermissions( $this->getwiki_user() );
 
 		$sourceUrl = $this->file->getArchiveVirtualUrl( $this->archiveName );
 		$status = $this->file->upload( $sourceUrl, $this->params['comment'], $this->params['comment'] );
@@ -66,15 +66,15 @@ class ApiFileRevert extends ApiBase {
 	}
 
 	/**
-	 * Checks that the user has permissions to perform this revert.
+	 * Checks that the wiki_user has permissions to perform this revert.
 	 * Dies with usage message on inadequate permissions.
-	 * @param $user User The user to check.
+	 * @param $wiki_user wiki_user The wiki_user to check.
 	 */
-	protected function checkPermissions( $user ) {
+	protected function checkPermissions( $wiki_user ) {
 		$title = $this->file->getTitle();
 		$permissionErrors = array_merge(
-			$title->getUserPermissionsErrors( 'edit' , $user ),
-			$title->getUserPermissionsErrors( 'upload' , $user )
+			$title->getwiki_userPermissionsErrors( 'edit' , $wiki_user ),
+			$title->getwiki_userPermissionsErrors( 'upload' , $wiki_user )
 		);
 
 		if ( $permissionErrors ) {
@@ -83,7 +83,7 @@ class ApiFileRevert extends ApiBase {
 	}
 
 	/**
-	 * Validate the user parameters and set $this->archiveName and $this->file.
+	 * Validate the wiki_user parameters and set $this->archiveName and $this->file.
 	 * Throws an error if validation fails
 	 */
 	protected function validateParameters() {

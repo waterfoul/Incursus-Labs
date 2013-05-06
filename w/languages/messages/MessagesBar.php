@@ -23,7 +23,7 @@
 $fallback = 'de';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Links unterstreichen:',
 'tog-justify' => 'Text ois Blocksotz',
 'tog-hideminor' => 'Kloane Änderrungen ausblenden',
@@ -47,7 +47,7 @@ $messages = array(
 'tog-previewonfirst' => "Ban ersten Beorweiten oiwei d' Vurschau åzoang",
 'tog-nocache' => 'Seitencache vom Browser deaktivirn',
 'tog-enotifwatchlistpages' => 'Bei Änderrungen voh beówochterde Seiten a E-Mail schicken',
-'tog-enotifusertalkpages' => 'Bei Änderrungen voh meiner Benutzerseiten a E-Mail schicken',
+'tog-enotifwiki_usertalkpages' => 'Bei Änderrungen voh meiner Benutzerseiten a E-Mail schicken',
 'tog-enotifminoredits' => 'Aa ba kloane Änderrungen voh beówochterde Seiten a E-Mail schicker',
 'tog-enotifrevealaddr' => 'Deih E-Mail-Adress in Benoochrichtigungs-E-Mails åzoang',
 'tog-shownumberswatching' => "D' Åzoi voh dé beówochterden Benutzer åzoang",
@@ -228,7 +228,7 @@ $messages = array(
 'talk' => 'Dischkrian',
 'views' => 'Osichtn',
 'toolbox' => 'Werkzeigkisten',
-'userpage' => 'Benutzerseiten',
+'wiki_userpage' => 'Benutzerseiten',
 'projectpage' => 'Projektseiten åzoang',
 'imagepage' => 'Daateiseiten åzoang',
 'mediawikipage' => 'Inhoitsseiten åzoang',
@@ -254,7 +254,7 @@ $1",
 'pool-queuefull' => 'Poolworteschlång is vói',
 'pool-errorunknown' => 'Unbekånnter Feeler',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Iba {{SITENAME}}',
 'aboutpage' => 'Project:Iba',
 'copyright' => 'Da Inhoid is unter da $1 vafiagbor.',
@@ -315,7 +315,7 @@ Schaug auf [[Special:Version|Versiónsseiten]]",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Seitn',
-'nstab-user' => 'Nutzaseitn',
+'nstab-wiki_user' => 'Nutzaseitn',
 'nstab-media' => 'Meedienseiten',
 'nstab-special' => 'Spezialseitn',
 'nstab-project' => 'Projektseitn',
@@ -357,7 +357,7 @@ Grund voh da Sperrung: $1',
 
 De Seitn is meglicherwei gleschd oda vaschobm worn.
 
-Fois des ned zuatrifft, hosd eventuell an Fehla im Programm gfundn. Bittschee informia an [[Special:ListUsers/sysop|Administrator]] und nenn eam de URL.',
+Fois des ned zuatrifft, hosd eventuell an Fehla im Programm gfundn. Bittschee informia an [[Special:Listwiki_users/sysop|Administrator]] und nenn eam de URL.',
 'missingarticle-rev' => '(Versionsnumma: $1)',
 'missingarticle-diff' => '(Unterschiad zwischen Versionen: $1, $2)',
 'readonly_lag' => "De Daatenbånk is automaatisch fyr Schraibzuagriff gsperrt, damid se d' vatailten Daatenbånkserver (slaves) mim Hauptdaatenbånkserver (master) obglaichen kennan.",
@@ -404,7 +404,7 @@ $2",
 'customcssprotected' => "Du host néd d' Berechtigung dé CSS enthoitende Seiten z' b'orweiden, weis d' persénlichen Eihstöungen vohram aundern Benutzer enthoitt.",
 'customjsprotected' => "Du host néd d' Berechtigung dé JavaScript enthoitende Seiten z' b'orweiden, weis d' persénlichen Eihstöungen vohram aundern Benutzer enthoitt.",
 'ns-specialprotected' => "Speziaalseiten kennern néd b'orweidt wern.",
-'titleprotected' => "A Seiten mid dém Nåm kå néd åglégd wern. Dé Sperrn is durch [[User:$1|$1]] mid da Begryndung ''„$2“'' eihgerichtt worn.",
+'titleprotected' => "A Seiten mid dém Nåm kå néd åglégd wern. Dé Sperrn is durch [[wiki_user:$1|$1]] mid da Begryndung ''„$2“'' eihgerichtt worn.",
 
 # Virus scanner
 'virus-badscanner' => "Feelerhofte Kónfigurazión: unbekaunnter Virnscanner: ''$1''",
@@ -414,7 +414,7 @@ $2",
 # Login and logout pages
 'logouttext' => "'''Iatzerd bist obgmödt.'''
 
-Du kåst {{SITENAME}} iatzerd anónym weiderdoah, óder di danaid unterm söwing óder am åndern Benutzernåm [[Special:UserLogin|åmöden]].
+Du kåst {{SITENAME}} iatzerd anónym weiderdoah, óder di danaid unterm söwing óder am åndern Benutzernåm [[Special:wiki_userLogin|åmöden]].
 Beochtt ower, daas oanige Seiten noh åzoang kennern, daas du ågmödt bist, sólång du néd deih Browsercache glaard host.",
 'welcomecreation' => '== Servas, $1! ==
 
@@ -430,21 +430,21 @@ Vagiss bittscheh néd, deine [[Special:Preferences|{{SITENAME}}-Eishtellungen]] 
 'login' => 'Eilogga',
 'nav-login-createaccount' => 'Eilogga / Konto olegn',
 'loginprompt' => 'Zua Omejdung miassen Cookies aktiviat sei.',
-'userlogin' => 'Eilogga / Konto olegn',
-'userloginnocreate' => 'Åmöden',
+'wiki_userlogin' => 'Eilogga / Konto olegn',
+'wiki_userloginnocreate' => 'Åmöden',
 'logout' => 'Obmöden',
-'userlogout' => 'Auslogga',
+'wiki_userlogout' => 'Auslogga',
 'notloggedin' => 'Ned ågmödt',
 'nologin' => "Du host koa Nutzakonto? '''$1'''.",
 'nologinlink' => 'A neichs Nutzakonto olegn',
 'createaccount' => 'Nutzakonto olegn',
 'gotaccount' => "Hosd scho a Nutzakonto? '''$1'''.",
 'gotaccountlink' => 'Omejdn',
-'userlogin-resetlink' => 'Hosd de Datn zan Eilogga vagessn?',
+'wiki_userlogin-resetlink' => 'Hosd de Datn zan Eilogga vagessn?',
 'createaccountmail' => 'per E-Mail',
 'createaccountreason' => 'Grund',
 'badretype' => 'De zwoa Posswerter stimmer ned ywereih.',
-'userexists' => 'Der Benutzernaum do is schoh vageem. Bittscheh nimm an aundern her.',
+'wiki_userexists' => 'Der Benutzernaum do is schoh vageem. Bittscheh nimm an aundern her.',
 'loginerror' => 'Feeler bei da Åmödung',
 'createaccounterror' => 'Des Benutzerkonto hod ned erstöd wern kenner: $1',
 'nocookiesnew' => "Da Benytzerzuagång is erstöid worn, du bist ower ned ågmöidt. {{SITENAME}} benedigt fyr de Funkzion Cookies, bittschee aktiviar de und möidt de danoch mid daim naichn Benytzernåm und 'm dazuaghering Posswort å.",
@@ -475,7 +475,7 @@ Es muass sichergstöd seih, daas Cookies aktivierd san. Danoch bittscheh d' Seit
 
 # Special:PasswordReset
 'passwordreset' => 'Passwoat zrucksetzn',
-'passwordreset-username' => 'Benutzernåm:',
+'passwordreset-wiki_username' => 'Benutzernåm:',
 
 # Edit page toolbar
 'bold_sample' => 'Fetta Text',
@@ -516,7 +516,7 @@ Dei IP-Adress wead in da Versionsgschicht afzoachnet.',
 'loginreqlink' => 'åmöden',
 'loginreqpagetext' => "Du muasst dé $1, daas d' Seiten leesen kauhst.",
 'accmailtitle' => 'Passwort is vaschickt worn',
-'accmailtext' => 'E zuafällig genariards Posswort fyr [[User talk:$1|$1]] is an $2 gschickt worn.
+'accmailtext' => 'E zuafällig genariards Posswort fyr [[wiki_user talk:$1|$1]] is an $2 gschickt worn.
 
 Des Posswort fyr des naiche Benutzerkonto kå auf da Speziaalseiten  „[[Special:ChangePassword|Posswort ändern]]“ gändert wern.',
 'newarticle' => '(Neich)',
@@ -525,15 +525,15 @@ Um de Seitn ozlegn, trog dein Text im untan Kostn ei (schaug af da [[{{MediaWiki
 Wens a Irrtum is, dassd do bist, nach druck in Zruck-Knopf vom Brausa.',
 'anontalkpagetext' => "---- ''De Seiten werd dodazua hergnumma, am ned-ågmöiderten Benutzer Nochrichten z' hinterlossen.
 Wånnst mid de Kommentare auf derer Seiten nix åfanga kåst, is vamuatlich da friarerne Inhower vo derer IP-Adress gmoat und du kåstas ignorirn.
-Wånnst a anonymer Benutzer bist und denkst, das irrelevante Kommentare ån di grichtt worn san, [[Special:UserLogin|möid de bittschee å]], um zuakynfteg Vawirrung z' vamein.''",
+Wånnst a anonymer Benutzer bist und denkst, das irrelevante Kommentare ån di grichtt worn san, [[Special:wiki_userLogin|möid de bittschee å]], um zuakynfteg Vawirrung z' vamein.''",
 'noarticletext' => 'De Seitn enthoid momentan koan Text ned.
 Du konst [[Special:Search/{{PAGENAME}}|nochm Titl]] in andan Seitn suacha,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} de Logbiacha duachsuacha],
 oda [{{fullurl:{{FULLPAGENAME}}|action=edit}} de Seitn beorbatn]</span>.',
 'noarticletext-nopermission' => 'Af dea Seitn gibts zua Zeit koan Text.
 Du konst [[Special:Search/{{PAGENAME}}|in Seitntitl]] in andan Seitn suacha, oda <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} dia de Logbiachln dazua oschaugn]</span>, oba du hosd koa Berechtigung de Seitn ozlegn.',
-'userpage-userdoesnotexist' => 'Des Benutzerkonto „<nowiki>$1</nowiki>“ is ned vurhånden. Bittschee priaf, ob du de Seiten wirkle erstöin/beorweiten wüist.',
-'userpage-userdoesnotexist-view' => 'Benutzerkonto „$1“ existiard ned.',
+'wiki_userpage-wiki_userdoesnotexist' => 'Des Benutzerkonto „<nowiki>$1</nowiki>“ is ned vurhånden. Bittschee priaf, ob du de Seiten wirkle erstöin/beorweiten wüist.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Benutzerkonto „$1“ existiard ned.',
 'blocked-notice-logextract' => "{{GENDER:$1|Der Benutzer|De Benutzarin|Der Benutzer do}} is zurzeid gesperrd.
 Zua da Informazion foigt a aktueller Auszug aus 'm Benutzersperr-Logbiache:",
 'updated' => '(Gänderd)',
@@ -542,7 +542,7 @@ Zua da Informazion foigt a aktueller Auszug aus 'm Benutzersperr-Logbiache:",
 'previewconflict' => "Dé Vurschau gibt 'n Inhoid vom ówern Textföd wieder. Só werd d' Seiten ausschaung, wånnst iatz speichern duast.",
 'session_fail_preview' => "'''Daine Beorwaitungen håm ned gspaichert wern kenna, wail Sitzungsdaaten valurn gånga san.'''
 Bittschee vasuachs nuamoi, indem du unter da foiganden Textvurschau noamoi auf „Saiten spaichern“ druckst.
-Soidad des Probleem bestee blaim, [[Special:UserLogout|möid de ob]] und danoch wider å.",
+Soidad des Probleem bestee blaim, [[Special:wiki_userLogout|möid de ob]] und danoch wider å.",
 'editing' => 'Beorbatn vo $1',
 'editingsection' => 'Werkln ba $1 (Obschnitt)',
 'editingcomment' => 'Werkeln voh $1 (Neicher Obschnit)',
@@ -595,7 +595,7 @@ De Parameta wean ignoriad.",
 'post-expand-template-argument-category' => 'Seiten, dé ignorirde Vurlongargumentt enthoiden',
 
 # "Undo" feature
-'undo-summary' => 'Änderrung $1 voh [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskussión]]) ryckgängig gmocht.',
+'undo-summary' => 'Änderrung $1 voh [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Diskussión]]) ryckgängig gmocht.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Benutzerkonto kå ned erstöd wern',
@@ -723,7 +723,7 @@ Details stehen im [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 
 'prefs-searchoptions' => 'Suachopziónen',
 'prefs-namespaces' => 'Nåmensraim',
 'youremail' => 'E-Mail-Adress:',
-'username' => 'Benutzernåm:',
+'wiki_username' => 'Benutzernåm:',
 'yourrealname' => 'Biagalicha Nama:',
 'yourlanguage' => 'Sprooch vo da Benutzerowerflächen',
 'prefs-help-realname' => 'Opzionoi. Dodamid kå dai byrgerlicher Nåm daine Baiträg zuagordnet wern.',
@@ -733,9 +733,9 @@ Dei Mail-Adress wead dabei ned ozoagt.',
 'prefs-help-email-required' => 'Es werd a güitige E-Mäil-Adress braucht.',
 'prefs-info' => 'Baasisinformazionen',
 
-# User rights
-'userrights-groupsmember' => 'Midgliad vo:',
-'userrights-no-interwiki' => 'Du hast koa Berechtigung, Benutzerrechte in anderne Wikis zum ändern.',
+# wiki_user rights
+'wiki_userrights-groupsmember' => 'Midgliad vo:',
+'wiki_userrights-no-interwiki' => 'Du hast koa Berechtigung, Benutzerrechte in anderne Wikis zum ändern.',
 
 # Groups
 'group-sysop' => 'Administratorn',
@@ -743,14 +743,14 @@ Dei Mail-Adress wead dabei ned ozoagt.',
 'group-suppress' => 'Oversighter',
 'group-all' => '(olle)',
 
-'group-user-member' => '{{GENDER:$1|Benutzer|Benutzerrin}}',
+'group-wiki_user-member' => '{{GENDER:$1|Benutzer|Benutzerrin}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|Autómaatisch bstätigter Benutzer|Autómaatisch bstätigter Benutzerrin}}',
 'group-bot-member' => 'Bot',
 'group-sysop-member' => '{{GENDER:$1|Administraator|Administraatorin}}',
 'group-bureaucrat-member' => '{{GENDER:$1|Byrókraat|Byrókraatin}}',
 'group-suppress-member' => '{{GENDER:$1|Oversighter|Oversighterrin}}',
 
-'grouppage-user' => '{{ns:project}}:Benutzer',
+'grouppage-wiki_user' => '{{ns:project}}:Benutzer',
 'grouppage-autoconfirmed' => '{{ns:project}}:Autómaatisch bstätigte Benutzer',
 'grouppage-bot' => '{{ns:project}}:Bots',
 'grouppage-sysop' => '{{ns:project}}:Administraatorn',
@@ -762,7 +762,7 @@ Dei Mail-Adress wead dabei ned ozoagt.',
 'right-edit' => 'Seiten beorweiten',
 'right-block' => 'Benutzer sperrn (Schreiwrecht)',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Rechte-Logbiache',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -798,7 +798,7 @@ Stand: $4, $5 Uhr.",
 'minoreditletter' => 'K',
 'newpageletter' => 'N',
 'boteditletter' => 'B',
-'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|beówochtender|beówochtende}} Benutzer]',
+'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|beówochtender|beówochtende}} Benutzer]',
 'rc_categories' => 'Netter Seiten aus d\' Kategorien (trennd mid "l"):',
 'rc_categories_any' => 'Olle',
 'newsectionsummary' => 'Neicher Obschnit /* $1 */',
@@ -820,7 +820,7 @@ Seitn af [[Special:Watchlist|deina Beobochtungslistn]] san '''fett'''.",
 'upload' => 'Affelodn',
 'uploadbtn' => 'Daatei aufféloon',
 'uploadnologin' => 'Néd ågmödt',
-'uploadnologintext' => 'Du muasst [[Special:UserLogin|ågmödt]] seih, wånn Du Daatein auffeloon wüst.',
+'uploadnologintext' => 'Du muasst [[Special:wiki_userLogin|ågmödt]] seih, wånn Du Daatein auffeloon wüst.',
 'uploadlog' => 'Daatei-Logbiache',
 'uploadlogpage' => 'Logbuach fias Affelodn',
 'uploadlogpagetext' => 'Des is des Logbuach voh de auffegloodanen Daatein, schaug aa unter [[Special:NewFiles|neiche Daatein]].',
@@ -879,7 +879,7 @@ Seitn af [[Special:Watchlist|deina Beobochtungslistn]] san '''fett'''.",
 'listfiles_thumb' => 'Vurschaubüdel',
 'listfiles_date' => 'Daatum',
 'listfiles_name' => 'Nåm',
-'listfiles_user' => 'Benutzer',
+'listfiles_wiki_user' => 'Benutzer',
 'listfiles_size' => 'Greess',
 'listfiles_description' => 'Bschreiwung',
 'listfiles_count' => 'Versiónen',
@@ -893,7 +893,7 @@ Seitn af [[Special:Watchlist|deina Beobochtungslistn]] san '''fett'''.",
 'filehist-datetime' => 'Version vom',
 'filehist-thumb' => 'Vorschaubuidl',
 'filehist-thumbtext' => 'Vorschaubuidl fia d Version vo $1',
-'filehist-user' => 'Nutza',
+'filehist-wiki_user' => 'Nutza',
 'filehist-dimensions' => 'Dimensiona',
 'filehist-filesize' => 'Dateigreess',
 'filehist-comment' => 'Kommentar',
@@ -992,9 +992,9 @@ Links as Naumensraim wern do néd afglistt.",
 'protectedpages-indef' => 'Netter néd bschränkde gschytzde Seiten zoang',
 'protectedpages-cascade' => 'Netter Seiten mid Kaskadenschutz',
 'protectedtitles' => 'Gschytzde Seitennaumen',
-'usercreated' => '{{GENDER:$3|Oglegt}} am $1 um $2',
+'wiki_usercreated' => '{{GENDER:$3|Oglegt}} am $1 um $2',
 'newpages' => 'Neiche Seitn',
-'newpages-username' => 'Benutzernåm:',
+'newpages-wiki_username' => 'Benutzernåm:',
 'ancientpages' => 'Schoh länger nimmer beorweitade Seiten',
 'move' => 'Vaschiabm',
 'movethispage' => 'de Seiten vaschiam',
@@ -1047,12 +1047,12 @@ Links as Naumensraim wern do néd afglistt.",
 'linksearch-text' => "Dé Speziaalseiten do daméglicht d' Suach noch Seiten, in dénen bstimmte Weblinks enthoiden san. Dodabei kennern Blootzhoiter wia beispüsweis  <code>*.beispü.at</code> hergnummer wern. Es muass mindastens a Top-Level-Domain, z. Bsp. „*.org“. auhgeem wern. <br />Unterstytzde Protokói: <code>$1</code> (Dé bittscheh bei da Suachauhgob auhgeem.)",
 'linksearch-line' => '$1 is valinkt vo $2',
 
-# Special:ListUsers
-'listusers-submit' => 'Zoag',
-'listusers-noresult' => 'Koane Benutzer gfunden.',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Zoag',
+'listwiki_users-noresult' => 'Koane Benutzer gfunden.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Neiomejdungs-Logbuach',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Neiomejdungs-Logbuach',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Benutzergruppmrechtt',
@@ -1072,9 +1072,9 @@ Zuasätzlige Informaziónen ywer dé oahzelnen Rechtt kennan [[{{MediaWiki:Listg
 'listgrouprights-removegroup-self' => "'s oagerne Benutzerkóntó aus {{PLURAL:$2|derer Gruppm|dé Gruppm}} entferner: $1",
 'listgrouprights-addgroup-self-all' => 'Kauh olle Gruppm zum oagern Kóntó dazuadoah',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'Du bist néd auhgmödt',
-'emailuser' => 'Mail an den Nutza',
+'emailwiki_user' => 'Mail an den Nutza',
 'emailpage' => 'E-Mail aun Benutzer',
 'noemailtitle' => 'Koah E-Mail-Adress',
 'emailfrom' => 'Voh:',
@@ -1086,11 +1086,11 @@ Zuasätzlige Informaziónen ywer dé oahzelnen Rechtt kennan [[{{MediaWiki:Listg
 'emailccsubject' => 'a Kópie voh deiner Noochricht an $1: $2',
 'emailsent' => 'E-Mail is vaschickt worn',
 'emailsenttext' => 'Deih E-Mail is vaschickt worn.',
-'emailuserfooter' => 'Dé E-Mail is voh {{SITENAME}}-Benutzer „$1“ an „$2“ gsendt worn.',
+'emailwiki_userfooter' => 'Dé E-Mail is voh {{SITENAME}}-Benutzer „$1“ an „$2“ gsendt worn.',
 
-# User Messenger
-'usermessage-summary' => 'Systémnoochricht gspeicherd.',
-'usermessage-editor' => 'Systém-Messenger',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'Systémnoochricht gspeicherd.',
+'wiki_usermessage-editor' => 'Systém-Messenger',
 
 # Watchlist
 'watchlist' => 'Beobochtungslistn',
@@ -1099,7 +1099,7 @@ Zuasätzlige Informaziónen ywer dé oahzelnen Rechtt kennan [[{{MediaWiki:Listg
 'nowatchlist' => 'Es gibt koane Eihträg auf deiner Beówochtungslisten.',
 'watchlistanontext' => "Du muasst dé $1, um deih Beówchtungslisten z' seeng óder Eihträg borweiten z' kenner.",
 'watchnologin' => 'Du bist néd auhgmödt',
-'watchnologintext' => "Du muasst [[Special:UserLogin|auhgmödt]] seih, um deih Beówochtungslisten beorweiten z' kenner.",
+'watchnologintext' => "Du muasst [[Special:wiki_userLogin|auhgmödt]] seih, um deih Beówochtungslisten beorweiten z' kenner.",
 'addwatch' => 'Zua Beówochtungslisten dazuadoah',
 'addedwatchtext' => 'Dé Seiten „[[:$1]]“ is zua deiner [[Special:Watchlist|Beówochtungslisten]] dazuadauh worn.
 Änderrungen an derer Seiten und voh da Dischkrierseiten wern do glistt und in da Ywersicht voh dé [[Special:RecentChanges|létzden Änderrungen]] auf Fettschrieft auhzoagt.
@@ -1266,7 +1266,7 @@ Da aktuöje Text voh da gléschden Seiten is netter fyr Administraatorn zuagäng
 'sp-contributions-logs' => 'Logbiacha',
 'sp-contributions-talk' => 'Dischkrian',
 'sp-contributions-search' => 'Suach noch Nutzabeidräg',
-'sp-contributions-username' => 'IP-Adress oda Nutzanama:',
+'sp-contributions-wiki_username' => 'IP-Adress oda Nutzanama:',
 'sp-contributions-toponly' => 'Nua aktuelle Versiona ozoagn',
 'sp-contributions-submit' => 'Suachn',
 
@@ -1298,7 +1298,7 @@ Da aktuöje Text voh da gléschden Seiten is netter fyr Administraatorn zuagäng
 'blockiptext' => "Mid dem Formular sperrst a IP-Adress oder an Benytzernåmen, das vo durten aus koane Endarungen mer vurgnumma wern kennan.
 Des soid nur dafoing, um an Vandalismus z' vahindern und in Yweraistimmung mid d' [[{{MediaWiki:Policy-url}}|Richtlinien]].
 Gib bittschee an Grund fyr d' Sperrn å.",
-'ipadressorusername' => 'IP-Adress oder Benytzernåm:',
+'ipadressorwiki_username' => 'IP-Adress oder Benytzernåm:',
 'ipbexpiry' => 'Sperrdauer:',
 'ipbreason' => 'Grund:',
 'ipbreasonotherlist' => 'Åndarer Grund:',
@@ -1320,7 +1320,7 @@ Gib bittschee an Grund fyr d' Sperrn å.",
 'ipbotheroption' => 'Åndre Dauer:',
 'ipbotherreason' => 'Ånderner/ergenznder Grund:',
 'ipbhidename' => 'An Benytzernåmen in Beorwaitungen und Linsten vastecken',
-'ipbwatchuser' => 'De Benytzer(diskussions)saiten beowochten',
+'ipbwatchwiki_user' => 'De Benytzer(diskussions)saiten beowochten',
 'ipb-change-block' => "D' Sperrn mid de Sperrparameter danaiern",
 'badipaddress' => 'De IP-Adress hod a foischs Format.',
 'blockipsuccesssub' => 'De Sperrn is erfoigraich gween',
@@ -1334,7 +1334,7 @@ Zur da Aufheewung vo da Sperrn schau unter da [[Special:BlockList|Listen vo olle
 'unblockip' => 'IP-Adress fraigeem',
 'unblockiptext' => 'Mid dem Formular do kååst du a IP-Adress oder an Benytzer fraigeem.',
 'ipusubmit' => 'Freigem',
-'unblocked' => '[[User:$1|$1]] is freigem worn',
+'unblocked' => '[[wiki_user:$1|$1]] is freigem worn',
 'unblocked-id' => 'Sperr-ID $1 is fraigeem worn',
 'ipblocklist' => 'Gsperrte Nutza',
 'ipblocklist-legend' => 'Suach noch am gsperrden Benytzer',
@@ -1345,7 +1345,7 @@ Zur da Aufheewung vo da Sperrn schau unter da [[Special:BlockList|Listen vo olle
 'change-blocklink' => 'Sperr endan',
 'contribslink' => 'Beidreg',
 'emaillink' => 'E-Póst schicker',
-'autoblocker' => 'Autómaatische Sperr, wei du a gmoahsaume IP-Adress mim [[User:$1|$1]] bnutzd. Grund voh da Benutzersperrn: „$2“.',
+'autoblocker' => 'Autómaatische Sperr, wei du a gmoahsaume IP-Adress mim [[wiki_user:$1|$1]] bnutzd. Grund voh da Benutzersperrn: „$2“.',
 'blocklogpage' => 'Sperrlogbuach',
 'blocklog-showlog' => "{{GENDER:$1|Der Benutzer|Dé Benutzerrin|Der Benutzer}} do is schoh friarer gsperrd worn. Es fóigt a Eihtrog aus'm Benutzersperrlogbiaché:",
 'blocklog-showsuppresslog' => "{{GENDER:$1|Der Benutzer|Dé Benutzerrin|Der Benutzer}} do is schoh friarer gsperrd und vastéckt worn. Es fóigt a Eihtrog aus'm Benutzersperrlogbiaché:",
@@ -1388,11 +1388,11 @@ In de zwoa Fälle miaßadst, fåis des gwünscht is, de Seitn händisch vaschiam
 Bittschee gib außadem druntn in '''neichn''' Nãm vu da Seitn ei und schreib kuaz '''wieso'''<nowiki>'st</nowiki> de Seitn vaschiam mechst.",
 'movearticle' => 'Seitn vaschiam:',
 'movenologin' => 'Du bist néd ågmödt',
-'movenologintext' => 'Zum Vaschiam muaßt a registriada und [[Special:UserLogin|ãngmöideta Benutza]] sei.',
+'movenologintext' => 'Zum Vaschiam muaßt a registriada und [[Special:wiki_userLogin|ãngmöideta Benutza]] sei.',
 'movenotallowed' => 'Du håst ka Berechtigung zum Vaschiam vu Seitn.',
 'movenotallowedfile' => 'Du håst ka Berechtigung zum Vaschiam vu Datein.',
-'cant-move-user-page' => 'Du håst ka Berechtigung zum Vaschiam vu Benutzahauptseitn.',
-'cant-move-to-user-page' => 'Du håst ka Berechtigung zum Vaschiam vu Seitn auf a Benutzaseitn (Ausnãhmen han Benutza-Untaseitn).',
+'cant-move-wiki_user-page' => 'Du håst ka Berechtigung zum Vaschiam vu Benutzahauptseitn.',
+'cant-move-to-wiki_user-page' => 'Du håst ka Berechtigung zum Vaschiam vu Seitn auf a Benutzaseitn (Ausnãhmen han Benutza-Untaseitn).',
 'newtitle' => 'Züi:',
 'move-watch' => "D' Seiten beówochten",
 'movepagebtn' => 'Seitn vaschiam',
@@ -1432,7 +1432,7 @@ Bsuach bittschee de Saiten [//www.mediawiki.org/wiki/Localisation MediaWiki-Loka
 'importlogpage' => 'Import-Logbuach',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Dei Nutzaseitn',
+'tooltip-pt-wiki_userpage' => 'Dei Nutzaseitn',
 'tooltip-pt-mytalk' => 'Dei Dischkriaseitn',
 'tooltip-pt-preferences' => 'Deine Preferenzn',
 'tooltip-pt-watchlist' => 'A Listn vo Seitn, wos du beobochtest',
@@ -1469,13 +1469,13 @@ Hintagrundinfo za Neiigkeidn',
 'tooltip-feed-rss' => 'RSS-Feed vo derer Saiten',
 'tooltip-feed-atom' => 'Atom-Feed vo dera Seitn',
 'tooltip-t-contributions' => 'A Listn vo de Nutzabeidreg',
-'tooltip-t-emailuser' => 'Em Nutza a Mail schicka',
+'tooltip-t-emailwiki_user' => 'Em Nutza a Mail schicka',
 'tooltip-t-upload' => 'Datein affelodn',
 'tooltip-t-specialpages' => 'A Listn vo olle Spezialseitn',
 'tooltip-t-print' => 'Druckosicht za dea Seitn',
 'tooltip-t-permalink' => 'Dauerhofta Link za dea Seitnversion',
 'tooltip-ca-nstab-main' => 'Seitninhoid ozoagn',
-'tooltip-ca-nstab-user' => 'Nutzaseitn oschaugn',
+'tooltip-ca-nstab-wiki_user' => 'Nutzaseitn oschaugn',
 'tooltip-ca-nstab-media' => 'Meediendaateiseiten åzoang',
 'tooltip-ca-nstab-special' => 'Des is a Spezialseitn, wosd ned beorbatn konst.',
 'tooltip-ca-nstab-project' => 'Projektseitn ozoagn',
@@ -1623,7 +1623,7 @@ Bittscheh d' noraale Vurschau bnutzen.",
 'watchlisttools-raw' => 'Im Roh-Listnformat beorbatn',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|Diskussión]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|Diskussión]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Unbekaunnter Extension-Tag „$1“',
@@ -1670,7 +1670,7 @@ Bittscheh d' noraale Vurschau bnutzen.",
 'specialpages-group-login' => 'Åmöden',
 'specialpages-group-changes' => 'Létzde Änderrungen und Logbiacher',
 'specialpages-group-media' => 'Meedien',
-'specialpages-group-users' => 'Benutzer und Rechtt',
+'specialpages-group-wiki_users' => 'Benutzer und Rechtt',
 'specialpages-group-highuse' => 'Haiffig brauchde Seiten',
 'specialpages-group-pages' => 'Listen voh Seiten',
 'specialpages-group-pagetools' => 'Seitenwerkzeig',

@@ -54,7 +54,7 @@ class DeletePageAdminTestCase extends SeleniumTestCase {
         $this->click( SeleniumTestConstants::LINK_START."Log in / create account" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
 
-        $this->type( "wpName1", $this->selenium->getUser() );
+        $this->type( "wpName1", $this->selenium->getwiki_user() );
         $this->type( "wpPassword1", $this->selenium->getPass() );
         $this->click( "wpLoginAttempt" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );

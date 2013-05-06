@@ -21,12 +21,12 @@
  * @ingroup Maintenance
  * @author Tim Starling
  *
- * USAGE: php moveBatch.php [-u <user>] [-r <reason>] [-i <interval>] [listfile]
+ * USAGE: php moveBatch.php [-u <wiki_user>] [-r <reason>] [-i <interval>] [listfile]
  *
  * [listfile] - file with two titles per line, separated with pipe characters;
  * the first title is the source, the second is the destination.
  * Standard input is used if listfile is not given.
- * <user> - username to perform moves as
+ * <wiki_user> - wiki_username to perform moves as
  * <reason> - reason to be given for moves
  * <interval> - number of seconds to sleep after each move
  *
@@ -45,21 +45,21 @@ class MoveBatch extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Moves a batch of pages";
-		$this->addOption( 'u', "User to perform move", false, true );
+		$this->addOption( 'u', "wiki_user to perform move", false, true );
 		$this->addOption( 'r', "Reason to move page", false, true );
 		$this->addOption( 'i', "Interval to sleep between moves" );
 		$this->addArg( 'listfile', 'List of pages to move, newline delimited', false );
 	}
 
 	public function execute() {
-		global $wgUser;
+		global $wgwiki_user;
 
 		# Change to current working directory
 		$oldCwd = getcwd();
 		chdir( $oldCwd );
 
 		# Options processing
-		$user = $this->getOption( 'u', 'Move page script' );
+		$wiki_user = $this->getOption( 'u', 'Move page script' );
 		$reason = $this->getOption( 'r', '' );
 		$interval = $this->getOption( 'i', 0 );
 		if ( $this->hasArg() ) {
@@ -72,13 +72,13 @@ class MoveBatch extends Maintenance {
 		if ( !$file ) {
 			$this->error( "Unable to read file, exiting", true );
 		}
-		$wgUser = User::newFromName( $user );
-		if ( !$wgUser ) {
-			$this->error( "Invalid username", true );
+		$wgwiki_user = wiki_user::newFromName( $wiki_user );
+		if ( !$wgwiki_user ) {
+			$this->error( "Invalid wiki_username", true );
 		}
 
 		# Setup complete, now start
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 		for ( $linenum = 1; !feof( $file ); $linenum++ ) {
 			$line = fgets( $file );
 			if ( $line === false ) {
@@ -98,13 +98,13 @@ class MoveBatch extends Maintenance {
 
 
 			$this->output( $source->getPrefixedText() . ' --> ' . $dest->getPrefixedText() );
-			$dbw->begin( __METHOD__ );
+			w->begin( __METHOD__ );
 			$err = $source->moveTo( $dest, false, $reason );
 			if ( $err !== true ) {
 				$msg = array_shift( $err[0] );
 				$this->output( "\nFAILED: " . wfMessage( $msg, $err[0] )->text() );
 			}
-			$dbw->commit( __METHOD__ );
+			w->commit( __METHOD__ );
 			$this->output( "\n" );
 
 			if ( $interval ) {

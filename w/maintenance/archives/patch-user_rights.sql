@@ -1,21 +1,21 @@
--- Split user table into two parts:
---   user
---   user_rights
--- The later contains only the permissions of the user. This way,
+-- Split wiki_user table into two parts:
+--   wiki_user
+--   wiki_user_rights
+-- The later contains only the permissions of the wiki_user. This way,
 -- you can store the accounts for several wikis in one central
--- database but keep user rights local to the wiki.
+-- database but keep wiki_user rights local to the wiki.
 
-CREATE TABLE /*$wgDBprefix*/user_rights (
-  -- Key to user_id
-  ur_user int unsigned NOT NULL,
+CREATE TABLE /*$wgDBprefix*/wiki_user_rights (
+  -- Key to wiki_user_id
+  ur_wiki_user int unsigned NOT NULL,
   
   -- Comma-separated list of permission keys
   ur_rights tinyblob NOT NULL,
   
-  UNIQUE KEY ur_user (ur_user)
+  UNIQUE KEY ur_wiki_user (ur_wiki_user)
 
 ) /*$wgDBTableOptions*/;
 
-INSERT INTO /*$wgDBprefix*/user_rights SELECT user_id,user_rights FROM /*$wgDBprefix*/user;
+INSERT INTO /*$wgDBprefix*/wiki_user_rights SELECT wiki_user_id,wiki_user_rights FROM /*$wgDBprefix*/wiki_user;
 
-ALTER TABLE /*$wgDBprefix*/user DROP COLUMN user_rights;
+ALTER TABLE /*$wgDBprefix*/wiki_user DROP COLUMN wiki_user_rights;

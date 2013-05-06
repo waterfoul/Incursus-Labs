@@ -1,0 +1,107 @@
+<!-- INCLUDE overall_header.html -->
+
+<!-- IF U_MCP --><p>{CURRENT_TIME} <br />[&nbsp;<a href="{U_MCP}">{L_MCP}</a>&nbsp;]</p><!-- ELSEIF S_USER_LOGGED_IN --><p>{CURRENT_TIME}</p><!-- ENDIF -->
+
+<!-- IF S_DISPLAY_SEARCH or (S_USER_LOGGED_IN and not S_IS_BOT) -->
+<ul class="linklist">
+	<!-- IF S_DISPLAY_SEARCH -->
+		<li><a href="{U_SEARCH_UNANSWERED}">{L_SEARCH_UNANSWERED}</a><!-- IF S_LOAD_UNREADS --> &bull; <a href="{U_SEARCH_UNREAD}">{L_SEARCH_UNREAD}</a><!-- ENDIF --><!-- IF S_USER_LOGGED_IN --> &bull; <a href="{U_SEARCH_NEW}">{L_SEARCH_NEW}</a><!-- ENDIF --> &bull; <a href="{U_SEARCH_ACTIVE_TOPICS}">{L_SEARCH_ACTIVE_TOPICS}</a></li>
+	<!-- ENDIF -->
+	<!-- IF not S_IS_BOT and U_MARK_FORUMS --><li class="rightside"><a href="{U_MARK_FORUMS}" accesskey="m">{L_MARK_FORUMS_READ}</a></li><!-- ENDIF -->
+</ul>
+<!-- ENDIF -->
+
+<!-- INCLUDE forumlist_body.html -->
+
+<br />
+    <!-- IF NEWEST_USER -->
+	    <div class="forabg">
+		    <div class="inner"><span class="corners-top"><span></span></span>
+			    <ul class="topiclist">
+				    <li class="header">
+					    <dl class="icon">
+						    <dt><a href="{U_VIEWONLINE}">{L_WHO_IS_ONLINE}</a></dt>
+						</dl>
+					</li>
+				</ul>
+				<ul class="topiclist forums">
+				    <li class="row">
+					    <dl class="icon" style="background-image: url({T_THEME_PATH}/images/member.gif); background-repeat: no-repeat;">
+						    <dt title="{L_WHO_IS_ONLINE}" style="width: auto;">
+							    <span>{TOTAL_USERS_ONLINE}
+								    <br />{RECORD_USERS}
+									<br />
+									<strong>{LOGGED_IN_USER_LIST}</strong><br/>
+									<!-- IF LEGEND --><br /><strong>{L_LEGEND}:</strong> {LEGEND}<!-- ENDIF -->
+								</span>
+							</dt>
+						</dl>
+					</li>
+				</ul>
+			<span class="corners-bottom"><span></span></span></div>
+		</div>
+    <!-- ENDIF -->
+
+    <!-- IF S_DISPLAY_BIRTHDAY_LIST and BIRTHDAY_LIST -->
+        <div class="forabg">
+		    <div class="inner"><span class="corners-top"><span></span></span>
+             <ul class="topiclist">
+                <li class="header">
+                   <dl class="icon">
+				        <dt>{L_BIRTHDAYS}</a></dt>
+					</dl>
+				</li>
+			</ul>
+			<ul class="topiclist forums">
+			    <li class="row">
+				    <dl title="{L_CONGRATULATIONS}" class="icon" style="background-image: url({T_THEME_PATH}/images/birthday.gif); background-repeat: no-repeat; width: auto;">
+					    <dt style="width: auto;">
+						    <span class="forumtitle">
+							    <!-- IF BIRTHDAY_LIST -->{L_CONGRATULATIONS}: <strong>{BIRTHDAY_LIST}</strong><!-- ELSE -->{L_NO_BIRTHDAYS}<!-- ENDIF -->
+							</span>
+						</dt>
+					</dl>
+				</li>
+			</ul>
+		<span class="corners-bottom"><span></span></span></div>
+    </div>
+    <!-- ENDIF -->
+
+    <!-- IF NEWEST_USER -->
+	    <div class="forabg">
+             <div class="inner"><span class="corners-top"><span></span></span>
+                <ul class="topiclist">
+                    <li class="header">
+                        <dl class="icon">
+				            <dt>{L_STATISTICS}</dt>
+					    </dl>
+				    </li>
+			    </ul>
+				<ul class="topiclist forums">
+				    <li class="row">
+					    <dl class="icon" style="background-image: url({T_THEME_PATH}/images/stats.gif); background-repeat: no-repeat; width: auto;">
+                            <dt title="{L_STATISTICS}" style="width: auto;">
+							    <span class="forumtitle">
+								    <strong>{TOTAL_POSTS} &bull; {TOTAL_TOPICS} &bull; {TOTAL_USERS}
+									    <br />{NEWEST_USER}</strong>
+								</span>
+							</dt>
+						</dl>
+					</li>
+				</ul>
+			<span class="corners-bottom"><span></span></span></div>
+		</div>
+    <!-- ENDIF -->
+
+	<br />
+    <ul class="center">
+        <li>
+            <img src="{T_IMAGESET_PATH}/forum_unread.gif" alt="{L_NEW_POSTS}" />&nbsp;&nbsp;{L_NEW_POSTS}&nbsp;&nbsp;
+            &nbsp;&nbsp;<img src="{T_IMAGESET_PATH}/forum_read.gif" alt="{L_NO_NEW_POSTS}" />&nbsp;&nbsp;{L_NO_NEW_POSTS}&nbsp;&nbsp;
+            &nbsp;&nbsp;<img src="{T_IMAGESET_PATH}/forum_read_locked.gif" alt="{L_FORUM_LOCKED}" />&nbsp;&nbsp;{L_FORUM_LOCKED}
+        </li>
+    </ul>
+
+    <br style="clear: both;" />	
+	
+<!-- INCLUDE overall_footer.html -->

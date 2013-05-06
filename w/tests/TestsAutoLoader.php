@@ -17,10 +17,10 @@ $wgAutoloadClasses += array(
 	//API
 	'ApiFormatTestBase' => "$testFolder/phpunit/includes/api/format/ApiFormatTestBase.php",
 	'ApiTestCase' => "$testFolder/phpunit/includes/api/ApiTestCase.php",
-	'TestUser' => "$testFolder/phpunit/includes/TestUser.php",
+	'Testwiki_user' => "$testFolder/phpunit/includes/Testwiki_user.php",
 	'MockApi' => "$testFolder/phpunit/includes/api/ApiTestCase.php",
 	'RandomImageGenerator' => "$testFolder/phpunit/includes/api/RandomImageGenerator.php",
-	'UserWrapper' => "$testFolder/phpunit/includes/api/ApiTestCase.php",
+	'wiki_userWrapper' => "$testFolder/phpunit/includes/api/ApiTestCase.php",
 
 	//Selenium
 	'SeleniumTestConstants' => "$testFolder/selenium/SeleniumTestConstants.php",

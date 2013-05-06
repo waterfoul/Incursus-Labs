@@ -30,7 +30,7 @@ function uploadSetup() {
 	// But for some reason, setting the text to itself works
 	var selector = document.getElementById("wpLicense");
 	if (selector) {
-		var ua = navigator.userAgent;
+		var ua = navigator.wiki_userAgent;
 		var isMacIe = (ua.indexOf("MSIE") != -1) && (ua.indexOf("Mac") != -1);
 		if (isMacIe) {
 			for (var i = 0; i < selector.options.length; i++) {

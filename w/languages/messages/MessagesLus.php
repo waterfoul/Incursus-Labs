@@ -12,7 +12,7 @@
  */
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Zawmna hnuairinna',
 'tog-justify' => 'Hlawm tinte tlang tirual rawh',
 'tog-hideminor' => 'Siamţhatna tenau tihdanglam thar zingah tilang suh',
@@ -36,7 +36,7 @@ $messages = array(
 'tog-previewonfirst' => 'Siamţhat vawi khatnaah endikna tilang rawh',
 'tog-nocache' => 'Fanna-in phêk a cache tur veng rawh',
 'tog-enotifwatchlistpages' => 'Ka ralvèn zinga phêk pakhat tihdanglam a nih apiangin e-lehkha min thawn rawh',
-'tog-enotifusertalkpages' => 'Ka hmangtu-sawihona phêk tihdanglam a nihin e-lehkha min thawn rawh',
+'tog-enotifwiki_usertalkpages' => 'Ka hmangtu-sawihona phêk tihdanglam a nihin e-lehkha min thawn rawh',
 'tog-enotifminoredits' => 'Phêk siamţhat tenauah pawh e-lehkha min thawn tho rawh',
 'tog-enotifrevealaddr' => 'Hriattirna email zingah ka email address pho lang rawh',
 'tog-shownumberswatching' => 'Ralvèngtu zât tilang rawh',
@@ -217,7 +217,7 @@ $messages = array(
 'talk' => 'Sawihona',
 'views' => 'Thlirna',
 'toolbox' => 'Hmanrawbawm',
-'userpage' => 'Hmangtu phek enna',
+'wiki_userpage' => 'Hmangtu phek enna',
 'projectpage' => 'Beihpui phêkpui enna',
 'imagepage' => 'Taksa phêk enna',
 'mediawikipage' => 'Thudawn phêk enna',
@@ -243,7 +243,7 @@ $1',
 'pool-queuefull' => 'Hnathawhna hmun awl a awm tawh lo',
 'pool-errorunknown' => 'Kan hriatthiam loh dikhlel a awm tlat',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}}  chungchang',
 'aboutpage' => 'Project:Chungchang',
 'copyright' => 'A chhung thute hi $1 hmanga lakchhawn phal a ni.',
@@ -304,7 +304,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Phek',
-'nstab-user' => 'Hmangtu phek',
+'nstab-wiki_user' => 'Hmangtu phek',
 'nstab-media' => 'Media phek',
 'nstab-special' => 'Vohbik phek',
 'nstab-project' => 'Hna-hmachhawp phek',
@@ -340,7 +340,7 @@ Zémpuiin dikhlelhna "<tt>$3: $4</tt>" a rawn khawhkïr.',
 
 Hei hi dnglm ţhing emaw phêk paih tawh zawmna hlui zui vanga awm a ni tlangpui. 
 
-Chumi a nih si loh chuan khawlthluakah hrik ţhalo i tawng tihna a ni ang. Khawngaihin [[Special:ListUsers/sysop|roreltu]] hnenah  a URL chiang taka sawiin hrilh rawh.',
+Chumi a nih si loh chuan khawlthluakah hrik ţhalo i tawng tihna a ni ang. Khawngaihin [[Special:Listwiki_users/sysop|roreltu]] hnenah  a URL chiang taka sawiin hrilh rawh.',
 'missingarticle-rev' => '(siamţhatna zât: $1)',
 'missingarticle-diff' => '(Diff: $1, $2)',
 'readonly_lag' => 'Database salin a pu a umphâk laiin database amahin inkhar behtir a ni.',
@@ -383,7 +383,7 @@ $2',
 'customcssprotected' => 'Hmangtu dang mimal thil a awm avangin he CSS phêk hi siam danglam phal a ni lo.',
 'customjsprotected' => 'Hmangtu dang mimal thil a tel avangin he JavaScript phêk hi siamţhat phalsak i ni lo.',
 'ns-specialprotected' => 'Phêk vohbîkte siam danglam theih a ni lo.',
-'titleprotected' => 'He phêk hi hmangtu [[User:$1|$1]] siam phalsak a ni lo. A chhan hetah: "\'\'$2\'\'" hian pêk a ni.',
+'titleprotected' => 'He phêk hi hmangtu [[wiki_user:$1|$1]] siam phalsak a ni lo. A chhan hetah: "\'\'$2\'\'" hian pêk a ni.',
 'invalidtitle-knownnamespace' => 'Hming pawm loh hminghmun "$2"-a "$3" tih thu chuang.',
 'invalidtitle-unknownnamespace' => 'Hming pawm loh leh hminghmun zât hriat loh $1-a thu chuang "$2"',
 
@@ -394,7 +394,7 @@ $2',
 
 # Login and logout pages
 'logouttext' => "'''I chhuak fel ta.'''
-Inziaklût kher lovin {{SITENAME}} hi i hmang chhunzawm thei ang, a nih loh vëk pawhin hmangtu hming pangngai emaw, a hming dang emawin [[Special:UserLogin|lût leh]] thei ang.
+Inziaklût kher lovin {{SITENAME}} hi i hmang chhunzawm thei ang, a nih loh vëk pawhin hmangtu hming pangngai emaw, a hming dang emawin [[Special:wiki_userLogin|lût leh]] thei ang.
 I fangtu cache i thenfai hma chu phêk ţhenkhat intar lang a awm reng mai thei, i la  chhuak lo emaw tih mai tùrin.",
 'welcomecreation' => '==Kan lo lawm a che, $1!==
 I siangchan siam a ni ta.
@@ -409,34 +409,34 @@ I [[Special:Preferences|{{SITENAME}}duhdàn]] siam danglam theihnghilh suh ang c
 'login' => 'Luhna',
 'nav-login-createaccount' => 'Luhna / siangchan siamna',
 'loginprompt' => '{{SITENAME}}-a lût tùrin cookie i zuah zalen a ngai.',
-'userlogin' => 'Luhna/Siangchan siamna',
-'userloginnocreate' => 'Inziah luhna',
+'wiki_userlogin' => 'Luhna/Siangchan siamna',
+'wiki_userloginnocreate' => 'Inziah luhna',
 'logout' => 'Chhuahna',
-'userlogout' => 'Chhuahna',
+'wiki_userlogout' => 'Chhuahna',
 'notloggedin' => 'I la lût lo',
 'nologin' => 'Siangchan i la nei lo maw? $1.',
 'nologinlink' => 'Siangchan siam rawh',
 'createaccount' => 'Siangchan siam rawh le',
 'gotaccount' => 'Siangchan i nei tawh sa maw? $1.',
 'gotaccountlink' => 'Luhna',
-'userlogin-resetlink' => 'I inziahluhna i theihnghilh maw?',
+'wiki_userlogin-resetlink' => 'I inziahluhna i theihnghilh maw?',
 'createaccountmail' => 'E-lehkhathawnin',
 'createaccountreason' => 'Chhan:',
 'badretype' => 'I thurûk ziahte a inmil lo.',
-'userexists' => 'Hmangtu hming hman tawh a ni.
+'wiki_userexists' => 'Hmangtu hming hman tawh a ni.
 Hming dang i thlan a ngai.',
 'loginerror' => 'Inziahluh sual',
 'createaccounterror' => 'Siangchan siam theih loh: $1',
 'noname' => 'Hmangtu hming dik a ziak lo.',
 'loginsuccesstitle' => 'Hlawhtling takin i lût tâ e.',
 'loginsuccess' => "'''{{SITENAME}}-ah \"\$1\" hming puin a i lût ta.'''",
-'nosuchuser' => 'Hmingtuhming "$1" a awm lo.
+'nosuchwiki_user' => 'Hmingtuhming "$1" a awm lo.
 Hmangtuhming hi hawrawppui leh të thliar hran a ngai a ni (entirna: Thara leh thara an inang lo).
-I thilziah enfiah rawh, a nih loh pawhin [[Special:UserLogin/signup|siangchan thar siam rawh]].',
-'nosuchusershort' => 'Hmangtu hming "$1" a awm lo.
+I thilziah enfiah rawh, a nih loh pawhin [[Special:wiki_userLogin/signup|siangchan thar siam rawh]].',
+'nosuchwiki_usershort' => 'Hmangtu hming "$1" a awm lo.
 I thilziah enfiah rawh.',
-'nouserspecified' => 'Hmangtuhming i ziah a ngai.',
-'login-userblocked' => 'Hë hmangtu hi danbeh a ni. Luh phalsak a ni lo.',
+'nowiki_userspecified' => 'Hmangtuhming i ziah a ngai.',
+'login-wiki_userblocked' => 'Hë hmangtu hi danbeh a ni. Luh phalsak a ni lo.',
 'wrongpassword' => 'Thurûk dik lo.
 Khawngaihin tum nawn leh rawh.',
 'wrongpasswordempty' => 'Thurûk i ziak lo.
@@ -467,14 +467,14 @@ E-chenhmun dik tak ziaklût rawh, a nih loh leh thai reh vek rawh.',
 Thurûk tidanglam tùrin i luh vat a ngái.
 
 Hë siangchan hi siam sual palh a nih chuan hë thuthawn hi i ngaihthah dáwn nia.',
-'usernamehasherror' => 'Hmangtuhmingin bawhtah lem a hmang thiang lo',
+'wiki_usernamehasherror' => 'Hmangtuhmingin bawhtah lem a hmang thiang lo',
 'login-throttled' => 'Tunhnai maiah luh i tum ngun lutuk.
 I tum leh hmain nghâk lawk ang che.',
 'login-abort-generic' => 'I luh tumna a hlawhchham - Pamţùl a ni',
 'loginlanguagelabel' => 'Ţawng: $1',
 
 # E-mail sending
-'user-mail-no-addy' => 'E-chenhmun awm lova e-lehkha thawn i tum.',
+'wiki_user-mail-no-addy' => 'E-chenhmun awm lova e-lehkha thawn i tum.',
 
 # Change password dialog
 'resetpass' => 'Thurûk thlâkna',
@@ -496,7 +496,7 @@ I thurûk i thlâk hlawhtling tawh a nih loh pawhin thurûk lailâwk i dil a ni 
 # Special:PasswordReset
 'passwordreset' => 'Thurûk ziakţha rawh',
 'passwordreset-legend' => 'Thurûk ziakţha rawh',
-'passwordreset-username' => 'Hmangtu hming:',
+'passwordreset-wiki_username' => 'Hmangtu hming:',
 'passwordreset-domain' => 'Huamchin:',
 'passwordreset-email' => 'E-chenhmun:',
 'passwordreset-emailtitle' => '{{SITENAME}}-a siangchan chanchin kim',
@@ -566,7 +566,7 @@ A phêk i en chhungin sawn emaw nuaibo emaw a ni a ni ang.',
 'loginreqlink' => 'Inziah luhna',
 'loginreqpagetext' => 'Phêk dang en tùrin $1 a ngai.',
 'accmailtitle' => 'Thurûk kan thawn fel tawh e.',
-'accmailtext' => '[[User talk:$1|$1]] tan a kahpaha siam thurûk $2 hnenah thawn a ni tawh.
+'accmailtext' => '[[wiki_user talk:$1|$1]] tan a kahpaha siam thurûk $2 hnenah thawn a ni tawh.
 I siangchan thurûk hi [[Special:ChangePassword|thurûk tihdanglamna]]-ah i inziahluh hnuah i tidanglam thei ang.',
 'newarticle' => '(A thar)',
 'newarticletext' => "Phêk awm lo zawmna i rawn zui lut a ni. Phêk siam tùrin a hnuaia bawmah khuan chhu rawh (hriattirna dang [[{{MediaWiki:Helppage}}|ţanpuina phêk]]-ah a en theih).
@@ -576,13 +576,13 @@ Phêk dangah [[Special:Search/{{PAGENAME}}| he phêk hming hi i zawng]] thei ang
 <span class="plainlinks">[{{fullurl:{{#Special:Log}} | page={{FULLPAGENAMEE}}}} chanchin-ziak dang i zawng thei ang]; a nih loh chuan [{{fullurl:{{FULLPAGENAME}}|action=edit}} he phêk hi i siamţha thei ang] </span>.',
 'noarticletext-nopermission' => 'He phêkah hian thu a la awm hrih lo.
 He phêk hming hi hmun dangah i [[Special:Search/{{PAGENAME}}|zawng]] thei ang, a nih loh pawhin <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}}-a a laichin chanchin dang] i zawng thei bawk ang. </span>',
-'userpage-userdoesnotexist' => 'Hmangtu siangchan "$1" hi hriat a ni lo.
+'wiki_userpage-wiki_userdoesnotexist' => 'Hmangtu siangchan "$1" hi hriat a ni lo.
 He phêk hi siam/siamţhat emaw i duh chuan enfiah rawh.',
-'userpage-userdoesnotexist-view' => 'Hmangtu siangchan "$1" hi hriat a ni lo.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Hmangtu siangchan "$1" hi hriat a ni lo.',
 'blocked-notice-logextract' => 'He hmangtu hi danbeh hrih a ni.
 I rawn atan a danbeh chhinchhiahna kan han tarlang a ni e:',
-'usercssyoucanpreview' => "'''Rawlrûk:''' I CSS fiah tùrin i dahţhat hmain \"{{int:showpreview}}\" hmehkhep hi hmang rawh.",
-'userjsyoucanpreview' => "'''Rawlrûk:''' I JavaScript thar fiah tùrin i dahţhat hmain \"{{int:showpreview}}\" hmehkhep hi hmang rawh.",
+'wiki_usercssyoucanpreview' => "'''Rawlrûk:''' I CSS fiah tùrin i dahţhat hmain \"{{int:showpreview}}\" hmehkhep hi hmang rawh.",
+'wiki_userjsyoucanpreview' => "'''Rawlrûk:''' I JavaScript thar fiah tùrin i dahţhat hmain \"{{int:showpreview}}\" hmehkhep hi hmang rawh.",
 'note' => "'''Hriat tùr:'''",
 'previewnote' => "'''Heihi endikna chauh a ni tih hrereng ang che.'''
 I tihdanglamna dahţhat a la ni lo!",
@@ -592,7 +592,7 @@ I tihdanglamna dahţhat a la ni lo!",
 ''{{SITENAME}}-in HTML hel a tihzalen avangin hë enlâwkna hi JavaScript beihna laka invèn fimkhur nan thup bo a ni.''
 
 '''Hei hi siamṭhat tumna dànzui pangngai a nih chuan khawngaihin dahṭhat tum nawn leh rawh.'''
-I la dahṭhat theih loh cheu chuan [[Special:UserLogout|chhuah phawt ]] a, luh nawn leh hmang tein han bei vêl chhin lä.",
+I la dahṭhat theih loh cheu chuan [[Special:wiki_userLogout|chhuah phawt ]] a, luh nawn leh hmang tein han bei vêl chhin lä.",
 'editing' => '$1 i siam(ţha) mék',
 'creating' => '$1 i siam mék',
 'editingsection' => '$1 (hlawm) i siam(ţha) mék',
@@ -765,7 +765,7 @@ Google hmangin i lo zawng hrih thei ang.
 'mypreferences' => 'Ka duhdàn',
 'prefs-edits' => 'Siamţhat zât',
 'prefsnologin' => 'I la lût lo',
-'prefsnologintext' => 'Hmangtu duhdàn siam tùrin i <span class="plainlinks"> [{{fullurl:{{#Special:UserLogin}}|returnto=$1}} inziah luh] </span> a ngai.',
+'prefsnologintext' => 'Hmangtu duhdàn siam tùrin i <span class="plainlinks"> [{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} inziah luh] </span> a ngai.',
 'changepassword' => 'Thurûk thlâkna',
 'prefs-skin' => 'Vun',
 'skin-preview' => 'Enchhinna',
@@ -773,7 +773,7 @@ Google hmangin i lo zawng hrih thei ang.
 'prefs-beta' => 'Beta hman theihnate',
 'prefs-datetime' => 'Hun leh ni',
 'prefs-labs' => '"Lab" hman theihnate',
-'prefs-user-pages' => 'Hmangtu phêkte',
+'prefs-wiki_user-pages' => 'Hmangtu phêkte',
 'prefs-personal' => 'Hmangtu chanchin tawi',
 'prefs-rc' => 'Tihdanglam thar',
 'prefs-watchlist' => 'Ralvèn',
@@ -834,7 +834,7 @@ A sûtlêt theih loh.',
 'prefs-emailconfirm-label' => 'E-chenhmun tihchianna:',
 'prefs-textboxsize' => 'Siamţhatna tukverh lenzawng',
 'youremail' => 'E-chenhmun:',
-'username' => 'Hmangtu hming:',
+'wiki_username' => 'Hmangtu hming:',
 'uid' => 'Hmangtu ID',
 'prefs-memberingroups' => '{{PLURAL:$1|pawl|pawlte}}-a tel.',
 'prefs-registration' => 'Inziahluh hun:',
@@ -876,31 +876,31 @@ Hmangtuten e-lehkha an thawn chein i e-chenhmun hrilh an ni chuang lo vang.',
 'prefs-displaywatchlist' => 'Duhthlanna tilang rawh',
 'prefs-diffs' => 'Danglamna',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'E-chenhmun a dik hmel',
 'email-address-validity-invalid' => 'E-chenhmun dik ziak rawh',
 
-# User rights
-'userrights' => 'Hmangtu dikna-chanvo enkawlna',
-'userrights-lookup-user' => 'Hmangtu pawl enkawl rawh',
-'userrights-user-editname' => 'Hmangtu hming ziak rawh:',
-'editusergroup' => 'Hmangtu pawl siamţha rawh',
-'editinguser' => "Hmangtu '''[[User:$1|$1]]''' dikna-chanvo siamţhatna: $2",
-'userrights-editusergroup' => 'Hmangtu pawl siamţha rawh',
-'saveusergroups' => 'Hmangtu pawl dahţha rawh',
-'userrights-groupsmember' => 'Telna pawl:',
-'userrights-groupsmember-auto' => 'Telsana pawl:',
-'userrights-reason' => 'Chhan:',
-'userrights-no-interwiki' => 'Wiki dangah hmangtute dikna-chanvo siam danglam theihna phalna i nei lo.',
-'userrights-nodatabase' => 'Database $1 a awm lo a nih loh pawhin khawtual thil a nih loh hmel.',
-'userrights-nologin' => 'Hmangtu dikna-chanvo bithliah thei tùr chuan roreltu siangchanin i [[Special:UserLogin| luh]] a ngai.',
-'userrights-notallowed' => 'I siangchanin hmangtu dikna-chanvo belh leh paih theihna phalna a nei lo.',
-'userrights-changeable-col' => 'I thlâk theih pawlte',
-'userrights-unchangeable-col' => 'I thlâk theih loh pawlte',
+# wiki_user rights
+'wiki_userrights' => 'Hmangtu dikna-chanvo enkawlna',
+'wiki_userrights-lookup-wiki_user' => 'Hmangtu pawl enkawl rawh',
+'wiki_userrights-wiki_user-editname' => 'Hmangtu hming ziak rawh:',
+'editwiki_usergroup' => 'Hmangtu pawl siamţha rawh',
+'editingwiki_user' => "Hmangtu '''[[wiki_user:$1|$1]]''' dikna-chanvo siamţhatna: $2",
+'wiki_userrights-editwiki_usergroup' => 'Hmangtu pawl siamţha rawh',
+'savewiki_usergroups' => 'Hmangtu pawl dahţha rawh',
+'wiki_userrights-groupsmember' => 'Telna pawl:',
+'wiki_userrights-groupsmember-auto' => 'Telsana pawl:',
+'wiki_userrights-reason' => 'Chhan:',
+'wiki_userrights-no-interwiki' => 'Wiki dangah hmangtute dikna-chanvo siam danglam theihna phalna i nei lo.',
+'wiki_userrights-nodatabase' => 'Database $1 a awm lo a nih loh pawhin khawtual thil a nih loh hmel.',
+'wiki_userrights-nologin' => 'Hmangtu dikna-chanvo bithliah thei tùr chuan roreltu siangchanin i [[Special:wiki_userLogin| luh]] a ngai.',
+'wiki_userrights-notallowed' => 'I siangchanin hmangtu dikna-chanvo belh leh paih theihna phalna a nei lo.',
+'wiki_userrights-changeable-col' => 'I thlâk theih pawlte',
+'wiki_userrights-unchangeable-col' => 'I thlâk theih loh pawlte',
 
 # Groups
 'group' => 'Pawl:',
-'group-user' => 'Hmangtute',
+'group-wiki_user' => 'Hmangtute',
 'group-autoconfirmed' => 'Infinfiahsa hmangtute',
 'group-bot' => 'Khawlmite',
 'group-sysop' => 'Roreltute',
@@ -908,14 +908,14 @@ Hmangtuten e-lehkha an thawn chein i e-chenhmun hrilh an ni chuang lo vang.',
 'group-suppress' => 'Viltute',
 'group-all' => '(a vaiin)',
 
-'group-user-member' => 'Hmangtu {{GENDER:$1|}}',
+'group-wiki_user-member' => 'Hmangtu {{GENDER:$1|}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|Infinfiahsa hmangtu}}',
 'group-bot-member' => 'Khawlmi {{GENDER:$1|}}',
 'group-sysop-member' => 'Roreltu {{GENDER:$1|}}',
 'group-bureaucrat-member' => 'Khawnbawl {{GENDER:$1|}}',
 'group-suppress-member' => 'Viltu {{GENDER:$1|}}',
 
-'grouppage-user' => '{{ns:project}}:Hmangtute',
+'grouppage-wiki_user' => '{{ns:project}}:Hmangtute',
 'grouppage-autoconfirmed' => '{{ns:project}}:Infiahsa hmangtute',
 'grouppage-bot' => '{{ns:project}}:Khawlmite',
 'grouppage-sysop' => '{{ns:project}}:Roreltute',
@@ -931,7 +931,7 @@ Hmangtuten e-lehkha an thawn chein i e-chenhmun hrilh an ni chuang lo vang.',
 'right-minoredit' => 'Siamţhat tenau angin chhinchhiah rawh',
 'right-move' => 'Phêk sawnna',
 'right-move-subpages' => 'Phêkte leh an phêkpéngte sawnna',
-'right-move-rootuserpages' => 'Hmangtu bulte sawnna',
+'right-move-rootwiki_userpages' => 'Hmangtu bulte sawnna',
 'right-movefile' => 'Taksa sawnna',
 'right-suppressredirect' => 'Phêk sawna hruailuhna phêk siam lohtírna',
 'right-upload' => 'Taksa hlankaina',
@@ -947,7 +947,7 @@ Hmangtuten e-lehkha an thawn chein i e-chenhmun hrilh an ni chuang lo vang.',
 'right-suppressionlog' => 'Mahni chanchin tawi enna',
 'right-block' => 'Hmangtu dangin an siam danglam tùr veng rawh',
 'right-blockemail' => 'Hmangtu e-lehkha thawn tùr dang rawh',
-'right-hideuser' => 'Hmangtu hming dangbet rawh, vantlang laka thupin',
+'right-hidewiki_user' => 'Hmangtu hming dangbet rawh, vantlang laka thupin',
 'right-unblockself' => 'Mahnia dalna inphelh',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -959,7 +959,7 @@ Hmangtuten e-lehkha an thawn chein i e-chenhmun hrilh an ni chuang lo vang.',
 'action-minoredit' => 'siamţhat tenauah chhiar rawh',
 'action-move' => 'he phêk hi sawn rawh',
 'action-move-subpages' => 'he phêk leh a phêkpéngte hi sawn rawh',
-'action-move-rootuserpages' => 'hmangtu bul phêk sawnna',
+'action-move-rootwiki_userpages' => 'hmangtu bul phêk sawnna',
 'action-movefile' => 'taksa sawnna',
 'action-upload' => 'he taksa hi hlangkai rawh',
 'action-reupload' => 'taksa awmsa luahlantir rawh',
@@ -1000,7 +1000,7 @@ Hmangtuten e-lehkha an thawn chein i e-chenhmun hrilh an ni chuang lo vang.',
 'minoreditletter' => 't',
 'newpageletter' => 'T',
 'boteditletter' => 'k',
-'number_of_watching_users_pageview' => '[$1 hmangtu {{PLURAL:$1||te}} vil mék]',
+'number_of_watching_wiki_users_pageview' => '[$1 hmangtu {{PLURAL:$1||te}} vil mék]',
 'rc_categories' => 'Pawla bithliahna ("|" hmangin kárdan rawh)',
 'rc_categories_any' => 'Väi',
 'rc-change-size-new' => 'Tihdanglam hnuah {{PLURAL:$1|bait|bait}} $1',
@@ -1026,7 +1026,7 @@ Hmangtuten e-lehkha an thawn chein i e-chenhmun hrilh an ni chuang lo vang.',
 'reuploaddesc' => 'Hlankai ţhulh la hlankaina hmunah kir leh rawh',
 'upload-tryagain' => 'Taksa sawifiahna siam danglam thehlut rawh',
 'uploadnologin' => 'I la lût lo',
-'uploadnologintext' => 'Taksa hlangkai tùrin i [[Special:UserLogin|inziahluh]] ngei ngei a ngai.',
+'uploadnologintext' => 'Taksa hlangkai tùrin i [[Special:wiki_userLogin|inziahluh]] ngei ngei a ngai.',
 'upload_directory_missing' => 'Hlankai bawmpui ($1)  a awm lo va, Rangserverin a siam thei lo bawl.',
 'upload_directory_read_only' => 'Hlankai bawmpui ($1) hi Rangserver in a ziak thei lo.',
 'uploaderror' => 'Hlankai sual',
@@ -1123,7 +1123,7 @@ Hmangtu azira i thliarhran erawh chuan a hmangtuina a hlankai hnuhnüng ber taks
 'listfiles_thumb' => 'Kutbï',
 'listfiles_date' => 'Ni',
 'listfiles_name' => 'Hming',
-'listfiles_user' => 'Hmangtu',
+'listfiles_wiki_user' => 'Hmangtu',
 'listfiles_size' => 'Lenzawng',
 'listfiles_description' => 'Sawifiahna',
 'listfiles_count' => 'Chhuah',
@@ -1140,7 +1140,7 @@ Hmangtu azira i thliarhran erawh chuan a hmangtuina a hlankai hnuhnüng ber taks
 'filehist-thumb' => 'Kutbï',
 'filehist-thumbtext' => '$1 chhuah kutbï',
 'filehist-nothumb' => 'Kutbï awm lo',
-'filehist-user' => 'Hmangtu',
+'filehist-wiki_user' => 'Hmangtu',
 'filehist-dimensions' => 'Lenzawng',
 'filehist-filesize' => 'A lenzawng',
 'filehist-comment' => 'Tuihnihna',
@@ -1200,7 +1200,7 @@ Taksa sawifiahna hi i siamṭha duh a nih chuan  [$2 taksa sawifiahna phêk] a�
 'statistics-header-pages' => 'Phêk lepsena',
 'statistics-header-edits' => 'Siamṭhatphung lepsena',
 'statistics-header-views' => 'Tlawhna lepsèna',
-'statistics-header-users' => 'Hmangtute chanchin kimchang',
+'statistics-header-wiki_users' => 'Hmangtute chanchin kimchang',
 'statistics-header-hooks' => 'Chanchin dang',
 'statistics-articles' => 'Thuziakna phêkte',
 'statistics-pages' => 'Phekte',
@@ -1211,9 +1211,9 @@ Taksa sawifiahna hi i siamṭha duh a nih chuan  [$2 taksa sawifiahna phêk] a�
 'statistics-views-total' => 'Tlawh zât',
 'statistics-views-total-desc' => 'Phêk awm lo leh phêk vohbîkte tlawhna chu chhiar tel a ni lo',
 'statistics-views-peredit' => 'Siamṭhat pakhat zël tlawh zât',
-'statistics-users' => '[[Special:ListUsers|Hmangtu]] inziaklût zât',
-'statistics-users-active' => 'Hmangtu aktif zât',
-'statistics-users-active-desc' => 'Ni {{PLURAL:$1|khat|$1}} kaltâ chhunga thiltih nei hmangtuho',
+'statistics-wiki_users' => '[[Special:Listwiki_users|Hmangtu]] inziaklût zât',
+'statistics-wiki_users-active' => 'Hmangtu aktif zât',
+'statistics-wiki_users-active-desc' => 'Ni {{PLURAL:$1|khat|$1}} kaltâ chhunga thiltih nei hmangtuho',
 'statistics-mostpopular' => 'Phêk thlir zin deuh deuhte',
 
 'disambiguations' => 'Thliarfelna phêk zawmtu phêkte',
@@ -1274,13 +1274,13 @@ Taksa sawifiahna hi i siamṭha duh a nih chuan  [$2 taksa sawifiahna phêk] a�
 'protectedpages-indef' => 'Phêk vènhim kumhlunho chauh',
 'protectedpagestext' => 'A hnuaia phêkte hi sawn emaw siam danglam theih loh tùra vènhim an ni',
 'protectedtitles' => 'Hming vènhimte',
-'listusers' => 'Hmangtu tlarna',
-'listusers-editsonly' => 'Siam danglam nei hmangtu chauh pholang rawh',
-'listusers-creationsort' => 'Siam ni indawtin tlar rawh',
-'usereditcount' => 'Siam danglam {{PLURAL:||}} $1',
-'usercreated' => '{{GENDER:$3|}} Ni $1, dar $2-a siam',
+'listwiki_users' => 'Hmangtu tlarna',
+'listwiki_users-editsonly' => 'Siam danglam nei hmangtu chauh pholang rawh',
+'listwiki_users-creationsort' => 'Siam ni indawtin tlar rawh',
+'wiki_usereditcount' => 'Siam danglam {{PLURAL:||}} $1',
+'wiki_usercreated' => '{{GENDER:$3|}} Ni $1, dar $2-a siam',
 'newpages' => 'Phek tharte',
-'newpages-username' => 'Hmangtu hming:',
+'newpages-wiki_username' => 'Hmangtu hming:',
 'ancientpages' => 'Phek hluiho',
 'move' => 'Sawnna',
 'movethispage' => 'Hë phêk hi sawn rawh',
@@ -1297,7 +1297,7 @@ Taksa sawifiahna hi i siamṭha duh a nih chuan  [$2 taksa sawifiahna phêk] a�
 'booksources-go' => 'Khai le',
 
 # Special:Log
-'specialloguserlabel' => 'Buatsaihtu:',
+'speciallogwiki_userlabel' => 'Buatsaihtu:',
 'speciallogtitlelabel' => 'Tumhmun (hming emaw hmangtu):',
 'log' => 'Chanchin-ziak',
 'all-logs-page' => 'Chanchin-ziak vàntlang thilte:',
@@ -1346,21 +1346,21 @@ Hetah hian [[Special:UnusedCategories|pawl hman lohho]] pholan tel a ni lo.
 'linksearch-ok' => 'Zawng rawh le',
 'linksearch-line' => '$1 hi $2 aţanga thlunzawm a ni',
 
-# Special:ListUsers
-'listusersfrom' => 'Hemi-a inṭanin hmangtuho pholang rawh:',
-'listusers-submit' => 'Pholanna',
-'listusers-noresult' => 'Hmangtu an awm lo.',
-'listusers-blocked' => '(danbeh)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'Hemi-a inṭanin hmangtuho pholang rawh:',
+'listwiki_users-submit' => 'Pholanna',
+'listwiki_users-noresult' => 'Hmangtu an awm lo.',
+'listwiki_users-blocked' => '(danbeh)',
 
-# Special:ActiveUsers
-'activeusers' => 'Hmangtu hlun tlarna',
-'activeusers-hidebots' => 'Khawlmi thupna',
-'activeusers-hidesysops' => 'Roreltu thupna',
-'activeusers-noresult' => 'Hmangtu awm lo.',
+# Special:Activewiki_users
+'activewiki_users' => 'Hmangtu hlun tlarna',
+'activewiki_users-hidebots' => 'Khawlmi thupna',
+'activewiki_users-hidesysops' => 'Roreltu thupna',
+'activewiki_users-noresult' => 'Hmangtu awm lo.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Hmangtu siamna chanchin-ziak',
-'newuserlogpagetext' => 'Hei hi hmangtu siangchan siam chhinchhiahna a ni.',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Hmangtu siamna chanchin-ziak',
+'newwiki_userlogpagetext' => 'Hei hi hmangtu siangchan siam chhinchhiahna a ni.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Hmangtu pawl dikna-chanvote',
@@ -1372,10 +1372,10 @@ Hetah hian [[Special:UnusedCategories|pawl hman lohho]] pholan tel a ni lo.
 'listgrouprights-members' => '(tel zawng zawng)',
 'listgrouprights-addgroup' => '{{PLURAL:$2|Pawl|Pawl}} belhna: $1',
 
-# E-mail user
-'emailuser' => 'He hmangtu hi e-lehkha thawn rawh',
-'emailusername' => 'Hmangtu hming:',
-'emailusernamesubmit' => 'Thehlut rawh',
+# E-mail wiki_user
+'emailwiki_user' => 'He hmangtu hi e-lehkha thawn rawh',
+'emailwiki_username' => 'Hmangtu hming:',
+'emailwiki_usernamesubmit' => 'Thehlut rawh',
 'email-legend' => 'Hmangtu dang {{SITENAME}} hnenah e-lehkha tawh rawh.',
 'emailfrom' => 'Thawntu:',
 'emailto' => 'Dawngtu:',
@@ -1386,11 +1386,11 @@ Hetah hian [[Special:UnusedCategories|pawl hman lohho]] pholan tel a ni lo.
 'emailccsubject' => '$1: $2 hnenah thawn bawk rawh',
 'emailsent' => 'E-lehkha thawn a ni.',
 'emailsenttext' => 'I e-lehkha thawn a ni.',
-'emailuserfooter' => 'Hë e-lehkha hi {{SITENAME}}-a "Hmangtu e-lehkha thawn rawh" tih hmanraw hmanga $1-in $2 a thawn a ni.',
+'emailwiki_userfooter' => 'Hë e-lehkha hi {{SITENAME}}-a "Hmangtu e-lehkha thawn rawh" tih hmanraw hmanga $1-in $2 a thawn a ni.',
 
-# User Messenger
-'usermessage-summary' => 'Kháwlthuthawn a hnutchhiah e.',
-'usermessage-editor' => 'Thuthawntu khawl',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'Kháwlthuthawn a hnutchhiah e.',
+'wiki_usermessage-editor' => 'Thuthawntu khawl',
 
 # Watchlist
 'watchlist' => 'Ka ralvèn',
@@ -1399,7 +1399,7 @@ Hetah hian [[Special:UnusedCategories|pawl hman lohho]] pholan tel a ni lo.
 'nowatchlist' => 'Rálvèn i nei lo',
 'watchlistanontext' => 'I ralvèn en tùrin emaw siamṭha tùrin $1 rawh.',
 'watchnologin' => 'I la lût lo',
-'watchnologintext' => 'I ralvèn tidanglam tùrin i [[Special:UserLogin|inziahluh]] a ngai.',
+'watchnologintext' => 'I ralvèn tidanglam tùrin i [[Special:wiki_userLogin|inziahluh]] a ngai.',
 'addwatch' => 'Ràlvèn zingah telh rawh',
 'removewatch' => 'Ralvèn zing aţang paih rawh',
 'removedwatchtext' => '"[[:$1]]" i [[Special:Watchlist|ralvèn]] zing aţanga paih a ni ta.',
@@ -1558,7 +1558,7 @@ $2-in a awmphung ngäiah a dahlêt leh.',
 'sp-contributions-logs' => 'chanchin-ziak',
 'sp-contributions-talk' => 'sawihona',
 'sp-contributions-search' => 'Kutthawhna zawnna',
-'sp-contributions-username' => 'Chenhmun-IP emaw hmangtuhming:',
+'sp-contributions-wiki_username' => 'Chenhmun-IP emaw hmangtuhming:',
 'sp-contributions-toponly' => 'Ka kut thawh vena chauh tilang rawh',
 'sp-contributions-submit' => 'Zawng rawh le',
 
@@ -1584,7 +1584,7 @@ $2-in a awmphung ngäiah a dahlêt leh.',
 'blockip' => 'Hmangtu dangbet rawh',
 'blockip-title' => 'Hmangtu dangbet rawh',
 'blockip-legend' => 'Hmangtu dangbet rawh',
-'ipadressorusername' => 'Chenhmun-IP emaw hmangtuhming:',
+'ipadressorwiki_username' => 'Chenhmun-IP emaw hmangtuhming:',
 'ipbexpiry' => 'Tawphun:',
 'ipbreason' => 'Chhan:',
 'ipbreasonotherlist' => 'Chhan dang',
@@ -1616,9 +1616,9 @@ Chumi awmzia chu, phêk awmsa i luahlantir thei lo va, mahsé a phêk hming hlui
 Phêk lar deuh tan chuan hei hi danglamna râpthlâk leh beisei loh tak i thlen thut thei tih hrechiang ang che;
 phêk hming thlâkina a nghawng theih thilte i hrechiang tih infiah ang che.",
 'movearticle' => 'Phêk hming thlâk tùr:',
-'moveuserpage-warning' => "'''Vaukhanna:''' Hmangtu phêk i thlak dawn mek. A hmangtu phêk i thlak ringawt ang a, hmangtu hming erawh i thlâk dawn lo tih hria ang che.",
+'movewiki_userpage-warning' => "'''Vaukhanna:''' Hmangtu phêk i thlak dawn mek. A hmangtu phêk i thlak ringawt ang a, hmangtu hming erawh i thlâk dawn lo tih hria ang che.",
 'movenologin' => 'I la lût lo',
-'movenologintext' => 'Phêk hming thlâk tùrin  [[Special:UserLogin|i (inziah)luh]] a ngai.',
+'movenologintext' => 'Phêk hming thlâk tùrin  [[Special:wiki_userLogin|i (inziah)luh]] a ngai.',
 'movenotallowed' => 'Phêk sawn phalna i nei lo.',
 'newtitle' => 'Hming thar:',
 'move-watch' => 'Phêk hnar leh phêk thar vil rawh',
@@ -1661,7 +1661,7 @@ Amah leh amah inluahlantir a theih loh.',
 Khawngaihin tum nawn leh rawh.',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Nangma pual phek',
+'tooltip-pt-wiki_userpage' => 'Nangma pual phek',
 'tooltip-pt-mytalk' => 'I sawihona phêk',
 'tooltip-pt-preferences' => 'I duhthlante',
 'tooltip-pt-watchlist' => 'Tihdanglam tùra i ruahman phêkte',
@@ -1699,13 +1699,13 @@ A hnar i en thei ang.',
 'tooltip-feed-rss' => 'He phêk RSS chawmna',
 'tooltip-feed-atom' => 'He phêk chawmna mal',
 'tooltip-t-contributions' => 'He hmangtu kut-thawhnaho hi en rawh',
-'tooltip-t-emailuser' => 'He hmangtu hnenah hian e-lehkha thawn rawh',
+'tooltip-t-emailwiki_user' => 'He hmangtu hnenah hian e-lehkha thawn rawh',
 'tooltip-t-upload' => 'Taksa hlankaina',
 'tooltip-t-specialpages' => 'Phek vohbik zawng zawng tlarna',
 'tooltip-t-print' => 'Chhụtkài theih',
 'tooltip-t-permalink' => 'He phêk ennawnna zawmna hlun',
 'tooltip-ca-nstab-main' => 'A chhung thu awm ziahna en rawh',
-'tooltip-ca-nstab-user' => 'Hmangtu phêk en rawh',
+'tooltip-ca-nstab-wiki_user' => 'Hmangtu phêk en rawh',
 'tooltip-ca-nstab-media' => 'Media phêk en rawh',
 'tooltip-ca-nstab-special' => 'Hei hi phek vohbik a ni a, i siam danglam thei lo',
 'tooltip-ca-nstab-project' => 'Hna-hmachhawp phêk enna',
@@ -1730,13 +1730,13 @@ A hnar i en thei ang.',
 'tooltip-summary' => 'A thu laktawi ziak rawh',
 
 # Attribution
-'siteuser' => '{{SITENAME}} hmangtu $1.',
-'anonuser' => '{{SITENAME}} hmangtu hriat loh $1',
+'sitewiki_user' => '{{SITENAME}} hmangtu $1.',
+'anonwiki_user' => '{{SITENAME}} hmangtu hriat loh $1',
 'lastmodifiedatby' => 'He phêk hi tihdanglam a nihna hnuhnüng ber chu  $2, $1 a ni a, a tidanglamtu chu $3 a ni.',
 'othercontribs' => '$1 kutchhuak behchhana siam.',
 'others' => 'a dangte',
-'siteusers' => '{{SITENAME}} {{PLURAL:$2|hmangtu|hmangtute}} $1',
-'anonusers' => '{{SITENAME}} hmangtu {{PLURAL:$2|hriat loh|hriat lohte}} $1.',
+'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|hmangtu|hmangtute}} $1',
+'anonwiki_users' => '{{SITENAME}} hmangtu {{PLURAL:$2|hriat loh|hriat lohte}} $1.',
 'creditspage' => 'Phêk siam theihna chhan',
 'nocredits' => 'He phêk siamnaa bultumtute hriat a awm lo.',
 
@@ -1842,7 +1842,7 @@ A bak zawng chu thuhrûk sa vek a ni ang.
 'exif-compressedbitsperpixel' => 'Lem sàwrzìmphung',
 'exif-pixelydimension' => 'Lem zauzáwng',
 'exif-pixelxdimension' => 'Lem sànzáwng',
-'exif-usercomment' => 'Hmangtu kamchhuak',
+'exif-wiki_usercomment' => 'Hmangtu kamchhuak',
 'exif-relatedsoundfile' => 'Ritaksa laichinte',
 'exif-datetimeoriginal' => 'Hriattirna siamchhuah hun leh ni',
 'exif-datetimedigitized' => 'Tihkhàwl hun leh ní',
@@ -1921,11 +1921,11 @@ A bak zawng chu thuhrûk sa vek a ni ang.
 'logentry-move-move-noredirect' => 'Hruailuhna phêk hnutchhiah lovin $1-in $3 phêk kha $4-ah a sawn.',
 'logentry-move-move_redir' => 'Hruailuhna chungah $3 phêk kha $4-ah $1 hian a sawn.',
 'logentry-move-move_redir-noredirect' => 'Hruailuhna hnutchhiah lovin $3 phêk kha $4-ah $1 hian a sawn.',
-'logentry-newusers-newusers' => '$1 hian hmangtu siangchan a siam.',
-'logentry-newusers-create' => '$1 hian hmangtu siangchan a siam.',
-'logentry-newusers-create2' => '$1 hian hmangtu siangchan $3 a siam.',
-'logentry-newusers-autocreate' => 'Siangchan $1 hi amahin a insiam.',
-'newuserlog-byemail' => 'thurûk e-lehkha hmanga thawn a ni.',
+'logentry-newwiki_users-newwiki_users' => '$1 hian hmangtu siangchan a siam.',
+'logentry-newwiki_users-create' => '$1 hian hmangtu siangchan a siam.',
+'logentry-newwiki_users-create2' => '$1 hian hmangtu siangchan $3 a siam.',
+'logentry-newwiki_users-autocreate' => 'Siangchan $1 hi amahin a insiam.',
+'newwiki_userlog-byemail' => 'thurûk e-lehkha hmanga thawn a ni.',
 
 # Feedback
 'feedback-subject' => 'Thupui:',

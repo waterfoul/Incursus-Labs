@@ -20,7 +20,7 @@ Example:
 The following parameters are available to all maintenance scripts
 --help   : Print a help message
 --quiet  : Quiet non-error output
---dbuser : The database user to use for the script (if needed)
+--dbwiki_user : The database wiki_user to use for the script (if needed)
 --dbpass : Same as above (if needed)
 --conf   : Location of LocalSettings.php, if not default
 --wiki   : For specifying the wiki ID

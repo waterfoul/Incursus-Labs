@@ -31,13 +31,13 @@
 class SpecialLog extends SpecialPage {
 
 	/**
-	 * List log type for which the target is a user
+	 * List log type for which the target is a wiki_user
 	 * Thus if the given target is in NS_MAIN we can alter it to be an NS_USER
-	 * Title user instead.
+	 * Title wiki_user instead.
 	 */
-	private $typeOnUser = array(
+	private $typeOnwiki_user = array(
 		'block',
-		'newusers',
+		'newwiki_users',
 		'rights',
 	);
 
@@ -53,7 +53,7 @@ class SpecialLog extends SpecialPage {
 
 		$opts = new FormOptions;
 		$opts->add( 'type', '' );
-		$opts->add( 'user', '' );
+		$opts->add( 'wiki_user', '' );
 		$opts->add( 'page', '' );
 		$opts->add( 'pattern', false );
 		$opts->add( 'year', null, FormOptions::INTNULL );
@@ -69,18 +69,18 @@ class SpecialLog extends SpecialPage {
 			$this->parseParams( $opts, (string)$par );
 		}
 
-		# Don't let the user get stuck with a certain date
+		# Don't let the wiki_user get stuck with a certain date
 		if ( $opts->getValue( 'offset' ) || $opts->getValue( 'dir' ) == 'prev' ) {
 			$opts->setValue( 'year', '' );
 			$opts->setValue( 'month', '' );
 		}
 
 		// Reset the log type to default (nothing) if it's invalid or if the
-		// user does not possess the right to view it
+		// wiki_user does not possess the right to view it
 		$type = $opts->getValue( 'type' );
 		if ( !LogPage::isLogType( $type )
 			|| ( isset( $wgLogRestrictions[$type] )
-				&& !$this->getUser()->isAllowed( $wgLogRestrictions[$type] ) )
+				&& !$this->getwiki_user()->isAllowed( $wgLogRestrictions[$type] ) )
 		) {
 			$opts->setValue( 'type', '' );
 		}
@@ -88,7 +88,7 @@ class SpecialLog extends SpecialPage {
 		# Handle type-specific inputs
 		$qc = array();
 		if ( $opts->getValue( 'type' ) == 'suppress' ) {
-			$offender = User::newFromName( $opts->getValue( 'offender' ), false );
+			$offender = wiki_user::newFromName( $opts->getValue( 'offender' ), false );
 			if ( $offender && $offender->getId() > 0 ) {
 				$qc = array( 'ls_field' => 'target_author_id', 'ls_value' => $offender->getId() );
 			} elseif ( $offender && IP::isIPAddress( $offender->getName() ) ) {
@@ -96,14 +96,14 @@ class SpecialLog extends SpecialPage {
 			}
 		}
 
-		# Some log types are only for a 'User:' title but we might have been given
-		# only the username instead of the full title 'User:username'. This part try
-		# to lookup for a user by that name and eventually fix user input. See bug 1697.
-		if( in_array( $opts->getValue( 'type' ), $this->typeOnUser ) ) {
-			# ok we have a type of log which expect a user title.
+		# Some log types are only for a 'wiki_user:' title but we might have been given
+		# only the wiki_username instead of the full title 'wiki_user:wiki_username'. This part try
+		# to lookup for a wiki_user by that name and eventually fix wiki_user input. See bug 1697.
+		if( in_array( $opts->getValue( 'type' ), $this->typeOnwiki_user ) ) {
+			# ok we have a type of log which expect a wiki_user title.
 			$target = Title::newFromText( $opts->getValue( 'page' ) );
 			if( $target && $target->getNamespace() === NS_MAIN ) {
-				# User forgot to add 'User:', we are adding it for him
+				# wiki_user forgot to add 'wiki_user:', we are adding it for him
 				$opts->setValue( 'page',
 					Title::makeTitleSafe( NS_USER, $opts->getValue( 'page' ) )
 				);
@@ -123,28 +123,28 @@ class SpecialLog extends SpecialPage {
 			$opts->setValue( 'type', $par );
 		} elseif ( count( $parms ) == 2 ) {
 			$opts->setValue( 'type', $parms[0] );
-			$opts->setValue( 'user', $parms[1] );
+			$opts->setValue( 'wiki_user', $parms[1] );
 		} elseif ( $par != '' ) {
-			$opts->setValue( 'user', $par );
+			$opts->setValue( 'wiki_user', $par );
 		}
 	}
 
 	private function show( FormOptions $opts, array $extraConds ) {
 		# Create a LogPager item to get the results and a LogEventsList item to format them...
 		$loglist = new LogEventsList( $this->getContext(), null, LogEventsList::USE_REVDEL_CHECKBOXES );
-		$pager = new LogPager( $loglist, $opts->getValue( 'type' ), $opts->getValue( 'user' ),
+		$pager = new LogPager( $loglist, $opts->getValue( 'type' ), $opts->getValue( 'wiki_user' ),
 			$opts->getValue( 'page' ), $opts->getValue( 'pattern' ), $extraConds, $opts->getValue( 'year' ),
 			$opts->getValue( 'month' ), $opts->getValue( 'tagfilter' ) );
 
 		$this->addHeader( $opts->getValue( 'type' ) );
 
-		# Set relevant user
+		# Set relevant wiki_user
 		if ( $pager->getPerformer() ) {
-			$this->getSkin()->setRelevantUser( User::newFromName( $pager->getPerformer() ) );
+			$this->getSkin()->setRelevantwiki_user( wiki_user::newFromName( $pager->getPerformer() ) );
 		}
 
 		# Show form options
-		$loglist->showOptions( $pager->getType(), $opts->getValue( 'user' ), $pager->getPage(), $pager->getPattern(),
+		$loglist->showOptions( $pager->getType(), $opts->getValue( 'wiki_user' ), $pager->getPage(), $pager->getPattern(),
 			$pager->getYear(), $pager->getMonth(), $pager->getFilterParams(), $opts->getValue( 'tagfilter' ) );
 
 		# Insert list
@@ -161,8 +161,8 @@ class SpecialLog extends SpecialPage {
 	}
 
 	private function getRevisionButton( $formcontents ) {
-		# If the user doesn't have the ability to delete log entries, don't bother showing him/her the button.
-		if ( !$this->getUser()->isAllowedAll( 'deletedhistory', 'deletelogentry' ) ) {
+		# If the wiki_user doesn't have the ability to delete log entries, don't bother showing him/her the button.
+		if ( !$this->getwiki_user()->isAllowedAll( 'deletedhistory', 'deletelogentry' ) ) {
 			return $formcontents;
 		}
 

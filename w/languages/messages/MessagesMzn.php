@@ -106,8 +106,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'تعدادصفحه‌ها', 'تعداد_صفحه‌ها', 'ولگ‌ئون_نمره', 'وألگ‌ئون_نومره', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'تعدادمقاله‌ها', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'تعدادپرونده‌ها', 'NUMBEROFFILES' ),
-	'numberofusers'             => array( '1', 'تعدادکارورون', 'تعدادکاربران', 'NUMBEROFUSERS' ),
-	'numberofactiveusers'       => array( '1', 'کارورون_فعال', 'کاربران_فعال', 'کاربران‌فعال', 'NUMBEROFACTIVEUSERS' ),
+	'numberofwiki_users'             => array( '1', 'تعدادکارورون', 'تعدادکاربران', 'NUMBEROFUSERS' ),
+	'numberofactivewiki_users'       => array( '1', 'کارورون_فعال', 'کاربران_فعال', 'کاربران‌فعال', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'تعداددچی‌یه‌ئون', 'تعدادویرایش‌ها', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'تعدادبازدید', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'نام‌صفحه', 'نام_صفحه', 'PAGENAME' ),
@@ -127,7 +127,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'پیوندون زیر خط دکشی بواشه',
 'tog-justify' => 'بندون تموم چین هاکرد‌ن',
 'tog-hideminor' => 'نشون‌ندائن کچیک تغییرات تازه دگاردسته‌ئون دله',
@@ -151,7 +151,7 @@ $messages = array(
 'tog-previewonfirst' => 'پیش نیمایش زمون اولین دچی‌ین',
 'tog-nocache' => 'حافظهٔ نهونی مرورگر از کار دمبداء بوو',
 'tog-enotifwatchlistpages' => 'اگه منه پگری‌ئون ره تغییر هدانه مسّه ایمیل بزن',
-'tog-enotifusertalkpages' => 'هر گادر منه کاروری صفخه‌ی گپ دله ات چی بنویشنه مه سّه ایمیل بزن',
+'tog-enotifwiki_usertalkpages' => 'هر گادر منه کاروری صفخه‌ی گپ دله ات چی بنویشنه مه سّه ایمیل بزن',
 'tog-enotifminoredits' => 'هرگادر صحه ها دله اتا خورد چی ره عوض هکردنه مه وسّه ایمیل بزن',
 'tog-enotifrevealaddr' => 'منه ایمیل نامه ئون ایطیلاع رسونی دله دواشه',
 'tog-shownumberswatching' => 'دمبالکرونِ سِراق هدائن',
@@ -332,7 +332,7 @@ $messages = array(
 'talk' => 'گپ',
 'views' => 'هارشی‌ئون',
 'toolbox' => 'أبـزار جـا',
-'userpage' => 'کارور صفحه ره سِراق هدائن',
+'wiki_userpage' => 'کارور صفحه ره سِراق هدائن',
 'projectpage' => 'بدی‌ین پروژه‌ی ِصفحه',
 'imagepage' => 'بدی‌ین ِعکس ِصفحه',
 'mediawikipage' => 'پیغوم ره بدی‌ین',
@@ -353,7 +353,7 @@ $2، $1',
 'pool-queuefull' => 'مخزن ِصف پر بیّه',
 'pool-errorunknown' => 'خطای ناشناخته',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} درباره',
 'aboutpage' => 'Project:درباره',
 'copyright' => 'این صفحه ره بَنوشته‌ئون  $1  زیر شِمه دسـت دَرنه.',
@@ -386,8 +386,8 @@ $2، $1',
 'youhavenewmessages' => 'شما اتا $1 دانّی ($2).',
 'newmessageslink' => 'ترنه پیغوم‌ئون',
 'newmessagesdifflink' => 'پایانی دچی‌یه',
-'youhavenewmessagesfromusers' => 'شِما {{PLURAL:$3| کارور دیگه| $3  کارور}} $1 دارنی ($2).',
-'youhavenewmessagesmanyusers' => 'شما ات‌سری کارور جه $1 دارنی ($2).',
+'youhavenewmessagesfromwiki_users' => 'شِما {{PLURAL:$3| کارور دیگه| $3  کارور}} $1 دارنی ($2).',
+'youhavenewmessagesmanywiki_users' => 'شما ات‌سری کارور جه $1 دارنی ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|ترنه پیغوم|ترنه پیغوم}}',
 'newmessagesdifflinkplural' => '{{formatnum:$1}} {{PLURAL:$1|ترنه دچی‌یه|ترنه دچی‌یه‌ئون}}',
 'youhavenewmessagesmulti' => 'شِمه وسّه $1 دله، ترنه پیغوم برسی‌یه.',
@@ -418,7 +418,7 @@ $2، $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'صفحه',
-'nstab-user' => 'کارور صفحه',
+'nstab-wiki_user' => 'کارور صفحه',
 'nstab-media' => 'رسانه',
 'nstab-special' => 'شاء صفحه',
 'nstab-project' => 'پروژه',
@@ -465,7 +465,7 @@ $2، $1',
 این مشکل معمولاً اون گادِر پیش انه که شمه بخاستی چیون اتا قدیمی یا حذف بَیی تاریخچه‌ی تفاوت بوئن.
 
 اگه غیر این هسته، احتمالاً نرم‌افزار دله موشکل پیدا بیّه.
-این مشکل ره اینترنتی نشونی همراه اتا [[Special:ListUsers/sysop|مدیر]] وسّه برسِنین.',
+این مشکل ره اینترنتی نشونی همراه اتا [[Special:Listwiki_users/sysop|مدیر]] وسّه برسِنین.',
 'missingarticle-rev' => '(نسخه‌ی شماره: $1)',
 'missingarticle-diff' => '(فرق: $1، $2)',
 'readonly_lag' => 'پایگاه داده به طور خودکار زلفین بزه‌بیّه تا پشتیبون ِنسخه‌ئون با اصلی نسخه هماهنگ بواشِن',
@@ -518,21 +518,21 @@ $2، $1',
 'login' => 'دله بوردن',
 'nav-login-createaccount' => 'دله بوردن / عضو بیّن',
 'loginprompt' => '{{SITENAME}} ره ده‌لـه بیـه‌موئـه‌ن وه‌سه، وه‌نـه cookieئون  کـارسأر بـوئـه‌ن.',
-'userlogin' => 'دله بموئن / عضو بیّن',
-'userloginnocreate' => 'دله بموئن',
+'wiki_userlogin' => 'دله بموئن / عضو بیّن',
+'wiki_userloginnocreate' => 'دله بموئن',
 'logout' => 'دربوردن',
-'userlogout' => 'دربوردن',
+'wiki_userlogout' => 'دربوردن',
 'notloggedin' => 'سیستم ره دله نیه مونی',
 'nologin' => 'عضو نی؟ $1.',
 'nologinlink' => 'عضو بواشین',
 'createaccount' => 'ترنه حساب وا هکاردن',
 'gotaccount' => 'عضو هسنی؟ $1.',
 'gotaccountlink' => 'بورین دله',
-'userlogin-resetlink' => 'دله بموئن ِجزئیات ره یاد هاکردی؟',
+'wiki_userlogin-resetlink' => 'دله بموئن ِجزئیات ره یاد هاکردی؟',
 'createaccountmail' => 'ایمیل جه',
 'createaccountreason' => 'دلیل:',
 'badretype' => 'دِتا پسوردی که بنویشتی اتجور نینه',
-'userexists' => 'کاروری نومی که بخاستنی وجود داشته.
+'wiki_userexists' => 'کاروری نومی که بخاستنی وجود داشته.
 خواهشأ ات نوم دیگه انتخاب هاکنین.',
 'loginerror' => 'دله نشی‌یه',
 'nocookiesnew' => 'حساب کاروری بساته بیّه، اما شِما دله نشینی.
@@ -541,7 +541,7 @@ $2، $1',
 لطفاً کوکی‌ئون ره به کار دمبده، و سپس با اسم کاروری و پسورد جدید برو دله.',
 'nocookieslogin' => '‏{{SITENAME}} کوکی‌ئون ره کارورون دله بوردن سر کار زنّه. شِما جا خاهش دارمی که وشون ره کار بی‌یلین و دباره سعی هاکنین.‎‎',
 'loginsuccess' => 'شِما إسا با اسم «$1» به {{SITENAME}} دله بمونی.',
-'nouserspecified' => 'شِما ونه أتا کارور نوم مشخص هاکنی.',
+'nowiki_userspecified' => 'شِما ونه أتا کارور نوم مشخص هاکنی.',
 'mailmypassword' => 'اتا نو پسورد بساز و برسِن',
 'accountcreated' => 'کاروری نوم دِرِس بیّه',
 'accountcreatedtext' => 'کاروری نوم، $1 بساته بیّه.',
@@ -550,7 +550,7 @@ $2، $1',
 'newpassword' => 'نو پسورد:',
 
 # Special:PasswordReset
-'passwordreset-username' => 'کاروری نوم:',
+'passwordreset-wiki_username' => 'کاروری نوم:',
 'passwordreset-domain' => 'دامنه:',
 'passwordreset-capture' => 'گت ایمیل سِراق هدائه بَواشه؟',
 
@@ -614,7 +614,7 @@ $2، $1',
 'loginreqlink' => 'دله بموئن',
 'loginreqpagetext' => 'بقیه‌ی صفحه‌ئون ِبدی‌ین وسّه، ونه $1.',
 'accmailtitle' => 'پسورد ره برسِنیمی.',
-'accmailtext' => "اتا تصادفی پسور بساته بیّه [[User talk:$1|$1]] وسّه $2 سَر برسِنی‌یه بیّه.
+'accmailtext' => "اتا تصادفی پسور بساته بیّه [[wiki_user talk:$1|$1]] وسّه $2 سَر برسِنی‌یه بیّه.
 
 این ترنه کاروری حساب ِپسور، سامانه دله بموئن په، ''[[Special:ChangePassword|ات‌تی]]'' بتونده عوض بوو.",
 'newarticle' => '(ترنه)',
@@ -694,7 +694,7 @@ $2، $1',
 'prefs-edits' => 'تعداد دچی‌یه‌ئون:',
 'prefsnologin' => 'سیستم دله نمویی',
 'youremail' => 'شه مه Email:',
-'username' => 'کاروری نوم:',
+'wiki_username' => 'کاروری نوم:',
 'uid' => 'کاروری إشماره:',
 'yourrealname' => 'شیمه راستین ره نوم :',
 'yourlanguage' => 'زوون:',
@@ -704,8 +704,8 @@ $2، $1',
 'prefs-help-email' => 'ایمیل اختیاری هسته. ولی اگه شِما شه پاسورد ره یاد بکارد‌نی نو پاسورد ره شِمسه ایمیل کامبی. شِما همینتی توندی بی‌یلین که دیگه کارورون شمه وسّه کاروری صفحه و کاروری گپ جه ایمیل بَزنن بی اونکه شِمه ایمیل معلوم بَواشه.',
 'prefs-help-email-required' => 'ایمیل نشونی لازم هسه.',
 
-# User rights
-'userrights-user-editname' => 'اتا کاروری نوم وارد هاکنین:',
+# wiki_user rights
+'wiki_userrights-wiki_user-editname' => 'اتا کاروری نوم وارد هاکنین:',
 
 # Groups
 'group-sysop' => 'مدیرون',
@@ -713,7 +713,7 @@ $2، $1',
 
 'grouppage-sysop' => '{{ns:project}}:مدیرون',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'سیاهه اختیارای کاروری',
 'rightslogtext' => 'اینتا سیاهه تغییرای اختیارای کاروری هسته.',
 'rightsnone' => '(هچّی)',
@@ -725,7 +725,7 @@ $2، $1',
 'action-minoredit' => 'علامت بزوئن اینتا دچی‌ین به عونوان جوزئی',
 'action-move' => 'دکشی‌ین اینتا صفحه',
 'action-move-subpages' => 'دکشی‌ین اینتا صفحه و ونه زیر رج‌ئون',
-'action-move-rootuserpages' => 'دکشی‌ین صفحه‌ئون کاروری سرچله',
+'action-move-rootwiki_userpages' => 'دکشی‌ین صفحه‌ئون کاروری سرچله',
 
 # Recent changes
 'recentchanges' => 'تازه دگاردسته‌ئون',
@@ -776,7 +776,7 @@ $2، $1',
 'imgfile' => 'فایل',
 'listfiles' => 'هارشی ئون ره لیست',
 'listfiles_name' => 'نـوم',
-'listfiles_user' => 'کارور',
+'listfiles_wiki_user' => 'کارور',
 'listfiles_size' => 'قایده',
 
 # File description page
@@ -785,7 +785,7 @@ $2، $1',
 'filehist-current' => 'إسا',
 'filehist-datetime' => 'تاریخ/زمون',
 'filehist-thumb' => 'انگوس گتی',
-'filehist-user' => 'کارور',
+'filehist-wiki_user' => 'کارور',
 'filehist-comment' => 'هارشا',
 'imagelinks' => 'لینک‌ئون',
 'linkstoimage' => 'این {{PLURAL:$1|صفحه|$1 صفحه‌ئون}} لینک هِدانه این فایل ره:',
@@ -808,9 +808,9 @@ $2، $1',
 'prefixindex' => 'تموم صفحه‌ئون پیشوند دار',
 'shortpages' => 'پچیک صفحه‌ئون',
 'longpages' => 'بِلند صفحه‌ئون',
-'listusers' => 'کارورون ِلیست',
+'listwiki_users' => 'کارورون ِلیست',
 'newpages' => 'نو بساته صفحه‌ئون',
-'newpages-username' => 'کارور نوم:',
+'newpages-wiki_username' => 'کارور نوم:',
 'ancientpages' => 'كوهنه صفحه‌ئون',
 'move' => 'دکش هاکردن',
 'pager-newer-n' => '{{PLURAL:$1|أتـا نـه‌ته‌ر|$1 تـا نـه‌ته‌ر}}',
@@ -822,7 +822,7 @@ $2، $1',
 'booksources-text' => 'زیر فهرستی از لینکا به وبگاه‌ئون دیگه دره که کتاب‌ئون نو و دست دوم روشنّه و ممکنه اطلاعات ویشتری راجع به کتاب مورد نظر دارِن:',
 
 # Special:Log
-'specialloguserlabel' => 'کارور:',
+'speciallogwiki_userlabel' => 'کارور:',
 
 # Special:AllPages
 'allpages' => 'همه صفحه‌ئون',
@@ -840,9 +840,9 @@ $2، $1',
 # Special:ListGroupRights
 'listgrouprights-members' => '(کارورون لیست)',
 
-# E-mail user
-'mailnologintext' => 'برای برسنی‌ین پوست الکترونیکی به کارورون دیگه ونه [[Special:UserLogin|بورین سامانه دله]] و نشونی پوست الکترونیکی معتبری تو [[Special:Preferences|ترجیحات]] خادت ره داشته بایی.',
-'emailuser' => 'این کارور وسّه ایمیل بَرسِن',
+# E-mail wiki_user
+'mailnologintext' => 'برای برسنی‌ین پوست الکترونیکی به کارورون دیگه ونه [[Special:wiki_userLogin|بورین سامانه دله]] و نشونی پوست الکترونیکی معتبری تو [[Special:Preferences|ترجیحات]] خادت ره داشته بایی.',
+'emailwiki_user' => 'این کارور وسّه ایمیل بَرسِن',
 'emailpage' => 'ئـی-مه‌یـل ای کـارور وه‌سه',
 
 # Watchlist
@@ -884,8 +884,8 @@ $2، $1',
 'rollback' => 'دچی‌یه‌ئون ره واچی‌ین',
 'rollback_short' => 'واچی‌ین',
 'rollbacklink' => 'واچی‌ین',
-'revertpage' => '"چـیـزونی که [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) دأچـیـه ده‌گـه‌ره‌س بـأیـه هـأمونـتـایی که [[User:$1|$1]] ای وألگ ده‌لـه، پـایـانی بـار هـه‌کـارده"',
-'revertpage-nouser' => '"چیزونی که (ونـه کـاروری نـوم پـاک بَیّه) دچی‌یه دگـاردسته بیّه همونتایی که [[User:$1|$1]] آخرسری دچی‌ین دلـه هاکرده"',
+'revertpage' => '"چـیـزونی که [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Talk]]) دأچـیـه ده‌گـه‌ره‌س بـأیـه هـأمونـتـایی که [[wiki_user:$1|$1]] ای وألگ ده‌لـه، پـایـانی بـار هـه‌کـارده"',
+'revertpage-nowiki_user' => '"چیزونی که (ونـه کـاروری نـوم پـاک بَیّه) دچی‌یه دگـاردسته بیّه همونتایی که [[wiki_user:$1|$1]] آخرسری دچی‌ین دلـه هاکرده"',
 'rollback-success' => 'چیزونی که $1 دچی‌ین دگاردسته بیّه همونتایی که $2 آخرسری دچی‌ین دلـه هاکرده',
 
 # Protect
@@ -916,7 +916,7 @@ $2، $1',
 
 'sp-contributions-newbies' => 'نـه وا بـأیـه ئـه‌کـانـت‌ئون دأچـیـه‌ن‌ئون ره نـه‌شـون هـاده',
 'sp-contributions-talk' => 'گپ',
-'sp-contributions-username' => 'IP نـه‌شـونـی یا کـاروری‌نوم',
+'sp-contributions-wiki_username' => 'IP نـه‌شـونـی یا کـاروری‌نوم',
 'sp-contributions-submit' => 'چـأرخـه‌تـو',
 
 # What links here
@@ -970,7 +970,7 @@ $2، $1',
 'import-interwiki-submit' => 'بیاردن',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'مه کاروری صفحه',
+'tooltip-pt-wiki_userpage' => 'مه کاروری صفحه',
 'tooltip-pt-mytalk' => 'مه گپ صفحه',
 'tooltip-pt-preferences' => 'مه خواسته‌نی‌ئون',
 'tooltip-pt-watchlist' => 'لیست صفحه‌ئونی که شِما وشون ِدچی‌یه بیّن ره اشنی',
@@ -1000,13 +1000,13 @@ $2، $1',
 'tooltip-t-recentchangeslinked' => 'اسایی دگاردسته‌ئون صفحه‌ئونی دله، که این صفحه جه لینک دارنه',
 'tooltip-feed-rss' => 'RSS خوراک این صفحه وسّه',
 'tooltip-feed-atom' => 'Atom خوراک این صفحه وسّه',
-'tooltip-t-emailuser' => 'ای کـارور ره اتـا ئـه‌لـه‌کـتـه‌رونـیـکـی‌نـومـه راهـی هـه‌کـارده‌ن',
+'tooltip-t-emailwiki_user' => 'ای کـارور ره اتـا ئـه‌لـه‌کـتـه‌رونـیـکـی‌نـومـه راهـی هـه‌کـارده‌ن',
 'tooltip-t-upload' => 'بـاربـیـه‌شـتـه‌ن فـایـل‌ئون',
 'tooltip-t-specialpages' => 'همه شا صفحه‌ئون ِلیسـت',
 'tooltip-t-print' => 'پِرینت هـاکاردن صفحه دگاردسته',
 'tooltip-t-permalink' => 'موندستنی لینک این صفحه ره اینتا محتوا وسّه',
 'tooltip-ca-nstab-main' => 'بدی‌ین ِصفحه',
-'tooltip-ca-nstab-user' => 'کاروری صفحه ره بَدی‌ین',
+'tooltip-ca-nstab-wiki_user' => 'کاروری صفحه ره بَدی‌ین',
 'tooltip-ca-nstab-media' => 'مدیا صفحه هارشی‌ین',
 'tooltip-ca-nstab-special' => 'اینتا اتا شا صفحه هسته که شِما نتوندی وه ره دچینی',
 'tooltip-ca-nstab-image' => 'عکس ِصفحه ره بدی‌ین',
@@ -1015,7 +1015,7 @@ $2، $1',
  خـا‌هـه‌ش بـونـه، شـه کـارئون ره جـا دأکـه‌تـه‌ن پـیـش، ای ره کـار بـأزه‌نـی.',
 
 # Attribution
-'siteusers' => '$1، {{PLURAL:$2|کارور|کارورون}} {{SITENAME}}',
+'sitewiki_users' => '$1، {{PLURAL:$2|کارور|کارورون}} {{SITENAME}}',
 
 # Browsing diffs
 'previousdiff' => 'کوهنه‌تر دچی‌ین ←',
@@ -1092,8 +1092,8 @@ $5
 
 # New logging system
 'logentry-move-move_redir-noredirect' => '$1 ، $3 ره بدون اینکه مسیر تغییری درس بوه به $4 که مسیر تغییر بیه منتقل هاکرده',
-'logentry-newusers-newusers' => '$1  بساتن اتا حساب کاروری',
-'logentry-newusers-create' => '$1  بساتن اتا حساب کاروری',
+'logentry-newwiki_users-newwiki_users' => '$1  بساتن اتا حساب کاروری',
+'logentry-newwiki_users-create' => '$1  بساتن اتا حساب کاروری',
 
 # Feedback
 'feedback-subject' => 'موضوع:',

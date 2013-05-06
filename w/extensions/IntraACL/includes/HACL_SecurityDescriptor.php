@@ -40,7 +40,7 @@ if (!defined('MEDIAWIKI'))
  *
  * Each SD has an ID (the page ID of the article that contains the SD),
  * the page ID of the protected element, a type (page, category, namespace)
- * and a list of users and groups who can modify the SD.
+ * and a list of wiki_users and groups who can modify the SD.
  *
  * Predefined rights have the same structure as security descriptors. So in the
  * following, SD is used as synonym for predefined right. SDs and PRs can be
@@ -57,7 +57,7 @@ class HACLSecurityDescriptor
     private $mPEType;          // string: Type of the protected element (see constants PET_... above)
     private $mManageGroups;    // array(int): IDs of the groups that can modify
                                //             the definition of this SD
-    private $mManageUsers;     // array(int): IDs of the users that can modify
+    private $mManagewiki_users;     // array(int): IDs of the wiki_users that can modify
                                //             the definition of this SD
 
     /**
@@ -80,14 +80,14 @@ class HACLSecurityDescriptor
      *         An array or a string of comma separated group names or IDs that
      *         can modify the SD's definition. Group names are converted and
      *         internally stored as group IDs. Invalid values cause an exception.
-     * @param array<int/string>/string $manageUsers
-     *         An array or a string of comma separated user names or IDs that
-     *         can modify the SD's definition. User names are converted and
-     *         internally stored as user IDs. Invalid values cause an exception.
+     * @param array<int/string>/string $managewiki_users
+     *         An array or a string of comma separated wiki_user names or IDs that
+     *         can modify the SD's definition. wiki_user names are converted and
+     *         internally stored as wiki_user IDs. Invalid values cause an exception.
      * @throws
      *         HACLSDException(HACLSDException::NO_PE_ID)
      */
-    function __construct($SDID, $SDName, $peID, $peType, $manageGroups, $manageUsers)
+    function __construct($SDID, $SDName, $peID, $peType, $manageGroups, $managewiki_users)
     {
         if (is_null($SDID))
             $SDID = self::idForSD($SDName);
@@ -105,7 +105,7 @@ class HACLSecurityDescriptor
         if ($peType == HACLLanguage::PET_RIGHT)
             $this->mPEID = 0;
         $this->setManageGroups($manageGroups);
-        $this->setManageUsers($manageUsers);
+        $this->setManagewiki_users($managewiki_users);
     }
 
     //--- getter/setter ---
@@ -116,7 +116,7 @@ class HACLSecurityDescriptor
     public function getPEType()         { return $this->mPEType; }
     public function getPEName()         { $exploded = explode('/', $this->mSDName, 2); return $exploded[1]; }
     public function getManageGroups()   { return $this->mManageGroups; }
-    public function getManageUsers()    { return $this->mManageUsers; }
+    public function getManagewiki_users()    { return $this->mManagewiki_users; }
 
     //--- Public methods ---
 
@@ -268,48 +268,48 @@ class HACLSecurityDescriptor
     }
 
     /**
-     * Sets the users who can manage this SD. The SD has to be saved
+     * Sets the wiki_users who can manage this SD. The SD has to be saved
      * afterwards to persists the changes in the database.
      *
-     * @param mixed string|array(mixed int|string|User) $manageUsers
+     * @param mixed string|array(mixed int|string|wiki_user) $managewiki_users
      *        If a single string is given, it contains a comma-separated list of
-     *        user names.
-     *        If an array is given, it can contain user-objects, names of users or
-     *        IDs of a users. If <null> or empty, the currently logged in user is
+     *        wiki_user names.
+     *        If an array is given, it can contain wiki_user-objects, names of wiki_users or
+     *        IDs of a wiki_users. If <null> or empty, the currently logged in wiki_user is
      *        assumed.
-     *        There are two special user names:
-     *        '*' - anonymous user (ID:0)
-     *        '#' - all registered users (ID: -1)
+     *        There are two special wiki_user names:
+     *        '*' - anonymous wiki_user (ID:0)
+     *        '#' - all registered wiki_users (ID: -1)
      */
-    public function setManageUsers($manageUsers)
+    public function setManagewiki_users($managewiki_users)
     {
-        if (!empty($manageUsers) && is_string($manageUsers))
+        if (!empty($managewiki_users) && is_string($managewiki_users))
         {
-            // Managing users are given as comma separated string
+            // Managing wiki_users are given as comma separated string
             // Split into an array
-            $manageUsers = explode(',', $manageUsers);
+            $managewiki_users = explode(',', $managewiki_users);
         }
-        if (is_array($manageUsers))
+        if (is_array($managewiki_users))
         {
-            $this->mManageUsers = $manageUsers;
-            for ($i = 0; $i < count($manageUsers); ++$i)
+            $this->mManagewiki_users = $managewiki_users;
+            for ($i = 0; $i < count($managewiki_users); ++$i)
             {
-                $mu = $manageUsers[$i];
+                $mu = $managewiki_users[$i];
                 if (is_string($mu))
                     $mu = trim($mu);
-                $uid = haclfGetUserID($mu, false);
-                $this->mManageUsers[$i] = $uid[0];
+                $uid = haclfGetwiki_userID($mu, false);
+                $this->mManagewiki_users[$i] = $uid[0];
             }
         }
         else
-            $this->mManageUsers = array();
+            $this->mManagewiki_users = array();
     }
 
     /**
      * Sets the groups who can manage this SD. The SD has to be saved
      * afterwards to persists the changes in the database.
      *
-     * @param mixed string|array(mixed int|string|User) $manageGroups
+     * @param mixed string|array(mixed int|string|wiki_user) $manageGroups
      *         If a single string is given, it contains a comma-separated list of
      *         group names.
      *         If an array is given, it can contain IDs (int), names (string) or
@@ -425,9 +425,9 @@ class HACLSecurityDescriptor
      *         These rights are added. The type of their security descriptors must be
      *         PET_RIGHT.
      *
-     * @param User/string/int $user
-     *         User-object, name of a user or ID of a user who wants to delete this
-     *         SD. If <null> (default), the currently logged in user is assumed.
+     * @param wiki_user/string/int $wiki_user
+     *         wiki_user-object, name of a wiki_user or ID of a wiki_user who wants to delete this
+     *         SD. If <null> (default), the currently logged in wiki_user is assumed.
      *
      * @throws
      *         Exception
@@ -435,7 +435,7 @@ class HACLSecurityDescriptor
      *         HACLSDException(HACLSDException::CANNOT_ADD_SD)
      *         ... if an SD is added to an SD or PR
      */
-    public function addPredefinedRights($rights, $user = null)
+    public function addPredefinedRights($rights, $wiki_user = null)
     {
         if (empty($rights))
             return;
@@ -456,11 +456,11 @@ class HACLSecurityDescriptor
      *
      * @param array<HACLRight> $rights
      *         An array of inline rights
-     * @param User/string/int $user
-     *         User-object, name of a user or ID of a user who wants to delete this
-     *         SD. If <null> (default), the currently logged in user is assumed.
+     * @param wiki_user/string/int $wiki_user
+     *         wiki_user-object, name of a wiki_user or ID of a wiki_user who wants to delete this
+     *         SD. If <null> (default), the currently logged in wiki_user is assumed.
      */
-    public function addInlineRights($rights, $user = null)
+    public function addInlineRights($rights, $wiki_user = null)
     {
         if (empty($rights))
             return;
@@ -476,15 +476,15 @@ class HACLSecurityDescriptor
      * All inline and predefined rights are removed from this SD. The materialized
      * rights are updated.
      *
-     * @param User/string/int $user
-     *         User-object, name of a user or ID of a user who wants to delete this
-     *         SD. If <null> (default), the currently logged in user is assumed.
+     * @param wiki_user/string/int $wiki_user
+     *         wiki_user-object, name of a wiki_user or ID of a wiki_user who wants to delete this
+     *         SD. If <null> (default), the currently logged in wiki_user is assumed.
      *
      * @throws
      *     HACLSDException(HACLSDException::USER_CANT_MODIFY_SD)
      *
      */
-    public function removeAllRights($user = NULL)
+    public function removeAllRights($wiki_user = NULL)
     {
         return IACLStorage::get('SD')->deleteSD($this->mSDID, true);
     }
@@ -543,7 +543,7 @@ class HACLSecurityDescriptor
     public function isSinglePredefinedRightInclusion()
     {
         $pr = $this->getPredefinedRights(false);
-        if (count($pr) == 1 && !$this->mManageUsers && !$this->mManageGroups &&
+        if (count($pr) == 1 && !$this->mManagewiki_users && !$this->mManageGroups &&
             !$this->getInlineRights(false))
             return $pr[0];
         return NULL;
@@ -564,18 +564,18 @@ class HACLSecurityDescriptor
 
     /**
      * This method checks the integrity of this SD. The integrity can be violated
-     * by missing groups, users or predefined rights.
+     * by missing groups, wiki_users or predefined rights.
      *
      * return mixed bool / array
      *     <true> if the SD is valid,
      *  array(string=>bool) otherwise
-     *         The array has the keys "groups", "users" and "rights" with boolean values.
+     *         The array has the keys "groups", "wiki_users" and "rights" with boolean values.
      *         If the value is <true>, at least one of the corresponding entities
      *         is missing.
      */
     public function checkIntegrity() {
         $missingGroups = false;
-        $missingUsers = false;
+        $missingwiki_users = false;
         $missingPR = false;
 
         //== Check integrity of group managers ==
@@ -588,10 +588,10 @@ class HACLSecurityDescriptor
             }
         }
 
-        // Check for missing users
-        foreach ($this->mManageUsers as $uid) {
-            if ($uid > 0 && User::whoIs($uid) === false) {
-                $missingUsers = true;
+        // Check for missing wiki_users
+        foreach ($this->mManagewiki_users as $uid) {
+            if ($uid > 0 && wiki_user::whoIs($uid) === false) {
+                $missingwiki_users = true;
                 break;
             }
         }
@@ -610,11 +610,11 @@ class HACLSecurityDescriptor
                     break;
                 }
             }
-            // Check for missing users
-            $userIDs = $ir->getUsers();
-            foreach ($userIDs as $uid) {
-                if ($uid > 0 && User::whoIs($uid) === false) {
-                    $missingUsers = true;
+            // Check for missing wiki_users
+            $wiki_userIDs = $ir->getwiki_users();
+            foreach ($wiki_userIDs as $uid) {
+                if ($uid > 0 && wiki_user::whoIs($uid) === false) {
+                    $missingwiki_users = true;
                     break;
                 }
             }
@@ -629,70 +629,70 @@ class HACLSecurityDescriptor
             }
         }
 
-        if (!$missingGroups && !$missingPR && !$missingUsers) {
+        if (!$missingGroups && !$missingPR && !$missingwiki_users) {
             return true;
         }
         return array('groups' => $missingGroups,
-                     'users'  => $missingUsers,
+                     'wiki_users'  => $missingwiki_users,
                      'rights' => $missingPR);
     }
 
-    protected function checkIndirectManageRight($userID)
+    protected function checkIndirectManageRight($wiki_userID)
     {
         $title = Title::newFromId($this->mPEID);
-        if ($title && HACLEvaluator::hasRight($title->getNamespace(), HACLLanguage::PET_NAMESPACE, $userID, HACLLanguage::RIGHT_MANAGE))
+        if ($title && HACLEvaluator::hasRight($title->getNamespace(), HACLLanguage::PET_NAMESPACE, $wiki_userID, HACLLanguage::RIGHT_MANAGE))
             return true;
-        list($r) = HACLEvaluator::hasCategoryRight($title, $userID, HACLLanguage::RIGHT_MANAGE);
+        list($r) = HACLEvaluator::hasCategoryRight($title, $wiki_userID, HACLLanguage::RIGHT_MANAGE);
         return $r;
     }
 
     /**
-     * Checks if the given user can modify this SD.
+     * Checks if the given wiki_user can modify this SD.
      *
-     * @param User/string/int $user
-     *         User-object, name of a user or ID of a user who wants to modify this
-     *         SD. If <null>, the currently logged in user is assumed.
+     * @param wiki_user/string/int $wiki_user
+     *         wiki_user-object, name of a wiki_user or ID of a wiki_user who wants to modify this
+     *         SD. If <null>, the currently logged in wiki_user is assumed.
      *
      * @param boolean $throwException
      *         If <true>, the exception
      *         HACLSDException(HACLSDException::USER_CANT_MODIFY_SD)
-     *         is thrown, if the user can't modify the SD.
+     *         is thrown, if the wiki_user can't modify the SD.
      *
      * @return boolean
      *         One of these values is returned if no exception is thrown:
-     *         <true>, if the user can modify this SD and
+     *         <true>, if the wiki_user can modify this SD and
      *         <false>, if not
      *
      * @throws
      *         HACLException(HACLException::UNKNOWN_USER)
      *         If requested: HACLSDException(HACLSDException::USER_CANT_MODIFY_SD)
      */
-    public function userCanModify($user = false, $throwException = false)
+    public function wiki_userCanModify($wiki_user = false, $throwException = false)
     {
-        global $wgUser;
-        if (!$user)
-            $user = $wgUser;
+        global $wgwiki_user;
+        if (!$wiki_user)
+            $wiki_user = $wgwiki_user;
 
-        // Get the ID of the user who wants to add/modify the SD
-        list($userID, $userName) = haclfGetUserID($user);
+        // Get the ID of the wiki_user who wants to add/modify the SD
+        list($wiki_userID, $wiki_userName) = haclfGetwiki_userID($wiki_user);
 
-        // Check if the user can modify the SD
-        if (in_array($userID, $this->mManageUsers))
+        // Check if the wiki_user can modify the SD
+        if (in_array($wiki_userID, $this->mManagewiki_users))
             return true;
-        if ($userID > 0 && in_array(-1, $this->mManageUsers))
+        if ($wiki_userID > 0 && in_array(-1, $this->mManagewiki_users))
         {
-            // -1 means that all registered users can modify the SD
+            // -1 means that all registered wiki_users can modify the SD
             return true;
         }
 
-        // Check if the user belongs to a group that can modify the SD
+        // Check if the wiki_user belongs to a group that can modify the SD
         foreach ($this->mManageGroups as $groupID)
-            if (IACLStorage::get('Groups')->hasGroupMember($groupID, $userID, HACLGroup::USER, true))
+            if (IACLStorage::get('Groups')->hasGroupMember($groupID, $wiki_userID, HACLGroup::USER, true))
                 return true;
 
         // Sysops and bureaucrats can modify anything
-        $user = User::newFromId($userID);
-        $groups = $user->getGroups();
+        $wiki_user = wiki_user::newFromId($wiki_userID);
+        $groups = $wiki_user->getGroups();
         if (in_array('sysop', $groups) || in_array('bureaucrat', $groups))
             return true;
 
@@ -700,7 +700,7 @@ class HACLSecurityDescriptor
         if ($this->mPEType != HACLLanguage::PET_RIGHT)
         {
             $r = HACLEvaluator::hasRight(
-                $this->mPEID, $this->mPEType, $userID,
+                $this->mPEID, $this->mPEType, $wiki_userID,
                 HACLLanguage::RIGHT_MANAGE,
                 // Include direct RIGHT_MANAGE only for page SDs
                 $this->mPEType == HACLLanguage::PET_PAGE ? NULL : $this->mSDID
@@ -713,7 +713,7 @@ class HACLSecurityDescriptor
         if ($this->mPEType == HACLLanguage::PET_PAGE)
         {
             $etc = haclfDisableTitlePatch();
-            $r = $this->checkIndirectManageRight($userID);
+            $r = $this->checkIndirectManageRight($wiki_userID);
             haclfRestoreTitlePatch($etc);
             if ($r)
                 return true;
@@ -721,28 +721,28 @@ class HACLSecurityDescriptor
 
         if ($throwException)
         {
-            if (empty($userName))
+            if (empty($wiki_userName))
             {
-                // only user id is given => retrieve the name of the user
-                $userName = ($user) ? $user->getId() : "(User-ID: $userID)";
+                // only wiki_user id is given => retrieve the name of the wiki_user
+                $wiki_userName = ($wiki_user) ? $wiki_user->getId() : "(wiki_user-ID: $wiki_userID)";
             }
-            throw new HACLSDException(HACLSDException::USER_CANT_MODIFY_SD, $this->mSDName, $userName);
+            throw new HACLSDException(HACLSDException::USER_CANT_MODIFY_SD, $this->mSDName, $wiki_userName);
         }
         return false;
     }
 
     /**
      * Saves this SD in the database. A SD needs a name and at least one group
-     * or user who can modify the definition of this group. If no group or user
-     * is given, the specified or the current user gets this right. If no user is
+     * or wiki_user who can modify the definition of this group. If no group or wiki_user
+     * is given, the specified or the current wiki_user gets this right. If no wiki_user is
      * logged in, the operation fails.
      *
-     * If the SD already exists and the given user has the right to modify the
+     * If the SD already exists and the given wiki_user has the right to modify the
      * SD, the SDs definition is changed.
      *
-     * @param  User/string $user
-     *         User-object or name of the user who wants to save this SD. If this
-     *         value is empty or <null>, the current user is assumed.
+     * @param  wiki_user/string $wiki_user
+     *         wiki_user-object or name of the wiki_user who wants to save this SD. If this
+     *         value is empty or <null>, the current wiki_user is assumed.
      *
      * @throws
      *         HACLSDException(HACLSDException::NO_SD_ID)
@@ -759,9 +759,9 @@ class HACLSecurityDescriptor
     /**
      * Deletes this security descriptor from the database.
      *
-     * @param User/string/int $user
-     *         User-object, name of a user or ID of a user who wants to delete this
-     *         SD. If <null>, the currently logged in user is assumed.
+     * @param wiki_user/string/int $wiki_user
+     *         wiki_user-object, name of a wiki_user or ID of a wiki_user who wants to delete this
+     *         SD. If <null>, the currently logged in wiki_user is assumed.
      */
     public function delete()
     {

@@ -5,8 +5,8 @@
 CREATE TABLE /*_*/uploadstash (
 	us_id int unsigned NOT NULL PRIMARY KEY auto_increment,
 	
-	-- the user who uploaded the file.
-	us_user int unsigned NOT NULL,
+	-- the wiki_user who uploaded the file.
+	us_wiki_user int unsigned NOT NULL,
 
 	-- file key. this is how applications actually search for the file.
 	-- this might go away, or become the primary key.
@@ -41,8 +41,8 @@ CREATE TABLE /*_*/uploadstash (
 	
 ) /*$wgDBTableOptions*/;
 
--- sometimes there's a delete for all of a user's stuff.
-CREATE INDEX /*i*/us_user ON /*_*/uploadstash (us_user);
+-- sometimes there's a delete for all of a wiki_user's stuff.
+CREATE INDEX /*i*/us_wiki_user ON /*_*/uploadstash (us_wiki_user);
 -- pick out files by key, enforce key uniqueness
 CREATE UNIQUE INDEX /*i*/us_key ON /*_*/uploadstash (us_key);
 -- the abandoned upload cleanup script needs this

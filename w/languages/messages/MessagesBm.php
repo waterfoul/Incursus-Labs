@@ -14,7 +14,7 @@
 $fallback = 'fr';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-hideminor' => 'Yɛlɛmaliw kura fitini dogo',
 
 # Dates
@@ -54,12 +54,12 @@ $messages = array(
 'specialpage' => 'Nyɛ kɛrɛnkɛrɛnnen',
 'talk' => 'Sɔsɔli',
 'toolbox' => 'Minanw',
-'userpage' => 'Utilisateur ka nyɛ',
+'wiki_userpage' => 'Utilisateur ka nyɛ',
 'imagepage' => 'Janin ka nyɛ',
 'otherlanguages' => 'Kanw wɛrɛ',
 'jumptosearch' => 'Nyini',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Kunnafoni',
 'currentevents-url' => 'Project:Kunnafoni',
 'disclaimers' => 'Kangari',

@@ -97,7 +97,7 @@ interface Field {
  * @ingroup Database
  */
 class ResultWrapper implements Iterator {
-	var $db, $result, $pos = 0, $currentRow = null;
+	var , $result, $pos = 0, $currentRow = null;
 
 	/**
 	 * Create a new result object from a result resource and a Database object
@@ -220,7 +220,7 @@ class ResultWrapper implements Iterator {
  */
 class FakeResultWrapper extends ResultWrapper {
 	var $result     = array();
-	var $db         = null;	// And it's going to stay that way :D
+	var          = null;	// And it's going to stay that way :D
 	var $pos        = 0;
 	var $currentRow = null;
 

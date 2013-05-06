@@ -87,7 +87,7 @@ class JpegMetadataExtractorTest extends MediaWikiTestCase {
 		$this->assertEquals( 'iptc-good-hash', $res );
 	}
 	public function testExifByteOrder() {
-		$res = JpegMetadataExtractor::segmentSplitter( $this->filePath . 'exif-user-comment.jpg' );
+		$res = JpegMetadataExtractor::segmentSplitter( $this->filePath . 'exif-wiki_user-comment.jpg' );
 		$expected = 'BE';
 		$this->assertEquals( $expected, $res['byteOrder'] );
 	}

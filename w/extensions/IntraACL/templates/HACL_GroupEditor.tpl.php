@@ -2,7 +2,7 @@
 <tr>
  <td style="vertical-align: top; width: 500px">
   <form action="<?= $wgScript ?>?action=submit" method="POST" id="groupEditForm">
-   <input type="hidden" name="wpEditToken" value="<?= htmlspecialchars($wgUser->editToken()) ?>" />
+   <input type="hidden" name="wpEditToken" value="<?= htmlspecialchars($wgwiki_user->editToken()) ?>" />
    <input type="hidden" name="wpEdittime" value="<?= $grpTitle ? $grpArticle->getTimestamp() : '' ?>" />
    <input type="hidden" name="wpStarttime" value="<?= wfTimestampNow() ?>" />
    <input type="hidden" id="wpTitle" name="title" value="<?= $grpTitle ? htmlspecialchars($grpTitle->getPrefixedText()) : '' ?>" />
@@ -21,8 +21,8 @@
     <th colspan="2"><?= wfMsg('hacl_grp_members') ?></th>
    </tr>
    <tr>
-    <th><?= wfMsg('hacl_grp_users') ?></th>
-    <td><input type="text" id="member_users" style="width: 200px" autocomplete="off" /></td>
+    <th><?= wfMsg('hacl_grp_wiki_users') ?></th>
+    <td><input type="text" id="member_wiki_users" style="width: 200px" autocomplete="off" /></td>
    </tr>
    <tr>
     <th><?= wfMsg('hacl_grp_groups') ?></th>
@@ -32,8 +32,8 @@
     <th colspan="2"><?= wfMsg('hacl_grp_managers') ?></th>
    </tr>
    <tr>
-    <th><?= wfMsg('hacl_grp_users') ?></th>
-    <td><input type="text" id="manager_users" style="width: 200px" autocomplete="off" /></td>
+    <th><?= wfMsg('hacl_grp_wiki_users') ?></th>
+    <td><input type="text" id="manager_wiki_users" style="width: 200px" autocomplete="off" /></td>
    </tr>
    <tr>
     <th><?= wfMsg('hacl_grp_groups') ?></th>
@@ -64,9 +64,9 @@ exAttach(window, 'load', function()
 {
     var msg = {
     <?php foreach (explode(' ',
-        'grp_save grp_create no_member_user no_member_group no_manager_user no_manager_group'.
-        ' current_member_user current_member_group current_manager_user current_manager_group'.
-        ' regexp_user regexp_group start_typing_user start_typing_group indirect_through'.
+        'grp_save grp_create no_member_wiki_user no_member_group no_manager_wiki_user no_manager_group'.
+        ' current_member_wiki_user current_member_group current_manager_wiki_user current_manager_group'.
+        ' regexp_wiki_user regexp_group start_typing_wiki_user start_typing_group indirect_through'.
         ' edit_all edit_reg'
     ) as $msg)
         print "'$msg': '".addslashes(wfMsgNoTrans("hacl_$msg"))."',\n"; ?>

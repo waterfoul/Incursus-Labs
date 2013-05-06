@@ -31,7 +31,7 @@
  * @since 1.19
  */
 class LogFormatter {
-	// Audience options for viewing usernames, comments, and actions
+	// Audience options for viewing wiki_usernames, comments, and actions
 	const FOR_PUBLIC = 1;
 	const FOR_THIS_USER = 2;
 
@@ -80,7 +80,7 @@ class LogFormatter {
 	/// Integer constant for handling log_deleted
 	protected $audience = self::FOR_PUBLIC;
 
-	/// Whether to output user tool links
+	/// Whether to output wiki_user tool links
 	protected $linkFlood = false;
 
 	/**
@@ -110,7 +110,7 @@ class LogFormatter {
 	/**
 	 * Set the visibility restrictions for displaying content.
 	 * If set to public, and an item is deleted, then it will be replaced
-	 * with a placeholder even if the context user is allowed to view it.
+	 * with a placeholder even if the context wiki_user is allowed to view it.
 	 * @param $audience integer self::FOR_THIS_USER or self::FOR_PUBLIC
 	 */
 	public function setAudience( $audience ) {
@@ -126,27 +126,27 @@ class LogFormatter {
 	 */
 	protected function canView( $field ) {
 		if ( $this->audience == self::FOR_THIS_USER ) {
-			return LogEventsList::userCanBitfield(
-				$this->entry->getDeleted(), $field, $this->context->getUser() );
+			return LogEventsList::wiki_userCanBitfield(
+				$this->entry->getDeleted(), $field, $this->context->getwiki_user() );
 		} else {
 			return !$this->entry->isDeleted( $field );
 		}
 	}
 
 	/**
-	 * If set to true, will produce user tool links after
-	 * the user name. This should be replaced with generic
+	 * If set to true, will produce wiki_user tool links after
+	 * the wiki_user name. This should be replaced with generic
 	 * CSS/JS solution.
 	 * @param $value boolean
 	 */
-	public function setShowUserToolLinks( $value ) {
+	public function setShowwiki_userToolLinks( $value ) {
 		$this->linkFlood = $value;
 	}
 
 	/**
 	 * Ugly hack to produce plaintext version of the message.
 	 * Usually you also want to set extraneous request context
-	 * to avoid formatting for any particular user.
+	 * to avoid formatting for any particular wiki_user.
 	 * @see getActionText()
 	 * @return string text
 	 */
@@ -262,19 +262,19 @@ class LogFormatter {
 				}
 				break;
 
-			case 'newusers':
+			case 'newwiki_users':
 				switch( $entry->getSubtype() ) {
-					case 'newusers':
+					case 'newwiki_users':
 					case 'create':
-						$text = wfMessage( 'newuserlog-create-entry' )
+						$text = wfMessage( 'newwiki_userlog-create-entry' )
 							->inContentLanguage()->escaped();
 						break;
 					case 'create2':
-						$text = wfMessage( 'newuserlog-create2-entry' )
+						$text = wfMessage( 'newwiki_userlog-create2-entry' )
 							->rawParams( $target )->inContentLanguage()->escaped();
 						break;
 					case 'autocreate':
-						$text = wfMessage( 'newuserlog-autocreate-entry' )
+						$text = wfMessage( 'newwiki_userlog-autocreate-entry' )
 							->inContentLanguage()->escaped();
 						break;
 				}
@@ -307,7 +307,7 @@ class LogFormatter {
 	}
 
 	/**
-	 * Gets the log action, including username.
+	 * Gets the log action, including wiki_username.
 	 * @return string HTML
 	 */
 	public function getActionText() {
@@ -403,7 +403,7 @@ class LogFormatter {
 	 * Formats parameters intented for action message from
 	 * array of all parameters. There are three hardcoded
 	 * parameters (array is zero-indexed, this list not):
-	 *  - 1: user name with premade link
+	 *  - 1: wiki_user name with premade link
 	 *  - 2: usable for gender magic function
 	 *  - 3: target page with premade link
 	 * @return array
@@ -444,7 +444,7 @@ class LogFormatter {
 	}
 
 	/**
-	 * Provides the name of the user who performed the log action.
+	 * Provides the name of the wiki_user who performed the log action.
 	 * Used as part of log action message or standalone, depending
 	 * which parts of the log entry has been hidden.
 	 * @return String
@@ -452,19 +452,19 @@ class LogFormatter {
 	public function getPerformerElement() {
 		if ( $this->canView( LogPage::DELETED_USER ) ) {
 			$performer = $this->entry->getPerformer();
-			$element = $this->makeUserLink( $performer );
+			$element = $this->makewiki_userLink( $performer );
 			if ( $this->entry->isDeleted( LogPage::DELETED_USER ) ) {
 				$element = $this->styleRestricedElement( $element );
 			}
 		} else {
-			$element = $this->getRestrictedElement( 'rev-deleted-user' );
+			$element = $this->getRestrictedElement( 'rev-deleted-wiki_user' );
 		}
 
 		return $element;
 	}
 
 	/**
-	 * Gets the luser provided comment
+	 * Gets the lwiki_user provided comment
 	 * @return string HTML
 	 */
 	public function getComment() {
@@ -520,20 +520,20 @@ class LogFormatter {
 		return $this->context->msg( $key );
 	}
 
-	protected function makeUserLink( User $user ) {
+	protected function makewiki_userLink( wiki_user $wiki_user ) {
 		if ( $this->plaintext ) {
-			$element = $user->getName();
+			$element = $wiki_user->getName();
 		} else {
-			$element = Linker::userLink(
-				$user->getId(),
-				$user->getName()
+			$element = Linker::wiki_userLink(
+				$wiki_user->getId(),
+				$wiki_user->getName()
 			);
 
 			if ( $this->linkFlood ) {
-				$element .= Linker::userToolLinksRedContribs(
-					$user->getId(),
-					$user->getName(),
-					$user->getEditCount()
+				$element .= Linker::wiki_userToolLinksRedContribs(
+					$wiki_user->getId(),
+					$wiki_user->getName(),
+					$wiki_user->getEditCount()
 				);
 			}
 		}
@@ -628,7 +628,7 @@ class LegacyLogFormatter extends LogFormatter {
 
 		// Show unblock/change block link
 		if ( ( $type == 'block' || $type == 'suppress' ) && ( $subtype == 'block' || $subtype == 'reblock' ) ) {
-			if ( !$this->context->getUser()->isAllowed( 'block' ) ) {
+			if ( !$this->context->getwiki_user()->isAllowed( 'block' ) ) {
 				return '';
 			}
 
@@ -656,7 +656,7 @@ class LegacyLogFormatter extends LogFormatter {
 					)
 				)
 			);
-			if ( $this->context->getUser()->isAllowed( 'protect' ) ) {
+			if ( $this->context->getwiki_user()->isAllowed( 'protect' ) ) {
 				$links[] = Linker::linkKnown(
 					$title,
 					$this->msg( 'protect_change' )->escaped(),
@@ -668,7 +668,7 @@ class LegacyLogFormatter extends LogFormatter {
 				$this->context->getLanguage()->pipeList( $links ) )->escaped();
 		// Show unmerge link
 		} elseif( $type == 'merge' && $subtype == 'merge' ) {
-			if ( !$this->context->getUser()->isAllowed( 'mergehistory' ) ) {
+			if ( !$this->context->getwiki_user()->isAllowed( 'mergehistory' ) ) {
 				return '';
 			}
 
@@ -737,7 +737,7 @@ class MoveLogFormatter extends LogFormatter {
 	public function getActionLinks() {
 		if ( $this->entry->isDeleted( LogPage::DELETED_ACTION ) // Action is hidden
 			|| $this->entry->getSubtype() !== 'move'
-			|| !$this->context->getUser()->isAllowed( 'move' ) )
+			|| !$this->context->getwiki_user()->isAllowed( 'move' ) )
 		{
 			return '';
 		}
@@ -832,14 +832,14 @@ class DeleteLogFormatter extends LogFormatter {
 	}
 
 	public function getActionLinks() {
-		$user = $this->context->getUser();
-		if ( !$user->isAllowed( 'deletedhistory' ) || $this->entry->isDeleted( LogPage::DELETED_ACTION ) ) {
+		$wiki_user = $this->context->getwiki_user();
+		if ( !$wiki_user->isAllowed( 'deletedhistory' ) || $this->entry->isDeleted( LogPage::DELETED_ACTION ) ) {
 			return '';
 		}
 
 		switch ( $this->entry->getSubtype() ) {
 		case 'delete': // Show undelete link
-			if( $user->isAllowed( 'undelete' ) ) {
+			if( $wiki_user->isAllowed( 'undelete' ) ) {
 				$message = 'undeletelink';
 			} else {
 				$message = 'undeleteviewlink';
@@ -972,19 +972,19 @@ class PatrolLogFormatter extends LogFormatter {
 }
 
 /**
- * This class formats new user log entries.
+ * This class formats new wiki_user log entries.
  * @since 1.19
  */
-class NewUsersLogFormatter extends LogFormatter {
+class Newwiki_usersLogFormatter extends LogFormatter {
 	protected function getMessageParameters() {
 		$params = parent::getMessageParameters();
 		if ( $this->entry->getSubtype() === 'create2' ) {
 			if ( isset( $params[3] ) ) {
-				$target = User::newFromId( $params[3] );
+				$target = wiki_user::newFromId( $params[3] );
 			} else {
-				$target = User::newFromName( $this->entry->getTarget()->getText(), false );
+				$target = wiki_user::newFromName( $this->entry->getTarget()->getText(), false );
 			}
-			$params[2] = Message::rawParam( $this->makeUserLink( $target ) );
+			$params[2] = Message::rawParam( $this->makewiki_userLink( $target ) );
 			$params[3] = $target->getName();
 		}
 		return $params;
@@ -1002,7 +1002,7 @@ class NewUsersLogFormatter extends LogFormatter {
 
 	public function getPreloadTitles() {
 		if ( $this->entry->getSubtype() === 'create2' ) {
-			//add the user talk to LinkBatch for the userLink
+			//add the wiki_user talk to LinkBatch for the wiki_userLink
 			return array( Title::makeTitle( NS_USER_TALK, $this->entry->getTarget()->getText() ) );
 		}
 		return array();

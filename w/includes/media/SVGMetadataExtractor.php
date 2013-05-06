@@ -336,7 +336,7 @@ class SVGReader {
 			'in' => 90.0,
 			'em' => 16.0, // fake it?
 			'ex' => 12.0, // fake it?
-			''   => 1.0, // "User units" pixels by default
+			''   => 1.0, // "wiki_user units" pixels by default
 			);
 		$matches = array();
 		if( preg_match( '/^\s*(\d+(?:\.\d+)?)(em|ex|px|pt|pc|cm|mm|in|%|)\s*$/', $length, $matches ) ) {

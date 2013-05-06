@@ -58,7 +58,7 @@ $dateFormats = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Υπογράμμιση συνδεσμίων:',
 'tog-justify' => 'Στοίχισην παραγραφίων',
 'tog-editondblclick' => 'Άλλαγμαν σελιδίων με διπλόν κλικ (JavaScript)',
@@ -217,7 +217,7 @@ $messages = array(
 'talk' => 'Καλάτσεμαν',
 'views' => 'Τερέματα',
 'toolbox' => 'Εργαλεία',
-'userpage' => 'Τέρεν σελίδαν χρήστε',
+'wiki_userpage' => 'Τέρεν σελίδαν χρήστε',
 'projectpage' => 'Τέρεμαν σελίδας βοήθειας',
 'imagepage' => 'Τέρεν σελίδαν δογμενίων',
 'mediawikipage' => 'Τέρεν σελίδαν μενεματίων',
@@ -234,7 +234,7 @@ $messages = array(
 'jumptonavigation' => 'Πορπάτεμαν',
 'jumptosearch' => 'Αράεμαν',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Περί {{SITENAME}}',
 'aboutpage' => 'Project:Σχετικά',
 'copyright' => 'Το περιεχόμενον εν άμον ντο λεει η $1.',
@@ -285,7 +285,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Σελίδαν',
-'nstab-user' => 'Σελίδα χρήστε',
+'nstab-wiki_user' => 'Σελίδα χρήστε',
 'nstab-media' => 'Σελίδα μεσίων',
 'nstab-special' => 'Ειδικόν σελίδα',
 'nstab-project' => 'Σχετικά με',
@@ -309,7 +309,7 @@ $messages = array(
 
 Αούτο έχ\' αιτίαν ανενημέρωτον σύνδεσμον "διαφ" γιά σύνδεσμον ιστορικίου που δεκνίζ\' σε σελίδαν που εβζινέθεν.
 Αν \'κ έινεν αούτον, επορεί ν\' εύρετεν σφάλμαν σο software.
-Άμα επορείτε, αναφέρετε ατό σε [[Special:ListUsers/sysop|γιαρίφ]] και δότε τον URL.',
+Άμα επορείτε, αναφέρετε ατό σε [[Special:Listwiki_users/sysop|γιαρίφ]] και δότε τον URL.',
 'missingarticle-rev' => '(μορφήν#: $1)',
 'missingarticle-diff' => '(Δεαφ: $1, $2)',
 'internalerror' => 'Σφάλμαν απές μερέαν',
@@ -349,10 +349,10 @@ $messages = array(
 'login' => 'Εμπάτε',
 'nav-login-createaccount' => 'Εμπάτεν / ποισέστεν λογαρίαν',
 'loginprompt' => "Πρέπ' ν' άφτετε τα cookies για εμπείτε σο {{SITENAME}}.",
-'userlogin' => 'Εμπάτεν / ποισέστεν λογαρίαν',
-'userloginnocreate' => 'Εμπάτεν',
+'wiki_userlogin' => 'Εμπάτεν / ποισέστεν λογαρίαν',
+'wiki_userloginnocreate' => 'Εμπάτεν',
 'logout' => 'οξουκά',
-'userlogout' => 'Οξουκά',
+'wiki_userlogout' => 'Οξουκά',
 'notloggedin' => 'Ευρίσκεζνε οξουκά ασή Βικιπαίδειαν',
 'nologin' => "Λογαρίαν 'κ έχετε; '''$1'''.",
 'nologinlink' => 'Ποισέστεν λογαρίαν',
@@ -362,7 +362,7 @@ $messages = array(
 'createaccountmail' => 'με ελεκτρονικόν μένεμαν',
 'createaccountreason' => 'Λόγον:',
 'badretype' => "Τα σημάδε ντ' εγράψετεν 'κ ταιριάζνε.",
-'userexists' => "Τ' όνεμαν έχ' ατό άλλος χρήστες.
+'wiki_userexists' => "Τ' όνεμαν έχ' ατό άλλος χρήστες.
 Βαλέστε άλλον όνεμαν.",
 'loginerror' => 'Σφάλμα εγγραφής',
 'createaccounterror' => "Αούτο η λογαρίαν 'κ εέντον: $1",
@@ -376,13 +376,13 @@ $messages = array(
 'noname' => "'Κ έβαλατε καλόν όνεμαν χρήστε.",
 'loginsuccesstitle' => "Έντον τ' εσέβεμαν",
 'loginsuccess' => "'''Εσήβετεν σο {{SITENAME}} με τ'όνεμαν \"\$1\".'''",
-'nosuchuser' => 'Αδαπές \'κ εχ\' χρήστεν με τ\' όνομαν "$1".
+'nosuchwiki_user' => 'Αδαπές \'κ εχ\' χρήστεν με τ\' όνομαν "$1".
 Τερέστεν τα γράμματα τη ονοματί, τερέστεν τα τρανογράμματα και τα μικρογράμματα να είναι τογρία.
-Τερέστεν την ορθογραφίαν ή [[Special:UserLogin/signup|ποισέστεν καινούρεον λογαρίαν]].',
-'nosuchusershort' => "Αδαπές 'κ εχ' χρήστεν με τ' όνομαν \"\$1\".
+Τερέστεν την ορθογραφίαν ή [[Special:wiki_userLogin/signup|ποισέστεν καινούρεον λογαρίαν]].',
+'nosuchwiki_usershort' => "Αδαπές 'κ εχ' χρήστεν με τ' όνομαν \"\$1\".
 Τ'όνομαν γραφέστεν ατο τογρία.",
-'nouserspecified' => "Πρέπ' να ψιλίζετε έναν όνεμαν.",
-'login-userblocked' => "Το χρήστεν έδεξαν ατον. Να εμπαίν 'κ ίνεται.",
+'nowiki_userspecified' => "Πρέπ' να ψιλίζετε έναν όνεμαν.",
+'login-wiki_userblocked' => "Το χρήστεν έδεξαν ατον. Να εμπαίν 'κ ίνεται.",
 'wrongpassword' => "Το σημάδιν 'κ εν σωστόν.
 Ποισέστεν άλλο γράσεμαν.",
 'wrongpasswordempty' => 'Το σημάδιν έτον εύκαιρον.
@@ -468,7 +468,7 @@ $messages = array(
 * Θα κλείσκεται ο χρήστες: $7
 
 Για τ' ασπάλιγμαν επορείτε να συντισένετε με τον $1 ή με τ' αλλτς τοι [[{{MediaWiki:Grouppage-sysop}}|νοματέοις]].
-Για να γράφετε ελεκτρονικόν μένεμαν ('e-mail this user') βαλέστεν το τεσέτερον το σωστόν το e-mail address σα [[Special:Preferences|προτιμήσαι τη λογαρίας εσούν]]. Επεκεί 'κ θα είστουν ασπαλιγμένος για γράψιμον τη μενεματί.
+Για να γράφετε ελεκτρονικόν μένεμαν ('e-mail this wiki_user') βαλέστεν το τεσέτερον το σωστόν το e-mail address σα [[Special:Preferences|προτιμήσαι τη λογαρίας εσούν]]. Επεκεί 'κ θα είστουν ασπαλιγμένος για γράψιμον τη μενεματί.
 Τ' ατοριζνόν το IP εσούν εν $3, και το ID τ' ασπαλιγματί εν #$5.
 Ποδεδίζουμε σας να γράφετε τα και τα δυο σο μένεμανεσουν απές.",
 'autoblockedtext' => "Το IP εσούν εκλείστεν αυτόματα επειδή μεταχειρίσκουτονατο άλλος χρήστες ντ' έτον ασπάλιγμένος ασόν χρήστεν $1.
@@ -480,7 +480,7 @@ $messages = array(
 * Ασπάλιγμαν τελείται: $6
 * Ασπαλιζὀμενον: $7
 
-Για το ασπάλιγμαν επορείτε να συντισένετε με το χρήστεν $1 ή με τ' αλλτς τοι [[{{MediaWiki:Grouppage-sysop}}|νοματέοις]]. Για να γράφετε ελεκτρονικόν μένεμαν ('e-mail this user') βαλέστεν το τεσέτερον το σωστόν το e-mail address σα [[Special:Preferences|προτιμήσαι τη λογαρίας εσούν]]. Εάν 'κ εν ασπαλιγμένον η χρήσηνατ, επορείτε να γράφετε μένεμαν.
+Για το ασπάλιγμαν επορείτε να συντισένετε με το χρήστεν $1 ή με τ' αλλτς τοι [[{{MediaWiki:Grouppage-sysop}}|νοματέοις]]. Για να γράφετε ελεκτρονικόν μένεμαν ('e-mail this wiki_user') βαλέστεν το τεσέτερον το σωστόν το e-mail address σα [[Special:Preferences|προτιμήσαι τη λογαρίας εσούν]]. Εάν 'κ εν ασπαλιγμένον η χρήσηνατ, επορείτε να γράφετε μένεμαν.
 
 Το IP εσούν εν $3 και το ID τη ασπαλιγματίνεσουν εν #$5.
 Ποδεδίζουμε σας να γράφτατο σο μένεμαν εσούν.",
@@ -491,7 +491,7 @@ $messages = array(
 'loginreqlink' => 'εσέβεμαν',
 'loginreqpagetext' => 'Επρέπ να $1 για να τερείτε άλλα σελίδας.',
 'accmailtitle' => 'Το σημάδι εστάλθεν.',
-'accmailtext' => "Το σημάδι για τον/την [[User talk:$1|$1]] εστάλθεν σο $2.
+'accmailtext' => "Το σημάδι για τον/την [[wiki_user talk:$1|$1]] εστάλθεν σο $2.
 
 Το σημάδι για το καινούρεον την λογαρίαν επορείς να αλλάζεις ασα την σελίδαν ''[[Special:ChangePassword|άλλαξον λογαρίαν]]'' με τ' έμπαζμανεσουν.",
 'newarticle' => '(Καινούρεον)',
@@ -524,7 +524,7 @@ $messages = array(
 'template-semiprotected' => '(ημψά-ασπαλιγμένον)',
 'hiddencategories' => "Αούτο η σελίδαν ανήκ' σα {{PLURAL:$1|1 κρυμμένον κατηγορία|$1 κρυμμένα κατηγορίας}}:",
 'nocreatetext' => "Σο {{SITENAME}} περιορίσκουτον το ποίσεμα σελιδίων.
-'Πορείτε να κλώσκεστε οπίς και ν' αλλάζετε έναν παλαιόν σελίδαν ή να [[Special:UserLogin|εμπάτε ή να εφτάτε λογαρίαν]].",
+'Πορείτε να κλώσκεστε οπίς και ν' αλλάζετε έναν παλαιόν σελίδαν ή να [[Special:wiki_userLogin|εμπάτε ή να εφτάτε λογαρίαν]].",
 'permissionserrorstext-withaction' => "'Κ έχετε την άδειαν για $2, για {{PLURAL:$1|τ'αφκά το λόγον|τ'αφκά τοι λόγους}}:",
 'recreate-moveddeleted-warn' => "'''Ωρία: Εφτάτε αξάν μίαν σελίδαν ντ' ενεσβύεν οψεκές.'''
 
@@ -649,7 +649,7 @@ $messages = array(
 'default' => 'προεπιλογήν',
 'prefs-files' => 'Αρχεία',
 'youremail' => 'Ελεκτρονικόν μένεμαν:',
-'username' => 'Όνεμα χρήστε:',
+'wiki_username' => 'Όνεμα χρήστε:',
 'uid' => 'ID Χρήστε:',
 'yourrealname' => 'Πραματικόν όνεμαν:',
 'yourlanguage' => "Τ' εσόν η γλώσσαν:",
@@ -667,11 +667,11 @@ $messages = array(
 'prefs-signature' => 'Υπογραφή',
 'prefs-diffs' => 'Διαφοράς',
 
-# User rights
-'userrights-groupsmember' => 'Μέλος τη:',
+# wiki_user rights
+'wiki_userrights-groupsmember' => 'Μέλος τη:',
 
 # Groups
-'group-user' => 'Χρήστες',
+'group-wiki_user' => 'Χρήστες',
 'group-autoconfirmed' => 'Αυτόματα βεβαιωμένοι χρηστ',
 'group-bot' => 'Bots',
 'group-sysop' => 'Νοματέοι',
@@ -679,14 +679,14 @@ $messages = array(
 'group-suppress' => 'Παραβλέμματα',
 'group-all' => '(ούλαι)',
 
-'group-user-member' => 'Χρήστες',
+'group-wiki_user-member' => 'Χρήστες',
 'group-autoconfirmed-member' => 'Αυτόματα βεβαιωμένος χρήστες',
 'group-bot-member' => 'bot',
 'group-sysop-member' => 'Νοματέας',
 'group-bureaucrat-member' => 'Γέροντας',
 'group-suppress-member' => 'Επόπτες',
 
-'grouppage-user' => '{{ns:project}}:Χρηστς',
+'grouppage-wiki_user' => '{{ns:project}}:Χρηστς',
 'grouppage-autoconfirmed' => '{{ns:project}}:Αυτόματα βεβαιωμένοι χρηστ',
 'grouppage-sysop' => '{{ns:project}}:Νοματέοι',
 'grouppage-bureaucrat' => '{{ns:project}}:Γεροντάδες',
@@ -708,7 +708,7 @@ $messages = array(
 'right-import' => "Έμπαζμαν σελιδίων ασ' άλλα βίκι",
 'right-siteadmin' => 'Ασπάλισον κι άνοιξον τη βάση δογμενίων',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Αρχείον δικαιωματίων',
 'rightsnone' => '(τιδέν)',
 
@@ -763,7 +763,7 @@ $messages = array(
 'uploadbtn' => 'Φόρτωσον αρχείον',
 'reuploaddesc' => 'Στα! Μην εφτάς το φόρτεμαν! Δέβα οπίς ση σελίδαν φωρτεματί!',
 'uploadnologin' => "'Κ είστουν απές. Εμπάτε σην λογαρίανεσουν.",
-'uploadnologintext' => "Πρεπ' σην σελίδαν [[Special:UserLogin|απές]] να είσνε (log in) για πορείτε να φορτώνετε αρχεία.",
+'uploadnologintext' => "Πρεπ' σην σελίδαν [[Special:wiki_userLogin|απές]] να είσνε (log in) για πορείτε να φορτώνετε αρχεία.",
 'uploaderror' => 'Έντον λάθος σο φόρτωμαν',
 'uploadlog' => 'αρχείον με τα φορτώματα',
 'uploadlogpage' => 'Αρχείον ανεβασματίων',
@@ -788,7 +788,7 @@ $messages = array(
 'listfiles' => 'Λίσταν εικονίων',
 'listfiles_date' => 'Ημερομηνία',
 'listfiles_name' => 'Όνεμαν',
-'listfiles_user' => 'Χρήστες',
+'listfiles_wiki_user' => 'Χρήστες',
 'listfiles_size' => 'Μέγεθος',
 'listfiles_description' => 'Σχόλιον',
 'listfiles_count' => 'Εκδόσεις',
@@ -804,7 +804,7 @@ $messages = array(
 'filehist-thumb' => 'Εικονιδίον',
 'filehist-thumbtext' => 'Εικονιδίον για την έκδοσην τη $1',
 'filehist-nothumb' => "'Κ εν γραφικήν σύνοψην (thumbnail)",
-'filehist-user' => 'Χρήστες',
+'filehist-wiki_user' => 'Χρήστες',
 'filehist-dimensions' => 'Διαστάσεις',
 'filehist-filesize' => 'Μέγεθος',
 'filehist-comment' => 'Σχόλιον',
@@ -893,10 +893,10 @@ $messages = array(
 'longpages' => 'Τρανά σελίδας',
 'deadendpages' => 'Αδιέξοδα σελίδας',
 'protectedpages' => 'Ασπαλιγμένα σελίδας',
-'listusers' => 'Κατάλογον χρηστίων',
-'usereditcount' => '$1 {{PLURAL:$1|άλλαγμαν|αλλάγματα}}',
+'listwiki_users' => 'Κατάλογον χρηστίων',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|άλλαγμαν|αλλάγματα}}',
 'newpages' => 'Καινούρεα σελίδας',
-'newpages-username' => 'Όνεμα χρήστε:',
+'newpages-wiki_username' => 'Όνεμα χρήστε:',
 'ancientpages' => 'Ασ’ όλιον παλαιά σελίδας',
 'move' => 'Ετεροχλάεμαν',
 'movethispage' => "Άλλαξον τ' όνεμα τη σελίδας",
@@ -910,7 +910,7 @@ $messages = array(
 'booksources-go' => 'Δέβα',
 
 # Special:Log
-'specialloguserlabel' => 'Χρήστες:',
+'speciallogwiki_userlabel' => 'Χρήστες:',
 'speciallogtitlelabel' => 'Τίτλος:',
 'log' => 'Αρχεία',
 'all-logs-page' => 'Όλεα τα δημόσεα αρχεία',
@@ -942,19 +942,19 @@ $messages = array(
 'linksearch-ns' => 'Περιοχή ονοματίων:',
 'linksearch-ok' => 'Αράεμαν',
 
-# Special:ListUsers
-'listusers-submit' => 'Δείξον',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Δείξον',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Αρχείον ποισιματίων λογαρίων χρήστε',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Αρχείον ποισιματίων λογαρίων χρήστε',
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'Ομάδαν',
 'listgrouprights-rights' => 'Δικαιώματα',
 'listgrouprights-members' => '(κατάλογον μελών)',
 
-# E-mail user
-'emailuser' => 'Στείλον μένεμαν σον χρήστεν ατόν',
+# E-mail wiki_user
+'emailwiki_user' => 'Στείλον μένεμαν σον χρήστεν ατόν',
 'emailfrom' => 'Ασά:',
 'emailto' => 'Σο:',
 'emailsubject' => 'Θέμαν:',
@@ -1069,7 +1069,7 @@ $messages = array(
 'sp-contributions-logs' => 'αρχεία',
 'sp-contributions-talk' => 'καλάτσεμαν',
 'sp-contributions-search' => 'Εύρον συνεισφοράντας',
-'sp-contributions-username' => 'Διεύθυνσην IP γιά όνεμαν χρήστε:',
+'sp-contributions-wiki_username' => 'Διεύθυνσην IP γιά όνεμαν χρήστε:',
 'sp-contributions-submit' => 'Αράεμαν',
 
 # What links here
@@ -1200,7 +1200,7 @@ $messages = array(
 'import-logentry-interwiki' => 'εγέντον εισαγωγήν transwiki σην σελίδαν $1',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => "Τ' εσόν η σελίδαν",
+'tooltip-pt-wiki_userpage' => "Τ' εσόν η σελίδαν",
 'tooltip-pt-mytalk' => "Τ' εσόν το καλάτσεμαν",
 'tooltip-pt-preferences' => "Τ' εμά τα προτιμήσεις",
 'tooltip-pt-watchlist' => "Λίστα με τα σελίδας ντ' ωριάζω",
@@ -1233,13 +1233,13 @@ $messages = array(
 'tooltip-feed-rss' => 'RSS συνδρομή για την σελίδαν ατέν',
 'tooltip-feed-atom' => 'Atom συνδρομή για την σελίδαν ατέν',
 'tooltip-t-contributions' => 'Τερέστεν τη λίσταν με τα συνεισφοράντας τη χρήστε',
-'tooltip-t-emailuser' => "E-mail σ' αούτον το χρήστεν",
+'tooltip-t-emailwiki_user' => "E-mail σ' αούτον το χρήστεν",
 'tooltip-t-upload' => 'Φόρτωμαν αρχείων',
 'tooltip-t-specialpages' => 'Κατάλογον με τα ειδικά σελίδας',
 'tooltip-t-print' => 'Εκτυπώσιμον μορφή τη σελίδας',
 'tooltip-t-permalink' => "Μόνιμον σύνδεσμος σ'αούτο τη μορφήν τη σελίδας",
 'tooltip-ca-nstab-main' => 'Τέρεμαν σελίδας περιεχομενίων',
-'tooltip-ca-nstab-user' => 'Τέρεμαν τη σελίδας χρήστε',
+'tooltip-ca-nstab-wiki_user' => 'Τέρεμαν τη σελίδας χρήστε',
 'tooltip-ca-nstab-media' => 'Τέρεμαν τη σελίδας μεσίων',
 'tooltip-ca-nstab-special' => "Ατό η σελίδαν εν ειδικόν. Ξάι 'κ επορείτε να αλλάζετατεν.",
 'tooltip-ca-nstab-project' => 'Τέρεμαν σελίδας συστηματί',
@@ -1258,7 +1258,7 @@ $messages = array(
 'tooltip-undo' => 'Με την "Αναίρεση" χάται αούτον η αλλαγή και ανοίγ\' η φόρμα αλλαγματί άμον πρώτον τέρεμαν. Επιτρέπ\' την προσθήκην αιτίας ση περίληψην.',
 
 # Attribution
-'siteuser' => '{{SITENAME}} χρήστες $1',
+'sitewiki_user' => '{{SITENAME}} χρήστες $1',
 'others' => "άλλ'",
 
 # Spam protection

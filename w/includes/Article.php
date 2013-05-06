@@ -1,6 +1,6 @@
 <?php
 /**
- * User interface for page actions.
+ * wiki_user interface for page actions.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@
  * @todo move and rewrite code to an Action class
  *
  * See design.txt for an overview.
- * Note: edit user interface and cache support functions have been
+ * Note: edit wiki_user interface and cache support functions have been
  * moved to separate EditPage and HTMLFileCache classes.
  *
  * @internal documentation reviewed 15 Mar 2010
@@ -51,7 +51,7 @@ class Article extends Page {
 	protected $mPage;
 
 	/**
-	 * ParserOptions object for $wgUser articles
+	 * ParserOptions object for $wgwiki_user articles
 	 * @var ParserOptions $mParserOptions
 	 */
 	public $mParserOptions;
@@ -245,7 +245,7 @@ class Article extends Page {
 					$text = '';
 				}
 			} else {
-				$message = $this->getContext()->getUser()->isLoggedIn() ? 'noarticletext' : 'noarticletextanon';
+				$message = $this->getContext()->getwiki_user()->isLoggedIn() ? 'noarticletext' : 'noarticletextanon';
 				$text = wfMessage( $message )->text();
 			}
 			wfProfileOut( __METHOD__ );
@@ -297,7 +297,7 @@ class Article extends Page {
 					// Revision title doesn't match the page title given?
 					if ( $this->mPage->getID() != $this->mRevision->getPage() ) {
 						$function = array( get_class( $this->mPage ), 'newFromID' );
-						$this->mPage = call_user_func( $function, $this->mRevision->getPage() );
+						$this->mPage = call_wiki_user_func( $function, $this->mRevision->getPage() );
 					}
 				}
 			}
@@ -380,7 +380,7 @@ class Article extends Page {
 
 		// @todo FIXME: Horrible, horrible! This content-loading interface just plain sucks.
 		// We should instead work with the Revision object when we need it...
-		$this->mContent = $this->mRevision->getText( Revision::FOR_THIS_USER ); // Loads if user is allowed
+		$this->mContent = $this->mRevision->getText( Revision::FOR_THIS_USER ); // Loads if wiki_user is allowed
 		$this->mRevIdFetched = $this->mRevision->getId();
 
 		wfRunHooks( 'ArticleAfterFetchContent', array( &$this, &$this->mContent ) );
@@ -453,9 +453,9 @@ class Article extends Page {
 		# the first call of this method even if $oldid is used way below.
 		$oldid = $this->getOldID();
 
-		$user = $this->getContext()->getUser();
+		$wiki_user = $this->getContext()->getwiki_user();
 		# Another whitelist check in case getOldID() is altering the title
-		$permErrors = $this->getTitle()->getUserPermissionsErrors( 'read', $user );
+		$permErrors = $this->getTitle()->getwiki_userPermissionsErrors( 'read', $wiki_user );
 		if ( count( $permErrors ) ) {
 			wfDebug( __METHOD__ . ": denied on secondary read check\n" );
 			wfProfileOut( __METHOD__ );
@@ -495,7 +495,7 @@ class Article extends Page {
 		if ( $outputPage->isPrintable() ) {
 			$parserOptions->setIsPrintable( true );
 			$parserOptions->setEditSection( false );
-		} elseif ( !$this->isCurrent() || !$this->getTitle()->quickUserCan( 'edit', $user ) ) {
+		} elseif ( !$this->isCurrent() || !$this->getTitle()->quickwiki_userCan( 'edit', $wiki_user ) ) {
 			$parserOptions->setEditSection( false );
 		}
 
@@ -516,7 +516,7 @@ class Article extends Page {
 				wfDebug( __METHOD__ . ": done file cache\n" );
 				# tell wgOut that output is taken care of
 				$outputPage->disable();
-				$this->mPage->doViewUpdates( $user );
+				$this->mPage->doViewUpdates( $wiki_user );
 				wfProfileOut( __METHOD__ );
 
 				return;
@@ -526,7 +526,7 @@ class Article extends Page {
 		# Should the parser cache be used?
 		$useParserCache = $this->mPage->isParserCacheUsed( $parserOptions, $oldid );
 		wfDebug( 'Article::view using parser cache: ' . ( $useParserCache ? 'yes' : 'no' ) . "\n" );
-		if ( $user->getStubThreshold() ) {
+		if ( $wiki_user->getStubThreshold() ) {
 			wfIncrStats( 'pcache_miss_stub' );
 		}
 
@@ -688,7 +688,7 @@ class Article extends Page {
 		$outputPage->setFollowPolicy( $policy['follow'] );
 
 		$this->showViewFooter();
-		$this->mPage->doViewUpdates( $user );
+		$this->mPage->doViewUpdates( $wiki_user );
 
 		wfProfileOut( __METHOD__ );
 	}
@@ -711,10 +711,10 @@ class Article extends Page {
 	 */
 	public function showDiffPage() {
 		$request = $this->getContext()->getRequest();
-		$user = $this->getContext()->getUser();
+		$wiki_user = $this->getContext()->getwiki_user();
 		$diff = $request->getVal( 'diff' );
 		$rcid = $request->getVal( 'rcid' );
-		$diffOnly = $request->getBool( 'diffonly', $user->getOption( 'diffonly' ) );
+		$diffOnly = $request->getBool( 'diffonly', $wiki_user->getOption( 'diffonly' ) );
 		$purge = $request->getVal( 'action' ) == 'purge';
 		$unhide = $request->getInt( 'unhide' ) == 1;
 		$oldid = $this->getOldID();
@@ -726,7 +726,7 @@ class Article extends Page {
 
 		if ( $diff == 0 || $diff == $this->mPage->getLatest() ) {
 			# Run view updates for current revision only
-			$this->mPage->doViewUpdates( $user );
+			$this->mPage->doViewUpdates( $wiki_user );
 		}
 	}
 
@@ -769,7 +769,7 @@ class Article extends Page {
 		$ns = $this->getTitle()->getNamespace();
 
 		if ( $ns == NS_USER || $ns == NS_USER_TALK ) {
-			# Don't index user and user talk pages for blocked users (bug 11443)
+			# Don't index wiki_user and wiki_user talk pages for blocked wiki_users (bug 11443)
 			if ( !$this->getTitle()->isSubpage() ) {
 				if ( Block::newFromTarget( null, $this->getTitle()->getText() ) instanceof Block ) {
 					return array(
@@ -820,7 +820,7 @@ class Article extends Page {
 		}
 
 		if ( isset( $wgArticleRobotPolicies[$this->getTitle()->getPrefixedText()] ) ) {
-			# (bug 14900) site config can override user-defined __INDEX__ or __NOINDEX__
+			# (bug 14900) site config can override wiki_user-defined __INDEX__ or __NOINDEX__
 			$policy = array_merge(
 				$policy,
 				self::formatRobotPolicy( $wgArticleRobotPolicies[$this->getTitle()->getPrefixedText()] )
@@ -896,7 +896,7 @@ class Article extends Page {
 					'href' => $this->getTitle()->getLocalURL() )
 				);
 
-				// Tell the output object that the user arrived at this article through a redirect
+				// Tell the output object that the wiki_user arrived at this article through a redirect
 				$outputPage->setRedirectedFrom( $this->mRedirectedFrom );
 
 				return true;
@@ -931,12 +931,12 @@ class Article extends Page {
 	 * Show the footer section of an ordinary page view
 	 */
 	public function showViewFooter() {
-		# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
+		# check if we're displaying a [[wiki_user talk:x.x.x.x]] anonymous talk page
 		if ( $this->getTitle()->getNamespace() == NS_USER_TALK && IP::isValid( $this->getTitle()->getText() ) ) {
 			$this->getContext()->getOutput()->addWikiMsg( 'anontalkpagetext' );
 		}
 
-		# If we have been passed an &rcid= parameter, we want to give the user a
+		# If we have been passed an &rcid= parameter, we want to give the wiki_user a
 		# chance to mark this new article as patrolled.
 		$this->showPatrolFooter();
 
@@ -952,14 +952,14 @@ class Article extends Page {
 	public function showPatrolFooter() {
 		$request = $this->getContext()->getRequest();
 		$outputPage = $this->getContext()->getOutput();
-		$user = $this->getContext()->getUser();
+		$wiki_user = $this->getContext()->getwiki_user();
 		$rcid = $request->getVal( 'rcid' );
 
-		if ( !$rcid || !$this->getTitle()->quickUserCan( 'patrol', $user ) ) {
+		if ( !$rcid || !$this->getTitle()->quickwiki_userCan( 'patrol', $wiki_user ) ) {
 			return;
 		}
 
-		$token = $user->getEditToken( $rcid );
+		$token = $wiki_user->getEditToken( $rcid );
 		$outputPage->preventClickjacking();
 
 		$link = Linker::linkKnown(
@@ -988,28 +988,28 @@ class Article extends Page {
 		global $wgSend404Code;
 		$outputPage = $this->getContext()->getOutput();
 
-		# Show info in user (talk) namespace. Does the user exist? Is he blocked?
+		# Show info in wiki_user (talk) namespace. Does the wiki_user exist? Is he blocked?
 		if ( $this->getTitle()->getNamespace() == NS_USER || $this->getTitle()->getNamespace() == NS_USER_TALK ) {
 			$parts = explode( '/', $this->getTitle()->getText() );
 			$rootPart = $parts[0];
-			$user = User::newFromName( $rootPart, false /* allow IP users*/ );
-			$ip = User::isIP( $rootPart );
+			$wiki_user = wiki_user::newFromName( $rootPart, false /* allow IP wiki_users*/ );
+			$ip = wiki_user::isIP( $rootPart );
 
-			if ( !($user && $user->isLoggedIn()) && !$ip ) { # User does not exist
-				$outputPage->wrapWikiMsg( "<div class=\"mw-userpage-userdoesnotexist error\">\n\$1\n</div>",
-					array( 'userpage-userdoesnotexist-view', wfEscapeWikiText( $rootPart ) ) );
-			} elseif ( $user->isBlocked() ) { # Show log extract if the user is currently blocked
+			if ( !($wiki_user && $wiki_user->isLoggedIn()) && !$ip ) { # wiki_user does not exist
+				$outputPage->wrapWikiMsg( "<div class=\"mw-wiki_userpage-wiki_userdoesnotexist error\">\n\$1\n</div>",
+					array( 'wiki_userpage-wiki_userdoesnotexist-view', wfEscapeWikiText( $rootPart ) ) );
+			} elseif ( $wiki_user->isBlocked() ) { # Show log extract if the wiki_user is currently blocked
 				LogEventsList::showLogExtract(
 					$outputPage,
 					'block',
-					$user->getUserPage(),
+					$wiki_user->getwiki_userPage(),
 					'',
 					array(
 						'lim' => 1,
 						'showIfEmpty' => false,
 						'msgKey' => array(
 							'blocked-notice-logextract',
-							$user->getName() # Support GENDER in notice
+							$wiki_user->getName() # Support GENDER in notice
 						)
 					)
 				);
@@ -1045,8 +1045,8 @@ class Article extends Page {
 		} elseif ( $this->getTitle()->getNamespace() === NS_MEDIAWIKI ) {
 			// Use the default message text
 			$text = $this->getTitle()->getDefaultMessageText();
-		} elseif ( $this->getTitle()->quickUserCan( 'create', $this->getContext()->getUser() )
-			&& $this->getTitle()->quickUserCan( 'edit', $this->getContext()->getUser() )
+		} elseif ( $this->getTitle()->quickwiki_userCan( 'create', $this->getContext()->getwiki_user() )
+			&& $this->getTitle()->quickwiki_userCan( 'edit', $this->getContext()->getwiki_user() )
 		) {
 			$text = wfMessage( 'noarticletext' )->plain();
 		} else {
@@ -1070,14 +1070,14 @@ class Article extends Page {
 		}
 
 		$outputPage = $this->getContext()->getOutput();
-		$user = $this->getContext()->getUser();
-		// If the user is not allowed to see it...
-		if ( !$this->mRevision->userCan( Revision::DELETED_TEXT, $user ) ) {
+		$wiki_user = $this->getContext()->getwiki_user();
+		// If the wiki_user is not allowed to see it...
+		if ( !$this->mRevision->wiki_userCan( Revision::DELETED_TEXT, $wiki_user ) ) {
 			$outputPage->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1\n</div>\n",
 				'rev-deleted-text-permission' );
 
 			return false;
-		// If the user needs to confirm that they want to see it...
+		// If the wiki_user needs to confirm that they want to see it...
 		} elseif ( $this->getContext()->getRequest()->getInt( 'unhide' ) != 1 ) {
 			# Give explanation and add a link to view the revision...
 			$oldid = intval( $this->getOldID() );
@@ -1129,14 +1129,14 @@ class Article extends Page {
 
 		$current = ( $oldid == $this->mPage->getLatest() );
 		$language = $this->getContext()->getLanguage();
-		$user = $this->getContext()->getUser();
+		$wiki_user = $this->getContext()->getwiki_user();
 
-		$td = $language->userTimeAndDate( $timestamp, $user );
-		$tddate = $language->userDate( $timestamp, $user );
-		$tdtime = $language->userTime( $timestamp, $user );
+		$td = $language->wiki_userTimeAndDate( $timestamp, $wiki_user );
+		$tddate = $language->wiki_userDate( $timestamp, $wiki_user );
+		$tdtime = $language->wiki_userTime( $timestamp, $wiki_user );
 
-		# Show user links if allowed to see them. If hidden, then show them only if requested...
-		$userlinks = Linker::revUserTools( $revision, !$unhide );
+		# Show wiki_user links if allowed to see them. If hidden, then show them only if requested...
+		$wiki_userlinks = Linker::revwiki_userTools( $revision, !$unhide );
 
 		$infomsg = $current && !wfMessage( 'revision-info-current' )->isDisabled()
 			? 'revision-info-current'
@@ -1144,8 +1144,8 @@ class Article extends Page {
 
 		$outputPage = $this->getContext()->getOutput();
 		$outputPage->addSubtitle( "<div id=\"mw-{$infomsg}\">" . wfMessage( $infomsg,
-			$td )->rawParams( $userlinks )->params( $revision->getID(), $tddate,
-			$tdtime, $revision->getUser() )->parse() . "</div>" );
+			$td )->rawParams( $wiki_userlinks )->params( $revision->getID(), $tddate,
+			$tdtime, $revision->getwiki_user() )->parse() . "</div>" );
 
 		$lnk = $current
 			? wfMessage( 'currentrevisionlink' )->escaped()
@@ -1212,7 +1212,7 @@ class Article extends Page {
 				) + $extraParams
 			);
 
-		$cdel = Linker::getRevDeleteLink( $user, $revision, $this->getTitle() );
+		$cdel = Linker::getRevDeleteLink( $wiki_user, $revision, $this->getTitle() );
 		if ( $cdel !== '' ) {
 			$cdel .= ' ';
 		}
@@ -1307,10 +1307,10 @@ class Article extends Page {
 		# This code desperately needs to be totally rewritten
 
 		$title = $this->getTitle();
-		$user = $this->getContext()->getUser();
+		$wiki_user = $this->getContext()->getwiki_user();
 
 		# Check permissions
-		$permission_errors = $title->getUserPermissionsErrors( 'delete', $user );
+		$permission_errors = $title->getwiki_userPermissionsErrors( 'delete', $wiki_user );
 		if ( count( $permission_errors ) ) {
 			throw new PermissionsError( 'delete', $permission_errors );
 		}
@@ -1355,19 +1355,19 @@ class Article extends Page {
 			$reason = $deleteReasonList;
 		}
 
-		if ( $request->wasPosted() && $user->matchEditToken( $request->getVal( 'wpEditToken' ),
+		if ( $request->wasPosted() && $wiki_user->matchEditToken( $request->getVal( 'wpEditToken' ),
 			array( 'delete', $this->getTitle()->getPrefixedText() ) ) )
 		{
 			# Flag to hide all contents of the archived revisions
-			$suppress = $request->getVal( 'wpSuppress' ) && $user->isAllowed( 'suppressrevision' );
+			$suppress = $request->getVal( 'wpSuppress' ) && $wiki_user->isAllowed( 'suppressrevision' );
 
 			$this->doDelete( $reason, $suppress );
 
-			if ( $user->isLoggedIn() && $request->getCheck( 'wpWatch' ) != $user->isWatched( $title ) ) {
+			if ( $wiki_user->isLoggedIn() && $request->getCheck( 'wpWatch' ) != $wiki_user->isWatched( $title ) ) {
 				if ( $request->getCheck( 'wpWatch' ) ) {
-					WatchAction::doWatch( $title, $user );
+					WatchAction::doWatch( $title, $wiki_user );
 				} else {
-					WatchAction::doUnwatch( $title, $user );
+					WatchAction::doUnwatch( $title, $wiki_user );
 				}
 			}
 
@@ -1419,9 +1419,9 @@ class Article extends Page {
 
 		wfRunHooks( 'ArticleConfirmDelete', array( $this, $outputPage, &$reason ) );
 
-		$user = $this->getContext()->getUser();
+		$wiki_user = $this->getContext()->getwiki_user();
 
-		if ( $user->isAllowed( 'suppressrevision' ) ) {
+		if ( $wiki_user->isAllowed( 'suppressrevision' ) ) {
 			$suppress = "<tr id=\"wpDeleteSuppressRow\">
 					<td></td>
 					<td class='mw-input'><strong>" .
@@ -1432,7 +1432,7 @@ class Article extends Page {
 		} else {
 			$suppress = '';
 		}
-		$checkWatch = $user->getBoolOption( 'watchdeletion' ) || $user->isWatched( $this->getTitle() );
+		$checkWatch = $wiki_user->getBoolOption( 'watchdeletion' ) || $wiki_user->isWatched( $this->getTitle() );
 
 		$form = Xml::openElement( 'form', array( 'method' => 'post',
 			'action' => $this->getTitle()->getLocalURL( 'action=delete' ), 'id' => 'deleteconfirm' ) ) .
@@ -1464,8 +1464,8 @@ class Article extends Page {
 				"</td>
 			</tr>";
 
-		# Disallow watching if user is not logged in
-		if ( $user->isLoggedIn() ) {
+		# Disallow watching if wiki_user is not logged in
+		if ( $wiki_user->isLoggedIn() ) {
 			$form .= "
 			<tr>
 				<td></td>
@@ -1487,10 +1487,10 @@ class Article extends Page {
 			</tr>" .
 			Xml::closeElement( 'table' ) .
 			Xml::closeElement( 'fieldset' ) .
-			Html::hidden( 'wpEditToken', $user->getEditToken( array( 'delete', $this->getTitle()->getPrefixedText() ) ) ) .
+			Html::hidden( 'wpEditToken', $wiki_user->getEditToken( array( 'delete', $this->getTitle()->getPrefixedText() ) ) ) .
 			Xml::closeElement( 'form' );
 
-			if ( $user->isAllowed( 'editinterface' ) ) {
+			if ( $wiki_user->isAllowed( 'editinterface' ) ) {
 				$title = Title::makeTitle( NS_MEDIAWIKI, 'Deletereason-dropdown' );
 				$link = Linker::link(
 					$title,
@@ -1613,14 +1613,14 @@ class Article extends Page {
 	 * @since 1.16 (r52326) for LiquidThreads
 	 *
 	 * @param $oldid mixed integer Revision ID or null
-	 * @param $user User The relevant user
+	 * @param $wiki_user wiki_user The relevant wiki_user
 	 * @return ParserOutput or false if the given revsion ID is not found
 	 */
-	public function getParserOutput( $oldid = null, User $user = null ) {
-		if ( $user === null ) {
+	public function getParserOutput( $oldid = null, wiki_user $wiki_user = null ) {
+		if ( $wiki_user === null ) {
 			$parserOptions = $this->getParserOptions();
 		} else {
-			$parserOptions = $this->mPage->makeParserOptions( $user );
+			$parserOptions = $this->mPage->makeParserOptions( $wiki_user );
 		}
 
 		return $this->mPage->getParserOutput( $parserOptions, $oldid );
@@ -1709,7 +1709,7 @@ class Article extends Page {
 	}
 
 	/**
-	 * User-interface handler for the "watch" action.
+	 * wiki_user-interface handler for the "watch" action.
 	 * Requires Request to pass a token as of 1.18.
 	 * @deprecated since 1.18
 	 */
@@ -1719,7 +1719,7 @@ class Article extends Page {
 	}
 
 	/**
-	 * Add this page to the current user's watchlist
+	 * Add this page to the current wiki_user's watchlist
 	 *
 	 * This is safe to be called multiple times
 	 *
@@ -1728,11 +1728,11 @@ class Article extends Page {
 	 */
 	public function doWatch() {
 		wfDeprecated( __METHOD__, '1.18' );
-		return WatchAction::doWatch( $this->getTitle(), $this->getContext()->getUser() );
+		return WatchAction::doWatch( $this->getTitle(), $this->getContext()->getwiki_user() );
 	}
 
 	/**
-	 * User interface handler for the "unwatch" action.
+	 * wiki_user interface handler for the "unwatch" action.
 	 * Requires Request to pass a token as of 1.18.
 	 * @deprecated since 1.18
 	 */
@@ -1748,7 +1748,7 @@ class Article extends Page {
 	 */
 	public function doUnwatch() {
 		wfDeprecated( __METHOD__, '1.18' );
-		return WatchAction::doUnwatch( $this->getTitle(), $this->getContext()->getUser() );
+		return WatchAction::doUnwatch( $this->getTitle(), $this->getContext()->getwiki_user() );
 	}
 
 	/**
@@ -1829,11 +1829,11 @@ class Article extends Page {
 	 * @param $expiry array
 	 * @param $cascade bool
 	 * @param $reason string
-	 * @param $user User
+	 * @param $wiki_user wiki_user
 	 * @return Status
 	 */
-	public function doUpdateRestrictions( array $limit, array $expiry, &$cascade, $reason, User $user ) {
-		return $this->mPage->doUpdateRestrictions( $limit, $expiry, $cascade, $reason, $user );
+	public function doUpdateRestrictions( array $limit, array $expiry, &$cascade, $reason, wiki_user $wiki_user ) {
+		return $this->mPage->doUpdateRestrictions( $limit, $expiry, $cascade, $reason, $wiki_user );
 	}
 
 	/**
@@ -1865,12 +1865,12 @@ class Article extends Page {
 	 * @param $token
 	 * @param $bot
 	 * @param $resultDetails
-	 * @param $user User
+	 * @param $wiki_user wiki_user
 	 * @return array
 	 */
-	public function doRollback( $fromP, $summary, $token, $bot, &$resultDetails, User $user = null ) {
-		$user = is_null( $user ) ? $this->getContext()->getUser() : $user;
-		return $this->mPage->doRollback( $fromP, $summary, $token, $bot, $resultDetails, $user );
+	public function doRollback( $fromP, $summary, $token, $bot, &$resultDetails, wiki_user $wiki_user = null ) {
+		$wiki_user = is_null( $wiki_user ) ? $this->getContext()->getwiki_user() : $wiki_user;
+		return $this->mPage->doRollback( $fromP, $summary, $token, $bot, $resultDetails, $wiki_user );
 	}
 
 	/**
@@ -1878,12 +1878,12 @@ class Article extends Page {
 	 * @param $summary
 	 * @param $bot
 	 * @param $resultDetails
-	 * @param $guser User
+	 * @param $gwiki_user wiki_user
 	 * @return array
 	 */
-	public function commitRollback( $fromP, $summary, $bot, &$resultDetails, User $guser = null ) {
-		$guser = is_null( $guser ) ? $this->getContext()->getUser() : $guser;
-		return $this->mPage->commitRollback( $fromP, $summary, $bot, $resultDetails, $guser );
+	public function commitRollback( $fromP, $summary, $bot, &$resultDetails, wiki_user $gwiki_user = null ) {
+		$gwiki_user = is_null( $gwiki_user ) ? $this->getContext()->getwiki_user() : $gwiki_user;
+		return $this->mPage->commitRollback( $fromP, $summary, $bot, $resultDetails, $gwiki_user );
 	}
 
 	/**

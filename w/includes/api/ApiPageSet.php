@@ -342,10 +342,10 @@ class ApiPageSet extends ApiQueryBase {
 
 	/**
 	 * Populate this PageSet from a rowset returned from the database
-	 * @param $db DatabaseBase object
+	 * @param  DatabaseBase object
 	 * @param $queryResult ResultWrapper Query result object
 	 */
-	public function populateFromQueryResult( $db, $queryResult ) {
+	public function populateFromQueryResult( , $queryResult ) {
 		$this->profileIn();
 		$this->initFromQueryResult( $queryResult );
 		$this->profileOut();
@@ -416,12 +416,12 @@ class ApiPageSet extends ApiQueryBase {
 			return;
 		}
 
-		$db = $this->getDB();
-		$set = $linkBatch->constructSet( 'page', $db );
+		 = $this->getDB();
+		$set = $linkBatch->constructSet( 'page',  );
 
 		// Get pageIDs data from the `page` table
 		$this->profileDBIn();
-		$res = $db->select( 'page', $this->getPageTableFields(), $set,
+		$res = ->select( 'page', $this->getPageTableFields(), $set,
 					__METHOD__ );
 		$this->profileDBOut();
 
@@ -451,11 +451,11 @@ class ApiPageSet extends ApiQueryBase {
 			$set = array(
 				'page_id' => $pageids
 			);
-			$db = $this->getDB();
+			 = $this->getDB();
 
 			// Get pageIDs data from the `page` table
 			$this->profileDBIn();
-			$res = $db->select( 'page', $this->getPageTableFields(), $set,
+			$res = ->select( 'page', $this->getPageTableFields(), $set,
 						__METHOD__ );
 			$this->profileDBOut();
 		}
@@ -481,7 +481,7 @@ class ApiPageSet extends ApiQueryBase {
 			ApiBase::dieDebug( __METHOD__, 'Missing $processTitles parameter when $remaining is provided' );
 		}
 
-		$usernames = array();
+		$wiki_usernames = array();
 		if ( $res ) {
 			foreach ( $res as $row ) {
 				$pageId = intval( $row->page_id );
@@ -500,7 +500,7 @@ class ApiPageSet extends ApiQueryBase {
 
 				// Need gender information
 				if( MWNamespace::hasGenderDistinction( $row->page_namespace ) ) {
-					$usernames[] = $row->page_title;
+					$wiki_usernames[] = $row->page_title;
 				}
 			}
 		}
@@ -509,17 +509,17 @@ class ApiPageSet extends ApiQueryBase {
 			// Any items left in the $remaining list are added as missing
 			if ( $processTitles ) {
 				// The remaining titles in $remaining are non-existent pages
-				foreach ( $remaining as $ns => $dbkeys ) {
-					foreach ( array_keys( $dbkeys ) as $dbkey ) {
-						$title = Title::makeTitle( $ns, $dbkey );
-						$this->mAllPages[$ns][$dbkey] = $this->mFakePageId;
+				foreach ( $remaining as $ns => keys ) {
+					foreach ( array_keys( keys ) as key ) {
+						$title = Title::makeTitle( $ns, key );
+						$this->mAllPages[$ns][key] = $this->mFakePageId;
 						$this->mMissingTitles[$this->mFakePageId] = $title;
 						$this->mFakePageId--;
 						$this->mTitles[] = $title;
 
 						// need gender information
 						if( MWNamespace::hasGenderDistinction( $ns ) ) {
-							$usernames[] = $dbkey;
+							$wiki_usernames[] = key;
 						}
 					}
 				}
@@ -535,7 +535,7 @@ class ApiPageSet extends ApiQueryBase {
 
 		// Get gender information
 		$genderCache = GenderCache::singleton();
-		$genderCache->doQuery( $usernames, __METHOD__ );
+		$genderCache->doQuery( $wiki_usernames, __METHOD__ );
 	}
 
 	/**
@@ -549,7 +549,7 @@ class ApiPageSet extends ApiQueryBase {
 		}
 
 		$revids = array_map( 'intval', $revids ); // paranoia
-		$db = $this->getDB();
+		 = $this->getDB();
 		$pageids = array();
 		$remaining = array_flip( $revids );
 
@@ -562,7 +562,7 @@ class ApiPageSet extends ApiQueryBase {
 
 			// Get pageIDs data from the `page` table
 			$this->profileDBIn();
-			$res = $db->select( $tables, $fields, $where,  __METHOD__ );
+			$res = ->select( $tables, $fields, $where,  __METHOD__ );
 			foreach ( $res as $row ) {
 				$revid = intval( $row->rev_id );
 				$pageid = intval( $row->rev_page );
@@ -586,7 +586,7 @@ class ApiPageSet extends ApiQueryBase {
 	 */
 	private function resolvePendingRedirects() {
 		if ( $this->mResolveRedirects ) {
-			$db = $this->getDB();
+			 = $this->getDB();
 			$pageFlds = $this->getPageTableFields();
 
 			// Repeat until all redirects have been resolved
@@ -600,14 +600,14 @@ class ApiPageSet extends ApiQueryBase {
 					break;
 				}
 
-				$set = $linkBatch->constructSet( 'page', $db );
+				$set = $linkBatch->constructSet( 'page',  );
 				if ( $set === false ) {
 					break;
 				}
 
 				// Get pageIDs data from the `page` table
 				$this->profileDBIn();
-				$res = $db->select( 'page', $pageFlds, $set, __METHOD__ );
+				$res = ->select( 'page', $pageFlds, $set, __METHOD__ );
 				$this->profileDBOut();
 
 				// Hack: get the ns:titles stored in array(ns => array(titles)) format
@@ -625,10 +625,10 @@ class ApiPageSet extends ApiQueryBase {
 	 */
 	private function getRedirectTargets() {
 		$lb = new LinkBatch();
-		$db = $this->getDB();
+		 = $this->getDB();
 
 		$this->profileDBIn();
-		$res = $db->select(
+		$res = ->select(
 			'redirect',
 			array(
 				'rd_from',

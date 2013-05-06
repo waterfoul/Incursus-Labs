@@ -13,7 +13,7 @@
  */
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-justify' => 'jostifai di paragraf-dem',
 'tog-hideminor' => 'Haid di lili chenj-dem na di risent chenj list',
 'tog-extendwatchlist' => 'Big di wachlist fo sho ol di chenj-dem,  pas di risent chenj-dem nomo',
@@ -127,13 +127,13 @@ $messages = array(
 'talk' => 'Diskoshon',
 'views' => 'Vyu-dem',
 'toolbox' => 'Tulboks',
-'userpage' => 'Luk dis yuza-im pej',
+'wiki_userpage' => 'Luk dis yuza-im pej',
 'otherlanguages' => 'Na oda langwej-dem',
 'jumpto' => 'Jomp go:',
 'jumptonavigation' => 'navigeshon',
 'jumptosearch' => 'Luk fo',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Na bot {{SITENAME}}',
 'aboutpage' => 'Project:Na bot',
 'copyright' => 'Dis kontent de onda $1 .',
@@ -185,7 +185,7 @@ Luk [[Special:Version|version page]].',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Pej',
-'nstab-user' => 'Yuza-im Pej',
+'nstab-wiki_user' => 'Yuza-im Pej',
 'nstab-media' => 'Midya Pej',
 'nstab-special' => 'Speshal Pej',
 'nstab-project' => 'Projekt Pej',
@@ -208,9 +208,9 @@ Luk [[Special:Version|version page]].',
 'login' => 'Login',
 'nav-login-createaccount' => 'Login / Mek yu-yon akaunt',
 'loginprompt' => 'Yu get fo de yuz kuki-dem foh ebul fo login {{SITENAME}}.',
-'userlogin' => 'Login / Mek yu-yon akaunt',
+'wiki_userlogin' => 'Login / Mek yu-yon akaunt',
 'logout' => 'Komot na di sait',
-'userlogout' => 'Komot na di sait',
+'wiki_userlogout' => 'Komot na di sait',
 'notloggedin' => 'Yu no login yet',
 'nologin' => "Yu don mek yu akaunt? '''$1'''.",
 'nologinlink' => 'Mek yu-yon akaunt',
@@ -219,7 +219,7 @@ Luk [[Special:Version|version page]].',
 'gotaccountlink' => 'Login',
 'createaccountmail' => 'wit imel',
 'badretype' => 'Di paswohd-dehm we yu taip mach.',
-'userexists' => 'Oda pohsin de yuz da yuzanem de.
+'wiki_userexists' => 'Oda pohsin de yuz da yuzanem de.
 Yu go geht fo pik difren wan.',
 
 # Edit pages
@@ -293,7 +293,7 @@ Memba se somtem dem indeks-dem noh op tu det {{SITENAME}}.',
 'prefsnologin' => 'Yu no login yet',
 'searchresultshead' => 'Sach',
 'youremail' => 'Imel:',
-'username' => 'Yuzanem:',
+'wiki_username' => 'Yuzanem:',
 
 # Recent changes
 'recentchanges' => 'Risent chenj-dem',
@@ -321,7 +321,7 @@ Memba se somtem dem indeks-dem noh op tu det {{SITENAME}}.',
 'filehist-current' => 'Korent',
 'filehist-datetime' => 'Det/Tem',
 'filehist-thumb' => 'Tomnel',
-'filehist-user' => 'Yuza',
+'filehist-wiki_user' => 'Yuza',
 'filehist-comment' => 'Koment',
 'imagelinks' => 'Fail yusej',
 'linkstoimage' => 'Di {{PLURAL:$1|pej de link|pej-dem  de link}} go dis fail:',
@@ -425,7 +425,7 @@ Di [[Special:WhatLinksHere/$2|ful list]] de yah.',
 'thumbnail_error' => 'Problem foh mek dis tombnel: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Yu yuza pej',
+'tooltip-pt-wiki_userpage' => 'Yu yuza pej',
 'tooltip-pt-mytalk' => 'Yu tok pej',
 'tooltip-pt-preferences' => 'Yu prefrens-dem',
 'tooltip-pt-mycontris' => 'List ov yu kontribyushon-dem',
@@ -459,7 +459,7 @@ Yu go ebul luk im sos.',
 'tooltip-feed-rss' => 'RSS feed foh dis pej-ya',
 'tooltip-feed-atom' => 'Atom fid foh dis pej-ya',
 'tooltip-t-contributions' => 'dis yuza-im kontribyushon list',
-'tooltip-t-emailuser' => 'Sen imel go dis yuza',
+'tooltip-t-emailwiki_user' => 'Sen imel go dis yuza',
 'tooltip-t-upload' => 'Oplod fail-dem',
 'tooltip-t-specialpages' => 'List we get ol di speshal pej-dem',
 'tooltip-t-print' => 'Vazhon fo print',
@@ -482,7 +482,7 @@ Yu go ebul luk im sos.',
 
 # E-mail address confirmation
 'confirmemail' => 'Konfam yu e-mail adrehs',
-'confirmemail_noemail' => 'Di email adrehs we yu pu na [[Special:Preferences|user preferences]] noh de.',
+'confirmemail_noemail' => 'Di email adrehs we yu pu na [[Special:Preferences|wiki_user preferences]] noh de.',
 
 # Multipage image navigation
 'imgmultigo' => 'Go to am!',

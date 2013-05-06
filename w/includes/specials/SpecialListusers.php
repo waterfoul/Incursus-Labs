@@ -1,6 +1,6 @@
 <?php
 /**
- * Implements Special:Listusers
+ * Implements Special:Listwiki_users
  *
  * Copyright © 2004 Brion Vibber, lcrocker, Tim Starling,
  * Domas Mituzas, Antoine Musso, Jens Frank, Zhengzhu,
@@ -26,13 +26,13 @@
  */
 
 /**
- * This class is used to get a list of user. The ones with specials
+ * This class is used to get a list of wiki_user. The ones with specials
  * rights (sysop, bureaucrat, developer) will have them displayed
  * next to their names.
  *
  * @ingroup SpecialPage
  */
-class UsersPager extends AlphabeticPager {
+class wiki_usersPager extends AlphabeticPager {
 
 	/**
 	 * @param $context IContextSource
@@ -46,16 +46,16 @@ class UsersPager extends AlphabeticPager {
 		$request = $this->getRequest();
 		$par = ( $par !== null ) ? $par : '';
 		$parms = explode( '/', $par );
-		$symsForAll = array( '*', 'user' );
-		if ( $parms[0] != '' && ( in_array( $par, User::getAllGroups() ) || in_array( $par, $symsForAll ) ) ) {
+		$symsForAll = array( '*', 'wiki_user' );
+		if ( $parms[0] != '' && ( in_array( $par, wiki_user::getAllGroups() ) || in_array( $par, $symsForAll ) ) ) {
 			$this->requestedGroup = $par;
-			$un = $request->getText( 'username' );
+			$un = $request->getText( 'wiki_username' );
 		} elseif ( count( $parms ) == 2 ) {
 			$this->requestedGroup = $parms[0];
 			$un = $parms[1];
 		} else {
 			$this->requestedGroup = $request->getVal( 'group' );
-			$un = ( $par != '' ) ? $par : $request->getText( 'username' );
+			$un = ( $par != '' ) ? $par : $request->getText( 'wiki_username' );
 		}
 		if ( in_array( $this->requestedGroup, $symsForAll ) ) {
 			$this->requestedGroup = '';
@@ -64,11 +64,11 @@ class UsersPager extends AlphabeticPager {
 		$this->creationSort = $request->getBool( 'creationSort' );
 		$this->including = $including;
 
-		$this->requestedUser = '';
+		$this->requestedwiki_user = '';
 		if ( $un != '' ) {
-			$username = Title::makeTitleSafe( NS_USER, $un );
-			if( ! is_null( $username ) ) {
-				$this->requestedUser = $username->getText();
+			$wiki_username = Title::makeTitleSafe( NS_USER, $un );
+			if( ! is_null( $wiki_username ) ) {
+				$this->requestedwiki_user = $wiki_username->getText();
 			}
 		}
 		parent::__construct();
@@ -78,17 +78,17 @@ class UsersPager extends AlphabeticPager {
 	 * @return string
 	 */
 	function getIndexField() {
-		return $this->creationSort ? 'user_id' : 'user_name';
+		return $this->creationSort ? 'wiki_user_id' : 'wiki_user_name';
 	}
 
 	/**
 	 * @return Array
 	 */
 	function getQueryInfo() {
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 		$conds = array();
 		// Don't show hidden names
-		if( !$this->getUser()->isAllowed( 'hideuser' ) ) {
+		if( !$this->getwiki_user()->isAllowed( 'hidewiki_user' ) ) {
 			$conds[] = 'ipb_deleted IS NULL';
 		}
 
@@ -97,38 +97,38 @@ class UsersPager extends AlphabeticPager {
 		if( $this->requestedGroup != '' ) {
 			$conds['ug_group'] = $this->requestedGroup;
 		} else {
-			//$options['USE INDEX'] = $this->creationSort ? 'PRIMARY' : 'user_name';
+			//$options['USE INDEX'] = $this->creationSort ? 'PRIMARY' : 'wiki_user_name';
 		}
-		if( $this->requestedUser != '' ) {
+		if( $this->requestedwiki_user != '' ) {
 			# Sorted either by account creation or name
 			if( $this->creationSort ) {
-				$conds[] = 'user_id >= ' . intval( User::idFromName( $this->requestedUser ) );
+				$conds[] = 'wiki_user_id >= ' . intval( wiki_user::idFromName( $this->requestedwiki_user ) );
 			} else {
-				$conds[] = 'user_name >= ' . $dbr->addQuotes( $this->requestedUser );
+				$conds[] = 'wiki_user_name >= ' . r->addQuotes( $this->requestedwiki_user );
 			}
 		}
 		if( $this->editsOnly ) {
-			$conds[] = 'user_editcount > 0';
+			$conds[] = 'wiki_user_editcount > 0';
 		}
 
-		$options['GROUP BY'] = $this->creationSort ? 'user_id' : 'user_name';
+		$options['GROUP BY'] = $this->creationSort ? 'wiki_user_id' : 'wiki_user_name';
 
 		$query = array(
-			'tables' => array( 'user', 'user_groups', 'ipblocks'),
+			'tables' => array( 'wiki_user', 'wiki_user_groups', 'ipblocks'),
 			'fields' => array(
-				'user_name' => $this->creationSort ? 'MAX(user_name)' : 'user_name',
-				'user_id' => $this->creationSort ? 'user_id' : 'MAX(user_id)',
-				'edits' => 'MAX(user_editcount)',
+				'wiki_user_name' => $this->creationSort ? 'MAX(wiki_user_name)' : 'wiki_user_name',
+				'wiki_user_id' => $this->creationSort ? 'wiki_user_id' : 'MAX(wiki_user_id)',
+				'edits' => 'MAX(wiki_user_editcount)',
 				'numgroups' => 'COUNT(ug_group)',
-				'singlegroup' => 'MAX(ug_group)', // the usergroup if there is only one
-				'creation' => 'MIN(user_registration)',
+				'singlegroup' => 'MAX(ug_group)', // the wiki_usergroup if there is only one
+				'creation' => 'MIN(wiki_user_registration)',
 				'ipb_deleted' => 'MAX(ipb_deleted)' // block/hide status
 			),
 			'options' => $options,
 			'join_conds' => array(
-				'user_groups' => array( 'LEFT JOIN', 'user_id=ug_user' ),
+				'wiki_user_groups' => array( 'LEFT JOIN', 'wiki_user_id=ug_wiki_user' ),
 				'ipblocks' => array( 'LEFT JOIN', array(
-					'user_id=ipb_user',
+					'wiki_user_id=ipb_wiki_user',
 					'ipb_deleted' => 1,
 					'ipb_auto' => 0
 				)),
@@ -136,7 +136,7 @@ class UsersPager extends AlphabeticPager {
 			'conds' => $conds
 		);
 
-		wfRunHooks( 'SpecialListusersQueryInfo', array( $this, &$query ) );
+		wfRunHooks( 'SpecialListwiki_usersQueryInfo', array( $this, &$query ) );
 		return $query;
 	}
 
@@ -145,23 +145,23 @@ class UsersPager extends AlphabeticPager {
 	 * @return String
 	 */
 	function formatRow( $row ) {
-		if ( $row->user_id == 0 ) { #Bug 16487
+		if ( $row->wiki_user_id == 0 ) { #Bug 16487
 			return '';
 		}
 
-		$userName = $row->user_name;
+		$wiki_userName = $row->wiki_user_name;
 
-		$ulinks = Linker::userLink( $row->user_id, $userName );
-		$ulinks .= Linker::userToolLinks( $row->user_id, $userName );
+		$ulinks = Linker::wiki_userLink( $row->wiki_user_id, $wiki_userName );
+		$ulinks .= Linker::wiki_userToolLinks( $row->wiki_user_id, $wiki_userName );
 
 		$lang = $this->getLanguage();
 
 		$groups = '';
-		$groups_list = self::getGroups( $row->user_id );
+		$groups_list = self::getGroups( $row->wiki_user_id );
 		if( !$this->including && count( $groups_list ) > 0 ) {
 			$list = array();
 			foreach( $groups_list as $group )
-				$list[] = self::buildGroupLink( $group, $userName );
+				$list[] = self::buildGroupLink( $group, $wiki_userName );
 			$groups = $lang->commaList( $list );
 		}
 
@@ -173,29 +173,29 @@ class UsersPager extends AlphabeticPager {
 		$edits = '';
 		global $wgEdititis;
 		if ( !$this->including && $wgEdititis ) {
-			$edits = ' [' . $this->msg( 'usereditcount' )->numParams( $row->edits )->escaped() . ']';
+			$edits = ' [' . $this->msg( 'wiki_usereditcount' )->numParams( $row->edits )->escaped() . ']';
 		}
 
 		$created = '';
 		# Some rows may be NULL
 		if( !$this->including && $row->creation ) {
-			$user = $this->getUser();
-			$d = $lang->userDate( $row->creation, $user );
-			$t = $lang->userTime( $row->creation, $user );
-			$created = $this->msg( 'usercreated', $d, $t, $row->user_name )->escaped();
+			$wiki_user = $this->getwiki_user();
+			$d = $lang->wiki_userDate( $row->creation, $wiki_user );
+			$t = $lang->wiki_userTime( $row->creation, $wiki_user );
+			$created = $this->msg( 'wiki_usercreated', $d, $t, $row->wiki_user_name )->escaped();
 			$created = ' ' . $this->msg( 'parentheses' )->rawParams( $created )->escaped();
 		}
 
-		wfRunHooks( 'SpecialListusersFormatRow', array( &$item, $row ) );
+		wfRunHooks( 'SpecialListwiki_usersFormatRow', array( &$item, $row ) );
 		return Html::rawElement( 'li', array(), "{$item}{$edits}{$created}" );
 	}
 
 	function doBatchLookups() {
 		$batch = new LinkBatch();
-		# Give some pointers to make user links
+		# Give some pointers to make wiki_user links
 		foreach ( $this->mResult as $row ) {
-			$batch->add( NS_USER, $row->user_name );
-			$batch->add( NS_USER_TALK, $row->user_name );
+			$batch->add( NS_USER, $row->wiki_user_name );
+			$batch->add( NS_USER_TALK, $row->wiki_user_name );
 		}
 		$batch->execute();
 		$this->mResult->rewind();
@@ -210,13 +210,13 @@ class UsersPager extends AlphabeticPager {
 		list( $self ) = explode( '/', $this->getTitle()->getPrefixedDBkey() );
 
 		# Form tag
-		$out  = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'mw-listusers-form' ) ) .
-			Xml::fieldset( $this->msg( 'listusers' )->text() ) .
+		$out  = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'mw-listwiki_users-form' ) ) .
+			Xml::fieldset( $this->msg( 'listwiki_users' )->text() ) .
 			Html::hidden( 'title', $self );
 
-		# Username field
-		$out .= Xml::label( $this->msg( 'listusersfrom' )->text(), 'offset' ) . ' ' .
-			Xml::input( 'username', 20, $this->requestedUser, array( 'id' => 'offset' ) ) . ' ';
+		# wiki_username field
+		$out .= Xml::label( $this->msg( 'listwiki_usersfrom' )->text(), 'offset' ) . ' ' .
+			Xml::input( 'wiki_username', 20, $this->requestedwiki_user, array( 'id' => 'offset' ) ) . ' ';
 
 		# Group drop-down list
 		$out .= Xml::label( $this->msg( 'group' )->text(), 'group' ) . ' ' .
@@ -225,17 +225,17 @@ class UsersPager extends AlphabeticPager {
 		foreach( $this->getAllGroups() as $group => $groupText )
 			$out .= Xml::option( $groupText, $group, $group == $this->requestedGroup );
 		$out .= Xml::closeElement( 'select' ) . '<br />';
-		$out .= Xml::checkLabel( $this->msg( 'listusers-editsonly' )->text(), 'editsOnly', 'editsOnly', $this->editsOnly );
+		$out .= Xml::checkLabel( $this->msg( 'listwiki_users-editsonly' )->text(), 'editsOnly', 'editsOnly', $this->editsOnly );
 		$out .= '&#160;';
-		$out .= Xml::checkLabel( $this->msg( 'listusers-creationsort' )->text(), 'creationSort', 'creationSort', $this->creationSort );
+		$out .= Xml::checkLabel( $this->msg( 'listwiki_users-creationsort' )->text(), 'creationSort', 'creationSort', $this->creationSort );
 		$out .= '<br />';
 
-		wfRunHooks( 'SpecialListusersHeaderForm', array( $this, &$out ) );
+		wfRunHooks( 'SpecialListwiki_usersHeaderForm', array( $this, &$out ) );
 
 		# Submit button and form bottom
 		$out .= Html::hidden( 'limit', $this->mLimit );
 		$out .= Xml::submitButton( $this->msg( 'allpagessubmit' )->text() );
-		wfRunHooks( 'SpecialListusersHeader', array( $this, &$out ) );
+		wfRunHooks( 'SpecialListwiki_usersHeader', array( $this, &$out ) );
 		$out .= Xml::closeElement( 'fieldset' ) .
 			Xml::closeElement( 'form' );
 
@@ -248,15 +248,15 @@ class UsersPager extends AlphabeticPager {
 	 */
 	function getAllGroups() {
 		$result = array();
-		foreach( User::getAllGroups() as $group ) {
-			$result[$group] = User::getGroupName( $group );
+		foreach( wiki_user::getAllGroups() as $group ) {
+			$result[$group] = wiki_user::getGroupName( $group );
 		}
 		asort( $result );
 		return $result;
 	}
 
 	/**
-	 * Preserve group and username offset parameters when paging
+	 * Preserve group and wiki_username offset parameters when paging
 	 * @return array
 	 */
 	function getDefaultQuery() {
@@ -264,22 +264,22 @@ class UsersPager extends AlphabeticPager {
 		if( $this->requestedGroup != '' ) {
 			$query['group'] = $this->requestedGroup;
 		}
-		if( $this->requestedUser != '' ) {
-			$query['username'] = $this->requestedUser;
+		if( $this->requestedwiki_user != '' ) {
+			$query['wiki_username'] = $this->requestedwiki_user;
 		}
-		wfRunHooks( 'SpecialListusersDefaultQuery', array( $this, &$query ) );
+		wfRunHooks( 'SpecialListwiki_usersDefaultQuery', array( $this, &$query ) );
 		return $query;
 	}
 
 	/**
-	 * Get a list of groups the specified user belongs to
+	 * Get a list of groups the specified wiki_user belongs to
 	 *
-	 * @param $uid Integer: user id
+	 * @param $uid Integer: wiki_user id
 	 * @return array
 	 */
 	protected static function getGroups( $uid ) {
-		$user = User::newFromId( $uid );
-		$groups = array_diff( $user->getEffectiveGroups(), User::getImplicitGroups() );
+		$wiki_user = wiki_user::newFromId( $uid );
+		$groups = array_diff( $wiki_user->getEffectiveGroups(), wiki_user::getImplicitGroups() );
 		return $groups;
 	}
 
@@ -287,52 +287,52 @@ class UsersPager extends AlphabeticPager {
 	 * Format a link to a group description page
 	 *
 	 * @param $group String: group name
-	 * @param $username String Username
+	 * @param $wiki_username String wiki_username
 	 * @return string
 	 */
-	protected static function buildGroupLink( $group, $username ) {
-		return User::makeGroupLinkHtml( $group, htmlspecialchars( User::getGroupMember( $group, $username ) ) );
+	protected static function buildGroupLink( $group, $wiki_username ) {
+		return wiki_user::makeGroupLinkHtml( $group, htmlspecialchars( wiki_user::getGroupMember( $group, $wiki_username ) ) );
 	}
 }
 
 /**
  * @ingroup SpecialPage
  */
-class SpecialListUsers extends SpecialPage {
+class SpecialListwiki_users extends SpecialPage {
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		parent::__construct( 'Listusers' );
+		parent::__construct( 'Listwiki_users' );
 		$this->mIncludable = true;
 	}
 
 	/**
 	 * Show the special page
 	 *
-	 * @param $par string (optional) A group to list users from
+	 * @param $par string (optional) A group to list wiki_users from
 	 */
 	public function execute( $par ) {
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$up = new UsersPager( $this->getContext(), $par, $this->including() );
+		$up = new wiki_usersPager( $this->getContext(), $par, $this->including() );
 
 		# getBody() first to check, if empty
-		$usersbody = $up->getBody();
+		$wiki_usersbody = $up->getBody();
 
 		$s = '';
 		if ( !$this->including() ) {
 			$s = $up->getPageHeader();
 		}
 
-		if( $usersbody ) {
+		if( $wiki_usersbody ) {
 			$s .= $up->getNavigationBar();
-			$s .= Html::rawElement( 'ul', array(), $usersbody );
+			$s .= Html::rawElement( 'ul', array(), $wiki_usersbody );
 			$s .= $up->getNavigationBar();
 		} else {
-			$s .= $this->msg( 'listusers-noresult' )->parseAsBlock();
+			$s .= $this->msg( 'listwiki_users-noresult' )->parseAsBlock();
 		}
 
 		$this->getOutput()->addHTML( $s );

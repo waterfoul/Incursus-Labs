@@ -41,17 +41,17 @@ class PatchSql extends Maintenance {
 	}
 
 	public function execute() {
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 		foreach ( $this->mArgs as $arg ) {
 			$files = array(
 				$arg,
-				$dbw->patchPath( $arg ),
-				$dbw->patchPath( "patch-$arg.sql" ),
+				w->patchPath( $arg ),
+				w->patchPath( "patch-$arg.sql" ),
 			);
 			foreach ( $files as $file ) {
 				if ( file_exists( $file ) ) {
 					$this->output( "$file ...\n" );
-					$dbw->sourceFile( $file );
+					w->sourceFile( $file );
 					continue 2;
 				}
 			}

@@ -13,39 +13,39 @@ class SwitchExperimentPrefs extends Maintenance {
 		parent::__construct();
 		$this->addOption( 'pref', 'Preference to set', true, true );
 		$this->addOption( 'value', 'Value to set the preference to', true, true );
-		$this->mDescription = 'Set a preference for all users that have the vector-noexperiments preference enabled.';
+		$this->mDescription = 'Set a preference for all wiki_users that have the vector-noexperiments preference enabled.';
 	}
 
 	function execute() {
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
 		$batchSize = 100;
 		$total = 0;
-		$lastUserID = 0;
+		$lastwiki_userID = 0;
 		while ( true ) {
-			$res = $dbw->select( 'user_properties', array( 'up_user' ),
-				array( 'up_property' => 'vector-noexperiments', "up_user > $lastUserID" ),
+			$res = w->select( 'wiki_user_properties', array( 'up_wiki_user' ),
+				array( 'up_property' => 'vector-noexperiments', "up_wiki_user > $lastwiki_userID" ),
 				__METHOD__,
 				array( 'LIMIT' => $batchSize ) );
 			if ( !$res->numRows() ) {
-				$dbw->commit();
+				w->commit();
 				break;
 			}
 			$total += $res->numRows();
 
 			$ids = array();
 			foreach ( $res as $row ) {
-				$ids[] = $row->up_user;
+				$ids[] = $row->up_wiki_user;
 			}
-			$lastUserID = max( $ids );
+			$lastwiki_userID = max( $ids );
 			
 			
 			foreach ( $ids as $id ) {
-				$user = User::newFromId( $id );
-				if ( !$user->isLoggedIn() )
+				$wiki_user = wiki_user::newFromId( $id );
+				if ( !$wiki_user->isLoggedIn() )
 					continue;
-				$user->setOption( $this->getOption( 'pref' ), $this->getOption( 'value' ) );
-				$user->saveSettings();
+				$wiki_user->setOption( $this->getOption( 'pref' ), $this->getOption( 'value' ) );
+				$wiki_user->saveSettings();
 			}
 
 			echo "$total\n";

@@ -29,7 +29,7 @@ $namespaceNames = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Hlenċa undermearcian:',
 'tog-justify' => 'Macian cwidfloccas riht',
 'tog-hideminor' => 'Lytla ādihtas hȳdan in nīƿum hƿeorfum',
@@ -53,7 +53,7 @@ $messages = array(
 'tog-previewonfirst' => 'Forescēaƿe sēon on formestum ādihte',
 'tog-nocache' => 'Ne þafa trameta settunȝe',
 'tog-enotifwatchlistpages' => 'Send mē spearccræftiȝ ǣrend þǣr tramet on mīnum ƿæccȝetæle ƿierþ andƿended',
-'tog-enotifusertalkpages' => 'Send mē spearccræftiȝ ǣrend þǣr mīn brūcendtramet is andƿended',
+'tog-enotifwiki_usertalkpages' => 'Send mē spearccræftiȝ ǣrend þǣr mīn brūcendtramet is andƿended',
 'tog-enotifminoredits' => 'Send mē spearccræftiȝ ǣrend þǣr trametas sind efne lytellīce andƿended',
 'tog-enotifrevealaddr' => 'Ēoƿa mīn spearccræftiȝra ǣrenda stōƿnaman on sprearccræftiȝum ȝecȳðendum ǣrendum',
 'tog-shownumberswatching' => 'Hū mæniȝ ƿæccende brūcendas sēon',
@@ -232,7 +232,7 @@ $messages = array(
 'talk' => 'Ȝespreċ',
 'views' => 'Ansīena',
 'toolbox' => 'Tōlearc',
-'userpage' => 'Seoh brūcendsīdan',
+'wiki_userpage' => 'Seoh brūcendsīdan',
 'projectpage' => 'Seoh ƿeorcsīdan',
 'imagepage' => 'Seoh ȝeƿithordsīdan',
 'mediawikipage' => 'Ȝeƿritsīdan sēon',
@@ -255,7 +255,7 @@ Tō mæniȝe brūcendas ȝesēcaþ to sēonne þās sīdan.
 
 $1',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Ymbe {{SITENAME}}',
 'aboutpage' => 'Project:Ymbe',
 'copyright' => 'Man mæȝ innunȝe under $1 findan.',
@@ -312,7 +312,7 @@ Sēoh þone [[Special:Version|fadunge tramet]].',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Sīde',
-'nstab-user' => 'Brūcendsīde',
+'nstab-wiki_user' => 'Brūcendsīde',
 'nstab-media' => 'Ȝemyndsīde',
 'nstab-special' => 'Syndriȝu sīde',
 'nstab-project' => 'Ƿeorces sīde',
@@ -359,7 +359,7 @@ Cȳþþuhord edƿende ƿōh "<tt>$3: $4</tt>"',
 # Login and logout pages
 'logouttext' => "'''Þū eart nū ūtmeldod.'''
 
-Þū canst ætfeolan tō brūcenne {{SITENAME}} ungecūðe, oþþe þū canst [[Special:UserLogin|inmeldian eft]] tō ylcan oþþe ōðrum brūcende.
+Þū canst ætfeolan tō brūcenne {{SITENAME}} ungecūðe, oþþe þū canst [[Special:wiki_userLogin|inmeldian eft]] tō ylcan oþþe ōðrum brūcende.
 Cnāw þæt sume sīdan cunnon gelǣstende ēowod wesan swā þū wǣre gīet inmeldod, oþ þæt þū clǣnsie þīnes sēcendtōles gemynd.",
 'welcomecreation' => '== Ƿilcumen, $1! ==
 
@@ -371,10 +371,10 @@ Cnāw þæt sume sīdan cunnon gelǣstende ēowod wesan swā þū wǣre gīet in
 'yourdomainname' => 'Þīn ȝeƿeald:',
 'login' => 'Inmeldian',
 'nav-login-createaccount' => 'Nīƿne hordcleofan scieppan oþþe inmeldian',
-'userlogin' => 'Macian nīwne grīman oþþe grīman brūcan',
-'userloginnocreate' => 'Inmeldian',
+'wiki_userlogin' => 'Macian nīwne grīman oþþe grīman brūcan',
+'wiki_userloginnocreate' => 'Inmeldian',
 'logout' => 'Ūtmeldian',
-'userlogout' => 'Ūtmeldian',
+'wiki_userlogout' => 'Ūtmeldian',
 'notloggedin' => 'Ne inȝemelded',
 'nologinlink' => 'Hordcleofan scieppan',
 'createaccount' => 'Hordcleofan scieppan',
@@ -382,7 +382,7 @@ Cnāw þæt sume sīdan cunnon gelǣstende ēowod wesan swā þū wǣre gīet in
 'createaccountmail' => 'Þurh spearcenaǣrend',
 'createaccountreason' => 'Racu:',
 'badretype' => 'Þā þafungƿord þe ƿrite þū, bēoþ unȝemæcca.',
-'userexists' => 'Hƿā hæfþ þæt brūcendnama.
+'wiki_userexists' => 'Hƿā hæfþ þæt brūcendnama.
 Bidde ōðer brūcendnama ċēosan.',
 'loginerror' => 'Inmeldunge ƿōh',
 'createaccounterror' => 'Ne cūðe macian reccend: $1',
@@ -392,10 +392,10 @@ Bidde ōðer brūcendnama ċēosan.',
 Bidde þē, lǣt hīe tō twyrcenne, and þǣræfter inmelda þurh þīnne nīwan brūcendnaman and gelēafnessword.',
 'loginsuccesstitle' => 'Inmeldung gesǣlde',
 'loginsuccess' => "'''Þu eart nū inmeldod tō {{SITENAME}} swā \"\$1\".'''",
-'nosuchuser' => 'Þǣr nis nān brūcere þe hæfþ þone naman "$1".
+'nosuchwiki_user' => 'Þǣr nis nān brūcere þe hæfþ þone naman "$1".
 Stafena micelnesse sind hefige and ānlica on brūcendnamum.
-Scēawa þīne wrītunge eft, oþþe brūc þā cartan þe is hērunder tō [[Special:UserLogin/signup|settene nīwne brūcendreccend]].',
-'nosuchusershort' => 'Þǣr is nān brūcend mid þǣm naman "$1".  Edscēawa on þīne wrītunge.',
+Scēawa þīne wrītunge eft, oþþe brūc þā cartan þe is hērunder tō [[Special:wiki_userLogin/signup|settene nīwne brūcendreccend]].',
+'nosuchwiki_usershort' => 'Þǣr is nān brūcend mid þǣm naman "$1".  Edscēawa on þīne wrītunge.',
 'passwordtooshort' => 'Gelēafword sculon habban læst {{PLURAL:$1|1 stafan|$1 stafan}}.',
 'mailmypassword' => 'Nīƿe þafungƿord bȳ e-mail sendan',
 'acct_creation_throttle_hit' => 'Hwæt, þu hæfst gēo geseted {{PLURAL:$1|1 hordcleofan|$1 -}}. Þu ne canst settan ǣnige māran.',
@@ -448,15 +448,15 @@ Scēawa þīne wrītunge eft, oþþe brūc þā cartan þe is hērunder tō [[Sp
 'loginreqlink' => 'inmeldian',
 'loginreqpagetext' => 'Þū scealt $1 tō sēonne ōðre sīdan.',
 'accmailtitle' => 'Þafungƿord sended.',
-'accmailtext' => "Hlīetemaced þafungƿord for [[User talk:$1|$1]] ƿæs to $2 sended.
+'accmailtext' => "Hlīetemaced þafungƿord for [[wiki_user talk:$1|$1]] ƿæs to $2 sended.
 
 Þū meaht þæt þafungƿord hƿeorfan for þissum nīƿan hordcleofa on þǣre ''[[Special:ChangePassword|change password]]'' sīde æfter inmeldiende.",
 'newarticle' => '(Nīƿe)',
 'newarticletext' => "Þu hæfst bende tō tramete gefolgod þe nū gīet ne stendeþ.
 Tō scieppene þone tramet, onginn þyddan in þǣre boxe under (sēo þone [[{{MediaWiki:Helppage}}|helptramet]] for mā gefrǣge).
 Gif þu hider misfōn cōme, cnoca þā þīnne webbscēaweres '''on bæc''' cnæpp.",
-'usercssyoucanpreview' => "'''Rǣd:''' Brūc þone 'Forescēawian' cnæpp tō āfandienne þīne nīwe css/js beforan sparunge.",
-'userjsyoucanpreview' => "'''Rǣd:''' Brūc þone 'Forescēawian' cnæpp tō āfandienne þīne nīwe css/js beforan sparunge.",
+'wiki_usercssyoucanpreview' => "'''Rǣd:''' Brūc þone 'Forescēawian' cnæpp tō āfandienne þīne nīwe css/js beforan sparunge.",
+'wiki_userjsyoucanpreview' => "'''Rǣd:''' Brūc þone 'Forescēawian' cnæpp tō āfandienne þīne nīwe css/js beforan sparunge.",
 'updated' => '(Ednīƿed)',
 'note' => "'''Behielde:'''",
 'previewnote' => "'''Ȝemune þe þēos efne forescēaƿe is.'''
@@ -512,14 +512,14 @@ folcliċum āgnunge oþþe ȝelīċum frēom horde (sēo $1 for āscungum).
 
 # Revision deletion
 'rev-deleted-comment' => '(cƿide fornōm)',
-'rev-deleted-user' => '(brūcendnama fornōm)',
+'rev-deleted-wiki_user' => '(brūcendnama fornōm)',
 'rev-delundel' => 'scēaƿian/hȳdan',
 'rev-showdeleted' => 'scēaƿan',
 'revdelete-show-file-submit' => 'Ȝēa',
 'revdelete-hide-text' => 'Ednīƿungtraht hȳdan',
 'revdelete-hide-image' => 'Fīlinnoþ hȳdan',
 'revdelete-hide-comment' => 'Ādihtcƿide hȳdan',
-'revdelete-hide-user' => 'Ādihteres brūcendnama/IP address hȳdan',
+'revdelete-hide-wiki_user' => 'Ādihteres brūcendnama/IP address hȳdan',
 'revdelete-radio-same' => '(ne hƿeorfan)',
 'revdelete-radio-set' => 'Ȝēa',
 'revdelete-radio-unset' => 'Nā',
@@ -603,7 +603,7 @@ folcliċum āgnunge oþþe ȝelīċum frēom horde (sēo $1 for āscungum).
 'defaultns' => 'Sēcan in þissum namstedum be frambyge:',
 'default' => 'gewunelic',
 'youremail' => 'E-ǣrende *',
-'username' => 'Brūcendnama:',
+'wiki_username' => 'Brūcendnama:',
 'yourrealname' => 'Þīn rihtnama*',
 'yourlanguage' => 'Brūcendofermearces sprǣc',
 'yourvariant' => 'Sprǣce wendung',
@@ -612,31 +612,31 @@ folcliċum āgnunge oþþe ȝelīċum frēom horde (sēo $1 for āscungum).
 'gender-female' => 'Frēo',
 'email' => 'E-ǣrende',
 
-# User rights
-'userrights-user-editname' => 'Brūcendnama ƿrītan:',
-'editusergroup' => 'Ādihtan Brūcendsamþrēatas',
-'userrights-editusergroup' => 'Brūcenda clīeƿenas ādihtan:',
-'saveusergroups' => 'Brūcenda clīeƿenas sparian',
-'userrights-groupsmember' => 'Ȝesīþ þæs:',
-'userrights-reason' => 'Racu:',
+# wiki_user rights
+'wiki_userrights-wiki_user-editname' => 'Brūcendnama ƿrītan:',
+'editwiki_usergroup' => 'Ādihtan Brūcendsamþrēatas',
+'wiki_userrights-editwiki_usergroup' => 'Brūcenda clīeƿenas ādihtan:',
+'savewiki_usergroups' => 'Brūcenda clīeƿenas sparian',
+'wiki_userrights-groupsmember' => 'Ȝesīþ þæs:',
+'wiki_userrights-reason' => 'Racu:',
 
 # Groups
 'group' => 'Clīeƿen:',
-'group-user' => 'Brūcendas:',
+'group-wiki_user' => 'Brūcendas:',
 'group-bot' => 'Searuþralas',
 'group-sysop' => 'Beƿitendas',
 'group-bureaucrat' => 'Tōþeȝnas',
 'group-suppress' => 'Oferȝesihta',
 'group-all' => '(eall)',
 
-'group-user-member' => '{{GENDER:$1|brūcend}}',
+'group-wiki_user-member' => '{{GENDER:$1|brūcend}}',
 'group-bot-member' => 'searuþræl',
 'group-sysop-member' => 'beƿitend',
 'group-suppress-member' => 'oferȝesiht',
 
 'grouppage-sysop' => '{{ns:project}}:Beƿitendas',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Brūcenda riht cranic',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -709,7 +709,7 @@ Cnæpp on sƿeorhēafde hƿeorfþ þā endebyrdnessa.',
 'listfiles' => 'Biliþgetalu',
 'listfiles_date' => 'Tælmearc',
 'listfiles_name' => 'Nama',
-'listfiles_user' => 'Brūcend',
+'listfiles_wiki_user' => 'Brūcend',
 'listfiles_size' => 'Miċelnes',
 'listfiles_description' => 'Tōƿritennes',
 'listfiles_count' => 'Fadunga',
@@ -726,7 +726,7 @@ Cnæpp on sƿeorhēafde hƿeorfþ þā endebyrdnessa.',
 'filehist-thumb' => 'Lȳtlbiliþ',
 'filehist-thumbtext' => 'Lȳtlbiliþ for fadunge sƿā $1',
 'filehist-nothumb' => 'Nān biliþinċel',
-'filehist-user' => 'Brūcend',
+'filehist-wiki_user' => 'Brūcend',
 'filehist-dimensions' => 'Miċela',
 'filehist-filesize' => 'Fīlmiċelnes',
 'filehist-comment' => 'Ymbsprǣċ',
@@ -755,7 +755,7 @@ Cnæpp on sƿeorhēafde hƿeorfþ þā endebyrdnessa.',
 'statistics' => 'Cȳþþu',
 'statistics-articles' => 'Innungsīdan',
 'statistics-pages' => 'Sīdan',
-'statistics-users-active' => 'Hƿate brūcendas',
+'statistics-wiki_users-active' => 'Hƿate brūcendas',
 'statistics-mostpopular' => 'Mǣst saƿen sīdan',
 
 'doubleredirects' => 'Tƿifealde ymblǣderas',
@@ -785,9 +785,9 @@ Cnæpp on sƿeorhēafde hƿeorfþ þā endebyrdnessa.',
 'prefixindex' => 'Ealla sīdan mid foredǣle',
 'shortpages' => 'Scorte trametas',
 'longpages' => 'Lange trametas',
-'listusers' => 'Brūcenda ȝetalu',
+'listwiki_users' => 'Brūcenda ȝetalu',
 'newpages' => 'Nīƿa sīdan',
-'newpages-username' => 'Brūcendnama:',
+'newpages-wiki_username' => 'Brūcendnama:',
 'ancientpages' => 'Ieldestan Trametas',
 'move' => 'Gān',
 'movethispage' => 'Þās sīdan ȝeferan',
@@ -802,7 +802,7 @@ Cnæpp on sƿeorhēafde hƿeorfþ þā endebyrdnessa.',
 ēac mā āscunga ymbe bēc þe þu sēcst:',
 
 # Special:Log
-'specialloguserlabel' => 'Brūcend:',
+'speciallogwiki_userlabel' => 'Brūcend:',
 'speciallogtitlelabel' => 'Nama:',
 'log' => 'Ealdhord',
 
@@ -832,14 +832,14 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'linksearch' => 'Ūtanƿeard hlenċan',
 'linksearch-ok' => 'Sēċan',
 
-# Special:ListUsers
-'listusers-noresult' => 'Nǣnne brūcend gefundenne.',
+# Special:Listwiki_users
+'listwiki_users-noresult' => 'Nǣnne brūcend gefundenne.',
 
-# Special:ActiveUsers
-'activeusers' => 'Hƿata brūcenda ȝetalu',
+# Special:Activewiki_users
+'activewiki_users' => 'Hƿata brūcenda ȝetalu',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Brūcenda ȝesceaft ȝetalu',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Brūcenda ȝesceaft ȝetalu',
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'Clīeƿen',
@@ -850,8 +850,8 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'listgrouprights-addgroup-all' => 'Eall clīeƿenas ēacian',
 'listgrouprights-removegroup-all' => 'Ealle clīeƿenas forniman',
 
-# E-mail user
-'emailuser' => 'To þissum brūcende ƿrītan',
+# E-mail wiki_user
+'emailwiki_user' => 'To þissum brūcende ƿrītan',
 'emailfrom' => 'Fram',
 'emailto' => 'Tō:',
 'emailsubject' => 'Forþsetennes',
@@ -904,7 +904,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'rollbacklink' => 'Edhƿeorfan',
 'rollbackfailed' => 'Edhƿeorf misfangen',
 'editcomment' => "Sēo ādihtungymbsprǣc wæs: \"''\$1''\".",
-'revertpage' => 'Ācierde ādihtunga fram [[Special:Contributions/$2|$2]] ([[User talk:$2|Gesprec]]); wendede on bæc tō ǣrran fadunge fram [[User:$1|$1]]',
+'revertpage' => 'Ācierde ādihtunga fram [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Gesprec]]); wendede on bæc tō ǣrran fadunge fram [[wiki_user:$1|$1]]',
 
 # Protect
 'protectlogpage' => 'Beorges ƿīsbōc',
@@ -962,7 +962,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 
 'sp-contributions-talk' => 'ȝespreċ',
 'sp-contributions-search' => 'Forðunga sēċan',
-'sp-contributions-username' => 'IP address oþþe brūcendnama:',
+'sp-contributions-wiki_username' => 'IP address oþþe brūcendnama:',
 'sp-contributions-submit' => 'Sēċan',
 
 # What links here
@@ -1052,7 +1052,7 @@ Bidde cēos ōðerne naman.',
 'import-noarticle' => 'Nān sīde to inbringenne!',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Þīnu brūcendsīde',
+'tooltip-pt-wiki_userpage' => 'Þīnu brūcendsīde',
 'tooltip-pt-mytalk' => 'Þīnu ȝespreċsīde',
 'tooltip-pt-preferences' => 'Þīna forebearƿan',
 'tooltip-pt-watchlist' => 'Sēo ȝetalu sīdena þe ƿæccest þū for hƿearfum',
@@ -1087,13 +1087,13 @@ Bidde cēos ōðerne naman.',
 'tooltip-feed-rss' => 'RSS strēam for þisse sīdan',
 'tooltip-feed-atom' => 'Atom strēam for þisse sīdan',
 'tooltip-t-contributions' => 'Þā ȝetale sēon þāra forðunga þisses brūcendes',
-'tooltip-t-emailuser' => 'E-mail to þissum brūcende sendan',
+'tooltip-t-emailwiki_user' => 'E-mail to þissum brūcende sendan',
 'tooltip-t-upload' => 'Fīlan forþsendan',
 'tooltip-t-specialpages' => 'Ȝetalu eallra syndriȝa sīdena',
 'tooltip-t-print' => 'Ȝemǣnendliċu fadung þisse sīdan',
 'tooltip-t-permalink' => 'Fæst hlenċe for þisse fadunge þǣre sīdan',
 'tooltip-ca-nstab-main' => 'Þā innoþsīdan sēon',
-'tooltip-ca-nstab-user' => 'Þā brūcendsīdan sēon',
+'tooltip-ca-nstab-wiki_user' => 'Þā brūcendsīdan sēon',
 'tooltip-ca-nstab-special' => 'Þēos is syndriȝu sīde, þū ne meaht þā sīdan hireself ādihtan',
 'tooltip-ca-nstab-project' => 'Þā ƿeorces sīdan sēon',
 'tooltip-ca-nstab-image' => 'Þā fīlsīde sēon',
@@ -1109,9 +1109,9 @@ Bidde cēos ōðerne naman.',
 
 # Attribution
 'anonymous' => 'Namcūþlēas(e) brūcend {{SITENAME}}n',
-'siteuser' => '{{SITENAME}}n brūcere $1',
+'sitewiki_user' => '{{SITENAME}}n brūcere $1',
 'others' => 'ōðru',
-'anonusers' => '{{SITENAME}} {{PLURAL:$2|uncūþ brūcend|uncūðe brūcendas}} $1',
+'anonwiki_users' => '{{SITENAME}} {{PLURAL:$2|uncūþ brūcend|uncūðe brūcendas}} $1',
 
 # Browsing diffs
 'previousdiff' => '← Ieldra ādiht',
@@ -1143,7 +1143,7 @@ Bidde cēos ōðerne naman.',
 'exif-ycbcrpositioning' => 'Y and C ȝesetednes',
 'exif-imagedescription' => 'Biliðes nama',
 'exif-artist' => 'Fruma',
-'exif-usercomment' => 'Brūcendes trahtnunga',
+'exif-wiki_usercomment' => 'Brūcendes trahtnunga',
 'exif-exposuretime' => 'Blicestīd',
 'exif-brightnessvalue' => 'Beorhtnes',
 'exif-lightsource' => 'Lēohtfruma',
@@ -1274,7 +1274,7 @@ $5
 # Special:SpecialPages
 'specialpages' => 'Syndriȝa sīdan',
 'specialpages-group-other' => 'Ōðra syndriȝa sīdan',
-'specialpages-group-users' => 'Brūcendas and riht',
+'specialpages-group-wiki_users' => 'Brūcendas and riht',
 
 # Special:BlankPage
 'blankpage' => 'Blæċu sīde',

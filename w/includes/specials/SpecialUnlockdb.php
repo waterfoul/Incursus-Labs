@@ -36,10 +36,10 @@ class SpecialUnlockdb extends FormSpecialPage {
 		return false;
 	}
 
-	public function checkExecutePermissions( User $user ) {
+	public function checkExecutePermissions( wiki_user $wiki_user ) {
 		global $wgReadOnlyFile;
 
-		parent::checkExecutePermissions( $user );
+		parent::checkExecutePermissions( $wiki_user );
 		# If the lock file isn't writable, we can do sweet bugger all
 		if ( !file_exists( $wgReadOnlyFile ) ) {
 			throw new ErrorPageError( 'lockdb', 'databasenotlocked' );

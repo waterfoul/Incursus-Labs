@@ -108,7 +108,7 @@ class LocalisationCache {
 		'separatorTransformTable', 'fallback8bitEncoding', 'linkPrefixExtension',
 		'linkTrail', 'namespaceAliases',
 		'dateFormats', 'datePreferences', 'datePreferenceMigrationMap',
-		'defaultDateFormat', 'extraUserToggles', 'specialPageAliases',
+		'defaultDateFormat', 'extrawiki_userToggles', 'specialPageAliases',
 		'imageFiles', 'preloadedMessages', 'namespaceGenderAliases',
 		'digitGroupingPattern', 'pluralRules', 'compiledPluralRules',
 	);
@@ -124,7 +124,7 @@ class LocalisationCache {
 	/**
 	 * Keys for items which are a numbered array.
 	 */
-	static public $mergeableListKeys = array( 'extraUserToggles' );
+	static public $mergeableListKeys = array( 'extrawiki_userToggles' );
 
 	/**
 	 * Keys for items which contain an array of arrays of equivalent aliases
@@ -991,17 +991,17 @@ class LCStore_DB implements LCStore {
 	/**
 	 * @var DatabaseBase
 	 */
-	var $dbw;
+	var w;
 	var $batch;
 	var $readOnly = false;
 
 	public function get( $code, $key ) {
 		if ( $this->writesDone ) {
-			$db = wfGetDB( DB_MASTER );
+			 = wfGetDB( DB_MASTER );
 		} else {
-			$db = wfGetDB( DB_SLAVE );
+			 = wfGetDB( DB_SLAVE );
 		}
-		$row = $db->selectRow( 'l10n_cache', array( 'lc_value' ),
+		$row = ->selectRow( 'l10n_cache', array( 'lc_value' ),
 			array( 'lc_lang' => $code, 'lc_key' => $key ), __METHOD__ );
 		if ( $row ) {
 			return unserialize( $row->lc_value );

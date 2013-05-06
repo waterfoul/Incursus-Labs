@@ -27,8 +27,8 @@ CREATE TABLE `mw_archive` (
   `ar_title` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `ar_text` mediumblob NOT NULL,
   `ar_comment` tinyblob NOT NULL,
-  `ar_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `ar_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `ar_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `ar_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `ar_timestamp` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
   `ar_minor_edit` tinyint(4) NOT NULL DEFAULT '0',
   `ar_flags` tinyblob NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `mw_archive` (
   `ar_page_id` int(10) unsigned DEFAULT NULL,
   `ar_parent_id` int(10) unsigned DEFAULT NULL,
   KEY `name_title_timestamp` (`ar_namespace`,`ar_title`,`ar_timestamp`),
-  KEY `usertext_timestamp` (`ar_user_text`,`ar_timestamp`),
+  KEY `wiki_usertext_timestamp` (`ar_wiki_user_text`,`ar_timestamp`),
   KEY `ar_page_revid` (`ar_namespace`,`ar_title`,`ar_rev_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -143,13 +143,13 @@ LOCK TABLES `mw_change_tag` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `mw_external_user`
+-- Table structure for table `mw_external_wiki_user`
 --
 
-DROP TABLE IF EXISTS `mw_external_user`;
+DROP TABLE IF EXISTS `mw_external_wiki_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mw_external_user` (
+CREATE TABLE `mw_external_wiki_user` (
   `eu_local_id` int(10) unsigned NOT NULL,
   `eu_external_id` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   PRIMARY KEY (`eu_local_id`),
@@ -158,12 +158,12 @@ CREATE TABLE `mw_external_user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mw_external_user`
+-- Dumping data for table `mw_external_wiki_user`
 --
 
-LOCK TABLES `mw_external_user` WRITE;
-/*!40000 ALTER TABLE `mw_external_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mw_external_user` ENABLE KEYS */;
+LOCK TABLES `mw_external_wiki_user` WRITE;
+/*!40000 ALTER TABLE `mw_external_wiki_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mw_external_wiki_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -209,7 +209,7 @@ CREATE TABLE `mw_filearchive` (
   `fa_archive_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT '',
   `fa_storage_group` varbinary(16) DEFAULT NULL,
   `fa_storage_key` varbinary(64) DEFAULT '',
-  `fa_deleted_user` int(11) DEFAULT NULL,
+  `fa_deleted_wiki_user` int(11) DEFAULT NULL,
   `fa_deleted_timestamp` binary(14) DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
   `fa_deleted_reason` text,
   `fa_size` int(10) unsigned DEFAULT '0',
@@ -221,15 +221,15 @@ CREATE TABLE `mw_filearchive` (
   `fa_major_mime` enum('unknown','application','audio','image','text','video','message','model','multipart') DEFAULT 'unknown',
   `fa_minor_mime` varbinary(100) DEFAULT 'unknown',
   `fa_description` tinyblob,
-  `fa_user` int(10) unsigned DEFAULT '0',
-  `fa_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
+  `fa_wiki_user` int(10) unsigned DEFAULT '0',
+  `fa_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
   `fa_timestamp` binary(14) DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
   `fa_deleted` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`fa_id`),
   KEY `fa_name` (`fa_name`,`fa_timestamp`),
   KEY `fa_storage_group` (`fa_storage_group`,`fa_storage_key`),
   KEY `fa_deleted_timestamp` (`fa_deleted_timestamp`),
-  KEY `fa_user_timestamp` (`fa_user_text`,`fa_timestamp`)
+  KEY `fa_wiki_user_timestamp` (`fa_wiki_user_text`,`fa_timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -281,12 +281,12 @@ CREATE TABLE `mw_image` (
   `img_major_mime` enum('unknown','application','audio','image','text','video','message','model','multipart') NOT NULL DEFAULT 'unknown',
   `img_minor_mime` varbinary(100) NOT NULL DEFAULT 'unknown',
   `img_description` tinyblob NOT NULL,
-  `img_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `img_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `img_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `img_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `img_timestamp` varbinary(14) NOT NULL DEFAULT '',
   `img_sha1` varbinary(32) NOT NULL DEFAULT '',
   PRIMARY KEY (`img_name`),
-  KEY `img_usertext_timestamp` (`img_user_text`,`img_timestamp`),
+  KEY `img_wiki_usertext_timestamp` (`img_wiki_user_text`,`img_timestamp`),
   KEY `img_size` (`img_size`),
   KEY `img_timestamp` (`img_timestamp`),
   KEY `img_sha1` (`img_sha1`)
@@ -456,7 +456,7 @@ DROP TABLE IF EXISTS `mw_ipblocks`;
 CREATE TABLE `mw_ipblocks` (
   `ipb_id` int(11) NOT NULL AUTO_INCREMENT,
   `ipb_address` tinyblob NOT NULL,
-  `ipb_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `ipb_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
   `ipb_by` int(10) unsigned NOT NULL DEFAULT '0',
   `ipb_by_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `ipb_reason` tinyblob NOT NULL,
@@ -470,10 +470,10 @@ CREATE TABLE `mw_ipblocks` (
   `ipb_range_end` tinyblob NOT NULL,
   `ipb_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `ipb_block_email` tinyint(1) NOT NULL DEFAULT '0',
-  `ipb_allow_usertalk` tinyint(1) NOT NULL DEFAULT '0',
+  `ipb_allow_wiki_usertalk` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ipb_id`),
-  UNIQUE KEY `ipb_address` (`ipb_address`(255),`ipb_user`,`ipb_auto`,`ipb_anon_only`),
-  KEY `ipb_user` (`ipb_user`),
+  UNIQUE KEY `ipb_address` (`ipb_address`(255),`ipb_wiki_user`,`ipb_auto`,`ipb_anon_only`),
+  KEY `ipb_wiki_user` (`ipb_wiki_user`),
   KEY `ipb_range` (`ipb_range_start`(8),`ipb_range_end`(8)),
   KEY `ipb_timestamp` (`ipb_timestamp`),
   KEY `ipb_expiry` (`ipb_expiry`)
@@ -620,8 +620,8 @@ CREATE TABLE `mw_logging` (
   `log_type` varbinary(32) NOT NULL DEFAULT '',
   `log_action` varbinary(32) NOT NULL DEFAULT '',
   `log_timestamp` binary(14) NOT NULL DEFAULT '19700101000000',
-  `log_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `log_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
+  `log_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `log_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `log_namespace` int(11) NOT NULL DEFAULT '0',
   `log_title` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `log_page` int(10) unsigned DEFAULT NULL,
@@ -630,10 +630,10 @@ CREATE TABLE `mw_logging` (
   `log_deleted` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`log_id`),
   KEY `type_time` (`log_type`,`log_timestamp`),
-  KEY `user_time` (`log_user`,`log_timestamp`),
+  KEY `wiki_user_time` (`log_wiki_user`,`log_timestamp`),
   KEY `page_time` (`log_namespace`,`log_title`,`log_timestamp`),
   KEY `times` (`log_timestamp`),
-  KEY `log_user_type_time` (`log_user`,`log_type`,`log_timestamp`),
+  KEY `log_wiki_user_type_time` (`log_wiki_user`,`log_type`,`log_timestamp`),
   KEY `log_page_id_time` (`log_page`,`log_timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -792,8 +792,8 @@ CREATE TABLE `mw_oldimage` (
   `oi_height` int(11) NOT NULL DEFAULT '0',
   `oi_bits` int(11) NOT NULL DEFAULT '0',
   `oi_description` tinyblob NOT NULL,
-  `oi_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `oi_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `oi_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `oi_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `oi_timestamp` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
   `oi_metadata` mediumblob NOT NULL,
   `oi_media_type` enum('UNKNOWN','BITMAP','DRAWING','AUDIO','VIDEO','MULTIMEDIA','OFFICE','TEXT','EXECUTABLE','ARCHIVE') DEFAULT NULL,
@@ -801,7 +801,7 @@ CREATE TABLE `mw_oldimage` (
   `oi_minor_mime` varbinary(100) NOT NULL DEFAULT 'unknown',
   `oi_deleted` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `oi_sha1` varbinary(32) NOT NULL DEFAULT '',
-  KEY `oi_usertext_timestamp` (`oi_user_text`,`oi_timestamp`),
+  KEY `oi_wiki_usertext_timestamp` (`oi_wiki_user_text`,`oi_timestamp`),
   KEY `oi_name_timestamp` (`oi_name`,`oi_timestamp`),
   KEY `oi_name_archive_name` (`oi_name`,`oi_archive_name`(14)),
   KEY `oi_sha1` (`oi_sha1`)
@@ -889,7 +889,7 @@ CREATE TABLE `mw_page_restrictions` (
   `pr_type` varbinary(60) NOT NULL,
   `pr_level` varbinary(60) NOT NULL,
   `pr_cascade` tinyint(4) NOT NULL,
-  `pr_user` int(11) DEFAULT NULL,
+  `pr_wiki_user` int(11) DEFAULT NULL,
   `pr_expiry` varbinary(14) DEFAULT NULL,
   `pr_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`pr_id`),
@@ -944,7 +944,7 @@ DROP TABLE IF EXISTS `mw_protected_titles`;
 CREATE TABLE `mw_protected_titles` (
   `pt_namespace` int(11) NOT NULL,
   `pt_title` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
-  `pt_user` int(10) unsigned NOT NULL,
+  `pt_wiki_user` int(10) unsigned NOT NULL,
   `pt_reason` tinyblob,
   `pt_timestamp` binary(14) NOT NULL,
   `pt_expiry` varbinary(14) NOT NULL DEFAULT '',
@@ -1051,8 +1051,8 @@ CREATE TABLE `mw_recentchanges` (
   `rc_id` int(11) NOT NULL AUTO_INCREMENT,
   `rc_timestamp` varbinary(14) NOT NULL DEFAULT '',
   `rc_cur_time` varbinary(14) NOT NULL DEFAULT '',
-  `rc_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `rc_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `rc_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `rc_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `rc_namespace` int(11) NOT NULL DEFAULT '0',
   `rc_title` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `rc_comment` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
@@ -1080,8 +1080,8 @@ CREATE TABLE `mw_recentchanges` (
   KEY `rc_cur_id` (`rc_cur_id`),
   KEY `new_name_timestamp` (`rc_new`,`rc_namespace`,`rc_timestamp`),
   KEY `rc_ip` (`rc_ip`),
-  KEY `rc_ns_usertext` (`rc_namespace`,`rc_user_text`),
-  KEY `rc_user_text` (`rc_user_text`,`rc_timestamp`)
+  KEY `rc_ns_wiki_usertext` (`rc_namespace`,`rc_wiki_user_text`),
+  KEY `rc_wiki_user_text` (`rc_wiki_user_text`,`rc_timestamp`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1134,8 +1134,8 @@ CREATE TABLE `mw_revision` (
   `rev_page` int(10) unsigned NOT NULL,
   `rev_text_id` int(10) unsigned NOT NULL,
   `rev_comment` tinyblob NOT NULL,
-  `rev_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `rev_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
+  `rev_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `rev_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `rev_timestamp` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
   `rev_minor_edit` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `rev_deleted` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -1145,8 +1145,8 @@ CREATE TABLE `mw_revision` (
   UNIQUE KEY `rev_page_id` (`rev_page`,`rev_id`),
   KEY `rev_timestamp` (`rev_timestamp`),
   KEY `page_timestamp` (`rev_page`,`rev_timestamp`),
-  KEY `user_timestamp` (`rev_user`,`rev_timestamp`),
-  KEY `usertext_timestamp` (`rev_user_text`,`rev_timestamp`)
+  KEY `wiki_user_timestamp` (`rev_wiki_user`,`rev_timestamp`),
+  KEY `wiki_usertext_timestamp` (`rev_wiki_user_text`,`rev_timestamp`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 MAX_ROWS=10000000 AVG_ROW_LENGTH=1024;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1183,7 +1183,7 @@ CREATE TABLE `mw_searchindex` (
 
 LOCK TABLES `mw_searchindex` WRITE;
 /*!40000 ALTER TABLE `mw_searchindex` DISABLE KEYS */;
-INSERT INTO `mw_searchindex` VALUES (1,'main page','  mediawiki hasu800 been successfully installed.  consult theu800 user user\'su800 guide foru800 information onu800 using theu800 wiki software. getting started getting started getting started configuration settings list mediawiki faqu800 mediawiki release mailing list ');
+INSERT INTO `mw_searchindex` VALUES (1,'main page','  mediawiki hasu800 been successfully installed.  consult theu800 wiki_user wiki_user\'su800 guide foru800 information onu800 using theu800 wiki software. getting started getting started getting started configuration settings list mediawiki faqu800 mediawiki release mailing list ');
 /*!40000 ALTER TABLE `mw_searchindex` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1200,8 +1200,8 @@ CREATE TABLE `mw_site_stats` (
   `ss_total_edits` bigint(20) unsigned DEFAULT '0',
   `ss_good_articles` bigint(20) unsigned DEFAULT '0',
   `ss_total_pages` bigint(20) DEFAULT '-1',
-  `ss_users` bigint(20) DEFAULT '-1',
-  `ss_active_users` bigint(20) DEFAULT '-1',
+  `ss_wiki_users` bigint(20) DEFAULT '-1',
+  `ss_active_wiki_users` bigint(20) DEFAULT '-1',
   `ss_admins` int(11) DEFAULT '-1',
   `ss_images` int(11) DEFAULT '0',
   UNIQUE KEY `ss_row_id` (`ss_row_id`)
@@ -1290,7 +1290,7 @@ CREATE TABLE `mw_text` (
 
 LOCK TABLES `mw_text` WRITE;
 /*!40000 ALTER TABLE `mw_text` DISABLE KEYS */;
-INSERT INTO `mw_text` VALUES (1,'\'\'\'MediaWiki has been successfully installed.\'\'\'\n\nConsult the [http://meta.wikimedia.org/wiki/Help:Contents User\'s Guide] for information on using the wiki software.\n\n== Getting started ==\n* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]\n* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]\n* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]','utf-8');
+INSERT INTO `mw_text` VALUES (1,'\'\'\'MediaWiki has been successfully installed.\'\'\'\n\nConsult the [http://meta.wikimedia.org/wiki/Help:Contents wiki_user\'s Guide] for information on using the wiki software.\n\n== Getting started ==\n* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]\n* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]\n* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]','utf-8');
 /*!40000 ALTER TABLE `mw_text` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1370,117 +1370,117 @@ LOCK TABLES `mw_updatelog` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `mw_user`
+-- Table structure for table `mw_wiki_user`
 --
 
-DROP TABLE IF EXISTS `mw_user`;
+DROP TABLE IF EXISTS `mw_wiki_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mw_user` (
-  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
-  `user_real_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
-  `user_password` tinyblob NOT NULL,
-  `user_newpassword` tinyblob NOT NULL,
-  `user_newpass_time` binary(14) DEFAULT NULL,
-  `user_email` tinytext NOT NULL,
-  `user_touched` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
-  `user_token` binary(32) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
-  `user_email_authenticated` binary(14) DEFAULT NULL,
-  `user_email_token` binary(32) DEFAULT NULL,
-  `user_email_token_expires` binary(14) DEFAULT NULL,
-  `user_registration` binary(14) DEFAULT NULL,
-  `user_editcount` int(11) DEFAULT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_name` (`user_name`),
-  KEY `user_email_token` (`user_email_token`)
+CREATE TABLE `mw_wiki_user` (
+  `wiki_user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `wiki_user_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
+  `wiki_user_real_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
+  `wiki_user_password` tinyblob NOT NULL,
+  `wiki_user_newpassword` tinyblob NOT NULL,
+  `wiki_user_newpass_time` binary(14) DEFAULT NULL,
+  `wiki_user_email` tinytext NOT NULL,
+  `wiki_user_touched` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
+  `wiki_user_token` binary(32) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
+  `wiki_user_email_authenticated` binary(14) DEFAULT NULL,
+  `wiki_user_email_token` binary(32) DEFAULT NULL,
+  `wiki_user_email_token_expires` binary(14) DEFAULT NULL,
+  `wiki_user_registration` binary(14) DEFAULT NULL,
+  `wiki_user_editcount` int(11) DEFAULT NULL,
+  PRIMARY KEY (`wiki_user_id`),
+  UNIQUE KEY `wiki_user_name` (`wiki_user_name`),
+  KEY `wiki_user_email_token` (`wiki_user_email_token`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mw_user`
+-- Dumping data for table `mw_wiki_user`
 --
 
-LOCK TABLES `mw_user` WRITE;
-/*!40000 ALTER TABLE `mw_user` DISABLE KEYS */;
-INSERT INTO `mw_user` VALUES (1,'WikiSysop','',':B:b1373470:f7e87db0c9596055f39a1225b0c31508','',NULL,'','','20101230131552','de4ddde7c4eef6e3609f4287324a0a18',NULL,'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0',NULL,'20101230131547',0);
-/*!40000 ALTER TABLE `mw_user` ENABLE KEYS */;
+LOCK TABLES `mw_wiki_user` WRITE;
+/*!40000 ALTER TABLE `mw_wiki_user` DISABLE KEYS */;
+INSERT INTO `mw_wiki_user` VALUES (1,'WikiSysop','',':B:b1373470:f7e87db0c9596055f39a1225b0c31508','',NULL,'','','20101230131552','de4ddde7c4eef6e3609f4287324a0a18',NULL,'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0',NULL,'20101230131547',0);
+/*!40000 ALTER TABLE `mw_wiki_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `mw_user_groups`
+-- Table structure for table `mw_wiki_user_groups`
 --
 
-DROP TABLE IF EXISTS `mw_user_groups`;
+DROP TABLE IF EXISTS `mw_wiki_user_groups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mw_user_groups` (
-  `ug_user` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `mw_wiki_user_groups` (
+  `ug_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
   `ug_group` varbinary(16) NOT NULL DEFAULT '',
-  UNIQUE KEY `ug_user_group` (`ug_user`,`ug_group`),
+  UNIQUE KEY `ug_wiki_user_group` (`ug_wiki_user`,`ug_group`),
   KEY `ug_group` (`ug_group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mw_user_groups`
+-- Dumping data for table `mw_wiki_user_groups`
 --
 
-LOCK TABLES `mw_user_groups` WRITE;
-/*!40000 ALTER TABLE `mw_user_groups` DISABLE KEYS */;
-INSERT INTO `mw_user_groups` VALUES (1,'bureaucrat');
-INSERT INTO `mw_user_groups` VALUES (1,'sysop');
-/*!40000 ALTER TABLE `mw_user_groups` ENABLE KEYS */;
+LOCK TABLES `mw_wiki_user_groups` WRITE;
+/*!40000 ALTER TABLE `mw_wiki_user_groups` DISABLE KEYS */;
+INSERT INTO `mw_wiki_user_groups` VALUES (1,'bureaucrat');
+INSERT INTO `mw_wiki_user_groups` VALUES (1,'sysop');
+/*!40000 ALTER TABLE `mw_wiki_user_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `mw_user_newtalk`
+-- Table structure for table `mw_wiki_user_newtalk`
 --
 
-DROP TABLE IF EXISTS `mw_user_newtalk`;
+DROP TABLE IF EXISTS `mw_wiki_user_newtalk`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mw_user_newtalk` (
-  `user_id` int(11) NOT NULL DEFAULT '0',
-  `user_ip` varbinary(40) NOT NULL DEFAULT '',
-  `user_last_timestamp` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
-  KEY `user_id` (`user_id`),
-  KEY `user_ip` (`user_ip`)
+CREATE TABLE `mw_wiki_user_newtalk` (
+  `wiki_user_id` int(11) NOT NULL DEFAULT '0',
+  `wiki_user_ip` varbinary(40) NOT NULL DEFAULT '',
+  `wiki_user_last_timestamp` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
+  KEY `wiki_user_id` (`wiki_user_id`),
+  KEY `wiki_user_ip` (`wiki_user_ip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mw_user_newtalk`
+-- Dumping data for table `mw_wiki_user_newtalk`
 --
 
-LOCK TABLES `mw_user_newtalk` WRITE;
-/*!40000 ALTER TABLE `mw_user_newtalk` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mw_user_newtalk` ENABLE KEYS */;
+LOCK TABLES `mw_wiki_user_newtalk` WRITE;
+/*!40000 ALTER TABLE `mw_wiki_user_newtalk` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mw_wiki_user_newtalk` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `mw_user_properties`
+-- Table structure for table `mw_wiki_user_properties`
 --
 
-DROP TABLE IF EXISTS `mw_user_properties`;
+DROP TABLE IF EXISTS `mw_wiki_user_properties`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mw_user_properties` (
-  `up_user` int(11) NOT NULL,
+CREATE TABLE `mw_wiki_user_properties` (
+  `up_wiki_user` int(11) NOT NULL,
   `up_property` varbinary(32) NOT NULL,
   `up_value` blob,
-  UNIQUE KEY `user_properties_user_property` (`up_user`,`up_property`),
-  KEY `user_properties_property` (`up_property`)
+  UNIQUE KEY `wiki_user_properties_wiki_user_property` (`up_wiki_user`,`up_property`),
+  KEY `wiki_user_properties_property` (`up_property`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mw_user_properties`
+-- Dumping data for table `mw_wiki_user_properties`
 --
 
-LOCK TABLES `mw_user_properties` WRITE;
-/*!40000 ALTER TABLE `mw_user_properties` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mw_user_properties` ENABLE KEYS */;
+LOCK TABLES `mw_wiki_user_properties` WRITE;
+/*!40000 ALTER TABLE `mw_wiki_user_properties` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mw_wiki_user_properties` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1513,11 +1513,11 @@ DROP TABLE IF EXISTS `mw_watchlist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mw_watchlist` (
-  `wl_user` int(10) unsigned NOT NULL,
+  `wl_wiki_user` int(10) unsigned NOT NULL,
   `wl_namespace` int(11) NOT NULL DEFAULT '0',
   `wl_title` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `wl_notificationtimestamp` varbinary(14) DEFAULT NULL,
-  UNIQUE KEY `wl_user` (`wl_user`,`wl_namespace`,`wl_title`),
+  UNIQUE KEY `wl_wiki_user` (`wl_wiki_user`,`wl_namespace`,`wl_title`),
   KEY `namespace_title` (`wl_namespace`,`wl_title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;

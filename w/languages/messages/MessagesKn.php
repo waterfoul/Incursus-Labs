@@ -8,10 +8,10 @@
  * @file
  *
  * @author Akoppad
- * @author Ashwath Mattur <ashwatham@gmail.com> http://en.wikipedia.org/wiki/User:Ashwatham
+ * @author Ashwath Mattur <ashwatham@gmail.com> http://en.wikipedia.org/wiki/wiki_user:Ashwatham
  * @author Dipin
  * @author HPN
- * @author Hari Prasad Nadig <hpnadig@gmail.com> http://en.wikipedia.org/wiki/User:Hpnadig
+ * @author Hari Prasad Nadig <hpnadig@gmail.com> http://en.wikipedia.org/wiki/wiki_user:Hpnadig
  * @author Kaganer
  * @author Ktkaushik
  * @author M G Harish
@@ -63,7 +63,7 @@ $digitTransformTable = array(
 $digitGroupingPattern = "##,##,###";
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'ಲಿಂಕುಗಳ ಕೆಳಗೆ ಗೆರೆ ತೋರಿಸಿ',
 'tog-justify' => 'ಪರಿಚ್ಛೇದಗಳ ಬದಿಗಳನ್ನು ಸಮನಾಗಿಸು',
 'tog-hideminor' => 'ಚಿಕ್ಕಪುಟ್ಟ ಬದಲಾವಣೆಗಳನ್ನು ಅಡಗಿಸಿ',
@@ -87,7 +87,7 @@ $messages = array(
 'tog-previewonfirst' => 'ಮೊದಲ ಬದಲಾವಣೆಯ ನಂತರ ಮುನ್ನೋಟವನ್ನು ತೋರಿಸು',
 'tog-nocache' => 'ಪುಟಗಳನ್ನು ಸ್ಮರಣೆಯಲ್ಲಿಟ್ಟುಕೊಳ್ಳಬೇಡ',
 'tog-enotifwatchlistpages' => 'ನನ್ನ ವೀಕ್ಷಣಾ ಪಟ್ಟಿಯಲ್ಲಿರುವ ಯಾವುದಾದರೂ ಪುಟವು ಬದಲಾದಾಗ ನನಗೆ ಇ-ಅಂಚೆ ಕಳುಹಿಸು.',
-'tog-enotifusertalkpages' => 'ನನ್ನ ಚರ್ಚೆ ಪುಟ ಬದಲಾದರೆ ನನಗೆ ಇ-ಅಂಚೆ ಕಳುಹಿಸು',
+'tog-enotifwiki_usertalkpages' => 'ನನ್ನ ಚರ್ಚೆ ಪುಟ ಬದಲಾದರೆ ನನಗೆ ಇ-ಅಂಚೆ ಕಳುಹಿಸು',
 'tog-enotifminoredits' => 'ಚಿಕ್ಕ-ಪುಟ್ಟ ಬದಲಾವಣೆಗಳಾದಾಗಲೂ ಇ-ಅಂಚೆ ಕಳುಹಿಸು',
 'tog-enotifrevealaddr' => 'ಪ್ರಕಟಣೆ ಇ-ಅಂಚೆಗಳಲ್ಲಿ ನನ್ನ ಇ-ಅಂಚೆ ವಿಳಾಸ ತೋರು',
 'tog-shownumberswatching' => 'ಪುಟವನ್ನು ವೀಕ್ಷಿಸುತ್ತಿರುವ ಸದಸ್ಯರ ಸಂಖ್ಯೆಯನ್ನು ತೋರಿಸು',
@@ -268,7 +268,7 @@ $messages = array(
 'talk' => 'ಚರ್ಚೆ',
 'views' => 'ನೋಟಗಳು',
 'toolbox' => 'ಉಪಕರಣ',
-'userpage' => 'ಸದಸ್ಯರ ಪುಟ ತೋರು',
+'wiki_userpage' => 'ಸದಸ್ಯರ ಪುಟ ತೋರು',
 'projectpage' => 'ಯೋಜನೆಯ ಪುಟವನ್ನು ನೋಡು',
 'imagepage' => 'ಕಡತದ ಪುಟ ವೀಕ್ಷಿಸಿ',
 'mediawikipage' => 'ಸಂದೇಶ ಪುಟವನ್ನು ನೋಡು',
@@ -290,7 +290,7 @@ $messages = array(
 'pool-queuefull' => 'ಪ್ರಕ್ರಿಯೆಯನ್ನು ವಿಶೇಷ ಕ್ಯು ಪೂರ್ಣ',
 'pool-errorunknown' => 'ಅಪರಿಚಿತ ದೋಷ',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'ಕನ್ನಡ {{SITENAME}} ಬಗ್ಗೆ',
 'aboutpage' => 'Project:ನಮ್ಮ ಬಗ್ಗೆ',
 'copyright' => 'ಇದು ಈ ಕಾಪಿರೈಟ್‌ನಲ್ಲಿ ಲಭ್ಯವಿದೆ $1.',
@@ -350,7 +350,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'ಲೇಖನ',
-'nstab-user' => 'ಸದಸ್ಯರ ಪುಟ',
+'nstab-wiki_user' => 'ಸದಸ್ಯರ ಪುಟ',
 'nstab-media' => 'ಮೀಡಿಯ ಪುಟ',
 'nstab-special' => 'ವಿಶೇಷ ಪುಟ',
 'nstab-project' => 'ಬಗ್ಗೆ',
@@ -393,7 +393,7 @@ MySQL ಹಿಂದಿರುಗಿಸಿದ ದೋಷ "$3: $4"',
 ಇದು ಸಾಮಾನ್ಯವಾಗಿ ಅಳಿಸಿಹಾಕಲ್ಪಟ್ಟ ಹಳೆಯದಾದ ಪುಟದ ವ್ಯತ್ಯಾಸಗಳು ಅಥವಾ ಇತಿಹಾಸದ ಕೊಂಡಿಗಳಿಂದಾಗಿರಬಹುದು.
 
 ಈ ಒಂದು ಫಲಿತಾಂಶ ಸರಿಯಿಲ್ಲದಿದರೆ, ನೀವು ತಂತ್ರಾಂಶದ ದೋಷವೊಂದನ್ನು ಎದುರಿಸುತ್ತಿದ್ದೀರಿ.
-ದಯವಿಟ್ಟು ಇದನ್ನು [[Special:ListUsers/sysop|administrator]] ರೊಬ್ಬರಿಗೆ, URL ನೊಂದಿಗೆ ಸೂಚಿಸಿ.',
+ದಯವಿಟ್ಟು ಇದನ್ನು [[Special:Listwiki_users/sysop|administrator]] ರೊಬ್ಬರಿಗೆ, URL ನೊಂದಿಗೆ ಸೂಚಿಸಿ.',
 'missingarticle-rev' => '(ಆವೃತ್ತಿ#: $1)',
 'missingarticle-diff' => '(ವ್ಯತ್ಯಾಸ: $1, $2)',
 'readonly_lag' => 'ಅಡಿಯಲ್ಲಿರುವ ಡೇಟಾಬೇಸ್ ಸರ್ವರ್‍ಗಳು ಮೂಲ ಸರ್ವರ್ ಒಂದಿಗೆ ಸಮಾನತೆಗೆ ಬರುವವರೆಗೂ ಡೇಟಾಬೇಸ್ ಅನ್ನು ಯಾಂತ್ರಿಕವಾಗಿ ಮುಚ್ಚಲಾಗಿದೆ',
@@ -429,7 +429,7 @@ MySQL ಹಿಂದಿರುಗಿಸಿದ ದೋಷ "$3: $4"',
 $2',
 'namespaceprotected' => "ನಿಮಗೆ '''$1''' ಪುಟಪ್ರಬೇಧಕ್ಕೆ ಸೇರಿರುವ ಪುಟಗಳನ್ನು ಸಂಪಾದಿಸುವ ಅನುಮತಿ ಇಲ್ಲ.",
 'ns-specialprotected' => 'ವಿಶೇಷ ಪುಟಗಳನ್ನು ಸಂಪಾದಿಸಲು ಆಗುವುದಿಲ್ಲ.',
-'titleprotected' => "ಈ ಹೆಸರಿನ ಪುಟವನ್ನು ಸೃಷ್ಟಿಸಲಾಗದಂತೆ [[User:$1|$1]] ಅವರು ಸಂರಕ್ಷಿಸಿದ್ದಾರೆ.
+'titleprotected' => "ಈ ಹೆಸರಿನ ಪುಟವನ್ನು ಸೃಷ್ಟಿಸಲಾಗದಂತೆ [[wiki_user:$1|$1]] ಅವರು ಸಂರಕ್ಷಿಸಿದ್ದಾರೆ.
 ಸಂರಕ್ಷಣೆಗೆ ನೀಡಿರುವ ಕಾರಣ: ''$2''.",
 
 # Virus scanner
@@ -438,7 +438,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''ನೀವು ಈಗ ಲಾಗ್ ಔಟ್ ಆಗಿರುವಿರಿ.'''
 
-ನೀವು {{SITENAME}} ಅನ್ನು ಅನಾಮಧೇಯವಾಗಿ ಉಪಯೋಗಿಸಬಹುದು, ಅಥವ ಮತ್ತೆ ಇದೇ ಹೆಸರಿನಲ್ಲಿ ಅಥವ ಬೇರೆ ಹೆಸರಿನಲ್ಲಿ [[Special:UserLogin|ಲಾಗ್ ಇನ್]] ಆಗಬಹುದು.
+ನೀವು {{SITENAME}} ಅನ್ನು ಅನಾಮಧೇಯವಾಗಿ ಉಪಯೋಗಿಸಬಹುದು, ಅಥವ ಮತ್ತೆ ಇದೇ ಹೆಸರಿನಲ್ಲಿ ಅಥವ ಬೇರೆ ಹೆಸರಿನಲ್ಲಿ [[Special:wiki_userLogin|ಲಾಗ್ ಇನ್]] ಆಗಬಹುದು.
 ಗಮನಿಸಿ: ನಿಮ್ಮ ಬ್ರೌಸರ್‍ನ cache ಅನ್ನು ಅಳಿಸುವವರೆಗೂ ಕೆಲವು ಪುಟಗಳು ನೀವಿನ್ನೂ ಲಾಗ್ ಇನ್ ಆಗಿರುವಂತೆ ಪ್ರದರ್ಶಿತವಾಗಬಹುದು.",
 'welcomecreation' => '== ಸುಸ್ವಾಗತ, $1! ==
 ನಿಮ್ಮ ಅಕೌಂಟನ್ನು ಸೃಷ್ಟಿಸಲಾಗಿದೆ.
@@ -450,21 +450,21 @@ $2',
 'login' => 'ಲಾಗ್ ಇನ್',
 'nav-login-createaccount' => 'ಲಾಗ್ ಇನ್ - log in',
 'loginprompt' => '{{SITENAME}} ತಾಣಕ್ಕೆ ಲಾಗ್ ಇನ್ ಆಗಲು ನಿಮ್ಮ ಗಣಕಯಂತ್ರದಲ್ಲಿ ಕುಕೀ (cookie) ಸೌಲಭ್ಯವಿರಬೇಕು.',
-'userlogin' => 'ಲಾಗ್ ಇನ್ - log in',
-'userloginnocreate' => 'ಲಾಗ್ ಇನ್',
+'wiki_userlogin' => 'ಲಾಗ್ ಇನ್ - log in',
+'wiki_userloginnocreate' => 'ಲಾಗ್ ಇನ್',
 'logout' => 'ಲಾಗ್ ಔಟ್',
-'userlogout' => 'ಲಾಗ್ ಔಟ್',
+'wiki_userlogout' => 'ಲಾಗ್ ಔಟ್',
 'notloggedin' => 'ಲಾಗಿನ್ ಆಗಿಲ್ಲ',
 'nologin' => "ಖಾತೆ ಇಲ್ಲವೇ? '''$1'''.",
 'nologinlink' => 'ಖಾತೆಯನ್ನು ಸೃಷ್ಟಿಸಿ',
 'createaccount' => 'ಹೊಸ ಖಾತೆ ತೆರೆಯಿರಿ',
 'gotaccount' => "ಈಗಾಗಲೇ ಖಾತೆಯಿದೆಯೇ? '''$1'''.",
 'gotaccountlink' => 'ಲಾಗ್ ಇನ್',
-'userlogin-resetlink' => 'ನಿಮ್ಮ ಲಾಗಿನ್ ವಿವರಗಳನ್ನು ಮರೆತಿದ್ದೀರಾ?',
+'wiki_userlogin-resetlink' => 'ನಿಮ್ಮ ಲಾಗಿನ್ ವಿವರಗಳನ್ನು ಮರೆತಿದ್ದೀರಾ?',
 'createaccountmail' => 'ಇ-ಅಂಚೆಯ ಮೂಲಕ',
 'createaccountreason' => 'ಕಾರಣ:',
 'badretype' => 'ನೀವು ಕೊಟ್ಟ ಪ್ರವೇಶಪದಗಳು ಬೇರೆಬೇರೆಯಾಗಿವೆ.',
-'userexists' => 'ನೀವು ನೀಡಿದ ಸದಸ್ಯರ ಹೆಸರು ಆಗಲೆ ಬಳಕೆಯಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಬೇರೊಂದು ಹೆಸರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.',
+'wiki_userexists' => 'ನೀವು ನೀಡಿದ ಸದಸ್ಯರ ಹೆಸರು ಆಗಲೆ ಬಳಕೆಯಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಬೇರೊಂದು ಹೆಸರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.',
 'loginerror' => 'ಲಾಗಿನ್ ದೋಷ',
 'nocookiesnew' => 'ನಿಮ್ಮ ಬಳಕೆದಾರ ಖಾತೆಯು ಸೃಷ್ಟಿತವಾಗಿದೆ, ಆದರೆ ನೀವು ಲಾಗ್ ಇನ್ ಆಗಿಲ್ಲ.
 {{SITENAME}} ಲಾಗ್ ಇನ್ ಮಾಡಲು cookieಗಳನ್ನು ಉಪಯೋಗಿಸುತ್ತದೆ.
@@ -476,11 +476,11 @@ $2',
 'noname' => 'ನೀವು ಸರಿಯಾದ ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಸೂಚಿಸಿಲ್ಲ.',
 'loginsuccesstitle' => 'ಲಾಗಿನ್ ಯಶಸ್ವಿ',
 'loginsuccess' => 'ನೀವು ಈಗ "$1" ಆಗಿ ವಿಕಿಪೀಡಿಯಕ್ಕೆ ಲಾಗಿನ್ ಆಗಿದ್ದೀರಿ.',
-'nosuchuser' => '"$1" ಹೆಸರಿನ ಯಾವ ಸದಸ್ಯರೂ ಇಲ್ಲ.
-ಕಾಗುಣಿತವನ್ನು ಪರೀಕ್ಷಿಸಿ, ಅಥವಾ [[Special:UserLogin/signup|ಹೊಸ ಸದಸ್ಯತ್ವ ಖಾತೆಯನ್ನು ಸೃಷ್ಟಿಸಿ]].',
-'nosuchusershort' => '"$1" ಹೆಸರಿನ ಸದಸ್ಯರು ಯಾರೂ ಇಲ್ಲ.
+'nosuchwiki_user' => '"$1" ಹೆಸರಿನ ಯಾವ ಸದಸ್ಯರೂ ಇಲ್ಲ.
+ಕಾಗುಣಿತವನ್ನು ಪರೀಕ್ಷಿಸಿ, ಅಥವಾ [[Special:wiki_userLogin/signup|ಹೊಸ ಸದಸ್ಯತ್ವ ಖಾತೆಯನ್ನು ಸೃಷ್ಟಿಸಿ]].',
+'nosuchwiki_usershort' => '"$1" ಹೆಸರಿನ ಸದಸ್ಯರು ಯಾರೂ ಇಲ್ಲ.
 ಹೆಸರಲ್ಲಿ ಕಾಗುಣಿತ ತಪ್ಪಿದೆಯೆ ಎಂದು ಪರೀಕ್ಷಿಸಿ.',
-'nouserspecified' => 'ನೀವು ಒಂದು ಸದಸ್ಯತ್ವದ ಹೆಸರನ್ನು ಸೂಚಿಸಬೇಕು.',
+'nowiki_userspecified' => 'ನೀವು ಒಂದು ಸದಸ್ಯತ್ವದ ಹೆಸರನ್ನು ಸೂಚಿಸಬೇಕು.',
 'wrongpassword' => 'ತಪ್ಪು ಪ್ರವೇಶ ಪದ ನೀಡಿರುವಿರಿ. ಮತ್ತೊಮ್ಮೆ ಪ್ರಯತ್ನಿಸಿ.',
 'wrongpasswordempty' => 'ಖಾಲಿ ಪ್ರವೇಶ ಪದವನ್ನು ನೀಡಿರುವಿರಿ. ಮತ್ತೊಮ್ಮೆ ಪ್ರಯತ್ನಿಸಿ.',
 'passwordtooshort' => 'ಪ್ರವೇಶಪದ ಕನಿಷ್ಟ {{PLURAL:$1|೧ ಅಕ್ಷರವನ್ನು|$1 ಅಕ್ಷರಗಳನ್ನು}} ಹೊಂದಿರಬೇಕು.',
@@ -612,7 +612,7 @@ $2',
 'loginreqlink' => 'ಲಾಗ್ ಇನ್',
 'loginreqpagetext' => 'ಇತರ ಪುಟಗಳನ್ನು ನೋಡಲು ನೀವು $1 ಆಗಬೇಕು.',
 'accmailtitle' => 'ಪ್ರವೇಶ ಪದ ಕಳುಹಿಸಲಾಯಿತು.',
-'accmailtext' => "[[User talk:$1|$1]] ಅವರ ಹೊಸ ಪ್ರವೇಶಪದ $2 ಗೆ ಕಳುಹಿಸಲಾಗಿದೆ.
+'accmailtext' => "[[wiki_user talk:$1|$1]] ಅವರ ಹೊಸ ಪ್ರವೇಶಪದ $2 ಗೆ ಕಳುಹಿಸಲಾಗಿದೆ.
 
 ಈ ಖಾತೆಯ ಪ್ರವೇಶಪದವನ್ನು ಲಾಗಿನ್ ಆದ ನಂತರ ''[[Special:ChangePassword|ಪ್ರವೇಶಪದ ಬದಲಾವಣೆ]]'' ಪುಟದಲ್ಲಿ ಬದಲಾಯಿಸಬಹುದು.",
 'newarticle' => '(ಹೊಸತು)',
@@ -623,7 +623,7 @@ $2',
 'anontalkpagetext' => "----''ಇದು ಖಾತೆಯೊಂದನ್ನು ಹೊಂದಿರದ ಅನಾಮಧೇಯ ಬಳಕೆದಾರರೊಬ್ಬರ ಚರ್ಚೆ ಪುಟ.
 ಖಾತೆಯಿಲ್ಲದಿರುವುದರಿಂದ ಅವರನ್ನು ಗುರುತಿಸಲು ಅವರ IP ವಿಳಾಸವನ್ನು ಉಪಯೋಗಿಸುತ್ತಿದ್ದೇವೆ.
 ಈ ರೀತಿಯ IP ವಿಳಾಸವು ಅನೇಕ ಬಳಕೆದಾರರಿಂದ ಉಪಯೋಗದಲ್ಲಿರಬಹುದು.
-ನೀವು ಅನಾಮಧೇಯ ಬಳಕೆದಾರರಾಗಿದ್ದಲ್ಲಿ, ಹಾಗು ನಿಮಗೆ ಸಂಬಂಧವಿಲ್ಲದಂತ ಸಂದೇಶಗಳು ಬರುತ್ತಿವೆ ಎಂದು ಅನಿಸಿದರೆ, ಮುಂದೆ ಬೇರೆ ಅನಾಮಧೇಯ ಬಳಕೆದಾರರೊಂದಿಗೆ ತಪ್ಪಾಗಿ ಗುರುತಿಸಬಾರದೆಂದಿದ್ದರೆ ದಯವಿಟ್ಟು [[Special:UserLogin/signup|ಸದಸ್ಯರಾಗಿ]] ಅಥವ [[Special:UserLogin|ಲಾಗ್ ಇನ್ ಆಗಿ]].''",
+ನೀವು ಅನಾಮಧೇಯ ಬಳಕೆದಾರರಾಗಿದ್ದಲ್ಲಿ, ಹಾಗು ನಿಮಗೆ ಸಂಬಂಧವಿಲ್ಲದಂತ ಸಂದೇಶಗಳು ಬರುತ್ತಿವೆ ಎಂದು ಅನಿಸಿದರೆ, ಮುಂದೆ ಬೇರೆ ಅನಾಮಧೇಯ ಬಳಕೆದಾರರೊಂದಿಗೆ ತಪ್ಪಾಗಿ ಗುರುತಿಸಬಾರದೆಂದಿದ್ದರೆ ದಯವಿಟ್ಟು [[Special:wiki_userLogin/signup|ಸದಸ್ಯರಾಗಿ]] ಅಥವ [[Special:wiki_userLogin|ಲಾಗ್ ಇನ್ ಆಗಿ]].''",
 'noarticletext' => 'ಈ ಪುಟದಲ್ಲಿ ಸದ್ಯಕ್ಕೆ ಏನೂ ಇಲ್ಲ.
 ನೀವು ಇತರ ಪುಟಗಳಲ್ಲಿ [[Special:Search/{{PAGENAME}}|ಈ ಹೆಸರನ್ನು ಹುಡುಕಬಹುದು]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ಸಂಬಂಧಿತ ದಾಖಲೆಗಳನ್ನು ಹುಡುಕಬಹುದು],
@@ -631,14 +631,14 @@ $2',
 'noarticletext-nopermission' => 'ಈ ಪುಟದಲ್ಲಿ ಸದ್ಯಕ್ಕೆ ಯಾವ ಪಠ್ಯವೂ ಇಲ್ಲ.
 ನೀವು ಇತರ ಪುಟಗಳಲ್ಲಿ [[ವಿಶೇಷ:Search/{{PAGENAME}}|ಈ ಶೀರ್ಷಿಕೆಗಾಗಿ ಹುಡುಕಬಹುದು]],
 ಅಥವಾ <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ಸಂಬಂಧಿಸಿದ ದಾಖಲಾತಿ ಹುಡುಕಿ]</span>.',
-'userpage-userdoesnotexist' => 'ಬಳಕೆದಾರ ಖಾತೆ "<nowiki>$1</nowiki>" ದಾಖಲಾಗಿಲ್ಲ. ನೀವು ಇದೇ ಪುಟವನ್ನು ಸೃಷ್ಟಿ/ಸಂಪಾದನೆ ಮಾಡಬೇಕೆಂದಿರುವಿರಿ ಎಂದು ಖಾತ್ರಿ ಮಾಡಿಕೊಳ್ಳಿ.',
+'wiki_userpage-wiki_userdoesnotexist' => 'ಬಳಕೆದಾರ ಖಾತೆ "<nowiki>$1</nowiki>" ದಾಖಲಾಗಿಲ್ಲ. ನೀವು ಇದೇ ಪುಟವನ್ನು ಸೃಷ್ಟಿ/ಸಂಪಾದನೆ ಮಾಡಬೇಕೆಂದಿರುವಿರಿ ಎಂದು ಖಾತ್ರಿ ಮಾಡಿಕೊಳ್ಳಿ.',
 'blocked-notice-logextract' => 'ಈ ಬಳಕೆದಾರರನ್ನು  ಪ್ರಸ್ತುತವಾಗಿ  ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ. 
 ಇತ್ತೀಚಿನ  ನಿರ್ಬಂಧನೆಯ ದಾಖಲೆಯನ್ನು ಉಲ್ಲೇಖಕ್ಕಾಗಿ ಕೆಳಗೆ ಕೊಟ್ಟಿದೆ:',
-'usercssyoucanpreview' => "'''ಗಮನಿಸಿ:''' ಉಳಿಸುವ ಮುನ್ನ 'ಮುನ್ನೋಟ' ಗುಂಡಿಯನ್ನು ಉಪಯೋಗಿಸಿ ನಿಮ್ಮ ಹೊಸ CSS ಅನ್ನು ಪ್ರಯೋಗ ಮಾಡಿ.",
-'userjsyoucanpreview' => "'''ಗಮನಿಸಿ:''' ಉಳಿಸುವ ಮುನ್ನ 'ಮುನ್ನೋಟ' ಗುಂಡಿಯನ್ನು ಉಪಯೋಗಿಸಿ ನಿಮ್ಮ ಹೊಸ JS ಅನ್ನು ಪ್ರಯೋಗ ಮಾಡಿ.",
-'usercsspreview' => "'''ನೆನಪಿಡಿ: ನೀವು ಇಲ್ಲಿ ಕೇವಲ ನಿಮ್ಮ ಬಳಕೆದಾರ CSSನ ಮುನ್ನೋಟ ನೋಡುತ್ತಿರುವಿರಿ.'''
+'wiki_usercssyoucanpreview' => "'''ಗಮನಿಸಿ:''' ಉಳಿಸುವ ಮುನ್ನ 'ಮುನ್ನೋಟ' ಗುಂಡಿಯನ್ನು ಉಪಯೋಗಿಸಿ ನಿಮ್ಮ ಹೊಸ CSS ಅನ್ನು ಪ್ರಯೋಗ ಮಾಡಿ.",
+'wiki_userjsyoucanpreview' => "'''ಗಮನಿಸಿ:''' ಉಳಿಸುವ ಮುನ್ನ 'ಮುನ್ನೋಟ' ಗುಂಡಿಯನ್ನು ಉಪಯೋಗಿಸಿ ನಿಮ್ಮ ಹೊಸ JS ಅನ್ನು ಪ್ರಯೋಗ ಮಾಡಿ.",
+'wiki_usercsspreview' => "'''ನೆನಪಿಡಿ: ನೀವು ಇಲ್ಲಿ ಕೇವಲ ನಿಮ್ಮ ಬಳಕೆದಾರ CSSನ ಮುನ್ನೋಟ ನೋಡುತ್ತಿರುವಿರಿ.'''
 '''ಅದನ್ನು ಇನ್ನೂ ಉಳಿಸಲಾಗಿಲ್ಲ!'''",
-'userjspreview' => "'''ಗಮನಿಸಿ: ನೀವು ನಿಮ್ಮ ಬಳಕೆದಾರ JavaScriptನ ಮುನ್ನೋಟ ನೋಡುತ್ತಿರುವಿರಿ ಅಥವ ಪ್ರಯೋಗ ಮಾಡುತ್ತಿರುವಿರಿ. ಅದನ್ನಿನ್ನೂ ಉಳಿಸಲಾಗಿಲ್ಲ!'''",
+'wiki_userjspreview' => "'''ಗಮನಿಸಿ: ನೀವು ನಿಮ್ಮ ಬಳಕೆದಾರ JavaScriptನ ಮುನ್ನೋಟ ನೋಡುತ್ತಿರುವಿರಿ ಅಥವ ಪ್ರಯೋಗ ಮಾಡುತ್ತಿರುವಿರಿ. ಅದನ್ನಿನ್ನೂ ಉಳಿಸಲಾಗಿಲ್ಲ!'''",
 'sitecsspreview' => "'''ನೆನಪಿಡಿ: ನೀವು ಇಲ್ಲಿ ಕೇವಲ ನಿಮ್ಮ ಬಳಕೆದಾರ CSSನ ಮುನ್ನೋಟ ನೋಡುತ್ತಿರುವಿರಿ.''''''ಅದನ್ನು ಇನ್ನೂ ಉಳಿಸಲಾಗಿಲ್ಲ!'''",
 'sitejspreview' => "'''ನೆನಪಿಡಿ: ನೀವು ಇಲ್ಲಿ ಕೇವಲ ನಿಮ್ಮ ಬಳಕೆದಾರ CSSನ ಮುನ್ನೋಟ ನೋಡುತ್ತಿರುವಿರಿ.''''''ಅದನ್ನು ಇನ್ನೂ ಉಳಿಸಲಾಗಿಲ್ಲ!'''",
 'updated' => '(ನಕಲೆರಿಸಲಾಗಿದೆ)',
@@ -680,7 +680,7 @@ $2',
 'hiddencategories' => 'ಈ ಪುಟವು {{PLURAL:$1|೧ ಗುಪ್ತ ವರ್ಗಕ್ಕೆ|$1 ಗುಪ್ತ ವರ್ಗಗಳಿಗೆ}} ಸೇರಿದೆ:',
 'nocreatetitle' => 'ಪುಟವನ್ನು ಸೃಷ್ಟಿಸುವುದನ್ನು ನಿಯಮಿಸಲಾಗಿದೆ',
 'nocreatetext' => '{{SITENAME}} ಅಲ್ಲಿ ಹೊಸ ಪುಟಗಳನ್ನು ಸೃಷ್ಟಿಸಲು ಕೆಲವು ನಿಬಂಧನೆಗಳಿವೆ.
-ನೀವು ಹಿಂದಿರುಗಿ ಆಗಲೇ ಅಸ್ಥಿತ್ವದಲ್ಲಿರುವ ಪುಟವೊಂದನ್ನು ಸಂಪಾದಿಸಿ, ಅಥವ [[Special:UserLogin|ಲಾಗ್ ಇನ್ ಆಗಿ ಅಥವ ಹೊಸ ಸದಸ್ಯರಾಗಿ]].',
+ನೀವು ಹಿಂದಿರುಗಿ ಆಗಲೇ ಅಸ್ಥಿತ್ವದಲ್ಲಿರುವ ಪುಟವೊಂದನ್ನು ಸಂಪಾದಿಸಿ, ಅಥವ [[Special:wiki_userLogin|ಲಾಗ್ ಇನ್ ಆಗಿ ಅಥವ ಹೊಸ ಸದಸ್ಯರಾಗಿ]].',
 'nocreate-loggedin' => 'ಹೊಸ ಪುಟಗಳನ್ನು ಸೃಷ್ಟಿಸಲು ನಿಮಗೆ ಅನುಮತಿ ಇಲ್ಲ.',
 'permissionserrors' => 'ಅನುಮತಿಗಳ ದೋಷಗಳು',
 'permissionserrorstext' => 'ನಿಮಗೆ ಅದನ್ನು ಮಾಡಲು ಅನುಮತಿ ಇಲ್ಲ, ಅದಕ್ಕೆ {{PLURAL:$1|ಕಾರಣ|ಕಾರಣಗಳು}}:',
@@ -712,7 +712,7 @@ $2',
 'undo-success' => 'ಸಂಪಾದನೆಯನ್ನು ವಜಾ ಮಾಡಬಹುದು. ದಯವಿಟ್ಟು ಕೆಳಗಿರುವ ತುಲನೆಯನ್ನು ಪರೀಕ್ಷಿಸಿ ನೀವು ಮಾಡಲು ಇಚ್ಚಿಸಿರುವುದನ್ನು ಖಾತ್ರಿ ಮಾಡಿಕೊಂಡು ವಜಾಗೊಳಿಸುವ ಕ್ರಿಯೆಯನ್ನು 
 ಪೂರ್ಣಗೊಳಿಸಲು ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿ.',
 'undo-norev' => 'ಸಂಪಾದನೆಯನ್ನು ವಜಾಗೊಳಿಸಲು ಸಾದ್ಯವಿಲ್ಲ ಏಕೆಂದರೆ ಒಂದೊ ಇದು ಅಸ್ತಿತ್ವದಲ್ಲಿ ಇಲ್ಲ ಅಧವಾ ಇದು ಅಳಿಸಲ್ಪಟ್ಟಿದೆ',
-'undo-summary' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|talk]]) ರ $1 ಪರಿಷ್ಕರಣೆಯನ್ನು ವಜಾ ಮಾಡಿ',
+'undo-summary' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|talk]]) ರ $1 ಪರಿಷ್ಕರಣೆಯನ್ನು ವಜಾ ಮಾಡಿ',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'ಖಾತೆಯನ್ನು ಸೃಷ್ಟಿಸಲಾಗುತ್ತಿಲ್ಲ',
@@ -752,7 +752,7 @@ $2',
 
 # Revision deletion
 'rev-deleted-comment' => '(ಕಮೆ೦ಟ್ ತೆಗೆದು ಹಾಕಲಾಗಿದೆ)',
-'rev-deleted-user' => '(ಬಳಕೆದಾರ ಹೆಸರು ತಗೆಯಲ್ಪಟ್ಟಿದೆ)',
+'rev-deleted-wiki_user' => '(ಬಳಕೆದಾರ ಹೆಸರು ತಗೆಯಲ್ಪಟ್ಟಿದೆ)',
 'rev-deleted-event' => '(ದಾಖಲೆ ಕ್ರಿಯೆ ತೆಗೆಯಲಾಯಿತು)',
 'rev-delundel' => 'ತೋರಿಸು/ಅಡಗಿಸು',
 'rev-showdeleted' => 'ತೋರಿಸು',
@@ -766,7 +766,7 @@ $2',
 'revdelete-hide-image' => 'ಫೈಲಿನಲ್ಲಿರುವ ಮಾಹಿತಿಯನ್ನು ಅಡಗಿಸು',
 'revdelete-hide-name' => 'ಕಾರ್ಯ ಮತ್ತು ಗುರಿಗಳನ್ನು ಅಡಗಿಸು',
 'revdelete-hide-comment' => 'ಸಂಪಾದನೆ ವಿವರಣೆ ಅಡಗಿಸು',
-'revdelete-hide-user' => 'ಸಂಪಾದಕರ ಬಳಕೆಯ ಹೆಸರು/IP ಅಡಗಿಸು',
+'revdelete-hide-wiki_user' => 'ಸಂಪಾದಕರ ಬಳಕೆಯ ಹೆಸರು/IP ಅಡಗಿಸು',
 'revdelete-hide-restricted' => 'ಈ ನಿಬಂಧನೆಗಳನ್ನು ನಿರ್ವಾಹಕರಿಗೂ ಅನ್ವಯಿಸು ಮತ್ತು ಈ interface ಗೆ ಬೀಗ ಹಾಕು',
 'revdelete-radio-set' => 'ಹೌದು',
 'revdelete-radio-unset' => 'ಇಲ್ಲ',
@@ -892,7 +892,7 @@ $2',
 'mypreferences' => 'ಪ್ರಾಶಸ್ತ್ಯಗಳು',
 'prefs-edits' => 'ಸಂಪಾದನೆಗಳ ಸಂಖ್ಯೆ:',
 'prefsnologin' => 'ಲಾಗಿನ್ ಆಗಿಲ್ಲ',
-'prefsnologintext' => 'ಬಳಕೆದಾರ ಪ್ರಾಶಸ್ತ್ಯಗಳನ್ನು ಬದಲಾಯಿಸಲು ನೀವು <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} ಲಾಗ್ ಇನ್]</span> ಆಗಿರಬೇಕು.',
+'prefsnologintext' => 'ಬಳಕೆದಾರ ಪ್ರಾಶಸ್ತ್ಯಗಳನ್ನು ಬದಲಾಯಿಸಲು ನೀವು <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} ಲಾಗ್ ಇನ್]</span> ಆಗಿರಬೇಕು.',
 'changepassword' => 'ಪ್ರವೇಶ ಪದ ಬದಲಾಯಿಸಿ',
 'prefs-skin' => 'ಚರ್ಮ',
 'skin-preview' => 'ಮುನ್ನೋಟ',
@@ -938,7 +938,7 @@ $2',
 'default' => 'ಮೂಲಸ್ಥಿತಿ',
 'prefs-files' => 'ಫೈಲುಗಳು',
 'youremail' => 'ಇ-ಅಂಚೆ:',
-'username' => 'ಸದಸ್ಯತ್ವದ ಹೆಸರು:',
+'wiki_username' => 'ಸದಸ್ಯತ್ವದ ಹೆಸರು:',
 'uid' => 'ಬಳಕೆದಾರ ID:',
 'prefs-memberingroups' => 'ಈ {{PLURAL:$1|ಗುಂಪಿನ|ಗುಂಪುಗಳ}} ಸದಸ್ಯ:',
 'yourrealname' => 'ನಿಜ ಹೆಸರು:',
@@ -965,30 +965,30 @@ $2',
 'prefs-displaysearchoptions' => 'ಪ್ರದರ್ಶನ ಆಯ್ಕೆಗಳು',
 'prefs-displaywatchlist' => 'ಪ್ರದರ್ಶನ ಆಯ್ಕೆಗಳು',
 
-# User rights
-'userrights' => 'ಬಳಕೆದಾರ ಹಕ್ಕುಗಳ ನಿರ್ವಹಣೆ',
-'userrights-lookup-user' => 'ಬಳಕೆದಾರ ಗುಂಪುಗಳನ್ನು ನಿರ್ವಹಿಸು',
-'userrights-user-editname' => 'ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಸೂಚಿಸಿ:',
-'editusergroup' => 'ಬಳಕೆದಾರ ಗುಂಪುಗಳನ್ನು ಸಂಪಾದಿಸು',
-'editinguser' => "'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) ಅವರ ಸದಸ್ಯತ್ವದ ಹಕ್ಕುಗಳನ್ನು ಬದಲಾಗಿಸಲಾಗುತ್ತಿದೆ.",
-'userrights-editusergroup' => 'ಬಳಕೆದಾರ ಗುಂಪುಗಳನ್ನು ಸಂಪಾದಿಸು',
-'saveusergroups' => 'ಬಳಕೆದಾರ ಗುಂಪುಗಳನ್ನು ಉಳಿಸು',
-'userrights-groupsmember' => 'ಗುಂಪುಗಳ ಸದಸ್ಯತ್ವ:',
-'userrights-groups-help' => 'ನೀವು ಈ ಬಳಕೆದಾರ ಸೇರಿರುವ ಗುಂಪುಗಳನ್ನು ಬದಲಾಯಿಸಬಹುದು.
+# wiki_user rights
+'wiki_userrights' => 'ಬಳಕೆದಾರ ಹಕ್ಕುಗಳ ನಿರ್ವಹಣೆ',
+'wiki_userrights-lookup-wiki_user' => 'ಬಳಕೆದಾರ ಗುಂಪುಗಳನ್ನು ನಿರ್ವಹಿಸು',
+'wiki_userrights-wiki_user-editname' => 'ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಸೂಚಿಸಿ:',
+'editwiki_usergroup' => 'ಬಳಕೆದಾರ ಗುಂಪುಗಳನ್ನು ಸಂಪಾದಿಸು',
+'editingwiki_user' => "'''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) ಅವರ ಸದಸ್ಯತ್ವದ ಹಕ್ಕುಗಳನ್ನು ಬದಲಾಗಿಸಲಾಗುತ್ತಿದೆ.",
+'wiki_userrights-editwiki_usergroup' => 'ಬಳಕೆದಾರ ಗುಂಪುಗಳನ್ನು ಸಂಪಾದಿಸು',
+'savewiki_usergroups' => 'ಬಳಕೆದಾರ ಗುಂಪುಗಳನ್ನು ಉಳಿಸು',
+'wiki_userrights-groupsmember' => 'ಗುಂಪುಗಳ ಸದಸ್ಯತ್ವ:',
+'wiki_userrights-groups-help' => 'ನೀವು ಈ ಬಳಕೆದಾರ ಸೇರಿರುವ ಗುಂಪುಗಳನ್ನು ಬದಲಾಯಿಸಬಹುದು.
 * ಚೌಕವು ತುಂಬಿದ್ದರೆ ಬಳಕೆದಾರ ಆ ಗುಂಪಿನಲ್ಲಿದ್ದಾರೆ ಎಂದು ಅರ್ಥ.
 * ಚೌಕವು ಖಾಲಿ ಇದ್ದರೆ ಬಳಕೆದಾರ ಆ ಗುಂಪಿಗೆ ಸೇರಿಲ್ಲ.
 * <nowiki>*</nowiki> ಚಿಹ್ನೆಯು ನೀವು ಒಮ್ಮೆ ಆ ಗುಂಪಿಗೆ ಸೇರಿಸಿದಲ್ಲಿ ಅದರಿಂದ ಮತ್ತೆ ತೆಗೆಯಲು ಬರುವುದಿಲ್ಲ, ಅಥವ ಅದರ ತಿರುಗುಮುರುಗು ಎಂದರ್ಥ.',
-'userrights-reason' => 'ಕಾರಣ:',
-'userrights-no-interwiki' => 'ಇತರ ವಿಕಿಗಳಲ್ಲಿ ನಿಮಗೆ ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ಬದಲಾಯಿಸುವ ಅನುಮತಿಯಿಲ್ಲ.',
-'userrights-nodatabase' => 'ಡೇಟಾಬೇಸ್ $1 ಅಸ್ಥಿತ್ವದಲ್ಲಿಲ್ಲ ಅಥವ ಸ್ಥಳೀಯವಾದುದಲ್ಲ.',
-'userrights-nologin' => 'ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ನೇಮಿಸಲು ನೀವು ನಿರ್ವಾಹಕ ಖಾತೆಯೊಂದಕ್ಕೆ [[Special:UserLogin|ಲಾಗ್ ಇನ್]] ಆಗಬೇಕು.',
-'userrights-notallowed' => 'ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ನೇಮಿಸಲು ನಿಮ್ಮ ಖಾತೆಗೆ ಅನುಮತಿಯಿಲ್ಲ.',
-'userrights-changeable-col' => 'ನೀವು ಬದಲಾಯಿಸಬಲ್ಲ ಗುಂಪುಗಳು',
-'userrights-unchangeable-col' => 'ನೀವು ಬದಲಾಯಿಸಲಾಗದಂತಹ ಗುಂಪುಗಳು',
+'wiki_userrights-reason' => 'ಕಾರಣ:',
+'wiki_userrights-no-interwiki' => 'ಇತರ ವಿಕಿಗಳಲ್ಲಿ ನಿಮಗೆ ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ಬದಲಾಯಿಸುವ ಅನುಮತಿಯಿಲ್ಲ.',
+'wiki_userrights-nodatabase' => 'ಡೇಟಾಬೇಸ್ $1 ಅಸ್ಥಿತ್ವದಲ್ಲಿಲ್ಲ ಅಥವ ಸ್ಥಳೀಯವಾದುದಲ್ಲ.',
+'wiki_userrights-nologin' => 'ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ನೇಮಿಸಲು ನೀವು ನಿರ್ವಾಹಕ ಖಾತೆಯೊಂದಕ್ಕೆ [[Special:wiki_userLogin|ಲಾಗ್ ಇನ್]] ಆಗಬೇಕು.',
+'wiki_userrights-notallowed' => 'ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ನೇಮಿಸಲು ನಿಮ್ಮ ಖಾತೆಗೆ ಅನುಮತಿಯಿಲ್ಲ.',
+'wiki_userrights-changeable-col' => 'ನೀವು ಬದಲಾಯಿಸಬಲ್ಲ ಗುಂಪುಗಳು',
+'wiki_userrights-unchangeable-col' => 'ನೀವು ಬದಲಾಯಿಸಲಾಗದಂತಹ ಗುಂಪುಗಳು',
 
 # Groups
 'group' => 'ಗುಂಪು:',
-'group-user' => 'ಬಳಕೆದಾರರು',
+'group-wiki_user' => 'ಬಳಕೆದಾರರು',
 'group-autoconfirmed' => 'ಸ್ವಧೃಡೀಕೃತ ಬಳಕೆದಾರರು',
 'group-bot' => 'ಬಾಟ್‍ಗಳು',
 'group-sysop' => 'ನಿರ್ವಾಹಕರು',
@@ -996,14 +996,14 @@ $2',
 'group-suppress' => 'ನಿಗ ಇಡುವವರು',
 'group-all' => '(ಎಲ್ಲವೂ)',
 
-'group-user-member' => 'ಬಳಕೆದಾರ',
+'group-wiki_user-member' => 'ಬಳಕೆದಾರ',
 'group-autoconfirmed-member' => 'ಸ್ವಧೃಡೀಕೃತ ಬಳಕೆದಾರ',
 'group-bot-member' => 'ಬಾಟ್',
 'group-sysop-member' => 'ನಿರ್ವಾಹಕ',
 'group-bureaucrat-member' => 'ಮೇಲ್ವಿಚಾರಕ',
 'group-suppress-member' => 'ನಿಗ ಇಡುವವ',
 
-'grouppage-user' => '{{ns:project}}:ಬಳಕೆದಾರರು',
+'grouppage-wiki_user' => '{{ns:project}}:ಬಳಕೆದಾರರು',
 'grouppage-autoconfirmed' => '{{ns:project}}:ಸ್ವಧೃಡೀಕೃತ ಬಳಕೆದಾರರು',
 'grouppage-bot' => '{{ns:project}}:ಬಾಟ್‍ಗಳು',
 'grouppage-sysop' => '{{ns:project}}:ನಿರ್ವಾಹಕರು',
@@ -1025,13 +1025,13 @@ $2',
 'right-undelete' => 'ಆಳಿಸಿದ ಪುಟವನ್ನು ಉಳಿಸಿ',
 'right-unwatchedpages' => 'ಪಹರೆಯಿಲ್ಲದ ಪುಟಗಳ ಪಟ್ಟಿಯನ್ನು ವೀಕ್ಷಿಸಿ',
 'right-mergehistory' => 'ಪುಟಗಳು ಇತಿಹಾಸದಲ್ಲಿ ವಿಲೀನಗೊಳಿಸಿ',
-'right-userrights' => 'ಎಲ್ಲಾ ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ತಿದ್ದುಪಡಿಸಿ',
-'right-userrights-interwiki' => 'ಬೇರೆ ವಿಕಿಗಳ ಮೇಲೆ  ಎಲ್ಲಾ ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ತಿದ್ದುಪಡಿಸಿ',
+'right-wiki_userrights' => 'ಎಲ್ಲಾ ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ತಿದ್ದುಪಡಿಸಿ',
+'right-wiki_userrights-interwiki' => 'ಬೇರೆ ವಿಕಿಗಳ ಮೇಲೆ  ಎಲ್ಲಾ ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ತಿದ್ದುಪಡಿಸಿ',
 'right-siteadmin' => 'ಡೇಟಾಬೇಸ್ ನ್ನು ಬೀಗ ಹಾಕಿ ತೆಗೆಯಿರಿ',
 'right-sendemail' => 'ಇತರ ಬಳಕೆದಾರರಿಗೆ ಇಮೇಲ್ ಕಳುಹಿಸಿ',
 'right-passwordreset' => 'ಪಾಸ್ವರ್ಡ್ ಮತ್ತೆ ಜೋಡಿಸಲ್ಪಟ್ಟ  ಇಮೇಲ್ ಗಳನ್ನು ವೀಕ್ಷಿಸಿ',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'ಸದಸ್ಯರ ಹಕ್ಕುಗಳ ದಾಖಲೆಗಳು',
 'rightslogtext' => 'ಇದು ಬಳಕೆದಾರ ಹಕ್ಕುಗಳ ಬದಲಾವಣೆಗಳ ದಾಖಲೆ.',
 'rightslogentry' => '$1 ಅವರ ಗುಂಪು ಸದಸ್ಯತ್ವವನ್ನು $2 ಇಂದ $3 ಗೆ ಬದಲಾಯಿಸಲಾಯಿತು',
@@ -1055,7 +1055,7 @@ $2',
 'action-block' => 'ಈ ಸದಸ್ಯರನ್ನು ಸಂಪಾದಿಸಲು ಆಗದಂತೆ ನಿರ್ಭಂಧಿಸಿ',
 'action-protect' => 'ಈ ಪುಟದ ಸಂರಕ್ಷಣೆ ಮಟ್ಟಗಳನ್ನು ಬದಲಾಯಿಸಲು',
 'action-unwatchedpages' => 'ಪಹರೆಯಿಲ್ಲದ ಪುಟಗಳ ಪಟ್ಟಿಯನ್ನು ವೀಕ್ಷಿಸಿ',
-'action-userrights' => 'ಎಲ್ಲಾ ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ತಿದ್ದುಪಡಿಸಿ',
+'action-wiki_userrights' => 'ಎಲ್ಲಾ ಬಳಕೆದಾರ ಹಕ್ಕುಗಳನ್ನು ತಿದ್ದುಪಡಿಸಿ',
 'action-sendemail' => 'ಇ-ಅಂಚೆ ಕಳುಹಿಸಿ',
 
 # Recent changes
@@ -1085,7 +1085,7 @@ $2',
 'minoreditletter' => 'ಚು',
 'newpageletter' => 'ಹೊ',
 'boteditletter' => 'ಬಾ',
-'number_of_watching_users_pageview' => '[$1 ವೀಕ್ಷಿಸುತ್ತಿರುವ {{PLURAL:$1|ಸದಸ್ಯ|ಸದಸ್ಯರು}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 ವೀಕ್ಷಿಸುತ್ತಿರುವ {{PLURAL:$1|ಸದಸ್ಯ|ಸದಸ್ಯರು}}]',
 'rc_categories' => 'ವರ್ಗಗಳಿಗೆ ಮಾತ್ರ ಸೀಮಿತವಾಗಿಸು ("|" ಇಂದ ಬೇರ್ಪಡಿಸು)',
 'rc_categories_any' => 'ಯಾವುದೇ',
 'newsectionsummary' => '/* $1 */ ಹೊಸ ವಿಭಾಗ',
@@ -1108,7 +1108,7 @@ $2',
 'uploadbtn' => 'ಫೈಲನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ',
 'reuploaddesc' => 'ಅಪ್ಲೋಡ್ ಅನ್ನು ನಿಲ್ಲಿಸಿ ಮತ್ತೆ ಅಪ್ಲೋಡ್ ವಕ್ಕಣೆಗೆ ಹಿಂದಿರುಗಿ',
 'uploadnologin' => 'ಲಾಗಿನ್ ಆಗಿಲ್ಲ',
-'uploadnologintext' => 'ಫೈಲುಗಳನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲು ನೀವು [[Special:UserLogin|ಲಾಗ್ ಇನ್]] ಆಗಬೇಕು.',
+'uploadnologintext' => 'ಫೈಲುಗಳನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲು ನೀವು [[Special:wiki_userLogin|ಲಾಗ್ ಇನ್]] ಆಗಬೇಕು.',
 'uploaderror' => 'ಅಪ್ಲೋಡ್ ದೋಷ',
 'upload-permitted' => 'ಅಂಗೀಕೃತ ಫೈಲು ಮಾದರಿಗಳು: $1.',
 'upload-preferred' => 'ಐಚ್ಛಿಕ ಫೈಲು ಮಾದರಿಗಳು: $1.',
@@ -1221,7 +1221,7 @@ $2',
 'listfiles' => 'ಚಿತ್ರಗಳ ಪಟ್ಟಿ',
 'listfiles_date' => 'ದಿನಾಂಕ',
 'listfiles_name' => 'ಹೆಸರು',
-'listfiles_user' => 'ಸದಸ್ಯ',
+'listfiles_wiki_user' => 'ಸದಸ್ಯ',
 'listfiles_size' => 'ಗಾತ್ರ',
 'listfiles_description' => 'ವಿವರ',
 'listfiles_count' => 'ಆವೃತ್ತಿಗಳು',
@@ -1237,7 +1237,7 @@ $2',
 'filehist-datetime' => 'ದಿನ/ಕಾಲ',
 'filehist-thumb' => 'ಕಿರುನೋಟ',
 'filehist-thumbtext' => '$1 ವರೆಗಿನ ಆವೃತ್ತಿಯ ಕಿರುನೋಟ',
-'filehist-user' => 'ಸದಸ್ಯ',
+'filehist-wiki_user' => 'ಸದಸ್ಯ',
 'filehist-dimensions' => 'ಆಯಾಮಗಳು',
 'filehist-filesize' => 'ಫೈಲಿನ ಗಾತ್ರ',
 'filehist-comment' => 'ವಕ್ಕಣೆ',
@@ -1304,7 +1304,7 @@ $2',
 'statistics-header-pages' => 'ಪುಟಗಳ ಅಂಕಿಅಂಶಗಳು',
 'statistics-header-edits' => 'ಸಂಪಾದನಾ ಅಂಕಿಅಂಶಗಳು',
 'statistics-header-views' => 'ವೀಕ್ಷಣಾ ಅಂಕಿಅಂಶಗಳು',
-'statistics-header-users' => 'ಸದಸ್ಯರ ಅಂಕಿ ಅಂಶ',
+'statistics-header-wiki_users' => 'ಸದಸ್ಯರ ಅಂಕಿ ಅಂಶ',
 'statistics-header-hooks' => 'ಇತರ ಅಂಕಿಅಂಶಗಳು',
 'statistics-articles' => 'ಲೇಖನ ಪುಟ',
 'statistics-pages' => 'ಪುಟಗಳು',
@@ -1364,10 +1364,10 @@ $2',
 'protectedpagesempty' => 'ಈ ನಿಯಮಾವಳಿಗಳಲ್ಲಿ ಯಾವ ಪುಟವೂ ಸಂರಕ್ಷಿತವಾಗಿಲ್ಲ.',
 'protectedtitles' => 'ಸಂರಕ್ಷಿತ ಶೀರ್ಷಿಕೆಗಳು',
 'protectedtitlestext' => 'ಈ ಕೆಳಗಿನ ಶೀರ್ಷಿಕೆಗಳನ್ನು ಸೃಷ್ಟಿಸಲಾಗದಂತೆ ಸಂರಕ್ಷಿಸಲಾಗಿದೆ',
-'listusers' => 'ಸದಸ್ಯರ ಪಟ್ಟಿ',
-'usercreated' => '$1 ರಂದು $2 ಸಮಯಕ್ಕೆ {{GENDER:$3|ಸೃಷ್ಟಿಸಿದರು}}',
+'listwiki_users' => 'ಸದಸ್ಯರ ಪಟ್ಟಿ',
+'wiki_usercreated' => '$1 ರಂದು $2 ಸಮಯಕ್ಕೆ {{GENDER:$3|ಸೃಷ್ಟಿಸಿದರು}}',
 'newpages' => 'ಹೊಸ ಪುಟಗಳು',
-'newpages-username' => 'ಬಳಕೆದಾರ ಹೆಸರು:',
+'newpages-wiki_username' => 'ಬಳಕೆದಾರ ಹೆಸರು:',
 'ancientpages' => 'ಹಳೆಯ ಪುಟಗಳು',
 'move' => 'ಸ್ಥಳಾಂತರಿಸಿ',
 'movethispage' => 'ಈ ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಿ',
@@ -1382,7 +1382,7 @@ $2',
 'booksources-go' => 'ಹೋಗು',
 
 # Special:Log
-'specialloguserlabel' => 'ಸದಸ್ಯ:',
+'speciallogwiki_userlabel' => 'ಸದಸ್ಯ:',
 'speciallogtitlelabel' => 'ಶೀರ್ಷಿಕೆ:',
 'log' => 'ದಾಖಲೆಗಳು',
 'all-logs-page' => 'ಎಲ್ಲಾ ದಾಖಲೆಗಳು',
@@ -1422,17 +1422,17 @@ $2',
 'linksearch-ok' => 'ಹುಡುಕು',
 'linksearch-line' => '$1 ನ್ನು $2 ರಿಂದ ಜೋಡಿಸಲಾಗಿದೆ',
 
-# Special:ListUsers
-'listusersfrom' => 'ಇದರಿಂದ ಪ್ರಾರಂಭವಾಗುವ ಬಳಕೆದಾರರನ್ನು ತೋರಿಸು:',
-'listusers-submit' => 'ತೋರು',
-'listusers-noresult' => 'ಯಾವ ಬಳಕೆದಾರರೂ ಸಿಗಲಿಲ್ಲ.',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'ಇದರಿಂದ ಪ್ರಾರಂಭವಾಗುವ ಬಳಕೆದಾರರನ್ನು ತೋರಿಸು:',
+'listwiki_users-submit' => 'ತೋರು',
+'listwiki_users-noresult' => 'ಯಾವ ಬಳಕೆದಾರರೂ ಸಿಗಲಿಲ್ಲ.',
 
-# Special:ActiveUsers
-'activeusers' => 'ಸಕ್ರಿಯ ಸದಸ್ಯರ ಪಟ್ಟಿ',
-'activeusers-noresult' => 'ಯಾವ ಬಳಕೆದಾರರೂ ಸಿಗಲಿಲ್ಲ.',
+# Special:Activewiki_users
+'activewiki_users' => 'ಸಕ್ರಿಯ ಸದಸ್ಯರ ಪಟ್ಟಿ',
+'activewiki_users-noresult' => 'ಯಾವ ಬಳಕೆದಾರರೂ ಸಿಗಲಿಲ್ಲ.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'ಸದಸ್ಯತ್ವ ಸೃಷ್ಟಿಗಳ ದಾಖಲೆ',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'ಸದಸ್ಯತ್ವ ಸೃಷ್ಟಿಗಳ ದಾಖಲೆ',
 
 # Special:ListGroupRights
 'listgrouprights' => 'ಬಳಕೆದಾರ ಗುಂಪು ಹಕ್ಕುಗಳು',
@@ -1443,11 +1443,11 @@ $2',
 'listgrouprights-members' => '(ಸದಸ್ಯರ ಪಟ್ಟಿ)',
 'listgrouprights-addgroup-all' => 'ಎಲ್ಲಾ ಗುಂಪುಗಳನ್ನು ಸೇರಿಸಿ',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'ಕಳುಹಿಸುವ ವಿಳಾಸ ಇಲ್ಲ',
-'mailnologintext' => 'ಇತರ ಬಳಕೆದಾರರಿಗೆ ಇ-ಅಂಚೆ ಕಳುಹಿಸಲು ನೀವು [[Special:UserLogin|ಲಾಗ್ ಇನ್]] ಆಗಿರಬೇಕು ಮತ್ತು ನಿಮ್ಮ [[Special:Preferences|ಪ್ರಾಶಸ್ತ್ಯಗಳ ಪುಟದಲ್ಲಿ]] ಒಂದು ಧೃಡೀಕೃತ ಇ-ಅಂಚೆ ವಿಳಾಸ ನೀಡಿರಬೇಕು.',
-'emailuser' => 'ಈ ಸದಸ್ಯರಿಗೆ ಇ-ಅಂಚೆ ಕಳಿಸಿ',
-'emailuser-title-notarget' => 'ಸದಸ್ಯರಿಗೆ ವಿ-ಅ೦ಚೆ ಕಳಿಸಿ',
+'mailnologintext' => 'ಇತರ ಬಳಕೆದಾರರಿಗೆ ಇ-ಅಂಚೆ ಕಳುಹಿಸಲು ನೀವು [[Special:wiki_userLogin|ಲಾಗ್ ಇನ್]] ಆಗಿರಬೇಕು ಮತ್ತು ನಿಮ್ಮ [[Special:Preferences|ಪ್ರಾಶಸ್ತ್ಯಗಳ ಪುಟದಲ್ಲಿ]] ಒಂದು ಧೃಡೀಕೃತ ಇ-ಅಂಚೆ ವಿಳಾಸ ನೀಡಿರಬೇಕು.',
+'emailwiki_user' => 'ಈ ಸದಸ್ಯರಿಗೆ ಇ-ಅಂಚೆ ಕಳಿಸಿ',
+'emailwiki_user-title-notarget' => 'ಸದಸ್ಯರಿಗೆ ವಿ-ಅ೦ಚೆ ಕಳಿಸಿ',
 'emailpage' => 'ಸದಸ್ಯರಿಗೆ ವಿ-ಅ೦ಚೆ ಕಳಿಸಿ',
 'defemailsubject' => 'ವಿಕಿಪೀಡಿಯ ವಿ-ಅ೦ಚೆ',
 'noemailtitle' => 'ಯಾವುದೇ ಇ-ಅಂಚೆ ವಿಳಾಸ ಇಲ್ಲ',
@@ -1469,7 +1469,7 @@ $2',
 'nowatchlist' => 'ನಿಮ್ಮ ವೀಕ್ಷಣಾಪಟ್ಟಿಯಲ್ಲಿ ಯಾವುದೇ ಪುಟಗಳಿಲ್ಲ',
 'watchlistanontext' => 'ನಿಮ್ಮ ವೀಕ್ಷಣಾಪಟ್ಟಿಯನ್ನು ನೋಡಲು ಅಥವ ಸಂಪಾದಿಸಲು ದಯವಿಟ್ಟು $1 ಮಾಡಿ.',
 'watchnologin' => 'ಲಾಗಿನ್ ಆಗಿಲ್ಲ',
-'watchnologintext' => 'ನಿಮ್ಮ ವೀಕ್ಷಣಾಪಟ್ಟಿಯನ್ನು ಬದಲಾಯಿಸಲು ನೀವು [[Special:UserLogin|ಲಾಗಿನ್]] ಆಗಿರಬೇಕು.',
+'watchnologintext' => 'ನಿಮ್ಮ ವೀಕ್ಷಣಾಪಟ್ಟಿಯನ್ನು ಬದಲಾಯಿಸಲು ನೀವು [[Special:wiki_userLogin|ಲಾಗಿನ್]] ಆಗಿರಬೇಕು.',
 'addedwatchtext' => '"[[:$1]]" ಪುಟವನ್ನು ನಿಮ್ಮ [[Special:Watchlist|ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ]] ಸೇರಿಸಲಾಗಿದೆ. ಈ ಪುಟದ ಮತ್ತು ಇದರ ಚರ್ಚಾ ಪುಟದ ಮುಂದಿನ ಬದಲಾವಣೆಗಳು ವೀಕ್ಷಣಾ ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಣಸಿಗುತ್ತವೆ, ಮತ್ತು [[Special:RecentChanges|ಇತ್ತೀಚೆಗಿನ ಬದಲಾವಣೆಗಳ]] ಪಟ್ಟಿಯಲ್ಲಿ ಈ ಪುಟಗಳನ್ನು ದಪ್ಪಕ್ಷರಗಳಲ್ಲಿ ಕಾಣಿಸಲಾಗುವುದು.
 
 <p>ಈ ಪುಟವನ್ನು ವೀಕ್ಷಣಾ ಪಟ್ಟಿಯಿಂದ ತೆಗೆಯಬಯಸಿದಲ್ಲಿ, ಮೇಲ್ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಣಿಸಿರುವ "ವೀಕ್ಷಣಾ ಪುಟದಿಂದ ತೆಗೆ" ಅನ್ನು ಕ್ಲಿಕ್ಕಿಸಿ.',
@@ -1613,11 +1613,11 @@ $2',
 'sp-contributions-uploads' => 'ಅಪ್ಲೋಡುಗಳು',
 'sp-contributions-logs' => 'ದಾಖಲೆಗಳು',
 'sp-contributions-talk' => 'ಚರ್ಚೆ',
-'sp-contributions-userrights' => 'ಬಳಕೆದಾರ ಹಕ್ಕುಗಳ ನಿರ್ವಹಣೆ',
+'sp-contributions-wiki_userrights' => 'ಬಳಕೆದಾರ ಹಕ್ಕುಗಳ ನಿರ್ವಹಣೆ',
 'sp-contributions-blocked-notice' => 'ಈ ಬಳಕೆದಾರರನ್ನು  ಪ್ರಸ್ತುತವಾಗಿ  ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ. 
 ಇತ್ತೀಚಿನ  ನಿರ್ಬಂಧನೆಯ ದಾಖಲೆಯನ್ನು ಉಲ್ಲೇಖಕ್ಕಾಗಿ ಕೆಳಗೆ ಕೊಟ್ಟಿದೆ:',
 'sp-contributions-search' => 'ಸಂಪಾದನೆಗಳನ್ನು ಹುಡುಕು',
-'sp-contributions-username' => 'IP ವಿಳಾಸ ಅಥವ ಬಳಕೆಯ ಹೆಸರು:',
+'sp-contributions-wiki_username' => 'IP ವಿಳಾಸ ಅಥವ ಬಳಕೆಯ ಹೆಸರು:',
 'sp-contributions-toponly' => 'ಕೇವಲ ಇತ್ತೀಚಿನ ಪರಿಷ್ಕರಣೆಗೆ ಸಂಬಂಧಿಸಿದ ಸಂಪಾದನೆಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸು',
 'sp-contributions-submit' => 'ಹುಡುಕು',
 
@@ -1643,7 +1643,7 @@ $2',
 # Block/unblock
 'blockip' => 'ಈ ಸದಸ್ಯನನ್ನು ತಡೆ ಹಿಡಿಯಿರಿ',
 'blockip-legend' => 'ಬಳಕೆದಾರನನ್ನು ತಡೆಹಿಡಿ',
-'ipadressorusername' => 'IP ವಿಳಾಸ ಅಥವ ಬಳಕೆಯ ಹೆಸರು:',
+'ipadressorwiki_username' => 'IP ವಿಳಾಸ ಅಥವ ಬಳಕೆಯ ಹೆಸರು:',
 'ipbexpiry' => 'ಅಂತ್ಯ:',
 'ipbreason' => 'ಕಾರಣ:',
 'ipbreasonotherlist' => 'ಇತರ ಕಾರಣ',
@@ -1671,7 +1671,7 @@ $2',
 'ipb-blocklist' => 'ಅಸ್ಥಿತ್ವದಲ್ಲಿರುವ ತಡೆಗಳನ್ನು ನೋಡು',
 'unblockip' => 'ಬಳಕೆದಾರನ ತಡೆಯನ್ನು ತೆಗೆ',
 'ipusubmit' => 'ಈ ವಿಳಾಸದ ತಡೆಯನ್ನು ತೆಗೆ',
-'unblocked' => '[[User:$1|$1]] ಖಾತೆಯ ತಡೆಯನ್ನು ತೆಗೆಯಲಾಗಿದೆ',
+'unblocked' => '[[wiki_user:$1|$1]] ಖಾತೆಯ ತಡೆಯನ್ನು ತೆಗೆಯಲಾಗಿದೆ',
 'unblocked-id' => '$1 ತಡೆಯನ್ನು ತೆಗೆಯಲಾಗಿದೆ',
 'ipblocklist' => 'ನಿರ್ಬಂಧಿಸಲಾಗಿರುವ IP ವಿಳಾಸಗಳು ಹಾಗೂ ಬಳಕೆಯ ಹೆಸರುಗಳು',
 'ipblocklist-legend' => 'ತಡೆಹಿಡಿಯಲಾದ ಬಳಕೆದಾರನನ್ನು ಹುಡುಕು',
@@ -1734,7 +1734,7 @@ $2',
 ಈ ಪ್ರಸಂಗಗಳಲ್ಲಿ ನೀವು ಸ್ವತಃ ಚರ್ಚೆ ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಬೇಕು ಅಥವ ಒಂದುಗೂಡಿಸಬೇಕು.",
 'movearticle' => 'ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಿ',
 'movenologin' => 'ಲಾಗಿನ್ ಆಗಿಲ್ಲ',
-'movenologintext' => 'ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಲು ನೀವು ನೋಂದಾಯಿತ ಸದಸ್ಯರಾಗಿದ್ದು [[Special:UserLogin|ಲಾಗಿನ್]] ಆಗಿರಬೇಕು.',
+'movenologintext' => 'ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಲು ನೀವು ನೋಂದಾಯಿತ ಸದಸ್ಯರಾಗಿದ್ದು [[Special:wiki_userLogin|ಲಾಗಿನ್]] ಆಗಿರಬೇಕು.',
 'movenotallowed' => 'ನಿಮಗೆ {{SITENAME}} ಅಲ್ಲಿ ಪುಟಗಳನ್ನು ಸ್ಥಳಾಂತರಿಸುವ ಅನುಮತಿ ಇಲ್ಲ.',
 'newtitle' => 'ಈ ಹೊಸ ಶೀರ್ಷಿಕೆಗೆ:',
 'move-watch' => 'ಈ ಪುಟವನ್ನು ವೀಕ್ಷಿಸು',
@@ -1806,8 +1806,8 @@ $2',
 'import-logentry-upload-detail' => '$1 {{PLURAL:$1|ಬದಲಾವಣೆ|ಬದಲಾವಣೆಗಳು}}',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'ನಿಮ್ಮ ಸದಸ್ಯ ಪುಟ',
-'tooltip-pt-anonuserpage' => 'ನೀವು ಸಂಪಾದನೆ ಮಾಡುತ್ತಿರುವ ipಯ ಬಳಕೆದಾರ ಪುಟ',
+'tooltip-pt-wiki_userpage' => 'ನಿಮ್ಮ ಸದಸ್ಯ ಪುಟ',
+'tooltip-pt-anonwiki_userpage' => 'ನೀವು ಸಂಪಾದನೆ ಮಾಡುತ್ತಿರುವ ipಯ ಬಳಕೆದಾರ ಪುಟ',
 'tooltip-pt-mytalk' => 'ನಿಮ್ಮ ಚರ್ಚೆ ಪುಟ',
 'tooltip-pt-anontalk' => 'ಈ ip ವಿಳಾಸದಿಂದ ಮಾಡಲಾದ ಸಂಪಾದನೆಗಳ ಬಗ್ಗೆ ಚರ್ಚೆ',
 'tooltip-pt-preferences' => 'ನನ್ನ ಆಯ್ಕೆಗಳು',
@@ -1841,13 +1841,13 @@ $2',
 'tooltip-feed-rss' => 'ಈ ಪುಟಕ್ಕೆ RSS ಫೀಡು',
 'tooltip-feed-atom' => 'ಈ ಪುಟಕ್ಕೆ Atom ಫೀಡು',
 'tooltip-t-contributions' => 'ಈ ಸದಸ್ಯರ ಕಾಣಿಕೆಗಳ ಪಟ್ಟಿಯನ್ನು ತೋರಿಸು',
-'tooltip-t-emailuser' => 'ಈ ಸದಸ್ಯರಿಗೆ ಇ-ಅಂಚೆಯನ್ನು ಕಳುಹಿಸು',
+'tooltip-t-emailwiki_user' => 'ಈ ಸದಸ್ಯರಿಗೆ ಇ-ಅಂಚೆಯನ್ನು ಕಳುಹಿಸು',
 'tooltip-t-upload' => 'ಫೈಲನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ',
 'tooltip-t-specialpages' => 'ಎಲ್ಲಾ ವಿಶೇಷ ಪುಟಗಳ ಪಟ್ಟಿ',
 'tooltip-t-print' => 'ಈ ಪುಟದ ಮುದ್ರಣ ಮಾಡಬಹುದಾದಂತ ಆವೃತ್ತಿ',
 'tooltip-t-permalink' => 'ಪುಟದ ಈ ಆವೃತ್ತಿಗೆ ಶಾಶ್ವತ ಕೊಂಡಿ',
 'tooltip-ca-nstab-main' => 'ಮಾಹಿತಿ ಪುಟವನ್ನು ನೋಡಿ',
-'tooltip-ca-nstab-user' => 'ಸದಸ್ಯರ ಪುಟವನ್ನು ವೀಕ್ಷಿಸು',
+'tooltip-ca-nstab-wiki_user' => 'ಸದಸ್ಯರ ಪುಟವನ್ನು ವೀಕ್ಷಿಸು',
 'tooltip-ca-nstab-special' => 'ಇದೊಂದು ವಿಶೇಷ ಪುಟ, ಇದನ್ನು ಯಾರೂ ಸಂಪಾದಿಸಲು ಬರುವುದಿಲ್ಲ',
 'tooltip-ca-nstab-project' => 'ಯೋಜನೆಯ ಪುಟವನ್ನು ನೋಡಿ',
 'tooltip-ca-nstab-image' => 'ಕಡತದ ಪುಟ ವೀಕ್ಷಿಸಿ',
@@ -1868,10 +1868,10 @@ $2',
 
 # Attribution
 'anonymous' => '{{SITENAME}} ತಾಣದ ಅನಾಮಧೇಯ {{PLURAL:$1|ಬಳಕೆದಾರ|ಬಳಕೆದಾರರು}}',
-'siteuser' => '{{SITENAME}} ಬಳಕೆದಾರ $1',
+'sitewiki_user' => '{{SITENAME}} ಬಳಕೆದಾರ $1',
 'othercontribs' => '$1 ರ ಕೆಲಸವನ್ನು ಆಧರಿಸಿ.',
 'others' => 'ಇತರರು',
-'siteusers' => '{{SITENAME}} {{PLURAL:$2|ಸದಸ್ಯ|ಸದಸ್ಯರು}} $1',
+'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|ಸದಸ್ಯ|ಸದಸ್ಯರು}} $1',
 'creditspage' => 'ಪುಟದ ಗೌರವಗಳು',
 
 # Image deletion
@@ -1951,7 +1951,7 @@ $1',
 'exif-exifversion' => 'Exif ಆವೃತ್ತಿ',
 'exif-pixelydimension' => 'ಸಿಂಧುವಾದ ಚಿತ್ರದ ಅಗಲ',
 'exif-pixelxdimension' => 'ಸಿಂಧುವಾದ ಚಿತ್ರದ ಎತ್ತರ',
-'exif-usercomment' => 'ಬಳಕೆದಾರನ ಟಿಪ್ಪಣಿ',
+'exif-wiki_usercomment' => 'ಬಳಕೆದಾರನ ಟಿಪ್ಪಣಿ',
 'exif-relatedsoundfile' => 'ಸಂಬಂಧಿತ ಧ್ವನಿ ಫೈಲು',
 'exif-datetimeoriginal' => 'ಮಾಹಿತಿ ಸೃಷ್ಟಿಯಾದ ದಿನಾಂಕ ಮತ್ತು ಕಾಲ',
 'exif-exposuretime-format' => '$1 ಕ್ಷಣ ($2)',
@@ -2072,7 +2072,7 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''ಸೂಚನೆ''': ನೀವು ಸಂಪಾದನೆ ಪ್ರಾರಂಭಿಸಿದ ನಂತರ ಈ ಪುಟವನ್ನು ಅಳಿಸಲಾಗಿದೆ!",
-'confirmrecreate' => "ಸದಸ್ಯ [[User:$1|$1]] ([[User talk:$1|ಚರ್ಚೆ]]) ನೀವು ಸಂಪಾದನೆ ಶುರು ಮಾಡಿದ ಮೇಲೆ ಕೆಳಗಿನ ಕಾರಣ ನೀಡಿ ಈ ಪುಟವನ್ನು ಅಳಿಸಿದ್ದಾರೆ:
+'confirmrecreate' => "ಸದಸ್ಯ [[wiki_user:$1|$1]] ([[wiki_user talk:$1|ಚರ್ಚೆ]]) ನೀವು ಸಂಪಾದನೆ ಶುರು ಮಾಡಿದ ಮೇಲೆ ಕೆಳಗಿನ ಕಾರಣ ನೀಡಿ ಈ ಪುಟವನ್ನು ಅಳಿಸಿದ್ದಾರೆ:
 : ''$2''
 ದಯವಿಟ್ಟು ಈ ಪುಟವನ್ನು ನೀವು ಪುನಃ ಸೃಷ್ಟಿಸಬೇಕೆಂದಿರುವಿರಿ ಎಂದು ಧೃಡೀಕರಿಸಿ.",
 'recreate' => 'ಪುನಃ ಸೃಷ್ಟಿಸು',
@@ -2156,7 +2156,7 @@ $5
 'specialpages-group-login' => 'ಲಾಗ್ ಇನ್ / ಖಾತೆ ಸೃಷ್ಟಿಸಿ',
 'specialpages-group-changes' => 'ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳು ಮತ್ತು ದಾಖಲೆಗಳು',
 'specialpages-group-media' => 'ಮೀಡಿಯ ವರದಿಗಳು ಮತ್ತು ಅಪ್ಲೋಡ್‍ಗಳು',
-'specialpages-group-users' => 'ಬಳಕೆದಾರರು ಮತ್ತು ಹಕ್ಕುಗಳು',
+'specialpages-group-wiki_users' => 'ಬಳಕೆದಾರರು ಮತ್ತು ಹಕ್ಕುಗಳು',
 'specialpages-group-highuse' => 'ಹೆಚ್ಚು ಬಳಕೆಯಲ್ಲಿರುವ ಪುಟಗಳು',
 'specialpages-group-pages' => 'ಪುಟಗಳ ಪಟ್ಟಿ',
 'specialpages-group-redirects' => 'ವಿಶೇಷ ಪುಟಗಳನ್ನು ಪುನರ್ನಿರ್ದೇಶಿಸಲಾಗುತ್ತಿದೆ',

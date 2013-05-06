@@ -80,7 +80,7 @@ class CreditsAction extends FormlessAction {
 	 * @return String HTML
 	 */
 	protected function getAuthor( Page $article ) {
-		$user = User::newFromName( $article->getUserText(), false );
+		$wiki_user = wiki_user::newFromName( $article->getwiki_userText(), false );
 
 		$timestamp = $article->getTimestamp();
 		if ( $timestamp ) {
@@ -92,7 +92,7 @@ class CreditsAction extends FormlessAction {
 			$t = '';
 		}
 		return $this->msg( 'lastmodifiedatby', $d, $t )->rawParams(
-			$this->userLink( $user ) )->params( $user->getName() )->escaped();
+			$this->wiki_userLink( $wiki_user ) )->params( $wiki_user->getName() )->escaped();
 	}
 
 	/**
@@ -117,21 +117,21 @@ class CreditsAction extends FormlessAction {
 		}
 
 		$real_names = array();
-		$user_names = array();
+		$wiki_user_names = array();
 		$anon_ips = array();
 
-		# Sift for real versus user names
-		foreach ( $contributors as $user ) {
+		# Sift for real versus wiki_user names
+		foreach ( $contributors as $wiki_user ) {
 			$cnt--; 
-			if ( $user->isLoggedIn() ) {
-				$link = $this->link( $user );
-				if ( !in_array( 'realname', $wgHiddenPrefs ) && $user->getRealName() ) {
+			if ( $wiki_user->isLoggedIn() ) {
+				$link = $this->link( $wiki_user );
+				if ( !in_array( 'realname', $wgHiddenPrefs ) && $wiki_user->getRealName() ) {
 					$real_names[] = $link;
 				} else {
-					$user_names[] = $link;
+					$wiki_user_names[] = $link;
 				}
 			} else {
-				$anon_ips[] = $this->link( $user );
+				$anon_ips[] = $this->link( $wiki_user );
 			}
 
 			if ( $cnt == 0 ) {
@@ -147,16 +147,16 @@ class CreditsAction extends FormlessAction {
 			$real = false;
 		}
 
-		# "ThisSite user(s) A, B and C"
-		if ( count( $user_names ) ) {
-			$user = $this->msg( 'siteusers' )->rawParams( $lang->listToText( $user_names ) )->params(
-				count( $user_names ) )->escaped();
+		# "ThisSite wiki_user(s) A, B and C"
+		if ( count( $wiki_user_names ) ) {
+			$wiki_user = $this->msg( 'sitewiki_users' )->rawParams( $lang->listToText( $wiki_user_names ) )->params(
+				count( $wiki_user_names ) )->escaped();
 		} else {
-			$user = false;
+			$wiki_user = false;
 		}
 
 		if ( count( $anon_ips ) ) {
-			$anon = $this->msg( 'anonusers' )->rawParams( $lang->listToText( $anon_ips ) )->params(
+			$anon = $this->msg( 'anonwiki_users' )->rawParams( $lang->listToText( $anon_ips ) )->params(
 				count( $anon_ips ) )->escaped();
 		} else {
 			$anon = false;
@@ -164,7 +164,7 @@ class CreditsAction extends FormlessAction {
 
 		# This is the big list, all mooshed together. We sift for blank strings
 		$fulllist = array();
-		foreach ( array( $real, $user, $anon, $others_link ) as $s ) {
+		foreach ( array( $real, $wiki_user, $anon, $others_link ) as $s ) {
 			if ( $s !== false ) {
 				array_push( $fulllist, $s );
 			}
@@ -179,40 +179,40 @@ class CreditsAction extends FormlessAction {
 	}
 
 	/**
-	 * Get a link to $user's user page
-	 * @param $user User object
+	 * Get a link to $wiki_user's wiki_user page
+	 * @param $wiki_user wiki_user object
 	 * @return String: html
 	 */
-	protected function link( User $user ) {
+	protected function link( wiki_user $wiki_user ) {
 		global $wgHiddenPrefs;
-		if ( !in_array( 'realname', $wgHiddenPrefs ) && !$user->isAnon() ) {
-			$real = $user->getRealName();
+		if ( !in_array( 'realname', $wgHiddenPrefs ) && !$wiki_user->isAnon() ) {
+			$real = $wiki_user->getRealName();
 		} else {
 			$real = false;
 		}
 
-		$page = $user->isAnon()
-			? SpecialPage::getTitleFor( 'Contributions', $user->getName() )
-			: $user->getUserPage();
+		$page = $wiki_user->isAnon()
+			? SpecialPage::getTitleFor( 'Contributions', $wiki_user->getName() )
+			: $wiki_user->getwiki_userPage();
 
-		return Linker::link( $page, htmlspecialchars( $real ? $real : $user->getName() ) );
+		return Linker::link( $page, htmlspecialchars( $real ? $real : $wiki_user->getName() ) );
 	}
 
 	/**
-	 * Get a link to $user's user page
-	 * @param $user User object
+	 * Get a link to $wiki_user's wiki_user page
+	 * @param $wiki_user wiki_user object
 	 * @return String: html
 	 */
-	protected function userLink( User $user ) {
-		$link = $this->link( $user );
-		if ( $user->isAnon() ) {
-			return $this->msg( 'anonuser' )->rawParams( $link )->parse();
+	protected function wiki_userLink( wiki_user $wiki_user ) {
+		$link = $this->link( $wiki_user );
+		if ( $wiki_user->isAnon() ) {
+			return $this->msg( 'anonwiki_user' )->rawParams( $link )->parse();
 		} else {
 			global $wgHiddenPrefs;
-			if ( !in_array( 'realname', $wgHiddenPrefs ) && $user->getRealName() ) {
+			if ( !in_array( 'realname', $wgHiddenPrefs ) && $wiki_user->getRealName() ) {
 				return $link;
 			} else {
-				return $this->msg( 'siteuser' )->rawParams( $link )->params( $user->getName() )->escaped();
+				return $this->msg( 'sitewiki_user' )->rawParams( $link )->params( $wiki_user->getName() )->escaped();
 			}
 		}
 	}

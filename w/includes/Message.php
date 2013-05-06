@@ -73,7 +73,7 @@
  *
  * @code
  *    wfMessage( 'are-friends',
- *        $user, $friend
+ *        $wiki_user, $friend
  *    );
  *    wfMessage( 'bad-message' )
  *         ->rawParams( '<script>...</script>' )
@@ -92,7 +92,7 @@
  *
  * @code
  *    wfMessage( 'file-log',
- *        $user, $filename
+ *        $wiki_user, $filename
  *    )->inContentLanguage()->text();
  * @endcode
  *
@@ -106,9 +106,9 @@
  * If you want to use a different language:
  *
  * @code
- *    $userLanguage = $user->getOption( 'language' );
+ *    $wiki_userLanguage = $wiki_user->getOption( 'language' );
  *    wfMessage( 'email-header' )
- *         ->inLanguage( $userLanguage )
+ *         ->inLanguage( $wiki_userLanguage )
  *         ->plain();
  * @endcode
  *
@@ -335,7 +335,7 @@ class Message {
 	 * @return Message: $this
 	 */
 	public function inLanguage( $lang ) {
-		if ( $lang instanceof Language || $lang instanceof StubUserLang ) {
+		if ( $lang instanceof Language || $lang instanceof Stubwiki_userLang ) {
 			$this->language = $lang;
 		} elseif ( is_string( $lang ) ) {
 			if( $this->language->getCode() != $lang ) {

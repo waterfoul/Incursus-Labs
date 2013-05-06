@@ -38,7 +38,7 @@ class ApiEditPage extends ApiBase {
 	}
 
 	public function execute() {
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		$params = $this->extractRequestParams();
 
 		if ( is_null( $params['text'] ) && is_null( $params['appendtext'] ) &&
@@ -95,9 +95,9 @@ class ApiEditPage extends ApiBase {
 		}
 
 		// Now let's check whether we're even allowed to do this
-		$errors = $titleObj->getUserPermissionsErrors( 'edit', $user );
+		$errors = $titleObj->getwiki_userPermissionsErrors( 'edit', $wiki_user );
 		if ( !$titleObj->exists() ) {
-			$errors = array_merge( $errors, $titleObj->getUserPermissionsErrors( 'create', $user ) );
+			$errors = array_merge( $errors, $titleObj->getwiki_userPermissionsErrors( 'create', $wiki_user ) );
 		}
 		if ( count( $errors ) ) {
 			$this->dieUsageMsg( $errors[0] );
@@ -166,7 +166,7 @@ class ApiEditPage extends ApiBase {
 			// If no summary was given and we only undid one rev,
 			// use an autosummary
 			if ( is_null( $params['summary'] ) && $titleObj->getNextRevisionID( $undoafterRev->getID() ) == $params['undo'] ) {
-				$params['summary'] = wfMessage( 'undo-summary', $params['undo'], $undoRev->getUserText() )->inContentLanguage()->text();
+				$params['summary'] = wfMessage( 'undo-summary', $params['undo'], $undoRev->getwiki_userText() )->inContentLanguage()->text();
 			}
 		}
 
@@ -205,7 +205,7 @@ class ApiEditPage extends ApiBase {
 			$requestArray['wpStarttime'] = wfTimestampNow();	// Fake wpStartime
 		}
 
-		if ( $params['minor'] || ( !$params['notminor'] && $user->getOption( 'minordefault' ) ) )	{
+		if ( $params['minor'] || ( !$params['notminor'] && $wiki_user->getOption( 'minordefault' ) ) )	{
 			$requestArray['wpMinoredit'] = '';
 		}
 
@@ -269,7 +269,7 @@ class ApiEditPage extends ApiBase {
 		$oldRequest = $wgRequest;
 		$wgRequest = $req;
 
-		$status = $ep->internalAttemptSave( $result, $user->isAllowed( 'bot' ) && $params['bot'] );
+		$status = $ep->internalAttemptSave( $result, $wiki_user->isAllowed( 'bot' ) && $params['bot'] );
 		$wgRequest = $oldRequest;
 		global $wgMaxArticleSize;
 
@@ -548,12 +548,12 @@ class ApiEditPage extends ApiBase {
 		return array(
 
 			'api.php?action=edit&title=Test&summary=test%20summary&text=article%20content&basetimestamp=20070824123454&token=%2B\\'
-				=> 'Edit a page (anonymous user)',
+				=> 'Edit a page (anonymous wiki_user)',
 
 			'api.php?action=edit&title=Test&summary=NOTOC&minor=&prependtext=__NOTOC__%0A&basetimestamp=20070824123454&token=%2B\\'
-				=> 'Prepend __NOTOC__ to a page (anonymous user)',
+				=> 'Prepend __NOTOC__ to a page (anonymous wiki_user)',
 			'api.php?action=edit&title=Test&undo=13585&undoafter=13579&basetimestamp=20070824123454&token=%2B\\'
-				=> 'Undo r13579 through r13585 with autosummary (anonymous user)',
+				=> 'Undo r13579 through r13585 with autosummary (anonymous wiki_user)',
 		);
 	}
 

@@ -12,7 +12,7 @@ var htmlspecialchars = function(s)
 
 /* msg:             Localisation messages (TODO: use ResourceLoader)
    petPrefixes:     PET_XX => prefix from haclgContLang
-   isSysop:         Is current user a sysop or bureaucrat?
+   isSysop:         Is current wiki_user a sysop or bureaucrat?
    initialTitle:    SD Title -> getText()
    initialType:     SD -> getPEType()
    initialExists:   Does the SD exist?
@@ -32,11 +32,11 @@ var HACLACLEditor = function(params)
     this.last_target_type = '';
 
     // Autocompleters (SHint's)
-    this.user_hint = null;
+    this.wiki_user_hint = null;
     this.target_hint = null;
     this.inc_hint = null;
 
-    this.regexp_user = this.msg.regexp_user ? new RegExp(this.msg.regexp_user, 'gi') : '';
+    this.regexp_wiki_user = this.msg.regexp_wiki_user ? new RegExp(this.msg.regexp_wiki_user, 'gi') : '';
     this.regexp_group = this.msg.regexp_group ? new RegExp(this.msg.regexp_group, 'gi') : '';
     this.action_alias = {};
     this.all_actions = [];
@@ -70,7 +70,7 @@ HACLACLEditor.prototype.target_change = function(total_change)
             if (this.last_target_names[what])
                 an.value = this.last_target_names[what];
             else if (what == 'template')
-                an.value = wgUserName;
+                an.value = wgwiki_userName;
             else
                 an.value = '';
             this.target_hint.curValue = null; // force SHint refill
@@ -143,7 +143,7 @@ HACLACLEditor.prototype.include_acl = function()
 };
 
 // parse PF parameter text into array of comma separated values
-// is_assigned_to=true means it is the list of users/groups
+// is_assigned_to=true means it is the list of wiki_users/groups
 HACLACLEditor.prototype.pf_param = function(name, value, is_assigned_to)
 {
     var re = new RegExp('[:\\|]\\s*' + name.replace(' ', '\\s+') + '\\s*=\\s*([^\\|\\}]*)', 'i');
@@ -153,8 +153,8 @@ HACLACLEditor.prototype.pf_param = function(name, value, is_assigned_to)
     ass = (ass[1] || '');
     if (is_assigned_to)
     {
-        if (this.regexp_user)
-            ass = ass.replace(this.regexp_user, '$1User:');
+        if (this.regexp_wiki_user)
+            ass = ass.replace(this.regexp_wiki_user, '$1wiki_user:');
         if (this.regexp_group)
             ass = ass.replace(this.regexp_group, '$1Group/');
     }
@@ -232,7 +232,7 @@ HACLACLEditor.prototype.check_errors = function()
     var has_managers = false, has_rights = false;
     var merge = [ this.rights_direct, this.rights_indirect ];
     var dontlose = false;
-    var curUser = 'User:'+mediaWiki.config.get('wgUserName');
+    var curwiki_user = 'wiki_user:'+mediaWiki.config.get('wgwiki_userName');
     for (var h in merge)
     {
         h = merge[h];
@@ -249,7 +249,7 @@ HACLACLEditor.prototype.check_errors = function()
             if (has_rights && has_managers)
                 break;
         }
-        dontlose = dontlose || h[curUser] && (this.last_target_type == 'page' && h[curUser]['manage'] || h[curUser]['template']);
+        dontlose = dontlose || h[curwiki_user] && (this.last_target_type == 'page' && h[curwiki_user]['manage'] || h[curwiki_user]['template']);
     }
     document.getElementById('acl_define_rights').style.display = has_rights ? 'none' : '';
     var m = document.getElementById('acl_define_manager');
@@ -320,8 +320,8 @@ HACLACLEditor.prototype.closure_groups_sd = function(d, sd)
         }
     }
     // refresh hint
-    if (c && !this.user_hint.element.value.trim().length)
-        this.user_hint.change_ajax(this.get_empty_hint());
+    if (c && !this.wiki_user_hint.element.value.trim().length)
+        this.wiki_user_hint.change_ajax(this.get_empty_hint());
 };
 
 // parse ACL and re-fill closure
@@ -466,7 +466,7 @@ HACLACLEditor.prototype.to_type_change = function()
     document.getElementById('to_name').value = '';
     this.to_name_change();
     // force refresh hint (for the case when value didn't change)
-    this.user_hint.fill_handler(this.user_hint, '');
+    this.wiki_user_hint.fill_handler(this.wiki_user_hint, '');
 };
 
 // additional onchange for to_name - load to_name's rights from this.rights_indirect
@@ -496,7 +496,7 @@ HACLACLEditor.prototype.to_name_change = function()
         {
             direct = this.rights_direct[g_to] && this.rights_direct[g_to][a];
             grp = this.rights_indirect[g_to] && this.rights_indirect[g_to][a];
-            if (!grp && g_to.substr(0, 5) == 'User:')
+            if (!grp && g_to.substr(0, 5) == 'wiki_user:')
             {
                 if (this.rights_direct['#'] && this.rights_direct['#'][a])
                     grp = this.msg.indirect_grant_reg;
@@ -526,7 +526,7 @@ HACLACLEditor.prototype.to_name_change = function()
     }
 };
 
-// get grant subject (*, #, User:X, Group/X)
+// get grant subject (*, #, wiki_user:X, Group/X)
 HACLACLEditor.prototype.get_grant_to = function()
 {
     var g_to = document.getElementById('to_type').value;
@@ -537,8 +537,8 @@ HACLACLEditor.prototype.get_grant_to = function()
         return '';
     if (g_to == 'group')
         g_to = 'Group/' + n;
-    else if (g_to == 'user')
-        g_to = 'User:' + n;
+    else if (g_to == 'wiki_user')
+        g_to = 'wiki_user:' + n;
     return g_to;
 };
 
@@ -585,7 +585,7 @@ HACLACLEditor.prototype.get_empty_hint = function()
 {
     var tt = document.getElementById('to_type').value;
     var involved = [], n, j = 0;
-    if (tt == 'group' || tt == 'user')
+    if (tt == 'group' || tt == 'wiki_user')
     {
         var x = {};
         for (n in this.rights_direct)
@@ -606,7 +606,7 @@ HACLACLEditor.prototype.get_empty_hint = function()
             if (n != '*' && n != '#' &&
                 (tt == 'group') == (n.substr(0, 6) == 'Group/'))
             {
-                n = htmlspecialchars(n.replace(/^User:|^Group\//, ''));
+                n = htmlspecialchars(n.replace(/^wiki_user:|^Group\//, ''));
                 involved.push('<div id="hi_'+(++j)+'" class="hacl_ti" title="'+n+'">'+n+'</div>');
             }
         }
@@ -616,7 +616,7 @@ HACLACLEditor.prototype.get_empty_hint = function()
     return '<div class="hacl_tt">'+this.msg['edit_'+tt+'s_affected']+'</div>'+involved.join('');
 };
 
-HACLACLEditor.prototype.user_hint_fill = function(h, v)
+HACLACLEditor.prototype.wiki_user_hint_fill = function(h, v)
 {
     if (!v.length)
         h.change_ajax(this.get_empty_hint());
@@ -625,17 +625,17 @@ HACLACLEditor.prototype.user_hint_fill = function(h, v)
             function (request) { if (request.status == 200) h.change_ajax(request.responseText) })
 };
 
-HACLACLEditor.prototype.user_hint_change = function(h)
+HACLACLEditor.prototype.wiki_user_hint_change = function(h)
 {
     // onchange for to_name
-    if (!this.user_hint.element.value.trim())
-        this.user_hint.msg_hint = this.get_empty_hint();
+    if (!this.wiki_user_hint.element.value.trim())
+        this.wiki_user_hint.msg_hint = this.get_empty_hint();
     var wv = document.getElementById('to_type').value;
-    this.user_hint.element.style.display = wv == '*' || wv == '#' ? 'none' : '';
+    this.wiki_user_hint.element.style.display = wv == '*' || wv == '#' ? 'none' : '';
     if (wv == '*' || wv == '#')
-        this.user_hint.focus(false);
+        this.wiki_user_hint.focus(false);
     else
-        this.user_hint.change_old();
+        this.wiki_user_hint.change_old();
 };
 
 HACLACLEditor.prototype.target_hint_fill = function (h, v)
@@ -685,12 +685,12 @@ HACLACLEditor.prototype.init = function(aclTitle, aclType, aclExists)
     this.parse_make_closure();
     // use ge.XX instead of this.XX because methods are often called in element or SHint context
     var ge = this;
-    // create autocompleter for user/group name
-    this.user_hint = new SHint('to_name', 'hacl', function(h, v) { ge.user_hint_fill(h, v) });
-    this.user_hint.change_old = this.user_hint.change;
-    this.user_hint.change = function(ev) { ge.user_hint_change() };
-    this.user_hint.onset = function(ev, e) { ge.to_name_change() };
-    this.user_hint.init();
+    // create autocompleter for wiki_user/group name
+    this.wiki_user_hint = new SHint('to_name', 'hacl', function(h, v) { ge.wiki_user_hint_fill(h, v) });
+    this.wiki_user_hint.change_old = this.wiki_user_hint.change;
+    this.wiki_user_hint.change = function(ev) { ge.wiki_user_hint_change() };
+    this.wiki_user_hint.onset = function(ev, e) { ge.to_name_change() };
+    this.wiki_user_hint.init();
     exAttach('to_name', 'change', function(ev, e) { ge.to_name_change() });
     // init protection target
     this.target_change();

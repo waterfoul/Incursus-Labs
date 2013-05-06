@@ -17,7 +17,7 @@ class Selenium {
 	protected $browser;
 	protected $browsers;
 	protected $logger;
-	protected $user;
+	protected $wiki_user;
 	protected $pass;
 	protected $timeout = 30000;
 	protected $verbose;
@@ -60,11 +60,11 @@ class Selenium {
 	}
 
 	public function login() {
-		if ( strlen( $this->user ) == 0 ) {
+		if ( strlen( $this->wiki_user ) == 0 ) {
 			return;
 		}
-		$this->open( self::$url . '/index.php?title=Special:Userlogin' );
-		$this->type( 'wpName1', $this->user );
+		$this->open( self::$url . '/index.php?title=Special:wiki_userlogin' );
+		$this->type( 'wpName1', $this->wiki_user );
 		$this->type( 'wpPassword1', $this->pass );
 		$this->click( "//input[@id='wpLoginAttempt']" );
 		$this->waitForPageToLoad( 10000 );
@@ -118,13 +118,13 @@ class Selenium {
 		return $this->port;
 	}
 
-	public function setUser( $user ) {
-		$this->user = $user;
+	public function setwiki_user( $wiki_user ) {
+		$this->wiki_user = $wiki_user;
 	}
 
-        // Function to get username
-        public function getUser() {
-		return $this->user;
+        // Function to get wiki_username
+        public function getwiki_user() {
+		return $this->wiki_user;
 	}
         
 

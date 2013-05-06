@@ -72,7 +72,7 @@ $namespaceAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'بەکارھێنەرە_چالاکەکان' ),
+	'Activewiki_users'               => array( 'بەکارھێنەرە_چالاکەکان' ),
 	'Allmessages'               => array( 'ھەموو_پەیامەکان' ),
 	'Allpages'                  => array( 'ھەموو_پەڕەکان' ),
 	'Ancientpages'              => array( 'پەڕە_کۆنەکان' ),
@@ -84,13 +84,13 @@ $specialPageAliases = array(
 	'CreateAccount'             => array( 'ھەژمار_دروستکردن' ),
 	'Deadendpages'              => array( 'پەڕە_بەربەستراوەکان' ),
 	'DoubleRedirects'           => array( 'ڕەوانکەرە_دووپاتکراوەکان' ),
-	'Emailuser'                 => array( 'ئیمەیل_بەکارھێنەر' ),
+	'Emailwiki_user'                 => array( 'ئیمەیل_بەکارھێنەر' ),
 	'Export'                    => array( 'ھەناردن' ),
 	'Fewestrevisions'           => array( 'کەمترین__پێداچوونەوەکان' ),
 	'Listadmins'                => array( 'لیستی_بەڕێوبەران' ),
 	'Listbots'                  => array( 'لیستی_بۆتەکان' ),
 	'Listfiles'                 => array( 'لیستی_پەڕگەکان' ),
-	'Listusers'                 => array( 'لیستی_بەکارھێنەران' ),
+	'Listwiki_users'                 => array( 'لیستی_بەکارھێنەران' ),
 	'Log'                       => array( 'لۆگ' ),
 	'Lonelypages'               => array( 'پەڕە_تاکەکان،_پەڕە_ھەتیوکراوەکان' ),
 	'Longpages'                 => array( 'پەڕە_درێژەکان' ),
@@ -124,7 +124,7 @@ $specialPageAliases = array(
 	'Unusedcategories'          => array( 'پۆلە_بەکارنەھێنراوەکان' ),
 	'Unusedimages'              => array( 'پەڕگە_بەکارنەھێنراوەکان،_وێنە_بەکارنەھێنراوەکان' ),
 	'Upload'                    => array( 'بارکردن' ),
-	'Userlogin'                 => array( 'چوونەژوورەوەی_بەکارھێنەر' ),
+	'wiki_userlogin'                 => array( 'چوونەژوورەوەی_بەکارھێنەر' ),
 	'Version'                   => array( 'وەشان' ),
 	'Wantedcategories'          => array( 'پۆلە_پێویستەکان' ),
 	'Wantedfiles'               => array( 'پەڕگە_پێویستەکان' ),
@@ -146,7 +146,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'ھێڵ ھێنان بەژێر بەستەرەکان:',
 'tog-justify' => 'پەرەگرافەکان پڕاوپر نیشان بدە',
 'tog-hideminor' => 'دەستکارییە بچووکەکان بشارەوە لە دوایین گۆڕانکارییەکاندا',
@@ -170,7 +170,7 @@ $messages = array(
 'tog-previewonfirst' => 'لە یەکەم دەستکاری دا پێشبینین نیشان بدە',
 'tog-nocache' => 'کاشکردنی پەڕەکانی وێبگەڕەکە لەکاربخە',
 'tog-enotifwatchlistpages' => 'ئیمەیلم بۆ بنێرە کاتێک پەڕەیەک یان پەڕگەیەک لە لیستی چاودێڕییەکانمدا گۆڕدرا',
-'tog-enotifusertalkpages' => 'ئەگەر پەڕەی وتووێژەکەم گۆڕدرا ئیمەیلم بۆ بنێرە',
+'tog-enotifwiki_usertalkpages' => 'ئەگەر پەڕەی وتووێژەکەم گۆڕدرا ئیمەیلم بۆ بنێرە',
 'tog-enotifminoredits' => 'بۆ گۆڕانکارییە بچووکەکانی پەڕەکان و پەڕگەکانیش ئیمەیلم بۆ بنێرە',
 'tog-enotifrevealaddr' => 'ئەدرەسی ئیمەیلەکەم لە ئیمەیلە ئاگاداریدەرەکان دا نیشان بدە',
 'tog-shownumberswatching' => 'ژمارەی بەکارھێنەرە چاودێڕەکان نیشان بدە',
@@ -353,7 +353,7 @@ $messages = array(
 'talk' => 'وتووێژ',
 'views' => 'بینینەکان',
 'toolbox' => 'ئامرازدان',
-'userpage' => 'بینینی پەڕەی بەکارھێنەر',
+'wiki_userpage' => 'بینینی پەڕەی بەکارھێنەر',
 'projectpage' => 'په‌ڕه‌ی پرۆژه‌ نیشانبده‌',
 'imagepage' => 'پەڕەی پەڕگە نیشان بدە',
 'mediawikipage' => 'په‌ڕه‌ی په‌یام نیشانبده‌',
@@ -377,7 +377,7 @@ $messages = array(
 $1',
 'pool-errorunknown' => 'هەڵەی نەزانراو',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'سەبارەت بە {{SITENAME}}',
 'aboutpage' => 'Project:سەبارەت',
 'copyright' => 'ناوەرۆک لە ژێر $1 لەبەردەستدایە.',
@@ -413,8 +413,8 @@ $1',
 'youhavenewmessages' => '$1ت ھەیە ($2).',
 'newmessageslink' => 'پەیامی نوێ',
 'newmessagesdifflink' => 'دوایین گۆڕانکاری',
-'youhavenewmessagesfromusers' => 'لە {{PLURAL:$3|بەکارھێنەرێک|$3 بەکارھێنەران}} $1ت ھەیە ($2).',
-'youhavenewmessagesmanyusers' => '$1ت  لە ژمارەیەک بەکارھێنەر ھەیە ( $2 ).',
+'youhavenewmessagesfromwiki_users' => 'لە {{PLURAL:$3|بەکارھێنەرێک|$3 بەکارھێنەران}} $1ت ھەیە ($2).',
+'youhavenewmessagesmanywiki_users' => '$1ت  لە ژمارەیەک بەکارھێنەر ھەیە ( $2 ).',
 'newmessageslinkplural' => '{{PLURAL:$1|پەیامێکی نوێ|پەیامی نوێ}}',
 'newmessagesdifflinkplural' => 'دوایین {{PLURAL:$1|گۆڕانکاری|گۆڕانکارییەکان}}',
 'youhavenewmessagesmulti' => 'لە $1 دا پەیامی نوێت ھەیە',
@@ -446,7 +446,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'پەڕە',
-'nstab-user' => 'پەڕەی بەکارھێنەر',
+'nstab-wiki_user' => 'پەڕەی بەکارھێنەر',
 'nstab-media' => 'میدیا',
 'nstab-special' => 'پەڕەی تایبەت',
 'nstab-project' => 'پەڕەی پرۆژە',
@@ -491,7 +491,7 @@ $1',
 ئەمە زیاتر لە بەدواچوونی بەستەری جیاوازی یان مێژووی کۆنی پەڕەیەکی سڕدراو ڕوودەدات.
 
 ئەگەر وا نەبێت، ئەوا ڕەنگە گرفتێکت لەم نەرمامێرەدا دۆزیبێتەوە.
-تکایە ئەمە بە ئاماژەدان بە ناونیشانی URLـەکەیەوە بە [[Special:ListUsers/sysop|بەڕێوبەرێک]] ڕاپۆرت بدە.',
+تکایە ئەمە بە ئاماژەدان بە ناونیشانی URLـەکەیەوە بە [[Special:Listwiki_users/sysop|بەڕێوبەرێک]] ڕاپۆرت بدە.',
 'missingarticle-rev' => '(پیاچوونەوە#: $1)',
 'missingarticle-diff' => '(جیاوازی: $1، $2)',
 'readonly_lag' => 'بنكه‌دراوه‌كه‌ به‌شێوه‌ی خۆكار به‌ندكراوه‌، له‌كاتێكدا بنكه‌دراوه‌ی ڕاژه‌كاره‌كه‌ ڕۆڵی له‌خۆگرتن ده‌گێڕێت',
@@ -540,7 +540,7 @@ $1',
 $2',
 'namespaceprotected' => "تۆ ناتوانی لاپەڕەکانی ناو نەیمسپەیسی '''$1''' بگۆڕی.",
 'ns-specialprotected' => 'تۆ ناتوانی لاپەڕە تایبەتەکان دەستکاریی بکەی.',
-'titleprotected' => 'ئەم سەرناوە پارێزراوە لە دروستکران لە لایەن [[User:$1|$1]].
+'titleprotected' => 'ئەم سەرناوە پارێزراوە لە دروستکران لە لایەن [[wiki_user:$1|$1]].
 ھۆکاری ئەمە بریتیە لە "\'\'$2\'\'".',
 'exception-nologin' => 'لەژوورەوە نیت',
 
@@ -552,7 +552,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''ئێستا تۆ لە ھەژمارەکەت ھاتوویتە دەرەوە.'''
 
-دەتوانی بە شێوەی بێناو درێژە بدەی بە بەرکارھێنانی {{SITENAME}}، یان دەتوانی [[Special:UserLogin|دیسانەوە بچیتەوە ژوورەوە]] ھەر بەو ناوە یان بە ناوی بەکارھێنەرییەکی جیاوازەوە.
+دەتوانی بە شێوەی بێناو درێژە بدەی بە بەرکارھێنانی {{SITENAME}}، یان دەتوانی [[Special:wiki_userLogin|دیسانەوە بچیتەوە ژوورەوە]] ھەر بەو ناوە یان بە ناوی بەکارھێنەرییەکی جیاوازەوە.
 ئاگادار بە کە ھەتا کاتێک کە کەشی وێبگەڕەکەت دەسڕیتەوە، سەرەڕای چوونەدەرەوەی تۆ ھەندێک لە پەڕەکان ھەر بە شێوەیەک نیشان دەدرێن کە گوایە تۆ ھێشتا لە ژوورەوەیت.",
 'welcomecreation' => '== بەخێربێی، $1! ==
 ھەژمارەکەت دروست کرا.
@@ -567,21 +567,21 @@ $2',
 'login' => 'بچۆ ژوورەوە',
 'nav-login-createaccount' => 'بچۆ ژوورەوە / ھەژمار دروست بکە',
 'loginprompt' => 'بۆ چوونەژوورەوە بۆ {{SITENAME}} دەبێ کوکییەکان چالاک بکەیت.',
-'userlogin' => 'بچۆ ژوورەوە / ھەژمار دروست بکە',
-'userloginnocreate' => 'بچۆ ژوورەوە',
+'wiki_userlogin' => 'بچۆ ژوورەوە / ھەژمار دروست بکە',
+'wiki_userloginnocreate' => 'بچۆ ژوورەوە',
 'logout' => 'بچۆ دەرەوە',
-'userlogout' => 'بچۆ دەرەوە',
+'wiki_userlogout' => 'بچۆ دەرەوە',
 'notloggedin' => 'له‌ ژووره‌وه‌ نیت',
 'nologin' => "ھەژمارت نییە؟  '''$1'''.",
 'nologinlink' => 'ھەژمارێک دروست بکە',
 'createaccount' => 'ھەژمار دروست بکە',
 'gotaccount' => 'ھەژمارت ھەیە لێرە؟ $1.',
 'gotaccountlink' => 'بچۆ ژوورەوە',
-'userlogin-resetlink' => 'وردەکارییەکانی چوونەژوورەوەتت لە بیر کردووە؟',
+'wiki_userlogin-resetlink' => 'وردەکارییەکانی چوونەژوورەوەتت لە بیر کردووە؟',
 'createaccountmail' => 'بە ئیمەیل',
 'createaccountreason' => 'هۆکار:',
 'badretype' => 'تێپەڕوشەکان لەیەک ناچن.',
-'userexists' => 'ئەو ناوەی تۆ داوتە پێشتر بەکارھێنراوە.
+'wiki_userexists' => 'ئەو ناوەی تۆ داوتە پێشتر بەکارھێنراوە.
 ناوێکی دیکە ھەڵبژێرە.',
 'loginerror' => 'ھەڵەی چوونەژوورەوە',
 'createaccounterror' => 'ناتوانیت هەژماری بەکارهێنەر دروست بکەیت: $1',
@@ -595,12 +595,12 @@ $2',
 'noname' => 'ناوی بەکارهێنەرییەکی گۆنجاوت دیاری نەکردووه.',
 'loginsuccesstitle' => 'سەرکەوتی بۆ چوونە ژوورەوە',
 'loginsuccess' => "'''ئێستا بە ناوی «$1»ەوە لە {{SITENAME}} چوویتەتەژوورەوە.'''",
-'nosuchuser' => 'بەکارھێنەرێک بە ناوی «$1» نیە.
+'nosuchwiki_user' => 'بەکارھێنەرێک بە ناوی «$1» نیە.
 ناوی بەکارھێنەر بە گەورە و بچووک بوونی پیتەکان ھەستیارە.
-ڕێنووسەکەت چاولێکەرەوە، یان [[Special:UserLogin/signup|ھەژمارێکی نوێ دروست بکە]].',
-'nosuchusershort' => 'بەکارهێنەر بە ناوی "$1" نیە.
+ڕێنووسەکەت چاولێکەرەوە، یان [[Special:wiki_userLogin/signup|ھەژمارێکی نوێ دروست بکە]].',
+'nosuchwiki_usershort' => 'بەکارهێنەر بە ناوی "$1" نیە.
 چاو لە ڕێنووسەکە بکە.',
-'nouserspecified' => 'دەبێ ناوی بەکارهێنەر دابین‌ بکەی.',
+'nowiki_userspecified' => 'دەبێ ناوی بەکارهێنەر دابین‌ بکەی.',
 'wrongpassword' => 'تێپەڕوشەی ھەڵە.
 تکایە دووبارە تێبکۆشە.',
 'wrongpasswordempty' => 'تێپەڕەوشەی لێدراو بەتاڵبوو.
@@ -666,7 +666,7 @@ $2',
 'passwordreset' => 'دووبارە ڕێکخستنەوەی تێپەڕوشە',
 'passwordreset-text' => 'ئەم فۆرمە پڕ بکەوە بۆ گرتنی ئیمەیلێکی بیرخەرەوەی وردەکارییەکانی ھەژمارەکەت.',
 'passwordreset-legend' => 'دووبارە ڕێکخستنەوەی تێپەڕوشە',
-'passwordreset-username' => 'ناوی بەکارھێنەری:',
+'passwordreset-wiki_username' => 'ناوی بەکارھێنەری:',
 'passwordreset-domain' => 'پاوان:',
 'passwordreset-capture' => 'بینینی ئیمەیڵی ئەنجام؟',
 'passwordreset-email' => 'ئەدرەسی ئیمەیڵ:',
@@ -679,7 +679,7 @@ $2
 دەبێ بچیتە ژوورەوە و ھەر ئێستا تێپەڕوشەیەکی نوێ ھەڵبژێریت. ئەگەر کەسێکی تر ئەم داواکارییەی کردووە،
 یان ئەگەر تێپەڕوشە سەرەتاییەکەت ھاتووەتەوە بیرت و ئیتر ناتەوێ بیگۆڕی، 
 دەتوانی گوێ بەم پەیامە نەدەیت و ھەر لە تێپەڕوشە کۆنەکەت کەڵک وەرگریت.',
-'passwordreset-emailtext-user' => '‫بەکارھێنەر $1 لە {{SITENAME}} داوای بیرخەرەوەی وردەکارییەکانی ھەژمارەکەتی لە {{SITENAME}} کردووە
+'passwordreset-emailtext-wiki_user' => '‫بەکارھێنەر $1 لە {{SITENAME}} داوای بیرخەرەوەی وردەکارییەکانی ھەژمارەکەتی لە {{SITENAME}} کردووە
  ($4). {{PLURAL:$3|ھەژماری بەکارھێنەریی خوارەوە پەیوەندیی ھەیە|ھەژمارە بەکارھێنەرییەکانی خوارەوە پەیوەندییان ھەیە}} بەم ئەدرەسی ئیمەیڵەوە:
 
 $2
@@ -783,7 +783,7 @@ $2
 'loginreqlink' => 'چونە‌ژوور',
 'loginreqpagetext' => 'بۆ دیتنی لاپەڕەکانی دیکە دەبێ $1 .',
 'accmailtitle' => 'وشه‌ی نهێنی ناردرا.',
-'accmailtext' => "تێپەڕوشەیەکی هەرەمەکی درووست‌کراو بۆ [[User talk:$1|$1]] ناردرا بۆ $2 .
+'accmailtext' => "تێپەڕوشەیەکی هەرەمەکی درووست‌کراو بۆ [[wiki_user talk:$1|$1]] ناردرا بۆ $2 .
 
 کاتێ چوویتە ‌ژوورەوە، لە ''[[Special:ChangePassword|گۆڕینی تێپەڕوشە]]'' دەتوانی وشەی تێپەڕبوون بۆ ئەم هەژمارە نوێیە بگۆڕی.",
 'newarticle' => '(نوێ)',
@@ -794,14 +794,14 @@ $2
 'anontalkpagetext' => "----''ئەمە لاپەڕەی وتووێژە بۆ بەکارهێنەرێکی نەناسراوە کە هێشتا هەژمارەی درووست‌نەکردووه یان کەڵکی‌ لێ وەرناگرێ .
 لەبەر ئەوە مەجبوورین ئای‌پی ئەدرەسەکی ژمارەیی بۆ ناساندنی بەکار بێنین.
 ئای‌پی ئەدرەسی وا لەوانەیه لە لایەن چەندین بەکارهێنەروە بەکاربێت.
-ئەگەر تۆ بەکارهێنەرێکی نەناسراوی و هەست ئەکەی ئەم لێدوانە پەیوەندی بە تۆوە نیە تکایە [[Special:UserLogin/signup|ھەژمارێکی نوێ دروست بکە]] یان [[Special:UserLogin|بچۆ ژوورەوە]] لەبەر ئەوەی لەداهاتوودا دەگەڵ بەکارهێنەرانی‌ نەناسراوی دی تێکەڵ نەکرێیت. ''",
+ئەگەر تۆ بەکارهێنەرێکی نەناسراوی و هەست ئەکەی ئەم لێدوانە پەیوەندی بە تۆوە نیە تکایە [[Special:wiki_userLogin/signup|ھەژمارێکی نوێ دروست بکە]] یان [[Special:wiki_userLogin|بچۆ ژوورەوە]] لەبەر ئەوەی لەداهاتوودا دەگەڵ بەکارهێنەرانی‌ نەناسراوی دی تێکەڵ نەکرێیت. ''",
 'noarticletext' => 'ھەنووکە ھیچ دەقێک لەم پەڕەیەدا نییە.
 دەتوانی بۆ ئەم ناوە لە [[Special:Search/{{PAGENAME}}|پەڕەکانی تردا بگەڕێی]]، <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} لە لۆگەکاندا بگەڕێی]، یان [{{fullurl:{{FULLPAGENAME}}|action=edit}} ئەم پەڕەیە دەستکاری بکەیت]</span>.',
 'noarticletext-nopermission' => 'ھەنووکە ھیچ دەقێک لەم پەڕەیەدا نییە.
 دەتوانی لە پەڕەکانی تردا [[Special:Search/{{PAGENAME}}|بۆ ئەم ناوە بگەڕێی]]، یان <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} لە لۆگە پەیوەندیدارەکاندا بگەڕێی]</span>، بەڵام ناتوانی ئەم پەڕەیە دروست بکەی.',
-'userpage-userdoesnotexist' => 'هەژماری بەکارهێنەری "<nowiki>$1</nowiki>" تۆمار نەکراوە.<br />
+'wiki_userpage-wiki_userdoesnotexist' => 'هەژماری بەکارهێنەری "<nowiki>$1</nowiki>" تۆمار نەکراوە.<br />
 گەر دەتەوێ ئەم لاپەڕە درووست‌کەی یان دەستکاری بکەی تکایە تاقی‌بکەوە .',
-'userpage-userdoesnotexist-view' => 'ھەژماری بەکارھێنەریی «$1» تۆمار نەکراوە.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'ھەژماری بەکارھێنەریی «$1» تۆمار نەکراوە.',
 'blocked-notice-logextract' => 'ھەنووکە ئەم بەکارھێنەرە بەربەست کراوە.
 دوایین بابەتی لۆگی بەربەستن لە ژێرەوە ھاتووە:',
 'clearyourcache' => "تێبینی:''' لە دوای پاشەکەوت کردن، لەوانەیە  بۆ بینینی گۆڕانکارییەکان پێویست بێ cacheی وێبگەڕەکەت پاکبکەیتەوە.
@@ -809,18 +809,18 @@ $2
 * '''Google Chrome:''' دوگمەکانی ''Ctrl-Shift-R'' لێبدە  (''⌘-Shift-R'' لەسەر Mac دا)
 * '''Internet Explorer:''' دوگمەی ''Ctrl'' بگرە کاتێک لەسەر  ''Refresh''دا کرتە دەکەی، یان ''Ctrl-F5'' لێبدە
 * '''Opera:''' لە ڕێگەی ''Tools → Preferences'' ەوە cacheەکە بسڕەوە.",
-'usercssyoucanpreview' => "'''سەرچەشن:''' «{{int:showpreview}}» بەکاربێنە بۆ تاقی‌کردنەوەی CSS نوێ‌کەت، پێش پاشەکەوت‌کردن.",
-'userjsyoucanpreview' => "'''سەرچەشن:''' «{{int:showpreview}}» بەکاربێنە بۆ تاقی‌کردنەوەی جاڤاسکریپتە نوێ‌کەت، پێش پاشەکەوت‌کردن.",
-'usercsspreview' => "'''له‌یادت بێ که‌ ئێسته‌ ته‌نها پێشبینینی CSS به‌کارهێنه‌ریه‌که‌ت ده‌که‌ی.'''
+'wiki_usercssyoucanpreview' => "'''سەرچەشن:''' «{{int:showpreview}}» بەکاربێنە بۆ تاقی‌کردنەوەی CSS نوێ‌کەت، پێش پاشەکەوت‌کردن.",
+'wiki_userjsyoucanpreview' => "'''سەرچەشن:''' «{{int:showpreview}}» بەکاربێنە بۆ تاقی‌کردنەوەی جاڤاسکریپتە نوێ‌کەت، پێش پاشەکەوت‌کردن.",
+'wiki_usercsspreview' => "'''له‌یادت بێ که‌ ئێسته‌ ته‌نها پێشبینینی CSS به‌کارهێنه‌ریه‌که‌ت ده‌که‌ی.'''
 '''هێشتا پاشه‌که‌وت نه‌بووه !'''",
-'userjspreview' => "'''لەیادت بێ کە ئێستە تەنها پێشبینین\\تاقی‌کردنەوەی جاڤاسکریپتی بەکارهێنەریەکەت دەکەی.'''
+'wiki_userjspreview' => "'''لەیادت بێ کە ئێستە تەنها پێشبینین\\تاقی‌کردنەوەی جاڤاسکریپتی بەکارهێنەریەکەت دەکەی.'''
 '''هێشتا پاشەکەوت نەبووه !'''",
 'sitecsspreview' => "'''له‌یادت بێ که‌ ئێسته‌ ته‌نها پێشبینینی ئەم CSS ده‌که‌ی.'''
 '''هێشتا پاشه‌که‌وت نه‌کراوە !'''",
 'sitejspreview' => "'''لە بیرت نەچێت ئەمە تەنیا پێشبینینی ئەم کۆدەی جاڤاسکریپتە.'''
 '''گۆڕانکارییەکانت ھێشتا پاشەکەوت نەکراون!'''",
-'userinvalidcssjstitle' => "'''ئاگادارکردنەوە:''' پێست نیە بۆ \"\$1\".
-لەیادت بێ کە لاپەڕەکانی‌ .css و .js لە بابەت بە پیتی بچووک کەڵک وەر ئەگرن. وەک {{ns:user}}:Foo/vector.css نە وەک {{ns:user}}:Foo/Vector.css .",
+'wiki_userinvalidcssjstitle' => "'''ئاگادارکردنەوە:''' پێست نیە بۆ \"\$1\".
+لەیادت بێ کە لاپەڕەکانی‌ .css و .js لە بابەت بە پیتی بچووک کەڵک وەر ئەگرن. وەک {{ns:wiki_user}}:Foo/vector.css نە وەک {{ns:wiki_user}}:Foo/Vector.css .",
 'updated' => '(نوێ‌کراوە)',
 'note' => "'''تێبینی:'''",
 'previewnote' => "'''لە بیرت نەچێت ئەمە تەنیا پێشبینینە.'''
@@ -829,13 +829,13 @@ $2
 'previewconflict' => 'ئەم پێشبینینە بە تۆ نیشان ئەدات ئەو دەقەی لە شوێنی دەستکاری سەرەوە داتناوە چۆن بەرچاو ئەکەوێت ئەگەر پاشەکەوتی بکەیت.',
 'session_fail_preview' => "'''ببوورە! ناتوانین دەستکارییەکەت پێواژۆ بکەین بە ھۆی لەدەستدانی session data.'''
 تکایە دیسان ھەوڵبدەوە.
-ئەگەر ھێشتا کار ناکات، [[Special:UserLogout|چوونەدەرەوە]] و گەڕانەوەژوورەوە تاقی بکەوە.",
+ئەگەر ھێشتا کار ناکات، [[Special:wiki_userLogout|چوونەدەرەوە]] و گەڕانەوەژوورەوە تاقی بکەوە.",
 'session_fail_preview_html' => "'''ببوورە! ناتوانین دەستکارییەکەت پێواژۆ بکەین بە ھۆی لەدەستدانی session data.'''
 
 ''لەبەر ئەوەی {{SITENAME}} ڕێگەی داوە بە raw HTML، بۆ بەرگری بەرامبەر بە هێرشەکانی جاڤاسکریپت، پێشبینین شاردراوەتەوە.''
 
 '''ئەگەر ئەمە ھەوڵێکی دەستکاریکردنی ڕەوایە، تکایە دیسان ھەوڵبدەوە.'''
-ئەگەر ھێشتا کار ناکات، [[Special:UserLogout|چوونە دەرەوە]] گەڕانەوەژوورەوە تاقی بکەوە.",
+ئەگەر ھێشتا کار ناکات، [[Special:wiki_userLogout|چوونە دەرەوە]] گەڕانەوەژوورەوە تاقی بکەوە.",
 'token_suffix_mismatch' => "'''دەستکاریەکەت پەسەند نەکرا لەبەر ئەوەی ڕاژەخواز یان وێبگەڕەکەت نووسەکانی خاڵبەندی لەیەک پچڕاندوە.'''<br />
 دەستکاریەکەت بۆ بەرگری لە تێکەڵ‌بوونی دەقی لاپەڕەکە وەر نەگیرا.<br />
 ئەمە بڕێ‌جار کاتێ ڕوو ئەدات کە لە خزمەتی پرۆکسی سەر وێب کەڵک وەر بگریت.",
@@ -885,7 +885,7 @@ $2
 'edittools' => '<!-- دەقی ئێرە لە ژێری فۆرمی دەستکاری و بارکردندا نیشان دەدرێت. -->',
 'nocreatetitle' => 'درووست‌کردنی لاپەڕە سنووردار کراوە',
 'nocreatetext' => '{{SITENAME}} توانای درووست‌کردنی لاپەڕە نوێکانی داخستووە.<br />
-ئەتوانی بگەڕێتەوە دواوە و یەکێک لەو لاپەڕانەی وا هەن دەستکاری بکەیت ، یان [[Special:UserLogin|بچۆ ژوورەوە یان هەژمارێک درووست‌بکە]]',
+ئەتوانی بگەڕێتەوە دواوە و یەکێک لەو لاپەڕانەی وا هەن دەستکاری بکەیت ، یان [[Special:wiki_userLogin|بچۆ ژوورەوە یان هەژمارێک درووست‌بکە]]',
 'nocreate-loggedin' => 'ئیجازەی دروست کردنی پەڕەی نوێت نیە.',
 'sectioneditnotsupported-title' => 'بەش دەستکاریکردنی پشتیوانی ناکرێ',
 'sectioneditnotsupported-text' => 'دەستکاریکردنی بەش لە پەڕەدا پشتیوانی ناکرێ.',
@@ -927,11 +927,11 @@ $2
 تکایە چاو لەو هەڵسەنگاندنەی خوارەوە بکە تا دڵنیا بیت ئەمە ئەوەیە کە‌ دەتویست بیکەی و دواتر گۆڕانکارییەکانی خوارەوە پاشەکەوت بکە بۆ تەواوکردنی پووچەڵکردنەوەکە.',
 'undo-failure' => 'لەبەر کێشەی دەست‌تێ‌وەردان، ناتوانی دەستکاریەکە ئەنجام‌نەدراو بکەیت.',
 'undo-norev' => 'ناتوانی دەستکاریەکە ئەنجام‌نەدراو بکەی لەبەر ئەوەی بوونی نیە یا سڕدراوەتەوە.',
-'undo-summary' => 'گەڕاندنەوەی پێداچوونەوەی $1 لە لایەن [[Special:Contributions/$2|$2]] ([[User talk:$2|وتووێژ]])',
+'undo-summary' => 'گەڕاندنەوەی پێداچوونەوەی $1 لە لایەن [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|وتووێژ]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'ناتوانرێت هەژمار دروست بکرێت',
-'cantcreateaccount-text' => 'درووست‌کردنی هەژمارە بۆ ناونیشانی ئای‌پی (\'\'\'$1\'\'\') لە لایەن [[User:$3|$3]] داخراوە.<br /><br />
+'cantcreateaccount-text' => 'درووست‌کردنی هەژمارە بۆ ناونیشانی ئای‌پی (\'\'\'$1\'\'\') لە لایەن [[wiki_user:$3|$3]] داخراوە.<br /><br />
 $3 هۆکاری "$2" خستوەتەڕوو',
 
 # History pages
@@ -968,7 +968,7 @@ $3 هۆکاری "$2" خستوەتەڕوو',
 
 # Revision deletion
 'rev-deleted-comment' => '(پوختەی دەستکاری سڕایەوە)',
-'rev-deleted-user' => '(ناوی بەکارهێنەر سڕایەوە)',
+'rev-deleted-wiki_user' => '(ناوی بەکارهێنەر سڕایەوە)',
 'rev-deleted-event' => '(لۆگی کردەوە سڕایەوە)',
 'rev-deleted-text-permission' => "ئەم پێداچوونەوەیە لەم پەڕەیە '''سڕدراوەتەوە'''.
 وردەکاری سەبارەت بەوە لە [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} لۆگی سڕینەوە]دا دەست دەکەوێت.",
@@ -1021,7 +1021,7 @@ $3 هۆکاری "$2" خستوەتەڕوو',
 'revdelete-hide-image' => 'ناوەڕۆکی پەڕگە بشارەوە',
 'revdelete-hide-name' => 'داشاردنی مەبەست و کردەوە',
 'revdelete-hide-comment' => 'شاردنەوەی کورتەی دەستکاری',
-'revdelete-hide-user' => 'شاردنەوەی ناوی بەکارھێنەری/ئای-‌پی دەستکاریکەر',
+'revdelete-hide-wiki_user' => 'شاردنەوەی ناوی بەکارھێنەری/ئای-‌پی دەستکاریکەر',
 'revdelete-hide-restricted' => 'بەرگری دراوە لە بەڕێوبەران هەر وەک ئەوانی دیکە',
 'revdelete-radio-same' => '(مەیگۆڕە)',
 'revdelete-radio-set' => 'بەڵێ',
@@ -1187,7 +1187,7 @@ $1",
 'mypreferences' => 'ھەڵبژاردەکان',
 'prefs-edits' => 'ژمارەی گۆڕانکارییەکان:',
 'prefsnologin' => 'لەژوورەوە نیت',
-'prefsnologintext' => 'بۆ دانانی هەڵبژاردەکانی بەکارهێنەر دەبێ <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} بچیتە ژوورەوە]</span>.',
+'prefsnologintext' => 'بۆ دانانی هەڵبژاردەکانی بەکارهێنەر دەبێ <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} بچیتە ژوورەوە]</span>.',
 'changepassword' => 'تێپەڕوشە بگۆڕە',
 'prefs-skin' => 'پێستە',
 'skin-preview' => 'پێش بینین',
@@ -1195,7 +1195,7 @@ $1",
 'prefs-beta' => 'کەرەسەکانی بیتا',
 'prefs-datetime' => 'کات و ڕێکەوت',
 'prefs-labs' => 'کەرەسەکانی تاقیگەکان',
-'prefs-user-pages' => 'پەڕە بەکارھێنەرییەکان',
+'prefs-wiki_user-pages' => 'پەڕە بەکارھێنەرییەکان',
 'prefs-personal' => 'پرۆفایلی بەکارھێنەر',
 'prefs-rc' => 'دوایین گۆڕانکارییەکان',
 'prefs-watchlist' => 'لیستی چاودێری',
@@ -1260,7 +1260,7 @@ $1",
 'prefs-emailconfirm-label' => 'پشتڕاست کردنەوەی ئیمەیل:',
 'prefs-textboxsize' => 'قەبارەی پەنجەرەی دەستکاریکردن',
 'youremail' => 'ئیمەیل:',
-'username' => 'ناوی به‌کارھێنەر:',
+'wiki_username' => 'ناوی به‌کارھێنەر:',
 'uid' => 'ژمارەی بەکارھێنەر:',
 'prefs-memberingroups' => 'ئەندامی {{PLURAL:$1|گرووپی|گرووپەکانی}}:',
 'prefs-registration' => 'کاتی خۆتۆمارکردن:',
@@ -1299,34 +1299,34 @@ $1",
 'prefs-displaywatchlist' => 'ھەڵبژاردەکانی نیشاندان',
 'prefs-diffs' => 'جیاوازییەکان',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'ناونیشانی ئیمەیل دروست وە بەر چاو دێت',
 'email-address-validity-invalid' => 'ناونیشانێکی دروستی ئیمەیل بنووسە',
 
-# User rights
-'userrights' => 'بەڕێوەبردنی مافەکانی بەکارھێنەر',
-'userrights-lookup-user' => 'بەڕێوەبردنی گرووپەکانی بەکارھێنەر',
-'userrights-user-editname' => 'ناوی بەکارهێنەرێک بنووسە:',
-'editusergroup' => 'گرووپەکانی بەکارھێنەر دەستکاری بکە',
-'editinguser' => "گۆڕینی مافەکانی بەکارهێنەر '''[[User:$1|$1]]''' $2",
-'userrights-editusergroup' => 'دەستکاریی گرووپەکانی بەکارهێنەر',
-'saveusergroups' => 'گرووپەکانی بەکارھێنەر پاشەکەوت بکە',
-'userrights-groupsmember' => 'ئەندامە لە:',
-'userrights-groups-help' => 'دەتوانی ئەو گرووپانەی ئەم بەکار‌هێنەرە تێیدایە بگۆڕیت:
+# wiki_user rights
+'wiki_userrights' => 'بەڕێوەبردنی مافەکانی بەکارھێنەر',
+'wiki_userrights-lookup-wiki_user' => 'بەڕێوەبردنی گرووپەکانی بەکارھێنەر',
+'wiki_userrights-wiki_user-editname' => 'ناوی بەکارهێنەرێک بنووسە:',
+'editwiki_usergroup' => 'گرووپەکانی بەکارھێنەر دەستکاری بکە',
+'editingwiki_user' => "گۆڕینی مافەکانی بەکارهێنەر '''[[wiki_user:$1|$1]]''' $2",
+'wiki_userrights-editwiki_usergroup' => 'دەستکاریی گرووپەکانی بەکارهێنەر',
+'savewiki_usergroups' => 'گرووپەکانی بەکارھێنەر پاشەکەوت بکە',
+'wiki_userrights-groupsmember' => 'ئەندامە لە:',
+'wiki_userrights-groups-help' => 'دەتوانی ئەو گرووپانەی ئەم بەکار‌هێنەرە تێیدایە بگۆڕیت:
 * چوارچێوەی نیشان‌کراو مانای ئەوەیە لەو گرووپەدا هەیە.
 * چوارچێوەی نیشان‌نەکراو مانای ئەوەیە لەو گرووپەدا نیە.
 * A * پێت‌دەڵێ ناتوانی ئەو گرووپی جارێکی دی زیادت کردووە لای‌بەری.',
-'userrights-reason' => 'هۆکار:',
-'userrights-no-interwiki' => 'دەسەڵاتی گۆڕینی مافەکانی بەکارهێنەر لە ویکی‌یەکانی دیکەت نیە.',
-'userrights-nodatabase' => 'بنکەدراوی $1 بوونی نیە یا لەم شوێنە نیە.',
-'userrights-nologin' => 'بۆ دانانی مافەکانی بەکارهێنەر دەبێ بە هەژماری بەڕێوبەری [[Special:UserLogin|بچیتە ژووروە]].',
-'userrights-notallowed' => 'ھەژمارەکەی تۆ دەسەڵاتی دانان یان لابردنی مافەکانی بەکارھێنەری نییە.',
-'userrights-changeable-col' => 'ئەو گرووپانەی دەتوانی بیگۆڕی',
-'userrights-unchangeable-col' => 'ئەو گرووپانەی ناتوانی بیگۆڕی',
+'wiki_userrights-reason' => 'هۆکار:',
+'wiki_userrights-no-interwiki' => 'دەسەڵاتی گۆڕینی مافەکانی بەکارهێنەر لە ویکی‌یەکانی دیکەت نیە.',
+'wiki_userrights-nodatabase' => 'بنکەدراوی $1 بوونی نیە یا لەم شوێنە نیە.',
+'wiki_userrights-nologin' => 'بۆ دانانی مافەکانی بەکارهێنەر دەبێ بە هەژماری بەڕێوبەری [[Special:wiki_userLogin|بچیتە ژووروە]].',
+'wiki_userrights-notallowed' => 'ھەژمارەکەی تۆ دەسەڵاتی دانان یان لابردنی مافەکانی بەکارھێنەری نییە.',
+'wiki_userrights-changeable-col' => 'ئەو گرووپانەی دەتوانی بیگۆڕی',
+'wiki_userrights-unchangeable-col' => 'ئەو گرووپانەی ناتوانی بیگۆڕی',
 
 # Groups
 'group' => 'گرووپ:',
-'group-user' => 'بەکارهێنەران',
+'group-wiki_user' => 'بەکارهێنەران',
 'group-autoconfirmed' => 'بەکارھێنەرانی پەسندکراوی خۆگەڕ',
 'group-bot' => 'بۆتەکان',
 'group-sysop' => 'بەڕێوبەران',
@@ -1334,14 +1334,14 @@ $1",
 'group-suppress' => 'چاودێرەکان',
 'group-all' => '(ھەموو)',
 
-'group-user-member' => '{{GENDER:$1|بەکارھێنەر}}',
+'group-wiki_user-member' => '{{GENDER:$1|بەکارھێنەر}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|بەکارھێنەرانی پەسندکراوی خۆگەڕ}}',
 'group-bot-member' => 'بۆت',
 'group-sysop-member' => '{{GENDER:$1|بەڕێوبەر}}',
 'group-bureaucrat-member' => '{{GENDER:$1|بیوروکرات}}',
 'group-suppress-member' => '{{GENDER:$1|چاودێر}}',
 
-'grouppage-user' => '{{ns:project}}:بەکارھێنەران',
+'grouppage-wiki_user' => '{{ns:project}}:بەکارھێنەران',
 'grouppage-autoconfirmed' => '{{ns:project}}:بەکارھێنەرانی پەسندکراوی خۆگەڕ',
 'grouppage-bot' => '{{ns:project}}:بۆتەکان',
 'grouppage-sysop' => '{{ns:project}}:بەڕێوبەران',
@@ -1357,7 +1357,7 @@ $1",
 'right-minoredit' => 'بچووک دیاری کردنی گۆڕانکارییەکان',
 'right-move' => 'گواستنەوەی پەڕەکان',
 'right-move-subpages' => 'گواستنەوەی لاپەڕەکان دەگەڵ ژێرلاپەڕەکانی',
-'right-move-rootuserpages' => 'گواستنەوەی بنەرەتی لاپەڕەکانی بەکارهێنەر',
+'right-move-rootwiki_userpages' => 'گواستنەوەی بنەرەتی لاپەڕەکانی بەکارهێنەر',
 'right-movefile' => 'گواستنەوەی پەڕگەکان',
 'right-suppressredirect' => 'درووست‌ نەکردنی رەوانەکەر لە لاپەڕەی سەرچاوە کاتی گواستنەوەی لاپەڕەکان',
 'right-upload' => 'بارکردنی پەڕگەکان',
@@ -1381,15 +1381,15 @@ $1",
 'right-suppressionlog' => 'دیتنی لۆگە ئەهلیەکان',
 'right-block' => 'بەربەستنی بەکارھێنەرانی تر لە دەستکاری کردن',
 'right-blockemail' => 'بەرگری بەکارهێنەرێک بکە لە ناردنی ئیمەیل',
-'right-hideuser' => 'بەربەست‌کردنی ناوێکی بەکارهێنەری، داشاردنی لە بەرچاوی هەموان',
+'right-hidewiki_user' => 'بەربەست‌کردنی ناوێکی بەکارهێنەری، داشاردنی لە بەرچاوی هەموان',
 'right-ipblock-exempt' => 'لادان لە بەرگریەکانی ئای‌پی، بەرگریە خۆکارەکان و بەرگریە ڕیزەکان',
 'right-proxyunbannable' => 'لادان لە بەرگری خۆکاری پرۆکسیەکان',
 'right-protect' => 'گۆڕانی ئاستی پارێزراوی و دەستکاری لاپەڕە پارێزراوەکان',
 'right-editprotected' => 'دەستکاری لاپەڕە پارێزراوەکان (بێ پاراستنی زنجیری)',
 'right-editinterface' => 'گۆڕانی ڕووکاری بەکارهێنەر',
-'right-editusercssjs' => 'دەستکاری پەڕگەکانی CSS و JSـی بەکارهێنەرانی دیکە',
-'right-editusercss' => 'گۆڕانی پەڕگەکانی CSSـی دیکەی بەکارهێنەر',
-'right-edituserjs' => 'گۆڕانی پەڕگەکانی JSـی دیکەی بەکارهێنەر',
+'right-editwiki_usercssjs' => 'دەستکاری پەڕگەکانی CSS و JSـی بەکارهێنەرانی دیکە',
+'right-editwiki_usercss' => 'گۆڕانی پەڕگەکانی CSSـی دیکەی بەکارهێنەر',
+'right-editwiki_userjs' => 'گۆڕانی پەڕگەکانی JSـی دیکەی بەکارهێنەر',
 'right-rollback' => 'بەخێرایی گەڕانەوەی دەستکاریەکانی دوایین بەکارهێنەر کە لاپەڕەیەکی تایبەتی دەستکاری کردە',
 'right-markbotedits' => 'نیشان‌کردنی دەستکاریە گەڕێنراوەکان وەک دەستکاریەکانی بۆت (bot)',
 'right-noratelimit' => 'کاریگەری وەرنەگرتن لە سنوورەکانی ئاست',
@@ -1400,13 +1400,13 @@ $1",
 'right-patrolmarks' => 'دیتنی دوایین دەستکاریەکان وا لەژێرچاودێری نیشان‌کراون',
 'right-unwatchedpages' => 'دیتنی لیستێک لەو لاپەڕانەی چاودێری ناکرێن',
 'right-mergehistory' => 'سەریەک‌خستنی میژووی لاپەڕەکان',
-'right-userrights' => 'دەستکاری مافەکانی هەموو بەکارهێنەران',
-'right-userrights-interwiki' => 'دەستکاری مافەکانی بەکارهێنەریی بەکارهێنەران لە ویکی‌یەکانی دیکە‌دا',
+'right-wiki_userrights' => 'دەستکاری مافەکانی هەموو بەکارهێنەران',
+'right-wiki_userrights-interwiki' => 'دەستکاری مافەکانی بەکارهێنەریی بەکارهێنەران لە ویکی‌یەکانی دیکە‌دا',
 'right-siteadmin' => 'داخستن و کردنەوەی بنکەدراو',
 'right-override-export-depth' => 'هەناردنی لاپەڕەکان کە لاپەڕەکانی بەستەر پێ‌دراو تا قووڵایی 5 لەخۆ بگرێت',
 'right-sendemail' => 'ئەمەیل بنێرە بۆ بەکارھێنەرانی تر',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'لۆگی مافەکانی بەکارھێنەر',
 'rightslogtext' => 'ئەمە لۆگی دەستکاری مافەکانی بەکار‌هێنەرە.',
 'rightslogentry' => 'بۆ $1 ئەندامەتی گرووپی $2 گۆڕدرا بۆ $3',
@@ -1421,7 +1421,7 @@ $1",
 'action-minoredit' => 'نیشان‌کردنی ئەم دەستکاریە وەک بچووک',
 'action-move' => 'گواستنەوەی ئەم پەڕە',
 'action-move-subpages' => 'گواستنەوەی ئەم پەڕەیە و ژێرپەڕەکانی',
-'action-move-rootuserpages' => 'گواستنەوەی بنەرەتی لاپەڕەکانی بەکارهێنەر',
+'action-move-rootwiki_userpages' => 'گواستنەوەی بنەرەتی لاپەڕەکانی بەکارهێنەر',
 'action-movefile' => 'ئەم پەڕگەیە بگوازەوە',
 'action-upload' => 'ئەم پەڕەیە بار بکە',
 'action-reupload' => 'سەرنووسینی ئەم پەڕگە وا هەیە',
@@ -1443,8 +1443,8 @@ $1",
 'action-autopatrol' => 'دەستکاریەکانت وەک لەژێرچاودێری نیشان کراون',
 'action-unwatchedpages' => 'دیتنی پێرستی ئەو پەڕانەی چاودێری ناکرێن',
 'action-mergehistory' => 'سەریەک‌خستنی میژووی ئەم لاپەڕە',
-'action-userrights' => 'دەستکاری مافەکانی هەموو بەکارهێنەران',
-'action-userrights-interwiki' => 'دەستکاری مافەکانی بەکارهێنەریی بەکارهێنەران لە ویکی‌یەکانی دیکە‌دا',
+'action-wiki_userrights' => 'دەستکاری مافەکانی هەموو بەکارهێنەران',
+'action-wiki_userrights-interwiki' => 'دەستکاری مافەکانی بەکارهێنەریی بەکارهێنەران لە ویکی‌یەکانی دیکە‌دا',
 'action-siteadmin' => 'داخستن یا کردنەوەی بنکەدراو',
 'action-sendemail' => 'ناردنی ئیمەیلەکان',
 
@@ -1475,7 +1475,7 @@ $1",
 'minoreditletter' => 'ب',
 'newpageletter' => 'ن',
 'boteditletter' => '.بۆت',
-'number_of_watching_users_pageview' => '[$1 چاودێر لەسەر {{PLURAL:$1|بەکارهێنەر|بەکارهێنەر}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 چاودێر لەسەر {{PLURAL:$1|بەکارهێنەر|بەکارهێنەر}}]',
 'rc_categories' => 'بەرتەسک‌کردنەوە بە هاوپۆلەکان (به "|" جودای بکەوە‌)',
 'rc_categories_any' => 'هەرکام',
 'rc-change-size-new' => '$1 {{PLURAL:$1|بایت}} پاش گۆڕانکاری',
@@ -1501,7 +1501,7 @@ $1",
 'reuploaddesc' => 'هەڵوەشانەوەی بارکردن و گەڕانەوە بۆ فۆرمی بارکردن',
 'upload-tryagain' => 'پێناسەی گۆڕدراوی پەڕگە بنێرە',
 'uploadnologin' => 'لەژوورەوە نیت',
-'uploadnologintext' => 'بۆ بارکردنی پەڕگەکان ئەشێ [[Special:UserLogin|لە ژوورەوە بیت]].',
+'uploadnologintext' => 'بۆ بارکردنی پەڕگەکان ئەشێ [[Special:wiki_userLogin|لە ژوورەوە بیت]].',
 'upload_directory_missing' => 'لقی بارکردن ($1) ون بووە و ڕاژەکاری‌وێب بۆی درووست ناکرێت.',
 'upload_directory_read_only' => 'ڕاژەکاری‌وێب دەسەڵاتی نووسینی سەر لقی بارکردنی ($1) نیە.',
 'uploaderror' => 'ھەڵە لە بارکردن دا',
@@ -1614,11 +1614,11 @@ $1',
 'upload-proto-error-text' => 'بۆ بارکردن لە تۆڕ، URL دەبێ بە <code>http://</code>  یان <code>ftp://</code> دەست‌پێ‌بکات.',
 'upload-file-error' => 'ھەڵەی ناوخۆیی',
 'upload-file-error-text' => 'کێشەیەکی ناوخۆ ڕووی‌دا وەختێ هەوڵی درووست‌کردنی پەڕگەی کاتی ئەدرا لە سەر ڕاژەکار.
-تکایە پەیوەندی بکە بە [[Special:ListUsers/sysop|بەڕێوبەر]].',
+تکایە پەیوەندی بکە بە [[Special:Listwiki_users/sysop|بەڕێوبەر]].',
 'upload-misc-error' => 'هەڵەیەکی نەناسراوی بارکردن',
 'upload-misc-error-text' => 'هەڵەیەکی نەناسراو لە کاتی بارکردن ڕووی‌دا.
 تکایە لە درووست‌بوون و دەست‌پێ گەیشتنی URL ئەرخەیان ببە و دیسان تاقی‌بکەوە.
-گەر کێشەکە هەر بەردەوام بوو پەیوەندی بکە بە [[Special:ListUsers/sysop|بەڕێوبەر]].',
+گەر کێشەکە هەر بەردەوام بوو پەیوەندی بکە بە [[Special:Listwiki_users/sysop|بەڕێوبەر]].',
 'upload-too-many-redirects' => 'URL ڕەوانەکەری زۆری لەخۆ گرتووە',
 'upload-unknown-size' => 'قەبارەی نادیار',
 'upload-http-error' => 'هەڵەیەکی HTTP ڕووئ داوە: $1',
@@ -1671,7 +1671,7 @@ $1',
 'listfiles_thumb' => 'وێنۆک',
 'listfiles_date' => 'ڕێکەوت',
 'listfiles_name' => 'ناو',
-'listfiles_user' => 'بەکارھێنەر',
+'listfiles_wiki_user' => 'بەکارھێنەر',
 'listfiles_size' => 'قەبارە',
 'listfiles_description' => 'وەسف',
 'listfiles_count' => 'وەشانەکان',
@@ -1688,7 +1688,7 @@ $1',
 'filehist-thumb' => 'ھێما',
 'filehist-thumbtext' => 'ھێما بۆ وەشانی  $1',
 'filehist-nothumb' => 'هێما نییه',
-'filehist-user' => 'بەکارھێنەر',
+'filehist-wiki_user' => 'بەکارھێنەر',
 'filehist-dimensions' => 'ئەندازە',
 'filehist-filesize' => 'قەبارەی پەڕگە',
 'filehist-comment' => 'تێبینی',
@@ -1774,7 +1774,7 @@ $1',
 'statistics-header-pages' => 'ئامارەکانی پەڕەکان',
 'statistics-header-edits' => 'ئامارەکانی گۆڕانکارییەکان',
 'statistics-header-views' => 'ئامارەکانی سەردانەکان',
-'statistics-header-users' => 'ئامارەکانی بەکارھێنەران',
+'statistics-header-wiki_users' => 'ئامارەکانی بەکارھێنەران',
 'statistics-header-hooks' => 'ئامارەکانی دیکە',
 'statistics-articles' => 'پەڕە بە ناوەڕۆکەکان',
 'statistics-pages' => 'پەڕەکان',
@@ -1784,9 +1784,9 @@ $1',
 'statistics-edits-average' => 'نێونجی ژمارەی دەستکارییەکان لە پەڕەیەک دا',
 'statistics-views-total' => 'دیتنی هەموو',
 'statistics-views-peredit' => 'دیتنی هەر دەستکارییەک',
-'statistics-users' => '[[Special:ListUsers|بەکارھێنەر]]ە تۆمارکراوەکان',
-'statistics-users-active' => 'ئەندامە چالاکەکان',
-'statistics-users-active-desc' => 'ئەو بەکارھێنەرانە کە لە {{PLURAL:$1|ڕۆژ|$1 ڕۆژ}}ی ڕابردوودا کارێکیان جێبەجێ کردبێت.',
+'statistics-wiki_users' => '[[Special:Listwiki_users|بەکارھێنەر]]ە تۆمارکراوەکان',
+'statistics-wiki_users-active' => 'ئەندامە چالاکەکان',
+'statistics-wiki_users-active-desc' => 'ئەو بەکارھێنەرانە کە لە {{PLURAL:$1|ڕۆژ|$1 ڕۆژ}}ی ڕابردوودا کارێکیان جێبەجێ کردبێت.',
 'statistics-mostpopular' => 'زۆرترین لاپەڕە بینراوەکان',
 
 'disambiguations' => 'ئەو پەڕانە لینکیان ھەیە بۆ پەڕەکانی ڕوونکردنەوە',
@@ -1861,13 +1861,13 @@ $1',
 'protectedtitles' => 'سەرناوە پارێزراوەکان',
 'protectedtitlestext' => 'ئەم سەردێڕانە لە درووست‌کردن پارێزراون',
 'protectedtitlesempty' => 'ھیچ سەرناوێک بەم سنوورانەوە ئێستا نەپارێزراوە.',
-'listusers' => 'پێرستی بەکارھێنەران',
-'listusers-editsonly' => 'تەنیا ئەو بەکارھێنەرانە نیشان بدە کە دەستکارییان کردووە',
-'listusers-creationsort' => 'ڕیزکردن بە پێی ڕێکەوتی دروستکردن',
-'usereditcount' => '$1 {{PLURAL:$1|دەستکاری|دەستکاری}}',
-'usercreated' => 'لە $1، $2 {{GENDER:$3|دروست کراوە}}',
+'listwiki_users' => 'پێرستی بەکارھێنەران',
+'listwiki_users-editsonly' => 'تەنیا ئەو بەکارھێنەرانە نیشان بدە کە دەستکارییان کردووە',
+'listwiki_users-creationsort' => 'ڕیزکردن بە پێی ڕێکەوتی دروستکردن',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|دەستکاری|دەستکاری}}',
+'wiki_usercreated' => 'لە $1، $2 {{GENDER:$3|دروست کراوە}}',
 'newpages' => 'پەڕە نوێکان',
-'newpages-username' => 'ناوی بەکارھێنەر:',
+'newpages-wiki_username' => 'ناوی بەکارھێنەر:',
 'ancientpages' => 'کۆنترین پەڕەکان',
 'move' => 'گواستنەوە',
 'movethispage' => 'ئەم پەڕەیە بگوازەوە',
@@ -1890,7 +1890,7 @@ $1',
 'booksources-invalid-isbn' => 'ISBN دراو لەوە ناچی بەکار بێت، سەرنج بدە لە کاتی کۆپی کردن لە سەرچاوە تووشی هەڵە نوبوبێت.',
 
 # Special:Log
-'specialloguserlabel' => 'بەجێھێنەر:',
+'speciallogwiki_userlabel' => 'بەجێھێنەر:',
 'speciallogtitlelabel' => 'مەبەست (سەرناو یان بەکارھێنەر):',
 'log' => 'لۆگەکان',
 'all-logs-page' => 'ھەموو لۆگە گشتییەکان',
@@ -1946,24 +1946,24 @@ $1',
 پرۆتۆکۆلە پشتیوانی لێکراوەکان: <code>$1</code> (ھیچ کام لەمانە بە گەڕانەکەت زێدە مەکە).',
 'linksearch-line' => '$1 بەستەرپێ‌دراو لە $2',
 
-# Special:ListUsers
-'listusersfrom' => 'نیشاندانی بەکارھێنەران بە دەستپێکردن لە:',
-'listusers-submit' => 'نیشانیبدە',
-'listusers-noresult' => 'ھیچ بەکارھێنەرێک نەدۆزرایەوە.',
-'listusers-blocked' => '(بەربەست کراوە)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'نیشاندانی بەکارھێنەران بە دەستپێکردن لە:',
+'listwiki_users-submit' => 'نیشانیبدە',
+'listwiki_users-noresult' => 'ھیچ بەکارھێنەرێک نەدۆزرایەوە.',
+'listwiki_users-blocked' => '(بەربەست کراوە)',
 
-# Special:ActiveUsers
-'activeusers' => 'پێرستی بەکارھێنەرە چالاکەکان',
-'activeusers-intro' => 'ئەمە لیستێکی ئەو بەکارھێنەرانەیە کە لە  $1 {{PLURAL:$1|ڕۆژ|ڕۆژ}}ی ڕابردوودا بە جۆرێک چالاکییەکیان ھەبووە.',
-'activeusers-count' => '$1 گۆڕانکاری لە دوایین {{PLURAL:$3|ڕۆژدا|$3 ڕۆژدا}}',
-'activeusers-from' => 'نیشاندانی بەکارھێنەران بە دەستپێکردن لە:',
-'activeusers-hidebots' => 'بۆتەکان بشارەوە',
-'activeusers-hidesysops' => 'بەڕێوبەران بشارەوە',
-'activeusers-noresult' => 'هیچ بەکارهێنەرێک نەدۆزرایەوە',
+# Special:Activewiki_users
+'activewiki_users' => 'پێرستی بەکارھێنەرە چالاکەکان',
+'activewiki_users-intro' => 'ئەمە لیستێکی ئەو بەکارھێنەرانەیە کە لە  $1 {{PLURAL:$1|ڕۆژ|ڕۆژ}}ی ڕابردوودا بە جۆرێک چالاکییەکیان ھەبووە.',
+'activewiki_users-count' => '$1 گۆڕانکاری لە دوایین {{PLURAL:$3|ڕۆژدا|$3 ڕۆژدا}}',
+'activewiki_users-from' => 'نیشاندانی بەکارھێنەران بە دەستپێکردن لە:',
+'activewiki_users-hidebots' => 'بۆتەکان بشارەوە',
+'activewiki_users-hidesysops' => 'بەڕێوبەران بشارەوە',
+'activewiki_users-noresult' => 'هیچ بەکارهێنەرێک نەدۆزرایەوە',
 
-# Special:Log/newusers
-'newuserlogpage' => 'لۆگی دروستکردنی بەکارھێنەر',
-'newuserlogpagetext' => 'ئەمە لۆگێکی دروستکردنی بەکارھێنەرە.',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'لۆگی دروستکردنی بەکارھێنەر',
+'newwiki_userlogpagetext' => 'ئەمە لۆگێکی دروستکردنی بەکارھێنەرە.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'مافەکانی گرووپی بەکارھێنەر',
@@ -1984,24 +1984,24 @@ $1',
 'listgrouprights-addgroup-self-all' => 'زیادکردنی هەموو گرووپەکان بۆ سه‌ر هه‌ژماری خۆ',
 'listgrouprights-removegroup-self-all' => 'لابردنی هەموو گرووپەکان له‌ سه‌ر هه‌ژماری خۆ',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'ناونیشان بۆ ناردن نییه‌',
-'mailnologintext' => 'ده‌بێ له‌ [[Special:UserLogin|ژووره‌وه‌]] بیت و ناونیشانێکی بڕواپێ‌کراوی ئی‌مه‌یلت له‌ ناو [[Special:Preferences|هه‌ڵبژارده‌کان]] دیاری کردبێت تا بتوانی ئی‌مه‌یل بنێریت بۆ به‌کارهێنه‌رانی دیکه‌.',
-'emailuser' => 'ئیمەیل بنێرە بۆ ئەم بەکارھێنەرە',
-'emailuser-title-target' => 'ئیمەیلی ئەم {{GENDER:$1|بەکارھێنەر}}ە',
-'emailuser-title-notarget' => 'ئیمەیل بۆ بەکارھێنەر',
+'mailnologintext' => 'ده‌بێ له‌ [[Special:wiki_userLogin|ژووره‌وه‌]] بیت و ناونیشانێکی بڕواپێ‌کراوی ئی‌مه‌یلت له‌ ناو [[Special:Preferences|هه‌ڵبژارده‌کان]] دیاری کردبێت تا بتوانی ئی‌مه‌یل بنێریت بۆ به‌کارهێنه‌رانی دیکه‌.',
+'emailwiki_user' => 'ئیمەیل بنێرە بۆ ئەم بەکارھێنەرە',
+'emailwiki_user-title-target' => 'ئیمەیلی ئەم {{GENDER:$1|بەکارھێنەر}}ە',
+'emailwiki_user-title-notarget' => 'ئیمەیل بۆ بەکارھێنەر',
 'emailpage' => 'ئیمەیل بۆ بەکارھێنەر',
 'emailpagetext' => 'دەتوانی لەم فۆرمەی ژێرەوە بۆ ناردنی ئیمەیلێک بۆ ئەم {{GENDER:$1|بەکارھێنەر}}ە کەڵک وەربگریت.
 ئەو ناونیشانە ئیمەیلە لە [[Special:Preferences|ھەڵبژاردەکانی بەکارھێنەر‌یتدا]] نووسیوتە، لە ناونیشانی «لەلایەن»ی (From) ئیمەیلەکەدا نیشان دەدرێت، کە وایە بەکارھێنەری وەرگر دەتوانێ ڕاستەوخۆ وەڵامت بداتەوە.',
 'defemailsubject' => 'ئیمەیڵی {{SITENAME}} لە بەکارھێنەر «$1»ەوە',
-'usermaildisabled' => 'ئیمەیڵی بەکارهێنەر لەکاردانیە',
+'wiki_usermaildisabled' => 'ئیمەیڵی بەکارهێنەر لەکاردانیە',
 'noemailtitle' => 'هیچ ناونیشانێکی ئی‌مەیل نییە',
 'noemailtext' => 'ئەم بەکارهێنەرە ناونێشانێکی بڕوا پێکراوی ئی‌مەیلی دانەناوە.',
 'nowikiemailtitle' => 'ڕێگە بۆ ئی‌مەیل نەدراوە',
 'nowikiemailtext' => 'ئەم بەکارهێنەرە تایبەتمەندیی وەرنەگرتنی ئی‌مەیل لە بەکارهێنەرانی دیکەی هەلبژاردووە.',
 'emailtarget' => 'ناوی بەکارھێنەریی وەرگر بنووسە',
-'emailusername' => 'ناوی به‌كارھێنه‌ر:',
-'emailusernamesubmit' => 'بینێرە',
+'emailwiki_username' => 'ناوی به‌كارھێنه‌ر:',
+'emailwiki_usernamesubmit' => 'بینێرە',
 'email-legend' => 'ناردنی ئیمەیلێک بۆ بەکارهێنەرێکی دیکەی {{SITENAME}}',
 'emailfrom' => 'لە:',
 'emailto' => 'بۆ:',
@@ -2012,11 +2012,11 @@ $1',
 'emailccsubject' => 'کۆپیی نامەکەت بۆ $1: $2',
 'emailsent' => 'نامەکەت ناردرا',
 'emailsenttext' => 'نامەکەت ناردرا',
-'emailuserfooter' => 'ئەم ئیمەیلە لە $1ەوە ناردرا بۆ $2 بە "Email user" لە {{SITENAME}}ەوە.',
+'emailwiki_userfooter' => 'ئەم ئیمەیلە لە $1ەوە ناردرا بۆ $2 بە "Email wiki_user" لە {{SITENAME}}ەوە.',
 
-# User Messenger
-'usermessage-summary' => 'بەجێھێشتنی پەیامی سیستەم',
-'usermessage-editor' => 'پەیامنێری سیستەم',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'بەجێھێشتنی پەیامی سیستەم',
+'wiki_usermessage-editor' => 'پەیامنێری سیستەم',
 
 # Watchlist
 'watchlist' => 'پێرستی چاودێرییەکانم',
@@ -2025,7 +2025,7 @@ $1',
 'nowatchlist' => 'لە لیستی چاودێڕییەکانتدا ھیچ نیە.',
 'watchlistanontext' => 'تکایە بۆ دیتن و دەستکاری بابەتەکانی لە ناو لیستی چاودێریەکەت‌دا $1.',
 'watchnologin' => 'لە ژوورەوە نیت.',
-'watchnologintext' => 'دەبی لە [[Special:UserLogin|ژوورەوە]] بیت بۆ ئەوەی بتوانی گۆڕانکاری بکەیت لە لیستی چاودێریەکەت‌دا.',
+'watchnologintext' => 'دەبی لە [[Special:wiki_userLogin|ژوورەوە]] بیت بۆ ئەوەی بتوانی گۆڕانکاری بکەیت لە لیستی چاودێریەکەت‌دا.',
 'addwatch' => 'بیخە سەر لیستی چاودێری',
 'addedwatchtext' => 'پەڕەی «[[:$1]]» خرایە ژێر [[Special:Watchlist|پێرستی چاودێری]]یەکەت.
 گۆڕانکارییەکانی داھاتووی ئەم پەڕەیە و پەڕەی وتووێژەکەی، لەوێدا پێرست دەکرێت.',
@@ -2135,12 +2135,12 @@ $UNWATCHURL
 'rollbackfailed' => 'گەڕاندنەوە سەرکەوتوو نەبوو',
 'cantrollback' => 'دەستکاریەکان ناگەڕێندرێتەوە؛
 دوایین هاوبەش تەنها ڕێکخەری ئەم لاپەڕەیە.',
-'alreadyrolled' => 'دوایین گۆڕانکاریەکانی لەسەر [[:$1]] لە لایەن [[User:$2|$2]] ناگەڕێندرێنەوە ([[User talk:$2|وتووێژ]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]])؛ کەسێکی دیکە لە پێش‌دا دەستکاری کردووە یان گەڕاندوویەتەوە.
+'alreadyrolled' => 'دوایین گۆڕانکاریەکانی لەسەر [[:$1]] لە لایەن [[wiki_user:$2|$2]] ناگەڕێندرێنەوە ([[wiki_user talk:$2|وتووێژ]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]])؛ کەسێکی دیکە لە پێش‌دا دەستکاری کردووە یان گەڕاندوویەتەوە.
 
-دوایین دەستکاری ئەم لاپەڕە [[User:$3|$3]] کردوویە ([[User talk:$3|وتووێژ]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+دوایین دەستکاری ئەم لاپەڕە [[wiki_user:$3|$3]] کردوویە ([[wiki_user talk:$3|وتووێژ]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "پوختەی دەستکاری \"''\$1''\" بوو.",
-'revertpage' => 'گەڕاندنەوەی دەستکارییەکانی [[Special:Contributions/$2|$2]] ([[User talk:$2|لێدوان]]) بۆ دوایین دەستکاریی [[User:$1|$1]]',
-'revertpage-nouser' => 'دەستکارییەکانی (ناوی بەکارھێنەر سڕاوەتەوە) بۆ دوایین پێداچوونەوەی [[User:$1|$1]] گەڕێنراوە.',
+'revertpage' => 'گەڕاندنەوەی دەستکارییەکانی [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|لێدوان]]) بۆ دوایین دەستکاریی [[wiki_user:$1|$1]]',
+'revertpage-nowiki_user' => 'دەستکارییەکانی (ناوی بەکارھێنەر سڕاوەتەوە) بۆ دوایین پێداچوونەوەی [[wiki_user:$1|$1]] گەڕێنراوە.',
 'rollback-success' => 'دەستکارییەکانی $1 وەرگێرایەوە؛<br />
 گۆڕدرا بۆ دوایین دەستکاریی $2.',
 
@@ -2287,13 +2287,13 @@ $1',
 'sp-contributions-uploads' => 'بارکردنەکان',
 'sp-contributions-logs' => 'لۆگەکان',
 'sp-contributions-talk' => 'لێدوان',
-'sp-contributions-userrights' => 'بەڕێوبەرایەتی مافەکانی بەکارهێنەر',
+'sp-contributions-wiki_userrights' => 'بەڕێوبەرایەتی مافەکانی بەکارهێنەر',
 'sp-contributions-blocked-notice' => 'ھەنووکە ئەم بەکارھێنەرە بەربەست کراوە.
 دوایین بابەتی لۆگی بەربەستن لە ژێرەوە ھاتووە:',
 'sp-contributions-blocked-notice-anon' => 'ھەنووکە ئەم ناونیشانەی IPیە بەربەست کراوە.
 دوایین بابەتی لۆگی بەربەستن لە ژێرەوە ھاتووە:',
 'sp-contributions-search' => 'گەڕان بۆ بەشدارییەکان',
-'sp-contributions-username' => 'ناونیشانی ئای‌پی یان ناوی‌ بەکارھێنەری:',
+'sp-contributions-wiki_username' => 'ناونیشانی ئای‌پی یان ناوی‌ بەکارھێنەری:',
 'sp-contributions-toponly' => 'تەنیا ئەو دەستکارییانە نیشانبدە کە دوایین پیاچوونەوەن',
 'sp-contributions-submit' => 'بگەڕێ',
 
@@ -2325,7 +2325,7 @@ $1',
 'blockiptext' => 'لەم فۆرمەی خوارەوە دەتوانی بۆ بەربەست‌کردنی دەست‌پێ‌گەیشتنی نووسین لە ناونیشانێکی ئای‌پی تایبەت یا ناوی بەکارهێنەریەک، کەڵک وەرگریت.
 ئەمە تەنها دەبێ بۆ بەرگری لە خراپکاری بەکاربێت و ڕێکەوتنی هەبێ دەگەڵ [[{{MediaWiki:Policy-url}}|سیاسەتەکان]].
 لە خوارەوە هۆکارێک بە ڕوونی بنووسە (بۆ نموونە بە وردی ئەو لاپەڕانە و خراپکاری تێدا کراوە وەک، وەک بەڵگە، بنووسە).',
-'ipadressorusername' => 'ناونیشانی ئای‌پی یان ناوی‌ بەکارهێنەری:',
+'ipadressorwiki_username' => 'ناونیشانی ئای‌پی یان ناوی‌ بەکارهێنەری:',
 'ipbexpiry' => 'بەسەرچوون:',
 'ipbreason' => 'هۆکار:',
 'ipbreasonotherlist' => 'هۆکاری تر',
@@ -2347,8 +2347,8 @@ $1',
 'ipbotheroption' => 'دیکە',
 'ipbotherreason' => 'ھۆکاری تر/زیاتر:',
 'ipbhidename' => 'شاردنەوەی ناوی‌ بەکارهێنەر لە دەستکاری و لیستەکان',
-'ipbwatchuser' => 'پەڕەکانی بەکارھێنەر و لێدوانی ئەم بەکارهێنەرە بخە ژێر چاودێری',
-'ipb-disableusertalk' => 'بەرگری ئەم بەکارھێنەرە بکە لە دستکاریکردنی پەڕەی لێدوانەکەی کاتێک بەربەست کراوە',
+'ipbwatchwiki_user' => 'پەڕەکانی بەکارھێنەر و لێدوانی ئەم بەکارهێنەرە بخە ژێر چاودێری',
+'ipb-disablewiki_usertalk' => 'بەرگری ئەم بەکارھێنەرە بکە لە دستکاریکردنی پەڕەی لێدوانەکەی کاتێک بەربەست کراوە',
 'ipb-change-block' => 'دیسان بەربەست‌کردنەوەی ئەم بەکارهێنەرە بەم هەڵبژاردانە',
 'badipaddress' => 'ناونیشانی ئای‌پی نەگونجاو',
 'blockipsuccesssub' => 'بەربەست کردن سەرکەوتوو بوو',
@@ -2362,12 +2362,12 @@ $1',
 'unblockip' => 'لە بەربەست‌دەرهێنانی بەکارهێنەر',
 'unblockiptext' => 'بۆ گەڕاندنەوەی دەست‌پی‌گەیشتنی نووسین بۆ ئەو دوایین ئای‌پی یان بەکارهێنەری بەربەست کراوە، لەو فۆرمەی خوارەوە کەڵک وەرگرە.',
 'ipusubmit' => 'لابردنی ئەم بەربەستە',
-'unblocked' => '[[User:$1|$1]] لە بەربەست دەرهێنرا',
+'unblocked' => '[[wiki_user:$1|$1]] لە بەربەست دەرهێنرا',
 'unblocked-id' => 'بەربەستی $1 لابرا',
 'blocklist' => 'بەکارھێنەر بەربەستکراوەکان',
 'ipblocklist' => 'بەکارھێنەرە بەربەستکراوەکان',
 'ipblocklist-legend' => 'دۆزینەوەی بەکارهێنەرێکی بەربەست‌کراو',
-'blocklist-userblocks' => 'ھەژمارە بەربەستکراوەکان بشارەوە',
+'blocklist-wiki_userblocks' => 'ھەژمارە بەربەستکراوەکان بشارەوە',
 'blocklist-target' => 'مەبەست',
 'blocklist-expiry' => 'ھەتا:',
 'blocklist-by' => 'بەڕێوەبەری بەربەستکەر',
@@ -2382,7 +2382,7 @@ $1',
 'noautoblockblock' => 'بەربەستنی خۆگەڕ ناچالاکە',
 'createaccountblock' => 'دروستکردنی ھەژمار ناچالاکە',
 'emailblock' => 'ئیمەیل ناچالاکە',
-'blocklist-nousertalk' => 'دەستکاریکردنی پەڕەی وتووێژی خۆی ناچالاکە',
+'blocklist-nowiki_usertalk' => 'دەستکاریکردنی پەڕەی وتووێژی خۆی ناچالاکە',
 'ipblocklist-empty' => 'لیستی بەربەستەکان بەتاڵە',
 'ipblocklist-no-results' => 'ئای‌پی ئەدرەس یان ناوی‌ بەکارهێنەری داواکراو بەربەست نەکراوە.',
 'blocklink' => 'بەربەستن',
@@ -2390,7 +2390,7 @@ $1',
 'change-blocklink' => 'بەربەستن بگۆڕە',
 'contribslink' => 'بەشدارییەکان',
 'emaillink' => 'ناردنی ئیمەیل',
-'autoblocker' => 'خۆکار بەربەست‌کراوە لەبەر ئەوەی ناونیشانی ئای‌پی تۆ لەم دواییانەدا لە لایەن "[[User:$1|$1]]" بەکار هاتووە.
+'autoblocker' => 'خۆکار بەربەست‌کراوە لەبەر ئەوەی ناونیشانی ئای‌پی تۆ لەم دواییانەدا لە لایەن "[[wiki_user:$1|$1]]" بەکار هاتووە.
 هۆکاری بەربەست‌کرانی $1 ئەمەیە: "$2"',
 'blocklogpage' => 'لۆگی بەربەستن',
 'blocklog-showlog' => 'ئەم بەکارھێنەرە پێشتر بربەست کراوە.
@@ -2405,7 +2405,7 @@ $1',
 'block-log-flags-nocreate' => 'دروستکردنی ھەژمار ناچالاک کرا',
 'block-log-flags-noautoblock' => 'بەربەستنی خۆگەڕ ناچالاک کرا',
 'block-log-flags-noemail' => 'ئیمەیل ناچالاک کرا',
-'block-log-flags-nousertalk' => 'دەستکاریکردنی پەڕەی وتووێژی خۆی ناچالاک کرا',
+'block-log-flags-nowiki_usertalk' => 'دەستکاریکردنی پەڕەی وتووێژی خۆی ناچالاک کرا',
 'block-log-flags-angry-autoblock' => 'بەربەستکردنی خۆگەڕی پێشکەوتوو چالاک کرا',
 'block-log-flags-hiddenname' => 'ناوی بەکارھێنەری شاراوە',
 'range_block_disabled' => 'تایبەتمەندی بەڕێوەبەر بۆ بەربەست‌کردنی زنجیرە لە کارخستراوە.',
@@ -2487,11 +2487,11 @@ $1',
 لەو حاڵەتەدا، ئەگەر بتەوێت بیگوازیتەوە ناچار دەبیت بە شێوەی دەستی بیگوازیتەوە یان تێکەڵیان بکەی.",
 'movearticle' => 'ئەم پەڕەیە بگوازەوە:',
 'movenologin' => 'نەچوویتەتە ژوورەوە',
-'movenologintext' => 'بۆ گواستنەوەی پەڕەیەک، ئەشێ ببی بە ئەندام و [[Special:UserLogin|لە ژوورەوە]] بیت.',
+'movenologintext' => 'بۆ گواستنەوەی پەڕەیەک، ئەشێ ببی بە ئەندام و [[Special:wiki_userLogin|لە ژوورەوە]] بیت.',
 'movenotallowed' => 'ڕێگەت پێ‌نەدراوە بۆ گواستنەوەی لاپەڕەکان.',
 'movenotallowedfile' => 'ڕێگەت پێ‌نەدراوە بۆ گواستنەوەی پەڕگەکان.',
-'cant-move-user-page' => 'ڕێگەت پێ‌نەدراوە بۆ گواستنەوەی لاپەڕەکانی بەکارهێنەر (جیاواز لە ژێرلاپەڕەکان).',
-'cant-move-to-user-page' => 'ڕێگەت پێ‌نەدراوە بۆ گواستنەوەی لاپەڕەیەک بۆ لاپەڕەی بەکارهێنەر (غەیری بۆ ژێرلاپەڕەی بەکارهێنەر).',
+'cant-move-wiki_user-page' => 'ڕێگەت پێ‌نەدراوە بۆ گواستنەوەی لاپەڕەکانی بەکارهێنەر (جیاواز لە ژێرلاپەڕەکان).',
+'cant-move-to-wiki_user-page' => 'ڕێگەت پێ‌نەدراوە بۆ گواستنەوەی لاپەڕەیەک بۆ لاپەڕەی بەکارهێنەر (غەیری بۆ ژێرلاپەڕەی بەکارهێنەر).',
 'newtitle' => 'بۆ ناوی نوێی:',
 'move-watch' => 'ئەم پەڕەیە بخە ژێر چاودێری',
 'movepagebtn' => 'ئەم پەڕەیە بگوازەوە',
@@ -2646,8 +2646,8 @@ $1',
 'javascripttest' => 'تاقیکردنەوەی جاڤاسکریپت',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'پەڕەی بەکارھێنەرییەکەت',
-'tooltip-pt-anonuserpage' => 'پەڕەی بەکارھێنەری بۆ ئای‌پی یەکە کە بەناویەوە خەریکی دەستکاری کردنی',
+'tooltip-pt-wiki_userpage' => 'پەڕەی بەکارھێنەرییەکەت',
+'tooltip-pt-anonwiki_userpage' => 'پەڕەی بەکارھێنەری بۆ ئای‌پی یەکە کە بەناویەوە خەریکی دەستکاری کردنی',
 'tooltip-pt-mytalk' => 'پەڕەی لێدوانەکەت',
 'tooltip-pt-anontalk' => 'لێدوان لەسەر دەستکارییەکان لەم ئایپی ئەدرەسەوە',
 'tooltip-pt-preferences' => 'هەڵبژاردەکانت',
@@ -2685,13 +2685,13 @@ $1',
 'tooltip-feed-rss' => 'RSS feed بۆ ئەم پەڕە',
 'tooltip-feed-atom' => 'Atom feed بۆ ئەم پەڕە',
 'tooltip-t-contributions' => 'لیستی بەشدارییەکانی ئەم بەکارھێنەرە ببینە',
-'tooltip-t-emailuser' => 'ئیمەیلێک بنێرە بۆ ئەم بەکارھێنەرە',
+'tooltip-t-emailwiki_user' => 'ئیمەیلێک بنێرە بۆ ئەم بەکارھێنەرە',
 'tooltip-t-upload' => 'پەڕگەیەک (فایل) بار بکە',
 'tooltip-t-specialpages' => 'پێرستی ھەموو پەڕە تایبەتەکان',
 'tooltip-t-print' => 'وەشانی چاپی ئەم پەڕەیە',
 'tooltip-t-permalink' => 'گرێدەری ھەمیشەیی بۆ ئەم وەشانەی ئەم پەڕەیە',
 'tooltip-ca-nstab-main' => 'بینینی پەڕەی ناوەڕۆک',
-'tooltip-ca-nstab-user' => 'پەڕەی بەکارھێنەر تەماشا بکە',
+'tooltip-ca-nstab-wiki_user' => 'پەڕەی بەکارھێنەر تەماشا بکە',
 'tooltip-ca-nstab-media' => 'پەڕەی میدیا چاو لێ بکە',
 'tooltip-ca-nstab-special' => 'ئەمە پەڕەیەکی تایبەتە، ناتوانی خودی ئەم پەڕە دەستکاری بکەیت',
 'tooltip-ca-nstab-project' => 'بینینی پەڕەی پرۆژە',
@@ -2720,13 +2720,13 @@ $1',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|بەکارهێنەری|بەکارهێنەرانی}} نەناسراوی {{SITENAME}}',
-'siteuser' => 'بەکارھێنەری {{SITENAME}}، $1',
-'anonuser' => '$1، بەکارھێنەری نامۆی {{SITENAME}}',
+'sitewiki_user' => 'بەکارھێنەری {{SITENAME}}، $1',
+'anonwiki_user' => '$1، بەکارھێنەری نامۆی {{SITENAME}}',
 'lastmodifiedatby' => 'ئەم پەڕە دواجار لە $2ی $1 بە دەستی $3 گۆڕدراوە.',
 'othercontribs' => 'لەسەر بنەمای کاری $1.',
 'others' => 'ئەوانی دیکە',
-'siteusers' => '{{PLURAL:$2|بەکارهێنەری|بەکارهێنەرانی}} {{SITENAME}} $1',
-'anonusers' => '{{PLURAL:$2|بەکارھێنەر|بەکارھێنەر}}ی نامۆی {{SITENAME}} $1',
+'sitewiki_users' => '{{PLURAL:$2|بەکارهێنەری|بەکارهێنەرانی}} {{SITENAME}} $1',
+'anonwiki_users' => '{{PLURAL:$2|بەکارھێنەر|بەکارھێنەر}}ی نامۆی {{SITENAME}} $1',
 'creditspage' => 'بایەخەکانی لاپەڕە',
 'nocredits' => 'هیچ زانیارییەکی بایەخ لەبەردەست‌دا نیە بۆ ئەم لاپەڕە.',
 
@@ -2735,7 +2735,7 @@ $1',
 'spamprotectiontext' => 'ئەو لاپەڕەی دەتویست پاشەکەوتی بکەی، بە پاڵێوی سپام بەربەست‌کرا
 لەوانەیە هۆکاری ئەوە بەستەرەک بووە بۆ ماڵپەڕەکی دەرەکی کە لەناو ڕەش‌لیست‌دایە.',
 'spamprotectionmatch' => 'ئەم دەقە ئەوەیە کە پاڵێوی سپامەکە دەبزوێنێ: $1',
-'spambot_username' => 'خاوێنکردنەوەی سپامی میدیاویکی',
+'spambot_wiki_username' => 'خاوێنکردنەوەی سپامی میدیاویکی',
 'spam_reverting' => 'گەڕانەوە بۆ دوایین پێداچوونەوە کە بەستەری لەخۆگرتووە بۆ $1',
 
 # Info page
@@ -2756,9 +2756,9 @@ $1',
 'pageinfo-redirects-name' => 'ڕەوانەکەرەکان بۆ ئەم پەڕەیە',
 'pageinfo-subpages-name' => 'ژێرپەڕەکانی ئەم پەڕەیە',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|ڕەوانەکەر}}; $3 {{PLURAL:$3|ڕەوانەنەکەر}})',
-'pageinfo-firstuser' => 'دروستکەری پەڕە',
+'pageinfo-firstwiki_user' => 'دروستکەری پەڕە',
 'pageinfo-firsttime' => 'ڕێکەوتی دروستکردنی پەڕە',
-'pageinfo-lastuser' => 'دوایین دەستکاریکەر',
+'pageinfo-lastwiki_user' => 'دوایین دەستکاریکەر',
 'pageinfo-lasttime' => 'ڕێکەوتی دوایین دەستکاری',
 'pageinfo-edits' => 'ژمارەی سەرجەمی دەستکارییەکان',
 'pageinfo-authors' => 'ژمارەی نووسەرە جیاوازەکان',
@@ -2887,7 +2887,7 @@ $1',
 'exif-colorspace' => 'بۆشایی ره‌نگ',
 'exif-pixelydimension' => 'پانی وێنە',
 'exif-pixelxdimension' => 'بەرزی وێنە',
-'exif-usercomment' => 'بۆچوونەکانی بەکارهێنەر',
+'exif-wiki_usercomment' => 'بۆچوونەکانی بەکارهێنەر',
 'exif-relatedsoundfile' => 'فایلی ده‌نگی لێکچوو',
 'exif-exposuretime-format' => '$1 چرکە ($2)',
 'exif-fnumber' => 'ڕێژەی ئێف',
@@ -3132,7 +3132,7 @@ $1',
 لەوانەیە ئەو کۆدە ماوەی بەسەر چووبێت.',
 'confirmemail_needlogin' => 'بۆ بڕواپێ‌کردنی ناونیشانی ئی‌مەیلەکەت، دەبێ $1.',
 'confirmemail_success' => 'ناونیشانی ئی‌میلەکەت بڕوای‌پێ‌کرا.
-ئێستە دەتوانی [[Special:UserLogin|بڕۆیتە ژوورەوە]] و لە ویکی کەڵک بگری.',
+ئێستە دەتوانی [[Special:wiki_userLogin|بڕۆیتە ژوورەوە]] و لە ویکی کەڵک بگری.',
 'confirmemail_loggedin' => 'ئێستا بڕواکراوە بە ئیمەیلەکەت.',
 'confirmemail_error' => 'کێشەیەک هەیە لە پاشەکەوت‌کردنی بڕواپێ‌کردنی تۆدا.',
 'confirmemail_subject' => 'بڕوا پێ‌کردنی ناونیشانی ئی‌مەیلی {{SITENAME}}',
@@ -3180,7 +3180,7 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''ھۆشیار بە''': ئەم پەڕە دوای ئەوە تۆ دەستکاریکردنیت دەستپێکرد سڕاوەتەوە!",
-'confirmrecreate-noreason' => 'بەکارھێنەر [[User:$1|$1]] ([[User talk:$1|talk]]) پەڕەکەی سڕییەوە پاش ئەوەی تۆ دەستکاریکردنی پەڕەکەت دەستپێکرد. تکایە پشتڕاستی بکەوە کە بە ڕاستی دەتەوێ دیسان ئەم پەڕە دروست بکەیتەوە.',
+'confirmrecreate-noreason' => 'بەکارھێنەر [[wiki_user:$1|$1]] ([[wiki_user talk:$1|talk]]) پەڕەکەی سڕییەوە پاش ئەوەی تۆ دەستکاریکردنی پەڕەکەت دەستپێکرد. تکایە پشتڕاستی بکەوە کە بە ڕاستی دەتەوێ دیسان ئەم پەڕە دروست بکەیتەوە.',
 'recreate' => 'درووست‌کردنەوە',
 
 # action=purge
@@ -3295,7 +3295,7 @@ $5
 'hebrew-calendar-m7-gen' => 'نیسان',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|لێدوان]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|لێدوان]])',
 'timezone-utc' => 'UTC',
 
 # Core parser functions
@@ -3353,7 +3353,7 @@ $5
 'specialpages-group-login' => 'چوونەژوورەوە / دروستکردنی ھەژمار',
 'specialpages-group-changes' => 'دوایین گۆڕانکارییەکان و لۆگەکان',
 'specialpages-group-media' => 'ڕاپۆرتەکان و بارکردنەکانی میدیا',
-'specialpages-group-users' => 'بەکارھێنەران و مافەکان',
+'specialpages-group-wiki_users' => 'بەکارھێنەران و مافەکان',
 'specialpages-group-highuse' => 'پەڕە زۆر بەکار ھێنراوەکان',
 'specialpages-group-pages' => 'پێرستەکانی پەڕەکان',
 'specialpages-group-pagetools' => 'ئامرازەکانی پەڕە',
@@ -3435,11 +3435,11 @@ $5
 'logentry-move-move-noredirect' => '$1 پەڕەی $3 بەبێ بەجێھشتنی ڕەوانەکەرێک گواستەوە بۆ $4',
 'logentry-move-move_redir' => '$1 پەڕەی $3 گواستەوە بۆ $4 کە پێشتر ڕەوانەکەر بوو',
 'logentry-move-move_redir-noredirect' => '$1 پەڕەی $3 بەبێ بەجێھشتنی ڕەوانەکەرێک گواستەوە بۆ $4 کە پێشتر ڕەوانەکەر بوو',
-'logentry-newusers-newusers' => 'ھەژماری بەکارھێنەریی $1 دروست کرا',
-'logentry-newusers-create' => 'ھەژماری بەکارھێنەریی $1 دروست کرا',
-'logentry-newusers-create2' => 'ھەژماری بەکارھێنەریی $3 لە لایەن $1 دروست کرا',
-'logentry-newusers-autocreate' => 'ھەژماری $1 بە شێوەی خۆگەڕ دروستکرا',
-'newuserlog-byemail' => 'تێپەڕوشە بە ئیمەیل نێردرا.',
+'logentry-newwiki_users-newwiki_users' => 'ھەژماری بەکارھێنەریی $1 دروست کرا',
+'logentry-newwiki_users-create' => 'ھەژماری بەکارھێنەریی $1 دروست کرا',
+'logentry-newwiki_users-create2' => 'ھەژماری بەکارھێنەریی $3 لە لایەن $1 دروست کرا',
+'logentry-newwiki_users-autocreate' => 'ھەژماری $1 بە شێوەی خۆگەڕ دروستکرا',
+'newwiki_userlog-byemail' => 'تێپەڕوشە بە ئیمەیل نێردرا.',
 
 # Feedback
 'feedback-subject' => 'بابەت:',

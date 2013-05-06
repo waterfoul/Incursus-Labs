@@ -32,9 +32,9 @@ class SqliteUpdater extends DatabaseUpdater {
 	protected function getCoreUpdateList() {
 		return array(
 			// 1.14
-			array( 'addField', 'site_stats',    'ss_active_users',  'patch-ss_active_users.sql' ),
-			array( 'doActiveUsersInit' ),
-			array( 'addField', 'ipblocks',      'ipb_allow_usertalk', 'patch-ipb_allow_usertalk.sql' ),
+			array( 'addField', 'site_stats',    'ss_active_wiki_users',  'patch-ss_active_wiki_users.sql' ),
+			array( 'doActivewiki_usersInit' ),
+			array( 'addField', 'ipblocks',      'ipb_allow_wiki_usertalk', 'patch-ipb_allow_wiki_usertalk.sql' ),
 			array( 'sqliteInitialIndexes' ),
 
 			// 1.15
@@ -43,13 +43,13 @@ class SqliteUpdater extends DatabaseUpdater {
 			array( 'addTable', 'valid_tag',                         'patch-change_tag.sql' ),
 
 			// 1.16
-			array( 'addTable', 'user_properties',                   'patch-user_properties.sql' ),
+			array( 'addTable', 'wiki_user_properties',                   'patch-wiki_user_properties.sql' ),
 			array( 'addTable', 'log_search',                        'patch-log_search.sql' ),
-			array( 'addField', 'logging',       'log_user_text',    'patch-log_user_text.sql' ),
-			array( 'doLogUsertextPopulation' ), # listed separately from the previous update because 1.16 was released without this update
+			array( 'addField', 'logging',       'log_wiki_user_text',    'patch-log_wiki_user_text.sql' ),
+			array( 'doLogwiki_usertextPopulation' ), # listed separately from the previous update because 1.16 was released without this update
 			array( 'doLogSearchPopulation' ),
 			array( 'addTable', 'l10n_cache',                        'patch-l10n_cache.sql' ),
-			array( 'addTable', 'external_user',                     'patch-external_user.sql' ),
+			array( 'addTable', 'external_wiki_user',                     'patch-external_wiki_user.sql' ),
 			array( 'addIndex', 'log_search',    'ls_field_val',     'patch-log_search-rename-index.sql' ),
 			array( 'addIndex', 'change_tag',    'change_tag_rc_tag', 'patch-change_tag-indexes.sql' ),
 			array( 'addField', 'redirect',      'rd_interwiki',     'patch-rd_interwiki.sql' ),
@@ -71,24 +71,24 @@ class SqliteUpdater extends DatabaseUpdater {
 			array( 'addIndex', 'archive', 'ar_revid',               'patch-archive_ar_revid.sql' ),
 
 			// 1.18
-			array( 'addIndex', 'user',          'user_email',       'patch-user_email_index.sql' ),
+			array( 'addIndex', 'wiki_user',          'wiki_user_email',       'patch-wiki_user_email_index.sql' ),
 			array( 'addTable', 'uploadstash',                       'patch-uploadstash.sql' ),
-			array( 'addTable', 'user_former_groups',                'patch-user_former_groups.sql'),
+			array( 'addTable', 'wiki_user_former_groups',                'patch-wiki_user_former_groups.sql'),
 
 			// 1.19
 			array( 'addIndex', 'logging',       'type_action',      'patch-logging-type-action-index.sql'),
-			array( 'doMigrateUserOptions' ),
-			array( 'dropField', 'user',         'user_options', 'patch-drop-user_options.sql' ),
+			array( 'doMigratewiki_userOptions' ),
+			array( 'dropField', 'wiki_user',         'wiki_user_options', 'patch-drop-wiki_user_options.sql' ),
 			array( 'addField', 'revision',      'rev_sha1',         'patch-rev_sha1.sql' ),
 			array( 'addField', 'archive',       'ar_sha1',          'patch-ar_sha1.sql' ),
 			array( 'addIndex', 'page', 'page_redirect_namespace_len', 'patch-page_redirect_namespace_len.sql' ),
-			array( 'modifyField', 'user_groups', 'ug_group', 'patch-ug_group-length-increase.sql' ),
+			array( 'modifyField', 'wiki_user_groups', 'ug_group', 'patch-ug_group-length-increase.sql' ),
 			array( 'addField',	'uploadstash',	'us_chunk_inx',		'patch-uploadstash_chunk.sql' ),
 			array( 'addfield', 'job',           'job_timestamp',    'patch-jobs-add-timestamp.sql' ),
-			array( 'modifyField', 'user_former_groups', 'ufg_group', 'patch-ug_group-length-increase.sql' ),
+			array( 'modifyField', 'wiki_user_former_groups', 'ufg_group', 'patch-ug_group-length-increase.sql' ),
 
 			// 1.20
-			array( 'addIndex', 'revision', 'page_user_timestamp', 'patch-revision-user-page-index.sql' ),
+			array( 'addIndex', 'revision', 'page_wiki_user_timestamp', 'patch-revision-wiki_user-page-index.sql' ),
 			array( 'addField', 'ipblocks', 'ipb_parent_block_id', 'patch-ipb-parent-block-id.sql' ),
 			array( 'addIndex', 'ipblocks', 'ipb_parent_block_id', 'patch-ipb-parent-block-id-index.sql' ),
 			array( 'dropField', 'category',     'cat_hidden',       'patch-cat_hidden.sql' ),
@@ -97,7 +97,7 @@ class SqliteUpdater extends DatabaseUpdater {
 
 	protected function sqliteInitialIndexes() {
 		// initial-indexes.sql fails if the indexes are already present, so we perform a quick check if our database is newer.
-		if ( $this->updateRowExists( 'initial_indexes' ) || $this->db->indexExists( 'user', 'user_name', __METHOD__ ) ) {
+		if ( $this->updateRowExists( 'initial_indexes' ) || $this->db->indexExists( 'wiki_user', 'wiki_user_name', __METHOD__ ) ) {
 			$this->output( "...have initial indexes\n" );
 			return;
 		}

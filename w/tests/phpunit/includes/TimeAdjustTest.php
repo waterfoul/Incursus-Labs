@@ -17,15 +17,15 @@ class TimeAdjustTest extends MediaWikiLangTestCase {
 		parent::tearDown();
 	}
 
-	# Test offset usage for a given language::userAdjust
-	function testUserAdjust() {
+	# Test offset usage for a given language::wiki_userAdjust
+	function testwiki_userAdjust() {
 		global $wgLocalTZoffset, $wgContLang;
 
 		$wgContLang = $en = Language::factory( 'en' );
 
 		#  Collection of parameters for Language_t_Offset.
 		# Format: date to be formatted, localTZoffset value, expected date
-		$userAdjust_tests = array(
+		$wiki_userAdjust_tests = array(
 			array( 20061231235959,   0, 20061231235959 ),
 			array( 20061231235959,   5, 20070101000459 ),
 			array( 20061231235959,  15, 20070101001459 ),
@@ -38,13 +38,13 @@ class TimeAdjustTest extends MediaWikiLangTestCase {
 			array( 20061231235959, -60, 20061231225959 ),
 		);
 
-		foreach ( $userAdjust_tests as $data ) {
+		foreach ( $wiki_userAdjust_tests as $data ) {
 			$wgLocalTZoffset = $data[1];
 
 			$this->assertEquals(
 				strval( $data[2] ),
-				strval( $en->userAdjust( $data[0], '' ) ),
-				"User adjust {$data[0]} by {$data[1]} minutes should give {$data[2]}"
+				strval( $en->wiki_userAdjust( $data[0], '' ) ),
+				"wiki_user adjust {$data[0]} by {$data[1]} minutes should give {$data[2]}"
 			);
 		}
 	}

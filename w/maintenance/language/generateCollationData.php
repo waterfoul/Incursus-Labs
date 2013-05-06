@@ -375,7 +375,7 @@ class UcdXmlReader {
 			}
 
 			$attrs['cp'] = $hexCp;
-			call_user_func( $this->callback, $attrs );
+			call_wiki_user_func( $this->callback, $attrs );
 		}
 	}
 

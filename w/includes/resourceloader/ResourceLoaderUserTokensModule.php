@@ -1,6 +1,6 @@
 <?php
 /**
- * Resource loader module for user tokens.
+ * Resource loader module for wiki_user tokens.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
  */
 
 /**
- * Module for user tokens
+ * Module for wiki_user tokens
  */
 class ResourceLoaderUserTokensModule extends ResourceLoaderModule {
 
@@ -33,16 +33,16 @@ class ResourceLoaderUserTokensModule extends ResourceLoaderModule {
 	/* Methods */
 
 	/**
-	 * Fetch the tokens for the current user.
+	 * Fetch the tokens for the current wiki_user.
 	 *
 	 * @param $context ResourceLoaderContext: Context object
 	 * @return Array: List of tokens keyed by token type
 	 */
-	protected function contextUserTokens( ResourceLoaderContext $context ) {
-		global $wgUser;
+	protected function contextwiki_userTokens( ResourceLoaderContext $context ) {
+		global $wgwiki_user;
 
 		return array(
-			'editToken' => $wgUser->getEditToken(),
+			'editToken' => $wgwiki_user->getEditToken(),
 			'watchToken' => ApiQueryInfo::getWatchToken(null, null),
 		);
 	}
@@ -52,8 +52,8 @@ class ResourceLoaderUserTokensModule extends ResourceLoaderModule {
 	 * @return string
 	 */
 	public function getScript( ResourceLoaderContext $context ) {
-		return Xml::encodeJsCall( 'mw.user.tokens.set',
-			array( $this->contextUserTokens( $context ) ) );
+		return Xml::encodeJsCall( 'mw.wiki_user.tokens.set',
+			array( $this->contextwiki_userTokens( $context ) ) );
 	}
 
 	/**

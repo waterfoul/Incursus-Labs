@@ -2,7 +2,7 @@
 CREATE TABLE /*$wgDBprefix*/protected_titles (
   pt_namespace int NOT NULL,
   pt_title varchar(255) binary NOT NULL,
-  pt_user int unsigned NOT NULL,
+  pt_wiki_user int unsigned NOT NULL,
   pt_reason tinyblob,
   pt_timestamp binary(14) NOT NULL,
   pt_expiry varbinary(14) NOT NULL default '',

@@ -84,7 +84,7 @@ class APCBagOStuff extends BagOStuff {
 	 * @return Array
 	 */
 	public function keys() {
-		$info = apc_cache_info( 'user' );
+		$info = apc_cache_info( 'wiki_user' );
 		$list = $info['cache_list'];
 		$keys = array();
 

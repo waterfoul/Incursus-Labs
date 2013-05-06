@@ -74,10 +74,10 @@ class PurgeList extends Maintenance {
 
 	/** Purge a namespace given by --namespace */
 	private function purgeNamespace() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$ns = $dbr->addQuotes( $this->getOption( 'namespace') );
+		r = wfGetDB( DB_SLAVE );
+		$ns = r->addQuotes( $this->getOption( 'namespace') );
 
-		$result = $dbr->select(
+		$result = r->select(
 			array( 'page' ),
 			array( 'page_namespace', 'page_title' ),
 			array( "page_namespace = $ns" ),
@@ -86,7 +86,7 @@ class PurgeList extends Maintenance {
 		);
 
 		$start   = 0;
-		$end = $dbr->numRows( $result );
+		$end = r->numRows( $result );
 		$this->output( "Will purge $end pages from namespace $ns\n" );
 
 		# Do remaining chunk
@@ -96,7 +96,7 @@ class PurgeList extends Maintenance {
 
 		while( $blockEnd <= $end ) {
 			# Select pages we will purge:
-			$result = $dbr->select(
+			$result = r->select(
 				array( 'page' ),
 				array( 'page_namespace', 'page_title' ),
 				array( "page_namespace = $ns" ),

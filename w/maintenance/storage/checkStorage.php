@@ -43,7 +43,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class CheckStorage {
 	const CONCAT_HEADER = 'O:27:"concatenatedgziphistoryblob"';
 	var $oldIdMap, $errors;
-	var $dbStore = null;
+	var Store = null;
 
 	var $errorDescriptions = array(
 		'restore text' => 'Damaged text, need to be restored from a backup',
@@ -54,13 +54,13 @@ class CheckStorage {
 	);
 
 	function check( $fix = false, $xml = '' ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 		if ( $fix ) {
 			print "Checking, will fix errors if possible...\n";
 		} else {
 			print "Checking...\n";
 		}
-		$maxRevId = $dbr->selectField( 'revision', 'MAX(rev_id)', false, __METHOD__ );
+		$maxRevId = r->selectField( 'revision', 'MAX(rev_id)', false, __METHOD__ );
 		$chunkSize = 1000;
 		$flagStats = array();
 		$objectStats = array();
@@ -79,13 +79,13 @@ class CheckStorage {
 
 			// Fetch revision rows
 			$this->oldIdMap = array();
-			$dbr->ping();
-			$res = $dbr->select( 'revision', array( 'rev_id', 'rev_text_id' ),
+			r->ping();
+			$res = r->select( 'revision', array( 'rev_id', 'rev_text_id' ),
 				array( "rev_id BETWEEN $chunkStart AND $chunkEnd" ), __METHOD__ );
 			foreach ( $res as $row ) {
 				$this->oldIdMap[$row->rev_id] = $row->rev_text_id;
 			}
-			$dbr->freeResult( $res );
+			r->freeResult( $res );
 
 			if ( !count( $this->oldIdMap ) ) {
 				continue;
@@ -95,7 +95,7 @@ class CheckStorage {
 			$missingTextRows = array_flip( $this->oldIdMap );
 			$externalRevs = array();
 			$objectRevs = array();
-			$res = $dbr->select( 'text', array( 'old_id', 'old_flags' ),
+			$res = r->select( 'text', array( 'old_id', 'old_flags' ),
 				'old_id IN (' . implode( ',', $this->oldIdMap ) . ')', __METHOD__ );
 			foreach ( $res as $row ) {
 				/**
@@ -130,9 +130,9 @@ class CheckStorage {
 					// It's safe to just erase the old_flags field
 					if ( $fix ) {
 						$this->error( 'fixed', "Warning: old_flags set to 0", $id );
-						$dbw = wfGetDB( DB_MASTER );
-						$dbw->ping();
-						$dbw->update( 'text', array( 'old_flags' => '' ),
+						w = wfGetDB( DB_MASTER );
+						w->ping();
+						w->update( 'text', array( 'old_flags' => '' ),
 							array( 'old_id' => $id ), __METHOD__ );
 						echo "Fixed\n";
 					} else {
@@ -142,7 +142,7 @@ class CheckStorage {
 					$this->error( 'unfixable', "Error: invalid flags field \"$flags\"", $id );
 				}
 			}
-			$dbr->freeResult( $res );
+			r->freeResult( $res );
 
 			// Output errors for any missing text rows
 			foreach ( $missingTextRows as $oldId => $revId ) {
@@ -153,7 +153,7 @@ class CheckStorage {
 			$externalConcatBlobs = array();
 			$externalNormalBlobs = array();
 			if ( count( $externalRevs ) ) {
-				$res = $dbr->select( 'text', array( 'old_id', 'old_flags', 'old_text' ),
+				$res = r->select( 'text', array( 'old_id', 'old_flags', 'old_text' ),
 					array( 'old_id IN (' . implode( ',', $externalRevs ) . ')' ), __METHOD__ );
 				foreach ( $res as $row ) {
 					$urlParts = explode( '://', $row->old_text, 2 );
@@ -175,7 +175,7 @@ class CheckStorage {
 						$externalNormalBlobs[$cluster][$id][] = $row->old_id;
 					}
 				}
-				$dbr->freeResult( $res );
+				r->freeResult( $res );
 			}
 
 			// Check external concat blobs for the right header
@@ -205,12 +205,12 @@ class CheckStorage {
 			}
 
 			// Check local objects
-			$dbr->ping();
+			r->ping();
 			$concatBlobs = array();
 			$curIds = array();
 			if ( count( $objectRevs ) ) {
 				$headerLength = 300;
-				$res = $dbr->select( 'text', array( 'old_id', 'old_flags', "LEFT(old_text, $headerLength) AS header" ),
+				$res = r->select( 'text', array( 'old_id', 'old_flags', "LEFT(old_text, $headerLength) AS header" ),
 					array( 'old_id IN (' . implode( ',', $objectRevs ) . ')' ), __METHOD__ );
 				foreach ( $res as $row ) {
 					$oldId = $row->old_id;
@@ -254,14 +254,14 @@ class CheckStorage {
 							$this->error( 'unfixable', "Error: unrecognised object class \"$className\"", $oldId );
 					}
 				}
-				$dbr->freeResult( $res );
+				r->freeResult( $res );
 			}
 
 			// Check local concat blob validity
 			$externalConcatBlobs = array();
 			if ( count( $concatBlobs ) ) {
 				$headerLength = 300;
-				$res = $dbr->select( 'text', array( 'old_id', 'old_flags', "LEFT(old_text, $headerLength) AS header" ),
+				$res = r->select( 'text', array( 'old_id', 'old_flags', "LEFT(old_text, $headerLength) AS header" ),
 					array( 'old_id IN (' . implode( ',', array_keys( $concatBlobs ) ) . ')' ), __METHOD__ );
 				foreach ( $res as $row ) {
 					$flags = explode( ',', $row->old_flags );
@@ -292,7 +292,7 @@ class CheckStorage {
 
 					unset( $concatBlobs[$row->old_id] );
 				}
-				$dbr->freeResult( $res );
+				r->freeResult( $res );
 			}
 
 			// Check targets of unresolved stubs
@@ -428,10 +428,10 @@ class CheckStorage {
 			return;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
-		$dbw = wfGetDB( DB_MASTER );
-		$dbr->ping();
-		$dbw->ping();
+		r = wfGetDB( DB_SLAVE );
+		w = wfGetDB( DB_MASTER );
+		r->ping();
+		w->ping();
 
 		$source = new ImportStreamSource( $file );
 		$importer = new WikiImporter( $source );
@@ -459,8 +459,8 @@ class CheckStorage {
 		}
 
 		// Find text row again
-		$dbr = wfGetDB( DB_SLAVE );
-		$oldId = $dbr->selectField( 'revision', 'rev_text_id', array( 'rev_id' => $id ), __METHOD__ );
+		r = wfGetDB( DB_SLAVE );
+		$oldId = r->selectField( 'revision', 'rev_text_id', array( 'rev_id' => $id ), __METHOD__ );
 		if ( !$oldId ) {
 			echo "Missing revision row for rev_id $id\n";
 			return;
@@ -470,8 +470,8 @@ class CheckStorage {
 		$flags = Revision::compressRevisionText( $text );
 
 		// Update the text row
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update( 'text',
+		w = wfGetDB( DB_MASTER );
+		w->update( 'text',
 			array( 'old_flags' => $flags, 'old_text' => $text ),
 			array( 'old_id' => $oldId ),
 			__METHOD__, array( 'LIMIT' => 1 )

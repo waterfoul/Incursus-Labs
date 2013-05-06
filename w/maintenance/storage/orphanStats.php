@@ -34,11 +34,11 @@ class OrphanStats extends Maintenance {
 	}
 
 	public function execute() {
-		$dbr = wfGetDB( DB_SLAVE );
-		if ( !$dbr->tableExists( 'blob_orphans' ) ) {
+		r = wfGetDB( DB_SLAVE );
+		if ( !r->tableExists( 'blob_orphans' ) ) {
 			$this->error( "blob_orphans doesn't seem to exist, need to run trackBlobs.php first", true );
 		}
-		$res = $dbr->select( 'blob_orphans', '*', false, __METHOD__ );
+		$res = r->select( 'blob_orphans', '*', false, __METHOD__ );
 
 		$num = 0;
 		$totalSize = 0;

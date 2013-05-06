@@ -1,0 +1,178 @@
+.solidblockmenu ul{
+        margin: 0;
+        padding: 0;
+        float: left;
+        font: bold 11px Arial;
+        width: 100%;
+        border-width: 1px 0;
+}
+.solidblockmenu li{
+        display: inline;
+}
+
+.solidblockmenu li div{
+        display: inline-block;
+        border-right: 1px solid white;
+}
+
+.solidblockmenu li div input{
+        width: auto;
+}
+
+.solidblockmenu li a{
+        float: left;
+        color: white;
+        padding: 4px 10px;
+        text-decoration: none;
+        border-right: 1px solid white;
+}
+
+.solidblockmenu li a:visited, .solidblockmenu li div label{
+        color: white;
+}
+
+.solidblockmenu li a:hover, .solidblockmenu li a.current{
+        color: white;
+        background: transparent url("./styles/rockn_roll/theme/images/blockactive.gif") center center repeat-x;
+}
+.tabcontainer{
+        clear: left;
+        width: 95%;
+        height: 1.5em;
+}
+
+*:first-child+html .ieclass{ /*IE7 hack to remove gap between menu and sub contents*/
+        margin-top: -1em;
+}
+
+* html .ieclass{ /*IE6 and below hack to remove gap between menu and sub contents*/
+        margin-top: -1em;
+}
+
+.tabcontent{
+        display: none;
+}
+
+.forumbg {
+        background: #ebebeb none repeat-x 0 0;
+        margin-bottom: 4px;
+        padding: 0 5px;
+        clear: both;
+ background-color: #000000;
+        background-image: url("/phpBB/styles/rockn_roll/theme/images/bg_forum.gif");
+}
+span.corners-top, span.corners-bottom, span.corners-top span, span.corners-bottom span {
+        font-size: 1px;
+        line-height: 1px;
+        display: block;
+        height: 5px;
+        background-repeat: no-repeat;
+}
+
+span.corners-top {
+        background-image: none;
+        background-position: 0 0;
+        margin: 0 -5px;
+}
+
+span.corners-top span {
+        background-image: none;
+        background-position: 100% 0;
+}
+
+span.corners-bottom {
+        background-image: none;
+        background-position: 0 100%;
+        margin: 0 -5px;
+        clear: both;
+}
+
+span.corners-bottom span {
+        background-image: none;
+        background-position: 100% 100%;
+}
+
+.headbg span.corners-bottom {
+        margin-bottom: -1px;
+}
+
+.post span.corners-top, .post span.corners-bottom, .panel span.corners-top, .panel span.corners-bottom, .navbar span.corners-top, .navbar span.corners-bottom {
+        margin: 0 -10px;
+}
+
+.rules span.corners-top {
+        margin: 0 -10px 5px -10px;
+}
+
+.rules span.corners-bottom {
+        margin: 5px -10px 0 -10px;
+}
+
+span.corners-top {
+        background-image: url("/phpBB/styles/rockn_roll/theme/images/corners_left.png");
+}
+
+span.corners-top span {
+        background-image: url("/phpBB/styles/rockn_roll/theme/images/corners_right.png");
+}
+
+span.corners-bottom {
+        background-image: url("/phpBB/styles/rockn_roll/theme/images/corners_left.png");
+}
+
+span.corners-bottom span {
+        background-image: url("/phpBB/styles/rockn_roll/theme/images/corners_right.png");
+}
+
+.quick-login{
+	border:none;
+	margin: auto;
+	padding: initial;
+	line-height: normal;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.quick-login label {
+	white-space: nowrap;
+	padding-right: 2px;
+}
+
+.quick-login div
+{
+	margin-top:-1px;
+	display: inline-block;
+	border-right: 1px solid white;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.quick-login .inputbox
+{
+	vertical-align: middle;
+	margin-right: 5px;
+	border: 1px solid #B4BAC0;
+	padding: 2px;
+	cursor: text;
+	font-weight: normal;
+	font-size: 1em;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	margin: 0;
+}
+.quick-login .button2{
+	width: auto !important;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	font-family: "Arial", Lucida Grande, Verdana, Helvetica, sans-serif;
+	font-size: 1.1em;
+	font-weight: bold;
+	background: #FAFAFA none repeat-x top left;
+	cursor: pointer;
+	vertical-align: middle;
+	padding: 0 3px;
+	margin: 0;
+	color: #000;
+	background-image: url("/phpBB/styles/rockn_roll/theme/images/bg_button.gif");
+	border: 1px solid #666666;
+	margin-left: 5px;
+}

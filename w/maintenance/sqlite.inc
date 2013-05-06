@@ -60,23 +60,23 @@ class Sqlite {
 			'blob', // NULL type is omitted intentionally
 		) );
 
-		$db = new DatabaseSqliteStandalone( ':memory:' );
+		 = new DatabaseSqliteStandalone( ':memory:' );
 		try {
 			foreach ( $files as $file ) {
-				$err = $db->sourceFile( $file );
+				$err = ->sourceFile( $file );
 				if ( $err != true ) {
 					return $err;
 				}
 			}
 
-			$tables = $db->query( "SELECT name FROM sqlite_master WHERE type='table'", __METHOD__ );
+			$tables = ->query( "SELECT name FROM sqlite_master WHERE type='table'", __METHOD__ );
 			foreach ( $tables as $table ) {
 				if ( strpos( $table->name, 'sqlite_' ) === 0 ) continue;
 
-				$columns = $db->query( "PRAGMA table_info({$table->name})", __METHOD__ );
+				$columns = ->query( "PRAGMA table_info({$table->name})", __METHOD__ );
 				foreach ( $columns as $col ) {
 					if ( !isset( $allowedTypes[strtolower( $col->type )] ) ) {
-						$db->close();
+						->close();
 						return "Table {$table->name} has column {$col->name} with non-native type '{$col->type}'";
 					}
 				}
@@ -84,7 +84,7 @@ class Sqlite {
 		} catch ( DBError $e ) {
 			return $e->getMessage();
 		}
-		$db->close();
+		->close();
 		return true;
 	}
  };

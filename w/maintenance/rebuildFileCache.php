@@ -70,14 +70,14 @@ class RebuildFileCache extends Maintenance {
 
 		$this->output( "Building content page file cache from page {$start}!\n" );
 
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 		$overwrite = $this->getOption( 'overwrite', false );
 		$start = ( $start > 0 )
 			? $start
-			: $dbr->selectField( 'page', 'MIN(page_id)', false, __FUNCTION__ );
+			: r->selectField( 'page', 'MIN(page_id)', false, __FUNCTION__ );
 		$end = ( $end > 0 )
 			? $end
-			: $dbr->selectField( 'page', 'MAX(page_id)', false, __FUNCTION__ );
+			: r->selectField( 'page', 'MAX(page_id)', false, __FUNCTION__ );
 		if ( !$start ) {
 			$this->error( "Nothing to do.", true );
 		}
@@ -89,17 +89,17 @@ class RebuildFileCache extends Maintenance {
 		$blockStart = $start;
 		$blockEnd = $start + $this->mBatchSize - 1;
 
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 		// Go through each page and save the output
 		while ( $blockEnd <= $end ) {
 			// Get the pages
-			$res = $dbr->select( 'page', array( 'page_namespace', 'page_title', 'page_id' ),
+			$res = r->select( 'page', array( 'page_namespace', 'page_title', 'page_id' ),
 				array( 'page_namespace' => $wgContentNamespaces,
 					"page_id BETWEEN $blockStart AND $blockEnd" ),
 				array( 'ORDER BY' => 'page_id ASC', 'USE INDEX' => 'PRIMARY' )
 			);
 
-			$dbw->begin( __METHOD__ ); // for any changes
+			w->begin( __METHOD__ ); // for any changes
 			foreach ( $res as $row ) {
 				$rebuilt = false;
 				$wgRequestTime = microtime( true ); # bug 22852
@@ -145,7 +145,7 @@ class RebuildFileCache extends Maintenance {
 					$this->output( "Page {$row->page_id} not cacheable\n" );
 				}
 			}
-			$dbw->commit( __METHOD__ ); // commit any changes (just for sanity)
+			w->commit( __METHOD__ ); // commit any changes (just for sanity)
 
 			$blockStart += $this->mBatchSize;
 			$blockEnd += $this->mBatchSize;

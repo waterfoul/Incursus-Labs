@@ -209,7 +209,7 @@ class HistoryAction extends FormlessAction {
 			return new FakeResultWrapper( array() );
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 
 		if ( $direction == HistoryPage::DIR_PREV ) {
 			list( $dirs, $oper ) = array( "ASC", ">=" );
@@ -225,7 +225,7 @@ class HistoryAction extends FormlessAction {
 
 		$page_id = $this->page->getId();
 
-		return $dbr->select( 'revision',
+		return r->select( 'revision',
 			Revision::selectFields(),
 			array_merge( array( "rev_page=$page_id" ), $offsets ),
 			__METHOD__,
@@ -305,12 +305,12 @@ class HistoryAction extends FormlessAction {
 		if ( $rev->getComment() == '' ) {
 			global $wgContLang;
 			$title = $this->msg( 'history-feed-item-nocomment',
-				$rev->getUserText(),
+				$rev->getwiki_userText(),
 				$wgContLang->timeanddate( $rev->getTimestamp() ),
 				$wgContLang->date( $rev->getTimestamp() ),
 				$wgContLang->time( $rev->getTimestamp() ) )->inContentLanguage()->text();
 		} else {
-			$title = $rev->getUserText() .
+			$title = $rev->getwiki_userText() .
 			$this->msg( 'colon-separator' )->inContentLanguage()->text() .
 			FeedItem::stripComment( $rev->getComment() );
 		}
@@ -319,7 +319,7 @@ class HistoryAction extends FormlessAction {
 			$text,
 			$this->getTitle()->getFullUrl( 'diff=' . $rev->getId() . '&oldid=prev' ),
 			$rev->getTimestamp(),
-			$rev->getUserText(),
+			$rev->getwiki_userText(),
 			$this->getTitle()->getTalkPage()->getFullUrl()
 		);
 	}
@@ -360,14 +360,14 @@ class HistoryPager extends ReverseChronologicalPager {
 
 	function getQueryInfo() {
 		$queryInfo = array(
-			'tables'  => array( 'revision', 'user' ),
-			'fields'  => array_merge( Revision::selectFields(), Revision::selectUserFields() ),
+			'tables'  => array( 'revision', 'wiki_user' ),
+			'fields'  => array_merge( Revision::selectFields(), Revision::selectwiki_userFields() ),
 			'conds'   => array_merge(
 				array( 'rev_page' => $this->getWikiPage()->getId() ),
 				$this->conds ),
 			'options' => array( 'USE INDEX' => array( 'revision' => 'page_timestamp' ) ),
 			'join_conds' => array(
-				'user'        => Revision::userJoinCond(),
+				'wiki_user'        => Revision::wiki_userJoinCond(),
 				'tag_summary' => array( 'LEFT JOIN', 'ts_rev_id=rev_id' ) ),
 		);
 		ChangeTags::modifyDisplayQuery(
@@ -392,7 +392,7 @@ class HistoryPager extends ReverseChronologicalPager {
 			$firstInList = $this->counter == 1;
 			$this->counter++;
 			$s = $this->historyLine( $this->lastRow, $row,
-				$this->getTitle()->getNotificationTimestamp( $this->getUser() ), $latest, $firstInList );
+				$this->getTitle()->getNotificationTimestamp( $this->getwiki_user() ), $latest, $firstInList );
 		} else {
 			$s = '';
 		}
@@ -409,12 +409,12 @@ class HistoryPager extends ReverseChronologicalPager {
 			if( $row->rev_parent_id ) {
 				$revIds[] = $row->rev_parent_id;
 			}
-			if( !is_null( $row->user_name ) ) {
-				$batch->add( NS_USER, $row->user_name );
-				$batch->add( NS_USER_TALK, $row->user_name );
-			} else { # for anons or usernames of imported revisions
-				$batch->add( NS_USER, $row->rev_user_text );
-				$batch->add( NS_USER_TALK, $row->rev_user_text );
+			if( !is_null( $row->wiki_user_name ) ) {
+				$batch->add( NS_USER, $row->wiki_user_name );
+				$batch->add( NS_USER_TALK, $row->wiki_user_name );
+			} else { # for anons or wiki_usernames of imported revisions
+				$batch->add( NS_USER, $row->rev_wiki_user_text );
+				$batch->add( NS_USER_TALK, $row->rev_wiki_user_text );
 			}
 		}
 		$this->parentLens = Revision::getParentLengths( $this->mDb, $revIds );
@@ -446,7 +446,7 @@ class HistoryPager extends ReverseChronologicalPager {
 				+ Linker::tooltipAndAccesskeyAttribs( 'compareselectedversions' )
 		) . "\n";
 
-		if ( $this->getUser()->isAllowed( 'deleterevision' ) ) {
+		if ( $this->getwiki_user()->isAllowed( 'deleterevision' ) ) {
 			$this->buttons .= $this->getRevisionButton( 'revisiondelete', 'showhideselectedversions' );
 		}
 		$this->buttons .= '</div>';
@@ -488,7 +488,7 @@ class HistoryPager extends ReverseChronologicalPager {
 			}
 			$this->counter++;
 			$s = $this->historyLine( $this->lastRow, $next,
-				$this->getTitle()->getNotificationTimestamp( $this->getUser() ), $latest, $firstInList );
+				$this->getTitle()->getNotificationTimestamp( $this->getwiki_user() ), $latest, $firstInList );
 		} else {
 			$s = '';
 		}
@@ -556,22 +556,22 @@ class HistoryPager extends ReverseChronologicalPager {
 		$classes = array();
 
 		$del = '';
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		// Show checkboxes for each revision
-		if ( $user->isAllowed( 'deleterevision' ) ) {
+		if ( $wiki_user->isAllowed( 'deleterevision' ) ) {
 			$this->preventClickjacking();
 			// If revision was hidden from sysops, disable the checkbox
-			if ( !$rev->userCan( Revision::DELETED_RESTRICTED, $user ) ) {
+			if ( !$rev->wiki_userCan( Revision::DELETED_RESTRICTED, $wiki_user ) ) {
 				$del = Xml::check( 'deleterevisions', false, array( 'disabled' => 'disabled' ) );
 			// Otherwise, enable the checkbox...
 			} else {
 				$del = Xml::check( 'showhiderevisions', false,
 					array( 'name' => 'ids[' . $rev->getId() . ']' ) );
 			}
-		// User can only view deleted revisions...
-		} elseif ( $rev->getVisibility() && $user->isAllowed( 'deletedhistory' ) ) {
+		// wiki_user can only view deleted revisions...
+		} elseif ( $rev->getVisibility() && $wiki_user->isAllowed( 'deletedhistory' ) ) {
 			// If revision was hidden from sysops, disable the link
-			if ( !$rev->userCan( Revision::DELETED_RESTRICTED, $user ) ) {
+			if ( !$rev->wiki_userCan( Revision::DELETED_RESTRICTED, $wiki_user ) ) {
 				$cdel = Linker::revDeleteLinkDisabled( false );
 			// Otherwise, show the link...
 			} else {
@@ -590,8 +590,8 @@ class HistoryPager extends ReverseChronologicalPager {
 
 		$s .= " $link";
 		$s .= $dirmark;
-		$s .= " <span class='history-user'>" .
-			Linker::revUserTools( $rev, true ) . "</span>";
+		$s .= " <span class='history-wiki_user'>" .
+			Linker::revwiki_userTools( $rev, true ) . "</span>";
 		$s .= $dirmark;
 
 		if ( $rev->isMinor() ) {
@@ -617,8 +617,8 @@ class HistoryPager extends ReverseChronologicalPager {
 		$tools = array();
 
 		# Rollback and undo links
-		if ( $prevRev && $this->getTitle()->quickUserCan( 'edit', $user ) ) {
-			if ( $latest && $this->getTitle()->quickUserCan( 'rollback', $user ) ) {
+		if ( $prevRev && $this->getTitle()->quickwiki_userCan( 'edit', $wiki_user ) ) {
+			if ( $latest && $this->getTitle()->quickwiki_userCan( 'rollback', $wiki_user ) ) {
 				$this->preventClickjacking();
 				$tools[] = '<span class="mw-rollback-link">' .
 					Linker::buildRollbackLink( $rev, $this->getContext() ) . '</span>';
@@ -678,9 +678,9 @@ class HistoryPager extends ReverseChronologicalPager {
 	 * @return String
 	 */
 	function revLink( $rev ) {
-		$date = $this->getLanguage()->userTimeAndDate( $rev->getTimestamp(), $this->getUser() );
+		$date = $this->getLanguage()->wiki_userTimeAndDate( $rev->getTimestamp(), $this->getwiki_user() );
 		$date = htmlspecialchars( $date );
-		if ( $rev->userCan( Revision::DELETED_TEXT, $this->getUser() ) ) {
+		if ( $rev->wiki_userCan( Revision::DELETED_TEXT, $this->getwiki_user() ) ) {
 			$link = Linker::linkKnown(
 				$this->getTitle(),
 				$date,
@@ -705,7 +705,7 @@ class HistoryPager extends ReverseChronologicalPager {
 	 */
 	function curLink( $rev, $latest ) {
 		$cur = $this->historyPage->message['cur'];
-		if ( $latest || !$rev->userCan( Revision::DELETED_TEXT, $this->getUser() ) ) {
+		if ( $latest || !$rev->wiki_userCan( Revision::DELETED_TEXT, $this->getwiki_user() ) ) {
 			return $cur;
 		} else {
 			return Linker::linkKnown(
@@ -745,8 +745,8 @@ class HistoryPager extends ReverseChronologicalPager {
 					'oldid' => 'prev'
 				)
 			);
-		} elseif ( !$prevRev->userCan( Revision::DELETED_TEXT, $this->getUser() )
-			|| !$nextRev->userCan( Revision::DELETED_TEXT, $this->getUser() ) )
+		} elseif ( !$prevRev->wiki_userCan( Revision::DELETED_TEXT, $this->getwiki_user() )
+			|| !$nextRev->wiki_userCan( Revision::DELETED_TEXT, $this->getwiki_user() ) )
 		{
 			return $last;
 		} else {
@@ -785,7 +785,7 @@ class HistoryPager extends ReverseChronologicalPager {
 				$checkmark = array( 'checked' => 'checked' );
 			} else {
 				# Check visibility of old revisions
-				if ( !$rev->userCan( Revision::DELETED_TEXT, $this->getUser() ) ) {
+				if ( !$rev->wiki_userCan( Revision::DELETED_TEXT, $this->getwiki_user() ) ) {
 					$radio['disabled'] = 'disabled';
 					$checkmark = array(); // We will check the next possible one
 				} elseif ( !$this->oldIdChecked ) {

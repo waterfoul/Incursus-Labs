@@ -25,11 +25,11 @@
  */
 
 /**
- * Query module to get information about a list of users
+ * Query module to get information about a list of wiki_users
  *
  * @ingroup API
  */
-class ApiQueryUsers extends ApiQueryBase {
+class ApiQuerywiki_users extends ApiQueryBase {
 
 	private $tokenFunctions, $prop;
 
@@ -39,7 +39,7 @@ class ApiQueryUsers extends ApiQueryBase {
 
 	/**
 	 * Get an array mapping token names to their handler functions.
-	 * The prototype for a token function is func($user)
+	 * The prototype for a token function is func($wiki_user)
 	 * it should return a token or false (permission denied)
 	 * @return Array tokenname => function
 	 */
@@ -55,21 +55,21 @@ class ApiQueryUsers extends ApiQueryBase {
 		}
 
 		$this->tokenFunctions = array(
-			'userrights' => array( 'ApiQueryUsers', 'getUserrightsToken' ),
+			'wiki_userrights' => array( 'ApiQuerywiki_users', 'getwiki_userrightsToken' ),
 		);
-		wfRunHooks( 'APIQueryUsersTokens', array( &$this->tokenFunctions ) );
+		wfRunHooks( 'APIQuerywiki_usersTokens', array( &$this->tokenFunctions ) );
 		return $this->tokenFunctions;
 	}
 
 	/**
-	 * @param $user User
+	 * @param $wiki_user wiki_user
 	 * @return String
 	 */
-	public static function getUserrightsToken( $user ) {
-		global $wgUser;
-		// Since the permissions check for userrights is non-trivial,
+	public static function getwiki_userrightsToken( $wiki_user ) {
+		global $wgwiki_user;
+		// Since the permissions check for wiki_userrights is non-trivial,
 		// don't bother with it here
-		return $wgUser->getEditToken( $user->getName() );
+		return $wgwiki_user->getEditToken( $wiki_user->getName() );
 	}
 
 	public function execute() {
@@ -81,19 +81,19 @@ class ApiQueryUsers extends ApiQueryBase {
 			$this->prop = array();
 		}
 
-		$users = (array)$params['users'];
+		$wiki_users = (array)$params['wiki_users'];
 		$goodNames = $done = array();
 		$result = $this->getResult();
-		// Canonicalize user names
-		foreach ( $users as $u ) {
-			$n = User::getCanonicalName( $u );
+		// Canonicalize wiki_user names
+		foreach ( $wiki_users as $u ) {
+			$n = wiki_user::getCanonicalName( $u );
 			if ( $n === false || $n === '' ) {
 				$vals = array( 'name' => $u, 'invalid' => '' );
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ),
 						null, $vals );
 				if ( !$fit ) {
-					$this->setContinueEnumParameter( 'users',
-							implode( '|', array_diff( $users, $done ) ) );
+					$this->setContinueEnumParameter( 'wiki_users',
+							implode( '|', array_diff( $wiki_users, $done ) ) );
 					$goodNames = array();
 					break;
 				}
@@ -106,39 +106,39 @@ class ApiQueryUsers extends ApiQueryBase {
 		$result = $this->getResult();
 
 		if ( count( $goodNames ) ) {
-			$this->addTables( 'user' );
-			$this->addFields( User::selectFields() );
-			$this->addWhereFld( 'user_name', $goodNames );
+			$this->addTables( 'wiki_user' );
+			$this->addFields( wiki_user::selectFields() );
+			$this->addWhereFld( 'wiki_user_name', $goodNames );
 
 			if ( isset( $this->prop['groups'] ) || isset( $this->prop['rights'] ) ) {
-				$this->addTables( 'user_groups' );
-				$this->addJoinConds( array( 'user_groups' => array( 'LEFT JOIN', 'ug_user=user_id' ) ) );
+				$this->addTables( 'wiki_user_groups' );
+				$this->addJoinConds( array( 'wiki_user_groups' => array( 'LEFT JOIN', 'ug_wiki_user=wiki_user_id' ) ) );
 				$this->addFields( 'ug_group' );
 			}
 
-			$this->showHiddenUsersAddBlockInfo( isset( $this->prop['blockinfo'] ) );
+			$this->showHiddenwiki_usersAddBlockInfo( isset( $this->prop['blockinfo'] ) );
 
 			$data = array();
 			$res = $this->select( __METHOD__ );
 
 			foreach ( $res as $row ) {
-				$user = User::newFromRow( $row );
-				$name = $user->getName();
+				$wiki_user = wiki_user::newFromRow( $row );
+				$name = $wiki_user->getName();
 
-				$data[$name]['userid'] = $user->getId();
+				$data[$name]['wiki_userid'] = $wiki_user->getId();
 				$data[$name]['name'] = $name;
 
 				if ( isset( $this->prop['editcount'] ) ) {
-					$data[$name]['editcount'] = intval( $user->getEditCount() );
+					$data[$name]['editcount'] = intval( $wiki_user->getEditCount() );
 				}
 
 				if ( isset( $this->prop['registration'] ) ) {
-					$data[$name]['registration'] = wfTimestampOrNull( TS_ISO_8601, $user->getRegistration() );
+					$data[$name]['registration'] = wfTimestampOrNull( TS_ISO_8601, $wiki_user->getRegistration() );
 				}
 
 				if ( isset( $this->prop['groups'] ) ) {
 					if ( !isset( $data[$name]['groups'] ) ) {
-						$data[$name]['groups'] = $user->getAutomaticGroups();
+						$data[$name]['groups'] = $wiki_user->getAutomaticGroups();
 					}
 
 					if ( !is_null( $row->ug_group ) ) {
@@ -148,17 +148,17 @@ class ApiQueryUsers extends ApiQueryBase {
 				}
 
 				if ( isset( $this->prop['implicitgroups'] ) && !isset( $data[$name]['implicitgroups'] ) ) {
-					$data[$name]['implicitgroups'] =  $user->getAutomaticGroups();
+					$data[$name]['implicitgroups'] =  $wiki_user->getAutomaticGroups();
 				}
 
 				if ( isset( $this->prop['rights'] ) ) {
 					if ( !isset( $data[$name]['rights'] ) ) {
-						$data[$name]['rights'] = User::getGroupPermissions( $user->getAutomaticGroups() );
+						$data[$name]['rights'] = wiki_user::getGroupPermissions( $wiki_user->getAutomaticGroups() );
 					}
 
 					if ( !is_null( $row->ug_group ) ) {
 						$data[$name]['rights'] = array_unique( array_merge( $data[$name]['rights'],
-							User::getGroupPermissions( array( $row->ug_group ) ) ) );
+							wiki_user::getGroupPermissions( array( $row->ug_group ) ) ) );
 					}
 				}
 				if ( $row->ipb_deleted ) {
@@ -172,12 +172,12 @@ class ApiQueryUsers extends ApiQueryBase {
 					$data[$name]['blockexpiry'] = $row->ipb_expiry;
 				}
 
-				if ( isset( $this->prop['emailable'] ) && $user->canReceiveEmail() ) {
+				if ( isset( $this->prop['emailable'] ) && $wiki_user->canReceiveEmail() ) {
 					$data[$name]['emailable'] = '';
 				}
 
 				if ( isset( $this->prop['gender'] ) ) {
-					$gender = $user->getOption( 'gender' );
+					$gender = $wiki_user->getOption( 'gender' );
 					if ( strval( $gender ) === '' ) {
 						$gender = 'unknown';
 					}
@@ -187,9 +187,9 @@ class ApiQueryUsers extends ApiQueryBase {
 				if ( !is_null( $params['token'] ) ) {
 					$tokenFunctions = $this->getTokenFunctions();
 					foreach ( $params['token'] as $t ) {
-						$val = call_user_func( $tokenFunctions[$t], $user );
+						$val = call_wiki_user_func( $tokenFunctions[$t], $wiki_user );
 						if ( $val === false ) {
-							$this->setWarning( "Action '$t' is not allowed for the current user" );
+							$this->setWarning( "Action '$t' is not allowed for the current wiki_user" );
 						} else {
 							$data[$name][$t . 'token'] = $val;
 						}
@@ -202,19 +202,19 @@ class ApiQueryUsers extends ApiQueryBase {
 		foreach ( $goodNames as $u ) {
 			if ( !isset( $data[$u] ) ) {
 				$data[$u] = array( 'name' => $u );
-				$urPage = new UserrightsPage;
-				$iwUser = $urPage->fetchUser( $u );
+				$urPage = new wiki_userrightsPage;
+				$iwwiki_user = $urPage->fetchwiki_user( $u );
 
-				if ( $iwUser instanceof UserRightsProxy ) {
+				if ( $iwwiki_user instanceof wiki_userRightsProxy ) {
 					$data[$u]['interwiki'] = '';
 
 					if ( !is_null( $params['token'] ) ) {
 						$tokenFunctions = $this->getTokenFunctions();
 
 						foreach ( $params['token'] as $t ) {
-							$val = call_user_func( $tokenFunctions[$t], $iwUser );
+							$val = call_wiki_user_func( $tokenFunctions[$t], $iwwiki_user );
 							if ( $val === false ) {
-								$this->setWarning( "Action '$t' is not allowed for the current user" );
+								$this->setWarning( "Action '$t' is not allowed for the current wiki_user" );
 							} else {
 								$data[$u][$t . 'token'] = $val;
 							}
@@ -238,33 +238,33 @@ class ApiQueryUsers extends ApiQueryBase {
 			$fit = $result->addValue( array( 'query', $this->getModuleName() ),
 					null, $data[$u] );
 			if ( !$fit ) {
-				$this->setContinueEnumParameter( 'users',
-						implode( '|', array_diff( $users, $done ) ) );
+				$this->setContinueEnumParameter( 'wiki_users',
+						implode( '|', array_diff( $wiki_users, $done ) ) );
 				break;
 			}
 			$done[] = $u;
 		}
-		return $result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'user' );
+		return $result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'wiki_user' );
 	}
 
 	/**
-	* Gets all the groups that a user is automatically a member of (implicit groups)
+	* Gets all the groups that a wiki_user is automatically a member of (implicit groups)
 	*
-	* @deprecated since 1.20; call User::getAutomaticGroups() directly.
-	* @param $user User
+	* @deprecated since 1.20; call wiki_user::getAutomaticGroups() directly.
+	* @param $wiki_user wiki_user
 	* @return array
 	*/
-	public static function getAutoGroups( $user ) {
+	public static function getAutoGroups( $wiki_user ) {
 		wfDeprecated( __METHOD__, '1.20' );
 
-		return $user->getAutomaticGroups();
+		return $wiki_user->getAutomaticGroups();
 	}
 
 	public function getCacheMode( $params ) {
 		if ( isset( $params['token'] ) ) {
 			return 'private';
 		} else {
-			return 'anon-public-user-private';
+			return 'anon-public-wiki_user-private';
 		}
 	}
 
@@ -284,7 +284,7 @@ class ApiQueryUsers extends ApiQueryBase {
 					'gender',
 				)
 			),
-			'users' => array(
+			'wiki_users' => array(
 				ApiBase::PARAM_ISMULTI => true
 			),
 			'token' => array(
@@ -298,24 +298,24 @@ class ApiQueryUsers extends ApiQueryBase {
 		return array(
 			'prop' => array(
 				'What pieces of information to include',
-				'  blockinfo      - Tags if the user is blocked, by whom, and for what reason',
-				'  groups         - Lists all the groups the user(s) belongs to',
-				'  implicitgroups - Lists all the groups a user is automatically a member of',
-				'  rights         - Lists all the rights the user(s) has',
-				'  editcount      - Adds the user\'s edit count',
-				'  registration   - Adds the user\'s registration timestamp',
-				'  emailable      - Tags if the user can and wants to receive e-mail through [[Special:Emailuser]]',
-				'  gender         - Tags the gender of the user. Returns "male", "female", or "unknown"',
+				'  blockinfo      - Tags if the wiki_user is blocked, by whom, and for what reason',
+				'  groups         - Lists all the groups the wiki_user(s) belongs to',
+				'  implicitgroups - Lists all the groups a wiki_user is automatically a member of',
+				'  rights         - Lists all the rights the wiki_user(s) has',
+				'  editcount      - Adds the wiki_user\'s edit count',
+				'  registration   - Adds the wiki_user\'s registration timestamp',
+				'  emailable      - Tags if the wiki_user can and wants to receive e-mail through [[Special:Emailwiki_user]]',
+				'  gender         - Tags the gender of the wiki_user. Returns "male", "female", or "unknown"',
 			),
-			'users' => 'A list of users to obtain the same information for',
-			'token' => 'Which tokens to obtain for each user',
+			'wiki_users' => 'A list of wiki_users to obtain the same information for',
+			'token' => 'Which tokens to obtain for each wiki_user',
 		);
 	}
 
 	public function getResultProperties() {
 		$props = array(
 			'' => array(
-				'userid' => array(
+				'wiki_userid' => array(
 					ApiBase::PROP_TYPE => 'integer',
 					ApiBase::PROP_NULLABLE => true
 				),
@@ -380,15 +380,15 @@ class ApiQueryUsers extends ApiQueryBase {
 	}
 
 	public function getDescription() {
-		return 'Get information about a list of users';
+		return 'Get information about a list of wiki_users';
 	}
 
 	public function getExamples() {
-		return 'api.php?action=query&list=users&ususers=brion|TimStarling&usprop=groups|editcount|gender';
+		return 'api.php?action=query&list=wiki_users&uswiki_users=brion|TimStarling&usprop=groups|editcount|gender';
 	}
 
 	public function getHelpUrls() {
-		return 'https://www.mediawiki.org/wiki/API:Users';
+		return 'https://www.mediawiki.org/wiki/API:wiki_users';
 	}
 
 	public function getVersion() {

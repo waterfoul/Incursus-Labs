@@ -46,28 +46,28 @@ class UpdateDoubleWidthSearch extends Maintenance {
 	public function execute() {
 		$maxLockTime = $this->getOption( 'l', 20 );
 
-		$dbw = wfGetDB( DB_MASTER );
-		if ( $dbw->getType() !== 'mysql' ) {
+		w = wfGetDB( DB_MASTER );
+		if ( w->getType() !== 'mysql' ) {
 			$this->error( "This change is only needed on MySQL, quitting.\n", true );
 		}
 
-		$res = $this->findRows( $dbw );
-		$this->updateSearchIndex( $maxLockTime, array( $this, 'searchIndexUpdateCallback' ), $dbw, $res );
+		$res = $this->findRows( w );
+		$this->updateSearchIndex( $maxLockTime, array( $this, 'searchIndexUpdateCallback' ), w, $res );
 
 		$this->output( "Done\n" );
 	}
 
-	public function searchIndexUpdateCallback( $dbw, $row ) {
-		return $this->updateSearchIndexForPage( $dbw, $row->si_page );
+	public function searchIndexUpdateCallback( w, $row ) {
+		return $this->updateSearchIndexForPage( w, $row->si_page );
 	}
 
-	private function findRows( $dbw ) {
-		$searchindex = $dbw->tableName( 'searchindex' );
+	private function findRows( w ) {
+		$searchindex = w->tableName( 'searchindex' );
 		$regexp = '[[:<:]]u8efbd([89][1-9a]|8[b-f]|90)[[:>:]]';
 		$sql = "SELECT si_page FROM $searchindex
 				 WHERE ( si_text RLIKE '$regexp' )
 					OR ( si_title RLIKE '$regexp' )";
-		return $dbw->query( $sql, __METHOD__ );
+		return w->query( $sql, __METHOD__ );
 	}
 }
 

@@ -83,7 +83,7 @@ abstract class CdbReader {
 abstract class CdbWriter {
 	/**
 	 * Open a writer and return a subclass instance.
-	 * The user must have write access to the directory, for temporary file creation.
+	 * The wiki_user must have write access to the directory, for temporary file creation.
 	 *
 	 * @param $fileName string
 	 *

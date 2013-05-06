@@ -116,7 +116,7 @@ class GenerateSitemap extends Maintenance {
 	 *
 	 * @var object
 	 */
-	var $dbr;
+	var r;
 
 	/**
 	 * A resource pointing to the sitemap index file

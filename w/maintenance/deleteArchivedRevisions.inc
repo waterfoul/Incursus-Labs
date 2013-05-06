@@ -37,24 +37,24 @@ class DeleteArchivedRevisionsImplementation {
 	 * those methods.
 	 */
 	static public function doDelete( $maint ) {
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
-		$dbw->begin( __METHOD__ );
+		w->begin( __METHOD__ );
 
-		$tbl_arch = $dbw->tableName( 'archive' );
+		$tbl_arch = w->tableName( 'archive' );
 
 		# Delete as appropriate
 		$maint->handleOutput( "Deleting archived revisions... " );
-		$dbw->query( "DELETE FROM $tbl_arch" );
+		w->query( "DELETE FROM $tbl_arch" );
 
-		$count = $dbw->affectedRows();
+		$count = w->affectedRows();
 		$deletedRows = $count != 0;
 
 		$maint->handleOutput( "done. $count revisions deleted.\n" );
 
 		# This bit's done
 		# Purge redundant text records
-		$dbw->commit( __METHOD__ );
+		w->commit( __METHOD__ );
 		if ( $deletedRows ) {
 			$maint->purgeRedundantText( true );
 		}

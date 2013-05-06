@@ -46,7 +46,7 @@ class ApiUpload extends ApiBase {
 			$this->dieUsageMsg( 'uploaddisabled' );
 		}
 
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 
 		// Parameter handling
 		$this->mParams = $this->extractRequestParams();
@@ -70,7 +70,7 @@ class ApiUpload extends ApiBase {
 		}
 
 		// First check permission to upload
-		$this->checkPermissions( $user );
+		$this->checkPermissions( $wiki_user );
 
 		// Fetch the file
 		$status = $this->mUpload->fetchFile();
@@ -90,11 +90,11 @@ class ApiUpload extends ApiBase {
 			$this->verifyUpload();
 		}
  
-		// Check if the user has the rights to modify or overwrite the requested title
+		// Check if the wiki_user has the rights to modify or overwrite the requested title
 		// (This check is irrelevant if stashing is already requested, since the errors
 		//  can always be fixed by changing the title)
 		if ( ! $this->mParams['stash'] ) {
-			$permErrors = $this->mUpload->verifyTitlePermissions( $user );
+			$permErrors = $this->mUpload->verifyTitlePermissions( $wiki_user );
 			if ( $permErrors !== true ) {
 				$this->dieRecoverableError( $permErrors[0], 'filename' );
 			}
@@ -161,7 +161,7 @@ class ApiUpload extends ApiBase {
 		$result = array();
 		$result['result'] = 'Warning';
 		$result['warnings'] = $warnings;
-		// in case the warnings can be fixed with some further user action, let's stash this upload
+		// in case the warnings can be fixed with some further wiki_user action, let's stash this upload
 		// and return a key they can use to restart it
 		try {
 			$result['filekey'] = $this->performStash();
@@ -208,7 +208,7 @@ class ApiUpload extends ApiBase {
 				// We have a new filekey for the fully concatenated file.
 				$result['filekey'] =  $this->mUpload->getLocalFile()->getFileKey();
 
-				// Remove chunk from stash. (Checks against user ownership of chunks.)
+				// Remove chunk from stash. (Checks against wiki_user ownership of chunks.)
 				$this->mUpload->stash->removeFile( $this->mParams['filekey'] );
 
 				$result['result'] = 'Success';
@@ -246,12 +246,12 @@ class ApiUpload extends ApiBase {
 	}
 
 	/**
-	 * Throw an error that the user can recover from by providing a better
+	 * Throw an error that the wiki_user can recover from by providing a better
 	 * value for $parameter
 	 *
 	 * @param $error array Error array suitable for passing to dieUsageMsg()
 	 * @param $parameter string Parameter that needs revising
-	 * @param $data array Optional extra data to pass to the user
+	 * @param $data array Optional extra data to pass to the wiki_user
 	 * @throws UsageException
 	 */
 	function dieRecoverableError( $error, $parameter, $data = array() ) {
@@ -328,7 +328,7 @@ class ApiUpload extends ApiBase {
 				$this->dieUsageMsg( 'invalid-file-key' );
 			}
 
-			$this->mUpload = new UploadFromStash( $this->getUser() );
+			$this->mUpload = new UploadFromStash( $this->getwiki_user() );
 
 			$this->mUpload->initialize( $this->mParams['filekey'], $this->mParams['filename'] );
 		} elseif ( isset( $this->mParams['file'] ) ) {
@@ -371,16 +371,16 @@ class ApiUpload extends ApiBase {
 	}
 
 	/**
-	 * Checks that the user has permissions to perform this upload.
+	 * Checks that the wiki_user has permissions to perform this upload.
 	 * Dies with usage message on inadequate permissions.
-	 * @param $user User The user to check.
+	 * @param $wiki_user wiki_user The wiki_user to check.
 	 */
-	protected function checkPermissions( $user ) {
-		// Check whether the user has the appropriate permissions to upload anyway
-		$permission = $this->mUpload->isAllowed( $user );
+	protected function checkPermissions( $wiki_user ) {
+		// Check whether the wiki_user has the appropriate permissions to upload anyway
+		$permission = $this->mUpload->isAllowed( $wiki_user );
 
 		if ( $permission !== true ) {
-			if ( !$user->isLoggedIn() ) {
+			if ( !$wiki_user->isLoggedIn() ) {
 				$this->dieUsageMsg( array( 'mustbeloggedin', 'upload' ) );
 			} else {
 				$this->dieUsageMsg( 'badaccess-groups' );
@@ -522,13 +522,13 @@ class ApiUpload extends ApiBase {
 
 		// No errors, no warnings: do the upload
 		$status = $this->mUpload->performUpload( $this->mParams['comment'],
-			$this->mParams['text'], $watch, $this->getUser() );
+			$this->mParams['text'], $watch, $this->getwiki_user() );
 
 		if ( !$status->isGood() ) {
 			$error = $status->getErrorsArray();
 
 			if ( count( $error ) == 1 && $error[0][0] == 'async' ) {
-				// The upload can not be performed right now, because the user
+				// The upload can not be performed right now, because the wiki_user
 				// requested so
 				return array(
 					'result' => 'Queued',
@@ -637,7 +637,7 @@ class ApiUpload extends ApiBase {
 			'filesize' => 'Filesize of entire upload',
 
 			'asyncdownload' => 'Make fetching a URL asynchronous',
-			'leavemessage' => 'If asyncdownload is used, leave a message on the user talk page if finished',
+			'leavemessage' => 'If asyncdownload is used, leave a message on the wiki_user talk page if finished',
 			'statuskey' => 'Fetch the upload status for this file key',
 		);
 

@@ -51,7 +51,7 @@ class MIMEsearchPage extends QueryPage {
 					'img_size',
 					'img_width',
 					'img_height',
-					'img_user_text',
+					'img_wiki_user_text',
 					'img_timestamp' ),
 			'conds' => array( 'img_major_mime' => $this->major,
 					'img_minor_mime' => $this->minor )
@@ -101,10 +101,10 @@ class MIMEsearchPage extends QueryPage {
 		$bytes = htmlspecialchars( $lang->formatSize( $result->img_size ) );
 		$dimensions = $this->msg( 'widthheight' )->numParams( $result->img_width,
 			$result->img_height )->escaped();
-		$user = Linker::link( Title::makeTitle( NS_USER, $result->img_user_text ), htmlspecialchars( $result->img_user_text ) );
-		$time = htmlspecialchars( $lang->userTimeAndDate( $result->img_timestamp, $this->getUser() ) );
+		$wiki_user = Linker::link( Title::makeTitle( NS_USER, $result->img_wiki_user_text ), htmlspecialchars( $result->img_wiki_user_text ) );
+		$time = htmlspecialchars( $lang->wiki_userTimeAndDate( $result->img_timestamp, $this->getwiki_user() ) );
 
-		return "$download $plink . . $dimensions . . $bytes . . $user . . $time";
+		return "$download $plink . . $dimensions . . $bytes . . $wiki_user . . $time";
 	}
 
 	/**

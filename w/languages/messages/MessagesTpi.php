@@ -37,20 +37,20 @@ $specialPageAliases = array(
 	'Confirmemail'              => array( 'Orait long imel' ),
 	'Contributions'             => array( 'Ol senis bilong yusa' ),
 	'CreateAccount'             => array( 'Mekim nupela login' ),
-	'Emailuser'                 => array( 'Imel yusa' ),
+	'Emailwiki_user'                 => array( 'Imel yusa' ),
 	'Preferences'               => array( 'Ol laik bilong mi' ),
 	'Randompage'                => array( 'Soim wanpela pes' ),
 	'Recentchanges'             => array( 'Nupela senis' ),
 	'Specialpages'              => array( 'Sipesol pes' ),
 	'Upload'                    => array( 'Salim media fail' ),
-	'Userlogin'                 => array( 'Yusa login' ),
-	'Userlogout'                => array( 'Yusa logaut' ),
+	'wiki_userlogin'                 => array( 'Yusa login' ),
+	'wiki_userlogout'                => array( 'Yusa logaut' ),
 	'Watchlist'                 => array( 'Lukautbuk' ),
 	'Whatlinkshere'             => array( 'Ol link ikam long hia' ),
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Putim lain ananit long ol link:',
 'tog-justify' => "Soim ol paragraf i pulmapim sipes long lephan i go long raithan (''justify'')",
 'tog-hideminor' => 'Noken soim ol liklik senis insait long ol nupela senis',
@@ -74,7 +74,7 @@ $messages = array(
 'tog-previewonfirst' => 'Soim pes mi senisim pastaim long raitim',
 'tog-nocache' => ' Nogat stoa pes long browser',
 'tog-enotifwatchlistpages' => 'Salim imel long mi taim wanpela pes mi lukautim i senis',
-'tog-enotifusertalkpages' => 'Salim imel long mi wanem taim toktok bilong mi i senis',
+'tog-enotifwiki_usertalkpages' => 'Salim imel long mi wanem taim toktok bilong mi i senis',
 'tog-enotifminoredits' => 'Salim imel long mi tasol long liklik senis long pes na fail',
 'tog-enotifrevealaddr' => 'Soim imel adres bilong mi long olpela infomesen imel',
 'tog-shownumberswatching' => 'Soim hamas yusa i lukautim pes',
@@ -220,7 +220,7 @@ $messages = array(
 'talk' => 'Toktok',
 'views' => 'Ol lukluk',
 'toolbox' => 'Sipesol bokis',
-'userpage' => 'Lukim pes bilong yusa',
+'wiki_userpage' => 'Lukim pes bilong yusa',
 'projectpage' => 'Lukim pes bilong projek',
 'imagepage' => 'Lukim pes bilong fail',
 'mediawikipage' => 'Lukim pes bilong toksave',
@@ -236,7 +236,7 @@ $messages = array(
 'jumptonavigation' => 'ol bikpela pes',
 'jumptosearch' => 'painim',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Long {{SITENAME}}',
 'aboutpage' => 'Project:Long',
 'copyrightpage' => '{{ns:project}}:Ol laisens',
@@ -278,7 +278,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Stori',
-'nstab-user' => 'Pes bilong yusa',
+'nstab-wiki_user' => 'Pes bilong yusa',
 'nstab-media' => 'Media pes',
 'nstab-special' => 'Sipesol pes',
 'nstab-project' => 'Pes bilong projek',
@@ -298,9 +298,9 @@ $messages = array(
 'yourpassword' => 'Paswot:',
 'remembermypassword' => 'Holim yusanem bilong mi long dispela komputa (holim pas longpela taim $1 {{PLURAL:$1|de|de}})',
 'login' => 'Log in',
-'userloginnocreate' => 'Log in',
+'wiki_userloginnocreate' => 'Log in',
 'logout' => 'Logaut',
-'userlogout' => 'Logaut',
+'wiki_userlogout' => 'Logaut',
 'gotaccountlink' => 'Log in',
 'createaccountmail' => 'Long e-mel',
 'createaccountreason' => 'As bilong en:',
@@ -430,7 +430,7 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'prefs-custom-css' => 'Praivet CSS',
 'prefs-custom-js' => 'Praivet JavaScript',
 'youremail' => 'E-mel:',
-'username' => 'Yusanem:',
+'wiki_username' => 'Yusanem:',
 'uid' => 'Yusa ID:',
 'yourrealname' => 'Tru nem:',
 'yourlanguage' => 'Tokples:',
@@ -440,21 +440,21 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'email' => 'E-mel',
 'prefs-info' => 'Liklik infomesen',
 
-# User rights
-'editusergroup' => 'Senisim ol grup bilong yusa',
-'userrights-groupsmember' => 'Memba bilong:',
-'userrights-reason' => 'As bilong en:',
+# wiki_user rights
+'editwiki_usergroup' => 'Senisim ol grup bilong yusa',
+'wiki_userrights-groupsmember' => 'Memba bilong:',
+'wiki_userrights-reason' => 'As bilong en:',
 
 # Groups
 'group' => 'Grup:',
-'group-user' => 'Ol yusa',
+'group-wiki_user' => 'Ol yusa',
 'group-bot' => 'Ol bot',
 'group-all' => '(olgeta)',
 
-'group-user-member' => 'yusa',
+'group-wiki_user-member' => 'yusa',
 'group-bot-member' => 'bot',
 
-'grouppage-user' => '{{ns:project}}:Ol yusa',
+'grouppage-wiki_user' => '{{ns:project}}:Ol yusa',
 'grouppage-bot' => '{{ns:project}}:Ol bot',
 
 # Rights
@@ -466,7 +466,7 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'right-delete' => 'Rausim ol pes',
 'right-suppressionlog' => 'Lukim ol praivet ripot',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Ripot long ol pawa bilong ol yusa',
 'rightsnone' => 'i nogat wanpela',
 
@@ -523,7 +523,7 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'listfiles' => 'Lista bilong ol fail',
 'listfiles_date' => 'De',
 'listfiles_name' => 'Nem',
-'listfiles_user' => 'Yusa',
+'listfiles_wiki_user' => 'Yusa',
 
 # File description page
 'file-anchor-link' => 'Fail',
@@ -533,7 +533,7 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'filehist-current' => 'bilong nau',
 'filehist-datetime' => 'De/Taim',
 'filehist-thumb' => 'Liklik',
-'filehist-user' => 'Yusa',
+'filehist-wiki_user' => 'Yusa',
 'filehist-dimensions' => 'Ol sais',
 'filehist-comment' => 'Tingting',
 'filehist-missing' => 'Fail i no kamap',
@@ -572,9 +572,9 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'mostlinkedcategories' => 'Ol grup igat planti link i kam long ol',
 'mostlinkedtemplates' => 'Ol templet igat planti link i kam long ol',
 'mostcategories' => 'Ol pes bilong buk istap insait long planti grup',
-'listusers' => 'Lista long ol yusa',
+'listwiki_users' => 'Lista long ol yusa',
 'newpages' => 'Ol nupela pes',
-'newpages-username' => 'Yusanem:',
+'newpages-wiki_username' => 'Yusanem:',
 'ancientpages' => 'Ol pes i lapun tru',
 'move' => 'Surikim',
 'movethispage' => 'Surikim dispela pes',
@@ -586,7 +586,7 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'booksources-go' => 'Go',
 
 # Special:Log
-'specialloguserlabel' => 'Yusa:',
+'speciallogwiki_userlabel' => 'Yusa:',
 'speciallogtitlelabel' => 'Nem:',
 'log' => 'Ol ripot',
 
@@ -605,18 +605,18 @@ Also see [[Special:WantedCategories|wanted categories]].',
 # Special:LinkSearch
 'linksearch-ok' => 'Painim',
 
-# Special:ListUsers
-'listusers-submit' => 'Soim',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Soim',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Ripot long ol nupela yusa',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Ripot long ol nupela yusa',
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'Grup',
 'listgrouprights-members' => '(lista bilong ol memba)',
 
-# E-mail user
-'emailuser' => 'E-mel dispela yusa',
+# E-mail wiki_user
+'emailwiki_user' => 'E-mel dispela yusa',
 'emailpage' => 'E-mel yusa',
 'defemailsubject' => '{{SITENAME}} e-mel',
 'noemailtitle' => 'Nogat e-mel',
@@ -631,7 +631,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'watchlistfor2' => 'Bilong $1 $2',
 'nowatchlist' => 'Nogat wanpela samting istap long lukautbuk bilong yu.',
 'watchlistanontext' => 'Yu mas $1 long lukim o senisim ol samting long lukautbuk bilong yu.',
-'watchnologintext' => 'Yu mas [[Special:UserLogin|login]] long senisim lukautbuk bilong yu.',
+'watchnologintext' => 'Yu mas [[Special:wiki_userLogin|login]] long senisim lukautbuk bilong yu.',
 'addedwatchtext' => "Pes \"[[:\$1]]\" igo insait long [[Special:Watchlist|lukautbuk]] bilong yu nau.
 Bai yu lukim ol nupela senis long dispela pes, na pes toktok bilong en, long lukautbuk,
 na dispela pes bai kamap '''strongpela''' long [[Special:RecentChanges|pes bilong ol nupela senis]]
@@ -718,7 +718,7 @@ Sapos yu laik rausim dispela pes long lukautbuk bilong yu bihain, paitim \"Pinis
 'whatlinkshere-hidelinks' => '$1 ol link',
 
 # Block/unblock
-'blockip' => 'Pasim yusa (Block user)',
+'blockip' => 'Pasim yusa (Block wiki_user)',
 'ipboptions' => '2 awa:2 hours,1 de:1 day,3 de:3 days,1 wik:1 week,2 wik:2 weeks,1 mun:1 month,3 mun:3 months,6 mun:6 months,1 yia:1 year,oltaim:infinite',
 'ipbotheroption' => 'narapela',
 'ipblocklist' => 'Ol IP adres na yusanem i pas',
@@ -758,7 +758,7 @@ Yu mas painim narapela nem.',
 'thumbnail-more' => 'Moa bikpela',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Pes bilong yu (Your user page)',
+'tooltip-pt-wiki_userpage' => 'Pes bilong yu (Your wiki_user page)',
 'tooltip-pt-preferences' => 'Ol laik bilong yu (Your preferences)',
 'tooltip-pt-mycontris' => 'Lista long ol senis yu wokim (List of your contributions)',
 'tooltip-pt-logout' => 'Logaut',
@@ -779,11 +779,11 @@ Yu inap lukim as tok bilong em',
 'tooltip-n-help' => 'Ples long painim halivim',
 'tooltip-feed-rss' => 'RSS fid bilong dispela pes',
 'tooltip-feed-atom' => 'Atom fid bilong dispela pes',
-'tooltip-t-emailuser' => 'Salim e-mel long dispela yusa',
+'tooltip-t-emailwiki_user' => 'Salim e-mel long dispela yusa',
 'tooltip-t-upload' => 'Sutim ol fail olsem piksa igo insait',
 'tooltip-t-specialpages' => 'Lista long ol sipesol pes (List of all special pages)',
 'tooltip-ca-nstab-main' => 'Lukim stori (View the content page)',
-'tooltip-ca-nstab-user' => 'Lukim pes bilong yusa',
+'tooltip-ca-nstab-wiki_user' => 'Lukim pes bilong yusa',
 'tooltip-ca-nstab-media' => 'Lukim media pes (View the media page)',
 'tooltip-ca-nstab-image' => 'Lukim pes bilong fail',
 'tooltip-ca-nstab-template' => 'Lukim templet',
@@ -791,7 +791,7 @@ Yu inap lukim as tok bilong em',
 'tooltip-save' => 'Raitim senis bilong yu (Save your changes)',
 
 # Attribution
-'siteuser' => '{{SITENAME}} yusa $1',
+'sitewiki_user' => '{{SITENAME}} yusa $1',
 'others' => 'ol narapela',
 
 # Browsing diffs

@@ -73,7 +73,7 @@ $namespaceAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'ସଚଳସଭ୍ୟ' ),
+	'Activewiki_users'               => array( 'ସଚଳସଭ୍ୟ' ),
 	'Allmessages'               => array( 'ସବୁସନ୍ଦେଶ' ),
 	'Allpages'                  => array( 'ସବୁପୃଷ୍ଠା' ),
 	'Ancientpages'              => array( 'ପୁରୁଣାପୃଷ୍ଠା' ),
@@ -95,7 +95,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'ବହୁବିକଳ୍ପୀ' ),
 	'DoubleRedirects'           => array( 'ଦୁଇଥରଲେଉଟାଣି' ),
 	'EditWatchlist'             => array( 'ଧ୍ୟାନସୂଚୀବଦଳାଇବେ' ),
-	'Emailuser'                 => array( 'ସଭ୍ୟଙ୍କୁମେଲକରିବେ' ),
+	'Emailwiki_user'                 => array( 'ସଭ୍ୟଙ୍କୁମେଲକରିବେ' ),
 	'Export'                    => array( 'ରପ୍ତାନି' ),
 	'Fewestrevisions'           => array( 'ସବୁଠୁକମସଙ୍କଳନ' ),
 	'FileDuplicateSearch'       => array( 'ଫାଇଲନକଲିଖୋଜା' ),
@@ -110,7 +110,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'ଫାଇଲତାଲିକା' ),
 	'Listgrouprights'           => array( 'ଗୋଠନିୟମତାଲିକା' ),
 	'Listredirects'             => array( 'ଲେଉଟାଣିତାଲିକା' ),
-	'Listusers'                 => array( 'ସଭ୍ୟତାଲିକା' ),
+	'Listwiki_users'                 => array( 'ସଭ୍ୟତାଲିକା' ),
 	'Lockdb'                    => array( 'ଡାଟାବେସ‌କିଳିଦେବା' ),
 	'Log'                       => array( 'ଲଗ' ),
 	'Lonelypages'               => array( 'ଏକୁଟିଆପୃଷ୍ଠା' ),
@@ -160,9 +160,9 @@ $specialPageAliases = array(
 	'Unwatchedpages'            => array( 'ଦେଖାଯାଇନଥିବାପୃଷ୍ଠାସବୁ' ),
 	'Upload'                    => array( 'ଅପଲୋଡ଼' ),
 	'UploadStash'               => array( 'ଷ୍ଟାସଅପଲୋଡ଼' ),
-	'Userlogin'                 => array( 'ସଭ୍ୟଲଗଇନ' ),
-	'Userlogout'                => array( 'ସଭ୍ୟଲଗଆଉଟ' ),
-	'Userrights'                => array( 'ସଭ୍ୟଅଧିକାର' ),
+	'wiki_userlogin'                 => array( 'ସଭ୍ୟଲଗଇନ' ),
+	'wiki_userlogout'                => array( 'ସଭ୍ୟଲଗଆଉଟ' ),
+	'wiki_userrights'                => array( 'ସଭ୍ୟଅଧିକାର' ),
 	'Version'                   => array( 'ସଂସ୍କରଣ' ),
 	'Wantedcategories'          => array( 'ଦରକାରିଶ୍ରେଣୀ' ),
 	'Wantedfiles'               => array( 'ଦରକାରିଫାଇଲ' ),
@@ -201,8 +201,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'ପୃଷ୍ଠା_ସଂଖ୍ୟା', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'ଲେଖା_ସଂଖ୍ୟା', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'ଫାଇଲ_ସଂଖ୍ୟା', 'NUMBEROFFILES' ),
-	'numberofusers'             => array( '1', 'ବ୍ୟବାହାରକାରୀ_ସଂଖ୍ୟା', 'NUMBEROFUSERS' ),
-	'numberofactiveusers'       => array( '1', 'ସଚଳ_ବ୍ୟବାହାରକାରୀଙ୍କ_ସଂଖ୍ୟା', 'NUMBEROFACTIVEUSERS' ),
+	'numberofwiki_users'             => array( '1', 'ବ୍ୟବାହାରକାରୀ_ସଂଖ୍ୟା', 'NUMBEROFUSERS' ),
+	'numberofactivewiki_users'       => array( '1', 'ସଚଳ_ବ୍ୟବାହାରକାରୀଙ୍କ_ସଂଖ୍ୟା', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'ବଦଳ_ସଂଖ୍ୟା', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'କେତେଥର_ଦେଖାଯାଇଛି', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'ପୃଷ୍ଠା_ନାଆଁ', 'PAGENAME' ),
@@ -257,7 +257,7 @@ $magicWords = array(
 $digitGroupingPattern = "##,##,###";
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'ତଳେ ଥିବା ଲିଙ୍କ:',
 'tog-justify' => 'ପାରାଗ୍ରାଫଗୁଡ଼ିକର ବାଆଁ ଡାହାଣ ସମଭାବେ ସଜାଡ଼ିବେ',
 'tog-hideminor' => 'ଛୋଟ ଛୋଟ ନଗଦ ବଦଳ ସବୁକୁ ଲୁଚାଇବେ',
@@ -281,7 +281,7 @@ $messages = array(
 'tog-previewonfirst' => 'ପ୍ରଥମ ବଦଳର ଦେଖଣା ଦେଖାଇବେ',
 'tog-nocache' => 'ବ୍ରାଉଜର ପୃଷ୍ଠା ସଂରକ୍ଷଣକୁ ଅଚଳ କରିବେ',
 'tog-enotifwatchlistpages' => 'ମୋ ଦେଖଣାତାଲିକାରେ ଥିବା ପୃଷ୍ଠା ବା ଫାଇଲରେ କିଛି ବଦଳ ହେଲେ ମୋତେ ଇ-ମେଲ କରିବେ',
-'tog-enotifusertalkpages' => 'ମୋର ଆଲୋଚନା ପୃଷ୍ଠାରେ କିଛି ବଦଳ ହେଲେ ମୋତେ ଇ-ମେଲ କରିବେ',
+'tog-enotifwiki_usertalkpages' => 'ମୋର ଆଲୋଚନା ପୃଷ୍ଠାରେ କିଛି ବଦଳ ହେଲେ ମୋତେ ଇ-ମେଲ କରିବେ',
 'tog-enotifminoredits' => 'ପୃଷ୍ଠାରେ ଏବଂ ଫାଇଲଗୁଡିକରେ ଛୋଟ ଛୋଟ ବଦଳ ହେଲେ ବି ମୋତେ ଇ-ମେଲ କରିବେ',
 'tog-enotifrevealaddr' => 'ସୂଚନା ଇ-ମେଲ ରେ ମୋର ଇ-ମେଲ ଠିକଣା ଦେଖାଇବେ',
 'tog-shownumberswatching' => 'ଦେଖୁଥିବା ବ୍ୟବହାରକାରୀଙ୍କ ସଂଖ୍ୟା ଦେଖାଇବେ',
@@ -462,7 +462,7 @@ $messages = array(
 'talk' => 'ଆଲୋଚନା',
 'views' => 'ଦେଖା',
 'toolbox' => 'ଉପକରଣ',
-'userpage' => 'ବ୍ୟବହାରକାରୀଙ୍କ ପୃଷ୍ଠା ଦେଖନ୍ତୁ',
+'wiki_userpage' => 'ବ୍ୟବହାରକାରୀଙ୍କ ପୃଷ୍ଠା ଦେଖନ୍ତୁ',
 'projectpage' => 'ପ୍ରକଳ୍ପ ପୃଷ୍ଠାଟି ଦେଖାଇବା',
 'imagepage' => 'ଫାଇଲ ପୃଷ୍ଠାଗୁଡ଼ିକ ଦେଖନ୍ତୁ',
 'mediawikipage' => 'ମେସେଜ ପୃଷ୍ଠାଟି ଦେଖାଇବେ',
@@ -487,7 +487,7 @@ $1',
 'pool-queuefull' => 'ପୁଲ ଧାଡ଼ିଟି ଭରିଯାଇଅଛି',
 'pool-errorunknown' => 'ଅଜଣା ଅସୁବିଧା',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} ବାବଦରେ',
 'aboutpage' => 'Project:ବାବଦରେ',
 'copyright' => '$1 ରେ ସର୍ବସ୍ଵତ୍ଵ ସଂରକ୍ଷିତ',
@@ -520,8 +520,8 @@ $1',
 'youhavenewmessages' => 'ଆପଣଙ୍କର $1 ($2).',
 'newmessageslink' => 'ନୂଆ ମେସେଜ',
 'newmessagesdifflink' => 'ଶେଷ ବଦଳ',
-'youhavenewmessagesfromusers' => 'ଆପଣଙ୍କର {{PLURAL:$3|another user|$3 users}} ($2)ରୁ $1 ଅଛି ।',
-'youhavenewmessagesmanyusers' => 'ଆପଣଙ୍କର ବହୁତ ବ୍ୟବହାରକାରୀ($2)ମାନଙ୍କଠାରୁ $1 ଅଛି ।',
+'youhavenewmessagesfromwiki_users' => 'ଆପଣଙ୍କର {{PLURAL:$3|another wiki_user|$3 wiki_users}} ($2)ରୁ $1 ଅଛି ।',
+'youhavenewmessagesmanywiki_users' => 'ଆପଣଙ୍କର ବହୁତ ବ୍ୟବହାରକାରୀ($2)ମାନଙ୍କଠାରୁ $1 ଅଛି ।',
 'newmessageslinkplural' => '{{PLURAL:$1|a new message|ନୂଆ ମେସେଜ}}',
 'newmessagesdifflinkplural' => 'ଶେଷ{{PLURAL:$1|change|changes}}',
 'youhavenewmessagesmulti' => '$1 ତାରିଖରେ ନୂଆ ଚିଠିଟିଏ ଆସିଛି',
@@ -552,7 +552,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'ପୃଷ୍ଠା',
-'nstab-user' => 'ବ୍ୟବହାରକାରୀଙ୍କର ପୃଷ୍ଠା',
+'nstab-wiki_user' => 'ବ୍ୟବହାରକାରୀଙ୍କର ପୃଷ୍ଠା',
 'nstab-media' => 'ମେଡିଆ ପରଦ',
 'nstab-special' => 'ବିଶେଷ ପୃଷ୍ଠା',
 'nstab-project' => 'ପ୍ରକଳ୍ପ ପୃଷ୍ଠା',
@@ -596,7 +596,7 @@ $1',
 ଯଦି ଆପଣ ଖୋଜିଥିବା ପୃଷ୍ଠାଟି କେହି ଉଡ଼ାଇ ଦେଇଥାଏ ତେବେ ଏମିତି ହୋଇପାରେ ।
 
 ଯଦି ସେମିତି ହୋଇନଥାଏ ତେବେ ଆପଣ ଏହି ସଫ୍ଟୱେରରେ କିଛି ଅସୁବିଧା ଖୋଜି ପାଇଛନ୍ତି ।
-କେହି ଜଣେ [[Special:ListUsers/sysop|ପରିଚାଳକ]] ଙ୍କୁ ଏହି ଇଉଆରଏଲ (url) ସହ ଚିଠିଟିଏ ପଠାଇ ଦିଅନ୍ତୁ ।',
+କେହି ଜଣେ [[Special:Listwiki_users/sysop|ପରିଚାଳକ]] ଙ୍କୁ ଏହି ଇଉଆରଏଲ (url) ସହ ଚିଠିଟିଏ ପଠାଇ ଦିଅନ୍ତୁ ।',
 'missingarticle-rev' => '(ସଙ୍କଳନ#: $1)',
 'missingarticle-diff' => '(ତଫାତ: $1, $2)',
 'readonly_lag' => 'ଏହି ଡାଟାବେସଟିରେ ଆପେ ଆପେ ତାଲା ପଡ଼ିଯାଇଅଛି, ଇତିମଧ୍ୟରେ ସାନ ଡାଟାବେସଟି ମୁଖ୍ୟ ଡାଟାବେସ ସହିତ ଯୋଗାଯୋଗ କରୁଅଛି',
@@ -646,7 +646,7 @@ $2',
 'customcssprotected' => 'ଆପଣଙ୍କୁ ଏହି CSS ପୃଷ୍ଠାର ସମ୍ପାଦନା ନିମନ୍ତେ ଅନୁମତି ମିଳିନାହିଁ, କାରଣ ଏଥିରେ ଆଉଜଣେ ସଭ୍ୟଙ୍କର ବ୍ୟକ୍ତିଗତ ସଜାଣି ରହିଅଛି ।',
 'customjsprotected' => 'ଆପଣଙ୍କୁ ଏହି ଜାଭାସ୍କ୍ରିପ୍ଟ ପୃଷ୍ଠାର ସମ୍ପାଦନା ନିମନ୍ତେ ଅନୁମତି ମିଳିନାହିଁ, କାରଣ ଏଥିରେ ଆଉଜଣେ ସଭ୍ୟଙ୍କର ବ୍ୟକ୍ତିଗତ ସଜାଣି ରହିଅଛି ।',
 'ns-specialprotected' => 'ବିଶେଷ ପୃଷ୍ଠାସବୁକୁ ବଦଳାଯାଇପାରିବ ନାହିଁ ।',
-'titleprotected' => 'ଏହି ନାମଟି [[User:$1|$1]]ଙ୍କ ଦେଇ ନୂଆ ତିଆରିହେବାରୁ କିଳାଯାଇଅଛି ।
+'titleprotected' => 'ଏହି ନାମଟି [[wiki_user:$1|$1]]ଙ୍କ ଦେଇ ନୂଆ ତିଆରିହେବାରୁ କିଳାଯାଇଅଛି ।
 ଏହାର କାରଣ ହେଲା "\'\'$2\'\'" ।',
 'filereadonlyerror' => 'ଫାଇଲ ଧାରକ "$2"ଟି ଖାଲି ପଢିବା ହେବାଭଳି ରହିଥିବା ହେତୁ ଏଥିରେ ଥିବା $1 ପାଇଲଟିକୁ ବଦଳା ଯାଇପାରିବ ନାହିଁ ।
 
@@ -664,7 +664,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''ଆପଣ ଲଗାଆଉଟ କରିଦେଲେ'''
 
-ଆପଣ ଅଜଣା ଭାବରେ {{SITENAME}}କୁ ଯାଇପାରିବେ, କିମ୍ବା [[Special:UserLogin|ଆଉଥରେ]] ଆଗର ଇଉଜର ନାଆଁରେ/ଅଲଗା ନାଆଁରେ ଲଗଇନ କରିପାରିବେ ।
+ଆପଣ ଅଜଣା ଭାବରେ {{SITENAME}}କୁ ଯାଇପାରିବେ, କିମ୍ବା [[Special:wiki_userLogin|ଆଉଥରେ]] ଆଗର ଇଉଜର ନାଆଁରେ/ଅଲଗା ନାଆଁରେ ଲଗଇନ କରିପାରିବେ ।
 ଜାଣିରଖନ୍ତୁ, କିଛି ପୃଷ୍ଠା ଲଗାଆଉଟ କଲାପରେ ବି ଆଗପରି ଦେଖାଯାଇପାରେ, ଆପଣ ବ୍ରାଉଜର କାସକୁ ହଟାଇଲା ଯାଏଁ ଏହା ଏମିତି ରହିବ ।",
 'welcomecreation' => '== $1!, ଆପଣଙ୍କ ଖାତାଟି ତିଆରି ହୋଇଗଲା==
 ତେବେ, ନିଜର [[Special:Preferences|{{SITENAME}} ପସନ୍ଦସବୁକୁ]] ବଦଳାଇବାକୁ ଭୁଲିବେ ନାହିଁ ।',
@@ -679,21 +679,21 @@ $2',
 'login' => 'ଲଗଇନ',
 'nav-login-createaccount' => 'ଲଗ ଇନ /ନୂଆ ଖାତା ଖୋଲନ୍ତୁ',
 'loginprompt' => "{{SITENAME}}ରେ ଲଗ ଇନ କରିବାପାଇଁ ଆପଣଙ୍କୁ '''କୁକି''' ସଚଳ କରିବାକୁ ପଡ଼ିବ ।",
-'userlogin' => 'ଲଗ ଇନ /ନୂଆ ଖାତା ଖୋଲନ୍ତୁ',
-'userloginnocreate' => 'ଲଗ ଇନ',
+'wiki_userlogin' => 'ଲଗ ଇନ /ନୂଆ ଖାତା ଖୋଲନ୍ତୁ',
+'wiki_userloginnocreate' => 'ଲଗ ଇନ',
 'logout' => 'ଲଗଆଉଟ',
-'userlogout' => 'ଲଗ ଆଉଟ',
+'wiki_userlogout' => 'ଲଗ ଆଉଟ',
 'notloggedin' => 'ଲଗ‌‌ ଇନ କରିନାହାନ୍ତି',
 'nologin' => 'ଖାତାଟିଏ ନାହିଁ? $1।',
 'nologinlink' => 'ନୂଆ ଖାତାଟିଏ ଖୋଲନ୍ତୁ',
 'createaccount' => 'ନୂଆ ଖାତାଟିଏ ଖୋଲନ୍ତୁ',
 'gotaccount' => 'ଆଗରୁ ଖାତାଟିଏ ଅଛି କି? $1.',
 'gotaccountlink' => 'ଲଗ ଇନ',
-'userlogin-resetlink' => 'ଲଗଇନ ତଥ୍ୟ ସବୁ ଭୁଲିଗେଲେକି?',
+'wiki_userlogin-resetlink' => 'ଲଗଇନ ତଥ୍ୟ ସବୁ ଭୁଲିଗେଲେକି?',
 'createaccountmail' => 'ଇ-ମେଲ ରୁ',
 'createaccountreason' => 'କାରଣ:',
 'badretype' => 'ଆପଣ ଦେଇଥିବା ପାସବାର୍ଡ଼ଟି ମେଳଖାଉନାହିଁ ।',
-'userexists' => 'ଆପଣ ଦେଇଥିବା ଇଉଜର ନାମ ଆଗରୁ ଅଛି ।
+'wiki_userexists' => 'ଆପଣ ଦେଇଥିବା ଇଉଜର ନାମ ଆଗରୁ ଅଛି ।
 ଦୟାକରି ଅଲଗା ନାମଟିଏ ବାଛନ୍ତୁ ।',
 'loginerror' => 'ଲଗ‌‌ଇନ ଭୁଲ',
 'createaccounterror' => '$1 ନାମରେ ଖାତାଟିଏ ଖୋଲାଯାଇପାରିଲା ନାହିଁ',
@@ -708,13 +708,13 @@ $2',
 'noname' => 'ଆପଣ ଗୋଟିଏ ବୈଧ ଇଉଜର ନାମ ଦେଇନାହାନ୍ତି ।',
 'loginsuccesstitle' => 'ଠିକଭାବେ ଲଗଇନ ହେଲା',
 'loginsuccess' => "'''ଆପଣ {{SITENAME}}ରେ \"\$1\" ଭାବରେ ଲଗଇନ କରିଛନ୍ତି ।'''",
-'nosuchuser' => '"$1" ନାମରେ କେହି ଜଣେ ବି ସଭ୍ୟ ନାହାନ୍ତି ।
+'nosuchwiki_user' => '"$1" ନାମରେ କେହି ଜଣେ ବି ସଭ୍ୟ ନାହାନ୍ତି ।
 ଇଉଜର ନାମ ଇଂରାଜୀ ଛୋଟ ଓ ବଡ଼ ଅକ୍ଷର ପ୍ରତି ସମ୍ବେଦନଶୀଳ ।
-ଆପଣ ନିଜର ବନାନ ପରଖି ନିଅନ୍ତୁ, ଅଥବା [[Special:UserLogin/signup|ନୂଆ ଖାତାଟିଏ ତିଆରି କରନ୍ତୁ]] ।',
-'nosuchusershort' => '"$1" ନାମରେ କେହି ଜଣେ ବି ସଭ୍ୟ ନାହାନ୍ତି ।
+ଆପଣ ନିଜର ବନାନ ପରଖି ନିଅନ୍ତୁ, ଅଥବା [[Special:wiki_userLogin/signup|ନୂଆ ଖାତାଟିଏ ତିଆରି କରନ୍ତୁ]] ।',
+'nosuchwiki_usershort' => '"$1" ନାମରେ କେହି ଜଣେ ବି ସଭ୍ୟ ନାହାନ୍ତି ।
 ଆପଣ ବନାନ ପରଖି ନିଅନ୍ତୁ ।',
-'nouserspecified' => 'ଆପଣଙ୍କୁ ଇଉଜର ନାମଟିଏ ଦେବାକୁ ପଡ଼ିବ ।',
-'login-userblocked' => 'ଏହି ସଭ୍ୟଙ୍କୁ ଅଟକାଯାଇଛି । ଲଗ ଇନ କରିବାକୁ ଅନୁମତି ନାହିଁ ।',
+'nowiki_userspecified' => 'ଆପଣଙ୍କୁ ଇଉଜର ନାମଟିଏ ଦେବାକୁ ପଡ଼ିବ ।',
+'login-wiki_userblocked' => 'ଏହି ସଭ୍ୟଙ୍କୁ ଅଟକାଯାଇଛି । ଲଗ ଇନ କରିବାକୁ ଅନୁମତି ନାହିଁ ।',
 'wrongpassword' => 'ଦିଆଯାଇଥିବା ପାସବାର୍ଡ଼ଟି ଭୁଲ ଅଟେ  ।
 ଦୟାକରି ଆଉଥରେ ଚେଷ୍ଟା କରନ୍ତୁ ।',
 'wrongpasswordempty' => 'ଦିଆଯାଇଥିବା ପାସବାର୍ଡ଼ଟି ଖାଲି ଛଡ଼ାଯାଇଛି ।
@@ -761,16 +761,16 @@ continue using your old password.',
 ଆପଣ ଏବେ ଲଗ ଇନ କରି ନିଜର ପାସବାର୍ଡ଼ଟିକୁ ବଦଳାଇଦିଅନ୍ତୁ ।
 
 ଯଦି ଭୁଲରେ ଏହି ଖାତାଟି ତିଆରି କରାଯାଇଥାଏ ତେବେ ଏହି ସୂଚନାଟିକୁ ଅଣଦେଖା କରିବେ ।',
-'usernamehasherror' => 'ଇଉଜର ନାମରେ ହାସ ଅକ୍ଷର (hash characters) ରହି ପାରିବନାହିଁ',
+'wiki_usernamehasherror' => 'ଇଉଜର ନାମରେ ହାସ ଅକ୍ଷର (hash characters) ରହି ପାରିବନାହିଁ',
 'login-throttled' => 'ଆପଣ ବହୁ ଥର ଲଗ ଇନ କରିବାର ଉଦ୍ୟମ କରିଅଛନ୍ତି ।
 ଦୟାକରି ଆଉଥରେ ଚେଷ୍ଟା କରିବା ଆଗରୁ କିଛି କାଳ ଅପେକ୍ଷ କରନ୍ତୁ ।',
 'login-abort-generic' => 'ଆପଣଙ୍କ ଲଗ ଇନ ଅସଫଳ ହେଲା - ନାକଚ କରିଦିଆଗଲା',
 'loginlanguagelabel' => 'ଭାଷା: $1',
-'suspicious-userlogout' => 'ଲଗ ଆଉଟ କରିବା ନିମନ୍ତେ ଆପଣ କରିଥିବା ଆବେଦନ ନାକଚ କରିଦିଆଗଲା କାରଣ ଲାଗୁଅଛି ଯେ ଏହା ଏକ ଅସ୍ଥିର ବ୍ରାଉଜରରୁ ପଠାଯାଇଅଛି ଅବା ପ୍ରକ୍ସି ଧରାଯାଇଅଛି ।',
+'suspicious-wiki_userlogout' => 'ଲଗ ଆଉଟ କରିବା ନିମନ୍ତେ ଆପଣ କରିଥିବା ଆବେଦନ ନାକଚ କରିଦିଆଗଲା କାରଣ ଲାଗୁଅଛି ଯେ ଏହା ଏକ ଅସ୍ଥିର ବ୍ରାଉଜରରୁ ପଠାଯାଇଅଛି ଅବା ପ୍ରକ୍ସି ଧରାଯାଇଅଛି ।',
 
 # E-mail sending
 'php-mail-error-unknown' => 'PHP ର ମେଲ() କାମରେ ଅଜଣା ଅସୁବିଧା ।',
-'user-mail-no-addy' => 'ଏକ ଇ-ମେଲ ଠିକଣା ବିନା ଇ-ମେଲ ପଠାଇବାକୁ ଚେଷ୍ଟା କଲୁଁ ।',
+'wiki_user-mail-no-addy' => 'ଏକ ଇ-ମେଲ ଠିକଣା ବିନା ଇ-ମେଲ ପଠାଇବାକୁ ଚେଷ୍ଟା କଲୁଁ ।',
 
 # Change password dialog
 'resetpass' => 'ପାସୱାର୍ଡ଼ ବଦଳାନ୍ତୁ',
@@ -797,7 +797,7 @@ continue using your old password.',
 'passwordreset-legend' => 'ପାସୱାର୍ଡ଼ ପୁନସ୍ଥାପନ କରନ୍ତୁ',
 'passwordreset-disabled' => 'ପାସବାର୍ଡ଼କୁ ପୁରାପୁରି ମୂଳକୁ ଫେରାଇବା ଏହି ଉଇକିରେ ଅଚଳ କରାଯାଇଅଛି ।',
 'passwordreset-pretext' => '{{PLURAL:$1||ତଳେ ଥିବା ତଥ୍ୟସମୂହରୁ କୌଣସି ଗୋଟିଏ ଦିଅନ୍ତୁ}}',
-'passwordreset-username' => 'ବ୍ୟବହାରକାରୀଙ୍କ ନାମ:',
+'passwordreset-wiki_username' => 'ବ୍ୟବହାରକାରୀଙ୍କ ନାମ:',
 'passwordreset-domain' => 'ଡୋମେନ:',
 'passwordreset-capture' => 'ଯାଉଥିବା ଇ-ମେଲଟି ଦେଖିବେ?',
 'passwordreset-capture-help' => 'ଯଦି ଆପଣ ଘରଟିକୁ ଦେଖନ୍ତି ତେବେ (ଅସ୍ଥାୟୀ ପାସୱାର୍ଡ଼ ସହିତ) ଇ-ମେଲଟି ଆପଣଙ୍କୁ ଦେଖାଯିବ ଓ ବାକି ସଭ୍ୟମାନଙ୍କୁ ଚାଲିଯିବ ।',
@@ -812,7 +812,7 @@ $2
 ଆପଣ ଏବେ ଲଗ ଇନ କରି ନୂଆ ପାସବାର୍ଡ଼ଟିଏ ବାଛନ୍ତୁ । ଯହି ଆଉ କେହି ଜଣେ ଏହି ଅନୁରୋଧ କରିଥାନ୍ତି
 କିମ୍ବା ଆପଣ ଏବେ ନିଜର ମୂଳ ପାସବାର୍ଡ଼ ମନେ ପକାଇ ପାରିଥାନ୍ତି ତେବେ ଏହି ପାସବାର୍ଡ଼ଟିକୁ ଆଉ ବଦଳାଇବା ଲୋଡ଼ା ନାହିଁ ।
 ଆପଣ ନିଜ ପୁରୁଣା ପାସବାର୍ଡ଼ଟି ଆଗପରି ବ୍ୟବହାର କରିପାରନ୍ତି ।',
-'passwordreset-emailtext-user' => '{{SITENAME}}ରେ ଥିବା ବ୍ୟୟବହାରକାରୀ $1 {{SITENAME}} ($4) ସାଇଟରେ ଥିବା ଆପଣଙ୍କ ଖାତାର ସବିଶେଷ ଜାଣିବାକୁ ଅନୁରୋଧ କରିଛନ୍ତି । ଏହି ଇମେଲ ଠିକଣା ସହିତ ତଳଲିଖିତ ବ୍ୟବହାରକାରୀଙ୍କ {{PLURAL:$3|ଖାତା|ଖାତାସମୂହ}} ଯୋଡ଼ା:
+'passwordreset-emailtext-wiki_user' => '{{SITENAME}}ରେ ଥିବା ବ୍ୟୟବହାରକାରୀ $1 {{SITENAME}} ($4) ସାଇଟରେ ଥିବା ଆପଣଙ୍କ ଖାତାର ସବିଶେଷ ଜାଣିବାକୁ ଅନୁରୋଧ କରିଛନ୍ତି । ଏହି ଇମେଲ ଠିକଣା ସହିତ ତଳଲିଖିତ ବ୍ୟବହାରକାରୀଙ୍କ {{PLURAL:$3|ଖାତା|ଖାତାସମୂହ}} ଯୋଡ଼ା:
 
 $2
 
@@ -915,7 +915,7 @@ $1 ଦ୍ଵାରା ପ୍ରତିରୋଧ କରାଯାଇଛି
 'loginreqlink' => 'ଲଗଇନ',
 'loginreqpagetext' => 'ବାକି ପୃଷ୍ଠାମାନ ଦେଖିବା ନିମନ୍ତେ ଆପଣଙ୍କୁ $1 କରିବାକୁ ପଡ଼ିବ ।',
 'accmailtitle' => 'ପାସବାର୍ଡ଼ଟି ପଠାଇ ଦିଆଗଲା ।',
-'accmailtext' => "[[User talk:$1|$1]]ଙ୍କ ନିମନ୍ତେ ଏକ ଯାହିତାହି ପାସବାର୍ଡ଼ $2ଙ୍କ ନିକଟକୁ ପଠାଗଲା ।
+'accmailtext' => "[[wiki_user talk:$1|$1]]ଙ୍କ ନିମନ୍ତେ ଏକ ଯାହିତାହି ପାସବାର୍ଡ଼ $2ଙ୍କ ନିକଟକୁ ପଠାଗଲା ।
 
 ଏହି ପାସବାର୍ଡ଼ଟି ''[[Special:ChangePassword|ପାସବାର୍ଡ଼  ବଦଳାଇବା]]'' ପୃଷ୍ଠାରେ ଲଗଇନ କରି କରାଯାଇପାରିବ ।",
 'newarticle' => '(ନୁଆ)',
@@ -925,7 +925,7 @@ $1 ଦ୍ଵାରା ପ୍ରତିରୋଧ କରାଯାଇଛି
 'anontalkpagetext' => "----''ଏହା ଏକ IP ଖାତା ଖୋଲିନଥିବା ବା ଖାତା ବ୍ୟବହାର କରିନଥିବା ଜଣେ ବେନାମି ସଭ୍ୟଙ୍କର ଆଲୋଚନା ପୃଷ୍ଠା ।
 ତେଣୁ ଆମ୍ଭେ ସଙ୍ଖ୍ୟା ଦେଇ ସୂଚିତ IP ଠିକଣା ଦେଇ ତାହାଙ୍କୁ ଜାଣିବା ।
 ଏହି ପ୍ରକାରର IP ଠିକଣା ବହୁ ସଭ୍ୟଙ୍କ ଦେଇ ବଣ୍ଟା ବି ଯାଇପାରେ ।
-ଯଦି ଆପଣ ଜଣେ ଅଜଣା ସଭ୍ୟ ଓ ଭାବୁଛନ୍ତି ଇଆଡୁ ସିଆଡୁ ମତାମତ ସବୁ ଆପଣଙ୍କ ଉପରେ ଦିଆଯାଇଛି ତେବେ ଦୟାକରି [[Special:UserLogin/signup|ନୂଆ ଖାତାଟିଏ ଖୋଲନ୍ତୁ]] କିମ୍ବା [[Special:UserLogin|ଆଗରୁ ଥିବା ଖାତାରେ ଲଗ ଇନ କରନ୍ତୁ]] ଯାହା ବେନାମି ସଭ୍ୟଙ୍କୁ ନେଇ ଉପୁଜିଥିବା ଦ୍ଵନ୍ଦର ସମାଧାନ କରିବ ।''",
+ଯଦି ଆପଣ ଜଣେ ଅଜଣା ସଭ୍ୟ ଓ ଭାବୁଛନ୍ତି ଇଆଡୁ ସିଆଡୁ ମତାମତ ସବୁ ଆପଣଙ୍କ ଉପରେ ଦିଆଯାଇଛି ତେବେ ଦୟାକରି [[Special:wiki_userLogin/signup|ନୂଆ ଖାତାଟିଏ ଖୋଲନ୍ତୁ]] କିମ୍ବା [[Special:wiki_userLogin|ଆଗରୁ ଥିବା ଖାତାରେ ଲଗ ଇନ କରନ୍ତୁ]] ଯାହା ବେନାମି ସଭ୍ୟଙ୍କୁ ନେଇ ଉପୁଜିଥିବା ଦ୍ଵନ୍ଦର ସମାଧାନ କରିବ ।''",
 'noarticletext' => 'ଏହି ପୃଷ୍ଠାଟିରେ କିଛି ବି ଲେଖା ନାହିଁ ।
 ଆପଣ [[Special:Search/{{PAGENAME}}|ଏହି ଲେଖାଟିର ନାଆଁ]] ବାକି ପୃଷ୍ଠାମାନଙ୍କରେ ଖୋଜି ପାରନ୍ତି,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}}ରେ ଯୋଡ଼ାଯାଇଥିବା ବାକି ପୃଷ୍ଠାସବୁକୁ ଖୋଜି ପାରନ୍ତି],
@@ -938,9 +938,9 @@ $1 ଦ୍ଵାରା ପ୍ରତିରୋଧ କରାଯାଇଛି
 
 ପୁରୁଣା ହୋଇଯାଇଥିବା ଇତିହାସ ଲିଙ୍କ ଯାହା ଏକ ଲିଭାଯାଇଥିବା ପୃଷ୍ଠାକୁ ଦିଆଯାଇଥିବାରୁ ଏହା ସାଧାରଣତଃ ହୋଇଥାଏ ।
 ଅଧିକ ବିବରଣୀ [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} deletion log]ରେ ମିଳିପାରିବ ।',
-'userpage-userdoesnotexist' => 'ଇଉଜର ଖାତା "$1" ଟି ତିଆରି କରାଯାଇନାହିଁ ।
+'wiki_userpage-wiki_userdoesnotexist' => 'ଇଉଜର ଖାତା "$1" ଟି ତିଆରି କରାଯାଇନାହିଁ ।
 ଆପଣ ଏହି ପୃଷ୍ଠାଟିକୁ ତିଆରି କରିବାକୁ ଚାହାନ୍ତି କି ନାହିଁ ଦୟାକରି ପରଖି ନିଅନ୍ତୁ ।',
-'userpage-userdoesnotexist-view' => 'ଇଉଜର ନାମ "$1"ଟି ତିଆରି କରାଯାଇ ନାହିଁ ।',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'ଇଉଜର ନାମ "$1"ଟି ତିଆରି କରାଯାଇ ନାହିଁ ।',
 'blocked-notice-logextract' => 'ଏହି ସଭ୍ୟଙ୍କୁ ଏବେ ପାଇଁ ଅଟକାଯାଇଅଛି ।
 ଆପଣଙ୍କ ଜାଣିବା ନିମନ୍ତେ ନଗଦ ଇତିହାସ ତଳେ ଦିଆଗଲା:',
 'clearyourcache' => "''' ଜାଣିରଖନ୍ତୁ:''' ସାଇତିବା ପରେ ବଦଳଗୁଡ଼ିକ ଦେଖିବା ନିମନ୍ତେ ଆପଣଙ୍କ ବ୍ରାଉଜରର ଅସ୍ଥାୟୀ ସ୍ମୃତି (cache) କୁ ସଫା କରିଦିଅନ୍ତୁ ।
@@ -948,18 +948,18 @@ $1 ଦ୍ଵାରା ପ୍ରତିରୋଧ କରାଯାଇଛି
 * '''Google Chrome:''' ''Ctrl-Shift-R'' (Macରେ ''⌘-Shift-R'') ଦବାନ୍ତୁ
 * '''Internet Explorer:'''  ''Refresh'' କଲାବେଳେ ''Ctrl'' ଦବାନ୍ତୁ, କିମ୍ବା ''Ctrl-F5'' ଦବାନ୍ତୁ
 * '''Opera:''' ''Tools → Preferences''ରେ ଅସ୍ଥାୟୀ ସ୍ମୃତି ସଫା କରିଦିଅନ୍ତୁ",
-'usercssyoucanpreview' => "'''ଜାଣିବା କଥା:''' ଆପଣା ନୂଆ CSS ସାଇତିବା ଆଗରୁ \"{{int:showpreview}}\" ବ୍ୟବହାର କରି ପରଖି ନିଅନ୍ତୁ ।",
-'userjsyoucanpreview' => "'''ଜାଣିବା କଥା:''' ଆପଣା ନୂଆ ଜାଭାସ୍କ୍ରିପ୍ଟ (JavaScript) ସାଇତିବା ଆଗରୁ \"{{int:showpreview}}\" ବ୍ୟବହାର କରି ପରଖି ନିଅନ୍ତୁ ।",
-'usercsspreview' => "'''ଜାଣି ରଖନ୍ତୁ ଯେ ଆପଣ କେବଳ ନିଜର ସଭ୍ୟ CSS ଦେଖୁଅଛନ୍ତି ।'''
+'wiki_usercssyoucanpreview' => "'''ଜାଣିବା କଥା:''' ଆପଣା ନୂଆ CSS ସାଇତିବା ଆଗରୁ \"{{int:showpreview}}\" ବ୍ୟବହାର କରି ପରଖି ନିଅନ୍ତୁ ।",
+'wiki_userjsyoucanpreview' => "'''ଜାଣିବା କଥା:''' ଆପଣା ନୂଆ ଜାଭାସ୍କ୍ରିପ୍ଟ (JavaScript) ସାଇତିବା ଆଗରୁ \"{{int:showpreview}}\" ବ୍ୟବହାର କରି ପରଖି ନିଅନ୍ତୁ ।",
+'wiki_usercsspreview' => "'''ଜାଣି ରଖନ୍ତୁ ଯେ ଆପଣ କେବଳ ନିଜର ସଭ୍ୟ CSS ଦେଖୁଅଛନ୍ତି ।'''
 '''ଏହା ଏଯାଏଁ ସାଇତା ଯାଇନାହିଁ!'''",
-'userjspreview' => "'''ଜାଣି ରଖନ୍ତୁ ଯେ ଆପଣ କେବଳ ନିଜର ସଭ୍ୟ ଜାଭାସ୍କ୍ରିପ୍ଟ (JavaScript) ଦେଖୁଅଛନ୍ତି ।'''
+'wiki_userjspreview' => "'''ଜାଣି ରଖନ୍ତୁ ଯେ ଆପଣ କେବଳ ନିଜର ସଭ୍ୟ ଜାଭାସ୍କ୍ରିପ୍ଟ (JavaScript) ଦେଖୁଅଛନ୍ତି ।'''
 '''ଏହା ଏଯାଏଁ ସାଇତା ଯାଇନାହିଁ!'''",
 'sitecsspreview' => "'''ଜାଣି ରଖନ୍ତୁ ଯେ ଆପଣ କେବଳ ଏହି CSS ଦେଖୁଅଛନ୍ତି ।'''
 '''ଏହା ଏଯାଏଁ ସାଇତାଯାଇନାହିଁ!'''",
 'sitejspreview' => "'''ଜାଣି ରଖନ୍ତୁ ଯେ ଆପଣ କେବଳ ଏହି ଜାଭାସ୍କ୍ରିପ୍ଟ (JavaScript) ଦେଖୁଅଛନ୍ତି ।'''
 '''ଏହା ଏଯାଏଁ ସାଇତା ଯାଇନାହିଁ!'''",
-'userinvalidcssjstitle' => "'''ଚେତାବନୀ:''' \"\$1\" ନାମରେ କୌଣସି ବି ଆବରଣ ନାହିଁ ।
-ମନମୁତାବକ .css ଓ .js ପୃଷ୍ଠା ଏକ ଛୋଟ ଇଂରାଜୀ ଅକ୍ଷର ଥିବା ନାମ ନେଇଥାନ୍ତି, ଯଥା: {{ns:user}}:Foo/Vector.css ବଦଳରେ {{ns:user}}:Foo/vector.css ର ବ୍ୟବହାର ।",
+'wiki_userinvalidcssjstitle' => "'''ଚେତାବନୀ:''' \"\$1\" ନାମରେ କୌଣସି ବି ଆବରଣ ନାହିଁ ।
+ମନମୁତାବକ .css ଓ .js ପୃଷ୍ଠା ଏକ ଛୋଟ ଇଂରାଜୀ ଅକ୍ଷର ଥିବା ନାମ ନେଇଥାନ୍ତି, ଯଥା: {{ns:wiki_user}}:Foo/Vector.css ବଦଳରେ {{ns:wiki_user}}:Foo/vector.css ର ବ୍ୟବହାର ।",
 'updated' => '(ସତେଜ କରିଦିଆଗଲା)',
 'note' => "'''ଟୀକା:'''",
 'previewnote' => "'''ଜାଣିରଖନ୍ତୁ ଯେ, ଏହା କେବଳ ଏକ ଦେଖଣା ।'''
@@ -968,13 +968,13 @@ $1 ଦ୍ଵାରା ପ୍ରତିରୋଧ କରାଯାଇଛି
 'previewconflict' => 'ଉପରେ ଦିଶୁଥିବା ଏହି ଦେଖଣାକୁ ସାଇତିଲେ ଏହା ଏକାପରି ଦେଖାଯିବ ।',
 'session_fail_preview' => "'''କ୍ଷମା କରିବେ! ଅବଧି ତଥ୍ୟ ନଷ୍ଟ ହୋଇଯାଇଥିବାରୁ ଆମେ ଆପଣଙ୍କ ବଦଳସବୁକୁ ଗ୍ରହଣ କରିପାରିଲୁ ନାହିଁ ।'''
 ଦୟାକରି ଆଉଥରେ ଚେଷ୍ଟା କରନ୍ତୁ ।
-ଯଦି ଏହା ଆହୁରି ବି କାମ ନକରେ, ତେବେ [[Special:UserLogout|ଲଗ ଆଉଟ]] କରି ଆଉଥରେ ଲଗ ଇନ କରିବେ ।",
+ଯଦି ଏହା ଆହୁରି ବି କାମ ନକରେ, ତେବେ [[Special:wiki_userLogout|ଲଗ ଆଉଟ]] କରି ଆଉଥରେ ଲଗ ଇନ କରିବେ ।",
 'session_fail_preview_html' => "'''କ୍ଷମା କରିବେ! ଅବଧି ସରି ଯିବାରୁ ଡାଟା ନଷ୍ଟ ହୋଇଥିବା ହେତୁ ଆପଣଙ୍କ ସମ୍ପାଦନା ମିଳିପାରିଲା ନାହିଁ ।'''
 
 ''କାରଣ {{SITENAME}} ରେ ଖାଲି HTML ସଚଳ କରାଯାଇଛି, JavaScript ଆକ୍ରମଣରୁ ବଞ୍ଚିବା ପାଇଁ ସାଇତା ଆଗରୁ ଦେଖଣା ଲୁଛାଯାଇଛି''
 
 '''ଯଦି ଏହା ଏକ ବୈଧ ସମ୍ପାଦନା ଚେଷ୍ଟା, ତେବେ ଆଉଥରେ ଚେଷ୍ଟା କରନ୍ତୁ ।'''
-ତଥାପି ଯଦି ଏହା କାମ ନକରେ, ତେବେ [[Special:UserLogout|ଲଗଆଉଟ]] କରି ଆଉଥରେ ଲଗ ଇନ କରନ୍ତୁ ।",
+ତଥାପି ଯଦି ଏହା କାମ ନକରେ, ତେବେ [[Special:wiki_userLogout|ଲଗଆଉଟ]] କରି ଆଉଥରେ ଲଗ ଇନ କରନ୍ତୁ ।",
 'token_suffix_mismatch' => "'''ଆପଣଙ୍କ ସମ୍ପାଦନା ନାକଚ କରିଦିଆଗଲା କାରଣ ଆପଣଙ୍କ ଅପରପକ୍ଷ ସମ୍ପାଦନାରେ ଭୁଲ ବିସ୍ମୟସୂଚକ ଚିହ୍ନ ଦେଇଦେଇଛି ।'''
 ପୃଷ୍ଠା ଲେଖାରେ ଭୁଲ ଥିବାରୁ ଆପଣଙ୍କ ସମ୍ପାଦନାକୁ ନାକଚ କରିଦିଆଗଲା ।
 ଆପଣ ଏକ ୱେବ-ରେ ଥିବା ଅଜଣା ପ୍ରକ୍ସି ସାଇଟ କରି  ବ୍ୟବହାର କରୁଥିଲେ ଏପରି ହୋଇଥାଏ ।",
@@ -1025,7 +1025,7 @@ $1 ଦ୍ଵାରା ପ୍ରତିରୋଧ କରାଯାଇଛି
 'hiddencategories' => 'ଏହି ପୃଷ୍ଠାଟି {{PLURAL:$1|ଲୁଚାଯାଇଥିବା ଶ୍ରେଣୀ|$1ଟି ଲୁଚାଯାଇଥିବା ଶ୍ରେଣୀସମୂହ}} ଭିତରୁ ଗୋଟିଏ:',
 'nocreatetitle' => 'ପୃଷ୍ଠା ଗଢ଼ିବାକୁ ସୀମିତ କରାଯାଇଅଛି',
 'nocreatetext' => '{{SITENAME}} ନୂଆ ପୃଷ୍ଠା ତିଆରି କରିବାକୁ ବାରଣ କରିଅଛନ୍ତି ।
-ଆପଣ ପଛକୁ ଫେରି ଆଗରୁ ଥିବା ପୃଷ୍ଠାଟିଏର ସମ୍ପାଦନା କରିପାରିବେ କିମ୍ବା [[Special:UserLogin|ଲଗ ଇନ କରିପାରିବେ ବା ନୂଆ ଖାତାଟିଏ ତିଆରି କରିପାରିବେ]] ।',
+ଆପଣ ପଛକୁ ଫେରି ଆଗରୁ ଥିବା ପୃଷ୍ଠାଟିଏର ସମ୍ପାଦନା କରିପାରିବେ କିମ୍ବା [[Special:wiki_userLogin|ଲଗ ଇନ କରିପାରିବେ ବା ନୂଆ ଖାତାଟିଏ ତିଆରି କରିପାରିବେ]] ।',
 'nocreate-loggedin' => 'ଆପଣଙ୍କୁ ନୂଆ ପୃଷ୍ଠାଟିଏ ତିଆରିବା ନିମନ୍ତେ ଅନୁମତି ମିଳି ନାହିଁ ।',
 'sectioneditnotsupported-title' => 'ବିଭାଗ ସମ୍ପାଦନା କରାଯାଇପାରିବ ନାହିଁ ।',
 'sectioneditnotsupported-text' => 'ଏହି ପୃଷ୍ଠାରେ ବିଭାଗ ସମ୍ପାଦନା କାମ କରିବ ନାହିଁ ।',
@@ -1076,11 +1076,11 @@ $1 ଦ୍ଵାରା ପ୍ରତିରୋଧ କରାଯାଇଛି
 ଦୟାକରି ତୁଳନା କରି ପରଖିନିଅନ୍ତୁ ଯେ ଆପଣ ଏହାହିଁ କରିବାକୁ ଚାହୁଁଥିଲେ, ଆଉ ସମ୍ପାଦନା ଶେଷ କରିବା ପାଇଁ ତଳେ ଥିବା ବଦଳ ସାଇତି ରଖନ୍ତୁ ।',
 'undo-failure' => 'ଏହି ସମ୍ପାଦନା ପଛକୁ ଫେରାଯାଇ ପାରିବ ନାହିଁ କାରଣ ମଝିରେ ଘଟିଥିବା ଅନେକ ଛୋଟ ଛୋଟ ବଦଳ ଅସୁବିଧା ତିଆରି କରୁଅଛି ।',
 'undo-norev' => 'ଏହି ସମ୍ପାଦନାଟି ପଛକୁ ଫେରାଯାଇପାରିବ ନାହିଁ କାରଣ ଏହା ଆଉ ନାହିଁ ବା ଲିଭାଇଦିଆଯାଇଅଛି ।',
-'undo-summary' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|ଆଲୋଚନା]]) ଙ୍କ ଦେଇ କରାଯାଇଥିବା $1 ସଙ୍କଳନଟି ପଛକୁ ଫେରାଇନିଆଗଲା',
+'undo-summary' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|ଆଲୋଚନା]]) ଙ୍କ ଦେଇ କରାଯାଇଥିବା $1 ସଙ୍କଳନଟି ପଛକୁ ଫେରାଇନିଆଗଲା',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'ଖାତାଟିଏ ତିଆରି କରାଯାଇପାରିବ ନାହିଁ',
-'cantcreateaccount-text' => "[[User:$3|$3]]ଙ୍କ ଦେଇ ('''$1''') IP ଠିକଣାରୁ ଖାତା ଖୋଲିବାକୁ ବାରଣ କରାଯାଇଅଛି ।
+'cantcreateaccount-text' => "[[wiki_user:$3|$3]]ଙ୍କ ଦେଇ ('''$1''') IP ଠିକଣାରୁ ଖାତା ଖୋଲିବାକୁ ବାରଣ କରାଯାଇଅଛି ।
 
 $3ଙ୍କ ଦେଇ ଦିଆଯାଇଥିବା କାରଣ ହେଲା ''$2''",
 
@@ -1118,9 +1118,9 @@ $3ଙ୍କ ଦେଇ ଦିଆଯାଇଥିବା କାରଣ ହେଲା '
 
 # Revision deletion
 'rev-deleted-comment' => '(ସମ୍ପାଦନା ଇତିହାସ ଲିଭାଇଦିଆଗଲା)',
-'rev-deleted-user' => '(ଇଉଜର ନାମ ବାହର କରିଦିଆଗଲା)',
+'rev-deleted-wiki_user' => '(ଇଉଜର ନାମ ବାହର କରିଦିଆଗଲା)',
 'rev-deleted-event' => '(ଲଗ କାମ ବାହାର କରିଦିଆଗଲା)',
-'rev-deleted-user-contribs' => '[ଇଉଜର ନାମ ବା IP ଠିକଣା ବାହାର କରିଦିଆଗଲା - ଅବଦାନସମୂହରୁ ଲୁଚାଯାଇଥିବା ସମ୍ପାଦନା]',
+'rev-deleted-wiki_user-contribs' => '[ଇଉଜର ନାମ ବା IP ଠିକଣା ବାହାର କରିଦିଆଗଲା - ଅବଦାନସମୂହରୁ ଲୁଚାଯାଇଥିବା ସମ୍ପାଦନା]',
 'rev-deleted-text-permission' => "ଏହି ପୃଷ୍ଠାର ସଂସ୍କରଣ '''ଲିଭାଇଦିଆଯାଇଛି'''।
 ସବିଶେଷ [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} ଲିଭାଯିବା ଇତିହାସ]ରୁ ମିଳିପାରିବ ।",
 'rev-deleted-text-unhide' => "ଏହି ପୃଷ୍ଠାର ସଂସ୍କରଣ '''ଲିଭାଇଦିଆଯାଇଛି''' ।
@@ -1172,7 +1172,7 @@ $3ଙ୍କ ଦେଇ ଦିଆଯାଇଥିବା କାରଣ ହେଲା '
 'revdelete-hide-image' => 'ଫାଇଲ ଭିତର ପଦାର୍ଥସବୁ ଲୁଚାଇଦିଅନ୍ତୁ',
 'revdelete-hide-name' => 'କାମ ଓ ଲକ୍ଷ ସବୁ ଲୁଚାଇଦିଅନ୍ତୁ',
 'revdelete-hide-comment' => 'ବଦଳ ସାରକଥା ଲୁଚାଇଦିଅନ୍ତୁ',
-'revdelete-hide-user' => 'ସମ୍ପାଦକଙ୍କର ଇଉଜର ନାମ /IP ଲୁଚାଇଦିଅନ୍ତୁ',
+'revdelete-hide-wiki_user' => 'ସମ୍ପାଦକଙ୍କର ଇଉଜର ନାମ /IP ଲୁଚାଇଦିଅନ୍ତୁ',
 'revdelete-hide-restricted' => 'ପରିଚାଳକ ଓ ବାକିମାନଙ୍କ ଠାରୁ ତଥ୍ୟକୁ ଦବାଇଦିଅନ୍ତୁ',
 'revdelete-radio-same' => '(ବଦଳାନ୍ତୁ ନାହିଁ)',
 'revdelete-radio-set' => 'ହଁ',
@@ -1258,7 +1258,7 @@ $1",
 'showhideselectedversions' => 'ବଛା ହୋଇଥିବା ସଙ୍କଳନ ଗୁଡ଼ିକୁ ଦେଖାଇବେ/ଲୁଚାଇବେ',
 'editundo' => 'ପଛକୁ ଫେରିବା',
 'diff-multi' => '({{PLURAL:$2|ଜଣେ ବ୍ୟବହାରକାରୀ|$2 ଜଣ ବ୍ୟବହାରକାରୀ}}ଙ୍କ ଦେଇ ହୋଇଥିବା {{PLURAL:$1|ଗୋଟିଏ ମଝି ସଙ୍କଳନ|$1ଟି ମଝି ସଙ୍କଳନ}} ଦେଖାଯାଉନାହିଁ)',
-'diff-multi-manyusers' => '($2 {{PLURAL:$2|ଜଣ|ଜଣ}} ସଭ୍ୟଙ୍କ ଦେଇ କରାଯାଇଥିବା {{PLURAL:$1|ଗୋଟିଏ ମଝି ସଂସ୍କରଣ|$1 ଗୋଟି ମଝି ସଂସ୍କରଣମାନ}} ଦେଖାଯାଉ ନାହିଁ)',
+'diff-multi-manywiki_users' => '($2 {{PLURAL:$2|ଜଣ|ଜଣ}} ସଭ୍ୟଙ୍କ ଦେଇ କରାଯାଇଥିବା {{PLURAL:$1|ଗୋଟିଏ ମଝି ସଂସ୍କରଣ|$1 ଗୋଟି ମଝି ସଂସ୍କରଣମାନ}} ଦେଖାଯାଉ ନାହିଁ)',
 'difference-missing-revision' => '($1) {{PLURAL:$2|was|were}}ର ଭିନ୍ନତା {{PLURAL:$2|One revision|$2 revisions}} ମିଳିଲା ନାହିଁ ।
 
 ପୁରୁଣା ହୋଇଯାଇଥିବା ଇତିହାସ ଲିଙ୍କ ଯାହା ଏକ ଲିଭାଯାଇଥିବା ପୃଷ୍ଠାକୁ ଦିଆଯାଇଥିବାରୁ ଏହା ସାଧାରଣତଃ ହୋଇଥାଏ ।
@@ -1343,7 +1343,7 @@ $1",
 'mypreferences' => 'ପସନ୍ଦ',
 'prefs-edits' => 'ସମ୍ପାଦନା ସଂଖ୍ୟା:',
 'prefsnologin' => 'ଲଗ‌‌ ଇନ କରିନାହାନ୍ତି',
-'prefsnologintext' => 'ବ୍ୟବହାରକାରୀଙ୍କ ପସନ୍ଦସବୁ ବଦଳାଇବା ପାଇଁ ଆପଣଙ୍କୁ <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} ଲଗ ଇନ]</span> କରିବାକୁ ପଡ଼ିବ ।',
+'prefsnologintext' => 'ବ୍ୟବହାରକାରୀଙ୍କ ପସନ୍ଦସବୁ ବଦଳାଇବା ପାଇଁ ଆପଣଙ୍କୁ <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} ଲଗ ଇନ]</span> କରିବାକୁ ପଡ଼ିବ ।',
 'changepassword' => 'ପାସୱର୍ଡ଼ ବଦଳାନ୍ତୁ',
 'prefs-skin' => 'ବହିରାବରଣ',
 'skin-preview' => 'ସାଇତା ଆଗରୁ ଦେଖଣା',
@@ -1351,7 +1351,7 @@ $1",
 'prefs-beta' => 'ଆଗ ବିଶେଷତାମାନ',
 'prefs-datetime' => 'ତାରିଖ ଓ ସମୟ',
 'prefs-labs' => 'ପରଖଶାଳା ସୁବିଧାସବୁ',
-'prefs-user-pages' => 'ବ୍ୟବହାରକାରୀଙ୍କର ପୃଷ୍ଠାଗୁଡିକ',
+'prefs-wiki_user-pages' => 'ବ୍ୟବହାରକାରୀଙ୍କର ପୃଷ୍ଠାଗୁଡିକ',
 'prefs-personal' => 'ସଭ୍ୟ ପ୍ରଫାଇଲ',
 'prefs-rc' => 'ନଗଦ ବଦଳ',
 'prefs-watchlist' => 'ଦେଖଣା ତାଲିକା',
@@ -1416,7 +1416,7 @@ $1",
 'prefs-emailconfirm-label' => 'ଇ-ମେଲ ସଜାଣି:',
 'prefs-textboxsize' => 'ସମ୍ପାଦନା ଘରର ଆକାର',
 'youremail' => 'ଇ-ମେଲ:',
-'username' => 'ବ୍ୟବହାରକାରୀଙ୍କ ନାମ:',
+'wiki_username' => 'ବ୍ୟବହାରକାରୀଙ୍କ ନାମ:',
 'uid' => 'ବ୍ୟବହାରକାରୀ ଆଇଡ଼ି:',
 'prefs-memberingroups' => '{{PLURAL:$1|ଗୋଠ|ଗୋଠ ସମୂହ}}ର ସଭ୍ୟ:',
 'prefs-registration' => 'ନାମଲେଖା ବେଳା:',
@@ -1458,35 +1458,35 @@ HTML ଟାଗ ପରଖିନିଅନ୍ତୁ ।',
 'prefs-displaywatchlist' => 'ଦେଖଣା ବିକଳ୍ପ',
 'prefs-diffs' => 'ତଫାତସବୁ',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'ଇ-ମେଲ ଠିକଣା ବୈଧ ଭଳି ଲାଗୁଅଛି',
 'email-address-validity-invalid' => 'ଏକ ସଠିକ ଇ-ମେଲ ଠିକଣା ଦିଅନ୍ତୁ',
 
-# User rights
-'userrights' => 'ସଭ୍ୟ ଅଧିକାର ପରିଚାଳନା',
-'userrights-lookup-user' => 'ସଭ୍ୟ ଗୋଠ ପରିଚାଳନା କରିବେ',
-'userrights-user-editname' => 'ଇଉଜର ନାମଟିଏ ଦିଅନ୍ତୁ:',
-'editusergroup' => 'ଇଉଜର ଗୋଠ ସମ୍ପାଦନା କରନ୍ତୁ',
-'editinguser' => "'''[[User:$1|$1]]''' $2 ଙ୍କର ସଭ୍ୟ ଅଧିକାର ବଦଳାଉଅଛୁଁ",
-'userrights-editusergroup' => 'ଇଉଜର ଗୋଠ ସମ୍ପାଦନା କରନ୍ତୁ',
-'saveusergroups' => 'ଇଉଜର ଗୋଠ ସମ୍ପାଦନା କରନ୍ତୁ',
-'userrights-groupsmember' => 'ସଭ୍ୟ ଗୋଠ:',
-'userrights-groupsmember-auto' => 'ଆପେଆପେ ଥିବା ସଭ୍ୟ ଗୋଠ:',
-'userrights-groups-help' => 'ଏହି ସଭ୍ୟ ଥିବା ଗୋଠମାନ ଆପଣ ବଦଳାଇ ପାରିବେ:
+# wiki_user rights
+'wiki_userrights' => 'ସଭ୍ୟ ଅଧିକାର ପରିଚାଳନା',
+'wiki_userrights-lookup-wiki_user' => 'ସଭ୍ୟ ଗୋଠ ପରିଚାଳନା କରିବେ',
+'wiki_userrights-wiki_user-editname' => 'ଇଉଜର ନାମଟିଏ ଦିଅନ୍ତୁ:',
+'editwiki_usergroup' => 'ଇଉଜର ଗୋଠ ସମ୍ପାଦନା କରନ୍ତୁ',
+'editingwiki_user' => "'''[[wiki_user:$1|$1]]''' $2 ଙ୍କର ସଭ୍ୟ ଅଧିକାର ବଦଳାଉଅଛୁଁ",
+'wiki_userrights-editwiki_usergroup' => 'ଇଉଜର ଗୋଠ ସମ୍ପାଦନା କରନ୍ତୁ',
+'savewiki_usergroups' => 'ଇଉଜର ଗୋଠ ସମ୍ପାଦନା କରନ୍ତୁ',
+'wiki_userrights-groupsmember' => 'ସଭ୍ୟ ଗୋଠ:',
+'wiki_userrights-groupsmember-auto' => 'ଆପେଆପେ ଥିବା ସଭ୍ୟ ଗୋଠ:',
+'wiki_userrights-groups-help' => 'ଏହି ସଭ୍ୟ ଥିବା ଗୋଠମାନ ଆପଣ ବଦଳାଇ ପାରିବେ:
 * ଏକ ଛକଥିବା ଚାରିକୋଣିଆ ଘର ସଭ୍ୟଜଣକ ସେହି ଗୋଠରେ ଥିବାର ସୂଚାଏ ।
 * ଏକ ଛକ ନଥିବା ଚାରିକୋଣିଆ ଘର ସଭ୍ୟଜଣକ ସେହି ଗୋଠରେ ନ ଥିବାର ସୂଚାଏ ।
 * ଏକ * ସୂଚାଏ ଯେ ଆପଣ ସେହି ଗୋଠ ସହ ଯୋଡ଼ିହୋଇଗଲେ କେବେ ବାହାରିପାରିବେ ନାହିଁ ।',
-'userrights-reason' => 'କାରଣ:',
-'userrights-no-interwiki' => 'ଆପଣଙ୍କୁ ବାକି ଉଇକିରେ ସଭ୍ୟ ଅଧିକାର ବଦଳାଇବା ନିମନ୍ତେ ଅନୁମତି ମିଳିନାହିଁ ।',
-'userrights-nodatabase' => '$1 ଡାଟାବେସଟି ନାହିଁ ବା କେବଳ ସ୍ଥାନୀୟ ହୋଇ ରହିଛି ।',
-'userrights-nologin' => 'ଆପଣ ପରିଚାଳକ ଖାତାରୁ [[Special:UserLogin|ଲଗ ଇନ]] କରି ସଭ୍ୟ ଅଧିକାରର ସୁବିଧା ଦେଇପାରିବେ ।',
-'userrights-notallowed' => 'ଆପଣଙ୍କ ଖାତାରେ ସଭ୍ୟ ଅଧିକାର ଯୋଡ଼ିବା ବା କାଢ଼ିବାର ଅନୁମତି ନାହିଁ ।',
-'userrights-changeable-col' => 'ଆପଣ ବଦଳାଇପାରିବା ଗୋଠସମୂହ',
-'userrights-unchangeable-col' => 'ଯେଉଁ ଗୋଠସବୁ ଆପଣ ବଦଳାଇପାରିବେ ନାହିଁ',
+'wiki_userrights-reason' => 'କାରଣ:',
+'wiki_userrights-no-interwiki' => 'ଆପଣଙ୍କୁ ବାକି ଉଇକିରେ ସଭ୍ୟ ଅଧିକାର ବଦଳାଇବା ନିମନ୍ତେ ଅନୁମତି ମିଳିନାହିଁ ।',
+'wiki_userrights-nodatabase' => '$1 ଡାଟାବେସଟି ନାହିଁ ବା କେବଳ ସ୍ଥାନୀୟ ହୋଇ ରହିଛି ।',
+'wiki_userrights-nologin' => 'ଆପଣ ପରିଚାଳକ ଖାତାରୁ [[Special:wiki_userLogin|ଲଗ ଇନ]] କରି ସଭ୍ୟ ଅଧିକାରର ସୁବିଧା ଦେଇପାରିବେ ।',
+'wiki_userrights-notallowed' => 'ଆପଣଙ୍କ ଖାତାରେ ସଭ୍ୟ ଅଧିକାର ଯୋଡ଼ିବା ବା କାଢ଼ିବାର ଅନୁମତି ନାହିଁ ।',
+'wiki_userrights-changeable-col' => 'ଆପଣ ବଦଳାଇପାରିବା ଗୋଠସମୂହ',
+'wiki_userrights-unchangeable-col' => 'ଯେଉଁ ଗୋଠସବୁ ଆପଣ ବଦଳାଇପାରିବେ ନାହିଁ',
 
 # Groups
 'group' => 'ଗୋଠ:',
-'group-user' => 'ବ୍ୟବହାରକାରୀଗଣ',
+'group-wiki_user' => 'ବ୍ୟବହାରକାରୀଗଣ',
 'group-autoconfirmed' => 'ଆପେଆପେ ଥୟ କରା ସଭ୍ୟ',
 'group-bot' => 'ଆପେଆପେ ଚାଳିତ ସଭ୍ୟ',
 'group-sysop' => 'ପରିଚାଳକଗଣ',
@@ -1494,14 +1494,14 @@ HTML ଟାଗ ପରଖିନିଅନ୍ତୁ ।',
 'group-suppress' => 'ଅଜାଣତ ଅଣଦେଖା',
 'group-all' => '(ସବୁ)',
 
-'group-user-member' => '{{GENDER:$1|ବ୍ୟବହାରକାରୀ}}',
+'group-wiki_user-member' => '{{GENDER:$1|ବ୍ୟବହାରକାରୀ}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|ଆପେଆପେ ଥୟ କରା ସଭ୍ୟ}}',
 'group-bot-member' => '{{GENDER:$1|ଆପେଚାଳିତ ସଭ୍ୟ}}',
 'group-sysop-member' => '{{GENDER:$1|ପରିଚାଳକ}}',
 'group-bureaucrat-member' => '{{GENDER:$1|ପ୍ରଶାସକ}}',
 'group-suppress-member' => '{{GENDER:$1|ଅଜାଣତ ଅଣଦେଖା}}',
 
-'grouppage-user' => '{{ns:project}}:ବ୍ୟବହାରକାରୀ',
+'grouppage-wiki_user' => '{{ns:project}}:ବ୍ୟବହାରକାରୀ',
 'grouppage-autoconfirmed' => '{{ns:project}}:ଆପେଆପେ ଥୟ କରା ସଭ୍ୟ',
 'grouppage-bot' => '{{ns:project}}:ଆପେ ଚାଳିତ ସଭ୍ୟଗଣ',
 'grouppage-sysop' => '{{ns:project}}:ପରିଚାଳକ',
@@ -1517,7 +1517,7 @@ HTML ଟାଗ ପରଖିନିଅନ୍ତୁ ।',
 'right-minoredit' => 'ବଦଳକୁ ଟିକେ ବୋଲି ଚିହ୍ନିତ କରିବେ',
 'right-move' => 'ପୃଷ୍ଠାସବୁ ଘୁଞ୍ଚେଇବା',
 'right-move-subpages' => 'ପୃଷ୍ଠା ସହିତ ସେମାନଙ୍କର ସାନପୃଷ୍ଠାସବୁକୁ ଘୁଞ୍ଚାଇଦେବେ',
-'right-move-rootuserpages' => 'ମୂଳ ସଭ୍ୟ ପୃଷ୍ଠାସବୁକୁ ଘୁଞ୍ଚାଇଦେବେ',
+'right-move-rootwiki_userpages' => 'ମୂଳ ସଭ୍ୟ ପୃଷ୍ଠାସବୁକୁ ଘୁଞ୍ଚାଇଦେବେ',
 'right-movefile' => 'ଫାଇଲସବୁକୁ ଘୁଞ୍ଚାଇଦେବେ',
 'right-suppressredirect' => 'ପୃଷ୍ଠାସବୁକୁ ଘୁଞ୍ଚାଇବା ବେଳେ ମୂଳ ପୃଷ୍ଠାର ଫେରନ୍ତା ପୃଷ୍ଠା ତିଆରି କରିବେ ନାହିଁ',
 'right-upload' => 'ଫାଇଲ ଅପଲୋଡ଼ କରିବେ',
@@ -1543,16 +1543,16 @@ HTML ଟାଗ ପରଖିନିଅନ୍ତୁ ।',
 'right-suppressionlog' => 'ବ୍ୟକ୍ତିଗତ ଲଗ ଦେଖାଇବେ',
 'right-block' => 'ବାକି ସଭ୍ୟମାନଙ୍କୁ ସମ୍ପାଦନାରୁ ବାରଣ କରିବେ',
 'right-blockemail' => 'ଇ-ମେଲ ପଠାଇବାରୁ ଜଣେ ସଭ୍ୟଙ୍କୁ ବାରଣ କରିବେ',
-'right-hideuser' => 'ସାଧାରଣରୁ ଲୁଚାଇ ଏକ ଇଉଜର ନାମକୁ ଅଟକାଇବେ',
+'right-hidewiki_user' => 'ସାଧାରଣରୁ ଲୁଚାଇ ଏକ ଇଉଜର ନାମକୁ ଅଟକାଇବେ',
 'right-ipblock-exempt' => 'IP ଅଟକ, ଆପେଆପେ-ଅଟକ ଓ ସୀମା ଅଟକସବୁକୁ ଅଲଗା ଦିଗଗାମୀ କରିବେ',
 'right-proxyunbannable' => 'ପ୍ରକ୍ସିର ଆପେଆପେ ହେଉଥିବା ଅଟକସବୁକୁ ଅଲଗା ଦିଗଗାମୀ କରିବେ',
 'right-unblockself' => 'ସେମାନଙ୍କୁ ଅଟକରୁ ବାହାର କରିବେ',
 'right-protect' => 'କିଳିବା ସ୍ତରକୁ ବଦଳାଇବେ ଓ କିଳାଯାଇଥିବା ପୃଷ୍ଠାମାନଙ୍କର ସମ୍ପାଦନା କରିବେ',
 'right-editprotected' => 'କିଳାଯାଇଥିବା ପୃଷ୍ଠାମାନଙ୍କର ସମ୍ପାଦନା କରିବେ (କ୍ୟାସକେଡ଼କରା କିଳଣା ବିନା)',
 'right-editinterface' => 'ସଭ୍ୟଙ୍କ ଇଣ୍ଟରଫେସ ବଦଳାଇବେ',
-'right-editusercssjs' => 'ବାକି ସଭ୍ୟମାନଙ୍କର CSS ଓ ଜାଭାସ୍କ୍ରିପ୍ଟ ଫାଇଲ ସବୁକୁ ବଦଳାଇବେ',
-'right-editusercss' => 'ବାକି ସଭ୍ୟମାନଙ୍କ CSS ଫାଇଲସବୁ ବଦଳାଇବେ',
-'right-edituserjs' => 'ବାକି ସଭ୍ୟମାନଙ୍କର ଜାଭାସ୍କ୍ରିପ୍ଟ ଫାଇଲ ସବୁକୁ ବଦଳାଇବେ',
+'right-editwiki_usercssjs' => 'ବାକି ସଭ୍ୟମାନଙ୍କର CSS ଓ ଜାଭାସ୍କ୍ରିପ୍ଟ ଫାଇଲ ସବୁକୁ ବଦଳାଇବେ',
+'right-editwiki_usercss' => 'ବାକି ସଭ୍ୟମାନଙ୍କ CSS ଫାଇଲସବୁ ବଦଳାଇବେ',
+'right-editwiki_userjs' => 'ବାକି ସଭ୍ୟମାନଙ୍କର ଜାଭାସ୍କ୍ରିପ୍ଟ ଫାଇଲ ସବୁକୁ ବଦଳାଇବେ',
 'right-rollback' => 'ଏକ ନିର୍ଦ୍ଦିଷ୍ଟ ପୃଷ୍ଠାକୁ ବଦଳାଇଥିବା ଶେଷ ସଭ୍ୟଙ୍କ ସମ୍ପାଦନାକୁ ସଙ୍ଗେସଙ୍ଗେ ପୁରାପୁରି ପଛକୁ ଫେରାଇଦେବେ',
 'right-markbotedits' => 'ପୁରାପୁରି ପଛକୁ ଫେରାଇବା ବଦଳଗୁଡ଼ିକ ଆପେ ଆପେ କରା ବଦଳ ବୋଲି ଗଣିବେ',
 'right-noratelimit' => 'ବିରଳ ସୀମା ଦେଇ ପ୍ରଭାବିତ ହୋଇ ନଥିବା',
@@ -1563,14 +1563,14 @@ HTML ଟାଗ ପରଖିନିଅନ୍ତୁ ।',
 'right-patrolmarks' => 'ନଗଦ ବଦଳସବୁ ଜଗାଯାଇଅଛି ବୋଲି ଚିହ୍ନିତ କରି ଦେଖାଇବେ',
 'right-unwatchedpages' => 'ଦେଖାଯାଇନଥିବା ପୃଷ୍ଠାର ଏକ ତାଲିକା ଦେଖାଇବେ',
 'right-mergehistory' => 'ପୃଷ୍ଠାମାନଙ୍କର ଇତିହାସ ମିଶାଇଦେବେ',
-'right-userrights' => 'ଇଉଜର ଅଧିକାରସବୁକୁ ବଦଳାଇବେ',
-'right-userrights-interwiki' => 'ବାକି ଉଇକିର ସଭ୍ୟମାନଙ୍କ ସଭ୍ୟ ଅଧିକାର ବଦଳାଇବେ',
+'right-wiki_userrights' => 'ଇଉଜର ଅଧିକାରସବୁକୁ ବଦଳାଇବେ',
+'right-wiki_userrights-interwiki' => 'ବାକି ଉଇକିର ସଭ୍ୟମାନଙ୍କ ସଭ୍ୟ ଅଧିକାର ବଦଳାଇବେ',
 'right-siteadmin' => 'ଡାଟାବେସକୁ କିଳିବେ ଓ ଖୋଲିବେ',
 'right-override-export-depth' => '୫ଟି ଯାଏଁ ଯୋଡ଼ାଯାଇଥିବା ପୃଷ୍ଠା ସହିତ ସବୁ ପୃଷ୍ଠାକୁ ରପ୍ତାନୀ କରିବେ',
 'right-sendemail' => 'ବାକି ସଭ୍ୟ ମାନଙ୍କୁ ଇ-ମେଲ ପଠାଇବେ',
 'right-passwordreset' => 'ପାସୱାର୍ଡ଼ ପୁନସ୍ଥାପନ ଇମେଲ କରିବେ',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'ସଭ୍ୟଙ୍କ ଅଧିକାରର ଲଗ',
 'rightslogtext' => 'ସଭ୍ୟଙ୍କ ଅଧିକାର ବଦଳର ଏହା ଏକ ଇତିହାସ ।',
 'rightslogentry' => '$1 ପାଇଁ ଗୋଠ ସଭ୍ୟପଦର ଅବସ୍ଥା $2 ରୁ $3କୁ ବଦଳାଇଦିଆଗଲା',
@@ -1586,7 +1586,7 @@ HTML ଟାଗ ପରଖିନିଅନ୍ତୁ ।',
 'action-minoredit' => 'ଏହି ବଦଳଟିକୁ ଟିକେ ବଦଳ ଭାବରେ ଚିହ୍ନିତ କରନ୍ତୁ',
 'action-move' => 'ଏହି ପୃଷ୍ଠାଟିକୁ ଘୁଞ୍ଚାଇବେ',
 'action-move-subpages' => 'ଏହି ପୃଷ୍ଠାଟିକୁ ତାହାର ଉପପୃଷ୍ଠା ସହିତ ଘୁଞ୍ଚାଇବେ ।',
-'action-move-rootuserpages' => 'ମୂଳ ସଭ୍ୟ ପୃଷ୍ଠାସବୁକୁ ଘୁଞ୍ଚାଇଦେବେ',
+'action-move-rootwiki_userpages' => 'ମୂଳ ସଭ୍ୟ ପୃଷ୍ଠାସବୁକୁ ଘୁଞ୍ଚାଇଦେବେ',
 'action-movefile' => 'ଏହି ପୃଷ୍ଠାଟିକୁ ଘୁଞ୍ଚାଇବେ',
 'action-upload' => 'ଏହି ଫାଇଲଟି ଅପଲୋଡ଼ କରିବେ',
 'action-reupload' => 'ଆଗରୁ ଥିବା ଫାଇଲ ଉପରେ ମଡ଼ାଇ ଦେବେ',
@@ -1609,8 +1609,8 @@ HTML ଟାଗ ପରଖିନିଅନ୍ତୁ ।',
 'action-autopatrol' => 'ଆପଣା ସମ୍ପାଦନାସବୁକୁ ଜଗାଯାଇଛି ବୋଲି ଚିହ୍ନିତ କରିବେ',
 'action-unwatchedpages' => 'ଦେଖାଯାଇନଥିବା ପୃଷ୍ଠାର ଏକ ତାଲିକା ଦେଖାଇବେ',
 'action-mergehistory' => 'ପୃଷ୍ଠାର ଇତିହାସ ମିଶାଇଦେବେ',
-'action-userrights' => 'ଇଉଜର ଅଧିକାରସବୁକୁ ବଦଳାଇବେ',
-'action-userrights-interwiki' => 'ବାକି ଉଇକିର ସଭ୍ୟମାନଙ୍କ ସଭ୍ୟ ଅଧିକାର ବଦଳାଇବେ',
+'action-wiki_userrights' => 'ଇଉଜର ଅଧିକାରସବୁକୁ ବଦଳାଇବେ',
+'action-wiki_userrights-interwiki' => 'ବାକି ଉଇକିର ସଭ୍ୟମାନଙ୍କ ସଭ୍ୟ ଅଧିକାର ବଦଳାଇବେ',
 'action-siteadmin' => 'ଡାଟାବେସକୁ କିଳିବେ ଓ ଖୋଲିବେ',
 'action-sendemail' => 'ଇ-ମେଲ ପଠାଇବେ',
 
@@ -1641,7 +1641,7 @@ HTML ଟାଗ ପରଖିନିଅନ୍ତୁ ।',
 'minoreditletter' => 'ଟିକେ',
 'newpageletter' => 'ନୂଆ',
 'boteditletter' => 'ବଟ',
-'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|ସଭ୍ୟ|ସଭ୍ୟଗଣା}}ଙ୍କୁ ଦେଖୁଅଛି]',
+'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|ସଭ୍ୟ|ସଭ୍ୟଗଣା}}ଙ୍କୁ ଦେଖୁଅଛି]',
 'rc_categories' => 'ଶ୍ରେଣୀସମୂହ ପାଇଁ ସୀମା ( "|" ଦେଇ ଅଲଗା କରିବେ)',
 'rc_categories_any' => 'ଯେ କୌଣସି',
 'rc-change-size-new' => 'ବଦଳପରେ $1 {{PLURAL:$1|byte|bytes}}',
@@ -1666,7 +1666,7 @@ HTML ଟାଗ ପରଖିନିଅନ୍ତୁ ।',
 'reuploaddesc' => 'ଅପଲୋଡ଼କୁ ନାକଚ କରିବେ ଓ ଅପଲୋଡ଼ ଫର୍ମକୁ ଫେରିବେ',
 'upload-tryagain' => 'ବଦଳିଥିବ ଫାଇଲ ବଖାଣ ପଠାଇବା',
 'uploadnologin' => 'ଲଗ‌‌ ଇନ କରିନାହାନ୍ତି',
-'uploadnologintext' => 'ଫାଇଲ ଅପଲୋଡ଼ କରିବା ନିମନ୍ତେ ଆପଣଙ୍କୁ [[Special:UserLogin|ଲଗ ଇନ]] କରିବାକୁ ପଡ଼ିବ ।',
+'uploadnologintext' => 'ଫାଇଲ ଅପଲୋଡ଼ କରିବା ନିମନ୍ତେ ଆପଣଙ୍କୁ [[Special:wiki_userLogin|ଲଗ ଇନ]] କରିବାକୁ ପଡ଼ିବ ।',
 'upload_directory_missing' => 'ଅପଲୋଡ଼ ସୂଚି ($1)ଟି ମିଳୁନାହିଁ ଓ ୱେବସର୍ଭର ଦେଇ ତିଆରି କରାଯାଇପାରିଲା ନାହିଁ ।',
 'upload_directory_read_only' => 'ଅପଲୋଡ଼ ସୂଚି ($1)ଟି ସବୁ ୱେବସର୍ଭରରେ ଲେଖାଯାଇ ପାରିବ ନାହିଁ ।',
 'uploaderror' => 'ଅପଲୋଡ଼ କରିବାରେ ଅସୁବିଧା',
@@ -1794,11 +1794,11 @@ $1',
 'upload-proto-error-text' => 'ସୁଦୂରର ଅପଲୋଡ଼ପାଇଁ URL ସବୁ <code>http://</code> କିମ୍ବା <code>ftp://</code> ରେ ଆରମ୍ଭ ହେଉଥିବା ଲୋଡ଼ା ।',
 'upload-file-error' => 'ଭିତରର ଭୁଲ',
 'upload-file-error-text' => 'ସର୍ଭରରେ ଅସ୍ଥାୟୀ ଫାଇଲଟିଏ ତିଆରିବା ବେଳେ ଏକ ଭିତରର ଅସୁବିଧାଟିଏ ଘଟିଲା ।
-ଦୟାକରି ଜଣେ [[Special:ListUsers/sysop|ପରିଛା]]ଙ୍କ ସହ ଯୋଗାଯୋଗ କରନ୍ତୁ ।',
+ଦୟାକରି ଜଣେ [[Special:Listwiki_users/sysop|ପରିଛା]]ଙ୍କ ସହ ଯୋଗାଯୋଗ କରନ୍ତୁ ।',
 'upload-misc-error' => 'ଅଜଣା ଅପଲୋଡ଼ ଅସୁବିଧା',
 'upload-misc-error-text' => 'ଅପଲୋଡ଼ କରିବା ବେଳେ ଅଜଣା ଅସୁବିଧାଟିଏ ଘଟିଲା ।
 ଦୟାକରି URL ଟି ଠିକ ଅଛି କି ନାହିଁ ପରଖି ନିଅନ୍ତୁ ଓ ଆଉଥରେ ଚେଷ୍ଟା କରନ୍ତୁ ।
-ଯଦି ଅସୁବିଧା ଲାଗିରହେ ତେବେ ଜଣେ [[Special:ListUsers/sysop|ପରିଛା]]ଙ୍କ ସଙ୍ଗେ ଯୋଗାଯୋଗ କରନ୍ତୁ ।',
+ଯଦି ଅସୁବିଧା ଲାଗିରହେ ତେବେ ଜଣେ [[Special:Listwiki_users/sysop|ପରିଛା]]ଙ୍କ ସଙ୍ଗେ ଯୋଗାଯୋଗ କରନ୍ତୁ ।',
 'upload-too-many-redirects' => 'ଏହି URL ଟିରେ ଅନେକ ଗୁଡ଼ିଏ ଫେରନ୍ତା ଲିଙ୍କ ଅଛି',
 'upload-unknown-size' => 'ଅଜଣା ଆକାର',
 'upload-http-error' => 'HTTP ଅସୁବିଧାଟିଏ ଘଟିଲା: $1',
@@ -1918,7 +1918,7 @@ URLଟି ଠିକ ଅଚିକି କି ନାଁ ଓ ସାଇଟଟି ସ�
 'listfiles_thumb' => 'ଛୋଟ ଛବି',
 'listfiles_date' => 'ତାରିଖ',
 'listfiles_name' => 'ନାମ',
-'listfiles_user' => 'ବ୍ୟବହାରକାରୀ',
+'listfiles_wiki_user' => 'ବ୍ୟବହାରକାରୀ',
 'listfiles_size' => 'ଆକାର',
 'listfiles_description' => 'ବିବରଣୀ',
 'listfiles_count' => 'ସଂସ୍କରଣ',
@@ -1935,7 +1935,7 @@ URLଟି ଠିକ ଅଚିକି କି ନାଁ ଓ ସାଇଟଟି ସ�
 'filehist-thumb' => 'ନଖ ଦେଖଣା',
 'filehist-thumbtext' => '$1 ପରିକା ସଙ୍କଳନର ନଖଦେଖଣା',
 'filehist-nothumb' => 'ସାନଦେଖଣା ନାହିଁ',
-'filehist-user' => 'ବ୍ୟବହାରକାରୀ',
+'filehist-wiki_user' => 'ବ୍ୟବହାରକାରୀ',
 'filehist-dimensions' => 'ଆକାର',
 'filehist-filesize' => 'ଫାଇଲ ଆକାର',
 'filehist-comment' => 'ମତାମତ',
@@ -2027,7 +2027,7 @@ URLଟି ଠିକ ଅଚିକି କି ନାଁ ଓ ସାଇଟଟି ସ�
 'statistics-header-pages' => 'ପୃଷ୍ଠା ପରିସଙ୍ଖ୍ୟାନ',
 'statistics-header-edits' => 'ପରିସଙ୍ଖ୍ୟାନ ସମ୍ପାଦନା',
 'statistics-header-views' => 'ପରିସଙ୍ଖ୍ୟାନ ଦେଖିବେ',
-'statistics-header-users' => 'ସଭ୍ୟ ପରିସଙ୍ଖ୍ୟାନ',
+'statistics-header-wiki_users' => 'ସଭ୍ୟ ପରିସଙ୍ଖ୍ୟାନ',
 'statistics-header-hooks' => 'ବାକି ପରିସଙ୍ଖ୍ୟାନ',
 'statistics-articles' => 'ସୂଚୀ ପୃଷ୍ଠାସମୂହ',
 'statistics-pages' => 'ପୃଷ୍ଠା',
@@ -2038,9 +2038,9 @@ URLଟି ଠିକ ଅଚିକି କି ନାଁ ଓ ସାଇଟଟି ସ�
 'statistics-views-total' => 'ମୋଟ ଦେଖଣା',
 'statistics-views-total-desc' => 'ଅଚଳ ପୃଷ୍ଠା ଓ ବିଶେଷ ପୃଷ୍ଠାର ଦେଖଣା ଏହା ଭିତରେ ଦିଆଯାଇନାହିଁ',
 'statistics-views-peredit' => 'ସମ୍ପାଦନା ପ୍ରତି ଦେଖା',
-'statistics-users' => 'ପଞ୍ଜିକରଣ କରିଥିବା [[Special:ListUsers|ସଭ୍ୟଗଣ]]',
-'statistics-users-active' => 'ସଚଳ ସଭ୍ୟ',
-'statistics-users-active-desc' => 'ବିଗତ {{PLURAL:$1|ଦିନରେ|$1 ଦିନରେ}} କିଛି କାମ କରିଥିବା ସଭ୍ୟଗଣ',
+'statistics-wiki_users' => 'ପଞ୍ଜିକରଣ କରିଥିବା [[Special:Listwiki_users|ସଭ୍ୟଗଣ]]',
+'statistics-wiki_users-active' => 'ସଚଳ ସଭ୍ୟ',
+'statistics-wiki_users-active-desc' => 'ବିଗତ {{PLURAL:$1|ଦିନରେ|$1 ଦିନରେ}} କିଛି କାମ କରିଥିବା ସଭ୍ୟଗଣ',
 'statistics-mostpopular' => 'ସବୁଠାରୁ ଅଧିକ ଦେଖାଯାଇଥିବା ପୃଷ୍ଠା',
 
 'disambiguations' => 'ବହୁବିକଳ୍ପ ପୃଷ୍ଠାମାନଙ୍କ ସହ ଯୋଡ଼ା ପୃଷ୍ଠା',
@@ -2118,13 +2118,13 @@ URLଟି ଠିକ ଅଚିକି କି ନାଁ ଓ ସାଇଟଟି ସ�
 'protectedtitles' => 'କିଳାଯାଇଥିବା ଶିରୋନାମାମାନ',
 'protectedtitlestext' => 'ତଳଲିଖିତ ଶିରୋନାମା ସବୁ ତିଆରି କରିବାରୁ କିଳାଯାଇଅଛି ।',
 'protectedtitlesempty' => 'ଏହି ସବୁ ସଜାଣି ସହ ଗୋଟିଏ ବି ପୃଷ୍ଠା ଏବେ କିଳାଯାଇ ନାହିଁ ।',
-'listusers' => 'ବ୍ୟବହାରକାରୀଙ୍କ ତାଲିକା',
-'listusers-editsonly' => 'କେବଳ କିଛି ସମ୍ପାଦନା କରିଥିବା ସଭ୍ୟମାନଙ୍କୁ ଦେଖାଇବେ',
-'listusers-creationsort' => 'ତିଆରି ତାରିଖ ଅନୁସାରେ ସଜାଇବେ',
-'usereditcount' => '$1 ଟି {{PLURAL:$1|ବଦଳ}}',
-'usercreated' => '$1 ତାରିଖ ଦିନ $2 ବେଳେ {{GENDER:$3|ତିଆରି କରାଗଲା}}',
+'listwiki_users' => 'ବ୍ୟବହାରକାରୀଙ୍କ ତାଲିକା',
+'listwiki_users-editsonly' => 'କେବଳ କିଛି ସମ୍ପାଦନା କରିଥିବା ସଭ୍ୟମାନଙ୍କୁ ଦେଖାଇବେ',
+'listwiki_users-creationsort' => 'ତିଆରି ତାରିଖ ଅନୁସାରେ ସଜାଇବେ',
+'wiki_usereditcount' => '$1 ଟି {{PLURAL:$1|ବଦଳ}}',
+'wiki_usercreated' => '$1 ତାରିଖ ଦିନ $2 ବେଳେ {{GENDER:$3|ତିଆରି କରାଗଲା}}',
 'newpages' => 'ନୂଆ ପୃଷ୍ଠା',
-'newpages-username' => 'ବ୍ୟବହାରକାରୀଙ୍କ ନାମ:',
+'newpages-wiki_username' => 'ବ୍ୟବହାରକାରୀଙ୍କ ନାମ:',
 'ancientpages' => 'ସବୁଠୁ ପୁରାତନ ପୃଷ୍ଠା',
 'move' => 'ଘୁଞ୍ଚାଇବେ',
 'movethispage' => 'ଏହି ପୃଷ୍ଠାଟିକୁ ଘୁଞ୍ଚାଇବେ',
@@ -2148,7 +2148,7 @@ URLଟି ଠିକ ଅଚିକି କି ନାଁ ଓ ସାଇଟଟି ସ�
 'booksources-invalid-isbn' => 'ଏହି ISBN ଟି ବୈଧ ବୋଲି ବୋଧ ହେଉନାହିଁ; ନକଲ କରିଥିବା ମୂଳ ସ୍ଥାନରେ ଆଉଥରେ ପରଖିନିଅନ୍ତୁ ।',
 
 # Special:Log
-'specialloguserlabel' => 'ଯୋଗଦାନକାରୀ:',
+'speciallogwiki_userlabel' => 'ଯୋଗଦାନକାରୀ:',
 'speciallogtitlelabel' => 'ଲକ୍ଷ (ଶିରୋନାମା ବା ବ୍ୟବହାରକାରୀ):',
 'log' => 'ଲଗସବୁ',
 'all-logs-page' => 'ସାଧାରଣ ଲଗସବୁ',
@@ -2207,24 +2207,24 @@ URLଟି ଠିକ ଅଚିକି କି ନାଁ ଓ ସାଇଟଟି ସ�
 'linksearch-line' => '$1 ଟି $2ରୁ ଯୋଡ଼ାଯାଇଅଛି ।',
 'linksearch-error' => 'କେବଳ ହୋଷ୍ଟ ନାମର ଆରମ୍ଭରେ ୱାଇଲ୍ଡକାର୍ଡ଼ ଦେଖାଯିବ ।',
 
-# Special:ListUsers
-'listusersfrom' => 'ଏହି ନାମରେ ସଭ୍ୟ ଜଙ୍କ ନାମ ଦେଖାଇବେ:',
-'listusers-submit' => 'ଦେଖାଇବେ',
-'listusers-noresult' => 'ଜଣେ ବି ସଭ୍ୟ ମିଳିଲେ ନାହିଁ ।',
-'listusers-blocked' => '(ଅଟକାଯାଇଥିବା)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'ଏହି ନାମରେ ସଭ୍ୟ ଜଙ୍କ ନାମ ଦେଖାଇବେ:',
+'listwiki_users-submit' => 'ଦେଖାଇବେ',
+'listwiki_users-noresult' => 'ଜଣେ ବି ସଭ୍ୟ ମିଳିଲେ ନାହିଁ ।',
+'listwiki_users-blocked' => '(ଅଟକାଯାଇଥିବା)',
 
-# Special:ActiveUsers
-'activeusers' => 'ସଚଳ ସଭ୍ୟଙ୍କ ତାଲିକା',
-'activeusers-intro' => 'ବିଗତ $1 {{PLURAL:$1|ଦିନ|ଦିନ}} ଭିତରେ କିଛି ପ୍ରକାରର କାମ କରିଥିବା ସଭ୍ୟମାନଙ୍କର ତାଲିକା ।',
-'activeusers-count' => 'ବିଗତ {{PLURAL:$3|ଦିନ|$3 ଦିନରେ}}ରେ $1ଟି {{PLURAL:$1|ସମ୍ପାଦନା|ସମ୍ପାଦନା}}',
-'activeusers-from' => 'ଏହି ନାମରେ ଆରମ୍ଭ ହେଉଥିବା ସଭ୍ୟମାନଙ୍କୁ ଦେଖାଇବେ:',
-'activeusers-hidebots' => 'ଆପେଆପେ ଚାଳିତ ସଭ୍ୟମାନଙ୍କୁ ଲୁଚାନ୍ତୁ',
-'activeusers-hidesysops' => 'ପରିଚାଳକମାନଙ୍କୁ ଲୁଚାଇବେ',
-'activeusers-noresult' => 'ଜଣେ ବି ସଭ୍ୟ ମିଳିଲେ ନାହିଁ ।',
+# Special:Activewiki_users
+'activewiki_users' => 'ସଚଳ ସଭ୍ୟଙ୍କ ତାଲିକା',
+'activewiki_users-intro' => 'ବିଗତ $1 {{PLURAL:$1|ଦିନ|ଦିନ}} ଭିତରେ କିଛି ପ୍ରକାରର କାମ କରିଥିବା ସଭ୍ୟମାନଙ୍କର ତାଲିକା ।',
+'activewiki_users-count' => 'ବିଗତ {{PLURAL:$3|ଦିନ|$3 ଦିନରେ}}ରେ $1ଟି {{PLURAL:$1|ସମ୍ପାଦନା|ସମ୍ପାଦନା}}',
+'activewiki_users-from' => 'ଏହି ନାମରେ ଆରମ୍ଭ ହେଉଥିବା ସଭ୍ୟମାନଙ୍କୁ ଦେଖାଇବେ:',
+'activewiki_users-hidebots' => 'ଆପେଆପେ ଚାଳିତ ସଭ୍ୟମାନଙ୍କୁ ଲୁଚାନ୍ତୁ',
+'activewiki_users-hidesysops' => 'ପରିଚାଳକମାନଙ୍କୁ ଲୁଚାଇବେ',
+'activewiki_users-noresult' => 'ଜଣେ ବି ସଭ୍ୟ ମିଳିଲେ ନାହିଁ ।',
 
-# Special:Log/newusers
-'newuserlogpage' => 'ବ୍ୟବହାରକାରୀ ତିଆରି ଲଗ',
-'newuserlogpagetext' => 'ସଭ୍ୟଙ୍କର ଖାତା ଗଠନ ପାଇଁ ଏକ ଇତିହାସ ଅଛି ।',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'ବ୍ୟବହାରକାରୀ ତିଆରି ଲଗ',
+'newwiki_userlogpagetext' => 'ସଭ୍ୟଙ୍କର ଖାତା ଗଠନ ପାଇଁ ଏକ ଇତିହାସ ଅଛି ।',
 
 # Special:ListGroupRights
 'listgrouprights' => 'ସଭ୍ୟ ଗୋଠ ଅଧିକାରସମୂହ',
@@ -2245,27 +2245,27 @@ URLଟି ଠିକ ଅଚିକି କି ନାଁ ଓ ସାଇଟଟି ସ�
 'listgrouprights-addgroup-self-all' => 'ନିଜ ଖାତାରେ ସବୁଯାକ ଗୋଠ ଯୋଡ଼ିବେ',
 'listgrouprights-removegroup-self-all' => 'ନିଜ ଖାତାରୁ ସବୁଯାକ ଗୋଠ ହଟାଇଦେବେ',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'ଗୋଟିଏ ବି ପଠାଇବା ଠିକଣା ନାହିଁ',
-'mailnologintext' => 'ଆପଣ ନିଜ [[Special:Preferences|ପସନ୍ଦସବୁ]]ରେ [[Special:UserLogin|ଲଗ ଇନ]] କରିଥିଲେ ଓ ନିଜର ଏକ ସଚଳ ଇ-ମେଲ ଠିକଣା ଥିଲେ ଯାଇ ବାକି ସବୁ ସଭ୍ୟଙ୍କୁ ଇ-ମେଲ ପଠାଇପାରିବେ ।',
-'emailuser' => 'ଏହି ସଭ୍ୟଙ୍କୁ ଇମେଲ କରିବେ',
-'emailuser-title-target' => '{{GENDER:$1|user}}କୁ ଇ-ମେଲ କରନ୍ତୁ',
-'emailuser-title-notarget' => 'ବ୍ୟବହାରକାରୀ କୁ ଇ-ମେଲ',
+'mailnologintext' => 'ଆପଣ ନିଜ [[Special:Preferences|ପସନ୍ଦସବୁ]]ରେ [[Special:wiki_userLogin|ଲଗ ଇନ]] କରିଥିଲେ ଓ ନିଜର ଏକ ସଚଳ ଇ-ମେଲ ଠିକଣା ଥିଲେ ଯାଇ ବାକି ସବୁ ସଭ୍ୟଙ୍କୁ ଇ-ମେଲ ପଠାଇପାରିବେ ।',
+'emailwiki_user' => 'ଏହି ସଭ୍ୟଙ୍କୁ ଇମେଲ କରିବେ',
+'emailwiki_user-title-target' => '{{GENDER:$1|wiki_user}}କୁ ଇ-ମେଲ କରନ୍ତୁ',
+'emailwiki_user-title-notarget' => 'ବ୍ୟବହାରକାରୀ କୁ ଇ-ମେଲ',
 'emailpage' => 'ଇ-ମେଲ ବ୍ୟବହାରକାରୀ',
-'emailpagetext' => 'ଥିବା ଫର୍ମ ବ୍ୟବହାର କରି ଆପଣ ଏହି {{GENDER:$1|user}} ଇ-ମେଲ କରିପାରିବେ ।
+'emailpagetext' => 'ଥିବା ଫର୍ମ ବ୍ୟବହାର କରି ଆପଣ ଏହି {{GENDER:$1|wiki_user}} ଇ-ମେଲ କରିପାରିବେ ।
 [[Special:Preferences|ଆପଣଙ୍କ ପସନ୍ଦ]]ରେ ଥିବା ଇ-ମେଲ ଠିକଣା ପ୍ରେରକ ଭାବରେ ଦେଖାଯିବ, ତେଣୁ ଚିଠି ପାଇଥିବା ସଭ୍ୟ ଆପଣଙ୍କୁ ସିଧା ସଳଖ ଉତ୍ତର ଦେଇପାରିବ ।',
-'usermailererror' => 'ମେଲ ଭିତରେ କିଛି ଅସୁବିଧା ଅଛି ବୋଲି ଜାଣିବାକୁ ମିଳିଲା:',
+'wiki_usermailererror' => 'ମେଲ ଭିତରେ କିଛି ଅସୁବିଧା ଅଛି ବୋଲି ଜାଣିବାକୁ ମିଳିଲା:',
 'defemailsubject' => '{{SITENAME}} "$1" ସଭ୍ୟଙ୍କ ଠାରୁ ଇ-ମେଲ କରିବେ',
-'usermaildisabled' => 'ବ୍ୟବହାରକାରୀଙ୍କ ଈ-ମେଲ ଅଚଳ କରାଗଲା',
-'usermaildisabledtext' => 'ଏହି ଉଇକିରେ ଆପଣ ବାକି ସଭ୍ୟଙ୍କୁ ଇ ମେଲ କରିପାରିବେ ନାହିଁ',
+'wiki_usermaildisabled' => 'ବ୍ୟବହାରକାରୀଙ୍କ ଈ-ମେଲ ଅଚଳ କରାଗଲା',
+'wiki_usermaildisabledtext' => 'ଏହି ଉଇକିରେ ଆପଣ ବାକି ସଭ୍ୟଙ୍କୁ ଇ ମେଲ କରିପାରିବେ ନାହିଁ',
 'noemailtitle' => 'ଇ-ମେଲ ଠିକଣା ନାହିଁ',
 'noemailtext' => 'ସଭ୍ୟଜଣକ ଏକ ସଠିକ ଇ-ମେଲ ଠିକଣା ଦେଇନାହାନ୍ତି ।',
 'nowikiemailtitle' => 'ଇ-ମେଲ ଦେବା ଅନୁମୋଦିତ ନୁହେଁ',
 'nowikiemailtext' => 'ଏହି ସଭ୍ୟ ବାକିମାନଙ୍କ ଠାରୁ ଇ-ମେଲ ପାଇବା ବାଚିଛନ୍ତି ।',
 'emailnotarget' => 'ପ୍ରାପକ ନିମନ୍ତେ ସ୍ଥିତିହୀନ  ବା ଅବୈଧ ଇଉଜର ନାମ ।',
 'emailtarget' => 'ପ୍ରାପକର ଇଉଜର ନାମ ଦିଅନ୍ତୁ',
-'emailusername' => 'ବ୍ୟବହାରକାରୀଙ୍କ ନାମ:',
-'emailusernamesubmit' => 'ଦାଖଲକରିବା',
+'emailwiki_username' => 'ବ୍ୟବହାରକାରୀଙ୍କ ନାମ:',
+'emailwiki_usernamesubmit' => 'ଦାଖଲକରିବା',
 'email-legend' => 'ଆଉ ଏକ {{SITENAME}}କୁ ଇ-ମେଲଟିଏ ପଠାଇବେ',
 'emailfrom' => 'କାହାଠାରୁ:',
 'emailto' => 'କାହାକୁ:',
@@ -2276,11 +2276,11 @@ URLଟି ଠିକ ଅଚିକି କି ନାଁ ଓ ସାଇଟଟି ସ�
 'emailccsubject' => ' $1ଙ୍କୁ ପଠାଯାଇଥିବା ଆପଣଙ୍କ ସନ୍ଦେଶର ନକଲ: $2',
 'emailsent' => 'ଇ-ମେଲ ପଠାଗଲା',
 'emailsenttext' => 'ଆପଣଙ୍କ ଇ-ମେଲ ସନ୍ଦେଶଟି ପଠାଗଲା ।',
-'emailuserfooter' => 'ଏହି ଇ-ମେଲଟି $1ଙ୍କ ଦେଇ $2ଙ୍କୁ "ସଭ୍ୟଙ୍କୁ ଇ-ମେଲ" ସୁବିଧାରେ {{SITENAME}}ରେ ପଠାଗଲା ।',
+'emailwiki_userfooter' => 'ଏହି ଇ-ମେଲଟି $1ଙ୍କ ଦେଇ $2ଙ୍କୁ "ସଭ୍ୟଙ୍କୁ ଇ-ମେଲ" ସୁବିଧାରେ {{SITENAME}}ରେ ପଠାଗଲା ।',
 
-# User Messenger
-'usermessage-summary' => 'ସିଷ୍ଟମ ମେସେଜକୁ ଛାଡୁଛି ।',
-'usermessage-editor' => 'ସିଷ୍ଟମ ଦୂତ',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'ସିଷ୍ଟମ ମେସେଜକୁ ଛାଡୁଛି ।',
+'wiki_usermessage-editor' => 'ସିଷ୍ଟମ ଦୂତ',
 
 # Watchlist
 'watchlist' => 'ଦେଖାତାଲିକା',
@@ -2289,7 +2289,7 @@ URLଟି ଠିକ ଅଚିକି କି ନାଁ ଓ ସାଇଟଟି ସ�
 'nowatchlist' => 'ଆପଣଙ୍କ ଦେଖଣା ତାଲିକାରେ କିଛି ବି ଜିନିଷ ନାହିଁ ।',
 'watchlistanontext' => 'ଆପଣା ଦେଖଣାତାଲିକାରେ କିଛି ସମ୍ପାଦନା କରିବା ନିମନ୍ତେ ଦୟାକରି  $1 କରନ୍ତୁ ।',
 'watchnologin' => 'ଲଗ‌‌ ଇନ କରିନାହାନ୍ତି',
-'watchnologintext' => 'ଆପଣା ଦେଖଣାତାଲିକା ବଦଳାଇବା ନିମନ୍ତେ ଆପଣଙ୍କୁ [[Special:UserLogin|ଲଗ ଇନ]] କରିବାକୁ ପଡ଼ିବ ।',
+'watchnologintext' => 'ଆପଣା ଦେଖଣାତାଲିକା ବଦଳାଇବା ନିମନ୍ତେ ଆପଣଙ୍କୁ [[Special:wiki_userLogin|ଲଗ ଇନ]] କରିବାକୁ ପଡ଼ିବ ।',
 'addwatch' => 'ଦେଖଣାତାଲିକାରେ ଯୋଡ଼ିବେ',
 'addedwatchtext' => '"[[:$1]]" ପୃଷ୍ଠାଟି ଆପଣଙ୍କ [[Special:Watchlist|ଦେଖଣାତାଲିକା]]ରେ ଯୋଡ଼ିଦିଆଗଲା ।
 ଏହି ପୃଷ୍ଠାରେ ଭବିଷ୍ୟତର ଅଦଳ ବଦଳ ଓ ତାହା ସହ ଯୋଡ଼ା ଆଲୋଚନା ପୃଷ୍ଠା ସେଠାରେ ଦିଆଯିବ ।',
@@ -2402,13 +2402,13 @@ $UNWATCHURL ଦେଖନ୍ତୁ
 'rollbackfailed' => 'ପୁରାପୁରି ପଛକୁ ଫେରିବା ବିଫଳ ହେଲା',
 'cantrollback' => 'ବଦଳକୁ ପଛକୁ ଫେରାଇ ପାରିବେ ନାହିଁ;
 ଶେଷ ଦାତାଜଣଙ୍କ ଏହି ପୃଷ୍ଠାର ଜଣେମାତ୍ର ଦାତା ।',
-'alreadyrolled' => '[[User:$2|$2]]([[User talk:$2|talk]] {{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]])ଙ୍କ ଦେଇ [[:$1]]ରେ ହୋଇଥିବା ଶେଷ ବଦଳକୁ ପଛକୁ ଫେରାଯାଇପାରିବ ନାହିଁ ;
+'alreadyrolled' => '[[wiki_user:$2|$2]]([[wiki_user talk:$2|talk]] {{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]])ଙ୍କ ଦେଇ [[:$1]]ରେ ହୋଇଥିବା ଶେଷ ବଦଳକୁ ପଛକୁ ଫେରାଯାଇପାରିବ ନାହିଁ ;
 ଏହାକୁ ଆଉ କେହି ସମ୍ପାଦନା କରିଛି ବା ପୁରାପୁରି ପଛକୁ ଫେରାଇଦେଇଛି ।
 
-ଏହି ପୃଷ୍ଠାର ଶେଷ  ସମ୍ପାଦନା  [[User:$3|$3]] ([[User talk:$3|talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) ଙ୍କ ଦେଇ ହୋଇଥିଲା ।',
+ଏହି ପୃଷ୍ଠାର ଶେଷ  ସମ୍ପାଦନା  [[wiki_user:$3|$3]] ([[wiki_user talk:$3|talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) ଙ୍କ ଦେଇ ହୋଇଥିଲା ।',
 'editcomment' => "ସମ୍ପାଦନାର ସାରକଥା ଥିଲା: \"''\$1''\" ।",
-'revertpage' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|ଆଲୋଚନା]])ଙ୍କ ଦେଇ କରାଯାଇଥିବା ବଦଳକୁ [[User:$1|$1]]ଙ୍କ ଦେଇ କରାଯାଇଥିବା ଶେଷ ବଦଳକୁ ଫେରାଇ ଦିଆଗଲା',
-'revertpage-nouser' => '(ଇଉଜର ନାମ ବାହାର କରିଦିଆଯାଇଅଛି)ଙ୍କ ଦେଇ କରାଯାଇଥିବା ବଦଳକୁ [[User:$1|$1]]ଙ୍କ ଦେଇ କରାଯାଇଥିବା ଶେଷ ବଦଳକୁ ଲେଉଟାଇଦିଆଗଲା',
+'revertpage' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|ଆଲୋଚନା]])ଙ୍କ ଦେଇ କରାଯାଇଥିବା ବଦଳକୁ [[wiki_user:$1|$1]]ଙ୍କ ଦେଇ କରାଯାଇଥିବା ଶେଷ ବଦଳକୁ ଫେରାଇ ଦିଆଗଲା',
+'revertpage-nowiki_user' => '(ଇଉଜର ନାମ ବାହାର କରିଦିଆଯାଇଅଛି)ଙ୍କ ଦେଇ କରାଯାଇଥିବା ବଦଳକୁ [[wiki_user:$1|$1]]ଙ୍କ ଦେଇ କରାଯାଇଥିବା ଶେଷ ବଦଳକୁ ଲେଉଟାଇଦିଆଗଲା',
 'rollback-success' => '$1ଙ୍କ ଦେଇ ହୋଇଥିବା ସମ୍ପାଦନାକୁ ପୁରାପୁରି ପଛକୁ ଲେଉଟାଇ ଦିଆଗଲା;
 $2ଙ୍କ ଦେଇ ଶେଷଥର ହୋଇଥିବା ସଂସ୍କରଣକୁ ବଦଳାଇ ଦିଆଗଲା ।',
 
@@ -2566,13 +2566,13 @@ $1',
 'sp-contributions-uploads' => 'ଅପଲୋଡ଼ସବୁ',
 'sp-contributions-logs' => 'ଲଗସବୁ',
 'sp-contributions-talk' => 'କଥାଭାଷା',
-'sp-contributions-userrights' => 'ସଭ୍ୟ ଅଧିକାର ପରିଚାଳନା',
+'sp-contributions-wiki_userrights' => 'ସଭ୍ୟ ଅଧିକାର ପରିଚାଳନା',
 'sp-contributions-blocked-notice' => 'ଏହି ସଭ୍ୟଙ୍କୁ ଏବେ ପାଇଁ ଅଟକାଯାଇଅଛି ।
 ଆପଣଙ୍କ ଜାଣିବା ନିମନ୍ତେ ନଗଦ ଇତିହାସ ତଳେ ଦିଆଗଲା:',
 'sp-contributions-blocked-notice-anon' => 'ଏହି IP ଠିକଣାକୁ ଏବେ ପାଇଁ ଅଟକାଯାଇଅଛି ।
 ଆପଣଙ୍କ ଜାଣିବା ନିମନ୍ତେ ନଗଦ ଇତିହାସ ତଳେ ଦିଆଗଲା:',
 'sp-contributions-search' => 'ଅବଦାନ ପାଇଁ ଖୋଜନ୍ତୁ',
-'sp-contributions-username' => 'ବ୍ୟବହାରକାରୀଙ୍କର IP ଠିକଣା ବା ଇଉଜର ନାମ:',
+'sp-contributions-wiki_username' => 'ବ୍ୟବହାରକାରୀଙ୍କର IP ଠିକଣା ବା ଇଉଜର ନାମ:',
 'sp-contributions-toponly' => 'ନଗଦ ବଦଳଗୁଡ଼ିକ ଦେଖାଇବେ',
 'sp-contributions-submit' => 'ଖୋଜିବା',
 
@@ -2605,7 +2605,7 @@ $1',
 'blockiptext' => 'ଏକ ନିର୍ଦିଷ୍ଟ IP ଠିକଣା ବା ବ୍ୟବହାରକାରୀଙ୍କ ଲେଖିବା ସୁବିଧାକୁ ବାରାଁ କରିବା ନିମନ୍ତେ ଏହି ତଳ ଫର୍ମଟି ବ୍ୟବହାର କରନ୍ତୁ ।
 ଏହା କେବଳ ଅପବ୍ୟବହାରକୁ ରୋକିବା ନିମନ୍ତେ କରାଯାଇଥାଏ, ଏହା [[{{MediaWiki:Policy-url}}|ନୀତି]] ଅନୁସାରେ କରାଯାଇଥାଏ ।
 ଏହା ତଳେ ଏକ ନିର୍ଦିଷ୍ଟ କାରଣ ଦିଅନ୍ତୁ (ଯଥା, ଯେଉଁସବୁ ପୃଷ୍ଠାରେ କିଛି ପ୍ରକାରର ଅପବ୍ୟବହାର କରାଯାଇଛି) ।',
-'ipadressorusername' => 'ବ୍ୟବହାରକାରୀଙ୍କର IP ଠିକଣା ବା ଇଉଜର ନାମ:',
+'ipadressorwiki_username' => 'ବ୍ୟବହାରକାରୀଙ୍କର IP ଠିକଣା ବା ଇଉଜର ନାମ:',
 'ipbexpiry' => 'ମିଆଦ:',
 'ipbreason' => 'କାରଣ:',
 'ipbreasonotherlist' => 'ଅଲଗା କାରଣ',
@@ -2627,8 +2627,8 @@ $1',
 'ipbotheroption' => 'ବାକି',
 'ipbotherreason' => 'ବାକି/ଅଧିକ କାରଣ:',
 'ipbhidename' => 'ଇଉଜର ନାମକୁ ସମ୍ପାଦନା ଓ ତାଲିକାରୁ ଲୁଚାଇବେ',
-'ipbwatchuser' => 'ସଭ୍ୟଙ୍କ ପୃଷ୍ଠା ଓ ତାହାଙ୍କର ଆଲୋଚନା ପୃଷ୍ଠକୁ ଦେଖିବେ',
-'ipb-disableusertalk' => 'ଅଟକାଯାଇଥିବା ବେଳେ ଏହି ସଭ୍ୟଙ୍କୁ ତାହାଙ୍କ ନିଜ ଆଲୋଚନା ପୃଷ୍ଠାକୁ ବଦଳାଇବାକୁ ବାରଣ କରନ୍ତୁ',
+'ipbwatchwiki_user' => 'ସଭ୍ୟଙ୍କ ପୃଷ୍ଠା ଓ ତାହାଙ୍କର ଆଲୋଚନା ପୃଷ୍ଠକୁ ଦେଖିବେ',
+'ipb-disablewiki_usertalk' => 'ଅଟକାଯାଇଥିବା ବେଳେ ଏହି ସଭ୍ୟଙ୍କୁ ତାହାଙ୍କ ନିଜ ଆଲୋଚନା ପୃଷ୍ଠାକୁ ବଦଳାଇବାକୁ ବାରଣ କରନ୍ତୁ',
 'ipb-change-block' => 'ସଭ୍ୟଜଣଙ୍କୁ ଏହି ସଜାଣିରେ ଆଉଥରେ ଅଟକାନ୍ତୁ',
 'ipb-confirm' => 'ଅଟକ ଥୟ କରିବେ',
 'badipaddress' => 'ଭୁଲ IP ଠିକଣା',
@@ -2636,7 +2636,7 @@ $1',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] ଅଟକାଯାଯାଇଛି.<br />
 ଅଟକ ବାବଦରେ ଟିପ୍ପଣୀ ଦେବା ନିମନ୍ତେ [[Special:BlockList|block list]] ଦେଖନ୍ତୁ ।',
 'ipb-blockingself' => 'ଆପଣ ନିଜକୁ ଅଟକାଇବାକୁ ଯାଉଛନ୍ତି ! ଆପଣ ପୁରାପୁରି ନିଶ୍ଚିତ ତ?',
-'ipb-confirmhideuser' => 'ଆପଣ "ବ୍ୟବହାରକାରୀଙ୍କୁ ଲୁଚାନ୍ତୁ" ସଚଳ କରି ଜଣେ ବ୍ୟବହାରକାରୀଙ୍କୁ ଅଟକାଇବାକୁ ଯାଉଛନ୍ତି । ଏହା ବ୍ୟବହାରକାରୀଙ୍କ ନାମକୁ ସବୁଯାକ ତାଲିକାୟ ଇତିହାସରେ ଲୁଚାଇଦେବ । ତଥାପି ବି ଆପଣ ଏହା କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?',
+'ipb-confirmhidewiki_user' => 'ଆପଣ "ବ୍ୟବହାରକାରୀଙ୍କୁ ଲୁଚାନ୍ତୁ" ସଚଳ କରି ଜଣେ ବ୍ୟବହାରକାରୀଙ୍କୁ ଅଟକାଇବାକୁ ଯାଉଛନ୍ତି । ଏହା ବ୍ୟବହାରକାରୀଙ୍କ ନାମକୁ ସବୁଯାକ ତାଲିକାୟ ଇତିହାସରେ ଲୁଚାଇଦେବ । ତଥାପି ବି ଆପଣ ଏହା କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?',
 'ipb-edit-dropdown' => 'ସମ୍ପାଦନା ଅଟକ କାରଣମାନ',
 'ipb-unblock-addr' => '$1ଙ୍କୁ କିଳିବେ ନାହି',
 'ipb-unblock' => 'ଏକ ଇଉଜର ନାମ ବା IP ଠିକଣାକୁ ବାସନ୍ଦରୁ ମୁକୁଳାଇବେ',
@@ -2645,13 +2645,13 @@ $1',
 'unblockip' => 'ବାସନ୍ଦ ହୋଇଥିବା ସଭ୍ୟଙ୍କୁ ମୁକୁଳାଇବେ',
 'unblockiptext' => 'ଆଗରୁ ବାସନ୍ଦ କରାଯାଇଥିବା ଇଉଜର ନାମ ବା IP ଠିକଣା ମୁକୁଳାଇବା ନିମନ୍ତେ ତଳେ ଥିବା ଫର୍ମ ବ୍ୟବହାର କରନ୍ତୁ ।',
 'ipusubmit' => 'ଏହି ବାସନ୍ଦଟିକୁ ଉଠାଇଦେବେ',
-'unblocked' => '[[User:$1|$1]] ନାମକ ସଭ୍ୟଜଣକ ବାସନ୍ଦରୁ ମୁକୁଳିଗଲେ',
+'unblocked' => '[[wiki_user:$1|$1]] ନାମକ ସଭ୍ୟଜଣକ ବାସନ୍ଦରୁ ମୁକୁଳିଗଲେ',
 'unblocked-range' => '$1 ଅଟକରୁ ବାହାର କରିଦିଆଗଲା',
 'unblocked-id' => '$1 ଅଟକଟି ହଟାଇଦିଆଗଲା',
 'blocklist' => 'ବାସନ୍ଦ କରାଯାଇଥିବା ସଭ୍ୟ',
 'ipblocklist' => 'ଅଟକାଯାଇଥିବା ସଭ୍ୟସମୂହ',
 'ipblocklist-legend' => 'ଜଣେ ଅଟକାଯାଇଥିବା ସଭ୍ୟ ଖୋଜିବେ',
-'blocklist-userblocks' => 'ଅଟକାଯାଇଥିବା ଖାତାସବୁ ଖୋଜିବେ',
+'blocklist-wiki_userblocks' => 'ଅଟକାଯାଇଥିବା ଖାତାସବୁ ଖୋଜିବେ',
 'blocklist-tempblocks' => 'ଅସ୍ଥାୟୀ ଅଟକସବୁ ଲୁଚାଇଦେବେ',
 'blocklist-addressblocks' => 'ଗୋଟିକିଆ IP ଅଟକସବୁ ଲୁଚାଇବେ',
 'blocklist-rangeblocks' => 'ରେଞ୍ଜ ବ୍ଲକସବୁ ଲୁଚାଇଦେବେ',
@@ -2670,7 +2670,7 @@ $1',
 'noautoblockblock' => 'ଆପେଆପେ କରାଯାଇଥିବା ଅଟକ ଅଚଳ କରାଗଲା',
 'createaccountblock' => 'ନୂଆ ଖାତା ଖୋଲିବା ଅଚଳ କରାଗଲା',
 'emailblock' => 'ଇ-ମେଲ ଅଟକାଗଲା',
-'blocklist-nousertalk' => 'ଆପଣା ଆଲୋଚନା ପୃଷ୍ଠାକୁ ବଦଳାଇ ପାରିବେ ନାହିଁ',
+'blocklist-nowiki_usertalk' => 'ଆପଣା ଆଲୋଚନା ପୃଷ୍ଠାକୁ ବଦଳାଇ ପାରିବେ ନାହିଁ',
 'ipblocklist-empty' => 'ଅଟକ ତାଲିକାଟି ଖାଲି ।',
 'ipblocklist-no-results' => 'ଅନୁରୋଧ କରାଯାଇଥିବା IP ଠିକଣାଟି ବ ଇଉଜର ନାମଟି ଅଟକାଯାଇନାହିଁ ।',
 'blocklink' => 'ଅଟକେଇ ଦେବେ',
@@ -2678,7 +2678,7 @@ $1',
 'change-blocklink' => 'ଓଗଳାକୁ ବଦଳାଇବେ',
 'contribslink' => 'ଅବଦାନ',
 'emaillink' => 'ଇ-ମେଲ ପଠାଇବେ',
-'autoblocker' => '"[[User:$1|$1]]"ଙ୍କ ଦେଇ ଏହି ମାତ୍ର ଆପଣଙ୍କ IP ଠିକଣାଟି ଆପେଆପେ ଅଟକାଯାଇଅଛି ।
+'autoblocker' => '"[[wiki_user:$1|$1]]"ଙ୍କ ଦେଇ ଏହି ମାତ୍ର ଆପଣଙ୍କ IP ଠିକଣାଟି ଆପେଆପେ ଅଟକାଯାଇଅଛି ।
 $1ର ଅଟକ ପାଇଁ ଦିଆଯାଇଥିବା କାରଣଟି ହେଲା: "$2"',
 'blocklogpage' => 'ଲଗଟିକୁ ଅଟକାଇଦେବେ',
 'blocklog-showlog' => 'ଏହି ସଭ୍ୟଜଣଙ୍କୁକ ଆଗରୁ ଅଟକାଯାଇଛି ।
@@ -2695,7 +2695,7 @@ $1ର ଅଟକ ପାଇଁ ଦିଆଯାଇଥିବା କାରଣଟି �
 'block-log-flags-nocreate' => 'ନୂଆ ଖାତା ଖୋଲିବା ଅଚଳ କରାଯାଇଅଛି',
 'block-log-flags-noautoblock' => 'ଆପେଆପେ କରାଯାଇଥିବା ଅଟକ ଅଚଳ କରାଗଲା',
 'block-log-flags-noemail' => 'ଇ-ମେଲ ଅଟକାଗଲା',
-'block-log-flags-nousertalk' => 'ଆପଣା ଆଲୋଚନା ପୃଷ୍ଠାକୁ ବଦଳାଇ ପାରିବେ ନାହିଁ',
+'block-log-flags-nowiki_usertalk' => 'ଆପଣା ଆଲୋଚନା ପୃଷ୍ଠାକୁ ବଦଳାଇ ପାରିବେ ନାହିଁ',
 'block-log-flags-angry-autoblock' => 'ଉନ୍ନତ ଆପେଆପେ ଅଟକ ସଚଳ କରାଗଲା',
 'block-log-flags-hiddenname' => 'ସଭ୍ୟନାମ ଲୁଚାଯାଇଅଛି',
 'range_block_disabled' => 'ଏକାଧିକ ଅଟକ ପାଇଁ ପରିଛା ସୁବିଧାଟି ଅଚଳ କରାଯାଇଛି ।',
@@ -2705,7 +2705,7 @@ $1ର ଅଟକ ପାଇଁ ଦିଆଯାଇଥିବା କାରଣଟି �
 'ipb_already_blocked' => '"$1" ଆଗରୁ ଅଟକାଯାଇଅଛି',
 'ipb-needreblock' => '"$1" ଆଗରୁ ଅଟକାଯାଇଅଛି । ଆପଣ ସଜାଣିସବୁ ବଦଳାଇବାକୁ ଚାହାନ୍ତି କି?',
 'ipb-otherblocks-header' => 'ବାକି {{PLURAL:$1|ଗୋଟି ଅଟକ|ଗୋଟି ଅଟକ}}',
-'unblock-hideuser' => 'ବ୍ୟବହାରକାରୀଙ୍କ ନାମ ଲୁଚାଯାଇଥିବାରୁ ଆପଣ ଏହି ବ୍ୟବହାରକାରୀଙ୍କୁ ଅଟକାଇବାରୁ ରୋକିପାରିବେ ନାହିଁ ।',
+'unblock-hidewiki_user' => 'ବ୍ୟବହାରକାରୀଙ୍କ ନାମ ଲୁଚାଯାଇଥିବାରୁ ଆପଣ ଏହି ବ୍ୟବହାରକାରୀଙ୍କୁ ଅଟକାଇବାରୁ ରୋକିପାରିବେ ନାହିଁ ।',
 'ipb_cant_unblock' => 'ଭୁଲ: ଅଟକ ID $1 ମିଳିଲା ନାହିଁ । ଏହାକୁ ଆଗରୁ ଅଟକାଯାଇଥାଇପାରେ ।',
 'ipb_blocked_as_range' => 'ଭୁଲ: ଏହି IP ଠିକଣା $1ଟି ସିଧା ଅଟକାଯାଇନାହିଁ ଓ ଖୋଲାଯାଇପାରିବ ନାହିଁ ।
 ଏହା, $2 ଭିତରେ ଥିବାରୁ ତାହାକୁ ଅଟକରୁ ଛାଡ଼ କରାଯାଇପାରିବ ନାହିଁ ।',
@@ -2721,7 +2721,7 @@ $1ର ଅଟକ ପାଇଁ ଦିଆଯାଇଥିବା କାରଣଟି �
 'sorbs_create_account_reason' => '{{SITENAME}} ଦେଇ ଆପଣଙ୍କ IP ଠିକଣାଟି DNSBL ଭିତରେ ଏକ ଖୋଲା ପ୍ରକ୍ସି ଭାବରେ ନଥିଭୁକ୍ତ ହୋଇଅଛି ।
 ଆପଣ ନୂଆ ଖାତାଟିଏ ଖୋଲି ପାରିବେ ନାହିଁ',
 'cant-block-while-blocked' => 'ଆପଣ ନିଜେ ଅଟକାଯାଇଥିବା ଯାଏଁ କେବେ ଅନ୍ୟମାନଙ୍କୁ ଅଟକାଇପାରିବେ ନାହିଁ ।',
-'cant-see-hidden-user' => 'ଆପଣ ଅଟକାଇବାକୁ ଚାହୁଁଥିବା ସଭ୍ୟଜଣକ ଆଗରୁ ଅଟକାଯାଇଛନ୍ତି ଓ ଲୁଚାଯାଇଛନ୍ତି ।
+'cant-see-hidden-wiki_user' => 'ଆପଣ ଅଟକାଇବାକୁ ଚାହୁଁଥିବା ସଭ୍ୟଜଣକ ଆଗରୁ ଅଟକାଯାଇଛନ୍ତି ଓ ଲୁଚାଯାଇଛନ୍ତି ।
 ଯେହେତୁ ଆପଣଙ୍କ ପାଖରେ ସଭ୍ୟଙ୍କୁ ଲୁଚାଇବା ଅଧିକାର ନାହୀଁ, ଆପଣ ସଭ୍ୟଙ୍କର ଅଟକକୁ ଦେଖିପାରିବେ ବା ବଦଳାଇପାରିବେ ନାହିଁ ।',
 'ipbblocked' => 'ଯେହେତୁ ଆପଣଙ୍କୁ ଅଟକାଯାଇଛି ଆପଣ ବାକି ସଭ୍ୟମାନଙ୍କୁ ଅଟକାଇ ବା ଅଟକରୁ ଛାଡ଼ କରିପାରିବେ ନାହିଁ ।',
 'ipbnounblockself' => 'ଆପଣ ନିଜକୁ ଅଟକାଇପାରିବେ ନାହିଁ',
@@ -2781,13 +2781,13 @@ $1ର ଅଟକ ପାଇଁ ଦିଆଯାଇଥିବା କାରଣଟି �
 ତେବେ ଏହି ପ୍ରୁଷ୍ଠା ସହ ଯୋଡାଯାଇଥିବା ଆଲୋଚନା ପ୍ରୁଷ୍ଠାକୁ ଆପେ ଆପେ ଘୁଞ୍ଚାଇଦିଆଯିବ ।
 ସେହି ଯାଗାରେ, ଆପଣଙ୍କୁ ପ୍ରୁଷ୍ଠାଟିକୁ ଘୁଞ୍ଚାଇବାକୁ/ମିଶାଇବାକୁ ପଡ଼ିବ ।',
 'movearticle' => 'ପୃଷ୍ଠା ଘୁଞ୍ଚେଇବା:',
-'moveuserpage-warning' => "'''ସୂଚନା:''' ଆପଣ ଏକ ବ୍ୟବହାରକାରୀ ପୃଷ୍ଠାକୁ ଘୁଞ୍ଚାଇବାକୁ ଯାଉଛନ୍ତି । ଦୟାକରି ଜାଣିରଖନ୍ତୁ ଯେ ପୃଷ୍ଠାଟି କେବଳ ଘୁଞ୍ଚିଯିବ ଓ ବ୍ୟବହାରକାରୀ ''ଘୁଞ୍ଚିବେ ନାହିଁ'' ।",
+'movewiki_userpage-warning' => "'''ସୂଚନା:''' ଆପଣ ଏକ ବ୍ୟବହାରକାରୀ ପୃଷ୍ଠାକୁ ଘୁଞ୍ଚାଇବାକୁ ଯାଉଛନ୍ତି । ଦୟାକରି ଜାଣିରଖନ୍ତୁ ଯେ ପୃଷ୍ଠାଟି କେବଳ ଘୁଞ୍ଚିଯିବ ଓ ବ୍ୟବହାରକାରୀ ''ଘୁଞ୍ଚିବେ ନାହିଁ'' ।",
 'movenologin' => 'ଲଗ‌‌ ଇନ କରିନାହାନ୍ତି',
-'movenologintext' => 'ଏହି ପୃଷ୍ଠାଟିକୁ ଘୁଞ୍ଚାଇବା ପାଇଁ ଆପଣ ନିହାତି ଜଣେ ପଞ୍ଜୀକୃତ ସଭ୍ୟ ହୋଇଥିବେ ଏବଂ [[Special:UserLogin|logged in]]',
+'movenologintext' => 'ଏହି ପୃଷ୍ଠାଟିକୁ ଘୁଞ୍ଚାଇବା ପାଇଁ ଆପଣ ନିହାତି ଜଣେ ପଞ୍ଜୀକୃତ ସଭ୍ୟ ହୋଇଥିବେ ଏବଂ [[Special:wiki_userLogin|logged in]]',
 'movenotallowed' => 'ଆପଣଙ୍କର ପୃଷ୍ଠାଗୁଡିକୁ ଘୁଞ୍ଚାଇବା ଅଧିକାର ନହିଁ ।',
 'movenotallowedfile' => 'ଆପଣଙ୍କର ଫାଇଲ ଘୁଞ୍ଚାଇବାର ଅଧିକାର ନହିଁ ।',
-'cant-move-user-page' => 'ଆପଣଙ୍କୁ ଏହି ସଭ୍ୟ ପୃଷ୍ଠାଟିକୁ ଘୁଞ୍ଚାଇବା ଲାଗି ଅନୁମତି ମିଳିନାହିଁ, କିନ୍ତୁ ନିଜର ଉପପୃଷ୍ଠା ସବୁ ଘୁଞ୍ଚାଇ ପାରିବେ ।',
-'cant-move-to-user-page' => 'ଆପଣଙ୍କର ଗୋଟିଏ ପୃଷ୍ଠାକୁ ବ୍ୟବହାରକାରୀ ପୃଷ୍ଠାକୁ ଘୁଞ୍ଚାଇବାର ଅଧିକାର ନହିଁ ।',
+'cant-move-wiki_user-page' => 'ଆପଣଙ୍କୁ ଏହି ସଭ୍ୟ ପୃଷ୍ଠାଟିକୁ ଘୁଞ୍ଚାଇବା ଲାଗି ଅନୁମତି ମିଳିନାହିଁ, କିନ୍ତୁ ନିଜର ଉପପୃଷ୍ଠା ସବୁ ଘୁଞ୍ଚାଇ ପାରିବେ ।',
+'cant-move-to-wiki_user-page' => 'ଆପଣଙ୍କର ଗୋଟିଏ ପୃଷ୍ଠାକୁ ବ୍ୟବହାରକାରୀ ପୃଷ୍ଠାକୁ ଘୁଞ୍ଚାଇବାର ଅଧିକାର ନହିଁ ।',
 'newtitle' => 'ନୂଆ ନାଆଁକୁ:',
 'move-watch' => 'ମୂଳ ପୃଷ୍ଠା ଓ ବଦଳାଇବାକୁ ଚାହୁଁଥିବା ପୃଷ୍ଠା ଦେଖାଇବେ',
 'movepagebtn' => 'ପୃଷ୍ଠା ଘୁଞ୍ଚେଇବେ',
@@ -2968,8 +2968,8 @@ MediaWiki ବ୍ୟବହାର କରି [[Special:Import|ପୃଷ୍ଠା �
 'javascripttest-qunit-heading' => 'ମେଡିଆଉଇକି ଜାଭାସ୍କ୍ରିପ୍ଟ Qunit ପରଖ ପ୍ରକ୍ରିୟା',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'ଆପଣଙ୍କ ବ୍ୟବହାରକାରୀ ପୃଷ୍ଠା',
-'tooltip-pt-anonuserpage' => 'ଆପଣ ଯେଉଁ IP ଠିକଣାର ବ୍ୟବହାରକାରୀ ପୃଷ୍ଠାଟି ବଦଳାଇବା ପାଇଁ ଚେଷ୍ଟା କରୁଛନ୍ତି',
+'tooltip-pt-wiki_userpage' => 'ଆପଣଙ୍କ ବ୍ୟବହାରକାରୀ ପୃଷ୍ଠା',
+'tooltip-pt-anonwiki_userpage' => 'ଆପଣ ଯେଉଁ IP ଠିକଣାର ବ୍ୟବହାରକାରୀ ପୃଷ୍ଠାଟି ବଦଳାଇବା ପାଇଁ ଚେଷ୍ଟା କରୁଛନ୍ତି',
 'tooltip-pt-mytalk' => 'ଆପଣଙ୍କ ଆଲୋଚନା ପୃଷ୍ଠା',
 'tooltip-pt-anontalk' => 'ଏହି IP ଠିକଣାରୁ କେହିଜଣେ କରିଥିବା ସମ୍ପାଦନାର ଆଲୋଚନା',
 'tooltip-pt-preferences' => 'ମୋ ପସନ୍ଦ',
@@ -3007,13 +3007,13 @@ MediaWiki ବ୍ୟବହାର କରି [[Special:Import|ପୃଷ୍ଠା �
 'tooltip-feed-rss' => 'ଏହି ପୃଷ୍ଠାଟି ପାଇଁ RSS ଫିଡ଼',
 'tooltip-feed-atom' => 'ଏହି ପୃଷ୍ଠାଟି ପାଇଁ ଆଟମ ଫିଡ଼',
 'tooltip-t-contributions' => 'ଏହି ଇଉଜରଙ୍କର ଦେଇ କରାଯାଇଥିବା ସବୁଯାକ ଦାନ ଦେଖାଇବା',
-'tooltip-t-emailuser' => 'ଏହି ସଭ୍ୟଙ୍କୁ ଇ-ମେଲଟିଏ ପଠାଇବେ',
+'tooltip-t-emailwiki_user' => 'ଏହି ସଭ୍ୟଙ୍କୁ ଇ-ମେଲଟିଏ ପଠାଇବେ',
 'tooltip-t-upload' => 'ଫାଇଲ ଅପଲୋଡ଼ କରିବେ',
 'tooltip-t-specialpages' => 'ବିଶେଷ ପୃଷ୍ଠାମାନଙ୍କର ଏକ ତାଲିକା',
 'tooltip-t-print' => 'ଏହି ପୃଷ୍ଠାର ଛପାହୋଇପାରିବା ସଙ୍କଳନ',
 'tooltip-t-permalink' => 'ବଦଳାଯାଇଥିବା ଏହି ଫରଦଟିର ସ୍ଥାୟୀ ଲିଙ୍କ',
 'tooltip-ca-nstab-main' => 'ସୂଚୀ ପୃଷ୍ଠାଟି ଦେଖାଇବେ',
-'tooltip-ca-nstab-user' => 'ଫାଇଲ ପୃଷ୍ଠାଗୁଡ଼ିକ ଦେଖନ୍ତୁ',
+'tooltip-ca-nstab-wiki_user' => 'ଫାଇଲ ପୃଷ୍ଠାଗୁଡ଼ିକ ଦେଖନ୍ତୁ',
 'tooltip-ca-nstab-media' => 'ମିଡ଼ିଆ ପୃଷ୍ଠାଟି ଦେଖିବେ',
 'tooltip-ca-nstab-special' => 'ଏହା ଗୋଟିଏ ବିଶେଷ ପୃଷ୍ଠା, ଆପଣ ଏହାକୁ ବଦଳାଇପାରିବେ ନାହିଁ',
 'tooltip-ca-nstab-project' => 'ପ୍ରକଳ୍ପ ପୃଷ୍ଠାଟି ଦେଖାଇବେ',
@@ -3042,13 +3042,13 @@ MediaWiki ବ୍ୟବହାର କରି [[Special:Import|ପୃଷ୍ଠା �
 
 # Attribution
 'anonymous' => '{{SITENAME}}ର ଅଜଣା {{PLURAL:$1|ଜଣ ବ୍ୟବହାରକାରୀ |ଜଣ ବ୍ୟବହାରକାରୀଗଣ}}',
-'siteuser' => '{{SITENAME}} ବ୍ୟବହାରକାରୀ $1',
-'anonuser' => '{{SITENAME}} ବେନାମି ବ୍ୟବହାରକାରୀ $1',
+'sitewiki_user' => '{{SITENAME}} ବ୍ୟବହାରକାରୀ $1',
+'anonwiki_user' => '{{SITENAME}} ବେନାମି ବ୍ୟବହାରକାରୀ $1',
 'lastmodifiedatby' => 'ଏହି ପୃଷ୍ଠାଟି $3ଙ୍କ ଦେଇ $1 ତାରିଖ $2 ବେଳେ ବଦଳାଯାଇଥିଲା ।',
 'othercontribs' => '$1ଙ୍କ କାମ ଉପରେ ପର୍ଯ୍ୟବସିତ ।',
 'others' => 'ବାକିସବୁ',
-'siteusers' => '{{SITENAME}} {{PLURAL:$2|ବ୍ୟବହାରକାରୀ|ବ୍ୟବହାରକାରୀଗଣ}} $1',
-'anonusers' => '{{SITENAME}} ବେନାମି {{PLURAL:$2|ଜଣ ବ୍ୟବହାରକାରୀ|ଜଣ ବ୍ୟବହାରକାରୀ}} $1',
+'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|ବ୍ୟବହାରକାରୀ|ବ୍ୟବହାରକାରୀଗଣ}} $1',
+'anonwiki_users' => '{{SITENAME}} ବେନାମି {{PLURAL:$2|ଜଣ ବ୍ୟବହାରକାରୀ|ଜଣ ବ୍ୟବହାରକାରୀ}} $1',
 'creditspage' => 'ପୃଷ୍ଠା ଶ୍ରେୟ',
 'nocredits' => 'ଏହି ପୃଷ୍ଠା ପାଇଁ ଶ୍ରେୟ ତଥ୍ୟ ନାହିଁ ।',
 
@@ -3057,7 +3057,7 @@ MediaWiki ବ୍ୟବହାର କରି [[Special:Import|ପୃଷ୍ଠା �
 'spamprotectiontext' => 'ସ୍ପାମ ଛଣା ବ୍ୟବସ୍ଥା ଦେଇ ଆପଣ ସାଇତିବାକୁ ଚେଷ୍ଟାକରୁଥିବା ଲେଖାଟି ଅଟକାଯାଇଛି ।
 ଏହା ବୋଧେ ଏକ ବାସନ୍ଦ କରାଯାଇଥିବା ବାହାର ସାଇଟର ଲିଙ୍କ ପାଇଁ ହୋଇଛି ।',
 'spamprotectionmatch' => 'ତଳଲିଖିତ ଲେଖାଟି ଆମ୍ଭର ସ୍ପାମ ଛଣାରେ ଅସୁବିଧା ତିଆରି କରିଥିଲା: $1',
-'spambot_username' => 'ମିଡ଼ିଆଉଇକି ସ୍ପାମ ସଫାକରିବା',
+'spambot_wiki_username' => 'ମିଡ଼ିଆଉଇକି ସ୍ପାମ ସଫାକରିବା',
 'spam_reverting' => '$1 ସହ ଯୋଡ଼ା ନଥିବା ଶେଷ ସଂସ୍କରଣକୁ ଲେଉଟାଇ ଦେଉଅଛୁଁ',
 'spam_blanking' => '$1 ସହ ଯୋଡ଼ାଥିବା ସବୁଯାକ ସଂସ୍କରଣ ଖାଲି କରିଦିଆଗଲା',
 'spam_deleting' => '$1 ସହ ଯୋଡ଼ାଥିବା ସବୁଯାକ ସଂସ୍କରଣ ଖାଲି କରିଦିଆଗଲା',
@@ -3081,9 +3081,9 @@ MediaWiki ବ୍ୟବହାର କରି [[Special:Import|ପୃଷ୍ଠା �
 'pageinfo-redirects-name' => 'ଏହି ପୃଷ୍ଠାକୁ ଲେଉଟାଣି ଅଛି',
 'pageinfo-subpages-name' => 'ଏହି ପୃଷ୍ଠାରେ ଥିବା ଉପପୃଷ୍ଠା',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|redirect|redirects}}; $3 {{PLURAL:$3|non-redirect|non-redirects}})',
-'pageinfo-firstuser' => 'ପୃଷ୍ଠା ତିଆରିକରିଛନ୍ତି',
+'pageinfo-firstwiki_user' => 'ପୃଷ୍ଠା ତିଆରିକରିଛନ୍ତି',
 'pageinfo-firsttime' => 'ପୃଷ୍ଠା ତିଆରି କରିବା ତାରିଖ',
-'pageinfo-lastuser' => 'ନୂତନତମ ବଦଳକାରୀ',
+'pageinfo-lastwiki_user' => 'ନୂତନତମ ବଦଳକାରୀ',
 'pageinfo-lasttime' => 'ନୂତନତମ ବଦଳର ତାରିଖ',
 'pageinfo-edits' => 'ସମ୍ପାଦନା ସଂଖ୍ୟା',
 'pageinfo-authors' => 'ନିଆରା ଲେଖକଙ୍କ ମୋଟସଂଖ୍ୟା',
@@ -3231,7 +3231,7 @@ $1',
 'exif-compressedbitsperpixel' => 'ଛବି ସଙ୍କୋଚନ ଅବସ୍ଥା',
 'exif-pixelydimension' => 'ଛବି ଓସାର',
 'exif-pixelxdimension' => 'ଛବି ଉଚ୍ଚତା',
-'exif-usercomment' => 'ସଭ୍ୟ ମତାମତ',
+'exif-wiki_usercomment' => 'ସଭ୍ୟ ମତାମତ',
 'exif-relatedsoundfile' => 'ସମ୍ବନ୍ଧିତ ଶବ୍ଦ ଫାଇଲ',
 'exif-datetimeoriginal' => 'ତଥ୍ୟ ତିଆରିହେବାର ତାରିଖ ଓ ସମୟ',
 'exif-datetimedigitized' => 'ଡିଜିଟାଇଜେସନର ତାରିଖ ଓ ସମୟ',
@@ -3615,7 +3615,7 @@ $1',
 କୋଡ଼ଟିର ମିଆଦ ପୁରୀ ଯାଇଥାଇପାରେ ।',
 'confirmemail_needlogin' => 'ଆପଣଙ୍କୁ ନିଜ ଇମେଲଟିକୁ ଥୟ କରିବା ପାଇଁ $1 କରିବାକୁ ପଡ଼ିବ ।',
 'confirmemail_success' => 'ଆପଣଙ୍କ ଇମେଲଟି ଠିକ ବୋଲି ନିଶ୍ଚିତ ହୋଇଗଲା ।
-ଆପଣ ଏବେ [[Special:UserLogin|ଲଗ ଇନ]] କରି ଏହି ଉଇକିକୁ ଉପଭୋଗ କରିପାରନ୍ତି ।',
+ଆପଣ ଏବେ [[Special:wiki_userLogin|ଲଗ ଇନ]] କରି ଏହି ଉଇକିକୁ ଉପଭୋଗ କରିପାରନ୍ତି ।',
 'confirmemail_loggedin' => 'ଆପଣଙ୍କ ଇମେଲ ଠିକଣା ସଠିକ ବୋଲି ପରଖାଗଲା ।',
 'confirmemail_error' => 'ଆପଣ ନିଶ୍ଚିତ କରିଲା ବେଳେ କେଉଁ ଏକ ଅଘଟଣ ଘଟିଲା ।',
 'confirmemail_subject' => '{{SITENAME}} ଇମେଲ ଠିକଣା ନିଶ୍ଚିତ କରିବା',
@@ -3665,10 +3665,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "''' ସାବଧାନ ''' : ଆପଣ ବଦଳାଇବା ପାଇଁ ଆରମ୍ଭ କରିବା ପରେ ପରେ ହିଁ ଏହି ପୃଷ୍ଠାଟିକୁ ଲିଭାଇ ଦିଆଯାଇଛି !",
-'confirmrecreate' => "ବ୍ୟବହାରକାରୀ [[User:$1|$1]] ([[User talk:$1|talk]]) ଆପଣ ବଦଳାଇବା ଆରମ୍ଭ କରିବା ପରେ ପରେ ଏହି ପୃଷ୍ଠାଟିକୁ ଲିଭାଇ ଦେଇଛନ୍ତି ଓ ଏହାର କାରଣ ହେଉଛି :
+'confirmrecreate' => "ବ୍ୟବହାରକାରୀ [[wiki_user:$1|$1]] ([[wiki_user talk:$1|talk]]) ଆପଣ ବଦଳାଇବା ଆରମ୍ଭ କରିବା ପରେ ପରେ ଏହି ପୃଷ୍ଠାଟିକୁ ଲିଭାଇ ଦେଇଛନ୍ତି ଓ ଏହାର କାରଣ ହେଉଛି :
 : ''$2''
 ଆପଣ ସତରେ ଏହାକୁ ଆଉଥରେ ତିଆରି କରିବାକୁ ଚାହାଁନ୍ତି ବୋଲି ଥୟ କରନ୍ତୁ ।",
-'confirmrecreate-noreason' => 'ବ୍ୟବହାରକାରୀ [[User:$1|$1]] ([[User talk:$1|ଆଲୋଚନା]]) ଆପଣ ବଦଳାଇବା ଆରମ୍ଭ କରିବା ପରେ ପରେ ଏହି ପୃଷ୍ଠାଟିକୁ ଲିଭାଇ ଦେଇଛନ୍ତି । ଆପଣ ସତରେ ଏହାକୁ ଆଉଥରେ ତିଆରି କରିବାକୁ ଚାହାଁନ୍ତି ବୋଲି ଥୟ କରନ୍ତୁ ।',
+'confirmrecreate-noreason' => 'ବ୍ୟବହାରକାରୀ [[wiki_user:$1|$1]] ([[wiki_user talk:$1|ଆଲୋଚନା]]) ଆପଣ ବଦଳାଇବା ଆରମ୍ଭ କରିବା ପରେ ପରେ ଏହି ପୃଷ୍ଠାଟିକୁ ଲିଭାଇ ଦେଇଛନ୍ତି । ଆପଣ ସତରେ ଏହାକୁ ଆଉଥରେ ତିଆରି କରିବାକୁ ଚାହାଁନ୍ତି ବୋଲି ଥୟ କରନ୍ତୁ ।',
 'recreate' => 'ପୁନଗଠନ',
 
 # action=purge
@@ -3746,7 +3746,7 @@ $5
 'watchlisttools-raw' => 'ଫାଙ୍କା ଦେଖଣା ତାଲିକାଟିର ସମ୍ପାଦନା କରିବେ',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|ମୋ ଆଲୋଚନା]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|ମୋ ଆଲୋଚନା]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'ଅଜଣା ଏକ୍ସଟେନସନ ଚିହ୍ନ "$1"',
@@ -3812,7 +3812,7 @@ MediaWiki ଉପଯୋଗୀ ହେବା ଲକ୍ଷରେ ବଣ୍ଟାଯ�
 'specialpages-group-login' => 'ଲଗଇନ / ଖାତା ଖୋଲିବେ',
 'specialpages-group-changes' => 'ନଗଦ ବଦଳ ଓ ଇତିହାସ',
 'specialpages-group-media' => 'ମିଡ଼ିଆ ବିବରଣୀ ଓ ଅପଲୋଡ଼',
-'specialpages-group-users' => 'ବ୍ୟବହାରକାରୀଗଣ ଓ ଅଧିକାରମାନ',
+'specialpages-group-wiki_users' => 'ବ୍ୟବହାରକାରୀଗଣ ଓ ଅଧିକାରମାନ',
 'specialpages-group-highuse' => 'ଅଧିକ ବ୍ୟବହାର ହେଉଥିବା ପୃଷ୍ଠା',
 'specialpages-group-pages' => 'ପୃଷ୍ଠାମାନଙ୍କର ତାଲିକା',
 'specialpages-group-pagetools' => 'ପୃଷ୍ଠା ଉପକରଣ',
@@ -3911,11 +3911,11 @@ MediaWiki ଉପଯୋଗୀ ହେବା ଲକ୍ଷରେ ବଣ୍ଟାଯ�
 'logentry-move-move_redir-noredirect' => '$1 $3 ପୃଷ୍ଠାଟି $4କୁ ପୁନପ୍ରେରଣକୁ ଛାଡ଼ି ପୁନପ୍ରେରଣ ବିନା ଘୁଞ୍ଚାଇଲେ',
 'logentry-patrol-patrol' => '$1 $3 ପୃଷ୍ଠାର $4 ତମ ସଙ୍କଳନକୁ ଜଗାଯାଇଅଛି ବୋଲି ଚିହ୍ନିତ କଲେ',
 'logentry-patrol-patrol-auto' => '$1 ଆପେଆପେ $3 ପୃଷ୍ଠାର $4 ତମ ସଙ୍କଳନକୁ ଜଗାଯାଇଅଛି ବୋଲି ଚିହ୍ନିତ କଲେ',
-'logentry-newusers-newusers' => 'ସଭ୍ୟ ଖାତା $1 ତିଆରି କରାଗଲା',
-'logentry-newusers-create' => 'ସଭ୍ୟ ଖାତା $1 ତିଆରି କରାଗଲା',
-'logentry-newusers-create2' => 'ସଭ୍ୟ ଖାତା $3ଟି $1 ଦ୍ଵାରା ତିଆରି କରାଗଲା',
-'logentry-newusers-autocreate' => '$1 ଖାତାଟି ଆପେଆପେ ତିଆରିହେଲା',
-'newuserlog-byemail' => 'ଇ-ମେଲରେ ପାସୱାର୍ଡ଼ ପଠାଇଦିଆଗଲା',
+'logentry-newwiki_users-newwiki_users' => 'ସଭ୍ୟ ଖାତା $1 ତିଆରି କରାଗଲା',
+'logentry-newwiki_users-create' => 'ସଭ୍ୟ ଖାତା $1 ତିଆରି କରାଗଲା',
+'logentry-newwiki_users-create2' => 'ସଭ୍ୟ ଖାତା $3ଟି $1 ଦ୍ଵାରା ତିଆରି କରାଗଲା',
+'logentry-newwiki_users-autocreate' => '$1 ଖାତାଟି ଆପେଆପେ ତିଆରିହେଲା',
+'newwiki_userlog-byemail' => 'ଇ-ମେଲରେ ପାସୱାର୍ଡ଼ ପଠାଇଦିଆଗଲା',
 
 # Feedback
 'feedback-bugornote' => 'ଦୟାକରି ଆପଣ ଏକ କାରିଗରି ଅସୁବିଧାଟିଏ ଜଣାଇବା ପାଇଁ ଚାହୁଁଥିଲେ ଦୟାକରି [$1 ଏଠାରେ ଅସୁବିଧାଟି ଜଣାନ୍ତୁ] । 

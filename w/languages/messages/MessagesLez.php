@@ -23,7 +23,7 @@
 $fallback = 'ru';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'ЭлячIунрин кIаникай цIар чIугун',
 'tog-justify' => 'Ччинин гьяркьуьвилихъ текст дуьзрун',
 'tog-hideminor' => 'Мукьвара хьайи дегишвилера авай гъвечIи дуьзар хъувунар чуьнуьхун',
@@ -46,7 +46,7 @@ $messages = array(
 'tog-previewontop' => 'Сифтедин килигун дуьзар хъувундин дакIардин вилик эцига',
 'tog-previewonfirst' => 'Дуьзар хъувундиз эгечIайла сифтедин килигун къалурун',
 'tog-enotifwatchlistpages' => 'Зи гуьзетунин ччин масакIа хьайила заз эмейл ракъура.',
-'tog-enotifusertalkpages' => 'КЬилди жуван веревирдрин ччина хьанвай дегишвилерикай э-почтадиз чар ракъурун.',
+'tog-enotifwiki_usertalkpages' => 'КЬилди жуван веревирдрин ччина хьанвай дегишвилерикай э-почтадиз чар ракъурун.',
 'tog-oldsig' => 'Алай къул:',
 'tog-showhiddencats' => 'Чуьнуьхай категорияр къалурун',
 
@@ -209,7 +209,7 @@ $messages = array(
 'talk' => 'Веревирд авун',
 'views' => 'Килигунар',
 'toolbox' => 'Алатрин кьвати',
-'userpage' => 'Уртахдин ччиниз килигун',
+'wiki_userpage' => 'Уртахдин ччиниз килигун',
 'projectpage' => 'Проектдин ччиниз килигун',
 'imagepage' => 'Файлдин ччиниз килигун',
 'mediawikipage' => 'Чардин ччиниз килигун',
@@ -228,7 +228,7 @@ $messages = array(
 'pool-queuefull' => 'ТIалабар кIватзавайди ацIа я',
 'pool-errorunknown' => 'Малумтушир гъалатI',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => ' {{SITENAME}}кай',
 'aboutpage' => 'Project:Гьакъиндай',
 'copyright' => 'КЪене авайбур $1 жугъуриз жеда.',
@@ -278,7 +278,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Ччин',
-'nstab-user' => 'Уртахдин ччин',
+'nstab-wiki_user' => 'Уртахдин ччин',
 'nstab-media' => 'Медия ччин',
 'nstab-special' => 'Куьмекчи ччин',
 'nstab-project' => 'Проектдин ччин',
@@ -300,7 +300,7 @@ $messages = array(
 Ихьтин гьал адет яз алуднавай ччинин масакIавилерин тарихдиз цlуру  рекьяй элячlайла арадал къвезва.
 
 Себеб ам туштlа, виридалайни мумкин тирди куьне программада гъалатl жугъурун я
-Тавакъу ийида, URL  къалурна адакай   [[Special:ListUsers/sysop|администратордиз]] хабар це.',
+Тавакъу ийида, URL  къалурна адакай   [[Special:Listwiki_users/sysop|администратордиз]] хабар це.',
 'missingarticle-rev' => '(жуьре#: $1)',
 'internalerror' => 'КЪенепатан гъалатI',
 'internalerror_info' => 'КЪенепатан гъалатI $1',
@@ -326,17 +326,17 @@ $messages = array(
 'login' => 'Гьахьун',
 'nav-login-createaccount' => 'Гьахьун/аккаунт туькlуьрун',
 'loginprompt' => 'Системадиз гьахьун патал "куки" -яр куькlуьрна кIанзава',
-'userlogin' => 'ГЬахьун/аккаунт туькlуьрун',
-'userloginnocreate' => 'Гьахьун',
+'wiki_userlogin' => 'ГЬахьун/аккаунт туькlуьрун',
+'wiki_userloginnocreate' => 'Гьахьун',
 'logout' => 'ЭкъечIун',
-'userlogout' => 'ЭкъечIун',
+'wiki_userlogout' => 'ЭкъечIун',
 'notloggedin' => 'Куьн гьахьнавач',
 'nologin' => 'Квез аккаунт авачни? $1.',
 'nologinlink' => 'Аккаунт туькlуьрун',
 'createaccount' => 'Аккаунт туькlуьрун',
 'gotaccount' => 'Квез аккаунт авани?$1',
 'gotaccountlink' => 'Гьахьун',
-'userlogin-resetlink' => 'Гьахьунин куьлуь-шуьлуьяр рикlел алатнани?',
+'wiki_userlogin-resetlink' => 'Гьахьунин куьлуь-шуьлуьяр рикlел алатнани?',
 'createaccountmail' => 'Э-чар галаз',
 'createaccountreason' => 'Себеб:',
 'loginerror' => 'ГЬахьунин гъалатI',
@@ -347,7 +347,7 @@ $messages = array(
 'mailerror' => 'Чар ракъурунин гъалатI: $1',
 'emailconfirmlink' => 'Куь электрон почтунин адрес тестикьун.',
 'accountcreated' => 'Аккаунт туькIуьрнава',
-'usernamehasherror' => 'Уртахдин тIвар "диез"дин лишан квачиз хьана кIанзава',
+'wiki_usernamehasherror' => 'Уртахдин тIвар "диез"дин лишан квачиз хьана кIанзава',
 'loginlanguagelabel' => 'ЧIал: $1',
 
 # Change password dialog
@@ -364,7 +364,7 @@ $messages = array(
 # Special:PasswordReset
 'passwordreset' => 'Парол алудна гадрун',
 'passwordreset-legend' => 'Парол алудна гадрун',
-'passwordreset-username' => 'Уртахдин тlвар:',
+'passwordreset-wiki_username' => 'Уртахдин тlвар:',
 'passwordreset-domain' => 'Домен:',
 'passwordreset-email' => 'E-mail адрес',
 'passwordreset-emailelement' => 'Уртахдин тIвар: $1
@@ -490,7 +490,7 @@ $messages = array(
 
 # Revision deletion
 'rev-deleted-comment' => 'Дуьзар хъувунин тегьерар кхьин алуднава',
-'rev-deleted-user' => '(иштиракчидин тIвар алуднава)',
+'rev-deleted-wiki_user' => '(иштиракчидин тIвар алуднава)',
 'rev-deleted-event' => '(къейд алуднава)',
 'rev-delundel' => 'къалурун/кIевирун',
 'rev-showdeleted' => 'къалурун',
@@ -641,7 +641,7 @@ $messages = array(
 'timezoneregion-pacific' => 'Секин чIехи гуьл',
 'prefs-files' => 'Шикил',
 'youremail' => 'Электрон почта:',
-'username' => 'Уртахдин тӀвар',
+'wiki_username' => 'Уртахдин тӀвар',
 'uid' => 'Уртах тайин ийидайди:',
 'yourrealname' => 'Xалис тIвар:',
 'yourlanguage' => 'ЧIалар',
@@ -658,12 +658,12 @@ $messages = array(
 'prefs-advancedrendering' => 'Гегьенш низамарунар',
 'prefs-advancedwatchlist' => 'Гегьенш низамарунар',
 
-# User rights
-'userrights-reason' => 'Кар',
+# wiki_user rights
+'wiki_userrights-reason' => 'Кар',
 
 # Groups
 'group' => 'КIеретI',
-'group-user' => 'Иштиракчияр',
+'group-wiki_user' => 'Иштиракчияр',
 'group-autoconfirmed' => 'Автотестикь хьанвай иштиракчияр',
 'group-bot' => 'Ботар',
 'group-sysop' => 'Къавха',
@@ -671,12 +671,12 @@ $messages = array(
 'group-suppress' => 'Ревизорар',
 'group-all' => '(вири)',
 
-'group-user-member' => '{{GENDER:$1|иштиракчи}}',
+'group-wiki_user-member' => '{{GENDER:$1|иштиракчи}}',
 'group-bot-member' => '{{GENDER:$1|бот}}',
 'group-sysop-member' => '{{GENDER:$1|администратор}}',
 'group-bureaucrat-member' => '{{GENDER:$1|бюрократ}}',
 
-'grouppage-user' => '{{ns:project}}:Иштиракчияр',
+'grouppage-wiki_user' => '{{ns:project}}:Иштиракчияр',
 'grouppage-bot' => '{{ns:project}}:Бот',
 'grouppage-sysop' => '{{ns:project}}:Къавхаяр',
 
@@ -690,7 +690,7 @@ $messages = array(
 'right-browsearchive' => 'Алуднавай ччинар жугъурун',
 'right-undelete' => 'Алуднавай ччинар туькIуьр хъувун',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Эхтияр Ишлемишчидин дафтlар',
 'rightsnone' => '(садни)',
 
@@ -703,7 +703,7 @@ $messages = array(
 'action-minoredit' => 'и дуьзар хъувун гъвечIи хьиз лишан авун',
 'action-move' => 'Ччинин тIвар эхцигун',
 'action-move-subpages' => 'и ччинин адан агъаччинрин  тIварар эхцигун',
-'action-move-rootuserpages' => 'дувулдин иштиракчийрин ччинрин тIварар эхцигун',
+'action-move-rootwiki_userpages' => 'дувулдин иштиракчийрин ччинрин тIварар эхцигун',
 'action-movefile' => 'файлдин тIвар эхцигун',
 'action-upload' => 'и файл ппарун',
 'action-reupload' => 'авай файл цIийикIа ппарун',
@@ -796,7 +796,7 @@ $messages = array(
 'listfiles_thumb' => 'Бицlи суьрет',
 'listfiles_date' => 'Нумра',
 'listfiles_name' => 'ТIар',
-'listfiles_user' => 'Иштиракчи',
+'listfiles_wiki_user' => 'Иштиракчи',
 'listfiles_size' => 'Кьадар',
 'listfiles_description' => 'Тегьерар кхьин',
 'listfiles_count' => 'Жуьреяр',
@@ -813,7 +813,7 @@ $messages = array(
 'filehist-thumb' => 'Бицlи шикил',
 'filehist-thumbtext' => '$1 тарих алай жьуредин бицlи акунар',
 'filehist-nothumb' => 'БицIи суьрет авайд ттуш',
-'filehist-user' => 'Уртах',
+'filehist-wiki_user' => 'Уртах',
 'filehist-dimensions' => 'Кьадарар',
 'filehist-filesize' => 'Файлдин кьадар',
 'filehist-comment' => 'Къейд',
@@ -853,12 +853,12 @@ $messages = array(
 'statistics-header-pages' => 'Ччинрин статистика',
 'statistics-header-edits' => 'Дуьзар хъувунрин статистика',
 'statistics-header-views' => 'Статистикадиз килигун',
-'statistics-header-users' => 'Иштиракчидин статистика',
+'statistics-header-wiki_users' => 'Иштиракчидин статистика',
 'statistics-articles' => 'Макъалаяр',
 'statistics-pages' => 'Ччинар',
 'statistics-files' => 'Ппарнавай файлар',
 'statistics-views-total' => 'Вири килигунар',
-'statistics-users-active' => 'Актив уртахар',
+'statistics-wiki_users-active' => 'Актив уртахар',
 
 'disambiguationspage' => 'Template:гзафманавал',
 
@@ -875,10 +875,10 @@ $messages = array(
 'shortpages' => 'Куьруь хъувун',
 'longpages' => 'Яргъи хъувун',
 'protectedpages' => 'Хвенвай ччинар',
-'listusers' => 'Уртахрин сиягь',
-'usercreated' => '{{GENDER:$3|Created}} идав $1 идал $2',
+'listwiki_users' => 'Уртахрин сиягь',
+'wiki_usercreated' => '{{GENDER:$3|Created}} идав $1 идал $2',
 'newpages' => 'ЦIийи ччинар',
-'newpages-username' => 'Иштиракчидин тlвар',
+'newpages-wiki_username' => 'Иштиракчидин тlвар',
 'ancientpages' => 'виридалайни цIуру ччинар',
 'move' => 'ТIвар эхцигун',
 'movethispage' => 'Юзун и хъувун',
@@ -914,22 +914,22 @@ $messages = array(
 'linksearch-ok' => 'Ахтармишун',
 'linksearch-line' => '$2-ай $1-аз элячlун',
 
-# Special:ListUsers
-'listusers-submit' => 'КЪалурун',
-'listusers-noresult' => 'Иштиракчияр жагъуриз хьанвач',
-'listusers-blocked' => '(блокарнава)',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'КЪалурун',
+'listwiki_users-noresult' => 'Иштиракчияр жагъуриз хьанвач',
+'listwiki_users-blocked' => '(блокарнава)',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Уртахар регистрация авунин журнал',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Уртахар регистрация авунин журнал',
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'КIеретI',
 'listgrouprights-members' => '(уьзвийрин сиягь)',
 
-# E-mail user
-'emailuser' => 'Уртахдиз чар кхьихь',
-'emailusername' => 'Уртахдин тlвар:',
-'emailusernamesubmit' => 'Ракъурун',
+# E-mail wiki_user
+'emailwiki_user' => 'Уртахдиз чар кхьихь',
+'emailwiki_username' => 'Уртахдин тlвар:',
+'emailwiki_usernamesubmit' => 'Ракъурун',
 'emailfrom' => 'Идай',
 'emailto' => 'Эхир:',
 'emailsubject' => 'Тема:',
@@ -1037,7 +1037,7 @@ $messages = array(
 'sp-contributions-logs' => 'журналар',
 'sp-contributions-talk' => 'Рахун',
 'sp-contributions-search' => 'Кутунвай пай жугъура',
-'sp-contributions-username' => 'IP -адрес ва я  уртахдин тlвар',
+'sp-contributions-wiki_username' => 'IP -адрес ва я  уртахдин тlвар',
 'sp-contributions-toponly' => 'Анжах эхиримжи жуьре тир дуьзар хъувунар къалура',
 'sp-contributions-submit' => 'Жагъурун',
 
@@ -1131,7 +1131,7 @@ $messages = array(
 'import-token-mismatch' => 'Сеансдин  ганайбур квахьнава. Тавакъу ийида, мадни алахъун ая.',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Куьн (уртахдин) ччин',
+'tooltip-pt-wiki_userpage' => 'Куьн (уртахдин) ччин',
 'tooltip-pt-mytalk' => 'Куь веревирдрин ччин',
 'tooltip-pt-preferences' => 'Куь низамарунар',
 'tooltip-pt-watchlist' => 'Куьне вилив хуьзвай ччинрин сиягь',
@@ -1164,13 +1164,13 @@ $messages = array(
 'tooltip-feed-rss' => 'RSS  хуьрек и чарчиз',
 'tooltip-feed-atom' => 'И ччиндин Atom -дин трансляция',
 'tooltip-t-contributions' => 'И уртахдин кутур крарин сиягь',
-'tooltip-t-emailuser' => 'И уртахдиз электрон чар ракъура',
+'tooltip-t-emailwiki_user' => 'И уртахдиз электрон чар ракъура',
 'tooltip-t-upload' => 'Шикилар ва я мультимедиядин файлар ппарун',
 'tooltip-t-specialpages' => 'Куьмекчи ччинрин сиягь',
 'tooltip-t-print' => 'И ччиндин басма авун патал жьуре',
 'tooltip-t-permalink' => 'Ччиндин и жуьредиз гьамишан элячIун',
 'tooltip-ca-nstab-main' => 'Макъалада авайбриз килига',
-'tooltip-ca-nstab-user' => 'Уртахдин ччиниз килигун',
+'tooltip-ca-nstab-wiki_user' => 'Уртахдин ччиниз килигун',
 'tooltip-ca-nstab-special' => 'Им куьмекдин ччин я, квевай и ччин дуьзар хъийиз жедач',
 'tooltip-ca-nstab-project' => 'Проектдин ччиниз килигун',
 'tooltip-ca-nstab-image' => 'Файлдин ччиндиз килигун',

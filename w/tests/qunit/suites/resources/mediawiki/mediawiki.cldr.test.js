@@ -68,7 +68,7 @@ function pluralTest( langCode, tests ) {
 }
 
 $.each( pluralTestcases, function ( langCode, tests ) {
-	if ( langCode === mw.config.get( 'wgUserLanguage' ) ) {
+	if ( langCode === mw.config.get( 'wgwiki_userLanguage' ) ) {
 		pluralTest( langCode, tests );
 	}
 } );

@@ -22,7 +22,7 @@
  */
 
 /**
- * Special page allows users to request email confirmation message, and handles
+ * Special page allows wiki_users to request email confirmation message, and handles
  * processing of the confirmation code when the link in the email is followed
  *
  * @ingroup SpecialPage
@@ -49,15 +49,15 @@ class EmailConfirmation extends UnlistedSpecialPage {
 		$this->checkReadOnly();
 
 		if( $code === null || $code === '' ) {
-			if( $this->getUser()->isLoggedIn() ) {
-				if( Sanitizer::validateEmail( $this->getUser()->getEmail() ) ) {
+			if( $this->getwiki_user()->isLoggedIn() ) {
+				if( Sanitizer::validateEmail( $this->getwiki_user()->getEmail() ) ) {
 					$this->showRequestForm();
 				} else {
 					$this->getOutput()->addWikiMsg( 'confirmemail_noemail' );
 				}
 			} else {
 				$llink = Linker::linkKnown(
-					SpecialPage::getTitleFor( 'Userlogin' ),
+					SpecialPage::getTitleFor( 'wiki_userlogin' ),
 					$this->msg( 'loginreqlink' )->escaped(),
 					array(),
 					array( 'returnto' => $this->getTitle()->getPrefixedText() )
@@ -70,36 +70,36 @@ class EmailConfirmation extends UnlistedSpecialPage {
 	}
 
 	/**
-	 * Show a nice form for the user to request a confirmation mail
+	 * Show a nice form for the wiki_user to request a confirmation mail
 	 */
 	function showRequestForm() {
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		$out = $this->getOutput();
-		if( $this->getRequest()->wasPosted() && $user->matchEditToken( $this->getRequest()->getText( 'token' ) ) ) {
-			$status = $user->sendConfirmationMail();
+		if( $this->getRequest()->wasPosted() && $wiki_user->matchEditToken( $this->getRequest()->getText( 'token' ) ) ) {
+			$status = $wiki_user->sendConfirmationMail();
 			if ( $status->isGood() ) {
 				$out->addWikiMsg( 'confirmemail_sent' );
 			} else {
 				$out->addWikiText( $status->getWikiText( 'confirmemail_sendfailed' ) );
 			}
 		} else {
-			if( $user->isEmailConfirmed() ) {
+			if( $wiki_user->isEmailConfirmed() ) {
 				// date and time are separate parameters to facilitate localisation.
 				// $time is kept for backward compat reasons.
 				// 'emailauthenticated' is also used in SpecialPreferences.php
 				$lang = $this->getLanguage();
-				$emailAuthenticated = $user->getEmailAuthenticationTimestamp();
-				$time = $lang->userTimeAndDate( $emailAuthenticated, $user );
-				$d = $lang->userDate( $emailAuthenticated, $user );
-				$t = $lang->userTime( $emailAuthenticated, $user );
+				$emailAuthenticated = $wiki_user->getEmailAuthenticationTimestamp();
+				$time = $lang->wiki_userTimeAndDate( $emailAuthenticated, $wiki_user );
+				$d = $lang->wiki_userDate( $emailAuthenticated, $wiki_user );
+				$t = $lang->wiki_userTime( $emailAuthenticated, $wiki_user );
 				$out->addWikiMsg( 'emailauthenticated', $time, $d, $t );
 			}
-			if( $user->isEmailConfirmationPending() ) {
+			if( $wiki_user->isEmailConfirmationPending() ) {
 				$out->wrapWikiMsg( "<div class=\"error mw-confirmemail-pending\">\n$1\n</div>", 'confirmemail_pending' );
 			}
 			$out->addWikiMsg( 'confirmemail_text' );
 			$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle()->getLocalUrl() ) );
-			$form .= Html::hidden( 'token', $user->getEditToken() );
+			$form .= Html::hidden( 'token', $wiki_user->getEditToken() );
 			$form .= Xml::submitButton( $this->msg( 'confirmemail_send' )->text() );
 			$form .= Xml::closeElement( 'form' );
 			$out->addHTML( $form );
@@ -107,20 +107,20 @@ class EmailConfirmation extends UnlistedSpecialPage {
 	}
 
 	/**
-	 * Attempt to confirm the user's email address and show success or failure
-	 * as needed; if successful, take the user to log in
+	 * Attempt to confirm the wiki_user's email address and show success or failure
+	 * as needed; if successful, take the wiki_user to log in
 	 *
 	 * @param $code string Confirmation code
 	 */
 	function attemptConfirm( $code ) {
-		$user = User::newFromConfirmationCode( $code );
-		if( is_object( $user ) ) {
-			$user->confirmEmail();
-			$user->saveSettings();
-			$message = $this->getUser()->isLoggedIn() ? 'confirmemail_loggedin' : 'confirmemail_success';
+		$wiki_user = wiki_user::newFromConfirmationCode( $code );
+		if( is_object( $wiki_user ) ) {
+			$wiki_user->confirmEmail();
+			$wiki_user->saveSettings();
+			$message = $this->getwiki_user()->isLoggedIn() ? 'confirmemail_loggedin' : 'confirmemail_success';
 			$this->getOutput()->addWikiMsg( $message );
-			if( !$this->getUser()->isLoggedIn() ) {
-				$title = SpecialPage::getTitleFor( 'Userlogin' );
+			if( !$this->getwiki_user()->isLoggedIn() ) {
+				$title = SpecialPage::getTitleFor( 'wiki_userlogin' );
 				$this->getOutput()->returnToMain( true, $title );
 			}
 		} else {
@@ -131,7 +131,7 @@ class EmailConfirmation extends UnlistedSpecialPage {
 }
 
 /**
- * Special page allows users to cancel an email confirmation using the e-mail
+ * Special page allows wiki_users to cancel an email confirmation using the e-mail
  * confirmation code
  *
  * @ingroup SpecialPage
@@ -153,18 +153,18 @@ class EmailInvalidation extends UnlistedSpecialPage {
 	}
 
 	/**
-	 * Attempt to invalidate the user's email address and show success or failure
+	 * Attempt to invalidate the wiki_user's email address and show success or failure
 	 * as needed; if successful, link to main page
 	 *
 	 * @param $code string Confirmation code
 	 */
 	function attemptInvalidate( $code ) {
-		$user = User::newFromConfirmationCode( $code );
-		if( is_object( $user ) ) {
-			$user->invalidateEmail();
-			$user->saveSettings();
+		$wiki_user = wiki_user::newFromConfirmationCode( $code );
+		if( is_object( $wiki_user ) ) {
+			$wiki_user->invalidateEmail();
+			$wiki_user->saveSettings();
 			$this->getOutput()->addWikiMsg( 'confirmemail_invalidated' );
-			if( !$this->getUser()->isLoggedIn() ) {
+			if( !$this->getwiki_user()->isLoggedIn() ) {
 				$this->getOutput()->returnToMain();
 			}
 		} else {

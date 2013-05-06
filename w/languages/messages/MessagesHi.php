@@ -72,7 +72,7 @@ $namespaceNames = array(
 );
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'सक्रिय_सदस्य' ),
+	'Activewiki_users'               => array( 'सक्रिय_सदस्य' ),
 	'Allmessages'               => array( 'सभी_सन्देश', 'सभी_संदेश' ),
 	'Allpages'                  => array( 'सभी_पृष्ठ', 'सभी_पन्ने' ),
 	'Ancientpages'              => array( 'पुराने_पृष्ठ', 'पुराने_पन्ने' ),
@@ -94,7 +94,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'बहुविकल्पी_कड़ियाँ', 'बहुविकल्पित' ),
 	'DoubleRedirects'           => array( 'दुगुने_पुनर्निर्देश', 'दुगुने_अनुप्रेष' ),
 	'EditWatchlist'             => array( 'ध्यानसूची_सम्पादन', 'ध्यानसूची_संपादन', 'ध्यानसूची_सम्पादन_करें' ),
-	'Emailuser'                 => array( 'ईमेल_करें', 'सदस्य_को_ईमेल_करें' ),
+	'Emailwiki_user'                 => array( 'ईमेल_करें', 'सदस्य_को_ईमेल_करें' ),
 	'Export'                    => array( 'निर्यात' ),
 	'Fewestrevisions'           => array( 'न्यूनतम_अवतरण', 'कम_सम्पादित_पृष्ठ' ),
 	'FileDuplicateSearch'       => array( 'फ़ाइल_प्रति_खोज', 'फाइल_प्रति_खोज', 'संचिका_प्रति_खोज' ),
@@ -108,7 +108,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'फ़ाइल_सूची', 'फाइल_सूची' ),
 	'Listgrouprights'           => array( 'सदस्य_समूह_अधिकार', 'अधिकार_सूची' ),
 	'Listredirects'             => array( 'पुनर्निर्देश_सूची', 'अनुप्रेष_सूची' ),
-	'Listusers'                 => array( 'सदस्य_सूची' ),
+	'Listwiki_users'                 => array( 'सदस्य_सूची' ),
 	'Lockdb'                    => array( 'डाटाबेस_पर_ताला_लगाएँ' ),
 	'Log'                       => array( 'लॉग', 'लौग' ),
 	'Lonelypages'               => array( 'एकाकी_पृष्ठ', 'अकेले_पृष्ठ' ),
@@ -149,9 +149,9 @@ $specialPageAliases = array(
 	'Unusedimages'              => array( 'अप्रयुक्त_फ़ाइलें', 'अप्रयुक्त_फाइलें' ),
 	'Unusedtemplates'           => array( 'अप्रयुक्त_साँचे' ),
 	'Upload'                    => array( 'अपलोड' ),
-	'Userlogin'                 => array( 'लॉगिन', 'लौगिन', 'सत्रारम्भ', 'सत्रारंभ' ),
-	'Userlogout'                => array( 'सत्रांत', 'लॉग_आउट', 'लौग_आउट' ),
-	'Userrights'                => array( 'सदस्य_अधिकार' ),
+	'wiki_userlogin'                 => array( 'लॉगिन', 'लौगिन', 'सत्रारम्भ', 'सत्रारंभ' ),
+	'wiki_userlogout'                => array( 'सत्रांत', 'लॉग_आउट', 'लौग_आउट' ),
+	'wiki_userrights'                => array( 'सदस्य_अधिकार' ),
 	'Version'                   => array( 'संस्करण', 'वर्ज़न', 'वर्जन' ),
 	'Wantedcategories'          => array( 'वांछित_श्रेणियाँ' ),
 	'Wantedfiles'               => array( 'वांछित_फ़ाइलें', 'वांछित_फाइलें' ),
@@ -179,7 +179,7 @@ $linkTrail = "/^([a-z]+)(.*)$/sD";
 $digitGroupingPattern = "##,##,###";
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'कड़ियाँ अधोरेखन:',
 'tog-justify' => 'परिच्छेद समान करें',
 'tog-hideminor' => 'हाल में हुए बदलावों में छोटे बदलाव छिपाएँ',
@@ -203,7 +203,7 @@ $messages = array(
 'tog-previewonfirst' => 'प्रथम सम्पादन के बाद झलक दिखाएँ',
 'tog-nocache' => 'ब्राउज़र पृष्ठ कैशिंग अक्षम करें',
 'tog-enotifwatchlistpages' => 'मेरी ध्यानसूची में दर्ज किसी भी पृष्ठ अथवा फ़ाइल में परिवर्तन होने पर मुझे ई-मेल करें',
-'tog-enotifusertalkpages' => 'मेरा वार्ता पृष्ठ परिवर्तित होने पर मुझे ई-मेल करें',
+'tog-enotifwiki_usertalkpages' => 'मेरा वार्ता पृष्ठ परिवर्तित होने पर मुझे ई-मेल करें',
 'tog-enotifminoredits' => 'छोटे परिवर्तनों के लिए भी मुझे ई-मेल भेजें',
 'tog-enotifrevealaddr' => 'अधिसूचना ई-मेल में मेरा ई-मेल पता दर्शाएँ',
 'tog-shownumberswatching' => 'ध्यान रखने वाले सदस्यों की संख्या दिखाएँ',
@@ -384,7 +384,7 @@ $messages = array(
 'talk' => 'चर्चा',
 'views' => 'दर्शाव',
 'toolbox' => 'साधन पेटी',
-'userpage' => 'सदस्य पृष्ठ देखें',
+'wiki_userpage' => 'सदस्य पृष्ठ देखें',
 'projectpage' => 'परियोजना पृष्ठ देखें',
 'imagepage' => 'फ़ाइल पृष्ठ देखें',
 'mediawikipage' => 'सन्देश पृष्ठ देखें',
@@ -410,7 +410,7 @@ $1',
 'pool-queuefull' => 'पूल पंक्ति भरी हुई है',
 'pool-errorunknown' => 'अज्ञात त्रुटि',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} के बारे में',
 'aboutpage' => 'Project:परिचय',
 'copyright' => 'उपलब्ध सामग्री $1 के अधीन है।',
@@ -443,8 +443,8 @@ $1',
 'youhavenewmessages' => 'आपके लिए $1 है। ($2)',
 'newmessageslink' => 'नए सन्देश',
 'newmessagesdifflink' => 'पिछला बदलाव',
-'youhavenewmessagesfromusers' => 'आपके लिये {{PLURAL:$3|एक अन्य सदस्य का सन्देश है|$3 अन्य सदस्यों के सन्देश हैं}}। ($2)',
-'youhavenewmessagesmanyusers' => 'आपके लिये $1 हैं। ($2)',
+'youhavenewmessagesfromwiki_users' => 'आपके लिये {{PLURAL:$3|एक अन्य सदस्य का सन्देश है|$3 अन्य सदस्यों के सन्देश हैं}}। ($2)',
+'youhavenewmessagesmanywiki_users' => 'आपके लिये $1 हैं। ($2)',
 'newmessageslinkplural' => '{{PLURAL:$1|एक नया सन्देश|नये सन्देश}}',
 'newmessagesdifflinkplural' => 'अंतिम {{PLURAL:$1|परिवर्तन}}',
 'youhavenewmessagesmulti' => '$1 पर आपके लिए नया संदेश है',
@@ -477,7 +477,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'पृष्ठ',
-'nstab-user' => 'सदस्य',
+'nstab-wiki_user' => 'सदस्य',
 'nstab-media' => 'मीडिया',
 'nstab-special' => 'विशेष पृष्ठ',
 'nstab-project' => 'परियोजना पृष्ठ',
@@ -521,7 +521,7 @@ $1',
 आम तौर पर हटाए जा चुके पृष्ठ की इतिहास कड़ी का प्रयोग करने पर ऐसा होता है।
 
 अगर ऐसा नहीं है, तो शायद आपने सॉफ़्टवेयर में त्रुटि खोज ली है।
-कृपया यू॰आर॰एल पते समेत किसी [[Special:ListUsers/sysop|प्रबंधक]] को इसका ब्यौरा दें।',
+कृपया यू॰आर॰एल पते समेत किसी [[Special:Listwiki_users/sysop|प्रबंधक]] को इसका ब्यौरा दें।',
 'missingarticle-rev' => '(अवतरण#: $1)',
 'missingarticle-diff' => '(अंतर: $1, $2)',
 'readonly_lag' => 'उपमुख्य डाटाबेस सर्वर मुख्य डाटाबेस सर्वर के बराबर अद्यातानीत होने तक मुख्य डाटाबेस सर्वर लॉक हो गया है।',
@@ -571,7 +571,7 @@ $2',
 'customcssprotected' => 'आपको इस CSS पृष्ठ को संपादित करने की अनुमति नहीं है, क्योंकि इसमें अन्य सदस्य की व्यक्तिगत सेटिंग्स शामिल हैं।',
 'customjsprotected' => 'आपको इस जावास्क्रिप्ट पृष्ठ को संपादित करने की अनुमति नहीं है, क्योंकि इसमें अन्य सदस्य की व्यक्तिगत सेटिंग्स शामिल हैं।',
 'ns-specialprotected' => 'विशेष पृष्ठ सम्पादित नहीं किये जा सकते।',
-'titleprotected' => 'सदस्य [[User:$1|$1]] ने इस शीर्षक का पृष्ठ बनाने से सुरक्षित किया हुआ है।
+'titleprotected' => 'सदस्य [[wiki_user:$1|$1]] ने इस शीर्षक का पृष्ठ बनाने से सुरक्षित किया हुआ है।
 इसके लिये निम्न कारण दिया गया है: "\'\'$2\'\'"',
 'invalidtitle-knownnamespace' => '"$2" नामस्थान और "$3" नाम वाला गलत शीर्षक',
 'invalidtitle-unknownnamespace' => 'अज्ञात नामस्थान संख्या $1 और नाम "$2" वाला गलत शीर्षक',
@@ -585,7 +585,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''अब आपका सत्रांत हो चुका है।'''
 
-आप बेनामी हो के {{SITENAME}} का प्रयोग जारी रख सकते हैं, या उसी या किसी और सदस्य के तौर पर [[Special:UserLogin|फिर से सत्रारंभ]] कर सकते हैं।
+आप बेनामी हो के {{SITENAME}} का प्रयोग जारी रख सकते हैं, या उसी या किसी और सदस्य के तौर पर [[Special:wiki_userLogin|फिर से सत्रारंभ]] कर सकते हैं।
 ध्यान दें कि जब तक आप अपनी ब्राउज़र कैशे खाली नहीं करते हैं, कुछ पृष्ठ अब भी ऐसे दिख सकते हैं जैसे कि आपका सत्र अभी भी चल रहा हो।",
 'welcomecreation' => '== आपका स्वागत है, $1 ! ==
 आपका खाता बनाया जा चुका है। अपनी [[Special:Preferences|{{SITENAME}} वरीयताएँ]] परिवर्तित करना न भूलिएगा।',
@@ -600,21 +600,21 @@ $2',
 'login' => 'लॉग इन',
 'nav-login-createaccount' => 'सत्रारंभ / खाता खोलें',
 'loginprompt' => '{{SITENAME}} पर लॉग इन करने के लिए अपने ब्राउज़र पर कुकीज़ (cookies) सक्षम करें।',
-'userlogin' => 'सत्रारंभ / खाता खोलें',
-'userloginnocreate' => 'लॉग इन',
+'wiki_userlogin' => 'सत्रारंभ / खाता खोलें',
+'wiki_userloginnocreate' => 'लॉग इन',
 'logout' => 'सत्रांत',
-'userlogout' => 'सत्रांत',
+'wiki_userlogout' => 'सत्रांत',
 'notloggedin' => 'लॉग इन नहीं किया है',
 'nologin' => "क्या आपने सदस्यता नहीं ली है? '''$1'''।",
 'nologinlink' => 'नया खाता बनाएँ',
 'createaccount' => 'खाता बनाएँ',
 'gotaccount' => "पहले से आपका खाता है? '''$1''' करें।",
 'gotaccountlink' => 'लॉग इन',
-'userlogin-resetlink' => 'अपनी प्रवेश जानकारी भूल गए हैं?',
+'wiki_userlogin-resetlink' => 'अपनी प्रवेश जानकारी भूल गए हैं?',
 'createaccountmail' => 'ई-मेल द्वारा',
 'createaccountreason' => 'कारण:',
 'badretype' => 'आपने जो कूटशब्द दिये हैं वे एक दूसरे से नहीं मिलते। फिर से लिखें।',
-'userexists' => 'आपका दिया सदस्यनाम पहले से प्रयोग में है।
+'wiki_userexists' => 'आपका दिया सदस्यनाम पहले से प्रयोग में है।
 कृपया कोई अन्य सदस्यनाम चुनें।',
 'loginerror' => 'लॉग इन त्रुटि',
 'createaccounterror' => 'खाता नहीं बन पाया: $1',
@@ -630,13 +630,13 @@ $2',
 'noname' => 'आपने वैध सदस्यनाम नहीं दिया है।',
 'loginsuccesstitle' => 'लॉग इन हो गया है',
 'loginsuccess' => "'''आप {{SITENAME}} में \"\$1\" सदस्यनाम से लॉग इन हो {{GENDER:\$1|चुके|चुकी|चुके}} हैं।'''",
-'nosuchuser' => '"$1" नाम का कोई सदस्य नहीं है।
+'nosuchwiki_user' => '"$1" नाम का कोई सदस्य नहीं है।
 सदस्यनाम में लघु और दीर्घ अक्षरों से फ़र्क पड़ता है।
-अपनी वर्तनी जाँचें, या [[Special:UserLogin/signup|नया खाता खोलें]]।',
-'nosuchusershort' => '"$1" नाम का कोई सदस्य नहीं है।
+अपनी वर्तनी जाँचें, या [[Special:wiki_userLogin/signup|नया खाता खोलें]]।',
+'nosuchwiki_usershort' => '"$1" नाम का कोई सदस्य नहीं है।
 कृपया अपनी दी हुई वर्तनी जाँचें।',
-'nouserspecified' => 'सदस्यनाम देना अनिवार्य है।',
-'login-userblocked' => 'यह सदस्य प्रतिबन्धित है। सत्रारम्भ की अनुमति नहीं है।',
+'nowiki_userspecified' => 'सदस्यनाम देना अनिवार्य है।',
+'login-wiki_userblocked' => 'यह सदस्य प्रतिबन्धित है। सत्रारम्भ की अनुमति नहीं है।',
 'wrongpassword' => 'आपने जो कूटशब्द लिखा है वह गलत है। कृपया पुनः प्रयास करें।',
 'wrongpasswordempty' => 'कूटशब्द खाली है।
 पुनः यत्न करें।',
@@ -677,16 +677,16 @@ $2',
 आपको लॉग इन कर के अपना कूटशब्द (पासवर्ड) तुरंत बदल लेना चाहिये।
 
 यदि यह खाता गलती से खोला गया है, तो आप इस मेसेज को नज़रंदाज़ कर सकते हैं।',
-'usernamehasherror' => 'सदस्यनाम में हैश कैरैक्टर वर्जित हैं।',
+'wiki_usernamehasherror' => 'सदस्यनाम में हैश कैरैक्टर वर्जित हैं।',
 'login-throttled' => 'आपने हाल ही में कई बार लॉग इन करने के प्रयास किये हैं।
 पुनः प्रयास करने से पहले थोड़ी प्रतीक्षा करें।',
 'login-abort-generic' => 'आपका सत्रारम्भ असफल रहा - निष्फलित',
 'loginlanguagelabel' => 'भाषा: $1',
-'suspicious-userlogout' => 'अपका लॉग आउट करने का अनुरोध अस्वीकृत कर दिया गया है क्योंकि ऐसा प्रतीत होता है कि यह किसी खराब ब्राउज़र या कैश करने वाली प्रॉक्सी द्वारा भेजा गया था।',
+'suspicious-wiki_userlogout' => 'अपका लॉग आउट करने का अनुरोध अस्वीकृत कर दिया गया है क्योंकि ऐसा प्रतीत होता है कि यह किसी खराब ब्राउज़र या कैश करने वाली प्रॉक्सी द्वारा भेजा गया था।',
 
 # E-mail sending
 'php-mail-error-unknown' => 'PHP के mail() फ़ंक्शन में अज्ञात त्रुटि हुई।',
-'user-mail-no-addy' => 'ई-मेल पते के बिना ई-मेल भेजने की कोशिश की।',
+'wiki_user-mail-no-addy' => 'ई-मेल पते के बिना ई-मेल भेजने की कोशिश की।',
 
 # Change password dialog
 'resetpass' => 'कूटशब्द बदलें',
@@ -714,7 +714,7 @@ $2',
 'passwordreset-legend' => 'कूटशब्द रीसेट करें',
 'passwordreset-disabled' => 'कूटशब्द रीसेट करना इस विकी पर अक्षम है।',
 'passwordreset-pretext' => '{{PLURAL:$1||नीचे पूछे गए डेटा में से एक लिखें}}',
-'passwordreset-username' => 'सदस्यनाम:',
+'passwordreset-wiki_username' => 'सदस्यनाम:',
 'passwordreset-domain' => 'डोमेन:',
 'passwordreset-capture' => 'परिणामस्वरूप बना ई-मेल देखें?',
 'passwordreset-capture-help' => 'अगर आप इस चेकबॉक्स को टिक करते हैं तो ई-मेल (अस्थायी कूटशब्द के साथ) आप को दिखया जाएगा और सदस्य को भेजा भी जयेगा।',
@@ -725,7 +725,7 @@ $2',
 $2
 
 {{PLURAL:$3|यह|ये}} अस्थायी कूटशब्द {{PLURAL:$5|एक दिन|$5 दिनों}} के बाद काम नहीं करेंगे। आपको लॉग इन करके एक नया कूटशब्द अभी चुन लेना चाहिए। यदि यह अनुरोध किसी और ने किया है, या फिर आपको अपना मूल कूटशब्द याद आ गया है, और आप {{PLURAL:$3|अपना|अपने}} कूटशब्द नहीं बदलना चाहते, आप इस संदेश को अनदेखा कर के अपने पुराने कूटशब्द का प्रयोग जारी रख सकते हैं।',
-'passwordreset-emailtext-user' => '{{SITENAME}} ($4) पर सदस्य $1 ने आपके {{PLURAL:$3|खाते|खातों}} के विवरण के स्मरणपत्र का अनुरोध किया है। इस ई-मेल पते से निम्न {{PLURAL:$3|खाता जुड़ा है|खाते जुड़े हैं}}:
+'passwordreset-emailtext-wiki_user' => '{{SITENAME}} ($4) पर सदस्य $1 ने आपके {{PLURAL:$3|खाते|खातों}} के विवरण के स्मरणपत्र का अनुरोध किया है। इस ई-मेल पते से निम्न {{PLURAL:$3|खाता जुड़ा है|खाते जुड़े हैं}}:
 
 $2
 
@@ -826,7 +826,7 @@ $2
 'loginreqlink' => 'लॉग इन',
 'loginreqpagetext' => 'अन्य पृष्ठ देखने के लिये आपको $1 करना आवश्यक है।',
 'accmailtitle' => 'कूटशब्द भेज दिया गया है।',
-'accmailtext' => "[[User talk:$1|$1]] के लिए एक यंत्र जनित कूटशब्द $2 को भेज दिया गया है।
+'accmailtext' => "[[wiki_user talk:$1|$1]] के लिए एक यंत्र जनित कूटशब्द $2 को भेज दिया गया है।
 
 सत्रारंभ करने के बाद नए खाते का कूटशब्द '''[[Special:ChangePassword|कूटशब्द बदलें]]'' वाले पृष्ठ पर बदला जा सकता है।",
 'newarticle' => '(नया)',
@@ -836,7 +836,7 @@ $2
 'anontalkpagetext' => "----''यह वार्ता पृष्ठ उन बेनामी सदस्यों के लिये है जिन्होंने या तो खाता नहीं खोला है या खाते का प्रयोग नहीं कर रहे हैं।
 इसलिये उनकी पहचान के लिये हमें उनका आइ॰पी पता प्रयोग करना पड़ता है।
 आइ॰पी पता कई सदस्यों के लिए साझा हो सकता है।
-यदि आप एक बेनामी सदस्य हैं और आपको लगता है कि आपके बारे में अप्रासंगिक टीका टिप्पणी की गई है तो कृपया [[Special:UserLogin/signup|सदस्यता लें]] या [[Special:UserLogin|सत्रारंभ करें]] ताकि अन्य बेनामी सदस्यों में से आपको अलग से पहचाना जा सके।''",
+यदि आप एक बेनामी सदस्य हैं और आपको लगता है कि आपके बारे में अप्रासंगिक टीका टिप्पणी की गई है तो कृपया [[Special:wiki_userLogin/signup|सदस्यता लें]] या [[Special:wiki_userLogin|सत्रारंभ करें]] ताकि अन्य बेनामी सदस्यों में से आपको अलग से पहचाना जा सके।''",
 'noarticletext' => 'फ़िलहाल इस पृष्ठ पर कोई सामग्री नहीं है।
 आप अन्य पृष्ठों में [[Special:Search/{{PAGENAME}}|इस शीर्षक की खोज]] कर सकते हैं,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} सम्बन्धित लॉग खोज सकते हैं],
@@ -844,9 +844,9 @@ $2
 'noarticletext-nopermission' => 'फ़िलहाल इस पृष्ठ पर कोई सामग्री नहीं है।
 आप अन्य पृष्ठों में [[Special:Search/{{PAGENAME}}|इस शीर्षक की खोज]] कर सकते हैं,
 या <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} संबंधित लॉग खोज सकते हैं]</span>, परन्तु आपको यह पृष्ठ बनाने की अनुमति नहीं है।',
-'userpage-userdoesnotexist' => 'सदस्य खाता "$1" पंजीकृत नहीं है।
+'wiki_userpage-wiki_userdoesnotexist' => 'सदस्य खाता "$1" पंजीकृत नहीं है।
 कृपया जाँच लें कि आप यह पृष्ठ संपादित अथवा निर्मित करना चाहते हैं या नहीं।',
-'userpage-userdoesnotexist-view' => 'सदस्य "$1" पंजीकृत नहीं है।',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'सदस्य "$1" पंजीकृत नहीं है।',
 'blocked-notice-logextract' => 'यह सदस्य फ़िलहाल अवरोधित है।
 सदंर्भ के लिए ताज़ातरीन अवरोध लॉग प्रविष्टि नीचे दी है:',
 'clearyourcache' => "'''ध्यान दें:'''  संजोने के बाद बदलाव देखने के लिए आपको अपने ब्राउज़र की कैश खाली करनी पड़ सकती है।
@@ -854,18 +854,18 @@ $2
 * '''गूगल क्रोम:''' ''Ctrl-Shift-R'' (कंट्रोल-शिफ़्ट-R) दबाएँ (मैक पर ''⌘-Shift-R'')
 * '''इन्टर्नेट एक्सप्लोरर:''' ''Ctrl'' (कंट्रोल) दबाकर ''Refresh'' (रिफ़्रेश) करें या ''Ctrl-F5'' (कंट्रोल-F5) दबाएँ
 * '''ऑपेरा:''' ''Tools → Preferences'' (उपकरण → वरीयताएँ) में कैश साफ़ करें",
-'usercssyoucanpreview' => "'''टिप''': संजोने से पहले अपनी नई सी॰एस॰एस को जाँचने के लिये \"{{int:showpreview}}\" बटन का प्रयोग करें।",
-'userjsyoucanpreview' => "'''टिप''': संजोने से पहले अपनी नई जावास्क्रिप्ट को जाँचने के लिये \"{{int:showpreview}}\" बटन का प्रयोग करें।",
-'usercsspreview' => "'''ध्यान दें कि आप अपनी सी॰एस॰एस की झलक देख रहे हैं।'''
+'wiki_usercssyoucanpreview' => "'''टिप''': संजोने से पहले अपनी नई सी॰एस॰एस को जाँचने के लिये \"{{int:showpreview}}\" बटन का प्रयोग करें।",
+'wiki_userjsyoucanpreview' => "'''टिप''': संजोने से पहले अपनी नई जावास्क्रिप्ट को जाँचने के लिये \"{{int:showpreview}}\" बटन का प्रयोग करें।",
+'wiki_usercsspreview' => "'''ध्यान दें कि आप अपनी सी॰एस॰एस की झलक देख रहे हैं।'''
 '''यह अभी तक संजोई नहीं गई है!'''",
-'userjspreview' => "'''ध्यान दें कि आप अपनी जावास्क्रिप्ट की झलक देख रहे हैं।'''
+'wiki_userjspreview' => "'''ध्यान दें कि आप अपनी जावास्क्रिप्ट की झलक देख रहे हैं।'''
 '''यह अभी तक संजोई नहीं गई है!'''",
 'sitecsspreview' => "''''ध्यान दें कि आप इस सी॰एस॰एस की झलक देख रहे हैं।'''
 '''यह अभी तक संजोई नहीं गई है!'''",
 'sitejspreview' => "'''ध्यान दें कि आप इस जावास्क्रिप्ट कोड की झलक देख रहे हैं।'''
 '''यह अभी तक संजोया नहीं गया है!'''",
-'userinvalidcssjstitle' => "'''चेतावनी:''' \"\$1\" नाम की कोई त्वचा नहीं है।
-बदले हुए .css और .js पृष्ठों के शीर्षक नीचे स्तर की लिपि (lowercase) का प्रयोग करते हैं। उदाहरण: {{ns:user}}:Foo/vector.css न की {{ns:user}}:Foo/Vector.css",
+'wiki_userinvalidcssjstitle' => "'''चेतावनी:''' \"\$1\" नाम की कोई त्वचा नहीं है।
+बदले हुए .css और .js पृष्ठों के शीर्षक नीचे स्तर की लिपि (lowercase) का प्रयोग करते हैं। उदाहरण: {{ns:wiki_user}}:Foo/vector.css न की {{ns:wiki_user}}:Foo/Vector.css",
 'updated' => '(अद्यतनीत)',
 'note' => "'''सूचना:'''",
 'previewnote' => "'''याद रखें, यह केवल एक झलक है।'''
@@ -874,13 +874,13 @@ $2
 'previewconflict' => 'यह झलक ऊपरी पाठ सम्पादन क्षेत्र में हुए बदलाव दिखाती है, और यदि आप अभी संजोते हैं तो यही पाठ संजोया जाएगा।',
 'session_fail_preview' => "'''क्षमा करें! सेशन डाटा के नष्ट होने के कारण आपके बदलाव संजोये नहीं जा सके।'''
 कृपया पुन: यत्न करें।
-अगर इसके बाद भी ऐसा ही होता है तो कृपया [[Special:UserLogout|लॉग आउट]] कर के पुनः लॉग इन करें।",
+अगर इसके बाद भी ऐसा ही होता है तो कृपया [[Special:wiki_userLogout|लॉग आउट]] कर के पुनः लॉग इन करें।",
 'session_fail_preview_html' => "'''क्षमा करें! सेशन डाटा के नष्ट होने के कारण आपके बदलाव संजोये नहीं जा सके।'''
 
 ''चूँकि {{SITENAME}} पर raw HTML सक्षम है, जावास्क्रिप्ट हमलों से बचाव के लिये झलक नहीं दिखाई गई है।''
 
 '''अगर यह आपका वैध संपादन यत्न था, तो कृपया पुनः यत्न करें।'''
-अगर इसके बाद भी ऐसा ही होता है तो कृपया [[Special:UserLogout|लॉग आउट]] कर के पुनः लॉग इन करें।",
+अगर इसके बाद भी ऐसा ही होता है तो कृपया [[Special:wiki_userLogout|लॉग आउट]] कर के पुनः लॉग इन करें।",
 'token_suffix_mismatch' => "'''आपके द्वारा किये गये बदलाव रद्द कर दिये गये हैं क्योंकि आपके क्लायंट ने आपके संपादन टोकन में दिये हुए विरामचिन्हों में बदलाव किये हैं।'''
 लेख के पाठ में खराबी ना आये इसलिये आपके बदलाव रद्द कर दिये गये हैं।
 ऐसा तब भी हो सकता है यदि आप कोई खराब वेब-आधारित अनामक प्रौक्सी प्रयोग कर रहे हों।",
@@ -932,7 +932,7 @@ $2
 'edittools' => '<!-- यहाँ दिया हुआ पाठ संपादन और अपलोड फ़ॉर्म के नीचे दर्शाया जायेगा। -->',
 'nocreatetitle' => 'लेख निर्माण में प्रतिबंध',
 'nocreatetext' => '{{SITENAME}} पर नये पृष्ठ बनाने के लिये मनाई की गई है।
-आप पीछे जाकर किसी वर्तमान पृष्ठ को संपादित कर सकते हैं, अथवा [[Special:UserLogin|नया ख़ाता खोलें / प्रवेश करें]] ।',
+आप पीछे जाकर किसी वर्तमान पृष्ठ को संपादित कर सकते हैं, अथवा [[Special:wiki_userLogin|नया ख़ाता खोलें / प्रवेश करें]] ।',
 'nocreate-loggedin' => 'नये पृष्ठ बनाने का आपको अधिकार नहीं है।',
 'sectioneditnotsupported-title' => 'अनुभाग सम्पादन समर्थित नहीं है',
 'sectioneditnotsupported-text' => 'इस पृष्ठ पर अनुभाग सम्पादन समर्थित नहीं है',
@@ -976,11 +976,11 @@ $2
 ऐसा करने के लिये कृपया निम्नलिखित पाठ को ध्यान से देखकर बदलाव संजोयें।',
 'undo-failure' => 'इस बीच अन्य बदलाव होने के कारण यह संपादन पूर्ववत करना संभव नहीं है।',
 'undo-norev' => 'यह बदलाव वापिस नहीं कर पाये हैं क्योंकि या तो इसे पहले से पलटा दिया गया है या फिर पृष्ठ हटा दिया गया है।',
-'undo-summary' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|वार्ता]]) द्वारा किए बदलाव $1 को पूर्ववत करें',
+'undo-summary' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|वार्ता]]) द्वारा किए बदलाव $1 को पूर्ववत करें',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'खाता खोल नहीं सकते',
-'cantcreateaccount-text' => "इस आइ॰पी पते ('''$1''') को खाता निर्मित करने से [[User:$3|$3]] ने प्रतिबंधित किया है।
+'cantcreateaccount-text' => "इस आइ॰पी पते ('''$1''') को खाता निर्मित करने से [[wiki_user:$3|$3]] ने प्रतिबंधित किया है।
 
 इसके लिये $3 ने ''$2'' कारण दिया है।",
 
@@ -1019,9 +1019,9 @@ $2
 
 # Revision deletion
 'rev-deleted-comment' => '(टिप्पणी सारांश हटाई)',
-'rev-deleted-user' => '(सदस्यनाम हटाया)',
+'rev-deleted-wiki_user' => '(सदस्यनाम हटाया)',
 'rev-deleted-event' => '(कार्यकी नोंद हटाई)',
-'rev-deleted-user-contribs' => 'संशोधन उपयोगकर्ता योगदान नष्ट',
+'rev-deleted-wiki_user-contribs' => 'संशोधन उपयोगकर्ता योगदान नष्ट',
 'rev-deleted-text-permission' => 'यह पृष्ठ अवतरण हटाया गया है।
 इसकी अधिक जानकारी [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} हटाने की लॉग] में पाई जा सकती है।',
 'rev-deleted-text-unhide' => 'यह पृष्ठ अवतरण हटाया गया है।
@@ -1072,7 +1072,7 @@ $2
 'revdelete-hide-image' => 'फ़ाइल का पाठ छुपाएँ',
 'revdelete-hide-name' => 'क्रिया और लक्ष्य को छुपाएँ',
 'revdelete-hide-comment' => 'संपादन टिप्पणी छुपाएँ',
-'revdelete-hide-user' => 'संपादक का सदस्यनाम/आइ॰पी छुपाएँ',
+'revdelete-hide-wiki_user' => 'संपादक का सदस्यनाम/आइ॰पी छुपाएँ',
 'revdelete-hide-restricted' => 'प्रबंधक सहित सभी सदस्यों से डाटा छुपाएँ',
 'revdelete-radio-same' => '‍‌(बदलें नहीं)',
 'revdelete-radio-set' => 'हाँ',
@@ -1158,7 +1158,7 @@ $1",
 'showhideselectedversions' => 'चयनित अवतरण दिखाएँ/छिपाएँ',
 'editundo' => 'पूर्ववत करें',
 'diff-multi' => '({{PLURAL:$2|एक योगदानकर्ता|$2 योगदानकर्ताओं}} द्वारा {{PLURAL:$1|किया बीच का एक|किए बीच के $1}} अवतरण दर्शाए नहीं हैं।)',
-'diff-multi-manyusers' => '({{PLURAL:$2|एक योगदानकर्ता|$2 योगदानकर्ताओं}} द्वारा {{PLURAL:$1|किया बीच का एक|किए बीच के $1}} अवतरण दर्शाए नहीं हैं।)',
+'diff-multi-manywiki_users' => '({{PLURAL:$2|एक योगदानकर्ता|$2 योगदानकर्ताओं}} द्वारा {{PLURAL:$1|किया बीच का एक|किए बीच के $1}} अवतरण दर्शाए नहीं हैं।)',
 
 # Search results
 'searchresults' => 'खोज परिणाम',
@@ -1238,7 +1238,7 @@ $1",
 'mypreferences' => 'पसंद',
 'prefs-edits' => 'संपादन संख्या:',
 'prefsnologin' => 'लॉग इन नहीं किया है',
-'prefsnologintext' => 'वरीयताएँ बदलने के लिए आपको <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} सत्रारंभ]</span> करना होगा।',
+'prefsnologintext' => 'वरीयताएँ बदलने के लिए आपको <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} सत्रारंभ]</span> करना होगा।',
 'changepassword' => 'कूटशब्द बदलें',
 'prefs-skin' => 'त्वचा',
 'skin-preview' => 'झलक',
@@ -1246,7 +1246,7 @@ $1",
 'prefs-beta' => 'बीटा विशेषताएँ',
 'prefs-datetime' => 'दिनांक तथा समय',
 'prefs-labs' => 'लैब विशेषताएँ',
-'prefs-user-pages' => 'सदस्य पृष्ठ',
+'prefs-wiki_user-pages' => 'सदस्य पृष्ठ',
 'prefs-personal' => 'सदस्य व्यक्तिरेखा',
 'prefs-rc' => 'हाल में हुए बदलाव',
 'prefs-watchlist' => 'ध्यानसूची',
@@ -1311,7 +1311,7 @@ $1",
 'prefs-emailconfirm-label' => 'ई-मेल पुष्टिकरण:',
 'prefs-textboxsize' => 'संपादन झरोखे का आकार:',
 'youremail' => 'आपका ई-मेल पता:',
-'username' => 'सदस्यनाम:',
+'wiki_username' => 'सदस्यनाम:',
 'uid' => 'सदस्य क्रमांक:',
 'prefs-memberingroups' => 'निम्नलिखित {{PLURAL:$1|समूह|समूहों}} के सदस्य:',
 'prefs-registration' => 'पंजीकरण समय:',
@@ -1352,35 +1352,35 @@ HTML टैग की जाँच करें।',
 'prefs-displaywatchlist' => 'प्रदर्शन विकल्प',
 'prefs-diffs' => 'अंतर',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'ई-मेल पता वैध प्रतीत होता है',
 'email-address-validity-invalid' => 'एक वैध ई-मेल पता प्रविष्ट करें',
 
-# User rights
-'userrights' => 'सदस्य अधिकार व्यवस्थापन',
-'userrights-lookup-user' => 'सदस्य समूहों का व्यवस्थापन करें',
-'userrights-user-editname' => 'सदस्यनाम दें:',
-'editusergroup' => 'सदस्य समूहों का संपादन करें',
-'editinguser' => "सदस्य '''[[User:$1|$1]]''' $2 के अधिकार बदलें",
-'userrights-editusergroup' => 'सदस्य समूहों का संपादन करें',
-'saveusergroups' => 'सदस्य समूह संजोएँ',
-'userrights-groupsmember' => 'निम्न {{PLURAL:$1|समूह|समूहों}} का सदस्य:',
-'userrights-groupsmember-auto' => 'निम्न {{PLURAL:$1|समूह|समूहों}} का अंतर्निहित सदस्य:',
-'userrights-groups-help' => 'आप इस सदस्य की समूह-सदस्यता बदल सकते हैं:
+# wiki_user rights
+'wiki_userrights' => 'सदस्य अधिकार व्यवस्थापन',
+'wiki_userrights-lookup-wiki_user' => 'सदस्य समूहों का व्यवस्थापन करें',
+'wiki_userrights-wiki_user-editname' => 'सदस्यनाम दें:',
+'editwiki_usergroup' => 'सदस्य समूहों का संपादन करें',
+'editingwiki_user' => "सदस्य '''[[wiki_user:$1|$1]]''' $2 के अधिकार बदलें",
+'wiki_userrights-editwiki_usergroup' => 'सदस्य समूहों का संपादन करें',
+'savewiki_usergroups' => 'सदस्य समूह संजोएँ',
+'wiki_userrights-groupsmember' => 'निम्न {{PLURAL:$1|समूह|समूहों}} का सदस्य:',
+'wiki_userrights-groupsmember-auto' => 'निम्न {{PLURAL:$1|समूह|समूहों}} का अंतर्निहित सदस्य:',
+'wiki_userrights-groups-help' => 'आप इस सदस्य की समूह-सदस्यता बदल सकते हैं:
 * बक्से पर सही का निशान लगे होने का अर्थ है कि सदस्य उस समूह में है।
 * बक्से पर सही का निशान न लगे होने का अर्थ है कि सदस्य उस समूह में नहीं है।
 * एक * का अर्थ है कि एक बार जोड़ने के बाद वह समूह हटा नहीं सकते हैं, और हटाने के बाद जोड़ नहीं सकते हैं।',
-'userrights-reason' => 'कारण:',
-'userrights-no-interwiki' => 'आपको अन्य विकियों पर सदस्य अधिकार बदलने की अनुमति नहीं हैं।',
-'userrights-nodatabase' => 'डाटाबेस $1 या तो मौजूद नहीं है या फिर स्थानीय नहीं है।',
-'userrights-nologin' => 'सदस्य अधिकार बदलने के लिये प्रबंधक खाते से [[Special:UserLogin|लॉग इन]] किया हुआ होना आवश्यक है।',
-'userrights-notallowed' => 'आपके खाते को सदस्य अधिकार जोड़ने या हटाने की अनुमति नहीं है।',
-'userrights-changeable-col' => 'समूह जिन्हें आप बदल सकते हैं',
-'userrights-unchangeable-col' => 'समूह जिन्हें आप नहीं बदल सकते हैं',
+'wiki_userrights-reason' => 'कारण:',
+'wiki_userrights-no-interwiki' => 'आपको अन्य विकियों पर सदस्य अधिकार बदलने की अनुमति नहीं हैं।',
+'wiki_userrights-nodatabase' => 'डाटाबेस $1 या तो मौजूद नहीं है या फिर स्थानीय नहीं है।',
+'wiki_userrights-nologin' => 'सदस्य अधिकार बदलने के लिये प्रबंधक खाते से [[Special:wiki_userLogin|लॉग इन]] किया हुआ होना आवश्यक है।',
+'wiki_userrights-notallowed' => 'आपके खाते को सदस्य अधिकार जोड़ने या हटाने की अनुमति नहीं है।',
+'wiki_userrights-changeable-col' => 'समूह जिन्हें आप बदल सकते हैं',
+'wiki_userrights-unchangeable-col' => 'समूह जिन्हें आप नहीं बदल सकते हैं',
 
 # Groups
 'group' => 'समूह:',
-'group-user' => 'सदस्य',
+'group-wiki_user' => 'सदस्य',
 'group-autoconfirmed' => 'स्वतः स्थापित सदस्य',
 'group-bot' => 'बॉट',
 'group-sysop' => 'प्रबंधक',
@@ -1388,14 +1388,14 @@ HTML टैग की जाँच करें।',
 'group-suppress' => 'ओवरसाईट्स',
 'group-all' => '(सभी)',
 
-'group-user-member' => '{{GENDER:$1|सदस्य}}',
+'group-wiki_user-member' => '{{GENDER:$1|सदस्य}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|स्वतः स्थापित सदस्य}}',
 'group-bot-member' => '{{GENDER:$1|बॉट}}',
 'group-sysop-member' => '{{GENDER:$1|प्रबंधक}}',
 'group-bureaucrat-member' => '{{GENDER:$1|प्रशासक}}',
 'group-suppress-member' => '{{GENDER:$1|ओवरसाईट}}',
 
-'grouppage-user' => '{{ns:project}}:सदस्य',
+'grouppage-wiki_user' => '{{ns:project}}:सदस्य',
 'grouppage-autoconfirmed' => '{{ns:project}}:स्वतः स्थापित सदस्य',
 'grouppage-bot' => '{{ns:project}}:बॉट',
 'grouppage-sysop' => '{{ns:project}}:प्रबंधक',
@@ -1411,7 +1411,7 @@ HTML टैग की जाँच करें।',
 'right-minoredit' => 'अपने बदलाव छोटे चिन्हित करें',
 'right-move' => 'पृष्ठ स्थानांतरित करें',
 'right-move-subpages' => 'पृष्ठ उपपृष्ठों सहित स्थानांतरीत करें',
-'right-move-rootuserpages' => 'मूल सदस्य पृष्ठ स्थानांतरित करें',
+'right-move-rootwiki_userpages' => 'मूल सदस्य पृष्ठ स्थानांतरित करें',
 'right-movefile' => 'संचिकाएँ स्थानांतरित करें',
 'right-suppressredirect' => 'पृष्ठ स्थानांतरित करते समय पुनर्निर्देश ना छोड़ें',
 'right-upload' => 'फ़ाइल अपलोड करें',
@@ -1436,16 +1436,16 @@ HTML टैग की जाँच करें।',
 'right-suppressionlog' => 'खासगी लॉग देखें',
 'right-block' => 'अन्य सदस्यों को सम्पादन करने से ब्लॉक करें',
 'right-blockemail' => 'सदस्यों को ई-मेल भेजने से ब्लॉक करें',
-'right-hideuser' => 'सदस्यनाम ब्लॉक करें और उसे लोगों से छुपाएँ',
+'right-hidewiki_user' => 'सदस्यनाम ब्लॉक करें और उसे लोगों से छुपाएँ',
 'right-ipblock-exempt' => 'आइ॰पी ब्लॉक्स, ऑटो-ब्लॉक्स और रेंज ब्लॉक्स को नज़रंदाज़ करें',
 'right-proxyunbannable' => 'स्वचालित प्रौक्सी ब्लॉक्स को नज़रंदाज़ करें',
 'right-unblockself' => 'स्वयं को अनब्लॉक करें',
 'right-protect' => 'सुरक्षा स्तर बदलें और सुरक्षित पृष्ठ सम्पादित करें',
 'right-editprotected' => 'सुरक्षित पृष्ठ सम्पादित करें (बिना सीढ़ी सुरक्षा वाले)',
 'right-editinterface' => 'सॉफ़्टवेयर इंटरफ़ेस सम्पादित करें',
-'right-editusercssjs' => 'अन्य सदस्यों के सी॰एस॰एस और जावास्क्रिप्ट पृष्ठ सम्पादित करें',
-'right-editusercss' => 'अन्य सदस्यों के सी॰एस॰एस पृष्ठ सम्पादित करें',
-'right-edituserjs' => 'अन्य सदस्यों के जावास्क्रिप्ट पृष्ठ सम्पादित करें',
+'right-editwiki_usercssjs' => 'अन्य सदस्यों के सी॰एस॰एस और जावास्क्रिप्ट पृष्ठ सम्पादित करें',
+'right-editwiki_usercss' => 'अन्य सदस्यों के सी॰एस॰एस पृष्ठ सम्पादित करें',
+'right-editwiki_userjs' => 'अन्य सदस्यों के जावास्क्रिप्ट पृष्ठ सम्पादित करें',
 'right-rollback' => 'किसी पृष्ठ का अंतिम सम्पादन करने वाले सदस्य के सम्पादन वापिस लें',
 'right-markbotedits' => 'वापिस लेने में हुए संपादनों को बॉट सम्पादन चिन्हित करें',
 'right-noratelimit' => 'रेट लिमिट्स से बेअसर हों',
@@ -1456,14 +1456,14 @@ HTML टैग की जाँच करें।',
 'right-patrolmarks' => 'हाल में हुए बदलावों में जाँच चिन्ह देखें',
 'right-unwatchedpages' => 'ऐसे पृष्ठों की सूची देखें जो किसी की ध्यानसूची में नहीं हैं',
 'right-mergehistory' => 'पृष्ठ इतिहास एकत्रित करें',
-'right-userrights' => 'सभी सदस्य अधिकार बदलें',
-'right-userrights-interwiki' => 'अन्य विकियों पर सदस्य अधिकार बदलें',
+'right-wiki_userrights' => 'सभी सदस्य अधिकार बदलें',
+'right-wiki_userrights-interwiki' => 'अन्य विकियों पर सदस्य अधिकार बदलें',
 'right-siteadmin' => 'डाटाबेस को ताला लगायें या खोलें',
 'right-override-export-depth' => 'पृष्ठ निर्यात करें, पाँच स्तर की गहराई तक जुड़े हुए पृष्ठों समेत',
 'right-sendemail' => 'अन्य सदस्यों को ई-मेल भेजें',
 'right-passwordreset' => 'कूटशब्द रीसेट ई-मेल देखें',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'सदस्य अधिकार सूची',
 'rightslogtext' => 'यह सदस्य अधिकारों में हुए बदलावों की सूची है।',
 'rightslogentry' => '$1 की समूह सदस्यता $2 से $3 को बदली',
@@ -1479,7 +1479,7 @@ HTML टैग की जाँच करें।',
 'action-minoredit' => 'इस बदलाव को छोटा बदलाव चिन्हित करने',
 'action-move' => 'इस पृष्ठ को स्थानांतरित करने',
 'action-move-subpages' => 'इस पृष्ठ व इसके उप-पृष्ठों को स्थानांतरित करने',
-'action-move-rootuserpages' => 'मूल सदस्य पृष्ठों को स्थानांतरित करने',
+'action-move-rootwiki_userpages' => 'मूल सदस्य पृष्ठों को स्थानांतरित करने',
 'action-movefile' => 'इस फ़ाइल को स्थानांतरित करने',
 'action-upload' => 'इस फ़ाइल को अपलोड करने',
 'action-reupload' => 'मौजूदा फ़ाइल के स्थान पर नई सामग्री डालने',
@@ -1502,8 +1502,8 @@ HTML टैग की जाँच करें।',
 'action-autopatrol' => 'अपने सम्पादन स्वचालित रूप से जाँचे हुए चिन्हित करने',
 'action-unwatchedpages' => 'ऐसे पृष्ठ जो किसी की ध्यानसूची में नहीं हैं की सूची देखने',
 'action-mergehistory' => 'इस पृष्ठ का इतिहास एकत्रित करने',
-'action-userrights' => 'सभी सदस्य अधिकार बदलने',
-'action-userrights-interwiki' => 'अन्य विकियों पर सदस्य अधिकार बदलने',
+'action-wiki_userrights' => 'सभी सदस्य अधिकार बदलने',
+'action-wiki_userrights-interwiki' => 'अन्य विकियों पर सदस्य अधिकार बदलने',
 'action-siteadmin' => 'डाटाबेस को ताला लगाने या खोलने',
 'action-sendemail' => 'ई-मेल भेजने',
 
@@ -1534,7 +1534,7 @@ HTML टैग की जाँच करें।',
 'minoreditletter' => 'छो',
 'newpageletter' => 'न',
 'boteditletter' => 'बॉ',
-'number_of_watching_users_pageview' => '[$1 ध्यान रखने वाले {{PLURAL:$1|सदस्य}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 ध्यान रखने वाले {{PLURAL:$1|सदस्य}}]',
 'rc_categories' => 'श्रेणीयों तक सीमीत रखें ("|" से अलग करें)',
 'rc_categories_any' => 'कोई भी',
 'rc-change-size-new' => 'बदलाव के बाद $1 {{PLURAL:$1|बाइट}}',
@@ -1560,7 +1560,7 @@ HTML टैग की जाँच करें।',
 'reuploaddesc' => 'अपलोड रद्द करें और पुनः अपलोड फ़ॉर्म पर जाएँ',
 'upload-tryagain' => 'संशोधित फ़ाइल विवरण भेजें',
 'uploadnologin' => 'लॉग इन नहीं किया है',
-'uploadnologintext' => 'फ़ाइलें अपलोड करने के लिये [[Special:UserLogin|लॉग इन]] करना आवश्यक है।',
+'uploadnologintext' => 'फ़ाइलें अपलोड करने के लिये [[Special:wiki_userLogin|लॉग इन]] करना आवश्यक है।',
 'upload_directory_missing' => 'अपलोड डाइरेक्टरी ($1) मौजूद नहीं है, और वेबसर्वर इसका निर्माण नहीं कर पाया।',
 'upload_directory_read_only' => 'अपलोड डाइरेक्टरी ($1) में वेबसर्वर लिख नहीं पा रहा है।',
 'uploaderror' => 'अपलोड त्रुटि',
@@ -1697,11 +1697,11 @@ $1',
 'upload-proto-error-text' => 'रिमोट अपलोड के लिये यू॰आर॰एल का नाम <code>http://</code> या <code>ftp://</code> से शुरू होना आवश्यक है।',
 'upload-file-error' => 'आतंरिक त्रुटि',
 'upload-file-error-text' => 'सर्वर पर अस्थायी फ़ाइल बनाते समय आंतरिक त्रुटि आई।
-कृपया किसी [[Special:ListUsers/sysop|प्रबंधक]] से संपर्क करें।',
+कृपया किसी [[Special:Listwiki_users/sysop|प्रबंधक]] से संपर्क करें।',
 'upload-misc-error' => 'अज्ञात अपलोड त्रुटि',
 'upload-misc-error-text' => 'अपलोड के दौरान कोई अज्ञात त्रुटि आई।
 कृपया यह पुष्टि कर लें कि यू॰आर॰एल वैध है और उस तक पहुँचा जा सकता है, उसके बाद फिर कोशिश करें।
-अगर फिर भी समस्या आती है तो किसी [[Special:ListUsers/sysop|प्रबंधक]] से संपर्क करें।',
+अगर फिर भी समस्या आती है तो किसी [[Special:Listwiki_users/sysop|प्रबंधक]] से संपर्क करें।',
 'upload-too-many-redirects' => 'इस यू॰आर॰एल में अत्यधिक पुनर्निर्देशन हैं',
 'upload-unknown-size' => 'अज्ञात आकार',
 'upload-http-error' => 'एक एच॰टी॰टी॰पी त्रुटि आई: $1',
@@ -1819,7 +1819,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization देखें।',
 'listfiles_thumb' => 'अंगूठाकार',
 'listfiles_date' => 'दिनांक',
 'listfiles_name' => 'नाम',
-'listfiles_user' => 'सदस्य',
+'listfiles_wiki_user' => 'सदस्य',
 'listfiles_size' => 'आकार',
 'listfiles_description' => 'विवरण',
 'listfiles_count' => 'अवतरण',
@@ -1836,7 +1836,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization देखें।',
 'filehist-thumb' => 'अंगूठाकार प्रारूप',
 'filehist-thumbtext' => '$1 के संस्करण का अंगूठाकार प्रारूप।',
 'filehist-nothumb' => 'कोई अंगूठाकार नहीं',
-'filehist-user' => 'सदस्य',
+'filehist-wiki_user' => 'सदस्य',
 'filehist-dimensions' => 'आकार',
 'filehist-filesize' => 'फ़ाईल का आकार (बाइट)',
 'filehist-comment' => 'टिप्पणी',
@@ -1924,7 +1924,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization देखें।',
 'statistics-header-pages' => 'पृष्ठ के आँकड़े',
 'statistics-header-edits' => 'संपादन के आँकड़े',
 'statistics-header-views' => 'आँकड़े देखें',
-'statistics-header-users' => 'सदस्य आँकड़े',
+'statistics-header-wiki_users' => 'सदस्य आँकड़े',
 'statistics-header-hooks' => 'अन्य आँकड़े',
 'statistics-articles' => 'सामग्री पृष्ठ',
 'statistics-pages' => 'पृष्ठ',
@@ -1935,9 +1935,9 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization देखें।',
 'statistics-views-total' => 'कुल दृष्य',
 'statistics-views-total-desc' => 'अविद्यमान पृष्ठों और विशेष पृष्ठों के लिए दृश्य सम्मिलित नहीं हैं',
 'statistics-views-peredit' => 'दृष्य प्रति संपादन',
-'statistics-users' => 'पंजीकृत [[Special:ListUsers|सदस्य]]',
-'statistics-users-active' => 'सक्रिय सदस्य',
-'statistics-users-active-desc' => 'पिछले {{PLURAL:$1|एक दिन|$1 दिनों}} में कुछ गतिविधि रखने वाले सदस्य',
+'statistics-wiki_users' => 'पंजीकृत [[Special:Listwiki_users|सदस्य]]',
+'statistics-wiki_users-active' => 'सक्रिय सदस्य',
+'statistics-wiki_users-active-desc' => 'पिछले {{PLURAL:$1|एक दिन|$1 दिनों}} में कुछ गतिविधि रखने वाले सदस्य',
 'statistics-mostpopular' => 'सबसे अधिक देखे गए पृष्ठ',
 
 'disambiguations' => 'बहुविकल्पी पृष्ठों से जुड़ते पृष्ठ',
@@ -2015,13 +2015,13 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization देखें।',
 'protectedtitles' => 'सुरक्षित शीर्षक',
 'protectedtitlestext' => 'निम्नलिखित शीर्षकों पर पृष्ठ नहीं बनाए जा सकते।',
 'protectedtitlesempty' => 'इन नियमों द्वारा कोई भी शीर्षक सुरक्षित नहीं हैं।',
-'listusers' => 'सदस्यसूची',
-'listusers-editsonly' => 'केवल संपादन कर चुके सदस्य दिखाएँ',
-'listusers-creationsort' => 'निर्माण तिथि के आधार पर क्रमांकन करें',
-'usereditcount' => '$1 {{PLURAL:$1|संपादन|संपादन}}',
-'usercreated' => '$1 को $2 बजे बनाया गया, सदस्यनाम $3 है',
+'listwiki_users' => 'सदस्यसूची',
+'listwiki_users-editsonly' => 'केवल संपादन कर चुके सदस्य दिखाएँ',
+'listwiki_users-creationsort' => 'निर्माण तिथि के आधार पर क्रमांकन करें',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|संपादन|संपादन}}',
+'wiki_usercreated' => '$1 को $2 बजे बनाया गया, सदस्यनाम $3 है',
 'newpages' => 'नए पृष्ठ',
-'newpages-username' => 'सदस्यनाम:',
+'newpages-wiki_username' => 'सदस्यनाम:',
 'ancientpages' => 'सबसे पुराने पृष्ठ',
 'move' => 'स्थानान्तरण',
 'movethispage' => 'पृष्ठ का नाम बदलें',
@@ -2046,7 +2046,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization देखें।',
 'booksources-invalid-isbn' => 'यह आइ॰एस॰बी॰एन सही नहीं लग रहा है; मूल स्रोत से नकल करने में हुई त्रुटि के लिए जाँचें।',
 
 # Special:Log
-'specialloguserlabel' => 'कर्ता:',
+'speciallogwiki_userlabel' => 'कर्ता:',
 'speciallogtitlelabel' => 'प्रयोजन (शीर्षक):',
 'log' => 'लॉग',
 'all-logs-page' => 'सभी सार्वजनिक लॉग',
@@ -2105,24 +2105,24 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization देखें।',
 'linksearch-line' => '$2 में से $1 जुडा हुआ हैं',
 'linksearch-error' => 'वाईल्डकार्ड्स होस्टनाम के सिर्फ शुरू में आ सकते हैं।',
 
-# Special:ListUsers
-'listusersfrom' => 'इस अक्षर से शुरू होने वाले सदस्य दर्शाएँ:',
-'listusers-submit' => 'दिखाएँ',
-'listusers-noresult' => 'सदस्य नहीं मिला।',
-'listusers-blocked' => '(अवरोधित)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'इस अक्षर से शुरू होने वाले सदस्य दर्शाएँ:',
+'listwiki_users-submit' => 'दिखाएँ',
+'listwiki_users-noresult' => 'सदस्य नहीं मिला।',
+'listwiki_users-blocked' => '(अवरोधित)',
 
-# Special:ActiveUsers
-'activeusers' => 'सक्रिय सदस्यों की सूची',
-'activeusers-intro' => 'यह सक्रिय सदस्यों की सूची है जिन्होंने पिछले $1 {{PLURAL:$1|दिन|दिनों}} में कुछ गतिविधि करी है।',
-'activeusers-count' => '$1 {{PLURAL:$1|सम्पादन}} पिछले $3 {{PLURAL:$3|दिन|दिनों}} में',
-'activeusers-from' => 'इस अक्षर से शुरू होने वाले सदस्य दिखाएँ:',
-'activeusers-hidebots' => 'बॉट छुपाएँ',
-'activeusers-hidesysops' => 'प्रबंधक छुपाएँ',
-'activeusers-noresult' => 'कोई सदस्य नहीं मिले।',
+# Special:Activewiki_users
+'activewiki_users' => 'सक्रिय सदस्यों की सूची',
+'activewiki_users-intro' => 'यह सक्रिय सदस्यों की सूची है जिन्होंने पिछले $1 {{PLURAL:$1|दिन|दिनों}} में कुछ गतिविधि करी है।',
+'activewiki_users-count' => '$1 {{PLURAL:$1|सम्पादन}} पिछले $3 {{PLURAL:$3|दिन|दिनों}} में',
+'activewiki_users-from' => 'इस अक्षर से शुरू होने वाले सदस्य दिखाएँ:',
+'activewiki_users-hidebots' => 'बॉट छुपाएँ',
+'activewiki_users-hidesysops' => 'प्रबंधक छुपाएँ',
+'activewiki_users-noresult' => 'कोई सदस्य नहीं मिले।',
 
-# Special:Log/newusers
-'newuserlogpage' => 'सदस्य खाता निर्माण लॉग',
-'newuserlogpagetext' => 'यह सदस्य खातों के निर्माण का लॉग है।',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'सदस्य खाता निर्माण लॉग',
+'newwiki_userlogpagetext' => 'यह सदस्य खातों के निर्माण का लॉग है।',
 
 # Special:ListGroupRights
 'listgrouprights' => 'सदस्य समूह अधिकार',
@@ -2143,27 +2143,27 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization देखें।',
 'listgrouprights-addgroup-self-all' => 'अपने खाते में सभी समूह शामिल करें',
 'listgrouprights-removegroup-self-all' => 'अपने खाते से सभी समूह हटाएँ',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'पाने वाले का एड्रेस दिया नहीं',
-'mailnologintext' => 'अन्य सदस्यों को इ-मेल भेजने के लिये [[Special:UserLogin|लॉग इन]] करना आवश्यक है और आपकी [[Special:Preferences|वरीयताओं]] में वैध ई-मेल पता होना आवश्यक है।',
-'emailuser' => 'इस सदस्य को ई-मेल भेजें',
-'emailuser-title-target' => 'इस {{GENDER:$1|सदस्य|सदस्या}} को ई-मेल करें।',
-'emailuser-title-notarget' => 'सदस्य को ई-मेल करें',
+'mailnologintext' => 'अन्य सदस्यों को इ-मेल भेजने के लिये [[Special:wiki_userLogin|लॉग इन]] करना आवश्यक है और आपकी [[Special:Preferences|वरीयताओं]] में वैध ई-मेल पता होना आवश्यक है।',
+'emailwiki_user' => 'इस सदस्य को ई-मेल भेजें',
+'emailwiki_user-title-target' => 'इस {{GENDER:$1|सदस्य|सदस्या}} को ई-मेल करें।',
+'emailwiki_user-title-notarget' => 'सदस्य को ई-मेल करें',
 'emailpage' => 'सदस्य को ई-मेल करें',
 'emailpagetext' => 'नीचे दिए पर्चे को जरिए आप इस {{GENDER:$1|सदस्य}} को ई-मेल भेज सकते हैं।
 आपने जो पता [[Special:Preferences|अपनी पसंद]] में दिया था वह इस ई-मेल के "भेजने वाले" के तौर पर आएगा, अतः प्राप्तकर्ता आपको सीधे जवाब दे सकेंगे।',
-'usermailererror' => 'मेल ऑब्जेक्ट ने त्रुटि दी:',
+'wiki_usermailererror' => 'मेल ऑब्जेक्ट ने त्रुटि दी:',
 'defemailsubject' => '{{SITENAME}} ई-मेल "$1" सदस्य से',
-'usermaildisabled' => 'सदस्य ई-मेल अक्षम किया गया',
-'usermaildisabledtext' => 'आप इस विकि पर ई-मेल अन्य सदस्यों को ई-मेल नहीं भेज सकते हैं',
+'wiki_usermaildisabled' => 'सदस्य ई-मेल अक्षम किया गया',
+'wiki_usermaildisabledtext' => 'आप इस विकि पर ई-मेल अन्य सदस्यों को ई-मेल नहीं भेज सकते हैं',
 'noemailtitle' => 'कोई ई-मेल एड्रेस नहीं',
 'noemailtext' => 'इस सदस्य ने वैध ई-मेल पता नहीं दिया है।',
 'nowikiemailtitle' => 'ई-मेल की अनुमति नहीं है',
 'nowikiemailtext' => 'इस सदस्य ने अन्य सदस्यों से ई-मेल न प्राप्त करने का फ़ैसला लिया हुआ है।',
 'emailnotarget' => 'प्राप्तकर्ता के लिए अस्तित्वहीन या अमान्य सदस्यनाम।',
 'emailtarget' => 'प्राप्तकर्ता का सदस्यनाम भरें',
-'emailusername' => 'सदस्यनाम:',
-'emailusernamesubmit' => 'जमा करें',
+'emailwiki_username' => 'सदस्यनाम:',
+'emailwiki_usernamesubmit' => 'जमा करें',
 'email-legend' => 'किसी और {{SITENAME}} सदस्य को ई-मेल भेजें',
 'emailfrom' => 'प्रेषक:',
 'emailto' => 'प्राप्तकर्ता:',
@@ -2174,11 +2174,11 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization देखें।',
 'emailccsubject' => 'आपके ई-मेल की प्रति जो $1 को भेजा गया: $2',
 'emailsent' => 'ई-मेल भेज दिया गया है।',
 'emailsenttext' => 'आपका ई-मेल संदेश भेज दिया गया है।',
-'emailuserfooter' => 'यह ई-मेल {{SITENAME}} की "सदस्य ई-मेल" सुविधा द्वारा $1 से $2 को भेजी गई थी।',
+'emailwiki_userfooter' => 'यह ई-मेल {{SITENAME}} की "सदस्य ई-मेल" सुविधा द्वारा $1 से $2 को भेजी गई थी।',
 
-# User Messenger
-'usermessage-summary' => 'प्रणाली सन्देश छोड़ रहा है।',
-'usermessage-editor' => 'सिस्टम दूत',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'प्रणाली सन्देश छोड़ रहा है।',
+'wiki_usermessage-editor' => 'सिस्टम दूत',
 
 # Watchlist
 'watchlist' => 'मेरी ध्यानसूची',
@@ -2187,7 +2187,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization देखें।',
 'nowatchlist' => 'आपकी ध्यानसूची में कोई भी पृष्ठ नहीं हैं।',
 'watchlistanontext' => 'अपनी ध्यानसूची में मौजूद पृष्ठ देखने या फिर संपादित करने के लिये कॄपया $1 करें।',
 'watchnologin' => 'लॉग इन नहीं किया है',
-'watchnologintext' => 'ध्यानसूची में बदलाव के लिये [[Special:UserLogin|लॉग इन]] करना आवश्यक है।',
+'watchnologintext' => 'ध्यानसूची में बदलाव के लिये [[Special:wiki_userLogin|लॉग इन]] करना आवश्यक है।',
 'addwatch' => 'ध्यानसूची में जोड़ें',
 'addedwatchtext' => 'आपकी [[Special:Watchlist|ध्यानसूची]] में "[[:$1]]" पृष्ठ जोड़ दिया गया है।
 भविष्य में इस पृष्ठ तथा इसके वार्ता पृष्ठ में होने वाले बदलाव आपकी ध्यानसूची में दिखेंगे।',
@@ -2300,13 +2300,13 @@ $UNWATCHURL
 'rollbackfailed' => 'वापिस लेना असफल रहा',
 'cantrollback' => 'पुराने अवतरण को पूर्ववत नहीं कर सकते हैं;
 इस पृष्ठ का अन्तिम योगदानकर्ता इस लेख का एकमात्र लेखक है।',
-'alreadyrolled' => '[[User:$2|$2]] ([[User talk:$2|वार्ता]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) द्वारा किए गए  [[:$1]] के पिछले संपादन को वापिस पुरानी स्थिति पर नहीं लाया जा सकता है;
+'alreadyrolled' => '[[wiki_user:$2|$2]] ([[wiki_user talk:$2|वार्ता]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) द्वारा किए गए  [[:$1]] के पिछले संपादन को वापिस पुरानी स्थिति पर नहीं लाया जा सकता है;
 किसी और ने इस बीच या तो इस पृष्ठ को फिर से संपादित कर दिया है या पहले ही पृष्ठ पुरानी स्थिति पर लाया जा चुका है।
 
-इस पृष्ठ का अन्तिम संपादन [[User:$3|$3]] ([[User talk:$3|वार्ता]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) ने किया है।',
+इस पृष्ठ का अन्तिम संपादन [[wiki_user:$3|$3]] ([[wiki_user talk:$3|वार्ता]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) ने किया है।',
 'editcomment' => "संपादन सारांश था: \"''\$1''\"।",
-'revertpage' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) के संपादनों को हटाकर [[User:$1|$1]] के अन्तिम अवतरण को पूर्ववत किया',
-'revertpage-nouser' => '(सदस्य नाम हटाया गया है) द्वारा किए गए संपादन को वापिस पुरानी स्थिति में ला कर इसके पहले के [[User:$1|$1]] द्वारा बने अवतरण को फिर से ताज़ा अवतरण बनाया।',
+'revertpage' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Talk]]) के संपादनों को हटाकर [[wiki_user:$1|$1]] के अन्तिम अवतरण को पूर्ववत किया',
+'revertpage-nowiki_user' => '(सदस्य नाम हटाया गया है) द्वारा किए गए संपादन को वापिस पुरानी स्थिति में ला कर इसके पहले के [[wiki_user:$1|$1]] द्वारा बने अवतरण को फिर से ताज़ा अवतरण बनाया।',
 'rollback-success' => '$1 के संपादन हटाए;
 $2 द्वारा संपादित अन्तिम अवतरण को पुनर्स्थापित किया।',
 
@@ -2463,12 +2463,12 @@ $1',
 'sp-contributions-uploads' => 'अपलोड',
 'sp-contributions-logs' => 'चिट्ठे',
 'sp-contributions-talk' => 'वार्ता',
-'sp-contributions-userrights' => 'सदस्य अधिकार प्रबंधन',
+'sp-contributions-wiki_userrights' => 'सदस्य अधिकार प्रबंधन',
 'sp-contributions-blocked-notice' => 'यह सदस्य फ़िलहाल अवरोधित हैं। सदंर्भ के लिए ताज़ातरीन अवरोध चिट्ठा प्रविष्टि नीचे है:',
 'sp-contributions-blocked-notice-anon' => 'यह आईपी पता अभी अवरोधित है। 
 नवीनतम अवरोध अभिलेख प्रविष्टि सन्दर्भ के लिए नीचे दी गई है:',
 'sp-contributions-search' => 'योगदान के लिये खोज',
-'sp-contributions-username' => 'आईपी एड्रेस या सदस्यनाम:',
+'sp-contributions-wiki_username' => 'आईपी एड्रेस या सदस्यनाम:',
 'sp-contributions-toponly' => 'केवल उन सम्पादनों को दिखाएँ जो नवीनतम संशोधन हैं',
 'sp-contributions-submit' => 'खोजें',
 
@@ -2501,7 +2501,7 @@ $1',
 'blockiptext' => 'विशिष्ठ IP पते अथवा सदस्य नाम को लिखने के अधिकार से बाध्य करने के लिए निम्न पत्र का प्रयोग करें।
 यह सिर्फ बर्बरता को रोकने के लिए ही किया जाना चाहिए, और [[{{MediaWiki:Policy-url}}|नीति]] के अनुसार ही करना चाहिए।
 नीचे विशिष्ठ कारण भी लिखें (उदाहरण के लिए, सटीक पृष्ठों को दर्शाते हुए, जिनमें बर्बरता की गई हो)।',
-'ipadressorusername' => 'आईपी एड्रेस या सदस्यनाम:',
+'ipadressorwiki_username' => 'आईपी एड्रेस या सदस्यनाम:',
 'ipbexpiry' => 'समाप्ति:',
 'ipbreason' => 'कारण:',
 'ipbreasonotherlist' => 'दूसरा कारण',
@@ -2523,8 +2523,8 @@ $1',
 'ipbotheroption' => 'अन्य',
 'ipbotherreason' => 'अन्य/दूसरा कारण:',
 'ipbhidename' => 'संपादन व सूचियों से सदस्य नाम छिपाएँ',
-'ipbwatchuser' => 'इस सदस्य के सदस्य तथा वार्ता पृष्ठ पर ध्यान रखें',
-'ipb-disableusertalk' => 'इस प्रयोक्ता को अवरुद्ध होने पर स्वयं का वार्ता पृष्ठ सम्पादन करने से रोकें',
+'ipbwatchwiki_user' => 'इस सदस्य के सदस्य तथा वार्ता पृष्ठ पर ध्यान रखें',
+'ipb-disablewiki_usertalk' => 'इस प्रयोक्ता को अवरुद्ध होने पर स्वयं का वार्ता पृष्ठ सम्पादन करने से रोकें',
 'ipb-change-block' => 'इन जमावों के साथ सदस्य को फिर से अवरोधित करें',
 'ipb-confirm' => 'अवरोधण की पुष्टि करें',
 'badipaddress' => 'अमान्य आईपी पता।',
@@ -2540,13 +2540,13 @@ $1',
 'unblockip' => 'सदस्य को अनब्लॉक करें',
 'unblockiptext' => 'पहले ब्लॉक किये हुए आईपी एड्रेस या सदस्यनाम को अनब्लॉक करने के लिये नीचे दिया गया फार्म भरें।',
 'ipusubmit' => 'यह अवरोध हटाएँ',
-'unblocked' => '[[User:$1|$1]] को अनब्लॉक कर दिया हैं',
+'unblocked' => '[[wiki_user:$1|$1]] को अनब्लॉक कर दिया हैं',
 'unblocked-range' => '$1 को अनवरोधित किया गया',
 'unblocked-id' => 'अवरोध $1 निकाल दिया गया है',
 'blocklist' => 'अवरोधित उपयोक्ता',
 'ipblocklist' => 'अवरोधित आईपी पते व सदस्यनाम',
 'ipblocklist-legend' => 'अवरोधित सदस्य को खोजें',
-'blocklist-userblocks' => 'खाते के अवरोध छिपाएं',
+'blocklist-wiki_userblocks' => 'खाते के अवरोध छिपाएं',
 'blocklist-tempblocks' => 'अस्थाई अवरोध छिपाएं',
 'blocklist-addressblocks' => 'एकल आईपी अवरोध छिपाएं',
 'blocklist-rangeblocks' => 'श्रेणी ब्लॉक छुपाएँ',
@@ -2565,7 +2565,7 @@ $1',
 'noautoblockblock' => 'स्वयंचलित ब्लॉक रद्द किये हैं',
 'createaccountblock' => 'खाते निर्माण को रोक दिया हैं',
 'emailblock' => 'ईमेल अवरोधित',
-'blocklist-nousertalk' => 'अपना वार्ता पृष्ठ भी संपादित नहीं कर सकेंगे',
+'blocklist-nowiki_usertalk' => 'अपना वार्ता पृष्ठ भी संपादित नहीं कर सकेंगे',
 'ipblocklist-empty' => 'ब्लॉक सूची खाली हैं।',
 'ipblocklist-no-results' => 'पूछे गये आईपी एड्रेस / सदस्यनाम पर ब्लॉक नहीं हैं।',
 'blocklink' => 'अवरोधित करें',
@@ -2573,7 +2573,7 @@ $1',
 'change-blocklink' => 'विभाग बदलें',
 'contribslink' => 'योगदान',
 'emaillink' => 'ई-मेल भेजें',
-'autoblocker' => 'आपका IP पता स्वत: बाध्य है, जो की हाल ही में "[[User:$1|$1]]" द्वारा प्रयोग किया गया है।
+'autoblocker' => 'आपका IP पता स्वत: बाध्य है, जो की हाल ही में "[[wiki_user:$1|$1]]" द्वारा प्रयोग किया गया है।
 $1 को बाध्य करने का कारण है: "$2"',
 'blocklogpage' => 'ब्लॉक सूची',
 'blocklog-showlog' => 'इस प्रयोक्ता को पहले भी अवरोधित किया जा चुका है। 
@@ -2590,7 +2590,7 @@ $1 को बाध्य करने का कारण है: "$2"',
 'block-log-flags-nocreate' => 'खाता निर्माण पर रोक',
 'block-log-flags-noautoblock' => 'ऑटोब्लॉक बंद हैं',
 'block-log-flags-noemail' => 'ई-मेल अवरुद्ध',
-'block-log-flags-nousertalk' => 'अपना वार्ता पृष्ठ नहीं बदल सकते हैं',
+'block-log-flags-nowiki_usertalk' => 'अपना वार्ता पृष्ठ नहीं बदल सकते हैं',
 'block-log-flags-angry-autoblock' => 'उन्नत स्व-अवरोध लागू',
 'block-log-flags-hiddenname' => 'सदस्य नाम छिपा हुआ',
 'range_block_disabled' => 'प्रबंधकोंको अब रेंज ब्लॉक करने की अनुमति नहीं हैं।',
@@ -2601,7 +2601,7 @@ $1 को बाध्य करने का कारण है: "$2"',
 'ipb-needreblock' => '$1 पहले ही अवरोधित है।
 क्या आप अवरोध के जमाव बदलना चाहेंगे?',
 'ipb-otherblocks-header' => 'अन्य  {{PLURAL:$1| block|blocks}}',
-'unblock-hideuser' => 'आप इस प्रयोक्ता को अनवरोधित नहीं कर सकते, क्योंकि इनका प्रयोक्तानाम छिपा हुआ है।',
+'unblock-hidewiki_user' => 'आप इस प्रयोक्ता को अनवरोधित नहीं कर सकते, क्योंकि इनका प्रयोक्तानाम छिपा हुआ है।',
 'ipb_cant_unblock' => 'समस्या: ब्लॉक ID $1 मिला नहीं। इसे पहले अनब्लॉक कर दिया गया हो सकता हैं।',
 'ipb_blocked_as_range' => 'गलती: $1 यह आइपी सीधे बाधित नहीं है और अबाध्य नहीं किया जा सकता।
 फिर भी, $2 प्रकार को बाध्य किया जा सकता है, जिनको अबाध्य किया जा सकता है।',
@@ -2616,7 +2616,7 @@ $1 को बाध्य करने का कारण है: "$2"',
 'sorbsreason' => '{{SITENAME}} द्वारा इस्तेमालमें लाये जाने वाले DNSBL में आपके आईपी एड्रेसको ओपन प्रॉक्सीमें दर्शाया गया हैं।',
 'sorbs_create_account_reason' => '{{SITENAME}} के DNSBL ने आपका आईपी एड्रेस ओपन प्रोक्सी करके सूचित किया हैं। आप खाता खोल नहीं सकतें।',
 'cant-block-while-blocked' => 'आप खुद ही अवरोधित हैं इसलिए इस समय आप औरों को अवरोधित नहीं कर सकते हैं।',
-'cant-see-hidden-user' => 'कठबोली छुपा उपयोगकर्ता देखना',
+'cant-see-hidden-wiki_user' => 'कठबोली छुपा उपयोगकर्ता देखना',
 'ipbblocked' => 'आप अन्य प्रयोक्ताओं को अवरोधित या अनवरोधित नहीं कर सकते, क्योंकि आप स्वयं अवरोधित हैं',
 'ipbnounblockself' => 'आपको स्वयं को अनवरोधित करने की अनुमति नहीं है',
 
@@ -2684,13 +2684,13 @@ $1 को बाध्य करने का कारण है: "$2"',
 
 इन मामलोंमे आपको स्वयं यह पृष्ठ जोडने पड़ सकते है ।",
 'movearticle' => 'पृष्ठ का नाम बदलें',
-'moveuserpage-warning' => 'चाल उपयोगकर्ता चेतावनी पृष्ठ',
+'movewiki_userpage-warning' => 'चाल उपयोगकर्ता चेतावनी पृष्ठ',
 'movenologin' => 'लॉग इन नहीं किया है',
-'movenologintext' => 'लेख स्थानान्तरित करने के लिये आपका [[Special:UserLogin|लॉग इन]] किया होना आवश्यक हैं।',
+'movenologintext' => 'लेख स्थानान्तरित करने के लिये आपका [[Special:wiki_userLogin|लॉग इन]] किया होना आवश्यक हैं।',
 'movenotallowed' => 'आपको पृष्ठ स्थानांतरित करने की अनुमति नहीं है।',
 'movenotallowedfile' => 'आपको फ़ाइलें स्थानांतरित करने की अनुमति नहीं है।',
-'cant-move-user-page' => 'आपको सदस्य पृष्ठ स्थानांतरित करने की अनुमति नही है (सिवाय उप पन्नों के)।',
-'cant-move-to-user-page' => 'आपको किसी पन्नो को सदस्य पृष्ठ पर ले जाने की अनुमति नहीं है (सिवाय सदस्य उप पृष्ठ के)',
+'cant-move-wiki_user-page' => 'आपको सदस्य पृष्ठ स्थानांतरित करने की अनुमति नही है (सिवाय उप पन्नों के)।',
+'cant-move-to-wiki_user-page' => 'आपको किसी पन्नो को सदस्य पृष्ठ पर ले जाने की अनुमति नहीं है (सिवाय सदस्य उप पृष्ठ के)',
 'newtitle' => 'नये शीर्षक की ओर:',
 'move-watch' => 'ध्यान रखें',
 'movepagebtn' => 'नाम बदलें',
@@ -2849,8 +2849,8 @@ $1 को बाध्य करने का कारण है: "$2"',
 'import-logentry-interwiki-detail' => '$2 से $1 {{PLURAL:$1|अवतरण|अवतरण}}',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'आपका प्रयोक्ता पृष्ठ',
-'tooltip-pt-anonuserpage' => 'आप जिस आईपी से बदलाव कर रहें हैं उसका सदस्य पान',
+'tooltip-pt-wiki_userpage' => 'आपका प्रयोक्ता पृष्ठ',
+'tooltip-pt-anonwiki_userpage' => 'आप जिस आईपी से बदलाव कर रहें हैं उसका सदस्य पान',
 'tooltip-pt-mytalk' => 'आपका वार्ता पृष्ठ',
 'tooltip-pt-anontalk' => 'इस आईपी एड्रेससे हुए बदलावों के बारे में वार्ता',
 'tooltip-pt-preferences' => 'आपकी वरीयताएँ',
@@ -2888,13 +2888,13 @@ $1 को बाध्य करने का कारण है: "$2"',
 'tooltip-feed-rss' => 'इस पृष्ठ की आरएसएस फ़ीड',
 'tooltip-feed-atom' => 'इस पृष्ठ की अणु फ़ीड',
 'tooltip-t-contributions' => 'इस सदस्यके योगदानकी सूची देखियें',
-'tooltip-t-emailuser' => 'इस सदस्य को इमेल भेजें',
+'tooltip-t-emailwiki_user' => 'इस सदस्य को इमेल भेजें',
 'tooltip-t-upload' => 'संचिका चढ़ाएँ',
 'tooltip-t-specialpages' => 'सभी विशेष पृष्ठों की सूची',
 'tooltip-t-print' => 'इस पृष्ठका छपानेलायक अवतरण',
 'tooltip-t-permalink' => 'पृष्ठ के इस संस्करण की स्थायी कड़ी',
 'tooltip-ca-nstab-main' => 'सामग्री वाला पृष्ठ देखें',
-'tooltip-ca-nstab-user' => 'सदस्य पृष्ठ देखियें',
+'tooltip-ca-nstab-wiki_user' => 'सदस्य पृष्ठ देखियें',
 'tooltip-ca-nstab-media' => 'मीडिया पृष्ठ देखें',
 'tooltip-ca-nstab-special' => 'यह एक खास पृष्ठ है, आप इसे बदल नहीं सकतें हैं',
 'tooltip-ca-nstab-project' => 'प्रोजेक्ट पृष्ठ देखियें',
@@ -2932,13 +2932,13 @@ $1 को बाध्य करने का कारण है: "$2"',
 
 # Attribution
 'anonymous' => '{{SITENAME}} के {{PLURAL:$1||}} बेनामी सदस्य',
-'siteuser' => 'विकिपीडिया सदस्य  $1',
-'anonuser' => '{{SITENAME}} अज्ञात उपयोगकर्ता $1',
+'sitewiki_user' => 'विकिपीडिया सदस्य  $1',
+'anonwiki_user' => '{{SITENAME}} अज्ञात उपयोगकर्ता $1',
 'lastmodifiedatby' => 'इस पृष्ठ का आखिरी बदलाव $3 ने $2, $1 पर किया।',
 'othercontribs' => '$1 के कार्य के अनुसार।',
 'others' => 'अन्य',
-'siteusers' => '{{SITENAME}} {{PLURAL:$2|सदस्य|सदस्य}} $1',
-'anonusers' => '{{SITENAME}} अनाम {{PLURAL:$2|सदस्य|सदस्य}} $1',
+'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|सदस्य|सदस्य}} $1',
+'anonwiki_users' => '{{SITENAME}} अनाम {{PLURAL:$2|सदस्य|सदस्य}} $1',
 'creditspage' => 'पान श्रेय नामावली',
 'nocredits' => 'इस पृष्ठ के लिये क्रेडिट जानकारी नहीं है।',
 
@@ -2947,7 +2947,7 @@ $1 को बाध्य करने का कारण है: "$2"',
 'spamprotectiontext' => 'आप जिस पृष्ठ को सँजोना चाहते थे उसे रद्दी सामग्री की छननी ने अवरोधित किया हुआ है।
 यह संभवतः किसी कर्पसूचित बाहरी स्थल की कड़ी की वजह से हुआ है।',
 'spamprotectionmatch' => 'नीचे दिये हुए पाठ को स्पॅम सुरक्षा फिल्टर द्वारा रोका गया था: $1',
-'spambot_username' => 'मीडियाविकि स्पॅम स्वच्छता',
+'spambot_wiki_username' => 'मीडियाविकि स्पॅम स्वच्छता',
 'spam_reverting' => '$1 को कड़ी ना होने वाले पुराने अवतरण को पुनर्स्थापित कर रहें हैं',
 'spam_blanking' => 'सभी अवतरणोंमें $1 को कड़ियां हैं, पूरा पाठ निकाल रहें हैं',
 
@@ -2966,9 +2966,9 @@ $1 को बाध्य करने का कारण है: "$2"',
 'pageinfo-watchers' => 'पृष्ठ पर नज़र रखने वालों की संख्या',
 'pageinfo-redirects-name' => 'इस पृष्ठ को पुनर्निर्देश',
 'pageinfo-subpages-name' => 'इस पृष्ठ के उप-पृष्ठ',
-'pageinfo-firstuser' => 'पृष्ठ निर्माता',
+'pageinfo-firstwiki_user' => 'पृष्ठ निर्माता',
 'pageinfo-firsttime' => 'पृष्ठ निर्माण तिथि',
-'pageinfo-lastuser' => 'नवीनतम सम्पादक',
+'pageinfo-lastwiki_user' => 'नवीनतम सम्पादक',
 'pageinfo-lasttime' => 'नवीनतम सम्पादन तिथि',
 'pageinfo-edits' => 'संपादन की कुल संख्या',
 'pageinfo-authors' => 'लेखकों की संख्या',
@@ -3111,7 +3111,7 @@ $1',
 'exif-compressedbitsperpixel' => 'चित्र कॉम्प्रेशन मोड',
 'exif-pixelydimension' => 'छवि चौड़ाई',
 'exif-pixelxdimension' => 'छवि ऊँचाई',
-'exif-usercomment' => 'सदस्य टिप्पणी',
+'exif-wiki_usercomment' => 'सदस्य टिप्पणी',
 'exif-relatedsoundfile' => 'संबंधित ध्वनी फ़ाईल',
 'exif-datetimeoriginal' => 'डाटा बनाने का दिनांक और समय',
 'exif-datetimedigitized' => 'डिजिटाईज़िंग का दिनांक और समय',
@@ -3530,10 +3530,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''Warning''': आपने जब से संपादन शुरू किया है, उसके बाद से यह पृष्ठ ही मिटा दिया गया है!",
-'confirmrecreate' => "सदस्य [[User:$1|$1]] ([[User talk:$1|वार्ता]]) ने आपके द्वारा संपादन शुरू होने के बाद यह पृष्ठ निम्नलिखित कारण देकर हटाया हैं:
+'confirmrecreate' => "सदस्य [[wiki_user:$1|$1]] ([[wiki_user talk:$1|वार्ता]]) ने आपके द्वारा संपादन शुरू होने के बाद यह पृष्ठ निम्नलिखित कारण देकर हटाया हैं:
 : ''$2''
 क्या आप इसे फिरसे बनाना चाहतें हैं, इसकी निश्चिती करें।",
-'confirmrecreate-noreason' => 'जब आपने इस पृष्ठ का सम्पादन शुरू किया था, उसके बाद से सदस्य [[User:$1|$1]] ([[User talk:$1|talk]]) ने इसे हटा दिया है।  कृपया पुष्टि करें कि आप इस पृष्ठ को पुनः बनाना चाहते हैं।',
+'confirmrecreate-noreason' => 'जब आपने इस पृष्ठ का सम्पादन शुरू किया था, उसके बाद से सदस्य [[wiki_user:$1|$1]] ([[wiki_user talk:$1|talk]]) ने इसे हटा दिया है।  कृपया पुष्टि करें कि आप इस पृष्ठ को पुनः बनाना चाहते हैं।',
 'recreate' => 'फिरसे बनायें',
 
 # action=purge
@@ -3663,7 +3663,7 @@ $5
 'hebrew-calendar-m12-gen' => 'एलुल (Elul)',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|वार्ता]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|वार्ता]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'गलत एक्स्टेंशन टैग "$1"',
@@ -3722,7 +3722,7 @@ $5
 'specialpages-group-login' => 'सत्र आरम्भ / खाता खोलें',
 'specialpages-group-changes' => 'हाल ही में हुए परिवर्तन एवं अभिलेख',
 'specialpages-group-media' => 'मीडिया रिपोर्ट एवं अपलोड',
-'specialpages-group-users' => 'सदस्य एवं अधिकार',
+'specialpages-group-wiki_users' => 'सदस्य एवं अधिकार',
 'specialpages-group-highuse' => 'अत्यधिक उपयोगी पृष्ठ',
 'specialpages-group-pages' => 'पन्नों की सूचियाँ',
 'specialpages-group-pagetools' => 'पृष्ठ औज़ार',
@@ -3820,11 +3820,11 @@ $5
 'logentry-move-move_redir-noredirect' => '$1 ने $4 से पुनार्निर्देश हटाकर $3 पर पुनर्निर्देश छोड़े बिना $3 को $4 पर स्थानांतरित किया',
 'logentry-patrol-patrol' => '$1 ने $3 पृष्ठ के $4 अवतरण को देखा हुआ चिन्हित किया',
 'logentry-patrol-patrol-auto' => '$1 ने $3 पृष्ठ के $4 अवतरण को स्वचालित रूप से देखा हुआ चिन्हित किया',
-'logentry-newusers-newusers' => 'सदस्य खाता $1 बनाया गया',
-'logentry-newusers-create' => 'सदस्य खाता $1 बनाया गया',
-'logentry-newusers-create2' => 'सदस्य खाता $3 $1 द्वारा बनाया गया था',
-'logentry-newusers-autocreate' => 'खाते $1 स्वचालित रूप से बनाया गया',
-'newuserlog-byemail' => 'कूटशब्द इ-मेल द्वारा भेजा गया हैं',
+'logentry-newwiki_users-newwiki_users' => 'सदस्य खाता $1 बनाया गया',
+'logentry-newwiki_users-create' => 'सदस्य खाता $1 बनाया गया',
+'logentry-newwiki_users-create2' => 'सदस्य खाता $3 $1 द्वारा बनाया गया था',
+'logentry-newwiki_users-autocreate' => 'खाते $1 स्वचालित रूप से बनाया गया',
+'newwiki_userlog-byemail' => 'कूटशब्द इ-मेल द्वारा भेजा गया हैं',
 
 # Feedback
 'feedback-bugornote' => 'यदि आप किसी तकनीकी परेशानी को विस्तार से समझाने के लिये तैयार हैं तो कृपया [$1 बग फ़ाइल करें]।

@@ -30,7 +30,7 @@
 Class CreateAccountTestCase extends SeleniumTestCase {
 
     // Change these values before run the test
-    private $userName = "yourname4000";
+    private $wiki_userName = "yourname4000";
     private $password = "yourpass4000";
 
     // Verify 'Log in/create account' link existance in Main page.
@@ -71,44 +71,44 @@ Class CreateAccountTestCase extends SeleniumTestCase {
         $this->click( "link=Create an account" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
 
-        // Verify for blank user name
+        // Verify for blank wiki_user name
         $this->type( "wpName2", "" );
         $this->click( "wpCreateaccount" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
-        $this->assertEquals( "Login error\n You have not specified a valid user name.",
+        $this->assertEquals( "Login error\n You have not specified a valid wiki_user name.",
                 $this->getText( "//div[@id='bodyContent']/div[4]" ));
 
-        // Verify for invalid user name
+        // Verify for invalid wiki_user name
         $this->type( "wpName2", "@" );
         $this->click("wpCreateaccount" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
-        $this->assertEquals( "Login error\n You have not specified a valid user name.",
+        $this->assertEquals( "Login error\n You have not specified a valid wiki_user name.",
                 $this->getText( "//div[@id='bodyContent']/div[4]" ));
 
         // start of test for blank password
-        $this->type( "wpName2", $this->userName);
+        $this->type( "wpName2", $this->wiki_userName);
         $this->type( "wpPassword2", "" );
         $this->click( "wpCreateaccount" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
         $this->assertEquals( "Login error\n Passwords must be at least 1 character.",
                 $this->getText("//div[@id='bodyContent']/div[4]" ));
 
-        $this->type( "wpName2", $this->userName );
+        $this->type( "wpName2", $this->wiki_userName );
         $this->type( "wpPassword2", $this->password );
         $this->click( "wpCreateaccount" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
         $this->assertEquals( "Login error\n The passwords you entered do not match.",
                 $this->getText( "//div[@id='bodyContent']/div[4]" ));
 
-        $this->type( "wpName2", $this->userName );
+        $this->type( "wpName2", $this->wiki_userName );
         $this->type( "wpPassword2", $this->password );
         $this->type( "wpRetype", $this->password );
         $this->click( "wpCreateaccount" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
 
-        // Verify successful account creation for valid combination of 'Username', 'Password', 'Retype password'
-        $this->assertEquals( "Welcome, ".ucfirst( $this->userName )."!",
-                $this->getText( "Welcome,_".ucfirst( $this->userName )."!" ));
+        // Verify successful account creation for valid combination of 'wiki_username', 'Password', 'Retype password'
+        $this->assertEquals( "Welcome, ".ucfirst( $this->wiki_userName )."!",
+                $this->getText( "Welcome,_".ucfirst( $this->wiki_userName )."!" ));
     }
 }
 

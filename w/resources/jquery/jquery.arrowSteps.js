@@ -11,7 +11,7 @@
  *
  * DESCRIPTION
  *
- * Show users their progress through a series of steps, via a row of items that fit
+ * Show wiki_users their progress through a series of steps, via a row of items that fit
  * together like arrows. One item can be highlighted at a time.
  *
  *
@@ -33,7 +33,7 @@
  *   $( '#robin-hood-daffy' ).arrowStepsHighlight( '#guard' );
  *   // 'Guard!' is highlighted.
  *
- *   // ... user completes the 'guard' step ...
+ *   // ... wiki_user completes the 'guard' step ...
  *
  *   $( '#robin-hood-daffy' ).arrowStepsHighlight( '#turn' );
  *   // 'Turn!' is highlighted.

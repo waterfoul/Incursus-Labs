@@ -90,7 +90,7 @@ class LoadBalancer_Single extends LoadBalancer {
 	/**
 	 * @var DatabaseBase
 	 */
-	var $db;
+	var ;
 
 	/**
 	 * @param $params array
@@ -108,11 +108,11 @@ class LoadBalancer_Single extends LoadBalancer {
 	/**
 	 *
 	 * @param $server string
-	 * @param $dbNameOverride bool
+	 * @param NameOverride bool
 	 *
 	 * @return DatabaseBase
 	 */
-	function reallyOpenConnection( $server, $dbNameOverride = false ) {
+	function reallyOpenConnection( $server, NameOverride = false ) {
 		return $this->db;
 	}
 }

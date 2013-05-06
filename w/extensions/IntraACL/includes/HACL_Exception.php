@@ -33,9 +33,9 @@ if (!defined('MEDIAWIKI'))
  */
 class HACLException extends Exception
 {
-    // An unknown user is given for a group 
+    // An unknown wiki_user is given for a group 
     // Parameters:
-    // 1 - name of the user
+    // 1 - name of the wiki_user
     const UNKNOWN_USER = 1;
 
     // An internal error occurred
@@ -49,7 +49,7 @@ class HACLException extends Exception
      * @param string $message
      *         The error message
      * @param int $code
-     *         A user defined error code.
+     *         A wiki_user defined error code.
      */
     public function __construct($args) {
         $code = 0;
@@ -71,7 +71,7 @@ class HACLException extends Exception
         $msg = "";
         switch ($args[0]) {
             case self::UNKNOWN_USER:
-                $msg = "The user $args[1] is unknown.";
+                $msg = "The wiki_user $args[1] is unknown.";
                 break;
                case self::INTERNAL_ERROR:
                 $msg = "Internal error: $args[1]";
@@ -95,10 +95,10 @@ class HACLGroupException extends HACLException
     // 1 - name of the group
     const NO_GROUP_ID = 1;
 
-    // An unauthorized user tries to modify the definition of a group.
+    // An unauthorized wiki_user tries to modify the definition of a group.
     // Parameters:
     // 1 - name of the group
-    // 2 - name of the user
+    // 2 - name of the wiki_user
     const USER_CANT_MODIFY_GROUP = 2;
 
     // An unknown group is given. It has no group ID.
@@ -115,7 +115,7 @@ class HACLGroupException extends HACLException
      * Constructor of the group exception.
      *
      * @param int $code
-     *         A user defined error code.
+     *         A wiki_user defined error code.
      */
     public function __construct($code = 0)
     {
@@ -136,7 +136,7 @@ class HACLGroupException extends HACLException
                 $msg = "The group ID <$args[1]> is invalid.";
                 break;
             case self::USER_CANT_MODIFY_GROUP:
-                $msg = "The user $args[2] is not authorized to add or change the group $args[1].";
+                $msg = "The wiki_user $args[2] is not authorized to add or change the group $args[1].";
                 break;
             case self::UNKNOWN_GROUP:
                 $msg = "The group $args[1] does not exist. There is no article that defines this group.";
@@ -164,7 +164,7 @@ class HACLRightException extends HACLException
      * Constructor of the SD exception.
      *
      * @param int $code
-     *         A user defined error code.
+     *         A wiki_user defined error code.
      */
     public function __construct($code = 0)
     {
@@ -200,10 +200,10 @@ class HACLSDException extends HACLException
     // 1 - name of the SD
     const NO_SD_ID = 1;
 
-    // A unauthorized user tries to modify the definition of a SD.
+    // A unauthorized wiki_user tries to modify the definition of a SD.
     // Parameters:
     // 1 - name of the SD
-    // 2 - name of the user
+    // 2 - name of the wiki_user
     const USER_CANT_MODIFY_SD = 2;
 
     // An unknown group is given for an SD.
@@ -233,7 +233,7 @@ class HACLSDException extends HACLException
      * Constructor of the SD exception.
      *
      * @param int $code
-     *         A user defined error code.
+     *         A wiki_user defined error code.
      */
     public function __construct($code = 0)
     {
@@ -251,7 +251,7 @@ class HACLSDException extends HACLException
                 $msg = "The article for the security descriptor $args[1] is not yet created.";
                 break;
             case self::USER_CANT_MODIFY_SD:
-                $msg = "The user $args[2] is not authorized to change the security descriptor $args[1].";
+                $msg = "The wiki_user $args[2] is not authorized to change the security descriptor $args[1].";
                 break;
             case self::UNKNOWN_GROUP:
                 $msg = "The group $args[2] is unknown. It can not be used for security descriptor $args[1].";

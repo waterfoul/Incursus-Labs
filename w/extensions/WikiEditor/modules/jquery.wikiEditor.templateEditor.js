@@ -167,7 +167,7 @@ evt: {
 		} else if ( $evtElem.hasClass( 'wikiEditor-template-text' ) ) {
 			switch ( event.which ) {
 				case 13: // Enter
-					// Ensure that the user can't break this by holding in the enter key
+					// Ensure that the wiki_user can't break this by holding in the enter key
 					context.$iframe.data( 'ignoreKeypress', true );
 					// FIXME: May be a more elegant way to do this, but this works too
 					context.fn.encapsulateSelection( { 'pre': '\n', 'peri': '', 'post': '' } );
@@ -326,7 +326,7 @@ fn: {
 				dialogClass: 'wikiEditor-toolbar-dialog',
 				buttons: {
 					'wikieditor-template-editor-dialog-submit': function() {
-						// More user feedback
+						// More wiki_user feedback
 						var $templateDiv = $( this ).data( 'templateDiv' );
 						context.fn.highlightLine( $templateDiv );
 

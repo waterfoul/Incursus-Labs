@@ -44,8 +44,8 @@ class DumpLinks extends Maintenance {
 	}
 
 	public function execute() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$result = $dbr->select( array( 'pagelinks', 'page' ),
+		r = wfGetDB( DB_SLAVE );
+		$result = r->select( array( 'pagelinks', 'page' ),
 			array(
 				'page_id',
 				'page_namespace',

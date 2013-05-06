@@ -38,7 +38,7 @@ $messages = array(
 'unprotect' => 'Eab oberei',
 'toolbox' => 'Dabadi n bwait makur',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Imwin',
 'currentevents-url' => 'Project:Imwin',
 'edithelp' => 'Oomo/edar Ipuok',
@@ -60,7 +60,7 @@ $messages = array(
 # Login and logout pages
 'login' => 'Metu',
 'logout' => 'Meta',
-'userlogout' => 'Meta',
+'wiki_userlogout' => 'Meta',
 
 # Edit page toolbar
 'bold_sample' => 'Eõ mangiyungiy',
@@ -97,8 +97,8 @@ $messages = array(
 # Special:AllPages
 'allpagessubmit' => 'nuwa ko',
 
-# E-mail user
-'emailuser' => 'Emaileiy amune',
+# E-mail wiki_user
+'emailwiki_user' => 'Emaileiy amune',
 'emailfrom' => 'Atsiu',
 'emailto' => 'Animwen',
 'emailsend' => 'Oiyon',

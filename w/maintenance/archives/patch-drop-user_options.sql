@@ -1,1 +1,1 @@
-ALTER TABLE /*_*/user DROP COLUMN user_options;
+ALTER TABLE /*_*/wiki_user DROP COLUMN wiki_user_options;

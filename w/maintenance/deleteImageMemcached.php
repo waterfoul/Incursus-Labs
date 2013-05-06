@@ -47,9 +47,9 @@ class DeleteImageCache extends Maintenance {
 
 		ini_set( 'display_errors', false );
 
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 
-		$res = $dbr->select( 'image',
+		$res = r->select( 'image',
 			array( 'img_name' ),
 			array( "img_timestamp < {$until}" ),
 			__METHOD__
@@ -72,8 +72,8 @@ class DeleteImageCache extends Maintenance {
 	}
 
 	private function getImageCount() {
-		$dbr = wfGetDB( DB_SLAVE );
-		return $dbr->selectField( 'image', 'COUNT(*)', array(), __METHOD__ );
+		r = wfGetDB( DB_SLAVE );
+		return r->selectField( 'image', 'COUNT(*)', array(), __METHOD__ );
 	}
 }
 

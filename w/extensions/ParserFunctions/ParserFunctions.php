@@ -19,11 +19,11 @@ $wgPFStringLengthLimit = 1000;
 /**
  * Enable string functions.
  *
- * Set this to true if you want your users to be able to implement their own
+ * Set this to true if you want your wiki_users to be able to implement their own
  * parsers in the ugliest, most inefficient programming language known to man:
  * MediaWiki wikitext with ParserFunctions.
  *
- * WARNING: enabling this may have an adverse impact on the sanity of your users.
+ * WARNING: enabling this may have an adverse impact on the sanity of your wiki_users.
  * An alternative, saner solution for embedding complex text processing in
  * MediaWiki templates can be found at: http://www.mediawiki.org/wiki/Extension:Lua
  */

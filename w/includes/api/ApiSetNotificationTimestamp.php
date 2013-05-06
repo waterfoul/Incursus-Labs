@@ -36,10 +36,10 @@ class ApiSetNotificationTimestamp extends ApiBase {
 	}
 
 	public function execute() {
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 
-		if ( $user->isAnon() ) {
-			$this->dieUsage( 'Anonymous users cannot use watchlist change notifications', 'notloggedin' );
+		if ( $wiki_user->isAnon() ) {
+			$this->dieUsage( 'Anonymous wiki_users cannot use watchlist change notifications', 'notloggedin' );
 		}
 
 		$params = $this->extractRequestParams();
@@ -49,11 +49,11 @@ class ApiSetNotificationTimestamp extends ApiBase {
 		$args = array_merge( array( $params, 'entirewatchlist' ), array_keys( $pageSet->getAllowedParams() ) );
 		call_user_func_array( array( $this, 'requireOnlyOneParameter' ), $args );
 
-		$dbw = $this->getDB( DB_MASTER );
+		w = $this->getDB( DB_MASTER );
 
 		$timestamp = null;
 		if ( isset( $params['timestamp'] ) ) {
-			$timestamp = $dbw->timestamp( $params['timestamp'] );
+			$timestamp = w->timestamp( $params['timestamp'] );
 		}
 
 		if ( !$params['entirewatchlist'] ) {
@@ -67,7 +67,7 @@ class ApiSetNotificationTimestamp extends ApiBase {
 			$title = reset( $pageSet->getGoodTitles() );
 			$timestamp = Revision::getTimestampFromId( $title, $params['torevid'] );
 			if ( $timestamp ) {
-				$timestamp = $dbw->timestamp( $timestamp );
+				$timestamp = w->timestamp( $timestamp );
 			} else {
 				$timestamp = null;
 			}
@@ -78,7 +78,7 @@ class ApiSetNotificationTimestamp extends ApiBase {
 			$title = reset( $pageSet->getGoodTitles() );
 			$revid = $title->getNextRevisionID( $params['newerthanrevid'] );
 			if ( $revid ) {
-				$timestamp = $dbw->timestamp( Revision::getTimestampFromId( $title, $revid ) );
+				$timestamp = w->timestamp( Revision::getTimestampFromId( $title, $revid ) );
 			} else {
 				$timestamp = null;
 			}
@@ -88,8 +88,8 @@ class ApiSetNotificationTimestamp extends ApiBase {
 		$result = array();
 		if ( $params['entirewatchlist'] ) {
 			// Entire watchlist mode: Just update the thing and return a success indicator
-			$dbw->update( 'watchlist', array( 'wl_notificationtimestamp' => $timestamp ),
-				array( 'wl_user' => $user->getID() ),
+			w->update( 'watchlist', array( 'wl_notificationtimestamp' => $timestamp ),
+				array( 'wl_wiki_user' => $wiki_user->getID() ),
 				__METHOD__
 			);
 
@@ -119,15 +119,15 @@ class ApiSetNotificationTimestamp extends ApiBase {
 
 			// Now process the valid titles
 			$lb = new LinkBatch( $pageSet->getTitles() );
-			$dbw->update( 'watchlist', array( 'wl_notificationtimestamp' => $timestamp ),
-				array( 'wl_user' => $user->getID(), $lb->constructSet( 'wl', $dbw ) ),
+			w->update( 'watchlist', array( 'wl_notificationtimestamp' => $timestamp ),
+				array( 'wl_wiki_user' => $wiki_user->getID(), $lb->constructSet( 'wl', w ) ),
 				__METHOD__
 			);
 
 			// Query the results of our update
 			$timestamps = array();
-			$res = $dbw->select( 'watchlist', array( 'wl_namespace', 'wl_title', 'wl_notificationtimestamp' ),
-				array( 'wl_user' => $user->getID(), $lb->constructSet( 'wl', $dbw ) ),
+			$res = w->select( 'watchlist', array( 'wl_namespace', 'wl_title', 'wl_notificationtimestamp' ),
+				array( 'wl_wiki_user' => $wiki_user->getID(), $lb->constructSet( 'wl', w ) ),
 				__METHOD__
 			);
 			foreach ( $res as $row ) {
@@ -137,7 +137,7 @@ class ApiSetNotificationTimestamp extends ApiBase {
 			// Now, put the valid titles into the result
 			foreach ( $pageSet->getTitles() as $title ) {
 				$ns = $title->getNamespace();
-				$dbkey = $title->getDBkey();
+				key = $title->getDBkey();
 				$r = array(
 					'ns' => intval( $ns ),
 					'title' => $title->getPrefixedText(),
@@ -145,10 +145,10 @@ class ApiSetNotificationTimestamp extends ApiBase {
 				if ( !$title->exists() ) {
 					$r['missing'] = '';
 				}
-				if ( isset( $timestamps[$ns] ) && array_key_exists( $dbkey, $timestamps[$ns] ) ) {
+				if ( isset( $timestamps[$ns] ) && array_key_exists( key, $timestamps[$ns] ) ) {
 					$r['notificationtimestamp'] = '';
-					if ( $timestamps[$ns][$dbkey] !== null ) {
-						$r['notificationtimestamp'] = wfTimestamp( TS_ISO_8601, $timestamps[$ns][$dbkey] );
+					if ( $timestamps[$ns][key] !== null ) {
+						$r['notificationtimestamp'] = wfTimestamp( TS_ISO_8601, $timestamps[$ns][key] );
 					}
 				} else {
 					$r['notwatched'] = '';
@@ -260,7 +260,7 @@ class ApiSetNotificationTimestamp extends ApiBase {
 			$this->getRequireMaxOneParameterErrorMessages( array( 'timestamp', 'torevid', 'newerthanrevid' ) ),
 			$this->getRequireOnlyOneParameterErrorMessages( array_merge( array( 'entirewatchlist' ), array_keys( $psModule->getAllowedParams() ) ) ),
 			array(
-				array( 'code' => 'notloggedin', 'info' => 'Anonymous users cannot use watchlist change notifications' ),
+				array( 'code' => 'notloggedin', 'info' => 'Anonymous wiki_users cannot use watchlist change notifications' ),
 				array( 'code' => 'multpages', 'info' => 'torevid may only be used with a single page' ),
 				array( 'code' => 'multpages', 'info' => 'newerthanrevid may only be used with a single page' ),
 			)

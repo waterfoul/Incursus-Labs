@@ -85,10 +85,10 @@ class ParserCache {
 	 * Provides an E-Tag suitable for the whole page. Note that $article
 	 * is just the main wikitext. The E-Tag has to be unique to the whole
 	 * page, even if the article itself is the same, so it uses the
-	 * complete set of user options. We don't want to use the preference
-	 * of a different user on a message just because it wasn't used in
-	 * $article. For example give a Chinese interface to a user with
-	 * English preferences. That's why we take into account *all* user
+	 * complete set of wiki_user options. We don't want to use the preference
+	 * of a different wiki_user on a message just because it wasn't used in
+	 * $article. For example give a Chinese interface to a wiki_user with
+	 * English preferences. That's why we take into account *all* wiki_user
 	 * options. (r70809 CR)
 	 *
 	 * @param $article Article
@@ -127,9 +127,9 @@ class ParserCache {
 	public function getKey( $article, $popts, $useOutdated = true ) {
 		global $wgCacheEpoch;
 
-		if( $popts instanceof User ) {
-			wfWarn( "Use of outdated prototype ParserCache::getKey( &\$article, &\$user )\n" );
-			$popts = ParserOptions::newFromUser( $popts );
+		if( $popts instanceof wiki_user ) {
+			wfWarn( "Use of outdated prototype ParserCache::getKey( &\$article, &\$wiki_user )\n" );
+			$popts = ParserOptions::newFromwiki_user( $popts );
 		}
 
 		// Determine the options which affect this article

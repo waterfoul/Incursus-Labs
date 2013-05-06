@@ -36,8 +36,8 @@ class SkinChick extends SkinTemplate {
 	/**
 	 * @param $out OutputPage
 	 */
-	function setupSkinUserCss( OutputPage $out ){
-		parent::setupSkinUserCss( $out );
+	function setupSkinwiki_userCss( OutputPage $out ){
+		parent::setupSkinwiki_userCss( $out );
 
 		$out->addModuleStyles( 'skins.chick' );
 

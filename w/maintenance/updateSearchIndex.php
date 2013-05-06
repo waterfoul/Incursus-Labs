@@ -86,28 +86,28 @@ class UpdateSearchIndex extends Maintenance {
 
 		$wgDisableSearchUpdate = false;
 
-		$dbw = wfGetDB( DB_MASTER );
-		$recentchanges = $dbw->tableName( 'recentchanges' );
+		w = wfGetDB( DB_MASTER );
+		$recentchanges = w->tableName( 'recentchanges' );
 
 		$this->output( "Updating searchindex between $start and $end\n" );
 
 		# Select entries from recentchanges which are on top and between the specified times
-		$start = $dbw->timestamp( $start );
-		$end = $dbw->timestamp( $end );
+		$start = w->timestamp( $start );
+		$end = w->timestamp( $end );
 
-		$page = $dbw->tableName( 'page' );
+		$page = w->tableName( 'page' );
 		$sql = "SELECT rc_cur_id,rc_type,rc_moved_to_ns,rc_moved_to_title FROM $recentchanges
 		  JOIN $page ON rc_cur_id=page_id AND rc_this_oldid=page_latest
 		  WHERE rc_timestamp BETWEEN '$start' AND '$end'
 		  ";
-		$res = $dbw->query( $sql, __METHOD__ );
+		$res = w->query( $sql, __METHOD__ );
 
-		$this->updateSearchIndex( $maxLockTime, array( $this, 'searchIndexUpdateCallback' ), $dbw, $res );
+		$this->updateSearchIndex( $maxLockTime, array( $this, 'searchIndexUpdateCallback' ), w, $res );
 
 		$this->output( "Done\n" );
 	}
 
-	public function searchIndexUpdateCallback( $dbw, $row ) {
+	public function searchIndexUpdateCallback( w, $row ) {
 		if ( $row->rc_type == RC_MOVE || $row->rc_type == RC_MOVE_OVER_REDIRECT ) {
 			# Rename searchindex entry
 			$titleObj = Title::makeTitle( $row->rc_moved_to_ns, $row->rc_moved_to_title );
@@ -117,7 +117,7 @@ class UpdateSearchIndex extends Maintenance {
 			$u->doUpdate();
 			$this->output( "\n" );
 		} elseif ( $row->rc_type !== RC_LOG ) {
-			$this->updateSearchIndexForPage( $dbw, $row->rc_cur_id );
+			$this->updateSearchIndexForPage( w, $row->rc_cur_id );
 		}
 	}
 }

@@ -36,67 +36,67 @@ class BenchmarkDeleteTruncate extends Benchmarker {
 	}
 
 	public function execute() {
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
-		$test = $dbw->tableName( 'test' );
-		$dbw->query( "CREATE TABLE IF NOT EXISTS /*_*/$test (
+		$test = w->tableName( 'test' );
+		w->query( "CREATE TABLE IF NOT EXISTS /*_*/$test (
   test_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   text varbinary(255) NOT NULL
 );" );
 
-		$this->insertData( $dbw );
+		$this->insertData( w );
 
 		$start = microtime( true );
 
-		$this->delete( $dbw );
+		$this->delete( w );
 
 		$end = microtime( true );
 
 		echo "Delete: " . sprintf( "%6.3fms", ( $end - $start ) * 1000 );
 		echo "\r\n";
 
-		$this->insertData( $dbw );
+		$this->insertData( w );
 
 		$start = microtime( true );
 
-		$this->truncate( $dbw );
+		$this->truncate( w );
 
 		$end = microtime( true );
 
 		echo "Truncate: " . sprintf( "%6.3fms", ( $end - $start ) * 1000 );
 		echo "\r\n";
 
-		$dbw->dropTable( 'test' );
+		w->dropTable( 'test' );
 	}
 
 	/**
-	 * @param  $dbw DatabaseBase
+	 * @param  w DatabaseBase
 	 * @return void
 	 */
-	private function insertData( $dbw ) {
+	private function insertData( w ) {
 		$range = range( 0, 1024 );
 		$data = array();
 		foreach( $range as $r ) {
 			$data[] = array( 'text' => $r );
 		}
-		$dbw->insert( 'test', $data, __METHOD__ );
+		w->insert( 'test', $data, __METHOD__ );
 	}
 
 	/**
-	 * @param  $dbw DatabaseBase
+	 * @param  w DatabaseBase
 	 * @return void
 	 */
-	private function delete( $dbw ) {
-		$dbw->delete( 'text', '*', __METHOD__ );
+	private function delete( w ) {
+		w->delete( 'text', '*', __METHOD__ );
 	}
 
 	/**
-	 * @param  $dbw DatabaseBase
+	 * @param  w DatabaseBase
 	 * @return void
 	 */
-	private function truncate( $dbw ) {
-		$test = $dbw->tableName( 'test' );
-		$dbw->query( "TRUNCATE TABLE $test" );
+	private function truncate( w ) {
+		$test = w->tableName( 'test' );
+		w->query( "TRUNCATE TABLE $test" );
 	}
 }
 

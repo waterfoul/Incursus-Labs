@@ -131,7 +131,7 @@ $messages = array(
 'talk' => 'Ingcoco',
 'views' => 'Kubukeka',
 'toolbox' => 'Libhokisi Lemathulusi',
-'userpage' => 'Buna likhasi lemuntfu',
+'wiki_userpage' => 'Buna likhasi lemuntfu',
 'projectpage' => 'Bona likhasi leprojekthi',
 'imagepage' => 'Bona lelifayela likhasi',
 'mediawikipage' => 'Bona likhasi lemiyaleto',
@@ -152,7 +152,7 @@ Sicela ume kancane ngaphambi lwekuphindze ubone lelikhasi.
 
 $1',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Kabanti nge {{SITENAME}}',
 'aboutpage' => 'Project:Kabanti',
 'copyright' => 'Lokucuketfwe kungaphansi kwe $1.',
@@ -192,7 +192,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Likhasi',
-'nstab-user' => 'Umuntfu',
+'nstab-wiki_user' => 'Umuntfu',
 'nstab-help' => 'Likhasi lelusito',
 
 # Login and logout pages
@@ -232,11 +232,11 @@ Naka kutsi makhasi abo e {{SITENAME}} angaba sekadlulelwe sikhatsi.',
 # Special:ListFiles
 'listfiles_date' => 'Lusuku',
 'listfiles_name' => 'Ligama',
-'listfiles_user' => 'Umuntfu',
+'listfiles_wiki_user' => 'Umuntfu',
 
 # File description page
 'filehist-datetime' => 'Lusuku/Sikhatsi',
-'filehist-user' => 'Umuntfu',
+'filehist-wiki_user' => 'Umuntfu',
 
 'brokenredirects-edit' => 'hlela',
 
@@ -249,7 +249,7 @@ Naka kutsi makhasi abo e {{SITENAME}} angaba sekadlulelwe sikhatsi.',
 'booksources-go' => 'Hamba',
 
 # Special:Log
-'specialloguserlabel' => 'Umuntfu:',
+'speciallogwiki_userlabel' => 'Umuntfu:',
 
 # Special:AllPages
 'allpagessubmit' => 'Hamba',
@@ -257,8 +257,8 @@ Naka kutsi makhasi abo e {{SITENAME}} angaba sekadlulelwe sikhatsi.',
 # Special:LinkSearch
 'linksearch-ok' => 'Sesha',
 
-# Special:ListUsers
-'listusers-submit' => 'Khomba',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Khomba',
 
 # Watchlist
 'watch' => 'Gadza',

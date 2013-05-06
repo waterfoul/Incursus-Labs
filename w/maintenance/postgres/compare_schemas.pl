@@ -269,7 +269,7 @@ bool SMALLINT # Sigh
 };
 ## Allow specific exceptions to the above
 my $COLMAPOK = q{
-## User inputted text strings:
+## wiki_user inputted text strings:
 ar_comment      tinyblob       TEXT
 fa_description  tinyblob       TEXT
 img_description tinyblob       TEXT
@@ -292,7 +292,7 @@ ct_params         blob           TEXT
 fa_minor_mime     varbinary(100) TEXT
 fa_storage_group  varbinary(16)  TEXT # Just 'deleted' for now, should stay plain text
 fa_storage_key    varbinary(64)  TEXT # sha1 plus text extension
-ipb_address       tinyblob       TEXT # IP address or username
+ipb_address       tinyblob       TEXT # IP address or wiki_username
 ipb_range_end     tinyblob       TEXT # hexadecimal
 ipb_range_start   tinyblob       TEXT # hexadecimal
 img_minor_mime    varbinary(100) TEXT
@@ -342,12 +342,12 @@ up_value          blob           TEXT
 us_sha1           varchar(31)    TEXT
 us_source_type    varchar(50)    TEXT
 us_status         varchar(50)    TEXT
-user_email_token  binary(32)     TEXT
-user_ip           varbinary(40)  TEXT
-user_newpassword  tinyblob       TEXT
-user_options      blob           TEXT
-user_password     tinyblob       TEXT
-user_token        binary(32)     TEXT
+wiki_user_email_token  binary(32)     TEXT
+wiki_user_ip           varbinary(40)  TEXT
+wiki_user_newpassword  tinyblob       TEXT
+wiki_user_options      blob           TEXT
+wiki_user_password     tinyblob       TEXT
+wiki_user_token        binary(32)     TEXT
 iwl_prefix      varbinary(20)  TEXT
 
 ## Text URLs:
@@ -391,12 +391,12 @@ tl_namespace     int SMALLINT
 wl_namespace     int SMALLINT
 
 ## Easy enough to change if a wiki ever does grow this big:
-ss_active_users  bigint INTEGER
+ss_active_wiki_users  bigint INTEGER
 ss_good_articles bigint INTEGER
 ss_total_edits   bigint INTEGER
 ss_total_pages   bigint INTEGER
 ss_total_views   bigint INTEGER
-ss_users         bigint INTEGER
+ss_wiki_users         bigint INTEGER
 
 ## True IP - keep an eye on these, coders tend to make textual assumptions
 rc_ip varbinary(40) CIDR # Want to keep an eye on this
@@ -563,6 +563,6 @@ sub find_problems {
 __DATA__
 ## Known exceptions
 OLD: searchindex          ## We use tsearch2 directly on the page table instead
-RENAME: user mwuser       ## Reserved word causing lots of problems
+RENAME: wiki_user mwwiki_user       ## Reserved word causing lots of problems
 RENAME: text pagecontent  ## Reserved word
 XFILE: ../archives/patch-profiling.sql

@@ -11,7 +11,7 @@
  */
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Hlanganisa nkhwatiheto:',
 'tog-justify' => 'Hikahata xirhapa',
 'tog-hideminor' => 'Tumbeta mindzulamiso leyi tsongo',
@@ -34,7 +34,7 @@ $messages = array(
 'tog-previewontop' => 'Komba kuringanisa ungasi lulamisa bokisi',
 'tog-previewonfirst' => 'Komba kuringanisa eka ndzulamiso wo sungula',
 'tog-enotifwatchlistpages' => 'ndzurhumele e-mail loko leswi ndzi swi languteke swi lulamisiwa',
-'tog-enotifusertalkpages' => 'ndzurhumele e-mail loko tluka ra mbulavulo na mina ri lulamisiwa',
+'tog-enotifwiki_usertalkpages' => 'ndzurhumele e-mail loko tluka ra mbulavulo na mina ri lulamisiwa',
 'tog-enotifminoredits' => 'ndzurhumele e-mail loko ku endleka mindzulamiso leyi ntsongo',
 'tog-enotifrevealaddr' => 'Paluxa e-mail yamina eka mapapila lawa ndzimarhumelaka',
 'tog-shownumberswatching' => 'Komba ntsengo wa vatirhisi lava hlaleleke tluka',
@@ -198,7 +198,7 @@ $messages = array(
 'talk' => 'Mbulavuriswano',
 'views' => 'Kulanguteka',
 'toolbox' => 'Bokisi ra switirhisiwa',
-'userpage' => 'Vona tluka ramutirhisi',
+'wiki_userpage' => 'Vona tluka ramutirhisi',
 'projectpage' => 'Vona tluka ra phurojeki',
 'imagepage' => 'Vona tluka ra fayili',
 'mediawikipage' => 'Vona tluka ra hungu',
@@ -217,7 +217,7 @@ $messages = array(
 'jumptosearch' => 'Lava',
 'pool-errorunknown' => 'xiphiqo xoka xingativeki',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'ta {{SITENAME}}',
 'aboutpage' => 'Project:ta',
 'copyright' => 'Matsalwa makumeka ehansi ka $1.',
@@ -239,7 +239,7 @@ $messages = array(
 
 'badaccess' => 'Xihoxo hita mpfumelelo',
 'badaccess-group0' => 'U hava mpumelelo wo endla xikombelo lexi.',
-'badaccess-groups' => 'The action you have requested is limited to users in one of the groups $1.',
+'badaccess-groups' => 'The action you have requested is limited to wiki_users in one of the groups $1.',
 
 'versionrequired' => 'Version $1 of MediaWiki required',
 'versionrequiredtext' => 'Version $1 of MediaWiki is required to use this page.
@@ -278,7 +278,7 @@ See [[Special:Version|version page]].',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Tluka',
-'nstab-user' => 'Tluka ra mutirhisi',
+'nstab-wiki_user' => 'Tluka ra mutirhisi',
 'nstab-media' => 'Media page',
 'nstab-special' => 'Tluka ro hlawuleka',
 'nstab-project' => 'Tluka ra Phurojeki',
@@ -323,7 +323,7 @@ The administrator who locked it offered this explanation: $1',
 Leswi swinga vangiwa hi kuva u landzele xithlavinyeti lexi hundzeriweke hi nkari kumbe tluka leri suriweke.
 
 Loko leswi swingari xona xivangelo, ungava ukume xigalana eka xitirhisi lexi.
-Ukomberiwa ku pota xigalana lexi eka [[Special:ListUsers/sysop|mulanguteri]], u rhumela na xithlavinyeti xa URL.',
+Ukomberiwa ku pota xigalana lexi eka [[Special:Listwiki_users/sysop|mulanguteri]], u rhumela na xithlavinyeti xa URL.',
 'missingarticle-rev' => '(revision#: $1)',
 'missingarticle-diff' => '(Diff: $1, $2)',
 'readonly_lag' => 'The database has been automatically locked while the slave database servers catch up to the master',
@@ -366,13 +366,13 @@ $2',
 'customcssprotected' => "Uhava mpfumelelo wo ulamisa tluka leri ra CSS, hikuva rina minhlawulo ya mutirhisi un'wana.",
 'customjsprotected' => "Uhava mpfumelelo wolulamisa tluka-xirhumiwa xa Java, hiuva ringava rikhome minhlawulo yamutirhisi un'wana.",
 'ns-specialprotected' => 'Matluka yohlawuleka amalulamisiwi.',
-'titleprotected' => 'Nhlokomhaka leyi yisirheleriwile ekutumbuluxiwa hi [[User:$1|$1]].
+'titleprotected' => 'Nhlokomhaka leyi yisirheleriwile ekutumbuluxiwa hi [[wiki_user:$1|$1]].
 Hikwlaho ka xivangelo xa "\'\'$2\'\'".',
 
 # Login and logout pages
 'logouttext' => "'''Uhumile eka wiki leyi.'''
 
-Ungaya emahlweni utirhisa {{SITENAME}} handle ko tipaluxa, kumbe unga [[Special:UserLogin|pfula unghena nakambe]] tani hi mutirhisa un'wana kumbe kumbe hivuxokoxoko bya wena.
+Ungaya emahlweni utirhisa {{SITENAME}} handle ko tipaluxa, kumbe unga [[Special:wiki_userLogin|pfula unghena nakambe]] tani hi mutirhisa un'wana kumbe kumbe hivuxokoxoko bya wena.
 Tsundzuka leswaku matluka man'wana mangaha komba onge upfule unghena eka wiki, loko ungasi sula tluka rakhompuyuta leri tsundzukaka matluka lawa uma vhakeleke.",
 'welcomecreation' => '== Hoyohoyo, eka Wena $1 ! ==
 Akhawunti yawena yitumbuluxiwile.
@@ -384,17 +384,17 @@ Unda rivali ku cinca [[Special:Preferences|{{SITENAME}} minhlawulo ya wena]].',
 'login' => 'Pfula u nghena',
 'nav-login-createaccount' => 'Pfula unghena / Tumbuluxa akhawunti',
 'loginprompt' => 'U fanele ku pfumelela swipfuneti leswaku u pfula unghena eka {{SITENAME}}.',
-'userlogin' => 'Pfula unghena / Tumbuluxa akhawunti',
-'userloginnocreate' => 'Pfula unghena',
+'wiki_userlogin' => 'Pfula unghena / Tumbuluxa akhawunti',
+'wiki_userloginnocreate' => 'Pfula unghena',
 'logout' => 'Pfala u famba',
-'userlogout' => 'Pfala u famba',
+'wiki_userlogout' => 'Pfala u famba',
 'notloggedin' => 'A wusipfula unghena',
 'nologin' => 'Xana upfumala akhawunti? $1.',
 'nologinlink' => 'Tumbuluxa akhawunti',
 'createaccount' => 'Tumbuluxa akhawunti',
 'gotaccount' => 'Xna una akhawunti hi khale? $1.',
 'gotaccountlink' => 'Pfula unghena',
-'userlogin-resetlink' => 'Xana u rivele vuxokoxoko bya wena byo pfula unghena?',
+'wiki_userlogin-resetlink' => 'Xana u rivele vuxokoxoko bya wena byo pfula unghena?',
 'createaccountreason' => 'Xivangelo:',
 'loginsuccess' => "'''Ule ndzeni ka {{SITENAME}} tani hi \"\$1\".'''",
 'mailmypassword' => 'Rhumela vito-mpfungulo lerintwsa',
@@ -463,9 +463,9 @@ nhula ya minxaxamelo leyi kombaka ku suriwa na ku susiwa ka tluka leri ya kombiw
 'post-expand-template-inclusion-warning' => "'''Tivonele:''' xivumbiwa-ntirho xa ntsengo xitele ngopfu.
 swivumbiwa-ntirho swin'wana aswinge xaxametiwi.",
 'post-expand-template-inclusion-category' => 'Matluka lawa xivumbiwa-ntirho xa wona xi lavaka ntsengo ma hundze mpimo',
-'post-expand-template-argument-warning' => "'''Tivonele:''' Tluka leri ritamele xin'we xaswi hlamuseri kumbe kutlula xa xivumbiwa ntirho lexi tlulaka mpiwo wo ndlndlamuxa xivumbiwa-ntirho lexi.
-Swi hlamuseri leswi swi susiwile eka tluka leri.",
-'post-expand-template-argument-category' => 'Matluka lama kayivelaka swihlamuseri leswitirhisiwaka hi swivumbiwa-ntirho',
+'post-expand-template-argument-warning' => "'''Tivonele:''' Tluka leri ritamele xin'we xaswi hlamwiki_useri kumbe kutlula xa xivumbiwa ntirho lexi tlulaka mpiwo wo ndlndlamuxa xivumbiwa-ntirho lexi.
+Swi hlamwiki_useri leswi swi susiwile eka tluka leri.",
+'post-expand-template-argument-category' => 'Matluka lama kayivelaka swihlamwiki_useri leswitirhisiwaka hi swivumbiwa-ntirho',
 
 # History pages
 'viewpagelogs' => 'Vona nghula ya minxaxamelo ya tluka leri',
@@ -480,7 +480,7 @@ Swi hlamuseri leswi swi susiwile eka tluka leri.",
 'last' => 'Swo hetelela',
 'page_first' => 'Xo sungula',
 'histlegend' => "Leswaku uhambanisa mindzulamiso: thlava eka swifungu swa xirhendzevutana swa mindzulamiso leyi hambanaka ivi u thlava bhatheni leyi nge \"Enter\" eka Khibhodi ya wena kumbe bhatheni leyi kombiweke ehansi.<br />
-Swihlamuseri: '''({{int:sweswi}})''' = kuhambana na ndzulamiso wa sweswinyana, '''({{int:khale}})''' = kuhambana na ndzulamiso lowu tlhandlamaka lowu, '''{{int:minoreditletter}}''' = ndzulamiso lowu tsanana.",
+Swihlamwiki_useri: '''({{int:sweswi}})''' = kuhambana na ndzulamiso wa sweswinyana, '''({{int:khale}})''' = kuhambana na ndzulamiso lowu tlhandlamaka lowu, '''{{int:minoreditletter}}''' = ndzulamiso lowu tsanana.",
 'history-fieldset-title' => 'Langutisa matimu',
 'history-show-deleted' => 'Leswi suriweke ntsena',
 'histfirst' => 'Swa khalenyana',
@@ -644,7 +644,7 @@ Adiresi ya wena ya e-mail yitunberile loko van'wana va bula na wena.",
 'filehist-datetime' => 'Siku/Nkarhi',
 'filehist-thumb' => 'Xifanisonyana',
 'filehist-thumbtext' => 'Xifaniso lexi tsongahatiweke kusukela hi $1',
-'filehist-user' => 'Mutirhisi',
+'filehist-wiki_user' => 'Mutirhisi',
 'filehist-dimensions' => 'Mpimo',
 'filehist-comment' => 'Nhlamulo',
 'imagelinks' => 'Ntsengo wakutirhisiwa ka fiyili leyi',
@@ -665,7 +665,7 @@ Nhlamuselo ya yona leyi nge ndzeni ka [$2 tluka ro hlamusela] hi yona leyi kombi
 'nbytes' => '$1 {{PLURAL:$1|wa bayiti|wa tibayit}}',
 'nmembers' => '$1 {{PLURAL:$1|museketeri| wa vaseketeri}}',
 'prefixindex' => 'Matluka hinkwawo lama sungulaka hi',
-'usercreated' => '{{GENDER:$3|u tumbuluxe}} hi siku ra $1 hinkarhi wa $2',
+'wiki_usercreated' => '{{GENDER:$3|u tumbuluxe}} hi siku ra $1 hinkarhi wa $2',
 'newpages' => 'Matluka mantswa',
 'move' => 'Yi sa kunwana',
 'movethispage' => 'Yisa tluka leri ndhzawini yinwana',
@@ -678,7 +678,7 @@ Nhlamuselo ya yona leyi nge ndzeni ka [$2 tluka ro hlamusela] hi yona leyi kombi
 'booksources-go' => 'Nghena',
 
 # Special:Log
-'specialloguserlabel' => 'Mutirhisi:',
+'speciallogwiki_userlabel' => 'Mutirhisi:',
 'log' => 'Nghula ya minxaxamelo',
 
 # Special:AllPages
@@ -694,14 +694,14 @@ Nhlamuselo ya yona leyi nge ndzeni ka [$2 tluka ro hlamusela] hi yona leyi kombi
 'linksearch-ok' => 'Lava',
 'linksearch-line' => '$1 yi khwekerisiwe kusuka eka $2',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Nghula ya nxaxamelo wa ku tumbuluxiwa ka vatirhisi',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Nghula ya nxaxamelo wa ku tumbuluxiwa ka vatirhisi',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(nxaxamelo wa valandzeri)',
 
-# E-mail user
-'emailuser' => 'rhumela mutirhisi loyi E-mail',
+# E-mail wiki_user
+'emailwiki_user' => 'rhumela mutirhisi loyi E-mail',
 
 # Watchlist
 'watchlist' => 'Leswi ndziswilanguteke',
@@ -756,7 +756,7 @@ Nhlamuselo ya yona leyi nge ndzeni ka [$2 tluka ro hlamusela] hi yona leyi kombi
 'sp-contributions-logs' => 'Nghula ya nxaxamelo',
 'sp-contributions-talk' => 'Mbulavulo',
 'sp-contributions-search' => 'Lava minyikelo',
-'sp-contributions-username' => 'Hoxa Direse ya IP kumbe vito ra mutirhisi:',
+'sp-contributions-wiki_username' => 'Hoxa Direse ya IP kumbe vito ra mutirhisi:',
 'sp-contributions-toponly' => 'Komba ntsena mindzulamiso leyi yinga haku endliwa sweswinyana',
 'sp-contributions-submit' => 'Lava',
 
@@ -805,7 +805,7 @@ Nhlamuselo ya yona leyi nge ndzeni ka [$2 tluka ro hlamusela] hi yona leyi kombi
 'thumbnail_error' => 'Kuvena xihoxo ekutumbuluxiweni ka xifaniso-ntongo hkwalaho ka: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Tluka ra wena ra vutirhisi',
+'tooltip-pt-wiki_userpage' => 'Tluka ra wena ra vutirhisi',
 'tooltip-pt-mytalk' => 'Tluka ro vulavula ra wena',
 'tooltip-pt-preferences' => 'Minyikelo ya mina',
 'tooltip-pt-watchlist' => 'Nxaxamelo wa matluka lawa umalanguteleke kucinca',
@@ -838,13 +838,13 @@ Unga vona xit\\holvo xa rona',
 'tooltip-t-recentchangeslinked' => 'Kucinca kasweswinyana ka matluka la ma thlavinyetiweke eka tluka leri',
 'tooltip-feed-atom' => 'Vuhaxi bya Atom bya tluka leri',
 'tooltip-t-contributions' => 'Nxaxamelo wa minyikelo ya mutirhisi loyi',
-'tooltip-t-emailuser' => 'Rhumela mutirhisa loyi e-mail',
+'tooltip-t-emailwiki_user' => 'Rhumela mutirhisa loyi e-mail',
 'tooltip-t-upload' => 'Khandziyisa tifayili',
 'tooltip-t-specialpages' => 'Nxaxamelo wa matluka yo hlawuleka',
 'tooltip-t-print' => 'Gangliso wa tluka leri',
 'tooltip-t-permalink' => 'Xithlavinyeti xa nkarhi hinkwawo xa ndzulamiso wa tluka',
 'tooltip-ca-nstab-main' => 'Langutisa tluka ra matsalwa',
-'tooltip-ca-nstab-user' => 'Vona tluka ra mutirhisi',
+'tooltip-ca-nstab-wiki_user' => 'Vona tluka ra mutirhisi',
 'tooltip-ca-nstab-special' => 'Tluka leri rihlawulekile, awu pfumeleriwanga ku endla ndzulamiso eka rona hikukongoma',
 'tooltip-ca-nstab-project' => 'Vona tluka ra phurojeki',
 'tooltip-ca-nstab-image' => 'Vona tluka ra fayili leyi',

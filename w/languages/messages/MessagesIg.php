@@ -56,8 +56,8 @@ $specialPageAliases = array(
 	'Specialpages'              => array( 'IhüKá' ),
 	'Undelete'                  => array( 'Ábàkàshịkwàlà' ),
 	'Upload'                    => array( 'TinyéIheNélú' ),
-	'Userlogin'                 => array( 'Ọ\'bàniféÍBànyé' ),
-	'Userlogout'                => array( 'Ọ\'bàniféÍFụtá' ),
+	'wiki_userlogin'                 => array( 'Ọ\'bàniféÍBànyé' ),
+	'wiki_userlogout'                => array( 'Ọ\'bàniféÍFụtá' ),
 );
 
 $magicWords = array(
@@ -74,7 +74,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Okpürụ ahiri jikodo:',
 'tog-justify' => 'Tinyé ndelita na ọkwa',
 'tog-hideminor' => 'Zonari orü ntàkírí na nwerue mẹrẹ ogẹ nsó',
@@ -98,7 +98,7 @@ $messages = array(
 'tog-previewonfirst' => 'Zitú nke takírí orü mbu',
 'tog-nocache' => 'Bì-chi cache na otúzọr intaneti gi',
 'tog-enotifwatchlistpages' => 'Türüm e-mail mgbe ihü nor na ndetu ihem ne lé gbanwere',
-'tog-enotifusertalkpages' => 'Türüm e-mail ngbe ébé okwu ndi na banife nkem gbanwere',
+'tog-enotifwiki_usertalkpages' => 'Türüm e-mail ngbe ébé okwu ndi na banife nkem gbanwere',
 'tog-enotifminoredits' => 'Türüm e-mail maka orü ntakịrị ihüá',
 'tog-enotifrevealaddr' => 'Zifór áhàebeíbị e-mail m na e-mail okwuókà',
 'tog-shownumberswatching' => 'Zi onuogụgụ ndi na banife nke ne lé',
@@ -279,7 +279,7 @@ $messages = array(
 'talk' => 'Akíkó',
 'views' => 'Há hụrụ ya olé',
 'toolbox' => 'Ngwa Oru',
-'userpage' => "Zi ihü ọ'bànifé",
+'wiki_userpage' => "Zi ihü ọ'bànifé",
 'projectpage' => 'Zi ihü orü',
 'imagepage' => 'Zi ihü usòrò',
 'mediawikipage' => 'Zi ihü ozi',
@@ -305,7 +305,7 @@ $1',
 'pool-queuefull' => 'Pool kyu zùrù',
 'pool-errorunknown' => 'Nsogbu nke námaghi',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Maka {{SITENAME}}',
 'aboutpage' => 'Project:Ihe owù',
 'copyright' => 'Ihe di ime nọr okpúrụ $1',
@@ -366,7 +366,7 @@ Lé [[Special:Version|ụdì ihü]].',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Ihü',
-'nstab-user' => "Ihü ọ'bànifé",
+'nstab-wiki_user' => "Ihü ọ'bànifé",
 'nstab-media' => 'Ihü nkà',
 'nstab-special' => 'Ihü mkpà',
 'nstab-project' => 'Ihü orürü',
@@ -396,7 +396,7 @@ Ndetu màkà ihü mkpà nke à díghị ézíbóté nọ nà [[Special:SpecialPa
 Ihe méré na mgbe ndiá bu ihe diff dáfùrù na ógè ndụ ya ma jikodo ákíkó mbu nke ótù ihü à gbákáshíálá.
 
 Ó bú nà ọ búghị ihe mèrè, ȯ nwèríkí bu Í gbákọtàrà àkà na áká nsónùsòrò.
-Biko chi ihe á na áká [[Special:ListUsers/sysop|onye íshí]], dètú URL.',
+Biko chi ihe á na áká [[Special:Listwiki_users/sysop|onye íshí]], dètú URL.',
 'missingarticle-rev' => '(nlèwáriá#: $1)',
 'missingarticle-diff' => '(Íchè: $1, $2)',
 'internalerror' => 'Nsogbu ime ime',
@@ -439,7 +439,7 @@ Maka ikuwaria na asụsụ nke ozor, biko chetu I ji [//translatewiki.net/wiki/M
 # Login and logout pages
 'logouttext' => "'''I fwuóla ubwá.'''
 
-I nwèríkí jíwá {{SITENAME}} na nke ẹnwéghi áhà, mànà Í nwèríkí [[Special:UserLogin|bátá òzọr]] na áhà Í shị fwüo ma áhà ozọr.
+I nwèríkí jíwá {{SITENAME}} na nke ẹnwéghi áhà, mànà Í nwèríkí [[Special:wiki_userLogin|bátá òzọr]] na áhà Í shị fwüo ma áhà ozọr.
 Màkwá na o dị ihü gi zi kà Í nor kwa ímé, o gi kwüshí mgbe Í sáfùrù cache ihe ishi a gá intanet gi.",
 'welcomecreation' => '== Nnöö, $1! ==
 Okíkè buwa gi a guchala.
@@ -452,10 +452,10 @@ E chefụkwạlạ I gbanwere [[Special:Preferences|{{SITENAME}} iheichọrọ]]
 'login' => 'Banyé',
 'nav-login-createaccount' => 'Banyé / ké buwá',
 'loginprompt' => 'Í gi nwé cookies Í chórí bátá {{SITENAME}}.',
-'userlogin' => 'Banyé / ké buwá',
-'userloginnocreate' => 'Banyé',
+'wiki_userlogin' => 'Banyé / ké buwá',
+'wiki_userloginnocreate' => 'Banyé',
 'logout' => 'Fwuör',
-'userlogout' => 'Fwuör',
+'wiki_userlogout' => 'Fwuör',
 'notloggedin' => 'I bátà bò',
 'nologin' => 'I nwegị buwa? $1.',
 'nologinlink' => 'ké otụ buwa',
@@ -465,17 +465,17 @@ E chefụkwạlạ I gbanwere [[Special:Preferences|{{SITENAME}} iheichọrọ]]
 'createaccountmail' => 'na e-mail',
 'createaccountreason' => 'Mgbaghaputa:',
 'badretype' => 'Mkpurụ okwu ejị a gafẹ é jëghị.',
-'userexists' => "Áhè ọ'bànifé tírí di na áká onye ozor.
+'wiki_userexists' => "Áhè ọ'bànifé tírí di na áká onye ozor.
 Bíkó nwèré áhà nke ozor.",
 'loginerror' => 'Nsogbu ngbe I choro I bata',
 'createaccounterror' => 'O nweriki ké buwa: $1',
 'noname' => 'I nyétubọ áhạ buwa di mkpà.',
 'loginsuccesstitle' => 'I batala nke oma',
 'loginsuccess' => "'''Í bátálá nke ọma na ime {{SITENAME}} na áhà \"\$1\".'''",
-'nosuchusershort' => 'Ọ díghị ọ\'bànifé nwéré áhà nke "$1".
+'nosuchwiki_usershort' => 'Ọ díghị ọ\'bànifé nwéré áhà nke "$1".
 Lèmá òtú Í dèrè ya.',
-'nouserspecified' => 'I kweshiri nyetu áhà gi iji a rüoru.',
-'login-userblocked' => 'Ha gbachịrị onye á ezi. Anaá kweté kör banyé.',
+'nowiki_userspecified' => 'I kweshiri nyetu áhà gi iji a rüoru.',
+'login-wiki_userblocked' => 'Ha gbachịrị onye á ezi. Anaá kweté kör banyé.',
 'wrongpassword' => 'Mkpurụ okwu ejị a gafẹ á dighi nke ómá.
 Biko meríáríá ya.',
 'wrongpasswordempty' => 'Mkpurụ okwu ejị a gafẹ á dighi.
@@ -487,7 +487,7 @@ Biko meríáríá ya.',
 'emailconfirmlink' => 'Lé ka I hü ma ihià bu ézíbóté e-mail gi',
 'accountcreated' => 'Ndoté è mepólé',
 'createaccount-title' => 'Okìké bùwá màkà {{SITENAME}}',
-'usernamehasherror' => "Áhè ọ'bànifé ènwéghịkị nwé nkárí",
+'wiki_usernamehasherror' => "Áhè ọ'bànifé ènwéghịkị nwé nkárí",
 'loginlanguagelabel' => 'Asụsụ: $1',
 
 # Change password dialog
@@ -577,11 +577,11 @@ Biko tinyé cha ihe ńdía na ájújú nkeówulà I gi me.',
 Í nwèríkí [[Special:Search/{{PAGENAME}}|tuó íshí ihü nke á]] na ihü ndi ozor,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} chọwa na ndetu nchètá di nwanne],
 mà [{{fullurl:{{FULLPAGENAME}}|action=edit}} Í nwèríkí rü nà ihü á]</span>.',
-'userpage-userdoesnotexist-view' => 'Bùwá ọ\'bànifé "$1 à díghị na nsónùsòrò.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Bùwá ọ\'bànifé "$1 à díghị na nsónùsòrò.',
 'blocked-notice-logextract' => "Ha gbàchìrì ọ'bànifé nke.
 Ndetu nchèta mbgàchì ǹkè ógè nso di na àlà màkà ádià má àmá:",
-'usercssyoucanpreview' => "'''Lè kwá:''' Jí mpiá \"{{int:showpreview}}\" Í létú òtù CSS gí di mgbe Í donyèrè ya.",
-'userjsyoucanpreview' => "'''Lè kwá:''' Jí mpiá \"{{int:showpreview}}\" Í létú òtù JavaScript gí di mgbe Í donyèrè ya.",
+'wiki_usercssyoucanpreview' => "'''Lè kwá:''' Jí mpiá \"{{int:showpreview}}\" Í létú òtù CSS gí di mgbe Í donyèrè ya.",
+'wiki_userjsyoucanpreview' => "'''Lè kwá:''' Jí mpiá \"{{int:showpreview}}\" Í létú òtù JavaScript gí di mgbe Í donyèrè ya.",
 'updated' => '(Kuwariala)',
 'note' => "'''Ndetụrụ:'''",
 'previewnote' => "'''Chètá na iheá bu ńlé náni.'''
@@ -619,7 +619,7 @@ Ndetu banyéré nkè ogẹ nso di na okpúrụ màkà ádịamámá:",
 'parser-template-loop-warning' => 'Etemete àtụ dị: [[$1]]',
 
 # "Undo" feature
-'undo-summary' => 'Emekwàlà orübà $1 shí [[Special:Contributions/$2|$2]] ([[User talk:$2|talk]])',
+'undo-summary' => 'Emekwàlà orübà $1 shí [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|talk]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Enwéghịkị ke buwá',
@@ -655,7 +655,7 @@ Okwu ụmà: '''({{int:cur}})''' = gbánwe na nké orü mbu, '''({{int:last}})''
 
 # Revision deletion
 'rev-deleted-comment' => '(okwu e wefụolé)',
-'rev-deleted-user' => '(áhá onye na ké a wefụolé)',
+'rev-deleted-wiki_user' => '(áhá onye na ké a wefụolé)',
 'rev-delundel' => 'zi/zonari',
 'rev-showdeleted' => 'zi',
 'revdelete-show-file-submit' => 'Eeh',
@@ -663,7 +663,7 @@ Okwu ụmà: '''({{int:cur}})''' = gbánwe na nké orü mbu, '''({{int:last}})''
 'revdelete-hide-image' => 'Zonari ihe no ime usòrò',
 'revdelete-hide-name' => 'Zonari mmèmé na ntido',
 'revdelete-hide-comment' => 'Zonari ihe okwu orü',
-'revdelete-hide-user' => "Zonari áhà ọ'bànifé nke onye na rü/áhàebeíbị IP ya",
+'revdelete-hide-wiki_user' => "Zonari áhà ọ'bànifé nke onye na rü/áhàebeíbị IP ya",
 'revdelete-radio-same' => '(e mesukwàlà)',
 'revdelete-radio-set' => 'Eeh',
 'revdelete-radio-unset' => 'Mbà',
@@ -768,7 +768,7 @@ Nwàné ótù okwu íshí na ihe Í nè tú jí ''háníle:'' Í tuó ihe nílé
 'skin-preview' => 'Lètú',
 'datedefault' => 'Otú é shị na dose ihe efù',
 'prefs-datetime' => 'Ubochi na ogẹ',
-'prefs-user-pages' => "Ihü ọ'bànifé",
+'prefs-wiki_user-pages' => "Ihü ọ'bànifé",
 'prefs-personal' => "Nkówá ọ'bànifé",
 'prefs-rc' => 'Mgbánwè ógè nso',
 'prefs-watchlist' => 'Ndétụnlé',
@@ -804,7 +804,7 @@ Nwàné ótù okwu íshí na ihe Í nè tú jí ''háníle:'' Í tuó ihe nílé
 'prefs-custom-css' => 'CSS nà áká mádu',
 'prefs-custom-js' => 'JavaScript na áká mádu',
 'youremail' => 'E-mail:',
-'username' => "Áhà ọ'bànifé:",
+'wiki_username' => "Áhà ọ'bànifé:",
 'uid' => "ID ọ'bànifé:",
 'prefs-memberingroups' => 'Onyé otu nke {{PLURAL:$1|ọtú|ọtú}}:',
 'yourrealname' => 'Ézíbóté áhà:',
@@ -820,31 +820,31 @@ Nwàné ótù okwu íshí na ihe Í nè tú jí ''háníle:'' Í tuó ihe nílé
 'prefs-timeoffset' => 'Nwopù ógè',
 'prefs-diffs' => 'Íchè',
 
-# User rights
-'userrights-user-editname' => "Tìnyé áhà ọ'bànifé:",
-'editusergroup' => "Mèzí ọtú nke ọ'bànifé",
-'userrights-editusergroup' => "Mèzí ọtú nke ọ'bànifé",
-'saveusergroups' => "Domá ọtú nke ọ'bànifé",
-'userrights-groupsmember' => 'Onye ọtú nke:',
-'userrights-reason' => 'Mgbághapụtà:',
+# wiki_user rights
+'wiki_userrights-wiki_user-editname' => "Tìnyé áhà ọ'bànifé:",
+'editwiki_usergroup' => "Mèzí ọtú nke ọ'bànifé",
+'wiki_userrights-editwiki_usergroup' => "Mèzí ọtú nke ọ'bànifé",
+'savewiki_usergroups' => "Domá ọtú nke ọ'bànifé",
+'wiki_userrights-groupsmember' => 'Onye ọtú nke:',
+'wiki_userrights-reason' => 'Mgbághapụtà:',
 
 # Groups
 'group' => 'Ọtú:',
-'group-user' => "Ọ'bànifé",
+'group-wiki_user' => "Ọ'bànifé",
 'group-bot' => 'Bot',
 'group-sysop' => 'Ndi íshí',
 'group-bureaucrat' => "Ọdọzị'obodo",
 'group-suppress' => 'Aghọ',
 'group-all' => '(háníle)',
 
-'group-user-member' => "ọ'bànifé",
+'group-wiki_user-member' => "ọ'bànifé",
 'group-autoconfirmed-member' => "ọ'bànifé kwé'nà'áká",
 'group-bot-member' => 'bot',
 'group-sysop-member' => 'onye íshí',
 'group-bureaucrat-member' => "ọdọzị'obodo",
 'group-suppress-member' => 'aghọ',
 
-'grouppage-user' => "{{ns:project}}:Ọ'bànifé",
+'grouppage-wiki_user' => "{{ns:project}}:Ọ'bànifé",
 'grouppage-bot' => '{{ns:project}}:Bot',
 'grouppage-sysop' => '{{ns:project}}:Ndi Íshí wiki',
 
@@ -859,7 +859,7 @@ Nwàné ótù okwu íshí na ihe Í nè tú jí ''háníle:'' Í tuó ihe nílé
 'right-bigdelete' => 'Kàcha ihü nwéré ákíkó mbu dí ógólógó',
 'right-undelete' => 'Ágbakashia ótù ihü',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => "Ndetu échìchè íwú ọ'bànifé",
 'rightsnone' => '(efù)',
 
@@ -895,7 +895,7 @@ Nwàné ótù okwu íshí na ihe Í nè tú jí ''háníle:'' Í tuó ihe nílé
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'boteditletter' => 'b',
-'number_of_watching_users_pageview' => "[$1 {{PLURAL:$1|ọ'bànifé|ọ'bànifé}} ne lé anya]",
+'number_of_watching_wiki_users_pageview' => "[$1 {{PLURAL:$1|ọ'bànifé|ọ'bànifé}} ne lé anya]",
 'rc_categories_any' => 'Nkówụlà',
 'newsectionsummary' => '/* $1 */ nkeji ohúrù',
 'rc-enhanced-expand' => 'Zi ihe di ime (Í gí nwere JavaScript)',
@@ -949,7 +949,7 @@ Ihü nọr na [[Special:Watchlist|ndétu ihe Í ne lé]] di na mkpụrụ edemed
 'listfiles_thumb' => 'Nvọáká',
 'listfiles_date' => 'Ǹgụ́ụ̀bọ̀chị̀',
 'listfiles_name' => 'Áhà',
-'listfiles_user' => "Ọ'bànifé",
+'listfiles_wiki_user' => "Ọ'bànifé",
 'listfiles_size' => 'Ívụ',
 'listfiles_description' => 'Nkówá',
 'listfiles_count' => 'Ùdị',
@@ -966,7 +966,7 @@ Ihü nọr na [[Special:Watchlist|ndétu ihe Í ne lé]] di na mkpụrụ edemed
 'filehist-thumb' => 'Nvọáká',
 'filehist-thumbtext' => 'NvóÁká màkà otù ȯ dị nà $1',
 'filehist-nothumb' => 'Nvọáká adịghị',
-'filehist-user' => "Ọ'bànifé",
+'filehist-wiki_user' => "Ọ'bànifé",
 'filehist-dimensions' => 'Ógólógó na asaá',
 'filehist-filesize' => 'Ívù usòrò',
 'filehist-comment' => 'Okwu-nokwu',
@@ -1015,12 +1015,12 @@ Ihü nọr na [[Special:Watchlist|ndétu ihe Í ne lé]] di na mkpụrụ edemed
 'statistics-header-pages' => 'Ọmúmú-nà-ńlé ihü',
 'statistics-header-edits' => 'Rüwá ọmúmú-nà-ńlé',
 'statistics-header-views' => 'Lé ọmúmú-nà-ńlé',
-'statistics-header-users' => "Ọmúmú-nà-ńlé nke ọ'bànifé",
+'statistics-header-wiki_users' => "Ọmúmú-nà-ńlé nke ọ'bànifé",
 'statistics-articles' => 'Ihü ihe dị',
 'statistics-pages' => 'Ihü',
 'statistics-files' => 'Usòrò hé tinyèrè',
 'statistics-views-total' => 'Há hụrụ ya olé níle',
-'statistics-users-active' => "Ọ'bànifé di galagala",
+'statistics-wiki_users-active' => "Ọ'bànifé di galagala",
 
 'disambiguationspage' => 'Template:ọlúchịgị',
 
@@ -1049,11 +1049,11 @@ Ubwa, o na ga [[$2]].',
 'shortpages' => 'Ihü mkpümkpü',
 'longpages' => 'Ihü ógólógó',
 'protectedtitles' => 'Íshí édé cẹdolu',
-'listusers' => "Ndetu ọ'bànifé",
-'usereditcount' => '$1 {{PLURAL:$1|rüwá|orürü}}',
-'usercreated' => 'Kéré na $1 mgbe $2',
+'listwiki_users' => "Ndetu ọ'bànifé",
+'wiki_usereditcount' => '$1 {{PLURAL:$1|rüwá|orürü}}',
+'wiki_usercreated' => 'Kéré na $1 mgbe $2',
 'newpages' => 'Ihü ohúrù',
-'newpages-username' => "Áhà ọ'bànifé:",
+'newpages-wiki_username' => "Áhà ọ'bànifé:",
 'ancientpages' => 'Ihü díkárí íchié',
 'move' => 'Páfụ',
 'movethispage' => 'Páfù ihüá',
@@ -1068,7 +1068,7 @@ Ubwa, o na ga [[$2]].',
 'booksources-go' => 'Gá',
 
 # Special:Log
-'specialloguserlabel' => "Ọ'bànifé:",
+'speciallogwiki_userlabel' => "Ọ'bànifé:",
 'speciallogtitlelabel' => 'Ishi:',
 'log' => 'Ndetu-nchétá',
 
@@ -1098,18 +1098,18 @@ Ubwa, o na ga [[$2]].',
 'linksearch-ok' => 'Chọwa',
 'linksearch-line' => '$1 jikọdọ shí $2',
 
-# Special:ListUsers
-'listusers-submit' => 'Zi',
-'listusers-noresult' => "Ọ hügị ọ'bànifé.",
-'listusers-blocked' => '(kwàchịrị)',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Zi',
+'listwiki_users-noresult' => "Ọ hügị ọ'bànifé.",
+'listwiki_users-blocked' => '(kwàchịrị)',
 
-# Special:ActiveUsers
-'activeusers-hidebots' => 'Zonari bot',
-'activeusers-hidesysops' => 'Zonari ndi íshí',
-'activeusers-noresult' => "Ọ hügị ọ'bànifé.",
+# Special:Activewiki_users
+'activewiki_users-hidebots' => 'Zonari bot',
+'activewiki_users-hidesysops' => 'Zonari ndi íshí',
+'activewiki_users-noresult' => "Ọ hügị ọ'bànifé.",
 
-# Special:Log/newusers
-'newuserlogpage' => "Ndétu nchétá ihe ọ'bànifé kèrè",
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => "Ndétu nchétá ihe ọ'bànifé kèrè",
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'Ọtú',
@@ -1118,8 +1118,8 @@ Ubwa, o na ga [[$2]].',
 'listgrouprights-addgroup' => 'Gbàkọ {{PLURAL:$2|ọtú|ọtú}}: $1',
 'listgrouprights-addgroup-all' => 'Tìnyé ọtú nílé',
 
-# E-mail user
-'emailuser' => 'Zi onye á ózí-nsónùsòrò',
+# E-mail wiki_user
+'emailwiki_user' => 'Zi onye á ózí-nsónùsòrò',
 'emailpage' => "Mé ọ'bànifé e-mailù",
 'defemailsubject' => 'e-mail {{SITENAME}}',
 'emailfrom' => 'Onye banyere ya:',
@@ -1249,7 +1249,7 @@ Ngá bu ihe hé mèkwàrà nà ihü '''$1''':",
 'sp-contributions-logs' => 'ndetu-nchétá',
 'sp-contributions-talk' => 'okwu',
 'sp-contributions-search' => 'Tuó ihe há rürü',
-'sp-contributions-username' => "IP mà ọ bu áhà ọ'bànifé:",
+'sp-contributions-wiki_username' => "IP mà ọ bu áhà ọ'bànifé:",
 'sp-contributions-submit' => 'Chọwa',
 
 # What links here
@@ -1276,7 +1276,7 @@ Ngá bu ihe hé mèkwàrà nà ihü '''$1''':",
 'blockip' => "Gbàchí ọ'bànifé",
 'blockip-title' => "Gbàchí ọ'bànifé",
 'blockip-legend' => "Gbàchí ọ'bànifé",
-'ipadressorusername' => "IP mà ọ bu áhà ọ'bànifé:",
+'ipadressorwiki_username' => "IP mà ọ bu áhà ọ'bànifé:",
 'ipbexpiry' => 'Gbá okà:',
 'ipbreason' => 'Mgbághapụtà:',
 'ipbreasonotherlist' => 'Mgbághàpụtá ozor',
@@ -1288,7 +1288,7 @@ Ngá bu ihe hé mèkwàrà nà ihü '''$1''':",
 'ipb-unblock-addr' => 'Ákwàchịrị $1',
 'ipb-unblock' => "Ákwàchịrị áhà ọ'bànifé ma IP",
 'unblockip' => "Ákwàchịrị ọ'bànifé",
-'unblocked' => 'há kwàchịrị [[User:$1|$1]]',
+'unblocked' => 'há kwàchịrị [[wiki_user:$1|$1]]',
 'ipblocklist' => "Ọ'bànifé kwáchírí",
 'blocklist-target' => 'Ẹ́té',
 'blocklist-expiry' => 'Gbá ọ́kà',
@@ -1402,7 +1402,7 @@ Biko meríáríá ozor.',
 'importlogpage' => 'Hubàtà ndetu',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => "Ihü ọ'bànifé gi",
+'tooltip-pt-wiki_userpage' => "Ihü ọ'bànifé gi",
 'tooltip-pt-mytalk' => 'Ihü akíkó gi',
 'tooltip-pt-preferences' => 'Otú Í shị na dose ihe gi',
 'tooltip-pt-watchlist' => 'Ndetu ihü Í ne lé màkà ihe gị gbanwe',
@@ -1437,13 +1437,13 @@ Biko meríáríá ozor.',
 'tooltip-feed-rss' => 'Ntá RSS maka ihüá',
 'tooltip-feed-atom' => 'Nta Atom maka ihüá',
 'tooltip-t-contributions' => "Zí ndétu ihe ọ'bànifé nke rürü",
-'tooltip-t-emailuser' => "Zìrí ọ'bànifé nkeá ozi e-mail",
+'tooltip-t-emailwiki_user' => "Zìrí ọ'bànifé nkeá ozi e-mail",
 'tooltip-t-upload' => 'Tịnyé ihe na nsónùsòrò',
 'tooltip-t-specialpages' => 'Ndetu ihü mkpà níle',
 'tooltip-t-print' => 'Ihü nka nke Í nweríkí dótù',
 'tooltip-t-permalink' => 'Jikodo nke dìrì e dí nke na gá ngbàzì ihü nka',
 'tooltip-ca-nstab-main' => 'Zi ihe nor na ihüá',
-'tooltip-ca-nstab-user' => "Zi ihü ọ'bànifé",
+'tooltip-ca-nstab-wiki_user' => "Zi ihü ọ'bànifé",
 'tooltip-ca-nstab-special' => 'Ihü mkpà, a nweriki ru na ya onwe ya',
 'tooltip-ca-nstab-project' => 'Lé ihü hé chèdòlù',
 'tooltip-ca-nstab-image' => 'Zi ihü usòrò',
@@ -1460,7 +1460,7 @@ Biko meríáríá ozor.',
 'tooltip-undo' => '"Emekwàlà" nà kúfù orü nke na ȯ nè mépó akwukwo orü na ébé nlétū. Ȯ nè kwé ka Í tí ihe éjì èmé ya na édé ntà na àlà.',
 
 # Attribution
-'siteuser' => "ọ'bànifé $1 {{SITENAME}}",
+'sitewiki_user' => "ọ'bànifé $1 {{SITENAME}}",
 'others' => 'nke ndi ozor',
 'creditspage' => 'Nkó áhà ihüá',
 
@@ -1706,7 +1706,7 @@ Nke ozor gí zonari na áká onwe ha.
 'specialpages' => 'Ihü mkpà',
 'specialpages-group-other' => 'Ihü mkpà nke ozor',
 'specialpages-group-login' => 'Banyé / ké buwa',
-'specialpages-group-users' => "Ọ'bànifé na íwú ihe nkwé",
+'specialpages-group-wiki_users' => "Ọ'bànifé na íwú ihe nkwé",
 'specialpages-group-highuse' => 'Ihü éjị áká nke ukwu',
 'specialpages-group-pages' => 'Ndétu nke ihü',
 'specialpages-group-pagetools' => 'Ngwa ihü',

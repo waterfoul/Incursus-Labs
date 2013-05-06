@@ -10,16 +10,16 @@ http://www.mediawiki.org/wiki/Extension:ConfirmEdit
 
 The following modules are included in ConfirmEdit:
 
-* SimpleCaptcha - users have to solve an arithmetic math problem
-* MathCaptcha - users have to solve a math problem that's displayed as
+* SimpleCaptcha - wiki_users have to solve an arithmetic math problem
+* MathCaptcha - wiki_users have to solve a math problem that's displayed as
 an image
-* FancyCaptcha - users have to identify a series of characters, displayed
+* FancyCaptcha - wiki_users have to identify a series of characters, displayed
 in a stylized way
-* QuestyCaptcha - users have to answer a question, out of a series of
+* QuestyCaptcha - wiki_users have to answer a question, out of a series of
 questions defined by the administrator(s)
-* ReCaptcha - users have to identify a series of characters, either
+* ReCaptcha - wiki_users have to identify a series of characters, either
 visually or audially, from a widget provided by the reCAPTCHA service
-* Asirra - users have to identify the cats in a set of photos of cats
+* Asirra - wiki_users have to identify the cats in a set of photos of cats
 and dogs, from a widget provided by the Microsoft Asirra service
 
 == License ==

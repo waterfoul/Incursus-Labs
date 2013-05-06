@@ -24,30 +24,30 @@
  */
 
 /**
- * This file contains the class used to manipulate user quick ACL lists.
+ * This file contains the class used to manipulate wiki_user quick ACL lists.
  */
 if (!defined('MEDIAWIKI'))
     die("This file is part of the IntraACL extension. It is not a valid entry point.");
 
 class HACLQuickacl
 {
-    protected $userid = 0;
+    protected $wiki_userid = 0;
     protected $sd_ids = array();
     var $default_sd_id = 0;
 
-    public function getUserid()
+    public function getwiki_userid()
     {
-        return $this->userid;
+        return $this->wiki_userid;
     }
 
-    public function setUserid($userid)
+    public function setwiki_userid($wiki_userid)
     {
-        $this->userid = $userid;
+        $this->wiki_userid = $wiki_userid;
     }
 
-    function __construct($userid, $sd_ids, $default_sd_id = NULL)
+    function __construct($wiki_userid, $sd_ids, $default_sd_id = NULL)
     {
-        $this->userid = $userid;
+        $this->wiki_userid = $wiki_userid;
         $this->sd_ids = array_flip($sd_ids);
         $this->default_sd_id = $default_sd_id ? $default_sd_id : 0;
     }
@@ -79,14 +79,14 @@ class HACLQuickacl
         $this->sd_ids[$sdID] = true;
     }
 
-    public static function newForUserId($user_id)
+    public static function newForwiki_userId($wiki_user_id)
     {
-        return IACLStorage::get('QuickACL')->getQuickacl($user_id);
+        return IACLStorage::get('QuickACL')->getQuickacl($wiki_user_id);
     }
 
     public function save()
     {
-        return IACLStorage::get('QuickACL')->saveQuickacl($this->userid, array_keys($this->sd_ids), $this->default_sd_id);
+        return IACLStorage::get('QuickACL')->saveQuickacl($this->wiki_userid, array_keys($this->sd_ids), $this->default_sd_id);
     }
 
     public static function removeQuickAclsForSD($sdid)

@@ -53,12 +53,12 @@ class SpecialUpload extends SpecialPage {
 	public $mLocalFile;
 	public $mUploadClicked;
 
-	/** User input variables from the "description" section **/
+	/** wiki_user input variables from the "description" section **/
 	public $mDesiredDestName;	// The requested target file name
 	public $mComment;
 	public $mLicense;
 
-	/** User input variables from the root section **/
+	/** wiki_user input variables from the root section **/
 	public $mIgnoreWarning;
 	public $mWatchThis;
 	public $mCopyrightStatus;
@@ -66,8 +66,8 @@ class SpecialUpload extends SpecialPage {
 
 	/** Hidden variables **/
 	public $mDestWarningAck;
-	public $mForReUpload;		// The user followed an "overwrite this file" link
-	public $mCancelUpload;		// The user clicked "Cancel and return to upload form" button
+	public $mForReUpload;		// The wiki_user followed an "overwrite this file" link
+	public $mCancelUpload;		// The wiki_user clicked "Cancel and return to upload form" button
 	public $mTokenOk;
 	public $mUploadSuccessful = false;	// Subclasses can use this to determine whether a file was uploaded
 
@@ -100,7 +100,7 @@ class SpecialUpload extends SpecialPage {
 		$this->mDestWarningAck    = $request->getText( 'wpDestFileWarningAck' );
 		$this->mIgnoreWarning     = $request->getCheck( 'wpIgnoreWarning' )
 			|| $request->getCheck( 'wpUploadIgnoreWarning' );
-		$this->mWatchthis         = $request->getBool( 'wpWatchthis' ) && $this->getUser()->isLoggedIn();
+		$this->mWatchthis         = $request->getBool( 'wpWatchthis' ) && $this->getwiki_user()->isLoggedIn();
 		$this->mCopyrightStatus   = $request->getText( 'wpUploadCopyStatus' );
 		$this->mCopyrightSource   = $request->getText( 'wpUploadSource' );
 
@@ -109,9 +109,9 @@ class SpecialUpload extends SpecialPage {
 		$this->mCancelUpload      = $request->getCheck( 'wpCancelUpload' )
 								 || $request->getCheck( 'wpReUpload' ); // b/w compat
 
-		// If it was posted check for the token (no remote POST'ing with user credentials)
+		// If it was posted check for the token (no remote POST'ing with wiki_user credentials)
 		$token = $request->getVal( 'wpEditToken' );
-		$this->mTokenOk = $this->getUser()->matchEditToken( $token );
+		$this->mTokenOk = $this->getwiki_user()->matchEditToken( $token );
 
 		$this->uploadFormTextTop = '';
 		$this->uploadFormTextAfterSummary = '';
@@ -122,11 +122,11 @@ class SpecialUpload extends SpecialPage {
 	 * Handle permission checking elsewhere in order to be able to show
 	 * custom error messages.
 	 *
-	 * @param $user User object
+	 * @param $wiki_user wiki_user object
 	 * @return Boolean
 	 */
-	public function userCanExecute( User $user ) {
-		return UploadBase::isEnabled() && parent::userCanExecute( $user );
+	public function wiki_userCanExecute( wiki_user $wiki_user ) {
+		return UploadBase::isEnabled() && parent::wiki_userCanExecute( $wiki_user );
 	}
 
 	/**
@@ -142,15 +142,15 @@ class SpecialUpload extends SpecialPage {
 		}
 
 		# Check permissions
-		$user = $this->getUser();
-		$permissionRequired = UploadBase::isAllowed( $user );
+		$wiki_user = $this->getwiki_user();
+		$permissionRequired = UploadBase::isAllowed( $wiki_user );
 		if( $permissionRequired !== true ) {
 			throw new PermissionsError( $permissionRequired );
 		}
 
 		# Check blocks
-		if( $user->isBlocked() ) {
-			throw new UserBlockedError( $user->getBlock() );
+		if( $wiki_user->isBlocked() ) {
+			throw new wiki_userBlockedError( $wiki_user->getBlock() );
 		}
 
 		# Check whether we actually want to allow changing stuff
@@ -238,7 +238,7 @@ class SpecialUpload extends SpecialPage {
 			$form->addPreText( $this->msg( 'session_fail_preview' )->parse() );
 		}
 
-		# Give a notice if the user is uploading a file that has been deleted or moved
+		# Give a notice if the wiki_user is uploading a file that has been deleted or moved
 		# Note that this is independent from the message 'filewasdeleted' that requires JS
 		$desiredTitleObj = Title::makeTitleSafe( NS_FILE, $this->mDesiredDestName );
 		$delNotice = ''; // empty by default
@@ -275,16 +275,16 @@ class SpecialUpload extends SpecialPage {
 	 */
 	protected function showViewDeletedLinks() {
 		$title = Title::makeTitleSafe( NS_FILE, $this->mDesiredDestName );
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		// Show a subtitle link to deleted revisions (to sysops et al only)
 		if( $title instanceof Title ) {
 			$count = $title->isDeleted();
-			if ( $count > 0 && $user->isAllowed( 'deletedhistory' ) ) {
+			if ( $count > 0 && $wiki_user->isAllowed( 'deletedhistory' ) ) {
 				$restorelink = Linker::linkKnown(
 					SpecialPage::getTitleFor( 'Undelete', $title->getPrefixedText() ),
 					$this->msg( 'restorelink' )->numParams( $count )->escaped()
 				);
-				$link = $this->msg( $user->isAllowed( 'delete' ) ? 'thisisdeleted' : 'viewdeleted' )
+				$link = $this->msg( $wiki_user->isAllowed( 'delete' ) ? 'thisisdeleted' : 'viewdeleted' )
 					->rawParams( $restorelink )->parseAsBlock();
 				$this->getOutput()->addHTML( "<div id=\"contentSub2\">{$link}</div>" );
 			}
@@ -322,7 +322,7 @@ class SpecialUpload extends SpecialPage {
 	protected function showUploadWarning( $warnings ) {
 		# If there are no warnings, or warnings we can ignore, return early.
 		# mDestWarningAck is set when some javascript has shown the warning
-		# to the user. mForReUpload is set when the user clicks the "upload a
+		# to the wiki_user. mForReUpload is set when the wiki_user clicks the "upload a
 		# new version" link.
 		if ( !$warnings || ( count( $warnings ) == 1 &&
 			isset( $warnings['exists'] ) &&
@@ -396,7 +396,7 @@ class SpecialUpload extends SpecialPage {
 			// This code path is deprecated. If you want to break upload processing
 			// do so by hooking into the appropriate hooks in UploadBase::verifyUpload
 			// and UploadBase::verifyFile.
-			// If you use this hook to break uploading, the user will be returned
+			// If you use this hook to break uploading, the wiki_user will be returned
 			// an empty form with no error message whatsoever.
 			return;
 		}
@@ -409,7 +409,7 @@ class SpecialUpload extends SpecialPage {
 		}
 
 		// Verify permissions for this title
-		$permErrors = $this->mUpload->verifyTitlePermissions( $this->getUser() );
+		$permErrors = $this->mUpload->verifyTitlePermissions( $this->getwiki_user() );
 		if( $permErrors !== true ) {
 			$code = array_shift( $permErrors[0] );
 			$this->showRecoverableUploadError( $this->msg( $code, $permErrors[0] )->parse() );
@@ -433,7 +433,7 @@ class SpecialUpload extends SpecialPage {
 		} else {
 			$pageText = false;
 		}
-		$status = $this->mUpload->performUpload( $this->mComment, $pageText, $this->mWatchthis, $this->getUser() );
+		$status = $this->mUpload->performUpload( $this->mComment, $pageText, $this->mWatchthis, $this->getwiki_user() );
 		if ( !$status->isGood() ) {
 			$this->showUploadError( $this->getOutput()->parse( $status->getWikiText() ) );
 			return;
@@ -493,7 +493,7 @@ class SpecialUpload extends SpecialPage {
 
 	/**
 	 * See if we should check the 'watch this page' checkbox on the form
-	 * based on the user's preferences and whether we're being asked
+	 * based on the wiki_user's preferences and whether we're being asked
 	 * to create a new file or update an existing one.
 	 *
 	 * In the case where 'watch edits' is off but 'watch creations' is on,
@@ -504,7 +504,7 @@ class SpecialUpload extends SpecialPage {
 	 * @return Bool|String
 	 */
 	protected function getWatchCheck() {
-		if( $this->getUser()->getOption( 'watchdefault' ) ) {
+		if( $this->getwiki_user()->getOption( 'watchdefault' ) ) {
 			// Watch all edits!
 			return true;
 		}
@@ -513,16 +513,16 @@ class SpecialUpload extends SpecialPage {
 		if( $local && $local->exists() ) {
 			// We're uploading a new version of an existing file.
 			// No creation, so don't watch it if we're not already.
-			return $this->getUser()->isWatched( $local->getTitle() );
+			return $this->getwiki_user()->isWatched( $local->getTitle() );
 		} else {
 			// New page should get watched if that's our option.
-			return $this->getUser()->getOption( 'watchcreations' );
+			return $this->getwiki_user()->getOption( 'watchcreations' );
 		}
 	}
 
 
 	/**
-	 * Provides output to the user for a result of UploadBase::verifyUpload
+	 * Provides output to the wiki_user for a result of UploadBase::verifyUpload
 	 *
 	 * @param $details Array: result of UploadBase::verifyUpload
 	 */
@@ -655,7 +655,7 @@ class SpecialUpload extends SpecialPage {
 		} elseif ( $exists['warning'] == 'bad-prefix' ) {
 			$warning = wfMessage( 'filename-bad-prefix', $exists['prefix'] )->parse();
 		} elseif ( $exists['warning'] == 'was-deleted' ) {
-			# If the file existed before and was deleted, warn the user of this
+			# If the file existed before and was deleted, warn the wiki_user of this
 			$ltitle = SpecialPage::getTitleFor( 'Log' );
 			$llink = Linker::linkKnown(
 				$ltitle,
@@ -802,7 +802,7 @@ class UploadForm extends HTMLForm {
 			);
 		}
 
-		$canUploadByUrl = UploadFromUrl::isEnabled() && UploadFromUrl::isAllowed( $this->getUser() );
+		$canUploadByUrl = UploadFromUrl::isEnabled() && UploadFromUrl::isAllowed( $this->getwiki_user() );
 		$radio = $canUploadByUrl;
 		$selectedSourceType = strtolower( $this->getRequest()->getText( 'wpSourceType', 'File' ) );
 
@@ -946,7 +946,7 @@ class UploadForm extends HTMLForm {
 					? 'filereuploadsummary'
 					: 'fileuploadsummary',
 				'default' => $this->mComment,
-				'cols' => intval( $this->getUser()->getOption( 'cols' ) ),
+				'cols' => intval( $this->getwiki_user()->getOption( 'cols' ) ),
 				'rows' => 8,
 			)
 		);
@@ -1005,15 +1005,15 @@ class UploadForm extends HTMLForm {
 	 * @return Array: descriptor array
 	 */
 	protected function getOptionsSection() {
-		$user = $this->getUser();
-		if ( $user->isLoggedIn() ) {
+		$wiki_user = $this->getwiki_user();
+		if ( $wiki_user->isLoggedIn() ) {
 			$descriptor = array(
 				'Watchthis' => array(
 					'type' => 'check',
 					'id' => 'wpWatchthis',
 					'label-message' => 'watchthisupload',
 					'section' => 'options',
-					'default' => $user->getOption( 'watchcreations' ),
+					'default' => $wiki_user->getOption( 'watchcreations' ),
 				)
 			);
 		}

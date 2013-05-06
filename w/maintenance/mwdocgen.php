@@ -78,7 +78,7 @@ $mwExcludePaths = array(
 	'static',
 );
 
-/** Variable to get user input */
+/** Variable to get wiki_user input */
 $input = '';
 $excludePatterns = '';
 /** Whether to generates man pages: */
@@ -123,7 +123,7 @@ function getSvnRevision( $dir ) {
 }
 
 /**
- * Generate a configuration file given user parameters and return the temporary filename.
+ * Generate a configuration file given wiki_user parameters and return the temporary filename.
  * @param $doxygenTemplate String: full path for the template.
  * @param $outputDirectory String: directory where the stuff will be output.
  * @param $stripFromPath String: path that should be stripped out (usually mediawiki base path).

@@ -1,6 +1,6 @@
 <?php
 /**
- * Script to change users preferences on the fly.
+ * Script to change wiki_users preferences on the fly.
  *
  * Made on an original idea by Fooey (freenode)
  *
@@ -25,10 +25,10 @@
  */
 
 // This is a command line script, load tools and parse args
-require_once( 'userOptions.inc' );
+require_once( 'wiki_userOptions.inc' );
 
 // Load up our tool system, exit with usage() if options are not fine
-$uo = new userOptions( $options, $args );
+$uo = new wiki_userOptions( $options, $args );
 
 $uo->run();
 

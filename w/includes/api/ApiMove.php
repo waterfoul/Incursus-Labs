@@ -35,7 +35,7 @@ class ApiMove extends ApiBase {
 	}
 
 	public function execute() {
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		$params = $this->extractRequestParams();
 
 		$this->requireOnlyOneParameter( $params, 'from', 'fromid' );
@@ -67,9 +67,9 @@ class ApiMove extends ApiBase {
 			&& !RepoGroup::singleton()->getLocalRepo()->findFile( $toTitle )
 			&& wfFindFile( $toTitle ) )
 		{
-			if ( !$params['ignorewarnings'] && $user->isAllowed( 'reupload-shared' ) ) {
+			if ( !$params['ignorewarnings'] && $wiki_user->isAllowed( 'reupload-shared' ) ) {
 				$this->dieUsageMsg( 'sharedfile-exists' );
-			} elseif ( !$user->isAllowed( 'reupload-shared' ) ) {
+			} elseif ( !$wiki_user->isAllowed( 'reupload-shared' ) ) {
 				$this->dieUsageMsg( 'cantoverwrite-sharedfile' );
 			}
 		}
@@ -82,7 +82,7 @@ class ApiMove extends ApiBase {
 		}
 
 		$r = array( 'from' => $fromTitle->getPrefixedText(), 'to' => $toTitle->getPrefixedText(), 'reason' => $params['reason'] );
-		if ( !$params['noredirect'] || !$user->isAllowed( 'suppressredirect' ) ) {
+		if ( !$params['noredirect'] || !$wiki_user->isAllowed( 'suppressredirect' ) ) {
 			$r['redirectcreated'] = '';
 		}
 		if( $toTitleExists ) {

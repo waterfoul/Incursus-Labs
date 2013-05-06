@@ -37,7 +37,7 @@ class NamespaceConflictChecker extends Maintenance {
 	/**
 	 * @var DatabaseBase
 	 */
-	protected $db;
+	protected ;
 
 	public function __construct() {
 		parent::__construct();

@@ -26,30 +26,30 @@
 
 class IntraACL_SQL_QuickACL
 {
-    public function saveQuickAcl($user_id, $sd_ids, $default_sd_id = NULL)
+    public function saveQuickAcl($wiki_user_id, $sd_ids, $default_sd_id = NULL)
     {
-        $dbw = wfGetDB(DB_MASTER);
+        w = wfGetDB(DB_MASTER);
 
         // delete old quickacl entries
-        $dbw->delete('halo_acl_quickacl', array('user_id' => $user_id), __METHOD__);
+        w->delete('halo_acl_quickacl', array('wiki_user_id' => $wiki_user_id), __METHOD__);
 
         $rows = array();
         foreach ($sd_ids as $sd_id)
         {
             $rows[] = array(
                 'sd_id'      => $sd_id,
-                'user_id'    => $user_id,
+                'wiki_user_id'    => $wiki_user_id,
                 'qa_default' => $default_sd_id == $sd_id ? 1 : 0,
             );
         }
-        $dbw->insert('halo_acl_quickacl', $rows, __METHOD__);
+        w->insert('halo_acl_quickacl', $rows, __METHOD__);
     }
 
-    public function getQuickacl($user_id)
+    public function getQuickacl($wiki_user_id)
     {
-        $dbr = wfGetDB(DB_SLAVE);
+        r = wfGetDB(DB_SLAVE);
 
-        $res = $dbr->select('halo_acl_quickacl', 'sd_id, qa_default', array('user_id' => $user_id), __METHOD__);
+        $res = r->select('halo_acl_quickacl', 'sd_id, qa_default', array('wiki_user_id' => $wiki_user_id), __METHOD__);
         $sd_ids = array();
         $default_id = NULL;
         foreach ($res as $row)
@@ -59,15 +59,15 @@ class IntraACL_SQL_QuickACL
                 $default_id = $row->sd_id;
         }
 
-        $quickacl = new HACLQuickacl($user_id, $sd_ids, $default_id);
+        $quickacl = new HACLQuickacl($wiki_user_id, $sd_ids, $default_id);
         return $quickacl;
     }
 
     public function deleteQuickaclForSD($sdid)
     {
-        $dbw = wfGetDB(DB_MASTER);
+        w = wfGetDB(DB_MASTER);
         // delete old quickacl entries
-        $dbw->delete('halo_acl_quickacl', array('sd_id' => $sdid), __METHOD__);
+        w->delete('halo_acl_quickacl', array('sd_id' => $sdid), __METHOD__);
         return true;
     }
 }

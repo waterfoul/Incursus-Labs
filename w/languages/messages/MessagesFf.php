@@ -16,7 +16,7 @@
 $fallback = 'fr';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Diidtol jokke',
 'tog-justify' => 'Fonndito lelnanɗe',
 'tog-hideminor' => 'Duuɗ taƴtanɗe pamare e bayle cakkitiiɗe',
@@ -139,7 +139,7 @@ $messages = array(
 'talk' => 'Kaldigal',
 'views' => 'Jiyte',
 'toolbox' => 'Wakannde gollirɗe',
-'userpage' => 'Yiyto hello kuutoro',
+'wiki_userpage' => 'Yiyto hello kuutoro',
 'projectpage' => 'Yiyto hello eɓɓoore',
 'imagepage' => 'Yiyto hello fiilde',
 'mediawikipage' => 'Yiyto hello ɓatakuure ndee',
@@ -163,7 +163,7 @@ Tiiɗno sabbo seeɗa hade maa etaade naatde e hello ngoo kadi.',
 'pool-queuefull' => 'Doggol golle ko keewngol',
 'pool-errorunknown' => 'Juumre nde heftinaaka',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Baɗte {{SITENAME}}',
 'aboutpage' => 'Project:Baɗte',
 'copyright' => 'Loowdi ena heɓoo les $1.',
@@ -218,7 +218,7 @@ Tiiɗno sabbo seeɗa hade maa etaade naatde e hello ngoo kadi.',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Winndannde',
-'nstab-user' => 'Hello kuutoro',
+'nstab-wiki_user' => 'Hello kuutoro',
 'nstab-media' => 'Hello Mejaaje',
 'nstab-special' => 'Hello heeriingo',
 'nstab-project' => 'Hello eɓɓoore',
@@ -251,7 +251,7 @@ Ruttorde keɓe ruttinii juumre "<samp>$3: $4</samp>".',
 Heewi waɗde noon ko diff nayeejo walla jokkol aslol fayde e hello momtaango.
 
 So wonaa ɗuum, maataw ko a kawruɗo e buggere e topirde ndee.
-Tiiɗno jaŋto ɗum to [[Special:ListUsers/sysop|jiiloowo]] mbaasaa yejjitde URL jokkol ngol.',
+Tiiɗno jaŋto ɗum to [[Special:Listwiki_users/sysop|jiiloowo]] mbaasaa yejjitde URL jokkol ngol.',
 'badtitle' => 'Tiitoonde moƴƴaani',
 'badtitletext' => 'Tiitoonde ello ɗaɓɓitaango ngoo moƴƴaani, ko mehre, walla ko hakkude-ɗemɗe jokkoraade no feewaani walla tiitoonde hakkude-wiki',
 
@@ -262,7 +262,7 @@ Tiiɗno jaŋto ɗum to [[Special:ListUsers/sysop|jiiloowo]] mbaasaa yejjitde URL
 'login' => 'Seŋo',
 'nav-login-createaccount' => 'Seŋo / uddit konte',
 'loginprompt' => 'Alaa e sago kurminaa kukiije ngam seŋaade e {{SITENAME}}.',
-'userlogin' => 'Seŋo / uddit konte',
+'wiki_userlogin' => 'Seŋo / uddit konte',
 'nologin' => 'A alaa konte tawo? $1.',
 'nologinlink' => 'Uddit konte',
 'mailmypassword' => 'Neldu finnde hesere e iimeel',
@@ -449,7 +449,7 @@ walla [{{fullurl:{{FULLPAGENAME}}|action=edit}} taƴto hello ngoo]</span>.',
 'thumbnail_error' => 'Juumre waɗii e cosgol dooɓre $1',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Hello kuutoro maa',
+'tooltip-pt-wiki_userpage' => 'Hello kuutoro maa',
 'tooltip-pt-mytalk' => 'Hello jeewte maa',
 'tooltip-pt-preferences' => 'Cuɓoraaɗe maa',
 'tooltip-pt-watchlist' => "Doggol kelle ɗe ngon-ɗaa e ƴeewtaade bayle mum'en",
@@ -482,7 +482,7 @@ Aɗa waawi yiytaade ɗaɗol maggo.',
 'tooltip-t-print' => 'Jame binndittooɗe ngoo hello',
 'tooltip-t-permalink' => 'Jokkol duumingol e baylital ngoo hello',
 'tooltip-ca-nstab-main' => 'Yiyto hello loowdi ngoo',
-'tooltip-ca-nstab-user' => 'Yiyto hello kuutoro',
+'tooltip-ca-nstab-wiki_user' => 'Yiyto hello kuutoro',
 'tooltip-ca-nstab-project' => 'Yiyto hello eɓɓoore ngoo',
 'tooltip-ca-nstab-image' => 'Yiyto hello fiilde ngoo',
 'tooltip-minoredit' => 'Maanto ɗum ko taƴto famaro',

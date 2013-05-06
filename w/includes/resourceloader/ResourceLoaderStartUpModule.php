@@ -74,7 +74,7 @@ class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 			// becoming [] instead of {} in JS (bug 34604)
 			'wgActionPaths' => (object)$wgActionPaths,
 			'wgServer' => $wgServer,
-			'wgUserLanguage' => $context->getLanguage(),
+			'wgwiki_userLanguage' => $context->getLanguage(),
 			'wgContentLanguage' => $wgContLang->getCode(),
 			'wgVersion' => $wgVersion,
 			'wgEnableAPI' => $wgEnableAPI,

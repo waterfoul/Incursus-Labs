@@ -45,7 +45,7 @@ class CleanupAncientTables extends Maintenance {
 			);
 		}
 
-		$db = wfGetDB( DB_MASTER );
+		 = wfGetDB( DB_MASTER );
 		$ancientTables = array(
 			'blobs', // 1.4
 			'brokenlinks', // 1.4
@@ -57,14 +57,14 @@ class CleanupAncientTables extends Maintenance {
 			'old', // 1.4
 			'oldwatchlist', // pre 1.1?
 			'trackback', // 1.19
-			'user_rights', // 1.5
+			'wiki_user_rights', // 1.5
 			'validate', // 1.6
 		);
 
 		foreach( $ancientTables as $table ) {
-			if ( $db->tableExists( $table, __METHOD__ ) ) {
+			if ( ->tableExists( $table, __METHOD__ ) ) {
 				$this->output( "Dropping table $table..." );
-				$db->dropTable( $table, __METHOD__ );
+				->dropTable( $table, __METHOD__ );
 				$this->output( "done.\n" );
 			}
 		}
@@ -75,14 +75,14 @@ class CleanupAncientTables extends Maintenance {
 			'old_namespace',
 			'old_timestamp',
 			'name_title_timestamp',
-			'user_timestamp',
-			'usertext_timestamp',
+			'wiki_user_timestamp',
+			'wiki_usertext_timestamp',
 		);
 		foreach( $oldIndexes as $index ) {
-			if ( $db->indexExists( 'text', $index, __METHOD__ ) ) {
+			if ( ->indexExists( 'text', $index, __METHOD__ ) ) {
 				$this->output( "Dropping index $index from the text table..." );
-				$db->query( "DROP INDEX " . $db->addIdentifierQuotes( $index )
-						. " ON " . $db->tableName( 'text' ) );
+				->query( "DROP INDEX " . ->addIdentifierQuotes( $index )
+						. " ON " . ->tableName( 'text' ) );
 				$this->output( "done.\n" );
 			}
 		}
@@ -91,17 +91,17 @@ class CleanupAncientTables extends Maintenance {
 			'old_namespace',
 			'old_title',
 			'old_comment',
-			'old_user',
-			'old_user_text',
+			'old_wiki_user',
+			'old_wiki_user_text',
 			'old_timestamp',
 			'old_minor_edit',
 			'inverse_timestamp',
 		);
 		foreach( $oldFields as $field ) {
-			if ( $db->fieldExists( 'text', $field, __METHOD__ ) ) {
+			if ( ->fieldExists( 'text', $field, __METHOD__ ) ) {
 				$this->output( "Dropping the $field field from the text table..." );
-				$db->query( "ALTER TABLE  " . $db->tableName( 'text' )
-						. " DROP COLUMN " . $db->addIdentifierQuotes( $field )  );
+				->query( "ALTER TABLE  " . ->tableName( 'text' )
+						. " DROP COLUMN " . ->addIdentifierQuotes( $field )  );
 				$this->output( "done.\n" );
 			}
 		}

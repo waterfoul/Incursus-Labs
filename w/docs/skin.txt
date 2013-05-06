@@ -25,7 +25,7 @@ This was introduced in the 2004 release of 1.3
 
 And there are four Monobook-derived skins which have been introduced since 1.3:
 
-* MySkin: Monobook without the CSS. The idea is that you customise it using user
+* MySkin: Monobook without the CSS. The idea is that you customise it using wiki_user
 or site CSS (see below)
 
 * Chick: A lightweight Monobook skin with no sidebar, the sidebar links are
@@ -47,13 +47,13 @@ skin-dependent CSS
 * [[MediaWiki:Common.js]], [[MediaWiki:Monobook.js]], etc. -- for custom
 site JavaScript
 
-These can also be customised on a per-user basis, by editing
-[[User:<name>/monobook.css]], [[User:<name>/monobook.js]], etc.
+These can also be customised on a per-wiki_user basis, by editing
+[[wiki_user:<name>/monobook.css]], [[wiki_user:<name>/monobook.js]], etc.
 
-This feature has led to a wide variety of "user styles" becoming available,
+This feature has led to a wide variety of "wiki_user styles" becoming available,
 which change the appearance of Monobook or MySkin:
 
-http://www.mediawiki.org/wiki/Manual:Gallery_of_user_styles
+http://www.mediawiki.org/wiki/Manual:Gallery_of_wiki_user_styles
 
 If you want a different look for your wiki, that gallery is a good place to start.
 

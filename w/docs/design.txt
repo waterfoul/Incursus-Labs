@@ -7,10 +7,10 @@ wiki at http://www.mediawiki.org/
 
 Primary classes:
 
-  User
-    Encapsulates the state of the user viewing/using the site. Can be queried
-    for things like the user's settings, name, etc. Handles the details of
-    getting and saving to the "user" table of the database, and dealing with
+  wiki_user
+    Encapsulates the state of the wiki_user viewing/using the site. Can be queried
+    for things like the wiki_user's settings, name, etc. Handles the details of
+    getting and saving to the "wiki_user" table of the database, and dealing with
     sessions and cookies.
 
   OutputPage
@@ -44,15 +44,15 @@ Primary classes:
     called from various other places when needed (most notably,
     OutputPage::addWikiText()). The StandardSkin object is a complete
     implementation, and is meant to be subclassed with other skins that may
-    override some of its functions. The User object contains a reference to a
-    skin (according to that user's preference), and so rather than having a
-    global skin object we just rely on the global User and get the skin with
-    $wgUser->getSkin().
+    override some of its functions. The wiki_user object contains a reference to a
+    skin (according to that wiki_user's preference), and so rather than having a
+    global skin object we just rely on the global wiki_user and get the skin with
+    $wgwiki_user->getSkin().
     See also skin.txt.
 
   Language
     Represents the language used for incidental text, and also has some
-    character encoding functions and other locale stuff. The current user
+    character encoding functions and other locale stuff. The current wiki_user
     interface language is instantiated as $wgLang, and the local content
     language as $wgContLang; be sure to use the *correct* language object
     depending upon the circumstances.
@@ -73,7 +73,7 @@ Naming/coding conventions:
   without bothering, by all means do so (and don't be surprised if I reformat
   your code).
 
-  - I have the code indented with tabs to save file size and so that users can
+  - I have the code indented with tabs to save file size and so that wiki_users can
     set their tab stops to any depth they like. I use 4-space tab stops, which
     work well. I also use K&R brace matching style. I know that's a religious
     issue for some, so if you want to use a style that puts opening braces on

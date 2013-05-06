@@ -36,8 +36,8 @@ class CheckBadRedirects extends Maintenance {
 
 	public function execute() {
 		$this->output( "Fetching redirects...\n" );
-		$dbr = wfGetDB( DB_SLAVE );
-		$result = $dbr->select(
+		r = wfGetDB( DB_SLAVE );
+		$result = r->select(
 			array( 'page' ),
 			array( 'page_namespace', 'page_title', 'page_latest' ),
 			array( 'page_is_redirect' => 1 ) );

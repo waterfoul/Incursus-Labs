@@ -109,9 +109,9 @@ class LBFactory_Multi extends LBFactory {
 		if ( $this->lastWiki === $wiki ) {
 			return $this->lastSection;
 		}
-		list( $dbName, ) = $this->getDBNameAndPrefix( $wiki );
-		if ( isset( $this->sectionsByDB[$dbName] ) ) {
-			$section = $this->sectionsByDB[$dbName];
+		list( Name, ) = $this->getDBNameAndPrefix( $wiki );
+		if ( isset( $this->sectionsByDB[Name] ) ) {
+			$section = $this->sectionsByDB[Name];
 		} else {
 			$section = 'DEFAULT';
 		}
@@ -125,11 +125,11 @@ class LBFactory_Multi extends LBFactory {
 	 * @return LoadBalancer
 	 */
 	function newMainLB( $wiki = false ) {
-		list( $dbName, ) = $this->getDBNameAndPrefix( $wiki );
+		list( Name, ) = $this->getDBNameAndPrefix( $wiki );
 		$section = $this->getSectionForWiki( $wiki );
 		$groupLoads = array();
-		if ( isset( $this->groupLoadsByDB[$dbName] ) ) {
-			$groupLoads = $this->groupLoadsByDB[$dbName];
+		if ( isset( $this->groupLoadsByDB[Name] ) ) {
+			$groupLoads = $this->groupLoadsByDB[Name];
 		}
 		if ( isset( $this->groupLoadsBySection[$section] ) ) {
 			$groupLoads = array_merge_recursive( $groupLoads, $this->groupLoadsBySection[$section] );

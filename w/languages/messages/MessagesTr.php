@@ -82,7 +82,7 @@ $namespaceAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'AktifKullanıcılar', 'EtkinKullanıcılar' ),
+	'Activewiki_users'               => array( 'AktifKullanıcılar', 'EtkinKullanıcılar' ),
 	'Allmessages'               => array( 'Tümİletiler', 'TümMesajlar' ),
 	'Allpages'                  => array( 'TümSayfalar' ),
 	'Ancientpages'              => array( 'EskiSayfalar' ),
@@ -103,7 +103,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'AnlamAyrımı', 'AnlamAyrım' ),
 	'DoubleRedirects'           => array( 'ÇiftYönlendirmeler' ),
 	'EditWatchlist'             => array( 'İzlemeListesiDüzenle' ),
-	'Emailuser'                 => array( 'E-postaGönder' ),
+	'Emailwiki_user'                 => array( 'E-postaGönder' ),
 	'Export'                    => array( 'DışaAktar', 'DışarıAktar' ),
 	'Fewestrevisions'           => array( 'EnAzRevizyon' ),
 	'FileDuplicateSearch'       => array( 'KopyaDosyaArama', 'ÇiftDosyaArama' ),
@@ -117,7 +117,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'DosyaListesi', 'DosyaListele', 'ResimListesi', 'ResimListele' ),
 	'Listgrouprights'           => array( 'GrupHaklarıListesi', 'GrupHaklarıListele', 'KullanıcıGrupHakları' ),
 	'Listredirects'             => array( 'YönlendirmeListesi', 'YönlendirmeListele' ),
-	'Listusers'                 => array( 'KullanıcıListesi', 'KullanıcıListele' ),
+	'Listwiki_users'                 => array( 'KullanıcıListesi', 'KullanıcıListele' ),
 	'Lockdb'                    => array( 'DBKilitle', 'VeritabanıKilitle' ),
 	'Log'                       => array( 'Günlük', 'Günlükler', 'Kayıt', 'Kayıtlar' ),
 	'Lonelypages'               => array( 'YalnızSayfalar' ),
@@ -167,9 +167,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'KullanılmayanŞablonlar' ),
 	'Unwatchedpages'            => array( 'İzlenmeyenSayfalar' ),
 	'Upload'                    => array( 'Yükle' ),
-	'Userlogin'                 => array( 'KullanıcıOturumuAçma', 'KullanıcıGiriş' ),
-	'Userlogout'                => array( 'KullanıcıOturumuKapatma', 'KullanıcıÇıkış' ),
-	'Userrights'                => array( 'KullanıcıHakları' ),
+	'wiki_userlogin'                 => array( 'KullanıcıOturumuAçma', 'KullanıcıGiriş' ),
+	'wiki_userlogout'                => array( 'KullanıcıOturumuKapatma', 'KullanıcıÇıkış' ),
+	'wiki_userrights'                => array( 'KullanıcıHakları' ),
 	'Version'                   => array( 'Sürüm' ),
 	'Wantedcategories'          => array( 'İstenenKategoriler' ),
 	'Wantedfiles'               => array( 'İstenenDosyalar' ),
@@ -213,8 +213,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'SAYFASAYISI', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'MADDESAYISI', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'DOSYASAYISI', 'NUMBEROFFILES' ),
-	'numberofusers'             => array( '1', 'KULLANICISAYISI', 'NUMBEROFUSERS' ),
-	'numberofactiveusers'       => array( '1', 'AKTİFKULLANICISAYISI', 'ETKİNKULLANICISAYISI', 'NUMBEROFACTIVEUSERS' ),
+	'numberofwiki_users'             => array( '1', 'KULLANICISAYISI', 'NUMBEROFUSERS' ),
+	'numberofactivewiki_users'       => array( '1', 'AKTİFKULLANICISAYISI', 'ETKİNKULLANICISAYISI', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'DEĞİŞİKLİKSAYISI', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'GÖRÜNTÜLEMESAYISI', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'SAYFAADI', 'PAGENAME' ),
@@ -285,7 +285,7 @@ $magicWords = array(
 	'revisionmonth'             => array( '1', 'SÜRÜMAYI', 'REVISIONMONTH' ),
 	'revisionyear'              => array( '1', 'SÜRÜMYILI', 'REVISIONYEAR' ),
 	'revisiontimestamp'         => array( '1', 'SÜRÜMZAMANBİLGİSİ', 'REVISIONTIMESTAMP' ),
-	'revisionuser'              => array( '1', 'SÜRÜMKULLANICI', 'REVISIONUSER' ),
+	'revisionwiki_user'              => array( '1', 'SÜRÜMKULLANICI', 'REVISIONUSER' ),
 	'plural'                    => array( '0', 'ÇOĞUL:', 'PLURAL:' ),
 	'fullurl'                   => array( '0', 'TAMURL:', 'FULLURL:' ),
 	'fullurle'                  => array( '0', 'TAMURLU:', 'FULLURLE:' ),
@@ -325,7 +325,7 @@ $separatorTransformTable = array( ',' => '.', '.' => ',' );
 $linkTrail = '/^([a-zÇĞçğİıÖöŞşÜüÂâÎîÛû]+)(.*)$/sDu';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Bağlantıların altını çiz:',
 'tog-justify' => 'Paragrafları iki yana yasla',
 'tog-hideminor' => 'Son değişiklikler sayfasında küçük değişiklikleri gizle',
@@ -349,7 +349,7 @@ $messages = array(
 'tog-previewonfirst' => 'İlk düzenlemede ön izlemeyi göster',
 'tog-nocache' => 'Tarayıcı sayfalarını önbelleğe almayı devre dışı bırak',
 'tog-enotifwatchlistpages' => 'İzleme listemdeki bir sayfanın ya da dosyanın değiştirilmesi durumunda bana e-posta gönder',
-'tog-enotifusertalkpages' => 'Kullanıcı mesaj sayfamda değişiklik olduğunda bana e-posta gönder',
+'tog-enotifwiki_usertalkpages' => 'Kullanıcı mesaj sayfamda değişiklik olduğunda bana e-posta gönder',
 'tog-enotifminoredits' => 'Sayfalardaki ve dosyalardaki küçük değişikliklerde bana e-posta gönder',
 'tog-enotifrevealaddr' => 'E-posta adresimi bildiri postalarımda göster.',
 'tog-shownumberswatching' => 'İzleyen kullanıcı sayısını göster',
@@ -531,7 +531,7 @@ $messages = array(
 'talk' => 'Tartışma',
 'views' => 'Görünümler',
 'toolbox' => 'Araçlar',
-'userpage' => 'Kullanıcı sayfasını görüntüle',
+'wiki_userpage' => 'Kullanıcı sayfasını görüntüle',
 'projectpage' => 'Proje sayfasına bak',
 'imagepage' => 'Dosya sayfasını görüntüle',
 'mediawikipage' => 'Mesaj sayfasını göster',
@@ -557,7 +557,7 @@ $1',
 'pool-queuefull' => 'Havuz sırası dolu',
 'pool-errorunknown' => 'Bilinmeyen hata',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} hakkında',
 'aboutpage' => 'Project:Hakkında',
 'copyright' => 'İçerik $1 altındadır.',
@@ -590,8 +590,8 @@ $1',
 'youhavenewmessages' => 'Yeni $1 var ($2).',
 'newmessageslink' => 'mesajınız',
 'newmessagesdifflink' => 'son değişiklik',
-'youhavenewmessagesfromusers' => '{{PLURAL:$3|Başka bir kullanıcıdan|$3 kullanıcıdan}} $1 var. ($2)',
-'youhavenewmessagesmanyusers' => 'Birçok kullanıcıdan $1 var. ($2)',
+'youhavenewmessagesfromwiki_users' => '{{PLURAL:$3|Başka bir kullanıcıdan|$3 kullanıcıdan}} $1 var. ($2)',
+'youhavenewmessagesmanywiki_users' => 'Birçok kullanıcıdan $1 var. ($2)',
 'newmessageslinkplural' => '{{PLURAL:$1|yeni mesajınız|yeni mesajlarınız}}',
 'newmessagesdifflinkplural' => 'son {{PLURAL:$1|değişiklik|değişiklikler}}',
 'youhavenewmessagesmulti' => "$1'de yeni mesajınız var.",
@@ -624,7 +624,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Madde',
-'nstab-user' => 'Kullanıcı sayfası',
+'nstab-wiki_user' => 'Kullanıcı sayfası',
 'nstab-media' => 'Medya sayfası',
 'nstab-special' => 'Özel sayfa',
 'nstab-project' => 'Proje sayfası',
@@ -666,7 +666,7 @@ Veritabanını kilitleyen operatörün açıklaması: $1',
 Bu durum, genellikle silinmiş bir sayfanın geçmiş bir sürümüne yönlendirilmekten kaynaklanır.
 
 Eğer neden bu değilse yazılımda bir hata ile karşılaşmış olabilirsiniz.
-Lütfen URL\'yi not ederek bunu bir [[Special:ListUsers/sysop|hizmetliye]] iletin.',
+Lütfen URL\'yi not ederek bunu bir [[Special:Listwiki_users/sysop|hizmetliye]] iletin.',
 'missingarticle-rev' => '(revizyon#: $1)',
 'missingarticle-diff' => '(Fark: $1, $2)',
 'readonly_lag' => 'Yedek sunucular ana sunucu ile güncellemeye çalışırken veritabanı otomatik olarak kilitlendi.',
@@ -713,7 +713,7 @@ $2',
 'customcssprotected' => 'Bu sayfayı değiştirmeye yetkiniz bulunmamaktadır, çünkü bu sayfa başka bir kullanıcının kişisel ayarlarını içermektedir.',
 'customjsprotected' => 'Bu Java Script sayfasını değiştirmeye yetkiniz bulunmamaktadır, çünkü bu sayfa başka bir kullanıcının kişisel ayarlarını içermektedir.',
 'ns-specialprotected' => '{{ns:special}} alanadı içindeki sayfalar değiştirilemez.',
-'titleprotected' => "[[User:$1|$1]] tarafından oluşturulması engellenmesi için bu sayfa koruma altına alınmıştır.
+'titleprotected' => "[[wiki_user:$1|$1]] tarafından oluşturulması engellenmesi için bu sayfa koruma altına alınmıştır.
 Verilen sebep: ''$2''.",
 'invalidtitle-knownnamespace' => '"$2" alan adı için "$3" metni geçersiz bir başlık',
 'exception-nologin' => 'Giriş yapılmamış',
@@ -727,7 +727,7 @@ Verilen sebep: ''$2''.",
 # Login and logout pages
 'logouttext' => "'''Oturumu kapattınız.'''
 
-Şimdi anonim olarak {{SITENAME}} sitesini kullanmaya devam edebilirsiniz ya da aynı kullanıcı adıyla ya da ister başka bir kullanıcı adıyla [[Special:UserLogin|yeniden oturum açabilirsiniz]].
+Şimdi anonim olarak {{SITENAME}} sitesini kullanmaya devam edebilirsiniz ya da aynı kullanıcı adıyla ya da ister başka bir kullanıcı adıyla [[Special:wiki_userLogin|yeniden oturum açabilirsiniz]].
 Tarayıcınızın önbelleğini temizleyene kadar bazı sayfalar sanki hâlâ oturumunuz açıkmış gibi görünebilir.",
 'welcomecreation' => '== Hoş geldin, $1! ==
 
@@ -744,21 +744,21 @@ Hesabınız açıldı.
 'login' => 'Oturum aç',
 'nav-login-createaccount' => 'Oturum aç / hesap oluştur',
 'loginprompt' => '{{SITENAME}} sitesinde oturum açabilmek için çerezleri etkinleştirmeniz gerekmektedir.',
-'userlogin' => 'Oturum aç / hesap oluştur',
-'userloginnocreate' => 'Giriş yap',
+'wiki_userlogin' => 'Oturum aç / hesap oluştur',
+'wiki_userloginnocreate' => 'Giriş yap',
 'logout' => 'Oturumu kapat',
-'userlogout' => 'Oturumu kapat',
+'wiki_userlogout' => 'Oturumu kapat',
 'notloggedin' => 'Oturum açık değil',
 'nologin' => "Kayıtlı değil misiniz? '''$1'''",
 'nologinlink' => 'Hesap oluşturun',
 'createaccount' => 'Hesap oluştur',
 'gotaccount' => "Çoktan kayıt oldunuz mu? '''$1'''.",
 'gotaccountlink' => 'Oturum açın',
-'userlogin-resetlink' => 'Giriş bilgilerinizi mi unuttunuz?',
+'wiki_userlogin-resetlink' => 'Giriş bilgilerinizi mi unuttunuz?',
 'createaccountmail' => 'e-posta ile',
 'createaccountreason' => 'Sebep:',
 'badretype' => 'Girdiğiniz şifreler birbirleriyle uyuşmuyor.',
-'userexists' => 'Girdiğiniz kullanıcı adı zaten kullanımda.
+'wiki_userexists' => 'Girdiğiniz kullanıcı adı zaten kullanımda.
 Lütfen farklı bir kullanıcı adı seçiniz.',
 'loginerror' => 'Oturum açma hatası.',
 'createaccounterror' => 'Hesap oluşturulamıyor: $1',
@@ -772,12 +772,12 @@ Lütfen çerez kullanımını açınız ve yeni kullanıcı adınız ve şifreni
 'noname' => 'Geçerli bir kullanıcı adı girmediniz.',
 'loginsuccesstitle' => 'Oturum açıldı',
 'loginsuccess' => "'''{{SITENAME}} üzerinde \"\$1\" kullanıcı adıyla oturum açtınız.'''",
-'nosuchuser' => '"$1" adında bir kullanıcı bulunmamaktadır.
+'nosuchwiki_user' => '"$1" adında bir kullanıcı bulunmamaktadır.
 Kullanıcı adları büyük-küçük harf duyarlıdır.
-Yazılışı kontrol edin veya [[Special:UserLogin/signup|yeni bir hesap açın]].',
-'nosuchusershort' => '"$1" adında bir kullanıcı bulunmamaktadır. Yazılışı kontrol edin.',
-'nouserspecified' => 'Bir kullanıcı adı belirtmek zorundasınız.',
-'login-userblocked' => 'Bu kullanıcı engellenmiş. Giriş yapmaya izin verilmiyor.',
+Yazılışı kontrol edin veya [[Special:wiki_userLogin/signup|yeni bir hesap açın]].',
+'nosuchwiki_usershort' => '"$1" adında bir kullanıcı bulunmamaktadır. Yazılışı kontrol edin.',
+'nowiki_userspecified' => 'Bir kullanıcı adı belirtmek zorundasınız.',
+'login-wiki_userblocked' => 'Bu kullanıcı engellenmiş. Giriş yapmaya izin verilmiyor.',
 'wrongpassword' => 'Parolayı yanlış girdiniz. Lütfen tekrar deneyiniz.',
 'wrongpasswordempty' => 'Boş parola girdiniz. Lütfen tekrar deneyiniz.',
 'passwordtooshort' => 'Parolalar en az {{PLURAL:$1|1 karakter|$1 karakter}} uzunluğunda olmalı.',
@@ -816,16 +816,16 @@ Lütfen geçerli bir formatta e-posta adresi yazın veya bu bölümü boş bıra
 Siteye giriş yapmalı ve parolanızı değiştirmelisiniz.
 
 Eğer kullanıcı hesabını yanlışlıkla oluşturmuş iseniz, bu mesajı yoksayabilirsiniz.',
-'usernamehasherror' => 'Kullanıcı adı karma karakterler içeremez',
+'wiki_usernamehasherror' => 'Kullanıcı adı karma karakterler içeremez',
 'login-throttled' => 'Yakın zamanda çok fazla oturum açma denemesinde bulundunuz.
 Lütfen tekrar denemeden önce bekleyin.',
 'login-abort-generic' => 'Girişiniz başarısız - iptal edilmiş',
 'loginlanguagelabel' => 'Dil: $1',
-'suspicious-userlogout' => 'Çıkış isteğiniz reddedildi çünkü bozuk bir tarayıcı ya da önbellekli vekil tarafından gönerilmiş gibi görünüyor.',
+'suspicious-wiki_userlogout' => 'Çıkış isteğiniz reddedildi çünkü bozuk bir tarayıcı ya da önbellekli vekil tarafından gönerilmiş gibi görünüyor.',
 
 # E-mail sending
 'php-mail-error-unknown' => "PHP's mail() fonksiyonunda bilinmeyen hata",
-'user-mail-no-addy' => 'Bir e-posta adresi olmadan e-posta göndermeye çalıştı.',
+'wiki_user-mail-no-addy' => 'Bir e-posta adresi olmadan e-posta göndermeye çalıştı.',
 
 # Change password dialog
 'resetpass' => 'Parolayı değiştir',
@@ -853,7 +853,7 @@ Girişi bitirmek için, burada yeni bir parola yazın:',
 'passwordreset-legend' => 'Şifreyi sıfırla',
 'passwordreset-disabled' => 'Parola sıfırlamaları bu wiki üzerinde devre dışı bırakıldı.',
 'passwordreset-pretext' => '{{PLURAL:$1||Aşağıdaki verilerden birini girin}}',
-'passwordreset-username' => 'Kullanıcı adı:',
+'passwordreset-wiki_username' => 'Kullanıcı adı:',
 'passwordreset-domain' => 'Domain:',
 'passwordreset-capture' => 'Sonuç e-postasını görüntüle?',
 'passwordreset-capture-help' => 'Bu kutuyu işaretlerseniz, e-posta (geçici şifre ile) size ve yanı sıra kullanıcıya gönderiliyor.',
@@ -866,7 +866,7 @@ $2
 
 {{PLURAL:$3|Bu geçici şifre|Bu geçici şifreler}} {{PLURAL:$5|bir gün|$5  gün}} geçerlidir.
 Bu geçici parola ile giriş yapın ve yeni bir şifre seçin. Şifre değişimini siz istemediyseniz veya şifrenizi hatırladıysanız ve artık şifrenizi değiştirmek istemiyorsanız; bu iletiyi önemsemeyerek eski şifrenizi kullanmaya devam edebilirsiniz.',
-'passwordreset-emailtext-user' => '$1 adlı kullanıcı, {{SITENAME}} ($4) için hesap bilgilerinizin hatırlatılmasını istedi. Aşağıdaki kullanıcı {{PLURAL:$3|hesabı|hesapları}} bu e-posta adresiyle ilişkili:
+'passwordreset-emailtext-wiki_user' => '$1 adlı kullanıcı, {{SITENAME}} ($4) için hesap bilgilerinizin hatırlatılmasını istedi. Aşağıdaki kullanıcı {{PLURAL:$3|hesabı|hesapları}} bu e-posta adresiyle ilişkili:
 
 $2
 
@@ -966,22 +966,22 @@ Siz sayfayı görüntülerken taşınmış veya silinmiş olabilir.',
 'loginreqlink' => 'oturum aç',
 'loginreqpagetext' => 'Diğer sayfaları görmek için $1 olmalısınız.',
 'accmailtitle' => 'Parola gönderildi.',
-'accmailtext' => "[[User talk:$1|$1]] için rastgele oluşturulan parola $2 adresine gönderildi.
+'accmailtext' => "[[wiki_user talk:$1|$1]] için rastgele oluşturulan parola $2 adresine gönderildi.
 
 Bu yeni hesap için parola, giriş yapıldıktan sonra ''[[Special:ChangePassword|parolayı değiştir]]'' bölümünde değiştirilebilir.",
 'newarticle' => '(Yeni)',
 'newarticletext' => "Henüz varolmayan bir sayfaya konulmuş bir bağlantıya tıkladınız.
 Sayfayı oluşturmak için aşağıdaki metin kutusunu kullanın. ([[{{MediaWiki:Helppage}}|yardım sayfasına]] bakınız).
 Buraya yanlışlıkla geldiyseniz tarayıcınızın '''geri''' tuşuna tıklayın.",
-'anontalkpagetext' => "----''Bu sayfa henüz bir kullanıcı hesabı oluşturmamış veya hesabını kullanmayan bir anonim kullanıcının mesaj sayfasıdır. Bu nedenle bu kişiyi belirtmek için rakamsal IP adresini kullanmak zorundayız. Bu gibi IP adresleri birçok kullanıcı tarafından paylaşılabilir. Eğer siz de bir anonim kullanıcıysanız ve size sizin ilginiz olmayan iletiler geliyorsa, lütfen diğer anonim kullanıcılarla olabilecek olan karmaşayı önlemek için [[Special:UserLogin/signup|bir hesap edinin]] veya [[Special:UserLogin|oturum açın]].''",
+'anontalkpagetext' => "----''Bu sayfa henüz bir kullanıcı hesabı oluşturmamış veya hesabını kullanmayan bir anonim kullanıcının mesaj sayfasıdır. Bu nedenle bu kişiyi belirtmek için rakamsal IP adresini kullanmak zorundayız. Bu gibi IP adresleri birçok kullanıcı tarafından paylaşılabilir. Eğer siz de bir anonim kullanıcıysanız ve size sizin ilginiz olmayan iletiler geliyorsa, lütfen diğer anonim kullanıcılarla olabilecek olan karmaşayı önlemek için [[Special:wiki_userLogin/signup|bir hesap edinin]] veya [[Special:wiki_userLogin|oturum açın]].''",
 'noarticletext' => 'Bu sayfa şu anda boştur.
 Bu başlığı [[Special:Search/{{PAGENAME}}|diğer sayfalarda arayabilir]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ilgili kayıtları arayabilir],
 ya da bu sayfayı [{{fullurl:{{FULLPAGENAME}}|action=edit}} değiştirebilirsiniz]</span>.',
 'noarticletext-nopermission' => 'Bu sayfa şu anda boştur. 
 Bu başlığı [[Special:Search/{{PAGENAME}}|diğer sayfalarda arayabilir]] ya da <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ilgili kayıtları tarayabilirsiniz].</span>',
-'userpage-userdoesnotexist' => '"<nowiki>$1</nowiki>" kullanıcı hesabı kayıtlı değil. Bu sayfayı oluşturmak/değiştirmek istiyorsanız lütfen kontrol edin.',
-'userpage-userdoesnotexist-view' => '"$1" kullanıcı hesabı kayıtlı değil.',
+'wiki_userpage-wiki_userdoesnotexist' => '"<nowiki>$1</nowiki>" kullanıcı hesabı kayıtlı değil. Bu sayfayı oluşturmak/değiştirmek istiyorsanız lütfen kontrol edin.',
+'wiki_userpage-wiki_userdoesnotexist-view' => '"$1" kullanıcı hesabı kayıtlı değil.',
 'blocked-notice-logextract' => 'Bu kullanıcı şuanda engellenmiş.
 Son engelleme günlüğü girdisi referans için aşağıda sağlanmıştır:',
 'clearyourcache' => "'''Not:''' Kaydettikten sonra değişiklikleri görmek için tarayıcınızın önbelleğini temizlemeniz gerekebilir.
@@ -989,15 +989,15 @@ Son engelleme günlüğü girdisi referans için aşağıda sağlanmıştır:',
 * '''Google Chrome:''' ''Ctrl-Shift-R'''ye basın. (Mac için ''⌘-Shift-R'')
 * '''Internet Explorer:''' ''Ctrl'' basılıyken ''Yenile'''ye tıklayın ya da ''Ctrl-F5'' yapın.
 * '''Opera:''' ''Araçlar → Tercihler'''den önbelliği temizleyin.",
-'usercssyoucanpreview' => "'''İpucu:''' Kaydetmeden önce \"{{int:showpreview}}\"e tıklayarak yeni CSSinizi deneyin.",
-'userjsyoucanpreview' => "'''İpucu:''' Kaydetmeden önce \"{{int:showpreview}}\"e tıklayarak yeni JavaScript'inizi test edin.",
-'usercsspreview' => "'''Sadece kullanıcı CSS dosyanızın önizlemesini görüyorsun.''' '''Kullanıcı CSS dosyası henüz kaydolmadı!'''",
-'userjspreview' => "'''Sadece test ediyorsun ya da önizleme görüyorsun - kullanıcı JavaScript'i henüz kaydolmadı.'''",
+'wiki_usercssyoucanpreview' => "'''İpucu:''' Kaydetmeden önce \"{{int:showpreview}}\"e tıklayarak yeni CSSinizi deneyin.",
+'wiki_userjsyoucanpreview' => "'''İpucu:''' Kaydetmeden önce \"{{int:showpreview}}\"e tıklayarak yeni JavaScript'inizi test edin.",
+'wiki_usercsspreview' => "'''Sadece kullanıcı CSS dosyanızın önizlemesini görüyorsun.''' '''Kullanıcı CSS dosyası henüz kaydolmadı!'''",
+'wiki_userjspreview' => "'''Sadece test ediyorsun ya da önizleme görüyorsun - kullanıcı JavaScript'i henüz kaydolmadı.'''",
 'sitecsspreview' => "'''Sadece kullanıcı CSS dosyanızın önizlemesini görüyorsunuz.''' 
 '''Henüz kaydedilmedi!'''",
 'sitejspreview' => "'''Sadece kullanıcı JavaScript kod dosyanızın önizlemesini görüyorsunuz.''' 
 '''Henüz kaydedilmedi!'''",
-'userinvalidcssjstitle' => "''Uyarı:''' \"\$1\" adıyla bir tema yoktur. tema-adı.css ve .js dosyalarının adları küçük harf ile yazması gerek, yani {{ns:user}}:Temel/'''V'''ector.css değil, {{ns:user}}:Temel/'''v'''ector.css.",
+'wiki_userinvalidcssjstitle' => "''Uyarı:''' \"\$1\" adıyla bir tema yoktur. tema-adı.css ve .js dosyalarının adları küçük harf ile yazması gerek, yani {{ns:wiki_user}}:Temel/'''V'''ector.css değil, {{ns:wiki_user}}:Temel/'''v'''ector.css.",
 'updated' => '(Güncellendi)',
 'note' => "'''Not: '''",
 'previewnote' => "'''Bunun yalnızca bir ön izleme olduğunu unutmayın.'''
@@ -1009,7 +1009,7 @@ Yaptığınız değişiklikler henüz kaydedilmedi!",
 
 ''Çünkü {{SITENAME}} sitesinde raw HTML etkindir, önizleme JavaScript saldırılarına önlem olarak gizlenmiştir.''
 
-'''Eğer bu haklı bir düzenleme girişimiyse, lütfen yeniden deneyin. Eğer hala çalışmazsa, [[Special:UserLogout|çıkış yapıp]] yeniden oturum açmayı deneyin.'''",
+'''Eğer bu haklı bir düzenleme girişimiyse, lütfen yeniden deneyin. Eğer hala çalışmazsa, [[Special:wiki_userLogout|çıkış yapıp]] yeniden oturum açmayı deneyin.'''",
 'token_suffix_mismatch' => "'''Değişikliğiniz geri çevrildi çünkü alıcınız düzenleme kutucuğundaki noktalama işaretlerini bozdu.
 Değişikliğiniz, sayfa metninde bozulmayı önlemek için geri çevrildi.
 Eğer sorunlu bir web-tabanlı anonim proksi servisi kullanıyorsanız bu olay bazen gerçekleşebilir.'''",
@@ -1056,7 +1056,7 @@ Son günlük girdisi referans amaçlı aşağıda verilmiştir:",
 'edittools' => '<!-- Buradaki metin düzenleme ve yükleme formlarının altında gösterilecektir. -->',
 'nocreatetitle' => 'Sayfa oluşturulması sınırlandı',
 'nocreatetext' => '{{SITENAME}}, yeni sayfa oluşturulabilmesini engelledi.
-Geri giderek varolan sayfayı değiştirebilirsiniz ya da kayıtlı iseniz [[Special:UserLogin|oturum açabilir]], değilseniz [[Special:UserLogin|kayıt olabilirsiniz]].',
+Geri giderek varolan sayfayı değiştirebilirsiniz ya da kayıtlı iseniz [[Special:wiki_userLogin|oturum açabilir]], değilseniz [[Special:wiki_userLogin|kayıt olabilirsiniz]].',
 'nocreate-loggedin' => 'Yeni sayfalar oluşturmaya yetkiniz yok.',
 'sectioneditnotsupported-title' => 'Bölüm değiştirmesi desteklenmiyor',
 'sectioneditnotsupported-text' => 'Bölüm değiştirmesi bu sayfada desteklenmiyor.',
@@ -1104,11 +1104,11 @@ Bu değişkenler atlandı.",
 'undo-success' => 'Bu değişiklik geri alınabilir. Lütfen aşağıdaki karşılaştırmayı kontrol edin, gerçekten bu değişikliği yapmak istediğinizden emin olun ve sayfayı kaydederek bir önceki değişikliği geriye alın.',
 'undo-failure' => 'Değişikliklerin çakışması nedeniyle geri alma işlemi başarısız oldu.',
 'undo-norev' => 'Değişiklik geri alınamaz çünkü ya silinmiş ya da varolmamaktadır.',
-'undo-summary' => '$1 değişikliği [[Special:Contributions/$2|$2]] ([[User talk:$2|mesaj]]) tarafından geri alındı.',
+'undo-summary' => '$1 değişikliği [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|mesaj]]) tarafından geri alındı.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Hesap açılamıyor',
-'cantcreateaccount-text' => "Bu IP adresinden ('''$1''') kullanıcı hesabı oluşturulması [[User:$3|$3]] tarafından engellenmiştir.
+'cantcreateaccount-text' => "Bu IP adresinden ('''$1''') kullanıcı hesabı oluşturulması [[wiki_user:$3|$3]] tarafından engellenmiştir.
 
 $3 tarafından verilen sebep ''$2''",
 
@@ -1146,9 +1146,9 @@ Konu ile alakalı diğer sayfaları bulmak için [[Special:Search|vikide arama y
 
 # Revision deletion
 'rev-deleted-comment' => '(düzenleme özeti silindi)',
-'rev-deleted-user' => '(kullanıcı adı silindi)',
+'rev-deleted-wiki_user' => '(kullanıcı adı silindi)',
 'rev-deleted-event' => '(kayıt işlemi silindi)',
-'rev-deleted-user-contribs' => '[kullanıcı adı veya IP adresi çıkarıldı - değişiklik katkılardan gizlendi]',
+'rev-deleted-wiki_user-contribs' => '[kullanıcı adı veya IP adresi çıkarıldı - değişiklik katkılardan gizlendi]',
 'rev-deleted-text-permission' => "Bu sayfa revizyonu '''silinmiş'''.
 [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} Silme kayıtlarında] ayrıntıları bulunabilir.",
 'rev-deleted-text-unhide' => "Bu sayfa revizyonu '''silinmiş'''.
@@ -1199,7 +1199,7 @@ Bir hizmetli olarak bu değişikliği görebilirsiniz; [{{fullurl:{{#Special:Log
 'revdelete-hide-image' => 'Dosya içeriğini gizle',
 'revdelete-hide-name' => 'Olayı ve hedefi gizle',
 'revdelete-hide-comment' => 'Özeti gösterme',
-'revdelete-hide-user' => 'Değişikliği yapan kullanıcı adını/IP adresi gizle',
+'revdelete-hide-wiki_user' => 'Değişikliği yapan kullanıcı adını/IP adresi gizle',
 'revdelete-hide-restricted' => 'Verileri hizmetlilerle birlikte diğerlerinden de sakla',
 'revdelete-radio-same' => '(değiştirme)',
 'revdelete-radio-set' => 'Evet',
@@ -1286,7 +1286,7 @@ Gezinti bağlantılarının bu sütunu sıfırlayacağını unutmayın.',
 'showhideselectedversions' => 'Seçili sürümleri göster/gizle',
 'editundo' => 'geri al',
 'diff-multi' => '({{PLURAL:$2|Bir kullanıcı|$2 kullanıcı}} tarafından yapılan {{PLURAL:$1|bir ara revizyon|$1 ara revizyon}} gösterilmiyor)',
-'diff-multi-manyusers' => '($2 kullancıdan fazla {{PLURAL:$2|kullanıcı|kullanıcı}} tarafından yapılan {{PLURAL:$1|bir ara revizyon|$1 ara revizyon}} gösterilmiyor)',
+'diff-multi-manywiki_users' => '($2 kullancıdan fazla {{PLURAL:$2|kullanıcı|kullanıcı}} tarafından yapılan {{PLURAL:$1|bir ara revizyon|$1 ara revizyon}} gösterilmiyor)',
 
 # Search results
 'searchresults' => 'Arama sonuçları',
@@ -1365,7 +1365,7 @@ Aramanızın başına '''all:''' önekini ekleyerek tüm içeriği aramayı (tar
 'mypreferences' => 'Tercihler',
 'prefs-edits' => 'Değişiklik sayısı:',
 'prefsnologin' => 'Oturum açık değil',
-'prefsnologintext' => 'Kullanıcı tercihlerinizi ayarlamak için <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} giriş yapmalısınız]</span>.',
+'prefsnologintext' => 'Kullanıcı tercihlerinizi ayarlamak için <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} giriş yapmalısınız]</span>.',
 'changepassword' => 'Parolayı değiştir',
 'prefs-skin' => 'Görünüm',
 'skin-preview' => 'Önizleme',
@@ -1373,7 +1373,7 @@ Aramanızın başına '''all:''' önekini ekleyerek tüm içeriği aramayı (tar
 'prefs-beta' => 'Beta özellikleri',
 'prefs-datetime' => 'Tarih ve saat',
 'prefs-labs' => 'Lab özellikleri',
-'prefs-user-pages' => 'Kullanıcı sayfaları',
+'prefs-wiki_user-pages' => 'Kullanıcı sayfaları',
 'prefs-personal' => 'Kullanıcı bilgileri',
 'prefs-rc' => 'Son değişiklikler',
 'prefs-watchlist' => 'İzleme listesi',
@@ -1437,7 +1437,7 @@ Kullanabileceğiniz rastgele-üretilmiş bir değer: $1',
 'prefs-emailconfirm-label' => 'E-posta doğrulaması:',
 'prefs-textboxsize' => 'Değiştirme penceresinin boyutu',
 'youremail' => 'E-posta:',
-'username' => 'Kullanıcı adı:',
+'wiki_username' => 'Kullanıcı adı:',
 'uid' => 'Kayıt numarası:',
 'prefs-memberingroups' => '{{PLURAL:$1|Grup|Grup}} üyesi:',
 'prefs-registration' => 'Kayıt zamanı:',
@@ -1476,35 +1476,35 @@ Diğer kullanıcılar sizinle bu yolla iletişime geçtiğinde e-posta adresiniz
 'prefs-displaywatchlist' => 'Görüntüleme seçenekleri',
 'prefs-diffs' => 'Farklar',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'E-posta adresi geçerli görünüyor',
 'email-address-validity-invalid' => 'Geçerli bir e-posta adresi girin',
 
-# User rights
-'userrights' => 'Kullanıcı hakları yönetimi',
-'userrights-lookup-user' => 'Kullanıcı gruplarını düzenle',
-'userrights-user-editname' => 'Kullanıcı adı giriniz:',
-'editusergroup' => 'Kullanıcı grupları düzenle',
-'editinguser' => "'''[[User:$1|$1]]'''  $2 kullanıcısının yetkilerini değiştirmektesiniz",
-'userrights-editusergroup' => 'Kullanıcı grupları düzenle',
-'saveusergroups' => 'Kullanıcı grupları kaydet',
-'userrights-groupsmember' => 'İçinde olduğu gruplar:',
-'userrights-groupsmember-auto' => 'Saklı olarak içinde olduğu gruplar:',
-'userrights-groups-help' => 'Bu kullanıcının içinde olduğu grupları değiştirebilirsiniz:
+# wiki_user rights
+'wiki_userrights' => 'Kullanıcı hakları yönetimi',
+'wiki_userrights-lookup-wiki_user' => 'Kullanıcı gruplarını düzenle',
+'wiki_userrights-wiki_user-editname' => 'Kullanıcı adı giriniz:',
+'editwiki_usergroup' => 'Kullanıcı grupları düzenle',
+'editingwiki_user' => "'''[[wiki_user:$1|$1]]'''  $2 kullanıcısının yetkilerini değiştirmektesiniz",
+'wiki_userrights-editwiki_usergroup' => 'Kullanıcı grupları düzenle',
+'savewiki_usergroups' => 'Kullanıcı grupları kaydet',
+'wiki_userrights-groupsmember' => 'İçinde olduğu gruplar:',
+'wiki_userrights-groupsmember-auto' => 'Saklı olarak içinde olduğu gruplar:',
+'wiki_userrights-groups-help' => 'Bu kullanıcının içinde olduğu grupları değiştirebilirsiniz:
 * Seçili bir kutu, kullanıcının o gruba dahil olduğu anlamına gelir
 * Seçilmemiş bir kutu, kullanıcının o grupta olmadığı anlamına gelir.
 * *, grubu bir kez oluşturduktan sonra silemeceğinizi belirtir, ya da karşılıklı olarak.',
-'userrights-reason' => 'Neden:',
-'userrights-no-interwiki' => 'Diğer vikilerdeki kullanıcıların izinlerini değiştirmeye yetkiniz yok.',
-'userrights-nodatabase' => '$1 veritabanı mevcut veya bölgesel değil',
-'userrights-nologin' => 'Kullanıcı haklarını atamak için hizmetli hesabı ile [[Special:UserLogin|giriş yapmanız gerekir]].',
-'userrights-notallowed' => 'Hesabınızın kullanıcı hakları eklemek veya kaldırmak için izni yok.',
-'userrights-changeable-col' => 'Değiştirebildiğiniz gruplar',
-'userrights-unchangeable-col' => 'Değiştirebilmediğiniz gruplar',
+'wiki_userrights-reason' => 'Neden:',
+'wiki_userrights-no-interwiki' => 'Diğer vikilerdeki kullanıcıların izinlerini değiştirmeye yetkiniz yok.',
+'wiki_userrights-nodatabase' => '$1 veritabanı mevcut veya bölgesel değil',
+'wiki_userrights-nologin' => 'Kullanıcı haklarını atamak için hizmetli hesabı ile [[Special:wiki_userLogin|giriş yapmanız gerekir]].',
+'wiki_userrights-notallowed' => 'Hesabınızın kullanıcı hakları eklemek veya kaldırmak için izni yok.',
+'wiki_userrights-changeable-col' => 'Değiştirebildiğiniz gruplar',
+'wiki_userrights-unchangeable-col' => 'Değiştirebilmediğiniz gruplar',
 
 # Groups
 'group' => 'Grup:',
-'group-user' => 'Kullanıcılar',
+'group-wiki_user' => 'Kullanıcılar',
 'group-autoconfirmed' => 'Otomatik onaylanmış kullanıcılar',
 'group-bot' => 'Botlar',
 'group-sysop' => 'Hizmetliler',
@@ -1512,14 +1512,14 @@ Diğer kullanıcılar sizinle bu yolla iletişime geçtiğinde e-posta adresiniz
 'group-suppress' => 'Gözetmenler',
 'group-all' => '(hepsi)',
 
-'group-user-member' => '{{GENDER:$1|kullanıcı}}',
+'group-wiki_user-member' => '{{GENDER:$1|kullanıcı}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|otomatik onaylanmış kullanıcı}}',
 'group-bot-member' => '{{GENDER:$1|bot}}',
 'group-sysop-member' => '{{GENDER:$1|hizmetli}}',
 'group-bureaucrat-member' => '{{GENDER:$1|bürokrat}}',
 'group-suppress-member' => '{{GENDER:$1|gözetmen}}',
 
-'grouppage-user' => '{{ns:project}}:Kullanıcılar',
+'grouppage-wiki_user' => '{{ns:project}}:Kullanıcılar',
 'grouppage-autoconfirmed' => '{{ns:project}}:Otomatik onaylanmış kullanıcılar',
 'grouppage-bot' => '{{ns:project}}:Botlar',
 'grouppage-sysop' => '{{ns:project}}:Hizmetliler',
@@ -1535,7 +1535,7 @@ Diğer kullanıcılar sizinle bu yolla iletişime geçtiğinde e-posta adresiniz
 'right-minoredit' => 'Değişikliklerini küçük olarak kaydet',
 'right-move' => 'Sayfaları taşı',
 'right-move-subpages' => 'Sayfaları altsayfalarıyla beraber taşı',
-'right-move-rootuserpages' => 'Kök kullanıcı sayfalarını taşı',
+'right-move-rootwiki_userpages' => 'Kök kullanıcı sayfalarını taşı',
 'right-movefile' => 'Dosyaları taşı',
 'right-suppressredirect' => 'Bir sayfayı taşırken eski isimden yönlendirme oluşturma',
 'right-upload' => 'Dosyaları yükle',
@@ -1560,16 +1560,16 @@ Diğer kullanıcılar sizinle bu yolla iletişime geçtiğinde e-posta adresiniz
 'right-suppressionlog' => 'Özel günlükleri gör',
 'right-block' => 'Diğer kullanıcıların değişiklik yapmalarını engelle',
 'right-blockemail' => 'Bir kullanıcının e-posta göndermesini engelle',
-'right-hideuser' => 'Bir kullanıcı adını engelle, genelden gizleyerek',
+'right-hidewiki_user' => 'Bir kullanıcı adını engelle, genelden gizleyerek',
 'right-ipblock-exempt' => 'IP engellemelerini atla, otomatik engelle ve aralık engellemeleri',
 'right-proxyunbannable' => 'Proxylerin otomatik engellemelerini atla',
 'right-unblockself' => 'Kendi engellemesini kaldır',
 'right-protect' => 'Koruma seviyelerini değiştir ve korumalı sayfalarda değişiklik yap',
 'right-editprotected' => 'Korumalı sayfalarda değişiklik yap (korumayı basamaklamadan)',
 'right-editinterface' => 'Kullanıcı arayüzünü değiştirmek',
-'right-editusercssjs' => 'Diğer kullanıcıların CSS ve JS dosyalarında değişiklik yap',
-'right-editusercss' => 'Diğer kullanıcıların CSS dosyalarında değişiklik yap',
-'right-edituserjs' => 'Diğer kullanıcıların JS dosyalarında değişiklik yap',
+'right-editwiki_usercssjs' => 'Diğer kullanıcıların CSS ve JS dosyalarında değişiklik yap',
+'right-editwiki_usercss' => 'Diğer kullanıcıların CSS dosyalarında değişiklik yap',
+'right-editwiki_userjs' => 'Diğer kullanıcıların JS dosyalarında değişiklik yap',
 'right-rollback' => 'Belirli bir sayfayı değiştiren son kullanıcının değişikliklerini hızlıca geri döndür',
 'right-markbotedits' => 'Geri döndürülen değişiklikleri, bot değişiklikleri olarak işaretle',
 'right-noratelimit' => 'Derecelendirme sınırlamalarından etkilenme',
@@ -1580,14 +1580,14 @@ Diğer kullanıcılar sizinle bu yolla iletişime geçtiğinde e-posta adresiniz
 'right-patrolmarks' => 'Son değişiklikler gözleme işaretlerini gör',
 'right-unwatchedpages' => 'İzlenmeyen sayfaların bir listesini gör',
 'right-mergehistory' => 'Sayfalarının tarihlerini birleştir',
-'right-userrights' => 'Tüm kullanıcı haklarını değiştirmek',
-'right-userrights-interwiki' => 'Diğer vikilerdeki kullanıcıların kullanıcı haklarını değiştir',
+'right-wiki_userrights' => 'Tüm kullanıcı haklarını değiştirmek',
+'right-wiki_userrights-interwiki' => 'Diğer vikilerdeki kullanıcıların kullanıcı haklarını değiştir',
 'right-siteadmin' => 'Veritabanını kilitle ve kilidi aç',
 'right-override-export-depth' => "Sayfaları, derinlik 5'e kadar bağlantılı sayfalarla beraber, dışa aktar",
 'right-sendemail' => 'Diğer kullanıcılara e-posta gönder',
 'right-passwordreset' => 'Parola sıfırlama e-postalarını görür',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Kullanıcı hakları kayıtları',
 'rightslogtext' => 'Kullanıcı hakları değişiklikleri kayıtları.',
 'rightslogentry' => '$1 adlı kullanıcının yetkileri $2 iken $3 olarak değiştirildi',
@@ -1603,7 +1603,7 @@ Diğer kullanıcılar sizinle bu yolla iletişime geçtiğinde e-posta adresiniz
 'action-minoredit' => 'bu değişikliği küçük olarak işaretlemeye',
 'action-move' => 'bu sayfayı taşımaya',
 'action-move-subpages' => 'bu sayfayı ve altsayfalarını taşımaya',
-'action-move-rootuserpages' => 'kök kullanıcı sayfalarını taşımaya',
+'action-move-rootwiki_userpages' => 'kök kullanıcı sayfalarını taşımaya',
 'action-movefile' => 'bu dosyayı taşımaya',
 'action-upload' => 'bu dosyayı yüklemeye',
 'action-reupload' => 'bu mevcut dosyanın üzerine yazmaya',
@@ -1626,8 +1626,8 @@ Diğer kullanıcılar sizinle bu yolla iletişime geçtiğinde e-posta adresiniz
 'action-autopatrol' => 'değişikliğinizi gözlenmiş olarak işaretlemeye',
 'action-unwatchedpages' => 'izlenmeyen sayfalar listesini görmeye',
 'action-mergehistory' => 'bu sayfanın geçmişini birleştirmeye',
-'action-userrights' => 'tüm kullanıcıların haklarını değiştirmeye',
-'action-userrights-interwiki' => 'diğer vikilerde kullanıcıların, kullanıcı haklarını değiştirmeye',
+'action-wiki_userrights' => 'tüm kullanıcıların haklarını değiştirmeye',
+'action-wiki_userrights-interwiki' => 'diğer vikilerde kullanıcıların, kullanıcı haklarını değiştirmeye',
 'action-siteadmin' => 'veritabanını kilitleyip açmaya',
 'action-sendemail' => 'e-posta gönder',
 
@@ -1658,7 +1658,7 @@ Diğer kullanıcılar sizinle bu yolla iletişime geçtiğinde e-posta adresiniz
 'minoreditletter' => 'k',
 'newpageletter' => 'Y',
 'boteditletter' => 'b',
-'number_of_watching_users_pageview' => '[$1 izlenilen {{PLURAL:$1|kullanıcı|kullanıcı}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 izlenilen {{PLURAL:$1|kullanıcı|kullanıcı}}]',
 'rc_categories' => 'Kategorilere sınırla ("|" ile ayır)',
 'rc_categories_any' => 'Herhangi',
 'rc-change-size-new' => '$1 {{PLURAL:$1|bayt|bayt}} değişiklikten sonra',
@@ -1684,7 +1684,7 @@ Diğer kullanıcılar sizinle bu yolla iletişime geçtiğinde e-posta adresiniz
 'reuploaddesc' => 'Yükleme formuna geri dön.',
 'upload-tryagain' => 'Değiştirilmiş dosya açıklamasını gönder',
 'uploadnologin' => 'Oturum açık değil',
-'uploadnologintext' => 'Dosya yükleyebilmek için [[Special:UserLogin|oturum aç]]manız gerekiyor.',
+'uploadnologintext' => 'Dosya yükleyebilmek için [[Special:wiki_userLogin|oturum aç]]manız gerekiyor.',
 'upload_directory_missing' => 'Yükleme dizini ($1) kayıp ve websunucusu tarafından oluşturulamıyor.',
 'upload_directory_read_only' => 'Dosya yükleme dizinine ($1) web sunucusunun yazma izni yok.',
 'uploaderror' => 'Yükleme hatası',
@@ -1814,11 +1814,11 @@ $1',
 'upload-proto-error-text' => "Uzaktan yükleme, <code>http://</code> veya <code>ftp://</code> ile başlayan URL'ler gerektirmektedir.",
 'upload-file-error' => 'Dahili hata',
 'upload-file-error-text' => 'Sunucuda geçici dosya oluşturma girişimi sırasında bir iç hata meydana geldi.
-Lütfen bir [[Special:ListUsers/sysop|yonetici]]yle iletişime geçin.',
+Lütfen bir [[Special:Listwiki_users/sysop|yonetici]]yle iletişime geçin.',
 'upload-misc-error' => 'Bilinmeyen yükleme hatası',
 'upload-misc-error-text' => 'Yükleme sırasında bilinmeyen bir hata meydana geldi.
 Lütfen bağlantının geçerli ve ulaşılabilir olduğunu doğrulayın ve yeniden deneyin.
-Eğer sorun tekrarlanırsa, bir [[Special:ListUsers/sysop|hizmetli]] ile temasa geçin',
+Eğer sorun tekrarlanırsa, bir [[Special:Listwiki_users/sysop|hizmetli]] ile temasa geçin',
 'upload-too-many-redirects' => 'URL çok fazla yönlendirme içeriyor',
 'upload-unknown-size' => 'Bilinmeyen boyut',
 'upload-http-error' => 'Bir HTTP hatası oluştu: $1',
@@ -1909,7 +1909,7 @@ Kullanıcı tarafından filtrelendiğinde, sadece o kullanıcı dosyanın en son
 'listfiles_thumb' => 'Küçük resim',
 'listfiles_date' => 'Tarih',
 'listfiles_name' => 'Ad',
-'listfiles_user' => 'Kullanıcı',
+'listfiles_wiki_user' => 'Kullanıcı',
 'listfiles_size' => 'Boyut (bayt)',
 'listfiles_description' => 'Tanım',
 'listfiles_count' => 'Sürümler',
@@ -1926,7 +1926,7 @@ Kullanıcı tarafından filtrelendiğinde, sadece o kullanıcı dosyanın en son
 'filehist-thumb' => 'Küçük resim',
 'filehist-thumbtext' => '$1 tarihindeki sürümün küçültülmüş hâli',
 'filehist-nothumb' => 'Küçük resim yok',
-'filehist-user' => 'Kullanıcı',
+'filehist-wiki_user' => 'Kullanıcı',
 'filehist-dimensions' => 'Boyutlar',
 'filehist-filesize' => 'Dosya boyutu',
 'filehist-comment' => 'Açıklama',
@@ -2010,7 +2010,7 @@ Aşağıda [$2 dosya açıklama sayfasındaki] açıklama gösteriliyor.',
 'statistics-header-pages' => 'Sayfa istatistikleri',
 'statistics-header-edits' => 'Değişiklik istatistikleri',
 'statistics-header-views' => 'Görüntüleme istatistikleri',
-'statistics-header-users' => 'Kullanıcı istatistikleri',
+'statistics-header-wiki_users' => 'Kullanıcı istatistikleri',
 'statistics-header-hooks' => 'Diğer istatistikler',
 'statistics-articles' => 'Maddeler',
 'statistics-pages' => 'Sayfalar',
@@ -2021,9 +2021,9 @@ Aşağıda [$2 dosya açıklama sayfasındaki] açıklama gösteriliyor.',
 'statistics-views-total' => 'Toplam görüntüleme',
 'statistics-views-total-desc' => 'Varolmayan ve özel sayfaların görüntülenmeleri dahil edilmemiştir.',
 'statistics-views-peredit' => 'Değişiklik başına görüntüleme',
-'statistics-users' => 'Kayıtlı [[Special:ListUsers|kullanıcılar]]',
-'statistics-users-active' => 'Aktif kullanıcılar',
-'statistics-users-active-desc' => 'Son {{PLURAL:$1|gün|$1 günde}} çalışma yapan kullanıcılar',
+'statistics-wiki_users' => 'Kayıtlı [[Special:Listwiki_users|kullanıcılar]]',
+'statistics-wiki_users-active' => 'Aktif kullanıcılar',
+'statistics-wiki_users-active-desc' => 'Son {{PLURAL:$1|gün|$1 günde}} çalışma yapan kullanıcılar',
 'statistics-mostpopular' => 'En çok ziyaret edilen sayfalar',
 
 'disambiguations' => 'Anlam ayrım sayfalarına bağlantısı olan sayfalar',
@@ -2095,13 +2095,13 @@ Her satırın içerdiği bağlantılar; birinci ve ikinci yönlendirme, ayrıca 
 'protectedtitles' => 'Korunan başlıklar',
 'protectedtitlestext' => 'Aşağıdaki başlıklar oluşturulmaya karşı korumalıdır',
 'protectedtitlesempty' => 'Şu anda, bu parametrelerle korunan hiç bir başlık yok.',
-'listusers' => 'Kullanıcı listesi',
-'listusers-editsonly' => 'Sadece değişiklik yapan kullanıcıları göster',
-'listusers-creationsort' => 'Oluşturma tarihine göre sırala',
-'usereditcount' => '$1 {{PLURAL:$1|değişiklik|değişiklik}}',
-'usercreated' => "$1 tarihinde $2'de {{GENDER:$3|oluşturuldu}}.",
+'listwiki_users' => 'Kullanıcı listesi',
+'listwiki_users-editsonly' => 'Sadece değişiklik yapan kullanıcıları göster',
+'listwiki_users-creationsort' => 'Oluşturma tarihine göre sırala',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|değişiklik|değişiklik}}',
+'wiki_usercreated' => "$1 tarihinde $2'de {{GENDER:$3|oluşturuldu}}.",
 'newpages' => 'Yeni sayfalar',
-'newpages-username' => 'Kullanıcı adı:',
+'newpages-wiki_username' => 'Kullanıcı adı:',
 'ancientpages' => 'En son değişiklik tarihi en eski olan maddeler',
 'move' => 'Taşı',
 'movethispage' => 'Sayfayı taşı',
@@ -2125,7 +2125,7 @@ Lütfen unutmayın ki, diğer web siteleri bir dosyaya doğrudan bir URL ile ba�
 'booksources-invalid-isbn' => 'Verilen ISBN geçersiz gibi görünüyor; orijinal kaynaktan kopyalama hataları için kontrol edin.',
 
 # Special:Log
-'specialloguserlabel' => 'Kullanıcı:',
+'speciallogwiki_userlabel' => 'Kullanıcı:',
 'speciallogtitlelabel' => 'Hedef (başlık ya da kullanıcı):',
 'log' => 'Kayıtlar',
 'all-logs-page' => 'Tüm umumi kayıtlar',
@@ -2180,24 +2180,24 @@ Desteklenen iletişim kuralları: <code>$1</code> (bunların hiçbirini aramanı
 'linksearch-line' => "$1'e $2'den bağlantı verilmiş",
 'linksearch-error' => 'Jokerler sadece ana makine adının başında görünebilir.',
 
-# Special:ListUsers
-'listusersfrom' => 'Şununla başlayan kullanıcıları görüntüle:',
-'listusers-submit' => 'Göster',
-'listusers-noresult' => 'Kullanıcı bulunamadı.',
-'listusers-blocked' => '(engellenmiş)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'Şununla başlayan kullanıcıları görüntüle:',
+'listwiki_users-submit' => 'Göster',
+'listwiki_users-noresult' => 'Kullanıcı bulunamadı.',
+'listwiki_users-blocked' => '(engellenmiş)',
 
-# Special:ActiveUsers
-'activeusers' => 'Aktif kullanıcı listesi',
-'activeusers-intro' => 'Bu, son $1 {{PLURAL:$1|günde|günde}} bir çeşit etkinlik göstermiş kullanıcıların listesidir.',
-'activeusers-count' => 'Son {{PLURAL:$3|günde|$3 günde}} $1 {{PLURAL:$1|değişiklik|değişiklik}}',
-'activeusers-from' => 'Şununla başlayan kullanıcıları görüntüle:',
-'activeusers-hidebots' => 'Botları gizle',
-'activeusers-hidesysops' => 'Yöneticileri gizle',
-'activeusers-noresult' => 'Kullanıcı bulunamadı.',
+# Special:Activewiki_users
+'activewiki_users' => 'Aktif kullanıcı listesi',
+'activewiki_users-intro' => 'Bu, son $1 {{PLURAL:$1|günde|günde}} bir çeşit etkinlik göstermiş kullanıcıların listesidir.',
+'activewiki_users-count' => 'Son {{PLURAL:$3|günde|$3 günde}} $1 {{PLURAL:$1|değişiklik|değişiklik}}',
+'activewiki_users-from' => 'Şununla başlayan kullanıcıları görüntüle:',
+'activewiki_users-hidebots' => 'Botları gizle',
+'activewiki_users-hidesysops' => 'Yöneticileri gizle',
+'activewiki_users-noresult' => 'Kullanıcı bulunamadı.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Yeni kullanıcı kayıtları',
-'newuserlogpagetext' => 'En son kaydolan kullanıcı kayıtları.',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Yeni kullanıcı kayıtları',
+'newwiki_userlogpagetext' => 'En son kaydolan kullanıcı kayıtları.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Kullanıcı grubu hakları',
@@ -2218,27 +2218,27 @@ Bireysel haklarla ilgili [[{{MediaWiki:Listgrouprights-helppage}}|daha fazla bil
 'listgrouprights-addgroup-self-all' => 'Kendi hesabına tüm grupları ekleyebilir',
 'listgrouprights-removegroup-self-all' => 'Kendi hesabından tüm grupları çıkarabilir',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'Gönderi adresi yok.',
-'mailnologintext' => 'Diğer kullanıcılara e-posta gönderebilmeniz için [[Special:UserLogin|oturum aç]]malısınız ve [[Special:Preferences|tercihler]] sayfasında geçerli bir e-posta adresiniz olmalı.',
-'emailuser' => 'Bu kullanıcıya e-posta gönder',
-'emailuser-title-target' => 'Bu {{GENDER:$1|kullanıcıya}} e-posta gönder',
-'emailuser-title-notarget' => 'Kullanıcı e-posta',
+'mailnologintext' => 'Diğer kullanıcılara e-posta gönderebilmeniz için [[Special:wiki_userLogin|oturum aç]]malısınız ve [[Special:Preferences|tercihler]] sayfasında geçerli bir e-posta adresiniz olmalı.',
+'emailwiki_user' => 'Bu kullanıcıya e-posta gönder',
+'emailwiki_user-title-target' => 'Bu {{GENDER:$1|kullanıcıya}} e-posta gönder',
+'emailwiki_user-title-notarget' => 'Kullanıcı e-posta',
 'emailpage' => 'Kullanıcıya e-posta gönder',
 'emailpagetext' => 'Bu kullanıcıya e-posta mesajı göndermek için aşağıdaki formu kullanabilirsiniz.
 [[Special:Preferences|Kullanıcı tercihlerinizde]] girdiğiniz e-posta adresiniz, e-postanın "From (Kimden)" adresinde görünecektir, bu yüzden alıcı size direk cevap verebilecektir.',
-'usermailererror' => 'E-posta hizmeti hata verdi:',
+'wiki_usermailererror' => 'E-posta hizmeti hata verdi:',
 'defemailsubject' => '"$1" kullanıcısından {{SITENAME}} e-postası',
-'usermaildisabled' => 'Kullanıcı e-postası devre dışı',
-'usermaildisabledtext' => 'Bu vikide diğer kullanıcılara e-posta gönderemezsiniz',
+'wiki_usermaildisabled' => 'Kullanıcı e-postası devre dışı',
+'wiki_usermaildisabledtext' => 'Bu vikide diğer kullanıcılara e-posta gönderemezsiniz',
 'noemailtitle' => 'e-posta adresi yok',
 'noemailtext' => 'Bu kullanıcı geçerli bir e-posta adresi belirtmemiş.',
 'nowikiemailtitle' => 'E-postalara izin verilmiyor',
 'nowikiemailtext' => 'Bu kullanıcı, diğer kullanıcılardan e-posta almamayı tercih etti.',
 'emailnotarget' => 'Alıcı için varolmayan veya geçersiz kullanıcı adı.',
 'emailtarget' => 'Alıcının kullanıcı adını giriniz',
-'emailusername' => 'Kullanıcı Adı:',
-'emailusernamesubmit' => 'Gönder',
+'emailwiki_username' => 'Kullanıcı Adı:',
+'emailwiki_usernamesubmit' => 'Gönder',
 'email-legend' => 'Diğer {{SITENAME}} kullanıcısına e-posta gönder',
 'emailfrom' => 'Kimden:',
 'emailto' => 'Kime:',
@@ -2249,11 +2249,11 @@ Bireysel haklarla ilgili [[{{MediaWiki:Listgrouprights-helppage}}|daha fazla bil
 'emailccsubject' => "$1'e gönderdiğiniz mesajın kopyası: $2",
 'emailsent' => 'E-posta gönderildi',
 'emailsenttext' => 'E-postanız gönderildi.',
-'emailuserfooter' => 'Bu e-posta $1 tarafından $2 kullanıcısına, {{SITENAME}} sitesindeki "Kullanıcıya e-posta gönder" fonksiyonu ile gönderilmiştir.',
+'emailwiki_userfooter' => 'Bu e-posta $1 tarafından $2 kullanıcısına, {{SITENAME}} sitesindeki "Kullanıcıya e-posta gönder" fonksiyonu ile gönderilmiştir.',
 
-# User Messenger
-'usermessage-summary' => 'Sistem mesajı bırakın.',
-'usermessage-editor' => 'Sistem habercisi',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'Sistem mesajı bırakın.',
+'wiki_usermessage-editor' => 'Sistem habercisi',
 
 # Watchlist
 'watchlist' => 'İzleme listem',
@@ -2262,7 +2262,7 @@ Bireysel haklarla ilgili [[{{MediaWiki:Listgrouprights-helppage}}|daha fazla bil
 'nowatchlist' => 'İzleme listesinde hiçbir madde bulunmuyor.',
 'watchlistanontext' => 'Lütfen izleme listenizdeki maddeleri görmek ya da değiştirmek için $1.',
 'watchnologin' => 'Oturum açık değil.',
-'watchnologintext' => 'İzleme listenizi değiştirebilmek için [[Special:UserLogin|oturum açmalısınız]].',
+'watchnologintext' => 'İzleme listenizi değiştirebilmek için [[Special:wiki_userLogin|oturum açmalısınız]].',
 'addwatch' => 'İzleme listesine ekle',
 'addedwatchtext' => '"<nowiki>$1</nowiki>" adlı sayfa [[Special:Watchlist|izleme listenize]] kaydedildi.
 
@@ -2372,13 +2372,13 @@ dikkatle devam edin.',
 'rollbacklink' => 'geridöndür',
 'rollbackfailed' => 'geri alma işlemi başarısız',
 'cantrollback' => 'Sayfaya son katkıda bulunan kullanıcı, sayfaya katkıda bulunmuş tek kişi olduğu için, değişiklikler geri alınamıyor.',
-'alreadyrolled' => '[[User:$2|$2]] ([[User talk:$2|Talk]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) tarafından [[:$1]] sayfasında yapılmış son değişiklik geriye alınamıyor;
+'alreadyrolled' => '[[wiki_user:$2|$2]] ([[wiki_user talk:$2|Talk]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) tarafından [[:$1]] sayfasında yapılmış son değişiklik geriye alınamıyor;
 başka biri sayfada değişiklik yaptı ya da sayfayı geriye aldı.
 
-Son değişikliği yapan: [[User:$3|$3]] ([[User talk:$3|Talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+Son değişikliği yapan: [[wiki_user:$3|$3]] ([[wiki_user talk:$3|Talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "Değişiklik özeti: \"''\$1''\" idi.",
-'revertpage' => '[[Special:Contributions/$2|$2]] [[User talk:$2|mesaj]] tarafından yapılan değişiklikler geri alınarak, [[User:$1|$1]] tarafından değiştirilmiş önceki sürüm geri getirildi.',
-'revertpage-nouser' => '(kullanıcı adı çıkarılmış) tarafından yapılan değişiklikler [[User:$1|$1]] tarafından yapılan son revizyona geri alındı',
+'revertpage' => '[[Special:Contributions/$2|$2]] [[wiki_user talk:$2|mesaj]] tarafından yapılan değişiklikler geri alınarak, [[wiki_user:$1|$1]] tarafından değiştirilmiş önceki sürüm geri getirildi.',
+'revertpage-nowiki_user' => '(kullanıcı adı çıkarılmış) tarafından yapılan değişiklikler [[wiki_user:$1|$1]] tarafından yapılan son revizyona geri alındı',
 'rollback-success' => '$1 tarafından yapılan değişiklikler geri alınarak;
 $2 tarafından değiştirilmiş önceki sürüme geri dönüldü.',
 
@@ -2529,12 +2529,12 @@ $1',
 'sp-contributions-uploads' => 'yüklenenler',
 'sp-contributions-logs' => 'kayıtlar',
 'sp-contributions-talk' => 'mesaj',
-'sp-contributions-userrights' => 'kullanıcı hakları yönetimi',
+'sp-contributions-wiki_userrights' => 'kullanıcı hakları yönetimi',
 'sp-contributions-blocked-notice' => 'Bu kullanıcı engellenmiştir. Referans için en son engellenme kaydı aşağıda belirtilmiştir:',
 'sp-contributions-blocked-notice-anon' => 'Bu IP adresi şu anda engellenmiş.
 Son engelleme günlüğü girdisi kaynak amacıyla aşağıda verilmiştir:',
 'sp-contributions-search' => 'Katkıları ara',
-'sp-contributions-username' => 'IP adresi veya kullanıcı adı:',
+'sp-contributions-wiki_username' => 'IP adresi veya kullanıcı adı:',
 'sp-contributions-toponly' => 'Sadece son revizyon olan değişiklikleri göster',
 'sp-contributions-submit' => 'Ara',
 
@@ -2565,7 +2565,7 @@ Son engelleme günlüğü girdisi kaynak amacıyla aşağıda verilmiştir:',
 'blockip-title' => 'Kullanıcıyı engelle',
 'blockip-legend' => 'Kullanıcıyı engelle',
 'blockiptext' => "Aşağıdaki formu kullanarak belli bir IP'nin veya kayıtlı kullanıcının değişiklik yapmasını engelleyebilirsiniz. Bu sadece vandalizmi engellemek için ve [[{{MediaWiki:Policy-url}}|kurallara]] uygun olarak yapılmalı. Aşağıya mutlaka engelleme ile ilgili bir açıklama yazınız. (örnek: -Şu- sayfalarda vandalizm yapmıştır).",
-'ipadressorusername' => 'IP adresi veya kullanıcı adı',
+'ipadressorwiki_username' => 'IP adresi veya kullanıcı adı',
 'ipbexpiry' => 'Bitiş süresi',
 'ipbreason' => 'Neden:',
 'ipbreasonotherlist' => 'Başka neden',
@@ -2587,8 +2587,8 @@ Son engelleme günlüğü girdisi kaynak amacıyla aşağıda verilmiştir:',
 'ipbotheroption' => 'farklı',
 'ipbotherreason' => 'Başka/ek sebepler:',
 'ipbhidename' => 'Kullanıcı adını katkılarda ve listelerde gizle',
-'ipbwatchuser' => 'Bu kullanıcının kullanıcı ve tartışma sayfalarını izle',
-'ipb-disableusertalk' => 'Bu kullanıcının engelliyken kendi mesaj sayfasında değişiklik yapmasını önle',
+'ipbwatchwiki_user' => 'Bu kullanıcının kullanıcı ve tartışma sayfalarını izle',
+'ipb-disablewiki_usertalk' => 'Bu kullanıcının engelliyken kendi mesaj sayfasında değişiklik yapmasını önle',
 'ipb-change-block' => 'Bu ayarlarla kullanıcıyı yeniden engelle',
 'ipb-confirm' => 'Engeli onayla',
 'badipaddress' => 'Geçersiz IP adresi',
@@ -2596,7 +2596,7 @@ Son engelleme günlüğü girdisi kaynak amacıyla aşağıda verilmiştir:',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] engellendi.<br />
 Engellemeleri gözden geçirmek için [[Special:BlockList|engel listesine]] bakınız.',
 'ipb-blockingself' => 'Kendinizi engellemek üzeresiniz! Bunu yapmak istediğinizden emin misiniz?',
-'ipb-confirmhideuser' => '"Kullanıcıyı gizle" seçiliyken bir kullanıcı engellemek üzeresiniz. Bu, kullanıcının adını tüm listeler ile günlük girişlerinde bastıracaktır. Bunu yapmak istediğinizden emin misiniz?',
+'ipb-confirmhidewiki_user' => '"Kullanıcıyı gizle" seçiliyken bir kullanıcı engellemek üzeresiniz. Bu, kullanıcının adını tüm listeler ile günlük girişlerinde bastıracaktır. Bunu yapmak istediğinizden emin misiniz?',
 'ipb-edit-dropdown' => 'Engelleme nedenleri düzenle',
 'ipb-unblock-addr' => '$1 için engellemeyi kaldır',
 'ipb-unblock' => 'Engellemeyi kaldır',
@@ -2605,13 +2605,13 @@ Engellemeleri gözden geçirmek için [[Special:BlockList|engel listesine]] bak�
 'unblockip' => 'Kullanıcının engellemesini kaldır',
 'unblockiptext' => 'Daha önceden engellenmiş bir IP adresine ya da kullanıcı adına yazma erişimini geri vermek için aşağıdaki formu kullanın.',
 'ipusubmit' => 'Bu engellemeyi kaldır',
-'unblocked' => '[[User:$1|$1]] - engelleme kaldırıldı',
+'unblocked' => '[[wiki_user:$1|$1]] - engelleme kaldırıldı',
 'unblocked-range' => '$1 engeli kaldırıldı',
 'unblocked-id' => '$1 engeli çıkarıldı',
 'blocklist' => 'Engellenmiş kullanıcılar',
 'ipblocklist' => 'Engellenmiş kullanıcılar',
 'ipblocklist-legend' => 'Engellenen kullanıcı ara',
-'blocklist-userblocks' => 'Hesap engellemelerini gizle',
+'blocklist-wiki_userblocks' => 'Hesap engellemelerini gizle',
 'blocklist-tempblocks' => 'Geçici engellemeleri gizle',
 'blocklist-addressblocks' => 'Tek IP engellemelerini gizle',
 'blocklist-timestamp' => 'Tarih damgası',
@@ -2629,7 +2629,7 @@ Engellemeleri gözden geçirmek için [[Special:BlockList|engel listesine]] bak�
 'noautoblockblock' => 'otomatik engelleme devre dışı bırakıldı',
 'createaccountblock' => 'hesap açımı engellendi',
 'emailblock' => 'e-posta engellendi',
-'blocklist-nousertalk' => 'kendi tartışma sayfasını değiştiremez',
+'blocklist-nowiki_usertalk' => 'kendi tartışma sayfasını değiştiremez',
 'ipblocklist-empty' => 'Engelleme listesi boş.',
 'ipblocklist-no-results' => 'İstenen IP adresi ya da kullanıcı adı engellenmedi.',
 'blocklink' => 'engelle',
@@ -2637,7 +2637,7 @@ Engellemeleri gözden geçirmek için [[Special:BlockList|engel listesine]] bak�
 'change-blocklink' => 'engeli değiştir',
 'contribslink' => 'katkılar',
 'emaillink' => 'e-posta gönder',
-'autoblocker' => 'Otomatik olarak engellendiniz çünkü yakın zamanda IP adresiniz "[[User:$1|$1]]" kullanıcısı tarafından  kullanılmıştır. $1 isimli kullanıcının engellenmesi için verilen sebep: "\'\'\'$2\'\'\'"',
+'autoblocker' => 'Otomatik olarak engellendiniz çünkü yakın zamanda IP adresiniz "[[wiki_user:$1|$1]]" kullanıcısı tarafından  kullanılmıştır. $1 isimli kullanıcının engellenmesi için verilen sebep: "\'\'\'$2\'\'\'"',
 'blocklogpage' => 'Engel kaydı',
 'blocklog-showlog' => 'Bu kullanıcı daha önceden engellenmiş.
 Engelleme günlüğü referans için aşağıda sağlanmıştır:',
@@ -2651,7 +2651,7 @@ Gizleme günlüğü referans için aşağıda sağlanmıştır:',
 'block-log-flags-nocreate' => 'hesap yaratımı engellendi',
 'block-log-flags-noautoblock' => 'Otomatik engelleme iptal edildi',
 'block-log-flags-noemail' => 'e-posta engellendi',
-'block-log-flags-nousertalk' => 'kendi tartışma sayfasını değiştiremez',
+'block-log-flags-nowiki_usertalk' => 'kendi tartışma sayfasını değiştiremez',
 'block-log-flags-angry-autoblock' => 'gelişmiş oto-engelleme devrede',
 'block-log-flags-hiddenname' => 'kullanıcı adı gizli',
 'range_block_disabled' => 'Hizmetliler için aralık engellemesi oluşturma yeteneği devre dışı.',
@@ -2661,7 +2661,7 @@ Gizleme günlüğü referans için aşağıda sağlanmıştır:',
 'ipb_already_blocked' => '"$1" zaten engellenmiş',
 'ipb-needreblock' => '$1 zaten engellenmiş. Ayarları değiştirmek istiyor musunuz?',
 'ipb-otherblocks-header' => 'Diğer {{PLURAL:$1|engelleme|engellemeler}}',
-'unblock-hideuser' => 'Kullanıcı adı gizlenmiş olduğu için bu kullanıcının engelini kaldıramazsınız.',
+'unblock-hidewiki_user' => 'Kullanıcı adı gizlenmiş olduğu için bu kullanıcının engelini kaldıramazsınız.',
 'ipb_cant_unblock' => 'Hata: Engelleme IDsi $1 bulunamadı.
 Engelleme kaldırılmış olabilir.',
 'ipb_blocked_as_range' => 'Hata: $1 IP adresi doğrudan engellenmemiş ve engelleme kaldırılamaz.
@@ -2678,7 +2678,7 @@ Lütfen İnternet sevis sağlayınız ile ya da teknik destek ile irtibat kurun 
 'sorbs_create_account_reason' => "IP adresiniz {{SITENAME}} sitesi tarafından kullanılan DNSBL'de açık proxy olarak listelenmiş.
 Hesap oluşturamazsınız",
 'cant-block-while-blocked' => 'Siz engelliyken başka kullanıcıları engelleyemezsiniz.',
-'cant-see-hidden-user' => 'Engellemek istediğiniz kullanıcı zaten engellenmiş ve gizlenmiş. Kullanıcıgizle yetkiniz olmadığı için, kullanıcının engellenmesini göremez ya da değiştiremezsiniz.',
+'cant-see-hidden-wiki_user' => 'Engellemek istediğiniz kullanıcı zaten engellenmiş ve gizlenmiş. Kullanıcıgizle yetkiniz olmadığı için, kullanıcının engellenmesini göremez ya da değiştiremezsiniz.',
 'ipbblocked' => 'Diğer kullanıcıları engelleyemez ya da engellemesini kaldıramazsınız, çünkü kendiniz engellenmişsiz',
 'ipbnounblockself' => 'Kendi engellemenizi kaldırmanıza izniniz yok',
 
@@ -2732,13 +2732,13 @@ Lütfen onaylamadan önce bunun sonuçlarını anladığınızdan emin olun.",
 
 Bu durumlarda sayfayı kendiniz aktarmalısınız.",
 'movearticle' => 'Eski isim',
-'moveuserpage-warning' => "'''Uyarı:''' Bir kullanıcı sayfasını taşımak üzeresiniz. Lütfen sadece sayfanın taşınacağına, ancak kullanıcının yeniden ''adlandırılmayacağına'' dikkat edin.",
+'movewiki_userpage-warning' => "'''Uyarı:''' Bir kullanıcı sayfasını taşımak üzeresiniz. Lütfen sadece sayfanın taşınacağına, ancak kullanıcının yeniden ''adlandırılmayacağına'' dikkat edin.",
 'movenologin' => 'Sistemde değilsiniz.',
-'movenologintext' => 'Sayfanın adını değiştirebilmek için kayıtlı ve [[Special:UserLogin|sisteme]] giriş yapmış olmanız gerekmektedir.',
+'movenologintext' => 'Sayfanın adını değiştirebilmek için kayıtlı ve [[Special:wiki_userLogin|sisteme]] giriş yapmış olmanız gerekmektedir.',
 'movenotallowed' => 'Sayfaları taşımaya izniniz yok.',
 'movenotallowedfile' => 'Sayfaları taşımaya izniniz yok.',
-'cant-move-user-page' => 'Kullanıcı sayfalarını taşımaya izniniz yok (altsayfalardan başka).',
-'cant-move-to-user-page' => 'Bir sayfayı, bir kullanıcı sayfasına taşımaya izniniz yok (bir kullanıcı altsayfası dışında).',
+'cant-move-wiki_user-page' => 'Kullanıcı sayfalarını taşımaya izniniz yok (altsayfalardan başka).',
+'cant-move-to-wiki_user-page' => 'Bir sayfayı, bir kullanıcı sayfasına taşımaya izniniz yok (bir kullanıcı altsayfası dışında).',
 'newtitle' => 'Yeni isim',
 'move-watch' => 'Bu sayfayı izle',
 'movepagebtn' => 'İsmi değiştir',
@@ -2899,8 +2899,8 @@ Geçici dosya kayıp.',
 'javascripttest-title' => '$1 testleri çalışıyor',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Kullanıcı sayfanız',
-'tooltip-pt-anonuserpage' => 'The user page for the ip you',
+'tooltip-pt-wiki_userpage' => 'Kullanıcı sayfanız',
+'tooltip-pt-anonwiki_userpage' => 'The wiki_user page for the ip you',
 'tooltip-pt-mytalk' => 'Mesaj sayfanız',
 'tooltip-pt-anontalk' => 'Bu IP adresinden yapılmış değişiklikleri tartış',
 'tooltip-pt-preferences' => 'Tercihleriniz (ayarlarınız)',
@@ -2937,13 +2937,13 @@ Geçici dosya kayıp.',
 'tooltip-feed-rss' => 'Bu sayfa için RSS beslemesi',
 'tooltip-feed-atom' => 'Bu sayfa için atom beslemesi',
 'tooltip-t-contributions' => 'Kullanıcının katkılarının listesini gör',
-'tooltip-t-emailuser' => 'Bu kullanıcıya e-posta gönder',
+'tooltip-t-emailwiki_user' => 'Bu kullanıcıya e-posta gönder',
 'tooltip-t-upload' => 'Dosya yükle',
 'tooltip-t-specialpages' => 'Tüm özel sayfaların listesi',
 'tooltip-t-print' => 'Bu sayfanın basılmaya uygun sürümü',
 'tooltip-t-permalink' => 'Sayfanın bu sürümüne kalıcı bağlantı',
 'tooltip-ca-nstab-main' => 'İçerik sayfasını göster',
-'tooltip-ca-nstab-user' => 'Kullanıcı sayfasını göster',
+'tooltip-ca-nstab-wiki_user' => 'Kullanıcı sayfasını göster',
 'tooltip-ca-nstab-media' => 'Medya sayfasını göster',
 'tooltip-ca-nstab-special' => 'Bu özel sayfa olduğu için üzerinde değişiklik yapamazsınız.',
 'tooltip-ca-nstab-project' => 'Proje sayfasını göster',
@@ -2979,13 +2979,13 @@ Geçici dosya kayıp.',
 
 # Attribution
 'anonymous' => '{{SITENAME}} sitesinin anonim {{PLURAL:$1|kullanıcısı|kullanıcıları}}',
-'siteuser' => '{{SITENAME}} kullanıcısı $1',
-'anonuser' => '{{SITENAME}} anonim kullanıcısı $1',
+'sitewiki_user' => '{{SITENAME}} kullanıcısı $1',
+'anonwiki_user' => '{{SITENAME}} anonim kullanıcısı $1',
 'lastmodifiedatby' => 'Sayfa en son $3 tarafından $2, $1 tarihinde değiştirildi.',
 'othercontribs' => '$1 tarafından yapılan çalışma baz alınmıştır.',
 'others' => 'diğerleri',
-'siteusers' => '{{SITENAME}} {{PLURAL:$2|kullanıcısı|kullanıcıları}} $1',
-'anonusers' => '{{SITENAME}} anonim {{PLURAL:$2|kullanıcısı|kullanıcıları}} $1',
+'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|kullanıcısı|kullanıcıları}} $1',
+'anonwiki_users' => '{{SITENAME}} anonim {{PLURAL:$2|kullanıcısı|kullanıcıları}} $1',
 'creditspage' => 'Sayfa künyesi',
 'nocredits' => 'Bu sayfa için künye bilgisi mevcut değil.',
 
@@ -2993,7 +2993,7 @@ Geçici dosya kayıp.',
 'spamprotectiontitle' => 'Spam karşı koruma filtresi',
 'spamprotectiontext' => 'Kaydetmek istediğiniz sayfa spam filtresi tarafından blok edildi. Büyük ihtimalle kara-listedeki bir dış bağlantıdan kaynaklanmaktadır.',
 'spamprotectionmatch' => 'Spam süzgecimizi harekete geçiren metin: $1',
-'spambot_username' => 'Medyaviki spam temizleme',
+'spambot_wiki_username' => 'Medyaviki spam temizleme',
 'spam_reverting' => '$1 ile bağlantı içermeyen son sürüme geri dönülüyor',
 'spam_blanking' => 'Tüm revizyonlar $1 sayfasına bağlantı içeriyor, boşaltılıyor',
 
@@ -3015,9 +3015,9 @@ Geçici dosya kayıp.',
 'pageinfo-redirects-name' => 'Bu sayfaya yönlendirmeler',
 'pageinfo-redirects-value' => '$1',
 'pageinfo-subpages-name' => 'Bu sayfanın alt sayfaları',
-'pageinfo-firstuser' => 'Sayfa oluşturucu',
+'pageinfo-firstwiki_user' => 'Sayfa oluşturucu',
 'pageinfo-firsttime' => 'Sayfa oluşturulma tarihi',
-'pageinfo-lastuser' => 'En son düzenleyici',
+'pageinfo-lastwiki_user' => 'En son düzenleyici',
 'pageinfo-lasttime' => 'Son düzenleme tarihi',
 'pageinfo-edits' => 'Düzenleme sayısı',
 'pageinfo-authors' => 'Farklı yazar sayısı',
@@ -3176,7 +3176,7 @@ Diğerleri varsayılan olarak gizlenecektir.
 'exif-compressedbitsperpixel' => 'Resim sıkıştırma biçimi',
 'exif-pixelydimension' => 'Resim genişliği',
 'exif-pixelxdimension' => 'Resim yüksekliği',
-'exif-usercomment' => 'Kullanıcı yorumu',
+'exif-wiki_usercomment' => 'Kullanıcı yorumu',
 'exif-relatedsoundfile' => 'İlişkin ses dosyası',
 'exif-datetimeoriginal' => 'Orjinal yaratma zamanı',
 'exif-datetimedigitized' => 'Dijitalleştirme zamanı',
@@ -3556,7 +3556,7 @@ Giriş yapmak için bu kod gerekli değildir, ancak bu vikideki herhangi bir e-p
 Mail yazılımı iade etti:$1',
 'confirmemail_invalid' => 'Geçersiz onay kodu. Onay kodunun son kullanma tarihi geçmiş olabilir.',
 'confirmemail_needlogin' => 'E-posta adresinizi onaylamak için önce $1 yapmalısınız.',
-'confirmemail_success' => "E-posta adresiniz doğrulandı. [[Special:UserLogin|Oturum açıp]] Viki'nin keyfini çıkarabilirsiniz.",
+'confirmemail_success' => "E-posta adresiniz doğrulandı. [[Special:wiki_userLogin|Oturum açıp]] Viki'nin keyfini çıkarabilirsiniz.",
 'confirmemail_loggedin' => 'E-posta adresiniz onaylandı.',
 'confirmemail_error' => 'Onayınız bilinmeyen bir hata nedeniyle kaydedilemedi.',
 'confirmemail_subject' => '{{SITENAME}} e-posta adres onayı.',
@@ -3609,10 +3609,10 @@ Bu onay kodu $4 tarihine kadar geçerlidir.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Uyarı''': Bu sayfa siz değişiklik yapmaya başladıktan sonra silinmiş!",
-'confirmrecreate' => "Bu sayfayı [[User:$1|$1]] ([[User talk:$1|mesaj]]) kullanıcısı siz sayfada değişiklik yaparken silmiştir, nedeni:
+'confirmrecreate' => "Bu sayfayı [[wiki_user:$1|$1]] ([[wiki_user talk:$1|mesaj]]) kullanıcısı siz sayfada değişiklik yaparken silmiştir, nedeni:
 : ''$2''
 Sayfayı baştan açmak isityorsanız, lütfen onaylayın.",
-'confirmrecreate-noreason' => '[[User:$1|$1]] ([[User talk:$1|mesaj]]) adlı kullanıcı, siz değişiklik yapmaya başladıktan sonra bu sayfayı sildi. Lütfen bu sayfayı gerçekten yeniden oluşturmak istediğinizi onaylayın.',
+'confirmrecreate-noreason' => '[[wiki_user:$1|$1]] ([[wiki_user talk:$1|mesaj]]) adlı kullanıcı, siz değişiklik yapmaya başladıktan sonra bu sayfayı sildi. Lütfen bu sayfayı gerçekten yeniden oluşturmak istediğinizi onaylayın.',
 'recreate' => 'Canlandır',
 
 'unit-pixel' => 'px',
@@ -3699,7 +3699,7 @@ Ayrıca [[Special:EditWatchlist|standart düzenleme sayfasını]] da kullanabili
 'hijri-calendar-m10' => 'Şevval',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|mesaj]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|mesaj]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Bilinmeyen eklenti etiketi "$1"',
@@ -3766,7 +3766,7 @@ Resimler tam çözünürlükte görüntülenir, diğer dosya tipleri ilgili prog
 'specialpages-group-login' => 'Oturum aç / hesap edin',
 'specialpages-group-changes' => 'Son değişiklikler ve kayıtlar',
 'specialpages-group-media' => 'Dosya raporları ve yüklemeler',
-'specialpages-group-users' => 'Kullanıcılar ve hakları',
+'specialpages-group-wiki_users' => 'Kullanıcılar ve hakları',
 'specialpages-group-highuse' => 'Çok kullanılan sayfalar',
 'specialpages-group-pages' => 'Sayfaların listeleri',
 'specialpages-group-pagetools' => 'Sayfa araçları',
@@ -3857,11 +3857,11 @@ Resimler tam çözünürlükte görüntülenir, diğer dosya tipleri ilgili prog
 'logentry-move-move-noredirect' => '$1 $3 sayfasını $4 sayfasına yönlendirme olmaksızın taşıdı',
 'logentry-move-move_redir' => '$1 $3 sayfasını $4 sayfasına yönlendirme üzerinden taşıdı',
 'logentry-patrol-patrol-auto' => '$1 $3 sayfasını $4 sürümü ile kontrol etti',
-'logentry-newusers-newusers' => 'Kullanıcı hesabı $1 oluşturdu',
-'logentry-newusers-create' => 'Kullanıcı hesabı $1 oluşturdu',
-'logentry-newusers-create2' => '$1 kullanıcı hesabı oluşturdu $3',
-'logentry-newusers-autocreate' => '$1 hesabı otomatik olarak oluşturuldu',
-'newuserlog-byemail' => 'e-posta yoluyla şifre gönderilmiştir',
+'logentry-newwiki_users-newwiki_users' => 'Kullanıcı hesabı $1 oluşturdu',
+'logentry-newwiki_users-create' => 'Kullanıcı hesabı $1 oluşturdu',
+'logentry-newwiki_users-create2' => '$1 kullanıcı hesabı oluşturdu $3',
+'logentry-newwiki_users-autocreate' => '$1 hesabı otomatik olarak oluşturuldu',
+'newwiki_userlog-byemail' => 'e-posta yoluyla şifre gönderilmiştir',
 
 # Feedback
 'feedback-subject' => 'Konu:',

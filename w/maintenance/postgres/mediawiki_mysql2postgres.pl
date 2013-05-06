@@ -35,13 +35,13 @@ my $verbose = 0;
 my $help = 0;
 
 my $USAGE = "
-Usage: $0 --db=<dbname> --user=<user> [OPTION]...
-Example: $0 --db=wikidb --user=wikiuser --pass=sushi
+Usage: $0 --db=<dbname> --wiki_user=<wiki_user> [OPTION]...
+Example: $0 --db=wikidb --wiki_user=wikiwiki_user --pass=sushi
 
 Converts a MediaWiki schema from MySQL to Postgres
 Options:
   db       Name of the MySQL database
-  user     MySQL database username
+  wiki_user     MySQL database wiki_username
   pass     MySQL database password
   host     MySQL database host
   socket   MySQL database socket
@@ -51,7 +51,7 @@ Options:
 GetOptions
 	(
 	 'db=s'     => \$MYSQLDB,
-	 'user=s'   => \$MYSQLUSER,
+	 'wiki_user=s'   => \$MYSQLUSER,
 	 'pass=s'   => \$MYSQLPASSWORD,
 	 'host=s'   => \$MYSQLHOST,
 	 'socket=s' => \$MYSQLSOCKET,
@@ -99,7 +99,7 @@ my @MYSQLDUMPARGS = qw(
 
 $verbose and warn "Checking that mysqldump can handle our flags\n";
 ## Make sure this version can handle all the flags we want.
-## Combine with user dump below
+## Combine with wiki_user dump below
 my $MYSQLDUMPARGS = join ' ' => @MYSQLDUMPARGS;
 ## Argh. Any way to make this work on Win32?
 my $version = qx{$MYSQLDUMP $MYSQLDUMPARGS 2>&1};
@@ -107,7 +107,7 @@ if ($version =~ /unknown option/) {
 	die qq{Sorry, you need to use a newer version of the mysqldump program than the one at "$MYSQLDUMP"\n};
 }
 
-push @MYSQLDUMPARGS, "--user=$MYSQLUSER";
+push @MYSQLDUMPARGS, "--wiki_user=$MYSQLUSER";
 length $MYSQLPASSWORD and push @MYSQLDUMPARGS, "--password=$MYSQLPASSWORD";
 length $MYSQLHOST and push @MYSQLDUMPARGS, "--host=$MYSQLHOST";
 
@@ -188,10 +188,10 @@ print qq{
 -- Executable used: $MYSQLDUMP
 -- Connection information:
 --   database:  $MYSQLDB
---   user:      $MYSQLUSER$conninfo
+--   wiki_user:      $MYSQLUSER$conninfo
 
 -- This file can be imported manually with psql like so:
--- psql -p port# -h hostname -U username -f $MYSQLDUMPFILE databasename
+-- psql -p port# -h hostname -U wiki_username -f $MYSQLDUMPFILE databasename
 -- This will overwrite any existing MediaWiki information, so be careful
 
 };
@@ -304,54 +304,54 @@ INSERT INTO page VALUES (0,-1,'Dummy Page','',0,0,0,default,now(),0,10);
 if (length $table_prefix) {
 	print qq{\n\n-- Temporarily renaming tables to accomodate the table_prefix "$table_prefix"\n\n};
 	for my $t (@torder) {
-		next if $t eq '---' or $t eq 'text' or $t eq 'user';
+		next if $t eq '---' or $t eq 'text' or $t eq 'wiki_user';
 		my $tname = $special{$t}||$t;
 		printf qq{ALTER TABLE %-18s RENAME TO "${table_prefix}$tname";\n}, qq{"$tname"};
 	}
 }
 
 
-## Try and dump the ill-named "user" table:
-## We do this table alone because "user" is a reserved word.
+## Try and dump the ill-named "wiki_user" table:
+## We do this table alone because "wiki_user" is a reserved word.
 print q{
 
 SET escape_string_warning TO 'off';
 \\o /dev/null
 
--- Postgres uses a table name of "mwuser" instead of "user"
+-- Postgres uses a table name of "mwwiki_user" instead of "wiki_user"
 
--- Create a dummy user to satisfy fk contraints especially with revisions
-SELECT setval('user_user_id_seq',0,'false');
-INSERT INTO mwuser
+-- Create a dummy wiki_user to satisfy fk contraints especially with revisions
+SELECT setval('wiki_user_wiki_user_id_seq',0,'false');
+INSERT INTO mwwiki_user
   VALUES (DEFAULT,'Anonymous','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,now(),now());
 
 };
 
 push @MYSQLDUMPARGS, '--no-create-info';
 
-$verbose and warn qq{Dumping "user" table\n};
+$verbose and warn qq{Dumping "wiki_user" table\n};
 $verbose > 2 and warn Dumper \@MYSQLDUMPARGS;
-my $usertable = "${table_prefix}user";
-open my $mfork, '-|' or exec $MYSQLDUMP, @MYSQLDUMPARGS, $MYSQLDB, $usertable;
+my $wiki_usertable = "${table_prefix}wiki_user";
+open my $mfork, '-|' or exec $MYSQLDUMP, @MYSQLDUMPARGS, $MYSQLDB, $wiki_usertable;
 ## Unfortunately, there is no easy way to catch errors
-my $numusers = 0;
+my $numwiki_users = 0;
 while (<$mfork>) {
-	++$numusers and print if s/INSERT INTO $usertable/INSERT INTO mwuser/;
+	++$numwiki_users and print if s/INSERT INTO $wiki_usertable/INSERT INTO mwwiki_user/;
 }
 close $mfork;
-if ($numusers < 1) {
-	warn qq{No users found, probably a connection error.\n};
-	print qq{ERROR: No users found, connection failed, or table "$usertable" does not exist. Dump aborted.\n};
+if ($numwiki_users < 1) {
+	warn qq{No wiki_users found, probably a connection error.\n};
+	print qq{ERROR: No wiki_users found, connection failed, or table "$wiki_usertable" does not exist. Dump aborted.\n};
 	close $mdump or die qq{Could not close "$MYSQLDUMPFILE": $!\n};
 	exit;
 }
-print "\n-- Users loaded: $numusers\n\n-- Loading rest of the mediawiki schema:\n";
+print "\n-- wiki_users loaded: $numwiki_users\n\n-- Loading rest of the mediawiki schema:\n";
 
 warn qq{Dumping all other tables from the MySQL schema\n} if $verbose;
 
 ## Dump the rest of the tables, in chunks based on constraints
-## We do not need the user table:
-my @dumplist = grep { $_ ne 'user'} @torder;
+## We do not need the wiki_user table:
+my @dumplist = grep { $_ ne 'wiki_user'} @torder;
 my @alist;
 {
 	undef @alist;
@@ -391,7 +391,7 @@ if (length $table_prefix) {
 		$maxsize = length "$_$table_prefix" if length "$_$table_prefix" > $maxsize;
 	}
 	for my $t (@torder) {
-		next if $t eq '---' or $t eq 'text' or $t eq 'user';
+		next if $t eq '---' or $t eq 'text' or $t eq 'wiki_user';
 		my $tname = $special{$t}||$t;
 		printf qq{ALTER TABLE %*s RENAME TO "$tname";\n}, $maxsize+1, qq{"${table_prefix}$tname"};
 	}
@@ -417,7 +417,7 @@ SELECT setval('page_restrictions_pr_id_seq', 1+coalesce(max(pr_id)  ,0),false) F
 SELECT setval('recentchanges_rc_id_seq',     1+coalesce(max(rc_id)  ,0),false) FROM recentchanges;
 SELECT setval('revision_rev_id_seq',         1+coalesce(max(rev_id) ,0),false) FROM revision;
 SELECT setval('text_old_id_seq',       1+coalesce(max(old_id) ,0),false) FROM pagecontent;
-SELECT setval('user_user_id_seq',      1+coalesce(max(user_id),0),false) FROM mwuser;
+SELECT setval('wiki_user_wiki_user_id_seq',      1+coalesce(max(wiki_user_id),0),false) FROM mwwiki_user;
 };
 
 print "COMMIT;\n\\o\n\n-- End of dump\n\n";
@@ -430,7 +430,7 @@ __DATA__
 ## Known remappings: either indicate the MySQL name,
 ## or leave blank if it should be skipped
 pagecontent text
-mwuser user
+mwwiki_user wiki_user
 archive2
 profiling
 objectcache

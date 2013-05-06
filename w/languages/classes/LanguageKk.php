@@ -249,14 +249,14 @@ class KkConverter extends LanguageConverter {
 	 * A function wrapper:
 	 *  - if there is no selected variant, leave the link
 	 *    names as they were
-	 *  - do not try to find variants for usernames
+	 *  - do not try to find variants for wiki_usernames
 	 *
 	 * @param $link string
 	 * @param $nt Title
 	 * @param bool $ignoreOtherCond
 	 */
 	function findVariantLink( &$link, &$nt, $ignoreOtherCond = false ) {
-		// check for user namespace
+		// check for wiki_user namespace
 		if ( is_object( $nt ) ) {
 			$ns = $nt->getNamespace();
 			if ( $ns == NS_USER || $ns == NS_USER_TALK )

@@ -15,9 +15,9 @@
  * - Set $wgImgAuthPublicTest false if you don't want to just check and see if all are public
  *       must be set to false if using specific restrictions such as LockDown or NSFileRepo
  *
- *  For security reasons, you usually don't want your user to know *why* access was denied,
+ *  For security reasons, you usually don't want your wiki_user to know *why* access was denied,
  *  just that it was. If you want to change this, you can set $wgImgAuthDetails to 'true'
- *  in localsettings.php and it will give the user the reason why access was denied.
+ *  in localsettings.php and it will give the wiki_user the reason why access was denied.
  *
  * Your server needs to support PATH_INFO; CGI-based configurations usually don't.
  *
@@ -60,7 +60,7 @@ function wfImageAuthMain() {
 
 	// See if this is a public Wiki (no protections).
 	if ( $wgImgAuthPublicTest
-		&& in_array( 'read', User::getGroupPermissions( array( '*' ) ), true ) )
+		&& in_array( 'read', wiki_user::getGroupPermissions( array( '*' ) ), true ) )
 	{
 		// This is a public wiki, so disable this script (for private wikis only)
 		wfForbidden( 'img-auth-accessdenied', 'img-auth-public' );
@@ -122,9 +122,9 @@ function wfImageAuthMain() {
 		return;
 	}
 
-	// Check user authorization for this title
+	// Check wiki_user authorization for this title
 	// Checks Whitelist too
-	if ( !$title->userCan( 'read' ) ) {
+	if ( !$title->wiki_userCan( 'read' ) ) {
 		wfForbidden( 'img-auth-accessdenied', 'img-auth-noread', $name );
 		return;
 	}

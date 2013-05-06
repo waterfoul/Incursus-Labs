@@ -208,7 +208,7 @@ See the <a href='https://www.mediawiki.org/wiki/API'>complete documentation</a>,
 
 	/**
 	 * The main format printing function. Call it to output the result
-	 * string to the user. This function will automatically output HTML
+	 * string to the wiki_user. This function will automatically output HTML
 	 * when format name ends in 'fm'.
 	 * @param $text string
 	 */

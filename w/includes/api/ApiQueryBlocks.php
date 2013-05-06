@@ -25,7 +25,7 @@
  */
 
 /**
- * Query module to enumerate all user blocks
+ * Query module to enumerate all wiki_user blocks
  *
  * @ingroup API
  */
@@ -34,7 +34,7 @@ class ApiQueryBlocks extends ApiQueryBase {
 	/**
 	 * @var Array
 	 */
-	protected $usernames;
+	protected $wiki_usernames;
 
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'bk' );
@@ -44,12 +44,12 @@ class ApiQueryBlocks extends ApiQueryBase {
 		global $wgContLang;
 
 		$params = $this->extractRequestParams();
-		$this->requireMaxOneParameter( $params, 'users', 'ip' );
+		$this->requireMaxOneParameter( $params, 'wiki_users', 'ip' );
 
 		$prop = array_flip( $params['prop'] );
 		$fld_id = isset( $prop['id'] );
-		$fld_user = isset( $prop['user'] );
-		$fld_userid = isset( $prop['userid'] );
+		$fld_wiki_user = isset( $prop['wiki_user'] );
+		$fld_wiki_userid = isset( $prop['wiki_userid'] );
 		$fld_by = isset( $prop['by'] );
 		$fld_byid = isset( $prop['byid'] );
 		$fld_timestamp = isset( $prop['timestamp'] );
@@ -64,7 +64,7 @@ class ApiQueryBlocks extends ApiQueryBase {
 		$this->addFields( 'ipb_auto' );
 
 		$this->addFieldsIf ( 'ipb_id', $fld_id );
-		$this->addFieldsIf( array( 'ipb_address', 'ipb_user' ), $fld_user || $fld_userid );
+		$this->addFieldsIf( array( 'ipb_address', 'ipb_wiki_user' ), $fld_wiki_user || $fld_wiki_userid );
 		$this->addFieldsIf( 'ipb_by_text', $fld_by );
 		$this->addFieldsIf( 'ipb_by', $fld_byid );
 		$this->addFieldsIf( 'ipb_timestamp', $fld_timestamp );
@@ -72,22 +72,22 @@ class ApiQueryBlocks extends ApiQueryBase {
 		$this->addFieldsIf( 'ipb_reason', $fld_reason );
 		$this->addFieldsIf( array( 'ipb_range_start', 'ipb_range_end' ), $fld_range );
 		$this->addFieldsIf( array( 'ipb_anon_only', 'ipb_create_account', 'ipb_enable_autoblock',
-									'ipb_block_email', 'ipb_deleted', 'ipb_allow_usertalk' ),
+									'ipb_block_email', 'ipb_deleted', 'ipb_allow_wiki_usertalk' ),
 							$fld_flags );
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		$this->addTimestampWhereRange( 'ipb_timestamp', $params['dir'], $params['start'], $params['end'] );
 
-		$db = $this->getDB();
+		 = $this->getDB();
 
 		if ( isset( $params['ids'] ) ) {
 			$this->addWhereFld( 'ipb_id', $params['ids'] );
 		}
-		if ( isset( $params['users'] ) ) {
-			foreach ( (array)$params['users'] as $u ) {
-				$this->prepareUsername( $u );
+		if ( isset( $params['wiki_users'] ) ) {
+			foreach ( (array)$params['wiki_users'] as $u ) {
+				$this->preparewiki_username( $u );
 			}
-			$this->addWhereFld( 'ipb_address', $this->usernames );
+			$this->addWhereFld( 'ipb_address', $this->wiki_usernames );
 			$this->addWhereFld( 'ipb_auto', 0 );
 		}
 		if ( isset( $params['ip'] ) ) {
@@ -105,11 +105,11 @@ class ApiQueryBlocks extends ApiQueryBase {
 
 			# Fairly hard to make a malicious SQL statement out of hex characters,
 			# but it is good practice to add quotes
-			$lower = $db->addQuotes( $lower );
-			$upper = $db->addQuotes( $upper );
+			$lower = ->addQuotes( $lower );
+			$upper = ->addQuotes( $upper );
 
 			$this->addWhere( array(
-				'ipb_range_start' . $db->buildLike( $prefix, $db->anyString() ),
+				'ipb_range_start' . ->buildLike( $prefix, ->anyString() ),
 				'ipb_range_start <= ' . $lower,
 				'ipb_range_end >= ' . $upper,
 				'ipb_auto' => 0
@@ -128,17 +128,17 @@ class ApiQueryBlocks extends ApiQueryBase {
 				$this->dieUsageMsg( 'show' );
 			}
 
-			$this->addWhereIf( 'ipb_user = 0', isset( $show['!account'] ) );
-			$this->addWhereIf( 'ipb_user != 0', isset( $show['account'] ) );
-			$this->addWhereIf( 'ipb_user != 0 OR ipb_range_end > ipb_range_start', isset( $show['!ip'] ) );
-			$this->addWhereIf( 'ipb_user = 0 AND ipb_range_end = ipb_range_start', isset( $show['ip'] ) );
-			$this->addWhereIf( 'ipb_expiry =  '.$db->addQuotes($db->getInfinity()), isset( $show['!temp'] ) );
-			$this->addWhereIf( 'ipb_expiry != '.$db->addQuotes($db->getInfinity()), isset( $show['temp'] ) );
+			$this->addWhereIf( 'ipb_wiki_user = 0', isset( $show['!account'] ) );
+			$this->addWhereIf( 'ipb_wiki_user != 0', isset( $show['account'] ) );
+			$this->addWhereIf( 'ipb_wiki_user != 0 OR ipb_range_end > ipb_range_start', isset( $show['!ip'] ) );
+			$this->addWhereIf( 'ipb_wiki_user = 0 AND ipb_range_end = ipb_range_start', isset( $show['ip'] ) );
+			$this->addWhereIf( 'ipb_expiry =  '.->addQuotes(->getInfinity()), isset( $show['!temp'] ) );
+			$this->addWhereIf( 'ipb_expiry != '.->addQuotes(->getInfinity()), isset( $show['temp'] ) );
 			$this->addWhereIf( "ipb_range_end = ipb_range_start", isset( $show['!range'] ) );
 			$this->addWhereIf( "ipb_range_end > ipb_range_start", isset( $show['range'] ) );
 		}
 
-		if ( !$this->getUser()->isAllowed( 'hideuser' ) ) {
+		if ( !$this->getwiki_user()->isAllowed( 'hidewiki_user' ) ) {
 			$this->addWhereFld( 'ipb_deleted', 0 );
 		}
 
@@ -160,11 +160,11 @@ class ApiQueryBlocks extends ApiQueryBase {
 			if ( $fld_id ) {
 				$block['id'] = $row->ipb_id;
 			}
-			if ( $fld_user && !$row->ipb_auto ) {
-				$block['user'] = $row->ipb_address;
+			if ( $fld_wiki_user && !$row->ipb_auto ) {
+				$block['wiki_user'] = $row->ipb_address;
 			}
-			if ( $fld_userid && !$row->ipb_auto ) {
-				$block['userid'] = $row->ipb_user;
+			if ( $fld_wiki_userid && !$row->ipb_auto ) {
+				$block['wiki_userid'] = $row->ipb_wiki_user;
 			}
 			if ( $fld_by ) {
 				$block['by'] = $row->ipb_by_text;
@@ -205,8 +205,8 @@ class ApiQueryBlocks extends ApiQueryBase {
 				if ( $row->ipb_deleted ) {
 					$block['hidden'] = '';
 				}
-				if ( $row->ipb_allow_usertalk ) {
-					$block['allowusertalk'] = '';
+				if ( $row->ipb_allow_wiki_usertalk ) {
+					$block['allowwiki_usertalk'] = '';
 				}
 			}
 			$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $block );
@@ -218,17 +218,17 @@ class ApiQueryBlocks extends ApiQueryBase {
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'block' );
 	}
 
-	protected function prepareUsername( $user ) {
-		if ( !$user ) {
-			$this->dieUsage( 'User parameter may not be empty', 'param_user' );
+	protected function preparewiki_username( $wiki_user ) {
+		if ( !$wiki_user ) {
+			$this->dieUsage( 'wiki_user parameter may not be empty', 'param_wiki_user' );
 		}
-		$name = User::isIP( $user )
-			? $user
-			: User::getCanonicalName( $user, 'valid' );
+		$name = wiki_user::isIP( $wiki_user )
+			? $wiki_user
+			: wiki_user::getCanonicalName( $wiki_user, 'valid' );
 		if ( $name === false ) {
-			$this->dieUsage( "User name {$user} is not valid", 'param_user' );
+			$this->dieUsage( "wiki_user name {$wiki_user} is not valid", 'param_wiki_user' );
 		}
-		$this->usernames[] = $name;
+		$this->wiki_usernames[] = $name;
 	}
 
 	public function getAllowedParams() {
@@ -250,7 +250,7 @@ class ApiQueryBlocks extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_ISMULTI => true
 			),
-			'users' => array(
+			'wiki_users' => array(
 				ApiBase::PARAM_ISMULTI => true
 			),
 			'ip' => null,
@@ -262,11 +262,11 @@ class ApiQueryBlocks extends ApiQueryBase {
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			),
 			'prop' => array(
-				ApiBase::PARAM_DFLT => 'id|user|by|timestamp|expiry|reason|flags',
+				ApiBase::PARAM_DFLT => 'id|wiki_user|by|timestamp|expiry|reason|flags',
 				ApiBase::PARAM_TYPE => array(
 					'id',
-					'user',
-					'userid',
+					'wiki_user',
+					'wiki_userid',
 					'by',
 					'byid',
 					'timestamp',
@@ -300,17 +300,17 @@ class ApiQueryBlocks extends ApiQueryBase {
 			'end' => 'The timestamp to stop enumerating at',
 			'dir' => $this->getDirectionDescription( $p ),
 			'ids' => 'List of block IDs to list (optional)',
-			'users' => 'List of users to search for (optional)',
+			'wiki_users' => 'List of wiki_users to search for (optional)',
 			'ip' => array(	'Get all blocks applying to this IP or CIDR range, including range blocks.',
-					'Cannot be used together with bkusers. CIDR ranges broader than /16 are not accepted' ),
+					'Cannot be used together with bkwiki_users. CIDR ranges broader than /16 are not accepted' ),
 			'limit' => 'The maximum amount of blocks to list',
 			'prop' => array(
 				'Which properties to get',
 				' id         - Adds the ID of the block',
-				' user       - Adds the username of the blocked user',
-				' userid     - Adds the user ID of the blocked user',
-				' by         - Adds the username of the blocking user',
-				' byid       - Adds the user ID of the blocking user',
+				' wiki_user       - Adds the wiki_username of the blocked wiki_user',
+				' wiki_userid     - Adds the wiki_user ID of the blocked wiki_user',
+				' by         - Adds the wiki_username of the blocking wiki_user',
+				' byid       - Adds the wiki_user ID of the blocking wiki_user',
 				' timestamp  - Adds the timestamp of when the block was given',
 				' expiry     - Adds the timestamp of when the block expires',
 				' reason     - Adds the reason given for the block',
@@ -329,14 +329,14 @@ class ApiQueryBlocks extends ApiQueryBase {
 			'id' => array(
 				'id' => 'integer'
 			),
-			'user' => array(
-				'user' => array(
+			'wiki_user' => array(
+				'wiki_user' => array(
 					ApiBase::PROP_TYPE => 'string',
 					ApiBase::PROP_NULLABLE => true
 				)
 			),
-			'userid' => array(
-				'userid' => array(
+			'wiki_userid' => array(
+				'wiki_userid' => array(
 					ApiBase::PROP_TYPE => 'integer',
 					ApiBase::PROP_NULLABLE => true
 				)
@@ -373,22 +373,22 @@ class ApiQueryBlocks extends ApiQueryBase {
 				'autoblock' => 'boolean',
 				'noemail' => 'boolean',
 				'hidden' => 'boolean',
-				'allowusertalk' => 'boolean'
+				'allowwiki_usertalk' => 'boolean'
 			)
 		);
 	}
 
 	public function getDescription() {
-		return 'List all blocked users and IP addresses';
+		return 'List all blocked wiki_users and IP addresses';
 	}
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(),
-			$this->getRequireOnlyOneParameterErrorMessages( array( 'users', 'ip' ) ),
+			$this->getRequireOnlyOneParameterErrorMessages( array( 'wiki_users', 'ip' ) ),
 			array(
 				array( 'code' => 'cidrtoobroad', 'info' => 'CIDR ranges broader than /16 are not accepted' ),
-				array( 'code' => 'param_user', 'info' => 'User parameter may not be empty' ),
-				array( 'code' => 'param_user', 'info' => 'User name user is not valid' ),
+				array( 'code' => 'param_wiki_user', 'info' => 'wiki_user parameter may not be empty' ),
+				array( 'code' => 'param_wiki_user', 'info' => 'wiki_user name wiki_user is not valid' ),
 				array( 'show' ),
 			)
 		);
@@ -397,7 +397,7 @@ class ApiQueryBlocks extends ApiQueryBase {
 	public function getExamples() {
 		return array(
 			'api.php?action=query&list=blocks',
-			'api.php?action=query&list=blocks&bkusers=Alice|Bob'
+			'api.php?action=query&list=blocks&bkwiki_users=Alice|Bob'
 		);
 	}
 

@@ -41,26 +41,26 @@ class IntraACL_SQL_IR
      *
      */
     public function saveRight(HACLRight $right) {
-        $dbw = wfGetDB( DB_MASTER );
+        w = wfGetDB( DB_MASTER );
 
         $groups = implode(',', $right->getGroups());
-        $users  = implode(',', $right->getUsers());
+        $wiki_users  = implode(',', $right->getwiki_users());
         $rightID = $right->getRightID();
         $setValues = array(
             'actions'     => $right->getActions(),
             'groups'      => $groups,
-            'users'       => $users,
+            'wiki_users'       => $wiki_users,
             'description' => $right->getDescription(),
             'name'        => $right->getName(),
             'origin_id'   => $right->getOriginID());
         if ($rightID == -1) {
             // right does not exist yet in the DB.
-            $dbw->insert('halo_acl_rights', $setValues);
+            w->insert('halo_acl_rights', $setValues);
             // retrieve the auto-incremented ID of the right
-            $rightID = $dbw->insertId();
+            $rightID = w->insertId();
         } else {
             $setValues['right_id'] = $rightID;
-            $dbw->replace('halo_acl_rights', NULL, $setValues);
+            w->replace('halo_acl_rights', NULL, $setValues);
         }
 
         return $rightID;
@@ -80,10 +80,10 @@ class IntraACL_SQL_IR
      */
     public function getRightByID($rightID)
     {
-        $dbr = wfGetDB(DB_SLAVE);
-        $res = $dbr->select('halo_acl_rights', '*', array('right_id' => $rightID), __METHOD__);
-        if ($dbr->numRows($res) == 1)
-            return $this->rowToRight($dbr->fetchObject($res));
+        r = wfGetDB(DB_SLAVE);
+        $res = r->select('halo_acl_rights', '*', array('right_id' => $rightID), __METHOD__);
+        if (r->numRows($res) == 1)
+            return $this->rowToRight(r->fetchObject($res));
         return NULL;
     }
 
@@ -97,11 +97,11 @@ class IntraACL_SQL_IR
         $rightID     = $row->right_id;
         $actions     = $row->actions;
         $groups      = IACLStorage::explode($row->groups);
-        $users       = IACLStorage::explode($row->users);
+        $wiki_users       = IACLStorage::explode($row->users);
         $description = $row->description;
         $name        = $row->name;
         $originID    = $row->origin_id;
-        $sd = new HACLRight($actions, $groups, $users, $description, $name, $originID);
+        $sd = new HACLRight($actions, $groups, $wiki_users, $description, $name, $originID);
         $sd->setRightID($rightID);
         return $sd;
     }
@@ -125,9 +125,9 @@ class IntraACL_SQL_IR
      */
     public function getRights($peID, $type, $actionID, $originNotEqual = NULL)
     {
-        $dbr = wfGetDB(DB_SLAVE);
-        $rt = $dbr->tableName('halo_acl_rights');
-        $rpet = $dbr->tableName('halo_acl_pe_rights');
+        r = wfGetDB(DB_SLAVE);
+        $rt = r->tableName('halo_acl_rights');
+        $rpet = r->tableName('halo_acl_pe_rights');
 
         $sql = "SELECT rights.* FROM $rt AS rights, $rpet AS pe ".
             "WHERE pe.pe_id = $peID AND pe.type = '$type' AND ".
@@ -145,7 +145,7 @@ class IntraACL_SQL_IR
             }
         }
 
-        $res = $dbr->query($sql, __METHOD__);
+        $res = r->query($sql, __METHOD__);
         $rights = array();
         foreach ($res as $row)
             $rights[] = $this->rowToRight($row);
@@ -160,8 +160,8 @@ class IntraACL_SQL_IR
      */
     public function getAllRights($sdids = NULL)
     {
-        $dbr = wfGetDB(DB_SLAVE);
-        $res = $dbr->select('halo_acl_rights', '*', $sdids ? array('origin_id' => $sdids) : '1', __METHOD__);
+        r = wfGetDB(DB_SLAVE);
+        $res = r->select('halo_acl_rights', '*', $sdids ? array('origin_id' => $sdids) : '1', __METHOD__);
         $rights = array();
         foreach ($res as $row)
             $rights[$row->origin_id][] = $this->rowToRight($row);
@@ -170,31 +170,31 @@ class IntraACL_SQL_IR
 
     /**
      * Reverse-lookup for rights. Determines for which protected elements
-     * action $actionID is granted to one of users $users or one of groups $groups,
+     * action $actionID is granted to one of wiki_users $wiki_users or one of groups $groups,
      * without expanding groups.
      */
-    public function lookupRights($users, $groups, $actionID, $pe_type)
+    public function lookupRights($wiki_users, $groups, $actionID, $pe_type)
     {
-        $dbr = wfGetDB(DB_SLAVE);
-        $tp = $dbr->tableName('halo_acl_pe_rights');
-        $tr = $dbr->tableName('halo_acl_rights');
-        if ($users !== NULL && !is_array($users))
-            $users = array($users);
+        r = wfGetDB(DB_SLAVE);
+        $tp = r->tableName('halo_acl_pe_rights');
+        $tr = r->tableName('halo_acl_rights');
+        if ($wiki_users !== NULL && !is_array($wiki_users))
+            $wiki_users = array($wiki_users);
         if ($groups && !is_array($groups))
             $groups = array($groups);
         $where = array();
-        if ($users)
-            $where[] = "r.users REGEXP ".$dbr->addQuotes('(,|^)('.implode('|', $users).')(,|$)');
+        if ($wiki_users)
+            $where[] = "r.wiki_users REGEXP ".r->addQuotes('(,|^)('.implode('|', $wiki_users).')(,|$)');
         if ($groups)
-            $where[] = "r.groups REGEXP ".$dbr->addQuotes('(,|^)('.implode('|', $groups).')(,|$)');
+            $where[] = "r.groups REGEXP ".r->addQuotes('(,|^)('.implode('|', $groups).')(,|$)');
         $where = $where ? array('('.implode(' OR ', $where).')') : array();
         $where[] = 'p.right_id=r.right_id';
         $where[] = '(r.actions&'.intval($actionID).')!=0';
         if ($pe_type)
-            $where[] = 'p.type='.$dbr->addQuotes($pe_type);
+            $where[] = 'p.type='.r->addQuotes($pe_type);
         $where = implode(' AND ', $where);
         $sql = "SELECT p.type, p.pe_id FROM $tp p, $tr r WHERE $where GROUP BY p.type, p.pe_id";
-        $res = $dbr->query($sql, __METHOD__);
+        $res = r->query($sql, __METHOD__);
         $r = array();
         foreach ($res as $row)
             $r[] = array($row->type, $row->pe_id);
@@ -210,13 +210,13 @@ class IntraACL_SQL_IR
      *
      */
     public function deleteRight($rightID) {
-        $dbw = wfGetDB( DB_MASTER );
+        w = wfGetDB( DB_MASTER );
 
         // Delete the right from the definition of rights in halo_acl_rights
-        $dbw->delete('halo_acl_rights', array('right_id' => $rightID), __METHOD__);
+        w->delete('halo_acl_rights', array('right_id' => $rightID), __METHOD__);
 
         // Delete all references to the right from protected elements
-        $dbw->delete('halo_acl_pe_rights', array('right_id' => $rightID), __METHOD__);
+        w->delete('halo_acl_pe_rights', array('right_id' => $rightID), __METHOD__);
     }
 
 }

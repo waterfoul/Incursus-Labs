@@ -58,8 +58,8 @@ class CoreParserFunctions {
 		$parser->setFunctionHook( 'gender',           array( __CLASS__, 'gender'           ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'plural',           array( __CLASS__, 'plural'           ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofpages',    array( __CLASS__, 'numberofpages'    ), SFH_NO_HASH );
-		$parser->setFunctionHook( 'numberofusers',    array( __CLASS__, 'numberofusers'    ), SFH_NO_HASH );
-		$parser->setFunctionHook( 'numberofactiveusers', array( __CLASS__, 'numberofactiveusers' ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'numberofwiki_users',    array( __CLASS__, 'numberofwiki_users'    ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'numberofactivewiki_users', array( __CLASS__, 'numberofactivewiki_users' ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofarticles', array( __CLASS__, 'numberofarticles' ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberoffiles',    array( __CLASS__, 'numberoffiles'    ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofadmins',   array( __CLASS__, 'numberofadmins'   ), SFH_NO_HASH );
@@ -115,7 +115,7 @@ class CoreParserFunctions {
 	static function intFunction( $parser, $part1 = '' /*, ... */ ) {
 		if ( strval( $part1 ) !== '' ) {
 			$args = array_slice( func_get_args(), 2 );
-			$message = wfMessage( $part1, $args )->inLanguage( $parser->getOptions()->getUserLangObj() )->plain();
+			$message = wfMessage( $part1, $args )->inLanguage( $parser->getOptions()->getwiki_userLangObj() )->plain();
 			return array( $message, 'noparse' => false );
 		} else {
 			return array( 'found' => false );
@@ -137,7 +137,7 @@ class CoreParserFunctions {
 		$pref = $parser->getOptions()->getDateFormat();
 
 		// Specify a different default date format other than the the normal default
-		// iff the user has 'default' for their setting
+		// iff the wiki_user has 'default' for their setting
 		if ( $pref == 'default' && $defaultPref )
 			$pref = $defaultPref;
 
@@ -294,14 +294,14 @@ class CoreParserFunctions {
 
 	/**
 	 * @param $parser Parser
-	 * @param $username string
+	 * @param $wiki_username string
 	 * @return
 	 */
-	static function gender( $parser, $username ) {
+	static function gender( $parser, $wiki_username ) {
 		wfProfileIn( __METHOD__ );
 		$forms = array_slice( func_get_args(), 2 );
 
-		// Some shortcuts to avoid loading user data unnecessarily
+		// Some shortcuts to avoid loading wiki_user data unnecessarily
 		if ( count( $forms ) === 0 ) {
 			wfProfileOut( __METHOD__ );
 			return '';
@@ -310,24 +310,24 @@ class CoreParserFunctions {
 			return $forms[0];
 		}
 
-		$username = trim( $username );
+		$wiki_username = trim( $wiki_username );
 
 		// default
-		$gender = User::getDefaultOption( 'gender' );
+		$gender = wiki_user::getDefaultOption( 'gender' );
 
 		// allow prefix.
-		$title = Title::newFromText( $username );
+		$title = Title::newFromText( $wiki_username );
 
 		if ( $title && $title->getNamespace() == NS_USER ) {
-			$username = $title->getText();
+			$wiki_username = $title->getText();
 		}
 
 		// check parameter, or use the ParserOptions if in interface message
-		$user = User::newFromName( $username );
-		if ( $user ) {
-			$gender = GenderCache::singleton()->getGenderOf( $user, __METHOD__ );
-		} elseif ( $username === '' && $parser->getOptions()->getInterfaceMessage() ) {
-			$gender = GenderCache::singleton()->getGenderOf( $parser->getOptions()->getUser(), __METHOD__ );
+		$wiki_user = wiki_user::newFromName( $wiki_username );
+		if ( $wiki_user ) {
+			$gender = GenderCache::singleton()->getGenderOf( $wiki_user, __METHOD__ );
+		} elseif ( $wiki_username === '' && $parser->getOptions()->getInterfaceMessage() ) {
+			$gender = GenderCache::singleton()->getGenderOf( $parser->getOptions()->getwiki_user(), __METHOD__ );
 		}
 		$ret = $parser->getFunctionLang()->gender( $gender, $forms );
 		wfProfileOut( __METHOD__ );
@@ -409,11 +409,11 @@ class CoreParserFunctions {
 	static function numberofpages( $parser, $raw = null ) {
 		return self::formatRaw( SiteStats::pages(), $raw );
 	}
-	static function numberofusers( $parser, $raw = null ) {
-		return self::formatRaw( SiteStats::users(), $raw );
+	static function numberofwiki_users( $parser, $raw = null ) {
+		return self::formatRaw( SiteStats::wiki_users(), $raw );
 	}
-	static function numberofactiveusers( $parser, $raw = null ) {
-		return self::formatRaw( SiteStats::activeUsers(), $raw );
+	static function numberofactivewiki_users( $parser, $raw = null ) {
+		return self::formatRaw( SiteStats::activewiki_users(), $raw );
 	}
 	static function numberofarticles( $parser, $raw = null ) {
 		return self::formatRaw( SiteStats::articles(), $raw );

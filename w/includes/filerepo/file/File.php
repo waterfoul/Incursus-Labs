@@ -181,7 +181,7 @@ abstract class File {
 		if ( !is_callable( $function ) ) {
 			return null;
 		} else {
-			$this->$name = call_user_func( $function );
+			$this->$name = call_wiki_user_func( $function );
 			return $this->$name;
 		}
 	}
@@ -428,14 +428,14 @@ abstract class File {
 	}
 
 	/**
-	 * Returns ID or name of user who uploaded the file
+	 * Returns ID or name of wiki_user who uploaded the file
 	 * STUB
 	 *
 	 * @param $type string 'text' or 'id'
 	 *
 	 * @return string|int
 	 */
-	public function getUser( $type = 'text' ) {
+	public function getwiki_user( $type = 'text' ) {
 		return null;
 	}
 
@@ -490,7 +490,7 @@ abstract class File {
 				&& !$handler->canAnimateThumbnail( $this )
 			) {
 				// Image is animated, but thumbnail isn't.
-				// This is unexpected to the user.
+				// This is unexpected to the wiki_user.
 				return false;
 			} else {
 				// Image is not animated, so one would
@@ -574,7 +574,7 @@ abstract class File {
 
 	/**
 	 * Checks if the output of transform() for this file is likely
-	 * to be valid. If this is false, various user elements will
+	 * to be valid. If this is false, various wiki_user elements will
 	 * display a placeholder instead.
 	 *
 	 * Currently, this checks if the file is an image format
@@ -694,7 +694,7 @@ abstract class File {
 	 *
 	 * This is a dummy function right now and always returns false. It could be
 	 * implemented to extract a flag from the database. The trusted flag could be
-	 * set on upload, if the user has sufficient privileges, to bypass script-
+	 * set on upload, if the wiki_user has sufficient privileges, to bypass script-
 	 * and html-filters. It may even be coupled with cryptographics signatures
 	 * or such.
 	 *
@@ -1643,14 +1643,14 @@ abstract class File {
 	 * STUB
 	 *
 	 * @param $audience Integer: one of:
-	 *      File::FOR_PUBLIC       to be displayed to all users
-	 *      File::FOR_THIS_USER    to be displayed to the given user
+	 *      File::FOR_PUBLIC       to be displayed to all wiki_users
+	 *      File::FOR_THIS_USER    to be displayed to the given wiki_user
 	 *      File::RAW              get the description regardless of permissions
-	 * @param $user User object to check for, only if FOR_THIS_USER is passed
+	 * @param $wiki_user wiki_user object to check for, only if FOR_THIS_USER is passed
 	 *              to the $audience parameter
 	 * @return string
 	 */
-	function getDescription( $audience = self::FOR_PUBLIC, User $user = null ) {
+	function getDescription( $audience = self::FOR_PUBLIC, wiki_user $wiki_user = null ) {
 		return null;
 	}
 
@@ -1690,14 +1690,14 @@ abstract class File {
 	}
 
 	/**
-	 * Determine if the current user is allowed to view a particular
+	 * Determine if the current wiki_user is allowed to view a particular
 	 * field of this file, if it's marked as deleted.
 	 * STUB
 	 * @param $field Integer
-	 * @param $user User object to check, or null to use $wgUser
+	 * @param $wiki_user wiki_user object to check, or null to use $wgwiki_user
 	 * @return Boolean
 	 */
-	function userCan( $field, User $user = null ) {
+	function wiki_userCan( $field, wiki_user $wiki_user = null ) {
 		return true;
 	}
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Caches user genders when needed to use correct namespace aliases.
+ * Caches wiki_user genders when needed to use correct namespace aliases.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
  */
 
 /**
- * Caches user genders when needed to use correct namespace aliases.
+ * Caches wiki_user genders when needed to use correct namespace aliases.
  *
  * @since 1.18
  */
@@ -52,28 +52,28 @@ class GenderCache {
 	 */
 	protected function getDefault() {
 		if ( $this->default === null ) {
-			$this->default = User::getDefaultOption( 'gender' );
+			$this->default = wiki_user::getDefaultOption( 'gender' );
 		}
 		return $this->default;
 	}
 
 	/**
-	 * Returns the gender for given username.
-	 * @param $username String or User: username
+	 * Returns the gender for given wiki_username.
+	 * @param $wiki_username String or wiki_user: wiki_username
 	 * @param $caller String: the calling method
 	 * @return String
 	 */
-	public function getGenderOf( $username, $caller = '' ) {
-		global $wgUser;
+	public function getGenderOf( $wiki_username, $caller = '' ) {
+		global $wgwiki_user;
 
-		if( $username instanceof User ) {
-			$username = $username->getName();
+		if( $wiki_username instanceof wiki_user ) {
+			$wiki_username = $wiki_username->getName();
 		}
 
-		$username = self::normalizeUsername( $username );
-		if ( !isset( $this->cache[$username] ) ) {
+		$wiki_username = self::normalizewiki_username( $wiki_username );
+		if ( !isset( $this->cache[$wiki_username] ) ) {
 
-			if ( $this->misses >= $this->missLimit && $wgUser->getName() !== $username ) {
+			if ( $this->misses >= $this->missLimit && $wgwiki_user->getName() !== $wiki_username ) {
 				if( $this->misses === $this->missLimit ) {
 					$this->misses++;
 					wfDebug( __METHOD__ . ": too many misses, returning default onwards\n" );
@@ -82,15 +82,15 @@ class GenderCache {
 
 			} else {
 				$this->misses++;
-				$this->doQuery( $username, $caller );
+				$this->doQuery( $wiki_username, $caller );
 			}
 
 		}
 
-		/* Undefined if there is a valid username which for some reason doesn't
+		/* Undefined if there is a valid wiki_username which for some reason doesn't
 		 * exist in the database.
 		 */
-		return isset( $this->cache[$username] ) ? $this->cache[$username] : $this->getDefault();
+		return isset( $this->cache[$wiki_username] ) ? $this->cache[$wiki_username] : $this->getDefault();
 	}
 
 	/**
@@ -100,15 +100,15 @@ class GenderCache {
 	 * @param $caller
 	 */
 	public function doLinkBatch( $data, $caller = '' ) {
-		$users = array();
+		$wiki_users = array();
 		foreach ( $data as $ns => $pagenames ) {
 			if ( !MWNamespace::hasGenderDistinction( $ns ) ) continue;
-			foreach ( array_keys( $pagenames ) as $username ) {
-				$users[$username] = true;
+			foreach ( array_keys( $pagenames ) as $wiki_username ) {
+				$wiki_users[$wiki_username] = true;
 			}
 		}
 
-		$this->doQuery( array_keys( $users ), $caller );
+		$this->doQuery( array_keys( $wiki_users ), $caller );
 	}
 
 	/**
@@ -119,7 +119,7 @@ class GenderCache {
 	 * @param $caller String: the calling method
 	 */
 	public function doTitlesArray( $titles, $caller = '' ) {
-		$users = array();
+		$wiki_users = array();
 		foreach ( $titles as $title ) {
 			$titleObj = is_string( $title ) ? Title::newFromText( $title ) : $title;
 			if ( !$titleObj ) {
@@ -128,63 +128,63 @@ class GenderCache {
 			if ( !MWNamespace::hasGenderDistinction( $titleObj->getNamespace() ) ) {
 				continue;
 			}
-			$users[] = $titleObj->getText();
+			$wiki_users[] = $titleObj->getText();
 		}
 
-		$this->doQuery( $users, $caller );
+		$this->doQuery( $wiki_users, $caller );
 	}
 
 	/**
-	 * Preloads genders for given list of users.
-	 * @param $users List|String: usernames
+	 * Preloads genders for given list of wiki_users.
+	 * @param $wiki_users List|String: wiki_usernames
 	 * @param $caller String: the calling method
 	 */
-	public function doQuery( $users, $caller = '' ) {
+	public function doQuery( $wiki_users, $caller = '' ) {
 		$default = $this->getDefault();
 
-		$usersToCheck = array();
-		foreach ( (array) $users as $value ) {
-			$name = self::normalizeUsername( $value );
-			// Skip users whose gender setting we already know
+		$wiki_usersToCheck = array();
+		foreach ( (array) $wiki_users as $value ) {
+			$name = self::normalizewiki_username( $value );
+			// Skip wiki_users whose gender setting we already know
 			if ( !isset( $this->cache[$name] ) ) {
-				// For existing users, this value will be overwritten by the correct value
+				// For existing wiki_users, this value will be overwritten by the correct value
 				$this->cache[$name] = $default;
 				// query only for valid names, which can be in the database
-				if( User::isValidUserName( $name ) ) {
-					$usersToCheck[] = $name;
+				if( wiki_user::isValidwiki_userName( $name ) ) {
+					$wiki_usersToCheck[] = $name;
 				}
 			}
 		}
 
-		if ( count( $usersToCheck ) === 0 ) {
+		if ( count( $wiki_usersToCheck ) === 0 ) {
 			return;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
-		$table = array( 'user', 'user_properties' );
-		$fields = array( 'user_name', 'up_value' );
-		$conds = array( 'user_name' => $usersToCheck );
-		$joins = array( 'user_properties' =>
-			array( 'LEFT JOIN', array( 'user_id = up_user', 'up_property' => 'gender' ) ) );
+		r = wfGetDB( DB_SLAVE );
+		$table = array( 'wiki_user', 'wiki_user_properties' );
+		$fields = array( 'wiki_user_name', 'up_value' );
+		$conds = array( 'wiki_user_name' => $wiki_usersToCheck );
+		$joins = array( 'wiki_user_properties' =>
+			array( 'LEFT JOIN', array( 'wiki_user_id = up_wiki_user', 'up_property' => 'gender' ) ) );
 
 		$comment = __METHOD__;
 		if ( strval( $caller ) !== '' ) {
 			$comment .= "/$caller";
 		}
-		$res = $dbr->select( $table, $fields, $conds, $comment, array(), $joins );
+		$res = r->select( $table, $fields, $conds, $comment, array(), $joins );
 
 		foreach ( $res as $row ) {
-			$this->cache[$row->user_name] = $row->up_value ? $row->up_value : $default;
+			$this->cache[$row->wiki_user_name] = $row->up_value ? $row->up_value : $default;
 		}
 	}
 
-	private static function normalizeUsername( $username ) {
+	private static function normalizewiki_username( $wiki_username ) {
 		// Strip off subpages
-		$indexSlash = strpos( $username, '/' );
+		$indexSlash = strpos( $wiki_username, '/' );
 		if ( $indexSlash !== false ) {
-			$username = substr( $username, 0, $indexSlash );
+			$wiki_username = substr( $wiki_username, 0, $indexSlash );
 		}
 		// normalize underscore/spaces
-		return strtr( $username, '_', ' ' );
+		return strtr( $wiki_username, '_', ' ' );
 	}
 }

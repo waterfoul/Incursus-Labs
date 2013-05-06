@@ -122,7 +122,7 @@ Cancellä',
 'talk' => 'Discüssion',
 'views' => 'Visit',
 'toolbox' => 'Strümeint',
-'userpage' => "Vadä la pàgina ad l'uteint",
+'wiki_userpage' => "Vadä la pàgina ad l'uteint",
 'projectpage' => 'Vadä la pàgina dal prugett',
 'imagepage' => 'Vadä la pàgina dal file',
 'mediawikipage' => "Vadä al messagg'",
@@ -142,7 +142,7 @@ Cancellä',
 'pool-queuefull' => "La cua dal pool l'è piena",
 'pool-errorunknown' => 'Errur mia cugnussü',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Infurmazion su {{SITENAME}}',
 'aboutpage' => 'Project:Infurmäzion',
 'copyright' => "Contenüt suggètt a licinza d'üs $1.",
@@ -190,7 +190,7 @@ Cancellä',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Pàgina',
-'nstab-user' => 'Pàgina uteint',
+'nstab-wiki_user' => 'Pàgina uteint',
 'nstab-media' => 'File multimediäl',
 'nstab-special' => 'Pàgina speciäl',
 'nstab-project' => 'Pàgina ad sërvizi',
@@ -217,10 +217,10 @@ Cancellä',
 'yourpasswordagain' => 'Ripett la password:',
 'login' => 'Enträ',
 'nav-login-createaccount' => 'Enträ / Creä un account',
-'userlogin' => 'Enträ / Creä un account',
-'userloginnocreate' => 'Enträ',
+'wiki_userlogin' => 'Enträ / Creä un account',
+'wiki_userloginnocreate' => 'Enträ',
 'logout' => 'Üscì',
-'userlogout' => 'Üscì',
+'wiki_userlogout' => 'Üscì',
 'notloggedin' => 'Si mia enträ',
 'nologinlink' => 'Creä un cunt',
 'createaccount' => 'Creä cunt',
@@ -242,7 +242,7 @@ Cancellä',
 # Special:PasswordReset
 'passwordreset' => 'Cambiä la password',
 'passwordreset-legend' => 'Cambiä la password',
-'passwordreset-username' => 'Nom uteint:',
+'passwordreset-wiki_username' => 'Nom uteint:',
 'passwordreset-domain' => 'Dumini:',
 
 # Edit page toolbar
@@ -355,7 +355,7 @@ Cancellä',
 'timezoneregion-indian' => 'Ucean Indian',
 'timezoneregion-pacific' => 'Ucean Pacifich',
 'youremail' => 'E-mail:',
-'username' => 'Nom uteint',
+'wiki_username' => 'Nom uteint',
 'uid' => 'ID uteint',
 'prefs-memberingroups' => 'Membar {{PLURAL:$1|dal grüpp|dei grüpp}}:',
 'yourrealname' => 'Nom ver:',
@@ -364,7 +364,7 @@ Cancellä',
 
 # Groups
 'group' => 'Grüpp:',
-'group-user' => 'Uteint',
+'group-wiki_user' => 'Uteint',
 'group-autoconfirmed' => 'Uteint autoconvalidät',
 'group-bot' => 'Bot',
 'group-sysop' => 'Amministradór',
@@ -372,14 +372,14 @@ Cancellä',
 'group-suppress' => 'Oversight',
 'group-all' => '(tütt)',
 
-'group-user-member' => '{{GENDER:$1|uteint}}',
+'group-wiki_user-member' => '{{GENDER:$1|uteint}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|uteint autoconvalidät}}',
 'group-bot-member' => '{{GENDER:$1|bot}}',
 'group-sysop-member' => '{{GENDER:$1|amministradór}}',
 'group-bureaucrat-member' => '{{GENDER:$1|bürocrat}}',
 'group-suppress-member' => '{{GENDER:$1|oversight}}',
 
-'grouppage-user' => '{{ns:project}}:Uteint',
+'grouppage-wiki_user' => '{{ns:project}}:Uteint',
 'grouppage-autoconfirmed' => '{{ns:project}}:Uteint autoconvalidät',
 'grouppage-bot' => '{{ns:project}}:Bot',
 'grouppage-sysop' => '{{ns:project}}:Amministradór',
@@ -390,7 +390,7 @@ Cancellä',
 'right-read' => "Legg' pàgin",
 'right-edit' => 'Mudifich pàgin',
 
-# User rights log
+# wiki_user rights log
 'rightsnone' => '(ansöin)',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -413,7 +413,7 @@ Cancellä',
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'boteditletter' => 'b',
-'number_of_watching_users_pageview' => '[usservä da {{PLURAL:$1|vün uteint|$1 uteint}}]',
+'number_of_watching_wiki_users_pageview' => '[usservä da {{PLURAL:$1|vün uteint|$1 uteint}}]',
 'rc_categories_any' => 'Qualsía',
 
 # Upload
@@ -426,7 +426,7 @@ Cancellä',
 # Special:ListFiles
 'listfiles_date' => 'Data',
 'listfiles_name' => 'Nom',
-'listfiles_user' => 'Uteint',
+'listfiles_wiki_user' => 'Uteint',
 
 # File description page
 'file-anchor-link' => 'Immàgin',
@@ -434,7 +434,7 @@ Cancellä',
 'filehist-current' => 'curreint',
 'filehist-datetime' => 'Data/Ura',
 'filehist-thumb' => 'Miniadüra',
-'filehist-user' => 'Uteint',
+'filehist-wiki_user' => 'Uteint',
 'filehist-dimensions' => 'Dimension',
 'filehist-comment' => 'Uggett',
 'imagelinks' => 'Cullegameint al file',
@@ -459,13 +459,13 @@ Cancellä',
 'alphaindexline' => 'da $1 a $2',
 'allpagessubmit' => 'Vé',
 
-# Special:ListUsers
-'listusers-submit' => 'Mustra',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Mustra',
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'Grüpp',
 
-# E-mail user
+# E-mail wiki_user
 'emailfrom' => 'Da:',
 'emailto' => 'A:',
 'emailsubject' => 'Uggett:',

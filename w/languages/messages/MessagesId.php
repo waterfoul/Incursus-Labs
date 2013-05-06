@@ -107,8 +107,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'JUMLAHHALAMAN', 'JUMMAN', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'JUMLAHARTIKEL', 'JUMKEL', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'JUMLAHBERKAS', 'JUMKAS', 'NUMBEROFFILES' ),
-	'numberofusers'             => array( '1', 'JUMLAHPENGGUNA', 'JUMPENG', 'NUMBEROFUSERS' ),
-	'numberofactiveusers'       => array( '1', 'JUMLAHPENGGUNAAKTIF', 'JUMPENGTIF', 'NUMBEROFACTIVEUSERS' ),
+	'numberofwiki_users'             => array( '1', 'JUMLAHPENGGUNA', 'JUMPENG', 'NUMBEROFUSERS' ),
+	'numberofactivewiki_users'       => array( '1', 'JUMLAHPENGGUNAAKTIF', 'JUMPENGTIF', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'JUMLAHSUNTINGAN', 'JUMTING', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'JUMLAHTAMPILAN', 'JUMTAM', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'NAMAHALAMAN', 'NAMMAN', 'PAGENAME' ),
@@ -174,7 +174,7 @@ $magicWords = array(
 	'revisionmonth1'            => array( '1', 'BULANREVISI1', 'REVISIONMONTH1' ),
 	'revisionyear'              => array( '1', 'TAHUNREVISI', 'TAREV', 'REVISIONYEAR' ),
 	'revisiontimestamp'         => array( '1', 'STEMPELWAKTUREVISI', 'REKAMWAKTUREVISI', 'REVISIONTIMESTAMP' ),
-	'revisionuser'              => array( '1', 'PENGGUNAREVISI', 'REVISIONUSER' ),
+	'revisionwiki_user'              => array( '1', 'PENGGUNAREVISI', 'REVISIONUSER' ),
 	'plural'                    => array( '0', 'JAMAK:', 'PLURAL:' ),
 	'fullurl'                   => array( '0', 'URLLENGKAP:', 'FULLURL:' ),
 	'fullurle'                  => array( '0', 'URLLENGKAPE', 'FULLURLE:' ),
@@ -216,7 +216,7 @@ $magicWords = array(
 );
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'Pengguna_aktif', 'PenggunaAktif' ),
+	'Activewiki_users'               => array( 'Pengguna_aktif', 'PenggunaAktif' ),
 	'Allmessages'               => array( 'Pesan_sistem', 'PesanSistem' ),
 	'Allpages'                  => array( 'Daftar_halaman', 'DaftarHalaman' ),
 	'Ancientpages'              => array( 'Halaman_lama', 'HalamanLama' ),
@@ -238,7 +238,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'Disambiguasi' ),
 	'DoubleRedirects'           => array( 'Pengalihan_ganda', 'PengalihanGanda' ),
 	'EditWatchlist'             => array( 'Sunting_daftar_pantauan' ),
-	'Emailuser'                 => array( 'Surel_pengguna', 'SurelPengguna' ),
+	'Emailwiki_user'                 => array( 'Surel_pengguna', 'SurelPengguna' ),
 	'Export'                    => array( 'Ekspor_halaman', 'Ekspor' ),
 	'Fewestrevisions'           => array( 'Perubahan_tersedikit', 'PerubahanTersedikit' ),
 	'FileDuplicateSearch'       => array( 'Pencarian_berkas_duplikat', 'PencarianBerkasDuplikat' ),
@@ -252,7 +252,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Daftar_berkas', 'DaftarBerkas' ),
 	'Listgrouprights'           => array( 'Daftar_hak_kelompok', 'DaftarHakKelompok', 'DaftarHak' ),
 	'Listredirects'             => array( 'Daftar_pengalihan', 'DaftarPengalihan' ),
-	'Listusers'                 => array( 'Daftar_pengguna', 'DaftarPengguna' ),
+	'Listwiki_users'                 => array( 'Daftar_pengguna', 'DaftarPengguna' ),
 	'Lockdb'                    => array( 'Kunci_basis_data', 'KunciBasisData' ),
 	'Log'                       => array( 'Catatan' ),
 	'Lonelypages'               => array( 'Halaman_yatim', 'Halaman_tak_bertuan', 'HalamanYatim', 'HalamanTakBertuan' ),
@@ -302,9 +302,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'Templat_tak_terpakai', 'TemplatTakTerpakai' ),
 	'Unwatchedpages'            => array( 'Halaman_tak_terpantau', 'HalamanTakTerpantau' ),
 	'Upload'                    => array( 'Pengunggahan', 'Pemuatan', 'Unggah' ),
-	'Userlogin'                 => array( 'Masuk_log', 'MasukLog' ),
-	'Userlogout'                => array( 'Keluar_log', 'KeluarLog' ),
-	'Userrights'                => array( 'Hak_pengguna', 'HakPengguna' ),
+	'wiki_userlogin'                 => array( 'Masuk_log', 'MasukLog' ),
+	'wiki_userlogout'                => array( 'Keluar_log', 'KeluarLog' ),
+	'wiki_userrights'                => array( 'Hak_pengguna', 'HakPengguna' ),
 	'Version'                   => array( 'Versi' ),
 	'Wantedcategories'          => array( 'Kategori_yang_diinginkan', 'KategoriDiinginkan' ),
 	'Wantedfiles'               => array( 'Berkas_yang_diinginkan', 'BerkasDiinginkan' ),
@@ -335,7 +335,7 @@ $dateFormats = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Garis bawahi pranala:',
 'tog-justify' => 'Ratakan paragraf',
 'tog-hideminor' => 'Sembunyikan suntingan kecil di perubahan terbaru',
@@ -359,7 +359,7 @@ $messages = array(
 'tog-previewonfirst' => 'Perlihatkan pratayang pada suntingan pertama',
 'tog-nocache' => 'Nonaktifkan penyinggahan halaman peramban',
 'tog-enotifwatchlistpages' => 'Kirimkan saya surel jika suatu halaman yang saya pantau berubah',
-'tog-enotifusertalkpages' => 'Kirimkan saya surel jika halaman pembicaraan saya berubah',
+'tog-enotifwiki_usertalkpages' => 'Kirimkan saya surel jika halaman pembicaraan saya berubah',
 'tog-enotifminoredits' => 'Kirimkan saya surel juga pada perubahan kecil',
 'tog-enotifrevealaddr' => 'Tampilkan alamat surel saya pada surel notifikasi',
 'tog-shownumberswatching' => 'Tunjukkan jumlah pemantau',
@@ -543,7 +543,7 @@ $messages = array(
 'talk' => 'Pembicaraan',
 'views' => 'Tampilan',
 'toolbox' => 'Peralatan',
-'userpage' => 'Lihat halaman pengguna',
+'wiki_userpage' => 'Lihat halaman pengguna',
 'projectpage' => 'Lihat halaman proyek',
 'imagepage' => 'Lihat halaman berkas',
 'mediawikipage' => 'Lihat halaman pesan sistem',
@@ -569,7 +569,7 @@ $1',
 'pool-queuefull' => 'Kumpulan antrean penuh',
 'pool-errorunknown' => 'Kesalahan yang tidak diketahui',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Tentang {{SITENAME}}',
 'aboutpage' => 'Project:Perihal',
 'copyright' => 'Seluruh teks tersedia sesuai dengan $1.',
@@ -601,8 +601,8 @@ $1',
 'youhavenewmessages' => 'Anda mempunyai $1 ($2).',
 'newmessageslink' => 'pesan baru',
 'newmessagesdifflink' => 'perubahan terakhir',
-'youhavenewmessagesfromusers' => 'Anda memiliki $1 dari {{PLURAL:$3||}}pengguna lain ($2).',
-'youhavenewmessagesmanyusers' => 'Anda memiliki $1 dari pengguna lain ($2).',
+'youhavenewmessagesfromwiki_users' => 'Anda memiliki $1 dari {{PLURAL:$3||}}pengguna lain ($2).',
+'youhavenewmessagesmanywiki_users' => 'Anda memiliki $1 dari pengguna lain ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1||}}pesan baru',
 'newmessagesdifflinkplural' => '{{PLURAL:$1||}}perubahan terakhir',
 'youhavenewmessagesmulti' => 'Anda mendapat beberapa pesan baru pada $1',
@@ -634,7 +634,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Halaman',
-'nstab-user' => 'Pengguna',
+'nstab-wiki_user' => 'Pengguna',
 'nstab-media' => 'Media',
 'nstab-special' => 'Istimewa',
 'nstab-project' => 'Proyek',
@@ -675,7 +675,7 @@ Basis data menghasilkan kesalahan "$3: $4".',
 Hal ini biasanya disebabkan oleh pranala usang ke revisi terdahulu halaman yang telah dihapuskan.
 
 Jika bukan ini penyebabnya, Anda mungkin telah menemukan sebuah bug dalam perangkat lunak.
-Silakan laporkan hal ini kepada salah seorang [[Special:ListUsers/sysop|Pengurus]], dengan menyebutkan alamat URL yang dituju.',
+Silakan laporkan hal ini kepada salah seorang [[Special:Listwiki_users/sysop|Pengurus]], dengan menyebutkan alamat URL yang dituju.',
 'missingarticle-rev' => '(revisi#: $1)',
 'missingarticle-diff' => '(Beda: $1, $2)',
 'readonly_lag' => 'Basis data telah dikunci otomatis selagi basis data sekunder melakukan sinkronisasi dengan basis data utama',
@@ -720,7 +720,7 @@ $2',
 'customcssprotected' => 'Anda tidak memiliki izin untuk menyunting halaman CSS ini, karena berisi pengaturan pribadi pengguna lain.',
 'customjsprotected' => 'Anda tidak memiliki izin untuk menyunting halaman JavaScript ini, karena berisi pengaturan pribadi pengguna lain.',
 'ns-specialprotected' => 'Halaman pada ruang nama {{ns:special}} tidak dapat disunting.',
-'titleprotected' => "Judul ini dilindungi dari pembuatan oleh [[User:$1|$1]].
+'titleprotected' => "Judul ini dilindungi dari pembuatan oleh [[wiki_user:$1|$1]].
 Alasan yang diberikan adalah ''$2''.",
 'filereadonlyerror' => 'Tidak dapat memodifikasi file " $1 " karena file repositori " $2 " adalah pada mode baca-saja.
 
@@ -738,7 +738,7 @@ Administrator yang terkunci menawarkan penjelasan ini: " $3 ".',
 # Login and logout pages
 'logouttext' => "'''Anda telah keluar log dari sistem.'''
 
-Anda dapat terus menggunakan {{SITENAME}} secara anonim, atau Anda dapat [[Special:UserLogin|masuk log lagi]] sebagai pengguna yang sama atau pengguna yang lain.
+Anda dapat terus menggunakan {{SITENAME}} secara anonim, atau Anda dapat [[Special:wiki_userLogin|masuk log lagi]] sebagai pengguna yang sama atau pengguna yang lain.
 Perhatikan bahwa beberapa halaman mungkin masih terus menunjukkan bahwa Anda masih masuk log sampai Anda membersihkan singgahan penjelajah web Anda",
 'welcomecreation' => '== Selamat datang, $1! ==
 
@@ -754,21 +754,21 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi [[Special:Preferences|p
 'login' => 'Masuk log',
 'nav-login-createaccount' => 'Masuk log / buat akun',
 'loginprompt' => "Anda harus mengaktifkan ''cookies'' untuk dapat masuk log ke {{SITENAME}}.",
-'userlogin' => 'Masuk log / buat akun',
-'userloginnocreate' => 'Masuk log',
+'wiki_userlogin' => 'Masuk log / buat akun',
+'wiki_userloginnocreate' => 'Masuk log',
 'logout' => 'Keluar log',
-'userlogout' => 'Keluar log',
+'wiki_userlogout' => 'Keluar log',
 'notloggedin' => 'Belum masuk log',
 'nologin' => "Belum mempunyai akun? '''$1'''.",
 'nologinlink' => 'Daftarkan akun baru',
 'createaccount' => 'Buat akun baru',
 'gotaccount' => "Sudah terdaftar sebagai pengguna? '''$1'''.",
 'gotaccountlink' => 'Masuk log',
-'userlogin-resetlink' => 'Lupa detail info masuk Anda?',
+'wiki_userlogin-resetlink' => 'Lupa detail info masuk Anda?',
 'createaccountmail' => 'melalui surel',
 'createaccountreason' => 'Alasan:',
 'badretype' => 'Kata sandi yang Anda masukkan salah.',
-'userexists' => 'Nama pengguna yang dimasukkan telah digunakan.
+'wiki_userexists' => 'Nama pengguna yang dimasukkan telah digunakan.
 Silakan tentukan nama yang lain.',
 'loginerror' => 'Kesalahan masuk log',
 'createaccounterror' => 'Tidak dapat membuat akun: $1',
@@ -779,13 +779,13 @@ Pastikan Anda telah mengaktifkan kuki, lalu muat ulang halaman ini dan coba lagi
 'noname' => 'Nama pengguna yang Anda masukkan tidak sah.',
 'loginsuccesstitle' => 'Berhasil masuk log',
 'loginsuccess' => "'''Anda sekarang masuk log di {{SITENAME}} sebagai \"\$1\".'''",
-'nosuchuser' => 'Tidak ada pengguna dengan nama "$1".
+'nosuchwiki_user' => 'Tidak ada pengguna dengan nama "$1".
 Nama pengguna membedakan kapitalisasi.
-Periksa kembali ejaan Anda, atau [[Special:UserLogin/signup|buat akun baru]].',
-'nosuchusershort' => 'Tidak ada pengguna dengan nama "$1".
+Periksa kembali ejaan Anda, atau [[Special:wiki_userLogin/signup|buat akun baru]].',
+'nosuchwiki_usershort' => 'Tidak ada pengguna dengan nama "$1".
 Silakan periksa kembali ejaan Anda.',
-'nouserspecified' => 'Anda harus memasukkan nama pengguna.',
-'login-userblocked' => 'Pengguna ini diblokir. Tidak diizinkan/diperbolehkan untuk masuk log.',
+'nowiki_userspecified' => 'Anda harus memasukkan nama pengguna.',
+'login-wiki_userblocked' => 'Pengguna ini diblokir. Tidak diizinkan/diperbolehkan untuk masuk log.',
 'wrongpassword' => 'Kata sandi yang Anda masukkan salah. Silakan coba lagi.',
 'wrongpasswordempty' => 'Anda tidak memasukkan kata sandi. Silakan coba lagi.',
 'passwordtooshort' => 'Kata sandi paling tidak harus terdiri dari {{PLURAL:$1|1 karakter|$1 karakter}}.',
@@ -822,16 +822,16 @@ Harap masukkan alamat surel dalam format yang benar atau kosongkan isian tersebu
 'createaccount-text' => 'Seseorang telah membuat sebuah akun untuk alamat surel Anda di {{SITENAME}} ($4) dengan nama "$2" dan kata sandi "$3". Anda dianjurkan untuk masuk log dan mengganti kata sandi Anda sekarang.
 
 Anda dapat mengabaikan pesan ini jika akun ini dibuat karena suatu kesalahan.',
-'usernamehasherror' => 'Nama pengguna tidak bisa mengandung tanda pagar',
+'wiki_usernamehasherror' => 'Nama pengguna tidak bisa mengandung tanda pagar',
 'login-throttled' => 'Anda telah berkali-kali mencoba masuk log.
 Silakan menunggu sebelum mencoba lagi.',
 'login-abort-generic' => 'Proses masuk Anda tidak berhasil - Dibatalkan',
 'loginlanguagelabel' => 'Bahasa: $1',
-'suspicious-userlogout' => 'Permintaan Anda untuk keluar log ditolak karena tampaknya dikirim oleh penjelajah yang rusak atau proksi penyinggah.',
+'suspicious-wiki_userlogout' => 'Permintaan Anda untuk keluar log ditolak karena tampaknya dikirim oleh penjelajah yang rusak atau proksi penyinggah.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'Kesalahan yang tidak dikenal dalam fungsi mail() PHP',
-'user-mail-no-addy' => 'Mencoba mengirimkan surel tanpa alamat surel.',
+'wiki_user-mail-no-addy' => 'Mencoba mengirimkan surel tanpa alamat surel.',
 
 # Change password dialog
 'resetpass' => 'Ganti kata sandi',
@@ -857,7 +857,7 @@ Anda mungkin telah berhasil mengganti kata sandi Anda atau telah meminta kata sa
 'passwordreset-legend' => 'Setel ulang sandi',
 'passwordreset-disabled' => 'Penyetelan ulang sandi telah dimatikan di wiki ini.',
 'passwordreset-pretext' => '{{PLURAL:$1||Masukkan salah satu data di bawah ini}}',
-'passwordreset-username' => 'Nama pengguna:',
+'passwordreset-wiki_username' => 'Nama pengguna:',
 'passwordreset-domain' => 'Domain:',
 'passwordreset-capture' => 'Lihat surel yang dihasilkan?',
 'passwordreset-capture-help' => 'Jika Anda mencentang kotak ini, surel (dengan kata sandi sementara) akan ditampilkan ke Anda dan juga dikirim ke pengguna.',
@@ -873,7 +873,7 @@ $2
 Anda harus masuk dan memilih sandi baru sekarang. Jika orang lain membuat
 permintaan ini atau jika Anda ingat sandi asli dan tidak lagi
 ingin mengubahnya, Anda dapat mengabaikan pesan ini dan terus menggunakan sandi lama.',
-'passwordreset-emailtext-user' => 'Seseorang (mungkin Anda, dari alamat IP $1) meminta pengingat detail akun untuk {{SITENAME}} ($4).
+'passwordreset-emailtext-wiki_user' => 'Seseorang (mungkin Anda, dari alamat IP $1) meminta pengingat detail akun untuk {{SITENAME}} ($4).
 {{PLURAL:$3|Akun|Akun-akun}} berikut terkait dengan alamat surel ini:
 
 $2
@@ -978,7 +978,7 @@ Subbagian ini mungkin dipindahkan atau dihapus ketika Anda membukanya.',
 'loginreqlink' => 'masuk log',
 'loginreqpagetext' => 'Anda harus $1 untuk dapat melihat halaman lainnya.',
 'accmailtitle' => 'Kata sandi telah terkirim.',
-'accmailtext' => "Sebuah kata sandi acak untuk [[User talk:$1|$1]] telah dibuat dan dikirimkan ke $2.
+'accmailtext' => "Sebuah kata sandi acak untuk [[wiki_user talk:$1|$1]] telah dibuat dan dikirimkan ke $2.
 
 Kata sandi untuk akun baru ini dapat diubah di halaman ''[[Special:ChangePassword|pengubahan kata sandi]]'' setelah masuk log.",
 'newarticle' => '(Baru)',
@@ -986,7 +986,7 @@ Kata sandi untuk akun baru ini dapat diubah di halaman ''[[Special:ChangePasswor
 'anontalkpagetext' => "----''Ini adalah halaman pembicaraan seorang pengguna anonim yang belum membuat akun atau tidak menggunakannya.
 Dengan demikian, kami terpaksa harus memakai alamat IP yang bersangkutan untuk mengidentifikasikannya.
 Alamat IP seperti ini mungkin dipakai bersama oleh beberapa pengguna yang berbeda.
-Jika Anda adalah seorang pengguna anonim dan merasa mendapatkan komentar-komentar yang tidak relevan yang ditujukan langsung kepada Anda, silakan [[Special:UserLogin/signup|membuat akun]] atau [[Special:UserLogin|masuk log]] untuk menghindari kerancuan dengan pengguna anonim lainnya di lain waktu.''",
+Jika Anda adalah seorang pengguna anonim dan merasa mendapatkan komentar-komentar yang tidak relevan yang ditujukan langsung kepada Anda, silakan [[Special:wiki_userLogin/signup|membuat akun]] atau [[Special:wiki_userLogin|masuk log]] untuk menghindari kerancuan dengan pengguna anonim lainnya di lain waktu.''",
 'noarticletext' => 'Saat ini tidak ada teks di halaman ini.
 Anda dapat [[Special:Search/{{PAGENAME}}|melakukan pencarian untuk judul halaman ini]] di halaman-halaman lain, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} mencari log terkait], atau [{{fullurl:{{FULLPAGENAME}}|action=edit}} menyunting halaman ini]</span>.',
 'noarticletext-nopermission' => '!Saat ini tidak ada teks di halaman ini.
@@ -995,8 +995,8 @@ Anda dapat [[Special:Search/{{PAGENAME}}|melakukan pencarian untuk judul halaman
 
 Hal ini biasanya disebabkan oleh tautan versi terdahulu menuju halaman yang sudah dihapus.
 Rinciannya dapat ditemukan di [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} log penghapusan].',
-'userpage-userdoesnotexist' => 'Akun pengguna "<nowiki>$1</nowiki>" tidak terdaftar.',
-'userpage-userdoesnotexist-view' => 'Pengguna "$1" tidak terdaftar.',
+'wiki_userpage-wiki_userdoesnotexist' => 'Akun pengguna "<nowiki>$1</nowiki>" tidak terdaftar.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Pengguna "$1" tidak terdaftar.',
 'blocked-notice-logextract' => 'Pengguna ini sedang diblokir.
 Entri log pemblokiran terakhir tersedia di bawah ini sebagai rujukan.',
 'clearyourcache' => "'''Catatan:''' Setelah menyimpan, Anda mungkin harus memintas singgahan peramban Anda untuk melihat perubahan.
@@ -1004,16 +1004,16 @@ Entri log pemblokiran terakhir tersedia di bawah ini sebagai rujukan.',
 * '''Google Chrome:''' Tekan ''Ctrl-Shift-R'' (''⌘-Shift-R'' di Mac)
 * '''Internet Explorer:''' Tahan ''Ctrl'' sambl mengeklik ''Refresh'', atau tekan ''Ctrl-F5''
 * '''Opera:''' Bersihkan tembolok di ''Tools → Preferences''",
-'usercssyoucanpreview' => "'''Tips:''' Gunakan tombol \"{{int:showpreview}}\" untuk menguji CSS baru Anda sebelum menyimpannya.",
-'userjsyoucanpreview' => "'''Tips:''' Gunakan tombol \"{{int:showpreview}}\" untuk menguji JS baru Anda sebelum menyimpannya.",
-'usercsspreview' => "'''Ingatlah bahwa Anda sedang menampilkan pratayang dari CSS Anda.
+'wiki_usercssyoucanpreview' => "'''Tips:''' Gunakan tombol \"{{int:showpreview}}\" untuk menguji CSS baru Anda sebelum menyimpannya.",
+'wiki_userjsyoucanpreview' => "'''Tips:''' Gunakan tombol \"{{int:showpreview}}\" untuk menguji JS baru Anda sebelum menyimpannya.",
+'wiki_usercsspreview' => "'''Ingatlah bahwa Anda sedang menampilkan pratayang dari CSS Anda.
 Pratayang ini belum disimpan!'''",
-'userjspreview' => "'''Ingatlah bahwa yang Anda lihat hanyalah pratayang JavaScript Anda, dan bahwa pratayang tersebut belum disimpan!'''",
+'wiki_userjspreview' => "'''Ingatlah bahwa yang Anda lihat hanyalah pratayang JavaScript Anda, dan bahwa pratayang tersebut belum disimpan!'''",
 'sitecsspreview' => "'''Ingatlah bahwa Anda hanya menampilkan pratayang dari CSS ini.'''
 '''Perubahan belum disimpan!'''",
 'sitejspreview' => "'''Ingatlah bahwa Anda hanya menampilkan pratayang dari kode JavaScript ini.'''
 '''Perubahan belum disimpan!'''",
-'userinvalidcssjstitle' => "'''Peringatan:''' Kulit \"\$1\" tidak ditemukan. Harap diingat bahwa halaman .css dan .js menggunakan huruf kecil, contoh {{ns:user}}:Foo/vector.css dan bukannya {{ns:user}}:Foo/Vector.css.",
+'wiki_userinvalidcssjstitle' => "'''Peringatan:''' Kulit \"\$1\" tidak ditemukan. Harap diingat bahwa halaman .css dan .js menggunakan huruf kecil, contoh {{ns:wiki_user}}:Foo/vector.css dan bukannya {{ns:wiki_user}}:Foo/Vector.css.",
 'updated' => '(Diperbarui)',
 'note' => "'''Catatan:'''",
 'previewnote' => "'''Ingatlah bahwa ini hanya pratayang.'''
@@ -1022,13 +1022,13 @@ Perubahan Anda belum disimpan!",
 'previewconflict' => 'Pratayang ini mencerminkan teks pada bagian atas kotak suntingan teks sebagaimana akan terlihat bila Anda menyimpannya.',
 'session_fail_preview' => "'''Maaf, kami tidak dapat mengolah suntingan Anda akibat terhapusnya data sesi.
 Silakan coba sekali lagi.
-Jika masih tidak berhasil, cobalah [[Special:UserLogout|keluar lo]]g dan masuk log kembali.'''",
+Jika masih tidak berhasil, cobalah [[Special:wiki_userLogout|keluar lo]]g dan masuk log kembali.'''",
 'session_fail_preview_html' => "'''Kami tidak dapat memproses suntingan Anda karena hilangnya data sesi.'''
 
 ''Karena {{SITENAME}} mengizinkan penggunaan HTML mentah, pratayang telah disembunyikan sebagai pencegahan terhadap serangan JavaScript.''
 
 '''Jika ini merupakan upaya suntingan yang sahih, silakan coba lagi.
-Jika masih tetap tidak berhasil, cobalah [[Special:UserLogout|keluar log]] dan masuk kembali.'''",
+Jika masih tetap tidak berhasil, cobalah [[Special:wiki_userLogout|keluar log]] dan masuk kembali.'''",
 'token_suffix_mismatch' => "'''Suntingan Anda ditolak karena aplikasi klien Anda mengubah karakter tanda baca pada suntingan.'''
 Suntingan tersebut ditolak untuk mencegah kesalahan pada teks halaman.
 Hal ini kadang terjadi jika Anda menggunakan layanan proxy anonim berbasis web yang bermasalah.",
@@ -1074,7 +1074,7 @@ Entri catatan terakhir disediakan di bawah untuk referensi:",
 'edittools' => '<!-- Teks di sini akan dimunculkan di bawah isian suntingan dan pemuatan.-->',
 'nocreatetitle' => 'Pembuatan halaman baru dibatasi',
 'nocreatetext' => '{{SITENAME}} telah membatasi pembuatan halaman-halaman baru.
-Anda dapat kembali dan menyunting halaman yang telah ada, atau silakan [[Special:UserLogin|masuk log atau membuat akun]].',
+Anda dapat kembali dan menyunting halaman yang telah ada, atau silakan [[Special:wiki_userLogin|masuk log atau membuat akun]].',
 'nocreate-loggedin' => 'Anda tak memiliki hak akses untuk membuat halaman baru.',
 'sectioneditnotsupported-title' => 'Penyuntingan bagian tidak didukung',
 'sectioneditnotsupported-text' => 'Penyuntingan bagian tidak didukung di halaman sunting ini.',
@@ -1127,7 +1127,7 @@ Beberapa templat akan diabaikan.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Akun tak dapat dibuat',
-'cantcreateaccount-text' => "Pembuatan akun dari alamat IP ini (<strong>$1</strong>) telah diblokir oleh [[User:$3|$3]].
+'cantcreateaccount-text' => "Pembuatan akun dari alamat IP ini (<strong>$1</strong>) telah diblokir oleh [[wiki_user:$3|$3]].
 
 Alasan yang diberikan oleh $3 adalah ''$2''",
 
@@ -1164,9 +1164,9 @@ Coba [[Special:Search|lakukan pencarian di wiki]] untuk halaman baru yang releva
 
 # Revision deletion
 'rev-deleted-comment' => '(ringkasan suntingan dihapus)',
-'rev-deleted-user' => '(nama pengguna dihapus)',
+'rev-deleted-wiki_user' => '(nama pengguna dihapus)',
 'rev-deleted-event' => '(isi dihapus)',
-'rev-deleted-user-contribs' => '[nama pengguna atau alamat IP dihapus - suntingan disembunyikan pada daftar kontribusi]',
+'rev-deleted-wiki_user-contribs' => '[nama pengguna atau alamat IP dihapus - suntingan disembunyikan pada daftar kontribusi]',
 'rev-deleted-text-permission' => "Revisi halaman ini telah '''dihapus'''.
 Rinciannya mungkin tersedia di [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} log penghapusan]",
 'rev-deleted-text-unhide' => "Revisi ini telah '''dihapus'''.
@@ -1217,7 +1217,7 @@ Pengurus {{SITENAME}} lain akan tetap dapat mengakses isi yang tersembunyi ini d
 'revdelete-hide-image' => 'Sembunyikan isi berkas',
 'revdelete-hide-name' => 'Sembunyikan tindakan dan target',
 'revdelete-hide-comment' => 'Sembunyikan ringkasan suntingan',
-'revdelete-hide-user' => 'Sembunyikan nama pengguna/IP penyunting',
+'revdelete-hide-wiki_user' => 'Sembunyikan nama pengguna/IP penyunting',
 'revdelete-hide-restricted' => 'Sembunyikan data dari opsis juga',
 'revdelete-radio-same' => '(jangan diubah)',
 'revdelete-radio-set' => 'Ya',
@@ -1302,7 +1302,7 @@ Pastikan bahwa perubahan ini tetap mempertahankan kontinuitas versi terdahulu ha
 'showhideselectedversions' => 'Tampilkan/sembunyikan versi terpilih',
 'editundo' => 'batalkan',
 'diff-multi' => '({{PLURAL:$1|Satu|$1}} revisi antara oleh {{PLURAL:$2|satu|$2}} pengguna tak ditampilkan)',
-'diff-multi-manyusers' => '({{PLURAL:$1|Satu|$1}} revisi antara oleh lebih dari $2 {{PLURAL:$2|satu|$2}} pengguna tak ditampilkan)',
+'diff-multi-manywiki_users' => '({{PLURAL:$1|Satu|$1}} revisi antara oleh lebih dari $2 {{PLURAL:$2|satu|$2}} pengguna tak ditampilkan)',
 'difference-missing-revision' => '{{PLURAL:$2|Satu revisi|$2 revisi}} dari perbedaan ini ($1) {{PLURAL:$2|tidak|tidak}} ditemukan.
 
 Hal ini biasanya disebabkan oleh tautan diff yang kedaluwarsa ke halaman yang sudah dihapus.
@@ -1386,7 +1386,7 @@ Perlu diingat bahwa indeks Google untuk konten {{SITENAME}} mungkin belum mencak
 'mypreferences' => 'Preferensi',
 'prefs-edits' => 'Jumlah suntingan:',
 'prefsnologin' => 'Belum masuk log',
-'prefsnologintext' => 'Anda harus <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} masuk log]</span> untuk mengeset preferensi Anda.',
+'prefsnologintext' => 'Anda harus <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} masuk log]</span> untuk mengeset preferensi Anda.',
 'changepassword' => 'Ganti kata sandi',
 'prefs-skin' => 'Kulit',
 'skin-preview' => 'Pratayang',
@@ -1394,7 +1394,7 @@ Perlu diingat bahwa indeks Google untuk konten {{SITENAME}} mungkin belum mencak
 'prefs-beta' => 'Fitur Beta',
 'prefs-datetime' => 'Tanggal dan waktu',
 'prefs-labs' => 'Fitur Labs',
-'prefs-user-pages' => 'Halaman pengguna',
+'prefs-wiki_user-pages' => 'Halaman pengguna',
 'prefs-personal' => 'Profil',
 'prefs-rc' => 'Perubahan terbaru',
 'prefs-watchlist' => 'Pemantauan',
@@ -1458,7 +1458,7 @@ Pengembalian preferensi tidak dapat dibatalkan.',
 'prefs-emailconfirm-label' => 'Konfirmasi surel:',
 'prefs-textboxsize' => 'Ukuran kotak suntingan',
 'youremail' => 'Surel:',
-'username' => 'Nama pengguna:',
+'wiki_username' => 'Nama pengguna:',
 'uid' => 'ID pengguna:',
 'prefs-memberingroups' => 'Anggota {{PLURAL:$1|kelompok|kelompok}}:',
 'prefs-registration' => 'Waktu pendaftaran:',
@@ -1497,35 +1497,35 @@ Jika Anda memberikannya, nama asli Anda akan digunakan untuk memberi pengenalan 
 'prefs-displaywatchlist' => 'Pilihan tampilan',
 'prefs-diffs' => 'Beda',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'Alamat surel tampaknya sah',
 'email-address-validity-invalid' => 'Masukkan alamat surel yang sah',
 
-# User rights
-'userrights' => 'Manajemen hak pengguna',
-'userrights-lookup-user' => 'Mengatur kelompok pengguna',
-'userrights-user-editname' => 'Masukkan nama pengguna:',
-'editusergroup' => 'Sunting kelompok pengguna',
-'editinguser' => "Mengganti hak akses pengguna '''[[User:$1|$1]]''' $2",
-'userrights-editusergroup' => 'Sunting kelompok pengguna',
-'saveusergroups' => 'Simpan kelompok pengguna',
-'userrights-groupsmember' => 'Anggota dari:',
-'userrights-groupsmember-auto' => 'Anggota implisit dari:',
-'userrights-groups-help' => 'Anda dapat mengubah kelompok pengguna ini:
+# wiki_user rights
+'wiki_userrights' => 'Manajemen hak pengguna',
+'wiki_userrights-lookup-wiki_user' => 'Mengatur kelompok pengguna',
+'wiki_userrights-wiki_user-editname' => 'Masukkan nama pengguna:',
+'editwiki_usergroup' => 'Sunting kelompok pengguna',
+'editingwiki_user' => "Mengganti hak akses pengguna '''[[wiki_user:$1|$1]]''' $2",
+'wiki_userrights-editwiki_usergroup' => 'Sunting kelompok pengguna',
+'savewiki_usergroups' => 'Simpan kelompok pengguna',
+'wiki_userrights-groupsmember' => 'Anggota dari:',
+'wiki_userrights-groupsmember-auto' => 'Anggota implisit dari:',
+'wiki_userrights-groups-help' => 'Anda dapat mengubah kelompok pengguna ini:
 * Kotak dengan tanda cek merupakan kelompok pengguna yang bersangkutan
 * Kotak tanpa tanda cek berarti pengguna ini bukan anggota kelompok tersebut
 * Tanda * menandai bahwa Anda tidak dapat membatalkan kelompok tersebut bila Anda telah menambahkannya, atau sebaliknya.',
-'userrights-reason' => 'Alasan:',
-'userrights-no-interwiki' => 'Anda tidak memiliki hak untuk mengubah hak pengguna di wiki yang lain.',
-'userrights-nodatabase' => 'Basis data $1 tidak ada atau bukan lokal.',
-'userrights-nologin' => 'Anda harus [[Special:UserLogin|masuk log]] dengan menggunakan akun pengurus untuk dapat mengubah hak pengguna.',
-'userrights-notallowed' => 'Akun Anda tidak berhak untuk menambahkan atau membuang hak pengguna.',
-'userrights-changeable-col' => 'Kelompok yang dapat Anda ubah',
-'userrights-unchangeable-col' => 'Kelompok yang tidak dapat Anda ubah',
+'wiki_userrights-reason' => 'Alasan:',
+'wiki_userrights-no-interwiki' => 'Anda tidak memiliki hak untuk mengubah hak pengguna di wiki yang lain.',
+'wiki_userrights-nodatabase' => 'Basis data $1 tidak ada atau bukan lokal.',
+'wiki_userrights-nologin' => 'Anda harus [[Special:wiki_userLogin|masuk log]] dengan menggunakan akun pengurus untuk dapat mengubah hak pengguna.',
+'wiki_userrights-notallowed' => 'Akun Anda tidak berhak untuk menambahkan atau membuang hak pengguna.',
+'wiki_userrights-changeable-col' => 'Kelompok yang dapat Anda ubah',
+'wiki_userrights-unchangeable-col' => 'Kelompok yang tidak dapat Anda ubah',
 
 # Groups
 'group' => 'Kelompok:',
-'group-user' => 'Pengguna',
+'group-wiki_user' => 'Pengguna',
 'group-autoconfirmed' => 'Pengguna terkonfirmasi otomatis',
 'group-bot' => 'Bot',
 'group-sysop' => 'Pengurus',
@@ -1533,14 +1533,14 @@ Jika Anda memberikannya, nama asli Anda akan digunakan untuk memberi pengenalan 
 'group-suppress' => 'Pengawas',
 'group-all' => '(semua)',
 
-'group-user-member' => '{{GENDER:$1| pengguna}}',
+'group-wiki_user-member' => '{{GENDER:$1| pengguna}}',
 'group-autoconfirmed-member' => '{{GENDER:$1| pengguna}} terkonfimasi otomatis',
 'group-bot-member' => 'Bot',
 'group-sysop-member' => '{{GENDER:$1|pengurus}}',
 'group-bureaucrat-member' => '{{GENDER:$1|birokrat}}',
 'group-suppress-member' => '{{GENDER:$1|pengawas}}',
 
-'grouppage-user' => '{{ns:project}}:Pengguna',
+'grouppage-wiki_user' => '{{ns:project}}:Pengguna',
 'grouppage-autoconfirmed' => '{{ns:project}}:Pengguna terkonfirmasi otomatis',
 'grouppage-bot' => '{{ns:project}}:Bot',
 'grouppage-sysop' => '{{ns:project}}:Pengurus',
@@ -1556,7 +1556,7 @@ Jika Anda memberikannya, nama asli Anda akan digunakan untuk memberi pengenalan 
 'right-minoredit' => 'Menandai suntingan sebagai minor',
 'right-move' => 'Memindahkan halaman',
 'right-move-subpages' => 'Memindahkan halaman dengan seluruh subhalamannya',
-'right-move-rootuserpages' => 'Memindahkan halaman utama pengguna',
+'right-move-rootwiki_userpages' => 'Memindahkan halaman utama pengguna',
 'right-movefile' => 'Memindahkan berkas',
 'right-suppressredirect' => 'Tidak membuat pengalihan dari nama lama ketika memindahkan halaman',
 'right-upload' => 'Memuat berkas',
@@ -1582,16 +1582,16 @@ Jika Anda memberikannya, nama asli Anda akan digunakan untuk memberi pengenalan 
 'right-suppressionlog' => 'Melihat log privat',
 'right-block' => 'Memblokir penyuntingan oleh pengguna lain',
 'right-blockemail' => 'Memblokir pengiriman surel oleh pengguna',
-'right-hideuser' => 'Memblokir nama pengguna dan menyembunyikannya dari publik',
+'right-hidewiki_user' => 'Memblokir nama pengguna dan menyembunyikannya dari publik',
 'right-ipblock-exempt' => 'Mengabaikan pemblokiran IP, pemblokiran otomatis, dan rentang pemblokiran',
 'right-proxyunbannable' => 'Mengabaikan pemblokiran otomatis atas proksi',
 'right-unblockself' => 'Melepaskan blokir diri sendiri',
 'right-protect' => 'Mengubah tingkat pelindungan dan menyunting halaman yang dilindungi',
 'right-editprotected' => 'Menyunting halaman yang dilindungi (tanpa pelindungan runtun)',
 'right-editinterface' => 'Menyunting antarmuka pengguna',
-'right-editusercssjs' => 'Menyunting arsip CSS dan JS pengguna lain',
-'right-editusercss' => 'Menyunting berkas CSS pengguna lain',
-'right-edituserjs' => 'Menyunting berkas JS pengguna lain',
+'right-editwiki_usercssjs' => 'Menyunting arsip CSS dan JS pengguna lain',
+'right-editwiki_usercss' => 'Menyunting berkas CSS pengguna lain',
+'right-editwiki_userjs' => 'Menyunting berkas JS pengguna lain',
 'right-rollback' => 'Mengembalikan dengan cepat suntingan-suntingan pengguna terakhir yang menyunting halaman tertentu',
 'right-markbotedits' => 'Menandai pengembalian revisi sebagai suntingan bot',
 'right-noratelimit' => 'Tidak dipengaruhi oleh pembatasan jumlah suntingan',
@@ -1602,14 +1602,14 @@ Jika Anda memberikannya, nama asli Anda akan digunakan untuk memberi pengenalan 
 'right-patrolmarks' => 'Melihat penandaan patroli perubahan terbaru',
 'right-unwatchedpages' => 'Melihat daftar halaman-halaman yang tidak dipantau',
 'right-mergehistory' => 'Menggabungkan versi terdahulu halaman-halaman',
-'right-userrights' => 'Menyunting seluruh hak pengguna',
-'right-userrights-interwiki' => 'Menyunting hak para pengguna di wiki lain',
+'right-wiki_userrights' => 'Menyunting seluruh hak pengguna',
+'right-wiki_userrights-interwiki' => 'Menyunting hak para pengguna di wiki lain',
 'right-siteadmin' => 'Mengunci dan membuka kunci basis data',
 'right-override-export-depth' => 'Ekspor halaman termasuk halaman-halaman terkait hingga kedalaman 5',
 'right-sendemail' => 'Mengirim surel ke pengguna lain',
 'right-passwordreset' => 'Lihat surel pengaturulangan kata sandi',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Log perubahan hak akses',
 'rightslogtext' => 'Di bawah ini adalah log perubahan terhadap hak-hak pengguna.',
 'rightslogentry' => 'mengganti keanggotaan kelompok untuk $1 dari $2 menjadi $3',
@@ -1625,7 +1625,7 @@ Jika Anda memberikannya, nama asli Anda akan digunakan untuk memberi pengenalan 
 'action-minoredit' => 'menandai sebagai suntingan kecil',
 'action-move' => 'memindahkan halaman ini',
 'action-move-subpages' => 'memindahkan halaman ini, dan semua sub-halamannya',
-'action-move-rootuserpages' => 'memindahkan halaman utama pengguna',
+'action-move-rootwiki_userpages' => 'memindahkan halaman utama pengguna',
 'action-movefile' => 'pindahkan berkas ini',
 'action-upload' => 'memuatkan berkas ini',
 'action-reupload' => 'menimpa berkas yang telah ada',
@@ -1648,8 +1648,8 @@ Jika Anda memberikannya, nama asli Anda akan digunakan untuk memberi pengenalan 
 'action-autopatrol' => 'menandai suntingan Anda sendiri sebagai terpatroli',
 'action-unwatchedpages' => 'melihat daftar halaman yang tidak dipantau',
 'action-mergehistory' => 'menggabungkan revisi-revisi terdahulu halaman ini',
-'action-userrights' => 'menyunting semua hak pengguna',
-'action-userrights-interwiki' => 'menyunting hak akses dari pengguna di wiki lain',
+'action-wiki_userrights' => 'menyunting semua hak pengguna',
+'action-wiki_userrights-interwiki' => 'menyunting hak akses dari pengguna di wiki lain',
 'action-siteadmin' => 'mengunci atau membuka kunci basis data',
 'action-sendemail' => 'kirim surel',
 
@@ -1681,7 +1681,7 @@ Jika Anda memberikannya, nama asli Anda akan digunakan untuk memberi pengenalan 
 'minoreditletter' => 'k',
 'newpageletter' => 'B',
 'boteditletter' => 'b',
-'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|pemantau|pemantau}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|pemantau|pemantau}}]',
 'rc_categories' => 'Batasi sampai kategori (dipisah dengan "|")',
 'rc_categories_any' => 'Apa pun',
 'rc-change-size-new' => '$1 {{PLURAL:$1|bita|bita}} setelah perubahan',
@@ -1706,7 +1706,7 @@ Jika Anda memberikannya, nama asli Anda akan digunakan untuk memberi pengenalan 
 'reuploaddesc' => 'Kembali ke formulir pemuatan',
 'upload-tryagain' => 'Kirim perubahan keterangan berkas',
 'uploadnologin' => 'Belum masuk log',
-'uploadnologintext' => 'Anda harus [[Special:UserLogin|masuk log]] untuk dapat memuatkan berkas.',
+'uploadnologintext' => 'Anda harus [[Special:wiki_userLogin|masuk log]] untuk dapat memuatkan berkas.',
 'upload_directory_missing' => 'Direktori pemuatan ($1) tidak ditemukan dan tidak dapat dibuat oleh server web.',
 'upload_directory_read_only' => 'Direktori pemuatan ($1) tidak dapat ditulis oleh server web.',
 'uploaderror' => 'Kesalahan pemuatan',
@@ -1820,7 +1820,7 @@ $1',
 'upload-proto-error-text' => 'Pemuatan jarak jauh membutuhkan URL yang diawali dengan <code>http://</code> atau <code>ftp://</code>.',
 'upload-file-error' => 'Kesalahan internal',
 'upload-file-error-text' => 'Terjadi kesalahan internal sewaktu mencoba membuat berkas sementara di server.
-Silakan hubungi salah seorang [[Special:ListUsers/sysop|pengurus]].',
+Silakan hubungi salah seorang [[Special:Listwiki_users/sysop|pengurus]].',
 'upload-misc-error' => 'Kesalahan pemuatan yang tak dikenal',
 'upload-misc-error-text' => 'Suatu kesalahan yang tak dikenal terjadi sewaktu pemuatan. Harap pastikan bahwa URL tersebut valid dan dapat diakses dan silakan coba lagi. Jika masalah ini tetap terjadi, kontak administrator sistem.',
 'upload-too-many-redirects' => 'URL mengandung terlalu banyak pengalihan',
@@ -1939,7 +1939,7 @@ Ketika disaring oleh pengguna, hanya vesi berkas terbaru dari berkas yang penggu
 'listfiles_thumb' => 'Miniatur',
 'listfiles_date' => 'Tanggal',
 'listfiles_name' => 'Nama',
-'listfiles_user' => 'Pengguna',
+'listfiles_wiki_user' => 'Pengguna',
 'listfiles_size' => 'Ukuran',
 'listfiles_description' => 'Deskripsi',
 'listfiles_count' => 'Versi',
@@ -1956,7 +1956,7 @@ Ketika disaring oleh pengguna, hanya vesi berkas terbaru dari berkas yang penggu
 'filehist-thumb' => 'Miniatur',
 'filehist-thumbtext' => 'Miniatur untuk versi per $1',
 'filehist-nothumb' => 'Miniatur tidak tersedia',
-'filehist-user' => 'Pengguna',
+'filehist-wiki_user' => 'Pengguna',
 'filehist-dimensions' => 'Dimensi',
 'filehist-filesize' => 'Besar berkas',
 'filehist-comment' => 'Komentar',
@@ -2048,7 +2048,7 @@ Cek dahulu pranala lain ke templat tersebut sebelum menghapusnya.',
 'statistics-header-pages' => 'Statistik halaman',
 'statistics-header-edits' => 'Statistik suntingan',
 'statistics-header-views' => 'Statistik penampilan',
-'statistics-header-users' => 'Statistik pengguna',
+'statistics-header-wiki_users' => 'Statistik pengguna',
 'statistics-header-hooks' => 'Statistik lainnya',
 'statistics-articles' => 'Halaman konten',
 'statistics-pages' => 'Jumlah halaman',
@@ -2059,9 +2059,9 @@ Cek dahulu pranala lain ke templat tersebut sebelum menghapusnya.',
 'statistics-views-total' => 'Jumlah penampilan halaman',
 'statistics-views-total-desc' => 'Tampilan ke halaman yang tidak ada dan halaman khusus yang tidak dimasukkan',
 'statistics-views-peredit' => 'Jumlah penampilan per suntingan',
-'statistics-users' => 'Jumlah [[Special:ListUsers|pengguna terdaftar]]',
-'statistics-users-active' => 'Jumlah pengguna aktif',
-'statistics-users-active-desc' => 'Pengguna yang telah melakukan suatu aktivitas dalam {{PLURAL:$1|sehari|$1 hari}} terakhir.',
+'statistics-wiki_users' => 'Jumlah [[Special:Listwiki_users|pengguna terdaftar]]',
+'statistics-wiki_users-active' => 'Jumlah pengguna aktif',
+'statistics-wiki_users-active-desc' => 'Pengguna yang telah melakukan suatu aktivitas dalam {{PLURAL:$1|sehari|$1 hari}} terakhir.',
 'statistics-mostpopular' => 'Halaman yang paling banyak ditampilkan',
 
 'disambiguations' => 'Halaman yang terhubung ke halaman disambiguasi',
@@ -2138,13 +2138,13 @@ Nama yang telah <del>dicoret</del> berarti telah dibetulkan.',
 'protectedtitles' => 'Judul yang dilindungi',
 'protectedtitlestext' => 'Judul berikut ini dilindungi dari pembuatan',
 'protectedtitlesempty' => 'Tidak ada judul yang dilindungi.',
-'listusers' => 'Daftar pengguna',
-'listusers-editsonly' => 'Tampilkan hanya pengguna yang memiliki kontribusi',
-'listusers-creationsort' => 'Urutkan menurut tanggal pembuatan',
-'usereditcount' => '$1 {{PLURAL:$1|suntingan|suntingan}}',
-'usercreated' => '{{GENDER:$3|Dibuat}} pada $1 pukul $2',
+'listwiki_users' => 'Daftar pengguna',
+'listwiki_users-editsonly' => 'Tampilkan hanya pengguna yang memiliki kontribusi',
+'listwiki_users-creationsort' => 'Urutkan menurut tanggal pembuatan',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|suntingan|suntingan}}',
+'wiki_usercreated' => '{{GENDER:$3|Dibuat}} pada $1 pukul $2',
 'newpages' => 'Halaman baru',
-'newpages-username' => 'Nama pengguna:',
+'newpages-wiki_username' => 'Nama pengguna:',
 'ancientpages' => 'Halaman terlama',
 'move' => 'Pindahkan',
 'movethispage' => 'Pindahkan halaman ini',
@@ -2168,7 +2168,7 @@ Harap perhatikan bahwa situs web lain mungkin memiliki pranala ke suatu berkas d
 'booksources-invalid-isbn' => 'ISBN yang diberikan tampaknya tidak valid; periksa kesalahan penyalinan dari sumber asli.',
 
 # Special:Log
-'specialloguserlabel' => 'Pengguna:',
+'speciallogwiki_userlabel' => 'Pengguna:',
 'speciallogtitlelabel' => 'Target (judul atau pengguna):',
 'log' => 'Log',
 'all-logs-page' => 'Semua log publik',
@@ -2226,24 +2226,24 @@ Protokol yang didukung: <code>$1</code> (menggunakan http:// bila protokol tidak
 'linksearch-line' => '$1 memiliki pranala dari $2',
 'linksearch-error' => "''Wildcards'' hanya dapat digunakan di bagian awal dari nama host.",
 
-# Special:ListUsers
-'listusersfrom' => 'Tampilkan pengguna mulai dari:',
-'listusers-submit' => 'Tampilkan',
-'listusers-noresult' => 'Pengguna tidak ditemukan.',
-'listusers-blocked' => '(diblokir)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'Tampilkan pengguna mulai dari:',
+'listwiki_users-submit' => 'Tampilkan',
+'listwiki_users-noresult' => 'Pengguna tidak ditemukan.',
+'listwiki_users-blocked' => '(diblokir)',
 
-# Special:ActiveUsers
-'activeusers' => 'Daftar pengguna aktif',
-'activeusers-intro' => 'Berikut adalah daftar pengguna yang memiliki suatu bentuk aktivitas selama paling tidak $1 {{PLURAL:$1|hari|hari}} terakhir.',
-'activeusers-count' => '$1 {{PLURAL:$1||}}suntingan selama {{PLURAL:$3||}}$3 hari terakhir',
-'activeusers-from' => 'Tampilkan pengguna mulai dari:',
-'activeusers-hidebots' => 'Sembunyikan bot',
-'activeusers-hidesysops' => 'Sembunyikan pengurus',
-'activeusers-noresult' => 'Pengguna tidak ditemukan.',
+# Special:Activewiki_users
+'activewiki_users' => 'Daftar pengguna aktif',
+'activewiki_users-intro' => 'Berikut adalah daftar pengguna yang memiliki suatu bentuk aktivitas selama paling tidak $1 {{PLURAL:$1|hari|hari}} terakhir.',
+'activewiki_users-count' => '$1 {{PLURAL:$1||}}suntingan selama {{PLURAL:$3||}}$3 hari terakhir',
+'activewiki_users-from' => 'Tampilkan pengguna mulai dari:',
+'activewiki_users-hidebots' => 'Sembunyikan bot',
+'activewiki_users-hidesysops' => 'Sembunyikan pengurus',
+'activewiki_users-noresult' => 'Pengguna tidak ditemukan.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Log pengguna baru',
-'newuserlogpagetext' => 'Di bawah ini adalah log pendaftaran pengguna baru',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Log pengguna baru',
+'newwiki_userlogpagetext' => 'Di bawah ini adalah log pendaftaran pengguna baru',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Daftar kelompok pengguna',
@@ -2263,27 +2263,27 @@ Protokol yang didukung: <code>$1</code> (menggunakan http:// bila protokol tidak
 'listgrouprights-addgroup-self-all' => 'Dapat menambahkan semua grup ke akun sendiri',
 'listgrouprights-removegroup-self-all' => 'Menghapus semua kelompok dari akun sendiri',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'Tidak ada alamat surel',
-'mailnologintext' => 'Anda harus [[Special:UserLogin|masuk log]] dan mempunyai alamat surel yang sah di dalam [[Special:Preferences|preferensi]] untuk mengirimkan surel kepada pengguna lain.',
-'emailuser' => 'Surel pengguna',
-'emailuser-title-target' => 'Kirim surel ke {{GENDER:$1|pengguna}} ini',
-'emailuser-title-notarget' => 'Kirim surel',
+'mailnologintext' => 'Anda harus [[Special:wiki_userLogin|masuk log]] dan mempunyai alamat surel yang sah di dalam [[Special:Preferences|preferensi]] untuk mengirimkan surel kepada pengguna lain.',
+'emailwiki_user' => 'Surel pengguna',
+'emailwiki_user-title-target' => 'Kirim surel ke {{GENDER:$1|pengguna}} ini',
+'emailwiki_user-title-notarget' => 'Kirim surel',
 'emailpage' => 'Kirim surel ke pengguna ini',
 'emailpagetext' => 'Anda dapat menggunakan formulir di bawah ini untuk mengirimkan surel ke {{GENDER:$1|pengguna}} ini.
 Alamat surel yang Anda masukkan di [[Special:Preferences|preferensi akun Anda]] akan muncul sebagai alamat "Dari" dalam surel tersebut, sehingga penerima dapat langsung membalas kepada Anda.',
-'usermailererror' => 'Kesalahan objek surat:',
+'wiki_usermailererror' => 'Kesalahan objek surat:',
 'defemailsubject' => 'Surel {{SITENAME}} dari pengguna "$1"',
-'usermaildisabled' => 'Surel pengguna dinonaktifkan',
-'usermaildisabledtext' => 'Anda tidak dapat mengirim surel pada pengguna lain di wiki ini',
+'wiki_usermaildisabled' => 'Surel pengguna dinonaktifkan',
+'wiki_usermaildisabledtext' => 'Anda tidak dapat mengirim surel pada pengguna lain di wiki ini',
 'noemailtitle' => 'Tidak ada alamat surel',
 'noemailtext' => 'Pengguna ini tidak memberikan suatu alamat surel yang valid.',
 'nowikiemailtitle' => 'Surel tak diizinkan',
 'nowikiemailtext' => 'Pengguna ini telah memilih untuk tidak menerima surel dari pengguna lain.',
 'emailnotarget' => 'Nama pengguna penerima tidak ada atau tidak sah.',
 'emailtarget' => 'Masukkan nama pengguna penerima',
-'emailusername' => 'Nama pengguna:',
-'emailusernamesubmit' => 'Kirim',
+'emailwiki_username' => 'Nama pengguna:',
+'emailwiki_usernamesubmit' => 'Kirim',
 'email-legend' => 'Kirim surel ke pengguna {{SITENAME}} lainnya',
 'emailfrom' => 'Dari:',
 'emailto' => 'Untuk:',
@@ -2294,11 +2294,11 @@ Alamat surel yang Anda masukkan di [[Special:Preferences|preferensi akun Anda]] 
 'emailccsubject' => 'Salinan pesan Anda untuk $1: $2',
 'emailsent' => 'Surel terkirim',
 'emailsenttext' => 'Surel Anda telah dikirimkan.',
-'emailuserfooter' => 'Surel ini dikirimkan oleh $1 kepada $2 menggunakan fungsi "Suratepengguna" di {{SITENAME}}.',
+'emailwiki_userfooter' => 'Surel ini dikirimkan oleh $1 kepada $2 menggunakan fungsi "Suratepengguna" di {{SITENAME}}.',
 
-# User Messenger
-'usermessage-summary' => 'Tinggalkan pesan sistem.',
-'usermessage-editor' => 'Penyampai pesan sistem',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'Tinggalkan pesan sistem.',
+'wiki_usermessage-editor' => 'Penyampai pesan sistem',
 
 # Watchlist
 'watchlist' => 'Daftar pantauan',
@@ -2307,7 +2307,7 @@ Alamat surel yang Anda masukkan di [[Special:Preferences|preferensi akun Anda]] 
 'nowatchlist' => 'Daftar pantauan Anda kosong.',
 'watchlistanontext' => 'Silakan $1 untuk melihat atau menyunting daftar pantauan Anda.',
 'watchnologin' => 'Belum masuk log',
-'watchnologintext' => 'Anda harus [[Special:UserLogin|masuk log]] untuk mengubah daftar pantauan Anda.',
+'watchnologintext' => 'Anda harus [[Special:wiki_userLogin|masuk log]] untuk mengubah daftar pantauan Anda.',
 'addwatch' => 'Tambahkan ke daftar pantauan',
 'addedwatchtext' => 'Halaman "[[:$1]]" telah ditambahkan ke [[Special:Watchlist|daftar pantauan]] Anda.
 Perubahan-perubahan berikutnya pada halaman tersebut dan halaman pembicaraan terkaitnya akan tercantum di sini.',
@@ -2417,13 +2417,13 @@ Menghapus halaman ini dapat menyebabkan masalah dalam operasional basis data {{S
 'rollbackfailed' => 'Pengembalian gagal dilakukan',
 'cantrollback' => 'Tidak dapat mengembalikan suntingan;
 kontributor terakhir adalah satu-satunya penulis halaman ini.',
-'alreadyrolled' => 'Tidak dapat melakukan pengembalian ke revisi terakhir [[:$1]] oleh [[User:$2|$2]] ([[User talk:$2|bicara]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
+'alreadyrolled' => 'Tidak dapat melakukan pengembalian ke revisi terakhir [[:$1]] oleh [[wiki_user:$2|$2]] ([[wiki_user talk:$2|bicara]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
 pengguna lain telah menyunting atau melakukan pengembalian terhadap halaman ini.
 
-Suntingan terakhir dilakukan oleh [[User:$3|$3]] ([[User talk:$3|bicara]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+Suntingan terakhir dilakukan oleh [[wiki_user:$3|$3]] ([[wiki_user talk:$3|bicara]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "Komentar penyuntingan adalah: \"''\$1''\".",
-'revertpage' => '←Suntingan [[Special:Contributions/$2|$2]] ([[User talk:$2|bicara]]) dikembalikan ke versi terakhir oleh [[User:$1|$1]]',
-'revertpage-nouser' => 'Pengembalian suntingan oleh (pengguna dihapus) ke suntingan terakhir oleh [[User:$1|$1]]',
+'revertpage' => '←Suntingan [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|bicara]]) dikembalikan ke versi terakhir oleh [[wiki_user:$1|$1]]',
+'revertpage-nowiki_user' => 'Pengembalian suntingan oleh (pengguna dihapus) ke suntingan terakhir oleh [[wiki_user:$1|$1]]',
 'rollback-success' => 'Pengembalian suntingan oleh $1; dikembalikan ke versi terakhir oleh $2.',
 
 # Edit tokens
@@ -2568,12 +2568,12 @@ $1',
 'sp-contributions-uploads' => 'unggahan',
 'sp-contributions-logs' => 'log',
 'sp-contributions-talk' => 'bicara',
-'sp-contributions-userrights' => 'pengelolaan hak pengguna',
+'sp-contributions-wiki_userrights' => 'pengelolaan hak pengguna',
 'sp-contributions-blocked-notice' => 'Pengguna ini sedang di blok. log pemblokiran terakhir ditampilkan berikut untuk referensi:',
 'sp-contributions-blocked-notice-anon' => 'Alamat IP ini diblokir pada saat ini.
 Catatan log pemblokiran terakhir tersedia di bawah ini sebagai rujukan:',
 'sp-contributions-search' => 'Cari kontribusi',
-'sp-contributions-username' => 'Alamat IP atau nama pengguna:',
+'sp-contributions-wiki_username' => 'Alamat IP atau nama pengguna:',
 'sp-contributions-toponly' => 'Tampilkan hanya revisi teratas',
 'sp-contributions-submit' => 'Cari',
 
@@ -2606,7 +2606,7 @@ Catatan log pemblokiran terakhir tersedia di bawah ini sebagai rujukan:',
 'blockiptext' => 'Gunakan formulir di bawah untuk memblokir akses penulisan dari sebuah alamat IP atau pengguna tertentu.
 Ini hanya boleh dilakukan untuk mencegah vandalisme, dan sejalan dengan [[{{MediaWiki:Policy-url}}|kebijakan]].
 Masukkan alasan Anda di bawah (contoh, menuliskan nama halaman yang telah divandalisasi).',
-'ipadressorusername' => 'Alamat IP atau nama pengguna:',
+'ipadressorwiki_username' => 'Alamat IP atau nama pengguna:',
 'ipbexpiry' => 'Kedaluwarsa:',
 'ipbreason' => 'Alasan:',
 'ipbreasonotherlist' => 'Alasan lain',
@@ -2629,8 +2629,8 @@ Masukkan alasan Anda di bawah (contoh, menuliskan nama halaman yang telah divand
 'ipbotheroption' => 'lainnya',
 'ipbotherreason' => 'Alasan lain/tambahan:',
 'ipbhidename' => 'Sembunyikan nama pengguna dari suntingan dan daftar',
-'ipbwatchuser' => 'Pantau halaman pengguna dan pembicaraan pengguna ini',
-'ipb-disableusertalk' => 'Cegah pengguna ini untuk menyunting halaman pembicaraannya saat diblokir',
+'ipbwatchwiki_user' => 'Pantau halaman pengguna dan pembicaraan pengguna ini',
+'ipb-disablewiki_usertalk' => 'Cegah pengguna ini untuk menyunting halaman pembicaraannya saat diblokir',
 'ipb-change-block' => 'Blokir kembali pengguna dengan set konfigurasi berikut',
 'ipb-confirm' => 'Konfirmasi blokir',
 'badipaddress' => 'Format alamat IP atau nama pengguna salah.',
@@ -2638,7 +2638,7 @@ Masukkan alasan Anda di bawah (contoh, menuliskan nama halaman yang telah divand
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] telah diblokir.<br />
 Lihat [[Special:BlockList|daftar pemblokiran]] untuk meninjau kembali pemblokiran.',
 'ipb-blockingself' => 'Anda akan memblokir diri sendiri! Apakah Anda yakin akan melakukannya?',
-'ipb-confirmhideuser' => 'Anda akan memblokir pengguna dengan mengaktifkan "sembunyikan pengguna" diaktifkan. Ini akan menyembunyikan nama pengguna pada semua daftar dan entri log. Apakah Anda yakin ingin melakukannya?',
+'ipb-confirmhidewiki_user' => 'Anda akan memblokir pengguna dengan mengaktifkan "sembunyikan pengguna" diaktifkan. Ini akan menyembunyikan nama pengguna pada semua daftar dan entri log. Apakah Anda yakin ingin melakukannya?',
 'ipb-edit-dropdown' => 'Sunting alasan pemblokiran',
 'ipb-unblock-addr' => 'Hilangkan blokir $1',
 'ipb-unblock' => 'Hilangkan blokir seorang pengguna atau suatu alamat IP',
@@ -2647,13 +2647,13 @@ Lihat [[Special:BlockList|daftar pemblokiran]] untuk meninjau kembali pemblokira
 'unblockip' => 'Hilangkan blokir terhadap alamat IP atau pengguna',
 'unblockiptext' => 'Gunakan formulir di bawah untuk mengembalikan kemampuan menulis sebuah alamat IP atau pengguna yang sebelumnya telah diblokir.',
 'ipusubmit' => 'Hilangkan blokir ini',
-'unblocked' => 'Blokir terhadap [[User:$1|$1]] telah dicabut',
+'unblocked' => 'Blokir terhadap [[wiki_user:$1|$1]] telah dicabut',
 'unblocked-range' => '$1 telah diblokir',
 'unblocked-id' => 'Blokir $1 telah dicabut',
 'blocklist' => 'Pengguna terblokir',
 'ipblocklist' => 'Pengguna terblokir',
 'ipblocklist-legend' => 'Cari pengguna yang diblokir',
-'blocklist-userblocks' => 'Sembunyikan pemblokiran akun',
+'blocklist-wiki_userblocks' => 'Sembunyikan pemblokiran akun',
 'blocklist-tempblocks' => 'Sembunyikan pemblokiran sementara',
 'blocklist-addressblocks' => 'Sembunyikan pemblokiran IP tunggal',
 'blocklist-rangeblocks' => 'Menyembunyikan jangkauan blokir (http://www.mediawiki.org/wiki/Help:Range_blocks)',
@@ -2672,7 +2672,7 @@ Lihat [[Special:BlockList|daftar pemblokiran]] untuk meninjau kembali pemblokira
 'noautoblockblock' => 'pemblokiran otomatis dimatikan',
 'createaccountblock' => 'pembuatan akun diblokir',
 'emailblock' => 'surel diblokir',
-'blocklist-nousertalk' => 'tidak dapat menyunting halaman pembicaraan sendiri',
+'blocklist-nowiki_usertalk' => 'tidak dapat menyunting halaman pembicaraan sendiri',
 'ipblocklist-empty' => 'Daftar pemblokiran kosong.',
 'ipblocklist-no-results' => 'alamat IP atau pengguna yang diminta tidak diblokir.',
 'blocklink' => 'blokir',
@@ -2680,7 +2680,7 @@ Lihat [[Special:BlockList|daftar pemblokiran]] untuk meninjau kembali pemblokira
 'change-blocklink' => 'ubah blokir',
 'contribslink' => 'kontrib',
 'emaillink' => 'kirim surel',
-'autoblocker' => 'Diblokir secara otomatis karena alamat IP Anda digunakan oleh "[[User:$1|$1]]".
+'autoblocker' => 'Diblokir secara otomatis karena alamat IP Anda digunakan oleh "[[wiki_user:$1|$1]]".
 Alasan yang diberikan untuk pemblokiran $1 adalah: "$2"',
 'blocklogpage' => 'Log pemblokiran',
 'blocklog-showlog' => 'Pengguna ini telah diblokir sebelumnya. Log pemblokiran disediakan di bawah untuk referensi:',
@@ -2695,7 +2695,7 @@ Lihat [[Special:BlockList|daftar pemblokiran]] untuk semua pengguna yang saat in
 'block-log-flags-nocreate' => 'pembuatan akun dimatikan',
 'block-log-flags-noautoblock' => 'pemblokiran otomatis dimatikan',
 'block-log-flags-noemail' => 'surel diblokir',
-'block-log-flags-nousertalk' => 'tidak dapat menyunting halaman pembicaraan sendiri',
+'block-log-flags-nowiki_usertalk' => 'tidak dapat menyunting halaman pembicaraan sendiri',
 'block-log-flags-angry-autoblock' => 'peningkatan sistem pemblokiran otomatis telah diaktifkan',
 'block-log-flags-hiddenname' => 'nama pengguna tersembunyi',
 'range_block_disabled' => 'Kemampuan pengurus dalam membuat blokir blok IP dimatikan.',
@@ -2705,7 +2705,7 @@ Lihat [[Special:BlockList|daftar pemblokiran]] untuk semua pengguna yang saat in
 'ipb_already_blocked' => '"$1" telah diblokir',
 'ipb-needreblock' => '$1 sudah diblokir. Apakah Anda ingin mengubah set pemblokiran yang bersangkutan?',
 'ipb-otherblocks-header' => '{{PLURAL:$1|Blok|Blok}} lain',
-'unblock-hideuser' => 'Anda tidak dapat membuka blokir pengguna ini karena nama pengguna mereka telah disembunyikan.',
+'unblock-hidewiki_user' => 'Anda tidak dapat membuka blokir pengguna ini karena nama pengguna mereka telah disembunyikan.',
 'ipb_cant_unblock' => 'Kesalahan: Blokir dengan ID $1 tidak ditemukan. Blokir tersebut kemungkinan telah dibuka.',
 'ipb_blocked_as_range' => 'Kesalahan: IP $1 tidak diblok secara langsung dan tidak dapat dilepaskan. IP $1 diblok sebagai bagian dari pemblokiran kelompok IP $2, yang dapat dilepaskan.',
 'ip_range_invalid' => 'Blok IP tidak sah.',
@@ -2718,7 +2718,7 @@ Lihat [[Special:BlockList|daftar pemblokiran]] untuk semua pengguna yang saat in
 'sorbsreason' => 'Alamat IP anda terdaftar sebagai proxy terbuka di DNSBL.',
 'sorbs_create_account_reason' => 'Alamat IP anda terdaftar sebagai proxy terbuka di DNSBL. Anda tidak dapat membuat akun.',
 'cant-block-while-blocked' => 'Anda tidak dapat memblokir pengguna lain ketika Anda sendiri sedang diblokir.',
-'cant-see-hidden-user' => 'Pengguna yang anda coba blokir telah di blokir dan di sembunyikan. Selama anda tidak memiliki hak sembunyikan pengguna, anda tidak dapat melihat atau menyunting pemblokiran pengguna ini.',
+'cant-see-hidden-wiki_user' => 'Pengguna yang anda coba blokir telah di blokir dan di sembunyikan. Selama anda tidak memiliki hak sembunyikan pengguna, anda tidak dapat melihat atau menyunting pemblokiran pengguna ini.',
 'ipbblocked' => 'Anda tidak dapat memblokir atau membuka blokir pengguna lain, karena anda sendiri diblokir',
 'ipbnounblockself' => 'Anda tidak diizinkan untuk membuka blokir sendiri',
 
@@ -2767,13 +2767,13 @@ Pastikan Anda mengerti konsekuensi dari perbuatan ini sebelum melanjutkan.",
 
 Dalam kasus tersebut, apabila diinginkan, Anda dapat memindahkan atau menggabungkan halaman secara manual.",
 'movearticle' => 'Pindahkan halaman:',
-'moveuserpage-warning' => "'''Peringatan:''' Anda tengah memindahkan halaman pengguna. Perlu diketahui bahwa hanya halaman yang akan dipindahkan namun pengguna ''tidak akan'' berganti nama.",
+'movewiki_userpage-warning' => "'''Peringatan:''' Anda tengah memindahkan halaman pengguna. Perlu diketahui bahwa hanya halaman yang akan dipindahkan namun pengguna ''tidak akan'' berganti nama.",
 'movenologin' => 'Belum masuk log',
-'movenologintext' => 'Anda harus menjadi pengguna terdaftar dan telah [[Special:UserLogin|masuk log]] untuk dapat memindahkan suatu halaman.',
+'movenologintext' => 'Anda harus menjadi pengguna terdaftar dan telah [[Special:wiki_userLogin|masuk log]] untuk dapat memindahkan suatu halaman.',
 'movenotallowed' => 'Anda tak memiliki hak akses untuk memindahkan halaman.',
 'movenotallowedfile' => 'Anda tak memiliki hak untuk memindahkan berkas.',
-'cant-move-user-page' => 'Anda tidak memiliki hak akses untuk memindahkan halaman pengguna (terpisah dari subhalaman).',
-'cant-move-to-user-page' => 'Anda tidak memiliki hak akses untuk memindahkan halaman ke suatu halaman pengguna (kecuali ke subhalaman pengguna).',
+'cant-move-wiki_user-page' => 'Anda tidak memiliki hak akses untuk memindahkan halaman pengguna (terpisah dari subhalaman).',
+'cant-move-to-wiki_user-page' => 'Anda tidak memiliki hak akses untuk memindahkan halaman ke suatu halaman pengguna (kecuali ke subhalaman pengguna).',
 'newtitle' => 'Ke judul baru:',
 'move-watch' => 'Pantau halaman ini',
 'movepagebtn' => 'Pindahkan halaman',
@@ -2947,8 +2947,8 @@ Simpan ke komputer Anda dan unggah ke sini.',
 'javascripttest-qunit-heading' => 'MediaWiki JavaScript QUnit test suite',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Halaman pengguna Anda',
-'tooltip-pt-anonuserpage' => 'Halaman pengguna IP Anda',
+'tooltip-pt-wiki_userpage' => 'Halaman pengguna Anda',
+'tooltip-pt-anonwiki_userpage' => 'Halaman pengguna IP Anda',
 'tooltip-pt-mytalk' => 'Halaman pembicaraan Anda',
 'tooltip-pt-anontalk' => 'Pembicaraan tentang suntingan dari alamat IP ini',
 'tooltip-pt-preferences' => 'Preferensi saya',
@@ -2985,13 +2985,13 @@ Simpan ke komputer Anda dan unggah ke sini.',
 'tooltip-feed-rss' => 'Umpan RSS untuk halaman ini',
 'tooltip-feed-atom' => 'Umpan Atom untuk halaman ini',
 'tooltip-t-contributions' => 'Lihat daftar kontribusi pengguna ini',
-'tooltip-t-emailuser' => 'Kirimkan surel kepada pengguna ini',
+'tooltip-t-emailwiki_user' => 'Kirimkan surel kepada pengguna ini',
 'tooltip-t-upload' => 'Muatkan gambar atau berkas media',
 'tooltip-t-specialpages' => 'Daftar semua halaman istimewa',
 'tooltip-t-print' => 'Versi cetak halaman ini',
 'tooltip-t-permalink' => 'Pranala permanen untuk revisi halaman ini',
 'tooltip-ca-nstab-main' => 'Lihat halaman isi',
-'tooltip-ca-nstab-user' => 'Lihat halaman pengguna',
+'tooltip-ca-nstab-wiki_user' => 'Lihat halaman pengguna',
 'tooltip-ca-nstab-media' => 'Lihat halaman media',
 'tooltip-ca-nstab-special' => 'Ini adalah halaman istimewa yang tidak dapat disunting.',
 'tooltip-ca-nstab-project' => 'Lihat halaman proyek',
@@ -3046,13 +3046,13 @@ Simpan ke komputer Anda dan unggah ke sini.',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|pengguna|para pengguna}} anonim {{SITENAME}}',
-'siteuser' => 'pengguna {{SITENAME}} $1',
-'anonuser' => 'pengguna anonim {{SITENAME}} $1',
+'sitewiki_user' => 'pengguna {{SITENAME}} $1',
+'anonwiki_user' => 'pengguna anonim {{SITENAME}} $1',
 'lastmodifiedatby' => 'Halaman ini terakhir kali diubah $2, $1 oleh $3.',
 'othercontribs' => 'Didasarkan pada karya $1.',
 'others' => 'lainnya',
-'siteusers' => '{{PLURAL:$2|pengguna|para pengguna}} {{SITENAME}} $1',
-'anonusers' => '{{PLURAL:$2|pengguna|para pengguna}} anonim {{SITENAME}} $1',
+'sitewiki_users' => '{{PLURAL:$2|pengguna|para pengguna}} {{SITENAME}} $1',
+'anonwiki_users' => '{{PLURAL:$2|pengguna|para pengguna}} anonim {{SITENAME}} $1',
 'creditspage' => 'Penghargaan halaman',
 'nocredits' => 'Tidak ada informasi penghargaan yang tersedia untuk halaman ini.',
 
@@ -3061,7 +3061,7 @@ Simpan ke komputer Anda dan unggah ke sini.',
 'spamprotectiontext' => 'Halaman yang ingin Anda simpan telah diblokir oleh filter spam.
 Ini mungkin disebabkan oleh pranala ke situs luar yang termasuk dalam daftar hitam.',
 'spamprotectionmatch' => 'Teks berikut ini memancing filter spam kami: $1',
-'spambot_username' => 'Pembersihan span MediaWiki',
+'spambot_wiki_username' => 'Pembersihan span MediaWiki',
 'spam_reverting' => 'Mengembalikan ke versi terakhir yang tak memiliki pranala ke $1',
 'spam_blanking' => 'Semua revisi yang memiliki pranala ke $1, pengosongan',
 'spam_deleting' => 'Semua revisi yang memiliki pranala ke $1, penghapusan',
@@ -3085,9 +3085,9 @@ Ini mungkin disebabkan oleh pranala ke situs luar yang termasuk dalam daftar hit
 'pageinfo-redirects-name' => 'Pengalihan ke halaman ini',
 'pageinfo-subpages-name' => 'Subhalaman halaman ini',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|pengalihan|pengalihan}}; $3 {{PLURAL:$3|non-pengalihan|non-pengalihan}})',
-'pageinfo-firstuser' => 'Pembuat halaman',
+'pageinfo-firstwiki_user' => 'Pembuat halaman',
 'pageinfo-firsttime' => 'Tanggal pembuatan halaman',
-'pageinfo-lastuser' => 'Penyunting terakhir',
+'pageinfo-lastwiki_user' => 'Penyunting terakhir',
 'pageinfo-lasttime' => 'Tanggal suntingan terakhir',
 'pageinfo-edits' => 'Jumlah total suntingan',
 'pageinfo-authors' => 'Jumlah total penulis yang berbeda',
@@ -3242,7 +3242,7 @@ Data lain akan disembunyikan secara bawaan.
 'exif-compressedbitsperpixel' => 'Mode kompresi gambar',
 'exif-pixelydimension' => 'Lebar gambar',
 'exif-pixelxdimension' => 'Tinggi gambar',
-'exif-usercomment' => 'Komentar pengguna',
+'exif-wiki_usercomment' => 'Komentar pengguna',
 'exif-relatedsoundfile' => 'Berkas audio yang berhubungan',
 'exif-datetimeoriginal' => 'Tanggal dan waktu pembuatan data',
 'exif-datetimedigitized' => 'Tanggal dan waktu digitalisasi',
@@ -3622,7 +3622,7 @@ Aplikasi pengiriman surel menginformasikan: $1',
 'confirmemail_invalid' => 'Kode konfirmasi salah. Kode tersebut mungkin sudah kedaluwarsa.',
 'confirmemail_needlogin' => 'Anda harus melakukan $1 untuk mengkonfirmasikan alamat surel Anda.',
 'confirmemail_success' => 'Alamat surel Anda telah dikonfirmasi.
-Sekarang Anda dapat [[Special:UserLogin|masuk log]] dan mulai menggunakan wiki.',
+Sekarang Anda dapat [[Special:wiki_userLogin|masuk log]] dan mulai menggunakan wiki.',
 'confirmemail_loggedin' => 'Alamat surel Anda telah dikonfirmasi.',
 'confirmemail_error' => 'Terjadi kesalahan sewaktu menyimpan konfirmasi Anda.',
 'confirmemail_subject' => 'Konfirmasi alamat surel {{SITENAME}}',
@@ -3676,10 +3676,10 @@ Kode konfirmasi ini akan kedaluwarsa pada $4.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Peringatan''': Halaman ini telah dihapus setelah Anda mulai melakukan penyuntingan!",
-'confirmrecreate' => "Pengguna [[User:$1|$1]] ([[User talk:$1|bicara]]) telah menghapus halaman selagi Anda mulai melakukan penyuntingan dengan alasan:
+'confirmrecreate' => "Pengguna [[wiki_user:$1|$1]] ([[wiki_user talk:$1|bicara]]) telah menghapus halaman selagi Anda mulai melakukan penyuntingan dengan alasan:
 : ''$2''
 Silakan konfirmasi jika Anda ingin membuat ulang halaman ini.",
-'confirmrecreate-noreason' => 'Pengguna [[User:$1|$1]] ([[User talk:$1|bicara]]) telah menghapus halaman ini setelah Anda mulai menyunting. Harap konfirmasikan bahwa Anda ingin membuat ulang halaman ini.',
+'confirmrecreate-noreason' => 'Pengguna [[wiki_user:$1|$1]] ([[wiki_user talk:$1|bicara]]) telah menghapus halaman ini setelah Anda mulai menyunting. Harap konfirmasikan bahwa Anda ingin membuat ulang halaman ini.',
 'recreate' => 'Buat ulang',
 
 # action=purge
@@ -3797,7 +3797,7 @@ Anda juga dapat [[Special:EditWatchlist|menggunakan penyunting standar Anda]].',
 'hebrew-calendar-m12-gen' => 'Elul',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|bicara]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|bicara]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Tag ekstensi tidak dikenal "$1"',
@@ -3864,7 +3864,7 @@ Gambar ditampilkan dalam resolusi penuh dan tipe lain berkas akan dibuka langsun
 'specialpages-group-login' => 'Masuk log / mendaftar',
 'specialpages-group-changes' => 'Perubahan terbaru dan log',
 'specialpages-group-media' => 'Laporan dan pemuatan berkas',
-'specialpages-group-users' => 'Pengguna dan hak pengguna',
+'specialpages-group-wiki_users' => 'Pengguna dan hak pengguna',
 'specialpages-group-highuse' => 'Frekuensi tinggi',
 'specialpages-group-pages' => 'Daftar halaman',
 'specialpages-group-pagetools' => 'Peralatan halaman',
@@ -3961,11 +3961,11 @@ Gambar ditampilkan dalam resolusi penuh dan tipe lain berkas akan dibuka langsun
 'logentry-move-move_redir-noredirect' => '$1 memindahkan halaman $3 ke $4 menimpa pengalihan lama tanpa membuat pengalihan',
 'logentry-patrol-patrol' => '$1 menandai revisi $4 dari halaman $3 terpatroli',
 'logentry-patrol-patrol-auto' => '$1 secara otomatis menandai revisi $4 dari halaman $3 terpatroli',
-'logentry-newusers-newusers' => 'Akun pengguna $1 telah dibuat',
-'logentry-newusers-create' => '$1 membuat akun pengguna',
-'logentry-newusers-create2' => '$1 membuat akun pengguna $3',
-'logentry-newusers-autocreate' => 'Akun $1 dibuat secara otomatis',
-'newuserlog-byemail' => 'kata sandi dikirim melalui surel',
+'logentry-newwiki_users-newwiki_users' => 'Akun pengguna $1 telah dibuat',
+'logentry-newwiki_users-create' => '$1 membuat akun pengguna',
+'logentry-newwiki_users-create2' => '$1 membuat akun pengguna $3',
+'logentry-newwiki_users-autocreate' => 'Akun $1 dibuat secara otomatis',
+'newwiki_userlog-byemail' => 'kata sandi dikirim melalui surel',
 
 # Feedback
 'feedback-bugornote' => 'Jika Anda sudah siap untuk mendeskripsikan masalah teknis secara rinci silakan [$1 melaporkan bug].

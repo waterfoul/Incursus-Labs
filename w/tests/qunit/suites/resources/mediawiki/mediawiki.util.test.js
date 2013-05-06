@@ -185,15 +185,15 @@ QUnit.test( 'jsMessage', 1, function ( assert ) {
 
 QUnit.test( 'validateEmail', 6, function ( assert ) {
 	assert.strictEqual( mw.util.validateEmail( "" ), null, 'Should return null for empty string ' );
-	assert.strictEqual( mw.util.validateEmail( "user@localhost" ), true, 'Return true for a valid e-mail address' );
+	assert.strictEqual( mw.util.validateEmail( "wiki_user@localhost" ), true, 'Return true for a valid e-mail address' );
 
 	// testEmailWithCommasAreInvalids
-	assert.strictEqual( mw.util.validateEmail( "user,foo@example.org" ), false, 'Emails with commas are invalid' );
-	assert.strictEqual( mw.util.validateEmail( "userfoo@ex,ample.org" ), false, 'Emails with commas are invalid' );
+	assert.strictEqual( mw.util.validateEmail( "wiki_user,foo@example.org" ), false, 'Emails with commas are invalid' );
+	assert.strictEqual( mw.util.validateEmail( "wiki_userfoo@ex,ample.org" ), false, 'Emails with commas are invalid' );
 
 	// testEmailWithHyphens
-	assert.strictEqual( mw.util.validateEmail( "user-foo@example.org" ), true, 'Emails may contain a hyphen' );
-	assert.strictEqual( mw.util.validateEmail( "userfoo@ex-ample.org" ), true, 'Emails may contain a hyphen' );
+	assert.strictEqual( mw.util.validateEmail( "wiki_user-foo@example.org" ), true, 'Emails may contain a hyphen' );
+	assert.strictEqual( mw.util.validateEmail( "wiki_userfoo@ex-ample.org" ), true, 'Emails may contain a hyphen' );
 });
 
 QUnit.test( 'isIPv6Address', 40, function ( assert ) {

@@ -35,7 +35,7 @@
 abstract class Skin extends ContextSource {
 	protected $skinname = 'standard';
 	protected $mRelevantTitle = null;
-	protected $mRelevantUser = null;
+	protected $mRelevantwiki_user = null;
 
 	/**
 	 * Fetch the set of available skins.
@@ -88,7 +88,7 @@ abstract class Skin extends ContextSource {
 	/**
 	 * Fetch the list of usable skins in regards to $wgSkipSkins.
 	 * Useful for Special:Preferences and other places where you
-	 * only want to show skins users _can_ use.
+	 * only want to show skins wiki_users _can_ use.
 	 * @return array of strings
 	 */
 	public static function getUsableSkins() {
@@ -126,7 +126,7 @@ abstract class Skin extends ContextSource {
 		}
 
 		// Older versions of the software used a numeric setting
-		// in the user preferences.
+		// in the wiki_user preferences.
 		$fallback = array(
 			0 => $wgDefaultSkin,
 			1 => 'nostalgia',
@@ -170,7 +170,7 @@ abstract class Skin extends ContextSource {
 			# Check if we got if not failback to default skin
 			if ( !MWInit::classExists( $className ) ) {
 				# DO NOT die if the class isn't found. This breaks maintenance
-				# scripts and can cause a user account to be unrecoverable
+				# scripts and can cause a wiki_user account to be unrecoverable
 				# except by SQL manipulation if a previously valid skin name
 				# is no longer valid.
 				wfDebug( "Skin class does not exist: $className\n" );
@@ -204,10 +204,10 @@ abstract class Skin extends ContextSource {
 	 * Preload the existence of three commonly-requested pages in a single query
 	 */
 	function preloadExistence() {
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 
-		// User/talk link
-		$titles = array( $user->getUserPage(), $user->getTalkPage() );
+		// wiki_user/talk link
+		$titles = array( $wiki_user->getwiki_userPage(), $wiki_user->getTalkPage() );
 
 		// Other tab link
 		if ( $this->getTitle()->isSpecialPage() ) {
@@ -269,38 +269,38 @@ abstract class Skin extends ContextSource {
 	}
 
 	/**
-	 * Set the "relevant" user
-	 * @see self::getRelevantUser()
-	 * @param $u User object to use
+	 * Set the "relevant" wiki_user
+	 * @see self::getRelevantwiki_user()
+	 * @param $u wiki_user object to use
 	 */
-	public function setRelevantUser( $u ) {
-		$this->mRelevantUser = $u;
+	public function setRelevantwiki_user( $u ) {
+		$this->mRelevantwiki_user = $u;
 	}
 
 	/**
-	 * Return the "relevant" user.
-	 * A "relevant" user is similar to a relevant title. Special pages like
-	 * Special:Contributions mark the user which they are relevant to so that
+	 * Return the "relevant" wiki_user.
+	 * A "relevant" wiki_user is similar to a relevant title. Special pages like
+	 * Special:Contributions mark the wiki_user which they are relevant to so that
 	 * things like the toolbox can display the information they usually are only
-	 * able to display on a user's userpage and talkpage.
-	 * @return User
+	 * able to display on a wiki_user's wiki_userpage and talkpage.
+	 * @return wiki_user
 	 */
-	public function getRelevantUser() {
-		if ( isset($this->mRelevantUser) ) {
-			return $this->mRelevantUser;
+	public function getRelevantwiki_user() {
+		if ( isset($this->mRelevantwiki_user) ) {
+			return $this->mRelevantwiki_user;
 		}
 		$title = $this->getRelevantTitle();
 		if( $title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_TALK ) {
-			$rootUser = strtok( $title->getText(), '/' );
-			if ( User::isIP( $rootUser ) ) {
-				$this->mRelevantUser = User::newFromName( $rootUser, false );
+			$rootwiki_user = strtok( $title->getText(), '/' );
+			if ( wiki_user::isIP( $rootwiki_user ) ) {
+				$this->mRelevantwiki_user = wiki_user::newFromName( $rootwiki_user, false );
 			} else {
-				$user = User::newFromName( $rootUser, false );
-				if ( $user && $user->isLoggedIn() ) {
-					$this->mRelevantUser = $user;
+				$wiki_user = wiki_user::newFromName( $rootwiki_user, false );
+				if ( $wiki_user && $wiki_user->isLoggedIn() ) {
+					$this->mRelevantwiki_user = $wiki_user;
 				}
 			}
-			return $this->mRelevantUser;
+			return $this->mRelevantwiki_user;
 		}
 		return null;
 	}
@@ -365,7 +365,7 @@ abstract class Skin extends ContextSource {
 	 * @param $out OutputPage
 	 * @todo delete
 	 */
-	abstract function setupSkinUserCss( OutputPage $out );
+	abstract function setupSkinwiki_userCss( OutputPage $out );
 
 	/**
 	 * TODO: document
@@ -446,8 +446,8 @@ abstract class Skin extends ContextSource {
 
 		# Hidden categories
 		if ( isset( $allCats['hidden'] ) ) {
-			if ( $this->getUser()->getBoolOption( 'showhiddencats' ) ) {
-				$class = ' mw-hidden-cats-user-shown';
+			if ( $this->getwiki_user()->getBoolOption( 'showhiddencats' ) ) {
+				$class = ' mw-hidden-cats-wiki_user-shown';
 			} elseif ( $this->getTitle()->getNamespace() == NS_CATEGORY ) {
 				$class = ' mw-hidden-cats-ns-shown';
 			} else {
@@ -517,7 +517,7 @@ abstract class Skin extends ContextSource {
 
 		// Check what we're showing
 		$allCats = $out->getCategoryLinks();
-		$showHidden = $this->getUser()->getBoolOption( 'showhiddencats' ) ||
+		$showHidden = $this->getwiki_user()->getBoolOption( 'showhiddencats' ) ||
 						$this->getTitle()->getNamespace() == NS_CATEGORY;
 
 		if ( empty( $allCats['normal'] ) && !( !empty( $allCats['hidden'] ) && $showHidden ) ) {
@@ -609,13 +609,13 @@ abstract class Skin extends ContextSource {
 	function getUndeleteLink() {
 		$action = $this->getRequest()->getVal( 'action', 'view' );
 
-		if ( $this->getUser()->isAllowed( 'deletedhistory' ) &&
+		if ( $this->getwiki_user()->isAllowed( 'deletedhistory' ) &&
 			( $this->getTitle()->getArticleID() == 0 || $action == 'history' ) ) {
 			$n = $this->getTitle()->isDeleted();
 
 
 			if ( $n ) {
-				if ( $this->getUser()->isAllowed( 'undelete' ) ) {
+				if ( $this->getwiki_user()->isAllowed( 'undelete' ) ) {
 					$msg = 'thisisdeleted';
 				} else {
 					$msg = 'viewdeleted';
@@ -802,7 +802,7 @@ abstract class Skin extends ContextSource {
 	}
 
 	/**
-	 * Get the timestamp of the latest revision, formatted in user language
+	 * Get the timestamp of the latest revision, formatted in wiki_user language
 	 *
 	 * @return String
 	 */
@@ -815,8 +815,8 @@ abstract class Skin extends ContextSource {
 		}
 
 		if ( $timestamp ) {
-			$d = $this->getLanguage()->userDate( $timestamp, $this->getUser() );
-			$t = $this->getLanguage()->userTime( $timestamp, $this->getUser() );
+			$d = $this->getLanguage()->wiki_userDate( $timestamp, $this->getwiki_user() );
+			$t = $this->getLanguage()->wiki_userTime( $timestamp, $this->getwiki_user() );
 			$s = ' ' . $this->msg( 'lastmodifiedat', $d, $t )->text();
 		} else {
 			$s = '';
@@ -898,7 +898,7 @@ abstract class Skin extends ContextSource {
 			// then it is disabled, for all languages.
 			return '';
 		} else {
-			// Otherwise, we display the link for the user, described in their
+			// Otherwise, we display the link for the wiki_user, described in their
 			// language (which may or may not be the same as the default language),
 			// but we make the link target be the one site-wide page.
 			$title = Title::newFromText( $this->msg( $page )->inContentLanguage()->text() );
@@ -952,17 +952,17 @@ abstract class Skin extends ContextSource {
 	}
 
 	/**
-	 * @param $id User|int
+	 * @param $id wiki_user|int
 	 * @return bool
 	 */
-	function showEmailUser( $id ) {
-		if ( $id instanceof User ) {
-			$targetUser = $id;
+	function showEmailwiki_user( $id ) {
+		if ( $id instanceof wiki_user ) {
+			$targetwiki_user = $id;
 		} else {
-			$targetUser = User::newFromId( $id );
+			$targetwiki_user = wiki_user::newFromId( $id );
 		}
-		return $this->getUser()->canSendEmail() && # the sending user must have a confirmed email address
-			$targetUser->canReceiveEmail(); # the target user must have a confirmed email address and allow emails from users
+		return $this->getwiki_user()->canSendEmail() && # the sending wiki_user must have a confirmed email address
+			$targetwiki_user->canReceiveEmail(); # the target wiki_user must have a confirmed email address and allow emails from wiki_users
 	}
 
 	/**
@@ -1278,17 +1278,17 @@ abstract class Skin extends ContextSource {
 	}
 
 	/**
-	 * Gets new talk page messages for the current user.
+	 * Gets new talk page messages for the current wiki_user.
 	 * @return MediaWiki message or if no new talk page messages, nothing
 	 */
 	function getNewtalks() {
 		$out = $this->getOutput();
 
-		$newtalks = $this->getUser()->getNewMessageLinks();
+		$newtalks = $this->getwiki_user()->getNewMessageLinks();
 		$ntl = '';
 
 		if ( count( $newtalks ) == 1 && $newtalks[0]['wiki'] === wfWikiID() ) {
-			$uTalkTitle = $this->getUser()->getTalkPage();
+			$uTalkTitle = $this->getwiki_user()->getTalkPage();
 
 			if ( !$uTalkTitle->equals( $out->getTitle() ) ) {
 				$lastSeenRev = isset( $newtalks[0]['rev'] ) ? $newtalks[0]['rev'] : null;
@@ -1328,14 +1328,14 @@ abstract class Skin extends ContextSource {
 
 				if ( $nofAuthors >= 1 && $nofAuthors <= 10 ) {
 					$ntl = $this->msg(
-						'youhavenewmessagesfromusers',
+						'youhavenewmessagesfromwiki_users',
 						$newMessagesLink,
 						$newMessagesDiffLink
 					)->numParams( $nofAuthors );
 				} else {
 					// $nofAuthors === 11 signifies "11 or more" ("more than 10")
 					$ntl = $this->msg(
-						$nofAuthors > 10 ? 'youhavenewmessagesmanyusers' : 'youhavenewmessages',
+						$nofAuthors > 10 ? 'youhavenewmessagesmanywiki_users' : 'youhavenewmessages',
 						$newMessagesLink,
 						$newMessagesDiffLink
 					);
@@ -1448,7 +1448,7 @@ abstract class Skin extends ContextSource {
 		$siteNotice = '';
 
 		if ( wfRunHooks( 'SiteNoticeBefore', array( &$siteNotice, $this ) ) ) {
-			if ( is_object( $this->getUser() ) && $this->getUser()->isLoggedIn() ) {
+			if ( is_object( $this->getwiki_user() ) && $this->getwiki_user()->isLoggedIn() ) {
 				$siteNotice = $this->getCachedNotice( 'sitenotice' );
 			} else {
 				$anonNotice = $this->getCachedNotice( 'anonnotice' );
@@ -1482,7 +1482,7 @@ abstract class Skin extends ContextSource {
 	 * @return         string HTML to use for edit link
 	 */
 	public function doEditSectionLink( Title $nt, $section, $tooltip = null, $lang = false ) {
-		// HTML generated here should probably have userlangattributes
+		// HTML generated here should probably have wiki_userlangattributes
 		// added to it for LTR text on RTL pages
 
 		$lang = wfGetLangObj( $lang );

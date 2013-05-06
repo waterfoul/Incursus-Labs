@@ -37,8 +37,8 @@ class FixBug20757 extends Maintenance {
 	}
 
 	function execute() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$dbw = wfGetDB( DB_MASTER );
+		r = wfGetDB( DB_SLAVE );
+		w = wfGetDB( DB_MASTER );
 
 		$dryRun = $this->getOption( 'dry-run' );
 		if ( $dryRun ) {
@@ -50,10 +50,10 @@ class FixBug20757 extends Maintenance {
 		$numFixed = 0;
 		$numBad = 0;
 
-		$totalRevs = $dbr->selectField( 'text', 'MAX(old_id)', false, __METHOD__ );
+		$totalRevs = r->selectField( 'text', 'MAX(old_id)', false, __METHOD__ );
 
-		if ( $dbr->getType() == 'mysql'
-			&& version_compare( $dbr->getServerVersion(), '4.1.0', '>=' ) )
+		if ( r->getType() == 'mysql'
+			&& version_compare( r->getServerVersion(), '4.1.0', '>=' ) )
 		{
 			// In MySQL 4.1+, the binary field old_text has a non-working LOWER() function
 			$lowerLeft = 'LOWER(CONVERT(LEFT(old_text,22) USING latin1))';
@@ -65,7 +65,7 @@ class FixBug20757 extends Maintenance {
 		while ( true ) {
 			print "ID: $startId / $totalRevs\r";
 
-			$res = $dbr->select(
+			$res = r->select(
 				'text',
 				array( 'old_id', 'old_flags', 'old_text' ),
 				array(
@@ -137,7 +137,7 @@ class FixBug20757 extends Maintenance {
 			}
 
 			// Run the batch query on blob_tracking
-			$res = $dbr->select(
+			$res = r->select(
 				'blob_tracking',
 				'*',
 				array(
@@ -155,7 +155,7 @@ class FixBug20757 extends Maintenance {
 				$secondaryId = $stub['secondaryId'];
 				if ( !isset( $trackedBlobs[$secondaryId] ) ) {
 					// No tracked blob. Work out what went wrong
-					$secondaryRow = $dbr->selectRow(
+					$secondaryRow = r->selectRow(
 						'text',
 						array( 'old_flags', 'old_text' ),
 						array( 'old_id' => $secondaryId ),
@@ -213,8 +213,8 @@ class FixBug20757 extends Maintenance {
 
 				if ( !$dryRun ) {
 					// Reset the text row to point to the original copy
-					$dbw->begin( __METHOD__ );
-					$dbw->update(
+					w->begin( __METHOD__ );
+					w->update(
 						'text',
 						// SET
 						array(
@@ -228,7 +228,7 @@ class FixBug20757 extends Maintenance {
 
 					// Add a blob_tracking row so that the new reference can be recompressed
 					// without needing to run trackBlobs.php again
-					$dbw->insert( 'blob_tracking',
+					w->insert( 'blob_tracking',
 						array(
 							'bt_page' => $pageId,
 							'bt_rev_id' => $revId,
@@ -241,7 +241,7 @@ class FixBug20757 extends Maintenance {
 						),
 						__METHOD__
 					);
-					$dbw->commit( __METHOD__ );
+					w->commit( __METHOD__ );
 					$this->waitForSlaves();
 				}
 
@@ -283,9 +283,9 @@ class FixBug20757 extends Maintenance {
 				unset( $this->mapCache[$key] );
 			}
 
-			$dbr = wfGetDB( DB_SLAVE );
+			r = wfGetDB( DB_SLAVE );
 			$map = array();
-			$res = $dbr->select( 'revision',
+			$res = r->select( 'revision',
 				array( 'rev_id', 'rev_text_id' ),
 				array( 'rev_page' => $pageId ),
 				__METHOD__

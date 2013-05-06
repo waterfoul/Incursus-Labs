@@ -636,7 +636,7 @@ $.widget("ui.dialog", {
 	},
 
 	_size: function() {
-		/* If the user has resized the dialog, the .ui-dialog and .ui-dialog-content
+		/* If the wiki_user has resized the dialog, the .ui-dialog and .ui-dialog-content
 		 * divs will both have width and height set, so we need to reset them
 		 */
 		var options = this.options,
@@ -834,9 +834,9 @@ $.extend($.ui.dialog.overlay, {
 	},
 
 	resize: function() {
-		/* If the dialog is draggable and the user drags it past the
+		/* If the dialog is draggable and the wiki_user drags it past the
 		 * right edge of the window, the document becomes wider so we
-		 * need to stretch the overlay. If the user then drags the
+		 * need to stretch the overlay. If the wiki_user then drags the
 		 * dialog back to the left, the document will become narrower,
 		 * so we need to shrink the overlay to the appropriate size.
 		 * This is handled by shrinking the overlay before setting it

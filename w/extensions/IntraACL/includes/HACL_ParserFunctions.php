@@ -52,20 +52,20 @@ class HACLParserFunctions
     // array(string): All predefined rights that are referenced
     private $mPredefinedRights = array();
 
-    // array(string): Users who can change a right
-    private $mRightManagerUsers = array();
+    // array(string): wiki_users who can change a right
+    private $mRightManagerwiki_users = array();
 
     // array(string): Groups who can change a right
     private $mRightManagerGroups = array();
 
-    // array(string): Users who can change a group
-    private $mGroupManagerUsers = array();
+    // array(string): wiki_users who can change a group
+    private $mGroupManagerwiki_users = array();
 
     // array(string): Groups who can change a group
     private $mGroupManagerGroups = array();
 
-    // array(string): Users who are member of a group
-    private $mUserMembers = array();
+    // array(string): wiki_users who are member of a group
+    private $mwiki_userMembers = array();
 
     // array(string): Groups who are member of a group
     private $mGroupMembers = array();
@@ -143,10 +143,10 @@ class HACLParserFunctions
      * This parser function defines an access control entry (ACE) in form of an
      * inline right definition. It can appear several times in an article and
      * has the following parameters:
-     * assigned to: This is a comma separated list of user groups and users whose
+     * assigned to: This is a comma separated list of wiki_user groups and wiki_users whose
      *              access rights are defined. The special value stands for all
-     *              anonymous users. The special value user stands for all
-     *              registered users.
+     *              anonymous wiki_users. The special value wiki_user stands for all
+     *              registered wiki_users.
      * actions: This is the comma separated list of actions that are permitted.
      *          The allowed values are read, edit, formedit, create, move,
      *          annotate and delete. The special value comprises all of these actions.
@@ -169,7 +169,7 @@ class HACLParserFunctions
         $fingerprint = $this->makeFingerprint("access", $params);
 
         // handle the parameter "assigned to".
-        list($users, $groups, $em1, $warnings) = $this->assignedTo($params);
+        list($wiki_users, $groups, $em1, $warnings) = $this->assignedTo($params);
 
         // handle the parameter 'action'
         list($actions, $em2) = $this->actions($params);
@@ -194,7 +194,7 @@ class HACLParserFunctions
             // => create and store the new right for later use.
             if (!in_array($fingerprint, $this->mFingerprints))
             {
-                $ir = new HACLRight($this->actionNamesToIDs($actions), $groups, $users, $description, $name);
+                $ir = new HACLRight($this->actionNamesToIDs($actions), $groups, $wiki_users, $description, $name);
                 $this->mInlineRights[] = $ir;
                 $this->mFingerprints[] = $fingerprint;
             }
@@ -208,7 +208,7 @@ class HACLParserFunctions
                 wfMsgForContent('hacl_pf_rights', implode(', ', $actions));
         else
             $text = wfMsgForContent('hacl_pf_rights_title', implode(', ', $actions));
-        $text .= $this->showAssignees($users, $groups);
+        $text .= $this->showAssignees($wiki_users, $groups);
         $text .= $this->showDescription($description);
         $text .= $this->showErrors($errMsgs);
         $text .= $this->showWarnings($warnings);
@@ -277,8 +277,8 @@ class HACLParserFunctions
     /**
      * Callback for parser function "#manage rights:".
      * This function can be used in security descriptors and predefined rights.
-     * It defines which user or group can change the ACL.
-     * assigned to: This is a comma separated list of users and groups that can
+     * It defines which wiki_user or group can change the ACL.
+     * assigned to: This is a comma separated list of wiki_users and groups that can
      *              modify the security descriptor.
      *
      * @param Parser $parser
@@ -297,13 +297,13 @@ class HACLParserFunctions
         $fingerprint = $this->makeFingerprint("manageRights", $params);
 
         // handle the parameter "assigned to".
-        list($users, $groups, $errMsgs, $warnings) = $this->assignedTo($params);
+        list($wiki_users, $groups, $errMsgs, $warnings) = $this->assignedTo($params);
 
         if (count($errMsgs) == 0) {
             // no errors
             // => store the list of assignees for later use.
             if (!in_array($fingerprint, $this->mFingerprints)) {
-                $this->mRightManagerUsers  = array_merge($this->mRightManagerUsers, $users);
+                $this->mRightManagerwiki_users  = array_merge($this->mRightManagerwiki_users, $wiki_users);
                 $this->mRightManagerGroups = array_merge($this->mRightManagerGroups, $groups);
                 $this->mFingerprints[] = $fingerprint;
             }
@@ -313,7 +313,7 @@ class HACLParserFunctions
 
         // Format the right managers in Wikitext
         $text = wfMsgForContent('hacl_pf_right_managers_title');
-        $text .= $this->showAssignees($users, $groups);
+        $text .= $this->showAssignees($wiki_users, $groups);
         $text .= $this->showErrors($errMsgs);
         $text .= $this->showWarnings($warnings);
 
@@ -323,8 +323,8 @@ class HACLParserFunctions
     /**
      * Callback for parser function "#member:".
      * This function can appear (several times) in ACL group definitions. It
-     * defines a list of users and ACL groups that belong to the group.
-     * members: This is a comma separated list of users and groups that belong
+     * defines a list of wiki_users and ACL groups that belong to the group.
+     * members: This is a comma separated list of wiki_users and groups that belong
      *          to the group.
      *
      * @param Parser $parser
@@ -343,13 +343,13 @@ class HACLParserFunctions
         $fingerprint = $this->makeFingerprint("addMember", $params);
 
         // handle the parameter "assigned to".
-        list($users, $groups, $errMsgs, $warnings) = $this->assignedTo($params, false);
+        list($wiki_users, $groups, $errMsgs, $warnings) = $this->assignedTo($params, false);
 
         if (count($errMsgs) == 0) {
             // no errors
             // => store the list of members for later use.
             if (!in_array($fingerprint, $this->mFingerprints)) {
-                $this->mUserMembers  = array_merge($this->mUserMembers, $users);
+                $this->mwiki_userMembers  = array_merge($this->mwiki_userMembers, $wiki_users);
                 $this->mGroupMembers = array_merge($this->mGroupMembers, $groups);
                 $this->mFingerprints[] = $fingerprint;
             }
@@ -359,7 +359,7 @@ class HACLParserFunctions
 
         // Format the group members in Wikitext
         $text = wfMsgForContent('hacl_pf_group_members_title');
-        $text .= $this->showAssignees($users, $groups, false);
+        $text .= $this->showAssignees($wiki_users, $groups, false);
         $text .= $this->showErrors($errMsgs);
         $text .= $this->showWarnings($warnings);
 
@@ -368,9 +368,9 @@ class HACLParserFunctions
 
     /**
      * Callback for parser function "#manage group:".
-     * This function can be used in ACL group definitions. It defines which user
+     * This function can be used in ACL group definitions. It defines which wiki_user
      * or group can change the group.
-     * assigned to: This is a comma separated list of users and groups that can
+     * assigned to: This is a comma separated list of wiki_users and groups that can
      *              modify the group.
      *
      * @param Parser $parser
@@ -390,13 +390,13 @@ class HACLParserFunctions
         $fingerprint = $this->makeFingerprint("managerGroup", $params);
 
         // handle the parameter "assigned to".
-        list($users, $groups, $errMsgs, $warnings) = $this->assignedTo($params);
+        list($wiki_users, $groups, $errMsgs, $warnings) = $this->assignedTo($params);
 
         if (count($errMsgs) == 0) {
             // no errors
             // => store the list of assignees for later use.
             if (!in_array($fingerprint, $this->mFingerprints)) {
-                $this->mGroupManagerUsers  = array_merge($this->mGroupManagerUsers, $users);
+                $this->mGroupManagerwiki_users  = array_merge($this->mGroupManagerwiki_users, $wiki_users);
                 $this->mGroupManagerGroups = array_merge($this->mGroupManagerGroups, $groups);
                 $this->mFingerprints[] = $fingerprint;
             }
@@ -406,7 +406,7 @@ class HACLParserFunctions
 
         // Format the right managers in Wikitext
         $text = wfMsgForContent('hacl_pf_group_managers_title');
-        $text .= $this->showAssignees($users, $groups);
+        $text .= $this->showAssignees($wiki_users, $groups);
         $text .= $this->showErrors($errMsgs);
         $text .= $this->showWarnings($warnings);
 
@@ -454,7 +454,7 @@ class HACLParserFunctions
      * NewRevisionFromEditComplete hook is used in MediaWiki 1.13
      * as it is ran from import as well as from doEdit().
      */
-    public static function NewRevisionFromEditComplete($article, $rev, $baseID, $user)
+    public static function NewRevisionFromEditComplete($article, $rev, $baseID, $wiki_user)
     {
         return self::updateDefinition($article);
     }
@@ -473,7 +473,7 @@ class HACLParserFunctions
      * its content is transferred to the database.
      *
      * @param Article $article
-     * @param User $user
+     * @param wiki_user $wiki_user
      * @param string $text
      * @return true
      */
@@ -511,14 +511,14 @@ class HACLParserFunctions
                 if ($sd = HACLSecurityDescriptor::newFromID($title->getArticleId(), false))
                 {
                     // Check access
-                    if (!$sd->userCanModify())
+                    if (!$sd->wiki_userCanModify())
                         return true;
                     // remove all current rights, however the right remains in
                     // the hierarchy of rights, as it might be "revived"
                     $sd->removeAllRights();
                     // The empty right article can now be changed by everyone
                     $sd->setManageGroups(NULL);
-                    $sd->setManageUsers('*,#');
+                    $sd->setManagewiki_users('*,#');
                     $sd->save();
                 }
             }
@@ -567,9 +567,9 @@ class HACLParserFunctions
             if ($sd = HACLSecurityDescriptor::newFromID($title->getArticleId(), false))
             {
                 // Check access
-                if (!$sd->userCanModify())
+                if (!$sd->wiki_userCanModify())
                 {
-                    wfDebug(__METHOD__.": INCONSISTENCY! Article '$title' deleted, but corresponding SD remains, because userCanModify() = false\n");
+                    wfDebug(__METHOD__.": INCONSISTENCY! Article '$title' deleted, but corresponding SD remains, because wiki_userCanModify() = false\n");
                     return false;
                 }
                 // Delete SD permanently
@@ -584,10 +584,10 @@ class HACLParserFunctions
      * its removal is reflected in the database.
      *
      * @param unknown_type $article
-     * @param unknown_type $user
+     * @param unknown_type $wiki_user
      * @param unknown_type $reason
      */
-    public static function articleDelete(&$article, &$user, &$reason)
+    public static function articleDelete(&$article, &$wiki_user, &$reason)
     {
         // The article is in the ACL namespace?
         $title = $article->getTitle();
@@ -628,7 +628,7 @@ class HACLParserFunctions
      * @param unknown_type $oldTitle
      * @param unknown_type $newTitle
      */
-    public static function TitleMoveComplete($oldTitle, $newTitle, $wgUser, $pageid, $redirid)
+    public static function TitleMoveComplete($oldTitle, $newTitle, $wgwiki_user, $pageid, $redirid)
     {
         if ($oldTitle->getNamespace() == HACL_NS_ACL)
             return true;
@@ -662,7 +662,7 @@ class HACLParserFunctions
             $group->removeAllMembers();
             // The empty group article can now be changed by everyone
             $group->setManageGroups(NULL);
-            $group->setManageUsers('*,#');
+            $group->setManagewiki_users('*,#');
             $group->save();
         } catch(Exception $e) {}
     }
@@ -714,8 +714,8 @@ class HACLParserFunctions
                         $exists = true;
                         // Check consistency: is the definition in the DB equal to article text?
                         $consistent = $grp->checkIsEqual(
-                            $this->mUserMembers, $this->mGroupMembers,
-                            $this->mGroupManagerUsers, $this->mGroupManagerGroups
+                            $this->mwiki_userMembers, $this->mGroupMembers,
+                            $this->mGroupManagerwiki_users, $this->mGroupManagerGroups
                         );
                     }
                 }
@@ -746,7 +746,7 @@ class HACLParserFunctions
         }
 
         // Add "Create/edit with IntraACL editor" link
-        // TODO do not display it when the user has no rights to change ACL
+        // TODO do not display it when the wiki_user has no rights to change ACL
         $html .= wfMsgForContent($id ? 'hacl_edit_with_special' : 'hacl_create_with_special',
             Title::newFromText('Special:IntraACL')->getLocalUrl(array(
                 'action' => ($this->mType == 'group' ? 'group' : 'acl'),
@@ -795,18 +795,18 @@ class HACLParserFunctions
     private function saveGroup()
     {
         // FIXME make this HACLGroup's method
-        global $wgUser;
+        global $wgwiki_user;
         $t = $this->mTitle;
         $id = $t->getArticleID();
         $group = new HACLGroup(
             $id,
             $t->getText(),
             $this->mGroupManagerGroups,
-            $this->mGroupManagerUsers
+            $this->mGroupManagerwiki_users
         );
-        if (HACLGroup::exists($id) && !$group->userCanModify($wgUser))
+        if (HACLGroup::exists($id) && !$group->wiki_userCanModify($wgwiki_user))
         {
-            wfDebug(__METHOD__." ".$wgUser->getName()." does not have the right to modify group $t\n");
+            wfDebug(__METHOD__." ".$wgwiki_user->getName()." does not have the right to modify group $t\n");
             return false;
         }
         wfDebug(__METHOD__." Saving group: $t\n");
@@ -814,8 +814,8 @@ class HACLParserFunctions
         $group->removeAllMembers();
         foreach ($this->mGroupMembers as $m)
             $group->addGroup($m);
-        foreach ($this->mUserMembers as $m)
-            $group->addUser($m);
+        foreach ($this->mwiki_userMembers as $m)
+            $group->addwiki_user($m);
         return true;
     }
 
@@ -851,7 +851,7 @@ class HACLParserFunctions
             list($pe, $peType) = HACLSecurityDescriptor::nameOfPE($t->getText());
             $sd = new HACLSecurityDescriptor(
                 $t->getArticleID(), $t->getText(), $pe, $peType,
-                $this->mRightManagerGroups, $this->mRightManagerUsers
+                $this->mRightManagerGroups, $this->mRightManagerwiki_users
             );
             $sd->save();
 
@@ -873,7 +873,7 @@ class HACLParserFunctions
      * Checks the definition for emptiness.
      *
      * Groups:
-     *  - must have members (users or groups)
+     *  - must have members (wiki_users or groups)
      * Predefined Rights and Security Descriptors:
      *  - must have inline or predefined rights
      *  - a namespace can only be protected if it is not member of $haclgUnprotectableNamespaces
@@ -890,7 +890,7 @@ class HACLParserFunctions
         {
             // check for members
             if (count($this->mGroupMembers) == 0 &&
-                count($this->mUserMembers) == 0)
+                count($this->mwiki_userMembers) == 0)
                 $msg[] = wfMsgForContent('hacl_group_must_have_members');
         }
         // Check if the definition of a right or security descriptor is complete and valid
@@ -950,20 +950,20 @@ class HACLParserFunctions
             }
         }
         if (count($this->mRightManagerGroups) > 0 ||
-            count($this->mRightManagerUsers) > 0) {
+            count($this->mRightManagerwiki_users) > 0) {
             if ($type == 'group') {
                 $msg[] = wfMsgForContent("hacl_invalid_parser_function",
                     $haclgContLang->getParserFunction(HACLLanguage::PF_MANAGE_RIGHTS));
             }
         }
         if (count($this->mGroupManagerGroups) > 0 ||
-            count($this->mGroupManagerUsers) > 0) {
+            count($this->mGroupManagerwiki_users) > 0) {
             if ($type == 'right' || $type == 'sd') {
                 $msg[] = wfMsgForContent("hacl_invalid_parser_function",
                     $haclgContLang->getParserFunction(HACLLanguage::PF_MANAGE_GROUP));
             }
         }
-        if (count($this->mUserMembers) > 0 ||
+        if (count($this->mwiki_userMembers) > 0 ||
             count($this->mGroupMembers) > 0) {
             if ($type == 'right' || $type == 'sd') {
                 $msg[] = wfMsgForContent("hacl_invalid_parser_function",
@@ -1011,7 +1011,7 @@ class HACLParserFunctions
      * @param bool $isAssignedTo
      *         true  => parse the parameter "assignedTo"
      *         false => parse the parameter "members"
-     * @return array(users:array(string), groups:array(string),
+     * @return array(wiki_users:array(string), groups:array(string),
      *               error messages:array(string), warnings: array(string))
      */
     private function assignedTo($params, $isAssignedTo = true)
@@ -1019,7 +1019,7 @@ class HACLParserFunctions
         global $wgContLang, $haclgContLang;
         $errMsgs = array();
         $warnings = array();
-        $users = array();
+        $wiki_users = array();
         $groups = array();
 
         $assignedToPN = $isAssignedTo
@@ -1029,14 +1029,14 @@ class HACLParserFunctions
         {
             // The parameter "assigned to" is missing.
             $errMsgs[] = wfMsgForContent('hacl_missing_parameter', $assignedToPN);
-            return array($users, $groups, $errMsgs);
+            return array($wiki_users, $groups, $errMsgs);
         }
 
         $etc = haclfDisableTitlePatch();
 
         $assignedTo = $params[$assignedToPN];
         $assignedTo = explode(',', $assignedTo);
-        // read assigned users and groups
+        // read assigned wiki_users and groups
         foreach ($assignedTo as $assignee)
         {
             $assignee = trim($assignee);
@@ -1044,21 +1044,21 @@ class HACLParserFunctions
             if ($t && $t->getNamespace() == NS_USER ||
                 $assignee == '*' || $assignee == '#')
             {
-                // user found
+                // wiki_user found
                 if ($assignee != '*' && $assignee != '#')
                 {
-                    $user = $t->getText();
-                    // Check if the user exists
-                    if (User::idFromName($user) == 0)
+                    $wiki_user = $t->getText();
+                    // Check if the wiki_user exists
+                    if (wiki_user::idFromName($wiki_user) == 0)
                     {
-                        // User does not exist => add a warning
-                        $warnings[] = wfMsgForContent("hacl_unknown_user", $user);
+                        // wiki_user does not exist => add a warning
+                        $warnings[] = wfMsgForContent("hacl_unknown_wiki_user", $wiki_user);
                     }
                     else
-                        $users[] = $user;
+                        $wiki_users[] = $wiki_user;
                 }
                 else
-                    $users[] = $assignee;
+                    $wiki_users[] = $assignee;
             }
             else
             {
@@ -1078,14 +1078,14 @@ class HACLParserFunctions
                     $groups[] = $assignee;
             }
         }
-        if (count($users) == 0 && count($groups) == 0)
+        if (count($wiki_users) == 0 && count($groups) == 0)
         {
-            // No users/groups specified at all => add error message
+            // No wiki_users/groups specified at all => add error message
             $errMsgs[] = wfMsgForContent('hacl_missing_parameter_values', $assignedToPN);
         }
         haclfRestoreTitlePatch($etc);
 
-        return array($users, $groups, $errMsgs, $warnings);
+        return array($wiki_users, $groups, $errMsgs, $warnings);
     }
 
     /**
@@ -1196,36 +1196,36 @@ class HACLParserFunctions
      * Formats the wikitext for displaying assignees of a right or members of a
      * group.
      *
-     * @param array(string) $users
-     *         Array of user names (without namespace "User"). May be empty.
+     * @param array(string) $wiki_users
+     *         Array of wiki_user names (without namespace "wiki_user"). May be empty.
      * @param array(string) $groups
      *         Array of group names (without namespace "ACL"). May be emtpy.
      * @param bool $isAssignedTo
      *         true  => output for "assignedTo"
      *         false => output for "members"
      * @return string
-     *         A formatted wikitext with users and groups
+     *         A formatted wikitext with wiki_users and groups
      */
-    private function showAssignees($users, $groups, $isAssignedTo = true)
+    private function showAssignees($wiki_users, $groups, $isAssignedTo = true)
     {
         $text = "";
-        if ($users)
+        if ($wiki_users)
         {
             global $wgContLang;
-            $userNS = $wgContLang->getNsText(NS_USER);
+            $wiki_userNS = $wgContLang->getNsText(NS_USER);
             $text .= $isAssignedTo
-                ? ':;'.wfMsgForContent('hacl_assigned_user')
-                : ':;'.wfMsgForContent('hacl_user_member');
-            foreach ($users as &$u)
+                ? ':;'.wfMsgForContent('hacl_assigned_wiki_user')
+                : ':;'.wfMsgForContent('hacl_wiki_user_member');
+            foreach ($wiki_users as &$u)
             {
                 if ($u == '*')
-                    $u = wfMsgForContent('hacl_all_users');
+                    $u = wfMsgForContent('hacl_all_wiki_users');
                 elseif ($u == '#')
-                    $u = wfMsgForContent('hacl_registered_users');
+                    $u = wfMsgForContent('hacl_registered_wiki_users');
                 else
-                    $u = "[[$userNS:$u|$u]]";
+                    $u = "[[$wiki_userNS:$u|$u]]";
             }
-            $text .= implode(', ', $users);
+            $text .= implode(', ', $wiki_users);
             $text .= "\n";
         }
         if ($groups)

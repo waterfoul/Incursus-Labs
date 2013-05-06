@@ -23,7 +23,7 @@
  * tables you have to change the constraints on local tables.
  * 
  * The shared tables have to have GRANT REFERENCE on shared tables to local schema
- * i.e.: GRANT REFERENCES (user_id) ON mwuser TO hubclient;
+ * i.e.: GRANT REFERENCES (wiki_user_id) ON mwwiki_user TO hubclient;
  */
 
 require_once( __DIR__ . '/../Maintenance.php' );
@@ -46,17 +46,17 @@ class AlterSharedConstraints extends Maintenance {
 			return;
 		}
 		
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 		foreach ( $wgSharedTables as $table ) {
-			$stable = $dbw->tableNameInternal($table);
+			$stable = w->tableNameInternal($table);
 			if ( $wgSharedPrefix != null ) {
 				$ltable = preg_replace( "/^$wgSharedPrefix(.*)/i", "$wgDBprefix\\1", $stable );
 			} else {
 				$ltable = "{$wgDBprefix}{$stable}" ;
 			}
 			
-			$result = $dbw->query( "SELECT uc.constraint_name, uc.table_name, ucc.column_name, uccpk.table_name pk_table_name, uccpk.column_name pk_column_name, uc.delete_rule, uc.deferrable, uc.deferred
-					  FROM user_constraints uc, user_cons_columns ucc, user_cons_columns uccpk
+			$result = w->query( "SELECT uc.constraint_name, uc.table_name, ucc.column_name, uccpk.table_name pk_table_name, uccpk.column_name pk_column_name, uc.delete_rule, uc.deferrable, uc.deferred
+					  FROM wiki_user_constraints uc, wiki_user_cons_columns ucc, wiki_user_cons_columns uccpk
 					 WHERE uc.constraint_type = 'R'
 					   AND ucc.constraint_name = uc.constraint_name
 					   AND uccpk.constraint_name = uc.r_constraint_name
@@ -66,7 +66,7 @@ class AlterSharedConstraints extends Maintenance {
 					$this->output( "Altering {$row['constraint_name']} ...");
 					
 					try {
-						$dbw->query( "ALTER TABLE {$row['table_name']} DROP CONSTRAINT {$wgDBprefix}{$row['constraint_name']}" );
+						w->query( "ALTER TABLE {$row['table_name']} DROP CONSTRAINT {$wgDBprefix}{$row['constraint_name']}" );
 					} catch (DBQueryError $exdb) {
 						if ($exdb->errno != 2443) {
 							throw $exdb;
@@ -74,7 +74,7 @@ class AlterSharedConstraints extends Maintenance {
 					}
 					
 					$deleteRule = $row['delete_rule'] == 'NO ACTION' ? '' : "ON DELETE {$row['delete_rule']}";
-					$dbw->query( "ALTER TABLE {$row['table_name']} ADD CONSTRAINT {$wgDBprefix}{$row['constraint_name']} 
+					w->query( "ALTER TABLE {$row['table_name']} ADD CONSTRAINT {$wgDBprefix}{$row['constraint_name']} 
 						FOREIGN KEY ({$row['column_name']}) 
 						REFERENCES {$wgSharedDB}.$stable({$row['pk_column_name']}) 
 						{$deleteRule} {$row['deferrable']} INITIALLY {$row['deferred']}" );

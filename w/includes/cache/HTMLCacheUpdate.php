@@ -191,8 +191,8 @@ class HTMLCacheUpdate implements DeferrableUpdate {
 	protected function invalidateTitles( $titleArray ) {
 		global $wgUseFileCache, $wgUseSquid;
 
-		$dbw = wfGetDB( DB_MASTER );
-		$timestamp = $dbw->timestamp();
+		w = wfGetDB( DB_MASTER );
+		$timestamp = w->timestamp();
 
 		# Get all IDs in this query into an array
 		$ids = array();
@@ -207,7 +207,7 @@ class HTMLCacheUpdate implements DeferrableUpdate {
 		# Update page_touched
 		$batches = array_chunk( $ids, $this->mRowsPerQuery );
 		foreach ( $batches as $batch ) {
-			$dbw->update( 'page',
+			w->update( 'page',
 				array( 'page_touched' => $timestamp ),
 				array( 'page_id' => $batch ),
 				__METHOD__

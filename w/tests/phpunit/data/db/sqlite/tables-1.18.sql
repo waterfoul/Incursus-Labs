@@ -2,51 +2,51 @@
 -- It is used for updater testing. Comments are stripped to decrease
 -- file size, as we don't need to maintain it.
 
-CREATE TABLE /*_*/user (
-  user_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  user_name varchar(255) binary NOT NULL default '',
-  user_real_name varchar(255) binary NOT NULL default '',
-  user_password tinyblob NOT NULL,
-  user_newpassword tinyblob NOT NULL,
-  user_newpass_time binary(14),
-  user_email tinytext NOT NULL,
-  user_options blob NOT NULL,
-  user_touched binary(14) NOT NULL default '',
-  user_token binary(32) NOT NULL default '',
-  user_email_authenticated binary(14),
-  user_email_token binary(32),
-  user_email_token_expires binary(14),
-  user_registration binary(14),
-  user_editcount int
+CREATE TABLE /*_*/wiki_user (
+  wiki_user_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  wiki_user_name varchar(255) binary NOT NULL default '',
+  wiki_user_real_name varchar(255) binary NOT NULL default '',
+  wiki_user_password tinyblob NOT NULL,
+  wiki_user_newpassword tinyblob NOT NULL,
+  wiki_user_newpass_time binary(14),
+  wiki_user_email tinytext NOT NULL,
+  wiki_user_options blob NOT NULL,
+  wiki_user_touched binary(14) NOT NULL default '',
+  wiki_user_token binary(32) NOT NULL default '',
+  wiki_user_email_authenticated binary(14),
+  wiki_user_email_token binary(32),
+  wiki_user_email_token_expires binary(14),
+  wiki_user_registration binary(14),
+  wiki_user_editcount int
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/user_name ON /*_*/user (user_name);
-CREATE INDEX /*i*/user_email_token ON /*_*/user (user_email_token);
-CREATE INDEX /*i*/user_email ON /*_*/user (user_email(50));
-CREATE TABLE /*_*/user_groups (
-  ug_user int unsigned NOT NULL default 0,
+CREATE UNIQUE INDEX /*i*/wiki_user_name ON /*_*/wiki_user (wiki_user_name);
+CREATE INDEX /*i*/wiki_user_email_token ON /*_*/wiki_user (wiki_user_email_token);
+CREATE INDEX /*i*/wiki_user_email ON /*_*/wiki_user (wiki_user_email(50));
+CREATE TABLE /*_*/wiki_user_groups (
+  ug_wiki_user int unsigned NOT NULL default 0,
   ug_group varbinary(16) NOT NULL default ''
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/ug_user_group ON /*_*/user_groups (ug_user,ug_group);
-CREATE INDEX /*i*/ug_group ON /*_*/user_groups (ug_group);
-CREATE TABLE /*_*/user_former_groups (
-  ufg_user int unsigned NOT NULL default 0,
+CREATE UNIQUE INDEX /*i*/ug_wiki_user_group ON /*_*/wiki_user_groups (ug_wiki_user,ug_group);
+CREATE INDEX /*i*/ug_group ON /*_*/wiki_user_groups (ug_group);
+CREATE TABLE /*_*/wiki_user_former_groups (
+  ufg_wiki_user int unsigned NOT NULL default 0,
   ufg_group varbinary(16) NOT NULL default ''
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/ufg_user_group ON /*_*/user_former_groups (ufg_user,ufg_group);
-CREATE TABLE /*_*/user_newtalk (
-  user_id int NOT NULL default 0,
-  user_ip varbinary(40) NOT NULL default '',
-  user_last_timestamp varbinary(14) NULL default NULL
+CREATE UNIQUE INDEX /*i*/ufg_wiki_user_group ON /*_*/wiki_user_former_groups (ufg_wiki_user,ufg_group);
+CREATE TABLE /*_*/wiki_user_newtalk (
+  wiki_user_id int NOT NULL default 0,
+  wiki_user_ip varbinary(40) NOT NULL default '',
+  wiki_user_last_timestamp varbinary(14) NULL default NULL
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/un_user_id ON /*_*/user_newtalk (user_id);
-CREATE INDEX /*i*/un_user_ip ON /*_*/user_newtalk (user_ip);
-CREATE TABLE /*_*/user_properties (
-  up_user int NOT NULL,
+CREATE INDEX /*i*/un_wiki_user_id ON /*_*/wiki_user_newtalk (wiki_user_id);
+CREATE INDEX /*i*/un_wiki_user_ip ON /*_*/wiki_user_newtalk (wiki_user_ip);
+CREATE TABLE /*_*/wiki_user_properties (
+  up_wiki_user int NOT NULL,
   up_property varbinary(255) NOT NULL,
   up_value blob
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/user_properties_user_property ON /*_*/user_properties (up_user,up_property);
-CREATE INDEX /*i*/user_properties_property ON /*_*/user_properties (up_property);
+CREATE UNIQUE INDEX /*i*/wiki_user_properties_wiki_user_property ON /*_*/wiki_user_properties (up_wiki_user,up_property);
+CREATE INDEX /*i*/wiki_user_properties_property ON /*_*/wiki_user_properties (up_property);
 CREATE TABLE /*_*/page (
   page_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   page_namespace int NOT NULL,
@@ -68,8 +68,8 @@ CREATE TABLE /*_*/revision (
   rev_page int unsigned NOT NULL,
   rev_text_id int unsigned NOT NULL,
   rev_comment tinyblob NOT NULL,
-  rev_user int unsigned NOT NULL default 0,
-  rev_user_text varchar(255) binary NOT NULL default '',
+  rev_wiki_user int unsigned NOT NULL default 0,
+  rev_wiki_user_text varchar(255) binary NOT NULL default '',
   rev_timestamp binary(14) NOT NULL default '',
   rev_minor_edit tinyint unsigned NOT NULL default 0,
   rev_deleted tinyint unsigned NOT NULL default 0,
@@ -79,8 +79,8 @@ CREATE TABLE /*_*/revision (
 CREATE UNIQUE INDEX /*i*/rev_page_id ON /*_*/revision (rev_page, rev_id);
 CREATE INDEX /*i*/rev_timestamp ON /*_*/revision (rev_timestamp);
 CREATE INDEX /*i*/page_timestamp ON /*_*/revision (rev_page,rev_timestamp);
-CREATE INDEX /*i*/user_timestamp ON /*_*/revision (rev_user,rev_timestamp);
-CREATE INDEX /*i*/usertext_timestamp ON /*_*/revision (rev_user_text,rev_timestamp);
+CREATE INDEX /*i*/wiki_user_timestamp ON /*_*/revision (rev_wiki_user,rev_timestamp);
+CREATE INDEX /*i*/wiki_usertext_timestamp ON /*_*/revision (rev_wiki_user_text,rev_timestamp);
 CREATE TABLE /*_*/text (
   old_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   old_text mediumblob NOT NULL,
@@ -91,8 +91,8 @@ CREATE TABLE /*_*/archive (
   ar_title varchar(255) binary NOT NULL default '',
   ar_text mediumblob NOT NULL,
   ar_comment tinyblob NOT NULL,
-  ar_user int unsigned NOT NULL default 0,
-  ar_user_text varchar(255) binary NOT NULL,
+  ar_wiki_user int unsigned NOT NULL default 0,
+  ar_wiki_user_text varchar(255) binary NOT NULL,
   ar_timestamp binary(14) NOT NULL default '',
   ar_minor_edit tinyint NOT NULL default 0,
   ar_flags tinyblob NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE /*_*/archive (
   ar_parent_id int unsigned default NULL
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/name_title_timestamp ON /*_*/archive (ar_namespace,ar_title,ar_timestamp);
-CREATE INDEX /*i*/ar_usertext_timestamp ON /*_*/archive (ar_user_text,ar_timestamp);
+CREATE INDEX /*i*/ar_wiki_usertext_timestamp ON /*_*/archive (ar_wiki_user_text,ar_timestamp);
 CREATE INDEX /*i*/ar_revid ON /*_*/archive (ar_rev_id);
 CREATE TABLE /*_*/pagelinks (
   pl_from int unsigned NOT NULL default 0,
@@ -157,11 +157,11 @@ CREATE TABLE /*_*/externallinks (
 CREATE INDEX /*i*/el_from ON /*_*/externallinks (el_from, el_to(40));
 CREATE INDEX /*i*/el_to ON /*_*/externallinks (el_to(60), el_from);
 CREATE INDEX /*i*/el_index ON /*_*/externallinks (el_index(60));
-CREATE TABLE /*_*/external_user (
+CREATE TABLE /*_*/external_wiki_user (
   eu_local_id int unsigned NOT NULL PRIMARY KEY,
   eu_external_id varchar(255) binary NOT NULL
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/eu_external_id ON /*_*/external_user (eu_external_id);
+CREATE UNIQUE INDEX /*i*/eu_external_id ON /*_*/external_wiki_user (eu_external_id);
 CREATE TABLE /*_*/langlinks (
   ll_from int unsigned NOT NULL default 0,
   ll_lang varbinary(20) NOT NULL default '',
@@ -182,8 +182,8 @@ CREATE TABLE /*_*/site_stats (
   ss_total_edits bigint unsigned default 0,
   ss_good_articles bigint unsigned default 0,
   ss_total_pages bigint default '-1',
-  ss_users bigint default '-1',
-  ss_active_users bigint default '-1',
+  ss_wiki_users bigint default '-1',
+  ss_active_wiki_users bigint default '-1',
   ss_admins int default '-1',
   ss_images int default 0
 ) /*$wgDBTableOptions*/;
@@ -194,7 +194,7 @@ CREATE TABLE /*_*/hitcounter (
 CREATE TABLE /*_*/ipblocks (
   ipb_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   ipb_address tinyblob NOT NULL,
-  ipb_user int unsigned NOT NULL default 0,
+  ipb_wiki_user int unsigned NOT NULL default 0,
   ipb_by int unsigned NOT NULL default 0,
   ipb_by_text varchar(255) binary NOT NULL default '',
   ipb_reason tinyblob NOT NULL,
@@ -208,10 +208,10 @@ CREATE TABLE /*_*/ipblocks (
   ipb_range_end tinyblob NOT NULL,
   ipb_deleted bool NOT NULL default 0,
   ipb_block_email bool NOT NULL default 0,
-  ipb_allow_usertalk bool NOT NULL default 0
+  ipb_allow_wiki_usertalk bool NOT NULL default 0
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/ipb_address ON /*_*/ipblocks (ipb_address(255), ipb_user, ipb_auto, ipb_anon_only);
-CREATE INDEX /*i*/ipb_user ON /*_*/ipblocks (ipb_user);
+CREATE UNIQUE INDEX /*i*/ipb_address ON /*_*/ipblocks (ipb_address(255), ipb_wiki_user, ipb_auto, ipb_anon_only);
+CREATE INDEX /*i*/ipb_wiki_user ON /*_*/ipblocks (ipb_wiki_user);
 CREATE INDEX /*i*/ipb_range ON /*_*/ipblocks (ipb_range_start(8), ipb_range_end(8));
 CREATE INDEX /*i*/ipb_timestamp ON /*_*/ipblocks (ipb_timestamp);
 CREATE INDEX /*i*/ipb_expiry ON /*_*/ipblocks (ipb_expiry);
@@ -226,12 +226,12 @@ CREATE TABLE /*_*/image (
   img_major_mime ENUM("unknown", "application", "audio", "image", "text", "video", "message", "model", "multipart") NOT NULL default "unknown",
   img_minor_mime varbinary(100) NOT NULL default "unknown",
   img_description tinyblob NOT NULL,
-  img_user int unsigned NOT NULL default 0,
-  img_user_text varchar(255) binary NOT NULL,
+  img_wiki_user int unsigned NOT NULL default 0,
+  img_wiki_user_text varchar(255) binary NOT NULL,
   img_timestamp varbinary(14) NOT NULL default '',
   img_sha1 varbinary(32) NOT NULL default ''
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/img_usertext_timestamp ON /*_*/image (img_user_text,img_timestamp);
+CREATE INDEX /*i*/img_wiki_usertext_timestamp ON /*_*/image (img_wiki_user_text,img_timestamp);
 CREATE INDEX /*i*/img_size ON /*_*/image (img_size);
 CREATE INDEX /*i*/img_timestamp ON /*_*/image (img_timestamp);
 CREATE INDEX /*i*/img_sha1 ON /*_*/image (img_sha1);
@@ -243,8 +243,8 @@ CREATE TABLE /*_*/oldimage (
   oi_height int NOT NULL default 0,
   oi_bits int NOT NULL default 0,
   oi_description tinyblob NOT NULL,
-  oi_user int unsigned NOT NULL default 0,
-  oi_user_text varchar(255) binary NOT NULL,
+  oi_wiki_user int unsigned NOT NULL default 0,
+  oi_wiki_user_text varchar(255) binary NOT NULL,
   oi_timestamp binary(14) NOT NULL default '',
   oi_metadata mediumblob NOT NULL,
   oi_media_type ENUM("UNKNOWN", "BITMAP", "DRAWING", "AUDIO", "VIDEO", "MULTIMEDIA", "OFFICE", "TEXT", "EXECUTABLE", "ARCHIVE") default NULL,
@@ -253,7 +253,7 @@ CREATE TABLE /*_*/oldimage (
   oi_deleted tinyint unsigned NOT NULL default 0,
   oi_sha1 varbinary(32) NOT NULL default ''
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/oi_usertext_timestamp ON /*_*/oldimage (oi_user_text,oi_timestamp);
+CREATE INDEX /*i*/oi_wiki_usertext_timestamp ON /*_*/oldimage (oi_wiki_user_text,oi_timestamp);
 CREATE INDEX /*i*/oi_name_timestamp ON /*_*/oldimage (oi_name,oi_timestamp);
 CREATE INDEX /*i*/oi_name_archive_name ON /*_*/oldimage (oi_name,oi_archive_name(14));
 CREATE INDEX /*i*/oi_sha1 ON /*_*/oldimage (oi_sha1);
@@ -263,7 +263,7 @@ CREATE TABLE /*_*/filearchive (
   fa_archive_name varchar(255) binary default '',
   fa_storage_group varbinary(16),
   fa_storage_key varbinary(64) default '',
-  fa_deleted_user int,
+  fa_deleted_wiki_user int,
   fa_deleted_timestamp binary(14) default '',
   fa_deleted_reason text,
   fa_size int unsigned default 0,
@@ -275,18 +275,18 @@ CREATE TABLE /*_*/filearchive (
   fa_major_mime ENUM("unknown", "application", "audio", "image", "text", "video", "message", "model", "multipart") default "unknown",
   fa_minor_mime varbinary(100) default "unknown",
   fa_description tinyblob,
-  fa_user int unsigned default 0,
-  fa_user_text varchar(255) binary,
+  fa_wiki_user int unsigned default 0,
+  fa_wiki_user_text varchar(255) binary,
   fa_timestamp binary(14) default '',
   fa_deleted tinyint unsigned NOT NULL default 0
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/fa_name ON /*_*/filearchive (fa_name, fa_timestamp);
 CREATE INDEX /*i*/fa_storage_group ON /*_*/filearchive (fa_storage_group, fa_storage_key);
 CREATE INDEX /*i*/fa_deleted_timestamp ON /*_*/filearchive (fa_deleted_timestamp);
-CREATE INDEX /*i*/fa_user_timestamp ON /*_*/filearchive (fa_user_text,fa_timestamp);
+CREATE INDEX /*i*/fa_wiki_user_timestamp ON /*_*/filearchive (fa_wiki_user_text,fa_timestamp);
 CREATE TABLE /*_*/uploadstash (
 	us_id int unsigned NOT NULL PRIMARY KEY auto_increment,
-	us_user int unsigned NOT NULL,
+	us_wiki_user int unsigned NOT NULL,
 	us_key varchar(255) NOT NULL,
 	us_orig_path varchar(255) NOT NULL,
 	us_path varchar(255) NOT NULL,
@@ -301,15 +301,15 @@ CREATE TABLE /*_*/uploadstash (
 	us_image_height int unsigned,
 	us_image_bits smallint unsigned
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/us_user ON /*_*/uploadstash (us_user);
+CREATE INDEX /*i*/us_wiki_user ON /*_*/uploadstash (us_wiki_user);
 CREATE UNIQUE INDEX /*i*/us_key ON /*_*/uploadstash (us_key);
 CREATE INDEX /*i*/us_timestamp ON /*_*/uploadstash (us_timestamp);
 CREATE TABLE /*_*/recentchanges (
   rc_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   rc_timestamp varbinary(14) NOT NULL default '',
   rc_cur_time varbinary(14) NOT NULL default '',
-  rc_user int unsigned NOT NULL default 0,
-  rc_user_text varchar(255) binary NOT NULL,
+  rc_wiki_user int unsigned NOT NULL default 0,
+  rc_wiki_user_text varchar(255) binary NOT NULL,
   rc_namespace int NOT NULL default 0,
   rc_title varchar(255) binary NOT NULL default '',
   rc_comment varchar(255) binary NOT NULL default '',
@@ -337,15 +337,15 @@ CREATE INDEX /*i*/rc_namespace_title ON /*_*/recentchanges (rc_namespace, rc_tit
 CREATE INDEX /*i*/rc_cur_id ON /*_*/recentchanges (rc_cur_id);
 CREATE INDEX /*i*/new_name_timestamp ON /*_*/recentchanges (rc_new,rc_namespace,rc_timestamp);
 CREATE INDEX /*i*/rc_ip ON /*_*/recentchanges (rc_ip);
-CREATE INDEX /*i*/rc_ns_usertext ON /*_*/recentchanges (rc_namespace, rc_user_text);
-CREATE INDEX /*i*/rc_user_text ON /*_*/recentchanges (rc_user_text, rc_timestamp);
+CREATE INDEX /*i*/rc_ns_wiki_usertext ON /*_*/recentchanges (rc_namespace, rc_wiki_user_text);
+CREATE INDEX /*i*/rc_wiki_user_text ON /*_*/recentchanges (rc_wiki_user_text, rc_timestamp);
 CREATE TABLE /*_*/watchlist (
-  wl_user int unsigned NOT NULL,
+  wl_wiki_user int unsigned NOT NULL,
   wl_namespace int NOT NULL default 0,
   wl_title varchar(255) binary NOT NULL default '',
   wl_notificationtimestamp varbinary(14)
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/wl_user ON /*_*/watchlist (wl_user, wl_namespace, wl_title);
+CREATE UNIQUE INDEX /*i*/wl_wiki_user ON /*_*/watchlist (wl_wiki_user, wl_namespace, wl_title);
 CREATE INDEX /*i*/namespace_title ON /*_*/watchlist (wl_namespace, wl_title);
 CREATE TABLE /*_*/searchindex (
   si_page int unsigned NOT NULL,
@@ -388,8 +388,8 @@ CREATE TABLE /*_*/logging (
   log_type varbinary(32) NOT NULL default '',
   log_action varbinary(32) NOT NULL default '',
   log_timestamp binary(14) NOT NULL default '19700101000000',
-  log_user int unsigned NOT NULL default 0,
-  log_user_text varchar(255) binary NOT NULL default '',
+  log_wiki_user int unsigned NOT NULL default 0,
+  log_wiki_user_text varchar(255) binary NOT NULL default '',
   log_namespace int NOT NULL default 0,
   log_title varchar(255) binary NOT NULL default '',
   log_page int unsigned NULL,
@@ -398,10 +398,10 @@ CREATE TABLE /*_*/logging (
   log_deleted tinyint unsigned NOT NULL default 0
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/type_time ON /*_*/logging (log_type, log_timestamp);
-CREATE INDEX /*i*/user_time ON /*_*/logging (log_user, log_timestamp);
+CREATE INDEX /*i*/wiki_user_time ON /*_*/logging (log_wiki_user, log_timestamp);
 CREATE INDEX /*i*/page_time ON /*_*/logging (log_namespace, log_title, log_timestamp);
 CREATE INDEX /*i*/times ON /*_*/logging (log_timestamp);
-CREATE INDEX /*i*/log_user_type_time ON /*_*/logging (log_user, log_type, log_timestamp);
+CREATE INDEX /*i*/log_wiki_user_type_time ON /*_*/logging (log_wiki_user, log_type, log_timestamp);
 CREATE INDEX /*i*/log_page_id_time ON /*_*/logging (log_page,log_timestamp);
 CREATE TABLE /*_*/log_search (
   ls_field varbinary(32) NOT NULL,
@@ -456,7 +456,7 @@ CREATE TABLE /*_*/page_restrictions (
   pr_type varbinary(60) NOT NULL,
   pr_level varbinary(60) NOT NULL,
   pr_cascade tinyint NOT NULL,
-  pr_user int NULL,
+  pr_wiki_user int NULL,
   pr_expiry varbinary(14) NULL,
   pr_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT
 ) /*$wgDBTableOptions*/;
@@ -467,7 +467,7 @@ CREATE INDEX /*i*/pr_cascade ON /*_*/page_restrictions (pr_cascade);
 CREATE TABLE /*_*/protected_titles (
   pt_namespace int NOT NULL,
   pt_title varchar(255) binary NOT NULL,
-  pt_user int unsigned NOT NULL,
+  pt_wiki_user int unsigned NOT NULL,
   pt_reason tinyblob,
   pt_timestamp binary(14) NOT NULL,
   pt_expiry varbinary(14) NOT NULL default '',

@@ -44,7 +44,7 @@ $messages = array(
 'jumptonavigation' => 'گردسن',
 'jumptosearch' => 'واموج',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'تازه چیؤن',
 'mainpage' => 'گت صفحه',
 'mainpage-description' => 'گت صفحه',
@@ -56,7 +56,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'وانیویس (مقاله)',
-'nstab-user' => 'کاربری هنه‌شر',
+'nstab-wiki_user' => 'کاربری هنه‌شر',
 'nstab-category' => 'رج',
 
 # Search results

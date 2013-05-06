@@ -93,7 +93,7 @@ class RevisionDeleter {
 		}
 		if ( isset( SpecialRevisionDelete::$allowedTypes[$typeName] ) ) {
 			$class = SpecialRevisionDelete::$allowedTypes[$typeName]['list-class'];
-			return call_user_func( array( $class, 'getRelationType' ) );
+			return call_wiki_user_func( array( $class, 'getRelationType' ) );
 		} else {
 			return null;
 		}
@@ -109,15 +109,15 @@ class RevisionDeleter {
 	 * @return bool|mixed
 	 */
 	public static function checkRevisionExistence( $title, $revid ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$exists = $dbr->selectField( 'revision', '1',
+		r = wfGetDB( DB_SLAVE );
+		$exists = r->selectField( 'revision', '1',
 				array( 'rev_id' => $revid ), __METHOD__ );
 
 		if ( $exists ) {
 			return true;
 		}
 
-		$timestamp = $dbr->selectField( 'archive', 'ar_timestamp',
+		$timestamp = r->selectField( 'archive', 'ar_timestamp',
 				array( 'ar_namespace' => $title->getNamespace(),
 					'ar_title' => $title->getDBkey(),
 					'ar_rev_id' => $revid ), __METHOD__ );

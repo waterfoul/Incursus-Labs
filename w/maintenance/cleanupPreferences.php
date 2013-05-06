@@ -34,16 +34,16 @@ class CleanupPreferences extends Maintenance {
 	public function execute() {
 		global $wgHiddenPrefs;
 
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin();
+		w = wfGetDB( DB_MASTER );
+		w->begin();
 		foreach( $wgHiddenPrefs as $item ) {
-			$dbw->delete(
-				'user_properties',
+			w->delete(
+				'wiki_user_properties',
 				array( 'up_property' => $item ),
 				__METHOD__
 			);
 		};
-		$dbw->commit();
+		w->commit();
 		$this->output( "Finished!\n" );
 	}
 }

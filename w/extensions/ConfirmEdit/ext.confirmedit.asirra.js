@@ -9,7 +9,7 @@
 \*======================================================================*/
 
 jQuery( function( $ ) {
-	var asirraform = $( "form#userlogin2" );
+	var asirraform = $( "form#wiki_userlogin2" );
 	var submitButtonClicked = document.createElement("input");
 	var passThroughFormSubmit = false;
 

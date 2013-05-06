@@ -47,13 +47,13 @@ class ShowStats extends Maintenance {
 			'ss_total_edits' => 'Total edits',
 			'ss_good_articles' => 'Number of articles',
 			'ss_total_pages' => 'Total pages',
-			'ss_users' => 'Number of users',
+			'ss_wiki_users' => 'Number of wiki_users',
 			'ss_images' => 'Number of images',
 		);
 
 		// Get cached stats from slave database
-		$dbr = wfGetDB( DB_SLAVE );
-		$stats = $dbr->selectRow( 'site_stats', '*', '', __METHOD__ );
+		r = wfGetDB( DB_SLAVE );
+		$stats = r->selectRow( 'site_stats', '*', '', __METHOD__ );
 
 		// Get maximum size for each column
 		$max_length_value = $max_length_desc = 0;

@@ -41,7 +41,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 	}
 
 	private $fld_ids = false, $fld_flags = false, $fld_timestamp = false, $fld_size = false,
-			$fld_comment = false, $fld_parsedcomment = false, $fld_user = false, $fld_userid = false,
+			$fld_comment = false, $fld_parsedcomment = false, $fld_wiki_user = false, $fld_wiki_userid = false,
 			$fld_content = false, $fld_tags = false;
 
 	private $tokenFunctions;
@@ -75,12 +75,12 @@ class ApiQueryRevisions extends ApiQueryBase {
 	 * @return bool|String
 	 */
 	public static function getRollbackToken( $pageid, $title, $rev ) {
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'rollback' ) ) {
+		global $wgwiki_user;
+		if ( !$wgwiki_user->isAllowed( 'rollback' ) ) {
 			return false;
 		}
-		return $wgUser->getEditToken(
-			array( $title->getPrefixedText(), $rev->getUserText() ) );
+		return $wgwiki_user->getEditToken(
+			array( $title->getPrefixedText(), $rev->getwiki_userText() ) );
 	}
 
 	public function execute() {
@@ -90,7 +90,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 		// Enum mode can only be used when exactly one page is provided.
 		// Enumerating revisions on multiple pages make it extremely
 		// difficult to manage continuations and require additional SQL indexes
-		$enumRevMode = ( !is_null( $params['user'] ) || !is_null( $params['excludeuser'] ) ||
+		$enumRevMode = ( !is_null( $params['wiki_user'] ) || !is_null( $params['excludewiki_user'] ) ||
 				!is_null( $params['limit'] ) || !is_null( $params['startid'] ) ||
 				!is_null( $params['endid'] ) || $params['dir'] === 'newer' ||
 				!is_null( $params['start'] ) || !is_null( $params['end'] ) );
@@ -110,7 +110,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 		}
 
 		if ( $pageCount > 1 && $enumRevMode ) {
-			$this->dieUsage( 'titles, pageids or a generator was used to supply multiple pages, but the limit, startid, endid, dirNewer, user, excludeuser, start and end parameters may only be used on a single page.', 'multpages' );
+			$this->dieUsage( 'titles, pageids or a generator was used to supply multiple pages, but the limit, startid, endid, dirNewer, wiki_user, excludewiki_user, start and end parameters may only be used on a single page.', 'multpages' );
 		}
 
 		if ( !is_null( $params['difftotext'] ) ) {
@@ -139,7 +139,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$this->diffto = $params['diffto'];
 		}
 
-		$db = $this->getDB();
+		 = $this->getDB();
 		$this->addTables( 'page' );
 		$this->addFields( Revision::selectFields() );
 		$this->addWhere( 'page_id = rev_page' );
@@ -155,18 +155,18 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$this->fld_parsedcomment = isset ( $prop['parsedcomment'] );
 		$this->fld_size = isset ( $prop['size'] );
 		$this->fld_sha1 = isset ( $prop['sha1'] );
-		$this->fld_userid = isset( $prop['userid'] );
-		$this->fld_user = isset ( $prop['user'] );
+		$this->fld_wiki_userid = isset( $prop['wiki_userid'] );
+		$this->fld_wiki_user = isset ( $prop['wiki_user'] );
 		$this->token = $params['token'];
 
 		// Possible indexes used
 		$index = array();
 
-		$userMax = ( $this->fld_content ? ApiBase::LIMIT_SML1 : ApiBase::LIMIT_BIG1 );
+		$wiki_userMax = ( $this->fld_content ? ApiBase::LIMIT_SML1 : ApiBase::LIMIT_BIG1 );
 		$botMax  = ( $this->fld_content ? ApiBase::LIMIT_SML2 : ApiBase::LIMIT_BIG2 );
 		$limit = $params['limit'];
 		if ( $limit == 'max' ) {
-			$limit = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
+			$limit = $this->getMain()->canApiHighLimits() ? $botMax : $wiki_userMax;
 			$this->getResult()->setParsedLimit( $this->getModuleName(), $limit );
 		}
 
@@ -190,11 +190,11 @@ class ApiQueryRevisions extends ApiQueryBase {
 		}
 
 		if ( isset( $prop['content'] ) || !is_null( $this->difftotext ) ) {
-			// For each page we will request, the user must have read rights for that page
+			// For each page we will request, the wiki_user must have read rights for that page
 			foreach ( $pageSet->getGoodTitles() as $title ) {
-				if ( !$title->userCan( 'read' ) ) {
+				if ( !$title->wiki_userCan( 'read' ) ) {
 					$this->dieUsage(
-						'The current user is not allowed to read ' . $title->getPrefixedText(),
+						'The current wiki_user is not allowed to read ' . $title->getPrefixedText(),
 						'accessdenied' );
 				}
 			}
@@ -224,11 +224,11 @@ class ApiQueryRevisions extends ApiQueryBase {
 			}
 		}
 
-		// add user name, if needed
-		if ( $this->fld_user ) {
-			$this->addTables( 'user' );
-			$this->addJoinConds( array( 'user' => Revision::userJoinCond() ) );
-			$this->addFields( Revision::selectUserFields() );
+		// add wiki_user name, if needed
+		if ( $this->fld_wiki_user ) {
+			$this->addTables( 'wiki_user' );
+			$this->addJoinConds( array( 'wiki_user' => Revision::wiki_userJoinCond() ) );
+			$this->addFields( Revision::selectwiki_userFields() );
 		}
 
 		// Bug 24166 - API error when using rvprop=tags
@@ -244,8 +244,8 @@ class ApiQueryRevisions extends ApiQueryBase {
 				$this->dieUsage( 'end and endid cannot be used together', 'badparams' );
 			}
 
-			if ( !is_null( $params['user'] ) && !is_null( $params['excludeuser'] ) ) {
-				$this->dieUsage( 'user and excludeuser cannot be used together', 'badparams' );
+			if ( !is_null( $params['wiki_user'] ) && !is_null( $params['excludewiki_user'] ) ) {
+				$this->dieUsage( 'wiki_user and excludewiki_user cannot be used together', 'badparams' );
 			}
 
 			// Continuing effectively uses startid. But we can't use rvstartid
@@ -259,7 +259,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			}
 
 			// This code makes an assumption that sorting by rev_id and rev_timestamp produces
-			// the same result. This way users may request revisions starting at a given time,
+			// the same result. This way wiki_users may request revisions starting at a given time,
 			// but to page through results use the rev_id returned after each page.
 			// Switching to rev_id removes the potential problem of having more than
 			// one row with the same timestamp for the same page.
@@ -280,24 +280,24 @@ class ApiQueryRevisions extends ApiQueryBase {
 			if ( is_null( $limit ) ) {
 				$limit = 10;
 			}
-			$this->validateLimit( 'limit', $limit, 1, $userMax, $botMax );
+			$this->validateLimit( 'limit', $limit, 1, $wiki_userMax, $botMax );
 
 			// There is only one ID, use it
 			$ids = array_keys( $pageSet->getGoodTitles() );
 			$this->addWhereFld( 'rev_page', reset( $ids ) );
 
-			if ( !is_null( $params['user'] ) ) {
-				$this->addWhereFld( 'rev_user_text', $params['user'] );
-			} elseif ( !is_null( $params['excludeuser'] ) ) {
-				$this->addWhere( 'rev_user_text != ' .
-					$db->addQuotes( $params['excludeuser'] ) );
+			if ( !is_null( $params['wiki_user'] ) ) {
+				$this->addWhereFld( 'rev_wiki_user_text', $params['wiki_user'] );
+			} elseif ( !is_null( $params['excludewiki_user'] ) ) {
+				$this->addWhere( 'rev_wiki_user_text != ' .
+					->addQuotes( $params['excludewiki_user'] ) );
 			}
-			if ( !is_null( $params['user'] ) || !is_null( $params['excludeuser'] ) ) {
+			if ( !is_null( $params['wiki_user'] ) || !is_null( $params['excludewiki_user'] ) ) {
 				// Paranoia: avoid brute force searches (bug 17342)
-				$this->addWhere( $db->bitAnd( 'rev_deleted', Revision::DELETED_USER ) . ' = 0' );
+				$this->addWhere( ->bitAnd( 'rev_deleted', Revision::DELETED_USER ) . ' = 0' );
 			}
 		} elseif ( $revCount > 0 ) {
-			$max = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
+			$max = $this->getMain()->canApiHighLimits() ? $botMax : $wiki_userMax;
 			$revs = $pageSet->getRevisionIDs();
 			if ( self::truncateArray( $revs, $max ) ) {
 				$this->setWarning( "Too many values supplied for parameter 'revids': the limit is $max" );
@@ -314,7 +314,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			// assumption testing -- we should never get more then $revCount rows.
 			$limit = $revCount;
 		} elseif ( $pageCount > 0 ) {
-			$max = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
+			$max = $this->getMain()->canApiHighLimits() ? $botMax : $wiki_userMax;
 			$titles = $pageSet->getGoodTitles();
 			if ( self::truncateArray( $titles, $max ) ) {
 				$this->setWarning( "Too many values supplied for parameter 'titles': the limit is $max" );
@@ -403,20 +403,20 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$vals['minor'] = '';
 		}
 
-		if ( $this->fld_user || $this->fld_userid ) {
+		if ( $this->fld_wiki_user || $this->fld_wiki_userid ) {
 			if ( $revision->isDeleted( Revision::DELETED_USER ) ) {
-				$vals['userhidden'] = '';
+				$vals['wiki_userhidden'] = '';
 			} else {
-				if ( $this->fld_user ) {
-					$vals['user'] = $revision->getUserText();
+				if ( $this->fld_wiki_user ) {
+					$vals['wiki_user'] = $revision->getwiki_userText();
 				}
-				$userid = $revision->getUser();
-				if ( !$userid ) {
+				$wiki_userid = $revision->getwiki_user();
+				if ( !$wiki_userid ) {
 					$vals['anon'] = '';
 				}
 
-				if ( $this->fld_userid ) {
-					$vals['userid'] = $userid;
+				if ( $this->fld_wiki_userid ) {
+					$vals['wiki_userid'] = $wiki_userid;
 				}
 			}
 		}
@@ -470,9 +470,9 @@ class ApiQueryRevisions extends ApiQueryBase {
 		if ( !is_null( $this->token ) ) {
 			$tokenFunctions = $this->getTokenFunctions();
 			foreach ( $this->token as $t ) {
-				$val = call_user_func( $tokenFunctions[$t], $title->getArticleID(), $title, $revision );
+				$val = call_wiki_user_func( $tokenFunctions[$t], $title->getArticleID(), $title, $revision );
 				if ( $val === false ) {
-					$this->setWarning( "Action '$t' is not allowed for the current user" );
+					$this->setWarning( "Action '$t' is not allowed for the current wiki_user" );
 				} else {
 					$vals[$t . 'token'] = $val;
 				}
@@ -549,7 +549,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 		}
 		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
 			// formatComment() calls wfMessage() among other things
-			return 'anon-public-user-private';
+			return 'anon-public-wiki_user-private';
 		}
 		return 'public';
 	}
@@ -558,13 +558,13 @@ class ApiQueryRevisions extends ApiQueryBase {
 		return array(
 			'prop' => array(
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_DFLT => 'ids|timestamp|flags|comment|user',
+				ApiBase::PARAM_DFLT => 'ids|timestamp|flags|comment|wiki_user',
 				ApiBase::PARAM_TYPE => array(
 					'ids',
 					'flags',
 					'timestamp',
-					'user',
-					'userid',
+					'wiki_user',
+					'wiki_userid',
 					'size',
 					'sha1',
 					'comment',
@@ -598,11 +598,11 @@ class ApiQueryRevisions extends ApiQueryBase {
 					'older'
 				)
 			),
-			'user' => array(
-				ApiBase::PARAM_TYPE => 'user'
+			'wiki_user' => array(
+				ApiBase::PARAM_TYPE => 'wiki_user'
 			),
-			'excludeuser' => array(
-				ApiBase::PARAM_TYPE => 'user'
+			'excludewiki_user' => array(
+				ApiBase::PARAM_TYPE => 'wiki_user'
 			),
 			'tag' => null,
 			'expandtemplates' => false,
@@ -627,12 +627,12 @@ class ApiQueryRevisions extends ApiQueryBase {
 				' ids            - The ID of the revision',
 				' flags          - Revision flags (minor)',
 				' timestamp      - The timestamp of the revision',
-				' user           - User that made the revision',
-				' userid         - User id of revision creator',
+				' wiki_user           - wiki_user that made the revision',
+				' wiki_userid         - wiki_user id of revision creator',
 				' size           - Length (bytes) of the revision',
 				' sha1           - SHA-1 (base 16) of the revision',
-				' comment        - Comment by the user for revision',
-				' parsedcomment  - Parsed comment by the user for the revision',
+				' comment        - Comment by the wiki_user for revision',
+				' parsedcomment  - Parsed comment by the wiki_user for the revision',
 				' content        - Text of the revision',
 				' tags           - Tags for the revision',
 			),
@@ -642,8 +642,8 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'start' => 'From which revision timestamp to start enumeration (enum)',
 			'end' => 'Enumerate up to this timestamp (enum)',
 			'dir' => $this->getDirectionDescription( $p, ' (enum)' ),
-			'user' => 'Only include revisions made by user (enum)',
-			'excludeuser' => 'Exclude revisions made by user (enum)',
+			'wiki_user' => 'Only include revisions made by wiki_user (enum)',
+			'excludewiki_user' => 'Exclude revisions made by wiki_user (enum)',
 			'expandtemplates' => 'Expand templates in revision content',
 			'generatexml' => 'Generate XML parse tree for revision content',
 			'parse' => 'Parse revision content. For performance reasons if this option is used, rvlimit is enforced to 1.',
@@ -671,14 +671,14 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'flags' => array(
 				'minor' => 'boolean'
 			),
-			'user' => array(
-				'userhidden' => 'boolean',
-				'user' => 'string',
+			'wiki_user' => array(
+				'wiki_userhidden' => 'boolean',
+				'wiki_user' => 'string',
 				'anon' => 'boolean'
 			),
-			'userid' => array(
-				'userhidden' => 'boolean',
-				'userid' => 'integer',
+			'wiki_userid' => array(
+				'wiki_userhidden' => 'boolean',
+				'wiki_userid' => 'integer',
 				'anon' => 'boolean'
 			),
 			'timestamp' => array(
@@ -733,11 +733,11 @@ class ApiQueryRevisions extends ApiQueryBase {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'nosuchrevid', 'diffto' ),
 			array( 'code' => 'revids', 'info' => 'The revids= parameter may not be used with the list options (limit, startid, endid, dirNewer, start, end).' ),
-			array( 'code' => 'multpages', 'info' => 'titles, pageids or a generator was used to supply multiple pages, but the limit, startid, endid, dirNewer, user, excludeuser, start and end parameters may only be used on a single page.' ),
+			array( 'code' => 'multpages', 'info' => 'titles, pageids or a generator was used to supply multiple pages, but the limit, startid, endid, dirNewer, wiki_user, excludewiki_user, start and end parameters may only be used on a single page.' ),
 			array( 'code' => 'diffto', 'info' => 'rvdiffto must be set to a non-negative number, "prev", "next" or "cur"' ),
 			array( 'code' => 'badparams', 'info' => 'start and startid cannot be used together' ),
 			array( 'code' => 'badparams', 'info' => 'end and endid cannot be used together' ),
-			array( 'code' => 'badparams', 'info' => 'user and excludeuser cannot be used together' ),
+			array( 'code' => 'badparams', 'info' => 'wiki_user and excludewiki_user cannot be used together' ),
 			array( 'code' => 'nosuchsection', 'info' => 'There is no section section in rID' ),
 		) );
 	}
@@ -745,17 +745,17 @@ class ApiQueryRevisions extends ApiQueryBase {
 	public function getExamples() {
 		return array(
 			'Get data with content for the last revision of titles "API" and "Main Page"',
-			'  api.php?action=query&prop=revisions&titles=API|Main%20Page&rvprop=timestamp|user|comment|content',
+			'  api.php?action=query&prop=revisions&titles=API|Main%20Page&rvprop=timestamp|wiki_user|comment|content',
 			'Get last 5 revisions of the "Main Page"',
-			'  api.php?action=query&prop=revisions&titles=Main%20Page&rvlimit=5&rvprop=timestamp|user|comment',
+			'  api.php?action=query&prop=revisions&titles=Main%20Page&rvlimit=5&rvprop=timestamp|wiki_user|comment',
 			'Get first 5 revisions of the "Main Page"',
-			'  api.php?action=query&prop=revisions&titles=Main%20Page&rvlimit=5&rvprop=timestamp|user|comment&rvdir=newer',
+			'  api.php?action=query&prop=revisions&titles=Main%20Page&rvlimit=5&rvprop=timestamp|wiki_user|comment&rvdir=newer',
 			'Get first 5 revisions of the "Main Page" made after 2006-05-01',
-			'  api.php?action=query&prop=revisions&titles=Main%20Page&rvlimit=5&rvprop=timestamp|user|comment&rvdir=newer&rvstart=20060501000000',
-			'Get first 5 revisions of the "Main Page" that were not made made by anonymous user "127.0.0.1"',
-			'  api.php?action=query&prop=revisions&titles=Main%20Page&rvlimit=5&rvprop=timestamp|user|comment&rvexcludeuser=127.0.0.1',
-			'Get first 5 revisions of the "Main Page" that were made by the user "MediaWiki default"',
-			'  api.php?action=query&prop=revisions&titles=Main%20Page&rvlimit=5&rvprop=timestamp|user|comment&rvuser=MediaWiki%20default',
+			'  api.php?action=query&prop=revisions&titles=Main%20Page&rvlimit=5&rvprop=timestamp|wiki_user|comment&rvdir=newer&rvstart=20060501000000',
+			'Get first 5 revisions of the "Main Page" that were not made made by anonymous wiki_user "127.0.0.1"',
+			'  api.php?action=query&prop=revisions&titles=Main%20Page&rvlimit=5&rvprop=timestamp|wiki_user|comment&rvexcludewiki_user=127.0.0.1',
+			'Get first 5 revisions of the "Main Page" that were made by the wiki_user "MediaWiki default"',
+			'  api.php?action=query&prop=revisions&titles=Main%20Page&rvlimit=5&rvprop=timestamp|wiki_user|comment&rvwiki_user=MediaWiki%20default',
 		);
 	}
 

@@ -127,7 +127,7 @@ class CategoryViewer extends ContextSource {
 
 		$lang = $this->getLanguage();
 		$langAttribs = array( 'lang' => $lang->getCode(), 'dir' => $lang->getDir() );
-		# put a div around the headings which are in the user language
+		# put a div around the headings which are in the wiki_user language
 		$r = Html::openElement( 'div', $langAttribs ) . $r . '</div>';
 
 		wfProfileOut( __METHOD__ );
@@ -178,7 +178,7 @@ class CategoryViewer extends ContextSource {
 	function addSubcategory( Title $title, $sortkey, $pageLength ) {
 		wfDeprecated( __METHOD__, '1.17' );
 		// <IntraACL>
-		if ( !$title->userCanReadEx() ) {
+		if ( !$title->wiki_userCanReadEx() ) {
 			return;
 		}
 		// </IntraACL>
@@ -230,7 +230,7 @@ class CategoryViewer extends ContextSource {
 			$link = Linker::link( $title );
 			if ( $isRedirect ) {
 				// This seems kind of pointless given 'mw-redirect' class,
-				// but keeping for back-compatibility with user css.
+				// but keeping for back-compatibility with wiki_user css.
 				$link = '<span class="redirect-in-category">' . $link . '</span>';
 			}
 			$this->imgsNoGallery[] = $link;
@@ -249,7 +249,7 @@ class CategoryViewer extends ContextSource {
 	 */
 	function addPage( $title, $sortkey, $pageLength, $isRedirect = false ) {
 		/*op-patch|TS|2009-06-19|HaloACL|SafeTitle|start*/
-		if (!$title->userCanReadEx()) {
+		if (!$title->wiki_userCanReadEx()) {
 			return;
 		}
 		/*op-patch|TS|2009-06-19|end*/  
@@ -258,7 +258,7 @@ class CategoryViewer extends ContextSource {
 		$link = Linker::link( $title );
 		if ( $isRedirect ) {
 			// This seems kind of pointless given 'mw-redirect' class,
-			// but keeping for back-compatiability with user css.
+			// but keeping for back-compatiability with wiki_user css.
 			$link = '<span class="redirect-in-category">' . $link . '</span>';
 		}
 		$this->articles[] = $link;
@@ -283,7 +283,7 @@ class CategoryViewer extends ContextSource {
 	}
 
 	function doCategoryQuery() {
-		$dbr = wfGetDB( DB_SLAVE, 'category' );
+		r = wfGetDB( DB_SLAVE, 'category' );
 
 		$this->nextPage = array(
 			'page' => null,
@@ -299,14 +299,14 @@ class CategoryViewer extends ContextSource {
 			$extraConds = array( 'cl_type' => $type );
 			if ( $this->from[$type] !== null ) {
 				$extraConds[] = 'cl_sortkey >= '
-					. $dbr->addQuotes( $this->collation->getSortKey( $this->from[$type] ) );
+					. r->addQuotes( $this->collation->getSortKey( $this->from[$type] ) );
 			} elseif ( $this->until[$type] !== null ) {
 				$extraConds[] = 'cl_sortkey < '
-					. $dbr->addQuotes( $this->collation->getSortKey( $this->until[$type] ) );
+					. r->addQuotes( $this->collation->getSortKey( $this->until[$type] ) );
 				$this->flip[$type] = true;
 			}
 
-			$res = $dbr->select(
+			$res = r->select(
 				array( 'page', 'categorylinks', 'category' ),
 				array( 'page_id', 'page_title', 'page_namespace', 'page_len',
 					'page_is_redirect', 'cl_sortkey', 'cat_id', 'cat_title',
@@ -373,8 +373,8 @@ class CategoryViewer extends ContextSource {
 		# Don't show subcategories section if there are none.
 		$r = '';
 		$rescnt = count( $this->children );
-		$dbcnt = $this->cat->getSubcatCount();
-		$countmsg = $this->getCountMessage( $rescnt, $dbcnt, 'subcat' );
+		cnt = $this->cat->getSubcatCount();
+		$countmsg = $this->getCountMessage( $rescnt, cnt, 'subcat' );
 
 		if ( $rescnt > 0 ) {
 			# Showing subcategories
@@ -401,10 +401,10 @@ class CategoryViewer extends ContextSource {
 		# with this rigamarole if the entire category contents fit on one page
 		# and have already been retrieved.  We can just use $rescnt in that
 		# case and save a query and some logic.
-		$dbcnt = $this->cat->getPageCount() - $this->cat->getSubcatCount()
+		cnt = $this->cat->getPageCount() - $this->cat->getSubcatCount()
 			- $this->cat->getFileCount();
 		$rescnt = count( $this->articles );
-		$countmsg = $this->getCountMessage( $rescnt, $dbcnt, 'article' );
+		$countmsg = $this->getCountMessage( $rescnt, cnt, 'article' );
 
 		if ( $rescnt > 0 ) {
 			$r = "<div id=\"mw-pages\">\n";
@@ -425,8 +425,8 @@ class CategoryViewer extends ContextSource {
 		$r = '';
 		$rescnt = $this->showGallery ? $this->gallery->count() : count( $this->imgsNoGallery );
 		if ( $rescnt > 0 ) {
-			$dbcnt = $this->cat->getFileCount();
-			$countmsg = $this->getCountMessage( $rescnt, $dbcnt, 'file' );
+			cnt = $this->cat->getFileCount();
+			$countmsg = $this->getCountMessage( $rescnt, cnt, 'file' );
 
 			$r .= "<div id=\"mw-category-media\">\n";
 			$r .= '<h2>' . $this->msg( 'category-media-header', wfEscapeWikiText( $this->title->getText() ) )->text() . "</h2>\n";
@@ -655,11 +655,11 @@ class CategoryViewer extends ContextSource {
 	 * category-file-count-limited.
 	 *
 	 * @param $rescnt Int: The number of items returned by our database query.
-	 * @param $dbcnt Int: The number of items according to the category table.
+	 * @param cnt Int: The number of items according to the category table.
 	 * @param $type String: 'subcat', 'article', or 'file'
 	 * @return String: A message giving the number of items, to output to HTML.
 	 */
-	private function getCountMessage( $rescnt, $dbcnt, $type ) {
+	private function getCountMessage( $rescnt, cnt, $type ) {
 		# There are three cases:
 		#   1) The category table figure seems sane.  It might be wrong, but
 		#      we can't do anything about it if we don't recalculate it on ev-
@@ -685,10 +685,10 @@ class CategoryViewer extends ContextSource {
 			$fromOrUntil = true;
 		}
 
-		if ( $dbcnt == $rescnt || ( ( $rescnt == $this->limit || $fromOrUntil )
-			&& $dbcnt > $rescnt ) ) {
+		if ( cnt == $rescnt || ( ( $rescnt == $this->limit || $fromOrUntil )
+			&& cnt > $rescnt ) ) {
 			# Case 1: seems sane.
-			$totalcnt = $dbcnt;
+			$totalcnt = cnt;
 		} elseif ( $rescnt < $this->limit && !$fromOrUntil ) {
 			# Case 2: not sane, but salvageable.  Use the number of results.
 			# Since there are fewer than 200, we can also take this opportunity

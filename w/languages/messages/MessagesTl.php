@@ -45,7 +45,7 @@ $namespaceAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'Masisiglang_mga_Tagagamit' ),
+	'Activewiki_users'               => array( 'Masisiglang_mga_Tagagamit' ),
 	'Allmessages'               => array( 'Lahat_ng_mga_mensahe' ),
 	'Allpages'                  => array( 'Lahat_ng_mga_pahina', 'LahatPahina' ),
 	'Ancientpages'              => array( 'Sinaunang_mga_pahina' ),
@@ -67,7 +67,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'Mga_paglilinaw', 'Paglilinaw' ),
 	'DoubleRedirects'           => array( 'Nagkadalawang_mga_panturo_papunta_sa_ibang_pahina', 'DoblengPanturo' ),
 	'EditWatchlist'             => array( 'Baguhin_ang_Bantayan' ),
-	'Emailuser'                 => array( 'Tagagamit_ng_e-liham' ),
+	'Emailwiki_user'                 => array( 'Tagagamit_ng_e-liham' ),
 	'Export'                    => array( 'Pagluluwas' ),
 	'Fewestrevisions'           => array( 'Pinakakaunting_mga_pagbabago' ),
 	'FileDuplicateSearch'       => array( 'Paghahanap_ng_kamukhang_talaksan' ),
@@ -82,7 +82,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Itala_ang_mga_talaksan', 'Talaan_ng_mga_talaksan', 'Talaan_ng_mga_larawan' ),
 	'Listgrouprights'           => array( 'Talaan_ng_mga_karapatan_ng_pangkat' ),
 	'Listredirects'             => array( 'Talaan_ng_mga_pagturo_sa_ibang_pahina' ),
-	'Listusers'                 => array( 'Talaan_ng_mga_tagagamit', 'Talaan_ng_tagagamit' ),
+	'Listwiki_users'                 => array( 'Talaan_ng_mga_tagagamit', 'Talaan_ng_tagagamit' ),
 	'Lockdb'                    => array( 'Ikandado_ang_kalipunan_ng_datos' ),
 	'Log'                       => array( 'Tala', 'Mga_tala' ),
 	'Lonelypages'               => array( 'Nangungulilang_mga_pahina', 'Ulilang_mga_pahina' ),
@@ -133,9 +133,9 @@ $specialPageAliases = array(
 	'Unwatchedpages'            => array( 'Mga_pahinang_hindi_binabantayanan' ),
 	'Upload'                    => array( 'Magkarga' ),
 	'UploadStash'               => array( 'Pagkakarga_ng_mga_Nakatago' ),
-	'Userlogin'                 => array( 'Paglagda_ng_tagagamit', 'Maglagda' ),
-	'Userlogout'                => array( 'Pag-alis_sa_pagkalagda_ng_tagagamit', 'AlisLagda' ),
-	'Userrights'                => array( 'Mga_karapatan_ng_tagagamit' ),
+	'wiki_userlogin'                 => array( 'Paglagda_ng_tagagamit', 'Maglagda' ),
+	'wiki_userlogout'                => array( 'Pag-alis_sa_pagkalagda_ng_tagagamit', 'AlisLagda' ),
+	'wiki_userrights'                => array( 'Mga_karapatan_ng_tagagamit' ),
 	'Version'                   => array( 'Bersiyon' ),
 	'Wantedcategories'          => array( 'Ninanais_na_mga_kaurian' ),
 	'Wantedfiles'               => array( 'Ninanais_na_mga_talaksan' ),
@@ -147,7 +147,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Pagsasalungguhit ng kawing:',
 'tog-justify' => 'Pantayin ang mga talata',
 'tog-hideminor' => 'Itago ang mga maliliit na pagbabago sa mga huling binago',
@@ -171,7 +171,7 @@ $messages = array(
 'tog-previewonfirst' => 'Ipakita ang paunang tingin sa unang pagbabago',
 'tog-nocache' => 'Huwag paganahin ang pagtatago ng pahinang pantingintingin',
 'tog-enotifwatchlistpages' => 'Padalhan ako ng e-liham kapag nabago ang isa sa pahina o talaksang binabantayan ko',
-'tog-enotifusertalkpages' => 'Padalhan ako ng e-liham kapag binago ang aking pahina ng usapan',
+'tog-enotifwiki_usertalkpages' => 'Padalhan ako ng e-liham kapag binago ang aking pahina ng usapan',
 'tog-enotifminoredits' => 'Padalhan din ako ng e-liham para sa mga maliliit na mga pagbabago ng mga pahina at mga talaksan',
 'tog-enotifrevealaddr' => 'Ipakita ang aking direksiyong e-liham sa loob ng mga e-liham ng pagpapahayag',
 'tog-shownumberswatching' => 'Ipakita ang bilang ng mga nagbabantay na tagagamit',
@@ -356,7 +356,7 @@ $messages = array(
 'talk' => 'Usapan',
 'views' => 'Mga anyo',
 'toolbox' => 'Mga kagamitan',
-'userpage' => 'Tingnan ang pahina ng tagagamit',
+'wiki_userpage' => 'Tingnan ang pahina ng tagagamit',
 'projectpage' => 'Tingnan ang pahina ng proyekto',
 'imagepage' => 'Tingnan ang pahina ng talaksan',
 'mediawikipage' => 'Tingnan ang pahina ng mensahe',
@@ -382,7 +382,7 @@ $1',
 'pool-queuefull' => 'Puno na ang pisan ng mga pila',
 'pool-errorunknown' => 'Hindi nalalamang kamalian',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Tungkol sa {{SITENAME}}',
 'aboutpage' => 'Project:Patungkol',
 'copyright' => 'Maaaring gamitin ang nilalaman sa ilalim ng $1.',
@@ -418,8 +418,8 @@ Tingnan ang [[Special:Version|pahina ng bersiyon]].',
 'youhavenewmessages' => 'Mayroon kang $1 ($2).',
 'newmessageslink' => 'mga bagong mensahe',
 'newmessagesdifflink' => 'huling pagbabago',
-'youhavenewmessagesfromusers' => 'Mayroon kang $1 magmula sa {{PLURAL:$3|ibang tagagamit|$3 mga tagagamit}} ($2).',
-'youhavenewmessagesmanyusers' => 'Mayroon kang $1 magmula sa maraming mga tagagamit ($2).',
+'youhavenewmessagesfromwiki_users' => 'Mayroon kang $1 magmula sa {{PLURAL:$3|ibang tagagamit|$3 mga tagagamit}} ($2).',
+'youhavenewmessagesmanywiki_users' => 'Mayroon kang $1 magmula sa maraming mga tagagamit ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|isang bagong mensahe|bagong mga mensahe}}',
 'newmessagesdifflinkplural' => 'huling {{PLURAL:$1|pagbabago|mga pagbabago}}',
 'youhavenewmessagesmulti' => 'Mayroon kang mga bagong mensahe sa $1',
@@ -453,7 +453,7 @@ Tingnan ang [[Special:Version|pahina ng bersiyon]].',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Pahina',
-'nstab-user' => 'Pahina ng tagagamit',
+'nstab-wiki_user' => 'Pahina ng tagagamit',
 'nstab-media' => 'Pahina ng midya',
 'nstab-special' => 'Natatanging pahina',
 'nstab-project' => 'Pahina ng proyekto',
@@ -498,7 +498,7 @@ Nagbigay ng ganitong dahilan ang tagapangasiwang nagkandado nito: $1',
 Kalimitang dahil ito sa pagsunod sa isang wala sa panahong pagkakaiba o kawing na pangkasaysayan sa isang pahinang nabura.
 
 Kung hindi ito ang kaso, maaaring nakatagpo ka ng isang depekto sa sopwer.
-Pakiulat ito sa isang [[Special:ListUsers/sysop|tagapangasiwa]], na ibinibigay ang URL.',
+Pakiulat ito sa isang [[Special:Listwiki_users/sysop|tagapangasiwa]], na ibinibigay ang URL.',
 'missingarticle-rev' => '(pagbabago#: $1)',
 'missingarticle-diff' => '(Pagkakaiba: $1, $2)',
 'readonly_lag' => 'Automatikong kinandado ang kalipunan ng datos habang humahabol ang mga aliping serbidor sa pinunong kalipunan nito',
@@ -549,7 +549,7 @@ $2',
 'customcssprotected' => 'Wala kang pahintulot na baguhin ang pahina ng CSS na ito, dahil naglalaman ito ng mga katakdaang pansarili ng ibang tagagamit.',
 'customjsprotected' => 'Wala kang pahintulot na baguhin ang pahina ng JavaScript na ito, dahil naglalaman ito ng mga katakdaang pansarili ng ibang tagagamit.',
 'ns-specialprotected' => 'Hindi pwedeng baguhin ang mga natatanging pahina.',
-'titleprotected' => "Nakasanggalang ang pamagat na ito mula sa paglikha ni [[User:$1|$1]].
+'titleprotected' => "Nakasanggalang ang pamagat na ito mula sa paglikha ni [[wiki_user:$1|$1]].
 Ang ibinigay na dahilan ay ''$2''.",
 'filereadonlyerror' => 'Hindi nabago ang talaksang "$1" dahil ang repositoryong talaksan na "$2" ay nasa kalakarang mababasa lang.
 
@@ -567,7 +567,7 @@ Ang tagapangasiwang nagkandado nito ay nag-alok ng ganitong paliwanag: "$3".',
 # Login and logout pages
 'logouttext' => "'''Nakaalis ka na sa pagkakalagda.'''
 
-Maaari kang tumuloy sa paggamit ng {{SITENAME}} nang hindi nakikilala (anonimo), o maaaring kang [[Special:UserLogin|lumagda/tumala muli]] bilang kapareho o ibang tagagamit.
+Maaari kang tumuloy sa paggamit ng {{SITENAME}} nang hindi nakikilala (anonimo), o maaaring kang [[Special:wiki_userLogin|lumagda/tumala muli]] bilang kapareho o ibang tagagamit.
 Tandaan na may ilang pahinang maaaring magpatuloy na nagpapakitang parang nakalagda ka pa rin, hanggang sa linisin mo ang iyong baunang pambasa-basa (''browser cache'').",
 'welcomecreation' => '== Maligayang pagdating, $1! ==
 Nilikha na ang iyong kuwenta.
@@ -583,21 +583,21 @@ Huwag kalimutang baguhin ang iyong [[Special:Preferences|mga kagustuhan sa {{SIT
 'login' => 'Lumagda',
 'nav-login-createaccount' => 'Lumagda / lumikha ng kuwenta',
 'loginprompt' => "Dapat na pinapahintulutan mo ang mga kuki (''cookie'') upang makalagda sa {{SITENAME}}.",
-'userlogin' => 'Lumagda / lumikha ng kuwenta',
-'userloginnocreate' => 'Lumagda',
+'wiki_userlogin' => 'Lumagda / lumikha ng kuwenta',
+'wiki_userloginnocreate' => 'Lumagda',
 'logout' => 'Umalis sa pagkakalagda',
-'userlogout' => 'Umalis sa pagkakalagda',
+'wiki_userlogout' => 'Umalis sa pagkakalagda',
 'notloggedin' => 'Hindi nakalagda',
 'nologin' => 'Wala ka pang kuwenta? $1.',
 'nologinlink' => 'Lumikha ng kuwenta',
 'createaccount' => 'Lumikha ng kuwenta',
 'gotaccount' => 'May kuwenta ka na ba? $1.',
 'gotaccountlink' => 'Lumagda',
-'userlogin-resetlink' => 'Nakalimutan mo ang iyong mga detalyeng panglagda?',
+'wiki_userlogin-resetlink' => 'Nakalimutan mo ang iyong mga detalyeng panglagda?',
 'createaccountmail' => 'sa pamamagitan ng e-liham',
 'createaccountreason' => 'Dahilan:',
 'badretype' => 'Hindi magkatugma ang ipinasok mong mga hudyat.',
-'userexists' => 'May gumagamit na ng ipinasok na bansag.
+'wiki_userexists' => 'May gumagamit na ng ipinasok na bansag.
 Pumili po ng ibang pangalan.',
 'loginerror' => 'Kamalian sa paglagda',
 'createaccounterror' => 'Hindi mailikha ang kuwenta: $1',
@@ -614,13 +614,13 @@ Tiyaking mayroon kang pinagaganang mga kuki, ikarga muli ang pahinang ito at sub
 'noname' => 'Hindi mo tinukoy ang isang tanggap na pangalan ng tagagamit.',
 'loginsuccesstitle' => 'Matagumpay ang paglagda',
 'loginsuccess' => "'''Nakalagda ka na sa {{SITENAME}} bilang si \"\$1\".'''",
-'nosuchuser' => 'Walang tagagamit na may pangalang "$1".
+'nosuchwiki_user' => 'Walang tagagamit na may pangalang "$1".
 Maselan sa pagtitipa ang mga pangalan ng tagagamit.
-Suriin ang iyong pagbabaybay, o [[Special:UserLogin/signup|lumikha ng bagong kuwenta]].',
-'nosuchusershort' => 'Walang tagagamit na may pangalang "$1".
+Suriin ang iyong pagbabaybay, o [[Special:wiki_userLogin/signup|lumikha ng bagong kuwenta]].',
+'nosuchwiki_usershort' => 'Walang tagagamit na may pangalang "$1".
 Pakitingnan ang iyong pagbabaybay.',
-'nouserspecified' => 'Kailangang tukuyin mo ang isang pangalang pantagagamit.',
-'login-userblocked' => 'Hinarang ang tagagamit na ito.  Hindi pinahihintulutan ang paglalagda.',
+'nowiki_userspecified' => 'Kailangang tukuyin mo ang isang pangalang pantagagamit.',
+'login-wiki_userblocked' => 'Hinarang ang tagagamit na ito.  Hindi pinahihintulutan ang paglalagda.',
 'wrongpassword' => 'Mali ang ipinasok na hudyat.
 Pakisubok muli.',
 'wrongpasswordempty' => 'Walang laman ang ipinasok na hudyat.
@@ -667,16 +667,16 @@ Pakipasok ang isang may mahusay na anyong adres o paki-iwang walang laman na lan
 Dapat kang tumala at baguhin ang hudyat mo ngayon.
 
 Maaari mong huwag pansinin ang mensaheng ito, kung mali ang paglikha ng kuwentang ito.',
-'usernamehasherror' => 'Hindi maaaring maglaman ng mga panitik na pantadtad ang pangalan ng tagagamit',
+'wiki_usernamehasherror' => 'Hindi maaaring maglaman ng mga panitik na pantadtad ang pangalan ng tagagamit',
 'login-throttled' => 'Masyadong marami ang ginawa mong kamakailan lang na mga pagsubok sa paglagdang papasok.
 Maghintay po muna bago subukan uli.',
 'login-abort-generic' => 'Bigo ang paglagda mo - Pinigil',
 'loginlanguagelabel' => 'Wika: $1',
-'suspicious-userlogout' => "Tinanggihan ang inyong kahilingang umalis sa pagkalagda dahil tila ito ay ipinadala ng sirang pambasa-basa o apoderadong pambaon (''caching proxy'')",
+'suspicious-wiki_userlogout' => "Tinanggihan ang inyong kahilingang umalis sa pagkalagda dahil tila ito ay ipinadala ng sirang pambasa-basa o apoderadong pambaon (''caching proxy'')",
 
 # E-mail sending
 'php-mail-error-unknown' => 'Hindi malamang kamalian sa tungkulin ng liham ng PHP ()',
-'user-mail-no-addy' => 'Sinubukang magpadala ng e-liham na walang tirahan na para sa e-liham.',
+'wiki_user-mail-no-addy' => 'Sinubukang magpadala ng e-liham na walang tirahan na para sa e-liham.',
 
 # Change password dialog
 'resetpass' => 'Palitan ang hudyat',
@@ -703,7 +703,7 @@ Maaaring matagumpay mo nang nabago ang iyong hudyat o nakahiling na ng isang bag
 'passwordreset-legend' => 'Itakdang muli ang hudyat',
 'passwordreset-disabled' => 'Hindi pinagagana sa wiking ito ang muling mga pagtatakda ng hudyat.',
 'passwordreset-pretext' => '{{PLURAL:$1| | Ipasok ang isa sa mga piraso ng datos sa ibaba}}',
-'passwordreset-username' => 'Pangalan ng tagagamit:',
+'passwordreset-wiki_username' => 'Pangalan ng tagagamit:',
 'passwordreset-domain' => 'Nasasakupan:',
 'passwordreset-capture' => 'Tingnan ang lumabas na e-liham?',
 'passwordreset-capture-help' => 'Kapag tsetsekan mo ang kahong ito, ang e-liham (may pansamantalang hudyat) ay ipapakita sa iyo at ipapadala rin sa tagagamit.',
@@ -715,7 +715,7 @@ $2
 
 {{PLURAL:$3|Ang pansamantalang hudyat na ito|Ang mga pansamantalang hudyat na ito}} ay mawawalan ng bisa sa loob ng {{PLURAL:$5|isang araw|$5 mga araw}}.
 Dapat kang lumagda at pumili ng isang bagong hudyat ngayon. Kung ibang tao ang gumawa ng kahilingang ito, o kung naalala mo na ang orihinal mong hudyat, at hindi mo na nais palitan ito, maaari mong huwag nang pansinin ang mensaheng ito at magpatuloy sa paggamit ng luma mong hudyat.',
-'passwordreset-emailtext-user' => 'Ang tagagamit na si $1 sa {{SITENAME}} ay humiling ng isang paalala ng iyong mga akawnt ng detalye para sa {{SITENAME}}
+'passwordreset-emailtext-wiki_user' => 'Ang tagagamit na si $1 sa {{SITENAME}} ay humiling ng isang paalala ng iyong mga akawnt ng detalye para sa {{SITENAME}}
 ($4). Ang sumusunod na pangtagagamit na {{PLURAL:$3|akawnt ay|mga akawnt ay}} may kaugnayan sa tirahang ito ng e-liham:
 
 $2
@@ -819,7 +819,7 @@ Maaaring inilipat o ibinura ito habang tinitingnan mo ang pahina.',
 'loginreqlink' => 'lumagda/tumala',
 'loginreqpagetext' => 'Kailangan mong $1 para matanaw ang ibang mga pahina.',
 'accmailtitle' => 'Ipinadala na ang hudyat.',
-'accmailtext' => "Ipinadala na sa $2 ang isang hudyat na nilikha ng pagkakataon para kay [[User talk:$1|$1]].
+'accmailtext' => "Ipinadala na sa $2 ang isang hudyat na nilikha ng pagkakataon para kay [[wiki_user talk:$1|$1]].
 
 Ang hudyat para sa bagong akawnt na ito ay mababago sa pahina ng ''[[Special:ChangePassword|mga nais ko]]'' kapag lumagdang papasok.",
 'newarticle' => '(Bago)',
@@ -829,7 +829,7 @@ Kung napunta ka rito dahil sa pagkakamali, pakipindot ang pinduntang '''balik'''
 'anontalkpagetext' => "Usapan ito para sa isang hindi nakikilalang tagagamit na hindi pa lumilikha ng kuwenta/akawnt, o kaya hindi ito ginagamit.
 Kaya't kinailangan naming gamitin ang may bilang na adres ng IP para makilala siya.
 Maaaring pagsaluhan ng ilang mga tagagamit ang ganyang adres ng IP.
-Kung isa kang hindi nagpapakilalang tagagamit at nakadaramang may mga walang saysay na puna/kumentong patungkol sa iyo, [[Special:UserLogin/signup|pakilikha ng isang kuwenta]] o [[Special:UserLogin|lumagda]] para maiwasan ang kalituhan o mapagkamalan ka bilang ibang hindi nakikilalang mga tagagamit sa hinaharap.",
+Kung isa kang hindi nagpapakilalang tagagamit at nakadaramang may mga walang saysay na puna/kumentong patungkol sa iyo, [[Special:wiki_userLogin/signup|pakilikha ng isang kuwenta]] o [[Special:wiki_userLogin|lumagda]] para maiwasan ang kalituhan o mapagkamalan ka bilang ibang hindi nakikilalang mga tagagamit sa hinaharap.",
 'noarticletext' => 'Kasalukuyang walang teksto sa loob ng pahinang ito.
 Maaari mong [[Special:Search/{{PAGENAME}}|hanapin ang pamagat ng pahinang ito]] sa loob iba pang mga pahina,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} maghanap sa kaugnay na mga talaan],
@@ -841,9 +841,9 @@ o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 
 
 Karaniwang itong dulot ng pagsunod sa isang wala na sa panahong kawing ng kasaysayan na papunta sa isang pahinang nabura na.
 Matatagpuan ang mga detalye sa loob ng [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].',
-'userpage-userdoesnotexist' => 'Hindi nakatala ang kuwenta ng tagagamit na "<nowiki>$1</nowiki>".
+'wiki_userpage-wiki_userdoesnotexist' => 'Hindi nakatala ang kuwenta ng tagagamit na "<nowiki>$1</nowiki>".
 Pakisuri kung ibig mong likhain/baguhin ang pahinang ito.',
-'userpage-userdoesnotexist-view' => 'Hindi nakatala ang kuwenta ng tagagamit na "$1".',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Hindi nakatala ang kuwenta ng tagagamit na "$1".',
 'blocked-notice-logextract' => 'Kasalukuyang hinarang ang tagagamit na ito.
 Ang pinakahuling entrada sa talaan  ng pagharang ay ibinigay sa baba para sa inyong pagsasangguni:',
 'clearyourcache' => "'''Paunawa: Pagkatapos magsagip, maaaring kailanganing mong laktawan ang taguan ng iyong pantingin-tingin upang makita ang mga pagbabago.
@@ -851,18 +851,18 @@ Ang pinakahuling entrada sa talaan  ng pagharang ay ibinigay sa baba para sa iny
 '''Google Chrome:''' Pindutin ang ''Ctrl-Shift-R'' (''⌘-Shift-R'' sa isang Mac)
 '''Internet Explorer:''' Panatilihin ang pagpindot sa ''Ctrl'' habang nilalagitik ang ''Refresh'', o pindutin ang ''Ctrl-F5''
 '''Opera:''' Hawiin ang taguan sa loob ng ''Tools → Preferences''",
-'usercssyoucanpreview' => "'''Balato:''' Gamitin ang pindutang \"{{int:showpreview}}\" upang masubok ang bago mong CSS bago sagipin.",
-'userjsyoucanpreview' => "'''Balato:''' Gamitin ang pindutang \"{{int:showpreview}}\" upang masubok ang bago mong JavaScript bago sagipin.",
-'usercsspreview' => "'''Tandaan mong paunang tingin pa lamang ito ng iyong CSS na pantagagamit.'''
+'wiki_usercssyoucanpreview' => "'''Balato:''' Gamitin ang pindutang \"{{int:showpreview}}\" upang masubok ang bago mong CSS bago sagipin.",
+'wiki_userjsyoucanpreview' => "'''Balato:''' Gamitin ang pindutang \"{{int:showpreview}}\" upang masubok ang bago mong JavaScript bago sagipin.",
+'wiki_usercsspreview' => "'''Tandaan mong paunang tingin pa lamang ito ng iyong CSS na pantagagamit.'''
 '''Hindi pa ito nasasagip!'''",
-'userjspreview' => "'''Tandaang pagsubok/paunang tingin mo pa lang ito ng iyong JavaScript.'''
+'wiki_userjspreview' => "'''Tandaang pagsubok/paunang tingin mo pa lang ito ng iyong JavaScript.'''
 '''Hindi pa ito nasasagip!'''",
 'sitecsspreview' => "'''Tandaan mong paunang tingin pa lamang ito ng nasabing CSS.'''
 '''Hindi pa ito nasasagip!'''",
 'sitejspreview' => "'''Tandaan mong paunang tingin pa lamang ito ng nasabing kodigong JavaScript.'''
 '''Hindi pa ito nasasagip!'''",
-'userinvalidcssjstitle' => "'''Babala:''' Walang pabalat na \"\$1\".
-Tandaang gumagamit ang pinasadyang mga pahinang .css at .js ng mga pamagat na may maliliit na mga titik, halimbawa na ang {{ns:user}}:Foo/vector.css na taliwas sa {{ns:user}}:Foo/Vector.css.",
+'wiki_userinvalidcssjstitle' => "'''Babala:''' Walang pabalat na \"\$1\".
+Tandaang gumagamit ang pinasadyang mga pahinang .css at .js ng mga pamagat na may maliliit na mga titik, halimbawa na ang {{ns:wiki_user}}:Foo/vector.css na taliwas sa {{ns:wiki_user}}:Foo/Vector.css.",
 'updated' => '(Naisapanahon na)',
 'note' => "'''Paunawa:'''",
 'previewnote' => "'''Tandaan na isa lamang itong paunang tingin.'''
@@ -871,13 +871,13 @@ Hindi pa nasasagip ang mga binago mo!",
 'previewconflict' => 'Ipinamamalas ng paunang tinging ito ang teksto sa loob ng pangitaas na pook-patnugutan ng teksto ayon sa lilitaw na anyo nito kapag pinili mo ang pagsagip.',
 'session_fail_preview' => "'''Paumanhin! Hindi namin maproseso ang iyong pagbabago hinggil sa pagkawala ng datos ng sesyon.'''
 Pakiulit muli.
-Kung hindi ito gumana, subukang [[Special:UserLogout|umalis sa pagkalagda]] at bumalik muli.",
+Kung hindi ito gumana, subukang [[Special:wiki_userLogout|umalis sa pagkalagda]] at bumalik muli.",
 'session_fail_preview_html' => "'''Paumanhin! Hindi namin maproseso ang iyong pagbabago hinggil sa pagkawala ng datos ng sesyon.'''
 
 ''Dahil naka-andar ang hilaw na HTML sa {{SITENAME}}, nakatago ang paunang tingin bilang pag-iingat sa mga paglusob ng JavaScript.''
 
 '''Kung lehitimong pagbabago ito, paki-ulit muli.'''
-Kung hindi pa rin ito gumagana, subukang [[Special:UserLogout|umalis sa pagkakalagda]] at lumagda muli.",
+Kung hindi pa rin ito gumagana, subukang [[Special:wiki_userLogout|umalis sa pagkakalagda]] at lumagda muli.",
 'token_suffix_mismatch' => "'''Hindi tinanggap ang iyong pagbabago dahil sinira ng kliyente ang mga karakter na bantas sa ''token'' ng mamatnugot.
 Tinanggihan ang pagbabago upang maiwasan ang korapsyon ng teksto ng artikulo.
 Kadalasang nangyayari ito kapag gumagamit ka ng masurot na serbisyo ng hindi-nakikilalang apoderadong (''anonymous proxy'') nasa web.",
@@ -930,7 +930,7 @@ Ang pinakahuling entrada sa talaan ay ibinigay sa baba para sa inyong pagsasangg
 'edittools-upload' => '-',
 'nocreatetitle' => 'May hangganan ang paglikha ng pahina',
 'nocreatetext' => 'Naglagay ng hangganan (restriksyon/limitasyon) ang {{SITENAME}} sa kakayahang makalikha ng bagong mga pahina.
-Maaari kang bumalik at magbago ng isang umiiral na pahina, o kaya [[Special:UserLogin|lumagda o lumikha ng kuwenta/akawnt]].',
+Maaari kang bumalik at magbago ng isang umiiral na pahina, o kaya [[Special:wiki_userLogin|lumagda o lumikha ng kuwenta/akawnt]].',
 'nocreate-loggedin' => 'Wala kang pahintulot para lumikha ng bagong mga pahina.',
 'sectioneditnotsupported-title' => 'Hindi sinusuportahan ang pagpapatnugot ng seksyon',
 'sectioneditnotsupported-text' => 'Hindi sinusuportahan ang pagpapatnugot ng seksyon sa pahinang ito.',
@@ -980,11 +980,11 @@ Hindi isasama ang ilang mga padron.",
 Pakitingnan ang paghahambing sa ibaba para masiyasat kung ito ang ibig mong gawin, at pagkatapos sagipin ang mga pagbabago sa ibaba para matapos ang pagtatanggal ng pagbabago.',
 'undo-failure' => 'Hindi matanggal ang pagbabago dahil sa magkakasalungat na panggitnang mga pagbabago.',
 'undo-norev' => 'Hindi matanggal ang pagbabago dahil hindi ito umiiral o nabura na.',
-'undo-summary' => 'Tanggalin ang pagbabagong $1 ni [[Special:Contributions/$2|$2]] ([[User talk:$2|Usapan]])',
+'undo-summary' => 'Tanggalin ang pagbabagong $1 ni [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Usapan]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Hindi malikha ang kuwenta',
-'cantcreateaccount-text' => "Hinarang ni [[User:$3|$3]] ang paglikha ng kuwenta mula sa adres ng IP ('''$1''') na ito.
+'cantcreateaccount-text' => "Hinarang ni [[wiki_user:$3|$3]] ang paglikha ng kuwenta mula sa adres ng IP ('''$1''') na ito.
 
 Ang dahilang ibinigay ni $3 ay ''$2''",
 
@@ -1023,9 +1023,9 @@ Subukang [[Special:Search|hanapin sa wiki]] para sa mga kaugnay na mga bagong pa
 
 # Revision deletion
 'rev-deleted-comment' => '(tinanggal ang buod ng pagbabago)',
-'rev-deleted-user' => '(tinanggal ang pangalan ng tagagamit)',
+'rev-deleted-wiki_user' => '(tinanggal ang pangalan ng tagagamit)',
 'rev-deleted-event' => '(tinanggal ang galaw sa talaan)',
-'rev-deleted-user-contribs' => '[itinanggal ang bansag o adres ng IP - itinago ang pagbabago mula sa mga ambag]',
+'rev-deleted-wiki_user-contribs' => '[itinanggal ang bansag o adres ng IP - itinago ang pagbabago mula sa mga ambag]',
 'rev-deleted-text-permission' => "Itong pagbabago ng pahina ay '''ibinura'''.
 Maaaring hanapin ang mga detalye sa [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} tala ng pagbubura].",
 'rev-deleted-text-unhide' => "'''Binura''' ang pahinang ito ng pagbabago.
@@ -1075,7 +1075,7 @@ Makikita pa rin ng iba pang mga tagapangasiwang nasa {{SITENAME}} ang mga tinago
 'revdelete-hide-image' => 'Itago ang nilalaman ng talaksan',
 'revdelete-hide-name' => 'Itago ang galaw at puntirya',
 'revdelete-hide-comment' => 'Itago ang komento sa pagbabago',
-'revdelete-hide-user' => 'Itago ang pangalang pantagagamit/IP ng patnugot',
+'revdelete-hide-wiki_user' => 'Itago ang pangalang pantagagamit/IP ng patnugot',
 'revdelete-hide-restricted' => 'Ilingid ang dato mula sa mga tagapangasiwa at maging sa mga iba pa',
 'revdelete-radio-same' => '(huwag baguhin)',
 'revdelete-radio-set' => 'Oo',
@@ -1161,7 +1161,7 @@ Tiyakin na ang pagbabago ay makapagpapanatili ng pagkakatuluy-tuloy ng pahinang 
 'showhideselectedversions' => 'Ipakita/itago ang napiling mga bersyon',
 'editundo' => 'ibalik',
 'diff-multi' => '({{PLURAL:$1|Isang panggitnang pagbabago|$1 panggitnang mga pagbabago}} ng {{PLURAL:$2|isang tagagamit|$2 mga tagagamit}} ang hindi ipinakikita.)',
-'diff-multi-manyusers' => '({{PLURAL:$1|Isang panggitnang pagbabago|$1 panggitnang mga pagbabago}} ng {{PLURAL:$2|isang tagagamit|$2 mga tagagamit}} ang hindi ipinapakikita.)',
+'diff-multi-manywiki_users' => '({{PLURAL:$1|Isang panggitnang pagbabago|$1 panggitnang mga pagbabago}} ng {{PLURAL:$2|isang tagagamit|$2 mga tagagamit}} ang hindi ipinapakikita.)',
 'difference-missing-revision' => 'Hindi natagpuan ang {{PLURAL:$2|isang rebisyon|$2 mga rebisyon}} ng kaibahang ($1) ito.
 
 Karaniwang itong isinanhi ng pagsunod sa isang wala na sa panahong kawing sa pagkakaiba na papunta sa isang pahinang nabura na.
@@ -1244,7 +1244,7 @@ Subuking lagyan ng unlapi/paunang ''all:'' upang hanapin ang lahat ng mga nialal
 'mypreferences' => 'Mga nais',
 'prefs-edits' => 'Bilang ng mga pagbabago:',
 'prefsnologin' => 'Hindi nakalagda/nakatala',
-'prefsnologintext' => 'Kailangan mong <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} lumagda/tumala]</span> para makapagtakda ng mga kagustuhang ng tagagamit.',
+'prefsnologintext' => 'Kailangan mong <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} lumagda/tumala]</span> para makapagtakda ng mga kagustuhang ng tagagamit.',
 'changepassword' => 'Baguhin ang hudyat',
 'prefs-skin' => 'Pabalat',
 'skin-preview' => 'Unang tingin',
@@ -1252,7 +1252,7 @@ Subuking lagyan ng unlapi/paunang ''all:'' upang hanapin ang lahat ng mga nialal
 'prefs-beta' => 'Mga kaangkapang-katangiang pang-beta',
 'prefs-datetime' => 'Petsa at oras',
 'prefs-labs' => 'Mga kasangkapang-katangiang pang-Labs',
-'prefs-user-pages' => 'Mga pahina ng tagagamit',
+'prefs-wiki_user-pages' => 'Mga pahina ng tagagamit',
 'prefs-personal' => 'Sanligang pangkatangian ng tagagamit',
 'prefs-rc' => 'Kamakailan lamang na mga pagbabago',
 'prefs-watchlist' => 'Talaan ng mga binabantayan',
@@ -1315,7 +1315,7 @@ Hindi ito maibabalik sa dating gawi.',
 'prefs-emailconfirm-label' => 'Kumpirmasyon ng e-liham:',
 'prefs-textboxsize' => 'Sukat ng bintana ng pagbabago',
 'youremail' => 'E-liham:',
-'username' => 'Bansag:',
+'wiki_username' => 'Bansag:',
 'uid' => 'ID ng tagagamit:',
 'prefs-memberingroups' => 'Kasapi ng {{PLURAL:$1|na pangkat|na mga pangkat}}:',
 'prefs-memberingroups-type' => '$1',
@@ -1357,36 +1357,36 @@ Kung pipiliin mong ibigay ito, gagamitin ito para mabigyan ka ng pagkilala para 
 'prefs-displaywatchlist' => 'Ipakita ang mga pagpipilian',
 'prefs-diffs' => 'Mga pagkakaiba',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'Mukhang katanggap-tanggap ang direkisyong e-liham',
 'email-address-validity-invalid' => 'Magpasok ng isang tanggap na direksiyong e-liham',
 
-# User rights
-'userrights' => 'Pamamahala ng mga karapatan ng tagagamit',
-'userrights-lookup-user' => 'Pamahalaan ang mga pangkat ng tagagamit',
-'userrights-user-editname' => 'Magpasok ng isang pangalan ng tagagamit:',
-'editusergroup' => 'Baguhin ang mga pangkat ng tagagamit',
-'editinguser' => "Binabago ang mga karapatang pangtagagamit ng tagagamit na si '''[[User:$1|$1]]''' $2",
-'userrights-editusergroup' => 'Baguhin ang mga pangkat ng tagagamit',
-'saveusergroups' => 'Sagipin ang mga pangkat ng tagagamit',
-'userrights-groupsmember' => 'Kasapi ng:',
-'userrights-groupsmember-auto' => 'Karamay na kasapi ng:',
-'userrights-groups-help' => 'Maaari mong baguhin ang mga pangkat ng tagagamit na ito sa:
+# wiki_user rights
+'wiki_userrights' => 'Pamamahala ng mga karapatan ng tagagamit',
+'wiki_userrights-lookup-wiki_user' => 'Pamahalaan ang mga pangkat ng tagagamit',
+'wiki_userrights-wiki_user-editname' => 'Magpasok ng isang pangalan ng tagagamit:',
+'editwiki_usergroup' => 'Baguhin ang mga pangkat ng tagagamit',
+'editingwiki_user' => "Binabago ang mga karapatang pangtagagamit ng tagagamit na si '''[[wiki_user:$1|$1]]''' $2",
+'wiki_userrights-editwiki_usergroup' => 'Baguhin ang mga pangkat ng tagagamit',
+'savewiki_usergroups' => 'Sagipin ang mga pangkat ng tagagamit',
+'wiki_userrights-groupsmember' => 'Kasapi ng:',
+'wiki_userrights-groupsmember-auto' => 'Karamay na kasapi ng:',
+'wiki_userrights-groups-help' => 'Maaari mong baguhin ang mga pangkat ng tagagamit na ito sa:
 * Kahon na naka-tsek na nangangahulugang ang tagagamit ay kasapi sa pangkat.
 * Kahon na hindi naka-tsek na nangangahulugang na hindi kasapi ang tagagamit sa pangkat.
 * Ipinapahiwatig ng * na maaaring tanggalng ang pangkat kapag dinagdag ito, o ang kabaglitaran nito.',
-'userrights-reason' => 'Dahilan:',
-'userrights-no-interwiki' => 'Wala kang pahintulot na baguhin ang mga karapatan ng tagagamit sa ibang mga wiki.',
-'userrights-nodatabase' => 'Hindi umiiral o hindi lokal ang kalipunan ng datos na $1',
-'userrights-nologin' => 'Kailangang [[Special:UserLogin|nakalagda ka]] bilang tagapangasiwa upang maitalaga ang mga karapatan ng tagagamit.',
-'userrights-notallowed' => 'Walang pahintulot ang akawnt mo na magdagdag o magtanggal ng mga karapatan ng tagagamit.',
-'userrights-changeable-col' => 'Mga pangkat na maaari mong baguhin',
-'userrights-unchangeable-col' => 'Mga pangkat na hindi mo mababago',
-'userrights-irreversible-marker' => '$1*',
+'wiki_userrights-reason' => 'Dahilan:',
+'wiki_userrights-no-interwiki' => 'Wala kang pahintulot na baguhin ang mga karapatan ng tagagamit sa ibang mga wiki.',
+'wiki_userrights-nodatabase' => 'Hindi umiiral o hindi lokal ang kalipunan ng datos na $1',
+'wiki_userrights-nologin' => 'Kailangang [[Special:wiki_userLogin|nakalagda ka]] bilang tagapangasiwa upang maitalaga ang mga karapatan ng tagagamit.',
+'wiki_userrights-notallowed' => 'Walang pahintulot ang akawnt mo na magdagdag o magtanggal ng mga karapatan ng tagagamit.',
+'wiki_userrights-changeable-col' => 'Mga pangkat na maaari mong baguhin',
+'wiki_userrights-unchangeable-col' => 'Mga pangkat na hindi mo mababago',
+'wiki_userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'Pangkat:',
-'group-user' => 'Mga tagagamit',
+'group-wiki_user' => 'Mga tagagamit',
 'group-autoconfirmed' => 'Mga tagagamit na nakompirma sa kusang paraan (autokompirmasyon)',
 'group-bot' => "Mga ''bot''",
 'group-sysop' => 'Mga tagapangasiwa',
@@ -1394,14 +1394,14 @@ Kung pipiliin mong ibigay ito, gagamitin ito para mabigyan ka ng pagkilala para 
 'group-suppress' => 'Mga tagapagingat-tago',
 'group-all' => '(lahat)',
 
-'group-user-member' => '{{GENDER:$1|tagagamit}}',
+'group-wiki_user-member' => '{{GENDER:$1|tagagamit}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|tagagamit na kusang natiyak}}',
 'group-bot-member' => '{{GENDER:$1|bot}}',
 'group-sysop-member' => '{{GENDER:$1|tagapangasiwa}}',
 'group-bureaucrat-member' => '{{GENDER:$1|burokrata}}',
 'group-suppress-member' => '{{GENDER:$1|tagapangalingat}}',
 
-'grouppage-user' => '{{ns:project}}:Mga tagagamit',
+'grouppage-wiki_user' => '{{ns:project}}:Mga tagagamit',
 'grouppage-autoconfirmed' => '{{ns:project}}:Kusang nakumpirmang mga tagagamit',
 'grouppage-bot' => "{{ns:project}}:Mga ''bot''",
 'grouppage-sysop' => '{{ns:project}}:Mga tagapangasiwa',
@@ -1417,7 +1417,7 @@ Kung pipiliin mong ibigay ito, gagamitin ito para mabigyan ka ng pagkilala para 
 'right-minoredit' => 'Itatak ang mga pagbabago bilang maliit',
 'right-move' => 'Ilipat ang mga pahina',
 'right-move-subpages' => 'Ilipat ang mga pahina kasama ang pahinang nasa ilalim nito',
-'right-move-rootuserpages' => 'Ilipat ang pinagugatang mga pahina ng tagagamit',
+'right-move-rootwiki_userpages' => 'Ilipat ang pinagugatang mga pahina ng tagagamit',
 'right-movefile' => 'Ilipat ang mga talaksan',
 'right-suppressredirect' => 'Hindi nilikha sa isang pagkarga mula sa lumang pangalan kapag naglipat ng isang pahina',
 'right-upload' => 'Magkarga ng mga talaksan',
@@ -1443,16 +1443,16 @@ Kung pipiliin mong ibigay ito, gagamitin ito para mabigyan ka ng pagkilala para 
 'right-suppressionlog' => 'Tingnan ang pansariling mga pagtatala.',
 'right-block' => 'Harangin sa paggawa ng pagbabago ang ibang mga tagagamit',
 'right-blockemail' => 'Harangin sa pagpapadala ng e-liham ang isang tagagamit',
-'right-hideuser' => 'Harangin ang isang tagagamit, na itinatago mula sa publiko',
+'right-hidewiki_user' => 'Harangin ang isang tagagamit, na itinatago mula sa publiko',
 'right-ipblock-exempt' => 'Laktawan ang mga pagharang/paghadlang na pang-IP, kusang pagharang/paghadlang at mga saklaw ng pagharang/paghadlang',
 'right-proxyunbannable' => 'Laktawan ang mga kusang pagharang ng mga kahalili',
 'right-unblockself' => 'Tanggalin ang pagkakaharang ng kanilang mga sarili',
 'right-protect' => 'Baguhin ang mga antas ng panananggalang at baguhin ang mga pahinang nakasanggalang',
 'right-editprotected' => 'Baguhin ang mga pahinang nakasanggalang (walang baita-baitang na panananggalang)',
 'right-editinterface' => 'Baguhin ang ugnayang-hangganan ng tagagamit',
-'right-editusercssjs' => 'Baguhin ang mga talaksang CSS at JS ng ibang mga tagagamit',
-'right-editusercss' => 'Baguhin ang mga talaksang CSS ng ibang mga tagagamit',
-'right-edituserjs' => 'Baguhin ang mga talaksang JS ng ibang mga tagagamit',
+'right-editwiki_usercssjs' => 'Baguhin ang mga talaksang CSS at JS ng ibang mga tagagamit',
+'right-editwiki_usercss' => 'Baguhin ang mga talaksang CSS ng ibang mga tagagamit',
+'right-editwiki_userjs' => 'Baguhin ang mga talaksang JS ng ibang mga tagagamit',
 'right-rollback' => 'Mabilisang pagulungin pabalik sa dati ang mga pagbabago ng huling tagagamit na nagbago ng isang partikular na pahina',
 'right-markbotedits' => 'Itatak ang mga binalik na mga pagbabago bilang pagbabagong bot',
 'right-noratelimit' => 'Hindi maaapektuhan ng antas ng mga hangganan',
@@ -1463,14 +1463,14 @@ Kung pipiliin mong ibigay ito, gagamitin ito para mabigyan ka ng pagkilala para 
 'right-patrolmarks' => 'Tingnan ang mga kamakailang pagbabagong natatakan bilang napatrolya',
 'right-unwatchedpages' => 'Tingnan ang isang talaan ng mga pahinang hindi binabantayan',
 'right-mergehistory' => 'Pagsanibin ang kasaysayan ng mga pahina',
-'right-userrights' => 'Baguhin ang lahat ng karapatan ng tagagamit',
-'right-userrights-interwiki' => 'Baguhin ang karapatan ng mga tagagamit na nasa ibang mga wiki',
+'right-wiki_userrights' => 'Baguhin ang lahat ng karapatan ng tagagamit',
+'right-wiki_userrights-interwiki' => 'Baguhin ang karapatan ng mga tagagamit na nasa ibang mga wiki',
 'right-siteadmin' => 'Ikandado at alisin ang pagkakakandado ng kalipunan ng dato',
 'right-override-export-depth' => 'Iluwas ang mga pahina na kabilang ang mga pahinang nakakawing magpahanggang sa isang lalim na 5',
 'right-sendemail' => 'Magpadala ng e-liham sa ibang mga tagagamit',
 'right-passwordreset' => 'Tingnan ang mga e-liham ng muling pagtatakda ng hudyat',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Tala ng mga karapatan ng tagagamit',
 'rightslogtext' => 'Isa itong tala ng mga pagbabago sa mga karapatan ng tagagamit.',
 'rightslogentry' => 'binago ang kasapiang pampangkat para kay $1 mula sa $2 patungong $3',
@@ -1486,7 +1486,7 @@ Kung pipiliin mong ibigay ito, gagamitin ito para mabigyan ka ng pagkilala para 
 'action-minoredit' => 'tatakan ito bilang isang maliit na pagbabago',
 'action-move' => 'ilipat itong pahina',
 'action-move-subpages' => 'ilipat itong pahina, pati ang mga kabahaging pahina (subpahina) nito',
-'action-move-rootuserpages' => 'ilipat ang mga pinagugatang mga pahina ng tagagamit',
+'action-move-rootwiki_userpages' => 'ilipat ang mga pinagugatang mga pahina ng tagagamit',
 'action-movefile' => 'ilipat ang talaksang ito',
 'action-upload' => 'ikarga itong talaksan',
 'action-reupload' => 'patungan itong pahinang umiiral',
@@ -1509,8 +1509,8 @@ Kung pipiliin mong ibigay ito, gagamitin ito para mabigyan ka ng pagkilala para 
 'action-autopatrol' => 'tatakan ang pagbabago mo bilang napatrolya na',
 'action-unwatchedpages' => 'tingnan ang talaan ng mga pahinang hindi nababantayan',
 'action-mergehistory' => 'pagsanibin ang kasaysayan nitong pahina',
-'action-userrights' => 'baguhin ang lahat ng karapatan ng tagagamit',
-'action-userrights-interwiki' => 'baguhin ang mga karapatan ng tagagamit na nasa ibang mga wiki',
+'action-wiki_userrights' => 'baguhin ang lahat ng karapatan ng tagagamit',
+'action-wiki_userrights-interwiki' => 'baguhin ang mga karapatan ng tagagamit na nasa ibang mga wiki',
 'action-siteadmin' => 'ikandado o tanggalin ang pagkakakandado ng kalipunan ng dato',
 'action-sendemail' => 'magpadala ng mga e-liham',
 
@@ -1542,7 +1542,7 @@ Kung pipiliin mong ibigay ito, gagamitin ito para mabigyan ka ng pagkilala para 
 'newpageletter' => 'B',
 'boteditletter' => 'b',
 'unpatrolledletter' => '!',
-'number_of_watching_users_pageview' => '[$1 binabantayang {{PLURAL:$1|tagagamit|mga tagagamit}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 binabantayang {{PLURAL:$1|tagagamit|mga tagagamit}}]',
 'rc_categories' => 'Itakda lang sa mga kaurian (ihiwalay sa pamamagitan ng "|")',
 'rc_categories_any' => 'Kahit ano',
 'rc-change-size' => '$1',
@@ -1568,7 +1568,7 @@ Kung pipiliin mong ibigay ito, gagamitin ito para mabigyan ka ng pagkilala para 
 'reuploaddesc' => 'Kanselahin/Iurong ang pagkarga at magbalik sa pormularyo ng pagkakarga',
 'upload-tryagain' => 'Ipasa ang binagong paglalarawan ng talaksan',
 'uploadnologin' => 'Hindi nakalagda',
-'uploadnologintext' => 'Dapat ikaw ay [[Special:UserLogin|nakalagda]]
+'uploadnologintext' => 'Dapat ikaw ay [[Special:wiki_userLogin|nakalagda]]
 upang makapagkarga ng talaksan.',
 'upload_directory_missing' => 'Nawawala ang direktoryo ng pagkarga ($1) at hindi na mailikha ng webserver.',
 'upload_directory_read_only' => 'Ang direktoryo ng pagkarga ($1) ay hindi maisulat ng webserver.',
@@ -1698,11 +1698,11 @@ $1',
 'upload-proto-error' => 'Maling protokolo',
 'upload-proto-error-text' => 'Nangangailangan ang malayong pagkarga ng mga URL na nagsisimula sa <code>http://</code> o <code>ftp://</code>.',
 'upload-file-error' => 'Panloob na kamalian',
-'upload-file-error-text' => 'Isang panloob na kamalian ang nangyari nang sinubukang likhain ang isang pansamantalang talaksan sa ibabaw ng tagapaghain.  Makipag-ugnayan sa isang [[Special:ListUsers/sysop|tagapangasiwa]].',
+'upload-file-error-text' => 'Isang panloob na kamalian ang nangyari nang sinubukang likhain ang isang pansamantalang talaksan sa ibabaw ng tagapaghain.  Makipag-ugnayan sa isang [[Special:Listwiki_users/sysop|tagapangasiwa]].',
 'upload-misc-error' => 'Hindi nalalamang kamalian sa pagkakarga',
 'upload-misc-error-text' => 'Naganap ang isang hindi nalalamang kamalian sa panahon ng pagkakarga.
 Pakisuri kung katanggap-tanggap at mapupuntahan ang URL at subukin uli.
-Kapag nagpatuloy ang suliranin, makipagugnayan sa isang [[Special:ListUsers/sysop|tagapangasiwa]].',
+Kapag nagpatuloy ang suliranin, makipagugnayan sa isang [[Special:Listwiki_users/sysop|tagapangasiwa]].',
 'upload-too-many-redirects' => 'Naglalaman ng napakaraming panlipat ng pupuntahan ang URL',
 'upload-unknown-size' => 'Hindi nalalamang laki',
 'upload-http-error' => 'Naganap ang isang kamaliang pang-HTTP: $1',
@@ -1822,7 +1822,7 @@ Kapag sinala ng tagagamit, tanging mga talaksan lang kung saan nagkarga ang taga
 'listfiles_thumb' => 'Kagyat',
 'listfiles_date' => 'Petsa',
 'listfiles_name' => 'Pangalan',
-'listfiles_user' => 'Tagagamit',
+'listfiles_wiki_user' => 'Tagagamit',
 'listfiles_size' => 'Sukat',
 'listfiles_description' => 'Paglalarawan',
 'listfiles_count' => 'Mga bersiyon',
@@ -1839,7 +1839,7 @@ Kapag sinala ng tagagamit, tanging mga talaksan lang kung saan nagkarga ang taga
 'filehist-thumb' => "Kagyat (''thumbnail'')",
 'filehist-thumbtext' => "Kagyat (''thumbnail'') para sa bersyon mula noong $1",
 'filehist-nothumb' => "Walang kagyat (''thumbnail'')",
-'filehist-user' => 'Tagagamit',
+'filehist-wiki_user' => 'Tagagamit',
 'filehist-dimensions' => 'Mga sukat',
 'filehist-filesize' => 'Sukat ng talaksan',
 'filehist-comment' => 'Puna/Kumento',
@@ -1931,7 +1931,7 @@ Marahil ay naisa mong baguhin ang paglalarawan doon sa [$2 pahina ng paglalarawa
 'statistics-header-pages' => 'Mga estadistika ng pahina',
 'statistics-header-edits' => 'Baguhin ang mga estadistika',
 'statistics-header-views' => 'Tingnan ang mga estadistika',
-'statistics-header-users' => 'Mga estadistika sa mga tagagamit',
+'statistics-header-wiki_users' => 'Mga estadistika sa mga tagagamit',
 'statistics-header-hooks' => 'Ibang mga estadistika',
 'statistics-articles' => 'Mga pahina ng nilalaman',
 'statistics-pages' => 'Mga pahina',
@@ -1942,9 +1942,9 @@ Marahil ay naisa mong baguhin ang paglalarawan doon sa [$2 pahina ng paglalarawa
 'statistics-views-total' => 'Kalahatang pagdayo',
 'statistics-views-total-desc' => 'Hindi kabilang ang mga pagtanaw sa mga pahinang hindi umiiral at mga pahinang natatangi',
 'statistics-views-peredit' => 'Pagtingin sa bawat pagbabago',
-'statistics-users' => 'Mga nakatalang [[Special:ListUsers|tagagamit]]',
-'statistics-users-active' => 'Mga masusugid na tagagamit <small>(mga nakatalang mang-aambag sa buwang ito)</small>',
-'statistics-users-active-desc' => 'Mga tagagamit na nagsagawa ng isang galaw/gawain sa huling {{PLURAL:$1|araw|$1 mga araw}}',
+'statistics-wiki_users' => 'Mga nakatalang [[Special:Listwiki_users|tagagamit]]',
+'statistics-wiki_users-active' => 'Mga masusugid na tagagamit <small>(mga nakatalang mang-aambag sa buwang ito)</small>',
+'statistics-wiki_users-active-desc' => 'Mga tagagamit na nagsagawa ng isang galaw/gawain sa huling {{PLURAL:$1|araw|$1 mga araw}}',
 'statistics-mostpopular' => 'Mga pinakarinarayong pahina',
 
 'disambiguations' => 'Mga pahinang nakakawing sa mga pahina ng paglilinaw',
@@ -2020,13 +2020,13 @@ Nasugpo na ang mga ipinasok na <del>inekisan</del>.',
 'protectedtitles' => 'Nakasanggalang na mga pamagat',
 'protectedtitlestext' => 'Ang sumusunod ay mga pamagat na nakaprotekta mula sa pagkalikha.',
 'protectedtitlesempty' => 'Walang pamagat ang kasalukuyang nakaprotekta sa binigay na parametro.',
-'listusers' => 'Tala ng tagagamit',
-'listusers-editsonly' => 'Ipakita lamang ang mga tagagamit na gumawa/nakagawa na ng mga pagbabago',
-'listusers-creationsort' => 'Pagsama-samahin ayon sa petsa ng pagkakalikha',
-'usereditcount' => '$1 {{PLURAL:$1|pagbabago|mga pagbabago}}',
-'usercreated' => '{{GENDER:$3|Nalikha}} noong $1 sa ika-$2',
+'listwiki_users' => 'Tala ng tagagamit',
+'listwiki_users-editsonly' => 'Ipakita lamang ang mga tagagamit na gumawa/nakagawa na ng mga pagbabago',
+'listwiki_users-creationsort' => 'Pagsama-samahin ayon sa petsa ng pagkakalikha',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|pagbabago|mga pagbabago}}',
+'wiki_usercreated' => '{{GENDER:$3|Nalikha}} noong $1 sa ika-$2',
 'newpages' => 'Mga bagong pahina',
-'newpages-username' => 'Bansag:',
+'newpages-wiki_username' => 'Bansag:',
 'ancientpages' => 'Mga pinakalumang pahina',
 'move' => 'Ilipat',
 'movethispage' => 'Ilipat itong pahina',
@@ -2052,7 +2052,7 @@ na iba pang impormasyon tungkol sa mga aklat na hinahanap mo:',
 'booksources-invalid-isbn' => 'Tila mukhang hindi yata katanggap-tanggap ang ibinigay na ISBN; pakisuri kung may mga kamalian ang pagkakasip/pagkakakopya mula sa orihinal na pinagmulan.',
 
 # Special:Log
-'specialloguserlabel' => 'Tagaganap:',
+'speciallogwiki_userlabel' => 'Tagaganap:',
 'speciallogtitlelabel' => 'Pinupukol (pamagat o tagagamit):',
 'log' => 'Mga talaan',
 'all-logs-page' => 'Lahat ng mga pampublikong tala',
@@ -2110,24 +2110,24 @@ Sinusuportahang mga protokolo: <code>$1</code> (huwag idagdag ang anuman sa mga 
 'linksearch-line' => '$1 nakakawing/nakaugnay mula sa $2',
 'linksearch-error' => "Lilitaw lamang ang mga \"barahang-pamalit\" (''wildcard'') sa simula ng pangunahin/punong-abalang pangalan.",
 
-# Special:ListUsers
-'listusersfrom' => 'Ipakita ang mga tagagamit na nagsisimula sa:',
-'listusers-submit' => 'Ipakita',
-'listusers-noresult' => 'Walang nahanap na tagagamit.',
-'listusers-blocked' => '(hinarang)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'Ipakita ang mga tagagamit na nagsisimula sa:',
+'listwiki_users-submit' => 'Ipakita',
+'listwiki_users-noresult' => 'Walang nahanap na tagagamit.',
+'listwiki_users-blocked' => '(hinarang)',
 
-# Special:ActiveUsers
-'activeusers' => 'Tala ng mga aktibong tagagamit',
-'activeusers-intro' => 'Isa itong talaan ng mga tagagamit na nagkaroon ng ilang uri ng galaw sa loob ng huling $1 {{PLURAL:$1|araw|mga araw}}.',
-'activeusers-count' => '$1 {{PLURAL:$1|pagbabago|mga pagbabago}} sa loob ng huling {{PLURAL:$3|araw|$3 mga araw}}',
-'activeusers-from' => 'Ipakita ang mga tagagamit simula sa:',
-'activeusers-hidebots' => 'Itago ang mga bots',
-'activeusers-hidesysops' => 'Itago ang mga tagapangasiwa',
-'activeusers-noresult' => 'Walang natagpuang mga tagagamit.',
+# Special:Activewiki_users
+'activewiki_users' => 'Tala ng mga aktibong tagagamit',
+'activewiki_users-intro' => 'Isa itong talaan ng mga tagagamit na nagkaroon ng ilang uri ng galaw sa loob ng huling $1 {{PLURAL:$1|araw|mga araw}}.',
+'activewiki_users-count' => '$1 {{PLURAL:$1|pagbabago|mga pagbabago}} sa loob ng huling {{PLURAL:$3|araw|$3 mga araw}}',
+'activewiki_users-from' => 'Ipakita ang mga tagagamit simula sa:',
+'activewiki_users-hidebots' => 'Itago ang mga bots',
+'activewiki_users-hidesysops' => 'Itago ang mga tagapangasiwa',
+'activewiki_users-noresult' => 'Walang natagpuang mga tagagamit.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Talaan ng paglikha ng tagagamit',
-'newuserlogpagetext' => 'Isa itong talaan ng mga paglikha ng tagagamit.',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Talaan ng paglikha ng tagagamit',
+'newwiki_userlogpagetext' => 'Isa itong talaan ng mga paglikha ng tagagamit.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Mga uri ng tagagamit',
@@ -2149,27 +2149,27 @@ Maaaring may mga [[{{MediaWiki:Listgrouprights-helppage}}|karagdagang kabatiran]
 'listgrouprights-addgroup-self-all' => 'Idagdag ang lahat ng mga pangkat sa sariling akawnt',
 'listgrouprights-removegroup-self-all' => 'Alisin ang lahat ng mga pangkat mula sa sariling akawnt',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'Walang adres na mapagpapadalahan',
-'mailnologintext' => 'Kailangan mong [[Special:UserLogin|lumagda]] at magkaroon ng tanggap na e-liham sa iyong [[Special:Preferences|mga kagustuhan]] para makapagpadala ng e-liham sa ibang mga tagagamit.',
-'emailuser' => 'Padalhan ng e-liham ang tagagamit',
-'emailuser-title-target' => 'Padalhan ng elektronikong liham ang {{GENDER:$1|tagagamit}} na ito',
-'emailuser-title-notarget' => 'Padalhan ng e-liham ang tagagamit',
+'mailnologintext' => 'Kailangan mong [[Special:wiki_userLogin|lumagda]] at magkaroon ng tanggap na e-liham sa iyong [[Special:Preferences|mga kagustuhan]] para makapagpadala ng e-liham sa ibang mga tagagamit.',
+'emailwiki_user' => 'Padalhan ng e-liham ang tagagamit',
+'emailwiki_user-title-target' => 'Padalhan ng elektronikong liham ang {{GENDER:$1|tagagamit}} na ito',
+'emailwiki_user-title-notarget' => 'Padalhan ng e-liham ang tagagamit',
 'emailpage' => 'Magpadala ng e-liham sa tagagamit',
 'emailpagetext' => 'Magagamit mo ang pormularyo sa ibaba para makapagpadala ng mensahe sa pamamagitan ng isang e-liham para sa tagagamit na ito.
 Ang ipinasok mong direksiyong e-liham sa [[Special:Preferences|iyong mga kagustuhan ng tagagamit]] ay lilitaw bilang adres na "Mula kay" ng e-liham, para tuwirang makatugon sa iyo ang nakatanggap.',
-'usermailererror' => 'Pagkakamaling sanhi ng pagkakabalik ng liham mula sa puntirya:',
+'wiki_usermailererror' => 'Pagkakamaling sanhi ng pagkakabalik ng liham mula sa puntirya:',
 'defemailsubject' => 'E-liham ng {{SITENAME}} mula sa tagagamit na si "$1"',
-'usermaildisabled' => 'Hindi pinagana ang e-liham ng tagagamit',
-'usermaildisabledtext' => 'Hindi maaaring magpadala ng e-liham sa ibang mga tagagamit sa wiki na ito.',
+'wiki_usermaildisabled' => 'Hindi pinagana ang e-liham ng tagagamit',
+'wiki_usermaildisabledtext' => 'Hindi maaaring magpadala ng e-liham sa ibang mga tagagamit sa wiki na ito.',
 'noemailtitle' => 'Walang adres ng e-liham',
 'noemailtext' => 'Ang tagagamit na ito ay hindi tumukoy ng isang tanggap na adres ng e-liham.',
 'nowikiemailtitle' => 'Walang pinapahintulutang e-liham',
 'nowikiemailtext' => 'Pinili ng tagagamit na ito na huwag makatanggap ng e-liham mula sa ibang mga tagagamit.',
 'emailnotarget' => 'Hindi umiiral o hindi katanggap-tanggap na pangalan ng tagagamit para sa tagatanggap.',
 'emailtarget' => 'Ipasok ang pangalan ng tagagamit ng tagatanggap',
-'emailusername' => 'Pangalan ng tagagamit:',
-'emailusernamesubmit' => 'Ipasa',
+'emailwiki_username' => 'Pangalan ng tagagamit:',
+'emailwiki_usernamesubmit' => 'Ipasa',
 'email-legend' => 'Magpadala ng e-liham patungo sa isa pang tagagamit ng {{SITENAME}}',
 'emailfrom' => 'Mula kay:',
 'emailto' => 'Para kay:',
@@ -2180,12 +2180,12 @@ Ang ipinasok mong direksiyong e-liham sa [[Special:Preferences|iyong mga kagustu
 'emailccsubject' => 'Kopya ng iyong mensahe sa $1: $2',
 'emailsent' => 'Naipadala na ang e-liham',
 'emailsenttext' => 'Naipadala na ang mensahe ng iyong e-liham.',
-'emailuserfooter' => 'Ipinadala ang e-liham na ito ni $1 para kay $2 sa pamamagitan ng tungkuling "Magpadala ng e-liham" na nasa {{SITENAME}}.',
+'emailwiki_userfooter' => 'Ipinadala ang e-liham na ito ni $1 para kay $2 sa pamamagitan ng tungkuling "Magpadala ng e-liham" na nasa {{SITENAME}}.',
 
-# User Messenger
-'usermessage-summary' => 'Nag-iiwan ng mensaheng pangsistema.',
-'usermessage-editor' => 'Mensahero ng sistema',
-'usermessage-template' => 'MediaWiki:UserMessage',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'Nag-iiwan ng mensaheng pangsistema.',
+'wiki_usermessage-editor' => 'Mensahero ng sistema',
+'wiki_usermessage-template' => 'MediaWiki:wiki_userMessage',
 
 # Watchlist
 'watchlist' => 'Mga binabantayan ko',
@@ -2194,7 +2194,7 @@ Ang ipinasok mong direksiyong e-liham sa [[Special:Preferences|iyong mga kagustu
 'nowatchlist' => 'Wala kang pahinang binabantayan.',
 'watchlistanontext' => 'Paki $1 upang makita o mabago ang mga aytem sa iyong binabantayan.',
 'watchnologin' => 'Hindi nakalagda',
-'watchnologintext' => 'Dapat kang [[Special:UserLogin|nakalagda]] upang mabago ang talaan mo ng mga binabantayan.',
+'watchnologintext' => 'Dapat kang [[Special:wiki_userLogin|nakalagda]] upang mabago ang talaan mo ng mga binabantayan.',
 'addwatch' => 'Idagdag sa bantayan',
 'addedwatchtext' => "Dinagdag na ang pahinang \"[[:\$1]]\" sa iyong [[Special:Watchlist|Babantayan]].
 Makikita doon ang lahat ng mga susunod na pagbabago sa pahinang ito pati na ang usapang pahina, at ang pahina ay makikitang sa '''malalaking titik''' ('''''bold''''') sa [[Special:RecentChanges|tala ng mga huling binago]] para madaling makita.",
@@ -2305,13 +2305,13 @@ magpatuloy na may pagiingat.',
 'rollbacklinkcount-morethan' => 'pagulunging pabalik ang mahigit sa $1 {{PLURAL:$1|pagbabago|mga pagbabago}}',
 'rollbackfailed' => 'Nabigo ang pagpapagulong na pabalik sa (mas) dati',
 'cantrollback' => 'Hindi maibalik ang pagbabago; tanging ang may-akda lamang ng pahinang ito ang huling tagapagambag/tagapaglathala.',
-'alreadyrolled' => 'Hindi mapagulong na pabalik sa dati ang huling pagbabago ng [[$1]] ni ([[User talk:$2|Usapan]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
+'alreadyrolled' => 'Hindi mapagulong na pabalik sa dati ang huling pagbabago ng [[$1]] ni ([[wiki_user talk:$2|Usapan]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
 mayroon nang ibang taong nagbago o nagpagulong pabalik sa dati ng pahina.
 
-Ang huling pagbabago sa pahina ay ginawa ni [[User:$3|$3]] ([[User talk:$3|Usapan]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+Ang huling pagbabago sa pahina ay ginawa ni [[wiki_user:$3|$3]] ([[wiki_user talk:$3|Usapan]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "Ang buod ng pagbabago ay: \"''\$1''\".",
-'revertpage' => 'Ibinalik ang mga pagbabago ni [[Special:Contributions/$2|$2]] ([[User talk:$2|Usapan]]) patungo sa huling rebisyon ni [[User:$1|$1]]',
-'revertpage-nouser' => 'Ibinalik ang mga pagbabago ni (tinanggal ang bansag) patungo sa huling rebisyon ni [[User:$1|$1]]',
+'revertpage' => 'Ibinalik ang mga pagbabago ni [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Usapan]]) patungo sa huling rebisyon ni [[wiki_user:$1|$1]]',
+'revertpage-nowiki_user' => 'Ibinalik ang mga pagbabago ni (tinanggal ang bansag) patungo sa huling rebisyon ni [[wiki_user:$1|$1]]',
 'rollback-success' => 'Ibinalik ang mga pagbabago ni $1; ibinalik sa huling bersyon ni $2.',
 
 # Edit tokens
@@ -2464,13 +2464,13 @@ $1',
 'sp-contributions-uploads' => 'mga ikinargang paitaas',
 'sp-contributions-logs' => 'mga tala',
 'sp-contributions-talk' => 'usapan',
-'sp-contributions-userrights' => 'pamamahala ng mga karapatan ng tagagamit',
+'sp-contributions-wiki_userrights' => 'pamamahala ng mga karapatan ng tagagamit',
 'sp-contributions-blocked-notice' => 'Kasalukuyang hinarang ang tagagamit na ito.
 Ang pinakahuling entrada sa talaan  ng pagharang ay ibinigay sa ibaba para sa pagsangguni:',
 'sp-contributions-blocked-notice-anon' => 'Kasalukuyang hinarang ang adres ng IP na ito.
 Ang pinakahuling entrada sa talaan  ng pagharang ay ibinigay sa ibaba para sa pagsangguni:',
 'sp-contributions-search' => 'Maghanap ng ambag',
-'sp-contributions-username' => 'IP Address o bansag:',
+'sp-contributions-wiki_username' => 'IP Address o bansag:',
 'sp-contributions-toponly' => 'Ipakita lang ang mga pamamatnugot na mga huling rebisyon',
 'sp-contributions-submit' => 'Hanapin',
 'sp-contributions-explain' => '',
@@ -2504,7 +2504,7 @@ Ang pinakahuling entrada sa talaan  ng pagharang ay ibinigay sa ibaba para sa pa
 'blockiptext' => 'Gamitin ang mga lahok sa ibaba upang maharang ang akses sa pagsulat mula sa isang espesipikong IP address o bansag.
 Gawin lamang ito para maiwasan ang bandalismo, at napapaloob sa [[{{MediaWiki:Policy-url}}|patakaran]].
 Punan ang espesipikong dahilan sa ibaba (halimbawa, magbanggit ng partikular na mga pahina na nagkaroon ng bandalismo).',
-'ipadressorusername' => 'Direksyong IP o bansag:',
+'ipadressorwiki_username' => 'Direksyong IP o bansag:',
 'ipbexpiry' => 'Pagkawalang-bisa:',
 'ipbreason' => 'Dahilan:',
 'ipbreasonotherlist' => 'Ibang dahilan',
@@ -2526,8 +2526,8 @@ Punan ang espesipikong dahilan sa ibaba (halimbawa, magbanggit ng partikular na 
 'ipbotheroption' => 'iba',
 'ipbotherreason' => 'Iba/karagdagang dahilan:',
 'ipbhidename' => 'Itago ang pangalan ng tagagamit mula sa pagbabago at mga talaan',
-'ipbwatchuser' => 'Bantayan ang pahinang pantagagamit at pahina ng usapan ng tagagamit na ito',
-'ipb-disableusertalk' => 'Pigilan ang tagagamit na ito mula sa pamamatnugot ng kanilang pansariling pahina ng usapan habang hinahadlangan',
+'ipbwatchwiki_user' => 'Bantayan ang pahinang pantagagamit at pahina ng usapan ng tagagamit na ito',
+'ipb-disablewiki_usertalk' => 'Pigilan ang tagagamit na ito mula sa pamamatnugot ng kanilang pansariling pahina ng usapan habang hinahadlangan',
 'ipb-change-block' => 'Muling harangin/hadlangan ang tagagamit na ginagamitan ng ganitong mga pagtatakda',
 'ipb-confirm' => 'Tiyakin ang pagharang',
 'badipaddress' => 'Hindi tanggap na adres ng IP',
@@ -2535,7 +2535,7 @@ Punan ang espesipikong dahilan sa ibaba (halimbawa, magbanggit ng partikular na 
 'blockipsuccesstext' => 'Hinadlangan ang  [[Special:Contributions/$1|$1]].<br />
 Tingnan ang [[Special:BlockList|talaan ng mga hinadlangan]] upang suriin ang mga paghadlang.',
 'ipb-blockingself' => 'Hahadlangan mo na ang sarili mo!  Nakatitiyak ka bang nais mong gawin iyan?',
-'ipb-confirmhideuser' => 'Hahadlangan mo na ang isang tagagamit na pinagagana ang "ikubli ang tagagamit".  Susupilin nito ang pangalan ng tagagamit sa lahat ng mga pagpapasok sa mga tala at mga talaan.  Nakatitiyak ka bang nais mong gawin iyan?',
+'ipb-confirmhidewiki_user' => 'Hahadlangan mo na ang isang tagagamit na pinagagana ang "ikubli ang tagagamit".  Susupilin nito ang pangalan ng tagagamit sa lahat ng mga pagpapasok sa mga tala at mga talaan.  Nakatitiyak ka bang nais mong gawin iyan?',
 'ipb-edit-dropdown' => 'Baguhin ang mga dahilan sa pagharang',
 'ipb-unblock-addr' => 'Tanggalin ang pagkaharang ng $1',
 'ipb-unblock' => 'Tanggalin ang pagkaharang ng isang bansag o IP address',
@@ -2544,13 +2544,13 @@ Tingnan ang [[Special:BlockList|talaan ng mga hinadlangan]] upang suriin ang mga
 'unblockip' => 'Tanggalin ang pagharang/paghadlang sa tagagamit',
 'unblockiptext' => 'Gamitin ang pormularyo sa ibaba upang ibalik ang akses ng pagsulat sa isang dating nakaharang na IP address o bansag.',
 'ipusubmit' => 'Tanggalin ang paghadlang na ito',
-'unblocked' => 'Natanggal sa pagkaharang ang tagagamit na [[User:$1|$1]]',
+'unblocked' => 'Natanggal sa pagkaharang ang tagagamit na [[wiki_user:$1|$1]]',
 'unblocked-range' => 'Hindi na hinaharang ang $1',
 'unblocked-id' => 'Tinanggal na ang pagharang/paghadlang na $1',
 'blocklist' => 'Hinahadlangang mga tagagamit',
 'ipblocklist' => 'Hinahadlangang mga tagagamit',
 'ipblocklist-legend' => 'Hanapin ang isang hinarang na tagagamit',
-'blocklist-userblocks' => 'Itago ang mga paghahadlang ng akawnt',
+'blocklist-wiki_userblocks' => 'Itago ang mga paghahadlang ng akawnt',
 'blocklist-tempblocks' => 'Pansamantalang ikubli ang mga pagharang',
 'blocklist-addressblocks' => 'Itago ang isahang mga paghadlang sa IP',
 'blocklist-rangeblocks' => 'Itago ang mga tipak ng nasasaklawan',
@@ -2569,7 +2569,7 @@ Tingnan ang [[Special:BlockList|talaan ng mga hinadlangan]] upang suriin ang mga
 'noautoblockblock' => 'hindi gumagana ang awtomatikong pagharang',
 'createaccountblock' => 'Hinarang ang paglikha ng akawnt',
 'emailblock' => 'Hinarang/hinadlangan ang e-liham',
-'blocklist-nousertalk' => 'hindi mo mababago ang iyong pansariling pahina ng usapan',
+'blocklist-nowiki_usertalk' => 'hindi mo mababago ang iyong pansariling pahina ng usapan',
 'ipblocklist-empty' => 'Walang laman ang talaan ng pagharang/paghadlang.',
 'ipblocklist-no-results' => 'Nakaharang ang hiniling na IP address o bansag.',
 'blocklink' => 'harangin',
@@ -2577,7 +2577,7 @@ Tingnan ang [[Special:BlockList|talaan ng mga hinadlangan]] upang suriin ang mga
 'change-blocklink' => 'baguhin ang pagharang/paghadlang',
 'contribslink' => 'ambag',
 'emaillink' => 'ipadala ang e-liham',
-'autoblocker' => 'Kusang hinarang dahil ang iyong adres ng IP ay kamakailan lamang na ginamit ni "[[User:$1|$1]]".
+'autoblocker' => 'Kusang hinarang dahil ang iyong adres ng IP ay kamakailan lamang na ginamit ni "[[wiki_user:$1|$1]]".
 Ang dahilang ibinigay para sa pagharang kay $1 ay: "$2"',
 'blocklogpage' => 'Tala ng pagharang',
 'blocklog-showlog' => 'Dati nang naharang ang tagagamit na ito.
@@ -2594,7 +2594,7 @@ Tingnan ang [[Special:BlockList|talaan ng pagharang]] para sa lista ng kasalukuy
 'block-log-flags-nocreate' => 'Nakapatay ang paglikha ng akawnt',
 'block-log-flags-noautoblock' => 'Nakapatay ang awtomatikong pagharang',
 'block-log-flags-noemail' => 'hinadlangan/hinarang ang e-liham',
-'block-log-flags-nousertalk' => 'hindi mo mababago ang iyong pansariling pahina ng usapan',
+'block-log-flags-nowiki_usertalk' => 'hindi mo mababago ang iyong pansariling pahina ng usapan',
 'block-log-flags-angry-autoblock' => 'pinaandar ang pinainam/pinagibayong kusang paghadlang o awtomatikong pagharang',
 'block-log-flags-hiddenname' => 'nakatago ang pangalan ng tagagamit',
 'range_block_disabled' => 'Hindi gumagana ang kakayahan ng tagapangasiwa para makalikha ng mga pagharang/paghadlang na may sakop.',
@@ -2604,7 +2604,7 @@ Tingnan ang [[Special:BlockList|talaan ng pagharang]] para sa lista ng kasalukuy
 'ipb_already_blocked' => 'Nakaharang na ang "$1"',
 'ipb-needreblock' => 'Hinarang/hinadlangan na si $1.  Ibig mo bang baguhin ang mga pagtatakda?',
 'ipb-otherblocks-header' => 'Ibang {{PLURAL:$1|harang|mga harang}}',
-'unblock-hideuser' => 'Hindi mo matatanggal ang paghadlang sa tagagamit na ito, dahil naitago ang kanilang pangalan ng tagagamit.',
+'unblock-hidewiki_user' => 'Hindi mo matatanggal ang paghadlang sa tagagamit na ito, dahil naitago ang kanilang pangalan ng tagagamit.',
 'ipb_cant_unblock' => 'Kamalian: Hindi natagpuan ang ID ng pagharang/paghadlang na $1.  Maaaring natanggal na ang pagkakaharang nito/paghahadlang dito.',
 'ipb_blocked_as_range' => 'Mali: Hindi diretsong nakaharang ang IP na $1 at hindi maaaring tanggalin sa pagkakaharang. Bagaman, bahagi ito sa sakop na $2, na maaaring tanggalin sa pagkaharang.',
 'ip_range_invalid' => 'Hindi tamang sakop ng IP.',
@@ -2618,7 +2618,7 @@ Tingnan ang [[Special:BlockList|talaan ng pagharang]] para sa lista ng kasalukuy
 'sorbsreason' => 'Nakalista ang IP address mo bilang isang bukas na proxy sa DNSBL na ginagamit ng sayt na ito.',
 'sorbs_create_account_reason' => 'Nakalista ang IP address mo bilang isang bukas na proxy sa DNSBL na ginagamit ng sayt na ito. Hindi ka makakalikha ng akawnt',
 'cant-block-while-blocked' => 'Hindi mo mahahadlangan/mahaharang ang ibang mga tagagamit habang hinahadlangan ka.',
-'cant-see-hidden-user' => 'Ang tagagamit na sinusubukan mong hadlangan ay naharang at naikubli na.
+'cant-see-hidden-wiki_user' => 'Ang tagagamit na sinusubukan mong hadlangan ay naharang at naikubli na.
 Dahil wala kang karapatang magkubli ng tagagamit, hindi mo makikita o mababago ang paghadlang sa tagagamit.',
 'ipbblocked' => 'Hindi mo mahahadlangan o tanggalin ang hadlang ng ibang mga tagagamit, dahil hinadlangan ka rin',
 'ipbnounblockself' => 'Hindi ka pinahihintulutang tanggalin ang pagharang sa iyo.',
@@ -2677,13 +2677,13 @@ mangyaring tiyakin na nauunawaan mo ang mga kahihinatnan nito bago magpatuloy.",
 
 Sa mga kasong ganoon, kailangan mong ilipat o pagsamahin/pagsanibin ang pahina sa manwal o kinakamay na paraan kung nanaisin.",
 'movearticle' => 'Ilipat ang pahina:',
-'moveuserpage-warning' => "'''Babala:''' Ililipat mo ang isang pahina ng tagagamit. Pakitandaan na tanging ang pahina lamang ang malilipat at ''hindi'' babaguhin ang pangalan ng tagagamit.",
+'movewiki_userpage-warning' => "'''Babala:''' Ililipat mo ang isang pahina ng tagagamit. Pakitandaan na tanging ang pahina lamang ang malilipat at ''hindi'' babaguhin ang pangalan ng tagagamit.",
 'movenologin' => 'Hindi nakalagda',
-'movenologintext' => 'Dapat na isa kang nagpatalang tagagamit at [[Special:UserLogin|nakalagdang papasok]] upang makapaglipat ng isang pahina.',
+'movenologintext' => 'Dapat na isa kang nagpatalang tagagamit at [[Special:wiki_userLogin|nakalagdang papasok]] upang makapaglipat ng isang pahina.',
 'movenotallowed' => 'Wala kang permisong maglipat ng pahina.',
 'movenotallowedfile' => 'Wala kang pahintulot upang makapaglipat ng mga talaksan.',
-'cant-move-user-page' => 'Wala kang pahintulot para makapaglipat ng mga pahina ng tagagamit (bukod pa sa kabahaging mga pahina o subpahina).',
-'cant-move-to-user-page' => 'Wala kang pahintulot para makapaglipat ng isang pahina papunta sa isang pahina ng tagagamit (maliban na lamang sa isang kabahaging pahina o subpahina ng tagagamit).',
+'cant-move-wiki_user-page' => 'Wala kang pahintulot para makapaglipat ng mga pahina ng tagagamit (bukod pa sa kabahaging mga pahina o subpahina).',
+'cant-move-to-wiki_user-page' => 'Wala kang pahintulot para makapaglipat ng isang pahina papunta sa isang pahina ng tagagamit (maliban na lamang sa isang kabahaging pahina o subpahina ng tagagamit).',
 'newtitle' => 'Papunta sa bagong pamagat:',
 'move-watch' => 'Bantayan ang pahinang ito',
 'movepagebtn' => 'Ilipat ang pahina',
@@ -2858,8 +2858,8 @@ Sagipin mo ito sa iyong kompyuter at papaitaas na ikarga ito rito.',
 'javascripttest-qunit-heading' => 'Pook na subukan ng QUnit ng JavaScript ng MediaWiki',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Ang iyong pahina ng tagagamit',
-'tooltip-pt-anonuserpage' => 'Ang pahina ng tagagamit para sa IP na iyong binabago bilang',
+'tooltip-pt-wiki_userpage' => 'Ang iyong pahina ng tagagamit',
+'tooltip-pt-anonwiki_userpage' => 'Ang pahina ng tagagamit para sa IP na iyong binabago bilang',
 'tooltip-pt-mytalk' => 'Ang iyong pahina ng usapan',
 'tooltip-pt-anontalk' => 'Usapang tungkol sa mga pagbabagong ginawa sa ip address na ito',
 'tooltip-pt-preferences' => 'Mga nais ko',
@@ -2896,13 +2896,13 @@ Sagipin mo ito sa iyong kompyuter at papaitaas na ikarga ito rito.',
 'tooltip-feed-rss' => 'Subo/Kargang RSS para sa pahinang ito',
 'tooltip-feed-atom' => 'Sindikasyong Atom para sa pahinang ito',
 'tooltip-t-contributions' => 'Tunghayan ang tala ng mga ambag ng tagagamit na ito',
-'tooltip-t-emailuser' => 'Magpadala ng isang e-liham sa tagagamit na ito',
+'tooltip-t-emailwiki_user' => 'Magpadala ng isang e-liham sa tagagamit na ito',
 'tooltip-t-upload' => 'Magkarga ng mga talaksan',
 'tooltip-t-specialpages' => 'Tala ng lahat ng mga natatanging pahina',
 'tooltip-t-print' => 'Bersiyong maililimbag ng pahinang ito',
 'tooltip-t-permalink' => 'Palagiang kawing sa bersyong ito ng pahina',
 'tooltip-ca-nstab-main' => 'Tingnan ang pahina ng nilalaman',
-'tooltip-ca-nstab-user' => 'Tingnan ang pahina ng tagagamit',
+'tooltip-ca-nstab-wiki_user' => 'Tingnan ang pahina ng tagagamit',
 'tooltip-ca-nstab-media' => 'Tingnan ang pahina ng midya',
 'tooltip-ca-nstab-special' => 'Isa itong natatanging pahina, hindi mo mababago ang mismong pahina',
 'tooltip-ca-nstab-project' => 'Tingnan ang pahina ng proyekto',
@@ -2966,13 +2966,13 @@ Sagipin mo ito sa iyong kompyuter at papaitaas na ikarga ito rito.',
 
 # Attribution
 'anonymous' => 'Hindi kilalang {{PLURAL:$1|tagagamit|mga tagagamit}} ng {{SITENAME}}',
-'siteuser' => 'Tagagamit $1 ng {{SITENAME}}',
-'anonuser' => 'Hindi nakikilalang tagagamit na $1 ng {{SITENAME}}',
+'sitewiki_user' => 'Tagagamit $1 ng {{SITENAME}}',
+'anonwiki_user' => 'Hindi nakikilalang tagagamit na $1 ng {{SITENAME}}',
 'lastmodifiedatby' => 'Huling binago ang pahinang ito noong $2, $1 ni $3.',
 'othercontribs' => 'Batay sa gawa ni/nina $1.',
 'others' => 'iba pa',
-'siteusers' => '{{PLURAL:$2|tagagamit|mga tagagamit}} $1 ng {{SITENAME}}',
-'anonusers' => 'Hindi nakikilalang $1 na {{PLURAL:$2|tagagamit|mga tagagamit}} ng {{SITENAME}}',
+'sitewiki_users' => '{{PLURAL:$2|tagagamit|mga tagagamit}} $1 ng {{SITENAME}}',
+'anonwiki_users' => 'Hindi nakikilalang $1 na {{PLURAL:$2|tagagamit|mga tagagamit}} ng {{SITENAME}}',
 'creditspage' => 'Pahina ng pagkilala sa gumawa (mga kredito)',
 'nocredits' => 'Walang mga kredito/pagkilala sa gumawa na makuha para sa pahinang ito.',
 
@@ -2981,7 +2981,7 @@ Sagipin mo ito sa iyong kompyuter at papaitaas na ikarga ito rito.',
 'spamprotectiontext' => "Ang pahinang ibig mong sagipin ay naharang ng pansala ng ''spam''.
 Maaaring dahil ito sa isang kawing sa isang nakatalang hinarang dahil di-kinaisnais na panlabas na sityo/sayt.",
 'spamprotectionmatch' => "Ang sumusunod na teksto ang bumuhay sa aming panala ng ''spam'': $1",
-'spambot_username' => "Paglilinis ng ''spam'' ng MediaWiki",
+'spambot_wiki_username' => "Paglilinis ng ''spam'' ng MediaWiki",
 'spam_reverting' => "Ibinabalik sa huling bersyon na 'di-naglalaman ng mga kawing sa $1",
 'spam_blanking' => 'Lahat ng mga pagbabago ay naglalaman ng mga kawing sa $1, pagpapatlang',
 'spam_deleting' => 'Lahat ng mga pagbabago ay naglalaman ng mga kawing sa $1, binubura',
@@ -3006,9 +3006,9 @@ Maaaring dahil ito sa isang kawing sa isang nakatalang hinarang dahil di-kinaisn
 'pageinfo-redirects-value' => '$1',
 'pageinfo-subpages-name' => 'Mga kabahaging pahina ng pahinang ito',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|pagpapapunta sa ibang pahina|mga pagpapapunta sa ibang pahina}}; $3 {{PLURAL:$3|hindi pagpapapunta sa ibang pahina|mga hindi pagpapapunta sa ibang pahina}})',
-'pageinfo-firstuser' => 'Tagapaglikha ng pahina',
+'pageinfo-firstwiki_user' => 'Tagapaglikha ng pahina',
 'pageinfo-firsttime' => 'Petsa ng paglikha ng pahina',
-'pageinfo-lastuser' => 'Pinakahuling patnugot',
+'pageinfo-lastwiki_user' => 'Pinakahuling patnugot',
 'pageinfo-lasttime' => 'Petsa ng pinakahuling pagpatnugot',
 'pageinfo-edits' => 'Kabuuang bilang ng mga pamamatnugot',
 'pageinfo-authors' => 'Kabuuang bilang ng magkakabukod na mga may-akda',
@@ -3231,7 +3231,7 @@ Likas na nakatakdang itago ang iba pa.
 'exif-compressedbitsperpixel' => 'Modalidad (paraan) ng pagsisiksik ng larawan',
 'exif-pixelydimension' => 'Lapad ng larawan',
 'exif-pixelxdimension' => 'Taas ng larawan',
-'exif-usercomment' => 'Mga kumento ng tagagamit',
+'exif-wiki_usercomment' => 'Mga kumento ng tagagamit',
 'exif-relatedsoundfile' => 'Kaugnay na talaksang nadidinig (audio)',
 'exif-datetimeoriginal' => 'Petsa at oras ng paglikha ng mga dato',
 'exif-datetimedigitized' => 'Petsa at oras ng pagsasadihital',
@@ -3651,7 +3651,7 @@ Pakisuri ang iyong adres ng e-liham kung may mga hindi tanggap na mga panitik/ka
 Ibinalik ng tagapagpadala ang: $1',
 'confirmemail_invalid' => 'Hindi tamang kodigo ng kumpirmasyon.  Maaaring lumagpas na sa taning ang kodigo.',
 'confirmemail_needlogin' => 'Kailangan mong $1 upang kumpirmahin/mapatotohanan ang iyong adres ng e-liham.',
-'confirmemail_success' => 'Nakumpirma/napatotohanan na ang adres ng e-liham mo. Maaari ka ng [[Special:UserLogin|lumagda]] at maglibang sa wiki.',
+'confirmemail_success' => 'Nakumpirma/napatotohanan na ang adres ng e-liham mo. Maaari ka ng [[Special:wiki_userLogin|lumagda]] at maglibang sa wiki.',
 'confirmemail_loggedin' => 'Natiyak na ngayon ang tirahan ng e-liham mo.',
 'confirmemail_error' => 'May nangyaring kamalian sa pagsasagip ng iyong kumpirmasyon.',
 'confirmemail_subject' => 'Kumpirmasyon/pagpapatotoong pang-adres ng e-liham ng {{SITENAME}}',
@@ -3705,10 +3705,10 @@ Mawawalan ng bisa ang kodigong ito ng pagpapatunay pagsapit ng $4.',
 
 # Delete conflict
 'deletedwhileediting' => 'Babala: Binura ang pahinang ito pagkaraan mong simulan ang pagbago!',
-'confirmrecreate' => "Binura ni [[User:$1|$1]] ([[User talk:$1|usapan]]) ang pahinang ito pagkaraan mong magumpisang magbago na may dahilang:
+'confirmrecreate' => "Binura ni [[wiki_user:$1|$1]] ([[wiki_user talk:$1|usapan]]) ang pahinang ito pagkaraan mong magumpisang magbago na may dahilang:
 : ''$2''
 Pakitiyak kung ibig mo talagang likhain muli ang pahinang ito.",
-'confirmrecreate-noreason' => 'Binura ng tagagamit na si [[User:$1|$1]] ([[User talk:$1|talk]]) ang pahinang ito pagkaraang simulan mo ang pagbago.  Mangyaring tiyakan na nais mo talagang muling likhain ang pahinang ito.',
+'confirmrecreate-noreason' => 'Binura ng tagagamit na si [[wiki_user:$1|$1]] ([[wiki_user talk:$1|talk]]) ang pahinang ito pagkaraang simulan mo ang pagbago.  Mangyaring tiyakan na nais mo talagang muling likhain ang pahinang ito.',
 'recreate' => 'Likhain muli',
 
 'unit-pixel' => 'px',
@@ -3879,7 +3879,7 @@ Maaari mo ring [[Special:EditWatchlist|gamitin ang pangkaraniwang pampatnugot]].
 'hebrew-calendar-m12-gen' => 'Elul',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|makipag-usap]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|makipag-usap]])',
 'timezone-utc' => 'UTC',
 
 # Core parser functions
@@ -3948,7 +3948,7 @@ Ipinapakita ang mga larawan sa buong kalinawan, tuwirang sinisimulan ang ibang u
 'specialpages-group-login' => 'Lumagda / lumikha ng akawnt',
 'specialpages-group-changes' => 'Mga huling binago at mga tala',
 'specialpages-group-media' => 'Mga ulat ng midya at mga pagkarga',
-'specialpages-group-users' => 'Mga tagagamit at mga karapatan',
+'specialpages-group-wiki_users' => 'Mga tagagamit at mga karapatan',
 'specialpages-group-highuse' => 'Mga pahinang mataas ang paggamit',
 'specialpages-group-pages' => 'Mga talaan ng mga pahina',
 'specialpages-group-pagetools' => 'Mga kagamitang pang-pahina',
@@ -4045,11 +4045,11 @@ Ipinapakita ang mga larawan sa buong kalinawan, tuwirang sinisimulan ang ibang u
 'logentry-move-move_redir-noredirect' => 'Inilipat ni $1 ang pahinang $3 papunta sa $4 sa ibabaw ng isang pagpapunta sa iba na hindi nag-iiwan ng isang pagpapapunta sa iba',
 'logentry-patrol-patrol' => 'Minarkahan ni $1 ang rebisyong $4 ng pahinang $3 bilang napatrolya na',
 'logentry-patrol-patrol-auto' => 'Kusang minarkahan ni $1 ang rebisyong $4 ng pahinang $3 bilang napatrolya na',
-'logentry-newusers-newusers' => 'Nilikha ang kuwenta ng tagagamit na $1',
-'logentry-newusers-create' => 'Lumikha si $1 ng isang kuwenta ng tagagamit',
-'logentry-newusers-create2' => 'Lumikha si $1 ng isang kuwenta ng tagagamit na $3',
-'logentry-newusers-autocreate' => 'Kusang nalikha ang akawnt na $1',
-'newuserlog-byemail' => 'Ipinadala ang hudyat sa pamamagitan ng e-liham',
+'logentry-newwiki_users-newwiki_users' => 'Nilikha ang kuwenta ng tagagamit na $1',
+'logentry-newwiki_users-create' => 'Lumikha si $1 ng isang kuwenta ng tagagamit',
+'logentry-newwiki_users-create2' => 'Lumikha si $1 ng isang kuwenta ng tagagamit na $3',
+'logentry-newwiki_users-autocreate' => 'Kusang nalikha ang akawnt na $1',
+'newwiki_userlog-byemail' => 'Ipinadala ang hudyat sa pamamagitan ng e-liham',
 
 # Feedback
 'feedback-bugornote' => 'Kung handa ka nang detalyadong maglarawan ng isang suliraning teknikal mangyaring [$1 iulat ang sira].

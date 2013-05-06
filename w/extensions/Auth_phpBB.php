@@ -3,9 +3,9 @@
     /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
     /**
-     * This file makes MediaWiki use a phpbb user database to
-     * authenticate with. This forces users to have a PHPBB account
-     * in order to log into the wiki. This can also force the user to
+     * This file makes MediaWiki use a phpbb wiki_user database to
+     * authenticate with. This forces wiki_users to have a PHPBB account
+     * in order to log into the wiki. This can also force the wiki_user to
      * be in a group called Wiki.
      *
      * With 3.0.x release this code was rewritten to make better use of
@@ -103,7 +103,7 @@
         public $_GroupsTB;
 
         /**
-         * Message user sees when logging in.
+         * Message wiki_user sees when logging in.
          *
          * @var string
          */
@@ -131,11 +131,11 @@
         private $_MySQL_Password;
 
         /**
-         * phpBB MySQL Username.
+         * phpBB MySQL wiki_username.
          *
          * @var string
          */
-        private $_MySQL_Username;
+        private $_MySQL_wiki_username;
 
         /**
          * Version of MySQL Database.
@@ -145,7 +145,7 @@
         private $_MySQL_Version;
 
         /**
-         * Text user sees when they login and are not a member of the wiki group.
+         * Text wiki_user sees when they login and are not a member of the wiki group.
          *
          * @var string
          */
@@ -179,28 +179,28 @@
          *
          * @var string
          */
-        public $_User_GroupTB;
+        public $_wiki_user_GroupTB;
 
         /**
-         * UserID of our current user.
+         * wiki_userID of our current wiki_user.
          *
          /* @var int
          */
-        private $_UserID;
+        private $_wiki_userID;
 
         /**
-         * Name of your PHPBB user table. (i.e. phpbb_users)
+         * Name of your PHPBB wiki_user table. (i.e. phpbb_wiki_users)
          *
          * @var string
          */
-        public $_UserTB;
+        public $_wiki_userTB;
 
         /**
          * This tells the Plugin to require
-         * a user to be a member of the above
+         * a wiki_user to be a member of the above
          * phpBB group. (ie. wiki) Setting
          * this to false will let any phpBB
-         * user edit the wiki.
+         * wiki_user edit the wiki.
          *
          * @var bool
          */
@@ -208,7 +208,7 @@
 
         /**
          * Name of your PHPBB group
-         * users need to be a member
+         * wiki_users need to be a member
          * of to use the wiki. (i.e. wiki)
          *
          * @var mixed
@@ -231,8 +231,8 @@
             $this->_PathToPHPBB     = $aConfig['PathToPHPBB'];
             $this->_SessionTB       = @$aConfig['SessionTB'];
             $this->_UseExtDatabase  = $aConfig['UseExtDatabase'];
-            $this->_User_GroupTB    = $aConfig['User_GroupTB'];
-            $this->_UserTB          = $aConfig['UserTB'];
+            $this->_wiki_user_GroupTB    = $aConfig['wiki_user_GroupTB'];
+            $this->_wiki_userTB          = $aConfig['wiki_userTB'];
             $this->_UseWikiGroup    = $aConfig['UseWikiGroup'];
             $this->_WikiGroupName   = $aConfig['WikiGroupName'];
             $this->_LoginMessage    = $aConfig['LoginMessage'];
@@ -243,20 +243,20 @@
                 $this->_MySQL_Database  = $aConfig['MySQL_Database'];
                 $this->_MySQL_Host      = $aConfig['MySQL_Host'];
                 $this->_MySQL_Password  = $aConfig['MySQL_Password'];
-                $this->_MySQL_Username  = $aConfig['MySQL_Username'];
+                $this->_MySQL_wiki_username  = $aConfig['MySQL_wiki_username'];
             }
 
             // Set some MediaWiki Values
-            // This requires a user be logged into the wiki to make changes.
+            // This requires a wiki_user be logged into the wiki to make changes.
             $GLOBALS['wgGroupPermissions']['*']['edit'] = false;
 
             // Specify who may create new accounts:
             $GLOBALS['wgGroupPermissions']['*']['createaccount'] = false;
 
             // Load Hooks
-            $GLOBALS['wgHooks']['UserLoginForm'][]      = array($this, 'onUserLoginForm', false);
-            $GLOBALS['wgHooks']['UserLoginComplete'][]  = $this;
-            $GLOBALS['wgHooks']['UserLogout'][]         = $this;
+            $GLOBALS['wgHooks']['wiki_userLoginForm'][]      = array($this, 'onwiki_userLoginForm', false);
+            $GLOBALS['wgHooks']['wiki_userLoginComplete'][]  = $this;
+            $GLOBALS['wgHooks']['wiki_userLogout'][]         = $this;
         }
 
 
@@ -273,27 +273,27 @@
 
 
     	/**
-    	 * Add a user to the external authentication database.
+    	 * Add a wiki_user to the external authentication database.
     	 * Return true if successful.
     	 *
-    	 * NOTE: We are not allowed to add users to phpBB from the
+    	 * NOTE: We are not allowed to add wiki_users to phpBB from the
     	 * wiki so this always returns false.
     	 *
-    	 * @param User $user - only the name should be assumed valid at this point
+    	 * @param wiki_user $wiki_user - only the name should be assumed valid at this point
     	 * @param string $password
     	 * @param string $email
     	 * @param string $realname
     	 * @return bool
     	 * @access public
     	 */
-    	public function addUser( $user, $password, $email='', $realname='' )
+    	public function addwiki_user( $wiki_user, $password, $email='', $realname='' )
     	{
     		return false;
     	}
 
 
 		/**
-		 * Can users change their passwords?
+		 * Can wiki_users change their passwords?
 		 *
 		 * @return bool
 		 */
@@ -304,32 +304,32 @@
 
 
     	/**
-    	 * Check if a username+password pair is a valid login.
+    	 * Check if a wiki_username+password pair is a valid login.
     	 * The name will be normalized to MediaWiki's requirements, so
     	 * you might need to munge it (for instance, for lowercase initial
     	 * letters).
     	 *
-    	 * @param string $username
+    	 * @param string $wiki_username
     	 * @param string $password
     	 * @return bool
     	 * @access public
     	 * @todo Check if the password is being changed when it contains a slash or an escape char.
     	 */
-    	public function authenticate($username, $password)
+    	public function authenticate($wiki_username, $password)
     	{
             $fresMySQLConnection_wiki = null;
             // Connect to the database.
     		$fresMySQLConnection = $this->connect($fresMySQLConnection_wiki);
 
-            $username = $this->utf8($username); // Convert to UTF8
+            $wiki_username = $this->utf8($wiki_username); // Convert to UTF8
 
-    		// Check Database for username and password.
-    		$fstrMySQLQuery = sprintf("SELECT `user_id`, `loginname_clean`, `user_password`
+    		// Check Database for wiki_username and password.
+    		$fstrMySQLQuery = sprintf("SELECT `wiki_user_id`, `loginname_clean`, `wiki_user_password`
     		                   FROM `%s`
     		                   WHERE `loginname_clean` = '%s'
                                LIMIT 1",
-                               $this->_UserTB,
-                               mysql_real_escape_string($username, $fresMySQLConnection));
+                               $this->_wiki_userTB,
+                               mysql_real_escape_string($wiki_username, $fresMySQLConnection));
 
     		// Query Database.
             $fresMySQLResult = mysql_query($fstrMySQLQuery, $fresMySQLConnection)
@@ -340,22 +340,22 @@
                 // Use new phpass class
                 $PasswordHasher = new PasswordHash(8, TRUE);
 
-                // Print the hash of the password entered by the user and the
+                // Print the hash of the password entered by the wiki_user and the
                 // password hash from the database to the screen.
                 // While this will display its not effective anymore.
                 if ($this->_debug)
                 {
-                    //print md5($password) . ':' . $faryMySQLResult['user_password'] . '<br />'; // Debug
-                    print $PasswordHasher->HashPassword($password) . ':' . $faryMySQLResult['user_password'] . '<br />'; // Debug
+                    //print md5($password) . ':' . $faryMySQLResult['wiki_user_password'] . '<br />'; // Debug
+                    print $PasswordHasher->HashPassword($password) . ':' . $faryMySQLResult['wiki_user_password'] . '<br />'; // Debug
                 }
 
                 /**
                  * Check if password submited matches the PHPBB password.
-                 * Also check if user is a member of the phpbb group 'wiki'.
+                 * Also check if wiki_user is a member of the phpbb group 'wiki'.
                  */
-                if ($PasswordHasher->CheckPassword($password, $faryMySQLResult['user_password']) && $this->isMemberOfWikiGroup($username))
+                if ($PasswordHasher->CheckPassword($password, $faryMySQLResult['wiki_user_password']) && $this->isMemberOfWikiGroup($wiki_username))
                 {
-                    $this->_UserID = $faryMySQLResult['user_id'];
+                    $this->_wiki_userID = $faryMySQLResult['wiki_user_id'];
                     return true;
                 }
             }
@@ -365,7 +365,7 @@
 
     	/**
     	 * Return true if the wiki should create a new local account automatically
-    	 * when asked to login a user who doesn't exist locally but does in the
+    	 * when asked to login a wiki_user who doesn't exist locally but does in the
     	 * external auth database.
     	 *
     	 * If you don't automatically create accounts, you must still create
@@ -375,7 +375,7 @@
     	 * This is just a question, and shouldn't perform any actions.
     	 *
     	 * NOTE: I have set this to true to allow the wiki to create accounts.
-    	 *       Without an accout in the wiki database a user will never be
+    	 *       Without an accout in the wiki database a wiki_user will never be
     	 *       able to login and use the wiki. I think the password does not
     	 *       matter as long as authenticate() returns true.
     	 *
@@ -392,7 +392,7 @@
     	 * Check to see if external accounts can be created.
     	 * Return true if external accounts can be created.
     	 *
-    	 * NOTE: We are not allowed to add users to phpBB from the
+    	 * NOTE: We are not allowed to add wiki_users to phpBB from the
     	 * wiki so this always returns false.
     	 *
     	 * @return bool
@@ -415,20 +415,20 @@
         public function connect(&$fresMySQLConnection_wiki)
         {
             // Connect to database.
-            $fresMySQLConnection_wiki = mysql_connect($GLOBALS['wgDBserver'], $GLOBALS['wgDBuser'], $GLOBALS['wgDBpassword'], true);
+            $fresMySQLConnection_wiki = mysql_connect($GLOBALS['wgDBserver'], $GLOBALS['wgDBwiki_user'], $GLOBALS['wgDBpassword'], true);
 
             // Check if we are connected to the database.
             if (!$fresMySQLConnection_wiki)
             {
                 $this->mySQLError('There was a problem when connecting to the wiki database.<br />' .
-                                  'Check your Host, Username, and Password settings.<br />');
+                                  'Check your Host, wiki_username, and Password settings.<br />');
             }
 
             // Select Database: This assumes the wiki and phpbb are in the same database.
-            $db_selected_wiki = mysql_select_db($GLOBALS['wgDBname']);
+            _selected_wiki = mysql_select_db($GLOBALS['wgDBname']);
 
             // Check if we were able to select the database.
-            if (!$db_selected_wiki)
+            if (!_selected_wiki)
             {
                 $this->mySQLError('There was a problem when connecting to the wiki database.<br />' .
                                   'The database ' . $GLOBALS['wgDBname'] . ' was not found.<br />');
@@ -439,21 +439,21 @@
             {
                 // Connect to database. I supress the error here.
                 $fresMySQLConnection = @mysql_connect($this->_MySQL_Host,
-                                                      $this->_MySQL_Username,
+                                                      $this->_MySQL_wiki_username,
                                                       $this->_MySQL_Password, true);
 
                 // Check if we are connected to the database.
                 if (!$fresMySQLConnection)
                 {
                     $this->mySQLError('There was a problem when connecting to the phpBB database.<br />' .
-                                      'Check your Host, Username, and Password settings.<br />');
+                                      'Check your Host, wiki_username, and Password settings.<br />');
                 }
 
                 // Select Database
-                $db_selected = mysql_select_db($this->_MySQL_Database, $fresMySQLConnection);
+                _selected = mysql_select_db($this->_MySQL_Database, $fresMySQLConnection);
 
                 // Check if we were able to select the database.
-                if (!$db_selected)
+                if (!_selected)
                 {
                     $this->mySQLError('There was a problem when connecting to the phpBB database.<br />' .
                                       'The database ' . $this->_MySQL_Database . ' was not found.<br />');
@@ -463,7 +463,7 @@
                 $fresMySQLConnection = $fresMySQLConnection_wiki;
 
             $this->_MySQL_Version = substr(mysql_get_server_info(), 0, 3); // Get the mysql version.
-            mysql_query("SET NAMES 'utf8'", $fresMySQLConnection); // This is so utf8 usernames work. Needed for MySQL 4.1
+            mysql_query("SET NAMES 'utf8'", $fresMySQLConnection); // This is so utf8 wiki_usernames work. Needed for MySQL 4.1
 
             return $fresMySQLConnection;
         }
@@ -486,21 +486,21 @@
     	 *
     	 * @return string
     	 */
-    	public function getCanonicalName( $username )
+    	public function getCanonicalName( $wiki_username )
     	{
             $fresMySQLConnection_wiki = null;
             // Connect to the database.
     		$fresMySQLConnection = $this->connect($fresMySQLConnection_wiki);
 
-            $username = $this->utf8($username); // Convert to UTF8
+            $wiki_username = $this->utf8($wiki_username); // Convert to UTF8
 
-    		// Check Database for username. We will return the correct casing of the name
-    		$fstrMySQLQuery = sprintf("SELECT `loginname_clean`, `username`
+    		// Check Database for wiki_username. We will return the correct casing of the name
+    		$fstrMySQLQuery = sprintf("SELECT `loginname_clean`, `wiki_username`
     		                   FROM `%s`
     		                   WHERE `loginname_clean` = '%s'
                                LIMIT 1",
-                               $this->_UserTB,
-                               mysql_real_escape_string($username, $fresMySQLConnection));
+                               $this->_wiki_userTB,
+                               mysql_real_escape_string($wiki_username, $fresMySQLConnection));
 
     		// Query Database.
             $fresMySQLResult = mysql_query($fstrMySQLQuery, $fresMySQLConnection)
@@ -508,43 +508,43 @@
 
             while($faryMySQLResult = mysql_fetch_assoc($fresMySQLResult))
             {
-                mysql_query("UPDATE `warptome_wiki`.`user` SET `user_real_name` = '" . str_replace("&#01;","",$faryMySQLResult['username']) . "' WHERE LOWER(CONVERT(`user`.`user_name` USING latin1)) = LOWER('" . $faryMySQLResult['loginname_clean'] . "')", $fresMySQLConnection_wiki);
+                mysql_query("UPDATE `warptome_wiki`.`wiki_user` SET `wiki_user_real_name` = '" . str_replace("&#01;","",$faryMySQLResult['wiki_username']) . "' WHERE LOWER(CONVERT(`wiki_user`.`wiki_user_name` USING latin1)) = LOWER('" . $faryMySQLResult['loginname_clean'] . "')", $fresMySQLConnection_wiki);
                 return ucfirst($faryMySQLResult['loginname_clean']);
             }
 
-            // At this point the username is invalid and should return just as it was passed.
-            return $username;
+            // At this point the wiki_username is invalid and should return just as it was passed.
+            return $wiki_username;
     	}
 
 
         /**
-    	 * When creating a user account, optionally fill in preferences and such.
+    	 * When creating a wiki_user account, optionally fill in preferences and such.
     	 * For instance, you might pull the email address or real name from the
-    	 * external user database.
+    	 * external wiki_user database.
     	 *
-    	 * The User object is passed by reference so it can be modified; don't
+    	 * The wiki_user object is passed by reference so it can be modified; don't
     	 * forget the & on your function declaration.
     	 *
     	 * NOTE: This gets the email address from PHPBB for the wiki account.
     	 *
-    	 * @param User $user
-    	 * @param $autocreate bool True if user is being autocreated on login
+    	 * @param wiki_user $wiki_user
+    	 * @param $autocreate bool True if wiki_user is being autocreated on login
     	 * @access public
     	 */
-        public function initUser( &$user, $autocreate=false )
+        public function initwiki_user( &$wiki_user, $autocreate=false )
     	{
             // Connect to the database.
     		$fresMySQLConnection = $this->connect();
 
-            $username = $this->utf8($user->mName); // Convert to UTF8
+            $wiki_username = $this->utf8($wiki_user->mName); // Convert to UTF8
 
-    		// Check Database for username and email address.
-    		$fstrMySQLQuery = sprintf("SELECT `loginname_clean`, `user_email`
+    		// Check Database for wiki_username and email address.
+    		$fstrMySQLQuery = sprintf("SELECT `loginname_clean`, `wiki_user_email`
     		                   FROM `%s`
     		                   WHERE `loginname_clean` = '%s'
                                LIMIT 1",
-                               $this->_UserTB,
-                               mysql_real_escape_string($username, $fresMySQLConnection));
+                               $this->_wiki_userTB,
+                               mysql_real_escape_string($wiki_username, $fresMySQLConnection));
 
 
     		// Query Database.
@@ -553,22 +553,22 @@
 
             while($faryMySQLResult = mysql_fetch_array($fresMySQLResult))
             {
-                $user->mEmail       = $faryMySQLResult['user_email']; // Set Email Address.
-                $user->mRealName    = 'I need to Update My Profile';  // Set Real Name.
+                $wiki_user->mEmail       = $faryMySQLResult['wiki_user_email']; // Set Email Address.
+                $wiki_user->mRealName    = 'I need to Update My Profile';  // Set Real Name.
             }
     	}
 
 
     	/**
-    	 * Checks if the user is a member of the PHPBB group called wiki.
+    	 * Checks if the wiki_user is a member of the PHPBB group called wiki.
     	 *
-    	 * @param string $username
+    	 * @param string $wiki_username
     	 * @access public
     	 * @return bool
     	 * @todo Remove 2nd connection to database. For function isMemberOfWikiGroup()
     	 *
     	 */
-    	private function isMemberOfWikiGroup($username)
+    	private function isMemberOfWikiGroup($wiki_username)
     	{
             // In LocalSettings.php you can control if being a member of a wiki
             // is required or not.
@@ -581,8 +581,8 @@
 
             // Connect to the database.
     	    $fresMySQLConnection = $this->connect($a);
-    	    $username = $this->utf8($username); // Convert to UTF8
-    	    $username = mysql_real_escape_string($username, $fresMySQLConnection); // Clean username.
+    	    $wiki_username = $this->utf8($wiki_username); // Convert to UTF8
+    	    $wiki_username = mysql_real_escape_string($wiki_username, $fresMySQLConnection); // Clean wiki_username.
 
     	    // If not an array make this an array.
     	    if (!is_array($this->_WikiGroupName))
@@ -593,27 +593,27 @@
     	    foreach ($this->_WikiGroupName as $WikiGrpName)
     	    {
         	    /**
-                 *  This is a great query. It takes the username and gets the userid. Then
+                 *  This is a great query. It takes the wiki_username and gets the wiki_userid. Then
                  *  it gets the group_id number of the the Wiki group. Last it checks if the
-                 *  userid and groupid are matched up. (The user is in the wiki group.)
+                 *  wiki_userid and groupid are matched up. (The wiki_user is in the wiki group.)
                  *
-                 *  Last it returns TRUE or FALSE on if the user is in the wiki group.
+                 *  Last it returns TRUE or FALSE on if the wiki_user is in the wiki group.
                  */
 
-                // Get UserId
-                mysql_query('SELECT @userId := `user_id` FROM `' . $this->_UserTB .
-                            '` WHERE `loginname_clean` = \'' . $username . '\';', $fresMySQLConnection)
-                            or die($this->mySQLError('Unable to get userID.'));
+                // Get wiki_userId
+                mysql_query('SELECT @wiki_userId := `wiki_user_id` FROM `' . $this->_wiki_userTB .
+                            '` WHERE `loginname_clean` = \'' . $wiki_username . '\';', $fresMySQLConnection)
+                            or die($this->mySQLError('Unable to get wiki_userID.'));
 
                 // Get WikiId
                 mysql_query('SELECT @wikiId := `group_id` FROM `' . $this->_GroupsTB .
                             '` WHERE `group_name` = \'' . $WikiGrpName . '\';', $fresMySQLConnection)
                             or die($this->mySQLError('Unable to get wikiID.'));
 
-                // Check UserId and WikiId
-                mysql_query('SELECT @isThere := COUNT( * ) FROM `' . $this->_User_GroupTB .
-                            '` WHERE `user_id` = @userId AND `group_id` = @wikiId and `user_pending` = 0;', $fresMySQLConnection)
-                            or die($this->mySQLError('Unable to get validate user group.'));
+                // Check wiki_userId and WikiId
+                mysql_query('SELECT @isThere := COUNT( * ) FROM `' . $this->_wiki_user_GroupTB .
+                            '` WHERE `wiki_user_id` = @wiki_userId AND `group_id` = @wikiId and `wiki_user_pending` = 0;', $fresMySQLConnection)
+                            or die($this->mySQLError('Unable to get validate wiki_user group.'));
 
                 // Return Result.
                 $fstrMySQLQuery = 'SELECT IF(@isThere > 0, \'true\', \'false\') AS `result`;';
@@ -627,13 +627,13 @@
                 {
                     if ($faryMySQLResult['result'] == 'true')
                     {
-                        return true; // User is in Wiki group.
+                        return true; // wiki_user is in Wiki group.
                     }
                 }
     	    }
             // Hook error message.
-            $GLOBALS['wgHooks']['UserLoginForm'][] = array($this, 'onUserLoginForm', $this->_NoWikiError);
-            return false; // User is not in Wiki group.
+            $GLOBALS['wgHooks']['wiki_userLoginForm'][] = array($this, 'onwiki_userLoginForm', $this->_NoWikiError);
+            return false; // wiki_user is not in Wiki group.
     	}
 
 
@@ -682,7 +682,7 @@
     	 * to find all the template options please let me know. I was only able
     	 * to find a few.
     	 *
-    	 * @param UserLoginTemplate $template
+    	 * @param wiki_userLoginTemplate $template
     	 * @access public
     	 */
     	public function modifyUITemplate( &$template )
@@ -706,15 +706,15 @@
 
 
     	/**
-    	 * This is the hook that runs when a user logs in. This is where the
-    	 * code to auto log-in a user to phpBB should go.
+    	 * This is the hook that runs when a wiki_user logs in. This is where the
+    	 * code to auto log-in a wiki_user to phpBB should go.
     	 *
     	 * Note: Right now it does nothing,
     	 *
-    	 * @param object $user
+    	 * @param object $wiki_user
     	 * @return bool
     	 */
-    	public function onUserLoginComplete(&$user)
+    	public function onwiki_userLoginComplete(&$wiki_user)
     	{
             // @ToDo: Add code here to auto log into the forum.
             return true;
@@ -722,7 +722,7 @@
 
 
     	/**
-    	 * Here we add some text to the login screen telling the user
+    	 * Here we add some text to the login screen telling the wiki_user
     	 * they need a phpBB account to login to the wiki.
     	 *
     	 * Note: This is a hook.
@@ -731,7 +731,7 @@
     	 * @param object $template
     	 * @return bool
     	 */
-    	public function onUserLoginForm($errorMessage = false, $template)
+    	public function onwiki_userLoginForm($errorMessage = false, $template)
     	{
     	    $template->data['link'] = $this->_LoginMessage;
 
@@ -746,13 +746,13 @@
 
 
     	/**
-    	 * This is the Hook that gets called when a user logs out.
+    	 * This is the Hook that gets called when a wiki_user logs out.
     	 *
-    	 * @param object $user
+    	 * @param object $wiki_user
     	 */
-    	public function onUserLogout(&$user)
+    	public function onwiki_userLogout(&$wiki_user)
     	{
-    	    // User logs out of the wiki we want to log them out of the form too.
+    	    // wiki_user logs out of the wiki we want to log them out of the form too.
     	    if (!isset($this->_SessionTB))
     	    {
     	        return true; // If the value is not set just return true and move on.
@@ -784,14 +784,14 @@
     	 *
     	 * Return true if successful.
     	 *
-    	 * NOTE: We only allow the user to change their password via phpBB.
+    	 * NOTE: We only allow the wiki_user to change their password via phpBB.
     	 *
-    	 * @param $user User object.
+    	 * @param $wiki_user wiki_user object.
     	 * @param $password String: password.
     	 * @return bool
     	 * @access public
     	 */
-    	public function setPassword( $user, $password )
+    	public function setPassword( $wiki_user, $password )
     	{
     		return true;
     	}
@@ -803,8 +803,8 @@
     	 *
     	 * This is just a question, and shouldn't perform any actions.
     	 *
-    	 * Note: This forces a user to pass Authentication with the above
-    	 *       function authenticate(). So if a user changes their PHPBB
+    	 * Note: This forces a wiki_user to pass Authentication with the above
+    	 *       function authenticate(). So if a wiki_user changes their PHPBB
     	 *       password, their old one will not work to log into the wiki.
          *       Wiki does not have a way to update it's password when PHPBB
          *       does. This however does not matter.
@@ -819,74 +819,74 @@
 
 
 		/**
-		 * Update user information in the external authentication database.
+		 * Update wiki_user information in the external authentication database.
 		 * Return true if successful.
 		 *
-		 * @param $user User object.
+		 * @param $wiki_user wiki_user object.
 		 * @return bool
 		 * @access public
 		 */
-		public function updateExternalDB( $user )
+		public function updateExternalDB( $wiki_user )
 		{
 			return true;
 		}
 
 
     	/**
-    	 * When a user logs in, optionally fill in preferences and such.
+    	 * When a wiki_user logs in, optionally fill in preferences and such.
     	 * For instance, you might pull the email address or real name from the
-    	 * external user database.
+    	 * external wiki_user database.
     	 *
-    	 * The User object is passed by reference so it can be modified; don't
+    	 * The wiki_user object is passed by reference so it can be modified; don't
     	 * forget the & on your function declaration.
     	 *
     	 * NOTE: Not useing right now.
     	 *
-    	 * @param User $user
+    	 * @param wiki_user $wiki_user
     	 * @access public
     	 * @return bool
     	 */
-    	public function updateUser( &$user )
+    	public function updatewiki_user( &$wiki_user )
     	{
     		return true;
     	}
 
 
     	/**
-    	 * Check whether there exists a user account with the given name.
+    	 * Check whether there exists a wiki_user account with the given name.
     	 * The name will be normalized to MediaWiki's requirements, so
     	 * you might need to munge it (for instance, for lowercase initial
     	 * letters).
     	 *
-    	 * NOTE: MediaWiki checks its database for the username. If it has
-    	 *       no record of the username it then asks. "Is this really a
-    	 *       valid username?" If not then MediaWiki fails Authentication.
+    	 * NOTE: MediaWiki checks its database for the wiki_username. If it has
+    	 *       no record of the wiki_username it then asks. "Is this really a
+    	 *       valid wiki_username?" If not then MediaWiki fails Authentication.
     	 *
-    	 * @param string $username
+    	 * @param string $wiki_username
     	 * @return bool
     	 * @access public
     	 */
-    	public function userExists($username)
+    	public function wiki_userExists($wiki_username)
     	{
 
     	    // Connect to the database.
     		$fresMySQLConnection = $this->connect($other);
 
-            // If debug is on print the username entered by the user and the one from the datebase to the screen.
+            // If debug is on print the wiki_username entered by the wiki_user and the one from the datebase to the screen.
             if ($this->_debug)
             {
-                print $username . ' : ' . $this->utf8($username); // Debug
+                print $wiki_username . ' : ' . $this->utf8($wiki_username); // Debug
             }
 
-            $username = $this->utf8($username); // Convert to UTF8
+            $wiki_username = $this->utf8($wiki_username); // Convert to UTF8
 
-    		// Check Database for username.
+    		// Check Database for wiki_username.
     		$fstrMySQLQuery = sprintf("SELECT `loginname_clean`
     		                   FROM `%s`
     		                   WHERE `loginname_clean` = '%s'
                                LIMIT 1",
-                               $this->_UserTB,
-                               mysql_real_escape_string($username, $fresMySQLConnection));
+                               $this->_wiki_userTB,
+                               mysql_real_escape_string($wiki_username, $fresMySQLConnection));
 
     		// Query Database.
             $fresMySQLResult = mysql_query($fstrMySQLQuery, $fresMySQLConnection)
@@ -895,14 +895,14 @@
             while($faryMySQLResult = mysql_fetch_array($fresMySQLResult))
             {
 
-                // If debug is on print the username entered by the user and the one from the datebase to the screen.
+                // If debug is on print the wiki_username entered by the wiki_user and the one from the datebase to the screen.
                 if ($this->_debug)
                 {
-                    print $username . ' : ' . $faryMySQLResult['loginname_clean']; // Debug
+                    print $wiki_username . ' : ' . $faryMySQLResult['loginname_clean']; // Debug
                 }
 
                 // Double check match.
-                if ($username == $faryMySQLResult['loginname_clean'])
+                if ($wiki_username == $faryMySQLResult['loginname_clean'])
                 {
                     return true; // Pass
                 }
@@ -912,18 +912,18 @@
 
 
     	/**
-    	 * Cleans a username using PHPBB functions
+    	 * Cleans a wiki_username using PHPBB functions
     	 *
-    	 * @param string $username
+    	 * @param string $wiki_username
     	 * @return string
     	 */
-    	private function utf8($username)
+    	private function utf8($wiki_username)
     	{
-            $this->loadPHPFiles('UTF8'); // Load files needed to clean username.
+            $this->loadPHPFiles('UTF8'); // Load files needed to clean wiki_username.
             error_reporting(E_ALL ^ E_NOTICE); // remove notices because phpBB does not use include once.
-    		$username = utf8_clean_string($username);
+    		$wiki_username = utf8_clean_string($wiki_username);
             error_reporting(E_ALL);
-            return $username;
+            return $wiki_username;
     	}
 
 

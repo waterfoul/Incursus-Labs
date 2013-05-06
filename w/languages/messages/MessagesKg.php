@@ -113,7 +113,7 @@ $messages = array(
 'jumpto' => 'Pamuka na:',
 'jumptosearch' => 'nsosa',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Mambu ya mpa',
 'currentevents-url' => 'Project:Mambu ya mpa',
 'mainpage' => 'Lukaya ya mfumu',
@@ -138,9 +138,9 @@ $messages = array(
 'yourname' => 'Nkûmbu ya nsoniki:',
 'yourpassword' => 'Mpovo ya kuluta:',
 'login' => 'Kota',
-'userlogin' => 'Kota / sala konti',
+'wiki_userlogin' => 'Kota / sala konti',
 'logout' => 'Basika',
-'userlogout' => 'Basika',
+'wiki_userlogout' => 'Basika',
 'nologin' => 'Nge kele na konti ve? $1.',
 'nologinlink' => 'Sala konti',
 'createaccount' => 'Sala konti',
@@ -190,7 +190,7 @@ $messages = array(
 
 # File description page
 'filehist-datetime' => 'Kilumbu/Ngûnga',
-'filehist-user' => 'Nsoniki',
+'filehist-wiki_user' => 'Nsoniki',
 
 # Random page
 'randompage' => 'Lukaya na kintulumukini',
@@ -226,7 +226,7 @@ Sôla nkûmbu ya nkaka.',
 'movereason' => 'Samu:',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Mukanda ya munu',
+'tooltip-pt-wiki_userpage' => 'Mukanda ya munu',
 'tooltip-pt-mytalk' => 'Disolo ya munu',
 'tooltip-pt-logout' => 'Basika',
 'tooltip-search' => 'Sosa na {{SITENAME}}',

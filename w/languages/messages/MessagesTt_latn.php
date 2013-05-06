@@ -92,7 +92,7 @@ $fallback8bitEncoding = "windows-1254";
 $linkTrail = '/^([a-zäçğıñöşü“»]+)(.*)$/sDu';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Sıltamalarnıñ astına sızu:',
 'tog-justify' => 'Tekst kiñlek buyınça tigezlänsen',
 'tog-hideminor' => 'Soñğı üzgärtülär isemlegendä keçe üzgärtülär yäşerelsen',
@@ -116,7 +116,7 @@ $messages = array(
 'tog-previewonfirst' => 'Üzgärtü bitenä küçkändä başta aldan qaraw bite kürsätelsen',
 'tog-nocache' => 'Bitlär keşlawnı tıyılsın',
 'tog-enotifwatchlistpages' => 'Küzätü isemlegemdäge bit üzgärtelü turında elektron poçtağa xäbär cibärelsen',
-'tog-enotifusertalkpages' => 'Bäxäs bitem üzgärtelü turında elektron poçtağa xäbär cibärelsen',
+'tog-enotifwiki_usertalkpages' => 'Bäxäs bitem üzgärtelü turında elektron poçtağa xäbär cibärelsen',
 'tog-enotifminoredits' => 'Keçe üzgärtülär turında da elektron poçtağa xäbär cibärelsen',
 'tog-enotifrevealaddr' => 'Xäbärlärdä e-mail adresım kürsätelsen',
 'tog-shownumberswatching' => 'Bitne küzätü isemleklärenä östägän qullanuçılar sanın kürsätelsen',
@@ -296,7 +296,7 @@ $messages = array(
 'talk' => 'Bäxäs',
 'views' => 'Qarawlar',
 'toolbox' => 'Qorallar',
-'userpage' => 'Qullanuçı biten qaraw',
+'wiki_userpage' => 'Qullanuçı biten qaraw',
 'projectpage' => 'Proyekt biten qaraw',
 'imagepage' => 'Fayl biten qaraw',
 'mediawikipage' => 'Xäbär biten qaraw',
@@ -322,7 +322,7 @@ $1',
 'pool-queuefull' => 'Sorawlarnı saqlaw  bite tulı',
 'pool-errorunknown' => 'Bilgesez  xata',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} turında',
 'aboutpage' => 'Project:Taswirlama',
 'copyright' => 'Mäğlümat $1 buyınça taratıla.',
@@ -383,7 +383,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Bit',
-'nstab-user' => 'Qullanuçı bite',
+'nstab-wiki_user' => 'Qullanuçı bite',
 'nstab-media' => 'Multimedia',
 'nstab-special' => 'Maxsus bit',
 'nstab-project' => 'Proyekt bite',
@@ -428,7 +428,7 @@ $1',
 Bu, ğädättä, iskergän sıltama buyınça beterelgän bitneñ üzgärtü tarixına küçkändä kilep çığa.
 
 Ägär xata monda tügel ikän, sez programmada xata tapqan bulırğa mömkinsez.
-Zinhar öçen, URLnı kürsätep, bu turıda [[Special:ListUsers/sysop|idaräçegä]] xäbär itegez.',
+Zinhar öçen, URLnı kürsätep, bu turıda [[Special:Listwiki_users/sysop|idaräçegä]] xäbär itegez.',
 'missingarticle-rev' => '(yurama № $1)',
 'missingarticle-diff' => '(ayırma: $1, $2)',
 'readonly_lag' => 'Mäğlümatlar bazası, östämä server töp server belän sinxronizatsiäläşkänçe, üzgärülärdän avtomat räweştä yabıldı.',
@@ -466,7 +466,7 @@ Soraw: $2',
 $2',
 'namespaceprotected' => "'''$1''' isem kiñlegendäge bitlärne üzgärtü öçen sezneñ röxsätegez yuq.",
 'ns-specialprotected' => 'Maxsus bitlärne üzgärtep bulmıy.',
-'titleprotected' => "Bu isem belän bit yasaw [[User:$1|$1]] tarafınnan tıyılğan.
+'titleprotected' => "Bu isem belän bit yasaw [[wiki_user:$1|$1]] tarafınnan tıyılğan.
 Ul kürsätkän säbäp: ''$2''.",
 
 # Virus scanner
@@ -477,7 +477,7 @@ Ul kürsätkän säbäp: ''$2''.",
 # Login and logout pages
 'logouttext' => "'''Sez xisap yazmağızdan çıqtığız.'''
 
-Sez {{SITENAME}} proyektında anonim räweştä qala yäisä şul uq yäki başqa isem belän yañadan [[Special:UserLogin|kerä]] alasız.
+Sez {{SITENAME}} proyektında anonim räweştä qala yäisä şul uq yäki başqa isem belän yañadan [[Special:wiki_userLogin|kerä]] alasız.
 Qayber bitlär Sez kergän kebek kürsätelergä mömkin. Monı beterü öçen brauzer keşın çistartığız.",
 'welcomecreation' => '== Räxim itegez, $1! ==
 Sez terkäldegez.
@@ -492,10 +492,10 @@ Saytnıñ şäxsi [[Special:Preferences|köylänmälären]] qararğa onıtmağı
 'login' => 'Kerü',
 'nav-login-createaccount' => 'Kerü / terkälü',
 'loginprompt' => '{{SITENAME}} proyektına kerü öçen «cookies» röxsät itelgän bulırğa tieş.',
-'userlogin' => 'Kerü / terkälü',
-'userloginnocreate' => 'Kerü',
+'wiki_userlogin' => 'Kerü / terkälü',
+'wiki_userloginnocreate' => 'Kerü',
 'logout' => 'Çığu',
-'userlogout' => 'Çığu',
+'wiki_userlogout' => 'Çığu',
 'notloggedin' => 'Sez xisap yazmağızğa kermägänsez',
 'nologin' => "Qullanuçı isemeñ yuqmı? '''$1'''",
 'nologinlink' => 'Xisap yazması tözegez',
@@ -505,7 +505,7 @@ Saytnıñ şäxsi [[Special:Preferences|köylänmälären]] qararğa onıtmağı
 'createaccountmail' => 'elektron poçta aşa',
 'createaccountreason' => 'Säbäp:',
 'badretype' => 'Kertelgän sersüzlär ber ük tügel.',
-'userexists' => 'Kertelgän isem qullanıla.
+'wiki_userexists' => 'Kertelgän isem qullanıla.
 Zinhar, başqa isem saylağız.',
 'loginerror' => 'Kerü xatası',
 'createaccounterror' => 'Xisap yazmasın tözep bulmıy: $1',
@@ -514,12 +514,12 @@ Zinhar, başqa isem saylağız.',
 'noname' => 'Sez qullanuçı isemegezne kürsätergä tieşsez.',
 'loginsuccesstitle' => 'Kerü uñışlı ütte',
 'loginsuccess' => "'''Sez {{SITENAME}} proyektına $1 iseme belän kerdegez.'''",
-'nosuchuser' => '$1 isemle qullanuçı yuq.
+'nosuchwiki_user' => '$1 isemle qullanuçı yuq.
 Qullanuçı isemeneñ döreslege registrğa bäyle.
-Yazılışığıznı tikşeregez yäki [[Special:UserLogin/signup|yaña xisap yazması tözegez]].',
-'nosuchusershort' => '$1 isemle qullanuçı yuq. Yazılışığıznı tikşeregez.',
-'nouserspecified' => 'Sez terkäw ismegezne kürsätergä tieşsez.',
-'login-userblocked' => 'Bu qullanuçı tıyıldı. Kerü tıyılğan.',
+Yazılışığıznı tikşeregez yäki [[Special:wiki_userLogin/signup|yaña xisap yazması tözegez]].',
+'nosuchwiki_usershort' => '$1 isemle qullanuçı yuq. Yazılışığıznı tikşeregez.',
+'nowiki_userspecified' => 'Sez terkäw ismegezne kürsätergä tieşsez.',
+'login-wiki_userblocked' => 'Bu qullanuçı tıyıldı. Kerü tıyılğan.',
 'wrongpassword' => 'Yazılğan sersüz döres tügel. Tağın ber tapqır sınağız.',
 'wrongpasswordempty' => 'Sersüz yulı buş bulırğa tieş tügel.',
 'passwordtooshort' => 'Sezsüz $1 {{PLURAL:$1|simvoldan}} torırğa tieş.',
@@ -550,11 +550,11 @@ Zinhar, sersüzne alğaç, sistemağa yañadan keregez.',
 'createaccount-text' => 'Kemder, elektron poçta adresığıznı kürsätep, {{SITENAME}} ($4) proyektında «$3» sersüze belän «$2» isemle xisap yazması terkäde. Sez kerergä häm sersüzegezne üzgärtergä tieş.
 
 Xisap yazması tözü xata bulsa, bu xatnı onıtığız.',
-'usernamehasherror' => 'Qullanuçı isemendä "#" simvolı bula almıy',
+'wiki_usernamehasherror' => 'Qullanuçı isemendä "#" simvolı bula almıy',
 'login-throttled' => 'Sez artıq küp tapqır kerergä tırıştığız.
 Yañadan qabatlağançı beraz kötüegez sorala.',
 'loginlanguagelabel' => 'Tel: $1',
-'suspicious-userlogout' => 'Sezneñ eşçänlekne beterü sorawığız kire qağıldı, çönki ul yalğış brauzer yäisä keşlawçı proksi aşa cibärelerge mömkin.',
+'suspicious-wiki_userlogout' => 'Sezneñ eşçänlekne beterü sorawığız kire qağıldı, çönki ul yalğış brauzer yäisä keşlawçı proksi aşa cibärelerge mömkin.',
 
 # Change password dialog
 'resetpass' => 'Sersüzne üzgärtü',
@@ -650,7 +650,7 @@ Sez bu säxifäne qarağanda ul beterelä aldı.',
 'loginreqlink' => 'kerü',
 'loginreqpagetext' => 'Sez başqa bitlär qaraw öçen $1 tieş.',
 'accmailtitle' => 'Sersüz cibärelde.',
-'accmailtext' => "[[User talk:$1|$1]] qullanuçısı öçen tözelgän sersüz $2 adresına cibärelde.
+'accmailtext' => "[[wiki_user talk:$1|$1]] qullanuçısı öçen tözelgän sersüz $2 adresına cibärelde.
 
 Saytqa kergäç sez ''[[Special:ChangePassword|sersüzegezne üzgärtä alasız]]''.",
 'newarticle' => '(Yaña)',
@@ -659,7 +659,7 @@ Yaña bit yasaw öçen astağı täräzädä mäqälä tekstın cıyığız ([[{
 Ägär sez bu bitkä yalğışlıq belän eläkkän bulsağız, brauzerığıznıñ '''artqa''' töymäsenä basığız.",
 'anontalkpagetext' => "----''Bu bäxäs bite sistemada terkälmägän yäisä üz iseme belän kermägän qullanuçınıqı.
 Anı tanu öçen IP adresı faydalanıla.
-Ägär sez anonim qullanuçı häm sezgä yullanmağan xäbärlär aldım dip sanıysız ikän (ber IP adresı küp qullanuçı öçen bulırğa mömkin), başqa mondıy añlaşılmawçanlıqlar kilep çıqmasın öçen [[Special:UserLogin|sistemağa keregez]] yäisä [[Special:UserLogin/signup|terkälegez]].''",
+Ägär sez anonim qullanuçı häm sezgä yullanmağan xäbärlär aldım dip sanıysız ikän (ber IP adresı küp qullanuçı öçen bulırğa mömkin), başqa mondıy añlaşılmawçanlıqlar kilep çıqmasın öçen [[Special:wiki_userLogin|sistemağa keregez]] yäisä [[Special:wiki_userLogin/signup|terkälegez]].''",
 'noarticletext' => "Xäzerge waqıtta bu bittä tekst yuq.
 Sez [[Special:Search/{{PAGENAME}}|bu isem kergän başqa mäqälälärne]],
 <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} köndäleklärdäge yazmalarnı] taba
@@ -667,29 +667,29 @@ yäki '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} şuşındıy isemle yaña bit
 'noarticletext-nopermission' => 'Xäzerge waqıtta bu bittä tekst yuq.
 Sez [[Special:Search/{{PAGENAME}}|bu isem kergän başqa mäqälälärne]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} köndäleklärdäge yazmalarnı] taba alasız.</span>',
-'userpage-userdoesnotexist' => '«<nowiki>$1</nowiki>» isemle xisap yazması yuq. Sez çınlap ta bu bitne yasarğa yäisä üzgärtergä telisezme?',
-'userpage-userdoesnotexist-view' => '"$1" isemle xisap yazması yuq.',
+'wiki_userpage-wiki_userdoesnotexist' => '«<nowiki>$1</nowiki>» isemle xisap yazması yuq. Sez çınlap ta bu bitne yasarğa yäisä üzgärtergä telisezme?',
+'wiki_userpage-wiki_userdoesnotexist-view' => '"$1" isemle xisap yazması yuq.',
 'blocked-notice-logextract' => 'Bu qullanuçı xäzergä tıyıldı.
 Tübändä tıyu köndälegeneñ soñğı yazu birelgän:',
 'clearyourcache' => "'''İskärmä:''' Bitne saqlağannan soñ üzgärtülär kürensen öçen brauzerığıznıñ keşın çistartığız.
 Monı '''Mozilla / Firefox''': ''Ctrl+Shift+R'', '''Safari''': ''Cmd+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Konqueror''': ''F5'', '''Opera''': ''Tools→Preferences'' aşa eşläp bula.",
-'usercssyoucanpreview' => "'''Yärdäm:''' \"{{int:showpreview}} töymäsenä basıp, yaña CSS-faylnı tikşerep bula.",
-'userjsyoucanpreview' => "'''Yärdäm:''' \"{{int:showpreview}}\" töymäsenä basıp, yaña JS-faylnı tikşerep bula.",
-'usercsspreview' => "'''Bu barı tik CSS-faylnı aldan qaraw ğına, ul äle saqlanmağan!'''",
-'userjspreview' => "'''Bu barı tik JavaScript faylın aldan qaraw ğına, ul äle saqlanmağan!'''",
-'userinvalidcssjstitle' => "'''İğtibar:''' \"\$1\" bizäw teması tabılmadı. Qullanuçınıñ .css häm .js bitläre isemnäre barı tik keçkenä (yul) xäreflärdän genä torırğa tieş ikänen onıtmağız. Misalğa: {{ns:user}}:Foo/vector.css, ä {{ns:user}}:Foo/Vector.css tügel!",
+'wiki_usercssyoucanpreview' => "'''Yärdäm:''' \"{{int:showpreview}} töymäsenä basıp, yaña CSS-faylnı tikşerep bula.",
+'wiki_userjsyoucanpreview' => "'''Yärdäm:''' \"{{int:showpreview}}\" töymäsenä basıp, yaña JS-faylnı tikşerep bula.",
+'wiki_usercsspreview' => "'''Bu barı tik CSS-faylnı aldan qaraw ğına, ul äle saqlanmağan!'''",
+'wiki_userjspreview' => "'''Bu barı tik JavaScript faylın aldan qaraw ğına, ul äle saqlanmağan!'''",
+'wiki_userinvalidcssjstitle' => "'''İğtibar:''' \"\$1\" bizäw teması tabılmadı. Qullanuçınıñ .css häm .js bitläre isemnäre barı tik keçkenä (yul) xäreflärdän genä torırğa tieş ikänen onıtmağız. Misalğa: {{ns:wiki_user}}:Foo/vector.css, ä {{ns:wiki_user}}:Foo/Vector.css tügel!",
 'updated' => '(Yañartıldı)',
 'note' => "'''İskärmä:'''",
 'previewnote' => "'''Bu fäqät aldan qaraw ğına, üzgärtüläregez äle saqlanmağan!'''",
 'previewconflict' => 'Älege aldan qaraw bitendä saqlanaçaq tekstnıñ niçek kürenäçäge kürsätelä.',
 'session_fail_preview' => "'''Qızğanıçqa, sezneñ sessiä identifikatorığız yuğaldı. Näticädä server üzgärtüläregezne qabul itä almıy.
 Tağın ber tapqır qabatlawığız sorala.
-Bu xata tağın qabatlansa, [[Special:UserLogout|çığığız]] häm yañadan keregez.'''",
+Bu xata tağın qabatlansa, [[Special:wiki_userLogout|çığığız]] häm yañadan keregez.'''",
 'session_fail_preview_html' => "'''Qızğanıçqa, sezneñ sessiä turında mäğlümatlar yuğaldı. Näticädä server üzgärtüläregezne qabul itä almıy.'''
 
 ''{{SITENAME}} çista HTML qullanırğa röxsät itä, ä bu üz çiratında JavaScript-ataqalar oyıştıru öçen qullanılırğa mömkin. Şul säbäple sezneñ öçen aldan qaraw mömkinlege yabıq.''
 
-'''Ägär sez üzgärtüne yaxşı niät belän başqarasız ikän, tağın ber tapqır qabatlap qarağız. Xata qabatlansa, sayttan [[Special:UserLogout|çığığız]] häm yañadan keregez.'''",
+'''Ägär sez üzgärtüne yaxşı niät belän başqarasız ikän, tağın ber tapqır qabatlap qarağız. Xata qabatlansa, sayttan [[Special:wiki_userLogout|çığığız]] häm yañadan keregez.'''",
 'token_suffix_mismatch' => "'''Sezneñ üzgärtü qabul itelmäde.'''
 Säbäbe: brauzerığız üzgärtü ölkäsendäge punktuatsiäne döres kürsätmi, näticädä tekst bozılırğa mömkin.
 Mondıy xatalar anonim web-proksilar qullanğanda kilep çığarğa mömkin.",
@@ -737,7 +737,7 @@ Asta küzätü köndälegendäge soñğı yazma birelgän:",
 'hiddencategories' => 'Bu bit $1 {{PLURAL:$1|yäşeren törkemgä}} kerä:',
 'nocreatetitle' => 'Bitlär tözü çiklängän',
 'nocreatetext' => '{{SITENAME}}: saytta yaña bitlär tözü çiklängän.
-Sez artqa qaytıp, tözelgän bitne üzgärtä alasız. [[Special:UserLogin|Kerergä yäisä terkälergä]] täğdim itelä.',
+Sez artqa qaytıp, tözelgän bitne üzgärtä alasız. [[Special:wiki_userLogin|Kerergä yäisä terkälergä]] täğdim itelä.',
 'nocreate-loggedin' => 'Sezgä yaña bitlär tözü xoquqı birelmägän.',
 'sectioneditnotsupported-title' => 'Büleklärne üzgärtü röxsät itelmi.',
 'sectioneditnotsupported-text' => 'Bu bittä büleklärne üzgärtü röxsät itelmi.',
@@ -780,11 +780,11 @@ Mondıy argumentlar töşerep qaldırıldı.",
 Yuramalaranı çağıştırunı qarağız häm, üzgärtülär Sez telägänçä bulsa, bitne saqlağız.',
 'undo-failure' => 'Aralıqtağı üzgärtülär turı kilmäw säbäple, üzgärtüdän baş tartıp bulmıy.',
 'undo-norev' => 'Üzgärtü yuq yäisä ul beterelgän, şuña annan baş tartıp bulmıy.',
-'undo-summary' => '[[Special:Contributions/$2|$2]] qullanuçısınıñ ([[User talk:$2|bäxäs]]) $1 üzgärtüennän baş tartu',
+'undo-summary' => '[[Special:Contributions/$2|$2]] qullanuçısınıñ ([[wiki_user talk:$2|bäxäs]]) $1 üzgärtüennän baş tartu',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Xisap yazmasın tözep bulmıy',
-'cantcreateaccount-text' => "Bu IP adresınnan (<b>$1</b>) xisap yazmaları tözü tıyıla. Tıyuçı: [[User:$3|$3]].
+'cantcreateaccount-text' => "Bu IP adresınnan (<b>$1</b>) xisap yazmaları tözü tıyıla. Tıyuçı: [[wiki_user:$3|$3]].
 
 $3 kürsätkän säbäp: ''$2''",
 
@@ -821,9 +821,9 @@ Ul beterelgän yäisä bütän urınğa küçerelgän (başqa isem alğan) bulı
 
 # Revision deletion
 'rev-deleted-comment' => '(fiker beterelgän)',
-'rev-deleted-user' => '(avtor iseme beterelgän)',
+'rev-deleted-wiki_user' => '(avtor iseme beterelgän)',
 'rev-deleted-event' => '(yazma beterelgän)',
-'rev-deleted-user-contribs' => '[qullanuçınıñ iseme yäki  IP-yullaması beterelgän  — üzgärtü kertem bitennän yäşerelgän]',
+'rev-deleted-wiki_user-contribs' => '[qullanuçınıñ iseme yäki  IP-yullaması beterelgän  — üzgärtü kertem bitennän yäşerelgän]',
 'rev-deleted-text-permission' => "Bitneñ bu yuraması '''beterelgän'''.
 [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} Beterülär köndälegendä] añlatmalar qaldırılğan bulırğa mömkin.",
 'rev-deleted-text-unhide' => "Bitneñ bu yuraması '''beterelgän'''.
@@ -958,7 +958,7 @@ Barlıq alannarda (bäxäs bitläre, ürnäklär, h.b.) ezläw öçen ''all'' s�
 'mypreferences' => 'Köylänmälärem',
 'prefs-edits' => 'Üzgärtülär isäbe:',
 'prefsnologin' => 'Kermägänsez',
-'prefsnologintext' => 'Qullanuçı köylänmälärene üzgärtü öçen, sez <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} kerergä]</span> tieşsez.',
+'prefsnologintext' => 'Qullanuçı köylänmälärene üzgärtü öçen, sez <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} kerergä]</span> tieşsez.',
 'changepassword' => 'Sersüzne üzgärtü',
 'prefs-skin' => 'Küreneş',
 'skin-preview' => 'Aldan qaraw',
@@ -1023,7 +1023,7 @@ Barlıq alannarda (bäxäs bitläre, ürnäklär, h.b.) ezläw öçen ''all'' s�
 'prefs-emailconfirm-label' => 'E-mail raslaw',
 'prefs-textboxsize' => 'Üzgärtü täräzäseneñ zurlığı',
 'youremail' => 'Elektron poçta:',
-'username' => 'Qullanuçı iseme:',
+'wiki_username' => 'Qullanuçı iseme:',
 'uid' => 'Qullanuçınıñ identifikatorı:',
 'prefs-memberingroups' => 'Törkem {{PLURAL:$1|äğzası}}:',
 'prefs-memberingroups-type' => '$1',
@@ -1061,30 +1061,30 @@ Ul $1 {{PLURAL:$1|xäreftän}} kübräk bulırğa tieş tügel.',
 'prefs-displaywatchlist' => 'Kürsätü köylänmäläre',
 'prefs-diffs' => 'Yuramalar ayırması',
 
-# User rights
-'userrights' => 'Qullanuçı xoquqları belän idarä itü',
-'userrights-lookup-user' => 'Qullanuçı törkemnäre belän idarä itü',
-'userrights-user-editname' => 'Qullanuçınıñ isemen kertegez:',
-'editusergroup' => 'Qullanuçınıñ törkemnären almaştıru',
-'editinguser' => "'''[[User:$1|$1]]''' qullanuçısınıñ xoquqların üzgärtü ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup' => 'Qullanuçınıñ törkemnären almaştıru',
-'saveusergroups' => 'Qullanuçı törkemnären saqlaw',
-'userrights-groupsmember' => 'Äğza:',
-'userrights-groupsmember-auto' => 'Bilgesez äğza:',
-'userrights-groups-help' => 'Sez bu qullanuçınıñ xoquqların üzgärtä almıysız.
+# wiki_user rights
+'wiki_userrights' => 'Qullanuçı xoquqları belän idarä itü',
+'wiki_userrights-lookup-wiki_user' => 'Qullanuçı törkemnäre belän idarä itü',
+'wiki_userrights-wiki_user-editname' => 'Qullanuçınıñ isemen kertegez:',
+'editwiki_usergroup' => 'Qullanuçınıñ törkemnären almaştıru',
+'editingwiki_user' => "'''[[wiki_user:$1|$1]]''' qullanuçısınıñ xoquqların üzgärtü ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'wiki_userrights-editwiki_usergroup' => 'Qullanuçınıñ törkemnären almaştıru',
+'savewiki_usergroups' => 'Qullanuçı törkemnären saqlaw',
+'wiki_userrights-groupsmember' => 'Äğza:',
+'wiki_userrights-groupsmember-auto' => 'Bilgesez äğza:',
+'wiki_userrights-groups-help' => 'Sez bu qullanuçınıñ xoquqların üzgärtä almıysız.
 *Ägär dä qullanuçı iseme yanda tamğa torsa, dimäk bu qullanuçı birelgän törkemneñ äğzası.
 *Ägär dä qullanuçı iseme yanda tamğa tormasa, dimäk bu qullanuçı birelgän törkemneñ äğzası tügel.
 *"*" tamğası torsa sez bu qullanuçını bu törkemnän beterä almıysız.',
-'userrights-reason' => 'Säbäp:',
-'userrights-no-interwiki' => 'Sezneñ başqa wikilarda qullanuçılarnıñ xoquqların üzgärtergä xoquqlarığız yuq.',
-'userrights-nodatabase' => 'Birelgän $1 bazası yuq yäisä  lokal bulıp tormıy.',
-'userrights-changeable-col' => 'Sezneñ taraftan üzgärtä ala torğan törkemnär',
-'userrights-unchangeable-col' => 'Sezneñ taraftan üzgärtä almıy torğan törkemnär',
-'userrights-irreversible-marker' => '$1*',
+'wiki_userrights-reason' => 'Säbäp:',
+'wiki_userrights-no-interwiki' => 'Sezneñ başqa wikilarda qullanuçılarnıñ xoquqların üzgärtergä xoquqlarığız yuq.',
+'wiki_userrights-nodatabase' => 'Birelgän $1 bazası yuq yäisä  lokal bulıp tormıy.',
+'wiki_userrights-changeable-col' => 'Sezneñ taraftan üzgärtä ala torğan törkemnär',
+'wiki_userrights-unchangeable-col' => 'Sezneñ taraftan üzgärtä almıy torğan törkemnär',
+'wiki_userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'Törkem:',
-'group-user' => 'Qullanuçılar',
+'group-wiki_user' => 'Qullanuçılar',
 'group-autoconfirmed' => 'Avtoraslanğan qullanuçı',
 'group-bot' => 'Botlar',
 'group-sysop' => 'İdaräçelär',
@@ -1092,14 +1092,14 @@ Ul $1 {{PLURAL:$1|xäreftän}} kübräk bulırğa tieş tügel.',
 'group-suppress' => 'Tikşerüçelär',
 'group-all' => '(barlıq)',
 
-'group-user-member' => 'Qullanuçı',
+'group-wiki_user-member' => 'Qullanuçı',
 'group-autoconfirmed-member' => 'Avtoraslanğan qullanuçı',
 'group-bot-member' => 'Bot',
 'group-sysop-member' => 'İdaräçe',
 'group-bureaucrat-member' => 'Byurokrat',
 'group-suppress-member' => 'Tikşerüçe',
 
-'grouppage-user' => '{{ns:project}}:Qullanuçılar',
+'grouppage-wiki_user' => '{{ns:project}}:Qullanuçılar',
 'grouppage-autoconfirmed' => '{{ns:project}}:Avtoraslanğan qullanuçılar',
 'grouppage-bot' => '{{ns:project}}:Botlar',
 'grouppage-sysop' => '{{ns:project}}:İdaräçelär',
@@ -1118,7 +1118,7 @@ Ul $1 {{PLURAL:$1|xäreftän}} kübräk bulırğa tieş tügel.',
 'right-delete' => 'bitlärne beterü',
 'right-editinterface' => 'Qullanuçı interfeysın üzgärtü',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Qullanuçınıñ xoquqları köndälege',
 'rightslogentry' => '$1 qullanuçısın $2 gruppasınnan $3 gruppasına küçerde',
 'rightsnone' => '(yuq)',
@@ -1154,7 +1154,7 @@ Ul $1 {{PLURAL:$1|xäreftän}} kübräk bulırğa tieş tügel.',
 'minoreditletter' => 'k',
 'newpageletter' => 'Y',
 'boteditletter' => 'b',
-'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|küzätep tora qullanuçı}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|küzätep tora qullanuçı}}]',
 'rc_categories' => 'Törkemnärdä genä tora («|» bülüçe)',
 'rc_categories_any' => 'Härber',
 'newsectionsummary' => '/* $1 */ yaña bülek',
@@ -1178,7 +1178,7 @@ Ul $1 {{PLURAL:$1|xäreftän}} kübräk bulırğa tieş tügel.',
 'reuploaddesc' => 'Faylnı yökläwgä kire qatu',
 'upload-tryagain' => 'Yañartılğan faylnı cibärü',
 'uploadnologin' => 'Sez xisap yazmağızğa kermägänsez',
-'uploadnologintext' => 'Faylnı yökläw öçen sez bu bitkä [[Special:UserLogin|kerergä]] tieşsez.',
+'uploadnologintext' => 'Faylnı yökläw öçen sez bu bitkä [[Special:wiki_userLogin|kerergä]] tieşsez.',
 'upload_directory_missing' => '$1 Yöklänü direktoriäse yuq',
 'upload_directory_read_only' => 'Moña Sezneñ xoquqlarığız yuq häm web-server $1 papqasını yökli almıy.',
 'uploaderror' => 'Faylnı yökläwdä xata',
@@ -1266,7 +1266,7 @@ PICT # törle
 'listfiles' => 'Sürätlär isemlege',
 'listfiles_date' => 'Waqıt',
 'listfiles_name' => 'At',
-'listfiles_user' => 'Qullanuçı',
+'listfiles_wiki_user' => 'Qullanuçı',
 'listfiles_size' => 'Ülçäm',
 'listfiles_description' => 'Taswir',
 'listfiles_count' => 'Yuramalar',
@@ -1283,7 +1283,7 @@ PICT # törle
 'filehist-thumb' => 'Eskiz',
 'filehist-thumbtext' => '$1 könne bulğan versiäneñ eskizı',
 'filehist-nothumb' => 'Miniatyurası yuq',
-'filehist-user' => 'Qullanuçı',
+'filehist-wiki_user' => 'Qullanuçı',
 'filehist-dimensions' => 'Zurlıq',
 'filehist-filesize' => 'Faylnıñ zurlığı',
 'filehist-comment' => 'İskärmä',
@@ -1339,7 +1339,7 @@ PICT # törle
 'statistics-header-pages' => 'Bitlär xisapnamäse',
 'statistics-header-edits' => 'Üzgärtülär xisapnamäse',
 'statistics-header-views' => 'Qarawlar xisapnamäse',
-'statistics-header-users' => 'Qullanuçılar buyınça xisapnamä',
+'statistics-header-wiki_users' => 'Qullanuçılar buyınça xisapnamä',
 'statistics-header-hooks' => 'Başqa xisapnamälär',
 'statistics-articles' => 'Mäqälälär sanı',
 'statistics-pages' => 'Bitlär sanı',
@@ -1349,9 +1349,9 @@ PICT # törle
 'statistics-edits-average' => 'Ber bitkä urtaça üzgärtülär isäbe',
 'statistics-views-total' => 'Barlıq qaralğan bitlär',
 'statistics-views-peredit' => 'Üzgärtülärgä qaraw',
-'statistics-users' => 'Terkälgän [[Special:ListUsers|qullanuçılar]]',
-'statistics-users-active' => 'Aktiv qullanuçılar',
-'statistics-users-active-desc' => '{{PLURAL:$1|$1 kön }} öçendä nindi dä bulsa üzgärtülär kertkän qullanuçılar',
+'statistics-wiki_users' => 'Terkälgän [[Special:Listwiki_users|qullanuçılar]]',
+'statistics-wiki_users-active' => 'Aktiv qullanuçılar',
+'statistics-wiki_users-active-desc' => '{{PLURAL:$1|$1 kön }} öçendä nindi dä bulsa üzgärtülär kertkän qullanuçılar',
 'statistics-mostpopular' => 'İñ küp qaraluçı bitlär',
 
 'disambiguations' => 'Küp mäğnäle süzlär turında bitlär',
@@ -1398,9 +1398,9 @@ PICT # törle
 'deadendpages' => 'Tupik bitläre',
 'protectedpages' => 'Yaqlanğan bitlär',
 'protectedtitles' => 'Tıyılğan isemnär',
-'listusers' => 'Qullanuçılar isemlege',
+'listwiki_users' => 'Qullanuçılar isemlege',
 'newpages' => 'Yaña bitlär',
-'newpages-username' => 'Qullanuçı:',
+'newpages-wiki_username' => 'Qullanuçı:',
 'ancientpages' => 'İñ iske bitlär',
 'move' => 'Küçerü',
 'movethispage' => 'Bu bitne küçerü',
@@ -1419,7 +1419,7 @@ PICT # törle
 'booksources-invalid-isbn' => 'Birelgän ISBN sanı bälki xataldır. Zinhar, birelgän sannarnı yañadan tikşeregez.',
 
 # Special:Log
-'specialloguserlabel' => 'Qullanuçı:',
+'speciallogwiki_userlabel' => 'Qullanuçı:',
 'speciallogtitlelabel' => 'Başlam:',
 'log' => 'Köndäleklär',
 'all-logs-page' => 'Barlıq köndäleklär',
@@ -1457,20 +1457,20 @@ Asta [[Special:UnusedCategories|qullanılmağan törkemnär]] kärsätelgän.
 'linksearch-ns' => 'İsemnär mäydanı:',
 'linksearch-ok' => 'Ezläw',
 
-# Special:ListUsers
-'listusers-submit' => 'Kürsätü',
-'listusers-noresult' => 'Qullanuçılarnı tabılmadı.',
-'listusers-blocked' => '(tıyılğan)',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Kürsätü',
+'listwiki_users-noresult' => 'Qullanuçılarnı tabılmadı.',
+'listwiki_users-blocked' => '(tıyılğan)',
 
-# Special:ActiveUsers
-'activeusers' => 'Aktiv qullanuçılar isemlege',
-'activeusers-hidebots' => 'Botlarnı yäşer',
-'activeusers-hidesysops' => 'İdaräçelärne yäşer',
-'activeusers-noresult' => 'Qullanuçılar tabılmadı.',
+# Special:Activewiki_users
+'activewiki_users' => 'Aktiv qullanuçılar isemlege',
+'activewiki_users-hidebots' => 'Botlarnı yäşer',
+'activewiki_users-hidesysops' => 'İdaräçelärne yäşer',
+'activewiki_users-noresult' => 'Qullanuçılar tabılmadı.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Qullanuçılarnı terkäw köndälege',
-'newuserlogpagetext' => 'Yaña terkälgän qullanuçılar isemlege',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Qullanuçılarnı terkäw köndälege',
+'newwiki_userlogpagetext' => 'Yaña terkälgän qullanuçılar isemlege',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Qullanuçı törkemnäreneñ xoquqları',
@@ -1479,8 +1479,8 @@ Asta [[Special:UnusedCategories|qullanılmağan törkemnär]] kärsätelgän.
 'listgrouprights-helppage' => 'Help:Törkemnärneñ xoquqları',
 'listgrouprights-members' => '(törkem isemlege)',
 
-# E-mail user
-'emailuser' => 'Bu qullanuçığa xat',
+# E-mail wiki_user
+'emailwiki_user' => 'Bu qullanuçığa xat',
 'emailpage' => 'Qullanuçığa xat cibärü',
 'defemailsubject' => '{{SITENAME}}: xat',
 'noemailtitle' => 'Elektron poçta adresı yuq',
@@ -1499,7 +1499,7 @@ Asta [[Special:UnusedCategories|qullanılmağan törkemnär]] kärsätelgän.
 'mywatchlist' => 'Küzätü isemlegem',
 'nowatchlist' => 'Küzätü isemlegegezdä bitlär yuq.',
 'watchnologin' => 'Kermädegez',
-'watchnologintext' => 'Küzätü isemlegegezne üzgärtü öçen, sez [[Special:UserLogin|kerergä]] tieşsez.',
+'watchnologintext' => 'Küzätü isemlegegezne üzgärtü öçen, sez [[Special:wiki_userLogin|kerergä]] tieşsez.',
 'addedwatchtext' => "\"[[:\$1]]\" bite [[Special:Watchlist|küzätü isemlegegezgä]] östälde.
 Bu bittä häm anıñ bäxäslegendä barlıq bulaçaq üzgärtülär şunda kürsäteler, häm, [[Special:RecentChanges|soñğı üzgärtülär]] isemlegendä bu bitne ciñelräk tabu öçen, ul '''qalın mäten''' belän kürsäteler.",
 'removedwatchtext' => '«[[:$1]]» bite [[Special:Watchlist|sezneñ küzätü isemlegennän]] beterelde.',
@@ -1577,7 +1577,7 @@ Soñğı beterelgän bitlärne kürer öçen, $2 qarağız.',
 'rollback_short' => 'Kire qaytaru',
 'rollbacklink' => 'kire qaytaru',
 'editcomment' => "Üzgärtü öçen taswir: \"''\$1''\".",
-'revertpage' => '[[Special:Contributions/$2|$2]] üzgärtüläre ([[User talk:$2|bäxäs]])  [[User:$1|$1]] yuramasına kire qaytarıldı',
+'revertpage' => '[[Special:Contributions/$2|$2]] üzgärtüläre ([[wiki_user talk:$2|bäxäs]])  [[wiki_user:$1|$1]] yuramasına kire qaytarıldı',
 
 # Protect
 'protectlogpage' => 'Yaqlanu köndälege',
@@ -1665,7 +1665,7 @@ $1',
 'sp-contributions-logs' => 'köndäleklär',
 'sp-contributions-talk' => 'bäxäs',
 'sp-contributions-search' => 'Kertemne ezläw',
-'sp-contributions-username' => 'Qullanuçınıñ IP adresı yäki iseme:',
+'sp-contributions-wiki_username' => 'Qullanuçınıñ IP adresı yäki iseme:',
 'sp-contributions-submit' => 'Ezlärgä',
 
 # What links here
@@ -1690,7 +1690,7 @@ $1',
 'blockip' => 'Qullanuçını tıyu',
 'blockip-title' => 'Qullanuçını tıyu',
 'blockip-legend' => 'Qullanuçını tıyu',
-'ipadressorusername' => 'IP adresı yäki qullanuçı iseme:',
+'ipadressorwiki_username' => 'IP adresı yäki qullanuçı iseme:',
 'ipbexpiry' => 'Betä:',
 'ipbreason' => 'Säbäp:',
 'ipbreasonotherlist' => 'Başqa säbäp',
@@ -1826,7 +1826,7 @@ Zinhar başqa isem saylağız.',
 'import-logentry-interwiki' => '«$1» — wikiara  importlaw',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Qullanuçı bitegez',
+'tooltip-pt-wiki_userpage' => 'Qullanuçı bitegez',
 'tooltip-pt-mytalk' => 'Bäxäs bitegez',
 'tooltip-pt-preferences' => 'Köylänmäläregez',
 'tooltip-pt-watchlist' => 'Sez küzätelgän tözätmäle bitlär isemlege',
@@ -1859,13 +1859,13 @@ Zinhar başqa isem saylağız.',
 'tooltip-feed-rss' => 'Bu bit öçen RSS translyatsiäse',
 'tooltip-feed-atom' => 'Bu bit öçen Atom translyatsiäse',
 'tooltip-t-contributions' => 'Qullanuçı kertemeneñ isemlegene qaraw',
-'tooltip-t-emailuser' => 'Bu qullanuçığa xat cibärü',
+'tooltip-t-emailwiki_user' => 'Bu qullanuçığa xat cibärü',
 'tooltip-t-upload' => 'Fayllarnı yökläw',
 'tooltip-t-specialpages' => 'Barlıq maxsus bitlär isemlege',
 'tooltip-t-print' => 'Bu bitneñ bastıru versiäse',
 'tooltip-t-permalink' => 'Bitneñ bu yuramasına daimi sıltama',
 'tooltip-ca-nstab-main' => 'Mäqäläneñ eçtälege',
-'tooltip-ca-nstab-user' => 'Qullanuçınıñ şäxsi bite',
+'tooltip-ca-nstab-wiki_user' => 'Qullanuçınıñ şäxsi bite',
 'tooltip-ca-nstab-media' => 'Media-fayl',
 'tooltip-ca-nstab-special' => 'Bu maxsus bit, sez anı üzgärtü almıysız',
 'tooltip-ca-nstab-project' => 'Proyektnıñ bite',
@@ -1892,10 +1892,10 @@ Zinhar başqa isem saylağız.',
 
 # Attribution
 'anonymous' => '{{SITENAME}} saytınıñ anonim {{PLURAL:$1|qullanuçısı|qullanuçıları}}',
-'siteuser' => '{{SITENAME}} qullanuçısı $1',
+'sitewiki_user' => '{{SITENAME}} qullanuçısı $1',
 'othercontribs' => '«$1» eşenä nigezlänä.',
 'others' => 'başqalar',
-'siteusers' => '{{SITENAME}} {{PLURAL:$2|qullanuçısı|qullanuçıları}} $1',
+'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|qullanuçısı|qullanuçıları}} $1',
 'creditspage' => 'Räxmätlär',
 
 # Spam protection
@@ -1995,7 +1995,7 @@ Yulnıñ berençe sıltaması quyma öçen tıyılğan räsemgä sıltama bulır
 'exif-compressedbitsperpixel' => 'Qısıludan soñ tösneñ tiränlege',
 'exif-pixelydimension' => 'Räsemneñ tulı bieklege',
 'exif-pixelxdimension' => 'Räsemneñ tulı kiñlege',
-'exif-usercomment' => 'Östämä cawap',
+'exif-wiki_usercomment' => 'Östämä cawap',
 'exif-relatedsoundfile' => 'Tawış faylı cawabı',
 'exif-datetimeoriginal' => 'Çın waqıtı',
 'exif-datetimedigitized' => 'Sanlaştıru waqıtı',
@@ -2165,7 +2165,7 @@ Yulnıñ berençe sıltaması quyma öçen tıyılğan räsemgä sıltama bulır
 'specialpages-group-login' => 'Kerü / terkälü',
 'specialpages-group-changes' => 'Soñğı üzgärtülär',
 'specialpages-group-media' => 'Yökläw häm media-fayllar xisapnamäse',
-'specialpages-group-users' => 'Qullanuçılar häm alarnıñ xoquqları',
+'specialpages-group-wiki_users' => 'Qullanuçılar häm alarnıñ xoquqları',
 'specialpages-group-highuse' => 'Yış qullanıluçı bitlär',
 'specialpages-group-pages' => 'Bitlär isemlege',
 'specialpages-group-pagetools' => 'Bit öçen cihazlar',
@@ -2195,6 +2195,6 @@ Yulnıñ berençe sıltaması quyma öçen tıyılğan räsemgä sıltama bulır
 
 # New logging system
 'revdelete-restricted' => 'çikläwlär idaräçelärgä dä qullanıla',
-'newuserlog-byemail' => 'sersüz elektron poçta aşa cibärelde',
+'newwiki_userlog-byemail' => 'sersüz elektron poçta aşa cibärelde',
 
 );

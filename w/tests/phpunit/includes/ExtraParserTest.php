@@ -28,13 +28,13 @@ class ExtraParserTest extends MediaWikiTestCase {
 	// Bug 8689 - Long numeric lines kill the parser
 	function testBug8689() {
 		global $wgLang;
-		global $wgUser;
+		global $wgwiki_user;
 		$longLine = '1.' . str_repeat( '1234567890', 100000 ) . "\n";
 
 		if ( $wgLang === null ) $wgLang = new Language;
 		
 		$t = Title::newFromText( 'Unit test' );
-		$options = ParserOptions::newFromUser( $wgUser );
+		$options = ParserOptions::newFromwiki_user( $wgwiki_user );
 		$this->assertEquals( "<p>$longLine</p>",
 			$this->parser->parse( $longLine, $t, $options )->getText() );
 	}
@@ -47,9 +47,9 @@ class ExtraParserTest extends MediaWikiTestCase {
 	}
 	
 	function testPreSaveTransform() {
-		global $wgUser;
+		global $wgwiki_user;
 		$title = Title::newFromText( __FUNCTION__ );
-		$outputText = $this->parser->preSaveTransform( "Test\r\n{{subst:Foo}}\n{{Bar}}", $title, $wgUser, $this->options );
+		$outputText = $this->parser->preSaveTransform( "Test\r\n{{subst:Foo}}\n{{Bar}}", $title, $wgwiki_user, $this->options );
 
 		$this->assertEquals( "Test\nContent of ''Template:Foo''\n{{Bar}}", $outputText );
 	}

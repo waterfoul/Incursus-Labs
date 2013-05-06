@@ -126,7 +126,7 @@ $messages = array(
 'jumptonavigation' => 'tagriwa',
 'jumptosearch' => 'tarezzut',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Awal xef {{SITENAME}}',
 'aboutpage' => 'Project:Awal xef',
 'copyrightpage' => '{{ns:project}}:izrefan ussenɣel',
@@ -164,7 +164,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Tasna',
-'nstab-user' => 'Tasna n User',
+'nstab-wiki_user' => 'Tasna n wiki_user',
 'nstab-project' => 'Tasna usenfar',
 'nstab-image' => 'Asatul',
 'nstab-template' => 'Tamudemt',
@@ -184,9 +184,9 @@ teqqad ad yilli days ca n usekkil war itwagg deg isem .',
 'login' => 'Adf',
 'nav-login-createaccount' => 'Adef / egg amiḍan',
 'loginprompt' => "itxessa ad-teṭfed (''cookies'') bac ad tadfed ɣar {{SITENAME}}.",
-'userlogin' => 'Adf / egg amiḍan',
+'wiki_userlogin' => 'Adf / egg amiḍan',
 'logout' => 'Ufugh',
-'userlogout' => 'Ufugh',
+'wiki_userlogout' => 'Ufugh',
 'nologin' => "war ɣark login? '''$1'''.",
 'nologinlink' => 'Egg amiḍan',
 'createaccount' => 'Egg amiḍan',
@@ -194,11 +194,11 @@ teqqad ad yilli days ca n usekkil war itwagg deg isem .',
 'gotaccountlink' => 'Adeff',
 'loginsuccesstitle' => 'Adaf icna',
 'loginsuccess' => "'''Qac tudeffed di {{SITENAME}} s \"\$1\".'''",
-'nosuchuser' => 'War illi ca n useqdac s isem a"$1".
+'nosuchwiki_user' => 'War illi ca n useqdac s isem a"$1".
 xemm tirra , niɣ egg amiḍan d amaynu.',
-'nosuchusershort' => 'War illi ca n useqdac s isem a "$1".
+'nosuchwiki_usershort' => 'War illi ca n useqdac s isem a "$1".
 xemm tirra.',
-'nouserspecified' => 'ixessa ad tuced isem n useqdac.',
+'nowiki_userspecified' => 'ixessa ad tuced isem n useqdac.',
 'wrongpassword' => 'Taguri n wadaf war tceni ca. Sideff tenni nican.',
 'wrongpasswordempty' => 'Taguri n wadaf i tucid texwa. Sideff tenni nican.',
 'passwordtooshort' => 'Taguri n wadaf inec war d tusi ca.
@@ -260,7 +260,7 @@ Maynzi ''$2''.
 * Abluki ig itwaxsen d: $7
 
 Tzemred ad temsawaded ag $1 niɣ [[{{MediaWiki:Grouppage-sysop}}|administrator]] nniḍn bac ad tsiwled x ubluki a.
-war tzemred ca ad ad tesxedmed 'e-mail this user' ɣar mala ca n e-mail illa ɣark di [[Special:Preferences|Isemyifiyen n umiḍan]] u war twabluki ca usexdem ines.
+war tzemred ca ad ad tesxedmed 'e-mail this wiki_user' ɣar mala ca n e-mail illa ɣark di [[Special:Preferences|Isemyifiyen n umiḍan]] u war twabluki ca usexdem ines.
 Tansa IP inecc n ruxa d $3, u ID icecc iteblukan d #$5.
 maṛṛa manaya deg ujenna eggit di tabrat i ɣ-ad tsekked.",
 'newarticle' => '(Amaynu)',
@@ -285,7 +285,7 @@ tjadjid-anɣ Ɛawt ila qa d cekk ig yuran manaya, niɣ tesneɣlet-id zi ca n uɣ
 'template-protected' => '(twaḥḍa)',
 'template-semiprotected' => '(semi-protected)',
 'nocreatetext' => '{{SITENAME}} war iqqim ca itejja iwdan ad ggen Tasniwin timaynutin.
-tzemred addewred ɣar deffar, niɣ [[Special:UserLogin|Adeff niɣ egg amiḍan]].',
+tzemred addewred ɣar deffar, niɣ [[Special:wiki_userLogin|Adeff niɣ egg amiḍan]].',
 'recreate-moveddeleted-warn' => "'''Ɣark: qac tegged Tasna ig itwaksen zzat uya.'''
 
 Ẓar aɣmis n umzruy n usfad n Tasna ya bac ad tsenad ma mliḥ ad tkemled aẓṛag.",
@@ -355,7 +355,7 @@ mala tucit-id, ataf Lxdant inec a tetwassan ila inec.',
 
 'grouppage-sysop' => '{{ns:project}}:inedbalen',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Aghmis n talghut n izrfan n usqdac',
 
 # Recent changes
@@ -367,8 +367,8 @@ mala tucit-id, ataf Lxdant inec a tetwassan ila inec.',
 'rclistfrom' => 'Ẓar tiẓṛigin timaynutin ig ibeddan zi $1',
 'rcshowhideminor' => '$1 tiẓṛigin d-timeẓyanin',
 'rcshowhidebots' => '$1 iroboten(robots)',
-'rcshowhideliu' => '$1 users ig yudeffen',
-'rcshowhideanons' => '$1 users war twasnen',
+'rcshowhideliu' => '$1 wiki_users ig yudeffen',
+'rcshowhideanons' => '$1 wiki_users war twasnen',
 'rcshowhidepatr' => 'Tiẓṛigin ig itwaẓrent di $1',
 'rcshowhidemine' => '$1 tiẓṛigin inu',
 'rclinks' => 'Ẓar $1 tiẓṛigin tinggura di $2 n ussan inggura <br />$3',
@@ -409,7 +409,7 @@ Tasniwin di [[Special:Watchlist|your watchlist]] d '''tizurarin'''.",
 'filehist-deleteone' => 'sfaḍ',
 'filehist-current' => 'aturaw',
 'filehist-datetime' => 'Azmz/Akud',
-'filehist-user' => 'Aseqdac',
+'filehist-wiki_user' => 'Aseqdac',
 'filehist-dimensions' => 'Tisektiwin',
 'filehist-filesize' => 'Tiddi n ufaylu',
 'filehist-comment' => 'Tinit',
@@ -477,7 +477,7 @@ Tasniwin di [[Special:Watchlist|your watchlist]] d '''tizurarin'''.",
 'longpages' => 'Tasniwin d-tizirarin',
 'deadendpages' => 'Tasniwin s tizdayin mmutent',
 'protectedpages' => 'Tasniwin ẓarqent',
-'listusers' => 'Tabdart n iseqdacen',
+'listwiki_users' => 'Tabdart n iseqdacen',
 'newpages' => 'Tasniwin timaynutin',
 'ancientpages' => 'Tasniwin n zik qqaε',
 'move' => 'Smutti',
@@ -490,7 +490,7 @@ Tasniwin di [[Special:Watchlist|your watchlist]] d '''tizurarin'''.",
 'booksources-go' => 'Uyur',
 
 # Special:Log
-'specialloguserlabel' => 'Aseqdac:',
+'speciallogwiki_userlabel' => 'Aseqdac:',
 'speciallogtitlelabel' => 'isem:',
 'log' => 'Aɣmis',
 'all-logs-page' => 'Maṛṛa iɣmisen',
@@ -511,11 +511,11 @@ Tasniwin di [[Special:Watchlist|your watchlist]] d '''tizurarin'''.",
 # Special:LinkSearch
 'linksearch-ok' => 'Tarzzut',
 
-# Special:ListUsers
-'listusers-submit' => 'Smmrad',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Smmrad',
 
-# E-mail user
-'emailuser' => 'Ssek E-mail i bnadm a',
+# E-mail wiki_user
+'emailwiki_user' => 'Ssek E-mail i bnadm a',
 
 # Watchlist
 'watchlist' => 'Tabdart uḥṭṭu inu',
@@ -599,7 +599,7 @@ Tezemred ad tbedeld aswir n uḥeṭṭu n Tasna ya, maca war itegg walu i uḥe
 'sp-contributions-blocklog' => 'sbdd tabdart n talghut',
 'sp-contributions-talk' => 'Awal',
 'sp-contributions-search' => 'Arzu x tiggawin',
-'sp-contributions-username' => 'Tansa IP d isem useqdac:',
+'sp-contributions-wiki_username' => 'Tansa IP d isem useqdac:',
 'sp-contributions-submit' => 'Tarzzut',
 
 # What links here
@@ -675,7 +675,7 @@ snaqlitent s ufus.'''",
 'importlogpage' => 'Siri-d aɣmis',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Tasna inu',
+'tooltip-pt-wiki_userpage' => 'Tasna inu',
 'tooltip-pt-mytalk' => 'Tasna usiwl inu',
 'tooltip-pt-preferences' => 'Min d-ac itteɛjiben',
 'tooltip-pt-watchlist' => 'Tabdart n Tasniwin umi txmamd bac ad-ten teẓṛegd',
@@ -707,12 +707,12 @@ Bbeẓ x ufeskar n uzar-timeẓṛi zzat i gha txemmled min turid',
 'tooltip-t-whatlinkshere' => 'Tabdart n marra tasniwin n Wiki i d-iteqqnen da',
 'tooltip-t-recentchangeslinked' => 'Isenfilen n drus zggwami di tasniwin i yetwaqqnen zi tasna ya',
 'tooltip-t-contributions' => 'Ẓar Tabdart n tiggawin n useqdac a',
-'tooltip-t-emailuser' => 'Sekk e-mail i bnadem a',
+'tooltip-t-emailwiki_user' => 'Sekk e-mail i bnadem a',
 'tooltip-t-upload' => 'Zdem-d isatulen',
 'tooltip-t-specialpages' => 'Tabdart n marra tasniwin tinemmezrayin',
 'tooltip-t-print' => 'Tanghelt usiggez n tasna ya',
 'tooltip-ca-nstab-main' => 'Ẓeṛ tasna n ukettur',
-'tooltip-ca-nstab-user' => 'Ẓar Tasna n user',
+'tooltip-ca-nstab-wiki_user' => 'Ẓar Tasna n wiki_user',
 'tooltip-ca-nstab-project' => 'Ẓṛ tasna n usnfar',
 'tooltip-ca-nstab-image' => 'Ẓar Tasna n ufaylu',
 'tooltip-ca-nstab-template' => 'Ẓṛ tamudmt',

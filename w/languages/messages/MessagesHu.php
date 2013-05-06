@@ -59,7 +59,7 @@ $namespaceNames = array(
 $namespaceAliases = array(
 	'Kép' => NS_FILE,
 	'Képvita' => NS_FILE_TALK,
-	'User_vita'      => NS_USER_TALK,
+	'wiki_user_vita'      => NS_USER_TALK,
 	'$1_vita'        => NS_PROJECT_TALK,
 	'Kép_vita'       => NS_FILE_TALK,
 	'MediaWiki_vita' => NS_MEDIAWIKI_TALK,
@@ -72,7 +72,7 @@ $fallback8bitEncoding = "iso8859-2";
 $separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 
 $specialPageAliases = array(
-	'Activeusers'               => array( 'Aktív_felhasználók', 'Aktív_szerkesztők' ),
+	'Activewiki_users'               => array( 'Aktív_felhasználók', 'Aktív_szerkesztők' ),
 	'Allmessages'               => array( 'Rendszerüzenetek' ),
 	'Allpages'                  => array( 'Az_összes_lap_listája' ),
 	'Ancientpages'              => array( 'Régóta_nem_változott_szócikkek' ),
@@ -93,7 +93,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'Egyértelműsítő_lapok' ),
 	'DoubleRedirects'           => array( 'Kettős_átirányítások', 'Dupla_átirányítások' ),
 	'EditWatchlist'             => array( 'Figyelőlista_szerkesztése' ),
-	'Emailuser'                 => array( 'E-mail_küldése', 'E-mail_küldése_ezen_szerkesztőnek' ),
+	'Emailwiki_user'                 => array( 'E-mail_küldése', 'E-mail_küldése_ezen_szerkesztőnek' ),
 	'Export'                    => array( 'Lapok_exportálása' ),
 	'Fewestrevisions'           => array( 'Legkevesebbet_szerkesztett_lapok' ),
 	'FileDuplicateSearch'       => array( 'Duplikátumok_keresése' ),
@@ -107,7 +107,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Fájlok_listája', 'Képek_listája', 'Fájllista', 'Képlista' ),
 	'Listgrouprights'           => array( 'Szerkesztői_csoportok_jogai' ),
 	'Listredirects'             => array( 'Átirányítások_listája' ),
-	'Listusers'                 => array( 'Szerkesztők_listája', 'Szerkesztők', 'Felhasználók' ),
+	'Listwiki_users'                 => array( 'Szerkesztők_listája', 'Szerkesztők', 'Felhasználók' ),
 	'Lockdb'                    => array( 'Adatbázis_lezárása' ),
 	'Log'                       => array( 'Rendszernaplók', 'Naplók', 'Napló' ),
 	'Lonelypages'               => array( 'Árva_lapok', 'Magányos_lapok' ),
@@ -122,8 +122,8 @@ $specialPageAliases = array(
 	'Mostrevisions'             => array( 'Legtöbbet_szerkesztett_lapok' ),
 	'Movepage'                  => array( 'Lap_átnevezése' ),
 	'Mycontributions'           => array( 'Közreműködéseim' ),
-	'Mypage'                    => array( 'Lapom', 'Userlapom' ),
-	'Mytalk'                    => array( 'Vitám', 'Vitalapom', 'Uservitalapom' ),
+	'Mypage'                    => array( 'Lapom', 'wiki_userlapom' ),
+	'Mytalk'                    => array( 'Vitám', 'Vitalapom', 'wiki_uservitalapom' ),
 	'Myuploads'                 => array( 'Saját_feltöltéseim' ),
 	'Newimages'                 => array( 'Új_fájlok', 'Új_képek', 'Új_képek_galériája' ),
 	'Newpages'                  => array( 'Új_lapok' ),
@@ -156,9 +156,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'Nem_használt_sablonok' ),
 	'Unwatchedpages'            => array( 'Nem_figyelt_lapok' ),
 	'Upload'                    => array( 'Feltöltés' ),
-	'Userlogin'                 => array( 'Belépés' ),
-	'Userlogout'                => array( 'Kilépés' ),
-	'Userrights'                => array( 'Szerkesztők_jogai', 'Szerkesztői_jogok', 'Szerkesztőjogok', 'Szerkesztő_jogai' ),
+	'wiki_userlogin'                 => array( 'Belépés' ),
+	'wiki_userlogout'                => array( 'Kilépés' ),
+	'wiki_userrights'                => array( 'Szerkesztők_jogai', 'Szerkesztői_jogok', 'Szerkesztőjogok', 'Szerkesztő_jogai' ),
 	'Version'                   => array( 'Névjegy', 'Verziószám', 'Verzió' ),
 	'Wantedcategories'          => array( 'Keresett_kategóriák' ),
 	'Wantedfiles'               => array( 'Keresett_fájlok' ),
@@ -216,8 +216,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'OLDALAKSZÁMA', 'LAPOKSZÁMA', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'SZÓCIKKEKSZÁMA', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'FÁJLOKSZÁMA', 'KÉPEKSZÁMA', 'NUMBEROFFILES' ),
-	'numberofusers'             => array( '1', 'SZERKESZTŐKSZÁMA', 'NUMBEROFUSERS' ),
-	'numberofactiveusers'       => array( '1', 'AKTÍVSZERKESZTŐKSZÁMA', 'NUMBEROFACTIVEUSERS' ),
+	'numberofwiki_users'             => array( '1', 'SZERKESZTŐKSZÁMA', 'NUMBEROFUSERS' ),
+	'numberofactivewiki_users'       => array( '1', 'AKTÍVSZERKESZTŐKSZÁMA', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'SZERKESZTÉSEKSZÁMA', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'MEGTEKINTÉSEKSZÁMA', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'OLDALNEVE', 'PAGENAME' ),
@@ -276,7 +276,7 @@ $magicWords = array(
 	'revisionmonth'             => array( '1', 'VÁLTOZATHÓNAPJA', 'REVISIONMONTH' ),
 	'revisionyear'              => array( '1', 'VÁLTOZATÉVE', 'REVISIONYEAR' ),
 	'revisiontimestamp'         => array( '1', 'VÁLTOZATIDŐBÉLYEG', 'VÁLTOZATIDEJE', 'REVISIONTIMESTAMP' ),
-	'revisionuser'              => array( '1', 'VÁLTOZATSZERKESZTŐJE', 'REVISIONUSER' ),
+	'revisionwiki_user'              => array( '1', 'VÁLTOZATSZERKESZTŐJE', 'REVISIONUSER' ),
 	'plural'                    => array( '0', 'TÖBBESSZÁM:', 'PLURAL:' ),
 	'fullurl'                   => array( '0', 'TELJESURL:', 'FULLURL:' ),
 	'fullurle'                  => array( '0', 'TELJESURLE:', 'FULLURLE:' ),
@@ -314,7 +314,7 @@ $magicWords = array(
 $linkTrail = '/^([a-záéíóúöüőűÁÉÍÓÚÖÜŐŰ]+)(.*)$/sDu';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Hivatkozások aláhúzása:',
 'tog-justify' => 'Bekezdések sorkizárása',
 'tog-hideminor' => 'Apró változtatások elrejtése a friss változtatások lapon',
@@ -338,7 +338,7 @@ $messages = array(
 'tog-previewonfirst' => 'Előnézet első szerkesztésnél',
 'tog-nocache' => 'A lapok gyorstárazásának letiltása a böngészőben',
 'tog-enotifwatchlistpages' => 'Kapjak értesítést e-mailben, ha egy általam figyelt lap vagy fájl megváltozik',
-'tog-enotifusertalkpages' => 'Kapjak értesítést e-mailben, ha megváltozik a vitalapom',
+'tog-enotifwiki_usertalkpages' => 'Kapjak értesítést e-mailben, ha megváltozik a vitalapom',
 'tog-enotifminoredits' => 'Kapjak értesítést e-mailben a lapok és fájlok apró változtatásairól',
 'tog-enotifrevealaddr' => 'Jelenjen meg az e-mail címem a figyelmeztető e-mailekben',
 'tog-shownumberswatching' => 'A lapot figyelő szerkesztők számának megjelenítése',
@@ -519,7 +519,7 @@ $messages = array(
 'talk' => 'Vitalap',
 'views' => 'Nézetek',
 'toolbox' => 'Eszközök',
-'userpage' => 'Felhasználó lapjának megtekintése',
+'wiki_userpage' => 'Felhasználó lapjának megtekintése',
 'projectpage' => 'Projektlap megtekintése',
 'imagepage' => 'A fájl leírólapjának megtekintése',
 'mediawikipage' => 'Üzenetlap megtekintése',
@@ -545,7 +545,7 @@ $1',
 'pool-queuefull' => 'A pool sor megtelt',
 'pool-errorunknown' => 'Ismeretlen hiba',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'A {{SITENAME}} wikiről',
 'aboutpage' => 'Project:Rólunk',
 'copyright' => 'A tartalom a(z) $1 feltételei szerint használható fel.',
@@ -578,8 +578,8 @@ További információkat a [[Special:Version|verzióinformációs lapon]] talál
 'youhavenewmessages' => '$1 a vitalapodon! ($2 külön is megtekintheted.)',
 'newmessageslink' => 'új üzenet vár',
 'newmessagesdifflink' => 'az utolsó üzenetet',
-'youhavenewmessagesfromusers' => '$1 a vitalapodon {{PLURAL:$3|egy|$3}} szerkesztőtől! ($2 külön is megtekintheted.)',
-'youhavenewmessagesmanyusers' => '$1ed van több szerkesztőtől ($2).',
+'youhavenewmessagesfromwiki_users' => '$1 a vitalapodon {{PLURAL:$3|egy|$3}} szerkesztőtől! ($2 külön is megtekintheted.)',
+'youhavenewmessagesmanywiki_users' => '$1ed van több szerkesztőtől ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|Új üzenet vár|Új üzenetek várnak}}',
 'newmessagesdifflinkplural' => 'Az utolsó {{PLURAL:$1|változtatást|változtatásokat}}',
 'youhavenewmessagesmulti' => 'Új üzenetet vár a(z) $1 wikin',
@@ -611,7 +611,7 @@ További információkat a [[Special:Version|verzióinformációs lapon]] talál
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Szócikk',
-'nstab-user' => 'Felhasználói lap',
+'nstab-wiki_user' => 'Felhasználói lap',
 'nstab-media' => 'Média',
 'nstab-special' => 'Speciális lap',
 'nstab-project' => 'Projektlap',
@@ -654,7 +654,7 @@ Az adminisztrátor, aki lezárta az adatbázist, az alábbi magyarázatot adta: 
 Ennek az oka általában az, hogy egy olyan lapra vonatkozó linket követtél, amit már töröltek.
 
 Ha ez nem így van, lehet, hogy hibát találtál a szoftverben.
-Jelezd ezt egy [[Special:ListUsers/sysop|adminiszttrátornak]] az URL megadásával.',
+Jelezd ezt egy [[Special:Listwiki_users/sysop|adminiszttrátornak]] az URL megadásával.',
 'missingarticle-rev' => '(változat azonosítója: $1)',
 'missingarticle-diff' => '(eltérés: $1, $2)',
 'readonly_lag' => 'Az adatbázis automatikusan zárolásra került, amíg a mellékkiszolgálók utolérik a főkiszolgálót.',
@@ -700,7 +700,7 @@ $2',
 'customcssprotected' => 'Nem szerkesztheted ezt a CSS-lapot, mert egy másik felhasználó személyes beállításait tartalmazza.',
 'customjsprotected' => 'Nem szerkesztheted ezt a JavaScript-lapot, mert egy másik felhasználó személyes beállításait tartalmazza.',
 'ns-specialprotected' => 'A speciális lapok nem szerkeszthetőek.',
-'titleprotected' => "Ilyen címmel nem lehet szócikket készíteni, [[User:$1|$1]] letiltotta.
+'titleprotected' => "Ilyen címmel nem lehet szócikket készíteni, [[wiki_user:$1|$1]] letiltotta.
 A blokkolás oka: „''$2''”.",
 'filereadonlyerror' => 'A(z) "$1" fájl nem módosítható, mert a(z) "$2" fájltároló csak olvasható módban üzemel.
 
@@ -718,7 +718,7 @@ A lezárást végrehajtó rendszergazda az alábbi indoklást adta meg: "$3".',
 # Login and logout pages
 'logouttext' => "'''Sikeresen kijelentkeztél.'''
 
-Folytathatod névtelenül  a(z) {{SITENAME}} használatát, vagy [[Special:UserLogin|ismét bejelentkezhetsz]] ugyanezzel, vagy egy másik névvel.
+Folytathatod névtelenül  a(z) {{SITENAME}} használatát, vagy [[Special:wiki_userLogin|ismét bejelentkezhetsz]] ugyanezzel, vagy egy másik névvel.
 Lehetséges, hogy néhány oldalon továbbra is azt látod, be vagy jelentkezve, mindaddig, amíg nem üríted a böngésződ gyorsítótárát.",
 'welcomecreation' => '== Köszöntünk, $1! ==
 A felhasználói fiókodat létrehoztuk.
@@ -734,21 +734,21 @@ Ne felejtsd el átnézni a [[Special:Preferences|személyes beállításaidat]].
 'login' => 'Bejelentkezés',
 'nav-login-createaccount' => 'Bejelentkezés / fiók létrehozása',
 'loginprompt' => "Engedélyezned kell a sütiket (''cookie''), hogy bejelentkezhess a(z) {{SITENAME}} wikibe.",
-'userlogin' => 'Bejelentkezés / fiók létrehozása',
-'userloginnocreate' => 'Bejelentkezés',
+'wiki_userlogin' => 'Bejelentkezés / fiók létrehozása',
+'wiki_userloginnocreate' => 'Bejelentkezés',
 'logout' => 'Kijelentkezés',
-'userlogout' => 'Kijelentkezés',
+'wiki_userlogout' => 'Kijelentkezés',
 'notloggedin' => 'Nem vagy bejelentkezve',
 'nologin' => "Nem rendelkezel még felhasználói fiókkal? '''$1'''.",
 'nologinlink' => 'Itt regisztrálhatsz',
 'createaccount' => 'Regisztráció',
 'gotaccount' => "Ha már korábban regisztráltál, '''$1'''!",
 'gotaccountlink' => 'Bejelentkezés',
-'userlogin-resetlink' => 'Elfelejtetted a bejelentkezési adataidat?',
+'wiki_userlogin-resetlink' => 'Elfelejtetted a bejelentkezési adataidat?',
 'createaccountmail' => 'e-mailben',
 'createaccountreason' => 'Indoklás:',
 'badretype' => 'A megadott jelszavak nem egyeznek.',
-'userexists' => 'A megadott felhasználónév már foglalt.
+'wiki_userexists' => 'A megadott felhasználónév már foglalt.
 Kérlek, válassz másikat!',
 'loginerror' => 'Hiba történt a bejelentkezés során',
 'createaccounterror' => 'Nem sikerült létrehozni a felhasználói fiókot: $1',
@@ -761,13 +761,13 @@ Ellenőrizd, hogy a sütik engedélyezve vannak-e, majd frissítsd az oldalt, é
 'noname' => 'Érvénytelen szerkesztőnevet adtál meg.',
 'loginsuccesstitle' => 'Sikeres bejelentkezés',
 'loginsuccess' => "'''Sikeresen bejelentkeztél a(z) {{SITENAME}} wikibe „$1” néven.'''",
-'nosuchuser' => 'Nem létezik „$1” nevű szerkesztő.
+'nosuchwiki_user' => 'Nem létezik „$1” nevű szerkesztő.
 A szerkesztőnevek kis- és nagybetű-érzékenyek.
-Ellenőrizd, hogy helyesen írtad-e be, vagy [[Special:UserLogin/signup|hozz létre egy új fiókot]].',
-'nosuchusershort' => 'Nem létezik „$1” nevű szerkesztő.
+Ellenőrizd, hogy helyesen írtad-e be, vagy [[Special:wiki_userLogin/signup|hozz létre egy új fiókot]].',
+'nosuchwiki_usershort' => 'Nem létezik „$1” nevű szerkesztő.
 Ellenőrizd, hogy helyesen írtad-e be.',
-'nouserspecified' => 'Meg kell adnod a felhasználói nevet.',
-'login-userblocked' => 'Ez a szerkesztő blokkolva van, a bejelentkezés nem engedélyezett.',
+'nowiki_userspecified' => 'Meg kell adnod a felhasználói nevet.',
+'login-wiki_userblocked' => 'Ez a szerkesztő blokkolva van, a bejelentkezés nem engedélyezett.',
 'wrongpassword' => 'A megadott jelszó érvénytelen. Próbáld meg újra.',
 'wrongpasswordempty' => 'Nem adtál meg jelszót. Próbáld meg újra.',
 'passwordtooshort' => 'A jelszónak legalább {{PLURAL:$1|egy|$1}} karakterből kell állnia.',
@@ -808,16 +808,16 @@ A visszaélések elkerülése végett {{PLURAL:$1|egy|$1}} óránként csak egy 
 A hozzátartozó jelszó "$3", melyet a bejelentkezés után minél előbb változtass meg.
 
 Ha nem kértél új azonosítót, és tévedésből kaptad ezt a levelet, nyugodtan hagyd figyelmen kívül.',
-'usernamehasherror' => 'A felhasználónév nem tartalmazhat hash karaktereket',
+'wiki_usernamehasherror' => 'A felhasználónév nem tartalmazhat hash karaktereket',
 'login-throttled' => 'Túl sok hibás bejelentkezés.
 Várj egy kicsit, mielőtt újra próbálkozol.',
 'login-abort-generic' => 'Bejelentkezés sikertelen – megszakítva',
 'loginlanguagelabel' => 'Nyelv: $1',
-'suspicious-userlogout' => 'A kijelentkezési kérésed vissza lett utasítva, mert úgy tűnik, hogy egy hibás böngésző vagy gyorsítótárazó proxy küldte.',
+'suspicious-wiki_userlogout' => 'A kijelentkezési kérésed vissza lett utasítva, mert úgy tűnik, hogy egy hibás böngésző vagy gyorsítótárazó proxy küldte.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'Ismeretlen hiba a PHP mail() függvényében',
-'user-mail-no-addy' => 'E-mail üzenetet próbáltál küldeni e-mail cím megadása nélkül.',
+'wiki_user-mail-no-addy' => 'E-mail üzenetet próbáltál küldeni e-mail cím megadása nélkül.',
 
 # Change password dialog
 'resetpass' => 'Jelszó módosítása',
@@ -843,7 +843,7 @@ Lehet, hogy már sikeresen megváltoztattad a jelszavad, vagy pedig időközben 
 'passwordreset-legend' => 'Új jelszó kérése',
 'passwordreset-disabled' => 'Új jelszó kérése nem engedélyezett ezen a wikin.',
 'passwordreset-pretext' => '{{PLURAL:$1||Írd be az alábbi adatok egyikét}}',
-'passwordreset-username' => 'Felhasználónév:',
+'passwordreset-wiki_username' => 'Felhasználónév:',
 'passwordreset-domain' => 'Tartomány:',
 'passwordreset-capture' => 'Meg szeretnéd nézni az elkészült üzenetet?',
 'passwordreset-capture-help' => 'Ha kipipálod a dobozt, amellett, hogy kiküldődik az üzenet a felhasználónak, megjelenik számodra (az ideiglenes jelszavakkal együtt)',
@@ -854,7 +854,7 @@ Lehet, hogy már sikeresen megváltoztattad a jelszavad, vagy pedig időközben 
 $2
 
 {{PLURAL:$3|Ez az ideiglenes jelszó|Ezek az ideiglenes jelszavak}} $5 nap múlva {{PLURAL:$3|jár|járnak}} le. Jelentkezz be, és cseréld le a jelszavadat. Ha valaki más kérte az emlékeztetőt, vagy eszedbe jutott a régi jelszó, és nem akarod lecserélni a jelszavadat, hagyd figyelmen kívül ezt az üzenetet, és használd a régi jelszavadat.',
-'passwordreset-emailtext-user' => '$1 felhasználó emlékeztetők kért a {{SITENAME}} ($4) oldalon felvett fiókokról. A következő felhasználói {{PLURAL:$3|fiók van|fiókok vannak}} hozzárendelve ehhez az e-mail címhez:
+'passwordreset-emailtext-wiki_user' => '$1 felhasználó emlékeztetők kért a {{SITENAME}} ($4) oldalon felvett fiókokról. A következő felhasználói {{PLURAL:$3|fiók van|fiókok vannak}} hozzárendelve ehhez az e-mail címhez:
 
 $2
 
@@ -954,7 +954,7 @@ Lehet, hogy áthelyezték vagy törölték miközben nézted a lapot.',
 'loginreqlink' => 'be kell jelentkezned',
 'loginreqpagetext' => '$1 más oldalak megtekintéséhez.',
 'accmailtitle' => 'Elküldtük a jelszót.',
-'accmailtext' => "A(z) [[User talk:$1|$1]] fiókhoz egy véletlenszerűen generált jelszót küldünk a(z) $2 címre.
+'accmailtext' => "A(z) [[wiki_user talk:$1|$1]] fiókhoz egy véletlenszerűen generált jelszót küldünk a(z) $2 címre.
 
 Az új fiók jelszava a ''[[Special:ChangePassword|jelszó megváltoztatása]]'' lapon módosítható a bejelentkezés után.",
 'newarticle' => '(Új)',
@@ -964,7 +964,7 @@ Ha tévedésből jutottál ide, kattints a böngésződ '''vissza''' vagy '''bac
 'anontalkpagetext' => "----''Ez egy olyan anonim szerkesztő vitalapja, aki még nem regisztrált, vagy csak nem jelentkezett be.
 Ezért az IP-címét használjuk az azonosítására.
 Ugyanazon az IP-címen számos szerkesztő osztozhat az idők folyamán.
-Ha úgy látod, hogy az üzenetek, amiket ide kapsz, nem neked szólnak, [[Special:UserLogin/signup|regisztrálj]] vagy ha már regisztráltál, [[Special:UserLogin|jelentkezz be]], hogy ne keverjenek össze másokkal.''",
+Ha úgy látod, hogy az üzenetek, amiket ide kapsz, nem neked szólnak, [[Special:wiki_userLogin/signup|regisztrálj]] vagy ha már regisztráltál, [[Special:wiki_userLogin|jelentkezz be]], hogy ne keverjenek össze másokkal.''",
 'noarticletext' => 'Ez a lap jelenleg nem tartalmaz szöveget.
 [[Special:Search/{{PAGENAME}}|Rákereshetsz erre a címszóra]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} megtekintheted a kapcsolódó naplókat],
@@ -974,9 +974,9 @@ vagy [{{fullurl:{{FULLPAGENAME}}|action=edit}} szerkesztheted a lapot].</span>',
 'missing-revision' => 'A(z) "{{PAGENAME}}" nevű oldal #$1 változata nem létezik.
 
 Ezt általában egy elavult, törölt oldalra mutató laptörténeti hivatkozás használata okozza. Részletek a [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} törlési naplóban] találhatóak.',
-'userpage-userdoesnotexist' => 'Nincs „<nowiki>$1</nowiki>” nevű regisztrált felhasználónk.
+'wiki_userpage-wiki_userdoesnotexist' => 'Nincs „<nowiki>$1</nowiki>” nevű regisztrált felhasználónk.
 Nézd meg, hogy valóban ezt a lapot szeretnéd-e létrehozni vagy szerkeszteni.',
-'userpage-userdoesnotexist-view' => 'Nincs regisztrálva „$1” szerkesztői azonosító.',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'Nincs regisztrálva „$1” szerkesztői azonosító.',
 'blocked-notice-logextract' => 'A felhasználó jelenleg blokkolva van.
 A blokkolási napló legutóbbi ide vonatkozó bejegyzése a következő:',
 'clearyourcache' => "'''Megjegyzés:''' mentés után frissítened kell a böngésződ gyorsítótárát, hogy lásd a változásokat.
@@ -984,15 +984,15 @@ A blokkolási napló legutóbbi ide vonatkozó bejegyzése a következő:',
 '''Google Chrome:''' használd a ''Ctrl–Shift–R'' billentyűkombinációt (Mac-en ''Command–Shift–R'');
 '''Internet Explorer:''' tartsd nyomva a ''Ctrl''-t, és kattints a ''Frissítés'' gombra, vagy nyomj ''Ctrl–F5''-öt;
 '''Opera:''' ürítsd ki a gyorsítótárat a ''Beállítások / Haladó / Előzmények→Törlés most'' gombbal, majd frissítsd az oldalt.",
-'usercssyoucanpreview' => "'''Tipp:''' mentés előtt használd az „{{int:showpreview}}” gombot az új CSS-ed teszteléséhez.",
-'userjsyoucanpreview' => "'''Tipp:''' mentés előtt használd az „{{int:showpreview}}” gombot az új JavaScipted teszteléséhez.",
-'usercsspreview' => "'''Ne felejtsd el, hogy ez csak a felhasználói CSS-ed előnézete és még nincs elmentve!'''",
-'userjspreview' => "'''Ne felejtsd el, hogy még csak teszteled a felhasználói JavaScriptedet, és még nincs elmentve!'''",
+'wiki_usercssyoucanpreview' => "'''Tipp:''' mentés előtt használd az „{{int:showpreview}}” gombot az új CSS-ed teszteléséhez.",
+'wiki_userjsyoucanpreview' => "'''Tipp:''' mentés előtt használd az „{{int:showpreview}}” gombot az új JavaScipted teszteléséhez.",
+'wiki_usercsspreview' => "'''Ne felejtsd el, hogy ez csak a felhasználói CSS-ed előnézete és még nincs elmentve!'''",
+'wiki_userjspreview' => "'''Ne felejtsd el, hogy még csak teszteled a felhasználói JavaScriptedet, és még nincs elmentve!'''",
 'sitecsspreview' => "'''Ne feledd, hogy csak a CSS előnézetét látod.'''
 '''Még nincs elmentve!'''",
 'sitejspreview' => "'''Ne feledd, hogy a JavaScript-kódnak csak az előnézetét látod.'''
 '''Még nincs elmentve!'''",
-'userinvalidcssjstitle' => "'''Figyelem:''' Nincs „$1” nevű felület. A felületekhez tartozó .css/.js oldalak kisbetűvel kezdődnek, például ''{{ns:user}}:Gipsz Jakab/vector.css'' és nem ''{{ns:user}}:Gipsz Jakab/Vector.css''.",
+'wiki_userinvalidcssjstitle' => "'''Figyelem:''' Nincs „$1” nevű felület. A felületekhez tartozó .css/.js oldalak kisbetűvel kezdődnek, például ''{{ns:wiki_user}}:Gipsz Jakab/vector.css'' és nem ''{{ns:wiki_user}}:Gipsz Jakab/Vector.css''.",
 'updated' => '(frissítve)',
 'note' => "'''Megjegyzés:'''",
 'previewnote' => "'''Ne feledd, hogy ez csak egy előnézet.''' A változtatásaid még nincsenek elmentve!",
@@ -1000,12 +1000,12 @@ A blokkolási napló legutóbbi ide vonatkozó bejegyzése a következő:',
 'previewconflict' => 'Ez az előnézet a felső szerkesztődobozban levő szöveg mentés utáni megfelelőjét mutatja.',
 'session_fail_preview' => "'''Az elveszett munkamenetadatok miatt sajnos nem tudtuk feldolgozni a szerkesztésedet.
 Kérjük próbálkozz újra!
-Amennyiben továbbra sem sikerül, próbálj meg [[Special:UserLogout|kijelentkezni]], majd ismét bejelentkezni!'''",
+Amennyiben továbbra sem sikerül, próbálj meg [[Special:wiki_userLogout|kijelentkezni]], majd ismét bejelentkezni!'''",
 'session_fail_preview_html' => "'''Az elveszett munkamenetadatok miatt sajnos nem tudtuk feldolgozni a szerkesztésedet.'''
 
 ''Mivel a wikiben engedélyezett a nyers HTML-kód használata, az előnézet el van rejtve a JavaScript-alapú támadások megakadályozása céljából.''
 
-'''Ha ez egy normális szerkesztési kísérlet, akkor próbálkozz újra. Amennyiben továbbra sem sikerül, próbálj meg [[Special:UserLogout|kijelentkezni]], majd ismét bejelentkezni!'''",
+'''Ha ez egy normális szerkesztési kísérlet, akkor próbálkozz újra. Amennyiben továbbra sem sikerül, próbálj meg [[Special:wiki_userLogout|kijelentkezni]], majd ismét bejelentkezni!'''",
 'token_suffix_mismatch' => "'''A szerkesztésedet elutasítottuk, mert a kliensprogramod megváltoztatta a központozó karaktereket
 a szerkesztési tokenben. A szerkesztés azért lett visszautasítva, hogy megelőzzük a lap szövegének sérülését.
 Ez a probléma akkor fordulhat elő, ha hibás, web-alapú proxyszolgáltatást használsz.'''",
@@ -1054,7 +1054,7 @@ A legutolsó ide vonatkozó naplóbejegyzés alább látható:",
 'edittools' => '<!-- Ez a szöveg a szerkesztés és a feltöltés űrlap alatt lesz látható. -->',
 'nocreatetitle' => 'Az oldallétrehozás korlátozva van',
 'nocreatetext' => 'A(z) {{SITENAME}} wikin korlátozták az új oldalak létrehozásának lehetőségét.
-Visszamehetsz és szerkeszthetsz egy létező lapot, valamint [[Special:UserLogin|bejelentkezhetsz vagy készíthetsz egy felhasználói fiókot]].',
+Visszamehetsz és szerkeszthetsz egy létező lapot, valamint [[Special:wiki_userLogin|bejelentkezhetsz vagy készíthetsz egy felhasználói fiókot]].',
 'nocreate-loggedin' => 'Nincs jogosultságod új lapokat létrehozni.',
 'sectioneditnotsupported-title' => 'A szakaszszerkesztés nem támogatott',
 'sectioneditnotsupported-text' => 'Ezen a lapon nem támogatott a szakaszok szerkesztése',
@@ -1102,11 +1102,11 @@ Néhány sablon nem fog megjelenni.',
 'undo-success' => 'A szerkesztés visszavonható. Kérlek ellenőrizd alább a változásokat, hogy valóban ezt szeretnéd-e tenni, majd kattints a lap mentése gombra a visszavonás véglegesítéséhez.',
 'undo-failure' => 'A szerkesztést nem lehet automatikusan visszavonni vele ütköző későbbi szerkesztések miatt.',
 'undo-norev' => 'A szerkesztés nem állítható vissza, mert nem létezik vagy törölve lett.',
-'undo-summary' => 'Visszavontam [[Special:Contributions/$2|$2]] ([[User talk:$2|vita]] | [[Special:Contributions/$2|{{MediaWiki:Contribslink}}]]) szerkesztését (oldid: $1)',
+'undo-summary' => 'Visszavontam [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|vita]] | [[Special:Contributions/$2|{{MediaWiki:Contribslink}}]]) szerkesztését (oldid: $1)',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Felhasználói fiók létrehozása sikertelen',
-'cantcreateaccount-text' => "Erről az IP-címről ('''$1''') nem lehet regisztrálni, mert [[User:$3|$3]] blokkolta az alábbi indokkal:
+'cantcreateaccount-text' => "Erről az IP-címről ('''$1''') nem lehet regisztrálni, mert [[wiki_user:$3|$3]] blokkolta az alábbi indokkal:
 
 :''$2''",
 
@@ -1144,9 +1144,9 @@ Próbálkozhatsz a témával kapcsolatos lapok [[Special:Search|keresésével]].
 
 # Revision deletion
 'rev-deleted-comment' => '(szerkesztési összefoglaló eltávolítva)',
-'rev-deleted-user' => '(szerkesztőnév eltávolítva)',
+'rev-deleted-wiki_user' => '(szerkesztőnév eltávolítva)',
 'rev-deleted-event' => '(bejegyzés eltávolítva)',
-'rev-deleted-user-contribs' => '[felhasználónév vagy IP-cím eltávolítva – szerkesztés elrejtve a közreműködések közül]',
+'rev-deleted-wiki_user-contribs' => '[felhasználónév vagy IP-cím eltávolítva – szerkesztés elrejtve a közreműködések közül]',
 'rev-deleted-text-permission' => "A lap ezen változatát '''törölték'''.
 További információkat a [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} törlési naplóban] találhatsz.",
 'rev-deleted-text-unhide' => "A lap ezen változatát '''törölték'''.
@@ -1199,7 +1199,7 @@ A(z) {{SITENAME}} adminisztrátorai továbbra is meg tudják tekinteni az elrejt
 'revdelete-hide-image' => 'A fájl tartalmának elrejtése',
 'revdelete-hide-name' => 'Művelet és cél elrejtése',
 'revdelete-hide-comment' => 'Összefoglaló elrejtése',
-'revdelete-hide-user' => 'A szerkesztő felhasználónevének/IP-címének elrejtése',
+'revdelete-hide-wiki_user' => 'A szerkesztő felhasználónevének/IP-címének elrejtése',
 'revdelete-hide-restricted' => 'Adatok elrejtése az adminisztrátorok és mindenki más elől',
 'revdelete-radio-same' => '(nincs változtatás)',
 'revdelete-radio-set' => 'Igen',
@@ -1279,7 +1279,7 @@ Győződj meg róla, hogy a laptörténet folytonossága megmarad.',
 'showhideselectedversions' => 'Kiválasztott változatok láthatóságának beállítása',
 'editundo' => 'visszavonás',
 'diff-multi' => '({{PLURAL:$2|egy|$2}} szerkesztő {{PLURAL:$1|egy|$1}} közbeeső változata nincs mutatva)',
-'diff-multi-manyusers' => '({{PLURAL:$1|Egy közbeeső változat|$1 közbeeső változat}} nincs mutatva, amit $2 szerkesztő módosított)',
+'diff-multi-manywiki_users' => '({{PLURAL:$1|Egy közbeeső változat|$1 közbeeső változat}} nincs mutatva, amit $2 szerkesztő módosított)',
 'difference-missing-revision' => 'A(z) "{{PAGENAME}}" nevű oldal #$1 $2 változata nem létezik.
 
 Ezt általában egy elavult, törölt oldalra mutató laptörténeti hivatkozás használata okozza. Részletek a [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} törlési naplóban] találhatóak.',
@@ -1360,7 +1360,7 @@ Ezt általában egy elavult, törölt oldalra mutató laptörténeti hivatkozás
 'mypreferences' => 'Beállítások',
 'prefs-edits' => 'Szerkesztéseid száma:',
 'prefsnologin' => 'Nem jelentkeztél be',
-'prefsnologintext' => 'Saját beállításaid elmentéséhez <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} be kell jelentkezned.] </span>',
+'prefsnologintext' => 'Saját beállításaid elmentéséhez <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} be kell jelentkezned.] </span>',
 'changepassword' => 'Jelszócsere',
 'prefs-skin' => 'Felület',
 'skin-preview' => 'előnézet',
@@ -1368,7 +1368,7 @@ Ezt általában egy elavult, törölt oldalra mutató laptörténeti hivatkozás
 'prefs-beta' => 'Béta funkciók',
 'prefs-datetime' => 'Dátum és idő',
 'prefs-labs' => 'Kísérleti funkciók',
-'prefs-user-pages' => 'Felhasználói lapok',
+'prefs-wiki_user-pages' => 'Felhasználói lapok',
 'prefs-personal' => 'Felhasználói adatok',
 'prefs-rc' => 'Friss változtatások',
 'prefs-watchlist' => 'Figyelőlista',
@@ -1433,7 +1433,7 @@ A műveletet nem lehet visszavonni.',
 'prefs-emailconfirm-label' => 'E-mail cím megerősítése:',
 'prefs-textboxsize' => 'A szerkesztőablak mérete',
 'youremail' => 'Az e-mail címed:',
-'username' => 'Szerkesztőnév:',
+'wiki_username' => 'Szerkesztőnév:',
 'uid' => 'Azonosító:',
 'prefs-memberingroups' => '{{PLURAL:$1|Csoporttagság|Csoporttagságok}}:',
 'prefs-registration' => 'Regisztráció ideje:',
@@ -1471,34 +1471,34 @@ A műveletet nem lehet visszavonni.',
 'prefs-displaywatchlist' => 'Megjelenítési beállítások',
 'prefs-diffs' => 'Eltérések (diffek)',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'Az e-mail cím érvényesnek tűnik',
 'email-address-validity-invalid' => 'Írj be egy érvényes e-mail címet',
 
-# User rights
-'userrights' => 'Szerkesztői jogok beállítása',
-'userrights-lookup-user' => 'Szerkesztőcsoportok beállítása',
-'userrights-user-editname' => 'Add meg a szerkesztő nevét:',
-'editusergroup' => 'Szerkesztőcsoportok módosítása',
-'editinguser' => "'''[[User:$1|$1]]''' szerkesztő jogainak megváltoztatása $2",
-'userrights-editusergroup' => 'Szerkesztőcsoportok módosítása',
-'saveusergroups' => 'Szerkesztőcsoportok mentése',
-'userrights-groupsmember' => 'Csoporttag:',
-'userrights-groupsmember-auto' => 'Alapértelmezetten tagja:',
-'userrights-groups-help' => 'Beállíthatod, hogy a szerkesztő mely csoportokba tartozik.
+# wiki_user rights
+'wiki_userrights' => 'Szerkesztői jogok beállítása',
+'wiki_userrights-lookup-wiki_user' => 'Szerkesztőcsoportok beállítása',
+'wiki_userrights-wiki_user-editname' => 'Add meg a szerkesztő nevét:',
+'editwiki_usergroup' => 'Szerkesztőcsoportok módosítása',
+'editingwiki_user' => "'''[[wiki_user:$1|$1]]''' szerkesztő jogainak megváltoztatása $2",
+'wiki_userrights-editwiki_usergroup' => 'Szerkesztőcsoportok módosítása',
+'savewiki_usergroups' => 'Szerkesztőcsoportok mentése',
+'wiki_userrights-groupsmember' => 'Csoporttag:',
+'wiki_userrights-groupsmember-auto' => 'Alapértelmezetten tagja:',
+'wiki_userrights-groups-help' => 'Beállíthatod, hogy a szerkesztő mely csoportokba tartozik.
 * A bepipált doboz azt jelenti, hogy a szerkesztő benne van a csoportban, az üres azt, hogy nem.
 * A * az olyan csoportokat jelöli, amelyeket ha egyszer hozzáadtál, nem távolíthatod el, vagy nem adhatod hozzá.',
-'userrights-reason' => 'Ok:',
-'userrights-no-interwiki' => 'Nincs jogod a szerkesztők jogainak módosításához más wikiken.',
-'userrights-nodatabase' => '$1 adatbázis nem létezik vagy nem helyi.',
-'userrights-nologin' => '[[Special:UserLogin|Be kell jelentkezned]] egy adminisztrátori fiókkal, hogy szerkesztői jogokat adhass.',
-'userrights-notallowed' => 'Nincs jogosultságod jogosultságok adására vagy elvételére.',
-'userrights-changeable-col' => 'Megváltoztatható csoportok',
-'userrights-unchangeable-col' => 'Nem megváltoztatható csoportok',
+'wiki_userrights-reason' => 'Ok:',
+'wiki_userrights-no-interwiki' => 'Nincs jogod a szerkesztők jogainak módosításához más wikiken.',
+'wiki_userrights-nodatabase' => '$1 adatbázis nem létezik vagy nem helyi.',
+'wiki_userrights-nologin' => '[[Special:wiki_userLogin|Be kell jelentkezned]] egy adminisztrátori fiókkal, hogy szerkesztői jogokat adhass.',
+'wiki_userrights-notallowed' => 'Nincs jogosultságod jogosultságok adására vagy elvételére.',
+'wiki_userrights-changeable-col' => 'Megváltoztatható csoportok',
+'wiki_userrights-unchangeable-col' => 'Nem megváltoztatható csoportok',
 
 # Groups
 'group' => 'Csoport:',
-'group-user' => 'szerkesztők',
+'group-wiki_user' => 'szerkesztők',
 'group-autoconfirmed' => 'automatikusan megerősített szerkesztők',
 'group-bot' => 'botok',
 'group-sysop' => 'adminisztrátorok',
@@ -1506,14 +1506,14 @@ A műveletet nem lehet visszavonni.',
 'group-suppress' => 'adatvédelmi biztosok',
 'group-all' => '(mind)',
 
-'group-user-member' => '{{GENDER:$1|szerkesztő}}',
+'group-wiki_user-member' => '{{GENDER:$1|szerkesztő}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|automatikusan megerősített felhasználó}}',
 'group-bot-member' => '{{GENDER:$1|bot}}',
 'group-sysop-member' => '{{GENDER:$1|adminisztrátor}}',
 'group-bureaucrat-member' => '{{GENDER:$1|bürokrata}}',
 'group-suppress-member' => '{{GENDER:$1|adatvédelmi biztos}}',
 
-'grouppage-user' => '{{ns:project}}:Felhasználók',
+'grouppage-wiki_user' => '{{ns:project}}:Felhasználók',
 'grouppage-autoconfirmed' => '{{ns:project}}:Munkatársak#Automatikusan megerősített szerkesztők',
 'grouppage-bot' => '{{ns:project}}:Botok',
 'grouppage-sysop' => '{{ns:project}}:Adminisztrátorok',
@@ -1529,7 +1529,7 @@ A műveletet nem lehet visszavonni.',
 'right-minoredit' => 'szerkesztések apróként jelölésének lehetősége',
 'right-move' => 'lapok átnevezése',
 'right-move-subpages' => 'lapok átnevezése az allapjukkal együtt',
-'right-move-rootuserpages' => 'szerkesztői lapok mozgatása',
+'right-move-rootwiki_userpages' => 'szerkesztői lapok mozgatása',
 'right-movefile' => 'fájlok átnevezése',
 'right-suppressredirect' => 'nem készít átirányítást a régi néven lapok átnevezésekor',
 'right-upload' => 'fájlok feltöltése',
@@ -1555,16 +1555,16 @@ A műveletet nem lehet visszavonni.',
 'right-suppressionlog' => 'privát naplók megtekintése',
 'right-block' => 'szerkesztők blokkolása',
 'right-blockemail' => 'szerkesztő e-mail küldési lehetőségének blokkolása',
-'right-hideuser' => 'felhasználói név blokkolása és elrejtése a külvilág elől',
+'right-hidewiki_user' => 'felhasználói név blokkolása és elrejtése a külvilág elől',
 'right-ipblock-exempt' => 'IP-, auto- és tartományblokkok megkerülése',
 'right-proxyunbannable' => 'proxyk automatikus blokkjainak megkerülése',
 'right-unblockself' => 'saját felhasználói fiók blokkjának feloldása',
 'right-protect' => 'védelmi szintek megváltoztatása és védett lapok szerkesztése',
 'right-editprotected' => 'kaszkád védelem nélküli védett lapok szerkesztése',
 'right-editinterface' => 'felhasználói felület szerkesztése',
-'right-editusercssjs' => 'más felhasználók CSS és JS fájljainak szerkesztése',
-'right-editusercss' => 'más felhasználók CSS fájljainak szerkesztése',
-'right-edituserjs' => 'más felhasználók JS fájljainak szerkesztése',
+'right-editwiki_usercssjs' => 'más felhasználók CSS és JS fájljainak szerkesztése',
+'right-editwiki_usercss' => 'más felhasználók CSS fájljainak szerkesztése',
+'right-editwiki_userjs' => 'más felhasználók JS fájljainak szerkesztése',
 'right-rollback' => 'a lap utolsó szerkesztésének gyors visszaállítása',
 'right-markbotedits' => 'visszaállított szerkesztések botként való jelölése',
 'right-noratelimit' => 'sebességkorlát figyelmen kívül hagyása',
@@ -1575,14 +1575,14 @@ A műveletet nem lehet visszavonni.',
 'right-patrolmarks' => 'járőrök jelzéseinek megtekintése a friss változásokban',
 'right-unwatchedpages' => 'nem figyelt lapok listájának megtekintése',
 'right-mergehistory' => 'laptörténetek egyesítése',
-'right-userrights' => 'az összes szerkesztő jogainak módosítása',
-'right-userrights-interwiki' => 'más wikik szerkesztői jogainak módosítása',
+'right-wiki_userrights' => 'az összes szerkesztő jogainak módosítása',
+'right-wiki_userrights-interwiki' => 'más wikik szerkesztői jogainak módosítása',
 'right-siteadmin' => 'adatbázis lezárása, felnyitása',
 'right-override-export-depth' => 'Lapok exportálása a hivatkozott lapokkal együtt, legfeljebb 5-ös mélységig',
 'right-sendemail' => 'e-mail küldése más felhasználóknak',
 'right-passwordreset' => 'Jelszó visszaállítási emailek megtekintése',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Szerkesztői jogosultságok naplója',
 'rightslogtext' => 'Ez a rendszernapló a felhasználó jogosultságok változásait mutatja.',
 'rightslogentry' => 'megváltoztatta $1 szerkesztő felhasználó jogait (régi: $2; új: $3)',
@@ -1598,7 +1598,7 @@ A műveletet nem lehet visszavonni.',
 'action-minoredit' => 'szerkesztés aprónak jelölése',
 'action-move' => 'lap átnevezése',
 'action-move-subpages' => 'lap és allapjainak átnevezése',
-'action-move-rootuserpages' => 'szerkesztői lapok átnevezése',
+'action-move-rootwiki_userpages' => 'szerkesztői lapok átnevezése',
 'action-movefile' => 'fájlok átnevezése',
 'action-upload' => 'fájl feltöltése',
 'action-reupload' => 'már létező fájl felülírása',
@@ -1621,8 +1621,8 @@ A műveletet nem lehet visszavonni.',
 'action-autopatrol' => 'saját szerkesztések ellenőrzöttként való megjelölése',
 'action-unwatchedpages' => 'nem figyelt lapok listájának megtekintése',
 'action-mergehistory' => 'lap laptörténetének egyesítése',
-'action-userrights' => 'összes szerkesztő jogainak módosítása',
-'action-userrights-interwiki' => 'más wikik szerkesztői jogainak módosítása',
+'action-wiki_userrights' => 'összes szerkesztő jogainak módosítása',
+'action-wiki_userrights-interwiki' => 'más wikik szerkesztői jogainak módosítása',
 'action-siteadmin' => 'adatbázis lezárása vagy felnyitása',
 'action-sendemail' => 'e-mailek küldése',
 
@@ -1653,7 +1653,7 @@ A műveletet nem lehet visszavonni.',
 'minoreditletter' => 'a',
 'newpageletter' => 'Ú',
 'boteditletter' => 'b',
-'number_of_watching_users_pageview' => '[Jelenleg {{PLURAL:$1|egy|$1}} felhasználó figyeli]',
+'number_of_watching_wiki_users_pageview' => '[Jelenleg {{PLURAL:$1|egy|$1}} felhasználó figyeli]',
 'rc_categories' => 'Szűkítés kategóriákra („|” jellel válaszd el őket)',
 'rc_categories_any' => 'Bármelyik',
 'rc-change-size-new' => '{{PLURAL:$1| egy bájt|$1 bájt}} módosítás után',
@@ -1679,7 +1679,7 @@ A [[Special:Watchlist|figyelőlistádon]] szereplő lapok '''félkövérrel''' v
 'reuploaddesc' => 'Visszatérés a feltöltési űrlaphoz.',
 'upload-tryagain' => 'Módosított fájl-leírás elküldése',
 'uploadnologin' => 'Nem vagy bejelentkezve',
-'uploadnologintext' => 'Csak regisztrált felhasználók tölthetnek fel fájlokat. [[Special:UserLogin|Jelentkezz be]] vagy regisztrálj!',
+'uploadnologintext' => 'Csak regisztrált felhasználók tölthetnek fel fájlokat. [[Special:wiki_userLogin|Jelentkezz be]] vagy regisztrálj!',
 'upload_directory_missing' => 'A feltöltési könyvtár ($1) nem létezik vagy nem tudja létrehozni a kiszolgáló.',
 'upload_directory_read_only' => 'A kiszolgálónak nincs írási jogosultsága a feltöltési könyvtárban ($1).',
 'uploaderror' => 'Feltöltési hiba',
@@ -1810,7 +1810,7 @@ $1',
 'upload-proto-error-text' => 'A távoli feltöltéshez <code>http://</code> vagy <code>ftp://</code> kezdetű URL-ekre van szükség.',
 'upload-file-error' => 'Belső hiba',
 'upload-file-error-text' => 'Belső hiba történt egy ideiglenes fájl szerveren történő létrehozásakor.
-Kérjük, hogy lépj kapcsolatba egy  [[Special:ListUsers/sysop|adminisztrátorral]].',
+Kérjük, hogy lépj kapcsolatba egy  [[Special:Listwiki_users/sysop|adminisztrátorral]].',
 'upload-misc-error' => 'Ismeretlen feltöltési hiba',
 'upload-misc-error-text' => 'A feltöltés során ismeretlen hiba történt.  Kérjük, ellenőrizd, hogy az URL érvényes-e és hozzáférhető-e, majd próbáld újra.  Ha a probléma továbbra is fennáll, akkor lépj kapcsolatba a rendszergazdával.',
 'upload-too-many-redirects' => 'Az URL túl sokszor volt átirányítva',
@@ -1927,7 +1927,7 @@ Amennyiben a szerkesztő szűrést állított be, úgy csak azok a fájlok jelen
 'listfiles_thumb' => 'Bélyegkép',
 'listfiles_date' => 'Dátum',
 'listfiles_name' => 'Név',
-'listfiles_user' => 'feltöltő',
+'listfiles_wiki_user' => 'feltöltő',
 'listfiles_size' => 'Méret',
 'listfiles_description' => 'Leírás',
 'listfiles_count' => 'Változatok',
@@ -1944,7 +1944,7 @@ Amennyiben a szerkesztő szűrést állított be, úgy csak azok a fájlok jelen
 'filehist-thumb' => 'Bélyegkép',
 'filehist-thumbtext' => 'Bélyegkép a $1-kori változatról',
 'filehist-nothumb' => 'Nincs bélyegkép',
-'filehist-user' => 'Feltöltő',
+'filehist-wiki_user' => 'Feltöltő',
 'filehist-dimensions' => 'Felbontás',
 'filehist-filesize' => 'Fájlméret',
 'filehist-comment' => 'Megjegyzés',
@@ -2032,7 +2032,7 @@ Ellenőrizd a meglévő hivatkozásokat, mielőtt törölnéd őket.',
 'statistics-header-pages' => 'Lapstatisztikák',
 'statistics-header-edits' => 'Szerkesztési statisztika',
 'statistics-header-views' => 'Látogatási statisztika',
-'statistics-header-users' => 'Szerkesztői statisztika',
+'statistics-header-wiki_users' => 'Szerkesztői statisztika',
 'statistics-header-hooks' => 'További statisztikák',
 'statistics-articles' => 'Tartalommal rendelkező lapok',
 'statistics-pages' => 'Lapok száma',
@@ -2043,9 +2043,9 @@ Ellenőrizd a meglévő hivatkozásokat, mielőtt törölnéd őket.',
 'statistics-views-total' => 'Összes megtekintés',
 'statistics-views-total-desc' => 'A nem létező és speciális lapok megtekintési adatai nincsenek beleszámolva.',
 'statistics-views-peredit' => 'Megtekintések szerkesztésenként',
-'statistics-users' => 'Regisztrált [[Speciális:Szerkesztők listája|szerkesztők]]',
-'statistics-users-active' => 'Aktív szerkesztők',
-'statistics-users-active-desc' => 'Szerkesztők, akik csináltak valamit az elmúlt {{PLURAL:$1|egy|$1}} napban',
+'statistics-wiki_users' => 'Regisztrált [[Speciális:Szerkesztők listája|szerkesztők]]',
+'statistics-wiki_users-active' => 'Aktív szerkesztők',
+'statistics-wiki_users-active-desc' => 'Szerkesztők, akik csináltak valamit az elmúlt {{PLURAL:$1|egy|$1}} napban',
 'statistics-mostpopular' => 'Legtöbbször megtekintett lapok',
 
 'disambiguations' => 'Egyértelműsítő lapokra mutató lapok',
@@ -2122,13 +2122,13 @@ Az <del>áthúzott</del> sorok a lista elkészülése óta javítva lettek.',
 'protectedtitles' => 'Létrehozás ellen védett lapok',
 'protectedtitlestext' => 'A következő lapok védve vannak a létrehozás ellen',
 'protectedtitlesempty' => 'Jelenleg nincsenek ilyen típusú védett lapok.',
-'listusers' => 'Szerkesztők',
-'listusers-editsonly' => 'Csak a szerkesztéssel rendelkező szerkesztők mutatása',
-'listusers-creationsort' => 'Rendezés létrehozási dátum szerint',
-'usereditcount' => '{{PLURAL:$1|egy|$1}} szerkesztés',
-'usercreated' => '{{GENDER:$3|Létrehozva}} $1, $2-kor',
+'listwiki_users' => 'Szerkesztők',
+'listwiki_users-editsonly' => 'Csak a szerkesztéssel rendelkező szerkesztők mutatása',
+'listwiki_users-creationsort' => 'Rendezés létrehozási dátum szerint',
+'wiki_usereditcount' => '{{PLURAL:$1|egy|$1}} szerkesztés',
+'wiki_usercreated' => '{{GENDER:$3|Létrehozva}} $1, $2-kor',
 'newpages' => 'Új lapok',
-'newpages-username' => 'Felhasználói név:',
+'newpages-wiki_username' => 'Felhasználói név:',
 'ancientpages' => 'Régóta nem változott szócikkek',
 'move' => 'Átnevezés',
 'movethispage' => 'Nevezd át ezt a lapot',
@@ -2153,7 +2153,7 @@ további információkat lelhetsz ott az általad keresett könyvekről:',
 'booksources-invalid-isbn' => 'A megadott ISBN hibásnak tűnik; ellenőrizd, hogy jól másoltad-e át az eredeti forrásból.',
 
 # Special:Log
-'specialloguserlabel' => 'Szerkesztő:',
+'speciallogwiki_userlabel' => 'Szerkesztő:',
 'speciallogtitlelabel' => 'Cél (cím vagy felhasználó):',
 'log' => 'Rendszernaplók',
 'all-logs-page' => 'Minden nyilvános napló',
@@ -2210,24 +2210,24 @@ Támogatott protokollok: <code>$1</code> (http:// az alapértelmezett, ha nincs 
 'linksearch-line' => '$1 hivatkozva innen: $2',
 'linksearch-error' => 'Helyettesítő karakterek csak a cím elején szerepelhetnek.',
 
-# Special:ListUsers
-'listusersfrom' => 'Szerkesztők listázása a következő névtől kezdve:',
-'listusers-submit' => 'Megjelenítés',
-'listusers-noresult' => 'Nem található szerkesztő.',
-'listusers-blocked' => '(blokkolva)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'Szerkesztők listázása a következő névtől kezdve:',
+'listwiki_users-submit' => 'Megjelenítés',
+'listwiki_users-noresult' => 'Nem található szerkesztő.',
+'listwiki_users-blocked' => '(blokkolva)',
 
-# Special:ActiveUsers
-'activeusers' => 'Aktív szerkesztők listája',
-'activeusers-intro' => 'Ez a lap azon felhasználók listáját tartalmazza, akik csináltak valamilyen tevékenységet az elmúlt {{PLURAL:$1|egy|$1}} napban.',
-'activeusers-count' => '{{PLURAL:$1|egy|$1}} szerkesztés az utolsó {{PLURAL:$3|egy|$3}} napban',
-'activeusers-from' => 'Szerkesztők listázása a következő névtől kezdve:',
-'activeusers-hidebots' => 'Botok elrejtése',
-'activeusers-hidesysops' => 'Adminisztrátorok elrejtése',
-'activeusers-noresult' => 'Nem található ilyen szerkesztő.',
+# Special:Activewiki_users
+'activewiki_users' => 'Aktív szerkesztők listája',
+'activewiki_users-intro' => 'Ez a lap azon felhasználók listáját tartalmazza, akik csináltak valamilyen tevékenységet az elmúlt {{PLURAL:$1|egy|$1}} napban.',
+'activewiki_users-count' => '{{PLURAL:$1|egy|$1}} szerkesztés az utolsó {{PLURAL:$3|egy|$3}} napban',
+'activewiki_users-from' => 'Szerkesztők listázása a következő névtől kezdve:',
+'activewiki_users-hidebots' => 'Botok elrejtése',
+'activewiki_users-hidesysops' => 'Adminisztrátorok elrejtése',
+'activewiki_users-noresult' => 'Nem található ilyen szerkesztő.',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Új szerkesztők naplója',
-'newuserlogpagetext' => 'Ez a napló az újonnan regisztrált szerkesztők listáját tartalmazza.',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Új szerkesztők naplója',
+'newwiki_userlogpagetext' => 'Ez a napló az újonnan regisztrált szerkesztők listáját tartalmazza.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Szerkesztői csoportok jogai',
@@ -2248,27 +2248,27 @@ Az egyes csoportokról további információt [[{{MediaWiki:Listgrouprights-help
 'listgrouprights-addgroup-self-all' => 'az összes csoportot hozzáadhatja a saját fiókjához',
 'listgrouprights-removegroup-self-all' => 'az összes csoporból eltávolíthatja a saját fiókját',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'Nincs feladó',
-'mailnologintext' => 'Ahhoz hogy másoknak e-mailt küldhess, [[Special:UserLogin|be kell jelentkezned]] és meg kell adnod egy érvényes e-mail címet a [[Special:Preferences|beállításaidban]].',
-'emailuser' => 'E-mail küldése ezen szerkesztőnek',
-'emailuser-title-target' => 'E-mail küldése ennek a felhasználónak: $1',
-'emailuser-title-notarget' => 'E-mail küldése a felhasználónak',
+'mailnologintext' => 'Ahhoz hogy másoknak e-mailt küldhess, [[Special:wiki_userLogin|be kell jelentkezned]] és meg kell adnod egy érvényes e-mail címet a [[Special:Preferences|beállításaidban]].',
+'emailwiki_user' => 'E-mail küldése ezen szerkesztőnek',
+'emailwiki_user-title-target' => 'E-mail küldése ennek a felhasználónak: $1',
+'emailwiki_user-title-notarget' => 'E-mail küldése a felhasználónak',
 'emailpage' => 'E-mail küldése',
-'emailpagetext' => '{{GENDER:$1|user}} nevű szerkesztő e-mail-címére ezen űrlap kitöltésével üzenetet tudsz küldeni.
+'emailpagetext' => '{{GENDER:$1|wiki_user}} nevű szerkesztő e-mail-címére ezen űrlap kitöltésével üzenetet tudsz küldeni.
 Feladóként a [[Special:Preferences|beállításaid]]nál megadott e-mail-címed fog szerepelni, így a címzett közvetlenül tud majd válaszolni neked.',
-'usermailererror' => 'A levélküldő objektum hibával tért vissza:',
+'wiki_usermailererror' => 'A levélküldő objektum hibával tért vissza:',
 'defemailsubject' => '{{SITENAME}} e-mail a következő felhasználótól: „$1”',
-'usermaildisabled' => 'Email fogadás letiltva',
-'usermaildisabledtext' => 'Nem küldhetsz emailt más felhasználóknak ezen a wikin',
+'wiki_usermaildisabled' => 'Email fogadás letiltva',
+'wiki_usermaildisabledtext' => 'Nem küldhetsz emailt más felhasználóknak ezen a wikin',
 'noemailtitle' => 'Nincs e-mail cím',
 'noemailtext' => 'Ez a szerkesztő nem adott meg érvényes e-mail címet.',
 'nowikiemailtitle' => 'Nem küldhető e-mail üzenet',
 'nowikiemailtext' => 'Ez a szerkesztő nem kíván másoktól e-mail üzeneteket fogadni.',
 'emailnotarget' => 'A címzett nem létezik vagy a felhasználónév érvénytelen.',
 'emailtarget' => 'Írd be címzett felhasználónevét',
-'emailusername' => 'Felhasználónév:',
-'emailusernamesubmit' => 'Küldés',
+'emailwiki_username' => 'Felhasználónév:',
+'emailwiki_usernamesubmit' => 'Küldés',
 'email-legend' => 'E-mail küldése egy másik {{SITENAME}}-szerkesztőnek',
 'emailfrom' => 'Feladó:',
 'emailto' => 'Címzett:',
@@ -2279,11 +2279,11 @@ Feladóként a [[Special:Preferences|beállításaid]]nál megadott e-mail-címe
 'emailccsubject' => '$1 szerkesztőnek küldött $2 tárgyú üzenet másolata',
 'emailsent' => 'E-mail elküldve',
 'emailsenttext' => 'Az e-mail üzenetedet elküldtem.',
-'emailuserfooter' => 'Ezt az e-mailt $1 küldte $2 számára, az „E-mail küldése ezen szerkesztőnek” funkció használatával a(z) {{SITENAME}} wikin.',
+'emailwiki_userfooter' => 'Ezt az e-mailt $1 küldte $2 számára, az „E-mail küldése ezen szerkesztőnek” funkció használatával a(z) {{SITENAME}} wikin.',
 
-# User Messenger
-'usermessage-summary' => 'Rendszerüzenet megadása.',
-'usermessage-editor' => 'Rendszerüzenetek',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'Rendszerüzenet megadása.',
+'wiki_usermessage-editor' => 'Rendszerüzenetek',
 
 # Watchlist
 'watchlist' => 'Figyelőlistám',
@@ -2292,7 +2292,7 @@ Feladóként a [[Special:Preferences|beállításaid]]nál megadott e-mail-címe
 'nowatchlist' => 'Nincs lap a figyelőlistádon.',
 'watchlistanontext' => 'A figyelőlistád megtekintéséhez és szerkesztéséhez $1.',
 'watchnologin' => 'Nem vagy bejelentkezve',
-'watchnologintext' => 'Ahhoz, hogy figyelőlistád lehessen, [[Special:UserLogin|be kell lépned]].',
+'watchnologintext' => 'Ahhoz, hogy figyelőlistád lehessen, [[Special:wiki_userLogin|be kell lépned]].',
 'addwatch' => 'Hozzáadás a figyelőlistához',
 'addedwatchtext' => "A(z) „[[:$1]]” lapot hozzáadtam a [[Special:Watchlist|figyelőlistádhoz]].
 Ezután minden, a lapon vagy annak vitalapján történő változást ott fogsz látni, és a lap '''vastagon''' fog szerepelni a [[Special:RecentChanges|friss változtatások]] lapon, hogy könnyen észrevehető legyen.",
@@ -2400,13 +2400,13 @@ A legutóbbi törlések listájához lásd a $2 lapot.',
 'rollbacklinkcount-morethan' => 'több mint $1 szerkesztés visszaállítása',
 'rollbackfailed' => 'A visszaállítás nem sikerült',
 'cantrollback' => 'Nem lehet visszaállítani: az utolsó szerkesztést végző felhasználó az egyetlen, aki a lapot szerkesztette.',
-'alreadyrolled' => '[[:$1]] utolsó, [[User:$2|$2]] ([[User talk:$2|vita]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) általi szerkesztését nem lehet visszavonni:
+'alreadyrolled' => '[[:$1]] utolsó, [[wiki_user:$2|$2]] ([[wiki_user talk:$2|vita]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) általi szerkesztését nem lehet visszavonni:
 időközben valaki már visszavonta, vagy szerkesztette a lapot.
 
-Az utolsó szerkesztést [[User:$3|$3]] ([[User talk:$3|vita]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) végezte.',
+Az utolsó szerkesztést [[wiki_user:$3|$3]] ([[wiki_user talk:$3|vita]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) végezte.',
 'editcomment' => "A szerkesztési összefoglaló „''$1''” volt.",
-'revertpage' => 'Visszaállítottam a lap korábbi változatát: [[Special:Contributions/$2|$2]]  ([[User talk:$2|vita]]) szerkesztéséről [[User:$1|$1]] szerkesztésére',
-'revertpage-nouser' => 'Visszaállítottam a lap korábbi változatát (szerkesztőnév eltávolítva) szerkesztéséről [[User:$1|$1]] szerkesztésére',
+'revertpage' => 'Visszaállítottam a lap korábbi változatát: [[Special:Contributions/$2|$2]]  ([[wiki_user talk:$2|vita]]) szerkesztéséről [[wiki_user:$1|$1]] szerkesztésére',
+'revertpage-nowiki_user' => 'Visszaállítottam a lap korábbi változatát (szerkesztőnév eltávolítva) szerkesztéséről [[wiki_user:$1|$1]] szerkesztésére',
 'rollback-success' => '$1 szerkesztéseit visszaállítottam $2 utolsó változatára.',
 
 # Edit tokens
@@ -2563,12 +2563,12 @@ $1',
 'sp-contributions-uploads' => 'feltöltések',
 'sp-contributions-logs' => 'naplók',
 'sp-contributions-talk' => 'vitalap',
-'sp-contributions-userrights' => 'szerkesztői jogok beállítása',
+'sp-contributions-wiki_userrights' => 'szerkesztői jogok beállítása',
 'sp-contributions-blocked-notice' => 'Ez a szerkesztő blokkolva van. A blokknapló legutóbbi ide vonatkozó bejegyzése a következő:',
 'sp-contributions-blocked-notice-anon' => 'Ez az IP-cím blokkolva van.
 A blokknapló legutóbbi ide vonatkozó bejegyzése a következő:',
 'sp-contributions-search' => 'Közreműködések szűrése',
-'sp-contributions-username' => 'IP-cím vagy felhasználónév:',
+'sp-contributions-wiki_username' => 'IP-cím vagy felhasználónév:',
 'sp-contributions-toponly' => 'Csak a jelenleg utolsónak számító változtatásokat mutassa',
 'sp-contributions-submit' => 'Keresés',
 
@@ -2601,7 +2601,7 @@ A blokknapló legutóbbi ide vonatkozó bejegyzése a következő:',
 'blockiptext' => 'Az alábbi űrlap segítségével megvonhatod egy szerkesztő vagy IP-cím szerkesztési jogait.
 Ügyelj rá, hogy az intézkedésed mindig legyen tekintettel a vonatkozó [[{{MediaWiki:Policy-url}}|irányelvekre]].
 Add meg a blokkolás okát is (például idézd a blokkolandó személy által vandalizált lapokat).',
-'ipadressorusername' => 'IP-cím vagy felhasználói név',
+'ipadressorwiki_username' => 'IP-cím vagy felhasználói név',
 'ipbexpiry' => 'Lejárat:',
 'ipbreason' => 'Ok:',
 'ipbreasonotherlist' => 'Más ok',
@@ -2623,8 +2623,8 @@ Add meg a blokkolás okát is (például idézd a blokkolandó személy által v
 'ipbotheroption' => 'Más időtartam',
 'ipbotherreason' => 'Más/további ok:',
 'ipbhidename' => 'A felhasználónév ne jelenjen meg a szerkesztéseknél és a listákban',
-'ipbwatchuser' => 'A felhasználó lapjának és vitalapjának figyelése',
-'ipb-disableusertalk' => 'Megakadályozza, hogy a felhasználó szerkeszthesse a saját vitalapját, miközben blokkolva van',
+'ipbwatchwiki_user' => 'A felhasználó lapjának és vitalapjának figyelése',
+'ipb-disablewiki_usertalk' => 'Megakadályozza, hogy a felhasználó szerkeszthesse a saját vitalapját, miközben blokkolva van',
 'ipb-change-block' => 'Blokk beállításainak megváltoztatása',
 'ipb-confirm' => 'Blokk megerősítése',
 'badipaddress' => 'Érvénytelen IP-cím',
@@ -2632,7 +2632,7 @@ Add meg a blokkolás okát is (például idézd a blokkolandó személy által v
 'blockipsuccesstext' => '„[[Special:Contributions/$1|$1]]” felhasználót blokkoltad.
 <br />Lásd a [[Special:BlockList|blokkolt IP-címek listáját]] az érvényben lévő blokkok áttekintéséhez.',
 'ipb-blockingself' => 'Saját magad blokkolására készülsz! Biztos, hogy ezt szeretnéd tenni?',
-'ipb-confirmhideuser' => 'Egy felhasználó blokkolására készülsz, úgy, hogy a „felhasználó elrejtése” funkció be van kapcsolva. Ez elrejti a felhasználó nevét az összes listában és naplóbejegyzésben. Biztosan ezt szeretnéd tenni?',
+'ipb-confirmhidewiki_user' => 'Egy felhasználó blokkolására készülsz, úgy, hogy a „felhasználó elrejtése” funkció be van kapcsolva. Ez elrejti a felhasználó nevét az összes listában és naplóbejegyzésben. Biztosan ezt szeretnéd tenni?',
 'ipb-edit-dropdown' => 'Blokkolási okok szerkesztése',
 'ipb-unblock-addr' => '$1 blokkjának feloldása',
 'ipb-unblock' => 'Felhasználónév vagy IP-cím blokkolásának feloldása',
@@ -2641,13 +2641,13 @@ Add meg a blokkolás okát is (például idézd a blokkolandó személy által v
 'unblockip' => 'Blokk feloldása',
 'unblockiptext' => 'Itt tudod visszaadni egy blokkolt felhasználónévnek vagy IP-nek a szerkesztési jogosultságot.',
 'ipusubmit' => 'Blokk eltávolítása',
-'unblocked' => '[[User:$1|$1]] blokkolása feloldva',
+'unblocked' => '[[wiki_user:$1|$1]] blokkolása feloldva',
 'unblocked-range' => '$1 blokkja feloldva',
 'unblocked-id' => '$1 blokkolása feloldásra került',
 'blocklist' => 'Blokkolt felhasználók',
 'ipblocklist' => 'Blokkolt felhasználók',
 'ipblocklist-legend' => 'Blokkolt felhasználó keresése',
-'blocklist-userblocks' => 'Fiókblokkolások elrejtése',
+'blocklist-wiki_userblocks' => 'Fiókblokkolások elrejtése',
 'blocklist-tempblocks' => 'Ideiglenes blokkolások elrejtése',
 'blocklist-addressblocks' => 'IP-címek blokkolásainak elrejtése',
 'blocklist-rangeblocks' => 'Tartományblokkok elrejtése',
@@ -2666,7 +2666,7 @@ Add meg a blokkolás okát is (például idézd a blokkolandó személy által v
 'noautoblockblock' => 'az automatikus blokkolás letiltott',
 'createaccountblock' => 'új felhasználó létrehozása blokkolva',
 'emailblock' => 'e-mail cím blokkolva',
-'blocklist-nousertalk' => 'nem szerkesztheti a vitalapját',
+'blocklist-nowiki_usertalk' => 'nem szerkesztheti a vitalapját',
 'ipblocklist-empty' => 'A blokkoltak listája üres.',
 'ipblocklist-no-results' => 'A kért IP-cím vagy felhasználónév nem blokkolt.',
 'blocklink' => 'blokkolás',
@@ -2674,7 +2674,7 @@ Add meg a blokkolás okát is (például idézd a blokkolandó személy által v
 'change-blocklink' => 'blokkolás módosítása',
 'contribslink' => 'szerkesztései',
 'emaillink' => 'e-mail küldése',
-'autoblocker' => "Az általad használt IP-cím autoblokkolva van, mivel korábban a kitiltott „[[User:$1|$1]]” használta. ($1 blokkolásának indoklása: „'''$2'''”) Ha nem te vagy $1, lépj kapcsolatba valamelyik adminisztrátorral, és kérd az autoblokk feloldását. Ne felejtsd el megírni neki, hogy kinek szóló blokkba ütköztél bele!",
+'autoblocker' => "Az általad használt IP-cím autoblokkolva van, mivel korábban a kitiltott „[[wiki_user:$1|$1]]” használta. ($1 blokkolásának indoklása: „'''$2'''”) Ha nem te vagy $1, lépj kapcsolatba valamelyik adminisztrátorral, és kérd az autoblokk feloldását. Ne felejtsd el megírni neki, hogy kinek szóló blokkba ütköztél bele!",
 'blocklogpage' => 'Blokkolási napló',
 'blocklog-showlog' => 'Ez a felhasználó már blokkolva volt korábban. A blokkolási napló ide vonatkozó része alább látható:',
 'blocklog-showsuppresslog' => 'Ez a felhasználó korábban blokkot kapott, és a naplóbejegyzés el lett rejtve. Az elrejtési napló alább látható tájékoztatásként:',
@@ -2686,7 +2686,7 @@ Add meg a blokkolás okát is (például idézd a blokkolandó személy által v
 'block-log-flags-nocreate' => 'nem hozhat létre új fiókot',
 'block-log-flags-noautoblock' => 'autoblokk kikapcsolva',
 'block-log-flags-noemail' => 'e-mail blokkolva',
-'block-log-flags-nousertalk' => 'saját vitalapját sem szerkesztheti',
+'block-log-flags-nowiki_usertalk' => 'saját vitalapját sem szerkesztheti',
 'block-log-flags-angry-autoblock' => 'bővített automatikus blokk bekapcsolva',
 'block-log-flags-hiddenname' => 'rejtett felhasználónév',
 'range_block_disabled' => 'A rendszerfelelős tartományblokkolás létrehozási képessége letiltott.',
@@ -2696,7 +2696,7 @@ Add meg a blokkolás okát is (például idézd a blokkolandó személy által v
 'ipb_already_blocked' => '"$1" már blokkolva',
 'ipb-needreblock' => '$1 már blokkolva van. Meg szeretnéd változtatni a beállításokat?',
 'ipb-otherblocks-header' => 'További {{PLURAL:$1|blokk|blokkok}}',
-'unblock-hideuser' => 'Nem oldhatod fel a felhasználó blokkját, mivel a felhasználóneve el van rejtve.',
+'unblock-hidewiki_user' => 'Nem oldhatod fel a felhasználó blokkját, mivel a felhasználóneve el van rejtve.',
 'ipb_cant_unblock' => 'Hiba: A(z) $1 blokkolási azonosító nem található. Lehet, hogy már feloldották a blokkolását.',
 'ipb_blocked_as_range' => 'Hiba: a(z) $1 IP-cím nem blokkolható közvetlenül, és nem lehet feloldani. A(z) $2 tartomány részeként van blokkolva, amely feloldható.',
 'ip_range_invalid' => 'Érvénytelen IP-tartomány.',
@@ -2709,7 +2709,7 @@ Add meg a blokkolás okát is (például idézd a blokkolandó személy által v
 'sorbsreason' => 'Az IP-címed nyitott proxyként szerepel e webhely által használt DNSBL listán.',
 'sorbs_create_account_reason' => 'Az IP-címed nyitott proxyként szerepel e webhely által használt DNSBL listán. Nem hozhatsz létre fiókot.',
 'cant-block-while-blocked' => 'Nem blokkolhatsz más szerkesztőket, miközben te magad blokkolva vagy.',
-'cant-see-hidden-user' => 'A felhasználó, akit blokkolni próbáltál már blokkolva és rejtve van. Mivel nincs felhasználó elrejtése jogosultságod, nem láthatod és nem szerkesztheted a felhasználó blokkját.',
+'cant-see-hidden-wiki_user' => 'A felhasználó, akit blokkolni próbáltál már blokkolva és rejtve van. Mivel nincs felhasználó elrejtése jogosultságod, nem láthatod és nem szerkesztheted a felhasználó blokkját.',
 'ipbblocked' => 'Nem blokkolhatsz és nem oldhatod fel más felhasználók blokkjait, mert te magad is blokkolva vagy',
 'ipbnounblockself' => 'Nincs jogosultságod feloldani a saját felhasználói fiókod blokkját',
 
@@ -2770,13 +2770,13 @@ győződj meg a folytatás előtt arról, hogy tisztában vagy-e a következmén
 
 Ezen esetekben a vitalapot külön, kézzel kell átnevezned a kívánságaid szerint.",
 'movearticle' => 'Lap átnevezése',
-'moveuserpage-warning' => "'''Figyelem:''' Egy felhasználólapot készülsz átmozgatni. Csak a lap lesz átmozgatva, a szerkesztő ''nem'' lesz átnevezve.",
+'movewiki_userpage-warning' => "'''Figyelem:''' Egy felhasználólapot készülsz átmozgatni. Csak a lap lesz átmozgatva, a szerkesztő ''nem'' lesz átnevezve.",
 'movenologin' => 'Nem jelentkeztél be',
-'movenologintext' => 'Ahhoz, hogy átnevezhess egy lapot, [[Special:UserLogin|be kell lépned]].',
+'movenologintext' => 'Ahhoz, hogy átnevezhess egy lapot, [[Special:wiki_userLogin|be kell lépned]].',
 'movenotallowed' => 'Nincs jogod a lapok átnevezéséhez.',
 'movenotallowedfile' => 'Nincs megfelelő jogosultságod a fájlok átnevezéséhez.',
-'cant-move-user-page' => 'Nem nevezhetsz át szerkesztői lapokat (az allapokon kívül).',
-'cant-move-to-user-page' => 'Nincs jogosultságod átnevezni egy lapot szerkesztői lapnak (kivéve annak allapjának).',
+'cant-move-wiki_user-page' => 'Nem nevezhetsz át szerkesztői lapokat (az allapokon kívül).',
+'cant-move-to-wiki_user-page' => 'Nincs jogosultságod átnevezni egy lapot szerkesztői lapnak (kivéve annak allapjának).',
 'newtitle' => 'Az új cím:',
 'move-watch' => 'Figyeld a lapot',
 'movepagebtn' => 'Lap átnevezése',
@@ -2955,8 +2955,8 @@ Mentsd el a számítógépedre, majd töltsd fel ide.',
 'javascripttest-qunit-heading' => 'MediaWiki JavaScript QUnit tesztcsomag',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'A szerkesztőlapod',
-'tooltip-pt-anonuserpage' => 'Az általad használt IP-címhez tartozó felhasználói lap',
+'tooltip-pt-wiki_userpage' => 'A szerkesztőlapod',
+'tooltip-pt-anonwiki_userpage' => 'Az általad használt IP-címhez tartozó felhasználói lap',
 'tooltip-pt-mytalk' => 'A vitalapod',
 'tooltip-pt-anontalk' => 'Az általad használt IP-címről végrehajtott szerkesztések megvitatása',
 'tooltip-pt-preferences' => 'A beállításaid',
@@ -2993,13 +2993,13 @@ Mentsd el a számítógépedre, majd töltsd fel ide.',
 'tooltip-feed-rss' => 'A lap tartalma RSS hírcsatorna formájában',
 'tooltip-feed-atom' => 'A lap tartalma Atom hírcsatorna formájában',
 'tooltip-t-contributions' => 'A felhasználó közreműködéseinek listája',
-'tooltip-t-emailuser' => 'Írj levelet ennek a felhasználónak!',
+'tooltip-t-emailwiki_user' => 'Írj levelet ennek a felhasználónak!',
 'tooltip-t-upload' => 'Képek vagy egyéb fájlok feltöltése',
 'tooltip-t-specialpages' => 'Az összes speciális lap listája',
 'tooltip-t-print' => 'A lap nyomtatható változata',
 'tooltip-t-permalink' => 'Állandó hivatkozás a lap ezen változatához',
 'tooltip-ca-nstab-main' => 'A lap megtekintése',
-'tooltip-ca-nstab-user' => 'A felhasználói lap megtekintése',
+'tooltip-ca-nstab-wiki_user' => 'A felhasználói lap megtekintése',
 'tooltip-ca-nstab-media' => 'A fájlleíró lap megtekintése',
 'tooltip-ca-nstab-special' => 'Ez egy speciális lap, nem szerkesztheted.',
 'tooltip-ca-nstab-project' => 'A projektlap megtekintése',
@@ -3063,13 +3063,13 @@ Mentsd el a számítógépedre, majd töltsd fel ide.',
 
 # Attribution
 'anonymous' => 'Névtelen {{SITENAME}}-{{PLURAL:$1|szerkesztő|szerkesztők}}',
-'siteuser' => '$1 {{SITENAME}}-felhasználó',
-'anonuser' => '$1 névtelen {{SITENAME}}-felhasználó',
+'sitewiki_user' => '$1 {{SITENAME}}-felhasználó',
+'anonwiki_user' => '$1 névtelen {{SITENAME}}-felhasználó',
 'lastmodifiedatby' => 'Ezt a lapot utoljára $3 módosította $2, $1 időpontban.',
 'othercontribs' => '$1 munkája alapján.',
 'others' => 'mások',
-'siteusers' => '$1 {{SITENAME}}-{{PLURAL:$2|szerkesztő|szerkesztők}}',
-'anonusers' => '$1 névtelen {{PLURAL:$2|felhasználó|felhasználók}}',
+'sitewiki_users' => '$1 {{SITENAME}}-{{PLURAL:$2|szerkesztő|szerkesztők}}',
+'anonwiki_users' => '$1 névtelen {{PLURAL:$2|felhasználó|felhasználók}}',
 'creditspage' => 'A lap közreműködői',
 'nocredits' => 'Ennek a lapnak nincs közreműködői információja.',
 
@@ -3078,7 +3078,7 @@ Mentsd el a számítógépedre, majd töltsd fel ide.',
 'spamprotectiontext' => 'Az általad elmenteni kívánt lap egyik külső hivatkozása fennakadt a spamszűrőn.
 Ez valószínűleg egy olyan link miatt van, ami egy feketelistán lévő oldalra hivatkozik.',
 'spamprotectionmatch' => 'A spamszűrőn az alábbi szöveg fennakadt: $1',
-'spambot_username' => 'MediaWiki spam kitakarítása',
+'spambot_wiki_username' => 'MediaWiki spam kitakarítása',
 'spam_reverting' => 'Visszatérés a $1 lapra mutató hivatkozásokat nem tartalmazó utolsó változathoz',
 'spam_blanking' => 'Az összes változat tartalmazott a $1 lapra mutató hivatkozásokat, kiürítés',
 
@@ -3101,9 +3101,9 @@ Ez valószínűleg egy olyan link miatt van, ami egy feketelistán lévő oldalr
 'pageinfo-redirects-name' => 'Átirányítások erre a lapra',
 'pageinfo-subpages-name' => 'Az lap allapjai',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|átirányítás}}; $3 {{PLURAL:$3|nem átirányítás}})',
-'pageinfo-firstuser' => 'A lap létrehozója',
+'pageinfo-firstwiki_user' => 'A lap létrehozója',
 'pageinfo-firsttime' => 'A lap létrehozásának ideje',
-'pageinfo-lastuser' => 'Utolsó szerkesztő',
+'pageinfo-lastwiki_user' => 'Utolsó szerkesztő',
 'pageinfo-lasttime' => 'Az utolsó szerkesztés ideje',
 'pageinfo-edits' => 'Szerkesztések teljes száma',
 'pageinfo-authors' => 'Egyedi szerkesztők teljes száma',
@@ -3260,7 +3260,7 @@ míg a többi elem a táblázat összecsukása után alapértelmezett esetben re
 'exif-compressedbitsperpixel' => 'Képtömörítési mód',
 'exif-pixelydimension' => 'Képszélesség',
 'exif-pixelxdimension' => 'Képmagasság',
-'exif-usercomment' => 'Felhasználók megjegyzései',
+'exif-wiki_usercomment' => 'Felhasználók megjegyzései',
 'exif-relatedsoundfile' => 'Kapcsolódó hangfájl',
 'exif-datetimeoriginal' => 'EXIF információ létrehozásának dátuma',
 'exif-datetimedigitized' => 'Digitalizálás dátuma és időpontja',
@@ -3695,10 +3695,10 @@ Ez a megerősítő e-mail $4-ig érvényes.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Figyelmeztetés:''' A lapot a szerkesztés megkezdése után törölték!",
-'confirmrecreate' => "Miután elkezdted szerkeszteni, [[User:$1|$1]] ([[User talk:$1|vita]]) törölte ezt a lapot a következő indokkal:
+'confirmrecreate' => "Miután elkezdted szerkeszteni, [[wiki_user:$1|$1]] ([[wiki_user talk:$1|vita]]) törölte ezt a lapot a következő indokkal:
 : ''$2''
 Kérlek erősítsd meg, hogy tényleg újra akarod-e írni a lapot.",
-'confirmrecreate-noreason' => '[[User:$1|$1]] ([[User talk:$1|vita]]) törölte ezt a lapot, miután elkezdtél szerkeszteni. Erősítsd meg, hogy tényleg ismét létre szeretnéd hozni a lapot.',
+'confirmrecreate-noreason' => '[[wiki_user:$1|$1]] ([[wiki_user talk:$1|vita]]) törölte ezt a lapot, miután elkezdtél szerkeszteni. Erősítsd meg, hogy tényleg ismét létre szeretnéd hozni a lapot.',
 'recreate' => 'Újraírás',
 
 # action=purge
@@ -3776,7 +3776,7 @@ minden egyes sor egy figyelt lap címe. Ha kész vagy, kattints a lista alatt ta
 'watchlisttools-raw' => 'A nyers figyelőlista szerkesztése',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|vita]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|vita]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Ismeretlen tag kiterjesztés: $1',
@@ -3842,7 +3842,7 @@ A képek teljes méretben jelennek meg, más fájltípusok közvetlenül a hozz�
 'specialpages-group-login' => 'Bejelentkezés / fiók létrehozása',
 'specialpages-group-changes' => 'Friss változások, naplók',
 'specialpages-group-media' => 'Médiafájlok, feltöltések',
-'specialpages-group-users' => 'Szerkesztők és jogaik',
+'specialpages-group-wiki_users' => 'Szerkesztők és jogaik',
 'specialpages-group-highuse' => 'Gyakran használt lapok',
 'specialpages-group-pages' => 'Listák',
 'specialpages-group-pagetools' => 'Eszközök',
@@ -3940,11 +3940,11 @@ A képek teljes méretben jelennek meg, más fájltípusok közvetlenül a hozz�
 'logentry-move-move_redir-noredirect' => '$1 átnevezte a(z) $3 lapot $4 lapra az átirányítást felülírva, átirányítás nélkül',
 'logentry-patrol-patrol' => '$1 a(z) $3 lap $4 változatát ellenőrzöttnek jelölte',
 'logentry-patrol-patrol-auto' => '$1 a(z) $3 lap $4 változatát automatikusan ellenőrzöttnek jelölte',
-'logentry-newusers-newusers' => '$1 felhasználói fiók létrehozva',
-'logentry-newusers-create' => '$1 felhasználói fiók létrehozva',
-'logentry-newusers-create2' => '$1 létrehozta $3 felhasználói fiókját',
-'logentry-newusers-autocreate' => '$1 fiók automatikusan létrehozva',
-'newuserlog-byemail' => 'a jelszót kiküldtük a megadott e-mail címre',
+'logentry-newwiki_users-newwiki_users' => '$1 felhasználói fiók létrehozva',
+'logentry-newwiki_users-create' => '$1 felhasználói fiók létrehozva',
+'logentry-newwiki_users-create2' => '$1 létrehozta $3 felhasználói fiókját',
+'logentry-newwiki_users-autocreate' => '$1 fiók automatikusan létrehozva',
+'newwiki_userlog-byemail' => 'a jelszót kiküldtük a megadott e-mail címre',
 
 # Feedback
 'feedback-bugornote' => 'Ha kész technikai problémát részletesen leírni, akkor kérjük [$1 jelents egy hibát]. Egyébként használd az alábbi űrlapot. A hozzászólásod a „[$3 $2]” laphoz kerül felvételre, a szerkesztő neveddel és böngésződ típusával együtt.',

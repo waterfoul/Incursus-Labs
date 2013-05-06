@@ -1,7 +1,7 @@
 /**
  * CSS in this file is used by *all* skins (that have any CSS at all). Be
  * careful what you put in here, since what looks good in one skin may not in
- * another, but don't ignore the poor pre-Monobook users either.
+ * another, but don't ignore the poor pre-Monobook wiki_users either.
  */
 
 /* GENERAL CLASSES FOR DIRECTIONALITY SUPPORT */
@@ -31,7 +31,7 @@
 	direction: rtl;
 }
 
-/* Input types that should follow user direction, like buttons */
+/* Input types that should follow wiki_user direction, like buttons */
 /* TODO: What about buttons in wikipage content ? */
 input[type="submit"],
 input[type="button"],
@@ -81,7 +81,7 @@ acronym,
 	font-style: italic;
 }
 
-/* Comment and username portions of RC entries */
+/* Comment and wiki_username portions of RC entries */
 span.comment {
 	font-style: italic;
 }
@@ -122,7 +122,7 @@ span.texhtml {
 }
 
 /* Edit section links */
-/* Correct directionality when page dir is different from site/user dir */
+/* Correct directionality when page dir is different from site/wiki_user dir */
 /* @noflip */
 .mw-content-ltr .editsection,
 .mw-content-rtl .mw-content-ltr .editsection {
@@ -278,7 +278,7 @@ input#wpSummary {
  */
 #catlinks {
 	/**
-	 * Overrides text justification (user preference)
+	 * Overrides text justification (wiki_user preference)
 	 * See bug 31990
 	 */
 	text-align: left;
@@ -385,7 +385,7 @@ table.os-suggest-results {
 .autocomment {
 	color: gray;
 }
-#pagehistory .history-user {
+#pagehistory .history-wiki_user {
 	margin-left: 0.4em;
 	margin-right: 0.2em;
 }
@@ -709,7 +709,7 @@ table.mw_metadata ul.metadata-langlist {
 	margin: 0;
 }
 
-/* Correct directionality when page dir is different from site/user dir */
+/* Correct directionality when page dir is different from site/wiki_user dir */
 .mw-content-ltr ul,
 .mw-content-rtl .mw-content-ltr ul {
 	/* @noflip */
@@ -887,7 +887,7 @@ ol:lang(or) li {
 	margin: .3em 0;
 }
 
-/* Correct directionality when page dir is different from site/user dir */
+/* Correct directionality when page dir is different from site/wiki_user dir */
 /* @noflip */ .mw-content-ltr .toc ul,
 .mw-content-ltr #toc ul,
 .mw-content-rtl .mw-content-ltr .toc ul,
@@ -977,13 +977,13 @@ ol:lang(or) li {
 #mw-clearyourcache,
 #mw-sitecsspreview,
 #mw-sitejspreview,
-#mw-usercsspreview,
-#mw-userjspreview {
+#mw-wiki_usercsspreview,
+#mw-wiki_userjspreview {
 	direction: ltr;
 	unicode-bidi: embed;
 }
 
-/* Correct user & content directionality when viewing a diff */
+/* Correct wiki_user & content directionality when viewing a diff */
 .diff-currentversion-title,
 .diff {
 	direction: ltr;
@@ -1057,8 +1057,8 @@ table.floatleft {
 }
 
 .editsection, .toctoggle {
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    -moz-wiki_user-select: none;
+    -webkit-wiki_user-select: none;
+    -ms-wiki_user-select: none;
+    wiki_user-select: none;
 }

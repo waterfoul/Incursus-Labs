@@ -71,8 +71,8 @@ class CompareParsers extends DumpIterator {
 			}
 		}
 
-		$user = new User();
-		$this->options = ParserOptions::newFromUser( $user );
+		$wiki_user = new wiki_user();
+		$this->options = ParserOptions::newFromwiki_user( $wiki_user );
 
 		if ( $this->hasOption( 'tidy' ) ) {
 			global $wgUseTidy;

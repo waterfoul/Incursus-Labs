@@ -45,15 +45,15 @@ function haclAutocomplete($t, $n, $limit = 11, $checkbox_prefix = false)
     if (!$limit)
         $limit = 11;
     $a = array();
-    $dbr = wfGetDB(DB_SLAVE);
-    // Users
-    if ($t == 'user')
+    r = wfGetDB(DB_SLAVE);
+    // wiki_users
+    if ($t == 'wiki_user')
     {
-        $r = $dbr->select(
-            'user', 'user_name, user_real_name',
-            array('user_name LIKE '.$dbr->addQuotes('%'.$n.'%').' OR user_real_name LIKE '.$dbr->addQuotes('%'.$n.'%')),
+        $r = r->select(
+            'wiki_user', 'wiki_user_name, wiki_user_real_name',
+            array('wiki_user_name LIKE '.r->addQuotes('%'.$n.'%').' OR wiki_user_real_name LIKE '.r->addQuotes('%'.$n.'%')),
             __METHOD__,
-            array('ORDER BY' => 'user_name', 'LIMIT' => $limit)
+            array('ORDER BY' => 'wiki_user_name', 'LIMIT' => $limit)
         );
         while ($row = $r->fetchRow())
             $a[] = array($row[1] ? $row[0] . ' (' . $row[1] . ')' : $row[0], $row[0]);
@@ -87,8 +87,8 @@ function haclAutocomplete($t, $n, $limit = 11, $checkbox_prefix = false)
         }
         haclfRestoreTitlePatch($etc);
         // Select page titles
-        $where[] = 'page_title LIKE '.$dbr->addQuotes($n.'%');
-        $r = $dbr->select(
+        $where[] = 'page_title LIKE '.r->addQuotes($n.'%');
+        $r = r->select(
             'page', 'page_title, page_namespace',
             $where, __METHOD__,
             array('ORDER BY' => 'page_namespace, page_title', 'LIMIT' => $limit)
@@ -97,7 +97,7 @@ function haclAutocomplete($t, $n, $limit = 11, $checkbox_prefix = false)
         {
             $title = Title::newFromText($row[0], $row[1]);
             // Filter unreadable
-            if ($title->userCanRead())
+            if ($title->wiki_userCanRead())
             {
                 $title = $title->getPrefixedText();
                 $a[] = array($title, $title);
@@ -137,9 +137,9 @@ function haclAutocomplete($t, $n, $limit = 11, $checkbox_prefix = false)
         $ip = 'ti_';
         $where = array(
             'page_namespace' => NS_CATEGORY,
-            'page_title LIKE '.$dbr->addQuotes(str_replace(' ', '_', $n).'%')
+            'page_title LIKE '.r->addQuotes(str_replace(' ', '_', $n).'%')
         );
-        $r = $dbr->select(
+        $r = r->select(
             'page', 'page_title',
             $where, __METHOD__,
             array('ORDER BY' => 'page_title', 'LIMIT' => $limit)
@@ -148,7 +148,7 @@ function haclAutocomplete($t, $n, $limit = 11, $checkbox_prefix = false)
         {
             $title = Title::newFromText($row[0], NS_CATEGORY);
             // Filter unreadable
-            if ($title->userCanRead())
+            if ($title->wiki_userCanRead())
             {
                 $title = $title->getText();
                 $a[] = array($title, $title);
@@ -229,8 +229,8 @@ function haclGroupClosure($groups, $predefined = '')
         {
             $m = IACLStorage::get('Groups')->getGroupMembersRecursive($i);
             $members[$k] = array();
-            foreach (IACLStorage::get('Util')->getUsers(array_keys($m['user'])) as $u)
-                $members[$k][] = 'User:'.$u->user_name;
+            foreach (IACLStorage::get('Util')->getwiki_users(array_keys($m['wiki_user'])) as $u)
+                $members[$k][] = 'wiki_user:'.$u->wiki_user_name;
             foreach (IACLStorage::get('Groups')->getGroupsByIds(array_keys($m['group'])) as $g)
                 $members[$k][] = $g->group_name;
             sort($members[$k]);

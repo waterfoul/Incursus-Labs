@@ -67,7 +67,7 @@ class RunJobs extends Maintenance {
 		$startTime = time();
 		$type = $this->getOption( 'type', false );
 		$wgTitle = Title::newFromText( 'RunJobs.php' );
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 		$n = 0;
 
 		if ( $type === false ) {
@@ -76,7 +76,7 @@ class RunJobs extends Maintenance {
 			$conds = array( 'job_cmd' => $type );
 		}
 
-		while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
+		while ( w->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
 			$offset = 0;
 			for ( ; ; ) {
 				$job = !$type ? Job::pop( $offset ) : Job::pop_type( $type );

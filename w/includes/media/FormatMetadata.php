@@ -34,7 +34,7 @@
  * can be the Exif ImageDescription, or it could be the iptc-iim caption
  * property, or it could be the xmp dc:description property. This
  * is because these messages should be independent of how the data is
- * stored, sine the user doesn't care if the description is stored in xmp,
+ * stored, sine the wiki_user doesn't care if the description is stored in xmp,
  * exif, etc only that its a description. (Additionally many of these properties
  * are merged together following the MWG standard, such that for example,
  * exif properties override XMP properties that mean the same thing if
@@ -48,7 +48,7 @@
 class FormatMetadata {
 
 	/**
-	 * Numbers given by Exif user agents are often magical, that is they
+	 * Numbers given by Exif wiki_user agents are often magical, that is they
 	 * should be replaced by a detailed explanation depending on their
 	 * value which most of the time are plain integers. This function
 	 * formats Exif (and other metadata) values into human readable form.
@@ -106,7 +106,7 @@ class FormatMetadata {
 
 				try {
 					$time = wfTimestamp( TS_MW, '1971:01:01 ' . $tags[$tag] );
-					// the 1971:01:01 is just a placeholder, and not shown to user.
+					// the 1971:01:01 is just a placeholder, and not shown to wiki_user.
 					if ( $time && intval( $time ) > 0 ) {
 						$tags[$tag] = $wgLang->time( $time );
 					}
@@ -676,7 +676,7 @@ class FormatMetadata {
 					break;
 				case 'Urgency':
 					// 1-8 with 1 being highest, 5 normal
-					// 0 is reserved, and 9 is 'user-defined'.
+					// 0 is reserved, and 9 is 'wiki_user-defined'.
 					$urgency = '';
 					if ( $val == 0 || $val == 9 ) {
 						$urgency = 'other';

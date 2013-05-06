@@ -53,15 +53,15 @@ class PurgeAction extends FormAction {
 
 	/**
 	 * purge is slightly weird because it can be either formed or formless depending
-	 * on user permissions
+	 * on wiki_user permissions
 	 */
 	public function show() {
 		$this->setHeaders();
 
 		// This will throw exceptions if there's a problem
-		$this->checkCanExecute( $this->getUser() );
+		$this->checkCanExecute( $this->getwiki_user() );
 
-		if ( $this->getUser()->isAllowed( 'purge' ) ) {
+		if ( $this->getwiki_user()->isAllowed( 'purge' ) ) {
 			$this->redirectParams = wfArrayToCGI( array_diff_key(
 				$this->getRequest()->getQueryValues(),
 				array( 'title' => null, 'action' => null )

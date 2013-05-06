@@ -1,6 +1,6 @@
 <?php
 /**
- * Resource loader module for user customizations.
+ * Resource loader module for wiki_user customizations.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
  */
 
 /**
- * Module for user customizations
+ * Module for wiki_user customizations
  */
 class ResourceLoaderUserGroupsModule extends ResourceLoaderWikiModule {
 
@@ -33,26 +33,26 @@ class ResourceLoaderUserGroupsModule extends ResourceLoaderWikiModule {
 	 * @return array
 	 */
 	protected function getPages( ResourceLoaderContext $context ) {
-		global $wgUser;
+		global $wgwiki_user;
 
-		$userName = $context->getUser();
-		if ( $userName === null ) {
+		$wiki_userName = $context->getwiki_user();
+		if ( $wiki_userName === null ) {
 			return array();
 		}
 
-		// Use $wgUser is possible; allows to skip a lot of code
-		if ( is_object( $wgUser ) && $wgUser->getName() == $userName ) {
-			$user = $wgUser;
+		// Use $wgwiki_user is possible; allows to skip a lot of code
+		if ( is_object( $wgwiki_user ) && $wgwiki_user->getName() == $wiki_userName ) {
+			$wiki_user = $wgwiki_user;
 		} else {
-			$user = User::newFromName( $userName );
-			if ( !$user instanceof User ) {
+			$wiki_user = wiki_user::newFromName( $wiki_userName );
+			if ( !$wiki_user instanceof wiki_user ) {
 				return array();
 			}
 		}
 
 		$pages = array();
-		foreach( $user->getEffectiveGroups() as $group ) {
-			if ( in_array( $group, array( '*', 'user' ) ) ) {
+		foreach( $wiki_user->getEffectiveGroups() as $group ) {
+			if ( in_array( $group, array( '*', 'wiki_user' ) ) ) {
 				continue;
 			}
 			$pages["MediaWiki:Group-$group.js"] = array( 'type' => 'script' );
@@ -67,6 +67,6 @@ class ResourceLoaderUserGroupsModule extends ResourceLoaderWikiModule {
 	 * @return string
 	 */
 	public function getGroup() {
-		return 'user';
+		return 'wiki_user';
 	}
 }

@@ -16,10 +16,10 @@
 $fallback = 'zh-hans';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-norollbackdiff' => '进行回退后略过差异比较',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'portal' => '社区入口',
 
 # Edit pages

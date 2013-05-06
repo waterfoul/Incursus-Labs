@@ -36,7 +36,7 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 		parent::__construct( $query, $moduleName, 'rc' );
 	}
 
-	private $fld_comment = false, $fld_parsedcomment = false, $fld_user = false, $fld_userid = false,
+	private $fld_comment = false, $fld_parsedcomment = false, $fld_wiki_user = false, $fld_wiki_userid = false,
 			$fld_flags = false, $fld_timestamp = false, $fld_title = false, $fld_ids = false,
 			$fld_sizes = false, $fld_redirect = false, $fld_patrolled = false, $fld_loginfo = false,
 			$fld_tags = false, $token = array();
@@ -74,27 +74,27 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 	 * @return bool|String
 	 */
 	public static function getPatrolToken( $pageid, $title, $rc = null ) {
-		global $wgUser;
+		global $wgwiki_user;
 
-		$validTokenUser = false;
+		$validTokenwiki_user = false;
 
 		if ( $rc ) {
-			if ( ( $wgUser->useRCPatrol() && $rc->getAttribute( 'rc_type' ) == RC_EDIT ) ||
-				( $wgUser->useNPPatrol() && $rc->getAttribute( 'rc_type' ) == RC_NEW ) )
+			if ( ( $wgwiki_user->useRCPatrol() && $rc->getAttribute( 'rc_type' ) == RC_EDIT ) ||
+				( $wgwiki_user->useNPPatrol() && $rc->getAttribute( 'rc_type' ) == RC_NEW ) )
 			{
-				$validTokenUser = true;
+				$validTokenwiki_user = true;
 			}
 		} else {
-			if ( $wgUser->useRCPatrol() || $wgUser->useNPPatrol() ) {
-				$validTokenUser = true;
+			if ( $wgwiki_user->useRCPatrol() || $wgwiki_user->useNPPatrol() ) {
+				$validTokenwiki_user = true;
 			}
 		}
 
-		if ( $validTokenUser ) {
+		if ( $validTokenwiki_user ) {
 			// The patrol token is always the same, let's exploit that
 			static $cachedPatrolToken = null;
 			if ( is_null( $cachedPatrolToken ) ) {
-				$cachedPatrolToken = $wgUser->getEditToken( 'patrol' );
+				$cachedPatrolToken = $wgwiki_user->getEditToken( 'patrol' );
 			}
 			return $cachedPatrolToken;
 		} else {
@@ -110,8 +110,8 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 	public function initProperties( $prop ) {
 		$this->fld_comment = isset( $prop['comment'] );
 		$this->fld_parsedcomment = isset( $prop['parsedcomment'] );
-		$this->fld_user = isset( $prop['user'] );
-		$this->fld_userid = isset( $prop['userid'] );
+		$this->fld_wiki_user = isset( $prop['wiki_user'] );
+		$this->fld_wiki_userid = isset( $prop['wiki_userid'] );
 		$this->fld_flags = isset( $prop['flags'] );
 		$this->fld_timestamp = isset( $prop['timestamp'] );
 		$this->fld_title = isset( $prop['title'] );
@@ -137,7 +137,7 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 	 * @param $resultPageSet ApiPageSet
 	 */
 	public function run( $resultPageSet = null ) {
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		/* Get the parameters of the request. */
 		$params = $this->extractRequestParams();
 
@@ -171,7 +171,7 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 
 			// Check permissions
 			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
-				if ( !$user->useRCPatrol() && !$user->useNPPatrol() ) {
+				if ( !$wiki_user->useRCPatrol() && !$wiki_user->useNPPatrol() ) {
 					$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
 				}
 			}
@@ -181,8 +181,8 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 			$this->addWhereIf( 'rc_minor != 0', isset( $show['minor'] ) );
 			$this->addWhereIf( 'rc_bot = 0', isset( $show['!bot'] ) );
 			$this->addWhereIf( 'rc_bot != 0', isset( $show['bot'] ) );
-			$this->addWhereIf( 'rc_user = 0', isset( $show['anon'] ) );
-			$this->addWhereIf( 'rc_user != 0', isset( $show['!anon'] ) );
+			$this->addWhereIf( 'rc_wiki_user = 0', isset( $show['anon'] ) );
+			$this->addWhereIf( 'rc_wiki_user != 0', isset( $show['!anon'] ) );
 			$this->addWhereIf( 'rc_patrolled = 0', isset( $show['!patrolled'] ) );
 			$this->addWhereIf( 'rc_patrolled != 0', isset( $show['patrolled'] ) );
 			$this->addWhereIf( 'page_is_redirect = 1', isset( $show['redirect'] ) );
@@ -191,20 +191,20 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 			$this->addWhereIf( 'page_is_redirect = 0 OR page_is_redirect IS NULL', isset( $show['!redirect'] ) );
 		}
 
-		if ( !is_null( $params['user'] ) && !is_null( $params['excludeuser'] ) ) {
-			$this->dieUsage( 'user and excludeuser cannot be used together', 'user-excludeuser' );
+		if ( !is_null( $params['wiki_user'] ) && !is_null( $params['excludewiki_user'] ) ) {
+			$this->dieUsage( 'wiki_user and excludewiki_user cannot be used together', 'wiki_user-excludewiki_user' );
 		}
 
-		if ( !is_null( $params['user'] ) ) {
-			$this->addWhereFld( 'rc_user_text', $params['user'] );
-			$index['recentchanges'] = 'rc_user_text';
+		if ( !is_null( $params['wiki_user'] ) ) {
+			$this->addWhereFld( 'rc_wiki_user_text', $params['wiki_user'] );
+			$index['recentchanges'] = 'rc_wiki_user_text';
 		}
 
-		if ( !is_null( $params['excludeuser'] ) ) {
-			// We don't use the rc_user_text index here because
-			// * it would require us to sort by rc_user_text before rc_timestamp
+		if ( !is_null( $params['excludewiki_user'] ) ) {
+			// We don't use the rc_wiki_user_text index here because
+			// * it would require us to sort by rc_wiki_user_text before rc_timestamp
 			// * the != condition doesn't throw out too many rows anyway
-			$this->addWhere( 'rc_user_text != ' . $this->getDB()->addQuotes( $params['excludeuser'] ) );
+			$this->addWhere( 'rc_wiki_user_text != ' . $this->getDB()->addQuotes( $params['excludewiki_user'] ) );
 		}
 
 		/* Add the fields we're concerned with to our query. */
@@ -227,15 +227,15 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 			/* Set up internal members based upon params. */
 			$this->initProperties( $prop );
 
-			if ( $this->fld_patrolled && !$user->useRCPatrol() && !$user->useNPPatrol() ) {
+			if ( $this->fld_patrolled && !$wiki_user->useRCPatrol() && !$wiki_user->useNPPatrol() ) {
 				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
 			}
 
 			/* Add fields to our query if they are specified as a needed parameter. */
 			$this->addFieldsIf( array( 'rc_id', 'rc_this_oldid', 'rc_last_oldid' ), $this->fld_ids );
 			$this->addFieldsIf( 'rc_comment', $this->fld_comment || $this->fld_parsedcomment );
-			$this->addFieldsIf( 'rc_user', $this->fld_user );
-			$this->addFieldsIf( 'rc_user_text', $this->fld_user || $this->fld_userid );
+			$this->addFieldsIf( 'rc_wiki_user', $this->fld_wiki_user );
+			$this->addFieldsIf( 'rc_wiki_user_text', $this->fld_wiki_user || $this->fld_wiki_userid );
 			$this->addFieldsIf( array( 'rc_minor', 'rc_type', 'rc_bot' ) , $this->fld_flags );
 			$this->addFieldsIf( array( 'rc_old_len', 'rc_new_len' ), $this->fld_sizes );
 			$this->addFieldsIf( 'rc_patrolled', $this->fld_patrolled );
@@ -372,18 +372,18 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 			$vals['old_revid'] = intval( $row->rc_last_oldid );
 		}
 
-		/* Add user data and 'anon' flag, if use is anonymous. */
-		if ( $this->fld_user || $this->fld_userid ) {
+		/* Add wiki_user data and 'anon' flag, if use is anonymous. */
+		if ( $this->fld_wiki_user || $this->fld_wiki_userid ) {
 
-			if ( $this->fld_user ) {
-				$vals['user'] = $row->rc_user_text;
+			if ( $this->fld_wiki_user ) {
+				$vals['wiki_user'] = $row->rc_wiki_user_text;
 			}
 
-			if ( $this->fld_userid ) {
-				$vals['userid'] = $row->rc_user;
+			if ( $this->fld_wiki_userid ) {
+				$vals['wiki_userid'] = $row->rc_wiki_user;
 			}
 
-			if ( !$row->rc_user ) {
+			if ( !$row->rc_wiki_user ) {
 				$vals['anon'] = '';
 			}
 		}
@@ -460,10 +460,10 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 		if ( !is_null( $this->token ) ) {
 			$tokenFunctions = $this->getTokenFunctions();
 			foreach ( $this->token as $t ) {
-				$val = call_user_func( $tokenFunctions[$t], $row->rc_cur_id,
+				$val = call_wiki_user_func( $tokenFunctions[$t], $row->rc_cur_id,
 					$title, RecentChange::newFromRow( $row ) );
 				if ( $val === false ) {
-					$this->setWarning( "Action '$t' is not allowed for the current user" );
+					$this->setWarning( "Action '$t' is not allowed for the current wiki_user" );
 				} else {
 					$vals[$t . 'token'] = $val;
 				}
@@ -504,7 +504,7 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 		}
 		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
 			// formatComment() calls wfMessage() among other things
-			return 'anon-public-user-private';
+			return 'anon-public-wiki_user-private';
 		}
 		return 'public';
 	}
@@ -528,19 +528,19 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_ISMULTI => true,
 				ApiBase::PARAM_TYPE => 'namespace'
 			),
-			'user' => array(
-				ApiBase::PARAM_TYPE => 'user'
+			'wiki_user' => array(
+				ApiBase::PARAM_TYPE => 'wiki_user'
 			),
-			'excludeuser' => array(
-				ApiBase::PARAM_TYPE => 'user'
+			'excludewiki_user' => array(
+				ApiBase::PARAM_TYPE => 'wiki_user'
 			),
 			'tag' => null,
 			'prop' => array(
 				ApiBase::PARAM_ISMULTI => true,
 				ApiBase::PARAM_DFLT => 'title|timestamp|ids',
 				ApiBase::PARAM_TYPE => array(
-					'user',
-					'userid',
+					'wiki_user',
+					'wiki_userid',
 					'comment',
 					'parsedcomment',
 					'flags',
@@ -599,12 +599,12 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 			'end' => 'The timestamp to end enumerating',
 			'dir' => $this->getDirectionDescription( $p ),
 			'namespace' => 'Filter log entries to only this namespace(s)',
-			'user' => 'Only list changes by this user',
-			'excludeuser' => 'Don\'t list changes by this user',
+			'wiki_user' => 'Only list changes by this wiki_user',
+			'excludewiki_user' => 'Don\'t list changes by this wiki_user',
 			'prop' => array(
 				'Include additional pieces of information',
-				' user           - Adds the user responsible for the edit and tags if they are an IP',
-				' userid         - Adds the user id responsible for the edit',
+				' wiki_user           - Adds the wiki_user responsible for the edit and tags if they are an IP',
+				' wiki_userid         - Adds the wiki_user id responsible for the edit',
 				' comment        - Adds the comment for the edit',
 				' parsedcomment  - Adds the parsed comment for the edit',
 				' flags          - Adds flags for the edit',
@@ -620,7 +620,7 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 			'token' => 'Which tokens to obtain for each change',
 			'show' => array(
 				'Show only items that meet this criteria.',
-				"For example, to see only minor edits done by logged-in users, set {$p}show=minor|!anon"
+				"For example, to see only minor edits done by logged-in wiki_users, set {$p}show=minor|!anon"
 			),
 			'type' => 'Which types of changes to show',
 			'limit' => 'How many total changes to return',
@@ -661,12 +661,12 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 				'revid' => 'integer',
 				'old_revid' => 'integer'
 			),
-			'user' => array(
-				'user' => 'string',
+			'wiki_user' => array(
+				'wiki_user' => 'string',
 				'anon' => 'boolean'
 			),
-			'userid' => array(
-				'userid' => 'integer',
+			'wiki_userid' => array(
+				'wiki_userid' => 'integer',
 				'anon' => 'boolean'
 			),
 			'flags' => array(
@@ -728,7 +728,7 @@ class ApiQueryRecentChanges extends ApiQueryGeneratorBase {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'show' ),
 			array( 'code' => 'permissiondenied', 'info' => 'You need the patrol right to request the patrolled flag' ),
-			array( 'code' => 'user-excludeuser', 'info' => 'user and excludeuser cannot be used together' ),
+			array( 'code' => 'wiki_user-excludewiki_user', 'info' => 'wiki_user and excludewiki_user cannot be used together' ),
 		) );
 	}
 

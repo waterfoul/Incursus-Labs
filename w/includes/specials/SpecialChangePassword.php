@@ -22,7 +22,7 @@
  */
 
 /**
- * Let users recover their password.
+ * Let wiki_users recover their password.
  *
  * @ingroup SpecialPage
  */
@@ -39,17 +39,17 @@ class SpecialChangePassword extends UnlistedSpecialPage {
 
 		$this->setHeaders();
 		$this->outputHeader();
-		$this->getOutput()->disallowUserJs();
+		$this->getOutput()->disallowwiki_userJs();
 
 		$request = $this->getRequest();
-		$this->mUserName = trim( $request->getVal( 'wpName' ) );
+		$this->mwiki_userName = trim( $request->getVal( 'wpName' ) );
 		$this->mOldpass = $request->getVal( 'wpPassword' );
 		$this->mNewpass = $request->getVal( 'wpNewPassword' );
 		$this->mRetype = $request->getVal( 'wpRetype' );
 		$this->mDomain = $request->getVal( 'wpDomain' );
 
-		$user = $this->getUser();
-		if( !$request->wasPosted() && !$user->isLoggedIn() ) {
+		$wiki_user = $this->getwiki_user();
+		if( !$request->wasPosted() && !$wiki_user->isLoggedIn() ) {
 			$this->error( $this->msg( 'resetpass-no-info' )->text() );
 			return;
 		}
@@ -61,7 +61,7 @@ class SpecialChangePassword extends UnlistedSpecialPage {
 
 		$this->checkReadOnly();
 
-		if( $request->wasPosted() && $user->matchEditToken( $request->getVal( 'token' ) ) ) {
+		if( $request->wasPosted() && $wiki_user->matchEditToken( $request->getVal( 'token' ) ) ) {
 			try {
 				$this->mDomain = $wgAuth->getDomain();
 				if( !$wgAuth->allowPasswordChange() ) {
@@ -71,12 +71,12 @@ class SpecialChangePassword extends UnlistedSpecialPage {
 
 				$this->attemptReset( $this->mNewpass, $this->mRetype );
 				$this->getOutput()->addWikiMsg( 'resetpass_success' );
-				if( !$user->isLoggedIn() ) {
+				if( !$wiki_user->isLoggedIn() ) {
 					LoginForm::setLoginToken();
 					$token = LoginForm::getLoginToken();
 					$data = array(
 						'action'       => 'submitlogin',
-						'wpName'       => $this->mUserName,
+						'wpName'       => $this->mwiki_userName,
 						'wpDomain'     => $this->mDomain,
 						'wpLoginToken' => $token,
 						'wpPassword'   => $this->mNewpass,
@@ -112,12 +112,12 @@ class SpecialChangePassword extends UnlistedSpecialPage {
 	function showForm() {
 		global $wgCookieExpiration;
 
-		$user = $this->getUser();
-		if ( !$this->mUserName ) {
-			$this->mUserName = $user->getName();
+		$wiki_user = $this->getwiki_user();
+		if ( !$this->mwiki_userName ) {
+			$this->mwiki_userName = $wiki_user->getName();
 		}
 		$rememberMe = '';
-		if ( !$user->isLoggedIn() ) {
+		if ( !$wiki_user->isLoggedIn() ) {
 			$rememberMe = '<tr>' .
 				'<td></td>' .
 				'<td class="mw-input">' .
@@ -136,7 +136,7 @@ class SpecialChangePassword extends UnlistedSpecialPage {
 		$extraFields = array();
 		wfRunHooks( 'ChangePasswordForm', array( &$extraFields ) );
 		$prettyFields = array(
-					array( 'wpName', 'username', 'text', $this->mUserName ),
+					array( 'wpName', 'wiki_username', 'text', $this->mwiki_userName ),
 					array( 'wpPassword', $oldpassMsg, 'password', $this->mOldpass ),
 					array( 'wpNewPassword', 'newpassword', 'password', null ),
 					array( 'wpRetype', 'retypenew', 'password', null ),
@@ -149,8 +149,8 @@ class SpecialChangePassword extends UnlistedSpecialPage {
 					'method' => 'post',
 					'action' => $this->getTitle()->getLocalUrl(),
 					'id' => 'mw-resetpass-form' ) ) . "\n" .
-			Html::hidden( 'token', $user->getEditToken() ) . "\n" .
-			Html::hidden( 'wpName', $this->mUserName ) . "\n" .
+			Html::hidden( 'token', $wiki_user->getEditToken() ) . "\n" .
+			Html::hidden( 'wpName', $this->mwiki_userName ) . "\n" .
 			Html::hidden( 'wpDomain', $this->mDomain ) . "\n" .
 			Html::hidden( 'returnto', $this->getRequest()->getVal( 'returnto' ) ) . "\n" .
 			$this->msg( 'resetpass_text' )->parseAsBlock() . "\n" .
@@ -180,7 +180,7 @@ class SpecialChangePassword extends UnlistedSpecialPage {
 				$attribs = array( 'id' => $name );
 				if ( $name == 'wpNewPassword' || $name == 'wpRetype' ) {
 					$attribs = array_merge( $attribs,
-						User::passwordChangeInputAttribs() );
+						wiki_user::passwordChangeInputAttribs() );
 				}
 				if ( $name == 'wpPassword' ) {
 					$attribs[] = 'autofocus';
@@ -206,41 +206,41 @@ class SpecialChangePassword extends UnlistedSpecialPage {
 	 * @throws PasswordError when cannot set the new password because requirements not met.
 	 */
 	protected function attemptReset( $newpass, $retype ) {
-		$user = User::newFromName( $this->mUserName );
-		if( !$user || $user->isAnon() ) {
-			throw new PasswordError( $this->msg( 'nosuchusershort', $this->mUserName )->text() );
+		$wiki_user = wiki_user::newFromName( $this->mwiki_userName );
+		if( !$wiki_user || $wiki_user->isAnon() ) {
+			throw new PasswordError( $this->msg( 'nosuchwiki_usershort', $this->mwiki_userName )->text() );
 		}
 
 		if( $newpass !== $retype ) {
-			wfRunHooks( 'PrefsPasswordAudit', array( $user, $newpass, 'badretype' ) );
+			wfRunHooks( 'PrefsPasswordAudit', array( $wiki_user, $newpass, 'badretype' ) );
 			throw new PasswordError( $this->msg( 'badretype' )->text() );
 		}
 
-		$throttleCount = LoginForm::incLoginThrottle( $this->mUserName );
+		$throttleCount = LoginForm::incLoginThrottle( $this->mwiki_userName );
 		if ( $throttleCount === true ) {
 			throw new PasswordError( $this->msg( 'login-throttled' )->text() );
 		}
 
-		if( !$user->checkTemporaryPassword($this->mOldpass) && !$user->checkPassword($this->mOldpass) ) {
-			wfRunHooks( 'PrefsPasswordAudit', array( $user, $newpass, 'wrongpassword' ) );
+		if( !$wiki_user->checkTemporaryPassword($this->mOldpass) && !$wiki_user->checkPassword($this->mOldpass) ) {
+			wfRunHooks( 'PrefsPasswordAudit', array( $wiki_user, $newpass, 'wrongpassword' ) );
 			throw new PasswordError( $this->msg( 'resetpass-wrong-oldpass' )->text() );
 		}
 
 		// Please reset throttle for successful logins, thanks!
 		if ( $throttleCount ) {
-			LoginForm::clearLoginThrottle( $this->mUserName );
+			LoginForm::clearLoginThrottle( $this->mwiki_userName );
 		}
 
 		try {
-			$user->setPassword( $this->mNewpass );
-			wfRunHooks( 'PrefsPasswordAudit', array( $user, $newpass, 'success' ) );
+			$wiki_user->setPassword( $this->mNewpass );
+			wfRunHooks( 'PrefsPasswordAudit', array( $wiki_user, $newpass, 'success' ) );
 			$this->mNewpass = $this->mOldpass = $this->mRetypePass = '';
 		} catch( PasswordError $e ) {
-			wfRunHooks( 'PrefsPasswordAudit', array( $user, $newpass, 'error' ) );
+			wfRunHooks( 'PrefsPasswordAudit', array( $wiki_user, $newpass, 'error' ) );
 			throw new PasswordError( $e->getMessage() );
 		}
 
-		$user->setCookies();
-		$user->saveSettings();
+		$wiki_user->setCookies();
+		$wiki_user->saveSettings();
 	}
 }

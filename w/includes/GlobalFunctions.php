@@ -198,7 +198,7 @@ function wfArrayMerge( $array1/* ... */ ) {
 }
 
 /**
- * Merge arrays in the style of getUserPermissionsErrors, with duplicate removal
+ * Merge arrays in the style of getwiki_userPermissionsErrors, with duplicate removal
  * e.g.
  *	wfMergeErrorArrays(
  *		array( array( 'x' ) ),
@@ -571,7 +571,7 @@ function wfExpandUrl( $url, $defaultProto = PROTO_CURRENT ) {
  * if you need to edit part of a URL and put it back together.
  *
  * This is the basic structure used (brackets contain keys for $urlParts):
- * [scheme][delimiter][user]:[pass]@[host]:[port][path]?[query]#[fragment]
+ * [scheme][delimiter][wiki_user]:[pass]@[host]:[port][path]?[query]#[fragment]
  *
  * @todo Need to integrate this into wfExpandUrl (bug 32168)
  *
@@ -591,8 +591,8 @@ function wfAssembleUrl( $urlParts ) {
 	}
 
 	if ( isset( $urlParts['host'] ) ) {
-		if ( isset( $urlParts['user'] ) ) {
-			$result .= $urlParts['user'];
+		if ( isset( $urlParts['wiki_user'] ) ) {
+			$result .= $urlParts['wiki_user'];
 			if ( isset( $urlParts['pass'] ) ) {
 				$result .= ':' . $urlParts['pass'];
 			}
@@ -878,7 +878,7 @@ function wfMakeUrlIndexes( $url ) {
 	// Reconstruct the pseudo-URL
 	$prot = $bits['scheme'];
 	$index = $prot . $bits['delimiter'] . $reversedHost;
-	// Leave out user and password. Add the port, path, query and fragment
+	// Leave out wiki_user and password. Add the port, path, query and fragment
 	if ( isset( $bits['port'] ) ) {
 		$index .= ':' . $bits['port'];
 	}
@@ -1171,7 +1171,7 @@ function wfErrorLog( $text, $file ) {
  */
 function wfLogProfilingData() {
 	global $wgRequestTime, $wgDebugLogFile, $wgDebugRawPage, $wgRequest;
-	global $wgProfileLimit, $wgUser;
+	global $wgProfileLimit, $wgwiki_user;
 
 	$profiler = Profiler::instance();
 
@@ -1207,9 +1207,9 @@ function wfLogProfilingData() {
 	if ( $forward ) {
 		$forward = "\t(proxied via {$_SERVER['REMOTE_ADDR']}{$forward})";
 	}
-	// Don't load $wgUser at this late stage just for statistics purposes
-	// @todo FIXME: We can detect some anons even if it is not loaded. See User::getId()
-	if ( $wgUser->isItemLoaded( 'id' ) && $wgUser->isAnon() ) {
+	// Don't load $wgwiki_user at this late stage just for statistics purposes
+	// @todo FIXME: We can detect some anons even if it is not loaded. See wiki_user::getId()
+	if ( $wgwiki_user->isItemLoaded( 'id' ) && $wgwiki_user->isAnon() ) {
 		$forward .= ' anon';
 	}
 	$log = sprintf( "%s\t%04.3f\t%s\n",
@@ -1314,7 +1314,7 @@ function wfReadOnlyReason() {
  *                    it is a string but not a valid code then make a basic
  *                    language object
  *                  - a boolean: if it's false then use the global object for
- *                    the current user's language (as a fallback for the old parameter
+ *                    the current wiki_user's language (as a fallback for the old parameter
  *                    functionality), or if it is true then use global object
  *                    for the wiki's content language.
  * @return Language object
@@ -1336,7 +1336,7 @@ function wfGetLangObj( $langcode = false ) {
 
 	global $wgLang;
 	if( $langcode === false || $langcode === $wgLang->getCode() ) {
-		# $langcode is the language code of user language object.
+		# $langcode is the language code of wiki_user language object.
 		# or it was a boolean and value is false
 		return $wgLang;
 	}
@@ -1397,10 +1397,10 @@ function wfMessageFallback( /*...*/ ) {
 }
 
 /**
- * Get a message from anywhere, for the current user language.
+ * Get a message from anywhere, for the current wiki_user language.
  *
  * Use wfMsgForContent() instead if the message should NOT
- * change depending on the user preferences.
+ * change depending on the wiki_user preferences.
  *
  * @deprecated since 1.18
  *
@@ -1440,17 +1440,17 @@ function wfMsgNoTrans( $key ) {
  * set with $wgLanguageCode.
  *
  * Use this if the message should NOT change dependent on the
- * language set in the user's preferences. This is the case for
+ * language set in the wiki_user's preferences. This is the case for
  * most text written into logs, as well as link targets (such as
  * the name of the copyright policy page). Link titles, on the
  * other hand, should be shown in the UI language.
  *
- * Note that MediaWiki allows users to change the user interface
+ * Note that MediaWiki allows wiki_users to change the wiki_user interface
  * language in their preferences, but a single installation
  * typically only contains content in one language.
  *
  * Be wary of this distinction: If you use wfMsg() where you should
- * use wfMsgForContent(), a user of the software may have to
+ * use wfMsgForContent(), a wiki_user of the software may have to
  * customize potentially hundreds of messages in
  * order to, e.g., fix a link in every possible language.
  *
@@ -1502,7 +1502,7 @@ function wfMsgForContentNoTrans( $key ) {
  * @param $key String: key to get.
  * @param $args
  * @param $useDB Boolean
- * @param $forContent Mixed: Language code, or false for user lang, true for content lang.
+ * @param $forContent Mixed: Language code, or false for wiki_user lang, true for content lang.
  * @param $transform Boolean: Whether or not to transform the message.
  * @return String: the requested message.
  */
@@ -2019,7 +2019,7 @@ function wfClientAcceptsGzip( $force = false ) {
  * used in special pages
  *
  * @param $deflimit Int default limit if none supplied
- * @param $optionname String Name of a user preference to check against
+ * @param $optionname String Name of a wiki_user preference to check against
  * @return array
  *
  */
@@ -2138,7 +2138,7 @@ function wfHttpError( $code, $label, $desc ) {
 }
 
 /**
- * Clear away any user-level output buffers, discarding contents.
+ * Clear away any wiki_user-level output buffers, discarding contents.
  *
  * Suitable for 'starting afresh', for instance when streaming
  * relatively large amounts of data without buffering, or wanting to
@@ -3358,17 +3358,17 @@ function wfMemcKey( /*... */ ) {
 /**
  * Get a cache key for a foreign DB
  *
- * @param $db String
+ * @param  String
  * @param $prefix String
  * @param varargs String
  * @return String
  */
-function wfForeignMemcKey( $db, $prefix /*, ... */ ) {
+function wfForeignMemcKey( , $prefix /*, ... */ ) {
 	$args = array_slice( func_get_args(), 2 );
 	if ( $prefix ) {
-		$key = "$db-$prefix:" . implode( ':', $args );
+		$key = "-$prefix:" . implode( ':', $args );
 	} else {
-		$key = $db . ':' . implode( ':', $args );
+		$key =  . ':' . implode( ':', $args );
 	}
 	return $key;
 }
@@ -3406,7 +3406,7 @@ function wfSplitWikiID( $wiki ) {
 /**
  * Get a Database object.
  *
- * @param $db Integer: index of the connection to get. May be DB_MASTER for the
+ * @param  Integer: index of the connection to get. May be DB_MASTER for the
  *            master (for write queries), DB_SLAVE for potentially lagged read
  *            queries, or an integer >= 0 for a particular server.
  *
@@ -3425,8 +3425,8 @@ function wfSplitWikiID( $wiki ) {
  *
  * @return DatabaseBase
  */
-function &wfGetDB( $db, $groups = array(), $wiki = false ) {
-	return wfGetLB( $wiki )->getConnection( $db, $groups, $wiki );
+function &wfGetDB( , $groups = array(), $wiki = false ) {
+	return wfGetLB( $wiki )->getConnection( , $groups, $wiki );
 }
 
 /**
@@ -3461,7 +3461,7 @@ function &wfGetLBFactory() {
  *     ignoreRedirect: If true, do not follow file redirects
  *
  *     private:        If true, return restricted (deleted) files if the current
- *                     user is allowed to view them. Otherwise, such files will not
+ *                     wiki_user is allowed to view them. Otherwise, such files will not
  *                     be found.
  *
  *     bypassCache:    If true, do not use the process-local cache of File objects
@@ -3503,7 +3503,7 @@ function wfQueriesMustScale() {
 	return $wgMiserMode
 		|| ( SiteStats::pages() > 100000
 		&& SiteStats::edits() > 1000000
-		&& SiteStats::users() > 10000 );
+		&& SiteStats::wiki_users() > 10000 );
 }
 
 /**
@@ -3595,8 +3595,8 @@ function wfWaitForSlaves( $maxLag = false, $wiki = false ) {
 	// bug 27975 - Don't try to wait for slaves if there are none
 	// Prevents permission error when getting master position
 	if ( $lb->getServerCount() > 1 ) {
-		$dbw = $lb->getConnection( DB_MASTER );
-		$pos = $dbw->getMasterPos();
+		w = $lb->getConnection( DB_MASTER );
+		$pos = w->getMasterPos();
 		$lb->waitForAll( $pos );
 	}
 }

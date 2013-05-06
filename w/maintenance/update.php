@@ -103,9 +103,9 @@ class UpdateMediaWiki extends Maintenance {
 			wfCountdown( 5 );
 		}
 
-		# Attempt to connect to the database as a privileged user
+		# Attempt to connect to the database as a privileged wiki_user
 		# This will vomit up an error if there are permissions problems
-		$db = wfGetDB( DB_MASTER );
+		 = wfGetDB( DB_MASTER );
 
 		$this->output( "Going to run database updates for " . wfWikiID() . "\n" );
 		$this->output( "Depending on the size of your database this may take a while!\n" );
@@ -122,7 +122,7 @@ class UpdateMediaWiki extends Maintenance {
 			$updates[] = 'purge';
 		}
 
-		$updater = DatabaseUpdater::newForDb( $db, $shared, $this );
+		$updater = DatabaseUpdater::newForDb( , $shared, $this );
 		$updater->doUpdates( $updates );
 
 		foreach( $updater->getPostDatabaseUpdateMaintenance() as $maint ) {

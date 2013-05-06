@@ -36,7 +36,7 @@ class MwSql extends Maintenance {
 	}
 
 	public function execute() {
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 		if ( $this->hasArg() ) {
 			$fileName = $this->getArg();
 			$file = fopen( $fileName, 'r' );
@@ -44,7 +44,7 @@ class MwSql extends Maintenance {
 				$this->error( "Unable to open input file", true );
 			}
 
-			$error = $dbw->sourceStream( $file, false, array( $this, 'sqlPrintResult' ) );
+			$error = w->sourceStream( $file, false, array( $this, 'sqlPrintResult' ) );
 			if ( $error !== true ) {
 				$this->error( $error, true );
 			} else {
@@ -64,7 +64,7 @@ class MwSql extends Maintenance {
 
 		$wholeLine = '';
 		while ( ( $line = Maintenance::readconsole() ) !== false ) {
-			$done = $dbw->streamStatementEnd( $wholeLine, $line );
+			$done = w->streamStatementEnd( $wholeLine, $line );
 
 			$wholeLine .= $line;
 
@@ -76,8 +76,8 @@ class MwSql extends Maintenance {
 				readline_write_history( $historyFile );
 			}
 			try{
-				$res = $dbw->query( $wholeLine );
-				$this->sqlPrintResult( $res, $dbw );
+				$res = w->query( $wholeLine );
+				$this->sqlPrintResult( $res, w );
 				$wholeLine = '';
 			} catch (DBQueryError $e) {
 				$this->error( $e, true );
@@ -86,11 +86,11 @@ class MwSql extends Maintenance {
 	}
 
 	/**
-	 * Print the results, callback for $db->sourceStream()
+	 * Print the results, callback for ->sourceStream()
 	 * @param $res ResultWrapper The results object
-	 * @param $db DatabaseBase object
+	 * @param  DatabaseBase object
 	 */
-	public function sqlPrintResult( $res, $db ) {
+	public function sqlPrintResult( $res,  ) {
 		if ( !$res ) {
 			// Do nothing
 		} elseif ( is_object( $res ) && $res->numRows() ) {
@@ -98,7 +98,7 @@ class MwSql extends Maintenance {
 				$this->output( print_r( $row, true ) );
 			}
 		} else {
-			$affected = $db->affectedRows();
+			$affected = ->affectedRows();
 			$this->output( "Query OK, $affected row(s) affected\n" );
 		}
 	}

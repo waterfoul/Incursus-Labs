@@ -35,17 +35,17 @@ class SpecialWatchlist extends SpecialPage {
 	 * @param $par Parameter passed to the page
 	 */
 	function execute( $par ) {
-		global $wgRCShowWatchingUsers, $wgEnotifWatchlist, $wgShowUpdatedMarker;
+		global $wgRCShowWatchingwiki_users, $wgEnotifWatchlist, $wgShowUpdatedMarker;
 
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 		$output = $this->getOutput();
 
 		# Anons don't get a watchlist
-		if( $user->isAnon() ) {
+		if( $wiki_user->isAnon() ) {
 			$output->setPageTitle( $this->msg( 'watchnologin' ) );
 			$output->setRobotPolicy( 'noindex,nofollow' );
 			$llink = Linker::linkKnown(
-				SpecialPage::getTitleFor( 'Userlogin' ),
+				SpecialPage::getTitleFor( 'wiki_userlogin' ),
 				$this->msg( 'loginreqlink' )->escaped(),
 				array(),
 				array( 'returnto' => $this->getTitle()->getPrefixedText() )
@@ -55,20 +55,20 @@ class SpecialWatchlist extends SpecialPage {
 		}
 
 		// Add feed links
-		$wlToken = $user->getOption( 'watchlisttoken' );
+		$wlToken = $wiki_user->getOption( 'watchlisttoken' );
 		if ( !$wlToken ) {
 			$wlToken = MWCryptRand::generateHex( 40 );
-			$user->setOption( 'watchlisttoken', $wlToken );
-			$user->saveSettings();
+			$wiki_user->setOption( 'watchlisttoken', $wlToken );
+			$wiki_user->saveSettings();
 		}
 
 		$this->addFeedLinks( array( 'action' => 'feedwatchlist', 'allrev' => 'allrev',
-							'wlowner' => $user->getName(), 'wltoken' => $wlToken ) );
+							'wlowner' => $wiki_user->getName(), 'wltoken' => $wlToken ) );
 
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$output->addSubtitle( $this->msg( 'watchlistfor2', $user->getName()
+		$output->addSubtitle( $this->msg( 'watchlistfor2', $wiki_user->getName()
 			)->rawParams( SpecialEditWatchlist::buildTools( null ) ) );
 
 		$request = $this->getRequest();
@@ -99,13 +99,13 @@ class SpecialWatchlist extends SpecialPage {
 
 		// @TODO: use FormOptions!
 		$defaults = array(
-		/* float */ 'days'      => floatval( $user->getOption( 'watchlistdays' ) ), /* 3.0 or 0.5, watch further below */
-		/* bool  */ 'hideMinor' => (int)$user->getBoolOption( 'watchlisthideminor' ),
-		/* bool  */ 'hideBots'  => (int)$user->getBoolOption( 'watchlisthidebots' ),
-		/* bool  */ 'hideAnons' => (int)$user->getBoolOption( 'watchlisthideanons' ),
-		/* bool  */ 'hideLiu'   => (int)$user->getBoolOption( 'watchlisthideliu' ),
-		/* bool  */ 'hidePatrolled' => (int)$user->getBoolOption( 'watchlisthidepatrolled' ),
-		/* bool  */ 'hideOwn'   => (int)$user->getBoolOption( 'watchlisthideown' ),
+		/* float */ 'days'      => floatval( $wiki_user->getOption( 'watchlistdays' ) ), /* 3.0 or 0.5, watch further below */
+		/* bool  */ 'hideMinor' => (int)$wiki_user->getBoolOption( 'watchlisthideminor' ),
+		/* bool  */ 'hideBots'  => (int)$wiki_user->getBoolOption( 'watchlisthidebots' ),
+		/* bool  */ 'hideAnons' => (int)$wiki_user->getBoolOption( 'watchlisthideanons' ),
+		/* bool  */ 'hideLiu'   => (int)$wiki_user->getBoolOption( 'watchlisthideliu' ),
+		/* bool  */ 'hidePatrolled' => (int)$wiki_user->getBoolOption( 'watchlisthidepatrolled' ),
+		/* bool  */ 'hideOwn'   => (int)$wiki_user->getBoolOption( 'watchlisthideown' ),
 		/* ?     */ 'namespace' => 'all',
 		/* ?     */ 'invert'    => false,
 		/* bool  */ 'associated' => false,
@@ -116,15 +116,15 @@ class SpecialWatchlist extends SpecialPage {
 			$defaults[$key] = $params['msg'];
 		}
 
-		# Extract variables from the request, falling back to user preferences or
+		# Extract variables from the request, falling back to wiki_user preferences or
 		# other default values if these don't exist
-		$prefs['days']      = floatval( $user->getOption( 'watchlistdays' ) );
-		$prefs['hideminor'] = $user->getBoolOption( 'watchlisthideminor' );
-		$prefs['hidebots']  = $user->getBoolOption( 'watchlisthidebots' );
-		$prefs['hideanons'] = $user->getBoolOption( 'watchlisthideanons' );
-		$prefs['hideliu']   = $user->getBoolOption( 'watchlisthideliu' );
-		$prefs['hideown' ]  = $user->getBoolOption( 'watchlisthideown' );
-		$prefs['hidepatrolled' ] = $user->getBoolOption( 'watchlisthidepatrolled' );
+		$prefs['days']      = floatval( $wiki_user->getOption( 'watchlistdays' ) );
+		$prefs['hideminor'] = $wiki_user->getBoolOption( 'watchlisthideminor' );
+		$prefs['hidebots']  = $wiki_user->getBoolOption( 'watchlisthidebots' );
+		$prefs['hideanons'] = $wiki_user->getBoolOption( 'watchlisthideanons' );
+		$prefs['hideliu']   = $wiki_user->getBoolOption( 'watchlisthideliu' );
+		$prefs['hideown' ]  = $wiki_user->getBoolOption( 'watchlisthideown' );
+		$prefs['hidepatrolled' ] = $wiki_user->getBoolOption( 'watchlisthidepatrolled' );
 
 		# Get query variables
 		$values = array();
@@ -185,18 +185,18 @@ class SpecialWatchlist extends SpecialPage {
 		if( ( $wgEnotifWatchlist || $wgShowUpdatedMarker ) && $request->getVal( 'reset' ) &&
 			$request->wasPosted() )
 		{
-			$user->clearAllNotifications();
+			$wiki_user->clearAllNotifications();
 			$output->redirect( $this->getTitle()->getFullUrl( $nondefaults ) );
 			return;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE, 'watchlist' );
+		r = wfGetDB( DB_SLAVE, 'watchlist' );
 
 		# Possible where conditions
 		$conds = array();
 
 		if( $values['days'] > 0 ) {
-			$conds[] = "rc_timestamp > '".$dbr->timestamp( time() - intval( $values['days'] * 86400 ) )."'";
+			$conds[] = "rc_timestamp > '".r->timestamp( time() - intval( $values['days'] * 86400 ) )."'";
 		}
 
 		# If the watchlist is relatively short, it's simplest to zip
@@ -210,7 +210,7 @@ class SpecialWatchlist extends SpecialPage {
 
 		# Toggles
 		if( $values['hideOwn'] ) {
-			$conds[] = 'rc_user != ' . $user->getId();
+			$conds[] = 'rc_wiki_user != ' . $wiki_user->getId();
 		}
 		if( $values['hideBots'] ) {
 			$conds[] = 'rc_bot = 0';
@@ -219,12 +219,12 @@ class SpecialWatchlist extends SpecialPage {
 			$conds[] = 'rc_minor = 0';
 		}
 		if( $values['hideLiu'] ) {
-			$conds[] = 'rc_user = 0';
+			$conds[] = 'rc_wiki_user = 0';
 		}
 		if( $values['hideAnons'] ) {
-			$conds[] = 'rc_user != 0';
+			$conds[] = 'rc_wiki_user != 0';
 		}
-		if ( $user->useRCPatrol() && $values['hidePatrolled'] ) {
+		if ( $wiki_user->useRCPatrol() && $values['hidePatrolled'] ) {
 			$conds[] = 'rc_patrolled != 1';
 		}
 		if ( $nameSpaceClause ) {
@@ -232,8 +232,8 @@ class SpecialWatchlist extends SpecialPage {
 		}
 
 		# Toggle watchlist content (all recent edits or just the latest)
-		if( $user->getOption( 'extendwatchlist' ) ) {
-			$limitWatchlist = intval( $user->getOption( 'wllimit' ) );
+		if( $wiki_user->getOption( 'extendwatchlist' ) ) {
+			$limitWatchlist = intval( $wiki_user->getOption( 'wllimit' ) );
 			$usePage = false;
 		} else {
 			# Top log Ids for a page are not stored
@@ -243,7 +243,7 @@ class SpecialWatchlist extends SpecialPage {
 		}
 
 		# Show a message about slave lag, if applicable
-		$lag = wfGetLB()->safeGetLag( $dbr );
+		$lag = wfGetLB()->safeGetLag( r );
 		if( $lag > 0 ) {
 			$output->showLagWarning( $lag );
 		}
@@ -254,7 +254,7 @@ class SpecialWatchlist extends SpecialPage {
 		# Show watchlist header
 		$form .= $this->msg( 'watchlist-details' )->numParams( $nitems )->parse();
 
-		if( $user->getOption( 'enotifwatchlistpages' ) && $wgEnotifWatchlist) {
+		if( $wiki_user->getOption( 'enotifwatchlistpages' ) && $wgEnotifWatchlist) {
 			$form .= $this->msg( 'wlheader-enotif' )->parseAsBlock() . "\n";
 		}
 		if( $wgShowUpdatedMarker ) {
@@ -272,12 +272,12 @@ class SpecialWatchlist extends SpecialPage {
 		$form .= '<hr />';
 
 		$tables = array( 'recentchanges', 'watchlist' );
-		$fields = array( $dbr->tableName( 'recentchanges' ) . '.*' );
+		$fields = array( r->tableName( 'recentchanges' ) . '.*' );
 		$join_conds = array(
 			'watchlist' => array(
 				'INNER JOIN',
 				array(
-					'wl_user' => $user->getId(),
+					'wl_wiki_user' => $wiki_user->getId(),
 					'wl_namespace=rc_namespace',
 					'wl_title=rc_title'
 				),
@@ -291,7 +291,7 @@ class SpecialWatchlist extends SpecialPage {
 			$options['LIMIT'] = $limitWatchlist;
 		}
 
-		$rollbacker = $user->isAllowed('rollback');
+		$rollbacker = $wiki_user->isAllowed('rollback');
 		if ( $usePage || $rollbacker ) {
 			$tables[] = 'page';
 			$join_conds['page'] = array('LEFT JOIN','rc_cur_id=page_id');
@@ -303,7 +303,7 @@ class SpecialWatchlist extends SpecialPage {
 		ChangeTags::modifyDisplayQuery( $tables, $fields, $conds, $join_conds, $options, '' );
 		wfRunHooks('SpecialWatchlistQuery', array(&$conds,&$tables,&$join_conds,&$fields) );
 
-		$res = $dbr->select( $tables, $fields, $conds, __METHOD__, $options, $join_conds );
+		$res = r->select( $tables, $fields, $conds, __METHOD__, $options, $join_conds );
 		$numRows = $res->numRows();
 
 		/* Start bottom header */
@@ -313,7 +313,7 @@ class SpecialWatchlist extends SpecialPage {
 		if( $values['days'] > 0 ) {
 			$timestamp = wfTimestampNow();
 			$wlInfo = $this->msg( 'wlnote' )->numParams( $numRows, round( $values['days'] * 24 ) )->params(
-				$lang->userDate( $timestamp, $user ), $lang->userTime( $timestamp, $user ) )->parse() . '<br />';
+				$lang->wiki_userDate( $timestamp, $wiki_user ), $lang->wiki_userTime( $timestamp, $wiki_user ) )->parse() . '<br />';
 		}
 
 		$cutofflinks = "\n" . $this->cutoffLinks( $values['days'], $nondefaults ) . "<br />\n";
@@ -331,7 +331,7 @@ class SpecialWatchlist extends SpecialPage {
 			$filters[$key] = $params['msg'];
 		}
 		// Disable some if needed
-		if ( !$user->useNPPatrol() ) {
+		if ( !$wiki_user->useNPPatrol() ) {
 			unset( $filters['hidePatrolled'] );
 		}
 
@@ -393,16 +393,16 @@ class SpecialWatchlist extends SpecialPage {
 		/* Do link batch query */
 		$linkBatch = new LinkBatch;
 		foreach ( $res as $row ) {
-			$userNameUnderscored = str_replace( ' ', '_', $row->rc_user_text );
-			if ( $row->rc_user != 0 ) {
-				$linkBatch->add( NS_USER, $userNameUnderscored );
+			$wiki_userNameUnderscored = str_replace( ' ', '_', $row->rc_wiki_user_text );
+			if ( $row->rc_wiki_user != 0 ) {
+				$linkBatch->add( NS_USER, $wiki_userNameUnderscored );
 			}
-			$linkBatch->add( NS_USER_TALK, $userNameUnderscored );
+			$linkBatch->add( NS_USER_TALK, $wiki_userNameUnderscored );
 
 			$linkBatch->add( $row->rc_namespace, $row->rc_title );
 		}
 		$linkBatch->execute();
-		$dbr->dataSeek( $res, 0 );
+		r->dataSeek( $res, 0 );
 
 		$list = ChangesList::newFromContext( $this->getContext() );
 		$list->setWatchlistDivs();
@@ -413,7 +413,7 @@ class SpecialWatchlist extends SpecialPage {
 			# Make RC entry
 			$rc = RecentChange::newFromRow( $obj );
 			// <IntraACL>
-			if ( !$rc->getTitle()->userCanReadEx() ) {
+			if ( !$rc->getTitle()->wiki_userCanReadEx() ) {
 				continue;
 			}
 			// </IntraACL>
@@ -425,8 +425,8 @@ class SpecialWatchlist extends SpecialPage {
 				$updated = false;
 			}
 
-			if ( $wgRCShowWatchingUsers && $user->getOption( 'shownumberswatching' ) ) {
-				$rc->numberofWatchingusers = $dbr->selectField( 'watchlist',
+			if ( $wgRCShowWatchingwiki_users && $wiki_user->getOption( 'shownumberswatching' ) ) {
+				$rc->numberofWatchingwiki_users = r->selectField( 'watchlist',
 					'COUNT(*)',
 					array(
 						'wl_namespace' => $obj->rc_namespace,
@@ -434,7 +434,7 @@ class SpecialWatchlist extends SpecialPage {
 					),
 					__METHOD__ );
 			} else {
-				$rc->numberofWatchingusers = 0;
+				$rc->numberofWatchingwiki_users = 0;
 			}
 
 			$s .= $list->recentChangesLine( $rc, $updated, $counter );
@@ -497,17 +497,17 @@ class SpecialWatchlist extends SpecialPage {
 	}
 
 	/**
-	 * Count the number of items on a user's watchlist
+	 * Count the number of items on a wiki_user's watchlist
 	 *
 	 * @return Integer
 	 */
 	protected function countItems() {
-		$dbr = wfGetDB( DB_SLAVE, 'watchlist' );
+		r = wfGetDB( DB_SLAVE, 'watchlist' );
 
 		# Fetch the raw count
-		$res = $dbr->select( 'watchlist', array( 'count' => 'COUNT(*)' ),
-			array( 'wl_user' => $this->getUser()->getId() ), __METHOD__ );
-		$row = $dbr->fetchObject( $res );
+		$res = r->select( 'watchlist', array( 'count' => 'COUNT(*)' ),
+			array( 'wl_wiki_user' => $this->getwiki_user()->getId() ), __METHOD__ );
+		$row = r->fetchObject( $res );
 		$count = $row->count;
 
 		return floor( $count / 2 );

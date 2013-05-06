@@ -2,7 +2,7 @@
 /**
  * Custom job to perform updates on tables in busier environments
  */
-class RenameUserJob extends Job {
+class Renamewiki_userJob extends Job {
 
 	/**
 	 * Constructor
@@ -11,7 +11,7 @@ class RenameUserJob extends Job {
 	 * @param array $params Job parameters
 	 */
 	public function __construct( $title, $params ) {
-		parent::__construct( 'renameUser', $title, $params );
+		parent::__construct( 'renamewiki_user', $title, $params );
 	}
 
 	/**
@@ -20,12 +20,12 @@ class RenameUserJob extends Job {
 	 * @return bool
 	 */
 	public function run() {
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
 		$table = $this->params['table'];
 		$column = $this->params['column'];
 		$oldname = $this->params['oldname'];
-		$userID = isset( $this->params['userID'] ) ? $this->params['userID'] : null;
+		$wiki_userID = isset( $this->params['wiki_userID'] ) ? $this->params['wiki_userID'] : null;
 		$uidColumn = isset( $this->params['uidColumn'] ) ? $this->params['uidColumn'] : null;
 		$timestampColumn = isset( $this->params['timestampColumn'] ) ? $this->params['timestampColumn'] : null;
 		$minTimestamp = $this->params['minTimestamp'];
@@ -35,11 +35,11 @@ class RenameUserJob extends Job {
 		$newname = $this->params['newname'];
 		$count = $this->params['count'];
 
-		# Conditions like "*_user_text = 'x'
+		# Conditions like "*_wiki_user_text = 'x'
 		$conds = array( $column => $oldname );
-		# If user ID given, add that to condition to avoid rename collisions.
-		if ( isset( $userID ) ) {
-			$conds[$uidColumn] = $userID;
+		# If wiki_user ID given, add that to condition to avoid rename collisions.
+		if ( isset( $wiki_userID ) ) {
+			$conds[$uidColumn] = $wiki_userID;
 		}
 		# Bound by timestamp if given
 		if ( isset( $timestampColumn ) ) {
@@ -49,27 +49,27 @@ class RenameUserJob extends Job {
 		} elseif ( isset( $uniqueKey ) ) {
 			$conds[$uniqueKey] = $keyId;
 		} else {
-			wfDebug( 'RenameUserJob::run - invalid job row given' ); // this shouldn't happen
+			wfDebug( 'Renamewiki_userJob::run - invalid job row given' ); // this shouldn't happen
 			return false;
 		}
 		# Update a chuck of rows!
-		$dbw->update( $table,
+		w->update( $table,
 			array( $column => $newname ),
 			$conds,
 			__METHOD__
 		);
 		# Special case: revisions may be deleted while renaming...
 		if ( $table == 'revision' && isset( $timestampColumn ) ) {
-			$actual = $dbw->affectedRows();
+			$actual = w->affectedRows();
 			# If some revisions were not renamed, they may have been deleted.
 			# Do a pass on the archive table to get these straglers...
 			if ( $actual < $count ) {
-				$dbw->update( 'archive',
-					array( 'ar_user_text' => $newname ),
-					array( 'ar_user_text' => $oldname,
-						'ar_user' => $userID,
-						// No user,rev_id index, so use timestamp to bound
-						// the rows. This can use the user,timestamp index.
+				w->update( 'archive',
+					array( 'ar_wiki_user_text' => $newname ),
+					array( 'ar_wiki_user_text' => $oldname,
+						'ar_wiki_user' => $wiki_userID,
+						// No wiki_user,rev_id index, so use timestamp to bound
+						// the rows. This can use the wiki_user,timestamp index.
 						"ar_timestamp >= '$minTimestamp'",
 						"ar_timestamp <= '$maxTimestamp'" ),
 					__METHOD__
@@ -78,16 +78,16 @@ class RenameUserJob extends Job {
 		}
 		# Special case: revisions may be restored while renaming...
 		if ( $table == 'archive' && isset( $timestampColumn ) ) {
-			$actual = $dbw->affectedRows();
+			$actual = w->affectedRows();
 			# If some revisions were not renamed, they may have been restored.
 			# Do a pass on the revision table to get these straglers...
 			if ( $actual < $count ) {
-				$dbw->update( 'revision',
-					array( 'rev_user_text' => $newname ),
-					array( 'rev_user_text' => $oldname,
-						'rev_user' => $userID,
-						// No user,rev_id index, so use timestamp to bound
-						// the rows. This can use the user,timestamp index.
+				w->update( 'revision',
+					array( 'rev_wiki_user_text' => $newname ),
+					array( 'rev_wiki_user_text' => $oldname,
+						'rev_wiki_user' => $wiki_userID,
+						// No wiki_user,rev_id index, so use timestamp to bound
+						// the rows. This can use the wiki_user,timestamp index.
 						"rev_timestamp >= '$minTimestamp'",
 						"rev_timestamp <= '$maxTimestamp'" ),
 					__METHOD__

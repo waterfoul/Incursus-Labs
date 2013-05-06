@@ -106,10 +106,10 @@ abstract class SqlDataUpdate extends DataUpdate {
 	 * This is intended for use by subclasses.
 	 *
 	 * @param $namespace Integer
-	 * @param $dbkeys Array
+	 * @param keys Array
 	 */
-	protected function invalidatePages( $namespace, Array $dbkeys ) {
-		if ( !count( $dbkeys ) ) {
+	protected function invalidatePages( $namespace, Array keys ) {
+		if ( !count( keys ) ) {
 			return;
 		}
 
@@ -123,7 +123,7 @@ abstract class SqlDataUpdate extends DataUpdate {
 		$res = $this->mDb->select( 'page', array( 'page_id' ),
 			array(
 				'page_namespace' => $namespace,
-				'page_title' => $dbkeys,
+				'page_title' => keys,
 				'page_touched < ' . $this->mDb->addQuotes( $now )
 			), __METHOD__
 		);

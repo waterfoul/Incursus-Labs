@@ -1658,7 +1658,7 @@ class Sanitizer {
 
 		$HTML5_email_regexp = "/
 		^                      # start of string
-		[$rfc5322_atext\\.]+    # user part which is liberal :p
+		[$rfc5322_atext\\.]+    # wiki_user part which is liberal :p
 		@                      # 'apostrophe'
 		[$rfc1034_ldh_str]+       # First domain part
 		(\\.[$rfc1034_ldh_str]+)*  # Following part prefixed with a dot

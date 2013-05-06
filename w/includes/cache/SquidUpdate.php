@@ -56,8 +56,8 @@ class SquidUpdate {
 		wfProfileIn( __METHOD__ );
 
 		# Get a list of URLs linking to this page
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( array( 'links', 'page' ),
+		r = wfGetDB( DB_SLAVE );
+		$res = r->select( array( 'links', 'page' ),
 			array( 'page_namespace', 'page_title' ),
 			array(
 				'pl_namespace' => $title->getNamespace(),
@@ -65,7 +65,7 @@ class SquidUpdate {
 				'pl_from=page_id' ),
 			__METHOD__ );
 		$blurlArr = $title->getSquidURLs();
-		if ( $dbr->numRows( $res ) <= $wgMaxSquidPurgeTitles ) {
+		if ( r->numRows( $res ) <= $wgMaxSquidPurgeTitles ) {
 			foreach ( $res as $BL ) {
 				$tobj = Title::makeTitle( $BL->page_namespace, $BL->page_title ) ;
 				$blurlArr[] = $tobj->getInternalURL();

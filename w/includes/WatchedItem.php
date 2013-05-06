@@ -22,25 +22,25 @@
  */
 
 /**
- * Representation of a pair of user and title for watchlist entries.
+ * Representation of a pair of wiki_user and title for watchlist entries.
  *
  * @ingroup Watchlist
  */
 class WatchedItem {
-	var $mTitle, $mUser, $id, $ns, $ti;
+	var $mTitle, $mwiki_user, $id, $ns, $ti;
 	private $loaded = false, $watched, $timestamp;
 
 	/**
-	 * Create a WatchedItem object with the given user and title
-	 * @param $user User: the user to use for (un)watching
+	 * Create a WatchedItem object with the given wiki_user and title
+	 * @param $wiki_user wiki_user: the wiki_user to use for (un)watching
 	 * @param $title Title: the title we're going to (un)watch
 	 * @return WatchedItem object
 	 */
-	public static function fromUserTitle( $user, $title ) {
+	public static function fromwiki_userTitle( $wiki_user, $title ) {
 		$wl = new WatchedItem;
-		$wl->mUser = $user;
+		$wl->mwiki_user = $wiki_user;
 		$wl->mTitle = $title;
-		$wl->id = $user->getId();
+		$wl->id = $wiki_user->getId();
 		# Patch (also) for email notification on page changes T.Gries/M.Arndt 11.09.2004
 		# TG patch: here we do not consider pages and their talk pages equivalent - why should we ?
 		# The change results in talk-pages not automatically included in watchlists, when their parent page is included
@@ -58,7 +58,7 @@ class WatchedItem {
 	 * @return array
 	 */
 	private function dbCond() {
-		return array( 'wl_user' => $this->id, 'wl_namespace' => $this->ns, 'wl_title' => $this->ti );
+		return array( 'wl_wiki_user' => $this->id, 'wl_namespace' => $this->ns, 'wl_title' => $this->ti );
 	}
 
 	/**
@@ -73,8 +73,8 @@ class WatchedItem {
 		# Pages and their talk pages are considered equivalent for watching;
 		# remember that talk namespaces are numbered as page namespace+1.
 
-		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow( 'watchlist', 'wl_notificationtimestamp',
+		r = wfGetDB( DB_SLAVE );
+		$row = r->selectRow( 'watchlist', 'wl_notificationtimestamp',
 			$this->dbCond(), __METHOD__ );
 
 		if ( $row === false ) {
@@ -86,7 +86,7 @@ class WatchedItem {
 	}
 
 	/**
-	 * Is mTitle being watched by mUser?
+	 * Is mTitle being watched by mwiki_user?
 	 * @return bool
 	 */
 	public function isWatched() {
@@ -123,16 +123,16 @@ class WatchedItem {
 			}
 		}
 
-		// If the page is watched by the user (or may be watched), update the timestamp on any
+		// If the page is watched by the wiki_user (or may be watched), update the timestamp on any
 		// any matching rows
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update( 'watchlist', array( 'wl_notificationtimestamp' => null ),
+		w = wfGetDB( DB_MASTER );
+		w->update( 'watchlist', array( 'wl_notificationtimestamp' => null ),
 			$this->dbCond(), __METHOD__ );
 		$this->timestamp = null;
 	}
 
 	/**
-	 * Given a title and user (assumes the object is setup), add the watch to the
+	 * Given a title and wiki_user (assumes the object is setup), add the watch to the
 	 * database.
 	 * @return bool (always true)
 	 */
@@ -141,10 +141,10 @@ class WatchedItem {
 
 		// Use INSERT IGNORE to avoid overwriting the notification timestamp
 		// if there's already an entry for this page
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->insert( 'watchlist',
+		w = wfGetDB( DB_MASTER );
+		w->insert( 'watchlist',
 		  array(
-			'wl_user' => $this->id,
+			'wl_wiki_user' => $this->id,
 			'wl_namespace' => MWNamespace::getSubject($this->ns),
 			'wl_title' => $this->ti,
 			'wl_notificationtimestamp' => null
@@ -152,9 +152,9 @@ class WatchedItem {
 
 		// Every single watched page needs now to be listed in watchlist;
 		// namespace:page and namespace_talk:page need separate entries:
-		$dbw->insert( 'watchlist',
+		w->insert( 'watchlist',
 		  array(
-			'wl_user' => $this->id,
+			'wl_wiki_user' => $this->id,
 			'wl_namespace' => MWNamespace::getTalk($this->ns),
 			'wl_title' => $this->ti,
 			'wl_notificationtimestamp' => null
@@ -174,15 +174,15 @@ class WatchedItem {
 		wfProfileIn( __METHOD__ );
 
 		$success = false;
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->delete( 'watchlist',
+		w = wfGetDB( DB_MASTER );
+		w->delete( 'watchlist',
 			array(
-				'wl_user' => $this->id,
+				'wl_wiki_user' => $this->id,
 				'wl_namespace' => MWNamespace::getSubject($this->ns),
 				'wl_title' => $this->ti
 			), __METHOD__
 		);
-		if ( $dbw->affectedRows() ) {
+		if ( w->affectedRows() ) {
 			$success = true;
 		}
 
@@ -190,15 +190,15 @@ class WatchedItem {
 		# enotif patch, that every single watched page needs now to be listed
 		# in watchlist namespace:page and namespace_talk:page had separate
 		# entries: clear them
-		$dbw->delete( 'watchlist',
+		w->delete( 'watchlist',
 			array(
-				'wl_user' => $this->id,
+				'wl_wiki_user' => $this->id,
 				'wl_namespace' => MWNamespace::getTalk($this->ns),
 				'wl_title' => $this->ti
 			), __METHOD__
 		);
 
-		if ( $dbw->affectedRows() ) {
+		if ( w->affectedRows() ) {
 			$success = true;
 		}
 
@@ -209,7 +209,7 @@ class WatchedItem {
 	}
 
 	/**
-	 * Check if the given title already is watched by the user, and if so
+	 * Check if the given title already is watched by the wiki_user, and if so
 	 * add watches on a new title. To be used for page renames and such.
 	 *
 	 * @param $ot Title: page title to duplicate entries from, if present
@@ -234,8 +234,8 @@ class WatchedItem {
 		$oldtitle = $ot->getDBkey();
 		$newtitle = $nt->getDBkey();
 
-		$dbw = wfGetDB( DB_MASTER );
-		$res = $dbw->select( 'watchlist', 'wl_user',
+		w = wfGetDB( DB_MASTER );
+		$res = w->select( 'watchlist', 'wl_wiki_user',
 			array( 'wl_namespace' => $oldnamespace, 'wl_title' => $oldtitle ),
 			__METHOD__, 'FOR UPDATE'
 		);
@@ -243,7 +243,7 @@ class WatchedItem {
 		$values = array();
 		foreach ( $res as $s ) {
 			$values[] = array(
-				'wl_user' => $s->wl_user,
+				'wl_wiki_user' => $s->wl_wiki_user,
 				'wl_namespace' => $newnamespace,
 				'wl_title' => $newtitle
 			);
@@ -257,7 +257,7 @@ class WatchedItem {
 		# Perform replace
 		# Note that multi-row replace is very efficient for MySQL but may be inefficient for
 		# some other DBMSes, mostly due to poor simulation by us
-		$dbw->replace( 'watchlist', array( array( 'wl_user', 'wl_namespace', 'wl_title' ) ), $values, __METHOD__ );
+		w->replace( 'watchlist', array( array( 'wl_wiki_user', 'wl_namespace', 'wl_title' ) ), $values, __METHOD__ );
 		return true;
 	}
 }

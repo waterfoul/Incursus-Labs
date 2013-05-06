@@ -26,7 +26,7 @@
 $fallback = 'hi';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'लिंककेँ रेखांकित करू:',
 'tog-justify' => 'सुगढ़ बनाऊ',
 'tog-hideminor' => 'सन्निकट परिवर्त्तनमे छोट परिवर्त्तन नुकाऊ',
@@ -50,7 +50,7 @@ $messages = array(
 'tog-previewonfirst' => 'पहिल सम्पादनक बाद पूर्वावलोकन देखाउ',
 'tog-nocache' => 'गवेषक पृष्ठ उपस्मृति अशक्त करू',
 'tog-enotifwatchlistpages' => 'जौं हमर ध्यानसूचीक कोनो पन्नामे परिवर्तन हुअए तँ हमरा ई-पत्र पठाउ',
-'tog-enotifusertalkpages' => 'हमर सदस्य वार्ता पृष्ठ पर भेल परिवर्त्तनक हेतु हमरा ई-मेल करथि',
+'tog-enotifwiki_usertalkpages' => 'हमर सदस्य वार्ता पृष्ठ पर भेल परिवर्त्तनक हेतु हमरा ई-मेल करथि',
 'tog-enotifminoredits' => 'छोट परिवर्त्तनक हेतु सेहो हमरा ई-मेल पठाऊ',
 'tog-enotifrevealaddr' => 'हमर ई-पत्र संकेत सूचना ई-पत्रमे देखाउ',
 'tog-shownumberswatching' => 'ध्यान राखैबला प्रयोक्ताक संख्या',
@@ -231,7 +231,7 @@ $messages = array(
 'talk' => 'वार्तालाप',
 'views' => 'दृष्टि',
 'toolbox' => 'उपकरण-बक्सा',
-'userpage' => 'प्रयोक्ता पन्ना देखू',
+'wiki_userpage' => 'प्रयोक्ता पन्ना देखू',
 'projectpage' => 'परियोजना पन्ना देखू',
 'imagepage' => 'पन्नाक पृष्ठ देखू',
 'mediawikipage' => 'सन्देश पन्ना देखू',
@@ -256,7 +256,7 @@ $1',
 'pool-queuefull' => 'प्रतीक्षा-पाँती पौती भरल',
 'pool-errorunknown' => 'अज्ञात भ्रम',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'विषयमे {{SITENAME}}',
 'aboutpage' => 'Project:विवरण',
 'copyright' => '$1क अंतर्गत विषय सूची उपलब्ध अछि',
@@ -322,7 +322,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'पृष्ठ',
-'nstab-user' => 'उपयोगकर्ताक पृष्ठ',
+'nstab-wiki_user' => 'उपयोगकर्ताक पृष्ठ',
 'nstab-media' => 'मीडिया पन्ना',
 'nstab-special' => 'विशिष्ट पन्ना',
 'nstab-project' => 'परियोजना पन्ना',
@@ -364,7 +364,7 @@ $1',
 'missing-article' => 'दत्तनिधि पृष्ठक वांछित पाठ्य नै ताकि सकल, माने "$1" $2
 एकर कारण कोनो पुरान फाइल चेन्हासी वा ऐतिहासिक लिंकक पाछाँ जाएब अछि, जे मेटा देल गेल छै।
 जौं ई तकर कारण नै अछि,  तखन अहाँकेँ तंत्रांशमे कोनो दोष भेटल अछि।
-एकर खबरि पहुँचाउ [[Special:ListUsers/sysop|administrator]], केँ, अपन सार्वत्रिक विभव संकेत सूचित करैत।',
+एकर खबरि पहुँचाउ [[Special:Listwiki_users/sysop|administrator]], केँ, अपन सार्वत्रिक विभव संकेत सूचित करैत।',
 'missingarticle-rev' => '(संशोधन#: $1)',
 'missingarticle-diff' => '(फाइल-अन्तर प्रणाली: $1, $2)',
 'readonly_lag' => 'दत्तांशनिधि स्वचालित रूपेँ प्रतिबन्धित कएल गेल अछि जा परजीवी दतांशनिधि वितरक मूलक समक्ष नै आबि जाए।',
@@ -411,7 +411,7 @@ $2',
 'customcssprotected' => 'अहांकें ऐ सी.एस.एस.पन्नाकें सम्पादित करबाक अधिकार नै अछि, कारण ऐमे दोसर प्रयोक्ताक व्यक्तिगत विकल्प छै।',
 'customjsprotected' => 'अहांकें ऐ जावास्क्रिप्ट पन्नाकें सम्पादित करबाक अधिकार नै अछि, कारण ऐमे दोसर प्रयोक्ताक व्यक्तिगत विकल्प छै।',
 'ns-specialprotected' => 'विशेष पन्ना सभकेँ सम्पादित नै कएल जा सकैए।',
-'titleprotected' => 'ऐ शीर्षकक निर्माण प्रतिबन्धित अछि [[User:$1|$1]] द्वारा।
+'titleprotected' => 'ऐ शीर्षकक निर्माण प्रतिबन्धित अछि [[wiki_user:$1|$1]] द्वारा।
 कारण एतऽ देल अछि "\'\'$2\'\'"।',
 
 # Virus scanner
@@ -422,7 +422,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''अहाँ निष्क्रमण कऽ गेल छी।'''
 
-अहाँ {{अन्तर्जाल}} प्रयोग अनाम भऽ कऽ सकै छी, वा अहाँ [[Special:UserLogin|log in again]] वएह आकि कोनो आन प्रयोक्ताक रूपमे सेहू प्रयोक कऽ सकै छी।
+अहाँ {{अन्तर्जाल}} प्रयोग अनाम भऽ कऽ सकै छी, वा अहाँ [[Special:wiki_userLogin|log in again]] वएह आकि कोनो आन प्रयोक्ताक रूपमे सेहू प्रयोक कऽ सकै छी।
 ई मोन राखू जे किछु पन्ना एना देखा पड़ि सकैए जेना अहाँ अखनो सम्प्रवेशित होइ, जावत अहाँ अपन गवेषकक उपस्मृति मेटा नै दै छी।",
 'welcomecreation' => '== स्वागत अछि, $1! ==
 अहाँक खाता खुजि गेल अछि।
@@ -437,21 +437,21 @@ $2',
 'login' => 'सम्प्रवेश',
 'nav-login-createaccount' => 'सदस्य लॉग इन',
 'loginprompt' => '{{अन्तर्जाल}} सम्प्रवेश लेल अहाँकेँ आवश्यक रूपेँ ज्ञापक सक्रिय करबाक चाही।',
-'userlogin' => 'लॉग इन / खेसरा बनाऊ',
-'userloginnocreate' => 'सम्प्रवेश',
+'wiki_userlogin' => 'लॉग इन / खेसरा बनाऊ',
+'wiki_userloginnocreate' => 'सम्प्रवेश',
 'logout' => 'निष्क्रमण',
-'userlogout' => 'फेर आयब',
+'wiki_userlogout' => 'फेर आयब',
 'notloggedin' => 'सम्प्रवेशित नै छी',
 'nologin' => 'खाता नै अछि? $1।',
 'nologinlink' => 'नव खाता खोलू',
 'createaccount' => 'खाता खोली',
 'gotaccount' => 'पहिनहियेसँ खाता अछि? $1',
 'gotaccountlink' => 'सम्प्रवेश',
-'userlogin-resetlink' => 'अपन सम्प्रवेश विवरण बिसरि गेलहुँ?',
+'wiki_userlogin-resetlink' => 'अपन सम्प्रवेश विवरण बिसरि गेलहुँ?',
 'createaccountmail' => 'ई-पत्र द्वारा',
 'createaccountreason' => 'कारण:',
 'badretype' => 'कूटशब्द जे अहाँ भरलहुँ से मेल नै खाइए।',
-'userexists' => 'सम्प्रवेशित प्रयोक्तानाम पहिनहियेसँ प्रयोगमे अछि।
+'wiki_userexists' => 'सम्प्रवेशित प्रयोक्तानाम पहिनहियेसँ प्रयोगमे अछि।
 कृपा कऽ कोनो दोसर नाम चुनू।',
 'loginerror' => 'सम्प्रवेश भ्रम',
 'createaccounterror' => 'खाता नै बना सकल: $1',
@@ -467,13 +467,13 @@ $2',
 'noname' => 'अहाँ वैध प्रयोक्तानाम नै देने छी।',
 'loginsuccesstitle' => 'सम्प्रवेश सफल',
 'loginsuccess' => "'''अहाँ सम्प्रवेश केलहुँ {{अन्तर्जाल-पता}} \"\$1\".'''क रूपमे।",
-'nosuchuser' => '"$1" नामसँ कोनो प्रयोक्ता नै अछि।
+'nosuchwiki_user' => '"$1" नामसँ कोनो प्रयोक्ता नै अछि।
 प्रयोक्तानाम ब्रह्मक्षर-लघ्वक्षर भेद युक्त अछि।
-अपन ह्रिजै जाँचू, वा [[Special:UserLogin/signup|नव खाता बनाउ]] ।',
-'nosuchusershort' => '"$1" नाम्ना कोनो प्रयोक्ता नै अछि।
+अपन ह्रिजै जाँचू, वा [[Special:wiki_userLogin/signup|नव खाता बनाउ]] ।',
+'nosuchwiki_usershort' => '"$1" नाम्ना कोनो प्रयोक्ता नै अछि।
 अपन ह्रिजए सुधारू।',
-'nouserspecified' => 'अहाँकेँ एकटा प्रयोक्तानाम देबऽ पड़त।',
-'login-userblocked' => 'ई प्रयोक्ता प्रतिबन्धित अछि। सम्प्रवेशक अधिकार नै अछि।',
+'nowiki_userspecified' => 'अहाँकेँ एकटा प्रयोक्तानाम देबऽ पड़त।',
+'login-wiki_userblocked' => 'ई प्रयोक्ता प्रतिबन्धित अछि। सम्प्रवेशक अधिकार नै अछि।',
 'wrongpassword' => 'गलत कूटशब्द देल गेल।
 फेरसँ प्रयास करू।',
 'wrongpasswordempty' => 'रिक्त कूटशब्द देल गेल।
@@ -510,16 +510,16 @@ $2',
 अहाँ सम्प्रवेश करू आ अपन कूटशब्द बदलू।
 
 अहाँ ऐ संदेशकेँ बिसरि सकै छी, जँ ई खाता भ्रमवश बनल हुअए।',
-'usernamehasherror' => 'प्रयोक्तानाममे चरिखाना चेन्ह नै रहि सकैए',
+'wiki_usernamehasherror' => 'प्रयोक्तानाममे चरिखाना चेन्ह नै रहि सकैए',
 'login-throttled' => 'अहाँ ढ़ेर रास सम्प्रवेश प्रयास केलहुँ।
 फेर प्रयास करबासँ पहिने कने काल थम्हू।',
 'login-abort-generic' => 'अहाँक सम्प्रवेश सफल नै भेल- खतम',
 'loginlanguagelabel' => 'भाषा : $1',
-'suspicious-userlogout' => 'अहाँक निष्क्रमणक अनुरोध नै मानल गेल कारण ई लागल जे ई पुरान गवेषकक लागि वा दोसराइत उपस्मृति द्वारा पठाओल गेल छल।',
+'suspicious-wiki_userlogout' => 'अहाँक निष्क्रमणक अनुरोध नै मानल गेल कारण ई लागल जे ई पुरान गवेषकक लागि वा दोसराइत उपस्मृति द्वारा पठाओल गेल छल।',
 
 # E-mail sending
 'php-mail-error-unknown' => 'पी.एच.पी.क संदेश कार्य() मे अज्ञात दोष',
-'user-mail-no-addy' => 'बिन ई-पत्र संकेतक ई-पत्र पठेबाक प्रयास',
+'wiki_user-mail-no-addy' => 'बिन ई-पत्र संकेतक ई-पत्र पठेबाक प्रयास',
 
 # Change password dialog
 'resetpass' => 'कूटशब्द बदलू',
@@ -547,7 +547,7 @@ $2',
 'passwordreset-legend' => 'कूटशब्द फेरसँ बनाउ',
 'passwordreset-disabled' => 'कूटशब्द फेरसँ बनाएब ऐ विकीपर अक्षम कएल अछि।',
 'passwordreset-pretext' => '{{PLURAL:$1||नीचाँक दत्तांशक एकटा भागक प्रविष्टि करू}}',
-'passwordreset-username' => 'प्रयोक्तानाम',
+'passwordreset-wiki_username' => 'प्रयोक्तानाम',
 'passwordreset-domain' => 'क्षेत्र:',
 'passwordreset-capture' => 'परिणाम ई-पत्र देखू?',
 'passwordreset-capture-help' => 'जँ अहाँ ऐ बक्शाकेँ देखै छी, ई-पत्र (तात्कालिक कूटशब्दक संग) अहाँकेँ देखाएल जाएत आ संगे प्रयोक्ताकेँ पठाएल जाएत।',
@@ -560,7 +560,7 @@ $2
 
 {{PLURAL:$3|ई अल्पकालक कूटशब्द| ई सभ अल्पकालक कूटशब्द}} खतम भऽ जाएत {{PLURAL:$5|एक दिन|$5 पाँच दिन}}.
 अहाँ सम्प्रवेश करू आ एकटा नव कूटशब्द चुनू।. जौं कियो आन ई आग्रह केने अछि, वा अहाँकेँ अपन पुरान कूटशब्द मोन पड़ि गेल अछि , आ आब एकरा बदलबाक इच्छा नै राखै छी तँ अहाँ ऐ संदेशकेँ बिसरि जाउ आ अपन पुरान कूटशब्दक प्रयोग करैत रहू।',
-'passwordreset-emailtext-user' => 'प्रयोक्ता $1 {{अन्तर्जाल}} पर अहाँक खाता विवरणक {{SITENAME}} लेल फेरसँ ($4) आग्रह केने छथि। ई प्रयोक्ता {{PLURAL:$3|खाता अछि|खाता सभ अछि}} ऐ ई-पत्र संकेतसँ जुड़ल: $2
+'passwordreset-emailtext-wiki_user' => 'प्रयोक्ता $1 {{अन्तर्जाल}} पर अहाँक खाता विवरणक {{SITENAME}} लेल फेरसँ ($4) आग्रह केने छथि। ई प्रयोक्ता {{PLURAL:$3|खाता अछि|खाता सभ अछि}} ऐ ई-पत्र संकेतसँ जुड़ल: $2
 {{PLURAL:$3| ई अस्थायी कूटशब्द|ई सभ अस्थायी कूटशब्द}} खतम भऽ जाएत {{PLURAL:$5|एक दिन|$5 दिन}} मे।
 अहाँ सम्प्रवेश करू आ एकटा नव कूटशब्द आब चुनू। जँ कियो दोसर ई आग्रह केने छथि, वा जँ अहाँकेँ अपन मूल कूटशब्द मोन पड़ि गेल अछि, आ अहाँ आब ओइ कूटशब्दकेँ नै बदलऽ चाहै छी, अहाँ ऐ संदेशकेँ बिसरि सकै छी आ अपन पुरान कूटशब्दक प्रयोग जारी राखि सकै छी।',
 'passwordreset-emailelement' => 'प्रयोक्ता: $1
@@ -657,7 +657,7 @@ $2
 'loginreqlink' => 'सम्प्रवेश',
 'loginreqpagetext' => 'अहाँ निश्चयरूपेँ $1 दोसर पन्ना देखबाक लेल।',
 'accmailtitle' => 'कोटशब्द पठा देल गेल।',
-'accmailtext' => "एकटा बिना क्रमबला निर्माण पद्धतिसँ कूटशब्दक निर्माण [[User talk:$1|$1]] लेल $2 केँ पठाएल गेल अछि।
+'accmailtext' => "एकटा बिना क्रमबला निर्माण पद्धतिसँ कूटशब्दक निर्माण [[wiki_user talk:$1|$1]] लेल $2 केँ पठाएल गेल अछि।
 
 ऐ खाताक कूटशब्द बदलल जा सकैए ''[[Special:ChangePassword|कूटशब्द बदलू]]'' पन्नापर सम्प्रवेश केलाक बाद।",
 'newarticle' => '(नव)',
@@ -666,16 +666,16 @@ $2
 'anontalkpagetext' => "----'' ई एकटा अनाम प्रयोक्ताक लेल वार्ता पन्ना छी जे अखन धरि अपन खाता नै खोलने छथि, वा जे एकर प्रयोग नै करै छथि।
 हमरा सभकेँ तइ लेल अंकीय अनिकेतक प्रयोग हुनका देखार करबा लेल करऽ पड़ि रहल अछि।
 ऐ तरहक अनिकेत अनेक प्रयोक्ता द्वारा साझी कएल जा सकैत अछि।
-जँ अहाँ अनाम प्रयोक्ता छी आ बुझै छी जे बिना मतलबक टिप्पणी अहाँ दिस देल जा रहल अछि, तँ कृपा कऽ [[Special:UserLogin/signup|एकटा खाता खोलू]] वा [[Special:UserLogin|सम्प्रवेश]] जइसँ भविष्यमे आन अनाम प्रयोक्तासँ अहाँकेँ दिक्कत नै हो।''",
+जँ अहाँ अनाम प्रयोक्ता छी आ बुझै छी जे बिना मतलबक टिप्पणी अहाँ दिस देल जा रहल अछि, तँ कृपा कऽ [[Special:wiki_userLogin/signup|एकटा खाता खोलू]] वा [[Special:wiki_userLogin|सम्प्रवेश]] जइसँ भविष्यमे आन अनाम प्रयोक्तासँ अहाँकेँ दिक्कत नै हो।''",
 'noarticletext' => 'अखन ऐ पन्नापर कोनो पाठ नै अछि।
 अहाँ [[Special:Search/{{PAGENAME}}|ऐ पन्नाक शीर्षकेँ ताकू]] आन पन्नापर,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} सम्बन्धी वृत्तलेख ताकू],
 आकि [{{fullurl:{{FULLPAGENAME}}|action=edit}} ऐ पन्नाकेँ सम्पादित करू]</span>.',
 'noarticletext-nopermission' => 'अखन ऐ पन्नापर कोनो पाठ नै अछि।
 अहाँ [[Special:Search/{{PAGENAME}}|ऐ पन्ना शीर्षक लेल ताकू]]',
-'userpage-userdoesnotexist' => 'प्रयोक्ता खाता "<nowiki>$1</nowiki>" पंजीकृत नै अछि।
+'wiki_userpage-wiki_userdoesnotexist' => 'प्रयोक्ता खाता "<nowiki>$1</nowiki>" पंजीकृत नै अछि।
 निश्चय करू जे की अहाँ ई पन्ना बनेबाक/ सम्पादित करबाक इच्छुक छी।',
-'userpage-userdoesnotexist-view' => 'प्रयोक्ता खाता "$1" पंजीकृत नै अछि।',
+'wiki_userpage-wiki_userdoesnotexist-view' => 'प्रयोक्ता खाता "$1" पंजीकृत नै अछि।',
 'blocked-notice-logextract' => 'ई प्रयोक्ता अखन प्रतिबन्धित अछि।
 अद्यतन प्रतिबन्धित  वृत्तलेख लेखा सन्दर्भ लेल नीचाँ देल अछि:',
 'clearyourcache' => "'''टिप्पणी:''' संरक्षणक बाद, अहाँकेँ परिवर्तन देखबा लेल अपन गवेषकक उपस्मृतिकेँ हटबए पड़त।
@@ -683,18 +683,18 @@ $2
 '''कन्करर: ''' क्लिक करू ''पुनर्भारित करू'' वा दाबू''F5'';
 '''ओपेरा:''' उपस्मृति खतम करू ''Tools → Preferences'';
 '''इन्टरनेट एक्सप्लोरर:''' दाबि कऽ राखू ''Ctrl'' क्लिक करबा काल ''नवीकरण,'' वा दाबू ''Ctrl-F5'' ।",
-'usercssyoucanpreview' => "''' संकेत:'''  प्रयोग करू \"{{int:पूर्वदृश्य देखाउ}}\" बटन अपन नव सी.एस.एस. संरक्षण जँचबाक लेल।",
-'userjsyoucanpreview' => "''' संकेत:'''  प्रयोग करू \"{{int:पूर्वदृश्य देखाउ}}\" बटन अपन नव जावास्क्रिप्ट संरक्षण जँचबाक लेल।",
-'usercsspreview' => "''' मोन राखू जे अहाँ मात्र अपन प्रयोक्ता  सी.एस.एस. क पूर्वदृश्य देख रहल छी।'''
+'wiki_usercssyoucanpreview' => "''' संकेत:'''  प्रयोग करू \"{{int:पूर्वदृश्य देखाउ}}\" बटन अपन नव सी.एस.एस. संरक्षण जँचबाक लेल।",
+'wiki_userjsyoucanpreview' => "''' संकेत:'''  प्रयोग करू \"{{int:पूर्वदृश्य देखाउ}}\" बटन अपन नव जावास्क्रिप्ट संरक्षण जँचबाक लेल।",
+'wiki_usercsspreview' => "''' मोन राखू जे अहाँ मात्र अपन प्रयोक्ता  सी.एस.एस. क पूर्वदृश्य देख रहल छी।'''
 ''' ई अखन धरि संरक्षित नै भऽ सकल!'''",
-'userjspreview' => "''' मोन राखू जे अहाँ मात्र अपन प्रयोक्ता  जावास्क्रिप्टक पूर्वदृश्य देख रहल छी।'''
+'wiki_userjspreview' => "''' मोन राखू जे अहाँ मात्र अपन प्रयोक्ता  जावास्क्रिप्टक पूर्वदृश्य देख रहल छी।'''
 ''' ई अखन धरि संरक्षित नै भऽ सकल!'''",
 'sitecsspreview' => "''' मोन राखू जे अहाँ मात्र ऐ  सी.एस.एस. क पूर्वदृश्य देख रहल छी।'''
 ''' ई अखन धरि संरक्षित नै भऽ सकल!'''",
 'sitejspreview' => "''' मोन राखू जे अहाँ मात्र ऐ  जावास्क्रिप्टक पूर्वदृश्य देख रहल छी।'''
 ''' ई अखन धरि संरक्षित नै भऽ सकल!'''",
-'userinvalidcssjstitle' => "'''चेतौनी:''' ऐ मे कोनो आवरण \"\$1\" नै अछि।
-बनाएल .css आ .js पन्ना लघ्वक्षरक शीर्षकक प्रयोग करैत अछि, जेना {{ns:user}}:Foo/vector.css एकर विरुद्ध {{ns:user}}:Foo/Vector.css ।",
+'wiki_userinvalidcssjstitle' => "'''चेतौनी:''' ऐ मे कोनो आवरण \"\$1\" नै अछि।
+बनाएल .css आ .js पन्ना लघ्वक्षरक शीर्षकक प्रयोग करैत अछि, जेना {{ns:wiki_user}}:Foo/vector.css एकर विरुद्ध {{ns:wiki_user}}:Foo/Vector.css ।",
 'updated' => '(अद्यतन  कएल)',
 'note' => "'''टिप्पणी:'''",
 'previewnote' => "'''मोन राखू ई मातर पूर्वावलोकन छी।'''
@@ -702,11 +702,11 @@ $2
 'previewconflict' => 'ई पूर्वदृश्य देखबैए उपरका सम्पादन क्षेत्रक पाठ , ई आएत जखन अहाँ संरक्षित करब।',
 'session_fail_preview' => "''' दुखी छी! अहाँक सत्रक दत्तांश खतम भऽ गेल तै कारणसँ अहाँक सम्पादनक निपटारा नै भऽ सकल।'''
 फेरसँ प्रयास करू।
-जँ ई फेरसँ काज नै करैए, प्रयोग करू [[Special:UserLogout|निष्क्रमण]] आ फेर सम्प्रवेश करू।",
+जँ ई फेरसँ काज नै करैए, प्रयोग करू [[Special:wiki_userLogout|निष्क्रमण]] आ फेर सम्प्रवेश करू।",
 'session_fail_preview_html' => "''' दुखी छी! हम अहाँक सम्पादनक निष्पादन नै कऽ सकलहुँ कारण सत्रक दत्तांश खतम भऽ गेल।'''
 ''कारण {{अन्तर्जाल}} लग काँच एच.टी.एम.एल. दत्तांश सक्रिय छै, पूर्वदृश्य जावास्क्रिप्ट आक्रमणक डरसँ नुकाएल राखल गेल अछि।''
 '''जँ ई वैध सम्पादन प्रयास अछि, कृपा कऽ पुनः प्रयास करू।'''
-जँ ई अखनो काज नै कऽ रहल अछि, प्रयास करू [[Special:UserLogout|निष्क्रमण कऽ रहल छी]] आ फेरसँ सम्प्रवेश।",
+जँ ई अखनो काज नै कऽ रहल अछि, प्रयास करू [[Special:wiki_userLogout|निष्क्रमण कऽ रहल छी]] आ फेरसँ सम्प्रवेश।",
 'token_suffix_mismatch' => "'''अहाँक सम्पादन अस्वीकार कऽ देल गेल अछि कारण अहाँक ग्राहक प्रेष्यमान अंक विधानक विराम चेन्ह सभकेँ नष्ट कऽ देलन्हि।'''
 ई सम्पादन पन्नाक पाठकेँ दूषित होएबासँ बचेबा लेल अमान्य कऽ देल गेल।
 ई कखनो काल होइए जखन अहाँ जाल आधारित अनाम दोसरा लेल चल सेवा प्रयुक्त करै छी।",
@@ -755,7 +755,7 @@ $2
 'edittools-upload' => '-',
 'nocreatetitle' => 'पन्ना निर्माण सीमित',
 'nocreatetext' => '{{अन्तर्जाल}} नव पन्ना निर्माणक क्षमताकेँ सीमित कऽ देने अछि।
-अहाँ आपस जा सकै छी आ कोनो पन्नाकेँ सम्पादित कऽ सकै छी, वा [[Special:UserLogin|log in or create an account]]',
+अहाँ आपस जा सकै छी आ कोनो पन्नाकेँ सम्पादित कऽ सकै छी, वा [[Special:wiki_userLogin|log in or create an account]]',
 'nocreate-loggedin' => 'अहाँकेँ नव पन्ना बनेबाक अधिकार नै अछि।',
 'sectioneditnotsupported-title' => 'खंड सम्पादन समर्थन नै',
 'sectioneditnotsupported-text' => 'खंड सम्पादनक ऐ पन्नापर  समर्थन नै',
@@ -797,11 +797,11 @@ $2
 कृपा क' नीचाँक तुलनाक जाँच करू ई देखैले जे ई वएह भेल अछि जे अहाँ चाहै छलहुँ, आ तखन सम्पादन ख़तम करबा लेल नीचाँक परिवर्तन सुरक्षित करू ।",
 'undo-failure' => 'मध्यवर्ती विरोधी सम्पादनक कारण ऐ सम्पादनकेँ खतम नै कएल जा सकैए।',
 'undo-norev' => 'ई सम्पादन खतम नै कएला जा सकैए कारण ई अछि नै वा मेटा देल गेल अछि।',
-'undo-summary' => '$1 संशोधन खतम करू [[Special:Contributions/$2|$2]] ([[User talk:$2|talk]])',
+'undo-summary' => '$1 संशोधन खतम करू [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|talk]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'खाता नै बना सकल',
-'cantcreateaccount-text' => "('''$1''') अनिकेत पतासँ खाता निर्माण प्रतिबन्धित कएल गेल [[User:$3|$3]]।
+'cantcreateaccount-text' => "('''$1''') अनिकेत पतासँ खाता निर्माण प्रतिबन्धित कएल गेल [[wiki_user:$3|$3]]।
 $3 द्वारा देल कारण अछि ''$2''",
 
 # History pages
@@ -838,9 +838,9 @@ $3 द्वारा देल कारण अछि ''$2''",
 
 # Revision deletion
 'rev-deleted-comment' => '(सम्पादन इतिहास हटाएल गेल)',
-'rev-deleted-user' => '(प्रयोक्तानाम हटाएल गेल)',
+'rev-deleted-wiki_user' => '(प्रयोक्तानाम हटाएल गेल)',
 'rev-deleted-event' => '(वृतलेख कार्य हटाएल गेल)',
-'rev-deleted-user-contribs' => '[प्रयोक्तानाम वा अनिकेत हटाएल गेल- योगदानमे नुकाएल सम्पादित करू]',
+'rev-deleted-wiki_user-contribs' => '[प्रयोक्तानाम वा अनिकेत हटाएल गेल- योगदानमे नुकाएल सम्पादित करू]',
 'rev-deleted-text-permission' => "ऐ पन्नाक संशोधन '''मेटा देल गेल'''।
 वर्णन देखि सकै छी [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} deletion log] मे।",
 'rev-deleted-text-unhide' => "ऐ पन्नाक सम्पादन '''मेटाएल''' गेल।
@@ -892,7 +892,7 @@ $3 द्वारा देल कारण अछि ''$2''",
 'revdelete-hide-image' => 'संचिकाक पाठ नुकाउ',
 'revdelete-hide-name' => 'क्रिया आ लक्ष्य नुकाउ',
 'revdelete-hide-comment' => 'सम्पादन सार नुकाउ',
-'revdelete-hide-user' => 'सम्पादकक प्रयोक्तानाम/ अनिकेत नुकाउ',
+'revdelete-hide-wiki_user' => 'सम्पादकक प्रयोक्तानाम/ अनिकेत नुकाउ',
 'revdelete-hide-restricted' => 'संचालक आ दोसरासँ दत्तांश दबाउ',
 'revdelete-radio-same' => '(नै बदलू)',
 'revdelete-radio-set' => 'हँ',
@@ -975,7 +975,7 @@ $3 द्वारा देल कारण अछि ''$2''",
 'showhideselectedversions' => 'देखाउ/ नुकाउ चयनित संशोधन सभ',
 'editundo' => 'असंपादन',
 'diff-multi' => '({{PLURAL:$1|मध्यबला संशोधन|$1 मध्यबला संशोधन सभ}} द्वारा {{PLURAL:$2|एकटा प्रयोक्ता|$2 प्रयोक्ता सभ}} नै देखाएल)',
-'diff-multi-manyusers' => '({{PLURAL:$1|एकटा मध्यस्थ संशोधन|$1 मध्यस्थ संशोधन सभ}} $2 सँ बेसी {{PLURAL:$2|प्रयोक्ता|प्रयोक्ता सभ}} नै देखाएल)',
+'diff-multi-manywiki_users' => '({{PLURAL:$1|एकटा मध्यस्थ संशोधन|$1 मध्यस्थ संशोधन सभ}} $2 सँ बेसी {{PLURAL:$2|प्रयोक्ता|प्रयोक्ता सभ}} नै देखाएल)',
 
 # Search results
 'searchresults' => 'तकबाक फलाफल',
@@ -1056,7 +1056,7 @@ $3 द्वारा देल कारण अछि ''$2''",
 'mypreferences' => 'हमर खासमखास',
 'prefs-edits' => 'सम्पादनक संख्या',
 'prefsnologin' => 'सम्प्रवेशित नै',
-'prefsnologintext' => 'अहाँ <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} logged in]</span> प्रयोक्ता विकल्प निर्धारण लेल प्रयोग करू।',
+'prefsnologintext' => 'अहाँ <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} logged in]</span> प्रयोक्ता विकल्प निर्धारण लेल प्रयोग करू।',
 'changepassword' => 'कूटशब्द बदलू',
 'prefs-skin' => 'रूप',
 'skin-preview' => 'पूर्वावलोकन',
@@ -1128,7 +1128,7 @@ $3 द्वारा देल कारण अछि ''$2''",
 'prefs-emailconfirm-label' => 'ई-पत्र पुष्टि:',
 'prefs-textboxsize' => 'सम्पादन खिड़कीक आकार',
 'youremail' => 'ई-पत्र:',
-'username' => 'प्रयोक्तानाम:',
+'wiki_username' => 'प्रयोक्तानाम:',
 'uid' => 'प्रयोक्ताक पहिचान:',
 'prefs-memberingroups' => '{{PLURAL:$1|संवर्ग|संवर्ग सभ}}:एकर सदस्य',
 'prefs-memberingroups-type' => '$1',
@@ -1172,36 +1172,36 @@ $3 द्वारा देल कारण अछि ''$2''",
 'prefs-displaywatchlist' => 'दृश्य विकल्प सभ',
 'prefs-diffs' => 'अन्तर निर्धारक सभ',
 
-# User preference: e-mail validation using jQuery
+# wiki_user preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'ई-पत्र संकेत मान्य बुझाइत अछि',
 'email-address-validity-invalid' => 'एकटा मान्य ई-पत्र संकेत लिखू',
 
-# User rights
-'userrights' => 'प्रयोक्ता अधिकारक प्रबन्धन',
-'userrights-lookup-user' => 'प्रयोक्ता संवर्ग सभक प्रबन्ध करू',
-'userrights-user-editname' => 'एकटा प्रयोक्तानाम लिखू:',
-'editusergroup' => 'प्रयोक्ता संवर्ग सभक सम्पादन करू',
-'editinguser' => "प्रयोक्ताक प्रयोक्ता अधिकार बदलब '''[[User:$1|$1]]''' $2",
-'userrights-editusergroup' => 'प्रयोक्ता संवर्ग सभक सम्पादन करू',
-'saveusergroups' => 'प्रयोक्ता संवर्ग सभकेँ सुरक्षित करू',
-'userrights-groupsmember' => 'क सदस्य:',
-'userrights-groupsmember-auto' => 'क जानल सदस्य:',
-'userrights-groups-help' => 'अहाँ ऐ प्रयोक्ताक वर्गकेँ बदलि सकै छी:
+# wiki_user rights
+'wiki_userrights' => 'प्रयोक्ता अधिकारक प्रबन्धन',
+'wiki_userrights-lookup-wiki_user' => 'प्रयोक्ता संवर्ग सभक प्रबन्ध करू',
+'wiki_userrights-wiki_user-editname' => 'एकटा प्रयोक्तानाम लिखू:',
+'editwiki_usergroup' => 'प्रयोक्ता संवर्ग सभक सम्पादन करू',
+'editingwiki_user' => "प्रयोक्ताक प्रयोक्ता अधिकार बदलब '''[[wiki_user:$1|$1]]''' $2",
+'wiki_userrights-editwiki_usergroup' => 'प्रयोक्ता संवर्ग सभक सम्पादन करू',
+'savewiki_usergroups' => 'प्रयोक्ता संवर्ग सभकेँ सुरक्षित करू',
+'wiki_userrights-groupsmember' => 'क सदस्य:',
+'wiki_userrights-groupsmember-auto' => 'क जानल सदस्य:',
+'wiki_userrights-groups-help' => 'अहाँ ऐ प्रयोक्ताक वर्गकेँ बदलि सकै छी:
 * एकटा निशान लगाएल बक्सा माने प्रयोक्ता ओइ वर्गमे अछि।
 * एकटा बिन निशान लगाएल माने प्रयोक्ता ओइ वर्गमे नै अछि।
 * ई * देखबैए जे अहाँ वर्गकेँ एक बेर देलाक बाद हटा नै सकै छी, आ एकर उलट सेहो ठीक अछि।',
-'userrights-reason' => 'कारण:',
-'userrights-no-interwiki' => 'अहाँकेँ दोसर विकीपर प्रयोक्ता अधिकारकेँ बदलबाक अधिकार नै अछि।',
-'userrights-nodatabase' => 'दत्तनिधि $1 नै अछि वा स्थानीय नै अछि।',
-'userrights-nologin' => 'अहाँ [[Special:UserLogin|सम्प्रवेश]] प्रयोक्ता अधिकार देबा लेल संचालक खातासँ सम्प्रवेश करू।',
-'userrights-notallowed' => 'अहाँक खाता दोसराक प्रयोक्ता अधिकारमे कमी बेशी नै करैत अछि।',
-'userrights-changeable-col' => 'वर्ग जे अहाँ बदलि सकै छी',
-'userrights-unchangeable-col' => 'वर्ग जे अहाँ नै बदलि सकै छी',
-'userrights-irreversible-marker' => '$1*',
+'wiki_userrights-reason' => 'कारण:',
+'wiki_userrights-no-interwiki' => 'अहाँकेँ दोसर विकीपर प्रयोक्ता अधिकारकेँ बदलबाक अधिकार नै अछि।',
+'wiki_userrights-nodatabase' => 'दत्तनिधि $1 नै अछि वा स्थानीय नै अछि।',
+'wiki_userrights-nologin' => 'अहाँ [[Special:wiki_userLogin|सम्प्रवेश]] प्रयोक्ता अधिकार देबा लेल संचालक खातासँ सम्प्रवेश करू।',
+'wiki_userrights-notallowed' => 'अहाँक खाता दोसराक प्रयोक्ता अधिकारमे कमी बेशी नै करैत अछि।',
+'wiki_userrights-changeable-col' => 'वर्ग जे अहाँ बदलि सकै छी',
+'wiki_userrights-unchangeable-col' => 'वर्ग जे अहाँ नै बदलि सकै छी',
+'wiki_userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'वर्ग:',
-'group-user' => 'प्रयोक्ता सभ',
+'group-wiki_user' => 'प्रयोक्ता सभ',
 'group-autoconfirmed' => 'स्वतःअनुमोदित प्रयोक्ता सभ',
 'group-bot' => 'स्वचालक',
 'group-sysop' => 'माइनजन',
@@ -1209,14 +1209,14 @@ $3 द्वारा देल कारण अछि ''$2''",
 'group-suppress' => 'नजरिपर नै आएल',
 'group-all' => '(सभ)',
 
-'group-user-member' => '{{लिंग:$1|प्रयोक्ता}}',
+'group-wiki_user-member' => '{{लिंग:$1|प्रयोक्ता}}',
 'group-autoconfirmed-member' => '{{लिंग:$1|स्वतःअनुमोदित प्रयोक्ता}}',
 'group-bot-member' => '{{लिंग:$1|स्वचालक}}',
 'group-sysop-member' => '{{लिंग:$1|माइनजन}}',
 'group-bureaucrat-member' => '{{लिंग:$1|अधिकारी}}',
 'group-suppress-member' => '{{लिंग:$1|नजरिपर नै आएल}}',
 
-'grouppage-user' => '{{ns:project}}:प्रयोक्ता सभ',
+'grouppage-wiki_user' => '{{ns:project}}:प्रयोक्ता सभ',
 'grouppage-autoconfirmed' => '{{ns:project}}:स्वतःअनुमोदित प्रयोक्ता सभ',
 'grouppage-bot' => '{{ns:project}}:स्वचालक सभ',
 'grouppage-sysop' => '{{ns:project}}:माइनजन सभ',
@@ -1232,7 +1232,7 @@ $3 द्वारा देल कारण अछि ''$2''",
 'right-minoredit' => 'सम्पादन सभकेँ मामूली चिन्हित करू',
 'right-move' => 'पन्ना सभ घसकाउ',
 'right-move-subpages' => 'पन्ना सभकेँ उपपन्ना सभक संग घसकाउ',
-'right-move-rootuserpages' => 'मूल प्रयोक्ता पन्ना सभ घसकाउ',
+'right-move-rootwiki_userpages' => 'मूल प्रयोक्ता पन्ना सभ घसकाउ',
 'right-movefile' => 'संचिका सभकेँ घसकाउ',
 'right-suppressredirect' => 'पन्ना घसकेबा काल मूल पन्ना सभसँ लागि सभ नै बनाउ',
 'right-upload' => 'संचिका सभ उपारोपित करू',
@@ -1257,16 +1257,16 @@ $3 द्वारा देल कारण अछि ''$2''",
 'right-suppressionlog' => 'व्यक्तिगत वृत्तलेख देखू',
 'right-block' => 'दोसर प्रयोक्ताकेँ सम्पादनसँ रोकू',
 'right-blockemail' => 'प्रयोक्ताकेँ ई-पत्र पठेबासँ रोकू',
-'right-hideuser' => 'एकटा प्रयोक्तानामकेँ प्रतिबन्धित करू, लोकसँ एकरा नुका कऽ',
+'right-hidewiki_user' => 'एकटा प्रयोक्तानामकेँ प्रतिबन्धित करू, लोकसँ एकरा नुका कऽ',
 'right-ipblock-exempt' => 'अनिकेत प्रतिबन्ध, स्वचालित प्रतिबन्ध आ परिक्षेत्र प्रतिबन्धकेँ नै मानू',
 'right-proxyunbannable' => 'दोसराइतक स्वचालित प्रतिबन्धकेँ नै मानू',
 'right-unblockself' => 'स्वयंकेँ प्रतिबन्धसँ हटाउ',
 'right-protect' => 'सुरक्षा स्तर बदलू आ संरक्षित पन्ना सम्पादित करू',
 'right-editprotected' => 'संरक्षित पन्ना सम्पादित करू (बिना तराउपड़ी सुरक्षाक)',
 'right-editinterface' => 'प्रयोक्ता मध्यस्थक सम्पादन करू',
-'right-editusercssjs' => 'दोसर प्रयोक्ताक सी.एस.एस. आ जावास्क्रिप्ट संचिका सभक सम्पादन करू',
-'right-editusercss' => 'दोसर प्रयोक्ता सभक सी.एस.एस. संचिका सभक सम्पादन करू',
-'right-edituserjs' => 'दोसर प्रयोक्ताक जावास्क्रिप्ट संचिका सभक सम्पादन करू',
+'right-editwiki_usercssjs' => 'दोसर प्रयोक्ताक सी.एस.एस. आ जावास्क्रिप्ट संचिका सभक सम्पादन करू',
+'right-editwiki_usercss' => 'दोसर प्रयोक्ता सभक सी.एस.एस. संचिका सभक सम्पादन करू',
+'right-editwiki_userjs' => 'दोसर प्रयोक्ताक जावास्क्रिप्ट संचिका सभक सम्पादन करू',
 'right-rollback' => 'कृपा कऽ अन्तिम प्रयोक्ताक सम्पादन सभकेँ प्रत्यावर्तित करू जे एक खास पन्नाकेँ सम्पादित केलन्हि',
 'right-markbotedits' => 'प्रत्यावर्तित सम्पादन सभकेँ स्वचालित सम्पादन देखाउ',
 'right-noratelimit' => 'दरक सीमासँ प्रभावित नै',
@@ -1277,14 +1277,14 @@ $3 द्वारा देल कारण अछि ''$2''",
 'right-patrolmarks' => 'हालक परिवर्तनमे संचालन चेन्ह देखू',
 'right-unwatchedpages' => 'बिना संचालित पन्ना सभक सूचीकेँ देखू',
 'right-mergehistory' => 'पन्नाक इतिहास सभकेँ मिज्झर करू',
-'right-userrights' => 'सभटा प्रयोक्ता अधिकारकेँ सम्पादित करू',
-'right-userrights-interwiki' => 'दोसर विकीपर प्रयोक्ताक प्रयोक्ता अधिकारक सम्पादन करू',
+'right-wiki_userrights' => 'सभटा प्रयोक्ता अधिकारकेँ सम्पादित करू',
+'right-wiki_userrights-interwiki' => 'दोसर विकीपर प्रयोक्ताक प्रयोक्ता अधिकारक सम्पादन करू',
 'right-siteadmin' => 'दत्तनिधिकेँ प्रतिबन्धित करू आ फेर प्रतिबन्ध हटाउ',
 'right-override-export-depth' => '५ परत धरि जा  पन्ना सभ निर्यात, जइमे लागिबला पन्ना सभ शामिल अछि, करू।',
 'right-sendemail' => 'ई-पत्र दोसर प्रयोक्ता लोकनिकेँ पठाउ',
 'right-passwordreset' => 'कूटशब्द पुनर्निर्धारण ई-पत्र देखू',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'प्रयोक्ता अधिकार वृत्तलेख',
 'rightslogtext' => 'ई प्रयोक्ता अधिकार परिवर्तन सभक वृतलेख छी।',
 'rightslogentry' => 'वर्गक सदस्यता बदलल गेल $1 लेल $2 सँ $3',
@@ -1300,7 +1300,7 @@ $3 द्वारा देल कारण अछि ''$2''",
 'action-minoredit' => 'ऐ सम्पादनकेँ मामूली कहू',
 'action-move' => 'ऐ पृष्ठकेँ घसकाउ',
 'action-move-subpages' => 'ऐ पन्ना आ एकर उपपन्नाकेँ घसकाउ',
-'action-move-rootuserpages' => 'मूल प्रयोक्ता पन्ना सभ घसकाउ',
+'action-move-rootwiki_userpages' => 'मूल प्रयोक्ता पन्ना सभ घसकाउ',
 'action-movefile' => 'ऐ संचिकाकेँ घसकाउ',
 'action-upload' => 'ऐ संचिकाकेँ उपारोपित करू',
 'action-reupload' => 'ऐ संचिकाक पुनर्लेखन करू',
@@ -1323,8 +1323,8 @@ $3 द्वारा देल कारण अछि ''$2''",
 'action-autopatrol' => 'अपन सम्पादनकेँ संचालित देखाउ',
 'action-unwatchedpages' => 'बिना संचालित पन्ना सभक सूचीकेँ देखू',
 'action-mergehistory' => 'पन्नाक इतिहासकेँ मिज्झर करू',
-'action-userrights' => 'सभटा प्रयोक्ता अधिकारकेँ सम्पादित करू',
-'action-userrights-interwiki' => 'दोसर विकीपर प्रयोक्ताक प्रयोक्ता अधिकारक सम्पादन करू',
+'action-wiki_userrights' => 'सभटा प्रयोक्ता अधिकारकेँ सम्पादित करू',
+'action-wiki_userrights-interwiki' => 'दोसर विकीपर प्रयोक्ताक प्रयोक्ता अधिकारक सम्पादन करू',
 'action-siteadmin' => 'दत्तनिधिकेँ प्रतिबन्धित करू आ फेर प्रतिबन्ध हटाउ',
 'action-sendemail' => 'ई-पत्र पठाउ',
 
@@ -1356,7 +1356,7 @@ $3 द्वारा देल कारण अछि ''$2''",
 'newpageletter' => 'न',
 'boteditletter' => 'ब',
 'unpatrolledletter' => '!',
-'number_of_watching_users_pageview' => '[$1 देखै अछि {{PLURAL:$1|प्रयोक्ता|प्रयोक्ता सभ}}]',
+'number_of_watching_wiki_users_pageview' => '[$1 देखै अछि {{PLURAL:$1|प्रयोक्ता|प्रयोक्ता सभ}}]',
 'rc_categories' => 'संवर्ग सीमित ("|" सँ हटाउ)',
 'rc_categories_any' => 'कोनो',
 'rc-change-size' => '$1',
@@ -1381,7 +1381,7 @@ $3 द्वारा देल कारण अछि ''$2''",
 'reuploaddesc' => 'उपारोपण रद्द करू आ उपारोपण आवेदन-पत्रपर घुरू।',
 'upload-tryagain' => 'संशोधित संचिका वर्णन दिअ',
 'uploadnologin' => 'सम्प्रवेशित नै',
-'uploadnologintext' => 'अहाँ [[Special:UserLogin|सम्प्रवेशित]] संचिका उपारोपित करबा लेल।',
+'uploadnologintext' => 'अहाँ [[Special:wiki_userLogin|सम्प्रवेशित]] संचिका उपारोपित करबा लेल।',
 'upload_directory_missing' => 'उपारोप्य निर्देशिका ($1) हेराएल अछि आ जालवितरक द्वारा नै बनाएल जा सकैए।',
 'upload_directory_read_only' => 'उपारोप्य निर्देशिका ($1) जालवितरक द्वारा लिखबा योग्य नै अछि।',
 'uploaderror' => 'उपारोपण भ्रम',
@@ -1505,11 +1505,11 @@ $1',
 'upload-proto-error-text' => 'दूरसँ उपारोपण लेल <code>http://</code> or <code>ftp://</code> सँ प्रारम्भ होएबला सार्वत्रिक विभव संकेत चाही।',
 'upload-file-error' => 'आन्तरिक भ्रम',
 'upload-file-error-text' => 'वितरकपर एकटा अस्थायी संचिका बनेबाक प्रयासमे एकटा आन्तरिक भ्रम आएल।
-सम्पर्क करू [[Special:ListUsers/sysop|संचालक]] सँ।',
+सम्पर्क करू [[Special:Listwiki_users/sysop|संचालक]] सँ।',
 'upload-misc-error' => 'विचित्र उपारोपण भ्रम',
 'upload-misc-error-text' => 'उपारोपण काल एकटा विचित्र भ्रम आएल।
 कृपा कऽ जाँचू कि सार्वत्रिक विभव संकेत मान्य आ प्रवेश-उपयुक्त अछि आ फेरसँ प्रयास करू।
-जँ समस्या रहिते अछि तँ [[Special:ListUsers/sysop|संचालक]] सँ सम्पर्क करू।',
+जँ समस्या रहिते अछि तँ [[Special:Listwiki_users/sysop|संचालक]] सँ सम्पर्क करू।',
 'upload-too-many-redirects' => 'ई सार्वत्रिक विभव संकेत बड्ड बेसी घुमौआ लागिक संग अछि।',
 'upload-unknown-size' => 'अज्ञात आकार',
 'upload-http-error' => 'परिसंविद भ्रम आएल:$1',
@@ -1585,7 +1585,7 @@ $1',
 'listfiles_thumb' => 'लघुचित्र',
 'listfiles_date' => 'तिथि',
 'listfiles_name' => 'नाम',
-'listfiles_user' => 'प्रयोक्ता',
+'listfiles_wiki_user' => 'प्रयोक्ता',
 'listfiles_size' => 'आकार',
 'listfiles_description' => 'वर्णन',
 'listfiles_count' => 'संस्करण सभ',
@@ -1602,7 +1602,7 @@ $1',
 'filehist-thumb' => 'लघुचित्र',
 'filehist-thumbtext' => 'तखुनका लघुचित्र $1',
 'filehist-nothumb' => 'कोनो लघुचित्र नै',
-'filehist-user' => 'प्रयोक्ता',
+'filehist-wiki_user' => 'प्रयोक्ता',
 'filehist-dimensions' => 'बीम',
 'filehist-filesize' => 'संचिका आकार',
 'filehist-comment' => 'समीक्षा',
@@ -1690,7 +1690,7 @@ $1',
 'statistics-header-pages' => 'पन्नाक सांख्यिकी',
 'statistics-header-edits' => 'सांख्यिकीक सम्पादन करू',
 'statistics-header-views' => 'सांख्यिकी देखू',
-'statistics-header-users' => 'प्रयोक्ता सांख्यिकी',
+'statistics-header-wiki_users' => 'प्रयोक्ता सांख्यिकी',
 'statistics-header-hooks' => 'दोसर सांख्यिकी',
 'statistics-articles' => 'अनुक्रम पन्ना सभ',
 'statistics-pages' => 'पन्ना सभ',
@@ -1701,9 +1701,9 @@ $1',
 'statistics-views-total' => 'दृश्य आइ धरि',
 'statistics-views-total-desc' => 'अस्तित्वहीन पन्ना आ विशेष पन्नाक दृश्य सम्मिलित नै अछि',
 'statistics-views-peredit' => 'प्रति सम्पादन देखल गेल',
-'statistics-users' => '[[Special:ListUsers|users]] छथि',
-'statistics-users-active' => 'सक्रिय प्रयोक्ता',
-'statistics-users-active-desc' => 'प्रयोक्ता जे अन्तिम {{PLURAL:$1|दिन|$1 दिन}} मे कोनो काज केने छथि',
+'statistics-wiki_users' => '[[Special:Listwiki_users|wiki_users]] छथि',
+'statistics-wiki_users-active' => 'सक्रिय प्रयोक्ता',
+'statistics-wiki_users-active-desc' => 'प्रयोक्ता जे अन्तिम {{PLURAL:$1|दिन|$1 दिन}} मे कोनो काज केने छथि',
 'statistics-mostpopular' => 'सभसँ बेसी देखल गेल पन्ना',
 
 'disambiguations' => 'स्पष्ट पन्नासँ लागिबला पन्ना',
@@ -1776,13 +1776,13 @@ $1',
 'protectedtitles' => 'संरक्षित शीर्षक सभ',
 'protectedtitlestext' => 'ई शीर्षक सभ बनबासँ प्रतिबन्धित अछि',
 'protectedtitlesempty' => 'कोनो पन्ना ऐ सभ परिमिति लेल सुरक्षित नै राखल गेल अछि।',
-'listusers' => 'प्रयोक्ता सूची',
-'listusers-editsonly' => 'सम्पादन करैबला प्रयोक्ताकेँ मात्र देखाउ',
-'listusers-creationsort' => 'निर्माण तिथिक हिसाबसँ छाँटू',
-'usereditcount' => '$1 {{PLURAL:$1|सम्पादन|सम्पादन सभ}}',
-'usercreated' => '{{GENDER:$3| बनैलक|बनैलकिन्ह}} $1 तिथि पर $2 काले',
+'listwiki_users' => 'प्रयोक्ता सूची',
+'listwiki_users-editsonly' => 'सम्पादन करैबला प्रयोक्ताकेँ मात्र देखाउ',
+'listwiki_users-creationsort' => 'निर्माण तिथिक हिसाबसँ छाँटू',
+'wiki_usereditcount' => '$1 {{PLURAL:$1|सम्पादन|सम्पादन सभ}}',
+'wiki_usercreated' => '{{GENDER:$3| बनैलक|बनैलकिन्ह}} $1 तिथि पर $2 काले',
 'newpages' => 'नव पन्ना सभ',
-'newpages-username' => 'प्रयोक्तानाम:',
+'newpages-wiki_username' => 'प्रयोक्तानाम:',
 'ancientpages' => 'सभसँ पुरान पन्ना सभ',
 'move' => 'हटाउ',
 'movethispage' => 'ऐ पृष्ठकेँ घसकाउ',
@@ -1807,7 +1807,7 @@ $1',
 'booksources-invalid-isbn' => 'देल आइ.एस.बी.एन. संख्या मान्य नै बुझाइत अछि; कृपा कऽ मूल स्रोतसँ द्वितीयक बनेबा काल भेल भ्रमकेँ जाँचू।',
 
 # Special:Log
-'specialloguserlabel' => 'कर्ता:',
+'speciallogwiki_userlabel' => 'कर्ता:',
 'speciallogtitlelabel' => 'लक्ष्य (शीर्षक वा प्रयोक्ता):',
 'log' => 'वृत्तलेख सभ',
 'all-logs-page' => 'सभटा सार्वजनिक वृत्तलेख',
@@ -1857,24 +1857,24 @@ $1',
 'linksearch-line' => '$2 सँ $1 क लागि अछि।',
 'linksearch-error' => 'निमंत्रकनामक प्रारम्भमे ब्रह्मास्त्र आबि सकैए।',
 
-# Special:ListUsers
-'listusersfrom' => 'प्रयोक्ता प्रदर्शन प्रारम्भ भेल:',
-'listusers-submit' => 'देखाउ',
-'listusers-noresult' => 'कोनो प्रयोक्ता नै',
-'listusers-blocked' => '(प्रतिबन्धित)',
+# Special:Listwiki_users
+'listwiki_usersfrom' => 'प्रयोक्ता प्रदर्शन प्रारम्भ भेल:',
+'listwiki_users-submit' => 'देखाउ',
+'listwiki_users-noresult' => 'कोनो प्रयोक्ता नै',
+'listwiki_users-blocked' => '(प्रतिबन्धित)',
 
-# Special:ActiveUsers
-'activeusers' => 'सक्रिय प्रयोक्ता सभक सूची',
-'activeusers-intro' => 'ई ओहेन प्रयोक्ता सभक सूची अछि जे पछिला $1 {{PLURAL:$1|दिन|दिन}} मे किछु सक्रियता देखेने छथि।',
-'activeusers-count' => '$1 {{PLURAL:$1|सम्पादन|सम्पादन सभ}} paChilaa {{PLURAL:$3|दिन|$3 दिन}}',
-'activeusers-from' => 'प्रयोक्ता प्रदर्शन प्रारम्भ भेल:',
-'activeusers-hidebots' => 'स्वचालन नुकाउ',
-'activeusers-hidesysops' => 'संचालक नुकाउ',
-'activeusers-noresult' => 'कोनो प्रयोक्ता नै भेटल',
+# Special:Activewiki_users
+'activewiki_users' => 'सक्रिय प्रयोक्ता सभक सूची',
+'activewiki_users-intro' => 'ई ओहेन प्रयोक्ता सभक सूची अछि जे पछिला $1 {{PLURAL:$1|दिन|दिन}} मे किछु सक्रियता देखेने छथि।',
+'activewiki_users-count' => '$1 {{PLURAL:$1|सम्पादन|सम्पादन सभ}} paChilaa {{PLURAL:$3|दिन|$3 दिन}}',
+'activewiki_users-from' => 'प्रयोक्ता प्रदर्शन प्रारम्भ भेल:',
+'activewiki_users-hidebots' => 'स्वचालन नुकाउ',
+'activewiki_users-hidesysops' => 'संचालक नुकाउ',
+'activewiki_users-noresult' => 'कोनो प्रयोक्ता नै भेटल',
 
-# Special:Log/newusers
-'newuserlogpage' => 'प्रयोक्ता रचना वृत्तलेख',
-'newuserlogpagetext' => 'ई प्रयोक्ता निर्माणक वृत्तलेख अछि।',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'प्रयोक्ता रचना वृत्तलेख',
+'newwiki_userlogpagetext' => 'ई प्रयोक्ता निर्माणक वृत्तलेख अछि।',
 
 # Special:ListGroupRights
 'listgrouprights' => 'प्रयोक्ता संवर्ग अधिकार',
@@ -1895,25 +1895,25 @@ $1',
 'listgrouprights-addgroup-self-all' => 'सभटा वर्गकेँ अपन खातामे जोड़ू',
 'listgrouprights-removegroup-self-all' => 'सभटा वर्गकेँ अपन खातासँ निकालू',
 
-# E-mail user
+# E-mail wiki_user
 'mailnologin' => 'कोनो पठेबाक पता नै',
-'mailnologintext' => 'अहाँ [[Special:UserLogin|सम्प्रवेशित]] हेबाक चाही आ अहाँक विकल्प [[Special:Preferences|preferences]]  मे एकटा मान्य ई-पत्र संकेत दोसर प्रयोक्ताकेँ पठेबा लेल हेबाक चाही।',
-'emailuser' => 'ऐ प्रयोक्ताकेँ ई-पत्र पठाउ',
+'mailnologintext' => 'अहाँ [[Special:wiki_userLogin|सम्प्रवेशित]] हेबाक चाही आ अहाँक विकल्प [[Special:Preferences|preferences]]  मे एकटा मान्य ई-पत्र संकेत दोसर प्रयोक्ताकेँ पठेबा लेल हेबाक चाही।',
+'emailwiki_user' => 'ऐ प्रयोक्ताकेँ ई-पत्र पठाउ',
 'emailpage' => 'ई-पत्र प्रयोक्ता',
 'emailpagetext' => 'अहाँक नीचाँक आवेदन-पत्र ऐ प्रयोक्ताकेँ ई-पत्र संदेश पठेबा लेल प्रयोग कऽ सकै छी।
-ई-पत्र जे अहाँ [[Special:Preferences|your user preferences]] मे देलहुँ से ई-पत्र"एतएसँ" पतासँ देखाएत, से प्राप्तकर्ता सोझे अहाँकेँ उत्तर देबामे समर्थ हेताह।',
-'usermailererror' => 'ई-पत्र बौस्तु घुरल भ्रम:',
+ई-पत्र जे अहाँ [[Special:Preferences|your wiki_user preferences]] मे देलहुँ से ई-पत्र"एतएसँ" पतासँ देखाएत, से प्राप्तकर्ता सोझे अहाँकेँ उत्तर देबामे समर्थ हेताह।',
+'wiki_usermailererror' => 'ई-पत्र बौस्तु घुरल भ्रम:',
 'defemailsubject' => '{{जालस्थल}} प्रयोक्ता "$1" सँ ई-पत्र',
-'usermaildisabled' => 'प्रयोक्ता ई-पत्र अशक्त',
-'usermaildisabledtext' => 'अहाँ दोसर प्रयोक्ताकेँ ऐ विकीपर ई-पत्र नै पठा सकै छिऐ।',
+'wiki_usermaildisabled' => 'प्रयोक्ता ई-पत्र अशक्त',
+'wiki_usermaildisabledtext' => 'अहाँ दोसर प्रयोक्ताकेँ ऐ विकीपर ई-पत्र नै पठा सकै छिऐ।',
 'noemailtitle' => 'कोनो ई-पत्र पता नै',
 'noemailtext' => 'ई पर्योक्ता अपन कोनो मान्य ई-पत्र संकेत नै देने अछि।',
 'nowikiemailtitle' => 'कोनो ई-पत्रक अनुमति नै अछि',
 'nowikiemailtext' => 'ई प्रयोक्ता दोसर प्रयोक्तासँ ई-पत्र प्राप्त नै करबाक विकल्प चुनने अछि।',
 'emailnotarget' => 'अस्तित्वहीन वा अमान्य प्राप्तकर्ताक प्रयोक्तानाम',
 'emailtarget' => 'प्राप्तकर्ताक प्रयोक्तानाम दर्ज करू',
-'emailusername' => 'प्रयोक्तानाम:',
-'emailusernamesubmit' => 'दिअ',
+'emailwiki_username' => 'प्रयोक्तानाम:',
+'emailwiki_usernamesubmit' => 'दिअ',
 'email-legend' => 'ई-पत्र दोसर {{जालस्थल}} प्रयोक्ताकेँ पठाउ',
 'emailfrom' => 'एतऽसँ:',
 'emailto' => 'ऐलेल:',
@@ -1924,12 +1924,12 @@ $1',
 'emailccsubject' => 'अहाँक संदेशक द्वितीयक $1: $2',
 'emailsent' => 'ई-पत्र पठेलौं',
 'emailsenttext' => 'अहाँक ई-पत्र संदेश पठाएल गेल।',
-'emailuserfooter' => 'ई ई-पत्र $1 सँ $2 केँ "ई-पत्र प्रयोक्ता" केँ पठाओल गेल {{जालसथल}} पर।',
+'emailwiki_userfooter' => 'ई ई-पत्र $1 सँ $2 केँ "ई-पत्र प्रयोक्ता" केँ पठाओल गेल {{जालसथल}} पर।',
 
-# User Messenger
-'usermessage-summary' => 'प्रणाली संदेश देल।',
-'usermessage-editor' => 'प्रणालीक दूत',
-'usermessage-template' => 'मीडियाविकी:प्रयोक्ता संदेश',
+# wiki_user Messenger
+'wiki_usermessage-summary' => 'प्रणाली संदेश देल।',
+'wiki_usermessage-editor' => 'प्रणालीक दूत',
+'wiki_usermessage-template' => 'मीडियाविकी:प्रयोक्ता संदेश',
 
 # Watchlist
 'watchlist' => 'हमर साकांक्षसूची',
@@ -1938,7 +1938,7 @@ $1',
 'nowatchlist' => 'अहाँक साकांक्ष-सूचीमे कोनो बौस्तु नै अछि।',
 'watchlistanontext' => 'कृपा कऽ $1 अहाँक साकांक्ष-सूचीकेँ देखबा वा सम्पादित करबा लेल।',
 'watchnologin' => 'सम्प्रवेशित नै',
-'watchnologintext' => 'अहाँ [[Special:UserLogin|सम्प्रवेशित]] साकांक्ष-सूची संशोधित करबा लेल।',
+'watchnologintext' => 'अहाँ [[Special:wiki_userLogin|सम्प्रवेशित]] साकांक्ष-सूची संशोधित करबा लेल।',
 'addwatch' => 'साकांक्ष सूचीमे जोड़ू',
 'addedwatchtext' => "पन्ना \"[[:\$1]]\" अहाँक [[Special:Watchlist|साकांक्ष सूची]] मे जोड़ल गेल।
 ऐ पन्नामे भविष्यक परिवर्तन आ एकर सम्बन्धित चौबटिया पन्ना एतए सूचीबद्ध रहत, आ पन्ना [[Special:RecentChanges|हालक परिवर्तन]]मे '''गाढ़''' देखाएत , जइसँ आसानीसँ एकरा चिन्हल जा सकत।",
@@ -2048,12 +2048,12 @@ $UNWATCHURL
 'rollbackfailed' => 'प्रत्यावर्तन असफल',
 'cantrollback' => 'सम्पादन आपस नै भऽ सकै अछि;
 अन्तिम योगदान दैबला ऐ पन्नाक एकमात्र लेखक छी।',
-'alreadyrolled' => 'अन्तिम सम्पादनक प्रत्यावर्तन नै भऽ सकैए [[:$1]] by [[User:$2|$2]] ([[User talk:$2|talk]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
+'alreadyrolled' => 'अन्तिम सम्पादनक प्रत्यावर्तन नै भऽ सकैए [[:$1]] by [[wiki_user:$2|$2]] ([[wiki_user talk:$2|talk]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
 कियो आन ऐ पन्नाकेँ पहिनहिये सम्पादित वा प्रत्यावर्तित कऽ देने अछि।
-ऐ पन्नाक अन्तिम सम्पादन भेल अछि एकरा द्वारा [[User:$3|$3]] ([[User talk:$3|talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]])।',
+ऐ पन्नाक अन्तिम सम्पादन भेल अछि एकरा द्वारा [[wiki_user:$3|$3]] ([[wiki_user talk:$3|talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]])।',
 'editcomment' => "सम्पादन सार छल : \"''\$1''\"।",
-'revertpage' => 'सम्पादन आपस कएल गेल [[Special:Contributions/$2|$2]] ([[User talk:$2|talk]]) सँ अन्तिम संशोधन धरि एकरा द्वारा [[User:$1|$1]]।',
-'revertpage-nouser' => '(प्रयोक्ताक नाम हटा देल गेल अछि) द्वारा केल गेल संपादनकेँ फेरसँ पुरान स्थितिमे आनि कऽ एकर पहिलुक [[User:$1|$1]] सँ बनल संस्करणकेँ फेरसँ ताजा संस्करण बनाऊ।',
+'revertpage' => 'सम्पादन आपस कएल गेल [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|talk]]) सँ अन्तिम संशोधन धरि एकरा द्वारा [[wiki_user:$1|$1]]।',
+'revertpage-nowiki_user' => '(प्रयोक्ताक नाम हटा देल गेल अछि) द्वारा केल गेल संपादनकेँ फेरसँ पुरान स्थितिमे आनि कऽ एकर पहिलुक [[wiki_user:$1|$1]] सँ बनल संस्करणकेँ फेरसँ ताजा संस्करण बनाऊ।',
 'rollback-success' => '$1 केर संपादन हटाऊ. 
 $2 केर संपादित आखिरी अवतरण क पुनर्स्थापित करल गेल.',
 
@@ -2207,13 +2207,13 @@ $1',
 'sp-contributions-uploads' => 'उपारोपण',
 'sp-contributions-logs' => 'वृत्तलेख सभ',
 'sp-contributions-talk' => 'वार्त्ता',
-'sp-contributions-userrights' => 'प्रयोक्ता अधिकारक प्रबन्धन',
+'sp-contributions-wiki_userrights' => 'प्रयोक्ता अधिकारक प्रबन्धन',
 'sp-contributions-blocked-notice' => 'ई प्रयोक्ता अखन प्रतिबन्धित अछि।
 अद्यतन प्रतिबन्धित  वृत्तलेख लेखा सन्दर्भ नीचाँ देल अछि:',
 'sp-contributions-blocked-notice-anon' => 'ई अनिकेत अखन प्रतिबन्धित अछि।
 अद्यतन प्रतिबन्धित  वृत्तलेख लेखा सन्दर्भ नीचाँ देल अछि:',
 'sp-contributions-search' => 'अवदानक लेल ताकू',
-'sp-contributions-username' => 'अनिकेत संकेत वा प्रयोक्तानाम:',
+'sp-contributions-wiki_username' => 'अनिकेत संकेत वा प्रयोक्तानाम:',
 'sp-contributions-toponly' => 'मात्र ओइ सम्पादनकेँ देखाउ जे अद्यतन संशोधन छी।',
 'sp-contributions-submit' => 'ताकू',
 
@@ -2246,7 +2246,7 @@ $1',
 'blockiptext' => 'नीचाँक आवेदनक प्रयोग कोनो खास अनिकेत वा प्रयोक्तानामक लिखैक प्रवेशकेँ प्रतिबन्धित करबा लेल करू।
 ई अतत्तः करैबलाक विरुद्ध प्रयुक्त हुअए, आ एकर अनुसार [[{{MediaWiki:Policy-url}}|policy]]।
 नीचाँ स्पष्ट कारण लिखू (जेना, खास पन्नाकेँ देखबैत जतए अतत्तः कएल गेल अछि)।',
-'ipadressorusername' => 'अनिकेत संकेत वा प्रयोक्तानाम:',
+'ipadressorwiki_username' => 'अनिकेत संकेत वा प्रयोक्तानाम:',
 'ipbexpiry' => 'खतम हएत:',
 'ipbreason' => 'कारण:',
 'ipbreasonotherlist' => 'दोसर कारण',
@@ -2268,8 +2268,8 @@ $1',
 'ipbotheroption' => 'आन',
 'ipbotherreason' => 'दोसर/ अतिरिक्त कारण:',
 'ipbhidename' => 'प्रयोक्तानामकेँ सम्पादन आ सूचीसँ हटाउ',
-'ipbwatchuser' => 'ऐ प्रयोक्ताक अपन आ वार्ता पन्नापर नजरि राखू',
-'ipb-disableusertalk' => 'ऐ प्रयोक्ताकेँ प्रतिबन्ध अवधिमे अपन वार्ता पन्नाक सम्पादनसँ रोकू।',
+'ipbwatchwiki_user' => 'ऐ प्रयोक्ताक अपन आ वार्ता पन्नापर नजरि राखू',
+'ipb-disablewiki_usertalk' => 'ऐ प्रयोक्ताकेँ प्रतिबन्ध अवधिमे अपन वार्ता पन्नाक सम्पादनसँ रोकू।',
 'ipb-change-block' => 'प्रयोक्ताकें  पुनः प्रतिबन्धित करू ई विकल्पक संग',
 'ipb-confirm' => 'प्रतिबन्ध सुनिश्चित करू',
 'badipaddress' => 'अमान्य आईपी पता',
@@ -2277,7 +2277,7 @@ $1',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] प्रतिबन्धित कएल गेल।<br />
 देखू [[Special:BlockList|IP block list]] प्रतिबन्धक पुनरीक्षण लेल।',
 'ipb-blockingself' => 'अहाँ अपनाकेँ प्रतिबन्धित करैबला छी! अहाँ निश्च्य केने छी जे अहाँ ई करए चाहै छी?',
-'ipb-confirmhideuser' => 'अहाँ एकटा प्रयोक्ताकेँ जे "प्रयोक्ता नुकाउ" विकल्पक संग अछि, प्रतिबन्धित करैबला छी। ई प्रयोक्ताक नाम सभटा सूची आ वृत्तलेखमे दबा देत। की अहाँ निश्चय केने छी जे अहाँ ई करए चाहै छी?',
+'ipb-confirmhidewiki_user' => 'अहाँ एकटा प्रयोक्ताकेँ जे "प्रयोक्ता नुकाउ" विकल्पक संग अछि, प्रतिबन्धित करैबला छी। ई प्रयोक्ताक नाम सभटा सूची आ वृत्तलेखमे दबा देत। की अहाँ निश्चय केने छी जे अहाँ ई करए चाहै छी?',
 'ipb-edit-dropdown' => 'प्रतिबन्ध कारण  संपादित करू',
 'ipb-unblock-addr' => 'प्रतिबन्ध हटाएल $1',
 'ipb-unblock' => 'प्रयोक्ता वा अनिकेतकें अप्रतिबंधित करू',
@@ -2286,13 +2286,13 @@ $1',
 'unblockip' => 'प्रयोक्ताकेँ प्रतिबन्धसँ हटाउ',
 'unblockiptext' => 'पहिनेसँ प्रतिबन्धित अनिकेत वा प्रयोक्तानामकेँ लिखबाक अधिकार देबा लेल निचुलका आवेदन भरू।',
 'ipusubmit' => 'ई  प्रतिबन्ध हटाउ',
-'unblocked' => '[[User:$1|$1]] अप्रतिबन्धित कएल गेल',
+'unblocked' => '[[wiki_user:$1|$1]] अप्रतिबन्धित कएल गेल',
 'unblocked-range' => '$1 अप्रतिबन्धित कएल गेल',
 'unblocked-id' => '$1 अप्रतिबन्धित कएल गेल',
 'blocklist' => 'प्रतिबन्धित प्रयोक्ता सभ',
 'ipblocklist' => 'प्रतिबन्धित प्रयोक्ता सभ',
 'ipblocklist-legend' => 'प्रतिबन्धित प्रयोक्ताकेँ ताकू',
-'blocklist-userblocks' => 'खाता प्रतिबन्ध-सूची नुकाउ',
+'blocklist-wiki_userblocks' => 'खाता प्रतिबन्ध-सूची नुकाउ',
 'blocklist-tempblocks' => 'अस्थायी प्रतिबन्ध-सूची नुकाउ',
 'blocklist-addressblocks' => 'एकल अनिकेत प्रतिबन्ध नुकाउ',
 'blocklist-rangeblocks' => 'क्षेत्र प्रतिबन्ध नुकाउ',
@@ -2311,7 +2311,7 @@ $1',
 'noautoblockblock' => 'स्वचालित प्रतिबन्ध अशक्त',
 'createaccountblock' => 'लेखा निर्माण अशक्त कएल',
 'emailblock' => 'ई-पत्र प्रतिबन्धित',
-'blocklist-nousertalk' => 'अपन वार्ता पन्ना सम्पादित नै कऽ सकब',
+'blocklist-nowiki_usertalk' => 'अपन वार्ता पन्ना सम्पादित नै कऽ सकब',
 'ipblocklist-empty' => 'प्रतिबन्धसूची खाली अछि।',
 'ipblocklist-no-results' => 'आग्रह कएल अनिकेत वा प्रयोक्तानाम प्रतिबन्धित नै कएल गेल।',
 'blocklink' => 'प्रतिबंधित',
@@ -2319,7 +2319,7 @@ $1',
 'change-blocklink' => 'खण्ड बदलू',
 'contribslink' => 'योगदान',
 'emaillink' => 'ई-पत्र पठाउ',
-'autoblocker' => 'अहाँक अनिकेत "[[User:$1|$1]]" द्वारा प्रयोगक कारण स्वचालित रूपेँ प्रतिबन्धित भऽ गेल।
+'autoblocker' => 'अहाँक अनिकेत "[[wiki_user:$1|$1]]" द्वारा प्रयोगक कारण स्वचालित रूपेँ प्रतिबन्धित भऽ गेल।
 $1 एकर प्रतिबन्धक कारण अछि : "$2"',
 'blocklogpage' => 'प्रतिबन्धित वृत्तलेख',
 'blocklog-showlog' => 'ऐ प्रयोक्ताकेँ पहिनहिये प्रतिबन्धित कऽ देल गेल अछि।
@@ -2336,7 +2336,7 @@ $1 एकर प्रतिबन्धक कारण अछि : "$2"',
 'block-log-flags-nocreate' => 'लेखा निर्माण अशक्त कएल',
 'block-log-flags-noautoblock' => 'स्वचालित प्रतिबन्ध अशक्त',
 'block-log-flags-noemail' => 'ई-मेल अवरुद्ध',
-'block-log-flags-nousertalk' => 'अपन वार्ता पन्ना सम्पादित नै कऽ सकब',
+'block-log-flags-nowiki_usertalk' => 'अपन वार्ता पन्ना सम्पादित नै कऽ सकब',
 'block-log-flags-angry-autoblock' => 'नीक स्वचालित प्रतिबन्ध देल गेल',
 'block-log-flags-hiddenname' => 'प्रयोक्तानाम नुकाएल',
 'range_block_disabled' => 'समूह खण्ड बनेबाक संचालकक क्षमता अशक्त कएल गेल।',
@@ -2346,7 +2346,7 @@ $1 एकर प्रतिबन्धक कारण अछि : "$2"',
 'ipb_already_blocked' => '"$1" पहिनहियेसँ प्रतिबन्धित अछि',
 'ipb-needreblock' => '$1 पहिनहियेसँ प्रतिबन्धित अछि। की अहाँ विकल्प बदलऽ चाहै छी?',
 'ipb-otherblocks-header' => 'दोसर {{PLURAL:$1|block|blocks}}',
-'unblock-hideuser' => 'अहाँ ऐ प्रयोक्ताकेँ प्रतिबन्धसँ नै हटा सकै छी, कारण ओकरा सभक प्रयोक्तानाम नुकाएल अछि।',
+'unblock-hidewiki_user' => 'अहाँ ऐ प्रयोक्ताकेँ प्रतिबन्धसँ नै हटा सकै छी, कारण ओकरा सभक प्रयोक्तानाम नुकाएल अछि।',
 'ipb_cant_unblock' => 'भ्रम: खण्ड पहिचान $1 नै भेटल। ई पहिनहिये प्रतिबन्धसँ मुक्त भऽ गेल हएत।',
 'ipb_blocked_as_range' => 'भ्रम: अनिकेत $1 सोझे प्रतिबन्धित नै अछि आ अप्रतिबन्धित नै कएल जा सकैए।
 ई, मुदा, क्षेत्र $2 क अन्दर प्रतिबन्धित अछि, जे अप्रतिबन्धित कएल जा सकैए।',
@@ -2361,7 +2361,7 @@ $1 एकर प्रतिबन्धक कारण अछि : "$2"',
 'sorbsreason' => 'अहाँक अनिकेत सूचित अछि सोझे-सोझ दोसराइतक रूपमे {{जालस्थल}} क डी.एन.एस.बी.एल.मे।',
 'sorbs_create_account_reason' => 'अहाँक अनिकेत एतए सूचित अछि खुजल दोसराइत सन डी.एन.बी.एस.एल. मे जे प्रयोग कएल जाइए {{अन्तर्जाल}} द्वारा।',
 'cant-block-while-blocked' => 'अहाँ जाधरि स्वयं प्रतिबन्धित छी दोसराकेँ प्रतिबन्धित नै कऽ सकै छी।',
-'cant-see-hidden-user' => 'जै प्रयोक्ताकेँ अहाँ प्रतिबन्धित करऽ चाहै छी से पहिनहियेसँ प्रतिबन्धित आ अदृश्य अछि।
+'cant-see-hidden-wiki_user' => 'जै प्रयोक्ताकेँ अहाँ प्रतिबन्धित करऽ चाहै छी से पहिनहियेसँ प्रतिबन्धित आ अदृश्य अछि।
 कारण अहाँ लग प्रयोक्ताकेँ अदृश्य करबाक अधिकार नै अछि, अहाँ प्रयोक्ताक प्रतिबन्धकेँ देख वा सम्पादित नै कऽ सकै छी।',
 'ipbblocked' => 'अहाँ दोसर प्रयोक्ताकेँ प्रतिबन्धित वा अप्रतिबन्धित नै कऽ सकै छी, कारण अहाँ स्वयं प्रतिबन्धित छी',
 'ipbnounblockself' => 'अहाँ अपने अप्रतिबन्धित नै भऽ सकै छी',
@@ -2423,13 +2423,13 @@ $1 एकर प्रतिबन्धक कारण अछि : "$2"',
 
 ताइ परिस्थितिमे, अहाँकेँ अपनेसँ पन्नाकेँ, आवश्यकतानुसार, घसकाबऽ वा मिज्झर करऽ पड़त।",
 'movearticle' => 'पन्ना घसकाउ:',
-'moveuserpage-warning' => "'''चेतौनी!'''अहाँ एकटा प्रयोक्ता पन्ना घसका रहल छी | मोन राखू कि खाली पन्ना घसकत आ प्रयोक्ताक नाम ''नै'' बदलत ।",
+'movewiki_userpage-warning' => "'''चेतौनी!'''अहाँ एकटा प्रयोक्ता पन्ना घसका रहल छी | मोन राखू कि खाली पन्ना घसकत आ प्रयोक्ताक नाम ''नै'' बदलत ।",
 'movenologin' => 'सम्प्रवेशित नै छी',
-'movenologintext' => 'अहाँकेँ पंजीकृत प्रयोक्ता हेबाक चाही आ [[Special:UserLogin|logged in]] पन्ना घसकेबा लेल।',
+'movenologintext' => 'अहाँकेँ पंजीकृत प्रयोक्ता हेबाक चाही आ [[Special:wiki_userLogin|logged in]] पन्ना घसकेबा लेल।',
 'movenotallowed' => 'अहाँकेँ पन्ना घसकेबाक अधिकार नै अछि।',
 'movenotallowedfile' => 'अहाँकेँ संचिका सभकेँ घसकेबाक अधिकार नै अछि।',
-'cant-move-user-page' => 'अहाँकेँ प्रयोक्ता पन्ना सभकेँ घसकेबाक अधिकार नै अछि (उपपन्ना सभकेँ छोड़ि कऽ)।',
-'cant-move-to-user-page' => 'अहाँकेँ कोनो पन्नाकेँ प्रयोक्ता पन्ना लग घसकेबाक अधिकार नै अछि (प्रयोक्ता उपपन्ना लग छोड़ि कऽ)।',
+'cant-move-wiki_user-page' => 'अहाँकेँ प्रयोक्ता पन्ना सभकेँ घसकेबाक अधिकार नै अछि (उपपन्ना सभकेँ छोड़ि कऽ)।',
+'cant-move-to-wiki_user-page' => 'अहाँकेँ कोनो पन्नाकेँ प्रयोक्ता पन्ना लग घसकेबाक अधिकार नै अछि (प्रयोक्ता उपपन्ना लग छोड़ि कऽ)।',
 'newtitle' => 'नव शीर्षकपर:',
 'move-watch' => 'जड़ि पन्ना आ छीप पन्ना देखू',
 'movepagebtn' => 'पन्ना घसकाउ',
@@ -2588,8 +2588,8 @@ $1 एकर प्रतिबन्धक कारण अछि : "$2"',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|सुधार|सुधार सभ}} $2 सँ',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'अहाँक खेसरा पन्ना',
-'tooltip-pt-anonuserpage' => 'सम्पाद्न कएल जा रहल स्थानक  अनिकेतक प्रयोक्ता पन्ना',
+'tooltip-pt-wiki_userpage' => 'अहाँक खेसरा पन्ना',
+'tooltip-pt-anonwiki_userpage' => 'सम्पाद्न कएल जा रहल स्थानक  अनिकेतक प्रयोक्ता पन्ना',
 'tooltip-pt-mytalk' => 'अहाँक वार्त्ता पृष्ठ',
 'tooltip-pt-anontalk' => 'ऐ अनिकेतसँ भेल सम्पादनक वार्ता',
 'tooltip-pt-preferences' => 'हमर मोनपसंद',
@@ -2627,13 +2627,13 @@ $1 एकर प्रतिबन्धक कारण अछि : "$2"',
 'tooltip-feed-rss' => 'ऐ पन्ना लेल आर.एस.एस. सूचना',
 'tooltip-feed-atom' => 'ऐ पन्ना लेल अणु समदिया',
 'tooltip-t-contributions' => 'ऐ प्रयोक्ताक योगदानक सूची देखू',
-'tooltip-t-emailuser' => 'ऐ प्रयोक्ताकेँ ई-पत्र पठाउ',
+'tooltip-t-emailwiki_user' => 'ऐ प्रयोक्ताकेँ ई-पत्र पठाउ',
 'tooltip-t-upload' => 'चित्र आकि मीडिया फाइलकेँ अपलोड करू',
 'tooltip-t-specialpages' => 'सभटा विशेष पन्नाक सूची',
 'tooltip-t-print' => 'ऐ पृष्ठक छपैबला रूप',
 'tooltip-t-permalink' => 'पन्नाक ऐ संवर्धनक स्थायी लिंक',
 'tooltip-ca-nstab-main' => 'विषय सूचीबला पन्ना देखू',
-'tooltip-ca-nstab-user' => 'प्रयोक्ता पन्नाकेँ देखू',
+'tooltip-ca-nstab-wiki_user' => 'प्रयोक्ता पन्नाकेँ देखू',
 'tooltip-ca-nstab-media' => 'मीडिया पृष्ठ देखू',
 'tooltip-ca-nstab-special' => 'ई एकटा विशिष्ट पन्ना छी, अहाँ अही पन्नाकेँ संपादित नै कऽ सकै छी',
 'tooltip-ca-nstab-project' => 'परियोजना पन्ना देखू',
@@ -2660,13 +2660,13 @@ $1 एकर प्रतिबन्धक कारण अछि : "$2"',
 
 # Attribution
 'anonymous' => 'अज्ञात {{अन्तर्जाल}} क  {{PLURAL:$1|प्रयोक्ता|प्रयोक्ता सभ}}',
-'siteuser' => '{{अन्तर्जाल}} प्रयोक्ता $1',
-'anonuser' => '{{SITENAME}} नुकायल प्रयोक्ता $1',
+'sitewiki_user' => '{{अन्तर्जाल}} प्रयोक्ता $1',
+'anonwiki_user' => '{{SITENAME}} नुकायल प्रयोक्ता $1',
 'lastmodifiedatby' => 'ई पन्ना अंतिम बेर संवर्धित भेल $2, $1 द्वारा $3।',
 'othercontribs' => '$1 के काजुक तरहे',
 'others' => 'दोसर, आन',
-'siteusers' => '{{अन्तर्जाल}} {{PLURAL:$2|प्रयोक्ता|प्रयोक्ता सभ}} $1',
-'anonusers' => '{{अन्तर्जाल}} अज्ञात {{PLURAL:$2|प्रयोक्ता|प्रयोक्ता सभ}} $1',
+'sitewiki_users' => '{{अन्तर्जाल}} {{PLURAL:$2|प्रयोक्ता|प्रयोक्ता सभ}} $1',
+'anonwiki_users' => '{{अन्तर्जाल}} अज्ञात {{PLURAL:$2|प्रयोक्ता|प्रयोक्ता सभ}} $1',
 'creditspage' => 'पन्नाक श्रेय',
 'nocredits' => 'अहि पन्नाक लेल क्रेडिट ज़ानकारी नहि अछि',
 
@@ -2675,7 +2675,7 @@ $1 एकर प्रतिबन्धक कारण अछि : "$2"',
 'spamprotectiontext' => 'जे पाठ अहाँ सुरक्षित करए चाहै छलहुँ तकरा अनिष्ट संकेत छन्ना प्रतिबन्धित केलक।
 ई प्रायः कोनो प्रतिबन्धित बाहरी जालस्थलक लागि द्वारे भेल अछि।',
 'spamprotectionmatch' => 'ई अछि पाठ जइ कारणसँ हमर अनिष्ट संकेत छन्ना सक्रिय भेल: $1',
-'spambot_username' => 'मीडियाविकी अनिष्ट संकेत सफाइ',
+'spambot_wiki_username' => 'मीडियाविकी अनिष्ट संकेत सफाइ',
 'spam_reverting' => 'अन्तिम संशोधन लग घुरल जइमे $1 लागि नै अछि',
 'spam_blanking' => 'सभटा संशोधन $1 लागिसँ युक्त अि, खतम कऽ रहल छी',
 
@@ -2851,7 +2851,7 @@ Variants for Chinese language
 'exif-compressedbitsperpixel' => 'चित्र संकुचन अवस्था',
 'exif-pixelydimension' => 'तस्वीरक चौडाई',
 'exif-pixelxdimension' => 'तस्वीरक ऊँचाई',
-'exif-usercomment' => 'सदस्यक टिप्पणी',
+'exif-wiki_usercomment' => 'सदस्यक टिप्पणी',
 'exif-relatedsoundfile' => 'संबंधित ध्वनि फ़ाईल',
 'exif-datetimeoriginal' => 'डाटा बनाबैक तारीख आ समय',
 'exif-datetimedigitized' => 'अंकीकरण के तारीख आ समय',
@@ -3236,7 +3236,7 @@ Variants for Chinese language
 कूटशब्दक अवधि खतम भऽ गेल हएत।',
 'confirmemail_needlogin' => 'अहाँकेँ करए पड़त $1 अपन ई-पत्र-संकेत सत्यापन लेल।',
 'confirmemail_success' => 'अहाँक ई-पत्र संकेत सत्यापित कएल गेल।
-अहाँ आब [[Special:UserLogin|सम्प्रवेश]]आ विकीक प्रयोग करू।',
+अहाँ आब [[Special:wiki_userLogin|सम्प्रवेश]]आ विकीक प्रयोग करू।',
 'confirmemail_loggedin' => 'अहाँक ई-पत्र संकेत आब सत्यापित भऽ गेल।',
 'confirmemail_error' => 'सत्यापित करबा काल किछु गड़बड़ भऽ गेल।',
 'confirmemail_subject' => '{{जालस्थल}} ई-पत्र संकेत सत्यापन',
@@ -3289,10 +3289,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''Warning''': अहां जखन सें संपादन शुरू केने छी, ओकर बाद से ई पृष्ठ के मिटा देल गेल अछि.",
-'confirmrecreate' => "प्रयोक्ता [[User:$1|$1]] ([[User talk:$1|वार्ता]]) अहाँक कारण सहित सम्पादनक बाद ऐ पन्नाकेँ मेटा देलक:
+'confirmrecreate' => "प्रयोक्ता [[wiki_user:$1|$1]] ([[wiki_user talk:$1|वार्ता]]) अहाँक कारण सहित सम्पादनक बाद ऐ पन्नाकेँ मेटा देलक:
 : ''$2''
 कृपा कऽ अहाँ सुनिश्चित करू जे अहाँ ऐ पन्नाकेँ फेरसँ बनबऽ चाहै छी।",
-'confirmrecreate-noreason' => 'प्रयोक्ता [[User:$1|$1]] ([[User talk:$1|वार्ता]]) अहाँक सम्पादनक बाद ऐ पन्नाकेँ मेटा देलक| कृपा कऽ अहाँ सुनिश्चित करू जे अहाँ ऐ पन्नाकेँ फेरसँ बनबऽ चाहै छी।',
+'confirmrecreate-noreason' => 'प्रयोक्ता [[wiki_user:$1|$1]] ([[wiki_user talk:$1|वार्ता]]) अहाँक सम्पादनक बाद ऐ पन्नाकेँ मेटा देलक| कृपा कऽ अहाँ सुनिश्चित करू जे अहाँ ऐ पन्नाकेँ फेरसँ बनबऽ चाहै छी।',
 'recreate' => 'फेर सें बनाऊ',
 
 # action=purge
@@ -3370,7 +3370,7 @@ $5
 'watchlisttools-raw' => 'काँच साकांक्षसूची संपादित करू',
 
 # Signatures
-'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|talk]])',
+'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|talk]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'अज्ञात बढ़ाएल चेन्ह "$1"',
@@ -3434,7 +3434,7 @@ $5
 'specialpages-group-login' => 'सम्प्रवेश/ सम्प्रवेश आवेदन',
 'specialpages-group-changes' => 'हालक परिवर्तन आ वृत्तलेख',
 'specialpages-group-media' => 'मीडिया प्रतिवेदन आ उपारोपण',
-'specialpages-group-users' => 'प्रयोक्ता आ अधिकार',
+'specialpages-group-wiki_users' => 'प्रयोक्ता आ अधिकार',
 'specialpages-group-highuse' => 'बेसी प्रयोगबला पन्ना सभ',
 'specialpages-group-pages' => 'पन्ना सभक सूची',
 'specialpages-group-pagetools' => 'पन्नाक औजार सभ',
@@ -3533,11 +3533,11 @@ $5
 'logentry-move-move_redir-noredirect' => '$1 {{लिंग:$2|हटाएल}} पन्ना $3 सँ $4 घुमौआक अतितिक्त घुमौआकेँ बिना छोड़ने',
 'logentry-patrol-patrol' => '$1 {{GENDER:$2|चिन्हित}} संशोधन $4 $3 पन्नाक निरीक्षित',
 'logentry-patrol-patrol-auto' => '$1 स्वतः {{GENDER:$2|चिन्हित}} संशोधन $4 $3 पन्नाक निरीक्षित',
-'logentry-newusers-newusers' => '$1 {{लिंग:$2|बनाएल}} एकटा प्रयोक्ता खाता',
-'logentry-newusers-create' => '$1 {{लिंग:$2|बनाएल}} एकटा प्रयोक्ता खाता',
-'logentry-newusers-create2' => '$1 {{लिंग:$2|बनाएल}} {{लिंग:$4|एकटा प्रयोक्ता खाता}} $3',
-'logentry-newusers-autocreate' => 'खाता $1 छल {{लिंग:$2|बनाएल}} स्वतः',
-'newuserlog-byemail' => 'कूटशब्द ई-पत्र द्वारा पठाएल गेल',
+'logentry-newwiki_users-newwiki_users' => '$1 {{लिंग:$2|बनाएल}} एकटा प्रयोक्ता खाता',
+'logentry-newwiki_users-create' => '$1 {{लिंग:$2|बनाएल}} एकटा प्रयोक्ता खाता',
+'logentry-newwiki_users-create2' => '$1 {{लिंग:$2|बनाएल}} {{लिंग:$4|एकटा प्रयोक्ता खाता}} $3',
+'logentry-newwiki_users-autocreate' => 'खाता $1 छल {{लिंग:$2|बनाएल}} स्वतः',
+'newwiki_userlog-byemail' => 'कूटशब्द ई-पत्र द्वारा पठाएल गेल',
 
 # API errors
 'api-error-badaccess-groups' => 'अहि विकी सें अहां कोनो प्रारूप लोड नहि क सकब.',

@@ -1,6 +1,6 @@
 <?php
 /**
- * External authentication with hardcoded user names and passwords
+ * External authentication with hardcoded wiki_user names and passwords
  *
  * Copyright © 2009 Aryeh Gregor
  *
@@ -26,7 +26,7 @@
  * This class supports external authentication from a literal array dumped in
  * LocalSettings.php.  It's mostly useful for testing.  Example configuration:
  *
- *   $wgExternalAuthType = 'ExternalUser_Hardcoded';
+ *   $wgExternalAuthType = 'Externalwiki_user_Hardcoded';
  *   $wgExternalAuthConf = array(
  *       'Bob Smith' => array(
  *           'password' => 'literal string',
@@ -37,9 +37,9 @@
  * Multiple names may be provided.  The keys of the inner arrays can be either
  * 'password', or the name of any preference.
  *
- * @ingroup ExternalUser
+ * @ingroup Externalwiki_user
  */
-class ExternalUser_Hardcoded extends ExternalUser {
+class Externalwiki_user_Hardcoded extends Externalwiki_user {
 	private $mName;
 
 	protected function initFromName( $name ) {

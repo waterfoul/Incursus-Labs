@@ -53,7 +53,7 @@ class FixDoubleRedirects extends Maintenance {
 			}
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 
 		$tables = array( 'redirect', 'pa' => 'page', 'pb' => 'page' );
 		$fields = array(
@@ -75,7 +75,7 @@ class FixDoubleRedirects extends Maintenance {
 		}
 		// TODO: support batch querying
 
-		$res = $dbr->select( $tables, $fields, $conds, __METHOD__ );
+		$res = r->select( $tables, $fields, $conds, __METHOD__ );
 
 		if ( !$res->numRows() ) {
 			$this->output( "No double redirects found.\n" );

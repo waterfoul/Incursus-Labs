@@ -20,7 +20,7 @@ $linkPrefixExtension = true;
 $separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Kotíya sulimá na bikangisi:',
 'tog-showtoolbar' => 'Komɔ́nisa ndámbo-ndámbo (esengélí JavaScript)',
 'tog-rememberpassword' => 'Komíkundola bokitoli na molúki (ekosúkisa na {{PLURAL:$1|mokɔlɔ|mikɔlɔ}} $1)',
@@ -156,7 +156,7 @@ $messages = array(
 'talk' => 'Ntembe',
 'views' => 'Bomɔ́nisi',
 'toolbox' => 'Bisáleli',
-'userpage' => 'Komɔ́nisa lonkásá la mosáleli',
+'wiki_userpage' => 'Komɔ́nisa lonkásá la mosáleli',
 'projectpage' => 'Komɔ́nisa lonkásá la mwǎngo',
 'imagepage' => 'Komɔ́nisa lonkásá la kásá',
 'viewhelppage' => 'Komɔ́nisa lonkásá la bosálisi',
@@ -170,7 +170,7 @@ $messages = array(
 'jumptonavigation' => 'bolúki',
 'jumptosearch' => 'boluki',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Elɔ́kɔ elobí {{SITENAME}}',
 'aboutpage' => 'Project:Etalí',
 'copyright' => 'Maloba ma nkomá mazalí na ndingisa ya $1.',
@@ -208,7 +208,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'lonkásá',
-'nstab-user' => 'Lonkásá la mosáleli',
+'nstab-wiki_user' => 'Lonkásá la mosáleli',
 'nstab-media' => 'Mediá',
 'nstab-special' => 'Lonkásá gudi',
 'nstab-project' => 'Etalí',
@@ -245,10 +245,10 @@ Ezalí listɛ́ ya nkásá gudi bizalí  na [[Special:SpecialPages|{{int:special
 'yourdomainname' => 'Dɔmɛ́nɛ na yɔ̌:',
 'login' => 'komíkitola (log in)',
 'nav-login-createaccount' => 'Komíkomisa tǒ kokɔtɔ',
-'userlogin' => 'Komíkomisa tǒ komíkitola',
-'userloginnocreate' => 'komíkitola (log in)',
+'wiki_userlogin' => 'Komíkomisa tǒ komíkitola',
+'wiki_userloginnocreate' => 'komíkitola (log in)',
 'logout' => 'kolongwa',
-'userlogout' => 'Kolongwa',
+'wiki_userlogout' => 'Kolongwa',
 'nologin' => "Omíkomísí naíno tɛ̂? '''$1'''.",
 'nologinlink' => 'Míkomísá yɔ̌-mɛ́i',
 'createaccount' => 'Míkomísá yɔ̌-mɛ́i',
@@ -265,7 +265,7 @@ Ezalí listɛ́ ya nkásá gudi bizalí  na [[Special:SpecialPages|{{int:special
 'resetpass-submit-cancel' => 'Kozóngela',
 
 # Special:PasswordReset
-'passwordreset-username' => 'Nkómbó ya mosáleli:',
+'passwordreset-wiki_username' => 'Nkómbó ya mosáleli:',
 'passwordreset-email' => 'Adɛlɛ́sɛ-ímɛ́lɛ:',
 
 # Special:ChangeEmail
@@ -397,9 +397,9 @@ Ezalí listɛ́ ya nkásá gudi bizalí  na [[Special:SpecialPages|{{int:special
 'timezoneregion-europe' => 'Erópa',
 'timezoneregion-indian' => 'India (lombú monɛ́nɛ)',
 'timezoneregion-pacific' => 'Pasifíki (lombú monɛ́nɛ)',
-'allowemail' => 'Enable mokánda from other users',
+'allowemail' => 'Enable mokánda from other wiki_users',
 'youremail' => 'Mokandá (e-mail) *',
-'username' => 'Nkómbó ya mosáleli :',
+'wiki_username' => 'Nkómbó ya mosáleli :',
 'yourrealname' => 'nkómbó ya sɔ̂lɔ́',
 'yourlanguage' => 'Lokótá',
 'email' => 'Mokánda',
@@ -409,7 +409,7 @@ Ezalí listɛ́ ya nkásá gudi bizalí  na [[Special:SpecialPages|{{int:special
 
 'group-sysop-member' => 'Moyángeli',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Zuluná ya makokí ma basáleli',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -462,7 +462,7 @@ Ezalí listɛ́ ya nkásá gudi bizalí  na [[Special:SpecialPages|{{int:special
 'filehist-datetime' => 'Mokɔlɔ mpé ntángo',
 'filehist-thumb' => 'Miniátilɛ',
 'filehist-thumbtext' => 'Miniátilɛ ya versió ya $1',
-'filehist-user' => 'Mosáleli',
+'filehist-wiki_user' => 'Mosáleli',
 'filehist-dimensions' => 'Dimasió',
 'filehist-comment' => 'Ntembe',
 'imagelinks' => 'Bikangisele  bya kásá',
@@ -496,7 +496,7 @@ Ezalí listɛ́ ya nkásá gudi bizalí  na [[Special:SpecialPages|{{int:special
 'shortpages' => 'Nkásá ya mokúsé',
 'longpages' => 'Nkásá ya molaí',
 'newpages' => 'Ekakoli ya sika',
-'newpages-username' => 'Nkómbó ya mosáleli:',
+'newpages-wiki_username' => 'Nkómbó ya mosáleli:',
 'move' => 'Kobóngola nkómbó',
 'movethispage' => 'Kobóngola nkómbó ya lonkásá loye',
 
@@ -519,11 +519,11 @@ Ezalí listɛ́ ya nkásá gudi bizalí  na [[Special:SpecialPages|{{int:special
 # Special:Categories
 'categories' => 'Ndéngé',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Zuluná ya bokeli bwa konti ya mosáleli',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Zuluná ya bokeli bwa konti ya mosáleli',
 
-# E-mail user
-'emailuser' => 'Kotíndela yě mɛ́lɛ',
+# E-mail wiki_user
+'emailwiki_user' => 'Kotíndela yě mɛ́lɛ',
 'defemailsubject' => '{{SITENAME}} mokánda',
 'emailfrom' => 'útá',
 'emailto' => 'epái',
@@ -650,7 +650,7 @@ Ezalí listɛ́ ya nkásá gudi bizalí  na [[Special:SpecialPages|{{int:special
 'import' => 'koútisa...',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Lonkásá na ngáí',
+'tooltip-pt-wiki_userpage' => 'Lonkásá na ngáí',
 'tooltip-pt-mytalk' => 'Lonkásá ntembe lwa ngáí',
 'tooltip-pt-preferences' => 'Malúli ma ngáí',
 'tooltip-pt-watchlist' => 'Nkásá nalandí mpɔ̂ na mbóngwana',
@@ -678,13 +678,13 @@ Ezalí listɛ́ ya nkásá gudi bizalí  na [[Special:SpecialPages|{{int:special
 'tooltip-t-whatlinkshere' => 'Lístɛ ya nkásá wiki nyɔ́nsɔ iye ikangísí áwa',
 'tooltip-feed-rss' => 'Ebale RSS mpɔ̂ na lonkásá loye',
 'tooltip-feed-atom' => 'Ebale Atom mpɔ̂ na lonkásá loye',
-'tooltip-t-emailuser' => 'Kotíndela mosáleli óyo mɛ́lɛ',
+'tooltip-t-emailwiki_user' => 'Kotíndela mosáleli óyo mɛ́lɛ',
 'tooltip-t-upload' => 'Kotíya kásá ebelé',
 'tooltip-t-specialpages' => 'Lístɛ ya nkásá gudi nyɔ́nsɔ',
 'tooltip-t-print' => 'Loléngé la lonkásá loye la kobimisa',
 'tooltip-t-permalink' => 'Ekangisele ya koúmela na versió eye ya lonkánsá',
 'tooltip-ca-nstab-main' => 'Komɔ́nisa káti',
-'tooltip-ca-nstab-user' => 'Komɔ́nisa lonkásá la mosáleli',
+'tooltip-ca-nstab-wiki_user' => 'Komɔ́nisa lonkásá la mosáleli',
 'tooltip-ca-nstab-special' => 'Eye ezalí lonkásá gudi, okokí kobɔngisa eye tɛ̂',
 'tooltip-ca-nstab-project' => 'Komɔ́nisa lonkásá la mwǎngo',
 'tooltip-ca-nstab-image' => 'Komɔ́nisa lonkásá la kásá',

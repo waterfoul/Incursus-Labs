@@ -84,7 +84,7 @@ $messages = array(
 'jumptonavigation' => 'Ulifolau',
 'jumptosearch' => "Su'e",
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Tala Fou',
 'currentevents-url' => 'Project:Tala Fou',
 'edithelp' => 'Fesoasoani e teuteu',
@@ -101,7 +101,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Tusitusiga',
-'nstab-user' => "Itulau a 'oe",
+'nstab-wiki_user' => "Itulau a 'oe",
 'nstab-mediawiki' => "Fe'au",
 
 # Login and logout pages
@@ -109,9 +109,9 @@ $messages = array(
 'yourpassword' => "'Upu ulufale",
 'yourpasswordagain' => "Toe lolomi 'upu ulufale",
 'login' => "Fa'aola",
-'userlogin' => "Fa'aola / Lesitala le ulufale",
+'wiki_userlogin' => "Fa'aola / Lesitala le ulufale",
 'logout' => 'Tape',
-'userlogout' => 'Tape',
+'wiki_userlogout' => 'Tape',
 'notloggedin' => "Le'i fa'aolaina",
 'nologinlink' => 'Lesitala le ulufale',
 'createaccount' => 'Lesitala le ulufale',
@@ -133,7 +133,7 @@ $messages = array(
 'mypreferences' => "Mea 'ou te fiafia i ai",
 'searchresultshead' => "Su'e",
 'youremail' => "'Imeli:",
-'username' => "Igoa o le tagata fa'aaoga:",
+'wiki_username' => "Igoa o le tagata fa'aaoga:",
 'email' => "'Imeli",
 
 # Groups
@@ -158,7 +158,7 @@ $messages = array(
 'randompage' => "Itulau le fa'ailogaina",
 
 # Miscellaneous special pages
-'newpages-username' => "Igoa o le tagata fa'aaoga:",
+'newpages-wiki_username' => "Igoa o le tagata fa'aaoga:",
 'move' => "Si'itia",
 
 # Book sources
@@ -167,8 +167,8 @@ $messages = array(
 # Special:AllPages
 'allpagessubmit' => 'Alu',
 
-# E-mail user
-'emailuser' => "'Imeli mai le tagata lenei",
+# E-mail wiki_user
+'emailwiki_user' => "'Imeli mai le tagata lenei",
 'emailmessage' => "Fe'au",
 
 # Watchlist

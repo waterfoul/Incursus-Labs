@@ -6,7 +6,7 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 	public $savedGlobals = array();
 
 	public static function addTables( &$tables ) {
-		$tables[] = 'user_properties';
+		$tables[] = 'wiki_user_properties';
 		$tables[] = 'filearchive';
 		$tables[] = 'logging';
 		$tables[] = 'updatelog';
@@ -17,7 +17,7 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 
 	function setUp() {
 		global $wgParser, $wgParserConf, $IP, $messageMemc, $wgMemc,
-			  $wgUser, $wgLang, $wgOut, $wgRequest, $wgStyleDirectory, $wgEnableParserCache,
+			  $wgwiki_user, $wgLang, $wgOut, $wgRequest, $wgStyleDirectory, $wgEnableParserCache,
 			  $wgNamespaceAliases, $wgNamespaceProtection, $parserMemc;
 
 		$tmpGlobals = array();
@@ -64,7 +64,7 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 		$parserMemc = wfGetParserCacheStorage();
 
 		// $wgContLang = new StubContLang;
-		$wgUser = new User;
+		$wgwiki_user = new wiki_user;
 		$context = new RequestContext;
 		$wgLang = $context->getLanguage();
 		$wgOut = $context->getOutput();

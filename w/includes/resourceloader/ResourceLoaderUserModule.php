@@ -1,6 +1,6 @@
 <?php
 /**
- * Resource loader module for user customizations.
+ * Resource loader module for wiki_user customizations.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
  */
 
 /**
- * Module for user customizations
+ * Module for wiki_user customizations
  */
 class ResourceLoaderUserModule extends ResourceLoaderWikiModule {
 
@@ -35,27 +35,27 @@ class ResourceLoaderUserModule extends ResourceLoaderWikiModule {
 	 * @return array
 	 */
 	protected function getPages( ResourceLoaderContext $context ) {
-		$username = $context->getUser();
+		$wiki_username = $context->getwiki_user();
 
-		if ( $username === null ) {
+		if ( $wiki_username === null ) {
 			return array();
 		}
 
-		// Get the normalized title of the user's user page
-		$userpageTitle = Title::makeTitleSafe( NS_USER, $username );
+		// Get the normalized title of the wiki_user's wiki_user page
+		$wiki_userpageTitle = Title::makeTitleSafe( NS_USER, $wiki_username );
 
-		if ( !$userpageTitle instanceof Title ) {
+		if ( !$wiki_userpageTitle instanceof Title ) {
 			return array();
 		}
 
-		$userpage = $userpageTitle->getPrefixedDBkey(); // Needed so $excludepages works
+		$wiki_userpage = $wiki_userpageTitle->getPrefixedDBkey(); // Needed so $excludepages works
 
 		$pages = array(
-			"$userpage/common.js" => array( 'type' => 'script' ),
-			"$userpage/" . $context->getSkin() . '.js' =>
+			"$wiki_userpage/common.js" => array( 'type' => 'script' ),
+			"$wiki_userpage/" . $context->getSkin() . '.js' =>
 				array( 'type' => 'script' ),
-			"$userpage/common.css" => array( 'type' => 'style' ),
-			"$userpage/" . $context->getSkin() . '.css' =>
+			"$wiki_userpage/common.css" => array( 'type' => 'style' ),
+			"$wiki_userpage/" . $context->getSkin() . '.css' =>
 				array( 'type' => 'style' ),
 		);
 
@@ -77,6 +77,6 @@ class ResourceLoaderUserModule extends ResourceLoaderWikiModule {
 	 * @return string
 	 */
 	public function getGroup() {
-		return 'user';
+		return 'wiki_user';
 	}
 }

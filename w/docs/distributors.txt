@@ -1,31 +1,31 @@
 This document is intended to provide useful advice for parties seeking to
-redistribute MediaWiki to end users.  It's targeted particularly at maintainers
+redistribute MediaWiki to end wiki_users.  It's targeted particularly at maintainers
 for Linux distributions, since it's been observed that distribution packages of
-MediaWiki often break.  We've consistently had to recommend that users seeking
+MediaWiki often break.  We've consistently had to recommend that wiki_users seeking
 support use official tarballs instead of their distribution's packages, and
-this often solves whatever problem the user is having.  It would be nice if
+this often solves whatever problem the wiki_user is having.  It would be nice if
 this could change.
 
 == Background: why web applications are different ==
 
 MediaWiki is intended to be usable on any web host that provides support for
-PHP and a database.  Many users of low-end shared hosting have very limited
+PHP and a database.  Many wiki_users of low-end shared hosting have very limited
 access to their machine: often only FTP access to some subdirectory of the web
-root.  Support for these users entails several restrictions, such as:
+root.  Support for these wiki_users entails several restrictions, such as:
 
   1) We cannot require installation of any files outside the web root.  Few of
-  our users have access to directories like /usr or /etc.
+  our wiki_users have access to directories like /usr or /etc.
   2) We cannot require the ability to run any utility on the command line.
   Many shared hosts have exec() and similar PHP functions disabled.
   3) We cannot assume that the software has write access anywhere useful.  The
-  user account that MediaWiki (including its installer) runs under is often
-  different from the account the user used to upload the files, and we might be
+  wiki_user account that MediaWiki (including its installer) runs under is often
+  different from the account the wiki_user used to upload the files, and we might be
   restricted by PHP settings such as safe mode or open_basedir.
   4) We cannot assume that the software even has read access anywhere useful.
-  Many shared hosts run all users' web applications under the same user, so
+  Many shared hosts run all wiki_users' web applications under the same wiki_user, so
   they can't rely on Unix permissions, and must forbid reads to even standard
-  directories like /tmp lest users read each others' files.
-  5) We cannot assume that the user has the ability to install or run any
+  directories like /tmp lest wiki_users read each others' files.
+  5) We cannot assume that the wiki_user has the ability to install or run any
   programs not written as web-accessible PHP scripts.
 
 Since anything that works on cheap shared hosting will work if you have shell
@@ -82,8 +82,8 @@ something.  You have been warned.
 == Configuration ==
 
 MediaWiki is configured using LocalSettings.php.  This is a PHP file that's
-generated when the user visits mw-config/index.php to install the software, and
-which the user can edit by hand thereafter.  It's just a plain old PHP file,
+generated when the wiki_user visits mw-config/index.php to install the software, and
+which the wiki_user can edit by hand thereafter.  It's just a plain old PHP file,
 and can contain any PHP statements.  It usually sets global variables that are
 used for configuration, and includes files used by any extensions.
 

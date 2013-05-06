@@ -59,7 +59,7 @@ class RawAction extends FormlessAction {
 			return; // Client cache fresh and headers sent, nothing more to do.
 		}
 
-		# special case for 'generated' raw things: user css/js
+		# special case for 'generated' raw things: wiki_user css/js
 		# This is deprecated and will only return empty content
 		$gen = $request->getVal( 'gen' );
 		$smaxage = $request->getIntOrNull( 'smaxage' );
@@ -89,7 +89,7 @@ class RawAction extends FormlessAction {
 		$response = $request->response();
 
 		$response->header( 'Content-type: ' . $contentType . '; charset=UTF-8' );
-		# Output may contain user-specific data;
+		# Output may contain wiki_user-specific data;
 		# vary generated content for open sessions on private wikis
 		$privateCache = !$wgGroupPermissions['*']['read'] && ( $smaxage == 0 || session_id() != '' );
 		# allow the client to cache this for 24 hours
@@ -101,7 +101,7 @@ class RawAction extends FormlessAction {
 		if ( $text === false && $contentType == 'text/x-wiki' ) {
 			# Don't return a 404 response for CSS or JavaScript;
 			# 404s aren't generally cached and it would create
-			# extra hits when user CSS/JS are on and the user doesn't
+			# extra hits when wiki_user CSS/JS are on and the wiki_user doesn't
 			# have the pages.
 			$response->header( 'HTTP/1.x 404 Not Found' );
 		}

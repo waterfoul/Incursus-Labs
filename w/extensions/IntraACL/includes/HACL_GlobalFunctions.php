@@ -162,7 +162,7 @@ function haclfSetupExtension()
 
     //--- Register hooks ---
     global $wgHooks;
-    $wgHooks['userCan'][] = 'HACLEvaluator::userCan';
+    $wgHooks['wiki_userCan'][] = 'HACLEvaluator::wiki_userCan';
 
     wfLoadExtensionMessages('IntraACL');
 
@@ -272,7 +272,7 @@ function haclfInitNamespaces()
 
 /**
  * Initialise a global language object for content language. This
- * must happen early on, even before user language is known, to
+ * must happen early on, even before wiki_user language is known, to
  * determine labels for additional namespaces. In contrast, messages
  * can be initialised much later when they are actually needed.
  */
@@ -301,87 +301,87 @@ function haclfInitContentLanguage($langcode)
 }
 
 /**
- * Returns the ID and name of the given user.
+ * Returns the ID and name of the given wiki_user.
  *
- * @param User/string/int $user
- *         User-object, name of a user or ID of a user. If <null> (which is the
- *      default), the currently logged in user is assumed.
- *      There are two special user names:
- *            '*' - all users including anonymous (ID: 0)
- *            '#' - all registered users (ID: -1)
+ * @param wiki_user/string/int $wiki_user
+ *         wiki_user-object, name of a wiki_user or ID of a wiki_user. If <null> (which is the
+ *      default), the currently logged in wiki_user is assumed.
+ *      There are two special wiki_user names:
+ *            '*' - all wiki_users including anonymous (ID: 0)
+ *            '#' - all registered wiki_users (ID: -1)
  * @return array(int,string)
- *         (Database-)ID of the given user and his name. For the sake of
- *      performance the name is not retrieved, if the ID of the user is
- *         passed in parameter $user.
+ *         (Database-)ID of the given wiki_user and his name. For the sake of
+ *      performance the name is not retrieved, if the ID of the wiki_user is
+ *         passed in parameter $wiki_user.
  * @throws
  *         HACLException(HACLException::UNKNOWN_USER)
- *             ...if the user does not exist.
+ *             ...if the wiki_user does not exist.
  */
-function haclfGetUserID($user = null, $throw_error = true)
+function haclfGetwiki_userID($wiki_user = null, $throw_error = true)
 {
-    $userID = false;
-    $userName = '';
-    if ($user === NULL)
+    $wiki_userID = false;
+    $wiki_userName = '';
+    if ($wiki_user === NULL)
     {
-        // no user given
-        // => the current user's ID is requested
-        global $wgUser;
-        $userID = $wgUser->getId();
-        $userName = $wgUser->getName();
+        // no wiki_user given
+        // => the current wiki_user's ID is requested
+        global $wgwiki_user;
+        $wiki_userID = $wgwiki_user->getId();
+        $wiki_userName = $wgwiki_user->getName();
     }
-    elseif (is_int($user) || is_numeric($user))
+    elseif (is_int($wiki_user) || is_numeric($wiki_user))
     {
-        // user-id given
-        $userID = (int) $user;
+        // wiki_user-id given
+        $wiki_userID = (int) $wiki_user;
     }
-    elseif (is_string($user))
+    elseif (is_string($wiki_user))
     {
-        if ($user == '#')
+        if ($wiki_user == '#')
         {
-            // Special name for all registered users
-            $userID = -1;
+            // Special name for all registered wiki_users
+            $wiki_userID = -1;
         }
-        elseif ($user == '*')
+        elseif ($wiki_user == '*')
         {
-            // Anonymous user
-            $userID = 0;
+            // Anonymous wiki_user
+            $wiki_userID = 0;
         }
         else
         {
-            // name of user given
+            // name of wiki_user given
             $etc = haclfDisableTitlePatch();
-            $userID = User::idFromName($user);
+            $wiki_userID = wiki_user::idFromName($wiki_user);
             haclfRestoreTitlePatch($etc);
-            if (!$userID)
-                $userID = false;
-            $userName = $user;
+            if (!$wiki_userID)
+                $wiki_userID = false;
+            $wiki_userName = $wiki_user;
         }
     }
-    elseif (is_a($user, 'User'))
+    elseif (is_a($wiki_user, 'wiki_user'))
     {
-        // User-object given
-        $userID = $user->getId();
-        $userName = $user->getName();
+        // wiki_user-object given
+        $wiki_userID = $wiki_user->getId();
+        $wiki_userName = $wiki_user->getName();
     }
 
-    if ($userID === 0)
+    if ($wiki_userID === 0)
     {
-        // Anonymous user
-        $userName = '*';
+        // Anonymous wiki_user
+        $wiki_userName = '*';
     }
-    elseif ($userID === -1)
+    elseif ($wiki_userID === -1)
     {
-        // all registered users
-        $userName = '#';
-    }
-
-    if ($userID === false && $throw_error)
-    {
-        // invalid user
-        throw new HACLException(HACLException::UNKNOWN_USER, '"'.$user.'"');
+        // all registered wiki_users
+        $wiki_userName = '#';
     }
 
-    return array($userID, $userName);
+    if ($wiki_userID === false && $throw_error)
+    {
+        // invalid wiki_user
+        throw new HACLException(HACLException::UNKNOWN_USER, '"'.$wiki_user.'"');
+    }
+
+    return array($wiki_userID, $wiki_userName);
 }
 
 /**
@@ -400,18 +400,18 @@ function haclfIsFileCacheable($article)
 }
 
 /**
- * The hash for the page cache depends on the user.
+ * The hash for the page cache depends on the wiki_user.
  * TODO: Rework this along with the new IntraACL caching system.
  *
  * @param string $hash
- *         A reference to the hash. This the ID of the current user is appended
+ *         A reference to the hash. This the ID of the current wiki_user is appended
  *         to this hash.
  */
 function haclfPageRenderingHash(&$hash)
 {
-    global $wgUser, $wgTitle;
-    if (is_object($wgUser))
-        $hash .= '!'.$wgUser->getId();
+    global $wgwiki_user, $wgTitle;
+    if (is_object($wgwiki_user))
+        $hash .= '!'.$wgwiki_user->getId();
     return true;
 }
 
@@ -546,15 +546,15 @@ class DeferReparseSpecialPageRights
     function __destruct()
     {
         global $wgContLang;
-        $dbw = wfGetDB(DB_MASTER);
-        $badSpecial = 'name LIKE '.$dbw->addQuotes($wgContLang->getNsText(NS_SPECIAL).':%').' OR name LIKE \'Special:%\'';
-        if ($dbw->tableExists('halo_acl_special_pages') &&
-            $dbw->selectField('halo_acl_special_pages', '1', array($badSpecial), __METHOD__, array('LIMIT' => 1)))
+        w = wfGetDB(DB_MASTER);
+        $badSpecial = 'name LIKE '.w->addQuotes($wgContLang->getNsText(NS_SPECIAL).':%').' OR name LIKE \'Special:%\'';
+        if (w->tableExists('halo_acl_special_pages') &&
+            w->selectField('halo_acl_special_pages', '1', array($badSpecial), __METHOD__, array('LIMIT' => 1)))
         {
             print "Refreshing special page right definitions...\n";
-            $dbw->delete('halo_acl_special_pages', array($badSpecial), __METHOD__);
-            $sds = 'page_title LIKE '.$dbw->addQuotes('Page/'.$wgContLang->getNsText(NS_SPECIAL).':%').' OR page_title LIKE \'Page/Special:%\'';
-            $res = $dbw->select('page', '*', array('page_namespace' => HACL_NS_ACL, $sds), __METHOD__);
+            w->delete('halo_acl_special_pages', array($badSpecial), __METHOD__);
+            $sds = 'page_title LIKE '.w->addQuotes('Page/'.$wgContLang->getNsText(NS_SPECIAL).':%').' OR page_title LIKE \'Page/Special:%\'';
+            $res = w->select('page', '*', array('page_namespace' => HACL_NS_ACL, $sds), __METHOD__);
             foreach ($res as $row)
             {
                 $title = Title::newFromRow($row);

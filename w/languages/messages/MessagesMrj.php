@@ -45,7 +45,7 @@ $namespaceAliases = array(
 $namespaceGenderAliases = array();
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Ажедмӓшвлӓм ыдыралаш',
 'tog-justify' => 'Текстӹм ӹлӹштӓш кымдык тӧрлӓш',
 'tog-hideminor' => 'Изи тӧрлӹмӓшвлӓм у вашталтымашвлӓ лошты шӹлташ, анжыкташ агыл',
@@ -69,7 +69,7 @@ $messages = array(
 'tog-previewonfirst' => 'Текстӹм анзыц анжен лӓкмӹм тӧрлӓш тӹнгӓлмӹ анзыц анжыкташ',
 'tog-nocache' => 'Ӹлӹштӓшвлӓн кешированим цӓрӓш',
 'tog-enotifwatchlistpages' => 'Мам вӓнгӹмӹ списокын ӹлӹштӓшӹштӹ вашталтымы, тӹдӹм эл. почта доно увертӓрӓш',
-'tog-enotifusertalkpages' => 'Мам персональный ӹлӹштӓшӹштӹ дискуссилӓн пачмы, тӹ вашталтмашым эл. почта доно увертӓрӓш',
+'tog-enotifwiki_usertalkpages' => 'Мам персональный ӹлӹштӓшӹштӹ дискуссилӓн пачмы, тӹ вашталтмашым эл. почта доно увертӓрӓш',
 'tog-enotifminoredits' => 'Изи вашталтымашвлӓ гишӓнӓт эл. почта доно увертӓрӓш',
 'tog-enotifrevealaddr' => 'Мӹньӹн эл. адресем увертӓрӹмвлӓштӹ анжыкташ',
 'tog-shownumberswatching' => 'Манярын ӹлӹштӓшӹм вӓнгӹмӹ списокышкышты пыртенӹт, анжыкташ',
@@ -213,7 +213,7 @@ $messages = array(
 'jumptonavigation' => 'навигаци',
 'jumptosearch' => 'кӹчӓлӓш',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Тидӹ гишӓн сирӹмӓш {{grammar:genitive|{{SITENAME}}}}',
 'aboutpage' => 'Project:Сирӹмӓш',
 'copyright' => 'Тидӹ, тидӹ семӹнь ылеш $1.',
@@ -250,7 +250,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Ӹлӹштӓш',
-'nstab-user' => 'Ӹлӹштӓшым сирӹшӹ',
+'nstab-wiki_user' => 'Ӹлӹштӓшым сирӹшӹ',
 'nstab-special' => 'Спецӹлӹштӓш',
 'nstab-project' => 'Проект гишӓн',
 'nstab-image' => 'Файл',
@@ -262,7 +262,7 @@ $messages = array(
 
 Тенге ӹлӹштӓшӹн вашталтымашвлӓштӹ тошты ажедмӓшвлӓм анжыктымы
 годым лиӓлтеш.
-Ядмаш тиштӹ агыл гӹнь , лин кердеш, тӹнӓм тӓ программышты тамахань самыньым монда. Пуры лидӓ, тидӹ гишӓн увертӓрӹдӓ [[Special:ListUsers/sysop|администратор]], анжыктен URL.',
+Ядмаш тиштӹ агыл гӹнь , лин кердеш, тӹнӓм тӓ программышты тамахань самыньым монда. Пуры лидӓ, тидӹ гишӓн увертӓрӹдӓ [[Special:Listwiki_users/sysop|администратор]], анжыктен URL.',
 'missingarticle-rev' => '(верси № $1)',
 'badtitletext' => 'Ядмы ӹлӹштӓшдӓн лӹмжӹ самынь, охыр, лин кердеш тӧр агыл лӹмӹм ӓль интервикым анжыктендӓ,  ӓнят лӹмӹштӹ кычылташ лидӹмӹ символым сирендӓ.',
 'viewsource' => 'Анжен лӓктӓш',
@@ -273,9 +273,9 @@ $messages = array(
 'remembermypassword' => 'Ти компьютерӹштӹ мӹньӹн учетный сирмӓшем ӓштӓш (максимум $1 {{PLURAL:$1|кечы|кечы}})',
 'login' => 'Системыш сирӓлтдӓ',
 'nav-login-createaccount' => 'Коргӹшкӹ сирӓлтдӓ/регистрируялтда',
-'userlogin' => 'Кӧргӹшкӹ сирӓлтдӓ ӓль регистрируялтда',
+'wiki_userlogin' => 'Кӧргӹшкӹ сирӓлтдӓ ӓль регистрируялтда',
 'logout' => 'Сеансым пӹтӓрӓш',
-'userlogout' => 'Сеансым кашарташ',
+'wiki_userlogout' => 'Сеансым кашарташ',
 'nologinlink' => 'Учётный сирмӓшӹм ӹштӹдӓ',
 'mailmypassword' => 'У парольым колташ',
 
@@ -387,7 +387,7 @@ $messages = array(
 
 'grouppage-sysop' => '{{ns:project}}:Администраторвлӓ',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Сирӹшӹн прававлӓжӹм анжыктышы журнал',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -436,7 +436,7 @@ $messages = array(
 'filehist-datetime' => 'Дата/жеп',
 'filehist-thumb' => 'Миниатюра',
 'filehist-thumbtext' => '$1 гӹц версилӓн миниатюра вариантжы',
-'filehist-user' => 'Сирӹшӹ',
+'filehist-wiki_user' => 'Сирӹшӹ',
 'filehist-dimensions' => 'Объектӹн размержӹ',
 'filehist-comment' => 'Пӓлӹквлӓ',
 'imagelinks' => 'Файлышкы ажедмӓшвлӓ',
@@ -480,14 +480,14 @@ $messages = array(
 # Special:LinkSearch
 'linksearch' => 'Тӱнӹш ажедмӓшвлӓ',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Сирӹшӹвлӓм регистрируйышы журнал',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Сирӹшӹвлӓм регистрируйышы журнал',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(группын списокшы)',
 
-# E-mail user
-'emailuser' => 'Сирӹшӹлӓн сирмӓш',
+# E-mail wiki_user
+'emailwiki_user' => 'Сирӹшӹлӓн сирмӓш',
 
 # Watchlist
 'watchlist' => 'Вӓнгӹмӹ список',
@@ -561,7 +561,7 @@ $messages = array(
 'sp-contributions-newbies' => 'Лач тӹ лӓктӹшвлӓм веле анжыкташ, кыдывлӓм у сирӹмӓшвлӓштӹ шотыш нӓлмӹ',
 'sp-contributions-blocklog' => 'блокировкывлӓ',
 'sp-contributions-search' => 'Лӓктӹшӹм кӹчӓлмӓш',
-'sp-contributions-username' => 'IP-сирӹшӹн адрес дон лӹмжӹ:',
+'sp-contributions-wiki_username' => 'IP-сирӹшӹн адрес дон лӹмжӹ:',
 'sp-contributions-submit' => 'Моаш',
 
 # What links here
@@ -624,7 +624,7 @@ $messages = array(
 'thumbnail-more' => 'Когоэмдӓш',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Тӓмдӓн сирӹмӹ ӹлӹштӓшда',
+'tooltip-pt-wiki_userpage' => 'Тӓмдӓн сирӹмӹ ӹлӹштӓшда',
 'tooltip-pt-mytalk' => 'Тӓмдӓн Кӓнгӓшӹмӓш ӹлӹштӓшдӓ',
 'tooltip-pt-preferences' => 'Мӹньӹн настройкывлӓэм',
 'tooltip-pt-watchlist' => 'Мам вӓнгенӓм, тӹдӹн сирмӓшӹжӹ',
@@ -656,13 +656,13 @@ $messages = array(
 'tooltip-feed-rss' => 'Ти ӹлӹштӓшлӓн RSS-шты трансляци',
 'tooltip-feed-atom' => 'Ти ӹлӹштӓшлӓн Atom-шты трансляци',
 'tooltip-t-contributions' => 'Мам ти сирӹшӹ вашталтен, ӹлӹштӓшвлӓн список',
-'tooltip-t-emailuser' => 'Ти сирӹшӹлӓн сирмӓшӹм колташ',
+'tooltip-t-emailwiki_user' => 'Ти сирӹшӹлӓн сирмӓшӹм колташ',
 'tooltip-t-upload' => 'Изображенивлӓ дон мультимеди-файлым темӓш',
 'tooltip-t-specialpages' => 'Спецӹлӹштӓшвлӓн список',
 'tooltip-t-print' => 'Ти ӹлӹштӓшӹн пецӓтлӹмӹ версижӹ',
 'tooltip-t-permalink' => 'Соок ти ӹлӹтӓшӹн вариантышкыжы ажедмӓш',
 'tooltip-ca-nstab-main' => 'Ӹлӹштӓшӹн кӧргӹжӹ',
-'tooltip-ca-nstab-user' => 'Сирӹшӹн ӹшке ӹлӹштӓшӹжӹ',
+'tooltip-ca-nstab-wiki_user' => 'Сирӹшӹн ӹшке ӹлӹштӓшӹжӹ',
 'tooltip-ca-nstab-special' => 'Тидӹ спецӹлӹштӓш, кыдым редактируяш ак ли',
 'tooltip-ca-nstab-project' => 'Проектӹн ӹлӹштӓшӹжӹ',
 'tooltip-ca-nstab-image' => 'Файлын ӹлӹштӓшӹжӹ',

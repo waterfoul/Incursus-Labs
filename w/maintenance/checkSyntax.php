@@ -149,7 +149,7 @@ class CheckSyntax extends Maintenance {
 			$this->addDirectoryContent( $d );
 		}
 
-		// Manually add two user-editable files that are usually sources of problems
+		// Manually add two wiki_user-editable files that are usually sources of problems
 		if ( file_exists( "$IP/LocalSettings.php" ) ) {
 			$this->mFiles[] = "$IP/LocalSettings.php";
 		}

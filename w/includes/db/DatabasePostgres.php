@@ -26,12 +26,12 @@ class PostgresField implements Field {
 		$has_default, $default;
 
 	/**
-	 * @param $db DatabaseBase
+	 * @param  DatabaseBase
 	 * @param  $table
 	 * @param  $field
 	 * @return null|PostgresField
 	 */
-	static function fromText( $db, $table, $field ) {
+	static function fromText( , $table, $field ) {
 		$q = <<<SQL
 SELECT
  attnotnull, attlen, conname AS conname,
@@ -56,15 +56,15 @@ AND relname=%s
 AND attname=%s;
 SQL;
 
-		$table = $db->tableName( $table, 'raw' );
-		$res = $db->query(
+		$table = ->tableName( $table, 'raw' );
+		$res = ->query(
 			sprintf( $q,
-				$db->addQuotes( $db->getCoreSchema() ),
-				$db->addQuotes( $table ),
-				$db->addQuotes( $field )
+				->addQuotes( ->getCoreSchema() ),
+				->addQuotes( $table ),
+				->addQuotes( $field )
 			)
 		);
-		$row = $db->fetchObject( $res );
+		$row = ->fetchObject( $res );
 		if ( !$row ) {
 			return null;
 		}
@@ -214,17 +214,17 @@ class SavepointPostgres {
 	/**
 	 * Establish a savepoint within a transaction
 	 */
-	protected $dbw;
+	protected w;
 	protected $id;
 	protected $didbegin;
 
-	public function __construct ($dbw, $id) {
-		$this->dbw = $dbw;
+	public function __construct (w, $id) {
+		$this->dbw = w;
 		$this->id = $id;
 		$this->didbegin = false;
 		/* If we are not in a transaction, we need to be for savepoint trickery */
-		if ( !$dbw->trxLevel() ) {
-				$dbw->begin( "FOR SAVEPOINT" );
+		if ( !w->trxLevel() ) {
+				w->begin( "FOR SAVEPOINT" );
 				$this->didbegin = true;
 		}
 	}
@@ -327,7 +327,7 @@ class DatabasePostgres extends DatabaseBase {
 	 * Usually aborts on failure
 	 * @return DatabaseBase|null
 	 */
-	function open( $server, $user, $password, $dbName ) {
+	function open( $server, $wiki_user, $password, Name ) {
 		# Test for Postgres support, to avoid suppressed fatal error
 		if ( !function_exists( 'pg_connect' ) ) {
 			throw new DBConnectionError( $this, "Postgres functions missing, have you compiled PHP with the --with-pgsql option?\n (Note: if you recently installed PHP, you may need to restart your webserver and database)\n" );
@@ -335,19 +335,19 @@ class DatabasePostgres extends DatabaseBase {
 
 		global $wgDBport;
 
-		if ( !strlen( $user ) ) { # e.g. the class is being loaded
+		if ( !strlen( $wiki_user ) ) { # e.g. the class is being loaded
 			return;
 		}
 
 		$this->mServer = $server;
 		$port = $wgDBport;
-		$this->mUser = $user;
+		$this->mwiki_user = $wiki_user;
 		$this->mPassword = $password;
-		$this->mDBname = $dbName;
+		$this->mDBname = Name;
 
 		$connectVars = array(
-			'dbname' => $dbName,
-			'user' => $user,
+			'dbname' => Name,
+			'wiki_user' => $wiki_user,
 			'password' => $password
 		);
 		if ( $server != false && $server != '' ) {
@@ -368,7 +368,7 @@ class DatabasePostgres extends DatabaseBase {
 
 		if ( !$this->mConn ) {
 			wfDebug( "DB connection error\n" );
-			wfDebug( "Server: $server, Database: $dbName, User: $user, Password: " . substr( $password, 0, 3 ) . "...\n" );
+			wfDebug( "Server: $server, Database: Name, wiki_user: $wiki_user, Password: " . substr( $password, 0, 3 ) . "...\n" );
 			wfDebug( $this->lastError() . "\n" );
 			throw new DBConnectionError( $this, str_replace( "\n", ' ', $phpError ) );
 		}
@@ -398,9 +398,9 @@ class DatabasePostgres extends DatabaseBase {
 	 * DB name doesn't match the open connection, open a new one
 	 * @return
 	 */
-	function selectDB( $db ) {
-		if ( $this->mDBname !== $db ) {
-			return (bool)$this->open( $this->mServer, $this->mUser, $this->mPassword, $db );
+	function selectDB(  ) {
+		if ( $this->mDBname !==  ) {
+			return (bool)$this->open( $this->mServer, $this->mwiki_user, $this->mPassword,  );
 		} else {
 			return true;
 		}
@@ -905,8 +905,8 @@ __INDEXATTR__;
 	function tableName( $name, $format = 'quoted' ) {
 		# Replace reserved words with better ones
 		switch( $name ) {
-			case 'user':
-				return $this->realTableName( 'mwuser', $format );
+			case 'wiki_user':
+				return $this->realTableName( 'mwwiki_user', $format );
 			case 'text':
 				return $this->realTableName( 'pagecontent', $format );
 			default:
@@ -1068,7 +1068,7 @@ __INDEXATTR__;
 
 	/**
 	 * Return list of schemas which are accessible without schema name
-	 * This is list does not contain magic keywords like "$user"
+	 * This is list does not contain magic keywords like "$wiki_user"
 	 * Needs transaction
 	 *
 	 * @seealso getSearchPath()
@@ -1087,11 +1087,11 @@ __INDEXATTR__;
 	/**
 	 * Return search patch for schemas
 	 * This is different from getSchemas() since it contain magic keywords
-	 * (like "$user").
+	 * (like "$wiki_user").
 	 * Needs transaction
 	 *
 	 * @since 1.19
-	 * @return array how to search for table names schemas for the current user
+	 * @return array how to search for table names schemas for the current wiki_user
 	 */
 	function getSearchPath() {
 		$res = $this->query( "SHOW search_path", __METHOD__);
@@ -1102,7 +1102,7 @@ __INDEXATTR__;
 
 	/**
 	 * Update search_path, values should already be sanitized
-	 * Values may contain magic keywords like "$user"
+	 * Values may contain magic keywords like "$wiki_user"
 	 * @since 1.19
 	 *
 	 * @param $search_path array list of schemas to be searched by default
@@ -1276,7 +1276,7 @@ SQL;
 	}
 
 	/**
-	 * Returns true if a given role (i.e. user) exists, false otherwise.
+	 * Returns true if a given role (i.e. wiki_user) exists, false otherwise.
 	 * @return bool
 	 */
 	function roleExists( $roleName ) {

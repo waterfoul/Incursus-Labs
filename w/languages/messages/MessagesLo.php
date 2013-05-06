@@ -47,7 +47,7 @@ $specialPageAliases = array(
 	'Listadmins'                => array( 'ລາຍຊື່ຜູ້ບໍລິຫານລະບົບ' ),
 	'Listbots'                  => array( 'ລາຍຊື່ບອຕ' ),
 	'Listfiles'                 => array( 'ລາຍຊື່ຮູບ' ),
-	'Listusers'                 => array( 'ລາຍຊື່ຜູ້ໃຊ້' ),
+	'Listwiki_users'                 => array( 'ລາຍຊື່ຜູ້ໃຊ້' ),
 	'Longpages'                 => array( 'ໜ້າຍາວ' ),
 	'Movepage'                  => array( 'ຍ້າຍ' ),
 	'Mycontributions'           => array( 'ປະກອບສ່ວນຂອງຂ້ອຍ' ),
@@ -73,8 +73,8 @@ $specialPageAliases = array(
 	'Unusedimages'              => array( 'ຮູບທີ່ບໍ່ໄດ້ໃຊ້' ),
 	'Unusedtemplates'           => array( 'ແມ່ແບບທີ່ບໍ່ໄດ້ໃຊ້' ),
 	'Upload'                    => array( 'ອັປໂຫຼດໄຟລ໌' ),
-	'Userlogin'                 => array( 'ເຊັນເຂົ້າ' ),
-	'Userlogout'                => array( 'ເຊັນອອກ' ),
+	'wiki_userlogin'                 => array( 'ເຊັນເຂົ້າ' ),
+	'wiki_userlogout'                => array( 'ເຊັນອອກ' ),
 	'Wantedcategories'          => array( 'ໝວດທີ່ຕ້ອງການ' ),
 	'Wantedpages'               => array( 'ໜ້າທີ່ຕ້ອງການ', 'ລິງກ໌ທີ່້ເສຍ' ),
 	'Watchlist'                 => array( 'ຕິດຕາມ' ),
@@ -95,7 +95,7 @@ $digitTransformTable = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'ຂີດເສັ້ນກ້ອງລິງກ໌:',
 'tog-hideminor' => 'ເຊື່ອງການດັດແກ້ເລັກນ້ອຍ ໃນ ການປ່ຽນແປງຫຼ້າສຸດ',
 'tog-hidepatrolled' => 'ເຊື່ອງ ການລາດຕະເວນດັດແກ້ ໃນ ການດັດແກ້ຫຼ້າສຸດ',
@@ -118,7 +118,7 @@ $messages = array(
 'tog-previewonfirst' => 'ສະແດງ ຜົນການດັດແກ້ ໃນ ເວລາດັດແກ້ເທື່ອທຳອິດ',
 'tog-nocache' => 'ບໍ່ບັນທຶກ ຂໍ້ມູນບົດຄວາມ ໄວ້ໃນຄອມພິວເຕີ',
 'tog-enotifwatchlistpages' => 'ສົ່ງອີເມລມາໃຫ້ຂ້ອຍ ເມື່ອ ໜ້າທີ່ຂ້ອຍຕິດຕາມໄດ້ຖືກປ່ຽນແປງ',
-'tog-enotifusertalkpages' => 'ສົ່ງ ອີເມລ ມາໃຫ້ ຂ້ອຍ ເວລາ ໜ້າສົນທະນາຂ້ອຍ ມີການປ່ຽນແປງ',
+'tog-enotifwiki_usertalkpages' => 'ສົ່ງ ອີເມລ ມາໃຫ້ ຂ້ອຍ ເວລາ ໜ້າສົນທະນາຂ້ອຍ ມີການປ່ຽນແປງ',
 'tog-enotifminoredits' => 'ສົ່ງ ອີເມລ ໃຫ້ຂ້ອຍ ເວລາມີການດັດແກ້ເລັກນ້ອຍນຳ',
 'tog-enotifrevealaddr' => 'ສະແດງ ອີເມລ ຂອງຂ້ອຍ ໃນ ການແຈ້ງວ່າມີຂໍ້ຄວາມອີເມລ',
 'tog-shownumberswatching' => 'ສະແດງ ຈຳນວນຜູ້ໃຊ້ ຕິດຕາມໝ້ານີ້',
@@ -253,7 +253,7 @@ $messages = array(
 'talk' => 'ສົນທະນາ',
 'views' => 'ເທື່ອເບິ່ງ',
 'toolbox' => 'ກັບອຸບປະກອນ',
-'userpage' => 'ເບິ່ງໜ້າສົນທະນາຂອງຜູ້ໃຊ້',
+'wiki_userpage' => 'ເບິ່ງໜ້າສົນທະນາຂອງຜູ້ໃຊ້',
 'projectpage' => 'ເບິ່ງໝ້າໂຄງການ',
 'mediawikipage' => 'ເບິ່ງ ໝ້າຂໍ້ຄວາມ',
 'templatepage' => 'ເບິ່ງໜ້າແມ່ແບບ',
@@ -269,7 +269,7 @@ $messages = array(
 'jumptonavigation' => 'ນຳທິດ',
 'jumptosearch' => 'ຄົ້ນຫາ',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'ກ່ຽວກັບ{{SITENAME}}',
 'aboutpage' => 'Project:ກ່ຽວກັບ',
 'copyright' => 'ເນື້ອໃນ ສະໜອງໃຫ້ ພາຍໃຕ້ $1.',
@@ -316,7 +316,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'ບົດຄວາມ',
-'nstab-user' => 'ໜ້າຜູ້ໃຊ້',
+'nstab-wiki_user' => 'ໜ້າຜູ້ໃຊ້',
 'nstab-special' => 'ພິເສດ',
 'nstab-project' => 'ໜ້າໂຄງການ',
 'nstab-image' => 'ໄຟລ໌',
@@ -356,9 +356,9 @@ $messages = array(
 'login' => 'ເຊັນເຂົ້າ',
 'nav-login-createaccount' => 'ເຊັນເຂົ້າ / ສ້າງບັນຊີ',
 'loginprompt' => 'ທ່ານຕ້ອງຮັບຄຸກກີ້ ເພື່ອ ເຊັນເຂົ້າ {{SITENAME}}.',
-'userlogin' => 'ເຊັນເຂົ້າ / ສ້າງບັນຊີ',
+'wiki_userlogin' => 'ເຊັນເຂົ້າ / ສ້າງບັນຊີ',
 'logout' => 'ເຊັນອອກ',
-'userlogout' => 'ເຊັນອອກ',
+'wiki_userlogout' => 'ເຊັນອອກ',
 'nologin' => "ບໍ່ມີບັນຊີເທື່ອບໍ? '''$1'''.",
 'nologinlink' => 'ສ້າງບັນຊີໃໝ່',
 'createaccount' => 'ສ້າງບັນຊີ',
@@ -437,11 +437,11 @@ $messages = array(
 'template-protected' => '(ປົກປ້ອງ)',
 'template-semiprotected' => '(ເຄິ່ງປົກປ້ອງ)',
 'nocreatetext' => '{{SITENAME}} ໄດ້ຈຳກັດການສ້າງໜ້າໃໝ່.
-ທ່ານສາມາດກັບໄປ ດັດແກ້ ໜ້າທີ່ມີແລ້ວ ຫຼື [[Special:UserLogin|ເຊັນເຂົ້າ ຫຼື ສ້າງບັນຊີ]].',
+ທ່ານສາມາດກັບໄປ ດັດແກ້ ໜ້າທີ່ມີແລ້ວ ຫຼື [[Special:wiki_userLogin|ເຊັນເຂົ້າ ຫຼື ສ້າງບັນຊີ]].',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'ບໍ່ສາມາດສ້າງ ບັນຊີ ໄດ້',
-'cantcreateaccount-text' => "ການສ້າງບັນຊີ ຈາກ IP ນີ້ (<b>$1</b>) ໄດ້ຖືກຫ້າມ ໂດຍ [[User:$3|$3]].
+'cantcreateaccount-text' => "ການສ້າງບັນຊີ ຈາກ IP ນີ້ (<b>$1</b>) ໄດ້ຖືກຫ້າມ ໂດຍ [[wiki_user:$3|$3]].
 
 ເຫດຜົນ ໃຫ້ໄວ້ ໂດຍ $3 ແມ່ນ ''$2''",
 
@@ -527,7 +527,7 @@ $messages = array(
 'defaultns' => 'ຄົ້ນຫາ ໃນ ຂອບເຂດຊື່ ນີ້ ເວລາບໍ່ມີການລະບຸ:',
 'prefs-files' => 'ໄຟລ໌',
 'youremail' => 'ອີເມລ *:',
-'username' => 'ຊື່ຜູ້ໃຊ້:',
+'wiki_username' => 'ຊື່ຜູ້ໃຊ້:',
 'uid' => 'ເລກປະຈຳໂຕຜູ້ໃຊ້:',
 'yourrealname' => 'ຊື່ແທ້ *:',
 'yourlanguage' => 'ພາສາ:',
@@ -535,8 +535,8 @@ $messages = array(
 'email' => 'ອີເມລ',
 'prefs-help-email' => '* ອີເມລ (ເລືອກໄດ້): ໃຫ້ຜູ້ອື່ນ ສາມາດຕິດຕໍ່ຫາ ທ່ານ ຜ່ານ ໜ້າຜູ້ໃຊ້ ຫຼື ໜ້າສົນທະນາຜູ້ໃຊ້ ຂອງ ທ່ານ ໂດຍ ບໍ່ຈຳເປັນຕ້ອງ ເປີດເຜີຍ ອີເມລຂອງທ່ານ.',
 
-# User rights
-'editinguser' => 'ຜູ້ໃຊ້ <b>$1</b> ພວມດັດແກ້ ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])',
+# wiki_user rights
+'editingwiki_user' => 'ຜູ້ໃຊ້ <b>$1</b> ພວມດັດແກ້ ([[wiki_user talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])',
 
 # Recent changes
 'nchanges' => '$1 {{PLURAL:$1|ການປ່ຽນແປງ|ການປ່ຽນແປງ}}',
@@ -584,7 +584,7 @@ $messages = array(
 'filehist' => 'ປະຫວັດໄຟລ໌',
 'filehist-current' => 'ປະຈຸບັນ',
 'filehist-datetime' => 'ວັນເວລາ',
-'filehist-user' => 'ຜູ້ໃຊ້',
+'filehist-wiki_user' => 'ຜູ້ໃຊ້',
 'filehist-dimensions' => 'ມິຕິ',
 'filehist-filesize' => 'ຂະໜາດໄຟລ໌',
 'filehist-comment' => 'ຄຳເຫັນ',
@@ -646,9 +646,9 @@ $messages = array(
 'longpages' => 'ໜ້າເນື້ອໃນຍາວ',
 'deadendpages' => 'ໜ້າບໍ່ການເຊື່ອມຕໍ່ຫາໜ້າອື່ນ',
 'protectedpages' => 'ບັນດາໜ້າຖືກປົກປ້ອງ',
-'listusers' => 'ລາຍຊື່ຜູ້ໃຊ້',
+'listwiki_users' => 'ລາຍຊື່ຜູ້ໃຊ້',
 'newpages' => 'ໜ້າສ້າງໃໝ່',
-'newpages-username' => 'ຊື່ຜູ້ໃຊ້:',
+'newpages-wiki_username' => 'ຊື່ຜູ້ໃຊ້:',
 'ancientpages' => 'ບັນດາໜ້າເກົ່າທີ່ສຸດ',
 'move' => 'ຍ້າຍ',
 'movethispage' => 'ຍ້າຍໜ້ານີ້',
@@ -683,15 +683,15 @@ Also see [[Special:WantedCategories|wanted categories]].',
 # Special:LinkSearch
 'linksearch' => 'ຄົ້ນຫາການເຊື່ອມຕໍ່ຫາເວັບ',
 
-# Special:ListUsers
-'listusers-submit' => 'ສະແດງ',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'ສະແດງ',
 
-# Special:Log/newusers
-'newuserlogpage' => 'ບັນທຶກການສ້າງບັນຊີຜູ້ໃຊ້',
-'newuserlogpagetext' => 'ນີ້ແມ່ນ ບັນທຶກການສ້າງ ບັນຊີຜູ້ໃຊ້ໃໝ່',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'ບັນທຶກການສ້າງບັນຊີຜູ້ໃຊ້',
+'newwiki_userlogpagetext' => 'ນີ້ແມ່ນ ບັນທຶກການສ້າງ ບັນຊີຜູ້ໃຊ້ໃໝ່',
 
-# E-mail user
-'emailuser' => 'ສົ່ງອີເມລ ຫາ ຜູ້ໃຊ້ນີ້',
+# E-mail wiki_user
+'emailwiki_user' => 'ສົ່ງອີເມລ ຫາ ຜູ້ໃຊ້ນີ້',
 'emailpage' => 'ສົ່ງອີເມລ ຫາ ຜູ້ໃຊ້',
 'emailpagetext' => 'ຖ້າຜູ້ໃຊ້ນີ້ ຂຽນທີ່ຢູ່ອີເມລຢ່າງຖືກຕ້ອງຢູ່ການຕັ້ງຄ່າຂອງລາວ, ຟອມທາງລຸ່ມນີ້​ ຈະສົ່ງຂໍ້ຄວາມໜຶ່ງຫາທີ່ຢູ່ອີເມລນັ້ນ.
 ທີ່ຢູ່ອີເມລ ທີ່ທ່ານຂຽນຢູ່ການຕັ້ງຄ່າຂອງທ່ານ, ຈະປະກົດຂຶ້ນ ຢູ່ຊ່ອງ "From" ຂອງ ອີເມລ ເພື່ອໃຫ້ ຜູ້ຮັບສາມາດທຳການຕອບໄດ້.',
@@ -785,7 +785,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'sp-contributions-blocklog' => 'ບັນທຶກການຫ້າມ',
 'sp-contributions-talk' => 'ສົນທະນາ',
 'sp-contributions-search' => 'ຊອກຫາ ການປະກອບສ່ວນ',
-'sp-contributions-username' => 'ທີ່ຢູ່ IP ຫຼື ຊື່ຜູ້ໃຊ້:',
+'sp-contributions-wiki_username' => 'ທີ່ຢູ່ IP ຫຼື ຊື່ຜູ້ໃຊ້:',
 'sp-contributions-submit' => 'ຊອກຫາ',
 
 # What links here
@@ -808,7 +808,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'ipblocklist' => 'ລາຍການ ທີ່ຢູ່ IP ແລະ ຊື່ຜູ້ໃຊ້ ທີ່ຖືກຫ້າມ',
 'blocklink' => 'ຫ້າມ',
 'contribslink' => 'ປະກອບສ່ວນ',
-'autoblocker' => 'ຫ້າມໂດຍອັດຕາໂນມັດ ຍ້ອນ ທີ່ຢູ່ IP ຂອງທ່ານ ຖືກໃຊ້ໂດຍ "[[User:$1|$1]]" ໃນໄລຍະຫຼັງ. ເຫດຜົນໃນການຫ້າມ  $1 ແມ່ນ : "$2"',
+'autoblocker' => 'ຫ້າມໂດຍອັດຕາໂນມັດ ຍ້ອນ ທີ່ຢູ່ IP ຂອງທ່ານ ຖືກໃຊ້ໂດຍ "[[wiki_user:$1|$1]]" ໃນໄລຍະຫຼັງ. ເຫດຜົນໃນການຫ້າມ  $1 ແມ່ນ : "$2"',
 'blocklogpage' => 'ບັນທຶກການຫ້າມ',
 'blocklogentry' => 'ໄດ້ຫ້າມ "[[$1]]" ຈົນຮອດ $2 $3',
 
@@ -841,7 +841,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'thumbnail-more' => 'ໃຫ້ໃຫຍ່ຂຶ້ນ',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'ໜ້າສົນທະນາຂອງຂ້ອຍ',
+'tooltip-pt-wiki_userpage' => 'ໜ້າສົນທະນາຂອງຂ້ອຍ',
 'tooltip-pt-mytalk' => 'ໜ້າສົນທະນາຂ້ອຍ',
 'tooltip-pt-preferences' => 'ຕັ້ງຄ່າ',
 'tooltip-pt-watchlist' => 'ລາຍການໜ້າທີ່ທ່ານຕິດຕາມການປ່ຽນແປງ',
@@ -866,10 +866,10 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'tooltip-n-help' => 'ບ່ອນຊອກ.',
 'tooltip-t-whatlinkshere' => 'ລາຍການຂອງທຸກໆໜ້າວິກິ ທີ່ເຊື່ອມຕໍ່ມາ',
 'tooltip-t-contributions' => 'ເບິ່ງລາຍການປະກອບສ່ວນໂດຍຜູ້ໃຊ້ນີ້',
-'tooltip-t-emailuser' => 'ສົ່ງອີເມລຫາຜູ້ໃຊ້ນີ້',
+'tooltip-t-emailwiki_user' => 'ສົ່ງອີເມລຫາຜູ້ໃຊ້ນີ້',
 'tooltip-t-upload' => 'ອັບໂຫຼດໄຟລ໌',
 'tooltip-t-specialpages' => 'ລາຍການໜ້າພິເສດທັງໝົດ',
-'tooltip-ca-nstab-user' => 'ເບິ່ງໜ້າຜູ້ໃຊ້',
+'tooltip-ca-nstab-wiki_user' => 'ເບິ່ງໜ້າຜູ້ໃຊ້',
 'tooltip-ca-nstab-project' => 'ເບິ່ງໜ້າໂຄງການ',
 'tooltip-ca-nstab-image' => 'ເບິງໜ້າໄຟລ໌',
 'tooltip-ca-nstab-template' => 'ເບິ່ງແມ່ແບບ',

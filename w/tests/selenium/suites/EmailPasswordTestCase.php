@@ -29,8 +29,8 @@
 
 class EmailPasswordTestCase extends SeleniumTestCase {
 
-    // change user name for each and every test (with in 24 hours)
-    private $userName = "test1";
+    // change wiki_user name for each and every test (with in 24 hours)
+    private $wiki_userName = "test1";
 
     public function testEmailPasswordButton() {
 
@@ -60,18 +60,18 @@ class EmailPasswordTestCase extends SeleniumTestCase {
         $this->type( "wpName1", "" );
         $this->click( "wpMailmypassword" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
-        $this->assertEquals( "Login error\n You have not specified a valid user name.",
+        $this->assertEquals( "Login error\n You have not specified a valid wiki_user name.",
                 $this->getText("//div[@id='bodyContent']/div[4]"));
 
-        $this->type( "wpName1", $this->userName );
+        $this->type( "wpName1", $this->wiki_userName );
         $this->click( "wpMailmypassword" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
 
         //  Can not run on localhost
-        $this->assertEquals( "A new password has been sent to the e-mail address registered for ".ucfirst($this->userName).". Please log in again after you receive it.",
+        $this->assertEquals( "A new password has been sent to the e-mail address registered for ".ucfirst($this->wiki_userName).". Please log in again after you receive it.",
                 $this->getText("//div[@id='bodyContent']/div[4]" ));
 
-        $this->type( "wpName1", $this->userName );
+        $this->type( "wpName1", $this->wiki_userName );
         $this->click( "wpMailmypassword" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
         $this->assertEquals( "Login error\n A password reminder has already been sent, within the last 24 hours. To prevent abuse, only one password reminder will be sent per 24 hours.",

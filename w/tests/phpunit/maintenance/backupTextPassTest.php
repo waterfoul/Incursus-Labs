@@ -445,8 +445,8 @@ class TextPassDumperTest extends DumpTestCase {
       <namespace key="-1" case="first-letter">Special</namespace>
       <namespace key="0" case="first-letter" />
       <namespace key="1" case="first-letter">Talk</namespace>
-      <namespace key="2" case="first-letter">User</namespace>
-      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="2" case="first-letter">wiki_user</namespace>
+      <namespace key="3" case="first-letter">wiki_user talk</namespace>
       <namespace key="4" case="first-letter">Wikisvn</namespace>
       <namespace key="5" case="first-letter">Wikisvn talk</namespace>
       <namespace key="6" case="first-letter">File</namespace>

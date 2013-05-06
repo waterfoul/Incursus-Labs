@@ -10,7 +10,7 @@
  */
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-rememberpassword' => 'Iqtuu uikipitia atiq qakugiq atuinnasivuq uvalumaq qaritaujaq (for a maximum of $1 {{PLURAL:$1|day|days}})',
 
 # Dates
@@ -87,7 +87,7 @@ $messages = array(
 'jumptonavigation' => 'mianirivaa',
 'jumptosearch' => 'ivaaqpuq',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'miksaani {{SITENAME}}',
 'aboutpage' => 'Project:miksaani',
 'currentevents' => 'pigivuq piusiq',
@@ -115,7 +115,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'mappitaq',
-'nstab-user' => 'inuk mappitaq',
+'nstab-wiki_user' => 'inuk mappitaq',
 'nstab-special' => 'piji',
 'nstab-project' => 'piliriaksait pivalliajjutiksanut miqitaq',
 'nstab-mediawiki' => 'kiggapaa',
@@ -135,9 +135,9 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'remembermypassword' => 'iqtuu uikipitia atiq qakakuq atuinnasivuq uvalumajuq qaritaujaq (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'akunnapuq',
 'loginprompt' => 'pigialik imatuaq qaritaujaq quukiis (Cookies) pirqaati akunnapuq {{SITENAME}}.',
-'userlogin' => 'akunnapuq / pirqaapaa kiinaijakkuvingmi tuqkuqsivik',
+'wiki_userlogin' => 'akunnapuq / pirqaapaa kiinaijakkuvingmi tuqkuqsivik',
 'logout' => 'anivvik',
-'userlogout' => 'anivvik',
+'wiki_userlogout' => 'anivvik',
 'nologin' => "ajuinnaaq inuquti? '''$1'''.",
 'nologinlink' => 'pirqaapaa kiinaujakkuvingmi tuqkuqsivik',
 'mailmypassword' => 'qillutuq uikipitia palanngasauti kigutiup sitiniqpaanga',
@@ -188,13 +188,13 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'prefs-rc' => 'pigivuq asianngutuq',
 'searchresultshead' => 'ivaaqpuq',
 'youremail' => 'kigutiup sitiniqpaanga:',
-'username' => 'uikipitia atiq:',
+'wiki_username' => 'uikipitia atiq:',
 'yourrealname' => 'inullarik atiq:',
 'email' => 'kigutiup sitiniqpaanga',
 'prefs-help-email' => 'kigutiup sitiniqpaanga (pikkallavuq) — qakugu nalunanngilaq ilissi pijungnaqtuq pigivaa kanngunaqtuq aajiiqatiginggiq',
 
-# User rights
-'editinguser' => "suqusiqpaa qatannguti '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+# wiki_user rights
+'editingwiki_user' => "suqusiqpaa qatannguti '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Recent changes
 'recentchanges' => 'pigivuq asianngutuq',
@@ -223,7 +223,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 
 # Statistics
 'statistics' => 'kisitsisillgurlugitpasissitissat',
-'statistics-header-users' => 'qatannguti kisitsisillgurlugitpasissitissat',
+'statistics-header-wiki_users' => 'qatannguti kisitsisillgurlugitpasissitissat',
 
 'doubleredirects' => 'tapirqilik qaningani kamagijaq aasit nakit',
 
@@ -232,8 +232,8 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'brokenredirects-delete' => 'nipaqtipaa',
 
 # Miscellaneous special pages
-'listusers' => 'qatannguti nipi',
-'newpages-username' => 'uikipitia atiq:',
+'listwiki_users' => 'qatannguti nipi',
+'newpages-wiki_username' => 'uikipitia atiq:',
 'ancientpages' => 'utuqaq ittusaq mappitaq',
 'move' => 'uajuq',
 
@@ -250,7 +250,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 # Special:Categories
 'categories' => 'nuapput',
 
-# E-mail user
+# E-mail wiki_user
 'emailfrom' => 'nakit',
 'emailmessage' => 'kiggapaa',
 'emailsend' => 'qiutsavigivaa',

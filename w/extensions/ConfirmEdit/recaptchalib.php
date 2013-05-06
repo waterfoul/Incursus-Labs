@@ -72,7 +72,7 @@ function _recaptcha_http_post( $host, $path, $data, $port = 80 ) {
         $http_request .= "Host: $host\r\n";
         $http_request .= "Content-Type: application/x-www-form-urlencoded;\r\n";
         $http_request .= "Content-Length: " . strlen( $req ) . "\r\n";
-        $http_request .= "User-Agent: reCAPTCHA/PHP\r\n";
+        $http_request .= "wiki_user-Agent: reCAPTCHA/PHP\r\n";
         $http_request .= "\r\n";
         $http_request .= $req;
 
@@ -101,7 +101,7 @@ function _recaptcha_http_post( $host, $path, $data, $port = 80 ) {
  * @param string $error The error given by reCAPTCHA (optional, default is null)
  * @param boolean $use_ssl Should the request be made over ssl? (optional, default is false)
 
- * @return string - The HTML to be embedded in the user's form.
+ * @return string - The HTML to be embedded in the wiki_user's form.
  */
 function recaptcha_get_html ( $pubkey, $error = null, $use_ssl = false )
 {
@@ -141,7 +141,7 @@ class ReCaptchaResponse {
 
 
 /**
-  * Calls an HTTP POST function to verify if the user's guess was correct
+  * Calls an HTTP POST function to verify if the wiki_user's guess was correct
   * @param string $privkey
   * @param string $remoteip
   * @param string $challenge
@@ -193,7 +193,7 @@ function recaptcha_check_answer ( $privkey, $remoteip, $challenge, $response, $e
 }
 
 /**
- * gets a URL where the user can sign up for reCAPTCHA. If your application
+ * gets a URL where the wiki_user can sign up for reCAPTCHA. If your application
  * has a configuration page where you enter a key, you should provide a link
  * using this function.
  * @param string $domain The domain where the page is hosted
@@ -241,7 +241,7 @@ function recaptcha_mailhide_url( $pubkey, $privkey, $email ) {
 }
 
 /**
- * gets the parts of the email to expose to the user.
+ * gets the parts of the email to expose to the wiki_user.
  * eg, given johndoe@example,com return ["john", "example.com"].
  * the email is then displayed as john...@example.com
  */

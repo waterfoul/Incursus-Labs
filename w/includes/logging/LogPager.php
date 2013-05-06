@@ -36,7 +36,7 @@ class LogPager extends ReverseChronologicalPager {
 	 *
 	 * @param $list LogEventsList
 	 * @param $types String or Array: log types to show
-	 * @param $performer String: the user who made the log entries
+	 * @param $performer String: the wiki_user who made the log entries
 	 * @param $title String|Title: the page title the log entries are for
 	 * @param $pattern String: do a prefix search rather than an exact title match
 	 * @param $conds Array: extra conditions for the query
@@ -61,7 +61,7 @@ class LogPager extends ReverseChronologicalPager {
 	public function getDefaultQuery() {
 		$query = parent::getDefaultQuery();
 		$query['type'] = $this->typeCGI; // arrays won't work here
-		$query['user'] = $this->performer;
+		$query['wiki_user'] = $this->performer;
 		$query['month'] = $this->mMonth;
 		$query['year'] = $this->mYear;
 		return $query;
@@ -76,7 +76,7 @@ class LogPager extends ReverseChronologicalPager {
 		}
 		foreach( $wgFilterLogTypes as $type => $default ) {
 			// Avoid silly filtering
-			if( $type !== 'patrol' || $this->getUser()->useNPPatrol() ) {
+			if( $type !== 'patrol' || $this->getwiki_user()->useNPPatrol() ) {
 				$hide = $this->getRequest()->getInt( "hide_{$type}_log", $default );
 				$filters[$type] = $hide;
 				if( $hide )
@@ -101,7 +101,7 @@ class LogPager extends ReverseChronologicalPager {
 		$needReindex = false;
 		foreach ( $types as $type ) {
 			if( isset( $wgLogRestrictions[$type] )
-				&& !$this->getUser()->isAllowed($wgLogRestrictions[$type])
+				&& !$this->getwiki_user()->isAllowed($wgLogRestrictions[$type])
 			) {
 				$needReindex = true;
 				$types = array_diff( $types, array( $type ) );
@@ -113,9 +113,9 @@ class LogPager extends ReverseChronologicalPager {
 			$types = array_values( $types );
 		}
 		$this->types = $types;
-		// Don't show private logs to unprivileged users.
+		// Don't show private logs to unprivileged wiki_users.
 		// Also, only show them upon specific request to avoid suprises.
-		$audience = $types ? 'user' : 'public';
+		$audience = $types ? 'wiki_user' : 'public';
 		$hideLogs = LogEventsList::getExcludeClause( $this->mDb, $audience );
 		if( $hideLogs !== false ) {
 			$this->mConds[] = $hideLogs;
@@ -128,42 +128,42 @@ class LogPager extends ReverseChronologicalPager {
 	}
 
 	/**
-	 * Set the log reader to return only entries by the given user.
+	 * Set the log reader to return only entries by the given wiki_user.
 	 *
-	 * @param $name String: (In)valid user name
+	 * @param $name String: (In)valid wiki_user name
 	 * @return bool
 	 */
 	private function limitPerformer( $name ) {
 		if( $name == '' ) {
 			return false;
 		}
-		$usertitle = Title::makeTitleSafe( NS_USER, $name );
-		if( is_null($usertitle) ) {
+		$wiki_usertitle = Title::makeTitleSafe( NS_USER, $name );
+		if( is_null($wiki_usertitle) ) {
 			return false;
 		}
-		/* Fetch userid at first, if known, provides awesome query plan afterwards */
-		$userid = User::idFromName( $name );
-		if( !$userid ) {
+		/* Fetch wiki_userid at first, if known, provides awesome query plan afterwards */
+		$wiki_userid = wiki_user::idFromName( $name );
+		if( !$wiki_userid ) {
 			/* It should be nicer to abort query at all,
 			   but for now it won't pass anywhere behind the optimizer */
 			$this->mConds[] = "NULL";
 		} else {
-			$this->mConds['log_user'] = $userid;
+			$this->mConds['log_wiki_user'] = $wiki_userid;
 			// Paranoia: avoid brute force searches (bug 17342)
-			$user = $this->getUser();
-			if( !$user->isAllowed( 'deletedhistory' ) ) {
+			$wiki_user = $this->getwiki_user();
+			if( !$wiki_user->isAllowed( 'deletedhistory' ) ) {
 				$this->mConds[] = $this->mDb->bitAnd('log_deleted', LogPage::DELETED_USER) . ' = 0';
-			} elseif( !$user->isAllowed( 'suppressrevision' ) ) {
+			} elseif( !$wiki_user->isAllowed( 'suppressrevision' ) ) {
 				$this->mConds[] = $this->mDb->bitAnd('log_deleted', LogPage::SUPPRESSED_USER) .
 					' != ' . LogPage::SUPPRESSED_USER;
 			}
-			$this->performer = $usertitle->getText();
+			$this->performer = $wiki_usertitle->getText();
 		}
 	}
 
 	/**
 	 * Set the log reader to return only entries affecting the given page.
-	 * (For the block and rights logs, this is a user page.)
+	 * (For the block and rights logs, this is a wiki_user page.)
 	 *
 	 * @param $page String or Title object: Title name
 	 * @param $pattern String
@@ -183,7 +183,7 @@ class LogPager extends ReverseChronologicalPager {
 
 		$this->title = $title->getPrefixedText();
 		$ns = $title->getNamespace();
-		$db = $this->mDb;
+		 = $this->mDb;
 
 		# Using the (log_namespace, log_title, log_timestamp) index with a
 		# range scan (LIKE) on the first two parts, instead of simple equality,
@@ -195,21 +195,21 @@ class LogPager extends ReverseChronologicalPager {
 		# This is not a problem with simple title matches, because then we can
 		# use the page_time index.  That should have no more than a few hundred
 		# log entries for even the busiest pages, so it can be safely scanned
-		# in full to satisfy an impossible condition on user or similar.
+		# in full to satisfy an impossible condition on wiki_user or similar.
 		if( $pattern && !$wgMiserMode ) {
 			$this->mConds['log_namespace'] = $ns;
-			$this->mConds[] = 'log_title ' . $db->buildLike( $title->getDBkey(), $db->anyString() );
+			$this->mConds[] = 'log_title ' . ->buildLike( $title->getDBkey(), ->anyString() );
 			$this->pattern = $pattern;
 		} else {
 			$this->mConds['log_namespace'] = $ns;
 			$this->mConds['log_title'] = $title->getDBkey();
 		}
 		// Paranoia: avoid brute force searches (bug 17342)
-		$user = $this->getUser();
-		if( !$user->isAllowed( 'deletedhistory' ) ) {
-			$this->mConds[] = $db->bitAnd('log_deleted', LogPage::DELETED_ACTION) . ' = 0';
-		} elseif( !$user->isAllowed( 'suppressrevision' ) ) {
-			$this->mConds[] = $db->bitAnd('log_deleted', LogPage::SUPPRESSED_ACTION) .
+		$wiki_user = $this->getwiki_user();
+		if( !$wiki_user->isAllowed( 'deletedhistory' ) ) {
+			$this->mConds[] = ->bitAnd('log_deleted', LogPage::DELETED_ACTION) . ' = 0';
+		} elseif( !$wiki_user->isAllowed( 'suppressrevision' ) ) {
+			$this->mConds[] = ->bitAnd('log_deleted', LogPage::SUPPRESSED_ACTION) .
 				' != ' . LogPage::SUPPRESSED_ACTION;
 		}
 	}
@@ -248,9 +248,9 @@ class LogPager extends ReverseChronologicalPager {
 		# the choices of available indexes. This mainly
 		# avoids site-breaking filesorts.
 		} elseif( $this->title || $this->pattern || $this->performer ) {
-			$index['logging'] = array( 'page_time', 'user_time' );
+			$index['logging'] = array( 'page_time', 'wiki_user_time' );
 			if( count($this->types) == 1 ) {
-				$index['logging'][] = 'log_user_type_time';
+				$index['logging'][] = 'log_wiki_user_type_time';
 			}
 		} elseif( count($this->types) == 1 ) {
 			$index['logging'] = 'type_time';
@@ -297,8 +297,8 @@ class LogPager extends ReverseChronologicalPager {
 			$lb = new LinkBatch;
 			foreach ( $this->mResult as $row ) {
 				$lb->add( $row->log_namespace, $row->log_title );
-				$lb->addObj( Title::makeTitleSafe( NS_USER, $row->user_name ) );
-				$lb->addObj( Title::makeTitleSafe( NS_USER_TALK, $row->user_name ) );
+				$lb->addObj( Title::makeTitleSafe( NS_USER, $row->wiki_user_name ) );
+				$lb->addObj( Title::makeTitleSafe( NS_USER_TALK, $row->wiki_user_name ) );
 				$formatter = LogFormatter::newFromRow( $row );
 				foreach ( $formatter->getPreloadTitles() as $title ) {
 					$lb->addObj( $title );

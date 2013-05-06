@@ -38,7 +38,7 @@ $.each( [true, false], function ( i, strictMode ) {
 
 		assert.deepEqual(
 			{
-				userInfo: uri.getUserInfo(),
+				wiki_userInfo: uri.getwiki_userInfo(),
 				authority: uri.getAuthority(),
 				hostPort: uri.getHostPort(),
 				queryString: uri.getQueryString(),
@@ -46,7 +46,7 @@ $.each( [true, false], function ( i, strictMode ) {
 				toString: uri.toString()
 			},
 			{
-				userInfo: '',
+				wiki_userInfo: '',
 				authority: 'www.ietf.org',
 				hostPort: 'www.ietf.org',
 				queryString: '',
@@ -59,13 +59,13 @@ $.each( [true, false], function ( i, strictMode ) {
 	});
 });
 
-QUnit.test( 'Parse an ftp URI correctly with user and password', 1, function ( assert ) {
+QUnit.test( 'Parse an ftp URI correctly with wiki_user and password', 1, function ( assert ) {
 	var uri = new mw.Uri( 'ftp://usr:pwd@192.0.2.16/' );
 
 	assert.deepEqual(
 		{
 			protocol: uri.protocol,
-			user: uri.user,
+			wiki_user: uri.wiki_user,
 			password: uri.password,
 			host: uri.host,
 			port: uri.port,
@@ -75,7 +75,7 @@ QUnit.test( 'Parse an ftp URI correctly with user and password', 1, function ( a
 		},
 		{
 			protocol: 'ftp',
-			user: 'usr',
+			wiki_user: 'usr',
 			password: 'pwd',
 			host: '192.0.2.16',
 			port: undefined,
@@ -169,7 +169,7 @@ QUnit.test( 'All-dressed URI with everything', 11, function ( assert ) {
 	assert.deepEqual(
 		{
 			protocol: uri.protocol,
-			user: uri.user,
+			wiki_user: uri.wiki_user,
 			password: uri.password,
 			host: uri.host,
 			port: uri.port,
@@ -179,7 +179,7 @@ QUnit.test( 'All-dressed URI with everything', 11, function ( assert ) {
 		},
 		{
 			protocol: 'http',
-			user: 'auth',
+			wiki_user: 'auth',
 			password: undefined,
 			host: 'www.example.com',
 			port: '81',
@@ -190,7 +190,7 @@ QUnit.test( 'All-dressed URI with everything', 11, function ( assert ) {
 		'basic object properties'
 	);
 
-	assert.equal( uri.getUserInfo(), 'auth', 'user info' );
+	assert.equal( uri.getwiki_userInfo(), 'auth', 'wiki_user info' );
 
 	assert.equal( uri.getAuthority(), 'auth@www.example.com:81', 'authority equal to auth@hostport' );
 

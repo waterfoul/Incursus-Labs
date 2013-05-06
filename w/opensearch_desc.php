@@ -50,7 +50,7 @@ print Xml::openElement( 'OpenSearchDescription',
 //
 // Note: ShortName and the <link title=""> need to match; they are used as
 // a key for identifying if the search engine has been added already, *and*
-// as the display name presented to the end-user.
+// as the display name presented to the end-wiki_user.
 //
 // Behavior seems about the same between Firefox and IE 7/8 here.
 // 'Description' doesn't appear to be used by either.

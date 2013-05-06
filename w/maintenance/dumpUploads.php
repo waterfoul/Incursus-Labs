@@ -76,15 +76,15 @@ By default, outputs relative paths against the parent directory of \$wgUploadDir
 	 * @param $shared Boolean: true to pass shared-dir settings to hash func
 	 */
 	function fetchUsed( $shared ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$image = $dbr->tableName( 'image' );
-		$imagelinks = $dbr->tableName( 'imagelinks' );
+		r = wfGetDB( DB_SLAVE );
+		$image = r->tableName( 'image' );
+		$imagelinks = r->tableName( 'imagelinks' );
 
 		$sql = "SELECT DISTINCT il_to, img_name
 			FROM $imagelinks
 			LEFT OUTER JOIN $image
 			ON il_to=img_name";
-		$result = $dbr->query( $sql );
+		$result = r->query( $sql );
 
 		foreach ( $result as $row ) {
 			$this->outputItem( $row->il_to, $shared );
@@ -97,8 +97,8 @@ By default, outputs relative paths against the parent directory of \$wgUploadDir
 	 * @param $shared Boolean: true to pass shared-dir settings to hash func
 	 */
 	function fetchLocal( $shared ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$result = $dbr->select( 'image',
+		r = wfGetDB( DB_SLAVE );
+		$result = r->select( 'image',
 			array( 'img_name' ),
 			'',
 			__METHOD__ );

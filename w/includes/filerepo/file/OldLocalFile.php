@@ -80,14 +80,14 @@ class OldLocalFile extends LocalFile {
 	 * @return bool|OldLocalFile
 	 */
 	static function newFromKey( $sha1, $repo, $timestamp = false ) {
-		$dbr = $repo->getSlaveDB();
+		r = $repo->getSlaveDB();
 
 		$conds = array( 'oi_sha1' => $sha1 );
 		if ( $timestamp ) {
-			$conds['oi_timestamp'] = $dbr->timestamp( $timestamp );
+			$conds['oi_timestamp'] = r->timestamp( $timestamp );
 		}
 
-		$row = $dbr->selectRow( 'oldimage', self::selectFields(), $conds, __METHOD__ );
+		$row = r->selectRow( 'oldimage', self::selectFields(), $conds, __METHOD__ );
 		if ( $row ) {
 			return self::newFromRow( $row, $repo );
 		} else {
@@ -112,8 +112,8 @@ class OldLocalFile extends LocalFile {
 			'oi_major_mime',
 			'oi_minor_mime',
 			'oi_description',
-			'oi_user',
-			'oi_user_text',
+			'oi_wiki_user',
+			'oi_wiki_user_text',
 			'oi_timestamp',
 			'oi_deleted',
 			'oi_sha1',
@@ -170,14 +170,14 @@ class OldLocalFile extends LocalFile {
 	function loadFromDB() {
 		wfProfileIn( __METHOD__ );
 		$this->dataLoaded = true;
-		$dbr = $this->repo->getSlaveDB();
+		r = $this->repo->getSlaveDB();
 		$conds = array( 'oi_name' => $this->getName() );
 		if ( is_null( $this->requestedTime ) ) {
 			$conds['oi_archive_name'] = $this->archive_name;
 		} else {
-			$conds[] = 'oi_timestamp = ' . $dbr->addQuotes( $dbr->timestamp( $this->requestedTime ) );
+			$conds[] = 'oi_timestamp = ' . r->addQuotes( r->timestamp( $this->requestedTime ) );
 		}
-		$row = $dbr->selectRow( 'oldimage', $this->getCacheFields( 'oi_' ),
+		$row = r->selectRow( 'oldimage', $this->getCacheFields( 'oi_' ),
 			$conds, __METHOD__, array( 'ORDER BY' => 'oi_timestamp DESC' ) );
 		if ( $row ) {
 			$this->loadFromRow( $row, 'oi_' );
@@ -223,11 +223,11 @@ class OldLocalFile extends LocalFile {
 			return;
 		}
 
-		$dbw = $this->repo->getMasterDB();
+		w = $this->repo->getMasterDB();
 		list( $major, $minor ) = self::splitMime( $this->mime );
 
 		wfDebug(__METHOD__.': upgrading '.$this->archive_name." to the current schema\n");
-		$dbw->update( 'oldimage',
+		w->update( 'oldimage',
 			array(
 				'oi_size'       => $this->size, // sanity
 				'oi_width'      => $this->width,
@@ -266,16 +266,16 @@ class OldLocalFile extends LocalFile {
 	}
 
 	/**
-	 * Determine if the current user is allowed to view a particular
+	 * Determine if the current wiki_user is allowed to view a particular
 	 * field of this image file, if it's marked as deleted.
 	 *
 	 * @param $field Integer
-	 * @param $user User object to check, or null to use $wgUser
+	 * @param $wiki_user wiki_user object to check, or null to use $wgwiki_user
 	 * @return bool
 	 */
-	function userCan( $field, User $user = null ) {
+	function wiki_userCan( $field, wiki_user $wiki_user = null ) {
 		$this->load();
-		return Revision::userCanBitfield( $this->deleted, $field, $user );
+		return Revision::wiki_userCanBitfield( $this->deleted, $field, $wiki_user );
 	}
 
 	/**
@@ -287,11 +287,11 @@ class OldLocalFile extends LocalFile {
 	 *
 	 * @param $timestamp string
 	 * @param $comment string
-	 * @param $user
+	 * @param $wiki_user
 	 * @param $flags int
 	 * @return FileRepoStatus
 	 */
-	function uploadOld( $srcPath, $archiveName, $timestamp, $comment, $user, $flags = 0 ) {
+	function uploadOld( $srcPath, $archiveName, $timestamp, $comment, $wiki_user, $flags = 0 ) {
 		$this->lock();
 
 		$dstRel = 'archive/' . $this->getHashPath() . $archiveName;
@@ -300,7 +300,7 @@ class OldLocalFile extends LocalFile {
 		);
 
 		if ( $status->isGood() ) {
-			if ( !$this->recordOldUpload( $srcPath, $archiveName, $timestamp, $comment, $user ) ) {
+			if ( !$this->recordOldUpload( $srcPath, $archiveName, $timestamp, $comment, $wiki_user ) ) {
 				$status->fatal( 'filenotfound', $srcPath );
 			}
 		}
@@ -317,12 +317,12 @@ class OldLocalFile extends LocalFile {
 	 * @param $archiveName string The archive name of the file
 	 * @param $timestamp string
 	 * @param $comment string Upload comment
-	 * @param $user User User who did this upload
+	 * @param $wiki_user wiki_user wiki_user who did this upload
 	 * @return bool
 	 */
-	function recordOldUpload( $srcPath, $archiveName, $timestamp, $comment, $user ) {
-		$dbw = $this->repo->getMasterDB();
-		$dbw->begin( __METHOD__ );
+	function recordOldUpload( $srcPath, $archiveName, $timestamp, $comment, $wiki_user ) {
+		w = $this->repo->getMasterDB();
+		w->begin( __METHOD__ );
 
 		$dstPath = $this->repo->getZonePath( 'public' ) . '/' . $this->getRel();
 		$props = $this->repo->getFileProps( $dstPath );
@@ -330,7 +330,7 @@ class OldLocalFile extends LocalFile {
 			return false;
 		}
 
-		$dbw->insert( 'oldimage',
+		w->insert( 'oldimage',
 			array(
 				'oi_name'         => $this->getName(),
 				'oi_archive_name' => $archiveName,
@@ -338,10 +338,10 @@ class OldLocalFile extends LocalFile {
 				'oi_width'        => intval( $props['width'] ),
 				'oi_height'       => intval( $props['height'] ),
 				'oi_bits'         => $props['bits'],
-				'oi_timestamp'    => $dbw->timestamp( $timestamp ),
+				'oi_timestamp'    => w->timestamp( $timestamp ),
 				'oi_description'  => $comment,
-				'oi_user'         => $user->getId(),
-				'oi_user_text'    => $user->getName(),
+				'oi_wiki_user'         => $wiki_user->getId(),
+				'oi_wiki_user_text'    => $wiki_user->getName(),
 				'oi_metadata'     => $props['metadata'],
 				'oi_media_type'   => $props['media_type'],
 				'oi_major_mime'   => $props['major_mime'],
@@ -350,7 +350,7 @@ class OldLocalFile extends LocalFile {
 			), __METHOD__
 		);
 
-		$dbw->commit( __METHOD__ );
+		w->commit( __METHOD__ );
 
 		return true;
 	}

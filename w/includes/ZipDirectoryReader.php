@@ -434,13 +434,13 @@ class ZipDirectoryReader {
 				$name = iconv( 'CP437', 'UTF-8', $data['name'] );
 			}
 
-			// Compile a data array for the user, with a sensible format
-			$userData = array(
+			// Compile a data array for the wiki_user, with a sensible format
+			$wiki_userData = array(
 				'name' => $name,
 				'mtime' => $timestamp,
 				'size' => $data['uncompressed size'],
 			);
-			call_user_func( $this->callback, $userData );
+			call_wiki_user_func( $this->callback, $wiki_userData );
 		}
 	}
 

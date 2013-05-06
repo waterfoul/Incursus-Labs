@@ -16,7 +16,7 @@ They can be added in several arrays:
   This array is associative with the language code in the first dimension key
   and then a "normal" array of magic words.
 * Localized arrays (languages/messages/LanguageXX.php) include their different 
-  names to be used by the users.
+  names to be used by the wiki_users.
 
 To add a new variable, you should use the "MagicWordwgVariableIDs" hook to add
 the internal name to the $magicWords array. You'll need to define the value of

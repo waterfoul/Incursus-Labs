@@ -38,47 +38,47 @@ class DeleteDefaultMessages extends Maintenance {
 	}
 
 	public function execute() {
-		global $wgUser;
+		global $wgwiki_user;
 
 		$this->output( "Checking existence of old default messages..." );
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( array( 'page', 'revision' ),
+		r = wfGetDB( DB_SLAVE );
+		$res = r->select( array( 'page', 'revision' ),
 			array( 'page_namespace', 'page_title' ),
 			array(
 				'page_namespace' => NS_MEDIAWIKI,
 				'page_latest=rev_id',
-				'rev_user_text' => 'MediaWiki default',
+				'rev_wiki_user_text' => 'MediaWiki default',
 			)
 		);
 
-		if( $dbr->numRows( $res ) == 0 ) {
+		if( r->numRows( $res ) == 0 ) {
 			# No more messages left
 			$this->output( "done.\n" );
 			return;
 		}
 
-		# Deletions will be made by $user temporarly added to the bot group
+		# Deletions will be made by $wiki_user temporarly added to the bot group
 		# in order to hide it in RecentChanges.
-		$user = User::newFromName( 'MediaWiki default' );
-		if ( !$user ) {
-			$this->error( "Invalid username", true );
+		$wiki_user = wiki_user::newFromName( 'MediaWiki default' );
+		if ( !$wiki_user ) {
+			$this->error( "Invalid wiki_username", true );
 		}
-		$user->addGroup( 'bot' );
-		$wgUser = $user;
+		$wiki_user->addGroup( 'bot' );
+		$wgwiki_user = $wiki_user;
 
 		# Handle deletion
 		$this->output( "\n...deleting old default messages (this may take a long time!)...", 'msg' );
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
 		foreach ( $res as $row ) {
 			wfWaitForSlaves();
-			$dbw->ping();
+			w->ping();
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 			$page = WikiPage::factory( $title );
-			$dbw->begin( __METHOD__ );
+			w->begin( __METHOD__ );
 			$error = ''; // Passed by ref
-			$page->doDeleteArticle( 'No longer required', false, 0, false, $error, $user );
-			$dbw->commit( __METHOD__ );
+			$page->doDeleteArticle( 'No longer required', false, 0, false, $error, $wiki_user );
+			w->commit( __METHOD__ );
 		}
 
 		$this->output( "done!\n", 'msg' );

@@ -67,12 +67,12 @@ class ResourceLoader {
 		if ( !count( $modules ) ) {
 			return; // or else Database*::select() will explode, plus it's cheaper!
 		}
-		$dbr = wfGetDB( DB_SLAVE );
+		r = wfGetDB( DB_SLAVE );
 		$skin = $context->getSkin();
 		$lang = $context->getLanguage();
 
 		// Get file dependency information
-		$res = $dbr->select( 'module_deps', array( 'md_module', 'md_deps' ), array(
+		$res = r->select( 'module_deps', array( 'md_module', 'md_deps' ), array(
 				'md_module' => $modules,
 				'md_skin' => $skin
 			), __METHOD__
@@ -101,7 +101,7 @@ class ResourceLoader {
 		}
 		$modulesWithoutMessages = array_flip( $modules ); // Will be trimmed down by the loop below
 		if ( count( $modulesWithMessages ) ) {
-			$res = $dbr->select( 'msg_resource', array( 'mr_resource', 'mr_timestamp' ), array(
+			$res = r->select( 'msg_resource', array( 'mr_resource', 'mr_timestamp' ), array(
 					'mr_resource' => $modulesWithMessages,
 					'mr_lang' => $lang
 				), __METHOD__
@@ -1077,7 +1077,7 @@ class ResourceLoader {
 	 * @param $modules array of module names (strings)
 	 * @param $lang string Language code
 	 * @param $skin string Skin name
-	 * @param $user string|null User name. If null, the &user= parameter is omitted
+	 * @param $wiki_user string|null wiki_user name. If null, the &wiki_user= parameter is omitted
 	 * @param $version string|null Versioning timestamp
 	 * @param $debug bool Whether the request should be in debug mode
 	 * @param $only string|null &only= parameter
@@ -1086,10 +1086,10 @@ class ResourceLoader {
 	 * @param $extraQuery array Extra query parameters to add
 	 * @return string URL to load.php. May be protocol-relative (if $wgLoadScript is procol-relative)
 	 */
-	public static function makeLoaderURL( $modules, $lang, $skin, $user = null, $version = null, $debug = false, $only = null,
+	public static function makeLoaderURL( $modules, $lang, $skin, $wiki_user = null, $version = null, $debug = false, $only = null,
 			$printable = false, $handheld = false, $extraQuery = array() ) {
 		global $wgLoadScript;
-		$query = self::makeLoaderQuery( $modules, $lang, $skin, $user, $version, $debug,
+		$query = self::makeLoaderQuery( $modules, $lang, $skin, $wiki_user, $version, $debug,
 			$only, $printable, $handheld, $extraQuery
 		);
 
@@ -1103,7 +1103,7 @@ class ResourceLoader {
 	 * function for makeLoaderURL().
 	 * @return array
 	 */
-	public static function makeLoaderQuery( $modules, $lang, $skin, $user = null, $version = null, $debug = false, $only = null,
+	public static function makeLoaderQuery( $modules, $lang, $skin, $wiki_user = null, $version = null, $debug = false, $only = null,
 			$printable = false, $handheld = false, $extraQuery = array() ) {
 		$query = array(
 			'modules' => self::makePackedModulesString( $modules ),
@@ -1111,8 +1111,8 @@ class ResourceLoader {
 			'skin' => $skin,
 			'debug' => $debug ? 'true' : 'false',
 		);
-		if ( $user !== null ) {
-			$query['user'] = $user;
+		if ( $wiki_user !== null ) {
+			$query['wiki_user'] = $wiki_user;
 		}
 		if ( $version !== null ) {
 			$query['version'] = $version;

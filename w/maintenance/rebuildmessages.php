@@ -42,11 +42,11 @@ class RebuildMessages extends Maintenance {
 			$databases = array( $wgDBname );
 		}
 
-		foreach ( $databases as $db ) {
-			$this->output( "Deleting message cache for {$db}... " );
-			$messageMemc->delete( "{$db}:messages" );
+		foreach ( $databases as  ) {
+			$this->output( "Deleting message cache for {}... " );
+			$messageMemc->delete( "{}:messages" );
 			if ( $wgEnableSidebarCache )
-				$messageMemc->delete( "{$db}:sidebar" );
+				$messageMemc->delete( "{}:sidebar" );
 			$this->output( "Deleted\n" );
 		}
 	}

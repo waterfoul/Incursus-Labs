@@ -6,11 +6,11 @@ an event; and how to run hooks for an event.
 ==Glossary==
 
 event
-     Something that happens with the wiki. For example: a user logs in. A wiki
+     Something that happens with the wiki. For example: a wiki_user logs in. A wiki
      page is saved. A wiki page is deleted. Often there are two events
      associated with a single action: one before the code is run to make the
      event happen, and one after. Each event has a name, preferably in
-     CamelCase. For example, 'UserLogin', 'ArticleSave', 'ArticleSaveComplete',
+     CamelCase. For example, 'wiki_userLogin', 'ArticleSave', 'ArticleSaveComplete',
      'ArticleDelete'.
 
 hook
@@ -165,7 +165,7 @@ would result in the following code being executed when 'EventName' happened:
 
 Note that when an object is the hook, and there's no specified method, the
 default method called is 'onEventName'. For different events this would be
-different: 'onArticleSave', 'onUserLogin', etc.
+different: 'onArticleSave', 'onwiki_userLogin', etc.
 
 The extra data is useful if we want to use the same function or object for
 different purposes. For example:
@@ -180,18 +180,18 @@ Hooks can return three possible values:
 
   * true: the hook has operated successfully
   * "some string": an error occurred; processing should stop and the error
-                   should be shown to the user
+                   should be shown to the wiki_user
   * false: the hook has successfully done the work necessary and the calling
            function should skip
 
 The last result would be for cases where the hook function replaces the main
-functionality. For example, if you wanted to authenticate users to a custom
+functionality. For example, if you wanted to authenticate wiki_users to a custom
 system (LDAP, another PHP program, whatever), you could do:
 
-	$wgHooks['UserLogin'][] = array('ldapLogin', $ldapServer);
+	$wgHooks['wiki_userLogin'][] = array('ldapLogin', $ldapServer);
 
-	function ldapLogin($username, $password) {
-		# log user into LDAP
+	function ldapLogin($wiki_username, $password) {
+		# log wiki_user into LDAP
 		return false;
 	}
 
@@ -210,10 +210,10 @@ related to a particular event, like so:
 	class Article {
 		# ...
 		function protect() {
-			global $wgUser;
-			if (wfRunHooks('ArticleProtect', array(&$this, &$wgUser))) {
+			global $wgwiki_user;
+			if (wfRunHooks('ArticleProtect', array(&$this, &$wgwiki_user))) {
 				# protect the article
-				wfRunHooks('ArticleProtectComplete', array(&$this, &$wgUser));
+				wfRunHooks('ArticleProtectComplete', array(&$this, &$wgwiki_user));
 			}
 		}
 	}
@@ -235,8 +235,8 @@ This is a list of known events and parameters; please add to it if you're going
 to add events to the MediaWiki code.
 
 'AbortAutoAccount': Return false to cancel automated local account creation, where normally authentication against an external auth plugin would be creating a local account.
-$user: the User object about to be created (read-only, incomplete)
-&$abortMsg: out parameter: name of error message to be displayed to user
+$wiki_user: the wiki_user object about to be created (read-only, incomplete)
+&$abortMsg: out parameter: name of error message to be displayed to wiki_user
 
 'AbortAutoblock': Return false to cancel an autoblock.
 $autoblockip: The IP going to be autoblocked.
@@ -246,26 +246,26 @@ $block: The block from which the autoblock is coming.
 &$diffEngine: DifferenceEngine object
 
 'AbortEmailNotification': Can be used to cancel email notifications for an edit.
-$editor: The User who made the change.
+$editor: The wiki_user who made the change.
 $title: The Title of the page that was edited.
 
 'AbortLogin': Return false to cancel account login.
-$user: the User object being authenticated against
+$wiki_user: the wiki_user object being authenticated against
 $password: the password being submitted, not yet checked for validity
-&$retval: a LoginForm class constant to return from authenticateUserData();
+&$retval: a LoginForm class constant to return from authenticatewiki_userData();
           default is LoginForm::ABORTED. Note that the client may be using
-          a machine API rather than the HTML user interface.
+          a machine API rather than the HTML wiki_user interface.
 &$msg: the message identifier for abort reason (new in 1.18, not available before 1.18)
 
 'AbortMove': allows to abort moving an article (title)
 $old: old title
 $nt: new title
-$user: user who is doing the move
+$wiki_user: wiki_user who is doing the move
 $err: error message
 $reason: the reason for the move (added in 1.13)
 
 'AbortNewAccount': Return false to cancel explicit account creation.
-$user: the User object about to be created (read-only, incomplete)
+$wiki_user: the wiki_user object about to be created (read-only, incomplete)
 &$msg: out parameter: HTML to display on abort
 
 'ActionBeforeFormDisplay': before executing the HTMLForm object
@@ -279,8 +279,8 @@ $name: name of the action
 &$fields: HTMLForm descriptor array
 $article: Article object
 
-'AddNewAccount': after a user account is created
-$user: the User object that was created. (Parameter added in 1.7)
+'AddNewAccount': after a wiki_user account is created
+$wiki_user: the wiki_user object that was created. (Parameter added in 1.7)
 $byEmail: true when account was created "by email" (added in 1.12)
 
 'AfterImportPage': When a page import is completed
@@ -300,12 +300,12 @@ $output: The OutputPage object where output() was called
 of the javascript ajax engine. The hook is only called when ajax
 is enabled ( $wgUseAjax = true; ).
 
-'AlternateEdit': before checking if a user can edit a page and
+'AlternateEdit': before checking if a wiki_user can edit a page and
 before showing the edit form ( EditPage::edit() ). This is triggered
 on &action=edit.
 $EditPage: the EditPage object
 
-'AlternateUserMailer': Called before mail is sent so that mail could
+'Alternatewiki_userMailer': Called before mail is sent so that mail could
 be logged (or something else) instead of using PEAR or PHP's mail().
 Return false to skip the regular method of sending mail.  Return a
 string to return a php-mail-error message containing the error.
@@ -324,7 +324,7 @@ Use this to extend core API modules.
 further authenticate and authorize API clients before executing the
 module. Return false and set a message to cancel the request.
 $module: Module object
-$user: Current user
+$wiki_user: Current wiki_user
 &$message: API usage message to die with, as a message key or array
 as accepted by ApiBase::dieUsageMsg.
 
@@ -366,7 +366,7 @@ method of an action=query submodule. Use this to extend core API modules.
 'APIQueryInfoTokens': use this hook to add custom tokens to prop=info.
 Every token has an action, which will be used in the intoken parameter
 and in the output (actiontoken="..."), and a callback function which
-should return the token, or false if the user isn't allowed to obtain
+should return the token, or false if the wiki_user isn't allowed to obtain
 it. The prototype of the callback function is func($pageid, $title)
 where $pageid is the page ID of the page the token is requested for
 and $title is the associated Title object. In the hook, just add
@@ -377,7 +377,7 @@ $tokenFunctions: array(action => callback)
 'APIQueryRevisionsTokens': use this hook to add custom tokens to prop=revisions.
 Every token has an action, which will be used in the rvtoken parameter
 and in the output (actiontoken="..."), and a callback function which
-should return the token, or false if the user isn't allowed to obtain
+should return the token, or false if the wiki_user isn't allowed to obtain
 it. The prototype of the callback function is func($pageid, $title, $rev)
 where $pageid is the page ID of the page associated to the revision the
 token is requested for, $title the associated Title object and $rev the
@@ -389,7 +389,7 @@ $tokenFunctions: array(action => callback)
 list=recentchanges.
 Every token has an action, which will be used in the rctoken parameter
 and in the output (actiontoken="..."), and a callback function which
-should return the token, or false if the user isn't allowed to obtain
+should return the token, or false if the wiki_user isn't allowed to obtain
 it. The prototype of the callback function is func($pageid, $title, $rc)
 where $pageid is the page ID of the page associated to the revision the
 token is requested for, $title the associated Title object and $rc the
@@ -402,12 +402,12 @@ the sites general information.
 $module: the current ApiQuerySiteInfo module
 &$results: array of results, add things here
 
-'APIQueryUsersTokens': use this hook to add custom token to list=users.
+'APIQuerywiki_usersTokens': use this hook to add custom token to list=wiki_users.
 Every token has an action, which will be used in the ustoken parameter
 and in the output (actiontoken="..."), and a callback function which
-should return the token, or false if the user isn't allowed to obtain
-it. The prototype of the callback function is func($user) where $user
-is the User object. In the hook, just add your callback to the
+should return the token, or false if the wiki_user isn't allowed to obtain
+it. The prototype of the callback function is func($wiki_user) where $wiki_user
+is the wiki_user object. In the hook, just add your callback to the
 $tokenFunctions array and return true (returning false makes no sense)
 $tokenFunctions: array(action => callback)
 
@@ -446,7 +446,7 @@ Use this to change the content in this area or how it is loaded.
 
 'ArticleDelete': before an article is deleted
 $article: the WikiPage (object) being deleted
-$user: the user (object) deleting the article
+$wiki_user: the wiki_user (object) deleting the article
 $reason: the reason (string) the article is being deleted
 $error: if the deletion was prohibited, the (raw HTML) error message to display
   (added in 1.13)
@@ -455,13 +455,13 @@ $status: Status object, modify this to throw an error. Overridden by $error
 
 'ArticleDeleteComplete': after an article is deleted
 $article: the WikiPage that was deleted
-$user: the user that deleted the article
+$wiki_user: the wiki_user that deleted the article
 $reason: the reason the article was deleted
 $id: id of the article that was deleted
 
-'ArticleEditUpdateNewTalk': before updating user_newtalk when a user talk page
+'ArticleEditUpdateNewTalk': before updating wiki_user_newtalk when a wiki_user talk page
 was changed
-$article: WikiPage (object) of the user talk page
+$article: WikiPage (object) of the wiki_user talk page
 
 'ArticleEditUpdates': when edit updates (mainly link tracking) are made when an
 article has been changed
@@ -481,7 +481,7 @@ $article: article (object) that will be returned
 
 'ArticleInsertComplete': After a new article is created
 $article: WikiPage created
-$user: User creating the article
+$wiki_user: wiki_user creating the article
 $text: New content
 $summary: Edit summary/comment
 $isMinor: Whether or not the edit was marked as minor
@@ -508,14 +508,14 @@ $popts: parser options to be used for pre-save transformation
 
 'ArticleProtect': before an article is protected
 $article: the WikiPage being protected
-$user: the user doing the protection
+$wiki_user: the wiki_user doing the protection
 $protect: boolean whether this is a protect or an unprotect
 $reason: Reason for protect
 $moveonly: boolean whether this is for move only or not
 
 'ArticleProtectComplete': after an article is protected
 $article: the WikiPage that was protected
-$user: the user who did the protection
+$wiki_user: the wiki_user who did the protection
 $protect: boolean whether it was a protect or an unprotect
 $reason: Reason for protect
 $moveonly: boolean whether it was for move only or not
@@ -534,13 +534,13 @@ $oldPageID: the page ID of the revision when archived (may be null)
 
 'ArticleRollbackComplete': after an article rollback is completed
 $article: the WikiPage that was edited
-$user: the user who did the rollback
+$wiki_user: the wiki_user who did the rollback
 $revision: the revision the page was reverted back to
 $current: the reverted revision
 
 'ArticleSave': before an article is saved
 $article: the WikiPage (object) being saved
-$user: the user (object) saving the article
+$wiki_user: the wiki_user (object) saving the article
 $text: the new article text
 $summary: the article summary (comment)
 $isminor: minor flag
@@ -549,7 +549,7 @@ $section: section #
 
 'ArticleSaveComplete': After an article has been updated
 $article: WikiPage modified
-$user: User performing the modification
+$wiki_user: wiki_user performing the modification
 $text: New content
 $summary: Edit summary/comment
 $isMinor: Whether or not the edit was marked as minor
@@ -567,7 +567,7 @@ $create: Whether or not the restoration caused the page to be created
 $comment: The comment associated with the undeletion.
 
 'ArticleUpdateBeforeRedirect': After a page is updated (usually on save),
-before the user is redirected back to the page
+before the wiki_user is redirected back to the page
 &$article: the article
 &$sectionanchor: The section anchor link (e.g. "#overview" )
 &$extraq: Extra query parameters which can be added via hooked functions
@@ -591,18 +591,18 @@ $text: text of the page
 $title: title of the page
 $output: reference to $wgOut
 
-'AuthPluginAutoCreate': Called when creating a local account for an user logged
+'AuthPluginAutoCreate': Called when creating a local account for an wiki_user logged
 in from an external authentication method
-$user: User object created locally
+$wiki_user: wiki_user object created locally
 
 'AuthPluginSetup': update or replace authentication plugin object ($wgAuth)
 Gives a chance for an extension to set it programattically to a variable class.
 &$auth: the $wgAuth object, probably a stub
 
-'AutopromoteCondition': check autopromote condition for user.
+'AutopromoteCondition': check autopromote condition for wiki_user.
 $type: condition type
 $args: arguments
-$user: user
+$wiki_user: wiki_user
 $result: result of checking autopromote condition
 
 'BacklinkCacheGetPrefix': allows to set prefix for a spefific link table
@@ -631,7 +631,7 @@ $article: article object
 &$title: Title being used for request
 $unused: null
 &$output: OutputPage object
-&$user: User
+&$wiki_user: wiki_user
 $request: WebRequest object
 $mediaWiki: Mediawiki object
 
@@ -664,9 +664,9 @@ $title: title of the template
 &$parser: Parser object
 &$ig: ImageGallery object
 
-'BeforeWelcomeCreation': before the welcomecreation message is displayed to a newly created user
-&$welcome_creation_msg: MediaWiki message name to display on the welcome screen to a newly created user account
-&$injected_html: Any HTML to inject after the "logged in" message of a newly created user account
+'BeforeWelcomeCreation': before the welcomecreation message is displayed to a newly created wiki_user
+&$welcome_creation_msg: MediaWiki message name to display on the welcome screen to a newly created wiki_user account
+&$injected_html: Any HTML to inject after the "logged in" message of a newly created wiki_user account
 
 'BitmapHandlerTransform': before a file is transformed, gives extension the
 possibility to transform it themselves
@@ -680,17 +680,17 @@ $image: File
 &$params: Array of parameters
 &$checkImageAreaHookResult: null, set to true or false to override the $wgMaxImageArea check result
 
-'PerformRetroactiveAutoblock': called before a retroactive autoblock is applied to a user
+'PerformRetroactiveAutoblock': called before a retroactive autoblock is applied to a wiki_user
 $block: Block object (which is set to be autoblocking)
 &$blockIds: Array of block IDs of the autoblock
 
-'BlockIp': before an IP address or user is blocked
+'BlockIp': before an IP address or wiki_user is blocked
 $block: the Block object about to be saved
-$user: the user _doing_ the block (not the one being blocked)
+$wiki_user: the wiki_user _doing_ the block (not the one being blocked)
 
-'BlockIpComplete': after an IP address or user is blocked
+'BlockIpComplete': after an IP address or wiki_user is blocked
 $block: the Block object that was saved
-$user: the user who did the block (not the one being blocked)
+$wiki_user: the wiki_user who did the block (not the one being blocked)
 
 'BookInformation': Before information output on Special:Booksources
 $isbn: ISBN to show information for
@@ -712,15 +712,15 @@ via the Preferences form
 &$s:           HTML of row that is being constructed.
 &$rc:          RecentChange instance.
 $unpatrolled:  Whether or not we are showing unpatrolled changes.
-$watched:      Whether or not the change is watched by the user.
+$watched:      Whether or not the change is watched by the wiki_user.
 
 'Collation::factory': Called if $wgCategoryCollation is an unknown collation
 $collationName: Name of the collation in question
 &$collationObject: Null. Replace with a subclass of the Collation class that implements
 the collation given in $collationName.
 
-'ConfirmEmailComplete': Called after a user's email has been confirmed successfully
-$user: user (object) whose email is being confirmed
+'ConfirmEmailComplete': Called after a wiki_user's email has been confirmed successfully
+$wiki_user: wiki_user (object) whose email is being confirmed
 
 'ContribsPager::getQueryInfo': Before the contributions query is about to run
 &$pager: Pager object for contributions
@@ -740,20 +740,20 @@ $row: the DB row for this line
 &$classes: the classes to add to the surrounding <li>
 
 'ContributionsToolLinks': Change tool links above Special:Contributions
-$id: User identifier
-$title: User page title
+$id: wiki_user identifier
+$title: wiki_user page title
 &$tools: Array of tool links
 
 'CustomEditor': When invoking the page editor
 $article: Article being edited
-$user: User performing the edit
+$wiki_user: wiki_user performing the edit
 
 Return true to allow the normal editor to be used, or false
 if implementing a custom editor, e.g. for a special namespace,
 etc.
 
 'DatabaseOraclePostInit': Called after initialising an Oracle database
-&$db: the DatabaseOracle object
+&: the DatabaseOracle object
 
 'Debug': called when outputting a debug log line via wfDebug() or wfDebugLog()
 $text: plaintext string to be output
@@ -889,40 +889,40 @@ $link: Default link
 &$result: Result (alter this to override the generated links)
 $lang: The language code to use for the link in the wfMessage function
 
-'EmailConfirmed': When checking that the user's email address is "confirmed"
-$user: User being checked
+'EmailConfirmed': When checking that the wiki_user's email address is "confirmed"
+$wiki_user: wiki_user being checked
 $confirmed: Whether or not the email address is confirmed
 This runs before the other checks, such as anonymity and the real check; return
 true to allow those checks to occur, and false if checking is done.
 
-'EmailUser': before sending email from one user to another
-$to: address of receiving user
-$from: address of sending user
+'Emailwiki_user': before sending email from one wiki_user to another
+$to: address of receiving wiki_user
+$from: address of sending wiki_user
 $subject: subject of the mail
 $text: text of the mail
 
-'EmailUserCC': before sending the copy of the email to the author
-$to: address of receiving user
-$from: address of sending user
+'Emailwiki_userCC': before sending the copy of the email to the author
+$to: address of receiving wiki_user
+$from: address of sending wiki_user
 $subject: subject of the mail
 $text: text of the mail
 
-'EmailUserComplete': after sending email from one user to another
-$to: address of receiving user
-$from: address of sending user
+'Emailwiki_userComplete': after sending email from one wiki_user to another
+$to: address of receiving wiki_user
+$from: address of sending wiki_user
 $subject: subject of the mail
 $text: text of the mail
 
-'EmailUserForm': after building the email user form object
+'Emailwiki_userForm': after building the email wiki_user form object
 $form: HTMLForm object
 
-'EmailUserPermissionsErrors': to retrieve permissions errors for emailing a user.
-$user: The user who is trying to email another user.
-$editToken: The user's edit token.
+'Emailwiki_userPermissionsErrors': to retrieve permissions errors for emailing a wiki_user.
+$wiki_user: The wiki_user who is trying to email another wiki_user.
+$editToken: The wiki_user's edit token.
 &$hookErr: Out-param for the error. Passed as the parameters to OutputPage::showErrorPage.
 
 'ExemptFromAccountCreationThrottle': Exemption from the account creation throttle
-$ip: The ip address of the user
+$ip: The ip address of the wiki_user
 
 'ExtensionTypes': called when generating the extensions credits, use this to change the tables headers
 &$extTypes: associative array of extensions types
@@ -932,8 +932,8 @@ $thumbname: the base name of the thumbnail file
 &$params: the currently extracted params (has source name, temp or archived zone)
 
 'FetchChangesList': When fetching the ChangesList derivative for
-a particular user
-$user: User the list is being fetched for
+a particular wiki_user
+$wiki_user: wiki_user the list is being fetched for
 &$skin: Skin object to be used with the list
 &$list: List object (defaults to NULL, change it to an object
 	instance and return false override the list derivative used)
@@ -943,7 +943,7 @@ $file: reference to the deleted file
 $oldimage: in case of the deletion of an old image, the name of the old file
 $article: in case all revisions of the file are deleted a reference to the
 	WikiFilePage associated with the file.
-$user: user who performed the deletion
+$wiki_user: wiki_user who performed the deletion
 $reason: reason
 
 'FileTransformed': When a file is transformed and moved into storage
@@ -960,7 +960,7 @@ $hasDescription : Boolean indicating that there was already a description page a
 'FileUndeleteComplete': When a file is undeleted
 $title: title object to the file
 $fileVersions: array of undeleted versions. Empty if all versions were restored
-$user: user who performed the undeletion
+$wiki_user: wiki_user who performed the undeletion
 $reason: reason
 
 'FormatAutocomments': When an autocomment is formatted by the Linker
@@ -971,13 +971,13 @@ $reason: reason
  $title: An optional title object used to links to sections. Can be null.
  $local: Boolean indicating whether section links should refer to local page.
 
-'GetAutoPromoteGroups': When determining which autopromote groups a user
+'GetAutoPromoteGroups': When determining which autopromote groups a wiki_user
 is entitled to be in.
-&$user: user to promote.
+&$wiki_user: wiki_user to promote.
 &$promote: groups that will be added.
 
-'GetBlockedStatus': after loading blocking status of an user from the database
-$user: user (object) being checked
+'GetBlockedStatus': after loading blocking status of an wiki_user from the database
+$wiki_user: wiki_user (object) being checked
 
 'GetCacheVaryCookies': get cookies that should vary cache options
 $out: OutputPage object
@@ -1003,7 +1003,7 @@ $title: Title object of page
 $url: string value as output (out parameter, can modify)
 $query: query options passed to Title::getInternalURL()
 
-'GetIP': modify the ip of the current user (called only once)
+'GetIP': modify the ip of the current wiki_user (called only once)
 &$ip: string holding the ip as determined so far
 
 'GetLinkColours': modify the CSS class of an array of page links
@@ -1039,23 +1039,23 @@ $title: Title object of page
 	previous version of the media handler metadata output.
 &$version: Array of version strings
 
-'GetPreferences': modify user preferences
-$user: User whose preferences are being modified.
+'GetPreferences': modify wiki_user preferences
+$wiki_user: wiki_user whose preferences are being modified.
 &$preferences: Preferences description array, to be fed to an HTMLForm object
 
-'getUserPermissionsErrors': Add a permissions error when permissions errors are
-	checked for.  Use instead of userCan for most cases. Return false if the
-	user can't do it, and populate $result with the reason in the form of
+'getwiki_userPermissionsErrors': Add a permissions error when permissions errors are
+	checked for.  Use instead of wiki_userCan for most cases. Return false if the
+	wiki_user can't do it, and populate $result with the reason in the form of
 	array( messagename, param1, param2, ... ).  For consistency, error messages
 	should be plain text with no special coloring, bolding, etc. to show that
-	they're errors; presenting them properly to the user as errors is done by
+	they're errors; presenting them properly to the wiki_user as errors is done by
 	the caller.
 $title: Title object being checked against
-$user : Current user object
+$wiki_user : Current wiki_user object
 $action: Action being checked
-$result: User permissions error to add. If none, return true.
+$result: wiki_user permissions error to add. If none, return true.
 
-'getUserPermissionsErrorsExpensive': Absolutely the same, but is called only
+'getwiki_userPermissionsErrorsExpensive': Absolutely the same, but is called only
 	if expensive checks are enabled.
 
 'GitViewers': called when generating the list of git viewers for Special:Version, use
@@ -1101,7 +1101,7 @@ $page: ImagePage object
 $page: ImagePage object
 &$toc: Array of <li> strings
 
-'ImgAuthBeforeStream': executed before file is streamed to user, but only when
+'ImgAuthBeforeStream': executed before file is streamed to wiki_user, but only when
 	using img_auth.php
 &$title: the Title object of the file as it would appear for the upload page
 &$path: the original file and path name when img_auth was invoked by the the web
@@ -1170,8 +1170,8 @@ but after nowiki/noinclude/includeonly/onlyinclude and other processings.
 &$text: string containing partially parsed text
 &$stripState: Parser's internal StripState object
 
-'InvalidateEmailComplete': Called after a user's email has been invalidated successfully
-$user: user (object) whose email is being invalidated
+'InvalidateEmailComplete': Called after a wiki_user's email has been invalidated successfully
+$wiki_user: wiki_user (object) whose email is being invalidated
 
 'IRCLineURL': When constructing the URL to use in an IRC notification.
 Callee may modify $url and $query, URL will be constructed as $url . $query
@@ -1185,15 +1185,15 @@ $article: article (object) being checked
 $ip: IP being check
 $result: Change this value to override the result of wfIsTrustedProxy()
 
-'isValidEmailAddr': Override the result of User::isValidEmailAddr(), for ins-
+'isValidEmailAddr': Override the result of wiki_user::isValidEmailAddr(), for ins-
 tance to return false if the domain name doesn't match your organization
-$addr: The e-mail address entered by the user
+$addr: The e-mail address entered by the wiki_user
 &$result: Set this and return false to override the internal checks
 
-'isValidPassword': Override the result of User::isValidPassword()
-$password: The password entered by the user
+'isValidPassword': Override the result of wiki_user::isValidPassword()
+$password: The password entered by the wiki_user
 &$result: Set this and return false to override the internal checks
-$user: User the password is being validated for
+$wiki_user: wiki_user the password is being validated for
 
 'Language::getMessagesFileName':
 $code: The language code or the language we're looking for a messages file for
@@ -1301,7 +1301,7 @@ $code: language code
 &$s: html string to show for the log extract
 $types: String or Array Log types to show
 $page: String or Title The page title to show log entries for
-$user: String The user who made the log entries
+$wiki_user: String The wiki_user who made the log entries
 $param: Associative Array with the following additional options:
  - lim Integer Limit of items to show, default is 50
  - conds Array Extra conditions for the query (e.g. "log_action != 'revision'")
@@ -1311,9 +1311,9 @@ $param: Associative Array with the following additional options:
  - wrap String Wrap the message in html (usually something like "&lt;div ...>$1&lt;/div>").
  - flags Integer display flags (NO_ACTION_LINK,NO_EXTRA_USER_LINKS)
 
-'LoggableUserIPData': called when IP data for a user action can be logged by extensions like CheckUser.
-This is intended for when users do things that do not already create edits or log entries.
-$context: The context the of the action, which includes the user and request
+'Loggablewiki_userIPData': called when IP data for a wiki_user action can be logged by extensions like Checkwiki_user.
+This is intended for when wiki_users do things that do not already create edits or log entries.
+$context: The context the of the action, which includes the wiki_user and request
 $data: Associative array of data for handlers to record. It must include values for:
  - 'namespace' Integer namespace for target title (NS_SPECIAL is allowed)
  - 'title'     Database key string for target title (empty string if not applicable)
@@ -1322,11 +1322,11 @@ $data: Associative array of data for handlers to record. It must include values 
  - 'comment'   Wikitext string in the same format as an edit summary
  - 'timestamp' Timestamp when the action occured
 
-'LoginAuthenticateAudit': a login attempt for a valid user account either
+'LoginAuthenticateAudit': a login attempt for a valid wiki_user account either
 succeeded or failed. No return data is accepted; this hook is for auditing only.
-$user: the User object being authenticated against
+$wiki_user: the wiki_user object being authenticated against
 $password: the password being submitted and found wanting
-$retval: a LoginForm class constant with authenticateUserData() return
+$retval: a LoginForm class constant with authenticatewiki_userData() return
 	value (SUCCESS, WRONG_PASS, etc)
 
 'LogLine': Processes a single log entry on Special:Log
@@ -1360,14 +1360,14 @@ $out: The OutputPage which called the hook,
 
 'MarkPatrolled': before an edit is marked patrolled
 $rcid: ID of the revision to be marked patrolled
-$user: the user (object) marking the revision as patrolled
-$wcOnlySysopsCanPatrol: config setting indicating whether the user
+$wiki_user: the wiki_user (object) marking the revision as patrolled
+$wcOnlySysopsCanPatrol: config setting indicating whether the wiki_user
 	needs to be a sysop in order to mark an edit patrolled
 
 'MarkPatrolledComplete': after an edit is marked patrolled
 $rcid: ID of the revision marked as patrolled
-$user: user (object) who marked the edit patrolled
-$wcOnlySysopsCanPatrol: config setting indicating whether the user
+$wiki_user: wiki_user (object) who marked the edit patrolled
+$wcOnlySysopsCanPatrol: config setting indicating whether the wiki_user
 	must be a sysop to patrol the edit
 
 'MediaWikiPerformAction': Override MediaWiki::performAction().
@@ -1376,7 +1376,7 @@ globals have been set up, but before ordinary actions take place.
 $output: $wgOut
 $article: $wgArticle
 $title: $wgTitle
-$user: $wgUser
+$wiki_user: $wgwiki_user
 $request: $wgRequest
 $mediaWiki: The $mediawiki object
 
@@ -1390,7 +1390,7 @@ $title: name of the page changed.
 $text: new contents of the page.
 
 'ModifyExportQuery': Modify the query used by the exporter.
-$db: The database object to be queried.
+: The database object to be queried.
 &$tables: Tables in the query.
 &$conds: Conditions in the query.
 &$opts: Options for the query.
@@ -1423,7 +1423,7 @@ due to an edit
 $article: the WikiPage edited
 $rev: the new revision
 $baseID: the revision ID this was based off, if any
-$user: the editing user
+$wiki_user: the editing wiki_user
 
 'NormalizeMessageKey': Called before the software gets the text of a message
 (stuff in the MediaWiki: namespace), useful for changing WHAT message gets
@@ -1446,9 +1446,9 @@ Hooks can alter or append to the array of URLs for search & suggestion formats.
 &$urls: array of associative arrays with Url element attributes
 
 'OtherBlockLogLink': Get links to the block log from extensions which blocks
-	users and/or IP addresses too
+	wiki_users and/or IP addresses too
 $otherBlockLink: An array with links to other block logs
-$ip: The requested IP address or username
+$ip: The requested IP address or wiki_username
 
 'OutputPageBeforeHTML': a page has been processed by the parser and
 the resulting HTML is about to be displayed.
@@ -1466,7 +1466,7 @@ $sk: The Skin that called OutputPage::headElement
 'OutputPageCheckLastModified': when checking if the page has been modified
 since the last visit
 &$modifiedTimes: array of timestamps.
-	The following keys are set: page, user, epoch
+	The following keys are set: page, wiki_user, epoch
 
 'OutputPageParserOutput': after adding a parserOutput to $wgOut
 $out: OutputPage instance (object)
@@ -1485,7 +1485,7 @@ $links: array, intended to hold the result. Must be an associative array with
 a page is written. Defaults to the wiki content language ($wgContLang).
 $title: Title object
 &$pageLang: the page content language (either an object or a language code)
-$wgLang: the user language
+$wgLang: the wiki_user language
 
 'PageHistoryBeforeList': When a history page list is about to be constructed.
 $article: the article that the history is loading for
@@ -1501,7 +1501,7 @@ $pager: the pager
 $queryInfo: the query parameters
 
 'PageRenderingHash': alter the parser cache option hash key
-A parser extension which depends on user options should install
+A parser extension which depends on wiki_user options should install
 this hook and append its values to the key.
 $hash: reference to a hash key string which can be modified
 
@@ -1593,13 +1593,13 @@ are run. Use when page save hooks require the presence of custom tables
 to ensure that tests continue to run properly.
 &$tables: array of table names
 
-'PersonalUrls': Alter the user-specific navigation links (e.g. "my page,
+'PersonalUrls': Alter the wiki_user-specific navigation links (e.g. "my page,
 my talk page, my contributions" etc).
 &$personal_urls: Array of link specifiers (see SkinTemplate.php)
 &$title: Title object representing the current page
 
-'PingLimiter': Allows extensions to override the results of User::pingLimiter()
-&$user : User performing the action
+'PingLimiter': Allows extensions to override the results of wiki_user::pingLimiter()
+&$wiki_user : wiki_user performing the action
 $action : Action being performed
 &$result : Whether or not the action should be prevented
 Change $result and return false to give a definitive answer, otherwise
@@ -1624,13 +1624,13 @@ $search : search term (not guaranteed to be conveniently normalized)
 $limit : maximum number of results to return
 &$results : out param: array of page names (strings)
 
-'PrefsEmailAudit': called when user changes his email address
-$user: User (object) changing his email address
+'PrefsEmailAudit': called when wiki_user changes his email address
+$wiki_user: wiki_user (object) changing his email address
 $oldaddr: old email address (string)
 $newaddr: new email address (string)
 
-'PrefsPasswordAudit': called when user changes his password
-$user: User (object) changing his passoword
+'PrefsPasswordAudit': called when wiki_user changes his password
+$wiki_user: wiki_user (object) changing his passoword
 $newPass: new password
 $error: error (string) 'badretype', 'wrongpassword', 'error' or 'success'
 
@@ -1716,7 +1716,7 @@ $term : Search term string
 &$title : Current Title object that is being returned (null if none found).
 
 'SearchEngineReplacePrefixesComplete': Run after SearchEngine::replacePrefixes().
-$searchEngine : The SearchEngine object. Users of this hooks will be interested
+$searchEngine : The SearchEngine object. wiki_users of this hooks will be interested
 in the $searchEngine->namespaces array.
 $query : Original query.
 &$parsed : Resultant query with the prefixes stripped.
@@ -1844,31 +1844,31 @@ $software: The array of software in format 'name' => 'version'.
 	See SpecialVersion::softwareInformation()
 
 'SpecialContributionsBeforeMainOutput': Before the form on Special:Contributions
-$id: User identifier
+$id: wiki_user identifier
 
-'SpecialListusersDefaultQuery': called right before the end of
-UsersPager::getDefaultQuery()
-$pager: The UsersPager instance
+'SpecialListwiki_usersDefaultQuery': called right before the end of
+wiki_usersPager::getDefaultQuery()
+$pager: The wiki_usersPager instance
 $query: The query array to be returned
 
-'SpecialListusersFormatRow': called right before the end of
-UsersPager::formatRow()
+'SpecialListwiki_usersFormatRow': called right before the end of
+wiki_usersPager::formatRow()
 $item: HTML to be returned. Will be wrapped in <li></li> after the hook finishes
 $row: Database row object
 
-'SpecialListusersHeader': called before closing the <fieldset> in
-UsersPager::getPageHeader()
-$pager: The UsersPager instance
+'SpecialListwiki_usersHeader': called before closing the <fieldset> in
+wiki_usersPager::getPageHeader()
+$pager: The wiki_usersPager instance
 $out: The header HTML
 
-'SpecialListusersHeaderForm': called before adding the submit button in
-UsersPager::getPageHeader()
-$pager: The UsersPager instance
+'SpecialListwiki_usersHeaderForm': called before adding the submit button in
+wiki_usersPager::getPageHeader()
+$pager: The wiki_usersPager instance
 $out: The header HTML
 
-'SpecialListusersQueryInfo': called right before the end of
-UsersPager::getQueryInfo()
-$pager: The UsersPager instance
+'SpecialListwiki_usersQueryInfo': called right before the end of
+wiki_usersPager::getQueryInfo()
+$pager: The wiki_usersPager instance
 $query: The query array to be returned
 
 'SpecialMovepageAfterMove': called after moving a page
@@ -1902,8 +1902,8 @@ $special: the SpecialPage object
 $subPage: the subpage string or null if no subpage was specified
 
 'SpecialPasswordResetOnSubmit': when executing a form submission on Special:PasswordReset
-$users: array of User objects
-$data: array of data submitted by the user
+$wiki_users: array of wiki_user objects
+$data: array of data submitted by the wiki_user
 &$error: string, error code (message name) used to describe to error (out paramater).
 	The hook needs to return false when setting this, otherwise it will have no effect.
 
@@ -1940,13 +1940,13 @@ go to the existing page
 $t: title object searched for
 &$params: an array of the default message name and page title (as parameter)
 
-'SpecialSearchGo': called when user clicked the "Go"
-&$title: title object generated from the text entered by the user
-&$term: the search term entered by the user
+'SpecialSearchGo': called when wiki_user clicked the "Go"
+&$title: title object generated from the text entered by the wiki_user
+&$term: the search term entered by the wiki_user
 
-'SpecialSearchNogomatch': called when user clicked the "Go" button but the
+'SpecialSearchNogomatch': called when wiki_user clicked the "Go" button but the
 target doesn't exist
-&$title: title object generated from the text entered by the user
+&$title: title object generated from the text entered by the wiki_user
 
 'SpecialSearchPowerBox': the equivalent of SpecialSearchProfileForm for
 the advanced form, a.k.a. power search box
@@ -2040,15 +2040,15 @@ $result: Boolean; whether MediaWiki currently thinks this is a wikitext page. Ho
 'TitleMoveComplete': after moving an article (title)
 $old: old title
 $nt: new title
-$user: user who did the move
+$wiki_user: wiki_user who did the move
 $pageid: database ID of the page that's been moved
 $redirid: database ID of the created redirect
 
 'TitleReadWhitelist': called at the end of read permissions checks, just before
-	adding the default error message if nothing allows the user to read the page.
+	adding the default error message if nothing allows the wiki_user to read the page.
 	If a handler wants a title to *not* be whitelisted, it should also return false.
 $title: Title object being checked against
-$user: Current user object
+$wiki_user: Current wiki_user object
 &$whitelisted: Boolean value of whether this title is whitelisted
 
 'UndeleteForm::showHistory': called in UndeleteForm::showHistory, after a
@@ -2081,11 +2081,11 @@ $article: article "acted on"
 &$files: list of files
 
 'UnwatchArticle': before a watch is removed from an article
-$user: user watching
+$wiki_user: wiki_user watching
 $page: WikiPage object to be removed
 
 'UnwatchArticleComplete': after a watch is removed from an article
-$user: user that watched
+$wiki_user: wiki_user that watched
 $page: WikiPage object that was watched
 
 'UploadForm:initial': before the upload form is generated
@@ -2098,7 +2098,7 @@ or after the editform.
 $form: UploadForm object
 Lets you poke at member variables like $mUploadDescription before the
 file is saved.
-Do not use this hook to break upload processing. This will return the user to
+Do not use this hook to break upload processing. This will return the wiki_user to
 a blank form with no error message; use UploadVerification and
 UploadVerifyFile instead
 
@@ -2140,51 +2140,51 @@ object &$error: output: true if the file is valid. Otherwise, an indexed array
 $uploadBase: UploadBase (or subclass) object. File can be accessed by
 	$uploadBase->getLocalFile().
 
-'User::mailPasswordInternal': before creation and mailing of a user's new
+'wiki_user::mailPasswordInternal': before creation and mailing of a wiki_user's new
 temporary password
-$user: the user who sent the message out
-$ip: IP of the user who sent the message out
+$wiki_user: the wiki_user who sent the message out
+$ip: IP of the wiki_user who sent the message out
 $u: the account whose new password will be set
 
-'UserAddGroup': called when adding a group; return false to override
+'wiki_userAddGroup': called when adding a group; return false to override
 stock group addition.
-$user: the user object that is to have a group added
+$wiki_user: the wiki_user object that is to have a group added
 &$group: the group to add, can be modified
 
-'UserArrayFromResult': called when creating an UserArray object from a
+'wiki_userArrayFromResult': called when creating an wiki_userArray object from a
 database result
-&$userArray: set this to an object to override the default object returned
+&$wiki_userArray: set this to an object to override the default object returned
 $res: database result used to create the object
 
-'userCan': To interrupt/advise the "user can do X to Y article" check.
-If you want to display an error message, try getUserPermissionsErrors.
+'wiki_userCan': To interrupt/advise the "wiki_user can do X to Y article" check.
+If you want to display an error message, try getwiki_userPermissionsErrors.
 $title: Title object being checked against
-$user : Current user object
+$wiki_user : Current wiki_user object
 $action: Action being checked
 $result: Pointer to result returned if hook returns false. If null is returned,
-	userCan checks are continued by internal code.
+	wiki_userCan checks are continued by internal code.
 
-'UserCanSendEmail': To override User::canSendEmail() permission check
-$user: User (object) whose permission is being checked
+'wiki_userCanSendEmail': To override wiki_user::canSendEmail() permission check
+$wiki_user: wiki_user (object) whose permission is being checked
 &$canSend: bool set on input, can override on output
 
-'UserClearNewTalkNotification': called when clearing the
+'wiki_userClearNewTalkNotification': called when clearing the
 "You have new messages!" message, return false to not delete it
-$user: User (object) that'll clear the message
+$wiki_user: wiki_user (object) that'll clear the message
 
-'UserComparePasswords': called when checking passwords, return false to
+'wiki_userComparePasswords': called when checking passwords, return false to
 override the default password checks
 &$hash: String of the password hash (from the database)
-&$password: String of the plaintext password the user entered
-&$userId: Integer of the user's ID or Boolean false if the user ID was not
+&$password: String of the plaintext password the wiki_user entered
+&$wiki_userId: Integer of the wiki_user's ID or Boolean false if the wiki_user ID was not
 	supplied
 &$result: If the hook returns false, this Boolean value will be checked to
 	determine if the password was valid
 
-'UserCreateForm': change to manipulate the login form
+'wiki_userCreateForm': change to manipulate the login form
 $template: SimpleTemplate instance for the form
 
-'UserCryptPassword': called when hashing a password, return false to implement
+'wiki_userCryptPassword': called when hashing a password, return false to implement
 your own hashing method
 &$password: String of the plaintext password to encrypt
 &$salt: String of the password salt or Boolean false if no salt is provided
@@ -2192,137 +2192,137 @@ your own hashing method
 	hashing method
 &$hash: If the hook returns false, this String will be used as the hash
 
-'UserEffectiveGroups': Called in User::getEffectiveGroups()
-$user: User to get groups for
+'wiki_userEffectiveGroups': Called in wiki_user::getEffectiveGroups()
+$wiki_user: wiki_user to get groups for
 &$groups: Current effective groups
 
-'UserGetAllRights': after calculating a list of all available rights
+'wiki_userGetAllRights': after calculating a list of all available rights
 &$rights: Array of rights, which may be added to.
 
-'UserGetDefaultOptions': after fetching the core default, this hook is ran
+'wiki_userGetDefaultOptions': after fetching the core default, this hook is ran
 right before returning the options to the caller. WARNING: this hook is
-called for every call to User::getDefaultOptions(), which means it's
+called for every call to wiki_user::getDefaultOptions(), which means it's
 potentially called dozens or hundreds of times. You may want to cache
 the results of non-trivial operations in your hook function for this reason.
 &$defaultOptions: Array of preference keys and their default values.
 
-'UserGetEmail': called when getting an user email address
-$user: User object
+'wiki_userGetEmail': called when getting an wiki_user email address
+$wiki_user: wiki_user object
 &$email: email, change this to override local email
 
-'UserGetEmailAuthenticationTimestamp': called when getting the timestamp of
+'wiki_userGetEmailAuthenticationTimestamp': called when getting the timestamp of
 email authentification
-$user: User object
+$wiki_user: wiki_user object
 &$timestamp: timestamp, change this to override local email authentification
 	timestamp
 
-'UserGetImplicitGroups': Called in User::getImplicitGroups()
+'wiki_userGetImplicitGroups': Called in wiki_user::getImplicitGroups()
 &$groups: List of implicit (automatically-assigned) groups
 
-'UserGetLanguageObject': Called when getting user's interface language object
-$user: User object
+'wiki_userGetLanguageObject': Called when getting wiki_user's interface language object
+$wiki_user: wiki_user object
 &$code: Langauge code that will be used to create the object
 $context: RequestContext object
 
-'UserGetReservedNames': allows to modify $wgReservedUsernames at run time
-&$reservedUsernames: $wgReservedUsernames
+'wiki_userGetReservedNames': allows to modify $wgReservedwiki_usernames at run time
+&$reservedwiki_usernames: $wgReservedwiki_usernames
 
-'UserGetRights': Called in User::getRights()
-$user: User to get rights for
+'wiki_userGetRights': Called in wiki_user::getRights()
+$wiki_user: wiki_user to get rights for
 &$rights: Current rights
 
-'UserIsBlockedFrom': Check if a user is blocked from a specific page (for specific block
+'wiki_userIsBlockedFrom': Check if a wiki_user is blocked from a specific page (for specific block
 	exemptions).
-$user: User in question
+$wiki_user: wiki_user in question
 $title: Title of the page in question
-&$blocked: Out-param, whether or not the user is blocked from that page.
-&$allowUsertalk: If the user is blocked, whether or not the block allows users to edit their
-                  own user talk pages.
+&$blocked: Out-param, whether or not the wiki_user is blocked from that page.
+&$allowwiki_usertalk: If the wiki_user is blocked, whether or not the block allows wiki_users to edit their
+                  own wiki_user talk pages.
 
-'UserIsBlockedGlobally': Check if user is blocked on all wikis.
-&$user: User object
-$ip: User's IP address
-&$blocked: Whether the user is blocked, to be modified by the hook
+'wiki_userIsBlockedGlobally': Check if wiki_user is blocked on all wikis.
+&$wiki_user: wiki_user object
+$ip: wiki_user's IP address
+&$blocked: Whether the wiki_user is blocked, to be modified by the hook
 
-'UserLoadAfterLoadFromSession': called to authenticate users on
+'wiki_userLoadAfterLoadFromSession': called to authenticate wiki_users on
 external/environmental means; occurs after session is loaded
-$user: user object being loaded
+$wiki_user: wiki_user object being loaded
 
-'UserLoadDefaults': called when loading a default user
-$user: user object
-$name: user name
+'wiki_userLoadDefaults': called when loading a default wiki_user
+$wiki_user: wiki_user object
+$name: wiki_user name
 
-'UserLoadFromDatabase': called when loading a user from the database
-$user: user object
+'wiki_userLoadFromDatabase': called when loading a wiki_user from the database
+$wiki_user: wiki_user object
 &$s: database query object
 
-'UserLoadFromSession': called to authenticate users on external/environmental
+'wiki_userLoadFromSession': called to authenticate wiki_users on external/environmental
 means; occurs before session is loaded
-$user: user object being loaded
+$wiki_user: wiki_user object being loaded
 &$result: set this to a boolean value to abort the normal authentification
 	process
 
-'UserLoadOptions': when user options/preferences are being loaded from
+'wiki_userLoadOptions': when wiki_user options/preferences are being loaded from
 the database.
-$user: User object
+$wiki_user: wiki_user object
 &$options: Options, can be modified.
 
-'UserLoginComplete': after a user has logged in
-$user: the user object that was created on login
+'wiki_userLoginComplete': after a wiki_user has logged in
+$wiki_user: the wiki_user object that was created on login
 $inject_html: Any HTML to inject after the "logged in" message.
 
-'UserLoginForm': change to manipulate the login form
+'wiki_userLoginForm': change to manipulate the login form
 $template: SimpleTemplate instance for the form
 
-'UserLogout': before a user logs out
-$user: the user object that is about to be logged out
+'wiki_userLogout': before a wiki_user logs out
+$wiki_user: the wiki_user object that is about to be logged out
 
-'UserLogoutComplete': after a user has logged out
-$user: the user object _after_ logout (won't have name, ID, etc.)
+'wiki_userLogoutComplete': after a wiki_user has logged out
+$wiki_user: the wiki_user object _after_ logout (won't have name, ID, etc.)
 $inject_html: Any HTML to inject after the "logged out" message.
-$oldName: name of the user before logout (string)
+$oldName: name of the wiki_user before logout (string)
 
-'UserRemoveGroup': called when removing a group; return false to override
+'wiki_userRemoveGroup': called when removing a group; return false to override
 stock group removal.
-$user: the user object that is to have a group removed
+$wiki_user: the wiki_user object that is to have a group removed
 &$group: the group to be removed, can be modified
 
-'UserRights': After a user's group memberships are changed
-$user  : User object that was changed
+'wiki_userRights': After a wiki_user's group memberships are changed
+$wiki_user  : wiki_user object that was changed
 $add   : Array of strings corresponding to groups added
 $remove: Array of strings corresponding to groups removed
 
-'UserRetrieveNewTalks': called when retrieving "You have new messages!"
+'wiki_userRetrieveNewTalks': called when retrieving "You have new messages!"
 message(s)
-$user: user retrieving new talks messages
+$wiki_user: wiki_user retrieving new talks messages
 $talks: array of new talks page(s)
 
-'UserSaveSettings': called when saving user settings
-$user: User object
+'wiki_userSaveSettings': called when saving wiki_user settings
+$wiki_user: wiki_user object
 
-'UserSaveOptions': Called just before saving user preferences/options.
-$user: User object
+'wiki_userSaveOptions': Called just before saving wiki_user preferences/options.
+$wiki_user: wiki_user object
 &$options: Options, modifiable
 
-'UserSetCookies': called when setting user cookies
-$user: User object
+'wiki_userSetCookies': called when setting wiki_user cookies
+$wiki_user: wiki_user object
 &$session: session array, will be added to $_SESSION
 &$cookies: cookies array mapping cookie name to its value
 
-'UserSetEmail': called when changing user email address
-$user: User object
+'wiki_userSetEmail': called when changing wiki_user email address
+$wiki_user: wiki_user object
 &$email: new email, change this to override new email address
 
-'UserSetEmailAuthenticationTimestamp': called when setting the timestamp
+'wiki_userSetEmailAuthenticationTimestamp': called when setting the timestamp
 of email authentification
-$user: User object
+$wiki_user: wiki_user object
 &$timestamp: new timestamp, change this to override local email
 authentification timestamp
 
-'UserToolLinksEdit': Called when generating a list of user tool links, eg "Foobar (Talk | Contribs | Block)"
-$userId: User id of the current user
-$userText: User name of the current user
-&$items: Array of user tool links as HTML fragments
+'wiki_userToolLinksEdit': Called when generating a list of wiki_user tool links, eg "Foobar (Talk | Contribs | Block)"
+$wiki_userId: wiki_user id of the current wiki_user
+$wiki_userText: wiki_user name of the current wiki_user
+&$items: Array of wiki_user tool links as HTML fragments
 
 'WantedPages::getQueryInfo': called in WantedPagesPage::getQueryInfo(), can be
 used to alter the SQL query which gets the list of wanted pages
@@ -2330,11 +2330,11 @@ used to alter the SQL query which gets the list of wanted pages
 &$query: query array, see QueryPage::getQueryInfo() for format documentation
 
 'WatchArticle': before a watch is added to an article
-$user: user that will watch
+$wiki_user: wiki_user that will watch
 $page: WikiPage object to be watched
 
 'WatchArticleComplete': after a watch is added to an article
-$user: user that watched
+$wiki_user: wiki_user that watched
 $page: WikiPage object watched
 
 'WatchlistEditorBuildRemoveLine': when building remove lines in

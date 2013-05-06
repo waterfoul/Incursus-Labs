@@ -35,7 +35,7 @@ $namespaceNames = array(
 $namespaceGenderAliases = array();
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Haiguy joajuha',
 'tog-justify' => 'embojoja haipyvo',
 'tog-hideminor' => 'Eñomi ñemyatyrõ michĩva «ñemoambue pyahúpe»',
@@ -144,7 +144,7 @@ $messages = array(
 'jumptonavigation' => 'kundaharã',
 'jumptosearch' => 'Jeheka',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Ári {{SITENAME}}',
 'aboutpage' => 'Project:Rehegua',
 'copyright' => "Tembikuaa'aty ikatu ojepuru <i>$1</i> rekópe",
@@ -172,7 +172,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Kuatiahai',
-'nstab-user' => 'Puruhára',
+'nstab-wiki_user' => 'Puruhára',
 'nstab-media' => 'Media rogue',
 'nstab-special' => "Mba'echĩchĩ",
 'nstab-project' => "Mba'e apopyrã rogue",
@@ -195,13 +195,13 @@ $messages = array(
 'remembermypassword' => "Aipota chemomandu'ajepi amba'apo jave (for a maximum of $1 {{PLURAL:$1|day|days}})",
 'login' => 'Terañemboguapy/Ke',
 'nav-login-createaccount' => 'Terañemboguapy/Ke',
-'userlogin' => 'Terañemboguapy/Ke',
+'wiki_userlogin' => 'Terañemboguapy/Ke',
 'logout' => 'Sẽ',
-'userlogout' => 'Sẽ',
+'wiki_userlogout' => 'Sẽ',
 'nologin' => "¿Ne'ĩrãpa remohenda nde réra? '''$1'''.",
 'nologinlink' => 'Téra ñemohenda',
 'loginsuccesstitle' => 'Remoñepyrũ hekopete ne rembiapo',
-'nosuchusershort' => 'No hay un usuario con el nombre "$1". Compruebe que lo ha escrito correctamente.',
+'nosuchwiki_usershort' => 'No hay un usuario con el nombre "$1". Compruebe que lo ha escrito correctamente.',
 'mailmypassword' => "Embou chéve ñe'ẽveve rupive peteĩ temiñemĩ pyahu",
 'loginlanguagelabel' => "Ñe'ẽ: $1",
 
@@ -232,7 +232,7 @@ $messages = array(
 'newarticletext' => "Rehapykuehókuri peteĩ joaju peteĩ kuatiarogue ndaipórivape.
 Nde remoheñoisérõ ko kuatiarogue, eñepyrũkatu ehai.
 Reikotevẽvérõ marandu, emoñe'ẽ kuatiarogue ñepytyvõ rehegua. Oiméramo reikereínte térã rejavyhaguére, upéicharõ terehojey [[{{MediaWiki:Helppage}}|kuatiarogue mboyveguápe]].",
-'userinvalidcssjstitle' => "'''Aviso:''' No existe la piel \"\$1\". Recuerda que las páginas personalizadas .css y .js tienen un título en minúsculas, p.e. Usuario:Foo/vector.css en vez de  Usuario:Foo/Vector.css.",
+'wiki_userinvalidcssjstitle' => "'''Aviso:''' No existe la piel \"\$1\". Recuerda que las páginas personalizadas .css y .js tienen un título en minúsculas, p.e. Usuario:Foo/vector.css en vez de  Usuario:Foo/Vector.css.",
 'editing' => 'Ojehaihína $1',
 'editingsection' => 'Ojehaihína $1 (vore)',
 'editingcomment' => 'Ojehaihína $1 (comentario)',
@@ -270,15 +270,15 @@ Reikotevẽvérõ marandu, emoñe'ẽ kuatiarogue ñepytyvõ rehegua. Oiméramo 
 'yourlanguage' => "Ñe'ẽ:",
 'email' => 'Pareha eleytróniko',
 
-# User rights
-'userrights-lookup-user' => 'Configurar grupos de usuarios',
-'userrights-user-editname' => 'Ehaimi peteĩ téra puruháragua:',
-'editusergroup' => 'Modificar grupos de usuarios',
-'editinguser' => "Ojehaihína '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup' => 'Modificar grupos de usuarios',
-'saveusergroups' => 'Guardar grupos de usuarios',
-'userrights-groupsmember' => 'Pehengue:',
-'userrights-reason' => 'Motivo para el cambio:',
+# wiki_user rights
+'wiki_userrights-lookup-wiki_user' => 'Configurar grupos de usuarios',
+'wiki_userrights-wiki_user-editname' => 'Ehaimi peteĩ téra puruháragua:',
+'editwiki_usergroup' => 'Modificar grupos de usuarios',
+'editingwiki_user' => "Ojehaihína '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'wiki_userrights-editwiki_usergroup' => 'Modificar grupos de usuarios',
+'savewiki_usergroups' => 'Guardar grupos de usuarios',
+'wiki_userrights-groupsmember' => 'Pehengue:',
+'wiki_userrights-reason' => 'Motivo para el cambio:',
 
 # Groups
 'group-all' => '(opaite)',
@@ -311,14 +311,14 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 
 # Special:ListFiles
 'listfiles' => "Ta'ãnga rysýi",
-'listfiles_user' => 'Puruhára',
+'listfiles_wiki_user' => 'Puruhára',
 
 # File description page
 'file-anchor-link' => 'Ñongatupy',
 'filehist-revert' => 'embojevy',
 'filehist-current' => "ko'ag̃agua",
 'filehist-datetime' => 'Ára/Aravo',
-'filehist-user' => 'Puruhára',
+'filehist-wiki_user' => 'Puruhára',
 'filehist-comment' => 'Jehaimombyky',
 'imagelinks' => 'Joajukuéra',
 
@@ -387,9 +387,9 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'longpages' => 'Kuatiarogue ipukúva',
 'deadendpages' => "Kuatiarogue ñesẽ'ỹva",
 'protectedpages' => 'Kuatiarogue oñeñangarekóva',
-'listusers' => 'Puruhára rysýi',
+'listwiki_users' => 'Puruhára rysýi',
 'newpages' => 'Kuatiarogue ipyahúva',
-'newpages-username' => 'Hero',
+'newpages-wiki_username' => 'Hero',
 'ancientpages' => "Kuatiahai hi'arevéva",
 'move' => 'Guerova',
 'movethispage' => 'Guerova kuatiarogue',
@@ -417,11 +417,11 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 # Special:Categories
 'categories' => 'Ñemohendakuéra',
 
-# Special:ListUsers
-'listusers-submit' => 'Hechauka',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Hechauka',
 
-# E-mail user
-'emailuser' => "Tojeguerahauka ñe'ẽveve ko puruhárape",
+# E-mail wiki_user
+'emailwiki_user' => "Tojeguerahauka ñe'ẽveve ko puruhárape",
 'emailpage' => 'Pareha eleytrónico',
 'emailmessage' => 'Marandu',
 
@@ -498,7 +498,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'import-logentry-interwiki-detail' => '$1 revisiones desde $2',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Che puruhárakuatia',
+'tooltip-pt-wiki_userpage' => 'Che puruhárakuatia',
 'tooltip-pt-mytalk' => 'Che kuatiarogue myangekõi',
 'tooltip-pt-preferences' => 'Che mbohoryha',
 'tooltip-pt-mycontris' => "Tysỹi che mba'emoĩmbyre",
@@ -510,7 +510,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'spamprotectiontitle' => 'Filtro de protección contra spam',
 'spamprotectiontext' => 'La página que intentas guardar ha sido bloqueada por el filtro de spam. Esto se debe probablemente a alguno de los un enlaces externos incluidos en ella.',
 'spamprotectionmatch' => "El siguiente texto es el que activó nuestro filtro ''anti-spam'' (contra la publicidad no solicitada): $1",
-'spambot_username' => 'Limpieza de spam de MediaWiki',
+'spambot_wiki_username' => 'Limpieza de spam de MediaWiki',
 'spam_reverting' => 'Revirtiendo a la última versión que no contenga enlaces a $1',
 'spam_blanking' => 'Todas las revisiones contienen enlaces a $1, blanqueando',
 

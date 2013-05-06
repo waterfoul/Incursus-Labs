@@ -54,7 +54,7 @@ class HTMLCaptchaField extends HTMLFormField {
 	public function validate( $data, $alldata ) {
 		// We sent back the exists status of the captcha before.  If it *doesn't* exist
 		// we actually want to validate this as true, because we don't want an angry red
-		// error message, just for the user to put the captcha in again
+		// error message, just for the wiki_user to put the captcha in again
 		if ( $data === false ) {
 			return true;
 		}
@@ -70,7 +70,7 @@ class HTMLCaptchaField extends HTMLFormField {
 		if ( !$this->captcha->exists() ) {
 			// The captcha doesn't exist; probably because it's already been used and
 			// then deleted for security.  Load the field up with a new captcha which
-			// will be shown to the user when the validation of said new object fails
+			// will be shown to the wiki_user when the validation of said new object fails
 			$this->captcha = Captcha::newRandom();
 		}
 

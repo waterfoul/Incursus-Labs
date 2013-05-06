@@ -63,7 +63,7 @@ class DatabaseMssql extends DatabaseBase {
 	 * Usually aborts on failure
 	 * @return bool|DatabaseBase|null
 	 */
-	function open( $server, $user, $password, $dbName ) {
+	function open( $server, $wiki_user, $password, Name ) {
 		# Test for driver support, to avoid suppressed fatal error
 		if ( !function_exists( 'sqlsrv_connect' ) ) {
 			throw new DBConnectionError( $this, "MS Sql Server Native (sqlsrv) functions missing. You can download the driver from: http://go.microsoft.com/fwlink/?LinkId=123470\n" );
@@ -71,36 +71,36 @@ class DatabaseMssql extends DatabaseBase {
 
 		global $wgDBport;
 
-		if ( !strlen( $user ) ) { # e.g. the class is being loaded
+		if ( !strlen( $wiki_user ) ) { # e.g. the class is being loaded
 			return;
 		}
 
 		$this->close();
 		$this->mServer = $server;
 		$this->mPort = $wgDBport;
-		$this->mUser = $user;
+		$this->mwiki_user = $wiki_user;
 		$this->mPassword = $password;
-		$this->mDBname = $dbName;
+		$this->mDBname = Name;
 
 		$connectionInfo = array();
 
-		if( $dbName ) {
-			$connectionInfo['Database'] = $dbName;
+		if( Name ) {
+			$connectionInfo['Database'] = Name;
 		}
 
 		// Start NT Auth Hack
 		// Quick and dirty work around to provide NT Auth designation support.
-		// Current solution requires installer to know to input 'ntauth' for both username and password
+		// Current solution requires installer to know to input 'ntauth' for both wiki_username and password
 		// to trigger connection via NT Auth. - ugly, ugly, ugly
 		// TO-DO: Make this better and add NT Auth choice to MW installer when SQL Server option is chosen.
-		$ntAuthUserTest = strtolower( $user );
+		$ntAuthwiki_userTest = strtolower( $wiki_user );
 		$ntAuthPassTest = strtolower( $password );
 
 		// Decide which auth scenerio to use
-		if( $ntAuthPassTest == 'ntauth' && $ntAuthUserTest == 'ntauth' ){
+		if( $ntAuthPassTest == 'ntauth' && $ntAuthwiki_userTest == 'ntauth' ){
 			// Don't add credentials to $connectionInfo
 		} else {
-			$connectionInfo['UID'] = $user;
+			$connectionInfo['UID'] = $wiki_user;
 			$connectionInfo['PWD'] = $password;
 		}
 		// End NT Auth Hack
@@ -111,7 +111,7 @@ class DatabaseMssql extends DatabaseBase {
 
 		if ( $this->mConn === false ) {
 			wfDebug( "DB connection error\n" );
-			wfDebug( "Server: $server, Database: $dbName, User: $user, Password: " . substr( $password, 0, 3 ) . "...\n" );
+			wfDebug( "Server: $server, Database: Name, wiki_user: $wiki_user, Password: " . substr( $password, 0, 3 ) . "...\n" );
 			wfDebug( $this->lastError() . "\n" );
 			return false;
 		}
@@ -449,8 +449,8 @@ class DatabaseMssql extends DatabaseBase {
 
 			// translate MySQL INSERT IGNORE to something SQL Server can use
 			// example:
-			// MySQL: INSERT IGNORE INTO user_groups (ug_user,ug_group) VALUES ('1','sysop')
-			// MSSQL: IF NOT EXISTS (SELECT * FROM user_groups WHERE ug_user = '1') INSERT INTO user_groups (ug_user,ug_group) VALUES ('1','sysop')
+			// MySQL: INSERT IGNORE INTO wiki_user_groups (ug_wiki_user,ug_group) VALUES ('1','sysop')
+			// MSSQL: IF NOT EXISTS (SELECT * FROM wiki_user_groups WHERE ug_wiki_user = '1') INSERT INTO wiki_user_groups (ug_wiki_user,ug_group) VALUES ('1','sysop')
 			if ( $ignoreClause ) {
 				$prival = $a[$keys[0]];
 				$sqlPre .= "IF NOT EXISTS (SELECT * FROM $table WHERE $keys[0] = '$prival')";
@@ -738,35 +738,35 @@ class DatabaseMssql extends DatabaseBase {
 
 	/**
 	 * Initial setup.
-	 * Precondition: This object is connected as the superuser.
-	 * Creates the database, schema, user and login.
+	 * Precondition: This object is connected as the superwiki_user.
+	 * Creates the database, schema, wiki_user and login.
 	 */
-	function initial_setup( $dbName, $newUser, $loginPassword ) {
-		$dbName = $this->escapeIdentifier( $dbName );
+	function initial_setup( Name, $newwiki_user, $loginPassword ) {
+		Name = $this->escapeIdentifier( Name );
 
 		// It is not clear what can be used as a login,
 		// From http://msdn.microsoft.com/en-us/library/ms173463.aspx
 		// a sysname may be the same as an identifier.
-		$newUser = $this->escapeIdentifier( $newUser );
+		$newwiki_user = $this->escapeIdentifier( $newwiki_user );
 		$loginPassword = $this->addQuotes( $loginPassword );
 
-		$this->doQuery("CREATE DATABASE $dbName;");
-		$this->doQuery("USE $dbName;");
-		$this->doQuery("CREATE SCHEMA $dbName;");
+		$this->doQuery("CREATE DATABASE Name;");
+		$this->doQuery("USE Name;");
+		$this->doQuery("CREATE SCHEMA Name;");
 		$this->doQuery("
 						CREATE
-							LOGIN $newUser
+							LOGIN $newwiki_user
 						WITH
 							PASSWORD=$loginPassword
 						;
 					");
 		$this->doQuery("
 						CREATE
-							USER $newUser
+							USER $newwiki_user
 						FOR
-							LOGIN $newUser
+							LOGIN $newwiki_user
 						WITH
-							DEFAULT_SCHEMA=$dbName
+							DEFAULT_SCHEMA=Name
 						;
 					");
 		$this->doQuery("
@@ -781,16 +781,16 @@ class DatabaseMssql extends DatabaseBase {
 							CREATE VIEW,
 							CREATE FULLTEXT CATALOG
 						ON
-							DATABASE::$dbName
-						TO $newUser
+							DATABASE::Name
+						TO $newwiki_user
 						;
 					");
 		$this->doQuery("
 						GRANT
 							CONTROL
 						ON
-							SCHEMA::$dbName
-						TO $newUser
+							SCHEMA::Name
+						TO $newwiki_user
 						;
 					");
 
@@ -866,8 +866,8 @@ class DatabaseMssql extends DatabaseBase {
 		return $name[0] == '[' && substr( $name, -1, 1 ) == ']';
 	}
 
-	function selectDB( $db ) {
-		return ( $this->query( "SET DATABASE $db" ) !== false );
+	function selectDB(  ) {
+		return ( $this->query( "SET DATABASE " ) !== false );
 	}
 
 	/**

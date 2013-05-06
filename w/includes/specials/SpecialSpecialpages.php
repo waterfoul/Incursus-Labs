@@ -51,7 +51,7 @@ class SpecialSpecialpages extends UnlistedSpecialPage {
 	private function getPageGroups() {
 		global $wgSortSpecialPages;
 
-		$pages = SpecialPageFactory::getUsablePages( $this->getUser() );
+		$pages = SpecialPageFactory::getUsablePages( $this->getwiki_user() );
 
 		if( !count( $pages ) ) {
 			# Yeah, that was pointless. Thanks for coming.

@@ -57,7 +57,7 @@ $namespaceAliases = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => "Link'iş tude kogu3’uxaçki:",
 'tog-rememberpassword' => 'Parola-skani goişini (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-showhiddencats' => "Şinaxeri k'at'egorepe ko3'iri",
@@ -191,7 +191,7 @@ $messages = array(
 'jumptonavigation' => 'ixmari',
 'jumptosearch' => 'mgori',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} şeni',
 'aboutpage' => 'Project:Ambarepe',
 'copyright' => 'Doloxe na renanpe, $1-şi ren.',
@@ -230,7 +230,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Stʼatʼia',
-'nstab-user' => 'maxmareş butʼkʼa',
+'nstab-wiki_user' => 'maxmareş butʼkʼa',
 'nstab-special' => 'Doxmeli butʼkʼa',
 'nstab-project' => 'Pʼrojeşi butʼkʼa',
 'nstab-image' => 'Dosya',
@@ -244,7 +244,7 @@ $messages = array(
 Muşeni? Çunki am butʼkʼa, jileri na ren a butʼkʼaşi golaxteri versiyoni ren.
 
 Eger sebebi aya na va renna, pʼrogramis ar çilata z*irit.
-Mu iqʼven! Aya, a [[Special:ListUsers/sysop|adminis]], URL-ti çʼareli şekʼilite rapʼortʼi doçʼarit.',
+Mu iqʼven! Aya, a [[Special:Listwiki_users/sysop|adminis]], URL-ti çʼareli şekʼilite rapʼortʼi doçʼarit.',
 'missingarticle-rev' => '(revizyoni#: $1)',
 'badtitletext' => 'Na içʼaren butʼkʼaşi coxo ya çilatoni ren ya boşi ren varna inter-nena do inter-vikʼişi kʼontʼaktʼis na uğutʼu şeni mtini varen.
 Dudicoxopes oxmaruşi yasaği na ren ar, varna daha dido kʼarakʼtʼeri uğun.',
@@ -256,9 +256,9 @@ Dudicoxopes oxmaruşi yasaği na ren ar, varna daha dido kʼarakʼtʼeri uğun.'
 'remembermypassword' => 'Parola-skani goişini (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'Sitʼeşa amaxti',
 'nav-login-createaccount' => 'Sitʼeşa amaxti / hesabi dokʼidi',
-'userlogin' => 'Sitʼeşa amaxti / hesabi dokʼidi',
+'wiki_userlogin' => 'Sitʼeşa amaxti / hesabi dokʼidi',
 'logout' => 'Siteşen Kogamaxti',
-'userlogout' => 'Siteşen Kogamaxti',
+'wiki_userlogout' => 'Siteşen Kogamaxti',
 'nologin' => "Hesabi va giğuni? '''$1'''",
 'nologinlink' => 'Hesabi dokʼidi.',
 'gotaccountlink' => 'Sitʼeşa amaxti',
@@ -401,7 +401,7 @@ Ogoruşi dudis '''all:''' pʼrefiksi okʼatute doloçʼareli na ren iri şeyi (o
 # Rights
 'right-delete' => 'Am sayfape jili',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Maxmareş hakʼişi kʼayitʼepe',
 'rightsnone' => '(Va ren)',
 
@@ -459,7 +459,7 @@ Ogoruşi dudis '''all:''' pʼrefiksi okʼatute doloçʼareli na ren iri şeyi (o
 'filehist-datetime' => 'Dğa/Ora',
 'filehist-thumb' => 'Mçʼitʼa sureti',
 'filehist-thumbtext' => '$1 tarixis na iz*iren versiyonişi mçʼitʼa na ren xali',
-'filehist-user' => 'Maxmare',
+'filehist-wiki_user' => 'Maxmare',
 'filehist-dimensions' => 'Ebatʼepe',
 'filehist-comment' => 'Kʼommentʼi',
 'imagelinks' => 'Dosyaşi kʼontaktʼepe',
@@ -503,14 +503,14 @@ Ogoruşi dudis '''all:''' pʼrefiksi okʼatute doloçʼareli na ren iri şeyi (o
 # Special:LinkSearch
 'linksearch' => 'Galeni kʼontaktʼepe',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Ağani maxmareş kʼayitʼepe',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Ağani maxmareş kʼayitʼepe',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(makʼaturepeşi listʼe)',
 
-# E-mail user
-'emailuser' => 'Maxmares e-maili oncğoni',
+# E-mail wiki_user
+'emailwiki_user' => 'Maxmares e-maili oncğoni',
 
 # Watchlist
 'watchlist' => 'çkimi gotxozu listʼe',
@@ -596,7 +596,7 @@ Am butʼkʼaşi oçvuşi sinori gaktirinen; ama am oktiroba, kʼademoni oçvalu�
 'sp-contributions-blocklog' => 'Bloğiş kʼayitʼi',
 'sp-contributions-talk' => 'Mesaji',
 'sp-contributions-search' => 'Meşvelape mgori',
-'sp-contributions-username' => 'IP varna maxmare:',
+'sp-contributions-wiki_username' => 'IP varna maxmare:',
 'sp-contributions-submit' => 'Mgori',
 
 # What links here
@@ -669,7 +669,7 @@ Mu iqʼven başka coxo doçʼari.',
 'thumbnail-more' => 'Didi qʼvi',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Skani butʼkʼa',
+'tooltip-pt-wiki_userpage' => 'Skani butʼkʼa',
 'tooltip-pt-mytalk' => 'Mesajiş butʼkʼa',
 'tooltip-pt-preferences' => 'Skani tercixepe',
 'tooltip-pt-watchlist' => 'Gotxozu na minon butʼkʼape',
@@ -701,13 +701,13 @@ Mu iqʼven başka coxo doçʼari.',
 'tooltip-feed-rss' => 'Am butʼkʼa şeni RSS-iş feedi',
 'tooltip-feed-atom' => 'Am butʼkʼa şeni atʼom-iş feedi',
 'tooltip-t-contributions' => 'Maxmareşi meşvela listʼe kozʼiri',
-'tooltip-t-emailuser' => 'Maxmareşa e-maili oncğoni',
+'tooltip-t-emailwiki_user' => 'Maxmareşa e-maili oncğoni',
 'tooltip-t-upload' => 'Dosyape doloxe kamaxvi',
 'tooltip-t-specialpages' => 'Mteli doxmeli butʼkʼapeşi listʼe ko3ʼiri',
 'tooltip-t-print' => 'Am butʼkʼaşi kartʼalişa çʼareli na ren versiyoni',
 'tooltip-t-permalink' => 'Am butʼkʼaşi am versiyoni muşis kʼarta ora kʼontʼaktʼi iqʼvi.',
 'tooltip-ca-nstab-main' => 'Butʼkʼa ko3ʼiri',
-'tooltip-ca-nstab-user' => 'Maxmareşi butʼkʼa ko3ʼiri',
+'tooltip-ca-nstab-wiki_user' => 'Maxmareşi butʼkʼa ko3ʼiri',
 'tooltip-ca-nstab-special' => 'Aya doxmeli butʼkʼa ren, emuşeni ak mutu va gaktirinen.',
 'tooltip-ca-nstab-project' => 'Pʼrojeşi butʼkʼa ko3ʼiri',
 'tooltip-ca-nstab-image' => 'Dosyaşi butʼkʼa ko3ʼiri',

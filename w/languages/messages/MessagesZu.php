@@ -89,7 +89,7 @@ $messages = array(
 'jumptonavigation' => 'Ukuqondiswa kwemikhumbi',
 'jumptosearch' => 'Sesha',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Izehlakalo ezimanje',
 'currentevents-url' => 'Project:Izehlakalo ezimanje',
 'edithelp' => 'Usizo ngokuhlela',
@@ -108,7 +108,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Umlayezo',
-'nstab-user' => 'Ikhasi lomsebenzisi',
+'nstab-wiki_user' => 'Ikhasi lomsebenzisi',
 'nstab-special' => 'Kukhulu',
 'nstab-image' => 'Ifayela',
 'nstab-mediawiki' => 'Umlayezo',
@@ -130,17 +130,17 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'remembermypassword' => 'Ngikhumbule (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'Ngena',
 'nav-login-createaccount' => 'Ngena / Dala ikhawundi',
-'userlogin' => 'Ngena / Dala ikhawundi',
+'wiki_userlogin' => 'Ngena / Dala ikhawundi',
 'logout' => 'Phuma',
-'userlogout' => 'Phuma',
+'wiki_userlogout' => 'Phuma',
 'notloggedin' => 'Awungenile',
 'nologin' => "Awunekhawundi? '''$1'''.",
 'nologinlink' => 'Dala ikhawundi',
 'createaccount' => 'Dala ikhawundi',
 'gotaccountlink' => 'Ngena',
 'loginsuccesstitle' => 'Ubengena',
-'nosuchuser' => 'Akukho umsebenzisi unegama "$1". Hlola umbhalo wakho, noma dala ikhawundi elisha.',
-'nosuchusershort' => 'Akukho umsebenzisi unegama "$1". Hlola umbhalo wakho.',
+'nosuchwiki_user' => 'Akukho umsebenzisi unegama "$1". Hlola umbhalo wakho, noma dala ikhawundi elisha.',
+'nosuchwiki_usershort' => 'Akukho umsebenzisi unegama "$1". Hlola umbhalo wakho.',
 'emailconfirmlink' => 'Qinisekisa ikheli likagesi lakho',
 'loginlanguagelabel' => 'Ulimi: $1',
 
@@ -193,7 +193,7 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'searchresultshead' => 'Sesha',
 'timezonelegend' => 'Isifunda sasikhathi',
 'localtime' => 'Isikhathi siyalapha',
-'username' => 'Isiga:',
+'wiki_username' => 'Isiga:',
 'yourrealname' => 'Igama eliqinisileyo',
 'yourlanguage' => 'Ulimi:',
 'email' => 'Iposi likagesi',
@@ -225,25 +225,25 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'randompage' => 'Ikhasi elingaphandle kokucabanga',
 
 # Statistics
-'statistics-header-users' => 'Ukwaziswa wamsebenzisi',
+'statistics-header-wiki_users' => 'Ukwaziswa wamsebenzisi',
 
 # Miscellaneous special pages
 'shortpages' => 'Amakhasi amafishane',
 'longpages' => 'Amakhasi amade',
 'newpages' => 'Amakhasi amasha',
-'newpages-username' => 'Isiga:',
+'newpages-wiki_username' => 'Isiga:',
 'move' => 'Sunduza',
 'movethispage' => 'Thuthisa leli khasi',
 
 # Special:Log
-'specialloguserlabel' => 'Umsebenzisi:',
+'speciallogwiki_userlabel' => 'Umsebenzisi:',
 
 # Special:AllPages
 'allinnamespace' => 'Onke amakhasi ($1 namespace)',
 'allpagessubmit' => 'Hamba',
 
-# E-mail user
-'emailuser' => 'Thumela umlayezo lo msebenzisi',
+# E-mail wiki_user
+'emailwiki_user' => 'Thumela umlayezo lo msebenzisi',
 'noemailtitle' => 'Akukho ikheli likaposi',
 'emailsubject' => 'Indaba',
 'emailmessage' => 'Umlayezo',

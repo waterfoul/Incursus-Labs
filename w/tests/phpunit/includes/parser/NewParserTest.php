@@ -71,7 +71,7 @@ class NewParserTest extends MediaWikiTestCase {
 		$tmpGlobals['parserMemc'] = wfGetParserCacheStorage();
 
 		// $tmpGlobals['wgContLang'] = new StubContLang;
-		$tmpGlobals['wgUser'] = new User;
+		$tmpGlobals['wgwiki_user'] = new wiki_user;
 		$context = new RequestContext();
 		$tmpGlobals['wgLang'] = $context->getLanguage();
 		$tmpGlobals['wgOut'] = $context->getOutput();
@@ -175,7 +175,7 @@ class NewParserTest extends MediaWikiTestCase {
 		# Clear the message cache
 		MessageCache::singleton()->clear();
 
-		$user = User::newFromId( 0 );
+		$wiki_user = wiki_user::newFromId( 0 );
 		LinkCache::singleton()->clear(); # Avoids the odd failure at creating the nullRevision
 
 		# Upload DB table entries for files.
@@ -198,7 +198,7 @@ class NewParserTest extends MediaWikiTestCase {
 					'metadata'    => serialize( array() ),
 					'sha1'        => wfBaseConvert( '', 16, 36, 31 ),
 					'fileExists'  => true ),
-				$this->db->timestamp( '20010115123500' ), $user
+				$this->db->timestamp( '20010115123500' ), $wiki_user
 			);
 		}
 
@@ -219,7 +219,7 @@ class NewParserTest extends MediaWikiTestCase {
 					'metadata'    => serialize( array() ),
 					'sha1'        => wfBaseConvert( '', 16, 36, 31 ),
 					'fileExists'  => true ),
-				$this->db->timestamp( '20010115123500' ), $user
+				$this->db->timestamp( '20010115123500' ), $wiki_user
 			);
 		}
 	}
@@ -362,7 +362,7 @@ class NewParserTest extends MediaWikiTestCase {
 
 		$GLOBALS['wgMemc'] = new EmptyBagOStuff;
 		$GLOBALS['wgOut'] = $context->getOutput();
-		$GLOBALS['wgUser'] = $context->getUser();
+		$GLOBALS['wgwiki_user'] = $context->getwiki_user();
 
 		global $wgHooks;
 
@@ -519,7 +519,7 @@ class NewParserTest extends MediaWikiTestCase {
 	public function testParserTest( $desc, $input, $result, $opts, $config ) {
 		if ( $this->regex != '' && !preg_match( '/' . $this->regex . '/', $desc ) ) {
 			$this->assertTrue( true ); // XXX: don't flood output with "test made no assertions"
-			//$this->markTestSkipped( 'Filtered out by the user' );
+			//$this->markTestSkipped( 'Filtered out by the wiki_user' );
 			return;
 		}
 
@@ -528,7 +528,7 @@ class NewParserTest extends MediaWikiTestCase {
 		$opts = $this->parseOptions( $opts );
 		$context = $this->setupGlobals( $opts, $config );
 
-		$user = $context->getUser();
+		$wiki_user = $context->getwiki_user();
 		$options = ParserOptions::newFromContext( $context );
 
 		if ( isset( $opts['title'] ) ) {
@@ -545,7 +545,7 @@ class NewParserTest extends MediaWikiTestCase {
 		$title = Title::newFromText( $titleText );
 
 		if ( isset( $opts['pst'] ) ) {
-			$out = $parser->preSaveTransform( $input, $title, $user, $options );
+			$out = $parser->preSaveTransform( $input, $title, $wiki_user, $options );
 		} elseif ( isset( $opts['msg'] ) ) {
 			$out = $parser->transformMsg( $input, $options, $title );
 		} elseif ( isset( $opts['section'] ) ) {
@@ -617,8 +617,8 @@ class NewParserTest extends MediaWikiTestCase {
 
 		ini_set( 'memory_limit', $this->memoryLimit * 1048576 );
 
-		$user = new User;
-		$opts = ParserOptions::newFromUser( $user );
+		$wiki_user = new wiki_user;
+		$opts = ParserOptions::newFromwiki_user( $wiki_user );
 		$title = Title::makeTitle( NS_MAIN, 'Parser_test' );
 
 		$id = 1;
@@ -718,7 +718,7 @@ class NewParserTest extends MediaWikiTestCase {
 
 		$functions = get_defined_functions();
 
-		foreach ( $functions['user'] as $function ) {
+		foreach ( $functions['wiki_user'] as $function ) {
 			$rf = new ReflectionFunction( $function );
 			$memStats["$function()"] = strlen( serialize( $rf->getStaticVariables() ) );
 		}

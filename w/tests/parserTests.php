@@ -60,8 +60,8 @@ ENDS;
 # Cases of weird db corruption were encountered when running tests on earlyish
 # versions of SQLite
 if ( $wgDBtype == 'sqlite' ) {
-	$db = wfGetDB( DB_MASTER );
-	$version = $db->getServerVersion();
+	 = wfGetDB( DB_MASTER );
+	$version = ->getServerVersion();
 	if ( version_compare( $version, '3.6' ) < 0 ) {
 		die( "Parser tests require SQLite version 3.6 or later, you have $version\n" );
 	}

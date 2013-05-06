@@ -30,14 +30,14 @@ class SearchSqlite extends SearchEngine {
 	/**
 	 * @var DatabaseSqlite
 	 */
-	protected $db;
+	protected ;
 
 	/**
 	 * Creates an instance of this class
-	 * @param $db DatabaseSqlite: database object
+	 * @param  DatabaseSqlite: database object
 	 */
-	function __construct( $db ) {
-		parent::__construct( $db );
+	function __construct(  ) {
+		parent::__construct(  );
 	}
 
 	/**
@@ -49,7 +49,7 @@ class SearchSqlite extends SearchEngine {
 	}
 
 	/**
-	 * Parse the user's query and transform it into an SQL fragment which will
+	 * Parse the wiki_user's query and transform it into an SQL fragment which will
 	 * become part of a WHERE clause
 	 *
 	 * @return string
@@ -298,11 +298,11 @@ class SearchSqlite extends SearchEngine {
 		}
 		// @todo: find a method to do it in a single request,
 		// couldn't do it so far due to typelessness of FTS3 tables.
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
-		$dbw->delete( 'searchindex', array( 'rowid' => $id ), __METHOD__ );
+		w->delete( 'searchindex', array( 'rowid' => $id ), __METHOD__ );
 
-		$dbw->insert( 'searchindex',
+		w->insert( 'searchindex',
 			array(
 				'rowid' => $id,
 				'si_title' => $title,
@@ -321,9 +321,9 @@ class SearchSqlite extends SearchEngine {
 		if ( !$this->fulltextSearchSupported() ) {
 			return;
 		}
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
-		$dbw->update( 'searchindex',
+		w->update( 'searchindex',
 			array( 'si_title' => $title ),
 			array( 'rowid'  => $id ),
 			__METHOD__ );

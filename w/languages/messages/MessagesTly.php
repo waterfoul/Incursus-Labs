@@ -44,7 +44,7 @@ $specialPageAliases = array(
 	'Blankpage'                 => array( 'Тәјлијә_сәһифә' ),
 	'ChangeEmail'               => array( 'Е-номә_дәгиш_кардеј' ),
 	'ChangePassword'            => array( 'Пароли_дәгиш_кардеј' ),
-	'Emailuser'                 => array( 'Бә_иштирокәкә_номә_вығандеј' ),
+	'Emailwiki_user'                 => array( 'Бә_иштирокәкә_номә_вығандеј' ),
 	'Longpages'                 => array( 'Дырозә_сәһифон' ),
 	'Movepage'                  => array( 'Сәһифә_номи_дәгиш_кардеј' ),
 	'Mypage'                    => array( 'Чымы_сәһифә' ),
@@ -95,8 +95,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'СӘҺИФОН_ҒӘДӘР', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'МӘҒОЛОН_ҒӘДӘР', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'ФАЈЛОН_ҒӘДӘР', 'NUMBEROFFILES' ),
-	'numberofusers'             => array( '1', 'ИШТИРОКӘКОН_ҒӘДӘР', 'NUMBEROFUSERS' ),
-	'numberofactiveusers'       => array( '1', 'ТИЛИКӘ_ИШТИРОКӘКОН_ҒӘДӘР', 'NUMBEROFACTIVEUSERS' ),
+	'numberofwiki_users'             => array( '1', 'ИШТИРОКӘКОН_ҒӘДӘР', 'NUMBEROFUSERS' ),
+	'numberofactivewiki_users'       => array( '1', 'ТИЛИКӘ_ИШТИРОКӘКОН_ҒӘДӘР', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'ДӘГИШОН_ҒӘДӘР', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'ДИЈӘ_КАРДЕ_ҒӘДӘР', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'СӘҺИФӘ_НОМ', 'PAGENAME' ),
@@ -143,7 +143,7 @@ $magicWords = array(
 	'revisionmonth1'            => array( '1', 'РӘВОЈӘТИ_МАНГ_2', 'REVISIONMONTH1' ),
 	'revisionyear'              => array( '1', 'РӘВОЈӘТИ_СОР', 'REVISIONYEAR' ),
 	'revisiontimestamp'         => array( '1', 'РӘВОЈӘТИ_ВАХТИ_ҒЕЈД', 'REVISIONTIMESTAMP' ),
-	'revisionuser'              => array( '1', 'ИШТИРОКӘКӘ_РӘВОЈӘТ', 'REVISIONUSER' ),
+	'revisionwiki_user'              => array( '1', 'ИШТИРОКӘКӘ_РӘВОЈӘТ', 'REVISIONUSER' ),
 	'fullurl'                   => array( '0', 'ПУРӘ_УНВОН:', 'FULLURL:' ),
 	'fullurle'                  => array( '0', 'ПУРӘ_УНВОН_2:', 'FULLURLE:' ),
 	'currentversion'            => array( '1', 'ЕСӘТНӘ_РӘВОЈӘТ', 'CURRENTVERSION' ),
@@ -158,7 +158,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Линки жинтоно ријә быкәш:',
 'tog-justify' => 'Мәтни бә сәһифә кәно бәробәр быкә.',
 'tog-hideminor' => 'Охоминә дәгишонәдә гәдә дәгишон нишо мәдә.',
@@ -323,7 +323,7 @@ $messages = array(
 'talk' => 'Мызокирә',
 'views' => 'Тәмшо кардеј',
 'toolbox' => 'Диләгон',
-'userpage' => 'Иштирокәкә сәһифә дијә кардеј',
+'wiki_userpage' => 'Иштирокәкә сәһифә дијә кардеј',
 'projectpage' => 'Нәхши сәһифә дијә кардеј',
 'imagepage' => 'Фајли сәһифә дијә кардеј',
 'mediawikipage' => 'Мәктуби сәһифә нишо быдә.',
@@ -342,7 +342,7 @@ $messages = array(
 'pool-timeout' => 'Че блоки чәш кардә вахт сәбе.',
 'pool-errorunknown' => 'Номәлумә сәһв',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Тәсвир {{SITENAME}}',
 'aboutpage' => 'Project: Тәсвир',
 'copyrightpage' => '{{ns:project}}:Мыәллифә һуғуғ',
@@ -390,7 +390,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Мәғолә',
-'nstab-user' => 'Иштирокәкә сәһифә',
+'nstab-wiki_user' => 'Иштирокәкә сәһифә',
 'nstab-media' => 'Медијә сәһифә',
 'nstab-special' => 'Хысусијә сәһифә',
 'nstab-project' => 'Нахшә бәрәдә',
@@ -404,7 +404,7 @@ $messages = array(
 'missing-article' => 'База мәлумотон дыләдә бә ахтар кардә быә саһифон «$1» $2 барәдә мәлумот пәјдо карде ныбе.
 Жыго вәзијјәт бе бәзне бә вахтики, ым сәһифә че рәдд кардә быә сәһифә канә рәвојәте.
 Гирәм ым жыго ни, жәгәдә шымә програм тәминатијәдә сәһв пәјдо кардәјоне.
-Хаһиш кардәмон че сәһифә URL-и бә [[Special:ListUsers/sysop|администратори]] бывғандәнән.',
+Хаһиш кардәмон че сәһифә URL-и бә [[Special:Listwiki_users/sysop|администратори]] бывғандәнән.',
 'missingarticle-rev' => '(рәвојәт#: $1)',
 'missingarticle-diff' => '(Фәрг: $1, $2)',
 'internalerror' => 'Дыләтонә ғәләт',
@@ -426,17 +426,17 @@ $messages = array(
 'login' => 'Ыштәни едаштеј',
 'nav-login-createaccount' => 'Ыштәни едаштеј / ыштәни ғејд кардовнијеј',
 'loginprompt' => '{{SITENAME}}-әдә ыштәни едәште горнә, шымә бәбе бә «cookies» иҹозә быдән.',
-'userlogin' => 'Ыштәни едаштеј / ыштәни ғејд кардовнијеј',
-'userloginnocreate' => 'Ыштәни едаштеј',
+'wiki_userlogin' => 'Ыштәни едаштеј / ыштәни ғејд кардовнијеј',
+'wiki_userloginnocreate' => 'Ыштәни едаштеј',
 'logout' => 'Системәдә кој орохнијеј',
-'userlogout' => 'Системәдә кој орохнијеј',
+'wiki_userlogout' => 'Системәдә кој орохнијеј',
 'notloggedin' => 'Ыштәни едаштәнијоне',
 'nologin' => "Иштирок кардәкәси сәһифә ни? '''$1'''.",
 'nologinlink' => 'Иштирокәкә сәһифә офәје',
 'createaccount' => 'Нујә иштирокәкә ғејд кардеј',
 'gotaccount' => 'Шымә ыштәни ғејд кардәјоне? $1.',
 'gotaccountlink' => 'Ыштәни едаштеј',
-'userlogin-resetlink' => 'Бә системә дәше мәлумоти јодәдә бекардәјоне?',
+'wiki_userlogin-resetlink' => 'Бә системә дәше мәлумоти јодәдә бекардәјоне?',
 'createaccountmail' => 'бә е-номә',
 'createaccountreason' => 'Сәбәб:',
 'mailmypassword' => 'Нујә парол вығандеј бә Е-номә.',
@@ -452,7 +452,7 @@ $messages = array(
 'resetpass-submit-cancel' => 'Ләғв кардеј',
 
 # Special:PasswordReset
-'passwordreset-username' => 'Иштирокәкә ном:',
+'passwordreset-wiki_username' => 'Иштирокәкә ном:',
 'passwordreset-email' => 'Е-номә унвон:',
 
 # Special:ChangeEmail
@@ -621,10 +621,10 @@ $messages = array(
 'preferences' => 'Кукон',
 'mypreferences' => 'Кукон',
 'prefsnologin' => 'Ыштәни едаштәнијоне',
-'prefsnologintext' => 'Шымә бәбе <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} ыштәни едәштән]</span> бо иштирокәкә пеғәндон дәгиш кардеј.',
+'prefsnologintext' => 'Шымә бәбе <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} ыштәни едәштән]</span> бо иштирокәкә пеғәндон дәгиш кардеј.',
 'changepassword' => 'Пароли дәгиш кардеј',
 'skin-preview' => 'Сыфтәнә нишо дој',
-'prefs-user-pages' => 'Иштирокәкә сәһифон',
+'prefs-wiki_user-pages' => 'Иштирокәкә сәһифон',
 'prefs-rc' => 'Ән нујә дәгишон',
 'prefs-changeemail' => 'Е-номә дәгиш кардеј',
 'prefs-email' => 'Е-номә кукон',
@@ -637,7 +637,7 @@ $messages = array(
 'prefs-files' => 'Фајлон',
 'prefs-custom-css' => 'Хысуси CSS',
 'youremail' => 'E-номә:',
-'username' => 'Иштирокәкә ном:',
+'wiki_username' => 'Иштирокәкә ном:',
 'uid' => 'Иштирокәкә ID:',
 'yourrealname' => 'Шымә әсыл ном:',
 'yourlanguage' => 'Зывон:',
@@ -645,11 +645,11 @@ $messages = array(
 'prefs-help-email' => 'Е-номә унвони нывыштеј һукман ни, интаси ав бә шымә гәрәк бәбе гирам шымә пароли виро бебәкардејон.',
 'prefs-help-email-others' => 'Комәг бәка бә ҹо иштироәкон шымә е-номә унвони оныкарде, че шымә шәхси сәһифәдә быә линки де шымә әлогә огәтеј.',
 
-# User rights
-'userrights-reason' => 'Сәбәб:',
+# wiki_user rights
+'wiki_userrights-reason' => 'Сәбәб:',
 
 # Groups
-'group-user' => 'Иштирокәкон',
+'group-wiki_user' => 'Иштирокәкон',
 
 # Associated actions - in the sentence "You do not have permission to X"
 'action-edit' => 'Ым сәһифә сәрост кардеј',
@@ -710,7 +710,7 @@ $messages = array(
 'listfiles' => 'Фајлон сијоһи',
 'listfiles_thumb' => 'Гәдә шикил',
 'listfiles_name' => 'Фајли ном',
-'listfiles_user' => 'Иштирокәкә',
+'listfiles_wiki_user' => 'Иштирокәкә',
 'listfiles_size' => 'Улгу',
 'listfiles_description' => 'Тәсвир',
 'listfiles_count' => 'Рәвојәт',
@@ -725,7 +725,7 @@ $messages = array(
 'filehist-datetime' => 'Тарых/Вахт',
 'filehist-thumb' => 'Гәдә шикил',
 'filehist-thumbtext' => 'Миниатјур бо рәвојәти че вахтику $1',
-'filehist-user' => 'Иштирокәкә',
+'filehist-wiki_user' => 'Иштирокәкә',
 'filehist-dimensions' => 'Објекти улгу',
 'filehist-comment' => 'Ғејд',
 'imagelinks' => 'Фајли око доје',
@@ -750,7 +750,7 @@ $messages = array(
 'nbytes' => '$1 {{PLURAL:$1|бајт|бајтон}}',
 'nmembers' => '$1 {{PLURAL:$1|узв|узвон}}',
 'prefixindex' => 'Һәммәј сәһифон де префикси',
-'usercreated' => '{{GENDER:$3|Офәјеј быә}} $1 $2',
+'wiki_usercreated' => '{{GENDER:$3|Офәјеј быә}} $1 $2',
 'newpages' => 'Тожә сәһифон',
 'move' => 'Ном дәгиш кардеј',
 'pager-newer-n' => '{{PLURAL:$1|ән нујә1|ән нујә $1}}',
@@ -776,14 +776,14 @@ $messages = array(
 # Special:LinkSearch
 'linksearch-line' => '$2-ку сәбон вардә бә $1',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Иштирокәкон ғеидијоти журнал',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Иштирокәкон ғеидијоти журнал',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(иштирокәкон сијоһи)',
 
-# E-mail user
-'emailuser' => 'Номә бә иштирокәкә',
+# E-mail wiki_user
+'emailwiki_user' => 'Номә бә иштирокәкә',
 
 # Watchlist
 'watchlist' => 'Чымы ноғо доә сијоһи',
@@ -836,7 +836,7 @@ $messages = array(
 'sp-contributions-logs' => 'журналон',
 'sp-contributions-talk' => 'мызокирә',
 'sp-contributions-search' => 'Гәнҹи нәве',
-'sp-contributions-username' => 'IP-унвон јаанки иштироәкә ном:',
+'sp-contributions-wiki_username' => 'IP-унвон јаанки иштироәкә ном:',
 'sp-contributions-toponly' => 'Нишо дој дәгишон, ком гылә ән охонә рәвојәтонин',
 'sp-contributions-submit' => 'Нәве',
 
@@ -896,7 +896,7 @@ $messages = array(
 'thumbnail_error' => 'Гәдә шикили туму кардејәдә сәһв: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Шымә иштирокәкә сәһифә',
+'tooltip-pt-wiki_userpage' => 'Шымә иштирокәкә сәһифә',
 'tooltip-pt-mytalk' => 'Шымә мызокирон сәһифә',
 'tooltip-pt-preferences' => 'Шымә кукон',
 'tooltip-pt-watchlist' => 'Сәһифон сијоһи, конҹо шымә де дығғәти дијә кардејдәјон бә дәгишон',
@@ -928,13 +928,13 @@ $messages = array(
 'tooltip-t-recentchangeslinked' => 'Охонә дәгишон сәһифонәдә, бә ком сәһифон сәбон вардә ым сәһифә',
 'tooltip-feed-atom' => 'Транслјасијә кардеј бә Atom бо ым сәһифә',
 'tooltip-t-contributions' => 'Че иштирок кардәкәси дагиш кардә быә сәһифон сијоһи',
-'tooltip-t-emailuser' => 'Бы иштироәкә номә вығәнде',
+'tooltip-t-emailwiki_user' => 'Бы иштироәкә номә вығәнде',
 'tooltip-t-upload' => 'Шикилон јаанки мултимедијә фајлон бо жај',
 'tooltip-t-specialpages' => 'Хыдмәтә сәһифон сијоһи',
 'tooltip-t-print' => 'Ым сәһифә рәвојәт бо чап кардеј',
 'tooltip-t-permalink' => 'Бә ым сәһифә рәвојәти еғрорә сәбон',
 'tooltip-ca-nstab-main' => 'Мәғолә мығдор',
-'tooltip-ca-nstab-user' => 'Иштирок кардәкәси сәһифә',
+'tooltip-ca-nstab-wiki_user' => 'Иштирок кардәкәси сәһифә',
 'tooltip-ca-nstab-media' => 'Медиа-фајл',
 'tooltip-ca-nstab-special' => 'Ым хыдмәтә сәһифәје бычыми горә дәгиш кардеј әбыни',
 'tooltip-ca-nstab-project' => 'Нәхши сәһифә',

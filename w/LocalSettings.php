@@ -40,15 +40,15 @@ $wgStylePath        = "$wgScriptPath/skins";
 ## or else you'll overwrite your logo when you upgrade!
 $wgLogo             = "https://image.eveonline.com/Corporation/98176508_128.png";
 
-## UPO means: this is also a user preference option
+## UPO means: this is also a wiki_user preference option
 
 $wgEnableEmail      = true;
-$wgEnableUserEmail  = true; # UPO
+$wgEnablewiki_userEmail  = true; # UPO
 
 $wgEmergencyContact = "waterfoul@gmail.com";
 $wgPasswordSender   = "waterfoul@gmail.com";
 
-$wgEnotifUserTalk      = false; # UPO
+$wgEnotifwiki_userTalk      = false; # UPO
 $wgEnotifWatchlist     = false; # UPO
 $wgEmailAuthentication = true;
 
@@ -56,7 +56,7 @@ $wgEmailAuthentication = true;
 $wgDBtype           = "mysql";
 $wgDBserver         = "localhost";
 $wgDBname           = "naa_wiki";
-$wgDBuser           = "naa";
+$wgDBwiki_user           = "naa";
 $wgDBpassword       = "CvVTWbwdaqUsV78L";
 
 # MySQL specific settings
@@ -132,13 +132,13 @@ $wgResourceLoaderMaxQueryLength = 512;
 # End of automatically generated settings.
 # Add more configuration options below.
 
-// PHPBB User Database Plugin. (Requires MySQL Database)
+// PHPBB wiki_user Database Plugin. (Requires MySQL Database)
 require_once './extensions/Auth_phpBB.php';
  
 $wgAuth_Config = array(); // Clean.
  
 $wgAuth_Config['WikiGroupName'] = '';       // Name of your PHPBB group
-                                                // users need to be a member
+                                                // wiki_users need to be a member
                                                 // of to use the wiki. (i.e. wiki)
                                                 // This can also be set to an array 
                                                 // of group names to use more then 
@@ -150,23 +150,23 @@ $wgAuth_Config['WikiGroupName'] = '';       // Name of your PHPBB group
                                                 // )
  
 $wgAuth_Config['UseWikiGroup'] = false;          // This tells the Plugin to require
-                                                // a user to be a member of the above
+                                                // a wiki_user to be a member of the above
                                                 // phpBB group. (ie. wiki) Setting
                                                 // this to false will let any phpBB
-                                                // user edit the wiki.
+                                                // wiki_user edit the wiki.
  
 $wgAuth_Config['UseExtDatabase'] = true;       // This tells the plugin that the phpBB tables
                                                 // are in a different database then the wiki.
                                                 // The default settings is false.
  
 $wgAuth_Config['MySQL_Host']        = 'localhost';      // phpBB MySQL Host Name.
-$wgAuth_Config['MySQL_Username']    = 'naa';       // phpBB MySQL Username.
+$wgAuth_Config['MySQL_wiki_username']    = 'naa';       // phpBB MySQL wiki_username.
 $wgAuth_Config['MySQL_Password']    = 'CvVTWbwdaqUsV78L';       // phpBB MySQL Password.
 $wgAuth_Config['MySQL_Database']    = 'naa_phpBB';       // phpBB MySQL Database Name.
  
-$wgAuth_Config['UserTB']         = 'phpbb_users';       // Name of your PHPBB user table. (i.e. phpbb_users)
+$wgAuth_Config['wiki_userTB']         = 'phpbb_users';       // Name of your PHPBB wiki_user table. (i.e. phpbb_wiki_users)
 $wgAuth_Config['GroupsTB']       = 'phpbb_groups';      // Name of your PHPBB groups table. (i.e. phpbb_groups)
-$wgAuth_Config['User_GroupTB']   = 'phpbb_user_group';  // Name of your PHPBB user_group table. (i.e. phpbb_user_group)
+$wgAuth_Config['wiki_user_GroupTB']   = 'phpbb_user_group';  // Name of your PHPBB wiki_user_group table. (i.e. phpbb_wiki_user_group)
 $wgAuth_Config['PathToPHPBB']    = '../phpBB/';         // Path from this file to your phpBB install. Must end with '/'.
  
 // Local

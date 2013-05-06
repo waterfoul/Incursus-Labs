@@ -562,7 +562,7 @@
 					// this is too big, perhaps break it out?
 					$headers.click( function ( e ) {
 						if ( e.target.nodeName.toLowerCase() === 'a' ) {
-							// The user clicked on a link inside a table header
+							// The wiki_user clicked on a link inside a table header
 							// Do nothing and let the default link click action continue
 							return true;
 						}
@@ -609,7 +609,7 @@
 							this.order = this.count % 2;
 							this.count++;
 
-							// User only wants to sort on one column
+							// wiki_user only wants to sort on one column
 							if ( !e[config.sortMultiSortKey] ) {
 								// Flush the sort list
 								config.sortList = [];
@@ -618,7 +618,7 @@
 
 							// Multi column sorting
 							} else {
-								// The user has clicked on an already sorted column.
+								// The wiki_user has clicked on an already sorted column.
 								if ( isValueInArray( i, config.sortList ) ) {
 									// Reverse the sorting direction for all tables.
 									for ( var j = 0; j < config.sortList.length; j++ ) {

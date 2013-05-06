@@ -6,20 +6,20 @@ abstract class MediaWikiTestCase extends PHPUnit_Framework_TestCase {
 	public $runDisabled = false;
 
 	/**
-	 * @var Array of TestUser
+	 * @var Array of Testwiki_user
 	 */
-	public static $users;
+	public static $wiki_users;
 
 	/**
 	 * @var DatabaseBase
 	 */
-	protected $db;
+	protected ;
 	protected $oldTablePrefix;
 	protected $useTemporaryTables = true;
 	protected $reuseDB = false;
 	protected $tablesUsed = array(); // tables with data
 
-	private static $dbSetup = false;
+	private static Setup = false;
 
 	/**
 	 * Holds the paths of temporary files/directories created through getNewTempFile,
@@ -69,9 +69,9 @@ abstract class MediaWikiTestCase extends PHPUnit_Framework_TestCase {
 
 			$this->oldTablePrefix = $wgDBprefix;
 
-			if( !self::$dbSetup ) {
+			if( !self::Setup ) {
 				$this->initDB();
-				self::$dbSetup = true;
+				self::Setup = true;
 			}
 
 			$this->addCoreDBData();
@@ -171,11 +171,11 @@ abstract class MediaWikiTestCase extends PHPUnit_Framework_TestCase {
 
 		if ( $this->db->getType() == 'oracle' ) {
 
-			# Insert 0 user to prevent FK violations
-			# Anonymous user
-			$this->db->insert( 'user', array(
-				'user_id' 		=> 0,
-				'user_name'   	=> 'Anonymous' ), __METHOD__, array( 'IGNORE' ) );
+			# Insert 0 wiki_user to prevent FK violations
+			# Anonymous wiki_user
+			$this->db->insert( 'wiki_user', array(
+				'wiki_user_id' 		=> 0,
+				'wiki_user_name'   	=> 'Anonymous' ), __METHOD__, array( 'IGNORE' ) );
 
 			# Insert 0 page to prevent FK violations
 			# Blank page
@@ -194,18 +194,18 @@ abstract class MediaWikiTestCase extends PHPUnit_Framework_TestCase {
 
 		}
 
-		User::resetIdByNameCache();
+		wiki_user::resetIdByNameCache();
 
-		//Make sysop user
-		$user = User::newFromName( 'UTSysop' );
+		//Make sysop wiki_user
+		$wiki_user = wiki_user::newFromName( 'UTSysop' );
 
-		if ( $user->idForName() == 0 ) {
-			$user->addToDatabase();
-			$user->setPassword( 'UTSysopPassword' );
+		if ( $wiki_user->idForName() == 0 ) {
+			$wiki_user->addToDatabase();
+			$wiki_user->setPassword( 'UTSysopPassword' );
 
-			$user->addGroup( 'sysop' );
-			$user->addGroup( 'bureaucrat' );
-			$user->saveSettings();
+			$wiki_user->addGroup( 'sysop' );
+			$wiki_user->addGroup( 'bureaucrat' );
+			$wiki_user->saveSettings();
 		}
 
 
@@ -216,7 +216,7 @@ abstract class MediaWikiTestCase extends PHPUnit_Framework_TestCase {
 							'UTPageSummary',
 							EDIT_NEW,
 							false,
-							User::newFromName( 'UTSysop' ) );
+							wiki_user::newFromName( 'UTSysop' ) );
 		}
 	}
 
@@ -227,15 +227,15 @@ abstract class MediaWikiTestCase extends PHPUnit_Framework_TestCase {
 		}
 
 		$tablesCloned = $this->listTables();
-		$dbClone = new CloneDatabase( $this->db, $tablesCloned, $this->dbPrefix() );
-		$dbClone->useTemporaryTables( $this->useTemporaryTables );
+		Clone = new CloneDatabase( $this->db, $tablesCloned, $this->dbPrefix() );
+		Clone->useTemporaryTables( $this->useTemporaryTables );
 
 		if ( ( $this->db->getType() == 'oracle' || !$this->useTemporaryTables ) && $this->reuseDB ) {
 			CloneDatabase::changePrefix( $this->dbPrefix() );
 			$this->resetDB();
 			return;
 		} else {
-			$dbClone->cloneTableStructure();
+			Clone->cloneTableStructure();
 		}
 
 		if ( $this->db->getType() == 'oracle' ) {
@@ -260,7 +260,7 @@ abstract class MediaWikiTestCase extends PHPUnit_Framework_TestCase {
 				}
 			} else {
 				foreach( $this->tablesUsed as $tbl ) {
-					if( $tbl == 'interwiki' || $tbl == 'user' ) continue;
+					if( $tbl == 'interwiki' || $tbl == 'wiki_user' ) continue;
 					$this->db->delete( $tbl, '*', __METHOD__ );
 				}
 			}
@@ -374,10 +374,10 @@ abstract class MediaWikiTestCase extends PHPUnit_Framework_TestCase {
 				' method should return true. Use @group Database or $this->tablesUsed.');
 		}
 
-		$db = wfGetDB( DB_SLAVE );
+		 = wfGetDB( DB_SLAVE );
 
-		$res = $db->select( $table, $fields, $condition, wfGetCaller(), array( 'ORDER BY' => $fields ) );
-		$this->assertNotEmpty( $res, "query failed: " . $db->lastError() );
+		$res = ->select( $table, $fields, $condition, wfGetCaller(), array( 'ORDER BY' => $fields ) );
+		$this->assertNotEmpty( $res, "query failed: " . ->lastError() );
 
 		$i = 0;
 

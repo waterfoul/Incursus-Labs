@@ -21,8 +21,8 @@ class SkinStandard extends SkinLegacy {
 	/**
 	 * @param $out OutputPage
 	 */
-	function setupSkinUserCss( OutputPage $out ){
-		parent::setupSkinUserCss( $out );
+	function setupSkinwiki_userCss( OutputPage $out ){
+		parent::setupSkinwiki_userCss( $out );
 		$out->addModuleStyles( 'skins.standard' );
 
 		$qb = $this->qbSetting();
@@ -135,7 +135,7 @@ class StandardTemplate extends LegacyTemplate {
 						SpecialPage::getTitleFor( 'Contributions' ),
 						wfMessage( 'mycontris' )->escaped(),
 						array(),
-						array( 'target' => $this->data['username'] )
+						array( 'target' => $this->data['wiki_username'] )
 					);
 				}
 			}
@@ -164,7 +164,7 @@ class StandardTemplate extends LegacyTemplate {
 							$text = wfMessage( 'articlepage' );
 							break;
 						case NS_USER:
-							$text = wfMessage( 'userpage' );
+							$text = wfMessage( 'wiki_userpage' );
 							break;
 						case NS_PROJECT:
 							$text = wfMessage( 'projectpage' );
@@ -196,7 +196,7 @@ class StandardTemplate extends LegacyTemplate {
 
 					$s .= Linker::link( Title::newFromText( $link ), $text->escaped() );
 				} elseif( $title->getNamespace() != NS_SPECIAL ) {
-					# we just throw in a "New page" text to tell the user that he's in edit mode,
+					# we just throw in a "New page" text to tell the wiki_user that he's in edit mode,
 					# and to avoid messing with the separator that is prepended to the next item
 					$s .= '<strong>' . wfMessage( 'newpage' )->escaped() . '</strong>';
 				}
@@ -216,7 +216,7 @@ class StandardTemplate extends LegacyTemplate {
 
 			/**
 			 * Watching could cause problems in edit mode:
-			 * if user edits article, then loads "watch this article" in background and then saves
+			 * if wiki_user edits article, then loads "watch this article" in background and then saves
 			 * article with "Watch this article" checkbox disabled, the article is transparently
 			 * unwatched. Therefore we do not show the "Watch this page" link in edit mode.
 			 */
@@ -224,10 +224,10 @@ class StandardTemplate extends LegacyTemplate {
 				if( $action != 'edit' && $action != 'submit' ) {
 					$s .= $sep . $this->watchThisPage();
 				}
-				if ( $title->userCan( 'edit' ) )
+				if ( $title->wiki_userCan( 'edit' ) )
 					$s .= $sep . $this->moveThisPage();
 			}
-			if ( $this->getSkin()->getUser()->isAllowed( 'delete' ) && $articleExists ) {
+			if ( $this->getSkin()->getwiki_user()->isAllowed( 'delete' ) && $articleExists ) {
 				$s .= $sep . $this->deleteThisPage() .
 				$sep . $this->protectThisPage();
 			}
@@ -246,20 +246,20 @@ class StandardTemplate extends LegacyTemplate {
 				$title->getNamespace() == NS_USER_TALK
 			) {
 
-				$id = User::idFromName( $title->getText() );
-				$ip = User::isIP( $title->getText() );
+				$id = wiki_user::idFromName( $title->getText() );
+				$ip = wiki_user::isIP( $title->getText() );
 
 				if( $id || $ip ){
-					$s .= $sep . $this->userContribsLink();
+					$s .= $sep . $this->wiki_userContribsLink();
 				}
-				if( $this->getSkin()->showEmailUser( $id ) ) {
-					$s .= $sep . $this->emailUserLink();
+				if( $this->getSkin()->showEmailwiki_user( $id ) ) {
+					$s .= $sep . $this->emailwiki_userLink();
 				}
 			}
 			$s .= "\n<br /><hr class='sep' />";
 		}
 
-		if( UploadBase::isEnabled() && UploadBase::isAllowed( $this->getSkin()->getUser() ) === true ) {
+		if( UploadBase::isEnabled() && UploadBase::isAllowed( $this->getSkin()->getwiki_user() ) === true ) {
 			$s .= $this->getUploadLink() . $sep;
 		}
 

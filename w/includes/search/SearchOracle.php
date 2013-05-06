@@ -59,10 +59,10 @@ class SearchOracle extends SearchEngine {
 
 	/**
 	 * Creates an instance of this class
-	 * @param $db DatabasePostgres: database object
+	 * @param  DatabasePostgres: database object
 	 */
-	function __construct($db) {
-		parent::__construct( $db );
+	function __construct() {
+		parent::__construct(  );
 	}
 
 	/**
@@ -183,7 +183,7 @@ class SearchOracle extends SearchEngine {
 	}
 
 	/**
-	 * Parse a user input search string, and return an SQL fragment to be used
+	 * Parse a wiki_user input search string, and return an SQL fragment to be used
 	 * as part of a WHERE clause
 	 * @return string
 	 */
@@ -244,8 +244,8 @@ class SearchOracle extends SearchEngine {
 	 * @param $text String
 	 */
 	function update($id, $title, $text) {
-		$dbw = wfGetDB(DB_MASTER);
-		$dbw->replace('searchindex',
+		w = wfGetDB(DB_MASTER);
+		w->replace('searchindex',
 			array('si_page'),
 			array(
 				'si_page' => $id,
@@ -254,14 +254,14 @@ class SearchOracle extends SearchEngine {
 			), 'SearchOracle::update' );
 
 		// Sync the index
-		// We need to specify the DB name (i.e. user/schema) here so that 
+		// We need to specify the DB name (i.e. wiki_user/schema) here so that 
 		// it can work from the installer, where
 		//     ALTER SESSION SET CURRENT_SCHEMA = ...
 		// was used.
-		$dbw->query( "CALL ctx_ddl.sync_index(" . 
-			$dbw->addQuotes( $dbw->getDBname() . '.' . $dbw->tableName( 'si_text_idx', 'raw' ) ) . ")" );
-		$dbw->query( "CALL ctx_ddl.sync_index(" . 
-			$dbw->addQuotes( $dbw->getDBname() . '.' . $dbw->tableName( 'si_title_idx', 'raw' ) ) . ")" );
+		w->query( "CALL ctx_ddl.sync_index(" . 
+			w->addQuotes( w->getDBname() . '.' . w->tableName( 'si_text_idx', 'raw' ) ) . ")" );
+		w->query( "CALL ctx_ddl.sync_index(" . 
+			w->addQuotes( w->getDBname() . '.' . w->tableName( 'si_title_idx', 'raw' ) ) . ")" );
 	}
 
 	/**
@@ -272,9 +272,9 @@ class SearchOracle extends SearchEngine {
 	 * @param $title String
 	 */
 	function updateTitle($id, $title) {
-		$dbw = wfGetDB(DB_MASTER);
+		w = wfGetDB(DB_MASTER);
 
-		$dbw->update('searchindex',
+		w->update('searchindex',
 			array('si_title' => $title),
 			array('si_page'  => $id),
 			'SearchOracle::updateTitle',

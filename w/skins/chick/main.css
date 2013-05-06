@@ -174,8 +174,8 @@ span.subpages { display: block; }
 }
 #firstHeading { margin-bottom:0.1em; }
 
-/* user notification thing */
-.usermessage {
+/* wiki_user notification thing */
+.wiki_usermessage {
 	background-color: #ffce7b;
 	border: 1px solid #ffa500;
 	color: black;
@@ -295,7 +295,7 @@ img.thumbborder {
 */
 
 /*
-** User styles
+** wiki_user styles
 */
 /* table standards */
 table.rimage {

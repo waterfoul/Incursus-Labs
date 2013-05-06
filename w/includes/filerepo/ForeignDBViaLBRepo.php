@@ -27,7 +27,7 @@
  * @ingroup FileRepo
  */
 class ForeignDBViaLBRepo extends LocalRepo {
-	var $wiki, $dbName, $tablePrefix;
+	var $wiki, Name, $tablePrefix;
 	var $fileFactory = array( 'ForeignDBFile', 'newFromTitle' );
 	var $fileFromRowFactory = array( 'ForeignDBFile', 'newFromRow' );
 

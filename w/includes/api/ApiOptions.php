@@ -25,7 +25,7 @@
  */
 
 /**
-* API module that facilitates the changing of user's preferences.
+* API module that facilitates the changing of wiki_user's preferences.
 * Requires API write mode to be enabled.
 *
  * @ingroup API
@@ -37,13 +37,13 @@ class ApiOptions extends ApiBase {
 	}
 
 	/**
-	 * Changes preferences of the current user.
+	 * Changes preferences of the current wiki_user.
 	 */
 	public function execute() {
-		$user = $this->getUser();
+		$wiki_user = $this->getwiki_user();
 
-		if ( $user->isAnon() ) {
-			$this->dieUsage( 'Anonymous users cannot change preferences', 'notloggedin' );
+		if ( $wiki_user->isAnon() ) {
+			$this->dieUsage( 'Anonymous wiki_users cannot change preferences', 'notloggedin' );
 		}
 
 		$params = $this->extractRequestParams();
@@ -54,7 +54,7 @@ class ApiOptions extends ApiBase {
 		}
 
 		if ( $params['reset'] ) {
-			$user->resetOptions();
+			$wiki_user->resetOptions();
 			$changed = true;
 		}
 
@@ -73,16 +73,16 @@ class ApiOptions extends ApiBase {
 			$this->dieUsage( 'No changes were requested', 'nochanges' );
 		}
 
-		$prefs = Preferences::getPreferences( $user, $this->getContext() );
+		$prefs = Preferences::getPreferences( $wiki_user, $this->getContext() );
 		foreach ( $changes as $key => $value ) {
 			if ( !isset( $prefs[$key] ) ) {
 				$this->setWarning( "Not a valid preference: $key" );
 				continue;
 			}
 			$field = HTMLForm::loadInputFromParameters( $key, $prefs[$key] );
-			$validation = $field->validate( $value, $user->getOptions() );
+			$validation = $field->validate( $value, $wiki_user->getOptions() );
 			if ( $validation === true ) {
-				$user->setOption( $key, $value );
+				$wiki_user->setOption( $key, $value );
 				$changed = true;
 			} else {
 				$this->setWarning( "Validation error for '$key': $validation" );
@@ -91,7 +91,7 @@ class ApiOptions extends ApiBase {
 
 		if ( $changed ) {
 			// Commit changes
-			$user->saveSettings();
+			$wiki_user->saveSettings();
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), 'success' );
@@ -147,12 +147,12 @@ class ApiOptions extends ApiBase {
 	}
 
 	public function getDescription() {
-		return 'Change preferences of the current user';
+		return 'Change preferences of the current wiki_user';
 	}
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'notloggedin', 'info' => 'Anonymous users cannot change preferences' ),
+			array( 'code' => 'notloggedin', 'info' => 'Anonymous wiki_users cannot change preferences' ),
 			array( 'code' => 'nochanges', 'info' => 'No changes were requested' ),
 		) );
 	}
@@ -173,7 +173,7 @@ class ApiOptions extends ApiBase {
 		return array(
 			'api.php?action=options&reset=&token=123ABC',
 			'api.php?action=options&change=skin=vector|hideminor=1&token=123ABC',
-			'api.php?action=options&reset=&change=skin=monobook&optionname=nickname&optionvalue=[[User:Beau|Beau]]%20([[User_talk:Beau|talk]])&token=123ABC',
+			'api.php?action=options&reset=&change=skin=monobook&optionname=nickname&optionvalue=[[wiki_user:Beau|Beau]]%20([[wiki_user_talk:Beau|talk]])&token=123ABC',
 		);
 	}
 

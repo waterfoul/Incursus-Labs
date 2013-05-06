@@ -175,7 +175,7 @@ var SHint = function(input, style_prefix, fill_handler)
         sl.element._e_SHint = sl;
         sl.tip_div._t_SHint = sl;
         SHint.SHints.push(sl);
-        var msie = navigator.userAgent.match('MSIE') && !navigator.userAgent.match('Opera');
+        var msie = navigator.wiki_userAgent.match('MSIE') && !navigator.wiki_userAgent.match('Opera');
         if (msie)
             exAttach(e, 'keydown', sl.keypress);
         else

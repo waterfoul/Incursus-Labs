@@ -65,14 +65,14 @@ $messages = array(
 'newpage' => 'ሓዳስ ፅሑፍ',
 'jumptosearch' => 'ድሉይ',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'ብዛዕባ ዊኪፒዲያ ብጠቅላላ',
 'mainpage' => 'መበገሲ ገጽ',
 'mainpage-description' => 'መበገሲ ገጽ',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'ፅሑፍ',
-'nstab-user' => 'ናይ ፅሑፍ ኣባል',
+'nstab-wiki_user' => 'ናይ ፅሑፍ ኣባል',
 'nstab-project' => 'ናይ ፅሑፍ ፕሮጀክት',
 'nstab-image' => 'ምስሊ',
 
@@ -121,7 +121,7 @@ $messages = array(
 'imgfile' => 'ምስሊ',
 'listfiles' => 'ምስልታት',
 'listfiles_name' => 'ሽም',
-'listfiles_user' => 'ኣባል',
+'listfiles_wiki_user' => 'ኣባል',
 
 # File description page
 'file-anchor-link' => 'ምስሊ',
@@ -129,15 +129,15 @@ $messages = array(
 # Miscellaneous special pages
 'nbytes' => '$1 {{PLURAL:$1|ባይት|ባይታት}}',
 'longpages' => 'ነዋሕቲ ፅሑፋት',
-'listusers' => 'ኣባላት',
+'listwiki_users' => 'ኣባላት',
 'newpages' => 'ሓደሽቲ ዛዕባታት',
-'newpages-username' => 'ናይ ኣባል ሽም:',
+'newpages-wiki_username' => 'ናይ ኣባል ሽም:',
 
 # Book sources
 'booksources-go' => 'ኪድ',
 
 # Special:Log
-'specialloguserlabel' => 'ኣባል:',
+'speciallogwiki_userlabel' => 'ኣባል:',
 
 # Special:AllPages
 'alphaindexline' => '$1 ናብ $2',

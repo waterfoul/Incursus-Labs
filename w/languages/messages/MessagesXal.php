@@ -56,7 +56,7 @@ $namespaceAliases = array(
 $namespaceGenderAliases = array();
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Заалһиг татас татх:',
 'tog-justify' => 'Зүүл тегшлтн',
 'tog-hideminor' => 'Шидрә сольлһна сеткүлд баһ хүврлһиг бултулх',
@@ -80,7 +80,7 @@ $messages = array(
 'tog-previewonfirst' => 'Сольхла, хәләвр үзүлх.',
 'tog-nocache' => 'Халхин кешлһн браузерт унтрах',
 'tog-enotifwatchlistpages' => 'Шинҗлсн халх сольхла, нанд e-mail бичг йовулх',
-'tog-enotifusertalkpages' => 'Мини ухалвр халх сольхла, нанд e-mail бичг йовулх',
+'tog-enotifwiki_usertalkpages' => 'Мини ухалвр халх сольхла, нанд e-mail бичг йовулх',
 'tog-enotifminoredits' => 'Баһ сольлһн болв чигн болхла, нанд e-mail бичг йовулх',
 'tog-enotifrevealaddr' => 'Мини e-mail хайг зәңгллһнә бичгт үзүлх',
 'tog-shownumberswatching' => 'Тер халх шинҗлдг демнчнрин то үзүлх',
@@ -257,7 +257,7 @@ $messages = array(
 'talk' => 'Меткән',
 'views' => 'Хәләврүд',
 'toolbox' => 'Зер-зев',
-'userpage' => 'Демнчна халх үзх',
+'wiki_userpage' => 'Демнчна халх үзх',
 'projectpage' => 'Төсвин халх үзх',
 'imagepage' => 'Боомгин халх үзх',
 'mediawikipage' => 'Зәңгин халх үзх',
@@ -280,7 +280,7 @@ $messages = array(
 
 $1',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} тускар',
 'aboutpage' => 'Project:Тодлҗ бичлһн',
 'copyright' => 'Өггцн $1 йоста орҗ болм',
@@ -337,7 +337,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Зүүл',
-'nstab-user' => 'Демнч',
+'nstab-wiki_user' => 'Демнч',
 'nstab-media' => 'Аһарин халх',
 'nstab-special' => 'Көдлхнә халх',
 'nstab-project' => 'Төслин халх',
@@ -376,7 +376,7 @@ $1',
 Тер йовдл һарһсн халхна тууҗин өңгрсн заалһиг дахлһна арһ болад бәәнә.
 
 Эс гиҗ, тиим болх зөвтә, та заклһна теткүлин эндүһиг олв.
-Буйн болтха, URL заалһ бичәд, тер йовдлин туск [[Special:ListUsers/sysop|закрачд]] келтн.',
+Буйн болтха, URL заалһ бичәд, тер йовдлин туск [[Special:Listwiki_users/sysop|закрачд]] келтн.',
 'missingarticle-rev' => '($1 тойгта халхна янз)',
 'missingarticle-diff' => '(йилһән: $1, $2)',
 'internalerror' => 'Дотрнь эндү',
@@ -397,7 +397,7 @@ $1',
 # Login and logout pages
 'logouttext' => "'''Та һарад бәәнәт.'''
 
-Та {{SITENAME}} гидг ормиг нертә уга олзлҗ чаднат, аль та [[Special:UserLogin|дәкәд орҗ]] цацу аль талдан нертә чаднат.
+Та {{SITENAME}} гидг ормиг нертә уга олзлҗ чаднат, аль та [[Special:wiki_userLogin|дәкәд орҗ]] цацу аль талдан нертә чаднат.
 Зәрм халхс цааранднь та ода чигн орсн мет үзүлҗ чаддг тускар темдглтн (та хәләчин санлиг цеврлтл).",
 'welcomecreation' => '== Ирхитн эрҗәнәвидн, $1! ==
 Таднар шин бичгдлһн бүтв.
@@ -410,10 +410,10 @@ $1',
 'login' => 'Орлһн',
 'nav-login-createaccount' => 'Харһх / бичгдлһн кех',
 'loginprompt' => '{{SITENAME}} тал орлһна төлә, та «cookies» олзлдг кергтә.',
-'userlogin' => 'Орх аль бичгдлһиг бүтәх',
-'userloginnocreate' => 'Харһх',
+'wiki_userlogin' => 'Орх аль бичгдлһиг бүтәх',
+'wiki_userloginnocreate' => 'Харһх',
 'logout' => 'Һарх',
-'userlogout' => 'Һарх',
+'wiki_userlogout' => 'Һарх',
 'notloggedin' => 'Та орв биш',
 'nologin' => "Бичгдлһта уга? '''$1'''.",
 'nologinlink' => 'Бичгдлһиг бүтәх',
@@ -421,21 +421,21 @@ $1',
 'gotaccount' => "Бичгдлһтә? '''$1'''.",
 'gotaccountlink' => 'Харһтн',
 'createaccountmail' => 'электрона улаһар',
-'userexists' => 'Эн нер олзлдг юмн.
+'wiki_userexists' => 'Эн нер олзлдг юмн.
 Буйн болтха, талдан нернь автн.',
 'loginerror' => 'Орлһна эндү',
 'createaccounterror' => 'Бичгдлһиг бүтәх болшго: $1',
 'noname' => 'Та зөвтә демнчна нернь бичв уга.',
 'loginsuccesstitle' => 'Йовудта орлһн',
 'loginsuccess' => "''' Тадн ода «$1» нертә {{SITENAME}} гидг нерәдлһтә төсвд бәәнәт.'''",
-'nosuchuser' => '«$1» гидг нерәдлһтә демнч бәәшго.
+'nosuchwiki_user' => '«$1» гидг нерәдлһтә демнч бәәшго.
 Демнчна нерт баһ болн ик үзгүд әдл биш болна.
 «<nowiki>$1</nowiki>» гидг нерәдлһтә демнч бәәшго.
-Бичлһиг шүүтн аль [[Special:UserLogin/signup|бигчдлһиг бүтәтн]].',
-'nosuchusershort' => '«$1» гидг нерәдлһтә демнч бәәшго.
+Бичлһиг шүүтн аль [[Special:wiki_userLogin/signup|бигчдлһиг бүтәтн]].',
+'nosuchwiki_usershort' => '«$1» гидг нерәдлһтә демнч бәәшго.
 Бичлһиг шүүтн.',
-'nouserspecified' => 'Та демнчна нернь бичх йостав.',
-'login-userblocked' => 'Тер демнч бүслсн, харһад орҗ болшго бәәнә.',
+'nowiki_userspecified' => 'Та демнчна нернь бичх йостав.',
+'login-wiki_userblocked' => 'Тер демнч бүслсн, харһад орҗ болшго бәәнә.',
 'wrongpassword' => 'Та буру нууц үг бичв.
 Дәкәд арһ хәәтн.',
 'wrongpasswordempty' => 'Та хоосн нууц үгиг бичв.
@@ -497,11 +497,11 @@ $1',
 Та эн һазрт эндүһәр бәәхлә, '''Хәрү''' дарциг дартн.",
 'noarticletext' => "Эн халх хоосн. Та [[Special:Search/{{PAGENAME}}|эн нернә сананд орулһна хәәх]] , <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} бүртклин бичгт хәәх], аль '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} бүтәх]'''</span>.",
 'clearyourcache' => "'''Оньган өгтн:''' Кесн сольлһн үзхәр, тана хәләлгчин кеш цеврүлтн: '''Mozilla / Firefox''': ''Ctrl+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Safari''': ''Cmd+Shift+R'', '''Konqueror''': ''F5'', '''Opera''': ''Tools→Preferences'' менүһәс.",
-'usercssyoucanpreview' => "'''Селвг:''' тана шин CSS боомг шүүҗ хадһлар, «{{int:showpreview}}» товч олзлтн.",
-'userjsyoucanpreview' => "'''Селвг:''' тана шин JS боомг шүүҗ хадһлар, «{{int:showpreview}}» товч олзлтн.",
-'usercsspreview' => "'''Тана CSS боомгин мел хәләвр бәәдг тускар тодлтн, тер ода чигн хадһлсн уга!'''",
-'userjspreview' => "'''Тана JavaScript боомгин мел хәләвр бәәдг тускар тодлтн. Тана сольлһн ода чигн хадһлсн уга!'''",
-'userinvalidcssjstitle' => "'''Оньг өгтн:''' «$1» гидг нерәдлһтә хувцнь олҗ биш. Күүнә .css болн .js халхс һанцхн бичкн үзгүдтә бичсн кергтә, үлгүрнь «{{ns:user}}:Болвчн/vector.css»; «{{ns:user}}:Болвчн/Vector.css» - буру.",
+'wiki_usercssyoucanpreview' => "'''Селвг:''' тана шин CSS боомг шүүҗ хадһлар, «{{int:showpreview}}» товч олзлтн.",
+'wiki_userjsyoucanpreview' => "'''Селвг:''' тана шин JS боомг шүүҗ хадһлар, «{{int:showpreview}}» товч олзлтн.",
+'wiki_usercsspreview' => "'''Тана CSS боомгин мел хәләвр бәәдг тускар тодлтн, тер ода чигн хадһлсн уга!'''",
+'wiki_userjspreview' => "'''Тана JavaScript боомгин мел хәләвр бәәдг тускар тодлтн. Тана сольлһн ода чигн хадһлсн уга!'''",
+'wiki_userinvalidcssjstitle' => "'''Оньг өгтн:''' «$1» гидг нерәдлһтә хувцнь олҗ биш. Күүнә .css болн .js халхс һанцхн бичкн үзгүдтә бичсн кергтә, үлгүрнь «{{ns:wiki_user}}:Болвчн/vector.css»; «{{ns:wiki_user}}:Болвчн/Vector.css» - буру.",
 'updated' => '(Шинрүлсн)',
 'note' => "'''Аҗгллһн:'''",
 'previewnote' => "'''Эн мел хәләвр бәәдг тускар тодлтн.'''
@@ -509,7 +509,7 @@ $1',
 'previewconflict' => 'Тер хәләвр деегүрк чикллһнә теегт бәәдг бичг хадлһҗ бичсн мет үзүлнә.',
 'session_fail_preview' => "'''Гемим тәвтн, сервер тана сольлһта даңдад болв. Юнгад гихлә, тана харһлһна медүллһн геев.
 Буйн болтха, дәкәд арһ хәәтн.
-Тер эндү давтхла, [[Special:UserLogout|һартн]] тегәд бас харһтн.'''",
+Тер эндү давтхла, [[Special:wiki_userLogout|һартн]] тегәд бас харһтн.'''",
 'editing' => 'Чикллһн: $1',
 'editingsection' => '«$1» гидг халхна чикллһн (хүв)',
 'editconflict' => 'Чикллһнә керүл: $1',
@@ -616,7 +616,7 @@ $1',
 'mypreferences' => 'Көгүд',
 'prefs-edits' => 'Чикллһнә то:',
 'prefsnologin' => 'Та харһв биш',
-'prefsnologintext' => 'Та <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} харһх]</span> кергтә,  тегәд көгүдиг сольҗ чаднат.',
+'prefsnologintext' => 'Та <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} харһх]</span> кергтә,  тегәд көгүдиг сольҗ чаднат.',
 'changepassword' => 'Нууц үгиг сольҗ',
 'prefs-skin' => 'Хувцнь',
 'skin-preview' => 'Хәләвр',
@@ -662,7 +662,7 @@ $1',
 'prefs-custom-js' => 'Онц JS',
 'prefs-emailconfirm-label' => 'E-mail батлһн:',
 'youremail' => 'E-mail хайг:',
-'username' => 'Демнчна нер:',
+'wiki_username' => 'Демнчна нер:',
 'uid' => 'Демнчна тойг (ID):',
 'prefs-memberingroups' => '{{PLURAL:$1|Багин|Багдудин}} хүв:',
 'prefs-registration' => 'Темдглҗ  бүртклһнә цаг:',
@@ -688,31 +688,31 @@ $1',
 'prefs-advancedwatchlist' => 'Дәкәд көгүд',
 'prefs-diffs' => 'Йилһәс',
 
-# User rights
-'userrights-reason' => 'Учр:',
+# wiki_user rights
+'wiki_userrights-reason' => 'Учр:',
 
 # Groups
 'group' => 'Баг:',
-'group-user' => 'Демнчнр',
+'group-wiki_user' => 'Демнчнр',
 'group-autoconfirmed' => 'Эврә батлсн демнчнр',
 'group-bot' => 'Көдлврүд',
 'group-sysop' => 'Закрачуд',
 'group-bureaucrat' => 'Нойнчуд',
 'group-all' => '(цуг)',
 
-'group-user-member' => 'Демнч',
+'group-wiki_user-member' => 'Демнч',
 'group-autoconfirmed-member' => 'Эврә батлсн демнчнр',
 'group-bot-member' => 'Көдлвр',
 'group-sysop-member' => 'Закрач',
 'group-bureaucrat-member' => 'Нойнч',
 
-'grouppage-user' => '{{ns:project}}:Демнч',
+'grouppage-wiki_user' => '{{ns:project}}:Демнч',
 'grouppage-autoconfirmed' => '{{ns:project}}:Эврә батлсн демнчнр',
 'grouppage-bot' => '{{ns:project}}:Көдлврүд',
 'grouppage-sysop' => '{{ns:project}}:Закрачуд',
 'grouppage-bureaucrat' => '{{ns:project}}:Нойнчуд',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Демнчна зөвәнә сеткүл',
 'rightsnone' => '(уга)',
 
@@ -761,7 +761,7 @@ $1',
 # Upload
 'upload' => 'Боомгиг тәвх',
 'uploadbtn' => 'Боомгиг тәвх',
-'uploadnologintext' => 'Та [[Special:UserLogin|харһх]] кергтә.',
+'uploadnologintext' => 'Та [[Special:wiki_userLogin|харһх]] кергтә.',
 'uploaderror' => 'Тәвллһнә эндү',
 'uploadlogpage' => 'Тәвллһнә сеткүл',
 'filename' => 'Боомгна нернь',
@@ -779,7 +779,7 @@ $1',
 'listfiles' => 'Боомгин буулһавр',
 'listfiles_date' => 'Өдр',
 'listfiles_name' => 'Нернь',
-'listfiles_user' => 'Демнч',
+'listfiles_wiki_user' => 'Демнч',
 'listfiles_size' => 'Кемҗән',
 'listfiles_description' => 'Тодлҗ бичлһн',
 'listfiles_count' => 'Янзс',
@@ -794,7 +794,7 @@ $1',
 'filehist-datetime' => 'Өдр/цаг',
 'filehist-thumb' => 'Зураллһн',
 'filehist-thumbtext' => '$1 янзин зураллһн',
-'filehist-user' => 'Демнч',
+'filehist-wiki_user' => 'Демнч',
 'filehist-dimensions' => 'Юмна кир',
 'filehist-comment' => 'Аҗгллһн',
 'imagelinks' => 'Боомгд заалһуд',
@@ -810,7 +810,7 @@ $1',
 'statistics-header-pages' => 'Халхарн то бүрткл',
 'statistics-header-edits' => 'Сольлһна то бүрткл',
 'statistics-header-views' => 'Хәләврин то бүрткл',
-'statistics-header-users' => 'Демнчәрн то бүрткл',
+'statistics-header-wiki_users' => 'Демнчәрн то бүрткл',
 'statistics-articles' => 'Зүүлс',
 'statistics-pages' => 'Халхс',
 'statistics-pages-desc' => 'Цуг бикид бәәдг халхс, тер тоот меткән халхс, авч одлһн, болв нань чигн.',
@@ -819,9 +819,9 @@ $1',
 'statistics-edits-average' => 'Халхарн сольлһна то',
 'statistics-views-total' => 'Цуг хәләврин то',
 'statistics-views-peredit' => 'Сольлһарн хәләврин то',
-'statistics-users' => 'Бичгдлһтә [[Special:ListUsers|демнчнр]]',
-'statistics-users-active' => 'Үүлтә демнчнр',
-'statistics-users-active-desc' => '{{PLURAL:$1|$1 өдрт|$1 өдрмүдт|$1 өдрмүдт}} болв чигн үүл кесн демнчнр',
+'statistics-wiki_users' => 'Бичгдлһтә [[Special:Listwiki_users|демнчнр]]',
+'statistics-wiki_users-active' => 'Үүлтә демнчнр',
+'statistics-wiki_users-active-desc' => '{{PLURAL:$1|$1 өдрт|$1 өдрмүдт|$1 өдрмүдт}} болв чигн үүл кесн демнчнр',
 'statistics-mostpopular' => 'Маш хәләсн халхс',
 
 'brokenredirects-edit' => 'чиклх',
@@ -857,14 +857,14 @@ $1',
 # Special:LinkSearch
 'linksearch' => 'Һаза заалһуд',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Бичгдлһнә сеткүл',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Бичгдлһнә сеткүл',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(мөчүдин сеткүл)',
 
-# E-mail user
-'emailuser' => 'Энд E-mail йовулх',
+# E-mail wiki_user
+'emailwiki_user' => 'Энд E-mail йовулх',
 
 # Watchlist
 'watchlist' => 'Шинҗллһнә сеткүл',
@@ -981,7 +981,7 @@ $2 шидрә һарһлһна төлә хәләтн.',
 'sp-contributions-deleted' => 'һарһсн демнчна сольлһн',
 'sp-contributions-talk' => 'меткән',
 'sp-contributions-search' => 'Демнлһиг хәәлһн',
-'sp-contributions-username' => 'IP хайг аль нернь:',
+'sp-contributions-wiki_username' => 'IP хайг аль нернь:',
 'sp-contributions-submit' => 'Хәәлһн',
 
 # What links here
@@ -1002,7 +1002,7 @@ $2 шидрә һарһлһна төлә хәләтн.',
 
 # Block/unblock
 'blockip' => 'Демнчиг бүслх',
-'ipadressorusername' => 'IP хайг аль демнчна нернь:',
+'ipadressorwiki_username' => 'IP хайг аль демнчна нернь:',
 'ipbreason' => 'Учр:',
 'ipbreasonotherlist' => 'Талдан учр',
 'ipboptions' => '2 часуд:2 hours,1 өдр:1 day,3 өдрмүд:3 days,1 долан хонг:1 week,2 долан хонгуд:2 weeks,1 сар:1 month,3 сармуд:3 months,6 сармуд:6 months,1 җил:1 year,мөнк:infinite',
@@ -1063,7 +1063,7 @@ $2 шидрә һарһлһна төлә хәләтн.',
 'thumbnail-more' => 'Икдүлх',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Тана демнчна халх',
+'tooltip-pt-wiki_userpage' => 'Тана демнчна халх',
 'tooltip-pt-mytalk' => 'Тадна күндллһнә халх',
 'tooltip-pt-preferences' => 'Тана көгүд',
 'tooltip-pt-watchlist' => 'Халхс та шинҗлдг бәәнәт',
@@ -1098,13 +1098,13 @@ $2 шидрә һарһлһна төлә хәләтн.',
 'tooltip-feed-rss' => 'Эн халхна RSS зәңһллһн',
 'tooltip-feed-atom' => 'Эн халхна Atom зәңгллһн',
 'tooltip-t-contributions' => 'Эн демнчна өгүллһнә бүрткл үзүлх',
-'tooltip-t-emailuser' => 'Эн демнчд E-mail бичг йовулх',
+'tooltip-t-emailwiki_user' => 'Эн демнчд E-mail бичг йовулх',
 'tooltip-t-upload' => 'Зургиг, әгиг, болв нань чигн тәвх',
 'tooltip-t-specialpages' => 'Цуг көдлхнә халхс',
 'tooltip-t-print' => 'Эн халхна барин бәәдл',
 'tooltip-t-permalink' => 'Эн халхна янзд даңгин заалһ',
 'tooltip-ca-nstab-main' => 'Халхнь',
-'tooltip-ca-nstab-user' => 'Демнчна халхиг үзүлх',
+'tooltip-ca-nstab-wiki_user' => 'Демнчна халхиг үзүлх',
 'tooltip-ca-nstab-media' => 'Боомгин халх үзх',
 'tooltip-ca-nstab-special' => 'Эн көдлхнә халх. Та эниг чиклҗ чадхшв.',
 'tooltip-ca-nstab-project' => 'Төслин халх',
@@ -1255,7 +1255,7 @@ $2 шидрә һарһлһна төлә хәләтн.',
 'specialpages-group-login' => 'Харһх / бүртклх',
 'specialpages-group-changes' => 'Шидрә сольлһн болн сеткүлс',
 'specialpages-group-media' => 'Боомгин тооцан болн тәвлһн',
-'specialpages-group-users' => 'Демнчнр болн эрктн',
+'specialpages-group-wiki_users' => 'Демнчнр болн эрктн',
 'specialpages-group-highuse' => 'Күчтә олзлсн халхс',
 'specialpages-group-pages' => 'Халхин буулһавруд',
 'specialpages-group-pagetools' => 'Халхин зер-зев',

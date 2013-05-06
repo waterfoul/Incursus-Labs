@@ -114,14 +114,14 @@ $messages = array(
 'articlepage' => "Vede l'articulu",
 'talk' => 'Discussione',
 'toolbox' => 'Stuvigli',
-'userpage' => 'Vede a pagina di utilizatore',
+'wiki_userpage' => 'Vede a pagina di utilizatore',
 'otherlanguages' => 'In altri lingui',
 'lastmodifiedat' => 'Ultima mudifica di ista pagina u $1 à e $2.',
 'protectedpage' => 'Pagina prutetta',
 'jumptonavigation' => 'navigazione',
 'jumptosearch' => 'ricerca',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'À prupositu di {{SITENAME}}',
 'aboutpage' => 'Project:À prupositu',
 'currentevents' => 'Ultimi evenimenti',
@@ -148,7 +148,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Articulu',
-'nstab-user' => 'Utilizatore',
+'nstab-wiki_user' => 'Utilizatore',
 'nstab-image' => 'Schedariu',
 'nstab-mediawiki' => 'Messaghju',
 'nstab-template' => 'Mudellu',
@@ -165,9 +165,9 @@ $messages = array(
 'yourpasswordagain' => 'Scrive torna a parulla secreta:',
 'yourdomainname' => 'U to duminiu:',
 'login' => 'Cunnessione',
-'userlogin' => 'Cunnessione / Registramentu',
+'wiki_userlogin' => 'Cunnessione / Registramentu',
 'logout' => 'Scunnessione',
-'userlogout' => 'Scunnessione',
+'wiki_userlogout' => 'Scunnessione',
 'nologinlink' => 'Registramentu',
 'createaccount' => 'Registramentu',
 'gotaccountlink' => 'Cunnessione',
@@ -243,10 +243,10 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'yourvariant' => 'Variante',
 'yournick' => 'Signatura pè e discussioni:',
 
-# User rights
-'editinguser' => "Mudifica di '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-groupsmember' => 'Membru di:',
-'userrights-reason' => 'Mutivu:',
+# wiki_user rights
+'editingwiki_user' => "Mudifica di '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'wiki_userrights-groupsmember' => 'Membru di:',
+'wiki_userrights-reason' => 'Mutivu:',
 
 # Groups
 'group' => 'Gruppu:',
@@ -294,13 +294,13 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'imgfile' => 'schedariu',
 'listfiles_date' => 'Data',
 'listfiles_name' => 'Nome',
-'listfiles_user' => 'Utilizatore',
+'listfiles_wiki_user' => 'Utilizatore',
 
 # File description page
 'file-anchor-link' => 'Schedariu',
 'filehist' => "Cronolugia di l'imagine",
 'filehist-deleteone' => 'supprimà',
-'filehist-user' => 'Utilizatore',
+'filehist-wiki_user' => 'Utilizatore',
 'imagelinks' => 'Ligami',
 
 # File reversion
@@ -318,7 +318,7 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 
 # Statistics
 'statistics' => 'Statistiche',
-'statistics-header-users' => "Statistiche nant'à l'utilizatori",
+'statistics-header-wiki_users' => "Statistiche nant'à l'utilizatori",
 
 'brokenredirects-edit' => 'mudificà',
 
@@ -329,12 +329,12 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'shortpages' => 'Pagine corte',
 'longpages' => 'Pagine longhe',
 'protectedpages' => 'Pagine prutette',
-'listusers' => 'Listinu di i cuntributori',
+'listwiki_users' => 'Listinu di i cuntributori',
 'newpages' => 'Pagine nove',
 'ancientpages' => 'Pagine vechje',
 
 # Special:Log
-'specialloguserlabel' => 'Utilizatore:',
+'speciallogwiki_userlabel' => 'Utilizatore:',
 'speciallogtitlelabel' => 'Titulu:',
 'all-logs-page' => "Tutte l'azzioni",
 
@@ -358,10 +358,10 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'linksearch-ns' => 'Spaziu:',
 'linksearch-ok' => 'Ricerca',
 
-# Special:ListUsers
-'listusers-submit' => 'Mustrà',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Mustrà',
 
-# E-mail user
+# E-mail wiki_user
 'emailto' => 'À:',
 'emailsubject' => 'Sughjettu:',
 'emailmessage' => 'Messaghju:',
@@ -422,7 +422,7 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'istemplate' => 'inclusione',
 
 # Block/unblock
-'ipadressorusername' => 'Adrizzu IP o nome di cuntributore',
+'ipadressorwiki_username' => 'Adrizzu IP o nome di cuntributore',
 'ipbreason' => 'Mutivu:',
 'blocklist-reason' => 'Mutivu',
 'ipblocklist-submit' => 'Ricerca',
@@ -467,7 +467,7 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'import-logentry-upload-detail' => '$1 {{PLURAL:$1|revisione|revisione}}',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'A to pagina di utilizatore',
+'tooltip-pt-wiki_userpage' => 'A to pagina di utilizatore',
 'tooltip-pt-mytalk' => 'A to pagina di discussione',
 'tooltip-pt-preferences' => 'E to preferenze',
 'tooltip-pt-watchlist' => 'U listinu di e pagine chì seguiti',
@@ -479,7 +479,7 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'tooltip-p-logo' => 'Pagina maestra',
 'tooltip-n-mainpage' => 'Andà à a Pagina maestra',
 'tooltip-t-specialpages' => 'Listinu di tutte e pagine spiciale',
-'tooltip-ca-nstab-user' => 'Vede a pagina di utilizatore',
+'tooltip-ca-nstab-wiki_user' => 'Vede a pagina di utilizatore',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|Utilizatore anonimu|Utilizatori anonimi}} di {{SITENAME}}',
@@ -498,7 +498,7 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'exif-orientation' => 'Orientazione',
 'exif-imagedescription' => "Titulu di l'imagine",
 'exif-artist' => 'Autore',
-'exif-usercomment' => "Cummenti di l'utilizatore",
+'exif-wiki_usercomment' => "Cummenti di l'utilizatore",
 
 'exif-orientation-1' => 'Nurmale',
 

@@ -16,7 +16,7 @@
 $fallback = 'es';
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Sipita siqiraña',
 'tog-justify' => "Tanta amuyanak purapt'ayaña",
 'tog-hideminor' => 'Jichha jaqukipawina sullka askiptawix imantaña',
@@ -40,7 +40,7 @@ $messages = array(
 'tog-previewonfirst' => 'Mayïri askiptawina uñtawikar uñachayaña',
 'tog-nocache' => "Uñstawita kachiñar jark'aña",
 'tog-enotifwatchlistpages' => "Nayaru chaski jalayiriña ukja unch'ukit waruchatana mäuñstawi turkañäna",
-'tog-enotifusertalkpages' => 'Nayaru chaski jalayiriña ukja tuqisiwit uñstawija turkañäna',
+'tog-enotifwiki_usertalkpages' => 'Nayaru chaski jalayiriña ukja tuqisiwit uñstawija turkañäna',
 'tog-enotifminoredits' => 'Nayaru chaski jalayiriña uñstawina sullka askiptawimpiraki',
 'tog-enotifrevealaddr' => 'Yatiyawita chaski jalayirinakana chaski jalayirit untjäwija uñachayaña',
 'tog-shownumberswatching' => "Qawqha apnaqirinaka uñch'ukiskar uñacht'ayaña",
@@ -160,7 +160,7 @@ $messages = array(
 'jumptonavigation' => 'wampuña',
 'jumptosearch' => 'thaqaña',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Jichha pacha',
 'currentevents-url' => 'Project:Jichha pacha',
 'mainpage' => 'Nayriri Uñstawi',
@@ -180,7 +180,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Amtachinu',
-'nstab-user' => 'Apnaqiri',
+'nstab-wiki_user' => 'Apnaqiri',
 'nstab-image' => "Q'ipi",
 'nstab-help' => 'Yanapaña',
 'nstab-category' => 'Patawi',
@@ -190,9 +190,9 @@ $messages = array(
 
 # Login and logout pages
 'login' => "Qillqt'ayasiña",
-'userlogin' => "Qillqt'ayasiña",
+'wiki_userlogin' => "Qillqt'ayasiña",
 'logout' => 'Mistuña',
-'userlogout' => 'Mistuña',
+'wiki_userlogout' => 'Mistuña',
 'loginlanguagelabel' => 'Aru: $1',
 
 # Edit pages
@@ -220,12 +220,12 @@ $messages = array(
 
 # Special:ListFiles
 'listfiles_date' => 'Uru jakhu',
-'listfiles_user' => 'Apnaqiri',
+'listfiles_wiki_user' => 'Apnaqiri',
 'listfiles_description' => 'Uñt’ayawi',
 
 # File description page
 'file-anchor-link' => "Q'ipi",
-'filehist-user' => 'Apnaqiri',
+'filehist-wiki_user' => 'Apnaqiri',
 
 # Miscellaneous special pages
 'move' => 'Qillqaraña',
@@ -234,11 +234,11 @@ $messages = array(
 'booksources-go' => 'Saraña',
 
 # Special:Log
-'specialloguserlabel' => 'Apnaqiri:',
+'speciallogwiki_userlabel' => 'Apnaqiri:',
 'speciallogtitlelabel' => 'Titulu:',
 
-# Special:ListUsers
-'listusers-submit' => 'Uñachayaña',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Uñachayaña',
 
 # Watchlist
 'watch' => 'Uñjaña',

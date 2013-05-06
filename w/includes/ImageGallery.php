@@ -217,7 +217,7 @@ class ImageGallery {
 	 * Set arbitrary attributes to go on the HTML gallery output element.
 	 * Should be suitable for a <ul> element.
 	 *
-	 * Note -- if taking from user input, you should probably run through
+	 * Note -- if taking from wiki_user input, you should probably run through
 	 * Sanitizer::validateAttributes() first.
 	 *
 	 * @param $attribs Array of HTML attribute pairs
@@ -332,7 +332,7 @@ class ImageGallery {
 			}
 
 			//TODO
-			// $linkTarget = Title::newFromText( $wgContLang->getNsText( MWNamespace::getUser() ) . ":{$ut}" );
+			// $linkTarget = Title::newFromText( $wgContLang->getNsText( MWNamespace::getwiki_user() ) . ":{$ut}" );
 			// $ul = Linker::link( $linkTarget, $ut );
 
 			if( $this->mShowBytes ) {

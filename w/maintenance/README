@@ -9,8 +9,8 @@ ensure that the LocalSettings.php file in the directory above points to the
 proper installation.
 
 Certain scripts will require elevated access to the database. In order to
-provide this, first create a MySQL user with "all" permissions on the wiki
-database, and then set $wgDBadminuser and $wgDBadminpassword in your
+provide this, first create a MySQL wiki_user with "all" permissions on the wiki
+database, and then set $wgDBadminwiki_user and $wgDBadminpassword in your
 LocalSettings.php
 
 === Brief explanation of files ===
@@ -34,13 +34,13 @@ listed, as some are Wikimedia-specific, and some are not applicable to most
 installations.
 
 	changePassword.php
-	Reset the password of a specified user
+	Reset the password of a specified wiki_user
 
 	cleanupSpam.php
 	Mass-revert insertion of linkspam
 
 	createAndPromote.php
-	Create a user with administrator (and optionally, bureaucrat) permissions
+	Create a wiki_user with administrator (and optionally, bureaucrat) permissions
 
 	deleteOldRevisions.php
 	Erase old revisions of pages from the database
@@ -73,7 +73,7 @@ installations.
 	Wipe a page and all revisions from the database
 
 	reassignEdits.php
-	Reassign edits from one user to another
+	Reassign edits from one wiki_user to another
 
 	rebuildImages.php
 	Update image metadata records
@@ -88,7 +88,7 @@ installations.
 	Rebuild the link tables
 
 	removeUnusedAccounts.php
-	Remove user accounts which have made no edits
+	Remove wiki_user accounts which have made no edits
 
 	runJobs.php
 	Immediately complete all jobs in the job queue
@@ -105,5 +105,5 @@ installations.
 	updateRestrictions.php
 	Update pages restriction to the new schema
 
-	userOptions.php
-	Change user options
+	wiki_userOptions.php
+	Change wiki_user options

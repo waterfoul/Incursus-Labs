@@ -40,7 +40,7 @@ class MysqlUpdater extends DatabaseUpdater {
 			array( 'addField', 'recentchanges', 'rc_type',          'patch-rc_type.sql' ),
 
 			// 1.3
-			array( 'addField', 'user',          'user_real_name',   'patch-user-realname.sql' ),
+			array( 'addField', 'wiki_user',          'wiki_user_real_name',   'patch-wiki_user-realname.sql' ),
 			array( 'addTable', 'querycache',                        'patch-querycache.sql' ),
 			array( 'addTable', 'objectcache',                       'patch-objectcache.sql' ),
 			array( 'addTable', 'categorylinks',                     'patch-categorylinks.sql' ),
@@ -53,10 +53,10 @@ class MysqlUpdater extends DatabaseUpdater {
 			array( 'addField', 'recentchanges', 'rc_id',            'patch-rc_id.sql' ),
 			array( 'addField', 'recentchanges', 'rc_patrolled',     'patch-rc-patrol.sql' ),
 			array( 'addTable', 'logging',                           'patch-logging.sql' ),
-			array( 'addField', 'user',          'user_token',       'patch-user_token.sql' ),
+			array( 'addField', 'wiki_user',          'wiki_user_token',       'patch-wiki_user_token.sql' ),
 			array( 'addField', 'watchlist',     'wl_notificationtimestamp', 'patch-email-notification.sql' ),
 			array( 'doWatchlistUpdate' ),
-			array( 'dropField', 'user',         'user_emailauthenticationtimestamp', 'patch-email-authentication.sql' ),
+			array( 'dropField', 'wiki_user',         'wiki_user_emailauthenticationtimestamp', 'patch-email-authentication.sql' ),
 
 			// 1.5
 			array( 'doSchemaRestructuring' ),
@@ -69,16 +69,16 @@ class MysqlUpdater extends DatabaseUpdater {
 			array( 'addField', 'revision',      'rev_deleted',      'patch-rev_deleted.sql' ),
 			array( 'addField', 'image',         'img_width',        'patch-img_width.sql' ),
 			array( 'addField', 'image',         'img_metadata',     'patch-img_metadata.sql' ),
-			array( 'addField', 'user',          'user_email_token', 'patch-user_email_token.sql' ),
+			array( 'addField', 'wiki_user',          'wiki_user_email_token', 'patch-wiki_user_email_token.sql' ),
 			array( 'addField', 'archive',       'ar_text_id',       'patch-archive-text_id.sql' ),
 			array( 'doNamespaceSize' ),
 			array( 'addField', 'image',         'img_media_type',   'patch-img_media_type.sql' ),
 			array( 'doPagelinksUpdate' ),
 			array( 'dropField', 'image',        'img_type',         'patch-drop_img_type.sql' ),
-			array( 'doUserUniqueUpdate' ),
-			array( 'doUserGroupsUpdate' ),
+			array( 'dowiki_userUniqueUpdate' ),
+			array( 'dowiki_userGroupsUpdate' ),
 			array( 'addField', 'site_stats',    'ss_total_pages',   'patch-ss_total_articles.sql' ),
-			array( 'addTable', 'user_newtalk',                      'patch-usernewtalk2.sql' ),
+			array( 'addTable', 'wiki_user_newtalk',                      'patch-wiki_usernewtalk2.sql' ),
 			array( 'addTable', 'transcache',                        'patch-transcache.sql' ),
 			array( 'addField', 'interwiki',     'iw_trans',         'patch-interwiki-trans.sql' ),
 
@@ -87,7 +87,7 @@ class MysqlUpdater extends DatabaseUpdater {
 			array( 'addIndex', 'logging',         'times',            'patch-logging-times-index.sql' ),
 			array( 'addField', 'ipblocks',        'ipb_range_start',  'patch-ipb_range_start.sql' ),
 			array( 'doPageRandomUpdate' ),
-			array( 'addField', 'user',            'user_registration', 'patch-user_registration.sql' ),
+			array( 'addField', 'wiki_user',            'wiki_user_registration', 'patch-wiki_user_registration.sql' ),
 			array( 'doTemplatelinksUpdate' ),
 			array( 'addTable', 'externallinks',                       'patch-externallinks.sql' ),
 			array( 'addTable', 'job',                                 'patch-job.sql' ),
@@ -96,17 +96,17 @@ class MysqlUpdater extends DatabaseUpdater {
 			array( 'addTable', 'querycache_info',                     'patch-querycacheinfo.sql' ),
 			array( 'addTable', 'filearchive',                         'patch-filearchive.sql' ),
 			array( 'addField', 'ipblocks',        'ipb_anon_only',    'patch-ipb_anon_only.sql' ),
-			array( 'addIndex', 'recentchanges',   'rc_ns_usertext',   'patch-recentchanges-utindex.sql' ),
-			array( 'addIndex', 'recentchanges',   'rc_user_text',     'patch-rc_user_text-index.sql' ),
+			array( 'addIndex', 'recentchanges',   'rc_ns_wiki_usertext',   'patch-recentchanges-utindex.sql' ),
+			array( 'addIndex', 'recentchanges',   'rc_wiki_user_text',     'patch-rc_wiki_user_text-index.sql' ),
 
 			// 1.9
-			array( 'addField', 'user',          'user_newpass_time', 'patch-user_newpass_time.sql' ),
+			array( 'addField', 'wiki_user',          'wiki_user_newpass_time', 'patch-wiki_user_newpass_time.sql' ),
 			array( 'addTable', 'redirect',                           'patch-redirect.sql' ),
 			array( 'addTable', 'querycachetwo',                      'patch-querycachetwo.sql' ),
 			array( 'addField', 'ipblocks',      'ipb_enable_autoblock', 'patch-ipb_optional_autoblock.sql' ),
 			array( 'doBacklinkingIndicesUpdate' ),
 			array( 'addField', 'recentchanges', 'rc_old_len',        'patch-rc_len.sql' ),
-			array( 'addField', 'user',          'user_editcount',    'patch-user_editcount.sql' ),
+			array( 'addField', 'wiki_user',          'wiki_user_editcount',    'patch-wiki_user_editcount.sql' ),
 
 			// 1.10
 			array( 'doRestrictionsUpdate' ),
@@ -125,9 +125,9 @@ class MysqlUpdater extends DatabaseUpdater {
 			array( 'addField', 'ipblocks',      'ipb_block_email',  'patch-ipb_emailban.sql' ),
 			array( 'doCategorylinksIndicesUpdate' ),
 			array( 'addField', 'oldimage',      'oi_metadata',      'patch-oi_metadata.sql' ),
-			array( 'addIndex', 'archive',       'usertext_timestamp', 'patch-archive-user-index.sql' ),
-			array( 'addIndex', 'image',         'img_usertext_timestamp', 'patch-image-user-index.sql' ),
-			array( 'addIndex', 'oldimage',      'oi_usertext_timestamp', 'patch-oldimage-user-index.sql' ),
+			array( 'addIndex', 'archive',       'wiki_usertext_timestamp', 'patch-archive-wiki_user-index.sql' ),
+			array( 'addIndex', 'image',         'img_wiki_usertext_timestamp', 'patch-image-wiki_user-index.sql' ),
+			array( 'addIndex', 'oldimage',      'oi_wiki_usertext_timestamp', 'patch-oldimage-wiki_user-index.sql' ),
 			array( 'addField', 'archive',       'ar_page_id',       'patch-archive-page_id.sql' ),
 			array( 'addField', 'image',         'img_sha1',         'patch-img_sha1.sql' ),
 
@@ -141,16 +141,16 @@ class MysqlUpdater extends DatabaseUpdater {
 			array( 'addTable', 'category',                          'patch-category.sql' ),
 			array( 'doCategoryPopulation' ),
 			array( 'addField', 'archive',       'ar_parent_id',     'patch-ar_parent_id.sql' ),
-			array( 'addField', 'user_newtalk',  'user_last_timestamp', 'patch-user_last_timestamp.sql' ),
+			array( 'addField', 'wiki_user_newtalk',  'wiki_user_last_timestamp', 'patch-wiki_user_last_timestamp.sql' ),
 			array( 'doPopulateParentId' ),
 			array( 'checkBin', 'protected_titles', 'pt_title',      'patch-pt_title-encoding.sql', ),
 			array( 'doMaybeProfilingMemoryUpdate' ),
 			array( 'doFilearchiveIndicesUpdate' ),
 
 			// 1.14
-			array( 'addField', 'site_stats',    'ss_active_users',  'patch-ss_active_users.sql' ),
-			array( 'doActiveUsersInit' ),
-			array( 'addField', 'ipblocks',      'ipb_allow_usertalk', 'patch-ipb_allow_usertalk.sql' ),
+			array( 'addField', 'site_stats',    'ss_active_wiki_users',  'patch-ss_active_wiki_users.sql' ),
+			array( 'doActivewiki_usersInit' ),
+			array( 'addField', 'ipblocks',      'ipb_allow_wiki_usertalk', 'patch-ipb_allow_wiki_usertalk.sql' ),
 
 			// 1.15
 			array( 'doUniquePlTlIl' ),
@@ -159,13 +159,13 @@ class MysqlUpdater extends DatabaseUpdater {
 			array( 'addTable', 'valid_tag',                         'patch-change_tag.sql' ),
 
 			// 1.16
-			array( 'addTable', 'user_properties',                   'patch-user_properties.sql' ),
+			array( 'addTable', 'wiki_user_properties',                   'patch-wiki_user_properties.sql' ),
 			array( 'addTable', 'log_search',                        'patch-log_search.sql' ),
-			array( 'addField', 'logging',       'log_user_text',    'patch-log_user_text.sql' ),
-			array( 'doLogUsertextPopulation' ), # listed separately from the previous update because 1.16 was released without this update
+			array( 'addField', 'logging',       'log_wiki_user_text',    'patch-log_wiki_user_text.sql' ),
+			array( 'doLogwiki_usertextPopulation' ), # listed separately from the previous update because 1.16 was released without this update
 			array( 'doLogSearchPopulation' ),
 			array( 'addTable', 'l10n_cache',                        'patch-l10n_cache.sql' ),
-			array( 'addTable', 'external_user',                     'patch-external_user.sql' ),
+			array( 'addTable', 'external_wiki_user',                     'patch-external_wiki_user.sql' ),
 			array( 'addIndex', 'log_search',    'ls_field_val',     'patch-log_search-rename-index.sql' ),
 			array( 'addIndex', 'change_tag',    'change_tag_rc_tag', 'patch-change_tag-indexes.sql' ),
 			array( 'addField', 'redirect',      'rd_interwiki',     'patch-rd_interwiki.sql' ),
@@ -190,26 +190,26 @@ class MysqlUpdater extends DatabaseUpdater {
 			array( 'doLangLinksLengthUpdate' ),
 
 			// 1.18
-			array( 'doUserNewTalkTimestampNotNull' ),
-			array( 'addIndex', 'user',          'user_email',       'patch-user_email_index.sql' ),
-			array( 'modifyField', 'user_properties', 'up_property', 'patch-up_property.sql' ),
+			array( 'dowiki_userNewTalkTimestampNotNull' ),
+			array( 'addIndex', 'wiki_user',          'wiki_user_email',       'patch-wiki_user_email_index.sql' ),
+			array( 'modifyField', 'wiki_user_properties', 'up_property', 'patch-up_property.sql' ),
 			array( 'addTable', 'uploadstash',                       'patch-uploadstash.sql' ),
-			array( 'addTable', 'user_former_groups',                'patch-user_former_groups.sql'),
+			array( 'addTable', 'wiki_user_former_groups',                'patch-wiki_user_former_groups.sql'),
 
 			// 1.19
 			array( 'addIndex', 'logging',       'type_action',      'patch-logging-type-action-index.sql'),
-			array( 'doMigrateUserOptions' ),
-			array( 'dropField', 'user',         'user_options', 'patch-drop-user_options.sql' ),
+			array( 'doMigratewiki_userOptions' ),
+			array( 'dropField', 'wiki_user',         'wiki_user_options', 'patch-drop-wiki_user_options.sql' ),
 			array( 'addField', 'revision',      'rev_sha1',         'patch-rev_sha1.sql' ),
 			array( 'addField', 'archive',       'ar_sha1',          'patch-ar_sha1.sql' ),
 			array( 'addIndex', 'page', 'page_redirect_namespace_len', 'patch-page_redirect_namespace_len.sql' ),
-			array( 'modifyField', 'user_groups', 'ug_group', 'patch-ug_group-length-increase.sql' ),
+			array( 'modifyField', 'wiki_user_groups', 'ug_group', 'patch-ug_group-length-increase.sql' ),
 			array( 'addField',	'uploadstash',	'us_chunk_inx',		'patch-uploadstash_chunk.sql' ),
 			array( 'addfield', 'job',           'job_timestamp',    'patch-jobs-add-timestamp.sql' ),
-			array( 'modifyField', 'user_former_groups', 'ufg_group', 'patch-ufg_group-length-increase.sql' ),
+			array( 'modifyField', 'wiki_user_former_groups', 'ufg_group', 'patch-ufg_group-length-increase.sql' ),
 
 			// 1.20
-			array( 'addIndex', 'revision', 'page_user_timestamp', 'patch-revision-user-page-index.sql' ),
+			array( 'addIndex', 'revision', 'page_wiki_user_timestamp', 'patch-revision-wiki_user-page-index.sql' ),
 			array( 'addField', 'ipblocks',      'ipb_parent_block_id',           'patch-ipb-parent-block-id.sql' ),
 			array( 'addIndex', 'ipblocks',      'ipb_parent_block_id',           'patch-ipb-parent-block-id-index.sql' ),
 			array( 'dropField', 'category',     'cat_hidden',       'patch-cat_hidden.sql' ),
@@ -320,7 +320,7 @@ class MysqlUpdater extends DatabaseUpdater {
 		$this->output( "Adding missing watchlist talk page rows... " );
 		$this->db->insertSelect( 'watchlist', 'watchlist',
 			array(
-				'wl_user' => 'wl_user',
+				'wl_wiki_user' => 'wl_wiki_user',
 				'wl_namespace' => 'wl_namespace | 1',
 				'wl_title' => 'wl_title',
 				'wl_notificationtimestamp' => 'wl_notificationtimestamp'
@@ -421,8 +421,8 @@ class MysqlUpdater extends DatabaseUpdater {
 			rev_id int(8) unsigned NOT NULL auto_increment,
 			rev_page int(8) unsigned NOT NULL,
 			rev_comment tinyblob NOT NULL,
-			rev_user int(5) unsigned NOT NULL default '0',
-			rev_user_text varchar(255) binary NOT NULL default '',
+			rev_wiki_user int(5) unsigned NOT NULL default '0',
+			rev_wiki_user_text varchar(255) binary NOT NULL default '',
 			rev_timestamp char(14) binary NOT NULL default '',
 			rev_minor_edit tinyint(1) unsigned NOT NULL default '0',
 			rev_deleted tinyint(1) unsigned NOT NULL default '0',
@@ -432,8 +432,8 @@ class MysqlUpdater extends DatabaseUpdater {
 			UNIQUE INDEX rev_id (rev_id),
 			INDEX rev_timestamp (rev_timestamp),
 			INDEX page_timestamp (rev_page,rev_timestamp),
-			INDEX user_timestamp (rev_user,rev_timestamp),
-			INDEX usertext_timestamp (rev_user_text,rev_timestamp)
+			INDEX wiki_user_timestamp (rev_wiki_user,rev_timestamp),
+			INDEX wiki_usertext_timestamp (rev_wiki_user_text,rev_timestamp)
 			) ENGINE=InnoDB", __METHOD__ );
 
 		$this->output( wfTimestamp( TS_DB ) );
@@ -459,16 +459,16 @@ class MysqlUpdater extends DatabaseUpdater {
 			$cur_text = 'cur_text';
 			$cur_flags = "''";
 		}
-		$this->db->query( "INSERT INTO $old (old_namespace, old_title, old_text, old_comment, old_user, old_user_text,
+		$this->db->query( "INSERT INTO $old (old_namespace, old_title, old_text, old_comment, old_wiki_user, old_wiki_user_text,
 					old_timestamp, old_minor_edit, old_flags)
-			SELECT cur_namespace, cur_title, $cur_text, cur_comment, cur_user, cur_user_text, cur_timestamp, cur_minor_edit, $cur_flags
+			SELECT cur_namespace, cur_title, $cur_text, cur_comment, cur_wiki_user, cur_wiki_user_text, cur_timestamp, cur_minor_edit, $cur_flags
 			FROM $cur", __METHOD__ );
 
 		$this->output( wfTimestamp( TS_DB ) );
 		$this->output( "......Setting up revision table.\n" );
-		$this->db->query( "INSERT INTO $revision (rev_id, rev_page, rev_comment, rev_user, rev_user_text, rev_timestamp,
+		$this->db->query( "INSERT INTO $revision (rev_id, rev_page, rev_comment, rev_wiki_user, rev_wiki_user_text, rev_timestamp,
 				rev_minor_edit)
-			SELECT old_id, cur_id, old_comment, old_user, old_user_text,
+			SELECT old_id, cur_id, old_comment, old_wiki_user, old_wiki_user_text,
 				old_timestamp, old_minor_edit
 			FROM $old,$cur WHERE old_namespace=cur_namespace AND old_title=cur_title", __METHOD__ );
 
@@ -551,57 +551,57 @@ class MysqlUpdater extends DatabaseUpdater {
 		}
 	}
 
-	protected function doUserUniqueUpdate() {
-		$duper = new UserDupes( $this->db, array( $this, 'output' ) );
+	protected function dowiki_userUniqueUpdate() {
+		$duper = new wiki_userDupes( $this->db, array( $this, 'output' ) );
 		if ( $duper->hasUniqueIndex() ) {
-			$this->output( "...already have unique user_name index.\n" );
+			$this->output( "...already have unique wiki_user_name index.\n" );
 			return;
 		}
 
 		if ( !$duper->clearDupes() ) {
 			$this->output( "WARNING: This next step will probably fail due to unfixed duplicates...\n" );
 		}
-		$this->applyPatch( 'patch-user_nameindex.sql', false, "Adding unique index on user_name" );
+		$this->applyPatch( 'patch-wiki_user_nameindex.sql', false, "Adding unique index on wiki_user_name" );
 	}
 
-	protected function doUserGroupsUpdate() {
-		if ( $this->db->tableExists( 'user_groups', __METHOD__ ) ) {
-			$info = $this->db->fieldInfo( 'user_groups', 'ug_group' );
+	protected function dowiki_userGroupsUpdate() {
+		if ( $this->db->tableExists( 'wiki_user_groups', __METHOD__ ) ) {
+			$info = $this->db->fieldInfo( 'wiki_user_groups', 'ug_group' );
 			if ( $info->type() == 'int' ) {
-				$oldug = $this->db->tableName( 'user_groups' );
-				$newug = $this->db->tableName( 'user_groups_bogus' );
-				$this->output( "user_groups table exists but is in bogus intermediate format. Renaming to $newug... " );
+				$oldug = $this->db->tableName( 'wiki_user_groups' );
+				$newug = $this->db->tableName( 'wiki_user_groups_bogus' );
+				$this->output( "wiki_user_groups table exists but is in bogus intermediate format. Renaming to $newug... " );
 				$this->db->query( "ALTER TABLE $oldug RENAME TO $newug", __METHOD__ );
 				$this->output( "done.\n" );
 
-				$this->applyPatch( 'patch-user_groups.sql', false, "Re-adding fresh user_groups table" );
+				$this->applyPatch( 'patch-wiki_user_groups.sql', false, "Re-adding fresh wiki_user_groups table" );
 
 				$this->output( "***\n" );
-				$this->output( "*** WARNING: You will need to manually fix up user permissions in the user_groups\n" );
+				$this->output( "*** WARNING: You will need to manually fix up wiki_user permissions in the wiki_user_groups\n" );
 				$this->output( "*** table. Old 1.5 alpha versions did some pretty funky stuff...\n" );
 				$this->output( "***\n" );
 			} else {
-				$this->output( "...user_groups table exists and is in current format.\n" );
+				$this->output( "...wiki_user_groups table exists and is in current format.\n" );
 			}
 			return;
 		}
 
-		$this->applyPatch( 'patch-user_groups.sql', false, "Adding user_groups table" );
+		$this->applyPatch( 'patch-wiki_user_groups.sql', false, "Adding wiki_user_groups table" );
 
-		if ( !$this->db->tableExists( 'user_rights', __METHOD__ ) ) {
-			if ( $this->db->fieldExists( 'user', 'user_rights', __METHOD__ ) ) {
-				$this->db->applyPatch( 'patch-user_rights.sql', false, "Upgrading from a 1.3 or older database? Breaking out user_rights for conversion" );
+		if ( !$this->db->tableExists( 'wiki_user_rights', __METHOD__ ) ) {
+			if ( $this->db->fieldExists( 'wiki_user', 'wiki_user_rights', __METHOD__ ) ) {
+				$this->db->applyPatch( 'patch-wiki_user_rights.sql', false, "Upgrading from a 1.3 or older database? Breaking out wiki_user_rights for conversion" );
 			} else {
-				$this->output( "*** WARNING: couldn't locate user_rights table or field for upgrade.\n" );
+				$this->output( "*** WARNING: couldn't locate wiki_user_rights table or field for upgrade.\n" );
 				$this->output( "*** You may need to manually configure some sysops by manipulating\n" );
-				$this->output( "*** the user_groups table.\n" );
+				$this->output( "*** the wiki_user_groups table.\n" );
 				return;
 			}
 		}
 
-		$this->output( "Converting user_rights table to user_groups... " );
-		$result = $this->db->select( 'user_rights',
-			array( 'ur_user', 'ur_rights' ),
+		$this->output( "Converting wiki_user_rights table to wiki_user_groups... " );
+		$result = $this->db->select( 'wiki_user_rights',
+			array( 'ur_wiki_user', 'ur_rights' ),
 			array( "ur_rights != ''" ),
 			__METHOD__ );
 
@@ -611,9 +611,9 @@ class MysqlUpdater extends DatabaseUpdater {
 					explode( ',', $row->ur_rights ) ) );
 
 			foreach ( $groups as $group ) {
-				$this->db->insert( 'user_groups',
+				$this->db->insert( 'wiki_user_groups',
 					array(
-						'ug_user'  => $row->ur_user,
+						'ug_wiki_user'  => $row->ur_wiki_user,
 						'ug_group' => $group ),
 					__METHOD__ );
 			}
@@ -770,9 +770,9 @@ class MysqlUpdater extends DatabaseUpdater {
 	}
 
 	protected function doFilearchiveIndicesUpdate() {
-		$info = $this->db->indexInfo( 'filearchive', 'fa_user_timestamp', __METHOD__ );
+		$info = $this->db->indexInfo( 'filearchive', 'fa_wiki_user_timestamp', __METHOD__ );
 		if ( !$info ) {
-			$this->applyPatch( 'patch-filearchive-user-index.sql', false, "Updating filearchive indices" );
+			$this->applyPatch( 'patch-filearchive-wiki_user-index.sql', false, "Updating filearchive indices" );
 		}
 	}
 
@@ -787,7 +787,7 @@ class MysqlUpdater extends DatabaseUpdater {
 	}
 
 	protected function renameEuWikiId() {
-		if ( $this->db->fieldExists( 'external_user', 'eu_local_id', __METHOD__ ) ) {
+		if ( $this->db->fieldExists( 'external_wiki_user', 'eu_local_id', __METHOD__ ) ) {
 			$this->output( "...eu_wiki_id already renamed to eu_local_id.\n" );
 			return;
 		}
@@ -825,13 +825,13 @@ class MysqlUpdater extends DatabaseUpdater {
 		}
 	}
 
-	protected function doUserNewTalkTimestampNotNull() {
-		$info = $this->db->fieldInfo( 'user_newtalk', 'user_last_timestamp' );
+	protected function dowiki_userNewTalkTimestampNotNull() {
+		$info = $this->db->fieldInfo( 'wiki_user_newtalk', 'wiki_user_last_timestamp' );
 		if ( $info->isNullable() ) {
-			$this->output( "...user_last_timestamp is already nullable.\n" );
+			$this->output( "...wiki_user_last_timestamp is already nullable.\n" );
 			return;
 		}
 
-		$this->applyPatch( 'patch-user-newtalk-timestamp-null.sql', false, "Making user_last_timestamp nullable" );
+		$this->applyPatch( 'patch-wiki_user-newtalk-timestamp-null.sql', false, "Making wiki_user_last_timestamp nullable" );
 	}
 }

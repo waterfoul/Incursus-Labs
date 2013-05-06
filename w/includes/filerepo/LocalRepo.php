@@ -43,9 +43,9 @@ class LocalRepo extends FileRepo {
 	 */
 	function newFileFromRow( $row ) {
 		if ( isset( $row->img_name ) ) {
-			return call_user_func( $this->fileFromRowFactory, $row, $this );
+			return call_wiki_user_func( $this->fileFromRowFactory, $row, $this );
 		} elseif ( isset( $row->oi_name ) ) {
-			return call_user_func( $this->oldFileFromRowFactory, $row, $this );
+			return call_wiki_user_func( $this->oldFileFromRowFactory, $row, $this );
 		} else {
 			throw new MWException( __METHOD__.': invalid row' );
 		}
@@ -73,13 +73,13 @@ class LocalRepo extends FileRepo {
 	function cleanupDeletedBatch( array $storageKeys ) {
 		$backend = $this->backend; // convenience
 		$root = $this->getZonePath( 'deleted' );
-		$dbw = $this->getMasterDB();
+		w = $this->getMasterDB();
 		$status = $this->newGood();
 		$storageKeys = array_unique( $storageKeys );
 		foreach ( $storageKeys as $key ) {
 			$hashPath = $this->getDeletedHashPath( $key );
 			$path = "$root/$hashPath$key";
-			$dbw->begin( __METHOD__ );
+			w->begin( __METHOD__ );
 			// Check for usage in deleted/hidden files and pre-emptively
 			// lock the key to avoid any future use until we are finished.
 			$deleted = $this->deletedFileHasKey( $key, 'lock' );
@@ -95,7 +95,7 @@ class LocalRepo extends FileRepo {
 				wfDebug( __METHOD__ . ": $key still in use\n" );
 				$status->successCount++;
 			}
-			$dbw->commit( __METHOD__ );
+			w->commit( __METHOD__ );
 		}
 		return $status;
 	}
@@ -110,8 +110,8 @@ class LocalRepo extends FileRepo {
 	protected function deletedFileHasKey( $key, $lock = null ) {
 		$options = ( $lock === 'lock' ) ? array( 'FOR UPDATE' ) : array();
 
-		$dbw = $this->getMasterDB();
-		return (bool)$dbw->selectField( 'filearchive', '1',
+		w = $this->getMasterDB();
+		return (bool)w->selectField( 'filearchive', '1',
 			array( 'fa_storage_group' => 'deleted', 'fa_storage_key' => $key ),
 			__METHOD__, $options
 		);
@@ -130,11 +130,11 @@ class LocalRepo extends FileRepo {
 		$sha1 = self::getHashFromKey( $key );
 		$ext = File::normalizeExtension( substr( $key, strcspn( $key, '.' ) + 1 ) );
 
-		$dbw = $this->getMasterDB();
-		return (bool)$dbw->selectField( 'oldimage', '1',
+		w = $this->getMasterDB();
+		return (bool)w->selectField( 'oldimage', '1',
 			array( 'oi_sha1' => $sha1,
-				'oi_archive_name ' . $dbw->buildLike( $dbw->anyString(), ".$ext" ),
-				$dbw->bitAnd( 'oi_deleted', File::DELETED_FILE ) => File::DELETED_FILE ),
+				'oi_archive_name ' . w->buildLike( w->anyString(), ".$ext" ),
+				w->bitAnd( 'oi_deleted', File::DELETED_FILE ) => File::DELETED_FILE ),
 			__METHOD__, $options
 		);
 	}
@@ -180,8 +180,8 @@ class LocalRepo extends FileRepo {
 			$wgMemc->set( $memcKey, " ", $expiry );
 			return false;
 		}
-		$dbr = $this->getSlaveDB();
-		$row = $dbr->selectRow(
+		r = $this->getSlaveDB();
+		$row = r->selectRow(
 			'redirect',
 			array( 'rd_title', 'rd_namespace' ),
 			array( 'rd_from' => $id ),
@@ -209,8 +209,8 @@ class LocalRepo extends FileRepo {
 		if( !$title instanceof Title ) {
 			return 0;
 		}
-		$dbr = $this->getSlaveDB();
-		$id = $dbr->selectField(
+		r = $this->getSlaveDB();
+		$id = r->selectField(
 			'page', // Table
 			'page_id',  //Field
 			array(  //Conditions
@@ -230,8 +230,8 @@ class LocalRepo extends FileRepo {
 	 * @return Array
 	 */
 	function findBySha1( $hash ) {
-		$dbr = $this->getSlaveDB();
-		$res = $dbr->select(
+		r = $this->getSlaveDB();
+		$res = r->select(
 			'image',
 			LocalFile::selectFields(),
 			array( 'img_sha1' => $hash ),
@@ -262,8 +262,8 @@ class LocalRepo extends FileRepo {
 			return array(); //empty parameter
 		}
 
-		$dbr = $this->getSlaveDB();
-		$res = $dbr->select(
+		r = $this->getSlaveDB();
+		$res = r->select(
 			'image',
 			LocalFile::selectFields(),
 			array( 'img_sha1' => $hashes ),

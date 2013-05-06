@@ -253,7 +253,7 @@ class FancyCaptcha extends SimpleCaptcha {
 			if ( preg_match( '/^image_([0-9a-f]+)_([0-9a-f]+)\\.png$/', $entry, $matches ) ) {
 				if ( $wgCaptchaDeleteOnSolve ) { // captcha will be deleted when solved
 					$key = "fancycaptcha:filelock:{$backend->getWikiId()}:" . sha1( $entry );
-					// Try to claim this captcha for 10 minutes (for the user to solve)...
+					// Try to claim this captcha for 10 minutes (for the wiki_user to solve)...
 					if ( ++$lockouts <= 10 && !$wgMemc->add( $key, '1', 600 ) ) {
 						continue; // could not acquire (skip it to avoid race conditions)
 					}
@@ -334,7 +334,7 @@ class FancyCaptcha extends SimpleCaptcha {
 	}
 
 	/**
-	 * Show a message asking the user to enter a captcha on edit
+	 * Show a message asking the wiki_user to enter a captcha on edit
 	 * The result will be treated as wiki text
 	 *
 	 * @param $action string Action being performed

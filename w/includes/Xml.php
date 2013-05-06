@@ -230,7 +230,7 @@ class Xml {
 
 		/**
 		 * If a bogus value is set, default to the content language.
-		 * Otherwise, no default is selected and the user ends up
+		 * Otherwise, no default is selected and the wiki_user ends up
 		 * with Afrikaans since it's first in the list.
 		 */
 		$selected = isset( $languages[$selected] ) ? $selected : $wgLanguageCode;
@@ -239,7 +239,7 @@ class Xml {
 			$options .= Xml::option( "$code - $name", $code, ($code == $selected) ) . "\n";
 		}
 
-		$attrs = array( 'id' => 'wpUserLanguage', 'name' => 'wpUserLanguage' );
+		$attrs = array( 'id' => 'wpwiki_userLanguage', 'name' => 'wpwiki_userLanguage' );
 		$attrs = array_merge( $attrs, $overrideAttrs );
 
 		if( $msg === null ) {

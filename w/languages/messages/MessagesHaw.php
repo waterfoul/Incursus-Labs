@@ -44,7 +44,7 @@ $specialPageAliases = array(
 	'Categories'                => array( 'Māhele', 'Mahele' ),
 	'Contributions'             => array( 'Haʻawina', 'Haawina' ),
 	'CreateAccount'             => array( 'Kāinoa', 'Kainoa' ),
-	'Emailuser'                 => array( 'LekaUila' ),
+	'Emailwiki_user'                 => array( 'LekaUila' ),
 	'Longpages'                 => array( 'ʻAoʻaoLoa', 'AoaoLoa' ),
 	'Movepage'                  => array( 'HoʻoneʻeʻAoʻao', 'HooneeAoao' ),
 	'Mycontributions'           => array( 'KaʻuHaʻawina', 'KauHaawina' ),
@@ -58,7 +58,7 @@ $specialPageAliases = array(
 	'Shortpages'                => array( 'ʻAoʻaoPōkole', 'AoaoPokole' ),
 	'Specialpages'              => array( 'PapaNui' ),
 	'Upload'                    => array( 'Hoʻouka', 'Hoouka' ),
-	'Userlogout'                => array( 'Haʻalele', 'Haalele' ),
+	'wiki_userlogout'                => array( 'Haʻalele', 'Haalele' ),
 	'Watchlist'                 => array( 'PapaNānāPono', 'PapaNanaPono' ),
 );
 
@@ -74,7 +74,7 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'HELUʻAOʻAO', 'HELUAOAO', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'HELUMEA', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'HELUWAIHONA', 'NUMBEROFFILES' ),
-	'numberofusers'             => array( '1', 'HELUMEAHOʻOHANA', 'HELUMEAHOOHANA', 'NUMBEROFUSERS' ),
+	'numberofwiki_users'             => array( '1', 'HELUMEAHOʻOHANA', 'HELUMEAHOOHANA', 'NUMBEROFUSERS' ),
 	'numberofedits'             => array( '1', 'HELULOLI', 'NUMBEROFEDITS' ),
 	'pagename'                  => array( '1', 'INOAʻAOʻAO', 'INOAAOAO', 'PAGENAME' ),
 	'img_right'                 => array( '1', 'ʻākau', 'ākau', 'akau', 'right' ),
@@ -87,7 +87,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-underline' => 'Kahalalo i nā loulou:',
 'tog-justify' => 'Ho‘okaulihi i nā paukū',
 'tog-hideminor' => 'E hūnā i nā ho‘opololei iki ma nā loli hou',
@@ -101,7 +101,7 @@ $messages = array(
 'tog-previewontop' => 'Hō‘ike i ka nāmua mamua o ke kau ho‘opololei',
 'tog-previewonfirst' => 'Hō‘ike i ka nāmua ma ka ho‘ololi mua',
 'tog-enotifwatchlistpages' => 'Ke loli kekahi ‘ao‘ao ma ka‘u papa nānā pono, leka uila ia‘u',
-'tog-enotifusertalkpages' => 'Ke loli ka‘u ʻaoʻao kūkākūkā, leka uila ia‘u',
+'tog-enotifwiki_usertalkpages' => 'Ke loli ka‘u ʻaoʻao kūkākūkā, leka uila ia‘u',
 'tog-enotifminoredits' => 'No nā ho‘opololei ‘ana, leka uila ia‘u',
 'tog-enotifrevealaddr' => 'Hō‘ike i ko‘u leka uila ma nā leka uila hō‘ike',
 'tog-shownumberswatching' => 'Hō‘ike i ka heluna o nā mea ho‘ohana e nānā ai',
@@ -237,7 +237,7 @@ $messages = array(
 'talk' => 'Kūkākūkā',
 'views' => 'Nā nānaina',
 'toolbox' => 'Pahu mea hana',
-'userpage' => 'Nānā i ka ‘ao‘ao-mea ho‘ohana',
+'wiki_userpage' => 'Nānā i ka ‘ao‘ao-mea ho‘ohana',
 'projectpage' => 'Nānā i ka ‘ao‘ao papahana',
 'imagepage' => 'Nānā i ka ‘ao‘ao pāpaho',
 'mediawikipage' => 'Nānā i ka ‘ao‘ao memo',
@@ -254,7 +254,7 @@ $messages = array(
 'jumptonavigation' => 'ka ho‘okele ‘ana',
 'jumptosearch' => 'huli',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'E pili ana iā {{SITENAME}}',
 'aboutpage' => 'Project:E pili ana',
 'copyrightpage' => '{{ns:project}}:Palapala ho‘okuleana',
@@ -301,7 +301,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'ʻAoʻao',
-'nstab-user' => 'Inoa mea ho‘ohana',
+'nstab-wiki_user' => 'Inoa mea ho‘ohana',
 'nstab-media' => 'Pāpaho',
 'nstab-special' => 'Papa nui',
 'nstab-project' => 'Papahana',
@@ -334,10 +334,10 @@ Mai poina e hoʻololi i [[Special:Preferences|kāu makemake ma {{SITENAME}}]].',
 'login' => 'ʻEʻe',
 'nav-login-createaccount' => 'ʻEʻe / E kāinoa',
 'loginprompt' => 'Pono ʻoe e hoʻā i nā makana (cookies) no ka ʻeʻe ʻana i {{SITENAME}}.',
-'userlogin' => 'ʻEʻe / E kāinoa',
-'userloginnocreate' => 'ʻEʻe',
+'wiki_userlogin' => 'ʻEʻe / E kāinoa',
+'wiki_userloginnocreate' => 'ʻEʻe',
 'logout' => 'E haʻalele',
-'userlogout' => 'E haʻalele',
+'wiki_userlogout' => 'E haʻalele',
 'notloggedin' => 'Mai ‘e‘e',
 'nologin' => "ʻAʻohe āu moʻokāki? '''$1'''.",
 'nologinlink' => 'E kāinoa',
@@ -347,12 +347,12 @@ Mai poina e hoʻololi i [[Special:Preferences|kāu makemake ma {{SITENAME}}]].',
 'createaccountmail' => 'no ka leka uila',
 'createaccountreason' => 'Kumu:',
 'badretype' => 'ʻAʻole like nā ʻōlelo hūnā āu i hoʻokomo ai',
-'userexists' => 'Lilo ka inoa mea ho‘ohana.
+'wiki_userexists' => 'Lilo ka inoa mea ho‘ohana.
 E koho i kekahi inoa, ke ‘olu‘olu.',
 'loginerror' => 'Hewa ʻeʻe',
 'loginsuccesstitle' => 'ʻEʻe kūleʻa',
 'loginsuccess' => "'''ʻEʻe ʻia ʻoe, ʻo \"\$1\", iā {{SITENAME}}.'''",
-'nouserspecified' => 'Pono ʻoe e kāhuakomo i ka ʻōlelo ʻeʻe.',
+'nowiki_userspecified' => 'Pono ʻoe e kāhuakomo i ka ʻōlelo ʻeʻe.',
 'wrongpassword' => 'Hewa ka ʻōlelo hūnā.
 E ʻoluʻolu, e kūlia hou.',
 'wrongpasswordempty' => 'Hakahaka ka ʻōlelo hūnā.
@@ -400,7 +400,7 @@ E hoʻopaʻa ʻia ana kou IP ma ko kēia ʻaoʻao mōʻaukala.",
 'newarticle' => '(Hou)',
 'anontalkpagetext' => "----''‘O kēia ka ʻaoʻao kūkākūkā no kekahi mea ho‘ohana me ka moʻokāki ʻole. No laila, pono mākou e ho‘ohana i ka wahi noho IP no ka hōʻoia ʻana iā ia.
 Hiki i kekahi mau mea hoʻohana ke hoʻokaʻana i kēia wahi noho IP.
-Inā he mea ho‘ohana ʻoe a ua haʻi ʻia kekahi manaʻo iā ʻoe, [[Special:UserLogin/signup|e hoʻokumu ʻia kekahi moʻokāki]] a i ʻole [[Special:UserLogin|e ʻeʻe]].''",
+Inā he mea ho‘ohana ʻoe a ua haʻi ʻia kekahi manaʻo iā ʻoe, [[Special:wiki_userLogin/signup|e hoʻokumu ʻia kekahi moʻokāki]] a i ʻole [[Special:wiki_userLogin|e ʻeʻe]].''",
 'noarticletext' => 'ʻAʻohe kikokikona a kēia ʻaoʻao.
 Hiki iā ʻoe ke [[Special:Search/{{PAGENAME}}|huli no kēia inoa ʻaoʻao]] i nā ʻaoʻao ʻē aʻe, <span class="plainlinks">[{{fullurl:SpecialLog|page={{FULLPAGENAMEE}}}} huli i nā moʻolelo pili], a i ʻole [{{fullurl:{{FULLPAGENAME}}|action=edit}} hoʻololi i kēia ʻaoʻao]</span>.',
 'previewnote' => "'''‘O keia ka nāmua;
@@ -424,7 +424,7 @@ Ke hoʻohiki nei ʻoe iā kākou: nou i kākau i kēia kikokikona a i ʻole nou 
 # "Undo" feature
 'undo-success' => 'Hiki iā ʻoe ke hoʻihoʻi mai i kēia loli ʻana.
 E ʻoluʻolu, e hōʻoia i ka hoʻokūkū ʻana i lalo, a laila, e mālama i nā loli i lalo no ka hoʻopau ʻana i ka hoʻihoʻi mai ʻana i ka loli.',
-'undo-summary' => 'Hoʻihoʻi mai i ke kāmua $1 na [[Special:Contributions/$2|$2]] ([[User talk:$2|kūkākūkā]])',
+'undo-summary' => 'Hoʻihoʻi mai i ke kāmua $1 na [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|kūkākūkā]])',
 
 # History pages
 'currentrev' => 'Kāmua hou',
@@ -507,7 +507,7 @@ E ʻoluʻolu, e hōʻoia i ka hoʻokūkū ʻana i lalo, a laila, e mālama i nā
 'timezoneregion-pacific' => 'Moana Pakipika',
 'default' => 'paʻamau',
 'youremail' => 'Leka uila:',
-'username' => "Inoa mea ho'ohana:",
+'wiki_username' => "Inoa mea ho'ohana:",
 'yourrealname' => 'Inoa maoli:',
 'yourlanguage' => 'Kou ʻōlelo:',
 'yournick' => 'Inoa kapakapa:',
@@ -517,8 +517,8 @@ E ʻoluʻolu, e hōʻoia i ka hoʻokūkū ʻana i lalo, a laila, e mālama i nā
 'email' => 'Leka uila',
 'prefs-help-email-required' => 'Koina ka leka uila.',
 
-# User rights
-'userrights' => 'Ho‘oponopono ‘ana o nā kuleana',
+# wiki_user rights
+'wiki_userrights' => 'Ho‘oponopono ‘ana o nā kuleana',
 
 # Groups
 'group-sysop' => 'Nā kahu',
@@ -572,7 +572,7 @@ E ʻoluʻolu, e hōʻoia i ka hoʻokūkū ʻana i lalo, a laila, e mālama i nā
 'filehist-current' => 'o kēia manawa',
 'filehist-datetime' => 'Manawa',
 'filehist-thumb' => 'Kiʻiliʻiliʻi',
-'filehist-user' => 'Mea ho‘ohana',
+'filehist-wiki_user' => 'Mea ho‘ohana',
 'filehist-dimensions' => 'Nā nui',
 'filehist-filesize' => 'Nui o ka waihona',
 'filehist-comment' => 'Manaʻo',
@@ -603,7 +603,7 @@ E ʻoluʻolu, e hōʻoia i ka hoʻokūkū ʻana i lalo, a laila, e mālama i nā
 'shortpages' => 'Nā ʻaoʻao pōkole',
 'longpages' => 'Nā ʻaoʻao lōʻihi',
 'newpages' => 'Nā ‘ao‘ao hou',
-'newpages-username' => "Inoa mea ho'ohana:",
+'newpages-wiki_username' => "Inoa mea ho'ohana:",
 'ancientpages' => 'Nā ‘ao‘ao kahiko loa',
 'move' => 'E ho‘ololi i ka inoa',
 'movethispage' => 'E hoʻoneʻe i kēia ʻaoʻao',
@@ -639,14 +639,14 @@ E ʻoluʻolu, e hōʻoia i ka hoʻokūkū ʻana i lalo, a laila, e mālama i nā
 'linksearch' => 'Loulou waho wahi',
 'linksearch-ok' => 'Huli',
 
-# Special:ListUsers
-'listusers-submit' => 'Hō‘ike',
+# Special:Listwiki_users
+'listwiki_users-submit' => 'Hō‘ike',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(papa o nā lālā)',
 
-# E-mail user
-'emailuser' => 'E leka uila i kēia mea ho‘ohana',
+# E-mail wiki_user
+'emailwiki_user' => 'E leka uila i kēia mea ho‘ohana',
 'emailmessage' => 'Memo:',
 
 # Watchlist
@@ -714,7 +714,7 @@ E ʻike iā $2 no ka papa o nā kāpae ʻana hou.',
 
 'sp-contributions-deleted' => 'Nā ha‘awina o ka inoa mea ho‘ohana i kāpae ‘ia ai',
 'sp-contributions-talk' => 'Kūkākūkā',
-'sp-contributions-userrights' => 'Ho‘oponopono ‘ana o nā kuleana',
+'sp-contributions-wiki_userrights' => 'Ho‘oponopono ‘ana o nā kuleana',
 'sp-contributions-search' => 'Huli no nā haʻawina',
 'sp-contributions-submit' => 'Huli',
 
@@ -772,7 +772,7 @@ E ʻike iā $2 no ka papa o nā kāpae ʻana hou.',
 'thumbnail-more' => 'ho‘onui',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Kāu inoa mea ho‘ohana',
+'tooltip-pt-wiki_userpage' => 'Kāu inoa mea ho‘ohana',
 'tooltip-pt-mytalk' => 'Kāu ‘aoʻao ʻōlelo',
 'tooltip-pt-preferences' => 'ka‘u makemake',
 'tooltip-pt-watchlist' => 'Ka papa o nā ʻaoʻao o kou nānā ʻana no nā loli',
@@ -801,7 +801,7 @@ Hiki iā ʻoe ke ʻikena i kāna molekumu.',
 'tooltip-n-randompage' => 'Hōʻike kekahi ʻaoʻao kaulele',
 'tooltip-n-help' => 'Ka wahi e kōkua ai iā ‘oe',
 'tooltip-t-whatlinkshere' => 'Nā ‘ao‘ao a pau i loulou mai ai',
-'tooltip-t-emailuser' => 'Leka uila i kēia mea hoʻohana',
+'tooltip-t-emailwiki_user' => 'Leka uila i kēia mea hoʻohana',
 'tooltip-t-upload' => 'Ho‘ouka i nā waihona',
 'tooltip-t-specialpages' => 'Papa inoa o nā ʻaoʻao nui apau',
 'tooltip-t-print' => 'Mana paʻi pono o kēia ʻaoʻao',

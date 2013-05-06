@@ -120,7 +120,7 @@ $messages = array(
 'redirectpagesub' => 'dah astsihígíí',
 'lastmodifiedat' => 'Díí naaltsoos $1/$2 łahgo ályaa.',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} baa haneʼ',
 'aboutpage' => 'Project: baa haneʼ',
 'copyright' => 'Díí naaltsoos bikáaʼgi saad shijaaʼígíí "$1" beehazʼą́ąnii bikʼehgo choidííłįįł',
@@ -148,7 +148,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'naaltsoos',
-'nstab-user' => 'choyoołʼįįhí binaaltsoos',
+'nstab-wiki_user' => 'choyoołʼįįhí binaaltsoos',
 'nstab-special' => 'Naaltsoos spéshelígíí',
 'nstab-project' => 'wikiibíídiiya binaaltsoos',
 'nstab-image' => 'eʼelyaaígíí',
@@ -259,7 +259,7 @@ $3',
 'filehist-current' => 'kʼadígíí',
 'filehist-thumb' => 'thumbnailígíí',
 'filehist-thumbtext' => 'thumbnailígíí ($1)',
-'filehist-user' => 'Choyoołʼįįhí',
+'filehist-wiki_user' => 'Choyoołʼįįhí',
 'filehist-dimensions' => 'naaniigo/náásee',
 'filehist-comment' => 'haneʼ',
 'imagelinks' => 'naaltsoos díí kweʼé eʼelyaaígíí chodayoołʼįįhígíí',
@@ -279,8 +279,8 @@ $3',
 # Special:LinkSearch
 'linksearch' => 'linksígíí tłʼóoʼdi siʼánígíí',
 
-# E-mail user
-'emailuser' => 'E-mail bichʼįʼ áshłééh nisin',
+# E-mail wiki_user
+'emailwiki_user' => 'E-mail bichʼįʼ áshłééh nisin',
 
 # Watchlist
 'watchlist' => 'bikʼi déshʼį́į́ʼígíí',
@@ -319,7 +319,7 @@ $3',
 
 'sp-contributions-newbies' => 'ádaaniidí akʼeʼeeshchínígíí tʼéiyá',
 'sp-contributions-search' => 'akʼeʼeeshchínígíí hanishtá nisin',
-'sp-contributions-username' => 'IP/Choyoołʼįįhí bizhiʼ:',
+'sp-contributions-wiki_username' => 'IP/Choyoołʼįįhí bizhiʼ:',
 'sp-contributions-submit' => 'hanishtá',
 
 # What links here

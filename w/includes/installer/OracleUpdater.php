@@ -34,7 +34,7 @@ class OracleUpdater extends DatabaseUpdater {
 	 *
 	 * @var DatabaseOracle
 	 */
-	protected $db;
+	protected ;
 
 	protected function getCoreUpdateList() {
 		return array(
@@ -45,11 +45,11 @@ class OracleUpdater extends DatabaseUpdater {
 			array( 'doSchemaUpgrade17' ),
 			array( 'doInsertPage0' ),
 			array( 'doRemoveNotNullEmptyDefaults' ),
-			array( 'addTable', 'user_former_groups', 'patch-user_former_groups.sql' ),
+			array( 'addTable', 'wiki_user_former_groups', 'patch-wiki_user_former_groups.sql' ),
 
 			//1.18
-			array( 'addIndex',	'user',          'i02',       'patch-user_email_index.sql' ),
-			array( 'modifyField', 'user_properties', 'up_property', 'patch-up_property.sql' ),
+			array( 'addIndex',	'wiki_user',          'i02',       'patch-wiki_user_email_index.sql' ),
+			array( 'modifyField', 'wiki_user_properties', 'up_property', 'patch-up_property.sql' ),
 			array( 'addTable', 'uploadstash', 'patch-uploadstash.sql' ),
 			array( 'doRecentchangesFK2Cascade' ),
 
@@ -59,12 +59,12 @@ class OracleUpdater extends DatabaseUpdater {
 			array( 'addField', 'archive', 'ar_sha1', 'patch-ar_sha1_field.sql' ),
 			array( 'doRemoveNotNullEmptyDefaults2' ),
 			array( 'addIndex', 'page', 'i03', 'patch-page_redirect_namespace_len.sql' ),
-			array( 'modifyField', 'user_groups', 'ug_group', 'patch-ug_group-length-increase.sql' ),
+			array( 'modifyField', 'wiki_user_groups', 'ug_group', 'patch-ug_group-length-increase.sql' ),
 			array( 'addField', 'uploadstash', 'us_chunk_inx', 'patch-us_chunk_inx_field.sql' ),
 			array( 'addField', 'job', 'job_timestamp', 'patch-job_timestamp_field.sql' ),
 			array( 'addIndex', 'job', 'i02', 'patch-job_timestamp_index.sql' ),
 			array( 'doPageRestrictionsPKUKFix' ),
-			array( 'modifyField', 'user_former_groups', 'ufg_group', 'patch-ufg_group-length-increase.sql' ),
+			array( 'modifyField', 'wiki_user_former_groups', 'ufg_group', 'patch-ufg_group-length-increase.sql' ),
 
 			//1.20
 			array( 'addIndex', 'ipblocks', 'i05', 'patch-ipblocks_i05_index.sql' ),
@@ -94,7 +94,7 @@ class OracleUpdater extends DatabaseUpdater {
 	 * Uniform FK names + deferrable state
 	 */
 	protected function doFKRenameDeferr() {
-		$meta = $this->db->query( 'SELECT COUNT(*) cnt FROM user_constraints WHERE constraint_type = \'R\' AND deferrable = \'DEFERRABLE\'' );
+		$meta = $this->db->query( 'SELECT COUNT(*) cnt FROM wiki_user_constraints WHERE constraint_type = \'R\' AND deferrable = \'DEFERRABLE\'' );
 		$row = $meta->fetchRow();
 		if ( $row && $row['cnt'] > 0 ) {
 			return;
@@ -216,7 +216,7 @@ class OracleUpdater extends DatabaseUpdater {
 	 * Overload: because of the DDL_MODE tablename escaping is a bit dodgy
 	 */
 	protected function purgeCache() {
-		# We can't guarantee that the user will be able to use TRUNCATE,
+		# We can't guarantee that the wiki_user will be able to use TRUNCATE,
 		# but we know that DELETE is available to us
 		$this->output( "Purging caches..." );
 		$this->db->delete( '/*Q*/'.$this->db->tableName( 'objectcache' ), '*', __METHOD__ );

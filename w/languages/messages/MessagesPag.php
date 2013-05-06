@@ -12,7 +12,7 @@
  */
 
 $messages = array(
-# User preference toggles
+# wiki_user preference toggles
 'tog-enotifwatchlistpages' => 'Manpa-awit na e-mail ed siak no abalo may sakey ya bolong ya babantayan ko',
 
 'underline-always' => 'Naynay',
@@ -55,7 +55,7 @@ $messages = array(
 'specialpage' => 'Niduman Bolong',
 'articlepage' => 'Nengnengen so content page',
 'talk' => 'Tongtongan',
-'userpage' => 'Basaen so bolong na manag-usar',
+'wiki_userpage' => 'Basaen so bolong na manag-usar',
 'mediawikipage' => 'Nengnengen so bolong na pakabat',
 'viewhelppage' => 'Nengnengen so bolong na tolong',
 'categorypage' => 'Nengnengen so bolong na saray category',
@@ -65,7 +65,7 @@ $messages = array(
 'protectedpage' => 'Iyayagel yan bolong',
 'jumptosearch' => 'anapen',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Nipakar ed {{SITENAME}}',
 'aboutpage' => 'Project:Nipaakar',
 'currentevents' => 'Saray nagagawa natan',
@@ -86,7 +86,7 @@ $messages = array(
 'viewdeleted' => 'Nengnengen so $1?',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-user' => 'Bolong na manag-usar',
+'nstab-wiki_user' => 'Bolong na manag-usar',
 'nstab-mediawiki' => 'Pakabat',
 
 # General errors
@@ -100,13 +100,13 @@ $messages = array(
 'yourdomainname' => 'Say domain mo',
 'login' => 'Onloob',
 'logout' => 'Paway',
-'userlogout' => 'Paway',
+'wiki_userlogout' => 'Paway',
 'createaccount' => 'Mangawa na account',
 'gotaccountlink' => 'Onloob',
 'badretype' => 'Aga parehas so en-type mo ran password.',
 'acct_creation_throttle_hit' => 'Sorry, nangawala ka la na $1 account. Agka la makapangawa na account.',
 'accountcreated' => 'Agawa so account',
-'accountcreatedtext' => 'Agawa la so user account para $1.',
+'accountcreatedtext' => 'Agawa la so wiki_user account para $1.',
 
 # Change password dialog
 'newpassword' => 'Balon password:',
@@ -165,8 +165,8 @@ San ipropromisam met ya insulat mo yan dili o kinopyam ya manlapo ed sakey ya pu
 'yourrealname' => 'Tuwan ngaran:',
 'badsiglength' => 'Andukey ya maong so nickname. Say dukey to dapat mas daiset en say $1 ya character.',
 
-# User rights
-'userrights-user-editname' => 'Isulat so username:',
+# wiki_user rights
+'wiki_userrights-wiki_user-editname' => 'Isulat so wiki_username:',
 
 # Recent changes
 'recentchanges' => 'Sampot ran binalo',
@@ -241,8 +241,8 @@ San ipropromisam met ya insulat mo yan dili o kinopyam ya manlapo ed sakey ya pu
 'linksearch-pat' => 'Anapen so pattern:',
 'linksearch-ok' => 'Anapen',
 
-# E-mail user
-'emailuser' => 'E-mail so ayan user',
+# E-mail wiki_user
+'emailwiki_user' => 'E-mail so ayan wiki_user',
 'emailfrom' => 'Manlapud',
 'emailto' => 'Para ed',
 'emailmessage' => 'Pakabat',
@@ -288,7 +288,7 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 'undelete-search-submit' => 'Anapen',
 
 # Contributions
-'contributions' => 'Saray contribution na user',
+'contributions' => 'Saray contribution na wiki_user',
 'mycontris' => 'Saray entolong ko',
 'year' => 'Taon:',
 
@@ -307,7 +307,7 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 'ipbsubmit' => 'Isebel ed sayan manag-usar',
 'badipaddress' => 'Aga nayarin IP address',
 'ipusubmit' => 'Aga la isebel so ayan address',
-'ipblocklist' => 'Listaan na saray sebel ran IP address san username',
+'ipblocklist' => 'Listaan na saray sebel ran IP address san wiki_username',
 'ipblocklist-submit' => 'Anapen',
 'expiringblock' => 'nabalang no $1 $2',
 'blocklink' => 'isara',
@@ -346,7 +346,7 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 'tooltip-search' => 'Anapen {{SITENAME}}',
 'tooltip-p-logo' => 'Arapan ya Bolong',
 'tooltip-t-specialpages' => 'Listaan na amin ran niduman bolobolong',
-'tooltip-ca-nstab-user' => 'Nengnengen so bolong na manag-usar',
+'tooltip-ca-nstab-wiki_user' => 'Nengnengen so bolong na manag-usar',
 'tooltip-ca-nstab-mediawiki' => 'Nengnengen so pakabat na oksoy',
 
 # Attribution

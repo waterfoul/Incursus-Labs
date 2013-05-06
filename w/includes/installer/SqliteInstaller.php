@@ -33,7 +33,7 @@ class SqliteInstaller extends DatabaseInstaller {
 	/**
 	 * @var DatabaseSqlite
 	 */
-	public $db;
+	public ;
 
 	protected $globalNames = array(
 		'wgDBname',
@@ -55,9 +55,9 @@ class SqliteInstaller extends DatabaseInstaller {
 	public function checkPrerequisites() {
 		$result = Status::newGood();
 		// Bail out if SQLite is too old
-		$db = new DatabaseSqliteStandalone( ':memory:' );
-		if ( version_compare( $db->getServerVersion(), self::MINIMUM_VERSION, '<' ) ) {
-			$result->fatal( 'config-outdated-sqlite', $db->getServerVersion(), self::MINIMUM_VERSION );
+		 = new DatabaseSqliteStandalone( ':memory:' );
+		if ( version_compare( ->getServerVersion(), self::MINIMUM_VERSION, '<' ) ) {
+			$result->fatal( 'config-outdated-sqlite', ->getServerVersion(), self::MINIMUM_VERSION );
 		}
 		// Check for FTS3 full-text search module
 		if( DatabaseSqlite::getFulltextSearchModule() != 'FTS3' ) {
@@ -141,7 +141,7 @@ class SqliteInstaller extends DatabaseInstaller {
 				if ( !$ok ) {
 					return Status::newFatal( 'config-sqlite-mkdir-error', $dir );
 				}
-				# Put a .htaccess file in in case the user didn't take our advice
+				# Put a .htaccess file in in case the wiki_user didn't take our advice
 				file_put_contents( "$dir/.htaccess", "Deny from all\n" );
 			}
 		}
@@ -161,13 +161,13 @@ class SqliteInstaller extends DatabaseInstaller {
 
 		$status = Status::newGood();
 		$dir = $this->getVar( 'wgSQLiteDataDir' );
-		$dbName = $this->getVar( 'wgDBname' );
+		Name = $this->getVar( 'wgDBname' );
 		try {
 			# @todo FIXME: Need more sensible constructor parameters, e.g. single associative array
 			# Setting globals kind of sucks
 			$wgSQLiteDataDir = $dir;
-			$db = new DatabaseSqlite( false, false, false, $dbName );
-			$status->value = $db;
+			 = new DatabaseSqlite( false, false, false, Name );
+			$status->value = ;
 		} catch ( DBConnectionError $e ) {
 			$status->fatal( 'config-sqlite-connection-error', $e->getMessage() );
 		}
@@ -179,9 +179,9 @@ class SqliteInstaller extends DatabaseInstaller {
 	 */
 	public function needsUpgrade() {
 		$dir = $this->getVar( 'wgSQLiteDataDir' );
-		$dbName = $this->getVar( 'wgDBname' );
+		Name = $this->getVar( 'wgDBname' );
 		// Don't create the data file yet
-		if ( !file_exists( DatabaseSqlite::generateFileName( $dir, $dbName ) ) ) {
+		if ( !file_exists( DatabaseSqlite::generateFileName( $dir, Name ) ) ) {
 			return false;
 		}
 
@@ -202,8 +202,8 @@ class SqliteInstaller extends DatabaseInstaller {
 			return $dir_status;
 		}
 
-		$db = $this->getVar( 'wgDBname' );
-		$file = DatabaseSqlite::generateFileName( $dir, $db );
+		 = $this->getVar( 'wgDBname' );
+		$file = DatabaseSqlite::generateFileName( $dir,  );
 		if ( file_exists( $file ) ) {
 			if ( !is_writable( $file ) ) {
 				return Status::newFatal( 'config-sqlite-readonly', $file );
@@ -215,7 +215,7 @@ class SqliteInstaller extends DatabaseInstaller {
 		}
 		// nuke the unused settings for clarity
 		$this->setVar( 'wgDBserver', '' );
-		$this->setVar( 'wgDBuser', '' );
+		$this->setVar( 'wgDBwiki_user', '' );
 		$this->setVar( 'wgDBpassword', '' );
 		$this->setupSchemaVars();
 		return $this->getConnection();

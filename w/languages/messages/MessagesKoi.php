@@ -145,7 +145,7 @@ $messages = array(
 'jumptonavigation' => 'уялöм',
 'jumptosearch' => 'кошшан',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} йылiсь',
 'aboutpage' => 'Project:сы йылiсь',
 'copyright' => 'Быдöс этiйö позьö копируйтны $1 сьöртi.',
@@ -186,7 +186,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Листбок',
-'nstab-user' => 'Уджкерисьлöн листбок',
+'nstab-wiki_user' => 'Уджкерисьлöн листбок',
 'nstab-special' => 'Тодильнöй листбок',
 'nstab-project' => 'Проект йылiсь',
 'nstab-image' => 'Серпас',
@@ -196,7 +196,7 @@ $messages = array(
 
 # General errors
 'error' => 'Сорасьöм',
-'missing-article' => 'Мыччöт чукöрись эз шед сiя листбок, кöда сэтчин вöлi "$1" $2 ним увтын. Этадз аркмывлö унажыксö сэк, кöр вешшан бы важмöм ыстöт пыр сэтшöм листбок вылö, кöда вöлi вештöм.  Абу кö сiдз, наттьö программаын мыйкö нетырви керöм. Юöрт жö сы йылiсь миянлö татчö: [[Special:ListUsers/sysop|administrator]],  сы дырни эн вунöт пасйыны URL.',
+'missing-article' => 'Мыччöт чукöрись эз шед сiя листбок, кöда сэтчин вöлi "$1" $2 ним увтын. Этадз аркмывлö унажыксö сэк, кöр вешшан бы важмöм ыстöт пыр сэтшöм листбок вылö, кöда вöлi вештöм.  Абу кö сiдз, наттьö программаын мыйкö нетырви керöм. Юöрт жö сы йылiсь миянлö татчö: [[Special:Listwiki_users/sysop|administrator]],  сы дырни эн вунöт пасйыны URL.',
 'missingarticle-rev' => '(версия#: $1)',
 'internalerror' => 'Пытшкас сорасьöм',
 'internalerror_info' => 'Пытшкас сорасьöм: $1',
@@ -213,10 +213,10 @@ $messages = array(
 'remembermypassword' => 'Видзны менчим пыран ним этiя компьютер тöдвылын (не дыржык {{PLURAL:$1| лунся|лунся}})',
 'login' => 'Пырны ним увтын',
 'nav-login-createaccount' => 'Пыран / гижöтчан',
-'userlogin' => 'Висьтасьны нето гижöтчыны',
-'userloginnocreate' => 'Пырны ним увтын',
+'wiki_userlogin' => 'Висьтасьны нето гижöтчыны',
+'wiki_userloginnocreate' => 'Пырны ним увтын',
 'logout' => 'Сайласьны',
-'userlogout' => 'Петан',
+'wiki_userlogout' => 'Петан',
 'nologinlink' => 'Кер аслыт уджкерисьлiсь ним',
 'createaccount' => 'Лöсьöт аслыт уджкерисьлiсь ним',
 'gotaccountlink' => 'Пырны ним увтын',
@@ -367,7 +367,7 @@ $messages = array(
 'timezoneregion-indian' => 'Индика океан',
 'timezoneregion-pacific' => 'Лöнь океан',
 'youremail' => 'Электрон пошта:',
-'username' => 'Уджкерисьлöн ним:',
+'wiki_username' => 'Уджкерисьлöн ним:',
 'uid' => 'Уджкерисьлöн лыддьöса пас:',
 'yourrealname' => 'Быльнöй нимыт:',
 'yourlanguage' => 'Кыв:',
@@ -385,7 +385,7 @@ $messages = array(
 
 'grouppage-sysop' => '{{ns:project}}:Веськöтлiссез',
 
-# User rights log
+# wiki_user rights log
 'rightslog' => 'Уджкерисьлö позяннэз сьöртi журнал',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -433,7 +433,7 @@ $messages = array(
 'filehist-datetime' => 'Дата/Кад',
 'filehist-thumb' => 'Серпас',
 'filehist-thumbtext' => 'Серпас  $1’ версия понда',
-'filehist-user' => 'Уджкерись',
+'filehist-wiki_user' => 'Уджкерись',
 'filehist-dimensions' => 'Ыжда',
 'filehist-comment' => 'Пасйöт',
 'imagelinks' => 'Файл дынö ыстöттэз',
@@ -459,7 +459,7 @@ $messages = array(
 'shortpages' => 'Дженыт листбоккез',
 'longpages' => 'Кузь листбоккез',
 'newpages' => 'Виль листбоккез',
-'newpages-username' => 'Уджкерись:',
+'newpages-wiki_username' => 'Уджкерись:',
 'ancientpages' => 'Медваж листбоккез',
 'move' => 'Вежны ним',
 'movethispage' => 'Вежны листбокыслiсь ним',
@@ -489,14 +489,14 @@ $messages = array(
 # Special:LinkSearch
 'linksearch' => 'Вики сайöдз ыстöттэз',
 
-# Special:Log/newusers
-'newuserlogpage' => 'Уджкерисьö гижöтчан журнал',
+# Special:Log/newwiki_users
+'newwiki_userlogpage' => 'Уджкерисьö гижöтчан журнал',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(уджкериссезлöн нимлёдз)',
 
-# E-mail user
-'emailuser' => 'Этiя ужкерисьлö гижöт',
+# E-mail wiki_user
+'emailwiki_user' => 'Этiя ужкерисьлö гижöт',
 'emailfrom' => 'Кинсянь:',
 'emailto' => 'Кинлö:',
 
@@ -582,7 +582,7 @@ $messages = array(
 'sp-contributions-newbies' => 'Мыччавны токö виль уджкериссезöн пыртöм пайез',
 'sp-contributions-blocklog' => 'падмöтаннэз',
 'sp-contributions-search' => 'Пыртöм пай кошшан',
-'sp-contributions-username' => 'IP-адрес нето уджкерисьлöн ним:',
+'sp-contributions-wiki_username' => 'IP-адрес нето уджкерисьлöн ним:',
 'sp-contributions-submit' => 'Кошшыны',
 
 # What links here
@@ -648,7 +648,7 @@ $messages = array(
 'thumbnail-more' => 'Ыждöтны',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage' => 'Аслат листбок',
+'tooltip-pt-wiki_userpage' => 'Аслат листбок',
 'tooltip-pt-mytalk' => 'Сёрнитан листбокыт',
 'tooltip-pt-preferences' => 'Тэнат лöсьöтаннэт',
 'tooltip-pt-watchlist' => 'Синмалан листбоккезö ним сьöртi',
@@ -681,13 +681,13 @@ $messages = array(
 'tooltip-feed-rss' => 'Этiя листбок понда RSS',
 'tooltip-feed-atom' => 'Этiя листбок понда Atom-визыв',
 'tooltip-t-contributions' => 'Видзöтны листбоккез, кöднö вильмöтлiс этiя уджкерись',
-'tooltip-t-emailuser' => 'Иньдöтны гижöт этiя уджкерисьлö',
+'tooltip-t-emailwiki_user' => 'Иньдöтны гижöт этiя уджкерисьлö',
 'tooltip-t-upload' => 'Кышавны медиа-файллэз',
 'tooltip-t-specialpages' => 'Тодильнöй листбоккез ним сьöртi',
 'tooltip-t-print' => 'Этiя листбоклöн печатайтан версия',
 'tooltip-t-permalink' => 'Листбоклöн этiя версия дынö пырся ыстöт',
 'tooltip-ca-nstab-main' => 'Видзöт листбоклiсь пытшкöс',
-'tooltip-ca-nstab-user' => 'Видзöтны уджкерисьлiсь листбок',
+'tooltip-ca-nstab-wiki_user' => 'Видзöтны уджкерисьлiсь листбок',
 'tooltip-ca-nstab-media' => 'Медиа файл',
 'tooltip-ca-nstab-special' => 'Этiя листбокыс тодильнöй, сiйö оз позь мöдкодьсьöтны',
 'tooltip-ca-nstab-project' => 'Проектлöн листбок',

@@ -39,8 +39,8 @@ class GetSlaveServer extends Maintenance {
 		if ( $wgAllDBsAreLocalhost ) {
 			$host = 'localhost';
 		} elseif ( $this->hasOption( 'group' ) ) {
-			$db = wfGetDB( DB_SLAVE, $this->getOption( 'group' ) );
-			$host = $db->getServer();
+			 = wfGetDB( DB_SLAVE, $this->getOption( 'group' ) );
+			$host = ->getServer();
 		} else {
 			$lb = wfGetLB();
 			$i = $lb->getReaderIndex();

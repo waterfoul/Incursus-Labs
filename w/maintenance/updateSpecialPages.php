@@ -40,7 +40,7 @@ class UpdateSpecialPages extends Maintenance {
 	public function execute() {
 		global $IP, $wgSpecialPageCacheUpdates, $wgQueryPages, $wgQueryCacheLimit, $wgDisableQueryPageUpdate;
 
-		$dbw = wfGetDB( DB_MASTER );
+		w = wfGetDB( DB_MASTER );
 
 		foreach ( $wgSpecialPageCacheUpdates as $special => $call ) {
 			if ( !is_callable( $call ) ) {
@@ -48,7 +48,7 @@ class UpdateSpecialPages extends Maintenance {
 				continue;
 			}
 			$t1 = explode( ' ', microtime() );
-			call_user_func( $call, $dbw );
+			call_wiki_user_func( $call, w );
 			$t2 = explode( ' ', microtime() );
 			$this->output( sprintf( '%-30s ', $special ) );
 			$elapsed = ( $t2[0] - $t1[0] ) + ( $t2[1] - $t1[1] );
@@ -133,7 +133,7 @@ class UpdateSpecialPages extends Maintenance {
 						$this->output( "Reconnected\n\n" );
 					} else {
 						# Commit the results
-						$dbw->commit( __METHOD__ );
+						w->commit( __METHOD__ );
 					}
 					# Wait for the slave to catch up
 					wfWaitForSlaves();
