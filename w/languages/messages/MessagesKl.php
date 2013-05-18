@@ -32,7 +32,7 @@ $namespaceNames = array(
 	NS_HELP             => 'Ikiuutit',
 	NS_HELP_TALK        => 'Ikiuutini_oqallinneq',
 	NS_CATEGORY         => 'Sumut_atassuseq',
-	NS_CATEGORY_TALK    => 'Sumut_atasswiki_usermi_oqallinneq',
+	NS_CATEGORY_TALK    => 'Sumut_atassusermi_oqallinneq',
 );
 
 $namespaceAliases = array(
@@ -111,8 +111,8 @@ $messages = array(
 
 # Categories related messages
 'pagecategories' => '{{PLURAL:$1|Sumut atassuseq|Sunut atassusit}}',
-'category_header' => 'Quppernerit sumut atasswiki_usermi "$1"-miittut',
-'subcategories' => 'Sunut atasswiki_userni ataaniittut',
+'category_header' => 'Quppernerit sumut atassusermi "$1"-miittut',
+'subcategories' => 'Sunut atassuserni ataaniittut',
 'category-subcat-count' => '{{PLURAL:$2|Una sumut atassuseq ataatsimik ataani ilaqarpoq.|Una sumut atassuseq imarivai {{PLURAL:$1|sumut atassuseq ataaniittoq|$1 sunut atassusit ataaniittut}}, $2-suni.}}',
 'category-article-count' => 'Una sumut atassuseq imarivaa {{PLURAL:$2|qupperneq ataaseq ataaniittoq|{{PLURAL:$1|qupperneq ataaseq ataaniittoq|quppernerit ataaniittut $1-it}} $2-suni.}}',
 
@@ -121,7 +121,7 @@ $messages = array(
 'cancel' => 'Unitsiguk',
 'moredotdotdot' => 'Suli...',
 'mytalk' => 'Oqalliffikka',
-'navigation' => 'Sumiisswiki_usersiuut',
+'navigation' => 'Sumiissusersiuut',
 
 # Cologne Blue skin
 'qbfind' => 'Naniuk',
@@ -166,10 +166,10 @@ $messages = array(
 'redirectedfrom' => '($1-mit nuunneq)',
 'lastmodifiedat' => 'Una qupperneq kingullermik allanngortinneqarsimavoq $1 $2',
 'jumpto' => 'Uunngarit:',
-'jumptonavigation' => 'sumiisswiki_usersiuut',
+'jumptonavigation' => 'sumiissusersiuut',
 'jumptosearch' => 'ujarlerit',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} pillugu',
 'aboutpage' => 'Project:Pillugu',
 'currentevents' => 'Maannakkut pisut',
@@ -201,7 +201,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Allaaserisaq',
-'nstab-wiki_user' => 'Atuisup quppernera',
+'nstab-user' => 'Atuisup quppernera',
 'nstab-special' => 'Immikkut',
 'nstab-project' => 'Pillugu',
 'nstab-image' => 'Assiliaq',
@@ -225,9 +225,9 @@ $messages = array(
 'login' => 'Iserit',
 'nav-login-createaccount' => 'Konto-mik pilersitsigit imalt. iserit',
 'loginprompt' => 'Pisariaqassaaq cookies-itit atussallugit {{SITENAME}} -mut isissaguit.',
-'wiki_userlogin' => 'Kontomik pilersitsigit / iserit',
+'userlogin' => 'Kontomik pilersitsigit / iserit',
 'logout' => 'Anigit',
-'wiki_userlogout' => 'Anigit',
+'userlogout' => 'Anigit',
 'nologin' => "Kontomik peqanngilatit? '''$1'''.",
 'nologinlink' => 'Kontomik pilersitsigit',
 'createaccount' => 'Kontomik nutaamik pilersitsigit',
@@ -235,10 +235,10 @@ $messages = array(
 'gotaccountlink' => 'Iserit',
 'createaccountmail' => 'e-mail-ikkut',
 'badretype' => 'Isissutissat allanneqartut assigiinngillat.',
-'wiki_userexists' => 'Atuisup atia atorneqareerpoq. Allamik qinersigit.',
+'userexists' => 'Atuisup atia atorneqareerpoq. Allamik qinersigit.',
 'loginerror' => 'Iserniarnerlunneq',
 'loginsuccesstitle' => 'Maanna isersimalerputit',
-'loginsuccess' => 'Maanna {{SITENAME}} -mut isersimalerputit "$1" -itut taaguwiki_userlutit.',
+'loginsuccess' => 'Maanna {{SITENAME}} -mut isersimalerputit "$1" -itut taaguuserlutit.',
 'wrongpassword' => 'Isissutissaq kukkusumik allanneqarsimavoq. Misileqqiuk.',
 'mailmypassword' => 'E-mail-ikkut isissutissaq nutaaq nassiuguk',
 'acct_creation_throttle_hit' => 'Konto-mik pilersitsereersimagavit pilersitseqqissinnaanngilatit, IP-adressit malillugu.
@@ -269,7 +269,7 @@ Maanngarsimaguit kukkusumik, toortaat '''utimut''' tooruk.",
 'anontalkpagetext' => "---- ''Manna tassaavoq oqalliffik atuisumit anonym-iusumeersumit, konto-mik pilersitsisimanngitsumik imalt. atorneq ajugaanik.
 Taamaattumik IP-adressia kinaanerattut atortariaqassavarput.
 IP-adressi pigineqarsinnaavoq atuisunit arlalinnit.
-Atuisuuguit anonym-iusoq, isumaqarlutillu soqutiginngisannik oqaaseqarfigineqarlutit, qinnuigivatsigit [[Special:wiki_userLogin/signup|atuisutut pilersitsissallutit]] aamma [[Special:wiki_userLogin|iserlutit]], taava siunissami paarlattoornernik atuisuni arlalinni pinaveersaartoqarniassammat.''",
+Atuisuuguit anonym-iusoq, isumaqarlutillu soqutiginngisannik oqaaseqarfigineqarlutit, qinnuigivatsigit [[Special:UserLogin/signup|atuisutut pilersitsissallutit]] aamma [[Special:UserLogin|iserlutit]], taava siunissami paarlattoornernik atuisuni arlalinni pinaveersaartoqarniassammat.''",
 'noarticletext' => 'Maannamut una qupperneq allaffigineqanngilaq.
 Taamatut oqaasilimmik quppernerni allani [[Special:Search/{{PAGENAME}}|ujaasisinnaavutit]], <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} log-ini ujaasisinnavutillu] imaluunniit [{{fullurl:{{FULLPAGENAME}}|action=edit}} qupperneq pilersissinnaavat]</span>.',
 'previewnote' => 'Eqqaamallugu isikkua takutinneqaannarpoq, toqqorneqanngilaq suli!',
@@ -369,12 +369,12 @@ Peersinermut nuutsinermullu nalunaarsuutit ataani takuneqarsinnaapput.',
 'uploadedimage' => 'ilivaa "[[$1]]"',
 
 # Special:ListFiles
-'listfiles_wiki_user' => 'Atuisoq',
+'listfiles_user' => 'Atuisoq',
 
 # File description page
 'file-anchor-link' => 'Assiliaq',
 'filehist-datetime' => 'Ulloq/Piffissaq',
-'filehist-wiki_user' => 'Atuisoq',
+'filehist-user' => 'Atuisoq',
 'imagelinks' => 'Innersuutit',
 
 # MIME search
@@ -396,7 +396,7 @@ Peersinermut nuutsinermullu nalunaarsuutit ataani takuneqarsinnaapput.',
 'booksources-go' => 'Ujaruk',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Atuisoq:',
+'specialloguserlabel' => 'Atuisoq:',
 
 # Special:AllPages
 'allarticles' => 'Quppernerit tamarmik',
@@ -434,7 +434,7 @@ Aamma takuuk [[Special:WantedCategories|sunut atassusinut kissaatigineqartut]].'
 'deletedtext' => '"$1" peerpoq. Takukkit $2 peerneqarsimasut kingulliit.',
 
 # Rollback
-'revertpage' => 'Inisseqqiineq [[wiki_user:$1|$1]]-meersoq, peerneqarpoq [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|diskussion]])-meersoq',
+'revertpage' => 'Inisseqqiineq [[User:$1|$1]]-meersoq, peerneqarpoq [[Special:Contributions/$2|$2]] ([[User talk:$2|diskussion]])-meersoq',
 
 # Protect
 'prot_1movedto2' => '[[$1]]-i nuunneqarsimavoq [[$2]]-mut',
@@ -460,7 +460,7 @@ Aamma takuuk [[Special:WantedCategories|sunut atassusinut kissaatigineqartut]].'
 'sp-contributions-newbies' => 'Atuisut nutaaginnaat takukkit',
 'sp-contributions-talk' => 'oqallinneq',
 'sp-contributions-search' => 'Tapiisunik ujaasineq',
-'sp-contributions-wiki_username' => 'IP adresse imalt. atuisoq:',
+'sp-contributions-username' => 'IP adresse imalt. atuisoq:',
 'sp-contributions-submit' => 'Ujaruk',
 
 # What links here
@@ -471,7 +471,7 @@ Aamma takuuk [[Special:WantedCategories|sunut atassusinut kissaatigineqartut]].'
 # Block/unblock
 'blockip' => 'Atuisoq asseruk',
 'blockip-legend' => 'Atuisoq asseruk',
-'ipadressorwiki_username' => 'IP adresse imalt. atuisoq:',
+'ipadressorusername' => 'IP adresse imalt. atuisoq:',
 'ipboptions' => '2 tiimit:2 hours,ulloq 1:1 day,ullut 3:3 days,sap akunn 1:1 week,sap akunn 2:2 weeks,qaammat 1:1 month,qaammatit 3:3 months,qaammatit 6:6 months,ukioq 1:1 year,killeqanngitsoq:infinite',
 'ipblocklist-submit' => 'Ujarlerit',
 'infiniteblock' => 'killeqanngitsoq',
@@ -495,7 +495,7 @@ Aamma takuuk [[Special:WantedCategories|sunut atassusinut kissaatigineqartut]].'
 'thumbnail-more' => 'Allisiguk',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Atuisutut quppernerit',
+'tooltip-pt-userpage' => 'Atuisutut quppernerit',
 'tooltip-pt-mytalk' => 'Oqalliffiit',
 'tooltip-pt-preferences' => 'Inissiinikka',
 'tooltip-pt-mycontris' => 'Tapikkatit',

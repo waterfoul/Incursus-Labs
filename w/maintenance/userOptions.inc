@@ -1,6 +1,6 @@
 <?php
 /**
- * Helper class for wiki_userOptions.php script.
+ * Helper class for userOptions.php script.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ require_once( __DIR__ . '/commandLine.inc' );
 /**
  * @ingroup Maintenance
  */
-class wiki_userOptions {
+class userOptions {
 	public $mQuick;
 	public $mQuiet;
 	public $mDry;
@@ -43,7 +43,7 @@ class wiki_userOptions {
 	/** Constructor. Will show usage and exit if script options are not correct */
 	function __construct( $opts, $args ) {
 		if ( !$this->checkOpts( $opts, $args ) ) {
-			wiki_userOptions::showUsageAndExit();
+			userOptions::showUsageAndExit();
 		} else {
 			$this->mReady = $this->initializeOpts( $opts, $args );
 		}
@@ -118,7 +118,7 @@ class wiki_userOptions {
 
 	/** List default options and their value */
 	private function LISTER( ) {
-		$def = wiki_user::getDefaultOptions();
+		$def = User::getDefaultOptions();
 		ksort( $def );
 		$maxOpt = 0;
 		foreach ( $def as $opt => $value ) {
@@ -132,39 +132,39 @@ class wiki_userOptions {
 	/** List options usage */
 	private function USAGER( ) {
 		$ret = array();
-		$defaultOptions = wiki_user::getDefaultOptions();
+		$defaultOptions = User::getDefaultOptions();
 
-		// We list wiki_user by wiki_user_id from one of the slave database
-		r = wfGetDB( DB_SLAVE );
-		$result = r->select( 'wiki_user',
-			array( 'wiki_user_id' ),
+		// We list user by user_id from one of the slave database
+		$dbr = wfGetDB( DB_SLAVE );
+		$result = $dbr->select( 'user',
+			array( 'user_id' ),
 			array(),
 			__METHOD__
 			);
 
 		foreach ( $result as $id ) {
 
-			$wiki_user = wiki_user::newFromId( $id->wiki_user_id );
+			$user = User::newFromId( $id->user_id );
 
 			// Get the options and update stats
 			if ( $this->mAnOption ) {
 
 				if ( !array_key_exists( $this->mAnOption, $defaultOptions ) ) {
-					print "Invalid wiki_user option. Use --list to see valid choices\n";
+					print "Invalid user option. Use --list to see valid choices\n";
 					exit;
 				}
 
-				$wiki_userValue = $wiki_user->getOption( $this->mAnOption );
-				if ( $wiki_userValue <> $defaultOptions[$this->mAnOption] ) {
-					@$ret[$this->mAnOption][$wiki_userValue]++;
+				$userValue = $user->getOption( $this->mAnOption );
+				if ( $userValue <> $defaultOptions[$this->mAnOption] ) {
+					@$ret[$this->mAnOption][$userValue]++;
 				}
 
 			} else {
 
 				foreach ( $defaultOptions as $name => $defaultValue ) {
-					$wiki_userValue = $wiki_user->getOption( $name );
-					if ( $wiki_userValue <> $defaultValue ) {
-						@$ret[$name][$wiki_userValue]++;
+					$userValue = $user->getOption( $name );
+					if ( $userValue <> $defaultValue ) {
+						@$ret[$name][$userValue]++;
 					}
 				}
 			}
@@ -173,49 +173,49 @@ class wiki_userOptions {
 		foreach ( $ret as $optionName => $usageStats ) {
 			print "Usage for <$optionName> (default: '{$defaultOptions[$optionName]}'):\n";
 			foreach ( $usageStats as $value => $count ) {
-				print " $count wiki_user(s): '$value'\n";
+				print " $count user(s): '$value'\n";
 			}
 			print "\n";
 		}
 	}
 
 
-	/** Change our wiki_users options */
+	/** Change our users options */
 	private function CHANGER( ) {
 		$this->warn();
 
-		// We list wiki_user by wiki_user_id from one of the slave database
-		r = wfGetDB( DB_SLAVE );
-		$result = r->select( 'wiki_user',
-			array( 'wiki_user_id' ),
+		// We list user by user_id from one of the slave database
+		$dbr = wfGetDB( DB_SLAVE );
+		$result = $dbr->select( 'user',
+			array( 'user_id' ),
 			array(),
 			__METHOD__
 			);
 
 		foreach ( $result as $id ) {
 
-			$wiki_user = wiki_user::newFromId( $id->wiki_user_id );
+			$user = User::newFromId( $id->user_id );
 
-			$curValue = $wiki_user->getOption( $this->mAnOption );
-			$wiki_username = $wiki_user->getName();
+			$curValue = $user->getOption( $this->mAnOption );
+			$username = $user->getName();
 
 			if ( $curValue == $this->mOldValue ) {
 
 				if ( !$this->mQuiet ) {
-					print "Setting {$this->mAnOption} for $wiki_username from '{$this->mOldValue}' to '{$this->mNewValue}'): ";
+					print "Setting {$this->mAnOption} for $username from '{$this->mOldValue}' to '{$this->mNewValue}'): ";
 				}
 
 				// Change value
-				$wiki_user->setOption( $this->mAnOption, $this->mNewValue );
+				$user->setOption( $this->mAnOption, $this->mNewValue );
 
 				// Will not save the settings if run with --dry
 				if ( !$this->mDry ) {
-					$wiki_user->saveSettings();
+					$user->saveSettings();
 				}
 				if ( !$this->mQuiet ) { print " OK\n"; }
 
 			} elseif ( !$this->mQuiet ) {
-				print "Not changing '$wiki_username' using <{$this->mAnOption}> = '$curValue'\n";
+				print "Not changing '$username' using <{$this->mAnOption}> = '$curValue'\n";
 			}
 		}
 	}
@@ -225,7 +225,7 @@ class wiki_userOptions {
 	 * @return array
 	 */
 	public static function getDefaultOptionsNames() {
-		$def = wiki_user::getDefaultOptions();
+		$def = User::getDefaultOptions();
 		$ret = array();
 		foreach ( $def as $optname => $defaultValue ) {
 			array_push( $ret, $optname );
@@ -240,26 +240,26 @@ class wiki_userOptions {
 	public static function showUsageAndExit() {
 print <<<USAGE
 
-This script pass through all wiki_users and change one of their options.
+This script pass through all users and change one of their options.
 The new option is NOT validated.
 
 Usage:
-	php wiki_userOptions.php --list
-	php wiki_userOptions.php [wiki_user option] --usage
-	php wiki_userOptions.php [options] <wiki_user option> --old <old value> --new <new value>
+	php userOptions.php --list
+	php userOptions.php [user option] --usage
+	php userOptions.php [options] <user option> --old <old value> --new <new value>
 
 Switchs:
-	--list : list available wiki_user options and their default value
+	--list : list available user options and their default value
 
 	--usage : report all options statistics or just one if you specify it.
 
 	--old <old value> : the value to look for
-	--new <new value> : new value to update wiki_users with
+	--new <new value> : new value to update users with
 
 Options:
 	--nowarn: hides the 5 seconds warning
 	--quiet : do not print what is happening
-	--dry   : do not save wiki_user settings back to database
+	--dry   : do not save user settings back to database
 
 USAGE;
 	exit( 0 );
@@ -277,7 +277,7 @@ USAGE;
 
 print <<<WARN
 The script is about to change the skin for ALL USERS in the database.
-wiki_users with option <$this->mAnOption> = '$this->mOldValue' will be made to use '$this->mNewValue'.
+Users with option <$this->mAnOption> = '$this->mOldValue' will be made to use '$this->mNewValue'.
 
 Abort with control-c in the next five seconds....
 WARN;

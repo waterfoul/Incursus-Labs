@@ -42,7 +42,7 @@ class ParserOutput extends CacheTime {
 		$mModuleStyles = array(),     # Modules of which only the CSSS will be loaded by the resource loader
 		$mModuleMessages = array(),   # Modules of which only the messages will be loaded by the resource loader
 		$mOutputHooks = array(),      # Hook tags as per $wgParserOutputHooks
-		$mWarnings = array(),         # Warning text to be returned to the wiki_user. Wikitext formatted, in the key only
+		$mWarnings = array(),         # Warning text to be returned to the user. Wikitext formatted, in the key only
 		$mSections = array(),         # Table of contents
 		$mEditSectionTokens = false,  # prefix/suffix markers if edit sections were output as tokens
 		$mProperties = array(),       # Name/value pairs to be cached in the DB
@@ -170,7 +170,7 @@ class ParserOutput extends CacheTime {
 			return;
 		}
 		$ns = $title->getNamespace();
-		k = $title->getDBkey();
+		$dbk = $title->getDBkey();
 		if ( $ns == NS_MEDIA ) {
 			// Normalize this pseudo-alias if it makes it down here...
 			$ns = NS_FILE;
@@ -178,7 +178,7 @@ class ParserOutput extends CacheTime {
 			// We don't record Special: links currently
 			// It might actually be wise to, but we'd need to do some normalization.
 			return;
-		} elseif( k === '' ) {
+		} elseif( $dbk === '' ) {
 			// Don't record self links -  [[#Foo]]
 			return;
 		}
@@ -188,7 +188,7 @@ class ParserOutput extends CacheTime {
 		if ( is_null( $id ) ) {
 			$id = $title->getArticleID();
 		}
-		$this->mLinks[$ns][k] = $id;
+		$this->mLinks[$ns][$dbk] = $id;
 	}
 
 	/**
@@ -214,15 +214,15 @@ class ParserOutput extends CacheTime {
 	 */
 	function addTemplate( $title, $page_id, $rev_id ) {
 		$ns = $title->getNamespace();
-		k = $title->getDBkey();
+		$dbk = $title->getDBkey();
 		if ( !isset( $this->mTemplates[$ns] ) ) {
 			$this->mTemplates[$ns] = array();
 		}
-		$this->mTemplates[$ns][k] = $page_id;
+		$this->mTemplates[$ns][$dbk] = $page_id;
 		if ( !isset( $this->mTemplateIds[$ns] ) ) {
 			$this->mTemplateIds[$ns] = array();
 		}
-		$this->mTemplateIds[$ns][k] = $rev_id; // For versioning
+		$this->mTemplateIds[$ns][$dbk] = $rev_id; // For versioning
 	}
 
 	/**

@@ -394,7 +394,7 @@ class MessageCache {
 	function loadFromDB( $code ) {
 		wfProfileIn( __METHOD__ );
 		global $wgMaxMsgCacheEntrySize, $wgLanguageCode, $wgAdaptiveMessageCache;
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$cache = array();
 
 		# Common conditions
@@ -416,11 +416,11 @@ class MessageCache {
 		if ( count( $mostused ) ) {
 			$conds['page_title'] = $mostused;
 		} elseif ( $code !== $wgLanguageCode ) {
-			$conds[] = 'page_title' . r->buildLike( r->anyString(), "/$code" );
+			$conds[] = 'page_title' . $dbr->buildLike( $dbr->anyString(), "/$code" );
 		} else {
 			# Effectively disallows use of '/' character in NS_MEDIAWIKI for uses
 			# other than language code.
-			$conds[] = 'page_title NOT' . r->buildLike( r->anyString(), '/', r->anyString() );
+			$conds[] = 'page_title NOT' . $dbr->buildLike( $dbr->anyString(), '/', $dbr->anyString() );
 		}
 
 		# Conditions to fetch oversized pages to ignore them
@@ -428,7 +428,7 @@ class MessageCache {
 		$bigConds[] = 'page_len > ' . intval( $wgMaxMsgCacheEntrySize );
 
 		# Load titles for all oversized pages in the MediaWiki namespace
-		$res = r->select( 'page', 'page_title', $bigConds, __METHOD__ . "($code)-big" );
+		$res = $dbr->select( 'page', 'page_title', $bigConds, __METHOD__ . "($code)-big" );
 		foreach ( $res as $row ) {
 			$cache[$row->page_title] = '!TOO BIG';
 		}
@@ -439,7 +439,7 @@ class MessageCache {
 		$smallConds[] = 'rev_text_id=old_id';
 		$smallConds[] = 'page_len <= ' . intval( $wgMaxMsgCacheEntrySize );
 
-		$res = r->select(
+		$res = $dbr->select(
 			array( 'page', 'revision', 'text' ),
 			array( 'page_title', 'old_text', 'old_flags' ),
 			$smallConds,
@@ -591,7 +591,7 @@ class MessageCache {
 	}
 
 	/**
-	 * Get a message from either the content language or the wiki_user language.
+	 * Get a message from either the content language or the user language.
 	 *
 	 * @param $key String: the message cache key
 	 * @param $useDB Boolean: get the message from the DB, false to use only
@@ -600,7 +600,7 @@ class MessageCache {
 	 *                  it is a valid code create a language for that language,
 	 *                  if it is a string but not a valid code then make a basic
 	 *                  language object, if it is a false boolean then use the
-	 *                  current wiki_users language (as a fallback for the old
+	 *                  current users language (as a fallback for the old
 	 *                  parameter functionality), or if it is a true boolean
 	 *                  then use the wikis content language (also as a
 	 *                  fallback).
@@ -810,11 +810,11 @@ class MessageCache {
 			$popts->setInterfaceMessage( $interface );
 			$popts->setTargetLanguage( $language );
 
-			$wiki_userlang = $popts->setwiki_userLang( $language );
+			$userlang = $popts->setUserLang( $language );
 			$this->mInParser = true;
 			$message = $parser->transformMsg( $message, $popts, $title );
 			$this->mInParser = false;
-			$popts->setwiki_userLang( $wiki_userlang );
+			$popts->setUserLang( $userlang );
 		}
 		return $message;
 	}

@@ -13,7 +13,7 @@
 
 $messages = array(
 # Special:UploadStash
-'uploadstash-summary' => 'This page provides access to files which are uploaded (or in process of uploading) but are not yet published to the wiki. These files are not visible to anyone but the wiki_user who uploaded them.',
+'uploadstash-summary' => 'This page provides access to files which are uploaded (or in process of uploading) but are not yet published to the wiki. These files are not visible to anyone but the user who uploaded them.',
 
 # Edit tokens
 'sessionfailure' => 'There seems to be a problem with your login session;

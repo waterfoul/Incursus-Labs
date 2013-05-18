@@ -104,7 +104,7 @@ td.top-linkcollection {
 	text-align: right;
 }
 /**
- * Overrides text justification (wiki_user preference)
+ * Overrides text justification (user preference)
  * See bug 31990
  */
 td.top-linkcollection #catlinks {

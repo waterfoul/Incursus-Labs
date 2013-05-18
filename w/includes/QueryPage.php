@@ -271,7 +271,7 @@ abstract class QueryPage extends SpecialPage {
 	}
 
 	/**
-	 * Some special pages (for example SpecialListwiki_users) might not return the
+	 * Some special pages (for example SpecialListusers) might not return the
 	 * current object formatted, but return the previous one instead.
 	 * Setting this to return true will ensure formatResult() is called
 	 * one more time to make sure that the very last result is formatted
@@ -295,19 +295,19 @@ abstract class QueryPage extends SpecialPage {
 		}
 
 		$fname = get_class( $this ) . '::recache';
-		w = wfGetDB( DB_MASTER );
-		r = wfGetDB( DB_SLAVE, array( $this->getName(), __METHOD__, 'vslow' ) );
-		if ( !w || !r ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_SLAVE, array( $this->getName(), __METHOD__, 'vslow' ) );
+		if ( !$dbw || !$dbr ) {
 			return false;
 		}
 
 		if ( $ignoreErrors ) {
-			$ignoreW = w->ignoreErrors( true );
-			$ignoreR = r->ignoreErrors( true );
+			$ignoreW = $dbw->ignoreErrors( true );
+			$ignoreR = $dbr->ignoreErrors( true );
 		}
 
 		# Clear out any old cached data
-		w->delete( 'querycache', array( 'qc_type' => $this->getName() ), $fname );
+		$dbw->delete( 'querycache', array( 'qc_type' => $this->getName() ), $fname );
 		# Do query
 		$res = $this->reallyDoQuery( $limit, false );
 		$num = false;
@@ -315,7 +315,7 @@ abstract class QueryPage extends SpecialPage {
 			$num = $res->numRows();
 			# Fetch results
 			$vals = array();
-			while ( $res && $row = r->fetchObject( $res ) ) {
+			while ( $res && $row = $dbr->fetchObject( $res ) ) {
 				if ( isset( $row->value ) ) {
 					if ( $this->usesTimestamps() ) {
 						$value = wfTimestamp( TS_UNIX,
@@ -335,19 +335,19 @@ abstract class QueryPage extends SpecialPage {
 
 			# Save results into the querycache table on the master
 			if ( count( $vals ) ) {
-				if ( !w->insert( 'querycache', $vals, __METHOD__ ) ) {
+				if ( !$dbw->insert( 'querycache', $vals, __METHOD__ ) ) {
 					// Set result to false to indicate error
 					$num = false;
 				}
 			}
 			if ( $ignoreErrors ) {
-				w->ignoreErrors( $ignoreW );
-				r->ignoreErrors( $ignoreR );
+				$dbw->ignoreErrors( $ignoreW );
+				$dbr->ignoreErrors( $ignoreR );
 			}
 
 			# Update the querycache_info record for the page
-			w->delete( 'querycache_info', array( 'qci_type' => $this->getName() ), $fname );
-			w->insert( 'querycache_info', array( 'qci_type' => $this->getName(), 'qci_timestamp' => w->timestamp() ), $fname );
+			$dbw->delete( 'querycache_info', array( 'qci_type' => $this->getName() ), $fname );
+			$dbw->insert( 'querycache_info', array( 'qci_type' => $this->getName(), 'qci_timestamp' => $dbw->timestamp() ), $fname );
 
 		}
 		return $num;
@@ -362,7 +362,7 @@ abstract class QueryPage extends SpecialPage {
 	 */
 	function reallyDoQuery( $limit, $offset = false ) {
 		$fname = get_class( $this ) . "::reallyDoQuery";
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$query = $this->getQueryInfo();
 		$order = $this->getOrderFields();
 		if ( $this->sortDescending() ) {
@@ -386,17 +386,17 @@ abstract class QueryPage extends SpecialPage {
 				$options['OFFSET'] = intval( $offset );
 			}
 
-			$res = r->select( $tables, $fields, $conds, $fname,
+			$res = $dbr->select( $tables, $fields, $conds, $fname,
 					$options, $join_conds
 			);
 		} else {
 			// Old-fashioned raw SQL style, deprecated
 			$sql = $this->getSQL();
 			$sql .= ' ORDER BY ' . implode( ', ', $order );
-			$sql = r->limitResult( $sql, $limit, $offset );
-			$res = r->query( $sql, $fname );
+			$sql = $dbr->limitResult( $sql, $limit, $offset );
+			$res = $dbr->query( $sql, $fname );
 		}
-		return r->resultObject( $res );
+		return $dbr->resultObject( $res );
 	}
 
 	/**
@@ -419,7 +419,7 @@ abstract class QueryPage extends SpecialPage {
 	 * @since 1.18
 	 */
 	function fetchFromCache( $limit, $offset = false ) {
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$options = array ();
 		if ( $limit !== false ) {
 			$options['LIMIT'] = intval( $limit );
@@ -432,21 +432,21 @@ abstract class QueryPage extends SpecialPage {
 		} else {
 			$options['ORDER BY'] = 'qc_value ASC';
 		}
-		$res = r->select( 'querycache', array( 'qc_type',
+		$res = $dbr->select( 'querycache', array( 'qc_type',
 				'namespace' => 'qc_namespace',
 				'title' => 'qc_title',
 				'value' => 'qc_value' ),
 				array( 'qc_type' => $this->getName() ),
 				__METHOD__, $options
 		);
-		return r->resultObject( $res );
+		return $dbr->resultObject( $res );
 	}
 
 	public function getCachedTimestamp() {
 		if ( is_null( $this->cachedTimestamp ) ) {
-			r = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$fname = get_class( $this ) . '::getCachedTimestamp';
-			$this->cachedTimestamp = r->selectField( 'querycache_info', 'qci_timestamp',
+			$this->cachedTimestamp = $dbr->selectField( 'querycache_info', 'qci_timestamp',
 				array( 'qci_type' => $this->getName() ), $fname );
 		}
 		return $this->cachedTimestamp;
@@ -460,8 +460,8 @@ abstract class QueryPage extends SpecialPage {
 	function execute( $par ) {
 		global $wgQueryCacheLimit, $wgDisableQueryPageUpdate;
 
-		$wiki_user = $this->getwiki_user();
-		if ( !$this->wiki_userCanExecute( $wiki_user ) ) {
+		$user = $this->getUser();
+		if ( !$this->userCanExecute( $user ) ) {
 			$this->displayRestrictionError();
 			return;
 		}
@@ -497,9 +497,9 @@ abstract class QueryPage extends SpecialPage {
 				$maxResults = $lang->formatNum( $wgQueryCacheLimit );
 
 				if ( $ts ) {
-					$updated = $lang->wiki_userTimeAndDate( $ts, $wiki_user );
-					$updateddate = $lang->wiki_userDate( $ts, $wiki_user );
-					$updatedtime = $lang->wiki_userTime( $ts, $wiki_user );
+					$updated = $lang->userTimeAndDate( $ts, $user );
+					$updateddate = $lang->userDate( $ts, $user );
+					$updatedtime = $lang->userTime( $ts, $user );
 					$out->addMeta( 'Data-Cache-Time', $ts );
 					$out->addJsConfigVars( 'dataCacheTime', $ts );
 					$out->addWikiMsg( 'perfcachedts', $updated, $updateddate, $updatedtime, $maxResults );
@@ -507,7 +507,7 @@ abstract class QueryPage extends SpecialPage {
 					$out->addWikiMsg( 'perfcached', $maxResults );
 				}
 
-				# If updates on this page have been disabled, let the wiki_user know
+				# If updates on this page have been disabled, let the user know
 				# that the data set won't be refreshed for now
 				if ( is_array( $wgDisableQueryPageUpdate ) && in_array( $this->getName(), $wgDisableQueryPageUpdate ) ) {
 					$out->wrapWikiMsg( "<div class=\"mw-querypage-no-updates\">\n$1\n</div>", 'querypage-no-updates' );
@@ -517,8 +517,8 @@ abstract class QueryPage extends SpecialPage {
 
 		$this->numRows = $res->numRows();
 
-		r = wfGetDB( DB_SLAVE );
-		$this->preprocessResults( r, $res );
+		$dbr = wfGetDB( DB_SLAVE );
+		$this->preprocessResults( $dbr, $res );
 
 		$out->addHTML( Xml::openElement( 'div', array( 'class' => 'mw-spcontent' ) ) );
 
@@ -535,7 +535,7 @@ abstract class QueryPage extends SpecialPage {
 				$out->addHTML( '<p>' . $paging . '</p>' );
 			} else {
 				# No results to show, so don't bother with "showing X of Y" etc.
-				# -- just let the wiki_user know and give up now
+				# -- just let the user know and give up now
 				$out->addWikiMsg( 'specialpage-empty' );
 				$out->addHTML( Xml::closeElement( 'div' ) );
 				return;
@@ -547,7 +547,7 @@ abstract class QueryPage extends SpecialPage {
 		# an OutputPage, and let them get on with it
 		$this->outputResults( $out,
 			$this->getSkin(),
-			r, # Should use a ResultWrapper for this
+			$dbr, # Should use a ResultWrapper for this
 			$res,
 			min( $this->numRows, $this->limit ), # do not format the one extra row, if exist
 			$this->offset );
@@ -567,13 +567,13 @@ abstract class QueryPage extends SpecialPage {
 	 * OutputPage
 	 *
 	 * @param $out OutputPage to print to
-	 * @param $skin Skin: wiki_user skin to use
-	 * @param r Database (read) connection to use
+	 * @param $skin Skin: user skin to use
+	 * @param $dbr Database (read) connection to use
 	 * @param $res Integer: result pointer
 	 * @param $num Integer: number of available result rows
 	 * @param $offset Integer: paging offset
 	 */
-	protected function outputResults( $out, $skin, r, $res, $num, $offset ) {
+	protected function outputResults( $out, $skin, $dbr, $res, $num, $offset ) {
 		global $wgContLang;
 
 		if ( $num > 0 ) {
@@ -584,10 +584,10 @@ abstract class QueryPage extends SpecialPage {
 
 			# $res might contain the whole 1,000 rows, so we read up to
 			# $num [should update this to use a Pager]
-			for ( $i = 0; $i < $num && $row = r->fetchObject( $res ); $i++ ) {
+			for ( $i = 0; $i < $num && $row = $dbr->fetchObject( $res ); $i++ ) {
 				// <IntraACL>
 				$title = Title::makeTitleSafe( $row->namespace, $row->title );
-				if ( !$title || !$title->wiki_userCanReadEx() ) {
+				if ( !$title || !$title->userCanReadEx() ) {
 					continue;
 				}
 				// </IntraACL>
@@ -646,7 +646,7 @@ abstract class QueryPage extends SpecialPage {
 	/**
 	 * Do any necessary preprocessing of the result object.
 	 */
-	function preprocessResults( , $res ) {}
+	function preprocessResults( $db, $res ) {}
 
 	/**
 	 * Similar to above, but packaging in a syndicated feed instead of a web page
@@ -722,7 +722,7 @@ abstract class QueryPage extends SpecialPage {
 	}
 
 	function feedItemAuthor( $row ) {
-		return isset( $row->wiki_user_text ) ? $row->wiki_user_text : '';
+		return isset( $row->user_text ) ? $row->user_text : '';
 	}
 
 	function feedTitle() {
@@ -757,7 +757,7 @@ abstract class WantedQueryPage extends QueryPage {
 	/**
 	 * Cache page existence for performance
 	 */
-	function preprocessResults( , $res ) {
+	function preprocessResults( $db, $res ) {
 		if ( !$res->numRows() ) {
 			return;
 		}

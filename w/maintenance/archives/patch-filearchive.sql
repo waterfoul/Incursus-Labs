@@ -24,7 +24,7 @@ CREATE TABLE /*$wgDBprefix*/filearchive (
   fa_storage_key varbinary(64) default '',
   
   -- Deletion information, if this file is deleted.
-  fa_deleted_wiki_user int,
+  fa_deleted_user int,
   fa_deleted_timestamp binary(14) default '',
   fa_deleted_reason text,
   
@@ -38,14 +38,14 @@ CREATE TABLE /*$wgDBprefix*/filearchive (
   fa_major_mime ENUM("unknown", "application", "audio", "image", "text", "video", "message", "model", "multipart") default "unknown",
   fa_minor_mime varbinary(32) default "unknown",
   fa_description tinyblob,
-  fa_wiki_user int unsigned default '0',
-  fa_wiki_user_text varchar(255) binary default '',
+  fa_user int unsigned default '0',
+  fa_user_text varchar(255) binary default '',
   fa_timestamp binary(14) default '',
   
   PRIMARY KEY (fa_id),
   INDEX (fa_name, fa_timestamp),             -- pick out by image name
   INDEX (fa_storage_group, fa_storage_key),  -- pick out dupe files
   INDEX (fa_deleted_timestamp),              -- sort by deletion time
-  INDEX (fa_deleted_wiki_user)                    -- sort by deleter
+  INDEX (fa_deleted_user)                    -- sort by deleter
 
 ) /*$wgDBTableOptions*/;

@@ -723,7 +723,7 @@ var mw = ( function ( $, undefined ) {
 								try {
 									job.error( e, [module] );
 								} catch ( ex ) {
-									// A wiki_user-defined operation raised an exception. Swallow to protect
+									// A user-defined operation raised an exception. Swallow to protect
 									// our state machine!
 									log( 'Exception thrown by job.error()', ex );
 								}
@@ -801,7 +801,7 @@ var mw = ( function ( $, undefined ) {
 						// Appending to the <head> blocks rendering completely in Opera,
 						// so append to the <body> after document ready. This means the
 						// scripts only start loading after  the document has been rendered,
-						// but so be it. Opera wiki_users don't deserve faster web pages if their
+						// but so be it. Opera users don't deserve faster web pages if their
 						// browser makes it impossible
 						$( function () { document.body.appendChild( script ); } );
 					} else {
@@ -1057,7 +1057,7 @@ var mw = ( function ( $, undefined ) {
 					// Build a list of request parameters common to all requests.
 					reqBase = {
 						skin: mw.config.get( 'skin' ),
-						lang: mw.config.get( 'wgwiki_userLanguage' ),
+						lang: mw.config.get( 'wgUserLanguage' ),
 						debug: mw.config.get( 'debug' )
 					};
 					// Split module batch by source and by group.
@@ -1128,9 +1128,9 @@ var mw = ( function ( $, undefined ) {
 							}
 
 							currReqBase = $.extend( { 'version': formatVersionNumber( maxVersion ) }, reqBase );
-							// For wiki_user modules append a wiki_user name to the request.
-							if ( group === "wiki_user" && mw.config.get( 'wgwiki_userName' ) !== null ) {
-								currReqBase.wiki_user = mw.config.get( 'wgwiki_userName' );
+							// For user modules append a user name to the request.
+							if ( group === "user" && mw.config.get( 'wgUserName' ) !== null ) {
+								currReqBase.user = mw.config.get( 'wgUserName' );
 							}
 							currReqBaseLength = $.param( currReqBase ).length;
 							async = true;
@@ -1502,10 +1502,10 @@ var mw = ( function ( $, undefined ) {
 				},
 
 				/**
-				 * For backwards-compatibility with Squid-cached pages. Loads mw.wiki_user
+				 * For backwards-compatibility with Squid-cached pages. Loads mw.user
 				 */
 				go: function () {
-					mw.loader.load( 'mediawiki.wiki_user' );
+					mw.loader.load( 'mediawiki.user' );
 				}
 			};
 		}() ),
@@ -1622,8 +1622,8 @@ var mw = ( function ( $, undefined ) {
 			};
 		}() ),
 
-		// Skeleton wiki_user object. mediawiki.wiki_user.js extends this
-		wiki_user: {
+		// Skeleton user object. mediawiki.user.js extends this
+		user: {
 			options: new Map(),
 			tokens: new Map()
 		}

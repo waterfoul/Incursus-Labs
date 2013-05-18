@@ -69,16 +69,16 @@ class nextJobDB extends Maintenance {
 			}
 
 			$candidates = array_values( $candidates );
-			 = $candidates[ mt_rand( 0, count( $candidates ) - 1 ) ];
-			if ( !$this->checkJob( $type,  ) ) {
+			$db = $candidates[ mt_rand( 0, count( $candidates ) - 1 ) ];
+			if ( !$this->checkJob( $type, $db ) ) {
 				// This job is not available in the current database. Remove it from
 				// the cache.
 				if ( $type === false ) {
-					foreach ( $pendingDBs as $type2 => s ) {
-						$pendingDBs[$type2] = array_diff( $pendingDBs[$type2], array(  ) );
+					foreach ( $pendingDBs as $type2 => $dbs ) {
+						$pendingDBs[$type2] = array_diff( $pendingDBs[$type2], array( $db ) );
 					}
 				} else {
-					$pendingDBs[$type] = array_diff( $pendingDBs[$type], array(  ) );
+					$pendingDBs[$type] = array_diff( $pendingDBs[$type], array( $db ) );
 				}
 
 				$wgMemc->set( $memcKey, $pendingDBs, 300 );
@@ -86,19 +86,19 @@ class nextJobDB extends Maintenance {
 			}
 		} while ( $again );
 
-		$this->output(  . "\n" );
+		$this->output( $db . "\n" );
 	}
 
 	/**
 	 * Check if the specified database has a job of the specified type in it.
 	 * The type may be false to indicate "all".
 	 * @param $type string
-	 * @param Name string
+	 * @param $dbName string
 	 * @return bool
 	 */
-	function checkJob( $type, Name ) {
-		$lb = wfGetLB( Name );
-		 = $lb->getConnection( DB_MASTER, array(), Name );
+	function checkJob( $type, $dbName ) {
+		$lb = wfGetLB( $dbName );
+		$db = $lb->getConnection( DB_MASTER, array(), $dbName );
 		if ( $type === false ) {
 			$conds = Job::defaultQueueConditions( );
 		} else {
@@ -106,8 +106,8 @@ class nextJobDB extends Maintenance {
 		}
 
 
-		$exists = (bool) ->selectField( 'job', '1', $conds, __METHOD__ );
-		$lb->reuseConnection(  );
+		$exists = (bool) $db->selectField( 'job', '1', $conds, __METHOD__ );
+		$lb->reuseConnection( $db );
 		return $exists;
 	}
 
@@ -119,30 +119,30 @@ class nextJobDB extends Maintenance {
 		global $wgLocalDatabases;
 		$pendingDBs = array();
 		# Cross-reference DBs by master DB server
-		sByMaster = array();
-		foreach ( $wgLocalDatabases as  ) {
-			$lb = wfGetLB(  );
-			sByMaster[$lb->getServerName( 0 )][] = ;
+		$dbsByMaster = array();
+		foreach ( $wgLocalDatabases as $db ) {
+			$lb = wfGetLB( $db );
+			$dbsByMaster[$lb->getServerName( 0 )][] = $db;
 		}
 
-		foreach ( sByMaster as s ) {
-			Conn = wfGetDB( DB_MASTER, array(), s[0] );
+		foreach ( $dbsByMaster as $dbs ) {
+			$dbConn = wfGetDB( DB_MASTER, array(), $dbs[0] );
 
 			# Padding row for MySQL bug
 			$pad = str_repeat( '-', 40 );
 			$sql = "(SELECT '$pad' as db, '$pad' as job_cmd)";
-			foreach ( s as $wikiId ) {
+			foreach ( $dbs as $wikiId ) {
 				if ( $sql != '' ) {
 					$sql .= ' UNION ';
 				}
 
-				list( Name, $tablePrefix ) = wfSplitWikiID( $wikiId );
-				Conn->tablePrefix( $tablePrefix );
-				$jobTable = Conn->tableName( 'job' );
+				list( $dbName, $tablePrefix ) = wfSplitWikiID( $wikiId );
+				$dbConn->tablePrefix( $tablePrefix );
+				$jobTable = $dbConn->tableName( 'job' );
 
-				$sql .= "(SELECT DISTINCT '$wikiId' as db, job_cmd FROM Name.$jobTable GROUP BY job_cmd)";
+				$sql .= "(SELECT DISTINCT '$wikiId' as db, job_cmd FROM $dbName.$jobTable GROUP BY job_cmd)";
 			}
-			$res = Conn->query( $sql, __METHOD__ );
+			$res = $dbConn->query( $sql, __METHOD__ );
 			$first = true;
 			foreach ( $res as $row ) {
 				if ( $first ) {

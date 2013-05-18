@@ -104,16 +104,16 @@ abstract class UploadBase {
 	}
 
 	/**
-	 * Returns true if the wiki_user can use this upload module or else a string
+	 * Returns true if the user can use this upload module or else a string
 	 * identifying the missing permission.
 	 * Can be overriden by subclasses.
 	 *
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @return bool
 	 */
-	public static function isAllowed( $wiki_user ) {
+	public static function isAllowed( $user ) {
 		foreach ( array( 'upload', 'edit' ) as $permission ) {
-			if ( !$wiki_user->isAllowed( $permission ) ) {
+			if ( !$user->isAllowed( $permission ) ) {
 				return $permission;
 			}
 		}
@@ -152,12 +152,12 @@ abstract class UploadBase {
 		}
 
 		// Check whether this upload class is enabled
-		if( !call_wiki_user_func( array( $className, 'isEnabled' ) ) ) {
+		if( !call_user_func( array( $className, 'isEnabled' ) ) ) {
 			return null;
 		}
 
 		// Check whether the request is valid
-		if( !call_wiki_user_func( array( $className, 'isValidRequest' ), $request ) ) {
+		if( !call_user_func( array( $className, 'isValidRequest' ), $request ) ) {
 			return null;
 		}
 
@@ -493,39 +493,39 @@ abstract class UploadBase {
 
 	/**
 	 * Alias for verifyTitlePermissions. The function was originally 'verifyPermissions'
-	 * but that suggests it's checking the wiki_user, when it's really checking the title + wiki_user combination.
-	 * @param $wiki_user wiki_user object to verify the permissions against
-	 * @return mixed An array as returned by getwiki_userPermissionsErrors or true
-	 *               in case the wiki_user has proper permissions.
+	 * but that suggests it's checking the user, when it's really checking the title + user combination.
+	 * @param $user User object to verify the permissions against
+	 * @return mixed An array as returned by getUserPermissionsErrors or true
+	 *               in case the user has proper permissions.
 	 */
-	public function verifyPermissions( $wiki_user ) {
-		return $this->verifyTitlePermissions( $wiki_user );
+	public function verifyPermissions( $user ) {
+		return $this->verifyTitlePermissions( $user );
 	}
 
 	/**
-	 * Check whether the wiki_user can edit, upload and create the image. This
+	 * Check whether the user can edit, upload and create the image. This
 	 * checks only against the current title; if it returns errors, it may
 	 * very well be that another title will not give errors. Therefore
-	 * isAllowed() should be called as well for generic is-wiki_user-blocked or
-	 * can-wiki_user-upload checking.
+	 * isAllowed() should be called as well for generic is-user-blocked or
+	 * can-user-upload checking.
 	 *
-	 * @param $wiki_user wiki_user object to verify the permissions against
-	 * @return mixed An array as returned by getwiki_userPermissionsErrors or true
-	 *               in case the wiki_user has proper permissions.
+	 * @param $user User object to verify the permissions against
+	 * @return mixed An array as returned by getUserPermissionsErrors or true
+	 *               in case the user has proper permissions.
 	 */
-	public function verifyTitlePermissions( $wiki_user ) {
+	public function verifyTitlePermissions( $user ) {
 		/**
-		 * If the image is protected, non-sysop wiki_users won't be able
+		 * If the image is protected, non-sysop users won't be able
 		 * to modify it by uploading a new revision.
 		 */
 		$nt = $this->getTitle();
 		if( is_null( $nt ) ) {
 			return true;
 		}
-		$permErrors = $nt->getwiki_userPermissionsErrors( 'edit', $wiki_user );
-		$permErrorsUpload = $nt->getwiki_userPermissionsErrors( 'upload', $wiki_user );
+		$permErrors = $nt->getUserPermissionsErrors( 'edit', $user );
+		$permErrorsUpload = $nt->getUserPermissionsErrors( 'upload', $user );
 		if ( !$nt->exists() ) {
-			$permErrorsCreate = $nt->getwiki_userPermissionsErrors( 'create', $wiki_user );
+			$permErrorsCreate = $nt->getUserPermissionsErrors( 'create', $user );
 		} else {
 			$permErrorsCreate = array();
 		}
@@ -535,7 +535,7 @@ abstract class UploadBase {
 			return $permErrors;
 		}
 
-		$overwriteError = $this->checkOverwrite( $wiki_user );
+		$overwriteError = $this->checkOverwrite( $user );
 		if ( $overwriteError !== true ) {
 			return array( $overwriteError );
 		}
@@ -622,11 +622,11 @@ abstract class UploadBase {
 	 * @param $comment
 	 * @param $pageText
 	 * @param $watch
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 *
 	 * @return Status indicating the whether the upload succeeded.
 	 */
-	public function performUpload( $comment, $pageText, $watch, $wiki_user ) {
+	public function performUpload( $comment, $pageText, $watch, $user ) {
 		wfProfileIn( __METHOD__ );
 
 		$status = $this->getLocalFile()->upload(
@@ -636,12 +636,12 @@ abstract class UploadBase {
 			File::DELETE_SOURCE,
 			$this->mFileProps,
 			false,
-			$wiki_user
+			$user
 		);
 
 		if( $status->isGood() ) {
 			if ( $watch ) {
-				$wiki_user->addWatch( $this->getLocalFile()->getTitle() );
+				$user->addWatch( $this->getLocalFile()->getTitle() );
 			}
 			wfRunHooks( 'UploadComplete', array( &$this ) );
 		}
@@ -661,7 +661,7 @@ abstract class UploadBase {
 			return $this->mTitle;
 		}
 
-		/* Assume that if a wiki_user specified File:Something.jpg, this is an error
+		/* Assume that if a user specified File:Something.jpg, this is an error
 		 * and that the namespace prefix needs to be stripped of.
 		 */
 		$title = Title::newFromText( $this->mDesiredDestName );
@@ -724,7 +724,7 @@ abstract class UploadBase {
 
 		}
 
-		/* Don't allow wiki_users to override the blacklist (check file extension) */
+		/* Don't allow users to override the blacklist (check file extension) */
 		global $wgCheckFileExtensions, $wgStrictFileExtensions;
 		global $wgFileExtensions, $wgFileBlacklist;
 
@@ -777,7 +777,7 @@ abstract class UploadBase {
 	}
 
 	/**
-	 * If the wiki_user does not supply all necessary information in the first upload form submission (either by accident or
+	 * If the user does not supply all necessary information in the first upload form submission (either by accident or
 	 * by design) then we may want to stash the file temporarily, get more information, and publish the file later.
 	 *
 	 * This method will stash a file in a temporary directory for later processing, and save the necessary descriptive info
@@ -1264,17 +1264,17 @@ abstract class UploadBase {
 
 	/**
 	 * Check if there's an overwrite conflict and, if so, if restrictions
-	 * forbid this wiki_user from performing the upload.
+	 * forbid this user from performing the upload.
 	 *
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 *
 	 * @return mixed true on success, array on failure
 	 */
-	private function checkOverwrite( $wiki_user ) {
+	private function checkOverwrite( $user ) {
 		// First check whether the local file can be overwritten
 		$file = $this->getLocalFile();
 		if( $file->exists() ) {
-			if( !self::wiki_userCanReUpload( $wiki_user, $file ) ) {
+			if( !self::userCanReUpload( $user, $file ) ) {
 				return array( 'fileexists-forbidden', $file->getName() );
 			} else {
 				return true;
@@ -1285,7 +1285,7 @@ abstract class UploadBase {
 		 * wfFindFile finds a file, it exists in a shared repository.
 		 */
 		$file = wfFindFile( $this->getTitle() );
-		if ( $file && !$wiki_user->isAllowed( 'reupload-shared' ) ) {
+		if ( $file && !$user->isAllowed( 'reupload-shared' ) ) {
 			return array( 'fileexists-shared-forbidden', $file->getName() );
 		}
 
@@ -1293,17 +1293,17 @@ abstract class UploadBase {
 	}
 
 	/**
-	 * Check if a wiki_user is the last uploader
+	 * Check if a user is the last uploader
 	 *
-	 * @param $wiki_user wiki_user object
+	 * @param $user User object
 	 * @param $img String: image name
 	 * @return Boolean
 	 */
-	public static function wiki_userCanReUpload( wiki_user $wiki_user, $img ) {
-		if( $wiki_user->isAllowed( 'reupload' ) ) {
+	public static function userCanReUpload( User $user, $img ) {
+		if( $user->isAllowed( 'reupload' ) ) {
 			return true; // non-conditional
 		}
-		if( !$wiki_user->isAllowed( 'reupload-own' ) ) {
+		if( !$user->isAllowed( 'reupload-own' ) ) {
 			return false;
 		}
 		if( is_string( $img ) ) {
@@ -1313,7 +1313,7 @@ abstract class UploadBase {
 			return false;
 		}
 
-		return $wiki_user->getId() == $img->getwiki_user( 'id' );
+		return $user->getId() == $img->getUser( 'id' );
 	}
 
 	/**

@@ -48,7 +48,7 @@ class DisambiguationsPage extends QueryPage {
 	 * @return string|bool False on failure
 	 */
 	function getQueryFromLinkBatch() {
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$dMsgText = $this->msg( 'disambiguationspage' )->inContentLanguage()->text();
 		$linkBatch = new LinkBatch;
 
@@ -65,7 +65,7 @@ class DisambiguationsPage extends QueryPage {
 		} else {
 				# Get all the templates linked from the Mediawiki:Disambiguationspage
 				$disPageObj = Title::makeTitleSafe( NS_MEDIAWIKI, 'disambiguationspage' );
-				$res = r->select(
+				$res = $dbr->select(
 					array('pagelinks', 'page'),
 					'pl_title',
 					array('page_id = pl_from',
@@ -78,7 +78,7 @@ class DisambiguationsPage extends QueryPage {
 					$linkBatch->addObj( Title::makeTitle( NS_TEMPLATE, $row->pl_title ));
 				}
 		}
-		$set = $linkBatch->constructSet( 'tl', r );
+		$set = $linkBatch->constructSet( 'tl', $dbr );
 
 		if( $set === false ) {
 			# We must always return a valid SQL query, but this way
@@ -125,10 +125,10 @@ class DisambiguationsPage extends QueryPage {
 	/**
 	 * Fetch links and cache their existence
 	 *
-	 * @param  DatabaseBase
+	 * @param $db DatabaseBase
 	 * @param $res
 	 */
-	function preprocessResults( , $res ) {
+	function preprocessResults( $db, $res ) {
 		if ( !$res->numRows() ) {
 			return;
 		}

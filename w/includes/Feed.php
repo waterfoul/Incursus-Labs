@@ -56,7 +56,7 @@ class FeedItem {
 	 * @param $description String
 	 * @param $url String: URL uniquely designating the item.
 	 * @param $date String: Item's date
-	 * @param $author String: Author's wiki_user name
+	 * @param $author String: Author's user name
 	 * @param $comments String
 	 */
 	function __construct( $title, $description, $url, $date = '', $author = '', $comments = '' ) {

@@ -33,7 +33,7 @@ $namespaceNames = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Cur linnaghyn fo chianglaghyn:',
 'tog-justify' => 'Cur meeryn ayns un linney',
 'tog-hideminor' => "Follee myn-arraghyn ayns caghlaaghyn s'noa",
@@ -53,7 +53,7 @@ $messages = array(
 'tog-previewonfirst' => 'Taishbyn roie-haishbynys lurg y chied reaghey',
 'tog-nocache' => 'Ny sauail duillagyn ayns tasht y jeeagheyder',
 'tog-enotifwatchlistpages' => 'Cur post-l dou tra ta duillag er y rolley arrey aym goll er reaghey',
-'tog-enotifwiki_usertalkpages' => 'Cur post-l dou my vees y duillag ymmydeyr aym caghlaa',
+'tog-enotifusertalkpages' => 'Cur post-l dou my vees y duillag ymmydeyr aym caghlaa',
 'tog-enotifminoredits' => 'Cur dou post-l er myn-arraghey duillagyn chammah',
 'tog-enotifrevealaddr' => 'Taishbyney my enmys post-l ayns postyn-l fogrey',
 'tog-shownumberswatching' => 'Taishbyn earroo ny h-ymmydeyryn ta freill arrey',
@@ -223,7 +223,7 @@ $messages = array(
 'talk' => 'Resoonaght',
 'views' => 'Reayrtyn',
 'toolbox' => 'Kishtey greie',
-'wiki_userpage' => 'Jeeagh er duillag yn ymmydeyr',
+'userpage' => 'Jeeagh er duillag yn ymmydeyr',
 'projectpage' => 'Jeeagh er duillag ny shalee',
 'imagepage' => 'Jeeagh er duillag y choadan',
 'mediawikipage' => 'Jeeagh er duillag ny çhaghteraght',
@@ -241,7 +241,7 @@ $messages = array(
 'jumptosearch' => 'ronsee',
 'pool-errorunknown' => 'Doilleeid gyn enney',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Mychione {{SITENAME}}',
 'aboutpage' => 'Project:Mychione',
 'copyright' => 'Ta stoo ry-gheddyn rere $1.',
@@ -294,7 +294,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Duillag',
-'nstab-wiki_user' => 'Duillag yn ymmydeyr',
+'nstab-user' => 'Duillag yn ymmydeyr',
 'nstab-special' => 'Er lheh',
 'nstab-project' => 'Duillag shalee',
 'nstab-image' => 'Coadan',
@@ -316,7 +316,7 @@ $messages = array(
 Dy cadjin, shen eiyrtys criggal er kiangley caghlaaee ny shennaghys ta ass date as kianglt rish dys duillag t\'er ny scryssey.
 
 Mannagh vel, foddee dy vel doghan \'sy chooid vog feddynit magh ayd.<br />
-Cur coontey jeh da [[Special:Listwiki_users/sysop|reireyder]], as goaill stiagh yn URL my saillt.',
+Cur coontey jeh da [[Special:ListUsers/sysop|reireyder]], as goaill stiagh yn URL my saillt.',
 'missingarticle-rev' => '(caghlaa#: $1)',
 'missingarticle-diff' => '(Caghlaa: $1, $2)',
 'internalerror' => 'Marranys ynveanagh',
@@ -353,10 +353,10 @@ Ny jean jarrood dty [[Special:Preferences|hosheeaghtyn {{SITENAME}}]] y chaghlaa
 'login' => 'Log stiagh',
 'nav-login-createaccount' => 'Log stiagh / croo coontys',
 'loginprompt' => 'Shegin dhyt cur pooar da minniagyn dy loggal stiagh ayns {{SITENAME}}.',
-'wiki_userlogin' => 'Log stiagh / croo coontys',
-'wiki_userloginnocreate' => 'Log stiagh',
+'userlogin' => 'Log stiagh / croo coontys',
+'userloginnocreate' => 'Log stiagh',
 'logout' => 'Log magh',
-'wiki_userlogout' => 'Log magh',
+'userlogout' => 'Log magh',
 'notloggedin' => 'Cha nel ou loggit stiagh',
 'nologin' => "Nagh vel loggal stiagh ayd? '''$1'''.",
 'nologinlink' => 'Croo coontys',
@@ -370,13 +370,13 @@ Ny jean jarrood dty [[Special:Preferences|hosheeaghtyn {{SITENAME}}]] y chaghlaa
 'noname' => 'Cha honree uss ennym ymmydeyr fondagh.',
 'loginsuccesstitle' => "T'ou loggit stiagh",
 'loginsuccess' => "'''T'ou loggit stiagh ayns {{SITENAME}} myr \"\$1\".'''",
-'nosuchwiki_user' => 'Cha nel ymmydeyr ayn lesh yn ennym "$1".<br />
+'nosuchuser' => 'Cha nel ymmydeyr ayn lesh yn ennym "$1".<br />
 Ta case ny lettyryn ayns enmyn ymmydeyr dendeaysagh.<br />
-Cur streean er dty lettraghey, ny [[Special:wiki_userLogin/signup|croo coontys noa]].',
-'nosuchwiki_usershort' => 'Cha nel ymmydeyr ayn lesh yn ennym "$1".
+Cur streean er dty lettraghey, ny [[Special:UserLogin/signup|croo coontys noa]].',
+'nosuchusershort' => 'Cha nel ymmydeyr ayn lesh yn ennym "$1".
 Cur streean er dty lettraghey.',
-'nowiki_userspecified' => 'Shegin diu ennym ymmydeyr y honraghey.',
-'login-wiki_userblocked' => "Ta'n ymmydeyr shoh fo ghlass.  Cha lowit {{GENDER:|da|jee|da}} loggal stiagh.",
+'nouserspecified' => 'Shegin diu ennym ymmydeyr y honraghey.',
+'login-userblocked' => "Ta'n ymmydeyr shoh fo ghlass.  Cha lowit {{GENDER:|da|jee|da}} loggal stiagh.",
 'wrongpassword' => 'Va fockle arrey neuchiart screeuit eu.<br />
 Screeu eh reesht eh.',
 'wrongpasswordempty' => "Va'n fockle arrey screeuit bane.
@@ -406,7 +406,7 @@ Myr eiyrtys, cha nod keayrtee lesh yn enmys IP shoh ny smoo coontyssyn noa y chr
 'resetpass-submit-loggedin' => 'Caghlaa fockle yn arrey',
 
 # Special:PasswordReset
-'passwordreset-wiki_username' => "Dt'ennym ymmydeyr:",
+'passwordreset-username' => "Dt'ennym ymmydeyr:",
 'passwordreset-email' => 'Enmys post-L:',
 'passwordreset-emailelement' => 'Ennym ymmydeyr: $1
 Fockle arrey shallidagh: $2',
@@ -467,7 +467,7 @@ She $3 dt'enmys IP roie, as she dt'enney ghlass na #$5. Cur ad lesh dagh ooilley
 'loginreqlink' => 'loggal stiagh',
 'loginreqpagetext' => 'Shegin dhyt $1 dys jeeagh er duillagyn elley.',
 'accmailtitle' => 'Fockle yn arrey currit.',
-'accmailtext' => "Ta fockle arrey gyn tort er son [[wiki_user talk:$1|$1]] er ve currit dys $2.
+'accmailtext' => "Ta fockle arrey gyn tort er son [[User talk:$1|$1]] er ve currit dys $2.
 
 Foddee oo ceaghley yn fockle arrey noa da'n choontys noa shoh er duillag ''[[Special:ChangePassword|cheaghley fockle yn arrey]]'' lurg loggal stiagh.",
 'newarticle' => '(Noa)',
@@ -498,7 +498,7 @@ Chammah as shen, t’ou gialdyn dooin dy screeu oo hene eh, ny ren oo coip jeh n
 'hiddencategories' => "Ta'n duillag shoh ayns {{PLURAL:$1|ronney follit|ronney follit|ronney follit|ronnaghyn follit}}",
 'nocreatetitle' => 'Crooaght duillag jeorit',
 'nocreatetext' => "Ta ablid duillagyn noa y chroo lhiettalit ec {{SITENAME}}.<br />
-Foddee shiu goll er ash as reaghey duillag t'ayn nish, ny [[Special:wiki_userLogin|loggal stiagh ny croo coontys]].",
+Foddee shiu goll er ash as reaghey duillag t'ayn nish, ny [[Special:UserLogin|loggal stiagh ny croo coontys]].",
 'nocreate-loggedin' => 'Cha nel kied ayd duillagyn noa y chroo er {{SITENAME}}.',
 'permissionserrorstext-withaction' => 'Cha nel kiart ayd $2, er {{PLURAL:$1|y fa|y fa|y fa|ny faghyn}} heese:',
 'recreate-moveddeleted-warn' => "'''Raaue: Ta shiu aachroo duillag as eh er ve scrysst roie.'''
@@ -538,7 +538,7 @@ Ogher: '''({{int:cur}})''' = anchaslyssyn rish y lhieggan t'ayn nish,
 
 # Revision deletion
 'rev-deleted-comment' => '(cohaggloo scughit)',
-'rev-deleted-wiki_user' => '(ennym yn ymmydeyr scughit)',
+'rev-deleted-user' => '(ennym yn ymmydeyr scughit)',
 'rev-delundel' => 'taishbyn/follee',
 'rev-showdeleted' => 'taishbyn',
 'revdelete-hide-image' => 'Follee cummal y choadan',
@@ -642,7 +642,7 @@ My t'ou uss son ronsaghey dagh cooid (as shen goaill stiagh duillagyn resooney, 
 'default' => 'roie-chiartagh',
 'prefs-files' => 'Coadanyn',
 'youremail' => 'Post-L:',
-'wiki_username' => "Dt'ennym ymmydeyr:",
+'username' => "Dt'ennym ymmydeyr:",
 'uid' => 'Enney ymmydeyr:',
 'prefs-memberingroups' => 'Oltey {{PLURAL:$1|possan|phossan|phossan|possanyn}} heese:',
 'prefs-registration' => 'Traa listal',
@@ -672,19 +672,19 @@ My bailliu eh y chiarail, bee eh ymmydit son cur gys lieh y chur dhyt er son yn 
 'prefs-displaywatchlist' => 'Toshiaghtyn taishbyney',
 'prefs-diffs' => 'Cosoylaghey caghlaaghyn',
 
-# wiki_user rights
-'wiki_userrights' => 'Reireydys kiartyn ymmydeyr',
-'wiki_userrights-lookup-wiki_user' => 'Possanyn ymmydeyr y stiurey',
-'wiki_userrights-wiki_user-editname' => 'Screeu stiagh ennym ymmydeyr:',
-'editwiki_usergroup' => 'Possanyn ymmydeyr y reaghey',
-'wiki_userrights-editwiki_usergroup' => 'Possanyn ymmydeyr y reaghey',
-'savewiki_usergroups' => 'Possanyn ymmydeyr y sauail',
-'wiki_userrights-groupsmember' => 'Oltey jeh:',
-'wiki_userrights-reason' => 'Fa:',
+# User rights
+'userrights' => 'Reireydys kiartyn ymmydeyr',
+'userrights-lookup-user' => 'Possanyn ymmydeyr y stiurey',
+'userrights-user-editname' => 'Screeu stiagh ennym ymmydeyr:',
+'editusergroup' => 'Possanyn ymmydeyr y reaghey',
+'userrights-editusergroup' => 'Possanyn ymmydeyr y reaghey',
+'saveusergroups' => 'Possanyn ymmydeyr y sauail',
+'userrights-groupsmember' => 'Oltey jeh:',
+'userrights-reason' => 'Fa:',
 
 # Groups
 'group' => 'Possan:',
-'group-wiki_user' => 'Ymmydeyryn',
+'group-user' => 'Ymmydeyryn',
 'group-autoconfirmed' => 'Ymmydeyryn er nyn shickyraghey gyn thort',
 'group-bot' => 'Botyn',
 'group-sysop' => 'Reireyderyn',
@@ -692,13 +692,13 @@ My bailliu eh y chiarail, bee eh ymmydit son cur gys lieh y chur dhyt er son yn 
 'group-suppress' => 'Oaseiryn',
 'group-all' => '(yn clane)',
 
-'group-wiki_user-member' => 'Ymmydeyr',
+'group-user-member' => 'Ymmydeyr',
 'group-bot-member' => 'Robot',
 'group-sysop-member' => 'Reireyder',
 'group-bureaucrat-member' => 'Oikreilleyder',
 'group-suppress-member' => 'Oaseir',
 
-'grouppage-wiki_user' => '{{ns:project}}:Ymmydeyryn',
+'grouppage-user' => '{{ns:project}}:Ymmydeyryn',
 'grouppage-bot' => '{{ns:project}}:Robotyn',
 'grouppage-sysop' => '{{ns:project}}:Reireyderyn',
 
@@ -712,7 +712,7 @@ My bailliu eh y chiarail, bee eh ymmydit son cur gys lieh y chur dhyt er son yn 
 'right-upload' => 'Laadey neese coadanyn',
 'right-delete' => 'Duillag y scryssey',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Lioar chooishyn kiartyn ymmydeyr',
 'rightsnone' => '(veg)',
 
@@ -802,7 +802,7 @@ Ta duillagyn er [[Special:Watchlist|dty rolley arrey]] ayns '''clou trome'''.",
 'listfiles' => 'Rolley coadanyn',
 'listfiles_date' => 'Date',
 'listfiles_name' => 'Ennym',
-'listfiles_wiki_user' => 'Ymmydeyr',
+'listfiles_user' => 'Ymmydeyr',
 'listfiles_size' => 'Mooadys',
 'listfiles_description' => 'Coontey',
 
@@ -817,7 +817,7 @@ Ta duillagyn er [[Special:Watchlist|dty rolley arrey]] ayns '''clou trome'''.",
 'filehist-datetime' => 'Date/Am',
 'filehist-thumb' => 'Ingin-ordaag',
 'filehist-thumbtext' => "Ingin-ordaag da'n lhieggan shoh ec $1",
-'filehist-wiki_user' => 'Ymmydeyr',
+'filehist-user' => 'Ymmydeyr',
 'filehist-dimensions' => 'Mooadyssyn',
 'filehist-filesize' => 'Mooadys y choadan',
 'filehist-comment' => 'Cohaggloo',
@@ -864,7 +864,7 @@ Ta duillagyn er [[Special:Watchlist|dty rolley arrey]] ayns '''clou trome'''.",
 
 # Statistics
 'statistics' => 'Staydraa',
-'statistics-header-wiki_users' => 'Staydraa ymmydeyr',
+'statistics-header-users' => 'Staydraa ymmydeyr',
 'statistics-pages' => 'Duillagyn',
 
 'disambiguations' => 'Duillagyn ta kianglt rish duillagyn reddaghey',
@@ -912,10 +912,10 @@ Ta duillagyn er [[Special:Watchlist|dty rolley arrey]] ayns '''clou trome'''.",
 'protectedpages-indef' => 'Cha nel agh coadey neuyerrinagh',
 'protectedpages-cascade' => 'Cha nel agh coadey eiraghtagh',
 'protectedtitles' => 'Enmyn coadit',
-'listwiki_users' => 'Rolley ymmydeyryn',
-'wiki_usercreated' => 'Crooit liorish {{GENDER:$3|}} er $1 ec $2',
+'listusers' => 'Rolley ymmydeyryn',
+'usercreated' => 'Crooit liorish {{GENDER:$3|}} er $1 ec $2',
 'newpages' => 'Duillagyn noa',
-'newpages-wiki_username' => 'Ennym ymmydeyr:',
+'newpages-username' => 'Ennym ymmydeyr:',
 'ancientpages' => 'Duillagyn by hinney',
 'move' => 'Scughey',
 'movethispage' => 'Yn duillag shoh y scughey',
@@ -929,7 +929,7 @@ Ta duillagyn er [[Special:Watchlist|dty rolley arrey]] ayns '''clou trome'''.",
 'booksources-go' => 'Gow',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Ymmydeyr:',
+'specialloguserlabel' => 'Ymmydeyr:',
 'speciallogtitlelabel' => 'Ennym (duillag ny ymmydeyr):',
 'log' => 'Lioaryn cooishyn',
 'all-logs-page' => 'Dagh ooilley lioar chooishyn',
@@ -955,11 +955,11 @@ Ta duillagyn er [[Special:Watchlist|dty rolley arrey]] ayns '''clou trome'''.",
 'linksearch-ok' => 'Ronsee',
 'linksearch-line' => 'Ta kiangley ayn veih $2 gys $1',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'Taishbyn',
+# Special:ListUsers
+'listusers-submit' => 'Taishbyn',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Lioar chooishyn ny h-ymmydeyryn noa',
+# Special:Log/newusers
+'newuserlogpage' => 'Lioar chooishyn ny h-ymmydeyryn noa',
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'Possan',
@@ -967,8 +967,8 @@ Ta duillagyn er [[Special:Watchlist|dty rolley arrey]] ayns '''clou trome'''.",
 'listgrouprights-helppage' => 'Help:Kiartyn y phossan',
 'listgrouprights-members' => '(rolley olteynyn)',
 
-# E-mail wiki_user
-'emailwiki_user' => "Cur post-L da'n ymmydeyr shoh",
+# E-mail user
+'emailuser' => "Cur post-L da'n ymmydeyr shoh",
 'emailfrom' => 'Veih:',
 'emailto' => 'Da:',
 'emailsubject' => 'Bun-chooish:',
@@ -1127,9 +1127,9 @@ Shoh ny reaghaghyn roie da'n duillag '''$1''':",
 'sp-contributions-newbies-sub' => 'Son coontyssyn noa',
 'sp-contributions-blocklog' => 'Lioar chooishyn ghlassaghyn magh',
 'sp-contributions-talk' => 'resoonaght',
-'sp-contributions-wiki_userrights' => 'Reireydys kiartyn ymmydeyr',
+'sp-contributions-userrights' => 'Reireydys kiartyn ymmydeyr',
 'sp-contributions-search' => 'Ronsee cohortyssyn',
-'sp-contributions-wiki_username' => 'Enmys IP ny ennym ymmydeyr:',
+'sp-contributions-username' => 'Enmys IP ny ennym ymmydeyr:',
 'sp-contributions-submit' => 'Ronsee',
 
 # What links here
@@ -1152,7 +1152,7 @@ Shoh ny reaghaghyn roie da'n duillag '''$1''':",
 # Block/unblock
 'blockip' => 'Glass magh yn ymmydeyr',
 'blockip-legend' => 'Glass magh yn ymmydeyr',
-'ipadressorwiki_username' => 'Enmys IP ny ennym ymmydeyr:',
+'ipadressorusername' => 'Enmys IP ny ennym ymmydeyr:',
 'ipbexpiry' => 'Jerrey:',
 'ipbreason' => 'Fa:',
 'ipbreasonotherlist' => 'Fa elley',
@@ -1251,7 +1251,7 @@ Jean covestey eddyr oc er laueyn, my sailliu.'''",
 'importlogpage' => 'Cur lioar chooishyn stiagh',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'My ghuillag ymmydeyr',
+'tooltip-pt-userpage' => 'My ghuillag ymmydeyr',
 'tooltip-pt-mytalk' => 'My ghuillag resoonaght',
 'tooltip-pt-preferences' => 'My hosheeaghtyn',
 'tooltip-pt-watchlist' => 'Rolley duillagyn ta er dty rolley arrey',
@@ -1284,13 +1284,13 @@ Jean covestey eddyr oc er laueyn, my sailliu.'''",
 'tooltip-feed-rss' => "Beaghey RSS da'n duillag shoh",
 'tooltip-feed-atom' => "Beaghey Atom da'n duillag shoh",
 'tooltip-t-contributions' => 'Jeeagh er cohortyssyn yn ymmydeyr shoh',
-'tooltip-t-emailwiki_user' => "Cur post-L da'n ymmydeyr shoh",
+'tooltip-t-emailuser' => "Cur post-L da'n ymmydeyr shoh",
 'tooltip-t-upload' => 'Laadey neese coadanyn',
 'tooltip-t-specialpages' => 'Rolley dagh ooilley ghuillag er lheh',
 'tooltip-t-print' => "Lhieggan so-chlou jeh'n duillag shoh",
 'tooltip-t-permalink' => 'Kiangley beayn da aavriwnys ny duillag shoh',
 'tooltip-ca-nstab-main' => 'Jeeagh er duillag y chummal',
-'tooltip-ca-nstab-wiki_user' => 'Jeeagh er duillag yn ymmydeyr',
+'tooltip-ca-nstab-user' => 'Jeeagh er duillag yn ymmydeyr',
 'tooltip-ca-nstab-special' => "She duillag er lheh t'ayn; cha nod oo reaghey y duillag hene",
 'tooltip-ca-nstab-project' => 'Jeeagh er duillag y halee',
 'tooltip-ca-nstab-image' => 'Jeeagh er duillag y choadan',
@@ -1310,9 +1310,9 @@ T'eh lhiggey da oyr y chur 'sy ghiare-choontey.",
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|Ymmeyder|Ymmeyderny}} neuenmyssit dy {{SITENAME}}',
-'sitewiki_user' => 'ymmydeyr {{SITENAME}} $1',
+'siteuser' => 'ymmydeyr {{SITENAME}} $1',
 'others' => 'sleih elley',
-'sitewiki_users' => '{{PLURAL:$2|Ymmydeyr|Ymmydeyryn}} ec {{SITENAME}} $1',
+'siteusers' => '{{PLURAL:$2|Ymmydeyr|Ymmydeyryn}} ec {{SITENAME}} $1',
 
 # Browsing diffs
 'previousdiff' => '← Y caghlaa ny shinney',
@@ -1470,7 +1470,7 @@ Bee adsyn elley follit dy seyr-obbragh.<br />
 'specialpages-group-maintenance' => 'Coontaghyn meansal',
 'specialpages-group-other' => 'Duillagyn elley er lheh',
 'specialpages-group-login' => 'Log stiagh / croo coontys',
-'specialpages-group-wiki_users' => 'Ymmydeyryn as kiartyn',
+'specialpages-group-users' => 'Ymmydeyryn as kiartyn',
 
 # Special:Tags
 'tags-edit' => 'reaghey',

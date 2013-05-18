@@ -3,7 +3,7 @@
  * This file is the entry point for all API queries.
  *
  * It begins by checking whether the API is enabled on this wiki; if not,
- * it informs the wiki_user that s/he should set $wgEnableAPI to true and exits.
+ * it informs the user that s/he should set $wgEnableAPI to true and exits.
  * Otherwise, it constructs a new ApiMain using the parameter passed to it
  * as an argument in the URL ('?action=') and with write-enabled set to the
  * value of $wgEnableWriteAPI as specified in LocalSettings.php.
@@ -79,7 +79,7 @@ $processor->execute();
 // Execute any deferred updates
 DeferredUpdates::doUpdates();
 
-// Log what the wiki_user did, for book-keeping purposes.
+// Log what the user did, for book-keeping purposes.
 $endtime = microtime( true );
 wfProfileOut( 'api.php' );
 wfLogProfilingData();

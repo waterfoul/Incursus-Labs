@@ -12,7 +12,7 @@
  */
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Zerpajvandho xat kaşida şavand:',
 'tog-justify' => 'Tamomcenkardani bandho',
 'tog-hideminor' => "Nişon nadodani taƣjiroti çuz'i dar fehristi taƣjiroti oxir",
@@ -36,7 +36,7 @@ $messages = array(
 'tog-previewonfirst' => 'Nişon dodani peşnamoiş dar naxustin viroiş',
 'tog-nocache' => "Hofizai nihoniji sahifa dar mururgar ƣajrifa'ol şavad",
 'tog-enotifwatchlistpages' => 'Agar sahifae mavridi pajgiriji man taƣjir karda şavad ba man tariqi poctai elektronī pajjom bifiristed.',
-'tog-enotifwiki_usertalkpages' => 'Hangome ki dar sahifai korbariam taƣjir doda meşavad ba man tariqi poctai elektronī pajjom bifiristed.',
+'tog-enotifusertalkpages' => 'Hangome ki dar sahifai korbariam taƣjir doda meşavad ba man tariqi poctai elektronī pajjom bifiristed.',
 'tog-enotifminoredits' => "Baroi taƣjiroti çuz'i ba man tariqi poctai elektronī pajjom bifiristed.",
 'tog-enotifrevealaddr' => 'Nişonai poctai elektroniji man dar nomahoi ittilorasonī qajd şavad',
 'tog-shownumberswatching' => 'Nişon dodani şumorai korbaroni pajgir',
@@ -213,7 +213,7 @@ $messages = array(
 'talk' => 'Bahs',
 'views' => 'Nazarot',
 'toolbox' => "Ça'bai abzor",
-'wiki_userpage' => 'Sahifai korbarro bined',
+'userpage' => 'Sahifai korbarro bined',
 'projectpage' => 'Didani sahifai loiha',
 'imagepage' => 'Namoişi sahifai parvanda',
 'mediawikipage' => 'Namoişi sahifai aks',
@@ -237,7 +237,7 @@ Lutfan qabl az taloş dubora baroi didani in sahifa muddate sabr kuned.
 $1",
 'pool-errorunknown' => 'Xatogiji noşinos',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Dar borai {{SITENAME}}',
 'aboutpage' => 'Project:Dar borai',
 'copyright' => 'Mūhtavo tahti içozatnomai $1 dastras ast.',
@@ -294,7 +294,7 @@ $1",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Maqola',
-'nstab-wiki_user' => 'Sahifai korbar',
+'nstab-user' => 'Sahifai korbar',
 'nstab-media' => 'Rasona',
 'nstab-special' => 'Sahifai viƶa',
 'nstab-project' => 'Sahifai loiha',
@@ -335,7 +335,7 @@ In odatan az sababi taƣjirot jo pajvandi ta\'rixi kūhani zer ba sahifai hazvş
 
 Agar in sababe naboşad, şumo şojad iştibohero dar narmafzor pajdo karda boşed.
 
-Lutfan inro ba [[Special:Listwiki_users/sysop|mudir]] bo işora kardani nişonai URL xabar dihed.',
+Lutfan inro ba [[Special:ListUsers/sysop|mudir]] bo işora kardani nişonai URL xabar dihed.',
 'missingarticle-rev' => '(nusxai#: $1)',
 'missingarticle-diff' => '(Tafovut: $1, $2)',
 'readonly_lag' => 'Pojgohi doda ba tavri xudkor qufl şudaast to nusxahoi puştibon bo nusxahoi aslī hamohang şavand',
@@ -368,7 +368,7 @@ Pursuçū: $2',
 'cascadeprotected' => 'In sahifa az viroiş muhofizat şudaast, baroi in ki  dar {{PLURAL:$1|sahifai|sahifahoi}} muhofizatşudai zerin, ki guzainai "obşorī" dar {{PLURAL:$1|on|onho}} intixob şudaast, faro giriftaast: $2',
 'namespaceprotected' => "Şumo içozati viroişi sahifahoi fazoinomi '''$1'''-ro nadored.",
 'ns-specialprotected' => 'Sahifahoi viƶa ƣajri qobili viroiş hastand.',
-'titleprotected' => "Eçodi sahifae bo in unvon az tarafi [[wiki_user:$1|$1]] çilavgirī şudaast.
+'titleprotected' => "Eçodi sahifae bo in unvon az tarafi [[User:$1|$1]] çilavgirī şudaast.
 Daleli zikrşuda az in qaror ast ''$2''.",
 
 # Virus scanner
@@ -379,7 +379,7 @@ Daleli zikrşuda az in qaror ast ''$2''.",
 # Login and logout pages
 'logouttext' => "'''Aknun az sistem xoriç şudaed.'''
 
-Şumo metavoned gumnom az {{SITENAME}} istifodabariro idoma dihed, jo metavoned bo hamin nomi korbariaton va jo nomi korbariji digare [[Special:wiki_userLogin|boz vurud kuned]].
+Şumo metavoned gumnom az {{SITENAME}} istifodabariro idoma dihed, jo metavoned bo hamin nomi korbariaton va jo nomi korbariji digare [[Special:UserLogin|boz vurud kuned]].
 Tavvaçūh kuned, ki ba'ze az sahifaho qablan ci tavre namoiş şuda budan hamin tavr namoiş doda meşavand, to dame ki şumo hofizai mururgaratonro pok kuned.",
 'welcomecreation' => '== Xuş omaded, $1! ==
 
@@ -394,10 +394,10 @@ Tanzim kardani [[Special:Preferences|tarçihoti {{SITENAME}}]] xudro faromūş n
 'login' => 'Vurud',
 'nav-login-createaccount' => 'Vurud / Soxtani hisobi çadid',
 'loginprompt' => "Baroi vurud ba {{SITENAME}} bojad kukihoro fa'ol kuned.",
-'wiki_userlogin' => 'Vurud / Soxtani hisobi çadid',
-'wiki_userloginnocreate' => 'Vurud',
+'userlogin' => 'Vurud / Soxtani hisobi çadid',
+'userloginnocreate' => 'Vurud',
 'logout' => 'Xuruç az sistem',
-'wiki_userlogout' => 'Xuruç az sistem',
+'userlogout' => 'Xuruç az sistem',
 'notloggedin' => 'Ba sistem vurud naşudaed',
 'nologin' => "Nomi korbar nadored? '''$1'''.",
 'nologinlink' => 'Hisobero sozed',
@@ -407,7 +407,7 @@ Tanzim kardani [[Special:Preferences|tarçihoti {{SITENAME}}]] xudro faromūş n
 'createaccountmail' => 'bo poctai elektronī',
 'createaccountreason' => 'Sabab:',
 'badretype' => 'Kalimahoi ubure, ki vorid kardaed bo hamdigar muvofiqat namekunand.',
-'wiki_userexists' => 'Nomi korbariji doxil kardaşuda mavridi istifoda ast.
+'userexists' => 'Nomi korbariji doxil kardaşuda mavridi istifoda ast.
 Nomi digareroro intixob kuned.',
 'loginerror' => 'Iştiboh dar vurud',
 'createaccounterror' => 'Imkoni soxtani in hisob vuçud nadorad: $1',
@@ -416,11 +416,11 @@ Nomi digareroro intixob kuned.',
 'noname' => 'Nomi korbari durustero şumo peşnihod nakarded.',
 'loginsuccesstitle' => 'Vurud bo muvaffaqijat',
 'loginsuccess' => "'''Şumo aknun ba Vikipedia hamcun \"\$1\". vurud karded'''",
-'nosuchwiki_user' => 'Korbare bo nomi "$1" vuçud nadorad.
-Amali nomro barrasi kuned, jo [[Special:wiki_userLogin/signup|hisobi çadidero eçod kuned]].',
-'nosuchwiki_usershort' => 'Jagon korbare bo nomi "$1" vuçud nadorad. Tarzi navişti nomro sançed.',
-'nowiki_userspecified' => 'Şumo bojad jak nomi korbarī muşaxxas kuned.',
-'login-wiki_userblocked' => "In korbar basta şudaast. Vurud man' ast.",
+'nosuchuser' => 'Korbare bo nomi "$1" vuçud nadorad.
+Amali nomro barrasi kuned, jo [[Special:UserLogin/signup|hisobi çadidero eçod kuned]].',
+'nosuchusershort' => 'Jagon korbare bo nomi "$1" vuçud nadorad. Tarzi navişti nomro sançed.',
+'nouserspecified' => 'Şumo bojad jak nomi korbarī muşaxxas kuned.',
+'login-userblocked' => "In korbar basta şudaast. Vurud man' ast.",
 'wrongpassword' => 'Kalimai uburi nodurust doxil karda şud. Bori digar sançed.',
 'wrongpasswordempty' => 'Kalimai uburi doxil şuda xolī ast. Bori digar sançed.',
 'password-name-match' => 'Guzarvoƶai şumo bojad az nomi korbariaton tafovut doşta boşad.',
@@ -443,7 +443,7 @@ Ba\'d az dastras kardani on, marhamat karda vurud kuned.',
 'createaccount-text' => 'Jak nafare baroi $2 jak hisobi korbarī dar {{SITENAME}} eçod kardaast ($4). Kalimai uburi "$2" cunin ast: "$3". Şumo bojad voridi sistem şaved to kalimai uburi xudro taƣjir bidihed.
 
 Agar in hisob iştibohe soxta şudaast, in nomaro nodida bigired.',
-'wiki_usernamehasherror' => 'Nomi korbarī nametavonad şomili alomathoi dar ham boşad',
+'usernamehasherror' => 'Nomi korbarī nametavonad şomili alomathoi dar ham boşad',
 'login-throttled' => 'Şumo ba tozagī candin bor baroi vurud ba sistem taloş kardaed.
 Lutfan peş az on, ki dubora taloş kuned, sabr kuned.',
 'loginlanguagelabel' => 'Zabon: $1',
@@ -529,11 +529,11 @@ Agar az sababi xatogī va jo iştiboh omaded, tugmai '''Ba oqib'''-ro dar brauze
 Şumo metavoned dar digar sahifaho [[Special:Search/{{PAGENAME}}|unvoni in sahifaro çustuçū kuned]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} guzorişhoi aloqamandro çustuçū namoed],
 jo [{{fullurl:{{FULLPAGENAME}}|action=edit}} in sahifaro viroiş kuned]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => 'Hisobi korbar "<nowiki>$1</nowiki>" sabt naşudaast. Itminon hosil kuned ki mexohed in sahifaro ecod jo viroiş kuned.',
-'wiki_usercssyoucanpreview' => "'''Ezoh:''' Peş parvandai CSS jo JS xudro zaxira kuned, bo istifoda az tugmai \"Peşnamoiş\" metavoned onro ozmoiş kuned.",
-'wiki_userjsyoucanpreview' => "'''Ezoh:''' Peş parvandai CSS jo JS xudro zaxira kuned, bo istifoda az tugmai \"Peşnamoiş\" metavoned onro ozmoiş kuned.",
-'wiki_userjspreview' => "'''Faromūş nakuned, ki şumo faqat ÇavaSkripti korbariatonro imtihon,peşnamoiş karda istodaed va on hanūz zaxira naşudaast!'''",
-'wiki_userinvalidcssjstitle' => "'''Huşdor:'''Pūste bo nomi \"\$1\" vuçud nadorad. Tavaççūh kuned ki sahifahoi .css va .js bo harfhoi xurd navişta meşavand, Namuna. {{ns:wiki_user}}:Fu/vector.css dar muqobili korbar {{ns:wiki_user}}:Fu/Vector.css.",
+'userpage-userdoesnotexist' => 'Hisobi korbar "<nowiki>$1</nowiki>" sabt naşudaast. Itminon hosil kuned ki mexohed in sahifaro ecod jo viroiş kuned.',
+'usercssyoucanpreview' => "'''Ezoh:''' Peş parvandai CSS jo JS xudro zaxira kuned, bo istifoda az tugmai \"Peşnamoiş\" metavoned onro ozmoiş kuned.",
+'userjsyoucanpreview' => "'''Ezoh:''' Peş parvandai CSS jo JS xudro zaxira kuned, bo istifoda az tugmai \"Peşnamoiş\" metavoned onro ozmoiş kuned.",
+'userjspreview' => "'''Faromūş nakuned, ki şumo faqat ÇavaSkripti korbariatonro imtihon,peşnamoiş karda istodaed va on hanūz zaxira naşudaast!'''",
+'userinvalidcssjstitle' => "'''Huşdor:'''Pūste bo nomi \"\$1\" vuçud nadorad. Tavaççūh kuned ki sahifahoi .css va .js bo harfhoi xurd navişta meşavand, Namuna. {{ns:user}}:Fu/vector.css dar muqobili korbar {{ns:user}}:Fu/Vector.css.",
 'updated' => '(Ba rūz şuda)',
 'note' => "'''Ezoh:'''",
 'previewnote' => "'''In faqat peşnamoiş ast; digarguniho holo zaxira naşudaand!'''",
@@ -575,7 +575,7 @@ Hamin tavr şumo qavl medihed, ki xudatonro inro naviştaed jo onro az jak manba
 'hiddencategories' => 'In sahifa dar {{PLURAL:$1|1 gurūhi pinhon|$1 gurūhhoi pinhon}} qaror dorad:',
 'nocreatetitle' => 'Eçodi sahifa mahdud şudaast',
 'nocreatetext' => '{{SITENAME}} qobilijati eçodi sahifahoi çadidro mahdud karda ast.
-Şumo metavoned bozgaşta sahifai mavçudbudaro viroiş kuned, jo [[Special:wiki_userLogin|ba sistem vurud kuned jo hisobi korbarī eçod kuned]].',
+Şumo metavoned bozgaşta sahifai mavçudbudaro viroiş kuned, jo [[Special:UserLogin|ba sistem vurud kuned jo hisobi korbarī eçod kuned]].',
 'nocreate-loggedin' => 'Şumo içozati eçodi sahifai çadidro nadored.',
 'sectioneditnotsupported-title' => 'Viroişi baxşho puştibonī nameşavad',
 'sectioneditnotsupported-text' => 'In sahifa az viroişi baxşho puştibonī nameşavad',
@@ -590,11 +590,11 @@ Sabti hazfşaviji in sahifa baroi faroham ovardani imkonijathoi qulaj ovarda şu
 # "Undo" feature
 'undo-success' => "In viroiş metavonad botil şavad. Lutfan muqoisai zerinro baroi ta'jid kardani amalī xud, barrasī kuned, va ba'dan baroi ançom dodani botilkuniji viroiş taƣjiroti zerinro zaxira kuned.",
 'undo-failure' => 'Ba illati barxūrdani viroişhoi dar mijon omada, in viroişro botil nametavon kard.',
-'undo-summary' => 'Botili nusxai $1 az tarafi [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Bahs]])',
+'undo-summary' => 'Botili nusxai $1 az tarafi [[Special:Contributions/$2|$2]] ([[User talk:$2|Bahs]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Hisobe soxta nametavonam',
-'cantcreateaccount-text' => "Imkoni soxtani hisobi korbarī az in nişonai IP ('''$1''') az tarafi [[wiki_user:$3|$3]] basta şudaast.
+'cantcreateaccount-text' => "Imkoni soxtani hisobi korbarī az in nişonai IP ('''$1''') az tarafi [[User:$3|$3]] basta şudaast.
 
 Daleli $3 cunin ast ''$2''",
 
@@ -631,7 +631,7 @@ Sahifahoi çadidī aloqamandro metavoned [[Special:Search|dar viki]] çustuçū 
 
 # Revision deletion
 'rev-deleted-comment' => '(tavzihot pok şud)',
-'rev-deleted-wiki_user' => '(nomi korbar hazf şudaast)',
+'rev-deleted-user' => '(nomi korbar hazf şudaast)',
 'rev-deleted-event' => '(amalī guzoriş pok şud)',
 'rev-delundel' => 'namoiş/pinhon',
 'revisiondelete' => 'Nusxahoi hazf/ehjoī',
@@ -644,7 +644,7 @@ Sahifahoi çadidī aloqamandro metavoned [[Special:Search|dar viki]] çustuçū 
 'revdelete-hide-image' => 'Pinhon kardani mūhtavijoti parvanda',
 'revdelete-hide-name' => 'Pinhon kardani amal va hadaf',
 'revdelete-hide-comment' => 'Pinhon kardani tavzehi viroiş',
-'revdelete-hide-wiki_user' => 'Nomi korbar/nişonai IP pinhon şavad',
+'revdelete-hide-user' => 'Nomi korbar/nişonai IP pinhon şavad',
 'revdelete-hide-restricted' => 'Furunişoniji ittiloot baroi mudiron ba hamrohi digaron',
 'revdelete-suppress' => 'Az dastrasiji mudiron ba dodaho niz monandi sajri korbaron çilavgirī ba amal ojad',
 'revdelete-unsuppress' => 'Xotimai mahdudijatho dar mavridi nusxahoi intixobşuda',
@@ -790,7 +790,7 @@ Itminon hosil kuned, ki in taƣjir davomnokiji ta'rixiji sahifaro nigoh dorad.",
 'default' => 'peşfarz',
 'prefs-files' => 'Fajlho',
 'youremail' => 'Poctai elektroniji Şumo:',
-'wiki_username' => 'Nomi korbar:',
+'username' => 'Nomi korbar:',
 'uid' => 'ID-i korbar:',
 'prefs-memberingroups' => "A'zoi {{PLURAL:$1|gurūh|gurūhho}}:",
 'yourrealname' => 'Nomi aslī:',
@@ -807,30 +807,30 @@ On bojad kamtar az $1 {{PLURAL:$1|alomat|alomatho}} boşad.',
 'prefs-help-realname' => 'Nomi haqiqī ixtijorī va agar şumo onro peşnihod kuned onro hamcun muallifi eçodijotaton jodovarī karda xohad şud.',
 'prefs-help-email-required' => 'Nişoni poctai elektroni lozim ast.',
 
-# wiki_user rights
-'wiki_userrights' => 'Mudirijati ixtijoroti korbarī',
-'wiki_userrights-lookup-wiki_user' => 'Mudirijati gurūhhoi korbarī',
-'wiki_userrights-wiki_user-editname' => 'Nomi korbarro doxil kuned:',
-'editwiki_usergroup' => 'Guruhhoi korbarro viroiş kuned',
-'editingwiki_user' => "Dar holi viroişi korbar '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'wiki_userrights-editwiki_usergroup' => 'Viroişi gurūhhoi korbarī',
-'savewiki_usergroups' => 'Sabti gurūhhoi korbarī',
-'wiki_userrights-groupsmember' => "A'zoi:",
-'wiki_userrights-groups-help' => "Şumo metavoned gurūhhoe, ki korbar dar on qaror doştaro taƣjir dihed.
+# User rights
+'userrights' => 'Mudirijati ixtijoroti korbarī',
+'userrights-lookup-user' => 'Mudirijati gurūhhoi korbarī',
+'userrights-user-editname' => 'Nomi korbarro doxil kuned:',
+'editusergroup' => 'Guruhhoi korbarro viroiş kuned',
+'editinguser' => "Dar holi viroişi korbar '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Viroişi gurūhhoi korbarī',
+'saveusergroups' => 'Sabti gurūhhoi korbarī',
+'userrights-groupsmember' => "A'zoi:",
+'userrights-groups-help' => "Şumo metavoned gurūhhoe, ki korbar dar on qaror doştaro taƣjir dihed.
 * Quttiji alomatxūrda ba in ma'nī ast, ki korbar dar on gurūh qaror dorad.
 * Quttiji alomatnaxūrda ba in ma'nī ast, ki korbar dar on gurūh qaror nadorad.
 * \"*\" ma'noi onro dorad, ki şumo qobili hazf kardani gurūhe nested dar hole ki şumo onro ilova karda boşed, in jo on.",
-'wiki_userrights-reason' => 'Sabab:',
-'wiki_userrights-no-interwiki' => 'Şumo içozati taƣjiri ixtijoroti korbaroni digar vikihoro nadored.',
-'wiki_userrights-nodatabase' => 'Pojgohi doda $1 vuçud nadorad jo mahallī nest.',
-'wiki_userrights-nologin' => "Şumo bojad bo jak hisobi korbarī doroi ixtijoroti mudirijatī [[Special:wiki_userLogin|ba sistem vurud kuned]], to bitavoned ixtijoroti korbaronro ta'jid kuned.",
-'wiki_userrights-notallowed' => 'Hisobi korbariji şumo içozati taƣjiri ixtijoroti korbariro nadorad.',
-'wiki_userrights-changeable-col' => 'Gurūhhoe, ki şumo metavoned taƣjir dihed',
-'wiki_userrights-unchangeable-col' => 'Gurūhhoe, ki şumo nametavoned taƣjir dihed',
+'userrights-reason' => 'Sabab:',
+'userrights-no-interwiki' => 'Şumo içozati taƣjiri ixtijoroti korbaroni digar vikihoro nadored.',
+'userrights-nodatabase' => 'Pojgohi doda $1 vuçud nadorad jo mahallī nest.',
+'userrights-nologin' => "Şumo bojad bo jak hisobi korbarī doroi ixtijoroti mudirijatī [[Special:UserLogin|ba sistem vurud kuned]], to bitavoned ixtijoroti korbaronro ta'jid kuned.",
+'userrights-notallowed' => 'Hisobi korbariji şumo içozati taƣjiri ixtijoroti korbariro nadorad.',
+'userrights-changeable-col' => 'Gurūhhoe, ki şumo metavoned taƣjir dihed',
+'userrights-unchangeable-col' => 'Gurūhhoe, ki şumo nametavoned taƣjir dihed',
 
 # Groups
 'group' => 'Gurūh:',
-'group-wiki_user' => 'Korbaron',
+'group-user' => 'Korbaron',
 'group-autoconfirmed' => "Korbaroni ta'jidşuda",
 'group-bot' => 'Robotho',
 'group-sysop' => 'Administratorho',
@@ -838,14 +838,14 @@ On bojad kamtar az $1 {{PLURAL:$1|alomat|alomatho}} boşad.',
 'group-suppress' => 'Nozirot',
 'group-all' => '(hama)',
 
-'group-wiki_user-member' => 'Korbar',
+'group-user-member' => 'Korbar',
 'group-autoconfirmed-member' => "Korbari ta'jidşuda",
 'group-bot-member' => 'Robot',
 'group-sysop-member' => 'Administrator',
 'group-bureaucrat-member' => 'Bjurokrat',
 'group-suppress-member' => 'Nazar',
 
-'grouppage-wiki_user' => '{{ns:project}}:Korbaron',
+'grouppage-user' => '{{ns:project}}:Korbaron',
 'grouppage-autoconfirmed' => "{{ns:project}}:Korbaroni ta'jidşuda",
 'grouppage-bot' => '{{ns:project}}:Robotho',
 'grouppage-sysop' => '{{ns:project}}:Mudiron',
@@ -873,12 +873,12 @@ On bojad kamtar az $1 {{PLURAL:$1|alomat|alomatho}} boşad.',
 'right-suppressionlog' => 'Didani guzorişhoi şaxsī',
 'right-block' => 'Bastani digar korbaron az viroişkunī',
 'right-blockemail' => 'Bastani korbar az firistodani poctai elektronī',
-'right-hidewiki_user' => 'Bastani korbar, bo pinhon kardani on az omma',
+'right-hideuser' => 'Bastani korbar, bo pinhon kardani on az omma',
 'right-editprotected' => 'Viroişi sahifahoi hifzşuda (biduni hifzi obşorī)',
 'right-editinterface' => 'Viroişi namoişi korbarī',
-'right-editwiki_usercssjs' => 'Viroişi parvandahoi CSS va JS digar korbaron',
-'right-editwiki_usercss' => 'Viroişi parvandahoi CSS digar korbaron',
-'right-editwiki_userjs' => 'Viroişi parvandahoi JS digar korbaron',
+'right-editusercssjs' => 'Viroişi parvandahoi CSS va JS digar korbaron',
+'right-editusercss' => 'Viroişi parvandahoi CSS digar korbaron',
+'right-edituserjs' => 'Viroişi parvandahoi JS digar korbaron',
 'right-rollback' => 'Vogardoniji tezi viroişhoi oxirin korbare, ki jak sahifaro viroiş kardaast',
 'right-markbotedits' => 'Alomat zadani viroişhoi vogardonişuda ba unvoni viroişi bot',
 'right-noratelimit' => "Ta'sirnopazir az mahdudijati sur'at",
@@ -889,11 +889,11 @@ On bojad kamtar az $1 {{PLURAL:$1|alomat|alomatho}} boşad.',
 'right-patrolmarks' => 'Muşohidai taƣjiroti oxirini alomatgaşta',
 'right-unwatchedpages' => 'Muşohidai sahifahoe, ki pajgiri nameşavand',
 'right-mergehistory' => "Idƣomi ta'rixi sahifaho",
-'right-wiki_userrights' => 'Viroişi hamai ixtijoroti korbaron',
-'right-wiki_userrights-interwiki' => 'Viroişi ixtijoroti korbariji korbaroni digar vikiho',
+'right-userrights' => 'Viroişi hamai ixtijoroti korbaron',
+'right-userrights-interwiki' => 'Viroişi ixtijoroti korbariji korbaroni digar vikiho',
 'right-siteadmin' => 'Bastn va boz kardani pojgohi doda',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Guzorişi ixtijoroti korbar',
 'rightslogtext' => 'In guzoriş taƣjiroti ixtijoroti korbar ast.',
 'rightslogentry' => 'uzvijati $1 az gurūh $2 ba $3 taƣjir doda şud',
@@ -925,7 +925,7 @@ On bojad kamtar az $1 {{PLURAL:$1|alomat|alomatho}} boşad.',
 'minoreditletter' => 'x',
 'newpageletter' => 'Nav',
 'boteditletter' => 'b',
-'number_of_watching_wiki_users_pageview' => '[$1 pajgirikunanda {{PLURAL:$1|korbar|korbaron}}]',
+'number_of_watching_users_pageview' => '[$1 pajgirikunanda {{PLURAL:$1|korbar|korbaron}}]',
 'rc_categories' => 'Mahdudijat ba gurūhho (bo alomati "|" çudo kuned)',
 'rc_categories_any' => 'Har kadom',
 'newsectionsummary' => '/* $1 */ baxşi çadid',
@@ -948,7 +948,7 @@ Sahifahoi dar [[Special:Watchlist|fehristi nazaroti şumo]] buda  '''purrang''' 
 'uploadbtn' => 'Firistodani fajl',
 'reuploaddesc' => 'Borguzoriro laƣv kuned va ba formi borguzorī bargarded.',
 'uploadnologin' => 'Vurud nakarda',
-'uploadnologintext' => 'Baroi firistodani fajlho Şumo bojad [[Special:wiki_userLogin|vurud kuned]].',
+'uploadnologintext' => 'Baroi firistodani fajlho Şumo bojad [[Special:UserLogin|vurud kuned]].',
 'upload_directory_read_only' => 'Şoxai borguzorī ($1) az tarafi veb korguzor qobili naviştan nest.',
 'uploaderror' => 'Iştibohi firistodan',
 'upload-permitted' => "Nav'hoi parvandahoi içozatşuda: $1.",
@@ -1022,7 +1022,7 @@ Jak klik kardani rūi unvoni sutunho boisi taƣjiri tartibi namoişi parvandaho 
 'listfiles' => 'Fehristi parvanda',
 'listfiles_date' => 'Sana',
 'listfiles_name' => 'Nom',
-'listfiles_wiki_user' => 'Korbar',
+'listfiles_user' => 'Korbar',
 'listfiles_size' => 'Andoza(haçm)',
 'listfiles_description' => 'Tavsifot',
 
@@ -1037,7 +1037,7 @@ Jak klik kardani rūi unvoni sutunho boisi taƣjiri tartibi namoişi parvandaho 
 'filehist-datetime' => "Ta'rix",
 'filehist-thumb' => 'Bandanguştī',
 'filehist-thumbtext' => 'Aksi bandanguştī az nusxai to $1',
-'filehist-wiki_user' => 'Korbar',
+'filehist-user' => 'Korbar',
 'filehist-dimensions' => 'Andoza',
 'filehist-filesize' => 'Andozai parvanda',
 'filehist-comment' => 'Tavzeh',
@@ -1100,12 +1100,12 @@ Jak klik kardani rūi unvoni sutunho boisi taƣjiri tartibi namoişi parvandaho 
 'statistics-header-pages' => 'Sahifai omor',
 'statistics-header-edits' => 'Viroişi omor',
 'statistics-header-views' => 'Didani omor',
-'statistics-header-wiki_users' => 'Omori korbaron',
+'statistics-header-users' => 'Omori korbaron',
 'statistics-articles' => 'Sahifahoi mūhtavo',
 'statistics-pages' => 'Sahifaho',
 'statistics-files' => 'Parvandahoi borşuda',
-'statistics-wiki_users' => '[[Special:Listwiki_users|Korbaroni]] sabtinomşuda',
-'statistics-wiki_users-active' => "Korbaroni fa'ol",
+'statistics-users' => '[[Special:ListUsers|Korbaroni]] sabtinomşuda',
+'statistics-users-active' => "Korbaroni fa'ol",
 'statistics-mostpopular' => 'Sahifahoi bisjor nazarkardaşuda',
 
 'disambiguations' => 'Sahifahoi ibhomzudoī',
@@ -1164,9 +1164,9 @@ Jak klik kardani rūi unvoni sutunho boisi taƣjiri tartibi namoişi parvandaho 
 'protectedtitles' => 'Unvonhoi muhofizatşuda',
 'protectedtitlestext' => 'Unvonhoi zerin az eçod muhofizat şudaand',
 'protectedtitlesempty' => 'Dar holi hozir heç unvone bo in parametrho muhofizat naщudaast',
-'listwiki_users' => 'Rūjxati korbaron',
+'listusers' => 'Rūjxati korbaron',
 'newpages' => 'Sahifahoi nav',
-'newpages-wiki_username' => 'Nomi korbar:',
+'newpages-username' => 'Nomi korbar:',
 'ancientpages' => 'Sahifahoi kūhnatarin',
 'move' => 'Kūconidan',
 'movethispage' => 'Kūconidani in sahifa',
@@ -1185,7 +1185,7 @@ Jak klik kardani rūi unvoni sutunho boisi taƣjiri tartibi namoişi parvandaho 
 'booksources-text' => 'Der zer fehristi pajvandho ba somonahoe, ki kitobhoi nav va kūhna mefurūşand, ovarda şudaast. Mumkin ast, ittilooti beştarro dar borai kitobhoi çustuçū kardaaton doşta boşand:',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Korbar:',
+'specialloguserlabel' => 'Korbar:',
 'speciallogtitlelabel' => 'Sarlavha:',
 'log' => 'Guzorişho',
 'all-logs-page' => 'Hamai sabthoi umumī',
@@ -1228,14 +1228,14 @@ Jak klik kardani rūi unvoni sutunho boisi taƣjiri tartibi namoişi parvandaho 
 'linksearch-line' => '$1 doroi pajvand az $2 ast',
 'linksearch-error' => 'Nişonaho faqat dar ibtidoi nomi mizboni internetī metavonand istifoda şavand.',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => "Namoişi korbaron bo şurū' az:",
-'listwiki_users-submit' => 'Nişon dodani',
-'listwiki_users-noresult' => 'Heç korbare joft naşud.',
+# Special:ListUsers
+'listusersfrom' => "Namoişi korbaron bo şurū' az:",
+'listusers-submit' => 'Nişon dodani',
+'listusers-noresult' => 'Heç korbare joft naşud.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Guzorişi eçodi korbar',
-'newwiki_userlogpagetext' => 'In guzoriş az nomhoi korbariji tozasoxtaşuda ast.',
+# Special:Log/newusers
+'newuserlogpage' => 'Guzorişi eçodi korbar',
+'newuserlogpagetext' => 'In guzoriş az nomhoi korbariji tozasoxtaşuda ast.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Ixtijoroti gurūhhoi korbarī',
@@ -1244,12 +1244,12 @@ Jak klik kardani rūi unvoni sutunho boisi taƣjiri tartibi namoişi parvandaho 
 'listgrouprights-helppage' => 'Help:Dastrasihoi gurūhī',
 'listgrouprights-members' => "(fehristi a'zojon)",
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'Nişonae az firistanda vuçud nadorad',
-'mailnologintext' => "Baroi firistodani poctai elektronī baroi korbaroni digar bojad [[Special:wiki_userLogin|ba sistem vorid şaved]] va nişonai poctai elektroniji mū'tabar dar [[Special:Preferences|tarçihoti]] xud doşta boşed.",
-'emailwiki_user' => 'Firistodani email ba in korbar',
+'mailnologintext' => "Baroi firistodani poctai elektronī baroi korbaroni digar bojad [[Special:UserLogin|ba sistem vorid şaved]] va nişonai poctai elektroniji mū'tabar dar [[Special:Preferences|tarçihoti]] xud doşta boşed.",
+'emailuser' => 'Firistodani email ba in korbar',
 'emailpage' => 'Poctai elektronī ba korbar',
-'wiki_usermailererror' => 'Poctai elektroni ba xatoe ducor şud:',
+'usermailererror' => 'Poctai elektroni ba xatoe ducor şud:',
 'defemailsubject' => 'Vikipedia e-mail',
 'noemailtitle' => 'Nişonai poctai elektronī mavçud nest',
 'emailfrom' => 'Az:',
@@ -1268,7 +1268,7 @@ Jak klik kardani rūi unvoni sutunho boisi taƣjiri tartibi namoişi parvandaho 
 'nowatchlist' => 'Dar fehristi pajgirihoi şumo heç mavride nest.',
 'watchlistanontext' => 'Lutfan baroi muşohida va viroişi fehristi pajgirihoi xud az $1 istifoda kuned.',
 'watchnologin' => 'Vurud naşuda',
-'watchnologintext' => 'Baroi taƣjiri fehristi pajgirihoi xud bojad [[Special:wiki_userLogin|ba sistem vorid şaved]].',
+'watchnologintext' => 'Baroi taƣjiri fehristi pajgirihoi xud bojad [[Special:UserLogin|ba sistem vorid şaved]].',
 'addedwatchtext' => "In sahifa \"[[:\$1]]\" va [[Special:Watchlist|fehristi nazaroti]] Şumo ilova şud.
 Digargunihoi ojandai in sahifa va sahifi bahsi aloqamand dar rūixati onço xohad şud,
 va sahifa '''ƣafs''' dar [[Special:RecentChanges|rūixati taƣjiroti oxirin]] baroi bo osoni darjoft kardan xohad ba nazar rasid.
@@ -1341,7 +1341,7 @@ Nigared ba $2 baroi guzorişi hazfi oxirin.',
 'rollbackfailed' => 'Vogardoni naşud',
 'cantrollback' => 'Nametavon viroişro vogardond; oxirin hissaguzor tanho muallifi in maqola ast.',
 'editcomment' => "Xulosai viroiş in bud: \"''\$1''\".",
-'revertpage' => 'Viroişi [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Bahs]]) vogardonida şud ba oxirin taƣjire, ki [[wiki_user:$1|$1]] ançom doda bud',
+'revertpage' => 'Viroişi [[Special:Contributions/$2|$2]] ([[User talk:$2|Bahs]]) vogardonida şud ba oxirin taƣjire, ki [[User:$1|$1]] ançom doda bud',
 'rollback-success' => 'Viroişhoi $1 vogardonī şud; sahifa ba viroişi $2 bargardonida şud.',
 
 # Edit tokens
@@ -1452,7 +1452,7 @@ $1',
 'sp-contributions-newbies-sub' => 'Baroi navkoron',
 'sp-contributions-blocklog' => 'Guzorişi bastaşudanho',
 'sp-contributions-search' => 'Çustuçūi hissaguzoriho',
-'sp-contributions-wiki_username' => 'IP nişona jo nomi korbar:',
+'sp-contributions-username' => 'IP nişona jo nomi korbar:',
 'sp-contributions-submit' => 'Çustuçū',
 
 # What links here
@@ -1479,7 +1479,7 @@ $1',
 'blockiptext' => "Baroi bastani dastrasiji viroişi nişonai IP jo nomi korbarī muşaxxas az formi zerin istifoda kuned.
 In kor faqat bojad baroi çilavgirī az xarobkori va muvofiqi bo [[{{MediaWiki:Policy-url}}|sijosati qat'i dastrasī]] ançom şavad.
 Daleli muşaxxas baroi in korro dar zer zikr kuned (baroi misol, zikri sahifahoe, ki xarobkorī şudaand).",
-'ipadressorwiki_username' => 'IP nişona jo nomi korbar:',
+'ipadressorusername' => 'IP nişona jo nomi korbar:',
 'ipbexpiry' => 'Xotima:',
 'ipbreason' => 'Sabab:',
 'ipbreasonotherlist' => 'Digar dalel',
@@ -1511,7 +1511,7 @@ Baroi barrasī ba [[Special:BlockList|fehristi nişonahoi IP va nomhoi korbariji
 'unblockip' => 'Boz kardani korbar',
 'unblockiptext' => 'Baroi barqaror kardan dastrasiji naviştan baroi nişonai IP jo nomi korbariji qablan basta şuda, az formi zerin istifoda kuned.',
 'ipusubmit' => 'Boz kardani dastrasī',
-'unblocked' => 'Dastrasiji [[wiki_user:$1|$1]] boz karda şud',
+'unblocked' => 'Dastrasiji [[User:$1|$1]] boz karda şud',
 'unblocked-id' => "Qat'i dastrasiji şumorai $1 xotima joft",
 'ipblocklist' => 'IP nişonaho va nomhoi korbariji basta şuda',
 'ipblocklist-legend' => 'Çustuçūi korbari basta şuda',
@@ -1527,7 +1527,7 @@ Baroi barrasī ba [[Special:BlockList|fehristi nişonahoi IP va nomhoi korbariji
 'unblocklink' => 'boz şavad',
 'change-blocklink' => "taƣjiri qat'i dastrasī",
 'contribslink' => 'hissaguzorī',
-'autoblocker' => 'Ba tavri xudkor nişonai IP-i şumo basta şuda cun az tarafi "[[wiki_user:$1|$1]]" istifod şuda bud, ki nişonaaş bo şumo jak ast. Daleli bastan $1 cunini ast: "$2"',
+'autoblocker' => 'Ba tavri xudkor nişonai IP-i şumo basta şuda cun az tarafi "[[User:$1|$1]]" istifod şuda bud, ki nişonaaş bo şumo jak ast. Daleli bastan $1 cunini ast: "$2"',
 'blocklogpage' => 'Sabti bastaşavī',
 'blocklogentry' => 'basta şud [[$1]] bo vaqti saromadan $2 $3',
 'blocklogtext' => 'In guzoriş az amali bastan va boz kardani korbaron ast.
@@ -1594,10 +1594,10 @@ lutfan mutmain şaved ki peş az kūconidani sahifa, oqibati in korro dark mekun
 Dar on holatho, sahifaro bojad ba tavri dastī kūconid va jo du sahifaro bo viroiş jak kuned.",
 'movearticle' => 'Kūconidani sahifa:',
 'movenologin' => 'Vurud naşudaed',
-'movenologintext' => 'Baroi kūconidani sahifa şumo bojad korbari sabtşuda va [[Special:wiki_userLogin|ba sistem vurudşuda]] boşed.',
+'movenologintext' => 'Baroi kūconidani sahifa şumo bojad korbari sabtşuda va [[Special:UserLogin|ba sistem vurudşuda]] boşed.',
 'movenotallowedfile' => 'Şumo içozati intiqoli parvandahoro nadored.',
-'cant-move-wiki_user-page' => 'Şumo içozat nadored sahifahoi korbariji sarşoxaro intiqol dihed.',
-'cant-move-to-wiki_user-page' => 'Şumo içozat nadored, ki jak sahifaro ba jak sahifai korbar dihed (ba istisnoi zersahifahoi korbarī)',
+'cant-move-user-page' => 'Şumo içozat nadored sahifahoi korbariji sarşoxaro intiqol dihed.',
+'cant-move-to-user-page' => 'Şumo içozat nadored, ki jak sahifaro ba jak sahifai korbar dihed (ba istisnoi zersahifahoi korbarī)',
 'newtitle' => 'Ba unvoni çadid:',
 'move-watch' => 'Nazar kardani in sahifa',
 'movepagebtn' => 'Kūconidani sahifa',
@@ -1715,8 +1715,8 @@ Pas onro ba kompjuteraton zaxira karda inço borguzorī kuned.",
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|nusxa|nusxa}} az $2',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Sahifai korbariji şumo',
-'tooltip-pt-anonwiki_userpage' => 'Sahifai korbari IP, ki bo on şumo viroiş mekuned',
+'tooltip-pt-userpage' => 'Sahifai korbariji şumo',
+'tooltip-pt-anonuserpage' => 'Sahifai korbari IP, ki bo on şumo viroiş mekuned',
 'tooltip-pt-mytalk' => 'Sahifai bahsi şumo',
 'tooltip-pt-anontalk' => 'Bahsi piromuni viroişho az in nişonai IP',
 'tooltip-pt-preferences' => 'Tarçihoti man',
@@ -1752,13 +1752,13 @@ Pas onro ba kompjuteraton zaxira karda inço borguzorī kuned.",
 'tooltip-feed-rss' => 'Xabarnomai RSS baroi in sahifa',
 'tooltip-feed-atom' => 'Xabarnomai Atom baroi in sahifa',
 'tooltip-t-contributions' => 'Muşohidai fehristi hissaguzorihoi in korbar',
-'tooltip-t-emailwiki_user' => 'Firistodani poctai elektronī ba in korbar',
+'tooltip-t-emailuser' => 'Firistodani poctai elektronī ba in korbar',
 'tooltip-t-upload' => 'Firistodani parvandaho',
 'tooltip-t-specialpages' => 'Rūixati hamai sahifahoi viƶa',
 'tooltip-t-print' => 'Nusxai copiji in sahifa',
 'tooltip-t-permalink' => 'Pajvandi doimī ba in nusxa az in sahifa',
 'tooltip-ca-nstab-main' => 'Didani sahifai mūhtavijot',
-'tooltip-ca-nstab-wiki_user' => 'Namoişi sahifai korbar',
+'tooltip-ca-nstab-user' => 'Namoişi sahifai korbar',
 'tooltip-ca-nstab-media' => 'Didani sahifai rasona',
 'tooltip-ca-nstab-special' => 'In sahifai maxsus meboşad, Şumo onro viroiş karda nametavoned',
 'tooltip-ca-nstab-project' => 'Namoişi sahifai loiha',
@@ -1784,11 +1784,11 @@ In imkoni ilova kardani jak sababero dar xulosa medihad.',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|korbari|korbaroni}} gumnomī {{SITENAME}}',
-'sitewiki_user' => 'Vikipedia wiki_user $1',
+'siteuser' => 'Vikipedia user $1',
 'lastmodifiedatby' => 'In sahifa oxirin marotiba dar $2, $1 az tarafi $3 taƣjir doda şudaast.',
 'othercontribs' => 'Dar asosi kore az tarafi $1.',
 'others' => 'digaron',
-'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|korbar|korbaron}} $1',
+'siteusers' => '{{SITENAME}} {{PLURAL:$2|korbar|korbaron}} $1',
 'creditspage' => "E'tiboroti in sahifa",
 'nocredits' => 'Ittilooti sozandagoni in sahifa mavçud nest.',
 
@@ -1797,7 +1797,7 @@ In imkoni ilova kardani jak sababero dar xulosa medihad.',
 'spamprotectiontext' => 'Sahifae ki şumo mexohed zaxira kuned az tarafi filtiri spam basta şud.
 Ehtimolan in az sababi dar bar giriftani pajvandi beruna ba somonai xoriçiji ba fehristi sijoh ilovaşuda boşad.',
 'spamprotectionmatch' => 'Matni zer cize ast, ki filtri (spam) harzanigoriji moro ba kor andoxt: $1',
-'spambot_wiki_username' => 'Spamtozakuni MediaViki',
+'spambot_username' => 'Spamtozakuni MediaViki',
 'spam_reverting' => 'Vogardoni ba oxirin nusxae, ki pajvande ba $1 nadorad',
 'spam_blanking' => 'Hamai nusxahoi pajvandho $1 doştan, dar holi xolī kardan',
 
@@ -1917,7 +1917,7 @@ Faqat satrhoe, ki bo * şurū' şavand ba nazar girifta meşavand. Avvalin pajva
 'exif-compressedbitsperpixel' => 'Holati fişurdasoziji aks',
 'exif-pixelydimension' => "Arzi aksi mū'tabar",
 'exif-pixelxdimension' => "Tūli aksi mū'tabar",
-'exif-wiki_usercomment' => 'Tavzehoti korbar',
+'exif-usercomment' => 'Tavzehoti korbar',
 'exif-relatedsoundfile' => 'Parvandai sabti aloqamand',
 'exif-datetimeoriginal' => "Ta'rix va vaqti tavlidi dodaho",
 'exif-datetimedigitized' => "Ta'rix va zamoni raqamī(diçitalī) şudan",
@@ -2191,7 +2191,7 @@ In kodi ta\'jid dar $4 ba pojon xohad rasid.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Ogohī''': In sahifa ba'di ba viroiş şurū' kardani şumo hazf şuda bud!",
-'confirmrecreate' => "Korbar [[wiki_user:$1|$1]] ([[wiki_user talk:$1|bahs]]) in maqolaro pas az on ki ogoz ba viroişi on namudaed bo daleli zerin hazf kardaast:
+'confirmrecreate' => "Korbar [[User:$1|$1]] ([[User talk:$1|bahs]]) in maqolaro pas az on ki ogoz ba viroişi on namudaed bo daleli zerin hazf kardaast:
 : ''$2''
 Lutfan ta'jid kuned, ki muçaddadan mexohed in maqolaro eçod kuned.",
 'recreate' => 'Az nav sozed',
@@ -2345,6 +2345,6 @@ Nişonai pajvandro biduni peşvand "{{ns:file}}:" vorid kuned.',
 # New logging system
 'revdelete-restricted' => 'mahdudijatho ba mudiron amalī şudand',
 'revdelete-unrestricted' => 'mahdudijatho az mudiron bardoşta şudand',
-'newwiki_userlog-byemail' => 'kalimai ubur ba poctai elektronī firistoda şud',
+'newuserlog-byemail' => 'kalimai ubur ba poctai elektronī firistoda şud',
 
 );

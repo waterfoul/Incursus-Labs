@@ -16,7 +16,7 @@
 $fallback = 'mk';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Сублиниаере легајтулс:',
 
 # Dates
@@ -97,7 +97,7 @@ $messages = array(
 'jumptonavigation' => 'навигацион',
 'jumptosearch' => 'каутај',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'дајпул {{SITENAME}}',
 'aboutpage' => 'Project:дајпул {{SITENAME}}',
 'copyrightpage' => '{{ns:project}}:Права даутору',
@@ -128,7 +128,7 @@ $messages = array(
 'page-atom-feed' => '"$1" Atom Фитул',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-wiki_user' => 'Пажу дутилизатору',
+'nstab-user' => 'Пажу дутилизатору',
 'nstab-project' => 'Пројекту',
 'nstab-image' => 'фиширул',
 'nstab-category' => 'категориа',
@@ -140,8 +140,8 @@ $messages = array(
 'yourname' => 'Ном дутилизатору:',
 'login' => 'Приласнаере',
 'nav-login-createaccount' => 'Приласнаере / Нажбе',
-'wiki_userlogin' => 'Приласнаере / креаре нутилизатору',
-'wiki_userlogout' => 'отластаере',
+'userlogin' => 'Приласнаере / креаре нутилизатору',
+'userlogout' => 'отластаере',
 
 # Edit page toolbar
 'bold_sample' => 'Ескрире алдин',
@@ -228,7 +228,7 @@ $3',
 'filehist' => 'Хисториа фиширулу',
 'filehist-current' => 'куренту',
 'filehist-datetime' => 'Дата/Темп',
-'filehist-wiki_user' => 'Утилизатору',
+'filehist-user' => 'Утилизатору',
 'filehist-dimensions' => 'Дименционс',
 'filehist-comment' => 'коментарул',
 'imagelinks' => 'Легајтул фиширул де медиа',
@@ -299,7 +299,7 @@ $3',
 'thumbnail_error' => 'Еру вец лкреаре де тумбнел: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Мој пажу дутилизатору',
+'tooltip-pt-userpage' => 'Мој пажу дутилизатору',
 'tooltip-pt-mytalk' => 'Мај пажу дискућус',
 'tooltip-pt-preferences' => 'Мај префиренћу',
 'tooltip-pt-watchlist' => 'Листа пажинилор пе царе ле мониторизез.',
@@ -321,7 +321,7 @@ $3',
 'tooltip-t-contributions' => 'Ву листа де контрибући де цутилизатору',
 'tooltip-t-upload' => 'Тремер фиширул',
 'tooltip-t-specialpages' => 'Листа де тоат пажи специалус',
-'tooltip-ca-nstab-wiki_user' => 'Ву лпажу дутилизатору',
+'tooltip-ca-nstab-user' => 'Ву лпажу дутилизатору',
 'tooltip-ca-nstab-project' => 'Ву лпажу де пројекту',
 'tooltip-ca-nstab-category' => 'Ву лпажу де категориа',
 'tooltip-minoredit' => 'Це-ест нмодификацион минару',

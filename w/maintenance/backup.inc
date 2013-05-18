@@ -207,8 +207,8 @@ class BackupDumper {
 
 		$this->initProgress( $history );
 
-		 = $this->backupDb();
-		$exporter = new WikiExporter( , $history, WikiExporter::STREAM, $text );
+		$db = $this->backupDb();
+		$exporter = new WikiExporter( $db, $history, WikiExporter::STREAM, $text );
 		$exporter->dumpUploads = $this->dumpUploads;
 		$exporter->dumpUploadFileContents = $this->dumpUploadFileContents;
 
@@ -254,11 +254,11 @@ class BackupDumper {
 		$table = ( $history == WikiExporter::CURRENT ) ? 'page' : 'revision';
 		$field = ( $history == WikiExporter::CURRENT ) ? 'page_id' : 'rev_id';
 
-		r = $this->forcedDb;
+		$dbr = $this->forcedDb;
 		if ( $this->forcedDb === null ) {
-			r = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 		}
-		$this->maxCount = r->selectField( $table, "MAX($field)", '', __METHOD__ );
+		$this->maxCount = $dbr->selectField( $table, "MAX($field)", '', __METHOD__ );
 		$this->startTime = microtime( true );
 		$this->lastTime = $this->startTime;
 		$this->ID = getmypid();
@@ -276,25 +276,25 @@ class BackupDumper {
 		}
 
 		$this->lb = wfGetLBFactory()->newMainLB();
-		 = $this->lb->getConnection( DB_SLAVE, 'backup' );
+		$db = $this->lb->getConnection( DB_SLAVE, 'backup' );
 
 		// Discourage the server from disconnecting us if it takes a long time
 		// to read out the big ol' batch query.
-		->setSessionOptions( array( 'connTimeout' => 3600 * 24 ) );
+		$db->setSessionOptions( array( 'connTimeout' => 3600 * 24 ) );
 
-		return ;
+		return $db;
 	}
 
 	/**
 	 * Force the dump to use the provided database connection for database
 	 * operations, wherever possible.
 	 *
-	 * @param  DatabaseBase|null: (Optional) the database connection to
+	 * @param $db DatabaseBase|null: (Optional) the database connection to
 	 *            use. If null, resort to use the globally provided ways to
 	 *            get database connections.
 	 */
-	function setDb( DatabaseBase  = null ) {
-		$this->forcedDb = ;
+	function setDb( DatabaseBase $db = null ) {
+		$this->forcedDb = $db;
 	}
 
 	function __destruct() {

@@ -37,13 +37,13 @@ function wfGetForwardedFor() {
  * Returns the browser/OS data from the request header
  * Note: headers are spoofable
  *
- * @deprecated in 1.18; use $wgRequest->getHeader( 'wiki_user-Agent' ) instead.
+ * @deprecated in 1.18; use $wgRequest->getHeader( 'User-Agent' ) instead.
  * @return string
  */
 function wfGetAgent() {
 	wfDeprecated( __METHOD__, '1.18' );
 	global $wgRequest;
-	return $wgRequest->getHeader( 'wiki_user-Agent' );
+	return $wgRequest->getHeader( 'User-Agent' );
 }
 
 /**

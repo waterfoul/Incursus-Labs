@@ -54,12 +54,12 @@ class NukeNS extends Maintenance {
 		$ns = $this->getOption( 'ns', NS_MEDIAWIKI );
 		$delete = $this->getOption( 'delete', false );
 		$all = $this->getOption( 'all', false );
-		w = wfGetDB( DB_MASTER );
-		w->begin( __METHOD__ );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin( __METHOD__ );
 
-		$tbl_pag = w->tableName( 'page' );
-		$tbl_rev = w->tableName( 'revision' );
-		$res = w->query( "SELECT page_title FROM $tbl_pag WHERE page_namespace = $ns" );
+		$tbl_pag = $dbw->tableName( 'page' );
+		$tbl_rev = $dbw->tableName( 'revision' );
+		$res = $dbw->query( "SELECT page_title FROM $tbl_pag WHERE page_namespace = $ns" );
 
 		$n_deleted = 0;
 
@@ -69,7 +69,7 @@ class NukeNS extends Maintenance {
 			$id   = $title->getArticleID();
 
 			// Get corresponding revisions
-			$res2 = w->query( "SELECT rev_id FROM $tbl_rev WHERE rev_page = $id" );
+			$res2 = $dbw->query( "SELECT rev_id FROM $tbl_rev WHERE rev_page = $id" );
 			$revs = array();
 
 			foreach ( $res2 as $row2 ) {
@@ -85,8 +85,8 @@ class NukeNS extends Maintenance {
 				// as much as I hate to cut & paste this, it's a little different, and
 				// I already have the id & revs
 				if ( $delete ) {
-					w->query( "DELETE FROM $tbl_pag WHERE page_id = $id" );
-					w->commit( __METHOD__ );
+					$dbw->query( "DELETE FROM $tbl_pag WHERE page_id = $id" );
+					$dbw->commit( __METHOD__ );
 					// Delete revisions as appropriate
 					$child = $this->runChild( 'NukePage', 'nukePage.php' );
 					$child->deleteRevisions( $revs );
@@ -97,14 +97,14 @@ class NukeNS extends Maintenance {
 			  $this->output( "skip: " . $title->getPrefixedText() . "\n" );
 			}
 		}
-		w->commit( __METHOD__ );
+		$dbw->commit( __METHOD__ );
 
 		if ( $n_deleted > 0 ) {
 			# update statistics - better to decrement existing count, or just count
 			# the page table?
-			$pages = w->selectField( 'site_stats', 'ss_total_pages' );
+			$pages = $dbw->selectField( 'site_stats', 'ss_total_pages' );
 			$pages -= $n_deleted;
-			w->update(
+			$dbw->update(
 				'site_stats',
 				array( 'ss_total_pages' => $pages ),
 				array( 'ss_row_id' => 1 ),

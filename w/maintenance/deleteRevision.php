@@ -43,18 +43,18 @@ class DeleteRevision extends Maintenance {
 
 		$this->output( "Deleting revision(s) " . implode( ',', $this->mArgs ) .
 						" from " . wfWikiID() . "...\n" );
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		$affected = 0;
 		foreach ( $this->mArgs as $revID ) {
-			w->insertSelect( 'archive', array( 'page', 'revision' ),
+			$dbw->insertSelect( 'archive', array( 'page', 'revision' ),
 				array(
 					'ar_namespace'  => 'page_namespace',
 					'ar_title'      => 'page_title',
 					'ar_page_id'    => 'page_id',
 					'ar_comment'    => 'rev_comment',
-					'ar_wiki_user'       => 'rev_wiki_user',
-					'ar_wiki_user_text'  => 'rev_wiki_user_text',
+					'ar_user'       => 'rev_user',
+					'ar_user_text'  => 'rev_user_text',
 					'ar_timestamp'  => 'rev_timestamp',
 					'ar_minor_edit' => 'rev_minor_edit',
 					'ar_rev_id'     => 'rev_id',
@@ -66,17 +66,17 @@ class DeleteRevision extends Maintenance {
 					'page_id = rev_page'
 				), __METHOD__
 			);
-			if ( !w->affectedRows() ) {
+			if ( !$dbw->affectedRows() ) {
 				$this->output( "Revision $revID not found\n" );
 			} else {
-				$affected += w->affectedRows();
-				$pageID = w->selectField( 'revision', 'rev_page', array( 'rev_id' => $revID ), __METHOD__ );
-				$pageLatest = w->selectField( 'page', 'page_latest', array( 'page_id' => $pageID ), __METHOD__ );
-				w->delete( 'revision', array( 'rev_id' => $revID ) );
+				$affected += $dbw->affectedRows();
+				$pageID = $dbw->selectField( 'revision', 'rev_page', array( 'rev_id' => $revID ), __METHOD__ );
+				$pageLatest = $dbw->selectField( 'page', 'page_latest', array( 'page_id' => $pageID ), __METHOD__ );
+				$dbw->delete( 'revision', array( 'rev_id' => $revID ) );
 				if ( $pageLatest == $revID ) {
 					// Database integrity
-					$newLatest = w->selectField( 'revision', 'rev_id', array( 'rev_page' => $pageID ), __METHOD__, array( 'ORDER BY' => 'rev_timestamp DESC' ) );
-					w->update( 'page', array( 'page_latest' => $newLatest ), array( 'page_id' => $pageID ), __METHOD__ );
+					$newLatest = $dbw->selectField( 'revision', 'rev_id', array( 'rev_page' => $pageID ), __METHOD__, array( 'ORDER BY' => 'rev_timestamp DESC' ) );
+					$dbw->update( 'page', array( 'page_latest' => $newLatest ), array( 'page_id' => $pageID ), __METHOD__ );
 				}
 			}
 		}

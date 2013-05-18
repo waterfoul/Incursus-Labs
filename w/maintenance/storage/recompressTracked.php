@@ -135,10 +135,10 @@ class RecompressTracked {
 	 * previous part of this batch process.
 	 */
 	function syncDBs() {
-		w = wfGetDB( DB_MASTER );
-		r = wfGetDB( DB_SLAVE );
-		$pos = w->getMasterPos();
-		r->masterPosWait( $pos, 100000 );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_SLAVE );
+		$pos = $dbw->getMasterPos();
+		$dbr->masterPosWait( $pos, 100000 );
 	}
 
 	/**
@@ -172,12 +172,12 @@ class RecompressTracked {
 	 * @return bool
 	 */
 	function checkTrackingTable() {
-		r = wfGetDB( DB_SLAVE );
-		if ( !r->tableExists( 'blob_tracking' ) ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		if ( !$dbr->tableExists( 'blob_tracking' ) ) {
 			$this->critical( "Error: blob_tracking table does not exist" );
 			return false;
 		}
-		$row = r->selectRow( 'blob_tracking', '*', false, __METHOD__ );
+		$row = $dbr->selectRow( 'blob_tracking', '*', false, __METHOD__ );
 		if ( !$row ) {
 			$this->info( "Warning: blob_tracking table contains no rows, skipping this wiki." );
 			return false;
@@ -281,13 +281,13 @@ class RecompressTracked {
 	 * Move all tracked pages to the new clusters
 	 */
 	function doAllPages() {
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$i = 0;
 		$startId = 0;
 		if ( $this->noCount ) {
 			$numPages = '[unknown]';
 		} else {
-			$numPages = r->selectField( 'blob_tracking',
+			$numPages = $dbr->selectField( 'blob_tracking',
 				'COUNT(DISTINCT bt_page)',
 				# A condition is required so that this query uses the index
 				array( 'bt_moved' => 0 ),
@@ -300,11 +300,11 @@ class RecompressTracked {
 			$this->info( "Moving pages..." );
 		}
 		while ( true ) {
-			$res = r->select( 'blob_tracking',
+			$res = $dbr->select( 'blob_tracking',
 				array( 'bt_page' ),
 				array(
 					'bt_moved' => 0,
-					'bt_page > ' . r->addQuotes( $startId )
+					'bt_page > ' . $dbr->addQuotes( $startId )
 				),
 				__METHOD__,
 				array(
@@ -347,13 +347,13 @@ class RecompressTracked {
 	 * Move all orphan text to the new clusters
 	 */
 	function doAllOrphans() {
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$startId = 0;
 		$i = 0;
 		if ( $this->noCount ) {
 			$numOrphans = '[unknown]';
 		} else {
-			$numOrphans = r->selectField( 'blob_tracking',
+			$numOrphans = $dbr->selectField( 'blob_tracking',
 				'COUNT(DISTINCT bt_text_id)',
 				array( 'bt_moved' => 0, 'bt_page' => 0 ),
 				__METHOD__ );
@@ -368,12 +368,12 @@ class RecompressTracked {
 		}
 
 		while ( true ) {
-			$res = r->select( 'blob_tracking',
+			$res = $dbr->select( 'blob_tracking',
 				array( 'bt_text_id' ),
 				array(
 					'bt_moved' => 0,
 					'bt_page' => 0,
-					'bt_text_id > ' . r->addQuotes( $startId )
+					'bt_text_id > ' . $dbr->addQuotes( $startId )
 				),
 				__METHOD__,
 				array(
@@ -451,7 +451,7 @@ class RecompressTracked {
 		} else {
 			$titleText = '[deleted]';
 		}
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		// Finish any incomplete transactions
 		if ( !$this->copyOnly ) {
@@ -463,12 +463,12 @@ class RecompressTracked {
 		$trx = new CgzCopyTransaction( $this, $this->pageBlobClass );
 
 		while ( true ) {
-			$res = r->select(
+			$res = $dbr->select(
 				array( 'blob_tracking', 'text' ),
 				'*',
 				array(
 					'bt_page' => $pageId,
-					'bt_text_id > ' . r->addQuotes( $startId ),
+					'bt_text_id > ' . $dbr->addQuotes( $startId ),
 					'bt_moved' => 0,
 					'bt_new_url IS NULL',
 					'bt_text_id=old_id',
@@ -527,9 +527,9 @@ class RecompressTracked {
 			$this->critical( "Internal error: can't call moveTextRow() in --copy-only mode" );
 			exit( 1 );
 		}
-		w = wfGetDB( DB_MASTER );
-		w->begin( __METHOD__ );
-		w->update( 'text',
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin( __METHOD__ );
+		$dbw->update( 'text',
 			array( // set
 				'old_text' => $url,
 				'old_flags' => 'external,utf-8',
@@ -539,12 +539,12 @@ class RecompressTracked {
 			),
 			__METHOD__
 		);
-		w->update( 'blob_tracking',
+		$dbw->update( 'blob_tracking',
 			array( 'bt_moved' => 1 ),
 			array( 'bt_text_id' => $textId ),
 			__METHOD__
 		);
-		w->commit( __METHOD__ );
+		$dbw->commit( __METHOD__ );
 	}
 
 	/**
@@ -556,7 +556,7 @@ class RecompressTracked {
 	 * can happen when the script is interrupted, or when --copy-only is used.
 	 */
 	function finishIncompleteMoves( $conds ) {
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$startId = 0;
 		$conds = array_merge( $conds, array(
@@ -564,9 +564,9 @@ class RecompressTracked {
 			'bt_new_url IS NOT NULL'
 		) );
 		while ( true ) {
-			$res = r->select( 'blob_tracking',
+			$res = $dbr->select( 'blob_tracking',
 				'*',
-				array_merge( $conds, array( 'bt_text_id > ' . r->addQuotes( $startId ) ) ),
+				array_merge( $conds, array( 'bt_text_id > ' . $dbr->addQuotes( $startId ) ) ),
 				__METHOD__,
 				array(
 					'ORDER BY' => 'bt_text_id',
@@ -738,9 +738,9 @@ class CgzCopyTransaction {
 		// if a delete/move/undelete cycle splits up a null edit.
 		//
 		// We do a locking read to prevent closer-run race conditions.
-		w = wfGetDB( DB_MASTER );
-		w->begin( __METHOD__ );
-		$res = w->select( 'blob_tracking',
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin( __METHOD__ );
+		$res = $dbw->select( 'blob_tracking',
 			array( 'bt_text_id', 'bt_moved' ),
 			array( 'bt_text_id' => array_keys( $this->referrers ) ),
 			__METHOD__, array( 'FOR UPDATE' ) );
@@ -779,7 +779,7 @@ class CgzCopyTransaction {
 		// Write the new URLs to the blob_tracking table
 		foreach ( $this->referrers as $textId => $hash ) {
 			$url = $baseUrl . '/' . $hash;
-			w->update( 'blob_tracking',
+			$dbw->update( 'blob_tracking',
 				array( 'bt_new_url' => $url ),
 				array(
 					'bt_text_id' => $textId,
@@ -792,7 +792,7 @@ class CgzCopyTransaction {
 		$targetDB->commit( __METHOD__ );
 		// Critical section here: interruption at this point causes blob duplication
 		// Reversing the order of the commits would cause data loss instead
-		w->commit( __METHOD__ );
+		$dbw->commit( __METHOD__ );
 
 		// Write the new URLs to the text table and set the moved flag
 		if ( !$this->parent->copyOnly ) {

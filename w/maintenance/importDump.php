@@ -162,7 +162,7 @@ TEXT;
 		$this->report();
 
 		if ( !$this->dryRun ) {
-			call_wiki_user_func( $this->importCallback, $rev );
+			call_user_func( $this->importCallback, $rev );
 		}
 	}
 
@@ -181,9 +181,9 @@ TEXT;
 
 			if ( !$this->dryRun ) {
 				// bluuuh hack
-				// call_wiki_user_func( $this->uploadCallback, $revision );
-				w = wfGetDB( DB_MASTER );
-				return w->deadlockLoop( array( $revision, 'importUpload' ) );
+				// call_user_func( $this->uploadCallback, $revision );
+				$dbw = wfGetDB( DB_MASTER );
+				return $dbw->deadlockLoop( array( $revision, 'importUpload' ) );
 			}
 		}
 	}
@@ -196,7 +196,7 @@ TEXT;
 		$this->report();
 
 		if ( !$this->dryRun ) {
-			call_wiki_user_func( $this->logItemCallback, $rev );
+			call_user_func( $this->logItemCallback, $rev );
 		}
 	}
 

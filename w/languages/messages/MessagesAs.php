@@ -67,7 +67,7 @@ $namespaceAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activewiki_users'               => array( 'সক্ৰিয়_সদস্যসকল' ),
+	'Activeusers'               => array( 'সক্ৰিয়_সদস্যসকল' ),
 	'Allmessages'               => array( 'সকলোবোৰ_বাৰ্তা' ),
 	'Allpages'                  => array( 'সকলোবোৰ_পৃষ্ঠা' ),
 	'Ancientpages'              => array( 'পুৰণি_পৃষ্ঠা' ),
@@ -88,7 +88,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'দ্ব্যৰ্থতা_দূৰীকৰণসমূহ' ),
 	'DoubleRedirects'           => array( 'দ্বি_পুণঃনিৰ্দেশনাসমূহ' ),
 	'EditWatchlist'             => array( 'লক্ষ্যতালিকা_সম্পাদনা_কৰক' ),
-	'Emailwiki_user'                 => array( 'সদস্যলৈ_ই-মেইল_পঠিয়াওক' ),
+	'Emailuser'                 => array( 'সদস্যলৈ_ই-মেইল_পঠিয়াওক' ),
 	'Export'                    => array( 'ৰপ্তানি' ),
 	'Fewestrevisions'           => array( 'নূন্যতম_সংস্কৰণসমূহ' ),
 	'FileDuplicateSearch'       => array( 'প্ৰতিলিপি_সনিবিষ্ট_নথি_অনুসন্ধান' ),
@@ -103,7 +103,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'চিত্ৰ-তালিকা' ),
 	'Listgrouprights'           => array( 'গোটৰ_অধিকাৰসমূহ' ),
 	'Listredirects'             => array( 'পুণঃনিৰ্দেশনাসমূহৰ_তালিকা' ),
-	'Listwiki_users'                 => array( 'সদস্য-তালিকা' ),
+	'Listusers'                 => array( 'সদস্য-তালিকা' ),
 	'Lockdb'                    => array( 'তথ্যকোষ_বন্ধ_কৰক' ),
 	'Log'                       => array( 'অভিলেখ', 'অভিলেখসমূহ' ),
 	'Lonelypages'               => array( 'অকলশৰীয়া_পৃষ্ঠা' ),
@@ -146,9 +146,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'অব্যৱহৃত_সাঁচসমূহ' ),
 	'Unwatchedpages'            => array( 'লক্ষ্য_নৰখা_পৃষ্ঠাসমূহ' ),
 	'Upload'                    => array( 'আপল’ড', 'বোজাই' ),
-	'wiki_userlogin'                 => array( 'সদস্যৰ_প্ৰৱেশ' ),
-	'wiki_userlogout'                => array( 'সদস্যৰ_প্ৰস্থান' ),
-	'wiki_userrights'                => array( 'সদস্যৰ_অধিকাৰ', 'প্ৰশাসক_সৃষ্টি', 'বট_সৃষ্টি' ),
+	'Userlogin'                 => array( 'সদস্যৰ_প্ৰৱেশ' ),
+	'Userlogout'                => array( 'সদস্যৰ_প্ৰস্থান' ),
+	'Userrights'                => array( 'সদস্যৰ_অধিকাৰ', 'প্ৰশাসক_সৃষ্টি', 'বট_সৃষ্টি' ),
 	'Version'                   => array( 'সংস্কৰণ' ),
 	'Wantedcategories'          => array( 'আকাংক্ষিত_শ্ৰেণীসমূহ' ),
 	'Wantedfiles'               => array( 'কাম্য_ফাইলসমূহ' ),
@@ -183,7 +183,7 @@ $digitTransformTable = array(
 $digitGroupingPattern = "##,##,###";
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'সংযোগ সমূহ অধোৰেখিত কৰক:',
 'tog-justify' => 'দফাৰ সীমা সমান কৰাক',
 'tog-hideminor' => 'সাম্প্ৰতিক সাল-সলনিত অগুৰুত্বপূৰ্ণ সম্পাদনা নেদেখুৱাব',
@@ -207,7 +207,7 @@ $messages = array(
 'tog-previewonfirst' => 'প্ৰথম সম্পাদনাৰ পিছত খচৰা দেখুৱাওক',
 'tog-nocache' => 'ব্ৰাউজাৰ পৃষ্ঠা কেশ্বিং নিষ্ক্ৰীয় কৰক',
 'tog-enotifwatchlistpages' => 'মোৰ লক্ষ্য-তালিকাত থকা পৃষ্ঠা সলনি হলে মোলৈ ই-মেইল পঠাব',
-'tog-enotifwiki_usertalkpages' => 'মোৰ বাৰ্তা পৃষ্ঠা সলনি হলে মোলৈ ই-মেইল পঠাব',
+'tog-enotifusertalkpages' => 'মোৰ বাৰ্তা পৃষ্ঠা সলনি হলে মোলৈ ই-মেইল পঠাব',
 'tog-enotifminoredits' => "অগুৰুত্বপূৰ্ণ সম্পাদনা হ'লেও মোলৈ ই-মেইল পঠাব",
 'tog-enotifrevealaddr' => 'জাননী ই-মেইল বোৰত মোৰ ই-মেইল ঠিকনা দেখুৱাব',
 'tog-shownumberswatching' => 'লক্ষ্য কৰি থকা সদস্য সমূহৰ সংখ্যা দেখুৱাওক',
@@ -388,7 +388,7 @@ $messages = array(
 'talk' => 'আলোচনা',
 'views' => 'দৰ্শন',
 'toolbox' => 'সা-সৰঞ্জাম',
-'wiki_userpage' => 'সদস্য পৃষ্ঠা চাওক',
+'userpage' => 'সদস্য পৃষ্ঠা চাওক',
 'projectpage' => 'প্ৰকল্প পৃষ্ঠা চাওক',
 'imagepage' => 'নথি পৃষ্ঠা চাওক',
 'mediawikipage' => 'বাৰ্তা পৃষ্ঠা চাওক',
@@ -414,7 +414,7 @@ $1',
 'pool-queuefull' => 'পোল কিউ (pool queue) সমূল',
 'pool-errorunknown' => 'অপৰিচিত ত্ৰুটি',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}}ৰ বিষয়ে',
 'aboutpage' => 'Project:ইতিবৃত্ত',
 'copyright' => 'এই বিষয়বস্তু $1 ৰ আওতাত উপলব্ধ।',
@@ -446,8 +446,8 @@ $1',
 'youhavenewmessages' => 'আপোনাৰ কাৰণে $1 আছে। ($2)',
 'newmessageslink' => 'নতুন সংবাদ',
 'newmessagesdifflink' => 'শেহতীয়া সাল-সলনি',
-'youhavenewmessagesfromwiki_users' => '{{PLURAL:$3|আন এজন সদস্য|$3 জন সদস্য}}ৰ পৰা আপোনালৈ $1 আহিছে ($2)।',
-'youhavenewmessagesmanywiki_users' => 'কেইবাজনো সদস্যৰ পৰা আপোনালৈ $1 আহিছে ($2)।',
+'youhavenewmessagesfromusers' => '{{PLURAL:$3|আন এজন সদস্য|$3 জন সদস্য}}ৰ পৰা আপোনালৈ $1 আহিছে ($2)।',
+'youhavenewmessagesmanyusers' => 'কেইবাজনো সদস্যৰ পৰা আপোনালৈ $1 আহিছে ($2)।',
 'newmessageslinkplural' => '{{PLURAL:$1|এটা নতুন বাৰ্তা|নতুন বাৰ্তা}}',
 'newmessagesdifflinkplural' => 'অন্তিম {{PLURAL:$1|সংশোধন}}',
 'youhavenewmessagesmulti' => '$1ত আপোনাৰ কাৰণে নতুন সংবাদ আছে',
@@ -478,7 +478,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'পৃষ্ঠা',
-'nstab-wiki_user' => 'সদস্য পৃষ্ঠা',
+'nstab-user' => 'সদস্য পৃষ্ঠা',
 'nstab-media' => 'মিডিয়া পৃষ্ঠা',
 'nstab-special' => 'বিশেষ পৃষ্ঠা',
 'nstab-project' => 'প্ৰকল্প পৃষ্ঠা',
@@ -523,7 +523,7 @@ $1',
 বিলোপ কৰা কোনো পৃষ্ঠাৰ সংযোগৰ বাবে সাধাৰণতে এনে ঘটে ।
 
 যদি এনে হোৱা নাই তেন্তে আপুনি ছফ্টৱেৰত কিবা সমস্যা পাইছে ।
-অনুগ্ৰহ কৰি এই সম্পৰ্কে ইউ.আৰ.এল. সহ কোনো [[Special:Listwiki_users/sysop|প্ৰশাসক]]ক জনাওক ।',
+অনুগ্ৰহ কৰি এই সম্পৰ্কে ইউ.আৰ.এল. সহ কোনো [[Special:ListUsers/sysop|প্ৰশাসক]]ক জনাওক ।',
 'missingarticle-rev' => '(সংস্কৰণ#: $1)',
 'missingarticle-diff' => '(তফাৎ: $1, $2)',
 'readonly_lag' => 'তথ্যকোষ স্বয়ংক্ৰিয়ভাৱে বন্ধ হৈছে যাতে দ্বিতীয় শ্ৰেণীৰ তথ্যকোষৰ চাৰ্ভাৰ প্ৰধান তথ্যকোষৰ চাৰ্ভাৰৰ অৱস্থালৈ আহিব পাৰে ।',
@@ -572,7 +572,7 @@ $2',
 'customcssprotected' => 'এই CSS পৃষ্ঠা সম্পাদনা কৰাৰ অধিকাৰ আপোনাৰ নাই, কাৰণ ইয়াত আন সদস্যৰ ব্যক্তিগত পছন্দসমূহত আছে ।',
 'customjsprotected' => 'এই জাভালিপিৰ পৃষ্ঠা সম্পাদনা কৰাৰ অধিকাৰ আপোনাৰ নাই, কাৰণ ইয়াত আন সদস্যৰ ব্যক্তিগত পছন্দসমূহত আছে ।',
 'ns-specialprotected' => 'বিশেষ পৃষ্ঠা সম্পাদিত কৰিব নোৱাৰি।',
-'titleprotected' => "[[wiki_user:$1|$1]] সদস্যজনে এই শিৰোনাণমাৰ লিখনী লিখা ৰোধ কৰিছে ।
+'titleprotected' => "[[User:$1|$1]] সদস্যজনে এই শিৰোনাণমাৰ লিখনী লিখা ৰোধ কৰিছে ।
 ইয়াৰ কাৰণ হৈছে ''$2'' ।",
 'filereadonlyerror' => '"$1" ফাইলটোক পৰিৱৰ্তন কৰিব পৰা নগ\'ল কাৰণ ফাইল ভঁৰাল "$2" কেৱল পঢ়িব পৰা অৱস্থাত আছে।
 যিজন প্ৰশাসকে এইটো বন্ধ কৰিছে তেওঁ দৰ্শোৱা কাৰণ হৈছে: \'\'$3\'\'।',
@@ -589,7 +589,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''আপুনি প্ৰস্থান কৰিলে ।'''
 
-আপুনি বেনামী ভাবেও {{SITENAME}} ব্যৱহাৰ কৰিব পাৰে, অথবা আকৌ সেই একে বা বেলেগ নামেৰে [[Special:wiki_userLogin|প্ৰৱেশ]] কৰিব পাৰে।
+আপুনি বেনামী ভাবেও {{SITENAME}} ব্যৱহাৰ কৰিব পাৰে, অথবা আকৌ সেই একে বা বেলেগ নামেৰে [[Special:UserLogin|প্ৰৱেশ]] কৰিব পাৰে।
 মন কৰিব যে যেতিয়ালৈকে আপোনাৰ ব্ৰাউজাৰৰ অস্থায়ী-স্মৃতি (cache memory) খালী নকৰে, তেতিয়ালৈকে কিছুমান পৃষ্ঠাত আপুনি প্ৰৱেশ কৰা বুলি দেখুৱাই থাকিব পাৰে।",
 'welcomecreation' => '== আদৰিছোঁ, $1! ==
 আপোনাৰ সদস্যভুক্তি হৈ গ’ল ।
@@ -605,21 +605,21 @@ $2',
 'login' => 'প্ৰৱেশ',
 'nav-login-createaccount' => 'প্ৰৱেশ/সদস্যভুক্তি',
 'loginprompt' => '{{SITENAME}}ত প্ৰৱেশ কৰিবলৈ আপুনি কুকিজ্ সক্ৰিয় থাকিব লাগিব।',
-'wiki_userlogin' => 'প্ৰৱেশ/সদস্যভুক্তি',
-'wiki_userloginnocreate' => 'প্ৰৱেশ',
+'userlogin' => 'প্ৰৱেশ/সদস্যভুক্তি',
+'userloginnocreate' => 'প্ৰৱেশ',
 'logout' => 'প্ৰস্থান',
-'wiki_userlogout' => 'প্ৰস্থান',
+'userlogout' => 'প্ৰস্থান',
 'notloggedin' => 'প্ৰৱেশ কৰা নাই',
 'nologin' => "ৱিকিপিডিয়াত আপোনাৰ একাউণ্ট নাই নেকি? তেনে '''$1'''।",
 'nologinlink' => 'নতুন একাউণ্ট খোলক',
 'createaccount' => 'সভ্যভুক্ত হবলৈ',
 'gotaccount' => "আপুনি সদস্য হয়নে? '''$1'''",
 'gotaccountlink' => 'প্ৰৱেশ',
-'wiki_userlogin-resetlink' => 'আপোনাৰ প্ৰৱেশ তথ্য পাহৰিছে?',
+'userlogin-resetlink' => 'আপোনাৰ প্ৰৱেশ তথ্য পাহৰিছে?',
 'createaccountmail' => 'ই-মেইলেৰে',
 'createaccountreason' => 'কাৰণ:',
 'badretype' => 'আপুনি দিয়া গুপ্ত শব্দ দুটা মিলা নাই।',
-'wiki_userexists' => 'আপুনি দিয়া সদস্যনাম আগৰে পৰাই ব্যৱহাৰ হৈ আছে।
+'userexists' => 'আপুনি দিয়া সদস্যনাম আগৰে পৰাই ব্যৱহাৰ হৈ আছে।
 অনুগ্ৰহ কৰি বেলেগ সদস্যনাম এটা নিৰ্বাচন কৰক।',
 'loginerror' => 'প্ৰৱেশ সমস্যা',
 'createaccounterror' => "একাউন্ট সৃষ্টি কৰা নহ'ল: $1",
@@ -635,13 +635,13 @@ $2',
 'noname' => 'আপুনি বৈধ সদস্যনাম এটা দিয়া নাই।',
 'loginsuccesstitle' => "প্ৰৱেশ অনুমোদিত হ'ল",
 'loginsuccess' => "''' আপুনি {{SITENAME}}ত \"\$1\" নামেৰে প্ৰৱেশ কৰিলে '''",
-'nosuchwiki_user' => '"$1" নামৰ কোনো সদস্য নাই।
+'nosuchuser' => '"$1" নামৰ কোনো সদস্য নাই।
 সদস্য নাম আকাৰ সংবেদনশীল।
-আপোনাৰ বানানতো চাওক, বা  [[Special:wiki_userLogin/signup|নতুন সদস্যভুক্তি কৰক]]।',
-'nosuchwiki_usershort' => '"$1" এই নামৰ কোনো সদস্য নাই ।
+আপোনাৰ বানানতো চাওক, বা  [[Special:UserLogin/signup|নতুন সদস্যভুক্তি কৰক]]।',
+'nosuchusershort' => '"$1" এই নামৰ কোনো সদস্য নাই ।
 বানানতো আকৌ এবাৰ ভালদৰে চাওক ।',
-'nowiki_userspecified' => 'সদস্যনাম দিয়া বাধ্যতামূলক।',
-'login-wiki_userblocked' => 'এই সদস্যক নিষেধ কৰা হৈছে। প্ৰৱেশ অসম্ভৱ।',
+'nouserspecified' => 'সদস্যনাম দিয়া বাধ্যতামূলক।',
+'login-userblocked' => 'এই সদস্যক নিষেধ কৰা হৈছে। প্ৰৱেশ অসম্ভৱ।',
 'wrongpassword' => 'আপুনি ভুল গুপ্তশব্দ দিছে। অনুগ্ৰহ কৰি আকৌ এবাৰ চেষ্টা কৰক।',
 'wrongpasswordempty' => 'দিয়া গুপ্তশব্দতো খালী; অনুগ্ৰহ কৰি আকৌ এবাৰ চেষ্টা কৰক। ।',
 'passwordtooshort' => "গুপ্তশব্দ কমেও {{PLURAL:$1|১ টা|$1 টা}} আখৰৰ হ'ব লাগিব ।",
@@ -682,16 +682,16 @@ $2',
 'createaccount-text' => 'আপোনাৰ ই-মেইল ঠিকনাৰ কাৰণে {{SITENAME}} ($4)ত "$2" নামৰ কোনোবাই, "$3" গুপ্তশব্দ দি সদস্যভুক্তি কৰিছে। অনুগ্ৰহ কৰি আপুনি প্ৰৱেশ কৰক আৰু গুপ্তশব্দটো সলনি কৰক।
 
 যদি এইয়া ভুলতে হৈছে, তেনেহলে আপুনি এই বাৰ্তাটো অবজ্ঞা কৰিব পাৰে ।',
-'wiki_usernamehasherror' => 'সদস্যনামত হেচ্‌ চিহ্ন থাকিব নোৱাৰে',
+'usernamehasherror' => 'সদস্যনামত হেচ্‌ চিহ্ন থাকিব নোৱাৰে',
 'login-throttled' => 'আপুনি স‍ম্প্ৰতি অজস্ৰবাৰ লগ্‌-ইনৰ প্ৰয়াস কৰিছে ।
 অনুগ্ৰহ কৰি কিছু সময় অপেক্ষা কৰি আকৌ প্ৰয়াস কৰক ।',
 'login-abort-generic' => 'আপোনাৰ প্ৰৱেশ অসফল হৈছে- বাতিল কৰা হ’ল',
 'loginlanguagelabel' => 'ভাষা: $1',
-'suspicious-wiki_userlogout' => 'আপোনাৰ প্ৰস্থানৰ অনুৰোধ বাতিল কৰা হৈছে কাৰণ হয়তো আপোনাৰ ব্ৰাউজাৰ অসম্পূৰ্ণ নতুবা পূৰ্বৱতী তথ্য পঠাইছে ।',
+'suspicious-userlogout' => 'আপোনাৰ প্ৰস্থানৰ অনুৰোধ বাতিল কৰা হৈছে কাৰণ হয়তো আপোনাৰ ব্ৰাউজাৰ অসম্পূৰ্ণ নতুবা পূৰ্বৱতী তথ্য পঠাইছে ।',
 
 # E-mail sending
 'php-mail-error-unknown' => 'পি.এইছ.পি মেইল () কাৰ্যত অজ্ঞাত ত্ৰুটি ।',
-'wiki_user-mail-no-addy' => 'ই-মেইল ঠিকনা নোহোৱাকৈয়ে ই-মেইল পঠোৱাৰ চেষ্টা কৰা হৈছে ।',
+'user-mail-no-addy' => 'ই-মেইল ঠিকনা নোহোৱাকৈয়ে ই-মেইল পঠোৱাৰ চেষ্টা কৰা হৈছে ।',
 
 # Change password dialog
 'resetpass' => 'গুপ্তশব্দ সলনি কৰক',
@@ -717,7 +717,7 @@ $2',
 'passwordreset-legend' => 'গুপ্তশব্দ ন-কৈ বহাওক',
 'passwordreset-disabled' => 'এই ৱিকিত গুপ্তশব্দ নবীকৰণ নিষ্ক্ৰিয় কৰা হৈছে ।',
 'passwordreset-pretext' => '{{PLURAL:$1||তলত উল্লেখ কৰা তথ্যৰ কোনো অংশ ভৰাওক}}',
-'passwordreset-wiki_username' => 'সদস্যনাম',
+'passwordreset-username' => 'সদস্যনাম',
 'passwordreset-domain' => 'ডমেইন :',
 'passwordreset-capture' => 'ফলাফল ই-মেইলখন চাওক ?',
 'passwordreset-capture-help' => "আপুনি এই ঘৰটো চিহ্নিত কৰিলে এই ই-মেইল (আৰু অস্থায়ী গুপ্তশব্দ) আপুনি দেখা পোৱাৰ লগতে সদস্যজনলৈও পঠোৱা হ'ব।",
@@ -728,7 +728,7 @@ $2',
 $2
  
 {{PLURAL:$3|এই অস্থায়ী গুপ্তশব্দ|এই অস্থায়ী গুপ্তশব্দবোৰ}} {{PLURAL:$5|এদিনত|$5 দিনত }} নাইকীয়া হ’ব । আপুনি লগ-ইন কৰি এটা নতুন গুপ্তশব্দ দিয়া উচিত । যদি আন কোনোবাই এই অনুৰোধ কৰিছিল, বা আপুনি নিজৰ পূৰ্বৰ গুপ্তশব্দ মনত পেলাইছে আৰু ইয়াক সলাব খোজা নাই, তেন্তে আপুনি এই বাৰ্তাক অগ্ৰাহ্য কৰি নিজৰ পূৰ্বৰ গুপ্তশব্দ ব্যৱহাৰ কৰি থাকিব পাৰে ।',
-'passwordreset-emailtext-wiki_user' => '$1 ব্যৱহাৰকাৰীয়ে {{SITENAME}} ($4) ৰ বাবে আপোনাৰ একাউণ্টৰ সবিশেষ তথ্য বিচাৰিছিল । ই-পত্ৰ ঠিকনাটোৰ লগত এই সদস্যৰ {{PLURAL:$3|একাউণ্ট|একাউণ্টসমূহ}} জড়িত হৈ আছে ।
+'passwordreset-emailtext-user' => '$1 ব্যৱহাৰকাৰীয়ে {{SITENAME}} ($4) ৰ বাবে আপোনাৰ একাউণ্টৰ সবিশেষ তথ্য বিচাৰিছিল । ই-পত্ৰ ঠিকনাটোৰ লগত এই সদস্যৰ {{PLURAL:$3|একাউণ্ট|একাউণ্টসমূহ}} জড়িত হৈ আছে ।
  
 $2
  
@@ -826,7 +826,7 @@ $1ৰ দ্বাৰা এই অৱৰোধ কৰা হৈছে ।
 'loginreqlink' => 'প্ৰৱেশ',
 'loginreqpagetext' => 'অন্যান্য পৃষ্ঠা চাবলৈ আপুনি $1 কৰিব লাগিব।',
 'accmailtitle' => "গুপ্তশব্দ পঠোৱা হ'ল।",
-'accmailtext' => "[[wiki_user talk:$1|$1]]-ৰ কাৰণে যাদৃচ্ছিক ভাৱে উৎপন্ন কৰা গুপ্তশব্দ $2লৈ পঠোৱা হ'ল । 
+'accmailtext' => "[[User talk:$1|$1]]-ৰ কাৰণে যাদৃচ্ছিক ভাৱে উৎপন্ন কৰা গুপ্তশব্দ $2লৈ পঠোৱা হ'ল । 
 এই নতুন একাউন্টত প্ৰৱেশ কৰি ''[[Special:ChangePassword|গুপ্তশব্দ সলনি কৰক]]'' পৃষ্ঠাখনত গুপ্তশব্দতো সলনি কৰি ল’ব পাৰিব ।",
 'newarticle' => '(নতুন)',
 'newarticletext' => "আপুনি বিচৰা প্ৰবন্ধটো বিচাৰি পোৱা নগ'ল।
@@ -838,7 +838,7 @@ $1ৰ দ্বাৰা এই অৱৰোধ কৰা হৈছে ।
 এতেকে আমি তেখেতসকলক আই-পি ঠিকনাৰে চিনাক্ত কৰিবলৈ বাধ্য ।
 সেই একেই আই-পি ঠিকনা অনেকেই ব্যৱহাৰ কৰিব পাৰে ।
 আপুনি যদি এজন বেনামী সদস্য আৰু যদি আপুনি অনুভৱ কৰে যে আপোনাৰ প্ৰতি অপ্ৰাসঙ্গিক মন্তব্য কৰা হৈছে, তেনেহলে আন বেনামী সদস্যৰ পৰা পৃথক কৰিবলৈ 
-[[Special:wiki_userLogin/signup|একাউন্ট সৃষ্টি কৰক]] বা [[Special:wiki_userLogin|প্ৰৱেশ কৰক]] ।''",
+[[Special:UserLogin/signup|একাউন্ট সৃষ্টি কৰক]] বা [[Special:UserLogin|প্ৰৱেশ কৰক]] ।''",
 'noarticletext' => 'এই পৃষ্ঠাত বৰ্তমান কোনো পাঠ্য নাই ।
 আপুনি আন পৃষ্ঠাত [[Special:Search/{{PAGENAME}}| এই শিৰোনামা অনুসন্ধান কৰিব পাৰে]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} সম্পৰ্কীয় অভিলেখ অনুসন্ধান কৰিব পাৰে],
@@ -850,9 +850,9 @@ $1ৰ দ্বাৰা এই অৱৰোধ কৰা হৈছে ।
 
 সাধাৰণতে বিলোপ কৰা এখন পৃষ্ঠাৰ পুৰণা ইতিহাস লিংক অনুসৰণ কৰিলে এনে হয়।
 [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} বিলোপন ল\'গ]ত অধিক তথ্য পাব।',
-'wiki_userpage-wiki_userdoesnotexist' => '"<nowiki>$1</nowiki>" নামৰ সদস্য একাউন্ট নিবন্ধিত নহয় ।
+'userpage-userdoesnotexist' => '"<nowiki>$1</nowiki>" নামৰ সদস্য একাউন্ট নিবন্ধিত নহয় ।
 অনুগ্ৰহ কৰি চাওক আপুনি এই পৃষ্ঠা সৃষ্টি/সম্পাদনা কৰিব বিচাৰিছে নেকি ।',
-'wiki_userpage-wiki_userdoesnotexist-view' => "সদস্য একাউন্ট ''$1'' পঞ্জীভূত নহয়",
+'userpage-userdoesnotexist-view' => "সদস্য একাউন্ট ''$1'' পঞ্জীভূত নহয়",
 'blocked-notice-logextract' => "বৰ্তমানে এই সদস্যক বাৰণ কৰা হৈছে ।
 প্ৰসংগক্ৰমে সাম্প্ৰতিক বাৰণ সূচী তলত দিয়া হ'ল ।",
 'clearyourcache' => "'''টোকা:''' সাঁচি ৰখাৰ পিছত পৰিৱৰ্তনখিনি চাবৰ বাবে আপুনি আপোনাৰ ব্ৰাউজাৰৰ কেচ্‌ (cache) অগ্ৰাহ্য কৰিব লগা হ’ব পাৰে।
@@ -860,17 +860,17 @@ $1ৰ দ্বাৰা এই অৱৰোধ কৰা হৈছে ।
 * '''Google Chrome:''' ''Ctrl-Shift-R'' টিপক (এপল মেকৰ বাবে ''⌘-Shift-R'' )
 * '''Internet Explorer:''' ''Ctrl'' ধৰি ৰাখি ''Refresh'' ক্লিক কৰক, অথবা ''Ctrl-F5'' টিপক
 * '''Opera:''' ''Tools→Preferences'' ত গৈ কেচ্‌ মচি পেলাওক",
-'wiki_usercssyoucanpreview' => "'''পৰামৰ্শ:''' \"{{int:showpreview}}\" বুটাম ব্যৱহাৰ কৰি সাঁচি ৰখাৰ আগতে আপোনাৰ নতুন CSS পৰীক্ষা কৰক ।",
-'wiki_userjsyoucanpreview' => "'''পৰামৰ্শ:''' \"{{int:showpreview}}\" বুটাম ব্যৱহাৰ কৰি সাঁচি ৰখাৰ আগতে আপোনাৰ নতুন জাভালিপি পৰীক্ষা কৰক ।",
-'wiki_usercsspreview' => "'''মনত ৰাখিব আপুনি কেৱল আপোনাৰ ব্যৱহাৰকাৰী CSS  প্ৰাকদৰ্শন কৰিছে ।''' 
+'usercssyoucanpreview' => "'''পৰামৰ্শ:''' \"{{int:showpreview}}\" বুটাম ব্যৱহাৰ কৰি সাঁচি ৰখাৰ আগতে আপোনাৰ নতুন CSS পৰীক্ষা কৰক ।",
+'userjsyoucanpreview' => "'''পৰামৰ্শ:''' \"{{int:showpreview}}\" বুটাম ব্যৱহাৰ কৰি সাঁচি ৰখাৰ আগতে আপোনাৰ নতুন জাভালিপি পৰীক্ষা কৰক ।",
+'usercsspreview' => "'''মনত ৰাখিব আপুনি কেৱল আপোনাৰ ব্যৱহাৰকাৰী CSS  প্ৰাকদৰ্শন কৰিছে ।''' 
 '''এইটো এতিয়াও সাঁচি ৰখা হোৱা নাই ।'''",
-'wiki_userjspreview' => "'''মনত ৰাখিব আপুনি আপোনাৰ ব্যৱহাৰকাৰী জাভালিপি কেৱল পৰীক্ষা/প্ৰাকদৰ্শন কৰিছে ।'''
+'userjspreview' => "'''মনত ৰাখিব আপুনি আপোনাৰ ব্যৱহাৰকাৰী জাভালিপি কেৱল পৰীক্ষা/প্ৰাকদৰ্শন কৰিছে ।'''
  '''এইটো এতিয়াও সাঁচি ৰখা হোৱা নাই ।'''",
 'sitecsspreview' => "'''মনত ৰাখিব আপুনি কেৱল এইটো CSS  প্ৰাকদৰ্শন কৰিছে ।''' 
 '''এইটো এতিয়াও সাঁচি ৰখা হোৱা নাই !'''",
 'sitejspreview' => "'''মনত ৰাখিব আপুনি এই জাভালিপি ক’ড কেৱল প্ৰাকদৰ্শন কৰিছে ।'''
  '''এইটো এতিয়াও সাঁচি ৰখা হোৱা নাই !'''",
-'wiki_userinvalidcssjstitle' => "'''সতৰ্কবাণী:'''  \"\$1\" নামৰ কোনো আৱৰণ নাই। Custom .css আৰু .js পৃষ্ঠাই সৰুফলাৰ শিৰোনামা ব্যৱহাৰ কৰে, যেনে-  {{ns:wiki_user}}:Foo/Vector.css ৰ সলনি {{ns:wiki_user}}:Foo/vector.css।",
+'userinvalidcssjstitle' => "'''সতৰ্কবাণী:'''  \"\$1\" নামৰ কোনো আৱৰণ নাই। Custom .css আৰু .js পৃষ্ঠাই সৰুফলাৰ শিৰোনামা ব্যৱহাৰ কৰে, যেনে-  {{ns:user}}:Foo/Vector.css ৰ সলনি {{ns:user}}:Foo/vector.css।",
 'updated' => "(আপডেট কৰা হ'ল)",
 'note' => "'''টোকা:'''",
 'previewnote' => "'''মনত ৰাখিব এয়া মাথোন প্ৰাক্‌দৰ্শনহে।'''
@@ -879,13 +879,13 @@ $1ৰ দ্বাৰা এই অৱৰোধ কৰা হৈছে ।
 'previewconflict' => 'এই প্ৰাকদৰ্শনে ওপৰৰ সম্পাদনা ক্ষেত্ৰৰ লেখা সাঁচি ৰাখিলে যেনেকুৱা দেখা যাব তেনেকুৱা দেখাইছে ।',
 'session_fail_preview' => "'''দুঃখিত! চেচন ডাটা হেৰাই যোৱাৰ কাৰণে আপোনাৰ সম্পাদনা কৃতকাৰ্য্য নহ'ল ।'''
 অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক ।
-তথাপি যদি নহয় [[Special:wiki_userLogout|প্ৰস্থান]] কৰি আকৌ প্ৰৱেশ কৰক ।",
+তথাপি যদি নহয় [[Special:UserLogout|প্ৰস্থান]] কৰি আকৌ প্ৰৱেশ কৰক ।",
 'session_fail_preview_html' => "'''দুঃখিত! চেচন ডাটা হেৰাই যোৱাৰ কাৰণে আপোনাৰ সম্পাদনা কৃতকাৰ্য্য নহ'ল ।'''
 
 ''যিহেতু {{SITENAME}}ত নগ্ন এইচ-টি-এম-এল (raw HTML) সক্ৰিয় কৰা আছে, জাভাস্ক্ৰিপ্ট আক্ৰমণৰ বিৰুদ্ধে সতৰ্কতাৰ স্বাৰ্থত খচৰা আঁৰ কৰা হৈছে ।''
 
 '''এইয়া যদি এটা বৈধ সম্পাদনা আছিল, তেনে আকৌ চেষ্টা কৰক ।'''
-তথাপি যদি নহয় [[Special:wiki_userLogout|প্ৰস্থান]] কৰি আকৌ প্ৰৱেশ কৰক ।",
+তথাপি যদি নহয় [[Special:UserLogout|প্ৰস্থান]] কৰি আকৌ প্ৰৱেশ কৰক ।",
 'token_suffix_mismatch' => "'''আপোনাৰ সম্পাদনাটো প্ৰত্যাখ্যান কৰা হৈছে কাৰণ আপোনাৰ সহায়কাৰীয়ে সম্পাদনা লেখাৰ বিৰাম-চিহ্ন মচি পেলাইছে । '''
 পৃষ্ঠাটোৰ যাতে ক্ষতি নহওক, তাৰ বাবে সম্পাদনাটো প্ৰত্যাখ্যান কৰা হৈছে । 
 কোনো আসোঁৱাহপূৰ্ণ ৱেব-ভিত্তিক বেনামী প্ৰক্সী সেৱা ব্যৱহাৰ কৰিলে এনে হ’ব পাৰে ।",
@@ -938,7 +938,7 @@ $1ৰ দ্বাৰা এই অৱৰোধ কৰা হৈছে ।
 'hiddencategories' => 'এই পৃষ্ঠা {{PLURAL:$1|১-টা নিহিত শ্ৰেণীৰ|$1-টা নিহিত শ্ৰেণীৰ}} সদস্য:',
 'nocreatetitle' => 'পৃষ্ঠা সৃষ্টি সীমিত',
 'nocreatetext' => '{{SITENAME}}ত নতুন পৃষ্ঠা সৃষ্টিৰ ক্ষমতা সীমাবদ্ধ কৰা হৈছে।
-আপুনি ঘূৰি গৈ বৰ্তমানে থকা পৃষ্ঠা এটা সম্পাদনা কৰিব পাৰে, বা [[Special:wiki_userLogin|নতুন সদস্যভৰ্তি হওক/ প্ৰবেশ কৰক]] ।',
+আপুনি ঘূৰি গৈ বৰ্তমানে থকা পৃষ্ঠা এটা সম্পাদনা কৰিব পাৰে, বা [[Special:UserLogin|নতুন সদস্যভৰ্তি হওক/ প্ৰবেশ কৰক]] ।',
 'nocreate-loggedin' => 'নতুন পৃষ্ঠা সৃষ্টি কৰিবলৈ আপোনাৰ অনুমতি নাই ।',
 'sectioneditnotsupported-title' => 'অনুচ্ছেদ সম্পাদনাৰ সমৰ্থন নাই',
 'sectioneditnotsupported-text' => 'এই পৃষ্ঠাত অনুচ্ছেদ সম্পাদনাৰ সমৰ্থন নাই',
@@ -989,11 +989,11 @@ $1ৰ দ্বাৰা এই অৱৰোধ কৰা হৈছে ।
 অনুগ্ৰহ কৰি তলৰ তুলনাটি পৰীক্ষা কৰি ঠাৱৰ কৰক যে আপুনি এনে কৰিব বিচাৰিছে, আৰু তলত সালসলনিসমূহ সাঁচি এই কাৰ্য্য সম্পন্ন কৰক ।',
 'undo-failure' => "এই সম্পাদনা মধ্যৱৰ্তী সম্পাদনাসমূহৰ দ্বন্দৰ কাৰণে পূৰ্ববৎ কৰা নহ'ব ।",
 'undo-norev' => "এই সম্পাদনাটি ৰদ কৰিব নোৱাৰি, কাৰণ ই আৰু নাই বা ইয়াক বাতিল কৰা হ'ল ।",
-'undo-summary' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|আলোচনা]]) সম্পাদিত $1 সংশোধনটি বাতিল কৰক',
+'undo-summary' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|আলোচনা]]) সম্পাদিত $1 সংশোধনটি বাতিল কৰক',
 
 # Account creation failure
 'cantcreateaccounttitle' => "একাউন্ট সৃষ্টি কৰা নহ'ব",
-'cantcreateaccount-text' => "আই পি ঠিকনা ('''$1''')ৰ পৰা একাউণ্ট সৃষ্টিত [[wiki_user:$3|$3]]’য়ে বাধা প্ৰদান কৰিছে ।
+'cantcreateaccount-text' => "আই পি ঠিকনা ('''$1''')ৰ পৰা একাউণ্ট সৃষ্টিত [[User:$3|$3]]’য়ে বাধা প্ৰদান কৰিছে ।
 
 $3 য়ে আগবঢ়োৱা ইয়াৰ কাৰণ হৈছে ''$2''",
 
@@ -1032,9 +1032,9 @@ $3 য়ে আগবঢ়োৱা ইয়াৰ কাৰণ হৈছে 
 
 # Revision deletion
 'rev-deleted-comment' => "(সম্পাদনা সাৰাংশ আঁতৰোৱা হ'ল)",
-'rev-deleted-wiki_user' => '(সদস্যনাম আঁতৰোৱা হ’ল)',
+'rev-deleted-user' => '(সদস্যনাম আঁতৰোৱা হ’ল)',
 'rev-deleted-event' => "(অভিলেখ কাৰ্য আঁতৰোৱা হ'ল)",
-'rev-deleted-wiki_user-contribs' => "[সদস্যনাম বা আই-পি ঠিকনা আঁতৰোৱা হ'ল - সম্পাদনা বৰঙনিসমূহৰ পৰা আঁৰ কৰা হৈছে]",
+'rev-deleted-user-contribs' => "[সদস্যনাম বা আই-পি ঠিকনা আঁতৰোৱা হ'ল - সম্পাদনা বৰঙনিসমূহৰ পৰা আঁৰ কৰা হৈছে]",
 'rev-deleted-text-permission' => "পৃষ্ঠাৰ এই সংশোধনটি '''বিলোপ''' কৰা হ'ল ।
 সবিশেষ পাব [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} অবলুপ্তি অভিলেখত]",
 'rev-deleted-text-unhide' => "পৃষ্ঠাখনৰ এই সংশোধনটো '''বিলোপ''' কৰা হৈছে | 
@@ -1086,7 +1086,7 @@ $3 য়ে আগবঢ়োৱা ইয়াৰ কাৰণ হৈছে 
 'revdelete-hide-image' => 'ফাইলৰ বিষয়বস্তু গোপন কৰক',
 'revdelete-hide-name' => 'কাৰ্য আৰু লক্ষ্য গোপন কৰক',
 'revdelete-hide-comment' => 'সম্পাদনা মন্তব্য আতৰাই থওক',
-'revdelete-hide-wiki_user' => 'সম্পাদকৰ সদস্যনাম/আই-পি ঠিকনা গোপন কৰক',
+'revdelete-hide-user' => 'সম্পাদকৰ সদস্যনাম/আই-পি ঠিকনা গোপন কৰক',
 'revdelete-hide-restricted' => 'প্ৰশাসকবৃন্দৰ লগতে আনৰ পৰাও তথ্য ৰোধ কৰক',
 'revdelete-radio-same' => '(সলনি নকৰিব)',
 'revdelete-radio-set' => 'হয়',
@@ -1173,7 +1173,7 @@ $1",
 'showhideselectedversions' => 'নিৰ্বাচিত সংশোধনসমূহ দেখুৱাওক/আঁৰ কৰক',
 'editundo' => 'পূৰ্ববত কৰক',
 'diff-multi' => '({{PLURAL:$2|এজন সদস্যৰ|$2জন সদস্যৰ}} দ্বাৰা {{PLURAL:$1|এটা মধ্যৱৰ্তী সংশোধন|$1-টা মধ্যৱৰ্তী সংশোধন}} দেখোৱা হোৱা নাই)',
-'diff-multi-manywiki_users' => '({{PLURAL:$2|এজনতকৈ|$2-জনতকৈ}} অধিক সদস্যৰ দ্বাৰা {{PLURAL:$1|এটা মধ্যৱৰ্তী সংশোধন|$1-টা মধ্যৱৰ্তী সংশোধন}} দেখুওৱা হোৱা নাই)',
+'diff-multi-manyusers' => '({{PLURAL:$2|এজনতকৈ|$2-জনতকৈ}} অধিক সদস্যৰ দ্বাৰা {{PLURAL:$1|এটা মধ্যৱৰ্তী সংশোধন|$1-টা মধ্যৱৰ্তী সংশোধন}} দেখুওৱা হোৱা নাই)',
 'difference-missing-revision' => '{{PLURAL:$2|এটা সংস্কৰণ|$2 সংস্কৰণসমূহৰ}} সংশোধনৰ পাৰ্থক্য  ($1) {{PLURAL:$2| পোৱা নগ’ল}}।
 
 
@@ -1259,7 +1259,7 @@ $1",
 'mypreferences' => 'পছন্দসমূহ',
 'prefs-edits' => 'সম্পাদনাৰ সংখ্যা:',
 'prefsnologin' => 'প্ৰৱেশ কৰা নাই',
-'prefsnologintext' => 'আপোনাৰ পছন্দ সলনি কৰিবলৈ হ’লে <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} প্ৰৱেশ]</span> কৰাতো আৱশ্যক।',
+'prefsnologintext' => 'আপোনাৰ পছন্দ সলনি কৰিবলৈ হ’লে <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} প্ৰৱেশ]</span> কৰাতো আৱশ্যক।',
 'changepassword' => 'গুপ্তশব্দ সলনি কৰক',
 'prefs-skin' => 'আৱৰন',
 'skin-preview' => 'খচৰা',
@@ -1267,7 +1267,7 @@ $1",
 'prefs-beta' => 'বিটা বৈশিষ্টসমূহ',
 'prefs-datetime' => 'তাৰিখ আৰু সময়',
 'prefs-labs' => 'পৰীক্ষাগাৰ বৈশিষ্টসমূহ',
-'prefs-wiki_user-pages' => 'সদস্য পৃষ্ঠাসমূহ',
+'prefs-user-pages' => 'সদস্য পৃষ্ঠাসমূহ',
 'prefs-personal' => 'সদস্যৰ বিৱৰণ',
 'prefs-rc' => 'শেহতীয়া সাল-সলনি',
 'prefs-watchlist' => 'লক্ষ্য তালিকা',
@@ -1331,7 +1331,7 @@ $1",
 'prefs-emailconfirm-label' => 'ইমেইল নিশ্চিতকৰণ:',
 'prefs-textboxsize' => 'সম্পাদনা ৱিণ্ড’ৰ আকাৰ',
 'youremail' => 'আপোনাৰ ই-মেইল *',
-'wiki_username' => 'সদস্যনাম:',
+'username' => 'সদস্যনাম:',
 'uid' => 'সদস্য চিহ্ন:',
 'prefs-memberingroups' => 'এই {{PLURAL:$1|গোটৰ|গোটবোৰৰ}} সদস্য:',
 'prefs-registration' => 'পঞ্জীয়ন কৰাৰ সময়:',
@@ -1371,35 +1371,35 @@ $1",
 'prefs-displaywatchlist' => 'বিকল্প প্ৰদৰ্শন কৰক',
 'prefs-diffs' => 'পাৰ্থক্য',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'ই-মেইল ঠিকনাটো সঠিক',
 'email-address-validity-invalid' => 'সঠিক ই-মেইল ঠিকনা প্ৰদান কৰক',
 
-# wiki_user rights
-'wiki_userrights' => 'সদস্যৰ অধিকাৰ ব্যৱস্থাপনা',
-'wiki_userrights-lookup-wiki_user' => 'সদস্য গোটবোৰ ব্যৱস্থাপনা কৰক',
-'wiki_userrights-wiki_user-editname' => 'সদস্যনাম দিয়ক:',
-'editwiki_usergroup' => 'সদস্য গোটবোৰ সম্পাদনা কৰক',
-'editingwiki_user' => "'''[[wiki_user:$1|$1]]''' $2 সদস্যজনৰ অধিকাৰ সলনি কৰি থকা হৈছে।",
-'wiki_userrights-editwiki_usergroup' => 'সদস্য গোট সম্পাদনা কৰক',
-'savewiki_usergroups' => 'সদস্য গোট সংৰক্ষিত কৰক',
-'wiki_userrights-groupsmember' => 'এই গোটবোৰৰ সদস্য:',
-'wiki_userrights-groupsmember-auto' => 'অসন্দিগ্ধ সদস্য:',
-'wiki_userrights-groups-help' => 'আপুনি এই সদস্য থকা গোটসমূহৰ সালসলনি কৰিব পাৰে:
+# User rights
+'userrights' => 'সদস্যৰ অধিকাৰ ব্যৱস্থাপনা',
+'userrights-lookup-user' => 'সদস্য গোটবোৰ ব্যৱস্থাপনা কৰক',
+'userrights-user-editname' => 'সদস্যনাম দিয়ক:',
+'editusergroup' => 'সদস্য গোটবোৰ সম্পাদনা কৰক',
+'editinguser' => "'''[[User:$1|$1]]''' $2 সদস্যজনৰ অধিকাৰ সলনি কৰি থকা হৈছে।",
+'userrights-editusergroup' => 'সদস্য গোট সম্পাদনা কৰক',
+'saveusergroups' => 'সদস্য গোট সংৰক্ষিত কৰক',
+'userrights-groupsmember' => 'এই গোটবোৰৰ সদস্য:',
+'userrights-groupsmember-auto' => 'অসন্দিগ্ধ সদস্য:',
+'userrights-groups-help' => 'আপুনি এই সদস্য থকা গোটসমূহৰ সালসলনি কৰিব পাৰে:
 * টিক চিহ্ন দিয়া ঘৰৰ অৰ্থ সদস্যজন সেই গোটত আছে ।
 * টিক চিহ্ন নিদিয়া ঘৰৰ অৰ্থ সদস্যজন সেই গোটত নাই ।
 * এটা তাৰকাচিহ্নই বুজাব যে এবাৰ গোটটো অন্তৰ্ভুক্ত কৰাৰ পিছত আপুনি ইয়াক বাতিল কৰিব নোৱাৰে বা তাৰ ওলোটাটো ।',
-'wiki_userrights-reason' => 'কাৰণ:',
-'wiki_userrights-no-interwiki' => 'আপোনাৰ অন্য ৱিকিত সদস্যৰ অধিকাৰ সম্পাদনা কৰাৰ অনুমতি নাই',
-'wiki_userrights-nodatabase' => '$1  তথ্যকোষৰ কোনো অস্তিত্ব নাই অথবা ই স্থানীয় নহয় ।',
-'wiki_userrights-nologin' => 'সদস্যৰ অধিকাৰ নিৰূপণ কৰিবলৈ আপুনি কোনো প্ৰশাসকৰ একাউণ্টৰ জৰিয়তে [[Special:wiki_userLogin|প্ৰৱেশ]] কৰিব লাগিব ।',
-'wiki_userrights-notallowed' => 'সদস্যৰ অধিকাৰ যোগ কৰিবলৈ বা আঁতৰ কৰিবলৈ আপোনাৰ একাউণ্টৰ অনুমতি নাই ।',
-'wiki_userrights-changeable-col' => 'আপুনি সলনি কৰিব পৰা গোটসমূহ',
-'wiki_userrights-unchangeable-col' => 'আপুনি সলনি কৰিব নোৱাৰা গোটসমূহ',
+'userrights-reason' => 'কাৰণ:',
+'userrights-no-interwiki' => 'আপোনাৰ অন্য ৱিকিত সদস্যৰ অধিকাৰ সম্পাদনা কৰাৰ অনুমতি নাই',
+'userrights-nodatabase' => '$1  তথ্যকোষৰ কোনো অস্তিত্ব নাই অথবা ই স্থানীয় নহয় ।',
+'userrights-nologin' => 'সদস্যৰ অধিকাৰ নিৰূপণ কৰিবলৈ আপুনি কোনো প্ৰশাসকৰ একাউণ্টৰ জৰিয়তে [[Special:UserLogin|প্ৰৱেশ]] কৰিব লাগিব ।',
+'userrights-notallowed' => 'সদস্যৰ অধিকাৰ যোগ কৰিবলৈ বা আঁতৰ কৰিবলৈ আপোনাৰ একাউণ্টৰ অনুমতি নাই ।',
+'userrights-changeable-col' => 'আপুনি সলনি কৰিব পৰা গোটসমূহ',
+'userrights-unchangeable-col' => 'আপুনি সলনি কৰিব নোৱাৰা গোটসমূহ',
 
 # Groups
 'group' => 'গোট:',
-'group-wiki_user' => 'সদস্যসকল',
+'group-user' => 'সদস্যসকল',
 'group-autoconfirmed' => 'স্বয়ংনিশ্চিত সদস্য',
 'group-bot' => 'বট',
 'group-sysop' => 'প্ৰশাসকসকল',
@@ -1407,14 +1407,14 @@ $1",
 'group-suppress' => 'অনৱেক্ষা',
 'group-all' => '(সকলো)',
 
-'group-wiki_user-member' => '{{GENDER:$1|সদস্য}}',
+'group-user-member' => '{{GENDER:$1|সদস্য}}',
 'group-autoconfirmed-member' => '{{GENDER:$1| স্বয়ংনিশ্চিত সদস্য}}',
 'group-bot-member' => '{{GENDER:$1|বট}}',
 'group-sysop-member' => '{{GENDER:$1|প্ৰশাসক}}',
 'group-bureaucrat-member' => '{{GENDER:$1|কূটনীতিজ্ঞ}}',
 'group-suppress-member' => '{{GENDER:$1|অনৱেক্ষা}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:সদস্যসকল',
+'grouppage-user' => '{{ns:project}}:সদস্যসকল',
 'grouppage-autoconfirmed' => '{{ns:project}}:স্বয়ংনিশ্চিত সদস্য',
 'grouppage-bot' => '{{ns:project}}:বটসমূহ',
 'grouppage-sysop' => '{{ns:project}}:প্ৰশাসকবৃন্দ',
@@ -1430,7 +1430,7 @@ $1",
 'right-minoredit' => 'সম্পাদনা অগুৰুত্বপূৰ্ণ বুলি চিহ্নিত কৰক',
 'right-move' => 'পৃষ্ঠাসমূহ স্থানান্তৰ কৰক',
 'right-move-subpages' => 'পৃষ্ঠাৰ সৈতে উপ-পৃষ্ঠাসমূহও স্থানান্তৰ কৰক',
-'right-move-rootwiki_userpages' => 'ৰুট সদস্যৰ পৃষ্ঠাসমূহ স্থানান্তৰ কৰক',
+'right-move-rootuserpages' => 'ৰুট সদস্যৰ পৃষ্ঠাসমূহ স্থানান্তৰ কৰক',
 'right-movefile' => 'ফাইল স্থানান্তৰ কৰক',
 'right-suppressredirect' => 'পৃষ্ঠা স্থানান্তৰ কৰোঁতে উৎস পৃষ্ঠাৰ পৰা পুনঃনিৰ্দেশনা সৃষ্টি কৰিব নালাগে',
 'right-upload' => "ফাইল আপল'ড কৰক",
@@ -1456,16 +1456,16 @@ $1",
 'right-suppressionlog' => "ব্যক্তিগত ল'গবোৰ চাওক",
 'right-block' => 'আন সদস্যক সম্পাদনা কৰাৰ পৰা বাৰণ কৰক',
 'right-blockemail' => 'ই-মেইল পঠোৱাৰ পৰা সদস্যক বাৰণ কৰক',
-'right-hidewiki_user' => 'ৰাইজৰ পৰা আঁৰ দি সদস্যক বাৰণ কৰক',
+'right-hideuser' => 'ৰাইজৰ পৰা আঁৰ দি সদস্যক বাৰণ কৰক',
 'right-ipblock-exempt' => 'আই.পি. প্ৰতিবন্ধক, অট’-প্ৰতিবন্ধক আৰু ৰে’ঞ্জ-প্ৰতিবন্ধক এৰাই চলক',
 'right-proxyunbannable' => 'প্ৰক্সীৰ স্বয়ংক্ৰিয় প্ৰতিবন্ধক এৰাই চলক',
 'right-unblockself' => 'আপোনা-আপুনি খোলা',
 'right-protect' => 'সুৰক্ষাৰ মাত্ৰা পৰিৱৰ্তন কৰক আৰু সুৰক্ষিত পৃষ্ঠাসমূহ সম্পাদনা কৰক',
 'right-editprotected' => 'সুৰক্ষিত পৃষ্ঠা (কেশ্বকেডিঙ সুৰক্ষাৰ অবিহনে) সম্পাদনা কৰক',
 'right-editinterface' => 'সদস্যৰ ইণ্টাৰফে’চ সম্পাদনা কৰক',
-'right-editwiki_usercssjs' => 'আন সদস্যৰ CSS আৰু JavaScript  সম্পাদনা কৰক',
-'right-editwiki_usercss' => 'আন সদস্যৰ CSS ফাইল সম্পাদনা কৰক',
-'right-editwiki_userjs' => 'আন সদস্যৰ JavaScript ফাইল  সম্পাদনা কৰক',
+'right-editusercssjs' => 'আন সদস্যৰ CSS আৰু JavaScript  সম্পাদনা কৰক',
+'right-editusercss' => 'আন সদস্যৰ CSS ফাইল সম্পাদনা কৰক',
+'right-edituserjs' => 'আন সদস্যৰ JavaScript ফাইল  সম্পাদনা কৰক',
 'right-rollback' => 'শেষৰজন সদস্যই এখন নিৰ্দিষ্ট পৃষ্টাত কৰা সম্পাদনা পূৰ্বৰ অৱস্থালৈ ঘূৰাই আনক',
 'right-markbotedits' => 'ৰ’ল্ড-বেক সম্পাদনাসমূহ বট সম্পাদনা বুলি চিহ্নিত কৰক',
 'right-noratelimit' => 'গতি সীমাৰ দ্বাৰা প্ৰভাৱিত নহ’ব',
@@ -1476,14 +1476,14 @@ $1",
 'right-patrolmarks' => 'শেহতীয়া সালসলনিৰ পৰীক্ষিত চিহ্ন চাওক',
 'right-unwatchedpages' => 'নিৰীক্ষণ নকৰা পৃষ্ঠাসমূহৰ তালিকা চাওক',
 'right-mergehistory' => 'পৃষ্ঠাসমূহৰ ইতিহাস একত্ৰিত কৰক',
-'right-wiki_userrights' => 'সকলো সদস্য অধিকাৰ সম্পাদনা কৰক',
-'right-wiki_userrights-interwiki' => 'আন ৱিকিৰ সদস্যৰ অধিকাৰসমূহ সম্পাদনা কৰক',
+'right-userrights' => 'সকলো সদস্য অধিকাৰ সম্পাদনা কৰক',
+'right-userrights-interwiki' => 'আন ৱিকিৰ সদস্যৰ অধিকাৰসমূহ সম্পাদনা কৰক',
 'right-siteadmin' => 'তথ্যকোষ বন্ধ কৰক বা খোলক',
 'right-override-export-depth' => '৫ম স্তৰ পৰ্যন্ত সংযুক্ত পৃষ্ঠাসহ সকলো পৃষ্ঠা ৰপ্তানী কৰক',
 'right-sendemail' => 'আন সদস্যলৈ ই-পত্ৰ ঠিকনা পঠিয়াওক',
 'right-passwordreset' => 'পাছৱৰ্ড ৰি-চেটৰ ই-মেইলসমূহ দেখুৱাওক',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'সভ্যৰ অধিকাৰৰ লেখ',
 'rightslogtext' => 'সদস্য অধিকাৰৰ পৰিৱৰ্তনসমূহৰ ল’গ',
 'rightslogentry' => "$1-ৰ গোট সদস্যপদ $2-ৰ পৰা $3-লৈ সলনি কৰা হ'ল",
@@ -1499,7 +1499,7 @@ $1",
 'action-minoredit' => 'সম্পাদনা অগুৰুত্বপূৰ্ণ বুলি চিহ্নিত কৰক',
 'action-move' => 'এই পৃষ্ঠা স্থানান্তৰ কৰক',
 'action-move-subpages' => 'এই পৃষ্ঠা আৰু ইয়াৰ উপপৃষ্ঠাসমূহ আঁতৰাওক',
-'action-move-rootwiki_userpages' => 'ৰুট সদস্যৰ পৃষ্ঠাসমূহ স্থানান্তৰ কৰক',
+'action-move-rootuserpages' => 'ৰুট সদস্যৰ পৃষ্ঠাসমূহ স্থানান্তৰ কৰক',
 'action-movefile' => 'এই ফাইল স্থানান্তৰ কৰক',
 'action-upload' => "এই ফাইল আপল'ড কৰক",
 'action-reupload' => 'বৰ্তমান থকা ফাইলৰ ওপৰত লিখক',
@@ -1522,8 +1522,8 @@ $1",
 'action-autopatrol' => 'আপোনাৰ সম্পাদনা পৰীক্ষিত বুলি চিহ্নিত কৰক',
 'action-unwatchedpages' => 'নিৰীক্ষণ নকৰা পৃষ্ঠাসমূহৰ তালিকা চাওক',
 'action-mergehistory' => 'এই পৃষ্ঠাখনৰ ইতিহাস একত্ৰিত কৰক',
-'action-wiki_userrights' => 'সকলো সদস্য অধিকাৰ সম্পাদনা কৰক',
-'action-wiki_userrights-interwiki' => 'আন ৱিকিৰ সদস্যৰ অধিকাৰসমূহ সম্পাদনা কৰক',
+'action-userrights' => 'সকলো সদস্য অধিকাৰ সম্পাদনা কৰক',
+'action-userrights-interwiki' => 'আন ৱিকিৰ সদস্যৰ অধিকাৰসমূহ সম্পাদনা কৰক',
 'action-siteadmin' => 'তথ্যকোষ বন্ধ কৰক বা খোলক',
 'action-sendemail' => 'ই-মেইল পঠিয়াওক',
 
@@ -1554,7 +1554,7 @@ $1",
 'minoreditletter' => 'অ',
 'newpageletter' => 'ন',
 'boteditletter' => 'ব',
-'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|জন সদস্যই|জন সদস্যই}} এই পৃষ্ঠা নিৰীক্ষণ কৰিছে]',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|জন সদস্যই|জন সদস্যই}} এই পৃষ্ঠা নিৰীক্ষণ কৰিছে]',
 'rc_categories' => 'অনুচ্ছেদৰ সীমাবদ্ধতা ("|" দি পৃথক কৰক)',
 'rc_categories_any' => 'যিকোনো',
 'rc-change-size-new' => 'সালসলনিৰ পিছত $1 {{PLURAL:$1|বাইট|বাইট}}',
@@ -1580,7 +1580,7 @@ $1",
 'reuploaddesc' => 'আপল’ড বাতিল কৰি আপল’ড প্ৰপত্ৰলৈ ঘূৰি যাওক',
 'upload-tryagain' => 'পৰিৱৰ্তিত ফাইলৰ বিৱৰণ দাখিল কৰক',
 'uploadnologin' => 'প্ৰৱেশ কৰা নাই',
-'uploadnologintext' => 'ফাইল আপল’ড কৰিবলৈ আপুনি আগতে [[Special:wiki_userLogin|লগ-ইন]] কৰিব লাগিব ।',
+'uploadnologintext' => 'ফাইল আপল’ড কৰিবলৈ আপুনি আগতে [[Special:UserLogin|লগ-ইন]] কৰিব লাগিব ।',
 'upload_directory_missing' => 'আপলোড ডিৰেক্টৰি ($1)  বিচাৰি পোৱা নগ’ল আৰু ৱেবচাৰ্ভাৰৰ দ্বাৰা তৈয়াৰ কৰিব পৰা নগ’ল ।',
 'upload_directory_read_only' => 'আপল’ড ডিৰেক্টৰি ($1) ৱেবচাৰ্ভাৰৰ দ্বাৰা লিখনযোগ্য নহয় ।',
 'uploaderror' => 'আপল’ডত সমস্যা হৈছে',
@@ -1707,11 +1707,11 @@ $1',
 'upload-proto-error-text' => 'দূৰৱৰ্তী আপল’ডৰ বাবে <code>http://</code> or <code>ftp://</code> দি আৰম্ভ হোৱা URLসমূহ আৱশ্যক ।',
 'upload-file-error' => 'আভ্যন্তৰীণ ত্ৰুটি',
 'upload-file-error-text' => 'চাৰ্ভাৰত অস্থায়ী ফাইল সৃষ্টি কৰোঁতে এটা আভ্যন্তৰীণ ত্ৰুটিয়ে দেখা দিছে ।
-অনুগ্ৰহ কৰি [[Special:Listwiki_users/sysop|প্ৰশাসকৰ]] লগত যোগাযোগ কৰক ।',
+অনুগ্ৰহ কৰি [[Special:ListUsers/sysop|প্ৰশাসকৰ]] লগত যোগাযোগ কৰক ।',
 'upload-misc-error' => 'অজ্ঞাত আপল’ড সমস্যা',
 'upload-misc-error-text' => 'আপল’ডৰ সময়ত কোনো অজ্ঞাত সমস্যাই দেখা দিছে ।
 URL টোৰ বৈধতা বিচাৰ কৰি পুনৰ চেষ্টা কৰক ।
-যদি তাৰ পিছতো সমস্যা হয়, তেন্তে এজন [[Special:Listwiki_users/sysop|প্ৰশাসকৰ]] লগত যোগাযোগ কৰক ।',
+যদি তাৰ পিছতো সমস্যা হয়, তেন্তে এজন [[Special:ListUsers/sysop|প্ৰশাসকৰ]] লগত যোগাযোগ কৰক ।',
 'upload-too-many-redirects' => 'এই URL টোত অতি বেছি পুনৰ্নিৰ্দেশনা আছে',
 'upload-unknown-size' => 'অজ্ঞাত আকাৰ',
 'upload-http-error' => 'এটা HTTP ত্ৰুটিয়ে দেখা দিছে: $1',
@@ -1831,7 +1831,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization চাওক।",
 'listfiles_thumb' => 'ক্ষুদ্ৰ প্ৰতিকৃতি',
 'listfiles_date' => 'তাৰিখ',
 'listfiles_name' => 'নাম',
-'listfiles_wiki_user' => 'সদস্য',
+'listfiles_user' => 'সদস্য',
 'listfiles_size' => 'আকাৰ',
 'listfiles_description' => 'বিৱৰণ',
 'listfiles_count' => 'সংস্কৰণ',
@@ -1848,7 +1848,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization চাওক।",
 'filehist-thumb' => 'ক্ষুদ্ৰ প্ৰতিকৃতি',
 'filehist-thumbtext' => '$1ৰ সংস্কৰণৰ ক্ষুদ্ৰ প্ৰতিকৃতি',
 'filehist-nothumb' => 'ক্ষুদ্ৰ প্ৰতিকৃতি নাই',
-'filehist-wiki_user' => 'সদস্য',
+'filehist-user' => 'সদস্য',
 'filehist-dimensions' => 'আকাৰ',
 'filehist-filesize' => 'ফাইলৰ আকাৰ (বাইট)',
 'filehist-comment' => 'মন্তব্য',
@@ -1941,7 +1941,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization চাওক।",
 'statistics-header-pages' => 'পৃষ্ঠা পৰিসংখ্যা',
 'statistics-header-edits' => 'পৰিসংখ্যা সম্পাদনা কৰক',
 'statistics-header-views' => 'পৰিসংখ্যা দেখুৱাওক',
-'statistics-header-wiki_users' => 'ব্যৱহাৰকাৰীৰ পৰিসংখ্যা',
+'statistics-header-users' => 'ব্যৱহাৰকাৰীৰ পৰিসংখ্যা',
 'statistics-header-hooks' => 'অন্য পৰিসংখ্যা',
 'statistics-articles' => 'বিষয়বস্তুৰ পৃষ্ঠা',
 'statistics-pages' => 'পৃষ্ঠাসমূহ',
@@ -1952,9 +1952,9 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization চাওক।",
 'statistics-views-total' => 'সৰ্বমুঠ প্ৰদৰ্শন',
 'statistics-views-total-desc' => 'অস্তিত্বহীন পৃষ্ঠা আৰু বিশেষ পৃষ্ঠাসমূহৰ দৰ্শন ইয়াত ভুক্ত নহয়',
 'statistics-views-peredit' => 'সম্পাদনা প্ৰতি দৰ্শন',
-'statistics-wiki_users' => 'পঞ্জীভূত [[Special:Listwiki_users|সদস্যসমূহ]]',
-'statistics-wiki_users-active' => 'সক্ৰিয় সদস্য',
-'statistics-wiki_users-active-desc' => 'শেষ {{PLURAL:$1|দিনত|$1 দিনত}} কোনো কাম কৰা সদস্যসমূহ',
+'statistics-users' => 'পঞ্জীভূত [[Special:ListUsers|সদস্যসমূহ]]',
+'statistics-users-active' => 'সক্ৰিয় সদস্য',
+'statistics-users-active-desc' => 'শেষ {{PLURAL:$1|দিনত|$1 দিনত}} কোনো কাম কৰা সদস্যসমূহ',
 'statistics-mostpopular' => 'সৰ্বোচ্চ দৰ্শন কৰা পৃষ্ঠাসমূহ',
 
 'disambiguations' => 'দ্ব্যৰ্থতা-দূৰীকৰণ পৃষ্ঠাসমূহলৈ সংযোগ থকা পৃষ্ঠাসমূহ',
@@ -2032,13 +2032,13 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization চাওক।",
 'protectedtitles' => 'সুৰক্ষিত শিৰোনামাসমূহ',
 'protectedtitlestext' => 'তলৰ শিৰোনামাসমূহ দি পৃষ্ঠা সৃষ্টি কৰিব পৰা নাযাব',
 'protectedtitlesempty' => 'এই পাৰামিটাৰবোৰেৰে কোনো শিৰোনামা এতিয়া সুৰক্ষিত কৰা হোৱা নাই ।',
-'listwiki_users' => 'সদস্য তালিকা',
-'listwiki_users-editsonly' => 'কেৱল সম্পাদনা কৰা সদস্যকহে দেখুৱাওক',
-'listwiki_users-creationsort' => 'সৃষ্টিৰ তাৰিখমতে সজাওক',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|টা সম্পাদনা|টা সম্পাদনা}}',
-'wiki_usercreated' => '$1 তাৰিখে $2 সময়ত {{GENDER:$3|য়ে সৃষ্টি কৰিছে}}',
+'listusers' => 'সদস্য তালিকা',
+'listusers-editsonly' => 'কেৱল সম্পাদনা কৰা সদস্যকহে দেখুৱাওক',
+'listusers-creationsort' => 'সৃষ্টিৰ তাৰিখমতে সজাওক',
+'usereditcount' => '$1 {{PLURAL:$1|টা সম্পাদনা|টা সম্পাদনা}}',
+'usercreated' => '$1 তাৰিখে $2 সময়ত {{GENDER:$3|য়ে সৃষ্টি কৰিছে}}',
 'newpages' => 'নতুন পৃষ্ঠাসমূহ',
-'newpages-wiki_username' => 'সদস্যনাম:',
+'newpages-username' => 'সদস্যনাম:',
 'ancientpages' => 'আটাইতকৈ পুৰণি পৃষ্ঠাসমূহ',
 'move' => 'স্থানান্তৰ কৰক',
 'movethispage' => 'এই পৃষ্ঠাটো স্থানান্তৰ কৰক',
@@ -2062,8 +2062,8 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization চাওক।",
 'booksources-invalid-isbn' => 'আপুনি দিয়া ISBN সম্ভৱতঃ অবৈধ; মূল উৎসৰ পৰা তুলি লওঁতে হ’ব পৰা ভুলৰ বাবে পৰীক্ষা কৰক ।',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'প্ৰদৰ্শনকাৰী:',
-'speciallogtitlelabel' => 'গন্তব্য (title or wiki_user):',
+'specialloguserlabel' => 'প্ৰদৰ্শনকাৰী:',
+'speciallogtitlelabel' => 'গন্তব্য (title or user):',
 'log' => "অভিলেখ/ল'গ",
 'all-logs-page' => 'সকলোবোৰ ৰাজহুৱা সূচী',
 'alllogstext' => '{{SITENAME}} সকলো ল’গৰ সন্মিলিত প্ৰদৰ্শন ।
@@ -2120,24 +2120,24 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization চাওক।",
 'linksearch-line' => '$2 পৰা $1 সংযোগ কৰা হৈছে',
 'linksearch-error' => "ৱাইল্ডকাৰ্ড কেৱল হ'ষ্টনামৰ আৰম্ভণিতহে দেখা যাব ।",
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'ইয়াৰে আৰম্ভ হোৱা ব্যৱহাৰকাৰী সকল দেখুৱাওক:',
-'listwiki_users-submit' => 'দেখুৱাওক',
-'listwiki_users-noresult' => 'ব্যৱহাৰকাৰী বিচাৰি পোৱা নগ’ল',
-'listwiki_users-blocked' => '(বাৰণ কৰা)',
+# Special:ListUsers
+'listusersfrom' => 'ইয়াৰে আৰম্ভ হোৱা ব্যৱহাৰকাৰী সকল দেখুৱাওক:',
+'listusers-submit' => 'দেখুৱাওক',
+'listusers-noresult' => 'ব্যৱহাৰকাৰী বিচাৰি পোৱা নগ’ল',
+'listusers-blocked' => '(বাৰণ কৰা)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'সক্ৰিয় ব্যবহাৰকাৰীৰ তালিকা',
-'activewiki_users-intro' => 'যোৱা  {{PLURAL:$1|দিন|দিন}}ৰ ভিতৰত অৱদান আগবঢ়োৱা ব্যৱহাৰকাৰীৰ তালিকা',
-'activewiki_users-count' => 'যোৱা {{PLURAL:$3|দিনত|$3 দিনত}} সৰ্বমুঠ {{PLURAL:$1|সম্পাদনাৰ|সম্পাদনাৰ}} সংখ্যা $1',
-'activewiki_users-from' => 'ইয়াৰে আৰম্ভ হোৱা ব্যৱহাৰকাৰী সকল দেখুৱাওক:',
-'activewiki_users-hidebots' => 'বট নেদেখুৱাব',
-'activewiki_users-hidesysops' => 'প্ৰশাসক নেদেখুৱাব',
-'activewiki_users-noresult' => "কোনো সদস্য পোৱা নগ'ল।",
+# Special:ActiveUsers
+'activeusers' => 'সক্ৰিয় ব্যবহাৰকাৰীৰ তালিকা',
+'activeusers-intro' => 'যোৱা  {{PLURAL:$1|দিন|দিন}}ৰ ভিতৰত অৱদান আগবঢ়োৱা ব্যৱহাৰকাৰীৰ তালিকা',
+'activeusers-count' => 'যোৱা {{PLURAL:$3|দিনত|$3 দিনত}} সৰ্বমুঠ {{PLURAL:$1|সম্পাদনাৰ|সম্পাদনাৰ}} সংখ্যা $1',
+'activeusers-from' => 'ইয়াৰে আৰম্ভ হোৱা ব্যৱহাৰকাৰী সকল দেখুৱাওক:',
+'activeusers-hidebots' => 'বট নেদেখুৱাব',
+'activeusers-hidesysops' => 'প্ৰশাসক নেদেখুৱাব',
+'activeusers-noresult' => "কোনো সদস্য পোৱা নগ'ল।",
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'সদস্যৰ সৃষ্টি অভিলেখ',
-'newwiki_userlogpagetext' => 'এইখন এখন সদস্য সৃষ্টিৰ ল’গ।',
+# Special:Log/newusers
+'newuserlogpage' => 'সদস্যৰ সৃষ্টি অভিলেখ',
+'newuserlogpagetext' => 'এইখন এখন সদস্য সৃষ্টিৰ ল’গ।',
 
 # Special:ListGroupRights
 'listgrouprights' => 'ব্যৱহাৰকাৰী গোটৰ অধিকাৰ',
@@ -2158,27 +2158,27 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization চাওক।",
 'listgrouprights-addgroup-self-all' => 'সকলো গোট নিজৰ একাউণ্টত যোগ কৰক',
 'listgrouprights-removegroup-self-all' => 'নিজৰ একাউণ্টৰপৰা সকলো গোট আঁতৰাওক',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'পাওঁতাৰ ঠিকনা নাই',
-'mailnologintext' => 'আন সদস্যক ই-মেইল পঠিয়াবলৈ আপুনি [[Special:wiki_userLogin|লগ্‌ ইন]] কৰিব লাগিব আৰু আপোনাৰ [[Special:Preferences|পছন্দসমূহত]] এটা বৈধ ই-মেইল ঠিকনা থাকিব লাগিব ।',
-'emailwiki_user' => 'এই সদস্যজনলৈ ই-মেইল পঠিয়াওক',
-'emailwiki_user-title-target' => '{{GENDER:$1|সদস্যজনক}} ইমেইল পঠিয়াওক',
-'emailwiki_user-title-notarget' => 'ব্যৱহাৰকাৰী ই-পত্ৰ প্ৰেৰণ কৰক',
+'mailnologintext' => 'আন সদস্যক ই-মেইল পঠিয়াবলৈ আপুনি [[Special:UserLogin|লগ্‌ ইন]] কৰিব লাগিব আৰু আপোনাৰ [[Special:Preferences|পছন্দসমূহত]] এটা বৈধ ই-মেইল ঠিকনা থাকিব লাগিব ।',
+'emailuser' => 'এই সদস্যজনলৈ ই-মেইল পঠিয়াওক',
+'emailuser-title-target' => '{{GENDER:$1|সদস্যজনক}} ইমেইল পঠিয়াওক',
+'emailuser-title-notarget' => 'ব্যৱহাৰকাৰী ই-পত্ৰ প্ৰেৰণ কৰক',
 'emailpage' => 'ই-পত্ৰ ব্যৱহাৰকাৰী',
 'emailpagetext' => 'তলৰ প্ৰপত্ৰখন ব্যৱহাৰ কৰি আপুনি এই {{GENDER:$1|সদস্যজনলৈ}} ই-মেইল পঠাব পাৰে ।
 আপুনি [[Special:Preferences|আপোনাৰ সদস্য পছন্দসমূহ]]ত প্ৰৱেশ কৰা ই-মেইল ঠিকনাটো প্ৰেৰকৰ ঠিকনা হিছাপে দেখা যাব, যাতে মেইলৰ প্ৰাপকে আপোনাক উত্তৰ দিব পাৰে ।',
-'wiki_usermailererror' => 'মেইল বিষয়বস্তুৰ ত্ৰুটি:',
+'usermailererror' => 'মেইল বিষয়বস্তুৰ ত্ৰুটি:',
 'defemailsubject' => '"$1" সদস্যৰ পৰা {{SITENAME}} ই-মেইল',
-'wiki_usermaildisabled' => 'ব্যৱহাৰকাৰীৰ ই-মেইল নিষ্ক্ৰিয়',
-'wiki_usermaildisabledtext' => 'আপুনি এই ৱিকিত আন সদস্যলৈ ই-পত্ৰ পঠিয়াব নোৱাৰে',
+'usermaildisabled' => 'ব্যৱহাৰকাৰীৰ ই-মেইল নিষ্ক্ৰিয়',
+'usermaildisabledtext' => 'আপুনি এই ৱিকিত আন সদস্যলৈ ই-পত্ৰ পঠিয়াব নোৱাৰে',
 'noemailtitle' => 'কোনো ই-পত্ৰ ঠিকনা নাই',
 'noemailtext' => 'এই সদস্যজনে কোনো বৈধ ই-পত্ৰ ঠিকনা নিৰ্বাচন কৰা নাই ।',
 'nowikiemailtitle' => 'কোনো ই-পত্ৰ অনুমোদিত নহয়',
 'nowikiemailtext' => 'এই সদস্যজনে আন সদস্যৰপৰা ই-পত্ৰ পাবলৈ বিচৰা নাই ।',
 'emailnotarget' => 'পাওঁতাৰ অস্তিত্বহীন বা অবৈধ সদস্যনাম',
 'emailtarget' => 'পাওঁতাৰ সদস্যনাম ভৰ্তি কৰক',
-'emailwiki_username' => 'সদস্যনাম:',
-'emailwiki_usernamesubmit' => 'দাখিল কৰক',
+'emailusername' => 'সদস্যনাম:',
+'emailusernamesubmit' => 'দাখিল কৰক',
 'email-legend' => 'আন এজন {{SITENAME}} সদস্যলৈ ই-পত্ৰ পঠিয়াওক',
 'emailfrom' => 'প্ৰেৰক',
 'emailto' => 'প্ৰাপক:',
@@ -2189,11 +2189,11 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization চাওক।",
 'emailccsubject' => '$1ক পঠিওৱা আপোনাৰ বাৰ্তাৰ প্ৰতিলিপি: $2',
 'emailsent' => 'ই-মেইল প্ৰেৰণ কৰা হ’ল',
 'emailsenttext' => 'আপোনাৰ ই-মেইল বাৰ্তা প্ৰেৰণ কৰা হৈছে',
-'emailwiki_userfooter' => 'এই ই-পত্ৰ {{SITENAME}} চাইটৰ "ই-পত্ৰ সদস্য" সুবিধা ব্যৱহাৰ কৰি $1-এ $2-লৈ পঠিয়াইছিল ।',
+'emailuserfooter' => 'এই ই-পত্ৰ {{SITENAME}} চাইটৰ "ই-পত্ৰ সদস্য" সুবিধা ব্যৱহাৰ কৰি $1-এ $2-লৈ পঠিয়াইছিল ।',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'ব্যৱস্থা বাৰ্তা দিয়ক',
-'wiki_usermessage-editor' => 'ব্যৱস্থাৰ বাতৰি দিওঁতা',
+# User Messenger
+'usermessage-summary' => 'ব্যৱস্থা বাৰ্তা দিয়ক',
+'usermessage-editor' => 'ব্যৱস্থাৰ বাতৰি দিওঁতা',
 
 # Watchlist
 'watchlist' => 'মোৰ লক্ষ্য-তালিকা',
@@ -2202,7 +2202,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization চাওক।",
 'nowatchlist' => 'আপোনাৰ নিৰীক্ষণ তালিকাত একো নাই ।',
 'watchlistanontext' => 'আপোনাৰ লক্ষ্য তালিকাত থকা বস্তুবোৰ চাবলৈ বা সম্পাদনা কৰিবলৈ অনুগ্ৰহ কৰি $1 কৰক।',
 'watchnologin' => 'প্ৰৱেশ কৰা নাই',
-'watchnologintext' => 'নিৰীক্ষণ তালিকা পৰিৱৰ্তন কৰিবলৈ আপুনি আগতে [[Special:wiki_userLogin|প্ৰৱেশ]] কৰিব লাগিব ।',
+'watchnologintext' => 'নিৰীক্ষণ তালিকা পৰিৱৰ্তন কৰিবলৈ আপুনি আগতে [[Special:UserLogin|প্ৰৱেশ]] কৰিব লাগিব ।',
 'addwatch' => 'লক্ষ্য-তালিকাত অন্তৰ্ভুক্ত কৰক',
 'addedwatchtext' => 'আপোনাৰ [[Special:Watchlist|লক্ষ্য তালিকাত ]] "[[:$1]]" পৃষ্ঠাখন অন্তৰ্ভুক্ত কৰা হ\'ল।
 ভৱিষ্যতে এই পৃষ্ঠা বা ইয়াৰ আলোচনা পৃষ্ঠাত হোৱা সাল-সলনি আপুনি আপোনাৰ লক্ষ্য তালিকাত দেখিব।',
@@ -2315,12 +2315,12 @@ $UNWATCHURL
 'rollbackfailed' => 'পূৰ্ববৎ ব্যৰ্থ',
 'cantrollback' => 'পূৰ্বৰ অৱস্থালৈ ঘূৰাই নিব নোৱাৰি;
 শেষৰ সম্পাদকজন এই পৃষ্ঠাৰ একমাত্ৰ লেখক ।',
-'alreadyrolled' => "[[wiki_user:$2|$2]] ([[wiki_user talk:$2|আলোচনা]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]])এ কৰা [[:$1]]ৰ শেষ সম্পাদনা পূৰ্বাৱস্থালৈ ঘূৰাই নিব নোৱাৰি; কোনোবাই ইতিমধ্যে পৃষ্ঠাখন সম্পাদনা বা ৰ'লবেক কৰিছে ।
+'alreadyrolled' => "[[User:$2|$2]] ([[User talk:$2|আলোচনা]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]])এ কৰা [[:$1]]ৰ শেষ সম্পাদনা পূৰ্বাৱস্থালৈ ঘূৰাই নিব নোৱাৰি; কোনোবাই ইতিমধ্যে পৃষ্ঠাখন সম্পাদনা বা ৰ'লবেক কৰিছে ।
 
-[[wiki_user:$3|$3]] ([[wiki_user talk:$3|আলোচনা]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]])ই এই পৃষ্ঠাৰ শেষ সম্পাদনা কৰিছিল ।",
+[[User:$3|$3]] ([[User talk:$3|আলোচনা]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]])ই এই পৃষ্ঠাৰ শেষ সম্পাদনা কৰিছিল ।",
 'editcomment' => "সম্পাদনাৰ সাৰাংশ আছিল: \"''\$1''\"।",
-'revertpage' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|কথা-বতৰা]])ৰ সম্পাদনাসমূহ [[wiki_user:$1|$1]]য়ে কৰা শেষ সংশোধনলৈ ঘূৰাই নিয়া হৈছে ।',
-'revertpage-nowiki_user' => '(সদস্যনাম বিলোপিত) য়ে কৰা সম্পাদনা [[wiki_user:$1|$1]] য়ে কৰা শেষ সংশোধনীলৈ ঘূৰাই নিয়া হৈছে ।',
+'revertpage' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|কথা-বতৰা]])ৰ সম্পাদনাসমূহ [[User:$1|$1]]য়ে কৰা শেষ সংশোধনলৈ ঘূৰাই নিয়া হৈছে ।',
+'revertpage-nouser' => '(সদস্যনাম বিলোপিত) য়ে কৰা সম্পাদনা [[User:$1|$1]] য়ে কৰা শেষ সংশোধনীলৈ ঘূৰাই নিয়া হৈছে ।',
 'rollback-success' => '$1 ৰ সম্পাদনাসমূহ পূৰ্বৰ অৱস্থালৈ ঘূৰাই নিয়া হৈছে;
 পৃষ্ঠাখন $2 য়ে কৰা শেষ সংশোধনীলৈ ঘূৰাই নিয়া হৈছে ।',
 
@@ -2477,13 +2477,13 @@ $1',
 'sp-contributions-uploads' => "আপল'ডসমূহ",
 'sp-contributions-logs' => 'অভিলেখ',
 'sp-contributions-talk' => 'আলোচনা',
-'sp-contributions-wiki_userrights' => 'সদস্যৰ অধিকাৰ ব্যৱস্থাপনা',
+'sp-contributions-userrights' => 'সদস্যৰ অধিকাৰ ব্যৱস্থাপনা',
 'sp-contributions-blocked-notice' => 'এই সদস্যজনক সদ্যহতে বাৰণ কৰা হৈছে ।
 আপোনাৰ সুবিধাৰ্থে শেহতীয়া প্ৰতিবন্ধক অভিলেখ ভৰ্তি তলত দিয়া হ’ল:',
 'sp-contributions-blocked-notice-anon' => 'এই আই.পি. ঠিকনা সদ্যহতে বাৰণ কৰা হৈছে ।
 আপোনাৰ সুবিধাৰ্থে শেহতীয়া প্ৰতিবন্ধক অভিলেখ ভৰ্তি তলত দিয়া হ’ল:',
 'sp-contributions-search' => 'বৰঙণিসমূহৰ কাৰণে অনুসন্ধান কৰক',
-'sp-contributions-wiki_username' => 'আই.পি. ঠিকনা অথবা ব্যৱহাৰকৰ্তাৰ নাম:',
+'sp-contributions-username' => 'আই.পি. ঠিকনা অথবা ব্যৱহাৰকৰ্তাৰ নাম:',
 'sp-contributions-toponly' => 'কেৱল সাম্প্ৰতিক সংস্কৰণৰ অন্তৰ্গত সম্পাদনাসমূহ দেখুৱাওক',
 'sp-contributions-submit' => 'সন্ধান কৰক',
 
@@ -2516,7 +2516,7 @@ $1',
 'blockiptext' => 'তলৰ প্ৰপত্ৰখন ব্যৱহাৰ কৰি কোনো নিৰ্দিষ্ট আই.পি. ঠিকনা বা সদস্যনামৰ লিখাৰ অধিকাৰ বাৰণ কৰিব পাৰে ।
 কেৱল ধ্বংসপ্ৰৱণতা ৰোধ কৰিবলৈ আৰু [[{{MediaWiki:Policy-url}}|নীতি]] মানি চলি এনে কৰক ।
 তলত এটা নিৰ্দিষ্ট কাৰণ উল্লেখ কৰক (যেনে, ধ্বংসসাধন কৰা পৃষ্ঠাৰ নাম) ।',
-'ipadressorwiki_username' => 'আই-পি ঠিকনা বা সদস্যনাম:',
+'ipadressorusername' => 'আই-পি ঠিকনা বা সদস্যনাম:',
 'ipbexpiry' => 'ম্যাদ উকলিব:',
 'ipbreason' => 'কাৰণ:',
 'ipbreasonotherlist' => 'অন্য কাৰণ',
@@ -2538,8 +2538,8 @@ $1',
 'ipbotheroption' => 'অন্যান্য',
 'ipbotherreason' => 'অন্য/অতিৰিক্ত কাৰণ:',
 'ipbhidename' => 'সম্পাদনা আৰু তালিকা সমূহৰ পৰা সদস্যনাম আঁৰ দিয়ক',
-'ipbwatchwiki_user' => 'এই সদস্যৰ সদস্য আৰু আলোচনা পৃষ্ঠা লক্ষ্য কৰক',
-'ipb-disablewiki_usertalk' => 'প্ৰতিবন্ধক থকা অৱস্থাত এই সদস্যজনক নিজৰ কথা-বতৰা পৃষ্ঠা সম্পাদনা কৰাৰ পৰা বিৰত কৰক',
+'ipbwatchuser' => 'এই সদস্যৰ সদস্য আৰু আলোচনা পৃষ্ঠা লক্ষ্য কৰক',
+'ipb-disableusertalk' => 'প্ৰতিবন্ধক থকা অৱস্থাত এই সদস্যজনক নিজৰ কথা-বতৰা পৃষ্ঠা সম্পাদনা কৰাৰ পৰা বিৰত কৰক',
 'ipb-change-block' => 'এই ছেটিং ব্যৱহাৰ কৰি সদস্যজনক পুনৰ বাৰণ কৰক',
 'ipb-confirm' => 'প্ৰতিবন্ধক নিশ্চিত কৰক',
 'badipaddress' => 'অগ্ৰহণযোগ্য আই-পি ঠিকনা',
@@ -2547,7 +2547,7 @@ $1',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]]ক বাধা দিয়া হৈছে।<br />
 প্ৰতিবন্ধকৰ পুনৰ্বিবেচনাৰ বাবে [[Special:BlockList|প্ৰতিবন্ধক তালিকা]] চাওক।',
 'ipb-blockingself' => 'আপুনি নিজকে বাধাপ্ৰদান কৰিব বিচাৰিছে ! আপুনি নিশ্চিতনে আপুনি এনে কৰিব ?',
-'ipb-confirmhidewiki_user' => 'আপুনি "সদস্য গোপন কৰক" বৈশিষ্ট সক্ৰিয় থকা এজন সদস্যক বাৰণ কৰিবলৈ ওলাইছে । এই কাৰ্যই সকলো তালিকা আৰু ল\'গ ভৰ্তিৰ পৰা তেওঁৰ নাম আঁতৰাই পেলাব । এই কাম কৰিব বুলি আপুনি নিশ্চিতনে ?',
+'ipb-confirmhideuser' => 'আপুনি "সদস্য গোপন কৰক" বৈশিষ্ট সক্ৰিয় থকা এজন সদস্যক বাৰণ কৰিবলৈ ওলাইছে । এই কাৰ্যই সকলো তালিকা আৰু ল\'গ ভৰ্তিৰ পৰা তেওঁৰ নাম আঁতৰাই পেলাব । এই কাম কৰিব বুলি আপুনি নিশ্চিতনে ?',
 'ipb-edit-dropdown' => 'প্ৰতিবন্ধকৰ কাৰণসমূহ সম্পাদনা কৰক',
 'ipb-unblock-addr' => '$1ৰ পৰা বাৰণ উঠাই লওক',
 'ipb-unblock' => 'সদস্যনাম বা আই.পি. ঠিকনাৰ ওপৰত থকা প্ৰতিবন্ধক আঁতৰ কৰক',
@@ -2556,13 +2556,13 @@ $1',
 'unblockip' => 'সদস্যৰ প্ৰতিবন্ধক উঠাই লওক',
 'unblockiptext' => 'তলৰ প্ৰপত্ৰখন ব্যৱহাৰ কৰি পূৰ্বে প্ৰতিবন্ধক থকা কোনো আই.পি. ঠিকনা বা সদস্যৰ লিখাৰ অধিকাৰ পুনঃপ্ৰতিষ্ঠা কৰক ।',
 'ipusubmit' => 'এই বাৰণ উঠাই লওক',
-'unblocked' => '[[wiki_user:$1|$1]]ৰ প্ৰতিবন্ধক আঁতৰ কৰা হৈছে',
+'unblocked' => '[[User:$1|$1]]ৰ প্ৰতিবন্ধক আঁতৰ কৰা হৈছে',
 'unblocked-range' => '$1ৰ প্ৰতিবন্ধক আঁতৰ কৰা হৈছে',
 'unblocked-id' => '$1 প্ৰতিবন্ধকটো আঁতৰ কৰা হৈছে',
 'blocklist' => 'বাৰণ কৰা সদস্য',
 'ipblocklist' => 'বাৰণ কৰা সদস্য',
 'ipblocklist-legend' => 'বাৰণ কৰা সদস্য অনুসন্ধান কৰক',
-'blocklist-wiki_userblocks' => 'একাউন্ট বাৰণ গোপন কৰক',
+'blocklist-userblocks' => 'একাউন্ট বাৰণ গোপন কৰক',
 'blocklist-tempblocks' => 'অস্থায়ী প্ৰতিবন্ধক গোপন কৰক',
 'blocklist-addressblocks' => 'একক IP অৱৰোধ গোপন কৰক',
 'blocklist-rangeblocks' => 'পৰিসীমা প্ৰতিবন্ধক গোপন কৰক',
@@ -2581,7 +2581,7 @@ $1',
 'noautoblockblock' => 'স্বয়ংক্ৰিয় প্ৰতিবন্ধক নিষ্ক্ৰিয় কৰা হৈছে',
 'createaccountblock' => 'একাউণ্ট সৃষ্টিত প্ৰতিবন্ধক দিয়া হৈছে',
 'emailblock' => 'ই-মেইল অৱৰোধ কৰা হৈছে',
-'blocklist-nowiki_usertalk' => 'নিজৰ কথা-বতৰা পৃষ্ঠা সম্পাদনা কৰিব নোৱাৰি',
+'blocklist-nousertalk' => 'নিজৰ কথা-বতৰা পৃষ্ঠা সম্পাদনা কৰিব নোৱাৰি',
 'ipblocklist-empty' => 'প্ৰতিবন্ধক তালিকাখন খালী ।',
 'ipblocklist-no-results' => 'অনুৰোধ কৰা IP ঠিকনা বা সদস্যনামত কোনো বাধা নাই ।',
 'blocklink' => 'বাৰণ কৰক',
@@ -2589,7 +2589,7 @@ $1',
 'change-blocklink' => 'প্ৰতিবন্ধক সলনি কৰক',
 'contribslink' => 'বৰঙণি',
 'emaillink' => 'ই-মেইল পঠাওক',
-'autoblocker' => 'আপোনাক স্বয়ংক্ৰিয়ভাৱে অৱৰোধ কৰা হৈছে কাৰণ আপোনাৰ আই.পি. ঠিকনাটো শেহতীয়াকৈ "[[wiki_user:$1|$1]]"য়ে ব্যৱহাৰ কৰিছে ।
+'autoblocker' => 'আপোনাক স্বয়ংক্ৰিয়ভাৱে অৱৰোধ কৰা হৈছে কাৰণ আপোনাৰ আই.পি. ঠিকনাটো শেহতীয়াকৈ "[[User:$1|$1]]"য়ে ব্যৱহাৰ কৰিছে ।
 $1ৰ অৱৰোধৰ কাৰণ: "$2"',
 'blocklogpage' => 'বাৰণ সূচী',
 'blocklog-showlog' => 'এই সদস্যজনক পূৰ্বতে অৱৰোধ কৰা হৈছিল ।
@@ -2606,7 +2606,7 @@ $1ৰ অৱৰোধৰ কাৰণ: "$2"',
 'block-log-flags-nocreate' => 'একাউন্ট সৃষ্টি নিষ্ক্ৰিয় কৰা হৈছে',
 'block-log-flags-noautoblock' => 'স্বয়ংক্ৰিয়-প্ৰতিবন্ধক নিষ্ক্ৰিয় কৰা হৈছে',
 'block-log-flags-noemail' => 'ই-মেইল অৱৰোধ কৰা হৈছে',
-'block-log-flags-nowiki_usertalk' => 'নিজৰ কথা-বতৰা পৃষ্ঠা সম্পাদনা কৰিব নোৱাৰি',
+'block-log-flags-nousertalk' => 'নিজৰ কথা-বতৰা পৃষ্ঠা সম্পাদনা কৰিব নোৱাৰি',
 'block-log-flags-angry-autoblock' => 'বৰ্ধিত স্বয়ংক্ৰিয়-প্ৰতিবন্ধক সক্ৰিয় কৰা হৈছে',
 'block-log-flags-hiddenname' => 'সদস্যনাম গোপন কৰা হ’ল',
 'range_block_disabled' => 'প্ৰশাসকৰ পৰিসীমা প্ৰতিবন্ধক সৃষ্টি কৰিব পৰা ক্ষমতা নিষ্ক্ৰিয় কৰা হৈছে ।',
@@ -2616,7 +2616,7 @@ $1ৰ অৱৰোধৰ কাৰণ: "$2"',
 'ipb_already_blocked' => '"$1"ক ইতিমধ্যে অৱৰোধ কৰা হৈছে',
 'ipb-needreblock' => '$1ক ইতিমধ্যে অৱৰোধ কৰা হৈছে । আপুনি ছেটিং সলাব বিচাৰিছে নেকি ?',
 'ipb-otherblocks-header' => 'আন {{PLURAL:$1|প্ৰতিবন্ধক|প্ৰতিবন্ধকসমূহ}}',
-'unblock-hidewiki_user' => 'আপুনি এই সদস্যজনৰ অৱৰোধ আঁতৰাব নোৱাৰে, কাৰণ তেওঁৰ সদস্যনাম গোপন কৰা হৈছে ।',
+'unblock-hideuser' => 'আপুনি এই সদস্যজনৰ অৱৰোধ আঁতৰাব নোৱাৰে, কাৰণ তেওঁৰ সদস্যনাম গোপন কৰা হৈছে ।',
 'ipb_cant_unblock' => 'ত্ৰুটি: প্ৰতিবন্ধক ID $1 পোৱা নগ’ল । হয়তো ইতিমধ্যে প্ৰতিবন্ধক আঁতৰ কৰা হৈছে ।',
 'ipb_blocked_as_range' => 'ত্ৰুটি: $1 আই.পি. ঠিকনাটোক প্ৰত্যক্ষভাৱে বাধা দিয়া হোৱা নাই আৰু এই বাধা আঁতৰাব নোৱাৰি ।
 কিন্তু এইটো $2 পৰিসীমাৰ অন্তৰ্গত যাৰ বাধা আঁতৰাব পাৰি ।',
@@ -2632,7 +2632,7 @@ $1ৰ অৱৰোধৰ কাৰণ: "$2"',
 'sorbs_create_account_reason' => '{{SITENAME}}ত ব্যৱহাৰ কৰা DNSBLত আপোনাৰ আই.পি. ঠিকনা মুক্ত প্ৰক্সী হিছাপে তালিকাভুক্ত হৈ আছে ।
 আপুনি একাউণ্ট সৃষ্টি কৰিব নোৱাৰে',
 'cant-block-while-blocked' => 'নিজেই অৱৰোধিত হৈ থকা অৱস্থাত আপুনি আন সদস্যক অৱৰোধ কৰিব নোৱাৰে ।',
-'cant-see-hidden-wiki_user' => 'আপুনি বাৰণ কৰিব বিচৰা সদস্যজনক ইতিমধ্যেই বাৰণ কৰি গোপন কৰা হৈছে ।
+'cant-see-hidden-user' => 'আপুনি বাৰণ কৰিব বিচৰা সদস্যজনক ইতিমধ্যেই বাৰণ কৰি গোপন কৰা হৈছে ।
 যিহেতু আপোনাৰ সদস্যগোপনতা অধিকাৰ নাই, আপুনি সদস্যজনৰ প্ৰতিবন্ধক চাব বা সম্পাদনা কৰিব নোৱাৰে ।',
 'ipbblocked' => 'আপুনি আন সদস্যক অৱৰোধ কৰিব বা আঁতৰাব নোৱাৰে, কাৰণ আপুনি নিজেই বাধাপ্ৰাপ্ত অৱস্থাত আছে',
 'ipbnounblockself' => 'আপুনি নিজৰ প্ৰতিবন্ধক আঁতৰাব নোৱাৰে',
@@ -2691,13 +2691,13 @@ $1ৰ অৱৰোধৰ কাৰণ: "$2"',
 
 তেনে ক্ষেত্ৰত আপুনি আপুনি ইচ্ছা কৰিলে নিজ হাতে পৃষ্ঠাখন স্থানান্তৰ বা একত্ৰীকৰণ কৰিব পাৰে ।",
 'movearticle' => 'পৃষ্ঠা স্থানান্তৰ কৰক:',
-'movewiki_userpage-warning' => "'''সতৰ্কবাণী:''' আপুনি এখন সদস্যপৃষ্ঠা স্থানান্তৰ কৰিবলৈ বিছাৰিছে । অনুগ্ৰহ কৰি মন কৰক যে কেৱল সদস্যপৃষ্ঠাখনহে স্থানান্তৰ হ’ব আৰু সদস্যজনৰ পুনঃনামাকৰণ নহ’ব ।",
+'moveuserpage-warning' => "'''সতৰ্কবাণী:''' আপুনি এখন সদস্যপৃষ্ঠা স্থানান্তৰ কৰিবলৈ বিছাৰিছে । অনুগ্ৰহ কৰি মন কৰক যে কেৱল সদস্যপৃষ্ঠাখনহে স্থানান্তৰ হ’ব আৰু সদস্যজনৰ পুনঃনামাকৰণ নহ’ব ।",
 'movenologin' => 'প্ৰৱেশ কৰা নাই',
-'movenologintext' => 'পৃষ্ঠা স্থানান্তৰ কৰিবলৈ আপুনি ভুক্ত সদস্য হৈ [[Special:wiki_userLogin|প্ৰৱেশ]] কৰিব লাগিব ।',
+'movenologintext' => 'পৃষ্ঠা স্থানান্তৰ কৰিবলৈ আপুনি ভুক্ত সদস্য হৈ [[Special:UserLogin|প্ৰৱেশ]] কৰিব লাগিব ।',
 'movenotallowed' => 'পৃষ্ঠা স্থানান্তৰ কৰিবলৈ আপোনাৰ অনুমতি নাই ।',
 'movenotallowedfile' => 'নথিখন স্থানান্তৰ কৰিবলৈ আপোনাৰ অনুমতি নাই ।',
-'cant-move-wiki_user-page' => 'সদস্য পৃষ্ঠা স্থানান্তৰ কৰিবলৈ আপুনাৰ অনুমতি নাই (উপ-পৃষ্ঠাৰ বাহিৰে)।',
-'cant-move-to-wiki_user-page' => 'সদস্যপৃষ্ঠালৈ কোনো পৃষ্ঠা স্থানান্তৰ কৰাৰ অনুমতি আপোনাৰ নাই (কেৱল সদস্য উপপৃষ্ঠাৰ বাহিৰে ) ।',
+'cant-move-user-page' => 'সদস্য পৃষ্ঠা স্থানান্তৰ কৰিবলৈ আপুনাৰ অনুমতি নাই (উপ-পৃষ্ঠাৰ বাহিৰে)।',
+'cant-move-to-user-page' => 'সদস্যপৃষ্ঠালৈ কোনো পৃষ্ঠা স্থানান্তৰ কৰাৰ অনুমতি আপোনাৰ নাই (কেৱল সদস্য উপপৃষ্ঠাৰ বাহিৰে ) ।',
 'newtitle' => 'নতুন শিৰোনামালৈ:',
 'move-watch' => 'এই পৃষ্ঠাখন লক্ষ্য কৰক',
 'movepagebtn' => 'পৃষ্ঠাখন স্থানান্তৰ কৰক',
@@ -2879,8 +2879,8 @@ $1ৰ অৱৰোধৰ কাৰণ: "$2"',
 'javascripttest-qunit-heading' => 'মিডিয়াৱিকি জাভাস্ক্ৰিপ্ট QUnit পৰীক্ষা চুট',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'আপোনাৰ সদস্য পৃষ্ঠা',
-'tooltip-pt-anonwiki_userpage' => 'যি আই.পি. ঠিকনাৰ পৰা আপুনি সম্পাদনা কৰিছে তাৰ সদস্য পৃষ্ঠা',
+'tooltip-pt-userpage' => 'আপোনাৰ সদস্য পৃষ্ঠা',
+'tooltip-pt-anonuserpage' => 'যি আই.পি. ঠিকনাৰ পৰা আপুনি সম্পাদনা কৰিছে তাৰ সদস্য পৃষ্ঠা',
 'tooltip-pt-mytalk' => 'আপোনাৰ আলোচনা পৃষ্ঠা',
 'tooltip-pt-anontalk' => 'এই আই.পি. ঠিকনাৰ পৰা কৰা সম্পাদনাসমূহৰ আলোচনা',
 'tooltip-pt-preferences' => 'আপোনাৰ পছন্দসমূহ',
@@ -2917,13 +2917,13 @@ $1ৰ অৱৰোধৰ কাৰণ: "$2"',
 'tooltip-feed-rss' => 'এই পৃষ্ঠাৰ বাবে আৰ-এচ-এচ ভুক্তি',
 'tooltip-feed-atom' => 'এই পৃষ্ঠাৰ বাবে এটম ভুক্তি',
 'tooltip-t-contributions' => 'এই সদস্যজনৰ অৰিহনাসমূহৰ সূচী চাওক',
-'tooltip-t-emailwiki_user' => 'এই সদস্যজনলৈ ই-মেইল পঠাওক',
+'tooltip-t-emailuser' => 'এই সদস্যজনলৈ ই-মেইল পঠাওক',
 'tooltip-t-upload' => "ফাইল আপল'ডৰ বাবে",
 'tooltip-t-specialpages' => 'বিশেষ পৃষ্ঠাসমূহৰ সূচী',
 'tooltip-t-print' => 'এই পৃষ্ঠাৰ ছপা উপযোগী সংস্কৰণ',
 'tooltip-t-permalink' => 'পৃষ্ঠাৰ এই সংস্কৰণৰ স্থায়ী সংযোগ',
 'tooltip-ca-nstab-main' => 'এই ৱিকিৰ সূচী চাওক',
-'tooltip-ca-nstab-wiki_user' => 'সভ্যৰ ব্যক্তিগত পৃষ্ঠালৈ',
+'tooltip-ca-nstab-user' => 'সভ্যৰ ব্যক্তিগত পৃষ্ঠালৈ',
 'tooltip-ca-nstab-media' => 'মিডিয়া পৃষ্ঠাখন চাওক',
 'tooltip-ca-nstab-special' => 'এইখন এখন বিশেষ পৃষ্ঠা, আপুনি সম্পাদনা কৰিব নোৱাৰে',
 'tooltip-ca-nstab-project' => 'প্ৰকল্প পৃষ্ঠা চাওক',
@@ -2952,13 +2952,13 @@ $1ৰ অৱৰোধৰ কাৰণ: "$2"',
 
 # Attribution
 'anonymous' => '{{SITENAME}}ৰ বেনামী {{PLURAL:$1|সদস্য|সদস্যসকল}}',
-'sitewiki_user' => '{{SITENAME}} সদস্য $1',
-'anonwiki_user' => '{{SITENAME}} বেনামী সদস্য $1',
+'siteuser' => '{{SITENAME}} সদস্য $1',
+'anonuser' => '{{SITENAME}} বেনামী সদস্য $1',
 'lastmodifiedatby' => 'এই পৃষ্ঠাখন শেষবাৰৰ কাৰণে $1 তাৰিখে $2 বজাত $3ৰ দ্বাৰা সলনি কৰা হৈছিল',
 'othercontribs' => '$1ৰ কাৰ্যৰ ওপৰত ভিত্তি কৰি',
 'others' => 'অন্যান্য',
-'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|সদস্য|সদস্যসমূহ}} $1',
-'anonwiki_users' => '{{SITENAME}} বেনামী {{PLURAL:$2|সদস্য|সদস্যসকল}} $1',
+'siteusers' => '{{SITENAME}} {{PLURAL:$2|সদস্য|সদস্যসমূহ}} $1',
+'anonusers' => '{{SITENAME}} বেনামী {{PLURAL:$2|সদস্য|সদস্যসকল}} $1',
 'creditspage' => 'পৃষ্ঠাৰ স্বীকৃতি',
 'nocredits' => 'এই পৃষ্ঠাৰ বাবে কোনো কৃতিত্ব তথ্য উপলব্ধ নাই।',
 
@@ -2967,7 +2967,7 @@ $1ৰ অৱৰোধৰ কাৰণ: "$2"',
 'spamprotectiontext' => 'আপুনি সাঁচিব বিচৰা পাঠখিনিক স্পাম ছেকনীৰ দ্বাৰা বাধা প্ৰদান কৰা হৈছে ।
 সম্ভৱতঃ কোনো ব্লেকলিষ্টেড হোৱা বাহ্যিক সংযোগৰ কাৰণে এনে ঘটিছে ।',
 'spamprotectionmatch' => 'নিম্নলিখিত লিখনীৰ বাবে আমাৰ স্পাম পৰিস্ৰাৱক আৰম্ভ হৈছে: $1',
-'spambot_wiki_username' => 'মিডিয়াৱিকি স্পাম পৰিষ্কাৰ কাৰ্য',
+'spambot_username' => 'মিডিয়াৱিকি স্পাম পৰিষ্কাৰ কাৰ্য',
 'spam_reverting' => '$1লৈ সংযোগ নথকা সৰ্বশেষ পুনৰীক্ষনলে উভতাই নিয়া হৈছে',
 'spam_blanking' => 'সকলো পুনৰীক্ষনৰ $1লৈ সংযোগ আছিল, ৰিক্ত কৰা হৈছে',
 'spam_deleting' => 'সকলো পুনৰীক্ষণৰ $1লৈ সংযোগ আছিল, বিলোপ কৰা হৈছে',
@@ -2991,9 +2991,9 @@ $1ৰ অৱৰোধৰ কাৰণ: "$2"',
 'pageinfo-redirects-name' => 'পৃষ্ঠালৈ থকা পুনৰ্নিৰ্দেশ',
 'pageinfo-subpages-name' => 'এই পৃষ্ঠাৰ উপপৃষ্ঠাসমূহ',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|পুনৰ্নিৰ্দেশ|পুনৰ্নিৰ্দেশসমূহ}}; $3 {{PLURAL:$3|অপুনৰ্নিৰ্দেশ নাই|অপুনৰ্নিৰ্দেশসমূহ}})',
-'pageinfo-firstwiki_user' => 'পৃষ্ঠাখনৰ সৃষ্টিকৰ্তা',
+'pageinfo-firstuser' => 'পৃষ্ঠাখনৰ সৃষ্টিকৰ্তা',
 'pageinfo-firsttime' => 'পৃষ্ঠা সৃষ্টিৰ তাৰিখ',
-'pageinfo-lastwiki_user' => 'অন্তিম সম্পাদক',
+'pageinfo-lastuser' => 'অন্তিম সম্পাদক',
 'pageinfo-lasttime' => 'অন্তিম সম্পাদনাৰ তাৰিখ',
 'pageinfo-edits' => 'মুঠ সম্পাদনাৰ সংখ্যা',
 'pageinfo-authors' => 'মুঠ স্বতন্ত্ৰ লেখকৰ সংখ্যা',
@@ -3142,7 +3142,7 @@ Any subsequent links on the same line are considered to be exceptions, i.e. page
 'exif-compressedbitsperpixel' => 'ছবি সংকোচন অৱস্থা',
 'exif-pixelydimension' => 'ছবিৰ প্ৰস্থতা',
 'exif-pixelxdimension' => 'ছবিৰ উচ্চতা',
-'exif-wiki_usercomment' => 'সদস্যৰ মন্তব্য',
+'exif-usercomment' => 'সদস্যৰ মন্তব্য',
 'exif-relatedsoundfile' => 'সংশ্লিষ্ট শ্ৰব্য ফাইল',
 'exif-datetimeoriginal' => 'তথ্য সৃজনৰ তাৰিখ আৰু সময়',
 'exif-datetimedigitized' => 'ডিজিটেলকৰণৰ তাৰিখ আৰু সময়',
@@ -3525,7 +3525,7 @@ Any subsequent links on the same line are considered to be exceptions, i.e. page
 সম্ভৱতঃ ইয়াৰ ম্যাদ উকলি গৈছে ।',
 'confirmemail_needlogin' => 'আপোনাৰ ই-মেইল ঠিকনা নিশ্চিতকৰণৰ বাবে $1 কৰক ।',
 'confirmemail_success' => 'আপোনাৰ ই-মেইল ঠিকনা নিশ্চিতকৰণ কৰা হৈছে ।
-আপুনি এতিয়া [[Special:wiki_userLogin|প্ৰৱেশ]] কৰক আৰু ৱিকি উপভোগ কৰক ।',
+আপুনি এতিয়া [[Special:UserLogin|প্ৰৱেশ]] কৰক আৰু ৱিকি উপভোগ কৰক ।',
 'confirmemail_loggedin' => 'আপোনাৰ ই-মেইল ঠিকনা নিশ্চিত কৰা হৈছে ।',
 'confirmemail_error' => 'আপোনাৰ নিশ্চিতকৰণ সংৰক্ষণ কৰাত কিছু সমস্যা হৈছে ।',
 'confirmemail_subject' => '{{SITENAME}} ই-মেইল ঠিকনা নিশ্চিতকৰণ',
@@ -3581,10 +3581,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''সতৰ্কবাণী''': আপুনি সম্পাদনা আৰম্ভ কৰাৰ পিছত পৃষ্ঠাখন বিলোপ কৰা হৈছে !",
-'confirmrecreate' => "আপুনি সম্পাদনা আৰম্ভ কৰাৰ পিছত সদস্য [[wiki_user:$1|$1]] ([[wiki_user talk:$1|আলোচনা]])য়ে পৃষ্ঠাখন বিলোপ কৰিছে, তাৰ কাৰণ:
+'confirmrecreate' => "আপুনি সম্পাদনা আৰম্ভ কৰাৰ পিছত সদস্য [[User:$1|$1]] ([[User talk:$1|আলোচনা]])য়ে পৃষ্ঠাখন বিলোপ কৰিছে, তাৰ কাৰণ:
 : ''$2''
 আপুনি এই পৃষ্ঠাখন আকৌ সৃষ্টি কৰিব খোজাটো নিশ্চিত কৰক ।",
-'confirmrecreate-noreason' => 'আপুনি সম্পাদনা আৰম্ভ কৰাৰ পিছত সদস্য [[wiki_user:$1|$1]] ([[wiki_user talk:$1|আলোচনা]])য়ে পৃষ্ঠাখন বিলোপ কৰিছে । আপুনি এই পৃষ্ঠাখন আকৌ সৃষ্টি কৰিব খোজাটো অনুগ্ৰহ কৰি নিশ্চিত কৰক ।',
+'confirmrecreate-noreason' => 'আপুনি সম্পাদনা আৰম্ভ কৰাৰ পিছত সদস্য [[User:$1|$1]] ([[User talk:$1|আলোচনা]])য়ে পৃষ্ঠাখন বিলোপ কৰিছে । আপুনি এই পৃষ্ঠাখন আকৌ সৃষ্টি কৰিব খোজাটো অনুগ্ৰহ কৰি নিশ্চিত কৰক ।',
 'recreate' => 'পুনৰ সৃষ্টি কৰক',
 
 # action=purge
@@ -3662,7 +3662,7 @@ $5
 'watchlisttools-raw' => 'অশোধিত লক্ষ্য-তালিকা সম্পাদনা কৰক',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|talk]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|talk]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'অজ্ঞাত এক্সটেনচন টেগ "$1"',
@@ -3731,7 +3731,7 @@ $5
 'specialpages-group-login' => 'প্ৰৱেশ/একাউণ্ট সৃষ্টি কৰক',
 'specialpages-group-changes' => 'সাম্প্ৰতিক সালসলনি আৰু অভিলেখসমূহ',
 'specialpages-group-media' => "মিডিয়া বিৱৰণী আৰু আপল'ডসমূহ",
-'specialpages-group-wiki_users' => 'সদস্যবৃন্দ আৰু অধিকাৰসমূহ',
+'specialpages-group-users' => 'সদস্যবৃন্দ আৰু অধিকাৰসমূহ',
 'specialpages-group-highuse' => 'অধিক ব্যবহৃত পৃষ্ঠাসমূহ',
 'specialpages-group-pages' => 'পৃষ্ঠাৰ তালিকাসমূহ',
 'specialpages-group-pagetools' => 'পৃষ্ঠা সা-সঁজুলি',
@@ -3830,11 +3830,11 @@ $5
 'logentry-move-move_redir-noredirect' => 'পুনৰ্নিৰ্দেশ নেৰাকৈ এটা পুনৰ্নিৰ্দেশৰ ওপৰেৰে পৃষ্ঠা $3 -ৰ পৰা $4 $1 স্থানান্তৰ কৰা হল',
 'logentry-patrol-patrol' => "পৃষ্ঠা $3 -ৰ $1 চিহ্নিত সংশোধন $4 নিৰীক্ষণ কৰা হ'ল",
 'logentry-patrol-patrol-auto' => "পৃষ্ঠা $3 -ৰ $1 চিহ্নিত সংশোধন $4 স্বচালিতভাৱে নিৰীক্ষণ কৰা হ'ল",
-'logentry-newwiki_users-newwiki_users' => "ব্যৱহাৰকাৰী একাউণ্ট $1 সৃষ্টি কৰা হ'ল",
-'logentry-newwiki_users-create' => "ব্যৱহাৰকাৰী একাউণ্ট $1 সৃষ্টি কৰা হ'ল",
-'logentry-newwiki_users-create2' => "$1ৰ দ্বাৰা এটা ব্যৱহাৰকাৰী একাউণ্ট $3 সৃষ্টি কৰা হ'ল",
-'logentry-newwiki_users-autocreate' => '$1’ৰ একাউণ্ট স্বয়ংক্ৰিয়ভাৱে সৃষ্টি কৰা হৈছিল',
-'newwiki_userlog-byemail' => 'গুপ্তশব্দ ই-মেইল কৰি পঠোৱা হৈছে',
+'logentry-newusers-newusers' => "ব্যৱহাৰকাৰী একাউণ্ট $1 সৃষ্টি কৰা হ'ল",
+'logentry-newusers-create' => "ব্যৱহাৰকাৰী একাউণ্ট $1 সৃষ্টি কৰা হ'ল",
+'logentry-newusers-create2' => "$1ৰ দ্বাৰা এটা ব্যৱহাৰকাৰী একাউণ্ট $3 সৃষ্টি কৰা হ'ল",
+'logentry-newusers-autocreate' => '$1’ৰ একাউণ্ট স্বয়ংক্ৰিয়ভাৱে সৃষ্টি কৰা হৈছিল',
+'newuserlog-byemail' => 'গুপ্তশব্দ ই-মেইল কৰি পঠোৱা হৈছে',
 
 # Feedback
 'feedback-bugornote' => 'যদি আপুনি এটা কাৰিকৰী সমস্যাৰ বিৱৰণ দিবলৈ প্ৰস্তুত, অনুগ্ৰহ কৰি [$1 এটা বাগ ৰিপ\'ৰ্ট কৰক]।

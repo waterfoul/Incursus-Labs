@@ -338,11 +338,11 @@ class HTMLForm extends ContextSource {
 			$submit = true; // no session check needed
 		} elseif ( $this->getRequest()->wasPosted() ) {
 			$editToken = $this->getRequest()->getVal( 'wpEditToken' );
-			if ( $this->getwiki_user()->isLoggedIn() || $editToken != null ) {
-				// Session tokens for logged-out wiki_users have no security value.
-				// However, if the wiki_user gave one, check it in order to give a nice
+			if ( $this->getUser()->isLoggedIn() || $editToken != null ) {
+				// Session tokens for logged-out users have no security value.
+				// However, if the user gave one, check it in order to give a nice
 				// "session expired" error instead of "permission denied" or such.
-				$submit = $this->getwiki_user()->matchEditToken( $editToken );
+				$submit = $this->getUser()->matchEditToken( $editToken );
 			} else {
 				$submit = true;
 			}
@@ -404,7 +404,7 @@ class HTMLForm extends ContextSource {
 
 		$data = $this->filterDataForSubmit( $this->mFieldData );
 
-		$res = call_wiki_user_func( $callback, $data, $this );
+		$res = call_user_func( $callback, $data, $this );
 
 		return $res;
 	}
@@ -656,7 +656,7 @@ class HTMLForm extends ContextSource {
 
 		$html = '';
 		if ( $this->getMethod() == 'post' ) {
-			$html .= Html::hidden( 'wpEditToken', $this->getwiki_user()->getEditToken(), array( 'id' => 'wpEditToken' ) ) . "\n";
+			$html .= Html::hidden( 'wpEditToken', $this->getUser()->getEditToken(), array( 'id' => 'wpEditToken' ) ) . "\n";
 			$html .= Html::hidden( 'title', $this->getTitle()->getPrefixedText() ) . "\n";
 		}
 
@@ -1126,7 +1126,7 @@ abstract class HTMLFormField {
 	/**
 	 * Override this function to add specific validation checks on the
 	 * field input.  Don't forget to call parent::validate() to ensure
-	 * that the wiki_user-defined callback mValidationCallback is still run
+	 * that the user-defined callback mValidationCallback is still run
 	 * @param $value String the value the field was submitted with
 	 * @param $alldata Array the data collected from the form
 	 * @return Mixed Bool true on success, or String error to display.
@@ -1137,7 +1137,7 @@ abstract class HTMLFormField {
 		}
 
 		if ( isset( $this->mValidationCallback ) ) {
-			return call_wiki_user_func( $this->mValidationCallback, $value, $alldata, $this->mParent );
+			return call_user_func( $this->mValidationCallback, $value, $alldata, $this->mParent );
 		}
 
 		return true;
@@ -1145,7 +1145,7 @@ abstract class HTMLFormField {
 
 	function filter( $value, $alldata ) {
 		if ( isset( $this->mFilterCallback ) ) {
-			$value = call_wiki_user_func( $this->mFilterCallback, $value, $alldata, $this->mParent );
+			$value = call_user_func( $this->mFilterCallback, $value, $alldata, $this->mParent );
 		}
 
 		return $value;
@@ -1761,7 +1761,7 @@ class HTMLCheckField extends HTMLFormField {
 
 		// GetCheck won't work like we want for checks.
 		// Fetch the value in either one of the two following case:
-		// - we have a valid token (form got posted or GET forged by the wiki_user)
+		// - we have a valid token (form got posted or GET forged by the user)
 		// - checkbox name has a value (false or true), ie is not null
 		if ( $request->getCheck( 'wpEditToken' ) || $request->getVal( $this->mName ) !== null ) {
 			// XOR has the following truth table, which is what we want
@@ -1987,12 +1987,12 @@ class HTMLMultiSelectField extends HTMLFormField {
 				# so it's perfectly possible for there not to be an entry at all
 				return $request->getArray( $this->mName, array() );
 			} else {
-				# That's ok, the wiki_user has not yet submitted the form, so show the defaults
+				# That's ok, the user has not yet submitted the form, so show the defaults
 				return $this->getDefault();
 			}
 		} else {
 			# This is the impossible case: if we look at $_GET and see no data for our
-			# field, is it because the wiki_user has not yet submitted the form, or that they
+			# field, is it because the user has not yet submitted the form, or that they
 			# have submitted it with all the options unchecked? We will have to assume the
 			# latter, which basically means that you can't specify 'positive' defaults
 			# for GET forms.
@@ -2133,7 +2133,7 @@ class HTMLSelectAndOtherField extends HTMLSelectField {
 			if ( $list == 'other' ) {
 				$final = $text;
 			} elseif ( !in_array( $list, $this->mFlatOptions ) ) {
-				# wiki_user has spoofed the select form to give an option which wasn't
+				# User has spoofed the select form to give an option which wasn't
 				# in the original offer.  Sulk...
 				$final = $text;
 			} elseif ( $text == '' ) {

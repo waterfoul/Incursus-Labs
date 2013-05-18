@@ -12,7 +12,7 @@
  * Support for external editors to modify both text and files
  * in external applications. It works as follows: MediaWiki
  * sends a meta-file with the MIME type 'application/x-external-editor'
- * to the client. The wiki_user has to associate that MIME type with
+ * to the client. The user has to associate that MIME type with
  * a helper application (a reference implementation in Perl
  * can be found in extensions/ee), which will launch the editor,
  * and save the modified data back to the server.
@@ -54,7 +54,7 @@ class ExternalEdit extends ContextSource {
 		$request = $context->getRequest();
 
 		return !$request->getVal( 'internaledit' ) &&
-			( $context->getwiki_user()->getOption( $pref ) || $request->getVal( 'externaledit' ) );
+			( $context->getUser()->getOption( $pref ) || $request->getVal( 'externaledit' ) );
 	}
 
 	/**

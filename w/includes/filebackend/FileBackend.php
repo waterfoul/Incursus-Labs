@@ -632,7 +632,7 @@ abstract class FileBackend {
 	 * Take measures to block web access to a storage directory and
 	 * the container it belongs to. FS backends might add .htaccess
 	 * files whereas key/value store backends might revoke container
-	 * access to the storage wiki_user representing end-wiki_users in web requests.
+	 * access to the storage user representing end-users in web requests.
 	 * This is not guaranteed to actually do anything.
 	 *
 	 * @param $params Array
@@ -659,7 +659,7 @@ abstract class FileBackend {
 	 * Remove measures to block web access to a storage directory and
 	 * the container it belongs to. FS backends might remove .htaccess
 	 * files whereas key/value store backends might grant container
-	 * access to the storage wiki_user representing end-wiki_users in web requests.
+	 * access to the storage user representing end-users in web requests.
 	 * This essentially can undo the result of secure() calls.
 	 *
 	 * @param $params Array

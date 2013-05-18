@@ -77,25 +77,25 @@ class VectorHooks {
 	/* Protected Static Methods */
 	
 	protected static function isEnabled( $name ) {
-		global $wgVectorFeatures, $wgwiki_user;
+		global $wgVectorFeatures, $wgUser;
 		
 		// Features with global set to true are always enabled
 		if ( !isset( $wgVectorFeatures[$name] ) || $wgVectorFeatures[$name]['global'] ) {
 			return true;
 		}
-		// Features with wiki_user preference control can have any number of preferences to be specific values to be enabled
-		if ( $wgVectorFeatures[$name]['wiki_user'] ) {
+		// Features with user preference control can have any number of preferences to be specific values to be enabled
+		if ( $wgVectorFeatures[$name]['user'] ) {
 			if ( isset( self::$features[$name]['requirements'] ) ) {
 				foreach ( self::$features[$name]['requirements'] as $requirement => $value ) {
 					// Important! We really do want fuzzy evaluation here
-					if ( $wgwiki_user->getOption( $requirement ) != $value ) {
+					if ( $wgUser->getOption( $requirement ) != $value ) {
 						return false;
 					}
 				}
 			}
 			return true;
 		}
-		// Features controlled by $wgVectorFeatures with both global and wiki_user set to false are awlways disabled 
+		// Features controlled by $wgVectorFeatures with both global and user set to false are awlways disabled 
 		return false;
 	}
 	
@@ -126,16 +126,16 @@ class VectorHooks {
 	 * 
 	 * Adds Vector-releated items to the preferences
 	 * 
-	 * @param $wiki_user wiki_user current wiki_user
-	 * @param $defaultPreferences array list of default wiki_user preference controls
+	 * @param $user User current user
+	 * @param $defaultPreferences array list of default user preference controls
 	 */
-	public static function getPreferences( $wiki_user, &$defaultPreferences ) {
+	public static function getPreferences( $user, &$defaultPreferences ) {
 		global $wgVectorFeatures;
 		
 		foreach ( self::$features as $name => $feature ) {
 			if (
 				isset( $feature['preferences'] ) &&
-				( !isset( $wgVectorFeatures[$name] ) || $wgVectorFeatures[$name]['wiki_user'] )
+				( !isset( $wgVectorFeatures[$name] ) || $wgVectorFeatures[$name]['user'] )
 			) {
 				foreach ( $feature['preferences'] as $key => $options ) {
 					$defaultPreferences[$key] = $options;

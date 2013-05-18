@@ -48,8 +48,8 @@ class SiteStats {
 			# Update schema
 			$u = new SiteStatsUpdate( 0, 0, 0 );
 			$u->doUpdate();
-			r = wfGetDB( DB_SLAVE );
-			self::$row = r->selectRow( 'site_stats', '*', false, __METHOD__ );
+			$dbr = wfGetDB( DB_SLAVE );
+			self::$row = $dbr->selectRow( 'site_stats', '*', false, __METHOD__ );
 		}
 
 		self::$loaded = true;
@@ -87,11 +87,11 @@ class SiteStats {
 	}
 
 	/**
-	 * @param  DatabaseBase
+	 * @param $db DatabaseBase
 	 * @return Bool|ResultWrapper
 	 */
-	static function doLoad(  ) {
-		return ->selectRow( 'site_stats', '*', false, __METHOD__ );
+	static function doLoad( $db ) {
+		return $db->selectRow( 'site_stats', '*', false, __METHOD__ );
 	}
 
 	/**
@@ -129,17 +129,17 @@ class SiteStats {
 	/**
 	 * @return int
 	 */
-	static function wiki_users() {
+	static function users() {
 		self::load();
-		return self::$row->ss_wiki_users;
+		return self::$row->ss_users;
 	}
 
 	/**
 	 * @return int
 	 */
-	static function activewiki_users() {
+	static function activeUsers() {
 		self::load();
-		return self::$row->ss_active_wiki_users;
+		return self::$row->ss_active_users;
 	}
 
 	/**
@@ -151,7 +151,7 @@ class SiteStats {
 	}
 
 	/**
-	 * Find the number of wiki_users in a given wiki_user group.
+	 * Find the number of users in a given user group.
 	 * @param $group String: name of group
 	 * @return Integer
 	 */
@@ -161,9 +161,9 @@ class SiteStats {
 			$key = wfMemcKey( 'SiteStats', 'groupcounts', $group );
 			$hit = $wgMemc->get( $key );
 			if ( !$hit ) {
-				r = wfGetDB( DB_SLAVE );
-				$hit = r->selectField(
-					'wiki_user_groups',
+				$dbr = wfGetDB( DB_SLAVE );
+				$hit = $dbr->selectField(
+					'user_groups',
 					'COUNT(*)',
 					array( 'ug_group' => $group ),
 					__METHOD__
@@ -180,8 +180,8 @@ class SiteStats {
 	 */
 	static function jobs() {
 		if ( !isset( self::$jobs ) ) {
-			r = wfGetDB( DB_SLAVE );
-			self::$jobs = r->estimateRowCount( 'job' );
+			$dbr = wfGetDB( DB_SLAVE );
+			self::$jobs = $dbr->estimateRowCount( 'job' );
 			/* Zero rows still do single row read for row that doesn't exist, but people are annoyed by that */
 			if ( self::$jobs == 1 ) {
 				self::$jobs = 0;
@@ -198,8 +198,8 @@ class SiteStats {
 	static function pagesInNs( $ns ) {
 		wfProfileIn( __METHOD__ );
 		if( !isset( self::$pageCount[$ns] ) ) {
-			r = wfGetDB( DB_SLAVE );
-			self::$pageCount[$ns] = (int)r->selectField(
+			$dbr = wfGetDB( DB_SLAVE );
+			self::$pageCount[$ns] = (int)$dbr->selectField(
 				'page',
 				'COUNT(*)',
 				array( 'page_namespace' => $ns ),
@@ -227,7 +227,7 @@ class SiteStats {
 		}
 		// Now check for underflow/overflow
 		foreach( array( 'total_views', 'total_edits', 'good_articles',
-		'total_pages', 'wiki_users', 'images' ) as $member ) {
+		'total_pages', 'users', 'images' ) as $member ) {
 			if(
 				$row->{"ss_$member"} > 2000000000
 				|| $row->{"ss_$member"} < 0
@@ -247,16 +247,16 @@ class SiteStatsUpdate implements DeferrableUpdate {
 	protected $edits = 0;
 	protected $pages = 0;
 	protected $articles = 0;
-	protected $wiki_users = 0;
+	protected $users = 0;
 	protected $images = 0;
 
 	// @TODO: deprecate this constructor
-	function __construct( $views, $edits, $good, $pages = 0, $wiki_users = 0 ) {
+	function __construct( $views, $edits, $good, $pages = 0, $users = 0 ) {
 		$this->views = $views;
 		$this->edits = $edits;
 		$this->articles = $good;
 		$this->pages = $pages;
-		$this->wiki_users = $wiki_users;
+		$this->users = $users;
 	}
 
 	/**
@@ -266,7 +266,7 @@ class SiteStatsUpdate implements DeferrableUpdate {
 	public static function factory( array $deltas ) {
 		$update = new self( 0, 0, 0 );
 
-		$fields = array( 'views', 'edits', 'pages', 'articles', 'wiki_users', 'images' );
+		$fields = array( 'views', 'edits', 'pages', 'articles', 'users', 'images' );
 		foreach ( $fields as $field ) {
 			if ( isset( $deltas[$field] ) && $deltas[$field] ) {
 				$update->$field = $deltas[$field];
@@ -285,13 +285,13 @@ class SiteStatsUpdate implements DeferrableUpdate {
 		if ( $rate && ( $rate < 0 || mt_rand( 0, $rate - 1 ) != 0 ) ) {
 			$this->doUpdatePendingDeltas();
 		} else {
-			w = wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 
 			$lockKey = wfMemcKey( 'site_stats' ); // prepend wiki ID
 			if ( $rate ) {
 				// Lock the table so we don't have double DB/memcached updates
-				if ( !w->lockIsFree( $lockKey, __METHOD__ )
-					|| !w->lock( $lockKey, __METHOD__, 1 ) // 1 sec timeout
+				if ( !$dbw->lockIsFree( $lockKey, __METHOD__ )
+					|| !$dbw->lock( $lockKey, __METHOD__, 1 ) // 1 sec timeout
 				) {
 					$this->doUpdatePendingDeltas();
 					return;
@@ -302,12 +302,12 @@ class SiteStatsUpdate implements DeferrableUpdate {
 				$this->edits    += ( $pd['ss_total_edits']['+'] - $pd['ss_total_edits']['-'] );
 				$this->articles += ( $pd['ss_good_articles']['+'] - $pd['ss_good_articles']['-'] );
 				$this->pages    += ( $pd['ss_total_pages']['+'] - $pd['ss_total_pages']['-'] );
-				$this->wiki_users    += ( $pd['ss_wiki_users']['+'] - $pd['ss_wiki_users']['-'] );
+				$this->users    += ( $pd['ss_users']['+'] - $pd['ss_users']['-'] );
 				$this->images   += ( $pd['ss_images']['+'] - $pd['ss_images']['-'] );
 			}
 
 			// Need a separate transaction because this a global lock
-			w->begin( __METHOD__ );
+			$dbw->begin( __METHOD__ );
 
 			// Build up an SQL query of deltas and apply them...
 			$updates = '';
@@ -315,50 +315,50 @@ class SiteStatsUpdate implements DeferrableUpdate {
 			$this->appendUpdate( $updates, 'ss_total_edits', $this->edits );
 			$this->appendUpdate( $updates, 'ss_good_articles', $this->articles );
 			$this->appendUpdate( $updates, 'ss_total_pages', $this->pages );
-			$this->appendUpdate( $updates, 'ss_wiki_users', $this->wiki_users );
+			$this->appendUpdate( $updates, 'ss_users', $this->users );
 			$this->appendUpdate( $updates, 'ss_images', $this->images );
 			if ( $updates != '' ) {
-				w->update( 'site_stats', array( $updates ), array(), __METHOD__ );
+				$dbw->update( 'site_stats', array( $updates ), array(), __METHOD__ );
 			}
 
 			if ( $rate ) {
 				// Decrement the async deltas now that we applied them
 				$this->removePendingDeltas( $pd );
 				// Commit the updates and unlock the table
-				w->unlock( $lockKey, __METHOD__ );
+				$dbw->unlock( $lockKey, __METHOD__ );
 			}
 
-			w->commit( __METHOD__ );
+			$dbw->commit( __METHOD__ );
 		}
 	}
 
 	/**
-	 * @param w DatabaseBase
+	 * @param $dbw DatabaseBase
 	 * @return bool|mixed
 	 */
-	public static function cacheUpdate( w ) {
-		global $wgActivewiki_userDays;
-		r = wfGetDB( DB_SLAVE, array( 'SpecialStatistics', 'vslow' ) );
-		# Get non-bot wiki_users than did some recent action other than making accounts.
+	public static function cacheUpdate( $dbw ) {
+		global $wgActiveUserDays;
+		$dbr = wfGetDB( DB_SLAVE, array( 'SpecialStatistics', 'vslow' ) );
+		# Get non-bot users than did some recent action other than making accounts.
 		# If account creation is included, the number gets inflated ~20+ fold on enwiki.
-		$activewiki_users = r->selectField(
+		$activeUsers = $dbr->selectField(
 			'recentchanges',
-			'COUNT( DISTINCT rc_wiki_user_text )',
+			'COUNT( DISTINCT rc_user_text )',
 			array(
-				'rc_wiki_user != 0',
+				'rc_user != 0',
 				'rc_bot' => 0,
-				'rc_log_type != ' . r->addQuotes( 'newwiki_users' ) . ' OR rc_log_type IS NULL',
-				'rc_timestamp >= ' . r->addQuotes( r->timestamp( wfTimestamp( TS_UNIX ) - $wgActivewiki_userDays*24*3600 ) ),
+				'rc_log_type != ' . $dbr->addQuotes( 'newusers' ) . ' OR rc_log_type IS NULL',
+				'rc_timestamp >= ' . $dbr->addQuotes( $dbr->timestamp( wfTimestamp( TS_UNIX ) - $wgActiveUserDays*24*3600 ) ),
 			),
 			__METHOD__
 		);
-		w->update(
+		$dbw->update(
 			'site_stats',
-			array( 'ss_active_wiki_users' => intval( $activewiki_users ) ),
+			array( 'ss_active_users' => intval( $activeUsers ) ),
 			array( 'ss_row_id' => 1 ),
 			__METHOD__
 		);
-		return $activewiki_users;
+		return $activeUsers;
 	}
 
 	protected function doUpdatePendingDeltas() {
@@ -366,7 +366,7 @@ class SiteStatsUpdate implements DeferrableUpdate {
 		$this->adjustPending( 'ss_total_edits', $this->edits );
 		$this->adjustPending( 'ss_good_articles', $this->articles );
 		$this->adjustPending( 'ss_total_pages', $this->pages );
-		$this->adjustPending( 'ss_wiki_users', $this->wiki_users );
+		$this->adjustPending( 'ss_users', $this->users );
 		$this->adjustPending( 'ss_images', $this->images );
 	}
 
@@ -431,7 +431,7 @@ class SiteStatsUpdate implements DeferrableUpdate {
 
 		$pending = array();
 		foreach ( array( 'ss_total_views', 'ss_total_edits',
-			'ss_good_articles', 'ss_total_pages', 'ss_wiki_users', 'ss_images' ) as $type )
+			'ss_good_articles', 'ss_total_pages', 'ss_users', 'ss_images' ) as $type )
 		{
 			// Get pending increments and pending decrements
 			$pending[$type]['+'] = (int)$wgMemc->get( $this->getTypeCacheKey( $type, '+' ) );
@@ -464,10 +464,10 @@ class SiteStatsUpdate implements DeferrableUpdate {
 class SiteStatsInit {
 
 	// Database connection
-	private ;
+	private $db;
 
 	// Various stats
-	private $mEdits, $mArticles, $mPages, $mwiki_users, $mViews, $mFiles = 0;
+	private $mEdits, $mArticles, $mPages, $mUsers, $mViews, $mFiles = 0;
 
 	/**
 	 * Constructor
@@ -533,12 +533,12 @@ class SiteStatsInit {
 	}
 
 	/**
-	 * Count total wiki_users
+	 * Count total users
 	 * @return Integer
 	 */
-	public function wiki_users() {
-		$this->mwiki_users = $this->db->selectField( 'wiki_user', 'COUNT(*)', '', __METHOD__ );
-		return $this->mwiki_users;
+	public function users() {
+		$this->mUsers = $this->db->selectField( 'user', 'COUNT(*)', '', __METHOD__ );
+		return $this->mUsers;
 	}
 
 	/**
@@ -569,10 +569,10 @@ class SiteStatsInit {
 	 * @param $options Array of options, may contain the following values
 	 * - update Boolean: whether to update the current stats (true) or write fresh (false) (default: false)
 	 * - views Boolean: when true, do not update the number of page views (default: true)
-	 * - activewiki_users Boolean: whether to update the number of active wiki_users (default: false)
+	 * - activeUsers Boolean: whether to update the number of active users (default: false)
 	 */
 	public static function doAllAndCommit( $database, array $options = array() ) {
-		$options += array( 'update' => false, 'views' => true, 'activewiki_users' => false );
+		$options += array( 'update' => false, 'views' => true, 'activeUsers' => false );
 
 		// Grab the object and count everything
 		$counter = new SiteStatsInit( $database );
@@ -580,7 +580,7 @@ class SiteStatsInit {
 		$counter->edits();
 		$counter->articles();
 		$counter->pages();
-		$counter->wiki_users();
+		$counter->users();
 		$counter->files();
 
 		// Only do views if we don't want to not count them
@@ -595,8 +595,8 @@ class SiteStatsInit {
 			$counter->refresh();
 		}
 
-		// Count active wiki_users if need be
-		if( $options['activewiki_users'] ) {
+		// Count active users if need be
+		if( $options['activeUsers'] ) {
 			SiteStatsUpdate::cacheUpdate( wfGetDB( DB_MASTER ) );
 		}
 	}
@@ -606,8 +606,8 @@ class SiteStatsInit {
 	 */
 	public function update() {
 		list( $values, $conds ) = $this->getDbParams();
-		w = wfGetDB( DB_MASTER );
-		w->update( 'site_stats', $values, $conds, __METHOD__ );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->update( 'site_stats', $values, $conds, __METHOD__ );
 	}
 
 	/**
@@ -616,9 +616,9 @@ class SiteStatsInit {
 	 */
 	public function refresh() {
 		list( $values, $conds, $views ) = $this->getDbParams();
-		w = wfGetDB( DB_MASTER );
-		w->delete( 'site_stats', $conds, __METHOD__ );
-		w->insert( 'site_stats', array_merge( $values, $conds, $views ), __METHOD__ );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete( 'site_stats', $conds, __METHOD__ );
+		$dbw->insert( 'site_stats', array_merge( $values, $conds, $views ), __METHOD__ );
 	}
 
 	/**
@@ -630,7 +630,7 @@ class SiteStatsInit {
 			'ss_total_edits' => $this->mEdits,
 			'ss_good_articles' => $this->mArticles,
 			'ss_total_pages' => $this->mPages,
-			'ss_wiki_users' => $this->mwiki_users,
+			'ss_users' => $this->mUsers,
 			'ss_images' => $this->mFiles
 		);
 		$conds = array( 'ss_row_id' => 1 );

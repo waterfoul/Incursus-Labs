@@ -5,7 +5,7 @@ class MockSearch extends SearchEngine {
 	public static $title;
 	public static $text;
 
-	public function __construct(  ) {
+	public function __construct( $db ) {
 	}
 
 	public function update( $id, $title, $text ) {

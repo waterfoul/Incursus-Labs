@@ -25,7 +25,7 @@ class MediaWikiPHPUnitCommand extends PHPUnit_TextUI_Command {
 			# Windows does not come anymore with ANSI.SYS loaded by default
 			# PHPUnit uses the suite.xml parameters to enable/disable colors
 			# which can be then forced to be enabled with --colors.
-			# The below code inject a parameter just like if the wiki_user called
+			# The below code inject a parameter just like if the user called
 			# phpunit with a --no-color option (which does not exist). It
 			# overrides the suite.xml setting.
 			# Probably fix bug 29226

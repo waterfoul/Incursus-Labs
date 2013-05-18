@@ -32,7 +32,7 @@
  * The returned object will have the following properties:
  *
  *    protocol  'http'
- *    wiki_user      'usr'
+ *    user      'usr'
  *    password  'pwd'
  *    host      'www.test.com'
  *    port      '81'
@@ -83,7 +83,7 @@
 	// The order here matches the order of captured matches in the above parser regexes.
 	properties = [
 		'protocol',  // http
-		'wiki_user',      // usr
+		'user',      // usr
 		'password',  // pwd
 		'host',      // www.test.com
 		'port',      // 81
@@ -239,11 +239,11 @@
 			},
 
 			/**
-			 * Returns wiki_user and password portion of a URI.
+			 * Returns user and password portion of a URI.
 			 * @return {String}
 			 */
-			getwiki_userInfo: function () {
-				return cat( '', this.wiki_user, cat( ':', this.password, '' ) );
+			getUserInfo: function () {
+				return cat( '', this.user, cat( ':', this.password, '' ) );
 			},
 
 			/**
@@ -255,12 +255,12 @@
 			},
 
 			/**
-			 * Returns the wiki_userInfo and host and port portion of the URI.
+			 * Returns the userInfo and host and port portion of the URI.
 			 * In most real-world URLs, this is simply the hostname, but it is more general.
 			 * @return {String}
 			 */
 			getAuthority: function () {
-				return cat( '', this.getwiki_userInfo(), '@' ) + this.getHostPort();
+				return cat( '', this.getUserInfo(), '@' ) + this.getHostPort();
 			},
 
 			/**

@@ -7,7 +7,7 @@
 
 /**
  * n.b. Ensure that you can write to the images/ directory as the
- * wiki_user that will run tests.
+ * user that will run tests.
  */
 
 // Note for reviewers: this intentionally duplicates functionality already in "ApiSetup" and so on.
@@ -33,12 +33,12 @@ class ApiUploadTest extends ApiTestCaseUpload {
 	 * XXX this is a funny way of getting session context
 	 */
 	function testLogin() {
-		$wiki_user = self::$wiki_users['uploader'];
+		$user = self::$users['uploader'];
 
 		$params = array(
 			'action' => 'login',
-			'lgname' => $wiki_user->wiki_username,
-			'lgpassword' => $wiki_user->password
+			'lgname' => $user->username,
+			'lgpassword' => $user->password
 		);
 		list( $result, , $session ) = $this->doApiRequest( $params );
 		$this->assertArrayHasKey( "login", $result );
@@ -49,8 +49,8 @@ class ApiUploadTest extends ApiTestCaseUpload {
 		$params = array(
 			'action' => 'login',
 			'lgtoken' => $token,
-			'lgname' => $wiki_user->wiki_username,
-			'lgpassword' => $wiki_user->password
+			'lgname' => $user->username,
+			'lgpassword' => $user->password
 		);
 		list( $result, , $session ) = $this->doApiRequest( $params, $session );
 		$this->assertArrayHasKey( "login", $result );
@@ -87,7 +87,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 		try {
 			$this->doApiRequestWithToken( array(
 				'action' => 'upload',
-			), $session, self::$wiki_users['uploader']->wiki_user );
+			), $session, self::$users['uploader']->user );
 		} catch ( UsageException $e ) {
 			$exception = true;
 			$this->assertEquals( "One of the parameters filekey, file, url, statuskey is required",
@@ -135,7 +135,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 		$exception = false;
 		try {
 			list( $result, , ) = $this->doApiRequestWithToken( $params, $session,
-				self::$wiki_users['uploader']->wiki_user );
+				self::$users['uploader']->user );
 		} catch ( UsageException $e ) {
 			$exception = true;
 		}
@@ -176,7 +176,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 
 		$exception = false;
 		try {
-			$this->doApiRequestWithToken( $params, $session, self::$wiki_users['uploader']->wiki_user );
+			$this->doApiRequestWithToken( $params, $session, self::$users['uploader']->user );
 		} catch ( UsageException $e ) {
 			$this->assertContains( 'The file you submitted was empty', $e->getMessage() );
 			$exception = true;
@@ -228,7 +228,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 		$exception = false;
 		try {
 			list( $result, , $session ) = $this->doApiRequestWithToken( $params, $session,
-				self::$wiki_users['uploader']->wiki_user );
+				self::$users['uploader']->user );
 		} catch ( UsageException $e ) {
 			$exception = true;
 		}
@@ -245,7 +245,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 		$exception = false;
 		try {
 			list( $result, , ) = $this->doApiRequestWithToken( $params, $session,
-				self::$wiki_users['uploader']->wiki_user ); // FIXME: leaks a temporary file
+				self::$users['uploader']->user ); // FIXME: leaks a temporary file
 		} catch ( UsageException $e ) {
 			$exception = true;
 		}
@@ -302,7 +302,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 		$exception = false;
 		try {
 			list( $result, $request, $session ) = $this->doApiRequestWithToken( $params, $session,
-				self::$wiki_users['uploader']->wiki_user );
+				self::$users['uploader']->user );
 		} catch ( UsageException $e ) {
 			$exception = true;
 		}
@@ -328,7 +328,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 		$exception = false;
 		try {
 			list( $result, $request, $session ) = $this->doApiRequestWithToken( $params, $session,
-				self::$wiki_users['uploader']->wiki_user ); // FIXME: leaks a temporary file
+				self::$users['uploader']->user ); // FIXME: leaks a temporary file
 		} catch ( UsageException $e ) {
 			$exception = true;
 		}
@@ -349,8 +349,8 @@ class ApiUploadTest extends ApiTestCaseUpload {
 	 * @depends testLogin
 	 */
 	public function testUploadStash( $session ) {
-		global $wgwiki_user;
-		$wgwiki_user = self::$wiki_users['uploader']->wiki_user; // @todo FIXME: still used somewhere
+		global $wgUser;
+		$wgUser = self::$users['uploader']->user; // @todo FIXME: still used somewhere
 
 		$extension = 'png';
 		$mimeType = 'image/png';
@@ -386,7 +386,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 		$exception = false;
 		try {
 			list( $result, $request, $session ) = $this->doApiRequestWithToken( $params, $session,
-				self::$wiki_users['uploader']->wiki_user ); // FIXME: leaks a temporary file
+				self::$users['uploader']->user ); // FIXME: leaks a temporary file
 		} catch ( UsageException $e ) {
 			$exception = true;
 		}
@@ -415,7 +415,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 		$exception = false;
 		try {
 			list( $result, $request, $session ) = $this->doApiRequestWithToken( $params, $session,
-				self::$wiki_users['uploader']->wiki_user );
+				self::$users['uploader']->user );
 		} catch ( UsageException $e ) {
 			$exception = true;
 		}
@@ -433,8 +433,8 @@ class ApiUploadTest extends ApiTestCaseUpload {
 	 * @depends testLogin
 	 */
 	public function testUploadChunks( $session ) {
-		global $wgwiki_user;
-		$wgwiki_user = self::$wiki_users['uploader']->wiki_user; // @todo FIXME: still used somewhere
+		global $wgUser;
+		$wgUser = self::$users['uploader']->user; // @todo FIXME: still used somewhere
 		
 		$chunkSize = 1048576;
 		// Download a large image file
@@ -487,7 +487,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 				// Upload fist chunk ( and get the session key )
 				try {
 					list( $result, $request, $session ) = $this->doApiRequestWithToken( $params, $session,
-						self::$wiki_users['uploader']->wiki_user );
+						self::$users['uploader']->user );
 				} catch ( UsageException $e ) {
 					$this->markTestIncomplete( $e->getMessage() );
 				}
@@ -514,7 +514,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 			// Upload current chunk
 			try {
 				list( $result, $request, $session ) = $this->doApiRequestWithToken( $params, $session,
-					self::$wiki_users['uploader']->wiki_user );
+					self::$users['uploader']->user );
 			} catch ( UsageException $e ) {
 				$this->markTestIncomplete( $e->getMessage() );
 			}
@@ -553,7 +553,7 @@ class ApiUploadTest extends ApiTestCaseUpload {
 		$exception = false;
 		try {
 			list( $result, $request, $session ) = $this->doApiRequestWithToken( $params, $session,
-				self::$wiki_users['uploader']->wiki_user );
+				self::$users['uploader']->user );
 		} catch ( UsageException $e ) {
 			$exception = true;
 		}

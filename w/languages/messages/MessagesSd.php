@@ -45,7 +45,7 @@ $specialPageAliases = array(
 	'CreateAccount'             => array( 'کاتو کوليو' ),
 	'Disambiguations'           => array( 'سلجھائپ' ),
 	'DoubleRedirects'           => array( 'ٻٽا چورڻا' ),
-	'Emailwiki_user'                 => array( 'برقٽپال يوزر' ),
+	'Emailuser'                 => array( 'برقٽپال يوزر' ),
 	'Export'                    => array( 'برآمد' ),
 	'FileDuplicateSearch'       => array( 'ساڳيا فائيل ڳولا' ),
 	'Filepath'                  => array( 'فائيل ڏس' ),
@@ -56,7 +56,7 @@ $specialPageAliases = array(
 	'Listbots'                  => array( 'بوٽس فهرست' ),
 	'Listfiles'                 => array( 'عڪس فهرست' ),
 	'Listredirects'             => array( 'چورڻا فهرست' ),
-	'Listwiki_users'                 => array( 'يوزر فهرست' ),
+	'Listusers'                 => array( 'يوزر فهرست' ),
 	'Lockdb'                    => array( 'اعدادخانو بند' ),
 	'Log'                       => array( 'لاگس' ),
 	'Lonelypages'               => array( 'يتيم صفحا' ),
@@ -92,9 +92,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'اڻ استعماليل سانچا' ),
 	'Unwatchedpages'            => array( 'اڻٽيٽيل صفحا' ),
 	'Upload'                    => array( 'چاڙهيو' ),
-	'wiki_userlogin'                 => array( 'يوزر لاگ اِن' ),
-	'wiki_userlogout'                => array( 'يوزر لاگ آئوٽ' ),
-	'wiki_userrights'                => array( 'يوزر حق' ),
+	'Userlogin'                 => array( 'يوزر لاگ اِن' ),
+	'Userlogout'                => array( 'يوزر لاگ آئوٽ' ),
+	'Userrights'                => array( 'يوزر حق' ),
 	'Version'                   => array( 'ورزن' ),
 	'Wantedcategories'          => array( 'گھربل زمرا' ),
 	'Wantedpages'               => array( 'گھربل صفحا' ),
@@ -116,7 +116,7 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'صفحنجوتعداد', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'مضموننجوتعداد', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'فائيلنجوتعداد', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', 'يوزرسجوتعداد', 'NUMBEROFUSERS' ),
+	'numberofusers'             => array( '1', 'يوزرسجوتعداد', 'NUMBEROFUSERS' ),
 	'numberofedits'             => array( '1', 'ترميمنجوتعداد', 'NUMBEROFEDITS' ),
 	'pagename'                  => array( '1', 'صفحيجوعنوان', 'PAGENAME' ),
 	'namespace'                 => array( '1', 'نانئپولار', 'NAMESPACE' ),
@@ -156,14 +156,14 @@ $magicWords = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-showtoolbar' => 'سنوارپ اوزار دٻي ڏيکاريو (جاوا اسڪرپٽ)',
 'tog-watchcreations' => 'منهنجا سرجيل صفحا منهنجي ٽيٽ فهرست ۾ رکو',
 'tog-watchdefault' => 'منهنجا ترميميل صفحا منهنجي ٽيٽ فهرست تي رکو',
 'tog-watchdeletion' => 'آئون جيڪي صفحا ڊاهيان، سي منهنجي ٽيٽ فهرست تي رکو',
 'tog-previewontop' => 'ترميمي باڪس مٿان پيش نگاهه ڏيکاريو',
 'tog-previewonfirst' => 'پهرين ترميم تي پيش نگاهه ڏيکاريو',
-'tog-enotifwiki_usertalkpages' => 'منهنجي مباحثي صفحي ۾ تبديليءَ جي صورت ۾ مون کي برق ٽپال اماڻيو',
+'tog-enotifusertalkpages' => 'منهنجي مباحثي صفحي ۾ تبديليءَ جي صورت ۾ مون کي برق ٽپال اماڻيو',
 'tog-enotifminoredits' => 'صفحن ۾ معمولي ترميمن جي صورت ۾ به مون کي برق ٽپال ڪريو',
 'tog-shownumberswatching' => 'ٽيٽيندڙ يوزرس جو تعداد ڏيکاريو',
 'tog-ccmeonemails' => 'ٻين يوزرس ڏانهن منهنجي موڪليل برق ٽپال جو پرت مون کي اماڻيو',
@@ -295,7 +295,7 @@ $messages = array(
 'talk' => 'بحث',
 'views' => 'ڏيٺون',
 'toolbox' => 'اوزاردٻي',
-'wiki_userpage' => 'يوزر صفحو ڏسو',
+'userpage' => 'يوزر صفحو ڏسو',
 'projectpage' => 'رٿائي صفحو ڏسو',
 'imagepage' => 'ذريعاتي صفحو ڏسو',
 'mediawikipage' => 'نياپي جو صفحو ڏسو',
@@ -311,7 +311,7 @@ $messages = array(
 'protectedpage' => 'تحفظيل صفحو',
 'jumptosearch' => 'ڳولا',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} بابت',
 'aboutpage' => 'Project:بابت',
 'copyright' => 'سمورو مواد $1 تحت ميسر ڪجي ٿو',
@@ -355,7 +355,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'صفحو',
-'nstab-wiki_user' => 'تعارفي صفحو',
+'nstab-user' => 'تعارفي صفحو',
 'nstab-media' => 'ذريعاتي صفحو',
 'nstab-special' => 'خاص صفحو',
 'nstab-project' => 'رٿائي صفحو',
@@ -393,9 +393,9 @@ $messages = array(
 'login' => 'لاگ اِن',
 'nav-login-createaccount' => 'لاگ اِن ٿيو / کاتو کوليو',
 'loginprompt' => '{{SITENAME}} ۾ لاگ اِن ٿيڻ لاءِ ڪوڪيز جي قبوليت لازمي آهي.',
-'wiki_userlogin' => 'لاگ اِن ٿيو / کاتو کوليو',
+'userlogin' => 'لاگ اِن ٿيو / کاتو کوليو',
 'logout' => 'لاگ آئوٽ',
-'wiki_userlogout' => 'لاگ آئوٽ',
+'userlogout' => 'لاگ آئوٽ',
 'nologin' => "پنهنجو کاتو نه ٿا رکو؟ '''$1'''.",
 'nologinlink' => 'نئون کاتو کوليو',
 'createaccount' => 'کاتو کوليو',
@@ -404,10 +404,10 @@ $messages = array(
 'createaccountmail' => 'بذريعه برق ٽپال',
 'loginsuccesstitle' => 'لاگ اِن ڪامياب',
 'loginsuccess' => "'''هاڻي توهان {{SITENAME}} تي بطور \"\$1\" لاگ اِن ٿيل آهيو.'''",
-'nosuchwiki_user' => '"$1" نالي سان ڪو به يوزر نه آهي. هِجي چڪاسيو، يا نئون کاتو کوليو.',
-'nosuchwiki_usershort' => '"$1" نالي ڪو به يُوزر ناهي.
+'nosuchuser' => '"$1" نالي سان ڪو به يوزر نه آهي. هِجي چڪاسيو، يا نئون کاتو کوليو.',
+'nosuchusershort' => '"$1" نالي ڪو به يُوزر ناهي.
 هِجي جي پڪ ڪندا.',
-'nowiki_userspecified' => 'توهان کي ڪو يوزرنانءُ ڄاڻائڻو پوندو.',
+'nouserspecified' => 'توهان کي ڪو يوزرنانءُ ڄاڻائڻو پوندو.',
 'wrongpassword' => 'ڏنل ڳجھو لفظ غير درست آهي. مهرباني ڪري ٻيهر ڪوشش ڪندا.',
 'wrongpasswordempty' => 'ڏنل ڳجھو لفظ خالي هو. مهرباني ڪري وري ڪوشش ڪندا.',
 'passwordtooshort' => 'توهان جو ڳجھو لفظ ناقابلڪار آهي يا تمام ننڍو آهي. اهو توهان جي يُوزرنانءُ کان لازماً مختلف ۽ {{PLURAL:$1|1 اکر|$1 اکرن}} کان ڊگھو هوڻ گھرجي.',
@@ -468,7 +468,7 @@ $messages = array(
 * بندش جو هدف: $7
 
 اهڙي روڪ تي بحث ڪرڻ لاءِ توهان $1 يا ڪنهن ٻي [[{{MediaWiki:Grouppage-sysop}}|منتظم]] سان رابطو ڪري سگھو ٿا. جيڪڏهن توهان جو درست [[Special:ترجيحات|کاتو ترجيحات]] ۾ درست برق ٽپال پتو درج ٿيل نه آهي ته توهان 'هن يوزر کي برق ٽپال ڪريو' وارو فيچر نه ٿا 
-You cannot use the 'e-mail this wiki_user' feature unless a valid e-mail address is specified in your [[Special:Preferences|account preferences]] and you have not been blocked from using it.
+You cannot use the 'e-mail this user' feature unless a valid e-mail address is specified in your [[Special:Preferences|account preferences]] and you have not been blocked from using it.
 استعمال ڪري سگھو. توهان جو هاڻوڪو آءِ پي پتو $3 آهي، ۽ بندش سڃاڻپ $5 آهي. مهرباني ڪري ڪنهن به پڇا ڳاڇا يا لهوچڙ  لاءِ انهن مان ڪنهن هڪ يا ٻنهي جو حوالو ڏيندا.",
 'blockednoreason' => 'سبب اڻڄاڻايل',
 'accmailtitle' => 'ڳجھو لفظ اماڻجي چڪو.',
@@ -485,7 +485,7 @@ You cannot use the 'e-mail this wiki_user' feature unless a valid e-mail address
 'template-protected' => '(تحفظيل)',
 'template-semiprotected' => '(نيم تحفظيل)',
 'nocreatetext' => '{{SITENAME}} نوان صفحا سرجڻ جي روڪَ ڪئي آهي.
-توهان اڳي ئي موجود صفحن کي سنواري سگھو ٿا، يا [[Special:wiki_userLogin|لاگ اِن ٿي يا نئون کاتو کولي سگھو ٿا]].',
+توهان اڳي ئي موجود صفحن کي سنواري سگھو ٿا، يا [[Special:UserLogin|لاگ اِن ٿي يا نئون کاتو کولي سگھو ٿا]].',
 'recreate-moveddeleted-warn' => "'''خبردار: توهان اهڙو صفحو نئين سر سرجي رهيا آهيو جيڪو اڳي ڊاٺو ويو آهي.'''
 
 بهتر ٿيندو ته توهان سوچي وٺو ته ڇا ان صفحي کي سنوارڻ بهتر ٿيندو.
@@ -542,19 +542,19 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'prefs-help-realname' => 'اصل نالو اختياري آهي.
 جيڪڏهن توهان اصل نالو ڄاڻائڻ جو فيصلو ٿا ڪريو، ته اهو توهان کي مڃتا ڏيڻ لاءِ ڪم آندو ويندو.',
 
-# wiki_user rights
-'wiki_userrights-reason' => 'سبب:',
+# User rights
+'userrights-reason' => 'سبب:',
 
 # Groups
 'group' => 'گروپ:',
-'group-wiki_user' => 'يوزرس',
+'group-user' => 'يوزرس',
 
 'grouppage-sysop' => '{{ns:project}}:منتظمين',
 
 # Rights
 'right-undelete' => 'ڪو صفحو اڻڊاهيو',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'يُوزر حق لاگ',
 
 # Recent changes
@@ -601,7 +601,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'filehist-help' => 'ڪنهن به تاريخ/وقت تي ڪلڪ ڪري ڏسندا ته تڏڻي اهو فائيل ڪيئن هو.',
 'filehist-current' => 'هاڻوڪو',
 'filehist-datetime' => 'تاريخ/وقت',
-'filehist-wiki_user' => 'يُوزر',
+'filehist-user' => 'يُوزر',
 'filehist-dimensions' => 'ماپَ',
 'filehist-filesize' => 'فائيل سائيز',
 'filehist-comment' => 'تاثرات',
@@ -665,7 +665,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'longpages' => 'طويل صفحا',
 'deadendpages' => 'اڻ ڳنڍيندڙ صفحا',
 'protectedpages' => 'تحفظيل صفحا',
-'listwiki_users' => 'يُوزر فهرست',
+'listusers' => 'يُوزر فهرست',
 'newpages' => 'نوان صفحا',
 'ancientpages' => 'قديم ترين صفحا',
 'move' => 'چوريو',
@@ -675,7 +675,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'booksources' => 'ڪتابي وسيلا',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'يُوزر:',
+'specialloguserlabel' => 'يُوزر:',
 'speciallogtitlelabel' => 'عنوان:',
 'log' => 'لاگس',
 'all-logs-page' => 'سڀئي لاگس',
@@ -694,8 +694,8 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 # Special:Categories
 'categories' => 'زمرا',
 
-# E-mail wiki_user
-'emailwiki_user' => 'هن يوزر کي برق ٽپال اماڻيو',
+# E-mail user
+'emailuser' => 'هن يوزر کي برق ٽپال اماڻيو',
 
 # Watchlist
 'watchlist' => 'منهنجي ٽيٽ فهرست',
@@ -848,7 +848,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'importlogpage' => 'درآمد لاگ',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'منهنجو تعارفي صفحو',
+'tooltip-pt-userpage' => 'منهنجو تعارفي صفحو',
 'tooltip-pt-mytalk' => 'منهنجو مباحثي صفحو',
 'tooltip-pt-preferences' => 'منهنجون ترجيحات',
 'tooltip-pt-watchlist' => 'توهان جي ٽيٽ فهرست ۾ شامل صفحا',
@@ -873,11 +873,11 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'tooltip-n-help' => 'ڳولي لهڻ جي جاءِ.',
 'tooltip-t-whatlinkshere' => 'هتان ڳنڍيل سمورا وڪي صفحا',
 'tooltip-t-contributions' => 'هن يُوزر جون ڀاڱيداريون ڏسو',
-'tooltip-t-emailwiki_user' => 'هن يُوزر کي برق ٽپال اماڻيو',
+'tooltip-t-emailuser' => 'هن يُوزر کي برق ٽپال اماڻيو',
 'tooltip-t-upload' => 'فائيل چاڙهيو',
 'tooltip-t-specialpages' => 'سڀني خاص صفحن جي فهرست',
 'tooltip-t-print' => 'هن صفحي جو ڇاپائتو پرت',
-'tooltip-ca-nstab-wiki_user' => 'هن جو يُوزر صفحو ڏسو',
+'tooltip-ca-nstab-user' => 'هن جو يُوزر صفحو ڏسو',
 'tooltip-ca-nstab-project' => 'رٿائي صفحو ڏسو',
 'tooltip-ca-nstab-image' => 'هن فائيل جو صفحو ڏسو',
 'tooltip-ca-nstab-template' => 'سانچو ڏسو',
@@ -983,6 +983,6 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 
 # Special:SpecialPages
 'specialpages' => 'خاص صفحا',
-'specialpages-group-wiki_users' => 'يوزرس ۽ حق',
+'specialpages-group-users' => 'يوزرس ۽ حق',
 
 );

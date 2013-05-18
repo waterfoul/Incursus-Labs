@@ -52,7 +52,7 @@ $namespaceAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activewiki_users'               => array( 'Aktieve_gebroekers' ),
+	'Activeusers'               => array( 'Aktieve_gebroekers' ),
 	'Allmessages'               => array( 'Alle_berichte' ),
 	'Allpages'                  => array( 'Alle_pagina\'s' ),
 	'Ancientpages'              => array( 'Audste_pagina\'s' ),
@@ -70,7 +70,7 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( 'Eweggesjafde_biedrage' ),
 	'Disambiguations'           => array( 'Verdudelikingspagina\'s' ),
 	'DoubleRedirects'           => array( 'Dobbel_doorverwiezinge' ),
-	'Emailwiki_user'                 => array( 'E-maile' ),
+	'Emailuser'                 => array( 'E-maile' ),
 	'Export'                    => array( 'Exportere' ),
 	'Fewestrevisions'           => array( 'Winnigs_bewirkde_pagina\'s' ),
 	'FileDuplicateSearch'       => array( 'Besjtandsduplicate_zeuke' ),
@@ -84,7 +84,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Plaetjes' ),
 	'Listgrouprights'           => array( 'Groepsrechte_weergaeve' ),
 	'Listredirects'             => array( 'Doorverwiezinge' ),
-	'Listwiki_users'                 => array( 'Gebroekers' ),
+	'Listusers'                 => array( 'Gebroekers' ),
 	'Lockdb'                    => array( 'DB_blokkere' ),
 	'Log'                       => array( 'Logbeuk', 'Logbook' ),
 	'Lonelypages'               => array( 'Weispagina\'s' ),
@@ -129,9 +129,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'Óngebroekde_sjablone' ),
 	'Unwatchedpages'            => array( 'Neet-gevolgde_pagina\'s' ),
 	'Upload'                    => array( 'Uploade' ),
-	'wiki_userlogin'                 => array( 'Aanmelje' ),
-	'wiki_userlogout'                => array( 'Aafmelje' ),
-	'wiki_userrights'                => array( 'Gebroekersrechte' ),
+	'Userlogin'                 => array( 'Aanmelje' ),
+	'Userlogout'                => array( 'Aafmelje' ),
+	'Userrights'                => array( 'Gebroekersrechte' ),
 	'Version'                   => array( 'Versie' ),
 	'Wantedcategories'          => array( 'Gewunsjde_categorieë' ),
 	'Wantedfiles'               => array( 'Gevraogde_besjtande' ),
@@ -157,7 +157,7 @@ $dateFormats = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Links óngersjtriepe',
 'tog-justify' => 'Paragrafe oetvölle',
 'tog-hideminor' => 'Versjtaek klein bewirkinge bie recènte verangeringe',
@@ -181,7 +181,7 @@ $messages = array(
 'tog-previewonfirst' => 'Preview laote zien bie de ierste bewirking',
 'tog-nocache' => 'Zèt de browserpaginacaching oet',
 'tog-enotifwatchlistpages' => "Versjik 'ne e-mail nao mich bie bewirkinge van pagina's en bestenj op mien volglies",
-'tog-enotifwiki_usertalkpages' => "'ne E-mail nao mich versjikke es emes mien euverlèkpagina verangert",
+'tog-enotifusertalkpages' => "'ne E-mail nao mich versjikke es emes mien euverlèkpagina verangert",
 'tog-enotifminoredits' => "Versjik  mich 'ne e-mail bie klein bewirkinge op pagina's en bestenj op mien volglies",
 'tog-enotifrevealaddr' => 'Mien e-mailadres tuine in e-mailberichte',
 'tog-shownumberswatching' => "'t Aantal gebroekers tuine die dees pagina volg",
@@ -362,7 +362,7 @@ $messages = array(
 'talk' => 'Euverlègk',
 'views' => 'Weergave',
 'toolbox' => 'Gereidsjapskis',
-'wiki_userpage' => 'gebroekerspagina',
+'userpage' => 'gebroekerspagina',
 'projectpage' => 'Projekpagina tuine',
 'imagepage' => 'Besjtandjspagina tuine',
 'mediawikipage' => 'Berichpagina tuine',
@@ -388,7 +388,7 @@ $1',
 'pool-queuefull' => 'De wachrie van de pool is vól',
 'pool-errorunknown' => 'Ónbekènde fout',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Euver {{SITENAME}}',
 'aboutpage' => 'Project:Info',
 'copyright' => 'De inhawd is besjikbaar ónger de $1.',
@@ -448,7 +448,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Pagina',
-'nstab-wiki_user' => 'Gebroeker',
+'nstab-user' => 'Gebroeker',
 'nstab-media' => 'Mediapagina',
 'nstab-special' => 'Speciaal pagina',
 'nstab-project' => 'Projekpagina',
@@ -494,7 +494,7 @@ De verantwoordelike systeembeheerder gaof de volgende rae op:
 Dit kan veurkómme as doe 'n auwer verwiezing nao 't versjil tösje twee versies van ein pagina volgs of 'n versie opvreugs die is eweggesjaf.
 
 Es dit neet 't geval is, höbs doe mesjins 'n fout in de software gevónje.
-Maak hievan melding bie 'ne [[Special:Listwiki_users/sysop|systeembeheerder]] van {{SITENAME}} en vermeld daobie de URL van dees pagina.",
+Maak hievan melding bie 'ne [[Special:ListUsers/sysop|systeembeheerder]] van {{SITENAME}} en vermeld daobie de URL van dees pagina.",
 'missingarticle-rev' => '(versienummer: $1)',
 'missingarticle-diff' => '(Wijziging: $1, $2)',
 'readonly_lag' => 'De database is autematis vergrendeld terwiel de ongergesjikte databaseservers synchronisere mit de huidserver.',
@@ -540,7 +540,7 @@ $2",
 'customcssprotected' => "De kèns dees CSS-pagina neet bewirke ómdet die persuunlike insjtèllinge van 'ne angere gebroeker bevat.",
 'customjsprotected' => "De kèns dees javapagina neet bewirke ómdet die persuunlike insjtèllinge van 'ne angere gebroeker bevat.",
 'ns-specialprotected' => 'Pagina\'s in de naamruumde "{{ns:special}}" kinne neet bewirk waere.',
-'titleprotected' => "'t aanmake van deze pagina is beveilig door [[wiki_user:$1|$1]].
+'titleprotected' => "'t aanmake van deze pagina is beveilig door [[User:$1|$1]].
 De gegaeve ree is ''$2''.",
 'filereadonlyerror' => '\'t Waar neet meugelik óm \'t bestandj "$1" aan te passe went de bestandjsrepositoir "$2" steit noe op allein-laeze.
 
@@ -558,7 +558,7 @@ d\'n Opgegaeve raej vanne sloetendje admin waar "\'\'$3\'\'".',
 # Login and logout pages
 'logouttext' => "'''De bis noe aafgemeld.'''
 
-De kèns {{SITENAME}} noe anoniem (mit vermeljing van IP-adres) gebroeke, of [[Special:wiki_userLogin|opnuuj aanmelde]] ónger dezelfde of 'ne angere naam.
+De kèns {{SITENAME}} noe anoniem (mit vermeljing van IP-adres) gebroeke, of [[Special:UserLogin|opnuuj aanmelde]] ónger dezelfde of 'ne angere naam.
 Mäögelik waert nog 'n deil pagina's getuind esofs te nog aangemeld bis pès te de cache van diene browser laeg maaks.",
 'welcomecreation' => '== Wèlkóm, $1! ==
 Diene gebroeker is noe vaerdig.
@@ -573,21 +573,21 @@ Vergaet neet dien [[Special:Preferences|veurkäöre veur {{SITENAME}}]] aan te p
 'login' => 'Aanmèlde',
 'nav-login-createaccount' => 'Aanmelje / registrere',
 'loginprompt' => "Diene browser mót ''cookies'' acceptere óm in te logge op {{SITENAME}}.",
-'wiki_userlogin' => 'Aanmelde / registrere',
-'wiki_userloginnocreate' => 'Mèlj aan',
+'userlogin' => 'Aanmelde / registrere',
+'userloginnocreate' => 'Mèlj aan',
 'logout' => 'Aafmelde',
-'wiki_userlogout' => 'Aafmelde',
+'userlogout' => 'Aafmelde',
 'notloggedin' => 'Neet aangemeld',
 'nologin' => "Höbs te nog geine gebroekersnaam? '''$1'''.",
 'nologinlink' => "Maak 'ne gebroekersnaam aan",
 'createaccount' => 'Nuuj gebroekersprofiel aanmake.',
 'gotaccount' => "Höbs te al 'ne gebroekersnaam? '''$1'''.",
 'gotaccountlink' => 'Inlogge',
-'wiki_userlogin-resetlink' => 'Bös se dien aanmèljingsgegaeves vergaete?',
+'userlogin-resetlink' => 'Bös se dien aanmèljingsgegaeves vergaete?',
 'createaccountmail' => 'via de e-mail',
 'createaccountreason' => 'Raeje:',
 'badretype' => 'De ingeveurde wachwäörd versjille vanein.',
-'wiki_userexists' => "De gebroekersnaam dae se höbs ingeveurd weurt al gebroek.
+'userexists' => "De gebroekersnaam dae se höbs ingeveurd weurt al gebroek.
 
 Kees estebleef 'ne angere naam.",
 'loginerror' => 'Inlogfout',
@@ -599,12 +599,12 @@ Zörg deveur dats te cookies höbs ingesjakeld, herlaaj dees pagina en perbeer '
 'noname' => "De mos 'n gebroekersnaam opgaeve.",
 'loginsuccesstitle' => 'Aanmèlde geluk.',
 'loginsuccess' => 'Doe bis noe es "$1" aangemeld bie {{SITENAME}}.',
-'nosuchwiki_user' => 'D\'r besjteit geine gebroeker mit de naam "$1".
+'nosuchuser' => 'D\'r besjteit geine gebroeker mit de naam "$1".
 Die seen huidlettegevullig
-Controleer dien spelling, of gebroek ongersjtaond formuleer om \'n [[Special:wiki_userLogin/signup|nuuj]] gebroekersprofiel aan te make.',
-'nosuchwiki_usershort' => 'De gebroeker "$1" besjteit neet. Konterleer de sjriefwieze.',
-'nowiki_userspecified' => "Doe deens 'ne gebroekersnaam op te gaeve.",
-'login-wiki_userblocked' => 'Deze gebroeker steit geblokkeerd. Aanmèlje is neet toegestange.',
+Controleer dien spelling, of gebroek ongersjtaond formuleer om \'n [[Special:UserLogin/signup|nuuj]] gebroekersprofiel aan te make.',
+'nosuchusershort' => 'De gebroeker "$1" besjteit neet. Konterleer de sjriefwieze.',
+'nouserspecified' => "Doe deens 'ne gebroekersnaam op te gaeve.",
+'login-userblocked' => 'Deze gebroeker steit geblokkeerd. Aanmèlje is neet toegestange.',
 'wrongpassword' => "'t Ingegaeve wachwaord is neet zjus. Perbeer 't obbenuujts.",
 'wrongpasswordempty' => "'t Ingegaeve wachwoord waor laeg. Perbeer 't obbenuujts.",
 'passwordtooshort' => "Dien wachwaord is te kort. 't Mót minstes oet {{PLURAL:$1|1 teike|$1 teikes}} besjtaon.",
@@ -642,16 +642,16 @@ e-mail óntvange veur alle volgende toepassinge.',
 ($4) mit \'t wachwaord "$3". Meld dich aan en wiezig dien wachwaord.
 
 Negeer dit berich as deze gebroeker zonger dien medewete is aangemaak.',
-'wiki_usernamehasherror' => '\'ne Gebroekersnaam kèn geint hèkske ("#") bevatte.',
+'usernamehasherror' => '\'ne Gebroekersnaam kèn geint hèkske ("#") bevatte.',
 'login-throttled' => "Doe höbs te huifig geperbeerd aan te melje mèt 'n verkierd wachwaord.
 Doe mós effe wachte ierdets te 't obbenuuts kens perbere.",
 'login-abort-generic' => 'Doe bös neet aangemèldj - Aafgebraoke',
 'loginlanguagelabel' => 'Taol: $1',
-'suspicious-wiki_userlogout' => "Dien verzeuk óm aaf te melde is genegeerd, ómdet 't liek esof 't verzeuk is versjik door 'ne browser of cacheproxy dae kepot is.",
+'suspicious-userlogout' => "Dien verzeuk óm aaf te melde is genegeerd, ómdet 't liek esof 't verzeuk is versjik door 'ne browser of cacheproxy dae kepot is.",
 
 # E-mail sending
 'php-mail-error-unknown' => "Dao haet ziech 'n ónbekénde fout veurgedaon in de mail()-functie van PHP",
-'wiki_user-mail-no-addy' => "Perbeerdjes 'ne mail te sjikke zónger 'n adres",
+'user-mail-no-addy' => "Perbeerdjes 'ne mail te sjikke zónger 'n adres",
 
 # Change password dialog
 'resetpass' => 'Wachwaord obbenuuts insjtèlle',
@@ -676,7 +676,7 @@ Meugelik höbs doe dien wachwaord al gewiezig of 'n nuuj tiedelik wachwaord aang
 'passwordreset-legend' => 'Wachwaord obbenuuts insjtèlle',
 'passwordreset-disabled' => "'t Is hie neet meugelik óm die wachwaord óbbenuits in te sjtelle.",
 'passwordreset-pretext' => '{{PLURAL:$1||Veur ei van de vèljer hieónger in}}',
-'passwordreset-wiki_username' => 'Gebroekersnaam:',
+'passwordreset-username' => 'Gebroekersnaam:',
 'passwordreset-domain' => 'Domein:',
 'passwordreset-capture' => 'Bekiek de resulterenden e-mail?',
 'passwordreset-capture-help' => "Es se dit vekske aanvènks, weurt d'n e-mail (mit e tiedelik wachwaord) nao de gebroek gesjik en ouch aan dich getuind.",
@@ -689,7 +689,7 @@ $2
 
 {{PLURAL:$3|Dit tiedelik wachwaord vervilt|Dees tiedelike wachweurd vervallen}} euver {{PLURAL:$5|einen daag|$5 daag}}.
 Mel dich aan en veranger 't wachwaord noe. Es se dit verzeuk neet zelf hes gedaon, of es se 't oorspronkelik wachwaord nog kins en 't neet anges wils, laot dit berich den en blief dien aad wachwaord gebroeke.",
-'passwordreset-emailtext-wiki_user' => "Gebroeker $1 op de site {{SITENAME}} haet dien gebroekersgegaeves veur {{SITENAME}} ($4) ópgevraog.
+'passwordreset-emailtext-user' => "Gebroeker $1 op de site {{SITENAME}} haet dien gebroekersgegaeves veur {{SITENAME}} ($4) ópgevraog.
 De volgende {{PLURAL:$3|gebroeker is|gebroekers zint}} gekoppeld aan dit e-mailadres:
 
 $2
@@ -785,7 +785,7 @@ Meugelikerwies is t'r verplaats of gewösj gewaore wiel se de paasj 'nt bekieke 
 'loginreqlink' => 'aanmelde',
 'loginreqpagetext' => "Doe moos diech $1 om anger pagina's te bekieke.",
 'accmailtitle' => 'Wachwaord versjtuurd.',
-'accmailtext' => "'n Willekäörig wachwaord veur [[wiki_user talk:$1|$1]] is nao $2 gesjtuurd.
+'accmailtext' => "'n Willekäörig wachwaord veur [[User talk:$1|$1]] is nao $2 gesjtuurd.
 
 't Wachwaord veur deze nuje gebroeker kan gewiezig waere via de pagina ''[[Special:ChangePassword|Wachwaord wiezige]]'' nao 't aanmelje.",
 'newarticle' => '(Nuuj)',
@@ -795,14 +795,14 @@ Es te hie per óngelök terech bis gekómme, klik dan op de '''trök'''-knóp va
 'anontalkpagetext' => "----''Dit is de euverlèkpagina veur 'ne anonieme gebroeker dae nog gein account haet aangemaak of dae 't neet gebroek.
 Daoveur gebroeke v'r 't IP-adres óm de gebroeker te identificere.
 Det adres kan waere gedeild door mierdere gebroekers.
-Es te 'ne anonieme gebroeker bis en de höbs 't geveul dat 'r ónrelevante commentare aan dich gerich zeen, kèns te 't bèste [[Special:wiki_userLogin/signup|'n account crëere]] of [[Special:wiki_userLogin|inlogge]] óm toekomstige verwarring mit anger anoniem gebroekers te veurkomme.''",
+Es te 'ne anonieme gebroeker bis en de höbs 't geveul dat 'r ónrelevante commentare aan dich gerich zeen, kèns te 't bèste [[Special:UserLogin/signup|'n account crëere]] of [[Special:UserLogin|inlogge]] óm toekomstige verwarring mit anger anoniem gebroekers te veurkomme.''",
 'noarticletext' => 'Dees pagina bevat gein teks.
 De kèns [[Special:Search/{{PAGENAME}}|nao deze term zeuke]] in anger pagina\'s, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} de logbeuk doorzeuke] of [{{fullurl:{{FULLPAGENAME}}|action=edit}} dees pagina bewirke]</span>.',
 'noarticletext-nopermission' => 'Dees pagina bevat gein teks.
 De kans [[Special:Search/{{PAGENAME}}|nao dees term zeuke]] in anger pagina\'s of
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} de logbeuk doorzeuke]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => 'Doe bewirks \'n gebroekerspagina van \'ne gebroeker dae neet besjteit (gebroeker "<nowiki>$1</nowiki>"). Controlere ofs doe dees pagina waal wils aanmake/bewirke.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Gebroeker "$1" is neet geregistreerd.',
+'userpage-userdoesnotexist' => 'Doe bewirks \'n gebroekerspagina van \'ne gebroeker dae neet besjteit (gebroeker "<nowiki>$1</nowiki>"). Controlere ofs doe dees pagina waal wils aanmake/bewirke.',
+'userpage-userdoesnotexist-view' => 'Gebroeker "$1" is neet geregistreerd.',
 'blocked-notice-logextract' => "Deze gebroeker is noe geblok.
 De leste bloklogregel wuuertj hiejónger t'r raodpleging gegaeve:",
 'clearyourcache' => "Lèt op:''' Nao 't opsjlaon mós te diene browsercache wisse óm de verangeringe te zeen:
@@ -811,17 +811,17 @@ De leste bloklogregel wuuertj hiejónger t'r raodpleging gegaeve:",
 * '''Internet Explorer:''' hauw ''Ctrl'' ingeduujt terwiels te op ''Vernuuj'' kliks of duujs op ''Ctrl-F5''
 * '''Konqueror: '''klik op ''Reload'' of duuj op ''F5''
 * '''Opera:''' laeg diene cache in ''Extra → Veurkäöre''",
-'wiki_usercssyoucanpreview' => "'''Tip:''' Gebroek de knóp '{{int:showpreview}}' om dien nuuj CSS te teste veurdets te opsjleis.",
-'wiki_userjsyoucanpreview' => "'''Tip:''' Gebroek de knóp '{{int:showpreview}}' om dien nuuj JS te teste veurdets te opsjleis.",
-'wiki_usercsspreview' => "'''Dit is allein 'n veurvertuun van dien perseunlike css, deze is neet opgeslage!'''",
-'wiki_userjspreview' => "'''Lèt op: doe tes noe dien persuunlik JavaScript.'''
+'usercssyoucanpreview' => "'''Tip:''' Gebroek de knóp '{{int:showpreview}}' om dien nuuj CSS te teste veurdets te opsjleis.",
+'userjsyoucanpreview' => "'''Tip:''' Gebroek de knóp '{{int:showpreview}}' om dien nuuj JS te teste veurdets te opsjleis.",
+'usercsspreview' => "'''Dit is allein 'n veurvertuun van dien perseunlike css, deze is neet opgeslage!'''",
+'userjspreview' => "'''Lèt op: doe tes noe dien persuunlik JavaScript.'''
 '''De pagina is neet opgesjlage!'''",
 'sitecsspreview' => "'''Dit is allein 'n veurvertuin van de CSS.'''
 '''Deze is nog neet opgesjlage!'''",
 'sitejspreview' => "'''Dit is allein 'n veurvertuin van de JavaScriptcode.'''
 '''Deze is nog neet opgesjlage!'''",
-'wiki_userinvalidcssjstitle' => "'''Waarsjoewing:''' d'r is gein skin \"\$1\". 
-Lèt op: dien eige .css- en .js-pagina's beginne mèt  'ne klein lètter, beveurbeeld {{ns:wiki_user}}:Naam/vector.css in plaats van {{ns:wiki_user}}:Naam/Vector.css.",
+'userinvalidcssjstitle' => "'''Waarsjoewing:''' d'r is gein skin \"\$1\". 
+Lèt op: dien eige .css- en .js-pagina's beginne mèt  'ne klein lètter, beveurbeeld {{ns:user}}:Naam/vector.css in plaats van {{ns:user}}:Naam/Vector.css.",
 'updated' => '(Biegewèrk)',
 'note' => "'''Opmirking:'''",
 'previewnote' => "'''Lèt op: dit is 'n controlepagina; dien teks is nog neet opgesjlage!'''",
@@ -875,7 +875,7 @@ De lèste logbookregel vólg hier:",
 'hiddencategories' => 'Dees pagina vélt in de volgende verborge {{PLURAL:$1|categorie|categorië}}:',
 'nocreatetitle' => "'t Aanmake van pagina's is beperk",
 'nocreatetext' => "{{SITENAME}} haet de mäögelikheid óm nuuj pagina's te make beperk.
-De kans al besjtaonde pagina's verangere, of de kans [[Special:wiki_userLogin|dich aanmelde of 'n gebroekersaccount aanmake]].",
+De kans al besjtaonde pagina's verangere, of de kans [[Special:UserLogin|dich aanmelde of 'n gebroekersaccount aanmake]].",
 'nocreate-loggedin' => "De höbs gein rechte óm nuuj pagina's te make.",
 'sectioneditnotsupported-title' => 'De kans hie gein köpkes bewirke',
 'sectioneditnotsupported-text' => 'Doe kèns hie gein köpkes bewèrke',
@@ -923,11 +923,11 @@ Dees parameters zeen eweggelaote.",
 'undo-success' => "Hiej onger stuit de teks wo in de verangering ongedaon gemaak is. Controleer veur 't opslaon of 't resultaot gewins is.",
 'undo-failure' => 'De verangering kòs neet ongedaon gemaak waere waeges angere striedige verangeringe.',
 'undo-norev' => 'De bewerking kon neet ongedaan gemaak waere, omdat die neet besteet of is verwijderd.',
-'undo-summary' => 'Versie $1 van [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|euverlèk]]) óngedaon gemaak.',
+'undo-summary' => 'Versie $1 van [[Special:Contributions/$2|$2]] ([[User talk:$2|euverlèk]]) óngedaon gemaak.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Aanmake gebroeker misluk.',
-'cantcreateaccount-text' => "'t Aanmake van gebroekers van dit IP-adres ('''$1''') is geblokkeerd door [[wiki_user:$3|$3]].
+'cantcreateaccount-text' => "'t Aanmake van gebroekers van dit IP-adres ('''$1''') is geblokkeerd door [[User:$3|$3]].
 
 De door $3 opgegaeve reje is ''$2''",
 
@@ -964,9 +964,9 @@ Wellich is ze gewis of verplaats.
 
 # Revision deletion
 'rev-deleted-comment' => '(bewirkingssamevatting eweggesjaf)',
-'rev-deleted-wiki_user' => '(gebroeker weggehaold)',
+'rev-deleted-user' => '(gebroeker weggehaold)',
 'rev-deleted-event' => '(actie weggehaold)',
-'rev-deleted-wiki_user-contribs' => '[gebroeker of IP gewösj - bewèrking verbórge in biedraag]',
+'rev-deleted-user-contribs' => '[gebroeker of IP gewösj - bewèrking verbórge in biedraag]',
 'rev-deleted-text-permission' => "Dees bewerking is '''gewusj'''.
 Dao kónne details aanwezig zeen in 't [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} wusjlogbook].",
 'rev-deleted-text-unhide' => "Dees versie van de pagina is '''eweggesjaf'''.
@@ -1020,7 +1020,7 @@ Anger beheerders van {{SITENAME}} kinne de verborge inhoud benäöjere en de ver
 'revdelete-hide-image' => 'Verberg bestandjsinhoud',
 'revdelete-hide-name' => 'Actie en doel verberge',
 'revdelete-hide-comment' => 'De bewerkingssamevatting verberge',
-'revdelete-hide-wiki_user' => 'Verberg gebroekersnaam/IP van de gebroeker',
+'revdelete-hide-user' => 'Verberg gebroekersnaam/IP van de gebroeker',
 'revdelete-hide-restricted' => 'Pas deze beperkinge toe op zowaal beheerders es angere',
 'revdelete-radio-same' => '(anger neet)',
 'revdelete-radio-set' => 'Jao',
@@ -1104,7 +1104,7 @@ Wees zeker det deze wieziging de gesjiedenisdoorloupendheid van de pagina zal be
 'showhideselectedversions' => 'Tuin/versjtaek geselecteerde versies',
 'editundo' => 'maak óngedaon',
 'diff-multi' => '({{PLURAL:$1|Ein tusseligkende versie|$1 Tusseligkende versies}} dórch {{PLURAL:$2|eine gebroeker|$2 gebroekers}} {{PLURAL:$1|weurt|waere}} neet getuund)',
-'diff-multi-manywiki_users' => '($1 tösseligkende versies door mier es $2 gebroekers waere neet waergaeve)',
+'diff-multi-manyusers' => '($1 tösseligkende versies door mier es $2 gebroekers waere neet waergaeve)',
 
 # Search results
 'searchresults' => 'Zeukresultate',
@@ -1186,7 +1186,7 @@ Mèrk op dat hun indexe van {{SITENAME}} content e bietje gedatierd kint zien.',
 'mypreferences' => 'Mien veurkäöre',
 'prefs-edits' => 'Aantal bewèrkinge:',
 'prefsnologin' => 'Neet aangemèld',
-'prefsnologintext' => 'De mós zeen <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} aagemeld]</span> óm dien veurkäöre te kónne insjtèlle.',
+'prefsnologintext' => 'De mós zeen <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} aagemeld]</span> óm dien veurkäöre te kónne insjtèlle.',
 'changepassword' => 'Wachwaord verangere',
 'prefs-skin' => '{{SITENAME}}-uterlik',
 'skin-preview' => 'Veurbesjouwing',
@@ -1194,7 +1194,7 @@ Mèrk op dat hun indexe van {{SITENAME}} content e bietje gedatierd kint zien.',
 'prefs-beta' => 'Bètadeil',
 'prefs-datetime' => 'Datum en tied',
 'prefs-labs' => 'Alfadeil',
-'prefs-wiki_user-pages' => "Gebroekerpagina's",
+'prefs-user-pages' => "Gebroekerpagina's",
 'prefs-personal' => 'Gebroekersinfo',
 'prefs-rc' => 'Recènte verangeringe en weergaaf van sjtumpkes',
 'prefs-watchlist' => 'Volglies',
@@ -1259,7 +1259,7 @@ Dees hanjeling kin neet ongedaon gemaak waere.',
 'prefs-emailconfirm-label' => 'E-mailbevestiging:',
 'prefs-textboxsize' => 'Aafmaetinge bewirkingssjerm',
 'youremail' => 'Dien e-mailadres',
-'wiki_username' => 'Gebroekersnaam:',
+'username' => 'Gebroekersnaam:',
 'uid' => 'Gebroekersnómmer:',
 'prefs-memberingroups' => 'Lid van {{PLURAL:$1|gróp|gróppe}}:',
 'prefs-registration' => 'Registratiedatum:',
@@ -1299,35 +1299,35 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'prefs-displaywatchlist' => 'Toeaningsinstèllinger',
 'prefs-diffs' => 'Vers',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => "'t E-mailadres liek geldig",
 'email-address-validity-invalid' => "Gif 'n geldig e-mailadres op",
 
-# wiki_user rights
-'wiki_userrights' => 'Gebroekersrechtebeheer',
-'wiki_userrights-lookup-wiki_user' => 'Beheer gebroekersgróppe',
-'wiki_userrights-wiki_user-editname' => "Veur 'ne gebroekersnaam in:",
-'editwiki_usergroup' => 'Bewirk gebroekersgróppe',
-'editingwiki_user' => "Bezig mit 't bewèrke van de gebroekersrechte van gebroeker '''[[wiki_user:$1|$1]]''' $2",
-'wiki_userrights-editwiki_usergroup' => 'Bewirk gebroekersgróppe',
-'savewiki_usergroups' => 'Gebroekersgróppe opsjlaon',
-'wiki_userrights-groupsmember' => 'Leed van:',
-'wiki_userrights-groupsmember-auto' => 'Impliciet lid van:',
-'wiki_userrights-groups-help' => "De kèns de gróppe verangere woe deze gebroeker lid van is.
+# User rights
+'userrights' => 'Gebroekersrechtebeheer',
+'userrights-lookup-user' => 'Beheer gebroekersgróppe',
+'userrights-user-editname' => "Veur 'ne gebroekersnaam in:",
+'editusergroup' => 'Bewirk gebroekersgróppe',
+'editinguser' => "Bezig mit 't bewèrke van de gebroekersrechte van gebroeker '''[[User:$1|$1]]''' $2",
+'userrights-editusergroup' => 'Bewirk gebroekersgróppe',
+'saveusergroups' => 'Gebroekersgróppe opsjlaon',
+'userrights-groupsmember' => 'Leed van:',
+'userrights-groupsmember-auto' => 'Impliciet lid van:',
+'userrights-groups-help' => "De kèns de gróppe verangere woe deze gebroeker lid van is.
 * 'n Aangekruuts vinkvekske beteikent det de gebroeker lid is van de gróp.
 * 'n Neet aangekruuts vinkvekske beteikent det de gebroeker neet lid is van de gróp.
 * \"*\" Beteikent dets te 'ne gebroeker neet oet 'ne gróp eweg kèns haole naodets te die daobie höbs gedoon, of angersóm.",
-'wiki_userrights-reason' => 'Reeje:',
-'wiki_userrights-no-interwiki' => "Doe höbs gein rechte om gebroekersrechte op anger wiki's te wiezige.",
-'wiki_userrights-nodatabase' => 'Database $1 besteit neet of is gein plaatselike database.',
-'wiki_userrights-nologin' => "Doe mos dich [[Special:wiki_userLogin|aanmelle]] mit 'ne gebroeker mit de zjuuste rech om gebroekersrech toe te wieze.",
-'wiki_userrights-notallowed' => 'Doe höbs gein rechte om gebroekersrechte toe te voegen of te wisse.',
-'wiki_userrights-changeable-col' => 'Gróppe dies te kèns behere',
-'wiki_userrights-unchangeable-col' => 'Gróppe dies te neet kèns behere',
+'userrights-reason' => 'Reeje:',
+'userrights-no-interwiki' => "Doe höbs gein rechte om gebroekersrechte op anger wiki's te wiezige.",
+'userrights-nodatabase' => 'Database $1 besteit neet of is gein plaatselike database.',
+'userrights-nologin' => "Doe mos dich [[Special:UserLogin|aanmelle]] mit 'ne gebroeker mit de zjuuste rech om gebroekersrech toe te wieze.",
+'userrights-notallowed' => 'Doe höbs gein rechte om gebroekersrechte toe te voegen of te wisse.',
+'userrights-changeable-col' => 'Gróppe dies te kèns behere',
+'userrights-unchangeable-col' => 'Gróppe dies te neet kèns behere',
 
 # Groups
 'group' => 'Gróp:',
-'group-wiki_user' => 'Gebroekers',
+'group-user' => 'Gebroekers',
 'group-autoconfirmed' => 'Geregistreerde gebroekers',
 'group-bot' => 'Bots',
 'group-sysop' => 'Administrators',
@@ -1335,14 +1335,14 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'group-suppress' => 'Toezichhajers',
 'group-all' => '(alle)',
 
-'group-wiki_user-member' => '{{GENDER:$1|gebroeker}}',
+'group-user-member' => '{{GENDER:$1|gebroeker}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|geregistreerde gebroeker}}',
 'group-bot-member' => '{{GENDER:$1|bot}}',
 'group-sysop-member' => '{{GENDER:$1|administrator}}',
 'group-bureaucrat-member' => '{{GENDER:$1|bureaucraat}}',
 'group-suppress-member' => '{{GENDER:$1|toezichhajer}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Gebroekers',
+'grouppage-user' => '{{ns:project}}:Gebroekers',
 'grouppage-autoconfirmed' => '{{ns:project}}:Geregistreerde gebroekers',
 'grouppage-bot' => '{{ns:project}}:Bots',
 'grouppage-sysop' => '{{ns:project}}:Beheerders',
@@ -1358,7 +1358,7 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'right-minoredit' => 'Bewerkinge markere as klein',
 'right-move' => "Pagina's hernaome",
 'right-move-subpages' => "Pagina's inclusief subpagina's verplaatse",
-'right-move-rootwiki_userpages' => "Gebroekerspagina's van 't hoegste niveau verplaatse",
+'right-move-rootuserpages' => "Gebroekerspagina's van 't hoegste niveau verplaatse",
 'right-movefile' => 'Bestenje hernoeme',
 'right-suppressredirect' => "Een doorverwijzing op de doelpagina verwijdere bie 't hernaome van 'n pagina",
 'right-upload' => 'Bestande uploade',
@@ -1384,16 +1384,16 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'right-suppressionlog' => 'Neet-publieke logboke bekieke',
 'right-block' => 'Angere gebroekers de mogelijkheid te bewerke ontnaeme',
 'right-blockemail' => "'ne gebroeker 't rech ontnaeme om e-mail te versture",
-'right-hidewiki_user' => "'ne gebroeker veur de euverige gebroekers verberge",
+'right-hideuser' => "'ne gebroeker veur de euverige gebroekers verberge",
 'right-ipblock-exempt' => 'IP-blokkades omzeile',
 'right-proxyunbannable' => "Blokkades veur proxy's gelde neet",
 'right-unblockself' => 'Óntblok eige gebroeker',
 'right-protect' => 'Beveiligingsniveaus wijzige',
 'right-editprotected' => "Beveiligde pagina's bewerke",
 'right-editinterface' => 'De gebroekersinterface bewerke',
-'right-editwiki_usercssjs' => 'De CSS- en JS-bestande van angere gebroekers bewerke',
-'right-editwiki_usercss' => 'De CSS-bestande van angere gebroekers bewerke',
-'right-editwiki_userjs' => 'De JS-bestande van angere gebroekers bewerke',
+'right-editusercssjs' => 'De CSS- en JS-bestande van angere gebroekers bewerke',
+'right-editusercss' => 'De CSS-bestande van angere gebroekers bewerke',
+'right-edituserjs' => 'De JS-bestande van angere gebroekers bewerke',
 'right-rollback' => "Snel de letste bewerking(e) van 'n gebroeker van 'n pagina terugdraaie",
 'right-markbotedits' => 'Teruggedraaide bewerkinge markere es botbewerkinge',
 'right-noratelimit' => "Heet gein ti'jdsafhankelijke beperkinge",
@@ -1404,14 +1404,14 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'right-patrolmarks' => 'Kontraolteikes in recènte verangeringe bekieke.',
 'right-unwatchedpages' => "'n lies mit pagina's die neet op 'n volglies staon bekieke",
 'right-mergehistory' => "De gesjiedenis van pagina's samevoege",
-'right-wiki_userrights' => 'Alle gebroekersrechte bewerke',
-'right-wiki_userrights-interwiki' => "Gebroekersrechte van gebroekers in angere wiki's wijzige",
+'right-userrights' => 'Alle gebroekersrechte bewerke',
+'right-userrights-interwiki' => "Gebroekersrechte van gebroekers in angere wiki's wijzige",
 'right-siteadmin' => 'De database blokkere en weer vriegaeve',
 'right-override-export-depth' => "Export paazjes midin geslinkdje paazjes mit 'n deepdje ven 5",
 'right-sendemail' => 'Versjik e-mail aan anger gebroekers',
 'right-passwordreset' => 'Bekiek e-mails van ópnuuj ingestèldje wachwäörd',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Gebroekersrechtelogbook',
 'rightslogtext' => 'Hiej onger staon de wieziginge in gebroekersrechte.',
 'rightslogentry' => 'wiezigde de gebroekersrechte veur $1 van $2 nao $3',
@@ -1427,7 +1427,7 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'action-minoredit' => 'deze bewirking es klein te markere',
 'action-move' => 'deze pagina te verplaatse',
 'action-move-subpages' => "dees pagina en biebehurende subpagina's te verplaatse",
-'action-move-rootwiki_userpages' => "gebroekerspagina's van 't hoegste niveau te verplaatse",
+'action-move-rootuserpages' => "gebroekerspagina's van 't hoegste niveau te verplaatse",
 'action-movefile' => 'dit bestandj te hernömme',
 'action-upload' => 'dit besjtandj te uploade',
 'action-reupload' => 'dit besjtaond besjtandj te euversjrieve',
@@ -1450,8 +1450,8 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'action-autopatrol' => 'eige bewerkinge as gecontroleerd te laote markere',
 'action-unwatchedpages' => "de lies met pagina's die neet op 'n volglies staon  te bekieke",
 'action-mergehistory' => 'de gesjiedenis van deze pagina same te voge',
-'action-wiki_userrights' => 'alle gebroekersrechte te bewerke',
-'action-wiki_userrights-interwiki' => "gebroekersrechte van gebroekers van anger wiki's te bewerke",
+'action-userrights' => 'alle gebroekersrechte te bewerke',
+'action-userrights-interwiki' => "gebroekersrechte van gebroekers van anger wiki's te bewerke",
 'action-siteadmin' => 'de database aaf te sloete of aope te stelle',
 'action-sendemail' => 'Sjik e-mails',
 
@@ -1482,7 +1482,7 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'minoreditletter' => 'K',
 'newpageletter' => 'N',
 'boteditletter' => 'b',
-'number_of_watching_wiki_users_pageview' => "[$1 {{PLURAL:$1|keer|keer}} op 'ne volglies]",
+'number_of_watching_users_pageview' => "[$1 {{PLURAL:$1|keer|keer}} op 'ne volglies]",
 'rc_categories' => 'Beperk tot allein categorieë (sjeij mit \'n "|")',
 'rc_categories_any' => 'Iddere',
 'rc-change-size-new' => '$1 {{PLURAL:$1|byte|bytes}} nao verangering',
@@ -1507,7 +1507,7 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'reuploaddesc' => "Truuk nao 't uploadformeleer.",
 'upload-tryagain' => 'Wèrk bestandjsbesjrieving bie',
 'uploadnologin' => 'Neet aangemèld',
-'uploadnologintext' => 'De mos [[Special:wiki_userLogin|zien aangemèld]] om besjtande te uploade.',
+'uploadnologintext' => 'De mos [[Special:UserLogin|zien aangemèld]] om besjtande te uploade.',
 'upload_directory_missing' => 'De uploadmap ($1) is neet aanwezig en kos neet aangemaak waere door de webserver.',
 'upload_directory_read_only' => 'De webserver kin neet sjrieve in de uploadmap ($1).',
 'uploaderror' => "fout in 't uploade",
@@ -1625,9 +1625,9 @@ Gank trök nao t [[Special:Upload/stash/$1|uploadformuleer]] om dit perbleem te 
 'upload-proto-error' => 'Verkeerd protocol',
 'upload-proto-error-text' => "Uploads via deze methode vereise URL's die beginne met <code>http://</code> of <code>ftp://</code>.",
 'upload-file-error' => 'Interne fout',
-'upload-file-error-text' => "'n Intern fuitje vonj plaats wie 'n tiedelik besjtandj op de server woort aangemaak. Num aub contac op met 'ne [[Special:Listwiki_users/sysop|systeemwèrker]].",
+'upload-file-error-text' => "'n Intern fuitje vonj plaats wie 'n tiedelik besjtandj op de server woort aangemaak. Num aub contac op met 'ne [[Special:ListUsers/sysop|systeemwèrker]].",
 'upload-misc-error' => 'Onbekinde uploadfout',
-'upload-misc-error-text' => "d'r Is tiedes 't uploade 'ne onbekinde fout opgetraeje. Controleer of de URL correc en besjikbaar is en probeer 't opnuuj. Es 't probleem aanhaojt, nöm dan contac op met 'ne [[Special:Listwiki_users/sysop|systeembeheerder]].",
+'upload-misc-error-text' => "d'r Is tiedes 't uploade 'ne onbekinde fout opgetraeje. Controleer of de URL correc en besjikbaar is en probeer 't opnuuj. Es 't probleem aanhaojt, nöm dan contac op met 'ne [[Special:ListUsers/sysop|systeembeheerder]].",
 'upload-too-many-redirects' => 'De URL bevadde te väöl doorverwiezinge',
 'upload-unknown-size' => 'Ónbekèndje gruuedje',
 'upload-http-error' => 'dr Is n HTTP-fout opgetraoje: $1',
@@ -1744,7 +1744,7 @@ Es dees pagina weurt gefilterd op gebroeker, waere allein bestenj wo de gebroeke
 'listfiles_thumb' => 'Miniatuurplaetje',
 'listfiles_date' => 'Datum',
 'listfiles_name' => 'Naom',
-'listfiles_wiki_user' => 'Gebroeker',
+'listfiles_user' => 'Gebroeker',
 'listfiles_size' => 'Gruutde (bytes)',
 'listfiles_description' => 'Besjrieving',
 'listfiles_count' => 'Versies',
@@ -1761,7 +1761,7 @@ Es dees pagina weurt gefilterd op gebroeker, waere allein bestenj wo de gebroeke
 'filehist-thumb' => 'Miniatuurplaetje',
 'filehist-thumbtext' => 'Miniatuurplaetje veur versie per $1',
 'filehist-nothumb' => 'Geine miniatuuraafbeilding',
-'filehist-wiki_user' => 'Gebroeker',
+'filehist-user' => 'Gebroeker',
 'filehist-dimensions' => 'Aafmaetinge',
 'filehist-filesize' => 'Besjtandjgruutde',
 'filehist-comment' => 'Opmirking',
@@ -1848,7 +1848,7 @@ De [$2 pagina mit de besjtandjsbesjrieving] wurt hiejónger weergegaeve.',
 'statistics-header-pages' => 'Paginastatistieke',
 'statistics-header-edits' => 'Bewerkingsstatistieke',
 'statistics-header-views' => 'Paginaweergavestatistieke',
-'statistics-header-wiki_users' => 'Stattestieke euver gebroekers',
+'statistics-header-users' => 'Stattestieke euver gebroekers',
 'statistics-header-hooks' => 'Anger gegaeves',
 'statistics-articles' => "Inhoudelijke pagina's",
 'statistics-pages' => "Pagina's",
@@ -1859,9 +1859,9 @@ De [$2 pagina mit de besjtandjsbesjrieving] wurt hiejónger weergegaeve.',
 'statistics-views-total' => "Totaal aantal weergegeve pagina's",
 'statistics-views-total-desc' => "'t Bekieke van neet-bestaonde pagina's en speciaal pagina's is neet inbegrepe",
 'statistics-views-peredit' => "Weergegeve pagina's per bewerking",
-'statistics-wiki_users' => 'Geregistreerde [[Special:Listwiki_users|gebroekers]]',
-'statistics-wiki_users-active' => 'Actieve gebroekers',
-'statistics-wiki_users-active-desc' => "Gebroekers die in de aafgeloupe {{PLURAL:$1|daag|$1 daag}} 'ne hanjeling höbbe oetgevoerd",
+'statistics-users' => 'Geregistreerde [[Special:ListUsers|gebroekers]]',
+'statistics-users-active' => 'Actieve gebroekers',
+'statistics-users-active-desc' => "Gebroekers die in de aafgeloupe {{PLURAL:$1|daag|$1 daag}} 'ne hanjeling höbbe oetgevoerd",
 'statistics-mostpopular' => "Meisbekeke pazjena's",
 
 'disambiguations' => "Links nao verdudelikingspazjena's",
@@ -1937,13 +1937,13 @@ De pafina's zeen ouk neet as sjabloon opgenome.",
 'protectedtitles' => "Beveiligde pazjena's",
 'protectedtitlestext' => 'De volgende titels zeen beveilig en kinne neet aangemaak waere',
 'protectedtitlesempty' => "d'r Zeen momenteel gein titels beveilig die aan deze paramaeters voldaon.",
-'listwiki_users' => 'Lies van gebroekers',
-'listwiki_users-editsonly' => 'Allein gebroekers mit bewèrkinge weergaeve',
-'listwiki_users-creationsort' => 'Sortere op registratiedatum',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|bewèrking|bewèrkinge}}',
-'wiki_usercreated' => '{{GENDER:$3|aangemaak}} óp $1 óm $2',
+'listusers' => 'Lies van gebroekers',
+'listusers-editsonly' => 'Allein gebroekers mit bewèrkinge weergaeve',
+'listusers-creationsort' => 'Sortere op registratiedatum',
+'usereditcount' => '$1 {{PLURAL:$1|bewèrking|bewèrkinge}}',
+'usercreated' => '{{GENDER:$3|aangemaak}} óp $1 óm $2',
 'newpages' => "Nuuj pagina's",
-'newpages-wiki_username' => 'Gebroekersnaam:',
+'newpages-username' => 'Gebroekersnaam:',
 'ancientpages' => 'Artikele die lank neet bewèrk zeen',
 'move' => 'Verplaats',
 'movethispage' => 'Verplaats dees pagina',
@@ -1969,7 +1969,7 @@ E bestandj kèn hie dös verkieërdj ópgenómme zeen.",
 Controleer of se wellich n fout höbs gemaak bie de inveur.',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Oetveurder:',
+'specialloguserlabel' => 'Oetveurder:',
 'speciallogtitlelabel' => 'Doel (pagina of gebroeker):',
 'log' => 'Logbeuk',
 'all-logs-page' => 'Alle aopenbaar logbeuk',
@@ -2026,24 +2026,24 @@ Haet mèndestes e toepleveldomein, wie beveurbeildj "*.org".<br />
 'linksearch-line' => '$1 gelink vanaaf $2',
 'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'Tuin gebroekers vanaaf:',
-'listwiki_users-submit' => 'Tuin',
-'listwiki_users-noresult' => 'Gein(e) gebroeker(s) gevonje.',
-'listwiki_users-blocked' => '(geblok)',
+# Special:ListUsers
+'listusersfrom' => 'Tuin gebroekers vanaaf:',
+'listusers-submit' => 'Tuin',
+'listusers-noresult' => 'Gein(e) gebroeker(s) gevonje.',
+'listusers-blocked' => '(geblok)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'Aktief gebroekers',
-'activewiki_users-intro' => "Dit is 'n lies mit gebroekers die aktief zeen gewaes in de aafgeloupe {{PLURAL:$1|daag|$1 daag}}.",
-'activewiki_users-count' => '$1 {{PLURAL:$1|bewèrking|bewèrkinger}} inne {{PLURAL:$3|lèsten daag|lès $3 daag}}',
-'activewiki_users-from' => 'Tuin gebroekers vanaaf:',
-'activewiki_users-hidebots' => 'Verberg bots',
-'activewiki_users-hidesysops' => 'Verberg admins',
-'activewiki_users-noresult' => 'Gein gebroekers gevónje.',
+# Special:ActiveUsers
+'activeusers' => 'Aktief gebroekers',
+'activeusers-intro' => "Dit is 'n lies mit gebroekers die aktief zeen gewaes in de aafgeloupe {{PLURAL:$1|daag|$1 daag}}.",
+'activeusers-count' => '$1 {{PLURAL:$1|bewèrking|bewèrkinger}} inne {{PLURAL:$3|lèsten daag|lès $3 daag}}',
+'activeusers-from' => 'Tuin gebroekers vanaaf:',
+'activeusers-hidebots' => 'Verberg bots',
+'activeusers-hidesysops' => 'Verberg admins',
+'activeusers-noresult' => 'Gein gebroekers gevónje.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Logbook nuuj gebroekers',
-'newwiki_userlogpagetext' => 'Hiej ónger saton de nuuj ingesjreve gebroekers.',
+# Special:Log/newusers
+'newuserlogpage' => 'Logbook nuuj gebroekers',
+'newuserlogpagetext' => 'Hiej ónger saton de nuuj ingesjreve gebroekers.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Rechte van gebroekersgróppe',
@@ -2064,25 +2064,25 @@ Infermasie daoreuver èn de individueel rechter vinjs te [[{{MediaWiki:Listgroup
 'listgrouprights-addgroup-self-all' => 'Voeg alle gruup toe aan eige gebroeker',
 'listgrouprights-removegroup-self-all' => 'Wösj alle gruup van eige gebroeker',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'Gein e-mailadres bekènd veur deze gebroeker',
-'mailnologintext' => "De mos zien [[Special:wiki_userLogin|aangemèld]] en 'n gèldig e-mailadres in bie dien [[Special:Preferences|veurkäöre]] höbbe ingevuld om mail nao anger gebroekers te sjture.",
-'emailwiki_user' => "Sjik deze gebroeker 'nen e-mail",
+'mailnologintext' => "De mos zien [[Special:UserLogin|aangemèld]] en 'n gèldig e-mailadres in bie dien [[Special:Preferences|veurkäöre]] höbbe ingevuld om mail nao anger gebroekers te sjture.",
+'emailuser' => "Sjik deze gebroeker 'nen e-mail",
 'emailpage' => "Sjik gebroeker 'nen e-mail",
 'emailpagetext' => "Es deze gebroeker e geljig e-mailadres haet opgegaeve den kint g'r via dit formuleer e berich sjikke. 't E-mailadres wat geer heet opgegeve bie eur [[Special:Preferences|veurkäöre]] zal es versjikker aangegaeve waere.
 Dae kin dös drek reazjere.",
-'wiki_usermailererror' => "Foutmeljing biej 't zenje:",
+'usermailererror' => "Foutmeljing biej 't zenje:",
 'defemailsubject' => 'E-mail van {{SITENAME}}-gebroeker "$1"',
-'wiki_usermaildisabled' => 'Gebroeker e-mail oetgezatj.',
-'wiki_usermaildisabledtext' => 'Doe kèns geinen e-mail sjikke nao anger gebroekers op deze wiki',
+'usermaildisabled' => 'Gebroeker e-mail oetgezatj.',
+'usermaildisabledtext' => 'Doe kèns geinen e-mail sjikke nao anger gebroekers op deze wiki',
 'noemailtitle' => 'Gein e-mailadres bekènd veur deze gebroeker',
 'noemailtext' => 'Deze gebroeker haet gein gèldig e-mailadres opgegaeve.',
 'nowikiemailtitle' => 'E-mail is neet toegestaon',
 'nowikiemailtext' => 'Deze gebroeker wil geine e-mail ontvange van anger gebroekers.',
 'emailnotarget' => 'Neet-bestäöndje of óngeldige ontvanger.',
 'emailtarget' => 'Veur de geadresseerde in',
-'emailwiki_username' => 'Gebroekersnaam:',
-'emailwiki_usernamesubmit' => 'Slaon óp',
+'emailusername' => 'Gebroekersnaam:',
+'emailusernamesubmit' => 'Slaon óp',
 'email-legend' => 'ne E-mail versture nao ne angere gebroeker van {{SITENAME}}',
 'emailfrom' => 'Ven:',
 'emailto' => 'Aan:',
@@ -2093,11 +2093,11 @@ Dae kin dös drek reazjere.",
 'emailccsubject' => 'Kopie van dien berich aan $1: $2',
 'emailsent' => 'E-mail sjikke',
 'emailsenttext' => 'Die berich is versjik.',
-'emailwiki_userfooter' => 'Deze e-mail is verstuurd door $1 aan $2 door de functie "Deze gebroeker e-maile" van {{SITENAME}}.',
+'emailuserfooter' => 'Deze e-mail is verstuurd door $1 aan $2 door de functie "Deze gebroeker e-maile" van {{SITENAME}}.',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'Systeembrich naogelaote.',
-'wiki_usermessage-editor' => 'Sysyeembrich',
+# User Messenger
+'usermessage-summary' => 'Systeembrich naogelaote.',
+'usermessage-editor' => 'Sysyeembrich',
 
 # Watchlist
 'watchlist' => 'Volglies',
@@ -2106,7 +2106,7 @@ Dae kin dös drek reazjere.",
 'nowatchlist' => "D'r sjtit niks op dien volglies.",
 'watchlistanontext' => '$1 is verplich om dien volglies in te zeen of te wiezige.',
 'watchnologin' => 'De bis neet aangemèld',
-'watchnologintext' => "De mós [[Special:wiki_userLogin|aangemèld]] zeen veur 't verangere van dien volglies.",
+'watchnologintext' => "De mós [[Special:UserLogin|aangemèld]] zeen veur 't verangere van dien volglies.",
 'addwatch' => 'Aan volglies toeveuge',
 'addedwatchtext' => "De pagina \"[[:\$1]]\" is aan dien [[Special:Watchlist|volglies]] toegeveug.
 Toekomstige verangeringe aan dees pagina en de biebehurende euverlèkpagina weure dao vermeld en de pagina weurt '''vèt''' weergegaeve in de [[Special:RecentChanges|lies van recènte verangeringe]].",
@@ -2208,13 +2208,13 @@ Kónfermeer hiejónger dat dit inderdaod dien bedoeling is, dats doe de gevolge 
 'rollbacklink' => 'Trökdrieje',
 'rollbackfailed' => 'Ongedaon make van wieziginge mislùk.',
 'cantrollback' => 'Trökdrejje van verangeringe neet meugelik: Dit artikel haet mer einen auteur.',
-'alreadyrolled' => "'t Is neet mäögelik óm de lètste verangering van [[:$1]] door [[wiki_user:$2|$2]] ([[wiki_user talk:$2|euverlèk]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) óngedaon te make.
+'alreadyrolled' => "'t Is neet mäögelik óm de lètste verangering van [[:$1]] door [[User:$2|$2]] ([[User talk:$2|euverlèk]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) óngedaon te make.
 Emes angers haet de pagina al hersjtèld of haet 'n anger bewirking gedaon.
 
-De lètste bewirking is gedaon door [[wiki_user:$3|$3]] ([[wiki_user talk:$3|euverlik]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).",
+De lètste bewirking is gedaon door [[User:$3|$3]] ([[User talk:$3|euverlik]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).",
 'editcomment' => "'t Bewirkingscommentair waor: \"''\$1''\".",
-'revertpage' => 'Wieziginge door [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Euverlik]]) trukgedriejd tot de lètste versie door [[wiki_user:$1|$1]]',
-'revertpage-nowiki_user' => 'Wieziginge door (gwösdje gebroeker) trögkgezadj nao bie [[wiki_user:$1|$1]]',
+'revertpage' => 'Wieziginge door [[Special:Contributions/$2|$2]] ([[User talk:$2|Euverlik]]) trukgedriejd tot de lètste versie door [[User:$1|$1]]',
+'revertpage-nouser' => 'Wieziginge door (gwösdje gebroeker) trögkgezadj nao bie [[User:$1|$1]]',
 'rollback-success' => 'Wieziginge door $1 trökgedrèjd; letste versie van $2 hersteld.',
 
 # Edit tokens
@@ -2361,13 +2361,13 @@ $1",
 'sp-contributions-uploads' => 'uploads',
 'sp-contributions-logs' => 'logbeuk',
 'sp-contributions-talk' => 'euverlèk',
-'sp-contributions-wiki_userrights' => 'gebroekersrechtebeheer',
+'sp-contributions-userrights' => 'gebroekersrechtebeheer',
 'sp-contributions-blocked-notice' => "Deze gebroeker is noe geblok.
 De leste bloklogregel wuuertj hiejónger t'r raodpleging gegaeve:",
 'sp-contributions-blocked-notice-anon' => "Dit IP-adres is noe geblok.
 De leste bloklogregel wuuertj hiejónger t'r raodpleging gegaeve:",
 'sp-contributions-search' => 'Zeuke nao biedrages',
-'sp-contributions-wiki_username' => 'IP-adres of gebroekersnaam:',
+'sp-contributions-username' => 'IP-adres of gebroekersnaam:',
 'sp-contributions-toponly' => 'Nör nuujste versies getuundj',
 'sp-contributions-submit' => 'Zeuk',
 
@@ -2398,7 +2398,7 @@ De leste bloklogregel wuuertj hiejónger t'r raodpleging gegaeve:",
 'blockip-title' => 'Blok gebroeker',
 'blockip-legend' => "'ne Gebroeker of IP-adres blokkere",
 'blockiptext' => "Gebroek 't óngerstjaondj formeleer óm sjrieftoegank van e zeker IP-adres te verbeje. Dit maag allein gedaon weure om vandalisme te veurkómme en in euvereinkóms mitte [[{{MediaWiki:Policy-url}}|beleid]]. Gaef hiejónger de raeje óp (bv. inkel vandaliseerdje paazjes).",
-'ipadressorwiki_username' => 'IP-adres of gebroekersnaam',
+'ipadressorusername' => 'IP-adres of gebroekersnaam',
 'ipbexpiry' => "Verlöp (maak 'n keuze)",
 'ipbreason' => 'Reeje:',
 'ipbreasonotherlist' => 'Angere reje',
@@ -2420,8 +2420,8 @@ De leste bloklogregel wuuertj hiejónger t'r raodpleging gegaeve:",
 'ipbotheroption' => 'anger verloup',
 'ipbotherreason' => 'Angere/eventuele rejer:',
 'ipbhidename' => 'Verberg gebroekersnaam van liester èn bewèrkinger',
-'ipbwatchwiki_user' => 'Gebroekerspazjena en euverlèkpazjena op vólglies plaatse',
-'ipb-disablewiki_usertalk' => 'Veurkóm det deze gebroeker tiedes de blok de eige euverlègkpagina kin bewirke',
+'ipbwatchuser' => 'Gebroekerspazjena en euverlèkpazjena op vólglies plaatse',
+'ipb-disableusertalk' => 'Veurkóm det deze gebroeker tiedes de blok de eige euverlègkpagina kin bewirke',
 'ipb-change-block' => 'De gebroeker opnuuj blokke met deze instellinge',
 'ipb-confirm' => 'Bevestig blok',
 'badipaddress' => "'t IP-adres haet 'n ongeldige opmaak.",
@@ -2429,7 +2429,7 @@ De leste bloklogregel wuuertj hiejónger t'r raodpleging gegaeve:",
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] is geblokkeerd.<br />
 Zuug de [[Special:BlockList|lies van geblokkeerde IP-adresse]].',
 'ipb-blockingself' => "Doe steis óp 't pöntj dichzelf te blokke! Wèts se zeker desse det wils doon?",
-'ipb-confirmhidewiki_user' => "Doe steis óp 't pöntj 'ne verbórge gebroeker te blokke. Hieveur waere gebroekersname in alle liesre en logbookregels verbórge. Wèts se zeker desse door wils gaon?",
+'ipb-confirmhideuser' => "Doe steis óp 't pöntj 'ne verbórge gebroeker te blokke. Hieveur waere gebroekersname in alle liesre en logbookregels verbórge. Wèts se zeker desse door wils gaon?",
 'ipb-edit-dropdown' => 'Bewerk lies van rejer',
 'ipb-unblock-addr' => 'Ónblokkeer $1',
 'ipb-unblock' => "Ónblokkeer 'ne gebroeker of IP-adres",
@@ -2438,13 +2438,13 @@ Zuug de [[Special:BlockList|lies van geblokkeerde IP-adresse]].',
 'unblockip' => 'Deblokkeer IP adres',
 'unblockiptext' => 'Gebroek het ongersjtaonde formeleer om weer sjrieftoegang te gaeve aan e geblokkierd IP adres.',
 'ipusubmit' => 'Deblokkeer dit.',
-'unblocked' => 'Blokkade van [[wiki_user:$1|$1]] is opgeheve',
+'unblocked' => 'Blokkade van [[User:$1|$1]] is opgeheve',
 'unblocked-range' => '$1 is gedeblokkeerd',
 'unblocked-id' => 'Blokkade $1 is opgeheve',
 'blocklist' => 'Geblokkeerde gebroekers',
 'ipblocklist' => 'Geblokkerde gebroekers',
 'ipblocklist-legend' => "'ne Geblokkeerde gebroeker zeuke",
-'blocklist-wiki_userblocks' => 'Verberg geblokkeerde gebroekers',
+'blocklist-userblocks' => 'Verberg geblokkeerde gebroekers',
 'blocklist-tempblocks' => 'Verberg tiedelike bloks',
 'blocklist-addressblocks' => 'Verberg bloks van ei IP-adres',
 'blocklist-rangeblocks' => 'Verberg IP-adresbloks',
@@ -2463,7 +2463,7 @@ Zuug de [[Special:BlockList|lies van geblokkeerde IP-adresse]].',
 'noautoblockblock' => 'autoblok neet actief',
 'createaccountblock' => 'aanmake gebroekers geblokkeerd',
 'emailblock' => 'e-mail geblokkeerd',
-'blocklist-nowiki_usertalk' => 'kan eige euverlèkpagina neet bewèrke',
+'blocklist-nousertalk' => 'kan eige euverlèkpagina neet bewèrke',
 'ipblocklist-empty' => 'De blokkeerlies is laeg.',
 'ipblocklist-no-results' => 'Dit IP-adres of deze gebroekersnaam is neet geblokkeerd.',
 'blocklink' => 'Blokkeer',
@@ -2471,7 +2471,7 @@ Zuug de [[Special:BlockList|lies van geblokkeerde IP-adresse]].',
 'change-blocklink' => 'blokkaasj verangere',
 'contribslink' => 'biedrages',
 'emaillink' => 'sjik mail',
-'autoblocker' => 'Ómdets te \'n IP-adres deils mit "[[wiki_user:$1|$1]]" (geblokkeerd mit raeje "$2") bis te automatisch geblokkeerd.',
+'autoblocker' => 'Ómdets te \'n IP-adres deils mit "[[User:$1|$1]]" (geblokkeerd mit raeje "$2") bis te automatisch geblokkeerd.',
 'blocklogpage' => 'Blokkeerlogbook',
 'blocklog-showlog' => "Dizze gebroeker is eerder geblokkeerd gewaes.
 't Blokkeerlogbook wört hiejonger weergaeve:",
@@ -2484,7 +2484,7 @@ Zuug de [[Special:BlockList|lies van geblokkeerde IP-adresse]].',
 'block-log-flags-nocreate' => 'aanmake gebroekers geblokkeerd',
 'block-log-flags-noautoblock' => 'autoblok ongedaon gemaak',
 'block-log-flags-noemail' => 'e-mail geblokkeerd',
-'block-log-flags-nowiki_usertalk' => 'kan eige euverlèkpagina neet bewèrke',
+'block-log-flags-nousertalk' => 'kan eige euverlèkpagina neet bewèrke',
 'block-log-flags-angry-autoblock' => 'oetgebreide automatische blokkade ingesjakeld',
 'block-log-flags-hiddenname' => 'gebroeker verbórge',
 'range_block_disabled' => "De meugelikheid veur beheerders om 'n gróp IP-adresse te blokkere is oetgesjakeld.",
@@ -2495,7 +2495,7 @@ Zuug de [[Special:BlockList|lies van geblokkeerde IP-adresse]].',
 'ipb-needreblock' => '$1 is al geblokkeerd.
 Wils se de instellinge wiezige?',
 'ipb-otherblocks-header' => 'Anger {{PLURAL:$1|blokkaad|blokkades}}',
-'unblock-hidewiki_user' => 'Doe kins deze gebroeker neet óntblokke, ómdet de gebroekersnaam verbórge is.',
+'unblock-hideuser' => 'Doe kins deze gebroeker neet óntblokke, ómdet de gebroekersnaam verbórge is.',
 'ipb_cant_unblock' => 'Fout: Blokkadenummer $1 neet gevonje. Mesjiens is de blokkade al opgeheve.',
 'ipb_blocked_as_range' => "Fout: 't IP-adres $1 is neet direct geblokkeerd en de blokkade kan neet opgeheve waere. De blokkade is ongerdeil van de reeks $2, wovan de blokkade waal opgeheve kan waere.",
 'ip_range_invalid' => 'Ongeldige IP-reeks',
@@ -2508,8 +2508,8 @@ Wils se de instellinge wiezige?',
 'sorbsreason' => 'Dien IP-adres is opgenaome in de DNS-blacklist es open proxyserver, dae {{SITENAME}} gebroek.',
 'sorbs_create_account_reason' => 'Dien IP-adres is opgenómme in de DNS-blacklist es open proxyserver, dae {{SITENAME}} gebroek. De kèns gein gebroekersaccount aanmake.',
 'cant-block-while-blocked' => 'De kins anger gebroekers neet blokkere terwiel se zelf geblokkeerd bös.',
-'cant-see-hidden-wiki_user' => 'De gebroeker dae se perbeers te blokke is al geblok en verbórge.
-Ómdes se \'t rèch "hidewiki_user" neet höbs, kèns se de blok neet bekieke of bewerke.',
+'cant-see-hidden-user' => 'De gebroeker dae se perbeers te blokke is al geblok en verbórge.
+Ómdes se \'t rèch "hideuser" neet höbs, kèns se de blok neet bekieke of bewerke.',
 'ipbblocked' => 'Doe kèns gein anger gebroekers (ónt)blokke, ómdet se zèlf geblók bös.',
 'ipbnounblockself' => 'Doe moogs dichzèlf neet óntblokke.',
 
@@ -2561,14 +2561,14 @@ Zörg deveur dets te die gevolge euverzuus ierdets te dees hanjeling oetvoers.",
 * es al 'n euverlèkpagina besjteit ónger de angere naam
 * es doe 't óngersjtaond vekske neet aanvinks",
 'movearticle' => 'Verplaats pagina:',
-'movewiki_userpage-warning' => "'''Waorsjoewing:''' doe geis 'ne gebroekerspagina hernömme.
+'moveuserpage-warning' => "'''Waorsjoewing:''' doe geis 'ne gebroekerspagina hernömme.
 Haaj d'r raekening mit det allein de pagina wuuertj hernömp, ''neet'' de gebroeker.",
 'movenologin' => 'Neet aangemèld',
-'movenologintext' => "Veur 't verplaatse van 'n pagina mos te zien [[Special:wiki_userLogin|aangemèld]].",
+'movenologintext' => "Veur 't verplaatse van 'n pagina mos te zien [[Special:UserLogin|aangemèld]].",
 'movenotallowed' => "De kèns gein pazjena's verplaatse.",
 'movenotallowedfile' => 'De höbs gein rechte om bestenj te hernömme.',
-'cant-move-wiki_user-page' => "De höbs gein rechte om gebroekerspagina's te hernömme.",
-'cant-move-to-wiki_user-page' => "De höbs gein rechte om 'n pagina nao 'n gebroekerspagina te hernömme. Hernömme nao 'n subpagina is waal meugelik.",
+'cant-move-user-page' => "De höbs gein rechte om gebroekerspagina's te hernömme.",
+'cant-move-to-user-page' => "De höbs gein rechte om 'n pagina nao 'n gebroekerspagina te hernömme. Hernömme nao 'n subpagina is waal meugelik.",
 'newtitle' => 'Nao de nuje titel',
 'move-watch' => 'Volg dees pagina',
 'movepagebtn' => 'Verplaats pagina',
@@ -2738,8 +2738,8 @@ Slaon de oetveur op dien eige systeem op, en voeg dae dao nao hiej toe.',
 'javascripttest-qunit-heading' => 'QUnit tessuite veur MediaWiki JavaScript',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Dien gebroekerspagina',
-'tooltip-pt-anonwiki_userpage' => 'De gebroekerspazjena veur dit IP adres',
+'tooltip-pt-userpage' => 'Dien gebroekerspagina',
+'tooltip-pt-anonuserpage' => 'De gebroekerspazjena veur dit IP adres',
 'tooltip-pt-mytalk' => 'Dien euverlèkpagina',
 'tooltip-pt-anontalk' => 'Euverlèk euver verangeringe doer dit IP addres',
 'tooltip-pt-preferences' => 'Mien veurkäöre',
@@ -2776,13 +2776,13 @@ Slaon de oetveur op dien eige systeem op, en voeg dae dao nao hiej toe.',
 'tooltip-feed-rss' => 'RSS feed veur dees pagina',
 'tooltip-feed-atom' => 'Atom feed veur dees pagina',
 'tooltip-t-contributions' => 'Bekiek de lies van contributies van dizze gebroeker',
-'tooltip-t-emailwiki_user' => 'Sjtuur inne mail noa dizze gebroeker',
+'tooltip-t-emailuser' => 'Sjtuur inne mail noa dizze gebroeker',
 'tooltip-t-upload' => 'Upload besjtande',
 'tooltip-t-specialpages' => "Lies van alle speciaal pagina's",
 'tooltip-t-print' => 'Printvruntelike versie van deze pagina',
 'tooltip-t-permalink' => 'Permanente link nao dees versie van de pagina',
 'tooltip-ca-nstab-main' => 'Betrach de pagina',
-'tooltip-ca-nstab-wiki_user' => 'Bekiek de gebroekerspagina',
+'tooltip-ca-nstab-user' => 'Bekiek de gebroekerspagina',
 'tooltip-ca-nstab-media' => 'Bekiek de mediapazjena',
 'tooltip-ca-nstab-special' => "Dit is 'n speciaal pagina, de kins dees pagina zelf neet bewirke",
 'tooltip-ca-nstab-project' => 'Bekiek de projèkpagina',
@@ -2812,13 +2812,13 @@ Doe kans in de bewirkingssamevatting \'n reej opgaeve.',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|Anonieme gebroeker|Anoniem gebroekers}} ven {{SITENAME}}',
-'sitewiki_user' => '{{SITENAME}} gebroeker $1',
-'anonwiki_user' => 'anonieme gebroeker óp {{SITENAME}} $1',
+'siteuser' => '{{SITENAME}} gebroeker $1',
+'anonuser' => 'anonieme gebroeker óp {{SITENAME}} $1',
 'lastmodifiedatby' => "Dees pagina is 't lèts verangerd op $2, $1 door $3.",
 'othercontribs' => 'Gebaseerd op wirk van $1.',
 'others' => 'angere',
-'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|gebroeker|gebroekers}} $1',
-'anonwiki_users' => '{{PLURAL:$2|anonieme gebroeker|anoniem gebroekers}} óp {{SITENAME}} $1',
+'siteusers' => '{{SITENAME}} {{PLURAL:$2|gebroeker|gebroekers}} $1',
+'anonusers' => '{{PLURAL:$2|anonieme gebroeker|anoniem gebroekers}} óp {{SITENAME}} $1',
 'creditspage' => 'Sjrievers van dees pazjena',
 'nocredits' => "d'r Is gein auteursinformatie besjikbaar veur deze pagina.",
 
@@ -2827,7 +2827,7 @@ Doe kans in de bewirkingssamevatting \'n reej opgaeve.',
 'spamprotectiontext' => "De pagina daese wildes opslaon is geblokkeerd door de spamfilter.
 Meistal wörd dit door 'ne zwarte externe link veroorzaak.",
 'spamprotectionmatch' => "De volgende teks veroorzaakte 'n alarm van de spamfilter: $1",
-'spambot_wiki_username' => 'MediaWiki spam opruming',
+'spambot_username' => 'MediaWiki spam opruming',
 'spam_reverting' => 'Bezig mit trökdrèjje nao de letste versie die gein verwiezing haet nao $1',
 'spam_blanking' => "Alle wieziginge mit 'ne link nao $1 waere verwiederd",
 'spam_deleting' => 'Alle wieziginge hawwe links nao $1, wuuertj gewösj',
@@ -2977,7 +2977,7 @@ Alle volgende links die op dezelfde regel sjtaon, waere behanjeld es oetzunjerin
 'exif-compressedbitsperpixel' => 'Cómpressiemeneer bie dit plaetje',
 'exif-pixelydimension' => 'Aafbeildingsbrèdje',
 'exif-pixelxdimension' => 'Aafbeildingsheugdje',
-'exif-wiki_usercomment' => 'Opmerkinge',
+'exif-usercomment' => 'Opmerkinge',
 'exif-relatedsoundfile' => 'Biebeheurendj audiobestandj',
 'exif-datetimeoriginal' => 'Datum en momint van verwèkking',
 'exif-datetimedigitized' => 'Datum en momènt van digitizing',
@@ -3408,10 +3408,10 @@ De bevestigingscode vervilt op \$4.",
 
 # Delete conflict
 'deletedwhileediting' => "'''Waorsjoewing''': Dees pazjena is gewis naodats doe bis begós mit bewirke!",
-'confirmrecreate' => "Gebroeker [[wiki_user:$1|$1]] ([[wiki_user talk:$1|euverlèk]]) heet dees pagina eweggesjaf naodats doe mèt bewirke begós mèt de rae:
+'confirmrecreate' => "Gebroeker [[User:$1|$1]] ([[User talk:$1|euverlèk]]) heet dees pagina eweggesjaf naodats doe mèt bewirke begós mèt de rae:
 : ''$2''
 Bevesteg estebleef dats te dees pazjena ech obbenuujts wils aanmake.",
-'confirmrecreate-noreason' => "Naodes se begós bös mit 't verangere haet [[wiki_user:$1|$1]] ([[wiki_user talk:$1|euverlègk]]) dees pagina gewösj.
+'confirmrecreate-noreason' => "Naodes se begós bös mit 't verangere haet [[User:$1|$1]] ([[User talk:$1|euverlègk]]) dees pagina gewösj.
 Bevestig des se dees pagina óbbenuits wils aanmake.",
 'recreate' => 'Pazjena obbenuujts make',
 
@@ -3489,7 +3489,7 @@ De kèns ouch [[Special:EditWatchlist|'t sjtanderd bewirkingssjirm gebroeke]].",
 'watchlisttools-raw' => 'Roew volglies bewirke',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|euverlègk]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|euverlègk]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Ónbekindje tag "$1"',
@@ -3556,7 +3556,7 @@ Aafbeildinge waere in häör vollejige resolutie getoeandj. Anger bestandjstypes
 'specialpages-group-login' => 'Aanmelje / registrere',
 'specialpages-group-changes' => 'Recènte wieziginge en logbeuk',
 'specialpages-group-media' => 'Mediaeuverzichte en uploads',
-'specialpages-group-wiki_users' => 'Gebroekers en rechte',
+'specialpages-group-users' => 'Gebroekers en rechte',
 'specialpages-group-highuse' => "Väölgebroekde pazjena's",
 'specialpages-group-pages' => 'Pazjenalieste',
 'specialpages-group-pagetools' => 'Pazjenahölpmiddele',
@@ -3654,11 +3654,11 @@ Aafbeildinge waere in häör vollejige resolutie getoeandj. Anger bestandjstypes
 'logentry-move-move_redir-noredirect' => "$1 verplaatsde pagina $3 nao $4 euver 'ne redirek zonger 'n doorverwiezing achter te laote",
 'logentry-patrol-patrol' => '$1 haet versie $4 van pagina $3 es gecontroleerd gemarkeerd',
 'logentry-patrol-patrol-auto' => '$1 haet versie $4 van pagina $3 autematis es gecontroleerd gemarkeerd',
-'logentry-newwiki_users-newwiki_users' => "$1 haet 'ne gebroeker aangemaak",
-'logentry-newwiki_users-create' => "$1 haet 'ne gebroeker aangemaak",
-'logentry-newwiki_users-create2' => "$1 haet 'ne gebroeker $3 aangemaak",
-'logentry-newwiki_users-autocreate' => 'De gebroeker $1 is autematis aangemaak',
-'newwiki_userlog-byemail' => 'wachwaord is versjik per e-mail',
+'logentry-newusers-newusers' => "$1 haet 'ne gebroeker aangemaak",
+'logentry-newusers-create' => "$1 haet 'ne gebroeker aangemaak",
+'logentry-newusers-create2' => "$1 haet 'ne gebroeker $3 aangemaak",
+'logentry-newusers-autocreate' => 'De gebroeker $1 is autematis aangemaak',
+'newuserlog-byemail' => 'wachwaord is versjik per e-mail',
 
 # Feedback
 'feedback-bugornote' => 'Es se zewied bös óm e technisch perbleem in détail te besjrieve, [$1 rapperteer \'ne bug]. 

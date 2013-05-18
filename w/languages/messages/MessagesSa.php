@@ -99,7 +99,7 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( 'परित्यागितयोगदान' ),
 	'Disambiguations'           => array( 'नि:संदिग्धीकरण' ),
 	'DoubleRedirects'           => array( 'पुनर्निर्देशनद्वंद्व' ),
-	'Emailwiki_user'                 => array( 'विपत्रयोजक' ),
+	'Emailuser'                 => array( 'विपत्रयोजक' ),
 	'Export'                    => array( 'निर्यात' ),
 	'Fewestrevisions'           => array( 'स्वल्पपरिवर्तन' ),
 	'FileDuplicateSearch'       => array( 'अनुकृतसंचिकाशोध' ),
@@ -113,7 +113,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'चित्रसूची', 'संचिकासूचि' ),
 	'Listgrouprights'           => array( 'गटअधिकारसूची' ),
 	'Listredirects'             => array( 'विचालन्‌सूची' ),
-	'Listwiki_users'                 => array( 'सदस्यासूची' ),
+	'Listusers'                 => array( 'सदस्यासूची' ),
 	'Lockdb'                    => array( 'विदाद्वारंबन्ध्' ),
 	'Log'                       => array( 'अङ्कन' ),
 	'Lonelypages'               => array( 'अकलपृष्टानि' ),
@@ -158,9 +158,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'अप्रयूक्तबिंबधर' ),
 	'Unwatchedpages'            => array( 'अनिरिक्षीतपृष्ठ' ),
 	'Upload'                    => array( 'भारंन्यस्यति' ),
-	'wiki_userlogin'                 => array( 'सदस्यप्रवेशन' ),
-	'wiki_userlogout'                => array( 'सदस्यबहिर्गमन' ),
-	'wiki_userrights'                => array( 'योजकआधिकार' ),
+	'Userlogin'                 => array( 'सदस्यप्रवेशन' ),
+	'Userlogout'                => array( 'सदस्यबहिर्गमन' ),
+	'Userrights'                => array( 'योजकआधिकार' ),
 	'Version'                   => array( 'आवृत्ती' ),
 	'Wantedcategories'          => array( 'प्रार्थितवर्ग' ),
 	'Wantedfiles'               => array( 'प्रार्थितसंचिका' ),
@@ -202,7 +202,7 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'पृष्ठानाम्‌सङ्ख्या', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'लेखस्य‌सङ्ख्या', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'संचिकानाम्‌‌सङ्ख्या', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', 'योजकस्यसङ्ख्या', 'NUMBEROFUSERS' ),
+	'numberofusers'             => array( '1', 'योजकस्यसङ्ख्या', 'NUMBEROFUSERS' ),
 	'numberofedits'             => array( '1', 'सम्पादनसङ्ख्या', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'दृष्टिसङ्ख्या', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'पृष्ठनाम', 'PAGENAME' ),
@@ -278,7 +278,7 @@ $magicWords = array(
 $digitGroupingPattern = "##,##,###";
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'सम्पर्कतन्तोः अधोरेखाङ्कनम्:',
 'tog-justify' => 'परिच्छेदाः समानाः क्रियन्ताम्',
 'tog-hideminor' => 'सद्योजातानां परिवर्तनानां लघूनि सम्पादनानि गोप्यन्ताम्',
@@ -303,7 +303,7 @@ $messages = array(
 'tog-previewonfirst' => 'प्रथमसम्पादनस्य प्राग्दृश्यं दर्श्यताम्।',
 'tog-nocache' => 'पृष्ठ धारक-ब्राउजरं निस्क्रियतु ।',
 'tog-enotifwatchlistpages' => 'मम अवेक्षणसूच्यां विद्यमाने पृष्ठे परिवर्तिते सति ईपत्रद्वारा ज्ञाप्यताम्।',
-'tog-enotifwiki_usertalkpages' => 'मम योजकसंभाषणपृष्ठे परिवर्तिते सति ईपत्रद्वारा ज्ञाप्यताम्',
+'tog-enotifusertalkpages' => 'मम योजकसंभाषणपृष्ठे परिवर्तिते सति ईपत्रद्वारा ज्ञाप्यताम्',
 'tog-enotifminoredits' => 'लघुपरिवर्तनेषु सत्सु अपि ईपत्रद्वारा ज्ञाप्यताम्',
 'tog-enotifrevealaddr' => 'अधिसूचना-ईपत्रेषु मम ईपत्रसङ्केतः प्रदर्श्यताम्',
 'tog-shownumberswatching' => 'निरीक्षमाणानां योजकानां संख्या दर्श्यताम्',
@@ -485,7 +485,7 @@ The following {{PLURAL:$1|file is|$1 files are}} in the current category.',
 'talk' => 'सम्भाषणम्',
 'views' => 'दृश्यानि',
 'toolbox' => 'उपकरणपेटिका',
-'wiki_userpage' => 'योजकपृष्ठं दृश्यताम्',
+'userpage' => 'योजकपृष्ठं दृश्यताम्',
 'projectpage' => 'प्रकल्पपृष्ठं दृश्यताम्',
 'imagepage' => 'सञ्चिकापृष्ठं दृश्यताम्',
 'mediawikipage' => 'सन्देशपृष्ठं दृश्यताम्।',
@@ -510,7 +510,7 @@ $1',
 'pool-queuefull' => 'कुण्डपंक्तिः (पूल् क्यू इत्येषा) पूर्णा अस्ति।',
 'pool-errorunknown' => 'अज्ञाता त्रुटिः',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} इत्यस्य विषये',
 'aboutpage' => 'Project:एतद्विषयकम्',
 'copyright' => 'अस्य घटकानि $1 इत्यस्यान्तर्गतानि उपलब्धानि।',
@@ -543,8 +543,8 @@ $1',
 'youhavenewmessages' => 'भवदर्थम् $1 सन्ति। ($2).',
 'newmessageslink' => 'नूतनाः सन्देशाः',
 'newmessagesdifflink' => 'अन्तिमं परिवर्तनम्',
-'youhavenewmessagesfromwiki_users' => '{{PLURAL:$3|अन्ययोजकः|$3 योजकाः}} ($2) इत्यस्मात्  भवतः $1 अस्ति ।',
-'youhavenewmessagesmanywiki_users' => 'अनैकेभ्यः योजकेभ्यः ते $1 सन्ति $2 ।',
+'youhavenewmessagesfromusers' => '{{PLURAL:$3|अन्ययोजकः|$3 योजकाः}} ($2) इत्यस्मात्  भवतः $1 अस्ति ।',
+'youhavenewmessagesmanyusers' => 'अनैकेभ्यः योजकेभ्यः ते $1 सन्ति $2 ।',
 'newmessageslinkplural' => '{{PLURAL:$1|नूतनः सन्देशः|नूतनसन्देशाः}}',
 'newmessagesdifflinkplural' => 'सद्यः {{PLURAL:$1|परिवर्तनम्|परिवर्तनानि}}',
 'youhavenewmessagesmulti' => 'भवतः कृते $1 मध्ये नूतनः सन्देशः विद्यते',
@@ -575,7 +575,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'पृष्ठम्',
-'nstab-wiki_user' => 'योजकस्य पृष्ठम्',
+'nstab-user' => 'योजकस्य पृष्ठम्',
 'nstab-media' => 'माध्यमपृष्ठम्',
 'nstab-special' => 'विशेषपृष्ठम्',
 'nstab-project' => 'प्रकल्पपृष्ठम्',
@@ -616,7 +616,7 @@ $1',
 'missing-article' => 'त्ताधारेण(डाटाबेस् इत्यनेन) "$1" $2 इतिनामकं प्राप्तव्यं यत् पृष्ठं तत् नैव प्राप्तम्।
 प्रायः कालातीतस्य अथवा अपाकृतस्य इतिहाससम्पर्कतन्तोः कारणेन एवं भवति।
 यदि नैवं तर्हि भवता तन्त्रांशकीटकं प्राप्तं स्यात्।
-कृपया कोऽपि [[Special:Listwiki_users/sysop|administrator]]अस्य पृष्ठस्य सङ्केतज्ञापनपूर्वकं सूच्यताम्।',
+कृपया कोऽपि [[Special:ListUsers/sysop|administrator]]अस्य पृष्ठस्य सङ्केतज्ञापनपूर्वकं सूच्यताम्।',
 'missingarticle-rev' => '(आवृत्तिः# :$1)',
 'missingarticle-diff' => '(व्यतिरेक: $1, $2)',
 'readonly_lag' => 'मुख्य-समंकाधार-परिवेशकं उपमुख्य-समंकाधार-परिवेशकस्य संप्रापणात् पूर्वे एव स्वतः तन्त्रितम् अस्ति।',
@@ -663,7 +663,7 @@ $2',
 'customcssprotected' => 'भवान् इदं पृष्ठं सम्पादयितुम् अनुमतः नास्ति, यतो हि अस्मिन् अन्यस्य प्रयोक्तुः वैयक्तिकचयनानि सन्ति।',
 'customjsprotected' => 'भवान् इदं जावालिपियुक्तं पृष्ठं सम्पादयितुम् अनुमतः नास्ति, यतो हि अस्मिन् अन्यस्य प्रयोक्तुः वैयक्तिकचयनानि सन्ति।',
 'ns-specialprotected' => 'विशिष्टानि पृष्ठानि परिवर्तयितुं न शक्यन्ते।',
-'titleprotected' => 'सदस्य [[wiki_user:$1|$1]] इत्यनेन एतत्-शीर्षकीयं पृष्ठं सृजनात् वारितमस्ति।
+'titleprotected' => 'सदस्य [[User:$1|$1]] इत्यनेन एतत्-शीर्षकीयं पृष्ठं सृजनात् वारितमस्ति।
 एतदर्थं प्रदत्तं कारणम् "$2"।',
 'filereadonlyerror' => '"$1"  सञ्चिकापरिवर्तनं न शक्यते यतः "$2" शब्दकोशः केवलं पठनयोग्यः । प्रशासकेन पिहितं यः विवरणमिच्छति "$3".',
 'invalidtitle-knownnamespace' => ' "$2" नमावकाशेन "$3" पाठ्येन च युक्तम् अनर्हशीर्षम् ।',
@@ -679,7 +679,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''भवान् अधुना बहिरागतः ।'''
 
-भवान् {{SITENAME}} इत्येतत् अनामतया प्रयोक्तुं शक्नोति, अथवा भवान् तेनैव प्रयोक्तृनाम्ना, भिन्नप्रयोक्तृनाम्ना वा  [[Special:wiki_userLogin|पुनः प्रवेष्टुं शक्नोति]]।
+भवान् {{SITENAME}} इत्येतत् अनामतया प्रयोक्तुं शक्नोति, अथवा भवान् तेनैव प्रयोक्तृनाम्ना, भिन्नप्रयोक्तृनाम्ना वा  [[Special:UserLogin|पुनः प्रवेष्टुं शक्नोति]]।
 इदानीमपि कानिचन पृष्ठानि पूर्ववदेव दृश्येरन् । अस्य वारणाय विचरकस्य स्मृतिसञ्चयः रिक्तीक्रियताम् ।",
 'welcomecreation' => '==स्वागतम्‌, $1!==
 भवता सदस्यता प्राप्ता अस्ति।
@@ -695,21 +695,21 @@ $2',
 'login' => 'प्रविश्यताम्',
 'nav-login-createaccount' => 'प्रविश्यताम्/ सदस्यता प्राप्यताम्',
 'loginprompt' => '{{SITENAME}} इत्यत्र प्रवेष्टुं कुकी इत्येते (cookies)  समर्थीकरणीयानि।',
-'wiki_userlogin' => 'प्रविश्यताम्/ सदस्यता प्राप्यताम्',
-'wiki_userloginnocreate' => 'प्रविश्यताम्',
+'userlogin' => 'प्रविश्यताम्/ सदस्यता प्राप्यताम्',
+'userloginnocreate' => 'प्रविश्यताम्',
 'logout' => 'निर्गमनम्',
-'wiki_userlogout' => 'निर्गमनम्',
+'userlogout' => 'निर्गमनम्',
 'notloggedin' => 'नैव प्रविष्टः',
 'nologin' => 'पूर्वमेव योजकः नास्ति किम् ? $1।',
 'nologinlink' => 'सदस्यता प्राप्यताम्',
 'createaccount' => 'सदस्यता प्राप्यताम्',
 'gotaccount' => 'पूर्वमेव योजकः अस्ति किम् ? $1।',
 'gotaccountlink' => 'प्रविश्यताम्',
-'wiki_userlogin-resetlink' => 'प्रवेशविवरणानि विस्मृतानि किम् ?',
+'userlogin-resetlink' => 'प्रवेशविवरणानि विस्मृतानि किम् ?',
 'createaccountmail' => 'ईपत्रद्वारा',
 'createaccountreason' => 'कारणम्',
 'badretype' => 'भवता प्रदत्ते कूटशब्दे न खलु समाने स्तः। कृपया पुनः लिखतु।',
-'wiki_userexists' => 'भवतः प्रदत्तः प्रयोक्तृनाम अन्येन प्रयुज्यमानम् अस्ति। कृपया अन्यदेकं प्रयोक्तृनाम चिनोतु।',
+'userexists' => 'भवतः प्रदत्तः प्रयोक्तृनाम अन्येन प्रयुज्यमानम् अस्ति। कृपया अन्यदेकं प्रयोक्तृनाम चिनोतु।',
 'loginerror' => 'प्रवेशने प्रमादः',
 'createaccounterror' => '$1 इति लेखां स्रष्टुं न अपारयत्',
 'nocookiesnew' => 'भवतः लेखा सृष्टाऽस्ति, परन्तु भवान् प्रविष्टो नासि।
@@ -724,13 +724,13 @@ $2',
 'noname' => 'भवता एकं मान्यं प्रयोक्तृ-नाम न प्रदत्तम्।',
 'loginsuccesstitle' => 'स्वागतम्‌। प्रवेशः सिद्धः।',
 'loginsuccess' => 'भवान् अधुना {{SITENAME}} इत्यत्र "$1" रूपेण प्रविष्टोऽस्ति।',
-'nosuchwiki_user' => 'तत्र $1 इति नाम्ना न कोऽपि प्रयोक्ता विद्यते।
+'nosuchuser' => 'तत्र $1 इति नाम्ना न कोऽपि प्रयोक्ता विद्यते।
 प्रयोक्तृनाम्नि आंग्ललिपेः लघुभिः दीर्घैश्च अक्षरैः भिन्नता गण्यते।
-स्वकीयां वर्तनीं पुनरीक्षतां, अथवा [[Special:wiki_userLogin/signup|नूतनसदस्यता प्राप्यताम्]]।',
-'nosuchwiki_usershort' => '"$1" इति नाम्ना न कोऽपि प्रयोक्ता विद्यते।
+स्वकीयां वर्तनीं पुनरीक्षतां, अथवा [[Special:UserLogin/signup|नूतनसदस्यता प्राप्यताम्]]।',
+'nosuchusershort' => '"$1" इति नाम्ना न कोऽपि प्रयोक्ता विद्यते।
 स्वकीयां वर्तनीं पुनरीक्षताम्।',
-'nowiki_userspecified' => 'भवता एकं प्रयोक्तृनाम अवश्यमेव दातव्यम्।',
-'login-wiki_userblocked' => 'एषः प्रयोक्ता प्रतिबन्धितः अस्ति। सत्रारम्भाय अनुमतिः नास्ति।',
+'nouserspecified' => 'भवता एकं प्रयोक्तृनाम अवश्यमेव दातव्यम्।',
+'login-userblocked' => 'एषः प्रयोक्ता प्रतिबन्धितः अस्ति। सत्रारम्भाय अनुमतिः नास्ति।',
 'wrongpassword' => 'भवता प्रदत्तः कूटशब्दः त्रुटिपूर्णः अस्ति। 
 कृपया पुनः लिख्यताम्।',
 'wrongpasswordempty' => 'लिखितः कूटशब्दः रिक्तः विद्यते।
@@ -777,16 +777,16 @@ Someone created an account for your e-mail address on {{SITENAME}} ($4) named "$
 You should log in and change your password now.
 
 You may ignore this message, if this account was created in error.',
-'wiki_usernamehasherror' => 'प्रयोक्तृनाम्नि हेश् इत्यक्षरं (#) न अन्तर्भवितुं शक्नोति।',
+'usernamehasherror' => 'प्रयोक्तृनाम्नि हेश् इत्यक्षरं (#) न अन्तर्भवितुं शक्नोति।',
 'login-throttled' => 'भवता सद्य एव प्रभूततया प्रवेशप्रयासाः कृताः।
 कृपया पुनः प्रयासार्थं किंचित् प्रतीक्षताम्।',
 'login-abort-generic' => 'भवतः प्रवेशप्रयासः विफलीभूतः - परित्यक्तः',
 'loginlanguagelabel' => 'भाषा : $1',
-'suspicious-wiki_userlogout' => 'भवतः सत्राद् बहिर्गमनस्य अनुरोधः अस्वीकृतोऽस्ति, यस्मादेतत् भग्नादेकस्मात् ब्राउज़र्तः अथवा स्वल्पसञ्चयि-प्रॉक्सितः प्रेषित आसीत्।',
+'suspicious-userlogout' => 'भवतः सत्राद् बहिर्गमनस्य अनुरोधः अस्वीकृतोऽस्ति, यस्मादेतत् भग्नादेकस्मात् ब्राउज़र्तः अथवा स्वल्पसञ्चयि-प्रॉक्सितः प्रेषित आसीत्।',
 
 # E-mail sending
 'php-mail-error-unknown' => 'पीएच्पी इत्येतस्य mail() फलने अज्ञाता काऽपि त्रुटिर्जाता।',
-'wiki_user-mail-no-addy' => 'ईपत्रसङ्केतं विना ईपत्रप्रेषणस्य प्रयासः कृतः ।',
+'user-mail-no-addy' => 'ईपत्रसङ्केतं विना ईपत्रप्रेषणस्य प्रयासः कृतः ।',
 
 # Change password dialog
 'resetpass' => 'कूटशब्दः परिवर्त्यताम्',
@@ -814,7 +814,7 @@ You may ignore this message, if this account was created in error.',
 'passwordreset-legend' => 'कूटशब्द पुनःस्थापनम्',
 'passwordreset-disabled' => 'अस्मिन् विक्यां कूटशब्द पुनःस्थापनं असमर्थीकृतमस्ति।',
 'passwordreset-pretext' => '{{PLURAL:$1| |समंकेषु एकम् अधस्यात् प्रविष्टीकरोतु।}}',
-'passwordreset-wiki_username' => 'योजकनामन्:',
+'passwordreset-username' => 'योजकनामन्:',
 'passwordreset-domain' => 'क्षेत्रम्:',
 'passwordreset-capture' => 'फलितरूपम् ईपत्रं किं दृश्यते ?',
 'passwordreset-capture-help' => 'अस्यां मञ्जूषायां यदि भवता अङ्क्यते तर्हि ईपत्रम् (अस्थायिकूटशब्देन सह) दर्श्यते प्रेष्यते च ।',
@@ -824,7 +824,7 @@ You may ignore this message, if this account was created in error.',
 $2
 इत्यनेन ईपत्रसङ्केतेन सम्बद्धम् अस्ति / सम्बद्धानि सन्ति ।
 {{PLURAL:$3|अयं तात्कालिकः कूटशब्दः | इमे तात्कालिकाः कूटशब्दाः}}  {{PLURAL:$5| एकं दिनं | $5 दिनानि}} यावत् सक्रियः भवति / सक्रियाः भवन्ति ।',
-'passwordreset-emailtext-wiki_user' => 'कश्चित् (भवान् अपि स्यात्, $1 इति ऐ. पि. सङ्केतात्) {{SITENAME}} ($4) इत्यस्य प्रवेशसम्बद्धं विवरणं प्रार्थितवान् । अधः सूचितस्य उपयोक्तुः {{PLURAL:$3 | प्रवेशविवरणं | प्रवेशविवरणानि}} 
+'passwordreset-emailtext-user' => 'कश्चित् (भवान् अपि स्यात्, $1 इति ऐ. पि. सङ्केतात्) {{SITENAME}} ($4) इत्यस्य प्रवेशसम्बद्धं विवरणं प्रार्थितवान् । अधः सूचितस्य उपयोक्तुः {{PLURAL:$3 | प्रवेशविवरणं | प्रवेशविवरणानि}} 
 $2
 इत्यनेन ईपत्रसङ्केतेन सम्बद्धम् अस्ति / सम्बद्धानि सन्ति ।
 {{PLURAL:$3|अयं तात्कालिकः कूटशब्दः | इमे तात्कालिकाः कूटशब्दाः}}  {{PLURAL:$5| एकं दिनं | $5 दिनानि}} यावत् सक्रियः भवति / सक्रियाः भवन्ति ।',
@@ -894,7 +894,7 @@ $2
 * अभिप्रेतः अवरोध्यः: $7
 
 भवान् अवरोधार्थं सम्भाषणं कर्तुं  $1 इत्येतं अथवा अन्यान् [[{{MediaWiki:Grouppage-sysop}}|प्रबन्धकान्]] सम्पर्कं कर्त्तुं शक्नोति।
-मनसि धारयतु यद् भवान् "e-mail this wiki_user"(विद्युत्सन्देशः)  इति सुविधायाः प्रयोगः तावत् कर्त्तुं न शक्नोति यावत् भवानेकं  विधिमान्यं विद्युत्सन्देश-सङ्केतं [[Special:Preferences|wiki_user preferences]] इत्यत्र न पञ्जीकृतवानस्ति अपि च भवान् तस्य प्रयोगात् न निवारितोऽस्ति।
+मनसि धारयतु यद् भवान् "e-mail this user"(विद्युत्सन्देशः)  इति सुविधायाः प्रयोगः तावत् कर्त्तुं न शक्नोति यावत् भवानेकं  विधिमान्यं विद्युत्सन्देश-सङ्केतं [[Special:Preferences|user preferences]] इत्यत्र न पञ्जीकृतवानस्ति अपि च भवान् तस्य प्रयोगात् न निवारितोऽस्ति।
 
 भवतः वर्तमानः आइपीसङ्केतः $3 इति अस्ति। अपि च अवरोधनस्य परिचयचिह्नम्  (आइडी) #$5 इत्यस्ति।
 कृपया भवान् स्वकीयेषु सर्वेष्वपि प्रश्नेषु सर्वमेतत् वर्णनं ददातु।',
@@ -906,7 +906,7 @@ $2
 * अभिप्रेतः अवरोध्यः: $7
 
 भवान् अवरोधार्थं सम्भाषणं कर्तुं  $1 इत्येतं अथवा अन्यान् [[{{MediaWiki:Grouppage-sysop}}|प्रबन्धकान्]] सम्पर्कं कर्त्तुं शक्नोति।
-मनसि धारयतु यद् भवान् "e-mail this wiki_user"(विद्युत्सन्देशः)  इति सुविधायाः प्रयोगः तावत् कर्त्तुं न शक्नोति यावत् भवानेकं  विधिमान्यं विद्युत्सन्देश-सङ्केतं [[Special:Preferences|wiki_user preferences]] इत्यत्र न पञ्जीकृतवानस्ति अपि च भवान् तस्य प्रयोगात् न निवारितोऽस्ति।
+मनसि धारयतु यद् भवान् "e-mail this user"(विद्युत्सन्देशः)  इति सुविधायाः प्रयोगः तावत् कर्त्तुं न शक्नोति यावत् भवानेकं  विधिमान्यं विद्युत्सन्देश-सङ्केतं [[Special:Preferences|user preferences]] इत्यत्र न पञ्जीकृतवानस्ति अपि च भवान् तस्य प्रयोगात् न निवारितोऽस्ति।
 
 भवतः वर्तमानः आइपीसङ्केतः $3 इति अस्ति। अपि च अवरोधनस्य परिचयचिह्नम्  (आइडी) #$5 इत्यस्ति।
 कृपया भवान् स्वकीयेषु सर्वेष्वपि प्रश्नेषु सर्वमेतत् वर्णनं ददातु।',
@@ -921,7 +921,7 @@ $2
 'loginreqlink' => 'प्रविश्यताम्',
 'loginreqpagetext' => 'अन्यानि पृष्ठानि द्रष्टुं भवता $1 इत्येतत् अवश्यमेव कर्त्तव्यम्।',
 'accmailtitle' => 'कूटसङ्केतः प्रेषितः',
-'accmailtext' => "[[wiki_user talk:$1|$1]] इत्येतदर्थं एकः यादृच्छिकतया उत्पादितः कूटशब्दः $2 इत्येतत् प्रति प्रेषितोऽस्ति।
+'accmailtext' => "[[User talk:$1|$1]] इत्येतदर्थं एकः यादृच्छिकतया उत्पादितः कूटशब्दः $2 इत्येतत् प्रति प्रेषितोऽस्ति।
 सत्रारम्भपश्चात् नूतनायाः अस्याः लेखायाः कूटशब्दः  '''[[Special:ChangePassword|कूटशब्दं परिवर्तताम्]]'' इति पृष्ठे परिवर्तितुं शक्यते।",
 'newarticle' => '(नूतनम्)',
 'newarticletext' => "भवता एतादृशमेकं पृष्टं प्रति संबंधनम् अनुसृतम्, यत्पृष्ठं न इदानींयावत् विद्यते।
@@ -931,7 +931,7 @@ $2
 चेद्भवान् अत्र भ्रान्तिना आनीतोऽस्ति तदा स्वकीये ब्राउसर् इत्यस्मिन् '''बैक्''' इत्यस्मिन् क्लिक्करोतु।)",
 'anontalkpagetext' => 'तस्य अनामकयोजकस्य, अथवा अनुपयोजकस्य च परिचर्चापुटम् येन एतावति काले स्वस्थनं  न निर्मितम् । 
 अतः तस्य अभिज्ञानार्थं ऐ.पि.सङ्गेतसङ्ख्या प्रयोजनीया । 
-सा समाना सङ्ख्याः अन्ययोजकैः अपि विभक्ता । यदि भवान् अनामकयोजकः, भवता असम्बद्धटीकाः श्रुताः, कृपया स्वस्थनं निर्मीय नामाभिलेखं करोतु ।  [[Special:wiki_userLogin/signup|create an account]], [[Special:wiki_userLogin|log in]] अन्यानामकयोजकैः सह सम्भूयमनभ्रमैः विमुक्तः भवतु ।',
+सा समाना सङ्ख्याः अन्ययोजकैः अपि विभक्ता । यदि भवान् अनामकयोजकः, भवता असम्बद्धटीकाः श्रुताः, कृपया स्वस्थनं निर्मीय नामाभिलेखं करोतु ।  [[Special:UserLogin/signup|create an account]], [[Special:UserLogin|log in]] अन्यानामकयोजकैः सह सम्भूयमनभ्रमैः विमुक्तः भवतु ।',
 'noarticletext' => 'अस्मिन् पृष्ठे अधुना किमपि न विद्यते। भवान् विकिपीडियावर्तिषु अन्येषु पृष्ठेषु इदं [[Special:Search/{{PAGENAME}}|शीर्षकम् अन्वेष्टुम्]]अर्हति अथवा इदं पृष्ठं 
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}}  सम्बद्धेषु पृष्ठेषु अन्वेष्टुम् अर्हति],
 अथवा [{{fullurl:{{FULLPAGENAME}}|action=edit}} इदं पृष्ठं सम्पादयितुम् अर्हति]</span>.',
@@ -941,9 +941,9 @@ $2
 'missing-revision' => '{{PAGENAME}} इति नामाङ्कितपुटस्य #$1 इति पुनरावृत्तिः अत्र नाश्ति । 
 पुटेन सह कालातीतानुबन्धकारणेन एतत् अभवत् ।
 विवरणम् अत्र दृश्यते ।[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} deletion log].',
-'wiki_userpage-wiki_userdoesnotexist' => '"$1" इति प्रयोक्तृलेखा पञ्जीकृता नास्ति।
+'userpage-userdoesnotexist' => '"$1" इति प्रयोक्तृलेखा पञ्जीकृता नास्ति।
 चेद्भवान् एतत्पृष्ठं स्रष्टुमिच्छति सम्पादयितुमिच्छति वा तदा कृपया पुनरीक्षताम्।',
-'wiki_userpage-wiki_userdoesnotexist-view' => '"$1" इति प्रयोक्तृलेखा पञ्जीकृता नास्ति।',
+'userpage-userdoesnotexist-view' => '"$1" इति प्रयोक्तृलेखा पञ्जीकृता नास्ति।',
 'blocked-notice-logextract' => 'अयं प्रयोक्ता सम्प्रति अवरुद्धः वर्तते।
 नूतनतमा अवरोधाभिलेख-प्रविष्टिः सन्दर्भार्थम् अधस्तात् प्रदत्ताऽस्ति:',
 'clearyourcache' => "'''सूचनाः:''' संरक्षणानन्तरं परिवर्तनानां दर्शनाय जालगवेशकस्य पुनर्चालनम् अवश्यं भवेत् ।
@@ -951,18 +951,18 @@ $2
 * '''Google Chrome:''' नुद्यताम् ''Ctrl-Shift-R'' (''⌘-Shift-R'' on a Mac)
 * '''Internet Explorer:''' गृह्यताम् ''Ctrl'' नोदनावसरे ''Refresh'', अथवा नुद्यताम् ''Ctrl-F5''
 * '''Opera:''' पुनर्चाल्यताम् ''Tools → Preferences''",
-'wiki_usercssyoucanpreview' => "'''सूचना :''' रक्षणात्पूर्वं स्वकीयं जावास्क्रिप्ट् इति लिपिं परीक्षितुं \"{{int:showpreview}}\" इति गण्डं प्रयोजयतु।",
-'wiki_userjsyoucanpreview' => "'''सूचना :''' रक्षणात्पूर्वं स्वकीयं जावास्क्रिप्ट् इति लिपिं परीक्षितुं \"{{int:showpreview}}\" इति गण्डं प्रयोजयतु।",
-'wiki_usercsspreview' => "'''मनसि धारयतु यद्भवान् केवलं प्राग्दृश्यं पश्यति स्वकीयस्य प्रयोक्तृ-सीएसएस् इत्येतस्य'''
+'usercssyoucanpreview' => "'''सूचना :''' रक्षणात्पूर्वं स्वकीयं जावास्क्रिप्ट् इति लिपिं परीक्षितुं \"{{int:showpreview}}\" इति गण्डं प्रयोजयतु।",
+'userjsyoucanpreview' => "'''सूचना :''' रक्षणात्पूर्वं स्वकीयं जावास्क्रिप्ट् इति लिपिं परीक्षितुं \"{{int:showpreview}}\" इति गण्डं प्रयोजयतु।",
+'usercsspreview' => "'''मनसि धारयतु यद्भवान् केवलं प्राग्दृश्यं पश्यति स्वकीयस्य प्रयोक्तृ-सीएसएस् इत्येतस्य'''
 '''इदं अधुनावधि यावत् रक्षितं नास्ति!'''",
-'wiki_userjspreview' => "'''मनसि धारयतु यद्भवान् केवलं स्वकीयस्य जावास्क्रिप्ट्लिपेः परीक्षणं प्राग्दर्शनं वा करोति।'''
+'userjspreview' => "'''मनसि धारयतु यद्भवान् केवलं स्वकीयस्य जावास्क्रिप्ट्लिपेः परीक्षणं प्राग्दर्शनं वा करोति।'''
 '''इदं अधुनावधि यावत् रक्षितं नास्ति!'''",
 'sitecsspreview' => "'''मनसि धारयतु यद्भवान् स्वकीयस्य सीएस्एस्-इत्येतस्य केवलं प्राग्दृश्यं पश्यति।'''
 '''इदं अधुनावधि यावत् रक्षितं नास्ति!'''",
 'sitejspreview' => "'''मनसि धारयतु यद्भवान् स्वकीयस्य जावास्क्रिप्ट्कूटस्य केवलं प्राग्दृश्यं पश्यति।'''
 '''इदं अधुनावधि यावत् रक्षितं नास्ति!'''",
-'wiki_userinvalidcssjstitle' => "'''पूर्वसूचना:'''  \"\$1\" इति त्वक् न विद्यते।
-मनसि धारयतु यत् स्वेच्छया परिवर्तिताः .css, .js चेति पृष्ठाः लघूनक्षरान् प्रयोजयन्ति, यथा  {{ns:wiki_user}}:Foo/Vector.css इत्येतस्य स्थाने  {{ns:wiki_user}}:Foo/vector.css इत्येतत्।",
+'userinvalidcssjstitle' => "'''पूर्वसूचना:'''  \"\$1\" इति त्वक् न विद्यते।
+मनसि धारयतु यत् स्वेच्छया परिवर्तिताः .css, .js चेति पृष्ठाः लघूनक्षरान् प्रयोजयन्ति, यथा  {{ns:user}}:Foo/Vector.css इत्येतस्य स्थाने  {{ns:user}}:Foo/vector.css इत्येतत्।",
 'updated' => '(अद्यतनीकृतः)',
 'note' => "'''सूचना:'''",
 'previewnote' => "'''स्मरणीयं यदेतत् केवलं प्राग्दृश्यमस्ति।'''
@@ -971,8 +971,8 @@ $2
 'previewconflict' => 'अस्मिन् प्राग्दृश्ये दर्शितमस्ति यत् उपरिवर्ति पाठ क्षेत्रस्य पाठः रक्षणपश्चात् कीदृशः दृष्टिगोचरः भविष्यति।',
 'session_fail_preview' => "'''क्षम्यताम्! अस्माभिः भवतः सम्पादनस्य संसाधनं न कर्तुं शक्तम् यस्माद्धि सत्रस्य सूचनाः लुप्ताः।'''
 कृपया पुनः चेष्टताम्।
-चेदेतत् अधुनाऽपि न कार्यशीलं स्यात्, [[Special:wiki_userLogout|सत्राद्बहिः गत्वा]] पुनः प्रवेशं करोतु।",
-'session_fail_preview_html' => 'लेखभागाभावात् ते परिचर्यां समापयितुं न शक्यते ।[[Special:wiki_userLogout|logging out]]',
+चेदेतत् अधुनाऽपि न कार्यशीलं स्यात्, [[Special:UserLogout|सत्राद्बहिः गत्वा]] पुनः प्रवेशं करोतु।",
+'session_fail_preview_html' => 'लेखभागाभावात् ते परिचर्यां समापयितुं न शक्यते ।[[Special:UserLogout|logging out]]',
 'token_suffix_mismatch' => "'''ते सम्पादनं तिर्स्कृतम् । यतः ते ग्राहकः सम्पादनप्रतीके लेखानचिह्नानि क्षतविक्षतानि अकरोत्। '''
 पाठ्यपुटस्य संरक्षणार्थं सम्पादनावकाशः पिहितः । अनामिकानाम् उपयोगकाले कदाचित् एवं सम्भवति ।",
 'edit_form_incomplete' => "'''सम्पादनस्य कतिचनांशाः वितारकं न प्राप्ताः ; सम्पादनं  द्विवरं परिशीलयतु । ते सम्पादनानि अनाहतानि, पुनः यतताम्  '''",
@@ -1015,7 +1015,7 @@ $2
 'template-semiprotected' => '(अर्धसंरक्षितम्)',
 'hiddencategories' => 'इदं पृष्ठं {{PLURAL:$1|1 निगूढे वर्गे |$1 निगूढेषु वर्गेषु}} अन्यतमं विद्यते :',
 'nocreatetitle' => 'पुटनिर्माणं नियतम् ।',
-'nocreatetext' => '{{SITENAME}} नूतनपुटनिर्माणस्य क्षमता नियता । वर्तमानापुटानां सम्पादनार्थं निर्गच्छतु । अथवा [[Special:wiki_userLogin|log in or create an account]].',
+'nocreatetext' => '{{SITENAME}} नूतनपुटनिर्माणस्य क्षमता नियता । वर्तमानापुटानां सम्पादनार्थं निर्गच्छतु । अथवा [[Special:UserLogin|log in or create an account]].',
 'nocreate-loggedin' => 'नूतनपुटनिर्मार्थम् अनुमतिः नास्ति ।',
 'sectioneditnotsupported-title' => 'विभागसम्पादनं न पोषितम् ।',
 'sectioneditnotsupported-text' => 'अस्मिन् पुटे विभागसम्पादनण् न पोषितम् ।',
@@ -1064,11 +1064,11 @@ $2
 कृपया अधस्तात् तुलनां दृष्ट्वा निश्चितीकरोतु यत् भवान् एवमेव कर्तुमिच्छति। तदा भवान् विपरीतीकर्तुं निम्नांकितानि परिवर्तनानि रक्षतु।',
 'undo-failure' => 'सम्पादनम् अकर्तुं न पारयत् यस्मात् मध्ये परस्परविरोधीनि सम्पादनानि अभवन्।',
 'undo-norev' => 'इदं सम्पादनं अकर्तुं न पारयत् यस्मात् एतत् न विद्यते अथवा अपाकृतस्ति।',
-'undo-summary' => ' [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|talk]]) इत्यनेन कृताम् $1 इति आवृत्तिम् अकरोतु',
+'undo-summary' => ' [[Special:Contributions/$2|$2]] ([[User talk:$2|talk]]) इत्यनेन कृताम् $1 इति आवृत्तिम् अकरोतु',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'लेखा स्रष्टुं न शक्यते',
-'cantcreateaccount-text' => "('''$1''') इति आइपिसंकेतात् लेखासृजनम् [[wiki_user:$3|$3]] इत्यनेन अवरुद्धीकृतः अस्ति।
+'cantcreateaccount-text' => "('''$1''') इति आइपिसंकेतात् लेखासृजनम् [[User:$3|$3]] इत्यनेन अवरुद्धीकृतः अस्ति।
 एतदर्थं $3 इत्यनेन प्रदत्तं कारणम्''$2'' इत्यस्ति।",
 
 # History pages
@@ -1106,9 +1106,9 @@ $2
 
 # Revision deletion
 'rev-deleted-comment' => '(सम्पादनस्य सारः अपाकृतमस्ति)',
-'rev-deleted-wiki_user' => '(प्रयोक्तृनाम अपाकृतमस्ति)',
+'rev-deleted-user' => '(प्रयोक्तृनाम अपाकृतमस्ति)',
 'rev-deleted-event' => '(अभिलेखन-क्रिया अपाकृताऽस्ति)',
-'rev-deleted-wiki_user-contribs' => '[प्रयोक्तृनाम अथवा आइपीसंकेतः अपाकृतः - सम्पादनं योगदानेभ्यः निगूढमस्ति]',
+'rev-deleted-user-contribs' => '[प्रयोक्तृनाम अथवा आइपीसंकेतः अपाकृतः - सम्पादनं योगदानेभ्यः निगूढमस्ति]',
 'rev-deleted-text-permission' => 'अस्य पुटस्य पुनरवतरणम् अपमार्जितम् । विवरणम् अत्र प्राप्यते  । [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} deletion log].',
 'rev-deleted-text-unhide' => 'अस्य पुटस्य पुनरवतरणम् अपमार्जितम् । विवरणम् अत्र प्राप्यते । [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} deletion log].
 You can still [$1 view this revision]',
@@ -1150,7 +1150,7 @@ You can still [$1 view this revision]",
 'revdelete-hide-image' => 'सञ्चिकाधेयं गोपयतु ।',
 'revdelete-hide-name' => 'प्रक्रियां लक्ष्यं च गोपयतु ।',
 'revdelete-hide-comment' => 'सम्पादनसारं गोपयतु ।',
-'revdelete-hide-wiki_user' => 'सम्पादकस्य योजकनाम/आइपिसंकेतः गोप्यताम्।',
+'revdelete-hide-user' => 'सम्पादकस्य योजकनाम/आइपिसंकेतः गोप्यताम्।',
 'revdelete-hide-restricted' => 'प्रबन्धकेभ्यः अन्येभ्यश्च समंकं गोपयतु।',
 'revdelete-radio-same' => 'मा परिवर्तयतु।',
 'revdelete-radio-set' => 'आम्',
@@ -1228,7 +1228,7 @@ You can still [$1 view this revision]",
 'showhideselectedversions' => 'चितावतरणानि दर्शयतु/गोपयतु ।',
 'editundo' => 'निष्क्रियताम्',
 'diff-multi' => '({{PLURAL:$2|योजकेन|$2 योजकैः}} कृता {{PLURAL:$1|मध्यमा आवृत्तिः|$1 मध्यमा आवृत्तयः}} न दर्शिताः ।)',
-'diff-multi-manywiki_users' => '({{PLURAL:$2|योजकेन|$2 योजकैः}} कृता {{PLURAL:$1|मध्यमा आवृत्तिः|$1 मध्यमा आवृत्तयः}} न दर्शिताः ।)',
+'diff-multi-manyusers' => '({{PLURAL:$2|योजकेन|$2 योजकैः}} कृता {{PLURAL:$1|मध्यमा आवृत्तिः|$1 मध्यमा आवृत्तयः}} न दर्शिताः ।)',
 'difference-missing-revision' => '{{PLURAL:$2|One revision|$2 पुनरावृत्तेः }} व्यत्यासः ($1) {{PLURAL:$2|was|were}} न दृष्टः ।
 कारणम् अत्र दृश्यते । [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} deletion log].',
 
@@ -1312,7 +1312,7 @@ You can still [$1 view this revision]",
 'mypreferences' => 'मम इष्टतमानि',
 'prefs-edits' => 'सम्पादनानां सख्याः',
 'prefsnologin' => 'नैव प्रविष्ट',
-'prefsnologintext' => 'वरीयतां परिवर्तयितुं भवता <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}}नामाभिलेखः]</span> करणियः।',
+'prefsnologintext' => 'वरीयतां परिवर्तयितुं भवता <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}}नामाभिलेखः]</span> करणियः।',
 'changepassword' => 'कूटशब्दः परिवर्त्यताम्',
 'prefs-skin' => 'त्वक्',
 'skin-preview' => 'प्राग्दृश्यम्',
@@ -1320,7 +1320,7 @@ You can still [$1 view this revision]",
 'prefs-beta' => 'आवर्णलक्षणानि ।',
 'prefs-datetime' => 'दिनांक तथा समय',
 'prefs-labs' => 'प्रयोगशालालक्षणानि ।',
-'prefs-wiki_user-pages' => 'योजकपुटानि ।',
+'prefs-user-pages' => 'योजकपुटानि ।',
 'prefs-personal' => 'योजकः व्यक्तिरेखा',
 'prefs-rc' => 'सद्योजातानि परिवर्तनानि',
 'prefs-watchlist' => 'दृष्टि सूची',
@@ -1382,7 +1382,7 @@ You can still [$1 view this revision]",
 'prefs-emailconfirm-label' => 'विद्युन्मानसङ्केतस्य दृढीकरणम् ।',
 'prefs-textboxsize' => 'सम्पादनकोष्ठस्य आकारः ।',
 'youremail' => 'ईपत्रसङ्केतः',
-'wiki_username' => 'योजकनामन्:',
+'username' => 'योजकनामन्:',
 'uid' => 'प्रयोक्तृ-क्रमांकः :',
 'prefs-memberingroups' => '{{PLURAL:$1|समूहस्य|समूहानां}}  सदस्यः:',
 'prefs-registration' => 'पंजीकरण कालः:',
@@ -1423,35 +1423,35 @@ You can still [$1 view this revision]",
 'prefs-displaywatchlist' => 'प्रदर्शनविकल्पाः',
 'prefs-diffs' => 'अन्तरम्',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'प्रयुक्तः विद्युन्मानपत्रसङ्केतः मानितः ।',
 'email-address-validity-invalid' => 'मान्यः विद्युन्मानपत्रसङ्केतः योजनीयः ।',
 
-# wiki_user rights
-'wiki_userrights' => 'योजकाधिकारस्य प्रबन्धनम् ।',
-'wiki_userrights-lookup-wiki_user' => 'योजकसमूहं प्रबन्धयतु ।',
-'wiki_userrights-wiki_user-editname' => 'योजकनाम योजयतु ।',
-'editwiki_usergroup' => 'योजकसमूहं सम्पादयतु ।',
-'editingwiki_user' => "'''[[wiki_user:$1|$1]]''' $2 इति योजकस्य योजकाधिकारः परिवर्त्यते ।",
-'wiki_userrights-editwiki_usergroup' => 'योजकसमूहं सम्पादयतु ।',
-'savewiki_usergroups' => 'योजकसमूहं संरक्षतु ।',
-'wiki_userrights-groupsmember' => 'अस्य सदस्यः  ।',
-'wiki_userrights-groupsmember-auto' => 'अस्य निश्चितसदस्यः ।',
-'wiki_userrights-groups-help' => 'अस्य सदस्यस्य समूहसदस्यत्वं परिवर्तयितुं शक्यते । 
+# User rights
+'userrights' => 'योजकाधिकारस्य प्रबन्धनम् ।',
+'userrights-lookup-user' => 'योजकसमूहं प्रबन्धयतु ।',
+'userrights-user-editname' => 'योजकनाम योजयतु ।',
+'editusergroup' => 'योजकसमूहं सम्पादयतु ।',
+'editinguser' => "'''[[User:$1|$1]]''' $2 इति योजकस्य योजकाधिकारः परिवर्त्यते ।",
+'userrights-editusergroup' => 'योजकसमूहं सम्पादयतु ।',
+'saveusergroups' => 'योजकसमूहं संरक्षतु ।',
+'userrights-groupsmember' => 'अस्य सदस्यः  ।',
+'userrights-groupsmember-auto' => 'अस्य निश्चितसदस्यः ।',
+'userrights-groups-help' => 'अस्य सदस्यस्य समूहसदस्यत्वं परिवर्तयितुं शक्यते । 
 * मञ्जूषा अङ्किता चेत् योजकः अस्य समूहस्य सदस्यः अस्ति ।
 * मञ्जूषा अनङ्किता चेत् योजकः अस्य समूहस्य सदस्यः न 
 * कदाचित् भवता समूहः योजितः चेत् अपनेतुं नैव शक्नोति इति * चिह्नं सूचयति ।',
-'wiki_userrights-reason' => 'कारणम् :',
-'wiki_userrights-no-interwiki' => 'अन्यविकिषु योजकाधिकारं सम्पादयितुं ते अनुमतिः नास्ति ।',
-'wiki_userrights-nodatabase' => '$1 मूलपाठाः न सन्ति अथवा स्थानीयाः ।',
-'wiki_userrights-nologin' => '[[Special:wiki_userLogin|log in]] प्रशासकस्थानेन प्रविश्य योजकाधिकारान् निर्देष्टुं शक्नोति ।',
-'wiki_userrights-notallowed' => 'योजकाधिकारान् अपनेतुं ते स्थानस्य अनुमतिः नास्ति ।',
-'wiki_userrights-changeable-col' => 'परिवर्तनार्हाः समूहाः ।',
-'wiki_userrights-unchangeable-col' => 'परिवर्तनार्हाः समूहाः ।',
+'userrights-reason' => 'कारणम् :',
+'userrights-no-interwiki' => 'अन्यविकिषु योजकाधिकारं सम्पादयितुं ते अनुमतिः नास्ति ।',
+'userrights-nodatabase' => '$1 मूलपाठाः न सन्ति अथवा स्थानीयाः ।',
+'userrights-nologin' => '[[Special:UserLogin|log in]] प्रशासकस्थानेन प्रविश्य योजकाधिकारान् निर्देष्टुं शक्नोति ।',
+'userrights-notallowed' => 'योजकाधिकारान् अपनेतुं ते स्थानस्य अनुमतिः नास्ति ।',
+'userrights-changeable-col' => 'परिवर्तनार्हाः समूहाः ।',
+'userrights-unchangeable-col' => 'परिवर्तनार्हाः समूहाः ।',
 
 # Groups
 'group' => 'समूहः :',
-'group-wiki_user' => 'योजकः',
+'group-user' => 'योजकः',
 'group-autoconfirmed' => 'स्वदृढितयोजकाः ।',
 'group-bot' => 'स्वयं सक्रियाः ।',
 'group-sysop' => 'प्रबंधकाः',
@@ -1459,14 +1459,14 @@ You can still [$1 view this revision]",
 'group-suppress' => 'अलक्ष्यम् ।',
 'group-all' => '(सर्वे)',
 
-'group-wiki_user-member' => '{{GENDER:$1|योजक}}',
+'group-user-member' => '{{GENDER:$1|योजक}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|स्वस्थानदृढितः योजकः}}',
 'group-bot-member' => '{{GENDER:$1|स्वयं सक्रियः}}',
 'group-sysop-member' => '{{GENDER:$1|प्रशासकः}}',
 'group-bureaucrat-member' => '{{GENDER:$1|स्वयम् अधिकारी}}',
 'group-suppress-member' => '{{GENDER:$1|अलक्ष्यम्}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:योजक',
+'grouppage-user' => '{{ns:project}}:योजक',
 'grouppage-autoconfirmed' => '{{ns:project}}: स्वयंदृढितयोजकाः ।',
 'grouppage-bot' => '{{ns:project}}: स्वयंसक्रियाः।',
 'grouppage-sysop' => '{{ns:project}}:प्रचालकाः',
@@ -1482,7 +1482,7 @@ You can still [$1 view this revision]",
 'right-minoredit' => 'सम्पादनं लघुचिह्नया निर्दिशतु ।',
 'right-move' => 'पुटं चालयतु ।',
 'right-move-subpages' => 'उपपुटैः सह पुटं चालयतु ।',
-'right-move-rootwiki_userpages' => 'मूलयोजकपुटानि चालयतु ।',
+'right-move-rootuserpages' => 'मूलयोजकपुटानि चालयतु ।',
 'right-movefile' => 'सञ्चिकाः चालयतु ।',
 'right-suppressredirect' => 'पुटचालनावसरे मूलपुटेभ्यः पुनर्निदेशं न सृजतु ।',
 'right-upload' => 'सञ्चिकाः उत्तारयतु ।',
@@ -1508,16 +1508,16 @@ You can still [$1 view this revision]",
 'right-suppressionlog' => 'स्वायत्तनामाबिलेखं पश्यतु ।',
 'right-block' => 'अन्ययोजकान् सम्पादनेन अवरोधतु ।',
 'right-blockemail' => 'योजकस्य विद्युन्मानसन्देशप्रेषणम् अवरोधतु ।',
-'right-hidewiki_user' => 'योजकनाम अवरोधतु । तेन सर्वजनोपयोगात् गोपयतु ।',
+'right-hideuser' => 'योजकनाम अवरोधतु । तेन सर्वजनोपयोगात् गोपयतु ।',
 'right-ipblock-exempt' => 'IP अवरोधं मार्गयतु, स्वयम् अवरोधः, निर्दिष्टावरोधः ।',
 'right-proxyunbannable' => 'अन्येषां स्वयंचालितावरोधं परिहरतु ।',
 'right-unblockself' => 'स्वयम् अनवरोधं करोतु ।',
 'right-protect' => 'सुरक्षास्तरान् परिवर्तयतु । सुरक्षितपुटानि सम्पादयतु ।',
 'right-editprotected' => 'सुरक्षितपुटानि सम्पादयतु ।',
 'right-editinterface' => 'योजकमाध्यमं सम्पादयतु ।',
-'right-editwiki_usercssjs' => 'अन्ययोजकान् सम्पादयतु । सि.एस्.एस्. जावलालिपिसञ्चिकाः च ।',
-'right-editwiki_usercss' => 'अन्ययोजकान् सम्पादयतु सि.एस्.एस्. सञ्चिकाः ।',
-'right-editwiki_userjs' => 'अन्ययोजकान सम्पादयतु जावालिपिसञ्चिकाः ।',
+'right-editusercssjs' => 'अन्ययोजकान् सम्पादयतु । सि.एस्.एस्. जावलालिपिसञ्चिकाः च ।',
+'right-editusercss' => 'अन्ययोजकान् सम्पादयतु सि.एस्.एस्. सञ्चिकाः ।',
+'right-edituserjs' => 'अन्ययोजकान सम्पादयतु जावालिपिसञ्चिकाः ।',
 'right-rollback' => 'अन्तिमयोजकस्य सम्पादनं शीघ्रं प्रचालयतु यः निर्दिष्टपुटं सम्पादितवान् ।',
 'right-markbotedits' => 'प्रतिचालितसम्पादनानि स्वचालितसम्पदनं इव  अङ्कितानिकरोतु ।',
 'right-noratelimit' => 'मूल्यनियत्या प्रभावितं नस्यात् ।',
@@ -1528,14 +1528,14 @@ You can still [$1 view this revision]",
 'right-patrolmarks' => 'आरक्षणाङ्कितानां सद्यः परिवर्तनानि अवलोकयतु ।',
 'right-unwatchedpages' => 'अपरीक्षितपुटानाम् आवलीम् अवलोकयतु ।',
 'right-mergehistory' => 'पुटेतिहासं विलीनं करोतु ।',
-'right-wiki_userrights' => 'सर्वयोजकाधिकारं सम्पादयतु ।',
-'right-wiki_userrights-interwiki' => 'योजकाधिकारान् अन्यविकिषु सम्पादयतु ।',
+'right-userrights' => 'सर्वयोजकाधिकारं सम्पादयतु ।',
+'right-userrights-interwiki' => 'योजकाधिकारान् अन्यविकिषु सम्पादयतु ।',
 'right-siteadmin' => 'पाठमूलस्य निशेधनम् अनिशेधनं च ।',
 'right-override-export-depth' => 'पञ्चस्तरपर्यन्तं संलग्नपुटानि निर्यातानि करोतु ।',
 'right-sendemail' => 'अन्ययोजकेभ्यः विद्युन्मानपत्राणि प्रेषयतु ।',
 'right-passwordreset' => 'निकुञ्चपुनारचितानां विद्युन्मानपत्राणाम् अवलोकनम् ।',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'प्रयोक्तृ-अधिकार-सूचिका',
 'rightslogtext' => 'अयं योजकाधिकारस्य परिवर्तनकुञ्चः ।',
 'rightslogentry' => '$2 - $3 तः $1 सामूहिकसदस्यत्वं परिवर्तितम् ।',
@@ -1551,7 +1551,7 @@ You can still [$1 view this revision]",
 'action-minoredit' => 'एतत्सम्पादनं लघु इति अङ्कयतु ।',
 'action-move' => 'एतत्पुटं चालयतु ।',
 'action-move-subpages' => 'एतत्पुटम् अस्य उपपुटानि च चालयतु ।',
-'action-move-rootwiki_userpages' => 'मूलयोजकपुटानि चालयतु ।',
+'action-move-rootuserpages' => 'मूलयोजकपुटानि चालयतु ।',
 'action-movefile' => 'एतां सञ्चिकां चालयतु ।',
 'action-upload' => 'एतां सञ्चिकाम् उत्तारयतु ।',
 'action-reupload' => 'स्थितसञ्चिकां पुनर्लिखतु ।',
@@ -1574,8 +1574,8 @@ You can still [$1 view this revision]",
 'action-autopatrol' => 'भवतः सम्पादनम् आरक्षितम् इति अङ्कयतु ।',
 'action-unwatchedpages' => 'अपरीक्षितपुटानाम् आवलीम् अवलोकयतु ।',
 'action-mergehistory' => 'पुटेतिहासं विलीनं करोतु ।',
-'action-wiki_userrights' => 'सर्वयोजकाधिकारं सम्पादयतु ।',
-'action-wiki_userrights-interwiki' => 'योजकाधिकारान् अन्यविकिषु सम्पादयतु ।',
+'action-userrights' => 'सर्वयोजकाधिकारं सम्पादयतु ।',
+'action-userrights-interwiki' => 'योजकाधिकारान् अन्यविकिषु सम्पादयतु ।',
 'action-siteadmin' => 'पाठमूलस्य निशेधनम् अनिशेधनं च ।',
 'action-sendemail' => 'विद्युन्मानपत्राणि प्रेषयतु ।',
 
@@ -1606,7 +1606,7 @@ You can still [$1 view this revision]",
 'minoreditletter' => '(लघु)',
 'newpageletter' => '(नवीनम्)',
 'boteditletter' => '(बोट्)',
-'number_of_watching_wiki_users_pageview' => '[$1 अवलोकयति {{PLURAL:$1|योजकः|योजकाः}}]',
+'number_of_watching_users_pageview' => '[$1 अवलोकयति {{PLURAL:$1|योजकः|योजकाः}}]',
 'rc_categories' => 'वर्गान् नियतीकरोतु ।',
 'rc_categories_any' => 'कश्चित्',
 'rc-change-size-new' => '$1 {{PLURAL:$1|byte|bytes}} परिवर्तनपश्चात् ।',
@@ -1633,7 +1633,7 @@ You can still [$1 view this revision]",
 'reuploaddesc' => 'उत्तारणम् अपकर्षतु उत्तरणप्रपत्रम् आगच्छतु च ।',
 'upload-tryagain' => 'उन्नतीकृतं सञ्चिकाविवरणं समर्पयतु ।',
 'uploadnologin' => 'न प्रविष्टम्',
-'uploadnologintext' => 'सञ्चिकारोपणाय [[Special:wiki_userLogin|अन्तःप्रवेशः]] अपेक्षितः ।',
+'uploadnologintext' => 'सञ्चिकारोपणाय [[Special:UserLogin|अन्तःप्रवेशः]] अपेक्षितः ।',
 'upload_directory_missing' => 'उत्तारणनिदेशनं ($1) नष्टम्, जालवितारकेन सर्जितुं न शक्यते ।',
 'upload_directory_read_only' => 'उत्तारणनिदेशनं ($1) तु जालवितारकेन लेखनयोग्यं नास्ति ।',
 'uploaderror' => 'उत्तरणदोषः ।',
@@ -1751,10 +1751,10 @@ $1',
 'upload-proto-error-text' => 'स्वयम् उत्तरणं <code>http://</code> or <code>ftp://</code>. इत्यनेन सह आरब्धः भवति ।',
 'upload-file-error' => 'आन्तरिकः दोषः',
 'upload-file-error-text' => 'वितारके तात्कालिकसञ्चिकानिर्माणावसरे उपगतः आन्तरिकदोषः । 
-सम्पर्कयतु एतम् [[Special:Listwiki_users/sysop|administrator]]',
+सम्पर्कयतु एतम् [[Special:ListUsers/sysop|administrator]]',
 'upload-misc-error' => 'अज्ञातः उत्तारणदोषः ।',
 'upload-misc-error-text' => 'उत्तारणावसरे कश्चन अज्ञातदोषः उपगतः । 
-URL मान्यम् अभिगम्यं वेति परिशील्य पुनः यतताम् ।[[Special:Listwiki_users/sysop|administrator]]',
+URL मान्यम् अभिगम्यं वेति परिशील्य पुनः यतताम् ।[[Special:ListUsers/sysop|administrator]]',
 'upload-too-many-redirects' => 'URL अधिकपुनर्निदेशान् अन्तर्गतम् ।',
 'upload-unknown-size' => 'अज्ञात आकार',
 'upload-http-error' => 'कश्चन HTTP दोषः उपगतः $1',
@@ -1874,7 +1874,7 @@ See https://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'listfiles_thumb' => 'अंगुष्ठनखाकारम् ।',
 'listfiles_date' => 'दिनाङ्क',
 'listfiles_name' => 'नामन्',
-'listfiles_wiki_user' => 'योजक',
+'listfiles_user' => 'योजक',
 'listfiles_size' => 'आकार',
 'listfiles_description' => 'वर्णन',
 'listfiles_count' => 'आवृत्ति',
@@ -1891,7 +1891,7 @@ See https://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'filehist-thumb' => 'अंगुष्ठनखाकारम्',
 'filehist-thumbtext' => '$1 समये विद्यमानायाः आवृत्तेः अंगुष्ठनखाकारम्',
 'filehist-nothumb' => 'अङ्गुष्टनखाकारकं नाश्ति ।',
-'filehist-wiki_user' => 'योजकः',
+'filehist-user' => 'योजकः',
 'filehist-dimensions' => 'आयामाः',
 'filehist-filesize' => 'सञ्चिकाकारः ।',
 'filehist-comment' => 'टिप्पणी',
@@ -1983,7 +1983,7 @@ See https://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'statistics-header-pages' => 'पुटसाङ्ख्यिकाः ।',
 'statistics-header-edits' => 'सङ्ख्यिकाः सम्पादयतु ।',
 'statistics-header-views' => 'साङ्ख्यिकाः अवलोकयतु ।',
-'statistics-header-wiki_users' => 'योजकसाङ्ख्यिकाः ।',
+'statistics-header-users' => 'योजकसाङ्ख्यिकाः ।',
 'statistics-header-hooks' => 'अन्यसाङ्ख्यिकाः ।',
 'statistics-articles' => 'आधेयपुटानि ।',
 'statistics-pages' => 'पृष्ठानि',
@@ -1994,9 +1994,9 @@ See https://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'statistics-views-total' => 'अवलोकनयोगः ।',
 'statistics-views-total-desc' => 'असंवृत्तपुटानाम् अवलोकनानि । अपि च विशेषपुटानि नान्तर्गतानि ।',
 'statistics-views-peredit' => 'प्रतिसम्पादनम् अवलोकनम् ।',
-'statistics-wiki_users' => 'पञ्जीकृतः [[Special:Listwiki_users|योजकः]]',
-'statistics-wiki_users-active' => 'सक्रियाः सदस्याः',
-'statistics-wiki_users-active-desc' => 'गतेषु {{PLURAL:$1|day|$1 दिनेषु}} सक्रियाः योजकाः  ।',
+'statistics-users' => 'पञ्जीकृतः [[Special:ListUsers|योजकः]]',
+'statistics-users-active' => 'सक्रियाः सदस्याः',
+'statistics-users-active-desc' => 'गतेषु {{PLURAL:$1|day|$1 दिनेषु}} सक्रियाः योजकाः  ।',
 'statistics-mostpopular' => 'अत्यवलोकितपुटानि ।',
 
 'disambiguations' => 'द्वैधीभावरहितपुटानाम् अनुबन्धितपुटानि ।',
@@ -2074,13 +2074,13 @@ See https://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'protectedtitles' => 'सुरक्षितानि शीर्षकानि ।',
 'protectedtitlestext' => 'अधो दत्तशीर्षकाणि सर्जनात् रक्षितानि ।',
 'protectedtitlesempty' => 'एतैः विस्तारैः न किमपि शीर्षकं सद्यः परिरक्षितानि ।',
-'listwiki_users' => 'योजक सूचि',
-'listwiki_users-editsonly' => 'केवलं सम्पादनसहितयोजकान् दर्शयतु ।',
-'listwiki_users-creationsort' => 'सर्जनदिनाङ्कैः वर्गीकरोतु ।',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|दिनम्|दिनानि}}',
-'wiki_usercreated' => '$1 दिने $2 समये रचितम् योजकनाम $3',
+'listusers' => 'योजक सूचि',
+'listusers-editsonly' => 'केवलं सम्पादनसहितयोजकान् दर्शयतु ।',
+'listusers-creationsort' => 'सर्जनदिनाङ्कैः वर्गीकरोतु ।',
+'usereditcount' => '$1 {{PLURAL:$1|दिनम्|दिनानि}}',
+'usercreated' => '$1 दिने $2 समये रचितम् योजकनाम $3',
 'newpages' => 'नवीनपृष्ठम्',
-'newpages-wiki_username' => 'योजकनामन्:',
+'newpages-username' => 'योजकनामन्:',
 'ancientpages' => 'प्राचीनतमानि पृष्ठानि',
 'move' => 'चाल्यताम्',
 'movethispage' => 'इदं पृष्ठं चाल्यताम्',
@@ -2103,7 +2103,7 @@ See https://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'booksources-invalid-isbn' => 'दत्तं ISBN मान्यम् इति  न भाति । मूलस्रोततः प्रतिकृतीः कर्तुं परिशीलयतु ।',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'आचारी :',
+'specialloguserlabel' => 'आचारी :',
 'speciallogtitlelabel' => 'लक्ष्यम् (शीर्षकम् / योजकः)',
 'log' => 'लॉग् इत्येतानि',
 'all-logs-page' => 'सर्वसार्वजनिकप्रवेशः ।',
@@ -2162,24 +2162,24 @@ See https://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'linksearch-line' => '$2 पृष्ठं $1 तः सम्पृक्तम् अस्ति।',
 'linksearch-error' => 'वन्यपत्राणि आतिथेयस्य नाम्ना समं केवलं प्रभान्ति ।',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'एतस्मात् आरभमाणान् योजकान् दर्शयतु ।',
-'listwiki_users-submit' => 'दर्श्यताम्',
-'listwiki_users-noresult' => 'योजकः न प्राप्तः ।',
-'listwiki_users-blocked' => 'अवरुद्धम् ।',
+# Special:ListUsers
+'listusersfrom' => 'एतस्मात् आरभमाणान् योजकान् दर्शयतु ।',
+'listusers-submit' => 'दर्श्यताम्',
+'listusers-noresult' => 'योजकः न प्राप्तः ।',
+'listusers-blocked' => 'अवरुद्धम् ।',
 
-# Special:Activewiki_users
-'activewiki_users' => 'सक्रिययोजकानाम् आवली ।',
-'activewiki_users-intro' => 'एषा तु गतेषु $1 {{PLURAL:$1|दिनेषु}} कृतकार्याणां योजकाना आवली ।',
-'activewiki_users-count' => '$1 {{PLURAL:$1|सम्पादनानि}} गतेषु $3 {{PLURAL:$3|दिनेषु}} कृतानि  ।',
-'activewiki_users-from' => 'एतस्मात् आरभमाणान् योजकान् दर्शयतु ।',
-'activewiki_users-hidebots' => 'स्वयं चालकान् गोपयतु ।',
-'activewiki_users-hidesysops' => 'प्रशासकान् गोपयतु ।',
-'activewiki_users-noresult' => 'योजकः न प्राप्तः ।',
+# Special:ActiveUsers
+'activeusers' => 'सक्रिययोजकानाम् आवली ।',
+'activeusers-intro' => 'एषा तु गतेषु $1 {{PLURAL:$1|दिनेषु}} कृतकार्याणां योजकाना आवली ।',
+'activeusers-count' => '$1 {{PLURAL:$1|सम्पादनानि}} गतेषु $3 {{PLURAL:$3|दिनेषु}} कृतानि  ।',
+'activeusers-from' => 'एतस्मात् आरभमाणान् योजकान् दर्शयतु ।',
+'activeusers-hidebots' => 'स्वयं चालकान् गोपयतु ।',
+'activeusers-hidesysops' => 'प्रशासकान् गोपयतु ।',
+'activeusers-noresult' => 'योजकः न प्राप्तः ।',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'प्रयोक्तृ-सृजन-सूचिका',
-'newwiki_userlogpagetext' => 'अयं योजकनिर्माणास्य प्रवेशः ।',
+# Special:Log/newusers
+'newuserlogpage' => 'प्रयोक्तृ-सृजन-सूचिका',
+'newuserlogpagetext' => 'अयं योजकनिर्माणास्य प्रवेशः ।',
 
 # Special:ListGroupRights
 'listgrouprights' => 'योजकसमूहाधिकाराः ।',
@@ -2199,27 +2199,27 @@ See https://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'listgrouprights-addgroup-self-all' => 'स्वस्थाने सर्वसमूहान योजयतु ।',
 'listgrouprights-removegroup-self-all' => 'स्वस्थानात् सर्वसमूहान् अपनयतु ।',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'सम्प्रेषणस्य सङ्केतः नास्ति ।',
-'mailnologintext' => 'अस्य योजकेभ्यः विद्युन्मानपत्रप्रेषणार्थम् [[Special:wiki_userLogin|नामाभिलेखनम्]] आवश्यकम् [[Special:Preferences|आद्यता]]यां प्रेषयितुं विद्युन्मानपत्रसङ्केतः आवश्यकः ।',
-'emailwiki_user' => 'एतस्मै योजकाय ईपत्रं प्रेष्यताम्',
-'emailwiki_user-title-target' => 'ईपत्र प्रेष्यताम् {{GENDER:$1|योजकः}}',
-'emailwiki_user-title-notarget' => 'ईपत्र योजकः',
+'mailnologintext' => 'अस्य योजकेभ्यः विद्युन्मानपत्रप्रेषणार्थम् [[Special:UserLogin|नामाभिलेखनम्]] आवश्यकम् [[Special:Preferences|आद्यता]]यां प्रेषयितुं विद्युन्मानपत्रसङ्केतः आवश्यकः ।',
+'emailuser' => 'एतस्मै योजकाय ईपत्रं प्रेष्यताम्',
+'emailuser-title-target' => 'ईपत्र प्रेष्यताम् {{GENDER:$1|योजकः}}',
+'emailuser-title-notarget' => 'ईपत्र योजकः',
 'emailpage' => 'ई-मेल योजक',
 'emailpagetext' => 'अस्मै योजकाय विद्युन्मानपत्रं प्रेषयितुम् अधो दत्तप्रपत्रम् उपयोक्तुं शक्नोति । 
-[[Special:Preferences|your wiki_user preferences]] अत्र भवता विनिवेशितः वि-पत्रसङ्केतः सकाशात् इति स्थाने प्रतिभाति । अनेन स्वीकर्ता साक्षात् प्रत्युत्तरं दातुं प्रभविष्यति ।',
-'wiki_usermailererror' => 'पत्राचारपदार्थस्य प्रत्यागतदोषः ।',
+[[Special:Preferences|your user preferences]] अत्र भवता विनिवेशितः वि-पत्रसङ्केतः सकाशात् इति स्थाने प्रतिभाति । अनेन स्वीकर्ता साक्षात् प्रत्युत्तरं दातुं प्रभविष्यति ।',
+'usermailererror' => 'पत्राचारपदार्थस्य प्रत्यागतदोषः ।',
 'defemailsubject' => '{{SITENAME}}"$1" इति योजकात् विद्युन्मानपत्रम् ।',
-'wiki_usermaildisabled' => 'योजकस्य विद्युन्मानपत्रं निष्क्रियम् ।',
-'wiki_usermaildisabledtext' => 'अस्यां विक्याम् अन्ययोजकेभ्यः विद्युन्मानपत्रं प्रेषयितुं नै शक्नोति ।',
+'usermaildisabled' => 'योजकस्य विद्युन्मानपत्रं निष्क्रियम् ।',
+'usermaildisabledtext' => 'अस्यां विक्याम् अन्ययोजकेभ्यः विद्युन्मानपत्रं प्रेषयितुं नै शक्नोति ।',
 'noemailtitle' => 'विद्युन्मानपत्रसङ्केतः नास्ति ।',
 'noemailtext' => 'अस्य योजकस्य निरिदिष्टः विद्युन्मानपत्रसङ्केतः नास्ति ।',
 'nowikiemailtitle' => 'विद्युन्मानपत्रम् अननुमतम् ।',
 'nowikiemailtext' => 'अयं योजकः अन्ययोजकेभ्यः विद्युन्मानपत्राणि स्वीकार्तुं नेच्छति ।',
 'emailnotarget' => 'स्वीकर्तुः अस्तित्वविहीनम् अथवा अमान्यं योजकनाम  ।',
 'emailtarget' => 'स्वीकर्तुः योजकनाम लिखतु ।',
-'emailwiki_username' => 'योजकनामन्:',
-'emailwiki_usernamesubmit' => 'उपस्थाप्यताम्',
+'emailusername' => 'योजकनामन्:',
+'emailusernamesubmit' => 'उपस्थाप्यताम्',
 'email-legend' => '{{SITENAME}}  इति अन्ययोजकाय विद्युन्मानपत्रं प्रेषयतु ।',
 'emailfrom' => 'सकाशात्',
 'emailto' => 'सविधे:',
@@ -2230,11 +2230,11 @@ See https://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'emailccsubject' => '$1: $2 कृते अपि भवतः सन्देशस्य प्रकृतीः ।',
 'emailsent' => 'विद्युन्मानपत्रं प्रेषितम् ।',
 'emailsenttext' => 'भवतः विद्युन्मानपत्रसन्देशः प्रेषिताः ।',
-'emailwiki_userfooter' => 'एतद्विद्युन्मानपत्रं {{SITENAME}} इत्यस्य योजपत्राचरव्यवस्थाद्वारा  $1 इत्यनेन $2 कृते प्रेषितम् ।',
+'emailuserfooter' => 'एतद्विद्युन्मानपत्रं {{SITENAME}} इत्यस्य योजपत्राचरव्यवस्थाद्वारा  $1 इत्यनेन $2 कृते प्रेषितम् ।',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'तान्त्रिकसन्देशानां त्यागः ।',
-'wiki_usermessage-editor' => 'तान्त्रिकसन्देशवाहकः ।',
+# User Messenger
+'usermessage-summary' => 'तान्त्रिकसन्देशानां त्यागः ।',
+'usermessage-editor' => 'तान्त्रिकसन्देशवाहकः ।',
 
 # Watchlist
 'watchlist' => 'मम अवेक्षणसूची',
@@ -2243,7 +2243,7 @@ See https://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'nowatchlist' => 'अवलोकनावल्यां पदार्थः नास्ति ।',
 'watchlistanontext' => 'अवलोकनपट्टिकायां पुटं दृष्टुं सम्पादयितुं वा  $1  करोतु ।',
 'watchnologin' => 'न नामाभिलितम्',
-'watchnologintext' => 'अवलोकनावलीं परिवर्तयितुं भवता नामाभिलेखनं करणीयम् ।[[Special:wiki_userLogin|logged in]]',
+'watchnologintext' => 'अवलोकनावलीं परिवर्तयितुं भवता नामाभिलेखनं करणीयम् ।[[Special:UserLogin|logged in]]',
 'addwatch' => 'अवलोकनावलीं योजयतु ।',
 'addedwatchtext' => 'भवतः [[Special:Watchlist|ध्यानसूचिकायां]] "[[:$1]]" इत्येतत् योजितमस्ति।
 इदानींप्रभृति अस्मिन् पृष्ठे तथा अस्य चर्चापृष्ठे सन्तः परिवर्तनानि भवतः निरीक्षासूचिकायां द्रक्ष्यन्ते तथा च [[Special:RecentChanges|सद्यःपरिवर्तितानां सूचिकायां]] इदं पृष्ठं स्थूलाक्षरैः द्रक्ष्यते, यस्मात् भवान् सरलतया इदं पश्यतु <p>निरीक्षासूचिकातः निराकर्तुमिच्छति चेत्, "मा निरीक्षताम्" इत्यसमिन् नोदयतु।',
@@ -2324,11 +2324,11 @@ See https://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'rollbackfailed' => 'प्रत्यहरणम् असफलम् ।',
 'cantrollback' => 'सम्पादनं  पूर्ववत् प्रत्यानेतुं न शक्यते ।
 गतयोजकः केवलम् अस्यपुटस्य कर्ता ।',
-'alreadyrolled' => '[[wiki_user:$2|$2]] ([[wiki_user talk:$2|वार्ता]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) द्वारा कृतम्  [[:$1]] इत्यस्य गतसम्पादनं पूर्वतनस्थितौ प्रत्याहरणं न शक्यते । अत्रान्तरे कोऽप्यन्यः एतत्पुटं पुनस्सम्पादितवान् अथवा पूर्वमेव प्राचीनस्थितौ आनीतम् अस्ति ।
-अस्य पुटास्य अन्तिमसम्पादनं [[wiki_user:$3|$3]] ([[wiki_user talk:$3|वार्ता]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) इत्यनेन कृतम् ।',
+'alreadyrolled' => '[[User:$2|$2]] ([[User talk:$2|वार्ता]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) द्वारा कृतम्  [[:$1]] इत्यस्य गतसम्पादनं पूर्वतनस्थितौ प्रत्याहरणं न शक्यते । अत्रान्तरे कोऽप्यन्यः एतत्पुटं पुनस्सम्पादितवान् अथवा पूर्वमेव प्राचीनस्थितौ आनीतम् अस्ति ।
+अस्य पुटास्य अन्तिमसम्पादनं [[User:$3|$3]] ([[User talk:$3|वार्ता]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) इत्यनेन कृतम् ।',
 'editcomment' => "\"''\$1''\" इति सम्पादनसारः आसीत् ।",
-'revertpage' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Talk]])इत्यस्य सम्पादनम् अपमर्ज्य  [[wiki_user:$1|$1]] इति अन्तिमपुनरावृत्तिः ।',
-'revertpage-nowiki_user' => '(योजकस्य नाम अपनीतम्) द्वारा कृतसम्पादनं पूर्वस्थितौ प्रत्याहृत्य तत्पूर्वतनस्य [[wiki_user:$1|$1]] द्वारा कृतपुनरावृत्तेः नूतनावृत्तिः कृता ।',
+'revertpage' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]])इत्यस्य सम्पादनम् अपमर्ज्य  [[User:$1|$1]] इति अन्तिमपुनरावृत्तिः ।',
+'revertpage-nouser' => '(योजकस्य नाम अपनीतम्) द्वारा कृतसम्पादनं पूर्वस्थितौ प्रत्याहृत्य तत्पूर्वतनस्य [[User:$1|$1]] द्वारा कृतपुनरावृत्तेः नूतनावृत्तिः कृता ।',
 'rollback-success' => '$1 इत्यस्य सम्पादनम् अपनयतु । 
 $2 द्वारा सम्पादितां अन्तिमावृत्तिं पुनस्थापयतु ।',
 
@@ -2479,13 +2479,13 @@ $2 द्वारा सम्पादितां अन्तिमावृ
 'sp-contributions-uploads' => 'आरोप्यताम्',
 'sp-contributions-logs' => 'लोग्स',
 'sp-contributions-talk' => 'सम्भाषणम्',
-'sp-contributions-wiki_userrights' => 'योजकाधिकारस्य व्यवस्थापनम् ।',
+'sp-contributions-userrights' => 'योजकाधिकारस्य व्यवस्थापनम् ।',
 'sp-contributions-blocked-notice' => 'अयं प्रयोक्ता सम्प्रति अवरुद्धः वर्तते।
 नूतनतमा अवरोधाभिलेख-प्रविष्टिः सन्दर्भार्थम् अधस्तात् प्रदत्ताऽस्ति:',
 'sp-contributions-blocked-notice-anon' => 'अयं प्रयोक्ता सम्प्रति अवरुद्धः वर्तते।
 नूतनतमा अवरोधाभिलेख-प्रविष्टिः सन्दर्भार्थम् अधस्तात् प्रदत्ताऽस्ति:',
 'sp-contributions-search' => 'योगदानानि अन्विष्यन्ताम्',
-'sp-contributions-wiki_username' => 'आइ.पी.सङ्केतः अथवा योजकनाम :',
+'sp-contributions-username' => 'आइ.पी.सङ्केतः अथवा योजकनाम :',
 'sp-contributions-toponly' => 'सम्पादनानां नूतनावृत्तिमात्रं दर्श्यताम्',
 'sp-contributions-submit' => 'अन्विष्यताम्',
 
@@ -2518,7 +2518,7 @@ $2 द्वारा सम्पादितां अन्तिमावृ
 'blockiptext' => 'विशिष्टं  IP सङ्केतम् अथवा योजकनाम लेखानाधिकारस्य प्राप्तये निम्नदत्तपत्रस्य उपयोगं करोतु ।
 केवलं नाशकत्वम् अवरोद्धुं एतस्य उपयोगं करोतु । [[{{MediaWiki:Policy-url}}|नीतिः]] इत्यानुसारं करणीयम् ।
 अधः विशिष्टं कारणमपि लिखतु ।',
-'ipadressorwiki_username' => 'आइ.पी.सङ्केतः अथवा योजकनाम :',
+'ipadressorusername' => 'आइ.पी.सङ्केतः अथवा योजकनाम :',
 'ipbexpiry' => 'समाप्तिः :',
 'ipbreason' => 'कारणम् :',
 'ipbreasonotherlist' => 'अन्यत् कारणम्',
@@ -2540,8 +2540,8 @@ $2 द्वारा सम्पादितां अन्तिमावृ
 'ipbotheroption' => 'अन्य',
 'ipbotherreason' => 'अपरं/अतिरिक्तं कारणम् :',
 'ipbhidename' => 'सम्पादनेभ्यः आवलीभ्यः च योजकनाम सङ्गोपयतु ।',
-'ipbwatchwiki_user' => 'अस्य योजकस्य योजकपुटानि सम्भाषणपुटानि च अवलोकयतु ।',
-'ipb-disablewiki_usertalk' => 'एतं योजकम् अवरोधकाले स्वस्य सम्भाषणपुटस्य सम्पानात् निवारयतु ।',
+'ipbwatchuser' => 'अस्य योजकस्य योजकपुटानि सम्भाषणपुटानि च अवलोकयतु ।',
+'ipb-disableusertalk' => 'एतं योजकम् अवरोधकाले स्वस्य सम्भाषणपुटस्य सम्पानात् निवारयतु ।',
 'ipb-change-block' => 'एतैः विन्यासैः योजकं पुनः अवरुणद्धु ।',
 'ipb-confirm' => 'अवरोधं दृढयतु ।',
 'badipaddress' => 'अमान्यः ऐपिसङ्केतः ।',
@@ -2549,7 +2549,7 @@ $2 द्वारा सम्पादितां अन्तिमावृ
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]]इत्येतत् अवरुद्धम् । <br />
 अवरोधानां समीक्षां करोतु । [[Special:BlockList|IP अवरोधसूचिका]]',
 'ipb-blockingself' => 'भवान् स्वयम् अवरोधने निरतः । निश्चयेन स्वावरोधनम् इच्छति वा ?',
-'ipb-confirmhidewiki_user' => 'योजकगोपनस्य पिञ्जं निपीडयन् भवान् योजकावरुद्धिं यतते । एतत् सर्वावलीषु सर्वप्रवेशसूचिकासु च योजकनाम निग्रहति । भवान् निश्चयेन एतत् कर्तुमिच्छति वा ?',
+'ipb-confirmhideuser' => 'योजकगोपनस्य पिञ्जं निपीडयन् भवान् योजकावरुद्धिं यतते । एतत् सर्वावलीषु सर्वप्रवेशसूचिकासु च योजकनाम निग्रहति । भवान् निश्चयेन एतत् कर्तुमिच्छति वा ?',
 'ipb-edit-dropdown' => 'अवरोधकारणानि सम्पादयतु ।',
 'ipb-unblock-addr' => '$1 अनवरोधनं करोतु ।',
 'ipb-unblock' => 'योजकनाम अथवा ऐपिसङ्केतम् अवरुणद्धु ।',
@@ -2558,13 +2558,13 @@ $2 द्वारा सम्पादितां अन्तिमावृ
 'unblockip' => 'योजकसु अवरोधं परिहरतु ।',
 'unblockiptext' => 'सद्यः अवरुद्धान् ऐपिसङ्केतान् अथवा अवरुद्धानि योजकनामानि पुनस्संस्थाप्य लिखनावकाशं प्राप्तुम् अधो दत्तप्रपत्रस्य उपयोगं करोतु ।',
 'ipusubmit' => 'अवरोधम् अपनयतु ।',
-'unblocked' => '[[wiki_user:$1|$1]] इति योजकस्य अवरोधम् अपनयतु ।',
+'unblocked' => '[[User:$1|$1]] इति योजकस्य अवरोधम् अपनयतु ।',
 'unblocked-range' => '$1 इत्येतस्य अवरोधः कृतः ।',
 'unblocked-id' => '$1 इत्यस्य अवरोधः अपनीतः ।',
 'blocklist' => 'अवरुद्धाः योजकाः ।',
 'ipblocklist' => 'अवरुद्धाः योजकाः',
 'ipblocklist-legend' => 'अवरुद्धयोजकं पश्यतु ।',
-'blocklist-wiki_userblocks' => 'योजकस्थानावरुद्धिं गोपयतु ।',
+'blocklist-userblocks' => 'योजकस्थानावरुद्धिं गोपयतु ।',
 'blocklist-tempblocks' => 'तात्कालिकावरुद्धिं गोपयतु ।',
 'blocklist-addressblocks' => 'एकाकिनम् ऐपि अवरोधं गोपयतु ।',
 'blocklist-rangeblocks' => 'प्रान्तीयावरोधान् गोपयतु ।',
@@ -2583,7 +2583,7 @@ $2 द्वारा सम्पादितां अन्तिमावृ
 'noautoblockblock' => 'स्वयमवरोधः निष्क्रियः ।',
 'createaccountblock' => 'योजकस्थाननिर्माणं निष्क्रियम् ।',
 'emailblock' => 'विद्युन्मानपत्रं निष्क्रियम् ।',
-'blocklist-nowiki_usertalk' => 'स्वस्य सम्भाषणपुटं सम्पादयितुं न शक्यते ।',
+'blocklist-nousertalk' => 'स्वस्य सम्भाषणपुटं सम्पादयितुं न शक्यते ।',
 'ipblocklist-empty' => 'अवरोधावली रिक्ता अस्ति ।',
 'ipblocklist-no-results' => 'अभ्यर्थितः ऐपिसङ्केतः अथवा अभ्यर्थितः योजकनाम अवरुद्धं न ।',
 'blocklink' => 'अवरोधः क्रियताम्',
@@ -2591,7 +2591,7 @@ $2 द्वारा सम्पादितां अन्तिमावृ
 'change-blocklink' => 'विभागः परिवर्त्यताम्',
 'contribslink' => 'योगदानम्',
 'emaillink' => 'विद्युन्मानपत्रं प्रेषयतु ।',
-'autoblocker' => 'भवतः ऐपि सङ्केतः स्वयम् अवरुद्धः यः सद्यः काले एव [[wiki_user:$1|$1]]" इत्यनेन उपयुक्तः । 
+'autoblocker' => 'भवतः ऐपि सङ्केतः स्वयम् अवरुद्धः यः सद्यः काले एव [[User:$1|$1]]" इत्यनेन उपयुक्तः । 
 $1 इत्यस्य अवरोधस्य कारणं तु "$2" अस्ति ।',
 'blocklogpage' => 'अवरोधानां सूची',
 'blocklog-showlog' => 'अयम् एपि सङ्केतः पूर्वमेव अवरुद्धः । 
@@ -2608,7 +2608,7 @@ $1 इत्यस्य अवरोधस्य कारणं तु "$2" �
 'block-log-flags-nocreate' => 'सदस्यता प्राप्तिः अवरुद्धा अस्ति',
 'block-log-flags-noautoblock' => 'स्वयमवरोधः निष्क्रियः ।',
 'block-log-flags-noemail' => 'विद्युन्मानपत्रं निष्क्रियम् ।',
-'block-log-flags-nowiki_usertalk' => 'स्वस्य सम्भाषणपुटं सम्पादयितुं न शक्यते ।',
+'block-log-flags-nousertalk' => 'स्वस्य सम्भाषणपुटं सम्पादयितुं न शक्यते ।',
 'block-log-flags-angry-autoblock' => ' उन्नतीकृतः स्वयमवरोधः सक्रियः ।',
 'block-log-flags-hiddenname' => 'योजकस्य नाम सङ्गुप्तम् ।',
 'range_block_disabled' => ' प्रादेशिकावरोधस्य प्रशासकस्य सामर्थ्यं निष्क्रियम् ।',
@@ -2618,7 +2618,7 @@ $1 इत्यस्य अवरोधस्य कारणं तु "$2" �
 'ipb_already_blocked' => '"$1" इत्येषः पूर्वमेव अवरुद्धः ।',
 'ipb-needreblock' => '$1 इत्येषः पूर्वमेव अवरुद्धः विन्यासं परिवर्तयितुमिच्छति वा ?',
 'ipb-otherblocks-header' => 'अन्याः {{PLURAL:$1|अवरोधः |अवरोधाः}}',
-'unblock-hidewiki_user' => 'एतं योजकम् अवरोधात् विमोचयितुं न शक्यते । यतः अस्य योजकनाम सङ्गुप्तम् ।',
+'unblock-hideuser' => 'एतं योजकम् अवरोधात् विमोचयितुं न शक्यते । यतः अस्य योजकनाम सङ्गुप्तम् ।',
 'ipb_cant_unblock' => ' दोषः : $1 इति अवरुद्धः पत्रसङ्केतः न दृष्टः । प्रायः तावत् पूर्वमेव उत्तारितम् ।',
 'ipb_blocked_as_range' => 'दोषः : $1 इति ऐपिसङ्केतः साक्षात् अवरुद्धः न अपि च विमोचनं न शक्यते ।
 $2 इति प्रकारस्य अवरोधं कर्तुं शक्यते यत् अनवरोधमिच्छति ।',
@@ -2633,7 +2633,7 @@ $2 इति प्रकारस्य अवरोधं कर्तुं �
 'sorbsreason' => 'DNSBL उपयोगः {{SITENAME}} कृतस्य भवतः ऐपिसङ्केतः मुक्तप्रतिहस्तकः इति आवलीगतः',
 'sorbs_create_account_reason' => 'DNSBL उपयुक्तः {{SITENAME}} अतः भवतः ऐपिसङ्केतः अवरुद्धः यतः अयं मुक्तप्रतिहस्तकः इति आवलीगतः । अतः भवान् योजकस्थानं निर्मातुं न शक्नोति ।',
 'cant-block-while-blocked' => 'अन्ययोजकान् अवरोद्धुं भवान् नैव शक्नोति यतः भवान् अवरुद्धः ।',
-'cant-see-hidden-wiki_user' => 'यं योजकः अवरोद्धं भवान् प्रयतमानः सः पूर्वमेव अवरुद्धः सङ्गुप्तः च ।
+'cant-see-hidden-user' => 'यं योजकः अवरोद्धं भवान् प्रयतमानः सः पूर्वमेव अवरुद्धः सङ्गुप्तः च ।
 भवान् तु योजकसङ्गोपनाधिकारयुक्तः न । अतः भवान् योजकावरोधं दृष्टुं सम्पादयितुं वा न शक्नोति ।',
 'ipbblocked' => 'भवान् अन्ययोजकान् अवरोद्धुम् विमोचयितुं वा न शक्नोति । यतः भवान् तु अवरुद्धः अस्ति ।',
 'ipbnounblockself' => 'भवान् भवन्तं मोचयितुं नैव शक्नोति ।',
@@ -2693,13 +2693,13 @@ $2 इति प्रकारस्य अवरोधं कर्तुं �
 * अधोदत्ताम् अर्गलनमञ्चूषाम् उत्पाटितवान् । 
 अस्मिन् विषये यदि इच्छति तर्हि भवता पुटानि चालनीयानि अथवा संयोजनीयानि ।',
 'movearticle' => 'पृष्ठं चाल्यताम्',
-'movewiki_userpage-warning' => 'पूर्वसूचा : योजकपुटं चालयितुम् उद्युक्तः । स्मरतु केवलं पुटं स्थानान्तरितं भवति न तु योजकनाम परिवर्तनं न भविष्यति ।',
+'moveuserpage-warning' => 'पूर्वसूचा : योजकपुटं चालयितुम् उद्युक्तः । स्मरतु केवलं पुटं स्थानान्तरितं भवति न तु योजकनाम परिवर्तनं न भविष्यति ।',
 'movenologin' => 'न नामाभिलितम्',
-'movenologintext' => ' [[Special:wiki_userLogin|logged in]] पञ्जीकृतयोजकः भवता नामाभिलेखनं करणीयं भवति ।',
+'movenologintext' => ' [[Special:UserLogin|logged in]] पञ्जीकृतयोजकः भवता नामाभिलेखनं करणीयं भवति ।',
 'movenotallowed' => 'पुटानि स्थानान्तरियितुम् अनुमतिः नाश्ति ।',
 'movenotallowedfile' => 'सञ्चिकाः स्थानान्तरयितुम् अनुमतिः नास्ति ।',
-'cant-move-wiki_user-page' => 'योजकपुटानि स्थानन्तरितुम् अनुमतिः ते नास्ति । (उपपुटानि विना)',
-'cant-move-to-wiki_user-page' => 'किञ्चिनपुटं योजकपुटं स्थानान्तरितुं ते अनुमतिः नास्ति । (योजकपुटं विना)',
+'cant-move-user-page' => 'योजकपुटानि स्थानन्तरितुम् अनुमतिः ते नास्ति । (उपपुटानि विना)',
+'cant-move-to-user-page' => 'किञ्चिनपुटं योजकपुटं स्थानान्तरितुं ते अनुमतिः नास्ति । (योजकपुटं विना)',
 'newtitle' => 'नूतनं शीर्षकं प्रति :',
 'move-watch' => 'इदं पृष्ठं निरीक्षताम्।',
 'movepagebtn' => 'पृष्ठं चालयतु।',
@@ -2868,8 +2868,8 @@ $2 इति प्रकारस्य अवरोधं कर्तुं �
 'javascripttest-qunit-heading' => 'मिडियाविक्याः जवालिपेः Qघटकस्य परीक्षाप्रणाली ।',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'भवतः योजकपृष्ठम्',
-'tooltip-pt-anonwiki_userpage' => 'ऐपिसङ्केतार्थं योजकपुटं भवान् सम्पादयति एवम्..',
+'tooltip-pt-userpage' => 'भवतः योजकपृष्ठम्',
+'tooltip-pt-anonuserpage' => 'ऐपिसङ्केतार्थं योजकपुटं भवान् सम्पादयति एवम्..',
 'tooltip-pt-mytalk' => 'भवतः सम्भाषणपृष्ठम्',
 'tooltip-pt-anontalk' => 'एतस्मात् ऐपिसङ्केतात् सम्पादनस्य परिचर्चा ।',
 'tooltip-pt-preferences' => 'भवतः इष्टतमानि',
@@ -2906,13 +2906,13 @@ $2 इति प्रकारस्य अवरोधं कर्तुं �
 'tooltip-feed-rss' => 'अस्मै पृष्ठाय आर-एस-एस-पूरणम्',
 'tooltip-feed-atom' => 'अस्मै पृष्ठाय अणुपूरणम्',
 'tooltip-t-contributions' => 'अस्य योजकस्य योगदानानाम् आवलिः',
-'tooltip-t-emailwiki_user' => 'एतस्मै योजकाय ईपत्रं प्रेष्यताम्',
+'tooltip-t-emailuser' => 'एतस्मै योजकाय ईपत्रं प्रेष्यताम्',
 'tooltip-t-upload' => 'संचिकाः आरोप्यन्ताम्',
 'tooltip-t-specialpages' => 'सर्वेषां विशिष्टपृष्ठानां सूची',
 'tooltip-t-print' => 'अस्य पृष्ठस्य मुद्रणयोग्या आवृत्तिः',
 'tooltip-t-permalink' => 'पृष्ठस्य अस्याः आवृत्तेः स्थिरसम्पर्कतन्तुः',
 'tooltip-ca-nstab-main' => 'आन्तर्यं दृश्यताम्',
-'tooltip-ca-nstab-wiki_user' => 'योजकपृष्ठं दृश्यताम्',
+'tooltip-ca-nstab-user' => 'योजकपृष्ठं दृश्यताम्',
 'tooltip-ca-nstab-media' => 'माध्यमपुटम् अवलोकयतु ।',
 'tooltip-ca-nstab-special' => 'इदमेकं विशिष्टं पृष्ठम्, भवान् इदं पृष्ठं सम्पादयितुं न अर्हति।',
 'tooltip-ca-nstab-project' => 'प्रकल्पपृष्ठं दृश्यताम्',
@@ -2943,13 +2943,13 @@ $2 इति प्रकारस्य अवरोधं कर्तुं �
 
 # Attribution
 'anonymous' => '{{SITENAME}} इत्यस्य {{PLURAL:$1||}} अनामकयोजकः ।',
-'sitewiki_user' => '{{SITENAME}} योजक $1',
-'anonwiki_user' => '{{SITENAME}} अज्ञात योजक $1',
+'siteuser' => '{{SITENAME}} योजक $1',
+'anonuser' => '{{SITENAME}} अज्ञात योजक $1',
 'lastmodifiedatby' => 'एतस्य पुटस्य अन्तिमपरिवर्तनं $1 दिनाङ्के $2 समये कृतम् ।',
 'othercontribs' => '$1 इत्यस्य कार्यस्य अनुसारम् ।',
 'others' => 'अन्य',
-'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|योजक|योजक}} $1',
-'anonwiki_users' => '{{SITENAME}} अज्ञात {{PLURAL:$2|योजक|योजक}} $1',
+'siteusers' => '{{SITENAME}} {{PLURAL:$2|योजक|योजक}} $1',
+'anonusers' => '{{SITENAME}} अज्ञात {{PLURAL:$2|योजक|योजक}} $1',
 'creditspage' => 'पुटनां समाकलनानि ।',
 'nocredits' => 'अस्य पुटस्य समाकलनसूचना नोपलब्धा ।',
 
@@ -2958,7 +2958,7 @@ $2 इति प्रकारस्य अवरोधं कर्तुं �
 'spamprotectiontext' => 'भवान् यं पाठं रक्षितुमिच्छति सः स्पाम् शोधन्या अवरुद्धः । 
 प्रायः एतत् निषिद्धबाह्यस्थानस्य अनुबन्धेन सम्भूतम् ।',
 'spamprotectionmatch' => 'अधस्थपाठेन अस्माकं स्फांशोधनी लक्षिता : $1',
-'spambot_wiki_username' => 'मिडियाविकिअवकरशुद्धीकरणम् ।',
+'spambot_username' => 'मिडियाविकिअवकरशुद्धीकरणम् ।',
 'spam_reverting' => '$1 इत्यनेन नानुबद्धनां प्राचीनपुनरावृत्तीनां पुनस्थापनं कुर्वन्ति ।',
 'spam_blanking' => 'सर्वाः पुनरावृत्तयः $1 इत्यस्य अनुबन्धाः पूर्णपाठाः अपनीयन्ते ।',
 'spam_deleting' => 'सर्वाः पुनरावृत्तयः $1 इत्यस्य अनुबन्धाः । पूर्णपाठाः अपनीयन्ते ।',
@@ -2982,9 +2982,9 @@ $2 इति प्रकारस्य अवरोधं कर्तुं �
 'pageinfo-redirects-name' => 'एतत् पृष्ठं प्रति पुनर्निर्दिश्यते',
 'pageinfo-subpages-name' => 'अस्य पृष्ठस्य उपपृष्ठानि',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|पुनर्निर्देशः|पुनर्निर्देशाः}}; $3 {{PLURAL:$3|न पुनर्निर्देशः|न-पुनर्निर्देशाः}})',
-'pageinfo-firstwiki_user' => 'पृष्ठनिर्माता',
+'pageinfo-firstuser' => 'पृष्ठनिर्माता',
 'pageinfo-firsttime' => 'पृष्ठनिर्माणस्य दिनम्',
-'pageinfo-lastwiki_user' => 'अन्तिमः सम्पादकः',
+'pageinfo-lastuser' => 'अन्तिमः सम्पादकः',
 'pageinfo-lasttime' => 'अन्तिमसम्पादनस्य दिनाङ्कः',
 'pageinfo-edits' => 'समग्रसम्पादनानां सङ्ख्या ।',
 'pageinfo-authors' => 'प्रत्येककर्तॄणां समग्रा सङ्ख्या ।',
@@ -3141,7 +3141,7 @@ $2 इति प्रकारस्य अवरोधं कर्तुं �
 'exif-compressedbitsperpixel' => 'चित्रसङ्कोचविधानम् ।',
 'exif-pixelydimension' => 'चित्रविस्तारः ।',
 'exif-pixelxdimension' => 'चित्रैन्नत्यम् ।',
-'exif-wiki_usercomment' => 'योजकाभिप्रायः ।',
+'exif-usercomment' => 'योजकाभिप्रायः ।',
 'exif-relatedsoundfile' => 'सम्बद्धश्रवणसञ्चिका ।',
 'exif-datetimeoriginal' => 'दत्तांशसर्जनस्य दिनाङ्कः समयः च ।',
 'exif-datetimedigitized' => 'अङ्कीकरणस्य दिनाङ्कः समयः च ।',
@@ -3506,7 +3506,7 @@ $2 इति प्रकारस्य अवरोधं कर्तुं �
 
 # E-mail address confirmation
 'confirmemail' => 'ईपत्रसङ्केतः प्रमाणीक्रियताम्',
-'confirmemail_noemail' => 'भवतः योजकाद्यतायां व्यवस्थापितः विद्युन्मानपत्रसङ्केतः मान्यं नाश्ति ।  [[Special:Preferences|wiki_user preferences]]',
+'confirmemail_noemail' => 'भवतः योजकाद्यतायां व्यवस्थापितः विद्युन्मानपत्रसङ्केतः मान्यं नाश्ति ।  [[Special:Preferences|user preferences]]',
 'confirmemail_text' => '{{SITENAME}} इत्यत्र विद्युन्मानसुविधोपयोगात् पूर्वं भवतः विद्युन्मानपत्रसङ्केतं मान्यं करोतु । 
 भवतः सङ्केतं दृढीकरणसङ्केतं प्राप्तुं अधः दत्तं कड्मलं तुदतु ।
 तत्र पत्रं ससङ्केतम् अनुबन्धयुक्तं भवति । 
@@ -3523,7 +3523,7 @@ $2 इति प्रकारस्य अवरोधं कर्तुं �
 'confirmemail_invalid' => 'अमान्या दृढीकरणसङ्केतसङ्ख्या ।
 प्रायः सङ्केतसङ्ख्या विनष्टा ।',
 'confirmemail_needlogin' => 'भवतः विद्युन्मनपत्रसङ्केतं दृढयितुं भवान् $1 करोतु ।',
-'confirmemail_success' => 'भवतः विद्युन्मानपत्रसङ्केतः इदानीं दृढीकृतः अस्ति । [[Special:wiki_userLogin|log in]]
+'confirmemail_success' => 'भवतः विद्युन्मानपत्रसङ्केतः इदानीं दृढीकृतः अस्ति । [[Special:UserLogin|log in]]
 अधुना भवान् नामाभिलेखेन विकिविहरस्य आनन्दम् अनुभवितुं शक्नोति ।',
 'confirmemail_loggedin' => 'भवतः विद्युन्मानपत्रसङ्केतः दृढीकृतः ।',
 'confirmemail_error' => 'भवतः दृढीकरणावसरे काचित् समस्या उत्पन्ना ।',
@@ -3569,10 +3569,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => 'पूर्वसूचना : भवतः सम्पादनारम्भात् पश्चात् एतत् पुटम् अपमर्जितम् ।',
-'confirmrecreate' => "योजकः [[wiki_user:$1|$1]] ([[wiki_user talk:$1|सम्भाषणम्]]) सकारणं भवतः सम्पादनात् परं पुटमेतत् अपमर्जितम् । 
+'confirmrecreate' => "योजकः [[User:$1|$1]] ([[User talk:$1|सम्भाषणम्]]) सकारणं भवतः सम्पादनात् परं पुटमेतत् अपमर्जितम् । 
 : ''$2''
 एतत्पुटं पुनर्निमातुम् इच्छति वेति दृढयतु ।",
-'confirmrecreate-noreason' => 'यदा भावान् अस्य पुटास्य सम्पादनम् आरब्धवान् तत्पश्चात् अन्यः योजकः [[wiki_user:$1|$1]] ([[wiki_user talk:$1|talk]]) एतत् अपनीतवान् । अतः एतत्पुटं पुनर्निमातुम् इच्छति वेति दृढयतु ।',
+'confirmrecreate-noreason' => 'यदा भावान् अस्य पुटास्य सम्पादनम् आरब्धवान् तत्पश्चात् अन्यः योजकः [[User:$1|$1]] ([[User talk:$1|talk]]) एतत् अपनीतवान् । अतः एतत्पुटं पुनर्निमातुम् इच्छति वेति दृढयतु ।',
 'recreate' => 'पुनर्निर्मीयताम्',
 
 # action=purge
@@ -3650,7 +3650,7 @@ $5
 'watchlisttools-raw' => 'अपरिष्कृता अवेक्षणसूची सम्पाद्यताम्',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|अम्भाषणम्]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|अम्भाषणम्]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'अज्ञातं वर्तमानसूत्रम् $1',
@@ -3716,7 +3716,7 @@ $5
 'specialpages-group-login' => 'प्रविश्यताम् / लेखा सृज्यताम्',
 'specialpages-group-changes' => 'सद्योजातानि परिवर्तनानि आवल्यश्च',
 'specialpages-group-media' => 'माध्यमस्य इतिवृत्तम् आरोपणानि च',
-'specialpages-group-wiki_users' => 'योजकाः अधिकाराश्च',
+'specialpages-group-users' => 'योजकाः अधिकाराश्च',
 'specialpages-group-highuse' => 'अधिकोपयोगीनि पृष्ठानि',
 'specialpages-group-pages' => 'पृष्ठानाम् आवली',
 'specialpages-group-pagetools' => 'पृष्ठोपकरणानि',
@@ -3815,11 +3815,11 @@ $1 इत्यनेन $3 इति पृष्ठम् $4 इत्ये�
 'logentry-move-move_redir-noredirect' => '$1 इति प्रयोक्त्रा $3 इति पृष्ठं $4 इत्येतत् प्रति चालितम्, अनुप्रेषणम् अतिक्रम्य, अनुप्रेषणमोचनेन च विना।',
 'logentry-patrol-patrol' => '$1 अङ्कितावृत्तिः $4 इति पुटस्य $3 आरक्षणम् ।',
 'logentry-patrol-patrol-auto' => '$1 इत्येतत् $3 पुटस्य $4 आवृत्तिं स्वयं चालितरूपात् आरक्षितम् ।',
-'logentry-newwiki_users-newwiki_users' => '$1 योजकलेखाम् असृजत्',
-'logentry-newwiki_users-create' => '$1 योजकलेखाम् असृजत्',
-'logentry-newwiki_users-create2' => '$1,  $3 इति योजकलेखाम् असृजत्',
-'logentry-newwiki_users-autocreate' => '$1 लेखा स्वयमेव सृष्टं जातम्',
-'newwiki_userlog-byemail' => 'कूटशब्दः ईपत्रद्वारा प्रेषितः',
+'logentry-newusers-newusers' => '$1 योजकलेखाम् असृजत्',
+'logentry-newusers-create' => '$1 योजकलेखाम् असृजत्',
+'logentry-newusers-create2' => '$1,  $3 इति योजकलेखाम् असृजत्',
+'logentry-newusers-autocreate' => '$1 लेखा स्वयमेव सृष्टं जातम्',
+'newuserlog-byemail' => 'कूटशब्दः ईपत्रद्वारा प्रेषितः',
 
 # Feedback
 'feedback-bugornote' => 'यदि भवान् कस्याश्चित् तान्त्रिकसमस्यायाः विषये विशदीकर्तुम् इच्छति तर्हि [$1 मत्कुणसञ्चिकां करोतु ।]

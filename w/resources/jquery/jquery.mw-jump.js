@@ -1,5 +1,5 @@
 /**
- * JavaScript to show jump links to motor-impaired wiki_users when they are focused.
+ * JavaScript to show jump links to motor-impaired users when they are focused.
  */
 jQuery( function( $ ) {
 

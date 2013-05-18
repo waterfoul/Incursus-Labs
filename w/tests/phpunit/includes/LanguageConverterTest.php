@@ -6,9 +6,9 @@ class LanguageConverterTest extends MediaWikiLangTestCase {
 
 	function setUp() {
 		parent::setUp();
-		global $wgMemc, $wgRequest, $wgwiki_user, $wgContLang;
+		global $wgMemc, $wgRequest, $wgUser, $wgContLang;
 
-		$wgwiki_user = new wiki_user;
+		$wgUser = new User;
 		$wgRequest = new FauxRequest( array() );
 		$wgMemc = new EmptyBagOStuff;
 		$wgContLang = Language::factory( 'tg' );
@@ -57,29 +57,29 @@ class LanguageConverterTest extends MediaWikiLangTestCase {
 		$this->assertEquals( 'tg-latn', $this->lc->getPreferredVariant() );
 	}
 
-	function testGetPreferredVariantwiki_userOption() {
-		global $wgwiki_user;
+	function testGetPreferredVariantUserOption() {
+		global $wgUser;
 
-		$wgwiki_user = new wiki_user;
-		$wgwiki_user->load(); // from 'defaults'
-		$wgwiki_user->mId = 1;
-		$wgwiki_user->mDataLoaded = true;
-		$wgwiki_user->mOptionsLoaded = true;
-		$wgwiki_user->setOption( 'variant', 'tg-latn' );
+		$wgUser = new User;
+		$wgUser->load(); // from 'defaults'
+		$wgUser->mId = 1;
+		$wgUser->mDataLoaded = true;
+		$wgUser->mOptionsLoaded = true;
+		$wgUser->setOption( 'variant', 'tg-latn' );
 
 		$this->assertEquals( 'tg-latn', $this->lc->getPreferredVariant() );
 	}
 
-	function testGetPreferredVariantHeaderwiki_userVsUrl() {
-		global $wgRequest, $wgwiki_user, $wgContLang;
+	function testGetPreferredVariantHeaderUserVsUrl() {
+		global $wgRequest, $wgUser, $wgContLang;
 
 		$wgContLang = Language::factory( 'tg-latn' );
 		$wgRequest->setVal( 'variant', 'tg' );
-		$wgwiki_user = wiki_user::newFromId( "admin" );
-		$wgwiki_user->setId( 1 );
-		$wgwiki_user->mFrom = 'defaults';
-		$wgwiki_user->mOptionsLoaded = true;
-		$wgwiki_user->setOption( 'variant', 'tg-latn' ); // The wiki_user's data is ignored
+		$wgUser = User::newFromId( "admin" );
+		$wgUser->setId( 1 );
+		$wgUser->mFrom = 'defaults';
+		$wgUser->mOptionsLoaded = true;
+		$wgUser->setOption( 'variant', 'tg-latn' ); // The user's data is ignored
 												  // because the variant is set in the URL.
 		$this->assertEquals( 'tg', $this->lc->getPreferredVariant() );
 	}

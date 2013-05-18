@@ -50,9 +50,9 @@ class RebuildRecentchanges extends Maintenance {
 	 * DOCUMENT ME!
 	 */
 	private function rebuildRecentChangesTablePass1() {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
-		w->delete( 'recentchanges', '*' );
+		$dbw->delete( 'recentchanges', '*' );
 
 		$this->output( "Loading from page and revision tables...\n" );
 
@@ -67,12 +67,12 @@ class RebuildRecentchanges extends Maintenance {
 		}
 
 		$cutoff = time() - $wgRCMaxAge;
-		w->insertSelect( 'recentchanges', array( 'page', 'revision' ),
+		$dbw->insertSelect( 'recentchanges', array( 'page', 'revision' ),
 			array(
 				'rc_timestamp'  => 'rev_timestamp',
 				'rc_cur_time'   => 'rev_timestamp',
-				'rc_wiki_user'       => 'rev_wiki_user',
-				'rc_wiki_user_text'  => 'rev_wiki_user_text',
+				'rc_user'       => 'rev_user',
+				'rc_user_text'  => 'rev_user_text',
 				'rc_namespace'  => 'page_namespace',
 				'rc_title'      => 'page_title',
 				'rc_comment'    => 'rev_comment',
@@ -82,10 +82,10 @@ class RebuildRecentchanges extends Maintenance {
 				'rc_cur_id'     => 'page_id',
 				'rc_this_oldid' => 'rev_id',
 				'rc_last_oldid' => 0, // is this ok?
-				'rc_type'       => w->conditional( 'page_is_new != 0', RC_NEW, RC_EDIT ),
+				'rc_type'       => $dbw->conditional( 'page_is_new != 0', RC_NEW, RC_EDIT ),
 				'rc_deleted'    => 'rev_deleted'
 			), array(
-				'rev_timestamp > ' . w->addQuotes( w->timestamp( $cutoff ) ),
+				'rev_timestamp > ' . $dbw->addQuotes( $dbw->timestamp( $cutoff ) ),
 				'rev_page=page_id'
 			), __METHOD__,
 			array(), // INSERT options
@@ -98,15 +98,15 @@ class RebuildRecentchanges extends Maintenance {
 	 * DOCUMENT ME!
 	 */
 	private function rebuildRecentChangesTablePass2() {
-		w = wfGetDB( DB_MASTER );
-		list ( $recentchanges, $revision ) = w->tableNamesN( 'recentchanges', 'revision' );
+		$dbw = wfGetDB( DB_MASTER );
+		list ( $recentchanges, $revision ) = $dbw->tableNamesN( 'recentchanges', 'revision' );
 
 		$this->output( "Updating links and size differences...\n" );
 
 		# Fill in the rc_last_oldid field, which points to the previous edit
 		$sql = "SELECT rc_cur_id,rc_this_oldid,rc_timestamp FROM $recentchanges " .
 		  "ORDER BY rc_cur_id,rc_timestamp";
-		$res = w->query( $sql, DB_MASTER );
+		$res = $dbw->query( $sql, DB_MASTER );
 
 		$lastCurId = 0;
 		$lastOldId = 0;
@@ -119,9 +119,9 @@ class RebuildRecentchanges extends Maintenance {
 				$sql2 = "SELECT rev_id,rev_len FROM $revision " .
 					"WHERE rev_page={$lastCurId} " .
 					"AND rev_timestamp<'{$emit}' ORDER BY rev_timestamp DESC";
-				$sql2 = w->limitResult( $sql2, 1, false );
-				$res2 = w->query( $sql2 );
-				$row = w->fetchObject( $res2 );
+				$sql2 = $dbw->limitResult( $sql2, 1, false );
+				$res2 = $dbw->query( $sql2 );
+				$row = $dbw->fetchObject( $res2 );
 				if ( $row ) {
 					$lastOldId = intval( $row->rev_id );
 					# Grab the last text size if available
@@ -137,9 +137,9 @@ class RebuildRecentchanges extends Maintenance {
 				$this->output( "Uhhh, something wrong? No curid\n" );
 			} else {
 				# Grab the entry's text size
-				$size = w->selectField( 'revision', 'rev_len', array( 'rev_id' => $obj->rc_this_oldid ) );
+				$size = $dbw->selectField( 'revision', 'rev_len', array( 'rev_id' => $obj->rc_this_oldid ) );
 
-				w->update( 'recentchanges',
+				$dbw->update( 'recentchanges',
 					array(
 						'rc_last_oldid' => $lastOldId,
 						'rc_new'        => $new,
@@ -164,9 +164,9 @@ class RebuildRecentchanges extends Maintenance {
 	 * DOCUMENT ME!
 	 */
 	private function rebuildRecentChangesTablePass3() {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
-		$this->output( "Loading from wiki_user, page, and logging tables...\n" );
+		$this->output( "Loading from user, page, and logging tables...\n" );
 
 		global $wgRCMaxAge, $wgLogTypes, $wgLogRestrictions;
 		// Some logs don't go in RC. This should check for that
@@ -175,18 +175,18 @@ class RebuildRecentchanges extends Maintenance {
 		// Escape...blah blah
 		$selectLogs = array();
 		foreach ( $basicRCLogs as $logtype ) {
-			$safetype = w->strencode( $logtype );
+			$safetype = $dbw->strencode( $logtype );
 			$selectLogs[] = "'$safetype'";
 		}
 
 		$cutoff = time() - $wgRCMaxAge;
-		list( $logging, $page ) = w->tableNamesN( 'logging', 'page' );
-		w->insertSelect( 'recentchanges', array( 'wiki_user', "$logging LEFT JOIN $page ON (log_namespace=page_namespace AND log_title=page_title)" ),
+		list( $logging, $page ) = $dbw->tableNamesN( 'logging', 'page' );
+		$dbw->insertSelect( 'recentchanges', array( 'user', "$logging LEFT JOIN $page ON (log_namespace=page_namespace AND log_title=page_title)" ),
 			array(
 				'rc_timestamp'  => 'log_timestamp',
 				'rc_cur_time'   => 'log_timestamp',
-				'rc_wiki_user'       => 'log_wiki_user',
-				'rc_wiki_user_text'  => 'wiki_user_name',
+				'rc_user'       => 'log_user',
+				'rc_user_text'  => 'user_name',
 				'rc_namespace'  => 'log_namespace',
 				'rc_title'      => 'log_title',
 				'rc_comment'    => 'log_comment',
@@ -197,15 +197,15 @@ class RebuildRecentchanges extends Maintenance {
 				'rc_this_oldid' => 0,
 				'rc_last_oldid' => 0,
 				'rc_type'       => RC_LOG,
-				'rc_cur_id'     => w->cascadingDeletes() ? 'page_id' : 'COALESCE(page_id, 0)',
+				'rc_cur_id'     => $dbw->cascadingDeletes() ? 'page_id' : 'COALESCE(page_id, 0)',
 				'rc_log_type'   => 'log_type',
 				'rc_log_action' => 'log_action',
 				'rc_logid'      => 'log_id',
 				'rc_params'     => 'log_params',
 				'rc_deleted'    => 'log_deleted'
 			), array(
-				'log_timestamp > ' . w->addQuotes( w->timestamp( $cutoff ) ),
-				'log_wiki_user=wiki_user_id',
+				'log_timestamp > ' . $dbw->addQuotes( $dbw->timestamp( $cutoff ) ),
+				'log_user=user_id',
 				'log_type IN(' . implode( ',', $selectLogs ) . ')'
 			), __METHOD__,
 			array(), // INSERT options
@@ -220,65 +220,65 @@ class RebuildRecentchanges extends Maintenance {
 	private function rebuildRecentChangesTablePass4() {
 		global $wgGroupPermissions, $wgUseRCPatrol;
 
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
-		list( $recentchanges, $wiki_usergroups, $wiki_user ) = w->tableNamesN( 'recentchanges', 'wiki_user_groups', 'wiki_user' );
+		list( $recentchanges, $usergroups, $user ) = $dbw->tableNamesN( 'recentchanges', 'user_groups', 'user' );
 
 		$botgroups = $autopatrolgroups = array();
 		foreach ( $wgGroupPermissions as $group => $rights ) {
 			if ( isset( $rights['bot'] ) && $rights['bot'] ) {
-				$botgroups[] = w->addQuotes( $group );
+				$botgroups[] = $dbw->addQuotes( $group );
 			}
 			if ( $wgUseRCPatrol && isset( $rights['autopatrol'] ) && $rights['autopatrol'] ) {
-				$autopatrolgroups[] = w->addQuotes( $group );
+				$autopatrolgroups[] = $dbw->addQuotes( $group );
 			}
 		}
 		# Flag our recent bot edits
 		if ( !empty( $botgroups ) ) {
 			$botwhere = implode( ',', $botgroups );
-			$botwiki_users = array();
+			$botusers = array();
 
 			$this->output( "Flagging bot account edits...\n" );
 
-			# Find all wiki_users that are bots
-			$sql = "SELECT DISTINCT wiki_user_name FROM $wiki_usergroups, $wiki_user " .
-				"WHERE ug_group IN($botwhere) AND wiki_user_id = ug_wiki_user";
-			$res = w->query( $sql, DB_MASTER );
+			# Find all users that are bots
+			$sql = "SELECT DISTINCT user_name FROM $usergroups, $user " .
+				"WHERE ug_group IN($botwhere) AND user_id = ug_user";
+			$res = $dbw->query( $sql, DB_MASTER );
 
 			foreach ( $res as $obj ) {
-				$botwiki_users[] = w->addQuotes( $obj->wiki_user_name );
+				$botusers[] = $dbw->addQuotes( $obj->user_name );
 			}
 			# Fill in the rc_bot field
-			if ( !empty( $botwiki_users ) ) {
-				$botwhere = implode( ',', $botwiki_users );
+			if ( !empty( $botusers ) ) {
+				$botwhere = implode( ',', $botusers );
 				$sql2 = "UPDATE $recentchanges SET rc_bot=1 " .
-					"WHERE rc_wiki_user_text IN($botwhere)";
-				w->query( $sql2 );
+					"WHERE rc_user_text IN($botwhere)";
+				$dbw->query( $sql2 );
 			}
 		}
 		global $wgMiserMode;
 		# Flag our recent autopatrolled edits
 		if ( !$wgMiserMode && !empty( $autopatrolgroups ) ) {
 			$patrolwhere = implode( ',', $autopatrolgroups );
-			$patrolwiki_users = array();
+			$patrolusers = array();
 
 			$this->output( "Flagging auto-patrolled edits...\n" );
 
-			# Find all wiki_users in RC with autopatrol rights
-			$sql = "SELECT DISTINCT wiki_user_name FROM $wiki_usergroups, $wiki_user " .
-				"WHERE ug_group IN($patrolwhere) AND wiki_user_id = ug_wiki_user";
-			$res = w->query( $sql, DB_MASTER );
+			# Find all users in RC with autopatrol rights
+			$sql = "SELECT DISTINCT user_name FROM $usergroups, $user " .
+				"WHERE ug_group IN($patrolwhere) AND user_id = ug_user";
+			$res = $dbw->query( $sql, DB_MASTER );
 
 			foreach ( $res as $obj ) {
-				$patrolwiki_users[] = w->addQuotes( $obj->wiki_user_name );
+				$patrolusers[] = $dbw->addQuotes( $obj->user_name );
 			}
 
 			# Fill in the rc_patrolled field
-			if ( !empty( $patrolwiki_users ) ) {
-				$patrolwhere = implode( ',', $patrolwiki_users );
+			if ( !empty( $patrolusers ) ) {
+				$patrolwhere = implode( ',', $patrolusers );
 				$sql2 = "UPDATE $recentchanges SET rc_patrolled=1 " .
-					"WHERE rc_wiki_user_text IN($patrolwhere)";
-				w->query( $sql2 );
+					"WHERE rc_user_text IN($patrolwhere)";
+				$dbw->query( $sql2 );
 			}
 		}
 	}

@@ -28,31 +28,31 @@
  * code, only reads from the database.  Example lines to put in
  * LocalSettings.php:
  *
- *   $wgExternalAuthType = 'Externalwiki_user_vB';
+ *   $wgExternalAuthType = 'ExternalUser_vB';
  *   $wgExternalAuthConf = array(
  *       'server' => 'localhost',
- *       'wiki_username' => 'forum',
+ *       'username' => 'forum',
  *       'password' => 'udE,jSqDJ<""p=fI.K9',
  *       'dbname' => 'forum',
  *       'tablePrefix' => '',
  *       'cookieprefix' => 'bb'
  *   );
  *
- * @ingroup Externalwiki_user
+ * @ingroup ExternalUser
  */
-class Externalwiki_user_vB extends Externalwiki_user {
+class ExternalUser_vB extends ExternalUser {
 	private $mRow;
 
 	protected function initFromName( $name ) {
-		return $this->initFromCond( array( 'wiki_username' => $name ) );
+		return $this->initFromCond( array( 'username' => $name ) );
 	}
 
 	protected function initFromId( $id ) {
-		return $this->initFromCond( array( 'wiki_userid' => $id ) );
+		return $this->initFromCond( array( 'userid' => $id ) );
 	}
 
 	protected function initFromCookie() {
-		# Try using the session table.  It will only have a row if the wiki_user has
+		# Try using the session table.  It will only have a row if the user has
 		# an active session, so it might not always work, but it's a lot easier
 		# than trying to convince PHP to give us vB's $_SESSION.
 		global $wgExternalAuthConf, $wgRequest;
@@ -65,13 +65,13 @@ class Externalwiki_user_vB extends Externalwiki_user {
 			return false;
 		}
 
-		 = $this->getDb();
+		$db = $this->getDb();
 
-		$row = ->selectRow(
-			array( 'session', 'wiki_user' ),
+		$row = $db->selectRow(
+			array( 'session', 'user' ),
 			$this->getFields(),
 			array(
-				'session.wiki_userid = wiki_user.wiki_userid',
+				'session.userid = user.userid',
 				'sessionhash' => $wgRequest->getCookie( 'sessionhash', $prefix ),
 			),
 			__METHOD__
@@ -85,10 +85,10 @@ class Externalwiki_user_vB extends Externalwiki_user {
 	}
 
 	private function initFromCond( $cond ) {
-		 = $this->getDb();
+		$db = $this->getDb();
 
-		$row = ->selectRow(
-			'wiki_user',
+		$row = $db->selectRow(
+			'user',
 			$this->getFields(),
 			$cond,
 			__METHOD__
@@ -106,7 +106,7 @@ class Externalwiki_user_vB extends Externalwiki_user {
 		return DatabaseBase::factory( 'mysql',
 			array(
 				'host' => $wgExternalAuthConf['server'],
-				'wiki_user' => $wgExternalAuthConf['wiki_username'],
+				'user' => $wgExternalAuthConf['username'],
 				'password' => $wgExternalAuthConf['password'],
 				'dbname' => $wgExternalAuthConf['dbname'],
 				'tablePrefix' => $wgExternalAuthConf['tablePrefix'],
@@ -115,12 +115,12 @@ class Externalwiki_user_vB extends Externalwiki_user {
 	}
 
 	private function getFields() {
-		return array( 'wiki_user.wiki_userid', 'wiki_username', 'password', 'salt', 'email',
-			'wiki_usergroupid', 'membergroupids' );
+		return array( 'user.userid', 'username', 'password', 'salt', 'email',
+			'usergroupid', 'membergroupids' );
 	}
 
-	public function getId() { return $this->mRow->wiki_userid; }
-	public function getName() { return $this->mRow->wiki_username; }
+	public function getId() { return $this->mRow->userid; }
+	public function getName() { return $this->mRow->username; }
 
 	public function authenticate( $password ) {
 		# vBulletin seemingly strips whitespace from passwords
@@ -138,7 +138,7 @@ class Externalwiki_user_vB extends Externalwiki_user {
 	}
 
 	public function getGroups() {
-		$groups = array( $this->mRow->wiki_usergroupid );
+		$groups = array( $this->mRow->usergroupid );
 		$groups = array_merge( $groups, explode( ',', $this->mRow->membergroupids ) );
 		$groups = array_unique( $groups );
 		return $groups;

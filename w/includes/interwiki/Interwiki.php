@@ -119,28 +119,28 @@ class Interwiki {
 	 */
 	protected static function getInterwikiCacheEntry( $prefix ) {
 		global $wgInterwikiCache, $wgInterwikiScopes, $wgInterwikiFallbackSite;
-		static , $site;
+		static $db, $site;
 
 		wfDebug( __METHOD__ . "( $prefix )\n" );
-		if( ! ) {
-			 = CdbReader::open( $wgInterwikiCache );
+		if( !$db ) {
+			$db = CdbReader::open( $wgInterwikiCache );
 		}
 		/* Resolve site name */
 		if( $wgInterwikiScopes >= 3 && !$site ) {
-			$site = ->get( '__sites:' . wfWikiID() );
+			$site = $db->get( '__sites:' . wfWikiID() );
 			if ( $site == '' ) {
 				$site = $wgInterwikiFallbackSite;
 			}
 		}
 
-		$value = ->get( wfMemcKey( $prefix ) );
+		$value = $db->get( wfMemcKey( $prefix ) );
 		// Site level
 		if ( $value == '' && $wgInterwikiScopes >= 3 ) {
-			$value = ->get( "_{$site}:{$prefix}" );
+			$value = $db->get( "_{$site}:{$prefix}" );
 		}
 		// Global Level
 		if ( $value == '' && $wgInterwikiScopes >= 2 ) {
-			$value = ->get( "__global:{$prefix}" );
+			$value = $db->get( "__global:{$prefix}" );
 		}
 		if ( $value == 'undef' ) {
 			$value = '';
@@ -179,9 +179,9 @@ class Interwiki {
 			}
 		}
 
-		 = wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 
-		$row = ->fetchRow( ->select( 'interwiki', self::selectFields(), array( 'iw_prefix' => $prefix ),
+		$row = $db->fetchRow( $db->select( 'interwiki', self::selectFields(), array( 'iw_prefix' => $prefix ),
 			__METHOD__ ) );
 		$iw = Interwiki::loadFromArray( $row );
 		if ( $iw ) {
@@ -229,15 +229,15 @@ class Interwiki {
 	 */
 	protected static function getAllPrefixesCached( $local ) {
 		global $wgInterwikiCache, $wgInterwikiScopes, $wgInterwikiFallbackSite;
-		static , $site;
+		static $db, $site;
 
 		wfDebug( __METHOD__ . "()\n" );
-		if( ! ) {
-			 = CdbReader::open( $wgInterwikiCache );
+		if( !$db ) {
+			$db = CdbReader::open( $wgInterwikiCache );
 		}
 		/* Resolve site name */
 		if( $wgInterwikiScopes >= 3 && !$site ) {
-			$site = ->get( '__sites:' . wfWikiID() );
+			$site = $db->get( '__sites:' . wfWikiID() );
 			if ( $site == '' ) {
 				$site = $wgInterwikiFallbackSite;
 			}
@@ -258,9 +258,9 @@ class Interwiki {
 		$data = array();
 
 		foreach( $sources as $source ) {
-			$list = ->get( "__list:{$source}" );
+			$list = $db->get( "__list:{$source}" );
 			foreach ( explode( ' ', $list ) as $iw_prefix ) {
-				$row = ->get( "{$source}:{$iw_prefix}" );
+				$row = $db->get( "{$source}:{$iw_prefix}" );
 				if( !$row ) {
 					continue;
 				}
@@ -292,7 +292,7 @@ class Interwiki {
 	 * @since 1.19
 	 */
 	protected static function getAllPrefixesDB( $local ) {
-		 = wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 
 		$where = array();
 
@@ -304,7 +304,7 @@ class Interwiki {
 			}
 		}
 
-		$res = ->select( 'interwiki',
+		$res = $db->select( 'interwiki',
 			self::selectFields(),
 			$where, __METHOD__, array( 'ORDER BY' => 'iw_prefix' )
 		);

@@ -91,8 +91,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'عدد_الصفحات', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'عدد_المقالات', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'عدد_الملفات', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', 'عدد_المستخدمين', 'NUMBEROFUSERS' ),
-	'numberofactivewiki_users'       => array( '1', 'عدد_المستخدمين_النشطين', 'NUMBEROFACTIVEUSERS' ),
+	'numberofusers'             => array( '1', 'عدد_المستخدمين', 'NUMBEROFUSERS' ),
+	'numberofactiveusers'       => array( '1', 'عدد_المستخدمين_النشطين', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'عدد_التعديلات', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'عدد_المشاهدات', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'اسم_الصفحة', 'PAGENAME' ),
@@ -164,7 +164,7 @@ $magicWords = array(
 	'revisionmonth1'            => array( '1', 'شهر_المراجعة1', 'REVISIONMONTH1' ),
 	'revisionyear'              => array( '1', 'عام_المراجعة', 'REVISIONYEAR' ),
 	'revisiontimestamp'         => array( '1', 'طابع_وقت_المراجعة', 'REVISIONTIMESTAMP' ),
-	'revisionwiki_user'              => array( '1', 'مستخدم_المراجعة', 'REVISIONUSER' ),
+	'revisionuser'              => array( '1', 'مستخدم_المراجعة', 'REVISIONUSER' ),
 	'plural'                    => array( '0', 'جمع:', 'PLURAL:' ),
 	'fullurl'                   => array( '0', 'مسار_كامل:', 'عنوان_كامل:', 'FULLURL:' ),
 	'fullurle'                  => array( '0', 'عنوان_كامل:', 'مسار_كامل:', 'FULLURLE:' ),
@@ -209,7 +209,7 @@ $magicWords = array(
 );
 
 $specialPageAliases = array(
-	'Activewiki_users'               => array( 'يوزرات_نشطا' ),
+	'Activeusers'               => array( 'يوزرات_نشطا' ),
 	'Allmessages'               => array( 'كل_الرسايل' ),
 	'Allpages'                  => array( 'كل_الصفح' ),
 	'Ancientpages'              => array( 'صفح_قديمه' ),
@@ -227,7 +227,7 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( 'مساهمات_ممسوحه' ),
 	'Disambiguations'           => array( 'توضيحات' ),
 	'DoubleRedirects'           => array( 'تحويلات_دوبل' ),
-	'Emailwiki_user'                 => array( 'ابعت_ايميل_لليوزر' ),
+	'Emailuser'                 => array( 'ابعت_ايميل_لليوزر' ),
 	'Export'                    => array( 'تصدير' ),
 	'Fewestrevisions'           => array( 'اقل_مراجعات' ),
 	'FileDuplicateSearch'       => array( 'تدوير_فايل_متكرر' ),
@@ -241,7 +241,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'عرض_الفايلات', 'ليستة_الفايلات', 'ليستة_الصور' ),
 	'Listgrouprights'           => array( 'عرض_حقوق_الجروپات' ),
 	'Listredirects'             => array( 'عرض_التحويلات' ),
-	'Listwiki_users'                 => array( 'عرض_اليوزرات', 'ليستة_اليوزرات' ),
+	'Listusers'                 => array( 'عرض_اليوزرات', 'ليستة_اليوزرات' ),
 	'Lockdb'                    => array( 'قفل_قب' ),
 	'Log'                       => array( 'سجل', 'سجلات' ),
 	'Lonelypages'               => array( 'صفح_وحدانيه', 'صفح_يتيمه' ),
@@ -287,9 +287,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'قوالب_مش_مستعمله' ),
 	'Unwatchedpages'            => array( 'صفح_مش_متراقبه' ),
 	'Upload'                    => array( 'رفع' ),
-	'wiki_userlogin'                 => array( 'دخول_اليوزر' ),
-	'wiki_userlogout'                => array( 'خروج_اليوزر' ),
-	'wiki_userrights'                => array( 'حقوق_اليوزر', 'ترقية_سيسوپ', 'ترقية_بوت' ),
+	'Userlogin'                 => array( 'دخول_اليوزر' ),
+	'Userlogout'                => array( 'خروج_اليوزر' ),
+	'Userrights'                => array( 'حقوق_اليوزر', 'ترقية_سيسوپ', 'ترقية_بوت' ),
 	'Version'                   => array( 'نسخه' ),
 	'Wantedcategories'          => array( 'تصانيف_مطلوبه' ),
 	'Wantedfiles'               => array( 'فايلات_مطلوبه' ),
@@ -301,7 +301,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'حط خط تحت اللينكات:',
 'tog-justify' => 'ساوى الپاراجرافات',
 'tog-hideminor' => 'خبى التعديلات الصغيره من اجدد التغييرات',
@@ -326,7 +326,7 @@ $messages = array(
 'tog-nocache' => 'عطّل تخزين البراوزر للصفحه',
 'tog-enotifwatchlistpages' => '
 ابعت لى ايميل لما تتغير صفحه فى لستة الصفحات اللى باراقبها',
-'tog-enotifwiki_usertalkpages' => 'ابعتلى ايميل لما صفحة مناقشتى تتغيير',
+'tog-enotifusertalkpages' => 'ابعتلى ايميل لما صفحة مناقشتى تتغيير',
 'tog-enotifminoredits' => 'ابعتلى ايميل  عن التعديلات الصغيره للصفحات',
 'tog-enotifrevealaddr' => 'بين الايميل بتاعى فى ايميلات الاعلام',
 'tog-shownumberswatching' => 'بين عدد اليوزرز المراقبين',
@@ -504,7 +504,7 @@ $messages = array(
 'talk' => 'مناقشه',
 'views' => 'مناظر',
 'toolbox' => 'علبة العده',
-'wiki_userpage' => 'عرض صفحة اليوزر',
+'userpage' => 'عرض صفحة اليوزر',
 'projectpage' => 'عرض صفحة المشروع',
 'imagepage' => 'عرض صفحة الملف',
 'mediawikipage' => 'عرض صفحة الرسالة',
@@ -530,7 +530,7 @@ $1',
 'pool-queuefull' => 'طابور الانتخاب مليان',
 'pool-errorunknown' => 'غلط مش معروف',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'عن {{SITENAME}}',
 'aboutpage' => 'Project:معلومات عن',
 'copyright' => 'المحتوى موجود تحت $1.',
@@ -587,7 +587,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'صفحه',
-'nstab-wiki_user' => 'صفحة يوزر',
+'nstab-user' => 'صفحة يوزر',
 'nstab-media' => 'صفحة ميديا',
 'nstab-special' => 'صفحه مخصوصه',
 'nstab-project' => 'صفحة مشروع',
@@ -633,7 +633,7 @@ $1',
 عادة دا بيحصل لما تدوس على لينكات قديمه, فرق التعديل او التاريخ, اللى بتوصلك لصفحه اتمسحت.
 
 لو ما كانش هو دا السبب, ممكن يكون عندك غلط فى البرامج.
-لو سمحت بلغ واحد من [[Special:Listwiki_users/sysop|الاداريين]], و اديله الـ لينك بتاع الصفحه.',
+لو سمحت بلغ واحد من [[Special:ListUsers/sysop|الاداريين]], و اديله الـ لينك بتاع الصفحه.',
 'missingarticle-rev' => '(المراجعه نمره: $1)',
 'missingarticle-diff' => '(الفرق: $1, $2)',
 'readonly_lag' => 'قاعدة البيانات (الـ database) اتقفلت اوتوماتيكى علشان تقدر السيرڤرات الـ slave تلحق السيرڤر الـ master',
@@ -673,7 +673,7 @@ $1',
 $2',
 'namespaceprotected' => "ما عندكش صلاحية تعديل الصفحات  اللى فى نطاق '''$1'''.",
 'ns-specialprotected' => 'الصفحات المخصوصة مش ممكن تعديلها.',
-'titleprotected' => "العنوان دا محمى من الإنشاء بـ[[wiki_user:$1|$1]]. السبب هو ''$2''.",
+'titleprotected' => "العنوان دا محمى من الإنشاء بـ[[User:$1|$1]]. السبب هو ''$2''.",
 
 # Virus scanner
 'virus-badscanner' => "غلطه : ماسح فيروسات مش معروف: ''$1''",
@@ -683,7 +683,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''أنت دلوقتى مش مسجل دخولك.'''
 
-تقدر تكمل استعمال {{SITENAME}} على انك مجهول، أو [[Special:wiki_userLogin|الدخول مرة تانيه]] بنفس الاسم أو باسم تاني.
+تقدر تكمل استعمال {{SITENAME}} على انك مجهول، أو [[Special:UserLogin|الدخول مرة تانيه]] بنفس الاسم أو باسم تاني.
 ممكن تشوف بعض الصفحات  كأنك متسجل ، و دا علشان استعمال الصفحات المتخبية فى المتصفح بتاعك.",
 'welcomecreation' => '== اهلاً و سهلا يا $1! ==
 اتفتحلك حساب.
@@ -697,21 +697,21 @@ $2',
 'login' => 'دخول',
 'nav-login-createaccount' => 'تسجيل دخول / فتح حساب',
 'loginprompt' => 'لازم تكون الكوكيز عندك مفعله علشان تقدر تدخل ل {{SITENAME}}.',
-'wiki_userlogin' => 'دخول / فتح حساب',
-'wiki_userloginnocreate' => 'دخول',
+'userlogin' => 'دخول / فتح حساب',
+'userloginnocreate' => 'دخول',
 'logout' => 'خروج',
-'wiki_userlogout' => 'خروج',
+'userlogout' => 'خروج',
 'notloggedin' => 'انت مش مسجل دخولك',
 'nologin' => "معندكش حساب؟ '''$1'''.",
 'nologinlink' => 'افتح حساب',
 'createaccount' => 'افتح حساب',
 'gotaccount' => "عندك حساب؟ '''$1'''.",
 'gotaccountlink' => 'دخول',
-'wiki_userlogin-resetlink' => 'نسيت تفاصيل الدخول؟',
+'userlogin-resetlink' => 'نسيت تفاصيل الدخول؟',
 'createaccountmail' => 'بـ الايميل',
 'createaccountreason' => 'السبب:',
 'badretype' => 'كلمتين السر اللى  كتبتهم مش  زى بعضهم',
-'wiki_userexists' => 'اسم اليوزر اللى كتبته بيستعمله يوزر غيرك.
+'userexists' => 'اسم اليوزر اللى كتبته بيستعمله يوزر غيرك.
 اكتت اسم يوزر تانى.',
 'loginerror' => 'غلط فى الدخول',
 'createaccounterror' => 'مش قادر يعمل الحساب: $1',
@@ -725,13 +725,13 @@ $2',
 'noname' => 'انت ما حددتش اسم يوزر صحيح.',
 'loginsuccesstitle' => 'تم الدخول بشكل صحيح',
 'loginsuccess' => "'''دخولك   {{SITENAME}} إتسجل بإسم \"\$1\".'''",
-'nosuchwiki_user' => 'مافيش يوزر اسمه "$1".
+'nosuchuser' => 'مافيش يوزر اسمه "$1".
 اسامى اليوزر بتبقى حساسه لحالة الحرف.
-اتأكد من التهجيه, او [[Special:wiki_userLogin/signup|افتح حساب جديد]].',
-'nosuchwiki_usershort' => 'مافيش يوزر باسم $1".
+اتأكد من التهجيه, او [[Special:UserLogin/signup|افتح حساب جديد]].',
+'nosuchusershort' => 'مافيش يوزر باسم $1".
 اتاكد من تهجية الاسم.',
-'nowiki_userspecified' => 'لازم تحدد اسم يوزر.',
-'login-wiki_userblocked' => 'اليوزر دا ممنوع من الدخول.',
+'nouserspecified' => 'لازم تحدد اسم يوزر.',
+'login-userblocked' => 'اليوزر دا ممنوع من الدخول.',
 'wrongpassword' => 'كلمة السر اللى كتبتها مش صحيحه. من فضلك حاول تانى.',
 'wrongpasswordempty' => 'كلمة السر المدخله كانت فاضيه.
 من فضلك حاول تانى.',
@@ -771,7 +771,7 @@ $2',
 'createaccount-text' => 'فى واحد فتح حساب باسم الايمل بتاعك على {{SITENAME}} ($4) بالاسم "$2"، وبباسورد "$3". لازم تسجل دخولك دلوقتى و تغير الباسورد بتاعتك.
 
 لو سمحت تتجاهل الرسالة دى اذا الحساب دا اتفتحلك بالغلط.',
-'wiki_usernamehasherror' => 'اسم اليوزر مش ممكن يكون فيه حروف هاش',
+'usernamehasherror' => 'اسم اليوزر مش ممكن يكون فيه حروف هاش',
 'login-throttled' => 'انت عملت  محاولات لوجين كتيره حديثة على الحساب ده.
 من فضلك استنى قبل المحاولة مرة تانيه.',
 'loginlanguagelabel' => 'اللغة: $1',
@@ -796,7 +796,7 @@ $2',
 
 # Special:PasswordReset
 'passwordreset' => 'تمت إعادة ضبط كلمة السر',
-'passwordreset-wiki_username' => 'اسم اليوزر:',
+'passwordreset-username' => 'اسم اليوزر:',
 
 # Edit page toolbar
 'bold_sample' => 'حروف عريضه',
@@ -872,7 +872,7 @@ $2',
 'loginreqlink' => 'ادخل',
 'loginreqpagetext' => 'لازم تكون $1 علشان تشوف صفحات تانية.',
 'accmailtitle' => ' كلمة السر اتبعتت .',
-'accmailtext' => "الباسورد العشوائيه اللى اتعملت لـ[[wiki_user talk:$1|$1]]  اتبعتت لـ $2.
+'accmailtext' => "الباسورد العشوائيه اللى اتعملت لـ[[User talk:$1|$1]]  اتبعتت لـ $2.
 
 الباسورد بتاعة الحساب الجديد دا ممكن تتغير فى صفحة ''[[Special:ChangePassword|تغيير الباسورد]]''  وقت تسجيل الدخول.",
 'newarticle' => '(جديد)',
@@ -883,7 +883,7 @@ $2',
 'anontalkpagetext' => "----'' صفحة النقاش دى بتاعة يوزر مجهول لسة ما فتحش لنفسه حساب أو عنده واحد بس ما بيستعملوش.
 علشان كدا لازم تستعمل رقم الأيبى علشان تتعرف عليه/عليها.
 العنوان دا ممكن اكتر من واحد يكونو بيستعملوه.
-لو انت يوزر مجهول و حاسس  ان فى تعليقات بتتوجهلك مع انك مالكش دعوة بيها، من فضلك [[Special:wiki_userLogin/signup|افتحلك حساب]] أو [[Special:wiki_userLogin|سجل الدخول]] علشان تتجنب اللخبطة اللى ممكن تحصل فى المستقبل مع يوزرز مجهولين تانيين.''",
+لو انت يوزر مجهول و حاسس  ان فى تعليقات بتتوجهلك مع انك مالكش دعوة بيها، من فضلك [[Special:UserLogin/signup|افتحلك حساب]] أو [[Special:UserLogin|سجل الدخول]] علشان تتجنب اللخبطة اللى ممكن تحصل فى المستقبل مع يوزرز مجهولين تانيين.''",
 'noarticletext' => 'مافيش دلوقتى اى نص فى الصفحه دى.
 ممكن [[Special:Search/{{PAGENAME}}|تدور على عنوان الصفحه دى]] فى صفح تانيه,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} تدور فى السجلات اللى ليها علاقه],
@@ -892,18 +892,18 @@ $2',
 ممكن [[Special:Search/{{PAGENAME}}|تدور على عنوان الصفحه دى]] فى صفح تانيه,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} تدور فى السجلات اللى ليها علاقه],
 او [{{fullurl:{{FULLPAGENAME}}|action=edit}} تعدل الصفحه دى]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => 'حساب اليوزر "<nowiki>$1</nowiki>" مش متسجل. لو سمحت تشوف لو عايز تبتدي/تعدل الصفحة دي.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'حساب اليوزر "$1" مش متسجل',
+'userpage-userdoesnotexist' => 'حساب اليوزر "<nowiki>$1</nowiki>" مش متسجل. لو سمحت تشوف لو عايز تبتدي/تعدل الصفحة دي.',
+'userpage-userdoesnotexist-view' => 'حساب اليوزر "$1" مش متسجل',
 'blocked-notice-logextract' => 'اليوزر ده معمول له بلوك دلوقتى.
 اخر بلوك فى السجل موجود تحت للمراجعه:',
 'clearyourcache' => "'''ملاحظة - بعد التسييف,  يمكن لازم تفرغ كاش متصفحك علشان تشوف التغييرات.''' '''موزيللا / فايرفوكس / سافارى:''' دوس على ''Shift'' فى نفس الوقت دوس على ''Reload,'' أو دوس على اما ''Ctrl-F5'' أو ''Ctrl-R'' (''Command-R'' على ماكنتوش); '''كونكرر: '''دوس على ''Reload'' أو دوس على ''F5;'' '''أوبرا:''' فرغ الكاش فى ''Tools → Preferences;'' '''إنترنت إكسبلورر:''' دوس على ''Ctrl'' فى نفس الوقت دوس على ''Refresh,'' أو دوس على ''Ctrl-F5.''",
-'wiki_usercssyoucanpreview' => "'''ملاحظة:''' استعمل زرار \"{{int:showpreview}}\" علشان تجرب النمط (CSS) أو الجافا سكريبت الجديد قبل تسييڤ الصفحه.",
-'wiki_userjsyoucanpreview' => "'''ملاحظة:''' استعمل زرار \"{{int:showpreview}}\" علشان تجرب النمط (CSS) أو الجافا سكريبت الجديد قبل تسييڤ الصفحه.",
-'wiki_usercsspreview' => "'''افتكر انك  بتعرض  (CSS) بتاع اليوزر بس.
+'usercssyoucanpreview' => "'''ملاحظة:''' استعمل زرار \"{{int:showpreview}}\" علشان تجرب النمط (CSS) أو الجافا سكريبت الجديد قبل تسييڤ الصفحه.",
+'userjsyoucanpreview' => "'''ملاحظة:''' استعمل زرار \"{{int:showpreview}}\" علشان تجرب النمط (CSS) أو الجافا سكريبت الجديد قبل تسييڤ الصفحه.",
+'usercsspreview' => "'''افتكر انك  بتعرض  (CSS) بتاع اليوزر بس.
 هى لسه ماتسييڤتش!'''",
-'wiki_userjspreview' => "'''أفتكر أنك بس بتجرب/بتعرض الجافا سكريبت بتاع اليوزر بتاعك، و انها لسة ماتحفظتش!'''",
-'wiki_userinvalidcssjstitle' => "'''تحذير:'''مافيش واجهة  \"\$1\".
-افتكر أن ملفات ال.css و ال.js بتستخدم حروف صغيرة فى العنوان ، مثلا {{ns:wiki_user}}:Foo/vector.css و مش {{ns:wiki_user}}:Foo/Vector.css.",
+'userjspreview' => "'''أفتكر أنك بس بتجرب/بتعرض الجافا سكريبت بتاع اليوزر بتاعك، و انها لسة ماتحفظتش!'''",
+'userinvalidcssjstitle' => "'''تحذير:'''مافيش واجهة  \"\$1\".
+افتكر أن ملفات ال.css و ال.js بتستخدم حروف صغيرة فى العنوان ، مثلا {{ns:user}}:Foo/vector.css و مش {{ns:user}}:Foo/Vector.css.",
 'updated' => '(متحدثة)',
 'note' => "'''ملحوظه:'''",
 'previewnote' => "'''دى بروفه للصفحه بس.'''
@@ -911,12 +911,12 @@ $2',
 'previewconflict' => 'البروفة دى بتبينلك فوق إزاى ح يكون شكل النص لو انت دوست على حفظ',
 'session_fail_preview' => "'''ما قدرناش  نحفظ التعديلات اللى قمت بيها نتيجة لضياع بيانات  الجلسه.
 الرجاء المحاولة مرة تانيه.
-فى حال استمرار المشكلة حاول  [[Special:wiki_userLogou|تخرج]] وتدخل مرة تانيه .'''",
+فى حال استمرار المشكلة حاول  [[Special:UserLogou|تخرج]] وتدخل مرة تانيه .'''",
 'session_fail_preview_html' => "'''ماقدرناش نعالج تعديلك بسبب ضياع بيانات الجلسة.'''
 
 ''لأن {{SITENAME}} بها HTML هل الخام شغاله، البروفه مخفيه كاحتياط ضد هجمات الجافا سكريبت.''
 
-'''إذا كانت دى محاولة تعديل صادقه، من فضلك حاول مرة تانيه. إذا كانت لسه مش شغاله، حاول [[Special:wiki_userLogout|تسجيل الخروج]] و تسجيل الدخول من جديد.'''",
+'''إذا كانت دى محاولة تعديل صادقه، من فضلك حاول مرة تانيه. إذا كانت لسه مش شغاله، حاول [[Special:UserLogout|تسجيل الخروج]] و تسجيل الدخول من جديد.'''",
 'token_suffix_mismatch' => "'''تعديلك اترفض لأن عميلك غلط فى علامات الترقيم
 فى نص التعديل. التعديل اترفض علشان ما يبوظش نص المقالة.
 دا ساعات بيحصل لما تستعمل خدمة بروكسى مجهولة بايظة أساسها الويب.'''",
@@ -965,7 +965,7 @@ $2',
 'edittools' => '<!-- النص هنا هايظهر تحت صندوق التحرير و استمارة  تحميل الصور. -->',
 'nocreatetitle' => 'إنشاء الصفحات اتحدد',
 'nocreatetext' => '{{SITENAME}} حدد القدره على انشاء صفحات جديده.
-ممكن ترجع وتحرر صفحه موجوده بالفعل، او [[Special:wiki_userLogin|الدخول / فتح حساب]].',
+ممكن ترجع وتحرر صفحه موجوده بالفعل، او [[Special:UserLogin|الدخول / فتح حساب]].',
 'nocreate-loggedin' => 'انت ما عندك ش صلاحية تعمل صفحات جديدة.',
 'sectioneditnotsupported-title' => 'تعديل الأقسام مش مدعوم',
 'sectioneditnotsupported-text' => 'تعديل الاقسام مش مدعوم فى الصفحه دى',
@@ -1005,11 +1005,11 @@ $2',
 لو سمحت تشوف المقارنة اللى تحت علشان تتأكد من إن هو دا اللى إنت عايز تعمله ،وبعدين احفظ التغييرات اللى تحت علشان ترجع فى التعديل.',
 'undo-failure' => 'الرجوع فى التعديل ما نفعش علشان فى تعديلات متعاكسة حصلت فى الصفحة.',
 'undo-norev' => 'الرجوع فى التعديل ما نفعش علشان هو يا إما مش موجود أو انه إتمسح.',
-'undo-summary' => 'الرجوع فى التعديل $1 بتاع [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|نقاش]])',
+'undo-summary' => 'الرجوع فى التعديل $1 بتاع [[Special:Contributions/$2|$2]] ([[User talk:$2|نقاش]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'مش ممكن فتح حساب',
-'cantcreateaccount-text' => "فتح الحسابات من عنوان الأيبى دا ('''$1''') منعه [[wiki_user:$3|$3]].
+'cantcreateaccount-text' => "فتح الحسابات من عنوان الأيبى دا ('''$1''') منعه [[User:$3|$3]].
 
 السبب إللى إداه $3 هو ''$2''",
 
@@ -1048,9 +1048,9 @@ $2',
 
 # Revision deletion
 'rev-deleted-comment' => '(التعليق اتشال)',
-'rev-deleted-wiki_user' => '(اسم اليوزر اتشال)',
+'rev-deleted-user' => '(اسم اليوزر اتشال)',
 'rev-deleted-event' => '(السجل إتشال)',
-'rev-deleted-wiki_user-contribs' => '[اسم اليوزر أو الآى بى اتشال - التعديل مخفى من المساهمات]',
+'rev-deleted-user-contribs' => '[اسم اليوزر أو الآى بى اتشال - التعديل مخفى من المساهمات]',
 'rev-deleted-text-permission' => 'مراجعة الصفحه دى إتمسحت من الأرشيفات العامه.
 ممكن تكون فيه تفاصيل فى [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} سجل المسح].',
 'rev-deleted-text-unhide' => "مراجعة الصفحه دى '''اتمسحت'''. ممكن تلاقى تفاصيل فى [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} سجل المسح].
@@ -1098,7 +1098,7 @@ $2',
 'revdelete-hide-image' => 'خبى المحتويات بتاعة الملف',
 'revdelete-hide-name' => 'تخبية الإجراء والهدف منه',
 'revdelete-hide-comment' => 'خبى تعليق التعديل',
-'revdelete-hide-wiki_user' => 'خبى اسم/عنوان الاى بى بتاع اليوزر',
+'revdelete-hide-user' => 'خبى اسم/عنوان الاى بى بتاع اليوزر',
 'revdelete-hide-restricted' => 'طبق القواعد دى على السيسوبات زى الباقيين',
 'revdelete-radio-same' => '(ماتغيرش)',
 'revdelete-radio-set' => 'أيوه',
@@ -1182,7 +1182,7 @@ $1",
 'showhideselectedversions' => 'عرض/تخبية المراجعات المختاره.',
 'editundo' => 'استرجاع',
 'diff-multi' => '({{PLURAL:$1|نسخه واحده متوسطه|$1 نسخ متوسطه}} by {{PLURAL:$2|يوزر واحد |$2 يوزرات}}  مش معروضه)',
-'diff-multi-manywiki_users' => '({{PLURAL:$1|نسخه واحده متوسطه|$1 نسخ متوسطه}} by {{PLURAL:$2|يوزر واحد |$2 يوزرات}}  مش معروضه)',
+'diff-multi-manyusers' => '({{PLURAL:$1|نسخه واحده متوسطه|$1 نسخ متوسطه}} by {{PLURAL:$2|يوزر واحد |$2 يوزرات}}  مش معروضه)',
 
 # Search results
 'searchresults' => 'نتايج التدوير',
@@ -1262,7 +1262,7 @@ $1",
 'mypreferences' => 'تفضيلاتى',
 'prefs-edits' => 'عدد التعديلات:',
 'prefsnologin' => 'مش متسجل',
-'prefsnologintext' => 'لازم تكون <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} مسجل الدخول]</span> علشان تقدر تعدل تفضيلاتك.',
+'prefsnologintext' => 'لازم تكون <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} مسجل الدخول]</span> علشان تقدر تعدل تفضيلاتك.',
 'changepassword' => 'غير الباسورد',
 'prefs-skin' => 'الوش',
 'skin-preview' => 'بروفه',
@@ -1331,7 +1331,7 @@ $1",
 'prefs-emailconfirm-label' => 'التأكد من الايميل:',
 'prefs-textboxsize' => 'حجم شباك التعديل',
 'youremail' => 'الايميل:',
-'wiki_username' => 'اسم اليوزر:',
+'username' => 'اسم اليوزر:',
 'uid' => 'رقم اليوزر:',
 'prefs-memberingroups' => 'عضو فى {{PLURAL:$1|مجموعة|مجموعة}}:',
 'prefs-registration' => 'وقت التسجيل:',
@@ -1370,35 +1370,35 @@ $1",
 'prefs-displaywatchlist' => 'اختيارات العرض',
 'prefs-diffs' => 'التغيير',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'عنوان الإيميل صح',
 'email-address-validity-invalid' => 'عنوان الإيميل غلط',
 
-# wiki_user rights
-'wiki_userrights' => 'إدارة الحقوق بتاعة اليوزر',
-'wiki_userrights-lookup-wiki_user' => 'إدارة مجموعات اليوزر',
-'wiki_userrights-wiki_user-editname' => 'دخل اسم يوزر:',
-'editwiki_usergroup' => 'تعديل مجموعات اليوزر',
-'editingwiki_user' => "تغيير حقوق االيوزر بتاعة اليوزر'''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'wiki_userrights-editwiki_usergroup' => 'تعديل مجموعات اليوزر',
-'savewiki_usergroups' => 'حفظ مجموعات اليوزر',
-'wiki_userrights-groupsmember' => 'عضو في:',
-'wiki_userrights-groupsmember-auto' => 'عضو ضمنى فى :',
-'wiki_userrights-groups-help' => 'إنت ممكن تغير المجموعات اللى اليوزر دا عضو فيها .
+# User rights
+'userrights' => 'إدارة الحقوق بتاعة اليوزر',
+'userrights-lookup-user' => 'إدارة مجموعات اليوزر',
+'userrights-user-editname' => 'دخل اسم يوزر:',
+'editusergroup' => 'تعديل مجموعات اليوزر',
+'editinguser' => "تغيير حقوق االيوزر بتاعة اليوزر'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'تعديل مجموعات اليوزر',
+'saveusergroups' => 'حفظ مجموعات اليوزر',
+'userrights-groupsmember' => 'عضو في:',
+'userrights-groupsmember-auto' => 'عضو ضمنى فى :',
+'userrights-groups-help' => 'إنت ممكن تغير المجموعات اللى اليوزر دا عضو فيها .
 * صندوق متعلم يعنى اليوزر دا عضو فى المجموعة دي.
 * صندوق مش متعلم يعنى  اليوزر دا مش عضو فى المجموعة دي.
 * علامة * يعنى انك مش ممكن تشيل المجموعات بعد ما تضيفها و العكس بالعكس.',
-'wiki_userrights-reason' => 'السبب:',
-'wiki_userrights-no-interwiki' => 'أنت  مش من حقك تعدل صلاحيات اليوزرز على الويكيات التانية.',
-'wiki_userrights-nodatabase' => 'قاعدة البيانات $1  مش موجودة أو مش محلية.',
-'wiki_userrights-nologin' => 'انت لازم [[Special:wiki_userLogin|تسجيل الدخول]] بحساب  مدير لتعديل حقوق اليوزر.',
-'wiki_userrights-notallowed' => 'حسابك  ماعندوش  إذن لتعديل حقوق اليوزر.',
-'wiki_userrights-changeable-col' => 'المجموعات اللى تقدر تغييرها',
-'wiki_userrights-unchangeable-col' => 'المجموعات اللى مش ممكن انك تغيرها',
+'userrights-reason' => 'السبب:',
+'userrights-no-interwiki' => 'أنت  مش من حقك تعدل صلاحيات اليوزرز على الويكيات التانية.',
+'userrights-nodatabase' => 'قاعدة البيانات $1  مش موجودة أو مش محلية.',
+'userrights-nologin' => 'انت لازم [[Special:UserLogin|تسجيل الدخول]] بحساب  مدير لتعديل حقوق اليوزر.',
+'userrights-notallowed' => 'حسابك  ماعندوش  إذن لتعديل حقوق اليوزر.',
+'userrights-changeable-col' => 'المجموعات اللى تقدر تغييرها',
+'userrights-unchangeable-col' => 'المجموعات اللى مش ممكن انك تغيرها',
 
 # Groups
 'group' => 'المجموعة:',
-'group-wiki_user' => 'يوزرز',
+'group-user' => 'يوزرز',
 'group-autoconfirmed' => 'يوزرز متأكدين أوتوماتيكي',
 'group-bot' => 'بوتات',
 'group-sysop' => 'سيسوبات',
@@ -1406,14 +1406,14 @@ $1",
 'group-suppress' => 'أوفرسايت',
 'group-all' => '(الكل)',
 
-'group-wiki_user-member' => 'يوزر',
+'group-user-member' => 'يوزر',
 'group-autoconfirmed-member' => 'يوزر متأكد أوتوماتيكي',
 'group-bot-member' => 'بوت',
 'group-sysop-member' => 'سيسوب',
 'group-bureaucrat-member' => 'بيروقراط',
 'group-suppress-member' => 'أوفرسايت',
 
-'grouppage-wiki_user' => '{{ns:project}}:يوزرز',
+'grouppage-user' => '{{ns:project}}:يوزرز',
 'grouppage-autoconfirmed' => '{{ns:project}}:يوزرز متأكدين أوتوماتيكي',
 'grouppage-bot' => '{{ns:project}}:بوتات',
 'grouppage-sysop' => '{{ns:project}}:اداريين',
@@ -1429,7 +1429,7 @@ $1",
 'right-minoredit' => 'التعليم على التعديلات كطفيفة',
 'right-move' => 'انقل الصفحات',
 'right-move-subpages' => 'انقل الصفحات مع صفحاتها الفرعيه',
-'right-move-rootwiki_userpages' => 'انقل صفحات جدر اليوزر',
+'right-move-rootuserpages' => 'انقل صفحات جدر اليوزر',
 'right-movefile' => 'نقل الملفات',
 'right-suppressredirect' => 'ما تعملش تحويلة من الاسم القديم عند نقل صفحة',
 'right-upload' => 'حمل الملفات',
@@ -1454,16 +1454,16 @@ $1",
 'right-suppressionlog' => 'شوف السجلات الخاصة',
 'right-block' => 'امنع اليوزرز التانيين من التعديل',
 'right-blockemail' => 'منع يوزر من إنه يبعت إيميل',
-'right-hidewiki_user' => 'منع اسم يوزر، و خبيه عن الناس',
+'right-hideuser' => 'منع اسم يوزر، و خبيه عن الناس',
 'right-ipblock-exempt' => 'إتفادى عمليات منع الأيبي، المنع الأوتوماتيكى ومنع النطاق.',
 'right-proxyunbannable' => 'إتفادى عمليات المنع الأوتوماتيكية للبروكسيهات',
 'right-unblockself' => 'رفع المنع عن نفسهم',
 'right-protect' => 'تغيير مستويات الحماية وتعديل الصفحات المحمية',
 'right-editprotected' => 'تعديل الصفحات المحمية (من غير الحماية المتضمنة)',
 'right-editinterface' => 'تعديل الواجهة بتاعة اليوزر',
-'right-editwiki_usercssjs' => 'تعديل ملفات CSS و JS لليوزرز التانيين',
-'right-editwiki_usercss' => 'تعديل ملفات CSS لليوزرز التانيين',
-'right-editwiki_userjs' => 'تعديل ملفات JS لليوزرز التانيين',
+'right-editusercssjs' => 'تعديل ملفات CSS و JS لليوزرز التانيين',
+'right-editusercss' => 'تعديل ملفات CSS لليوزرز التانيين',
+'right-edituserjs' => 'تعديل ملفات JS لليوزرز التانيين',
 'right-rollback' => 'رجع بسرعه التعديلات بتاعة آخر يوزر عدل صفحة معينة',
 'right-markbotedits' => 'التعليم على التعديلات المترجعة كتعديلات بوت',
 'right-noratelimit' => 'مش متأثر بحدود المعدل',
@@ -1474,14 +1474,14 @@ $1",
 'right-patrolmarks' => 'عرض علامات المراجعة فى اخر التعديلات',
 'right-unwatchedpages' => 'بين لستة الصفحات اللى مش متراقبة',
 'right-mergehistory' => 'ادمج تاريخ الصفحات',
-'right-wiki_userrights' => 'تعديل كل الحقوق بتاعة اليوزر',
-'right-wiki_userrights-interwiki' => 'تعديل صلاحيات اليوزر لليوزرز فى مواقع الويكى التانيه',
+'right-userrights' => 'تعديل كل الحقوق بتاعة اليوزر',
+'right-userrights-interwiki' => 'تعديل صلاحيات اليوزر لليوزرز فى مواقع الويكى التانيه',
 'right-siteadmin' => 'قفل وفتح قاعدة البيانات',
 'right-override-export-depth' => 'تصدير الصفحات مع الصفحات الموصوله لحد عمق 5',
 'right-sendemail' => 'يبعت إيميل لليوزرز التانيين',
 'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:PasswordReset|صفحة خاصة]])',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'سجل صلاحيات اليوزرز',
 'rightslogtext' => 'ده سجل بالتغييرات ف صلاحيات اليوزرز .',
 'rightslogentry' => 'غير صلاحيات $1 من $2 ل $3',
@@ -1496,7 +1496,7 @@ $1",
 'action-minoredit' => 'التعليم على هذا التعديل كطفيف',
 'action-move' => 'نقل هذه الصفحة',
 'action-move-subpages' => 'نقل هذه الصفحة، وصفحاتها الفرعية',
-'action-move-rootwiki_userpages' => 'انقل صفحات جدر اليوزر',
+'action-move-rootuserpages' => 'انقل صفحات جدر اليوزر',
 'action-movefile' => 'انقل الملف ده',
 'action-upload' => 'رفع هذا الملف',
 'action-reupload' => 'الكتابة على هذا الملف الموجود',
@@ -1518,8 +1518,8 @@ $1",
 'action-autopatrol' => 'جعل تعديلك معلم عليه كمراجع',
 'action-unwatchedpages' => 'رؤية لستة الصفحات اللى مش متراقبة',
 'action-mergehistory' => 'دمج تاريخ هذه الصفحة',
-'action-wiki_userrights' => 'تعديل كل صلاحيات اليوزر',
-'action-wiki_userrights-interwiki' => 'تعديل صلاحيات اليوزر لليوزرز فى الويكيات التانية',
+'action-userrights' => 'تعديل كل صلاحيات اليوزر',
+'action-userrights-interwiki' => 'تعديل صلاحيات اليوزر لليوزرز فى الويكيات التانية',
 'action-siteadmin' => 'غلق أو رفع غلق قاعدة البيانات',
 
 # Recent changes
@@ -1549,7 +1549,7 @@ $1",
 'minoreditletter' => 'ص',
 'newpageletter' => 'ج',
 'boteditletter' => 'ب',
-'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1| يوزر مراقب|يوزر مراقب}}]',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1| يوزر مراقب|يوزر مراقب}}]',
 'rc_categories' => 'حصر لتصنيفات (مفصولة برمز "|")',
 'rc_categories_any' => 'أى',
 'newsectionsummary' => '/* $1 */ قسم جديد',
@@ -1573,7 +1573,7 @@ $1",
 'reuploaddesc' => 'إلغى التحميل وارجع لاستمارة التحميل',
 'upload-tryagain' => 'نفذ وصف الملف المتعدل',
 'uploadnologin' => 'ما سجلتش الدخول',
-'uploadnologintext' => 'لازم تكون [[Special:wiki_userLogin|مسجل الدخول]] علشان تقدر تحمل الملفات.',
+'uploadnologintext' => 'لازم تكون [[Special:UserLogin|مسجل الدخول]] علشان تقدر تحمل الملفات.',
 'upload_directory_missing' => 'مجلد التحميل($1) ضايع السيرفير وماقدرش يعمل واحد تاني.',
 'upload_directory_read_only' => 'مجلد التحميل ($1) مش ممكن الكتابة عليه بواسطة سيرڨر الويب.',
 'uploaderror' => 'غلطه فى التحميل',
@@ -1684,7 +1684,7 @@ PICT # misc.
 'upload-proto-error-text' => 'االتحميل عن بعد لازمله يوأرإل بيبتدى بـ <code>http://</code> أو <code>ftp://</code>.',
 'upload-file-error' => 'غلط داخلي',
 'upload-file-error-text' => 'حصل غلط داخلى واحنا بنحاول نعمل ملف مؤقت على السيرفر.
-لو سمحت اتصل [[Special:Listwiki_users/sysop|بسيسوب]].',
+لو سمحت اتصل [[Special:ListUsers/sysop|بسيسوب]].',
 'upload-misc-error' => 'غلط مش معروف فى التحميل',
 'upload-misc-error-text' => 'حصل غلط مش معروف وإنت بتحمل.
 لو سمحت تتاكد أن اليوأرإل صح و ممكن تدخل عليه و بعدين حاول تاني.
@@ -1746,7 +1746,7 @@ PICT # misc.
 'listfiles' => 'لستة الملفات',
 'listfiles_date' => 'تاريخ',
 'listfiles_name' => 'اسم',
-'listfiles_wiki_user' => 'يوزر',
+'listfiles_user' => 'يوزر',
 'listfiles_size' => 'حجم',
 'listfiles_description' => 'وصف',
 'listfiles_count' => 'نسخ',
@@ -1763,7 +1763,7 @@ PICT # misc.
 'filehist-thumb' => 'صورة صغيرة',
 'filehist-thumbtext' => 'تصغير للنسخة بتاريخ $1',
 'filehist-nothumb' => 'لا تصغير',
-'filehist-wiki_user' => 'يوزر',
+'filehist-user' => 'يوزر',
 'filehist-dimensions' => 'ابعاد',
 'filehist-filesize' => 'حجم الفايل',
 'filehist-comment' => 'تعليق',
@@ -1851,7 +1851,7 @@ PICT # misc.
 'statistics-header-pages' => 'إحصاءات الصفحات',
 'statistics-header-edits' => 'إحصاءات التعديلات',
 'statistics-header-views' => 'إحصاءات المشاهدة',
-'statistics-header-wiki_users' => 'الاحصاءات بتاعة اليوزر',
+'statistics-header-users' => 'الاحصاءات بتاعة اليوزر',
 'statistics-header-hooks' => 'احصائيات تانيه',
 'statistics-articles' => 'صفحات المحتوى',
 'statistics-pages' => 'الصفحات',
@@ -1861,9 +1861,9 @@ PICT # misc.
 'statistics-edits-average' => 'متوسط التعديلات لكل صفحة',
 'statistics-views-total' => 'إجمالى المشاهدات',
 'statistics-views-peredit' => 'المشاهدات لكل تعديل',
-'statistics-wiki_users' => '[[Special:Listwiki_users|يوزرز]] مسجلين',
-'statistics-wiki_users-active' => 'يوزرز نشطين',
-'statistics-wiki_users-active-desc' => 'اليوزرز اللى نفذو عمليه فى الـ {{PLURAL:$1|يوم|$1 ايام}} اللى فاتو',
+'statistics-users' => '[[Special:ListUsers|يوزرز]] مسجلين',
+'statistics-users-active' => 'يوزرز نشطين',
+'statistics-users-active-desc' => 'اليوزرز اللى نفذو عمليه فى الـ {{PLURAL:$1|يوم|$1 ايام}} اللى فاتو',
 'statistics-mostpopular' => 'اكتر صفحات اتشافت',
 
 'disambiguations' => 'صفحات التوضيح',
@@ -1932,13 +1932,13 @@ PICT # misc.
 'protectedtitles' => 'عناوين محمية',
 'protectedtitlestext' => 'العناوين دى محمية ضد الإنشاء',
 'protectedtitlesempty' => 'مافيش عناوين محمية دلوقتى على حسب المحددات دي.',
-'listwiki_users' => 'لستة الأعضاء',
-'listwiki_users-editsonly' => 'عرض اليوزرز اللى قاموا بتعديلات فقط',
-'listwiki_users-creationsort' => 'رتب على حسب تاريخ الإنشاء',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|تعديل|تعديل}}',
-'wiki_usercreated' => '{{GENDER:$3|إتعملت|إتعملت}}  يوم $1 الساعه $2',
+'listusers' => 'لستة الأعضاء',
+'listusers-editsonly' => 'عرض اليوزرز اللى قاموا بتعديلات فقط',
+'listusers-creationsort' => 'رتب على حسب تاريخ الإنشاء',
+'usereditcount' => '$1 {{PLURAL:$1|تعديل|تعديل}}',
+'usercreated' => '{{GENDER:$3|إتعملت|إتعملت}}  يوم $1 الساعه $2',
 'newpages' => 'صفحات جديده',
-'newpages-wiki_username' => 'اسم اليوزر:',
+'newpages-username' => 'اسم اليوزر:',
 'ancientpages' => 'اقدم الصفحات',
 'move' => 'انقل',
 'movethispage' => 'انقل الصفحه دى',
@@ -1961,7 +1961,7 @@ PICT # misc.
 'booksources-invalid-isbn' => 'رقم الـ ISBN اللى كتبته شكله مش صحيح؛ اتإكد من الغلطات بتاعة النسخ من المصدر الاصلى.',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'اليوزر:',
+'specialloguserlabel' => 'اليوزر:',
 'speciallogtitlelabel' => 'العنوان:',
 'log' => 'سجلات',
 'all-logs-page' => 'كل السجلات العامه',
@@ -2012,24 +2012,24 @@ PICT # misc.
 'linksearch-line' => '$1 موصوله من $2',
 'linksearch-error' => 'الكروت الخاصة ممكن تبان بس  فى بداية اسم المضيف',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'عرض اليوزرز من أول:',
-'listwiki_users-submit' => 'عرض',
-'listwiki_users-noresult' => 'ما فى ش يوزر',
-'listwiki_users-blocked' => '(ممنوع)',
+# Special:ListUsers
+'listusersfrom' => 'عرض اليوزرز من أول:',
+'listusers-submit' => 'عرض',
+'listusers-noresult' => 'ما فى ش يوزر',
+'listusers-blocked' => '(ممنوع)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'ليستة اليوزرات اللى ليهم نشاط',
-'activewiki_users-intro' => 'دى قايمه اليوزرات اللى عملوا نشاط فى آخر $1 {{PLURAL:$1|يوم|يوم}}.',
-'activewiki_users-count' => '$1 {{PLURAL:$1|تعديل|تعديل}} فى آخر {{PLURAL:$3|يوم|$3 يوم}}',
-'activewiki_users-from' => 'عرض اليوزرات بداية من:',
-'activewiki_users-hidebots' => 'خبى البوتات',
-'activewiki_users-hidesysops' => 'خبى السيسوبات',
-'activewiki_users-noresult' => 'مالقيناش اى يوزر',
+# Special:ActiveUsers
+'activeusers' => 'ليستة اليوزرات اللى ليهم نشاط',
+'activeusers-intro' => 'دى قايمه اليوزرات اللى عملوا نشاط فى آخر $1 {{PLURAL:$1|يوم|يوم}}.',
+'activeusers-count' => '$1 {{PLURAL:$1|تعديل|تعديل}} فى آخر {{PLURAL:$3|يوم|$3 يوم}}',
+'activeusers-from' => 'عرض اليوزرات بداية من:',
+'activeusers-hidebots' => 'خبى البوتات',
+'activeusers-hidesysops' => 'خبى السيسوبات',
+'activeusers-noresult' => 'مالقيناش اى يوزر',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'سجل اليوزرز الجداد',
-'newwiki_userlogpagetext' => 'دا سجل لليوزرز الجداد',
+# Special:Log/newusers
+'newuserlogpage' => 'سجل اليوزرز الجداد',
+'newuserlogpagetext' => 'دا سجل لليوزرز الجداد',
 
 # Special:ListGroupRights
 'listgrouprights' => 'حقوق مجموعات اليوزرز',
@@ -2050,14 +2050,14 @@ PICT # misc.
 'listgrouprights-addgroup-self-all' => 'اضافة كل المجموعات للحساب بتاعى',
 'listgrouprights-removegroup-self-all' => 'مسح كل المجموعات من الحساب بتاعى',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'مافيش عنوان نبعت عليه',
-'mailnologintext' => 'لازم تعمل [[Special:wiki_userLogin|تسجيل الدخول]] و تدخل ايميل صحيح فى صفحة [[Special:Preferences|التفضيلات]] علشان تقدر تبعت ايميلات لليوزرز التانيين.',
-'emailwiki_user' => 'ابعت ايميل لليوزر دا',
+'mailnologintext' => 'لازم تعمل [[Special:UserLogin|تسجيل الدخول]] و تدخل ايميل صحيح فى صفحة [[Special:Preferences|التفضيلات]] علشان تقدر تبعت ايميلات لليوزرز التانيين.',
+'emailuser' => 'ابعت ايميل لليوزر دا',
 'emailpage' => 'ابعت ايميل لليوزر ده',
 'emailpagetext' => 'ممكن تستعمل الاستمارة اللى تحت دى عشان تيعت ايميل لليوزر دا.
 عنوان الايميل اللى كتبته فى [[Special:Preferences|التفضيلات بتاعتك]] ح يظهر على انه عنوان الاستمارة و بكدة اللى حيستقبله ح يقدر يرد على الايميل.',
-'wiki_usermailererror' => 'البريد رجع غلط:',
+'usermailererror' => 'البريد رجع غلط:',
 'defemailsubject' => 'إيميل من {{SITENAME}}',
 'noemailtitle' => 'مافيش  عنوان ايميل',
 'noemailtext' => 'اليوزر دا ما كتبش االايميل بتاعه صح .',
@@ -2073,7 +2073,7 @@ PICT # misc.
 'emailccsubject' => 'نسخة من رسالتك ل $1: $2',
 'emailsent' => 'الإيميل اتبعت',
 'emailsenttext' => 'الايميل بتاعك اتبعت خلاص.',
-'emailwiki_userfooter' => 'الايميل دا بعته $1 لـ $2 عن طريق خاصية "مراسلة اليوزر" فى {{SITENAME}}.',
+'emailuserfooter' => 'الايميل دا بعته $1 لـ $2 عن طريق خاصية "مراسلة اليوزر" فى {{SITENAME}}.',
 
 # Watchlist
 'watchlist' => 'لستة الصفحات اللى باراقبها',
@@ -2082,7 +2082,7 @@ PICT # misc.
 'nowatchlist' => 'مافيش حاجة فى لستة مراقبتك.',
 'watchlistanontext' => 'لو سمحت $1 لعرض أو تعديل الصفحات فى لستة مراقبتك.',
 'watchnologin' => 'مش متسجل',
-'watchnologintext' => 'لازم تكون [[Special:wiki_userLogin|مسجل الدخول]] علشان تعدل لستة المراقبة بتاعتك.',
+'watchnologintext' => 'لازم تكون [[Special:UserLogin|مسجل الدخول]] علشان تعدل لستة المراقبة بتاعتك.',
 'addedwatchtext' => 'تمت إضافة الصفحه  "$1"  [[Special:Watchlist|للستة الصفحات اللى بتراقبها]].
 التعديلات اللى بعد كده ها تتحط على الصفحه دى، وصفحة المناقش الخاصه بها ها تتحط هناك. واسم الصفحة هايظهر  بخط <b>عريض</b> فى صفحة [[Special:RecentChanges|أحدث التعديلات]] لتسهيل تحديدها واكتشافها.',
 'removedwatchtext' => 'الصفحه دى اتشالت "[[:$1]]" من [[Special:Watchlist|لستة الصفحات اللى بتراقبها]].',
@@ -2187,13 +2187,13 @@ $UNWATCHURL
 'rollbacklink' => 'ترجيع',
 'rollbackfailed' => 'الترجيع ما نفعش',
 'cantrollback' => 'ماقدرناش نرجع فى التعديل؛ آخر مساهم هوه الوحيد اللى ساهم فى الصفحة دي.',
-'alreadyrolled' => 'ماقدرناش نرجع التعديل الاخير لـ [[:$1]] بتاع [[wiki_user:$2|$2]] ([[wiki_user talk:$2|نقاش]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
+'alreadyrolled' => 'ماقدرناش نرجع التعديل الاخير لـ [[:$1]] بتاع [[User:$2|$2]] ([[User talk:$2|نقاش]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
 فى واحد تانى عدل الصفحه او عمل استرجاع قبل كده.
 
-اخر تعديل للصفحه دى عمله [[wiki_user:$3|$3]] ([[wiki_user talk:$3|نقاش]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+اخر تعديل للصفحه دى عمله [[User:$3|$3]] ([[User talk:$3|نقاش]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "ملخص التعديل كان: \"''\$1''\".",
-'revertpage' => 'استرجع التعديلات بتاعة [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|مناقشة]]) لآخر نسخة بتاعة [[wiki_user:$1|$1]]',
-'revertpage-nowiki_user' => 'استرجع التعديلات بتاعه (اسم اليوزر اتمسح) لغايه آخر نسخه بتاعه [[wiki_user:$1|$1]]',
+'revertpage' => 'استرجع التعديلات بتاعة [[Special:Contributions/$2|$2]] ([[User talk:$2|مناقشة]]) لآخر نسخة بتاعة [[User:$1|$1]]',
+'revertpage-nouser' => 'استرجع التعديلات بتاعه (اسم اليوزر اتمسح) لغايه آخر نسخه بتاعه [[User:$1|$1]]',
 'rollback-success' => 'استرجع تعديلات $1؛
 استرجع لآخر نسخة بواسطة $2.',
 
@@ -2343,11 +2343,11 @@ $1',
 'sp-contributions-uploads' => 'مرفوعات',
 'sp-contributions-logs' => 'السجلات',
 'sp-contributions-talk' => 'مناقشه',
-'sp-contributions-wiki_userrights' => 'ادارة حقوق اليوزر',
+'sp-contributions-userrights' => 'ادارة حقوق اليوزر',
 'sp-contributions-blocked-notice' => 'اليوزر ده ممنوع دلوقتى.
 آخر عمليه منع في السجل موجوده تحت كمرجع:',
 'sp-contributions-search' => 'دور على مساهمات',
-'sp-contributions-wiki_username' => 'عنوان أيبى أو اسم يوزر:',
+'sp-contributions-username' => 'عنوان أيبى أو اسم يوزر:',
 'sp-contributions-toponly' => 'اظهر اختير تعديل  بس',
 'sp-contributions-submit' => 'تدوير',
 
@@ -2378,7 +2378,7 @@ $1',
 دا لازم يحصل بس علشان تمنع التخريب ،و على حسب
 [[{{MediaWiki:Policy-url}}|السياسة]].
 اكتب سبب محدد تحت (يعنى مثلا، اكتب الصفحات المعينة اللى اتخربت بسببه).',
-'ipadressorwiki_username' => 'عنوان الأيبى أو اسم اليوزر:',
+'ipadressorusername' => 'عنوان الأيبى أو اسم اليوزر:',
 'ipbexpiry' => 'مدة المنع:',
 'ipbreason' => 'السبب:',
 'ipbreasonotherlist' => 'سبب تاني',
@@ -2399,7 +2399,7 @@ $1',
 'ipbotheroption' => 'كمان',
 'ipbotherreason' => 'سبب تاني:',
 'ipbhidename' => 'خبى اسم اليوزر من التعديلات و الليستات.',
-'ipbwatchwiki_user' => 'راقب صفحات اليوزر و النقاش بتوع اليوزر دا',
+'ipbwatchuser' => 'راقب صفحات اليوزر و النقاش بتوع اليوزر دا',
 'ipb-change-block' => 'عيد منع اليوزر بالإعدادات دى',
 'badipaddress' => 'عنوان أيبى مش صحيح',
 'blockipsuccesssub' => 'المنع حصل بنجاح',
@@ -2413,7 +2413,7 @@ $1',
 'unblockip' => 'رفع منع يوزر',
 'unblockiptext' => 'استخدم الاستمارة اللى تحت علشان ترجع حق الكتابة بتاعة عنوان أيبى أو يوزر اتسحب منه الحق دا قبل كدا.',
 'ipusubmit' => 'ارفع المنع دا',
-'unblocked' => 'المنع اترفع عن [[wiki_user:$1|$1]]',
+'unblocked' => 'المنع اترفع عن [[User:$1|$1]]',
 'unblocked-id' => 'منع $1 اترفع',
 'ipblocklist' => 'يوزرات ممنوعين',
 'ipblocklist-legend' => 'دور على يوزر ممنوع',
@@ -2426,14 +2426,14 @@ $1',
 'noautoblockblock' => 'المنع الاوتوماتيكى متعطل',
 'createaccountblock' => ' فتح الحسابات ممنوع',
 'emailblock' => 'الإيميل ممنوع',
-'blocklist-nowiki_usertalk' => 'لا يمكنه تعديل صفحة نقاشه الخاصة',
+'blocklist-nousertalk' => 'لا يمكنه تعديل صفحة نقاشه الخاصة',
 'ipblocklist-empty' => 'لستة المنع فاضية.',
 'ipblocklist-no-results' => 'عنوان الأيبى أو اسم اليوزر المطلوب مش ممنوع.',
 'blocklink' => 'بلوك',
 'unblocklink' => 'شيل البلوك',
 'change-blocklink' => 'غير البلوك',
 'contribslink' => 'تعديلات',
-'autoblocker' => 'انت اتمنعت اوتوماتيكى لأن الأيبى بتاعك استعمله "[[wiki_user:$1|$1]]" فى الفترة الاخيرة.
+'autoblocker' => 'انت اتمنعت اوتوماتيكى لأن الأيبى بتاعك استعمله "[[User:$1|$1]]" فى الفترة الاخيرة.
 السبب اللى خلا $1 يتمنع هو: "$2"',
 'blocklogpage' => 'سجل المنع',
 'blocklog-showlog' => 'اليوزر ده اتمنع قبل كده.
@@ -2450,7 +2450,7 @@ $1',
 'block-log-flags-nocreate' => ' فتح الحسابات ممنوع',
 'block-log-flags-noautoblock' => 'المنع التلقائى متعطل',
 'block-log-flags-noemail' => 'الإيميل ممنوع',
-'block-log-flags-nowiki_usertalk' => 'لا يمكن تعديل صفحة النقاش الخاصة',
+'block-log-flags-nousertalk' => 'لا يمكن تعديل صفحة النقاش الخاصة',
 'block-log-flags-angry-autoblock' => 'المنع الاوتوماتيكى المتقدم متفعل',
 'block-log-flags-hiddenname' => 'اسم اليوزر مخفى',
 'range_block_disabled' => 'إمكانيةالسيسوب لمنع نطاق متعطلة.',
@@ -2477,7 +2477,7 @@ $1',
 'sorbs_create_account_reason' => 'عنوان الأيبى بتاعك موجود كبروكسى مفتوح فى ال DNSBL اللى بيستعمله {{SITENAME}}.
 ما ينفعش تفتح حساب.',
 'cant-block-while-blocked' => 'أنت لا يمكنك منع اليوزرز التانين و أنت ممنوع.',
-'cant-see-hidden-wiki_user' => 'اليوزر اللى انت بتحاول تعمل له منع اصلا ممنوع و مخفى.اكمنك ما عندكش صلاحية تخبية اليوزرات، ما ينفعش تشوف المنع او تعدله.',
+'cant-see-hidden-user' => 'اليوزر اللى انت بتحاول تعمل له منع اصلا ممنوع و مخفى.اكمنك ما عندكش صلاحية تخبية اليوزرات، ما ينفعش تشوف المنع او تعدله.',
 
 # Developer tools
 'lockdb' => 'اقفل قاعدة البيانات',
@@ -2518,13 +2518,13 @@ $1',
 
 وفى الحالات  دى، لو عايز  تنقل صفحة المناقشه  لازم تنقل أو تدمج محتوياتها  يدويا.",
 'movearticle' => 'انقل الصفحه:',
-'movewiki_userpage-warning' => "'''خد بالك:''' انت ح تعمل نقل لصفحه بتاعة يوزر. لو سمحت تعمل حسابك ان الصفحه هى بس اللى ح تتنقل و اسم اليوزر''مش'' ح يتغير.",
+'moveuserpage-warning' => "'''خد بالك:''' انت ح تعمل نقل لصفحه بتاعة يوزر. لو سمحت تعمل حسابك ان الصفحه هى بس اللى ح تتنقل و اسم اليوزر''مش'' ح يتغير.",
 'movenologin' => 'مش متسجل',
-'movenologintext' => 'لازم تكون يوزر متسجل و تعمل [[Special:wiki_userLogin|دخول]] علشان تنقل الصفحة.',
+'movenologintext' => 'لازم تكون يوزر متسجل و تعمل [[Special:UserLogin|دخول]] علشان تنقل الصفحة.',
 'movenotallowed' => 'ماعندكش الصلاحية لنقل الصفحات.',
 'movenotallowedfile' => 'معندكش اذن تنقل الملف ده.',
-'cant-move-wiki_user-page' => 'أنت لا تمتلك الصلاحية لنقل صفحات اليوزر الرئيسية.',
-'cant-move-to-wiki_user-page' => 'أنت لا تمتلك الصلاحية لنقل صفحة لصفحة يوزر (ماعدا لصفحة يوزر فرعية).',
+'cant-move-user-page' => 'أنت لا تمتلك الصلاحية لنقل صفحات اليوزر الرئيسية.',
+'cant-move-to-user-page' => 'أنت لا تمتلك الصلاحية لنقل صفحة لصفحة يوزر (ماعدا لصفحة يوزر فرعية).',
 'newtitle' => 'للعنوان الجديد:',
 'move-watch' => 'راقب الصفحه دى',
 'movepagebtn' => 'نقل الصفحه',
@@ -2677,8 +2677,8 @@ $1',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|تعديل واحد|تعديل}} من $2',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'صفحة اليوزر بتاعتك',
-'tooltip-pt-anonwiki_userpage' => 'صفحة اليوزر للأيبى اللى انت بتعمل منه تحرير',
+'tooltip-pt-userpage' => 'صفحة اليوزر بتاعتك',
+'tooltip-pt-anonuserpage' => 'صفحة اليوزر للأيبى اللى انت بتعمل منه تحرير',
 'tooltip-pt-mytalk' => 'صفحة المنقاشه بتاعتك',
 'tooltip-pt-anontalk' => 'نقاش حوالين التعديلات من عنوان الأيبى دا',
 'tooltip-pt-preferences' => 'تفضيلاتى',
@@ -2717,13 +2717,13 @@ $1',
 'tooltip-feed-rss' => 'تلقيم أر إس إس للصفحة دي',
 'tooltip-feed-atom' => 'تلقيم أتوم للصفحة دي',
 'tooltip-t-contributions' => 'عرض مساهمات اليوزر ده',
-'tooltip-t-emailwiki_user' => 'ابعت ايميل لليوزر ده',
+'tooltip-t-emailuser' => 'ابعت ايميل لليوزر ده',
 'tooltip-t-upload' => 'ارفع فايلات (upload files)',
 'tooltip-t-specialpages' => 'ليستة كل الصفح المخصوصه',
 'tooltip-t-print' => 'نسخه تنفع تتطبع للصفحه دى',
 'tooltip-t-permalink' => 'لينك دايم للنسخه دى من الصفحه',
 'tooltip-ca-nstab-main' => 'اعرض صفحة المحتوى',
-'tooltip-ca-nstab-wiki_user' => 'اعرض صفحة اليوزر',
+'tooltip-ca-nstab-user' => 'اعرض صفحة اليوزر',
 'tooltip-ca-nstab-media' => 'اعرض صفحة الميديا',
 'tooltip-ca-nstab-special' => 'دى صفحه مخصوصه, ما تقدر ش تعدل الصفحه نفسها',
 'tooltip-ca-nstab-project' => 'اعرض صفحة المشروع',
@@ -2775,13 +2775,13 @@ $1',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|يوزر مجهول|يوزرز مجهولين}} ل {{SITENAME}}',
-'sitewiki_user' => 'يوزر {{SITENAME}} $1',
-'anonwiki_user' => '{{SITENAME}} يوزر مجهول $1',
+'siteuser' => 'يوزر {{SITENAME}} $1',
+'anonuser' => '{{SITENAME}} يوزر مجهول $1',
 'lastmodifiedatby' => 'آخر تعديل  للصفحة دى كان فى $2، $1 عن طريق $3.',
 'othercontribs' => 'بناء على عمل $1.',
 'others' => 'تانيين',
-'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|يوزر|يوزرز}} $1',
-'anonwiki_users' => '{{SITENAME}} مجهول {{PLURAL:$2|يوزر|يوزرات}} $1',
+'siteusers' => '{{SITENAME}} {{PLURAL:$2|يوزر|يوزرز}} $1',
+'anonusers' => '{{SITENAME}} مجهول {{PLURAL:$2|يوزر|يوزرات}} $1',
 'creditspage' => 'حقوق الصفحة',
 'nocredits' => 'مافيش معلومات حقوق متوفرة للصفحة دي.',
 
@@ -2790,7 +2790,7 @@ $1',
 'spamprotectiontext' => 'السبام فيلتر منعك من إنك تحفظ الصفحة دى.
 السبب يمكن علشان فى لينك لسايت خارجى فى القايمة السودة.',
 'spamprotectionmatch' => 'النص دا هو اللى نشط السبام فيلتر بتاعنا: $1',
-'spambot_wiki_username' => 'تنظيف سبام ميدياويكى',
+'spambot_username' => 'تنظيف سبام ميدياويكى',
 'spam_reverting' => 'ترجيع آخر نسخة مافيهاش لينكات لـ $1',
 'spam_blanking' => 'كل النسخ فيها لينكات ل $1، فضيها',
 
@@ -2932,7 +2932,7 @@ $1',
 'exif-compressedbitsperpixel' => 'طور ضغط الصورة',
 'exif-pixelydimension' => 'عرض صورة صحيح',
 'exif-pixelxdimension' => 'ارتفاع صورة صحيح',
-'exif-wiki_usercomment' => 'تعليقات اليوزر',
+'exif-usercomment' => 'تعليقات اليوزر',
 'exif-relatedsoundfile' => 'ملف صوت مرتبط',
 'exif-datetimeoriginal' => 'تاريخ و وقت الإنتاج',
 'exif-datetimedigitized' => 'تاريخ و وقت التحويل الرقمى',
@@ -3223,7 +3223,7 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''تحذير''':  الصفحة دى اتمسحت بعد ما بدأت أنت  فى تحريرها!",
-'confirmrecreate' => "اليوزر [[wiki_user:$1|$1]] ([[wiki_user talk:$1|مناقشة]]) مسح المقالة دى بعد ما انت بدأت فى تحريرها علشان:
+'confirmrecreate' => "اليوزر [[User:$1|$1]] ([[User talk:$1|مناقشة]]) مسح المقالة دى بعد ما انت بدأت فى تحريرها علشان:
 :''$2''
 لو سمحت تتأكد من أنك عايز تبتدى المقالة دى تاني.",
 'recreate' => 'ابتدى تاني',
@@ -3420,7 +3420,7 @@ $5
 'specialpages-group-login' => 'ادخل / سجل',
 'specialpages-group-changes' => 'السجلات واحدث التغييرات',
 'specialpages-group-media' => 'تقارير الميديا وعمليات التحميل',
-'specialpages-group-wiki_users' => 'اليوزرز و الحقوق',
+'specialpages-group-users' => 'اليوزرز و الحقوق',
 'specialpages-group-highuse' => 'صفحات بتستخدم كتير',
 'specialpages-group-pages' => 'ليستات الصفحات',
 'specialpages-group-pagetools' => 'أدوات الصفحات',
@@ -3483,7 +3483,7 @@ $5
 # New logging system
 'revdelete-restricted' => 'طبق التعليمات على السيسوبات',
 'revdelete-unrestricted' => 'شيل الضوابط من على السيسوبات',
-'newwiki_userlog-byemail' => 'الباسورد اتبعتت بالايميل',
+'newuserlog-byemail' => 'الباسورد اتبعتت بالايميل',
 
 # Search suggestions
 'searchsuggest-search' => 'تدوير',

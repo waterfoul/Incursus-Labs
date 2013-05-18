@@ -67,7 +67,7 @@ $messages = array(
 'toolbox' => 'Maturuzi',
 'otherlanguages' => 'Mimwe Mitauro',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Zvirikuitika',
 'currentevents-url' => 'Project:Zvirikuitika',
 'disclaimers' => 'Matandanyadzi',
@@ -96,9 +96,9 @@ Usakanganwe kuchinga [[Special:Preferences|mapreferences ako {{SITENAME}}]].',
 'yourpasswordagain' => 'Nyorazve password:',
 'remembermypassword' => 'Ndiyeuke (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'Gamuchirwa',
-'wiki_userlogin' => 'Gamuchirwa / Gadzira Akaunzi',
+'userlogin' => 'Gamuchirwa / Gadzira Akaunzi',
 'logout' => 'Chibuda',
-'wiki_userlogout' => 'Chibuda',
+'userlogout' => 'Chibuda',
 'notloggedin' => 'Hauna kugamuchirwa',
 'createaccount' => 'Gadzira Akaunzi',
 
@@ -119,7 +119,7 @@ Usakanganwe kuchinga [[Special:Preferences|mapreferences ako {{SITENAME}}]].',
 'prefs-rc' => 'Zvaba Kuchinjwa',
 'searchresultshead' => 'Tsvaga',
 'youremail' => 'E-mail:',
-'wiki_username' => 'Zita:',
+'username' => 'Zita:',
 
 # Recent changes
 'recentchanges' => 'Zvaba Kuchinjwa',

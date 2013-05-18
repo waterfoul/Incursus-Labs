@@ -64,7 +64,7 @@ $namespaceGenderAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activewiki_users'               => array( 'PërdoruesitAktivë' ),
+	'Activeusers'               => array( 'PërdoruesitAktivë' ),
 	'Allmessages'               => array( 'TëgjithaMesazhet' ),
 	'Allpages'                  => array( 'TëgjithaFaqet' ),
 	'Ancientpages'              => array( 'FaqetAntike' ),
@@ -80,13 +80,13 @@ $specialPageAliases = array(
 	'Contributions'             => array( 'Kontributet' ),
 	'CreateAccount'             => array( 'HapLlogari' ),
 	'DeletedContributions'      => array( 'GrisKontributet' ),
-	'Emailwiki_user'                 => array( 'EmailPërdoruesit' ),
+	'Emailuser'                 => array( 'EmailPërdoruesit' ),
 	'Export'                    => array( 'Eksporto' ),
 	'Import'                    => array( 'Importo' ),
 	'Listadmins'                => array( 'RreshtoAdmin' ),
 	'Listbots'                  => array( 'RreshtoBotët' ),
 	'Listfiles'                 => array( 'ListaSkedave' ),
-	'Listwiki_users'                 => array( 'RreshtoPërdoruesit' ),
+	'Listusers'                 => array( 'RreshtoPërdoruesit' ),
 	'Lockdb'                    => array( 'MbyllDB' ),
 	'Longpages'                 => array( 'FaqeteGjata' ),
 	'Movepage'                  => array( 'LëvizFaqe' ),
@@ -116,8 +116,8 @@ $specialPageAliases = array(
 	'Unusedcategories'          => array( 'KategoriTëpapërdorura' ),
 	'Unusedimages'              => array( 'SkedaTëpapërdorura' ),
 	'Upload'                    => array( 'Ngarko' ),
-	'wiki_userlogin'                 => array( 'HyrjePërdoruesi' ),
-	'wiki_userlogout'                => array( 'DaljePërdoruesi' ),
+	'Userlogin'                 => array( 'HyrjePërdoruesi' ),
+	'Userlogout'                => array( 'DaljePërdoruesi' ),
 	'Version'                   => array( 'Verzioni' ),
 	'Wantedcategories'          => array( 'KaetgoritëeDëshiruara' ),
 	'Wantedfiles'               => array( 'SkedateDëshiruara' ),
@@ -153,8 +153,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'NUMRIFAQEVE', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'NUMRIIARTIKUJVE', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'NUMRIISKEDAVE', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', 'NUMRIIPËRDORUESVE', 'NUMBEROFUSERS' ),
-	'numberofactivewiki_users'       => array( '1', 'NUMRIIPËRDORUESVEAKTIVË', 'NUMBEROFACTIVEUSERS' ),
+	'numberofusers'             => array( '1', 'NUMRIIPËRDORUESVE', 'NUMBEROFUSERS' ),
+	'numberofactiveusers'       => array( '1', 'NUMRIIPËRDORUESVEAKTIVË', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'NUMRIREDAKTIMEVE', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'NUMRIISHIKIMEVE', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'EMRIFAQES', 'PAGENAME' ),
@@ -216,7 +216,7 @@ $dateFormats = array(
 $separatorTransformTable = array( ',' => '.', '.' => ',' );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Nënvizo lidhjet:',
 'tog-justify' => 'Rregullo paragrafët',
 'tog-hideminor' => 'Fshih redaktimet e vogla në ndryshimet e fundit',
@@ -240,7 +240,7 @@ $messages = array(
 'tog-previewonfirst' => 'Tregoje bocetin në redaktimin e parë',
 'tog-nocache' => "Ç'aktivizo ruajtjen e faqeve të vizituara",
 'tog-enotifwatchlistpages' => 'Më njofto me e-mail kur ndryshohet një faqe nga lista ime e faqeve të vëzhguara',
-'tog-enotifwiki_usertalkpages' => 'Më njofto me e-mail kur faqja ime e dikutimeve të përdoruesit ndryshohet',
+'tog-enotifusertalkpages' => 'Më njofto me e-mail kur faqja ime e dikutimeve të përdoruesit ndryshohet',
 'tog-enotifminoredits' => 'Më njofto me e-mail edhe kur ka redaktime të vogla në faqe',
 'tog-enotifrevealaddr' => 'Tregoje adresën time të e-mail-it në e-mail-et njoftuese',
 'tog-shownumberswatching' => 'Trego numrin e përdoruesve që vëzhgojnë këtë faqe',
@@ -421,7 +421,7 @@ $messages = array(
 'talk' => 'Diskutimet',
 'views' => 'Shikime',
 'toolbox' => 'Mjete',
-'wiki_userpage' => 'Shiko faqen e përdoruesit',
+'userpage' => 'Shiko faqen e përdoruesit',
 'projectpage' => 'Shiko projekt-faqen',
 'imagepage' => 'Shikoni faqen e skedës',
 'mediawikipage' => 'Shiko faqen e mesazhit',
@@ -447,7 +447,7 @@ $1",
 'pool-queuefull' => 'Radha e proceseve është mbushur',
 'pool-errorunknown' => 'Gabim i panjohur',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Rreth {{SITENAME}}',
 'aboutpage' => 'Project:Rreth',
 'copyright' => 'Përmbajtja është në disponim nëpërmjet licencës $1.',
@@ -479,8 +479,8 @@ $1",
 'youhavenewmessages' => 'Ju keni $1 ($2).',
 'newmessageslink' => 'mesazhe të reja',
 'newmessagesdifflink' => 'ndryshimi i fundit',
-'youhavenewmessagesfromwiki_users' => 'Ju keni $1 nga {{Shumës:$3|përdorues tjetër|përdoruesit $3}} ($2).',
-'youhavenewmessagesmanywiki_users' => 'Ju keni 1$ nga shumë përdorues (2$).',
+'youhavenewmessagesfromusers' => 'Ju keni $1 nga {{Shumës:$3|përdorues tjetër|përdoruesit $3}} ($2).',
+'youhavenewmessagesmanyusers' => 'Ju keni 1$ nga shumë përdorues (2$).',
 'newmessageslinkplural' => '{{SHUMËS:1$|një porosi e re|porosi të reja}}',
 'newmessagesdifflinkplural' => '{{PLURAL:$1|ndryshimi i|ndryshimet e}} fundit',
 'youhavenewmessagesmulti' => 'Ju keni mesazhe të reja në $1',
@@ -512,7 +512,7 @@ Edit section: $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Artikulli',
-'nstab-wiki_user' => 'Faqja e përdoruesit',
+'nstab-user' => 'Faqja e përdoruesit',
 'nstab-media' => 'Media-faqe',
 'nstab-special' => 'Faqe speciale',
 'nstab-project' => 'Projekt-faqe',
@@ -557,7 +557,7 @@ Administratori që e kyçi dha këtë arsye: $1',
 
 Kjo zakonisht vjen si rezultat i një diff-i të vjetëruar ose të ndonjë lidhjeje në historikun e një faqeje që është fshirë.
 
-Nëse nuk është kjo arsyeja, ateherë ju mund të keni gjetur një gabim në program. Ju lutemi, njoftoni një [[Special:Listwiki_users/sysop|administrator]], tregojini URL-në problematike.',
+Nëse nuk është kjo arsyeja, ateherë ju mund të keni gjetur një gabim në program. Ju lutemi, njoftoni një [[Special:ListUsers/sysop|administrator]], tregojini URL-në problematike.',
 'missingarticle-rev' => '(rishikim#: $1)',
 'missingarticle-diff' => '(Diff: $1, $2)',
 'readonly_lag' => "Databaza është kyçur automatikisht për t'i dhënë kohë serverëve databazë slave që të arrijnë në një nivel me serverin databazë master",
@@ -605,10 +605,10 @@ Për përkthime, ju lutem konsideroni përdorimin e [//translatewiki.net/wiki/Ma
 'cascadeprotected' => 'Kjo faqe është mbrojtur nga redaktimi pasi është përfshirë në {{PLURAL:$1|faqen|faqet}} e mëposhtme që {{PLURAL:$1|është|janë}} mbrojtur sipas metodës "cascading":
 $2',
 'namespaceprotected' => "Nuk ju lejohet redaktimi i faqeve në hapsirën '''$1'''.",
-'customcssprotected' => "Ju nuk keni leje për të redaktuar këtë faqe CSS, sepse ai përmban cilësimet personale tjetër wiki_user's.",
-'customjsprotected' => "Ju nuk keni leje për të redaktuar këtë faqe JavaScript, sepse ai përmban cilësimet personale tjetër wiki_user's.",
+'customcssprotected' => "Ju nuk keni leje për të redaktuar këtë faqe CSS, sepse ai përmban cilësimet personale tjetër user's.",
+'customjsprotected' => "Ju nuk keni leje për të redaktuar këtë faqe JavaScript, sepse ai përmban cilësimet personale tjetër user's.",
 'ns-specialprotected' => 'Faqet speciale nuk mund të redaktohen.',
-'titleprotected' => "Ky titull është mbrojtur nga [[wiki_user:$1|$1]] dhe nuk mund të krijohet.
+'titleprotected' => "Ky titull është mbrojtur nga [[User:$1|$1]] dhe nuk mund të krijohet.
 Arsyeja e dhënë është ''$2''.",
 'filereadonlyerror' => 'Nuk është në gjendje që të ndryshojë skedarin "$1" sepse depoja e skedarit "$2" është në formën vetëm-lexim.
 
@@ -626,7 +626,7 @@ Administratori i cili e mbylli atë e dha këtë shpjegim: "$3".',
 # Login and logout pages
 'logouttext' => "'''Ju keni dalë jashtë.''' 
 
- Ju mund të vazhdoni të përdorni {{SITENAME}} në mënyrë anonime, ose mund të [[Special:wiki_userLogin|identifikoheni përsëri]] si përdoruesi i mëparshëm ose si një përdorues tjetër. 
+ Ju mund të vazhdoni të përdorni {{SITENAME}} në mënyrë anonime, ose mund të [[Special:UserLogin|identifikoheni përsëri]] si përdoruesi i mëparshëm ose si një përdorues tjetër. 
  Kini parasysh që disa faqe mund të shfaqen sikur të ishit i identifikuar derisa të fshini ''cache''-in e shfletuesit tuaj.",
 'welcomecreation' => '== Mirësevini, $1! == 
  Llogaria juaj është krijuar. 
@@ -642,21 +642,21 @@ Administratori i cili e mbylli atë e dha këtë shpjegim: "$3".',
 'login' => 'Hyni',
 'nav-login-createaccount' => 'Hyni ose hapni një llogari',
 'loginprompt' => 'Ju duhet të mundësoni lejimin e "cookies" për të hyrë brënda në {{SITENAME}}.',
-'wiki_userlogin' => 'Hyni / hapni llogari',
-'wiki_userloginnocreate' => 'Hyni',
+'userlogin' => 'Hyni / hapni llogari',
+'userloginnocreate' => 'Hyni',
 'logout' => 'Dalje',
-'wiki_userlogout' => 'Dalje',
+'userlogout' => 'Dalje',
 'notloggedin' => 'Nuk keni hyrë brenda',
 'nologin' => "Nuk keni një llogari? '''$1'''.",
 'nologinlink' => 'Hapeni',
 'createaccount' => 'Hap një llogari',
 'gotaccount' => "Keni një llogari? '''$1'''.",
 'gotaccountlink' => 'Hyni',
-'wiki_userlogin-resetlink' => 'Keni harruar të dhënat tuaja të identifikimit?',
+'userlogin-resetlink' => 'Keni harruar të dhënat tuaja të identifikimit?',
 'createaccountmail' => 'me email',
 'createaccountreason' => 'Arsyeja:',
 'badretype' => 'Fjalëkalimet nuk janë njësoj.',
-'wiki_userexists' => 'Emri i përdoruesit që kërkuat është në përdorim. 
+'userexists' => 'Emri i përdoruesit që kërkuat është në përdorim. 
 Zgjidhni një emër tjetër.',
 'loginerror' => 'Gabim gjatë identifikimit',
 'createaccounterror' => 'I pamundur krijimi i llogarisë: $1',
@@ -672,11 +672,11 @@ Sigurohuni që ju lejoni shfrytëzimin e "cookies", rifreskoni këtë faqe dhe p
 'noname' => 'Nuk keni dhënë një emër përdoruesi të pranueshëm.',
 'loginsuccesstitle' => 'Identifikim i suksesshëm',
 'loginsuccess' => "'''Ju tani jeni identifikuar tek {{SITENAME}} si \"\$1\".'''",
-'nosuchwiki_user' => 'Nuk ka ndonjë përdorues me emrin "$1".
-Kontrolloni shkrimin ose [[Special:wiki_userLogin/signup|hapni një llogari të re]].',
-'nosuchwiki_usershort' => 'Nuk ka asnjë përdorues me emrin "$1".',
-'nowiki_userspecified' => 'Ju duhet të jepni një nofkë',
-'login-wiki_userblocked' => 'Ky përdorues është bllokuar. Identifikimi nuk lejohet.',
+'nosuchuser' => 'Nuk ka ndonjë përdorues me emrin "$1".
+Kontrolloni shkrimin ose [[Special:UserLogin/signup|hapni një llogari të re]].',
+'nosuchusershort' => 'Nuk ka asnjë përdorues me emrin "$1".',
+'nouserspecified' => 'Ju duhet të jepni një nofkë',
+'login-userblocked' => 'Ky përdorues është bllokuar. Identifikimi nuk lejohet.',
 'wrongpassword' => 'Fjalëkalimi që futët nuk është i saktë. Provoni përsëri!',
 'wrongpasswordempty' => 'Fjalëkalimi juaj ishte bosh. Ju lutemi provoni përsëri.',
 'passwordtooshort' => 'Fjalëkalimi juaj është i pavlefshëm ose tepër i shkurtër. Ai duhet të ketë së paku {{PLURAL:$1|1 shkronjë|$1 shkronja}} dhe duhet të jetë i ndryshëm nga emri i përdoruesit.',
@@ -709,15 +709,15 @@ Ju lutemi ndiqni këshillat në eMailin e pranuar.',
 'createaccount-title' => 'Hapja e llogarive për {{SITENAME}}',
 'createaccount-text' => 'Dikush ka përdorur adresën tuaj për të hapur një llogari tek {{SITENAME}} ($4) të quajtur "$2" me fjalëkalimin "$3".
 Duhet të hyni brenda dhe të ndërroni fjalëkalimin tani nëse ky person jeni ju. Përndryshe shpërfilleni këtë mesazh.',
-'wiki_usernamehasherror' => 'Emri i përdoruesit nuk mund të përmbajë karaktere',
+'usernamehasherror' => 'Emri i përdoruesit nuk mund të përmbajë karaktere',
 'login-throttled' => 'Keni bërë shumë tentime të njëpasnjëshme në fjalëkalimin e kësaj llogarie. Ju lutemi prisni para tentimit përsëri.',
 'login-abort-generic' => 'login juaj ishte i pasuksesshëm - Ndërpre',
 'loginlanguagelabel' => 'Gjuha: $1',
-'suspicious-wiki_userlogout' => 'Kërkesa juaj për të shkëputet u mohua sepse duket sikur është dërguar nga një shfletues të thyer ose caching proxy.',
+'suspicious-userlogout' => 'Kërkesa juaj për të shkëputet u mohua sepse duket sikur është dërguar nga një shfletues të thyer ose caching proxy.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'Gabim i panjohur në funksionin e postës PHP ()',
-'wiki_user-mail-no-addy' => 'Provuat të dërgoni një korrespondencë pa adresë elektronike',
+'user-mail-no-addy' => 'Provuat të dërgoni një korrespondencë pa adresë elektronike',
 
 # Change password dialog
 'resetpass' => 'Ndrysho fjalëkalimin',
@@ -742,7 +742,7 @@ Për të hyrë tërësisht duhet të vendosni një fjalëkalim të ri këtu:',
 'passwordreset-legend' => 'Ndrysho fjalkalimin',
 'passwordreset-disabled' => 'Rivendosja e fjalëkalimit është deaktivizuar në këtë wiki.',
 'passwordreset-pretext' => '{{PLURAL:$1| | Shkruani një nga pjesët e të dhënave më poshtë}}',
-'passwordreset-wiki_username' => 'Nofka:',
+'passwordreset-username' => 'Nofka:',
 'passwordreset-domain' => 'Domain:',
 'passwordreset-capture' => 'Dëshiron të shikosh e-mail-in që rezulton?',
 'passwordreset-capture-help' => "Nëse shënoni këtë kuti, e-mail-i (dhe fjalekalimi i përkohshëm) që do t'i dërgohen përdoruesit, do të të tregohen edhe ty.",
@@ -756,7 +756,7 @@ $2
 {{PLURAL:$3|Ky fjalëkalim i përkohshëm|Këto fjalëkalime të përkohshme}} do të përfundojë për {{PLURAL:$5|një ditë|$5 ditë}}.
 
 Ju duhet të kyçeni dhe të zgjidhni një fjalëkalim të ri tani. Nëse dikush tjetër e ka bërë këtë kërkesës, ose në qoftë se ju mbani mend fjalëkalimin tuaj origjinal, dhe ju nuk dëshirojni të ndryshoni atë, ju mund të injoroni këtë mesazh dhe do të vazhdoni përdorimin e fjalëkalimit tuaj të vjetër.',
-'passwordreset-emailtext-wiki_user' => 'Përdoruesi  $1 në {{SITENAME }} ka kërkuar një kujtesë për të dhënat e llogarisë suaj për {{SITENAME }} ($4). Përdoruesi në vijim {{PLURAL: $3 | llogaria është | llogaritë janë}} të lidhur me këtë postë elektronike: 
+'passwordreset-emailtext-user' => 'Përdoruesi  $1 në {{SITENAME }} ka kërkuar një kujtesë për të dhënat e llogarisë suaj për {{SITENAME }} ($4). Përdoruesi në vijim {{PLURAL: $3 | llogaria është | llogaritë janë}} të lidhur me këtë postë elektronike: 
 
 $2
 
@@ -858,7 +858,7 @@ Mund të jetë zhvendosur ose fshirë ndërkohë që ju ishit duke parë këtë 
 'loginreqlink' => 'Identifikohuni',
 'loginreqpagetext' => 'Ju duhet $1 për të parë faqet e tjera.',
 'accmailtitle' => 'Fjalëkalimi u dërgua.',
-'accmailtext' => "Një fjalëkalim i krijuar në mënyrë të rastësishme për [[wiki_user talk:$1|$1]] u dërgua në $2.
+'accmailtext' => "Një fjalëkalim i krijuar në mënyrë të rastësishme për [[User talk:$1|$1]] u dërgua në $2.
 
 Fjalëkalimi për këtë llogari mund të ndryshohet në faqen ''[[Special:ChangePassword|ndrysho fjalëkalimin]]'' pasi të jeni identifikuar.",
 'newarticle' => '(I ri)',
@@ -868,7 +868,7 @@ Nëse ju keni mbërritur këtu gabimisht, atëherë klikoni butonin '''pas''' t�
 'anontalkpagetext' => "----'' Kjo është një faqe diskutimi për një përdorues anonim i cili nuk ka krijuar akoma një llogari, ose qe nuk e përdor atë. 
  Prandaj, ne duhet të përdorim adresën IP numerike për identifikimin e tij. 
 Kjo adresë IP mund të përdoret nga disa përdorues.
- Në qoftë se jeni një përdorues anonim dhe mendoni se ndaj jush janë bërë komente të parëndësishme, ju lutem [[Special:wiki_userLogin/signup|krijoni një llogari]] ose [[Special:wiki_userLogin|identifikohuni]] për të shmangur konfuzionin në të ardhmen me përdorues të tjerë anonim .''",
+ Në qoftë se jeni një përdorues anonim dhe mendoni se ndaj jush janë bërë komente të parëndësishme, ju lutem [[Special:UserLogin/signup|krijoni një llogari]] ose [[Special:UserLogin|identifikohuni]] për të shmangur konfuzionin në të ardhmen me përdorues të tjerë anonim .''",
 'noarticletext' => 'Momentalisht nuk ka tekst në këtë faqe.
 Ju mund [[Special:Search/{{PAGENAME}}|ta kërkoni këtë titull]] në faqe tjera,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} të kërkoni ngjarjet e ngjashme në regjistër],
@@ -878,9 +878,9 @@ Ju mund të [[Special:Search/{{PAGENAME}}|kërkoni këtë titiull]] në faqet e 
 'missing-revision' => 'Inspektimi #$1 i faqes me emrin "{{PAGENAME}}" nuk ekziston.
 
 Kjo zakonisht shkaktuar duke ndjekur një lidhje të vjetër tek një faqe që është fshirë. Hollësitë mund të gjenden në [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} regjistrin e fshirjeve].',
-'wiki_userpage-wiki_userdoesnotexist' => 'Llogaria e përdoruesit "<nowiki>$1</nowiki>" nuk është e regjistruar. 
+'userpage-userdoesnotexist' => 'Llogaria e përdoruesit "<nowiki>$1</nowiki>" nuk është e regjistruar. 
 Ju lutem kontrolloni nëse dëshironi të krijoni/redaktoni këtë faqe.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Llogaria i përdoruesit "$1" nuk është e regjistruar.',
+'userpage-userdoesnotexist-view' => 'Llogaria i përdoruesit "$1" nuk është e regjistruar.',
 'blocked-notice-logextract' => "Ky përdorues është  aktualisht i bllokuar.
 Më poshtë mund t'i referoheni shënimit të regjistruar për bllokimin e fundit:",
 'clearyourcache' => "''Shënim:''' Pas ruajtjes, juve mund t'iu duhet të anashkaloni \"cache-in\" e shfletuesit tuaj për të parë ndryshimet. 
@@ -889,16 +889,16 @@ Më poshtë mund t'i referoheni shënimit të regjistruar për bllokimin e fundi
 * '''Internet Explorer:''' Mbaj të shtypur ''Ctrl''  ndërkohë që klikon ''Refresh'', ose shtyp ''Ctrl-F5''
 * '''Konqueror:''' Kliko ''Reload'' ose shtyp ''F5''
 * '''Opera:''' Zbrazni \"cache-in\" tek ''Tools → Preferences''",
-'wiki_usercssyoucanpreview' => "'''Këshillë:''' Përdorni butonin '{{int:showpreview}}' për të testuar CSS-në e re para se të ruani ndryshimet e kryera.",
-'wiki_userjsyoucanpreview' => "'''Këshillë:''' Përdorni butonin '{{int:showpreview}}' për të testuar JavaScripting e ri para se të ruani ndryshimet e kryera.",
-'wiki_usercsspreview' => "'''Vini re! Ju jeni duke inspektuar CSS-në si përdorues!'''
+'usercssyoucanpreview' => "'''Këshillë:''' Përdorni butonin '{{int:showpreview}}' për të testuar CSS-në e re para se të ruani ndryshimet e kryera.",
+'userjsyoucanpreview' => "'''Këshillë:''' Përdorni butonin '{{int:showpreview}}' për të testuar JavaScripting e ri para se të ruani ndryshimet e kryera.",
+'usercsspreview' => "'''Vini re! Ju jeni duke inspektuar CSS-në si përdorues!'''
 '''Nuk është ruajtur ende!'''",
-'wiki_userjspreview' => "'''Vini re se kjo është vetëm një provë ose parapamje e faqes tuaj JavaScript, ajo nuk është ruajtur akoma!'''",
+'userjspreview' => "'''Vini re se kjo është vetëm një provë ose parapamje e faqes tuaj JavaScript, ajo nuk është ruajtur akoma!'''",
 'sitecsspreview' => "'''Vini re! Ju jeni duke inspektuar CSS-në !'''
 '''Nuk është ruajtur ende!'''",
 'sitejspreview' => "'''Vini re! Ju jeni duke inspektuar këtë kod JavaScript.''' 
 '''Nuk është ruajtur ende!'''",
-'wiki_userinvalidcssjstitle' => "'''Kujdes:''' Nuk ka pamje të quajtur \"\$1\". Vini re se faqet .css dhe .js përdorin titull me gërma të vogla, p.sh. {{ns:wiki_user}}:Foo/vector.css, jo {{ns:wiki_user}}:Foo/Vector.css.",
+'userinvalidcssjstitle' => "'''Kujdes:''' Nuk ka pamje të quajtur \"\$1\". Vini re se faqet .css dhe .js përdorin titull me gërma të vogla, p.sh. {{ns:user}}:Foo/vector.css, jo {{ns:user}}:Foo/Vector.css.",
 'updated' => '(E ndryshuar)',
 'note' => "'''Shënim:'''",
 'previewnote' => "'''Vini re! Kjo faqe është vetëm për shqyrtim.'''
@@ -907,11 +907,11 @@ Ndryshimet tuaja nuk janë ruajtur ende!",
 'previewconflict' => 'Kjo parapamje reflekton tekstin sipër kutisë së redaktimit siç do të duket kur të kryeni ndryshimin.',
 'session_fail_preview' => "'''Ju kërkojmë ndjesë! Redaktimi juaj nuk mund të perpunohej për shkak të humbjes së të dhënave të seancës.'''
 Ju lutemi, provojeni përsëri.
-Nëse përsëri nuk punon, provoni të [[Special:wiki_userLogout|dilni nga faqja]] dhe të identifikoheni serish.",
+Nëse përsëri nuk punon, provoni të [[Special:UserLogout|dilni nga faqja]] dhe të identifikoheni serish.",
 'session_fail_preview_html' => "'''Ju kërkojmë ndjesë! I pamundur përpunimi i redaktimeve tuaja për shkak të humbjes së të dhënave të seancës.'''
 '' Për shkak se {{SITENAME}} ka të aktivizuar përdorimin e HTML-së së papërpunuar, teksti për shqyrtim është fshehur si masë parandaluese kundër sulmeve JavaScript.''
 '''Nëse kjo është një përpjekje e sinqertë për redaktim, ju lutemi, provojeni përsëri.'''
-Nëse përsëri nuk funksiono, provoni [[Special:wiki_userLogout|të dilni nga faqja]] dhe të identifikoheni sërish.",
+Nëse përsëri nuk funksiono, provoni [[Special:UserLogout|të dilni nga faqja]] dhe të identifikoheni sërish.",
 'token_suffix_mismatch' => "'''Redaktimi juaj nuk u pranuar pasi shërbimi juaj server  ka keqinterpretuar shenjat e pikësimit të simbolikës së redaktimit.'''
 Redaktimi nuk u pranua për të parandaluar korruptimin e tekstit në faqe.
 Kjo ndodh ndonjëherë kur përdoret server anonim dytësor me gabime.",
@@ -962,7 +962,7 @@ Regjistri më i vonshëm i hyrjeve është poshtë për referncë:",
 'hiddencategories' => 'Kjo faqe është nën {{PLURAL:$1|një kategori të fshehur|$1 kategori të fshehura}}:',
 'edittools' => '<!-- Teksti këtu do të tregohet poshtë kutive të redaktimit dhe ngarkimit të skedave. -->',
 'nocreatetitle' => 'Krijimi i faqeve të reja është i kufizuar.',
-'nocreatetext' => 'Mundësia për të krijuar faqe të reja është kufizuar. Duhet të [[Special:wiki_userLogin|hyni ose të hapni një llogari]] për të krijuar faqe të reja, ose mund të ktheheni mbrapsh dhe të redaktoni një faqe ekzistuese.',
+'nocreatetext' => 'Mundësia për të krijuar faqe të reja është kufizuar. Duhet të [[Special:UserLogin|hyni ose të hapni një llogari]] për të krijuar faqe të reja, ose mund të ktheheni mbrapsh dhe të redaktoni një faqe ekzistuese.',
 'nocreate-loggedin' => 'Nuk ju lejohet të krijoni faqe të reja.',
 'sectioneditnotsupported-title' => 'Redaktimi i pjesës nuk është i mbështetur',
 'sectioneditnotsupported-text' => 'Redaktimi nuk është i mbështetur në këtë faqe.',
@@ -1005,11 +1005,11 @@ Këto parametra nuk janë përfshirë.",
 Ju lutemi, kontrolloni krahasimin e mëposhtëm për të vërtetuar nëse kjo është ajo që dëshironi dhe pastaj kryeni ndryshimet për të plotësuar zhbërjen e redaktimit.',
 'undo-failure' => 'Redaktimi nuk mund të zhbëhet për shkak të redaktimeve konfliktuese të ndërmjetshme.',
 'undo-norev' => 'Redaktimi nuk mund të zhbëhet sepse nuk ekziston ose është fshirë.',
-'undo-summary' => 'Zhbëje versionin $1 i bërë nga [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|ligjëratë]])',
+'undo-summary' => 'Zhbëje versionin $1 i bërë nga [[Special:Contributions/$2|$2]] ([[User talk:$2|ligjëratë]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Nuk mundet të krijohet llogaria',
-'cantcreateaccount-text' => "Hapja e llogarive nga kjo adresë IP ('''$1''') është bllokuar nga [[wiki_user:$3|$3]].
+'cantcreateaccount-text' => "Hapja e llogarive nga kjo adresë IP ('''$1''') është bllokuar nga [[User:$3|$3]].
 
 Arsyeja e dhënë nga $3 është ''$2''.",
 
@@ -1045,9 +1045,9 @@ Arsyeja e dhënë nga $3 është ''$2''.",
 
 # Revision deletion
 'rev-deleted-comment' => '(Edit përmbledhje larguar)',
-'rev-deleted-wiki_user' => '(përdoruesi u largua)',
+'rev-deleted-user' => '(përdoruesi u largua)',
 'rev-deleted-event' => '(veprimi në regjistër është hequr)',
-'rev-deleted-wiki_user-contribs' => '[Përdoruesi ose adresa IP u hoq - redaktimet e  fshehura nga kontribuesit]',
+'rev-deleted-user-contribs' => '[Përdoruesi ose adresa IP u hoq - redaktimet e  fshehura nga kontribuesit]',
 'rev-deleted-text-permission' => "Versioni i kësaj faqeje është '''fshirë'''.
 Detajet mund të gjenden tek [{{fullurl:{{#Special:Log}}/delete={{FULLPAGENAME}}}} regjistri i grisjeve].",
 'rev-deleted-text-unhide' => "Ky version i faqes është '''grisur'''.
@@ -1098,7 +1098,7 @@ Ju mund ta shikoni këtë ndryshim; detajet mund të gjenden te [{{fullurl:{{#Sp
 'revdelete-hide-image' => 'Fshih përmbajtjen skedës',
 'revdelete-hide-name' => 'Fshihe veprimin dhe shënjestrën',
 'revdelete-hide-comment' => 'fshih komentin e redaktimit',
-'revdelete-hide-wiki_user' => 'Fshihe emrin/IP-në të redaktuesit',
+'revdelete-hide-user' => 'Fshihe emrin/IP-në të redaktuesit',
 'revdelete-hide-restricted' => 'Ndalo të dhëna nga administrues si dhe të tjerë',
 'revdelete-radio-same' => '(Mos ndryshoni)',
 'revdelete-radio-set' => 'Po',
@@ -1184,7 +1184,7 @@ Kini kujdes se përdorimi i lidhjeve të shfletimit do të ndryshojë përzgjedh
 'showhideselectedversions' => 'Shfaq/fshih versionet e zgjedhura',
 'editundo' => 'zhbëje',
 'diff-multi' => '({{PLURAL:$1|Një version i ndërmjetshëm|$1 versione të ndërmjetshme}} nga {{PLURAL:$2|një përdorues|$2 përdorues}} i/të pashfaqur)',
-'diff-multi-manywiki_users' => '({{PLURAL:$1|Një versioni i ndërmjetshëm|$1 versione të ndërmjetshme}} nga më shumë se $2 {{PLURAL:$2|përdorues|përdorues}} i/të pashfaqur)',
+'diff-multi-manyusers' => '({{PLURAL:$1|Një versioni i ndërmjetshëm|$1 versione të ndërmjetshme}} nga më shumë se $2 {{PLURAL:$2|përdorues|përdorues}} i/të pashfaqur)',
 
 # Search results
 'searchresults' => 'Rezultatet e kërkimit',
@@ -1262,7 +1262,7 @@ Kini kujdes se përdorimi i lidhjeve të shfletimit do të ndryshojë përzgjedh
 'mypreferences' => 'Parapëlqimet',
 'prefs-edits' => 'Numri i redaktimeve:',
 'prefsnologin' => 'Nuk keni hyrë brenda',
-'prefsnologintext' => 'Duhet të jeni <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} të kyçur]</span> për të caktuar parapëlqimet e përdoruesit.',
+'prefsnologintext' => 'Duhet të jeni <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} të kyçur]</span> për të caktuar parapëlqimet e përdoruesit.',
 'changepassword' => 'Ndërroni fjalëkalimin',
 'prefs-skin' => 'Pamja',
 'skin-preview' => 'Parapamje',
@@ -1270,7 +1270,7 @@ Kini kujdes se përdorimi i lidhjeve të shfletimit do të ndryshojë përzgjedh
 'prefs-beta' => 'Karakteristikat Beta',
 'prefs-datetime' => 'Data dhe Ora',
 'prefs-labs' => 'Karakteristikat laboratorik',
-'prefs-wiki_user-pages' => 'Faqet e përdoruesit',
+'prefs-user-pages' => 'Faqet e përdoruesit',
 'prefs-personal' => 'Përdoruesi',
 'prefs-rc' => 'Ndryshime së fundmi',
 'prefs-watchlist' => 'Lista mbikqyrëse',
@@ -1335,7 +1335,7 @@ Kjo nuk mundet me u zhbâ.',
 'prefs-emailconfirm-label' => 'Konfirmimi i emailit:',
 'prefs-textboxsize' => 'Madhësia e dritares së redakrimit',
 'youremail' => 'Adresa e email-it*',
-'wiki_username' => 'Nofka e përdoruesit:',
+'username' => 'Nofka e përdoruesit:',
 'uid' => 'Nr. i identifikimit:',
 'prefs-memberingroups' => 'Anëtar i {{PLURAL:$1|grupit|grupeve}}:',
 'prefs-registration' => 'Koha e regjistrimit:',
@@ -1374,35 +1374,35 @@ Kjo informatë është publike.',
 'prefs-displaywatchlist' => 'Shfaq opsionet',
 'prefs-diffs' => 'Ndryshimet',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'E-mail adresa është e vlefshme.',
 'email-address-validity-invalid' => 'Futni një e-mali adresë të vlefshme.',
 
-# wiki_user rights
-'wiki_userrights' => 'Ndrysho privilegjet e përdoruesve',
-'wiki_userrights-lookup-wiki_user' => 'Ndrysho grupet e përdoruesit',
-'wiki_userrights-wiki_user-editname' => 'Fusni emrin e përdoruesit:',
-'editwiki_usergroup' => 'Redakto grupet e përdoruesve',
-'editingwiki_user' => "Duke ndryshuar privilegjet e përdoruesit '''[[wiki_user:$1|$1]]''' $2",
-'wiki_userrights-editwiki_usergroup' => 'Anëtarësimi tek grupet',
-'savewiki_usergroups' => 'Ruaj Grupin e Përdoruesve',
-'wiki_userrights-groupsmember' => 'Anëtar i:',
-'wiki_userrights-groupsmember-auto' => 'Anëtar implicit i:',
-'wiki_userrights-groups-help' => 'Mund të ndryshoni anëtarësimin e këtij përdoruesi në grupe:
+# User rights
+'userrights' => 'Ndrysho privilegjet e përdoruesve',
+'userrights-lookup-user' => 'Ndrysho grupet e përdoruesit',
+'userrights-user-editname' => 'Fusni emrin e përdoruesit:',
+'editusergroup' => 'Redakto grupet e përdoruesve',
+'editinguser' => "Duke ndryshuar privilegjet e përdoruesit '''[[User:$1|$1]]''' $2",
+'userrights-editusergroup' => 'Anëtarësimi tek grupet',
+'saveusergroups' => 'Ruaj Grupin e Përdoruesve',
+'userrights-groupsmember' => 'Anëtar i:',
+'userrights-groupsmember-auto' => 'Anëtar implicit i:',
+'userrights-groups-help' => 'Mund të ndryshoni anëtarësimin e këtij përdoruesi në grupe:
 * Kutia e zgjedhur shënon që përdoruesi është anëtar në atë grup
 * Kutia e pazgjedhur shënon që përdoruesi nuk është anëtar në atë grup
 * Një * shënon që nuk mund ta hiqni grupin pasi ta keni shtuar (dhe anasjelltas).',
-'wiki_userrights-reason' => 'Arsyeja:',
-'wiki_userrights-no-interwiki' => 'Nuk keni leje për të ndryshuar privilegjet e përdoruesve në wiki të tjera.',
-'wiki_userrights-nodatabase' => 'Regjistri $1 nuk ekziston ose nuk është vendor.',
-'wiki_userrights-nologin' => 'Duhet të [[Special:wiki_userLogin|hyni brenda]] me një llogari administrative për të ndryshuar privilegjet e përdoruesve.',
-'wiki_userrights-notallowed' => 'llogaria juaj nuk ka leje për të shtuar ose hequr privilegjet e përdoruesve.',
-'wiki_userrights-changeable-col' => 'Grupe që mund të ndryshoni',
-'wiki_userrights-unchangeable-col' => "Grupe që s'mund të ndryshoni",
+'userrights-reason' => 'Arsyeja:',
+'userrights-no-interwiki' => 'Nuk keni leje për të ndryshuar privilegjet e përdoruesve në wiki të tjera.',
+'userrights-nodatabase' => 'Regjistri $1 nuk ekziston ose nuk është vendor.',
+'userrights-nologin' => 'Duhet të [[Special:UserLogin|hyni brenda]] me një llogari administrative për të ndryshuar privilegjet e përdoruesve.',
+'userrights-notallowed' => 'llogaria juaj nuk ka leje për të shtuar ose hequr privilegjet e përdoruesve.',
+'userrights-changeable-col' => 'Grupe që mund të ndryshoni',
+'userrights-unchangeable-col' => "Grupe që s'mund të ndryshoni",
 
 # Groups
 'group' => 'Grupi:',
-'group-wiki_user' => 'Përdorues',
+'group-user' => 'Përdorues',
 'group-autoconfirmed' => 'Përdorues të vërtetuar automatikisht',
 'group-bot' => 'Robot',
 'group-sysop' => 'Administrues',
@@ -1410,14 +1410,14 @@ Kjo informatë është publike.',
 'group-suppress' => 'Kujdestari',
 'group-all' => '(të gjitha)',
 
-'group-wiki_user-member' => '{{GENDER:$1|përdorues|përdoruese}}',
+'group-user-member' => '{{GENDER:$1|përdorues|përdoruese}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|përdorues i vërtetuar automatikisht|përdoruese e vërtetuar automatikisht}}',
 'group-bot-member' => '{{GENDER:$1|robot|robote}}',
 'group-sysop-member' => '{{GENDER:$1|administrues|administruese}}',
 'group-bureaucrat-member' => '{{GENDER:$1|burokrat|burokrate}}',
 'group-suppress-member' => '{{GENDER:$1|kujdestar|kujdestare}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Përdorues',
+'grouppage-user' => '{{ns:project}}:Përdorues',
 'grouppage-autoconfirmed' => '{{ns:project}}:Përdorues të vërtetuar automatikisht',
 'grouppage-bot' => '{{ns:project}}:Robotë',
 'grouppage-sysop' => '{{ns:project}}:Administruesit',
@@ -1433,7 +1433,7 @@ Kjo informatë është publike.',
 'right-minoredit' => 'Shëno redaktimet si të vogla',
 'right-move' => 'Lëviz faqet',
 'right-move-subpages' => 'Lëviz faqet me nënfaqet e tyre',
-'right-move-rootwiki_userpages' => 'Lëviz burimin e faqes së përdoruesit',
+'right-move-rootuserpages' => 'Lëviz burimin e faqes së përdoruesit',
 'right-movefile' => 'Lëviz skedarët',
 'right-suppressredirect' => 'Mos krijo zhvendosje nga emri i vjetër kur lëvizë një faqe',
 'right-upload' => 'Ngarko skedarë',
@@ -1459,16 +1459,16 @@ Kjo informatë është publike.',
 'right-suppressionlog' => 'Shiko hyrjet private',
 'right-block' => 'Blloko përdoruesit tjerë nga editimi',
 'right-blockemail' => 'Blloko përdoruesin që të mos dërgojë postë elektronike',
-'right-hidewiki_user' => 'Blloko përdorues, duke fshehur nga publiku',
+'right-hideuser' => 'Blloko përdorues, duke fshehur nga publiku',
 'right-ipblock-exempt' => 'Anashkalo bllokimet e IP-ve, auto-bllokimet dhe linjën e bllokimeve',
 'right-proxyunbannable' => 'Anashkalo bllokimet automatike të ndërmjetësve',
 'right-unblockself' => 'Zhblloko veten',
 'right-protect' => 'Ndrysho nivelin mbrojtës dhe redakto faqet e mbrojtura',
 'right-editprotected' => 'Redakto faqet e mbrojtura (pa ndryshuar mbrojtjen)',
 'right-editinterface' => 'Ndrysho parapamjen e përdoruesit',
-'right-editwiki_usercssjs' => 'Redakto skedat CSS dhe JS të përdoruesve tjerë',
-'right-editwiki_usercss' => 'Redakto skedat CSS të përdoruesve tjerë',
-'right-editwiki_userjs' => 'Redakto skedat JS të përdoruesve tjerë',
+'right-editusercssjs' => 'Redakto skedat CSS dhe JS të përdoruesve tjerë',
+'right-editusercss' => 'Redakto skedat CSS të përdoruesve tjerë',
+'right-edituserjs' => 'Redakto skedat JS të përdoruesve tjerë',
 'right-rollback' => 'Rikthen shpejt redaktimet  e pedaktuesit të fundit',
 'right-markbotedits' => 'Shëno rikthimet si redaktime robotësh',
 'right-noratelimit' => 'Mos u prek nga kufizimet e vlerësimit',
@@ -1479,14 +1479,14 @@ Kjo informatë është publike.',
 'right-patrolmarks' => 'Shiko ndryshimet e fundit shënon patrullë',
 'right-unwatchedpages' => 'Shiko listën e faqeve të pa vëzhguara',
 'right-mergehistory' => 'Bashko historinë e faqeve',
-'right-wiki_userrights' => 'Redakto të gjitha të drejtat e përdoruesit',
-'right-wiki_userrights-interwiki' => 'Ndrysho të drejtat e përdoruesve në wiki të tjera',
+'right-userrights' => 'Redakto të gjitha të drejtat e përdoruesit',
+'right-userrights-interwiki' => 'Ndrysho të drejtat e përdoruesve në wiki të tjera',
 'right-siteadmin' => 'Mbyll ose hap bazën e të dhënave',
 'right-override-export-depth' => 'Eksoprto faqet duke përfshirë e lidhura deri në një thellësi prej 5',
 'right-sendemail' => 'Dërgo e-mail tek përdoruesit e tjerë',
 'right-passwordreset' => 'Shiko e-mail-et e rivendosjes së fjalëkalimit',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Regjistri i privilegjeve të përdoruesit',
 'rightslogtext' => 'Ky është një regjistër për ndryshimet e privilegjeve të përdoruesit.',
 'rightslogentry' => 'u ndryshua anëtarësimi i grupit për $1 nga $2 tek $3',
@@ -1502,7 +1502,7 @@ Kjo informatë është publike.',
 'action-minoredit' => 'shëno këtë redaktim si të vogël',
 'action-move' => 'zhvendos këtë faqe',
 'action-move-subpages' => 'zhvendos këtë faqe dhe nënfaqet e saj',
-'action-move-rootwiki_userpages' => 'lëviz rrënjët e faqeve të përdoruesve',
+'action-move-rootuserpages' => 'lëviz rrënjët e faqeve të përdoruesve',
 'action-movefile' => 'lëviz këtë skedë',
 'action-upload' => 'ngarko këtë skedë',
 'action-reupload' => 'rishkruaj këtë skedë ekzistuese',
@@ -1525,8 +1525,8 @@ Kjo informatë është publike.',
 'action-autopatrol' => 'shëno redaktimet tua si të patrulluara',
 'action-unwatchedpages' => 'shiko listën e faqeve të pa vrojtuara',
 'action-mergehistory' => 'bashko historikun e kësaj faqeje',
-'action-wiki_userrights' => 'ndrysho të gjitha të drejtat e përdoruesit',
-'action-wiki_userrights-interwiki' => 'ndrysho të drejtat e përdoruesve në wiki-t tjera',
+'action-userrights' => 'ndrysho të gjitha të drejtat e përdoruesit',
+'action-userrights-interwiki' => 'ndrysho të drejtat e përdoruesve në wiki-t tjera',
 'action-siteadmin' => 'mbyll ose hap bazën e të dhënave',
 'action-sendemail' => 'dërgo e-maile',
 
@@ -1557,7 +1557,7 @@ Kjo informatë është publike.',
 'minoreditletter' => 'v',
 'newpageletter' => 'R',
 'boteditletter' => 'b',
-'number_of_watching_wiki_users_pageview' => '[$1 duke u mbikqyrur nga {{PLURAL:$1|përdorues|përdorues}}]',
+'number_of_watching_users_pageview' => '[$1 duke u mbikqyrur nga {{PLURAL:$1|përdorues|përdorues}}]',
 'rc_categories' => 'Kufizimi i kategorive (të ndara me "|")',
 'rc_categories_any' => 'Të gjitha',
 'rc-change-size-new' => '$1 {{PLURAL:$1|bajt|bajtë}} pas ndryshimit',
@@ -1583,7 +1583,7 @@ Faqet [[Special:Watchlist|nën mbikqyrjen tuaj]] duken të '''theksuara'''.",
 'reuploaddesc' => 'Kthehu tek formulari i dhënies.',
 'upload-tryagain' => 'Dërgo përshkrimin e modifikuar të skedarit',
 'uploadnologin' => 'Nuk keni hyrë brënda',
-'uploadnologintext' => 'Duhet të keni [[Special:wiki_userLogin|hyrë brenda]] për të dhënë skeda.',
+'uploadnologintext' => 'Duhet të keni [[Special:UserLogin|hyrë brenda]] për të dhënë skeda.',
 'upload_directory_missing' => 'Direktoriumi ($1) i ngarkimit po mungon dhe nuk është arritur që të krijohet nga webserveri.',
 'upload_directory_read_only' => 'Skedari i ngarkimit ($1) nuk mund të shkruhet nga shërbyesi.',
 'uploaderror' => 'Gabim dhënie',
@@ -1704,11 +1704,11 @@ $1',
 'upload-proto-error-text' => 'Ngarkimet nga rrjeti kërkojnë që adresa URL të fillojë me <code>http://</code> ose <code>ftp://</code>.',
 'upload-file-error' => 'Gabim i brendshëm',
 'upload-file-error-text' => 'Ka ndodhur një gabim i brendshëm gjatë krijimit të skedës së përkohshme nga shërbyesi.
-Ju lutemi kontaktoni një [[Special:Listwiki_users/sysop|administrator]].',
+Ju lutemi kontaktoni një [[Special:ListUsers/sysop|administrator]].',
 'upload-misc-error' => 'Gabim i panjohur ngarkimi',
 'upload-misc-error-text' => 'Një gabim i panjohur ka ndodhur gjatë ngarkimit.
 Ju lutemi kontrolloni që adresa URL të jetë e vlefshme dhe e kapshme dhe provoni përsëri.
-Nëse problemi vazhdon atëherë kontaktoni një [[Special:Listwiki_users/sysop|administrator]].',
+Nëse problemi vazhdon atëherë kontaktoni një [[Special:ListUsers/sysop|administrator]].',
 'upload-too-many-redirects' => 'Adresa URL përmbante shumë përcjellime.',
 'upload-unknown-size' => 'Madhësia e panjohur',
 'upload-http-error' => 'Ndodhi një gabim HTTP: $1',
@@ -1822,7 +1822,7 @@ Shtypni kolonat e tjera për të ndryshuar radhitjen.',
 'listfiles_thumb' => 'Parapamje',
 'listfiles_date' => 'Data',
 'listfiles_name' => 'Emri',
-'listfiles_wiki_user' => 'Përdoruesi',
+'listfiles_user' => 'Përdoruesi',
 'listfiles_size' => 'Madhësia (bytes)',
 'listfiles_description' => 'Përshkrimi',
 'listfiles_count' => 'Versionet',
@@ -1839,7 +1839,7 @@ Shtypni kolonat e tjera për të ndryshuar radhitjen.',
 'filehist-thumb' => 'Thumbnail',
 'filehist-thumbtext' => 'Thumbnail për versionin duke filluar nga $1',
 'filehist-nothumb' => "S'ka parapamje",
-'filehist-wiki_user' => 'Përdoruesi',
+'filehist-user' => 'Përdoruesi',
 'filehist-dimensions' => 'Dimensionet',
 'filehist-filesize' => 'Madhësia e skedës',
 'filehist-comment' => 'Koment',
@@ -1926,7 +1926,7 @@ Mos harroni të shihni nyje tjera të stampave para grisjes së tyre.',
 'statistics-header-pages' => 'Statistikat e faqes',
 'statistics-header-edits' => 'Statistikat e redaktimit',
 'statistics-header-views' => 'Statistikat e shikimit',
-'statistics-header-wiki_users' => 'Statistikat e përdoruesve',
+'statistics-header-users' => 'Statistikat e përdoruesve',
 'statistics-header-hooks' => 'Statistikat të tjera',
 'statistics-articles' => 'Përmbajtja e faqeve',
 'statistics-pages' => 'Faqet',
@@ -1937,9 +1937,9 @@ Mos harroni të shihni nyje tjera të stampave para grisjes së tyre.',
 'statistics-views-total' => 'Shikimet gjithsej',
 'statistics-views-total-desc' => 'Shikimet tek faqet joekzistuese dhe faqet speciale nuk janë të përfshira',
 'statistics-views-peredit' => 'Shikimet për redaktim',
-'statistics-wiki_users' => '[[Special:Listwiki_users|Përdoruesit]] e regjistruar',
-'statistics-wiki_users-active' => 'Përdoruesit aktiv',
-'statistics-wiki_users-active-desc' => 'Përdoruesit që kanë së paku një veprim në {{PLURAL:$1|ditën|$1 ditët}} e fundit',
+'statistics-users' => '[[Special:ListUsers|Përdoruesit]] e regjistruar',
+'statistics-users-active' => 'Përdoruesit aktiv',
+'statistics-users-active-desc' => 'Përdoruesit që kanë së paku një veprim në {{PLURAL:$1|ditën|$1 ditët}} e fundit',
 'statistics-mostpopular' => 'Faqet më të shikuara',
 
 'disambiguations' => 'Faqet që lidhen te faqet kthjelluese',
@@ -2014,13 +2014,13 @@ Secili rresht përmban lidhjet tek përcjellimi i parë dhe përcjellimi i dytë
 'protectedtitles' => 'Titujt e mbrojtur',
 'protectedtitlestext' => 'Krijimi i këtyre titujve është i mbrojtur',
 'protectedtitlesempty' => 'Asnjë titull i mbrojtur nuk u gjet në këtë hapësirë.',
-'listwiki_users' => 'Lista e përdoruesve',
-'listwiki_users-editsonly' => 'Trego vetëm përdoruesit me redaktime',
-'listwiki_users-creationsort' => 'Radhiti sipas datës së krijimit',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|redaktim|redaktime}}',
-'wiki_usercreated' => '{{GENDER:$3|Krijuar}} më $1 në $2',
+'listusers' => 'Lista e përdoruesve',
+'listusers-editsonly' => 'Trego vetëm përdoruesit me redaktime',
+'listusers-creationsort' => 'Radhiti sipas datës së krijimit',
+'usereditcount' => '$1 {{PLURAL:$1|redaktim|redaktime}}',
+'usercreated' => '{{GENDER:$3|Krijuar}} më $1 në $2',
 'newpages' => 'Artikuj të rinj',
-'newpages-wiki_username' => 'Përdoruesi:',
+'newpages-username' => 'Përdoruesi:',
 'ancientpages' => 'Artikuj më të vjetër',
 'move' => 'Zhvendose',
 'movethispage' => 'Zhvendose faqen',
@@ -2044,7 +2044,7 @@ Ju lutemi, vini re se faqe të tjera në rrjet si mund të lidhin një figurë m
 'booksources-invalid-isbn' => 'ISBN-ja e dhënë nuk duket të jetë e vlefshme; kontrolloni oër gabime gjatë kopjimit nga burimi origjinal.',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Performuesi:',
+'specialloguserlabel' => 'Performuesi:',
 'speciallogtitlelabel' => 'Objektivi (titulli ose përdoruesi):',
 'log' => 'Regjistrat',
 'all-logs-page' => 'Të gjitha regjistrat',
@@ -2103,24 +2103,24 @@ Protokolle të mbështetura: <code>$1<code> (mos shtoni ndonjërin nga këta në
 'linksearch-line' => '$1 lidhur nga $2',
 'linksearch-error' => 'Ylli mund të përdoret vetëm në fillim të emrit',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'Trego përdoruesit duke filluar prej te:',
-'listwiki_users-submit' => 'Trego',
-'listwiki_users-noresult' => "Asnjë përdorues s'u gjet.",
-'listwiki_users-blocked' => '(Bllokuar)',
+# Special:ListUsers
+'listusersfrom' => 'Trego përdoruesit duke filluar prej te:',
+'listusers-submit' => 'Trego',
+'listusers-noresult' => "Asnjë përdorues s'u gjet.",
+'listusers-blocked' => '(Bllokuar)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'Lista e përdoruesve aktivë',
-'activewiki_users-intro' => 'Kjo është një listë e përdoruesve që kanë qenë aktivë për $1 {{PLURAL:$1|ditë|ditë}}.',
-'activewiki_users-count' => '$1 {{PLURAL:$1|redaktim|redaktime}} në {{PLURAL:$3|ditën|$3 ditët}} e fundit',
-'activewiki_users-from' => 'Trego përdoruesit duke filluar prej te:',
-'activewiki_users-hidebots' => 'Fshih robotët',
-'activewiki_users-hidesysops' => 'Fshih administratorët',
-'activewiki_users-noresult' => 'Asnjë përdorues nuk u gjet.',
+# Special:ActiveUsers
+'activeusers' => 'Lista e përdoruesve aktivë',
+'activeusers-intro' => 'Kjo është një listë e përdoruesve që kanë qenë aktivë për $1 {{PLURAL:$1|ditë|ditë}}.',
+'activeusers-count' => '$1 {{PLURAL:$1|redaktim|redaktime}} në {{PLURAL:$3|ditën|$3 ditët}} e fundit',
+'activeusers-from' => 'Trego përdoruesit duke filluar prej te:',
+'activeusers-hidebots' => 'Fshih robotët',
+'activeusers-hidesysops' => 'Fshih administratorët',
+'activeusers-noresult' => 'Asnjë përdorues nuk u gjet.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Regjistri i llogarive',
-'newwiki_userlogpagetext' => 'Ky është një regjistër i llogarive të fundit që janë hapur',
+# Special:Log/newusers
+'newuserlogpage' => 'Regjistri i llogarive',
+'newuserlogpagetext' => 'Ky është një regjistër i llogarive të fundit që janë hapur',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Grupime përdoruesish me privilegje',
@@ -2140,25 +2140,25 @@ Protokolle të mbështetura: <code>$1<code> (mos shtoni ndonjërin nga këta në
 'listgrouprights-addgroup-self-all' => 'Shtoni të gjitha grupet tek llogaria',
 'listgrouprights-removegroup-self-all' => 'Hiq të gjitha grupet nga llogaria',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => "S'ka adresë dërgimi",
-'mailnologintext' => 'Duhet të keni [[Special:wiki_userLogin|hyrë brenda]] dhe të keni një adresë të saktë në [[Special:Preferences|parapëlqimet]] tuaja për tu dërguar email përdoruesve të tjerë.',
-'emailwiki_user' => 'Email përdoruesit',
+'mailnologintext' => 'Duhet të keni [[Special:UserLogin|hyrë brenda]] dhe të keni një adresë të saktë në [[Special:Preferences|parapëlqimet]] tuaja për tu dërguar email përdoruesve të tjerë.',
+'emailuser' => 'Email përdoruesit',
 'emailpage' => 'Dërgo email përdoruesve',
 'emailpagetext' => 'Mund të përdorni formularin e mëposhtëm për të dërguar e-mail tek ky përdorues.
 Adresa e email-it që shkruat tek [[Special:Preferences|preferencat tuaja]] do të duket si "Nga" adresa e email-it, pra marrësi do të ketë mundësinë t\'ju përgjigjet direkt.',
-'wiki_usermailererror' => 'Objekti postal ktheu gabimin:',
+'usermailererror' => 'Objekti postal ktheu gabimin:',
 'defemailsubject' => '{{SITENAME}} posta elektronike nga përdoruesi "$1"',
-'wiki_usermaildisabled' => 'Email-i i përdoruesit çaktivizua',
-'wiki_usermaildisabledtext' => 'Ju nuk mund të dërgoni e-mail tek përdoruesit e tjerë në këtë wiki',
+'usermaildisabled' => 'Email-i i përdoruesit çaktivizua',
+'usermaildisabledtext' => 'Ju nuk mund të dërgoni e-mail tek përdoruesit e tjerë në këtë wiki',
 'noemailtitle' => "S'ka adresë email-i",
 'noemailtext' => 'Ky përdorues nuk ka përcaktuar një adresë të vlefshme e-mail.',
 'nowikiemailtitle' => 'Nuk lejohet postë elektronike',
 'nowikiemailtext' => 'Ky përdorues ka zgjedhur të mos pranojë porosi elektronike nga përdoruesit tjerë.',
 'emailnotarget' => 'Nofka jo ekzistuese ose e pavlefshme për marrësin',
 'emailtarget' => 'Shkruani nofkën e marrësit',
-'emailwiki_username' => 'Nofka:',
-'emailwiki_usernamesubmit' => 'Paraqit',
+'emailusername' => 'Nofka:',
+'emailusernamesubmit' => 'Paraqit',
 'email-legend' => 'Dërgoni porosi elektronike një përdoruesi të {{SITENAME}}',
 'emailfrom' => 'Nga:',
 'emailto' => 'Për:',
@@ -2169,11 +2169,11 @@ Adresa e email-it që shkruat tek [[Special:Preferences|preferencat tuaja]] do t
 'emailccsubject' => 'Kopje e emailit tuaj për $1: $2',
 'emailsent' => 'Email-i u dërgua',
 'emailsenttext' => 'Email-i është dërguar.',
-'emailwiki_userfooter' => 'Kjo porosi elektronike u dërgua nga $1 tek $2 nga "Dërgoi postë elektronike përdoruesit" funksion në {{SITENAME}}.',
+'emailuserfooter' => 'Kjo porosi elektronike u dërgua nga $1 tek $2 nga "Dërgoi postë elektronike përdoruesit" funksion në {{SITENAME}}.',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'Lënia e mesazhit të sistemit.',
-'wiki_usermessage-editor' => 'I dërguari i sistemit',
+# User Messenger
+'usermessage-summary' => 'Lënia e mesazhit të sistemit.',
+'usermessage-editor' => 'I dërguari i sistemit',
 
 # Watchlist
 'watchlist' => 'Lista mbikqyrëse',
@@ -2182,7 +2182,7 @@ Adresa e email-it që shkruat tek [[Special:Preferences|preferencat tuaja]] do t
 'nowatchlist' => 'Nuk keni asnjë faqe në listën mbikqyrëse.',
 'watchlistanontext' => 'Ju lutemi $1 për të parë redaktimet e artikujve në listë tuaj mbikqyrëse.',
 'watchnologin' => 'Nuk keni hyrë brënda',
-'watchnologintext' => 'Duhet të keni [[Special:wiki_userLogin|hyrë brenda]] për të ndryshuar listën mbikqyrëse.',
+'watchnologintext' => 'Duhet të keni [[Special:UserLogin|hyrë brenda]] për të ndryshuar listën mbikqyrëse.',
 'addwatch' => 'Shto tek lista mbikqyrëse',
 'addedwatchtext' => "Faqja \"[[:\$1]]\"  i është shtuar [[Special:Watchlist|listës mbikqyrëse]] tuaj. Ndryshimet e ardhshme të kësaj faqeje dhe faqes së diskutimit të saj do të jepen më poshtë, dhe emri i faqes do të duket i '''trashë''' në [[Special:RecentChanges|listën e ndryshimeve së fundmi]] për t'i dalluar më kollaj.
 
@@ -2317,12 +2317,12 @@ vazhdoni me kujdes.',
 'rollbackfailed' => 'Rikthimi dështoi',
 'cantrollback' => 'Redaktimi nuk mund të kthehej;
 redaktori i fundit është i vetmi autor i këtij artikulli.',
-'alreadyrolled' => 'Nuk mund të rikthehej redaktimi i fundit i [[:$1]] nga [[wiki_user:$2|$2]] ([[wiki_user talk:$2|diskuto]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]); dikush tjetër e ka redaktuar ose rikthyer këtë faqe tashmë.
+'alreadyrolled' => 'Nuk mund të rikthehej redaktimi i fundit i [[:$1]] nga [[User:$2|$2]] ([[User talk:$2|diskuto]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]); dikush tjetër e ka redaktuar ose rikthyer këtë faqe tashmë.
 
-Redaktimi i fundit është bërë nga [[wiki_user:$3|$3]] ([[wiki_user talk:$3|diskuto]]{{nt:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+Redaktimi i fundit është bërë nga [[User:$3|$3]] ([[User talk:$3|diskuto]]{{nt:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "Përmbledhja e redaktimit ishte: \"''\$1''\".",
-'revertpage' => 'Ndryshimet e [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|diskutimet]]) u kthyen mbrapsht, artikulli tani ndodhet në versionin e fundit nga [[wiki_user:$1|$1]].',
-'revertpage-nowiki_user' => 'U rikthyen redaktimet nga (përdoruesi i larguar) në versionin e fundit nga [[wiki_user:$1|$1]]',
+'revertpage' => 'Ndryshimet e [[Special:Contributions/$2|$2]] ([[User talk:$2|diskutimet]]) u kthyen mbrapsht, artikulli tani ndodhet në versionin e fundit nga [[User:$1|$1]].',
+'revertpage-nouser' => 'U rikthyen redaktimet nga (përdoruesi i larguar) në versionin e fundit nga [[User:$1|$1]]',
 'rollback-success' => 'Ndryshimet e $1 u kthyen mbrapsh; artikulli ndodhet tek verzioni i $2.',
 
 # Edit tokens
@@ -2471,13 +2471,13 @@ $1',
 'sp-contributions-uploads' => 'ngarkimet',
 'sp-contributions-logs' => 'Regjistrat',
 'sp-contributions-talk' => 'Diskutoni',
-'sp-contributions-wiki_userrights' => 'menaxhimi i të drejtave të përdoruesit',
+'sp-contributions-userrights' => 'menaxhimi i të drejtave të përdoruesit',
 'sp-contributions-blocked-notice' => 'Ky përdorues është i bllokuar.
 Bllokimi i fundit është shfaqur më poshtë për referencë:',
 'sp-contributions-blocked-notice-anon' => 'Kjo adresë IP është e bllokuar aktualisht.
 Bllokimi i funditë është më poshtë për referencë:',
 'sp-contributions-search' => 'Kërko tek kontributet',
-'sp-contributions-wiki_username' => 'IP Addresa ose Përdoruesi:',
+'sp-contributions-username' => 'IP Addresa ose Përdoruesi:',
 'sp-contributions-toponly' => 'Trego vetëm redaktimet që janë versionet më të fundit',
 'sp-contributions-submit' => 'Kërko',
 
@@ -2510,7 +2510,7 @@ Bllokimi i funditë është më poshtë për referencë:',
 'blockiptext' => 'Përdorni formularin e mëposhtëm për të hequr lejen e shkrimit për një përdorues ose IP specifike.
 Kjo duhet bërë vetëm në raste vandalizmi, dhe në përputhje me [[{{MediaWiki:Policy-url}}|rregullat e {{SITENAME}}-s]].
 Plotësoni arsyen specifike më poshtë (p.sh., tregoni faqet specifike që u vandalizuan).',
-'ipadressorwiki_username' => 'Adresë IP ose emër përdoruesi',
+'ipadressorusername' => 'Adresë IP ose emër përdoruesi',
 'ipbexpiry' => 'Afati',
 'ipbreason' => 'Arsyeja:',
 'ipbreasonotherlist' => 'Arsye tjetër',
@@ -2532,8 +2532,8 @@ Plotësoni arsyen specifike më poshtë (p.sh., tregoni faqet specifike që u va
 'ipbotheroption' => 'tjetër',
 'ipbotherreason' => 'Arsye tjetër/shtesë',
 'ipbhidename' => 'Fshih emrat e përdorueseve nga redaktimet dhe listat',
-'ipbwatchwiki_user' => 'Shiko faqen e prezantimit dhe diskutimit të këtij përdoruesi',
-'ipb-disablewiki_usertalk' => 'Parandalo këtë përdorues për të redaktuar faqe-diskutimin e tyre përderisa janë të bllokkuar',
+'ipbwatchuser' => 'Shiko faqen e prezantimit dhe diskutimit të këtij përdoruesi',
+'ipb-disableusertalk' => 'Parandalo këtë përdorues për të redaktuar faqe-diskutimin e tyre përderisa janë të bllokkuar',
 'ipb-change-block' => 'Ri-blloko përdorues me këta parametra',
 'ipb-confirm' => 'Konfirmo bllokimin',
 'badipaddress' => 'Nuk ka asnjë përdorues me atë emër',
@@ -2541,7 +2541,7 @@ Plotësoni arsyen specifike më poshtë (p.sh., tregoni faqet specifike që u va
 'blockipsuccesstext' => 'Përdoruesi/IP-Adresa [[Special:Contributions/$1|$1]] u bllokua.<br />
 Shiko te [[Special:BlockList|Lista e përdoruesve dhe e IP adresave të bllokuara]] për të çbllokuar Përdorues/IP.',
 'ipb-blockingself' => 'Ju jeni duke bllokuar vetëveten ! Jeni te sigurte qe doni te bëni këtë?',
-'ipb-confirmhidewiki_user' => 'Ju jeni gati për të bllokuar një përdorues me "përdorues të fshehur" të aktivizuar. Kjo do të shtypur emrin e përdoruesit në të gjitha listat dhe aktivitetet hyrëse. Jeni te sigurte qe doni ta bëni këtë ?',
+'ipb-confirmhideuser' => 'Ju jeni gati për të bllokuar një përdorues me "përdorues të fshehur" të aktivizuar. Kjo do të shtypur emrin e përdoruesit në të gjitha listat dhe aktivitetet hyrëse. Jeni te sigurte qe doni ta bëni këtë ?',
 'ipb-edit-dropdown' => 'Redakto arsyet e bllokimit',
 'ipb-unblock-addr' => 'Çblloko $1',
 'ipb-unblock' => 'Çblloko përdorues dhe IP të bllokuara',
@@ -2551,13 +2551,13 @@ Shiko te [[Special:BlockList|Lista e përdoruesve dhe e IP adresave të bllokuar
 'unblockiptext' => "Përdor formularin e më poshtëm për t'i ridhënë leje shkrimi
 një përdoruesi ose IP adreseje të bllokuar.",
 'ipusubmit' => 'Hiqni këtë bllokim',
-'unblocked' => '[[wiki_user:$1|$1]] është çbllokuar',
+'unblocked' => '[[User:$1|$1]] është çbllokuar',
 'unblocked-range' => '$1 është zhbllokuar',
 'unblocked-id' => 'Bllokimi $1 është hequr',
 'blocklist' => 'Përdorues i Bllokuar',
 'ipblocklist' => 'Përdorues i Bllokuar',
 'ipblocklist-legend' => 'Gjej një përdorues të bllokuar',
-'blocklist-wiki_userblocks' => 'Fsheh bllokimin e llogarisë',
+'blocklist-userblocks' => 'Fsheh bllokimin e llogarisë',
 'blocklist-tempblocks' => 'Fsheh bllokimin e përkohshëm',
 'blocklist-addressblocks' => 'Fsheh bllokimin e IP vetanake',
 'blocklist-rangeblocks' => 'Fsheh varg bllokimet',
@@ -2576,7 +2576,7 @@ një përdoruesi ose IP adreseje të bllokuar.",
 'noautoblockblock' => 'autobllokimi është çaktivizuar',
 'createaccountblock' => 'hapja e lloggarive është bllokuar',
 'emailblock' => 'email është bllokuar',
-'blocklist-nowiki_usertalk' => 'nuk mund të editohet faqja personale e diskutimit',
+'blocklist-nousertalk' => 'nuk mund të editohet faqja personale e diskutimit',
 'ipblocklist-empty' => 'Lista e të bllokimeve është e zbrazët.',
 'ipblocklist-no-results' => 'Adresa IP ose përdoruesi i kërkuar nuk është i bllokuar.',
 'blocklink' => 'blloko',
@@ -2584,7 +2584,7 @@ një përdoruesi ose IP adreseje të bllokuar.",
 'change-blocklink' => 'ndryshoje bllokun',
 'contribslink' => 'kontribute',
 'emaillink' => 'dërgo e-mail',
-'autoblocker' => 'Bllokuar automatikisht sepse adresa juaj IP është përdorur së fundmi nga "[[wiki_user:$1|$1]]".
+'autoblocker' => 'Bllokuar automatikisht sepse adresa juaj IP është përdorur së fundmi nga "[[User:$1|$1]]".
 Arsyeja e dhënë për bllokimin e $1 është: "$2"',
 'blocklogpage' => 'Regjistri i bllokimeve',
 'blocklog-showlog' => 'Ky përdorues ka qenë bllokuar më parë.
@@ -2599,7 +2599,7 @@ Regjistri i bllokimeve është poshtë për referncë:',
 'block-log-flags-nocreate' => 'krijimi i llogarive është pamundësuar',
 'block-log-flags-noautoblock' => 'vetëbllokimi është pamundësuar',
 'block-log-flags-noemail' => 'posta elektronike është e bllokuar',
-'block-log-flags-nowiki_usertalk' => 'nuk mund të redaktojë faqen e tij të diskutimit',
+'block-log-flags-nousertalk' => 'nuk mund të redaktojë faqen e tij të diskutimit',
 'block-log-flags-angry-autoblock' => 'Autobllokimi i zgjeruar u aktivizua',
 'block-log-flags-hiddenname' => 'emri i përdoruesit i fshehur',
 'range_block_disabled' => 'Mundësia e administruesve për të bllokuar me shtrirje është çaktivizuar.',
@@ -2610,7 +2610,7 @@ Regjistri i bllokimeve është poshtë për referncë:',
 'ipb-needreblock' => "$1 është i bllokuar.
 Dëshironi t'i ndryshoni parametrat?",
 'ipb-otherblocks-header' => '{{PLURAL:$1|Bllokim tjetër|Bllokime të tjera}}',
-'unblock-hidewiki_user' => 'Ju nuk mund të zhbllokoni këtë përdorues, përderisa nofka e tij është fshehur.',
+'unblock-hideuser' => 'Ju nuk mund të zhbllokoni këtë përdorues, përderisa nofka e tij është fshehur.',
 'ipb_cant_unblock' => 'Gabim: Bllokimi ID $1 nuk u gjet.
 Mund të jetë zhbllokuar.',
 'ipb_blocked_as_range' => 'Gabim: Adresa IP $1 nuk është bllokuar direkt dhe nuk mund të zhbllokohet.
@@ -2625,7 +2625,7 @@ Ajo është, megjithatë, e bllokuar si pjesë e rangut $2, që nuk mund të zhb
 'sorbsreason' => 'Adresa IP e juaj është radhitur si ndërmjetëse e hapur tek lista DNSBL.',
 'sorbs_create_account_reason' => 'Adresa IP e juaj është radhitur si ndërmjetëse e hapur tek lista DNSBL që përdoret nga {{SITENAME}}. Nuk ju lejohet të hapni një llogari.',
 'cant-block-while-blocked' => 'Ju nuk mund të bllokoni përdorues të tjerë ndërkohë që jeni i bllokuar.',
-'cant-see-hidden-wiki_user' => 'Përdoruesi që po përpiqeni të bllokoni është i bllokuar dhe i fshehur.
+'cant-see-hidden-user' => 'Përdoruesi që po përpiqeni të bllokoni është i bllokuar dhe i fshehur.
 Përderisa ju nuk keni të drejtën e fshehjes së përdoruesve, ju nuk mund të shikoni ose redaktoni bllokimet e përdoruesit.',
 'ipbblocked' => 'Ju nuk mund të bllokoni ose zhbllokoni përdoruesit e tjerë, sepse jeni për vete i bllokuar',
 'ipbnounblockself' => 'Ju nuk mund të zhbllokoni veten tuaj',
@@ -2684,13 +2684,13 @@ Ky mund të jetë një ndryshim i madh dhe gjëra të papritura mund të ndodhin
 
 Në ato raste, duhet ta zhvendosni ose përpuqni faqen vetë n.q.s. dëshironi.",
 'movearticle' => 'Zhvendose faqen',
-'movewiki_userpage-warning' => "'''Kujdes:''' Ju po zhvendosni një faqe përdoruesi. Ju lutemi, kujtoni se vetëm faqja do të zhvendoset dhe përdoruesi ''nuk'' do të ndryshojë emrin.",
+'moveuserpage-warning' => "'''Kujdes:''' Ju po zhvendosni një faqe përdoruesi. Ju lutemi, kujtoni se vetëm faqja do të zhvendoset dhe përdoruesi ''nuk'' do të ndryshojë emrin.",
 'movenologin' => 'Nuk keni hyrë brenda',
-'movenologintext' => 'Duhet të keni hapur një llogari dhe të keni [[Special:wiki_userLogin|hyrë brenda]] për të zhvendosur një faqe.',
+'movenologintext' => 'Duhet të keni hapur një llogari dhe të keni [[Special:UserLogin|hyrë brenda]] për të zhvendosur një faqe.',
 'movenotallowed' => 'Nuk ju lejohet të zhvendosni faqe.',
 'movenotallowedfile' => 'Nuk keni leje për të lëvizur skeda.',
-'cant-move-wiki_user-page' => 'Ju nuk keni të drejat për të lzhvendosur faqet e përdoruesve (përveç nën-faqeve).',
-'cant-move-to-wiki_user-page' => 'Ju nuk keni të drejta për të zhvendosur një faqe tek një faqe përdoruesi (përvç tek një nën-faqe përdoruesi).',
+'cant-move-user-page' => 'Ju nuk keni të drejat për të lzhvendosur faqet e përdoruesve (përveç nën-faqeve).',
+'cant-move-to-user-page' => 'Ju nuk keni të drejta për të zhvendosur një faqe tek një faqe përdoruesi (përvç tek një nën-faqe përdoruesi).',
 'newtitle' => 'Tek titulli i ri',
 'move-watch' => 'Mbikqyre këtë faqe',
 'movepagebtn' => 'Zhvendose faqen',
@@ -2859,8 +2859,8 @@ Ju lutemi provoni përsëri.',
 'javascripttest-qunit-heading' => 'Platforma testuese JavaScript QUnit',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Faqja juaj e përdoruesit',
-'tooltip-pt-anonwiki_userpage' => 'Faqja e përdoruesve anonim nga kjo adresë IP',
+'tooltip-pt-userpage' => 'Faqja juaj e përdoruesit',
+'tooltip-pt-anonuserpage' => 'Faqja e përdoruesve anonim nga kjo adresë IP',
 'tooltip-pt-mytalk' => 'Faqja juaj e diskutimeve',
 'tooltip-pt-anontalk' => 'Faqja e diskutimeve të përdoruesve anonim për këtë adresë IP',
 'tooltip-pt-preferences' => 'Parapëlqimet tuaja',
@@ -2897,13 +2897,13 @@ Ju lutemi provoni përsëri.',
 'tooltip-feed-rss' => 'Burimi ushqyes "RSS" për këtë faqe',
 'tooltip-feed-atom' => 'Burimi ushqyes "Atom" për këtë faqe',
 'tooltip-t-contributions' => 'Shiko listën e kontributeve për përdoruesin në fjalë',
-'tooltip-t-emailwiki_user' => 'Dërgoni një email përdoruesit',
+'tooltip-t-emailuser' => 'Dërgoni një email përdoruesit',
 'tooltip-t-upload' => 'Ngarko skeda',
 'tooltip-t-specialpages' => 'Lista e të gjitha faqeve speciale.',
 'tooltip-t-print' => 'Version i shtypshëm i kësaj faqeje',
 'tooltip-t-permalink' => 'Lidhja e përhershme tek ky version i faqes',
 'tooltip-ca-nstab-main' => 'Shikoni përmbajtjen e atikullit.',
-'tooltip-ca-nstab-wiki_user' => 'Shikoni faqen e përdoruesit',
+'tooltip-ca-nstab-user' => 'Shikoni faqen e përdoruesit',
 'tooltip-ca-nstab-media' => 'Shikoni faqen e skedës',
 'tooltip-ca-nstab-special' => 'Kjo është një faqe speciale. Ju nuk mundeni ta redaktoni këtë faqe',
 'tooltip-ca-nstab-project' => 'Shikoni faqen e projektit',
@@ -2935,13 +2935,13 @@ Ju lutemi provoni përsëri.',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|Përdoruesi anonim|Përdoruesit anonimë}} të {{SITENAME}}',
-'sitewiki_user' => 'Përdoruesi $1 nga {{SITENAME}}',
-'anonwiki_user' => 'Përdorues anonim i {{SITENAME}} $1',
+'siteuser' => 'Përdoruesi $1 nga {{SITENAME}}',
+'anonuser' => 'Përdorues anonim i {{SITENAME}} $1',
 'lastmodifiedatby' => 'Kjo faqe është redaktuar së fundit më $2, $1 nga $3.',
 'othercontribs' => 'Bazuar në punën e: $1',
 'others' => 'të tjerë',
-'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|përdorues|përdorues}} $1',
-'anonwiki_users' => '{{SITENAME}} {{PLURAL:$2|përdoruesi anonim|përdoruesit anonimë}} $1',
+'siteusers' => '{{SITENAME}} {{PLURAL:$2|përdorues|përdorues}} $1',
+'anonusers' => '{{SITENAME}} {{PLURAL:$2|përdoruesi anonim|përdoruesit anonimë}} $1',
 'creditspage' => 'Statistika e faqes',
 'nocredits' => 'Për këtë faqe nuk ka informacione.',
 
@@ -2949,7 +2949,7 @@ Ju lutemi provoni përsëri.',
 'spamprotectiontitle' => 'Mbrojtje ndaj teksteve të padëshiruara',
 'spamprotectiontext' => 'Faqja që dëshironit të ruani është bllokuar nga filtri i teksteve të padëshiruara. Ka mundësi që kjo të ketë ndodhur për shkak të ndonjë lidhjeje të jashtme.',
 'spamprotectionmatch' => 'Teksti në vijim është cilësuar i padëshiruar nga softueri: $1',
-'spambot_wiki_username' => 'MediaWiki spam-pastrues',
+'spambot_username' => 'MediaWiki spam-pastrues',
 'spam_reverting' => "U kthye tek versioni i fundit që s'ka lidhje tek $1",
 'spam_blanking' => 'U boshatis sepse të gjitha versionet kanë lidhje tek $1',
 'spam_deleting' => 'Të gjitha inspektimet përmbanin lidhje në $1, duke fshirë',
@@ -3102,7 +3102,7 @@ Në qoftë se skeda është ndryshuar nga gjendja origjinale, disa hollësira mu
 'exif-compressedbitsperpixel' => 'Lloji i ngjeshjes së figurës',
 'exif-pixelydimension' => 'Gjerësia Image',
 'exif-pixelxdimension' => 'lartësi Image',
-'exif-wiki_usercomment' => 'Vërejtjet e përdoruesit',
+'exif-usercomment' => 'Vërejtjet e përdoruesit',
 'exif-relatedsoundfile' => 'Skeda audio shoqëruese',
 'exif-datetimeoriginal' => 'Data dhe koha e prodhimit të të dhënave',
 'exif-datetimedigitized' => 'Data dhe ora e digjitalizimit',
@@ -3536,10 +3536,10 @@ Ky kod i konfirmimit skadon me $4.',
 
 # Delete conflict
 'deletedwhileediting' => 'Kujdes! Kjo faqe është grisur pasi keni filluar redaktimin!',
-'confirmrecreate' => "Përdoruesi [[wiki_user:$1|$1]] ([[wiki_user talk:$1|diskutime]]) grisi këtë artikull mbasi ju filluat ta redaktoni për arsyen:
+'confirmrecreate' => "Përdoruesi [[User:$1|$1]] ([[User talk:$1|diskutime]]) grisi këtë artikull mbasi ju filluat ta redaktoni për arsyen:
 : ''$2''
 Ju lutem konfirmoni nëse dëshironi me të vertetë ta rikrijoni këtë artikull.",
-'confirmrecreate-noreason' => 'Përdoruesi [[wiki_user:$1|$1]] ([[wiki_user talk:$1|talk]]) ka fshirë këtë faqe pasi ju filluat ta redaktoni. Ju lutem konfirmoni që ju vërtet doni të ri-krijoni këtë faqe.',
+'confirmrecreate-noreason' => 'Përdoruesi [[User:$1|$1]] ([[User talk:$1|talk]]) ka fshirë këtë faqe pasi ju filluat ta redaktoni. Ju lutem konfirmoni që ju vërtet doni të ri-krijoni këtë faqe.',
 'recreate' => 'Rikrijo',
 
 # action=purge
@@ -3614,7 +3614,7 @@ Ju gjithashtu mund [[Special:EditWatchlist|të përdorni redaktuesin standart]].
 'watchlisttools-raw' => 'Redaktoje drejtpërdrejt listën',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|diskutimet]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|diskutimet]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Etiketë shtesë e panjohur "$1"',
@@ -3678,7 +3678,7 @@ Figurat tregohen me madhësi të plotë, skedat e tjera hapen me programet përk
 'specialpages-group-login' => 'Hyrje dhe hapje llogarie',
 'specialpages-group-changes' => 'Ndryshime së fundmi dhe regjistra',
 'specialpages-group-media' => 'Përmbledhje media dhe ngarkime',
-'specialpages-group-wiki_users' => 'Përdoruesit dhe privilegjet',
+'specialpages-group-users' => 'Përdoruesit dhe privilegjet',
 'specialpages-group-highuse' => 'Faqe të shumëpërdorura',
 'specialpages-group-pages' => 'Lista e faqeve',
 'specialpages-group-pagetools' => 'Mjetet e faqes',
@@ -3777,11 +3777,11 @@ Kjo faqe është duke përjetuar vështirësi teknike.',
 'logentry-move-move_redir-noredirect' => '$1 zhvendosi faqen $3 te $4 nëpërmjet një përcjellimi pa lënë një përcjellim',
 'logentry-patrol-patrol' => '$1 shënoi versionin $4 të faqes $3 të patrolluar',
 'logentry-patrol-patrol-auto' => '$1 automatikisht shënoi versionin $4 të faqes $3 të patrolluar',
-'logentry-newwiki_users-newwiki_users' => '$1 krijoi një llogari',
-'logentry-newwiki_users-create' => '$1 krijoi një llogari',
-'logentry-newwiki_users-create2' => '$1 krijoi një llogari $3',
-'logentry-newwiki_users-autocreate' => 'Llogaria $1 u krijua automatikisht',
-'newwiki_userlog-byemail' => 'fjalëkalimi u dërgua në postën elektronike',
+'logentry-newusers-newusers' => '$1 krijoi një llogari',
+'logentry-newusers-create' => '$1 krijoi një llogari',
+'logentry-newusers-create2' => '$1 krijoi një llogari $3',
+'logentry-newusers-autocreate' => 'Llogaria $1 u krijua automatikisht',
+'newuserlog-byemail' => 'fjalëkalimi u dërgua në postën elektronike',
 
 # Feedback
 'feedback-bugornote' => 'Nëse jeni gati për të përshkruar një problem teknik me detaje ju lutemi [$1 raportoni një problem].

@@ -172,7 +172,7 @@ class AjaxResponse {
 			# tell the client to use a cached copy, without a way to purge it.
 
 			if ( $wgUseSquid ) {
-				# Expect explicite purge of the proxy cache, but require end wiki_user agents
+				# Expect explicite purge of the proxy cache, but require end user agents
 				# to revalidate against the proxy on each visit.
 				# Surrogate-Control controls our Squid, Cache-Control downstream caches
 
@@ -211,7 +211,7 @@ class AjaxResponse {
 	 * @return bool Returns true if the response code was set to 304 Not Modified.
 	 */
 	function checkLastModified ( $timestamp ) {
-		global $wgCachePages, $wgCacheEpoch, $wgwiki_user;
+		global $wgCachePages, $wgCacheEpoch, $wgUser;
 		$fname = 'AjaxResponse::checkLastModified';
 
 		if ( !$timestamp || $timestamp == '19700101000000' ) {
@@ -224,13 +224,13 @@ class AjaxResponse {
 			return false;
 		}
 
-		if ( $wgwiki_user->getOption( 'nocache' ) ) {
+		if ( $wgUser->getOption( 'nocache' ) ) {
 			wfDebug( "$fname: USER DISABLED CACHE\n", false );
 			return false;
 		}
 
 		$timestamp = wfTimestamp( TS_MW, $timestamp );
-		$lastmod = wfTimestamp( TS_RFC2822, max( $timestamp, $wgwiki_user->getTouched(), $wgCacheEpoch ) );
+		$lastmod = wfTimestamp( TS_RFC2822, max( $timestamp, $wgUser->getTouched(), $wgCacheEpoch ) );
 
 		if ( !empty( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) ) {
 			# IE sends sizes after the date like this:
@@ -242,17 +242,17 @@ class AjaxResponse {
 			wfDebug( "$fname: -- client send If-Modified-Since: " . $modsince . "\n", false );
 			wfDebug( "$fname: --  we might send Last-Modified : $lastmod\n", false );
 
-			if ( ( $ismodsince >= $timestamp ) && $wgwiki_user->validateCache( $ismodsince ) && $ismodsince >= $wgCacheEpoch ) {
+			if ( ( $ismodsince >= $timestamp ) && $wgUser->validateCache( $ismodsince ) && $ismodsince >= $wgCacheEpoch ) {
 				ini_set( 'zlib.output_compression', 0 );
 				$this->setResponseCode( "304 Not Modified" );
 				$this->disable();
 				$this->mLastModified = $lastmod;
 
-				wfDebug( "$fname: CACHED client: $ismodsince ; wiki_user: {$wgwiki_user->getTouched()} ; page: $timestamp ; site $wgCacheEpoch\n", false );
+				wfDebug( "$fname: CACHED client: $ismodsince ; user: {$wgUser->getTouched()} ; page: $timestamp ; site $wgCacheEpoch\n", false );
 
 				return true;
 			} else {
-				wfDebug( "$fname: READY  client: $ismodsince ; wiki_user: {$wgwiki_user->getTouched()} ; page: $timestamp ; site $wgCacheEpoch\n", false );
+				wfDebug( "$fname: READY  client: $ismodsince ; user: {$wgUser->getTouched()} ; page: $timestamp ; site $wgCacheEpoch\n", false );
 				$this->mLastModified = $lastmod;
 			}
 		} else {

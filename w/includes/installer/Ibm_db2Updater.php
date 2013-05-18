@@ -36,8 +36,8 @@ class Ibm_db2Updater extends DatabaseUpdater {
 	protected function getCoreUpdateList() {
 		return array(
 			// 1.14
-			array( 'addField', 'site_stats',    'ss_active_wiki_users',  'patch-ss_active_wiki_users.sql' ),
-			array( 'addField', 'ipblocks',      'ipb_allow_wiki_usertalk', 'patch-ipb_allow_wiki_usertalk.sql' ),
+			array( 'addField', 'site_stats',    'ss_active_users',  'patch-ss_active_users.sql' ),
+			array( 'addField', 'ipblocks',      'ipb_allow_usertalk', 'patch-ipb_allow_usertalk.sql' ),
 
 			// 1.15
 			array( 'addTable', 'change_tag',                        'patch-change_tag.sql' ),
@@ -45,11 +45,11 @@ class Ibm_db2Updater extends DatabaseUpdater {
 			array( 'addTable', 'valid_tag',                         'patch-change_valid_tag.sql' ),
 
 			// 1.16
-			array( 'addTable', 'wiki_user_properties',                   'patch-wiki_user_properties.sql' ),
+			array( 'addTable', 'user_properties',                   'patch-user_properties.sql' ),
 			array( 'addTable', 'log_search',                        'patch-log_search.sql' ),
-			array( 'addField', 'logging',       'log_wiki_user_text',    'patch-log_wiki_user_text.sql' ),
+			array( 'addField', 'logging',       'log_user_text',    'patch-log_user_text.sql' ),
 			array( 'addTable', 'l10n_cache',                        'patch-l10n_cache.sql' ),
-			array( 'addTable', 'external_wiki_user',                     'patch-external_wiki_user.sql' ),
+			array( 'addTable', 'external_user',                     'patch-external_user.sql' ),
 			array( 'addIndex', 'log_search',    'ls_field_val',     'patch-log_search-rename-index.sql' ),
 			array( 'addIndex', 'change_tag',    'change_tag_rc_tag', 'patch-change_tag-indexes.sql' ),
 			array( 'addField', 'redirect',      'rd_interwiki',     'patch-rd_interwiki.sql' ),
@@ -72,16 +72,16 @@ class Ibm_db2Updater extends DatabaseUpdater {
 			array( 'addField', 'categorylinks',  'cl_type',           'patch-cl_type-field.sql' ),
 
 			//1.18
-			array( 'dowiki_userNewTalkTimestampNotNull' ),
-			array( 'addIndex', 'wiki_user',          'wiki_user_email',       'patch-wiki_user_email_index.sql' ),
-			array( 'modifyField', 'wiki_user_properties', 'up_property', 'patch-up_property.sql' ),
+			array( 'doUserNewTalkTimestampNotNull' ),
+			array( 'addIndex', 'user',          'user_email',       'patch-user_email_index.sql' ),
+			array( 'modifyField', 'user_properties', 'up_property', 'patch-up_property.sql' ),
 			array( 'addTable', 'uploadstash',                       'patch-uploadstash.sql' ),
-			array( 'addTable', 'wiki_user_former_groups',                'patch-wiki_user_former_groups.sql'),
+			array( 'addTable', 'user_former_groups',                'patch-user_former_groups.sql'),
 			array( 'doRebuildLocalisationCache' ),
 
 			// 1.19
 			array( 'addIndex', 'logging',       'type_action',      'patch-logging-type-action-index.sql'),
-			array( 'dropField', 'wiki_user',         'wiki_user_options', 'patch-drop-wiki_user_options.sql' ),
+			array( 'dropField', 'user',         'user_options', 'patch-drop-user_options.sql' ),
 			array( 'addField', 'revision',      'rev_sha1',         'patch-rev_sha1.sql' ),
 			array( 'addField', 'archive',       'ar_sha1',          'patch-ar_sha1.sql' ),
 

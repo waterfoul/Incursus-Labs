@@ -54,7 +54,7 @@ if ( ( isset( $_REQUEST ) && array_key_exists( 'argv', $_REQUEST ) ) || count( $
 #		$request .= "Proxy-Connection: Keep-Alive\r\n";
 #		$request .= "Pragma: no-cache\r\n";
 #		$request .= "Host: ".$url."\r\n";
-#		$request .= "wiki_user-Agent: MediaWiki open proxy check\r\n";
+#		$request .= "User-Agent: MediaWiki open proxy check\r\n";
 		$request .= "\r\n";
 		@fputs($sock, $request);
 		$response = fgets($sock, 65536);

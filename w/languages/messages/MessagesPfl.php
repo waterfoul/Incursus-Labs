@@ -17,7 +17,7 @@
 $fallback = 'de';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-showtoolbar' => "Werkzaich zum Bearwaide zaische (dodezu brauchd's JavaScript)",
 'tog-showhiddencats' => 'Zaisch vaschdeglde Kadegorije',
 
@@ -150,7 +150,7 @@ $messages = array(
 'jumptonavigation' => 'Navigation',
 'jumptosearch' => 'Suche',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Iwwer {{SITENAME}}',
 'aboutpage' => 'Project:Iwwer',
 'copyright' => 'Was do drin schdeht isch unner $1 verfiechbar.',
@@ -192,7 +192,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Said',
-'nstab-wiki_user' => 'Benutzersaid',
+'nstab-user' => 'Benutzersaid',
 'nstab-media' => 'Media',
 'nstab-special' => 'Spezialsaid',
 'nstab-project' => 'Bordal',
@@ -208,7 +208,7 @@ $messages = array(
 Normalerwais hääßd des, dass die Said gleschd worre isch.
 
 Wenns des nit isch, hoschd villaischd en Fehler in de Daadebong'g gfunne.
-Bidde meldsm [[Special:Listwiki_users/sysop|Adminischdrador]], un gebb d URL dezu aa.",
+Bidde meldsm [[Special:ListUsers/sysop|Adminischdrador]], un gebb d URL dezu aa.",
 'missingarticle-rev' => '(Versionsnummer#: $1)',
 'badtitle' => 'Schleschde Didl',
 'badtitletext' => 'De Titel vun de aageforderte Said isch nid giltich, leer, odder e nid giltiche Link vun eme annere Wiki.
@@ -222,9 +222,9 @@ S kann sai, dass es ää odder meh Zaiche drin hot, wu im Titel vun de Said nid 
 'remembermypassword' => 'Mai Passwort uff dem Computer merke (hechschtens fer $1 {{PLURAL:$1|Dach|Dach}})',
 'login' => 'Omelde',
 'nav-login-createaccount' => 'Aamelde / Benudzerkondo aaleche',
-'wiki_userlogin' => 'Omelde / Benutzerkonto anleche',
+'userlogin' => 'Omelde / Benutzerkonto anleche',
 'logout' => 'Abmelde',
-'wiki_userlogout' => 'Abmelde',
+'userlogout' => 'Abmelde',
 'nologinlink' => 'E Benutzerkondo aaleche',
 'mailmypassword' => 'Nais Passwort per E-Mail schicke',
 
@@ -386,7 +386,7 @@ Erklärung: '''({{int:cur}})''' = Unnerschied zu jetzert,
 
 'grouppage-sysop' => '{{ns:project}}:Adminischtratore',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Benutzerrecht-Logbuch',
 'rightsnone' => '(-)',
 
@@ -456,7 +456,7 @@ Saide uff [[Special:Watchlist|Dainer Beowachdungslischt]] sin '''fett'''.",
 'filehist-datetime' => 'Zaidpungd',
 'filehist-thumb' => 'Vorschaubild',
 'filehist-thumbtext' => 'Vorschaubild fer Version vum $1',
-'filehist-wiki_user' => 'Benudzer',
+'filehist-user' => 'Benudzer',
 'filehist-dimensions' => 'Moß',
 'filehist-comment' => 'Kommentar',
 'imagelinks' => 'Dadaivawendung',
@@ -508,14 +508,14 @@ Saide uff [[Special:Watchlist|Dainer Beowachdungslischt]] sin '''fett'''.",
 # Special:LinkSearch
 'linksearch' => 'Externe Links',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Naiaameldungs-Logbuch',
+# Special:Log/newusers
+'newuserlogpage' => 'Naiaameldungs-Logbuch',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(Midgliederlischd)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'E-Mail on de Benutzer',
+# E-mail user
+'emailuser' => 'E-Mail on de Benutzer',
 'emailsend' => 'Abschigge',
 
 # Watchlist
@@ -609,7 +609,7 @@ Der Schutzstatus vun derre Said kannscht ännere, awwer des hot kää Aifluss uf
 'sp-contributions-blocklog' => 'Sperrlogbuch',
 'sp-contributions-talk' => 'Dischbediere',
 'sp-contributions-search' => 'No Baidräch suche',
-'sp-contributions-wiki_username' => 'IP-Adress orrer Benutzername:',
+'sp-contributions-username' => 'IP-Adress orrer Benutzername:',
 'sp-contributions-submit' => 'Suche',
 
 # What links here
@@ -696,7 +696,7 @@ Bitte duu se vun Hand zammefiehre.'''",
 'import-interwiki-submit' => 'Impordiere',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Dai Benudzersaid',
+'tooltip-pt-userpage' => 'Dai Benudzersaid',
 'tooltip-pt-mytalk' => 'Dai Dischbedier-Said',
 'tooltip-pt-preferences' => 'Dai Aistellunge',
 'tooltip-pt-watchlist' => 'D Lischt vun Saide, die wu du beowachde dusch',
@@ -731,13 +731,13 @@ Du kannscht awwer de Quelltegschd aagucke',
 'tooltip-feed-rss' => 'RSS feed fer die Said',
 'tooltip-feed-atom' => 'Atom feed fer die Said',
 'tooltip-t-contributions' => 'Die ledschde Baidräch vun däm Benudzer aagucke',
-'tooltip-t-emailwiki_user' => 'Dem Benutzer e E-Mail schicke',
+'tooltip-t-emailuser' => 'Dem Benutzer e E-Mail schicke',
 'tooltip-t-upload' => 'Dateije nufflade',
 'tooltip-t-specialpages' => 'Lischd vun alle Schbezialsaide',
 'tooltip-t-print' => 'Druggversion vun derre Said',
 'tooltip-t-permalink' => 'E dauerhafte Link zu derre Version vun de Said',
 'tooltip-ca-nstab-main' => 'D Inhaldssaid aagucke',
-'tooltip-ca-nstab-wiki_user' => 'D Benutzersaid aagucke',
+'tooltip-ca-nstab-user' => 'D Benutzersaid aagucke',
 'tooltip-ca-nstab-special' => 'Des isch e Spezialsaid, du kannscht d Said sälwerscht nit ännere',
 'tooltip-ca-nstab-project' => 'D Projektsaid aagucke',
 'tooltip-ca-nstab-image' => 'D Dateisaid aaugucke',

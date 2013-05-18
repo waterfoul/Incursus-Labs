@@ -346,9 +346,9 @@ abstract class ORMRow implements IORMRow {
 	 * @return boolean Success indicator
 	 */
 	protected function saveExisting( $functionName = null ) {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
-		$success = w->update(
+		$success = $dbw->update(
 			$this->table->getName(),
 			$this->getWriteValues(),
 			$this->table->getPrefixedValues( $this->getUpdateConditions() ),
@@ -382,9 +382,9 @@ abstract class ORMRow implements IORMRow {
 	 * @return boolean Success indicator
 	 */
 	protected function insert( $functionName = null, array $options = null ) {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
-		$success = w->insert(
+		$success = $dbw->insert(
 			$this->table->getName(),
 			$this->getWriteValues(),
 			is_null( $functionName ) ? __METHOD__ : $functionName,
@@ -395,7 +395,7 @@ abstract class ORMRow implements IORMRow {
 		$success = $success !== false;
 
 		if ( $success ) {
-			$this->setField( 'id', w->insertId() );
+			$this->setField( 'id', $dbw->insertId() );
 		}
 
 		return $success;
@@ -557,11 +557,11 @@ abstract class ORMRow implements IORMRow {
 		$absoluteAmount = abs( $amount );
 		$isNegative = $amount < 0;
 
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		$fullField = $this->table->getPrefixedField( $field );
 
-		$success = w->update(
+		$success = $dbw->update(
 			$this->table->getName(),
 			array( "$fullField=$fullField" . ( $isNegative ? '-' : '+' ) . $absoluteAmount ),
 			array( $this->table->getPrefixedField( 'id' ) => $this->getId() ),

@@ -12,7 +12,7 @@
  */
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'ضع خطا تحت الوصلات:',
 'tog-justify' => 'ساو الفقرات',
 'tog-hideminor' => 'أخف التعديلات الطفيفة في أحدث التغييرات',
@@ -36,7 +36,7 @@ $messages = array(
 'tog-previewonfirst' => 'أظهر معاينة مع أول تعديل',
 'tog-nocache' => 'عطّل تخزين المتصفح للصفحة',
 'tog-enotifwatchlistpages' => 'أرسل لي رسالة إلكترونية عندما تُغيّر صفحة أو ملف في قائمة مراقبتي',
-'tog-enotifwiki_usertalkpages' => 'أرسل لي رسالة إلكترونية عندما تعدل صفحة نقاشي',
+'tog-enotifusertalkpages' => 'أرسل لي رسالة إلكترونية عندما تعدل صفحة نقاشي',
 'tog-enotifminoredits' => 'أرسل لي رسالة إلكترونية عن التعديلات الطفيفة للصفحات والملفات أيضا',
 'tog-enotifrevealaddr' => 'أظهر عنوان بريدي الإلكتروني في رسائل الإخطار',
 'tog-shownumberswatching' => 'اعرض عدد المستخدمين المراقبين',
@@ -217,7 +217,7 @@ $messages = array(
 'talk' => 'نقاش',
 'views' => 'معاينة',
 'toolbox' => 'صندوق الأدوات',
-'wiki_userpage' => 'عرض صفحة المستخدم',
+'userpage' => 'عرض صفحة المستخدم',
 'projectpage' => 'عرض صفحة المشروع',
 'imagepage' => 'عرض صفحة الملف',
 'mediawikipage' => 'عرض صفحة الرسالة',
@@ -243,7 +243,7 @@ $1',
 'pool-queuefull' => 'طابور الاقتراع ملئ',
 'pool-errorunknown' => 'خطأ غير معروف',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'عن {{SITENAME}}',
 'aboutpage' => 'Project:عن',
 'copyright' => 'المحتوى متوفر تحت $1.',
@@ -303,7 +303,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => "ss'af7a",
-'nstab-wiki_user' => 'صفحة مستخدم',
+'nstab-user' => 'صفحة مستخدم',
 'nstab-media' => 'صفحة وسيط',
 'nstab-special' => 'صفحة خاصة',
 'nstab-project' => 'صفحة مشروع',
@@ -348,7 +348,7 @@ $1',
 عادة ما يحدث هذا عند اتباع فرق قديم أو وصلة تاريخ تؤدي إلى صفحة حذفت.
 
 إذا لم تكن هذه هي الحالة، فالمحتمل أنك وجدت خللا في البرنامج.
-من فضلك أبلغ أحد [[Special:Listwiki_users/sysop|الإداريين]]، وأعطه وصلة إلى مسار هذه الصفحة.',
+من فضلك أبلغ أحد [[Special:ListUsers/sysop|الإداريين]]، وأعطه وصلة إلى مسار هذه الصفحة.',
 'missingarticle-rev' => '(رقم المراجعة: $1)',
 'missingarticle-diff' => '(فرق: $1، $2)',
 'readonly_lag' => 'تم إغلاق قاعدة البيانات تلقائيا حتى تستطيع الخواديم التابعة ملاحقة الخادوم الرئيسي',
@@ -399,7 +399,7 @@ $2',
 'customcssprotected' => 'أنت لا تمتلك السماح لتعديل صفحة الCSS هذه، لأنها تحتوي على الإعدادات الشخصية لمستخدم آخر.',
 'customjsprotected' => 'أنت لا تمتلك السماح لتعديل صفحة الجافاسكريبت هذه، لأنها تحتوي على الإعدادات الشخصية لمستخدم آخر.',
 'ns-specialprotected' => 'الصفحات الخاصة لا يمكن تعديلها.',
-'titleprotected' => "{{GENDER:$1|حمى|حمت}} [[wiki_user:$1|$1]] هذا العنوان من الإنشاء.
+'titleprotected' => "{{GENDER:$1|حمى|حمت}} [[User:$1|$1]] هذا العنوان من الإنشاء.
 السبب المعطى هو ''$2''.",
 'filereadonlyerror' => 'تعذر تعديل الملف "$1" لأن مستودع الملف "$2" في وضع القراءة فقط. 
 
@@ -417,7 +417,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''أنت الآن غير مسجل الدخول.'''
 
-تستطيع المتابعة باستعمال {{SITENAME}} كمجهول، أو [[Special:wiki_userLogin|الدخول مرة أخرى]] بنفس الاسم أو باسم آخر.
+تستطيع المتابعة باستعمال {{SITENAME}} كمجهول، أو [[Special:UserLogin|الدخول مرة أخرى]] بنفس الاسم أو باسم آخر.
 من الممكن أن ترى بعض الصفحات كما لو أنك مسجل الدخول، وذلك حتى تقوم بإفراغ الصفحات المختزنة في المتصفح لديك.",
 'welcomecreation' => '== مرحبا، $1! ==
 تم إنشاء حسابك.
@@ -432,21 +432,21 @@ $2',
 'login' => 'ادخل',
 'nav-login-createaccount' => 'ادخل / أنشئ حسابا',
 'loginprompt' => 'يجب أن تكون الكوكيز لديك مفعلة لتسجل الدخول إلى {{SITENAME}}.',
-'wiki_userlogin' => 'ادخل / أنشئ حسابا',
-'wiki_userloginnocreate' => 'دخول',
+'userlogin' => 'ادخل / أنشئ حسابا',
+'userloginnocreate' => 'دخول',
 'logout' => 'اخرج',
-'wiki_userlogout' => 'خروج',
+'userlogout' => 'خروج',
 'notloggedin' => 'غير مسجل الدخول',
 'nologin' => "ألا تمتلك حسابا؟ '''$1'''.",
 'nologinlink' => 'أنشئ حسابا',
 'createaccount' => 'أنشئ حسابا',
 'gotaccount' => "تمتلك حسابا بالفعل؟ '''$1'''.",
 'gotaccountlink' => 'ادخل',
-'wiki_userlogin-resetlink' => 'أنسيت بيانات الولوج؟',
+'userlogin-resetlink' => 'أنسيت بيانات الولوج؟',
 'createaccountmail' => 'بواسطة البريد الإلكتروني',
 'createaccountreason' => 'السبب:',
 'badretype' => 'كلمات السر التي أدخلتها لا تتطابق.',
-'wiki_userexists' => 'اسم المستخدم الذي تم إدخاله مستعمل بالفعل.
+'userexists' => 'اسم المستخدم الذي تم إدخاله مستعمل بالفعل.
 الرجاء اختيار اسم مختلف.',
 'loginerror' => 'خطأ في الدخول',
 'createaccounterror' => 'تعذر إنشاء حساب المستخدم: $1',
@@ -462,13 +462,13 @@ $2',
 'noname' => 'لم تحدد اسم مستخدم صحيح.',
 'loginsuccesstitle' => 'تم الدخول بشكل صحيح',
 'loginsuccess' => "'''لقد قمت بتسجيل الدخول ل{{SITENAME}} باسم \"\$1\".'''",
-'nosuchwiki_user' => 'لا يوجد مستخدم بالاسم "$1".
+'nosuchuser' => 'لا يوجد مستخدم بالاسم "$1".
 أسماء المستخدمين حساسة لحالة الحروف.
-تأكد من إملاء الاسم، أو [[Special:wiki_userLogin/signup|قم بإنشاء حساب جديد]].',
-'nosuchwiki_usershort' => 'لا يوجد مستخدم باسم $1".
+تأكد من إملاء الاسم، أو [[Special:UserLogin/signup|قم بإنشاء حساب جديد]].',
+'nosuchusershort' => 'لا يوجد مستخدم باسم $1".
 تأكد من إملاء الاسم.',
-'nowiki_userspecified' => 'يجب عليك تحديد اسم مستخدم.',
-'login-wiki_userblocked' => 'هذا المستخدم ممنوع. لا يسمح بالولوج.',
+'nouserspecified' => 'يجب عليك تحديد اسم مستخدم.',
+'login-userblocked' => 'هذا المستخدم ممنوع. لا يسمح بالولوج.',
 'wrongpassword' => 'كلمة السر التي أدخلتها غير صحيحة.
 من فضلك حاول مرة أخرى.',
 'wrongpasswordempty' => 'كلمة السر المدخلة كانت فارغة.
@@ -512,16 +512,16 @@ $2',
 ينبغي عليك تسجيل الدخول وتغيير كلمة السر الخاصة بك الآن.
 
 يمكنك تجاهل هذه الرسالة، لو تم إنشاء هذا الحساب بالخطأ.',
-'wiki_usernamehasherror' => 'لا يمكن أن يحتوي اسم المستخدم على محارف هاش',
+'usernamehasherror' => 'لا يمكن أن يحتوي اسم المستخدم على محارف هاش',
 'login-throttled' => 'لقد قمت بمحاولات دخول كثيرة جدا مؤخرا.
 من فضلك انتظر قبل المحاولة مرة أخرى.',
 'login-abort-generic' => 'لم ينجح ولوجك - إجهاض',
 'loginlanguagelabel' => 'اللغة: $1',
-'suspicious-wiki_userlogout' => 'رفض طلب خروجك لأنه يبدو كأنه أرسل عن طريق متصفح معطوب أو وسيط تخزين.',
+'suspicious-userlogout' => 'رفض طلب خروجك لأنه يبدو كأنه أرسل عن طريق متصفح معطوب أو وسيط تخزين.',
 
 # E-mail sending
 'php-mail-error-unknown' => "خطأ غير معروف في وظيفة البريد PHP's mail()",
-'wiki_user-mail-no-addy' => 'لقد حاولت إرسال بريد إلكتروني دون عنوان بريد إلكتروني.',
+'user-mail-no-addy' => 'لقد حاولت إرسال بريد إلكتروني دون عنوان بريد إلكتروني.',
 
 # Change password dialog
 'resetpass' => 'تغيير كلمة السر',
@@ -547,7 +547,7 @@ $2',
 'passwordreset-legend' => 'إعادة تعيين كلمة السر',
 'passwordreset-disabled' => 'عُطّلت إعادة تعيين كلمة السر على هذه الويكي.',
 'passwordreset-pretext' => '{{PLURAL:$1||أدخل أحد أجزاء البيانات أدناه}}',
-'passwordreset-wiki_username' => 'اسم المستخدم:',
+'passwordreset-username' => 'اسم المستخدم:',
 'passwordreset-domain' => 'النطاق:',
 'passwordreset-capture' => 'أأعرض البريد الإلكتروني الناتج؟',
 'passwordreset-capture-help' => 'إذا علّمت هذا الصندوق فسيعرض لك البريد الإلكتروني (الذي يحتوي كلمة سر مؤقتة) وسيرسل أيضا للمستخدم.',
@@ -560,7 +560,7 @@ $2
 {{PLURAL:$3|كلمة المرور المؤقتة|كلمات المرور المؤقة}}سينتهي في {{PLURAL:$5|يوم|ايام$5 }}
 من الافضل ان تسجل الدخول وتختار كلمة مرور جديدة الان .
 إذا قام شخص آخر بهذا الطلب، أو إذا  تذكرت كلمة المرور الأصلية الخاصة بك،ولم تعد ترغب في تغييره، يمكنك تجاهل هذه الرسالة ومتابعة استخدام  كلمة المرورالقديمة.',
-'passwordreset-emailtext-wiki_user' => 'احد ما (قد يكون انت$1)طلب مذكرة تفاصيل الحساب ل{{SITENAME}} ($4).المستخدم الاتي {{PLURAL:$3|الحساب هو|الحسابات هي}} قد قرن بهذا العنوان :
+'passwordreset-emailtext-user' => 'احد ما (قد يكون انت$1)طلب مذكرة تفاصيل الحساب ل{{SITENAME}} ($4).المستخدم الاتي {{PLURAL:$3|الحساب هو|الحسابات هي}} قد قرن بهذا العنوان :
 
 $2
 
@@ -662,7 +662,7 @@ $2
 'loginreqlink' => 'الولوج',
 'loginreqpagetext' => 'يجب عليك $1 لتشاهد صفحات أخرى.',
 'accmailtitle' => 'تم إرسال كلمة السر.',
-'accmailtext' => "كلمة سر مولدة عشوائيا ل [[wiki_user talk:$1|$1]] تم إرسالها إلى $2.
+'accmailtext' => "كلمة سر مولدة عشوائيا ل [[User talk:$1|$1]] تم إرسالها إلى $2.
 
 كلمة السر لهذا الحساب الجديد يمكن تغييرها في صفحة ''[[Special:ChangePassword|تغيير كلمة السر]]'' عند تسجيل الدخول.",
 'newarticle' => '(جديد)',
@@ -672,15 +672,15 @@ $2
 'anontalkpagetext' => "----''هذه صفحة نقاش لمستخدم مجهول لم يقم بإنشاء حساب بعد أو لا يستعمل ذلك الحساب.
 لذا فيجب علينا استعمال رقم الأيبي للتعرف عليه/عليها.
 مثل هذا العنوان يمكن أن يشترك فيه عدة مستخدمين.
-لو كنت مستخدما مجهولا وتشعر بأن تعليقات لا تخصك تم توجيهها إليك، من فضلك [[Special:wiki_userLogin/signup|أنشئ حسابا]] أو [[Special:wiki_userLogin|سجل الدخول]] لتجنب الارتباك المستقبلي مع مستخدمين مجهولين آخرين.''",
+لو كنت مستخدما مجهولا وتشعر بأن تعليقات لا تخصك تم توجيهها إليك، من فضلك [[Special:UserLogin/signup|أنشئ حسابا]] أو [[Special:UserLogin|سجل الدخول]] لتجنب الارتباك المستقبلي مع مستخدمين مجهولين آخرين.''",
 'noarticletext' => 'لا يوجد حاليا أي نص في هذه الصفحة.
 يمكنك [[Special:Search/{{PAGENAME}}|البحث عن عنوان هذه الصفحة]] في الصفحات الأخرى،
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} البحث في السجلات المتعلقة]،
 أو [{{fullurl:{{FULLPAGENAME}}|action=edit}} تعديل هذه الصفحة]</span>.',
 'noarticletext-nopermission' => 'لا يوجد حاليا أي نص في هذه الصفحة.يمكنك [[Special:Search/{{PAGENAME}}|البحث عن عنوان هذه الصفحة]] في الصفحات الأخرى,أو <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} بحث السجلات المتصلة]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => 'حساب المستخدم "<nowiki>$1</nowiki>" غير مسجل.
+'userpage-userdoesnotexist' => 'حساب المستخدم "<nowiki>$1</nowiki>" غير مسجل.
 من فضلك تأكد أنك تريد إنشاء/تعديل هذه الصفحة.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'حساب المستخدم "$1" غير مسجل.',
+'userpage-userdoesnotexist-view' => 'حساب المستخدم "$1" غير مسجل.',
 'blocked-notice-logextract' => 'هذا المستخدم ممنوع حاليا.
 آخر مدخلة في سجل المنع موفرة بالأسفل كمرجع:',
 'clearyourcache' => "'''ملاحظة:''' بعد الحفظ, أنت ربما تحتاج إلى إفراغ كاش متصفحك لرؤية التغييرات.
@@ -689,18 +689,18 @@ $2
 * '''إنترنت إكسبلورر:''' اضغط ''Ctrl'' أثناء ضغط ''Refresh''، أو اضغط ''Ctrl-F5''
 * '''كنكرر:''' اضغط ''Reload'' أو اضغط ''F5''
 * '''أوبرا:''' أفرغ الكاش في ''Tools → Preferences''",
-'wiki_usercssyoucanpreview' => "'''ملاحظة:''' استعمل زر \"{{int:showpreview}}\" لتجربة CSS الجديد قبل حفظ الصفحة.",
-'wiki_userjsyoucanpreview' => "'''ملاحظة:''' استعمل زر \"{{int:showpreview}}\" لتجربة جافاسكربت الجديدة قبل حفظ الصفحة.",
-'wiki_usercsspreview' => "'''تذكر أنك تقوم بعرض الأنماط المتراصة (CSS) الخاصة بك فقط
+'usercssyoucanpreview' => "'''ملاحظة:''' استعمل زر \"{{int:showpreview}}\" لتجربة CSS الجديد قبل حفظ الصفحة.",
+'userjsyoucanpreview' => "'''ملاحظة:''' استعمل زر \"{{int:showpreview}}\" لتجربة جافاسكربت الجديدة قبل حفظ الصفحة.",
+'usercsspreview' => "'''تذكر أنك تقوم بعرض الأنماط المتراصة (CSS) الخاصة بك فقط
 لم يتم حفظها بعد!'''",
-'wiki_userjspreview' => "'''تذكر أنك فقط تجرب/تعاين جافاسكربت.'''
+'userjspreview' => "'''تذكر أنك فقط تجرب/تعاين جافاسكربت.'''
 '''لم يتم الحفظ بعد!'''",
 'sitecsspreview' => "''' تذكر أنك فقط في وضع المعاينة لهذا CSS ''' 
 ''' ولم يتم حفظ الصفحة بعد! '''",
 'sitejspreview' => "''' تذكر أنك فقط في وضع المعاينة لكود JavaScript هذا''' 
 ''' ولم يتم حفظه بعد! '''",
-'wiki_userinvalidcssjstitle' => "'''تحذير:''' لا توجد واجهة  \"\$1\".
-تذكر أن ملفات ال.css و ال.js تستخدم حروف صغيرة في العنوان ، كمثال {{ns:wiki_user}}:Foo/vector.css و ليس {{ns:wiki_user}}:Foo/Vector.css.",
+'userinvalidcssjstitle' => "'''تحذير:''' لا توجد واجهة  \"\$1\".
+تذكر أن ملفات ال.css و ال.js تستخدم حروف صغيرة في العنوان ، كمثال {{ns:user}}:Foo/vector.css و ليس {{ns:user}}:Foo/Vector.css.",
 'updated' => '(محدثة)',
 'note' => "'''ملاحظة:'''",
 'previewnote' => "'''تذكر أن هذه مجرد معاينة أولية.'''
@@ -709,13 +709,13 @@ $2
 'previewconflict' => 'هذا العرض يوضح النص الموجود في صندوق التحرير العلوي والذي سيظهر إذا اخترت الحفظ.',
 'session_fail_preview' => "'''عذرا! لم نتمكن من حفظ التعديلات التي قمت بها نتيجة لضياع بيانات هذه الجلسة.
 من فضلك حاول مرة أخرى.
-في حال استمرار المشكلة حاول أن تقوم [[Special:wiki_userLogout|بالخروج]] ومن ثم الولوج مرة أخرى.'''",
+في حال استمرار المشكلة حاول أن تقوم [[Special:UserLogout|بالخروج]] ومن ثم الولوج مرة أخرى.'''",
 'session_fail_preview_html' => "'''عذرا! لم نستطع معالجة تعديلك بسبب فقدان بيانات الجلسة.'''
 
 ''لأن {{SITENAME}} بها HTML الخام مفعلة، العرض المسبق مخفي كاحتياط ضد هجمات الجافا سكريبت.''
 
 '''إذا كانت هذه محاولة تعديل صادقة، من فضلك حاول مرة أخرى.
-إذا كانت مازالت لا تعمل، حاول [[Special:wiki_userLogout|تسجيل الخروج]] ثم تسجيل الدخول مجددا.'''",
+إذا كانت مازالت لا تعمل، حاول [[Special:UserLogout|تسجيل الخروج]] ثم تسجيل الدخول مجددا.'''",
 'token_suffix_mismatch' => "'''تعديلك تم رفضه لأن عميلك أخطأ في علامات الترقيم
 في نص التعديل. تم رفض التعديل لمنع فساد نص المقالة.
 هذا يحدث أحيانا عندما تستخدم خدمة بروكسي مجهول معيبة مبنية على الوب.'''",
@@ -766,7 +766,7 @@ $2
 'hiddencategories' => '{{PLURAL:$1|هذه الصفحة غير موجودة في أي تصنايف مخفية|هذه الصفحة موجودة في تصنيف مخفي واحد|هذه الصفحة موجودة في تصنيفين مخفيين|هذه الصفحة موجودة في $1 تصانيف مخفية|هذه الصفحة موجودة في $1 تصنيفا مخفيا|هذه الصفحة موجودة في $1 تصنيف مخفي}}:',
 'nocreatetitle' => 'تم تحديد إنشاء الصفحات',
 'nocreatetext' => 'قام {{SITENAME}} بتحديد القدرة على إنشاء صفحات جديدة.
-يمكنك العودة وتحرير صفحة موجودة بالفعل، أو [[Special:wiki_userLogin|الدخول أو تسجيل حساب]].',
+يمكنك العودة وتحرير صفحة موجودة بالفعل، أو [[Special:UserLogin|الدخول أو تسجيل حساب]].',
 'nocreate-loggedin' => 'أنت لا تمتلك الصلاحية لإنشاء صفحات جديدة.',
 'sectioneditnotsupported-title' => 'تعديل الأقسام غير مدعوم',
 'sectioneditnotsupported-text' => 'تعديل الأقسام غير مدعوم في هذه الصفحة',
@@ -816,11 +816,11 @@ $2
 من فضلك تحقق من المقارنة بالأسفل للتأكد من أن هذا هو ما تريد أن تفعله، وبعد ذلك احفظ التغييرات بالأسفل للانتهاء من استرجاع التعديل.',
 'undo-failure' => 'لم يمكن استرجاع التعديل بسبب تعديلات متعارضة تمت على الصفحة.',
 'undo-norev' => 'فشل في الرجوع عن التعديل حيث أنه غير موجود أو تم حذفه.',
-'undo-summary' => 'الرجوع عن التعديل $1 بواسطة [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|نقاش]])',
+'undo-summary' => 'الرجوع عن التعديل $1 بواسطة [[Special:Contributions/$2|$2]] ([[User talk:$2|نقاش]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'لا يمكن إنشاء حساب',
-'cantcreateaccount-text' => "إنشاء الحسابات من عنوان الأيبي هذا ('''$1''') تم منعه بواسطة [[wiki_user:$3|$3]].
+'cantcreateaccount-text' => "إنشاء الحسابات من عنوان الأيبي هذا ('''$1''') تم منعه بواسطة [[User:$3|$3]].
 
 السبب المعطى بواسطة $3 هو ''$2''",
 
@@ -859,9 +859,9 @@ $2
 
 # Revision deletion
 'rev-deleted-comment' => '(أزيل ملخص التعديل)',
-'rev-deleted-wiki_user' => '(اسم المستخدم تمت إزالته)',
+'rev-deleted-user' => '(اسم المستخدم تمت إزالته)',
 'rev-deleted-event' => '(فعل السجل تمت إزالته)',
-'rev-deleted-wiki_user-contribs' => '[اسم المستخدم أو عنوان الأيبي تمت إزالته - التعديل مخفي من المساهمات]',
+'rev-deleted-user-contribs' => '[اسم المستخدم أو عنوان الأيبي تمت إزالته - التعديل مخفي من المساهمات]',
 'rev-deleted-text-permission' => "'''حُذِفت''' مراجعة هذه الصفحة.
 يمكنك العثور على التفاصيل في [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} سجل الحذف].",
 'rev-deleted-text-unhide' => "'''حُذِفت''' مراجعة الصفحة هذه.
@@ -913,7 +913,7 @@ $2
 'revdelete-hide-image' => 'أخف محتوى الملف',
 'revdelete-hide-name' => 'أخف الفعل والهدف',
 'revdelete-hide-comment' => 'أخف تعليق التعديل',
-'revdelete-hide-wiki_user' => 'أخف اسم/آيبي المستخدم',
+'revdelete-hide-user' => 'أخف اسم/آيبي المستخدم',
 'revdelete-hide-restricted' => 'أخف البيانات عن الإداريين إضافة إلى الآخرين',
 'revdelete-radio-same' => '(لا تغير)',
 'revdelete-radio-set' => 'نعم',
@@ -999,7 +999,7 @@ $1",
 'showhideselectedversions' => 'أظهر/أخف المراجعات المختارة',
 'editundo' => 'تراجع',
 'diff-multi' => '({{PLURAL:$1||مراجعة واحدة متوسطة غير معروضة أجراها|مراجعتان متوسطتان غير معروضتين أجراهما|$1 مراجعات متوسطة غير معروضة أجراها|$1 مراجعة متوسطة غير معروضة أجراها}} {{PLURAL:$2||مستخدم واحد|مستخدمان|$2 مستخدمين|$2 مستخدمًا|$2 مستخدم}}.)',
-'diff-multi-manywiki_users' => '({{PLURAL:$1||مراجعة واحدة متوسطة غير معروضة أجراها|مراجعتان متوسطتان غير معروضتان أجراهما|$1 مراجعات متوسطة غير معروضة أجراها|$1 مراجعة متوسطة غير معروضة أجراها}} أكثر من {{PLURAL:$2||مستخدم واحد|مستخدمين|$2 مستخدمين|$2 مستخدمًا|$2 مستخدم}}.)',
+'diff-multi-manyusers' => '({{PLURAL:$1||مراجعة واحدة متوسطة غير معروضة أجراها|مراجعتان متوسطتان غير معروضتان أجراهما|$1 مراجعات متوسطة غير معروضة أجراها|$1 مراجعة متوسطة غير معروضة أجراها}} أكثر من {{PLURAL:$2||مستخدم واحد|مستخدمين|$2 مستخدمين|$2 مستخدمًا|$2 مستخدم}}.)',
 
 # Search results
 'searchresults' => 'el resultats',
@@ -1101,7 +1101,7 @@ $1",
 'filehist-datetime' => 'وقت/زمن',
 'filehist-thumb' => 'صورة مصغرة',
 'filehist-thumbtext' => 'تصغير للنسخة بتاريخ $1',
-'filehist-wiki_user' => 'مستخدم',
+'filehist-user' => 'مستخدم',
 'filehist-dimensions' => 'الأبعاد',
 'filehist-comment' => 'ta3li9at',
 'imagelinks' => 'استخدام الملف',
@@ -1122,7 +1122,7 @@ $1",
 'nbytes' => '$1 {{PLURAL:$1|بايت|بايت}}',
 'nmembers' => '{{PLURAL:$1|لا أعضاء|عضو واحد|عضوان|$1 أعضاء|$1 عضوا|$1 عضو}}',
 'prefixindex' => 'كل الصفحات بالبادئة',
-'wiki_usercreated' => '{{GENDER:$3|أنشأه|أنشأته}} في $1 الساعة $2',
+'usercreated' => '{{GENDER:$3|أنشأه|أنشأته}} في $1 الساعة $2',
 'newpages' => 'صفحات جديدة',
 'move' => 'انقل',
 'pager-newer-n' => '{{PLURAL:$1|أقدم 1|أقدم $1}}',
@@ -1148,14 +1148,14 @@ $1",
 # Special:LinkSearch
 'linksearch-line' => '$1 موصولة من $2',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'سجل إنشاء المستخدمين',
+# Special:Log/newusers
+'newuserlogpage' => 'سجل إنشاء المستخدمين',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(قائمة الأعضاء)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'إرسال رسالة لهذا المستخدم',
+# E-mail user
+'emailuser' => 'إرسال رسالة لهذا المستخدم',
 
 # Watchlist
 'watchlist' => 'قائمة مراقبتي',
@@ -1203,7 +1203,7 @@ $1",
 'sp-contributions-logs' => 'سجلات',
 'sp-contributions-talk' => 'نقاش',
 'sp-contributions-search' => 'بحث عن مساهمات',
-'sp-contributions-wiki_username' => 'عنوان أيبي أو اسم مستخدم:',
+'sp-contributions-username' => 'عنوان أيبي أو اسم مستخدم:',
 'sp-contributions-toponly' => 'أظهر أعلى المراجعات فقط',
 'sp-contributions-submit' => 'lawwej',
 
@@ -1252,7 +1252,7 @@ $1",
 'thumbnail_error' => 'خطأ في إنشاء صورة مصغرة: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'صفحة المستخدم الخاصة بك',
+'tooltip-pt-userpage' => 'صفحة المستخدم الخاصة بك',
 'tooltip-pt-mytalk' => 'صفحة نقاشك',
 'tooltip-pt-preferences' => 'تفضيلاتي',
 'tooltip-pt-watchlist' => 'قائمة الصفحات التي تراقب التغييرات التي تحدث بها',
@@ -1286,13 +1286,13 @@ $1",
 'tooltip-t-recentchangeslinked' => 'أحدث التغييرات في الصفحات الموصولة من هذه الصفحة',
 'tooltip-feed-atom' => 'تلقيم أتوم لهذه الصفحة',
 'tooltip-t-contributions' => 'رؤية قائمة مساهمات هذا المستخدم',
-'tooltip-t-emailwiki_user' => 'أرسل رسالة لهذا المستخدم',
+'tooltip-t-emailuser' => 'أرسل رسالة لهذا المستخدم',
 'tooltip-t-upload' => 'ارفع ملفات',
 'tooltip-t-specialpages' => 'قائمة بكل الصفحات الخاصة',
 'tooltip-t-print' => 'نسخة للطباعة لهذه الصفحة',
 'tooltip-t-permalink' => 'وصلة دائمة لهذه النسخة من الصفحة',
 'tooltip-ca-nstab-main' => 'رؤية صفحة المحتوى',
-'tooltip-ca-nstab-wiki_user' => 'اعرض صفحة المستخدم',
+'tooltip-ca-nstab-user' => 'اعرض صفحة المستخدم',
 'tooltip-ca-nstab-special' => 'هذه صفحة خاصة، لا تستطيع أن تعدل الصفحة نفسها',
 'tooltip-ca-nstab-project' => 'رؤية صفحة المحتوى',
 'tooltip-ca-nstab-image' => 'رؤية صفحة الملف',

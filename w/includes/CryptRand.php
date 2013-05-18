@@ -64,8 +64,8 @@ class MWCryptRand {
 	 * Initialize an initial random state based off of whatever we can find
 	 */
 	protected function initialRandomState() {
-		// $_SERVER contains a variety of unstable wiki_user and system specific information
-		// It'll vary a little with each page, and vary even more with separate wiki_users
+		// $_SERVER contains a variety of unstable user and system specific information
+		// It'll vary a little with each page, and vary even more with separate users
 		// It'll also vary slightly across different machines
 		$state = serialize( $_SERVER );
 

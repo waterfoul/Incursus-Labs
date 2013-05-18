@@ -33,46 +33,46 @@ class CreateAndPromote extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Create a new wiki_user account";
+		$this->mDescription = "Create a new user account";
 		$this->addOption( "sysop", "Grant the account sysop rights" );
 		$this->addOption( "bureaucrat", "Grant the account bureaucrat rights" );
-		$this->addArg( "wiki_username", "wiki_username of new wiki_user" );
+		$this->addArg( "username", "Username of new user" );
 		$this->addArg( "password", "Password to set" );
 	}
 
 	public function execute() {
-		$wiki_username = $this->getArg( 0 );
+		$username = $this->getArg( 0 );
 		$password = $this->getArg( 1 );
 
-		$this->output( wfWikiID() . ": Creating and promoting wiki_user:{$wiki_username}..." );
+		$this->output( wfWikiID() . ": Creating and promoting User:{$username}..." );
 
-		$wiki_user = wiki_user::newFromName( $wiki_username );
-		if ( !is_object( $wiki_user ) ) {
-			$this->error( "invalid wiki_username.", true );
-		} elseif ( 0 != $wiki_user->idForName() ) {
+		$user = User::newFromName( $username );
+		if ( !is_object( $user ) ) {
+			$this->error( "invalid username.", true );
+		} elseif ( 0 != $user->idForName() ) {
 			$this->error( "account exists.", true );
 		}
 
 		# Try to set the password
 		try {
-			$wiki_user->setPassword( $password );
+			$user->setPassword( $password );
 		} catch ( PasswordError $pwe ) {
 			$this->error( $pwe->getText(), true );
 		}
 
 		# Insert the account into the database
-		$wiki_user->addToDatabase();
-		$wiki_user->saveSettings();
+		$user->addToDatabase();
+		$user->saveSettings();
 
-		# Promote wiki_user
+		# Promote user
 		if ( $this->hasOption( 'sysop' ) ) {
-			$wiki_user->addGroup( 'sysop' );
+			$user->addGroup( 'sysop' );
 		}
 		if ( $this->hasOption( 'bureaucrat' ) ) {
-			$wiki_user->addGroup( 'bureaucrat' );
+			$user->addGroup( 'bureaucrat' );
 		}
 
-		# Increment site_stats.ss_wiki_users
+		# Increment site_stats.ss_users
 		$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
 		$ssu->doUpdate();
 

@@ -25,7 +25,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /**
- * Extension to display a wiki_user's real name wherever and whenever possible.
+ * Extension to display a user's real name wherever and whenever possible.
  * @file
  * @ingroup Extensions
  * @version 0.3.1
@@ -50,28 +50,28 @@ $wgExtensionCredits['parserhook'][] = array(
   'author' =>array('[http://olivierbeaton.com/ Olivier Finlay Beaton]'), 
   'version' => '0.3.1',
   'url' => 'http://www.mediawiki.org/wiki/Extension:Realnames', 
-  'description' => 'Displays a wiki_user\'s real name everywhere',
+  'description' => 'Displays a user\'s real name everywhere',
  );
 
 /**
- * The format to apply to a wiki_user link.
+ * The format to apply to a user link.
  * @since 2011-09-15, 0.1
  * @see $wgRealnamesFormats 
  */ 
 $wgRealnamesLinkStyle = 'replace';
 
 /**
- * The format to apply to a wiki_user's name in text. 
- * This typically only replaces wiki_user: text in titles
+ * The format to apply to a user's name in text. 
+ * This typically only replaces User: text in titles
  * @since 2011-09-16, 0.1
  */  
 $wgRealnamesBareStyle = false;
 
 /**
  * Do you want to show blank real names?
- * If this is false, then it will fall back on a 'replace' wiki_username style.
+ * If this is false, then it will fall back on a 'replace' username style.
  * If true, then in a style like 'append' ( Joe [Joe Cardigan] )you will see: Joe []  
- * @note wiki_user:Joe text will still become Joe.
+ * @note User:Joe text will still become Joe.
  * @since 2011-09-15, 0.1
  */    
 $wgRealnamesBlank = false;
@@ -96,7 +96,7 @@ $wgRealnamesReplacements = array(
  * Possible styles to pick from, you can define new ones as well.
  * The following variables are set:<br> 
  * \li $1  link start
- * \li $2  wiki_username
+ * \li $2  username
  * \li $3  real name
  * \li $4  link end
  * @note If you want to add markup, you should set $wgRealnamesBareStyle to a style without html (it's doesnt work in bare)
@@ -171,7 +171,7 @@ $wgAutoloadClasses['ExtRealnames'] = dirname(__FILE__) . '/Realnames.body.php';
 $wgHooks['BeforePageDisplay'][] = 'ExtRealnames::hookBeforePageDisplay';
 
 /* (not our var to doc)
- * This hook is called before the wiki_user links are displayed.  
+ * This hook is called before the user links are displayed.  
  * @since 2011-09-22, 0.2  
  * @see $wgAutoloadClasses for how the class gets defined.  
  */

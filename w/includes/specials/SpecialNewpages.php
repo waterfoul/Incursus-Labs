@@ -44,19 +44,19 @@ class SpecialNewpages extends IncludableSpecialPage {
 	}
 
 	protected function setup( $par ) {
-		global $wgEnableNewpageswiki_userFilter;
+		global $wgEnableNewpagesUserFilter;
 
 		// Options
 		$opts = new FormOptions();
 		$this->opts = $opts; // bind
 		$opts->add( 'hideliu', false );
-		$opts->add( 'hidepatrolled', $this->getwiki_user()->getBoolOption( 'newpageshidepatrolled' ) );
+		$opts->add( 'hidepatrolled', $this->getUser()->getBoolOption( 'newpageshidepatrolled' ) );
 		$opts->add( 'hidebots', false );
 		$opts->add( 'hideredirs', true );
-		$opts->add( 'limit', (int)$this->getwiki_user()->getOption( 'rclimit' ) );
+		$opts->add( 'limit', (int)$this->getUser()->getOption( 'rclimit' ) );
 		$opts->add( 'offset', '' );
 		$opts->add( 'namespace', '0' );
-		$opts->add( 'wiki_username', '' );
+		$opts->add( 'username', '' );
 		$opts->add( 'feed', '' );
 		$opts->add( 'tagfilter', '' );
 
@@ -72,8 +72,8 @@ class SpecialNewpages extends IncludableSpecialPage {
 
 		// Validate
 		$opts->validateIntBounds( 'limit', 0, 5000 );
-		if( !$wgEnableNewpageswiki_userFilter ) {
-			$opts->setValue( 'wiki_username', '' );
+		if( !$wgEnableNewpagesUserFilter ) {
+			$opts->setValue( 'username', '' );
 		}
 	}
 
@@ -107,8 +107,8 @@ class SpecialNewpages extends IncludableSpecialPage {
 			if ( preg_match( '/^offset=([^=]+)$/', $bit, $m ) ) {
 				$this->opts->setValue( 'offset',  intval( $m[1] ) );
 			}
-			if ( preg_match( '/^wiki_username=(.*)$/', $bit, $m ) ) {
-				$this->opts->setValue( 'wiki_username', $m[1] );
+			if ( preg_match( '/^username=(.*)$/', $bit, $m ) ) {
+				$this->opts->setValue( 'username', $m[1] );
 			}
 			if ( preg_match( '/^namespace=(.*)$/', $bit, $m ) ) {
 				$ns = $this->getLanguage()->getNsIndex( $m[1] );
@@ -120,7 +120,7 @@ class SpecialNewpages extends IncludableSpecialPage {
 	}
 
 	/**
-	 * Show a form for filtering namespace and wiki_username
+	 * Show a form for filtering namespace and username
 	 *
 	 * @param $par String
 	 * @return String
@@ -185,7 +185,7 @@ class SpecialNewpages extends IncludableSpecialPage {
 		if ( $wgGroupPermissions['*']['createpage'] !== true ) {
 			unset( $filters['hideliu'] );
 		}
-		if ( !$this->getwiki_user()->useNPPatrol() ) {
+		if ( !$this->getUser()->useNPPatrol() ) {
 			unset( $filters['hidepatrolled'] );
 		}
 
@@ -206,17 +206,17 @@ class SpecialNewpages extends IncludableSpecialPage {
 	}
 
 	protected function form() {
-		global $wgEnableNewpageswiki_userFilter, $wgScript;
+		global $wgEnableNewpagesUserFilter, $wgScript;
 
 		// Consume values
 		$this->opts->consumeValue( 'offset' ); // don't carry offset, DWIW
 		$namespace = $this->opts->consumeValue( 'namespace' );
-		$wiki_username = $this->opts->consumeValue( 'wiki_username' );
+		$username = $this->opts->consumeValue( 'username' );
 		$tagFilterVal = $this->opts->consumeValue( 'tagfilter' );
 
-		// Check wiki_username input validity
-		$ut = Title::makeTitleSafe( NS_USER, $wiki_username );
-		$wiki_userText = $ut ? $ut->getText() : '';
+		// Check username input validity
+		$ut = Title::makeTitleSafe( NS_USER, $username );
+		$userText = $ut ? $ut->getText() : '';
 
 		// Store query values in hidden fields so that form submission doesn't lose them
 		$hidden = array();
@@ -259,13 +259,13 @@ class SpecialNewpages extends IncludableSpecialPage {
 					$tagFilterSelector .
 				'</td>
 			</tr>' ) : '' ) .
-			( $wgEnableNewpageswiki_userFilter ?
+			( $wgEnableNewpagesUserFilter ?
 			'<tr>
 				<td class="mw-label">' .
-					Xml::label( $this->msg( 'newpages-wiki_username' )->text(), 'mw-np-wiki_username' ) .
+					Xml::label( $this->msg( 'newpages-username' )->text(), 'mw-np-username' ) .
 				'</td>
 				<td class="mw-input">' .
-					Xml::input( 'wiki_username', 30, $wiki_userText, array( 'id' => 'mw-np-wiki_username' ) ) .
+					Xml::input( 'username', 30, $userText, array( 'id' => 'mw-np-username' ) ) .
 				'</td>
 			</tr>' : '' ) .
 			'<tr> <td></td>
@@ -288,7 +288,7 @@ class SpecialNewpages extends IncludableSpecialPage {
 	}
 
 	/**
-	 * Format a row, providing the timestamp, links to the page/history, size, wiki_user links, and a comment
+	 * Format a row, providing the timestamp, links to the page/history, size, user links, and a comment
 	 *
 	 * @param $result Result row
 	 * @return String
@@ -300,8 +300,8 @@ class SpecialNewpages extends IncludableSpecialPage {
 		$row = array(
 					  'comment' => $result->rc_comment,
 					  'deleted' => $result->rc_deleted,
-					  'wiki_user_text' => $result->rc_wiki_user_text,
-					  'wiki_user' => $result->rc_wiki_user,
+					  'user_text' => $result->rc_user_text,
+					  'user' => $result->rc_user,
 					);
 		$rev = new Revision( $row );
 		$rev->setTitle( $title );
@@ -312,13 +312,13 @@ class SpecialNewpages extends IncludableSpecialPage {
 		$dm = $lang->getDirMark();
 
 		// <IntraACL>
-		if ( !$title->wiki_userCanReadEx() ) {
+		if ( !$title->userCanReadEx() ) {
 			return '';
 		}
 		// </IntraACL>
 		
 		$spanTime = Html::element( 'span', array( 'class' => 'mw-newpages-time' ),
-			$lang->wiki_userTimeAndDate( $result->rc_timestamp, $this->getwiki_user() )
+			$lang->userTimeAndDate( $result->rc_timestamp, $this->getUser() )
 		);
 		$time = Linker::linkKnown(
 			$title,
@@ -354,7 +354,7 @@ class SpecialNewpages extends IncludableSpecialPage {
 			$this->msg( 'brackets' )->params( $this->msg( 'nbytes' )->numParams( $result->length )->text() )
 		);
 
-		$ulink = Linker::revwiki_userTools( $rev );
+		$ulink = Linker::revUserTools( $rev );
 		$comment = Linker::revComment( $rev );
 
 		if ( $this->patrollable( $result ) ) {
@@ -393,7 +393,7 @@ class SpecialNewpages extends IncludableSpecialPage {
 	 * @return Boolean
 	 */
 	protected function patrollable( $result ) {
-		return ( $this->getwiki_user()->useNPPatrol() && !$result->rc_patrolled );
+		return ( $this->getUser()->useNPPatrol() && !$result->rc_patrolled );
 	}
 
 	/**
@@ -459,13 +459,13 @@ class SpecialNewpages extends IncludableSpecialPage {
 	}
 
 	protected function feedItemAuthor( $row ) {
-		return isset( $row->rc_wiki_user_text ) ? $row->rc_wiki_user_text : '';
+		return isset( $row->rc_user_text ) ? $row->rc_user_text : '';
 	}
 
 	protected function feedItemDesc( $row ) {
 		$revision = Revision::newFromId( $row->rev_id );
 		if( $revision ) {
-			return '<p>' . htmlspecialchars( $revision->getwiki_userText() ) .
+			return '<p>' . htmlspecialchars( $revision->getUserText() ) .
 				$this->msg( 'colon-separator' )->inContentLanguage()->escaped() .
 				htmlspecialchars( FeedItem::stripComment( $revision->getComment() ) ) .
 				"</p>\n<hr />\n<div>" .
@@ -494,15 +494,15 @@ class NewPagesPager extends ReverseChronologicalPager {
 	}
 
 	function getQueryInfo() {
-		global $wgEnableNewpageswiki_userFilter, $wgGroupPermissions;
+		global $wgEnableNewpagesUserFilter, $wgGroupPermissions;
 		$conds = array();
 		$conds['rc_new'] = 1;
 
 		$namespace = $this->opts->getValue( 'namespace' );
 		$namespace = ( $namespace === 'all' ) ? false : intval( $namespace );
 
-		$wiki_username = $this->opts->getValue( 'wiki_username' );
-		$wiki_user = Title::makeTitleSafe( NS_USER, $wiki_username );
+		$username = $this->opts->getValue( 'username' );
+		$user = Title::makeTitleSafe( NS_USER, $username );
 
 		if( $namespace !== false ) {
 			$conds['rc_namespace'] = $namespace;
@@ -511,16 +511,16 @@ class NewPagesPager extends ReverseChronologicalPager {
 			$rcIndexes = array( 'rc_timestamp' );
 		}
 
-		# $wgEnableNewpageswiki_userFilter - temp WMF hack
-		if( $wgEnableNewpageswiki_userFilter && $wiki_user ) {
-			$conds['rc_wiki_user_text'] = $wiki_user->getText();
-			$rcIndexes = 'rc_wiki_user_text';
-		# If anons cannot make new pages, don't "exclude logged in wiki_users"!
+		# $wgEnableNewpagesUserFilter - temp WMF hack
+		if( $wgEnableNewpagesUserFilter && $user ) {
+			$conds['rc_user_text'] = $user->getText();
+			$rcIndexes = 'rc_user_text';
+		# If anons cannot make new pages, don't "exclude logged in users"!
 		} elseif( $wgGroupPermissions['*']['createpage'] && $this->opts->getValue( 'hideliu' ) ) {
-			$conds['rc_wiki_user'] = 0;
+			$conds['rc_user'] = 0;
 		}
-		# If this wiki_user cannot see patrolled edits or they are off, don't do dumb queries!
-		if( $this->opts->getValue( 'hidepatrolled' ) && $this->getwiki_user()->useNPPatrol() ) {
+		# If this user cannot see patrolled edits or they are off, don't do dumb queries!
+		if( $this->opts->getValue( 'hidepatrolled' ) && $this->getUser()->useNPPatrol() ) {
 			$conds['rc_patrolled'] = 0;
 		}
 		if( $this->opts->getValue( 'hidebots' ) ) {
@@ -534,7 +534,7 @@ class NewPagesPager extends ReverseChronologicalPager {
 		// Allow changes to the New Pages query
 		$tables = array( 'recentchanges', 'page' );
 		$fields = array(
-			'rc_namespace', 'rc_title', 'rc_cur_id', 'rc_wiki_user', 'rc_wiki_user_text',
+			'rc_namespace', 'rc_title', 'rc_cur_id', 'rc_user', 'rc_user_text',
 			'rc_comment', 'rc_timestamp', 'rc_patrolled','rc_id', 'rc_deleted',
 			'length' => 'page_len', 'rev_id' => 'page_latest', 'rc_this_oldid',
 			'page_namespace', 'page_title'
@@ -577,8 +577,8 @@ class NewPagesPager extends ReverseChronologicalPager {
 		# Do a batch existence check on pages
 		$linkBatch = new LinkBatch();
 		foreach ( $this->mResult as $row ) {
-			$linkBatch->add( NS_USER, $row->rc_wiki_user_text );
-			$linkBatch->add( NS_USER_TALK, $row->rc_wiki_user_text );
+			$linkBatch->add( NS_USER, $row->rc_user_text );
+			$linkBatch->add( NS_USER_TALK, $row->rc_user_text );
 			$linkBatch->add( $row->rc_namespace, $row->rc_title );
 		}
 		$linkBatch->execute();

@@ -189,7 +189,7 @@ class CacheHelper implements ICacheHelper {
 	}
 
 	/**
-	 * Returns a message that notifies the wiki_user he/she is looking at
+	 * Returns a message that notifies the user he/she is looking at
 	 * a cached version of the page, including a refresh link.
 	 *
 	 * @since 1.20
@@ -246,7 +246,7 @@ class CacheHelper implements ICacheHelper {
 			$this->cachedChunks = $this->hasCached ? $cachedChunks : array();
 
 			if ( $this->onInitHandler !== false ) {
-				call_wiki_user_func( $this->onInitHandler, $this->hasCached );
+				call_user_func( $this->onInitHandler, $this->hasCached );
 			}
 		}
 	}

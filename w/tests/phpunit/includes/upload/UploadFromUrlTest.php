@@ -20,7 +20,7 @@ class UploadFromUrlTest extends ApiTestCase {
 		}
 	}
 
-	protected function doApiRequest( Array $params, Array $unused = null, $appendModule = false, wiki_user $wiki_user = null ) {
+	protected function doApiRequest( Array $params, Array $unused = null, $appendModule = false, User $user = null ) {
 		$sessionId = session_id();
 		session_write_close();
 
@@ -44,14 +44,14 @@ class UploadFromUrlTest extends ApiTestCase {
 	}
 
 	/**
-	 * @todo Document why we test login, since the $wgwiki_user hack used doesn't
+	 * @todo Document why we test login, since the $wgUser hack used doesn't
 	 * require login
 	 */
 	public function testLogin() {
 		$data = $this->doApiRequest( array(
 			'action' => 'login',
-			'lgname' => $this->wiki_user->wiki_userName,
-			'lgpassword' => $this->wiki_user->passWord ) );
+			'lgname' => $this->user->userName,
+			'lgpassword' => $this->user->passWord ) );
 		$this->assertArrayHasKey( "login", $data[0] );
 		$this->assertArrayHasKey( "result", $data[0]['login'] );
 		$this->assertEquals( "NeedToken", $data[0]['login']['result'] );
@@ -60,8 +60,8 @@ class UploadFromUrlTest extends ApiTestCase {
 		$data = $this->doApiRequest( array(
 			'action' => 'login',
 			"lgtoken" => $token,
-			'lgname' => $this->wiki_user->wiki_userName,
-			'lgpassword' => $this->wiki_user->passWord ) );
+			'lgname' => $this->user->userName,
+			'lgpassword' => $this->user->passWord ) );
 
 		$this->assertArrayHasKey( "login", $data[0] );
 		$this->assertArrayHasKey( "result", $data[0]['login'] );
@@ -76,7 +76,7 @@ class UploadFromUrlTest extends ApiTestCase {
 	 * @depends testClearQueue
 	 */
 	public function testSetupUrlDownload( $data ) {
-		$token = $this->wiki_user->getEditToken();
+		$token = $this->user->getEditToken();
 		$exception = false;
 
 		try {
@@ -115,7 +115,7 @@ class UploadFromUrlTest extends ApiTestCase {
 		}
 		$this->assertTrue( $exception, "Got exception" );
 
-		$this->wiki_user->removeGroup( 'sysop' );
+		$this->user->removeGroup( 'sysop' );
 		$exception = false;
 		try {
 			$this->doApiRequest( array(
@@ -130,7 +130,7 @@ class UploadFromUrlTest extends ApiTestCase {
 		}
 		$this->assertTrue( $exception, "Got exception" );
 
-		$this->wiki_user->addGroup( 'sysop' );
+		$this->user->addGroup( 'sysop' );
 		$data = $this->doApiRequest( array(
 			'action' => 'upload',
 			'url' => 'http://bits.wikimedia.org/skins-1.5/common/images/poweredby_mediawiki_88x31.png',
@@ -150,9 +150,9 @@ class UploadFromUrlTest extends ApiTestCase {
 	 * @depends testClearQueue
 	 */
 	public function testAsyncUpload( $data ) {
-		$token = $this->wiki_user->getEditToken();
+		$token = $this->user->getEditToken();
 
-		$this->wiki_user->addGroup( 'wiki_users' );
+		$this->user->addGroup( 'users' );
 
 		$data = $this->doAsyncUpload( $token, true );
 		$this->assertEquals( $data[0]['upload']['result'], 'Success' );
@@ -169,9 +169,9 @@ class UploadFromUrlTest extends ApiTestCase {
 	 * @depends testClearQueue
 	 */
 	public function testAsyncUploadWarning( $data ) {
-		$token = $this->wiki_user->getEditToken();
+		$token = $this->user->getEditToken();
 
-		$this->wiki_user->addGroup( 'wiki_users' );
+		$this->user->addGroup( 'users' );
 
 
 		$data = $this->doAsyncUpload( $token );
@@ -200,12 +200,12 @@ class UploadFromUrlTest extends ApiTestCase {
 	 * @depends testClearQueue
 	 */
 	public function testSyncDownload( $data ) {
-		$token = $this->wiki_user->getEditToken();
+		$token = $this->user->getEditToken();
 
 		$job = Job::pop();
 		$this->assertFalse( $job, 'Starting with an empty jobqueue' );
 
-		$this->wiki_user->addGroup( 'wiki_users' );
+		$this->user->addGroup( 'users' );
 		$data = $this->doApiRequest( array(
 			'action' => 'upload',
 			'filename' => 'UploadFromUrlTest.png',
@@ -224,15 +224,15 @@ class UploadFromUrlTest extends ApiTestCase {
 	}
 
 	public function testLeaveMessage() {
-		$token = $this->wiki_user->wiki_user->getEditToken();
+		$token = $this->user->user->getEditToken();
 
-		$talk = $this->wiki_user->wiki_user->getTalkPage();
+		$talk = $this->user->user->getTalkPage();
 		if ( $talk->exists() ) {
 			$page = WikiPage::factory( $talk );
 			$page->doDeleteArticle( '' );
 		}
 
-		$this->assertFalse( (bool)$talk->getArticleID( Title::GAID_FOR_UPDATE ), 'wiki_user talk does not exist' );
+		$this->assertFalse( (bool)$talk->getArticleID( Title::GAID_FOR_UPDATE ), 'User talk does not exist' );
 
 		$data = $this->doApiRequest( array(
 			'action' => 'upload',
@@ -249,7 +249,7 @@ class UploadFromUrlTest extends ApiTestCase {
 		$job->run();
 
 		$this->assertTrue( wfLocalFile( 'UploadFromUrlTest.png' )->exists() );
-		$this->assertTrue( (bool)$talk->getArticleID( Title::GAID_FOR_UPDATE ), 'wiki_user talk exists' );
+		$this->assertTrue( (bool)$talk->getArticleID( Title::GAID_FOR_UPDATE ), 'User talk exists' );
 
 		$this->deleteFile( 'UploadFromUrlTest.png' );
 

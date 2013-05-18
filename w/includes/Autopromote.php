@@ -1,6 +1,6 @@
 <?php
 /**
- * Automatic wiki_user rights promotion based on conditions specified
+ * Automatic user rights promotion based on conditions specified
  * in $wgAutopromote.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -22,63 +22,63 @@
  */
 
 /**
- * This class checks if wiki_user can get extra rights
+ * This class checks if user can get extra rights
  * because of conditions specified in $wgAutopromote
  */
 class Autopromote {
 	/**
-	 * Get the groups for the given wiki_user based on $wgAutopromote.
+	 * Get the groups for the given user based on $wgAutopromote.
 	 *
-	 * @param $wiki_user wiki_user The wiki_user to get the groups for
+	 * @param $user User The user to get the groups for
 	 * @return array Array of groups to promote to.
 	 */
-	public static function getAutopromoteGroups( wiki_user $wiki_user ) {
+	public static function getAutopromoteGroups( User $user ) {
 		global $wgAutopromote;
 
 		$promote = array();
 
 		foreach ( $wgAutopromote as $group => $cond ) {
-			if ( self::recCheckCondition( $cond, $wiki_user ) ) {
+			if ( self::recCheckCondition( $cond, $user ) ) {
 				$promote[] = $group;
 			}
 		}
 
-		wfRunHooks( 'GetAutoPromoteGroups', array( $wiki_user, &$promote ) );
+		wfRunHooks( 'GetAutoPromoteGroups', array( $user, &$promote ) );
 
 		return $promote;
 	}
 
 	/**
-	 * Get the groups for the given wiki_user based on the given criteria.
+	 * Get the groups for the given user based on the given criteria.
 	 *
-	 * Does not return groups the wiki_user already belongs to or has once belonged.
+	 * Does not return groups the user already belongs to or has once belonged.
 	 *
-	 * @param $wiki_user wiki_user The wiki_user to get the groups for
+	 * @param $user User The user to get the groups for
 	 * @param $event String key in $wgAutopromoteOnce (each one has groups/criteria)
 	 *
-	 * @return array Groups the wiki_user should be promoted to.
+	 * @return array Groups the user should be promoted to.
 	 *
 	 * @see $wgAutopromoteOnce
 	 */
-	public static function getAutopromoteOnceGroups( wiki_user $wiki_user, $event ) {
+	public static function getAutopromoteOnceGroups( User $user, $event ) {
 		global $wgAutopromoteOnce;
 
 		$promote = array();
 
 		if ( isset( $wgAutopromoteOnce[$event] ) && count( $wgAutopromoteOnce[$event] ) ) {
-			$currentGroups = $wiki_user->getGroups();
-			$formerGroups = $wiki_user->getFormerGroups();
+			$currentGroups = $user->getGroups();
+			$formerGroups = $user->getFormerGroups();
 			foreach ( $wgAutopromoteOnce[$event] as $group => $cond ) {
-				// Do not check if the wiki_user's already a member
+				// Do not check if the user's already a member
 				if ( in_array( $group, $currentGroups ) ) {
 					continue;
 				}
-				// Do not autopromote if the wiki_user has belonged to the group
+				// Do not autopromote if the user has belonged to the group
 				if ( in_array( $group, $formerGroups ) ) {
 					continue;
 				}
 				// Finally - check the conditions
-				if ( self::recCheckCondition( $cond, $wiki_user ) ) {
+				if ( self::recCheckCondition( $cond, $user ) ) {
 					$promote[] = $group;
 				}
 			}
@@ -100,17 +100,17 @@ class Autopromote {
 	 * self::checkCondition for evaluation of the latter type.
 	 *
 	 * @param $cond Mixed: a condition, possibly containing other conditions
-	 * @param $wiki_user wiki_user The wiki_user to check the conditions against
+	 * @param $user User The user to check the conditions against
 	 * @return bool Whether the condition is true
 	 */
-	private static function recCheckCondition( $cond, wiki_user $wiki_user ) {
+	private static function recCheckCondition( $cond, User $user ) {
 		$validOps = array( '&', '|', '^', '!' );
 
 		if ( is_array( $cond ) && count( $cond ) >= 2 && in_array( $cond[0], $validOps ) ) {
 			# Recursive condition
 			if ( $cond[0] == '&' ) { // AND (all conds pass)
 				foreach ( array_slice( $cond, 1 ) as $subcond ) {
-					if ( !self::recCheckCondition( $subcond, $wiki_user ) ) {
+					if ( !self::recCheckCondition( $subcond, $user ) ) {
 						return false;
 					}
 				}
@@ -118,7 +118,7 @@ class Autopromote {
 				return true;
 			} elseif ( $cond[0] == '|' ) { // OR (at least one cond passes)
 				foreach ( array_slice( $cond, 1 ) as $subcond ) {
-					if ( self::recCheckCondition( $subcond, $wiki_user ) ) {
+					if ( self::recCheckCondition( $subcond, $user ) ) {
 						return true;
 					}
 				}
@@ -128,11 +128,11 @@ class Autopromote {
 				if ( count( $cond ) > 3 ) {
 					wfWarn( 'recCheckCondition() given XOR ("^") condition on three or more conditions. Check your $wgAutopromote and $wgAutopromoteOnce settings.' );
 				}
-				return self::recCheckCondition( $cond[1], $wiki_user )
-					xor self::recCheckCondition( $cond[2], $wiki_user );
+				return self::recCheckCondition( $cond[1], $user )
+					xor self::recCheckCondition( $cond[2], $user );
 			} elseif ( $cond[0] == '!' ) { // NOT (no conds pass)
 				foreach ( array_slice( $cond, 1 ) as $subcond ) {
-					if ( self::recCheckCondition( $subcond, $wiki_user ) ) {
+					if ( self::recCheckCondition( $subcond, $user ) ) {
 						return false;
 					}
 				}
@@ -146,7 +146,7 @@ class Autopromote {
 			$cond = array( $cond );
 		}
 
-		return self::checkCondition( $cond, $wiki_user );
+		return self::checkCondition( $cond, $user );
 	}
 
 	/**
@@ -156,10 +156,10 @@ class Autopromote {
 	 * ates them.
 	 *
 	 * @param $cond Array: A condition, which must not contain other conditions
-	 * @param $wiki_user wiki_user The wiki_user to check the condition against
-	 * @return bool Whether the condition is true for the wiki_user
+	 * @param $user User The user to check the condition against
+	 * @return bool Whether the condition is true for the user
 	 */
-	private static function checkCondition( $cond, wiki_user $wiki_user ) {
+	private static function checkCondition( $cond, User $user ) {
 		global $wgEmailAuthentication;
 		if ( count( $cond ) < 1 ) {
 			return false;
@@ -167,36 +167,36 @@ class Autopromote {
 
 		switch( $cond[0] ) {
 			case APCOND_EMAILCONFIRMED:
-				if ( Sanitizer::validateEmail( $wiki_user->getEmail() ) ) {
+				if ( Sanitizer::validateEmail( $user->getEmail() ) ) {
 					if ( $wgEmailAuthentication ) {
-						return (bool)$wiki_user->getEmailAuthenticationTimestamp();
+						return (bool)$user->getEmailAuthenticationTimestamp();
 					} else {
 						return true;
 					}
 				}
 				return false;
 			case APCOND_EDITCOUNT:
-				return $wiki_user->getEditCount() >= $cond[1];
+				return $user->getEditCount() >= $cond[1];
 			case APCOND_AGE:
-				$age = time() - wfTimestampOrNull( TS_UNIX, $wiki_user->getRegistration() );
+				$age = time() - wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
 				return $age >= $cond[1];
 			case APCOND_AGE_FROM_EDIT:
-				$age = time() - wfTimestampOrNull( TS_UNIX, $wiki_user->getFirstEditTimestamp() );
+				$age = time() - wfTimestampOrNull( TS_UNIX, $user->getFirstEditTimestamp() );
 				return $age >= $cond[1];
 			case APCOND_INGROUPS:
 				$groups = array_slice( $cond, 1 );
-				return count( array_intersect( $groups, $wiki_user->getGroups() ) ) == count( $groups );
+				return count( array_intersect( $groups, $user->getGroups() ) ) == count( $groups );
 			case APCOND_ISIP:
-				return $cond[1] == $wiki_user->getRequest()->getIP();
+				return $cond[1] == $user->getRequest()->getIP();
 			case APCOND_IPINRANGE:
-				return IP::isInRange( $wiki_user->getRequest()->getIP(), $cond[1] );
+				return IP::isInRange( $user->getRequest()->getIP(), $cond[1] );
 			case APCOND_BLOCKED:
-				return $wiki_user->isBlocked();
+				return $user->isBlocked();
 			case APCOND_ISBOT:
-				return in_array( 'bot', wiki_user::getGroupPermissions( $wiki_user->getGroups() ) );
+				return in_array( 'bot', User::getGroupPermissions( $user->getGroups() ) );
 			default:
 				$result = null;
-				wfRunHooks( 'AutopromoteCondition', array( $cond[0], array_slice( $cond, 1 ), $wiki_user, &$result ) );
+				wfRunHooks( 'AutopromoteCondition', array( $cond[0], array_slice( $cond, 1 ), $user, &$result ) );
 				if ( $result === null ) {
 					throw new MWException( "Unrecognized condition {$cond[0]} for autopromotion!" );
 				}

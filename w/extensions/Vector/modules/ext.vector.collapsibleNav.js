@@ -109,25 +109,25 @@
 				'pih', 'za', 'sg', 'lg', 'bxr', 'xh', 'ak', 'ha', 'bi', 've', 'tn', 'ff', 'dz', 'ti', 'ki', 'ny', 'rw',
 				'chy', 'tw', 'sn', 'tum', 'ng', 'rn', 'mh', 'ii', 'cho', 'hz', 'kr', 'ho', 'mus', 'kj'
 			];
-			// If the wiki_user has an Accept-Language cookie, use it. Otherwise, set it asynchronously but keep the default
+			// If the user has an Accept-Language cookie, use it. Otherwise, set it asynchronously but keep the default
 			// behavior for this page view.
 			acceptLangCookie = $.cookie( 'accept-language' );
 			if ( acceptLangCookie !== null ) {
-				// Put the wiki_user's accepted languages before the list ordered by wiki size
+				// Put the user's accepted languages before the list ordered by wiki size
 				if ( acceptLangCookie !== '' ) {
 					languages = acceptLangCookie.split( ',' ).concat( languages );
 				}
 			} else {
 				$.getJSON(
 					mw.util.wikiScript( 'api' ),
-					'format=json&action=query&meta=wiki_userinfo&uiprop=acceptlang',
+					'format=json&action=query&meta=userinfo&uiprop=acceptlang',
 					function ( data ) {
 						var langs = [], j, len, lang;
 						if ( data.query &&
-								data.query.wiki_userinfo &&
-								data.query.wiki_userinfo.acceptlang !== undefined
+								data.query.userinfo &&
+								data.query.userinfo.acceptlang !== undefined
 						) {
-							for ( j = 0, lang = data.query.wiki_userinfo.acceptlang, len = lang.length; j < len; j++ ) {
+							for ( j = 0, lang = data.query.userinfo.acceptlang, len = lang.length; j < len; j++ ) {
 								if ( lang[j].q !== 0 ) {
 									langs.push( lang[j]['*'] );
 								}

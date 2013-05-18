@@ -32,10 +32,10 @@ class SearchIBM_DB2 extends SearchEngine {
 
 	/**
 	 * Creates an instance of this class
-	 * @param  DatabaseIbm_db2: database object
+	 * @param $db DatabaseIbm_db2: database object
 	 */
-	function __construct() {
-		parent::__construct(  );
+	function __construct($db) {
+		parent::__construct( $db );
 	}
 
 	/**
@@ -202,8 +202,8 @@ class SearchIBM_DB2 extends SearchEngine {
 	 * @param $text String
 	 */
 	function update($id, $title, $text) {
-		w = wfGetDB(DB_MASTER);
-		w->replace('searchindex',
+		$dbw = wfGetDB(DB_MASTER);
+		$dbw->replace('searchindex',
 			array('si_page'),
 			array(
 				'si_page' => $id,
@@ -211,8 +211,8 @@ class SearchIBM_DB2 extends SearchEngine {
 				'si_text' => $text
 			), 'SearchIBM_DB2::update' );
 		// ?
-		//w->query("CALL ctx_ddl.sync_index('si_text_idx')");
-		//w->query("CALL ctx_ddl.sync_index('si_title_idx')");
+		//$dbw->query("CALL ctx_ddl.sync_index('si_text_idx')");
+		//$dbw->query("CALL ctx_ddl.sync_index('si_title_idx')");
 	}
 
 	/**
@@ -223,9 +223,9 @@ class SearchIBM_DB2 extends SearchEngine {
 	 * @param $title String
 	 */
 	function updateTitle($id, $title) {
-		w = wfGetDB(DB_MASTER);
+		$dbw = wfGetDB(DB_MASTER);
 
-		w->update('searchindex',
+		$dbw->update('searchindex',
 			array('si_title' => $title),
 			array('si_page'  => $id),
 			'SearchIBM_DB2::updateTitle',

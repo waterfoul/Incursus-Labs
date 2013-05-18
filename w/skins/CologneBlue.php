@@ -37,8 +37,8 @@ class SkinCologneBlue extends SkinLegacy {
 	/**
 	 * @param $out OutputPage
 	 */
-	function setupSkinwiki_userCss( OutputPage $out ){
-		parent::setupSkinwiki_userCss( $out );
+	function setupSkinUserCss( OutputPage $out ){
+		parent::setupSkinUserCss( $out );
 		$out->addModuleStyles( 'skins.cologneblue' );
 
 		$qb = $this->qbSetting();
@@ -150,8 +150,8 @@ class CologneBlueTemplate extends LegacyTemplate {
 	 * @return string
 	 */
 	function sysLinks() {
-		$li = SpecialPage::getTitleFor( 'wiki_userlogin' );
-		$lo = SpecialPage::getTitleFor( 'wiki_userlogout' );
+		$li = SpecialPage::getTitleFor( 'Userlogin' );
+		$lo = SpecialPage::getTitleFor( 'Userlogout' );
 
 		$rt = $this->getSkin()->getTitle()->getPrefixedURL();
 		if ( 0 == strcasecmp( urlencode( $lo ), $rt ) ) {
@@ -246,7 +246,7 @@ class CologneBlueTemplate extends LegacyTemplate {
 			$barnumber++;
 		}
 
-		$wiki_user = $this->getSkin()->getwiki_user();
+		$user = $this->getSkin()->getUser();
 
 		if ( $this->data['isarticle'] ) {
 			$s .= $this->menuHead( 'qbedit' );
@@ -260,13 +260,13 @@ class CologneBlueTemplate extends LegacyTemplate {
 			if( $this->data['loggedin'] ) {
 				$s .= $sep . $this->moveThisPage();
 			}
-			if ( $wiki_user->isAllowed( 'delete' ) ) {
+			if ( $user->isAllowed( 'delete' ) ) {
 				$dtp = $this->deleteThisPage();
 				if ( $dtp != '' ) {
 					$s .= $sep . $dtp;
 				}
 			}
-			if ( $wiki_user->isAllowed( 'protect' ) ) {
+			if ( $user->isAllowed( 'protect' ) ) {
 				$ptp = $this->protectThisPage();
 				if ( $ptp != '' ) {
 					$s .= $sep . $ptp;
@@ -292,11 +292,11 @@ class CologneBlueTemplate extends LegacyTemplate {
 			$title = $this->getSkin()->getTitle();
 			$tns = $title->getNamespace();
 			if ( $tns == NS_USER || $tns == NS_USER_TALK ) {
-				$id = wiki_user::idFromName( $title->getText() );
+				$id = User::idFromName( $title->getText() );
 				if( $id != 0 ) {
-					$s .= $sep . $this->wiki_userContribsLink();
-					if( $this->getSkin()->showEmailwiki_user( $id ) ) {
-						$s .= $sep . $this->emailwiki_userLink();
+					$s .= $sep . $this->userContribsLink();
+					if( $this->getSkin()->showEmailUser( $id ) ) {
+						$s .= $sep . $this->emailUserLink();
 					}
 				}
 			}
@@ -306,32 +306,32 @@ class CologneBlueTemplate extends LegacyTemplate {
 		$s .= $this->menuHead( 'qbmyoptions' );
 		if ( $this->data['loggedin'] ) {
 			$tl = Linker::linkKnown(
-				$wiki_user->getTalkPage(),
+				$user->getTalkPage(),
 				wfMessage( 'mytalk' )->escaped()
 			);
-			if ( $wiki_user->getNewtalk() ) {
+			if ( $user->getNewtalk() ) {
 				$tl .= ' *';
 			}
 
 			$s .= Linker::linkKnown(
-					$wiki_user->getwiki_userPage(),
+					$user->getUserPage(),
 					wfMessage( 'mypage' )->escaped()
 				) . $sep . $tl . $sep . Linker::specialLink( 'Watchlist' )
 					. $sep .
 				Linker::linkKnown(
-					SpecialPage::getSafeTitleFor( 'Contributions', $wiki_user->getName() ),
+					SpecialPage::getSafeTitleFor( 'Contributions', $user->getName() ),
 					wfMessage( 'mycontris' )->escaped()
 				) . $sep . Linker::specialLink( 'Preferences' )
-				. $sep . Linker::specialLink( 'wiki_userlogout' );
+				. $sep . Linker::specialLink( 'Userlogout' );
 		} else {
-			$s .= Linker::specialLink( 'wiki_userlogin' );
+			$s .= Linker::specialLink( 'Userlogin' );
 		}
 
 		$s .= $this->menuHead( 'qbspecialpages' )
 			. Linker::specialLink( 'Newpages' )
 			. $sep . Linker::specialLink( 'Listfiles' )
 			. $sep . Linker::specialLink( 'Statistics' );
-		if( UploadBase::isEnabled() && UploadBase::isAllowed( $wiki_user ) === true ) {
+		if( UploadBase::isEnabled() && UploadBase::isAllowed( $user ) === true ) {
 			$s .= $sep . $this->getUploadLink();
 		}
 

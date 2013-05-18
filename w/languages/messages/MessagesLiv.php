@@ -137,7 +137,7 @@ $messages = array(
 'jumptonavigation' => 'navigīerimiz kast',
 'jumptosearch' => 'Vȯtšõgid',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Iļ {{SITENAME}}',
 'aboutpage' => 'Project:Tītõl tieutõkst',
 'copyright' => 'Amā tekstõ um kȭlbatõmist litsents #$1 pierrõ',
@@ -179,7 +179,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Kēratõks',
-'nstab-wiki_user' => 'Kȭlbatijiz lēḑ',
+'nstab-user' => 'Kȭlbatijiz lēḑ',
 'nstab-special' => 'Eņtšvīţi lēḑ',
 'nstab-project' => 'Projekt lēḑ',
 'nstab-image' => 'Bīlda',
@@ -187,7 +187,7 @@ $messages = array(
 'nstab-category' => 'Kategōrij',
 
 # General errors
-'missing-article' => " Datubāz äb lieudõn kizdõd līed ''$1'' $2 tekstõ. Sīkõks võib vȱlda mõitõkst agā istōrij siḑīm jarā kištāntõd lēḑ pǟlõ.  Až ažād äb ūo nei,  võib vȱlda ka vigā sistēms. Siz um kītõmõst ka [[Special:Listwiki_users/sysop| administrātorõn]] ja tämmõn āndamizt ka sīe līed internet adres",
+'missing-article' => " Datubāz äb lieudõn kizdõd līed ''$1'' $2 tekstõ. Sīkõks võib vȱlda mõitõkst agā istōrij siḑīm jarā kištāntõd lēḑ pǟlõ.  Až ažād äb ūo nei,  võib vȱlda ka vigā sistēms. Siz um kītõmõst ka [[Special:ListUsers/sysop| administrātorõn]] ja tämmõn āndamizt ka sīe līed internet adres",
 'missingarticle-rev' => '(redaktsij: $1)',
 'badtitle' => 'Vigāli pēļikēra',
 'badtitletext' => 'Tōdõd līed pēļikēra vȯļ vigāli, tijā agā tuoizõst kīel versiōnist agā vikist äbõigistiz sidtõd. Sīe sizzõl võib vȱlda ikš agā jemīņ simbōlõ, midā äb sō pēļikēris kȭlbatõ.',
@@ -201,15 +201,15 @@ $messages = array(
 'login' => 'Log sīezõ',
 'nav-login-createaccount' => 'Log sīezõ agā registrīer kȭlbatijizõks',
 'loginprompt' => "Sīezõ loggimizõks täddõn um āndamizt lubā \"kūkid\" (''cookies'') pierāst",
-'wiki_userlogin' => 'Sīezõ loggimi agā kȭlbatijiz-konto lūomi',
+'userlogin' => 'Sīezõ loggimi agā kȭlbatijiz-konto lūomi',
 'logout' => 'Log ulzõ',
-'wiki_userlogout' => 'Log ulzõ',
+'userlogout' => 'Log ulzõ',
 'nologin' => "Až täddõn äb ūo eņtš konto, '''$1'''.",
 'nologinlink' => 'Registrīerõgid täs',
 'createaccount' => 'Lūogid ūž konto',
 'gotaccount' => "Až täddõn jubā um eņtš konto, '''$1'''.",
 'gotaccountlink' => 'Log sīezõ',
-'wiki_userlogin-resetlink' => 'Kas tēg unīztõ jarā eņtš sizzõlkēratimiz tīetõkst?',
+'userlogin-resetlink' => 'Kas tēg unīztõ jarā eņtš sizzõlkēratimiz tīetõkst?',
 'mailmypassword' => 'Sōtõgid e-kēras ūž sallisõnā',
 'loginlanguagelabel' => 'Kēļ: $1',
 
@@ -373,7 +373,7 @@ Legend: '''({{int:cur}})''' = vaiţīd līdzinţõmizõks lǟndz redaktsijõks,,
 
 'grouppage-sysop' => '{{ns:project}}:Administrātord',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Kȭlbatijiz õigõmt log',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -436,7 +436,7 @@ Legend: '''({{int:cur}})''' = vaiţīd līdzinţõmizõks lǟndz redaktsijõks,,
 'filehist-datetime' => 'Kūpǟva/Kīela-āiga',
 'filehist-thumb' => 'Piški bīlda',
 'filehist-thumbtext' => 'Piški bīlda $1 versijõst',
-'filehist-wiki_user' => 'kȭlbatiji',
+'filehist-user' => 'kȭlbatiji',
 'filehist-dimensions' => 'Sūrit',
 'filehist-comment' => 'Komentār',
 'imagelinks' => 'Fail kȭlbatõmi',
@@ -458,7 +458,7 @@ Legend: '''({{int:cur}})''' = vaiţīd līdzinţõmizõks lǟndz redaktsijõks,,
 'nbytes' => '$1 {{PLURAL:$1|bait|baitõ}}',
 'nmembers' => '$1 {{PLURAL:$1|nõtkõm| nõtkõmḑi}}',
 'prefixindex' => 'Amād pēļikērad prefiksõks',
-'wiki_usercreated' => 'Konto {{GENDER:$3|lūomiz}} āiga: $1 kīela $2',
+'usercreated' => 'Konto {{GENDER:$3|lūomiz}} āiga: $1 kīela $2',
 'newpages' => 'Ūd lēḑõd',
 'move' => 'Vīž',
 'movethispage' => 'Viedāgid se līedpūol tuoiz nim alā',
@@ -489,14 +489,14 @@ Legend: '''({{int:cur}})''' = vaiţīd līdzinţõmizõks lǟndz redaktsijõks,,
 'linksearch' => 'Uļļizt siḑīmõd',
 'linksearch-line' => '$1 um sidtõd līedst $2',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Kȭlbatijizt lūomiz log',
+# Special:Log/newusers
+'newuserlogpage' => 'Kȭlbatijizt lūomiz log',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(nõtkõmd nimkēra)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Sōtõgid sīen kȭlbatijizõn e-kēra',
+# E-mail user
+'emailuser' => 'Sōtõgid sīen kȭlbatijizõn e-kēra',
 
 # Watchlist
 'watchlist' => 'Iļ-vaņtlimiz nimkēra',
@@ -575,7 +575,7 @@ Legend: '''({{int:cur}})''' = vaiţīd līdzinţõmizõks lǟndz redaktsijõks,,
 'sp-contributions-logs' => 'logūd',
 'sp-contributions-talk' => 'Nõvpidāmi',
 'sp-contributions-search' => 'Kubsõtīe vȯtšimi',
-'sp-contributions-wiki_username' => 'IP adres agā kȭlbatijiznim:',
+'sp-contributions-username' => 'IP adres agā kȭlbatijiznim:',
 'sp-contributions-toponly' => 'Setku amā ūd redaktsijõd',
 'sp-contributions-submit' => 'Vȯtšõgid',
 
@@ -646,7 +646,7 @@ Až sugīz nei, sōd līed tōdõs kädūdõks jeddõpēḑõn sōtõ agā jūr�
 'thumbnail_error' => 'Vigā piškiz bīlda lūomizõs: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Sin kȭlbatijiz lēḑ',
+'tooltip-pt-userpage' => 'Sin kȭlbatijiz lēḑ',
 'tooltip-pt-mytalk' => 'Täd nõvpidāmiz lēḑ',
 'tooltip-pt-preferences' => 'Min mīeldõbõd ulzõ-vēļimizt',
 'tooltip-pt-watchlist' => 'Lēḑõd nimkēra, mis iļ vaņtlõd mõitõkši',
@@ -679,13 +679,13 @@ Až sugīz nei, sōd līed tōdõs kädūdõks jeddõpēḑõn sōtõ agā jūr�
 'tooltip-feed-rss' => 'Sīe līedpūol RSS sīeţ',
 'tooltip-feed-atom' => 'Sīe līed Atom sīeţ',
 'tooltip-t-contributions' => 'Nägţ sīe kȭlbatijiz kubsõtīe',
-'tooltip-t-emailwiki_user' => 'Sōtõgid sīen kȭlbatijizõn e-kēra',
+'tooltip-t-emailuser' => 'Sōtõgid sīen kȭlbatijizõn e-kēra',
 'tooltip-t-upload' => 'Fail ilzõ-lōţimi',
 'tooltip-t-specialpages' => 'Eņtšvīţizt lēḑõd nimkēra',
 'tooltip-t-print' => 'Sīe līed drukkimiz versij',
 'tooltip-t-permalink' => 'Iggi siḑīm līed sīen versij pǟlõ',
 'tooltip-ca-nstab-main' => 'Nägţ kēratõkst',
-'tooltip-ca-nstab-wiki_user' => 'Nägţ kȭlbatijiz līedtõ',
+'tooltip-ca-nstab-user' => 'Nägţ kȭlbatijiz līedtõ',
 'tooltip-ca-nstab-special' => ' Se um ikš eņtšvīţi lēḑ, tēg ät sōtõ siedā redigīerõ',
 'tooltip-ca-nstab-project' => 'Nägţ projekt līedtõ',
 'tooltip-ca-nstab-image' => 'Nägţ bīlda līedtõ',

@@ -33,7 +33,7 @@ class FakeTitle extends Title {
 	function getDBkey() { $this->error(); }
 	function getNamespace() { $this->error(); }
 	function getNsText() { $this->error(); }
-	function getwiki_userCaseDBKey() { $this->error(); }
+	function getUserCaseDBKey() { $this->error(); }
 	function getSubjectNsText() { $this->error(); }
 	function getTalkNsText() { $this->error(); }
 	function canTalk() { $this->error(); }
@@ -61,15 +61,15 @@ class FakeTitle extends Title {
 	function isSemiProtected( $action = 'edit' ) { $this->error(); }
 	function isProtected( $action = '' ) { $this->error(); }
 	function isConversionTable() { $this->error(); }
-	function wiki_userIsWatching() { $this->error(); }
-	function quickwiki_userCan( $action, $wiki_user = null ) { $this->error(); }
-	function isNamespaceProtected( wiki_user $wiki_user ) { $this->error(); }
-	function wiki_userCan( $action, $wiki_user = null, $doExpensiveQueries = true ) { $this->error(); }
-	function getwiki_userPermissionsErrors( $action, $wiki_user, $doExpensiveQueries = true, $ignoreErrors = array() ) { $this->error(); }
+	function userIsWatching() { $this->error(); }
+	function quickUserCan( $action, $user = null ) { $this->error(); }
+	function isNamespaceProtected( User $user ) { $this->error(); }
+	function userCan( $action, $user = null, $doExpensiveQueries = true ) { $this->error(); }
+	function getUserPermissionsErrors( $action, $user, $doExpensiveQueries = true, $ignoreErrors = array() ) { $this->error(); }
 	function updateTitleProtection( $create_perm, $reason, $expiry ) { $this->error(); }
 	function deleteTitleProtection() { $this->error(); }
 	function isMovable() { $this->error(); }
-	function wiki_userCanRead() { $this->error(); }
+	function userCanRead() { $this->error(); }
 	function isTalkPage() { $this->error(); }
 	function isSubpage() { $this->error(); }
 	function hasSubpages() { $this->error(); }
@@ -79,8 +79,8 @@ class FakeTitle extends Title {
 	function getSkinFromCssJsSubpage() { $this->error(); }
 	function isCssSubpage() { $this->error(); }
 	function isJsSubpage() { $this->error(); }
-	function wiki_userCanEditCssSubpage() { $this->error(); }
-	function wiki_userCanEditJsSubpage() { $this->error(); }
+	function userCanEditCssSubpage() { $this->error(); }
+	function userCanEditJsSubpage() { $this->error(); }
 	function isCascadeProtected() { $this->error(); }
 	function getCascadeProtectionSources( $get_pages = true ) { $this->error(); }
 	function areRestrictionsCascading() { $this->error(); }
@@ -126,8 +126,8 @@ class FakeTitle extends Title {
 	function isKnown() { $this->error(); }
 	function canExist() { $this->error(); }
 	function touchLinks() { $this->error(); }
-	function getTouched(  = null ) { $this->error(); }
-	function getNotificationTimestamp( $wiki_user = null ) { $this->error(); }
+	function getTouched( $db = null ) { $this->error(); }
+	function getNotificationTimestamp( $user = null ) { $this->error(); }
 	function getNamespaceKey( $prepend = 'nstab-' ) { $this->error(); }
 	function isSpecialPage() { $this->error(); }
 	function isSpecial( $name ) { $this->error(); }

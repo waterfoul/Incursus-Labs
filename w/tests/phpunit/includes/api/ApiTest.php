@@ -59,11 +59,11 @@ class ApiTest extends ApiTestCase {
 	}
 
 	/**
-	 * Test result of attempted login with an empty wiki_username
+	 * Test result of attempted login with an empty username
 	 */
 	function testApiLoginNoName() {
 		$data = $this->doApiRequest( array( 'action' => 'login',
-			'lgname' => '', 'lgpassword' => self::$wiki_users['sysop']->password,
+			'lgname' => '', 'lgpassword' => self::$users['sysop']->password,
 		) );
 		$this->assertEquals( 'NoName', $data[0]['login']['result'] );
 	}
@@ -71,15 +71,15 @@ class ApiTest extends ApiTestCase {
 	function testApiLoginBadPass() {
 		global $wgServer;
 
-		$wiki_user = self::$wiki_users['sysop'];
-		$wiki_user->wiki_user->logOut();
+		$user = self::$users['sysop'];
+		$user->user->logOut();
 
 		if ( !isset( $wgServer ) ) {
 			$this->markTestIncomplete( 'This test needs $wgServer to be set in LocalSettings.php' );
 		}
 		$ret = $this->doApiRequest( array(
 			"action" => "login",
-			"lgname" => $wiki_user->wiki_username,
+			"lgname" => $user->username,
 			"lgpassword" => "bad",
 			)
 		);
@@ -95,7 +95,7 @@ class ApiTest extends ApiTestCase {
 		$ret = $this->doApiRequest( array(
 			"action" => "login",
 			"lgtoken" => $token,
-			"lgname" => $wiki_user->wiki_username,
+			"lgname" => $user->username,
 			"lgpassword" => "badnowayinhell",
 			), $ret[2]
 		);
@@ -115,13 +115,13 @@ class ApiTest extends ApiTestCase {
 			$this->markTestIncomplete( 'This test needs $wgServer to be set in LocalSettings.php' );
 		}
 
-		$wiki_user = self::$wiki_users['sysop'];
-		$wiki_user->wiki_user->logOut();
+		$user = self::$users['sysop'];
+		$user->user->logOut();
 
 		$ret = $this->doApiRequest( array(
 			"action" => "login",
-			"lgname" => $wiki_user->wiki_username,
-			"lgpassword" => $wiki_user->password,
+			"lgname" => $user->username,
+			"lgpassword" => $user->password,
 			)
 		);
 
@@ -136,8 +136,8 @@ class ApiTest extends ApiTestCase {
 		$ret = $this->doApiRequest( array(
 			"action" => "login",
 			"lgtoken" => $token,
-			"lgname" => $wiki_user->wiki_username,
-			"lgpassword" => $wiki_user->password,
+			"lgname" => $user->username,
+			"lgpassword" => $user->password,
 			), $ret[2]
 		);
 
@@ -160,13 +160,13 @@ class ApiTest extends ApiTestCase {
 		if ( !isset( $wgServer ) ) {
 			$this->markTestIncomplete( 'This test needs $wgServer to be set in LocalSettings.php' );
 		}
-		$wiki_user = self::$wiki_users['sysop'];
+		$user = self::$users['sysop'];
 
 		$req = MWHttpRequest::factory( self::$apiUrl . "?action=login&format=xml",
 			array( "method" => "POST",
 				"postData" => array(
-				"lgname" => $wiki_user->wiki_username,
-				"lgpassword" => $wiki_user->password ) ) );
+				"lgname" => $user->username,
+				"lgpassword" => $user->password ) ) );
 		$req->execute();
 
 		libxml_use_internal_errors( true );
@@ -181,8 +181,8 @@ class ApiTest extends ApiTestCase {
 
 		$req->setData( array(
 			"lgtoken" => $token,
-			"lgname" => $wiki_user->wiki_username,
-			"lgpassword" => $wiki_user->password ) );
+			"lgname" => $user->username,
+			"lgpassword" => $user->password ) );
 		$req->execute();
 
 		$cj = $req->getCookieJar();
@@ -190,7 +190,7 @@ class ApiTest extends ApiTestCase {
 		$this->assertNotEquals( false, $serverName );
 		$serializedCookie = $cj->serializeToHttpRequest( $wgScriptPath, $serverName );
 		$this->assertNotEquals( '', $serializedCookie );
-		$this->assertRegexp( '/_session=[^;]*; .*wiki_userID=[0-9]*; .*wiki_userName=' . $wiki_user->wiki_userName . '; .*Token=/', $serializedCookie );
+		$this->assertRegexp( '/_session=[^;]*; .*UserID=[0-9]*; .*UserName=' . $user->userName . '; .*Token=/', $serializedCookie );
 
 		return $cj;
 	}
@@ -208,7 +208,7 @@ class ApiTest extends ApiTestCase {
 			'action' => 'query',
 			'prop'   => 'revisions',
 			'titles' => 'Main Page',
-			'rvprop' => 'timestamp|wiki_user|comment|content',
+			'rvprop' => 'timestamp|user|comment|content',
 		) );
 
 		$result = $ret[0]['query']['pages'];
@@ -216,11 +216,11 @@ class ApiTest extends ApiTestCase {
 	}
 	
 	function testRunLogin() {
-		$sysopwiki_user = self::$wiki_users['sysop'];
+		$sysopUser = self::$users['sysop'];
 		$data = $this->doApiRequest( array(
 			'action' => 'login',
-			'lgname' => $sysopwiki_user->wiki_username,
-			'lgpassword' => $sysopwiki_user->password ) );
+			'lgname' => $sysopUser->username,
+			'lgpassword' => $sysopUser->password ) );
 
 		$this->assertArrayHasKey( "login", $data[0] );
 		$this->assertArrayHasKey( "result", $data[0]['login'] );
@@ -230,8 +230,8 @@ class ApiTest extends ApiTestCase {
 		$data = $this->doApiRequest( array(
 			'action' => 'login',
 			"lgtoken" => $token,
-			"lgname" => $sysopwiki_user->wiki_username,
-			"lgpassword" => $sysopwiki_user->password ), $data[2] );
+			"lgname" => $sysopUser->username,
+			"lgpassword" => $sysopUser->password ), $data[2] );
 
 		$this->assertArrayHasKey( "login", $data[0] );
 		$this->assertArrayHasKey( "result", $data[0]['login'] );
@@ -242,21 +242,21 @@ class ApiTest extends ApiTestCase {
 	}
 	
 	function testGettingToken() {
-		foreach ( self::$wiki_users as $wiki_user ) {
-			$this->runTokenTest( $wiki_user );
+		foreach ( self::$users as $user ) {
+			$this->runTokenTest( $user );
 		}
 	}
 
-	function runTokenTest( $wiki_user ) {
+	function runTokenTest( $user ) {
 		
-		$data = $this->getTokenList( $wiki_user );
+		$data = $this->getTokenList( $user );
 
 		$this->assertArrayHasKey( 'query', $data[0] );
 		$this->assertArrayHasKey( 'pages', $data[0]['query'] );
 		$keys = array_keys( $data[0]['query']['pages'] );
 		$key = array_pop( $keys );
 
-		$rights = $wiki_user->wiki_user->getRights();
+		$rights = $user->user->getRights();
 
 		$this->assertArrayHasKey( $key, $data[0]['query']['pages'] );
 		$this->assertArrayHasKey( 'edittoken', $data[0]['query']['pages'][$key] );

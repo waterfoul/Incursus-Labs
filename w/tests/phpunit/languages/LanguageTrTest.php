@@ -18,7 +18,7 @@ class LanguageTrTest extends MediaWikiTestCase {
 
 	/**
 	 * See @bug 28040
-	 * Credits to irc://irc.freenode.net/wikipedia-tr wiki_users:
+	 * Credits to irc://irc.freenode.net/wikipedia-tr users:
 	 *  - berm
 	 *  - []LuCkY[]
 	 *  - Emperyan

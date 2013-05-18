@@ -128,7 +128,7 @@ $messages = array(
 'jumptonavigation' => 'kasarşoní',
 'jumptosearch' => 'paŧŧopol',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} ná bárav aŧ',
 'aboutpage' => 'Project:Bárav',
 'copyright' => 'Mađđí $1 aná rid aŧ rasenging e.',
@@ -170,7 +170,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Panna',
-'nstab-wiki_user' => 'Kárband ná panna',
+'nstab-user' => 'Kárband ná panna',
 'nstab-special' => 'Xás á panna',
 'nstab-project' => 'Bunkárem panna',
 'nstab-image' => 'Fáil',
@@ -184,7 +184,7 @@ Dá geştirí mesingoko panna sená nákára o fark yá lekav ná gańđ aseá i
 
 Aga dun aff, to ní software aŧí aeb as xanánus.
 
-Ná minnatvár maron ki dáná itlá e [[Special:Listwiki_users/sysop|amaldár]] as e kes, o URL e nişán kes.',
+Ná minnatvár maron ki dáná itlá e [[Special:ListUsers/sysop|amaldár]] as e kes, o URL e nişán kes.',
 'missingarticle-rev' => '(radbadal droşum#: $1)',
 'viewsource' => 'Bumpad e ur',
 
@@ -194,9 +194,9 @@ Ná minnatvár maron ki dáná itlá e [[Special:Listwiki_users/sysop|amaldár]]
 'remembermypassword' => 'Dá darí ŧí kaná pinváxubí e ust á ates (ziát án ziát $1 {{PLURAL:$1|de|de}} akin)',
 'login' => 'Drustírástí',
 'nav-login-createaccount' => 'Drustírástí / pinváxubí',
-'wiki_userlogin' => 'Drustírástí / pinváxubí',
+'userlogin' => 'Drustírástí / pinváxubí',
 'logout' => 'Bidar mar',
-'wiki_userlogout' => 'Bidar mar',
+'userlogout' => 'Bidar mar',
 'nologinlink' => 'Púskun pinváxubí kar',
 'mailmypassword' => 'Púskuná kilítlaoz e girok ŧapál aŧ mon et',
 'loginlanguagelabel' => 'Bolí: $1',
@@ -331,7 +331,7 @@ Ná radbadal ák deskáne atíko matano.",
 
 'grouppage-sysop' => '{{ns:project}}:Amaldár ák',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Kárband hakk hisáb',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -388,7 +388,7 @@ Ná radbadal ák deskáne atíko matano.",
 'filehist-datetime' => 'De/Vaxt',
 'filehist-thumb' => 'Cunikfoŧú',
 'filehist-thumbtext' => '$1 íá badal droşum kin cunikfoŧú',
-'filehist-wiki_user' => 'Kárband',
+'filehist-user' => 'Kárband',
 'filehist-dimensions' => 'Bálád',
 'filehist-comment' => 'Darşánxiál',
 'imagelinks' => 'Fáil ná gańđ ák',
@@ -434,14 +434,14 @@ Ná radbadal ák deskáne atíko matano.",
 # Special:LinkSearch
 'linksearch' => 'Darí gańđ',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Kárband joŕ kanning ná hisáb',
+# Special:Log/newusers
+'newuserlogpage' => 'Kárband joŕ kanning ná hisáb',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(básk átá ridoband)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Dá kárband e girokŧapál as mon et',
+# E-mail user
+'emailuser' => 'Dá kárband e girokŧapál as mon et',
 
 # Watchlist
 'watchlist' => 'Kaná xiálí rid',
@@ -506,7 +506,7 @@ Zút áteaŧ mesing átá lekav kin $2 e ur.',
 'sp-contributions-blocklog' => 'rok aná hisáb',
 'sp-contributions-talk' => 'ítgap',
 'sp-contributions-search' => 'Baŕáhí kin paŧŧopol',
-'sp-contributions-wiki_username' => 'IP pajjár yá kárband pin:',
+'sp-contributions-username' => 'IP pajjár yá kárband pin:',
 'sp-contributions-submit' => 'Paŧŧopol',
 
 # What links here
@@ -558,7 +558,7 @@ Pen pin as gicen kar.',
 'thumbnail-more' => 'Bhallun kar',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Ná kárbandí panna',
+'tooltip-pt-userpage' => 'Ná kárbandí panna',
 'tooltip-pt-mytalk' => 'Ná ítgap panna',
 'tooltip-pt-preferences' => 'Ná gicenk',
 'tooltip-pt-watchlist' => 'Amo panna ģátá rid aráfteŧí radbadal ná xiálí us',
@@ -592,13 +592,13 @@ Dáná bumpad e unning kesa',
 'tooltip-feed-rss' => 'Dá panna kin RSS serí',
 'tooltip-feed-atom' => 'Dá panna kin Atom serí',
 'tooltip-t-contributions' => 'Dá kárband ná baŕáhí tá rid e ur',
-'tooltip-t-emailwiki_user' => 'Dá kárband e girokŧapál as mon et',
+'tooltip-t-emailuser' => 'Dá kárband e girokŧapál as mon et',
 'tooltip-t-upload' => 'Fáil laggif',
 'tooltip-t-specialpages' => 'Ģuŧŧ xás á panna ģátá ridband',
 'tooltip-t-print' => 'Dá panna ná chapáí droşum',
 'tooltip-t-permalink' => 'Panna ná dá badaldroşum ná pakká gańđ',
 'tooltip-ca-nstab-main' => 'Niviştánk ná panna e ur',
-'tooltip-ca-nstab-wiki_user' => 'Kárband ná panna e ur',
+'tooltip-ca-nstab-user' => 'Kárband ná panna e ur',
 'tooltip-ca-nstab-special' => 'Dá xáso panna as e. Ní dáŧí radbadal kanning kappesa.',
 'tooltip-ca-nstab-project' => 'Bunkárem ná panna e ur',
 'tooltip-ca-nstab-image' => 'Fáil ná panna e ur',

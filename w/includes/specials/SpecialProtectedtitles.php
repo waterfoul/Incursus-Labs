@@ -92,12 +92,12 @@ class SpecialProtectedtitles extends SpecialPage {
 		$lang = $this->getLanguage();
 		$expiry = strlen( $row->pt_expiry ) ? $lang->formatExpiry( $row->pt_expiry, TS_MW ) : $infinity;
 		if( $expiry != $infinity ) {
-			$wiki_user = $this->getwiki_user();
+			$user = $this->getUser();
 			$description_items[] = $this->msg(
 				'protect-expiring-local',
-				$lang->wiki_userTimeAndDate( $expiry, $wiki_user ),
-				$lang->wiki_userDate( $expiry, $wiki_user ),
-				$lang->wiki_userTime( $expiry, $wiki_user )
+				$lang->userTimeAndDate( $expiry, $user ),
+				$lang->userDate( $expiry, $user ),
+				$lang->userTime( $expiry, $user )
 			)->escaped();
 		}
 

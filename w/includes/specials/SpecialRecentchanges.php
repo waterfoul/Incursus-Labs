@@ -42,15 +42,15 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 	public function getDefaultOptions() {
 		$opts = new FormOptions();
 
-		$opts->add( 'days',  (int)$this->getwiki_user()->getOption( 'rcdays' ) );
-		$opts->add( 'limit', (int)$this->getwiki_user()->getOption( 'rclimit' ) );
+		$opts->add( 'days',  (int)$this->getUser()->getOption( 'rcdays' ) );
+		$opts->add( 'limit', (int)$this->getUser()->getOption( 'rclimit' ) );
 		$opts->add( 'from', '' );
 
-		$opts->add( 'hideminor',     $this->getwiki_user()->getBoolOption( 'hideminor' ) );
+		$opts->add( 'hideminor',     $this->getUser()->getBoolOption( 'hideminor' ) );
 		$opts->add( 'hidebots',      true  );
 		$opts->add( 'hideanons',     false );
 		$opts->add( 'hideliu',       false );
-		$opts->add( 'hidepatrolled', $this->getwiki_user()->getBoolOption( 'hidepatrolled' ) );
+		$opts->add( 'hidepatrolled', $this->getUser()->getBoolOption( 'hidepatrolled' ) );
 		$opts->add( 'hidemyself',    false );
 
 		$opts->add( 'namespace', '', FormOptions::INTNULL );
@@ -64,7 +64,7 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 	}
 
 	/**
-	 * Create a FormOptions object with options as specified by the wiki_user
+	 * Create a FormOptions object with options as specified by the user
 	 *
 	 * @param $parameters array
 	 *
@@ -166,8 +166,8 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 		if( !$feedFormat ) {
 			$batch = new LinkBatch;
 			foreach( $rows as $row ) {
-				$batch->add( NS_USER, $row->rc_wiki_user_text );
-				$batch->add( NS_USER_TALK, $row->rc_wiki_user_text );
+				$batch->add( NS_USER, $row->rc_user_text );
+				$batch->add( NS_USER_TALK, $row->rc_user_text );
 				$batch->add( $row->rc_namespace, $row->rc_title );
 			}
 			$batch->execute();
@@ -258,9 +258,9 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 	 * @return String or false
 	 */
 	public function checkLastModified( $feedFormat ) {
-		r = wfGetDB( DB_SLAVE );
-		$lastmod = r->selectField( 'recentchanges', 'MAX(rc_timestamp)', false, __METHOD__ );
-		if( $feedFormat || !$this->getwiki_user()->useRCPatrol() ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$lastmod = $dbr->selectField( 'recentchanges', 'MAX(rc_timestamp)', false, __METHOD__ );
+		if( $feedFormat || !$this->getUser()->useRCPatrol() ) {
 			if( $lastmod && $this->getOutput()->checkLastModified( $lastmod ) ) {
 				# Client cache fresh and headers sent, nothing more to do.
 				return false;
@@ -276,14 +276,14 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 	 * @return array
 	 */
 	public function buildMainQueryConds( FormOptions $opts ) {
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$conds = array();
 
-		# It makes no sense to hide both anons and logged-in wiki_users
+		# It makes no sense to hide both anons and logged-in users
 		# Where this occurs, force anons to be shown
 		$forcebot = false;
 		if( $opts['hideanons'] && $opts['hideliu'] ){
-			# Check if the wiki_user wants to show bots only
+			# Check if the user wants to show bots only
 			if( $opts['hidebots'] ){
 				$opts['hideanons'] = false;
 			} else {
@@ -295,20 +295,20 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 		// Calculate cutoff
 		$cutoff_unixtime = time() - ( $opts['days'] * 86400 );
 		$cutoff_unixtime = $cutoff_unixtime - ($cutoff_unixtime % 86400);
-		$cutoff = r->timestamp( $cutoff_unixtime );
+		$cutoff = $dbr->timestamp( $cutoff_unixtime );
 
 		$fromValid = preg_match('/^[0-9]{14}$/', $opts['from']);
 		if( $fromValid && $opts['from'] > wfTimestamp(TS_MW,$cutoff) ) {
-			$cutoff = r->timestamp($opts['from']);
+			$cutoff = $dbr->timestamp($opts['from']);
 		} else {
 			$opts->reset( 'from' );
 		}
 
-		$conds[] = 'rc_timestamp >= ' . r->addQuotes( $cutoff );
+		$conds[] = 'rc_timestamp >= ' . $dbr->addQuotes( $cutoff );
 
-		$hidePatrol = $this->getwiki_user()->useRCPatrol() && $opts['hidepatrolled'];
-		$hideLoggedInwiki_users = $opts['hideliu'] && !$forcebot;
-		$hideAnonymouswiki_users = $opts['hideanons'] && !$forcebot;
+		$hidePatrol = $this->getUser()->useRCPatrol() && $opts['hidepatrolled'];
+		$hideLoggedInUsers = $opts['hideliu'] && !$forcebot;
+		$hideAnonymousUsers = $opts['hideanons'] && !$forcebot;
 
 		if( $opts['hideminor'] ) {
 			$conds['rc_minor'] = 0;
@@ -322,24 +322,24 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 		if( $forcebot ) {
 			$conds['rc_bot'] = 1;
 		}
-		if( $hideLoggedInwiki_users ) {
-			$conds[] = 'rc_wiki_user = 0';
+		if( $hideLoggedInUsers ) {
+			$conds[] = 'rc_user = 0';
 		}
-		if( $hideAnonymouswiki_users ) {
-			$conds[] = 'rc_wiki_user != 0';
+		if( $hideAnonymousUsers ) {
+			$conds[] = 'rc_user != 0';
 		}
 
 		if( $opts['hidemyself'] ) {
-			if( $this->getwiki_user()->getId() ) {
-				$conds[] = 'rc_wiki_user != ' . r->addQuotes( $this->getwiki_user()->getId() );
+			if( $this->getUser()->getId() ) {
+				$conds[] = 'rc_user != ' . $dbr->addQuotes( $this->getUser()->getId() );
 			} else {
-				$conds[] = 'rc_wiki_user_text != ' . r->addQuotes( $this->getwiki_user()->getName() );
+				$conds[] = 'rc_user_text != ' . $dbr->addQuotes( $this->getUser()->getName() );
 			}
 		}
 
 		# Namespace filtering
 		if( $opts['namespace'] !== '' ) {
-			$selectedNS = r->addQuotes( $opts['namespace'] );
+			$selectedNS = $dbr->addQuotes( $opts['namespace'] );
 			$operator = $opts['invert'] ? '!='  : '=';
 			$boolean  = $opts['invert'] ? 'AND' : 'OR';
 
@@ -348,7 +348,7 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 				$condition = "rc_namespace $operator $selectedNS";
 			} else {
 				# Also add the associated namespace
-				$associatedNS = r->addQuotes(
+				$associatedNS = $dbr->addQuotes(
 					MWNamespace::getAssociated( $opts['namespace'] )
 				);
 				$condition = "(rc_namespace $operator $selectedNS "
@@ -375,23 +375,23 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 			'USE INDEX' => array( 'recentchanges' => 'rc_timestamp' )
 		);
 
-		$uid = $this->getwiki_user()->getId();
-		r = wfGetDB( DB_SLAVE );
+		$uid = $this->getUser()->getId();
+		$dbr = wfGetDB( DB_SLAVE );
 		$limit = $opts['limit'];
 		$namespace = $opts['namespace'];
 		$invert = $opts['invert'];
 		$associated = $opts['associated'];
 
-		$fields = array( r->tableName( 'recentchanges' ) . '.*' ); // all rc columns
-		// JOIN on watchlist for wiki_users
+		$fields = array( $dbr->tableName( 'recentchanges' ) . '.*' ); // all rc columns
+		// JOIN on watchlist for users
 		if ( $uid ) {
 			$tables[] = 'watchlist';
-			$fields[] = 'wl_wiki_user';
+			$fields[] = 'wl_user';
 			$fields[] = 'wl_notificationtimestamp';
 			$join_conds['watchlist'] = array('LEFT JOIN',
-				"wl_wiki_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace");
+				"wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace");
 		}
-		if ( $this->getwiki_user()->isAllowed( 'rollback' ) ) {
+		if ( $this->getUser()->isAllowed( 'rollback' ) ) {
 			$tables[] = 'page';
 			$fields[] = 'page_latest';
 			$join_conds['page'] = array('LEFT JOIN', 'rc_cur_id=page_id');
@@ -420,16 +420,16 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 		if( $namespace === ''
 			|| ( $invert || $associated )
 			|| $opts['tagfilter'] != ''
-			|| !r->unionSupportsOrderAndLimit() )
+			|| !$dbr->unionSupportsOrderAndLimit() )
 		{
-			$res = r->select( $tables, $fields, $conds, __METHOD__,
+			$res = $dbr->select( $tables, $fields, $conds, __METHOD__,
 				array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => $limit ) +
 				$query_options,
 				$join_conds );
 		// We have a new_namespace_time index! UNION over new=(0,1) and sort result set!
 		} else {
 			// New pages
-			$sqlNew = r->selectSQLText(
+			$sqlNew = $dbr->selectSQLText(
 				$tables,
 				$fields,
 				array( 'rc_new' => 1 ) + $conds,
@@ -442,7 +442,7 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 				$join_conds
 			);
 			// Old pages
-			$sqlOld = r->selectSQLText(
+			$sqlOld = $dbr->selectSQLText(
 				$tables,
 				$fields,
 				array( 'rc_new' => 0 ) + $conds,
@@ -455,10 +455,10 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 				$join_conds
 			);
 			# Join the two fast queries, and sort the result set
-			$sql = r->unionQueries( array( $sqlNew, $sqlOld ), false ) .
+			$sql = $dbr->unionQueries( array( $sqlNew, $sqlOld ), false ) .
 				' ORDER BY rc_timestamp DESC';
-			$sql = r->limitResult( $sql, $limit, false );
-			$res = r->query( $sql, __METHOD__ );
+			$sql = $dbr->limitResult( $sql, $limit, false );
+			$res = $dbr->query( $sql, __METHOD__ );
 		}
 
 		return $res;
@@ -471,7 +471,7 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 	 * @param $opts FormOptions
 	 */
 	public function webOutput( $rows, $opts ) {
-		global $wgRCShowWatchingwiki_users, $wgShowUpdatedMarker, $wgAllowCategorizedRecentChanges;
+		global $wgRCShowWatchingUsers, $wgShowUpdatedMarker, $wgAllowCategorizedRecentChanges;
 
 		$limit = $opts['limit'];
 
@@ -487,10 +487,10 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 			$this->filterByCategories( $rows, $opts );
 		}
 
-		$showWatcherCount = $wgRCShowWatchingwiki_users && $this->getwiki_user()->getOption( 'shownumberswatching' );
+		$showWatcherCount = $wgRCShowWatchingUsers && $this->getUser()->getOption( 'shownumberswatching' );
 		$watcherCache = array();
 
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$counter = 1;
 		$list = ChangesList::newFromContext( $this->getContext() );
@@ -499,7 +499,7 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 		foreach( $rows as $obj ) {
 			// <IntraACL>
 			$rc = RecentChange::newFromRow( $obj );
-			if ( !$rc->getTitle()->wiki_userCanReadEx() ) {
+			if ( !$rc->getTitle()->userCanReadEx() ) {
 				continue;
 			}
 			// </IntraACL>
@@ -513,12 +513,12 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 			} else {
 				$rc->notificationtimestamp = false; // Default
 			}
-			# Check the number of wiki_users watching the page
-			$rc->numberofWatchingwiki_users = 0; // Default
+			# Check the number of users watching the page
+			$rc->numberofWatchingusers = 0; // Default
 			if( $showWatcherCount && $obj->rc_namespace >= 0 ) {
 				if( !isset( $watcherCache[$obj->rc_namespace][$obj->rc_title] ) ) {
 					$watcherCache[$obj->rc_namespace][$obj->rc_title] =
-						r->selectField(
+						$dbr->selectField(
 							'watchlist',
 							'COUNT(*)',
 							array(
@@ -528,9 +528,9 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 							__METHOD__ . '-watchers'
 						);
 				}
-				$rc->numberofWatchingwiki_users = $watcherCache[$obj->rc_namespace][$obj->rc_title];
+				$rc->numberofWatchingusers = $watcherCache[$obj->rc_namespace][$obj->rc_title];
 			}
-			$s .= $list->recentChangesLine( $rc, !empty( $obj->wl_wiki_user ), $counter );
+			$s .= $list->recentChangesLine( $rc, !empty( $obj->wl_user ), $counter );
 			--$limit;
 		}
 		$s .= $list->endRecentChangesList();
@@ -814,15 +814,15 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 		}
 
 		$lang = $this->getLanguage();
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 		if( $options['from'] ) {
 			$note .= $this->msg( 'rcnotefrom' )->numParams( $options['limit'] )->params(
-				$lang->wiki_userTimeAndDate( $options['from'], $wiki_user ),
-				$lang->wiki_userDate( $options['from'], $wiki_user ),
-				$lang->wiki_userTime( $options['from'], $wiki_user ) )->parse() . '<br />';
+				$lang->userTimeAndDate( $options['from'], $user ),
+				$lang->userDate( $options['from'], $user ),
+				$lang->userTime( $options['from'], $user ) )->parse() . '<br />';
 		}
 
-		# Sort data for display and make sure it's unique after we've added wiki_user data.
+		# Sort data for display and make sure it's unique after we've added user data.
 		$wgRCLinkLimits[] = $options['limit'];
 		$wgRCLinkDays[] = $options['days'];
 		sort( $wgRCLinkLimits );
@@ -859,7 +859,7 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 			$filters[$key] = $params['msg'];
 		}
 		// Disable some if needed
-		if ( !$wiki_user->useRCPatrol() ) {
+		if ( !$user->useRCPatrol() ) {
 			unset( $filters['hidepatrolled'] );
 		}
 
@@ -872,7 +872,7 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 
 		// show from this onward link
 		$timestamp = wfTimestampNow();
-		$now = $lang->wiki_userTimeAndDate( $timestamp, $wiki_user );
+		$now = $lang->userTimeAndDate( $timestamp, $user );
 		$tl = $this->makeOptionsLink(
 			$now, array( 'from' => $timestamp ), $nondefaults
 		);

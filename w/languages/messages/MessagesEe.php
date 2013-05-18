@@ -12,7 +12,7 @@
  */
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-hideminor' => 'Ɣla tɔtrɔ suewo le tɔtrɔ yeyeawo me',
 'tog-watchcreations' => 'Tsɔ axa siwo gɔme medze la kpe ɖe axa siwo ŋu nyeƒe ŋku le la ŋu',
 'tog-watchdefault' => 'Tsɔ axa siwo ŋu metrɔ asi le la kpe ɖe axa siwo ŋu nyeƒe ŋku le la ŋu',
@@ -136,7 +136,7 @@ $messages = array(
 'jumptonavigation' => 'kuɖɔɖoɖo',
 'jumptosearch' => 'dii',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} ŋutinya',
 'aboutpage' => 'Project:Ŋutinya',
 'copyright' => 'Nusiwo le afii le $1 mɔɖeɖea te.',
@@ -173,7 +173,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Axa',
-'nstab-wiki_user' => 'Ezãla axa',
+'nstab-user' => 'Ezãla axa',
 'nstab-special' => 'Axa tɔxe',
 'nstab-image' => 'Agbalẽ',
 'nstab-mediawiki' => 'Du',
@@ -190,9 +190,9 @@ $messages = array(
 'remembermypassword' => 'Ɖo ŋku nyeƒe dzesi ŋkɔ dzi le mɔ sia dzi (vaseɖe {{PLURAL:$1|ŋkeke|ŋkeke}} $1 megbe)',
 'login' => 'Ge ɖe eme',
 'nav-login-createaccount' => 'Geɖe me / Ŋlɔ ŋkɔ',
-'wiki_userlogin' => 'Ge ɖe eme / ŋlɔ ŋkɔ daɖi',
+'userlogin' => 'Ge ɖe eme / ŋlɔ ŋkɔ daɖi',
 'logout' => 'Do le eme',
-'wiki_userlogout' => 'Do le eme',
+'userlogout' => 'Do le eme',
 'nologin' => "Wòmeŋlɔ ŋkɔ oa? '''$1'''.",
 'nologinlink' => 'Ŋlɔ ŋkɔ daɖi',
 'createaccount' => 'Ŋlɔ ŋkɔ daɖi',
@@ -200,7 +200,7 @@ $messages = array(
 'gotaccountlink' => 'Ge ɖe eme',
 'loginsuccesstitle' => 'Wò ge ɖe eme azɔ̃.',
 'loginsuccess' => "'''Wò le {{SITENAME}} me fifia abe \"\$1\" ene.'''",
-'nowiki_userspecified' => 'Elebe na ŋlɔ ŋkɔ si wò zãna',
+'nouserspecified' => 'Elebe na ŋlɔ ŋkɔ si wò zãna',
 'acct_creation_throttle_hit' => "Wiki sia zãla aɖe tso wò ''IP address'' ŋlɔ {{PLURAL:$1|1 ŋkɔ|$1 ŋkɔwo}} le ŋkeke si vayi me xoxo. Mɔɖeɖe le na ŋkɔ  ɖeka ko ŋɔŋlɔ le ŋkeke ɖeka me.<br />
 Le esiata la, ''IP address'' sia zãlawo mekpɔ mɔ aŋlɔ ŋkɔ bubuwo fifia o.",
 'loginlanguagelabel' => 'Gbe: $1',
@@ -345,7 +345,7 @@ Zã [[Special:Search|nuwo didi le wiki sia dzi]] kpɔ na axa yeyeawo.',
 'filehist-help' => 'Tia ŋkeke/gaƒoƒo ɖeka ne wòadi be yea kpɔ axa sia ƒe tata le ɣemaɣi',
 'filehist-deleteone' => 'tutui',
 'filehist-datetime' => 'Ŋkeke/Gaƒoƒo',
-'filehist-wiki_user' => 'Ezãla',
+'filehist-user' => 'Ezãla',
 'linkstoimage' => 'Axa {{PLURAL:$1|sia|$1 siawo}} ku ɖe agbalẽ sia ŋu.',
 'sharedupload' => "Agbalɛ̃ sia tso $1 eye dɔ (''alo project'') bubuawo woateŋu azãe fãa.",
 
@@ -373,8 +373,8 @@ Zã [[Special:Search|nuwo didi le wiki sia dzi]] kpɔ na axa yeyeawo.',
 'shortpages' => 'Axa kpuiwo',
 'longpages' => 'Axa didiwo',
 'protectedpages' => 'Axawo siwo ŋu wole dzɔdzɔm',
-'listwiki_users' => 'Ezãlawo ƒe xexlẽme',
-'wiki_usercreated' => 'Wodze egɔme le ŋkeke $1 dzi le gaƒoƒo $2 me.',
+'listusers' => 'Ezãlawo ƒe xexlẽme',
+'usercreated' => 'Wodze egɔme le ŋkeke $1 dzi le gaƒoƒo $2 me.',
 'newpages' => 'Axa yeyewo',
 'ancientpages' => 'Axawo si wo do xoxo wu',
 'move' => 'Ɖɔli eƒe nɔƒe',
@@ -388,7 +388,7 @@ Zã [[Special:Search|nuwo didi le wiki sia dzi]] kpɔ na axa yeyeawo.',
 'booksources-go' => 'Yi',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Ezãla:',
+'specialloguserlabel' => 'Ezãla:',
 'speciallogtitlelabel' => 'Ta nya:',
 
 # Special:AllPages
@@ -406,8 +406,8 @@ Zã [[Special:Search|nuwo didi le wiki sia dzi]] kpɔ na axa yeyeawo.',
 # Special:LinkSearch
 'linksearch-ok' => 'Dii',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Ŋkɔŋlɔla yeyewo ƒe xexlẽme',
+# Special:Log/newusers
+'newuserlogpage' => 'Ŋkɔŋlɔla yeyewo ƒe xexlẽme',
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'Hame',

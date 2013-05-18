@@ -31,15 +31,15 @@ class UploadFromChunks extends UploadFromFile {
 	protected $mOffset, $mChunkIndex, $mFileKey, $mVirtualTempPath;
 
 	/**
-	 * Setup local pointers to stash, repo and wiki_user ( similar to UploadFromStash )
+	 * Setup local pointers to stash, repo and user ( similar to UploadFromStash )
 	 *
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $stash UploadStash
 	 * @param $repo FileRepo
 	 */
-	public function __construct( $wiki_user = false, $stash = false, $repo = false ) {
-		// wiki_user object. sometimes this won't exist, as when running from cron.
-		$this->wiki_user = $wiki_user;
+	public function __construct( $user = false, $stash = false, $repo = false ) {
+		// user object. sometimes this won't exist, as when running from cron.
+		$this->user = $user;
 
 		if( $repo ) {
 			$this->repo = $repo;
@@ -50,12 +50,12 @@ class UploadFromChunks extends UploadFromFile {
 		if( $stash ) {
 			$this->stash = $stash;
 		} else {
-			if( $wiki_user ) {
-				wfDebug( __METHOD__ . " creating new UploadFromChunks instance for " . $wiki_user->getId() . "\n" );
+			if( $user ) {
+				wfDebug( __METHOD__ . " creating new UploadFromChunks instance for " . $user->getId() . "\n" );
 			} else {
-				wfDebug( __METHOD__ . " creating new UploadFromChunks instance with no wiki_user\n" );
+				wfDebug( __METHOD__ . " creating new UploadFromChunks instance with no user\n" );
 			}
-			$this->stash = new UploadStash( $this->repo, $this->wiki_user );
+			$this->stash = new UploadStash( $this->repo, $this->user );
 		}
 
 		return true;
@@ -140,11 +140,11 @@ class UploadFromChunks extends UploadFromFile {
 	 * @param $comment string
 	 * @param $pageText string
 	 * @param $watch bool
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @return Status
 	 */
-	public function performUpload( $comment, $pageText, $watch, $wiki_user ) {
-		$rv = parent::performUpload( $comment, $pageText, $watch, $wiki_user );
+	public function performUpload( $comment, $pageText, $watch, $user ) {
+		$rv = parent::performUpload( $comment, $pageText, $watch, $user );
 		return $rv;
 	}
 
@@ -202,8 +202,8 @@ class UploadFromChunks extends UploadFromFile {
 		wfDebug( __METHOD__ . " update chunk status for {$this->mFileKey} offset:" .
 					$this->getOffset() . ' inx:' . $this->getChunkIndex() . "\n" );
 
-		w = $this->repo->getMasterDb();
-		w->update(
+		$dbw = $this->repo->getMasterDb();
+		$dbw->update(
 			'uploadstash',
 			array(
 				'us_status' => 'chunks',
@@ -221,8 +221,8 @@ class UploadFromChunks extends UploadFromFile {
 	private function getChunkStatus(){
 		// get Master db to avoid race conditions.
 		// Otherwise, if chunk upload time < replag there will be spurious errors
-		w = $this->repo->getMasterDb();
-		$row = w->selectRow(
+		$dbw = $this->repo->getMasterDb();
+		$row = $dbw->selectRow(
 			'uploadstash',
 			array(
 				'us_chunk_inx',

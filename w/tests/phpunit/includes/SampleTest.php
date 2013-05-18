@@ -46,7 +46,7 @@ class TestSample extends MediaWikiLangTestCase {
 			array( 'Text', NS_MEDIA, 'Media:Text' ),
 			array( 'Text', null, 'Text' ),
 			array( 'text', null, 'Text' ),
-			array( 'Text', NS_USER, 'wiki_user:Text' ),
+			array( 'Text', NS_USER, 'User:Text' ),
 			array( 'Photo.jpg', NS_FILE, 'File:Photo.jpg' )
 		);
 	}

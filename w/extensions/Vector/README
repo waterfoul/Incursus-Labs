@@ -8,10 +8,10 @@ require_once( "$IP/extensions/Vector/Vector.php" );
 
 # Before configuring this extension, see Vector.php and become familiar with the initial state and structure of the
 # $wgVectorFeatures configuration variable. Essentially it's an array of arrays, keyed by feature name, each containing
-# global and wiki_user keys with boolean values. "global" indicates that it should be turned on for everyone always, while
-# wiki_user indicates that wiki_users should be allowed to turn it on or off in their wiki_user preferences.
+# global and user keys with boolean values. "global" indicates that it should be turned on for everyone always, while
+# user indicates that users should be allowed to turn it on or off in their user preferences.
 
-# To enable a preference by default but still allow wiki_users to disable it in preferences, use something like...
+# To enable a preference by default but still allow users to disable it in preferences, use something like...
 
-$wgDefaultwiki_userOptions['vector-collapsiblenav'] = 1;
+$wgDefaultUserOptions['vector-collapsiblenav'] = 1;
 

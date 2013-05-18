@@ -1,5 +1,5 @@
 /**
- * This plugin provides a way to build a wiki-text editing wiki_user interface around a textarea.
+ * This plugin provides a way to build a wiki-text editing user interface around a textarea.
  *
  * @example To intialize without any modules:
  *     $( 'div#edittoolbar' ).wikiEditor();
@@ -162,11 +162,11 @@ $.wikiEditor = {
 	 * with a default.
 	 *
 	 * @param object Object to extract property from
-	 * @param lang Language code, defaults to wgwiki_userLanguage
+	 * @param lang Language code, defaults to wgUserLanguage
 	 */
 	autoLang: function ( object, lang ) {
 		var defaultKey = $( 'body' ).hasClass( 'rtl' ) ? 'default-rtl' : 'default';
-		return object[lang || mw.config.get( 'wgwiki_userLanguage' )] || object[defaultKey] || object['default'] || object;
+		return object[lang || mw.config.get( 'wgUserLanguage' )] || object[defaultKey] || object['default'] || object;
 	},
 
 	/**
@@ -175,7 +175,7 @@ $.wikiEditor = {
 	 *
 	 * @param icon Icon object from e.g. toolbar config
 	 * @param path Default icon path, defaults to $.wikiEditor.imgPath
-	 * @param lang Language code, defaults to wgwiki_userLanguage
+	 * @param lang Language code, defaults to wgUserLanguage
 	 */
 	autoIcon: function ( icon, path, lang ) {
 		var src = $.wikiEditor.autoLang( icon, lang );
@@ -193,10 +193,10 @@ $.wikiEditor = {
 	 * @param icon Icon object, see autoIcon()
 	 * @param offset Offset object
 	 * @param path Icon path, see autoIcon()
-	 * @param lang Language code, defaults to wgwiki_userLanguage
+	 * @param lang Language code, defaults to wgUserLanguage
 	 */
 	autoIconOrOffset: function ( icon, offset, path, lang ) {
-		lang = lang || mw.config.get( 'wgwiki_userLanguage' );
+		lang = lang || mw.config.get( 'wgUserLanguage' );
 		if ( typeof offset == 'object' && lang in offset ) {
 			return offset[lang];
 		} else if ( typeof icon == 'object' && lang in icon ) {

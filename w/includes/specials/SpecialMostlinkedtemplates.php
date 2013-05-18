@@ -75,10 +75,10 @@ class MostlinkedTemplatesPage extends QueryPage {
 	/**
 	 * Pre-cache page existence to speed up link generation
 	 *
-	 * @param  DatabaseBase connection
+	 * @param $db DatabaseBase connection
 	 * @param $res ResultWrapper
 	 */
-	public function preprocessResults( , $res ) {
+	public function preprocessResults( $db, $res ) {
 		if ( !$res->numRows() ) {
 			return;
 		}

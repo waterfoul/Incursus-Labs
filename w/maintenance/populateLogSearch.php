@@ -48,17 +48,17 @@ class PopulateLogSearch extends LoggedUpdateMaintenance {
 	}
 
 	protected function doDBUpdates() {
-		 = $this->getDB( DB_MASTER );
-		if ( !->tableExists( 'log_search' ) ) {
+		$db = $this->getDB( DB_MASTER );
+		if ( !$db->tableExists( 'log_search' ) ) {
 			$this->error( "log_search does not exist" );
 			return false;
 		}
-		$start = ->selectField( 'logging', 'MIN(log_id)', false, __FUNCTION__ );
+		$start = $db->selectField( 'logging', 'MIN(log_id)', false, __FUNCTION__ );
 		if ( !$start ) {
 			$this->output( "Nothing to do.\n" );
 			return true;
 		}
-		$end = ->selectField( 'logging', 'MAX(log_id)', false, __FUNCTION__ );
+		$end = $db->selectField( 'logging', 'MAX(log_id)', false, __FUNCTION__ );
 
 		# Do remaining chunk
 		$end += $this->mBatchSize - 1;
@@ -69,7 +69,7 @@ class PopulateLogSearch extends LoggedUpdateMaintenance {
 		while ( $blockEnd <= $end ) {
 			$this->output( "...doing log_id from $blockStart to $blockEnd\n" );
 			$cond = "log_id BETWEEN $blockStart AND $blockEnd";
-			$res = ->select( 'logging', '*', $cond, __FUNCTION__ );
+			$res = $db->select( 'logging', '*', $cond, __FUNCTION__ );
 			foreach ( $res as $row ) {
 				// RevisionDelete logs - revisions
 				if ( LogEventsList::typeAction( $row, $delTypes, 'revision' ) ) {
@@ -86,7 +86,7 @@ class PopulateLogSearch extends LoggedUpdateMaintenance {
 							continue; // skip this row
 						} else {
 							// Clean up the row...
-							->update( 'logging',
+							$db->update( 'logging',
 								array( 'log_params' => implode( ',', $params ) ),
 								array( 'log_id' => $row->log_id ) );
 						}
@@ -100,23 +100,23 @@ class PopulateLogSearch extends LoggedUpdateMaintenance {
 					if ( !isset( self::$tableMap[$prefix] ) )
 						continue; // bad row?
 					$table = self::$tableMap[$prefix];
-					$wiki_userField = $prefix . '_wiki_user';
-					$wiki_userTextField = $prefix . '_wiki_user_text';
+					$userField = $prefix . '_user';
+					$userTextField = $prefix . '_user_text';
 					// Add item author relations...
-					$wiki_userIds = $wiki_userIPs = array();
-					$sres = ->select( $table,
-						array( $wiki_userField, $wiki_userTextField ),
+					$userIds = $userIPs = array();
+					$sres = $db->select( $table,
+						array( $userField, $userTextField ),
 						array( $field => $items )
 					);
 					foreach ( $sres as $srow ) {
-						if ( $srow->$wiki_userField > 0 )
-							$wiki_userIds[] = intval( $srow->$wiki_userField );
-						elseif ( $srow->$wiki_userTextField != '' )
-							$wiki_userIPs[] = $srow->$wiki_userTextField;
+						if ( $srow->$userField > 0 )
+							$userIds[] = intval( $srow->$userField );
+						elseif ( $srow->$userTextField != '' )
+							$userIPs[] = $srow->$userTextField;
 					}
 					// Add item author relations...
-					$log->addRelations( 'target_author_id', $wiki_userIds, $row->log_id );
-					$log->addRelations( 'target_author_ip', $wiki_userIPs, $row->log_id );
+					$log->addRelations( 'target_author_id', $userIds, $row->log_id );
+					$log->addRelations( 'target_author_ip', $userIPs, $row->log_id );
 				// RevisionDelete logs - log events
 				} elseif ( LogEventsList::typeAction( $row, $delTypes, 'event' ) ) {
 					$params = LogPage::extractParams( $row->log_params );
@@ -127,19 +127,19 @@ class PopulateLogSearch extends LoggedUpdateMaintenance {
 					// Add item relations...
 					$log->addRelations( 'log_id', $items, $row->log_id );
 					// Add item author relations...
-					$wiki_userIds = $wiki_userIPs = array();
-					$sres = ->select( 'logging',
-						array( 'log_wiki_user', 'log_wiki_user_text' ),
+					$userIds = $userIPs = array();
+					$sres = $db->select( 'logging',
+						array( 'log_user', 'log_user_text' ),
 						array( 'log_id' => $items )
 					);
 					foreach ( $sres as $srow ) {
-						if ( $srow->log_wiki_user > 0 )
-							$wiki_userIds[] = intval( $srow->log_wiki_user );
-						elseif ( IP::isIPAddress( $srow->log_wiki_user_text ) )
-							$wiki_userIPs[] = $srow->log_wiki_user_text;
+						if ( $srow->log_user > 0 )
+							$userIds[] = intval( $srow->log_user );
+						elseif ( IP::isIPAddress( $srow->log_user_text ) )
+							$userIPs[] = $srow->log_user_text;
 					}
-					$log->addRelations( 'target_author_id', $wiki_userIds, $row->log_id );
-					$log->addRelations( 'target_author_ip', $wiki_userIPs, $row->log_id );
+					$log->addRelations( 'target_author_id', $userIds, $row->log_id );
+					$log->addRelations( 'target_author_ip', $userIPs, $row->log_id );
 				}
 			}
 			$blockStart += $this->mBatchSize;

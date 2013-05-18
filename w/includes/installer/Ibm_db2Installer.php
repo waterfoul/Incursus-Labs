@@ -34,13 +34,13 @@ class Ibm_db2Installer extends DatabaseInstaller {
 		'wgDBserver',
 		'wgDBport',
 		'wgDBname',
-		'wgDBwiki_user',
+		'wgDBuser',
 		'wgDBpassword',
 		'wgDBmwschema',
 	);
 
 	protected $internalDefaults = array(
-		'_Installwiki_user' => 'db2admin'
+		'_InstallUser' => 'db2admin'
 	);
 
 	/**
@@ -72,7 +72,7 @@ class Ibm_db2Installer extends DatabaseInstaller {
 			$this->getTextBox( 'wgDBname', 'config-db-name', array(), $this->parent->getHelpBox( 'config-db-name-help' ) ) .
 			$this->getTextBox( 'wgDBmwschema', 'config-db-schema', array(), $this->parent->getHelpBox( 'config-db-schema-help' ) ) .
 			Html::closeElement( 'fieldset' ) .
-			$this->getInstallwiki_userBox();
+			$this->getInstallUserBox();
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Ibm_db2Installer extends DatabaseInstaller {
 		// Get variables from the request
 		$newValues = $this->setVarsFromRequest(
 			array( 'wgDBserver', 'wgDBport', 'wgDBname',
-				'wgDBmwschema', 'wgDBwiki_user', 'wgDBpassword' ) );
+				'wgDBmwschema', 'wgDBuser', 'wgDBpassword' ) );
 
 		// Validate them
 		$status = Status::newGood();
@@ -105,9 +105,9 @@ class Ibm_db2Installer extends DatabaseInstaller {
 			$status->fatal( 'config-invalid-port', $newValues['wgDBport'] );
 		}
 
-		// Submit wiki_user box
+		// Submit user box
 		if ( $status->isOK() ) {
-			$status->merge( $this->submitInstallwiki_userBox() );
+			$status->merge( $this->submitInstallUserBox() );
 		}
 		if ( !$status->isOK() ) {
 			return $status;
@@ -122,7 +122,7 @@ class Ibm_db2Installer extends DatabaseInstaller {
 			return $status;
 		}
 
-		$this->parent->setVar( 'wgDBwiki_user', $this->getVar( '_Installwiki_user' ) );
+		$this->parent->setVar( 'wgDBuser', $this->getVar( '_InstallUser' ) );
 		$this->parent->setVar( 'wgDBpassword', $this->getVar( '_InstallPassword' ) );
 
 		return $status;
@@ -135,15 +135,15 @@ class Ibm_db2Installer extends DatabaseInstaller {
 	public function openConnection() {
 		$status = Status::newGood();
 		try {
-			 = new DatabaseIbm_db2(
+			$db = new DatabaseIbm_db2(
 				$this->getVar( 'wgDBserver' ),
-				$this->getVar( '_Installwiki_user' ),
+				$this->getVar( '_InstallUser' ),
 				$this->getVar( '_InstallPassword' ),
 				$this->getVar( 'wgDBname' ),
 				0,
 				$this->getVar( 'wgDBmwschema' )
 			);
-			$status->value = ;
+			$status->value = $db;
 		} catch ( DBConnectionError $e ) {
 			$status->fatal( 'config-connection-error', $e->getMessage() );
 		}
@@ -163,14 +163,14 @@ class Ibm_db2Installer extends DatabaseInstaller {
 		 * @var $conn DatabaseBase
 		 */
 		$conn = $status->value;
-		Name = $this->getVar( 'wgDBname' );
-		if( !$conn->selectDB( Name ) ) {
+		$dbName = $this->getVar( 'wgDBname' );
+		if( !$conn->selectDB( $dbName ) ) {
 			$conn->query( "CREATE DATABASE "
-				. $conn->addIdentifierQuotes( Name )
+				. $conn->addIdentifierQuotes( $dbName )
 				. " AUTOMATIC STORAGE YES"
 				. " USING CODESET UTF-8 TERRITORY US COLLATE USING SYSTEM"
 				. " PAGESIZE 32768", __METHOD__ );
-			$conn->selectDB( Name );
+			$conn->selectDB( $dbName );
 		}
 		$this->setupSchemaVars();
 		return $status;
@@ -189,7 +189,7 @@ class Ibm_db2Installer extends DatabaseInstaller {
 		}
 		$this->db->selectDB( $this->getVar( 'wgDBname' ) );
 
-		if( $this->db->tableExists( 'wiki_user' ) ) {
+		if( $this->db->tableExists( 'user' ) ) {
 			$status->warning( 'config-install-tables-exist' );
 			return $status;
 		}

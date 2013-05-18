@@ -39,9 +39,9 @@ class ApiLogin extends ApiBase {
 	/**
 	 * Executes the log-in attempt using the parameters passed. If
 	 * the log-in succeeeds, it attaches a cookie to the session
-	 * and outputs the wiki_user id, wiki_username, and session token. If a
+	 * and outputs the user id, username, and session token. If a
 	 * log-in fails, as the result of a bad password, a nonexistent
-	 * wiki_user, or any other reason, the host is cached with an expiry
+	 * user, or any other reason, the host is cached with an expiry
 	 * and no log-in attempts will be accepted until that expiry
 	 * is reached. The expiry is $this->mLoginThrottle.
 	 */
@@ -71,13 +71,13 @@ class ApiLogin extends ApiBase {
 
 		global $wgCookiePrefix, $wgPasswordAttemptThrottle;
 
-		$authRes = $loginForm->authenticatewiki_userData();
+		$authRes = $loginForm->authenticateUserData();
 		switch ( $authRes ) {
 			case LoginForm::SUCCESS:
-				$wiki_user = $context->getwiki_user();
-				$this->getContext()->setwiki_user( $wiki_user );
-				$wiki_user->setOption( 'rememberpassword', 1 );
-				$wiki_user->setCookies( $this->getRequest() );
+				$user = $context->getUser();
+				$this->getContext()->setUser( $user );
+				$user->setOption( 'rememberpassword', 1 );
+				$user->setCookies( $this->getRequest() );
 
 				ApiQueryInfo::resetTokenCache();
 
@@ -85,12 +85,12 @@ class ApiLogin extends ApiBase {
 				// @todo FIXME: Split back and frontend from this hook.
 				// @todo FIXME: This hook should be placed in the backend
 				$injected_html = '';
-				wfRunHooks( 'wiki_userLoginComplete', array( &$wiki_user, &$injected_html ) );
+				wfRunHooks( 'UserLoginComplete', array( &$user, &$injected_html ) );
 
 				$result['result'] = 'Success';
-				$result['lgwiki_userid'] = intval( $wiki_user->getId() );
-				$result['lgwiki_username'] = $wiki_user->getName();
-				$result['lgtoken'] = $wiki_user->getToken();
+				$result['lguserid'] = intval( $user->getId() );
+				$result['lgusername'] = $user->getName();
+				$result['lgtoken'] = $user->getToken();
 				$result['cookieprefix'] = $wgCookiePrefix;
 				$result['sessionid'] = session_id();
 				break;
@@ -122,7 +122,7 @@ class ApiLogin extends ApiBase {
 				$result['result'] = 'NotExists';
 				break;
 
-			case LoginForm::RESET_PASS: // bug 20223 - Treat a temporary password as wrong. Per Specialwiki_userLogin - "The e-mailed temporary password should not be used for actual logins;"
+			case LoginForm::RESET_PASS: // bug 20223 - Treat a temporary password as wrong. Per SpecialUserLogin - "The e-mailed temporary password should not be used for actual logins;"
 			case LoginForm::WRONG_PASS:
 				$result['result'] = 'WrongPass';
 				break;
@@ -176,7 +176,7 @@ class ApiLogin extends ApiBase {
 
 	public function getParamDescription() {
 		return array(
-			'name' => 'wiki_user Name',
+			'name' => 'User Name',
 			'password' => 'Password',
 			'domain' => 'Domain (optional)',
 			'token' => 'Login token obtained in first request',
@@ -203,11 +203,11 @@ class ApiLogin extends ApiBase {
 						'Aborted'
 					)
 				),
-				'lgwiki_userid' => array(
+				'lguserid' => array(
 					ApiBase::PROP_TYPE => 'integer',
 					ApiBase::PROP_NULLABLE => true
 				),
-				'lgwiki_username' => array(
+				'lgusername' => array(
 					ApiBase::PROP_TYPE => 'string',
 					ApiBase::PROP_NULLABLE => true
 				),
@@ -258,20 +258,20 @@ class ApiLogin extends ApiBase {
 			array( 'code' => 'NeedToken', 'info' => 'You need to resubmit your login with the specified token. See https://bugzilla.wikimedia.org/show_bug.cgi?id=23076' ),
 			array( 'code' => 'WrongToken', 'info' => 'You specified an invalid token' ),
 			array( 'code' => 'NoName', 'info' => 'You didn\'t set the lgname parameter' ),
-			array( 'code' => 'Illegal', 'info' => ' You provided an illegal wiki_username' ),
-			array( 'code' => 'NotExists', 'info' => ' The wiki_username you provided doesn\'t exist' ),
+			array( 'code' => 'Illegal', 'info' => ' You provided an illegal username' ),
+			array( 'code' => 'NotExists', 'info' => ' The username you provided doesn\'t exist' ),
 			array( 'code' => 'EmptyPass', 'info' => ' You didn\'t set the lgpassword parameter or you left it empty' ),
 			array( 'code' => 'WrongPass', 'info' => ' The password you provided is incorrect' ),
 			array( 'code' => 'WrongPluginPass', 'info' => 'Same as "WrongPass", returned when an authentication plugin rather than MediaWiki itself rejected the password' ),
 			array( 'code' => 'CreateBlocked', 'info' => 'The wiki tried to automatically create a new account for you, but your IP address has been blocked from account creation' ),
 			array( 'code' => 'Throttled', 'info' => 'You\'ve logged in too many times in a short time' ),
-			array( 'code' => 'Blocked', 'info' => 'wiki_user is blocked' ),
+			array( 'code' => 'Blocked', 'info' => 'User is blocked' ),
 		) );
 	}
 
 	public function getExamples() {
 		return array(
-			'api.php?action=login&lgname=wiki_user&lgpassword=password'
+			'api.php?action=login&lgname=user&lgpassword=password'
 		);
 	}
 

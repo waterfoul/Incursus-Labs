@@ -63,21 +63,21 @@ class IntraACLSpecial extends SpecialPage
     /* Constructor of IntraACL special page class */
     public function __construct()
     {
-        $this->mRestriction = 'wiki_user';
+        $this->mRestriction = 'user';
         parent::__construct('IntraACL');
     }
 
     /* Entry point */
     public function execute($par)
     {
-        global $wgOut, $wgRequest, $wgwiki_user, $wgTitle, $haclgHaloScriptPath;
+        global $wgOut, $wgRequest, $wgUser, $wgTitle, $haclgHaloScriptPath;
         haclCheckScriptPath();
         $q = $wgRequest->getValues();
-        if ($wgwiki_user->isLoggedIn())
+        if ($wgUser->isLoggedIn())
         {
             wfLoadExtensionMessages('IntraACL');
             $wgOut->setPageTitle(wfMsg('hacl_special_page'));
-            $groups = $wgwiki_user->getGroups();
+            $groups = $wgUser->getGroups();
             $this->isAdmin = in_array('bureaucrat', $groups) || in_array('sysop', $groups);
             if (!isset($q['action']) ||
                 !isset(self::$actions[$q['action']]) ||
@@ -100,7 +100,7 @@ class IntraACLSpecial extends SpecialPage
             $q = $_GET;
             unset($q['title']);
             $wgOut->redirect(
-                Title::newFromText('Special:wiki_userLogin')
+                Title::newFromText('Special:UserLogin')
                 ->getFullUrl(array(
                     'returnto' => 'Special:IntraACL',
                     'returntoquery' => http_build_query($q)
@@ -120,13 +120,13 @@ class IntraACLSpecial extends SpecialPage
 
     // Displays full graph of IntraACL rights using Graphviz, in SVG format
     // Does not reflect the right override method - just displays which rights apply
-    // to different protected elements and which wiki_users have these rights
+    // to different protected elements and which users have these rights
     // SD -> (namespace = page cluster)
     // SD -> page
     // SD -> category -> subcategory -> subcluster of a namespace
     // SD -> included SD
-    // wiki_user -> group -> SD
-    // wiki_user -> SD
+    // User -> group -> SD
+    // User -> SD
     public function html_rightgraph(&$q)
     {
         global $wgOut, $wgContLang;
@@ -386,7 +386,7 @@ class IntraACLSpecial extends SpecialPage
     /* Displays list of all ACL definitions, filtered and loaded using AJAX */
     public function html_acllist(&$q)
     {
-        global $wgOut, $wgwiki_user, $wgScript, $haclgHaloScriptPath, $haclgContLang;
+        global $wgOut, $wgUser, $wgScript, $haclgHaloScriptPath, $haclgContLang;
         $limit = !empty($q['limit']) ? intval($q['limit']) : 100;
         if (empty($q['filter'])) $q['filter'] = '';
         if (empty($q['offset'])) $q['offset'] = 0;
@@ -426,9 +426,9 @@ class IntraACLSpecial extends SpecialPage
     /* Create/edit ACL definition using interactive editor */
     public function html_acl(&$q)
     {
-        global $wgOut, $wgwiki_user, $wgScript, $haclgHaloScriptPath, $haclgContLang, $wgContLang, $wgScriptPath;
+        global $wgOut, $wgUser, $wgScript, $haclgHaloScriptPath, $haclgContLang, $wgContLang, $wgScriptPath;
         $aclTitle = $aclArticle = NULL;
-        $aclContent = '{{#manage rights: assigned to = wiki_user:'.$wgwiki_user->getName().'}}';
+        $aclContent = '{{#manage rights: assigned to = User:'.$wgUser->getName().'}}';
         $aclPEName = $aclPEType = '';
         if (!empty($q['sd']))
         {
@@ -465,7 +465,7 @@ class IntraACLSpecial extends SpecialPage
     /* Manage Quick Access ACL list */
     public function html_quickaccess(&$args)
     {
-        global $wgOut, $wgwiki_user, $wgScript, $haclgHaloScriptPath, $wgRequest;
+        global $wgOut, $wgUser, $wgScript, $haclgHaloScriptPath, $wgRequest;
         /* Handle save */
         $args = $wgRequest->getValues();
         $like = empty($args['like']) ? '' : $args['like'];
@@ -475,14 +475,14 @@ class IntraACLSpecial extends SpecialPage
             foreach ($args as $k => $v)
                 if (substr($k, 0, 3) == 'qa_')
                     $ids[] = substr($k, 3);
-            IACLStorage::get('QuickACL')->saveQuickAcl($wgwiki_user->getId(), $ids, $args['qa_default']);
+            IACLStorage::get('QuickACL')->saveQuickAcl($wgUser->getId(), $ids, $args['qa_default']);
             wfGetDB(DB_MASTER)->commit();
             header("Location: $wgScript?title=Special:IntraACL&action=quickaccess&like=".urlencode($like));
             exit;
         }
         /* Load data */
         $templates = IACLStorage::get('SD')->getSDs2('right', $like);
-        $quickacl = HACLQuickacl::newForwiki_userId($wgwiki_user->getId());
+        $quickacl = HACLQuickacl::newForUserId($wgUser->getId());
         $quickacl_ids = array_flip($quickacl->getSD_IDs());
         foreach ($templates as $sd)
         {
@@ -503,7 +503,7 @@ class IntraACLSpecial extends SpecialPage
     /* Add header with available actions */
     public function _actions(&$q)
     {
-        global $wgScript, $wgOut, $wgwiki_user;
+        global $wgScript, $wgOut, $wgUser;
         $act = $q['action'];
         if ($act == 'acl' && !empty($q['sd']))
             $act = 'acledit';
@@ -530,7 +530,7 @@ class IntraACLSpecial extends SpecialPage
     /* Manage groups */
     public function html_grouplist(&$q)
     {
-        global $wgOut, $wgwiki_user, $wgScript, $haclgHaloScriptPath, $haclgContLang;
+        global $wgOut, $wgUser, $wgScript, $haclgHaloScriptPath, $haclgContLang;
         ob_start();
         require(dirname(__FILE__).'/../templates/HACL_GroupList.tpl.php');
         $html = ob_get_contents();
@@ -542,7 +542,7 @@ class IntraACLSpecial extends SpecialPage
     /* Create or edit a group */
     public function html_group(&$q)
     {
-        global $wgOut, $wgwiki_user, $wgScript, $haclgHaloScriptPath, $wgContLang, $haclgContLang;
+        global $wgOut, $wgUser, $wgScript, $haclgHaloScriptPath, $wgContLang, $haclgContLang;
         if (empty($q['group']) ||
             !($grpTitle = Title::newFromText($q['group'], HACL_NS_ACL)) ||
             HACLEvaluator::hacl_type($grpTitle) != 'group' ||
@@ -599,14 +599,14 @@ class IntraACLSpecial extends SpecialPage
             if ($actmask & HACLLanguage::RIGHT_DELETE)
                 $actions[] = 'delete';
             $memberids = array(
-                'wiki_user' => array_flip($r->getwiki_users()),
+                'user' => array_flip($r->getUsers()),
                 'group' => array_flip($r->getGroups()),
             );
             /* get groups closure */
             $memberids = IACLStorage::get('Groups')->getGroupMembersRecursive(array_keys($memberids['group']), $memberids);
             $members = array();
-            foreach (IACLStorage::get('Util')->getwiki_users(array_keys($memberids['wiki_user'])) as $u)
-                $members[] = 'wiki_user:'.$u->wiki_user_name;
+            foreach (IACLStorage::get('Util')->getUsers(array_keys($memberids['user'])) as $u)
+                $members[] = 'User:'.$u->user_name;
             foreach (IACLStorage::get('Groups')->getGroupsByIds(array_keys($memberids['group'])) as $g)
                 $members[] = $g->group_name;
             /* merge into result */
@@ -631,7 +631,7 @@ class IntraACLSpecial extends SpecialPage
     /* "Real" ACL list, loaded using AJAX */
     static function haclAcllist($t, $n, $offset = 0, $limit = 10)
     {
-        global $wgScript, $wgTitle, $haclgHaloScriptPath, $haclgContLang, $wgwiki_user;
+        global $wgScript, $wgTitle, $haclgHaloScriptPath, $haclgContLang, $wgUser;
         haclCheckScriptPath();
         // Load data
         $sdpages = IACLStorage::get('SD')->getSDPages($t, $n, $offset, $limit, $total);

@@ -103,7 +103,7 @@ class SpecialWhatLinksHere extends SpecialPage {
 	function showIndirectLinks( $level, $target, $limit, $from = 0, $back = 0 ) {
 		global $wgMaxRedirectLinksRetrieved;
 		$out = $this->getOutput();
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$options = array();
 
 		$hidelinks = $this->opts->getValue( 'hidelinks' );
@@ -163,31 +163,31 @@ class SpecialWhatLinksHere extends SpecialPage {
 			'rd_from = page_id',
 			'rd_namespace' => $target->getNamespace(),
 			'rd_title' => $target->getDBkey(),
-			'rd_interwiki = ' . r->addQuotes( '' ) . ' OR rd_interwiki IS NULL'
+			'rd_interwiki = ' . $dbr->addQuotes( '' ) . ' OR rd_interwiki IS NULL'
 		)));
 
 		if( $fetchlinks ) {
 			$options['ORDER BY'] = 'pl_from';
-			$plRes = r->select( array( 'pagelinks', 'page', 'redirect' ), $fields,
+			$plRes = $dbr->select( array( 'pagelinks', 'page', 'redirect' ), $fields,
 				$plConds, __METHOD__, $options,
 				$joinConds);
 		}
 
 		if( !$hidetrans ) {
 			$options['ORDER BY'] = 'tl_from';
-			$tlRes = r->select( array( 'templatelinks', 'page', 'redirect' ), $fields,
+			$tlRes = $dbr->select( array( 'templatelinks', 'page', 'redirect' ), $fields,
 				$tlConds, __METHOD__, $options,
 				$joinConds);
 		}
 
 		if( !$hideimages ) {
 			$options['ORDER BY'] = 'il_from';
-			$ilRes = r->select( array( 'imagelinks', 'page', 'redirect' ), $fields,
+			$ilRes = $dbr->select( array( 'imagelinks', 'page', 'redirect' ), $fields,
 				$ilConds, __METHOD__, $options,
 				$joinConds);
 		}
 
-		if( ( !$fetchlinks || !r->numRows($plRes) ) && ( $hidetrans || !r->numRows($tlRes) ) && ( $hideimages || !r->numRows($ilRes) ) ) {
+		if( ( !$fetchlinks || !$dbr->numRows($plRes) ) && ( $hidetrans || !$dbr->numRows($tlRes) ) && ( $hideimages || !$dbr->numRows($ilRes) ) ) {
 			if ( 0 == $level ) {
 				$out->addHTML( $this->whatlinkshereForm() );
 
@@ -258,7 +258,7 @@ class SpecialWhatLinksHere extends SpecialPage {
 		foreach ( $rows as $row ) {
 			$nt = Title::makeTitle( $row->page_namespace, $row->page_title );
 			/*op-patch|TS|2009-06-19|HaloACL|SafeTitle|start*/
-			if (!$nt->wiki_userCanReadEx()) {
+			if (!$nt->userCanReadEx()) {
 				continue;
 			}
 			/*op-patch|TS|2009-06-19|end*/  

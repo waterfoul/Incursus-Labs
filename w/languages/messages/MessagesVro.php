@@ -42,7 +42,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Lingiq ala tõmmadaq',
 'tog-justify' => 'Lõiguveereq sirgõs',
 'tog-hideminor' => 'Käkiq perämäidsin muutmiisin ärq väikuq parandusõq',
@@ -66,7 +66,7 @@ $messages = array(
 'tog-previewonfirst' => 'Näütäq edimädse toimõndusõ aigo proovikaehust',
 'tog-nocache' => 'Pästku-i lehekülgi võrgokaeja vaihõmällo',
 'tog-enotifwatchlistpages' => 'Saadaq mullõ e-kiri, ku muq perräkaetavat lehte muudõtas',
-'tog-enotifwiki_usertalkpages' => 'Saadaq mullõ e-kiri, ku mu arotuslehte muudõtas',
+'tog-enotifusertalkpages' => 'Saadaq mullõ e-kiri, ku mu arotuslehte muudõtas',
 'tog-enotifminoredits' => 'Saadaq mullõ e-kiri ka väikeisi muutmiisi kotsilõ',
 'tog-enotifrevealaddr' => 'Näütäq mu e-postiaadrõssit tõisilõ saadõtuin teedüssin',
 'tog-shownumberswatching' => "Näütäq, ku pall'o pruukjit taa lehe perrä kaes",
@@ -246,7 +246,7 @@ $messages = array(
 'talk' => 'Arotus',
 'views' => 'Kaemisõq',
 'toolbox' => 'Tüüriistakast',
-'wiki_userpage' => 'Pruukjalehekülg',
+'userpage' => 'Pruukjalehekülg',
 'projectpage' => 'Tallituslehekülg',
 'imagepage' => 'Näütäq teedüstülehte',
 'mediawikipage' => 'Näütäq sõnomilehekülge',
@@ -272,7 +272,7 @@ $1",
 'pool-queuefull' => 'Kinniqpandmiisi järekõrd om täüs',
 'pool-errorunknown' => 'Tiidmäldä hädä',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} tutvustus',
 'aboutpage' => 'Project:Pääteedüs',
 'copyright' => 'Teksti või vabalt pruukiq litsendsi $1 perrä.',
@@ -330,7 +330,7 @@ $1",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Artikli',
-'nstab-wiki_user' => 'Pruukjalehekülg',
+'nstab-user' => 'Pruukjalehekülg',
 'nstab-media' => 'Meediä',
 'nstab-special' => 'Tallituslehekülg',
 'nstab-project' => 'Nimileht',
@@ -375,7 +375,7 @@ Kõrraldaja, kiä taa kirotuskaitsõ alaq võtt', and' sääntse selgütüse:
 Hariligult tulõ taa vanaslännüst võrrõlus- vai aoluulehelingist, miä näütäs ärqkistutõdu lehe pääle.
 
 Ku olõ-i tegemist ärqkistutõdu lehega, olõt või-ollaq löüdnüq programmivia.
-Annaq taa lehe aadrõs viki [[Special:Listwiki_users/sysop|ülevänpidäjäle]].',
+Annaq taa lehe aadrõs viki [[Special:ListUsers/sysop|ülevänpidäjäle]].',
 'missingarticle-rev' => '(kujo#: $1)',
 'missingarticle-diff' => '(lahkominek: $1, $2)',
 'readonly_lag' => 'Teedüskogo panti automaatsõhe kinniq, et kõik teedüskogoserveriq saasiq kätte kõik värskiq muutmisõq',
@@ -413,7 +413,7 @@ Perräküsümine: $2',
 $2',
 'namespaceprotected' => "Sul olõ-i lubat toimõndaq nimeruumi '''$1''' lehti.",
 'ns-specialprotected' => 'Tallituslehekülgi ei saaq toimõndaq.',
-'titleprotected' => "Pruukja [[wiki_user:$1|$1]] om sääntse nimega lehe luumisõ ärq kiildnüq põhjusõga: ''$2''.",
+'titleprotected' => "Pruukja [[User:$1|$1]] om sääntse nimega lehe luumisõ ärq kiildnüq põhjusõga: ''$2''.",
 
 # Virus scanner
 'virus-badscanner' => "Viga säädmiisin: tundmalda viirusõkaidsõq: ''$1''",
@@ -423,7 +423,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''Olõt nime alt vällä lännüq.'''
 
-Võit {{SITENAME}}t ilma nimeldä edesi toimõndaq vai [[Special:wiki_userLogin|vahtsõst sama vai tõõsõ nimega sisse minnäq]].
+Võit {{SITENAME}}t ilma nimeldä edesi toimõndaq vai [[Special:UserLogin|vahtsõst sama vai tõõsõ nimega sisse minnäq]].
 Tähelepandmisõs: niikavva, ku sa olõ-i tühäs tennüq uma võrgokaeja vaihõmällo, võivaq mõnõq leheküleq iks viil näüdädäq, nigu sa olõsi nimega seen.",
 'welcomecreation' => '<h2>Tereq, $1!</h2><p>Su konto om valmis. Võit taa hindä perrä sisse säädäq.',
 'yourname' => 'Pruukjanimi',
@@ -435,10 +435,10 @@ Tähelepandmisõs: niikavva, ku sa olõ-i tühäs tennüq uma võrgokaeja vaihõ
 'login' => 'Nimega sisseminek',
 'nav-login-createaccount' => 'Mineq nimega sisse',
 'loginprompt' => '{{SITENAME}} lask nimega sisse õnnõ sis, ku lubatas valmistuisi.',
-'wiki_userlogin' => 'Mineq nimega sisse vai luuq pruukjanimi',
-'wiki_userloginnocreate' => 'Nimega sisseminek',
+'userlogin' => 'Mineq nimega sisse vai luuq pruukjanimi',
+'userloginnocreate' => 'Nimega sisseminek',
 'logout' => 'Nime alt välläminek',
-'wiki_userlogout' => 'Mineq nime alt vällä',
+'userlogout' => 'Mineq nime alt vällä',
 'notloggedin' => 'Olõ-i nimega sisse mint',
 'nologin' => "Sul olõ-i viil pruukjanimme? '''$1'''.",
 'nologinlink' => 'Tiiq hindäle pruukjanimi',
@@ -448,7 +448,7 @@ Tähelepandmisõs: niikavva, ku sa olõ-i tühäs tennüq uma võrgokaeja vaihõ
 'createaccountmail' => 'e-postiga',
 'createaccountreason' => 'Põhjus:',
 'badretype' => 'Kirotõduq salasõnaq ei klapiq kokko.',
-'wiki_userexists' => 'Taad pruukjanimme jo pruugitas.
+'userexists' => 'Taad pruukjanimme jo pruugitas.
 Valiq tõõnõ nimi.',
 'loginerror' => 'Sisseminemise viga',
 'createaccounterror' => 'Pruukjanime luuminõ lää-äs kõrda: $1',
@@ -457,10 +457,10 @@ Valiq tõõnõ nimi.',
 'noname' => 'Võlssi kirotõt pruukjanimi.',
 'loginsuccesstitle' => "Sisseminek läts' kõrda",
 'loginsuccess' => 'Olõt nimega sisse lännüq. Suq pruukjanimi om "$1".',
-'nosuchwiki_user' => '"$1" nimelist pruukjat olõ-i olõman.
-Kaeq kiräpilt üle vai [[Special:wiki_userLogin/signup|luuq vahtsõnõ pruukjanimi]].',
-'nosuchwiki_usershort' => '"$1" nimelist pruukjat olõ-i olõman. Kas kirotit iks nime õigõhe?',
-'nowiki_userspecified' => 'Olõ-i kirotõt pruukjanimme.',
+'nosuchuser' => '"$1" nimelist pruukjat olõ-i olõman.
+Kaeq kiräpilt üle vai [[Special:UserLogin/signup|luuq vahtsõnõ pruukjanimi]].',
+'nosuchusershort' => '"$1" nimelist pruukjat olõ-i olõman. Kas kirotit iks nime õigõhe?',
+'nouserspecified' => 'Olõ-i kirotõt pruukjanimme.',
 'wrongpassword' => 'Kirotõt võlss salasõna. Prooviq vahtsõst.',
 'wrongpasswordempty' => 'Salasõna tohe-i tühi ollaq.',
 'passwordtooshort' => "Salasõna om viganõ vai pall'o lühkü. Taan piät olõma vähämbält {{PLURAL:$1|1 märk|$1 märki}} ja taa tohe-i ollaq sama, miä su pruukjanimi.",
@@ -493,7 +493,7 @@ Kirodaq õigõ e-postiaadrõs vai jätäq rivi rühäs.',
 Mineq nimega sisse ja vaihtaq salasõna ärq.
 
 Ku taa pruukjanimi om luud kogõmaldaq, olõ-i sul vaia taast sõnomist vällä tetäq.',
-'wiki_usernamehasherror' => 'Pruukjanimen ei võiq ollaq trellimärke ("#").',
+'usernamehasherror' => 'Pruukjanimen ei võiq ollaq trellimärke ("#").',
 'login-throttled' => "Olõt uma nime ala minekis pruuvnuq pall'o hulga esiqsugutsit salasõnno.
 Oodaq vähä inne ku proovit vahtsõst.",
 'loginlanguagelabel' => 'Kiil: $1',
@@ -598,18 +598,18 @@ Tuud salasõnna saa muutaq ''[[Special:ChangePassword|salasõba muutmisõ lehe p
 'newarticletext' => "Taad lehekülge olõ-i viil luud.
 Leheküle luumisõs nakkaq kirotama alanolõvahe kasti (kaeq [[{{MediaWiki:Helppage}}|oppust]]).
 Ku sa johtuq siiäq kogõmaldaq, sis klõpsaq võrgokaeja '''Tagasi'''-nuppi.",
-'anontalkpagetext' => "---- ''Taa om arotusleht nimeldä pruukja kotsilõ, kiä olõ-i loonuq pruukjanimme vai pruugi-i tuud. Tuuperäst tulõ meil pruukja kimmästegemises pruukiq timä puutri võrgoaadrõssit. Taa aadrõs või ollaq mitmõ pruukja pääle ütine. Ku olõt nimeldä pruukja ja lövvät, et taa leheküle pääle kirotõt jutt käü suq kotsilõ, sis olõq hää, [[Special:wiki_userLogin/signup|luuq konto]] vai [[Special:wiki_userLogin|mineq nimega sisse]], et edespiten segähüisi ärq hoitaq.''",
+'anontalkpagetext' => "---- ''Taa om arotusleht nimeldä pruukja kotsilõ, kiä olõ-i loonuq pruukjanimme vai pruugi-i tuud. Tuuperäst tulõ meil pruukja kimmästegemises pruukiq timä puutri võrgoaadrõssit. Taa aadrõs või ollaq mitmõ pruukja pääle ütine. Ku olõt nimeldä pruukja ja lövvät, et taa leheküle pääle kirotõt jutt käü suq kotsilõ, sis olõq hää, [[Special:UserLogin/signup|luuq konto]] vai [[Special:UserLogin|mineq nimega sisse]], et edespiten segähüisi ärq hoitaq.''",
 'noarticletext' => 'Seo leht om parlaq tühi.
 Võit [[Special:Search/{{PAGENAME}}|otsiq soe lehe nimme]]  tõisi lehti päält vai
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} uuriq muutmisnimekirjo] vai [{{fullurl:{{FULLPAGENAME}}|action=edit}} puuduolõva leheküle esiq luvvaq]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => 'Pruukjanimme "<nowiki>$1</nowiki>" olõ-i kirjä pant. Kaeq perrä, kas olõt iks kimmäs, et tahat taad lehte toimõndaq.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Pruukjanimme "$1" olõ-õi kirjä pant.',
+'userpage-userdoesnotexist' => 'Pruukjanimme "<nowiki>$1</nowiki>" olõ-i kirjä pant. Kaeq perrä, kas olõt iks kimmäs, et tahat taad lehte toimõndaq.',
+'userpage-userdoesnotexist-view' => 'Pruukjanimme "$1" olõ-õi kirjä pant.',
 'clearyourcache' => "'''Panõq tähele:''' perän pästmist piät muutmiisi nägemises uma võrgokaeja vaihõmälo tühäs tegemä. '''Mozillal / Firofoxil / Safaril''' hoiaq all nõstmisnuppi ''Shift'' ja vaodaq ''Reload'' vai ''Ctrl-R'' (Macil ''Command-R''); Konqueroril vaodaq ''Reload'' vai ''F5''. Operal puhastaq vaihõmälo ja võtaq valikust ''Tools → Preferences''. Internet Exploreril hoiaq ''Ctrl'' ja vaodaq ''Refresh'' vai vaodaq  ''ctrl-f5''.",
-'wiki_usercssyoucanpreview' => "'''Nõvvoannõq:''' Pruugiq nuppi 'Näütäq proovikaehust' uma vahtsõ CCS-i vai JavaScripti ülekaemisõs, inne ku taa ärq pästät.",
-'wiki_userjsyoucanpreview' => "'''Nõvvoannõq:''' Pruugiq nuppi 'Näütäq proovikaehust' uma vahtsõ CCS-i vai JavaScripti ülekaemisõs, inne ku taa ärq pästät.",
-'wiki_usercsspreview' => "'''Seo um CSS-i proovikaehus. Määntsitki muutuisi olõ-i viil pästet.'''",
-'wiki_userjspreview' => "'''Unõhtagu-i, et seo kujo su umast javascriptist om viil pästmäldäq!'''",
-'wiki_userinvalidcssjstitle' => "'''Miildetulõtus:''' Olõ-i stiili nimega \"\$1\". Piäq meelen, et pruukja säedüq .css- and .js-leheq piät nakkama väiku algustähega.",
+'usercssyoucanpreview' => "'''Nõvvoannõq:''' Pruugiq nuppi 'Näütäq proovikaehust' uma vahtsõ CCS-i vai JavaScripti ülekaemisõs, inne ku taa ärq pästät.",
+'userjsyoucanpreview' => "'''Nõvvoannõq:''' Pruugiq nuppi 'Näütäq proovikaehust' uma vahtsõ CCS-i vai JavaScripti ülekaemisõs, inne ku taa ärq pästät.",
+'usercsspreview' => "'''Seo um CSS-i proovikaehus. Määntsitki muutuisi olõ-i viil pästet.'''",
+'userjspreview' => "'''Unõhtagu-i, et seo kujo su umast javascriptist om viil pästmäldäq!'''",
+'userinvalidcssjstitle' => "'''Miildetulõtus:''' Olõ-i stiili nimega \"\$1\". Piäq meelen, et pruukja säedüq .css- and .js-leheq piät nakkama väiku algustähega.",
 'updated' => '(Värskis tett)',
 'note' => "'''Miildetulõtus:'''",
 'previewnote' => "'''Taa om õnnõ proovikaehus; muutmisõq olõ-i pästedüq!'''",
@@ -650,7 +650,7 @@ Ku klõpsahtat nuppi \"{{int:savearticle}}\", sis pästetäs '''õnnõ''' ülemb
 'hiddencategories' => 'Seo leht kuulus {{PLURAL:$1|1 käkitühe katõgooriahe|$1 käkitühe katõgooriahe}}:',
 'nocreatetitle' => 'Lehekülgi luuminõ piiret',
 'nocreatetext' => '{{SITENAME}} lupa-i luvvaq vahtsit lehti.
-Võit toimõndaq olõmanolõvit lehti vai [[Special:wiki_userLogin|minnäq nimega sisse]].',
+Võit toimõndaq olõmanolõvit lehti vai [[Special:UserLogin|minnäq nimega sisse]].',
 'nocreate-loggedin' => 'Sul olõ-i lupa luvvaq vahtsit {{SITENAME}} lehti.',
 'permissionserrors' => 'Õigusõq ei klapiq',
 'permissionserrorstext' => 'Sul olõ-i lubat taad tetäq, {{PLURAL:$1|tuuperäst, et|tuuperäst, et}}:',
@@ -668,11 +668,11 @@ Tuuperäst ossa näüdüssit näüdädä-äi.",
 # "Undo" feature
 'undo-success' => "Tagasivõtminõ läts' kõrda. Kaeq üle, kas taa om tuu, midä sa tetäq tahtsõt ja pästäq muutusõq.",
 'undo-failure' => 'Tagasivõtminõ lää-s kõrda samal aol tettüide muutmiisi vastaolo peräst. Võit muutusõq käsilde tagasi võttaq.',
-'undo-summary' => "Tagasi võet muutminõ #$1, mink tekk' [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Arotus]])",
+'undo-summary' => "Tagasi võet muutminõ #$1, mink tekk' [[Special:Contributions/$2|$2]] ([[User talk:$2|Arotus]])",
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Pruukjanime luuminõ lää-s kõrda',
-'cantcreateaccount-text' => "Pruukjanime luuminõ taa puutri võrgoaadrõsi päält ('''$1''') om ärq keelet. Kiildjä: [[wiki_user:$3|$3]].
+'cantcreateaccount-text' => "Pruukjanime luuminõ taa puutri võrgoaadrõsi päält ('''$1''') om ärq keelet. Kiildjä: [[User:$3|$3]].
 
 $3 kirjäpant põhjus: ''$2''",
 
@@ -709,7 +709,7 @@ Seletüs: (viim) = lahkominegiq viimätsest kujost,
 
 # Revision deletion
 'rev-deleted-comment' => '(kommõntaar ärq kistutõt)',
-'rev-deleted-wiki_user' => '(pruukjanimi ärq kistutõt)',
+'rev-deleted-user' => '(pruukjanimi ärq kistutõt)',
 'rev-deleted-event' => '(muutmisnimekirä tallitus ärq kistutõt)',
 'rev-deleted-text-permission' => 'Lehe taa kujo om avaligust arhiivist ärq kistutõt.
 Lisateedüst või ollaq [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} kistutamisnimekirän].',
@@ -729,7 +729,7 @@ Lisateedüst või ollaq [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAME
 'revdelete-hide-image' => 'Käkiq teedüstü sissu',
 'revdelete-hide-name' => 'Käkiq kujo nimi',
 'revdelete-hide-comment' => 'Käkiq kokkovõtõq',
-'revdelete-hide-wiki_user' => 'Käkiq toimõndaja pruukjanimi vai puutri võrgoaadrõs',
+'revdelete-hide-user' => 'Käkiq toimõndaja pruukjanimi vai puutri võrgoaadrõs',
 'revdelete-hide-restricted' => 'Panõq teedüs lukku ka kõrraldajilõ',
 'revdelete-radio-set' => 'Jah',
 'revdelete-suppress' => 'Panõq teedüs lukku ka kõrraldajilõ',
@@ -830,7 +830,7 @@ otsisõna iin edejakku ''all:''. Ütest kimmäst nimeruumist otsmisõs pruugiq e
 'mypreferences' => 'Säädmiseq',
 'prefs-edits' => 'Tõimõndamiisi arv:',
 'prefsnologin' => 'Sa olõ-i nimega sisse lännüq',
-'prefsnologintext' => 'Et säädmiisi tetäq, tulõ sul [[Special:wiki_userLogin|nimega sisse minnäq]].',
+'prefsnologintext' => 'Et säädmiisi tetäq, tulõ sul [[Special:UserLogin|nimega sisse minnäq]].',
 'changepassword' => 'Muudaq salasõnna',
 'prefs-skin' => 'Vällänägemine',
 'skin-preview' => 'Kaeminõ',
@@ -863,7 +863,7 @@ otsisõna iin edejakku ''all:''. Ütest kimmäst nimeruumist otsmisõs pruugiq e
 'default' => 'vaikimiisi',
 'prefs-files' => 'Teedüstüq',
 'youremail' => 'Suq e-posti aadrõs *',
-'wiki_username' => 'Pruukjanimi:',
+'username' => 'Pruukjanimi:',
 'uid' => 'Pruukjanummõr:',
 'prefs-memberingroups' => 'Kuulus {{PLURAL:$1|rühmä|rühmihe}}:',
 'yourrealname' => 'Peris nimi *',
@@ -878,20 +878,20 @@ Taa tohe-i ollaq rohkõmb ku $1 {{PLURAL:$1|märk|märki}}.",
 'prefs-help-email' => 'E-postiaadrõssit piä-i kirotama, a taa lupa tõisil pruukjil sullõ kirotaq ilma su aadrõssit nägemäldäq. Taast om sis kah kassu, ku uma salasõna ärq johtut unõhtama.',
 'prefs-help-email-required' => 'E-postiaadrõs piät olõma.',
 
-# wiki_user rights
-'wiki_userrights' => 'Pruukja õiguisi muutminõ',
-'wiki_userrights-lookup-wiki_user' => 'Pruukjaõiguisi muutminõ',
-'wiki_userrights-wiki_user-editname' => 'Kirodaq pruukjanimi:',
-'editwiki_usergroup' => 'Muudaq pruukjidõ rühmi',
-'editingwiki_user' => "Pruukja '''[[wiki_user:$1|$1]]''' õigusõq ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'wiki_userrights-editwiki_usergroup' => 'Pruukjidõrühmä valik',
-'savewiki_usergroups' => 'Pästäq pruukjidõrühmä muutmisõq',
-'wiki_userrights-groupsmember' => 'Kuulus rühmä:',
-'wiki_userrights-reason' => 'Põhjus:',
+# User rights
+'userrights' => 'Pruukja õiguisi muutminõ',
+'userrights-lookup-user' => 'Pruukjaõiguisi muutminõ',
+'userrights-user-editname' => 'Kirodaq pruukjanimi:',
+'editusergroup' => 'Muudaq pruukjidõ rühmi',
+'editinguser' => "Pruukja '''[[User:$1|$1]]''' õigusõq ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Pruukjidõrühmä valik',
+'saveusergroups' => 'Pästäq pruukjidõrühmä muutmisõq',
+'userrights-groupsmember' => 'Kuulus rühmä:',
+'userrights-reason' => 'Põhjus:',
 
 # Groups
 'group' => 'Rühm:',
-'group-wiki_user' => 'Pruukjaq',
+'group-user' => 'Pruukjaq',
 'group-autoconfirmed' => 'Automaatsõhe kinnütedüq pruukjaq',
 'group-bot' => 'Robodiq',
 'group-sysop' => 'Kõrraldajaq',
@@ -899,14 +899,14 @@ Taa tohe-i ollaq rohkõmb ku $1 {{PLURAL:$1|märk|märki}}.",
 'group-suppress' => 'Perräkaejaq',
 'group-all' => '(kõik)',
 
-'group-wiki_user-member' => 'Pruukja',
+'group-user-member' => 'Pruukja',
 'group-autoconfirmed-member' => 'Automaatsõhe kinnütet pruukja',
 'group-bot-member' => 'Robot',
 'group-sysop-member' => 'Kõrraldaja',
 'group-bureaucrat-member' => 'Pääkõrraldaja',
 'group-suppress-member' => 'Perräkaeja',
 
-'grouppage-wiki_user' => '{{ns:project}}:Pruukjaq',
+'grouppage-user' => '{{ns:project}}:Pruukjaq',
 'grouppage-autoconfirmed' => '{{ns:project}}:Automaatsõhe kinnütedüq pruukjaq',
 'grouppage-bot' => '{{ns:project}}:Robodiq',
 'grouppage-sysop' => '{{ns:project}}:Kõrraldajaq',
@@ -922,7 +922,7 @@ Taa tohe-i ollaq rohkõmb ku $1 {{PLURAL:$1|märk|märki}}.",
 'right-minoredit' => 'Märkiq muutmiisi väikeisis muutmiisis',
 'right-move' => 'Nõstaq lehti tõistõ paika',
 'right-move-subpages' => 'Nõstaq lehti tõistõ paika üten näide alamblehtiga',
-'right-move-rootwiki_userpages' => 'Nõstaq tõistõ paika pruukjalehti',
+'right-move-rootuserpages' => 'Nõstaq tõistõ paika pruukjalehti',
 'right-movefile' => 'Nõstaq tõistõ paika teedüstüid',
 'right-suppressredirect' => 'Nõstaq tõistõ paika ilma ümbresaatmist loomalda',
 'right-upload' => 'Teedüstüid üles laatiq',
@@ -947,11 +947,11 @@ Taa tohe-i ollaq rohkõmb ku $1 {{PLURAL:$1|märk|märki}}.",
 'right-suppressionlog' => 'Kaiaq erämuutmisnimekirjo',
 'right-block' => 'Keeldäq tõisil pruukjil lehti toimõndaq',
 'right-blockemail' => 'Keeldäq pruukjil e-kirjo saataq',
-'right-hidewiki_user' => 'Kinniq pitäq pruukjanimi ja käkkiq tuu ärq',
+'right-hideuser' => 'Kinniq pitäq pruukjanimi ja käkkiq tuu ärq',
 'right-ipblock-exempt' => 'Minnäq müüdä automaatsist kinniqpidämiisist ni aadrõsijao ja IP-kinniqpidämiisist',
 'right-proxyunbannable' => 'Minnäq müüdä automaatsist vaihõserveri kinniqpidämiisist',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Pruukmisõiguisi muutmisõ nimekiri',
 'rightslogtext' => 'Taa om pruukmisõiguisi muutmiisi nimekiri.',
 'rightslogentry' => 'Pruukja $1 õigusõq muudõti ümbre rühmäst $2 rühmä $3',
@@ -987,7 +987,7 @@ Taa tohe-i ollaq rohkõmb ku $1 {{PLURAL:$1|märk|märki}}.",
 'minoreditletter' => 'ts',
 'newpageletter' => 'V',
 'boteditletter' => 'rb',
-'number_of_watching_wiki_users_pageview' => '[{{PLURAL:$1|$1 perräkaejat|üts perräkaeja}}]',
+'number_of_watching_users_pageview' => '[{{PLURAL:$1|$1 perräkaejat|üts perräkaeja}}]',
 'rc_categories' => 'Õnnõ katõgoorijist (eräldedäs märgiga "|")',
 'rc_categories_any' => 'Miä taht',
 'rc-enhanced-expand' => 'Näütäq ütsikasjo (nõud JavaScripti)',
@@ -1008,7 +1008,7 @@ Taa tohe-i ollaq rohkõmb ku $1 {{PLURAL:$1|märk|märki}}.",
 'uploadbtn' => 'Üleslaatminõ',
 'reuploaddesc' => 'Tagasi üleslaatmisõ vormi mano.',
 'uploadnologin' => 'Sa olõ-i nimega sisse lännüq',
-'uploadnologintext' => 'Kui tahat teedüstüid üles laatiq, piät [[Special:wiki_userLogin|nimega sisse minemä]].',
+'uploadnologintext' => 'Kui tahat teedüstüid üles laatiq, piät [[Special:UserLogin|nimega sisse minemä]].',
 'upload_directory_read_only' => 'Serveril olõ-i üleslaatmiskausta ($1) kirotamisõ õigust.',
 'uploaderror' => 'Üleslaatmisviga',
 'uploadtext' => '<strong>PIÄQ KINNIQ!</strong> Inne ülelaatmist kaeq, et taa käünüq {{SITENAME}} [[{{MediaWiki:Policy-url}}|pilte pruukmisõ kõrra]] perrä.
@@ -1093,7 +1093,7 @@ Ku ülekaet teedüstü om sama pilt alguperälidsen suurusõn, sis olõ-i vaia e
 'listfiles' => 'Pilte nimekiri',
 'listfiles_date' => 'Kuupäiv',
 'listfiles_name' => 'Nimi',
-'listfiles_wiki_user' => 'Pruukja',
+'listfiles_user' => 'Pruukja',
 'listfiles_size' => 'Suurus (baidõn)',
 'listfiles_description' => 'Seletüs',
 
@@ -1108,7 +1108,7 @@ Ku ülekaet teedüstü om sama pilt alguperälidsen suurusõn, sis olõ-i vaia e
 'filehist-datetime' => 'Kuupäiv/Kelläaig',
 'filehist-thumb' => 'Väiku pilt',
 'filehist-thumbtext' => 'Väiku pilt $1 kujolõ',
-'filehist-wiki_user' => 'Pruukja',
+'filehist-user' => 'Pruukja',
 'filehist-dimensions' => 'Suurus',
 'filehist-filesize' => 'Teedüstü suurus',
 'filehist-comment' => 'Seletüs:',
@@ -1164,7 +1164,7 @@ Ku ülekaet teedüstü om sama pilt alguperälidsen suurusõn, sis olõ-i vaia e
 'statistics-header-pages' => 'Lehekülgi statistiga',
 'statistics-header-edits' => 'Toimõndamisõ statistiga',
 'statistics-header-views' => 'Kaemisõ statistiga',
-'statistics-header-wiki_users' => 'Pruukjidõ statistiga',
+'statistics-header-users' => 'Pruukjidõ statistiga',
 'statistics-articles' => 'Sisulehekülgi',
 'statistics-pages' => 'Lehekülgi',
 'statistics-pages-desc' => 'Kõik leheq, säälhulgan arotusleheq, ümbresaatmisleheq ja muuq.',
@@ -1172,9 +1172,9 @@ Ku ülekaet teedüstü om sama pilt alguperälidsen suurusõn, sis olõ-i vaia e
 'statistics-edits' => 'Toimõnduisi {{SITENAME}} luumisõst pääle',
 'statistics-edits-average' => 'Keskmädselt toimõnduisi leheküle kotsilõ',
 'statistics-views-total' => 'Lehti kaemiisi kokko',
-'statistics-wiki_users' => 'Kirjäpandnuid [[Special:Listwiki_users|pruukjit]]',
-'statistics-wiki_users-active' => 'Tegüsit pruukjit',
-'statistics-wiki_users-active-desc' => 'Pruukjaq, kiä ommaq tan midägi toimõndanuq {{PLURAL:$1|viimädse päävä|viimädse $1 päävä}} seen.',
+'statistics-users' => 'Kirjäpandnuid [[Special:ListUsers|pruukjit]]',
+'statistics-users-active' => 'Tegüsit pruukjit',
+'statistics-users-active-desc' => 'Pruukjaq, kiä ommaq tan midägi toimõndanuq {{PLURAL:$1|viimädse päävä|viimädse $1 päävä}} seen.',
 'statistics-mostpopular' => 'Kõgõ kaetumbaq leheq',
 
 'disambiguations' => 'Lingiq, miä näütäseq täpsüstüslehekülgi pääle',
@@ -1229,9 +1229,9 @@ Lehte peetäs täpsüstüslehes, ku timän om pruugit näüdüst, kohe näütäs
 'protectedpages' => 'Kaidsõduq leheq',
 'protectedpagestext' => 'Naaq leheq kaidsõtasõq ärq tõistõ paika panõkist ja muutmisõst.',
 'protectedpagesempty' => 'Olõ-i kaidsõtuid lehti.',
-'listwiki_users' => 'Pruukjaq',
+'listusers' => 'Pruukjaq',
 'newpages' => 'Vahtsõq leheküleq',
-'newpages-wiki_username' => 'Pruukjanimi:',
+'newpages-username' => 'Pruukjanimi:',
 'ancientpages' => 'Kõgõ vanõmbaq leheküleq',
 'move' => 'Nõstaq ümbre',
 'movethispage' => 'Panõq lehekülg tõistõ paika',
@@ -1250,7 +1250,7 @@ Lehte peetäs täpsüstüslehes, ku timän om pruugit näüdüst, kohe näütäs
 'booksources-text' => 'Tan om linke lehekülile, kon müvväs raamatit vai andas raamatidõ kotsilõ teedüst.',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Pruukja:',
+'specialloguserlabel' => 'Pruukja:',
 'speciallogtitlelabel' => 'Päälkiri:',
 'log' => 'Muutmisnimekiri',
 'all-logs-page' => 'Kõik muutmisõq',
@@ -1285,26 +1285,26 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'linksearch' => 'Välislingiq',
 'linksearch-ok' => 'Otsminõ',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'Näütäq pruukjit alostõn:',
-'listwiki_users-submit' => 'Näütäq',
-'listwiki_users-noresult' => 'Olõ-s pruukjit.',
+# Special:ListUsers
+'listusersfrom' => 'Näütäq pruukjit alostõn:',
+'listusers-submit' => 'Näütäq',
+'listusers-noresult' => 'Olõ-s pruukjit.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Vahtsõq pruukjaq',
+# Special:Log/newusers
+'newuserlogpage' => 'Vahtsõq pruukjaq',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Pruukjarühmi õigusõq',
 'listgrouprights-members' => '(liikmidõ nimekiri)',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'Olõ-i saatja aadrõssit',
-'mailnologintext' => 'Sa piät olõma [[Special:wiki_userLogin|nimega sisse lännüq]]
+'mailnologintext' => 'Sa piät olõma [[Special:UserLogin|nimega sisse lännüq]]
 ja sul piät umin [[Special:Preferences|säädmiisin]] olõma e-postiaadrõs, et sa saasiq tõisilõ pruukjilõ e-kirjo saataq.',
-'emailwiki_user' => 'Kirodaq taalõ pruukjalõ e-kiri',
+'emailuser' => 'Kirodaq taalõ pruukjalõ e-kiri',
 'emailpage' => 'Kirodaq pruukjalõ e-kiri',
 'emailpagetext' => 'Ku taa pruukja om ummi säädmiisihe pandnuq uma tüütävä e-postiaadrõsi, saa taa vormi abiga tälle saataq üte kirä. Kirän jääs nätäq saatja aadrõs, et kirä saaja saanuq kiräle vastadaq.',
-'wiki_usermailererror' => 'Saatmisõ viga:',
+'usermailererror' => 'Saatmisõ viga:',
 'defemailsubject' => '{{SITENAME}} e-post',
 'noemailtitle' => 'Olõ-i e-postiaadrõssit',
 'noemailtext' => 'Taa pruukja olõ-i andnuq umma e-postiaadrõssit.',
@@ -1325,7 +1325,7 @@ ja sul piät umin [[Special:Preferences|säädmiisin]] olõma e-postiaadrõs, et
 'nowatchlist' => 'Perräkaemisnimekiri om tühi.',
 'watchlistanontext' => 'Perräkaemisnimekirä pruukmisõs $1.',
 'watchnologin' => 'Olõ-i nimega sisse mint',
-'watchnologintext' => 'Perräkaemisnimekirä muutmisõs piät [[Special:wiki_userLogin|nimega sisse minemä]].',
+'watchnologintext' => 'Perräkaemisnimekirä muutmisõs piät [[Special:UserLogin|nimega sisse minemä]].',
 'addedwatchtext' => "Lehekülg \"<nowiki>\$1</nowiki>\" om pant su [[Special:Watchlist|perräkaemisnimekirjä]]. Edespididseq muutmisõq seo lehe ja tä arotuskülgi pääl pandasõq ritta siin ja [[Special:RecentChanges|viimätside muutmiisi lehe pääl]] tuvvasõq '''paksun kirän'''. Ku tahat taad lehte perräkaemisnimekiräst vällä võttaq, klõpsaq nuppi \"Lõpõdaq perräkaeminõ ärq\".",
 'removedwatchtext' => 'Leht "[[:$1]]" om [[Special:Watchlist|perräkaemisnimekiräst]] maaha võet.',
 'watch' => 'Kaeq perrä',
@@ -1411,9 +1411,9 @@ Kelläaoq ummaq serveriao perrä.',
 'rollbacklink' => 'võtaq tagasi vana kujo',
 'rollbackfailed' => 'Muutmiisi tagasivõtminõ lää-s kõrda',
 'cantrollback' => 'Saa-i muutmiisi tagasi pöördäq; viimäne muutja om lehe ainugõnõ toimõndaja.',
-'alreadyrolled' => 'Pruukja [[wiki_user:$2|$2]] ([[wiki_user talk:$2|arotus]]) tettüid lehe [[:$1]] muutmiisi saa-i tagasi võttaq, selle et pruukja [[wiki_user:$3|$3]] ([[wiki_user talk:$3|arotus]]) om tennüq vahtsõmbit muutmiisi.',
+'alreadyrolled' => 'Pruukja [[User:$2|$2]] ([[User talk:$2|arotus]]) tettüid lehe [[:$1]] muutmiisi saa-i tagasi võttaq, selle et pruukja [[User:$3|$3]] ([[User talk:$3|arotus]]) om tennüq vahtsõmbit muutmiisi.',
 'editcomment' => "Toimõndamiskokkovõtõq oll': \"''\$1''\".",
-'revertpage' => 'Pruukja [[Special:Contributions/$2|$2]] ([[wiki_user_talk:$2|arotus]]) toimõndusõq pöörediq tagasi ja leht panti tagasi pruukja [[wiki_user:$1|$1]] tettü kujo pääle.',
+'revertpage' => 'Pruukja [[Special:Contributions/$2|$2]] ([[User_talk:$2|arotus]]) toimõndusõq pöörediq tagasi ja leht panti tagasi pruukja [[User:$1|$1]] tettü kujo pääle.',
 
 # Edit tokens
 'sessionfailure' => 'Paistus ollõv määnegi hädä su toimõndamiskõrraga, tuuperäst om viimäne muutminõ egäs johtumisõs jätet tegemäldä. Vaodaq võrgokaeja "tagasi"-nuppi, laadiq üle lehekülg, kost sa tullit ja prooviq vahtsõst.',
@@ -1510,9 +1510,9 @@ Perämäidsi kistutuisi ja tagasitegemiisi saat kaiaq [[Special:Log/delete|kistu
 'sp-contributions-newbies-sub' => 'Vahtsidõ pruukjidõ toimõndusõq',
 'sp-contributions-blocklog' => 'Kinniqpidämisnimekiri',
 'sp-contributions-talk' => 'arotus',
-'sp-contributions-wiki_userrights' => 'Pruukja õiguisi muutminõ',
+'sp-contributions-userrights' => 'Pruukja õiguisi muutminõ',
 'sp-contributions-search' => 'Otsiq muutmiisi',
-'sp-contributions-wiki_username' => 'Puutri võrgoaadrõs vai pruukjanimi:',
+'sp-contributions-username' => 'Puutri võrgoaadrõs vai pruukjanimi:',
 'sp-contributions-submit' => 'Otsiq',
 
 # What links here
@@ -1536,7 +1536,7 @@ Perämäidsi kistutuisi ja tagasitegemiisi saat kaiaq [[Special:Log/delete|kistu
 # Block/unblock
 'blockip' => 'Piäq puutri võrgoaadrõs kinniq',
 'blockiptext' => "Taa vorm om kimmä puutri võrgoaadrõsi päält tettüisi kirotuisi kinniqpidämises. '''Taad tohis tetäq õnnõ lehti ts'urkmisõ vasta ni [[{{MediaWiki:Policy-url}}|{{SITENAME}} sisekõrra perrä]]'''. Kimmähe tulõ täütäq ka rida \"põhjus\". Sinnäq võinuq pandaq nt lingiq noilõ lehile, midä rikuti.",
-'ipadressorwiki_username' => 'Puutri võrgoaadrõs vai pruukjanimi',
+'ipadressorusername' => 'Puutri võrgoaadrõs vai pruukjanimi',
 'ipbexpiry' => 'Tähtaig',
 'ipbreason' => 'Põhjus:',
 'ipbreasonotherlist' => 'Muu põhjus',
@@ -1568,7 +1568,7 @@ Perämäidsi kistutuisi ja tagasitegemiisi saat kaiaq [[Special:Log/delete|kistu
 'unblockip' => 'Lõpõdaq puutri võrgoaadrõsi kinniqpidämine ärq',
 'unblockiptext' => 'Täüdäq ärq taa vorm, et lõpõtaq ärq pruukja vai puutri võrgoaadrõsi kinniqpidämine',
 'ipusubmit' => 'Lõpõdaq kinniqpidämine ärq',
-'unblocked' => 'Pruukja [[wiki_user:$1|$1]] kinniqpidämine om ärq lõpõtõt',
+'unblocked' => 'Pruukja [[User:$1|$1]] kinniqpidämine om ärq lõpõtõt',
 'unblocked-id' => '$1 kinniqpidämine võeti maaha',
 'ipblocklist' => 'Kinniqpeetüq pruukjaq',
 'ipblocklist-legend' => 'Otsiq kinniqpeetüt pruukjat',
@@ -1646,7 +1646,7 @@ inne, ku midä muudat, märgiq perrä, miä tuust tullaq või.",
 Kui om nii, sis panõq vana arotuskülg eräle vai panõq taa kokko vahtsõ arotuskülega.",
 'movearticle' => 'Panõq artiklilehekülg tõistõ paika',
 'movenologin' => 'Sa olõ-i nimega sisse lännüq',
-'movenologintext' => 'Et lehekülge tõistõ paika pandaq, piät hindä pruukjas kirjä pandma ja [[Special:wiki_userLogin|nimega sisse minemä]]',
+'movenologintext' => 'Et lehekülge tõistõ paika pandaq, piät hindä pruukjas kirjä pandma ja [[Special:UserLogin|nimega sisse minemä]]',
 'movenotallowed' => 'Sul olõ-i lupa {{SITENAME}} lehti tõistõ paika nõstaq.',
 'newtitle' => 'Vahtsõ päälkirä ala',
 'move-watch' => 'Kaeq taa lehe perrä',
@@ -1735,8 +1735,8 @@ Please visit [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and 
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|kujo|kujjo}} lehest $2',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Suq pruukjaleht',
-'tooltip-pt-anonwiki_userpage' => 'Su puutri võrgoaadrõsi pruukjaleht',
+'tooltip-pt-userpage' => 'Suq pruukjaleht',
+'tooltip-pt-anonuserpage' => 'Su puutri võrgoaadrõsi pruukjaleht',
 'tooltip-pt-mytalk' => 'Mu arotusleht',
 'tooltip-pt-anontalk' => 'Arotus taa puutri võrgoaadrõsi päält tettüisi toimõnduisi üle',
 'tooltip-pt-preferences' => 'Mu säädmiseq',
@@ -1772,13 +1772,13 @@ Please visit [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and 
 'tooltip-feed-rss' => 'Taa lehe RSS-kujo',
 'tooltip-feed-atom' => 'Taa lehe Atom-kujo',
 'tooltip-t-contributions' => 'Näütäq taa pruukja toimõnduisi nimekirjä',
-'tooltip-t-emailwiki_user' => 'Saadaq taalõ pruukjalõ e-kiri',
+'tooltip-t-emailuser' => 'Saadaq taalõ pruukjalõ e-kiri',
 'tooltip-t-upload' => 'Laadiq üles teedüstüid',
 'tooltip-t-specialpages' => 'Näütäq tallituslehekülgi',
 'tooltip-t-print' => 'Taa lehe trükükujo',
 'tooltip-t-permalink' => 'Seo lehekujo püsülink',
 'tooltip-ca-nstab-main' => 'Näütäq sisulehekülge',
-'tooltip-ca-nstab-wiki_user' => 'Näütäq pruukjalehekülge',
+'tooltip-ca-nstab-user' => 'Näütäq pruukjalehekülge',
 'tooltip-ca-nstab-media' => 'Näütäq meediälehekülge',
 'tooltip-ca-nstab-special' => 'Taa om tallituslehekülg',
 'tooltip-ca-nstab-project' => 'Näütäq projektilehekülge',
@@ -1813,11 +1813,11 @@ Kokkovõttõria pääle või kirotaq tagasivõtmisõ põhjusõ.',
 
 # Attribution
 'anonymous' => '{{SITENAME}} {{PLURAL:$1|nimeldä pruukja|nimeldä pruukjaq}}',
-'sitewiki_user' => '{{SITENAME}} pruukja $1',
+'siteuser' => '{{SITENAME}} pruukja $1',
 'lastmodifiedatby' => "Taad lehte toimõnd' viimäte ”$3” $2 kell $1.",
 'othercontribs' => 'Tennüq pruukja $1.',
 'others' => 'tõõsõq',
-'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|pruukja|pruukjaq}}  $1',
+'siteusers' => '{{SITENAME}} {{PLURAL:$2|pruukja|pruukjaq}}  $1',
 'creditspage' => 'Lehe tegijide nimekiri',
 'nocredits' => 'Taa lehe tegijide nimekirjä olõ-i.',
 
@@ -1825,7 +1825,7 @@ Kokkovõttõria pääle või kirotaq tagasivõtmisõ põhjusõ.',
 'spamprotectiontitle' => 'Prahisõgõl',
 'spamprotectiontext' => 'Prahisõgõl om lehe kinniq pidänüq ja lasõ-i taad pästäq. Tuu põhjus om arvadaq vikist välläpoolõ näütäjä link.',
 'spamprotectionmatch' => 'Tekst, midä prahisõgõl läbi lasõ-s: $1',
-'spambot_wiki_username' => 'MediaWiki prahihäötäjä',
+'spambot_username' => 'MediaWiki prahihäötäjä',
 'spam_reverting' => 'Tagasi pööret viimädse kujo pääle, koh olõ-i linke lehele $1',
 'spam_blanking' => "Kõigin kujõn oll' linke lehele $1. Leht tühäs tett.",
 
@@ -1936,7 +1936,7 @@ Kokkovõttõria pääle või kirotaq tagasivõtmisõ põhjusõ.',
 'exif-compressedbitsperpixel' => 'Pildi kokkopakmismuud',
 'exif-pixelydimension' => 'Kõlbolinõ pildi lakjus',
 'exif-pixelxdimension' => 'Kõlbolinõ pildi korgus',
-'exif-wiki_usercomment' => 'Pruukja kommõntaariq',
+'exif-usercomment' => 'Pruukja kommõntaariq',
 'exif-relatedsoundfile' => 'Manopant helüteedüstü',
 'exif-datetimeoriginal' => 'Luumisaig',
 'exif-datetimedigitized' => 'Digitalisiirmisaig',
@@ -2178,7 +2178,7 @@ Kokkovõttõria pääle või kirotaq tagasivõtmisõ põhjusõ.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Hoiatus''': taa leht om ärq kistutõt päält tuud, ku sa taad toimõndama naksit!",
-'confirmrecreate' => "Pruukja '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|arotus]]) kistut' taa lehe ärq päält tuud, ku sa naksit taad toimõndama. Põhjus oll':
+'confirmrecreate' => "Pruukja '''[[User:$1|$1]]''' ([[User talk:$1|arotus]]) kistut' taa lehe ärq päält tuud, ku sa naksit taad toimõndama. Põhjus oll':
 : ''$2''
 Olõq hää, kinnüdäq, et tahat taad lehte vahtsõst luvvaq.",
 'recreate' => 'Luuq vahtsõst',
@@ -2262,7 +2262,7 @@ Prooviq harilikku kaehust.',
 'specialpages-group-login' => 'Nimega sisseminek / Pruukjanime luuminõ',
 'specialpages-group-changes' => 'Muutmisõq ja muutmisnimekiräq',
 'specialpages-group-media' => 'Meediäteedüstüq',
-'specialpages-group-wiki_users' => 'Pruukjaq ja õigusõq',
+'specialpages-group-users' => 'Pruukjaq ja õigusõq',
 'specialpages-group-highuse' => 'Rohkõmbpruugiduq leheq',
 'specialpages-group-pages' => 'Lehenimekiräq',
 'specialpages-group-pagetools' => 'Lehetüüriistaq',

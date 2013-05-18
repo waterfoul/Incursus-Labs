@@ -68,7 +68,7 @@ class ApiQuery extends ApiBase {
 		'allimages' => 'ApiQueryAllImages',
 		'alllinks' => 'ApiQueryAllLinks',
 		'allpages' => 'ApiQueryAllPages',
-		'allwiki_users' => 'ApiQueryAllwiki_users',
+		'allusers' => 'ApiQueryAllUsers',
 		'backlinks' => 'ApiQueryBacklinks',
 		'blocks' => 'ApiQueryBlocks',
 		'categorymembers' => 'ApiQueryCategoryMembers',
@@ -86,8 +86,8 @@ class ApiQuery extends ApiBase {
 		'recentchanges' => 'ApiQueryRecentChanges',
 		'search' => 'ApiQuerySearch',
 		'tags' => 'ApiQueryTags',
-		'wiki_usercontribs' => 'ApiQueryContributions',
-		'wiki_users' => 'ApiQuerywiki_users',
+		'usercontribs' => 'ApiQueryContributions',
+		'users' => 'ApiQueryUsers',
 		'watchlist' => 'ApiQueryWatchlist',
 		'watchlistraw' => 'ApiQueryWatchlistRaw',
 	);
@@ -95,7 +95,7 @@ class ApiQuery extends ApiBase {
 	private $mQueryMetaModules = array(
 		'allmessages' => 'ApiQueryAllMessages',
 		'siteinfo' => 'ApiQuerySiteinfo',
-		'wiki_userinfo' => 'ApiQuerywiki_userInfo',
+		'userinfo' => 'ApiQueryUserInfo',
 	);
 
 	private $mSlaveDB = null;
@@ -113,9 +113,9 @@ class ApiQuery extends ApiBase {
 		// Allow custom modules to be added in LocalSettings.php
 		global $wgAPIPropModules, $wgAPIListModules, $wgAPIMetaModules,
 			$wgMemc, $wgAPICacheHelpTimeout;
-		self::appendwiki_userModules( $this->mQueryPropModules, $wgAPIPropModules );
-		self::appendwiki_userModules( $this->mQueryListModules, $wgAPIListModules );
-		self::appendwiki_userModules( $this->mQueryMetaModules, $wgAPIMetaModules );
+		self::appendUserModules( $this->mQueryPropModules, $wgAPIPropModules );
+		self::appendUserModules( $this->mQueryListModules, $wgAPIListModules );
+		self::appendUserModules( $this->mQueryMetaModules, $wgAPIMetaModules );
 
 		$this->mPropModuleNames = array_keys( $this->mQueryPropModules );
 		$this->mListModuleNames = array_keys( $this->mQueryListModules );
@@ -144,7 +144,7 @@ class ApiQuery extends ApiBase {
 	 * @param $modules array Module array
 	 * @param $newModules array Module array to add to $modules
 	 */
-	private static function appendwiki_userModules( &$modules, $newModules ) {
+	private static function appendUserModules( &$modules, $newModules ) {
 		if ( is_array( $newModules ) ) {
 			foreach ( $newModules as $moduleName => $moduleClass ) {
 				$modules[$moduleName] = $moduleClass;
@@ -169,23 +169,23 @@ class ApiQuery extends ApiBase {
 	 * Get the query database connection with the given name.
 	 * If no such connection has been requested before, it will be created.
 	 * Subsequent calls with the same $name will return the same connection
-	 * as the first, regardless of the values of  and $groups
+	 * as the first, regardless of the values of $db and $groups
 	 * @param $name string Name to assign to the database connection
-	 * @param  int One of the DB_* constants
+	 * @param $db int One of the DB_* constants
 	 * @param $groups array Query groups
 	 * @return DatabaseBase
 	 */
-	public function getNamedDB( $name, , $groups ) {
+	public function getNamedDB( $name, $db, $groups ) {
 		if ( !array_key_exists( $name, $this->mNamedDB ) ) {
 			$this->profileDBIn();
-			$this->mNamedDB[$name] = wfGetDB( , $groups );
+			$this->mNamedDB[$name] = wfGetDB( $db, $groups );
 			$this->profileDBOut();
 		}
 		return $this->mNamedDB[$name];
 	}
 
 	/**
-	 * Gets the set of pages the wiki_user has requested (or generated)
+	 * Gets the set of pages the user has requested (or generated)
 	 * @return ApiPageSet
 	 */
 	public function getPageSet() {
@@ -238,7 +238,7 @@ class ApiQuery extends ApiBase {
 
 	/**
 	 * Query execution happens in the following steps:
-	 * #1 Create a PageSet object with any pages requested by the wiki_user
+	 * #1 Create a PageSet object with any pages requested by the user
 	 * #2 If using a generator, execute it to get a new ApiPageSet object
 	 * #3 Instantiate all requested modules.
 	 *    This way the PageSet object will know what shared data is required,
@@ -263,7 +263,7 @@ class ApiQuery extends ApiBase {
 
 		$cacheMode = 'public';
 
-		// If given, execute generator to substitute wiki_user supplied data with generated data.
+		// If given, execute generator to substitute user supplied data with generated data.
 		if ( isset( $this->params['generator'] ) ) {
 			$generator = $this->newGenerator( $this->params['generator'] );
 			$params = $generator->extractRequestParams();
@@ -307,9 +307,9 @@ class ApiQuery extends ApiBase {
 	 * @return string
 	 */
 	protected function mergeCacheMode( $cacheMode, $modCacheMode ) {
-		if ( $modCacheMode === 'anon-public-wiki_user-private' ) {
+		if ( $modCacheMode === 'anon-public-user-private' ) {
 			if ( $cacheMode !== 'private' ) {
-				$cacheMode = 'anon-public-wiki_user-private';
+				$cacheMode = 'anon-public-user-private';
 			}
 		} elseif ( $modCacheMode === 'public' ) {
 			// do nothing, if it's public already it will stay public
@@ -514,7 +514,7 @@ class ApiQuery extends ApiBase {
 		$titles = $pageSet->getGoodTitles();
 		if ( count( $titles ) ) {
 			foreach ( $titles as $title ) {
-				if ( $title->wiki_userCan( 'read' ) ) {
+				if ( $title->userCan( 'read' ) ) {
 					$exportTitles[] = $title;
 				}
 			}
@@ -585,7 +585,7 @@ class ApiQuery extends ApiBase {
 		$generator->requestExtraData( $this->mPageSet );
 		$this->addCustomFldsToPageSet( $modules, $resultPageSet );
 
-		// Populate page information with the original wiki_user input
+		// Populate page information with the original user input
 		$this->mPageSet->execute();
 
 		// populate resultPageSet with the generator output
@@ -738,7 +738,7 @@ class ApiQuery extends ApiBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=query&prop=revisions&meta=siteinfo&titles=Main%20Page&rvprop=wiki_user|comment',
+			'api.php?action=query&prop=revisions&meta=siteinfo&titles=Main%20Page&rvprop=user|comment',
 			'api.php?action=query&generator=allpages&gapprefix=API/&prop=revisions',
 		);
 	}

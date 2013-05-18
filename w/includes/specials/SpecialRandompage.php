@@ -23,7 +23,7 @@
  */
 
 /**
- * Special page to direct the wiki_user to a random page
+ * Special page to direct the user to a random page
  *
  * @ingroup SpecialPage
  */
@@ -67,7 +67,7 @@ class RandomPage extends SpecialPage {
 			$this->getOutput()->addWikiMsg( strtolower( $this->getName() ) . '-nopages',
 				$this->getNsList(), count( $this->namespaces ) );
 			return;
-		} elseif ( method_exists( $title, 'wiki_userCanReadEx' ) && !$title->wiki_userCanReadEx() ) {
+		} elseif ( method_exists( $title, 'userCanReadEx' ) && !$title->userCanReadEx() ) {
 			$article = new Article( $title );
 			$article->view();
 			return;
@@ -149,10 +149,10 @@ class RandomPage extends SpecialPage {
 	}
 
 	private function selectRandomPageFromDB( $randstr, $fname = __METHOD__ ) {
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$query = $this->getQueryInfo( $randstr );
-		$res = r->select(
+		$res = $dbr->select(
 			$query['tables'],
 			$query['fields'],
 			$query['conds'],
@@ -161,6 +161,6 @@ class RandomPage extends SpecialPage {
 			$query['join_conds']
 		);
 
-		return r->fetchObject( $res );
+		return $dbr->fetchObject( $res );
 	}
 }

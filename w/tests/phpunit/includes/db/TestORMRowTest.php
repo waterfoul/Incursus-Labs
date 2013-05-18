@@ -61,15 +61,15 @@ class TestORMRowTest extends ORMRowTest {
 	public function setUp() {
 		parent::setUp();
 
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		$isSqlite = $GLOBALS['wgDBtype'] === 'sqlite';
 
 		$idField = $isSqlite ? 'INTEGER' : 'INT unsigned';
 		$primaryKey = $isSqlite ? 'PRIMARY KEY AUTOINCREMENT' : 'auto_increment PRIMARY KEY';
 
-		w->query(
-			'CREATE TABLE IF NOT EXISTS ' . w->tableName( 'orm_test' ) . '(
+		$dbw->query(
+			'CREATE TABLE IF NOT EXISTS ' . $dbw->tableName( 'orm_test' ) . '(
 				test_id                    ' . $idField . '        NOT NULL ' . $primaryKey . ',
 				test_name                  VARCHAR(255)        NOT NULL,
 				test_age                   TINYINT unsigned    NOT NULL,

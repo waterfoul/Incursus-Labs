@@ -52,7 +52,7 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 	 * @param $resultPageSet ApiPageSet
 	 */
 	private function run( $resultPageSet = null ) {
-		 = $this->getDB();
+		$db = $this->getDB();
 		$params = $this->extractRequestParams();
 
 		$this->addTables( 'category' );
@@ -65,7 +65,7 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 					"original value returned by the previous query", "_badcontinue" );
 			}
 			$op = $params['dir'] == 'descending' ? '<' : '>';
-			$cont_from = ->addQuotes( $cont[0] );
+			$cont_from = $db->addQuotes( $cont[0] );
 			$this->addWhere( "cat_title $op= $cont_from" );
 		}
 
@@ -84,7 +84,7 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
     
 
 		if ( isset( $params['prefix'] ) ) {
-			$this->addWhere( 'cat_title' . ->buildLike( $this->titlePartToKey( $params['prefix'] ), ->anyString() ) );
+			$this->addWhere( 'cat_title' . $db->buildLike( $this->titlePartToKey( $params['prefix'] ), $db->anyString() ) );
 		}
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );

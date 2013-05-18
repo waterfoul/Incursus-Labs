@@ -38,7 +38,7 @@ $namespaceNames = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Pòdsztrëchiwùjë lënczi:',
 'tog-justify' => 'Wërównanié (justifikacëjô) paragrafów',
 'tog-hideminor' => 'Zatacë môłi edicëje w slédnëch zmianach',
@@ -62,7 +62,7 @@ $messages = array(
 'tog-previewonfirst' => 'Pòkażë pòdzérk ju przed pierszą edicëją',
 'tog-nocache' => 'Wëłączë pòdrãczną pamiãc w przezérnikù',
 'tog-enotifwatchlistpages' => 'Wëslë mie e-mail czedë starna jaką ùzéróm je zmieniwónô',
-'tog-enotifwiki_usertalkpages' => 'Wëslë mie e-mail czedë zmieniwónô je mòja starna diskùsëji',
+'tog-enotifusertalkpages' => 'Wëslë mie e-mail czedë zmieniwónô je mòja starna diskùsëji',
 'tog-enotifminoredits' => 'Wëslë mie e-mail téż dlô môłich zmianów starnów',
 'tog-enotifrevealaddr' => 'Pòkażë mòją adresã e-mail w òdkôzëwùjącym mailu',
 'tog-shownumberswatching' => 'Pòkażë lëczba ùzérającëch brëkòwników',
@@ -236,7 +236,7 @@ $messages = array(
 'talk' => 'Diskùsëjô',
 'views' => 'Pòdzérków',
 'toolbox' => 'Przërëchtënczi',
-'wiki_userpage' => 'Wëskrzëni starnã brëkòwnika',
+'userpage' => 'Wëskrzëni starnã brëkòwnika',
 'projectpage' => 'Wëskrzëni stranã ùdbë',
 'imagepage' => 'Starna lopka',
 'mediawikipage' => 'Wëskrzëni starnã wiadła',
@@ -254,7 +254,7 @@ $messages = array(
 'jumptonavigation' => 'nawigacëji',
 'jumptosearch' => 'szëkbë',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Ò {{SITENAME}}',
 'aboutpage' => 'Project:Ò_{{SITENAME}}',
 'copyright' => 'Zamkłosc hewòtny starnë je ùżëczónô wedle reglów $1.',
@@ -311,7 +311,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Artikel',
-'nstab-wiki_user' => 'Starna brëkòwnika',
+'nstab-user' => 'Starna brëkòwnika',
 'nstab-media' => 'Starna lopków',
 'nstab-special' => 'Specjalnô starna',
 'nstab-project' => 'meta-starna',
@@ -337,7 +337,7 @@ To mòże bëc téż fela softwôrë brëkòwóny przez {{SITENAME}}.',
 Zwëczajno je to sparłãczoné òdsélaniém do nieaktualnégò lënka nierównoscë dwóch wersëjów starnë abò do rëmniãti wersëji starnë.
 
 Jeżlë tak nie je, mòżlëwé je, że je to problem sparłãczony z felą w softwôrze.
-Mòże to zgłoszëc [[Special:Listwiki_users/sysop|sprôwnikòwi]], pòdając adresã URL.',
+Mòże to zgłoszëc [[Special:ListUsers/sysop|sprôwnikòwi]], pòdając adresã URL.',
 'missingarticle-rev' => '(wersëjô $1)',
 'internalerror' => 'Bënowô fela',
 'filecopyerror' => 'Ni mòże skòpérowac lopka "$1" do "$2".',
@@ -354,7 +354,7 @@ Przemëszlë dolmaczënié na [//translatewiki.net/wiki/Main_Page?setlang=csb tr
 
 # Login and logout pages
 'logouttext' => "'''Jes wëlogòwóny.'''
-Mòżesz robic dali na {{SITENAME}} jakno anonimòwi brëkòwnik abò sã [[Special:wiki_userLogin|wlogòwac]] znowa jakno równy, a bò jinszi brëkòwnik.
+Mòżesz robic dali na {{SITENAME}} jakno anonimòwi brëkòwnik abò sã [[Special:UserLogin|wlogòwac]] znowa jakno równy, a bò jinszi brëkòwnik.
 Bôczë, że do czasu wëczëszczenia pòdrãczny pamiãcë przezérnika, niejedné starnë bãdą wëzdrzëc jakbë të bëł wlogòwóny.",
 'welcomecreation' => ' == Witôj, $1! ==
 Twòjé kònto òstało prawie ùsôdzoné.
@@ -367,10 +367,10 @@ Nie zbëjë zmienic swòjich nastôwów na [[Special:Preferences|{{SITENAME}}]].
 'login' => 'Wlogùjë mie',
 'nav-login-createaccount' => 'Logòwanié',
 'loginprompt' => "Brëkùjesz miec ''cookies'' (kùszczi) włączoné bë sã wlogòwac do {{SITENAME}}.",
-'wiki_userlogin' => 'Logòwanié',
-'wiki_userloginnocreate' => 'Wlogùjë mie',
+'userlogin' => 'Logòwanié',
+'userloginnocreate' => 'Wlogùjë mie',
 'logout' => 'Wëlogùjë mie',
-'wiki_userlogout' => 'Wëlogòwanié',
+'userlogout' => 'Wëlogòwanié',
 'notloggedin' => 'Felëje logòwóniô',
 'nologin' => "Ni môsz kònta? '''$1'''.",
 'nologinlink' => 'Ùsôdzë kònto',
@@ -379,13 +379,13 @@ Nie zbëjë zmienic swòjich nastôwów na [[Special:Preferences|{{SITENAME}}]].
 'gotaccountlink' => 'Wlogùjë',
 'createaccountmail' => 'òb e-mail',
 'badretype' => 'Wprowadzone parole jinaczą sã midze sobą.',
-'wiki_userexists' => 'To miono brëkòwnika je ju w ùżëcym. Proszã wëbrac jiné miono.',
+'userexists' => 'To miono brëkòwnika je ju w ùżëcym. Proszã wëbrac jiné miono.',
 'loginerror' => 'Fela logòwaniô',
 'loginsuccesstitle' => 'ùdałé logòwanié',
 'loginsuccess' => 'Të jes wlogòwóny do {{SITENAME}} jakno "$1".',
-'nosuchwiki_user' => 'Nie dô brëkòwnika ò mionie "$1".
-Sprôwdzë pisënk abò [[Special:wiki_userLogin/signup|ùsôdzë nowé kònto]].',
-'nowiki_userspecified' => 'Mùszisz pòdac miono brëkòwnika.',
+'nosuchuser' => 'Nie dô brëkòwnika ò mionie "$1".
+Sprôwdzë pisënk abò [[Special:UserLogin/signup|ùsôdzë nowé kònto]].',
+'nouserspecified' => 'Mùszisz pòdac miono brëkòwnika.',
 'wrongpassword' => 'Lëchô parola.
 Spróbùjë znowa.',
 'wrongpasswordempty' => 'Wpisónô parola je pùstô
@@ -468,7 +468,7 @@ Proszëmë pòdac wëższé pòdôłczi przë wszëtczich pëtaniach.",
 'loginreqlink' => 'Wlogùjë',
 'loginreqpagetext' => '$1 sã, żebë przezérac jinszé starnë.',
 'accmailtitle' => 'Parola wësłónô.',
-'accmailtext' => "Przëtrôfkòwò wëgenerowónô parola dlô [[wiki_user talk:$1|$1]] òsta wësłónô do $2.
+'accmailtext' => "Przëtrôfkòwò wëgenerowónô parola dlô [[User talk:$1|$1]] òsta wësłónô do $2.
 
 Parolã dlô negò nowégò kònta mòże zmienic pò wlogòwaniu na starnie ''[[Special:ChangePassword|zjinaka parolë]]''.",
 'newarticle' => '(Nowi)',
@@ -479,7 +479,7 @@ Jeżlë jes të tuwò bez zmiłkã, le klëkni w swòjim przezérnikù knąpã '
 'anontalkpagetext' => "----''To je starna dyskùsëji anonimòwiégò brëkòwnika, chtëren nie ùsôdzëł jesz swòjegò kòntae, abò gò nie brëkùje.
 Abë gò rozpòznac, ùżëwómë adresów IP.
 Takô adresa IP, mòże bëc równak brëkòwónô przez wiele lëdzy.
-Jeżlë jes anonimòwim brëkòwnikã ë ùwôżôsz, że ne wiadła nie są do ce sczerowóne, tedë [[Special:wiki_userLogin/signup|ùsôdzë nowé kònto]] abò [[Special:wiki_userLogin|wlogùjë sã]], bë niechac niezrozmeiniô z jinyma anonimòwima brëkòwnikama.''",
+Jeżlë jes anonimòwim brëkòwnikã ë ùwôżôsz, że ne wiadła nie są do ce sczerowóne, tedë [[Special:UserLogin/signup|ùsôdzë nowé kònto]] abò [[Special:UserLogin|wlogùjë sã]], bë niechac niezrozmeiniô z jinyma anonimòwima brëkòwnikama.''",
 'noarticletext' => 'Felëje starna ò tim titlu.
 Mòżesz [[Special:Search/{{PAGENAME}}|szëkac za {{PAGENAME}} na jinych starnach]],
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} szëkac w logù] abò [{{fullurl:{{FULLPAGENAME}}|action=edit}} ùsôdzëc nã starnã]</span>',
@@ -648,7 +648,7 @@ Negò dzéjaniô ni mòżé pòzdze ju copnąc.',
 'prefs-emailconfirm-label' => 'Pòcwierdzenié e-mailowi adresë:',
 'prefs-textboxsize' => 'Miara edicjowégò òkna',
 'youremail' => 'E-mail:',
-'wiki_username' => 'Miono brëkòwnika:',
+'username' => 'Miono brëkòwnika:',
 'uid' => 'ID brëkòwnika:',
 'prefs-memberingroups' => 'Nôlëżnik {{PLURAL:$1|karna|karnów}}',
 'prefs-registration' => 'Czas registracëji:',
@@ -666,12 +666,12 @@ Mô bëc mni jakno $1 {{PLURAL:$1|znak|znaczi/znaków}}.',
 'prefs-help-email' => 'Adresa e-mail je òptacëjnô, zezwôlô równak sélac do ce nową parolã jak tã zabëjesz.
 Mòżesz zezwòlëc jinszim brëkòwniką na łączbã z Tobą przez Twòją starnã abò starnã diskùsëji, bez mùszebnotë wëskrzënianiô swòjich pòdôwków.',
 
-# wiki_user rights
-'editingwiki_user' => "Zmiana praw brëkòwnika '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+# User rights
+'editinguser' => "Zmiana praw brëkòwnika '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Groups
 'group' => 'Karno:',
-'group-wiki_user' => 'Brëkòwnicë',
+'group-user' => 'Brëkòwnicë',
 'group-autoconfirmed' => 'Aùtomatno zacwierdzony brëkòwnicë',
 'group-bot' => 'Bòtë',
 'group-sysop' => 'Sprôwnicë',
@@ -679,14 +679,14 @@ Mòżesz zezwòlëc jinszim brëkòwniką na łączbã z Tobą przez Twòją sta
 'group-suppress' => 'Rewizorzë',
 'group-all' => '(wszëtcë)',
 
-'group-wiki_user-member' => '{{GENDER:$1|Brëkòwnik}}',
+'group-user-member' => '{{GENDER:$1|Brëkòwnik}}',
 'group-autoconfirmed-member' => 'aùtomatno zacwierdzony brëkòwnik',
 'group-bot-member' => 'bòt',
 'group-sysop-member' => 'sprôwnik',
 'group-bureaucrat-member' => 'biurokrata',
 'group-suppress-member' => 'rewizora',
 
-'grouppage-wiki_user' => '{{ns:project}}:Brëkòwnicë',
+'grouppage-user' => '{{ns:project}}:Brëkòwnicë',
 'grouppage-autoconfirmed' => '{{ns:project}}:Aùtomatno zacwierdzeni brëkòwnicë',
 'grouppage-bot' => '{{ns:project}}:Bòtë',
 'grouppage-sysop' => '{{ns:project}}:Sprôwnicë',
@@ -702,7 +702,7 @@ Mòżesz zezwòlëc jinszim brëkòwniką na łączbã z Tobą przez Twòją sta
 'right-minoredit' => 'Céchòwanié edicëjów jakno drobnëch',
 'right-move' => 'Przenoszenié starnów',
 'right-move-subpages' => 'Przenoszenié starnów do grëpë z pòdstarnama',
-'right-move-rootwiki_userpages' => 'Przenoszenié starnów brëkòwników',
+'right-move-rootuserpages' => 'Przenoszenié starnów brëkòwników',
 'right-movefile' => 'Przenoszenié lopków',
 'right-suppressredirect' => 'Przenoszenié starnów bez ùsôdzania przeczérowaniów na placu stôregò miona',
 'right-upload' => 'Wladënk lopków',
@@ -714,7 +714,7 @@ Mòżesz zezwòlëc jinszim brëkòwniką na łączbã z Tobą przez Twòją sta
 'right-autoconfirmed' => 'Edicëjô dzélowò zazychrowónych starnów',
 'right-bot' => 'Nacéchòwanié edicëjó jakno aùtomatnych',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Prawa brëkòwnika',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -786,7 +786,7 @@ Wszëtczé gòdzënë tikają conë ùniwersalnégò czasë.',
 
 # Special:ListFiles
 'listfiles' => 'Lësta òbrôzków',
-'listfiles_wiki_user' => 'Brëkòwnik',
+'listfiles_user' => 'Brëkòwnik',
 
 # File description page
 'file-anchor-link' => 'Òbrôzk',
@@ -797,7 +797,7 @@ Wszëtczé gòdzënë tikają conë ùniwersalnégò czasë.',
 'filehist-datetime' => 'Datum/Czas',
 'filehist-thumb' => 'Miniatura',
 'filehist-thumbtext' => 'Miniatura wersëji z $1',
-'filehist-wiki_user' => 'Brëkòwnik',
+'filehist-user' => 'Brëkòwnik',
 'filehist-dimensions' => 'Miara',
 'filehist-filesize' => 'Miara lopka',
 'filehist-comment' => 'Òpisënk',
@@ -818,7 +818,7 @@ Wszëtczé gòdzënë tikają conë ùniwersalnégò czasë.',
 
 # Statistics
 'statistics' => 'Statisticzi',
-'statistics-header-wiki_users' => 'Statistika brëkòwników',
+'statistics-header-users' => 'Statistika brëkòwników',
 
 'disambiguationspage' => 'Template:Starnë_ùjednoznacznieniô',
 
@@ -845,9 +845,9 @@ Wszëtczé gòdzënë tikają conë ùniwersalnégò czasë.',
 'shortpages' => 'Nôkrótszé starnë',
 'longpages' => 'Nôdłëgszé starnë',
 'protectedpages' => 'Zazychrowóné starnë',
-'listwiki_users' => 'Lësta brëkòwników',
+'listusers' => 'Lësta brëkòwników',
 'newpages' => 'Nowé starnë',
-'newpages-wiki_username' => 'Miono brëkòwnika:',
+'newpages-username' => 'Miono brëkòwnika:',
 'ancientpages' => 'Nôstarszé starnë',
 'move' => 'Przeniesë',
 'movethispage' => 'Przeniesë',
@@ -861,7 +861,7 @@ Wszëtczé gòdzënë tikają conë ùniwersalnégò czasë.',
 'booksources-go' => 'Biéj',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Brëkòwnik:',
+'specialloguserlabel' => 'Brëkòwnik:',
 'speciallogtitlelabel' => 'Titel:',
 'log' => 'Lodżi',
 'alllogstext' => 'Sparłãczoné registrë wszëtczich ôrtów dzejaniô dlô {{SITENAME}}.
@@ -888,14 +888,14 @@ Mòżesz zawãżëc wëszłosc przez wëbranié ôrtu registru, miona brëkòwni
 # Special:LinkSearch
 'linksearch' => 'Bùtnowé lënczi',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Nowi brëkòwnicë',
+# Special:Log/newusers
+'newuserlogpage' => 'Nowi brëkòwnicë',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(lësta nôlëżników karna)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Wëslë e-maila do negò brëkòwnika',
+# E-mail user
+'emailuser' => 'Wëslë e-maila do negò brëkòwnika',
 'emailpage' => 'Sélajë e-mail do brëkòwnika',
 'defemailsubject' => 'E-mail òd {{SITENAME}}',
 'noemailtitle' => 'Felënk email-adresë',
@@ -956,10 +956,10 @@ Czej chcesz remôc starnã z lëste ùzéronëch artiklów, klikni ''Òprzestôj
 'rollback' => 'Copnij edicëjã',
 'rollbacklink' => 'copnij',
 'rollbackfailed' => 'Nie szło copnąc zmianë',
-'alreadyrolled' => 'Ni mòże copnąc slédny edicëji starnë [[:$1]], chtërny ùsôdzcą je [[wiki_user:$2|$2]] ([[wiki_user talk:$2|Diskùsëjô]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
+'alreadyrolled' => 'Ni mòże copnąc slédny edicëji starnë [[:$1]], chtërny ùsôdzcą je [[User:$2|$2]] ([[User talk:$2|Diskùsëjô]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
 chtos jiny ju zeditowôł starnã abò copnął zmianë.
 
-Slédnym ùsódzcą starnë bëł [[wiki_user:$3|$3]] ([[wiki_user talk:$3|Diskùsëjô]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+Slédnym ùsódzcą starnë bëł [[User:$3|$3]] ([[User talk:$3|Diskùsëjô]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 
 # Protect
 'protectlogpage' => 'Zazychrowóné',
@@ -1012,7 +1012,7 @@ Mòżesz zmienic légã zazychrowaniô, nie bãdze to równak miało cëskù na 
 'sp-contributions-blocklog' => 'historëjô blokòwaniô',
 'sp-contributions-talk' => 'diskùsëjô',
 'sp-contributions-search' => 'Szëkba za edicëjama',
-'sp-contributions-wiki_username' => 'Adresa IP abò miono brëkòwnika:',
+'sp-contributions-username' => 'Adresa IP abò miono brëkòwnika:',
 'sp-contributions-submit' => 'Szëkôj',
 
 # What links here
@@ -1040,7 +1040,7 @@ Mòżesz zmienic légã zazychrowaniô, nie bãdze to równak miało cëskù na 
 'ipbotheroption' => 'jinszi cząd',
 'ipbotherreason' => 'Jinszé abù dodôwné przëczënë:',
 'ipbhidename' => 'Zatacë miono brëkòwnika ë edicëjach ë lëstach',
-'ipbwatchwiki_user' => 'Ùzérôj starnã brëkòwnika ë jegò starnã diskùsëji',
+'ipbwatchuser' => 'Ùzérôj starnã brëkòwnika ë jegò starnã diskùsëji',
 'badipaddress' => 'IP-adresa nie je richtich pòdónô.',
 'blockipsuccesssub' => 'Zascëgónié dało sã',
 'blockipsuccesstext' => 'Brëkòwnik [[Special:Contributions/$1|$1]] òstał zascëgóny.<br />
@@ -1050,7 +1050,7 @@ Biéj do [[Special:BlockList|lëstë zascëgónëch adresów IP]] abë òbaczëc
 'unblocklink' => 'òdblokùjë',
 'change-blocklink' => 'zmieni blokòwanié',
 'contribslink' => 'wkłôd',
-'autoblocker' => 'Zablokòwóno ce aùtomatnie, ga brëkùjesz ti sami adresë IP co brëkòwnik "[[wiki_user:$1|$1]]". Przëczënô blokòwóniô $1 to: "\'\'\'$2\'\'\'".',
+'autoblocker' => 'Zablokòwóno ce aùtomatnie, ga brëkùjesz ti sami adresë IP co brëkòwnik "[[User:$1|$1]]". Przëczënô blokòwóniô $1 to: "\'\'\'$2\'\'\'".',
 'blocklogpage' => 'Historëjô blokòwaniô',
 'blocklogentry' => 'zablokòwôł [[$1]], czas blokadë: $2 $3',
 'unblocklogentry' => 'òdblokòwôł $1',
@@ -1115,7 +1115,7 @@ Proszã zazdrzë na [//www.mediawiki.org/wiki/Localisation Lokalizacëjô MediaW
 'import' => 'Impòrtëjë starnë',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Twòja starna brëkòwnika',
+'tooltip-pt-userpage' => 'Twòja starna brëkòwnika',
 'tooltip-pt-mytalk' => 'Twòjô starna diskùsëji',
 'tooltip-pt-preferences' => 'Mòje nastôwë',
 'tooltip-pt-watchlist' => 'Lësta artiklów jaczé òbzérôsz za zmianama',
@@ -1149,13 +1149,13 @@ Mòżesz òbaczëc ji zdrój.',
 'tooltip-feed-rss' => 'Pòwrózk RSS dlô ti starnë',
 'tooltip-feed-atom' => 'Pòwrôzk Atom dlô ti starnë',
 'tooltip-t-contributions' => 'Wëskrzëni lëstã edicëji negò brëkòwnika',
-'tooltip-t-emailwiki_user' => 'Wëslë e-mail do tegò brëkòwnika',
+'tooltip-t-emailuser' => 'Wëslë e-mail do tegò brëkòwnika',
 'tooltip-t-upload' => 'Wladëjë lopczi',
 'tooltip-t-specialpages' => 'Lësta specjalnëch starnów',
 'tooltip-t-print' => 'Wersëjô ti starnë do drëkù',
 'tooltip-t-permalink' => 'Prosti lënk do ti wersëji starnë',
 'tooltip-ca-nstab-main' => 'Wëskrzëni starnã zamkłoscë',
-'tooltip-ca-nstab-wiki_user' => 'Wëskrzëni starnã brëkòwnika',
+'tooltip-ca-nstab-user' => 'Wëskrzëni starnã brëkòwnika',
 'tooltip-ca-nstab-special' => 'To je specjlanô starna, chtërny ni mòżesz editowac',
 'tooltip-ca-nstab-project' => 'Òbôczë starnã ùdbë',
 'tooltip-ca-nstab-image' => 'Wëskrzëni starnã lopka',
@@ -1177,7 +1177,7 @@ Zezwôlô na dodanié przëczënë zjinaczi w òpisënkù.',
 
 # Attribution
 'anonymous' => 'Anonimòwi {{PLURAL:$1|brëkòwnik|brëkòwnicë}} na {{SITENAME}}',
-'sitewiki_user' => 'Brëkòwnik {{SITENAME}} $1',
+'siteuser' => 'Brëkòwnik {{SITENAME}} $1',
 'lastmodifiedatby' => 'Na starna bëła slédno editowónô $2, $1 przez $3.',
 'othercontribs' => 'Òpiarté na prôcë $1.',
 'others' => 'jiné',

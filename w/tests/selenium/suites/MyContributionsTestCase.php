@@ -31,7 +31,7 @@ require_once dirname( __DIR__ ) . '/SeleniumTestConstants.php';
 
 class MyContributionsTestCase extends SeleniumTestCase {
 
-    // Verify wiki_user contributions
+    // Verify user contributions
     public function testRecentChangesAvailability() {
 
         $newPage = $this->createNewTestPage( "MyContributionsTest" );

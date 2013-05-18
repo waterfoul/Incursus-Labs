@@ -8,8 +8,8 @@
 ALTER TABLE /*$wgDBprefix*/revision
   DROP COLUMN inverse_timestamp,
   DROP INDEX page_timestamp,
-  DROP INDEX wiki_user_timestamp,
-  DROP INDEX wiki_usertext_timestamp,
+  DROP INDEX user_timestamp,
+  DROP INDEX usertext_timestamp,
   ADD  INDEX page_timestamp (rev_page,rev_timestamp),
-  ADD  INDEX wiki_user_timestamp (rev_wiki_user,rev_timestamp),
-  ADD  INDEX wiki_usertext_timestamp (rev_wiki_user_text,rev_timestamp);
+  ADD  INDEX user_timestamp (rev_user,rev_timestamp),
+  ADD  INDEX usertext_timestamp (rev_user_text,rev_timestamp);

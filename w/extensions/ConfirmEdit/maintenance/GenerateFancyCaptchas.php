@@ -30,7 +30,7 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 require_once( "$IP/maintenance/Maintenance.php" );
 
 /**
- * Maintenance script to change the password of a given wiki_user.
+ * Maintenance script to change the password of a given user.
  *
  * @ingroup Maintenance
  */

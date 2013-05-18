@@ -13,7 +13,7 @@
  */
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Lingk andalainin',
 'tog-justify' => 'Jostifai paragraaf',
 'tog-hideminor' => 'Aid maina edit ina riisant chienj',
@@ -36,7 +36,7 @@ $messages = array(
 'tog-previewonfirst' => 'Shuo priivyuu pahn fos edit',
 'tog-nocache' => 'Disiebl brouza piej kiashin',
 'tog-enotifwatchlistpages' => 'E-miel mi wen piej pahn mi wachlis chienj',
-'tog-enotifwiki_usertalkpages' => 'E-miel mi wen mi yuuza taak piej chienj',
+'tog-enotifusertalkpages' => 'E-miel mi wen mi yuuza taak piej chienj',
 'tog-enotifminoredits' => 'E-miel mi alzwel fi maina edit pahn piej',
 'tog-enotifrevealaddr' => 'Riviil mi e-miel ajres ina nuotifikieshan e-miel',
 'tog-shownumberswatching' => 'Shuo di nomba a wachin yuuza',
@@ -217,7 +217,7 @@ Lef aaf dif afta pofaamin ruolbak',
 'talk' => 'Diskoshan',
 'views' => 'Vyuu',
 'toolbox' => 'Tuulbax',
-'wiki_userpage' => 'Vyuu yuuza piej',
+'userpage' => 'Vyuu yuuza piej',
 'projectpage' => 'Vyuu prajek piej',
 'imagepage' => 'Vyuu fail piej',
 'mediawikipage' => 'Vyuu mechiz piej',
@@ -243,7 +243,7 @@ $1',
 'pool-queuefull' => 'Puul kyuu fulop',
 'pool-errorunknown' => 'Anuon era',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Habowt {{SITENAME}}',
 'aboutpage' => 'Project: About',
 'copyright' => 'Kantent avielobl anda $1.',
@@ -301,7 +301,7 @@ Si [[Special:Version|voerjan piej]].',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Piej',
-'nstab-wiki_user' => 'Yuuza piej',
+'nstab-user' => 'Yuuza piej',
 'nstab-media' => 'Midia piej',
 'nstab-special' => 'Peshal piej',
 'nstab-project' => 'Prajek piej',
@@ -346,7 +346,7 @@ Di adminischrieta uu laki aafa dis explanieshan: $1',
 Dis yuujal kaaz ef ifala outdiet dif ar ischri lingk to piej wa diliit.
 
 Ef dis a no di kies, a maita fain yu fain bog ina di saafwier.
-Begyu ripuot dis tu wahn [[Special:Listwiki_users/sysop|administrieta]], mek nuot a di URL.',
+Begyu ripuot dis tu wahn [[Special:ListUsers/sysop|administrieta]], mek nuot a di URL.',
 'missingarticle-rev' => '(rivijan#: $1)',
 'missingarticle-diff' => '(Dif: $1, $2)',
 'readonly_lag' => 'Di dietabies aatamatikali lak wails di sliev dietabies soervadem kechop tu di maasta',
@@ -392,7 +392,7 @@ Fi chranslieshan, begyu kansida fi yuuz [//translatewiki.net/wiki/Main_Page?setl
 $2',
 'namespaceprotected' => "Yu no gat no pomishan fi edit piej ina di '''$1''' niemspies.",
 'ns-specialprotected' => 'Peshal piejdem kyaahn edit.',
-'titleprotected' => 'Dis taikl protek frahn krieshan bai [[wiki_user:$1|$1]].
+'titleprotected' => 'Dis taikl protek frahn krieshan bai [[User:$1|$1]].
 Di riizn dehn gi a "\'\'$2\'\'".',
 
 # Virus scanner
@@ -403,7 +403,7 @@ Di riizn dehn gi a "\'\'$2\'\'".',
 # Login and logout pages
 'logouttext' => "'''Yu nou lag out.'''
 
-Yu kiahn kantiniu yuuz {{SITENAME}} ananimosli, ar yu kiahn [[Special:wiki_userLogin|lag iin agen]] az di siem ar az difrant yuuza.
+Yu kiahn kantiniu yuuz {{SITENAME}} ananimosli, ar yu kiahn [[Special:UserLogin|lag iin agen]] az di siem ar az difrant yuuza.
 Nuot se som piej maita kantiniu fi displie laik se yu stil log iin, antel yu klier yu brouza kiash.",
 'welcomecreation' => '== Welkom, $1! ==
 Yu akount don kriet.
@@ -417,21 +417,21 @@ No figat fi chienj yu [[Special:Preferences|{{SITENAME}} prefransdem]].',
 'login' => 'Lag iin',
 'nav-login-createaccount' => 'Lag iin / kriet akount',
 'loginprompt' => 'Yu mos ab kukidem eniebl fi lag iin tu {{SITENAME}}.',
-'wiki_userlogin' => 'Lag iin / kriet akount',
-'wiki_userloginnocreate' => 'Lag iin',
+'userlogin' => 'Lag iin / kriet akount',
+'userloginnocreate' => 'Lag iin',
 'logout' => 'Lag out',
-'wiki_userlogout' => 'Lag out',
+'userlogout' => 'Lag out',
 'notloggedin' => 'No lag iin',
 'nologin' => 'Naa no akount? $1.',
 'nologinlink' => 'Kriet a akount',
 'createaccount' => 'Kriet akount',
 'gotaccount' => 'Aredi gat akount? $1.',
 'gotaccountlink' => 'Lag iin',
-'wiki_userlogin-resetlink' => 'Figet yu lagin detail dem?',
+'userlogin-resetlink' => 'Figet yu lagin detail dem?',
 'createaccountmail' => 'Bai e-miel',
 'createaccountreason' => 'Riizn:',
 'badretype' => 'Di paaswod yu enta no mach.',
-'wiki_userexists' => 'Yuuza niem enta aredi a yuuz.
+'userexists' => 'Yuuza niem enta aredi a yuuz.
 Begyu chuuz wahn difrahn niem.',
 'loginerror' => 'Lagiin era',
 'createaccounterror' => 'Kudn kriet akount: $1',
@@ -445,13 +445,13 @@ Begyu eniebl dem ahn chrai agen.',
 'noname' => 'Yu no spesifai no valid yuuza niem.',
 'loginsuccesstitle' => 'Lagiin soksesful',
 'loginsuccess' => "'''Yu nou lag iin tu {{SITENAME}} az \"\$1\".'''",
-'nosuchwiki_user' => 'No yuuza no de bai di niem "$1".
+'nosuchuser' => 'No yuuza no de bai di niem "$1".
 Yuuza niem kies sensitiv.
-Chek yu spelin, ar [[Special:wiki_userLogin/signup|kriet a nyuu akount]].',
-'nosuchwiki_usershort' => 'No yuuza no de bai di niem "$1".
+Chek yu spelin, ar [[Special:UserLogin/signup|kriet a nyuu akount]].',
+'nosuchusershort' => 'No yuuza no de bai di niem "$1".
 Chek yu spelin.',
-'nowiki_userspecified' => 'Yu afi spesifai a yuuzaniem.',
-'login-wiki_userblocked' => 'Dis yuuza blak. No lagiin no lou.',
+'nouserspecified' => 'Yu afi spesifai a yuuzaniem.',
+'login-userblocked' => 'Dis yuuza blak. No lagiin no lou.',
 'wrongpassword' => 'Inkarek paaswod enta.
 Begyu chrai agen.',
 'wrongpasswordempty' => 'Paaswod enta ehn blangk.
@@ -495,11 +495,11 @@ Begyu enta a wel-faamat ajres ar emti dat fiil.',
 Yu shuda lag iin ahn chienj yu paaswod nou.
 
 Yu kiahn ignuor dis mechiz, ef dis akount kriet bai mistiek.',
-'wiki_usernamehasherror' => 'Yuuzaniem kyaahn kantien no ash kiarakta.',
+'usernamehasherror' => 'Yuuzaniem kyaahn kantien no ash kiarakta.',
 'login-throttled' => 'Yu mek tomoch riisant lagiin atemp.
 Begyu wiet likl bifuo yu chrai agen.',
 'loginlanguagelabel' => 'Langwij: $1',
-'suspicious-wiki_userlogout' => 'Yu rikwes fi lag out dinai bikaa iluk laik se isen bai a brok brouza ar kiashin praxi.',
+'suspicious-userlogout' => 'Yu rikwes fi lag out dinai bikaa iluk laik se isen bai a brok brouza ar kiashin praxi.',
 
 # Change password dialog
 'resetpass' => 'Chienj paaswod',
@@ -521,7 +521,7 @@ Yu maita chienj yu paaswod soksesfuli aredi ar rikwes wahn nyuu tempareri paaswo
 'resetpass-temp-password' => 'Tempareri paaswod',
 
 # Special:PasswordReset
-'passwordreset-wiki_username' => 'Yuuzaniem:',
+'passwordreset-username' => 'Yuuzaniem:',
 'passwordreset-domain' => 'Domien:',
 
 # Edit page toolbar
@@ -602,7 +602,7 @@ Imaita muuv ar diliit wails yu a vyuu di piej.',
 'loginreqlink' => 'Lag iin',
 'loginreqpagetext' => 'Yu mos $1 fi vyuu ada piej',
 'accmailtitle' => 'Paaswod sen.',
-'accmailtext' => "A random jinariet paaswod fi [[wiki_user talk:$1|$1]] sen tu $2.
+'accmailtext' => "A random jinariet paaswod fi [[User talk:$1|$1]] sen tu $2.
 
 Di paaswod fi dis nyuu akount kiahn chienj a di ''[[Special:ChangePassword|chienj paaswod]]'' piej afta yu lag iin.",
 'newarticle' => '(Nyuu)',
@@ -612,24 +612,24 @@ Ef yu de ya by mistiek, klik yu brouza '''bak''' botn.",
 'anontalkpagetext' => "----''Dis a di diskoshan piej fi ananimos yuuza uu no kriet no akount yet, ar uu no yuuzi.
 Wi dierfuor afi yuuz di nyuumerikal IP ajres fi aidentifai im/ar.
 Soch a IP ajres kiahn shier bai sebral yuuza.
-Ef yu a ananimos yuuza ahn fiil se irelivant kament dairek tu yu, begyu [[Special:wiki_userLogin/signup|kriet a akount]] ar [[Special:wiki_userLogin|lag iin]] fi avaid fyuucha kanfyuujan wid ada ananimos yuuza.''",
+Ef yu a ananimos yuuza ahn fiil se irelivant kament dairek tu yu, begyu [[Special:UserLogin/signup|kriet a akount]] ar [[Special:UserLogin|lag iin]] fi avaid fyuucha kanfyuujan wid ada ananimos yuuza.''",
 'noarticletext' => 'Korentli no tex no de ina dis piej.
 Yu kiahn [[Special:Search/{{PAGENAME}}|saach fi dis piej taikl]] ina ada piej,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} saach di rilietid lagdem],
 ar [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit dis piej]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => 'Yuuza akount "<nowiki>$1</nowiki>" no rejista.
+'userpage-userdoesnotexist' => 'Yuuza akount "<nowiki>$1</nowiki>" no rejista.
 Begyu chek ef yu waahn fi kriet/edit dis piej.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Yuuza akount "$1" no rejista.',
+'userpage-userdoesnotexist-view' => 'Yuuza akount "$1" no rejista.',
 'blocked-notice-logextract' => 'Dis yuuza korantli blak.
 Di lietis blak lag enchri provaid biluo fi refrans:',
-'wiki_usercssyoucanpreview' => "'''Tip:''' Yuuz di \"{{int:showpreview}}\" botn fi tes yu nyuu CSS bifuo yu sieb.",
-'wiki_userjsyoucanpreview' => "'''Tip:''' Yuuz di \"{{int:showpreview}}\" botn fi tes yu nyuu JavaScript bifuo yu sieb.",
-'wiki_usercsspreview' => "'''Memba se yu onggl a priivyuu yu yuuza CSS.'''
+'usercssyoucanpreview' => "'''Tip:''' Yuuz di \"{{int:showpreview}}\" botn fi tes yu nyuu CSS bifuo yu sieb.",
+'userjsyoucanpreview' => "'''Tip:''' Yuuz di \"{{int:showpreview}}\" botn fi tes yu nyuu JavaScript bifuo yu sieb.",
+'usercsspreview' => "'''Memba se yu onggl a priivyuu yu yuuza CSS.'''
 '''Ino sieb yet!'''",
-'wiki_userjspreview' => "'''Memba se yu onggl a tes/priivyuu yu yuuza JavaScript.'''
+'userjspreview' => "'''Memba se yu onggl a tes/priivyuu yu yuuza JavaScript.'''
 '''Ino sieb yet!'''",
-'wiki_userinvalidcssjstitle' => "'''Waanin:''' No skin \"\$1\" no de.
-Memba se kostom .css ahn .js piej yuuz a luwakies taikl, e.g. {{ns:wiki_user}}:Foo/vector.css az opuoz tu {{ns:wiki_user}}:Foo/Vector.css.",
+'userinvalidcssjstitle' => "'''Waanin:''' No skin \"\$1\" no de.
+Memba se kostom .css ahn .js piej yuuz a luwakies taikl, e.g. {{ns:user}}:Foo/vector.css az opuoz tu {{ns:user}}:Foo/Vector.css.",
 'updated' => '(Opdiet)',
 'note' => "'''Nuot:'''",
 'previewnote' => "'''Memb se dis a onggl priivyuu.'''
@@ -637,13 +637,13 @@ Yu chienjdem no sieb yet!",
 'previewconflict' => 'Dis priivyuu riflek di tex ina di opa editin ieria az iwi apier ef yu chuuz fi siebi.',
 'session_fail_preview' => "'''Sari! Wi kudn pruoses yu edit juu tu a laas a seshan dieta.'''
 Begyu chrai agen.
-Ef istil no wok, chrai [[Special:wiki_userLogout|lag out]] ahn lag bak iin.",
+Ef istil no wok, chrai [[Special:UserLogout|lag out]] ahn lag bak iin.",
 'session_fail_preview_html' => "'''Sari! Wi kudn pruoses yu edit juu tu laas a seshan dieta.'''
 
 ''Bikaa {{SITENAME}} ab raa HTML eniebl, di priivyuu aidwe az prikaashan gens JavaScript atak.''
 
 '''Ef dis a lejitimet edit atemp, begyu chrai agen.'''
-Ef istil no wok, chrai [[Special:wiki_userLogout|lag out]] ahn lag bak iin.",
+Ef istil no wok, chrai [[Special:UserLogout|lag out]] ahn lag bak iin.",
 'token_suffix_mismatch' => "'''Yu edit rijek bikaa yu klayant manggl di pongtyueshan kiaraktadem ina di edit tuokn.'''
 Di edit rijek fi privent koropshan a di piej tex.
 Dis somtaim apn wen yu a yuuz a bogi web-bies ananimos praxi saabis.",
@@ -740,7 +740,7 @@ Chrai priifix yu kwieri wid ''all:'' fi saach aal kantent (inkluudn taak piej, t
 
 'grouppage-sysop' => '{{ns:project}}:Adminischrieta',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Yuuza raits lag',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -789,7 +789,7 @@ Piej pahn [[Special:Watchlist|yu wachlis]] dem '''buol'''.",
 'filehist-datetime' => 'Diet/Taim',
 'filehist-thumb' => 'Tomniel',
 'filehist-thumbtext' => 'Tomniel fi voerjan az av $1',
-'filehist-wiki_user' => 'Yuuza',
+'filehist-user' => 'Yuuza',
 'filehist-dimensions' => 'Daimenshan',
 'filehist-comment' => 'Kament',
 'imagelinks' => 'Fail lingk',
@@ -830,14 +830,14 @@ Piej pahn [[Special:Watchlist|yu wachlis]] dem '''buol'''.",
 # Special:LinkSearch
 'linksearch' => 'Extoernal lingk',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Yuuza krieshan lag',
+# Special:Log/newusers
+'newuserlogpage' => 'Yuuza krieshan lag',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(lis a memba)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'E-miel dis yuuza',
+# E-mail user
+'emailuser' => 'E-miel dis yuuza',
 
 # Watchlist
 'watchlist' => 'Mi wachlis',
@@ -915,7 +915,7 @@ Yu kiahn chienj dis piej protekshan lebl, bot inaa go afek di kiaskiedn proteksh
 'sp-contributions-newbies' => 'Shuo kanchribiushan fi onggl nyuu akount',
 'sp-contributions-blocklog' => 'Blak lag',
 'sp-contributions-search' => 'Saach fi kanchribiushan',
-'sp-contributions-wiki_username' => 'IP ajres ar yuuzaniem',
+'sp-contributions-username' => 'IP ajres ar yuuzaniem',
 'sp-contributions-submit' => 'Saach',
 
 # What links here
@@ -992,7 +992,7 @@ Begyu moerj dem manyuali.'''",
 'import-comment' => 'Kament:',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Yu yuuza piej',
+'tooltip-pt-userpage' => 'Yu yuuza piej',
 'tooltip-pt-mytalk' => 'Yu taak piej',
 'tooltip-pt-preferences' => 'Yu prefrans',
 'tooltip-pt-watchlist' => 'Di lis a piej yu a manita fi chienj',
@@ -1025,13 +1025,13 @@ Yu kiahn vyuu isuos.',
 'tooltip-feed-rss' => 'RSS fiid fi dis piej',
 'tooltip-feed-atom' => 'Atom fiid fi dis piej',
 'tooltip-t-contributions' => 'Vyuu di lis a kanchribyuushan a dis yuuza',
-'tooltip-t-emailwiki_user' => 'Sen e-miel tu dis yuuza',
+'tooltip-t-emailuser' => 'Sen e-miel tu dis yuuza',
 'tooltip-t-upload' => 'Opluod fail',
 'tooltip-t-specialpages' => 'Lis a aal peshal piej',
 'tooltip-t-print' => 'Printobl voerjan a dis piej',
 'tooltip-t-permalink' => 'Poermanint lingk tu dis rivijan a di piej',
 'tooltip-ca-nstab-main' => 'Vyuu di kantent piej',
-'tooltip-ca-nstab-wiki_user' => 'Vyuu di yuuza piej',
+'tooltip-ca-nstab-user' => 'Vyuu di yuuza piej',
 'tooltip-ca-nstab-special' => 'Dis a peshal piej, yu kyaahn edit di piej iself',
 'tooltip-ca-nstab-project' => 'Vyuu di prajek piej',
 'tooltip-ca-nstab-image' => 'Vyuu di fail piej',

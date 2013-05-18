@@ -1,6 +1,6 @@
 scripts.txt
 
-MediaWiki primary scripts are in the root directory of the software. wiki_users
+MediaWiki primary scripts are in the root directory of the software. Users
 should only use these scripts to access the wiki. There are also some .php that
 aren't primary scripts but helper files and won't work if they are accessed
 directly by the web.
@@ -17,7 +17,7 @@ Primary scripts:
     for more informations.
 
   img_auth.php
-    Script that only serve images to logged in wiki_users. To configure the wiki
+    Script that only serve images to logged in users. To configure the wiki
     to use that script, see http://www.mediawiki.org/wiki/Manual:Image_Authorisation.
 
   load.php
@@ -28,7 +28,7 @@ Primary scripts:
     that points to the search engines of the wiki.
 
   profileinfo.php
-    Allow wiki_users to see the profiling information that are stored in the
+    Allow users to see the profiling information that are stored in the
     database.
 
     To save the profiling information in the database (required to use this
@@ -38,7 +38,7 @@ Primary scripts:
     to force the profiler to save the informations in the database and apply the
     maintenance/archives/patch-profiling.sql patch to the database.
 
-    To enable the profileinfo.php itself, you'll need to set $wgDBadminwiki_user
+    To enable the profileinfo.php itself, you'll need to set $wgDBadminuser
     and $wgDBadminpassword in your LocalSettings.php, as well as $wgEnableProfileInfo 
     See also http://www.mediawiki.org/wiki/How_to_debug#Profiling.
 

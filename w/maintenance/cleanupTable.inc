@@ -47,8 +47,8 @@ class TableCleanup extends Maintenance {
 	}
 
 	public function execute() {
-		global $wgwiki_user;
-		$wgwiki_user = wiki_user::newFromName( 'Conversion script' );
+		global $wgUser;
+		$wgUser = User::newFromName( 'Conversion script' );
 		$this->dryrun = $this->hasOption( 'dry-run' );
 		if ( $this->dryrun ) {
 			$this->output( "Checking for bad titles...\n" );
@@ -97,7 +97,7 @@ class TableCleanup extends Maintenance {
 	}
 
 	public function runTable( $params ) {
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		if ( array_diff( array_keys( $params ),
 			array( 'table', 'conds', 'index', 'callback' ) ) )
@@ -107,7 +107,7 @@ class TableCleanup extends Maintenance {
 
 		$table = $params['table'];
 		// count(*) would melt the DB for huge tables, we can estimate here
-		$count = r->estimateRowCount( $table, '*', '', __METHOD__ );
+		$count = $dbr->estimateRowCount( $table, '*', '', __METHOD__ );
 		$this->init( $count, $table );
 		$this->output( "Processing $table...\n" );
 
@@ -122,14 +122,14 @@ class TableCleanup extends Maintenance {
 
 		while ( true ) {
 			$conds = array_merge( $params['conds'], $indexConds );
-			$res = r->select( $table, '*', $conds, __METHOD__, $options );
+			$res = $dbr->select( $table, '*', $conds, __METHOD__, $options );
 			if ( !$res->numRows() ) {
 				// Done
 				break;
 			}
 
 			foreach ( $res as $row ) {
-				call_wiki_user_func( $callback, $row );
+				call_user_func( $callback, $row );
 			}
 
 			if ( $res->numRows() < $this->batchSize ) {
@@ -143,7 +143,7 @@ class TableCleanup extends Maintenance {
 			// of the string.
 			$nextCond = '';
 			foreach ( array_reverse( $index ) as $field ) {
-				$encValue = r->addQuotes( $row->$field );
+				$encValue = $dbr->addQuotes( $row->$field );
 				if ( $nextCond === '' ) {
 					$nextCond = "$field > $encValue";
 				} else {

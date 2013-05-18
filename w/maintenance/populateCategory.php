@@ -66,10 +66,10 @@ TEXT;
 	}
 
 	private function doPopulateCategory( $begin, $maxlag, $throttle, $force ) {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		if ( !$force ) {
-			$row = w->selectRow(
+			$row = $dbw->selectRow(
 				'updatelog',
 				'1',
 				array( 'ul_key' => 'populate category' ),
@@ -85,7 +85,7 @@ TEXT;
 
 		$throttle = intval( $throttle );
 		if ( $begin !== '' ) {
-			$where = 'cl_to > ' . w->addQuotes( $begin );
+			$where = 'cl_to > ' . $dbw->addQuotes( $begin );
 		} else {
 			$where = null;
 		}
@@ -93,7 +93,7 @@ TEXT;
 
 		while ( true ) {
 			# Find which category to update
-			$row = w->selectRow(
+			$row = $dbw->selectRow(
 				'categorylinks',
 				'cl_to',
 				$where,
@@ -107,7 +107,7 @@ TEXT;
 				break;
 			}
 			$name = $row->cl_to;
-			$where = 'cl_to > ' . w->addQuotes( $name );
+			$where = 'cl_to > ' . $dbw->addQuotes( $name );
 
 			# Use the row to update the category count
 			$cat = Category::newFromName( $name );
@@ -125,7 +125,7 @@ TEXT;
 			usleep( $throttle * 1000 );
 		}
 
-		if ( w->insert(
+		if ( $dbw->insert(
 				'updatelog',
 				array( 'ul_key' => 'populate category' ),
 				__METHOD__,

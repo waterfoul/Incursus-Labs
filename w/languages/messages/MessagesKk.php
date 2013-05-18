@@ -33,9 +33,9 @@ $messages = array(
 'statistics-files'             => 'Жүктелген файлдар',
 'statistics-edits'             => 'Барлық өңдеулер саны',
 'statistics-edits-average'     => 'Әр бетке шаққанда өңдеулердің орташа саны',
-'statistics-wiki_users'             => 'Тіркелген қатысушылар',
-'statistics-wiki_users-active'      => 'Белсенді қатысушылар',
-'statistics-wiki_users-active-desc' => 'Соңғы {{PLURAL:$1|күнде|$1 күнде}} қандай да бір іс-әрекет жасаған қатысушылар',
+'statistics-users'             => 'Тіркелген қатысушылар',
+'statistics-users-active'      => 'Белсенді қатысушылар',
+'statistics-users-active-desc' => 'Соңғы {{PLURAL:$1|күнде|$1 күнде}} қандай да бір іс-әрекет жасаған қатысушылар',
 
 # Variants for Kazakh language
 'variantname-kk-kz'   => 'disable',

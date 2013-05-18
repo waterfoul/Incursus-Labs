@@ -37,8 +37,8 @@ class SkinModern extends SkinTemplate {
 	/**
 	 * @param $out OutputPage
 	 */
-	function setupSkinwiki_userCss( OutputPage $out ){
-		parent::setupSkinwiki_userCss( $out );
+	function setupSkinUserCss( OutputPage $out ){
+		parent::setupSkinUserCss( $out );
 		$out->addModuleStyles ('skins.modern');
 	}
 }
@@ -74,22 +74,22 @@ class ModernTemplate extends MonoBookTemplate {
 
 	<!-- content -->
 	<div id="mw_content">
-	<!-- contentholder does nothing by default, but it allows wiki_users to style the text inside
+	<!-- contentholder does nothing by default, but it allows users to style the text inside
 	     the content area without affecting the meaning of 'em' in #mw_content, which is used
 	     for the margins -->
 	<div id="mw_contentholder" class="mw-body">
 		<div class='mw-topboxes'>
-			<div id="mw-js-message" style="display:none;"<?php $this->html('wiki_userlangattributes')?>></div>
+			<div id="mw-js-message" style="display:none;"<?php $this->html('userlangattributes')?>></div>
 			<div class="mw-topbox" id="siteSub"><?php $this->msg('tagline') ?></div>
 			<?php if($this->data['newtalk'] ) {
-				?><div class="wiki_usermessage mw-topbox"><?php $this->html('newtalk')  ?></div>
+				?><div class="usermessage mw-topbox"><?php $this->html('newtalk')  ?></div>
 			<?php } ?>
 			<?php if($this->data['sitenotice']) {
 				?><div class="mw-topbox" id="siteNotice"><?php $this->html('sitenotice') ?></div>
 			<?php } ?>
 		</div>
 
-		<div id="contentSub"<?php $this->html('wiki_userlangattributes') ?>><?php $this->html('subtitle') ?></div>
+		<div id="contentSub"<?php $this->html('userlangattributes') ?>><?php $this->html('subtitle') ?></div>
 
 		<?php if($this->data['undelete']) { ?><div id="contentSub2"><?php     $this->html('undelete') ?></div><?php } ?>
 		<?php if($this->data['showjumplinks']) { ?><div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#mw_portlets"><?php $this->msg('jumptonavigation') ?></a><?php $this->msg( 'comma-separator' ) ?><a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div><?php } ?>
@@ -102,7 +102,7 @@ class ModernTemplate extends MonoBookTemplate {
 	</div><!-- mw_content -->
 	</div><!-- mw_contentwrapper -->
 
-	<div id="mw_portlets"<?php $this->html("wiki_userlangattributes") ?>>
+	<div id="mw_portlets"<?php $this->html("userlangattributes") ?>>
 
 	<!-- portlets -->
 	<?php $this->renderPortals( $this->data['sidebar'] ); ?>
@@ -129,7 +129,7 @@ class ModernTemplate extends MonoBookTemplate {
 
 
 	<!-- footer -->
-	<div id="footer"<?php $this->html('wiki_userlangattributes') ?>>
+	<div id="footer"<?php $this->html('userlangattributes') ?>>
 			<ul id="f-list">
 <?php
 		foreach( $this->getFooterLinks("flat") as $aLink ) {

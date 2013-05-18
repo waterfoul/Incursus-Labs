@@ -264,7 +264,7 @@ mw.messages.set( {
 
 		} );
 
-		// The parser functions can throw errors, but let's not actually blow up for the wiki_user -- instead dump the error into the interface so we have
+		// The parser functions can throw errors, but let's not actually blow up for the user -- instead dump the error into the interface so we have
 		// a chance at fixing this
 		describe( "easy message interface functions with graceful failures", function() {
 			it( "should allow a global that returns strings, with graceful failure", function() {

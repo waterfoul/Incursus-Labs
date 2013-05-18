@@ -27,7 +27,7 @@
  * Authentication plugin interface. Instantiate a subclass of AuthPlugin
  * and set $wgAuth to it to authenticate against some external tool.
  *
- * The default behavior is not to do anything, and use the local wiki_user
+ * The default behavior is not to do anything, and use the local user
  * database for all authentication. A subclass can require that all
  * accounts authenticate externally, or use it only as a fallback; also
  * you can transparently create internal wiki accounts the first time
@@ -41,30 +41,30 @@ class AuthPlugin {
 	protected $domain;
 
 	/**
-	 * Check whether there exists a wiki_user account with the given name.
+	 * Check whether there exists a user account with the given name.
 	 * The name will be normalized to MediaWiki's requirements, so
 	 * you might need to munge it (for instance, for lowercase initial
 	 * letters).
 	 *
-	 * @param $wiki_username String: wiki_username.
+	 * @param $username String: username.
 	 * @return bool
 	 */
-	public function wiki_userExists( $wiki_username ) {
+	public function userExists( $username ) {
 		# Override this!
 		return false;
 	}
 
 	/**
-	 * Check if a wiki_username+password pair is a valid login.
+	 * Check if a username+password pair is a valid login.
 	 * The name will be normalized to MediaWiki's requirements, so
 	 * you might need to munge it (for instance, for lowercase initial
 	 * letters).
 	 *
-	 * @param $wiki_username String: wiki_username.
-	 * @param $password String: wiki_user password.
+	 * @param $username String: username.
+	 * @param $password String: user password.
 	 * @return bool
 	 */
-	public function authenticate( $wiki_username, $password ) {
+	public function authenticate( $username, $password ) {
 		# Override this!
 		return false;
 	}
@@ -72,7 +72,7 @@ class AuthPlugin {
 	/**
 	 * Modify options in the login template.
 	 *
-	 * @param $template wiki_userLoginTemplate object.
+	 * @param $template UserLoginTemplate object.
 	 * @param $type String 'signup' or 'login'. Added in 1.16.
 	 */
 	public function modifyUITemplate( &$template, &$type ) {
@@ -90,7 +90,7 @@ class AuthPlugin {
 	}
 
 	/**
-	 * Get the wiki_user's domain
+	 * Get the user's domain
 	 *
 	 * @return string
 	 */
@@ -114,24 +114,24 @@ class AuthPlugin {
 	}
 
 	/**
-	 * When a wiki_user logs in, optionally fill in preferences and such.
+	 * When a user logs in, optionally fill in preferences and such.
 	 * For instance, you might pull the email address or real name from the
-	 * external wiki_user database.
+	 * external user database.
 	 *
-	 * The wiki_user object is passed by reference so it can be modified; don't
+	 * The User object is passed by reference so it can be modified; don't
 	 * forget the & on your function declaration.
 	 *
-	 * @param $wiki_user wiki_user object
+	 * @param $user User object
 	 * @return bool
 	 */
-	public function updatewiki_user( &$wiki_user ) {
+	public function updateUser( &$user ) {
 		# Override this and do something
 		return true;
 	}
 
 	/**
 	 * Return true if the wiki should create a new local account automatically
-	 * when asked to login a wiki_user who doesn't exist locally but does in the
+	 * when asked to login a user who doesn't exist locally but does in the
 	 * external auth database.
 	 *
 	 * If you don't automatically create accounts, you must still create
@@ -168,7 +168,7 @@ class AuthPlugin {
 	}
 
 	/**
-	 * Can wiki_users change their passwords?
+	 * Can users change their passwords?
 	 *
 	 * @return bool
 	 */
@@ -193,22 +193,22 @@ class AuthPlugin {
 	 *
 	 * Return true if successful.
 	 *
-	 * @param $wiki_user wiki_user object.
+	 * @param $user User object.
 	 * @param $password String: password.
 	 * @return bool
 	 */
-	public function setPassword( $wiki_user, $password ) {
+	public function setPassword( $user, $password ) {
 		return true;
 	}
 
 	/**
-	 * Update wiki_user information in the external authentication database.
+	 * Update user information in the external authentication database.
 	 * Return true if successful.
 	 *
-	 * @param $wiki_user wiki_user object.
+	 * @param $user User object.
 	 * @return Boolean
 	 */
-	public function updateExternalDB( $wiki_user ) {
+	public function updateExternalDB( $user ) {
 		return true;
 	}
 
@@ -222,16 +222,16 @@ class AuthPlugin {
 	}
 
 	/**
-	 * Add a wiki_user to the external authentication database.
+	 * Add a user to the external authentication database.
 	 * Return true if successful.
 	 *
-	 * @param $wiki_user wiki_user: only the name should be assumed valid at this point
+	 * @param $user User: only the name should be assumed valid at this point
 	 * @param $password String
 	 * @param $email String
 	 * @param $realname String
 	 * @return Boolean
 	 */
-	public function addwiki_user( $wiki_user, $password, $email = '', $realname = '' ) {
+	public function addUser( $user, $password, $email = '', $realname = '' ) {
 		return true;
 	}
 
@@ -248,50 +248,50 @@ class AuthPlugin {
 	}
 
 	/**
-	 * Check if a wiki_user should authenticate locally if the global authentication fails.
+	 * Check if a user should authenticate locally if the global authentication fails.
 	 * If either this or strict() returns true, local authentication is not used.
 	 *
-	 * @param $wiki_username String: wiki_username.
+	 * @param $username String: username.
 	 * @return Boolean
 	 */
-	public function strictwiki_userAuth( $wiki_username ) {
+	public function strictUserAuth( $username ) {
 		return false;
 	}
 
 	/**
-	 * When creating a wiki_user account, optionally fill in preferences and such.
+	 * When creating a user account, optionally fill in preferences and such.
 	 * For instance, you might pull the email address or real name from the
-	 * external wiki_user database.
+	 * external user database.
 	 *
-	 * The wiki_user object is passed by reference so it can be modified; don't
+	 * The User object is passed by reference so it can be modified; don't
 	 * forget the & on your function declaration.
 	 *
-	 * @param $wiki_user wiki_user object.
-	 * @param $autocreate Boolean: True if wiki_user is being autocreated on login
+	 * @param $user User object.
+	 * @param $autocreate Boolean: True if user is being autocreated on login
 	 */
-	public function initwiki_user( &$wiki_user, $autocreate = false ) {
+	public function initUser( &$user, $autocreate = false ) {
 		# Override this to do something.
 	}
 
 	/**
 	 * If you want to munge the case of an account name before the final
 	 * check, now is your chance.
-	 * @param $wiki_username string
+	 * @param $username string
 	 * @return string
 	 */
-	public function getCanonicalName( $wiki_username ) {
-		return $wiki_username;
+	public function getCanonicalName( $username ) {
+		return $username;
 	}
 
 	/**
-	 * Get an instance of a wiki_user object
+	 * Get an instance of a User object
 	 *
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 *
-	 * @return AuthPluginwiki_user
+	 * @return AuthPluginUser
 	 */
-	public function getwiki_userInstance( wiki_user &$wiki_user ) {
-		return new AuthPluginwiki_user( $wiki_user );
+	public function getUserInstance( User &$user ) {
+		return new AuthPluginUser( $user );
 	}
 
 	/**
@@ -304,8 +304,8 @@ class AuthPlugin {
 	}
 }
 
-class AuthPluginwiki_user {
-	function __construct( $wiki_user ) {
+class AuthPluginUser {
+	function __construct( $user ) {
 		# Override this!
 	}
 

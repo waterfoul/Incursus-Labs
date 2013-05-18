@@ -83,7 +83,7 @@ class ApiQueryAllImages extends ApiQueryGeneratorBase {
 
 		$prefix = $this->getModulePrefix();
 
-		 = $this->getDB();
+		$db = $this->getDB();
 
 		$params = $this->extractRequestParams();
 
@@ -97,7 +97,7 @@ class ApiQueryAllImages extends ApiQueryGeneratorBase {
 
 		if ( $params['sort'] == 'name' ) {
 			// Check mutually exclusive params
-			$disallowed = array( 'start', 'end', 'wiki_user' );
+			$disallowed = array( 'start', 'end', 'user' );
 			foreach ( $disallowed as $pname ) {
 				if ( isset( $params[$pname] ) ) {
 					$this->dieUsage( "Parameter '{$prefix}{$pname}' can only be used with {$prefix}sort=timestamp", 'badparams' );
@@ -115,7 +115,7 @@ class ApiQueryAllImages extends ApiQueryGeneratorBase {
 						'original value returned by the previous query', '_badcontinue' );
 				}
 				$op = ( $dir == 'older' ? '<' : '>' );
-				$cont_from = ->addQuotes( $cont[0] );
+				$cont_from = $db->addQuotes( $cont[0] );
 				$this->addWhere( "img_name $op= $cont_from" );
 			}
 
@@ -125,7 +125,7 @@ class ApiQueryAllImages extends ApiQueryGeneratorBase {
 			$this->addWhereRange( 'img_name', $dir, $from, $to );
 
 			if ( isset( $params['prefix'] ) ) {
-				$this->addWhere( 'img_name' . ->buildLike( $this->titlePartToKey( $params['prefix'] ), ->anyString() ) );
+				$this->addWhere( 'img_name' . $db->buildLike( $this->titlePartToKey( $params['prefix'] ), $db->anyString() ) );
 			}
 		} else {
 			// Check mutually exclusive params
@@ -135,27 +135,27 @@ class ApiQueryAllImages extends ApiQueryGeneratorBase {
 					$this->dieUsage( "Parameter '{$prefix}{$pname}' can only be used with {$prefix}sort=name", 'badparams' );
 				}
 			}
-			if (!is_null( $params['wiki_user'] ) && $params['filterbots'] != 'all') {
-				// Since filterbots checks if each wiki_user has the bot right, it doesn't make sense to use it with wiki_user
-				$this->dieUsage( "Parameters 'wiki_user' and 'filterbots' cannot be used together", 'badparams' );
+			if (!is_null( $params['user'] ) && $params['filterbots'] != 'all') {
+				// Since filterbots checks if each user has the bot right, it doesn't make sense to use it with user
+				$this->dieUsage( "Parameters 'user' and 'filterbots' cannot be used together", 'badparams' );
 			}
 
 			// Pagination
 			$this->addTimestampWhereRange( 'img_timestamp', $dir, $params['start'], $params['end'] );
 
 			// Image filters
-			if ( !is_null( $params['wiki_user'] ) ) {
-				$this->addWhereFld( 'img_wiki_user_text', $params['wiki_user'] );
+			if ( !is_null( $params['user'] ) ) {
+				$this->addWhereFld( 'img_user_text', $params['user'] );
 			}
 			if ( $params['filterbots'] != 'all' ) {
-				$this->addTables( 'wiki_user_groups' );
+				$this->addTables( 'user_groups' );
 				$groupCond = ( $params['filterbots'] == 'nobots' ? 'NULL': 'NOT NULL' );
 				$this->addWhere( "ug_group IS $groupCond" );
-				$this->addJoinConds( array( 'wiki_user_groups' => array(
+				$this->addJoinConds( array( 'user_groups' => array(
 					'LEFT JOIN',
 					array(
-						'ug_group' => wiki_user::getGroupsWithPermission( 'bot' ),
-						'ug_wiki_user = img_wiki_user'
+						'ug_group' => User::getGroupsWithPermission( 'bot' ),
+						'ug_user = img_user'
 					)
 				) ) );
 			}
@@ -206,7 +206,7 @@ class ApiQueryAllImages extends ApiQueryGeneratorBase {
 			if ( $params['filterbots'] == 'all' ) {
 				$this->addOption( 'USE INDEX', array( 'image' => 'img_timestamp' ) );
 			} else {
-				$this->addOption( 'USE INDEX', array( 'image' => 'img_wiki_usertext_timestamp' ) );
+				$this->addOption( 'USE INDEX', array( 'image' => 'img_usertext_timestamp' ) );
 			}
 		} else {
 			$this->addOption( 'ORDER BY', 'img_name' . $sort );
@@ -298,8 +298,8 @@ class ApiQueryAllImages extends ApiQueryGeneratorBase {
 			),
 			'sha1' => null,
 			'sha1base36' => null,
-			'wiki_user' => array(
-				ApiBase::PARAM_TYPE => 'wiki_user'
+			'user' => array(
+				ApiBase::PARAM_TYPE => 'user'
 			),
 			'filterbots' => array(
 				ApiBase::PARAM_DFLT => 'all',
@@ -336,8 +336,8 @@ class ApiQueryAllImages extends ApiQueryGeneratorBase {
 			'maxsize' => 'Limit to images with at most this many bytes',
 			'sha1' => "SHA1 hash of image. Overrides {$p}sha1base36",
 			'sha1base36' => 'SHA1 hash of image in base 36 (used in MediaWiki)',
-			'wiki_user' => "Only return files uploaded by this wiki_user. Can only be used with {$p}sort=timestamp. Cannot be used together with {$p}filterbots",
-			'filterbots' => "How to filter files uploaded by bots. Can only be used with {$p}sort=timestamp. Cannot be used together with {$p}wiki_user",
+			'user' => "Only return files uploaded by this user. Can only be used with {$p}sort=timestamp. Cannot be used together with {$p}filterbots",
+			'filterbots' => "How to filter files uploaded by bots. Can only be used with {$p}sort=timestamp. Cannot be used together with {$p}user",
 			'mime' => 'What MIME type to search for. e.g. image/jpeg. Disabled in Miser Mode',
 			'limit' => 'How many images in total to return',
 		);
@@ -368,12 +368,12 @@ class ApiQueryAllImages extends ApiQueryGeneratorBase {
 			array( 'code' => 'params', 'info' => 'Use "gaifilterredir=nonredirects" option instead of "redirects" when using allimages as a generator' ),
 			array( 'code' => 'badparams', 'info' => "Parameter'{$p}start' can only be used with {$p}sort=timestamp" ),
 			array( 'code' => 'badparams', 'info' => "Parameter'{$p}end' can only be used with {$p}sort=timestamp" ),
-			array( 'code' => 'badparams', 'info' => "Parameter'{$p}wiki_user' can only be used with {$p}sort=timestamp" ),
+			array( 'code' => 'badparams', 'info' => "Parameter'{$p}user' can only be used with {$p}sort=timestamp" ),
 			array( 'code' => 'badparams', 'info' => "Parameter'{$p}filterbots' can only be used with {$p}sort=timestamp" ),
 			array( 'code' => 'badparams', 'info' => "Parameter'{$p}from' can only be used with {$p}sort=name" ),
 			array( 'code' => 'badparams', 'info' => "Parameter'{$p}to' can only be used with {$p}sort=name" ),
 			array( 'code' => 'badparams', 'info' => "Parameter'{$p}prefix' can only be used with {$p}sort=name" ),
-			array( 'code' => 'badparams', 'info' => "Parameters 'wiki_user' and 'filterbots' cannot be used together" ),
+			array( 'code' => 'badparams', 'info' => "Parameters 'user' and 'filterbots' cannot be used together" ),
 			array( 'code' => 'unsupportedrepo', 'info' => 'Local file repository does not support querying all images' ),
 			array( 'code' => 'mimesearchdisabled', 'info' => 'MIME search disabled in Miser Mode' ),
 			array( 'code' => 'invalidsha1hash', 'info' => 'The SHA1 hash provided is not valid' ),
@@ -388,7 +388,7 @@ class ApiQueryAllImages extends ApiQueryGeneratorBase {
 				'Simple Use',
 				'Show a list of files starting at the letter "B"',
 			),
-			'api.php?action=query&list=allimages&aiprop=wiki_user|timestamp|url&aisort=timestamp&aidir=older' => array(
+			'api.php?action=query&list=allimages&aiprop=user|timestamp|url&aisort=timestamp&aidir=older' => array(
 				'Simple Use',
 				'Show a list of recently uploaded files similar to Special:NewFiles',
 			),

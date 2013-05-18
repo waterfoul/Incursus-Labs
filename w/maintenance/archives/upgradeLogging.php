@@ -34,7 +34,7 @@ class UpdateLogging {
 	/**
 	 * @var DatabaseBase
 	 */
-	var w;
+	var $dbw;
 	var $batchSize = 1000;
 	var $minTs = false;
 
@@ -73,11 +73,11 @@ CREATE TABLE $logging_1_10 (
   -- Timestamp. Duh.
   log_timestamp binary(14) NOT NULL default '19700101000000',
 
-  -- The wiki_user who performed this action; key to wiki_user_id
-  log_wiki_user int unsigned NOT NULL default 0,
+  -- The user who performed this action; key to user_id
+  log_user int unsigned NOT NULL default 0,
 
-  -- Key to the page affected. Where a wiki_user is the target,
-  -- this will point to the wiki_user page.
+  -- Key to the page affected. Where a user is the target,
+  -- this will point to the user page.
   log_namespace int NOT NULL default 0,
   log_title varchar(255) binary NOT NULL default '',
 
@@ -92,7 +92,7 @@ CREATE TABLE $logging_1_10 (
 
   PRIMARY KEY log_id (log_id),
   KEY type_time (log_type, log_timestamp),
-  KEY wiki_user_time (log_wiki_user, log_timestamp),
+  KEY user_time (log_user, log_timestamp),
   KEY page_time (log_namespace, log_title, log_timestamp),
   KEY times (log_timestamp)
 

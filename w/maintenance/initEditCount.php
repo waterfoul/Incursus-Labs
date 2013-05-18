@@ -1,6 +1,6 @@
 <?php
 /**
- * Init the wiki_user_editcount database field based on the number of rows in the
+ * Init the user_editcount database field based on the number of rows in the
  * revision table.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -35,19 +35,19 @@ class InitEditCount extends Maintenance {
 Background mode will be automatically used if the server is MySQL 4.0
 (which does not support subqueries) or if multiple servers are listed
 in the load balancer, usually indicating a replication environment.' );
-		$this->mDescription = "Batch-recalculate wiki_user_editcount fields from the revision table";
+		$this->mDescription = "Batch-recalculate user_editcount fields from the revision table";
 	}
 
 	public function execute() {
-		w = wfGetDB( DB_MASTER );
-		$wiki_user = w->tableName( 'wiki_user' );
-		$revision = w->tableName( 'revision' );
+		$dbw = wfGetDB( DB_MASTER );
+		$user = $dbw->tableName( 'user' );
+		$revision = $dbw->tableName( 'revision' );
 
-		ver = w->getServerVersion();
+		$dbver = $dbw->getServerVersion();
 
 		// Autodetect mode...
 		$backgroundMode = wfGetLB()->getServerCount() > 1 ||
-			( w instanceof DatabaseMysql && version_compare( ver, '4.1' ) < 0 );
+			( $dbw instanceof DatabaseMysql && version_compare( $dbver, '4.1' ) < 0 );
 
 		if ( $this->hasOption( 'background' ) ) {
 			$backgroundMode = true;
@@ -58,28 +58,28 @@ in the load balancer, usually indicating a replication environment.' );
 		if ( $backgroundMode ) {
 			$this->output( "Using replication-friendly background mode...\n" );
 
-			r = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$chunkSize = 100;
-			$lastwiki_user = r->selectField( 'wiki_user', 'MAX(wiki_user_id)', '', __METHOD__ );
+			$lastUser = $dbr->selectField( 'user', 'MAX(user_id)', '', __METHOD__ );
 
 			$start = microtime( true );
 			$migrated = 0;
-			for ( $min = 0; $min <= $lastwiki_user; $min += $chunkSize ) {
+			for ( $min = 0; $min <= $lastUser; $min += $chunkSize ) {
 				$max = $min + $chunkSize;
-				$result = r->query(
+				$result = $dbr->query(
 					"SELECT
-						wiki_user_id,
-						COUNT(rev_wiki_user) AS wiki_user_editcount
-					FROM $wiki_user
-					LEFT OUTER JOIN $revision ON wiki_user_id=rev_wiki_user
-					WHERE wiki_user_id > $min AND wiki_user_id <= $max
-					GROUP BY wiki_user_id",
+						user_id,
+						COUNT(rev_user) AS user_editcount
+					FROM $user
+					LEFT OUTER JOIN $revision ON user_id=rev_user
+					WHERE user_id > $min AND user_id <= $max
+					GROUP BY user_id",
 					__METHOD__ );
 
 				foreach ( $result as $row ) {
-					w->update( 'wiki_user',
-						array( 'wiki_user_editcount' => $row->wiki_user_editcount ),
-						array( 'wiki_user_id' => $row->wiki_user_id ),
+					$dbw->update( 'user',
+						array( 'user_editcount' => $row->user_editcount ),
+						array( 'user_id' => $row->user_id ),
 						__METHOD__ );
 					++$migrated;
 				}
@@ -89,7 +89,7 @@ in the load balancer, usually indicating a replication environment.' );
 				$this->output( sprintf( "%s %d (%0.1f%%) done in %0.1f secs (%0.3f accounts/sec).\n",
 					wfWikiID(),
 					$migrated,
-					min( $max, $lastwiki_user ) / $lastwiki_user * 100.0,
+					min( $max, $lastUser ) / $lastUser * 100.0,
 					$delta,
 					$rate ) );
 
@@ -98,8 +98,8 @@ in the load balancer, usually indicating a replication environment.' );
 		} else {
 			// Subselect should work on modern MySQLs etc
 			$this->output( "Using single-query mode...\n" );
-			$sql = "UPDATE $wiki_user SET wiki_user_editcount=(SELECT COUNT(*) FROM $revision WHERE rev_wiki_user=wiki_user_id)";
-			w->query( $sql );
+			$sql = "UPDATE $user SET user_editcount=(SELECT COUNT(*) FROM $revision WHERE rev_user=user_id)";
+			$dbw->query( $sql );
 		}
 
 		$this->output( "Done!\n" );

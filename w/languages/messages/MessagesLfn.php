@@ -36,7 +36,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Sulinia lias:',
 'tog-justify' => 'Ajusta paragrafes',
 'tog-hideminor' => 'Asconda editas minor en cambias resente',
@@ -58,7 +58,7 @@ $messages = array(
 'tog-previewonfirst' => 'Mostra la previde a la edita prima',
 'tog-nocache' => 'Desengana la reserva de pajes',
 'tog-enotifwatchlistpages' => 'Envia un eposta a me cuando un paje ce me oserva es cambiada',
-'tog-enotifwiki_usertalkpages' => 'Envia me un eposta cuando me paje de discutes es cambiada',
+'tog-enotifusertalkpages' => 'Envia me un eposta cuando me paje de discutes es cambiada',
 'tog-enotifminoredits' => 'Ance envia un eposta a me con edita minor de pajes',
 'tog-enotifrevealaddr' => 'Descovre la me adirije de eposta en postas de nota',
 'tog-shownumberswatching' => 'Mostra la numero de usores oservante',
@@ -192,7 +192,7 @@ $messages = array(
 'talk' => 'Discutes',
 'views' => 'Vides',
 'toolbox' => 'Utiles',
-'wiki_userpage' => 'Vide paje de usor',
+'userpage' => 'Vide paje de usor',
 'projectpage' => 'Vide la paje de projeta',
 'imagepage' => 'Vide paje de fix',
 'mediawikipage' => 'Vide la paje de mesaje',
@@ -209,7 +209,7 @@ $messages = array(
 'jumptonavigation' => 'naviga',
 'jumptosearch' => 'xerca',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Supra {{SITENAME}}',
 'aboutpage' => 'Project:Supra',
 'copyrightpage' => '{{ns:project}}:Diretos de autor',
@@ -252,7 +252,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Paje',
-'nstab-wiki_user' => 'Paje de usor',
+'nstab-user' => 'Paje de usor',
 'nstab-media' => 'Paje de medio',
 'nstab-special' => 'Paje spesial',
 'nstab-project' => 'Paje de projeta',
@@ -282,9 +282,9 @@ $messages = array(
 'login' => 'Identifia',
 'nav-login-createaccount' => 'Sinia per entra',
 'loginprompt' => 'Tu debe engrana "tortetas" per entra {{SITENAME}}.',
-'wiki_userlogin' => 'Sinia per entra',
+'userlogin' => 'Sinia per entra',
 'logout' => 'Retira',
-'wiki_userlogout' => 'Sinia per retira',
+'userlogout' => 'Sinia per retira',
 'nologin' => "Tu no ave un conta? '''$1'''.",
 'nologinlink' => 'Crea  un conta',
 'createaccount' => 'Crea un conta',
@@ -293,10 +293,10 @@ $messages = array(
 'loginerror' => 'Era de entra',
 'loginsuccesstitle' => 'Entra susedente',
 'loginsuccess' => "'''Tu ia entrada aora a {{SITENAME}} como \"\$1\".'''",
-'nosuchwiki_user' => 'Es no usor con la nom "$1".
-Esamina la spele, o [[Special:wiki_userLogin/signup|crea un conta nova]].',
-'nosuchwiki_usershort' => 'Es no usor con esta nom "$1". Esamina la spele.',
-'nowiki_userspecified' => 'Tu debe indica un nom de usor.',
+'nosuchuser' => 'Es no usor con la nom "$1".
+Esamina la spele, o [[Special:UserLogin/signup|crea un conta nova]].',
+'nosuchusershort' => 'Es no usor con esta nom "$1". Esamina la spele.',
+'nouserspecified' => 'Tu debe indica un nom de usor.',
 'wrongpassword' => 'La sinia de entra no es coreta. Per favore, atenta ancora.',
 'wrongpasswordempty' => 'La sinia de entra es vacua. Per favore, atenta ancora.',
 'passwordtooshort' => 'Tu sinia secreta no es legal o es tro corta.
@@ -391,7 +391,7 @@ Tu ance promete a nos ce tu ia scriveda esta par tu mesma, o copiada esta de un 
 'template-protected' => '(protejeda)',
 'template-semiprotected' => '(proteje en parte)',
 'nocreatetext' => '{{SITENAME}} ave un restringe a la capas per crea pajes nova.
-Tu pote vade a retro e edita un paje esistente, o  [[Special:wiki_userLogin|sinia per entra o crea un conta]].',
+Tu pote vade a retro e edita un paje esistente, o  [[Special:UserLogin|sinia per entra o crea un conta]].',
 'recreate-moveddeleted-warn' => "'''Avisa: Tu es recrea un paje ce ia es sutraed en la pasada.'''
 Tu debe pensa ce es bon continua edita esta paje.
 La arcivo de sutraes per esta paje es asi per conveni:",
@@ -467,7 +467,7 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'timezoneregion-pacific' => 'Mar Pasifica',
 'prefs-files' => 'Fixes',
 'youremail' => 'Eposta:',
-'wiki_username' => 'Nom de usor:',
+'username' => 'Nom de usor:',
 'prefs-memberingroups' => 'Membro de la {{PLURAL:$1|grupo|grupos}}:',
 'yourrealname' => 'Nom vera:',
 'yourlanguage' => 'Lingua:',
@@ -478,22 +478,22 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'email' => 'Eposta',
 'prefs-help-realname' => 'Tu nom vera no es obligada, ma si tu vole dona tu nom vera, el va es usada per onora tu per tu labora.',
 
-# wiki_user rights
-'wiki_userrights' => 'Dirije de la diretos de usores',
-'savewiki_usergroups' => 'Fisa la grupo de usores',
+# User rights
+'userrights' => 'Dirije de la diretos de usores',
+'saveusergroups' => 'Fisa la grupo de usores',
 
 # Groups
 'group' => 'Grupo:',
-'group-wiki_user' => 'Usores',
+'group-user' => 'Usores',
 'group-sysop' => 'Dirijores',
 'group-all' => '(tota)',
 
-'group-wiki_user-member' => 'Usor',
+'group-user-member' => 'Usor',
 
-'grouppage-wiki_user' => '{{ns:project}}:Usores',
+'grouppage-user' => '{{ns:project}}:Usores',
 'grouppage-sysop' => '{{ns:project}}:Dirijores',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Catalogo de diretos de usor',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -555,7 +555,7 @@ Pajes a [[Special:Watchlist|tu lista de pajes oservada]] es en leteras '''forte'
 'filehist-help' => 'Clica a un data/tempo per vide la fix como el ia aperi alora.',
 'filehist-current' => 'aora',
 'filehist-datetime' => 'Date/Tempo',
-'filehist-wiki_user' => 'Usor',
+'filehist-user' => 'Usor',
 'filehist-dimensions' => 'Mesuras',
 'filehist-filesize' => 'Grandia de fix',
 'filehist-comment' => 'Comenta',
@@ -618,7 +618,7 @@ Pajes a [[Special:Watchlist|tu lista de pajes oservada]] es en leteras '''forte'
 'longpages' => 'Pajes longa',
 'deadendpages' => 'Pajes sin sorti',
 'protectedpages' => 'Pajes protejeda',
-'listwiki_users' => 'Lista de usores',
+'listusers' => 'Lista de usores',
 'newpages' => 'Pajes nova',
 'ancientpages' => 'Pajes la plu vea',
 'move' => 'Move',
@@ -633,7 +633,7 @@ Pajes a [[Special:Watchlist|tu lista de pajes oservada]] es en leteras '''forte'
 'booksources-go' => 'Vade',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Usor:',
+'specialloguserlabel' => 'Usor:',
 'speciallogtitlelabel' => 'Titulo:',
 'log' => 'Lista de atas',
 'all-logs-page' => 'Tota catalogos',
@@ -663,8 +663,8 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'listgrouprights-group' => 'Grupo',
 'listgrouprights-members' => '(lista de membros)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Envia un eposta a esta usor',
+# E-mail user
+'emailuser' => 'Envia un eposta a esta usor',
 'emailfrom' => 'De',
 'emailto' => 'Per',
 
@@ -756,9 +756,9 @@ Asi es la ajustas presente per la paje '''$1''':",
 'sp-contributions-newbies-sub' => 'Per contas nova',
 'sp-contributions-blocklog' => 'Impedi arcivo',
 'sp-contributions-talk' => 'Parla',
-'sp-contributions-wiki_userrights' => 'Dirije de la diretos de usores',
+'sp-contributions-userrights' => 'Dirije de la diretos de usores',
 'sp-contributions-search' => 'Xerca per contribuis',
-'sp-contributions-wiki_username' => 'Adirije de IP o nom de usor:',
+'sp-contributions-username' => 'Adirije de IP o nom de usor:',
 'sp-contributions-submit' => 'Xerca',
 
 # What links here
@@ -843,7 +843,7 @@ En esta casos, tu va nesesa move o fusa la paje per mano, si desirada.",
 'importlogpage' => 'Importa arcivo',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Tu paje de usor',
+'tooltip-pt-userpage' => 'Tu paje de usor',
 'tooltip-pt-mytalk' => 'Tu paje de discutes',
 'tooltip-pt-preferences' => 'Me preferis',
 'tooltip-pt-watchlist' => 'La lista de pajes ce tu oserva per cambias',
@@ -870,10 +870,10 @@ En esta casos, tu va nesesa move o fusa la paje per mano, si desirada.",
 'tooltip-n-help' => 'La loca per descovre.',
 'tooltip-t-whatlinkshere' => 'Lista de tota pajes de vici ce lia a asi',
 'tooltip-t-contributions' => 'Vide la lista de contribuis de esta usor',
-'tooltip-t-emailwiki_user' => 'Envia un eposta a esta usor',
+'tooltip-t-emailuser' => 'Envia un eposta a esta usor',
 'tooltip-t-upload' => 'Envia fixes',
 'tooltip-t-specialpages' => 'Lista de tota pajes spesial',
-'tooltip-ca-nstab-wiki_user' => 'Vide la paje de usor',
+'tooltip-ca-nstab-user' => 'Vide la paje de usor',
 'tooltip-ca-nstab-project' => 'Vide la paje de la projeta',
 'tooltip-ca-nstab-image' => 'Vide la paje de fix',
 'tooltip-ca-nstab-template' => 'Mostra la model',

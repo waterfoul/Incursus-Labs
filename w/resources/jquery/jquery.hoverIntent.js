@@ -1,7 +1,7 @@
 /**
 * hoverIntent is similar to jQuery's built-in "hover" function except that
 * instead of firing the onMouseOver event immediately, hoverIntent checks
-* to see if the wiki_user's mouse has slowed down (beneath the sensitivity
+* to see if the user's mouse has slowed down (beneath the sensitivity
 * threshold) before firing the onMouseOver event.
 * 
 * hoverIntent r5 // 2007.03.27 // jQuery 1.1.2+
@@ -35,7 +35,7 @@
 			interval: 100,
 			timeout: 0
 		};
-		// override configuration options with wiki_user supplied object
+		// override configuration options with user supplied object
 		cfg = $.extend(cfg, g ? { over: f, out: g } : f );
 
 		// instantiate variables

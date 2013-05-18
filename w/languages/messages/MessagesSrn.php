@@ -62,13 +62,13 @@ $specialPageAliases = array(
 	'Deadendpages'              => array( 'NoSkakiPeprewoysi' ),
 	'Disambiguations'           => array( 'PeprewoysiFuKumakriki' ),
 	'DoubleRedirects'           => array( 'Tustirpeprewoysi' ),
-	'Emailwiki_user'                 => array( 'EmailMasyin' ),
+	'Emailuser'                 => array( 'EmailMasyin' ),
 	'Fewestrevisions'           => array( 'MenaKenki' ),
 	'Listadmins'                => array( 'Sesopurey' ),
 	'Listbots'                  => array( 'Botrey' ),
 	'Listfiles'                 => array( 'Gefrerey' ),
 	'Listredirects'             => array( 'Stirpeprewoysirey' ),
-	'Listwiki_users'                 => array( 'Masyinrey' ),
+	'Listusers'                 => array( 'Masyinrey' ),
 	'Log'                       => array( 'Buku' ),
 	'Lonelypages'               => array( 'WawanPeprewoysi' ),
 	'Longpages'                 => array( 'LangaPeprewoysi' ),
@@ -101,9 +101,9 @@ $specialPageAliases = array(
 	'Unusedimages'              => array( 'OtekiGefre' ),
 	'Unusedtemplates'           => array( 'OtekiAnkra' ),
 	'Upload'                    => array( 'Uploti' ),
-	'wiki_userlogin'                 => array( 'Kon' ),
-	'wiki_userlogout'                => array( 'Gwe' ),
-	'wiki_userrights'                => array( 'Masyinlesi' ),
+	'Userlogin'                 => array( 'Kon' ),
+	'Userlogout'                => array( 'Gwe' ),
+	'Userrights'                => array( 'Masyinlesi' ),
 	'Version'                   => array( 'Si' ),
 	'Wantedcategories'          => array( 'WinsiGuru' ),
 	'Wantedpages'               => array( 'WinsiPeprewoysi' ),
@@ -141,7 +141,7 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'PAPIRANUMRO', 'AANTALPAGINAS', 'AANTALPAGINA\'S', 'AANTALPAGINA’S', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'PAPIRALEGIMNUMRO', 'AANTALARTIKELEN', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'GEFRENUMRO', 'AANTALBESTANDEN', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', 'MASYINNUMRO', 'AANTALGEBRUIKERS', 'NUMBEROFUSERS' ),
+	'numberofusers'             => array( '1', 'MASYINNUMRO', 'AANTALGEBRUIKERS', 'NUMBEROFUSERS' ),
 	'numberofedits'             => array( '1', 'KENKINUMRO', 'AANTALBEWERKINGEN', 'NUMBEROFEDITS' ),
 	'pagename'                  => array( '1', 'PAPIRANEN', 'PAGINANAAM', 'PAGENAME' ),
 	'pagenamee'                 => array( '1', 'PAPIRANENE', 'PAGINANAAME', 'PAGENAMEE' ),
@@ -153,7 +153,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Poti strepi ondro den miti:',
 'tog-justify' => 'Fiti na ala tu sey',
 'tog-hideminor' => 'Kibri pikin kenki ini laste kenki',
@@ -175,7 +175,7 @@ $messages = array(
 'tog-previewonfirst' => 'Sori wan Si-na-fesi na a fosi kenki',
 'tog-nocache' => 'No kebroiki cache',
 'tog-enotifwatchlistpages' => 'Seni mi wan E-mail te papira ini mi "Tan luku" rey kenki',
-'tog-enotifwiki_usertalkpages' => 'Seni mi wan E-mail te mi Taki papira kenki',
+'tog-enotifusertalkpages' => 'Seni mi wan E-mail te mi Taki papira kenki',
 'tog-enotifminoredits' => 'E-mail mi fu pikin kenki fu peprewoysi opo mi sirey',
 'tog-enotifrevealaddr' => 'Sori mi e-mail nen ini den e-mail boskopu',
 'tog-shownumberswatching' => 'Sori omeni kebroikiman e tan luku a papira disi',
@@ -321,7 +321,7 @@ $messages = array(
 'talk' => 'Taki',
 'views' => 'Views',
 'toolbox' => 'Wrokosani baki',
-'wiki_userpage' => 'Luku a papira fu a kebroikiman',
+'userpage' => 'Luku a papira fu a kebroikiman',
 'projectpage' => 'Luku a project papira',
 'imagepage' => 'Luku a media papira',
 'mediawikipage' => 'Luku a boskopu papira',
@@ -339,7 +339,7 @@ $messages = array(
 'jumptonavigation' => 'fenipresi',
 'jumptosearch' => 'suku',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Abra {{SITENAME}}',
 'aboutpage' => 'Project:Abra',
 'copyright' => 'Ala san skrifi dyaso de ondro $1.',
@@ -393,7 +393,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Papira',
-'nstab-wiki_user' => 'Kebroikiman papira',
+'nstab-user' => 'Kebroikiman papira',
 'nstab-media' => 'Media papira',
 'nstab-special' => 'Spesrutu',
 'nstab-project' => 'Project papira',
@@ -435,7 +435,7 @@ A kan taki a abi wan noso moro karakter san no bun fu kebroiki gi nen.',
 'protectedpagetext' => 'A papira disi sroto gi kenki.',
 'viewsourcetext' => 'Yu kan luku nanga kopi a source fu a papira disi:',
 'ns-specialprotected' => 'Spesrutu papira no kan kenki.',
-'titleprotected' => "[[wiki_user:$1|$1]] sroto a meki fu wan papira nanga a nen disi
+'titleprotected' => "[[User:$1|$1]] sroto a meki fu wan papira nanga a nen disi
 Fu san ede: ''$2''.",
 
 # Login and logout pages
@@ -454,9 +454,9 @@ No fergiti fu kenki den seti fu yu gi {{SITENAME}}.',
 'login' => 'Psa kon',
 'nav-login-createaccount' => 'Psa kon / meki wan account',
 'loginprompt' => 'Yu musu man kisi cookies fu man psa kon na {{SITENAME}}.',
-'wiki_userlogin' => 'Psa kon / meki wan account',
+'userlogin' => 'Psa kon / meki wan account',
 'logout' => 'Psa gwe',
-'wiki_userlogout' => 'Psa gwe',
+'userlogout' => 'Psa gwe',
 'notloggedin' => 'No psa kon',
 'nologin' => "No abi wan kebroikiman nen ete? '''$1'''.",
 'nologinlink' => 'Meki wan account',
@@ -465,7 +465,7 @@ No fergiti fu kenki den seti fu yu gi {{SITENAME}}.',
 'gotaccountlink' => 'Psa kon',
 'createaccountmail' => 'via e-mail',
 'badretype' => 'Den tu psa wortu no de srefi.',
-'wiki_userexists' => 'A kebroikiman nen disi de kaba.
+'userexists' => 'A kebroikiman nen disi de kaba.
 Teki wan tra nen.',
 'loginerror' => 'Fowtu na a psa kon',
 'nocookiesnew' => 'A account ben meki, ma yu no psa kon.<br />
@@ -477,9 +477,9 @@ Kenki den seti fu yu browser so dati a kan kisi den cookies disi, én pruberi ba
 'noname' => 'Yu no gi wan bun kebroikiman nen.',
 'loginsuccesstitle' => 'Yu psa kon now.',
 'loginsuccess' => "'''Now yu de na tapu {{SITENAME}} leki \"\$1\".'''",
-'nosuchwiki_user' => 'No wan kebroikiman de san nen "$1".<br />Luku efu yu skrifi a nen bun, noso meki an nyun account.',
-'nosuchwiki_usershort' => 'No wan kebroikiman de di nen "$1".<br />Luku efu yu skrifi a nen bun.',
-'nowiki_userspecified' => 'Yu musu gi wan kebroikiman nen.',
+'nosuchuser' => 'No wan kebroikiman de san nen "$1".<br />Luku efu yu skrifi a nen bun, noso meki an nyun account.',
+'nosuchusershort' => 'No wan kebroikiman de di nen "$1".<br />Luku efu yu skrifi a nen bun.',
+'nouserspecified' => 'Yu musu gi wan kebroikiman nen.',
 'wrongpassword' => 'Psa wortu no bun.<br />
 Pruberi baka.',
 'wrongpasswordempty' => 'No wan psa wortu ben gi.<br />
@@ -584,7 +584,7 @@ Yu e pramisi unu dati na yu skrifi disi yusrefi, noso yu teki en puru fu wan fri
 'template-protected' => '(a sroto)',
 'template-semiprotected' => '(sroto wan pisi)',
 'nocreatetext' => '{{SITENAME}} puru den primisi fu meki nyun papira.
-Yu kan go baka fu kenki papira di de kba, noso yu kan [[Special:wiki_userLogin|psa kon noso meki wan account]].',
+Yu kan go baka fu kenki papira di de kba, noso yu kan [[Special:UserLogin|psa kon noso meki wan account]].',
 'recreate-moveddeleted-warn' => "'''Warskow: yu e meki wan papira, di ben puru fu dyaso kaba, baka.'''
 
 Denki fosi efu na wan bun sani fu meki a papira disi baka. A log buku fu puru sori dyaso gi yepi:",
@@ -622,7 +622,7 @@ A kan ben trowe efu dribi.
 
 # Revision deletion
 'rev-deleted-comment' => '(opetaki ben trowe)',
-'rev-deleted-wiki_user' => '(masyin ben trowe)',
+'rev-deleted-user' => '(masyin ben trowe)',
 'rev-deleted-event' => '(aksi ben trowe)',
 'rev-delundel' => 'libi si/no libi si',
 'revisiondelete' => 'Versie trowe/otrowe',
@@ -690,7 +690,7 @@ A kan ben trowe efu dribi.
 'default' => 'soma',
 'prefs-files' => 'Gefre',
 'youremail' => 'E-mail:',
-'wiki_username' => 'Kebroikiman nen:',
+'username' => 'Kebroikiman nen:',
 'uid' => 'Kebroikiman ID:',
 'prefs-memberingroups' => 'Memre fu {{PLURAL:$1|grupu|grupu}}:',
 'yourrealname' => 'Yu tru nen:',
@@ -701,15 +701,15 @@ A kan ben trowe efu dribi.
 'prefs-help-email' => 'E-mail nen no de ferplekti, ma a e gi trawan a okasi fu kontakti yu na tapu yu kebroikiman papira noso na tapu yu taki papira, sondro fu sori suma na yu fu tru.',
 'prefs-help-email-required' => 'Wan e-mail nen de fanowdu gi disi.',
 
-# wiki_user rights
-'wiki_userrights-lookup-wiki_user' => 'Masyinguru kenki',
-'wiki_userrights-wiki_user-editname' => 'Wan masyinnen gi:',
-'editwiki_usergroup' => 'Masyinguru kenki',
-'editingwiki_user' => "Kenki fu lesi fu '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'wiki_userrights-editwiki_usergroup' => 'Masyinguru kenki',
-'savewiki_usergroups' => 'Masyinguru oponaki',
-'wiki_userrights-groupsmember' => 'Masyin fu:',
-'wiki_userrights-no-interwiki' => 'Yu abi no lesi tu kenki fu masyinlesi opo trawan wiki.',
+# User rights
+'userrights-lookup-user' => 'Masyinguru kenki',
+'userrights-user-editname' => 'Wan masyinnen gi:',
+'editusergroup' => 'Masyinguru kenki',
+'editinguser' => "Kenki fu lesi fu '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Masyinguru kenki',
+'saveusergroups' => 'Masyinguru oponaki',
+'userrights-groupsmember' => 'Masyin fu:',
+'userrights-no-interwiki' => 'Yu abi no lesi tu kenki fu masyinlesi opo trawan wiki.',
 
 # Groups
 'group' => 'Guru:',
@@ -729,7 +729,7 @@ A kan ben trowe efu dribi.
 'grouppage-sysop' => '{{ns:project}}:Admin',
 'grouppage-bureaucrat' => '{{ns:project}}:Burokrati',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Log buku fu kebroikiman leti',
 'rightsnone' => '(no)',
 
@@ -789,7 +789,7 @@ Papira ini [[Special:Watchlist|yu Tan Luku réy]] '''fatu'''.",
 'listfiles' => 'Réy fu file',
 'listfiles_date' => 'Datum',
 'listfiles_name' => 'Nen',
-'listfiles_wiki_user' => 'Masyin',
+'listfiles_user' => 'Masyin',
 'listfiles_size' => 'Gran (byte)',
 'listfiles_description' => 'Infrumasi',
 
@@ -802,7 +802,7 @@ Papira ini [[Special:Watchlist|yu Tan Luku réy]] '''fatu'''.",
 'filehist-revert' => 'bakadray',
 'filehist-current' => 'disi',
 'filehist-datetime' => 'Dei/ten',
-'filehist-wiki_user' => 'Kebroikiman',
+'filehist-user' => 'Kebroikiman',
 'filehist-dimensions' => 'Den marki',
 'filehist-filesize' => 'File marki',
 'filehist-comment' => 'Boskopu',
@@ -854,7 +854,7 @@ Papira ini [[Special:Watchlist|yu Tan Luku réy]] '''fatu'''.",
 
 # Statistics
 'statistics' => 'Den statistiek',
-'statistics-header-wiki_users' => 'Masyininfrumasi',
+'statistics-header-users' => 'Masyininfrumasi',
 
 'disambiguations' => 'Seni doro papira',
 
@@ -902,9 +902,9 @@ Papira ini [[Special:Watchlist|yu Tan Luku réy]] '''fatu'''.",
 'deadendpagestext' => 'Den ondroben peprewoysi abi no skaki na trawan peprewoysi ini {{SITENAME}}.',
 'protectedpages' => 'Papira di sroto',
 'protectedpagestext' => 'Da ondroben peprewoysi ben tapu nanga kan no kenki abi efru e dribi ben',
-'listwiki_users' => 'Réy fu kebroikiman',
+'listusers' => 'Réy fu kebroikiman',
 'newpages' => 'Nyun papira',
-'newpages-wiki_username' => 'Masyinnen:',
+'newpages-username' => 'Masyinnen:',
 'ancientpages' => 'Den moro owru papira',
 'move' => 'Froisi',
 'movethispage' => 'Froisi a papira disi',
@@ -916,7 +916,7 @@ Papira ini [[Special:Watchlist|yu Tan Luku réy]] '''fatu'''.",
 'booksources-go' => 'Suku',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Kebroikiman:',
+'specialloguserlabel' => 'Kebroikiman:',
 'speciallogtitlelabel' => 'Papira nen:',
 'log' => 'Log buku',
 'all-logs-page' => 'Ala log buku',
@@ -942,14 +942,14 @@ Papira ini [[Special:Watchlist|yu Tan Luku réy]] '''fatu'''.",
 'deletedcontributions' => 'Trowe kenki fu masyin',
 'deletedcontributions-title' => 'Trowe kenki fu masyin',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'Masyin libi si fu:',
-'listwiki_users-submit' => 'Libi si',
-'listwiki_users-noresult' => 'No masyin dyaso.',
+# Special:ListUsers
+'listusersfrom' => 'Masyin libi si fu:',
+'listusers-submit' => 'Libi si',
+'listusers-noresult' => 'No masyin dyaso.',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'No stiradresi',
-'emailwiki_user' => 'E-mail a kebroikiman disi',
+'emailuser' => 'E-mail a kebroikiman disi',
 'emailpage' => 'Mayin e-mail',
 'defemailsubject' => 'E-mail fu {{SITENAME}}',
 'noemailtitle' => 'Disi masyin abi no e-mailadresi',
@@ -1111,7 +1111,7 @@ Gi wan trawan papiranen.',
 'importlogpage' => "Log buku fu den sen'teki",
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Mi kebroikiman papira',
+'tooltip-pt-userpage' => 'Mi kebroikiman papira',
 'tooltip-pt-mytalk' => 'Mi taki',
 'tooltip-pt-preferences' => 'Seti na mi fa',
 'tooltip-pt-watchlist' => "Den papira di m'e tan luku fu si efu den e kenki",
@@ -1139,10 +1139,10 @@ Yu ka luku a source.',
 'tooltip-n-help' => 'A presi fu feni yepi.',
 'tooltip-t-whatlinkshere' => 'Ala wiki papira di e sori kon na a papira disi',
 'tooltip-t-contributions' => 'Sori san a kebroikiman disi du dyaso',
-'tooltip-t-emailwiki_user' => 'Seni wan e-mail gi a kebroikiman disi',
+'tooltip-t-emailuser' => 'Seni wan e-mail gi a kebroikiman disi',
 'tooltip-t-upload' => 'Lai file poti',
 'tooltip-t-specialpages' => 'Ala spesrutu papira',
-'tooltip-ca-nstab-wiki_user' => 'Luku a kebroikiman papira',
+'tooltip-ca-nstab-user' => 'Luku a kebroikiman papira',
 'tooltip-ca-nstab-media' => 'Papira fu media libi si',
 'tooltip-ca-nstab-project' => 'Luku a project papira',
 'tooltip-ca-nstab-image' => 'Luku file papira',
@@ -1158,8 +1158,8 @@ Yu ka luku a source.',
 'tooltip-watch' => 'Poti a papira disi ini yu Tan Luku réy',
 
 # Attribution
-'sitewiki_user' => '{{SITENAME}}-masyin $1',
-'sitewiki_users' => '{{SITENAME}}-masyin $1',
+'siteuser' => '{{SITENAME}}-masyin $1',
+'siteusers' => '{{SITENAME}}-masyin $1',
 
 # Browsing diffs
 'previousdiff' => '← A psa kenki',

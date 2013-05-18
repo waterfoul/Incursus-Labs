@@ -70,7 +70,7 @@ TEXT;
 	public function execute() {
 		global $wgCategoryCollation, $wgMiserMode;
 
-		w = $this->getDB( DB_MASTER );
+		$dbw = $this->getDB( DB_MASTER );
 		$force = $this->getOption( 'force' );
 		$dryRun = $this->getOption( 'dry-run' );
 		$verboseStats = $this->getOption( 'verbose-stats' );
@@ -92,19 +92,19 @@ TEXT;
 				$collationConds['cl_collation'] = $this->getOption( 'previous-collation' );
 			} else {
 				$collationConds = array( 0 =>
-					'cl_collation != ' . w->addQuotes( $collationName )
+					'cl_collation != ' . $dbw->addQuotes( $collationName )
 				);
 			}
 
 			if ( !$wgMiserMode ) {
-				$count = w->selectField(
+				$count = $dbw->selectField(
 					'categorylinks',
 					'COUNT(*)',
 					$collationConds,
 					__METHOD__
 				);
 			} else {
-				$count = w->estimateRowCount(
+				$count = $dbw->estimateRowCount(
 					'categorylinks',
 					'*',
 					$collationConds,
@@ -123,7 +123,7 @@ TEXT;
 		$batchConds = array();
 		do {
 			$this->output( "Selecting next " . self::BATCH_SIZE . " rows..." );
-			$res = w->select(
+			$res = $dbw->select(
 				array( 'categorylinks', 'page' ),
 				array( 'cl_from', 'cl_to', 'cl_sortkey_prefix', 'cl_collation',
 					'cl_sortkey', 'page_namespace', 'page_title'
@@ -135,7 +135,7 @@ TEXT;
 			$this->output( " processing..." );
 
 			if ( !$dryRun ) {
-				w->begin( __METHOD__ );
+				$dbw->begin( __METHOD__ );
 			}
 			foreach ( $res as $row ) {
 				$title = Title::newFromRow( $row );
@@ -168,7 +168,7 @@ TEXT;
 				}
 
 				if ( !$dryRun ) {
-					w->update(
+					$dbw->update(
 						'categorylinks',
 						array(
 							'cl_sortkey' => $newSortKey,
@@ -183,12 +183,12 @@ TEXT;
 				}
 			}
 			if ( !$dryRun ) {
-				w->commit( __METHOD__ );
+				$dbw->commit( __METHOD__ );
 			}
 
 			if ( ( $force || $dryRun ) && $row ) {
-				$encFrom = w->addQuotes( $row->cl_from );
-				$encTo = w->addQuotes( $row->cl_to );
+				$encFrom = $dbw->addQuotes( $row->cl_from );
+				$encTo = $dbw->addQuotes( $row->cl_to );
 				$batchConds = array(
 					"(cl_from = $encFrom AND cl_to > $encTo) " .
 					" OR cl_from > $encFrom" );

@@ -317,12 +317,12 @@ class FileRepo {
 		}
 		if ( $time ) {
 			if ( $this->oldFileFactory ) {
-				return call_wiki_user_func( $this->oldFileFactory, $title, $this, $time );
+				return call_user_func( $this->oldFileFactory, $title, $this, $time );
 			} else {
 				return false;
 			}
 		} else {
-			return call_wiki_user_func( $this->fileFactory, $title, $this );
+			return call_user_func( $this->fileFactory, $title, $this );
 		}
 	}
 
@@ -340,7 +340,7 @@ class FileRepo {
 	 *     ignoreRedirect: If true, do not follow file redirects
 	 *
 	 *     private:        If true, return restricted (deleted) files if the current
-	 *                     wiki_user is allowed to view them. Otherwise, such files will not
+	 *                     user is allowed to view them. Otherwise, such files will not
 	 *                     be found.
 	 * @return File|bool False on failure
 	 */
@@ -364,7 +364,7 @@ class FileRepo {
 			if ( $img && $img->exists() ) {
 				if ( !$img->isDeleted( File::DELETED_FILE ) ) {
 					return $img; // always OK
-				} elseif ( !empty( $options['private'] ) && $img->wiki_userCan( File::DELETED_FILE ) ) {
+				} elseif ( !empty( $options['private'] ) && $img->userCan( File::DELETED_FILE ) ) {
 					return $img;
 				}
 			}
@@ -431,7 +431,7 @@ class FileRepo {
 		$time = isset( $options['time'] ) ? $options['time'] : false;
 		# First try to find a matching current version of a file...
 		if ( $this->fileFactoryKey ) {
-			$img = call_wiki_user_func( $this->fileFactoryKey, $sha1, $this, $time );
+			$img = call_user_func( $this->fileFactoryKey, $sha1, $this, $time );
 		} else {
 			return false; // find-by-sha1 not supported
 		}
@@ -440,11 +440,11 @@ class FileRepo {
 		}
 		# Now try to find a matching old version of a file...
 		if ( $time !== false && $this->oldFileFactoryKey ) { // find-by-sha1 supported?
-			$img = call_wiki_user_func( $this->oldFileFactoryKey, $sha1, $this, $time );
+			$img = call_user_func( $this->oldFileFactoryKey, $sha1, $this, $time );
 			if ( $img && $img->exists() ) {
 				if ( !$img->isDeleted( File::DELETED_FILE ) ) {
 					return $img; // always OK
-				} elseif ( !empty( $options['private'] ) && $img->wiki_userCan( File::DELETED_FILE ) ) {
+				} elseif ( !empty( $options['private'] ) && $img->userCan( File::DELETED_FILE ) ) {
 					return $img;
 				}
 			}
@@ -519,7 +519,7 @@ class FileRepo {
 	public function getNameFromTitle( Title $title ) {
 		global $wgContLang;
 		if ( $this->initialCapital != MWNamespace::isCapitalized( NS_FILE ) ) {
-			$name = $title->getwiki_userCaseDBKey();
+			$name = $title->getUserCaseDBKey();
 			if ( $this->initialCapital ) {
 				$name = $wgContLang->ucfirst( $name );
 			}
@@ -617,7 +617,7 @@ class FileRepo {
 	 * Get the URL of an image description page. May return false if it is
 	 * unknown or not applicable. In general this should only be called by the
 	 * File class, since it may return invalid results for certain kinds of
-	 * repositories. Use File::getDescriptionUrl() in wiki_user code.
+	 * repositories. Use File::getDescriptionUrl() in user code.
 	 *
 	 * In particular, it uses the article paths as specified to the repository
 	 * constructor, whereas local repositories use the local Title functions.
@@ -653,7 +653,7 @@ class FileRepo {
 	/**
 	 * Get the URL of the content-only fragment of the description page. For
 	 * MediaWiki this means action=render. This should only be called by the
-	 * repository's file class, since it may return invalid results. wiki_user code
+	 * repository's file class, since it may return invalid results. User code
 	 * should use File::getDescriptionText().
 	 *
 	 * @param $name String: name of image to fetch
@@ -938,7 +938,7 @@ class FileRepo {
 	 * file can later be disposed using FileRepo::freeTemp().
 	 *
 	 * @param $originalName String: the base name of the file as specified
-	 *     by the wiki_user. The file extension will be maintained.
+	 *     by the user. The file extension will be maintained.
 	 * @param $srcPath String: the current location of the file.
 	 * @return FileRepoStatus object with the URL in the value.
 	 */
@@ -1169,7 +1169,7 @@ class FileRepo {
 		$params = array( 'dir' => $path );
 		if ( $this->isPrivate || $container === $this->zones['deleted']['container'] ) {
 			# Take all available measures to prevent web accessibility of new deleted
-			# directories, in case the wiki_user has not configured offline storage
+			# directories, in case the user has not configured offline storage
 			$params = array( 'noAccess' => true, 'noListing' => true ) + $params;
 		}
 
@@ -1448,7 +1448,7 @@ class FileRepo {
 			$iterator = $this->backend->getFileList( array( 'dir' => $path ) );
 			foreach ( $iterator as $name ) {
 				// Each item returned is a public file
-				call_wiki_user_func( $callback, "{$path}/{$name}" );
+				call_user_func( $callback, "{$path}/{$name}" );
 			}
 		}
 	}

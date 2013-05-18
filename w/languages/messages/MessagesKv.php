@@ -113,7 +113,7 @@ $messages = array(
 'otherlanguages' => 'Мӧд кывъясӧн',
 'jumptosearch' => 'корсьысьӧм',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} йылысь',
 'currentevents' => 'Быд лунся лоӧмтор',
 'mainpage' => 'Медшӧр лист бок',
@@ -130,7 +130,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Гижӧд',
-'nstab-wiki_user' => 'Пырысь',
+'nstab-user' => 'Пырысь',
 'nstab-project' => 'Проект йылысь',
 'nstab-category' => 'Категория',
 
@@ -138,9 +138,9 @@ $messages = array(
 'yourname' => 'Пырысьлӧн ним:',
 'login' => 'Висьтасьны',
 'nav-login-createaccount' => 'Висьтасьны / гижсьыны',
-'wiki_userlogin' => 'Висьтасьны али гижсьыны',
+'userlogin' => 'Висьтасьны али гижсьыны',
 'logout' => 'Сеанс эштӧдӧм',
-'wiki_userlogout' => 'Сеанс эштӧдӧм',
+'userlogout' => 'Сеанс эштӧдӧм',
 'gotaccountlink' => 'Висьтасьӧй',
 'loginlanguagelabel' => 'Кыв: $1',
 
@@ -172,7 +172,7 @@ $messages = array(
 
 # File description page
 'filehist-datetime' => 'Кадпас/кад',
-'filehist-wiki_user' => 'Пырысь',
+'filehist-user' => 'Пырысь',
 'filehist-comment' => 'Пасйӧд',
 
 # Random page
@@ -183,7 +183,7 @@ $messages = array(
 'move' => 'Ним вежны',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Пырысь:',
+'specialloguserlabel' => 'Пырысь:',
 'log' => 'Журналъяс',
 
 # Special:AllPages
@@ -225,7 +225,7 @@ $messages = array(
 'allmessages' => 'Система юӧртӧмъяс',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Пырысьлӧн лист бокӧй',
+'tooltip-pt-userpage' => 'Пырысьлӧн лист бокӧй',
 'tooltip-ca-talk' => 'Гижӧдлӧн сёрнитӧм лист бокӧй али Википедиялӧн дӧнъялӧм лист бокӧй',
 'tooltip-ca-move' => 'Лист боклӧн ним вежны',
 

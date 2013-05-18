@@ -22,7 +22,7 @@
  */
 
 /**
- * This special page lists all defined wiki_user groups and the associated rights.
+ * This special page lists all defined user groups and the associated rights.
  * See also @ref $wgGroupPermissions.
  *
  * @ingroup SpecialPage
@@ -95,21 +95,21 @@ class SpecialListGroupRights extends SpecialPage {
 				);
 			}
 
-			if ( $group === 'wiki_user' ) {
-				// Link to Special:listwiki_users for implicit group 'wiki_user'
+			if ( $group === 'user' ) {
+				// Link to Special:listusers for implicit group 'user'
 				$grouplink = '<br />' . Linker::linkKnown(
-					SpecialPage::getTitleFor( 'Listwiki_users' ),
+					SpecialPage::getTitleFor( 'Listusers' ),
 					$this->msg( 'listgrouprights-members' )->escaped()
 				);
 			} elseif ( !in_array( $group, $wgImplicitGroups ) ) {
 				$grouplink = '<br />' . Linker::linkKnown(
-					SpecialPage::getTitleFor( 'Listwiki_users' ),
+					SpecialPage::getTitleFor( 'Listusers' ),
 					$this->msg( 'listgrouprights-members' )->escaped(),
 					array(),
 					array( 'group' => $group )
 				);
 			} else {
-				// No link to Special:listwiki_users for other implicit groups as they are unlistable
+				// No link to Special:listusers for other implicit groups as they are unlistable
 				$grouplink = '';
 			}
 
@@ -137,7 +137,7 @@ class SpecialListGroupRights extends SpecialPage {
 	}
 
 	/**
-	 * Create a wiki_user-readable list of permissions from the given array.
+	 * Create a user-readable list of permissions from the given array.
 	 *
 	 * @param $permissions Array of permission => bool (from $wgGroupPermissions items)
 	 * @param $revoke Array of permission => bool (from $wgRevokePermissions items)
@@ -153,7 +153,7 @@ class SpecialListGroupRights extends SpecialPage {
 			//show as granted only if it isn't revoked to prevent duplicate display of permissions
 			if( $granted && ( !isset( $revoke[$permission] ) || !$revoke[$permission] ) ) {
 				$description = $this->msg( 'listgrouprights-right-display',
-					wiki_user::getRightDescription( $permission ),
+					User::getRightDescription( $permission ),
 					'<span class="mw-listgrouprights-right-name">' . $permission . '</span>'
 				)->parse();
 				$r[] = $description;
@@ -162,7 +162,7 @@ class SpecialListGroupRights extends SpecialPage {
 		foreach( $revoke as $permission => $revoked ) {
 			if( $revoked ) {
 				$description = $this->msg( 'listgrouprights-right-revoked',
-					wiki_user::getRightDescription( $permission ),
+					User::getRightDescription( $permission ),
 					'<span class="mw-listgrouprights-right-name">' . $permission . '</span>'
 				)->parse();
 				$r[] = $description;
@@ -175,7 +175,7 @@ class SpecialListGroupRights extends SpecialPage {
 		} elseif( is_array( $add ) && count( $add ) ) {
 			$add = array_values( array_unique( $add ) );
 			$r[] = $this->msg( 'listgrouprights-addgroup',
-				$lang->listToText( array_map( array( 'wiki_user', 'makeGroupLinkWiki' ), $add ) ),
+				$lang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $add ) ),
 				count( $add )
 			)->parse();
 		}
@@ -184,7 +184,7 @@ class SpecialListGroupRights extends SpecialPage {
 		} elseif( is_array( $remove ) && count( $remove ) ) {
 			$remove = array_values( array_unique( $remove ) );
 			$r[] = $this->msg( 'listgrouprights-removegroup',
-				$lang->listToText( array_map( array( 'wiki_user', 'makeGroupLinkWiki' ), $remove ) ),
+				$lang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $remove ) ),
 				count( $remove )
 			)->parse();
 		}
@@ -193,7 +193,7 @@ class SpecialListGroupRights extends SpecialPage {
 		} elseif( is_array( $addSelf ) && count( $addSelf ) ) {
 			$addSelf = array_values( array_unique( $addSelf ) );
 			$r[] = $this->msg( 'listgrouprights-addgroup-self',
-				$lang->listToText( array_map( array( 'wiki_user', 'makeGroupLinkWiki' ), $addSelf ) ),
+				$lang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $addSelf ) ),
 				count( $addSelf )
 			)->parse();
 		}
@@ -202,7 +202,7 @@ class SpecialListGroupRights extends SpecialPage {
 		} elseif( is_array( $removeSelf ) && count( $removeSelf ) ) {
 			$removeSelf = array_values( array_unique( $removeSelf ) );
 			$r[] = $this->msg( 'listgrouprights-removegroup-self',
-				$lang->listToText( array_map( array( 'wiki_user', 'makeGroupLinkWiki' ), $removeSelf ) ),
+				$lang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $removeSelf ) ),
 				count( $removeSelf )
 			)->parse();
 		}

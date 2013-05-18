@@ -48,7 +48,7 @@ var language = {
 		if ( !forms || forms.length === 0 ) {
 			return '';
 		}
-		var pluralRules = mw.language.getData( mw.config.get( 'wgwiki_userLanguage' ), 'pluralRules' );
+		var pluralRules = mw.language.getData( mw.config.get( 'wgUserLanguage' ), 'pluralRules' );
 		if ( !pluralRules ) {
 			// default fallback.
 			return ( count === 1 ) ? forms[0] : forms[1];
@@ -111,7 +111,7 @@ var language = {
 
 	/**
 	 * Provides an alternative text depending on specified gender.
-	 * Usage {{gender:[gender|wiki_user object]|masculine|feminine|neutral}}.
+	 * Usage {{gender:[gender|user object]|masculine|feminine|neutral}}.
 	 * If second or third parameter are not specified, masculine is used.
 	 *
 	 * These details may be overriden per language.
@@ -146,7 +146,7 @@ var language = {
 	 * @return {String}
 	 */
 	convertGrammar: function ( word, form ) {
-		var grammarForms = mw.language.getData( mw.config.get( 'wgwiki_userLanguage' ), 'grammarForms' );
+		var grammarForms = mw.language.getData( mw.config.get( 'wgUserLanguage' ), 'grammarForms' );
 		if ( grammarForms && grammarForms[form] ) {
 			return grammarForms[form][word] || word;
 		}
@@ -154,7 +154,7 @@ var language = {
 	},
 
 	// Digit Transform Table, populated by language classes where applicable
-	digitTransformTable: mw.language.getData( mw.config.get( 'wgwiki_userLanguage' ), 'digitTransformTable' )
+	digitTransformTable: mw.language.getData( mw.config.get( 'wgUserLanguage' ), 'digitTransformTable' )
 };
 
 $.extend( mw.language, language );

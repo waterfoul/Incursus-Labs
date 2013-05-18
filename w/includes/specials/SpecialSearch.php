@@ -31,7 +31,7 @@ class SpecialSearch extends SpecialPage {
 	/**
 	 * Current search profile. Search profile is just a name that identifies
 	 * the active search tab on the search page (content, help, discussions...)
-	 * For wiki_users tt replaces the set of enabled namespaces from the query
+	 * For users tt replaces the set of enabled namespaces from the query
 	 * string when applicable. Extensions can add new profiles with hooks
 	 * with custom search options just for that profile.
 	 * null|string
@@ -109,7 +109,7 @@ class SpecialSearch extends SpecialPage {
 	}
 
 	/**
-	 * Set up basic search parameters from the request and wiki_user settings.
+	 * Set up basic search parameters from the request and user settings.
 	 *
 	 * @see tests/phpunit/includes/specials/SpecialSearchTest.php
 	 */
@@ -118,13 +118,13 @@ class SpecialSearch extends SpecialPage {
 		list( $this->limit, $this->offset ) = $request->getLimitOffset( 20, 'searchlimit' );
 		$this->mPrefix = $request->getVal( 'prefix', '' );
 
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 
 		# Extract manually requested namespaces
 		$nslist = $this->powerSearch( $request );
 		if ( !count( $nslist ) ) {
-			# Fallback to wiki_user preference
-			$nslist = SearchEngine::wiki_userNamespaces( $wiki_user );
+			# Fallback to user preference
+			$nslist = SearchEngine::userNamespaces( $user );
 		}
 
 		$profile = null;
@@ -423,7 +423,7 @@ class SpecialSearch extends SpecialPage {
 
 		if( $t->isKnown() ) {
 			$messageName = 'searchmenu-exists';
-		} elseif( $t->wiki_userCan( 'create' ) ) {
+		} elseif( $t->userCan( 'create' ) ) {
 			$messageName = 'searchmenu-new';
 		} else {
 			$messageName = 'searchmenu-new-nocreate';
@@ -514,7 +514,7 @@ class SpecialSearch extends SpecialPage {
 		while( $result ) {
 			/*op-patch|TS|2011-02-08|HaloACL|SafeTitle|start*/
 			if (($result->getTitle() != NULL) 
-			    && ($result->getTitle()->wiki_userCanReadEx())) {
+			    && ($result->getTitle()->userCanReadEx())) {
 			/*op-patch|TS|2011-02-08|end*/  
 				$out .= $this->showHit( $result, $terms );
 			/*op-patch|TS|2011-02-08|HaloACL|SafeTitle|start*/
@@ -566,7 +566,7 @@ class SpecialSearch extends SpecialPage {
 		//If page content is not readable, just return the title.
 		//This is not quite safe, but better than showing excerpts from non-readable pages
 		//Note that hiding the entry entirely would screw up paging.
-		if( !$t->wiki_userCan( 'read' ) ) {
+		if( !$t->userCan( 'read' ) ) {
 			wfProfileOut( __METHOD__ );
 			return "<li>{$link}</li>\n";
 		}
@@ -637,7 +637,7 @@ class SpecialSearch extends SpecialPage {
 				->escaped();
 		}
 
-		$date = $lang->wiki_userTimeAndDate( $timestamp, $this->getwiki_user() );
+		$date = $lang->userTimeAndDate( $timestamp, $this->getUser() );
 
 		// link to related articles if supported
 		$related = '';
@@ -1136,9 +1136,9 @@ class SpecialSearch extends SpecialPage {
 	}
 
 	/**
-	 * wiki_users of hook SpecialSearchSetupEngine can use this to
+	 * Users of hook SpecialSearchSetupEngine can use this to
 	 * add more params to links to not lose selection when
-	 * wiki_user navigates search results.
+	 * user navigates search results.
 	 * @since 1.18
 	 *
 	 * @param $key

@@ -1,9 +1,9 @@
 -- Add field to recentchanges for easy filtering of bot entries
--- edits by a wiki_user with 'bot' in wiki_user.wiki_user_rights should be
+-- edits by a user with 'bot' in user.user_rights should be
 -- marked 1 in rc_bot.
 
 -- Change made 2002-12-15 by Brion VIBBER <brion@pobox.com>
--- this affects code in Article.php, wiki_user.php SpecialRecentchanges.php
+-- this affects code in Article.php, User.php SpecialRecentchanges.php
 -- column also added to buildTables.inc
 
 ALTER TABLE /*$wgDBprefix*/recentchanges

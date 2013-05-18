@@ -229,7 +229,7 @@ abstract class FileCacheBase {
 	public function incrMissesRecent( WebRequest $request ) {
 		global $wgMemc;
 		if ( mt_rand( 0, self::MISS_FACTOR - 1 ) == 0 ) {
-			# Get a large IP range that should include the wiki_user  even if that 
+			# Get a large IP range that should include the user  even if that 
 			# person's IP address changes
 			$ip = $request->getIP();
 			if ( !IP::isValid( $ip ) ) {
@@ -242,7 +242,7 @@ abstract class FileCacheBase {
 			# Bail out if a request already came from this range...
 			$key = wfMemcKey( get_class( $this ), 'attempt', $this->mType, $this->mKey, $ip );
 			if ( $wgMemc->get( $key ) ) {
-				return; // possibly the same wiki_user
+				return; // possibly the same user
 			}
 			$wgMemc->set( $key, 1, self::MISS_TTL_SEC );
 

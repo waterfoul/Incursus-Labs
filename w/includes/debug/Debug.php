@@ -266,7 +266,7 @@ class MWDebug {
 	}
 
 	/**
-	 * Send a warning either to the debug log or by triggering an wiki_user PHP
+	 * Send a warning either to the debug log or by triggering an user PHP
 	 * error depending on $wgDevelopmentWarnings.
 	 *
 	 * @param $msg string Message to send

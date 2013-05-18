@@ -244,8 +244,8 @@ class AllmessagesTablePager extends TablePager {
 		// FIXME: This function should be moved to Language:: or something.
 		wfProfileIn( __METHOD__ . '-db' );
 
-		r = wfGetDB( DB_SLAVE );
-		$res = r->select( 'page',
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'page',
 			array( 'page_namespace', 'page_title' ),
 			array( 'page_namespace' => array( NS_MEDIAWIKI, NS_MEDIAWIKI_TALK ) ),
 			__METHOD__,

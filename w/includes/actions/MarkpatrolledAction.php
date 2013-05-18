@@ -41,12 +41,12 @@ class MarkpatrolledAction extends FormlessAction {
 			throw new ErrorPageError( 'markedaspatrollederror', 'markedaspatrollederrortext' );
 		}
 
-		$wiki_user = $this->getwiki_user();
-		if ( !$wiki_user->matchEditToken( $request->getVal( 'token' ), $rcId ) ) {
+		$user = $this->getUser();
+		if ( !$user->matchEditToken( $request->getVal( 'token' ), $rcId ) ) {
 			throw new ErrorPageError( 'sessionfailure-title', 'sessionfailure' );
 		}
 
-		$errors = $rc->doMarkPatrolled( $wiki_user );
+		$errors = $rc->doMarkPatrolled( $user );
 
 		if ( in_array( array( 'rcpatroldisabled' ), $errors ) ) {
 			throw new ErrorPageError( 'rcpatroldisabled', 'rcpatroldisabledtext' );
@@ -57,7 +57,7 @@ class MarkpatrolledAction extends FormlessAction {
 			return;
 		}
 
-		# It would be nice to see where the wiki_user had actually come from, but for now just guess
+		# It would be nice to see where the user had actually come from, but for now just guess
 		$returnto = $rc->getAttribute( 'rc_type' ) == RC_NEW ? 'Newpages' : 'Recentchanges';
 		$return = SpecialPage::getTitleFor( $returnto );
 
@@ -72,7 +72,7 @@ class MarkpatrolledAction extends FormlessAction {
 			throw new PermissionsError( 'patrol', $errors );
 		}
 
-		# Inform the wiki_user
+		# Inform the user
 		$this->getOutput()->setPageTitle( $this->msg( 'markedaspatrolled' ) );
 		$this->getOutput()->addWikiMsg( 'markedaspatrolledtext', $rc->getTitle()->getPrefixedText() );
 		$this->getOutput()->returnToMain( null, $return );

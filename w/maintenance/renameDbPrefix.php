@@ -71,8 +71,8 @@ class RenameDbPrefix extends Maintenance {
 		$this->output( "Renaming DB prefix for tables of $wgDBname from '$old' to '$new'\n" );
 		$count = 0;
 
-		w = wfGetDB( DB_MASTER );
-		$res = w->query( "SHOW TABLES " . w->buildLike( $old, w->anyString() ) );
+		$dbw = wfGetDB( DB_MASTER );
+		$res = $dbw->query( "SHOW TABLES " . $dbw->buildLike( $old, $dbw->anyString() ) );
 		foreach ( $res as $row ) {
 			// XXX: odd syntax. MySQL outputs an oddly cased "Tables of X"
 			// sort of message. Best not to try $row->x stuff...
@@ -82,7 +82,7 @@ class RenameDbPrefix extends Maintenance {
 				// $old should be regexp safe ([a-zA-Z_])
 				$newTable = preg_replace( '/^' . $old . '/', $new, $table );
 				$this->output( "Renaming table $table to $newTable\n" );
-				w->query( "RENAME TABLE $table TO $newTable" );
+				$dbw->query( "RENAME TABLE $table TO $newTable" );
 			}
 			$count++;
 		}

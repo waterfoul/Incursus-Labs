@@ -62,11 +62,11 @@ class ApiFeedContributions extends ApiBase {
 
 		$msg = wfMessage( 'Contributions' )->inContentLanguage()->text();
 		$feedTitle = $wgSitename . ' - ' . $msg . ' [' . $wgLanguageCode . ']';
-		$feedUrl = SpecialPage::getTitleFor( 'Contributions', $params['wiki_user'] )->getFullURL();
+		$feedUrl = SpecialPage::getTitleFor( 'Contributions', $params['user'] )->getFullURL();
 
-		$target = $params['wiki_user'] == 'newbies'
+		$target = $params['user'] == 'newbies'
 				? 'newbies'
-				: Title::makeTitleSafe( NS_USER, $params['wiki_user'] )->getText();
+				: Title::makeTitleSafe( NS_USER, $params['user'] )->getText();
 
 		$feed = new $wgFeedClasses[$params['feedformat']] (
 			$feedTitle,
@@ -120,7 +120,7 @@ class ApiFeedContributions extends ApiBase {
 	 * @return string
 	 */
 	protected function feedItemAuthor( $revision ) {
-		return $revision->getwiki_userText();
+		return $revision->getUserText();
 	}
 
 	/**
@@ -130,7 +130,7 @@ class ApiFeedContributions extends ApiBase {
 	protected function feedItemDesc( $revision ) {
 		if( $revision ) {
 			$msg = wfMessage( 'colon-separator' )->inContentLanguage()->text();
-			return '<p>' . htmlspecialchars( $revision->getwiki_userText() ) . $msg .
+			return '<p>' . htmlspecialchars( $revision->getUserText() ) . $msg .
 				htmlspecialchars( FeedItem::stripComment( $revision->getComment() ) ) .
 				"</p>\n<hr />\n<div>" .
 				nl2br( htmlspecialchars( $revision->getText() ) ) . "</div>";
@@ -146,8 +146,8 @@ class ApiFeedContributions extends ApiBase {
 				ApiBase::PARAM_DFLT => 'rss',
 				ApiBase::PARAM_TYPE => $feedFormatNames
 			),
-			'wiki_user' => array(
-				ApiBase::PARAM_TYPE => 'wiki_user',
+			'user' => array(
+				ApiBase::PARAM_TYPE => 'user',
 				ApiBase::PARAM_REQUIRED => true,
 			),
 			'namespace' => array(
@@ -173,7 +173,7 @@ class ApiFeedContributions extends ApiBase {
 	public function getParamDescription() {
 		return array(
 			'feedformat' => 'The format of the feed',
-			'wiki_user' => 'What wiki_users to get the contributions for',
+			'user' => 'What users to get the contributions for',
 			'namespace' => 'What namespace to filter the contributions by',
 			'year' => 'From year (and earlier)',
 			'month' => 'From month (and earlier)',
@@ -185,7 +185,7 @@ class ApiFeedContributions extends ApiBase {
 	}
 
 	public function getDescription() {
-		return 'Returns a wiki_user contributions feed';
+		return 'Returns a user contributions feed';
 	}
 
 	public function getPossibleErrors() {
@@ -198,7 +198,7 @@ class ApiFeedContributions extends ApiBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=feedcontributions&wiki_user=Reedy',
+			'api.php?action=feedcontributions&user=Reedy',
 		);
 	}
 

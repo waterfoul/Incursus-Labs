@@ -50,7 +50,7 @@ abstract class DatabaseUpdater {
 	 *
 	 * @var DatabaseBase
 	 */
-	protected ;
+	protected $db;
 
 	protected $shared = false;
 
@@ -65,12 +65,12 @@ abstract class DatabaseUpdater {
 	/**
 	 * Constructor
 	 *
-	 * @param  DatabaseBase object to perform updates on
+	 * @param $db DatabaseBase object to perform updates on
 	 * @param $shared bool Whether to perform updates on shared tables
 	 * @param $maintenance Maintenance Maintenance object which created us
 	 */
-	protected function __construct( DatabaseBase &, $shared, Maintenance $maintenance = null ) {
-		$this->db = ;
+	protected function __construct( DatabaseBase &$db, $shared, Maintenance $maintenance = null ) {
+		$this->db = $db;
 		$this->db->setFlag( DBO_DDLMODE ); // For Oracle's handling of schema files
 		$this->shared = $shared;
 		if ( $maintenance ) {
@@ -78,7 +78,7 @@ abstract class DatabaseUpdater {
 		} else {
 			$this->maintenance = new FakeMaintenance;
 		}
-		$this->maintenance->setDB(  );
+		$this->maintenance->setDB( $db );
 		$this->initOldGlobals();
 		$this->loadExtensions();
 		wfRunHooks( 'LoadExtensionSchemaUpdates', array( $this ) );
@@ -123,16 +123,16 @@ abstract class DatabaseUpdater {
 
 	/**
 	 * @throws MWException
-	 * @param DatabaseBase 
+	 * @param DatabaseBase $db
 	 * @param bool $shared
 	 * @param null $maintenance
 	 * @return DatabaseUpdater
 	 */
-	public static function newForDB( &, $shared = false, $maintenance = null ) {
-		$type = ->getType();
+	public static function newForDB( &$db, $shared = false, $maintenance = null ) {
+		$type = $db->getType();
 		if( in_array( $type, Installer::getDBTypes() ) ) {
 			$class = ucfirst( $type ) . 'Updater';
-			return new $class( , $shared, $maintenance );
+			return new $class( $db, $shared, $maintenance );
 		} else {
 			throw new MWException( __METHOD__ . ' called for unsupported $wgDBtype' );
 		}
@@ -411,9 +411,9 @@ abstract class DatabaseUpdater {
 		global $wgExtNewFields, $wgExtNewTables, $wgExtModifiedFields,
 			$wgExtNewIndexes, $wgSharedDB, $wgSharedTables;
 
-		$dowiki_user = $this->shared ?
-			$wgSharedDB && in_array( 'wiki_user', $wgSharedTables ) :
-			!$wgSharedDB || !in_array( 'wiki_user', $wgSharedTables );
+		$doUser = $this->shared ?
+			$wgSharedDB && in_array( 'user', $wgSharedTables ) :
+			!$wgSharedDB || !in_array( 'user', $wgSharedTables );
 
 		$updates = array();
 
@@ -424,7 +424,7 @@ abstract class DatabaseUpdater {
 		}
 
 		foreach ( $wgExtNewFields as $fieldRecord ) {
-			if ( $fieldRecord[0] != 'wiki_user' || $dowiki_user ) {
+			if ( $fieldRecord[0] != 'user' || $doUser ) {
 				$updates[] = array(
 					'addField', $fieldRecord[0], $fieldRecord[1],
 						$fieldRecord[2], true
@@ -611,7 +611,7 @@ abstract class DatabaseUpdater {
 	 * Purge the objectcache table
 	 */
 	protected function purgeCache() {
-		# We can't guarantee that the wiki_user will be able to use TRUNCATE,
+		# We can't guarantee that the user will be able to use TRUNCATE,
 		# but we know that DELETE is available to us
 		$this->output( "Purging caches..." );
 		$this->db->delete( 'objectcache', '*', __METHOD__ );
@@ -638,34 +638,34 @@ abstract class DatabaseUpdater {
 	# Common updater functions
 
 	/**
-	 * Sets the number of active wiki_users in the site_stats table
+	 * Sets the number of active users in the site_stats table
 	 */
-	protected function doActivewiki_usersInit() {
-		$activewiki_users = $this->db->selectField( 'site_stats', 'ss_active_wiki_users', false, __METHOD__ );
-		if ( $activewiki_users == -1 ) {
-			$activewiki_users = $this->db->selectField( 'recentchanges',
-				'COUNT( DISTINCT rc_wiki_user_text )',
-				array( 'rc_wiki_user != 0', 'rc_bot' => 0, "rc_log_type != 'newwiki_users'" ), __METHOD__
+	protected function doActiveUsersInit() {
+		$activeUsers = $this->db->selectField( 'site_stats', 'ss_active_users', false, __METHOD__ );
+		if ( $activeUsers == -1 ) {
+			$activeUsers = $this->db->selectField( 'recentchanges',
+				'COUNT( DISTINCT rc_user_text )',
+				array( 'rc_user != 0', 'rc_bot' => 0, "rc_log_type != 'newusers'" ), __METHOD__
 			);
 			$this->db->update( 'site_stats',
-				array( 'ss_active_wiki_users' => intval( $activewiki_users ) ),
+				array( 'ss_active_users' => intval( $activeUsers ) ),
 				array( 'ss_row_id' => 1 ), __METHOD__, array( 'LIMIT' => 1 )
 			);
 		}
-		$this->output( "...ss_active_wiki_users wiki_user count set...\n" );
+		$this->output( "...ss_active_users user count set...\n" );
 	}
 
 	/**
-	 * Populates the log_wiki_user_text field in the logging table
+	 * Populates the log_user_text field in the logging table
 	 */
-	protected function doLogwiki_usertextPopulation() {
-		if ( !$this->updateRowExists( 'populate log_wiki_usertext' ) ) {
+	protected function doLogUsertextPopulation() {
+		if ( !$this->updateRowExists( 'populate log_usertext' ) ) {
 			$this->output(
-			"Populating log_wiki_user_text field, printing progress markers. For large\n" .
+			"Populating log_user_text field, printing progress markers. For large\n" .
 			"databases, you may want to hit Ctrl-C and do this manually with\n" .
-			"maintenance/populateLogwiki_usertext.php.\n" );
+			"maintenance/populateLogUsertext.php.\n" );
 
-			$task = $this->maintenance->runChild( 'PopulateLogwiki_usertext' );
+			$task = $this->maintenance->runChild( 'PopulateLogUsertext' );
 			$task->execute();
 			$this->output( "done.\n" );
 		}
@@ -721,10 +721,10 @@ abstract class DatabaseUpdater {
 	}
 
 	/**
-	 * Migrates wiki_user options from the wiki_user table blob to wiki_user_properties
+	 * Migrates user options from the user table blob to user_properties
 	 */
-	protected function doMigratewiki_userOptions() {
-		$cl = $this->maintenance->runChild( 'Convertwiki_userOptions', 'convertwiki_userOptions.php' );
+	protected function doMigrateUserOptions() {
+		$cl = $this->maintenance->runChild( 'ConvertUserOptions', 'convertUserOptions.php' );
 		$cl->execute();
 		$this->output( "done.\n" );
 	}

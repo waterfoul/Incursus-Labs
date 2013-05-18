@@ -61,9 +61,9 @@ class PopulateImageSha1 extends LoggedUpdateMaintenance {
 		$isRegen = ( $force || $file != '' ); // forced recalculation?
 
 		$t = -microtime( true );
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		if ( $file != '' ) {
-			$res = w->select(
+			$res = $dbw->select(
 				'image',
 				array( 'img_name' ),
 				array( 'img_name' => $file ),
@@ -82,19 +82,19 @@ class PopulateImageSha1 extends LoggedUpdateMaintenance {
 				$conds = array( 'img_sha1' => '' );
 				$this->output( "Populating img_sha1 field\n" );
 			}
-			$res = w->select( 'image', array( 'img_name' ), $conds, __METHOD__ );
+			$res = $dbw->select( 'image', array( 'img_name' ), $conds, __METHOD__ );
 		}
 
-		$imageTable = w->tableName( 'image' );
-		$oldImageTable = w->tableName( 'oldimage' );
+		$imageTable = $dbw->tableName( 'image' );
+		$oldImageTable = $dbw->tableName( 'oldimage' );
 
 		if ( $method == 'pipe' ) {
 			// Opening a pipe allows the SHA-1 operation to be done in parallel
 			// with the database write operation, because the writes are queued
 			// in the pipe buffer. This can improve performance by up to a
 			// factor of 2.
-			global $wgDBwiki_user, $wgDBserver, $wgDBpassword, $wgDBname;
-			$cmd = 'mysql -u' . wfEscapeShellArg( $wgDBwiki_user ) .
+			global $wgDBuser, $wgDBserver, $wgDBpassword, $wgDBname;
+			$cmd = 'mysql -u' . wfEscapeShellArg( $wgDBuser ) .
 				' -h' . wfEscapeShellArg( $wgDBserver ) .
 				' -p' . wfEscapeShellArg( $wgDBpassword, $wgDBname );
 			$this->output( "Using pipe method\n" );
@@ -121,12 +121,12 @@ class PopulateImageSha1 extends LoggedUpdateMaintenance {
 					// does not match, then both fix the SHA1 and the metadata.
 					$file->upgradeRow();
 				} else {
-					$sql = "UPDATE $imageTable SET img_sha1=" . w->addQuotes( $sha1 ) .
-						" WHERE img_name=" . w->addQuotes( $file->getName() );
+					$sql = "UPDATE $imageTable SET img_sha1=" . $dbw->addQuotes( $sha1 ) .
+						" WHERE img_name=" . $dbw->addQuotes( $file->getName() );
 					if ( $method == 'pipe' ) {
 						fwrite( $pipe, "$sql;\n" );
 					} else {
-						w->query( $sql, __METHOD__ );
+						$dbw->query( $sql, __METHOD__ );
 					}
 				}
 			}
@@ -139,13 +139,13 @@ class PopulateImageSha1 extends LoggedUpdateMaintenance {
 						// does not match, then both fix the SHA1 and the metadata.
 						$oldFile->upgradeRow();
 					} else {
-						$sql = "UPDATE $oldImageTable SET oi_sha1=" . w->addQuotes( $sha1 ) .
-							" WHERE (oi_name=" . w->addQuotes( $oldFile->getName() ) . " AND" .
-							" oi_archive_name=" . w->addQuotes( $oldFile->getArchiveName() ) . ")";
+						$sql = "UPDATE $oldImageTable SET oi_sha1=" . $dbw->addQuotes( $sha1 ) .
+							" WHERE (oi_name=" . $dbw->addQuotes( $oldFile->getName() ) . " AND" .
+							" oi_archive_name=" . $dbw->addQuotes( $oldFile->getArchiveName() ) . ")";
 						if ( $method == 'pipe' ) {
 							fwrite( $pipe, "$sql;\n" );
 						} else {
-							w->query( $sql, __METHOD__ );
+							$dbw->query( $sql, __METHOD__ );
 						}
 					}
 				}

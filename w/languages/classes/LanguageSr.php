@@ -108,14 +108,14 @@ class SrConverter extends LanguageConverter {
 	 * A function wrapper:
 	 *   - if there is no selected variant, leave the link
 	 *     names as they were
-	 *   - do not try to find variants for wiki_usernames
+	 *   - do not try to find variants for usernames
 	 *
 	 * @param $link string
 	 * @param $nt Title
 	 * @param $ignoreOtherCond bool
 	 */
 	function findVariantLink( &$link, &$nt, $ignoreOtherCond = false ) {
-		// check for wiki_user namespace
+		// check for user namespace
 		if ( is_object( $nt ) ) {
 			$ns = $nt->getNamespace();
 			if ( $ns == NS_USER || $ns == NS_USER_TALK )
@@ -263,7 +263,7 @@ class LanguageSr extends LanguageSr_ec {
 		// If the actual number is not mentioned in the expression, then just two forms are enough:
 		// singular for $count == 1
 		// plural   for $count != 1
-		// For example, "This wiki_user belongs to {{PLURAL:$1|one group|several groups}}."
+		// For example, "This user belongs to {{PLURAL:$1|one group|several groups}}."
 		if ( count( $forms ) === 2 ) {
 			return $count == 1 ? $forms[0] : $forms[1];
 		}

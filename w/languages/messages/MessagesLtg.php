@@ -35,7 +35,7 @@ $namespaceNames = array(
 $fallback = 'lv';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-showhiddencats' => 'Ruodeit nūglobuotys kategorejis',
 
 'underline-always' => 'Vysod',
@@ -173,7 +173,7 @@ $messages = array(
 'talk' => 'Sprīža',
 'views' => 'Vierīņi',
 'toolbox' => 'Reiki',
-'wiki_userpage' => 'Apsavērt lītuotuoja lopu',
+'userpage' => 'Apsavērt lītuotuoja lopu',
 'otherlanguages' => 'Cytuos volūduos',
 'redirectedfrom' => '(Puoradresēts nu $1)',
 'redirectpagesub' => 'Puoradresiešonys puslopa',
@@ -182,7 +182,7 @@ $messages = array(
 'jumptonavigation' => 'navigaceja',
 'jumptosearch' => 'meklēt',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Ap {{grammar:akuzativs|{{SITENAME}}}}',
 'aboutpage' => 'Project:Ap',
 'copyright' => 'Turīņs ir daīmams pa $1.',
@@ -228,7 +228,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Rakstīņs',
-'nstab-wiki_user' => 'Lītuotuoja puslopa',
+'nstab-user' => 'Lītuotuoja puslopa',
 'nstab-media' => 'Daudzapleicis puslopa',
 'nstab-special' => 'Specialuo puslopa',
 'nstab-project' => 'Projekta puslopa',
@@ -244,7 +244,7 @@ $messages = array(
 Tys parostai nūtiek vacu saišu gadejumā: pīprosūt izmainis voi viesturi lopai, kas ir dzāsta.
 
 Ka lopai ir juobyut, tod, īspiejams, ir klaida programā.
-Par to var ziņuot [[Special:Listwiki_users/sysop|kaidam administratoram]], nūruodūt ari URL.',
+Par to var ziņuot [[Special:ListUsers/sysop|kaidam administratoram]], nūruodūt ari URL.',
 'missingarticle-rev' => '(Puorsavieršona#: $1)',
 'badtitletext' => 'Pīpraseituo lopa ir ar klaidu, tukša voi napareizai saisteits dažaidu volūdu voi dažaidu wiki viersroksti. Tys var saturēt vīnu voi vairuokus simbolus, kū navar izmontuot viersrokstūs.',
 'viewsource' => 'Apsavērt kodu',
@@ -255,10 +255,10 @@ Par to var ziņuot [[Special:Listwiki_users/sysop|kaidam administratoram]], nūr
 'remembermypassword' => 'Atguoduot muni  iz ituo datora (na vaira kai $1 {{PLURAL:$1|dīnu|dīnom|dīnom}})',
 'login' => 'Dasaslāgt',
 'nav-login-createaccount' => 'Dasaslāgt / sataiseit jaunu lītuotuoju',
-'wiki_userlogin' => 'Dasaslāgt / sataiseit jaunu lītuotuoju',
-'wiki_userloginnocreate' => 'Dasaslāgt',
+'userlogin' => 'Dasaslāgt / sataiseit jaunu lītuotuoju',
+'userloginnocreate' => 'Dasaslāgt',
 'logout' => 'Atsaslāgt',
-'wiki_userlogout' => 'Atsaslāgt',
+'userlogout' => 'Atsaslāgt',
 'nologinlink' => 'Registrētīs',
 'createaccount' => 'Sataiseit jaunu lītuotuoju',
 'gotaccountlink' => 'Dasaslāgt',
@@ -272,7 +272,7 @@ Par to var ziņuot [[Special:Listwiki_users/sysop|kaidam administratoram]], nūr
 'resetpass-submit-cancel' => 'Atsaukt',
 
 # Special:PasswordReset
-'passwordreset-wiki_username' => 'Slāgvuords:',
+'passwordreset-username' => 'Slāgvuords:',
 'passwordreset-email' => 'E-posta adress:',
 
 # Special:ChangeEmail
@@ -420,7 +420,7 @@ n = nasvareigs lobuojums.',
 'prefs-namespaces' => 'Vuordu pluoti',
 'prefs-files' => 'Faili',
 'youremail' => 'Tovs e-posta adress:',
-'wiki_username' => 'Slāgvuords:',
+'username' => 'Slāgvuords:',
 'uid' => 'Lītuotuoja ID:',
 'yourrealname' => 'Jiusu eistyns vuords:',
 'yourlanguage' => 'Volūda:',
@@ -434,17 +434,17 @@ n = nasvareigs lobuojums.',
 
 # Groups
 'group' => 'Grupa:',
-'group-wiki_user' => 'Lītuotuoji',
+'group-user' => 'Lītuotuoji',
 'group-bot' => 'Boti',
 'group-sysop' => 'Administratori',
 'group-all' => '(vysi)',
 
-'group-wiki_user-member' => 'lītuotuojs',
+'group-user-member' => 'lītuotuojs',
 'group-bot-member' => 'robots',
 'group-sysop-member' => 'administrators',
 'group-bureaucrat-member' => 'birokrats',
 
-'grouppage-wiki_user' => '{{ns:project}}:Lītuotuoji',
+'grouppage-user' => '{{ns:project}}:Lītuotuoji',
 'grouppage-bot' => '{{ns:project}}:Boti',
 'grouppage-sysop' => '{{ns:project}}:Administratori',
 
@@ -453,7 +453,7 @@ n = nasvareigs lobuojums.',
 'right-upload_by_url' => 'Īsyuteit failu nu URL adresa',
 'right-delete' => 'Iztreit puslopys',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Lītuotuoju tīseibu registrs',
 'rightsnone' => '(navā)',
 
@@ -511,7 +511,7 @@ Lopys, kas ir tovā [[Special:Watchlist|puorraugamūs rokstu sarokstā]] ir '''r
 'listfiles' => 'Failu saroksts',
 'listfiles_date' => 'Data',
 'listfiles_name' => 'Pasauka',
-'listfiles_wiki_user' => 'Lītuotuojs',
+'listfiles_user' => 'Lītuotuojs',
 'listfiles_size' => 'Mārs',
 'listfiles_description' => 'Aproksts',
 'listfiles_count' => 'Versejis',
@@ -524,7 +524,7 @@ Lopys, kas ir tovā [[Special:Watchlist|puorraugamūs rokstu sarokstā]] ir '''r
 'filehist-datetime' => 'Data/Laiks',
 'filehist-thumb' => 'Miniatura',
 'filehist-thumbtext' => 'Atzeime ? par verseji nu $1',
-'filehist-wiki_user' => 'Lītuotuojs',
+'filehist-user' => 'Lītuotuojs',
 'filehist-dimensions' => 'Izmāri',
 'filehist-comment' => 'Komentars',
 'imagelinks' => 'Failu saitis',
@@ -586,18 +586,18 @@ Lopys, kas ir tovā [[Special:Watchlist|puorraugamūs rokstu sarokstā]] ir '''r
 'linksearch' => 'Uorejuos saitys',
 'linksearch-ns' => 'Vuordu pluots:',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'Paruodeit',
+# Special:ListUsers
+'listusers-submit' => 'Paruodeit',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Jaunūs lītuotuoju registrs',
+# Special:Log/newusers
+'newuserlogpage' => 'Jaunūs lītuotuoju registrs',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(dalinīku saroksts)',
 'listgrouprights-addgroup' => 'Dalikt {{PLURAL:$2|grupu|grupys}}: $1',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Syuteit e-postu itam lītuotuojam',
+# E-mail user
+'emailuser' => 'Syuteit e-postu itam lītuotuojam',
 'emailmessage' => 'Viestejums:',
 
 # Watchlist
@@ -681,7 +681,7 @@ Pašreizejī lopys '''$1''' īstatejumi ir:",
 'sp-contributions-newbies' => 'Ruodeit jaunūs lituotuoju īguļdejumu',
 'sp-contributions-blocklog' => 'Blokiešonys registrs',
 'sp-contributions-search' => 'Meklēt lītuotuoju izdareitūs lobuojumus',
-'sp-contributions-wiki_username' => 'IP adress ci slāgvuords:',
+'sp-contributions-username' => 'IP adress ci slāgvuords:',
 'sp-contributions-submit' => 'Meklēt',
 
 # What links here
@@ -774,7 +774,7 @@ Ka gribiesi, tod tev itei sarunu lopa byus juopuolīk voi juoapvīnoj pošam.",
 'import-comment' => 'Komentars:',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Tova lopa',
+'tooltip-pt-userpage' => 'Tova lopa',
 'tooltip-pt-mytalk' => 'Tova sprīža',
 'tooltip-pt-preferences' => 'Muni īstatejumi',
 'tooltip-pt-watchlist' => 'Lopys, kuru izmainis Tu puorraug',
@@ -806,13 +806,13 @@ Ka gribiesi, tod tev itei sarunu lopa byus juopuolīk voi juoapvīnoj pošam.",
 'tooltip-feed-rss' => 'Ituos lopys RSS pādi',
 'tooltip-feed-atom' => 'Ituos lopys Atom pādi',
 'tooltip-t-contributions' => 'Apsavērt ituo lītuotuoja padareitūs dorbus.',
-'tooltip-t-emailwiki_user' => 'Syuteit e-postu itam lītuotuojam',
+'tooltip-t-emailuser' => 'Syuteit e-postu itam lītuotuojam',
 'tooltip-t-upload' => 'Īsyuteit atvaigus ci daudziviesteitivu failus',
 'tooltip-t-specialpages' => 'Specialū puslopu saroksts',
 'tooltip-t-print' => 'Verseja drukavuošonai',
 'tooltip-t-permalink' => 'Stypruo saite iz itū lopys verseju',
 'tooltip-ca-nstab-main' => 'Apsavērt rakstīņu',
-'tooltip-ca-nstab-wiki_user' => 'Apsavērt lītuotuoja lopu',
+'tooltip-ca-nstab-user' => 'Apsavērt lītuotuoja lopu',
 'tooltip-ca-nstab-special' => 'Itei irā specialuo puslopa, tu navari puormeit pošu puslopu.',
 'tooltip-ca-nstab-project' => 'Apsavērt projekta lopu',
 'tooltip-ca-nstab-image' => 'Apsavērt faila lopu',

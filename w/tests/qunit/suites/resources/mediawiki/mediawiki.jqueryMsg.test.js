@@ -13,54 +13,54 @@ QUnit.test( 'mw.jqueryMsg Plural', 3, function ( assert ) {
 QUnit.test( 'mw.jqueryMsg Gender', 11, function ( assert ) {
 	// TODO: These tests should be for mw.msg once mw.msg integrated with mw.jqueryMsg
 	// TODO: English may not be the best language for these tests. Use a language like Arabic or Russian
-	var wiki_user = mw.wiki_user,
+	var user = mw.user,
 		parser = mw.jqueryMsg.getMessageFunction();
 
 	// The values here are not significant,
 	// what matters is which of the values is choosen by the parser
 	mw.messages.set( 'gender-msg', '$1: {{GENDER:$2|blue|pink|green}}' );
 
-	wiki_user.options.set( 'gender', 'male' );
+	user.options.set( 'gender', 'male' );
 	assert.equal(
 		parser( 'gender-msg', 'Bob', 'male' ),
 		'Bob: blue',
 		'Masculine from string "male"'
 	);
 	assert.equal(
-		parser( 'gender-msg', 'Bob', wiki_user ),
+		parser( 'gender-msg', 'Bob', user ),
 		'Bob: blue',
-		'Masculine from mw.wiki_user object'
+		'Masculine from mw.user object'
 	);
 
-	wiki_user.options.set( 'gender', 'unknown' );
+	user.options.set( 'gender', 'unknown' );
 	assert.equal(
-		parser( 'gender-msg', 'Foo', wiki_user ),
+		parser( 'gender-msg', 'Foo', user ),
 		'Foo: green',
-		'Neutral from mw.wiki_user object' );
+		'Neutral from mw.user object' );
 	assert.equal(
 		parser( 'gender-msg', 'Alice', 'female' ),
 		'Alice: pink',
 		'Feminine from string "female"' );
 	assert.equal(
-		parser( 'gender-msg', 'wiki_user' ),
-		'wiki_user: green',
+		parser( 'gender-msg', 'User' ),
+		'User: green',
 		'Neutral when no parameter given' );
 	assert.equal(
-		parser( 'gender-msg', 'wiki_user', 'unknown' ),
-		'wiki_user: green',
+		parser( 'gender-msg', 'User', 'unknown' ),
+		'User: green',
 		'Neutral from string "unknown"'
 	);
 
-	mw.messages.set( 'gender-msg-one-form', '{{GENDER:$1|wiki_user}}: $2 {{PLURAL:$2|edit|edits}}' );
+	mw.messages.set( 'gender-msg-one-form', '{{GENDER:$1|User}}: $2 {{PLURAL:$2|edit|edits}}' );
 
 	assert.equal(
 		parser( 'gender-msg-one-form', 'male', 10 ),
-		'wiki_user: 10 edits',
+		'User: 10 edits',
 		'Gender neutral and plural form'
 	);
 	assert.equal(
 		parser( 'gender-msg-one-form', 'female', 1 ),
-		'wiki_user: 1 edit',
+		'User: 1 edit',
 		'Gender neutral and singular form'
 	);
 

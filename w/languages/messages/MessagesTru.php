@@ -11,7 +11,7 @@
  */
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-oldsig' => 'Imḍa du3do:',
 
 'underline-always' => 'Kulnaqa',
@@ -158,7 +158,7 @@ $messages = array(
 'jumptosearch' => 'Kruxyo',
 'pool-errorunknown' => 'Fawdo nuxroyo',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '3al {{SITENAME}}',
 'aboutpage' => 'Project: 3al',
 'copyrightpage' => '{{ns:project}}:Ḥaqat duKaṭowo',
@@ -204,7 +204,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Faṭo',
-'nstab-wiki_user' => 'Faṭo duHadomo',
+'nstab-user' => 'Faṭo duHadomo',
 'nstab-media' => 'Faṭo diMediya',
 'nstab-special' => 'Faṭo dilonoyto',
 'nstab-project' => 'Faṭo diProja',
@@ -220,7 +220,7 @@ $messages = array(
 
 iFaṭaṭe belki sligo aw mtaxro merke.
 
-Elo iḍa dlo howe hawxa belki ḥselux Fawdo biSoftware. Bo³o haw Ṫebo l[[Special:Listwiki_users/sysop|Administrator]] u kṭaw u"URL".',
+Elo iḍa dlo howe hawxa belki ḥselux Fawdo biSoftware. Bo³o haw Ṫebo l[[Special:ListUsers/sysop|Administrator]] u kṭaw u"URL".',
 'missingarticle-rev' => '(Numara duVersyon: $1)',
 'badtitle' => 'Bad title',
 'badtitletext' => 'The requested page title was invalid, empty, or an incorrectly linked inter-language or inter-wiki title.
@@ -239,17 +239,17 @@ It may contain one or more characters which cannot be used in titles.',
 'login' => '3bar',
 'nav-login-createaccount' => '3bar / Hway Hadomo',
 'loginprompt' => 'Glozım maqablat Cookies qanna dqudrat fıtḥat {{SITENAME}}.',
-'wiki_userlogin' => '3bar / Hway Hadomo',
-'wiki_userloginnocreate' => '3bar',
+'userlogin' => '3bar / Hway Hadomo',
+'userloginnocreate' => '3bar',
 'logout' => 'Nfoqo',
-'wiki_userlogout' => 'Nfoqo',
+'userlogout' => 'Nfoqo',
 'notloggedin' => 'Heş lo3abirat.',
 'nologin' => 'Heş lawit Hadomo? $1',
 'nologinlink' => 'Hway Hadomo',
 'createaccount' => 'Hway Hadomo',
 'gotaccount' => 'Ma hawit ste Hadomo? $1',
 'gotaccountlink' => '3bar',
-'wiki_userlogin-resetlink' => 'Ṫa³at uQliḍayḍox?',
+'userlogin-resetlink' => 'Ṫa³at uQliḍayḍox?',
 'createaccountmail' => 'buEmail',
 'wrongpassword' => 'uQliḍayḍux fawdo yo.
 Mjarab Naqla ḥreto.',
@@ -267,7 +267,7 @@ Mjarab Naqla ḥreto.',
 'resetpass-submit-loggedin' => 'Mşaḥlaf uQliḍo',
 
 # Special:PasswordReset
-'passwordreset-wiki_username' => 'Işme duHadomo:',
+'passwordreset-username' => 'Işme duHadomo:',
 
 # Special:ChangeEmail
 'changeemail-newemail' => 'Email-adres ḥaṭo:',
@@ -385,7 +385,7 @@ Legend: '''({{int:cur}})''' = difference with latest revision, '''({{int:last}})
 'lineno' => 'Serṫo $1:',
 'compareselectedversions' => 'Compare selected revisions',
 'editundo' => 'slag',
-'diff-multi' => '({{PLURAL:$1|One intermediate revision|$1 intermediate revisions}} by {{PLURAL:$2|one wiki_user|$2 wiki_users}} not shown)',
+'diff-multi' => '({{PLURAL:$1|One intermediate revision|$1 intermediate revisions}} by {{PLURAL:$2|one user|$2 users}} not shown)',
 
 # Search results
 'searchresults' => 'Nafqe duKruxyayḍux',
@@ -443,7 +443,7 @@ Legend: '''({{int:cur}})''' = difference with latest revision, '''({{int:last}})
 'timezoneregion-europe' => 'Awrifi',
 'timezoneregion-indian' => 'Yamo hindoyo',
 'youremail' => 'Adres duEmail',
-'wiki_username' => 'Işme duHadomo:',
+'username' => 'Işme duHadomo:',
 'prefs-memberingroups' => 'Hadomo d{{PLURAL:$1|Gudo|Gudoṭo}}:',
 'prefs-registration' => 'Zabno duSugolo:',
 'yourrealname' => 'Işmo şariro:',
@@ -457,11 +457,11 @@ Legend: '''({{int:cur}})''' = difference with latest revision, '''({{int:last}})
 'prefs-help-email-others' => 'Kibux mijğolat 3am Hadome ğer biFaṭo duMamlo u luglozam dumat Işmux.',
 'prefs-signature' => 'Imḍa',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'uEmail-Adresayḍux m³adlo yo.',
 
 # Groups
-'group-wiki_user' => 'Hadome',
+'group-user' => 'Hadome',
 'group-all' => '(kulle)',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -525,7 +525,7 @@ Pages on [[Special:Watchlist|your watchlist]] are '''bold'''.",
 'filehist-datetime' => 'Zabno',
 'filehist-thumb' => 'Thumbnail',
 'filehist-thumbtext' => 'Thumbnail for version as of $1',
-'filehist-wiki_user' => 'Hadomo',
+'filehist-user' => 'Hadomo',
 'filehist-dimensions' => 'Dimensions',
 'filehist-comment' => 'Comment',
 'imagelinks' => 'File usage',
@@ -549,7 +549,7 @@ The description on its [$2 file description page] there is shown below.',
 'nbytes' => '$1 {{PLURAL:$1|byte|bytes}}',
 'nmembers' => '$1 {{PLURAL:$1|Hadomo|Hadome}}',
 'prefixindex' => 'aFaṭoṭe kulle dkitte Prefiks',
-'wiki_usercreated' => '{{GENDER:$3|kṭule}}  $1 b$2',
+'usercreated' => '{{GENDER:$3|kṭule}}  $1 b$2',
 'newpages' => 'Faṭoṭe ḥaṭe',
 'move' => 'Mtaxar',
 'pager-newer-n' => '{{PLURAL:$1|1 ḥreno |$1 ḥrene}}',
@@ -582,11 +582,11 @@ The description on its [$2 file description page] there is shown below.',
 'linksearch-ok' => 'Krax',
 'linksearch-line' => '$1 masro yo b$2',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'Maḥway',
+# Special:ListUsers
+'listusers-submit' => 'Maḥway',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'wiki_user creation log',
+# Special:Log/newusers
+'newuserlogpage' => 'User creation log',
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'Gudo',
@@ -594,9 +594,9 @@ The description on its [$2 file description page] there is shown below.',
 'listgrouprights-helppage' => 'Help: Ḥaqat diGudo',
 'listgrouprights-members' => '(Lista daHadome)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Kṭaw Email luHadomano.',
-'emailwiki_username' => 'Işme duHadomo:',
+# E-mail user
+'emailuser' => 'Kṭaw Email luHadomano.',
+'emailusername' => 'Işme duHadomo:',
 'emailfrom' => 'Men:',
 'emailto' => 'Lwoṭ:',
 'emailmessage' => 'Ṫebo:',
@@ -650,7 +650,7 @@ The description on its [$2 file description page] there is shown below.',
 'sp-contributions-logs' => 'logs',
 'sp-contributions-talk' => 'Mamlo',
 'sp-contributions-search' => 'Krax Maṫwoṭo',
-'sp-contributions-wiki_username' => 'IP-Adres aw Işme duHadmomo:',
+'sp-contributions-username' => 'IP-Adres aw Işme duHadmomo:',
 'sp-contributions-toponly' => 'Only show edits that are latest revisions',
 'sp-contributions-submit' => 'Krax',
 
@@ -674,7 +674,7 @@ The description on its [$2 file description page] there is shown below.',
 
 # Block/unblock
 'ipboptions' => '2 Sa³ayat:2 hours,1 Yawmo:1 day,3 Yawme:3 days,1 Şabṭo:1 week,2 Şabe:2 weeks,1 Yarḥo:1 month,3 Yarḥe:3 months,6 Yarḥe :6 months,1 Şato:1 year,indefinite:infinite',
-'ipblocklist' => 'Blocked wiki_users',
+'ipblocklist' => 'Blocked users',
 'ipblocklist-submit' => 'Krax',
 'blocklink' => 'Maḥram',
 'unblocklink' => 'unblock',
@@ -703,7 +703,7 @@ The description on its [$2 file description page] there is shown below.',
 'thumbnail_error' => 'Error creating thumbnail: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'iFaṭaṭyḍox',
+'tooltip-pt-userpage' => 'iFaṭaṭyḍox',
 'tooltip-pt-mytalk' => 'iFaṭayḍux duDroşo',
 'tooltip-pt-preferences' => 'a3ayaratayḍux',
 'tooltip-pt-watchlist' => 'Lista dFaṭoṭe dkib³at mşaḥılfat',
@@ -736,13 +736,13 @@ You can view its source',
 'tooltip-t-recentchangeslinked' => 'Şuḥlofe ḥaroye bFaṭoṭe dkitte Asiruṭo lerke',
 'tooltip-feed-atom' => 'Atom feed diFaṭaṭe',
 'tooltip-t-contributions' => 'Lista daMaṫwoṭo duHadomano',
-'tooltip-t-emailwiki_user' => 'Mşadar Email luHadomano',
+'tooltip-t-emailuser' => 'Mşadar Email luHadomano',
 'tooltip-t-upload' => 'Mosaq aFayls',
 'tooltip-t-specialpages' => 'Lista daFaṭoṭe dilonoye kulle.',
 'tooltip-t-print' => 'Printable version of this page',
 'tooltip-t-permalink' => 'Asiruṭo aminoyto liFaṭaṭe',
 'tooltip-ca-nstab-main' => 'Maḥway iFaṭo daḤbişoṭo',
-'tooltip-ca-nstab-wiki_user' => 'Maḥway iFaṭo duHadomo',
+'tooltip-ca-nstab-user' => 'Maḥway iFaṭo duHadomo',
 'tooltip-ca-nstab-special' => 'Haṭe Faṭo dilonoyto yo, laybux mşaḥalfatla',
 'tooltip-ca-nstab-project' => 'Maḥway iFaṭo diProja',
 'tooltip-ca-nstab-image' => 'Maḥway iFaṭo duFayl',

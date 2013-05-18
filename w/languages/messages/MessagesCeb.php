@@ -67,7 +67,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Binadlisan nga mga sumpay:',
 'tog-justify' => 'Ihusto ang mga parapo',
 'tog-hideminor' => 'Ipakita ang gamayng pag-usab sa mga bag-ong giusab',
@@ -91,7 +91,7 @@ $messages = array(
 'tog-previewonfirst' => 'Ipakita ang paunang tan-aw sa unang pag-usab',
 'tog-nocache' => 'Ayaw i-cache ang panid',
 'tog-enotifwatchlistpages' => 'I-email ko kon ang panid nga akong gibantayan giusab.',
-'tog-enotifwiki_usertalkpages' => 'I-email ko kon nausab ang akong panid sa panaghisgot',
+'tog-enotifusertalkpages' => 'I-email ko kon nausab ang akong panid sa panaghisgot',
 'tog-enotifminoredits' => 'I-email ko alang sa mga ginagmay nga pag-usab',
 'tog-enotifrevealaddr' => 'Ibandilyo ang akong adress sa e-mail sa mga e-mail nga magbalita',
 'tog-shownumberswatching' => 'Ipakita ang gidaghanon sa mga gumagamit nga nagbantay usab',
@@ -266,7 +266,7 @@ $messages = array(
 'talk' => 'Panaghisgot-hisgot',
 'views' => 'Mga pagtan-aw',
 'toolbox' => 'Galamiton',
-'wiki_userpage' => 'Tan-awa ang panid sa gumagamit',
+'userpage' => 'Tan-awa ang panid sa gumagamit',
 'projectpage' => 'Tan-awa ang panid sa proyekto',
 'imagepage' => 'Tan-awa ang panid sa medya',
 'mediawikipage' => 'Tan-awa ang panid sa mensahe',
@@ -289,7 +289,7 @@ Palihog paghulat bag-o nimo sulayan pag-akses og usab ang kining panid.
 
 $1',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Mahitungod sa {{SITENAME}}',
 'aboutpage' => 'Project:Mahitungod sa',
 'copyright' => 'Mga sulod makita sa $1.',
@@ -345,7 +345,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Artikulo',
-'nstab-wiki_user' => 'Panid sa tiggamit',
+'nstab-user' => 'Panid sa tiggamit',
 'nstab-media' => 'Panid sa medya',
 'nstab-special' => 'Espesyal nga panid',
 'nstab-project' => 'Panid sa proyekto',
@@ -388,7 +388,7 @@ Ang tagdumala nga nag-lock niini mihatag niining eksplanasyon: $1',
 Kasagaran nahitabo kini tungod sa pagsunod og sumpay nga dugay na nga diff o kaagi sa panid nga natangtang na.
 
 Kon dili kini ang kaso, mamahimong nakatagboka og bug sa software.
-Palihog ireport kini sa usa ka [[Special:Listwiki_users/sysop|administrador]], hinumdomi ang URL.',
+Palihog ireport kini sa usa ka [[Special:ListUsers/sysop|administrador]], hinumdomi ang URL.',
 'missingarticle-rev' => '(rebisyon#: $1)',
 'missingarticle-diff' => '(Diff: $1, $2)',
 'readonly_lag' => 'Ang database awtomatikong na-lock samtang ang mga slave database server mo-catch up sa master',
@@ -425,14 +425,14 @@ Palihog sulayi'g usab sa pipila ka minutos.",
 'viewsourcetext' => 'Puyde nimo tan-awon ug kopyahon ang ginikanan ning panid:',
 'protectedinterface' => 'Ang kining panid mohatag og interface text para sa software, ug naka-lock aron mapugngan ang pag-abuso.',
 'editinginterface' => "'''Pahibalo:''' Imo nang usbon ang panid nga gigamit sa paghatag og interface text para sa software.
-Ang mga pag-usab niining panid moapekto sa appearance sa wiki_user interface nga alang sa ubang gumagamit.
+Ang mga pag-usab niining panid moapekto sa appearance sa user interface nga alang sa ubang gumagamit.
 Para sa mga paghubad, palihog ikonsider ang paggamit sa [//translatewiki.net/wiki/Main_Page?setlang=ceb translatewiki.net], ang MediaWiki localisation project.",
 'sqlhidden' => '(nakatagong SQL query)',
 'cascadeprotected' => 'Ang kining panid giprotektahan sa pag-usab tungod kay nahiapil kini sa mosunod nga {{PLURAL:$1|panid, nga|mga panid, nga}} giprotektahan pinaagi sa pag-turn on gamit ang "cascading" nga opsyon:
 $2',
 'namespaceprotected' => "Wala kay permiso nga mag-usab sa mga panid sa '''$1''' nga ngalang espasyo.",
 'ns-specialprotected' => 'Ang mga espesyal nga panid dili mausban.',
-'titleprotected' => 'Ang kining titulo giprotektahan sa paghimo ni [[wiki_user:$1|$1]].
+'titleprotected' => 'Ang kining titulo giprotektahan sa paghimo ni [[User:$1|$1]].
 Ang rason nga gihatag mao ang "\'\'$2\'\'".',
 
 # Virus scanner
@@ -443,7 +443,7 @@ Ang rason nga gihatag mao ang "\'\'$2\'\'".',
 # Login and logout pages
 'logouttext' => "'''Nakabiya ka na.'''
 
-Mahimo kang magpadayon sa paggamit sa {{SITENAME}} bisan wala ka magpaila o puyde usab nga [[Special:wiki_userLogin|mag-log in ka'g usab]] o isip laing gumagamit. Palihog hinumdomi nga may ubang mga panid nga magpakita sama nga ikaw naka-log in pa; kini tungod kay wala pa nimo malimpiyohi ang cache sa imong brawser.",
+Mahimo kang magpadayon sa paggamit sa {{SITENAME}} bisan wala ka magpaila o puyde usab nga [[Special:UserLogin|mag-log in ka'g usab]] o isip laing gumagamit. Palihog hinumdomi nga may ubang mga panid nga magpakita sama nga ikaw naka-log in pa; kini tungod kay wala pa nimo malimpiyohi ang cache sa imong brawser.",
 'welcomecreation' => '== Maayong pag-abot, $1! ==
 Nahimo na ang imong akawnt.
 Ayaw kalimot sa pag-usab sa imong [[Special:Preferences|{{SITENAME}} mga preperensiya]].',
@@ -456,9 +456,9 @@ Ayaw kalimot sa pag-usab sa imong [[Special:Preferences|{{SITENAME}} mga prepere
 'login' => 'Sulod',
 'nav-login-createaccount' => 'Rehistro / Dayon',
 'loginprompt' => 'Kinahanglang naka-enable ang mga koki aron ikaw maka-log-in sa {{SITENAME}}.',
-'wiki_userlogin' => 'Rehistro / Dayon',
+'userlogin' => 'Rehistro / Dayon',
 'logout' => 'Biya',
-'wiki_userlogout' => 'Bıveciye',
+'userlogout' => 'Bıveciye',
 'notloggedin' => 'Wala ka pa masulod',
 'nologin' => "Wala pay akawnt? '''$1'''.",
 'nologinlink' => 'Paghimo og akawnt',
@@ -467,25 +467,25 @@ Ayaw kalimot sa pag-usab sa imong [[Special:Preferences|{{SITENAME}} mga prepere
 'gotaccountlink' => 'Dayon',
 'createaccountmail' => 'sa e-mail',
 'badretype' => 'Ang mga pasword nga imong gientra wala mag-match.',
-'wiki_userexists' => 'Ang ngalan sa tiggamit nga imong gisulat nagamit na.
+'userexists' => 'Ang ngalan sa tiggamit nga imong gisulat nagamit na.
 Palihug pagpili og lain nga ngalan.',
 'loginerror' => 'Sayop sa pagdayon',
 'nocookiesnew' => 'Ang akawnt sa gumagamit nahimo na, pero wala ka pa ma-log-in.
 Ang {{SITENAME}} migamit og mga koki aron ma-log in ang mga gumagamit.
 Naka-disable ang imong mga koki.
-Palihog i-enable kini, unya pag-log-in gamit ang imong bag-ong wiki_username ug pasword.',
+Palihog i-enable kini, unya pag-log-in gamit ang imong bag-ong username ug pasword.',
 'nocookieslogin' => "Ang {{SITENAME}} migamit og mga koki aron ma-log in ang mga gumagamit.
 Naka-disable ang imong mga koki.
 Palihog i-enable kini, ug sulayi'g balik.",
-'noname' => 'Wala ikaw mag-specify og valid nga wiki_user name.',
+'noname' => 'Wala ikaw mag-specify og valid nga user name.',
 'loginsuccesstitle' => 'Malamposon ang pagpaila',
 'loginsuccess' => "'''Nailhan ka na sa {{SITENAME}} isip \"\$1\".'''",
-'nosuchwiki_user' => 'Walay gumagamit nga may pangalang "$1".
-Case sensitive ang mga wiki_user name.
-I-tsek ang imong espeling, o [[Special:wiki_userLogin/signup|paghimo og bag-ong akawnt]].',
-'nosuchwiki_usershort' => 'Walay gumagamit nga may pangalang "$1".
+'nosuchuser' => 'Walay gumagamit nga may pangalang "$1".
+Case sensitive ang mga user name.
+I-tsek ang imong espeling, o [[Special:UserLogin/signup|paghimo og bag-ong akawnt]].',
+'nosuchusershort' => 'Walay gumagamit nga may pangalang "$1".
 I-tsek ang imong espeling.',
-'nowiki_userspecified' => 'Kinahanglan mag-specify ka og wiki_username.',
+'nouserspecified' => 'Kinahanglan mag-specify ka og username.',
 'wrongpassword' => "Sayop nga pasword ang naentra.
 Palihog sulayi'g usab.",
 'mailmypassword' => 'I-email ang bag-ong pasword',
@@ -528,7 +528,7 @@ Kon miabot ka dinhi pinaagi sa usa ka sayop, palihog tuploka ang back nga tuplok
 'noarticletext' => 'Sa kasamtangan walay sulod nga teksto ang kining panid.
 Puyde nimong  [[Special:Search/{{PAGENAME}}|pangitaon kining titulo sa panid]] sa ubang mga panid, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} pangitaa ang related nga mga log],
 o [{{fullurl:{{FULLPAGENAME}}|action=edit}} usba kining panid]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => 'Ang akawnt sa tiggamit nga "<nowiki>$1</nowiki>" wala marehistro. Palihug tan-awa kon buot nimong himoon/usbon ang kining panid.',
+'userpage-userdoesnotexist' => 'Ang akawnt sa tiggamit nga "<nowiki>$1</nowiki>" wala marehistro. Palihug tan-awa kon buot nimong himoon/usbon ang kining panid.',
 'previewnote' => "'''Hinumdomi nga kini usa lang ka paunang tan-aw; wala pa matipigi ang imong giusab!'''",
 'editing' => 'Nagausab sa $1',
 'editingsection' => 'Nagausab sa $1 (bahin)',
@@ -567,11 +567,11 @@ Ang maong mga argumento natangtang.",
 Palihog og tsek sa komparison sa ubos aron ma-tsek nga kini gyud ang imong gustong mahimo, ug unya tipigi ang mga pag-usab sa ubos aron mahuman ang pag-way-bili sa pag-usab.',
 'undo-failure' => 'Ang pag-usab dili puyde mapa-way-bili tungod sa mga naka-conflict nga intermediate nga mga pag-usab.',
 'undo-norev' => 'Ang pag-usab dili puyde mapa-way-bili tungod kay wala pa ni mahimo o kaha natangtang na kini.',
-'undo-summary' => 'Giway-bili  ang rebisyon  $1 ni [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Hisgot]])',
+'undo-summary' => 'Giway-bili  ang rebisyon  $1 ni [[Special:Contributions/$2|$2]] ([[User talk:$2|Hisgot]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Dili makahimo og akawnt',
-'cantcreateaccount-text' => "Ang paghimo og akawnt gikan niining IP address ('''$1''') gi-block ni [[wiki_user:$3|$3]].
+'cantcreateaccount-text' => "Ang paghimo og akawnt gikan niining IP address ('''$1''') gi-block ni [[User:$3|$3]].
 
 Ang rason nga gihatag ni $3 mao nga ''$2''",
 
@@ -609,7 +609,7 @@ Sulayi og [[Special:Search|pagpangita sa wiki]] para sa mga may kalabotang panid
 
 # Revision deletion
 'rev-deleted-comment' => '(ang komento gitangtang)',
-'rev-deleted-wiki_user' => '(gitangtang ang wiki_username)',
+'rev-deleted-user' => '(gitangtang ang username)',
 'rev-deleted-event' => '(lihok sa log gitangtang)',
 'rev-deleted-text-permission' => "Ang rebisyon sa panid '''napapas'''.
 Puyde nga mga mga detalye sa [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} log sa pagpapas].",
@@ -649,7 +649,7 @@ Isip tagdumala, puyde nimo [$1 tan-awon ang diff] kon gusto ka magpadayon.",
 'revdelete-hide-image' => 'Tagoa ang sulod sa payl',
 'revdelete-hide-name' => 'Tagoa ang lihok ug target',
 'revdelete-hide-comment' => 'Tagoa ang komento sa pag-usab',
-'revdelete-hide-wiki_user' => 'Tagoa ang wiki_username/IP sa tag-usab',
+'revdelete-hide-user' => 'Tagoa ang username/IP sa tag-usab',
 'revdelete-hide-restricted' => 'I-suppress ang data gikan sa mga tagdumala ug sa uban pa',
 'revdelete-suppress' => 'I-suppress ang data gikan sa mga tagdumala ug sa uban pa',
 'revdelete-unsuppress' => 'Tangtanga ang mga restriksyon sa nabalik nga mga rebisyon',
@@ -754,7 +754,7 @@ Hinumdomi nga ang ilang indeks sa sulod sa {{SITENAME}} mahimong dugay-dugay na.
 'mypreferences' => 'Akong preperensiya',
 'prefs-edits' => 'Gidaghanon sa nausab:',
 'prefsnologin' => 'Wala maka-log-in',
-'prefsnologintext' => 'Kinahanglan ikaw <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} naka-log-in]</span> aron ma-set ang imong mga preperensiya.',
+'prefsnologintext' => 'Kinahanglan ikaw <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} naka-log-in]</span> aron ma-set ang imong mga preperensiya.',
 'changepassword' => 'Usba ang pasword',
 'prefs-skin' => 'Panit',
 'skin-preview' => 'Paunang tan-aw',
@@ -817,7 +817,7 @@ Dili kini puyde mabalik.',
 'prefs-emailconfirm-label' => 'Kompirmasyon sa e-mail:',
 'prefs-textboxsize' => 'Size sa editing window',
 'youremail' => 'E-mail:',
-'wiki_username' => 'wiki_username:',
+'username' => 'Username:',
 'uid' => 'ID sa gumagamit:',
 'prefs-memberingroups' => 'Miyembro sa {{PLURAL:$1|grupo|mga grupo}}:',
 'prefs-registration' => 'Oras sa pagparehistro:',
@@ -848,7 +848,7 @@ Kon gipili nimo nga ihatag kini, gamiton kini aron pasidunggan ka sa imong mga t
 
 'grouppage-sysop' => '{{ns:project}}:Mga tigdumala',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Log sa mga katungod sa gumagamit',
 'rightsnone' => '(wala)',
 
@@ -861,7 +861,7 @@ Kon gipili nimo nga ihatag kini, gamiton kini aron pasidunggan ka sa imong mga t
 'action-minoredit' => 'markahan ang pag-usab isip menor',
 'action-move' => 'ibalhin kining panid',
 'action-move-subpages' => 'ibalhin kining panid, ug ang iyang mga subpanid',
-'action-move-rootwiki_userpages' => 'ibalhin ang ugat nga mga panid sa gumagamit',
+'action-move-rootuserpages' => 'ibalhin ang ugat nga mga panid sa gumagamit',
 'action-movefile' => 'ibalhin ang kining payl',
 'action-upload' => 'i-upload ang kining payl',
 'action-reupload' => 'i-overwrite ang kining eksisting nga payl',
@@ -925,7 +925,7 @@ Ang mga panid sa [[Special:Watchlist|imong gibantayan]] '''nakalugom'''.",
 'filehist-datetime' => 'Petsa/Takna',
 'filehist-thumb' => 'Thumbnail',
 'filehist-thumbtext' => 'Thumbnail sa bersyon sa $1',
-'filehist-wiki_user' => 'Tiggamit',
+'filehist-user' => 'Tiggamit',
 'filehist-dimensions' => 'Mga dimensyon',
 'filehist-comment' => 'Komento',
 'imagelinks' => 'Mga sumpay sa payl',
@@ -976,15 +976,15 @@ Also see [[Special:WantedCategories|wanted categories]].',
 # Special:LinkSearch
 'linksearch' => 'Mga sumpay sa gawas',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => "Log sa paghimo'g gumagamit",
-'newwiki_userlogpagetext' => "Kini mao ang ''log'' sa bag-ong namugnang mga gumagamit.",
+# Special:Log/newusers
+'newuserlogpage' => "Log sa paghimo'g gumagamit",
+'newuserlogpagetext' => "Kini mao ang ''log'' sa bag-ong namugnang mga gumagamit.",
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(talaan sa mga miyembro)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'I-email kaning gumagamit',
+# E-mail user
+'emailuser' => 'I-email kaning gumagamit',
 
 # Watchlist
 'watchlist' => 'Akong gibantayan',
@@ -1065,7 +1065,7 @@ Puyde nimo usbon ang level sa proteksyon ning panid, pero dili kini makaapekto s
 'sp-contributions-blocklog' => 'log sa block',
 'sp-contributions-talk' => 'Hisgot',
 'sp-contributions-search' => 'Pangitaa ang mga tampo',
-'sp-contributions-wiki_username' => 'Adres sa IP o wiki_username:',
+'sp-contributions-username' => 'Adres sa IP o username:',
 'sp-contributions-submit' => 'Pangitaa',
 
 # What links here
@@ -1087,7 +1087,7 @@ Puyde nimo usbon ang level sa proteksyon ning panid, pero dili kini makaapekto s
 # Block/unblock
 'blockip' => 'I-block ang gumagamit',
 'ipboptions' => '2 ka oras:2 hours,1 ka adlaw:1 day,3 ka adlaw:3 days,1 ka semana:1 week,2 ka semana:2 weeks,1 ka buwan:1 month,3 ka buwan:3 months,6 ka buwan:6 months,1 ka tuig:1 year,hangtod-sa-hangtod:infinite',
-'ipblocklist' => 'Na-block nga mga adres sa IP ug wiki_username',
+'ipblocklist' => 'Na-block nga mga adres sa IP ug username',
 'blocklink' => 'i-block',
 'unblocklink' => 'ayaw i-block',
 'change-blocklink' => 'bag-oha ang block',
@@ -1138,7 +1138,7 @@ Palihog imanwal ang pag-merge nila.'''",
 'thumbnail-more' => 'Padak-a',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Ang kaugalingon kong panid',
+'tooltip-pt-userpage' => 'Ang kaugalingon kong panid',
 'tooltip-pt-mytalk' => 'Ang imong panid sa hisgot',
 'tooltip-pt-preferences' => 'Akong mga preperensiya',
 'tooltip-pt-watchlist' => 'Talaan sa mga panid nga imong gibantayan ang mga pag-usab',
@@ -1172,13 +1172,13 @@ Pwede nimong tan-awon ang ginikanan.',
 'tooltip-feed-rss' => 'Feed nga RSS niining panid',
 'tooltip-feed-atom' => 'Feed nga Atom niining panid',
 'tooltip-t-contributions' => 'Tan-awa ang talaan sa mga tampo niining gumagamit',
-'tooltip-t-emailwiki_user' => 'Padalhi og e-mail ang kaning gumagamit',
+'tooltip-t-emailuser' => 'Padalhi og e-mail ang kaning gumagamit',
 'tooltip-t-upload' => 'Pagsumiter og mga payl',
 'tooltip-t-specialpages' => 'Talaan sa mga espesyal nga panid',
 'tooltip-t-print' => 'Mapatik nga bersyon ning panid',
 'tooltip-t-permalink' => 'Permanenteng sumpay niining rebisyon sa panid',
 'tooltip-ca-nstab-main' => 'Tan-awa ang sulod ning panid',
-'tooltip-ca-nstab-wiki_user' => 'Tan-awa ang panid sa tiggamit',
+'tooltip-ca-nstab-user' => 'Tan-awa ang panid sa tiggamit',
 'tooltip-ca-nstab-special' => 'Kini usa ka espesyal nga panid, dili nimo kini puyde usbon',
 'tooltip-ca-nstab-project' => 'Tan-awa ang panid sa proyekto',
 'tooltip-ca-nstab-image' => 'Tan-awa ang panid sa payl',
@@ -1253,6 +1253,6 @@ Ang uban default nga nakatago.
 # New logging system
 'revdelete-restricted' => 'mga na-aplay nga restriksyon sa mga tagdumala',
 'revdelete-unrestricted' => 'gitangtang ang mga restriksyon alang sa mga tagdumala',
-'newwiki_userlog-byemail' => "ang pasword gipadala na pinaagi sa ''e-mail''",
+'newuserlog-byemail' => "ang pasword gipadala na pinaagi sa ''e-mail''",
 
 );

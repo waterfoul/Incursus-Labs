@@ -1,8 +1,8 @@
 -- 
--- oldimage-wiki_user-index.sql
+-- oldimage-user-index.sql
 -- 
--- Add wiki_user/timestamp index to old image versions
+-- Add user/timestamp index to old image versions
 -- 
 
 ALTER TABLE /*$wgDBprefix*/oldimage
-   ADD INDEX oi_wiki_usertext_timestamp (oi_wiki_user_text,oi_timestamp);
+   ADD INDEX oi_usertext_timestamp (oi_user_text,oi_timestamp);

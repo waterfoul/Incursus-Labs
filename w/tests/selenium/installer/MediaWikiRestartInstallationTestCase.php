@@ -46,8 +46,8 @@ class MediaWikiRestartInstallationTestCase extends MediaWikiInstallationCommonFu
     // Verify restarting the installation
     public function testSuccessRestartInstallation() {
 
-        NameBeforeRestart  = DB_NAME_PREFIX."_db_before";
-        parent::navigateDatabaseSettingsPage( NameBeforeRestart );
+        $dbNameBeforeRestart  = DB_NAME_PREFIX."_db_before";
+        parent::navigateDatabaseSettingsPage( $dbNameBeforeRestart );
 
         // Verify 'Restart installation' link available
         $this->assertTrue($this->isElementPresent( "link=Restart installation" ));
@@ -76,17 +76,17 @@ class MediaWikiRestartInstallationTestCase extends MediaWikiInstallationCommonFu
         parent::clickContinueButton();
 
         // saved data should be deleted
-        NameAfterRestart = $this->getValue("mysql_wgDBname");
-        $this->assertNotEquals(NameBeforeRestart, NameAfterRestart);
+        $dbNameAfterRestart = $this->getValue("mysql_wgDBname");
+        $this->assertNotEquals($dbNameBeforeRestart, $dbNameAfterRestart);
     }
 
 
     // Verify cancelling restart
     public function testCancelRestartInstallation() {
 
-        NameBeforeRestart  = DB_NAME_PREFIX."_cancel_restart";
+        $dbNameBeforeRestart  = DB_NAME_PREFIX."_cancel_restart";
 
-        parent::navigateDatabaseSettingsPage( NameBeforeRestart);
+        parent::navigateDatabaseSettingsPage( $dbNameBeforeRestart);
         // Verify 'Restart installation' link available
         $this->assertTrue($this->isElementPresent( "link=Restart installation" ));
 
@@ -109,7 +109,7 @@ class MediaWikiRestartInstallationTestCase extends MediaWikiInstallationCommonFu
         parent::clickBackButton();
 
         // Saved data remain on the page.
-        NameAfterRestart = $this->getValue( "mysql_wgDBname" );
-        $this->assertEquals( NameBeforeRestart, NameAfterRestart );
+        $dbNameAfterRestart = $this->getValue( "mysql_wgDBname" );
+        $this->assertEquals( $dbNameBeforeRestart, $dbNameAfterRestart );
     }
 }

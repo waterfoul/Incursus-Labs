@@ -10,7 +10,7 @@
  */
 context.evt = $.extend( context.evt, {
 	/**
-	 * Filters change events, which occur when the wiki_user interacts with the contents of the iframe. The goal of this
+	 * Filters change events, which occur when the user interacts with the contents of the iframe. The goal of this
 	 * function is to both classify the scope of changes as 'division' or 'character' and to prevent further
 	 * processing of events which did not actually change the content of the iframe.
 	 */

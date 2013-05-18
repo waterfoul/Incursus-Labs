@@ -249,7 +249,7 @@ class IEUrlExtension {
 	 * filenames.
 	 *
 	 * SERVER_SOFTWARE typically contains either a plain string such as "Zeus",
-	 * or a specification in the style of a wiki_user-Agent header, such as
+	 * or a specification in the style of a User-Agent header, such as
 	 * "Apache/1.3.34 (Unix) mod_ssl/2.8.25 OpenSSL/0.9.8a PHP/4.4.2"
 	 *
 	 * @param $serverSoftware

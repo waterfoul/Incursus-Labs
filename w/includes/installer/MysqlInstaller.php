@@ -32,7 +32,7 @@ class MysqlInstaller extends DatabaseInstaller {
 	protected $globalNames = array(
 		'wgDBserver',
 		'wgDBname',
-		'wgDBwiki_user',
+		'wgDBuser',
 		'wgDBpassword',
 		'wgDBprefix',
 		'wgDBTableOptions',
@@ -42,14 +42,14 @@ class MysqlInstaller extends DatabaseInstaller {
 	protected $internalDefaults = array(
 		'_MysqlEngine' => 'InnoDB',
 		'_MysqlCharset' => 'binary',
-		'_Installwiki_user' => 'root',
+		'_InstallUser' => 'root',
 	);
 
 	public $supportedEngines = array( 'InnoDB', 'MyISAM' );
 
 	public $minimumVersion = '5.0.2';
 
-	public $webwiki_userPrivs = array(
+	public $webUserPrivs = array(
 		'DELETE',
 		'INSERT',
 		'SELECT',
@@ -93,7 +93,7 @@ class MysqlInstaller extends DatabaseInstaller {
 			$this->getTextBox( 'wgDBname', 'config-db-name', array( 'dir' => 'ltr' ), $this->parent->getHelpBox( 'config-db-name-help' ) ) .
 			$this->getTextBox( 'wgDBprefix', 'config-db-prefix', array( 'dir' => 'ltr' ), $this->parent->getHelpBox( 'config-db-prefix-help' ) ) .
 			Html::closeElement( 'fieldset' ) .
-			$this->getInstallwiki_userBox();
+			$this->getInstallUserBox();
 	}
 
 	public function submitConnectForm() {
@@ -117,8 +117,8 @@ class MysqlInstaller extends DatabaseInstaller {
 			return $status;
 		}
 
-		// Submit wiki_user box
-		$status = $this->submitInstallwiki_userBox();
+		// Submit user box
+		$status = $this->submitInstallUserBox();
 		if ( !$status->isOK() ) {
 			return $status;
 		}
@@ -148,16 +148,16 @@ class MysqlInstaller extends DatabaseInstaller {
 	public function openConnection() {
 		$status = Status::newGood();
 		try {
-			 = new DatabaseMysql(
+			$db = new DatabaseMysql(
 				$this->getVar( 'wgDBserver' ),
-				$this->getVar( '_Installwiki_user' ),
+				$this->getVar( '_InstallUser' ),
 				$this->getVar( '_InstallPassword' ),
 				false,
 				false,
 				0,
 				$this->getVar( 'wgDBprefix' )
 			);
-			$status->value = ;
+			$status->value = $db;
 		} catch ( DBConnectionError $e ) {
 			$status->fatal( 'config-connection-error', $e->getMessage() );
 		}
@@ -165,7 +165,7 @@ class MysqlInstaller extends DatabaseInstaller {
 	}
 
 	public function preUpgrade() {
-		global $wgDBwiki_user, $wgDBpassword;
+		global $wgDBuser, $wgDBpassword;
 
 		$status = $this->getConnection();
 		if ( !$status->isOK() ) {
@@ -216,9 +216,9 @@ class MysqlInstaller extends DatabaseInstaller {
 			$this->setVar( '_MysqlEngine', $existingEngine );
 		}
 
-		# Normal wiki_user and password are selected after this step, so for now
+		# Normal user and password are selected after this step, so for now
 		# just copy these two
-		$wgDBwiki_user = $this->getVar( '_Installwiki_user' );
+		$wgDBuser = $this->getVar( '_InstallUser' );
 		$wgDBpassword = $this->getVar( '_InstallPassword' );
 	}
 
@@ -256,7 +256,7 @@ class MysqlInstaller extends DatabaseInstaller {
 	}
 
 	/**
-	 * Return true if the install wiki_user can create accounts
+	 * Return true if the install user can create accounts
 	 *
 	 * @return bool
 	 */
@@ -276,15 +276,15 @@ class MysqlInstaller extends DatabaseInstaller {
 		if ( count( $parts ) != 2 ) {
 			return false;
 		}
-		$quotedwiki_user = $conn->addQuotes( $parts[0] ) .
+		$quotedUser = $conn->addQuotes( $parts[0] ) .
 			'@' . $conn->addQuotes( $parts[1] );
 
-		// The wiki_user needs to have INSERT on mysql.* to be able to CREATE USER
+		// The user needs to have INSERT on mysql.* to be able to CREATE USER
 		// The grantee will be double-quoted in this query, as required
 		$res = $conn->select( 'INFORMATION_SCHEMA.USER_PRIVILEGES', '*',
-			array( 'GRANTEE' => $quotedwiki_user ), __METHOD__ );
+			array( 'GRANTEE' => $quotedUser ), __METHOD__ );
 		$insertMysql = false;
-		$grantOptions = array_flip( $this->webwiki_userPrivs );
+		$grantOptions = array_flip( $this->webUserPrivs );
 		foreach ( $res as $row ) {
 			if ( $row->PRIVILEGE_TYPE == 'INSERT' ) {
 				$insertMysql = true;
@@ -298,7 +298,7 @@ class MysqlInstaller extends DatabaseInstaller {
 		if ( !$insertMysql ) {
 			$row = $conn->selectRow( 'INFORMATION_SCHEMA.SCHEMA_PRIVILEGES', '*',
 				array(
-					'GRANTEE' => $quotedwiki_user,
+					'GRANTEE' => $quotedUser,
 					'TABLE_SCHEMA' => 'mysql',
 					'PRIVILEGE_TYPE' => 'INSERT',
 				), __METHOD__ );
@@ -314,7 +314,7 @@ class MysqlInstaller extends DatabaseInstaller {
 		// Check for DB-level grant options
 		$res = $conn->select( 'INFORMATION_SCHEMA.SCHEMA_PRIVILEGES', '*',
 			array(
-				'GRANTEE' => $quotedwiki_user,
+				'GRANTEE' => $quotedUser,
 				'IS_GRANTABLE' => 1,
 			), __METHOD__ );
 		foreach ( $res as $row ) {
@@ -339,7 +339,7 @@ class MysqlInstaller extends DatabaseInstaller {
 		} else {
 			$noCreateMsg = 'config-db-web-no-create-privs';
 		}
-		$s = $this->getWebwiki_userBox( $noCreateMsg );
+		$s = $this->getWebUserBox( $noCreateMsg );
 
 		// Do engine selector
 		$engines = $this->getEngines();
@@ -402,7 +402,7 @@ class MysqlInstaller extends DatabaseInstaller {
 	 */
 	public function submitSettingsForm() {
 		$this->setVarsFromRequest( array( '_MysqlEngine', '_MysqlCharset' ) );
-		$status = $this->submitWebwiki_userBox();
+		$status = $this->submitWebUserBox();
 		if ( !$status->isOK() ) {
 			return $status;
 		}
@@ -421,7 +421,7 @@ class MysqlInstaller extends DatabaseInstaller {
 			try {
 				new DatabaseMysql(
 					$this->getVar( 'wgDBserver' ),
-					$this->getVar( 'wgDBwiki_user' ),
+					$this->getVar( 'wgDBuser' ),
 					$this->getVar( 'wgDBpassword' ),
 					false,
 					false,
@@ -447,10 +447,10 @@ class MysqlInstaller extends DatabaseInstaller {
 	}
 
 	public function preInstall() {
-		# Add our wiki_user callback to installSteps, right before the tables are created.
+		# Add our user callback to installSteps, right before the tables are created.
 		$callback = array(
-			'name' => 'wiki_user',
-			'callback' => array( $this, 'setupwiki_user' ),
+			'name' => 'user',
+			'callback' => array( $this, 'setupUser' ),
 		);
 		$this->parent->addInstallStep( $callback, 'tables' );
 	}
@@ -464,10 +464,10 @@ class MysqlInstaller extends DatabaseInstaller {
 			return $status;
 		}
 		$conn = $status->value;
-		Name = $this->getVar( 'wgDBname' );
-		if( !$conn->selectDB( Name ) ) {
-			$conn->query( "CREATE DATABASE " . $conn->addIdentifierQuotes( Name ), __METHOD__ );
-			$conn->selectDB( Name );
+		$dbName = $this->getVar( 'wgDBname' );
+		if( !$conn->selectDB( $dbName ) ) {
+			$conn->query( "CREATE DATABASE " . $conn->addIdentifierQuotes( $dbName ), __METHOD__ );
+			$conn->selectDB( $dbName );
 		}
 		$this->setupSchemaVars();
 		return $status;
@@ -476,9 +476,9 @@ class MysqlInstaller extends DatabaseInstaller {
 	/**
 	 * @return Status
 	 */
-	public function setupwiki_user() {
-		wiki_user = $this->getVar( 'wgDBwiki_user' );
-		if( wiki_user == $this->getVar( '_Installwiki_user' ) ) {
+	public function setupUser() {
+		$dbUser = $this->getVar( 'wgDBuser' );
+		if( $dbUser == $this->getVar( '_InstallUser' ) ) {
 			return Status::newGood();
 		}
 		$status = $this->getConnection();
@@ -487,31 +487,31 @@ class MysqlInstaller extends DatabaseInstaller {
 		}
 
 		$this->setupSchemaVars();
-		Name = $this->getVar( 'wgDBname' );
-		$this->db->selectDB( Name );
+		$dbName = $this->getVar( 'wgDBname' );
+		$this->db->selectDB( $dbName );
 		$server = $this->getVar( 'wgDBserver' );
 		$password = $this->getVar( 'wgDBpassword' );
 		$grantableNames = array();
 
 		if ( $this->getVar( '_CreateDBAccount' ) ) {
-			// Before we blindly try to create a wiki_user that already has access,
+			// Before we blindly try to create a user that already has access,
 			try { // first attempt to connect to the database
 				new DatabaseMysql(
 					$server,
-					wiki_user,
+					$dbUser,
 					$password,
 					false,
 					false,
 					0,
 					$this->getVar( 'wgDBprefix' )
 				);
-				$grantableNames[] = $this->buildFullwiki_userName( wiki_user, $server );
+				$grantableNames[] = $this->buildFullUserName( $dbUser, $server );
 				$tryToCreate = false;
 			} catch ( DBConnectionError $e ) {
 				$tryToCreate = true;
 			}
 		} else {
-			$grantableNames[] = $this->buildFullwiki_userName( wiki_user, $server );
+			$grantableNames[] = $this->buildFullUserName( $dbUser, $server );
 			$tryToCreate = false;
 		}
 
@@ -526,8 +526,8 @@ class MysqlInstaller extends DatabaseInstaller {
 			$escPass = $this->db->addQuotes( $password );
 
 			foreach( $createHostList as $host ) {
-				$fullName = $this->buildFullwiki_userName( wiki_user, $host );
-				if( !$this->wiki_userDefinitelyExists( wiki_user, $host ) ) {
+				$fullName = $this->buildFullUserName( $dbUser, $host );
+				if( !$this->userDefinitelyExists( $dbUser, $host ) ) {
 					try{
 						$this->db->begin( __METHOD__ );
 						$this->db->query( "CREATE USER $fullName IDENTIFIED BY $escPass", __METHOD__ );
@@ -535,36 +535,36 @@ class MysqlInstaller extends DatabaseInstaller {
 						$grantableNames[] = $fullName;
 					} catch( DBQueryError $dqe ) {
 						if( $this->db->lastErrno() == 1396 /* ER_CANNOT_USER */ ) {
-							// wiki_user (probably) already exists
+							// User (probably) already exists
 							$this->db->rollback( __METHOD__ );
-							$status->warning( 'config-install-wiki_user-alreadyexists', wiki_user );
+							$status->warning( 'config-install-user-alreadyexists', $dbUser );
 							$grantableNames[] = $fullName;
 							break;
 						} else {
 							// If we couldn't create for some bizzare reason and the
-							// wiki_user probably doesn't exist, skip the grant
+							// user probably doesn't exist, skip the grant
 							$this->db->rollback( __METHOD__ );
-							$status->warning( 'config-install-wiki_user-create-failed', wiki_user, $dqe->getText() );
+							$status->warning( 'config-install-user-create-failed', $dbUser, $dqe->getText() );
 						}
 					}
 				} else {
-					$status->warning( 'config-install-wiki_user-alreadyexists', wiki_user );
+					$status->warning( 'config-install-user-alreadyexists', $dbUser );
 					$grantableNames[] = $fullName;
 					break;
 				}
 			}
 		}
 
-		// Try to grant to all the wiki_users we know exist or we were able to create
-		AllTables = $this->db->addIdentifierQuotes( Name ) . '.*';
+		// Try to grant to all the users we know exist or we were able to create
+		$dbAllTables = $this->db->addIdentifierQuotes( $dbName ) . '.*';
 		foreach( $grantableNames as $name ) {
 			try {
 				$this->db->begin( __METHOD__ );
-				$this->db->query( "GRANT ALL PRIVILEGES ON AllTables TO $name", __METHOD__ );
+				$this->db->query( "GRANT ALL PRIVILEGES ON $dbAllTables TO $name", __METHOD__ );
 				$this->db->commit( __METHOD__ );
 			} catch( DBQueryError $dqe ) {
 				$this->db->rollback( __METHOD__ );
-				$status->fatal( 'config-install-wiki_user-grant-failed', wiki_user, $dqe->getText() );
+				$status->fatal( 'config-install-user-grant-failed', $dbUser, $dqe->getText() );
 			}
 		}
 
@@ -572,26 +572,26 @@ class MysqlInstaller extends DatabaseInstaller {
 	}
 
 	/**
-	 * Return a formal 'wiki_user'@'Host' wiki_username for use in queries
-	 * @param $name String wiki_username, quotes will be added
+	 * Return a formal 'User'@'Host' username for use in queries
+	 * @param $name String Username, quotes will be added
 	 * @param $host String Hostname, quotes will be added
 	 * @return String
 	 */
-	private function buildFullwiki_userName( $name, $host ) {
+	private function buildFullUserName( $name, $host ) {
 		return $this->db->addQuotes( $name ) . '@' . $this->db->addQuotes( $host );
 	}
 
 	/**
-	 * Try to see if the wiki_user account exists. Our "superwiki_user" may not have
-	 * access to mysql.wiki_user, so false means "no" or "maybe"
+	 * Try to see if the user account exists. Our "superuser" may not have
+	 * access to mysql.user, so false means "no" or "maybe"
 	 * @param $host String Hostname to check
-	 * @param $wiki_user String wiki_username to check
+	 * @param $user String Username to check
 	 * @return boolean
 	 */
-	private function wiki_userDefinitelyExists( $host, $wiki_user ) {
+	private function userDefinitelyExists( $host, $user ) {
 		try {
-			$res = $this->db->selectRow( 'mysql.wiki_user', array( 'Host', 'wiki_user' ),
-				array( 'Host' => $host, 'wiki_user' => $wiki_user ), __METHOD__ );
+			$res = $this->db->selectRow( 'mysql.user', array( 'Host', 'User' ),
+				array( 'Host' => $host, 'User' => $user ), __METHOD__ );
 			return (bool)$res;
 		} catch( DBQueryError $dqe ) {
 			return false;
@@ -625,13 +625,13 @@ class MysqlInstaller extends DatabaseInstaller {
 		return array(
 			'wgDBTableOptions' => $this->getTableOptions(),
 			'wgDBname' => $this->getVar( 'wgDBname' ),
-			'wgDBwiki_user' => $this->getVar( 'wgDBwiki_user' ),
+			'wgDBuser' => $this->getVar( 'wgDBuser' ),
 			'wgDBpassword' => $this->getVar( 'wgDBpassword' ),
 		);
 	}
 
 	public function getLocalSettings() {
-		mysql5 = wfBoolToStr( $this->getVar( 'wgDBmysql5', true ) );
+		$dbmysql5 = wfBoolToStr( $this->getVar( 'wgDBmysql5', true ) );
 		$prefix = LocalSettingsGenerator::escapePhpString( $this->getVar( 'wgDBprefix' ) );
 		$tblOpts = LocalSettingsGenerator::escapePhpString( $this->getTableOptions() );
 		return
@@ -642,6 +642,6 @@ class MysqlInstaller extends DatabaseInstaller {
 \$wgDBTableOptions   = \"{$tblOpts}\";
 
 # Experimental charset support for MySQL 5.0.
-\$wgDBmysql5 = {mysql5};";
+\$wgDBmysql5 = {$dbmysql5};";
 	}
 }

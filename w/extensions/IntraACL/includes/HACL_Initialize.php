@@ -94,8 +94,8 @@ $haclgNamespaceIndex = 102;
 # This specifies how different right definitions which apply to one page combine.
 # There may be page, category and namespace rights.
 # Possible values:
-# - HACL_COMBINE_EXTEND: wiki_user has the right if it is granted within ANY of the applicable definitions.
-# - HACL_COMBINE_SHRINK: wiki_user has the right only if it is granted within ALL applicable definitions.
+# - HACL_COMBINE_EXTEND: user has the right if it is granted within ANY of the applicable definitions.
+# - HACL_COMBINE_SHRINK: user has the right only if it is granted within ALL applicable definitions.
 # - HACL_COMBINE_OVERRIDE: more specific rights override less specific ones.
 #   I.e. page rights override category rights, which override namespace rights.
 $haclgCombineMode = HACL_COMBINE_EXTEND;

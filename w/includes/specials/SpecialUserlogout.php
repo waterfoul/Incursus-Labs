@@ -1,6 +1,6 @@
 <?php
 /**
- * Implements Special:wiki_userlogout
+ * Implements Special:Userlogout
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,14 +22,14 @@
  */
 
 /**
- * Implements Special:wiki_userlogout
+ * Implements Special:Userlogout
  *
  * @ingroup SpecialPage
  */
-class Specialwiki_userlogout extends UnlistedSpecialPage {
+class SpecialUserlogout extends UnlistedSpecialPage {
 
 	function __construct() {
-		parent::__construct( 'wiki_userlogout' );
+		parent::__construct( 'Userlogout' );
 	}
 
 	function execute( $par ) {
@@ -38,23 +38,23 @@ class Specialwiki_userlogout extends UnlistedSpecialPage {
 		 * they're logged in (bug 17790). Luckily, there's a way to detect such requests.
 		 */
 		if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], '&amp;' ) !== false ) {
-			wfDebug( "Special:wiki_userlogout request {$_SERVER['REQUEST_URI']} looks suspicious, denying.\n" );
-			throw new HttpError( 400, $this->msg( 'suspicious-wiki_userlogout' ), $this->msg( 'loginerror' ) );
+			wfDebug( "Special:Userlogout request {$_SERVER['REQUEST_URI']} looks suspicious, denying.\n" );
+			throw new HttpError( 400, $this->msg( 'suspicious-userlogout' ), $this->msg( 'loginerror' ) );
 		}
 
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$wiki_user = $this->getwiki_user();
-		$oldName = $wiki_user->getName();
-		$wiki_user->logout();
+		$user = $this->getUser();
+		$oldName = $user->getName();
+		$user->logout();
 
 		$out = $this->getOutput();
 		$out->addWikiMsg( 'logouttext' );
 
 		// Hook.
 		$injected_html = '';
-		wfRunHooks( 'wiki_userLogoutComplete', array( &$wiki_user, &$injected_html, $oldName ) );
+		wfRunHooks( 'UserLogoutComplete', array( &$user, &$injected_html, $oldName ) );
 		$out->addHTML( $injected_html );
 
 		$out->returnToMain();

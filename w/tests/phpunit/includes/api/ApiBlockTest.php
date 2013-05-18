@@ -12,17 +12,17 @@ class ApiBlockTest extends ApiTestCase {
 	}
 
 	function getTokens() {
-		return $this->getTokenList( self::$wiki_users['sysop'] );
+		return $this->getTokenList( self::$users['sysop'] );
 	}
 
 	function addDBData() {
-		$wiki_user = wiki_user::newFromName( 'UTApiBlockee' );
+		$user = User::newFromName( 'UTApiBlockee' );
 
-		if ( $wiki_user->getId() == 0 ) {
-			$wiki_user->addToDatabase();
-			$wiki_user->setPassword( 'UTApiBlockeePassword' );
+		if ( $user->getId() == 0 ) {
+			$user->addToDatabase();
+			$user->setPassword( 'UTApiBlockeePassword' );
 
-			$wiki_user->saveSettings();
+			$user->saveSettings();
 		}
 	}
 
@@ -38,10 +38,10 @@ class ApiBlockTest extends ApiTestCase {
 
 		$data = $this->getTokens();
 
-		$wiki_user = wiki_user::newFromName( 'UTApiBlockee' );
+		$user = User::newFromName( 'UTApiBlockee' );
 
-		if ( !$wiki_user->getId() ) {
-			$this->markTestIncomplete( "The wiki_user UTApiBlockee does not exist" );
+		if ( !$user->getId() ) {
+			$this->markTestIncomplete( "The user UTApiBlockee does not exist" );
 		}
 
 		if( !isset( $data[0]['query']['pages'] ) ) {
@@ -54,9 +54,9 @@ class ApiBlockTest extends ApiTestCase {
 
 		$data = $this->doApiRequest( array(
 			'action' => 'block',
-			'wiki_user' => 'UTApiBlockee',
+			'user' => 'UTApiBlockee',
 			'reason' => 'Some reason',
-			'token' => $pageinfo['blocktoken'] ), null, false, self::$wiki_users['sysop']->wiki_user );
+			'token' => $pageinfo['blocktoken'] ), null, false, self::$users['sysop']->user );
 
 		$block = Block::newFromTarget('UTApiBlockee');
 
@@ -75,11 +75,11 @@ class ApiBlockTest extends ApiTestCase {
 		$data = $this->doApiRequest(
 			array(
 				'action' => $action,
-				'wiki_user' => 'UTApiBlockee',
+				'user' => 'UTApiBlockee',
 				'gettoken' => '' ),
 			null,
 			false,
-			self::$wiki_users['sysop']->wiki_user
+			self::$users['sysop']->user
 		);
 		$this->assertEquals( 34, strlen( $data[0][$action]["{$action}token"] ) );
 	}
@@ -96,12 +96,12 @@ class ApiBlockTest extends ApiTestCase {
 		$this->doApiRequest(
 			array(
 				'action' => $action,
-				'wiki_user' => 'UTApiBlockee',
+				'user' => 'UTApiBlockee',
 				'reason' => 'Some reason',
 				),
 			null,
 			false,
-			self::$wiki_users['sysop']->wiki_user
+			self::$users['sysop']->user
 		);
 	}
 

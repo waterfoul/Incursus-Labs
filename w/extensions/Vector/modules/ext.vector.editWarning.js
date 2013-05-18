@@ -31,7 +31,7 @@
 				savedWindowOnBeforeUnload = window.onbeforeunload;
 				window.onbeforeunload = null;
 				if ( retval !== undefined ) {
-					// ...but if the wiki_user chooses not to leave the page, we need to rebind it
+					// ...but if the user chooses not to leave the page, we need to rebind it
 					setTimeout( function () {
 						window.onbeforeunload = savedWindowOnBeforeUnload;
 					}, 1 );

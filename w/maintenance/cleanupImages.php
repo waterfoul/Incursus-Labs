@@ -103,8 +103,8 @@ class ImageCleanup extends TableCleanup {
 			$this->output( "DRY RUN: would delete bogus row '$name'\n" );
 		} else {
 			$this->output( "deleting bogus row '$name'\n" );
-			 = wfGetDB( DB_MASTER );
-			->delete( 'image',
+			$db = wfGetDB( DB_MASTER );
+			$db->delete( 'image',
 				array( 'img_name' => $name ),
 				__METHOD__ );
 		}
@@ -117,12 +117,12 @@ class ImageCleanup extends TableCleanup {
 		return $this->repo->getRootDirectory() . '/' . $this->repo->getHashPath( $name ) . $name;
 	}
 
-	private function imageExists( $name,  ) {
-		return ->selectField( 'image', '1', array( 'img_name' => $name ), __METHOD__ );
+	private function imageExists( $name, $db ) {
+		return $db->selectField( 'image', '1', array( 'img_name' => $name ), __METHOD__ );
 	}
 
-	private function pageExists( $name,  ) {
-		return ->selectField( 'page', '1', array( 'page_namespace' => NS_FILE, 'page_title' => $name ), __METHOD__ );
+	private function pageExists( $name, $db ) {
+		return $db->selectField( 'page', '1', array( 'page_namespace' => NS_FILE, 'page_title' => $name ), __METHOD__ );
 	}
 
 	private function pokeFile( $orig, $new ) {
@@ -133,7 +133,7 @@ class ImageCleanup extends TableCleanup {
 			return;
 		}
 
-		 = wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_MASTER );
 
 		/*
 		 * To prevent key collisions in the update() statements below,
@@ -144,14 +144,14 @@ class ImageCleanup extends TableCleanup {
 		 */
 		$version = 0;
 		$final = $new;
-		$conflict = ( $this->imageExists( $final,  ) ||
-				( $this->pageExists( $orig,  ) && $this->pageExists( $final,  ) ) );
+		$conflict = ( $this->imageExists( $final, $db ) ||
+				( $this->pageExists( $orig, $db ) && $this->pageExists( $final, $db ) ) );
 
 		while ( $conflict ) {
 			$this->output( "Rename conflicts with '$final'...\n" );
 			$version++;
 			$final = $this->appendTitle( $new, "_$version" );
-			$conflict = ( $this->imageExists( $final,  ) || $this->pageExists( $final,  ) );
+			$conflict = ( $this->imageExists( $final, $db ) || $this->pageExists( $final, $db ) );
 		}
 
 		$finalPath = $this->filePath( $final );
@@ -161,16 +161,16 @@ class ImageCleanup extends TableCleanup {
 		} else {
 			$this->output( "renaming $path to $finalPath\n" );
 			// @todo FIXME: Should this use File::move()?
-			->begin( __METHOD__ );
-			->update( 'image',
+			$db->begin( __METHOD__ );
+			$db->update( 'image',
 				array( 'img_name' => $final ),
 				array( 'img_name' => $orig ),
 				__METHOD__ );
-			->update( 'oldimage',
+			$db->update( 'oldimage',
 				array( 'oi_name' => $final ),
 				array( 'oi_name' => $orig ),
 				__METHOD__ );
-			->update( 'page',
+			$db->update( 'page',
 				array( 'page_title' => $final ),
 				array( 'page_title' => $orig, 'page_namespace' => NS_FILE ),
 				__METHOD__ );
@@ -178,15 +178,15 @@ class ImageCleanup extends TableCleanup {
 			if ( !file_exists( $dir ) ) {
 				if ( !wfMkdirParents( $dir, null, __METHOD__ ) ) {
 					$this->output( "RENAME FAILED, COULD NOT CREATE $dir" );
-					->rollback( __METHOD__ );
+					$db->rollback( __METHOD__ );
 					return;
 				}
 			}
 			if ( rename( $path, $finalPath ) ) {
-				->commit( __METHOD__ );
+				$db->commit( __METHOD__ );
 			} else {
 				$this->error( "RENAME FAILED" );
-				->rollback( __METHOD__ );
+				$db->rollback( __METHOD__ );
 			}
 		}
 	}

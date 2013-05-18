@@ -169,7 +169,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		   AND (pl_title='Foo' AND pl_namespace=0) OR (pl_title='Bar' AND pl_namespace=1)
 		   ORDER BY pl_namespace, pl_title, pl_from LIMIT 11
 		 */
-		 = $this->getDB();
+		$db = $this->getDB();
 		$this->addTables( array( 'page', $this->bl_table ) );
 		$this->addWhere( "{$this->bl_from}=page_id" );
 
@@ -191,18 +191,18 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		foreach ( $this->redirTitles as $t ) {
 			$redirNs = $t->getNamespace();
 			$redirDBkey = $t->getDBkey();
-			$titleWhere[] = "{$this->bl_title} = " . ->addQuotes( $redirDBkey ) .
+			$titleWhere[] = "{$this->bl_title} = " . $db->addQuotes( $redirDBkey ) .
 					( $this->hasNS ? " AND {$this->bl_ns} = {$redirNs}" : '' );
 			$allRedirNs[] = $redirNs;
 			$allRedirDBkey[] = $redirDBkey;
 		}
-		$this->addWhere( ->makeList( $titleWhere, LIST_OR ) );
+		$this->addWhere( $db->makeList( $titleWhere, LIST_OR ) );
 		$this->addWhereFld( 'page_namespace', $this->params['namespace'] );
 
 		if ( !is_null( $this->redirID ) ) {
 			$op = $this->params['dir'] == 'descending' ? '<' : '>';
 			$first = $this->redirTitles[0];
-			$title = ->addQuotes( $first->getDBkey() );
+			$title = $db->addQuotes( $first->getDBkey() );
 			$ns = $first->getNamespace();
 			$from = $this->redirID;
 			if ( $this->hasNS ) {
@@ -245,13 +245,13 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 	private function run( $resultPageSet = null ) {
 		$this->params = $this->extractRequestParams( false );
 		$this->redirect = isset( $this->params['redirect'] ) && $this->params['redirect'];
-		$wiki_userMax = ( $this->redirect ? ApiBase::LIMIT_BIG1 / 2 : ApiBase::LIMIT_BIG1 );
+		$userMax = ( $this->redirect ? ApiBase::LIMIT_BIG1 / 2 : ApiBase::LIMIT_BIG1 );
 		$botMax  = ( $this->redirect ? ApiBase::LIMIT_BIG2 / 2 : ApiBase::LIMIT_BIG2 );
 
 		$result = $this->getResult();
 
 		if ( $this->params['limit'] == 'max' ) {
-			$this->params['limit'] = $this->getMain()->canApiHighLimits() ? $botMax : $wiki_userMax;
+			$this->params['limit'] = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
 			$result->setParsedLimit( $this->getModuleName(), $this->params['limit'] );
 		}
 

@@ -130,7 +130,7 @@ class StringUtils {
 			} elseif ( $tokenType == 'end' ) {
 				if ( $foundStart ) {
 					# Found match
-					$output .= call_wiki_user_func( $callback, array(
+					$output .= call_user_func( $callback, array(
 						substr( $subject, $outputPos, $tokenOffset + $tokenLength - $outputPos ),
 						substr( $subject, $contentPos, $tokenOffset - $contentPos )
 					));

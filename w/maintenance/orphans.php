@@ -57,15 +57,15 @@ class Orphans extends Maintenance {
 
 	/**
 	 * Lock the appropriate tables for the script
-	 * @param  DatabaseBase object
+	 * @param $db DatabaseBase object
 	 * @param $extraTable String The name of any extra tables to lock (eg: text)
 	 */
-	private function lockTables( , $extraTable = array() ) {
+	private function lockTables( $db, $extraTable = array() ) {
 		$tbls = array( 'page', 'revision', 'redirect' );
 		if ( $extraTable ) {
 			$tbls = array_merge( $tbls, $extraTable );
 		}
-		->lockTables( array(), $tbls, __METHOD__, false );
+		$db->lockTables( array(), $tbls, __METHOD__, false );
 	}
 
 	/**
@@ -73,25 +73,25 @@ class Orphans extends Maintenance {
 	 * @param $fix bool Whether to fix broken revisions when found
 	 */
 	private function checkOrphans( $fix ) {
-		w = wfGetDB( DB_MASTER );
-		$page = w->tableName( 'page' );
-		$revision = w->tableName( 'revision' );
+		$dbw = wfGetDB( DB_MASTER );
+		$page = $dbw->tableName( 'page' );
+		$revision = $dbw->tableName( 'revision' );
 
 		if ( $fix ) {
-			$this->lockTables( w );
+			$this->lockTables( $dbw );
 		}
 
 		$this->output( "Checking for orphan revision table entries... (this may take a while on a large wiki)\n" );
-		$result = w->query( "
+		$result = $dbw->query( "
 			SELECT *
 			FROM $revision LEFT OUTER JOIN $page ON rev_page=page_id
 			WHERE page_id IS NULL
 		" );
-		$orphans = w->numRows( $result );
+		$orphans = $dbw->numRows( $result );
 		if ( $orphans > 0 ) {
 			global $wgContLang;
 			$this->output( "$orphans orphan revisions...\n" );
-			$this->output( sprintf( "%10s %10s %14s %20s %s\n", 'rev_id', 'rev_page', 'rev_timestamp', 'rev_wiki_user_text', 'rev_comment' ) );
+			$this->output( sprintf( "%10s %10s %14s %20s %s\n", 'rev_id', 'rev_page', 'rev_timestamp', 'rev_user_text', 'rev_comment' ) );
 			foreach ( $result as $row ) {
 				$comment = ( $row->rev_comment == '' )
 					? ''
@@ -100,10 +100,10 @@ class Orphans extends Maintenance {
 					$row->rev_id,
 					$row->rev_page,
 					$row->rev_timestamp,
-					$wgContLang->truncate( $row->rev_wiki_user_text, 17 ),
+					$wgContLang->truncate( $row->rev_user_text, 17 ),
 					$comment ) );
 				if ( $fix ) {
-					w->delete( 'revision', array( 'rev_id' => $row->rev_id ) );
+					$dbw->delete( 'revision', array( 'rev_id' => $row->rev_id ) );
 				}
 			}
 			if ( !$fix ) {
@@ -114,7 +114,7 @@ class Orphans extends Maintenance {
 		}
 
 		if ( $fix ) {
-			w->unlockTables( __METHOD__ );
+			$dbw->unlockTables( __METHOD__ );
 		}
 	}
 
@@ -125,21 +125,21 @@ class Orphans extends Maintenance {
 	 *       but valid revisions do exist)
 	 */
 	private function checkWidows( $fix ) {
-		w = wfGetDB( DB_MASTER );
-		$page = w->tableName( 'page' );
-		$revision = w->tableName( 'revision' );
+		$dbw = wfGetDB( DB_MASTER );
+		$page = $dbw->tableName( 'page' );
+		$revision = $dbw->tableName( 'revision' );
 
 		if ( $fix ) {
-			$this->lockTables( w );
+			$this->lockTables( $dbw );
 		}
 
 		$this->output( "\nChecking for childless page table entries... (this may take a while on a large wiki)\n" );
-		$result = w->query( "
+		$result = $dbw->query( "
 			SELECT *
 			FROM $page LEFT OUTER JOIN $revision ON page_latest=rev_id
 			WHERE rev_id IS NULL
 		" );
-		$widows = w->numRows( $result );
+		$widows = $dbw->numRows( $result );
 		if ( $widows > 0 ) {
 			$this->output( "$widows childless pages...\n" );
 			$this->output( sprintf( "%10s %11s %2s %s\n", 'page_id', 'page_latest', 'ns', 'page_title' ) );
@@ -150,7 +150,7 @@ class Orphans extends Maintenance {
 					$row->page_namespace,
 					$row->page_title );
 				if ( $fix ) {
-					w->delete( 'page', array( 'page_id' => $row->page_id ) );
+					$dbw->delete( 'page', array( 'page_id' => $row->page_id ) );
 				}
 			}
 			if ( !$fix ) {
@@ -161,7 +161,7 @@ class Orphans extends Maintenance {
 		}
 
 		if ( $fix ) {
-			w->unlockTables( __METHOD__ );
+			$dbw->unlockTables( __METHOD__ );
 		}
 	}
 
@@ -170,27 +170,27 @@ class Orphans extends Maintenance {
 	 * @param $fix bool Whether to fix broken entries
 	 */
 	private function checkSeparation( $fix ) {
-		w = wfGetDB( DB_MASTER );
-		$page     = w->tableName( 'page' );
-		$revision = w->tableName( 'revision' );
+		$dbw = wfGetDB( DB_MASTER );
+		$page     = $dbw->tableName( 'page' );
+		$revision = $dbw->tableName( 'revision' );
 
 		if ( $fix ) {
-			$this->lockTables( w, array( 'wiki_user', 'text' ) );
+			$this->lockTables( $dbw, array( 'user', 'text' ) );
 		}
 
 		$this->output( "\nChecking for pages whose page_latest links are incorrect... (this may take a while on a large wiki)\n" );
-		$result = w->query( "
+		$result = $dbw->query( "
 			SELECT *
 			FROM $page LEFT OUTER JOIN $revision ON page_latest=rev_id
 		" );
 		$found = 0;
 		foreach ( $result as $row ) {
-			$result2 = w->query( "
+			$result2 = $dbw->query( "
 				SELECT MAX(rev_timestamp) as max_timestamp
 				FROM $revision
 				WHERE rev_page=$row->page_id
 			" );
-			$row2 = w->fetchObject( $result2 );
+			$row2 = $dbw->fetchObject( $result2 );
 			if ( $row2 ) {
 				if ( $row->rev_timestamp != $row2->max_timestamp ) {
 					if ( $found == 0 ) {
@@ -205,7 +205,7 @@ class Orphans extends Maintenance {
 						$row2->max_timestamp ) );
 					if ( $fix ) {
 						# ...
-						$maxId = w->selectField(
+						$maxId = $dbw->selectField(
 							'revision',
 							'rev_id',
 							array(
@@ -215,7 +215,7 @@ class Orphans extends Maintenance {
 						$maxRev = Revision::newFromId( $maxId );
 						$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 						$article = WikiPage::factory( $title );
-						$article->updateRevisionOn( w, $maxRev );
+						$article->updateRevisionOn( $dbw, $maxRev );
 					}
 				}
 			} else {
@@ -233,7 +233,7 @@ class Orphans extends Maintenance {
 		}
 
 		if ( $fix ) {
-			w->unlockTables( __METHOD__ );
+			$dbw->unlockTables( __METHOD__ );
 		}
 	}
 }

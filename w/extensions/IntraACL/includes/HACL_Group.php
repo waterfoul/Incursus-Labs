@@ -39,7 +39,7 @@ if (!defined('MEDIAWIKI'))
  * A group is always represented by an article in the wiki, so the group's
  * description contains the page ID of this article and the name of the group.
  *
- * Only authorized wiki_users and groups of wiki_users can modify the definition of the
+ * Only authorized users and groups of users can modify the definition of the
  * group. Their IDs are stored in the group as well.
  *
  * @author Thomas Schweitzer
@@ -48,17 +48,17 @@ if (!defined('MEDIAWIKI'))
 class HACLGroup
 {
     //--- Constants ---
-    const NAME   = 0;       // Mode parameter for getwiki_users/getGroups
-    const ID     = 1;       // Mode parameter for getwiki_users/getGroups
-    const OBJECT = 2;       // Mode parameter for getwiki_users/getGroups
-    const USER   = 'wiki_user';  // Child type for wiki_users
+    const NAME   = 0;       // Mode parameter for getUsers/getGroups
+    const ID     = 1;       // Mode parameter for getUsers/getGroups
+    const OBJECT = 2;       // Mode parameter for getUsers/getGroups
+    const USER   = 'user';  // Child type for users
     const GROUP  = 'group'; // Child type for groups
 
     //--- Private fields ---
     private $mGroupID;      // int: Page ID of the article that defines this group
     private $mGroupName;    // string: The name of this group
     private $mManageGroups; // array(int): IDs of the groups that can modify this group
-    private $mManagewiki_users;  // array(int): IDs of the wiki_users that can modify this group
+    private $mManageUsers;  // array(int): IDs of the users that can modify this group
 
     /**
      * Constructor for HACLGroup
@@ -73,23 +73,23 @@ class HACLGroup
      *         An array or a string of comma separated group names or IDs that
      *         can modify the group's definition. Group names are converted and
      *         internally stored as group IDs. Invalid values cause an exception.
-     * @param array<int/string>/string $managewiki_users
-     *         An array or a string of comma separated of wiki_user names or IDs that
-     *         can modify the group's definition. wiki_user names are converted and
-     *         internally stored as wiki_user IDs. Invalid values cause an exception.
+     * @param array<int/string>/string $manageUsers
+     *         An array or a string of comma separated of user names or IDs that
+     *         can modify the group's definition. User names are converted and
+     *         internally stored as user IDs. Invalid values cause an exception.
      * @throws
      *         HACLGroupException(HACLGroupException::UNKNOWN_GROUP)
      *         HACLException(HACLException::UNKNOWN_USER)
      *
      */
-    function __construct($groupID, $groupName, $manageGroups, $managewiki_users)
+    function __construct($groupID, $groupName, $manageGroups, $manageUsers)
     {
         if (is_null($groupID))
             $groupID = self::idForGroup($groupName);
         $this->mGroupID = 0+$groupID;
         $this->mGroupName = $groupName;
         $this->setManageGroups($manageGroups);
-        $this->setManagewiki_users($managewiki_users);
+        $this->setManageUsers($manageUsers);
     }
 
     //--- getters ---
@@ -97,7 +97,7 @@ class HACLGroup
     public function getGroupID()        { return $this->mGroupID; }
     public function getGroupName()      { return $this->mGroupName; }
     public function getManageGroups()   { return $this->mManageGroups; }
-    public function getManagewiki_users()    { return $this->mManagewiki_users; }
+    public function getManageUsers()    { return $this->mManageUsers; }
 
     //--- Public methods ---
 
@@ -206,18 +206,18 @@ class HACLGroup
 
     /**
      * This method checks the integrity of this group. The integrity can be violated
-     * by missing groups and wiki_users.
+     * by missing groups and users.
      *
      * return mixed bool / array
      *     <true> if the group is valid,
      *  array(string=>bool) otherwise
-     *         The array has the keys "groups", "wiki_users" with boolean values.
+     *         The array has the keys "groups", "users" with boolean values.
      *         If the value is <true>, at least one of the corresponding entities
      *         is missing.
      */
     public function checkIntegrity() {
         $missingGroups = false;
-        $missingwiki_users = false;
+        $missingUsers = false;
 
         //== Check integrity of group managers ==
 
@@ -229,10 +229,10 @@ class HACLGroup
             }
         }
 
-        // Check for missing managing wiki_users
-        foreach ($this->mManagewiki_users as $uid) {
-            if ($uid > 0 && wiki_user::whoIs($uid) === false) {
-                $missingwiki_users = true;
+        // Check for missing managing users
+        foreach ($this->mManageUsers as $uid) {
+            if ($uid > 0 && User::whoIs($uid) === false) {
+                $missingUsers = true;
                 break;
             }
         }
@@ -247,32 +247,32 @@ class HACLGroup
             }
         }
 
-        // Check for missing wiki_users
-        $wiki_userIDs = $this->getwiki_users(self::ID);
-        foreach ($wiki_userIDs as $uid) {
-            if ($uid > 0 && wiki_user::whoIs($uid) === false) {
-                $missingwiki_users = true;
+        // Check for missing users
+        $userIDs = $this->getUsers(self::ID);
+        foreach ($userIDs as $uid) {
+            if ($uid > 0 && User::whoIs($uid) === false) {
+                $missingUsers = true;
                 break;
             }
         }
 
-        if (!$missingGroups && !$missingwiki_users) {
+        if (!$missingGroups && !$missingUsers) {
             return true;
         }
         return array('groups' => $missingGroups,
-                     'wiki_users'  => $missingwiki_users);
+                     'users'  => $missingUsers);
     }
 
     /**
-     * Checks whether the wiki_user/group ID set $ids is equal to name set $names.
+     * Checks whether the user/group ID set $ids is equal to name set $names.
      */
-    static function checkIdSet($names, $ids, $is_wiki_user = false)
+    static function checkIdSet($names, $ids, $is_user = false)
     {
         $ids = array_flip($ids);
         foreach ($names as $name)
         {
-            if ($is_wiki_user)
-                list($id) = haclfGetwiki_userID($name, false);
+            if ($is_user)
+                list($id) = haclfGetUserID($name, false);
             else
                 $id = HACLGroup::idForGroup($name);
             if ($id && !array_key_exists($id, $ids))
@@ -285,29 +285,29 @@ class HACLGroup
     /**
      * Checks if the group content is equal to the sets in arguments.
      */
-    function checkIsEqual($member_wiki_users, $member_groups, $manager_wiki_users, $manager_groups)
+    function checkIsEqual($member_users, $member_groups, $manager_users, $manager_groups)
     {
-        return self::checkIdSet($member_wiki_users, $this->getwiki_users(self::ID), true) &&
+        return self::checkIdSet($member_users, $this->getUsers(self::ID), true) &&
             self::checkIdSet($member_groups, $this->getGroups(self::ID), false) &&
-            self::checkIdSet($manager_wiki_users, $this->mManagewiki_users, true) &&
+            self::checkIdSet($manager_users, $this->mManageUsers, true) &&
             self::checkIdSet($manager_groups, $this->mManageGroups, false);
     }
 
     /**
-     * Checks if the given wiki_user can modify this group.
+     * Checks if the given user can modify this group.
      *
-     * @param wiki_user/string/int $wiki_user
-     *         wiki_user-object, name of a wiki_user or ID of a wiki_user who wants to modify this
-     *         group. If <null>, the currently logged in wiki_user is assumed.
+     * @param User/string/int $user
+     *         User-object, name of a user or ID of a user who wants to modify this
+     *         group. If <null>, the currently logged in user is assumed.
      *
      * @param boolean $throwException
      *         If <true>, the exception
      *         HACLGroupException(HACLGroupException::USER_CANT_MODIFY_GROUP)
-     *         is thrown, if the wiki_user can't modify the group.
+     *         is thrown, if the user can't modify the group.
      *
      * @return boolean
      *         One of these values is returned if no exception is thrown:
-     *         <true>, if the wiki_user can modify this group and
+     *         <true>, if the user can modify this group and
      *         <false>, if not
      *
      * @throws
@@ -315,57 +315,57 @@ class HACLGroup
      *         If requested: HACLGroupException(HACLGroupException::USER_CANT_MODIFY_GROUP)
      *
      */
-    public function wiki_userCanModify($wiki_user, $throwException = false)
+    public function userCanModify($user, $throwException = false)
     {
-        // Get the ID of the wiki_user who wants to add/modify the group
-        list($wiki_userID, $wiki_userName) = haclfGetwiki_userID($wiki_user);
-        // Check if the wiki_user can modify the group
-        if (in_array($wiki_userID, $this->mManagewiki_users)) {
+        // Get the ID of the user who wants to add/modify the group
+        list($userID, $userName) = haclfGetUserID($user);
+        // Check if the user can modify the group
+        if (in_array($userID, $this->mManageUsers)) {
             return true;
         }
-        if ($wiki_userID > 0 && in_array(-1, $this->mManagewiki_users)) {
-            // registered wiki_users can modify the SD
+        if ($userID > 0 && in_array(-1, $this->mManageUsers)) {
+            // registered users can modify the SD
             return true;
         }
 
-        // Check if the wiki_user belongs to a group that can modify the group
+        // Check if the user belongs to a group that can modify the group
         foreach ($this->mManageGroups as $groupID) {
-            if (IACLStorage::get('Groups')->hasGroupMember($groupID, $wiki_userID, self::USER, true)) {
+            if (IACLStorage::get('Groups')->hasGroupMember($groupID, $userID, self::USER, true)) {
                 return true;
             }
         }
 
         // Sysops and bureaucrats can modify the SD
-        $wiki_user = wiki_user::newFromId($wiki_userID);
-        $groups = $wiki_user->getGroups();
+        $user = User::newFromId($userID);
+        $groups = $user->getGroups();
         if (in_array('sysop', $groups) || in_array('bureaucrat', $groups)) {
             return true;
         }
 
         if ($throwException) {
-            if (empty($wiki_userName)) {
-                // only wiki_user id is given => retrieve the name of the wiki_user
-                $wiki_user = wiki_user::newFromId($wiki_userID);
-                $wiki_userName = ($wiki_user) ? $wiki_user->getId() : "(wiki_user-ID: $wiki_userID)";
+            if (empty($userName)) {
+                // only user id is given => retrieve the name of the user
+                $user = User::newFromId($userID);
+                $userName = ($user) ? $user->getId() : "(User-ID: $userID)";
             }
             throw new HACLGroupException(HACLGroupException::USER_CANT_MODIFY_GROUP,
-                $this->mGroupName, $wiki_userName);
+                $this->mGroupName, $userName);
         }
         return false;
     }
 
     /**
      * Saves this group in the database. A group needs a name and at least one group
-     * or wiki_user who can modify the definition of this group. If no group or wiki_user
-     * is given, the specified or the current wiki_user gets this right. If no wiki_user is
+     * or user who can modify the definition of this group. If no group or user
+     * is given, the specified or the current user gets this right. If no user is
      * logged in, the operation fails.
      *
-     * If the group already exists and the given wiki_user has the right to modify the
+     * If the group already exists and the given user has the right to modify the
      * group, the groups definition is changed.
      *
-     * @param wiki_user/string $wiki_user
-     *         wiki_user-object or name of the wiki_user who wants to save this group. If this
-     *         value is empty or <null>, the current wiki_user is assumed.
+     * @param User/string $user
+     *         User-object or name of the user who wants to save this group. If this
+     *         value is empty or <null>, the current user is assumed.
      *
      * @throws
      *         HACLGroupException(HACLGroupException::NO_GROUP_ID)
@@ -374,7 +374,7 @@ class HACLGroup
      *         Exception (on failure in database level)
      *
      */
-    public function save($wiki_user = null)
+    public function save($user = null)
     {
         // Get the page ID of the article that defines the group
         if ($this->mGroupID == 0)
@@ -383,58 +383,58 @@ class HACLGroup
     }
 
     /**
-     * Sets the wiki_users who can manage this group. The group has to be saved
+     * Sets the users who can manage this group. The group has to be saved
      * afterwards to persists the changes in the database.
      *
-     * @param mixed string|array(mixed int|string|wiki_user) $managewiki_users
+     * @param mixed string|array(mixed int|string|User) $manageUsers
      *          If a single string is given, it contains a comma-separated list of
-     *          wiki_user names.
-     *          If an array is given, it can contain wiki_user-objects, names of wiki_users or
-     *          IDs of a wiki_users. If <null> or empty, the currently logged in wiki_user is
+     *          user names.
+     *          If an array is given, it can contain user-objects, names of users or
+     *          IDs of a users. If <null> or empty, the currently logged in user is
      *          assumed.
-     *          There are two special wiki_user names:
-     *            '*' - all wiki_users (ID: 0)
-     *            '#' - all registered wiki_users (ID: -1)
+     *          There are two special user names:
+     *            '*' - all users (ID: 0)
+     *            '#' - all registered users (ID: -1)
      * @throws
      *         HACLException(HACLException::UNKNOWN_USER)
-     *             ...if a wiki_user does not exist.
+     *             ...if a user does not exist.
      */
-    public function setManagewiki_users($managewiki_users)
+    public function setManageUsers($manageUsers)
     {
-        if (!empty($managewiki_users) && is_string($managewiki_users))
+        if (!empty($manageUsers) && is_string($manageUsers))
         {
-            // Managing wiki_users are given as comma separated string
+            // Managing users are given as comma separated string
             // Split into an array
-            $managewiki_users = explode(',', $managewiki_users);
+            $manageUsers = explode(',', $manageUsers);
         }
-        if (is_array($managewiki_users))
+        if (is_array($manageUsers))
         {
-            $this->mManagewiki_users = $managewiki_users;
-            for ($i = 0; $i < count($managewiki_users); ++$i)
+            $this->mManageUsers = $manageUsers;
+            for ($i = 0; $i < count($manageUsers); ++$i)
             {
-                $mu = $managewiki_users[$i];
+                $mu = $manageUsers[$i];
                 if (is_string($mu))
                     $mu = trim($mu);
-                $uid = haclfGetwiki_userID($mu);
-                $this->mManagewiki_users[$i] = $uid[0];
+                $uid = haclfGetUserID($mu);
+                $this->mManageUsers[$i] = $uid[0];
             }
         }
         else
-            $this->mManagewiki_users = array();
+            $this->mManageUsers = array();
     }
 
     /**
      * Sets the groups who can manage this group. The group has to be saved
      * afterwards to persists the changes in the database.
      *
-     * @param mixed string|array(mixed int|string|wiki_user) $manageGroups
+     * @param mixed string|array(mixed int|string|User) $manageGroups
      *         If a single string is given, it contains a comma-separated list of
      *         group names.
      *         If an array is given, it can contain IDs (int), names (string) or
      *      objects (HACLGroup) for the group
      * @throws
      *         HACLException(HACLException::UNKNOWN_USER)
-     *             ...if a wiki_user does not exist.
+     *             ...if a user does not exist.
      */
     public function setManageGroups($manageGroups)
     {
@@ -463,26 +463,26 @@ class HACLGroup
     }
 
     /**
-     * Adds the wiki_user $wiki_user to this group. The new wiki_user is immediately added
+     * Adds the user $user to this group. The new user is immediately added
      * to the group's definition in the database.
      *
-     * @param wiki_user/string/int $wiki_user
-     *         This can be a wiki_user-object, name of a wiki_user or ID of a wiki_user. This wiki_user
+     * @param User/string/int $user
+     *         This can be a User-object, name of a user or ID of a user. This user
      *         is added to the group.
-     * @param wiki_user/string/int $mgwiki_user
-     *         wiki_user-object, name of a wiki_user or ID of a wiki_user who wants to modify this
-     *         group. If <null>, the currently logged in wiki_user is assumed.
+     * @param User/string/int $mgUser
+     *         User-object, name of a user or ID of a user who wants to modify this
+     *         group. If <null>, the currently logged in user is assumed.
      *
      * @throws
      *         HACLException(HACLException::UNKNOWN_USER)
      *         HACLGroupException(HACLGroupException::USER_CANT_MODIFY_GROUP)
      *
      */
-    public function addwiki_user($wiki_user)
+    public function addUser($user)
     {
-        // Check if $mgwiki_user can modify this group.
-        list($wiki_userID, $wiki_userName) = haclfGetwiki_userID($wiki_user);
-        IACLStorage::get('Groups')->addwiki_userToGroup($this->mGroupID, $wiki_userID);
+        // Check if $mgUser can modify this group.
+        list($userID, $userName) = haclfGetUserID($user);
+        IACLStorage::get('Groups')->addUserToGroup($this->mGroupID, $userID);
     }
 
     /**
@@ -491,9 +491,9 @@ class HACLGroup
      *
      * @param mixed(HACLGroup/string/id) $group
      *         Group object, name or ID of the group that is added to $this group.
-     * @param wiki_user/string/int $mgwiki_user
-     *         wiki_user-object, name of a wiki_user or ID of a wiki_user who wants to modify this
-     *         group. If <null>, the currently logged in wiki_user is assumed.
+     * @param User/string/int $mgUser
+     *         User-object, name of a user or ID of a user who wants to modify this
+     *         group. If <null>, the currently logged in user is assumed.
      *
      * @throws
      *         HACLException(HACLException::UNKNOWN_USER)
@@ -503,7 +503,7 @@ class HACLGroup
      */
     public function addGroup($group)
     {
-        // Check if $mgwiki_user can modify this group.
+        // Check if $mgUser can modify this group.
         $groupID = self::idForGroup($group);
         if ($groupID == 0)
             throw new HACLGroupException(HACLGroupException::INVALID_GROUP_ID, $groupID);
@@ -511,7 +511,7 @@ class HACLGroup
     }
 
     /**
-     * Removes all members (groups and wiki_users) from this group. They are
+     * Removes all members (groups and users) from this group. They are
      * immediately removed from the group's definition in the database.
      */
     public function removeAllMembers()
@@ -520,19 +520,19 @@ class HACLGroup
     }
 
     /**
-     * Removes the wiki_user $wiki_user from this group. The wiki_user is immediately removed
+     * Removes the user $user from this group. The user is immediately removed
      * from the group's definition in the database.
      *
-     * @param wiki_user/string/int $wiki_user
-     *         This can be a wiki_user-object, name of a wiki_user or ID of a wiki_user. This wiki_user
+     * @param User/string/int $user
+     *         This can be a User-object, name of a user or ID of a user. This user
      *         is removed from the group.
      * @throws
      *         HACLException(HACLException::UNKNOWN_USER)
      */
-    public function removewiki_user($wiki_user)
+    public function removeUser($user)
     {
-        list($wiki_userID, $wiki_userName) = haclfGetwiki_userID($wiki_user);
-        IACLStorage::get('Groups')->removewiki_userFromGroup($this->mGroupID, $wiki_userID);
+        list($userID, $userName) = haclfGetUserID($user);
+        IACLStorage::get('Groups')->removeUserFromGroup($this->mGroupID, $userID);
     }
 
     /**
@@ -555,32 +555,32 @@ class HACLGroup
     }
 
     /**
-     * Returns all wiki_users who are member of this group.
+     * Returns all users who are member of this group.
      *
      * @param int $mode
-     *         HACLGroup::NAME:   The names of all wiki_users are returned.
-     *         HACLGroup::ID:     The IDs of all wiki_users are returned.
-     *         HACLGroup::OBJECT: wiki_user-objects for all wiki_users are returned.
+     *         HACLGroup::NAME:   The names of all users are returned.
+     *         HACLGroup::ID:     The IDs of all users are returned.
+     *         HACLGroup::OBJECT: User-objects for all users are returned.
      *
-     * @return array(string/int/wiki_user)
-     *         List of all direct wiki_users in this group.
+     * @return array(string/int/User)
+     *         List of all direct users in this group.
      *
      */
-    public function getwiki_users($mode)
+    public function getUsers($mode)
     {
-        // retrieve the IDs of all wiki_users in this group
-        $wiki_users = IACLStorage::get('Groups')->getMembersOfGroup($this->mGroupID, self::USER);
+        // retrieve the IDs of all users in this group
+        $users = IACLStorage::get('Groups')->getMembersOfGroup($this->mGroupID, self::USER);
 
         if ($mode === self::ID)
-            return $wiki_users;
-        for ($i = 0; $i < count($wiki_users); ++$i)
+            return $users;
+        for ($i = 0; $i < count($users); ++$i)
         {
             if ($mode === self::NAME)
-                $wiki_users[$i] = wiki_user::whoIs($wiki_users[$i]);
+                $users[$i] = User::whoIs($users[$i]);
             elseif ($mode === self::OBJECT)
-                $wiki_users[$i] = wiki_user::newFromId($wiki_users[$i]);
+                $users[$i] = User::newFromId($users[$i]);
         }
-        return $wiki_users;
+        return $users;
     }
 
     /**
@@ -641,10 +641,10 @@ class HACLGroup
     }
 
     /**
-     * Checks if this group has the given wiki_user as member.
+     * Checks if this group has the given user as member.
      *
-     * @param wiki_user/string/int $wiki_user
-     *         ID, name or object for the wiki_user that is checked for membership.
+     * @param User/string/int $user
+     *         ID, name or object for the user that is checked for membership.
      *
      * @param bool recursive
      *         <true>, checks recursively among all children of this group if
@@ -656,13 +656,13 @@ class HACLGroup
      *         <false>, if not
      * @throws
      *         HACLException(HACLException::UNKNOWN_USER)
-     *             ...if the wiki_user does not exist.
+     *             ...if the user does not exist.
      *
      */
-    public function haswiki_userMember($wiki_user, $recursive)
+    public function hasUserMember($user, $recursive)
     {
-        $wiki_userID = haclfGetwiki_userID($wiki_user);
-        return IACLStorage::get('Groups')->hasGroupMember($this->mGroupID, $wiki_userID[0], self::USER, $recursive);
+        $userID = haclfGetUserID($user);
+        return IACLStorage::get('Groups')->hasGroupMember($this->mGroupID, $userID[0], self::USER, $recursive);
     }
 
     /**
@@ -676,13 +676,13 @@ class HACLGroup
 
     /**
      * returns group description
-     * containing wiki_users and groups
+     * containing users and groups
      * @return <string>
      */
     public function getGroupDescription()
     {
         $result = "";
-        foreach ($this->getwiki_users(HACLGroup::NAME) as $i)
+        foreach ($this->getUsers(HACLGroup::NAME) as $i)
         {
             if (!$result)
                 $result = "U:$i";

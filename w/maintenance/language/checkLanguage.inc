@@ -328,7 +328,7 @@ ENDS;
 			if ( !is_callable( $callback ) ) {
 				throw new MWException( "Unkown check $check." );
 			}
-			$results[$check] = call_wiki_user_func( $callback, $code );
+			$results[$check] = call_user_func( $callback, $code );
 		}
 
 		return $results;
@@ -371,7 +371,7 @@ ENDS;
 						$totalCount = $totalCount[$check];
 						$callback = array( $this->L, $totalCount[0] );
 						$callCode = $totalCount[1] ? $totalCount[1] : $code;
-						$total = count( call_wiki_user_func( $callback, $callCode ) );
+						$total = count( call_user_func( $callback, $callCode ) );
 					} else {
 						$total = $translated;
 					}

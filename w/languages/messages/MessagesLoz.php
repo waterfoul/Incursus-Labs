@@ -14,7 +14,7 @@
  */
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => "Tumana ling'ko:",
 'tog-justify' => 'Singanyekile silamina',
 'tog-usenewrc' => 'Inenset petuho nca (JavaScript)',
@@ -31,7 +31,7 @@ $messages = array(
 'tog-previewonfirst' => 'Kamukile PendiBe kwa afi 1',
 'tog-nocache' => 'Amutembwe petulo kahili',
 'tog-enotifwatchlistpages' => 'Meli di zwa di petulo a kentezi sa petuhisize',
-'tog-enotifwiki_usertalkpages' => 'Meli di zwa di zwa bulelezi sa petuhisize',
+'tog-enotifusertalkpages' => 'Meli di zwa di zwa bulelezi sa petuhisize',
 'tog-enotifrevealaddr' => 'Kamukile zwa adress di meli di xete peson kwa melina notifikasyona',
 'tog-shownumberswatching' => 'Kamukile tali di kentezi sebelu',
 'tog-fancysig' => "Ro sebu e data (dicon ling'ki auto)",
@@ -164,7 +164,7 @@ $messages = array(
 'talk' => 'Bulelezi',
 'views' => 'Kamukile',
 'toolbox' => 'Sisebelisoni',
-'wiki_userpage' => 'Kamukile sebelu petulo',
+'userpage' => 'Kamukile sebelu petulo',
 'projectpage' => 'Kamukile prohyeti petulo',
 'imagepage' => 'Kamukile imegi petulo',
 'mediawikipage' => 'Kamukile mulumiwa',
@@ -182,7 +182,7 @@ $messages = array(
 'jumptonavigation' => 'muya',
 'jumptosearch' => 'fatukile',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => "Ngesi ye ng'i atulile {{SITENAME}}",
 'aboutpage' => "Project:Ngesi ye ng'i atulile",
 'copyright' => 'Bye sa ilonungi di $1.',
@@ -233,7 +233,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Petulo',
-'nstab-wiki_user' => 'Sebelu petulo',
+'nstab-user' => 'Sebelu petulo',
 'nstab-media' => 'Media',
 'nstab-special' => 'Zwenti',
 'nstab-project' => 'Prohyeti petulo',
@@ -279,9 +279,9 @@ Query: $2",
 'login' => 'Menuhile',
 'nav-login-createaccount' => 'Menuhile / ipupezi sebelu',
 'loginprompt' => 'A sa nyembulisize di kukina di menuhile kwa {{SITENAME}}.',
-'wiki_userlogin' => 'Menuhile / ipupezi sebelu',
+'userlogin' => 'Menuhile / ipupezi sebelu',
 'logout' => 'Ile',
-'wiki_userlogout' => 'Ile',
+'userlogout' => 'Ile',
 'notloggedin' => 'Ile sa akwezi',
 'nologin' => "Ni menuhile? '''$1'''.",
 'nologinlink' => 'Ipupezi sebelu',
@@ -290,15 +290,15 @@ Query: $2",
 'gotaccountlink' => 'Menuhile',
 'createaccountmail' => 'dimeli',
 'badretype' => 'Sebu dafi ni sa identikali.',
-'wiki_userexists' => 'Sebu di sebelu sa sebelize. Hloli veti sebu petuho.',
+'userexists' => 'Sebu di sebelu sa sebelize. Hloli veti sebu petuho.',
 'loginerror' => 'Bufosi di menuhile',
 'nocookieslogin' => '{{SITENAME}} sebelize kukina di menuhile sebelu. A ni sa kukina. Sa kukina.',
 'noname' => 'A sa sebelu consa sebelu bufosi.',
 'loginsuccesstitle' => 'Menuhile ni condi bufosi',
 'loginsuccess' => "'''A sa menuhile di {{SITENAME}} con sebelu \"\$1\".'''",
-'nosuchwiki_user' => 'No sebelu "$1". Tembile/ipupezi.',
-'nosuchwiki_usershort' => 'No sebelu "$1". Tembile.',
-'nowiki_userspecified' => 'A tumbelezi sebelunom.',
+'nosuchuser' => 'No sebelu "$1". Tembile/ipupezi.',
+'nosuchusershort' => 'No sebelu "$1". Tembile.',
+'nouserspecified' => 'A tumbelezi sebelunom.',
 'wrongpassword' => 'Bufosi sebu dafi. Tembile.',
 'wrongpasswordempty' => 'No sebu dafi. Tembile.',
 'passwordtooshort' => 'Zwa sebu dafi sa bufosi/kuswani. A sa $1 di selt e petuho di zwa sebelunom.',
@@ -396,7 +396,7 @@ A sumekezi zwa selt sa dya, a kopisize di publiki domeni, a ike risorsi.
 'template-protected' => '(sa bukelezi)',
 'template-semiprotected' => '(bukelezi di pagafi)',
 'nocreatetext' => '{{SITENAME}} sa simplekile petulo.
-A afi e kenki/[[Special:wiki_userLogin|menuhile]].',
+A afi e kenki/[[Special:UserLogin|menuhile]].',
 'recreate-moveddeleted-warn' => "'''!: A sa hloli petulo dy sa afi kulobala.'''
 
 A sa luku a kenki dyangitubilinisize petulo.
@@ -431,7 +431,7 @@ Informasi: (bye) = petuho a nca selt,
 
 # Revision deletion
 'rev-deleted-comment' => '(lyangutukezi sa afi kulobala)',
-'rev-deleted-wiki_user' => '(sebu di sebelu sa afi kulobala)',
+'rev-deleted-user' => '(sebu di sebelu sa afi kulobala)',
 'rev-deleted-event' => '(petulo sa afi kulobala)',
 'rev-delundel' => 'kamukile/cwankekile',
 
@@ -487,7 +487,7 @@ Informasi: (bye) = petuho a nca selt,
 'default' => 'auto',
 'prefs-files' => 'Imegini',
 'youremail' => 'Imeli:',
-'wiki_username' => 'Sebelu:',
+'username' => 'Sebelu:',
 'uid' => 'Sebelu ID:',
 'yourrealname' => 'Sebu monida:',
 'yourlanguage' => 'Siselect:',
@@ -503,7 +503,7 @@ Informasi: (bye) = petuho a nca selt,
 
 'grouppage-sysop' => '{{ns:project}}:Sesop',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Desu di petuhoni kwa sebelu',
 'rightsnone' => '(ni)',
 
@@ -542,7 +542,7 @@ Informasi: (bye) = petuho a nca selt,
 'upload' => 'Imegi uplodezi',
 'uploadbtn' => 'Imegi uplodezi',
 'uploadnologin' => 'Ni menuhile',
-'uploadnologintext' => 'A sa [[Special:wiki_userLogin|menuhile]]
+'uploadnologintext' => 'A sa [[Special:UserLogin|menuhile]]
 di uplodezi media.',
 'uploaderror' => 'Bufosi duplodezi',
 'uploadlogpage' => 'Desu di uplodezi',
@@ -564,7 +564,7 @@ di uplodezi media.',
 # Special:ListFiles
 'imgfile' => 'imegi',
 'listfiles' => 'Mukoloko di imegina',
-'listfiles_wiki_user' => 'Sebelu',
+'listfiles_user' => 'Sebelu',
 
 # File description page
 'file-anchor-link' => 'Imegi',
@@ -572,7 +572,7 @@ di uplodezi media.',
 'filehist-help' => 'Tampa datum/taimi di kamukile imegi a sa kwa bye datum.',
 'filehist-current' => 'bye',
 'filehist-datetime' => 'Datumi/Taimi',
-'filehist-wiki_user' => 'Sebelu',
+'filehist-user' => 'Sebelu',
 'filehist-dimensions' => 'Dimensyoni',
 'filehist-filesize' => 'Imegispani',
 'filehist-comment' => 'Lyangutukezi',
@@ -611,7 +611,7 @@ di uplodezi media.',
 
 # Statistics
 'statistics' => 'Mukoloko di kamukile',
-'statistics-header-wiki_users' => 'Mukoloko di kamukile di sebelu',
+'statistics-header-users' => 'Mukoloko di kamukile di sebelu',
 
 'disambiguations' => 'Disamebigasina',
 
@@ -656,9 +656,9 @@ di uplodezi media.',
 'deadendpages' => "Mukoloko di petulo-ni ling'ki",
 'deadendpagestext' => "Bye petulo ni sa ling'ki medi petulo di {{SITENAME}}.",
 'protectedpages' => 'Petulo sa bukelelize',
-'listwiki_users' => 'Mukoloko di sebelu',
+'listusers' => 'Mukoloko di sebelu',
 'newpages' => 'Nca petulo',
-'newpages-wiki_username' => 'Sebelu:',
+'newpages-username' => 'Sebelu:',
 'ancientpages' => 'Petulo bye sa kona afina',
 'move' => 'Nyanganyisize',
 'movethispage' => 'Nyanganyisize bye petulo',
@@ -668,7 +668,7 @@ di uplodezi media.',
 'booksources-go' => 'Afi',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Sebelu:',
+'specialloguserlabel' => 'Sebelu:',
 'speciallogtitlelabel' => 'Sebu:',
 'log' => 'Desuni',
 'all-logs-page' => 'Xete desu',
@@ -692,13 +692,13 @@ di uplodezi media.',
 'deletedcontributions' => 'Afina di sebelu bye sa afi kulobala',
 'deletedcontributions-title' => 'Afina di sebelu bye sa afi kulobala',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'Kamukile sebelu di:',
-'listwiki_users-submit' => 'Kamukile',
-'listwiki_users-noresult' => 'Ni-di sebelu.',
+# Special:ListUsers
+'listusersfrom' => 'Kamukile sebelu di:',
+'listusers-submit' => 'Kamukile',
+'listusers-noresult' => 'Ni-di sebelu.',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Imeli bye sebelu',
+# E-mail user
+'emailuser' => 'Imeli bye sebelu',
 'emailpage' => 'Imeli sebelu',
 'defemailsubject' => '{{SITENAME}} meli',
 'noemailtitle' => 'Ni meli adresi',
@@ -716,7 +716,7 @@ dicon sa sosize ni sa meli di kupo sebelu.',
 'watchlist' => 'Zwa mukoloko di kentezi',
 'mywatchlist' => 'Zwa mukoloko di kentezi',
 'watchnologin' => 'A ni sa menuhile',
-'watchnologintext' => "A sa [[Special:wiki_userLogin|menuhile]] di hloli ye ng'i zwa mukoloko di kentezi.",
+'watchnologintext' => "A sa [[Special:UserLogin|menuhile]] di hloli ye ng'i zwa mukoloko di kentezi.",
 'addedwatchtext' => "Petulo \"[[:\$1]]\" sa vugisize di zwa [[Special:Watchlist|mukoloko di kentezi]].
 Petuhoni di bye petulo e sa bulelezi sa mukolokosize ta, e '''ombelu''' kwa [[Special:RecentChanges|petuho nca]] di kwazidisize akusize.
 
@@ -824,7 +824,7 @@ Petohoni di petulo '''$1''' sa:",
 'sp-contributions-deleted' => 'Afina di sebelu bye sa afi kulobala',
 'sp-contributions-talk' => 'Bulelezi',
 'sp-contributions-search' => 'Fatukile di afina',
-'sp-contributions-wiki_username' => 'IP/sebelu:',
+'sp-contributions-username' => 'IP/sebelu:',
 'sp-contributions-submit' => 'Fatukile',
 
 # What links here
@@ -842,7 +842,7 @@ Petohoni di petulo '''$1''' sa:",
 
 # Block/unblock
 'blockip' => 'Bolok sebelu',
-'ipadressorwiki_username' => 'IP/sebelu:',
+'ipadressorusername' => 'IP/sebelu:',
 'ipboptions' => '2 ora:2 hours,1 dia:1 day,3 dia:3 days,1 wiki:1 week,2 wiki:2 weeks,1 muna:1 month,3 muna:3 months,6 muna:6 months,1 anu:1 year,di simuluzi:infinite',
 'badipaddress' => 'IP ni sa',
 'ipblocklist' => 'Mukoloko di IP e sebelu bye sa bolok',
@@ -912,8 +912,8 @@ Please visit [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and 
 'importlogpage' => 'Desu di import',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Zwa sebelu petulo',
-'tooltip-pt-anonwiki_userpage' => "Petulo di sebelu di IP, sa hloli ye ng'i.",
+'tooltip-pt-userpage' => 'Zwa sebelu petulo',
+'tooltip-pt-anonuserpage' => "Petulo di sebelu di IP, sa hloli ye ng'i.",
 'tooltip-pt-mytalk' => 'Zwa bulelezi petulo',
 'tooltip-pt-anontalk' => 'Bulelezi di hlolina di bye IP',
 'tooltip-pt-preferences' => 'Zwa petohoni di sebelu',
@@ -945,13 +945,13 @@ Please visit [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and 
 'tooltip-feed-rss' => 'RSS feed bye petulo',
 'tooltip-feed-atom' => 'Atom feed bye petulo',
 'tooltip-t-contributions' => 'Kamukile mukoloko di afina di bye sebelu',
-'tooltip-t-emailwiki_user' => 'Afi meli di bye sebelu',
+'tooltip-t-emailuser' => 'Afi meli di bye sebelu',
 'tooltip-t-upload' => 'Imegi/media uplodezi',
 'tooltip-t-specialpages' => 'Mukoloko di xete petulo zwenti',
 'tooltip-t-print' => 'Petulo printezi di bye petulo',
 'tooltip-t-permalink' => 'Permalink di bye selt di petulo',
 'tooltip-ca-nstab-main' => 'Kamukile xadine petulo',
-'tooltip-ca-nstab-wiki_user' => 'Kamukile sebelu petulo',
+'tooltip-ca-nstab-user' => 'Kamukile sebelu petulo',
 'tooltip-ca-nstab-media' => 'Kamukile imegi petulo',
 'tooltip-ca-nstab-special' => "Bye sa petulo zwenti, a ni sa hloli ye ng'i bye petulo",
 'tooltip-ca-nstab-project' => 'Kamukile prohyeti petulo',
@@ -971,8 +971,8 @@ Please visit [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and 
 
 # Attribution
 'anonymous' => 'Sebelu con IP di {{SITENAME}}',
-'sitewiki_user' => '{{SITENAME}} sebelu $1',
-'sitewiki_users' => '{{SITENAME}} sebelu $1',
+'siteuser' => '{{SITENAME}} sebelu $1',
+'siteusers' => '{{SITENAME}} sebelu $1',
 
 # Image deletion
 'filedeleteerror-short' => 'Bufosi di afi kulobala di media/imegi: $1',

@@ -108,7 +108,7 @@ class PathRouter {
 		if ( !isset( $params['title'] ) && strpos( $path, '$1' ) !== false ) {
 			$params['title'] = '$1';
 		}
-		// If the wiki_user explicitly marked 'title' as false then omit it from the matches
+		// If the user explicitly marked 'title' as false then omit it from the matches
 		if ( isset( $params['title'] ) && $params['title'] === false ) {
 			unset( $params['title'] );
 		}

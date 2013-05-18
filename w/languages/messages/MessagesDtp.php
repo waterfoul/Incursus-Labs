@@ -14,7 +14,7 @@
 $fallback = 'ms';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Mangagaris pioputan:',
 'tog-justify' => 'Kasagaan kiparagrap',
 'tog-hideminor' => 'Lisoko idit tokoro ih wagu kaalanai.',
@@ -38,7 +38,7 @@ $messages = array(
 'tog-previewonfirst' => 'Pokitono duluon-kokikitanai di idit koinsan',
 'tog-nocache' => 'Antabai kasing popogigihum bolikon',
 'tog-enotifwatchlistpages' => 'Ponuratai-i oku soira do haro bolikon toi pail lisintanganku haro nokowolion',
-'tog-enotifwiki_usertalkpages' => 'Ponuratai-i oku soira kiharo kowolion id pibabarasan momomogunoku',
+'tog-enotifusertalkpages' => 'Ponuratai-i oku soira kiharo kowolion id pibabarasan momomogunoku',
 'tog-enotifminoredits' => 'Ponuratai-i oku nogi do nung haro no idit tongokoro do bolikon om nogi tangapail',
 'tog-enotifrevealaddr' => 'Pokitono adiris surat-i-ku id kapahabaran surat-i',
 'tog-shownumberswatching' => 'Pokitono ginumu do momomoguno minongintong',
@@ -219,7 +219,7 @@ $messages = array(
 'talk' => 'Pogigibarasan',
 'views' => 'Pongintangan',
 'toolbox' => 'Kabankamot',
-'wiki_userpage' => 'Intaai bolikon momomoguno',
+'userpage' => 'Intaai bolikon momomoguno',
 'projectpage' => 'Intaai bolikon purujik',
 'imagepage' => 'Intaai bolikon pail',
 'mediawikipage' => 'Intaai bolikon pason',
@@ -245,7 +245,7 @@ $1',
 'pool-queuefull' => 'Noponu nuludan pool',
 'pool-errorunknown' => 'Ukam nosilap',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Kokomoi {{SITENAME}}',
 'aboutpage' => 'Project:Kokomoi',
 'copyright' => 'Suang di haro do kokomoi $1.',
@@ -278,8 +278,8 @@ Intaai [[Special:Version|bolikon dinolinan]].',
 'youhavenewmessages' => 'Kiharo $1 montok dia ($2).',
 'newmessageslink' => 'pason kawawagu',
 'newmessagesdifflink' => 'naalanan kawawagu',
-'youhavenewmessagesfromwiki_users' => 'Nakaramit ko do $1 mantad {{PLURAL:$3|momomoguno suai|$3 tongomomomoguno}} ($2).',
-'youhavenewmessagesmanywiki_users' => 'Nakaramit koh do $1 mantad do tongomomomoguno ($2).',
+'youhavenewmessagesfromusers' => 'Nakaramit ko do $1 mantad {{PLURAL:$3|momomoguno suai|$3 tongomomomoguno}} ($2).',
+'youhavenewmessagesmanyusers' => 'Nakaramit koh do $1 mantad do tongomomomoguno ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|pason kawawagu|tangapason kawawagu}}',
 'newmessagesdifflinkplural' => 'dohuri do {{PLURAL:$1|naalanan|nopingalanan}}',
 'youhavenewmessagesmulti' => 'Kipason kawawagu montok dia id $1',
@@ -310,7 +310,7 @@ Intaai [[Special:Version|bolikon dinolinan]].',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Bolikon',
-'nstab-wiki_user' => 'Bolikon momomoguno',
+'nstab-user' => 'Bolikon momomoguno',
 'nstab-media' => 'Bolikon modia',
 'nstab-special' => 'Bolikon suaikowokon',
 'nstab-project' => 'Bolikon purujik',
@@ -355,7 +355,7 @@ Mandur di minongunsi minomisunud do: $1',
 Koubasan do ajadi miagal diti tu haro nopingalanan toi ko toput mongoi id bolikon laid nopugas nodi.
 
 Nung opurimanannu do okon ko iti o sabab, korubo ko do bug id posusuangon diti.
-Mangai poruputo iti hilod [[Special:Listwiki_users/sysop|mantatamong]], miampai nota kokomoi do \'URL\'.',
+Mangai poruputo iti hilod [[Special:ListUsers/sysop|mantatamong]], miampai nota kokomoi do \'URL\'.',
 'missingarticle-rev' => '(sinimakan#: $1)',
 'missingarticle-diff' => '(Dip: $1, $2)',
 'readonly_lag' => 'Databing noporianan nokokunsi daamot do databing mamalayan kumoduo mongogusa dilo kumoiso',
@@ -407,7 +407,7 @@ $2',
 'customcssprotected' => 'Ingaa kasagaannu do mongidit diti bolikon CSS, tu kisuang ponguludan minsosondiri momoguno.',
 'customjsprotected' => 'Ingaa kasagaannu do mongidit diti bolikon JavaScript, tu kisuang ponguludan minsosondiri momoguno.',
 'ns-specialprotected' => 'Bolikon pinotontu awu milo iditon.',
-'titleprotected' => 'Notingoligan tuluhon diti mantad wonsoyon do [[wiki_user:$1|$1]].
+'titleprotected' => 'Notingoligan tuluhon diti mantad wonsoyon do [[User:$1|$1]].
 Sasabab no do "\'\'$2\'\'".',
 'filereadonlyerror' => 'Awu milo do simbanan pail "$1" tu pinogompi iti pail "$2" id mud do basaon noh tomod.
 
@@ -425,7 +425,7 @@ Mongungulud di minongunsi pinopointalang do kointalangan diti: "$3".',
 # Login and logout pages
 'logouttext' => "'''Baino nakalabus log ko noh.'''
 
-Milo ko do monilombus mongoguno {{SITENAME}} poinlisok, toi [[Special:wiki_userLogin|sumuang log koh kawagu]] miagal ngaran di tiinu toi mongoguno ngaran suai.
+Milo ko do monilombus mongoguno {{SITENAME}} poinlisok, toi [[Special:UserLogin|sumuang log koh kawagu]] miagal ngaran di tiinu toi mongoguno ngaran suai.
 Birio do kipipiro bolikon popokito do maso poinsuang log koh poh gisom no do opugas nu dangkob do pogigihumnu.",
 'welcomecreation' => '== Kopiwosian, $1! ==
 Nowonsoi no takaunnu.
@@ -441,21 +441,21 @@ Soroho no do mongolon [[Special:Preferences|{{SITENAME}} komoisoonnu]].',
 'login' => 'Sumuang log',
 'nav-login-createaccount' => 'Sumuang log / pomonsoi  do takaun',
 'loginprompt' => 'Suhuonko do poposikit pongongonsok do sumuang log id {{SITENAME}}.',
-'wiki_userlogin' => 'Sumuang log / pomonsoi  do takaun',
-'wiki_userloginnocreate' => 'Sumuang log',
+'userlogin' => 'Sumuang log / pomonsoi  do takaun',
+'userloginnocreate' => 'Sumuang log',
 'logout' => 'Lumabus log',
-'wiki_userlogout' => 'Lumabus log',
+'userlogout' => 'Lumabus log',
 'notloggedin' => 'Amu nokolog sumuang',
 'nologin' => 'Ingaa akaun? $1',
 'nologinlink' => 'Pomonsoi do akaun',
 'createaccount' => 'Pomonsoi do takaun',
 'gotaccount' => 'Kitakaun? $1',
 'gotaccountlink' => 'Sumuang log',
-'wiki_userlogin-resetlink' => 'Nolihuan ahal loginnu?',
+'userlogin-resetlink' => 'Nolihuan ahal loginnu?',
 'createaccountmail' => 'Maya surat-i',
 'createaccountreason' => 'Sabab:',
 'badretype' => 'Kaatalib pinosuang awu kopisangai.',
-'wiki_userexists' => 'Ngaranmoguno pinosuang noguno no.
+'userexists' => 'Ngaranmoguno pinosuang noguno no.
 Maai alanai do suai ngaran.',
 'loginerror' => 'Nokosilap sumuang log',
 'createaccounterror' => 'Awu kowonsoi takaun: $1',
@@ -471,13 +471,13 @@ Posikito no pogogonsoknu, gumulisuang id bolikon diti om umbalan kawagu.',
 'noname' => 'Awu nu pinosuang ngaran momomoguno di pasagaon.',
 'loginsuccesstitle' => 'Nokosuang log.',
 'loginsuccess' => "'''Nokosuang log ko noh id {{SITENAME}} sobaagi do \"\$1\".'''",
-'nosuchwiki_user' => 'Ingaa momoguno pinungaranan "$1".
+'nosuchuser' => 'Ingaa momoguno pinungaranan "$1".
 Ngaran momoguno nopo nga kowoyo pimato.
-Intaai ijaannu, toi [[Special:wiki_userLogin/signup|pomonsoi do takaun kawawagu]].',
-'nosuchwiki_usershort' => 'Ingaa momoguno kingaran  "$1".
+Intaai ijaannu, toi [[Special:UserLogin/signup|pomonsoi do takaun kawawagu]].',
+'nosuchusershort' => 'Ingaa momoguno kingaran  "$1".
 Intaai ijaannu.',
-'nowiki_userspecified' => 'Maai posuango ngaran momoguno.',
-'login-wiki_userblocked' => 'Nantaban momoguno diti. Oduhan do sumuang log.',
+'nouserspecified' => 'Maai posuango ngaran momoguno.',
+'login-userblocked' => 'Nantaban momoguno diti. Oduhan do sumuang log.',
 'wrongpassword' => 'Nokosilap kaatalib pinosuang.
 Umbalan kawagu kio.',
 'wrongpasswordempty' => 'Ingaa kapaas pinosuang.
@@ -520,16 +520,16 @@ Maai posuango nuludan tosonong do kinoyonon toi pologoson do ingaa suang dilo po
 Baino alapon ko do sumuang log om mongolon diti kaatalibnu.
 
 Olingan nopo iti pason, nung nokosilap nowonsoi iti takaun.',
-'wiki_usernamehasherror' => 'Ngaranmoguno awu milo do kipimato hansar',
+'usernamehasherror' => 'Ngaranmoguno awu milo do kipimato hansar',
 'login-throttled' => 'Asaru ko no do minsingumbal sumuang log.
 Andado poh do toruhai pogulu do minsingumbal kawagu.',
 'login-abort-generic' => 'Awu ko nokosuang log - Binatal',
 'loginlanguagelabel' => 'Woyoboros: $1',
-'suspicious-wiki_userlogout' => 'Awu naramit lumabus lognu tu pinaatod mantad pogigihum norumbak toi caching olon.',
+'suspicious-userlogout' => 'Awu naramit lumabus lognu tu pinaatod mantad pogigihum norumbak toi caching olon.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'Awu nointutunan kinosilapan id don surat PHP () function',
-'wiki_user-mail-no-addy' => 'Mogumbal do papaatod surat-i tingaa o paatadan.',
+'user-mail-no-addy' => 'Mogumbal do papaatod surat-i tingaa o paatadan.',
 
 # Change password dialog
 'resetpass' => 'Alanai kaatalib',
@@ -555,7 +555,7 @@ Naalanannu noh kaatalib toi nokopokianu koh no do kaatalib daamot.',
 'passwordreset-text' => 'Gonopo poom diti do mangaramit tongosurat-i ponorou do nokomoi id akaun.',
 'passwordreset-legend' => 'Pudoliai kawagu kaatalib',
 'passwordreset-disabled' => 'Pomudolian kawagu do kaatalib kitaantob id wiki diti.',
-'passwordreset-wiki_username' => 'Ngarandait:',
+'passwordreset-username' => 'Ngarandait:',
 'passwordreset-emailtitle' => 'Kointalangan takaun id {{SITENAME}}',
 'passwordreset-emailelement' => 'Ngaranmoguno: $1
 Kaatalib daamot: $2',
@@ -653,7 +653,7 @@ Nokowolih toi nopugas kaanto iti maso di intaannu iti bolikon.',
 'loginreqlink' => 'sumuang log',
 'loginreqpagetext' => 'Mositi ko do ki$1 do mongintong bobolikon suai.',
 'accmailtitle' => 'Nakaatod kaatalib.',
-'accmailtext' => "Kaatalib somporimonsoi montok [[wiki_user talk:$1|$1]] nakaatod no hilo $2.
+'accmailtext' => "Kaatalib somporimonsoi montok [[User talk:$1|$1]] nakaatod no hilo $2.
 
 Kaatalib montok akaun wagu milo do alanan hilo id bolikon ''[[Special:ChangePassword|pangalanan kaatalib]]'' soira do kosuang log.",
 'newarticle' => '(Wagu)',
@@ -663,7 +663,7 @@ Nung nakaansau ko do hiti, tonsoko ot butang '''gumuli''' id pogigihumnu.",
 'anontalkpagetext' => "----''Iti nopo nga bolikon pogibabarasan montok di momomoguno poinlisok it awu poh nokopomonsoi do takaun, toi it awu momoguno dilo.
 Mantad dilo, asansagan yahai do poposurat numbur kinoyonon IP do mongintutun dau.
 Kinoyonon IP pogialasan do pipiro momomoguno.
-Nung momomoguno koh do ingaa ngaran om karamit koh do komin di awu kapadan, mangai [[Special:wiki_userLogin/signup|wonsoyo takaun]] toi [[Special:wiki_userLogin|sumuang log]] do magalai kounsuhan di momomoguno suai di tingaa ngaran.''",
+Nung momomoguno koh do ingaa ngaran om karamit koh do komin di awu kapadan, mangai [[Special:UserLogin/signup|wonsoyo takaun]] toi [[Special:UserLogin|sumuang log]] do magalai kounsuhan di momomoguno suai di tingaa ngaran.''",
 'noarticletext' => 'Maso po do ingaa tik id bolikon diti.
 Milo ko nogi do [[Special:Search/{{PAGENAME}}|mogihum do tuluhon bolikon diti]] id bolikon suai,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} mogihum kokomoi log-log],
@@ -671,9 +671,9 @@ toi [{{fullurl:{{FULLPAGENAME}}|action=edit}} mongidit bolikon diti]</span>.',
 'noarticletext-nopermission' => 'Maso po do ingaa tik id bolikon diti.
 Milo ko nogi do [[Special:Search/{{PAGENAME}}|mogihum do tuluhon bolikon diti]] id bolikon suai, toi
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} mogihum kokomoi log-log] </span>, nga ingaa kapasagaannu do momonsoi do bolikon diti.',
-'wiki_userpage-wiki_userdoesnotexist' => 'Akaun momomoguno "<nowiki>$1</nowiki>" awu nokorijisto.
+'userpage-userdoesnotexist' => 'Akaun momomoguno "<nowiki>$1</nowiki>" awu nokorijisto.
 Mangai intangai nung mumang ko pomonsoi/mongidit do bolikon diti.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Akaun momomoguno "$1" awu po nokorijisto.',
+'userpage-userdoesnotexist-view' => 'Akaun momomoguno "$1" awu po nokorijisto.',
 'blocked-notice-logextract' => 'Maso do nantaban momomoguno diti.
 Riporon id siriba kokomoi nantaban di tohuri no:',
 'clearyourcache' => "'''Soroho:''' Opongoh do pogompi, mangai  pawayao dangkob pogigihumnu do mongintong di nopingalanan.
@@ -681,18 +681,18 @@ Riporon id siriba kokomoi nantaban di tohuri no:',
 '''Google Chrome:''' Todoso ''Ctrl-Shift-R'' (''⌘-Shift-R'' id Mac)
 '''Internet Explorer:''' Todoso ''Ctrl'' maso do mongotik ''Refresh,'' toi tonsoko ''Ctrl-F5''
 '''Opera:''' Imuhawai id dangkob  ''Tools → Preferences''",
-'wiki_usercssyoucanpreview' => "'''Tutuduk:''' Momoguno do \"{{int:showpreview}}\" butang do mongumbal CSS kawawagunu pogulu do popogompi.",
-'wiki_userjsyoucanpreview' => "'''Tutuduk:''' Momoguno do \"{{int:showpreview}}\" butang do mongumbal JawaSikrip kawawagunu pogulu do popogompi.",
-'wiki_usercsspreview' => "'''Soroho no do mongintong kono tomod diti CSS momogunonu.'''
+'usercssyoucanpreview' => "'''Tutuduk:''' Momoguno do \"{{int:showpreview}}\" butang do mongumbal CSS kawawagunu pogulu do popogompi.",
+'userjsyoucanpreview' => "'''Tutuduk:''' Momoguno do \"{{int:showpreview}}\" butang do mongumbal JawaSikrip kawawagunu pogulu do popogompi.",
+'usercsspreview' => "'''Soroho no do mongintong kono tomod diti CSS momogunonu.'''
 '''Awu po nokogompi iti!'''",
-'wiki_userjspreview' => "'''Soroho no do mongintong kono tomod diti JawaSikrip momogunonu.'''
+'userjspreview' => "'''Soroho no do mongintong kono tomod diti JawaSikrip momogunonu.'''
 '''Awu po nokogompi iti!'''",
 'sitecsspreview' => "'''Soroho no do mongintong kono tomod diti CSS.'''
 '''Awu po nokogompi iti!'''",
 'sitejspreview' => "'''Soroho no do mongintong kono tomod diti kod JawaSikrip.'''
 '''Awu po nokogompi iti!'''",
-'wiki_userinvalidcssjstitle' => "'''Pomisunudan:''' Ingaa kulit do \"\$1\".
-Bobolikon pinudali .css om .js momoguno do pimato tokoro, miagal pomitanan {{ns:wiki_user}}:Foo/vector.css sobaagi do ponuli di {{ns:wiki_user}}:Foo/Vector.css.",
+'userinvalidcssjstitle' => "'''Pomisunudan:''' Ingaa kulit do \"\$1\".
+Bobolikon pinudali .css om .js momoguno do pimato tokoro, miagal pomitanan {{ns:user}}:Foo/vector.css sobaagi do ponuli di {{ns:user}}:Foo/Vector.css.",
 'updated' => '(Noinwoguan)',
 'note' => "'''Pasoniba:'''",
 'previewnote' => "'''Soroho no do iti nopo nga kopongintangan toomod.'''
@@ -701,13 +701,13 @@ Awu po moti nokogompi iri nopingalanannu!",
 'previewconflict' => 'Miagal no diti pongitanan do tik id boogian kawas kutak pongiditan tik nung pilionnu do popogompi.',
 'session_fail_preview' => "'''Siou! Awu di dahai opongoh niditannu gisom no do natagakan data.'''
 Mangai umbalai kawagu.
-Nung maso do awu milo, umbalai [[Special:wiki_userLogout|lumabus log]] om sumuang log kawagu.",
+Nung maso do awu milo, umbalai [[Special:UserLogout|lumabus log]] om sumuang log kawagu.",
 'session_fail_preview_html' => "'''Siou! Awu di dahai opongoh niditannu gisom no do natagakan data.'''
 
 ''Sasabab no do iti {{SITENAME}} haro HTML mata di poimpasi, pongitanan diti kipoinlisok magalai do gurumpuanan JawaSikrip''
 
 '''Nung niditan diti nopo nga otopot, maai umbalai kawagu.'''
-Nung maso do awu milo, umbalai [[Special:wiki_userLogout|lumabus log]] om sumuang log kawagu.",
+Nung maso do awu milo, umbalai [[Special:UserLogout|lumabus log]] om sumuang log kawagu.",
 'edit_form_incomplete' => "'''Pipiro boogian poom niditan awu nokorikot hilo id monunurung, gulio momiri di niditannu tondum ogoris om umbalan kawagu.'''",
 'editing' => 'Mongidit $1',
 'editingsection' => 'Mongidit $1 (boogian)',
@@ -736,7 +736,7 @@ Mangakaun ko nogi do sinuratannu iti mopori, toi dinalin iri mantad domin ginumu
 'hiddencategories' => 'Bolikon diti songkoruhang do {{PLURAL:$1|1 katogori poinlisok|$1 kakatogori poinlisok}}:',
 'nocreatetitle' => 'Momonsoi bolikon wagu pinatagal',
 'nocreatetext' => '{{SITENAME}} tinagal kasagaan momonsoi bobolikon kawawagu.
-Milo ko do gumuli om mongidit di bolikon poinsuang, toi ko [[Special:wiki_userLogin|sumuang log toi momonsoi do takaun.]].',
+Milo ko do gumuli om mongidit di bolikon poinsuang, toi ko [[Special:UserLogin|sumuang log toi momonsoi do takaun.]].',
 'nocreate-loggedin' => 'Ingaa kasagaannu do momonsoi bobolikon wagu.',
 'sectioneditnotsupported-title' => 'Boogian mongidit awu nosokodung',
 'permissionserrors' => 'Nokosilap pinapasaga',
@@ -802,9 +802,9 @@ Umbalai [[Special:Search|mogihum id wiki]] ot bolikon di kikohompiton.',
 
 # Revision deletion
 'rev-deleted-comment' => '(nidu koinibaan niditan)',
-'rev-deleted-wiki_user' => '(nidu momomoguno)',
+'rev-deleted-user' => '(nidu momomoguno)',
 'rev-deleted-event' => '(nidu log kinaraja)',
-'rev-deleted-wiki_user-contribs' => '[nidu momomoguno toi alamat IP - poilisok do minongidit di bolikon pinotoluod]',
+'rev-deleted-user-contribs' => '[nidu momomoguno toi alamat IP - poilisok do minongidit di bolikon pinotoluod]',
 'rev-deleted-text-permission' => "Sinimakan bolikon diti '''nopugas'''.
 Kointalangan oihum id [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} log pinugas].",
 'rev-deleted-text-unhide' => "Sinimakan bolikon diti '''nopugas'''.
@@ -848,7 +848,7 @@ Milo ko do montong diti; kointalangan oihum id [{{fullurl:{{#Special:Log}}/suppr
 'revdelete-hide-image' => 'Polisoko suang pail',
 'revdelete-hide-name' => 'Lisoko nimaan om ontokon',
 'revdelete-hide-comment' => 'Lisoko koinibaan niditan',
-'revdelete-hide-wiki_user' => 'Lisoko ngaranmoguno mongingidit/kinoyonon IP',
+'revdelete-hide-user' => 'Lisoko ngaranmoguno mongingidit/kinoyonon IP',
 'revdelete-hide-restricted' => 'Polosodo data mantad mandur om nogi wokon',
 'revdelete-radio-same' => '(kada alanai)',
 'revdelete-radio-set' => 'O',
@@ -1027,27 +1027,27 @@ Imurai no do indik suang diti {{SITENAME}} nopo nga nokolipas.',
 'prefs-displaywatchlist' => 'Pomilian pongitanan',
 'prefs-diffs' => 'Pisuaian',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'Porikatan surat-i asaah',
 'email-address-validity-invalid' => 'Posuango porikatan surat-i di asaah',
 
-# wiki_user rights
-'wiki_userrights' => 'Ponguludan don momomoguna',
-'wiki_userrights-lookup-wiki_user' => 'Uludo tinimungan momomoguno',
-'wiki_userrights-wiki_user-editname' => 'Posuango ngaranmoguno:',
-'editwiki_usergroup' => 'Idito tinimungan momomoguno',
-'editingwiki_user' => "Monimban kapasagaan don momomoguno '''[[wiki_user:$1|$1]]''' $2",
-'wiki_userrights-editwiki_usergroup' => 'Mongidit tinimungan momomoguno',
-'savewiki_usergroups' => 'Pogompio tinimungan momomoguno',
-'wiki_userrights-groupsmember' => 'Tutumanud montok:',
-'wiki_userrights-groupsmember-auto' => 'Tutumanud toporian montok:',
+# User rights
+'userrights' => 'Ponguludan don momomoguna',
+'userrights-lookup-user' => 'Uludo tinimungan momomoguno',
+'userrights-user-editname' => 'Posuango ngaranmoguno:',
+'editusergroup' => 'Idito tinimungan momomoguno',
+'editinguser' => "Monimban kapasagaan don momomoguno '''[[User:$1|$1]]''' $2",
+'userrights-editusergroup' => 'Mongidit tinimungan momomoguno',
+'saveusergroups' => 'Pogompio tinimungan momomoguno',
+'userrights-groupsmember' => 'Tutumanud montok:',
+'userrights-groupsmember-auto' => 'Tutumanud toporian montok:',
 
 # Groups
 'group-sysop' => 'Mandur',
 
 'grouppage-sysop' => '{{ns:project}}:Mandur',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Log kasagaan momomoguno',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -1098,7 +1098,7 @@ Bobolikon id [[Special:Watchlist|lis pintangannu]] nopo nga '''pinakapal'''.",
 'reuploaddesc' => 'Batalo mangaplod om gumuli hilo id poom mongaplod',
 'upload-tryagain' => 'Pootodo pongintalangan pail nomodipait',
 'uploadnologin' => 'Amu nokolog sumuang',
-'uploadnologintext' => 'Pinatantu ko do [[Special:wiki_userLogin|lumoog sumuang]] do mangaplod tangapail-pail.',
+'uploadnologintext' => 'Pinatantu ko do [[Special:UserLogin|lumoog sumuang]] do mangaplod tangapail-pail.',
 'uploadlogpage' => 'Log poposuang',
 'filedesc' => 'Koinibaan',
 'uploadedimage' => 'poposuang "[[$1]]"',
@@ -1113,7 +1113,7 @@ Bobolikon id [[Special:Watchlist|lis pintangannu]] nopo nga '''pinakapal'''.",
 'listfiles_thumb' => 'Sinondulu',
 'listfiles_date' => 'Adau',
 'listfiles_name' => 'Ngaran',
-'listfiles_wiki_user' => 'Momoguno',
+'listfiles_user' => 'Momoguno',
 'listfiles_size' => 'Tipong',
 'listfiles_description' => 'pongowowoyoon',
 'listfiles_count' => 'Dolinan',
@@ -1130,7 +1130,7 @@ Bobolikon id [[Special:Watchlist|lis pintangannu]] nopo nga '''pinakapal'''.",
 'filehist-thumb' => 'Sinondulu',
 'filehist-thumbtext' => 'Kointalangan sinondulu montok borsi maso di $1',
 'filehist-nothumb' => 'Ingaa sinondulu',
-'filehist-wiki_user' => 'Momomoguno',
+'filehist-user' => 'Momomoguno',
 'filehist-dimensions' => 'Ginayo',
 'filehist-filesize' => 'Tinipongan pail',
 'filehist-comment' => 'Kumin',
@@ -1158,7 +1158,7 @@ Kointalangan dilo [$2 kointalangan pail] okito id siriba.',
 'nbytes' => '$1 {{PLURAL:$1|bait|babait}}',
 'nmembers' => '$1 {{PLURAL:$1|koombolutan|tongokoombolutan}}',
 'prefixindex' => 'Oinsanan bolikan di kiponimpuunan',
-'wiki_usercreated' => '{{GENDER:$3|Created}} ontok $1 di jaam $2',
+'usercreated' => '{{GENDER:$3|Created}} ontok $1 di jaam $2',
 'newpages' => 'Bobolikon wagu',
 'move' => 'Poundoliho',
 'movethispage' => 'Poundoliho iti bolikon',
@@ -1171,7 +1171,7 @@ Kointalangan dilo [$2 kointalangan pail] okito id siriba.',
 'booksources-go' => 'Ibok',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Momoguno:',
+'specialloguserlabel' => 'Momoguno:',
 'log' => 'Tongolog',
 
 # Special:AllPages
@@ -1206,14 +1206,14 @@ Kointalangan dilo [$2 kointalangan pail] okito id siriba.',
 'linksearch-ok' => 'Ihumo',
 'linksearch-line' => '$1 toput mantad $2',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Log pinamansaian momomoguno',
+# Special:Log/newusers
+'newuserlogpage' => 'Log pinamansaian momomoguno',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(lis do kinoruhangan)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Surat-i momomoguno diti',
+# E-mail user
+'emailuser' => 'Surat-i momomoguno diti',
 
 # Watchlist
 'watchlist' => 'Lis piintanganku',
@@ -1297,7 +1297,7 @@ Milo ko nogi do mongolon tingkat tingolig diti, nga ingaa it kosimbanon montok t
 'sp-contributions-logs' => 'tongolog',
 'sp-contributions-talk' => 'bolotok',
 'sp-contributions-search' => 'Ihumo pinotoluod',
-'sp-contributions-wiki_username' => 'Kinoyonon IP toi momomoguno:',
+'sp-contributions-username' => 'Kinoyonon IP toi momomoguno:',
 'sp-contributions-toponly' => 'Pokitono nititan kawawagu di nobiri.',
 'sp-contributions-submit' => 'Ihumo',
 
@@ -1325,7 +1325,7 @@ Milo ko nogi do mongolon tingkat tingolig diti, nga ingaa it kosimbanon montok t
 'unblockip' => 'Kada antabai momomoguno',
 'unblockiptext' => 'Gunoo poom  id siriba do poposuang kasagaan monurat montok do kinoyonon IP toi ngaran momomoguno di pogulu naantaban.',
 'ipusubmit' => 'Iduo pinangantob diti',
-'unblocked' => '[[wiki_user:$1|$1]] naantaban no.',
+'unblocked' => '[[User:$1|$1]] naantaban no.',
 'unblocked-id' => 'Noidu no tantob di $1',
 'ipblocklist' => 'Antabai momomoguno',
 'ipblocklist-legend' => 'Ihumo momomoguno naantaban',
@@ -1387,7 +1387,7 @@ Maai no longono do posungku.'''",
 'thumbnail_error' => 'Nokosilap momonsoi pongitanan sondulu: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Bolikon mongogunonu',
+'tooltip-pt-userpage' => 'Bolikon mongogunonu',
 'tooltip-pt-mytalk' => 'Bolikon pibabarasannu',
 'tooltip-pt-preferences' => 'Komoisoonnu',
 'tooltip-pt-watchlist' => 'Lis do bobolikon di maannu piintaai do alanan',
@@ -1421,13 +1421,13 @@ Milo ko mongintong do wowonod',
 'tooltip-feed-rss' => 'Papababu RSS id bolikon diti',
 'tooltip-feed-atom' => 'Papababu Atom id bolikon diti',
 'tooltip-t-contributions' => 'Intangai lis do pinototoluod do momomoguno diti',
-'tooltip-t-emailwiki_user' => 'Ponurat-i kumaa do momomoguno diti',
+'tooltip-t-emailuser' => 'Ponurat-i kumaa do momomoguno diti',
 'tooltip-t-upload' => 'Mangaplod pail',
 'tooltip-t-specialpages' => 'Lis koinsanai bolikon suaikowokon',
 'tooltip-t-print' => 'Kodolinan milo pirinon hiti id bolikon',
 'tooltip-t-permalink' => 'Toput pointatap do hiti id bolikon sinimak',
 'tooltip-ca-nstab-main' => 'Intaai it suang bolikon',
-'tooltip-ca-nstab-wiki_user' => 'Intaai bolikon do momomoguno',
+'tooltip-ca-nstab-user' => 'Intaai bolikon do momomoguno',
 'tooltip-ca-nstab-special' => 'Iti nopo nga bolikon pinatantu, awu ko milo do mimpopori mongidit',
 'tooltip-ca-nstab-project' => 'Intaai bolikon do purujik',
 'tooltip-ca-nstab-image' => 'Intaai ot bolikon pail',
@@ -1446,8 +1446,8 @@ Milo ko mongintong do wowonod',
 
 # Attribution
 'others' => 'susuai',
-'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|momoguno|momomoguno}} $1',
-'anonwiki_users' => '{{SITENAME}} aisongaran {{PLURAL:$2|momoguno|momomoguno}} $1',
+'siteusers' => '{{SITENAME}} {{PLURAL:$2|momoguno|momomoguno}} $1',
+'anonusers' => '{{SITENAME}} aisongaran {{PLURAL:$2|momoguno|momomoguno}} $1',
 'creditspage' => 'Pounsikou do bolikon',
 'nocredits' => 'Ingaa ih ot ahal kokomoi di pinopotoluod do bolikon diti.',
 

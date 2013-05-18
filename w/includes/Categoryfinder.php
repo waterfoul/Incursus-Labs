@@ -54,7 +54,7 @@ class Categoryfinder {
 	/**
 	 * @var DatabaseBase
 	 */
-	var r; # Read-DB slave
+	var $dbr; # Read-DB slave
 
 	/**
 	 * Constructor (currently empty).

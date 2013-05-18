@@ -57,7 +57,7 @@ $messages = array(
 'talkpagelinktext' => 'Ихтилат',
 'talk' => 'Ихтилат',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Нанисса ишру',
 'currentevents-url' => 'Project:Нанисса ишру',
 'mainpage' => 'Агьаммур лажин',
@@ -68,16 +68,16 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Тарих',
-'nstab-wiki_user' => 'Гьуртту хьума',
+'nstab-user' => 'Гьуртту хьума',
 'nstab-special' => 'Къуллугъирал лажин',
 'nstab-image' => 'Сурат',
 'nstab-template' => 'Шаблон',
 'nstab-category' => 'Категория',
 
 # Login and logout pages
-'wiki_userlogin' => 'Системалухь цу уссарав бусан',
+'userlogin' => 'Системалухь цу уссарав бусан',
 'logout' => 'Уккаву',
-'wiki_userlogout' => 'Уккаву',
+'userlogout' => 'Уккаву',
 
 # Edit pages
 'minoredit' => 'Мюрщсса дахханашиву',
@@ -91,16 +91,16 @@ $messages = array(
 
 # File description page
 'file-anchor-link' => 'Сурат',
-'filehist-wiki_user' => 'Гьурттучув',
+'filehist-user' => 'Гьурттучув',
 
 # Miscellaneous special pages
 'move' => 'ЦӀа даххана дан',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Гьурттучув:',
+'specialloguserlabel' => 'Гьурттучув:',
 
-# E-mail wiki_user
-'emailwiki_user' => 'ГьурттучувначӀансса чагьар',
+# E-mail user
+'emailuser' => 'ГьурттучувначӀансса чагьар',
 
 # Watchlist
 'watchlist' => 'Ябитаврил сияхӀ',

@@ -5,7 +5,7 @@
  * @group DatabaseBase
  */
 class DatabaseTest extends MediaWikiTestCase {
-	var , $functionTest = false;
+	var $db, $functionTest = false;
 
 	function setUp() {
 		$this->db = wfGetDB( DB_MASTER );
@@ -171,12 +171,12 @@ class DatabaseTest extends MediaWikiTestCase {
 
 	function testFillPreparedBang() {
 		$sql = $this->db->fillPrepared(
-			'SELECT wiki_user_id FROM ! WHERE wiki_user_name=?',
-			array( '"wiki_user"', "Slash's Dot" ) );
+			'SELECT user_id FROM ! WHERE user_name=?',
+			array( '"user"', "Slash's Dot" ) );
 
-		$check = "SELECT wiki_user_id FROM \"wiki_user\" WHERE wiki_user_name='Slash''s Dot'";
+		$check = "SELECT user_id FROM \"user\" WHERE user_name='Slash''s Dot'";
 		if ( $this->db->getType() === 'mysql' ) {
-			$check = "SELECT wiki_user_id FROM \"wiki_user\" WHERE wiki_user_name='Slash\'s Dot'";
+			$check = "SELECT user_id FROM \"user\" WHERE user_name='Slash\'s Dot'";
 		}
 		$this->assertEquals( $check, $sql );
 	}
@@ -184,7 +184,7 @@ class DatabaseTest extends MediaWikiTestCase {
 	function testFillPreparedRaw() {
 		$sql = $this->db->fillPrepared(
 			"SELECT * FROM cur WHERE cur_title='This_\\&_that,_WTF\\?\\!'",
-			array( '"wiki_user"', "Slash's Dot" ) );
+			array( '"user"', "Slash's Dot" ) );
 		$this->assertEquals(
 			"SELECT * FROM cur WHERE cur_title='This_&_that,_WTF?!'",
 			$sql );

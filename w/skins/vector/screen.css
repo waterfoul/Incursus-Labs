@@ -14,27 +14,17 @@
 /* Framework */
 html,
 body {
-	color: #000000;
-	background-color: #639FD6;
-	background-image: url("/phpBB/styles/rockn_roll/theme/images/bg.gif");
-	background-repeat: repeat-x;
-	background-attachment: fixed;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	font-size: 1em;
 }
-div.wrap
-{
-	position:relative;
-	padding: 10px 10px;
-	min-width: 650px;
-	width: 95%;
-	margin: 0 auto;
-	background-color: #FFFFFF;
-	border: 3px solid #000000;
+body {
+	background-color: #f3f3f3;
+	/* @embed */
+	background-image: url(images/page-base.png);
 }
-div.wrap2
-{
-	position:relative;
-}
-
 /* Content */
 div#content {
 	margin-left: 10em;
@@ -772,12 +762,12 @@ div#content a.external[href *=".pdf?"], div#content a.external[href *=".PDF?"],
 	padding-right: 13px;
 }
 
-/* Icon for wiki_usernames */
-#pt-wiki_userpage,
-#pt-anonwiki_userpage,
+/* Icon for Usernames */
+#pt-userpage,
+#pt-anonuserpage,
 #pt-login {
 	/* @embed */
-	background: url(images/wiki_user-icon.png) left top no-repeat;
+	background: url(images/user-icon.png) left top no-repeat;
 	padding-left: 15px !important;
 	text-transform: none;
 }

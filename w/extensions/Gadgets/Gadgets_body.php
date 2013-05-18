@@ -1,6 +1,6 @@
 <?php
 /**
- * Gadgets extension - lets wiki_users select custom javascript gadgets
+ * Gadgets extension - lets users select custom javascript gadgets
  *
  * For more info see http://mediawiki.org/wiki/Extension:Gadgets
  *
@@ -16,11 +16,11 @@ class GadgetHooks {
 	 * ArticleSaveComplete hook handler.
 	 *
 	 * @param $article Article
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $text String: New page text
 	 * @return bool
 	 */
-	public static function articleSaveComplete( $article, $wiki_user, $text ) {
+	public static function articleSaveComplete( $article, $user, $text ) {
 		// update cache if MediaWiki:Gadgets-definition was edited
 		$title = $article->getTitle();
 		if ( $title->getNamespace() == NS_MEDIAWIKI && $title->getText() == 'Gadgets-definition' ) {
@@ -30,11 +30,11 @@ class GadgetHooks {
 	}
 
 	/**
-	 * wiki_userGetDefaultOptions hook handler
+	 * UserGetDefaultOptions hook handler
 	 * @param $defaultOptions Array of default preference keys and values
 	 * @return bool
 	 */
-	public static function wiki_userGetDefaultOptions( &$defaultOptions ) {
+	public static function userGetDefaultOptions( &$defaultOptions ) {
 		$gadgets = Gadget::loadStructuredList();
 		if ( !$gadgets ) {
 			return true;
@@ -56,11 +56,11 @@ class GadgetHooks {
 
 	/**
 	 * GetPreferences hook handler.
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $preferences Array: Preference descriptions
 	 * @return bool
 	 */
-	public static function getPreferences( $wiki_user, &$preferences ) {
+	public static function getPreferences( $user, &$preferences ) {
 		$gadgets = Gadget::loadStructuredList();
 		if ( !$gadgets ) {
 			return true;
@@ -75,12 +75,12 @@ class GadgetHooks {
 			 * @var $gadget Gadget
 			 */
 			foreach ( $thisSection as $gadget ) {
-				if ( $gadget->isAllowed( $wiki_user ) ) {
+				if ( $gadget->isAllowed( $user ) ) {
 					$gname = $gadget->getName();
 					# bug 30182: dir="auto" because it's often not translated
 					$desc = '<span dir="auto">' . $gadget->getDescription() . '</span>';
 					$available[$desc] = $gname;
-					if ( $gadget->isEnabled( $wiki_user ) ) {
+					if ( $gadget->isEnabled( $user ) ) {
 						$default[] = $gname;
 					}
 				}
@@ -167,9 +167,9 @@ class GadgetHooks {
 		/**
 		 * @var $gadget Gadget
 		 */
-		$wiki_user = $out->getwiki_user();
+		$user = $out->getUser();
 		foreach ( $gadgets as $gadget ) {
-			if ( $gadget->isEnabled( $wiki_user ) && $gadget->isAllowed( $wiki_user ) ) {
+			if ( $gadget->isEnabled( $user ) && $gadget->isAllowed( $user ) ) {
 				if ( $gadget->hasModule() ) {
 					$out->addModuleStyles( $gadget->getModuleName() );
 					$out->addModules( $gadget->getModuleName() );
@@ -362,24 +362,24 @@ class Gadget {
 	}
 
 	/**
-	 * Checks whether this gadget is enabled for given wiki_user
+	 * Checks whether this gadget is enabled for given user
 	 *
-	 * @param $wiki_user wiki_user: wiki_user to check against
+	 * @param $user User: user to check against
 	 * @return Boolean
 	 */
-	public function isEnabled( $wiki_user ) {
-		return (bool)$wiki_user->getOption( "gadget-{$this->name}", $this->onByDefault );
+	public function isEnabled( $user ) {
+		return (bool)$user->getOption( "gadget-{$this->name}", $this->onByDefault );
 	}
 
 	/**
-	 * Checks whether given wiki_user has permissions to use this gadget
+	 * Checks whether given user has permissions to use this gadget
 	 *
-	 * @param $wiki_user wiki_user: wiki_user to check against
+	 * @param $user User: user to check against
 	 * @return Boolean
 	 */
-	public function isAllowed( $wiki_user ) {
-		return count( array_intersect( $this->requiredRights, $wiki_user->getRights() ) ) == count( $this->requiredRights )
-			&& ( !count( $this->requiredSkins ) || in_array( $wiki_user->getOption( 'skin' ), $this->requiredSkins ) );
+	public function isAllowed( $user ) {
+		return count( array_intersect( $this->requiredRights, $user->getRights() ) ) == count( $this->requiredRights )
+			&& ( !count( $this->requiredSkins ) || in_array( $user->getOption( 'skin' ), $this->requiredSkins ) );
 	}
 
 	/**

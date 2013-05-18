@@ -27,18 +27,18 @@
 class IntraACL_SQL_Util
 {
     /**
-     * Massively retrieves wiki_users with IDs $wiki_user_ids from the DB
-     * @return array(object), indexed by wiki_user ID
+     * Massively retrieves users with IDs $user_ids from the DB
+     * @return array(object), indexed by user ID
      */
-    public function getwiki_users($wiki_user_ids)
+    public function getUsers($user_ids)
     {
-        r = wfGetDB(DB_SLAVE);
+        $dbr = wfGetDB(DB_SLAVE);
         $rows = array();
-        if ($wiki_user_ids)
+        if ($user_ids)
         {
-            $res = r->select('wiki_user', '*', array('wiki_user_id' => $wiki_user_ids), __METHOD__);
+            $res = $dbr->select('user', '*', array('user_id' => $user_ids), __METHOD__);
             foreach ($res as $r)
-                $rows[$r->wiki_user_id] = $r;
+                $rows[$r->user_id] = $r;
         }
         return $rows;
     }
@@ -50,11 +50,11 @@ class IntraACL_SQL_Util
      */
     public function getTitles($ids, $as_object = false)
     {
-        r = wfGetDB(DB_SLAVE);
+        $dbr = wfGetDB(DB_SLAVE);
         $rows = array();
         if ($ids)
         {
-            $res = r->select('page', '*', array('page_id' => $ids), __METHOD__);
+            $res = $dbr->select('page', '*', array('page_id' => $ids), __METHOD__);
             if (!$as_object)
                 foreach ($res as $r)
                     $rows[$r->page_id] = $r;
@@ -66,16 +66,16 @@ class IntraACL_SQL_Util
     }
 
     /**
-     * Massively retrieves contents of categories with db-keys keys
+     * Massively retrieves contents of categories with db-keys $dbkeys
      * @return array(category_dbkey => array(Title))
      */
-    public function getCategoryLinks(keys)
+    public function getCategoryLinks($dbkeys)
     {
-        if (!keys)
+        if (!$dbkeys)
             return array();
-        r = wfGetDB(DB_SLAVE);
-        $res = r->select(array('categorylinks', 'p' => 'page'), 'cl_to, p.*',
-            array('page_id=cl_from', 'cl_to' => keys), __METHOD__);
+        $dbr = wfGetDB(DB_SLAVE);
+        $res = $dbr->select(array('categorylinks', 'p' => 'page'), 'cl_to, p.*',
+            array('page_id=cl_from', 'cl_to' => $dbkeys), __METHOD__);
         $cont = array();
         foreach ($res as $row)
             $cont[$row->cl_to][] = Title::newFromRow($row);
@@ -90,7 +90,7 @@ class IntraACL_SQL_Util
     {
         if (!$categories)
             return array();
-        r = wfGetDB(DB_SLAVE);
+        $dbr = wfGetDB(DB_SLAVE);
         $cats = array();
         foreach ($categories as $c)
             $cats[$c->getDBkey()] = $c;
@@ -98,7 +98,7 @@ class IntraACL_SQL_Util
         // Get subcategories
         while ($categories)
         {
-            $res = r->select(array('p' => 'page', 'categorylinks'), 'p.*',
+            $res = $dbr->select(array('p' => 'page', 'categorylinks'), 'p.*',
                 array('cl_from=page_id', 'cl_to' => $categories, 'page_namespace' => NS_CATEGORY),
                 __METHOD__);
             $categories = array();

@@ -26,12 +26,12 @@
  * This class supports authentication against an external MediaWiki database,
  * probably any version back to 1.5 or something.  Example configuration:
  *
- *   $wgExternalAuthType = 'Externalwiki_user_MediaWiki';
+ *   $wgExternalAuthType = 'ExternalUser_MediaWiki';
  *   $wgExternalAuthConf = array(
  *       'DBtype' => 'mysql',
  *       'DBserver' => 'localhost',
  *       'DBname' => 'wikidb',
- *       'DBwiki_user' => 'quasit',
+ *       'DBuser' => 'quasit',
  *       'DBpassword' => 'a5Cr:yf9u-6[{`g',
  *       'DBprefix' => '',
  *   );
@@ -42,14 +42,14 @@
  * probably has bugs.  Kind of hard to reuse code when things might rely on who 
  * knows what configuration globals.
  *
- * If either wiki uses the wiki_userComparePasswords hook, password authentication 
+ * If either wiki uses the UserComparePasswords hook, password authentication 
  * might fail unexpectedly unless they both do the exact same validation.  
  * There may be other corner cases like this where this will fail, but it 
  * should be unlikely.
  *
- * @ingroup Externalwiki_user
+ * @ingroup ExternalUser
  */
-class Externalwiki_user_MediaWiki extends Externalwiki_user {
+class ExternalUser_MediaWiki extends ExternalUser {
 	private $mRow;
 
 	/**
@@ -65,13 +65,13 @@ class Externalwiki_user_MediaWiki extends Externalwiki_user {
 		# We might not need the 'usable' bit, but let's be safe.  Theoretically 
 		# this might return wrong results for old versions, but it's probably 
 		# good enough.
-		$name = wiki_user::getCanonicalName( $name, 'usable' );
+		$name = User::getCanonicalName( $name, 'usable' );
 
 		if ( !is_string( $name ) ) {
 			return false;
 		}
 
-		return $this->initFromCond( array( 'wiki_user_name' => $name ) );
+		return $this->initFromCond( array( 'user_name' => $name ) );
 	}
 
 	/**
@@ -79,7 +79,7 @@ class Externalwiki_user_MediaWiki extends Externalwiki_user {
 	 * @return bool
 	 */
 	protected function initFromId( $id ) {
-		return $this->initFromCond( array( 'wiki_user_id' => $id ) );
+		return $this->initFromCond( array( 'user_id' => $id ) );
 	}
 
 	/**
@@ -92,7 +92,7 @@ class Externalwiki_user_MediaWiki extends Externalwiki_user {
 		$this->mDb = DatabaseBase::factory( $wgExternalAuthConf['DBtype'],
 			array(
 				'host'        => $wgExternalAuthConf['DBserver'],
-				'wiki_user'        => $wgExternalAuthConf['DBwiki_user'],
+				'user'        => $wgExternalAuthConf['DBuser'],
 				'password'    => $wgExternalAuthConf['DBpassword'],
 				'dbname'      => $wgExternalAuthConf['DBname'],
 				'tablePrefix' => $wgExternalAuthConf['DBprefix'],
@@ -100,10 +100,10 @@ class Externalwiki_user_MediaWiki extends Externalwiki_user {
 		);
 
 		$row = $this->mDb->selectRow(
-			'wiki_user',
+			'user',
 			array(
-				'wiki_user_name', 'wiki_user_id', 'wiki_user_password', 'wiki_user_email',
-				'wiki_user_email_authenticated'
+				'user_name', 'user_id', 'user_password', 'user_email',
+				'user_email_authenticated'
 			),
 			$cond,
 			__METHOD__
@@ -119,29 +119,29 @@ class Externalwiki_user_MediaWiki extends Externalwiki_user {
 	# TODO: Implement initFromCookie().
 
 	public function getId() {
-		return $this->mRow->wiki_user_id;
+		return $this->mRow->user_id;
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getName() {
-		return $this->mRow->wiki_user_name;
+		return $this->mRow->user_name;
 	}
 
 	public function authenticate( $password ) {
-		# This might be wrong if anyone actually uses the wiki_userComparePasswords hook 
+		# This might be wrong if anyone actually uses the UserComparePasswords hook 
 		# (on either end), so don't use this if you those are incompatible.
-		return wiki_user::comparePasswords( $this->mRow->wiki_user_password, $password,
-			$this->mRow->wiki_user_id );	
+		return User::comparePasswords( $this->mRow->user_password, $password,
+			$this->mRow->user_id );	
 	}
 
 	public function getPref( $pref ) {
 		# @todo FIXME: Return other prefs too.  Lots of global-riddled code that does 
 		# this normally.
 		if ( $pref === 'emailaddress'
-		&& $this->row->wiki_user_email_authenticated !== null ) {
-			return $this->mRow->wiki_user_email;
+		&& $this->row->user_email_authenticated !== null ) {
+			return $this->mRow->user_email;
 		}
 		return null;
 	}
@@ -153,9 +153,9 @@ class Externalwiki_user_MediaWiki extends Externalwiki_user {
 		# @todo FIXME: Untested.
 		$groups = array();
 		$res = $this->mDb->select(
-			'wiki_user_groups',
+			'user_groups',
 			'ug_group',
-			array( 'ug_wiki_user' => $this->mRow->wiki_user_id ),
+			array( 'ug_user' => $this->mRow->user_id ),
 			__METHOD__
 		);
 		foreach ( $res as $row ) {

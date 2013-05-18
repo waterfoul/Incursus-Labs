@@ -1,6 +1,6 @@
 <?php
 /**
- * @defgroup Watchlist wiki_users watchlist handling
+ * @defgroup Watchlist Users watchlist handling
  */
 
 /**
@@ -27,7 +27,7 @@
  */
 
 /**
- * Provides the UI through which wiki_users can perform editing
+ * Provides the UI through which users can perform editing
  * operations on their watchlist
  *
  * @ingroup SpecialPage
@@ -64,10 +64,10 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 		$out = $this->getOutput();
 
 		# Anons don't get a watchlist
-		if( $this->getwiki_user()->isAnon() ) {
+		if( $this->getUser()->isAnon() ) {
 			$out->setPageTitle( $this->msg( 'watchnologin' ) );
 			$llink = Linker::linkKnown(
-				SpecialPage::getTitleFor( 'wiki_userlogin' ),
+				SpecialPage::getTitleFor( 'Userlogin' ),
 				$this->msg( 'loginreqlink' )->escaped(),
 				array(),
 				array( 'returnto' => $this->getTitle()->getPrefixedText() )
@@ -80,12 +80,12 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 
 		$this->outputHeader();
 
-		$out->addSubtitle( $this->msg( 'watchlistfor2', $this->getwiki_user()->getName()
+		$out->addSubtitle( $this->msg( 'watchlistfor2', $this->getUser()->getName()
 			)->rawParams( SpecialEditWatchlist::buildTools( null ) ) );
 
 		# B/C: $mode used to be waaay down the parameter list, and the first parameter
-		# was $wgwiki_user
-		if( $mode instanceof wiki_user ){
+		# was $wgUser
+		if( $mode instanceof User ){
 			$args = func_get_args();
 			if( count( $args >= 4 ) ){
 				$mode = $args[3];
@@ -162,7 +162,7 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 			$toUnwatch = array_diff( $current, $wanted );
 			$this->watchTitles( $toWatch );
 			$this->unwatchTitles( $toUnwatch );
-			$this->getwiki_user()->invalidateCache();
+			$this->getUser()->invalidateCache();
 
 			if( count( $toWatch ) > 0 || count( $toUnwatch ) > 0 ){
 				$this->successMessage = $this->msg( 'watchlistedit-raw-done' )->parse();
@@ -183,7 +183,7 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 			}
 		} else {
 			$this->clearWatchlist();
-			$this->getwiki_user()->invalidateCache();
+			$this->getUser()->invalidateCache();
 
 			if( count( $current ) > 0 ){
 				$this->successMessage = $this->msg( 'watchlistedit-raw-done' )->parse();
@@ -238,20 +238,20 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 	}
 
 	/**
-	 * Prepare a list of titles on a wiki_user's watchlist (excluding talk pages)
+	 * Prepare a list of titles on a user's watchlist (excluding talk pages)
 	 * and return an array of (prefixed) strings
 	 *
 	 * @return array
 	 */
 	private function getWatchlist() {
 		$list = array();
-		r = wfGetDB( DB_MASTER );
-		$res = r->select(
+		$dbr = wfGetDB( DB_MASTER );
+		$res = $dbr->select(
 			'watchlist',
 			array(
 				'wl_namespace', 'wl_title'
 			), array(
-				'wl_wiki_user' => $this->getwiki_user()->getId(),
+				'wl_user' => $this->getUser()->getId(),
 			),
 			__METHOD__
 		);
@@ -278,19 +278,19 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 	}
 
 	/**
-	 * Get a list of titles on a wiki_user's watchlist, excluding talk pages,
+	 * Get a list of titles on a user's watchlist, excluding talk pages,
 	 * and return as a two-dimensional array with namespace and title.
 	 *
 	 * @return array
 	 */
 	private function getWatchlistInfo() {
 		$titles = array();
-		r = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_MASTER );
 
-		$res = r->select(
+		$res = $dbr->select(
 			array( 'watchlist' ),
 			array( 'wl_namespace',  'wl_title' ),
-			array( 'wl_wiki_user' => $this->getwiki_user()->getId() ),
+			array( 'wl_user' => $this->getUser()->getId() ),
 			__METHOD__,
 			array( 'ORDER BY' => array( 'wl_namespace', 'wl_title' ) )
 		);
@@ -312,10 +312,10 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 	 *
 	 * @param Title $title
 	 * @param int $namespace
-	 * @param String Key
+	 * @param String $dbKey
 	 * @return bool: Whether this item is valid
 	 */
-	private function checkTitle( $title, $namespace, Key ) {
+	private function checkTitle( $title, $namespace, $dbKey ) {
 		if ( $title
 			&& ( $title->isExternal()
 				|| $title->getNamespace() < 0
@@ -325,9 +325,9 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 		}
 		if ( !$title
 			|| $title->getNamespace() != $namespace
-			|| $title->getDBkey() != Key
+			|| $title->getDBkey() != $dbKey
 		) {
-			$this->badItems[] = array( $title, $namespace, Key );
+			$this->badItems[] = array( $title, $namespace, $dbKey );
 		}
 		return (bool)$title;
 	}
@@ -339,44 +339,44 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 		if( !count( $this->badItems ) ) {
 			return; //nothing to do
 		}
-		w = wfGetDB( DB_MASTER );
-		$wiki_user = $this->getwiki_user();
+		$dbw = wfGetDB( DB_MASTER );
+		$user = $this->getUser();
 		foreach ( $this->badItems as $row ) {
-			list( $title, $namespace, Key ) = $row;
-			wfDebug( "wiki_user {$wiki_user->getName()} has broken watchlist item ns($namespace):Key, "
+			list( $title, $namespace, $dbKey ) = $row;
+			wfDebug( "User {$user->getName()} has broken watchlist item ns($namespace):$dbKey, "
 				. ( $title ? 'cleaning up' : 'deleting' ) . ".\n"
 			);
 
-			w->delete( 'watchlist',
+			$dbw->delete( 'watchlist',
 				array(
-					'wl_wiki_user' => $wiki_user->getId(),
+					'wl_user' => $user->getId(),
 					'wl_namespace' => $namespace,
-					'wl_title' => Key,
+					'wl_title' => $dbKey,
 				),
 				__METHOD__
 			);
 
 			// Can't just do an UPDATE instead of DELETE/INSERT due to unique index
 			if ( $title ) {
-				$wiki_user->addWatch( $title );
+				$user->addWatch( $title );
 			}
 		}
 	}
 
 	/**
-	 * Remove all titles from a wiki_user's watchlist
+	 * Remove all titles from a user's watchlist
 	 */
 	private function clearWatchlist() {
-		w = wfGetDB( DB_MASTER );
-		w->delete(
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete(
 			'watchlist',
-			array( 'wl_wiki_user' => $this->getwiki_user()->getId() ),
+			array( 'wl_user' => $this->getUser()->getId() ),
 			__METHOD__
 		);
 	}
 
 	/**
-	 * Add a list of titles to a wiki_user's watchlist
+	 * Add a list of titles to a user's watchlist
 	 *
 	 * $titles can be an array of strings or Title objects; the former
 	 * is preferred, since Titles are very memory-heavy
@@ -384,7 +384,7 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 	 * @param $titles Array of strings, or Title objects
 	 */
 	private function watchTitles( $titles ) {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$rows = array();
 		foreach( $titles as $title ) {
 			if( !$title instanceof Title ) {
@@ -392,24 +392,24 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 			}
 			if( $title instanceof Title ) {
 				$rows[] = array(
-					'wl_wiki_user' => $this->getwiki_user()->getId(),
+					'wl_user' => $this->getUser()->getId(),
 					'wl_namespace' => ( $title->getNamespace() & ~1 ),
 					'wl_title' => $title->getDBkey(),
 					'wl_notificationtimestamp' => null,
 				);
 				$rows[] = array(
-					'wl_wiki_user' => $this->getwiki_user()->getId(),
+					'wl_user' => $this->getUser()->getId(),
 					'wl_namespace' => ( $title->getNamespace() | 1 ),
 					'wl_title' => $title->getDBkey(),
 					'wl_notificationtimestamp' => null,
 				);
 			}
 		}
-		w->insert( 'watchlist', $rows, __METHOD__, 'IGNORE' );
+		$dbw->insert( 'watchlist', $rows, __METHOD__, 'IGNORE' );
 	}
 
 	/**
-	 * Remove a list of titles from a wiki_user's watchlist
+	 * Remove a list of titles from a user's watchlist
 	 *
 	 * $titles can be an array of strings or Title objects; the former
 	 * is preferred, since Titles are very memory-heavy
@@ -417,32 +417,32 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 	 * @param $titles Array of strings, or Title objects
 	 */
 	private function unwatchTitles( $titles ) {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		foreach( $titles as $title ) {
 			if( !$title instanceof Title ) {
 				$title = Title::newFromText( $title );
 			}
 			if( $title instanceof Title ) {
-				w->delete(
+				$dbw->delete(
 					'watchlist',
 					array(
-						'wl_wiki_user' => $this->getwiki_user()->getId(),
+						'wl_user' => $this->getUser()->getId(),
 						'wl_namespace' => ( $title->getNamespace() & ~1 ),
 						'wl_title' => $title->getDBkey(),
 					),
 					__METHOD__
 				);
-				w->delete(
+				$dbw->delete(
 					'watchlist',
 					array(
-						'wl_wiki_user' => $this->getwiki_user()->getId(),
+						'wl_user' => $this->getUser()->getId(),
 						'wl_namespace' => ( $title->getNamespace() | 1 ),
 						'wl_title' => $title->getDBkey(),
 					),
 					__METHOD__
 				);
 				$page = WikiPage::factory( $title );
-				wfRunHooks( 'UnwatchArticleComplete', array( $this->getwiki_user(), &$page ) );
+				wfRunHooks( 'UnwatchArticleComplete', array( $this->getUser(), &$page ) );
 			}
 		}
 	}
@@ -485,9 +485,9 @@ class SpecialEditWatchlist extends UnlistedSpecialPage {
 				);
 			}
 
-			foreach( array_keys( $pages ) as key ){
-				$title = Title::makeTitleSafe( $namespace, key );
-				if ( $this->checkTitle( $title, $namespace, key ) ) {
+			foreach( array_keys( $pages ) as $dbkey ){
+				$title = Title::makeTitleSafe( $namespace, $dbkey );
+				if ( $this->checkTitle( $title, $namespace, $dbkey ) ) {
 					$text = $this->buildRemoveLine( $title );
 					$fields['TitlesNs'.$namespace]['options'][$text] = htmlspecialchars( $title->getPrefixedText() );
 					$count++;

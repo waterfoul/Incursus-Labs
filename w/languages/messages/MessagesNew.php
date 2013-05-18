@@ -42,7 +42,7 @@ $digitTransformTable = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'लिङ्कतेत अन्दरलाइन यानादिसँ:',
 'tog-justify' => 'अनुच्छेद धंकादिसँ',
 'tog-hideminor' => 'न्हुगु हिलेज्याय् चिधंगु सम्पादन सुचुकादिसँ',
@@ -64,7 +64,7 @@ $messages = array(
 'tog-previewonfirst' => 'न्हापाँगु सम्पादन स्वया न्ह्यः प्रिभ्यु क्यनादिसँ',
 'tog-nocache' => 'पौ क्याशिङ (caching) डिजेबल यानादिसँ',
 'tog-enotifwatchlistpages' => 'जिगु वाचलिस्टया पौ सम्पादन जुइबिले जितः इ-मेल यानादिसँ',
-'tog-enotifwiki_usertalkpages' => 'जिगु खँल्हाबल्हा पौ सम्पादन जुइबिले जितः इ-मेल यानादिसँ',
+'tog-enotifusertalkpages' => 'जिगु खँल्हाबल्हा पौ सम्पादन जुइबिले जितः इ-मेल यानादिसँ',
 'tog-enotifminoredits' => 'पौया चीधंगु सम्पादनया निंतिं नं जितः इ-मेल यानादिसँ',
 'tog-enotifrevealaddr' => 'जिगु इ-मेल थाय्‌बाय्‌ नोटिफिकेसन इ-मेलय् क्यनादिसँ',
 'tog-shownumberswatching' => 'स्वयाच्वंपिं छ्यलामितेगु ल्याखँ क्यनादिसँ',
@@ -194,7 +194,7 @@ $messages = array(
 'otherlanguages' => 'मेमेगु भाषाय्',
 'jumptosearch' => 'मालादिसँ',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}}या बारेय्',
 'aboutpage' => 'Project:बारेय्',
 'copyright' => 'कण्टेण्ट $1 कथं उपलब्ध दु।',
@@ -233,7 +233,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'पौ',
-'nstab-wiki_user' => 'छ्य्‌लामि पौ',
+'nstab-user' => 'छ्य्‌लामि पौ',
 'nstab-media' => 'मिडिया पौ',
 'nstab-special' => 'विशेष',
 'nstab-project' => 'ज्याझ्वः पौ',
@@ -278,9 +278,9 @@ MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
 'yourdomainname' => 'छिगु दोमेन:',
 'login' => 'दुहां वनेगु',
 'nav-login-createaccount' => 'दुहां वनेगु / खाता चायेकिगु',
-'wiki_userlogin' => 'दुहां वनेगु / खाता चायेकिगु',
+'userlogin' => 'दुहां वनेगु / खाता चायेकिगु',
 'logout' => 'पिने झासँ',
-'wiki_userlogout' => 'पिने झासँ',
+'userlogout' => 'पिने झासँ',
 'nologinlink' => 'खाता न्ह्यथनादिसँ',
 'createaccount' => 'खाता चायेकादिसँ',
 'gotaccountlink' => 'दुहां झासँ',
@@ -318,16 +318,16 @@ MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
 'prefs-rc' => 'न्हुगु हिलेज्या',
 'saveprefs' => 'स्वथनादिसँ',
 'youremail' => 'इ-मेल:',
-'wiki_username' => 'छ्य्‌लामि नां:',
+'username' => 'छ्य्‌लामि नां:',
 'yourrealname' => 'वास्तविक नां:',
 'yourlanguage' => 'भाषा:',
 'email' => 'इ-मेल',
 
-# wiki_user rights
-'wiki_userrights-wiki_user-editname' => 'छपू छ्य्‌लामि नां तयादिसँ:',
+# User rights
+'userrights-user-editname' => 'छपू छ्य्‌लामि नां तयादिसँ:',
 
 # Groups
-'group-wiki_user' => 'छ्य्‌लामित',
+'group-user' => 'छ्य्‌लामित',
 'group-bot' => 'बोत',
 
 # Recent changes
@@ -339,7 +339,7 @@ MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
 
 # File description page
 'file-anchor-link' => 'फाइल',
-'filehist-wiki_user' => 'छ्य्‌लामि',
+'filehist-user' => 'छ्य्‌लामि',
 
 # Random page
 'randompage' => 'छगु च्वसुइ येंकादिसं',
@@ -350,7 +350,7 @@ MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
 'withoutinterwiki-submit' => 'क्यनादिसँ',
 
 # Miscellaneous special pages
-'newpages-wiki_username' => 'छ्येलेमि नां:',
+'newpages-username' => 'छ्येलेमि नां:',
 
 # Special:AllPages
 'allpages' => 'सकल पौत',
@@ -391,13 +391,13 @@ MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
 'tooltip-feed-rss' => 'थ्व पौया RSS फीड',
 'tooltip-feed-atom' => 'थ्व पौया Atom फीड',
 'tooltip-t-contributions' => 'थ्व छ्य्‌लामिया योगदानया धलः क्यनादिसँ',
-'tooltip-t-emailwiki_user' => 'थ्व छ्य्‌लामियात इ-मेल छ्वयादिसँ',
+'tooltip-t-emailuser' => 'थ्व छ्य्‌लामियात इ-मेल छ्वयादिसँ',
 'tooltip-t-upload' => 'संचिकाएँ चढ़ाएँ',
 'tooltip-t-specialpages' => 'सकल विशेष पौस धलः',
 'tooltip-t-print' => 'थ्व पौस ध्वायेज्युगु संस्करण',
 'tooltip-t-permalink' => 'थ्व पौस थ्व संस्करणया पर्मानेन्ट लिङ्क',
 'tooltip-ca-nstab-main' => 'कन्टेन्ट पौ स्वयादिसँ',
-'tooltip-ca-nstab-wiki_user' => 'छ्य्‌लामिपौ स्वयादिसँ',
+'tooltip-ca-nstab-user' => 'छ्य्‌लामिपौ स्वयादिसँ',
 'tooltip-ca-nstab-media' => 'मिडिया पौ स्वयादिसँ',
 'tooltip-ca-nstab-special' => 'थ्व छगू विशेष पौ ख ; थ्व पौयात छिं सम्पादन याये मछिं।',
 'tooltip-ca-nstab-project' => 'ज्याझ्वः पौ स्वयादिसँ',

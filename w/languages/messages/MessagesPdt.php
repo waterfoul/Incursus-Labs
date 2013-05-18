@@ -15,7 +15,7 @@
 $fallback = 'de';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Links unjastritje:',
 'tog-justify' => 'Tatjst em Blocksautz',
 'tog-hideminor' => 'Tjliene Endarunge ute latste Tiet nich wiese',
@@ -140,7 +140,7 @@ $messages = array(
 'talk' => 'Beredsied',
 'views' => 'Aunsechte',
 'toolbox' => 'Instrumente',
-'wiki_userpage' => 'Brucka-Sied',
+'userpage' => 'Brucka-Sied',
 'projectpage' => 'Meta-Sied',
 'imagepage' => 'Datei-Sied',
 'mediawikipage' => 'Enhault wiese',
@@ -157,7 +157,7 @@ $messages = array(
 'jumptonavigation' => 'Navigatioon',
 'jumptosearch' => 'Setje',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Äwa {{SITENAME}}',
 'aboutpage' => 'Project:Äwa',
 'copyright' => 'Enhault es to habe unja $1.',
@@ -205,7 +205,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Sied',
-'nstab-wiki_user' => 'Bruckasied',
+'nstab-user' => 'Bruckasied',
 'nstab-media' => 'Media',
 'nstab-special' => 'Besondre Sied
 Spezial',
@@ -240,7 +240,7 @@ MySQL mald dem Fehla "<tt>$3: $4</tt>".',
 Dit tjemm jeweenlich soo, wan een oola nich jelaschda Link jebruckt worde es.
 
 Wan daut nich soo es, dan es doa vleicht een Fehla enne Software.
-Bitte schriew eene Notiz aun [[Special:Listwiki_users/sysop|administrator]], en lot dem dee URL weete.',
+Bitte schriew eene Notiz aun [[Special:ListUsers/sysop|administrator]], en lot dem dee URL weete.',
 'badtitle' => 'Schlajchta Titel',
 
 # Login and logout pages
@@ -248,9 +248,9 @@ Bitte schriew eene Notiz aun [[Special:Listwiki_users/sysop|administrator]], en 
 'yourpassword' => 'Pauswot:',
 'nav-login-createaccount' => 'Aunmalde',
 'loginprompt' => 'Tom Aunmalde motte Cookies bie {{SITENAME}} aktiviet senne.',
-'wiki_userlogin' => 'Aunmalde',
+'userlogin' => 'Aunmalde',
 'logout' => 'Rut hia',
-'wiki_userlogout' => 'Rut hia',
+'userlogout' => 'Rut hia',
 'notloggedin' => 'Nich aunjemaldt',
 'nologin' => "Hast tjeen Bruckakonto? '''$1'''.",
 'nologinlink' => 'Nieet Bruckakonto moake',
@@ -259,12 +259,12 @@ Bitte schriew eene Notiz aun [[Special:Listwiki_users/sysop|administrator]], en 
 'gotaccountlink' => 'Aunmalde',
 'createaccountmail' => 'Ewa Email',
 'badretype' => 'Dee beid Pauswed stemme nich ewaeen.',
-'wiki_userexists' => 'Dem Bruckanome haft aul wea.
+'userexists' => 'Dem Bruckanome haft aul wea.
 Bitte nemm eenen aundren.',
 'loginlanguagelabel' => 'Sproak: $1',
 
 # Special:PasswordReset
-'passwordreset-wiki_username' => 'Bruckernome:',
+'passwordreset-username' => 'Bruckernome:',
 
 # Edit page toolbar
 'media_tip' => 'Datei-Link',
@@ -324,7 +324,7 @@ Bitte nemm eenen aundren.',
 'preferences' => 'Ennstalinje',
 'mypreferences' => 'Miene Ennstalinje',
 'youremail' => 'Email:',
-'wiki_username' => 'Bruckanome:',
+'username' => 'Bruckanome:',
 'uid' => 'Brucka-ID:',
 'prefs-memberingroups' => 'Mettjliet von {{PLURAL:$1|group|groups}}:',
 'yourrealname' => 'Ajchta Nome:',
@@ -360,19 +360,19 @@ Bitte nemm eenen aundren.',
 'uploadbtn' => 'Datei nopplode',
 'reuploaddesc' => 'Stopp Nopplode en tridj no dee Nopplode-Sied',
 'uploadnologin' => 'Nich aunjemaldt',
-'uploadnologintext' => 'Du mottst [[Special:wiki_userLogin|aunjemaldt senne]], wan Dateie nopplode wellst.',
+'uploadnologintext' => 'Du mottst [[Special:UserLogin|aunjemaldt senne]], wan Dateie nopplode wellst.',
 'upload_directory_missing' => 'Dee Nopplode-Vetetjnis ($1) fehlt en kunn vom Webserver nich jemoakt woare.',
 'upload_directory_read_only' => 'Dee Webserver haft tjeene Schriewrajchte fe daut Nopplode-Vetetjnis ($1).',
 'uploaderror' => 'Fehla biem Nopplode',
 
 # Special:ListFiles
-'listfiles_wiki_user' => 'Brucker',
+'listfiles_user' => 'Brucker',
 
 # File description page
 'file-anchor-link' => 'Datei',
 'filehist' => 'Dokument-Jeschicht',
 'filehist-datetime' => 'Tiet',
-'filehist-wiki_user' => 'Brucker',
+'filehist-user' => 'Brucker',
 'filehist-dimensions' => 'Moten',
 'imagelinks' => 'Links',
 
@@ -400,11 +400,11 @@ Bitte nemm eenen aundren.',
 'longpages' => 'Lange Siede',
 'protectedpages' => "Be'schutste Siede",
 'newpages' => 'Nie Siede',
-'newpages-wiki_username' => 'Bruckernome:',
+'newpages-username' => 'Bruckernome:',
 'ancientpages' => 'Ellste Siede',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Brucker:',
+'specialloguserlabel' => 'Brucker:',
 'speciallogtitlelabel' => 'Tietel:',
 'all-logs-page' => 'Aule Berejchte',
 
@@ -466,7 +466,7 @@ Bitte nemm eenen aundren.',
 'unblocklink' => 'frie jewe',
 'change-blocklink' => 'Daut Blocke endre',
 'contribslink' => 'Biedrachs',
-'autoblocker' => 'Automatisch jeblockt, wiels diene IP-Adras soo es aus bie "[[wiki_user:$1|$1]]".
+'autoblocker' => 'Automatisch jeblockt, wiels diene IP-Adras soo es aus bie "[[User:$1|$1]]".
 Dee Grunt es: "$2"',
 'blocklogpage' => 'Block-Logbok',
 'blocklogentry' => 'haft [[$1]] jeblockt fe dee Tiet $2 $3',
@@ -485,7 +485,7 @@ Dee Grunt es: "$2"',
 'thumbnail-more' => 'Vejratre',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Diene Bruckersied',
+'tooltip-pt-userpage' => 'Diene Bruckersied',
 'tooltip-pt-mytalk' => 'Diene Beredsied',
 'tooltip-pt-preferences' => 'Miene Ennstalinje',
 'tooltip-pt-watchlist' => 'List fonn Siede, op de du oppausst, waut sikj endat',
@@ -519,13 +519,13 @@ Dee Grunt es: "$2"',
 'tooltip-feed-rss' => 'RSS-Feed fe dise Sied',
 'tooltip-feed-atom' => 'Atom-Feed fe dise Sied',
 'tooltip-t-contributions' => 'List mett Biedroag von disem Brucka wiese',
-'tooltip-t-emailwiki_user' => 'Eene Email aun disem Brucka schetje',
+'tooltip-t-emailuser' => 'Eene Email aun disem Brucka schetje',
 'tooltip-t-upload' => 'Dateie nopplode',
 'tooltip-t-specialpages' => 'List mett aula Spezialsiede',
 'tooltip-t-print' => 'Dretjboare Versioon von dise Sied',
 'tooltip-t-permalink' => 'Bestendja Link no dise Versioon vonne Sied',
 'tooltip-ca-nstab-main' => 'Sied-Ennhault wiese',
-'tooltip-ca-nstab-wiki_user' => 'Bruckasied wiese',
+'tooltip-ca-nstab-user' => 'Bruckasied wiese',
 'tooltip-ca-nstab-media' => 'Mediensied wiese',
 'tooltip-ca-nstab-special' => "Dit es eene Spezialsied. Dee kaun nich je'endat woare.",
 'tooltip-ca-nstab-project' => 'Portalsied wiese',
@@ -572,12 +572,12 @@ Dee Grunt es: "$2"',
 'notacceptable' => 'Dee Wiki-Server kaun dee Dote nich soo reedmoake, daut dien Jereetschauft dee lese kaun.',
 
 # Attribution
-'anonymous' => 'Onbekaunda Brucka {{PLURAL:$1|wiki_user|wiki_users}} von {{SITENAME}}',
-'sitewiki_user' => '{{SITENAME}}-Brucka $1',
+'anonymous' => 'Onbekaunda Brucka {{PLURAL:$1|user|users}} von {{SITENAME}}',
+'siteuser' => '{{SITENAME}}-Brucka $1',
 'lastmodifiedatby' => "Dise Sied word daut latste Mol aum $1, Klock $2 von $3 je'endat.",
 'othercontribs' => 'Oppe Gruntloag vonne Oabeit von $1.',
 'others' => 'aundre',
-'sitewiki_users' => '{{SITENAME}}-{{PLURAL:$2|wiki_user|wiki_users}} $1',
+'siteusers' => '{{SITENAME}}-{{PLURAL:$2|user|users}} $1',
 'creditspage' => 'Siede-Informatioone',
 'nocredits' => 'Fe dise Sied send tjeene Informatioone to habe.',
 
@@ -586,7 +586,7 @@ Dee Grunt es: "$2"',
 'spamprotectiontext' => 'Dee Sied, woone du bewoare wullst, word vom Spamschutzfilta blockiet.
 Daut woat aun eenem Link lidje, woona no eene externe Sied wiest.',
 'spamprotectionmatch' => 'Dee foljenda Tatjst word vom Spamfilta jefunge: $1',
-'spambot_wiki_username' => 'MediaWiki Spam-Uborka (Opprieme)',
+'spambot_username' => 'MediaWiki Spam-Uborka (Opprieme)',
 'spam_reverting' => 'Latste Versioon ohne Links no $1 wada trajcht jemoakt.',
 'spam_blanking' => 'Aule Versioone haude Links no $1, reed jemoakt',
 

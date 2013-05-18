@@ -33,8 +33,8 @@ class ApiParse extends ApiBase {
 	}
 
 	public function execute() {
-		// The data is hot but wiki_user-dependent, like page views, so we set vary cookies
-		$this->getMain()->setCacheMode( 'anon-public-wiki_user-private' );
+		// The data is hot but user-dependent, like page views, so we set vary cookies
+		$this->getMain()->setCacheMode( 'anon-public-user-private' );
 
 		// Get parameters
 		$params = $this->extractRequestParams();
@@ -80,7 +80,7 @@ class ApiParse extends ApiBase {
 				if ( !$rev ) {
 					$this->dieUsage( "There is no revision ID $oldid", 'missingrev' );
 				}
-				if ( !$rev->wiki_userCan( Revision::DELETED_TEXT, $this->getwiki_user() ) ) {
+				if ( !$rev->userCan( Revision::DELETED_TEXT, $this->getUser() ) ) {
 					$this->dieUsage( "You don't have permission to view deleted revisions", 'permissiondenied' );
 				}
 
@@ -96,7 +96,7 @@ class ApiParse extends ApiBase {
 					$p_result = $this->getParsedSectionOrText( $pageObj, $popts, $pageid,
 						 isset( $prop['wikitext'] ) ) ;
 				} else { // This is an old revision, so get the text differently
-					$this->text = $rev->getText( Revision::FOR_THIS_USER, $this->getwiki_user() );
+					$this->text = $rev->getText( Revision::FOR_THIS_USER, $this->getUser() );
 
 					if ( $this->section !== false ) {
 						$this->text = $this->getSectionText( $this->text, 'r' . $rev->getId() );
@@ -170,7 +170,7 @@ class ApiParse extends ApiBase {
 			}
 
 			if ( $params['pst'] || $params['onlypst'] ) {
-				$this->pstText = $wgParser->preSaveTransform( $this->text, $titleObj, $this->getwiki_user(), $popts );
+				$this->pstText = $wgParser->preSaveTransform( $this->text, $titleObj, $this->getUser(), $popts );
 			}
 			if ( $params['onlypst'] ) {
 				// Build a result and bail out

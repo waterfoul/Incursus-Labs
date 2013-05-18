@@ -37,7 +37,7 @@ $namespaceNames = array(
 $namespaceGenderAliases = array();
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Tinkikunana uraypi aspishpa rikuchina',
 'tog-justify' => 'Aspinakunata alli paktachina',
 'tog-hideminor' => 'mushuk killkaykunapak kamupi, uchilla killkaykunata pakana',
@@ -58,7 +58,7 @@ $messages = array(
 'tog-previewontop' => 'Ñauwpak rikuchik pankata killkana pankapak hawapi churana',
 'tog-nocache' => 'Wampunapi ama rikushka pankakunata yuyana',
 'tog-enotifwatchlistpages' => 'Shuk rikushka pankata shukchishka kakpika, e-chaskita kachamushpami willaway',
-'tog-enotifwiki_usertalkpages' => 'Ñukapak rimana pankapi mushuk killkayta tiyakpi, e-chaskiwan willaway',
+'tog-enotifusertalkpages' => 'Ñukapak rimana pankapi mushuk killkayta tiyakpi, e-chaskiwan willaway',
 'tog-enotifminoredits' => 'Mushuk killkayta uchilla kakpipash e-chaskiwan willaway',
 'tog-shownumberswatching' => 'Mashna rurakkunaka chay pankata rikukuncha rikuchina',
 'tog-oldsig' => 'Kunan pachapak aspina:',
@@ -224,7 +224,7 @@ $messages = array(
 'talk' => 'Rimanakuna',
 'views' => 'Rikunakuna',
 'toolbox' => 'Llankanakuna',
-'wiki_userpage' => 'Chay rurakpa pankata rikuna',
+'userpage' => 'Chay rurakpa pankata rikuna',
 'projectpage' => 'Ruraykamay pankata rikuna',
 'imagepage' => 'Kay archivupak pankata rikuna',
 'mediawikipage' => 'Willay pankata rikuna',
@@ -250,7 +250,7 @@ $1',
 'pool-queuefull' => 'Lankankapak suyana uku ña huntashkami',
 'pool-errorunknown' => 'Na riksishka pantay',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}}manta',
 'aboutpage' => 'Project:{{SITENAME}}manta',
 'copyright' => 'Kay panka hawapi, $1 killkakunapak hayñikunaka tiyanmi',
@@ -309,7 +309,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Panka',
-'nstab-wiki_user' => 'Rurakpa panka',
+'nstab-user' => 'Rurakpa panka',
 'nstab-media' => 'Media',
 'nstab-special' => 'Sapak pankakuna',
 'nstab-project' => 'Ruraykamaypa panka',
@@ -328,7 +328,7 @@ $1',
 'laggedslavemode' => "'''Rikupay''': Kay pankapi, shina kakpi, mushuk killkaykuna illankacha.",
 'missing-article' => "Hatun kamupi shuk killkayta mana tarin, shinapash chay killkayta tiyanami kan. Paypa chay shutima kan : «$1» $2.
 Icha shuk ñawpak pachamanta ''diff'' ñamana tiyanchu, icha kay tinkika shuk pichashka pankapa shutimi kan. 
-Mana shina kakpi, shuk [[Special:Listwiki_users/sysop|kamachyik]]man willapay, payta URL killkata willapay.",
+Mana shina kakpi, shuk [[Special:ListUsers/sysop|kamachyik]]man willapay, payta URL killkata willapay.",
 'missingarticle-rev' => '(Killkay#: $1)',
 'internalerror' => 'Antawa ukupi pantay tiyarka',
 'internalerror_info' => 'Antawa ukupi pantay tiyarka: $1',
@@ -361,15 +361,15 @@ Shina kakpika, shuk rurakka ña pankata pichankacha.',
 'login' => 'Yaykuna',
 'nav-login-createaccount' => 'Yaykuna',
 'loginprompt' => '{{SITENAME}}man yaykunkapak <i>cookies</i>-man ari ninami kapanki.',
-'wiki_userlogin' => 'Yaykuna',
+'userlogin' => 'Yaykuna',
 'logout' => 'Llukshina',
-'wiki_userlogout' => 'Llukshina',
+'userlogout' => 'Llukshina',
 'nologin' => "Mana rurak shutita charinchu ? '''$1'''.",
 'nologinlink' => 'Shuk rurak shutita akllana',
 'createaccount' => 'Shuk rurak shutita akllana',
 'gotaccount' => "Ñachu rurak shutita charinchu ? '''$1'''.",
 'gotaccountlink' => 'Yaykuna',
-'wiki_userlogin-resetlink' => 'Kikinpa yaykunaman yuyaykunata kunkapankichu ?',
+'userlogin-resetlink' => 'Kikinpa yaykunaman yuyaykunata kunkapankichu ?',
 'mailmypassword' => 'Musuq yaykunkapak rimayta e-chaskiwan kachawapay',
 'loginlanguagelabel' => 'Shimi: $1',
 
@@ -526,7 +526,7 @@ Shuk rurakkunaka kikinpa e-chaski ''dirección''ta mana yachankachu.",
 
 'grouppage-sysop' => '{{ns:project}}:Kamachik',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Rurakpa hayñikunapa kamu',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -589,7 +589,7 @@ Shuk rurakkunaka kikinpa e-chaski ''dirección''ta mana yachankachu.",
 'filehist-datetime' => 'Puncha/Pacha',
 'filehist-thumb' => 'Uchilla rikuchiy',
 'filehist-thumbtext' => '$1-pak uchilla rikuchiy',
-'filehist-wiki_user' => 'Rurak',
+'filehist-user' => 'Rurak',
 'filehist-dimensions' => 'Mashna hatun',
 'filehist-comment' => 'Willana',
 'imagelinks' => 'Archivu churapaykuna',
@@ -610,7 +610,7 @@ Shuk rurakkunaka kikinpa e-chaski ''dirección''ta mana yachankachu.",
 'nbytes' => '$1 {{PLURAL:$1|byte|byte}}',
 'nmembers' => '$1 {{PLURAL:$1|panka|pankakuna}}',
 'prefixindex' => 'Tukuy kallarikshutiyuk pankakunaka',
-'wiki_usercreated' => '{{GENDER:$3|}}$1 punchapi $2 pachapi kamashka',
+'usercreated' => '{{GENDER:$3|}}$1 punchapi $2 pachapi kamashka',
 'newpages' => 'Mushuk pankakuna',
 'move' => 'Apakuy',
 'movethispage' => 'Kay pankaman shuk mushuk shutita karana',
@@ -641,14 +641,14 @@ Shuk rurakkunaka kikinpa e-chaski ''dirección''ta mana yachankachu.",
 'linksearch' => 'hawaman tinkikunata maskana',
 'linksearch-line' => '$1 pankaka $2-manta tinkishkami kan',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Rurakkununata kamaykunapa kamu',
+# Special:Log/newusers
+'newuserlogpage' => 'Rurakkununata kamaykunapa kamu',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(Kay tantanakuypa rurakkunapa shutikuna)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Kay rurakman e-chaskita kachana',
+# E-mail user
+'emailuser' => 'Kay rurakman e-chaskita kachana',
 
 # Watchlist
 'watchlist' => 'Rikukushka pankakuna',
@@ -717,7 +717,7 @@ $2 rikpika, ima pankakunaka pichashkami kan yachakupanki.',
 'sp-contributions-logs' => 'kamukuna',
 'sp-contributions-talk' => 'rimanakuy',
 'sp-contributions-search' => 'Killkachiykunata maskana',
-'sp-contributions-wiki_username' => 'IP yupay icha rurakpa shuti:',
+'sp-contributions-username' => 'IP yupay icha rurakpa shuti:',
 'sp-contributions-toponly' => 'Ashtawan mushuk killkaykunallatami rikuchina',
 'sp-contributions-submit' => 'Maskana',
 
@@ -780,7 +780,7 @@ Shuk shutita akllapay.',
 'thumbnail_error' => 'Uchilla rikchata kamanata kaymanta mana usharkanchikchu: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Kanpak rurak panka',
+'tooltip-pt-userpage' => 'Kanpak rurak panka',
 'tooltip-pt-mytalk' => 'Kanpak rimanakuy',
 'tooltip-pt-preferences' => 'munaykuna',
 'tooltip-pt-watchlist' => 'Chay pankakunapa mushuk killkaykunata rikukupanki',
@@ -813,13 +813,13 @@ Shuk shutita akllapay.',
 'tooltip-feed-rss' => 'Kay pankapa RSS mikuchiy',
 'tooltip-feed-atom' => 'Sindicación Atom de esta página',
 'tooltip-t-contributions' => 'Kay rurakpa killkaykunata rikuna',
-'tooltip-t-emailwiki_user' => 'Kay rurakman e-chaskita kachana',
+'tooltip-t-emailuser' => 'Kay rurakman e-chaskita kachana',
 'tooltip-t-upload' => 'Rikchakunata, multimidiya archivukunata apakuna',
 'tooltip-t-specialpages' => 'Tukuy sapak pankakuna',
 'tooltip-t-print' => 'Kay pankata impresoraman tikrachinkapa',
 'tooltip-t-permalink' => 'Enlace permanente a esta versión de la página',
 'tooltip-ca-nstab-main' => 'Pankata rikuna',
-'tooltip-ca-nstab-wiki_user' => 'Chay rurakpa pankata rikuna',
+'tooltip-ca-nstab-user' => 'Chay rurakpa pankata rikuna',
 'tooltip-ca-nstab-special' => 'Kayka shuk sapak pankami kan, kaypi killkanata mana ushanki',
 'tooltip-ca-nstab-project' => 'Ruraykamay pankata rikuna',
 'tooltip-ca-nstab-image' => 'Kay rikchapak pankaman rina',

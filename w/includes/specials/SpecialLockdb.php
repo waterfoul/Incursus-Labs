@@ -37,10 +37,10 @@ class SpecialLockdb extends FormSpecialPage {
 		return false;
 	}
 
-	public function checkExecutePermissions( wiki_user $wiki_user ) {
+	public function checkExecutePermissions( User $user ) {
 		global $wgReadOnlyFile;
 
-		parent::checkExecutePermissions( $wiki_user );
+		parent::checkExecutePermissions( $user );
 		# If the lock file isn't writable, we can do sweet bugger all
 		if ( !is_writable( dirname( $wgReadOnlyFile ) ) ) {
 			throw new ErrorPageError( 'lockdb', 'lockfilenotwritable' );
@@ -88,7 +88,7 @@ class SpecialLockdb extends FormSpecialPage {
 		fwrite( $fp, $data['Reason'] );
 		$timestamp = wfTimestampNow();
 		fwrite( $fp, "\n<p>" . $this->msg( 'lockedbyandtime',
-			$this->getwiki_user()->getName(),
+			$this->getUser()->getName(),
 			$wgContLang->date( $timestamp, false, false ),
 			$wgContLang->time( $timestamp, false, false )
 		)->inContentLanguage()->text() . "</p>\n" );

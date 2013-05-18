@@ -25,7 +25,7 @@
  */
 
 /**
- * API module to allow wiki_users to watch a page
+ * API module to allow users to watch a page
  *
  * @ingroup API
  */
@@ -36,8 +36,8 @@ class ApiWatch extends ApiBase {
 	}
 
 	public function execute() {
-		$wiki_user = $this->getwiki_user();
-		if ( !$wiki_user->isLoggedIn() ) {
+		$user = $this->getUser();
+		if ( !$user->isLoggedIn() ) {
 			$this->dieUsage( 'You must be logged-in to have a watchlist', 'notloggedin' );
 		}
 
@@ -53,11 +53,11 @@ class ApiWatch extends ApiBase {
 		if ( $params['unwatch'] ) {
 			$res['unwatched'] = '';
 			$res['message'] = $this->msg( 'removedwatchtext', $title->getPrefixedText() )->title( $title )->parseAsBlock();
-			$success = UnwatchAction::doUnwatch( $title, $wiki_user );
+			$success = UnwatchAction::doUnwatch( $title, $user );
 		} else {
 			$res['watched'] = '';
 			$res['message'] = $this->msg( 'addedwatchtext', $title->getPrefixedText() )->title( $title )->parseAsBlock();
-			$success = WatchAction::doWatch( $title, $wiki_user );
+			$success = WatchAction::doWatch( $title, $user );
 		}
 		if ( !$success ) {
 			$this->dieUsageMsg( 'hookaborted' );
@@ -115,7 +115,7 @@ class ApiWatch extends ApiBase {
 	}
 
 	public function getDescription() {
-		return 'Add or remove a page from/to the current wiki_user\'s watchlist';
+		return 'Add or remove a page from/to the current user\'s watchlist';
 	}
 
 	public function getPossibleErrors() {

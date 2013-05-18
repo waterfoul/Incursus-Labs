@@ -1,6 +1,6 @@
 <?php
 /**
- * Check that database wiki_usernames are actually valid.
+ * Check that database usernames are actually valid.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,37 +25,37 @@
 require_once( __DIR__ . '/Maintenance.php' );
 
 /**
- * Maintenance script to check that database wiki_usernames are actually valid.
+ * Maintenance script to check that database usernames are actually valid.
  *
- * An existing wiki_usernames can become invalid if wiki_user::isValidwiki_userName()
+ * An existing usernames can become invalid if User::isValidUserName()
  * is altered or if we change the $wgMaxNameChars
  *
  * @ingroup Maintenance
  */
-class Checkwiki_usernames extends Maintenance {
+class CheckUsernames extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Verify that database wiki_usernames are actually valid";
+		$this->mDescription = "Verify that database usernames are actually valid";
 	}
 
 	function execute() {
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
-		$res = r->select( 'wiki_user',
-			array( 'wiki_user_id', 'wiki_user_name' ),
+		$res = $dbr->select( 'user',
+			array( 'user_id', 'user_name' ),
 			null,
 			__METHOD__
 		);
 
 		foreach ( $res as $row ) {
-			if ( ! wiki_user::isValidwiki_userName( $row->wiki_user_name ) ) {
-				$this->error( sprintf( "%s: %6d: '%s'\n", wfWikiID(), $row->wiki_user_id, $row->wiki_user_name ) );
-				wfDebugLog( 'checkwiki_usernames', $row->wiki_user_name );
+			if ( ! User::isValidUserName( $row->user_name ) ) {
+				$this->error( sprintf( "%s: %6d: '%s'\n", wfWikiID(), $row->user_id, $row->user_name ) );
+				wfDebugLog( 'checkUsernames', $row->user_name );
 			}
 		}
 	}
 }
 
-$maintClass = "Checkwiki_usernames";
+$maintClass = "CheckUsernames";
 require_once( RUN_MAINTENANCE_IF_MAIN );

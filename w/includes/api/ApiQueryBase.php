@@ -202,14 +202,14 @@ abstract class ApiQueryBase extends ApiBase {
 		$isDirNewer = ( $dir === 'newer' );
 		$after = ( $isDirNewer ? '>=' : '<=' );
 		$before = ( $isDirNewer ? '<=' : '>=' );
-		 = $this->getDB();
+		$db = $this->getDB();
 
 		if ( !is_null( $start ) ) {
-			$this->addWhere( $field . $after . ->addQuotes( $start ) );
+			$this->addWhere( $field . $after . $db->addQuotes( $start ) );
 		}
 
 		if ( !is_null( $end ) ) {
-			$this->addWhere( $field . $before . ->addQuotes( $end ) );
+			$this->addWhere( $field . $before . $db->addQuotes( $end ) );
 		}
 
 		if ( $sort ) {
@@ -232,9 +232,9 @@ abstract class ApiQueryBase extends ApiBase {
 	 * @param $sort bool
 	 */
 	protected function addTimestampWhereRange( $field, $dir, $start, $end, $sort = true ) {
-		 = $this->getDb();
+		$db = $this->getDb();
 		$this->addWhereRange( $field, $dir,
-			->timestampOrNull( $start ), ->timestampOrNull( $end ), $sort );
+			$db->timestampOrNull( $start ), $db->timestampOrNull( $end ), $sort );
 	}
 
 	/**
@@ -268,10 +268,10 @@ abstract class ApiQueryBase extends ApiBase {
 		$join_conds = array_merge( $this->join_conds, isset( $extraQuery['join_conds'] ) ? (array)$extraQuery['join_conds'] : array() );
 
 		// getDB has its own profileDBIn/Out calls
-		 = $this->getDB();
+		$db = $this->getDB();
 
 		$this->profileDBIn();
-		$res = ->select( $tables, $fields, $where, $method, $options, $join_conds );
+		$res = $db->select( $tables, $fields, $where, $method, $options, $join_conds );
 		$this->profileDBOut();
 
 		return $res;
@@ -283,9 +283,9 @@ abstract class ApiQueryBase extends ApiBase {
 	 * @return bool true if acceptable, false otherwise
 	 */
 	protected function checkRowCount() {
-		 = $this->getDB();
+		$db = $this->getDB();
 		$this->profileDBIn();
-		$rowcount = ->estimateRowCount( $this->tables, $this->fields, $this->where, __METHOD__, $this->options );
+		$rowcount = $db->estimateRowCount( $this->tables, $this->fields, $this->where, __METHOD__, $this->options );
 		$this->profileDBOut();
 
 		global $wgAPIMaxDBRows;
@@ -390,12 +390,12 @@ abstract class ApiQueryBase extends ApiBase {
 	 * Selects the query database connection with the given name.
 	 * See ApiQuery::getNamedDB() for more information
 	 * @param $name string Name to assign to the database connection
-	 * @param  int One of the DB_* constants
+	 * @param $db int One of the DB_* constants
 	 * @param $groups array Query groups
 	 * @return DatabaseBase
 	 */
-	public function selectNamedDB( $name, , $groups ) {
-		$this->mDb = $this->getQuery()->getNamedDB( $name, , $groups );
+	public function selectNamedDB( $name, $db, $groups ) {
+		$this->mDb = $this->getQuery()->getNamedDB( $name, $db, $groups );
 	}
 
 	/**
@@ -480,7 +480,7 @@ abstract class ApiQueryBase extends ApiBase {
 	 * @return null|string
 	 */
 	public function prepareUrlQuerySearchString( $query = null, $protocol = null) {
-		 = $this->getDb();
+		$db = $this->getDb();
 		if ( !is_null( $query ) || $query != '' ) {
 			if ( is_null( $protocol ) ) {
 				$protocol = 'http://';
@@ -492,28 +492,28 @@ abstract class ApiQueryBase extends ApiBase {
 			}
 
 			$likeQuery = LinkFilter::keepOneWildcard( $likeQuery );
-			return 'el_index ' . ->buildLike( $likeQuery );
+			return 'el_index ' . $db->buildLike( $likeQuery );
 		} elseif ( !is_null( $protocol ) ) {
-			return 'el_index ' . ->buildLike( "$protocol", ->anyString() );
+			return 'el_index ' . $db->buildLike( "$protocol", $db->anyString() );
 		}
 
 		return null;
 	}
 
 	/**
-	 * Filters hidden wiki_users (where the wiki_user doesn't have the right to view them)
+	 * Filters hidden users (where the user doesn't have the right to view them)
 	 * Also adds relevant block information
 	 *
 	 * @param bool $showBlockInfo
 	 * @return void
 	 */
-	public function showHiddenwiki_usersAddBlockInfo( $showBlockInfo ) {
-		$wiki_userCanViewHiddenwiki_users = $this->getwiki_user()->isAllowed( 'hidewiki_user' );
+	public function showHiddenUsersAddBlockInfo( $showBlockInfo ) {
+		$userCanViewHiddenUsers = $this->getUser()->isAllowed( 'hideuser' );
 
-		if ( $showBlockInfo || !$wiki_userCanViewHiddenwiki_users ) {
+		if ( $showBlockInfo || !$userCanViewHiddenUsers ) {
 			$this->addTables( 'ipblocks' );
 			$this->addJoinConds( array(
-				'ipblocks' => array( 'LEFT JOIN', 'ipb_wiki_user=wiki_user_id' ),
+				'ipblocks' => array( 'LEFT JOIN', 'ipb_user=user_id' ),
 			) );
 
 			$this->addFields( 'ipb_deleted' );
@@ -523,7 +523,7 @@ abstract class ApiQueryBase extends ApiBase {
 			}
 
 			// Don't show hidden names
-			if ( !$wiki_userCanViewHiddenwiki_users ) {
+			if ( !$userCanViewHiddenUsers ) {
 				$this->addWhere( 'ipb_deleted = 0 OR ipb_deleted IS NULL' );
 			}
 		}

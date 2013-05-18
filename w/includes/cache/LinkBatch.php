@@ -68,10 +68,10 @@ class LinkBatch {
 
 	/**
 	 * @param $ns int
-	 * @param key string
+	 * @param $dbkey string
 	 * @return mixed
 	 */
-	public function add( $ns, key ) {
+	public function add( $ns, $dbkey ) {
 		if ( $ns < 0 ) {
 			return;
 		}
@@ -79,7 +79,7 @@ class LinkBatch {
 			$this->data[$ns] = array();
 		}
 
-		$this->data[$ns][str_replace( ' ', '_', key )] = 1;
+		$this->data[$ns][str_replace( ' ', '_', $dbkey )] = 1;
 	}
 
 	/**
@@ -163,9 +163,9 @@ class LinkBatch {
 		}
 
 		// The remaining links in $data are bad links, register them as such
-		foreach ( $remaining as $ns => keys ) {
-			foreach ( keys as key => $unused ) {
-				$title = Title::makeTitle( $ns, key );
+		foreach ( $remaining as $ns => $dbkeys ) {
+			foreach ( $dbkeys as $dbkey => $unused ) {
+				$title = Title::makeTitle( $ns, $dbkey );
 				$cache->addBadLinkObj( $title );
 				$ids[$title->getPrefixedDBkey()] = 0;
 			}
@@ -184,24 +184,24 @@ class LinkBatch {
 		wfProfileIn( __METHOD__ );
 
 		// This is similar to LinkHolderArray::replaceInternal
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$table = 'page';
 		$fields = array( 'page_id', 'page_namespace', 'page_title', 'page_len',
 			'page_is_redirect', 'page_latest' );
-		$conds = $this->constructSet( 'page', r );
+		$conds = $this->constructSet( 'page', $dbr );
 
 		// Do query
 		$caller = __METHOD__;
 		if ( strval( $this->caller ) !== '' ) {
 			$caller .= " (for {$this->caller})";
 		}
-		$res = r->select( $table, $fields, $conds, $caller );
+		$res = $dbr->select( $table, $fields, $conds, $caller );
 		wfProfileOut( __METHOD__ );
 		return $res;
 	}
 
 	/**
-	 * Do (and cache) {{GENDER:...}} information for wiki_userpages in this LinkBatch
+	 * Do (and cache) {{GENDER:...}} information for userpages in this LinkBatch
 	 *
 	 * @return bool whether the query was successful
 	 */
@@ -224,10 +224,10 @@ class LinkBatch {
 	 * Construct a WHERE clause which will match all the given titles.
 	 *
 	 * @param $prefix String: the appropriate table's field name prefix ('page', 'pl', etc)
-	 * @param  DatabaseBase object to use
+	 * @param $db DatabaseBase object to use
 	 * @return mixed string with SQL where clause fragment, or false if no items.
 	 */
-	public function constructSet( $prefix,  ) {
-		return ->makeWhereFrom2d( $this->data, "{$prefix}_namespace", "{$prefix}_title" );
+	public function constructSet( $prefix, $db ) {
+		return $db->makeWhereFrom2d( $this->data, "{$prefix}_namespace", "{$prefix}_title" );
 	}
 }

@@ -635,12 +635,12 @@ class MWMemcached {
 	/**
 	 * Sets the debug flag
 	 *
-	 * @param g Boolean: TRUE for debugging, FALSE otherwise
+	 * @param $dbg Boolean: TRUE for debugging, FALSE otherwise
 	 *
 	 * @see     MWMemcached::__construct
 	 */
-	public function set_debug( g ) {
-		$this->_debug = g;
+	public function set_debug( $dbg ) {
+		$this->_debug = $dbg;
 	}
 
 	// }}}

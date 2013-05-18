@@ -1,6 +1,6 @@
 <?php
 /**
- * Convert wiki_user options to the new `wiki_user_properties` table.
+ * Convert user options to the new `user_properties` table.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,39 +24,39 @@
 require_once( __DIR__ . '/Maintenance.php' );
 
 /**
- * Maintenance script to convert wiki_user options to the new `wiki_user_properties` table.
+ * Maintenance script to convert user options to the new `user_properties` table.
  *
- * Do each wiki_user sequentially, since accounts can't be deleted
+ * Do each user sequentially, since accounts can't be deleted
  *
  * @ingroup Maintenance
  */
-class Convertwiki_userOptions extends Maintenance {
+class ConvertUserOptions extends Maintenance {
 
 	private $mConversionCount = 0;
 
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Convert wiki_user options from old to new system";
+		$this->mDescription = "Convert user options from old to new system";
 	}
 
 	public function execute() {
-		$this->output( "...batch conversion of wiki_user_options: " );
+		$this->output( "...batch conversion of user_options: " );
 		$id = 0;
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
-		if ( !w->fieldExists( 'wiki_user', 'wiki_user_options', __METHOD__ ) ) {
+		if ( !$dbw->fieldExists( 'user', 'user_options', __METHOD__ ) ) {
 			$this->output( "nothing to migrate. " );
 			return;
 		}
 		while ( $id !== null ) {
-			$idCond = 'wiki_user_id > ' . w->addQuotes( $id );
-			$optCond = "wiki_user_options != " . w->addQuotes( '' ); // For compatibility
-			$res = w->select( 'wiki_user', '*',
+			$idCond = 'user_id > ' . $dbw->addQuotes( $id );
+			$optCond = "user_options != " . $dbw->addQuotes( '' ); // For compatibility
+			$res = $dbw->select( 'user', '*',
 				array( $optCond, $idCond ), __METHOD__,
 				array( 'LIMIT' => 50, 'FOR UPDATE' )
 			);
-			$id = $this->convertOptionBatch( $res, w );
-			w->commit();
+			$id = $this->convertOptionBatch( $res, $dbw );
+			$dbw->commit();
 
 			wfWaitForSlaves();
 
@@ -64,36 +64,36 @@ class Convertwiki_userOptions extends Maintenance {
 				$this->output( "--Converted to ID $id\n" );
 			}
 		}
-		$this->output( "done. Converted " . $this->mConversionCount . " wiki_user records.\n" );
+		$this->output( "done. Converted " . $this->mConversionCount . " user records.\n" );
 	}
 
 	/**
 	 * @param $res
-	 * @param w DatabaseBase
+	 * @param $dbw DatabaseBase
 	 * @return null|int
 	 */
-	function convertOptionBatch( $res, w ) {
+	function convertOptionBatch( $res, $dbw ) {
 		$id = null;
 		foreach ( $res as $row ) {
 			$this->mConversionCount++;
 
-			$u = wiki_user::newFromRow( $row );
+			$u = User::newFromRow( $row );
 
 			$u->saveSettings();
 
-			// Do this here as saveSettings() doesn't set wiki_user_options to '' anymore!
-			w->update(
-				'wiki_user',
-				array( 'wiki_user_options' => '' ),
-				array( 'wiki_user_id' => $row->wiki_user_id ),
+			// Do this here as saveSettings() doesn't set user_options to '' anymore!
+			$dbw->update(
+				'user',
+				array( 'user_options' => '' ),
+				array( 'user_id' => $row->user_id ),
 				__METHOD__
 			);
-			$id = $row->wiki_user_id;
+			$id = $row->user_id;
 		}
 
 		return $id;
 	}
 }
 
-$maintClass = "Convertwiki_userOptions";
+$maintClass = "ConvertUserOptions";
 require_once( RUN_MAINTENANCE_IF_MAIN );

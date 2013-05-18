@@ -52,7 +52,7 @@ class MediaWikiErrorsNamepageTestCase extends MediaWikiInstallationCommonFunctio
         parent::clickContinueButton();
         $this->assertEquals( "Enter a site name.",
                 $this->getText( LINK_DIV."div[2]/div[2]" ));
-        $this->assertEquals( "Enter an administrator wiki_username.",
+        $this->assertEquals( "Enter an administrator username.",
                 $this->getText( LINK_DIV."div[3]/div[2]" ));
         $this->assertEquals( "Enter a password for the administrator account.",
                 $this->getText( LINK_DIV."div[4]/div[2]" ));
@@ -100,7 +100,7 @@ class MediaWikiErrorsNamepageTestCase extends MediaWikiInstallationCommonFunctio
         // Verify warning message for blank 'Your name'
         $this->type( "config__AdminName", " " );
         parent::clickContinueButton();
-        $this->assertEquals( "Enter an administrator wiki_username.",
+        $this->assertEquals( "Enter an administrator username.",
                 $this->getText( LINK_DIV."div[2]/div[2]" ));
 
         $this->type( "config_wgSitename", VALID_WIKI_NAME );

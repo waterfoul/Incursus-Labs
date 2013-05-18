@@ -27,7 +27,7 @@ div#column-content div#content {
  * That's good in normal browsers, but in IE7 it needs to not be flipped for some daft reason.
  * Also clear the right margin (originally margin-left: 1em)
  */
-li#pt-wiki_userpage, li#pt-anonwiki_userpage, li#pt-login {
+li#pt-userpage, li#pt-anonuserpage, li#pt-login {
 	padding-left: 20px;
 	margin-right: 0;
 }

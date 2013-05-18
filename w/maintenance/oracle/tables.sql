@@ -2,64 +2,64 @@
 define mw_prefix='{$wgDBprefix}';
 
 
-CREATE SEQUENCE wiki_user_wiki_user_id_seq MINVALUE 0 START WITH 0;
-CREATE TABLE &mw_prefix.mwwiki_user ( -- replace reserved word 'wiki_user'
-  wiki_user_id                   NUMBER  NOT NULL,
-  wiki_user_name                 VARCHAR2(255)     NOT NULL,
-  wiki_user_real_name            VARCHAR2(512),
-  wiki_user_password             VARCHAR2(255),
-  wiki_user_newpassword          VARCHAR2(255),
-  wiki_user_newpass_time         TIMESTAMP(6) WITH TIME ZONE,
-  wiki_user_token                VARCHAR2(32),
-  wiki_user_email                VARCHAR2(255),
-  wiki_user_email_token          VARCHAR2(32),
-  wiki_user_email_token_expires  TIMESTAMP(6) WITH TIME ZONE,
-  wiki_user_email_authenticated  TIMESTAMP(6) WITH TIME ZONE,
-  wiki_user_options              CLOB,
-  wiki_user_touched              TIMESTAMP(6) WITH TIME ZONE,
-  wiki_user_registration         TIMESTAMP(6) WITH TIME ZONE,
-  wiki_user_editcount            NUMBER
+CREATE SEQUENCE user_user_id_seq MINVALUE 0 START WITH 0;
+CREATE TABLE &mw_prefix.mwuser ( -- replace reserved word 'user'
+  user_id                   NUMBER  NOT NULL,
+  user_name                 VARCHAR2(255)     NOT NULL,
+  user_real_name            VARCHAR2(512),
+  user_password             VARCHAR2(255),
+  user_newpassword          VARCHAR2(255),
+  user_newpass_time         TIMESTAMP(6) WITH TIME ZONE,
+  user_token                VARCHAR2(32),
+  user_email                VARCHAR2(255),
+  user_email_token          VARCHAR2(32),
+  user_email_token_expires  TIMESTAMP(6) WITH TIME ZONE,
+  user_email_authenticated  TIMESTAMP(6) WITH TIME ZONE,
+  user_options              CLOB,
+  user_touched              TIMESTAMP(6) WITH TIME ZONE,
+  user_registration         TIMESTAMP(6) WITH TIME ZONE,
+  user_editcount            NUMBER
 );
-ALTER TABLE &mw_prefix.mwwiki_user ADD CONSTRAINT &mw_prefix.mwwiki_user_pk PRIMARY KEY (wiki_user_id);
-CREATE UNIQUE INDEX &mw_prefix.mwwiki_user_u01 ON &mw_prefix.mwwiki_user (wiki_user_name);
-CREATE INDEX &mw_prefix.mwwiki_user_i01 ON &mw_prefix.mwwiki_user (wiki_user_email_token);
-CREATE INDEX &mw_prefix.mwwiki_user_i02 ON &mw_prefix.mwwiki_user (wiki_user_email, wiki_user_name);
+ALTER TABLE &mw_prefix.mwuser ADD CONSTRAINT &mw_prefix.mwuser_pk PRIMARY KEY (user_id);
+CREATE UNIQUE INDEX &mw_prefix.mwuser_u01 ON &mw_prefix.mwuser (user_name);
+CREATE INDEX &mw_prefix.mwuser_i01 ON &mw_prefix.mwuser (user_email_token);
+CREATE INDEX &mw_prefix.mwuser_i02 ON &mw_prefix.mwuser (user_email, user_name);
 
--- Create a dummy wiki_user to satisfy fk contraints especially with revisions
-INSERT INTO &mw_prefix.mwwiki_user
-  VALUES (wiki_user_wiki_user_id_seq.nextval,'Anonymous',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL, '', current_timestamp, current_timestamp, 0);
+-- Create a dummy user to satisfy fk contraints especially with revisions
+INSERT INTO &mw_prefix.mwuser
+  VALUES (user_user_id_seq.nextval,'Anonymous',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL, '', current_timestamp, current_timestamp, 0);
 
-CREATE TABLE &mw_prefix.wiki_user_groups (
-  ug_wiki_user   NUMBER      DEFAULT 0 NOT NULL,
+CREATE TABLE &mw_prefix.user_groups (
+  ug_user   NUMBER      DEFAULT 0 NOT NULL,
   ug_group  VARCHAR2(32)     NOT NULL
 );
-ALTER TABLE &mw_prefix.wiki_user_groups ADD CONSTRAINT &mw_prefix.wiki_user_groups_fk1 FOREIGN KEY (ug_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
-CREATE UNIQUE INDEX &mw_prefix.wiki_user_groups_u01 ON &mw_prefix.wiki_user_groups (ug_wiki_user,ug_group);
-CREATE INDEX &mw_prefix.wiki_user_groups_i01 ON &mw_prefix.wiki_user_groups (ug_group);
+ALTER TABLE &mw_prefix.user_groups ADD CONSTRAINT &mw_prefix.user_groups_fk1 FOREIGN KEY (ug_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
+CREATE UNIQUE INDEX &mw_prefix.user_groups_u01 ON &mw_prefix.user_groups (ug_user,ug_group);
+CREATE INDEX &mw_prefix.user_groups_i01 ON &mw_prefix.user_groups (ug_group);
 
-CREATE TABLE &mw_prefix.wiki_user_former_groups (
-  ufg_wiki_user   NUMBER      DEFAULT 0 NOT NULL,
+CREATE TABLE &mw_prefix.user_former_groups (
+  ufg_user   NUMBER      DEFAULT 0 NOT NULL,
   ufg_group  VARCHAR2(16)     NOT NULL
 );
-ALTER TABLE &mw_prefix.wiki_user_former_groups ADD CONSTRAINT &mw_prefix.wiki_user_former_groups_fk1 FOREIGN KEY (ufg_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
-CREATE UNIQUE INDEX &mw_prefix.wiki_user_former_groups_u01 ON &mw_prefix.wiki_user_former_groups (ufg_wiki_user,ufg_group);
+ALTER TABLE &mw_prefix.user_former_groups ADD CONSTRAINT &mw_prefix.user_former_groups_fk1 FOREIGN KEY (ufg_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
+CREATE UNIQUE INDEX &mw_prefix.user_former_groups_u01 ON &mw_prefix.user_former_groups (ufg_user,ufg_group);
 
-CREATE TABLE &mw_prefix.wiki_user_newtalk (
-  wiki_user_id  NUMBER DEFAULT 0 NOT NULL,
-  wiki_user_ip  VARCHAR2(40)        NULL,
-  wiki_user_last_timestamp         TIMESTAMP(6) WITH TIME ZONE
+CREATE TABLE &mw_prefix.user_newtalk (
+  user_id  NUMBER DEFAULT 0 NOT NULL,
+  user_ip  VARCHAR2(40)        NULL,
+  user_last_timestamp         TIMESTAMP(6) WITH TIME ZONE
 );
-ALTER TABLE &mw_prefix.wiki_user_newtalk ADD CONSTRAINT &mw_prefix.wiki_user_newtalk_fk1 FOREIGN KEY (wiki_user_id) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
-CREATE INDEX &mw_prefix.wiki_user_newtalk_i01 ON &mw_prefix.wiki_user_newtalk (wiki_user_id);
-CREATE INDEX &mw_prefix.wiki_user_newtalk_i02 ON &mw_prefix.wiki_user_newtalk (wiki_user_ip);
+ALTER TABLE &mw_prefix.user_newtalk ADD CONSTRAINT &mw_prefix.user_newtalk_fk1 FOREIGN KEY (user_id) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX &mw_prefix.user_newtalk_i01 ON &mw_prefix.user_newtalk (user_id);
+CREATE INDEX &mw_prefix.user_newtalk_i02 ON &mw_prefix.user_newtalk (user_ip);
 
-CREATE TABLE &mw_prefix.wiki_user_properties (
-  up_wiki_user NUMBER NOT NULL,
+CREATE TABLE &mw_prefix.user_properties (
+  up_user NUMBER NOT NULL,
   up_property VARCHAR2(255) NOT NULL,
   up_value CLOB
 );
-CREATE UNIQUE INDEX &mw_prefix.wiki_user_properties_u01 on &mw_prefix.wiki_user_properties (up_wiki_user,up_property);
-CREATE INDEX &mw_prefix.wiki_user_properties_i01 on &mw_prefix.wiki_user_properties (up_property);
+CREATE UNIQUE INDEX &mw_prefix.user_properties_u01 on &mw_prefix.user_properties (up_user,up_property);
+CREATE INDEX &mw_prefix.user_properties_i01 on &mw_prefix.user_properties (up_property);
 
 CREATE SEQUENCE page_page_id_seq;
 CREATE TABLE &mw_prefix.page (
@@ -99,8 +99,8 @@ CREATE TABLE &mw_prefix.revision (
   rev_page        NUMBER      NOT NULL,
   rev_text_id     NUMBER          NULL,
   rev_comment     VARCHAR2(255),
-  rev_wiki_user        NUMBER      DEFAULT 0 NOT NULL,
-  rev_wiki_user_text   VARCHAR2(255)         NOT NULL,
+  rev_user        NUMBER      DEFAULT 0 NOT NULL,
+  rev_user_text   VARCHAR2(255)         NOT NULL,
   rev_timestamp   TIMESTAMP(6) WITH TIME ZONE  NOT NULL,
   rev_minor_edit  CHAR(1)         DEFAULT '0' NOT NULL,
   rev_deleted     CHAR(1)         DEFAULT '0' NOT NULL,
@@ -110,13 +110,13 @@ CREATE TABLE &mw_prefix.revision (
 );
 ALTER TABLE &mw_prefix.revision ADD CONSTRAINT &mw_prefix.revision_pk PRIMARY KEY (rev_id);
 ALTER TABLE &mw_prefix.revision ADD CONSTRAINT &mw_prefix.revision_fk1 FOREIGN KEY (rev_page) REFERENCES &mw_prefix.page(page_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
-ALTER TABLE &mw_prefix.revision ADD CONSTRAINT &mw_prefix.revision_fk2 FOREIGN KEY (rev_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE &mw_prefix.revision ADD CONSTRAINT &mw_prefix.revision_fk2 FOREIGN KEY (rev_user) REFERENCES &mw_prefix.mwuser(user_id) DEFERRABLE INITIALLY DEFERRED;
 CREATE UNIQUE INDEX &mw_prefix.revision_u01 ON &mw_prefix.revision (rev_page, rev_id);
 CREATE INDEX &mw_prefix.revision_i01 ON &mw_prefix.revision (rev_timestamp);
 CREATE INDEX &mw_prefix.revision_i02 ON &mw_prefix.revision (rev_page,rev_timestamp);
-CREATE INDEX &mw_prefix.revision_i03 ON &mw_prefix.revision (rev_wiki_user,rev_timestamp);
-CREATE INDEX &mw_prefix.revision_i04 ON &mw_prefix.revision (rev_wiki_user_text,rev_timestamp);
-CREATE INDEX &mw_prefix.revision_i05 ON &mw_prefix.revision (rev_page,rev_wiki_user,rev_timestamp);
+CREATE INDEX &mw_prefix.revision_i03 ON &mw_prefix.revision (rev_user,rev_timestamp);
+CREATE INDEX &mw_prefix.revision_i04 ON &mw_prefix.revision (rev_user_text,rev_timestamp);
+CREATE INDEX &mw_prefix.revision_i05 ON &mw_prefix.revision (rev_page,rev_user,rev_timestamp);
 
 CREATE SEQUENCE text_old_id_seq;
 CREATE TABLE &mw_prefix.pagecontent ( -- replaces reserved word 'text'
@@ -131,8 +131,8 @@ CREATE TABLE &mw_prefix.archive (
   ar_title       VARCHAR2(255)         NOT NULL,
   ar_text        CLOB,
   ar_comment     VARCHAR2(255),
-  ar_wiki_user        NUMBER          DEFAULT 0 NOT NULL,
-  ar_wiki_user_text   VARCHAR2(255)         NOT NULL,
+  ar_user        NUMBER          DEFAULT 0 NOT NULL,
+  ar_user_text   VARCHAR2(255)         NOT NULL,
   ar_timestamp   TIMESTAMP(6) WITH TIME ZONE  NOT NULL,
   ar_minor_edit  CHAR(1)         DEFAULT '0' NOT NULL,
   ar_flags       VARCHAR2(255),
@@ -144,9 +144,9 @@ CREATE TABLE &mw_prefix.archive (
   ar_parent_id   NUMBER,
   ar_sha1		  VARCHAR2(32)    NULL
 );
-ALTER TABLE &mw_prefix.archive ADD CONSTRAINT &mw_prefix.archive_fk1 FOREIGN KEY (ar_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE &mw_prefix.archive ADD CONSTRAINT &mw_prefix.archive_fk1 FOREIGN KEY (ar_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
 CREATE INDEX &mw_prefix.archive_i01 ON &mw_prefix.archive (ar_namespace,ar_title,ar_timestamp);
-CREATE INDEX &mw_prefix.archive_i02 ON &mw_prefix.archive (ar_wiki_user_text,ar_timestamp);
+CREATE INDEX &mw_prefix.archive_i02 ON &mw_prefix.archive (ar_user_text,ar_timestamp);
 CREATE INDEX &mw_prefix.archive_i03 ON &mw_prefix.archive (ar_rev_id);
 
 CREATE TABLE &mw_prefix.pagelinks (
@@ -214,12 +214,12 @@ CREATE INDEX &mw_prefix.externallinks_i01 ON &mw_prefix.externallinks (el_from, 
 CREATE INDEX &mw_prefix.externallinks_i02 ON &mw_prefix.externallinks (el_to, el_from);
 CREATE INDEX &mw_prefix.externallinks_i03 ON &mw_prefix.externallinks (el_index);
 
-CREATE TABLE &mw_prefix.external_wiki_user (
+CREATE TABLE &mw_prefix.external_user (
   eu_local_id NUMBER NOT NULL,
   eu_external_id varchar2(255) NOT NULL
 );
-ALTER TABLE &mw_prefix.external_wiki_user ADD CONSTRAINT &mw_prefix.external_wiki_user_pk PRIMARY KEY (eu_local_id);
-CREATE UNIQUE INDEX &mw_prefix.external_wiki_user_u01 ON &mw_prefix.external_wiki_user (eu_external_id);
+ALTER TABLE &mw_prefix.external_user ADD CONSTRAINT &mw_prefix.external_user_pk PRIMARY KEY (eu_local_id);
+CREATE UNIQUE INDEX &mw_prefix.external_user_u01 ON &mw_prefix.external_user (eu_external_id);
 
 CREATE TABLE &mw_prefix.langlinks (
   ll_from    NUMBER  NOT NULL,
@@ -244,8 +244,8 @@ CREATE TABLE &mw_prefix.site_stats (
   ss_total_edits    NUMBER            DEFAULT 0,
   ss_good_articles  NUMBER            DEFAULT 0,
   ss_total_pages    NUMBER            DEFAULT -1,
-  ss_wiki_users          NUMBER            DEFAULT -1,
-  ss_active_wiki_users   NUMBER            DEFAULT -1,
+  ss_users          NUMBER            DEFAULT -1,
+  ss_active_users   NUMBER            DEFAULT -1,
   ss_admins         NUMBER            DEFAULT -1,
   ss_images         NUMBER            DEFAULT 0
 );
@@ -259,7 +259,7 @@ CREATE SEQUENCE ipblocks_ipb_id_seq;
 CREATE TABLE &mw_prefix.ipblocks (
   ipb_id                NUMBER      NOT NULL,
   ipb_address           VARCHAR2(255)     NULL,
-  ipb_wiki_user              NUMBER      DEFAULT 0 NOT  NULL,
+  ipb_user              NUMBER      DEFAULT 0 NOT  NULL,
   ipb_by                NUMBER      DEFAULT 0 NOT NULL,
   ipb_by_text           VARCHAR2(255)      NULL,
   ipb_reason            VARCHAR2(255)         NOT NULL,
@@ -273,14 +273,14 @@ CREATE TABLE &mw_prefix.ipblocks (
   ipb_range_end         VARCHAR2(255),
   ipb_deleted           CHAR(1)      DEFAULT '0' NOT NULL,
   ipb_block_email       CHAR(1)      DEFAULT '0' NOT NULL,
-  ipb_allow_wiki_usertalk    CHAR(1)      DEFAULT '0' NOT NULL,
+  ipb_allow_usertalk    CHAR(1)      DEFAULT '0' NOT NULL,
   ipb_parent_block_id             NUMBER       DEFAULT NULL
 );
 ALTER TABLE &mw_prefix.ipblocks ADD CONSTRAINT &mw_prefix.ipblocks_pk PRIMARY KEY (ipb_id);
-ALTER TABLE &mw_prefix.ipblocks ADD CONSTRAINT &mw_prefix.ipblocks_fk1 FOREIGN KEY (ipb_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
-ALTER TABLE &mw_prefix.ipblocks ADD CONSTRAINT &mw_prefix.ipblocks_fk2 FOREIGN KEY (ipb_by) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
-CREATE UNIQUE INDEX &mw_prefix.ipblocks_u01 ON &mw_prefix.ipblocks (ipb_address, ipb_wiki_user, ipb_auto, ipb_anon_only);
-CREATE INDEX &mw_prefix.ipblocks_i01 ON &mw_prefix.ipblocks (ipb_wiki_user);
+ALTER TABLE &mw_prefix.ipblocks ADD CONSTRAINT &mw_prefix.ipblocks_fk1 FOREIGN KEY (ipb_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE &mw_prefix.ipblocks ADD CONSTRAINT &mw_prefix.ipblocks_fk2 FOREIGN KEY (ipb_by) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
+CREATE UNIQUE INDEX &mw_prefix.ipblocks_u01 ON &mw_prefix.ipblocks (ipb_address, ipb_user, ipb_auto, ipb_anon_only);
+CREATE INDEX &mw_prefix.ipblocks_i01 ON &mw_prefix.ipblocks (ipb_user);
 CREATE INDEX &mw_prefix.ipblocks_i02 ON &mw_prefix.ipblocks (ipb_range_start, ipb_range_end);
 CREATE INDEX &mw_prefix.ipblocks_i03 ON &mw_prefix.ipblocks (ipb_timestamp);
 CREATE INDEX &mw_prefix.ipblocks_i04 ON &mw_prefix.ipblocks (ipb_expiry);
@@ -297,14 +297,14 @@ CREATE TABLE &mw_prefix.image (
   img_major_mime   VARCHAR2(32) DEFAULT 'unknown',
   img_minor_mime   VARCHAR2(100) DEFAULT 'unknown',
   img_description  VARCHAR2(255),
-  img_wiki_user         NUMBER       DEFAULT 0 NOT NULL,
-  img_wiki_user_text    VARCHAR2(255)      NOT NULL,
+  img_user         NUMBER       DEFAULT 0 NOT NULL,
+  img_user_text    VARCHAR2(255)      NOT NULL,
   img_timestamp    TIMESTAMP(6) WITH TIME ZONE,
   img_sha1         VARCHAR2(32)
 );
 ALTER TABLE &mw_prefix.image ADD CONSTRAINT &mw_prefix.image_pk PRIMARY KEY (img_name);
-ALTER TABLE &mw_prefix.image ADD CONSTRAINT &mw_prefix.image_fk1 FOREIGN KEY (img_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
-CREATE INDEX &mw_prefix.image_i01 ON &mw_prefix.image (img_wiki_user_text,img_timestamp);
+ALTER TABLE &mw_prefix.image ADD CONSTRAINT &mw_prefix.image_fk1 FOREIGN KEY (img_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX &mw_prefix.image_i01 ON &mw_prefix.image (img_user_text,img_timestamp);
 CREATE INDEX &mw_prefix.image_i02 ON &mw_prefix.image (img_size);
 CREATE INDEX &mw_prefix.image_i03 ON &mw_prefix.image (img_timestamp);
 CREATE INDEX &mw_prefix.image_i04 ON &mw_prefix.image (img_sha1);
@@ -318,8 +318,8 @@ CREATE TABLE &mw_prefix.oldimage (
   oi_height        NUMBER      DEFAULT 0 NOT NULL,
   oi_bits          NUMBER      DEFAULT 0 NOT NULL,
   oi_description   VARCHAR2(255),
-  oi_wiki_user          NUMBER          DEFAULT 0 NOT NULL,
-  oi_wiki_user_text     VARCHAR2(255)         NOT NULL,
+  oi_user          NUMBER          DEFAULT 0 NOT NULL,
+  oi_user_text     VARCHAR2(255)         NOT NULL,
   oi_timestamp     TIMESTAMP(6) WITH TIME ZONE  NOT NULL,
   oi_metadata      CLOB,
   oi_media_type    VARCHAR2(32) DEFAULT NULL,
@@ -329,8 +329,8 @@ CREATE TABLE &mw_prefix.oldimage (
   oi_sha1          VARCHAR2(32)
 );
 ALTER TABLE &mw_prefix.oldimage ADD CONSTRAINT &mw_prefix.oldimage_fk1 FOREIGN KEY (oi_name) REFERENCES &mw_prefix.image(img_name) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
-ALTER TABLE &mw_prefix.oldimage ADD CONSTRAINT &mw_prefix.oldimage_fk2 FOREIGN KEY (oi_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
-CREATE INDEX &mw_prefix.oldimage_i01 ON &mw_prefix.oldimage (oi_wiki_user_text,oi_timestamp);
+ALTER TABLE &mw_prefix.oldimage ADD CONSTRAINT &mw_prefix.oldimage_fk2 FOREIGN KEY (oi_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX &mw_prefix.oldimage_i01 ON &mw_prefix.oldimage (oi_user_text,oi_timestamp);
 CREATE INDEX &mw_prefix.oldimage_i02 ON &mw_prefix.oldimage (oi_name,oi_timestamp);
 CREATE INDEX &mw_prefix.oldimage_i03 ON &mw_prefix.oldimage (oi_name,oi_archive_name);
 CREATE INDEX &mw_prefix.oldimage_i04 ON &mw_prefix.oldimage (oi_sha1);
@@ -343,7 +343,7 @@ CREATE TABLE &mw_prefix.filearchive (
   fa_archive_name       VARCHAR2(255),
   fa_storage_group      VARCHAR2(16),
   fa_storage_key        VARCHAR2(64),
-  fa_deleted_wiki_user       NUMBER          DEFAULT 0 NOT NULL,
+  fa_deleted_user       NUMBER          DEFAULT 0 NOT NULL,
   fa_deleted_timestamp  TIMESTAMP(6) WITH TIME ZONE  NOT NULL,
   fa_deleted_reason     CLOB,
   fa_size               NUMBER     DEFAULT 0 NOT NULL,
@@ -355,23 +355,23 @@ CREATE TABLE &mw_prefix.filearchive (
   fa_major_mime         VARCHAR2(32) DEFAULT 'unknown',
   fa_minor_mime         VARCHAR2(100) DEFAULT 'unknown',
   fa_description        VARCHAR2(255),
-  fa_wiki_user               NUMBER          DEFAULT 0 NOT NULL,
-  fa_wiki_user_text          VARCHAR2(255)         NOT NULL,
+  fa_user               NUMBER          DEFAULT 0 NOT NULL,
+  fa_user_text          VARCHAR2(255)         NOT NULL,
   fa_timestamp          TIMESTAMP(6) WITH TIME ZONE,
   fa_deleted            NUMBER      DEFAULT 0 NOT NULL
 );
 ALTER TABLE &mw_prefix.filearchive ADD CONSTRAINT &mw_prefix.filearchive_pk PRIMARY KEY (fa_id);
-ALTER TABLE &mw_prefix.filearchive ADD CONSTRAINT &mw_prefix.filearchive_fk1 FOREIGN KEY (fa_deleted_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
-ALTER TABLE &mw_prefix.filearchive ADD CONSTRAINT &mw_prefix.filearchive_fk2 FOREIGN KEY (fa_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE &mw_prefix.filearchive ADD CONSTRAINT &mw_prefix.filearchive_fk1 FOREIGN KEY (fa_deleted_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE &mw_prefix.filearchive ADD CONSTRAINT &mw_prefix.filearchive_fk2 FOREIGN KEY (fa_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
 CREATE INDEX &mw_prefix.filearchive_i01 ON &mw_prefix.filearchive (fa_name, fa_timestamp);
 CREATE INDEX &mw_prefix.filearchive_i02 ON &mw_prefix.filearchive (fa_storage_group, fa_storage_key);
 CREATE INDEX &mw_prefix.filearchive_i03 ON &mw_prefix.filearchive (fa_deleted_timestamp);
-CREATE INDEX &mw_prefix.filearchive_i04 ON &mw_prefix.filearchive (fa_wiki_user_text,fa_timestamp);
+CREATE INDEX &mw_prefix.filearchive_i04 ON &mw_prefix.filearchive (fa_user_text,fa_timestamp);
 
 CREATE SEQUENCE uploadstash_us_id_seq;
 CREATE TABLE &mw_prefix.uploadstash (
 	us_id                 NUMBER       NOT NULL,
-  us_wiki_user               NUMBER          DEFAULT 0 NOT NULL,
+  us_user               NUMBER          DEFAULT 0 NOT NULL,
 	us_key								VARCHAR2(255) NOT NULL,
 	us_orig_path 					VARCHAR2(255) NOT NULL,
 	us_path								VARCHAR2(255) NOT NULL,
@@ -388,8 +388,8 @@ CREATE TABLE &mw_prefix.uploadstash (
 	us_image_bits					NUMBER
 );
 ALTER TABLE &mw_prefix.uploadstash ADD CONSTRAINT &mw_prefix.uploadstash_pk PRIMARY KEY (us_id);
-ALTER TABLE &mw_prefix.uploadstash ADD CONSTRAINT &mw_prefix.uploadstash_fk1 FOREIGN KEY (us_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
-CREATE INDEX &mw_prefix.uploadstash_i01 ON &mw_prefix.uploadstash (us_wiki_user);
+ALTER TABLE &mw_prefix.uploadstash ADD CONSTRAINT &mw_prefix.uploadstash_fk1 FOREIGN KEY (us_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX &mw_prefix.uploadstash_i01 ON &mw_prefix.uploadstash (us_user);
 CREATE INDEX &mw_prefix.uploadstash_i02 ON &mw_prefix.uploadstash (us_timestamp);
 CREATE UNIQUE INDEX &mw_prefix.uploadstash_u01 ON &mw_prefix.uploadstash (us_key);
 
@@ -398,8 +398,8 @@ CREATE TABLE &mw_prefix.recentchanges (
   rc_id              NUMBER      NOT NULL,
   rc_timestamp       TIMESTAMP(6) WITH TIME ZONE  NOT NULL,
   rc_cur_time        TIMESTAMP(6) WITH TIME ZONE  NOT NULL,
-  rc_wiki_user            NUMBER          DEFAULT 0 NOT NULL,
-  rc_wiki_user_text       VARCHAR2(255)         NOT NULL,
+  rc_user            NUMBER          DEFAULT 0 NOT NULL,
+  rc_user_text       VARCHAR2(255)         NOT NULL,
   rc_namespace       NUMBER     DEFAULT 0 NOT NULL,
   rc_title           VARCHAR2(255)         NOT NULL,
   rc_comment         VARCHAR2(255),
@@ -423,24 +423,24 @@ CREATE TABLE &mw_prefix.recentchanges (
   rc_params          CLOB
 );
 ALTER TABLE &mw_prefix.recentchanges ADD CONSTRAINT &mw_prefix.recentchanges_pk PRIMARY KEY (rc_id);
-ALTER TABLE &mw_prefix.recentchanges ADD CONSTRAINT &mw_prefix.recentchanges_fk1 FOREIGN KEY (rc_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE &mw_prefix.recentchanges ADD CONSTRAINT &mw_prefix.recentchanges_fk1 FOREIGN KEY (rc_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
 ALTER TABLE &mw_prefix.recentchanges ADD CONSTRAINT &mw_prefix.recentchanges_fk2 FOREIGN KEY (rc_cur_id) REFERENCES &mw_prefix.page(page_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
 CREATE INDEX &mw_prefix.recentchanges_i01 ON &mw_prefix.recentchanges (rc_timestamp);
 CREATE INDEX &mw_prefix.recentchanges_i02 ON &mw_prefix.recentchanges (rc_namespace, rc_title);
 CREATE INDEX &mw_prefix.recentchanges_i03 ON &mw_prefix.recentchanges (rc_cur_id);
 CREATE INDEX &mw_prefix.recentchanges_i04 ON &mw_prefix.recentchanges (rc_new,rc_namespace,rc_timestamp);
 CREATE INDEX &mw_prefix.recentchanges_i05 ON &mw_prefix.recentchanges (rc_ip);
-CREATE INDEX &mw_prefix.recentchanges_i06 ON &mw_prefix.recentchanges (rc_namespace, rc_wiki_user_text);
-CREATE INDEX &mw_prefix.recentchanges_i07 ON &mw_prefix.recentchanges (rc_wiki_user_text, rc_timestamp);
+CREATE INDEX &mw_prefix.recentchanges_i06 ON &mw_prefix.recentchanges (rc_namespace, rc_user_text);
+CREATE INDEX &mw_prefix.recentchanges_i07 ON &mw_prefix.recentchanges (rc_user_text, rc_timestamp);
 
 CREATE TABLE &mw_prefix.watchlist (
-  wl_wiki_user                   NUMBER     NOT NULL,
+  wl_user                   NUMBER     NOT NULL,
   wl_namespace              NUMBER    DEFAULT 0 NOT NULL,
   wl_title                  VARCHAR2(255)        NOT NULL,
   wl_notificationtimestamp  TIMESTAMP(6) WITH TIME ZONE
 );
-ALTER TABLE &mw_prefix.watchlist ADD CONSTRAINT &mw_prefix.watchlist_fk1 FOREIGN KEY (wl_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
-CREATE UNIQUE INDEX &mw_prefix.watchlist_u01 ON &mw_prefix.watchlist (wl_wiki_user, wl_namespace, wl_title);
+ALTER TABLE &mw_prefix.watchlist ADD CONSTRAINT &mw_prefix.watchlist_fk1 FOREIGN KEY (wl_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED;
+CREATE UNIQUE INDEX &mw_prefix.watchlist_u01 ON &mw_prefix.watchlist (wl_user, wl_namespace, wl_title);
 CREATE INDEX &mw_prefix.watchlist_i01 ON &mw_prefix.watchlist (wl_namespace, wl_title);
 
 
@@ -490,8 +490,8 @@ CREATE TABLE &mw_prefix.logging (
   log_type        VARCHAR2(10)         NOT NULL,
   log_action      VARCHAR2(10)         NOT NULL,
   log_timestamp   TIMESTAMP(6) WITH TIME ZONE  NOT NULL,
-  log_wiki_user        NUMBER                DEFAULT 0 NOT NULL,
-  log_wiki_user_text 	VARCHAR2(255),
+  log_user        NUMBER                DEFAULT 0 NOT NULL,
+  log_user_text 	VARCHAR2(255),
   log_namespace   NUMBER     DEFAULT 0 NOT NULL,
   log_title       VARCHAR2(255)         NOT NULL,
   log_page 				NUMBER,
@@ -500,9 +500,9 @@ CREATE TABLE &mw_prefix.logging (
   log_deleted     CHAR(1)      DEFAULT '0' NOT NULL
 );
 ALTER TABLE &mw_prefix.logging ADD CONSTRAINT &mw_prefix.logging_pk PRIMARY KEY (log_id);
-ALTER TABLE &mw_prefix.logging ADD CONSTRAINT &mw_prefix.logging_fk1 FOREIGN KEY (log_wiki_user) REFERENCES &mw_prefix.mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE &mw_prefix.logging ADD CONSTRAINT &mw_prefix.logging_fk1 FOREIGN KEY (log_user) REFERENCES &mw_prefix.mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED;
 CREATE INDEX &mw_prefix.logging_i01 ON &mw_prefix.logging (log_type, log_timestamp);
-CREATE INDEX &mw_prefix.logging_i02 ON &mw_prefix.logging (log_wiki_user, log_timestamp);
+CREATE INDEX &mw_prefix.logging_i02 ON &mw_prefix.logging (log_user, log_timestamp);
 CREATE INDEX &mw_prefix.logging_i03 ON &mw_prefix.logging (log_namespace, log_title, log_timestamp);
 CREATE INDEX &mw_prefix.logging_i04 ON &mw_prefix.logging (log_timestamp);
 CREATE INDEX &mw_prefix.logging_i05 ON &mw_prefix.logging (log_type, log_action, log_timestamp);
@@ -564,7 +564,7 @@ CREATE TABLE &mw_prefix.page_restrictions (
   pr_type    VARCHAR2(255)         NOT NULL,
   pr_level   VARCHAR2(255)         NOT NULL,
   pr_cascade NUMBER     NOT NULL,
-  pr_wiki_user    NUMBER          NULL,
+  pr_user    NUMBER          NULL,
   pr_expiry  TIMESTAMP(6) WITH TIME ZONE      NULL
 );
 ALTER TABLE &mw_prefix.page_restrictions ADD CONSTRAINT &mw_prefix.page_restrictions_pk PRIMARY KEY (pr_id);
@@ -577,7 +577,7 @@ CREATE INDEX &mw_prefix.page_restrictions_i03 ON &mw_prefix.page_restrictions (p
 CREATE TABLE &mw_prefix.protected_titles (
   pt_namespace   NUMBER           DEFAULT 0 NOT NULL,
   pt_title       VARCHAR2(255)    NOT NULL,
-  pt_wiki_user        NUMBER	          NOT NULL,
+  pt_user        NUMBER	          NOT NULL,
   pt_reason      VARCHAR2(255),
   pt_timestamp   TIMESTAMP(6) WITH TIME ZONE  NOT NULL,
   pt_expiry      VARCHAR2(14) NOT NULL,
@@ -690,30 +690,30 @@ CREATE PROCEDURE fill_wiki_info IS
 												t.data_default, t.data_length, t.data_type,
 												DECODE (t.nullable, 'Y', '1', 'N', '0') not_null,
 												(SELECT 1
-														FROM wiki_user_cons_columns ucc,
-																wiki_user_constraints uc
+														FROM user_cons_columns ucc,
+																user_constraints uc
 													WHERE ucc.table_name = t.table_name
 														AND ucc.column_name = t.column_name
 														AND uc.constraint_name = ucc.constraint_name
 														AND uc.constraint_type = 'P'
 														AND ROWNUM < 2) prim,
 												(SELECT 1
-														FROM wiki_user_ind_columns uic,
-																wiki_user_indexes ui
+														FROM user_ind_columns uic,
+																user_indexes ui
 													WHERE uic.table_name = t.table_name
 														AND uic.column_name = t.column_name
 														AND ui.index_name = uic.index_name
 														AND ui.uniqueness = 'UNIQUE'
 														AND ROWNUM < 2) uniq,
 												(SELECT 1
-														FROM wiki_user_ind_columns uic,
-																wiki_user_indexes ui
+														FROM user_ind_columns uic,
+																user_indexes ui
 													WHERE uic.table_name = t.table_name
 														AND uic.column_name = t.column_name
 														AND ui.index_name = uic.index_name
 														AND ui.uniqueness = 'NONUNIQUE'
 														AND ROWNUM < 2) nonuniq
-										FROM wiki_user_tab_columns t, wiki_user_tables ut
+										FROM user_tab_columns t, user_tables ut
 									WHERE ut.table_name = t.table_name)
 		LOOP
 			INSERT INTO wiki_field_info_full
@@ -763,7 +763,7 @@ BEGIN
                       ' WHERE ROWNUM = 0';
   END IF;
   FOR rc IN (SELECT column_name, data_default
-               FROM wiki_user_tab_columns
+               FROM user_tab_columns
               WHERE table_name = p_oldprefix || p_tabname
                 AND data_default IS NOT NULL) LOOP
     EXECUTE IMMEDIATE 'ALTER TABLE ' || p_newprefix || p_tabname ||
@@ -779,7 +779,7 @@ BEGIN
                             '"' || constraint_name || '"',
                             '"' || p_newprefix || constraint_name || '"') DDLVC2,
                     constraint_name
-               FROM wiki_user_constraints uc
+               FROM user_constraints uc
               WHERE table_name = p_oldprefix || p_tabname
                 AND constraint_type = 'P') LOOP
     l_temp_ei_sql := SUBSTR(rc.ddlvc2, 1, INSTR(rc.ddlvc2, 'PCTFREE') - 1);
@@ -800,7 +800,7 @@ BEGIN
                               USER || '"."' || p_oldprefix,
                               USER || '"."' || p_newprefix) DDLVC2,
                       constraint_name
-                 FROM wiki_user_constraints uc
+                 FROM user_constraints uc
                 WHERE table_name = p_oldprefix || p_tabname
                   AND constraint_type = 'R') LOOP
       IF nvl(length(l_temp_ei_sql), 0) > 0 AND
@@ -819,12 +819,12 @@ BEGIN
                             '"' || p_newprefix || index_name || '"') DDLVC2,
                     index_name,
                     index_type
-               FROM wiki_user_indexes ui
+               FROM user_indexes ui
               WHERE table_name = p_oldprefix || p_tabname
                 AND index_type NOT IN ('LOB', 'DOMAIN')
                 AND NOT EXISTS
               (SELECT NULL
-                       FROM wiki_user_constraints
+                       FROM user_constraints
                       WHERE table_name = ui.table_name
                         AND constraint_name = ui.index_name)) LOOP
     l_temp_ei_sql := SUBSTR(rc.ddlvc2, 1, INSTR(rc.ddlvc2, 'PCTFREE') - 1);
@@ -848,12 +848,12 @@ BEGIN
                             '"' || p_newprefix || index_name || '"') DDLVC2,
                     index_name,
                     index_type
-               FROM wiki_user_indexes ui
+               FROM user_indexes ui
               WHERE table_name = p_oldprefix || p_tabname
                 AND index_type = 'DOMAIN'
                 AND NOT EXISTS
               (SELECT NULL
-                       FROM wiki_user_constraints
+                       FROM user_constraints
                       WHERE table_name = ui.table_name
                         AND constraint_name = ui.index_name)) LOOP
     l_temp_ei_sql := rc.ddlvc2;
@@ -870,7 +870,7 @@ BEGIN
                             ' ON ' || p_oldprefix || p_tabname,
                             ' ON ' || p_newprefix || p_tabname) DDLVC2,
                     trigger_name
-               FROM wiki_user_triggers
+               FROM user_triggers
               WHERE table_name = p_oldprefix || p_tabname) LOOP
     l_temp_ei_sql := SUBSTR(rc.ddlvc2, 1, INSTR(rc.ddlvc2, 'ALTER ') - 1);
     IF nvl(length(l_temp_ei_sql), 0) > 0 THEN

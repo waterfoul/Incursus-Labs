@@ -49,7 +49,7 @@ class PurgeDeletedFiles extends Maintenance {
 
 	protected function purgeFromLogType( $logType ) {
 		$repo = RepoGroup::singleton()->getLocalRepo();
-		 = $repo->getSlaveDB();
+		$db = $repo->getSlaveDB();
 
 		$conds = array(
 			'log_namespace' => NS_FILE,
@@ -58,14 +58,14 @@ class PurgeDeletedFiles extends Maintenance {
 		);
 		$start = $this->getOption( 'starttime' );
 		if ( $start ) {
-			$conds[] = 'log_timestamp >= ' . ->addQuotes( ->timestamp( $start ) );
+			$conds[] = 'log_timestamp >= ' . $db->addQuotes( $db->timestamp( $start ) );
 		}
 		$end = $this->getOption( 'endtime' );
 		if ( $end ) {
-			$conds[] = 'log_timestamp <= ' . ->addQuotes( ->timestamp( $end ) );
+			$conds[] = 'log_timestamp <= ' . $db->addQuotes( $db->timestamp( $end ) );
 		}
 
-		$res = ->select( 'logging', array( 'log_title', 'log_timestamp' ), $conds, __METHOD__ );
+		$res = $db->select( 'logging', array( 'log_title', 'log_timestamp' ), $conds, __METHOD__ );
 		foreach ( $res as $row ) {
 			$file = $repo->newFile( Title::makeTitle( NS_FILE, $row->log_title ) );
 
@@ -80,8 +80,8 @@ class PurgeDeletedFiles extends Maintenance {
 	}
 
 	protected function purgeFromArchiveTable( LocalFile $file ) {
-		 = $file->getRepo()->getSlaveDB();
-		$res = ->select( 'filearchive',
+		$db = $file->getRepo()->getSlaveDB();
+		$res = $db->select( 'filearchive',
 			array( 'fa_archive_name' ),
 			array( 'fa_name' => $file->getName() ),
 			__METHOD__

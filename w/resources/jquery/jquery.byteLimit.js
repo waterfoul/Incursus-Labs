@@ -30,7 +30,7 @@
 		// assessment. The value itself is not to be affected by the hook.
 		if ( $.byteLength( fn ? fn( newVal ) : newVal ) <= byteLimit ) {
 			// Limit was not reached, just remember the new value
-			// and let the wiki_user continue.
+			// and let the user continue.
 			return {
 				newVal: newVal,
 				trimmed: false
@@ -44,7 +44,7 @@
 
 		// It is important that we keep the search within the range of
 		// the shortest string's length.
-		// Imagine a wiki_user adds text that matches the end of the old value
+		// Imagine a user adds text that matches the end of the old value
 		// (e.g. "foo" -> "foofoo"). startMatches would be 3, but without
 		// limiting both searches to the shortest length, endMatches would
 		// also be 3.
@@ -173,7 +173,7 @@
 				// with the (differently calculated) byte limit.
 				// Aside from being differently calculated (average chars with byteLimit
 				// is lower), we also support a callback which can make it to allow longer
-				// values (e.g. count "Foo" from "wiki_user:Foo").
+				// values (e.g. count "Foo" from "User:Foo").
 				// maxLength is a strange property. Removing or setting the property to
 				// undefined directly doesn't work. Instead, it can only be unset internally
 				// by the browser when removing the associated attribute (Firefox/Chrome).

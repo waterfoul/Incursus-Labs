@@ -23,7 +23,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Cullegaminde sottolinèete:',
 'tog-justify' => 'Giustifeche le paragrafe',
 'tog-hideminor' => "Scunne le cangiaminde stuédeche jndr'à le cangiaminde recende",
@@ -47,7 +47,7 @@ $messages = array(
 'tog-previewonfirst' => "Fà vedè l'andeprime sus a 'u prime cangiaminde",
 'tog-nocache' => "Disabbilete 'u caching d'a pàgene sfogliate",
 'tog-enotifwatchlistpages' => "Manneme 'na mail quanne 'a pàgene ca stoche a condrolle ha cangiate",
-'tog-enotifwiki_usertalkpages' => "Manneme 'na mail quanne 'a pàgene de le 'ngazzaminde ha cangete",
+'tog-enotifusertalkpages' => "Manneme 'na mail quanne 'a pàgene de le 'ngazzaminde ha cangete",
 'tog-enotifminoredits' => "Manneme 'na mail quanne onne state fatte cangiaminde stuèdeche sus a le pàggene",
 'tog-enotifrevealaddr' => "Fa vedè l'indirizze e-mail jndr'à le e-mail de notifiche",
 'tog-shownumberswatching' => "Fa vedè 'u numere de le utinde ca uardene",
@@ -234,7 +234,7 @@ $messages = array(
 'talk' => "'Ngazzaminde",
 'views' => 'Visite',
 'toolbox' => 'Cascette de le struminde',
-'wiki_userpage' => "Vide a pàgene de l'utende",
+'userpage' => "Vide a pàgene de l'utende",
 'projectpage' => 'Vide a pàgene de le pruggette',
 'imagepage' => 'Vide a pàgene de le file',
 'mediawikipage' => 'Vide a pàgene de le messàgge',
@@ -260,7 +260,7 @@ $1",
 'pool-queuefull' => "'A code de le sondagge jè chiene",
 'pool-errorunknown' => 'Errore scanusciute',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Sus a {{SITENAME}}',
 'aboutpage' => 'Project:Sus a',
 'copyright' => "'U condenute jè disponibile sotte a $1.",
@@ -296,8 +296,8 @@ Vide [[Special:Version|Versione d'a pàgene]].",
 'youhavenewmessages' => 'Tu tine $1 ($2).',
 'newmessageslink' => 'messàgge nuève',
 'newmessagesdifflink' => 'urteme cangiaminde',
-'youhavenewmessagesfromwiki_users' => "Tu è $1 da {{PLURAL:$3|'n'otre utende|$3 utinde}} ($2).",
-'youhavenewmessagesmanywiki_users' => 'Tu è $1 da assaije utinde ($2).',
+'youhavenewmessagesfromusers' => "Tu è $1 da {{PLURAL:$3|'n'otre utende|$3 utinde}} ($2).",
+'youhavenewmessagesmanyusers' => 'Tu è $1 da assaije utinde ($2).',
 'newmessageslinkplural' => "{{PLURAL:$1|'nu messàgge nuève|messàgge nuève}}",
 'newmessagesdifflinkplural' => 'urteme {{PLURAL:$1|cangiamende|cangiaminde}}',
 'youhavenewmessagesmulti' => "T'onne arrevete mèssagge nueve sus 'a $1",
@@ -331,7 +331,7 @@ Vide [[Special:Version|Versione d'a pàgene]].",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Pàgene',
-'nstab-wiki_user' => "Pàgene de l'utende",
+'nstab-user' => "Pàgene de l'utende",
 'nstab-media' => 'Pàgene de le media',
 'nstab-special' => 'Pàgene Speciale',
 'nstab-project' => 'Pàgene de le pruggette',
@@ -376,7 +376,7 @@ Le amministrature ca onne mise 'u blocche onne date sta motivazione: $1",
 Stu fatte pò succedere quanne le collegaminde 'mbrà le differenze o le cunde non ge sonde aggiornete sus a 'na pàgene ca ha state scangellete.
 
 Ce quiste non g'è 'u case, tu pò essere ca è 'cchiate 'nu bochere jndr'à 'u software.
-Pe piacere manne 'na comunicazzione a 'n'[[Special:Listwiki_users/sysop|amministratore]], mettène jndr'à note pure l'URL.",
+Pe piacere manne 'na comunicazzione a 'n'[[Special:ListUsers/sysop|amministratore]], mettène jndr'à note pure l'URL.",
 'missingarticle-rev' => '(versione#: $1)',
 'missingarticle-diff' => '(Diff: $1, $2)',
 'readonly_lag' => "'U database ha state automaticamende blocchete purcè le server de le database ca depennene da 'u master onne sciute in eccezzione",
@@ -428,7 +428,7 @@ $2',
 'customcssprotected' => "Non ge tine 'u permesse pe cangià sta pàgene de CSS, purcè tène otre configurazione personale.",
 'customjsprotected' => "Non ge tine 'u permesse pe cangià sta pàgene de Javascript, purcè tène otre configurazione personale.",
 'ns-specialprotected' => 'Le pàgene speciale no ponne essere cangete.',
-'titleprotected' => "Stu titele ha state prutette da 'a ccreazione da [[wiki_user:$1|$1]].
+'titleprotected' => "Stu titele ha state prutette da 'a ccreazione da [[User:$1|$1]].
 'U mutive jè ''$2''.",
 'filereadonlyerror' => 'Non ge pozze cangià \'u file "$1" purcé l\'archivije de le file "$2" ste in mode sola letture.
 
@@ -446,7 +446,7 @@ L\'amministratore ca l\'ha bloccate dèje sta spiegazione: "$3".',
 # Login and logout pages
 'logouttext' => "'''Tu tè scolleghete.'''
 
-Tu puè condinuà a ausà {{SITENAME}} in mode anonime, o tu puè [[Special:wiki_userLogin|collegarte 'n'otra vote]] cumme 'u stesse utende o cumme 'n'otre utende.
+Tu puè condinuà a ausà {{SITENAME}} in mode anonime, o tu puè [[Special:UserLogin|collegarte 'n'otra vote]] cumme 'u stesse utende o cumme 'n'otre utende.
 Note Bbuene ca certe pàggene ponne condinuà a essere viste cumme ce tu ste angore colleghete, fine a quanne a cache d'u browser no se sdeveche.",
 'welcomecreation' => "== Bovegne, $1! ==
 'U cunde tue ha state ccrejete.
@@ -462,21 +462,21 @@ No te sce scurdanne de cangià le [[Special:Preferences|{{SITENAME}} preferenze 
 'login' => 'Tràse',
 'nav-login-createaccount' => 'Tràse / Reggistrete',
 'loginprompt' => "Tu a tenè le cookies abilitate pe tràse jndr'à {{SITENAME}}.",
-'wiki_userlogin' => 'Tràse / Reggistrete',
-'wiki_userloginnocreate' => 'Tràse',
+'userlogin' => 'Tràse / Reggistrete',
+'userloginnocreate' => 'Tràse',
 'logout' => 'Isse',
-'wiki_userlogout' => 'Isse',
+'userlogout' => 'Isse',
 'notloggedin' => 'Non ge sì colleghete',
 'nologin' => "Non ge tine n'utenze? '''$1'''.",
 'nologinlink' => "Ccreje 'nu cunde utende",
 'createaccount' => "Ccreje 'nu cunde",
 'gotaccount' => "Tine già 'nu cunde? '''$1'''.",
 'gotaccountlink' => 'Tràse',
-'wiki_userlogin-resetlink' => "T'è scurdate le dettaglie pe trasè?",
+'userlogin-resetlink' => "T'è scurdate le dettaglie pe trasè?",
 'createaccountmail' => 'pe e-mail',
 'createaccountreason' => 'Mutive:',
 'badretype' => 'Le passuord ca è scritte non ge sonde uguale.',
-'wiki_userexists' => "'U nome de l'utende ca è scritte jè già ausate.
+'userexists' => "'U nome de l'utende ca è scritte jè già ausate.
 Pe piacere scacchiane n'otre.",
 'loginerror' => 'Errore de collegamende',
 'createaccounterror' => "Non ge puè ccrejà 'u cunde utende: $1",
@@ -495,13 +495,13 @@ Pe piacere vide ce tine le cookie abbilitate, recareche sta pàgene e pruève ar
 'noname' => "Non gìè specifichete 'nu nome utende valide.",
 'loginsuccesstitle' => 'Tutte a poste, è trasute!',
 'loginsuccess' => "'''Mò tu si colleghete jndr'à {{SITENAME}} cumme \"\$1\".'''",
-'nosuchwiki_user' => "Non g'esiste n'utende cu 'u nome \"\$1\".
+'nosuchuser' => "Non g'esiste n'utende cu 'u nome \"\$1\".
 Fà attenzione ca le nome de l'utinde so senzibbele a le lettere granne e piccenne.
-Vide bbuene a cumme l'è scritte, o [[Special:wiki_userLogin/signup|ccreje n'utende nuève]].",
-'nosuchwiki_usershort' => 'Non ge ste nisciune utende cu \'u nome "$1".
+Vide bbuene a cumme l'è scritte, o [[Special:UserLogin/signup|ccreje n'utende nuève]].",
+'nosuchusershort' => 'Non ge ste nisciune utende cu \'u nome "$1".
 Condrolle accume l\'è scritte.',
-'nowiki_userspecified' => "A scrivere pe forze 'u nome de l'utende.",
-'login-wiki_userblocked' => 'Stu utende jè bloccate. Non ge puè trasè.',
+'nouserspecified' => "A scrivere pe forze 'u nome de l'utende.",
+'login-userblocked' => 'Stu utende jè bloccate. Non ge puè trasè.',
 'wrongpassword' => "E mise 'na passuor sbagliete.
 Prueve n'otra vote.",
 'wrongpasswordempty' => "'A passuord 'nzerite jè vianghe.
@@ -545,16 +545,16 @@ Pe piacere mitte l'indirizze a cumme criste cumanne, ce nò no 'u scè mettènne
 Tu, mò, t\'avisse a collegà e cangià \'a password toje.
 
 Tu puè pure cacà stu messagge, ce stu cunde utende ha state ccrejete pe errore.',
-'wiki_usernamehasherror' => "'U nome utende non ge pò tenè carattere hash",
+'usernamehasherror' => "'U nome utende non ge pò tenè carattere hash",
 'login-throttled' => "Urtemamende tu è pruvate troppe vote a trasè jndr'à Uicchipèdie
 Pe piacere vide c'aspitte 'nu picche de timbe apprime de pruvà 'n'otra vote.",
 'login-abort-generic' => "Non g'è riuscite a trasè - Annullate",
 'loginlanguagelabel' => 'Lénga: $1',
-'suspicious-wiki_userlogout' => "'A richiesta toje de assè ha state bloccate purcè pare ca ha state mannate da 'nu browser scuasciate o da 'a cache de 'nu proxy.",
+'suspicious-userlogout' => "'A richiesta toje de assè ha state bloccate purcè pare ca ha state mannate da 'nu browser scuasciate o da 'a cache de 'nu proxy.",
 
 # E-mail sending
 'php-mail-error-unknown' => "Errore scanusciute jndr'à funzione PHP mail()",
-'wiki_user-mail-no-addy' => "E' pruvate a mannà 'na mail senze 'u 'ndirizze mail",
+'user-mail-no-addy' => "E' pruvate a mannà 'na mail senze 'u 'ndirizze mail",
 
 # Change password dialog
 'resetpass' => "Cange 'a password",
@@ -581,7 +581,7 @@ Pò essere ca tu è già cangete 'a password toje o è richieste una temboranea 
 'passwordreset-legend' => "Azzere 'a passuord",
 'passwordreset-disabled' => "'U reset de le passuord ha state desabbilitate sus a sta uicchi.",
 'passwordreset-pretext' => '{{PLURAL:$1||Mitte une de le stuèzze de le date aqquà sotte}}',
-'passwordreset-wiki_username' => 'Nome utende:',
+'passwordreset-username' => 'Nome utende:',
 'passwordreset-domain' => 'Dominie:',
 'passwordreset-capture' => "Vide 'a mail resultande?",
 'passwordreset-capture-help' => "Ce tu signe sta sckatele, 'a mail (cu 'a passuord temboranèe) t'avène fatte vedè cumme adda essere mannate a l'utende.",
@@ -593,7 +593,7 @@ $2
 
 {{PLURAL:$3|Sta passuord temboranèe scade|Ste passuord temboranèe scadene}}  'mbrà {{PLURAL:$5|'nu sciurne|$5 sciurne}}.
 Tu avissa trasè e scacchià 'na passuord nova. Ce quacchedun'otre ha fatte sta richieste, o ce tu t'è arrecurdate 'a passuord origgenale toje, e non g'a vuè ccu cange cchiù, tu puè ignorà stu messagge e condinuà ausanne 'a passuord vecchie.",
-'passwordreset-emailtext-wiki_user' => "L'utende $1 sus a {{SITENAME}} ave richieste 'na mail pe arrecurdarse le dettaglie d'u cunde sue pe {{SITENAME}}
+'passwordreset-emailtext-user' => "L'utende $1 sus a {{SITENAME}} ave richieste 'na mail pe arrecurdarse le dettaglie d'u cunde sue pe {{SITENAME}}
 ($4). {{PLURAL:$3|'U cunde utende seguende jè|le cunde utinde seguende sonde}} associate cu st'indirizze e-mail:
 
 $2
@@ -698,17 +698,17 @@ Pò essere ca ha state spustate o scangellate quanne tu ste vedive 'a pàgene.",
 'loginreqlink' => 'trase',
 'loginreqpagetext' => 'Tu a $1 pe vedè otre pàggene.',
 'accmailtitle' => 'Passuord mannete.',
-'accmailtext' => "'A password ccrejete a uecchije pe [[wiki_user talk:$1|$1]] ha state mannete sus 'a $2.
+'accmailtext' => "'A password ccrejete a uecchije pe [[User talk:$1|$1]] ha state mannete sus 'a $2.
 
 'A password pe stu cunde utende pò essere cangete sus a pàgene ''[[Special:ChangePassword|cange password]]'' 'na vote ca te colleghete.",
 'newarticle' => '(Nuève)',
 'newarticletext' => "Tu ste segue 'nu collegamende a pàgene ca angore non g'esiste.
 Pe ccrejà 'a pàgene, accuminze a scrivere jndr'à 'u scatole de sotte (vide 'a [[{{MediaWiki:Helppage}}|pàggene d'ajute]] pe avè cchiù 'mbormaziune).
-Ce tu te iacche aqquà e manghe tu 'u se purcè, allore cazze 'u buttone '''back''' d'u brawiki_user.",
+Ce tu te iacche aqquà e manghe tu 'u se purcè, allore cazze 'u buttone '''back''' d'u brauser.",
 'anontalkpagetext' => "----''Queste jè 'na pàgene de 'ngazzaminde pe 'n'utende anonime, ca non ge vò ccu ccreje angore 'nu cunde utende, o de ce non g'u use.
 Nuje auseme 'n'indirizze IP (ca jè numereche) pe identificarle.
 E' normale ca essende 'n'indirizze IP pò essere ausete pure da otre utinde ca 'u pigghiene.
-Ce tu non ge si 'n'utende anonime e pinze ca le commende ca so revolte a te sonde studecarije, pe piacere [[Special:wiki_userLogin/signup|ccreje 'nu cunde utende]] o [[Special:wiki_userLogin|tràse]] pe no fà confusione jndr'à 'u future cu otre utinde anoneme.''",
+Ce tu non ge si 'n'utende anonime e pinze ca le commende ca so revolte a te sonde studecarije, pe piacere [[Special:UserLogin/signup|ccreje 'nu cunde utende]] o [[Special:UserLogin|tràse]] pe no fà confusione jndr'à 'u future cu otre utinde anoneme.''",
 'noarticletext' => 'Non ge stè scritte ninde jndr\'à sta pàgene.
 Tu puè [[Special:Search/{{PAGENAME}}|cercà pe quiste titele]] jndr\'à otre pàggene, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}}] oppure [{{fullurl:{{FULLPAGENAME}}|action=edit}} cange sta pàgene]</span>.',
 'noarticletext-nopermission' => "Pe mò non ge stè teste jndr'à sta pàgene.
@@ -718,9 +718,9 @@ o <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}
 
 Quiste succede normalmende purcé 'u cunde jè collegate a 'na pàgene ca ha state scangellate.
 Le dettaglie le puè acchià jndr'à l'[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} archivije de le scangellaziune].",
-'wiki_userpage-wiki_userdoesnotexist' => '\'U cunde utende "<nowiki>$1</nowiki>" non g\'è reggistrete.
+'userpage-userdoesnotexist' => '\'U cunde utende "<nowiki>$1</nowiki>" non g\'è reggistrete.
 Pe piacere, condrolle ce tu vuè cu ccreje/cange sta pàgene.',
-'wiki_userpage-wiki_userdoesnotexist-view' => '\'U cunde utende "$1" non g\'è reggistrate.',
+'userpage-userdoesnotexist-view' => '\'U cunde utende "$1" non g\'è reggistrate.',
 'blocked-notice-logextract' => "Stu utende jè correndemende bloccate.<br />
 L'urteme archivije de le bloccaminde se iacche aqquà sotte pe referimende:",
 'clearyourcache' => "'''Vide Bbuene''' - Apprisse 'a reggistrazione, tu puè zumbà 'a cache d'u browser tune pe vedè le cangiaminde.
@@ -728,18 +728,18 @@ L'urteme archivije de le bloccaminde se iacche aqquà sotte pe referimende:",
 *'''Google Chrome:''' cazze ''Ctrl-Shift-R'' (''⌘-Shift-R'' sus a 'nu Mac)
 *'''Internet Explorer:''' cazze ''Ctrl'' e condemboraneamende cazze ''Aggiorna,'' o cazze ''Ctrl-F5''.
 *'''Opera:''' pulizze 'a cache da ''Tools → Preferences'' (in inglese) (Struminde - Preferenze in tarandine);",
-'wiki_usercssyoucanpreview' => "'''Conziglie:''' Ause 'u buttone \"{{int:showpreview}}\" pe condrollà 'u CSS nuève apprime de reggistrà.",
-'wiki_userjsyoucanpreview' => "'''Conziglie:''' Ause 'u buttone \"{{int:showpreview}}\" pe condrollà 'u JavaScript nuève apprime de reggistrà.",
-'wiki_usercsspreview' => "'''Arrecuerdete ca tu ste vide sulamende in andeprime 'u CSS tue.'''
+'usercssyoucanpreview' => "'''Conziglie:''' Ause 'u buttone \"{{int:showpreview}}\" pe condrollà 'u CSS nuève apprime de reggistrà.",
+'userjsyoucanpreview' => "'''Conziglie:''' Ause 'u buttone \"{{int:showpreview}}\" pe condrollà 'u JavaScript nuève apprime de reggistrà.",
+'usercsspreview' => "'''Arrecuerdete ca tu ste vide sulamende in andeprime 'u CSS tue.'''
 '''Non g'à state angore reggistrete ninde!'''",
-'wiki_userjspreview' => "'''Arrecuerdete ca tu ste vide/teste sulamende in andeprime 'u JavaScript tue.'''
+'userjspreview' => "'''Arrecuerdete ca tu ste vide/teste sulamende in andeprime 'u JavaScript tue.'''
 '''Non g'à state angore reggistrete ninde!'''",
 'sitecsspreview' => "'''Arrecuerdete ca tu ste vide sulamende in andeprime 'u CSS tune.'''
 '''Non g'à state angore reggistrate ninde!'''",
 'sitejspreview' => "'''Arrecuerdete ca tu ste vide sulamende in andeprime 'u codece JavaScript tune.'''
 '''Non g'à state angore reggistrate ninde!'''",
-'wiki_userinvalidcssjstitle' => "'''Attenziò:''' Non ge stè 'nu skin \"\$1\".
-Arrecuerdete ca jndr'à le file personalizzete .css e .js s'ause scrivere le titele cu le lettere piccenne, pe esembie {{ns:wiki_user}}:Foo/vector.css è diverse da {{ns:wiki_user}}:Foo/Vector.css.",
+'userinvalidcssjstitle' => "'''Attenziò:''' Non ge stè 'nu skin \"\$1\".
+Arrecuerdete ca jndr'à le file personalizzete .css e .js s'ause scrivere le titele cu le lettere piccenne, pe esembie {{ns:user}}:Foo/vector.css è diverse da {{ns:user}}:Foo/Vector.css.",
 'updated' => '(Cangiete)',
 'note' => "'''Vide Bbuene:'''",
 'previewnote' => "'''Arrecuerdete queste è sole 'n'andeprime.'''
@@ -748,13 +748,13 @@ le cangiaminde non g'onne state angore reggistrate!",
 'previewconflict' => "Sta andeprime fece vedè 'u teste ca ste jndr'à 'u teste de l'area de sus cumme avène fore ce tu decide cu reggistre.",
 'session_fail_preview' => "'''Ne dispiace! Non ge putime processà 'u cangiamende tue purcè s'a perse 'a sessione de le date.
 Pe piacere pruève 'n'otra vote.
-Ce angore non ge funzione ninde, [[Special:wiki_userLogout|isse]] e tràse 'n'otre vote.'''",
+Ce angore non ge funzione ninde, [[Special:UserLogout|isse]] e tràse 'n'otre vote.'''",
 'session_fail_preview_html' => "'''Ne dispiace! nuje non ge putime processà 'u cangiamende tue purcè è perse 'a sessione de le date.'''
 
 ''Purcè {{SITENAME}} tène abbilitate l'HTML grezze, l'andeprime è scunnute cumme precauzione condre a l'attacche cu 'u JavaScript.''
 
 '''Ce quiste jè 'nu tendative corrette de cangiamende, pe piacere prueve 'n'otra vote.'''
-Ce angore tìne probbleme, prueve a [[Special:wiki_userLogout|assè]] e te recolleghe 'n'otra vote.",
+Ce angore tìne probbleme, prueve a [[Special:UserLogout|assè]] e te recolleghe 'n'otra vote.",
 'token_suffix_mismatch' => "''''U cangiamende tue ha state scettate purcè 'u ''client'' tue non ge tène le carattere de le punde jndr'à 'u gettone de cangiamende.'''
 'U cangiamende ha state scettate pe prevenì corruzione d'u teste d'a pàgene.
 Certe vote, stu fatte succede quanne tu ste ause 'nu servizie proxy cu le bochere e anonime.",
@@ -807,7 +807,7 @@ L'urteme archivije de le trasute jè provviste sotte pe referimende:",
 'edittools-upload' => '-',
 'nocreatetitle' => "Ccreazione d'a pàgene limitete",
 'nocreatetext' => "{{SITENAME}} ha restritte l'abilità de ccrejà pàggene nuéve.
-Tu puè turnà rrete e cangià 'na pàgene ca già esiste, oppure puè [[Special:wiki_userLogin|trasè o ccrejà n'utende nuéve]].",
+Tu puè turnà rrete e cangià 'na pàgene ca già esiste, oppure puè [[Special:UserLogin|trasè o ccrejà n'utende nuéve]].",
 'nocreate-loggedin' => 'Non ge tine le permesse pe ccreja pàggene nuève.',
 'sectioneditnotsupported-title' => 'Sezione de le cangiaminde none supportate',
 'sectioneditnotsupported-text' => "Sezione de le cangiaminde non g'è supportate sus a sta pàgene de cangiaminde.",
@@ -857,11 +857,11 @@ Ste argumende onne state luete.",
 Pe piacere verifichesce 'u combronde sotte pe condrollà ca quiste ca tu vuè ccu face e pò reggistrè le cangiaminde aqquà sotte pe spiccià l'annullamende d'u cangiamende.",
 'undo-failure' => "'U cangiamende non ge pò essere annullete purcè stè 'nu conflitte de cangiaminde indermedije.",
 'undo-norev' => "'U cangiamende non ge pò essere annullete purcè non g'esiste o a state scangellete.",
-'undo-summary' => "Repristine 'a revisione $1 da [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|'Ngazzaminde]])",
+'undo-summary' => "Repristine 'a revisione $1 da [[Special:Contributions/$2|$2]] ([[User talk:$2|'Ngazzaminde]])",
 
 # Account creation failure
 'cantcreateaccounttitle' => "Non ge puè ccrejà 'nu cunde utende",
-'cantcreateaccount-text' => "'A creazione d'u cunde utende da stu 'ndirizze IP ('''$1''') ha state blocchete da [[wiki_user:$3|$3]].
+'cantcreateaccount-text' => "'A creazione d'u cunde utende da stu 'ndirizze IP ('''$1''') ha state blocchete da [[User:$3|$3]].
 
 'U mutive dete da $3 jè ''$2''",
 
@@ -900,9 +900,9 @@ Pruève a [[Special:Search|cercò sus a Uicchi]] 'mbrà le vosce cchiù rilevand
 
 # Revision deletion
 'rev-deleted-comment' => "(cangiamnde d'u riepileghe scangellate)",
-'rev-deleted-wiki_user' => '(nome utende scangillete)',
+'rev-deleted-user' => '(nome utende scangillete)',
 'rev-deleted-event' => "(azione de l'archivie scangillete)",
-'rev-deleted-wiki_user-contribs' => '[nome utende o indirizze IP luate - cangiamende scunnute da le condrebbute]',
+'rev-deleted-user-contribs' => '[nome utende o indirizze IP luate - cangiamende scunnute da le condrebbute]',
 'rev-deleted-text-permission' => "Sta revisione d'a pàgene ha state '''scangellate'''.
 Puè acchijà cchiù 'mbormaziune sus a [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} l'archivije de le scangellaminde].",
 'rev-deleted-text-unhide' => "Sta revisione d'a pàgene ha state '''scangellate'''.
@@ -953,7 +953,7 @@ Otre amministrature sus a {{SITENAME}}ponne angore trasè jndr'à 'u condenute s
 'revdelete-hide-image' => "Scunne 'u codenute d'u fail",
 'revdelete-hide-name' => 'Scunne azione e obbiettive',
 'revdelete-hide-comment' => 'Scunne le commende de le cangiaminde',
-'revdelete-hide-wiki_user' => "Scunne 'u nome utende/IP de quidde ca ha fatte 'u cangiamende",
+'revdelete-hide-user' => "Scunne 'u nome utende/IP de quidde ca ha fatte 'u cangiamende",
 'revdelete-hide-restricted' => "Live le date da l'amministratore cumme pe l'otre utinde",
 'revdelete-radio-same' => '(non scè cangianne)',
 'revdelete-radio-set' => 'Sine',
@@ -1042,7 +1042,7 @@ Vide Bbuene ca ausanne le collegaminde de navigazzione sta culonne avène azzera
 'showhideselectedversions' => 'Fà vedè/scunne le revisiune selezionate',
 'editundo' => 'annulle',
 'diff-multi' => "({{PLURAL:$1|'na versione de mmienze|$1 cchiù versiune de mmienze}} de {{PLURAL:$2|'n'utende|$2 utinde}} non ge se vèdene)",
-'diff-multi-manywiki_users' => "({{PLURAL:$1|'Na revisione de 'mmienze|$1 revisiune de 'mmienze}} non g'è viste da cchiù de $2 {{PLURAL:$2|utende|utinde}})",
+'diff-multi-manyusers' => "({{PLURAL:$1|'Na revisione de 'mmienze|$1 revisiune de 'mmienze}} non g'è viste da cchiù de $2 {{PLURAL:$2|utende|utinde}})",
 'difference-missing-revision' => "{{PLURAL:$2|'Na revisione|$2 revisiune}} de sta differenze ($1) {{PLURAL:$2|non g'onne|non g'onne}} state acchiate.
 
 Quiste succede normalmende purcé 'u cunde jè collegate a 'na pàgene ca ha state scangellate.
@@ -1127,7 +1127,7 @@ Però fa attenzione purcè l'indice lore sus a {{SITENAME}} ponne condenè pàgg
 'mypreferences' => 'Me piace accussì',
 'prefs-edits' => 'Numere de cangiaminde:',
 'prefsnologin' => 'Non ge sinde colleghete',
-'prefsnologintext' => 'Tu a essere <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} colleghete]</span> pe \'mbostà le preferenze de l\'utinde.',
+'prefsnologintext' => 'Tu a essere <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} colleghete]</span> pe \'mbostà le preferenze de l\'utinde.',
 'changepassword' => "Cange 'a password",
 'prefs-skin' => 'Skin',
 'skin-preview' => 'Andeprime',
@@ -1135,7 +1135,7 @@ Però fa attenzione purcè l'indice lore sus a {{SITENAME}} ponne condenè pàgg
 'prefs-beta' => 'Funziune de Beta',
 'prefs-datetime' => 'Date e ore',
 'prefs-labs' => 'Funziune de Labs',
-'prefs-wiki_user-pages' => "Pàgene de l'utende",
+'prefs-user-pages' => "Pàgene de l'utende",
 'prefs-personal' => "Profile de l'utende",
 'prefs-rc' => 'Cangiaminde recende',
 'prefs-watchlist' => 'Pàggene condrollete',
@@ -1200,7 +1200,7 @@ Quiste non ge pò essere annullate.",
 'prefs-emailconfirm-label' => "Conferme de l'e-mail:",
 'prefs-textboxsize' => "Dimenzione d'a finestre de le cangiaminde",
 'youremail' => 'Poste:',
-'wiki_username' => "Nome de l'utende:",
+'username' => "Nome de l'utende:",
 'uid' => 'ID Utende:',
 'prefs-memberingroups' => "Membre {{PLURAL:$1|d'u gruppe|de le gruppe}}:",
 'prefs-memberingroups-type' => '$1',
@@ -1242,36 +1242,36 @@ Ce tu 'u mitte, a fatje ca è fatte t'avène ricanusciute.",
 'prefs-displaywatchlist' => "Fà vedè l'opzione",
 'prefs-diffs' => 'Diff',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => "L'indirizze e-mail pare valide",
 'email-address-validity-invalid' => "Mitte 'n'indirizze e-mail valide",
 
-# wiki_user rights
-'wiki_userrights' => 'Gestione de le deritte utende',
-'wiki_userrights-lookup-wiki_user' => "Gestisce le gruppe de l'utinde",
-'wiki_userrights-wiki_user-editname' => "Mitte 'nu nome utende:",
-'editwiki_usergroup' => 'Cange le gruppe utinde',
-'editingwiki_user' => "Stè cange le deritte de l'utende de l'utende '''[[wiki_user:$1|$1]]''' $2",
-'wiki_userrights-editwiki_usergroup' => "Cange le gruppe d'utinde",
-'savewiki_usergroups' => "Reggistre le gruppe d'utinde",
-'wiki_userrights-groupsmember' => 'Membre de:',
-'wiki_userrights-groupsmember-auto' => 'Membre imblicite de:',
-'wiki_userrights-groups-help' => "Tu puè alterà le gruppe addò de st'utende jè iscritte:
+# User rights
+'userrights' => 'Gestione de le deritte utende',
+'userrights-lookup-user' => "Gestisce le gruppe de l'utinde",
+'userrights-user-editname' => "Mitte 'nu nome utende:",
+'editusergroup' => 'Cange le gruppe utinde',
+'editinguser' => "Stè cange le deritte de l'utende de l'utende '''[[User:$1|$1]]''' $2",
+'userrights-editusergroup' => "Cange le gruppe d'utinde",
+'saveusergroups' => "Reggistre le gruppe d'utinde",
+'userrights-groupsmember' => 'Membre de:',
+'userrights-groupsmember-auto' => 'Membre imblicite de:',
+'userrights-groups-help' => "Tu puè alterà le gruppe addò de st'utende jè iscritte:
 * 'Na spunde de verifiche significhe ca l'utende stè jndr'à stu gruppe.
 * 'A spunda de verifica luate significhe ca l'utende non ge stè jndr'à stu gruppe.
 * 'Nu * significhe ca tu non ge puè luà 'u gruppe 'na vote ca tu l'è aggiunde, o a smerse.",
-'wiki_userrights-reason' => 'Mutive:',
-'wiki_userrights-no-interwiki' => "Tu non ge tìne le permesse pe cangià le deritte utende sus a l'otre uicchi.",
-'wiki_userrights-nodatabase' => "'U Database $1 non g'esiste o non g'è lochele.",
-'wiki_userrights-nologin' => "Tu à essere [[Special:wiki_userLogin|colleghete]] cu 'nu cunde utende d'amministratore pe assignà le deritte utende.",
-'wiki_userrights-notallowed' => "'U cunde utende tune non ge tène le permesse pe aggiunge o luà le deritte a l'utinde.",
-'wiki_userrights-changeable-col' => 'Gruppe ca tu puè cangià',
-'wiki_userrights-unchangeable-col' => 'Gruppe ca tu non ge puè cangià',
-'wiki_userrights-irreversible-marker' => '$1*',
+'userrights-reason' => 'Mutive:',
+'userrights-no-interwiki' => "Tu non ge tìne le permesse pe cangià le deritte utende sus a l'otre uicchi.",
+'userrights-nodatabase' => "'U Database $1 non g'esiste o non g'è lochele.",
+'userrights-nologin' => "Tu à essere [[Special:UserLogin|colleghete]] cu 'nu cunde utende d'amministratore pe assignà le deritte utende.",
+'userrights-notallowed' => "'U cunde utende tune non ge tène le permesse pe aggiunge o luà le deritte a l'utinde.",
+'userrights-changeable-col' => 'Gruppe ca tu puè cangià',
+'userrights-unchangeable-col' => 'Gruppe ca tu non ge puè cangià',
+'userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'Gruppe:',
-'group-wiki_user' => 'Utinde',
+'group-user' => 'Utinde',
 'group-autoconfirmed' => 'Utinde auto confermatarije',
 'group-bot' => 'Bot',
 'group-sysop' => 'Sysop',
@@ -1279,14 +1279,14 @@ Ce tu 'u mitte, a fatje ca è fatte t'avène ricanusciute.",
 'group-suppress' => 'Supervisionature',
 'group-all' => '(tutte)',
 
-'group-wiki_user-member' => '{{GENDER:$1|utende}}',
+'group-user-member' => '{{GENDER:$1|utende}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|utende autoconfermate}}',
 'group-bot-member' => '{{GENDER:$1|bot}}',
 'group-sysop-member' => '{{GENDER:$1|amministratore}}',
 'group-bureaucrat-member' => '{{GENDER:$1|burocrate}}',
 'group-suppress-member' => '{{GENDER:$1|supervisionatore}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Utinde',
+'grouppage-user' => '{{ns:project}}:Utinde',
 'grouppage-autoconfirmed' => '{{ns:project}}:Utinde Autoconfermete',
 'grouppage-bot' => '{{ns:project}}:Bot',
 'grouppage-sysop' => '{{ns:project}}:Amministratore',
@@ -1302,7 +1302,7 @@ Ce tu 'u mitte, a fatje ca è fatte t'avène ricanusciute.",
 'right-minoredit' => 'Signe le cangiaminde cumme stuedéche',
 'right-move' => 'Spuéste le pàggene',
 'right-move-subpages' => 'Spueste le pàggene cu tutte le pàggene ca stonne da sotte',
-'right-move-rootwiki_userpages' => 'Spuèste le pàggene utinde radice',
+'right-move-rootuserpages' => 'Spuèste le pàggene utinde radice',
 'right-movefile' => 'Spueste le file',
 'right-suppressredirect' => "No scè ccrejanne 'nu ridirezionamende da 'u nome vecchije quanne spueste 'na pàgene",
 'right-upload' => 'Careche le fail',
@@ -1328,16 +1328,16 @@ Ce tu 'u mitte, a fatje ca è fatte t'avène ricanusciute.",
 'right-suppressionlog' => "Vide l'archivije privete",
 'right-block' => 'Blocche otre utinde a fà le cangiaminde',
 'right-blockemail' => "Blocche l'utente a fà mannà le email",
-'right-hidewiki_user' => "Bluecche 'nu cunde utende, scunnènnele da 'u pubbliche",
+'right-hideuser' => "Bluecche 'nu cunde utende, scunnènnele da 'u pubbliche",
 'right-ipblock-exempt' => "Zumbe le blocche de l'IP, auto blocche e le blocche a indervalle",
 'right-proxyunbannable' => "Zumbe automaticamende le condrolle d'u proxy",
 'right-unblockself' => 'Sbluecche lore',
 'right-protect' => 'Cange le levèelle de protezione e cange le pàggene prutette',
 'right-editprotected' => 'Cange le pàggene prutette (senza protezzione a cascata)',
 'right-editinterface' => "Cange l'inderfacce utende",
-'right-editwiki_usercssjs' => "Cange 'u CSS e 'u JS de l'otre utinde",
-'right-editwiki_usercss' => "Cange 'u CSS de l'otre utinde",
-'right-editwiki_userjs' => "Cange 'u JS de l'otre utinde",
+'right-editusercssjs' => "Cange 'u CSS e 'u JS de l'otre utinde",
+'right-editusercss' => "Cange 'u CSS de l'otre utinde",
+'right-edituserjs' => "Cange 'u JS de l'otre utinde",
 'right-rollback' => "Annulle velocemende le cangiaminde de l'urteme utende ca ha cangiate 'na pàgena particolare",
 'right-markbotedits' => 'Marche le cangiaminde annullate cumme cangiaminde de bot',
 'right-noratelimit' => "Non g'à state tuccate da le limite de le pundegge",
@@ -1348,14 +1348,14 @@ Ce tu 'u mitte, a fatje ca è fatte t'avène ricanusciute.",
 'right-patrolmarks' => 'Vide le cangiaminde recende marcate cumme a condrollate',
 'right-unwatchedpages' => "Vide 'na liste de pàggene non condrollete",
 'right-mergehistory' => "Scuagghie 'a storie de le pàggene",
-'right-wiki_userrights' => 'Cange tutte le deritte utende',
-'right-wiki_userrights-interwiki' => "Cange le deritte utende de le utinde sus a l'otre Uicchi",
+'right-userrights' => 'Cange tutte le deritte utende',
+'right-userrights-interwiki' => "Cange le deritte utende de le utinde sus a l'otre Uicchi",
 'right-siteadmin' => "Blocche e sblocche 'u database",
 'right-override-export-depth' => "L'esportazione de pàggene inglude pàggene collegate 'mbonde a 'na profonnetà de 5",
 'right-sendemail' => "Manne 'a mail a otre utinde",
 'right-passwordreset' => "Vide l'e-mail de azzeramende d'a passuord",
 
-# wiki_user rights log
+# User rights log
 'rightslog' => "Archivie de le diritte de l'utende",
 'rightslogtext' => "Quiste jè 'n'archivije pe le cangiaminde de le deritte de l'utinde.",
 'rightslogentry' => "membre d'u gruppe cangete pe $1 da $2 a $3",
@@ -1371,7 +1371,7 @@ Ce tu 'u mitte, a fatje ca è fatte t'avène ricanusciute.",
 'action-minoredit' => 'signe stu cangiamende cumme stuédeche',
 'action-move' => 'spuéste sta pàgene',
 'action-move-subpages' => 'spuéste sta pàgene e tutte chidde ca stonne sotte a jedde',
-'action-move-rootwiki_userpages' => 'spuèste le pàggene utinde prengepàle',
+'action-move-rootuserpages' => 'spuèste le pàggene utinde prengepàle',
 'action-movefile' => 'spueste stu file',
 'action-upload' => 'careche stu fail',
 'action-reupload' => 'sovrascrive stu file esistende',
@@ -1394,8 +1394,8 @@ Ce tu 'u mitte, a fatje ca è fatte t'avène ricanusciute.",
 'action-autopatrol' => 'signà le cangiaminde tue cumme condrollate',
 'action-unwatchedpages' => "vide 'a liste de le pàggene ca non ge sonde condrollete",
 'action-mergehistory' => "squagghie 'a sotrie de sta pàgene",
-'action-wiki_userrights' => "cange tutte le deritte de l'utende",
-'action-wiki_userrights-interwiki' => "cange le deritte de l'utende de l'utinde de le otre Uicchi",
+'action-userrights' => "cange tutte le deritte de l'utende",
+'action-userrights-interwiki' => "cange le deritte de l'utende de l'utinde de le otre Uicchi",
 'action-siteadmin' => "blocche o sblocche 'u database",
 'action-sendemail' => 'manne e-mail',
 
@@ -1427,7 +1427,7 @@ Ce tu 'u mitte, a fatje ca è fatte t'avène ricanusciute.",
 'newpageletter' => 'N',
 'boteditletter' => 'b',
 'unpatrolledletter' => '!',
-'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|utende|utinde}} ca condrollene]',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|utende|utinde}} ca condrollene]',
 'rc_categories' => 'Limite de le categorije (separate cu "|")',
 'rc_categories_any' => 'Tutte',
 'rc-change-size' => '$1',
@@ -1454,7 +1454,7 @@ Pàggene sus 'a [[Special:Watchlist|le Pàggene condrollete]] sonde in '''grasce
 'reuploaddesc' => "Scangille 'u carecamende e tuerne a 'a schermete de le carecaminde",
 'upload-tryagain' => "Conferme 'u cangiamende d'a descrizione d'u file",
 'uploadnologin' => 'non ge sinde colleghete',
-'uploadnologintext' => 'Tu a essere [[Special:wiki_userLogin|colleghete]] pe carecà le file.',
+'uploadnologintext' => 'Tu a essere [[Special:UserLogin|colleghete]] pe carecà le file.',
 'upload_directory_missing' => "'A cartelle de le carecaminde ($1) s'à perdute o pò essere ca non g'à state ccreate da 'u webserver.",
 'upload_directory_read_only' => "'A cartelle d'u carecamende ($1) non ge se pò fà scrivere da 'u webserver.",
 'uploaderror' => 'Errore de carecamende',
@@ -1592,11 +1592,11 @@ $1",
 'upload-proto-error-text' => "Le carecaminde remote onne abbesogne de le URL ca accumenzene cu 'a parole <code>http://</code> o <code>ftp://</code>.",
 'upload-file-error' => 'Errore inderne',
 'upload-file-error-text' => "S'à verifichete 'n'errore inderne quanne è pruvete a ccreja 'nu file temboranee sus a 'u server.
-Pe piacere condatte 'n'[[Special:Listwiki_users/sysop|amministratore]].",
+Pe piacere condatte 'n'[[Special:ListUsers/sysop|amministratore]].",
 'upload-misc-error' => 'Errore de carecamende scanusciute',
 'upload-misc-error-text' => "'N'errore scanusciute s'a verificate quanne ste facime 'u carecamende.
 Pe piacere verifiche ca l'URL jè valide e accessibbele e pruève 'n'otra vote.
-Ce 'u probbleme angore jè presende, condatte 'n'[[Special:Listwiki_users/sysop|amministratore]].",
+Ce 'u probbleme angore jè presende, condatte 'n'[[Special:ListUsers/sysop|amministratore]].",
 'upload-too-many-redirects' => "'A URL tène troppe redirezionaminde",
 'upload-unknown-size' => 'Dimenziona scanusciute',
 'upload-http-error' => "S'a verificate 'n'errore HTTP: $1",
@@ -1716,7 +1716,7 @@ Quanne jè filtrate da l'utende, sulamende le file ca quidde utende ave carecate
 'listfiles_thumb' => 'Miniature',
 'listfiles_date' => 'Sciurne',
 'listfiles_name' => 'Nome',
-'listfiles_wiki_user' => 'Utende',
+'listfiles_user' => 'Utende',
 'listfiles_size' => 'Dimenzione',
 'listfiles_description' => 'Descrizione',
 'listfiles_count' => 'Versiune',
@@ -1733,7 +1733,7 @@ Quanne jè filtrate da l'utende, sulamende le file ca quidde utende ave carecate
 'filehist-thumb' => 'Thumbnail',
 'filehist-thumbtext' => "Thumbnail p'a versione de $1",
 'filehist-nothumb' => 'Nisciuna thumbnail',
-'filehist-wiki_user' => 'Utende',
+'filehist-user' => 'Utende',
 'filehist-dimensions' => 'Dimenziune',
 'filehist-filesize' => "Dimenzione d'u file",
 'filehist-comment' => 'Commende',
@@ -1827,7 +1827,7 @@ Arrecuèrdete de condrollà pe otre collegaminde a le template apprime de scange
 'statistics-header-pages' => 'Pàgene de le statisteche',
 'statistics-header-edits' => 'Cange le statisteche',
 'statistics-header-views' => 'Vide le statisteche',
-'statistics-header-wiki_users' => "Statisteche de l'utende",
+'statistics-header-users' => "Statisteche de l'utende",
 'statistics-header-hooks' => 'Otre statisteche',
 'statistics-articles' => 'Pàggene de le condenute',
 'statistics-pages' => 'Pàggene',
@@ -1838,9 +1838,9 @@ Arrecuèrdete de condrollà pe otre collegaminde a le template apprime de scange
 'statistics-views-total' => 'Visite totele',
 'statistics-views-total-desc' => 'Le viste cu le pàggene inesistende e le pàggene speciale non ge sonde ingluse',
 'statistics-views-peredit' => 'Visite pe cangiaminde',
-'statistics-wiki_users' => '[[Special:Listwiki_users|Utinde reggistrete]]',
-'statistics-wiki_users-active' => 'Utinde attive',
-'statistics-wiki_users-active-desc' => "Sonde l'utinde ca onne fatte quacchecose jndr'à l'urteme {{PLURAL:$1|giurne|$1 giurne}}",
+'statistics-users' => '[[Special:ListUsers|Utinde reggistrete]]',
+'statistics-users-active' => 'Utinde attive',
+'statistics-users-active-desc' => "Sonde l'utinde ca onne fatte quacchecose jndr'à l'urteme {{PLURAL:$1|giurne|$1 giurne}}",
 'statistics-mostpopular' => 'Pàggene cchiù visitete',
 
 'disambiguations' => 'Pàggene collegate a le pàggene de disambiguazione',
@@ -1918,13 +1918,13 @@ Mò s'avène redirette a [[$2]].",
 'protectedtitles' => 'Titele prutette',
 'protectedtitlestext' => "Le titele ca seguene sonde prutette da 'a ccreazione",
 'protectedtitlesempty' => 'Nisciune titele jè pe mò prutette cu ste parametre.',
-'listwiki_users' => "Liste de l'utende",
-'listwiki_users-editsonly' => "Fà vedè sulamende l'utinde cu cangiaminde fatte",
-'listwiki_users-creationsort' => 'Arrenghete pe date de ccreazione',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|cangiamende|cangiaminde}}',
-'wiki_usercreated' => "{{GENDER:$3|Ccrejate}} 'u $1 a le ore $2",
+'listusers' => "Liste de l'utende",
+'listusers-editsonly' => "Fà vedè sulamende l'utinde cu cangiaminde fatte",
+'listusers-creationsort' => 'Arrenghete pe date de ccreazione',
+'usereditcount' => '$1 {{PLURAL:$1|cangiamende|cangiaminde}}',
+'usercreated' => "{{GENDER:$3|Ccrejate}} 'u $1 a le ore $2",
 'newpages' => 'Pàggene nuève',
-'newpages-wiki_username' => "Nome de l'utende:",
+'newpages-username' => "Nome de l'utende:",
 'ancientpages' => 'Pàggene vìcchje',
 'move' => 'Spuèste',
 'movethispage' => 'Spueste sta pàgene',
@@ -1949,7 +1949,7 @@ Pe piacere note ca otre site de Indernette ponne appondà a 'nu file cu 'na URL 
 'booksources-invalid-isbn' => "L'ISBN ca è mise non ge pare ca ète corrette; verifiche ce è commesse quacche errore quanne ste cupiave quidde origginale.",
 
 # Special:Log
-'speciallogwiki_userlabel' => "'Mblemendatore:",
+'specialloguserlabel' => "'Mblemendatore:",
 'speciallogtitlelabel' => 'Destinazione (titole o utende):',
 'log' => 'Archivije',
 'all-logs-page' => "Tutte l'archivije pubbleche",
@@ -2008,24 +2008,24 @@ Protocolle supportate: <code>$1</code> (no sce aggiungenne nisciune de chiste jn
 'linksearch-line' => '$1 jè pundete da $2',
 'linksearch-error' => "Le wildcard ponne essere ausate sulamende a l'inzie de l'hostname.",
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => "Fà vedè l'utinde partenne da:",
-'listwiki_users-submit' => 'Fa vedè',
-'listwiki_users-noresult' => 'Nisciune utende acchiete.',
-'listwiki_users-blocked' => '(bloccate)',
+# Special:ListUsers
+'listusersfrom' => "Fà vedè l'utinde partenne da:",
+'listusers-submit' => 'Fa vedè',
+'listusers-noresult' => 'Nisciune utende acchiete.',
+'listusers-blocked' => '(bloccate)',
 
-# Special:Activewiki_users
-'activewiki_users' => "Liste de l'utinde attive",
-'activewiki_users-intro' => "Queste jè 'n'elenghe de utinde ca avene fatte certe tipe de attività fine a l'urteme $1 {{PLURAL:$1|sciurne|sciurne}}.",
-'activewiki_users-count' => "$1 {{PLURAL:$1|cangiamende|cangiaminde}} jndr'à l'urteme {{PLURAL:$3|sciurne}}",
-'activewiki_users-from' => "Fà vedè l'utinde partenne da:",
-'activewiki_users-hidebots' => 'Scunne le bot',
-'activewiki_users-hidesysops' => 'Scunne le amministrature',
-'activewiki_users-noresult' => 'Nisciune utende acchiate.',
+# Special:ActiveUsers
+'activeusers' => "Liste de l'utinde attive",
+'activeusers-intro' => "Queste jè 'n'elenghe de utinde ca avene fatte certe tipe de attività fine a l'urteme $1 {{PLURAL:$1|sciurne|sciurne}}.",
+'activeusers-count' => "$1 {{PLURAL:$1|cangiamende|cangiaminde}} jndr'à l'urteme {{PLURAL:$3|sciurne}}",
+'activeusers-from' => "Fà vedè l'utinde partenne da:",
+'activeusers-hidebots' => 'Scunne le bot',
+'activeusers-hidesysops' => 'Scunne le amministrature',
+'activeusers-noresult' => 'Nisciune utende acchiate.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Archivije de ccreazione de le utinde',
-'newwiki_userlogpagetext' => "Quiste ète l'archivije de le creazziune de l'utinde.",
+# Special:Log/newusers
+'newuserlogpage' => 'Archivije de ccreazione de le utinde',
+'newuserlogpagetext' => "Quiste ète l'archivije de le creazziune de l'utinde.",
 
 # Special:ListGroupRights
 'listgrouprights' => 'Deritte de le gruppe utinde',
@@ -2048,27 +2048,27 @@ Ponne stà [[{{MediaWiki:Listgrouprights-helppage}}|'mbormaziune de cchiù]] sus
 'listgrouprights-addgroup-self-all' => "Mitte tutte le gruppe sus a 'u cunde utende mije",
 'listgrouprights-removegroup-self-all' => "Live tutte le gruppe da 'u cunde utende mije",
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'Nisciune indirizze de invie',
-'mailnologintext' => "Tu a essere [[Special:wiki_userLogin|collegate]] e a avè 'n'indirizze email valide jndr'à le [[Special:Preferences|preferenze]] tue pe mannà 'na mail a otre utinde.",
-'emailwiki_user' => "Manne n'email a stu utende",
-'emailwiki_user-title-target' => "Manne n'email a quiste {{GENDER:$1|utende}}",
-'emailwiki_user-title-notarget' => "E-mail de l'utende",
+'mailnologintext' => "Tu a essere [[Special:UserLogin|collegate]] e a avè 'n'indirizze email valide jndr'à le [[Special:Preferences|preferenze]] tue pe mannà 'na mail a otre utinde.",
+'emailuser' => "Manne n'email a stu utende",
+'emailuser-title-target' => "Manne n'email a quiste {{GENDER:$1|utende}}",
+'emailuser-title-notarget' => "E-mail de l'utende",
 'emailpage' => "E-mail de l'utende",
 'emailpagetext' => "Tu puè ausà 'a schermate aqquà sotte pe mannà 'n'email a stu {{GENDER:\$1|utende}}.
 L'indirizze e-mail ca tu è 'nzerite jndr'à le [[Special:Preferences|preferenze tune]] iesse jndr'à 'u cambe \"Da\" de l'e-mail, accussì ce riceve 'a mail sape a ce addà responnere.",
-'wiki_usermailererror' => "L'oggette ''Mail'' ha returnete 'n'errore:",
+'usermailererror' => "L'oggette ''Mail'' ha returnete 'n'errore:",
 'defemailsubject' => 'e-mail de {{SITENAME}} da l\'utende "$1"',
-'wiki_usermaildisabled' => "L'e-mail de l'utende è disabbilitate",
-'wiki_usermaildisabledtext' => 'Tu non ge puè mannà e-mail a otre utinde sus a sta uicchi',
+'usermaildisabled' => "L'e-mail de l'utende è disabbilitate",
+'usermaildisabledtext' => 'Tu non ge puè mannà e-mail a otre utinde sus a sta uicchi',
 'noemailtitle' => 'Nisciune indirizze e-mail',
 'noemailtext' => "Stu utende non g'à specificate 'n'indirizze e-mail valide.",
 'nowikiemailtitle' => 'Nisciuna e-mail è permesse',
 'nowikiemailtext' => 'Stu utende ha scacchiate de nò ricevere email da otre utinde.',
 'emailnotarget' => "Nome de l'utende ca non g'esiste o non g'è valide pu recipiende.",
 'emailtarget' => "Mitte 'u nome utende d'u recipiende",
-'emailwiki_username' => 'Nome utende:',
-'emailwiki_usernamesubmit' => 'Conferme',
+'emailusername' => 'Nome utende:',
+'emailusernamesubmit' => 'Conferme',
 'email-legend' => "Manne 'na mail a n'otre utende de {{SITENAME}}",
 'emailfrom' => 'Da:',
 'emailto' => 'A:',
@@ -2079,12 +2079,12 @@ L'indirizze e-mail ca tu è 'nzerite jndr'à le [[Special:Preferences|preferenze
 'emailccsubject' => 'Copie de le messàgge tue a $1: $2',
 'emailsent' => 'E-mail mannete',
 'emailsenttext' => "'U messagge email tue ha state mannete.",
-'emailwiki_userfooter' => 'Sta e-mail ha state mannate da $1 a $2 da \'a funziona "E-mail a l\'utende" de {{SITENAME}}.',
+'emailuserfooter' => 'Sta e-mail ha state mannate da $1 a $2 da \'a funziona "E-mail a l\'utende" de {{SITENAME}}.',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => "Lassanne 'nu messagge de sisteme.",
-'wiki_usermessage-editor' => 'Messaggiatore de sisteme',
-'wiki_usermessage-template' => 'MediaWiki:wiki_userMessage',
+# User Messenger
+'usermessage-summary' => "Lassanne 'nu messagge de sisteme.",
+'usermessage-editor' => 'Messaggiatore de sisteme',
+'usermessage-template' => 'MediaWiki:UserMessage',
 
 # Watchlist
 'watchlist' => 'Pàggene condrollete',
@@ -2093,7 +2093,7 @@ L'indirizze e-mail ca tu è 'nzerite jndr'à le [[Special:Preferences|preferenze
 'nowatchlist' => "Non ge tine pàggene jndr'à liste de le pàggene condrollete.",
 'watchlistanontext' => 'Pe piacere $1 pe vedè o cangià le vosce sus a liste de le pàggene condrollete.',
 'watchnologin' => 'Non ge sinde colleghete',
-'watchnologintext' => 'Tu a essere [[Special:wiki_userLogin|colleghete]] pe cangià le pàggene condrollete tue.',
+'watchnologintext' => 'Tu a essere [[Special:UserLogin|colleghete]] pe cangià le pàggene condrollete tue.',
 'addwatch' => "Mitte jndr'à le pàggene condrollate",
 'addedwatchtext' => "'A pàgene \"[[:\$1]]\" ha state aggiunde jndr'à le [[Special:Watchlist|pàggene condrollate]].
 Le cangiaminde future a sta pàgene e 'a pàgene de le 'ngazzaminde associete le puè acchià aqquà.",
@@ -2206,13 +2206,13 @@ và cunge cunge!",
 'rollbackfailed' => 'Annullamende fallite',
 'cantrollback' => "Non ge se pò annullà stu cangiamende;
 l'urteme condrebbutore jè sulamende l'autore de sta pàgene.",
-'alreadyrolled' => "Non ge se pò annulla l'urteme cangiamende de [[:$1]] da [[wiki_user:$2|$2]] ([[wiki_user talk:$2|'Ngazzaminde]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
+'alreadyrolled' => "Non ge se pò annulla l'urteme cangiamende de [[:$1]] da [[User:$2|$2]] ([[User talk:$2|'Ngazzaminde]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
 quacche otre ha cangiate o annullate ggià 'a pàgene.
 
-L'urteme cangiamende d'a pàgene ere de [[wiki_user:$3|$3]] ([[wiki_user talk:$3|'Ngazzaminde]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).",
+L'urteme cangiamende d'a pàgene ere de [[User:$3|$3]] ([[User talk:$3|'Ngazzaminde]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).",
 'editcomment' => "'U riepileghe d'u cangiamende ere: \"''\$1''\".",
-'revertpage' => "Cangiaminde annullate da [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Talk]]) a l'urtema versione da [[wiki_user:$1|$1]]",
-'revertpage-nowiki_user' => "Le cangiaminde annullate ba (nome utende luate) a l'urtema revisione da [[wiki_user:$1|$1]]",
+'revertpage' => "Cangiaminde annullate da [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) a l'urtema versione da [[User:$1|$1]]",
+'revertpage-nouser' => "Le cangiaminde annullate ba (nome utende luate) a l'urtema revisione da [[User:$1|$1]]",
 'rollback-success' => "Cangiaminde annullate da $1;
 turnate rete a l'urtema versione da $2.",
 
@@ -2372,12 +2372,12 @@ $1",
 'sp-contributions-uploads' => 'carecaminde',
 'sp-contributions-logs' => 'archivije',
 'sp-contributions-talk' => 'parle',
-'sp-contributions-wiki_userrights' => 'Gestione de le deritte utende',
+'sp-contributions-userrights' => 'Gestione de le deritte utende',
 'sp-contributions-blocked-notice' => "Stu utende jè pe mò bloccate. L'urteme archivije de le bloccaminde se iacchie aqquà sotte pe referimende:",
 'sp-contributions-blocked-notice-anon' => "Stu indirizze IP jè pe mò bloccate.<br />
 L'urteme archivije de le bloccaminde se iacche aqquà sotte pe referimende:",
 'sp-contributions-search' => 'Ricerche pe condrebbute',
-'sp-contributions-wiki_username' => "Indirizze IP o nome de l'utende:",
+'sp-contributions-username' => "Indirizze IP o nome de l'utende:",
 'sp-contributions-toponly' => "Sulamende facenne vedè le cangiaminde de l'urteme revisiune",
 'sp-contributions-submit' => 'Cirche',
 
@@ -2410,7 +2410,7 @@ L'urteme archivije de le bloccaminde se iacche aqquà sotte pe referimende:",
 'blockiptext' => "Ause 'a schermata de sotte pe bloccà l'accesse in scritture de 'nu specifiche indirizze IP o utende.
 Quiste avessa essere fatte sulamende pe prevenìe 'u vandalisme e in accorde cu [[{{MediaWiki:Policy-url}}|le reghele]].
 Mitte pure 'nu mutive specifiche aqquà sotte (pe esembije, nnomene 'a pàgene addò è acchiate 'u vandalisme).",
-'ipadressorwiki_username' => "Indirizze IP o nome de l'utende:",
+'ipadressorusername' => "Indirizze IP o nome de l'utende:",
 'ipbexpiry' => 'More:',
 'ipbreason' => 'Mutive:',
 'ipbreasonotherlist' => 'Otre mutive',
@@ -2432,8 +2432,8 @@ Mitte pure 'nu mutive specifiche aqquà sotte (pe esembije, nnomene 'a pàgene a
 'ipbotheroption' => 'otre',
 'ipbotherreason' => 'Otre mutive:',
 'ipbhidename' => 'Scunne le nome utinde da le cangiaminde e da le liste',
-'ipbwatchwiki_user' => "Vide a pàgena utende e quedde de le 'ngazzaminde de stu utende",
-'ipb-disablewiki_usertalk' => "Non ge face cangià a stu utende 'a pàgena de le 'ngazzaminde sue fine ca jè bloccate",
+'ipbwatchuser' => "Vide a pàgena utende e quedde de le 'ngazzaminde de stu utende",
+'ipb-disableusertalk' => "Non ge face cangià a stu utende 'a pàgena de le 'ngazzaminde sue fine ca jè bloccate",
 'ipb-change-block' => "Blocche 'n'otra vote l'utende cu ste 'mbostaziune",
 'ipb-confirm' => "Conferme 'u blocche",
 'badipaddress' => 'Indirizze IP invalide',
@@ -2441,7 +2441,7 @@ Mitte pure 'nu mutive specifiche aqquà sotte (pe esembije, nnomene 'a pàgene a
 'blockipsuccesstext' => "[[Special:Contributions/$1|$1]] ha state bloccate.<br />
 Vide [[Special:BlockList|'a liste de le IP bloccate]] pe revedè le blocche.",
 'ipb-blockingself' => "Te stè bluecche da sule, si secure ca 'u vuè ccu face?",
-'ipb-confirmhidewiki_user' => "Tu ste bluècche 'n'utende cu l'opzione \"scunne utende\" abbilitate. St'operazione pò leve 'u nome de l'utende jndr'à tutte l'elenghe e le vôsce de l'archivije. Tu si secure ca 'u vuè ccu face?",
+'ipb-confirmhideuser' => "Tu ste bluècche 'n'utende cu l'opzione \"scunne utende\" abbilitate. St'operazione pò leve 'u nome de l'utende jndr'à tutte l'elenghe e le vôsce de l'archivije. Tu si secure ca 'u vuè ccu face?",
 'ipb-edit-dropdown' => "Cange le mutive d'u blocche",
 'ipb-unblock-addr' => 'Sblocche $1',
 'ipb-unblock' => 'Sblocche nome utende o indirizze IP',
@@ -2450,13 +2450,13 @@ Vide [[Special:BlockList|'a liste de le IP bloccate]] pe revedè le blocche.",
 'unblockip' => "Sblocche l'utende",
 'unblockiptext' => "Ause 'a maschera aqquà sotte pe repristinà l'accesse in scritture a le indirizze IP o a le cunde utinde ca apprime avèrene state bloccate.",
 'ipusubmit' => 'Live stu blocche',
-'unblocked' => '[[wiki_user:$1|$1]] ha state sblocchete',
+'unblocked' => '[[User:$1|$1]] ha state sblocchete',
 'unblocked-range' => '$1 ha state sbloccate',
 'unblocked-id' => 'Blocche $1 ha state luvete',
 'blocklist' => 'Utinde bloccate',
 'ipblocklist' => 'Utinde bloccate',
 'ipblocklist-legend' => "Iacchije 'n'utende blocchete",
-'blocklist-wiki_userblocks' => "Scunne le blocche sus a le cunde de l'utinde",
+'blocklist-userblocks' => "Scunne le blocche sus a le cunde de l'utinde",
 'blocklist-tempblocks' => 'Scunne le blocche temboranèe',
 'blocklist-addressblocks' => 'Scunne le blocche de le IP singole',
 'blocklist-rangeblocks' => 'Scunne le indervalle de blocche',
@@ -2475,7 +2475,7 @@ Vide [[Special:BlockList|'a liste de le IP bloccate]] pe revedè le blocche.",
 'noautoblockblock' => 'autoblocche disabbilitete',
 'createaccountblock' => "sulamende l'utinde anonime",
 'emailblock' => 'e-mail blocchete',
-'blocklist-nowiki_usertalk' => "Non ge puè cangià 'a pàgene de le 'ngazzaminde toje",
+'blocklist-nousertalk' => "Non ge puè cangià 'a pàgene de le 'ngazzaminde toje",
 'ipblocklist-empty' => "'A liste de le blocche jè vacande.",
 'ipblocklist-no-results' => "L'indirizze IP ca è cerchete o 'u nome utende non ge sonde blocchete.",
 'blocklink' => 'blocche',
@@ -2483,7 +2483,7 @@ Vide [[Special:BlockList|'a liste de le IP bloccate]] pe revedè le blocche.",
 'change-blocklink' => "cange 'u blocche",
 'contribslink' => 'condrebbute',
 'emaillink' => "manne 'n'e-mail",
-'autoblocker' => 'Autobloccate purcè l\'indirizze IP tue ha state recendemente ausate da "[[wiki_user:$1|$1]]".
+'autoblocker' => 'Autobloccate purcè l\'indirizze IP tue ha state recendemente ausate da "[[User:$1|$1]]".
 \'U mutive date pu blocche de $1 ète: "$2"',
 'blocklogpage' => 'Archivije de le Bloccaminde',
 'blocklog-showlog' => "Stu utende ha state bloccate precedendemende.
@@ -2500,7 +2500,7 @@ Vide 'a [[Special:BlockList|liste de le IP bloccate]] pa liste de le operaziune 
 'block-log-flags-nocreate' => 'ccreazione de le cunde utinde disabbilitete',
 'block-log-flags-noautoblock' => 'auto blocche disabbilitete',
 'block-log-flags-noemail' => 'e-mail blocchete',
-'block-log-flags-nowiki_usertalk' => "non ge puè cangià 'a pàgene de le 'ngazzaminde toje",
+'block-log-flags-nousertalk' => "non ge puè cangià 'a pàgene de le 'ngazzaminde toje",
 'block-log-flags-angry-autoblock' => 'auto blocche avanzate abbilitate',
 'block-log-flags-hiddenname' => "nome de l'utende scunnute",
 'range_block_disabled' => "L'abbilità de le amministrature de ccrejà blocche a indervalle jè disabbilitate.",
@@ -2510,7 +2510,7 @@ Vide 'a [[Special:BlockList|liste de le IP bloccate]] pa liste de le operaziune 
 'ipb_already_blocked' => '"$1" jè ggià blocchete',
 'ipb-needreblock' => "$1 ha state già blocchete. Vuè cu cange le 'mbostaziune?",
 'ipb-otherblocks-header' => 'Otre {{PLURAL:$1|blocche|blocche}}',
-'unblock-hidewiki_user' => "Tu non ge puè sbloccà st'utende, purcé 'u nome utende ha state ggià scunnute.",
+'unblock-hideuser' => "Tu non ge puè sbloccà st'utende, purcé 'u nome utende ha state ggià scunnute.",
 'ipb_cant_unblock' => "Errore: L'ID $1 d'u blocche non ge se iacchie.
 Pò essere ca ha state già sbloccate.",
 'ipb_blocked_as_range' => "Errore: l'IP $1 non g'à state bloccate direttamende e non ge pò essere sbloccate.
@@ -2528,7 +2528,7 @@ Pe piacere condatte 'u provider de Indernette tue o 'u supporte tecniche e 'mbor
 'sorbs_create_account_reason' => "L'indirizze IP tue jè elegate cumme a 'nu proxy apirte jndr'à DNSBL ausate da {{SITENAME}}.
 Tu nonge puè ccrejà 'nu cunde utende",
 'cant-block-while-blocked' => 'Tu non ge puè bloccà otre utinde quanne tu si blocchete.',
-'cant-see-hidden-wiki_user' => "L'utende ca tu ste pruève a bloccà ha state già bloccate e scunnute. Ce tu non ge tine le deritte ''hidewiki_user'', tu non ge puè vedè o cangià 'u blocche de l'utende.",
+'cant-see-hidden-user' => "L'utende ca tu ste pruève a bloccà ha state già bloccate e scunnute. Ce tu non ge tine le deritte ''hideuser'', tu non ge puè vedè o cangià 'u blocche de l'utende.",
 'ipbblocked' => 'Tu non ge puè bloccà o sbloccà otre utinde, purcé tu sì ppure bloccate',
 'ipbnounblockself' => "Non ge t'è permesse de sbloccarte da sule",
 
@@ -2587,13 +2587,13 @@ Pe piacere ha essere secure secure de avere capite le conzeguenze apprime de sc�
 
 Jndr'à ste case, 'a pàgene non g'avène spustete e pò t'a cupià a màne 'u codenute sue.",
 'movearticle' => 'Spuèste:',
-'movewiki_userpage-warning' => "'''Attenziò:''' Tu stè spuèste 'na pàgene utende. Vide bbuène ca sulamende 'a pàgene avène spustate ma l'utende ''non'' g'avene renomenate.",
+'moveuserpage-warning' => "'''Attenziò:''' Tu stè spuèste 'na pàgene utende. Vide bbuène ca sulamende 'a pàgene avène spustate ma l'utende ''non'' g'avene renomenate.",
 'movenologin' => 'Non ge sinde colleghete',
-'movenologintext' => "Tu a essere 'n'utende reggistrete e [[Special:wiki_userLogin|colleghete]] pe spustà 'na pàgene.",
+'movenologintext' => "Tu a essere 'n'utende reggistrete e [[Special:UserLogin|colleghete]] pe spustà 'na pàgene.",
 'movenotallowed' => "Tu non ge tìne 'u permesse pe spustà le pàggene.",
 'movenotallowedfile' => "Tu non ge tìne 'u permesse pe spustà le file.",
-'cant-move-wiki_user-page' => "Tu non ge tìne 'u permesse pe spustà le pàggene de l'utinde (staccannele cumme sottopàggene).",
-'cant-move-to-wiki_user-page' => "Tu non ge tìne 'u permesse pe spustà 'na pàgene a 'na pàgene utende (sulamende pe le sottopàggene de l'utinde).",
+'cant-move-user-page' => "Tu non ge tìne 'u permesse pe spustà le pàggene de l'utinde (staccannele cumme sottopàggene).",
+'cant-move-to-user-page' => "Tu non ge tìne 'u permesse pe spustà 'na pàgene a 'na pàgene utende (sulamende pe le sottopàggene de l'utinde).",
 'newtitle' => "A 'u titele nuève:",
 'move-watch' => 'condrolle sta pàgene',
 'movepagebtn' => "Spueste 'a pàgene",
@@ -2773,8 +2773,8 @@ Reggistrele sus a 'u combiuter tune e carechele aqquà.",
 'javascripttest-qunit-heading' => 'Ambiende de test MediaUicchi JavaScript QUnit',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => "'A pàgene utende meje",
-'tooltip-pt-anonwiki_userpage' => "'A pàgene utende pe l'IP ca tu ste cange cumme",
+'tooltip-pt-userpage' => "'A pàgene utende meje",
+'tooltip-pt-anonuserpage' => "'A pàgene utende pe l'IP ca tu ste cange cumme",
 'tooltip-pt-mytalk' => "'Ngazzaminde mie",
 'tooltip-pt-anontalk' => "'Ngazzamende sus a le cangiaminde da stu indirizze IP",
 'tooltip-pt-preferences' => 'Me piece accussì',
@@ -2813,13 +2813,13 @@ Puè vedè sulamende 'u sorgende.",
 'tooltip-feed-rss' => 'RSS feed pe sta pàgene',
 'tooltip-feed-atom' => 'Atom feed pe sta pàgene',
 'tooltip-t-contributions' => "Vide 'a liste de le condrebbute de quiste utende",
-'tooltip-t-emailwiki_user' => "Manne n'e-mail a stu utende",
+'tooltip-t-emailuser' => "Manne n'e-mail a stu utende",
 'tooltip-t-upload' => 'Careche le file',
 'tooltip-t-specialpages' => 'Liste de tutte le pàggene speciale',
 'tooltip-t-print' => 'Versiona stambabele de sta pàgene',
 'tooltip-t-permalink' => "Collegamende permanende a sta versione d'a pàgene",
 'tooltip-ca-nstab-main' => "Vide 'a pàgene cu le condenute",
-'tooltip-ca-nstab-wiki_user' => "Vide 'a pàgene de l'utende",
+'tooltip-ca-nstab-user' => "Vide 'a pàgene de l'utende",
 'tooltip-ca-nstab-media' => "Vide 'a pàgene de le media",
 'tooltip-ca-nstab-special' => "Queste jè 'na pàgena speciale, ca tu non ge puè cangià",
 'tooltip-ca-nstab-project' => "Vide 'a pàgene d'u proggette",
@@ -2883,13 +2883,13 @@ Permette de aggiungere 'nu mutive jndr'à 'u riepileghe",
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|utende|utinde}} anonime de {{SITENAME}}',
-'sitewiki_user' => 'Utende de {{SITENAME}} $1',
-'anonwiki_user' => 'Utende anonime de {{SITENAME}} $1',
+'siteuser' => 'Utende de {{SITENAME}} $1',
+'anonuser' => 'Utende anonime de {{SITENAME}} $1',
 'lastmodifiedatby' => "Sta pàgene ha state cangiate l'urtema vote a le $2, d'u $1 da $3.",
 'othercontribs' => "Basete sus a 'na fatije de $1.",
 'others' => 'otre',
-'sitewiki_users' => '{{PLURAL:$2|utende|utinde}} de {{SITENAME}} $1',
-'anonwiki_users' => '{{PLURAL:$2|utende|utinde}} anonime de {{SITENAME}} $1',
+'siteusers' => '{{PLURAL:$2|utende|utinde}} de {{SITENAME}} $1',
+'anonusers' => '{{PLURAL:$2|utende|utinde}} anonime de {{SITENAME}} $1',
 'creditspage' => 'Pàgene de le crediti',
 'nocredits' => "Non ge stonne 'mbormaziune sus a le credite disponibbele pe sta pàgene.",
 
@@ -2898,7 +2898,7 @@ Permette de aggiungere 'nu mutive jndr'à 'u riepileghe",
 'spamprotectiontext' => "'A pàgene ca tu vuè reggistrà ha state bloccate da 'u filtre anti spam.
 Stu fatte ha state causate da 'nu collegamende a 'nu site esterne ca appartene a 'a lista gnore.",
 'spamprotectionmatch' => "'U test seguende ha state signalate da 'u nostre filtre anti spam: $1",
-'spambot_wiki_username' => "Sdevacatore d'u spam de MediaUicchi",
+'spambot_username' => "Sdevacatore d'u spam de MediaUicchi",
 'spam_reverting' => "Turnanne a l'urtema revisione no ge condiene collegaminde a $1",
 'spam_blanking' => 'Tutte le revisiune condènene collegaminde a $1, vacande',
 'spam_deleting' => 'Tutte le revisiune condènene collegaminde a $1, stoche a scangelle',
@@ -2923,9 +2923,9 @@ Stu fatte ha state causate da 'nu collegamende a 'nu site esterne ca appartene a
 'pageinfo-redirects-value' => '$1',
 'pageinfo-subpages-name' => 'Sottopàggene de sta pàgene',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|ridirezionate|ridirezionate}}; $3 {{PLURAL:$3|none ridirezionate|none ridirezionate}})',
-'pageinfo-firstwiki_user' => "Ccrejatore d'a pàgene",
+'pageinfo-firstuser' => "Ccrejatore d'a pàgene",
 'pageinfo-firsttime' => "Date d'a ccrejazione d'a pàgene",
-'pageinfo-lastwiki_user' => 'Urteme cangiatore',
+'pageinfo-lastuser' => 'Urteme cangiatore',
 'pageinfo-lasttime' => "Darte de l'urteme cangiamende",
 'pageinfo-edits' => 'Numere totale de cangiaminde',
 'pageinfo-authors' => 'Numere Totale de autore diverse',
@@ -3148,7 +3148,7 @@ Otre avènene scunnute pe defolt.
 'exif-compressedbitsperpixel' => "Mode de combressione de l'immaggine",
 'exif-pixelydimension' => "Larghezze de l'immaggine",
 'exif-pixelxdimension' => "Altezze de l'immaggine",
-'exif-wiki_usercomment' => "Commende de l'utende",
+'exif-usercomment' => "Commende de l'utende",
 'exif-relatedsoundfile' => 'File audio collegate',
 'exif-datetimeoriginal' => "Date e ore d'a generazione de le date",
 'exif-datetimedigitized' => "Date e ore d'a digitalizzazzione",
@@ -3573,7 +3573,7 @@ Destinatarie returnate: $1",
 Pò essere ca 'u codece ha scadute.",
 'confirmemail_needlogin' => "A confermà $1 l'indirizze email ca è mise.",
 'confirmemail_success' => "L'indirizze e-mail tue ha state confermate.
-Tu, mò te puè [[Special:wiki_userLogin|collegà]] e te puè devertì sus 'a Uicchipèdie.",
+Tu, mò te puè [[Special:UserLogin|collegà]] e te puè devertì sus 'a Uicchipèdie.",
 'confirmemail_loggedin' => "L'indirizze e-mail tue ha state confermate.",
 'confirmemail_error' => "Quacchedune ha sbagliate reggistranne 'a conferma toje.",
 'confirmemail_subject' => 'Indirizze email de conferme pe {{SITENAME}}',
@@ -3623,10 +3623,10 @@ Stu codece de conferme scade 'u \$4.",
 
 # Delete conflict
 'deletedwhileediting' => "'''Fà attenziò''': Sta pàgene ha state scangellete apprime ca tu acumenzasse a fà 'u cangiamende!",
-'confirmrecreate' => "L'utende [[wiki_user:$1|$1]] ([[wiki_user talk:$1|'Ngazzaminde]]) ha scangellate sta pàgene apprisse ca tu è accumenzate a cangiarle, cu stu mutive:
+'confirmrecreate' => "L'utende [[User:$1|$1]] ([[User talk:$1|'Ngazzaminde]]) ha scangellate sta pàgene apprisse ca tu è accumenzate a cangiarle, cu stu mutive:
 : ''$2''
 Pe piacere conferme ca tu vuè avveramende reccrejà sta pàgene.",
-'confirmrecreate-noreason' => "L'utende [[wiki_user:$1|$1]] ([[wiki_user talk:$1|'ngazzaminde]]) ha scangellate sta pàgene apprisse ca tu l'è cangiate. Pe piacere conferme ca tu vuè avveramende reccrejà sta pàgene.",
+'confirmrecreate-noreason' => "L'utende [[User:$1|$1]] ([[User talk:$1|'ngazzaminde]]) ha scangellate sta pàgene apprisse ca tu l'è cangiate. Pe piacere conferme ca tu vuè avveramende reccrejà sta pàgene.",
 'recreate' => "Ccreje n'otra vote",
 
 'unit-pixel' => 'px',
@@ -3797,7 +3797,7 @@ Tu puè pure [[Special:EditWatchlist|ausà 'u cangiatore standàrd]].",
 'hebrew-calendar-m12-gen' => 'Elul',
 
 # Signatures
-'signature' => "[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|'ngazzaminde]])",
+'signature' => "[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|'ngazzaminde]])",
 'timezone-utc' => 'UTC',
 
 # Core parser functions
@@ -3867,7 +3867,7 @@ Le immaggine sonde fatte vedè jndr'à resoluziona megghie, otre tipe de file re
 'specialpages-group-login' => 'Tràse / Reggistrate',
 'specialpages-group-changes' => 'Cangiaminde recende e archivie',
 'specialpages-group-media' => 'Riepileghe de media e carecaminde',
-'specialpages-group-wiki_users' => 'Utinde e deritte',
+'specialpages-group-users' => 'Utinde e deritte',
 'specialpages-group-highuse' => 'Pàggene ausete assaje proprie',
 'specialpages-group-pages' => 'Liste de le pàggene',
 'specialpages-group-pagetools' => 'Pàgene de le struminde',
@@ -3965,11 +3965,11 @@ Le immaggine sonde fatte vedè jndr'à resoluziona megghie, otre tipe de file re
 'logentry-move-move_redir-noredirect' => "$1 pàgena spustate $3 a $4 sus a 'nu redirezionamende senze lassà 'nu redirezionamende",
 'logentry-patrol-patrol' => '$1 revisione marcate $4 de pàgene condrollate $3',
 'logentry-patrol-patrol-auto' => '$1 automaticamende revisione marcate $4 de pàgene condrollate $3',
-'logentry-newwiki_users-newwiki_users' => "'U cunde utende $1 ha state ccrejate",
-'logentry-newwiki_users-create' => "'U cunde utende $1 ha state ccrejate",
-'logentry-newwiki_users-create2' => "$1 {{GENDER:$2|ccrejate}} {{GENDER:$4|'nu cunde utende}} $3",
-'logentry-newwiki_users-autocreate' => "'U cunde utende $1 ha state ccrejate automaticamende",
-'newwiki_userlog-byemail' => 'password mannete pe e-mail',
+'logentry-newusers-newusers' => "'U cunde utende $1 ha state ccrejate",
+'logentry-newusers-create' => "'U cunde utende $1 ha state ccrejate",
+'logentry-newusers-create2' => "$1 {{GENDER:$2|ccrejate}} {{GENDER:$4|'nu cunde utende}} $3",
+'logentry-newusers-autocreate' => "'U cunde utende $1 ha state ccrejate automaticamende",
+'newuserlog-byemail' => 'password mannete pe e-mail',
 
 # Feedback
 'feedback-bugornote' => "Ce tu si pronde a descrivere 'nu probbleme tecniche cu le dettaglie pe piacere [\$1 manne 'nu bug].

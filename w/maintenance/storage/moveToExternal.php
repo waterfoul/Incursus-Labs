@@ -36,12 +36,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	}
 
 	$cluster = $args[0];
-	w = wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 
 	if ( isset( $options['e'] ) ) {
 		$maxID = $options['e'];
 	} else {
-		$maxID = w->selectField( 'text', 'MAX(old_id)', false, $fname );
+		$maxID = $dbw->selectField( 'text', 'MAX(old_id)', false, $fname );
 	}
 	$minID = isset( $options['s'] ) ? $options['s'] : 1;
 
@@ -50,8 +50,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 function moveToExternal( $cluster, $maxID, $minID = 1 ) {
 	$fname = 'moveToExternal';
-	w = wfGetDB( DB_MASTER );
-	r = wfGetDB( DB_SLAVE );
+	$dbw = wfGetDB( DB_MASTER );
+	$dbr = wfGetDB( DB_SLAVE );
 
 	$count = $maxID - $minID + 1;
 	$blockSize = 1000;
@@ -69,10 +69,10 @@ function moveToExternal( $cluster, $maxID, $minID = 1 ) {
 			wfWaitForSlaves();
 		}
 
-		$res = r->select( 'text', array( 'old_id', 'old_flags', 'old_text' ),
+		$res = $dbr->select( 'text', array( 'old_id', 'old_flags', 'old_text' ),
 			array(
 				"old_id BETWEEN $blockStart AND $blockEnd",
-				'old_flags NOT ' . r->buildLike( r->anyString(), 'external', r->anyString() ),
+				'old_flags NOT ' . $dbr->buildLike( $dbr->anyString(), 'external', $dbr->anyString() ),
 			), $fname );
 		foreach ( $res as $row ) {
 			# Resolve stubs
@@ -117,7 +117,7 @@ function moveToExternal( $cluster, $maxID, $minID = 1 ) {
 				print "Error writing to external storage\n";
 				exit;
 			}
-			w->update( 'text',
+			$dbw->update( 'text',
 				array( 'old_flags' => $flags, 'old_text' => $url ),
 				array( 'old_id' => $id ), $fname );
 			$numMoved++;

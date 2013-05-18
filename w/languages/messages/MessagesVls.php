@@ -34,7 +34,7 @@ $namespaceNames = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Links ounderstreepn:',
 'tog-hideminor' => 'Klêne veranderiengn verdukn van juste veranderd',
 'tog-enotifrevealaddr' => 'Tôog min e-mailadres in e-mails',
@@ -144,7 +144,7 @@ $messages = array(
 'talk' => 'Discuusje',
 'toolbox' => 'Ulpmiddeln',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Over {{SITENAME}}',
 'aboutpage' => 'Project:Info',
 'disclaimers' => 'Aansprakelekeid',
@@ -187,10 +187,10 @@ $messages = array(
 
 # Miscellaneous special pages
 'newpages' => 'Nieuwe bloadn',
-'newpages-wiki_username' => 'Gebrukersnoame:',
+'newpages-username' => 'Gebrukersnoame:',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Logboek nieuwe gebrukers',
+# Special:Log/newusers
+'newuserlogpage' => 'Logboek nieuwe gebrukers',
 
 # Watchlist
 'mywatchlist' => 'Myn volglyste',

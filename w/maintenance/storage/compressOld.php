@@ -106,11 +106,11 @@ class CompressOld extends Maintenance {
 	private function compressOldPages( $start = 0, $extdb = '' ) {
 		$chunksize = 50;
 		$this->output( "Starting from old_id $start...\n" );
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		do {
-			$res = w->select( 'text', array( 'old_id','old_flags','old_text' ),
+			$res = $dbw->select( 'text', array( 'old_id','old_flags','old_text' ),
 				"old_id>=$start", __METHOD__, array( 'ORDER BY' => 'old_id', 'LIMIT' => $chunksize, 'FOR UPDATE' ) );
-			if( w->numRows( $res ) == 0 ) {
+			if( $dbw->numRows( $res ) == 0 ) {
 				break;
 			}
 			$last = $start;
@@ -135,7 +135,7 @@ class CompressOld extends Maintenance {
 			#print "Already compressed row {$row->old_id}\n";
 			return false;
 		}
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$flags = $row->old_flags ? "{$row->old_flags},gzip" : "gzip";
 		$compress = gzdeflate( $row->old_text );
 
@@ -150,7 +150,7 @@ class CompressOld extends Maintenance {
 		}
 
 		# Update text row
-		w->update( 'text',
+		$dbw->update( 'text',
 			array( /* SET */
 				'old_flags' => $flags,
 				'old_text' => $compress
@@ -176,8 +176,8 @@ class CompressOld extends Maintenance {
 	{
 		$loadStyle = self::LS_CHUNKED;
 
-		r = wfGetDB( DB_SLAVE );
-		w = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
 
 		# Set up external storage
 		if ( $extdb != '' ) {
@@ -186,7 +186,7 @@ class CompressOld extends Maintenance {
 
 		# Get all articles by page_id
 		if ( !$maxPageId ) {
-			$maxPageId = r->selectField( 'page', 'max(page_id)', '', __METHOD__ );
+			$maxPageId = $dbr->selectField( 'page', 'max(page_id)', '', __METHOD__ );
 		}
 		$this->output( "Starting from $startId of $maxPageId\n" );
 		$pageConds = array();
@@ -208,8 +208,8 @@ class CompressOld extends Maintenance {
 		# overwriting bulk storage concat rows. Don't compress external references, because
 		# the script doesn't yet delete rows from external storage.
 		$conds = array(
-			'old_flags NOT ' . r->buildLike( r->anyString(), 'object', r->anyString() ) . ' AND old_flags NOT '
-				. r->buildLike( r->anyString(), 'external', r->anyString() ) );
+			'old_flags NOT ' . $dbr->buildLike( $dbr->anyString(), 'object', $dbr->anyString() ) . ' AND old_flags NOT '
+				. $dbr->buildLike( $dbr->anyString(), 'external', $dbr->anyString() ) );
 
 		if ( $beginDate ) {
 			if ( !preg_match( '/^\d{14}$/', $beginDate ) ) {
@@ -245,23 +245,23 @@ class CompressOld extends Maintenance {
 			wfWaitForSlaves();
 
 			# Wake up
-			r->ping();
+			$dbr->ping();
 
 			# Get the page row
-			$pageRes = r->select( 'page',
+			$pageRes = $dbr->select( 'page',
 				array('page_id', 'page_namespace', 'page_title','page_latest'),
 				$pageConds + array('page_id' => $pageId), __METHOD__ );
-			if ( r->numRows( $pageRes ) == 0 ) {
+			if ( $dbr->numRows( $pageRes ) == 0 ) {
 				continue;
 			}
-			$pageRow = r->fetchObject( $pageRes );
+			$pageRow = $dbr->fetchObject( $pageRes );
 
 			# Display progress
 			$titleObj = Title::makeTitle( $pageRow->page_namespace, $pageRow->page_title );
 			$this->output( "$pageId\t" . $titleObj->getPrefixedDBkey() . " " );
 
 			# Load revisions
-			$revRes = w->select( $tables, $fields,
+			$revRes = $dbw->select( $tables, $fields,
 				array_merge( array(
 					'rev_page' => $pageRow->page_id,
 					# Don't operate on the current revision
@@ -294,7 +294,7 @@ class CompressOld extends Maintenance {
 
 				$chunk = new ConcatenatedGzipHistoryBlob();
 				$stubs = array();
-				w->begin( __METHOD__ );
+				$dbw->begin( __METHOD__ );
 				$usedChunk = false;
 				$primaryOldid = $revs[$i]->rev_text_id;
 
@@ -304,7 +304,7 @@ class CompressOld extends Maintenance {
 
 					# Get text
 					if ( $loadStyle == self::LS_INDIVIDUAL ) {
-						$textRow = w->selectRow( 'text',
+						$textRow = $dbw->selectRow( 'text',
 							array( 'old_flags', 'old_text' ),
 							array( 'old_id' => $oldid ),
 							__METHOD__,
@@ -317,7 +317,7 @@ class CompressOld extends Maintenance {
 
 					if ( $text === false ) {
 						$this->error( "\nError, unable to get text in old_id $oldid" );
-						#w->delete( 'old', array( 'old_id' => $oldid ) );
+						#$dbw->delete( 'old', array( 'old_id' => $oldid ) );
 					}
 
 					if ( $extdb == "" && $j == 0 ) {
@@ -356,7 +356,7 @@ class CompressOld extends Maintenance {
 								continue;
 							# $stored should provide base path to a BLOB
 							$url = $stored."/".$stub->getHash();
-							w->update( 'text',
+							$dbw->update( 'text',
 								array( /* SET */
 									'old_text' => $url,
 									'old_flags' => 'external,utf-8',
@@ -367,7 +367,7 @@ class CompressOld extends Maintenance {
 						}
 					} else {
 						# Store the main object locally
-						w->update( 'text',
+						$dbw->update( 'text',
 							array( /* SET */
 								'old_text' => serialize( $chunk ),
 								'old_flags' => 'object,utf-8',
@@ -380,7 +380,7 @@ class CompressOld extends Maintenance {
 						for ( $j = 1; $j < $thisChunkSize; $j++ ) {
 							# Skip if not compressing and don't overwrite the first revision
 							if ( $stubs[$j] !== false && $revs[$i + $j]->rev_text_id != $primaryOldid ) {
-								w->update( 'text',
+								$dbw->update( 'text',
 									array( /* SET */
 										'old_text' => serialize($stubs[$j]),
 										'old_flags' => 'object,utf-8',
@@ -394,7 +394,7 @@ class CompressOld extends Maintenance {
 				}
 				# Done, next
 				$this->output( "/" );
-				w->commit( __METHOD__ );
+				$dbw->commit( __METHOD__ );
 				$i += $thisChunkSize;
 				wfWaitForSlaves();
 			}

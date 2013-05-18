@@ -506,7 +506,7 @@ class WebRequest {
 	 * set. Carriage returns are stripped from the text, and with some language
 	 * modules there is an input transliteration applied. This should generally
 	 * be used for form "<textarea>" and "<input>" fields. Used for
-	 * wiki_user-supplied freeform text input (for which input transformations may
+	 * user-supplied freeform text input (for which input transformations may
 	 * be required - e.g.  Esperanto x-coding).
 	 *
 	 * @param $name String
@@ -587,7 +587,7 @@ class WebRequest {
 
 	/**
 	 * Returns true if there is a session cookie set.
-	 * This does not necessarily mean that the wiki_user is logged in!
+	 * This does not necessarily mean that the user is logged in!
 	 *
 	 * If you want to check for an open session, use session_id()
 	 * instead; that will also tell you if the session was opened
@@ -639,7 +639,7 @@ class WebRequest {
 				"REQUEST_URI, HTTP_X_ORIGINAL_URL or SCRIPT_NAME. Report details " .
 				"of your web server configuration to http://bugzilla.wikimedia.org/" );
 		}
-		// wiki_user-agents should not send a fragment with the URI, but
+		// User-agents should not send a fragment with the URI, but
 		// if they do, and the web server passes it on to us, we
 		// need to strip it or we get false-positive redirect loops
 		// or weird output URLs
@@ -722,19 +722,19 @@ class WebRequest {
 	 * defaults if not given. The limit must be positive and is capped at 5000.
 	 * Offset must be positive but is not capped.
 	 *
-	 * @param $deflimit Integer: limit to use if no input and the wiki_user hasn't set the option.
+	 * @param $deflimit Integer: limit to use if no input and the user hasn't set the option.
 	 * @param $optionname String: to specify an option other than rclimit to pull from.
 	 * @return array first element is limit, second is offset
 	 */
 	public function getLimitOffset( $deflimit = 50, $optionname = 'rclimit' ) {
-		global $wgwiki_user;
+		global $wgUser;
 
 		$limit = $this->getInt( 'limit', 0 );
 		if( $limit < 0 ) {
 			$limit = 0;
 		}
 		if( ( $limit == 0 ) && ( $optionname != '' ) ) {
-			$limit = (int)$wgwiki_user->getOption( $optionname );
+			$limit = (int)$wgUser->getOption( $optionname );
 		}
 		if( $limit <= 0 ) {
 			$limit = $deflimit;
@@ -788,7 +788,7 @@ class WebRequest {
 
 	/**
 	 * Return the original filename of the uploaded file, as reported by
-	 * the submitting wiki_user agent. HTML-style character entities are
+	 * the submitting user agent. HTML-style character entities are
 	 * interpreted and normalized to Unicode normalization form C, in part
 	 * to deal with weird input from Safari with non-ASCII filenames.
 	 *

@@ -52,13 +52,13 @@ class DatabaseMysql extends DatabaseBase {
 
 	/**
 	 * @param $server string
-	 * @param $wiki_user string
+	 * @param $user string
 	 * @param $password string
-	 * @param Name string
+	 * @param $dbName string
 	 * @return bool
 	 * @throws DBConnectionError
 	 */
-	function open( $server, $wiki_user, $password, Name ) {
+	function open( $server, $user, $password, $dbName ) {
 		global $wgAllDBsAreLocalhost, $wgDBmysql5, $wgSQLMode;
 		wfProfileIn( __METHOD__ );
 
@@ -79,9 +79,9 @@ class DatabaseMysql extends DatabaseBase {
 		}
 		$this->close();
 		$this->mServer = $server;
-		$this->mwiki_user = $wiki_user;
+		$this->mUser = $user;
 		$this->mPassword = $password;
-		$this->mDBname = Name;
+		$this->mDBname = $dbName;
 
 		$connFlags = 0;
 		if ( $this->mFlags & DBO_SSL ) {
@@ -95,7 +95,7 @@ class DatabaseMysql extends DatabaseBase {
 
 		# The kernel's default SYN retransmission period is far too slow for us,
 		# so we use a short timeout plus a manual retry. Retrying means that a small
-		# but finite rate of SYN packet loss won't cause wiki_user-visible errors.
+		# but finite rate of SYN packet loss won't cause user-visible errors.
 		$this->mConn = false;
 		if ( ini_get( 'mysql.connect_timeout' ) <= 3 ) {
 			$numAttempts = 2;
@@ -108,10 +108,10 @@ class DatabaseMysql extends DatabaseBase {
 				usleep( 1000 );
 			}
 			if ( $this->mFlags & DBO_PERSISTENT ) {
-				$this->mConn = mysql_pconnect( $realServer, $wiki_user, $password, $connFlags );
+				$this->mConn = mysql_pconnect( $realServer, $user, $password, $connFlags );
 			} else {
 				# Create a new connection...
-				$this->mConn = mysql_connect( $realServer, $wiki_user, $password, true, $connFlags );
+				$this->mConn = mysql_connect( $realServer, $user, $password, true, $connFlags );
 			}
 			#if ( $this->mConn === false ) {
 				#$iplus = $i + 1;
@@ -129,24 +129,24 @@ class DatabaseMysql extends DatabaseBase {
 			}
 			wfLogDBError( "Error connecting to {$this->mServer}: $error\n" );
 			wfDebug( "DB connection error\n" .
-				"Server: $server, wiki_user: $wiki_user, Password: " .
+				"Server: $server, User: $user, Password: " .
 				substr( $password, 0, 3 ) . "..., error: " . $error . "\n" );
 
 			wfProfileOut( __METHOD__ );
 			$this->reportConnectionError( $error );
 		}
 
-		if ( Name != '' ) {
+		if ( $dbName != '' ) {
 			wfSuppressWarnings();
-			$success = mysql_select_db( Name, $this->mConn );
+			$success = mysql_select_db( $dbName, $this->mConn );
 			wfRestoreWarnings();
 			if ( !$success ) {
-				wfLogDBError( "Error selecting database Name on server {$this->mServer}\n" );
-				wfDebug( "Error selecting database Name on server {$this->mServer} " .
+				wfLogDBError( "Error selecting database $dbName on server {$this->mServer}\n" );
+				wfDebug( "Error selecting database $dbName on server {$this->mServer} " .
 					"from client host " . wfHostname() . "\n" );
 
 				wfProfileOut( __METHOD__ );
-				$this->reportConnectionError( "Error selecting database Name" );
+				$this->reportConnectionError( "Error selecting database $dbName" );
 			}
 		}
 
@@ -433,12 +433,12 @@ class DatabaseMysql extends DatabaseBase {
 	}
 
 	/**
-	 * @param 
+	 * @param $db
 	 * @return bool
 	 */
-	function selectDB(  ) {
-		$this->mDBname = ;
-		return mysql_select_db( , $this->mConn );
+	function selectDB( $db ) {
+		$this->mDBname = $db;
+		return mysql_select_db( $db, $this->mConn );
 	}
 
 	/**
@@ -487,7 +487,7 @@ class DatabaseMysql extends DatabaseBase {
 		mysql_close( $this->mConn );
 		$this->mOpened = false;
 		$this->mConn = false;
-		$this->open( $this->mServer, $this->mwiki_user, $this->mPassword, $this->mDBname );
+		$this->open( $this->mServer, $this->mUser, $this->mPassword, $this->mDBname );
 		return true;
 	}
 
@@ -545,7 +545,7 @@ class DatabaseMysql extends DatabaseBase {
 			 *
 			 * Relay log I/O thread does not select databases.
 			 */
-			if ( $row->wiki_user == 'system wiki_user' &&
+			if ( $row->User == 'system user' &&
 				$row->State != 'Waiting for master to send event' &&
 				$row->State != 'Connecting to master' &&
 				$row->State != 'Queueing master event to the relay log' &&

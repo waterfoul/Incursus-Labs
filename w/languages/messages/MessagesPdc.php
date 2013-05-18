@@ -17,8 +17,8 @@ $fallback = 'de';
 
 $namespaceNames = array(
 	NS_TALK             => 'Dischbedutt',
-	NS_USER             => 'Yuwiki_user',
-	NS_USER_TALK        => 'Yuwiki_user_Dischbedutt',
+	NS_USER             => 'Yuuser',
+	NS_USER_TALK        => 'Yuuser_Dischbedutt',
 	NS_PROJECT_TALK     => '$1_Dischbedutt',
 	NS_FILE             => 'Feil',
 	NS_FILE_TALK        => 'Feil_Dischbedutt',
@@ -57,7 +57,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Gleecher unnerleine:',
 'tog-hideminor' => 'Gleene Enneringe verschwinne losse',
 'tog-watchdefault' => 'Vun mir gennerte Ardickele watsche',
@@ -195,7 +195,7 @@ $messages = array(
 'talk' => 'Dischbedutt',
 'views' => 'Aasichte',
 'toolbox' => 'Gscharr',
-'wiki_userpage' => 'Yuwiki_userblatt zeige',
+'userpage' => 'Yuuserblatt zeige',
 'projectpage' => 'Projekt-Blatt aagucke',
 'imagepage' => 'Feils zeige',
 'templatepage' => 'Moddle zeige',
@@ -210,7 +210,7 @@ $messages = array(
 'jumptonavigation' => 'Faahre-Gnepp',
 'jumptosearch' => 'guck uff',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Iwwer {{SITENAME}}',
 'aboutpage' => 'Project:Iwwer_{{SITENAME}}',
 'copyright' => 'Was do drin schdeht iss unner $1 verfiechbar',
@@ -256,7 +256,7 @@ Guck aa [[Special:Version|Versionsblatt]]',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Blatt',
-'nstab-wiki_user' => 'Yuwiki_user-Blatt',
+'nstab-user' => 'Yuuser-Blatt',
 'nstab-media' => 'Media-Blatt',
 'nstab-special' => 'Besunneres Blatt',
 'nstab-project' => 'Project-Blatt',
@@ -273,7 +273,7 @@ Guck aa [[Special:Version|Versionsblatt]]',
 
 Des Blatt iss verleicht glescht adder gezoge warre.
 
-Wenns des net iss, hoscht verleicht en Fehler in de Daadebank gfunne. Bitte meld des an en [[Special:Listwiki_users/sysop|Verwalter]] unn gebb die URL dezu aa.',
+Wenns des net iss, hoscht verleicht en Fehler in de Daadebank gfunne. Bitte meld des an en [[Special:ListUsers/sysop|Verwalter]] unn gebb die URL dezu aa.',
 'missingarticle-rev' => '(Version: $1)',
 'missingarticle-diff' => '(Unnerschidd zwische Versione: $1, $2)',
 'internalerror' => 'Interner Fehler',
@@ -285,21 +285,21 @@ Wenns des net iss, hoscht verleicht en Fehler in de Daadebank gfunne. Bitte meld
 'virus-unknownscanner' => 'Unbekannter Virus-Uffgucker:',
 
 # Login and logout pages
-'yourname' => 'Yuwiki_user-Naame:',
+'yourname' => 'Yuuser-Naame:',
 'yourpassword' => 'Paesswatt:',
 'yourpasswordagain' => 'Paesswatt noch eemol:',
 'yourdomainname' => 'Dei Domain:',
 'login' => 'Kumm nei',
 'nav-login-createaccount' => 'Kumm nei',
-'wiki_userlogin' => 'Kumm nei',
-'wiki_userloginnocreate' => 'Kumm nei',
+'userlogin' => 'Kumm nei',
+'userloginnocreate' => 'Kumm nei',
 'logout' => 'Geh naus',
-'wiki_userlogout' => 'Geh naus',
+'userlogout' => 'Geh naus',
 'gotaccountlink' => 'Kumm nei',
 'createaccountmail' => 'iwwer E-Mail',
 'createaccountreason' => 'Grund:',
 'mailmypassword' => 'Neies Paesswadd eposchde',
-'noemail' => 'Yuwiki_user „$1“ hot ken E-Mail aagewwe.',
+'noemail' => 'Yuuser „$1“ hot ken E-Mail aagewwe.',
 'loginlanguagelabel' => 'Schprooch: $1',
 
 # Change password dialog
@@ -312,8 +312,8 @@ Wenns des net iss, hoscht verleicht en Fehler in de Daadebank gfunne. Bitte meld
 # Special:PasswordReset
 'passwordreset' => 'Paesswatt zerricksetze',
 'passwordreset-legend' => 'Paesswatt zerricksetze',
-'passwordreset-wiki_username' => 'Yuwiki_user-Naame:',
-'passwordreset-emailelement' => 'Yuwiki_usernaame: $1
+'passwordreset-username' => 'Yuuser-Naame:',
+'passwordreset-emailelement' => 'Yuusernaame: $1
 Paesswatt fer nau: $2',
 
 # Special:ChangeEmail
@@ -349,10 +349,10 @@ Paesswatt fer nau: $2',
 'yourdiff' => 'Unnerschidde',
 'templatesused' => '{{PLURAL:$1|Sell Moddel iss|Selle Moddle sinn}} gyuust vun dem Blatt:',
 'template-protected' => '(geschitzt)',
-'template-semiprotected' => '(geschitzt fer neie Yuwiki_user)',
+'template-semiprotected' => '(geschitzt fer neie Yuuser)',
 
 # "Undo" feature
-'undo-summary' => 'Enneringe $1 vun [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Dischbedutt]]) losgmacht.',
+'undo-summary' => 'Enneringe $1 vun [[Special:Contributions/$2|$2]] ([[User talk:$2|Dischbedutt]]) losgmacht.',
 
 # History pages
 'revisionasof' => 'Version vum $2, $3 Uhr',
@@ -369,7 +369,7 @@ Paesswatt fer nau: $2',
 
 # Revision deletion
 'rev-deleted-comment' => '(Aamaericking iss weg geduh warre)',
-'rev-deleted-wiki_user' => '(Yuwiki_user-Naame gelöscht)',
+'rev-deleted-user' => '(Yuuser-Naame gelöscht)',
 'rev-delundel' => 'zeig/verschwinne losse',
 'rev-showdeleted' => 'zeig',
 'revdelete-no-file' => 'Sell Feil gebt es net.',
@@ -429,7 +429,7 @@ Paesswatt fer nau: $2',
 'mypreferences' => 'Uffschtellinge',
 'changepassword' => 'Paesswatt ennere',
 'skin-preview' => 'Aagucke',
-'prefs-personal' => 'Yuwiki_user Profile',
+'prefs-personal' => 'Yuuser Profile',
 'prefs-watchlist' => 'Watsch-Lischt',
 'prefs-watchlist-days' => 'Daage in de Watsch-Lischt:',
 'prefs-resetpass' => 'Paesswatt ennere',
@@ -446,12 +446,12 @@ Paesswatt fer nau: $2',
 'timezoneregion-europe' => 'Eiropaa',
 'prefs-namespaces' => 'Blatznaame',
 'prefs-files' => 'Feils',
-'prefs-custom-css' => 'CSS vum Yuwiki_user',
-'prefs-custom-js' => 'JavaScript vum Yuwiki_user',
+'prefs-custom-css' => 'CSS vum Yuuser',
+'prefs-custom-js' => 'JavaScript vum Yuuser',
 'youremail' => 'E-Poschde:',
-'wiki_username' => 'Yuwiki_user-Naame:',
-'uid' => 'Yuwiki_user-ID:',
-'prefs-memberingroups' => 'Mitglied vun de {{PLURAL:$1|Yuwiki_user-Druppe|Yuwiki_user-Druppe}}:',
+'username' => 'Yuuser-Naame:',
+'uid' => 'Yuuser-ID:',
+'prefs-memberingroups' => 'Mitglied vun de {{PLURAL:$1|Yuuser-Druppe|Yuuser-Druppe}}:',
 'yourlanguage' => 'Schprooch:',
 'yourgender' => 'Geschlecht:',
 'gender-female' => 'Weiblich',
@@ -459,23 +459,23 @@ Paesswatt fer nau: $2',
 'prefs-signature' => 'Unnerschrift',
 'prefs-diffs' => 'Unnerschidd vun Versione',
 
-# wiki_user rights
-'wiki_userrights-editwiki_usergroup' => 'Mitgliedschaft vun Yuwiki_user ennere',
-'wiki_userrights-groupsmember' => 'Mitglied vun:',
-'wiki_userrights-reason' => 'Grund:',
+# User rights
+'userrights-editusergroup' => 'Mitgliedschaft vun Yuuser ennere',
+'userrights-groupsmember' => 'Mitglied vun:',
+'userrights-reason' => 'Grund:',
 
 # Groups
 'group' => 'Druppe:',
-'group-wiki_user' => 'Yuwiki_user',
+'group-user' => 'Yuuser',
 'group-bot' => 'Waddefresser',
 'group-sysop' => 'Verwalter',
 'group-all' => '(all)',
 
-'group-wiki_user-member' => '{{GENDER:$1|Yuwiki_user}}',
+'group-user-member' => '{{GENDER:$1|Yuuser}}',
 'group-bot-member' => '{{GENDER:$1|Waddefresser}}',
 'group-sysop-member' => '{{GENDER:$1|Verwalter}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Yuwiki_user',
+'grouppage-user' => '{{ns:project}}:Yuuser',
 'grouppage-bot' => '{{ns:project}}:Waddefresser',
 'grouppage-sysop' => '{{ns:project}}:Verwalter',
 
@@ -488,7 +488,7 @@ Paesswatt fer nau: $2',
 'right-writeapi' => 'Yuus vun write API',
 'right-delete' => 'Bledder lesche',
 
-# wiki_user rights log
+# User rights log
 'rightsnone' => '(ken)',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -506,7 +506,7 @@ Paesswatt fer nau: $2',
 'recentchanges-label-bot' => 'Ennering vun em Waddefresser',
 'rcshowhideminor' => 'Gleene Enneringe $1',
 'rcshowhidebots' => 'Bots $1',
-'rcshowhideanons' => 'IP-Yuwiki_user $1',
+'rcshowhideanons' => 'IP-Yuuser $1',
 'rcshowhidemine' => 'Mei Ardickele $1',
 'rclinks' => 'Zeig die letscht $1 Enneringe vun de letscht $2 Daag.<br />$3',
 'diff' => 'Unnerschidd',
@@ -554,7 +554,7 @@ Paesswatt fer nau: $2',
 'listfiles' => 'Lischt vun Feils',
 'listfiles_date' => 'Datum',
 'listfiles_name' => 'Naame',
-'listfiles_wiki_user' => 'Yuwiki_user',
+'listfiles_user' => 'Yuuser',
 'listfiles_size' => 'Grees',
 'listfiles_count' => 'Versione',
 
@@ -566,7 +566,7 @@ Paesswatt fer nau: $2',
 'filehist-revert' => 'zerick',
 'filehist-datetime' => 'Version vum',
 'filehist-thumb' => 'Glee Pikder',
-'filehist-wiki_user' => 'Yuwiki_user',
+'filehist-user' => 'Yuuser',
 'filehist-dimensions' => 'Grees',
 'filehist-filesize' => 'Grees vum Feil',
 'filehist-comment' => 'Aamaericking',
@@ -602,7 +602,7 @@ Paesswatt fer nau: $2',
 'statistics' => 'Nummere',
 'statistics-header-pages' => 'Nummere vun Bledder',
 'statistics-header-edits' => 'Nummere vun Enneringe',
-'statistics-header-wiki_users' => 'Nummere vun Yuwiki_user',
+'statistics-header-users' => 'Nummere vun Yuuser',
 'statistics-pages' => 'Bledder',
 
 'doubleredirects' => 'Zweefache Weiderleidinge',
@@ -622,10 +622,10 @@ Paesswatt fer nau: $2',
 'ntransclusions' => 'gyuust uff $1 {{PLURAL:$1|Blatt|Bledder}}',
 'shortpages' => 'Glee Bledder',
 'longpages' => 'Grosse Bledder',
-'listwiki_users' => 'Lischt vun Yuwiki_user',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|Ennering|Enneringe}}',
+'listusers' => 'Lischt vun Yuuser',
+'usereditcount' => '$1 {{PLURAL:$1|Ennering|Enneringe}}',
 'newpages' => 'Neie Bledder',
-'newpages-wiki_username' => 'Yuwiki_user-Naame:',
+'newpages-username' => 'Yuuser-Naame:',
 'ancientpages' => 'Eldere Bledder',
 'move' => 'Ziehe',
 'movethispage' => 'Blatt ziehe',
@@ -636,7 +636,7 @@ Paesswatt fer nau: $2',
 'booksources-go' => 'Uffgucke',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Yuwiki_user:',
+'specialloguserlabel' => 'Yuuser:',
 'speciallogtitlelabel' => 'Titel:',
 'log' => 'Logbicher',
 
@@ -661,30 +661,30 @@ Paesswatt fer nau: $2',
 'linksearch-ns' => 'Blatznaame:',
 'linksearch-ok' => 'Uffgucke',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'Zeig',
-'listwiki_users-noresult' => 'Ken Yuwiki_user gfunne.',
+# Special:ListUsers
+'listusers-submit' => 'Zeig',
+'listusers-noresult' => 'Ken Yuuser gfunne.',
 
-# Special:Activewiki_users
-'activewiki_users-hidebots' => 'Waddefresser verschwinne losse',
-'activewiki_users-hidesysops' => 'Verwalter verschwinne losse',
+# Special:ActiveUsers
+'activeusers-hidebots' => 'Waddefresser verschwinne losse',
+'activeusers-hidesysops' => 'Verwalter verschwinne losse',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Logbuch vun neie Yuwiki_user',
+# Special:Log/newusers
+'newuserlogpage' => 'Logbuch vun neie Yuuser',
 
 # Special:ListGroupRights
-'listgrouprights' => 'Rechte vun Yuwiki_user-Druppe',
+'listgrouprights' => 'Rechte vun Yuuser-Druppe',
 'listgrouprights-group' => 'Druppe',
 'listgrouprights-rights' => 'Rechte',
 'listgrouprights-helppage' => 'Help:Rechte vun Druppe',
 'listgrouprights-members' => '(Lischt vun Mitglieder)',
-'listgrouprights-addgroup' => 'Yuwiki_user zu {{PLURAL:$2|daer Druppe|denne Druppe}} dezu duh: $1',
-'listgrouprights-addgroup-all' => 'Yuwiki_user zu alle Druppe dezu duh',
+'listgrouprights-addgroup' => 'Yuuser zu {{PLURAL:$2|daer Druppe|denne Druppe}} dezu duh: $1',
+'listgrouprights-addgroup-all' => 'Yuuser zu alle Druppe dezu duh',
 
-# E-mail wiki_user
-'emailwiki_user' => 'E-Poschd fer den Yuwiki_user',
-'defemailsubject' => '{{SITENAME}} - E-Poschde vun Yuwiki_user „$1“',
-'emailwiki_username' => 'Yuwiki_user-Naame:',
+# E-mail user
+'emailuser' => 'E-Poschd fer den Yuuser',
+'defemailsubject' => '{{SITENAME}} - E-Poschde vun Yuuser „$1“',
+'emailusername' => 'Yuuser-Naame:',
 'emailfrom' => 'Vun:',
 'emailto' => 'Fer:',
 'emailsend' => 'Schicke',
@@ -708,7 +708,7 @@ Paesswatt fer nau: $2',
 'unwatching' => 'Nimmi watsche...',
 
 'enotif_newpagetext' => 'Sell iss en neies Blatt.',
-'enotif_impersonal_salutation' => '{{SITENAME}}-Yuwiki_user',
+'enotif_impersonal_salutation' => '{{SITENAME}}-Yuuser',
 'changed' => 'gennert',
 
 # Delete
@@ -727,7 +727,7 @@ Guck $2 fer e Lischt vun de letscht Leschunge.',
 # Protect
 'prot_1movedto2' => 'hot „[[$1]]“ nooch „[[$2]]“ gezoge',
 'protectcomment' => 'Grund:',
-'protect-default' => 'All Yuwiki_user',
+'protect-default' => 'All Yuuser',
 'protect-level-sysop' => 'Nur Verwalter',
 'protect-expiring' => 'bis $2, $3 Uhr (UTC)',
 'protect-expiry-indefinite' => 'fer immer',
@@ -757,7 +757,7 @@ Guck $2 fer e Lischt vun de letscht Leschunge.',
 'blanknamespace' => '(Bledder)',
 
 # Contributions
-'contributions' => 'Ardickele vum Yuwiki_user',
+'contributions' => 'Ardickele vum Yuuser',
 'contributions-title' => 'Ardickele vun „$1“',
 'mycontris' => 'Mei Ardickele',
 'contribsub2' => 'Fer $1 ($2)',
@@ -767,7 +767,7 @@ Guck $2 fer e Lischt vun de letscht Leschunge.',
 
 'sp-contributions-talk' => 'Dischbedutt',
 'sp-contributions-search' => 'Guck fer Ardickel',
-'sp-contributions-wiki_username' => 'IP-Adress odder Yuwiki_usernaame:',
+'sp-contributions-username' => 'IP-Adress odder Yuusernaame:',
 'sp-contributions-submit' => 'Guck uff',
 
 # What links here
@@ -783,14 +783,14 @@ Guck $2 fer e Lischt vun de letscht Leschunge.',
 'whatlinkshere-hideimages' => 'Feil Gleecher $1',
 
 # Block/unblock
-'block' => 'Yuwiki_user aabinne',
-'blockip' => 'Yuwiki_user aabinne',
-'blockip-title' => 'Yuwiki_user aabinne',
-'blockip-legend' => 'Yuwiki_user aabinne',
-'ipadressorwiki_username' => 'IP-Adress odder Yuwiki_usernaame:',
+'block' => 'Yuuser aabinne',
+'blockip' => 'Yuuser aabinne',
+'blockip-title' => 'Yuuser aabinne',
+'blockip-legend' => 'Yuuser aabinne',
+'ipadressorusername' => 'IP-Adress odder Yuusernaame:',
 'ipbreason' => 'Grund:',
 'ipbreasonotherlist' => 'Annerer Grund',
-'ipbsubmit' => 'Daen Yuwiki_user aabinne',
+'ipbsubmit' => 'Daen Yuuser aabinne',
 'ipbother' => 'Annere Zeit (englisch):',
 'ipboptions' => '2 Schtund:2 hours,1 Daag:1 day,3 Daag:3 days,1 Woch:1 week,2 Woche:2 weeks,1 Munet:1 month,3 Munede:3 months,6 Monate:6 months,1 Yaar:1 year,Fer immer:infinite',
 'ipbotheroption' => 'Anneres',
@@ -842,7 +842,7 @@ Guck $2 fer e Lischt vun de letscht Leschunge.',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|Version|Versione}} vun $2',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Dei Yuwiki_user-Blatt',
+'tooltip-pt-userpage' => 'Dei Yuuser-Blatt',
 'tooltip-pt-mytalk' => 'Dei Gschwetz-Blatt',
 'tooltip-pt-preferences' => 'Mei Uffschtelling',
 'tooltip-pt-mycontris' => 'Lischt vun deine Ardickel',
@@ -868,23 +868,23 @@ Guck $2 fer e Lischt vun de letscht Leschunge.',
 'tooltip-t-recentchangeslinked' => 'Letschte Enneringe in Bledder, wu vun do verlinkt sinn',
 'tooltip-feed-rss' => 'RSS-Feed fer des Blatt',
 'tooltip-feed-atom' => 'Atom-Feed fer des Blatt',
-'tooltip-t-contributions' => 'Lischt von Ardickele vun dem Yuwiki_user zeige',
-'tooltip-t-emailwiki_user' => 'Dem Yuwiki_user e E-Poschd schicke',
+'tooltip-t-contributions' => 'Lischt von Ardickele vun dem Yuuser zeige',
+'tooltip-t-emailuser' => 'Dem Yuuser e E-Poschd schicke',
 'tooltip-t-upload' => 'Feils nuffdraage',
 'tooltip-t-specialpages' => 'Lischt vun alle besunnere Bledder',
 'tooltip-t-print' => 'Des Blatt fer zum Drucke',
 'tooltip-t-permalink' => 'En permanent Gleecher zu derre Version vun dem Blatt',
 'tooltip-ca-nstab-main' => 'Inhalt vun dem Blatt aagucke',
-'tooltip-ca-nstab-wiki_user' => 'Yuwiki_userblatt zeige',
+'tooltip-ca-nstab-user' => 'Yuuserblatt zeige',
 'tooltip-ca-nstab-special' => 'Sell iss en besunneres Blatt. Du kannscht es Blatt net ennere.',
 'tooltip-ca-nstab-image' => 'Feil zeige',
 'tooltip-ca-nstab-template' => 'Moddel aagucke',
 'tooltip-save' => 'Enneringe beilege',
 
 # Attribution
-'sitewiki_user' => '{{SITENAME}}-Yuwiki_user $1',
+'siteuser' => '{{SITENAME}}-Yuuser $1',
 'others' => 'annere',
-'sitewiki_users' => '{{SITENAME}}-{{PLURAL:$2|Yuwiki_user|Yuwiki_user}} $1',
+'siteusers' => '{{SITENAME}}-{{PLURAL:$2|Yuuser|Yuuser}} $1',
 
 # Info page
 'pageinfo-header-edits' => 'Enneringe',
@@ -914,7 +914,7 @@ Guck $2 fer e Lischt vun de letscht Leschunge.',
 # EXIF tags
 'exif-imagelength' => 'Leng',
 'exif-software' => 'Geyuust Software',
-'exif-wiki_usercomment' => 'Anmaerrickinge vun Yuwiki_user',
+'exif-usercomment' => 'Anmaerrickinge vun Yuuser',
 'exif-gpsaltitude' => 'Heech',
 'exif-writer' => 'Schreiwer',
 'exif-languagecode' => 'Schprooch',
@@ -994,7 +994,7 @@ Guck $2 fer e Lischt vun de letscht Leschunge.',
 'specialpages' => 'Besunnere Bledder',
 'specialpages-group-other' => 'Annere besunnere Bledder',
 'specialpages-group-login' => 'Kumm nei',
-'specialpages-group-wiki_users' => 'Yuwiki_user unn Rechte',
+'specialpages-group-users' => 'Yuuser unn Rechte',
 'specialpages-group-pages' => 'Lischde vun Bledder',
 'specialpages-group-pagetools' => 'Gscharr fer Bledder',
 'specialpages-group-redirects' => 'Besunnere Bledder wu weiderleide',

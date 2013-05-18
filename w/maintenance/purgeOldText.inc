@@ -26,16 +26,16 @@
 function PurgeRedundantText( $delete = false ) {
 
 	# Data should come off the master, wrapped in a transaction
-	w = wfGetDB( DB_MASTER );
-	w->begin( __METHOD__ );
+	$dbw = wfGetDB( DB_MASTER );
+	$dbw->begin( __METHOD__ );
 
-	$tbl_arc = w->tableName( 'archive' );
-	$tbl_rev = w->tableName( 'revision' );
-	$tbl_txt = w->tableName( 'text' );
+	$tbl_arc = $dbw->tableName( 'archive' );
+	$tbl_rev = $dbw->tableName( 'revision' );
+	$tbl_txt = $dbw->tableName( 'text' );
 
 	# Get "active" text records from the revisions table
 	echo( "Searching for active text records in revisions table..." );
-	$res = w->query( "SELECT DISTINCT rev_text_id FROM $tbl_rev" );
+	$res = $dbw->query( "SELECT DISTINCT rev_text_id FROM $tbl_rev" );
 	foreach ( $res as $row ) {
 		$cur[] = $row->rev_text_id;
 	}
@@ -43,7 +43,7 @@ function PurgeRedundantText( $delete = false ) {
 
 	# Get "active" text records from the archive table
 	echo( "Searching for active text records in archive table..." );
-	$res = w->query( "SELECT DISTINCT ar_text_id FROM $tbl_arc" );
+	$res = $dbw->query( "SELECT DISTINCT ar_text_id FROM $tbl_arc" );
 	$cur = array();
 	foreach ( $res as $row ) {
 		$cur[] = $row->ar_text_id;
@@ -53,14 +53,14 @@ function PurgeRedundantText( $delete = false ) {
 	# Get the IDs of all text records not in these sets
 	echo( "Searching for inactive text records..." );
 	$set = implode( ', ', $cur );
-	$res = w->query( "SELECT old_id FROM $tbl_txt WHERE old_id NOT IN ( $set )" );
+	$res = $dbw->query( "SELECT old_id FROM $tbl_txt WHERE old_id NOT IN ( $set )" );
 	$old = array();
 	foreach ( $res as $row ) {
 		$old[] = $row->old_id;
 	}
 	echo( "done.\n" );
 
-	# Inform the wiki_user of what we're going to do
+	# Inform the user of what we're going to do
 	$count = count( $old );
 	echo( "$count inactive items found.\n" );
 
@@ -68,11 +68,11 @@ function PurgeRedundantText( $delete = false ) {
 	if ( $delete && $count ) {
 		echo( "Deleting..." );
 		$set = implode( ', ', $old );
-		w->query( "DELETE FROM $tbl_txt WHERE old_id IN ( $set )" );
+		$dbw->query( "DELETE FROM $tbl_txt WHERE old_id IN ( $set )" );
 		echo( "done.\n" );
 	}
 
 	# Done
-	w->commit( __METHOD__ );
+	$dbw->commit( __METHOD__ );
 
 }

@@ -29,8 +29,8 @@ class HtmlTest extends MediaWikiTestCase {
 			-1 => 'Special',
 			0  => '',
 			1  => 'Talk',
-			2  => 'wiki_user',
-			3  => 'wiki_user_talk',
+			2  => 'User',
+			3  => 'User_talk',
 			4  => 'MyWiki',
 			5  => 'MyWiki_Talk',
 			6  => 'File',
@@ -242,8 +242,8 @@ class HtmlTest extends MediaWikiTestCase {
 			'<select>' . "\n" .
 '<option value="0">(Main)</option>' . "\n" .
 '<option value="1">Talk</option>' . "\n" .
-'<option value="2">wiki_user</option>' . "\n" .
-'<option value="3">wiki_user talk</option>' . "\n" .
+'<option value="2">User</option>' . "\n" .
+'<option value="3">User talk</option>' . "\n" .
 '<option value="4">MyWiki</option>' . "\n" .
 '<option value="5">MyWiki Talk</option>' . "\n" .
 '<option value="6">File</option>' . "\n" .
@@ -267,8 +267,8 @@ class HtmlTest extends MediaWikiTestCase {
 '<option value="all">all</option>' . "\n" .
 '<option value="0">(Main)</option>' . "\n" .
 '<option value="1">Talk</option>' . "\n" .
-'<option value="2" selected="">wiki_user</option>' . "\n" .
-'<option value="3">wiki_user talk</option>' . "\n" .
+'<option value="2" selected="">User</option>' . "\n" .
+'<option value="3">User talk</option>' . "\n" .
 '<option value="4">MyWiki</option>' . "\n" .
 '<option value="5">MyWiki Talk</option>' . "\n" .
 '<option value="6">File</option>' . "\n" .
@@ -294,8 +294,8 @@ class HtmlTest extends MediaWikiTestCase {
 '<select>' . "\n" .
 '<option value="0">(Main)</option>' . "\n" .
 '<option value="1">Talk</option>' . "\n" .
-'<option value="2">wiki_user</option>' . "\n" .
-'<option value="3">wiki_user talk</option>' . "\n" .
+'<option value="2">User</option>' . "\n" .
+'<option value="3">User talk</option>' . "\n" .
 '<option value="4">MyWiki</option>' . "\n" .
 '<option value="5">MyWiki Talk</option>' . "\n" .
 '<option value="6">File</option>' . "\n" .
@@ -319,7 +319,7 @@ class HtmlTest extends MediaWikiTestCase {
 	function testCanFilterOutNamespaces() {
 		$this->assertEquals(
 '<select>' . "\n" .
-'<option value="2">wiki_user</option>' . "\n" .
+'<option value="2">User</option>' . "\n" .
 '<option value="4">MyWiki</option>' . "\n" .
 '<option value="5">MyWiki Talk</option>' . "\n" .
 '<option value="6">File</option>' . "\n" .
@@ -343,8 +343,8 @@ class HtmlTest extends MediaWikiTestCase {
 '<select>' . "\n" .
 '<option disabled="" value="0">(Main)</option>' . "\n" .
 '<option disabled="" value="1">Talk</option>' . "\n" .
-'<option disabled="" value="2">wiki_user</option>' . "\n" .
-'<option disabled="" value="3">wiki_user talk</option>' . "\n" .
+'<option disabled="" value="2">User</option>' . "\n" .
+'<option disabled="" value="3">User talk</option>' . "\n" .
 '<option disabled="" value="4">MyWiki</option>' . "\n" .
 '<option value="5">MyWiki Talk</option>' . "\n" .
 '<option value="6">File</option>' . "\n" .

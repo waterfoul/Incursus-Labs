@@ -1,6 +1,6 @@
 <?php
 /**
- * File deletion wiki_user interface.
+ * File deletion user interface.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
  */
 
 /**
- * File deletion wiki_user interface
+ * File deletion user interface
  *
  * @ingroup Media
  */
@@ -60,9 +60,9 @@ class FileDeleteForm {
 	 * pending authentication, confirmation, etc.
 	 */
 	public function execute() {
-		global $wgOut, $wgRequest, $wgwiki_user, $wgUploadMaintenance;
+		global $wgOut, $wgRequest, $wgUser, $wgUploadMaintenance;
 
-		$permissionErrors = $this->title->getwiki_userPermissionsErrors( 'delete', $wgwiki_user );
+		$permissionErrors = $this->title->getUserPermissionsErrors( 'delete', $wgUser );
 		if ( count( $permissionErrors ) ) {
 			throw new PermissionsError( 'delete', $permissionErrors );
 		}
@@ -80,7 +80,7 @@ class FileDeleteForm {
 		$this->oldimage = $wgRequest->getText( 'oldimage', false );
 		$token = $wgRequest->getText( 'wpEditToken' );
 		# Flag to hide all contents of the archived revisions
-		$suppress = $wgRequest->getVal( 'wpSuppress' ) && $wgwiki_user->isAllowed('suppressrevision');
+		$suppress = $wgRequest->getVal( 'wpSuppress' ) && $wgUser->isAllowed('suppressrevision');
 
 		if( $this->oldimage ) {
 			$this->oldfile = RepoGroup::singleton()->getLocalRepo()->newFromArchiveName( $this->title, $this->oldimage );
@@ -93,7 +93,7 @@ class FileDeleteForm {
 		}
 
 		// Perform the deletion if appropriate
-		if( $wgRequest->wasPosted() && $wgwiki_user->matchEditToken( $token, $this->oldimage ) ) {
+		if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $token, $this->oldimage ) ) {
 			$deleteReasonList = $wgRequest->getText( 'wpDeleteReasonList' );
 			$deleteReason = $wgRequest->getText( 'wpReason' );
 
@@ -107,7 +107,7 @@ class FileDeleteForm {
 				$reason = $deleteReasonList;
 			}
 
-			$status = self::doDelete( $this->title, $this->file, $this->oldimage, $reason, $suppress, $wgwiki_user );
+			$status = self::doDelete( $this->title, $this->file, $this->oldimage, $reason, $suppress, $wgUser );
 
 			if( !$status->isGood() ) {
 				$wgOut->addHTML( '<h2>' . $this->prepareMessage( 'filedeleteerror-short' ) . "</h2>\n" );
@@ -120,11 +120,11 @@ class FileDeleteForm {
 				// file, otherwise go back to the description page
 				$wgOut->addReturnTo( $this->oldimage ? $this->title : Title::newMainPage() );
 
-				if ( $wgwiki_user->isLoggedIn() && $wgRequest->getCheck( 'wpWatch' ) != $wgwiki_user->isWatched( $this->title ) ) {
+				if ( $wgUser->isLoggedIn() && $wgRequest->getCheck( 'wpWatch' ) != $wgUser->isWatched( $this->title ) ) {
 					if ( $wgRequest->getCheck( 'wpWatch' ) ) {
-						WatchAction::doWatch( $this->title, $wgwiki_user );
+						WatchAction::doWatch( $this->title, $wgUser );
 					} else {
-						WatchAction::doUnwatch( $this->title, $wgwiki_user );
+						WatchAction::doUnwatch( $this->title, $wgUser );
 					}
 				}
 			}
@@ -143,13 +143,13 @@ class FileDeleteForm {
 	 * @param $oldimage String: archive name
 	 * @param $reason String: reason of the deletion
 	 * @param $suppress Boolean: whether to mark all deleted versions as restricted
-	 * @param $wiki_user wiki_user object performing the request
+	 * @param $user User object performing the request
 	 * @return bool|Status
 	 */
-	public static function doDelete( &$title, &$file, &$oldimage, $reason, $suppress, wiki_user $wiki_user = null ) {
-		if ( $wiki_user === null ) {
-			global $wgwiki_user;
-			$wiki_user = $wgwiki_user;
+	public static function doDelete( &$title, &$file, &$oldimage, $reason, $suppress, User $user = null ) {
+		if ( $user === null ) {
+			global $wgUser;
+			$user = $wgUser;
 		}
 
 		if( $oldimage ) {
@@ -166,7 +166,7 @@ class FileDeleteForm {
 				$logtype = $suppress ? 'suppress' : 'delete';
 
 				$logEntry = new ManualLogEntry( $logtype, 'delete' );
-				$logEntry->setPerformer( $wiki_user );
+				$logEntry->setPerformer( $user );
 				$logEntry->setTarget( $title );
 				$logEntry->setComment( $logComment );
 				$logid = $logEntry->insert();
@@ -177,30 +177,30 @@ class FileDeleteForm {
 				wfEscapeWikiText( $title->getPrefixedText() )
 			);
 			$page = WikiPage::factory( $title );
-			w = wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			try {
 				// delete the associated article first
 				$error = '';
-				$deleteStatus = $page->doDeleteArticleReal( $reason, $suppress, 0, false, $error, $wiki_user );
+				$deleteStatus = $page->doDeleteArticleReal( $reason, $suppress, 0, false, $error, $user );
 				// doDeleteArticleReal() returns a non-fatal error status if the page
 				// or revision is missing, so check for isOK() rather than isGood()
 				if ( $deleteStatus->isOK() ) {
 					$status = $file->delete( $reason, $suppress );
 					if( $status->isOK() ) {
-						w->commit( __METHOD__ );
+						$dbw->commit( __METHOD__ );
 					} else {
-						w->rollback( __METHOD__ );
+						$dbw->rollback( __METHOD__ );
 					}
 				}
 			} catch ( MWException $e ) {
 				// rollback before returning to prevent UI from displaying incorrect "View or restore N deleted edits?"
-				w->rollback( __METHOD__ );
+				$dbw->rollback( __METHOD__ );
 				throw $e;
 			}
 		}
 
 		if ( $status->isOK() ) {
-			wfRunHooks( 'FileDeleteComplete', array( &$file, &$oldimage, &$page, &$wiki_user, &$reason ) );
+			wfRunHooks( 'FileDeleteComplete', array( &$file, &$oldimage, &$page, &$user, &$reason ) );
 		}
 
 		return $status;
@@ -210,9 +210,9 @@ class FileDeleteForm {
 	 * Show the confirmation form
 	 */
 	private function showForm() {
-		global $wgOut, $wgwiki_user, $wgRequest;
+		global $wgOut, $wgUser, $wgRequest;
 
-		if( $wgwiki_user->isAllowed( 'suppressrevision' ) ) {
+		if( $wgUser->isAllowed( 'suppressrevision' ) ) {
 			$suppress = "<tr id=\"wpDeleteSuppressRow\">
 					<td></td>
 					<td class='mw-input'><strong>" .
@@ -224,12 +224,12 @@ class FileDeleteForm {
 			$suppress = '';
 		}
 
-		$checkWatch = $wgwiki_user->getBoolOption( 'watchdeletion' ) || $wgwiki_user->isWatched( $this->title );
+		$checkWatch = $wgUser->getBoolOption( 'watchdeletion' ) || $wgUser->isWatched( $this->title );
 		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getAction(),
 			'id' => 'mw-img-deleteconfirm' ) ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', null, wfMessage( 'filedelete-legend' )->text() ) .
-			Html::hidden( 'wpEditToken', $wgwiki_user->getEditToken( $this->oldimage ) ) .
+			Html::hidden( 'wpEditToken', $wgUser->getEditToken( $this->oldimage ) ) .
 			$this->prepareMessage( 'filedelete-intro' ) .
 			Xml::openElement( 'table', array( 'id' => 'mw-img-deleteconfirm-table' ) ) .
 			"<tr>
@@ -257,7 +257,7 @@ class FileDeleteForm {
 				"</td>
 			</tr>
 			{$suppress}";
-		if( $wgwiki_user->isLoggedIn() ) {
+		if( $wgUser->isLoggedIn() ) {
 			$form .= "
 			<tr>
 				<td></td>
@@ -279,7 +279,7 @@ class FileDeleteForm {
 			Xml::closeElement( 'fieldset' ) .
 			Xml::closeElement( 'form' );
 
-			if ( $wgwiki_user->isAllowed( 'editinterface' ) ) {
+			if ( $wgUser->isAllowed( 'editinterface' ) ) {
 				$title = Title::makeTitle( NS_MEDIAWIKI, 'Filedelete-reason-dropdown' );
 				$link = Linker::link(
 					$title,

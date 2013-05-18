@@ -47,12 +47,12 @@ class MWNamespaceTest extends MediaWikiTestCase {
 		// Subject pages
 		$this->assertIsSubject( NS_MAIN );
 		$this->assertIsSubject( NS_USER );
-		$this->assertIsSubject( 100     );  # wiki_user defined
+		$this->assertIsSubject( 100     );  # user defined
 
 		// Talk pages
 		$this->assertIsNotSubject( NS_TALK      );
 		$this->assertIsNotSubject( NS_USER_TALK );
-		$this->assertIsNotSubject( 101          ); # wiki_user defined
+		$this->assertIsNotSubject( 101          ); # user defined
 	}
 
 	/**
@@ -67,12 +67,12 @@ class MWNamespaceTest extends MediaWikiTestCase {
 		// Subject pages
 		$this->assertIsNotTalk( NS_MAIN   );
 		$this->assertIsNotTalk( NS_USER   );
-		$this->assertIsNotTalk( 100       );  # wiki_user defined
+		$this->assertIsNotTalk( 100       );  # user defined
 
 		// Talk pages
 		$this->assertIsTalk( NS_TALK      );
 		$this->assertIsTalk( NS_USER_TALK );
-		$this->assertIsTalk( 101          ); # wiki_user defined
+		$this->assertIsTalk( 101          ); # user defined
 	}
 
 	/**
@@ -258,7 +258,7 @@ class MWNamespaceTest extends MediaWikiTestCase {
 		$this->assertCanTalk( NS_USER      );
 		$this->assertCanTalk( NS_USER_TALK );
 
-		// wiki_user defined namespaces
+		// User defined namespaces
 		$this->assertCanTalk( 100 );
 		$this->assertCanTalk( 101 );
 	}
@@ -320,7 +320,7 @@ class MWNamespaceTest extends MediaWikiTestCase {
 		// and per function definition.
 		$this->assertIsContent( NS_MAIN );
 
-		// Tests that wiki_user defined namespace #252 is not content:
+		// Tests that user defined namespace #252 is not content:
 		$this->assertIsNotContent( 252 );
 
 		# @todo FIXME: Is global saving really required for PHPUnit?
@@ -350,7 +350,7 @@ class MWNamespaceTest extends MediaWikiTestCase {
 		$this->assertIsWatchable( NS_MAIN );
 		$this->assertIsWatchable( NS_TALK );
 
-		// Additional, wiki_user defined namespaces are watchables
+		// Additional, user defined namespaces are watchables
 		$this->assertIsWatchable( 100 );
 		$this->assertIsWatchable( 101 );
 	}

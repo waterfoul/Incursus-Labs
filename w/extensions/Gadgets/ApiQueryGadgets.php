@@ -43,7 +43,7 @@ class ApiQueryGadgets extends ApiQueryBase {
 		$this->listEnabled = isset( $params['enabledonly'] ) && $params['enabledonly'];
 
 		$this->getMain()->setCacheMode( $this->listAllowed || $this->listEnabled
-			? 'anon-public-wiki_user-private' : 'public' );
+			? 'anon-public-user-private' : 'public' );
 
 		$this->applyList( $this->getList() );
 	}
@@ -107,11 +107,11 @@ class ApiQueryGadgets extends ApiQueryBase {
 	 * @return bool
 	 */
 	private function isNeeded( Gadget $gadget ) {
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 
 		return ( $this->neededIds === false || isset( $this->neededIds[$gadget->getName()] ) )
-			&& ( !$this->listAllowed || $gadget->isAllowed( $wiki_user ) )
-			&& ( !$this->listEnabled || $gadget->isEnabled( $wiki_user ) );
+			&& ( !$this->listAllowed || $gadget->isAllowed( $user ) )
+			&& ( !$this->listEnabled || $gadget->isEnabled( $user ) );
 	}
 
 	/**
@@ -197,8 +197,8 @@ class ApiQueryGadgets extends ApiQueryBase {
 			),
 			'categories' => 'Gadgets from what categories to retrieve',
 			'ids' => 'ID(s) of gadgets to retrieve',
-			'allowedonly' => 'List only gadgets allowed to current wiki_user',
-			'enabledonly' => 'List only gadgets enabled by current wiki_user',
+			'allowedonly' => 'List only gadgets allowed to current user',
+			'enabledonly' => 'List only gadgets enabled by current user',
 		);
 	}
 
@@ -214,7 +214,7 @@ class ApiQueryGadgets extends ApiQueryBase {
 			'    api.php?action=query&list=gadgets&gacategories=foo',
 			'Get information about gadgets "foo" and "bar":',
 			'    api.php?action=query&list=gadgets&gaids=foo|bar&gaprop=id|desc|metadata',
-			'Get a list of gadgets enabled by current wiki_user:',
+			'Get a list of gadgets enabled by current user:',
 			'    api.php?action=query&list=gadgets&gaenabledonly',
 		);
 	}

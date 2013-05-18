@@ -122,7 +122,7 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'ԷՋԵՐԻ_ՔԱՆԱԿԸ', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'ՀՈԴՎԱԾՆԵՐԻ_ՔԱՆԱԿԸ', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'ՖԱՅԼԵՐԻ_ՔԱՆԱԿԸ', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', 'ՄԱՍՆԱԿԻՑՆԵՐԻ_ՔԱՆԱԿԸ', 'NUMBEROFUSERS' ),
+	'numberofusers'             => array( '1', 'ՄԱՍՆԱԿԻՑՆԵՐԻ_ՔԱՆԱԿԸ', 'NUMBEROFUSERS' ),
 	'pagename'                  => array( '1', 'ԷՋԻ_ԱՆՈՒՆԸ', 'PAGENAME' ),
 	'pagenamee'                 => array( '1', 'ԷՋԻ_ԱՆՈՒՆԸ_2', 'PAGENAMEE' ),
 	'namespace'                 => array( '1', 'ԱՆՎԱՆԱՏԱՐԱԾՔ', 'NAMESPACE' ),
@@ -212,7 +212,7 @@ $specialPageAliases = array(
 	'Deadendpages'              => array( 'Հղումչպարունակողէջերը' ),
 	'Disambiguations'           => array( 'Երկիմաստէջերը' ),
 	'DoubleRedirects'           => array( 'Կրկնակիվերահղումները' ),
-	'Emailwiki_user'                 => array( 'Գրելնամակ' ),
+	'Emailuser'                 => array( 'Գրելնամակ' ),
 	'Export'                    => array( 'Արտահանելէջերը' ),
 	'FileDuplicateSearch'       => array( 'Կրկնօրինակֆայլերիորոնում' ),
 	'Import'                    => array( 'Ներմուծել' ),
@@ -220,7 +220,7 @@ $specialPageAliases = array(
 	'Listadmins'                => array( 'Ադմիններիցանկը' ),
 	'Listfiles'                 => array( 'Պատկերներիցանկը' ),
 	'Listredirects'             => array( 'Ցույցտալվերահղումները' ),
-	'Listwiki_users'                 => array( 'Մասնակիցներիցանկը' ),
+	'Listusers'                 => array( 'Մասնակիցներիցանկը' ),
 	'Lockdb'                    => array( 'Կողպելտհ' ),
 	'Log'                       => array( 'Տեղեկամատյան' ),
 	'Lonelypages'               => array( 'Միայնակէջերը' ),
@@ -260,9 +260,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'Չօգտագործվողկաղապարները' ),
 	'Unwatchedpages'            => array( 'Չհսկվողէջերը' ),
 	'Upload'                    => array( 'Բեռնել' ),
-	'wiki_userlogin'                 => array( 'Մասնակցիմուտք' ),
-	'wiki_userlogout'                => array( 'Մասնակցիելք' ),
-	'wiki_userrights'                => array( 'Մասնակցիիրավունքները' ),
+	'Userlogin'                 => array( 'Մասնակցիմուտք' ),
+	'Userlogout'                => array( 'Մասնակցիելք' ),
+	'Userrights'                => array( 'Մասնակցիիրավունքները' ),
 	'Version'                   => array( 'Տարբերակ' ),
 	'Wantedcategories'          => array( 'Անհրաժեշտկատեգորիաները' ),
 	'Wantedpages'               => array( 'Անհրաժեշտէջերը' ),
@@ -273,7 +273,7 @@ $specialPageAliases = array(
 $linkTrail = '/^([a-zաբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքօֆև«»]+)(.*)$/sDu';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'ընդգծել հղումները՝',
 'tog-justify' => 'Հավասարացնել տեքստը էջի լայնությամբ',
 'tog-hideminor' => 'Թաքցնել չնչին խմբագրումները վերջին փոփոխությունների ցանկից',
@@ -297,7 +297,7 @@ $messages = array(
 'tog-previewonfirst' => 'Նախադիտել մինչև առաջին խմբագրությունը',
 'tog-nocache' => 'Արգելել էջերի գրանցումը հիշողության մեջ',
 'tog-enotifwatchlistpages' => 'էլ-փոստով տեղեկացնել հսկվող էջերում փոփոխությունների մասին',
-'tog-enotifwiki_usertalkpages' => 'էլ-փոստով տեղեկացնել իմ քննարկման էջի փոփոխության մասին',
+'tog-enotifusertalkpages' => 'էլ-փոստով տեղեկացնել իմ քննարկման էջի փոփոխության մասին',
 'tog-enotifminoredits' => 'էլ-փոստով տեղեկացնել էջերի նաև չնչին խմբագրումների մասին',
 'tog-enotifrevealaddr' => 'Ցույց տալ իմ էլ-փոստի հասցեն ծանուցման նամակներում',
 'tog-shownumberswatching' => 'Ցույց տալ էջ հսկող մասնակիցների թիվը',
@@ -477,7 +477,7 @@ $messages = array(
 'talk' => 'Քննարկում',
 'views' => 'Դիտումները',
 'toolbox' => 'Գործիքներ',
-'wiki_userpage' => 'Դիտել մասնակցի էջը',
+'userpage' => 'Դիտել մասնակցի էջը',
 'projectpage' => 'Դիտել նախագծի էջը',
 'imagepage' => 'Դիտել նիշքի էջը',
 'mediawikipage' => 'Դիտել ուղերձի էջը',
@@ -501,7 +501,7 @@ $messages = array(
 $1',
 'pool-errorunknown' => 'Անհայտ սխալ',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{grammar:genitive|{{SITENAME}}}}ի մասին',
 'aboutpage' => 'Project:Էությունը',
 'copyright' => 'Կայքի բովանդակությունը գտնվում է «$1» արտոնագրի տակ։',
@@ -564,7 +564,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Էջ',
-'nstab-wiki_user' => 'Մասնակցի էջ',
+'nstab-user' => 'Մասնակցի էջ',
 'nstab-media' => 'Մեդիա էջ',
 'nstab-special' => 'Սպասարկող էջ',
 'nstab-project' => 'Նախագծի էջ',
@@ -610,7 +610,7 @@ $1',
 Սա սովորաբար պատահում է հեռացված էջի պատմության կամ փոփոխությունների հնացած հղմամբ հետևելու արդյունքում։
 
 Եթե պատճառը դա չէ, ապա դուք հավանաբար սխալ եք գտել ծրագրային ապահովման մեջ։
-Խնդրում ենք սրա մասին հայտնել որևէ [[Special:Listwiki_users/sysop|ադմինիստրատորի]]՝ ընդգրկելով URL-ը։',
+Խնդրում ենք սրա մասին հայտնել որևէ [[Special:ListUsers/sysop|ադմինիստրատորի]]՝ ընդգրկելով URL-ը։',
 'missingarticle-rev' => '(տարբերակ № $1)',
 'missingarticle-diff' => '(Տարբ. $1, $2)',
 'readonly_lag' => 'Տվյալների բազան ավտոմատիկ կողպվել է ժամանակավորապես՝ մինչև ՏԲ-ի երկրորդական սերվերը չհամաժամանակեցվի առաջնայինի հետ։',
@@ -654,7 +654,7 @@ $2',
 'customcssprotected' => 'Դուք չեք կարող խմբագրել այս CSS էջը, քանի որ այն պարունակում է այլ մասնակցի անձնական նախընտրանքներ։',
 'customjsprotected' => 'Դուք չեք կարող խմբագրել այս ՋավաՍկրիպտ էջը, քանի որ այն պարունակում է այլ մասնակցի անձնական նախընտրանքներ։',
 'ns-specialprotected' => '«{{ns:special}}» անվանատարածքի էջերը չեն կարող խմբագրվել։',
-'titleprotected' => "Այս անվանմամբ էջի ստեղծումը արգելվել է [[wiki_user:$1|$1]] մասնակցի կողմից։
+'titleprotected' => "Այս անվանմամբ էջի ստեղծումը արգելվել է [[User:$1|$1]] մասնակցի կողմից։
 Տրված պատճառն է՝ ''$2''։",
 'exception-nologin' => 'Չեք մտել համակարգ',
 'exception-nologin-text' => 'Այս էջը դիտելու կամ գործողություն կատարելու համար դուք պետք է մուտք գործեք այս վիքի։',
@@ -667,7 +667,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''Դուք դուրս եկաք համակարգից։'''
 
-Դուք կարող եք շարունակել օգտագործել {{SITENAME}} կայքը անանուն, կամ [[Special:wiki_userLogin|կրկին մուտք գործել համակարգ]] նույն կամ մեկ այլ մասնակցի անվամբ։ Ի նկատի ունեցեք, որ որոշ էջեր կարող են ցուցադրվել այնպես՝ ինչպես եթե դեռ համակարգում լինեիք մինչև որ չջնջեք ձեր զննարկիչի հիշապահեստը։",
+Դուք կարող եք շարունակել օգտագործել {{SITENAME}} կայքը անանուն, կամ [[Special:UserLogin|կրկին մուտք գործել համակարգ]] նույն կամ մեկ այլ մասնակցի անվամբ։ Ի նկատի ունեցեք, որ որոշ էջեր կարող են ցուցադրվել այնպես՝ ինչպես եթե դեռ համակարգում լինեիք մինչև որ չջնջեք ձեր զննարկիչի հիշապահեստը։",
 'welcomecreation' => '== Բարի՛ գալուստ, $1 ==
 Ձեր հաշիվը ստեղծված է։
 Չմոռանաք անձնավորել ձեր [[Special:Preferences|նախընտրությունները]]։',
@@ -681,21 +681,21 @@ $2',
 'login' => 'Մտնել համակարգ',
 'nav-login-createaccount' => 'Մտնել / Գրանցվել',
 'loginprompt' => '{{SITENAME}} մուտք գործելու համար հարկավոր է քուքիները թույլատրել։',
-'wiki_userlogin' => 'Մտնել / Գրանցվել',
-'wiki_userloginnocreate' => 'Մտնել',
+'userlogin' => 'Մտնել / Գրանցվել',
+'userloginnocreate' => 'Մտնել',
 'logout' => 'Դուրս գալ համակարգից',
-'wiki_userlogout' => 'Ելնել համակարգից',
+'userlogout' => 'Ելնել համակարգից',
 'notloggedin' => 'Դուք չեք մտել համակարգ',
 'nologin' => "Դեռևս չե՞ք գրանցվել։ '''$1'''։",
 'nologinlink' => 'Ստեղծեք մասնակցային հաշիվ',
 'createaccount' => 'Ստեղծել նոր հաշիվ',
 'gotaccount' => "Դուք արդեն գրանցվա՞ծ եք։ '''$1'''։",
 'gotaccountlink' => 'Մուտք գործեք համակարգ',
-'wiki_userlogin-resetlink' => 'Մոռացե՞լ եք Ձեր լոգին տվյալները։',
+'userlogin-resetlink' => 'Մոռացե՞լ եք Ձեր լոգին տվյալները։',
 'createaccountmail' => 'էլ-փոստով',
 'createaccountreason' => 'Պատճառ.',
 'badretype' => 'Ձեր մուտքագրած գաղտնաբառերը չեն համընկնում։',
-'wiki_userexists' => 'Այս մասնակցի անունը արդեն զբաղված է։ Խնդրում ենք ընտրել մեկ այլ անուն։',
+'userexists' => 'Այս մասնակցի անունը արդեն զբաղված է։ Խնդրում ենք ընտրել մեկ այլ անուն։',
 'loginerror' => 'Մուտքի սխալ',
 'createaccounterror' => 'Չհաջողվեց ստեղծել մասնակցային հաշիվ. $1',
 'nocookiesnew' => 'Մասնակցային հաշիվը ստեղծված է, սակայն մուտքը համակարգ չհաջողվեց։ {{SITENAME}} կայքը օգտագործում է «քուքիներ» մասնակիցների վավերացման համար։ Ձեր մոտ «քուքիները» արգելված են։ Խնդրում ենք թույլատրել սրանք, ապա մտնել համակարգ ձեր նոր մասնակցի անունով և գաղտնաբառով։',
@@ -705,12 +705,12 @@ $2',
 'noname' => 'Դուք չեք նշել թույլատրելի մասնակցային անուն։',
 'loginsuccesstitle' => 'Բարեհաջող մուտք',
 'loginsuccess' => "'''Դուք մուտք գործեցիք {{SITENAME}}, որպես \"\$1\"։'''",
-'nosuchwiki_user' => '$1 անունով մասնակից գոյություն չունի։
+'nosuchuser' => '$1 անունով մասնակից գոյություն չունի։
 Մասնակիցների անունները զգայուն են մեծատառերի նկատմամբ։
-Ստուգեք ձեր ուղղագրությունը կամ [[Special:wiki_userLogin/signup|ստեղծեք նոր մասնակցի հաշիվ]]։',
-'nosuchwiki_usershort' => '$1 անունով մասնակից գոյություն չունի։ Ստուգեք ձեր ուղղագրությունը։',
-'nowiki_userspecified' => 'Հարկավոր է նշել մասնակցային անուն։',
-'login-wiki_userblocked' => 'Այս մասնակիցը արգելափակված է: Մուտքը արգելված է:',
+Ստուգեք ձեր ուղղագրությունը կամ [[Special:UserLogin/signup|ստեղծեք նոր մասնակցի հաշիվ]]։',
+'nosuchusershort' => '$1 անունով մասնակից գոյություն չունի։ Ստուգեք ձեր ուղղագրությունը։',
+'nouserspecified' => 'Հարկավոր է նշել մասնակցային անուն։',
+'login-userblocked' => 'Այս մասնակիցը արգելափակված է: Մուտքը արգելված է:',
 'wrongpassword' => 'Մուտքագրված գաղտնաբառը սխալ էր։ Խնդրում ենք կրկին փորձել։',
 'wrongpasswordempty' => 'Մուտքագրված գաղտնաբառը դատարկ էր։ Խնդրում ենք կրկին փորձել։',
 'passwordtooshort' => 'Գաղտնաբառը պետք է պարունակի առնվազն {{PLURAL:$1|1 սիմվոլ|$1 սիմվոլ}}։',
@@ -745,14 +745,14 @@ $2',
 'createaccount-text' => 'Ինչ-որ մեկը ստեղծել է «$2» անվանմամբ մասնակցային հաշիվ «$3» գաղտնաբառով {{SITENAME}} ($4) նախագծում՝ նշելով ձեր էլ-հասցեն։ Ձեզ անհրաժեշտ է մտնել համակարգ և փոխել գաղտնաբառը։
 
 Կարող եք անտեսել այս հաղորդագրությունը, եթե հաշիվը ստեղծվել է սխալմամբ։',
-'wiki_usernamehasherror' => 'Մասնակցի անունը չի կարող պարունակել «#» նիշը։',
+'usernamehasherror' => 'Մասնակցի անունը չի կարող պարունակել «#» նիշը։',
 'login-throttled' => 'Դուք կատարել եք չափից շատ մուտքի փորձ։
 Խնդրում ենք սպասել որոշ ժամանակ կրկին փորձելուց առաջ։',
 'loginlanguagelabel' => 'Լեզու $1',
 
 # E-mail sending
 'php-mail-error-unknown' => 'Անհայտ սխալ PHP-ի mail() ֆունկցիայում',
-'wiki_user-mail-no-addy' => 'Փորձվեց ուղարկել էլ․ նամակ առանց էլ․ հասցեի։',
+'user-mail-no-addy' => 'Փորձվեց ուղարկել էլ․ նամակ առանց էլ․ հասցեի։',
 
 # Change password dialog
 'resetpass' => 'Փոխել գաղտնաբառը',
@@ -777,7 +777,7 @@ $2',
 'passwordreset-text' => 'Լրացրեք ձևը՝ էլ-փոստով ձեր տվյալների մասին հիշեցում ստանալու համար։',
 'passwordreset-legend' => 'Վերականգնել գաղտնաբառը',
 'passwordreset-disabled' => 'Գաղտնաբառի վերականգնումը այս վիքիում թույլատրված չէ։',
-'passwordreset-wiki_username' => 'Մասնակցի անուն.',
+'passwordreset-username' => 'Մասնակցի անուն.',
 'passwordreset-email' => 'Էլ-փոստի հասցեն՝',
 'passwordreset-emailelement' => 'Մասնակցային անուն. $1
 Ժամանակավոր գաղտնաբառ. $2',
@@ -871,7 +871,7 @@ $2',
 'loginreqlink' => 'մտնել համակարգ',
 'loginreqpagetext' => 'Անհրաժեշտ է $1 այլ էջեր դիտելու համար։',
 'accmailtitle' => 'Գաղտնաբառն ուղարկված է։',
-'accmailtext' => "[[wiki_user talk:$1|$1]] մասնակցի համար պատահական նշերից կազմված գաղտնաբառը ուղարկված է $2 հասցեին։
+'accmailtext' => "[[User talk:$1|$1]] մասնակցի համար պատահական նշերից կազմված գաղտնաբառը ուղարկված է $2 հասցեին։
 
 Համակարգ մուտք գործելուն պես կարող եք ''[[Special:ChangePassword|փոխել գաղտնաբառը]]''։",
 'newarticle' => '(Նոր)',
@@ -882,18 +882,18 @@ $2',
 'anontalkpagetext' => "{| style=\"background-repeat:no-repeat; background-position:800px -20px; margin:0.5em 0 0.5em 0; clear:both;\" width=100% class=toccolours
 |- 
 | <span class=\"plainlinksneverexpand\">''Այս քննարկման էջը պատկանում է չգրանցված կամ համակարգ չմտած մասնակցի, ով խմբագրում կատարելիս օգտվել է {{BASEPAGENAME}} ԱյՓի հասցեից։''
-Քանի որ միևնույն ԱյՓի հասցեից տարբեր մարդիկ կարող են օգտվել, հնարավոր է որ այստեղ գտնեք զգուշացումներ և հաղորդագրություններ, որոնք ձեզ չեն վերաբերում։ Դրանից խուսափելու համար առաջարկում ենք [[Special:wiki_userLogin/signup|գրանցվել]] կամ, եթե արդեն գրանցված եք, պարզապես [[Special:wiki_userLogin|մուտք գործել համակարգ]]։''
+Քանի որ միևնույն ԱյՓի հասցեից տարբեր մարդիկ կարող են օգտվել, հնարավոր է որ այստեղ գտնեք զգուշացումներ և հաղորդագրություններ, որոնք ձեզ չեն վերաբերում։ Դրանից խուսափելու համար առաջարկում ենք [[Special:UserLogin/signup|գրանցվել]] կամ, եթե արդեն գրանցված եք, պարզապես [[Special:UserLogin|մուտք գործել համակարգ]]։''
 ----
-Հավելյալ տեղեկություններ ԱյՓիի մասին. [http://toolserver.org/~overlordq/cgi-bin/whois.cgi?lookup={{BASEPAGENAME}} WHOIS] · [http://www.robtex.com/ip/{{BASEPAGENAME}}.html#ip rDNS] · [http://www.dnsstuff.com/tools/tracert/?tool_id=68&ip={{BASEPAGENAME}} Traceroute] · [http://whatismyipaddress.com/ip/{{BASEPAGENAME}} Geolocate] · [http://toolserver.org/~luxo/contributions/contributions.php?wiki_user={{BASEPAGENAME}}&blocks=true Գլոբալ ներդրումներ] · [http://hy.wikipedia.org/wiki/Սպասարկող:DeletedContributions/{{BASEPAGENAME}} Ջնջված ներդրումներ] · [http://hy.wikipedia.org/w/index.php?title=Special:BlockList&ip={{BASEPAGENAME}} Արգելափակումներ]
+Հավելյալ տեղեկություններ ԱյՓիի մասին. [http://toolserver.org/~overlordq/cgi-bin/whois.cgi?lookup={{BASEPAGENAME}} WHOIS] · [http://www.robtex.com/ip/{{BASEPAGENAME}}.html#ip rDNS] · [http://www.dnsstuff.com/tools/tracert/?tool_id=68&ip={{BASEPAGENAME}} Traceroute] · [http://whatismyipaddress.com/ip/{{BASEPAGENAME}} Geolocate] · [http://toolserver.org/~luxo/contributions/contributions.php?user={{BASEPAGENAME}}&blocks=true Գլոբալ ներդրումներ] · [http://hy.wikipedia.org/wiki/Սպասարկող:DeletedContributions/{{BASEPAGENAME}} Ջնջված ներդրումներ] · [http://hy.wikipedia.org/w/index.php?title=Special:BlockList&ip={{BASEPAGENAME}} Արգելափակումներ]
 </small></span>
 |}",
 'noarticletext' => 'Ներկայումս այս էջում որևէ տեքստ չկա։
 Դուք կարող եք [[Special:Search/{{PAGENAME}}|որոնել այս անվանումը]] այլ էջերում, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} որոնել համապատասխան տեղեկամատյանները] կամ [{{fullurl:{{FULLPAGENAME}}|action=edit}} ստեղծել նոր էջ այս անվանմամբ]</span>։',
 'noarticletext-nopermission' => 'Ներկայումս այս էջում որևէ տեքստ չկա։
 Դուք կարող եք [[Special:Search/{{PAGENAME}}|որոնել այս անվանունը]] այլ էջերում կամ <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} որոնել այն տեղեկամատյաններում]</span>։',
-'wiki_userpage-wiki_userdoesnotexist' => '«<nowiki>$1</nowiki>» անվանմամբ մասնակից գոյություն չունի։
+'userpage-userdoesnotexist' => '«<nowiki>$1</nowiki>» անվանմամբ մասնակից գոյություն չունի։
 Խնդրում ենք հավաստիանալ նրանում, թե արդյոք ուզում եք ստեղծել/խմբագրել այս էջը։',
-'wiki_userpage-wiki_userdoesnotexist-view' => '«$1» անվանմամբ գրանցված մասնակից չկա։',
+'userpage-userdoesnotexist-view' => '«$1» անվանմամբ գրանցված մասնակից չկա։',
 'blocked-notice-logextract' => 'Այս մասնակիցը ներկա պահին արգելափակված է։
 Ստորև ներկայացված է արգելափակման տեղեկամատյանի վերջին գրառումը.',
 'clearyourcache' => "'''Ծանուցում. Հիշելուց հետո կատարված փոփոխությունները տեսնելու համար մաքրեք ձեր զննարկիչի հիշապահեստը. '''
@@ -901,11 +901,11 @@ $2',
 '''Konqueror'''՝ ''F5''
 '''Opera'''՝ ''Tools→Preferences'' ընտրացանկից։
 '''Internet Explorer'''՝ ''Ctrl+F5''",
-'wiki_usercssyoucanpreview' => "'''Հուշում.''' Էջը հիշելուց առաջ օգտվեք «{{int:showpreview}}» կոճակից՝ ձեր նոր CSS-նիշքը ստուգելու համար։",
-'wiki_userjsyoucanpreview' => "'''Հուշում.''' Էջը հիշելուց առաջ օգտվեք «{{int:showpreview}}» կոճակից՝ ձեր նոր JS-նիշքը ստուգելու համար։",
-'wiki_usercsspreview' => "'''Նկատի ունեցեք, որ դուք միայն նախադիտում եք ձեր մասնակցի CSS-նիշքը. այն դեռ հիշված չէ՛։'''",
-'wiki_userjspreview' => "'''Նկատի ունեցեք, որ դուք միայն նախադիտում եք ձեր մասնակցի JavaScript-նիշքը. այն դեռ հիշված չէ՛։'''",
-'wiki_userinvalidcssjstitle' => "'''Զգուշացում.''' «$1» տեսք չի գտնվել։ Ի նկատի ունեցեք, որ մասնակցային .css և .js էջերը ունեն փոքրատառ անվանումներ, օր.՝ «{{ns:wiki_user}}:Ոմն/vector.css», և ոչ թե «{{ns:wiki_user}}:Ոմն/Vector.css»։",
+'usercssyoucanpreview' => "'''Հուշում.''' Էջը հիշելուց առաջ օգտվեք «{{int:showpreview}}» կոճակից՝ ձեր նոր CSS-նիշքը ստուգելու համար։",
+'userjsyoucanpreview' => "'''Հուշում.''' Էջը հիշելուց առաջ օգտվեք «{{int:showpreview}}» կոճակից՝ ձեր նոր JS-նիշքը ստուգելու համար։",
+'usercsspreview' => "'''Նկատի ունեցեք, որ դուք միայն նախադիտում եք ձեր մասնակցի CSS-նիշքը. այն դեռ հիշված չէ՛։'''",
+'userjspreview' => "'''Նկատի ունեցեք, որ դուք միայն նախադիտում եք ձեր մասնակցի JavaScript-նիշքը. այն դեռ հիշված չէ՛։'''",
+'userinvalidcssjstitle' => "'''Զգուշացում.''' «$1» տեսք չի գտնվել։ Ի նկատի ունեցեք, որ մասնակցային .css և .js էջերը ունեն փոքրատառ անվանումներ, օր.՝ «{{ns:user}}:Ոմն/vector.css», և ոչ թե «{{ns:user}}:Ոմն/Vector.css»։",
 'updated' => '(Թարմացված)',
 'note' => "'''Ծանուցում.'''",
 'previewnote' => "'''Սա միայն նախադիտումն է. ձեր կատարած փոփոխությունները դեռ չե՛ն հիշվել։'''",
@@ -917,7 +917,7 @@ $2',
 
 ''Քանի որ {{SITENAME}} նախագիծը թույլատրում է հում HTML, նախադիտումը անջատված է JavaScript-գրոհի կանխման նպատակով։''
 
-'''Եթե սա բարեխիղճ խմբագրման փորձ է, խնդրում ենք փորձել կրկին։ Սխալի կրկնման դեպքում՝ փորձեք [[Special:wiki_userLogout|դուրս գալ]], ապա կրկին մտնել համակարգ։'''",
+'''Եթե սա բարեխիղճ խմբագրման փորձ է, խնդրում ենք փորձել կրկին։ Սխալի կրկնման դեպքում՝ փորձեք [[Special:UserLogout|դուրս գալ]], ապա կրկին մտնել համակարգ։'''",
 'token_suffix_mismatch' => "'''Ձեր խմբագրումը մերժվել է, քանի որ ձեր օգտագործած ծրագիրը աղավաղել է կետադրության նշանները խմբագրման դաշտում։ Խմբագրումը մերժվել է էջի տեքստի խաթարումը կանխելու նպատակով։ Սա երբեմն պայմանավորված է սխալներ պարունակող անանվանեցնող վեբ-փոխարինորդ (proxy) ծառայության օգտագործմամբ։'''",
 'editing' => 'Խմբագրում $1',
 'creating' => 'Ստեղծում $1',
@@ -990,7 +990,7 @@ $2',
 </p></div>',
 'nocreatetitle' => 'Էջերի ստեղծումը սահմանափակված է',
 'nocreatetext' => '{{SITENAME}} կայքում էջերի ստեղծման հնարավորությունը սահմանափակված է։
-Դուք կարող եք վերադառնալ և խմբագրել գոյություն ունեցող էջ կամ էլ [[Special:wiki_userLogin|գրանցվել կամ մտնել համակարգ]]։',
+Դուք կարող եք վերադառնալ և խմբագրել գոյություն ունեցող էջ կամ էլ [[Special:UserLogin|գրանցվել կամ մտնել համակարգ]]։',
 'nocreate-loggedin' => 'Դուք չունեք նոր էջեր ստեղծելու թույլտվություն։',
 'permissionserrors' => 'Թույլատրության Սխալներ',
 'permissionserrorstext' => 'Ձեզ չի թույլատրվում դա անել հետևյալ {{PLURAL:$1|պատճառով|պատճառներով}}.',
@@ -1008,11 +1008,11 @@ $2',
 # "Undo" feature
 'undo-success' => 'Խմբագրումը կարող է հետ շրջվել։ Ստուգեք տարբերակների համեմատությունը ստորև, որպեսզի համոզվեք, որ դա է ձեզ հետաքրքրող փոփոխությունը և մատնահարեք «Հիշել էջը»՝ գործողությունն ավարտելու համար։',
 'undo-failure' => 'Խմբագրումը չի կարող հետ շրջվել միջանկյալ խմբագրումների ընդհարման պատճառով։',
-'undo-summary' => 'Հետ է շրջվում $1 խմբագրումը, որի հեղինակն է՝ [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|քննարկում]])',
+'undo-summary' => 'Հետ է շրջվում $1 խմբագրումը, որի հեղինակն է՝ [[Special:Contributions/$2|$2]] ([[User talk:$2|քննարկում]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Չհաջողվեց ստեղծել մասնակցային հաշիվ',
-'cantcreateaccount-text' => "Այս IP-հասցեից ('''$1''') մասնակցային հաշվի ստեղծումը արգելափակվել է [[wiki_user:$3|$3]] մասնակցի կողմից։
+'cantcreateaccount-text' => "Այս IP-հասցեից ('''$1''') մասնակցային հաշվի ստեղծումը արգելափակվել է [[User:$3|$3]] մասնակցի կողմից։
 
 $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 
@@ -1051,7 +1051,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 
 # Revision deletion
 'rev-deleted-comment' => '(մեկնաբանությունը հեռացված է)',
-'rev-deleted-wiki_user' => '(մասնակցի անունը ջնջված է)',
+'rev-deleted-user' => '(մասնակցի անունը ջնջված է)',
 'rev-deleted-event' => '(գրությունը հեռացված է)',
 'rev-deleted-text-permission' => 'Էջի այս տարբերակը հեռացված է։
 Հնարավոր է մանրամասնություններ լինեն [{{fullurl:{{ns:special}}:Log/delete|page={{PAGENAMEE}}}} ջնջման տեղեկամատյանում]։',
@@ -1081,7 +1081,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'revdelete-hide-image' => 'Թաքցնել նիշքի պարունակությունը',
 'revdelete-hide-name' => 'Թաքցնել գործողությունը և առարկան',
 'revdelete-hide-comment' => 'Թաքցնել մեկնաբանությունը',
-'revdelete-hide-wiki_user' => 'Թաքցնել հեղինակի մասնակցի անունը/IP',
+'revdelete-hide-user' => 'Թաքցնել հեղինակի մասնակցի անունը/IP',
 'revdelete-hide-restricted' => 'Թաքցնել տվյալները և՛ ադմինիստրատորներից, և՛ այլ մասնակիցներից',
 'revdelete-radio-same' => '(չի կարելի խմբագրել)',
 'revdelete-radio-set' => 'Այո',
@@ -1190,7 +1190,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'mypreferences' => 'Նախընտրություններ',
 'prefs-edits' => 'Խմբագրումների քանակը.',
 'prefsnologin' => 'Դուք չեք մտել համակարգ',
-'prefsnologintext' => 'Մասնակցային նախընտրությունները փոփոխելու համար անհրաժեշտ է <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} մտնել համակարգ]</span>։',
+'prefsnologintext' => 'Մասնակցային նախընտրությունները փոփոխելու համար անհրաժեշտ է <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} մտնել համակարգ]</span>։',
 'changepassword' => 'Փոխել գաղտնաբառը',
 'prefs-skin' => 'Տեսք',
 'skin-preview' => 'նախադիտել',
@@ -1258,7 +1258,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'prefs-emailconfirm-label' => 'Էլ-փոստի վավերացում․',
 'prefs-textboxsize' => 'Խմբագրման պատուհանի չափը',
 'youremail' => 'Էլեկտրոնային փոստ.',
-'wiki_username' => 'Մասնակցի անուն.',
+'username' => 'Մասնակցի անուն.',
 'uid' => 'Մասնակցի իդենտիֆիկատոր.',
 'prefs-memberingroups' => 'Անդամակցության {{PLURAL:$1|խումբ|խմբեր}}.',
 'prefs-registration' => 'Գրանցման ամսաթիվը․',
@@ -1295,25 +1295,25 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'prefs-displaywatchlist' => 'Ցուցադրման ընտրանքներ',
 'prefs-diffs' => 'Տարբերություններ',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'Էլ. հասցեն վավերական է',
 'email-address-validity-invalid' => 'Մուտքագրեք վավերական էլ. հասցե',
 
-# wiki_user rights
-'wiki_userrights' => 'Մասնակիցների իրավունքների կառավարում',
-'wiki_userrights-lookup-wiki_user' => 'Մասնակիցների խմբերի կառավարում',
-'wiki_userrights-wiki_user-editname' => 'Մուտքագրեք մասնակցի անուն.',
-'editwiki_usergroup' => 'Խմբագրել մասնակիցների խմբերը',
-'editingwiki_user' => '<b>$1</b> մասնակցի համար ([[wiki_user talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])',
-'wiki_userrights-editwiki_usergroup' => 'Խմբագրել մասնակցի խմբերը',
-'savewiki_usergroups' => 'Հիշել մասնակցի խմբերը',
-'wiki_userrights-groupsmember' => 'Անդամ է.',
-'wiki_userrights-reason' => 'Պատճառ.',
-'wiki_userrights-changeable-col' => 'Խմբեր, որոնք դուք կարող եք ձևափոխել',
+# User rights
+'userrights' => 'Մասնակիցների իրավունքների կառավարում',
+'userrights-lookup-user' => 'Մասնակիցների խմբերի կառավարում',
+'userrights-user-editname' => 'Մուտքագրեք մասնակցի անուն.',
+'editusergroup' => 'Խմբագրել մասնակիցների խմբերը',
+'editinguser' => '<b>$1</b> մասնակցի համար ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])',
+'userrights-editusergroup' => 'Խմբագրել մասնակցի խմբերը',
+'saveusergroups' => 'Հիշել մասնակցի խմբերը',
+'userrights-groupsmember' => 'Անդամ է.',
+'userrights-reason' => 'Պատճառ.',
+'userrights-changeable-col' => 'Խմբեր, որոնք դուք կարող եք ձևափոխել',
 
 # Groups
 'group' => 'Խումբ.',
-'group-wiki_user' => 'Մասնակիցներ',
+'group-user' => 'Մասնակիցներ',
 'group-autoconfirmed' => 'Ավտովավերացված մասնակիցներ',
 'group-bot' => 'Բոտեր',
 'group-sysop' => 'Ադմիններ',
@@ -1321,14 +1321,14 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'group-suppress' => 'Հսկիչներ',
 'group-all' => '(բոլոր)',
 
-'group-wiki_user-member' => 'մասնակից',
+'group-user-member' => 'մասնակից',
 'group-autoconfirmed-member' => 'Ավտովավերացված մասնակից',
 'group-bot-member' => 'Բոտ',
 'group-sysop-member' => 'Ադմին',
 'group-bureaucrat-member' => 'Բյուրոկրատ',
 'group-suppress-member' => 'Հսկիչ',
 
-'grouppage-wiki_user' => '{{ns:project}}:Մասնակիցներ',
+'grouppage-user' => '{{ns:project}}:Մասնակիցներ',
 'grouppage-autoconfirmed' => '{{ns:project}}:Ավտովավերացված մասնակից',
 'grouppage-bot' => '{{ns:project}}:Բոտ',
 'grouppage-sysop' => '{{ns:project}}:Ադմինիստրատոր',
@@ -1349,7 +1349,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'right-upload_by_url' => 'Բեռնել նիշքեր ինտերնետային հասցեից',
 'right-delete' => 'Էջերի ջնջում',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Մասնակցի իրավունքների տեղեկամատյան',
 'rightslogtext' => 'Սա մասնակիցների իրավունքների փոփոխությունների տեղեկամատյանն է։',
 'rightslogentry' => '$1 մասնակցի անդամակցությունը փոխվել է $2-ից $3',
@@ -1391,7 +1391,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'minoreditletter' => 'չ',
 'newpageletter' => 'Ն',
 'boteditletter' => 'բ',
-'number_of_watching_wiki_users_pageview' => '[$1 հսկող {{PLURAL:$1|մասնակից|մասնակիցներին}}]',
+'number_of_watching_users_pageview' => '[$1 հսկող {{PLURAL:$1|մասնակից|մասնակիցներին}}]',
 'rc_categories' => 'Սահմանափակել կատեգորիաներով (բաժանեք «|» նշանով)',
 'rc_categories_any' => 'Բոլոր',
 'rc-change-size-new' => '$1 {{PLURAL:$1|բայթ|բայթ}} փոփոխությունից հետո',
@@ -1414,7 +1414,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'uploadbtn' => 'Բեռնել նիշք',
 'reuploaddesc' => 'Վերադառնալ բեռնման ձևին։',
 'uploadnologin' => 'Դուք չեք մտել համակարգ',
-'uploadnologintext' => 'Նիշքեր բեռնելու համար անհրաժեշտ է [[Special:wiki_userLogin|մտնել համակարգ]]։',
+'uploadnologintext' => 'Նիշքեր բեռնելու համար անհրաժեշտ է [[Special:UserLogin|մտնել համակարգ]]։',
 'upload_directory_read_only' => 'Վեբ-սերվերը չունի գրելու իրավունք բեռնումների թղթապանակում ($1)։',
 'uploaderror' => 'Բեռնման սխալ',
 'uploadtext' => "Նիշք բեռնելու համար օգտագործեք ստորև բերված ձևը։
@@ -1480,7 +1480,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'upload-proto-error' => 'Սխալ պրոտոկոլ',
 'upload-proto-error-text' => 'Հեռավոր բեռնումը պահանջում է URL-հասցե, որը սկսվում է <code>http://</code> կամ <code>ftp://</code> նախածանցով։',
 'upload-file-error' => 'Ներքին սխալ',
-'upload-file-error-text' => 'Տեղի ունեցավ ներքին սխալ՝ սերվերի վրա ժամանակավոր նիշք ստեղծելիս։ Խնդրում ենք կապվել համակարգային [[Special:Listwiki_users/sysop|ադմինիստրատորի]] հետ։',
+'upload-file-error-text' => 'Տեղի ունեցավ ներքին սխալ՝ սերվերի վրա ժամանակավոր նիշք ստեղծելիս։ Խնդրում ենք կապվել համակարգային [[Special:ListUsers/sysop|ադմինիստրատորի]] հետ։',
 'upload-misc-error' => 'Բեռնման անհայտ սխալ',
 'upload-misc-error-text' => 'Տեղի ունեցավ անհայտ սխալ բեռնման ընթացքում։ Խնդրում ենք ստուգել URL-հասցեի ճշտությունն ու հասանելիությունը և փորձել կրկին։ Սխալի կրկնման դեպքում կապնվեք համակարգային ադմինիստրատորի հետ։',
 
@@ -1503,7 +1503,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'listfiles' => 'Նիշքերի ցանկ',
 'listfiles_date' => 'Օր/Ժամ',
 'listfiles_name' => 'Անվանում',
-'listfiles_wiki_user' => 'Մասնակից',
+'listfiles_user' => 'Մասնակից',
 'listfiles_size' => 'Չափ',
 'listfiles_description' => 'Նկարագրություն',
 'listfiles_count' => 'Տարբերակ',
@@ -1520,7 +1520,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'filehist-thumb' => 'Մանրապատկեր',
 'filehist-thumbtext' => '$1 տարբերակի մանրապատկերը',
 'filehist-nothumb' => 'Մանրապատկեր չկա',
-'filehist-wiki_user' => 'Մասնակից',
+'filehist-user' => 'Մասնակից',
 'filehist-dimensions' => 'Օբյեկտի չափը',
 'filehist-filesize' => 'Նիշքի չափ',
 'filehist-comment' => 'Մեկնաբանություն',
@@ -1589,7 +1589,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'statistics-header-pages' => 'Էջերի վիճակագրություն',
 'statistics-header-edits' => 'Խմբագրումների վիճակագրություն',
 'statistics-header-views' => 'Դիտումների վիճակագրություն',
-'statistics-header-wiki_users' => 'Մասնակիցների վիճակագրություն',
+'statistics-header-users' => 'Մասնակիցների վիճակագրություն',
 'statistics-header-hooks' => 'Այլ վիճակագրություն',
 'statistics-articles' => 'Հոդվածներ',
 'statistics-pages' => 'Էջեր',
@@ -1599,9 +1599,9 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'statistics-edits-average' => 'Էջի խմբագրումների միջին թիվը',
 'statistics-views-total' => 'Ընդհանուր դիտումներ',
 'statistics-views-peredit' => 'Դիտումներ ամեն մի խմբագրման համար',
-'statistics-wiki_users' => 'Գրանցված [[Special:Listwiki_users|մասնակիցներ]]',
-'statistics-wiki_users-active' => 'Ակտիվ մասնակիցներ',
-'statistics-wiki_users-active-desc' => 'Վերջին {{PLURAL:$1|օր|$1 օր}}ում որևէ գործողություն են կատարած մասնակիցներ',
+'statistics-users' => 'Գրանցված [[Special:ListUsers|մասնակիցներ]]',
+'statistics-users-active' => 'Ակտիվ մասնակիցներ',
+'statistics-users-active-desc' => 'Վերջին {{PLURAL:$1|օր|$1 օր}}ում որևէ գործողություն են կատարած մասնակիցներ',
 'statistics-mostpopular' => 'Ամենահաճախ դիտվող էջեր',
 
 'disambiguations' => 'Երկիմաստության փարատման էջեր',
@@ -1667,9 +1667,9 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'protectedpagestext' => 'Հետևյալ էջերը պաշտպանված են վերանվանումից կամ տեղափոխումից։',
 'protectedpagesempty' => 'Ներկայումս չկան պաշտպանված էջեր նշված պարամետրերով։',
 'protectedtitles' => 'Պաշտպանված անվանումներ',
-'listwiki_users' => 'Մասնակիցների ցանկ',
+'listusers' => 'Մասնակիցների ցանկ',
 'newpages' => 'Նոր էջեր',
-'newpages-wiki_username' => 'Մասնակից՝',
+'newpages-username' => 'Մասնակից՝',
 'ancientpages' => 'Ամենահին էջերը',
 'move' => 'Տեղափոխել',
 'movethispage' => 'Տեղափոխել այս էջը',
@@ -1688,7 +1688,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'booksources-invalid-isbn' => 'Նշված ISBN համարը ըստ երևույթի սխալ է պարունակում։ Համոզվեք որ համարը մուտքագրելիս, սխալ չի պատահել։',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Մասնակից.',
+'specialloguserlabel' => 'Մասնակից.',
 'speciallogtitlelabel' => 'Անվանում.',
 'log' => 'Տեղեկամատյաններ',
 'all-logs-page' => 'Բոլոր տեղեկամատյանները',
@@ -1729,39 +1729,39 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'linksearch' => 'Արտաքին հղումներ',
 'linksearch-ok' => 'Որոնել',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'Ցուցադրել մասնակիցներին՝ սկսած.',
-'listwiki_users-submit' => 'Ցուցադրել',
-'listwiki_users-noresult' => 'Այդպիսի մասնակիցներ չգտնվեցին։',
-'listwiki_users-blocked' => '(արգելափակված)',
+# Special:ListUsers
+'listusersfrom' => 'Ցուցադրել մասնակիցներին՝ սկսած.',
+'listusers-submit' => 'Ցուցադրել',
+'listusers-noresult' => 'Այդպիսի մասնակիցներ չգտնվեցին։',
+'listusers-blocked' => '(արգելափակված)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'Ակտիվ մասնակիցների ցանկ',
+# Special:ActiveUsers
+'activeusers' => 'Ակտիվ մասնակիցների ցանկ',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Մասնակիցների գրանցման տեղեկամատյան',
-'newwiki_userlogpagetext' => 'Սա նոր մասնակիցների գրանցման տեղեկամատյանն է.',
+# Special:Log/newusers
+'newuserlogpage' => 'Մասնակիցների գրանցման տեղեկամատյան',
+'newuserlogpagetext' => 'Սա նոր մասնակիցների գրանցման տեղեկամատյանն է.',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(անդամների ցանկ)',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'Ուղարկման հասցե չկա',
-'mailnologintext' => 'Անհրաժեշտ է [[Special:wiki_userLogin|մտնել համակարգ]] և ունենալ գործող էլ-փոստի հասցե ձեր [[Special:Preferences|նախընտրություններում]]՝ ուրիշ մասնակիցներին էլեկտրոնային նամակներ ուղարկելու համար։',
-'emailwiki_user' => 'էլ-նամակ ուղարկել այս մասնակցին',
-'emailwiki_user-title-target' => 'Ուղարկել էլ․ նամակ {{GENDER:$1|մասնակցին}}',
-'emailwiki_user-title-notarget' => 'Ուղարկել էլ․ նամակ',
+'mailnologintext' => 'Անհրաժեշտ է [[Special:UserLogin|մտնել համակարգ]] և ունենալ գործող էլ-փոստի հասցե ձեր [[Special:Preferences|նախընտրություններում]]՝ ուրիշ մասնակիցներին էլեկտրոնային նամակներ ուղարկելու համար։',
+'emailuser' => 'էլ-նամակ ուղարկել այս մասնակցին',
+'emailuser-title-target' => 'Ուղարկել էլ․ նամակ {{GENDER:$1|մասնակցին}}',
+'emailuser-title-notarget' => 'Ուղարկել էլ․ նամակ',
 'emailpage' => 'Էլ-նամակ ուղարկել մասնակցին',
 'emailpagetext' => 'Դուք կարող եք օգտագործել ներքևի ձևը այս {{GENDER:$1|մասնակցին}} էլ-նամաակ ուղարկելու համար։
 
 Ձեր նախընտրանքներում նշված էլ-հասցեն կերևա «Ումից» դաշտում և ստացողը կարող է անմիջապես պատասխանել ձեզ։',
-'wiki_usermailererror' => 'Նամակն ուղարկելիս սխալ է վերադարձվել.',
+'usermailererror' => 'Նամակն ուղարկելիս սխալ է վերադարձվել.',
 'defemailsubject' => '{{SITENAME}} էլ-նամակ',
-'wiki_usermaildisabled' => 'Էլ․ նամակ ուղարկելը թույլատրված չէ։',
-'wiki_usermaildisabledtext' => 'Այս վիքիում չեք կարղ էլ․ նամակ ուղարկել այլ մասնակիցների',
+'usermaildisabled' => 'Էլ․ նամակ ուղարկելը թույլատրված չէ։',
+'usermaildisabledtext' => 'Այս վիքիում չեք կարղ էլ․ նամակ ուղարկել այլ մասնակիցների',
 'noemailtitle' => 'Չկա էլ-փոստի հասցե',
 'noemailtext' => 'Այս մասնակիցը չի նշել էլ-փոստի հասցե կամ նախընտրել է չստանալ էլ-նամակներ այլ մասնակիցներից։',
-'emailwiki_username' => 'Մասնակցի անուն՝',
+'emailusername' => 'Մասնակցի անուն՝',
 'email-legend' => 'Ուղարկել էլ․ նամակ {{SITENAME}}յի այլ մասնակցի',
 'emailfrom' => 'Ումից.',
 'emailto' => 'Ում.',
@@ -1779,7 +1779,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'nowatchlist' => 'Ձեր հսկողության ցանկը դատարկ է։',
 'watchlistanontext' => 'Անհրաժեշտ է $1՝ հսկացանկը դիտելու կամ խմբագրելու համար։',
 'watchnologin' => 'Չեք մտել համակարգ',
-'watchnologintext' => 'Անհրաժեշտ է [[Special:wiki_userLogin|մտնել համակարգ]]՝ հսկացանկը փոփոխելու համար։',
+'watchnologintext' => 'Անհրաժեշտ է [[Special:UserLogin|մտնել համակարգ]]՝ հսկացանկը փոփոխելու համար։',
 'addwatch' => 'Ավելացնել հսկացանկին',
 'addedwatchtext' => '«[[:$1]]» էջը ավելացված է ձեր [[Special:Watchlist|հսկացանկին]]։ Այս էջի և նրան կապված քննարկումների էջի հետագա փոփոխությունները կգրանցվեն այդտեղ, և կցուցադրվեն թավատառ [[Special:RecentChanges|վերջին փոփոխությունների]] ցանկում։
 
@@ -1874,12 +1874,12 @@ $NEWPAGE
 'rollbacklink' => 'հետ գլորել',
 'rollbackfailed' => 'Հետ գլորումը ձախողվեց',
 'cantrollback' => 'Չհաջողվեց հետ շրջել խմբագրումը։ Վերջին ներդրումը կատարվել է էջի միակ հեղինակի կողմից։',
-'alreadyrolled' => 'Չհաջողվեց հետ գլորել [[:$1]] էջի վերջին խմբագրումները՝ կատարված [[wiki_user:$2|$2]] ([[wiki_user talk:$2|Քննարկում]]) մասնակցի կողմից։ Մեկ ուրիշը արդեն խմբագրել է կամ հետ է գլորել էջը։
+'alreadyrolled' => 'Չհաջողվեց հետ գլորել [[:$1]] էջի վերջին խմբագրումները՝ կատարված [[User:$2|$2]] ([[User talk:$2|Քննարկում]]) մասնակցի կողմից։ Մեկ ուրիշը արդեն խմբագրել է կամ հետ է գլորել էջը։
 
-Վերջին խմբագրումը կատարվել է [[wiki_user:$3|$3]] ([[wiki_user talk:$3|Քննարկում]]) մասնակցի կողմից։',
+Վերջին խմբագրումը կատարվել է [[User:$3|$3]] ([[User talk:$3|Քննարկում]]) մասնակցի կողմից։',
 'editcomment' => "Խմբագրման մեկնաբանումն էր. «''$1''»։",
-'revertpage' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|քննարկում]]) մասնակցի խմբագրումները հետ են շրջվել [[wiki_user:$1|$1]] մասնակցի վերջին տարբերակին։',
-'revertpage-nowiki_user' => 'Հետ շրջվեց (անունը ջնջված է) մասնակցի խմբագրումը՝ [[wiki_user:$1|$1]] մասնակցի տարբերակին',
+'revertpage' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|քննարկում]]) մասնակցի խմբագրումները հետ են շրջվել [[User:$1|$1]] մասնակցի վերջին տարբերակին։',
+'revertpage-nouser' => 'Հետ շրջվեց (անունը ջնջված է) մասնակցի խմբագրումը՝ [[User:$1|$1]] մասնակցի տարբերակին',
 'rollback-success' => 'Հետ են շրջվել $1 մասնակցի խմբագրումները. վերադարձվել է $2 մասնակցի վերջին տարբերակին։',
 
 # Edit tokens
@@ -2017,13 +2017,13 @@ $1',
 'sp-contributions-uploads' => 'Բեռնումներ',
 'sp-contributions-logs' => 'տեղեկամատյաններ',
 'sp-contributions-talk' => 'քննարկում',
-'sp-contributions-wiki_userrights' => 'մասնակիցների իրավունքների կառավարում',
+'sp-contributions-userrights' => 'մասնակիցների իրավունքների կառավարում',
 'sp-contributions-blocked-notice' => 'Այս մասնակիցը ներկա պահին արգելափակված է։
 Ստորև ներկայացված է արգելափակման տեղեկամատյանի վերջին գրառումը.',
 'sp-contributions-blocked-notice-anon' => 'Այս IP հասցեն ներկա պահին արգելափակված է։
 Ստորև ներկայացված է արգելափակման տեղեկամատյանի վերջին գրառումը.',
 'sp-contributions-search' => 'Որոնել ներդրումները',
-'sp-contributions-wiki_username' => 'IP-հասե կամ մասնակցի անուն.',
+'sp-contributions-username' => 'IP-հասե կամ մասնակցի անուն.',
 'sp-contributions-toponly' => 'Ցույց տալ միայն այն խմբագրումները, որոնք վերջին փոփոխություն են',
 'sp-contributions-submit' => 'Որոնել',
 
@@ -2056,7 +2056,7 @@ $1',
 'blockiptext' => 'Օգտագործեք ստորև բերված ձևը որոշակի IP-հասցեից կամ մասնակցի անունից գրելու հնարավորությունը արգելափակելու համար։
 Նման բան հարկավոր է անել միայն վանդալության կանխարգելման նպատակով և համաձայն [[{{MediaWiki:Policy-url}}|կանոնակարգի]]։
 Նշեք արգելափակման որոշակի պատճառը ստորև (օրինակ՝ նշեք այն էջը, որում վանդալություն է տեղի ունեցել)։',
-'ipadressorwiki_username' => 'IP-հասցե կամ մասնակցի անուն.',
+'ipadressorusername' => 'IP-հասցե կամ մասնակցի անուն.',
 'ipbexpiry' => 'Մարման ժամկետ.',
 'ipbreason' => 'Պատճառ.',
 'ipbreasonotherlist' => 'Այլ պատճառ',
@@ -2089,7 +2089,7 @@ $1',
 'unblockip' => 'Արգելափակումից հանել մասնակցին',
 'unblockiptext' => 'Օգտագործեք ստորև ձևը՝ նախկինում արգելափակված IP-հասցեի կամ մասնակցի գրելու հնարավորությունը վերականգնելու համար։',
 'ipusubmit' => 'Հանել արգելափակումը',
-'unblocked' => '[[wiki_user:$1|$1]] մասնակիցը անարգելված է։',
+'unblocked' => '[[User:$1|$1]] մասնակիցը անարգելված է։',
 'unblocked-id' => '$1 արգելափակումը հանված է',
 'blocklist' => 'Արգելափակված մասնակիցներ։',
 'ipblocklist' => 'Արգելափակված IP-հասցեները և մասնակիցները',
@@ -2101,7 +2101,7 @@ $1',
 'noautoblockblock' => 'ավտոմատ արգելափակումը անջատված է',
 'createaccountblock' => 'մասնակցային հաշվի ստեղծումը արգելափակված է',
 'emailblock' => 'էլ-փոստը արգելափակված',
-'blocklist-nowiki_usertalk' => 'չի կարող խմբագրել իր քննարկման էջը',
+'blocklist-nousertalk' => 'չի կարող խմբագրել իր քննարկման էջը',
 'ipblocklist-empty' => 'Արգելափակումների ցանկը դատարկ է։',
 'ipblocklist-no-results' => 'Նշված IP-հասցեն կամ մասնակցի անունը արգելափակված չէ։',
 'blocklink' => 'արգելափակել',
@@ -2121,7 +2121,7 @@ $1',
 'block-log-flags-nocreate' => 'մասնակցային հաշվի ստեղծումը արգելված է',
 'block-log-flags-noautoblock' => 'ավտոմատ արգելափակումը անջատված է',
 'block-log-flags-noemail' => 'էլ-փոստը արգելափակված է',
-'block-log-flags-nowiki_usertalk' => 'չի կարող խմբագրել իր քննարկման էջը',
+'block-log-flags-nousertalk' => 'չի կարող խմբագրել իր քննարկման էջը',
 'block-log-flags-hiddenname' => 'թաքցնել մասնակցի անունը',
 'range_block_disabled' => 'Ադմինիստրատորների կողմից լայնույթի արգելափակման հնարավորությունը անջատված է։',
 'ipb_expiry_invalid' => 'Մարման ժամկետը անթույլատրելի է',
@@ -2182,7 +2182,7 @@ $1',
 Այսպիսի դեպքերում հարկավոր է տեղափոխել կամ միաձուլել էջերը ձեռքով, եթե դա ցանկանաք։",
 'movearticle' => 'Տեղափոխել էջը',
 'movenologin' => 'Դուք չեք մտել համակարգ',
-'movenologintext' => 'Անհրաժեշտ է [[Special:wiki_userLogin|մտնել համակարգ]]՝ էջը տեղափոխելու համար։',
+'movenologintext' => 'Անհրաժեշտ է [[Special:UserLogin|մտնել համակարգ]]՝ էջը տեղափոխելու համար։',
 'movenotallowed' => 'Դուք չունեք էջերի տեղափոխման իրավունք։',
 'newtitle' => 'Նոր անվանում.',
 'move-watch' => 'Հսկել էջը',
@@ -2285,8 +2285,8 @@ Please visit [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and 
 'import-logentry-interwiki-detail' => '$1 տարբերակ $2-ից',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Ձեր մասնակցի էջը',
-'tooltip-pt-anonwiki_userpage' => 'Ձեր IP-հասցեի մասնակցային էջը',
+'tooltip-pt-userpage' => 'Ձեր մասնակցի էջը',
+'tooltip-pt-anonuserpage' => 'Ձեր IP-հասցեի մասնակցային էջը',
 'tooltip-pt-mytalk' => 'Ձեր քննարկման էջը',
 'tooltip-pt-anontalk' => 'IP-հասցեից կատարված խմբագրումների քննարկում',
 'tooltip-pt-preferences' => 'Ձեր նախընտրությունները',
@@ -2322,13 +2322,13 @@ Please visit [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and 
 'tooltip-feed-rss' => 'Այս էջի RSS սնուցումը',
 'tooltip-feed-atom' => 'Այս էջի Atom սնուցումը',
 'tooltip-t-contributions' => 'Դիտել այս մասնակցի ներդրումների ցանկը',
-'tooltip-t-emailwiki_user' => 'Ուղարկել էլ-նամակ այս մասնակցին',
+'tooltip-t-emailuser' => 'Ուղարկել էլ-նամակ այս մասնակցին',
 'tooltip-t-upload' => 'Բեռնել ֆայլեր',
 'tooltip-t-specialpages' => 'Բոլոր սպասարկող էջերի ցանկը',
 'tooltip-t-print' => 'Այս էջի տպելու տարբերակ',
 'tooltip-t-permalink' => 'Էջի այս տարբերակի մշտական հղում',
 'tooltip-ca-nstab-main' => 'Դիտել հոդվածը',
-'tooltip-ca-nstab-wiki_user' => 'Դիտել մասնակցի էջը',
+'tooltip-ca-nstab-user' => 'Դիտել մասնակցի էջը',
 'tooltip-ca-nstab-media' => 'Դիտել մեդիաֆայլի էջը',
 'tooltip-ca-nstab-special' => 'Սա սպասարկող էջ է, դուք չեք կարող հենց իրեն խմբագրել',
 'tooltip-ca-nstab-project' => 'Դիտել նախագծի էջը',
@@ -2361,11 +2361,11 @@ Please visit [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and 
 
 # Attribution
 'anonymous' => '{{grammar:genitive|{{SITENAME}}}} անանուն մասնակիցները',
-'sitewiki_user' => '{{grammar:genitive|{{SITENAME}}}} մասնակից $1',
+'siteuser' => '{{grammar:genitive|{{SITENAME}}}} մասնակից $1',
 'lastmodifiedatby' => 'Այս էջը վերջին անգամ փոփոխվել է $2, $1 $3 մասնակցի կողմից։',
 'othercontribs' => 'Հիմնված է {{grammar:genitive|$1}} գործի վրա։',
 'others' => 'այլոք',
-'sitewiki_users' => '{{grammar:genitive|{{SITENAME}}}} մասնակից(ներ) $1',
+'siteusers' => '{{grammar:genitive|{{SITENAME}}}} մասնակից(ներ) $1',
 'creditspage' => 'Երախտիքներ',
 'nocredits' => 'Այս էջի հեղինակների մասին տեղեկություններ չկան։',
 
@@ -2373,7 +2373,7 @@ Please visit [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and 
 'spamprotectiontitle' => 'Սպամ-պաշտպանման զտիչ',
 'spamprotectiontext' => 'Էջը, որը դուք փորձում եք հիշել արգելափակվել է սպամի զտիչի կողմից։ Սա հավանաբար արտաքին կայքին հղման պատճառով է։',
 'spamprotectionmatch' => 'Սպամ զտիչին գործադրած տեքստն է. $1.',
-'spambot_wiki_username' => 'Սպամի մաքրում',
+'spambot_username' => 'Սպամի մաքրում',
 'spam_reverting' => 'Հետ է շրջվում վերջին տարբերակի, որը չի պարունակում հղումներ դեպի $1',
 'spam_blanking' => 'Բոլոր տարբերակները պարունակում են հղումներ դեպի $1, մաքրում',
 
@@ -2396,9 +2396,9 @@ Please visit [//www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and 
 'pageinfo-redirects-name' => 'վերահղումներ այս էջին',
 'pageinfo-subpages-name' => 'Ենթաէջեր',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|վերահղում}}; $3 {{PLURAL:$3|ոչ-վերահղում}})',
-'pageinfo-firstwiki_user' => 'Ստեղծող',
+'pageinfo-firstuser' => 'Ստեղծող',
 'pageinfo-firsttime' => 'Ստեղծման ամսաթիվ',
-'pageinfo-lastwiki_user' => 'Վերջին խմբագրող',
+'pageinfo-lastuser' => 'Վերջին խմբագրող',
 'pageinfo-lasttime' => 'Վերջին խմբագրման ամսաթիվ',
 'pageinfo-edits' => 'Խմբագրումների քանակ',
 'pageinfo-authors' => 'Առանձին հեղինակների քանակ',
@@ -2559,7 +2559,7 @@ $3
 
 # Delete conflict
 'deletedwhileediting' => 'Զգուշացում. ձեր խմբագրման ընթացքում այս էջը ջնջվել է։',
-'confirmrecreate' => "[[wiki_user:$1|$1]] ([[wiki_user talk:$1|քննարկում]]) մասնակիցը ջնջել է այս էջը ձեր խմաբգրումը սկսելուց հետո՝ հետևյալ պատճառով.
+'confirmrecreate' => "[[User:$1|$1]] ([[User talk:$1|քննարկում]]) մասնակիցը ջնջել է այս էջը ձեր խմաբգրումը սկսելուց հետո՝ հետևյալ պատճառով.
 : ''$2''
 Խնդրում ենք հաստատել, որ դուք իսկապես ուզում եք վերստեղծել այս էջը։",
 'recreate' => 'Վերստեղծել',
@@ -2640,7 +2640,7 @@ $3
 'watchlisttools-raw' => 'Խմբագրել հում հսկացանկը',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|քննարկում]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|քննարկում]])',
 
 # Special:Version
 'version' => 'ՄեդիաՎիքի տարբերակը',
@@ -2670,7 +2670,7 @@ $3
 'specialpages-group-login' => 'Մտնել / Գրանցվել',
 'specialpages-group-changes' => 'Վերջին փոփոխություններ և տեղեկամատյաններ',
 'specialpages-group-media' => 'Մեդիանյութերի տեղեկատուներ և բեռնումներ',
-'specialpages-group-wiki_users' => 'Մասնակիցներ և իրավունքներ',
+'specialpages-group-users' => 'Մասնակիցներ և իրավունքներ',
 'specialpages-group-highuse' => 'Հաճախակի օգտագործվող էջեր',
 'specialpages-group-pages' => 'Էջերի ցանկեր',
 'specialpages-group-pagetools' => 'Էջերի գործիքներ',
@@ -2720,10 +2720,10 @@ $3
 'logentry-move-move-noredirect' => '$1 տեղափոխեց էջը «$3»-ից «$4» առանց վերահղում թողնելու',
 'logentry-move-move_redir' => '$1 տեղափոխեց էջը «$3»-ից «$4» վերահղման վրայով',
 'logentry-move-move_redir-noredirect' => '$1 տեղափոխեց էջը «$3»-ից «$4» վերահղման վրայով, առանց վերահղում թողնելու',
-'logentry-newwiki_users-newwiki_users' => '$1 մասնակիցը ստեղծեց նոր հաշիվ',
-'logentry-newwiki_users-create' => '$1 մասնակիցը ստեղծեց նոր հաշիվ',
-'logentry-newwiki_users-create2' => '$1 Ստեղծեց նոր հաշիվ $3',
-'newwiki_userlog-byemail' => 'Գաղտնաբառն ուղարկված է էլ․ փոստով',
+'logentry-newusers-newusers' => '$1 մասնակիցը ստեղծեց նոր հաշիվ',
+'logentry-newusers-create' => '$1 մասնակիցը ստեղծեց նոր հաշիվ',
+'logentry-newusers-create2' => '$1 Ստեղծեց նոր հաշիվ $3',
+'newuserlog-byemail' => 'Գաղտնաբառն ուղարկված է էլ․ փոստով',
 
 # Feedback
 'feedback-subject' => 'Թեմա.',

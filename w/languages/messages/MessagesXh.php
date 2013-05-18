@@ -67,7 +67,7 @@ $messages = array(
 'talk' => 'Ingxoxo',
 'otherlanguages' => 'Kwezinye Ilwimi',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Imisebenzi Eyenzekayo',
 'edithelp' => 'Uncedo ngoTshintsho',
 'mainpage' => 'Iphepha Elingundoqo',
@@ -110,7 +110,7 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 # Preferences page
 'mypreferences' => 'Ezithandwa ndim',
 'searchresultshead' => 'Khangela',
-'wiki_username' => 'Igama lelungu:',
+'username' => 'Igama lelungu:',
 
 # Recent changes
 'recentchanges' => 'Utshitsho olusandokwenziwa',

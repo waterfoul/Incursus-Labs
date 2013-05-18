@@ -22,20 +22,20 @@
  */
 
 /**
- * Let wiki_users change their email address.
+ * Let users change their email address.
  *
  * @ingroup SpecialPage
  */
 class SpecialChangeEmail extends UnlistedSpecialPage {
 
 	/**
-	 * wiki_users password
+	 * Users password
 	 * @var string
 	 */
 	protected $mPassword;
 
 	/**
-	 * wiki_users new email address
+	 * Users new email address
 	 * @var string
 	 */
 	protected $mNewEmail;
@@ -62,7 +62,7 @@ class SpecialChangeEmail extends UnlistedSpecialPage {
 		$this->outputHeader();
 
 		$out = $this->getOutput();
-		$out->disallowwiki_userJs();
+		$out->disallowUserJs();
 		$out->addModules( 'mediawiki.special.changeemail' );
 
 		if ( !$wgAuth->allowPropChange( 'emailaddress' ) ) {
@@ -70,10 +70,10 @@ class SpecialChangeEmail extends UnlistedSpecialPage {
 			return;
 		}
 
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 		$request = $this->getRequest();
 
-		if ( !$request->wasPosted() && !$wiki_user->isLoggedIn() ) {
+		if ( !$request->wasPosted() && !$user->isLoggedIn() ) {
 			$this->error( 'changeemail-no-info' );
 			return;
 		}
@@ -89,15 +89,15 @@ class SpecialChangeEmail extends UnlistedSpecialPage {
 		$this->mNewEmail = $request->getVal( 'wpNewEmail' );
 
 		if ( $request->wasPosted()
-			&& $wiki_user->matchEditToken( $request->getVal( 'token' ) ) )
+			&& $user->matchEditToken( $request->getVal( 'token' ) ) )
 		{
-			$info = $this->attemptChange( $wiki_user, $this->mPassword, $this->mNewEmail );
+			$info = $this->attemptChange( $user, $this->mPassword, $this->mNewEmail );
 			if ( $info === true ) {
 				$this->doReturnTo();
 			} elseif ( $info === 'eauth' ) {
-				# Notify wiki_user that a confirmation email has been sent...
+				# Notify user that a confirmation email has been sent...
 				$out->wrapWikiMsg( "<div class='error' style='clear: both;'>\n$1\n</div>",
-					'eauthentsent', $wiki_user->getName() );
+					'eauthentsent', $user->getName() );
 				$this->doReturnTo( 'soft' ); // just show the link to go back
 				return; // skip form
 			}
@@ -130,10 +130,10 @@ class SpecialChangeEmail extends UnlistedSpecialPage {
 
 	protected function showForm() {
 		global $wgRequirePasswordforEmailChange;
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 
-		$oldEmailText = $wiki_user->getEmail()
-			? $wiki_user->getEmail()
+		$oldEmailText = $user->getEmail()
+			? $user->getEmail()
 			: $this->msg( 'changeemail-none' )->text();
 
 		$this->getOutput()->addHTML(
@@ -143,13 +143,13 @@ class SpecialChangeEmail extends UnlistedSpecialPage {
 					'method' => 'post',
 					'action' => $this->getTitle()->getLocalUrl(),
 					'id' => 'mw-changeemail-form' ) ) . "\n" .
-			Html::hidden( 'token', $wiki_user->getEditToken() ) . "\n" .
+			Html::hidden( 'token', $user->getEditToken() ) . "\n" .
 			Html::hidden( 'returnto', $this->getRequest()->getVal( 'returnto' ) ) . "\n" .
 			$this->msg( 'changeemail-text' )->parseAsBlock() . "\n" .
 			Xml::openElement( 'table', array( 'id' => 'mw-changeemail-table' ) ) . "\n"
 		);
 		$items = array(
-			array( 'wpName', 'wiki_username', 'text', $wiki_user->getName() ),
+			array( 'wpName', 'username', 'text', $user->getName() ),
 			array( 'wpOldEmail', 'changeemail-oldemail', 'text', $oldEmailText ),
 			array( 'wpNewEmail', 'changeemail-newemail', 'input', $this->mNewEmail ),
 		);
@@ -207,35 +207,35 @@ class SpecialChangeEmail extends UnlistedSpecialPage {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $pass string
 	 * @param $newaddr string
 	 * @return bool|string true or string on success, false on failure
 	 */
-	protected function attemptChange( wiki_user $wiki_user, $pass, $newaddr ) {
+	protected function attemptChange( User $user, $pass, $newaddr ) {
 		if ( $newaddr != '' && !Sanitizer::validateEmail( $newaddr ) ) {
 			$this->error( 'invalidemailaddress' );
 			return false;
 		}
 
-		$throttleCount = LoginForm::incLoginThrottle( $wiki_user->getName() );
+		$throttleCount = LoginForm::incLoginThrottle( $user->getName() );
 		if ( $throttleCount === true ) {
 			$this->error( 'login-throttled' );
 			return false;
 		}
 
 		global $wgRequirePasswordforEmailChange;
-		if ( $wgRequirePasswordforEmailChange && !$wiki_user->checkTemporaryPassword( $pass ) && !$wiki_user->checkPassword( $pass ) ) {
+		if ( $wgRequirePasswordforEmailChange && !$user->checkTemporaryPassword( $pass ) && !$user->checkPassword( $pass ) ) {
 			$this->error( 'wrongpassword' );
 			return false;
 		}
 
 		if ( $throttleCount ) {
-			LoginForm::clearLoginThrottle( $wiki_user->getName() );
+			LoginForm::clearLoginThrottle( $user->getName() );
 		}
 
-		$oldaddr = $wiki_user->getEmail();
-		$status = $wiki_user->setEmailWithConfirmation( $newaddr );
+		$oldaddr = $user->getEmail();
+		$status = $user->setEmailWithConfirmation( $newaddr );
 		if ( !$status->isGood() ) {
 			$this->getOutput()->addHTML(
 				'<p class="error">' .
@@ -244,9 +244,9 @@ class SpecialChangeEmail extends UnlistedSpecialPage {
 			return false;
 		}
 
-		wfRunHooks( 'PrefsEmailAudit', array( $wiki_user, $oldaddr, $newaddr ) );
+		wfRunHooks( 'PrefsEmailAudit', array( $user, $oldaddr, $newaddr ) );
 
-		$wiki_user->saveSettings();
+		$user->saveSettings();
 
 		return $status->value;
 	}

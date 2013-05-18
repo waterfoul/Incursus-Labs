@@ -105,7 +105,7 @@ class wfTimestamp extends MediaWikiTestCase {
 			array( 'Sun, 06 Nov 1994 08:49:37 GMT', '19941106084937', 'RFC 822 date' ),
 			array( 'Sunday, 06-Nov-94 08:49:37 GMT', '19941106084937', 'RFC 850 date' ),
 			array( 'Sun Nov  6 08:49:37 1994', '19941106084937', "ANSI C's asctime() format" ),
-			// See http://www.squid-cache.org/mail-archive/squid-wiki_users/200307/0122.html and r77171
+			// See http://www.squid-cache.org/mail-archive/squid-users/200307/0122.html and r77171
 			array( 'Mon, 22 Nov 2010 14:12:42 GMT; length=52626', '20101122141242', 'Netscape extension to HTTP/1.0' ),
 		);
 	}

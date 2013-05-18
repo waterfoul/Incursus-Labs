@@ -36,8 +36,8 @@ class SkinNostalgia extends SkinLegacy {
 	/**
 	 * @param $out OutputPage
 	 */
-	function setupSkinwiki_userCss( OutputPage $out ){
-		parent::setupSkinwiki_userCss( $out );
+	function setupSkinUserCss( OutputPage $out ){
+		parent::setupSkinUserCss( $out );
 		$out->addModuleStyles( 'skins.nostalgia' );
 	}
 
@@ -95,30 +95,30 @@ class NostalgiaTemplate extends LegacyTemplate {
 		$s .= $this->variantLinks();
 		$s .= $this->extensionTabLinks();
 		if ( !$this->data['loggedin'] ) {
-			$s .= $sep . Linker::specialLink( 'wiki_userlogin' );
+			$s .= $sep . Linker::specialLink( 'Userlogin' );
 		} else {
-			/* show wiki_user page and wiki_user talk links */
-			$wiki_user = $this->getSkin()->getwiki_user();
-			$s .= $sep . Linker::link( $wiki_user->getwiki_userPage(), wfMessage( 'mypage' )->escaped() );
-			$s .= $sep . Linker::link( $wiki_user->getTalkPage(), wfMessage( 'mytalk' )->escaped() );
-			if ( $wiki_user->getNewtalk() ) {
+			/* show user page and user talk links */
+			$user = $this->getSkin()->getUser();
+			$s .= $sep . Linker::link( $user->getUserPage(), wfMessage( 'mypage' )->escaped() );
+			$s .= $sep . Linker::link( $user->getTalkPage(), wfMessage( 'mytalk' )->escaped() );
+			if ( $user->getNewtalk() ) {
 				$s .= ' *';
 			}
 			/* show watchlist link */
 			$s .= $sep . Linker::specialLink( 'Watchlist' );
 			/* show my contributions link */
 			$s .= $sep . Linker::link(
-				SpecialPage::getSafeTitleFor( 'Contributions', $this->data['wiki_username'] ),
+				SpecialPage::getSafeTitleFor( 'Contributions', $this->data['username'] ),
 				wfMessage( 'mycontris' )->escaped() );
 			/* show my preferences link */
 			$s .= $sep . Linker::specialLink( 'Preferences' );
 			/* show upload file link */
-			if( UploadBase::isEnabled() && UploadBase::isAllowed( $wiki_user ) === true ) {
+			if( UploadBase::isEnabled() && UploadBase::isAllowed( $user ) === true ) {
 				$s .= $sep . $this->getUploadLink();
 			}
 
 			/* show log out link */
-			$s .= $sep . Linker::specialLink( 'wiki_userlogout' );
+			$s .= $sep . Linker::specialLink( 'Userlogout' );
 		}
 
 		$s .= $sep . $this->specialPagesList();

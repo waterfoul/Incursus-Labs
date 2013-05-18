@@ -1,6 +1,6 @@
 <?php
 /**
- * Remove unused wiki_user accounts from the database
+ * Remove unused user accounts from the database
  * An unused account is one which has made no edits
  *
  * This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 require_once( __DIR__ . '/Maintenance.php' );
 
 /**
- * Maintenance script that removes unused wiki_user accounts from the database.
+ * Maintenance script that removes unused user accounts from the database.
  *
  * @ingroup Maintenance
  */
@@ -43,10 +43,10 @@ class RemoveUnusedAccounts extends Maintenance {
 		$this->output( "Remove unused accounts\n\n" );
 
 		# Do an initial scan for inactive accounts and report the result
-		$this->output( "Checking for unused wiki_user accounts...\n" );
+		$this->output( "Checking for unused user accounts...\n" );
 		$del = array();
-		r = wfGetDB( DB_SLAVE );
-		$res = r->select( 'wiki_user', array( 'wiki_user_id', 'wiki_user_name', 'wiki_user_touched' ), '', __METHOD__ );
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'user', array( 'user_id', 'user_name', 'user_touched' ), '', __METHOD__ );
 		if ( $this->hasOption( 'ignore-groups' ) ) {
 			$excludedGroups = explode( ',', $this->getOption( 'ignore-groups' ) );
 		} else {
@@ -59,14 +59,14 @@ class RemoveUnusedAccounts extends Maintenance {
 		$touchedSeconds = 86400 * $touched;
 		foreach ( $res as $row ) {
 			# Check the account, but ignore it if it's within a $excludedGroups group or if it's touched within the $touchedSeconds seconds.
-			$instance = wiki_user::newFromId( $row->wiki_user_id );
+			$instance = User::newFromId( $row->user_id );
 			if ( count( array_intersect( $instance->getEffectiveGroups(), $excludedGroups ) ) == 0
-				&& $this->isInactiveAccount( $row->wiki_user_id, true )
-				&& wfTimestamp( TS_UNIX, $row->wiki_user_touched ) < wfTimestamp( TS_UNIX, time() - $touchedSeconds )
+				&& $this->isInactiveAccount( $row->user_id, true )
+				&& wfTimestamp( TS_UNIX, $row->user_touched ) < wfTimestamp( TS_UNIX, time() - $touchedSeconds )
 				) {
 				# Inactive; print out the name and flag it
-				$del[] = $row->wiki_user_id;
-				$this->output( $row->wiki_user_name . "\n" );
+				$del[] = $row->user_id;
+				$this->output( $row->user_name . "\n" );
 			}
 		}
 		$count = count( $del );
@@ -75,12 +75,12 @@ class RemoveUnusedAccounts extends Maintenance {
 		# If required, go back and delete each marked account
 		if ( $count > 0 && $this->hasOption( 'delete' ) ) {
 			$this->output( "\nDeleting inactive accounts..." );
-			w = wfGetDB( DB_MASTER );
-			w->delete( 'wiki_user', array( 'wiki_user_id' => $del ), __METHOD__ );
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->delete( 'user', array( 'user_id' => $del ), __METHOD__ );
 			$this->output( "done.\n" );
-			# Update the site_stats.ss_wiki_users field
-			$wiki_users = w->selectField( 'wiki_user', 'COUNT(*)', array(), __METHOD__ );
-			w->update( 'site_stats', array( 'ss_wiki_users' => $wiki_users ), array( 'ss_row_id' => 1 ), __METHOD__ );
+			# Update the site_stats.ss_users field
+			$users = $dbw->selectField( 'user', 'COUNT(*)', array(), __METHOD__ );
+			$dbw->update( 'site_stats', array( 'ss_users' => $users ), array( 'ss_row_id' => 1 ), __METHOD__ );
 		} elseif ( $count > 0 ) {
 			$this->output( "\nRun the script again with --delete to remove them from the database.\n" );
 		}
@@ -88,25 +88,25 @@ class RemoveUnusedAccounts extends Maintenance {
 	}
 
 	/**
-	 * Could the specified wiki_user account be deemed inactive?
+	 * Could the specified user account be deemed inactive?
 	 * (No edits, no deleted edits, no log entries, no current/old uploads)
 	 *
-	 * @param $id wiki_user's ID
+	 * @param $id User's ID
 	 * @param $master bool Perform checking on the master
 	 * @return bool
 	 */
 	private function isInactiveAccount( $id, $master = false ) {
-		o = wfGetDB( $master ? DB_MASTER : DB_SLAVE );
+		$dbo = wfGetDB( $master ? DB_MASTER : DB_SLAVE );
 		$checks = array( 'revision' => 'rev', 'archive' => 'ar', 'logging' => 'log',
 						 'image' => 'img', 'oldimage' => 'oi', 'filearchive' => 'fa' );
 		$count = 0;
 
-		o->begin( __METHOD__ );
+		$dbo->begin( __METHOD__ );
 		foreach ( $checks as $table => $fprefix ) {
-			$conds = array( $fprefix . '_wiki_user' => $id );
-			$count += (int)o->selectField( $table, 'COUNT(*)', $conds, __METHOD__ );
+			$conds = array( $fprefix . '_user' => $id );
+			$count += (int)$dbo->selectField( $table, 'COUNT(*)', $conds, __METHOD__ );
 		}
-		o->commit( __METHOD__ );
+		$dbo->commit( __METHOD__ );
 
 		return $count == 0;
 	}

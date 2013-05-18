@@ -5,8 +5,8 @@
 -- 2005-04-25
 --
 
-ALTER TABLE /*$wgDBprefix*/wiki_user
-  ADD COLUMN wiki_user_email_authenticated binary(14),
-  ADD COLUMN wiki_user_email_token binary(32),
-  ADD COLUMN wiki_user_email_token_expires binary(14),
-  ADD INDEX (wiki_user_email_token);
+ALTER TABLE /*$wgDBprefix*/user
+  ADD COLUMN user_email_authenticated binary(14),
+  ADD COLUMN user_email_token binary(32),
+  ADD COLUMN user_email_token_expires binary(14),
+  ADD INDEX (user_email_token);

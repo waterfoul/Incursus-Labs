@@ -14,7 +14,7 @@
 $fallback = 'it';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Link cun la sotliniadura',
 'tog-justify' => 'Paràgraf: giustifiché',
 'tog-hideminor' => 'Nascond al mudefghi znini int la pàgina "Ultum mudèfghi"',
@@ -38,7 +38,7 @@ $messages = array(
 'tog-previewonfirst' => "Fa' avdé l'anteprèma dop c'u's fa la prèma mudèfica",
 'tog-nocache' => "T'an stêga a tní in tla memoria al pàgin",
 'tog-enotifwatchlistpages' => "Fam' save' par e-mail quènd una pàgina dal mij l'è steda modifichèda",
-'tog-enotifwiki_usertalkpages' => "Fam' save' par e-mail quènd la mi pàgina dal discusiòn l'è steda modifichèda",
+'tog-enotifusertalkpages' => "Fam' save' par e-mail quènd la mi pàgina dal discusiòn l'è steda modifichèda",
 'tog-enotifminoredits' => "Fam' save' par e-mail tòt al mudefchi, neca al znini",
 'tog-enotifrevealaddr' => "Lasa avdè e' mi indirèzi d'posta eletrònica int'j mesàg d'nutèfica",
 'tog-shownumberswatching' => "Fam' avdè e' nòmar d'j utent ch'j tèn sta pàgina sot occ",
@@ -203,7 +203,7 @@ $messages = array(
 'jumptonavigation' => 'navgaziòn',
 'jumptosearch' => 'zerca',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'A prupòsit de {{SITENAME}}',
 'aboutpage' => 'Project: A pruposit',
 'copyright' => "Oci! T'an fèga e' patàca. Sora 'ste scrètt u j è e' brevet $1.",
@@ -239,7 +239,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Artécul',
-'nstab-wiki_user' => 'Pàgina persunèla',
+'nstab-user' => 'Pàgina persunèla',
 'nstab-special' => 'Pàgina particulèra',
 'nstab-project' => "Pàgina dagl'infurmaziòn",
 'nstab-image' => 'File',
@@ -252,7 +252,7 @@ $messages = array(
 Quest é suzed d'solit in te méntr d'un cuntrol d'do version vèci intla storia d'una pàgina. E' pò esar suzest parchè l'è stè cjamé un culegamént a una pàgina scanzleda o parchè l'è stè cjamé un cunfront d'dò versiòn ch'j n'esést piò.
 
 S' u n'è brisa acsè, t'é scvert par chès un bug int'é software.
-Par piasé, fa raport a un [[Special:Listwiki_users/sysop|aministrador]] cun la nota de l'indirezzi dla pàgina.",
+Par piasé, fa raport a un [[Special:ListUsers/sysop|aministrador]] cun la nota de l'indirezzi dla pàgina.",
 'missingarticle-rev' => '(revision n°: $1)',
 'badtitletext' => "La pàgina ch' t'ê cmandè, l'è vuda, sbaglieda o ta l'ê scrètta cun dal lettar particulèri. Oppure, ê pò dès ch'u j sèja un eror inter-lèngua o inter-wiki. Guèrda ben cus t'e scrètt: êt druvè dal lettar cu n' s pò druvè in t'j nom dal pàgin?",
 'viewsource' => "Guèrda e' codiz surgént",
@@ -263,9 +263,9 @@ Par piasé, fa raport a un [[Special:Listwiki_users/sysop|aministrador]] cun la 
 'remembermypassword' => "Regèstra la mi parola d'ordin sora ste computer (for a maximum of $1 {{PLURAL:$1|day|days}})",
 'login' => 'Va dentar',
 'nav-login-createaccount' => 'Va dentar / Èla la prèma volta?',
-'wiki_userlogin' => 'Vèn dentar/A sit nov?',
+'userlogin' => 'Vèn dentar/A sit nov?',
 'logout' => 'Va fora',
-'wiki_userlogout' => 'Và fora',
+'userlogout' => 'Và fora',
 'nologinlink' => 'Iscrivat adès',
 'mailmypassword' => "Mènda una nova parola d'ordin cun l'e-mail",
 
@@ -380,7 +380,7 @@ Lezenda: '''({{int:cur}})''' = difarenzi cun la versiòn d'adès; '''({{int:last
 
 'grouppage-sysop' => '{{ns:project}}:Aministradór',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => "Dirètt d'j navigador",
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -429,7 +429,7 @@ Al pàgin int'la lèsta dal [[Special:Watchlist|pàgin tnudi sot occ]] l' è scr
 'filehist-datetime' => 'Dèda/Ora',
 'filehist-thumb' => 'Visiòn znina',
 'filehist-thumbtext' => 'Visiòn znina dla versiòn dal $1',
-'filehist-wiki_user' => 'Utent',
+'filehist-user' => 'Utent',
 'filehist-dimensions' => 'Amsür',
 'filehist-comment' => "Ch'roba è'l",
 'imagelinks' => 'I culegamént a ste file',
@@ -471,14 +471,14 @@ $1 {{PLURAL:$1|elemént|elemént}}',
 # Special:LinkSearch
 'linksearch' => 'Ghènz int ê web',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => "Regèstar d'j nov",
+# Special:Log/newusers
+'newuserlogpage' => "Regèstar d'j nov",
 
 # Special:ListGroupRights
 'listgrouprights-members' => "(Lèsta d'j mèmbar)",
 
-# E-mail wiki_user
-'emailwiki_user' => 'Manda un scrètt a ste patàca',
+# E-mail user
+'emailuser' => 'Manda un scrètt a ste patàca',
 
 # Watchlist
 'watchlist' => "Pàgin ch'a ten d'öcc",
@@ -556,7 +556,7 @@ T'pù cambié ê livel d'pruteziòn d'sta pàgina, mo la pruteziòn ricursiva la
 'sp-contributions-newbies' => "Fam avdé sol i lavòr d'j utent nuv",
 'sp-contributions-blocklog' => "Regèstar d'j bloc",
 'sp-contributions-search' => 'Zerca j lavór',
-'sp-contributions-wiki_username' => 'Indirèzz IP o soranòm',
+'sp-contributions-username' => 'Indirèzz IP o soranòm',
 'sp-contributions-submit' => 'Zerca',
 
 # What links here
@@ -629,7 +629,7 @@ Par piasé, met insem al du pàgin te, fasend copia e incola.",
 'thumbnail-more' => 'Fal piò lèrg',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'La tu pàgina persunèla',
+'tooltip-pt-userpage' => 'La tu pàgina persunèla',
 'tooltip-pt-mytalk' => "La tu pàgina d'cunversaziòn cun ch'jetar",
 'tooltip-pt-preferences' => 'I tu gòst',
 'tooltip-pt-watchlist' => "Lèsta dal pàgin ch'te ténn sot öcc",
@@ -661,13 +661,13 @@ Par piasé, met insem al du pàgin te, fasend copia e incola.",
 'tooltip-feed-rss' => 'Canël RSS par sta pàgina',
 'tooltip-feed-atom' => 'Canël Atom par sta pàgina',
 'tooltip-t-contributions' => "Guèrda la lèsta d'tot i lavor ch'l'à fat ste patàca",
-'tooltip-t-emailwiki_user' => 'Manda un scrètt a ste patàca',
+'tooltip-t-emailuser' => 'Manda un scrètt a ste patàca',
 'tooltip-t-upload' => "Carga d'j file multimediél",
 'tooltip-t-specialpages' => 'Lèsta ad toti al pàgin particulèri',
 'tooltip-t-print' => 'Versiòn bona da stampè sta pagina',
 'tooltip-t-permalink' => "Culegament fèss a 'sta version d'la pagina",
 'tooltip-ca-nstab-main' => "Guèrda st'ètra pagina",
-'tooltip-ca-nstab-wiki_user' => 'Guèrda la pàgina persunëla',
+'tooltip-ca-nstab-user' => 'Guèrda la pàgina persunëla',
 'tooltip-ca-nstab-special' => "Csa fet ? Questa l'è una pàgina particulèra; t'an pu brisa scrivar sora",
 'tooltip-ca-nstab-project' => "Guèrda la pàgina dagl'infurmaziòn",
 'tooltip-ca-nstab-image' => "Guèrda la pàgina d'e' file",

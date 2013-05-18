@@ -121,7 +121,7 @@ $messages = array(
 'jumptonavigation' => 'Dazzaeuh',
 'jumptosearch' => 'Ra',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Gvanhyih {{SITENAME}}',
 'aboutpage' => 'Project:gvanhyih',
 'currentevents' => 'Saehgienh seizneix',
@@ -155,7 +155,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Feanzcieng',
-'nstab-wiki_user' => 'Yieb bouxsawjyungq',
+'nstab-user' => 'Yieb bouxsawjyungq',
 'nstab-project' => 'Yieb giva',
 'nstab-image' => 'Vwnzgen',
 'nstab-mediawiki' => 'Siuhsik',
@@ -171,9 +171,9 @@ $messages = array(
 'yourpassword' => 'Mizmak：',
 'login' => 'Dwnghluz',
 'nav-login-createaccount' => 'dwngh haeuj/laebbaen canghu',
-'wiki_userlogin' => 'Daengh haeuj/Laeb bouxdeiz',
+'userlogin' => 'Daengh haeuj/Laeb bouxdeiz',
 'logout' => 'Doiq ok',
-'wiki_userlogout' => 'Doiq ok',
+'userlogout' => 'Doiq ok',
 'notloggedin' => 'Maengx laezhaej',
 'nologinlink' => 'Laeb bouxdeiz',
 
@@ -201,9 +201,9 @@ $messages = array(
 'mypreferences' => 'Doenghgaeq gou hae',
 'prefsnologin' => 'Maengx laezhaej',
 'searchresultshead' => 'Cwmh',
-'wiki_username' => 'Ciu bouxdeiz:',
+'username' => 'Ciu bouxdeiz:',
 
-'group-wiki_user-member' => '{{GENDER:$1|Bouxsawjyungq}}',
+'group-user-member' => '{{GENDER:$1|Bouxsawjyungq}}',
 
 # Associated actions - in the sentence "You do not have permission to X"
 'action-edit' => 'gaij yieb neix',
@@ -229,12 +229,12 @@ $messages = array(
 'watchthisupload' => 'Demq mae-nej',
 
 # Special:ListFiles
-'listfiles_wiki_user' => 'Bouxyungh',
+'listfiles_user' => 'Bouxyungh',
 
 # File description page
 'filehist-current' => 'seizneix',
 'filehist-datetime' => 'Ngoenz/Seizgan',
-'filehist-wiki_user' => 'Bouxsawjyungh',
+'filehist-user' => 'Bouxsawjyungh',
 'filehist-comment' => 'Gejgangj',
 
 # Random page
@@ -246,7 +246,7 @@ $messages = array(
 # Miscellaneous special pages
 'nbytes' => '$1 {{PLURAL:$1|cihciet|cihciet}}',
 'newpages' => 'Yieb moq',
-'newpages-wiki_username' => 'Ciu bouxdeiz:',
+'newpages-username' => 'Ciu bouxdeiz:',
 'move' => 'Daen',
 'movethispage' => 'Caen mae nej',
 

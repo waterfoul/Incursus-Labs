@@ -15,7 +15,7 @@
 $fallback = 'kn';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'ಲಿಂಕ್’ಲೆದ ತಿರ್ತ್ ಗೆರೆ(ಅಂಡರ್ ಲೈನ್) ಪಾಡ್’ಲೆ',
 'tog-justify' => 'ಪಾರಗ್ರಾಫ್’ದ ಕಡೆನ್ ಸರಿ ಮಲ್ಪುಲೆ',
 'tog-hideminor' => 'ಎಲ್ಯೆಲ್ಯ ಬದಲಾವಣೆಲೆನ್ ದೆಂಗಾಲೆ',
@@ -37,7 +37,7 @@ $messages = array(
 'tog-previewonfirst' => 'ಶುರುತ ಬದಲಾವಣೆದ ಬೊಕ್ಕ ಮನ್ನೋಟನ್ ತೊಜ್ಪಾಲೆ',
 'tog-nocache' => 'ಪುಟೊತ caching ನ್ ಉಂತಾಲೆ',
 'tog-enotifwatchlistpages' => 'ಎನ್ನ ವೀಕ್ಷಣಾಪಟ್ಟಿಡ್ ಉಪ್ಪುನಂಚಿನ ಒವಾಂಡಲ ಪುಟ ಬದಲಾಂಡ ಎಂಕ್ ಇ-ಮೇಲ್ ಮಲ್ಪುಲೆ',
-'tog-enotifwiki_usertalkpages' => 'ಎನ್ನ ಚರ್ಚೆ ಪುಟ ಬದಲಾಂಡ ಎಂಕ್ ಇ-ಮೇಲ್ ಕಡಪುಡ್ಲೆ',
+'tog-enotifusertalkpages' => 'ಎನ್ನ ಚರ್ಚೆ ಪುಟ ಬದಲಾಂಡ ಎಂಕ್ ಇ-ಮೇಲ್ ಕಡಪುಡ್ಲೆ',
 'tog-enotifminoredits' => 'ಎಲ್ಯೆಲ್ಯ ಬದಲಾವಣೆ ಆಂಡಲ ಎಂಕ್ ಇ-ಮೇಲ್ ಮಲ್ಪುಲೆ',
 'tog-enotifrevealaddr' => 'ಪ್ರಕಟಣೆ ಇ-ಮೇಲ್’ಡ್ ಎನ್ನ ಇ-ಮೇಲ್ ವಿಳಾಸನ್ ತೊಜ್ಪಾಲೆ',
 'tog-shownumberswatching' => 'ಪುಟೊನು ತೂವೊಂದುಪ್ಪುನಂಚಿನ ಸದಸ್ಯೆರ್’ನ ಸಂಖ್ಯೆನ್ ತೊಜ್ಪಾಲೆ',
@@ -215,7 +215,7 @@ $messages = array(
 'talk' => 'ಚರ್ಚೆ',
 'views' => 'ನೋಟಲು',
 'toolbox' => 'ಉಪಕರಣ(ಟೂಲ್)',
-'wiki_userpage' => 'ಸದಸ್ಯೆರ್ನ ಪುಟೊನು ತೂಲೆ',
+'userpage' => 'ಸದಸ್ಯೆರ್ನ ಪುಟೊನು ತೂಲೆ',
 'projectpage' => 'ಪ್ರೊಜೆಕ್ಟ್ ಪುಟೊನು ತೂಲೆ',
 'imagepage' => 'ಮೀಡಿಯ ಪುಟೊನು ತೂಲೆ',
 'mediawikipage' => 'ಸಂದೇಶ ಪುಟೊನು ತೂಲೆ',
@@ -234,7 +234,7 @@ $messages = array(
 'jumptosearch' => 'ನಾಡ್’ಲೆ',
 'pool-errorunknown' => 'ಗೊತ್ತಿಂಜಂದಿನ  ದೋಷ',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} ದ ಬಗ್ಗೆ',
 'aboutpage' => 'Project:ನಮ್ಮ ಬಗ್ಗೆ',
 'copyright' => 'ಉಂದು ಈ ಕಾಪಿರೈಟ್‌ಡ್ ಲಭ್ಯವುಂಡು $1.',
@@ -298,7 +298,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'ಪುಟ',
-'nstab-wiki_user' => 'ಸದಸ್ಯೆರ್ನ ಪುಟ',
+'nstab-user' => 'ಸದಸ್ಯೆರ್ನ ಪುಟ',
 'nstab-media' => 'ಮೀಡಿಯ ಪುಟ',
 'nstab-special' => 'ವಿಶೇಷ ಪುಟ',
 'nstab-project' => 'ಪ್ರೊಜೆಕ್ಟ್ ಪುಟ',
@@ -325,7 +325,7 @@ $messages = array(
 ಡಿಲೀಟ್ ಮಲ್ತಿನ ಪುಟೊಕು ಸಂಪರ್ಕ ಕೊರ್ಪುನ ಇತಿಹಾಸ ಲಿಂಕ್ ಅತ್ತ್’ನ್ಡ ವ್ಯತ್ಯಾಸ ಲಿಂಕ್’ನ್ ಒತ್ತುನೆರ್ದಾದ್ ಈ ದೋಷ ಸಾಧಾರಣವಾದ್ ಬರ್ಪುಂಡು.
 
 ಒಂಜಿ ವೇಳೆ ಅಂಚ ಆದಿಜ್ಜಿಂಡ, ಉಂದು ಒಂಜಿ ಸಾಫ್ಟ್-ವೇರ್ ದೋಷ ಆದುಪ್ಪು.
-ಇಂದೆನ್  [[Special:Listwiki_users/sysop|ವಿಕಿ-ಅಧಿಕಾರಿಗ್]] ತೆರಿಪಾಲೆ.',
+ಇಂದೆನ್  [[Special:ListUsers/sysop|ವಿಕಿ-ಅಧಿಕಾರಿಗ್]] ತೆರಿಪಾಲೆ.',
 'missingarticle-rev' => '(ಮರು-ಆವೃತ್ತಿ#: $1)',
 'internalerror' => 'ಆ೦ತರಿಕ ದೋಷ',
 'internalerror_info' => 'ಆಂತರಿಕ ದೋಷ: $1',
@@ -369,21 +369,21 @@ $messages = array(
 'yourdomainname' => 'ಈರೆನ ಕಾರ್ಯಕ್ಷೇತ್ರ',
 'login' => 'ಲಾಗ್ ಇನ್',
 'nav-login-createaccount' => 'ಲಾಗ್-ಇನ್ / ಅಕೌಂಟ್ ಸೃಷ್ಟಿ ಮಲ್ಪುಲೆ',
-'wiki_userlogin' => 'ಲಾಗ್-ಇನ್ / ಅಕೌಂಟ್ ಸೃಷ್ಟಿ ಮಲ್ಪುಲೆ',
-'wiki_userloginnocreate' => 'ಲಾಗಿನ್ ಆಲೆ',
+'userlogin' => 'ಲಾಗ್-ಇನ್ / ಅಕೌಂಟ್ ಸೃಷ್ಟಿ ಮಲ್ಪುಲೆ',
+'userloginnocreate' => 'ಲಾಗಿನ್ ಆಲೆ',
 'logout' => 'ಲಾಗ್ ಔಟ್',
-'wiki_userlogout' => 'ಲಾಗ್ ಔಟ್',
+'userlogout' => 'ಲಾಗ್ ಔಟ್',
 'notloggedin' => 'ಲಾಗಿನ್ ಆತ್‘ಜ್ಜರ್',
 'nologin' => "ಈರೆನ ಖಾತೆ ಇಜ್ಜೇ?'''$1'''",
 'nologinlink' => 'ಪೊಸ ಖಾತೆ ಸುರು ಮಲ್ಪುಲೆ',
 'createaccount' => 'ಪೊಸ ಅಕ್ಕೌಂಟ್ ಸುರು ಮಲ್ಪುಲೆ',
 'gotaccount' => "ಈರೆನ ಖಾತೆ ಉಂಡೇ?'''$1'''",
 'gotaccountlink' => 'ಲಾಗಿನ್ ಆಲೆ',
-'wiki_userlogin-resetlink' => 'ಈರೆನ ಲಾಗಿನ್ ವಿವರ ಮರತ್ತ್ಂಡೇ?',
+'userlogin-resetlink' => 'ಈರೆನ ಲಾಗಿನ್ ವಿವರ ಮರತ್ತ್ಂಡೇ?',
 'createaccountmail' => 'ಇ ಮೈಲ್ ಮೂಲಕ',
 'createaccountreason' => 'ಕಾರಣ',
 'badretype' => 'ಈರ್ ಕೊರ್ನ ಪ್ರವೇಶ ಪದೆ ಬೇತೆ ಬೇತೆ ಅತ್ಂಡ್',
-'wiki_userexists' => 'ಈರ್ ಕೊರ್ನ ಸದಸ್ಯರ ಪುದರ್ ಬಳಕೆಡ್ ಉಂಡು. ದಯದೀದ್ ಬೇತೆ ಪುದರ್ ಕೊರ್ಲೆ',
+'userexists' => 'ಈರ್ ಕೊರ್ನ ಸದಸ್ಯರ ಪುದರ್ ಬಳಕೆಡ್ ಉಂಡು. ದಯದೀದ್ ಬೇತೆ ಪುದರ್ ಕೊರ್ಲೆ',
 'loginerror' => 'ಲಾಗಿನ್ ದೋಷ',
 'createaccounterror' => 'ಖಾತೆ ಸುರುಮಲ್ಪರೆ ಸಾದ್ಯ ಅವೊಂದಿಜ್ಜಿ',
 'nocookiesnew' => 'ಈರೆನ ಬಳಕೆದಾರ ಖಾತೆ ಸೄಷ್ಟಿ ಅತ್ಂಡ್. ಆಂಡ ಈರ್ ಲಾಗ್ ಇನ್ ಆತ್‘ಜ್ಜರ್.
@@ -398,10 +398,10 @@ $messages = array(
 'noname' => 'ಈರ್ ಸರಿಯಾಯಿನ ಬಳಕೆದಾರ ಪುದರ್ ಕೊರ್ತಿಜ್ಜರ್.',
 'loginsuccesstitle' => 'ಲಾಗ್ ಇನ್ ಯಶಸ್ವಿಯಾತ್‘ಂಡ್',
 'loginsuccess' => 'ಲಾಗ್ ಇನ್ ಯಶಸ್ವಿಯಾತ್‘ಂಡ್". {{SITENAME}}  "$1".\'\'\'',
-'nosuchwiki_user' => '!!"$1"ಪುದರ್‘ದ ವಾ ಸದಸ್ಯೆರ್‘ಲಾ ಇಜ್ಜೆರ್, ಅಕ್ಷರ ಸರಿಯಾದ ತೂಲೆ ಅಥವಾ  [[Special:wiki_userLogin/signup|ಪೊಸ ಸದಸ್ಯತ್ವ  ಖಾತೆನ್ ಸೃಷ್ಟಿ ಮಲ್ಪುಲೆ]].',
-'nosuchwiki_usershort' => '!!"$1"ಪುದರ್‘ದ ವಾ ಸದಸ್ಯೆರ್‘ಲಾ ಇಜ್ಜೆರ್, ಅಕ್ಷರ ಸರಿಯಾದ ತೂಲೆ.',
-'nowiki_userspecified' => 'ಈರ್ ಒಂಜಿ ಸದಸ್ಯತ್ವದ ಪುದರ್ ಸೂಚನೆ ಮಲ್ಪೊಡು.',
-'login-wiki_userblocked' => 'ಈ ಸದಸ್ಯರೆನ ಖಾತೆನ್ ತಡೆ ಪತ್ತ್‘ದುಂಡು. ಲಾಗ್ ಇನ್ ಮಲ್ಪರೆ ಆಪುಜ್ಜಿ.',
+'nosuchuser' => '!!"$1"ಪುದರ್‘ದ ವಾ ಸದಸ್ಯೆರ್‘ಲಾ ಇಜ್ಜೆರ್, ಅಕ್ಷರ ಸರಿಯಾದ ತೂಲೆ ಅಥವಾ  [[Special:UserLogin/signup|ಪೊಸ ಸದಸ್ಯತ್ವ  ಖಾತೆನ್ ಸೃಷ್ಟಿ ಮಲ್ಪುಲೆ]].',
+'nosuchusershort' => '!!"$1"ಪುದರ್‘ದ ವಾ ಸದಸ್ಯೆರ್‘ಲಾ ಇಜ್ಜೆರ್, ಅಕ್ಷರ ಸರಿಯಾದ ತೂಲೆ.',
+'nouserspecified' => 'ಈರ್ ಒಂಜಿ ಸದಸ್ಯತ್ವದ ಪುದರ್ ಸೂಚನೆ ಮಲ್ಪೊಡು.',
+'login-userblocked' => 'ಈ ಸದಸ್ಯರೆನ ಖಾತೆನ್ ತಡೆ ಪತ್ತ್‘ದುಂಡು. ಲಾಗ್ ಇನ್ ಮಲ್ಪರೆ ಆಪುಜ್ಜಿ.',
 'wrongpassword' => 'ತಪ್ಪು ಪ್ರವೇಶ ಪದ ಕೊರ್ತರ್. ನನ ಒರ ಪ್ರಯತ್ನ ಮಲ್ಪುಲೆ.',
 'wrongpasswordempty' => 'ಖಾಲಿ ಪ್ರವೇಶ ಪದ ಕೊರ್ತರ್. ನನ ಒರ ಪ್ರಯತ್ನ ಮಲ್ಪುಲೆ.',
 'passwordtooshort' => 'ಪ್ರವೇಶ ಪದಟ್ ಕನಿಷ್ಟ {{PLURAL:$1|೧ ಅಕ್ಷರ|$1 ಅಕ್ಷರರೊಳೆನ್}} ಉಪ್ಪೊಡ್',
@@ -431,7 +431,7 @@ $messages = array(
 
 # Special:PasswordReset
 'passwordreset' => 'ಪ್ರವೇಶ ಪದನ್ ರಿಸೆಟ್ ಮಲ್ಪುಲೆ',
-'passwordreset-wiki_username' => 'ಸದಸ್ಯೆರ್ನ ಪುದರ್:',
+'passwordreset-username' => 'ಸದಸ್ಯೆರ್ನ ಪುದರ್:',
 'passwordreset-email' => 'ಇ-ಅಂಚೆ ವಿಳಾಸೊ',
 
 # Special:ChangeEmail
@@ -484,7 +484,7 @@ $messages = array(
 (ಜಾಸ್ತಿ ಮಾಹಿತಿಗ್ [[{{MediaWiki:Helppage}}|ಸಹಾಯ ಪುಟೊನು]] ತೂಲೆ).
 ಈ ಪುಟೊಕು ಈರ್ ತಪ್ಪಾದ್ ಬತ್ತಿತ್ತ್’ನ್ಡ ಇರೆನ ಬ್ರೌಸರ್’ದ '''back''' ಬಟನ್’ನ್ ಒತ್ತ್’ಲೆ.",
 'noarticletext' => 'ಈ ಪುಟೊಟು ಸದ್ಯಗ್ ಓ ಬರಹಲಾ ಇಜ್ಜಿ, ಈರ್ ಬೇತೆ ಪೂಟೊಲೆಡ್ [[Special:Search/{{PAGENAME}}|ಈ ಲೇಖನೊನು ನಾಡೊಲಿ]] ಅತ್ತ್’ನ್ಡ [{{fullurl:{{FULLPAGENAME}}|action=edit}} ಈ ಪುಟೊನು ಸಂಪಾದನೆ ಮಲ್ಪೊಲಿ].',
-'wiki_userpage-wiki_userdoesnotexist' => 'ಬಳಕೆದಾರ ಖಾತೆ "<nowiki>$1</nowiki>" ದಾಖಲಾತ್‘ಜ್ಜಿ. ಈರ್ ಉಂದುವೇ ಪುಟನ್ ಸಂಪಾದನೆ ಮಲ್ಪರ ಉಂಡಾಂದ್ ಖಾತ್ರಿ ಮಲ್ತೊನಿ.',
+'userpage-userdoesnotexist' => 'ಬಳಕೆದಾರ ಖಾತೆ "<nowiki>$1</nowiki>" ದಾಖಲಾತ್‘ಜ್ಜಿ. ಈರ್ ಉಂದುವೇ ಪುಟನ್ ಸಂಪಾದನೆ ಮಲ್ಪರ ಉಂಡಾಂದ್ ಖಾತ್ರಿ ಮಲ್ತೊನಿ.',
 'previewnote' => "'''ಉಂದು ಕೇವಲ ಮುನ್ನೋಟ; ಪುಟೊನು ನನಲ ಒರಿಪಾದಿಜಿ ಪನ್ಪುನೇನ್ ಮರಪೊರ್ಚಿ!'''",
 'editing' => '$1 ಲೇಖನೊನು ಈರ್ ಸಂಪಾದನೆ ಮಲ್ತೊಂದುಲ್ಲರ್',
 'editingsection' => '$1 (ವಿಭಾಗೊನು) ಸಂಪಾದನೆ ಮಲ್ತೊಂದುಲ್ಲರ್',
@@ -613,7 +613,7 @@ $messages = array(
 'timezoneregion-australia' => 'ಆಸ್ಟ್ರೇಲಿಯಾ',
 'prefs-files' => 'ಕಡತೊಲು',
 'youremail' => 'ಇ-ಅಂಚೆ',
-'wiki_username' => 'ಸದಸ್ಯೆರ್ನ ಪುದರ್:',
+'username' => 'ಸದಸ್ಯೆರ್ನ ಪುದರ್:',
 'uid' => 'ಸದಸ್ಯೆರನ  ID',
 'yourrealname' => 'ನಿಜವಾಯಿನ ಪುದರ್',
 'yourlanguage' => 'ಭಾಷೆ:',
@@ -627,7 +627,7 @@ $messages = array(
 
 # Groups
 'group' => 'ಗುಂಪುಲು:',
-'group-wiki_user' => 'ಬಳಕೆದಾರೆರ್',
+'group-user' => 'ಬಳಕೆದಾರೆರ್',
 'group-sysop' => 'ನಿರ್ವಾಹಕೆರ್',
 'group-all' => 'ಮಾತಾ',
 
@@ -639,7 +639,7 @@ $messages = array(
 'right-delete' => 'ಪುಟೊಕುಲೆನ್ ಮಾಜಾಲೆ',
 'right-undelete' => 'ಪುಟೊನ್ ಮಾಜಾವಡೆ',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'ಸದಸ್ಯೆರ್ನ ಹಕ್ಕು ದಾಖಲೆ',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -725,7 +725,7 @@ $messages = array(
 'filehist-datetime' => 'ದಿನ/ಪೊರ್ತು',
 'filehist-thumb' => 'ಥಂಬ್-ನೈಲ್',
 'filehist-thumbtext' => '$1 ತ ಲೆಕ್ಕ ಆವೃತ್ತಿದ ತಂಬ್-ನೈಲ್',
-'filehist-wiki_user' => 'ಸದಸ್ಯೆ',
+'filehist-user' => 'ಸದಸ್ಯೆ',
 'filehist-dimensions' => 'ಆಯಾಮೊಲು',
 'filehist-filesize' => 'ಫೈಲ್’ದ ಗಾತ್ರ',
 'filehist-comment' => 'ಕಮೆಂಟ್',
@@ -751,9 +751,9 @@ $messages = array(
 'nmembers' => '$1 {{PLURAL:$1|ಸದಸ್ಯೆ|ಸದಸ್ಯೆರ್}}',
 'wantedfiles' => 'ಬೋಡಾಯಿನ ಕಡತೊಲು',
 'prefixindex' => 'ಪೂರ್ವನಾಮೊಲ್ದ ಸೂಚಿಕೆ',
-'listwiki_users' => 'ಬಳಕೆದಾರರೆನ ತಖ್ತೆ',
+'listusers' => 'ಬಳಕೆದಾರರೆನ ತಖ್ತೆ',
 'newpages' => 'ಪೊಸ ಪುಟೊಲು',
-'newpages-wiki_username' => 'ಸದಸ್ಯೆರ್ನ ಪುದರ್:',
+'newpages-username' => 'ಸದಸ್ಯೆರ್ನ ಪುದರ್:',
 'move' => 'ಮೂವ್(ಸ್ಥಳಾಂತರ) ಮಲ್ಪುಲೆ',
 'movethispage' => 'ಈ ಪುಟೊನು ಮೂವ್ ಮಲ್ಪುಲೆ',
 'pager-newer-n' => '{{PLURAL:$1|ಪೊಸ ೧|ಪೊಸ $1}}',
@@ -775,14 +775,14 @@ $messages = array(
 'allarticles' => 'ಪೂರಾ ಲೇಖನೊಲು',
 'allpagessubmit' => 'ಪೋ',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'ಸದಸ್ಯ ರಚನೆ ಲಾಗ್',
+# Special:Log/newusers
+'newuserlogpage' => 'ಸದಸ್ಯ ರಚನೆ ಲಾಗ್',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(ಸದಸ್ಯೆರ್ನ ಪಟ್ಟಿ)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'ಈ ಸದಸ್ಯೆರೆಗ್ ಇ-ಮೈಲ್ ಕಡಪುಡ್ಲೆ',
+# E-mail user
+'emailuser' => 'ಈ ಸದಸ್ಯೆರೆಗ್ ಇ-ಮೈಲ್ ಕಡಪುಡ್ಲೆ',
 
 # Watchlist
 'watchlist' => 'ವೀಕ್ಷಣಾ ಪಟ್ಟಿ',
@@ -831,7 +831,7 @@ $messages = array(
 'sp-contributions-logs' => 'ದಾಖಲೆಲು',
 'sp-contributions-talk' => 'ಪಾತೆರ',
 'sp-contributions-search' => 'ಕಾಣಿಕೆಲೆನ್ ನಾಡ್ಲೆ',
-'sp-contributions-wiki_username' => 'ಐ.ಪಿ ವಿಳಾಸ ಅತ್ತ್’ನ್ಡ ಬಳಕೆದ ಪುದರ್:',
+'sp-contributions-username' => 'ಐ.ಪಿ ವಿಳಾಸ ಅತ್ತ್’ನ್ಡ ಬಳಕೆದ ಪುದರ್:',
 'sp-contributions-submit' => 'ನಾಡ್',
 
 # What links here
@@ -879,7 +879,7 @@ $messages = array(
 'thumbnail_error' => 'ಮುನ್ನೋಟ ಚಿತ್ರೊನು ಸೃಷ್ಟಿ ಮನ್ಪುನಗ ದೋಷ: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'ಎನ್ನ ಸದಸ್ಯ ಪುಟ',
+'tooltip-pt-userpage' => 'ಎನ್ನ ಸದಸ್ಯ ಪುಟ',
 'tooltip-pt-mytalk' => 'ಎನ್ನ ಚರ್ಚೆ ಪುಟ',
 'tooltip-pt-preferences' => 'ಎನ್ನ ಇಷ್ಟೊಲು',
 'tooltip-pt-watchlist' => 'ಈರ್ ಬದಲಾವಣೆಗಾದ್ ನಿಗಾ ದೀತಿನಂಚಿನ ಪುಟೊಲ್ದ ಪಟ್ಟಿ',
@@ -913,13 +913,13 @@ $messages = array(
 'tooltip-feed-rss' => 'ಈ ಪುಟೊಗು ಆರ್.ಎಸ್.ಎಸ್ ಫೀಡ್',
 'tooltip-feed-atom' => 'ಈ ಪುಟೊಗು Atom ಫೀಡ್',
 'tooltip-t-contributions' => 'ಈ ಸದಸ್ಯೆರ್ನ ಕಾಣಿಕೆಲ್ದ ಪಟ್ಟಿನ್ ತೊಜ್ಪಾವು',
-'tooltip-t-emailwiki_user' => 'ಈ ಸದಸ್ಯೆರೆಗ್ ಇ-ಮೇಲ್ ಕಡಪುಡ್ಲೆ',
+'tooltip-t-emailuser' => 'ಈ ಸದಸ್ಯೆರೆಗ್ ಇ-ಮೇಲ್ ಕಡಪುಡ್ಲೆ',
 'tooltip-t-upload' => 'ಫೈಲ್’ನ್ ಅಪ್ಲೋಡ್ ಮಲ್ಪುಲೆ',
 'tooltip-t-specialpages' => 'ಪೂರ ವಿಷೇಶ ಪುಟೊಲ್ದ ಪಟ್ಟಿ',
 'tooltip-t-print' => 'ಈ ಪುಟೊತ ಪ್ರಿಂಟ್ ಆವೃತ್ತಿ',
 'tooltip-t-permalink' => 'ಪುಟೊತ ಈ ಆವೃತ್ತಿಗ್ ಶಾಶ್ವತ ಲಿಂಕ್',
 'tooltip-ca-nstab-main' => 'ಮಾಹಿತಿ ಪುಟೊನು ತೂಲೆ',
-'tooltip-ca-nstab-wiki_user' => 'ಸದಸ್ಯೆರ್ನ ಪುಟೊನು ತೂಲೆ',
+'tooltip-ca-nstab-user' => 'ಸದಸ್ಯೆರ್ನ ಪುಟೊನು ತೂಲೆ',
 'tooltip-ca-nstab-special' => 'ಉಂದೊಂಜಿ ವಿಶೇಷ ಪುಟ, ಇಂದೆನ್ ಈರ್ ಎಡಿಟ್ ಮಲ್ಪೆರೆ ಆಪುಜಿ',
 'tooltip-ca-nstab-project' => 'ಪ್ರೊಜೆಕ್ಟ್ ಪುಟೊನು ತೂಲೆ',
 'tooltip-ca-nstab-image' => 'ಫೈಲ್’ದ ಪುಟೊನು ತೂಲೆ',

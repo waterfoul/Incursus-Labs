@@ -184,12 +184,12 @@ abstract class Action {
 	}
 
 	/**
-	 * Shortcut to get the wiki_user being used for this instance
+	 * Shortcut to get the User being used for this instance
 	 *
-	 * @return wiki_user
+	 * @return User
 	 */
-	public final function getwiki_user() {
-		return $this->getContext()->getwiki_user();
+	public final function getUser() {
+		return $this->getContext()->getUser();
 	}
 
 	/**
@@ -202,7 +202,7 @@ abstract class Action {
 	}
 
 	/**
-	 * Shortcut to get the wiki_user Language being used for this instance
+	 * Shortcut to get the user Language being used for this instance
 	 *
 	 * @return Language
 	 */
@@ -211,7 +211,7 @@ abstract class Action {
 	}
 
 	/**
-	 * Shortcut to get the wiki_user Language being used for this instance
+	 * Shortcut to get the user Language being used for this instance
 	 *
 	 * @deprecated 1.19 Use getLanguage instead
 	 * @return Language
@@ -267,29 +267,29 @@ abstract class Action {
 	}
 
 	/**
-	 * Checks if the given wiki_user (identified by an object) can perform this action.  Can be
+	 * Checks if the given user (identified by an object) can perform this action.  Can be
 	 * overridden by sub-classes with more complicated permissions schemes.  Failures here
 	 * must throw subclasses of ErrorPageError
 	 *
-	 * @param $wiki_user wiki_user: the wiki_user to check, or null to use the context wiki_user
+	 * @param $user User: the user to check, or null to use the context user
 	 * @throws ErrorPageError
 	 * @return bool True on success
 	 */
-	protected function checkCanExecute( wiki_user $wiki_user ) {
+	protected function checkCanExecute( User $user ) {
 		$right = $this->getRestriction();
 		if ( $right !== null ) {
-			$errors = $this->getTitle()->getwiki_userPermissionsErrors( $right, $wiki_user );
+			$errors = $this->getTitle()->getUserPermissionsErrors( $right, $user );
 			if ( count( $errors ) ) {
 				throw new PermissionsError( $right, $errors );
 			}
 		}
 
-		if ( $this->requiresUnblock() && $wiki_user->isBlocked() ) {
-			$block = $wiki_user->getBlock();
-			throw new wiki_userBlockedError( $block );
+		if ( $this->requiresUnblock() && $user->isBlocked() ) {
+			$block = $user->getBlock();
+			throw new UserBlockedError( $block );
 		}
 
-		// This should be checked at the end so that the wiki_user won't think the
+		// This should be checked at the end so that the user won't think the
 		// error is only temporary when he also don't have the rights to execute
 		// this action
 		if ( $this->requiresWrite() && wfReadOnly() ) {
@@ -307,7 +307,7 @@ abstract class Action {
 	}
 
 	/**
-	 * Whether this action can still be executed by a blocked wiki_user
+	 * Whether this action can still be executed by a blocked user
 	 * @return Bool
 	 */
 	public function requiresUnblock() {
@@ -445,7 +445,7 @@ abstract class FormAction extends Action {
 		$this->setHeaders();
 
 		// This will throw exceptions if there's a problem
-		$this->checkCanExecute( $this->getwiki_user() );
+		$this->checkCanExecute( $this->getUser() );
 
 		$form = $this->getForm();
 		if ( $form->show() ) {
@@ -466,7 +466,7 @@ abstract class FormAction extends Action {
 			$this->context = clone $this->page->getContext();
 
 			// This will throw exceptions if there's a problem
-			$this->checkCanExecute( $this->getwiki_user() );
+			$this->checkCanExecute( $this->getUser() );
 
 			$fields = array();
 			foreach ( $this->fields as $key => $params ) {
@@ -536,7 +536,7 @@ abstract class FormlessAction extends Action {
 		$this->setHeaders();
 
 		// This will throw exceptions if there's a problem
-		$this->checkCanExecute( $this->getwiki_user() );
+		$this->checkCanExecute( $this->getUser() );
 
 		$this->getOutput()->addHTML( $this->onView() );
 	}
@@ -557,7 +557,7 @@ abstract class FormlessAction extends Action {
 			}
 
 			// This will throw exceptions if there's a problem
-			$this->checkCanExecute( $this->getwiki_user() );
+			$this->checkCanExecute( $this->getUser() );
 
 			$this->onView();
 			return true;

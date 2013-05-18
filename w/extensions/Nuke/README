@@ -11,6 +11,6 @@ It was written by Brion Vibber in September 2005. It is running on all Wikimedia
 === Feature overview ===
 
 * Mass deletion of recently added pages via Special:Nuke.
-** Filter by wiki_username or IP.
+** Filter by username or IP.
 ** Filter by page name pattern.
 ** Limit size of the batch of pages you delete.

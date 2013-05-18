@@ -13,7 +13,7 @@
  */
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Kuritan sa idalum ang mga link',
 'tog-justify' => 'Tadlungon ang mga talata',
 'tog-hideminor' => 'Itago ang mga gamay nga ginliwat sang mini lang ginbag-o',
@@ -37,7 +37,7 @@ $messages = array(
 'tog-previewonfirst' => 'Ipakita ang prebyu sa una nga pag-ilis',
 'tog-nocache' => 'Indi pagpaganahon ang pagcache sang pahina',
 'tog-enotifwatchlistpages' => 'Padal-an ako sang email kung ang pahina sa akon ginabanatayan nagbag-o',
-'tog-enotifwiki_usertalkpages' => 'Padal-an ako sang email kung ginbag-o ang akon nga pahina sang istoryahanay',
+'tog-enotifusertalkpages' => 'Padal-an ako sang email kung ginbag-o ang akon nga pahina sang istoryahanay',
 'tog-enotifminoredits' => 'Padal-an man ako sang email sa mga gamay nga pag-ilis sang mini nga pahina',
 'tog-enotifrevealaddr' => 'Ipakita ang address sang akon email sa notipikasyon sang mga email',
 'tog-shownumberswatching' => 'Ipakita ang mga numero sang mga gatan-aw nga manug-usar',
@@ -219,7 +219,7 @@ $messages = array(
 'talk' => 'Diskusyon',
 'views' => 'Mga dagway',
 'toolbox' => 'Mga galamiton',
-'wiki_userpage' => 'Tan-awon ang pahina sang manug-usar',
+'userpage' => 'Tan-awon ang pahina sang manug-usar',
 'projectpage' => 'Tan-awon ang pahina sang proyekto',
 'imagepage' => 'Tan-awon ang pahina sang file',
 'mediawikipage' => 'Tan-awon ang pahina sang mensahe',
@@ -245,7 +245,7 @@ $1',
 'pool-queuefull' => 'Puno na ang pisan sang mga pila',
 'pool-errorunknown' => 'Wala nabal-an nga kasal-anan',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Tuhoy sa {{SITENAME}}',
 'aboutpage' => 'Project:Nahanungod sa',
 'copyright' => 'Ang unod bakante sa idalum sang $1',
@@ -306,7 +306,7 @@ Tan-awon ang [[Special:Version|pahina sang bersyon]].',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Pahina',
-'nstab-wiki_user' => 'Pahina sang manug-usar',
+'nstab-user' => 'Pahina sang manug-usar',
 'nstab-media' => 'Pahina sang midya',
 'nstab-special' => 'Pinasahi nga pahina',
 'nstab-project' => 'Pahina sang katuyuan',
@@ -351,7 +351,7 @@ Naghatag sang mini nga rason ang tagadumala nga nagkandado sini: $1',
 Kinaandan tungod ini sa pagsunod sa isa ka wala sa panahon nga kinatuhay ukon tabid nga pangkasaysayan sa isa ka pahina nga napaksi.
 
 Kung indi mini ang kaso, ayhan nakakita ikaw sang depekto sa software.
-Palihog isugid ini sa isa ka [[Special:Listwiki_users/sysop|administrator]], samtang ginahatag ang URL.',
+Palihog isugid ini sa isa ka [[Special:ListUsers/sysop|administrator]], samtang ginahatag ang URL.',
 'missingarticle-rev' => '(pagbag-o#: $1)',
 'missingarticle-diff' => '(Ginkala-in: $1, $2)',
 'readonly_lag' => 'Otomatiko nga ginkandaduhan samtang ang serbidor sang alila nga database ginakwa pakadto sa pinakapuno',
@@ -397,7 +397,7 @@ Para sa mga pagtransleyt, palihog konsidera gamit ang [http://translatewiki.net/
 $2',
 'namespaceprotected' => "Wala ka sang permiso nga magliwat sang mga pahina nga ara sa namespace nga '''$1'''.",
 'ns-specialprotected' => 'Indi pwede bag-uhon ang mga pinasahi nga pahina.',
-'titleprotected' => 'Naprotektahan ang mini nga titulo halin sa pag-ubra ni [[wiki_user:$1|$1]].
+'titleprotected' => 'Naprotektahan ang mini nga titulo halin sa pag-ubra ni [[User:$1|$1]].
 Mini ang ginhatag nga kabangdanan "\'\'$2\'\'".',
 
 # Virus scanner
@@ -408,12 +408,12 @@ Mini ang ginhatag nga kabangdanan "\'\'$2\'\'".',
 # Login and logout pages
 'logouttext' => "'''Nakagwa ka na.'''
 
-Pwede mo mapadayon usar ang {{SITENAME}}, ukon pwede ka [[Special:wiki_userLogin|lmagsulod liwat]] bilang pareho ukon la-in nga manug-usar.
+Pwede mo mapadayon usar ang {{SITENAME}}, ukon pwede ka [[Special:UserLogin|lmagsulod liwat]] bilang pareho ukon la-in nga manug-usar.
 Tandaan nga ang iban nga pahina magapadayon nga ipakita nga nakasulod ka man gyapon kuno abi, asta panason mo ang cache sang imo browser.",
 'welcomecreation' => '==Malipayon nga pag-abot, $1! ==
 Nahimo na ang imo account.
 Indi pagkalimtan nga islan ang imo [[Special:Preferences|mga uyon mo sa {{SITENAME}}]].',
-'yourname' => 'Hayo (wiki_username):',
+'yourname' => 'Hayo (username):',
 'yourpassword' => 'Password:',
 'yourpasswordagain' => 'Liwata ka pindot ang password:',
 'remembermypassword' => 'Dumduma ang pagsulod ko sa mini nga kompyuter (pinakadamu na ang $1 {{PLURAL:$1|adlaw|mga adlaw}})',
@@ -421,10 +421,10 @@ Indi pagkalimtan nga islan ang imo [[Special:Preferences|mga uyon mo sa {{SITENA
 'login' => 'Mag sulod',
 'nav-login-createaccount' => 'Magsulod / mag-ubra sang account',
 'loginprompt' => 'Dapat nakabukas ang cookies para makasulod sa {{SITENAME}}.',
-'wiki_userlogin' => 'Mag sulod / mag-ubra account',
-'wiki_userloginnocreate' => 'Magsulod',
+'userlogin' => 'Mag sulod / mag-ubra account',
+'userloginnocreate' => 'Magsulod',
 'logout' => 'Maggwa',
-'wiki_userlogout' => 'Maggwa',
+'userlogout' => 'Maggwa',
 'notloggedin' => 'Wala nakasulod',
 'nologin' => "Wala ka account? '''$1'''.",
 'nologinlink' => 'Mag-ubra account',
@@ -433,12 +433,12 @@ Indi pagkalimtan nga islan ang imo [[Special:Preferences|mga uyon mo sa {{SITENA
 'gotaccountlink' => 'Magsulod',
 'createaccountmail' => 'Paagi sa email',
 'badretype' => 'Wala gasanto ang password nga imo ginsulod',
-'wiki_userexists' => 'May naga-usar na sang ginpasulod nga ngalan manug-usar.
+'userexists' => 'May naga-usar na sang ginpasulod nga ngalan manug-usar.
 Magpili sang iban nga ngalan.',
 'loginerror' => 'Sala sa pagsulod',
 'createaccounterror' => 'Indi mahimo ang acount nga: $1',
 'noname' => 'Wala mo nahatag ang tsakto nga ngalan sang manug-usar.',
-'nowiki_userspecified' => 'Kinanglan mo ihatag sang insakto ang ngalan sang manug-usar.',
+'nouserspecified' => 'Kinanglan mo ihatag sang insakto ang ngalan sang manug-usar.',
 'wrongpassword' => 'Sala nga pagsulod sang password.
 Palihog tistingan liwat.',
 'wrongpasswordempty' => 'Wala unod ang password nga ginsulod.
@@ -456,7 +456,7 @@ Palihog tistingan liwat.',
 'accountcreated' => 'Nahimo na ang account',
 'accountcreatedtext' => 'Nahimo na ang acount sang manug-usar para kay $1.',
 'createaccount-title' => 'Paghimo sang account para sa {{SITENAME}}',
-'wiki_usernamehasherror' => 'Ang ngalan sang manug-usar indi dapat mag-unod sang mga labay-labay nga mga karakter.',
+'usernamehasherror' => 'Ang ngalan sang manug-usar indi dapat mag-unod sang mga labay-labay nga mga karakter.',
 'loginlanguagelabel' => 'Lingguahe:',
 
 # Change password dialog
@@ -611,7 +611,7 @@ Tistingan mo i-prefiks ang imo pamangkot upod sang ''tanan:'' para makita mo ang
 
 'grouppage-sysop' => '{{ns:project}}:Mga manugdumala',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Lista sang mga karapatan sang manug-usar',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -669,7 +669,7 @@ Tistingan mo i-prefiks ang imo pamangkot upod sang ''tanan:'' para makita mo ang
 'filehist-datetime' => 'Petsa/Oras',
 'filehist-thumb' => 'Thumbnail',
 'filehist-thumbtext' => 'Thumbnail para sa bersyon halin sang $1',
-'filehist-wiki_user' => 'Naga-usar',
+'filehist-user' => 'Naga-usar',
 'filehist-dimensions' => 'Mga takus',
 'filehist-comment' => 'Kumento',
 'imagelinks' => 'Pag-usar sang akta',
@@ -718,14 +718,14 @@ Ang paglarawan nga yara sa ibabaw sang [$2 pahina sang paglarawan sang akta] sin
 # Special:LinkSearch
 'linksearch' => 'Panggwa nga mga link',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Listahan sang pag-ubra sang manug-usar',
+# Special:Log/newusers
+'newuserlogpage' => 'Listahan sang pag-ubra sang manug-usar',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(lista sang mga myembro)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'I-email mini nga naga-usar',
+# E-mail user
+'emailuser' => 'I-email mini nga naga-usar',
 
 # Watchlist
 'watchlist' => 'Mga akon ginabantayan',
@@ -804,7 +804,7 @@ Pwede mo mabag-o ang lebel sang proteksiyon sang mini nga pahina, pero indi ma-a
 'sp-contributions-newbies' => 'Ipakita lang gid ang mga kontribusyon sang mga bag-o nga account',
 'sp-contributions-blocklog' => 'Lista sang pagbangga',
 'sp-contributions-search' => 'Mangita sang mga nabulig',
-'sp-contributions-wiki_username' => 'IP address ukon hayo (wiki_username):',
+'sp-contributions-username' => 'IP address ukon hayo (username):',
 'sp-contributions-submit' => 'Pangita-on',
 
 # What links here
@@ -826,7 +826,7 @@ Pwede mo mabag-o ang lebel sang proteksiyon sang mini nga pahina, pero indi ma-a
 # Block/unblock
 'blockip' => 'Punggan ang naga-usar',
 'ipboptions' => '2 oras:2 hours,1 adlaw:1 day,3 adlaw:3 days,1 semana:1 week,2 semana:2 weeks,1 bulan:1 month,3 bulan:3 months,6 bulan:6 months,1 tu-ig:1 year,wala katapusan:infinite',
-'ipblocklist' => 'Napunggan nga mga IP Address kag mga bansag (wiki_usernames)',
+'ipblocklist' => 'Napunggan nga mga IP Address kag mga bansag (usernames)',
 'blocklink' => 'lipdan/banggaan',
 'unblocklink' => 'kuhaon ang paglipod',
 'change-blocklink' => 'pagbag-o sang lipod',
@@ -877,7 +877,7 @@ Palihog pakikombinar sa ila sang manomano.'''",
 'thumbnail-more' => 'Padaku-on',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Ang imo kaugalingon nga pahina',
+'tooltip-pt-userpage' => 'Ang imo kaugalingon nga pahina',
 'tooltip-pt-mytalk' => 'Ang imo pahina sang pag-istoryahanay',
 'tooltip-pt-preferences' => 'Akon mga ginapalabi',
 'tooltip-pt-watchlist' => 'Ang lista sang mga pagbag-o sa mga pahina nga imo ginabantayan',
@@ -911,13 +911,13 @@ Makit-an mo lang ang ginhalinan (source) sini.',
 'tooltip-feed-rss' => 'RSS feed para sa mini nga pahina',
 'tooltip-feed-atom' => 'Paon nga Atom para sa mini nga pahina',
 'tooltip-t-contributions' => 'Lantawon ang listahan sang mga nagbulig sang mini nga naga-usar',
-'tooltip-t-emailwiki_user' => 'Padal-an sang e-mail sa mini nga naga-usar',
+'tooltip-t-emailuser' => 'Padal-an sang e-mail sa mini nga naga-usar',
 'tooltip-t-upload' => 'Magkarga sang mga akta',
 'tooltip-t-specialpages' => 'Listahan sang tanan nga mga pinasahi nga pahina',
 'tooltip-t-print' => 'Maimprinta nga bersyon sang mini nga pahina',
 'tooltip-t-permalink' => 'Permanente nga tabid sa mini nga pagbag-o sang pahina',
 'tooltip-ca-nstab-main' => 'Tan-awon ang pahina sang kaundan',
-'tooltip-ca-nstab-wiki_user' => 'Tan-awon ang pahina sang naga-usar',
+'tooltip-ca-nstab-user' => 'Tan-awon ang pahina sang naga-usar',
 'tooltip-ca-nstab-special' => 'Pinasahi mini nga pahina, indi mo ma-islan ang mismo nga pahina',
 'tooltip-ca-nstab-project' => 'Tan-awon ang pahina sang katuyuan',
 'tooltip-ca-nstab-image' => 'Tan-awon ang pahina sang akta',

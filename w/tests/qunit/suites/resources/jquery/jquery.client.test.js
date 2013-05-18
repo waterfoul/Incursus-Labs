@@ -1,11 +1,11 @@
 QUnit.module( 'jquery.client', QUnit.newMwEnvironment() );
 
-/** Number of wiki_user-agent defined */
+/** Number of user-agent defined */
 var uacount = 0;
 
 var uas = (function () {
 
-	// Object keyed by wiki_userAgent. Value is an array (human-readable name, client-profile object, navigator.platform value)
+	// Object keyed by userAgent. Value is an array (human-readable name, client-profile object, navigator.platform value)
 	// Info based on results from http://toolserver.org/~krinkle/testswarm/job/174/
 	var uas = {
 		// Internet Explorer 6
@@ -226,21 +226,21 @@ var uas = (function () {
 	return uas;
 }());
 
-QUnit.test( 'profile wiki_userAgent support', uacount, function ( assert ) {
+QUnit.test( 'profile userAgent support', uacount, function ( assert ) {
 	// Generate a client profile object and compare recursively
-	var uaTest = function( rawwiki_userAgent, data ) {
+	var uaTest = function( rawUserAgent, data ) {
 		var ret = $.client.profile( {
-			wiki_userAgent: rawwiki_userAgent,
+			userAgent: rawUserAgent,
 			platform: data.platform
 		} );
-		assert.deepEqual( ret, data.profile, 'Client profile support check for ' + data.title + ' (' + data.platform + '): ' + rawwiki_userAgent );
+		assert.deepEqual( ret, data.profile, 'Client profile support check for ' + data.title + ' (' + data.platform + '): ' + rawUserAgent );
 	};
 
 	// Loop through and run tests
 	$.each( uas, uaTest );
 } );
 
-QUnit.test( 'profile return validation for current wiki_user agent', 7, function ( assert ) {
+QUnit.test( 'profile return validation for current user agent', 7, function ( assert ) {
 	var p = $.client.profile();
 	function unknownOrType( val, type, summary ) {
 		assert.ok( typeof val === type || val === 'unknown', summary );
@@ -292,7 +292,7 @@ QUnit.test( 'test', 1, function ( assert ) {
 
 });
 
-QUnit.test( 'wiki_user-agent matches against WikiEditor\'s compatibility map', uacount * 2, function ( assert ) {
+QUnit.test( 'User-agent matches against WikiEditor\'s compatibility map', uacount * 2, function ( assert ) {
 	var	$body = $( 'body' ),
 		bodyClasses = $body.attr( 'class' );
 
@@ -301,7 +301,7 @@ QUnit.test( 'wiki_user-agent matches against WikiEditor\'s compatibility map', u
 		$.each( ['ltr', 'rtl'], function ( i, dir ) {
 			$body.removeClass( 'ltr rtl' ).addClass( dir );
 			var profile = $.client.profile( {
-				wiki_userAgent: agent,
+				userAgent: agent,
 				platform: data.platform
 			} );
 			var testMatch = $.client.test( testMap, profile );

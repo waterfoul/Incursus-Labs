@@ -55,7 +55,7 @@ $namespaceAliases = array(
 $linkTrail = '/^([a-zʻʼ“»]+)(.*)$/sDu';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Havolalarning tagiga chizish:',
 'tog-justify' => "Matnni sahifaning eni bo'yicha tekislash",
 'tog-hideminor' => "Yangi oʻzgarishlar ro'yxatida kichik tahrirlarni yashirish",
@@ -75,7 +75,7 @@ $messages = array(
 'tog-previewonfirst' => "Tahrirlashga o'tishda batafsil ko'rinishni ko'rsatish",
 'tog-nocache' => "Brauzerda sahifalarni keshda saqlashni o'chirish",
 'tog-enotifwatchlistpages' => 'Kuzatuv roʻyxatimdagi sahifa yoki fayllar oʻzgartirilsa, e-pochtamga bu haqda xat yuborilsin',
-'tog-enotifwiki_usertalkpages' => 'Munozara sahifam oʻzgartirilsa, e-pochtamga bu haqda xat yuborilsin',
+'tog-enotifusertalkpages' => 'Munozara sahifam oʻzgartirilsa, e-pochtamga bu haqda xat yuborilsin',
 'tog-oldsig' => 'Joriy imzo:',
 'tog-fancysig' => 'Imzoni wikimatn sifatida qara (avtomatik ishoratsiz)',
 'tog-showjumplinks' => '"ga o\'tish" yordamchi havolalarini yoqish',
@@ -241,7 +241,7 @@ $messages = array(
 'talk' => 'Munozara',
 'views' => 'Ko‘rinishlar',
 'toolbox' => 'Asboblar',
-'wiki_userpage' => "Foydalanuvchi sahifasini ko'rish",
+'userpage' => "Foydalanuvchi sahifasini ko'rish",
 'projectpage' => "Loyiha sahifasini ko'rish",
 'imagepage' => "Fayl sahifasini ko'rish",
 'mediawikipage' => "Xabar sahifasini ko'rsatish",
@@ -262,7 +262,7 @@ $messages = array(
 'pool-queuefull' => "So'rovlar jamlanmasi to'ldi",
 'pool-errorunknown' => "Noma'lum xato",
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} haqida',
 'aboutpage' => 'Project:Haqida',
 'copyright' => 'Kontent $1 ostidadir.',
@@ -295,8 +295,8 @@ $messages = array(
 'youhavenewmessages' => 'Sizga $1 keldi ($2).',
 'newmessageslink' => 'yangi xabarlar',
 'newmessagesdifflink' => 'soʻnggi oʻzgarish',
-'youhavenewmessagesfromwiki_users' => 'Siz {{PLURAL:$3|$3 ta foydalanuvchidan}} $1 oldingiz ($2).',
-'youhavenewmessagesmanywiki_users' => "Siz ko'p foydalanuvchilardan $1 oldingiz ($2).",
+'youhavenewmessagesfromusers' => 'Siz {{PLURAL:$3|$3 ta foydalanuvchidan}} $1 oldingiz ($2).',
+'youhavenewmessagesmanyusers' => "Siz ko'p foydalanuvchilardan $1 oldingiz ($2).",
 'newmessageslinkplural' => '{{PLURAL:$1|yangi xabar|yangi xabarlar}}',
 'newmessagesdifflinkplural' => "oxirgi {{PLURAL:$1|o'zgarish|o'zgarishlar}}",
 'youhavenewmessagesmulti' => 'Siz $1ga yangi xat oldingiz',
@@ -327,7 +327,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Maqola',
-'nstab-wiki_user' => 'Foydalanuvchi sahifasi',
+'nstab-user' => 'Foydalanuvchi sahifasi',
 'nstab-media' => 'Media sahifasi',
 'nstab-special' => 'Maxsus sahifa',
 'nstab-project' => 'Loyiha sahifasi',
@@ -388,17 +388,17 @@ Siz yangi hisob yaratdingiz.
 'login' => 'Kirish',
 'nav-login-createaccount' => 'Kirish / Hisob yaratish',
 'loginprompt' => "{{SITENAME}}ga kirish uchun kukilar yoqilgan bo'lishi kerak.",
-'wiki_userlogin' => 'Kirish / Hisob yaratish',
-'wiki_userloginnocreate' => 'Kirish',
+'userlogin' => 'Kirish / Hisob yaratish',
+'userloginnocreate' => 'Kirish',
 'logout' => 'Chiqish',
-'wiki_userlogout' => 'Chiqish',
+'userlogout' => 'Chiqish',
 'notloggedin' => 'Siz tizimga kirmagansiz',
 'nologin' => "Hisobingiz yoʻqmi? '''$1'''.",
 'nologinlink' => 'Hisob yaratish',
 'createaccount' => 'Hisob yaratish',
 'gotaccount' => "Hisobingiz bormi? '''$1'''.",
 'gotaccountlink' => 'Kirish',
-'wiki_userlogin-resetlink' => 'Kirish maʻlumotlaringiz esdan chiqdimi?',
+'userlogin-resetlink' => 'Kirish maʻlumotlaringiz esdan chiqdimi?',
 'createaccountmail' => "E-mail orqali maxfiy so'zni jo'natish",
 'createaccountreason' => 'Sabab:',
 'badretype' => "Siz tomondan kiritilgan maxfiy so'zlar mos kelmayapti.",
@@ -406,10 +406,10 @@ Siz yangi hisob yaratdingiz.
 'createaccounterror' => "Hisob yozuvini yaratishning iloji yo'q: $1",
 'loginsuccesstitle' => 'Kirish muvaffaqiyatli amalga oshdi',
 'loginsuccess' => "'''{{SITENAME}}ga \"\$1\" foydalanuvchi nomi bilan kirdingiz.'''",
-'nosuchwiki_usershort' => '"$1" ismli ishtirokchi yoʻq.
+'nosuchusershort' => '"$1" ismli ishtirokchi yoʻq.
 Xatosiz yozishga urinib koʻring.',
-'nowiki_userspecified' => "Siz foydalanuvchining ismini ko'rsatishingiz lozim.",
-'login-wiki_userblocked' => "Bu foydalanuvchi muhosara qilingan. Tizimga kirishga ruxsat yo'q.",
+'nouserspecified' => "Siz foydalanuvchining ismini ko'rsatishingiz lozim.",
+'login-userblocked' => "Bu foydalanuvchi muhosara qilingan. Tizimga kirishga ruxsat yo'q.",
 'wrongpassword' => 'Kiritgan mahfiy soʻzingiz notoʻgʻri. Iltimos, qaytadan kiritib koʻring.',
 'wrongpasswordempty' => "Iltimos, bo'sh bo'lmagan maxfiy so'z kiriting.",
 'mailmypassword' => "Elektron pochta orqali yangi maxfiy so'zni jo'natish",
@@ -434,7 +434,7 @@ Xatosiz yozishga urinib koʻring.',
 
 # Special:PasswordReset
 'passwordreset-legend' => "Maxfiy so'zni yo'q qilish",
-'passwordreset-wiki_username' => 'Ishtirokchi nomi:',
+'passwordreset-username' => 'Ishtirokchi nomi:',
 'passwordreset-domain' => 'Domen:',
 'passwordreset-email' => 'Elektron pochta manzili:',
 'passwordreset-emailelement' => "Foydalanuvchi ismi: $1
@@ -491,7 +491,7 @@ Sizni $1 chetlashtirdi. Bunga sabab: ''$2''.
 * Chetlashtirish maqsadi: $7
 
 Siz $1 yoki boshqa [[{{MediaWiki:Grouppage-sysop}}|administrator]] bilan bogʻlanib, arz qilishingiz mumkin.
-You cannot use the 'e-mail this wiki_user' feature unless a valid e-mail address is specified in your [[Special:Preferences|account preferences]] and you have not been blocked from using it.
+You cannot use the 'e-mail this user' feature unless a valid e-mail address is specified in your [[Special:Preferences|account preferences]] and you have not been blocked from using it.
 Sizning hozirgi IP manzilingiz - $3, chetlashtirish raqamingiz - #$5. Arizaga bularni ilova qilishingiz mumkin.",
 'blockednoreason' => "sabab ko'rsatilmadi",
 'whitelistedittext' => "Siz sahifalarni o'zgartirish uchun $1.",
@@ -509,7 +509,7 @@ Agar bu sahifaga xatolik sabab kelib qolgan boʻlsangiz brauzeringizning '''orqa
 'anontalkpagetext' => "----''Ushbu munozara sahifasi hali hisob yozuvini yaratmagan, yoki undan foydalanmaydigan anonim ishtirokchiga tegishli.
 Shu sababli tenglashtirish uchun raqamli IP-manzildan foydalaniladi.
 Ushbu manzilning oʻzi bir nechta boshqa ishtirokchilarga ham mos kelishi mumkin.
-Agar siz anonim ishtirokchi boʻlsangiz va siz oʻzingizga yoʻnaltirilmagan xabar oldim deb taxmin qilsangiz, iltimos, boshqa anonim ishtirokchilar bilan mumkin boʻlgan chalkashliklarni chetlab oʻtish uchun [[Special:wiki_userLogin/signup|hisob yozuvi yarating]] yoki [[Special:wiki_userLogin|tizimga kiring]].''",
+Agar siz anonim ishtirokchi boʻlsangiz va siz oʻzingizga yoʻnaltirilmagan xabar oldim deb taxmin qilsangiz, iltimos, boshqa anonim ishtirokchilar bilan mumkin boʻlgan chalkashliklarni chetlab oʻtish uchun [[Special:UserLogin/signup|hisob yozuvi yarating]] yoki [[Special:UserLogin|tizimga kiring]].''",
 'noarticletext' => 'Bu sahifada hozircha hech qanday matn yoʻq. Siz bu sarlavhani boshqa sahifalardan [[Special:Search/{{PAGENAME}}|qidirishingiz]], <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} tegishli qaydlarga qarashingiz] yoki bu sahifani [{{fullurl:{{FULLPAGENAME}}|action=edit}} tahrirlashingiz]</span> mumkin.',
 'clearyourcache' => "'''Eslatma.''' Saqlaganingizdan so'ng o'zgarishlarni ko'rish uchun siz o'z brauzeringiz keshini tozalashingizga to'gri kelishi mumkin.
 * '''Firefox / Safari:''' ''Shift'' tugmasini bosgan holda, ''Yangilash'' unsurlar darchasini bosing, yoki ''Ctrl-F5'' yoki ''Ctrl-R'' (Macda ''⌘-R'') ni bosing
@@ -538,7 +538,7 @@ Bundan tashqari, siz ushbu ma'lumotlarni o'zingiz yozgan bo'lishingiz yoki ruxsa
 'hiddencategories' => 'Ushbu sahifa {{PLURAL:$1|1 yashirin turkum|$1 yashirin turkumlar}}ga kiradi:',
 'nocreatetitle' => 'Sahifalarni yaratish cheklangan',
 'nocreatetext' => 'Ushbu saytda yangi sahifalar yaratish taqiqlagan.
-Ortga qaytib, mavjud sahifani tahrirlashingiz yoki [[Special:wiki_userLogin|tizimga kirishingiz]] mumkin.',
+Ortga qaytib, mavjud sahifani tahrirlashingiz yoki [[Special:UserLogin|tizimga kirishingiz]] mumkin.',
 'nocreate-loggedin' => "Sizda yangi sahifalar yaratishga ruxsat yo'q.",
 'sectioneditnotsupported-title' => "Bo'limlarni tahrirlash imkoniyati yo'q",
 'sectioneditnotsupported-text' => "Ushbu sahifada bo'limlarni tahrirlash imkoniyati yo'q.",
@@ -561,7 +561,7 @@ Ayrim andozalar qo'shilmaydi.",
 'post-expand-template-argument-category' => "Andozalarning to'ldirilmagan o'zgaruvchilariga ega sahifalar",
 
 # "Undo" feature
-'undo-summary' => '[[Special:Contributions/$2|$2]] tomonidan qilingan $1 tahriri qaytarildi ([[wiki_user talk:$2|mun.]])',
+'undo-summary' => '[[Special:Contributions/$2|$2]] tomonidan qilingan $1 tahriri qaytarildi ([[User talk:$2|mun.]])',
 
 # History pages
 'viewpagelogs' => 'Ushbu sahifaga doir qaydlarni koʻrsat',
@@ -595,7 +595,7 @@ Bu yerda: (joriy) = hozirgi koʻrinish bilan farq,
 
 # Revision deletion
 'rev-deleted-comment' => "(tahrir izohi o'chirildi)",
-'rev-deleted-wiki_user' => "(ishtirokchi ismi o'chirildi)",
+'rev-deleted-user' => "(ishtirokchi ismi o'chirildi)",
 'rev-deleted-event' => "(qayd yozuvi o'chirildi)",
 'rev-delundel' => 'koʻrsatish/yashirish',
 'rev-showdeleted' => 'koʻrsatish',
@@ -717,7 +717,7 @@ Bu yerda: (joriy) = hozirgi koʻrinish bilan farq,
 'prefs-beta' => 'Beta-imkoniyatlar',
 'prefs-datetime' => 'Sana va vaqt',
 'prefs-labs' => 'Tajribaviy imkoniyatlar',
-'prefs-wiki_user-pages' => 'Foydalanuvchi sahifalari',
+'prefs-user-pages' => 'Foydalanuvchi sahifalari',
 'prefs-personal' => 'Shaxsiy ma’lumotlar',
 'prefs-rc' => 'Yangi o‘zgartirishlar',
 'prefs-watchlist' => "Kuzatuv ro'yxati",
@@ -772,7 +772,7 @@ Bu yerda: (joriy) = hozirgi koʻrinish bilan farq,
 'prefs-emailconfirm-label' => 'Elektron pochta manzilini tasdiqlash:',
 'prefs-textboxsize' => 'Tahrir oynasining oʻlchami',
 'youremail' => 'E-mail:',
-'wiki_username' => 'Foydalanuvchi nomi',
+'username' => 'Foydalanuvchi nomi',
 'uid' => 'Identifikator:',
 'prefs-memberingroups' => 'Qaysi {{PLURAL:$1|guruh|guruhlar}} aʼzosi:',
 'prefs-registration' => 'Hisob ochilgan vaqt',
@@ -809,17 +809,17 @@ Agar siz uni ko'rsatsangiz, undan sahifa tahriri kim tomonidan kiritilganligini 
 'prefs-displaywatchlist' => 'Tasvirlash moslamalari',
 'prefs-diffs' => 'Versiyalar farqi',
 
-# wiki_user rights
-'editwiki_usergroup' => 'Foydalanuvchi guruxlarni taxrirlash',
-'wiki_userrights-groupsmember' => 'Aʼzolik:',
-'wiki_userrights-groupsmember-auto' => "Noaniq a'zo",
-'wiki_userrights-reason' => 'Sabab:',
-'wiki_userrights-changeable-col' => "Siz o'zgartirishingiz mumkin bo'lgan guruhlar",
-'wiki_userrights-unchangeable-col' => "Siz o'zgartira olmaydigan guruhlar",
+# User rights
+'editusergroup' => 'Foydalanuvchi guruxlarni taxrirlash',
+'userrights-groupsmember' => 'Aʼzolik:',
+'userrights-groupsmember-auto' => "Noaniq a'zo",
+'userrights-reason' => 'Sabab:',
+'userrights-changeable-col' => "Siz o'zgartirishingiz mumkin bo'lgan guruhlar",
+'userrights-unchangeable-col' => "Siz o'zgartira olmaydigan guruhlar",
 
 # Groups
 'group' => 'Guruh',
-'group-wiki_user' => 'Foydalanuvchilar',
+'group-user' => 'Foydalanuvchilar',
 'group-autoconfirmed' => 'Tasdiqlangan foydalanuvchilar',
 'group-bot' => 'Botlar',
 'group-sysop' => 'Administratorlar',
@@ -827,14 +827,14 @@ Agar siz uni ko'rsatsangiz, undan sahifa tahriri kim tomonidan kiritilganligini 
 'group-suppress' => 'Tekshiruvchilar',
 'group-all' => '(hamma)',
 
-'group-wiki_user-member' => '{{GENDER:$1|ishtirokchi}}',
+'group-user-member' => '{{GENDER:$1|ishtirokchi}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|avtotasdiqlangan ishtirokchi}}',
 'group-bot-member' => '{{GENDER:$1|bot}}',
 'group-sysop-member' => '{{GENDER:$1|administrator}}',
 'group-bureaucrat-member' => '{{GENDER:$1|rasmiyatchi}}',
 'group-suppress-member' => '{{GENDER:$1|tekshiruvchi}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Foydalanuvchilar',
+'grouppage-user' => '{{ns:project}}:Foydalanuvchilar',
 'grouppage-autoconfirmed' => '{{ns:project}}:Tasdiqlangan foydalanuvchilar',
 'grouppage-bot' => '{{ns:project}}:Botlar',
 'grouppage-sysop' => '{{ns:project}}:Administratorlar',
@@ -845,7 +845,7 @@ Agar siz uni ko'rsatsangiz, undan sahifa tahriri kim tomonidan kiritilganligini 
 'right-read' => "Sahifalarni o'qish",
 'right-edit' => 'Sahifalarni tahrirlash',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => "Ishtirokchi huquqlari bo'yicha qaydlar",
 'rightslogentry' => "ishtirokchi $1ning guruhlardagi a'zoligini $2dan $3ga o'zgartirdi",
 
@@ -920,7 +920,7 @@ Agar siz uni ko'rsatsangiz, undan sahifa tahriri kim tomonidan kiritilganligini 
 'listfiles_thumb' => 'Miniatura',
 'listfiles_date' => 'Sana',
 'listfiles_name' => 'Nomi',
-'listfiles_wiki_user' => 'Foydalanuvchi',
+'listfiles_user' => 'Foydalanuvchi',
 'listfiles_size' => 'Oʻlchami',
 'listfiles_description' => 'Taʼrif',
 'listfiles_count' => 'Versiyalar',
@@ -937,7 +937,7 @@ Agar siz uni ko'rsatsangiz, undan sahifa tahriri kim tomonidan kiritilganligini 
 'filehist-thumb' => 'Miniatura',
 'filehist-thumbtext' => '$1 dagi versiya uchun tasvir',
 'filehist-nothumb' => "Miniatura yo'q",
-'filehist-wiki_user' => 'Foydalanuvchi',
+'filehist-user' => 'Foydalanuvchi',
 'filehist-dimensions' => 'Oʻlchamlari',
 'filehist-filesize' => 'Fayl hajmi',
 'filehist-comment' => 'Izoh',
@@ -969,7 +969,7 @@ Uning [$2 fayl tavsifi sahifasidan] olingan tavsifi quyida keltirilgan.',
 
 # Statistics
 'statistics' => 'Statistika',
-'statistics-header-wiki_users' => 'Foydalanuvchilar statistikasi',
+'statistics-header-users' => 'Foydalanuvchilar statistikasi',
 
 'disambiguationspage' => '{{ns:template}}:Disambig',
 
@@ -988,8 +988,8 @@ Uning [$2 fayl tavsifi sahifasidan] olingan tavsifi quyida keltirilgan.',
 'mostcategories' => 'Eng koʻp turkumli sahifalar',
 'prefixindex' => 'Prefiksli barcha sahifalar',
 'protectedpages' => 'Himoyalangan sahifalar',
-'listwiki_users' => 'Foydalanuvchilar roʻyxati',
-'wiki_usercreated' => "$1 $2da {{GENDER:$3|ro'yxatdan o'tdi}}",
+'listusers' => 'Foydalanuvchilar roʻyxati',
+'usercreated' => "$1 $2da {{GENDER:$3|ro'yxatdan o'tdi}}",
 'newpages' => 'Yangi sahifalar',
 'move' => 'Ko‘chirish',
 'movethispage' => 'Bu sahifani koʻchirish',
@@ -1003,7 +1003,7 @@ Uning [$2 fayl tavsifi sahifasidan] olingan tavsifi quyida keltirilgan.',
 'booksources-go' => 'O‘tish',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Ijrochi:',
+'specialloguserlabel' => 'Ijrochi:',
 'speciallogtitlelabel' => "Mo'ljal (nom yoki ishtirokchi):",
 'log' => 'Qaydlar',
 'all-logs-page' => 'Barcha ochiq qaydlar',
@@ -1047,22 +1047,22 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'linksearch-ok' => 'Qidirish',
 'linksearch-line' => '$2 ichidan $1 ga havola',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'Quyidagidan boshlanuvchi foydalanuvchilarni koʻrsatish:',
-'listwiki_users-submit' => 'Koʻrsatish',
-'listwiki_users-noresult' => 'Foydalanuvchilar topilmadi.',
-'listwiki_users-blocked' => '(chetlashtirilgan)',
+# Special:ListUsers
+'listusersfrom' => 'Quyidagidan boshlanuvchi foydalanuvchilarni koʻrsatish:',
+'listusers-submit' => 'Koʻrsatish',
+'listusers-noresult' => 'Foydalanuvchilar topilmadi.',
+'listusers-blocked' => '(chetlashtirilgan)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'Faol foydalanuvchilar roʻyxati',
-'activewiki_users-from' => 'Quyidagidan boshlanuvchi foydalanuvchilarni koʻrsatish:',
-'activewiki_users-hidebots' => 'Botlarni yashirish',
-'activewiki_users-hidesysops' => 'Maʼmurlarni yashirish',
-'activewiki_users-noresult' => 'Foydalanuvchilar topilmadi.',
+# Special:ActiveUsers
+'activeusers' => 'Faol foydalanuvchilar roʻyxati',
+'activeusers-from' => 'Quyidagidan boshlanuvchi foydalanuvchilarni koʻrsatish:',
+'activeusers-hidebots' => 'Botlarni yashirish',
+'activeusers-hidesysops' => 'Maʼmurlarni yashirish',
+'activeusers-noresult' => 'Foydalanuvchilar topilmadi.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => "Ishtirokchilarni ro'yxatga olish qaydlari",
-'newwiki_userlogpagetext' => 'Yaqinda roʻyxatdan oʻtgan foydalanuvchilar roʻyxati',
+# Special:Log/newusers
+'newuserlogpage' => "Ishtirokchilarni ro'yxatga olish qaydlari",
+'newuserlogpagetext' => 'Yaqinda roʻyxatdan oʻtgan foydalanuvchilar roʻyxati',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Foydalanuvchilar guruhi huquqlari',
@@ -1071,20 +1071,20 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'listgrouprights-helppage' => 'Help:Guruhlar huquqlari',
 'listgrouprights-members' => '(a’zolar ro‘yxati)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Foydalanuvchiga maktub',
-'emailwiki_user-title-target' => 'Ushbu {{GENDER:$1|foydalanuvchi}}ga maktub joʻnatish',
-'emailwiki_user-title-notarget' => 'Foydalanuvchiga elektron maktub yozish',
+# E-mail user
+'emailuser' => 'Foydalanuvchiga maktub',
+'emailuser-title-target' => 'Ushbu {{GENDER:$1|foydalanuvchi}}ga maktub joʻnatish',
+'emailuser-title-notarget' => 'Foydalanuvchiga elektron maktub yozish',
 'emailpage' => 'Foydalanuvchiga maktub',
-'wiki_usermailererror' => 'Elektron pochta xabarini joʻnatishda xatolik yuz berdi:',
+'usermailererror' => 'Elektron pochta xabarini joʻnatishda xatolik yuz berdi:',
 'defemailsubject' => '{{SITENAME}} — $1 tomonidan maktub',
-'wiki_usermaildisabled' => 'Foydalanuvchi elektron pochtasi o‘chirilgan',
+'usermaildisabled' => 'Foydalanuvchi elektron pochtasi o‘chirilgan',
 'noemailtitle' => 'Elektron pochta manzili mavjud emas',
 'noemailtext' => "Bu foydalanuvchi e-mail manzil ko'rsatgani yo'q.",
 'nowikiemailtitle' => 'Maktub joʻnatishga ruxsat yoʻq',
 'emailtarget' => 'Oluvchi ishtirokchining ismini kiriting',
-'emailwiki_username' => 'Ishtirokchi nomi:',
-'emailwiki_usernamesubmit' => "Jo'natish",
+'emailusername' => 'Ishtirokchi nomi:',
+'emailusernamesubmit' => "Jo'natish",
 'email-legend' => "Boshqa {{SITENAME}} ishtirokchisiga xat jo'natish",
 'emailfrom' => 'Kimdan:',
 'emailto' => 'Kimga:',
@@ -1096,9 +1096,9 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'emailsent' => "Xat jo'natildi",
 'emailsenttext' => "Sizning elektron maktubingiz jo'natildi.",
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'Tizimli xabar qoldirish.',
-'wiki_usermessage-editor' => 'Tizimli etkazish',
+# User Messenger
+'usermessage-summary' => 'Tizimli xabar qoldirish.',
+'usermessage-editor' => 'Tizimli etkazish',
 
 # Watchlist
 'watchlist' => 'Kuzatuv roʻyxatim',
@@ -1193,7 +1193,7 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 'rollbacklinkcount' => '$1 {{PLURAL:$1| ta tahrir}}ni eski holiga keltirish',
 'rollbacklinkcount-morethan' => '$1 {{PLURAL:$1| tadan koʻp tahrir}}ni eski holiga keltirish',
 'rollbackfailed' => 'Eski holiga keltirishda xatolik',
-'revertpage' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|munozara]]) tahrirlari [[wiki_user:$1|$1]] versiyasiga qaytarildi',
+'revertpage' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|munozara]]) tahrirlari [[User:$1|$1]] versiyasiga qaytarildi',
 
 # Edit tokens
 'sessionfailure-title' => 'Seansda xatolik',
@@ -1275,9 +1275,9 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 'sp-contributions-uploads' => 'yuklamalar',
 'sp-contributions-logs' => 'qaydlar',
 'sp-contributions-talk' => 'munozara',
-'sp-contributions-wiki_userrights' => 'foydalanuvchining huquqlarini boshqarish',
+'sp-contributions-userrights' => 'foydalanuvchining huquqlarini boshqarish',
 'sp-contributions-search' => 'Hissalarni qidirish',
-'sp-contributions-wiki_username' => 'IP-manzil yoki foydalanuvchi nomi:',
+'sp-contributions-username' => 'IP-manzil yoki foydalanuvchi nomi:',
 'sp-contributions-toponly' => "Faqat oxirgi versiya hisoblangan tahrirlarni ko'rsatish",
 'sp-contributions-submit' => 'Qidirish',
 
@@ -1307,7 +1307,7 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 'blockip' => 'Foydalanuvchini chetlashtir',
 'blockip-title' => 'Foydalanuvchini muhosara qilish',
 'blockip-legend' => 'Foydalanuvchini muhosara qilish',
-'ipadressorwiki_username' => 'IP-manzil yoki foydalanuvchi nomi:',
+'ipadressorusername' => 'IP-manzil yoki foydalanuvchi nomi:',
 'ipbexpiry' => 'Tugaydi:',
 'ipbreason' => 'Sabab:',
 'ipbreasonotherlist' => 'Boshqa sabab',
@@ -1328,7 +1328,7 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 'ipb-unblock-addr' => '$1dan toʻsiqni olish',
 'unblockip' => 'Foydalanuvchidan to‘siqni olib tashlash',
 'ipusubmit' => 'Ushbu chetlashtirishni olib tashlash',
-'unblocked' => '[[wiki_user:$1|$1]]dan to‘siq olib tashlandi',
+'unblocked' => '[[User:$1|$1]]dan to‘siq olib tashlandi',
 'unblocked-range' => '$1dan to‘siq olib tashlandi',
 'blocklist' => 'Chetlashtirilgan foydalanuvchilar',
 'ipblocklist' => 'Chetlashtirilgan foydalanuvchilar',
@@ -1347,7 +1347,7 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 'noautoblockblock' => 'avtochetlashtirish o‘chirilgan',
 'createaccountblock' => 'hisob yozuvi yaratish taqiqlangan',
 'emailblock' => "xatlar jo'natish taqiqlandi",
-'blocklist-nowiki_usertalk' => 'o‘zining munozara sahifasini tahrirlay olmaydi',
+'blocklist-nousertalk' => 'o‘zining munozara sahifasini tahrirlay olmaydi',
 'ipblocklist-empty' => 'Toʻsiqlar roʻyxati boʻsh.',
 'blocklink' => 'chetlashtirish',
 'unblocklink' => "muhosarani (to'sishni) bekor qilish",
@@ -1357,7 +1357,7 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 'blocklogpage' => 'Chetlatish qaydlari',
 'blocklogentry' => '$2 davrga [[$1]]ni chetlashtirdi $3',
 'block-log-flags-nocreate' => 'hisob ochish toʻxtatilgan',
-'block-log-flags-nowiki_usertalk' => "o'zining munozara sahifasini tahrirlay olmaydi",
+'block-log-flags-nousertalk' => "o'zining munozara sahifasini tahrirlay olmaydi",
 'proxyblocksuccess' => 'Bajarildi.',
 
 # Move page
@@ -1411,8 +1411,8 @@ Umumiy omborda [[:$1]] mavjud. Faylning bu nomga qayta nomlanishi faylning umumi
 'import-logentry-upload' => '"[[$1]]"ni yuklash yo\'li bilan import qildi',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Foydalanuvchi sahifangiz',
-'tooltip-pt-anonwiki_userpage' => 'Siznig ip manzilingiz foydalanuvchi sahifasi',
+'tooltip-pt-userpage' => 'Foydalanuvchi sahifangiz',
+'tooltip-pt-anonuserpage' => 'Siznig ip manzilingiz foydalanuvchi sahifasi',
 'tooltip-pt-mytalk' => 'Suhbat sahifangiz',
 'tooltip-pt-anontalk' => 'Bu ip manzildan amalga oshirilgan tahrirlar munozarasi',
 'tooltip-pt-preferences' => 'Moslamalaringiz',
@@ -1449,13 +1449,13 @@ Umumiy omborda [[:$1]] mavjud. Faylning bu nomga qayta nomlanishi faylning umumi
 'tooltip-feed-rss' => "Bu sahifa uchun RSS ta'minot",
 'tooltip-feed-atom' => "Bu sahifa uchun Atom ta'minot",
 'tooltip-t-contributions' => "Bu foydalanuvchinig qo'shgan hissasini ko'rish",
-'tooltip-t-emailwiki_user' => 'Ushbu foydalanuvchiga xat jo‘natish',
+'tooltip-t-emailuser' => 'Ushbu foydalanuvchiga xat jo‘natish',
 'tooltip-t-upload' => 'Rasmlar yoki media fayllar yuklash',
 'tooltip-t-specialpages' => 'Maxsus sahifalar ro‘yxati',
 'tooltip-t-print' => 'Ushbu sahifaning bosma uchun versiyasi',
 'tooltip-t-permalink' => 'Sahifaning ushbu versiyasiga doimiy ishorat',
 'tooltip-ca-nstab-main' => 'Sahifani ko‘rish',
-'tooltip-ca-nstab-wiki_user' => "Foydalanuvchi sahifasini ko'rish",
+'tooltip-ca-nstab-user' => "Foydalanuvchi sahifasini ko'rish",
 'tooltip-ca-nstab-media' => "Media sahifasini ko'rish",
 'tooltip-ca-nstab-special' => 'Bu maxsus sahifa, uni tahrirlay olmaysiz.',
 'tooltip-ca-nstab-project' => "Loyiha sahifasini ko'rish",
@@ -1588,7 +1588,7 @@ Umumiy omborda [[:$1]] mavjud. Faylning bu nomga qayta nomlanishi faylning umumi
 'watchlisttools-raw' => 'Kuzatuv roʻyxatimni tahrirlash',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|munozara]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|munozara]])',
 
 # Core parser functions
 'duplicate-defaultsort' => "'''Diqqat:''' \"\$2\" boshlang'ich saralash kaliti oldingi \"\$1\" boshlang'ich saralash kalitini qayta aniqlayapti.",
@@ -1609,8 +1609,8 @@ Umumiy omborda [[:$1]] mavjud. Faylning bu nomga qayta nomlanishi faylning umumi
 # New logging system
 'logentry-move-move' => '$1 $3 sahifasini $4ga koʻchirdi',
 'logentry-patrol-patrol-auto' => '$1 $3 sahifasining $4 versiyasini avtomatik patrulladi',
-'logentry-newwiki_users-newwiki_users' => '$1 hisob yozuvi yaratildi',
-'logentry-newwiki_users-create' => '$1 hisob yozuvi yaratildi',
+'logentry-newusers-newusers' => '$1 hisob yozuvi yaratildi',
+'logentry-newusers-create' => '$1 hisob yozuvi yaratildi',
 
 # Feedback
 'feedback-close' => 'Bajarildi',

@@ -52,7 +52,7 @@ class Http {
 	 *    - followRedirects     Whether to follow redirects (defaults to false).
 	 *		                    Note: this should only be used when the target URL is trusted,
 	 *		                    to avoid attacks on intranet services accessible by HTTP.
-	 *    - wiki_userAgent           A wiki_user agent, if you want to override the default
+	 *    - userAgent           A user agent, if you want to override the default
 	 *                          MediaWiki/$wgVersion
 	 * @return Mixed: (bool)false on failure or a string on success
 	 */
@@ -141,10 +141,10 @@ class Http {
 	}
 
 	/**
-	 * A standard wiki_user-agent we can use for external requests.
+	 * A standard user-agent we can use for external requests.
 	 * @return String
 	 */
-	public static function wiki_userAgent() {
+	public static function userAgent() {
 		global $wgVersion;
 		return "MediaWiki/$wgVersion";
 	}
@@ -229,8 +229,8 @@ class MWHttpRequest {
 		} else {
 			$this->timeout = $wgHTTPTimeout;
 		}
-		if( isset( $options['wiki_userAgent'] ) ) {
-			$this->setwiki_userAgent( $options['wiki_userAgent'] );
+		if( isset( $options['userAgent'] ) ) {
+			$this->setUserAgent( $options['userAgent'] );
 		}
 
 		$members = array( "postData", "proxy", "noProxy", "sslVerifyHost", "caInfo",
@@ -338,11 +338,11 @@ class MWHttpRequest {
 	}
 
 	/**
-	 * Set the wiki_user agent
+	 * Set the user agent
 	 * @param $UA string
 	 */
-	public function setwiki_userAgent( $UA ) {
-		$this->setHeader( 'wiki_user-Agent', $UA );
+	public function setUserAgent( $UA ) {
+		$this->setHeader( 'User-Agent', $UA );
 	}
 
 	/**
@@ -438,8 +438,8 @@ class MWHttpRequest {
 			$this->setCallback( array( $this, 'read' ) );
 		}
 
-		if ( !isset( $this->reqHeaders['wiki_user-Agent'] ) ) {
-			$this->setwiki_userAgent( Http::wiki_userAgent() );
+		if ( !isset( $this->reqHeaders['User-Agent'] ) ) {
+			$this->setUserAgent( Http::userAgent() );
 		}
 	}
 
@@ -714,7 +714,7 @@ class CurlHttpRequest extends MWHttpRequest {
 		if ( isset( $this->reqHeaders['Referer'] ) ) {
 			$this->curlOptions[CURLOPT_REFERER] = $this->reqHeaders['Referer'];
 		}
-		$this->curlOptions[CURLOPT_USERAGENT] = $this->reqHeaders['wiki_user-Agent'];
+		$this->curlOptions[CURLOPT_USERAGENT] = $this->reqHeaders['User-Agent'];
 
 		$this->curlOptions[CURLOPT_SSL_VERIFYHOST] = $this->sslVerifyHost ? 2 : 0;
 		$this->curlOptions[CURLOPT_SSL_VERIFYPEER] = $this->sslVerifyCert;
@@ -920,7 +920,7 @@ class PhpHttpRequest extends MWHttpRequest {
 				}
 
 				if ( strlen( $buf ) ) {
-					call_wiki_user_func( $this->callback, $fh, $buf );
+					call_user_func( $this->callback, $fh, $buf );
 				}
 			}
 		}

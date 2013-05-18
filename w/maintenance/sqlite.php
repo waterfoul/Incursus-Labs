@@ -40,7 +40,7 @@ class SqliteMaintenance extends Maintenance {
 
 	/**
 	 * While we use database connection, this simple lie prevents useless --dbpass and
-	 * --dbwiki_user options from appearing in help message for this script.
+	 * --dbuser options from appearing in help message for this script.
 	 *
 	 * @return int DB constant
 	 */

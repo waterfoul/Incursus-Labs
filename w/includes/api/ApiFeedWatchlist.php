@@ -25,7 +25,7 @@
  */
 
 /**
- * This action allows wiki_users to get their watchlist items in RSS/Atom formats.
+ * This action allows users to get their watchlist items in RSS/Atom formats.
  * When executed, it performs a nested call to the API to get the needed data,
  * and formats it in a proper format.
  *
@@ -65,8 +65,8 @@ class ApiFeedWatchlist extends ApiBase {
 			if( !isset( $wgFeedClasses[ $params['feedformat'] ] ) ) {
 				$this->dieUsage( 'Invalid subscription feed type', 'feed-invalid' );
 			}
-			if ( !is_null( $params['wlexcludewiki_user'] ) ) {
-				$fauxReqArr['wlexcludewiki_user'] = $params['wlexcludewiki_user'];
+			if ( !is_null( $params['wlexcludeuser'] ) ) {
+				$fauxReqArr['wlexcludeuser'] = $params['wlexcludeuser'];
 			}
 
 			// limit to the number of hours going from now back
@@ -78,7 +78,7 @@ class ApiFeedWatchlist extends ApiBase {
 				'meta' => 'siteinfo',
 				'siprop' => 'general',
 				'list' => 'watchlist',
-				'wlprop' => 'title|wiki_user|comment|timestamp',
+				'wlprop' => 'title|user|comment|timestamp',
 				'wldir' => 'older', // reverse order - from newest to oldest
 				'wlend' => $endTime, // stop at this time
 				'wllimit' => ( 50 > $wgFeedLimit ) ? $wgFeedLimit : 50
@@ -165,11 +165,11 @@ class ApiFeedWatchlist extends ApiBase {
 		}
 		$comment = isset( $info['comment'] ) ? $info['comment'] : null;
 		$timestamp = $info['timestamp'];
-		$wiki_user = $info['wiki_user'];
+		$user = $info['user'];
 
-		$completeText = "$comment ($wiki_user)";
+		$completeText = "$comment ($user)";
 
-		return new FeedItem( $titleStr, $completeText, $titleUrl, $timestamp, $wiki_user );
+		return new FeedItem( $titleStr, $completeText, $titleUrl, $timestamp, $user );
 	}
 
 	public function getAllowedParams() {
@@ -188,13 +188,13 @@ class ApiFeedWatchlist extends ApiBase {
 			),
 			'allrev' => false,
 			'wlowner' => array(
-				ApiBase::PARAM_TYPE => 'wiki_user'
+				ApiBase::PARAM_TYPE => 'user'
 			),
 			'wltoken' => array(
 				ApiBase::PARAM_TYPE => 'string'
 			),
-			'wlexcludewiki_user' => array(
-				ApiBase::PARAM_TYPE => 'wiki_user'
+			'wlexcludeuser' => array(
+				ApiBase::PARAM_TYPE => 'user'
 			),
 			'linktodiffs' => false,
 		);
@@ -205,9 +205,9 @@ class ApiFeedWatchlist extends ApiBase {
 			'feedformat' => 'The format of the feed',
 			'hours'      => 'List pages modified within this many hours from now',
 			'allrev'     => 'Include multiple revisions of the same page within given timeframe',
-			'wlowner'    => "The wiki_user whose watchlist you want (must be accompanied by {$this->getModulePrefix()}wltoken if it's not you)",
-			'wltoken'    => 'Security token that requested wiki_user set in their preferences',
-			'wlexcludewiki_user' => 'A wiki_user whose edits should not be shown in the watchlist',
+			'wlowner'    => "The user whose watchlist you want (must be accompanied by {$this->getModulePrefix()}wltoken if it's not you)",
+			'wltoken'    => 'Security token that requested user set in their preferences',
+			'wlexcludeuser' => 'A user whose edits should not be shown in the watchlist',
 			'linktodiffs' => 'Link to change differences instead of article pages',
 		);
 	}

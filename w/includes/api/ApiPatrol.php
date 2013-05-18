@@ -25,7 +25,7 @@
  */
 
 /**
- * Allows wiki_user to patrol pages
+ * Allows user to patrol pages
  * @ingroup API
  */
 class ApiPatrol extends ApiBase {
@@ -44,7 +44,7 @@ class ApiPatrol extends ApiBase {
 		if ( !$rc instanceof RecentChange ) {
 			$this->dieUsageMsg( array( 'nosuchrcid', $params['rcid'] ) );
 		}
-		$retval = $rc->doMarkPatrolled( $this->getwiki_user() );
+		$retval = $rc->doMarkPatrolled( $this->getUser() );
 
 		if ( $retval ) {
 			$this->dieUsageMsg( reset( $retval ) );

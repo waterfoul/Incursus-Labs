@@ -80,7 +80,7 @@ class FileDuplicateSearchPage extends QueryPage {
 			'fields' => array(
 				'title' => 'img_name',
 				'value' => 'img_sha1',
-				'img_wiki_user_text',
+				'img_user_text',
 				'img_timestamp'
 			),
 			'conds' => array( 'img_sha1' => $this->hash )
@@ -167,9 +167,9 @@ class FileDuplicateSearchPage extends QueryPage {
 		foreach( $list as $file ) {
 			$batch->addObj( $file->getTitle() );
 			if( $file->isLocal() ) {
-				$wiki_userName = $file->getwiki_user( 'text' );
-				$batch->add( NS_USER, $wiki_userName );
-				$batch->add( NS_USER_TALK, $wiki_userName );
+				$userName = $file->getUser( 'text' );
+				$batch->add( NS_USER, $userName );
+				$batch->add( NS_USER_TALK, $userName );
 			}
 		}
 		$batch->execute();
@@ -191,20 +191,20 @@ class FileDuplicateSearchPage extends QueryPage {
 			$text
 		);
 
-		$wiki_userText = $result->getwiki_user( 'text' );
+		$userText = $result->getUser( 'text' );
 		if ( $result->isLocal() ) {
-			$wiki_userId = $result->getwiki_user( 'id' );
-			$wiki_user = Linker::wiki_userLink( $wiki_userId, $wiki_userText );
-			$wiki_user .= $this->getContext()->msg( 'word-separator' )->plain();
-			$wiki_user .= '<span style="white-space: nowrap;">';
-			$wiki_user .= Linker::wiki_userToolLinks( $wiki_userId, $wiki_userText );
-			$wiki_user .= '</span>';
+			$userId = $result->getUser( 'id' );
+			$user = Linker::userLink( $userId, $userText );
+			$user .= $this->getContext()->msg( 'word-separator' )->plain();
+			$user .= '<span style="white-space: nowrap;">';
+			$user .= Linker::userToolLinks( $userId, $userText );
+			$user .= '</span>';
 		} else {
-			$wiki_user = htmlspecialchars( $wiki_userText );
+			$user = htmlspecialchars( $userText );
 		}
 
-		$time = $this->getLanguage()->wiki_userTimeAndDate( $result->getTimestamp(), $this->getwiki_user() );
+		$time = $this->getLanguage()->userTimeAndDate( $result->getTimestamp(), $this->getUser() );
 
-		return "$plink . . $wiki_user . . $time";
+		return "$plink . . $user . . $time";
 	}
 }

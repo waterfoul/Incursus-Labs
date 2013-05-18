@@ -28,11 +28,11 @@
  *        And there are several that reimplement stashing from scratch, in idiosyncratic ways. The idea is to unify them all here.
  *	  Mostly all of them are the same except for storing some custom fields, which we subsume into the data array.
  *   - enable applications to find said files later, as long as the db table or temp files haven't been purged.
- *   - enable the uploading wiki_user (and *ONLY* the uploading wiki_user) to access said files, and thumbnails of said files, via a URL.
+ *   - enable the uploading user (and *ONLY* the uploading user) to access said files, and thumbnails of said files, via a URL.
  *     We accomplish this using a database table, with ownership checking as you might expect. See SpecialUploadStash, which
  *     implements a web interface to some files stored this way.
  *
- * UploadStash right now is *mostly* intended to show you one wiki_user's slice of the entire stash. The wiki_user parameter is only optional
+ * UploadStash right now is *mostly* intended to show you one user's slice of the entire stash. The user parameter is only optional
  * because there are few cases where we clean out the stash from an automated script. In the future we might refactor this.
  *
  * UploadStash represents the entire stash of temporary files.
@@ -63,8 +63,8 @@ class UploadStash {
 	// fileprops cache
 	protected $fileProps = array();
 
-	// current wiki_user
-	protected $wiki_user, $wiki_userId, $isLoggedIn;
+	// current user
+	protected $user, $userId, $isLoggedIn;
 
 	/**
 	 * Represents a temporary filestore, with metadata in the database.
@@ -72,24 +72,24 @@ class UploadStash {
 	 * (should replace it eventually).
 	 *
 	 * @param $repo FileRepo
-	 * @param $wiki_user wiki_user (default null)
+	 * @param $user User (default null)
 	 */
-	public function __construct( FileRepo $repo, $wiki_user = null ) {
+	public function __construct( FileRepo $repo, $user = null ) {
 		// this might change based on wiki's configuration.
 		$this->repo = $repo;
 
-		// if a wiki_user was passed, use it. otherwise, attempt to use the global.
+		// if a user was passed, use it. otherwise, attempt to use the global.
 		// this keeps FileRepo from breaking when it creates an UploadStash object
-		if ( $wiki_user ) {
-			$this->wiki_user = $wiki_user;
+		if ( $user ) {
+			$this->user = $user;
 		} else {
-			global $wgwiki_user;
-			$this->wiki_user = $wgwiki_user;
+			global $wgUser;
+			$this->user = $wgUser;
 		}
 
-		if ( is_object( $this->wiki_user ) ) {
-			$this->wiki_userId = $this->wiki_user->getId();
-			$this->isLoggedIn = $this->wiki_user->isLoggedIn();
+		if ( is_object( $this->user ) ) {
+			$this->userId = $this->user->getId();
+			$this->isLoggedIn = $this->user->isLoggedIn();
 		}
 	}
 
@@ -113,7 +113,7 @@ class UploadStash {
 
 		if ( !$noAuth ) {
 			if ( !$this->isLoggedIn ) {
-				throw new UploadStashNotLoggedInException( __METHOD__ . ' No wiki_user is logged in, files must belong to wiki_users' );
+				throw new UploadStashNotLoggedInException( __METHOD__ . ' No user is logged in, files must belong to users' );
 			}
 		}
 
@@ -141,8 +141,8 @@ class UploadStash {
 		}
 
 		if ( !$noAuth ) {
-			if ( $this->fileMetadata[$key]['us_wiki_user'] != $this->wiki_userId ) {
-				throw new UploadStashWrongOwnerException( "This file ($key) doesn't belong to the current wiki_user." );
+			if ( $this->fileMetadata[$key]['us_user'] != $this->userId ) {
+				throw new UploadStashWrongOwnerException( "This file ($key) doesn't belong to the current user." );
 			}
 		}
 
@@ -209,7 +209,7 @@ class UploadStash {
 		$usec = substr($usec, 2);
 		$key = wfBaseConvert( $sec . $usec, 10, 36 ) . '.' .
 			wfBaseConvert( mt_rand(), 10, 36 ) . '.'.
-			$this->wiki_userId . '.' .
+			$this->userId . '.' .
 			$extension;
 
 		$this->fileProps[$key] = $fileProps;
@@ -247,18 +247,18 @@ class UploadStash {
 		// we have renamed the file so we have to cleanup once done
 		unlink($path);
 
-		// fetch the current wiki_user ID
+		// fetch the current user ID
 		if ( !$this->isLoggedIn ) {
-			throw new UploadStashNotLoggedInException( __METHOD__ . ' No wiki_user is logged in, files must belong to wiki_users' );
+			throw new UploadStashNotLoggedInException( __METHOD__ . ' No user is logged in, files must belong to users' );
 		}
 
 		// insert the file metadata into the db.
 		wfDebug( __METHOD__ . " inserting $stashPath under $key\n" );
-		w = $this->repo->getMasterDb();
+		$dbw = $this->repo->getMasterDb();
 
 		$this->fileMetadata[$key] = array(
-			'us_id' => w->nextSequenceValue( 'uploadstash_us_id_seq' ),
-			'us_wiki_user' => $this->wiki_userId,
+			'us_id' => $dbw->nextSequenceValue( 'uploadstash_us_id_seq' ),
+			'us_user' => $this->userId,
 			'us_key' => $key,
 			'us_orig_path' => $path,
 			'us_path' => $stashPath, // virtual URL
@@ -270,18 +270,18 @@ class UploadStash {
 			'us_image_height' => $fileProps['height'],
 			'us_image_bits' => $fileProps['bits'],
 			'us_source_type' => $sourceType,
-			'us_timestamp' => w->timestamp(),
+			'us_timestamp' => $dbw->timestamp(),
 			'us_status' => 'finished'
 		);
 
-		w->insert(
+		$dbw->insert(
 			'uploadstash',
 			$this->fileMetadata[$key],
 			__METHOD__
 		);
 
 		// store the insertid in the class variable so immediate retrieval (possibly laggy) isn't necesary.
-		$this->fileMetadata[$key]['us_id'] = w->insertId();
+		$this->fileMetadata[$key]['us_id'] = $dbw->insertId();
 
 		# create the UploadStashFile object for this file.
 		$this->initFile( $key );
@@ -298,14 +298,14 @@ class UploadStash {
 	 */
 	public function clear() {
 		if ( !$this->isLoggedIn ) {
-			throw new UploadStashNotLoggedInException( __METHOD__ . ' No wiki_user is logged in, files must belong to wiki_users' );
+			throw new UploadStashNotLoggedInException( __METHOD__ . ' No user is logged in, files must belong to users' );
 		}
 
-		wfDebug( __METHOD__ . ' clearing all rows for wiki_user ' . $this->wiki_userId . "\n" );
-		w = $this->repo->getMasterDb();
-		w->delete(
+		wfDebug( __METHOD__ . ' clearing all rows for user ' . $this->userId . "\n" );
+		$dbw = $this->repo->getMasterDb();
+		$dbw->delete(
 			'uploadstash',
-			array( 'us_wiki_user' => $this->wiki_userId ),
+			array( 'us_user' => $this->userId ),
 			__METHOD__
 		);
 
@@ -325,16 +325,16 @@ class UploadStash {
 	 */
 	public function removeFile( $key ) {
 		if ( !$this->isLoggedIn ) {
-			throw new UploadStashNotLoggedInException( __METHOD__ . ' No wiki_user is logged in, files must belong to wiki_users' );
+			throw new UploadStashNotLoggedInException( __METHOD__ . ' No user is logged in, files must belong to users' );
 		}
 
-		w = $this->repo->getMasterDb();
+		$dbw = $this->repo->getMasterDb();
 
 		// this is a cheap query. it runs on the master so that this function still works when there's lag.
 		// it won't be called all that often.
-		$row = w->selectRow(
+		$row = $dbw->selectRow(
 			'uploadstash',
-			'us_wiki_user',
+			'us_user',
 			array( 'us_key' => $key ),
 			__METHOD__
 		);
@@ -343,8 +343,8 @@ class UploadStash {
 			throw new UploadStashNoSuchKeyException( "No such key ($key), cannot remove" );
 		}
 
-		if ( $row->us_wiki_user != $this->wiki_userId ) {
-			throw new UploadStashWrongOwnerException( "Can't delete: the file ($key) doesn't belong to this wiki_user." );
+		if ( $row->us_user != $this->userId ) {
+			throw new UploadStashWrongOwnerException( "Can't delete: the file ($key) doesn't belong to this user." );
 		}
 
 		return $this->removeFileNoAuth( $key );
@@ -359,16 +359,16 @@ class UploadStash {
 	public function removeFileNoAuth( $key ) {
 		wfDebug( __METHOD__ . " clearing row $key\n" );
 
-		w = $this->repo->getMasterDb();
+		$dbw = $this->repo->getMasterDb();
 
 		// this gets its own transaction since it's called serially by the cleanupUploadStash maintenance script
-		w->begin( __METHOD__ );
-		w->delete(
+		$dbw->begin( __METHOD__ );
+		$dbw->delete(
 			'uploadstash',
 			array( 'us_key' => $key ),
 			__METHOD__
 		);
-		w->commit( __METHOD__ );
+		$dbw->commit( __METHOD__ );
 
 		// TODO: look into UnregisteredLocalFile and find out why the rv here is sometimes wrong (false when file was removed)
 		// for now, ignore.
@@ -388,14 +388,14 @@ class UploadStash {
 	 */
 	public function listFiles() {
 		if ( !$this->isLoggedIn ) {
-			throw new UploadStashNotLoggedInException( __METHOD__ . ' No wiki_user is logged in, files must belong to wiki_users' );
+			throw new UploadStashNotLoggedInException( __METHOD__ . ' No user is logged in, files must belong to users' );
 		}
 
-		r = $this->repo->getSlaveDb();
-		$res = r->select(
+		$dbr = $this->repo->getSlaveDb();
+		$res = $dbr->select(
 			'uploadstash',
 			'us_key',
-			array( 'us_wiki_user' => $this->wiki_userId ),
+			array( 'us_user' => $this->userId ),
 			__METHOD__
 		);
 
@@ -453,15 +453,15 @@ class UploadStash {
 	 */
 	protected function fetchFileMetadata( $key, $readFromDB = DB_SLAVE ) {
 		// populate $fileMetadata[$key]
-		r = null;
+		$dbr = null;
 		if( $readFromDB === DB_MASTER ) {
 			// sometimes reading from the master is necessary, if there's replication lag.
-			r = $this->repo->getMasterDb();
+			$dbr = $this->repo->getMasterDb();
 		} else {
-			r = $this->repo->getSlaveDb();
+			$dbr = $this->repo->getSlaveDb();
 		}
 
-		$row = r->selectRow(
+		$row = $dbr->selectRow(
 			'uploadstash',
 			'*',
 			array( 'us_key' => $key ),

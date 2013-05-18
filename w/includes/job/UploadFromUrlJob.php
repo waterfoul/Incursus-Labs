@@ -39,9 +39,9 @@ class UploadFromUrlJob extends Job {
 	public $upload;
 
 	/**
-	 * @var wiki_user
+	 * @var User
 	 */
-	protected $wiki_user;
+	protected $user;
 
 	public function __construct( $title, $params, $id = 0 ) {
 		parent::__construct( 'uploadFromUrl', $title, $params, $id );
@@ -55,7 +55,7 @@ class UploadFromUrlJob extends Job {
 			$this->params['url'],
 			false
 		);
-		$this->wiki_user = wiki_user::newFromName( $this->params['wiki_userName'] );
+		$this->user = User::newFromName( $this->params['userName'] );
 
 		# Fetch the file
 		$status = $this->upload->fetchFile();
@@ -81,7 +81,7 @@ class UploadFromUrlJob extends Job {
 				$key = $this->upload->stashFile();
 
 				if ( $this->params['leaveMessage'] ) {
-					$this->wiki_user->leavewiki_userMessage(
+					$this->user->leaveUserMessage(
 						wfMessage( 'upload-warning-subj' )->text(),
 						wfMessage( 'upload-warning-msg',
 							$key,
@@ -103,7 +103,7 @@ class UploadFromUrlJob extends Job {
 			$this->params['comment'],
 			$this->params['pageText'],
 			$this->params['watch'],
-			$this->wiki_user
+			$this->user
 		);
 		$this->leaveMessage( $status );
 		return true;
@@ -111,7 +111,7 @@ class UploadFromUrlJob extends Job {
 	}
 
 	/**
-	 * Leave a message on the wiki_user talk page or in the session according to
+	 * Leave a message on the user talk page or in the session according to
 	 * $params['leaveMessage'].
 	 *
 	 * @param $status Status
@@ -119,13 +119,13 @@ class UploadFromUrlJob extends Job {
 	protected function leaveMessage( $status ) {
 		if ( $this->params['leaveMessage'] ) {
 			if ( $status->isGood() ) {
-				$this->wiki_user->leavewiki_userMessage( wfMessage( 'upload-success-subj' )->text(),
+				$this->user->leaveUserMessage( wfMessage( 'upload-success-subj' )->text(),
 					wfMessage( 'upload-success-msg',
 						$this->upload->getTitle()->getText(),
 						$this->params['url']
 					)->text() );
 			} else {
-				$this->wiki_user->leavewiki_userMessage( wfMessage( 'upload-failure-subj' )->text(),
+				$this->user->leaveUserMessage( wfMessage( 'upload-failure-subj' )->text(),
 					wfMessage( 'upload-failure-msg',
 						$status->getWikiText(),
 						$this->params['url']

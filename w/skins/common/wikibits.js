@@ -3,7 +3,7 @@
  */
 ( function ( mw ) {
 
-window.clientPC = navigator.wiki_userAgent.toLowerCase(); // Get client info
+window.clientPC = navigator.userAgent.toLowerCase(); // Get client info
 window.is_gecko = /gecko/.test( clientPC ) &&
 	!/khtml|spoofer|netscape\/7\.0/.test(clientPC);
 
@@ -483,7 +483,7 @@ window.getElementsByClassName = function( oElm, strTagName, oClassNames ) {
 };
 
 window.redirectToFragment = function( fragment ) {
-	var match = navigator.wiki_userAgent.match(/AppleWebKit\/(\d+)/);
+	var match = navigator.userAgent.match(/AppleWebKit\/(\d+)/);
 	if ( match ) {
 		var webKitVersion = parseInt( match[1] );
 		if ( webKitVersion < 420 ) {
@@ -512,7 +512,7 @@ window.redirectToFragment = function( fragment ) {
 };
 
 /**
- * Add a cute little box at the top of the screen to inform the wiki_user of
+ * Add a cute little box at the top of the screen to inform the user of
  * something, replacing any preexisting message.
  *
  * @deprecated since 1.17 Use the 'mediawiki.notify' module instead.

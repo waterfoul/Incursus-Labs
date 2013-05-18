@@ -175,7 +175,7 @@ abstract class GenericArrayObjectTest extends MediaWikiTestCase {
 			$validValid = $element instanceof $elementClass;
 
 			try{
-				call_wiki_user_func( $function, $list, $element );
+				call_user_func( $function, $list, $element );
 				$valid = true;
 			}
 			catch ( InvalidArgumentException $exception ) {

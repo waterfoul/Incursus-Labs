@@ -114,9 +114,9 @@ abstract class RevisionListBase extends ContextSource {
 
 	/**
 	 * Do the DB query to iterate through the objects.
-	 * @param  DatabaseBase object to use for the query
+	 * @param $db DatabaseBase object to use for the query
 	 */
-	abstract public function doQuery(  );
+	abstract public function doQuery( $db );
 
 	/**
 	 * Create an item object from a DB result row
@@ -163,7 +163,7 @@ abstract class RevisionItemBase {
 	}
 
 	/**
-	 * Get the DB field name storing wiki_user ids.
+	 * Get the DB field name storing user ids.
 	 * Override this function.
 	 * @return bool
 	 */
@@ -172,7 +172,7 @@ abstract class RevisionItemBase {
 	}
 
 	/**
-	 * Get the DB field name storing wiki_user names.
+	 * Get the DB field name storing user names.
 	 * Override this function.
 	 * @return bool
 	 */
@@ -190,21 +190,21 @@ abstract class RevisionItemBase {
 	}
 
 	/**
-	 * Get the date, formatted in wiki_user's languae
+	 * Get the date, formatted in user's languae
 	 * @return String
 	 */
 	public function formatDate() {
-		return $this->list->getLanguage()->wiki_userDate( $this->getTimestamp(),
-			$this->list->getwiki_user() );
+		return $this->list->getLanguage()->userDate( $this->getTimestamp(),
+			$this->list->getUser() );
 	}
 
 	/**
-	 * Get the time, formatted in wiki_user's languae
+	 * Get the time, formatted in user's languae
 	 * @return String
 	 */
 	public function formatTime() {
-		return $this->list->getLanguage()->wiki_userTime( $this->getTimestamp(),
-			$this->list->getwiki_user() );
+		return $this->list->getLanguage()->userTime( $this->getTimestamp(),
+			$this->list->getUser() );
 	}
 
 	/**
@@ -217,7 +217,7 @@ abstract class RevisionItemBase {
 	}
 
 	/**
-	 * Get the author wiki_user ID
+	 * Get the author user ID
 	 * @return int
 	 */
 	public function getAuthorId() {
@@ -226,7 +226,7 @@ abstract class RevisionItemBase {
 	}
 
 	/**
-	 * Get the author wiki_user name
+	 * Get the author user name
 	 * @return string
 	 */
 	public function getAuthorName() {
@@ -235,12 +235,12 @@ abstract class RevisionItemBase {
 	}
 
 	/**
-	 * Returns true if the current wiki_user can view the item
+	 * Returns true if the current user can view the item
 	 */
 	abstract public function canView();
 
 	/**
-	 * Returns true if the current wiki_user can view the item text/file
+	 * Returns true if the current user can view the item text/file
 	 */
 	abstract public function canViewContent();
 
@@ -257,23 +257,23 @@ class RevisionList extends RevisionListBase {
 	}
 
 	/**
-	 * @param  DatabaseBase
+	 * @param $db DatabaseBase
 	 * @return mixed
 	 */
-	public function doQuery(  ) {
+	public function doQuery( $db ) {
 		$conds = array( 'rev_page' => $this->title->getArticleID() );
 		if ( $this->ids !== null ) {
 			$conds['rev_id'] = array_map( 'intval', $this->ids );
 		}
-		return ->select(
-			array( 'revision', 'page', 'wiki_user' ),
-			array_merge( Revision::selectFields(), Revision::selectwiki_userFields() ),
+		return $db->select(
+			array( 'revision', 'page', 'user' ),
+			array_merge( Revision::selectFields(), Revision::selectUserFields() ),
 			$conds,
 			__METHOD__,
 			array( 'ORDER BY' => 'rev_id DESC' ),
 			array(
 				'page' => Revision::pageJoinCond(),
-				'wiki_user' => Revision::wiki_userJoinCond() )
+				'user' => Revision::userJoinCond() )
 		);
 	}
 
@@ -303,19 +303,19 @@ class RevisionItem extends RevisionItemBase {
 	}
 
 	public function getAuthorIdField() {
-		return 'rev_wiki_user';
+		return 'rev_user';
 	}
 
 	public function getAuthorNameField() {
-		return 'wiki_user_name'; // see Revision::selectwiki_userFields()
+		return 'user_name'; // see Revision::selectUserFields()
 	}
 
 	public function canView() {
-		return $this->revision->wiki_userCan( Revision::DELETED_RESTRICTED, $this->context->getwiki_user() );
+		return $this->revision->userCan( Revision::DELETED_RESTRICTED, $this->context->getUser() );
 	}
 
 	public function canViewContent() {
-		return $this->revision->wiki_userCan( Revision::DELETED_TEXT, $this->context->getwiki_user() );
+		return $this->revision->userCan( Revision::DELETED_TEXT, $this->context->getUser() );
 	}
 
 	public function isDeleted() {
@@ -374,11 +374,11 @@ class RevisionItem extends RevisionItemBase {
 		$difflink = $this->context->msg( 'parentheses' )
 			->rawParams( $this->getDiffLink() )->escaped();
 		$revlink = $this->getRevisionLink();
-		$wiki_userlink = Linker::revwiki_userLink( $this->revision );
+		$userlink = Linker::revUserLink( $this->revision );
 		$comment = Linker::revComment( $this->revision );
 		if ( $this->isDeleted() ) {
 			$revlink = "<span class=\"history-deleted\">$revlink</span>";
 		}
-		return "<li>$difflink $revlink $wiki_userlink $comment</li>";
+		return "<li>$difflink $revlink $userlink $comment</li>";
 	}
 }

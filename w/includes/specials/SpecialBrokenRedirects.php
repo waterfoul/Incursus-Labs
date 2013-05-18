@@ -119,7 +119,7 @@ class BrokenRedirectsPage extends QueryPage {
 
 		$out = $from . $this->msg( 'word-separator' )->escaped();
 
-		if( $this->getwiki_user()->isAllowed( 'delete' ) ) {
+		if( $this->getUser()->isAllowed( 'delete' ) ) {
 			$links[] = Linker::linkKnown(
 				$fromObj,
 				$this->msg( 'brokenredirects-delete' )->escaped(),

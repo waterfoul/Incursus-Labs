@@ -10,7 +10,7 @@
  */
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-rememberpassword' => 'ᐃᖅᑑ ᐅᐃᑭᐱᑎᐊ ᐊᑎᖅ ᖃᑯᒍᖅ ᐊᑐᐃᓐᓇᓯᕗᖅ ᐅᕙᓗᒪᔪᖅ ᖃᕆᑕᐅᔭᖅ (for a maximum of $1 {{PLURAL:$1|day|days}})',
 
 # Dates
@@ -101,7 +101,7 @@ $messages = array(
 'jumptonavigation' => 'ᒥᐊᓂᕆᕚ',
 'jumptosearch' => 'ᐃᕚᖅᐳᖅ',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'ᒥᒃᓵᓂ {{SITENAME}}',
 'aboutpage' => 'Project:ᒥᒃᓵᓂ',
 'currentevents' => 'ᐱᒋᕗᖅ ᐱᐅᓯᖅ',
@@ -130,7 +130,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'ᒪᑉᐱᑕᖅ',
-'nstab-wiki_user' => 'ᐃᓄᒃ ᒪᑉᐱᑕᖅ',
+'nstab-user' => 'ᐃᓄᒃ ᒪᑉᐱᑕᖅ',
 'nstab-special' => 'ᐱᔨ',
 'nstab-project' => 'ᐱᓕᕆᐊᒃᓴᐃᑦ ᐱᕙᓪᓕᐊᔾᔪᑎᒃᓴᓄᑦ ᒪᑉᐱᑕᖅ',
 'nstab-image' => 'ᐊᒋᐅᑦ',
@@ -151,9 +151,9 @@ $messages = array(
 'remembermypassword' => 'ᐃᖅᑑ ᐅᐃᑭᐱᑎᐊ ᐊᑎᖅ ᖃᑯᒍᖅ ᐊᑐᐃᓐᓇᓯᕗᖅ ᐅᕙᓗᒪᔪᖅ ᖃᕆᑕᐅᔭᖅ (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'ᐊᑯᓐᓇᐳᖅ',
 'loginprompt' => 'ᐱᒋᐊᓕᒃ ᐃᒪᑐᐊᖅ ᖃᕆᑕᐅᔭᖅ ᖂᑮᔅ(Cookies) ᐱᕐᖄᑎ ᐊᑯᓐᓇᐳᖅ ᐅᐃᑭᐱᑎᐊ.',
-'wiki_userlogin' => 'ᐊᑯᓐᓇᐳᖅ / ᐱᕐᖄᐹ ᑮᓇᐅᔭᒃᑯᕕᖕᒥ ᑐᖅᑯᖅᓯᕕᒃ',
+'userlogin' => 'ᐊᑯᓐᓇᐳᖅ / ᐱᕐᖄᐹ ᑮᓇᐅᔭᒃᑯᕕᖕᒥ ᑐᖅᑯᖅᓯᕕᒃ',
 'logout' => 'ᐊᓂᕝᕕᒃ',
-'wiki_userlogout' => 'ᐊᓂᕝᕕᒃ',
+'userlogout' => 'ᐊᓂᕝᕕᒃ',
 'nologin' => "ᐊᔪᐃᓐᓈᖅ ᐃᓄᖁᑎ? '''$1'''.",
 'nologinlink' => 'ᐱᕐᖄᐹ ᑮᓇᐅᔭᒃᑯᕕᖕᒥ ᑐᖅᑯᖅᓯᕕᒃ',
 'gotaccountlink' => 'ᐊᑯᓐᓇᐳᖅ',
@@ -207,13 +207,13 @@ $messages = array(
 'prefs-rc' => 'ᐱᒋᕗᖅ ᐊᓯᐊᙳᑐᖅ',
 'searchresultshead' => 'ᐃᕚᖅᐳᖅ',
 'youremail' => 'ᑭᒍᑎᐅᑉ ᓯᑎᓂᖅᐹᖓ:',
-'wiki_username' => 'ᐅᐃᑭᐱᑎᐊ ᐊᑎᖅ:',
+'username' => 'ᐅᐃᑭᐱᑎᐊ ᐊᑎᖅ:',
 'yourrealname' => 'ᐃᓄᓪᓚᕆᒃ ᐊᑎᖅ:',
 'email' => 'ᑭᒍᑎᐅᑉ ᓯᑎᓂᖅᐹᖓ',
 'prefs-help-email' => 'ᑭᒍᑎᐅᑉ ᓯᑎᓂᖅᐹᖓ (ᐱᒃᑲᓪᓚᕗᖅ) — ᖃᑯᒍ ᓇᓗᓇᙱᓚᖅ ᐃᓕᔅᓯ ᐱᔪᖕᓇᖅᑐᖅ ᐱᒋᕚ ᑲᙳᓇᖅᑐᖅ ᐋᔩᖃᑎᒋᖏᖅ',
 
-# wiki_user rights
-'editingwiki_user' => "ᓱᖁᓯᖅᐹ ᖃᑕᙳᑎ '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+# User rights
+'editinguser' => "ᓱᖁᓯᖅᐹ ᖃᑕᙳᑎ '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Recent changes
 'recentchanges' => 'ᐱᒋᕗᖅ ᐊᓯᐊᙳᑐᖅ',
@@ -250,7 +250,7 @@ $messages = array(
 
 # Statistics
 'statistics' => 'ᑭᓯᑦᓯᓯᖕᖑᕐᓗᒋᑦ ᐹᓯᔅᓱᑎᔅᓴᑦ',
-'statistics-header-wiki_users' => 'ᖃᑕᙳᑎ ᑭᓯᑦᓯᓯᖕᖑᕐᓗᒋᑦ ᐹᓯᔅᓱᑎᔅᓴᑦ',
+'statistics-header-users' => 'ᖃᑕᙳᑎ ᑭᓯᑦᓯᓯᖕᖑᕐᓗᒋᑦ ᐹᓯᔅᓱᑎᔅᓴᑦ',
 
 'doubleredirects' => 'ᑕᐱᕐᖃᓕᒃ ᖃᓂᖓᓂ ᑲᒪᒋᔭᖅ ᐋᓯᑦ ᓇᑭᑦ',
 
@@ -259,8 +259,8 @@ $messages = array(
 'brokenredirects-delete' => 'ᓂᐸᖅᑎᐹ',
 
 # Miscellaneous special pages
-'listwiki_users' => 'ᖃᑕᙳᑎ ᓂᐱ',
-'newpages-wiki_username' => 'ᐅᐃᑭᐱᑎᐊ ᐊᑎᖅ:',
+'listusers' => 'ᖃᑕᙳᑎ ᓂᐱ',
+'newpages-username' => 'ᐅᐃᑭᐱᑎᐊ ᐊᑎᖅ:',
 'ancientpages' => 'ᒪᑉᐱᑕᖅ ᐃᑦᑐᓴᖅ ᐅᑐᖃᖅ',
 'move' => 'ᐅᐊᔪᖅ',
 
@@ -277,8 +277,8 @@ $messages = array(
 # Special:Categories
 'categories' => 'ᓄᐊᑉᐳᑦ',
 
-# E-mail wiki_user
-'emailwiki_user' => 'ᑭᒍᑎᐅᑉ ᓯᑎᓂᖅᐹᖓ ᐃᓄᒃ',
+# E-mail user
+'emailuser' => 'ᑭᒍᑎᐅᑉ ᓯᑎᓂᖅᐹᖓ ᐃᓄᒃ',
 'emailfrom' => 'ᓇᑭᑦ',
 'emailmessage' => 'ᑭᒡᒐᐹ',
 'emailsend' => 'ᕿᐅᑦᓴᕕᒋᕚ',

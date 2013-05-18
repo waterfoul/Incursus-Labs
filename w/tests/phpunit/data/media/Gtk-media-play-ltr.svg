@@ -14,7 +14,7 @@
     <path d="M 27.314 2.29 C 24.335 4.01 22.484 7.216 22.484 10.656 L 22.484 239.538 C 22.484 242.977 24.335 246.184 27.313 247.903 C 30.293 249.623 33.994 249.623 36.973 247.905 L 235.193 133.464 C 238.172 131.742 240.023 128.536 240.023 125.098 C 240.023 121.658 238.172 118.452 235.193 116.732 L 36.975 2.29 C 33.996 0.57 30.294 0.57 27.314 2.29 z " style="fill:#003399;stroke:none;" id="path553"/>
     <path d="M 29.247 5.636 C 27.454 6.672 26.349 8.585 26.349 10.656 L 26.349 239.538 C 26.349 241.608 27.453 243.521 29.247 244.558 C 31.04 245.592 33.249 245.592 35.042 244.558 L 233.261 130.117 C 235.054 129.081 236.159 127.169 236.159 125.098 C 236.159 123.027 235.054 121.114 233.261 120.078 L 35.042 5.636 C 33.25 4.601 31.041 4.601 29.247 5.636 z " style="fill:#003399;stroke:none;" id="path554"/>
     <path d="M 32.145 10.656 L 230.364 125.097 L 32.145 239.538 L 32.145 10.656 z " style="fill:#3399ff;stroke:none;" id="path555"/>
-    <linearGradient x1="109.971703" y1="8.70849991" x2="109.971703" y2="107.238800" id="XMLID_1_" gradientUnits="wiki_userSpaceOnUse" spreadMethod="pad">
+    <linearGradient x1="109.971703" y1="8.70849991" x2="109.971703" y2="107.238800" id="XMLID_1_" gradientUnits="userSpaceOnUse" spreadMethod="pad">
       <stop style="stop-color:#ffffff;stop-opacity:1;" offset="0.00000000" id="stop557"/>
       <stop style="stop-color:#3399ff;stop-opacity:1;" offset="1.00000000" id="stop558"/>
       <a:midPointStop offset="0" style="stop-color:#FFFFFF" id="midPointStop559"/>
@@ -22,7 +22,7 @@
       <a:midPointStop offset="1" style="stop-color:#3399FF" id="midPointStop561"/>
     </linearGradient>
     <path d="M 32.145 141.057 C 36.775 141.258 41.456 141.368 46.183 141.368 C 105.41 141.368 157.526 125.124 187.799 100.524 L 32.145 10.656 L 32.145 141.057 z " style="fill:url(#XMLID_1_);stroke:none;" id="path562"/>
-    <linearGradient x1="109.972198" y1="264.875000" x2="109.972198" y2="145.249298" id="XMLID_2_" gradientUnits="wiki_userSpaceOnUse" spreadMethod="pad">
+    <linearGradient x1="109.972198" y1="264.875000" x2="109.972198" y2="145.249298" id="XMLID_2_" gradientUnits="userSpaceOnUse" spreadMethod="pad">
       <stop style="stop-color:#ccffff;stop-opacity:1;" offset="0.00000000" id="stop564"/>
       <stop style="stop-color:#3399ff;stop-opacity:1;" offset="1.00000000" id="stop565"/>
       <a:midPointStop offset="0" style="stop-color:#CCFFFF" id="midPointStop566"/>

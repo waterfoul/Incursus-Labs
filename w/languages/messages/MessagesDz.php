@@ -122,7 +122,7 @@ $messages = array(
 'jumptonavigation' => 'འཛུལ་འགྱོ་',
 'jumptosearch' => 'འཚོལ་ཞིབ།',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} གི་སྐོར་ལས།',
 'aboutpage' => 'Project:སྐོར་ལས།',
 'copyrightpage' => '{{ns:project}}:འདྲ་བཤུས་འབད་ཆ།',
@@ -155,7 +155,7 @@ $messages = array(
 'page-rss-feed' => '"$1" ཨར་ཨེསི་ཨེསི་འབྱུང་ས།',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-wiki_user' => 'ལག་ལེན་པའི་ཤོག་ལེབ།',
+'nstab-user' => 'ལག་ལེན་པའི་ཤོག་ལེབ།',
 'nstab-project' => 'ལས་འགུལ་ཤོག་ལེབ།',
 'nstab-image' => 'ཡིག་སྣོད།',
 'nstab-template' => 'ཊེམ་པེལེཊི།',
@@ -174,9 +174,9 @@ $messages = array(
 'login' => 'ནང་བསྐྱོད།',
 'nav-login-createaccount' => 'ནང་བསྐྱོད་འབད་ / རྩིས་ཐོ་གསརཔ་བཟོ།',
 'loginprompt' => '{{SITENAME}} ནང་ལུ་ ནང་བསྐྱོད་འབད་ནིའི་དོན་ལུ་ ཁྱོད་ཀྱིས་ ཀུ་ཀིསི་འདི་ལྕོགས་ཅན་བཟོ་དགོ།',
-'wiki_userlogin' => 'ནང་བསྐྱོད་འབད་ / རྩིས་ཐོ་གསརཔ་བཟོ།',
+'userlogin' => 'ནང་བསྐྱོད་འབད་ / རྩིས་ཐོ་གསརཔ་བཟོ།',
 'logout' => 'ཕྱིར་བསྐྱོད།',
-'wiki_userlogout' => 'ཕྱིར་བསྐྱོད།',
+'userlogout' => 'ཕྱིར་བསྐྱོད།',
 'nologin' => "ནང་བསྐྱོད་མེད་ག? '''$1'''",
 'nologinlink' => 'རྩིས་ཐོ་གསརཔ་བཟོ།',
 'createaccount' => 'རྩིས་ཐོ་གསརཔ་བཟོ།',
@@ -184,11 +184,11 @@ $messages = array(
 'gotaccountlink' => 'ནང་བསྐྱོད།',
 'loginsuccesstitle' => 'ནང་བསྐྱོད་ལེགས་ཤོམ་འབད་ཡོདཔ།',
 'loginsuccess' => "'''ད་འབདན་ཁྱོད་  {{SITENAME}} ནང་ \"\$1\" སྦེ་ ནང་བསྐྱོད་འབད་ཡོདཔ།'''",
-'nosuchwiki_user' => 'མིང་ "$1" བཟུམ་གྱི་ལག་ལེན་པ་མེད།
+'nosuchuser' => 'མིང་ "$1" བཟུམ་གྱི་ལག་ལེན་པ་མེད།
 སྡེབ་དཔྱད་འབད་ ཡང་ན་ རྩིས་ཐོ་གསརཔ་ཅིག་བཟོ།',
-'nosuchwiki_usershort' => 'མིང་ "$1" བཟུམ་གྱི་ལག་ལེན་པ་མེད།
+'nosuchusershort' => 'མིང་ "$1" བཟུམ་གྱི་ལག་ལེན་པ་མེད།
 སྡེབ་དཔྱད་འབད།',
-'nowiki_userspecified' => 'ལག་ལེན་པའི་མིང་ གསལ་བཀོད་འབད་དགོ།',
+'nouserspecified' => 'ལག་ལེན་པའི་མིང་ གསལ་བཀོད་འབད་དགོ།',
 'wrongpassword' => 'མ་བདེན་པའི་ཆོག་ཡིག་བཙུགས་ཡོདཔ། ལོག་འབད་རྩོལ་བསྐྱེད།',
 'wrongpasswordempty' => 'ཆོག་ཡིག་བཙུགས་མི་འདི་སྟོངམ་ཨིན་པས། ལོག་འབད་རྩོལ་བསྐྱེད།',
 'passwordtooshort' => 'ཁྱོད་ཀྱི་ཆོག་ཡིག་འདི་ནུས་མེད་ ཡང་ན་ ཐུང་དྲགས་ནུག།
@@ -268,7 +268,7 @@ $messages = array(
 'template-protected' => '(ཉེན་སྐྱོབ་འབད་ཡོདཔ།)',
 'template-semiprotected' => '(ཉེན་སྐྱོབ་ཕྱེད་ཀ་འབད་ཡོདཔ་)',
 'nocreatetext' => '{{SITENAME}} གིས་ ཤོག་ལེབ་གསརཔ་བཟོ་ནི་ལས་ བཀག་དམ་འབད་ཡོདཔ།
-ཁྱོད་ཀྱིས་ ལོག་འགྱོ་ཞིནམ་ལས་ ཡོད་བཞིན་པའི་ཤོག་ལེབ་འདི་ཞུན་དག་འབད་ ཡང་ན་  [[Special:wiki_userLogin|ནང་བསྐྱོད་དང་ ཡངན་ རྩིས་ཐོ་གསརཔ་བཟོ་]].',
+ཁྱོད་ཀྱིས་ ལོག་འགྱོ་ཞིནམ་ལས་ ཡོད་བཞིན་པའི་ཤོག་ལེབ་འདི་ཞུན་དག་འབད་ ཡང་ན་  [[Special:UserLogin|ནང་བསྐྱོད་དང་ ཡངན་ རྩིས་ཐོ་གསརཔ་བཟོ་]].',
 'recreate-moveddeleted-warn' => "'''ཉེན་བརྡ་: ཁྱོད་ཀྱིས་ ཧ་མ་ལས་བཏོན་བཏང་ཡོད་པའི་ཤོག་ལེབ་ཅིག་ ལོག་གསར་བཟོ་འབདཝ་ཨིན་པས།'''
 
 ཁྱོད་ཀྱིས་ ཤོག་ལེབ་འདི་འཕྲོ་མཐུད་དེ་ཞུན་དག་འབད་ནི་གི་འོས་འབབ་ཡོད་མེད་བལྟ་དགོ།
@@ -317,7 +317,7 @@ $messages = array(
 
 'grouppage-sysop' => '{{ns:project}}:བདག་སྐྱོང་པ།',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'ལག་ལེན་པའི་དབང་ཆ་དྲན་དེབ།',
 
 # Recent changes
@@ -366,7 +366,7 @@ $messages = array(
 'filehist-help' => 'ཡིག་སྣོད་འདི་ དེ་བསྒང་སྟོན་དོ་བཟུམ་སྦེ་ བལྟ་ནི་གི་དོན་ལུ་ ཚེས་གྲངས་/ཆུ་ཚོད་གུ་ ཨེབ་གཏང་འབད།',
 'filehist-current' => 'ད་ལྟོ།',
 'filehist-datetime' => 'ཚེས་གྲངས་/ཆུ་ཚོད།',
-'filehist-wiki_user' => 'ལག་ལེན་པ།',
+'filehist-user' => 'ལག་ལེན་པ།',
 'filehist-dimensions' => 'རྒྱ་ཚད་',
 'filehist-filesize' => 'པར་སྣོད་ཀྱི་ཚད།',
 'filehist-comment' => 'བསམ་བཀོད།',
@@ -428,7 +428,7 @@ $messages = array(
 'longpages' => 'ཤོག་ལེབ་རིངམོ།',
 'deadendpages' => 'ཤོག་ལེབ་མཇུག་',
 'protectedpages' => 'ཉེན་སྐྱོབ་འབད་ཡོད་པའི་ཤོག་ལེབ།',
-'listwiki_users' => 'ལག་ལེན་པའི་ཐོ་ཡིག།',
+'listusers' => 'ལག་ལེན་པའི་ཐོ་ཡིག།',
 'newpages' => 'ཤོག་ལེབ་གསརཔ།',
 'ancientpages' => 'ཤོག་ལེབ་རྙིང་ཤོས།',
 'move' => 'སྤོ་བཤུད་འབད།',
@@ -438,7 +438,7 @@ $messages = array(
 'booksources' => 'ཀི་དེབ་འབྱུང་ས།',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'ལག་ལེན་པ:',
+'specialloguserlabel' => 'ལག་ལེན་པ:',
 'speciallogtitlelabel' => 'མགོ་མིང:',
 'log' => 'ལོགསི།',
 'all-logs-page' => 'ལོག་སི་ཆ་མཉམ།',
@@ -456,8 +456,8 @@ $messages = array(
 # Special:Categories
 'categories' => 'དབྱེ་རིམ།',
 
-# E-mail wiki_user
-'emailwiki_user' => 'ལག་ལེན་པ་ལུ་ གློག་འཕྲིན་གཏང་',
+# E-mail user
+'emailuser' => 'ལག་ལེན་པ་ལུ་ གློག་འཕྲིན་གཏང་',
 
 # Watchlist
 'watchlist' => 'ངེ་གི་བལྟ་ཞིབ་ཐོ་ཡིག།',
@@ -601,7 +601,7 @@ $messages = array(
 'importlogpage' => 'ལོག་ ནང་འདྲེན་འབད།',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'ངེ་གི་ལག་ལེན་པའི་ཤོག་ལེབ།',
+'tooltip-pt-userpage' => 'ངེ་གི་ལག་ལེན་པའི་ཤོག་ལེབ།',
 'tooltip-pt-mytalk' => 'ངེ་གི་བློ་ཤོག།',
 'tooltip-pt-preferences' => 'ངེ་གི་དགའ་གདམ།',
 'tooltip-pt-watchlist' => 'ཁྱོད་ཀྱིས་ བསྒྱུར་བཅོས་ཀྱི་དོན་ལས་ ལྟ་རྟོག་འབད་མི་ཤོག་ལེབ་ཐོ་ཡིག།',
@@ -626,10 +626,10 @@ $messages = array(
 'tooltip-n-help' => 'འཚོལ་ཞིབ་འབད་སའི་ས་གནས།',
 'tooltip-t-whatlinkshere' => 'ནཱ་ལུ་ འབྲེལ་མཐུད་འབད་བའི་ཝི་ཀི་ཤོག་ལེབ་ག་ར་གི་ཐོ་ཡིག།',
 'tooltip-t-contributions' => 'ལག་ལེན་པ་འདི་གི་ཞལ་འདེབས་ཐོ་ཡིག་བལྟ།',
-'tooltip-t-emailwiki_user' => 'ལག་ལེན་པ་འདི་ལུ་ གློག་འཕྲིན་གཏང་།',
+'tooltip-t-emailuser' => 'ལག་ལེན་པ་འདི་ལུ་ གློག་འཕྲིན་གཏང་།',
 'tooltip-t-upload' => 'ཡིག་སྣོད་སྐྱེལ་བཙུགས་འབད།',
 'tooltip-t-specialpages' => 'དམིགས་བསལ་ཤོག་ལེབ་ཚུ་གི་ཐོ་ཡིག།',
-'tooltip-ca-nstab-wiki_user' => 'ལག་ལེན་པའི་ཤོག་ལེབ་བལྟ།',
+'tooltip-ca-nstab-user' => 'ལག་ལེན་པའི་ཤོག་ལེབ་བལྟ།',
 'tooltip-ca-nstab-project' => 'ལས་འགུལ་ཤོག་ལེབ་བལྟ།',
 'tooltip-ca-nstab-image' => 'ཡིག་སྣོད་ཤོག་ལེབ་འདི་སྟོན།',
 'tooltip-ca-nstab-template' => 'ཊེམ་པེལེཊི་བལྟ།',

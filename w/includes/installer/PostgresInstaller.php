@@ -33,13 +33,13 @@ class PostgresInstaller extends DatabaseInstaller {
 		'wgDBserver',
 		'wgDBport',
 		'wgDBname',
-		'wgDBwiki_user',
+		'wgDBuser',
 		'wgDBpassword',
 		'wgDBmwschema',
 	);
 
 	protected $internalDefaults = array(
-		'_Installwiki_user' => 'postgres',
+		'_InstallUser' => 'postgres',
 	);
 
 	var $minimumVersion = '8.3';
@@ -64,7 +64,7 @@ class PostgresInstaller extends DatabaseInstaller {
 			$this->getTextBox( 'wgDBname', 'config-db-name', array(), $this->parent->getHelpBox( 'config-db-name-help' ) ) .
 			$this->getTextBox( 'wgDBmwschema', 'config-db-schema', array(), $this->parent->getHelpBox( 'config-db-schema-help' ) ) .
 			Html::closeElement( 'fieldset' ) .
-			$this->getInstallwiki_userBox();
+			$this->getInstallUserBox();
 	}
 
 	function submitConnectForm() {
@@ -83,9 +83,9 @@ class PostgresInstaller extends DatabaseInstaller {
 			$status->fatal( 'config-invalid-schema', $newValues['wgDBmwschema'] );
 		}
 
-		// Submit wiki_user box
+		// Submit user box
 		if ( $status->isOK() ) {
-			$status->merge( $this->submitInstallwiki_userBox() );
+			$status->merge( $this->submitInstallUserBox() );
 		}
 		if ( !$status->isOK() ) {
 			return $status;
@@ -106,7 +106,7 @@ class PostgresInstaller extends DatabaseInstaller {
 			return Status::newFatal( 'config-postgres-old', $this->minimumVersion, $version );
 		}
 
-		$this->setVar( 'wgDBwiki_user', $this->getVar( '_Installwiki_user' ) );
+		$this->setVar( 'wgDBuser', $this->getVar( '_InstallUser' ) );
 		$this->setVar( 'wgDBpassword', $this->getVar( '_InstallPassword' ) );
 		return Status::newGood();
 	}
@@ -125,20 +125,20 @@ class PostgresInstaller extends DatabaseInstaller {
 
 	/**
 	 * Open a PG connection with given parameters
-	 * @param $wiki_user string wiki_user name
+	 * @param $user string User name
 	 * @param $password string Password
-	 * @param Name string Database name
+	 * @param $dbName string Database name
 	 * @return Status
 	 */
-	protected function openConnectionWithParams( $wiki_user, $password, Name ) {
+	protected function openConnectionWithParams( $user, $password, $dbName ) {
 		$status = Status::newGood();
 		try {
-			 = new DatabasePostgres(
+			$db = new DatabasePostgres(
 				$this->getVar( 'wgDBserver' ),
-				$wiki_user,
+				$user,
 				$password,
-				Name);
-			$status->value = ;
+				$dbName);
+			$status->value = $db;
 		} catch ( DBConnectionError $e ) {
 			$status->fatal( 'config-connection-error', $e->getMessage() );
 		}
@@ -176,10 +176,10 @@ class PostgresInstaller extends DatabaseInstaller {
 	 * created, you need to make a separate connection to connect to that
 	 * database and add tables to it.
 	 *
-	 * New tables are owned by the wiki_user that creates them, and MediaWiki's
+	 * New tables are owned by the user that creates them, and MediaWiki's
 	 * PostgreSQL support has always assumed that the table owner will be
-	 * $wgDBwiki_user. So before we create new tables, we either need to either
-	 * connect as the other wiki_user or to execute a SET ROLE command. Using a
+	 * $wgDBuser. So before we create new tables, we either need to either
+	 * connect as the other user or to execute a SET ROLE command. Using a
 	 * separate connection for this allows us to avoid accidental cross-module
 	 * dependencies.
 	 *
@@ -197,11 +197,11 @@ class PostgresInstaller extends DatabaseInstaller {
 		switch ( $type ) {
 			case 'create-db':
 				return $this->openConnectionToAnyDB(
-					$this->getVar( '_Installwiki_user' ),
+					$this->getVar( '_InstallUser' ),
 					$this->getVar( '_InstallPassword' ) );
 			case 'create-schema':
 				return $this->openConnectionWithParams(
-					$this->getVar( '_Installwiki_user' ),
+					$this->getVar( '_InstallUser' ),
 					$this->getVar( '_InstallPassword' ),
 					$this->getVar( 'wgDBname' ) );
 			case 'create-tables':
@@ -211,7 +211,7 @@ class PostgresInstaller extends DatabaseInstaller {
 					 * @var $conn DatabaseBase
 					 */
 					$conn = $status->value;
-					$safeRole = $conn->addIdentifierQuotes( $this->getVar( 'wgDBwiki_user' ) );
+					$safeRole = $conn->addIdentifierQuotes( $this->getVar( 'wgDBuser' ) );
 					$conn->query( "SET ROLE $safeRole" );
 				}
 				return $status;
@@ -220,26 +220,26 @@ class PostgresInstaller extends DatabaseInstaller {
 		}
 	}
 
-	public function openConnectionToAnyDB( $wiki_user, $password ) {
-		s = array(
+	public function openConnectionToAnyDB( $user, $password ) {
+		$dbs = array(
 			'template1',
 			'postgres',
 		);
-		if ( !in_array( $this->getVar( 'wgDBname' ), s ) ) {
-			array_unshift( s, $this->getVar( 'wgDBname' ) );
+		if ( !in_array( $this->getVar( 'wgDBname' ), $dbs ) ) {
+			array_unshift( $dbs, $this->getVar( 'wgDBname' ) );
 		}
 		$conn = false;
 		$status = Status::newGood();
-		foreach ( s as  ) {
+		foreach ( $dbs as $db ) {
 			try {
 				$conn = new DatabasePostgres(
 					$this->getVar( 'wgDBserver' ),
-					$wiki_user,
+					$user,
 					$password,
-					 );
+					$db );
 			} catch ( DBConnectionError $error ) {
 				$conn = false;
-				$status->fatal( 'config-pg-test-error', ,
+				$status->fatal( 'config-pg-test-error', $db,
 					$error->getMessage() );
 			}
 			if ( $conn !== false ) {
@@ -253,7 +253,7 @@ class PostgresInstaller extends DatabaseInstaller {
 		}
 	}
 
-	protected function getInstallwiki_userPermissions() {
+	protected function getInstallUserPermissions() {
 		$status = $this->getPgConnection( 'create-db' );
 		if ( !$status->isOK() ) {
 			return false;
@@ -262,23 +262,23 @@ class PostgresInstaller extends DatabaseInstaller {
 		 * @var $conn DatabaseBase
 		 */
 		$conn = $status->value;
-		$superwiki_user = $this->getVar( '_Installwiki_user' );
+		$superuser = $this->getVar( '_InstallUser' );
 
 		$row = $conn->selectRow( '"pg_catalog"."pg_roles"', '*',
-			array( 'rolname' => $superwiki_user ), __METHOD__ );
+			array( 'rolname' => $superuser ), __METHOD__ );
 		return $row;
 	}
 
 	protected function canCreateAccounts() {
-		$perms = $this->getInstallwiki_userPermissions();
+		$perms = $this->getInstallUserPermissions();
 		if ( !$perms ) {
 			return false;
 		}
 		return $perms->rolsuper === 't' || $perms->rolcreaterole === 't';
 	}
 
-	protected function isSuperwiki_user() {
-		$perms = $this->getInstallwiki_userPermissions();
+	protected function isSuperUser() {
+		$perms = $this->getInstallUserPermissions();
 		if ( !$perms ) {
 			return false;
 		}
@@ -291,29 +291,29 @@ class PostgresInstaller extends DatabaseInstaller {
 		} else {
 			$noCreateMsg = 'config-db-web-no-create-privs';
 		}
-		$s = $this->getWebwiki_userBox( $noCreateMsg );
+		$s = $this->getWebUserBox( $noCreateMsg );
 
 		return $s;
 	}
 
 	public function submitSettingsForm() {
-		$status = $this->submitWebwiki_userBox();
+		$status = $this->submitWebUserBox();
 		if ( !$status->isOK() ) {
 			return $status;
 		}
 
-		$same = $this->getVar( 'wgDBwiki_user' ) === $this->getVar( '_Installwiki_user' );
+		$same = $this->getVar( 'wgDBuser' ) === $this->getVar( '_InstallUser' );
 
 		if ( $same ) {
 			$exists = true;
 		} else {
-			// Check if the web wiki_user exists
-			// Connect to the database with the install wiki_user
+			// Check if the web user exists
+			// Connect to the database with the install user
 			$status = $this->getPgConnection( 'create-db' );
 			if ( !$status->isOK() ) {
 				return $status;
 			}
-			$exists = $status->value->roleExists( $this->getVar( 'wgDBwiki_user' ) );
+			$exists = $status->value->roleExists( $this->getVar( 'wgDBuser' ) );
 		}
 
 		// Validate the create checkbox
@@ -326,11 +326,11 @@ class PostgresInstaller extends DatabaseInstaller {
 
 		if ( !$create && !$exists ) {
 			if ( $this->canCreateAccounts() ) {
-				$msg = 'config-install-wiki_user-missing-create';
+				$msg = 'config-install-user-missing-create';
 			} else {
-				$msg = 'config-install-wiki_user-missing';
+				$msg = 'config-install-user-missing';
 			}
-			return Status::newFatal( $msg, $this->getVar( 'wgDBwiki_user' ) );
+			return Status::newFatal( $msg, $this->getVar( 'wgDBuser' ) );
 		}
 
 		if ( !$exists ) {
@@ -340,16 +340,16 @@ class PostgresInstaller extends DatabaseInstaller {
 
 		// Existing web account. Test the connection.
 		$status = $this->openConnectionToAnyDB(
-			$this->getVar( 'wgDBwiki_user' ),
+			$this->getVar( 'wgDBuser' ),
 			$this->getVar( 'wgDBpassword' ) );
 		if ( !$status->isOK() ) {
 			return $status;
 		}
 
-		// The web wiki_user is conventionally the table owner in PostgreSQL
-		// installations. Make sure the install wiki_user is able to create
-		// objects on behalf of the web wiki_user.
-		if ( $same || $this->canCreateObjectsForWebwiki_user() ) {
+		// The web user is conventionally the table owner in PostgreSQL
+		// installations. Make sure the install user is able to create
+		// objects on behalf of the web user.
+		if ( $same || $this->canCreateObjectsForWebUser() ) {
 			return Status::newGood();
 		} else {
 			return Status::newFatal( 'config-pg-not-in-role' );
@@ -357,12 +357,12 @@ class PostgresInstaller extends DatabaseInstaller {
 	}
 
 	/**
-	 * Returns true if the install wiki_user is able to create objects owned
-	 * by the web wiki_user, false otherwise.
+	 * Returns true if the install user is able to create objects owned
+	 * by the web user, false otherwise.
 	 * @return bool
 	 */
-	protected function canCreateObjectsForWebwiki_user() {
-		if ( $this->isSuperwiki_user() ) {
+	protected function canCreateObjectsForWebUser() {
+		if ( $this->isSuperUser() ) {
 			return true;
 		}
 
@@ -372,15 +372,15 @@ class PostgresInstaller extends DatabaseInstaller {
 		}
 		$conn = $status->value;
 		$installerId = $conn->selectField( '"pg_catalog"."pg_roles"', 'oid',
-			array( 'rolname' => $this->getVar( '_Installwiki_user' ) ), __METHOD__ );
+			array( 'rolname' => $this->getVar( '_InstallUser' ) ), __METHOD__ );
 		$webId = $conn->selectField( '"pg_catalog"."pg_roles"', 'oid',
-			array( 'rolname' => $this->getVar( 'wgDBwiki_user' ) ), __METHOD__ );
+			array( 'rolname' => $this->getVar( 'wgDBuser' ) ), __METHOD__ );
 
 		return $this->isRoleMember( $conn, $installerId, $webId, $this->maxRoleSearchDepth );
 	}
 
 	/**
-	 * Recursive helper for canCreateObjectsForWebwiki_user().
+	 * Recursive helper for canCreateObjectsForWebUser().
 	 * @param $conn DatabaseBase object
 	 * @param $targetMember int Role ID of the member to look for
 	 * @param $group int Role ID of the group to look for
@@ -414,8 +414,8 @@ class PostgresInstaller extends DatabaseInstaller {
 
 	public function preInstall() {
 		$createDbAccount = array(
-			'name' => 'wiki_user',
-			'callback' => array( $this, 'setupwiki_user' ),
+			'name' => 'user',
+			'callback' => array( $this, 'setupUser' ),
 		);
 		$commitCB = array(
 			'name' => 'pg-commit',
@@ -445,12 +445,12 @@ class PostgresInstaller extends DatabaseInstaller {
 		}
 		$conn = $status->value;
 
-		Name = $this->getVar( 'wgDBname' );
+		$dbName = $this->getVar( 'wgDBname' );
 
 		$exists = $conn->selectField( '"pg_catalog"."pg_database"', '1',
-			array( 'datname' => Name ), __METHOD__ );
+			array( 'datname' => $dbName ), __METHOD__ );
 		if ( !$exists ) {
-			$safedb = $conn->addIdentifierQuotes( Name );
+			$safedb = $conn->addIdentifierQuotes( $dbName );
 			$conn->query( "CREATE DATABASE $safedb", __METHOD__ );
 		}
 		return Status::newGood();
@@ -467,13 +467,13 @@ class PostgresInstaller extends DatabaseInstaller {
 		// Create the schema if necessary
 		$schema = $this->getVar( 'wgDBmwschema' );
 		$safeschema = $conn->addIdentifierQuotes( $schema );
-		$safewiki_user = $conn->addIdentifierQuotes( $this->getVar( 'wgDBwiki_user' ) );
+		$safeuser = $conn->addIdentifierQuotes( $this->getVar( 'wgDBuser' ) );
 		if( !$conn->schemaExists( $schema ) ) {
 			try {
-				$conn->query( "CREATE SCHEMA $safeschema AUTHORIZATION $safewiki_user" );
+				$conn->query( "CREATE SCHEMA $safeschema AUTHORIZATION $safeuser" );
 			} catch ( DBQueryError $e ) {
 				return Status::newFatal( 'config-install-pg-schema-failed',
-					$this->getVar( '_Installwiki_user' ), $schema );
+					$this->getVar( '_InstallUser' ), $schema );
 			}
 		}
 
@@ -487,7 +487,7 @@ class PostgresInstaller extends DatabaseInstaller {
 		return Status::newGood();
 	}
 
-	function setupwiki_user() {
+	function setupUser() {
 		if ( !$this->getVar( '_CreateDBAccount' ) ) {
 			return Status::newGood();
 		}
@@ -498,27 +498,27 @@ class PostgresInstaller extends DatabaseInstaller {
 		}
 		$conn = $status->value;
 
-		$safewiki_user = $conn->addIdentifierQuotes( $this->getVar( 'wgDBwiki_user' ) );
+		$safeuser = $conn->addIdentifierQuotes( $this->getVar( 'wgDBuser' ) );
 		$safepass = $conn->addQuotes( $this->getVar( 'wgDBpassword' ) );
 
-		// Check if the wiki_user already exists
-		$wiki_userExists = $conn->roleExists( $this->getVar( 'wgDBwiki_user' ) );
-		if ( !$wiki_userExists ) {
-			// Create the wiki_user
+		// Check if the user already exists
+		$userExists = $conn->roleExists( $this->getVar( 'wgDBuser' ) );
+		if ( !$userExists ) {
+			// Create the user
 			try {
-				$sql = "CREATE ROLE $safewiki_user NOCREATEDB LOGIN PASSWORD $safepass";
+				$sql = "CREATE ROLE $safeuser NOCREATEDB LOGIN PASSWORD $safepass";
 
-				// If the install wiki_user is not a superwiki_user, we need to make the install
-				// wiki_user a member of the new wiki_user's group, so that the install wiki_user will
-				// be able to create a schema and other objects on behalf of the new wiki_user.
-				if ( !$this->isSuperwiki_user() ) {
-					$sql .= ' ROLE' . $conn->addIdentifierQuotes( $this->getVar( '_Installwiki_user' ) );
+				// If the install user is not a superuser, we need to make the install
+				// user a member of the new user's group, so that the install user will
+				// be able to create a schema and other objects on behalf of the new user.
+				if ( !$this->isSuperUser() ) {
+					$sql .= ' ROLE' . $conn->addIdentifierQuotes( $this->getVar( '_InstallUser' ) );
 				}
 
 				$conn->query( $sql, __METHOD__ );
 			} catch ( DBQueryError $e ) {
-				return Status::newFatal( 'config-install-wiki_user-create-failed',
-					$this->getVar( 'wgDBwiki_user' ), $e->getMessage() );
+				return Status::newFatal( 'config-install-user-create-failed',
+					$this->getVar( 'wgDBuser' ), $e->getMessage() );
 			}
 		}
 
@@ -535,11 +535,11 @@ class PostgresInstaller extends DatabaseInstaller {
 	}
 
 	public function preUpgrade() {
-		global $wgDBwiki_user, $wgDBpassword;
+		global $wgDBuser, $wgDBpassword;
 
-		# Normal wiki_user and password are selected after this step, so for now
+		# Normal user and password are selected after this step, so for now
 		# just copy these two
-		$wgDBwiki_user = $this->getVar( '_Installwiki_user' );
+		$wgDBuser = $this->getVar( '_InstallUser' );
 		$wgDBpassword = $this->getVar( '_InstallPassword' );
 	}
 
@@ -584,8 +584,8 @@ class PostgresInstaller extends DatabaseInstaller {
 	}
 
 	public function setupPLpgSQL() {
-		// Connect as the install wiki_user, since it owns the database and so is
-		// the wiki_user that needs to run "CREATE LANGAUGE"
+		// Connect as the install user, since it owns the database and so is
+		// the user that needs to run "CREATE LANGAUGE"
 		$status = $this->getPgConnection( 'create-schema' );
 		if ( !$status->isOK() ) {
 			return $status;

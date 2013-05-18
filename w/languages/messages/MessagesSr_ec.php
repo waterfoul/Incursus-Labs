@@ -90,7 +90,7 @@ $datePreferenceMigrationMap = array(
 );
 
 $specialPageAliases = array(
-	'Activewiki_users'               => array( 'АктивниКорисници', 'Активни_корисници' ),
+	'Activeusers'               => array( 'АктивниКорисници', 'Активни_корисници' ),
 	'Allmessages'               => array( 'СвеПоруке', 'Све_поруке' ),
 	'Allpages'                  => array( 'Све_странице' ),
 	'Ancientpages'              => array( 'НајстаријиЧланци' ),
@@ -114,7 +114,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'СписакСлика', 'Списак_датотека' ),
 	'Listgrouprights'           => array( 'СписакКорисничкихПрава', 'Списак_корисничких_права' ),
 	'Listredirects'             => array( 'СписакПреусмерења', 'Списак_преусмерења' ),
-	'Listwiki_users'                 => array( 'СписакКорисника', 'КорисничкиСписак', 'Списак_корисника', 'Кориснички_списак' ),
+	'Listusers'                 => array( 'СписакКорисника', 'КорисничкиСписак', 'Списак_корисника', 'Кориснички_списак' ),
 	'Lockdb'                    => array( 'ЗакључајБазу', 'Закључај_базу' ),
 	'Log'                       => array( 'Извештај', 'Извештаји' ),
 	'Lonelypages'               => array( 'Сирочићи' ),
@@ -157,8 +157,8 @@ $specialPageAliases = array(
 	'Unusedimages'              => array( 'НеискоришћенеСлике', 'НеискоришћениФајлови' ),
 	'Upload'                    => array( 'Пошаљи' ),
 	'UploadStash'               => array( 'Складиште' ),
-	'wiki_userlogin'                 => array( 'Корисничка_пријава' ),
-	'wiki_userlogout'                => array( 'Корисничка_одјава' ),
+	'Userlogin'                 => array( 'Корисничка_пријава' ),
+	'Userlogout'                => array( 'Корисничка_одјава' ),
 	'Version'                   => array( 'Верзија', 'Издање' ),
 	'Wantedcategories'          => array( 'ТраженеКатегорије' ),
 	'Wantedfiles'               => array( 'ТраженеСлике' ),
@@ -278,8 +278,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'БРОЈСТРАНИЦА', 'БРОЈ_СТРАНИЦА', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'БРОЈЧЛАНАКА', 'БРОЈ_ЧЛАНАКА', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'БРОЈДАТОТЕКА', 'БРОЈ_ДАТОТЕКА', 'БРОЈФАЈЛОВА', 'БРОЈ_ФАЈЛОВА', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', 'БРОЈКОРИСНИКА', 'БРОЈ_КОРИСНИКА', 'NUMBEROFUSERS' ),
-	'numberofactivewiki_users'       => array( '1', 'БРОЈАКТИВНИХКОРИСНИКА', 'БРОЈ_АКТИВНИХ_КОРИСНИКА', 'NUMBEROFACTIVEUSERS' ),
+	'numberofusers'             => array( '1', 'БРОЈКОРИСНИКА', 'БРОЈ_КОРИСНИКА', 'NUMBEROFUSERS' ),
+	'numberofactiveusers'       => array( '1', 'БРОЈАКТИВНИХКОРИСНИКА', 'БРОЈ_АКТИВНИХ_КОРИСНИКА', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'БРОЈИЗМЕНА', 'БРОЈ_ИЗМЕНА', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'БРОЈПРЕГЛЕДА', 'БРОЈ_ПРЕГЛЕДА', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'ИМЕСТРАНИЦЕ', 'ИМЕ_СТРАНИЦЕ', 'СТРАНИЦА', 'PAGENAME' ),
@@ -351,7 +351,7 @@ $magicWords = array(
 	'revisionmonth1'            => array( '1', 'МЕСЕЦИЗМЕНЕ1', 'МЕСЕЦ_ИЗМЕНЕ1', 'REVISIONMONTH1' ),
 	'revisionyear'              => array( '1', 'ГОДИНАИЗМЕНЕ', 'ГОДИНА_ИЗМЕНЕ', 'REVISIONYEAR' ),
 	'revisiontimestamp'         => array( '1', 'ВРЕМЕИЗМЕНЕ', 'ВРЕМЕ_ИЗМЕНЕ', 'REVISIONTIMESTAMP' ),
-	'revisionwiki_user'              => array( '1', 'КОРИСНИКИЗМЕНЕ', 'КОРИСНИК_ИЗМЕНЕ', 'REVISIONUSER' ),
+	'revisionuser'              => array( '1', 'КОРИСНИКИЗМЕНЕ', 'КОРИСНИК_ИЗМЕНЕ', 'REVISIONUSER' ),
 	'plural'                    => array( '0', 'МНОЖИНА:', 'PLURAL:' ),
 	'fullurl'                   => array( '0', 'ПУНУРЛ:', 'ЦЕЛААДРЕСА', 'ЦЕЛА_АДРЕСА', 'FULLURL:' ),
 	'fullurle'                  => array( '0', 'ПУНУРЛЕ:', 'ЦЕЛЕАДРЕСЕ', 'ЦЕЛЕ_АДРЕСЕ', 'FULLURLE:' ),
@@ -394,7 +394,7 @@ $magicWords = array(
 $separatorTransformTable = array( ',' => '.', '.' => ',' );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Подвлачење веза:',
 'tog-justify' => 'Поравнај пасусе',
 'tog-hideminor' => 'Сакриј мање измене у списку скорашњих измена',
@@ -418,7 +418,7 @@ $messages = array(
 'tog-previewonfirst' => 'Прикажи преглед на првој измени',
 'tog-nocache' => 'Онемогући привремено меморисање страница',
 'tog-enotifwatchlistpages' => 'Пошаљи ми е-поруку када се промени страница или датотека коју надгледам',
-'tog-enotifwiki_usertalkpages' => 'Пошаљи ми е-поруку када се промени моја страница за разговор',
+'tog-enotifusertalkpages' => 'Пошаљи ми е-поруку када се промени моја страница за разговор',
 'tog-enotifminoredits' => 'Пошаљи ми е-поруку и за мање измене у страницама и датотекама',
 'tog-enotifrevealaddr' => 'Откриј моју е-адресу у порукама обавештења',
 'tog-shownumberswatching' => 'Прикажи број корисника који надгледају',
@@ -602,7 +602,7 @@ $messages = array(
 'talk' => 'Разговор',
 'views' => 'Прегледи',
 'toolbox' => 'Алатке',
-'wiki_userpage' => 'Погледај корисничку страницу',
+'userpage' => 'Погледај корисничку страницу',
 'projectpage' => 'Погледај страницу пројекта',
 'imagepage' => 'Погледај страницу датотеке',
 'mediawikipage' => 'Погледај страницу поруке',
@@ -628,7 +628,7 @@ $1',
 'pool-queuefull' => 'Ред је пун захтева',
 'pool-errorunknown' => 'Непозната грешка',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'О пројекту {{SITENAME}}',
 'aboutpage' => 'Project:О нама',
 'copyright' => 'Садржај је доступан под лиценцом $1.',
@@ -664,8 +664,8 @@ $1',
 'youhavenewmessages' => 'Имате $1 ($2).',
 'newmessageslink' => 'нових порука',
 'newmessagesdifflink' => 'последња измена',
-'youhavenewmessagesfromwiki_users' => 'Имате $1 од {{PLURAL:$3|другог корисника|$3 корисника|$3 корисника}} ($2).',
-'youhavenewmessagesmanywiki_users' => 'Имате $1 од много корисника ($2).',
+'youhavenewmessagesfromusers' => 'Имате $1 од {{PLURAL:$3|другог корисника|$3 корисника|$3 корисника}} ($2).',
+'youhavenewmessagesmanyusers' => 'Имате $1 од много корисника ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|нову поруку|нове поруке}}',
 'newmessagesdifflinkplural' => '{{PLURAL:$1|последњу измену|последње измене}}',
 'youhavenewmessagesmulti' => 'Имате нових порука на $1',
@@ -699,7 +699,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Страница',
-'nstab-wiki_user' => '{{GENDER:{{BASEPAGENAME}}|Корисник|Корисница}}',
+'nstab-user' => '{{GENDER:{{BASEPAGENAME}}|Корисник|Корисница}}',
 'nstab-media' => 'Медији',
 'nstab-special' => 'Посебно',
 'nstab-project' => 'Пројекат',
@@ -744,7 +744,7 @@ $1',
 Узрок ове грешке је обично застарела измена или веза до обрисане странице.
 
 Ако се не ради о томе, онда сте вероватно пронашли грешку у софтверу.
-Пријавите је [[Special:Listwiki_users/sysop|администратору]] уз одговарајућу везу.',
+Пријавите је [[Special:ListUsers/sysop|администратору]] уз одговарајућу везу.',
 'missingarticle-rev' => '(измена#: $1)',
 'missingarticle-diff' => '(разлика: $1, $2)',
 'readonly_lag' => 'База података је закључана док се споредни базни сервери не ускладе с главним.',
@@ -795,7 +795,7 @@ $2',
 'customcssprotected' => 'Немате дозволу да мењате ову CSS страницу јер садржи личне поставке другог корисника.',
 'customjsprotected' => 'Немате дозволу да мењате ову страницу јаваскрипта јер садржи личне поставке другог корисника.',
 'ns-specialprotected' => 'Посебне странице се не могу уређивати.',
-'titleprotected' => "Овај наслов је {{GENDER:$1|заштитио корисник|заштитила корисница|заштитио корисник}} [[wiki_user:$1|$1]].
+'titleprotected' => "Овај наслов је {{GENDER:$1|заштитио корисник|заштитила корисница|заштитио корисник}} [[User:$1|$1]].
 Наведени разлог: ''$2''.",
 'filereadonlyerror' => 'Не могу да изменим датотеку „$1“ јер је ризница „$2“ у режиму за читање.
 
@@ -813,7 +813,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''Одјављени сте.'''
 
-Можете да наставите с коришћењем овог викија као гост, или се [[Special:wiki_userLogin|поново пријавите]] као други корисник.
+Можете да наставите с коришћењем овог викија као гост, или се [[Special:UserLogin|поново пријавите]] као други корисник.
 Имајте на уму да неке странице могу наставити да се приказују као да сте још пријављени, све док не очистите привремену меморију свог прегледача.",
 'welcomecreation' => '== Добро дошли, $1! ==
 
@@ -830,21 +830,21 @@ $2',
 'login' => 'Пријави ме',
 'nav-login-createaccount' => 'Пријава/регистрација',
 'loginprompt' => 'Омогућите колачиће да бисте се пријавили на овај вики.',
-'wiki_userlogin' => 'Пријава/регистрација',
-'wiki_userloginnocreate' => 'Пријава',
+'userlogin' => 'Пријава/регистрација',
+'userloginnocreate' => 'Пријава',
 'logout' => 'Одјава',
-'wiki_userlogout' => 'Одјави ме',
+'userlogout' => 'Одјави ме',
 'notloggedin' => 'Нисте пријављени',
 'nologin' => 'Немате налог? Идите на страницу „$1“.',
 'nologinlink' => 'Отварање налога',
 'createaccount' => 'Отвори налог',
 'gotaccount' => 'Већ имате налог? Идите на страницу „$1“.',
 'gotaccountlink' => 'Пријава',
-'wiki_userlogin-resetlink' => 'Заборавили сте податке за пријаву?',
+'userlogin-resetlink' => 'Заборавили сте податке за пријаву?',
 'createaccountmail' => 'Е-поштом',
 'createaccountreason' => 'Разлог:',
 'badretype' => 'Унете лозинке се не поклапају.',
-'wiki_userexists' => 'Корисничко име је заузето. Изаберите друго.',
+'userexists' => 'Корисничко име је заузето. Изаберите друго.',
 'loginerror' => 'Грешка при пријављивању',
 'createaccounterror' => 'Не могу да отворим налог: $1',
 'nocookiesnew' => 'Кориснички налог је отворен, али нисте пријављени.
@@ -858,13 +858,13 @@ $2',
 'noname' => 'Унели сте неисправно корисничко име.',
 'loginsuccesstitle' => 'Успешно пријављивање',
 'loginsuccess' => "'''Пријављени сте као „$1“.'''",
-'nosuchwiki_user' => 'Не постоји корисник с именом „$1“.
+'nosuchuser' => 'Не постоји корисник с именом „$1“.
 Корисничка имена су осетљива на мала и велика слова.
-Проверите да ли сте га добро унели или [[Special:wiki_userLogin/signup|отворите нови налог]].',
-'nosuchwiki_usershort' => 'Корисник с именом „$1“ не постоји.
+Проверите да ли сте га добро унели или [[Special:UserLogin/signup|отворите нови налог]].',
+'nosuchusershort' => 'Корисник с именом „$1“ не постоји.
 Проверите да ли сте правилно написали.',
-'nowiki_userspecified' => 'Морате навести корисничко име.',
-'login-wiki_userblocked' => '{{GENDER:$1|Овај корисник је блокиран|Ова корисница је блокирана|Овај корисник је блокиран}}. Пријава није дозвољена.',
+'nouserspecified' => 'Морате навести корисничко име.',
+'login-userblocked' => '{{GENDER:$1|Овај корисник је блокиран|Ова корисница је блокирана|Овај корисник је блокиран}}. Пријава није дозвољена.',
 'wrongpassword' => 'Унели сте неисправну лозинку. Покушајте поново.',
 'wrongpasswordempty' => 'Нисте унели лозинку. Покушајте поново.',
 'passwordtooshort' => 'Лозинка мора имати најмање {{PLURAL:$1|један знак|$1 знака|$1 знакова}}.',
@@ -906,16 +906,16 @@ $2',
 Пријавите се и промените своју лозинку.
 
 Ако је ово грешка, занемарите ову поруку.',
-'wiki_usernamehasherror' => 'Корисничко име не може садржати тарабе',
+'usernamehasherror' => 'Корисничко име не може садржати тарабе',
 'login-throttled' => 'Превише пута сте покушали да се пријавите.
 Сачекајте неколико минута и покушајте поново.',
 'login-abort-generic' => 'Неуспешна пријава – прекинуто',
 'loginlanguagelabel' => 'Језик: $1',
-'suspicious-wiki_userlogout' => 'Ваш захтев за одјаву је одбијен јер је послат од стране неисправног прегледача или посредника.',
+'suspicious-userlogout' => 'Ваш захтев за одјаву је одбијен јер је послат од стране неисправног прегледача или посредника.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'Непозната грешка у функцији PHP mail().',
-'wiki_user-mail-no-addy' => 'Покушали сте да пошаљете поруку без е-адресе.',
+'user-mail-no-addy' => 'Покушали сте да пошаљете поруку без е-адресе.',
 
 # Change password dialog
 'resetpass' => 'Промена лозинке',
@@ -943,7 +943,7 @@ $2',
 'passwordreset-legend' => 'Поништи лозинку',
 'passwordreset-disabled' => 'Обнављање лозинке је онемогућено на овом викију.',
 'passwordreset-pretext' => '{{PLURAL:$1||Унесите један од делова података испод}}',
-'passwordreset-wiki_username' => 'Корисничко име:',
+'passwordreset-username' => 'Корисничко име:',
 'passwordreset-domain' => 'Домен:',
 'passwordreset-capture' => 'Погледати крајњу поруку?',
 'passwordreset-capture-help' => 'Ако означите ову кућицу, е-порука с привременом лозинком ће бити приказана и послата кориснику.',
@@ -956,7 +956,7 @@ $2
 
 {{PLURAL:$3|Привремена лозинка истиче|Привремене лозинке истичу}} за {{PLURAL:$5|један дан|$5 дана|$5 дана}}.
 Пријавите се и изаберите нову лозинку. Ако је неко други захтевао ову радњу или сте се сетили лозинке и не желите да је мењате, занемарите ову поруку.',
-'passwordreset-emailtext-wiki_user' => '{{GENDER:$1|Корисник|Корисница|Корисник}} $1 је затражио подсетник о подацима за пријаву на викију {{SITENAME}} ($4).
+'passwordreset-emailtext-user' => '{{GENDER:$1|Корисник|Корисница|Корисник}} $1 је затражио подсетник о подацима за пријаву на викију {{SITENAME}} ($4).
 Следећи {{PLURAL:$3|кориснички налог је повезан|кориснички налози су повезани}} с овом е-адресом:
 
 $2
@@ -1060,7 +1060,7 @@ $2
 'loginreqlink' => 'пријављени',
 'loginreqpagetext' => 'Морате бити $1 да бисте видели друге странице.',
 'accmailtitle' => 'Лозинка је послата.',
-'accmailtext' => 'Лозинка за {{GENDER:$1|корисника|корисницу|корисника}} [[wiki_user talk:$1|$1]] је послата на $2.
+'accmailtext' => 'Лозинка за {{GENDER:$1|корисника|корисницу|корисника}} [[User talk:$1|$1]] је послата на $2.
 
 Након пријаве, лозинка се може променити [[Special:ChangePassword|овде]].',
 'newarticle' => '(нови)',
@@ -1070,7 +1070,7 @@ $2
 'anontalkpagetext' => '---- Ово је страница за разговор с анонимним корисником који још нема налог или га не користи.
 Због тога морамо да користимо бројчану ИП адресу како бисмо га препознали.
 Такву адресу може делити више корисника.
-Ако сте анонимни корисник и мислите да су вам упућене примедбе, [[Special:wiki_userLogin/signup|отворите налог]] или се [[Special:wiki_userLogin|пријавите]] да бисте избегли будућу забуну с осталим анонимним корисницима.',
+Ако сте анонимни корисник и мислите да су вам упућене примедбе, [[Special:UserLogin/signup|отворите налог]] или се [[Special:UserLogin|пријавите]] да бисте избегли будућу забуну с осталим анонимним корисницима.',
 'noarticletext' => 'На овој страници тренутно нема садржаја.
 Можете [[Special:Search/{{PAGENAME}}|потражити овај наслов]] на другим страницама,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} претражити сродне извештаје] или [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредити страницу]</span>.',
@@ -1080,9 +1080,9 @@ $2
 
 Ово се обично дешава када пратите застарелу везу до странице која је обрисана.
 Више информација можете пронаћи у [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} дневнику брисања].',
-'wiki_userpage-wiki_userdoesnotexist' => 'Кориснички налог „<nowiki>$1</nowiki>“ није отворен.
+'userpage-userdoesnotexist' => 'Кориснички налог „<nowiki>$1</nowiki>“ није отворен.
 Размислите да ли заиста желите да направите или уредите ову страницу.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Кориснички налог „$1“ није отворен.',
+'userpage-userdoesnotexist-view' => 'Кориснички налог „$1“ није отворен.',
 'blocked-notice-logextract' => 'Овај корисник је тренутно блокиран.
 Извештај о последњем блокирању можете погледати испод:',
 'clearyourcache' => "'''Напомена:''' након чувања, можда ћете морати да очистите кеш прегледача.
@@ -1090,18 +1090,18 @@ $2
 *'''Гугл кроум:''' притисните ''Ctrl-Shift-R'' (''⌘-Shift-R'' на Макинтошу)
 *'''Интернет експлорер: '''држите ''Ctrl'' и кликните на ''Освежи'', или притисните ''Ctrl-F5''
 *'''Опера:''' очистите привремену меморију преко менија ''Алатке → Поставке''.",
-'wiki_usercssyoucanpreview' => "'''Савет:''' кориситите дугме „{{int:showpreview}}“ да испробате свој нови CSS пре него што га сачувате.",
-'wiki_userjsyoucanpreview' => "'''Савет:''' кориситите дугме „{{int:showpreview}}“ да испробате свој нови јаваскрипт пре него што га сачувате.",
-'wiki_usercsspreview' => "'''Ово је само преглед CSS-а.'''
+'usercssyoucanpreview' => "'''Савет:''' кориситите дугме „{{int:showpreview}}“ да испробате свој нови CSS пре него што га сачувате.",
+'userjsyoucanpreview' => "'''Савет:''' кориситите дугме „{{int:showpreview}}“ да испробате свој нови јаваскрипт пре него што га сачувате.",
+'usercsspreview' => "'''Ово је само преглед CSS-а.'''
 '''Страница још није сачувана!'''",
-'wiki_userjspreview' => "'''Ово је само преглед јаваскрипта.'''
+'userjspreview' => "'''Ово је само преглед јаваскрипта.'''
 '''Страница још није сачувана!'''",
 'sitecsspreview' => "'''Ово је само преглед CSS-а.'''
 '''Страница још није сачувана!'''",
 'sitejspreview' => "'''Ово је само преглед јаваскрипта.'''
 '''Страница још није сачувана!'''",
-'wiki_userinvalidcssjstitle' => "'''Упозорење:''' не постоји тема „$1“.
-Прилагођене странице CSS и јаваскрипт почињу малим словом, нпр. {{ns:wiki_user}}:Foo/vector.css, а не {{ns:wiki_user}}:Foo/Vector.css.",
+'userinvalidcssjstitle' => "'''Упозорење:''' не постоји тема „$1“.
+Прилагођене странице CSS и јаваскрипт почињу малим словом, нпр. {{ns:user}}:Foo/vector.css, а не {{ns:user}}:Foo/Vector.css.",
 'updated' => '(Ажурирано)',
 'note' => "'''Напомена:'''",
 'previewnote' => "'''Имајте у виду да је ово само преглед.'''
@@ -1110,13 +1110,13 @@ $2
 'previewconflict' => 'Овај преглед осликава како ће текст у текстуалном оквиру изгледати.',
 'session_fail_preview' => "'''Нисмо могли да обрадимо вашу измену због губитка података сесије.'''
 Покушајте поново.
-Ако и даље не ради, покушајте да се [[Special:wiki_userLogout|одјавите]] и поново пријавите.",
+Ако и даље не ради, покушајте да се [[Special:UserLogout|одјавите]] и поново пријавите.",
 'session_fail_preview_html' => "'''Нисмо могли да обрадимо вашу измену због губитка података сесије.'''
 
 ''Будући да је на овом викију омогућен унос HTML ознака, преглед је сакривен као мера предострожности против напада преко јаваскрипта.''
 
 '''Ако сте покушали да направите праву измену, покушајте поново.
-Ако и даље не ради, покушајте да се [[Special:wiki_userLogout|одјавите]] и поново пријавите.'''",
+Ако и даље не ради, покушајте да се [[Special:UserLogout|одјавите]] и поново пријавите.'''",
 'token_suffix_mismatch' => "'''Ваша измена је одбачена јер је ваш прегледач убацио знакове интерпункције у новчић уређивања.
 То се понекад догађа када се користи неисправан посредник.'''",
 'edit_form_incomplete' => "'''Неки делови обрасца за уређивање нису достигли до сервера. Проверите да ли су измене промењене и покушајте поново.'''",
@@ -1167,7 +1167,7 @@ $2
 'edittools-upload' => '-',
 'nocreatetitle' => 'Прављење странице је ограничено',
 'nocreatetext' => 'На овом викију је ограничено прављење нових страница.
-Можете се вратити и уредити постојећу страницу, или се [[Special:wiki_userLogin|пријавите или отворите налог]].',
+Можете се вратити и уредити постојећу страницу, или се [[Special:UserLogin|пријавите или отворите налог]].',
 'nocreate-loggedin' => 'Немате дозволу да правите нове странице.',
 'sectioneditnotsupported-title' => 'Уређивање одељка није подржано',
 'sectioneditnotsupported-text' => 'Уређивање одељка није подржано на овој страници.',
@@ -1218,11 +1218,11 @@ $2
 Проверите разлике испод, па сачувајте измене.',
 'undo-failure' => 'Не могу да вратим измену због постојања сукобљених међуизмена.',
 'undo-norev' => 'Не могу да вратим измену јер не постоји или је обрисана.',
-'undo-summary' => 'Враћена измена $1 од {{GENDER:$2|корисника|кориснице|корисника}} [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|разговор]])',
+'undo-summary' => 'Враћена измена $1 од {{GENDER:$2|корисника|кориснице|корисника}} [[Special:Contributions/$2|$2]] ([[User talk:$2|разговор]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Не могу да отворим налог',
-'cantcreateaccount-text' => "Отварање налога с ове IP адресе ('''$1''') је {{GENDER:$3|блокирао|блокирала|блокирао}} [[wiki_user:$3|$3]].
+'cantcreateaccount-text' => "Отварање налога с ове IP адресе ('''$1''') је {{GENDER:$3|блокирао|блокирала|блокирао}} [[User:$3|$3]].
 
 Разлог који је навео {{GENDER:$3|корисник|корисница|корисник}} $3 је ''$2''",
 
@@ -1261,9 +1261,9 @@ $2
 
 # Revision deletion
 'rev-deleted-comment' => '(опис измене је уклоњен)',
-'rev-deleted-wiki_user' => '(корисничко име је уклоњено)',
+'rev-deleted-user' => '(корисничко име је уклоњено)',
 'rev-deleted-event' => '(историја је уклоњена)',
-'rev-deleted-wiki_user-contribs' => '[корисничко име или ИП адреса је уклоњена – измена је сакривена са списка доприноса]',
+'rev-deleted-user-contribs' => '[корисничко име или ИП адреса је уклоњена – измена је сакривена са списка доприноса]',
 'rev-deleted-text-permission' => "Измена ове странице је '''обрисана'''.
 Детаље можете видети у [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} историји брисања].",
 'rev-deleted-text-unhide' => "Измена ове странице је '''обрисана'''.
@@ -1315,7 +1315,7 @@ $2
 'revdelete-hide-image' => 'Сакриј садржај датотеке',
 'revdelete-hide-name' => 'Сакриј радњу и одредиште',
 'revdelete-hide-comment' => 'сакриј опис измене',
-'revdelete-hide-wiki_user' => 'сакриј име уређивача',
+'revdelete-hide-user' => 'сакриј име уређивача',
 'revdelete-hide-restricted' => 'Сакриј податке од администратора и других корисника',
 'revdelete-radio-same' => '(не мењај)',
 'revdelete-radio-set' => 'да',
@@ -1401,7 +1401,7 @@ $1",
 'showhideselectedversions' => 'Прикажи/сакриј изабране измене',
 'editundo' => 'поништи',
 'diff-multi' => '({{PLURAL:$1|није приказана међуизмена|нису приказане $1 међуизмене|није приказано $1 међуизмена}} {{PLURAL:$2|једног|$2|$2}} корисника)',
-'diff-multi-manywiki_users' => '({{PLURAL:$1|Није приказана међуизмена|Нису приказане $1 међуизмене|Није приказано $1 међуизмена}} од више од $2 корисника)',
+'diff-multi-manyusers' => '({{PLURAL:$1|Није приказана међуизмена|Нису приказане $1 међуизмене|Није приказано $1 међуизмена}} од више од $2 корисника)',
 'difference-missing-revision' => 'Не могу да пронађем {{PLURAL:$2|једну измену|$2 измене|$2 измена}} од ове разлике ($1).
 
 Ово се обично дешава када пратите застарелу везу до странице која је обрисана.
@@ -1486,7 +1486,7 @@ $1",
 'mypreferences' => 'Подешавања',
 'prefs-edits' => 'Број измена:',
 'prefsnologin' => 'Нисте пријављени',
-'prefsnologintext' => 'Морате бити <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} пријављени]</span> да бисте подешавали корисничке поставке.',
+'prefsnologintext' => 'Морате бити <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} пријављени]</span> да бисте подешавали корисничке поставке.',
 'changepassword' => 'Промени лозинку',
 'prefs-skin' => 'Тема',
 'skin-preview' => 'Прегледај',
@@ -1494,7 +1494,7 @@ $1",
 'prefs-beta' => 'Бета могућности',
 'prefs-datetime' => 'Датум и време',
 'prefs-labs' => 'Пробне могућности',
-'prefs-wiki_user-pages' => 'Корисничке странице',
+'prefs-user-pages' => 'Корисничке странице',
 'prefs-personal' => 'Профил',
 'prefs-rc' => 'Скорашње измене',
 'prefs-watchlist' => 'Списак надгледања',
@@ -1559,7 +1559,7 @@ $1",
 'prefs-emailconfirm-label' => 'Потврда е-адресе:',
 'prefs-textboxsize' => 'Величина оквира за уређивање',
 'youremail' => 'Е-адреса:',
-'wiki_username' => 'Корисничко име:',
+'username' => 'Корисничко име:',
 'uid' => 'Кориснички ИБ:',
 'prefs-memberingroups' => 'Члан {{PLURAL:$1|групе|групâ}}:',
 'prefs-memberingroups-type' => '$1',
@@ -1602,36 +1602,36 @@ $1",
 'prefs-displaywatchlist' => 'Поставке приказа',
 'prefs-diffs' => 'Разлике',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'Е-адреса је исправна',
 'email-address-validity-invalid' => 'Унесите исправну е-адресу',
 
-# wiki_user rights
-'wiki_userrights' => 'Управљање корисничким правима',
-'wiki_userrights-lookup-wiki_user' => 'Управљање корисничким групама',
-'wiki_userrights-wiki_user-editname' => 'Унесите корисничко име:',
-'editwiki_usergroup' => 'Промени корисничке групе',
-'editingwiki_user' => "Мењате корисничка права {{GENDER:$1|корисника|кориснице|корисника}} '''[[wiki_user:$1|$1]]''' $2",
-'wiki_userrights-editwiki_usergroup' => 'Промена корисничких група',
-'savewiki_usergroups' => 'Сачувај корисничке групе',
-'wiki_userrights-groupsmember' => 'Члан:',
-'wiki_userrights-groupsmember-auto' => 'Укључени члан од:',
-'wiki_userrights-groups-help' => 'Можете променити групе којима овај корисник припада.
+# User rights
+'userrights' => 'Управљање корисничким правима',
+'userrights-lookup-user' => 'Управљање корисничким групама',
+'userrights-user-editname' => 'Унесите корисничко име:',
+'editusergroup' => 'Промени корисничке групе',
+'editinguser' => "Мењате корисничка права {{GENDER:$1|корисника|кориснице|корисника}} '''[[User:$1|$1]]''' $2",
+'userrights-editusergroup' => 'Промена корисничких група',
+'saveusergroups' => 'Сачувај корисничке групе',
+'userrights-groupsmember' => 'Члан:',
+'userrights-groupsmember-auto' => 'Укључени члан од:',
+'userrights-groups-help' => 'Можете променити групе којима овај корисник припада.
 * Означена кућица означава да се корисник налази у тој групи.
 * Неозначена кућица означава да се корисник не налази у тој групи.
 * Звездица означава да не можете уклонити групу ако је додате и обратно.',
-'wiki_userrights-reason' => 'Разлог:',
-'wiki_userrights-no-interwiki' => 'Немате овлашћења да мењате корисничка права на другим викијима.',
-'wiki_userrights-nodatabase' => 'База података $1 не постоји или није локална.',
-'wiki_userrights-nologin' => 'Морате се [[Special:wiki_userLogin|пријавити]] с администраторским налогом да бисте додали корисничка права.',
-'wiki_userrights-notallowed' => 'Немате овлашћења да додајете или уклањате корисничка права.',
-'wiki_userrights-changeable-col' => 'Групе које можете да промените',
-'wiki_userrights-unchangeable-col' => 'Групе које не можете да промените',
-'wiki_userrights-irreversible-marker' => '$1*',
+'userrights-reason' => 'Разлог:',
+'userrights-no-interwiki' => 'Немате овлашћења да мењате корисничка права на другим викијима.',
+'userrights-nodatabase' => 'База података $1 не постоји или није локална.',
+'userrights-nologin' => 'Морате се [[Special:UserLogin|пријавити]] с администраторским налогом да бисте додали корисничка права.',
+'userrights-notallowed' => 'Немате овлашћења да додајете или уклањате корисничка права.',
+'userrights-changeable-col' => 'Групе које можете да промените',
+'userrights-unchangeable-col' => 'Групе које не можете да промените',
+'userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'Група:',
-'group-wiki_user' => 'Корисници',
+'group-user' => 'Корисници',
 'group-autoconfirmed' => 'Аутоматски потврђени корисници',
 'group-bot' => 'Ботови',
 'group-sysop' => 'Администратори',
@@ -1639,14 +1639,14 @@ $1",
 'group-suppress' => 'Ревизори',
 'group-all' => '(све)',
 
-'group-wiki_user-member' => '{{GENDER:$1|корисник|корисница|корисник}}',
+'group-user-member' => '{{GENDER:$1|корисник|корисница|корисник}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|аутоматски потврђен корисник|аутоматски потврђена корисница|аутоматски потврђен корисник}}',
 'group-bot-member' => '{{GENDER:$1|бот}}',
 'group-sysop-member' => '{{GENDER:$1|администратор|администраторка|администратор}}',
 'group-bureaucrat-member' => '{{GENDER:$1|бирократа|бирократкиња|бирократа}}',
 'group-suppress-member' => '{{GENDER:$1|ревизор|ревизорка|ревизор}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Корисници',
+'grouppage-user' => '{{ns:project}}:Корисници',
 'grouppage-autoconfirmed' => '{{ns:project}}:Аутоматски потврђени корисници',
 'grouppage-bot' => '{{ns:project}}:Ботови',
 'grouppage-sysop' => '{{ns:project}}:Администратори',
@@ -1662,7 +1662,7 @@ $1",
 'right-minoredit' => 'означавање измена као мање',
 'right-move' => 'премештање страница',
 'right-move-subpages' => 'премештање страница с њиховим подстраницама',
-'right-move-rootwiki_userpages' => 'премештање основних корисничких страница',
+'right-move-rootuserpages' => 'премештање основних корисничких страница',
 'right-movefile' => 'премештање датотека',
 'right-suppressredirect' => 'прескакање стварања преусмерења при премештању страница',
 'right-upload' => 'отпремање датотека',
@@ -1688,16 +1688,16 @@ $1",
 'right-suppressionlog' => 'гледање приватних дневника',
 'right-block' => 'блокирање даљих измена других корисника',
 'right-blockemail' => 'онемогућавање корисницима да шаљу е-поруке',
-'right-hidewiki_user' => 'блокирање корисничког имена и његово сакривање од јавности',
+'right-hideuser' => 'блокирање корисничког имена и његово сакривање од јавности',
 'right-ipblock-exempt' => 'заобилажење блокирања IP адресе, самоблокирања и блокирања опсега',
 'right-proxyunbannable' => 'заобилажење самоблокирања посредника',
 'right-unblockself' => 'деблокирање самог себе',
 'right-protect' => 'мењање заштићених страница и степена заштите',
 'right-editprotected' => 'уређивање заштићених страница (с преносивом заштитом)',
 'right-editinterface' => 'уређивање корисничког сучеља',
-'right-editwiki_usercssjs' => 'уређивање туђих CSS и јаваскрипт датотека',
-'right-editwiki_usercss' => 'уређивање туђих CSS датотека',
-'right-editwiki_userjs' => 'уређивање туђих јаваскрипт датотека',
+'right-editusercssjs' => 'уређивање туђих CSS и јаваскрипт датотека',
+'right-editusercss' => 'уређивање туђих CSS датотека',
+'right-edituserjs' => 'уређивање туђих јаваскрипт датотека',
 'right-rollback' => 'брзо враћање измена последњег корисника који је мењао одређену страницу',
 'right-markbotedits' => 'означавање враћених измена као измене бота',
 'right-noratelimit' => 'отпорност на ограничења',
@@ -1708,14 +1708,14 @@ $1",
 'right-patrolmarks' => 'прегледање ознака за патролирање унутар скорашњих измена',
 'right-unwatchedpages' => 'прегледање списка ненадгледаних страница',
 'right-mergehistory' => 'спајање историја страница',
-'right-wiki_userrights' => 'уређивање свих корисничких права',
-'right-wiki_userrights-interwiki' => 'уређивање корисничких права на другим викијима',
+'right-userrights' => 'уређивање свих корисничких права',
+'right-userrights-interwiki' => 'уређивање корисничких права на другим викијима',
 'right-siteadmin' => 'закључавање и откључавање базе података',
 'right-override-export-depth' => 'извоз страница укључујући и повазене странице до дубине од пет веза',
 'right-sendemail' => 'слање е-порука другим корисницима',
 'right-passwordreset' => 'прегледање порука за обнављање лозинке',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Дневник корисничких права',
 'rightslogtext' => 'Ово је дневник измена корисничких права.',
 'rightslogentry' => '{{GENDER:|је променио|је променила|је променио}} права за члана $1 из $2 у $3',
@@ -1731,7 +1731,7 @@ $1",
 'action-minoredit' => 'означавање ове измене као мање',
 'action-move' => 'премештање ове странице',
 'action-move-subpages' => 'премештање ове странице и њених подстраница',
-'action-move-rootwiki_userpages' => 'премештање основних корисничких страница',
+'action-move-rootuserpages' => 'премештање основних корисничких страница',
 'action-movefile' => 'премештање ове датотеке',
 'action-upload' => 'слање ове датотеке',
 'action-reupload' => 'замењивање постојеће датотеке',
@@ -1754,8 +1754,8 @@ $1",
 'action-autopatrol' => 'самоозначавање измена прегледаним',
 'action-unwatchedpages' => 'прегледање списка ненадгледаних страница',
 'action-mergehistory' => 'спајање историје ове странице',
-'action-wiki_userrights' => 'уређивање свих корисничких права',
-'action-wiki_userrights-interwiki' => 'уређивање корисничких права на другим викијима',
+'action-userrights' => 'уређивање свих корисничких права',
+'action-userrights-interwiki' => 'уређивање корисничких права на другим викијима',
 'action-siteadmin' => 'закључавање или откључавање базе података',
 'action-sendemail' => 'слање е-порука',
 
@@ -1787,7 +1787,7 @@ $1",
 'newpageletter' => 'Н',
 'boteditletter' => 'б',
 'unpatrolledletter' => '!',
-'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|корисник надгледа|корисника надгледају|корисника надгледају}}]',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|корисник надгледа|корисника надгледају|корисника надгледају}}]',
 'rc_categories' => 'Ограничи на категорије (раздвоји с усправном цртом)',
 'rc_categories_any' => 'Све',
 'rc-change-size' => '$1',
@@ -1814,7 +1814,7 @@ $1",
 'reuploaddesc' => 'Назад на образац за отпремање',
 'upload-tryagain' => 'Пошаљи измењени опис датотеке',
 'uploadnologin' => 'Нисте пријављени',
-'uploadnologintext' => 'Морате бити [[Special:wiki_userLogin|пријављени]] да бисте отпремали датотеке.',
+'uploadnologintext' => 'Морате бити [[Special:UserLogin|пријављени]] да бисте отпремали датотеке.',
 'upload_directory_missing' => 'Фасцикла за слање ($1) недостаје и сервер је не може направити.',
 'upload_directory_read_only' => 'Сервер не може да пише по фасцикли за слање ($1).',
 'uploaderror' => 'Грешка при отпремању',
@@ -1955,11 +1955,11 @@ $1',
 'upload-proto-error-text' => 'Слање са спољне локације захтева адресу која почиње са <code>http://</code> или <code>ftp://</code>.',
 'upload-file-error' => 'Унутрашња грешка',
 'upload-file-error-text' => 'Дошло је до унутрашње грешке при отварању привремене датотеке на серверу.
-Контактирајте [[Special:Listwiki_users/sysop|администратора]].',
+Контактирајте [[Special:ListUsers/sysop|администратора]].',
 'upload-misc-error' => 'Непозната грешка при слању датотеке',
 'upload-misc-error-text' => 'Непозната грешка при слању датотеке.
 Проверите да ли је адреса исправна и покушајте поново.
-Ако се проблем не реши, контактирајте [[Special:Listwiki_users/sysop|администратора]].',
+Ако се проблем не реши, контактирајте [[Special:ListUsers/sysop|администратора]].',
 'upload-too-many-redirects' => 'Адреса садржи превише преусмерења',
 'upload-unknown-size' => 'Непозната величина',
 'upload-http-error' => 'Дошло је до HTTP грешке: $1',
@@ -2079,7 +2079,7 @@ $1',
 'listfiles_thumb' => 'Минијатура',
 'listfiles_date' => 'Датум',
 'listfiles_name' => 'Назив',
-'listfiles_wiki_user' => 'Корисник',
+'listfiles_user' => 'Корисник',
 'listfiles_size' => 'Величина',
 'listfiles_description' => 'Опис',
 'listfiles_count' => 'Верзије',
@@ -2096,7 +2096,7 @@ $1',
 'filehist-thumb' => 'Минијатура',
 'filehist-thumbtext' => 'Умањени приказ за издање од $1',
 'filehist-nothumb' => 'Нема минијатуре',
-'filehist-wiki_user' => 'Корисник',
+'filehist-user' => 'Корисник',
 'filehist-dimensions' => 'Димензије',
 'filehist-filesize' => 'Величина датотеке',
 'filehist-comment' => 'Коментар',
@@ -2190,7 +2190,7 @@ $1',
 'statistics-header-pages' => 'Странице',
 'statistics-header-edits' => 'Измене',
 'statistics-header-views' => 'Прегледи',
-'statistics-header-wiki_users' => 'Корисници',
+'statistics-header-users' => 'Корисници',
 'statistics-header-hooks' => 'Остало',
 'statistics-articles' => 'Странице са садржајем',
 'statistics-pages' => 'Страница',
@@ -2201,9 +2201,9 @@ $1',
 'statistics-views-total' => 'Укупно прегледа',
 'statistics-views-total-desc' => 'Прегледи непостојећих и посебних страница нису укључени',
 'statistics-views-peredit' => 'Прегледа по измени',
-'statistics-wiki_users' => 'Уписани корисници ([[Special:Listwiki_users|списак чланова]])',
-'statistics-wiki_users-active' => 'Активни корисници',
-'statistics-wiki_users-active-desc' => 'Корисници који су извршили бар једну радњу {{PLURAL:$1|претходни дан|у последња $1 дана|у последњих $1 дана}}',
+'statistics-users' => 'Уписани корисници ([[Special:ListUsers|списак чланова]])',
+'statistics-users-active' => 'Активни корисници',
+'statistics-users-active-desc' => 'Корисници који су извршили бар једну радњу {{PLURAL:$1|претходни дан|у последња $1 дана|у последњих $1 дана}}',
 'statistics-mostpopular' => 'Најпосећеније странице',
 
 'disambiguations' => 'Странице до вишезначних одредница',
@@ -2281,13 +2281,13 @@ $1',
 'protectedtitles' => 'Заштићени наслови',
 'protectedtitlestext' => 'Следећи наслови су заштићени од стварања',
 'protectedtitlesempty' => 'Нема заштићених наслова с овим параметрима.',
-'listwiki_users' => 'Списак корисника',
-'listwiki_users-editsonly' => 'прикажи само кориснике који су уређивали',
-'listwiki_users-creationsort' => 'поређај по датуму стварања',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|измена|измене|измена}}',
-'wiki_usercreated' => '{{GENDER:$3|је направио|је направила|је направио}} дана $1 у $2',
+'listusers' => 'Списак корисника',
+'listusers-editsonly' => 'прикажи само кориснике који су уређивали',
+'listusers-creationsort' => 'поређај по датуму стварања',
+'usereditcount' => '$1 {{PLURAL:$1|измена|измене|измена}}',
+'usercreated' => '{{GENDER:$3|је направио|је направила|је направио}} дана $1 у $2',
 'newpages' => 'Нове странице',
-'newpages-wiki_username' => 'Корисничко име:',
+'newpages-username' => 'Корисничко име:',
 'ancientpages' => 'Најстарије странице',
 'move' => 'премести',
 'movethispage' => 'Премести ову страницу',
@@ -2312,7 +2312,7 @@ $1',
 'booksources-invalid-isbn' => 'Наведени ISBN број није исправан. Проверите да није дошло до грешке при умножавању из првобитног извора.',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Извршилац:',
+'specialloguserlabel' => 'Извршилац:',
 'speciallogtitlelabel' => 'Циљ (наслов или корисник):',
 'log' => 'Дневници',
 'all-logs-page' => 'Сви јавни дневници',
@@ -2371,24 +2371,24 @@ $1',
 'linksearch-line' => '$1 веза у $2',
 'linksearch-error' => 'Џокери се могу појавити само на почетку адресе.',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'Прикажи кориснике почев од:',
-'listwiki_users-submit' => 'Прикажи',
-'listwiki_users-noresult' => 'Корисник није пронађен.',
-'listwiki_users-blocked' => '({{GENDER:$1|блокиран|блокирана|блокиран}})',
+# Special:ListUsers
+'listusersfrom' => 'Прикажи кориснике почев од:',
+'listusers-submit' => 'Прикажи',
+'listusers-noresult' => 'Корисник није пронађен.',
+'listusers-blocked' => '({{GENDER:$1|блокиран|блокирана|блокиран}})',
 
-# Special:Activewiki_users
-'activewiki_users' => 'Списак активних корисника',
-'activewiki_users-intro' => 'Ово је списак корисника који су били активни {{PLURAL:$1|претходни дан|у последња $1 дана|у последњих $1 дана}}.',
-'activewiki_users-count' => '$1 {{PLURAL:$1|измена|измене|измена}} {{PLURAL:$3|претходни дан|у последња $3 дана|у последњих $3 дана}}',
-'activewiki_users-from' => 'Прикажи кориснике почев од:',
-'activewiki_users-hidebots' => 'Сакриј ботове',
-'activewiki_users-hidesysops' => 'Сакриј администраторе',
-'activewiki_users-noresult' => 'Корисник није пронађен.',
+# Special:ActiveUsers
+'activeusers' => 'Списак активних корисника',
+'activeusers-intro' => 'Ово је списак корисника који су били активни {{PLURAL:$1|претходни дан|у последња $1 дана|у последњих $1 дана}}.',
+'activeusers-count' => '$1 {{PLURAL:$1|измена|измене|измена}} {{PLURAL:$3|претходни дан|у последња $3 дана|у последњих $3 дана}}',
+'activeusers-from' => 'Прикажи кориснике почев од:',
+'activeusers-hidebots' => 'Сакриј ботове',
+'activeusers-hidesysops' => 'Сакриј администраторе',
+'activeusers-noresult' => 'Корисник није пронађен.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Дневник нових корисника',
-'newwiki_userlogpagetext' => 'Ово је историја нових корисника.',
+# Special:Log/newusers
+'newuserlogpage' => 'Дневник нових корисника',
+'newuserlogpagetext' => 'Ово је историја нових корисника.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Права корисничких група',
@@ -2411,27 +2411,27 @@ $1',
 'listgrouprights-addgroup-self-all' => 'Додај све групе на сопствени налог',
 'listgrouprights-removegroup-self-all' => 'Уклони све групе са сопственог налога',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'Нема адресе за слање',
-'mailnologintext' => 'Морате бити [[Special:wiki_userLogin|пријављени]] и имати исправну е-адресу у [[Special:Preferences|подешавањима]] да бисте слали е-поруке другим корисницима.',
-'emailwiki_user' => 'Пошаљи е-поруку',
-'emailwiki_user-title-target' => 'Слање е-поруке {{GENDER:$1|кориснику|корисници|кориснику}}',
-'emailwiki_user-title-notarget' => 'Слање е-поруке кориснику',
+'mailnologintext' => 'Морате бити [[Special:UserLogin|пријављени]] и имати исправну е-адресу у [[Special:Preferences|подешавањима]] да бисте слали е-поруке другим корисницима.',
+'emailuser' => 'Пошаљи е-поруку',
+'emailuser-title-target' => 'Слање е-поруке {{GENDER:$1|кориснику|корисници|кориснику}}',
+'emailuser-title-notarget' => 'Слање е-поруке кориснику',
 'emailpage' => 'Слање е-порука',
 'emailpagetext' => 'Можете да користите доњи образац да пошаљете е-поруку {{GENDER:$1|овом кориснику|овој корисници|овом кориснику|}}.
 Е-адреса коју сте унели у вашим [[Special:Preferences|подешавањима]] ће се приказати у пољу „Од“, тако да ће прималац моћи да вам одговори директно.',
-'wiki_usermailererror' => 'Дошло је до грешке при слању поруке:',
+'usermailererror' => 'Дошло је до грешке при слању поруке:',
 'defemailsubject' => '{{SITENAME}} е-адреса {{GENDER:$1|корисника|кориснице|корисника}} $1',
-'wiki_usermaildisabled' => 'Корисничка е-пошта је онемогућена',
-'wiki_usermaildisabledtext' => 'Не можете да шаљете е-поруке другим корисницима на овом викију',
+'usermaildisabled' => 'Корисничка е-пошта је онемогућена',
+'usermaildisabledtext' => 'Не можете да шаљете е-поруке другим корисницима на овом викију',
 'noemailtitle' => 'Нема е-адресе',
 'noemailtext' => 'Овај корисник није навео исправну е-адресу.',
 'nowikiemailtitle' => 'Е-пошта није дозвољена',
 'nowikiemailtext' => 'Овај корисник је одлучио да не прима е-поруке од других корисника.',
 'emailnotarget' => 'Непостојеће или неисправно корисничко име примаоца.',
 'emailtarget' => 'Унос корисничког имена примаоца',
-'emailwiki_username' => 'Корисничко име:',
-'emailwiki_usernamesubmit' => 'Пошаљи',
+'emailusername' => 'Корисничко име:',
+'emailusernamesubmit' => 'Пошаљи',
 'email-legend' => 'Слање е-порука другом кориснику',
 'emailfrom' => 'Од:',
 'emailto' => 'За:',
@@ -2442,12 +2442,12 @@ $1',
 'emailccsubject' => 'Примерак ваше поруке за $1: $2',
 'emailsent' => 'Порука је послата',
 'emailsenttext' => 'Ваша порука је послата е-поштом.',
-'emailwiki_userfooter' => 'Ову е-поруку је {{GENDER:|послао|послала|послао}} $1 кориснику $2 путем е-поште с викија {{SITENAME}}.',
+'emailuserfooter' => 'Ову е-поруку је {{GENDER:|послао|послала|послао}} $1 кориснику $2 путем е-поште с викија {{SITENAME}}.',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'Слање системске поруке.',
-'wiki_usermessage-editor' => 'Уређивач системских порука',
-'wiki_usermessage-template' => 'MediaWiki:wiki_userMessage',
+# User Messenger
+'usermessage-summary' => 'Слање системске поруке.',
+'usermessage-editor' => 'Уређивач системских порука',
+'usermessage-template' => 'MediaWiki:UserMessage',
 
 # Watchlist
 'watchlist' => 'Списак надгледања',
@@ -2456,7 +2456,7 @@ $1',
 'nowatchlist' => 'Ваш списак надгледања је празан.',
 'watchlistanontext' => 'Морате бити $1 да бисте гледали и уређивали ставке на вашем списку надгледања.',
 'watchnologin' => 'Нисте пријављени',
-'watchnologintext' => 'Морате бити [[Special:wiki_userLogin|пријављени]] да бисте мењали списак надгледања.',
+'watchnologintext' => 'Морате бити [[Special:UserLogin|пријављени]] да бисте мењали списак надгледања.',
 'addwatch' => 'Додај на списак надгледања',
 'addedwatchtext' => 'Страница „[[:$1]]“ је додата на ваш [[Special:Watchlist|списак надгледања]].
 Будуће измене ове странице и њене странице за разговор биће наведене овде, а страница ће бити <b>подебљана</b> у [[Special:RecentChanges|списку скорашњих измена]] да би се лакше уочила.
@@ -2570,12 +2570,12 @@ $UNWATCHURL
 'rollbackfailed' => 'Неуспешно враћање',
 'cantrollback' => 'Не могу да вратим измену.
 Последњи аутор је уједно и једини.',
-'alreadyrolled' => 'Враћање последње измене странице [[:$1]] од стране {{GENDER:$2|корисника|кориснице|корисника}} [[wiki_user:$2|$2]] ([[wiki_user talk:$2|разговор]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]); неко други је већ изменио или вратио страницу.
+'alreadyrolled' => 'Враћање последње измене странице [[:$1]] од стране {{GENDER:$2|корисника|кориснице|корисника}} [[User:$2|$2]] ([[User talk:$2|разговор]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]); неко други је већ изменио или вратио страницу.
 
-Последњу измену је {{GENDER:$3|направио|направила|направио}} [[wiki_user:$3|$3]] ([[wiki_user talk:$3|разговор]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+Последњу измену је {{GENDER:$3|направио|направила|направио}} [[User:$3|$3]] ([[User talk:$3|разговор]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "Опис измене: \"''\$1''\".",
-'revertpage' => 'Враћене су измене {{GENDER:$2|корисника|кориснице|корисника}} [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|разговор]]) на последњу измену члана [[wiki_user:$1|$1]]',
-'revertpage-nowiki_user' => 'Враћене су измене корисника (корисничко име је уклоњено) на последњу измену члана [[wiki_user:$1|$1]]',
+'revertpage' => 'Враћене су измене {{GENDER:$2|корисника|кориснице|корисника}} [[Special:Contributions/$2|$2]] ([[User talk:$2|разговор]]) на последњу измену члана [[User:$1|$1]]',
+'revertpage-nouser' => 'Враћене су измене корисника (корисничко име је уклоњено) на последњу измену члана [[User:$1|$1]]',
 'rollback-success' => 'Враћене су измене {{GENDER:$1|корисника|кориснице|корисника}} $1
 на последњу измену {{GENDER:$2|корисника|кориснице|корисника}} $2.',
 
@@ -2732,12 +2732,12 @@ $1',
 'sp-contributions-uploads' => 'отпремања',
 'sp-contributions-logs' => 'дневници',
 'sp-contributions-talk' => 'разговор',
-'sp-contributions-wiki_userrights' => 'управљање корисничким правима',
+'sp-contributions-userrights' => 'управљање корисничким правима',
 'sp-contributions-blocked-notice' => 'Овај корисник је блокиран. Испод су наведени последњи записи у дневнику блокирања:',
 'sp-contributions-blocked-notice-anon' => 'Овој ИП адреси је тренутно забрањен приступ.
 Извештај о блокираним корисницима се налази испод:',
 'sp-contributions-search' => 'Претрага доприноса',
-'sp-contributions-wiki_username' => 'ИП адреса или корисничко име:',
+'sp-contributions-username' => 'ИП адреса или корисничко име:',
 'sp-contributions-toponly' => 'Прикажи само најновије измене',
 'sp-contributions-submit' => 'Претражи',
 
@@ -2770,7 +2770,7 @@ $1',
 'blockiptext' => 'Користите доњи образац да бисте забранили приступ за писање с одређене ИП адресе или корисничког имена.
 Ово би требало да вршите само ради спречавања вандализма, у складу са [[{{MediaWiki:Policy-url}}|смерницама]].
 Изаберите конкретан разлог испод (пример: навођење конкретних страница које су вандализоване).',
-'ipadressorwiki_username' => 'ИП адреса или корисничко име:',
+'ipadressorusername' => 'ИП адреса или корисничко име:',
 'ipbexpiry' => 'Истиче:',
 'ipbreason' => 'Разлог:',
 'ipbreasonotherlist' => 'Други разлог',
@@ -2792,8 +2792,8 @@ $1',
 'ipbotheroption' => 'друго',
 'ipbotherreason' => 'Други/додатни разлог:',
 'ipbhidename' => 'Сакриј корисничко име са измена и спискова',
-'ipbwatchwiki_user' => 'Надгледај корисничке странице и странице за разговор овог корисника',
-'ipb-disablewiki_usertalk' => 'Забрани овом кориснику да уређује своју страницу за разговор док је блокиран',
+'ipbwatchuser' => 'Надгледај корисничке странице и странице за разговор овог корисника',
+'ipb-disableusertalk' => 'Забрани овом кориснику да уређује своју страницу за разговор док је блокиран',
 'ipb-change-block' => 'Поново блокирај корисника с овим поставкама',
 'ipb-confirm' => 'Потврди блокирање',
 'badipaddress' => 'Неисправна IP адреса',
@@ -2801,7 +2801,7 @@ $1',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] је {{GENDER:$1|блокиран|блокирана|блокиран}}.<br />
 Блокирања можете да погледате [[Special:BlockList|овде]].',
 'ipb-blockingself' => 'Овом радњом ћете блокирати себе! Јесте ли сигурни да то желите?',
-'ipb-confirmhidewiki_user' => 'Управо ћете блокирати корисника с укљученом могућношћу „сакриј корисника“. Овим ће корисничко име бити сакривено у свим списковима и извештајима. Желите ли то да урадите?',
+'ipb-confirmhideuser' => 'Управо ћете блокирати корисника с укљученом могућношћу „сакриј корисника“. Овим ће корисничко име бити сакривено у свим списковима и извештајима. Желите ли то да урадите?',
 'ipb-edit-dropdown' => 'Уреди разлоге блокирања',
 'ipb-unblock-addr' => 'Деблокирај $1',
 'ipb-unblock' => 'Деблокирај корисничко име или ИП адресу',
@@ -2810,13 +2810,13 @@ $1',
 'unblockip' => 'Деблокирај корисника',
 'unblockiptext' => 'Користите образац испод да бисте вратили право писања блокираној IP адреси или корисничком имену.',
 'ipusubmit' => 'Уклони ову блокаду',
-'unblocked' => '[[wiki_user:$1|$1]] је деблокиран',
+'unblocked' => '[[User:$1|$1]] је деблокиран',
 'unblocked-range' => '$1 је {{GENDER:$1|деблокиран|деблокирана|деблокиран}}',
 'unblocked-id' => 'Блокирање $1 је уклоњено',
 'blocklist' => 'Блокирани корисници',
 'ipblocklist' => 'Блокирани корисници',
 'ipblocklist-legend' => 'Проналажење блокираног корисника',
-'blocklist-wiki_userblocks' => 'Сакриј блокирања налога',
+'blocklist-userblocks' => 'Сакриј блокирања налога',
 'blocklist-tempblocks' => 'Сакриј привремена блокирања',
 'blocklist-addressblocks' => 'Сакриј појединачна блокирања ИП адресе',
 'blocklist-rangeblocks' => 'Сакриј блокирања опсега',
@@ -2835,7 +2835,7 @@ $1',
 'noautoblockblock' => 'аутоматско блокирање је онемогућено',
 'createaccountblock' => 'отварање налога је блокирано',
 'emailblock' => 'е-пошта је блокирана',
-'blocklist-nowiki_usertalk' => 'забрањено уређивање сопствене странице за разговор',
+'blocklist-nousertalk' => 'забрањено уређивање сопствене странице за разговор',
 'ipblocklist-empty' => 'Списак блокирања је празан.',
 'ipblocklist-no-results' => 'Тражена ИП адреса или корисничко име није блокирано.',
 'blocklink' => 'блокирај',
@@ -2843,7 +2843,7 @@ $1',
 'change-blocklink' => 'промени блокирање',
 'contribslink' => 'доприноси',
 'emaillink' => 'пошаљи е-поруку',
-'autoblocker' => 'Самоблокирани сте јер делите ИП адресу с {{GENDER:$1|корисником|корисницом|корисником}} [[wiki_user:$1|$1]].
+'autoblocker' => 'Самоблокирани сте јер делите ИП адресу с {{GENDER:$1|корисником|корисницом|корисником}} [[User:$1|$1]].
 Разлог блокирања: "\'\'\'$2\'\'\'"',
 'blocklogpage' => 'Дневник блокирања',
 'blocklog-showlog' => '{{GENDER:$1|Овај корисник је раније блокиран|Ова корисница је раније блокирана|Овај корисник је раније блокиран}}.
@@ -2860,7 +2860,7 @@ $1',
 'block-log-flags-nocreate' => 'онемогућено отварање налога',
 'block-log-flags-noautoblock' => 'аутоматско блокирање је онемогућено',
 'block-log-flags-noemail' => 'е-пошта је блокирана',
-'block-log-flags-nowiki_usertalk' => 'забрањено уређивање сопствене странице за разговор',
+'block-log-flags-nousertalk' => 'забрањено уређивање сопствене странице за разговор',
 'block-log-flags-angry-autoblock' => 'проширено аутоматско блокирање је омогућено',
 'block-log-flags-hiddenname' => 'корисничко име је сакривено',
 'range_block_disabled' => 'Администраторска могућност за блокирање распона ИП адреса је онемогућена.',
@@ -2870,7 +2870,7 @@ $1',
 'ipb_already_blocked' => '„$1“ је већ блокиран',
 'ipb-needreblock' => '$1 је већ блокиран. Желите ли да промените подешавања?',
 'ipb-otherblocks-header' => '{{PLURAL:$1|Друга блокада|Друге блокаде}}',
-'unblock-hidewiki_user' => 'Не можете деблокирати овог корисника јер је његово корисничко име сакривено.',
+'unblock-hideuser' => 'Не можете деблокирати овог корисника јер је његово корисничко име сакривено.',
 'ipb_cant_unblock' => 'Грешка: блокада $1 не постоји. Можда је корисник деблокиран.',
 'ipb_blocked_as_range' => 'Грешка: ИП адреса $1 није директно блокирана и не може да се деблокира.
 Она је блокирана као део блокаде $2, која може бити деблокирана.',
@@ -2887,7 +2887,7 @@ $1',
 'sorbs_create_account_reason' => 'Ваша ИП адреса је наведена као отворени посредник у DNSBL-у који користи {{SITENAME}}.
 Не можете да отворите налог.',
 'cant-block-while-blocked' => 'Не можете да блокирате друге кориснике док сте и сами блокирани.',
-'cant-see-hidden-wiki_user' => 'Члан коме желите да забраните приступ је већ блокиран и сакривен.
+'cant-see-hidden-user' => 'Члан коме желите да забраните приступ је већ блокиран и сакривен.
 С обзиром на то да немате права за сакривање корисника, не можете да видите нити измените забрану.',
 'ipbblocked' => 'Не можете забранити или вратити приступ другим корисницима јер сте и сами блокирани',
 'ipbnounblockself' => 'Није вам дозвољено да деблокирате себе',
@@ -2946,13 +2946,13 @@ $1',
 
 У овом случају мора ручно да се премести или споји, ако има потребе за тим.',
 'movearticle' => 'Премести страницу:',
-'movewiki_userpage-warning' => "'''Упозорење:''' на путу сте да преместите корисничку страницу. Имајте у виду да ће само страница бити премештена, а сам корисник ''неће'' бити преименован.",
+'moveuserpage-warning' => "'''Упозорење:''' на путу сте да преместите корисничку страницу. Имајте у виду да ће само страница бити премештена, а сам корисник ''неће'' бити преименован.",
 'movenologin' => 'Нисте пријављени',
-'movenologintext' => 'Морате да будете регистровани и [[Special:wiki_userLogin|пријављени]] да бисте премештали странице.',
+'movenologintext' => 'Морате да будете регистровани и [[Special:UserLogin|пријављени]] да бисте премештали странице.',
 'movenotallowed' => 'Немате дозволу да премештате странице.',
 'movenotallowedfile' => 'Немате дозволу да премештате датотеке.',
-'cant-move-wiki_user-page' => 'Немате дозволу за премештање основних корисничких страница (осим подстраница).',
-'cant-move-to-wiki_user-page' => 'Немате дозволу за премештање странице на вашу корисничку страницу (осим на корисничку подстраницу).',
+'cant-move-user-page' => 'Немате дозволу за премештање основних корисничких страница (осим подстраница).',
+'cant-move-to-user-page' => 'Немате дозволу за премештање странице на вашу корисничку страницу (осим на корисничку подстраницу).',
 'newtitle' => 'Нови наслов:',
 'move-watch' => 'Надгледај ову страницу',
 'movepagebtn' => 'Премести страницу',
@@ -3134,8 +3134,8 @@ $1',
 'javascripttest-qunit-heading' => 'Медијавикијин пакет за тестирање – QUnit',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Ваша корисничка страница',
-'tooltip-pt-anonwiki_userpage' => 'Корисничка страница за ИП адресу с које уређујете',
+'tooltip-pt-userpage' => 'Ваша корисничка страница',
+'tooltip-pt-anonuserpage' => 'Корисничка страница за ИП адресу с које уређујете',
 'tooltip-pt-mytalk' => 'Ваша страница за разговор',
 'tooltip-pt-anontalk' => 'Разговор о изменама с ове ИП адресе',
 'tooltip-pt-preferences' => 'Ваша подешавања',
@@ -3172,13 +3172,13 @@ $1',
 'tooltip-feed-rss' => 'RSS довод ове странице',
 'tooltip-feed-atom' => 'Атом довод ове странице',
 'tooltip-t-contributions' => 'Погледајте списак доприноса овог корисника',
-'tooltip-t-emailwiki_user' => 'Пошаљите е-поруку овом кориснику',
+'tooltip-t-emailuser' => 'Пошаљите е-поруку овом кориснику',
 'tooltip-t-upload' => 'Пошаљите датотеке',
 'tooltip-t-specialpages' => 'Списак свих посебних страница',
 'tooltip-t-print' => 'Издање за штампање ове странице',
 'tooltip-t-permalink' => 'Стална веза ка овој измени странице',
 'tooltip-ca-nstab-main' => 'Погледајте страницу са садржајем',
-'tooltip-ca-nstab-wiki_user' => 'Погледајте корисничку страницу',
+'tooltip-ca-nstab-user' => 'Погледајте корисничку страницу',
 'tooltip-ca-nstab-media' => 'Погледајте мултимедијалну датотеку',
 'tooltip-ca-nstab-special' => 'Ово је посебна страница. Не можете је мењати.',
 'tooltip-ca-nstab-project' => 'Погледајте страницу пројекта',
@@ -3242,13 +3242,13 @@ $1',
 
 # Attribution
 'anonymous' => 'Анонимни {{PLURAL:$1|корисник|корисници}} на пројекту {{SITENAME}}',
-'sitewiki_user' => '{{SITENAME}} корисник $1',
-'anonwiki_user' => '{{SITENAME}} анониман корисник $1',
+'siteuser' => '{{SITENAME}} корисник $1',
+'anonuser' => '{{SITENAME}} анониман корисник $1',
 'lastmodifiedatby' => 'Ову страницу је последњи пут {{GENDER:$4|изменио|изменила|изменио}} $3, $1 у $2.',
 'othercontribs' => 'Засновано на раду корисникâ $1.',
 'others' => 'други',
-'sitewiki_users' => '{{PLURAL:$2|корисник|корисници}} на пројекту {{SITENAME}} $1',
-'anonwiki_users' => '{{PLURAL:$2|анониман корисник|анонимни корисници}} на пројекту {{SITENAME}} $1',
+'siteusers' => '{{PLURAL:$2|корисник|корисници}} на пројекту {{SITENAME}} $1',
+'anonusers' => '{{PLURAL:$2|анониман корисник|анонимни корисници}} на пројекту {{SITENAME}} $1',
 'creditspage' => 'Аутори странице',
 'nocredits' => 'Не постоје подаци о аутору ове странице.',
 
@@ -3257,7 +3257,7 @@ $1',
 'spamprotectiontext' => 'Страница коју желите да сачувате је блокирана од филтера против непожељних порука.
 Ово је вероватно изазвано везом до спољашњег сајта који се налази на црној листи.',
 'spamprotectionmatch' => 'Следећи текст је изазвао наш филтер за непожељне поруке: $1',
-'spambot_wiki_username' => 'Чишћење непожељних порука у Медијавикији',
+'spambot_username' => 'Чишћење непожељних порука у Медијавикији',
 'spam_reverting' => 'Враћам на последњу измену која не садржи везе до $1',
 'spam_blanking' => 'Све измене садрже везе до $1. Чистим',
 'spam_deleting' => 'Све измене садрже везе до $1. Бришем',
@@ -3281,9 +3281,9 @@ $1',
 'pageinfo-redirects-name' => 'Преусмеравања на страницу',
 'pageinfo-subpages-name' => 'Подстранице ове странице',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|преусмерење|преусмерења|преусмерења}}; $3 {{PLURAL:$3|непреусмерење|непреусмерења|непреусмерења}})',
-'pageinfo-firstwiki_user' => 'Аутор странице',
+'pageinfo-firstuser' => 'Аутор странице',
 'pageinfo-firsttime' => 'Датум стварања странице',
-'pageinfo-lastwiki_user' => 'Последњи уредник',
+'pageinfo-lastuser' => 'Последњи уредник',
 'pageinfo-lasttime' => 'Датум последње измене',
 'pageinfo-edits' => 'Број измена',
 'pageinfo-authors' => 'Број засебних аутора',
@@ -3505,7 +3505,7 @@ Variants for Chinese language
 'exif-compressedbitsperpixel' => 'Режим сажимања слике',
 'exif-pixelydimension' => 'Ширина слике',
 'exif-pixelxdimension' => 'Висина слике',
-'exif-wiki_usercomment' => 'Кориснички коментари',
+'exif-usercomment' => 'Кориснички коментари',
 'exif-relatedsoundfile' => 'Повезани звучни запис',
 'exif-datetimeoriginal' => 'Датум и време сликања',
 'exif-datetimedigitized' => 'Датум и време дигитализације',
@@ -3928,7 +3928,7 @@ $8',
 'confirmemail_invalid' => 'Потврдни код је неисправан. Вероватно је истекао.',
 'confirmemail_needlogin' => 'Морате бити $1 да бисте потврдили е-адресу.',
 'confirmemail_success' => 'Ваша е-адреса је потврђена.
-Сада можете да се [[Special:wiki_userLogin|пријавите]]. Желимо вам пријатан боравак на викију.',
+Сада можете да се [[Special:UserLogin|пријавите]]. Желимо вам пријатан боравак на викију.',
 'confirmemail_loggedin' => 'Ваша е-адреса је сада потврђена.',
 'confirmemail_error' => 'Нешто је кренуло наопако при чувању ваше потврде.',
 'confirmemail_subject' => '{{SITENAME}} – потврда е-адресе',
@@ -3977,10 +3977,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''Упозорење''': ова страница је обрисана након што сте почели с уређивањем!",
-'confirmrecreate' => "[[wiki_user:$1|$1]] ([[wiki_user talk:$1|разговор]]) {{GENDER:$1|је обрисао|је обрисала|обриса}} ову страницу након што сте почели да је уређујете из следећег разлога:
+'confirmrecreate' => "[[User:$1|$1]] ([[User talk:$1|разговор]]) {{GENDER:$1|је обрисао|је обрисала|обриса}} ову страницу након што сте почели да је уређујете из следећег разлога:
 : ''$2''
 Потврдите да стварно желите да направите страницу.",
-'confirmrecreate-noreason' => 'Корисник [[wiki_user:$1|$1]] ([[wiki_user talk:$1|разговор]]) је обрисао ову страницу након што сте почели да га уређујете. Потврдите да стварно желите да поново направите ову страницу.',
+'confirmrecreate-noreason' => 'Корисник [[User:$1|$1]] ([[User talk:$1|разговор]]) је обрисао ову страницу након што сте почели да га уређујете. Потврдите да стварно желите да поново направите ову страницу.',
 'recreate' => 'Поново направи',
 
 'unit-pixel' => 'px',
@@ -4135,7 +4135,7 @@ $5
 'hebrew-calendar-m12-gen' => 'Елул',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|разговор]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|разговор]])',
 'timezone-utc' => 'UTC',
 
 # Core parser functions
@@ -4205,7 +4205,7 @@ $5
 'specialpages-group-login' => 'Пријава/регистрација',
 'specialpages-group-changes' => 'Скорашње измене и дневници',
 'specialpages-group-media' => 'Извештаји о мултимедијалном садржају и отпремања',
-'specialpages-group-wiki_users' => 'Корисници и корисничка права',
+'specialpages-group-users' => 'Корисници и корисничка права',
 'specialpages-group-highuse' => 'Најчешће коришћене странице',
 'specialpages-group-pages' => 'Спискови страница',
 'specialpages-group-pagetools' => 'Алатке',
@@ -4303,11 +4303,11 @@ $5
 'logentry-move-move_redir-noredirect' => '$1 {{GENDER:|је преместио|је преместила|је преместио}} страницу $3 на $4 преко преусмерења без остављања преусмерења',
 'logentry-patrol-patrol' => '$1 {{GENDER:|је означио|је означила|је означио}} измену $4 странице $3 као патролирану',
 'logentry-patrol-patrol-auto' => '$1 је самостално {{GENDER:|означио|означила|означио}} измену $4 странице $3 као прегледану',
-'logentry-newwiki_users-newwiki_users' => '$1 {{GENDER:|је отворио|је отворила|је отворио}} кориснички налог',
-'logentry-newwiki_users-create' => '$1 {{GENDER:|је отворио|је отворила|је отворио}} кориснички налог',
-'logentry-newwiki_users-create2' => '$1 {{GENDER:|је отворио|је отворила|је отворио}} кориснички налог $3',
-'logentry-newwiki_users-autocreate' => 'Налог $1 је самостално отворен',
-'newwiki_userlog-byemail' => 'лозинка је послата е-поштом',
+'logentry-newusers-newusers' => '$1 {{GENDER:|је отворио|је отворила|је отворио}} кориснички налог',
+'logentry-newusers-create' => '$1 {{GENDER:|је отворио|је отворила|је отворио}} кориснички налог',
+'logentry-newusers-create2' => '$1 {{GENDER:|је отворио|је отворила|је отворио}} кориснички налог $3',
+'logentry-newusers-autocreate' => 'Налог $1 је самостално отворен',
+'newuserlog-byemail' => 'лозинка је послата е-поштом',
 
 # Feedback
 'feedback-bugornote' => 'Ако сте спремни да детаљно опишете технички проблем, онда [$1 пријавите грешку].

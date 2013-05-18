@@ -219,7 +219,7 @@ $messages = array(
 'jumptosearch' => 'исканиѥ',
 'pool-errorunknown' => 'нєвѣдома блаꙁна',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'О {{grammar:instrumental|{{SITENAME}}}}',
 'aboutpage' => 'Project:О сѥмь опꙑтьствовании',
 'copyright' => 'подъ прощєниѥмь $1 пьсано ѥстъ',
@@ -254,7 +254,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'члѣнъ',
-'nstab-wiki_user' => 'польꙃєватєл҄ь',
+'nstab-user' => 'польꙃєватєл҄ь',
 'nstab-media' => 'срѣдьства',
 'nstab-special' => 'нарочьна',
 'nstab-project' => 'съвѣтъ',
@@ -274,17 +274,17 @@ $messages = array(
 'yourpasswordagain' => 'опакꙑ таиноѥ слово напиши',
 'login' => 'въниди',
 'nav-login-createaccount' => 'въниди / съꙁижди си мѣсто',
-'wiki_userlogin' => 'въниди / съꙁижди си мѣсто',
-'wiki_userloginnocreate' => 'въниди',
+'userlogin' => 'въниди / съꙁижди си мѣсто',
+'userloginnocreate' => 'въниди',
 'logout' => 'ис̾ходъ',
-'wiki_userlogout' => 'ис̾ходъ',
+'userlogout' => 'ис̾ходъ',
 'nologin' => 'мѣсто ти нѣстъ ли ? $1',
 'nologinlink' => 'съꙁижди си мѣсто',
 'createaccount' => 'съꙁижди си мѣсто',
 'gotaccount' => 'мѣсто ти ѥстъ ли? $1',
 'gotaccountlink' => 'въниди',
 'createaccountreason' => 'какъ съмꙑслъ :',
-'wiki_userexists' => 'сѫщє польꙃєватєлꙗ имѧ пьса ⁙ ино иꙁобрѧщи',
+'userexists' => 'сѫщє польꙃєватєлꙗ имѧ пьса ⁙ ино иꙁобрѧщи',
 'loginerror' => 'въхода блаꙁна',
 'accountcreated' => 'мѣсто сътворєно ѥстъ',
 'loginlanguagelabel' => 'ѩꙁꙑкъ : $1',
@@ -296,7 +296,7 @@ $messages = array(
 'resetpass-submit-loggedin' => 'таина словєсє иꙁмѣнѥниѥ',
 
 # Special:PasswordReset
-'passwordreset-wiki_username' => 'польꙃєватєлꙗ имѧ :',
+'passwordreset-username' => 'польꙃєватєлꙗ имѧ :',
 
 # Edit page toolbar
 'link_sample' => 'съвѧꙁи имѧ',
@@ -322,7 +322,7 @@ $messages = array(
 'noarticletext-nopermission' => 'нꙑнѣ с̑ьдє ничєсожє нє напьсано ѥстъ ⁙
 [[Special:Search/{{PAGENAME}}|си страницѧ имѧ искати]] дроугꙑ страницѧ или
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} съвѧꙁанꙑ їсторїѩ видѣти]</span> можєши ⁙ сътворити жє си страницѧ нє можєши',
-'wiki_userpage-wiki_userdoesnotexist' => 'польꙃєватєльска мѣста ⁖ $1 ⁖ нꙑнѣ нѣстъ ⁙
+'userpage-userdoesnotexist' => 'польꙃєватєльска мѣста ⁖ $1 ⁖ нꙑнѣ нѣстъ ⁙
 прѣдъ сътворѥниѥмь или исправлѥниѥмь си страницѧ помꙑсли жє ащє исто тъ дѣиство ноуждьно ли',
 'clearyourcache' => "'''НАРОЧИТО''': По съхранѥнии можєши обити своѥго съмотрила съхранъ да видѣлъ би мѣнꙑ
 * '''Mozilla ли Firefox ли Safari''' ли жьмꙑи Shift а мꙑшиѭ жьми Reload или жьми Ctrl-Shift-R (⌘-R вън Apple Mac)
@@ -415,7 +415,7 @@ $messages = array(
 'prefs-searchoptions' => 'исканиꙗ строи',
 'prefs-namespaces' => 'имєнъ просторꙑ',
 'prefs-files' => 'дѣла',
-'wiki_username' => 'польꙃєватєлꙗ имѧ :',
+'username' => 'польꙃєватєлꙗ имѧ :',
 'uid' => 'польꙃєватєлꙗ число :',
 'yourrealname' => 'истиньно имѧ :',
 'yourlanguage' => 'ѩꙁꙑкъ :',
@@ -425,27 +425,27 @@ $messages = array(
 'gender-female' => 'жєна',
 'prefs-signature' => 'аѵтографъ',
 
-# wiki_user rights
-'wiki_userrights-reason' => 'какъ съмꙑслъ :',
+# User rights
+'userrights-reason' => 'какъ съмꙑслъ :',
 
 # Groups
 'group' => 'чинъ :',
-'group-wiki_user' => 'польꙃєватєлє',
+'group-user' => 'польꙃєватєлє',
 'group-bot' => 'аѵтомати',
 'group-sysop' => 'съмотритєлє',
 'group-bureaucrat' => 'чинодатєлє',
 
-'group-wiki_user-member' => '{{GENDER:$1|польꙃєватєл҄ь|польꙃєватєл҄ьница}}',
+'group-user-member' => '{{GENDER:$1|польꙃєватєл҄ь|польꙃєватєл҄ьница}}',
 'group-bot-member' => '{{GENDER:$1|аѵтоматъ}}',
 'group-sysop-member' => '{{GENDER:$1|съмотритєл҄ь}}',
 'group-bureaucrat-member' => '{{GENDER:$1|чинодатєл҄ь}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Польꙃєватєлє',
+'grouppage-user' => '{{ns:project}}:Польꙃєватєлє',
 'grouppage-bot' => '{{ns:project}}:Аѵтомати',
 'grouppage-sysop' => '{{ns:project}}:Съмотритєлє',
 'grouppage-bureaucrat' => '{{ns:project}}:Чинодатєлє',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'чинодатєльства їсторїꙗ',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -501,7 +501,7 @@ $messages = array(
 'imgfile' => 'дѣло',
 'listfiles' => 'дѣлъ каталогъ',
 'listfiles_name' => 'и́мѧ',
-'listfiles_wiki_user' => 'польꙃєватєл҄ь',
+'listfiles_user' => 'польꙃєватєл҄ь',
 'listfiles_size' => 'мѣра',
 
 # File description page
@@ -510,7 +510,7 @@ $messages = array(
 'filehist-deleteone' => 'поничьжєниѥ',
 'filehist-current' => 'нꙑнѣщьн҄ь обраꙁъ',
 'filehist-datetime' => 'дьнь / врѣмѧ',
-'filehist-wiki_user' => 'польꙃєватєл҄ь',
+'filehist-user' => 'польꙃєватєл҄ь',
 'filehist-filesize' => 'дѣла мѣра',
 'filehist-comment' => 'опьсаниѥ',
 'imagelinks' => 'дѣла польꙃєваниѥ',
@@ -542,11 +542,11 @@ $messages = array(
 'statistics' => 'статїстїка',
 'statistics-header-pages' => 'страницѧ статїстїка',
 'statistics-header-edits' => 'мѣнъ статїстїка',
-'statistics-header-wiki_users' => 'польꙃєватєлъ статїстїка',
+'statistics-header-users' => 'польꙃєватєлъ статїстїка',
 'statistics-articles' => 'истиньнꙑ члѣни',
 'statistics-pages' => 'страницѧ',
 'statistics-files' => 'положєнꙑ дѣла',
-'statistics-wiki_users-active' => 'дѣꙗтєльнꙑ польꙃєватєлє',
+'statistics-users-active' => 'дѣꙗтєльнꙑ польꙃєватєлє',
 
 'disambiguations' => 'страницѧ ижє съвѧꙁи съ мъногосъмꙑслиꙗ имѫтъ',
 'disambiguationspage' => 'Template:мъногосъмꙑслиѥ',
@@ -559,10 +559,10 @@ $messages = array(
 'nlinks' => '$1 {{PLURAL:$1|съвѧꙁь|съвѧꙁи|съвѧꙁии}}',
 'nmembers' => '$1 {{PLURAL:$1|члѣнъ|члѣна|члѣни|члѣнъ}}',
 'shortpages' => 'кратъкꙑ страницѧ',
-'listwiki_users' => 'польꙃєватєлъ каталогъ',
-'wiki_usercreated' => '{{GENDER:$3|сътворилъ|сътворила}} мѣсто $1 въ $2',
+'listusers' => 'польꙃєватєлъ каталогъ',
+'usercreated' => '{{GENDER:$3|сътворилъ|сътворила}} мѣсто $1 въ $2',
 'newpages' => 'нови члѣни',
-'newpages-wiki_username' => 'польꙃєватєлꙗ имѧ :',
+'newpages-username' => 'польꙃєватєлꙗ имѧ :',
 'move' => 'прѣимєнованиѥ',
 'movethispage' => 'си страницѧ прѣимєнованиѥ',
 
@@ -570,7 +570,7 @@ $messages = array(
 'booksources-go' => 'прѣиди',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'польꙃєватєл҄ь:',
+'specialloguserlabel' => 'польꙃєватєл҄ь:',
 'speciallogtitlelabel' => 'страницѧ имѧ :',
 'log' => 'їсторїѩ',
 'all-logs-page' => 'вьсѩ обьщѧ їсторїѩ',
@@ -593,14 +593,14 @@ $messages = array(
 'linksearch' => 'вънѣщьн҄ь съвѧꙁь исканиѥ',
 'linksearch-ok' => 'ищи',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'виждь',
+# Special:ListUsers
+'listusers-submit' => 'виждь',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'новъ мѣстъ сътворѥниꙗ їсторїꙗ',
+# Special:Log/newusers
+'newuserlogpage' => 'новъ мѣстъ сътворѥниꙗ їсторїꙗ',
 
-# E-mail wiki_user
-'emailwiki_user' => 'посъли єпїстолѫ',
+# E-mail user
+'emailuser' => 'посъли єпїстолѫ',
 
 # Watchlist
 'watchlist' => 'моꙗ блюдєниꙗ',
@@ -664,7 +664,7 @@ $messages = array(
 'sp-contributions-uploads' => 'положєнꙑ дѣла',
 'sp-contributions-logs' => 'їсторїѩ',
 'sp-contributions-talk' => 'бєсѣда',
-'sp-contributions-wiki_username' => 'IP число или польꙃєватєлꙗ имѧ :',
+'sp-contributions-username' => 'IP число или польꙃєватєлꙗ имѧ :',
 'sp-contributions-submit' => 'ищи',
 
 # What links here
@@ -680,7 +680,7 @@ $messages = array(
 
 # Block/unblock
 'blockip' => 'ꙁагради польꙃєватєл҄ь',
-'ipadressorwiki_username' => 'IP число или польꙃєватєлꙗ имѧ :',
+'ipadressorusername' => 'IP число или польꙃєватєлꙗ имѧ :',
 'ipbreason' => 'какъ съмꙑслъ :',
 'ipboptions' => '2 часа:2 hours,1 дьнь:1 day,3 дьни:3 days,1 сєдмица:1 week,2 сєдмици:2 weeks,1 мѣсѧць:1 month,3 мѣсѧць:3 months,6 мѣсѧць:6 months,1 лѣто:1 year,вѣчьно:infinite',
 'ipblocklist' => 'ꙁаграждєнꙑ польꙃєватєлє',
@@ -713,7 +713,7 @@ $messages = array(
 'allmessagesname' => 'имѧ',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'твоꙗ польꙃєватєл҄ьска страница',
+'tooltip-pt-userpage' => 'твоꙗ польꙃєватєл҄ьска страница',
 'tooltip-pt-mytalk' => 'твоꙗ бєсѣдꙑ страница',
 'tooltip-pt-preferences' => 'твои строи',
 'tooltip-pt-mycontris' => 'твоѩ добродѣꙗнии каталогъ',
@@ -770,7 +770,7 @@ $messages = array(
 'size-kilobytes' => '$1 Х҃Б',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|бєсѣда]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|бєсѣда]])',
 
 # Special:Version
 'version' => 'MediaWiki обраꙁъ',
@@ -797,7 +797,7 @@ $messages = array(
 'logentry-delete-delete' => '$1 поничьжихъ страницѫ ⁖ $3 ⁖',
 'logentry-move-move' => '$1 нарєчє страницѫ ⁖ $3 ⁖ имєньмь ⁖ $4 ⁖',
 'logentry-move-move-noredirect' => '$1 нарєчє страницѫ ⁖ $3 ⁖ имєньмь ⁖ $4 ⁖ бєꙁ прѣнаправлєниꙗ сътворѥниꙗ',
-'logentry-newwiki_users-create' => 'польꙃєватєльско мѣсто ⁖ $1 ⁖ сътворѥно ѥстъ',
+'logentry-newusers-create' => 'польꙃєватєльско мѣсто ⁖ $1 ⁖ сътворѥно ѥстъ',
 
 # Search suggestions
 'searchsuggest-search' => 'исканиѥ',

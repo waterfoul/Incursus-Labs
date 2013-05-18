@@ -31,12 +31,12 @@
  */
 class MailAddress {
 	/**
-	 * @param $address string|wiki_user string with an email address, or a wiki_user object
+	 * @param $address string|User string with an email address, or a User object
 	 * @param $name String: human-readable name if a string address is given
 	 * @param $realName String: human-readable real name if a string address is given
 	 */
 	function __construct( $address, $name = null, $realName = null ) {
-		if ( is_object( $address ) && $address instanceof wiki_user ) {
+		if ( is_object( $address ) && $address instanceof User ) {
 			$this->address = $address->getEmail();
 			$this->name = $address->getName();
 			$this->realName = $address->getRealName();
@@ -59,7 +59,7 @@ class MailAddress {
 			if ( $this->name != '' && !wfIsWindows() ) {
 				global $wgEnotifUseRealName;
 				$name = ( $wgEnotifUseRealName && $this->realName ) ? $this->realName : $this->name;
-				$quoted = wiki_userMailer::quotedPrintable( $name );
+				$quoted = UserMailer::quotedPrintable( $name );
 				if ( strpos( $quoted, '.' ) !== false || strpos( $quoted, ',' ) !== false ) {
 					$quoted = '"' . $quoted . '"';
 				}
@@ -81,7 +81,7 @@ class MailAddress {
 /**
  * Collection of static functions for sending mail
  */
-class wiki_userMailer {
+class UserMailer {
 	static $mErrorString;
 
 	/**
@@ -172,7 +172,7 @@ class wiki_userMailer {
 			}
 		}
 		if ( !$has_address ) {
-			return Status::newFatal( 'wiki_user-mail-no-addy' );
+			return Status::newFatal( 'user-mail-no-addy' );
 		}
 
 		# Forge email headers
@@ -218,7 +218,7 @@ class wiki_userMailer {
 		$headers['Message-ID'] = self::makeMsgId();
 		$headers['X-Mailer'] = 'MediaWiki mailer';
 
-		$ret = wfRunHooks( 'Alternatewiki_userMailer', array( $headers, $to, $from, $subject, $body ) );
+		$ret = wfRunHooks( 'AlternateUserMailer', array( $headers, $to, $from, $subject, $body ) );
 		if ( $ret === false ) {
 			return Status::newGood();
 		} elseif ( $ret !== true ) {
@@ -296,7 +296,7 @@ class wiki_userMailer {
 			self::$mErrorString = '';
 			$html_errors = ini_get( 'html_errors' );
 			ini_set( 'html_errors', '0' );
-			set_error_handler( 'wiki_userMailer::errorHandler' );
+			set_error_handler( 'UserMailer::errorHandler' );
 
 			$safeMode = wfIniGetBool( 'safe_mode' );
 			foreach ( $to as $recip ) {
@@ -375,18 +375,18 @@ class wiki_userMailer {
 
 /**
  * This module processes the email notifications when the current page is
- * changed. It looks up the table watchlist to find out which wiki_users are watching
+ * changed. It looks up the table watchlist to find out which users are watching
  * that page.
  *
- * The current implementation sends independent emails to each watching wiki_user for
+ * The current implementation sends independent emails to each watching user for
  * the following reason:
  *
- * - Each watching wiki_user will be notified about the page edit time expressed in
+ * - Each watching user will be notified about the page edit time expressed in
  * his/her local time (UTC is shown additionally). To achieve this, we need to
- * find the individual timeoffset of each watching wiki_user from the preferences..
+ * find the individual timeoffset of each watching user from the preferences..
  *
  * Suggested improvement to slack down the number of sent emails: We could think
- * of sending out bulk mails (bcc:wiki_user1,wiki_user2...) for all these wiki_users having the
+ * of sending out bulk mails (bcc:user1,user2...) for all these users having the
  * same timeoffset in their preferences.
  *
  * Visit the documentation pages under http://meta.wikipedia.com/Enotif
@@ -404,17 +404,17 @@ class EmailNotification {
 	protected $title;
 
 	/**
-	 * @var wiki_user
+	 * @var User
 	 */
 	protected $editor;
 
 	/**
-	 * Send emails corresponding to the wiki_user $editor editing the page $title.
+	 * Send emails corresponding to the user $editor editing the page $title.
 	 * Also updates wl_notificationtimestamp.
 	 *
 	 * May be deferred via the job queue.
 	 *
-	 * @param $editor wiki_user object
+	 * @param $editor User object
 	 * @param $title Title object
 	 * @param $timestamp
 	 * @param $summary
@@ -423,55 +423,55 @@ class EmailNotification {
 	 */
 	public function notifyOnPageChange( $editor, $title, $timestamp, $summary, $minorEdit, $oldid = false ) {
 		global $wgEnotifUseJobQ, $wgEnotifWatchlist, $wgShowUpdatedMarker, $wgEnotifMinorEdits,
-			$wgwiki_usersNotifiedOnAllChanges, $wgEnotifwiki_userTalk;
+			$wgUsersNotifiedOnAllChanges, $wgEnotifUserTalk;
 
 		if ( $title->getNamespace() < 0 ) {
 			return;
 		}
 
-		// Build a list of wiki_users to notfiy
+		// Build a list of users to notfiy
 		$watchers = array();
 		if ( $wgEnotifWatchlist || $wgShowUpdatedMarker ) {
-			w = wfGetDB( DB_MASTER );
-			$res = w->select( array( 'watchlist' ),
-				array( 'wl_wiki_user' ),
+			$dbw = wfGetDB( DB_MASTER );
+			$res = $dbw->select( array( 'watchlist' ),
+				array( 'wl_user' ),
 				array(
-					'wl_wiki_user != ' . intval( $editor->getID() ),
+					'wl_user != ' . intval( $editor->getID() ),
 					'wl_namespace' => $title->getNamespace(),
 					'wl_title' => $title->getDBkey(),
 					'wl_notificationtimestamp IS NULL',
 				), __METHOD__
 			);
 			foreach ( $res as $row ) {
-				$watchers[] = intval( $row->wl_wiki_user );
+				$watchers[] = intval( $row->wl_user );
 			}
 			if ( $watchers ) {
-				// Update wl_notificationtimestamp for all watching wiki_users except
+				// Update wl_notificationtimestamp for all watching users except
 				// the editor
-				w->begin( __METHOD__ );
-				w->update( 'watchlist',
+				$dbw->begin( __METHOD__ );
+				$dbw->update( 'watchlist',
 					array( /* SET */
-						'wl_notificationtimestamp' => w->timestamp( $timestamp )
+						'wl_notificationtimestamp' => $dbw->timestamp( $timestamp )
 					), array( /* WHERE */
-						'wl_wiki_user' => $watchers,
+						'wl_user' => $watchers,
 						'wl_namespace' => $title->getNamespace(),
 						'wl_title' => $title->getDBkey(),
 					), __METHOD__
 				);
-				w->commit( __METHOD__ );
+				$dbw->commit( __METHOD__ );
 			}
 		}
 
 		$sendEmail = true;
-		// If nobody is watching the page, and there are no wiki_users notified on all changes
+		// If nobody is watching the page, and there are no users notified on all changes
 		// don't bother creating a job/trying to send emails
 		// $watchers deals with $wgEnotifWatchlist
-		if ( !count( $watchers ) && !count( $wgwiki_usersNotifiedOnAllChanges ) ) {
+		if ( !count( $watchers ) && !count( $wgUsersNotifiedOnAllChanges ) ) {
 			$sendEmail = false;
 			// Only send notification for non minor edits, unless $wgEnotifMinorEdits
 			if ( !$minorEdit || ( $wgEnotifMinorEdits && !$editor->isAllowed( 'nominornewtalk' ) ) ) {
-				$iswiki_userTalkPage = ( $title->getNamespace() == NS_USER_TALK );
-				if ( $wgEnotifwiki_userTalk && $iswiki_userTalkPage && $this->canSendwiki_userTalkEmail( $editor, $title, $minorEdit ) ) {
+				$isUserTalkPage = ( $title->getNamespace() == NS_USER_TALK );
+				if ( $wgEnotifUserTalk && $isUserTalkPage && $this->canSendUserTalkEmail( $editor, $title, $minorEdit ) ) {
 					$sendEmail = true;
 				}
 			}
@@ -500,29 +500,29 @@ class EmailNotification {
 	/**
 	 * Immediate version of notifyOnPageChange().
 	 *
-	 * Send emails corresponding to the wiki_user $editor editing the page $title.
+	 * Send emails corresponding to the user $editor editing the page $title.
 	 * Also updates wl_notificationtimestamp.
 	 *
-	 * @param $editor wiki_user object
+	 * @param $editor User object
 	 * @param $title Title object
 	 * @param $timestamp string Edit timestamp
 	 * @param $summary string Edit summary
 	 * @param $minorEdit bool
 	 * @param $oldid int Revision ID
-	 * @param $watchers array of wiki_user IDs
+	 * @param $watchers array of user IDs
 	 */
 	public function actuallyNotifyOnPageChange( $editor, $title, $timestamp, $summary, $minorEdit, $oldid, $watchers ) {
 		# we use $wgPasswordSender as sender's address
 		global $wgEnotifWatchlist;
-		global $wgEnotifMinorEdits, $wgEnotifwiki_userTalk;
+		global $wgEnotifMinorEdits, $wgEnotifUserTalk;
 
 		wfProfileIn( __METHOD__ );
 
 		# The following code is only run, if several conditions are met:
-		# 1. EmailNotification for pages (other than wiki_user_talk pages) must be enabled
+		# 1. EmailNotification for pages (other than user_talk pages) must be enabled
 		# 2. minor edits (changes) are only regarded if the global flag indicates so
 
-		$iswiki_userTalkPage = ( $title->getNamespace() == NS_USER_TALK );
+		$isUserTalkPage = ( $title->getNamespace() == NS_USER_TALK );
 
 		$this->title = $title;
 		$this->timestamp = $timestamp;
@@ -532,42 +532,42 @@ class EmailNotification {
 		$this->editor = $editor;
 		$this->composed_common = false;
 
-		$wiki_userTalkId = false;
+		$userTalkId = false;
 
 		if ( !$minorEdit || ( $wgEnotifMinorEdits && !$editor->isAllowed( 'nominornewtalk' ) ) ) {
 
-			if ( $wgEnotifwiki_userTalk && $iswiki_userTalkPage && $this->canSendwiki_userTalkEmail( $editor, $title, $minorEdit ) ) {
-				$targetwiki_user = wiki_user::newFromName( $title->getText() );
-				$this->compose( $targetwiki_user );
-				$wiki_userTalkId = $targetwiki_user->getId();
+			if ( $wgEnotifUserTalk && $isUserTalkPage && $this->canSendUserTalkEmail( $editor, $title, $minorEdit ) ) {
+				$targetUser = User::newFromName( $title->getText() );
+				$this->compose( $targetUser );
+				$userTalkId = $targetUser->getId();
 			}
 
 			if ( $wgEnotifWatchlist ) {
 				// Send updates to watchers other than the current editor
-				$wiki_userArray = wiki_userArray::newFromIDs( $watchers );
-				foreach ( $wiki_userArray as $watchingwiki_user ) {
-					if ( $watchingwiki_user->getOption( 'enotifwatchlistpages' ) &&
-						( !$minorEdit || $watchingwiki_user->getOption( 'enotifminoredits' ) ) &&
-						$watchingwiki_user->isEmailConfirmed() &&
-						$watchingwiki_user->getID() != $wiki_userTalkId )
+				$userArray = UserArray::newFromIDs( $watchers );
+				foreach ( $userArray as $watchingUser ) {
+					if ( $watchingUser->getOption( 'enotifwatchlistpages' ) &&
+						( !$minorEdit || $watchingUser->getOption( 'enotifminoredits' ) ) &&
+						$watchingUser->isEmailConfirmed() &&
+						$watchingUser->getID() != $userTalkId )
 					{
-						$this->compose( $watchingwiki_user );
+						$this->compose( $watchingUser );
 					}
 				}
 			}
 		}
 
-		global $wgwiki_usersNotifiedOnAllChanges;
-		foreach ( $wgwiki_usersNotifiedOnAllChanges as $name ) {
+		global $wgUsersNotifiedOnAllChanges;
+		foreach ( $wgUsersNotifiedOnAllChanges as $name ) {
 			if ( $editor->getName() == $name ) {
-				// No point notifying the wiki_user that actually made the change!
+				// No point notifying the user that actually made the change!
 				continue;
 			}
-			$wiki_user = wiki_user::newFromName( $name );
+			$user = User::newFromName( $name );
 			/*op-patch|TS|2011-02-09|IntraACL|start*/
-			if ( !method_exists( $title, 'wiki_userCanReadEx' ) || $title->wiki_userCanReadEx( $wiki_user ) ) {
+			if ( !method_exists( $title, 'userCanReadEx' ) || $title->userCanReadEx( $user ) ) {
 				// Check IntraACL read access
-				$this->compose( $wiki_user );
+				$this->compose( $user );
 			}
 			/*op-patch|TS|2011-02-09|end*/
 		}
@@ -577,26 +577,26 @@ class EmailNotification {
 	}
 
 	/**
-	 * @param $editor wiki_user
+	 * @param $editor User
 	 * @param $title Title bool
 	 * @param $minorEdit
 	 * @return bool
 	 */
-	private function canSendwiki_userTalkEmail( $editor, $title, $minorEdit ) {
-		global $wgEnotifwiki_userTalk;
-		$iswiki_userTalkPage = ( $title->getNamespace() == NS_USER_TALK );
+	private function canSendUserTalkEmail( $editor, $title, $minorEdit ) {
+		global $wgEnotifUserTalk;
+		$isUserTalkPage = ( $title->getNamespace() == NS_USER_TALK );
 
-		if ( $wgEnotifwiki_userTalk && $iswiki_userTalkPage ) {
-			$targetwiki_user = wiki_user::newFromName( $title->getText() );
+		if ( $wgEnotifUserTalk && $isUserTalkPage ) {
+			$targetUser = User::newFromName( $title->getText() );
 
-			if ( !$targetwiki_user || $targetwiki_user->isAnon() ) {
-				wfDebug( __METHOD__ . ": wiki_user talk page edited, but wiki_user does not exist\n" );
-			} elseif ( $targetwiki_user->getId() == $editor->getId() ) {
-				wfDebug( __METHOD__ . ": wiki_user edited their own talk page, no notification sent\n" );
-			} elseif ( $targetwiki_user->getOption( 'enotifwiki_usertalkpages' ) &&
-				( !$minorEdit || $targetwiki_user->getOption( 'enotifminoredits' ) ) )
+			if ( !$targetUser || $targetUser->isAnon() ) {
+				wfDebug( __METHOD__ . ": user talk page edited, but user does not exist\n" );
+			} elseif ( $targetUser->getId() == $editor->getId() ) {
+				wfDebug( __METHOD__ . ": user edited their own talk page, no notification sent\n" );
+			} elseif ( $targetUser->getOption( 'enotifusertalkpages' ) &&
+				( !$minorEdit || $targetUser->getOption( 'enotifminoredits' ) ) )
 			{
-				if ( $targetwiki_user->isEmailConfirmed() ) {
+				if ( $targetUser->isEmailConfirmed() ) {
 					wfDebug( __METHOD__ . ": sending talk page update notification\n" );
 					return true;
 				} else {
@@ -654,17 +654,17 @@ class EmailNotification {
 		$keys['$UNWATCHURL'] = $this->title->getCanonicalUrl( 'action=unwatch' );
 
 		if ( $this->editor->isAnon() ) {
-			# real anon (wiki_user:xxx.xxx.xxx.xxx)
+			# real anon (user:xxx.xxx.xxx.xxx)
 			$keys['$PAGEEDITOR'] = wfMessage( 'enotif_anon_editor', $this->editor->getName() )
 				->inContentLanguage()->text();
 			$keys['$PAGEEDITOR_EMAIL'] = wfMessage( 'noemailtitle' )->inContentLanguage()->text();
 		} else {
 			$keys['$PAGEEDITOR'] = $wgEnotifUseRealName ? $this->editor->getRealName() : $this->editor->getName();
-			$emailPage = SpecialPage::getSafeTitleFor( 'Emailwiki_user', $this->editor->getName() );
+			$emailPage = SpecialPage::getSafeTitleFor( 'Emailuser', $this->editor->getName() );
 			$keys['$PAGEEDITOR_EMAIL'] = $emailPage->getCanonicalUrl();
 		}
 
-		$keys['$PAGEEDITOR_WIKI'] = $this->editor->getwiki_userPage()->getCanonicalUrl();
+		$keys['$PAGEEDITOR_WIKI'] = $this->editor->getUserPage()->getCanonicalUrl();
 
 		# Replace this after transforming the message, bug 35019
 		$postTransformKeys['$PAGESUMMARY'] = $this->summary == '' ? ' - ' : $this->summary;
@@ -682,7 +682,7 @@ class EmailNotification {
 		$this->body = wordwrap( strtr( $body, $postTransformKeys ), 72 );
 
 		# Reveal the page editor's address as REPLY-TO address only if
-		# the wiki_user has not opted-out and the option is enabled at the
+		# the user has not opted-out and the option is enabled at the
 		# global configuration level.
 		$adminAddress = new MailAddress( $wgPasswordSender, $wgPasswordSenderName );
 		if ( $wgEnotifRevealEditorAddress
@@ -703,22 +703,22 @@ class EmailNotification {
 	}
 
 	/**
-	 * Compose a mail to a given wiki_user and either queue it for sending, or send it now,
+	 * Compose a mail to a given user and either queue it for sending, or send it now,
 	 * depending on settings.
 	 *
 	 * Call sendMails() to send any mails that were queued.
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 */
-	function compose( $wiki_user ) {
+	function compose( $user ) {
 		global $wgEnotifImpersonal;
 
 		if ( !$this->composed_common )
 			$this->composeCommonMailtext();
 
 		if ( $wgEnotifImpersonal ) {
-			$this->mailTargets[] = new MailAddress( $wiki_user );
+			$this->mailTargets[] = new MailAddress( $user );
 		} else {
-			$this->sendPersonalised( $wiki_user );
+			$this->sendPersonalised( $user );
 		}
 	}
 
@@ -733,34 +733,34 @@ class EmailNotification {
 	}
 
 	/**
-	 * Does the per-wiki_user customizations to a notification e-mail (name,
+	 * Does the per-user customizations to a notification e-mail (name,
 	 * timestamp in proper timezone, etc) and sends it out.
 	 * Returns true if the mail was sent successfully.
 	 *
-	 * @param $watchingwiki_user wiki_user object
+	 * @param $watchingUser User object
 	 * @return Boolean
 	 * @private
 	 */
-	function sendPersonalised( $watchingwiki_user ) {
+	function sendPersonalised( $watchingUser ) {
 		global $wgContLang, $wgEnotifUseRealName;
 		// From the PHP manual:
 		//     Note:  The to parameter cannot be an address in the form of "Something <someone@example.com>".
 		//     The mail command will not parse this properly while talking with the MTA.
-		$to = new MailAddress( $watchingwiki_user );
+		$to = new MailAddress( $watchingUser );
 
 		# $PAGEEDITDATE is the time and date of the page change
 		# expressed in terms of individual local time of the notification
-		# recipient, i.e. watching wiki_user
+		# recipient, i.e. watching user
 		$body = str_replace(
 			array( '$WATCHINGUSERNAME',
 				'$PAGEEDITDATE',
 				'$PAGEEDITTIME' ),
-			array( $wgEnotifUseRealName ? $watchingwiki_user->getRealName() : $watchingwiki_user->getName(),
-				$wgContLang->wiki_userDate( $this->timestamp, $watchingwiki_user ),
-				$wgContLang->wiki_userTime( $this->timestamp, $watchingwiki_user ) ),
+			array( $wgEnotifUseRealName ? $watchingUser->getRealName() : $watchingUser->getName(),
+				$wgContLang->userDate( $this->timestamp, $watchingUser ),
+				$wgContLang->userTime( $this->timestamp, $watchingUser ) ),
 			$this->body );
 
-		return wiki_userMailer::send( $to, $this->from, $this->subject, $body, $this->replyto );
+		return UserMailer::send( $to, $this->from, $this->subject, $body, $this->replyto );
 	}
 
 	/**
@@ -783,7 +783,7 @@ class EmailNotification {
 					$wgContLang->time( $this->timestamp, false, false ) ),
 				$this->body );
 
-		return wiki_userMailer::send( $addresses, $this->from, $this->subject, $body, $this->replyto );
+		return UserMailer::send( $addresses, $this->from, $this->subject, $body, $this->replyto );
 	}
 
 } # end of class EmailNotification

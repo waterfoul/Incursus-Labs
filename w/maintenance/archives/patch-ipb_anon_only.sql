@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS /*$wgDBprefix*/ipblocks_newunique;
 CREATE TABLE /*$wgDBprefix*/ipblocks_newunique (
   ipb_id int NOT NULL auto_increment,
   ipb_address tinyblob NOT NULL,
-  ipb_wiki_user int unsigned NOT NULL default '0',
+  ipb_user int unsigned NOT NULL default '0',
   ipb_by int unsigned NOT NULL default '0',
   ipb_reason tinyblob NOT NULL,
   ipb_timestamp binary(14) NOT NULL default '',
@@ -24,8 +24,8 @@ CREATE TABLE /*$wgDBprefix*/ipblocks_newunique (
   ipb_range_end tinyblob NOT NULL,
   
   PRIMARY KEY ipb_id (ipb_id),
-  UNIQUE INDEX ipb_address_unique (ipb_address(255), ipb_wiki_user, ipb_auto),
-  INDEX ipb_wiki_user (ipb_wiki_user),
+  UNIQUE INDEX ipb_address_unique (ipb_address(255), ipb_user, ipb_auto),
+  INDEX ipb_user (ipb_user),
   INDEX ipb_range (ipb_range_start(8), ipb_range_end(8)),
   INDEX ipb_timestamp (ipb_timestamp),
   INDEX ipb_expiry (ipb_expiry)
@@ -33,8 +33,8 @@ CREATE TABLE /*$wgDBprefix*/ipblocks_newunique (
 ) /*$wgDBTableOptions*/;
 
 INSERT IGNORE INTO /*$wgDBprefix*/ipblocks_newunique 
-        (ipb_id, ipb_address, ipb_wiki_user, ipb_by, ipb_reason, ipb_timestamp, ipb_auto, ipb_expiry, ipb_range_start, ipb_range_end, ipb_anon_only, ipb_create_account) 
-  SELECT ipb_id, ipb_address, ipb_wiki_user, ipb_by, ipb_reason, ipb_timestamp, ipb_auto, ipb_expiry, ipb_range_start, ipb_range_end, 0            , ipb_wiki_user=0
+        (ipb_id, ipb_address, ipb_user, ipb_by, ipb_reason, ipb_timestamp, ipb_auto, ipb_expiry, ipb_range_start, ipb_range_end, ipb_anon_only, ipb_create_account) 
+  SELECT ipb_id, ipb_address, ipb_user, ipb_by, ipb_reason, ipb_timestamp, ipb_auto, ipb_expiry, ipb_range_start, ipb_range_end, 0            , ipb_user=0
   FROM /*$wgDBprefix*/ipblocks;
 
 DROP TABLE IF EXISTS /*$wgDBprefix*/ipblocks_old;

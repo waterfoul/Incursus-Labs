@@ -61,10 +61,10 @@ class ApiQueryLangBacklinks extends ApiQueryGeneratorBase {
 					'original value returned by the previous query', '_badcontinue' );
 			}
 
-			 = $this->getDB();
+			$db = $this->getDB();
 			$op = $params['dir'] == 'descending' ? '<' : '>';
-			$prefix = ->addQuotes( $cont[0] );
-			$title = ->addQuotes( $cont[1] );
+			$prefix = $db->addQuotes( $cont[0] );
+			$title = $db->addQuotes( $cont[1] );
 			$from = intval( $cont[2] );
 			$this->addWhere(
 				"ll_lang $op $prefix OR " .

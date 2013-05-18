@@ -54,11 +54,11 @@ interface IDeviceProperties {
  */
 interface IDeviceDetector {
 	/**
-	 * @param $wiki_userAgent
+	 * @param $userAgent
 	 * @param string $acceptHeader
 	 * @return IDeviceProperties
 	 */
-	function detectDeviceProperties( $wiki_userAgent, $acceptHeader = '' );
+	function detectDeviceProperties( $userAgent, $acceptHeader = '' );
 
 	/**
 	 * @param $deviceName
@@ -67,11 +67,11 @@ interface IDeviceDetector {
 	function getDeviceProperties( $deviceName );
 
 	/**
-	 * @param $wiki_userAgent string
+	 * @param $userAgent string
 	 * @param $acceptHeader string
 	 * @return string
 	 */
-	function detectDeviceName( $wiki_userAgent, $acceptHeader = '' );
+	function detectDeviceName( $userAgent, $acceptHeader = '' );
 }
 
 /**
@@ -294,22 +294,22 @@ class DeviceDetection implements IDeviceDetector {
 
 	/**
 	 * @deprecated: Deprecated, will be removed once detectDeviceProperties() will be deployed everywhere on WMF
-	 * @param $wiki_userAgent
+	 * @param $userAgent
 	 * @param string $acceptHeader
 	 * @return array
 	 */
-	public function detectDevice( $wiki_userAgent, $acceptHeader = '' ) {
-		$formatName = $this->detectFormatName( $wiki_userAgent, $acceptHeader );
+	public function detectDevice( $userAgent, $acceptHeader = '' ) {
+		$formatName = $this->detectFormatName( $userAgent, $acceptHeader );
 		return $this->getDevice( $formatName );
 	}
 
 	/**
-	 * @param $wiki_userAgent
+	 * @param $userAgent
 	 * @param string $acceptHeader
 	 * @return IDeviceProperties
 	 */
-	public function detectDeviceProperties( $wiki_userAgent, $acceptHeader = '' ) {
-		$deviceName = $this->detectDeviceName( $wiki_userAgent, $acceptHeader );
+	public function detectDeviceProperties( $userAgent, $acceptHeader = '' ) {
+		$deviceName = $this->detectDeviceName( $userAgent, $acceptHeader );
 		return $this->getDeviceProperties( $deviceName );
 	}
 
@@ -342,87 +342,87 @@ class DeviceDetection implements IDeviceDetector {
 
 	/**
 	 * @deprecated: Renamed to detectDeviceName()
-	 * @param $wiki_userAgent string
+	 * @param $userAgent string
 	 * @param $acceptHeader string
 	 * @return string
 	 */
-	public function detectFormatName( $wiki_userAgent, $acceptHeader = '' ) {
-		return $this->detectDeviceName( $wiki_userAgent, $acceptHeader );
+	public function detectFormatName( $userAgent, $acceptHeader = '' ) {
+		return $this->detectDeviceName( $userAgent, $acceptHeader );
 	}
 
 	/**
-	 * @param $wiki_userAgent string
+	 * @param $userAgent string
 	 * @param $acceptHeader string
 	 * @return string
 	 */
-	public function detectDeviceName( $wiki_userAgent, $acceptHeader = '' ) {
+	public function detectDeviceName( $userAgent, $acceptHeader = '' ) {
 		wfProfileIn( __METHOD__ );
 
 		$deviceName = '';
-		if ( preg_match( '/Android/', $wiki_userAgent ) ) {
+		if ( preg_match( '/Android/', $userAgent ) ) {
 			$deviceName = 'android';
-			if ( strpos( $wiki_userAgent, 'Opera Mini' ) !== false ) {
+			if ( strpos( $userAgent, 'Opera Mini' ) !== false ) {
 				$deviceName = 'operamini';
-			} elseif ( strpos( $wiki_userAgent, 'Opera Mobi' ) !== false ) {
+			} elseif ( strpos( $userAgent, 'Opera Mobi' ) !== false ) {
 				$deviceName = 'operamobile';
 			}
-		} elseif ( preg_match( '/MSIE 9.0/', $wiki_userAgent ) ||
-				preg_match( '/MSIE 8.0/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/MSIE 9.0/', $userAgent ) ||
+				preg_match( '/MSIE 8.0/', $userAgent ) ) {
 			$deviceName = 'ie';
-		} elseif( preg_match( '/MSIE/', $wiki_userAgent ) ) {
+		} elseif( preg_match( '/MSIE/', $userAgent ) ) {
 			$deviceName = 'html';
-		} elseif ( strpos( $wiki_userAgent, 'Opera Mobi' ) !== false ) {
+		} elseif ( strpos( $userAgent, 'Opera Mobi' ) !== false ) {
 			$deviceName = 'operamobile';
-		} elseif ( preg_match( '/iPad.* Safari/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/iPad.* Safari/', $userAgent ) ) {
 			$deviceName = 'iphone';
-		} elseif ( preg_match( '/iPhone.* Safari/', $wiki_userAgent ) ) {
-			if ( strpos( $wiki_userAgent, 'iPhone OS 2' ) !== false ) {
+		} elseif ( preg_match( '/iPhone.* Safari/', $userAgent ) ) {
+			if ( strpos( $userAgent, 'iPhone OS 2' ) !== false ) {
 				$deviceName = 'iphone2';
 			} else {
 				$deviceName = 'iphone';
 			}
-		} elseif ( preg_match( '/iPhone/', $wiki_userAgent ) ) {
-			if ( strpos( $wiki_userAgent, 'Opera' ) !== false ) {
+		} elseif ( preg_match( '/iPhone/', $userAgent ) ) {
+			if ( strpos( $userAgent, 'Opera' ) !== false ) {
 				$deviceName = 'operamini';
 			} else {
 				$deviceName = 'native_iphone';
 			}
-		} elseif ( preg_match( '/WebKit/', $wiki_userAgent ) ) {
-			if ( preg_match( '/Series60/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/WebKit/', $userAgent ) ) {
+			if ( preg_match( '/Series60/', $userAgent ) ) {
 				$deviceName = 'nokia';
-			} elseif ( preg_match( '/webOS/', $wiki_userAgent ) ) {
+			} elseif ( preg_match( '/webOS/', $userAgent ) ) {
 				$deviceName = 'palm_pre';
 			} else {
 				$deviceName = 'webkit';
 			}
-		} elseif ( preg_match( '/Opera/', $wiki_userAgent ) ) {
-			if ( strpos( $wiki_userAgent, 'Nintendo Wii' ) !== false ) {
+		} elseif ( preg_match( '/Opera/', $userAgent ) ) {
+			if ( strpos( $userAgent, 'Nintendo Wii' ) !== false ) {
 				$deviceName = 'wii';
-			} elseif ( strpos( $wiki_userAgent, 'Opera Mini' ) !== false ) {
+			} elseif ( strpos( $userAgent, 'Opera Mini' ) !== false ) {
 				$deviceName = 'operamini';
 			} else {
 				$deviceName = 'operamobile';
 			}
-		} elseif ( preg_match( '/Kindle\/1.0/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/Kindle\/1.0/', $userAgent ) ) {
 			$deviceName = 'kindle';
-		} elseif ( preg_match( '/Kindle\/2.0/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/Kindle\/2.0/', $userAgent ) ) {
 			$deviceName = 'kindle2';
-		} elseif ( preg_match( '/Firefox/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/Firefox/', $userAgent ) ) {
 			$deviceName = 'capable';
-		} elseif ( preg_match( '/NetFront/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/NetFront/', $userAgent ) ) {
 			$deviceName = 'netfront';
-		} elseif ( preg_match( '/SEMC-Browser/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/SEMC-Browser/', $userAgent ) ) {
 			$deviceName = 'wap2';
-		} elseif ( preg_match( '/Series60/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/Series60/', $userAgent ) ) {
 			$deviceName = 'wap2';
-		} elseif ( preg_match( '/PlayStation Portable/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/PlayStation Portable/', $userAgent ) ) {
 			$deviceName = 'psp';
-		} elseif ( preg_match( '/PLAYSTATION 3/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/PLAYSTATION 3/', $userAgent ) ) {
 			$deviceName = 'ps3';
-		} elseif ( preg_match( '/SAMSUNG/', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/SAMSUNG/', $userAgent ) ) {
 			$deviceName = 'capable';
-		} elseif ( preg_match( '/BlackBerry/', $wiki_userAgent ) ) {
-			if( preg_match( '/BlackBerry[^\/]*\/[1-4]\./', $wiki_userAgent ) ) {
+		} elseif ( preg_match( '/BlackBerry/', $userAgent ) ) {
+			if( preg_match( '/BlackBerry[^\/]*\/[1-4]\./', $userAgent ) ) {
 				$deviceName = 'blackberry-lt5';
 			} else {
 				$deviceName = 'blackberry';

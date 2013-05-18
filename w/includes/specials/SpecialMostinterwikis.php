@@ -67,10 +67,10 @@ class MostinterwikisPage extends QueryPage {
 	/**
 	 * Pre-fill the link cache
 	 *
-	 * @param  DatabaseBase
+	 * @param $db DatabaseBase
 	 * @param $res
 	 */
-	function preprocessResults( , $res ) {
+	function preprocessResults( $db, $res ) {
 		# There's no point doing a batch check if we aren't caching results;
 		# the page must exist for it to have been pulled out of the table
 		if ( !$this->isCached() || !$res->numRows() ) {

@@ -53,7 +53,7 @@ $digitTransformTable = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'सम्बन्ध निम्न रेखाङ्कन:',
 'tog-justify' => 'अनुच्छेद जस्टिफाइ(justify) गर्ने',
 'tog-hideminor' => 'भर्खरका मामूली सम्पादनहरुलाई लुकाउने',
@@ -77,7 +77,7 @@ $messages = array(
 'tog-previewonfirst' => 'पहिलो सम्पादनमा पूर्वरुप देखाउने',
 'tog-nocache' => 'ब्राउजर पृष्ठ क्यासिङ्ग निस्क्रिय पार्ने',
 'tog-enotifwatchlistpages' => 'मेरो निगरानी सूचीमा रहेका पृष्ठ अथवा फाइलहरु परिवर्तन गरिए मलाई ई-मेल गरियोस्',
-'tog-enotifwiki_usertalkpages' => 'मेरो प्रयोगकर्ता वार्ता पृष्ठ परिवर्तन गरिए मलाई ई-मेल गर्ने',
+'tog-enotifusertalkpages' => 'मेरो प्रयोगकर्ता वार्ता पृष्ठ परिवर्तन गरिए मलाई ई-मेल गर्ने',
 'tog-enotifminoredits' => 'पृष्ठहरु र फाइलहरुको सामान्य सम्पादन भएमा पनि मलाई ई-मेल गरियोस्',
 'tog-enotifrevealaddr' => 'जानकारी इ-मेलहरुमा मेरो इ-मेल खुलाउने',
 'tog-shownumberswatching' => 'निगरानी गरिरहेका प्रयोगकर्ताहरुको संख्या देखाउने',
@@ -261,7 +261,7 @@ $messages = array(
 'talk' => 'वार्तालाप',
 'views' => 'अवलोकनहरू',
 'toolbox' => 'औजारबट्टा',
-'wiki_userpage' => 'प्रयोगकर्ता पृष्ठ हेर्ने',
+'userpage' => 'प्रयोगकर्ता पृष्ठ हेर्ने',
 'projectpage' => 'प्रोजेक्ट पृष्ठ हेर्ने',
 'imagepage' => 'फाइल पृष्ठ हेर्नुहोस्',
 'mediawikipage' => 'सन्देश पृष्ठ हेर्ने',
@@ -287,7 +287,7 @@ $1',
 'pool-queuefull' => 'प्रतीक्षा पंक्ति भरियो',
 'pool-errorunknown' => 'अज्ञात त्रुटि',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}}को बारेमा',
 'aboutpage' => 'Project:बारेमा',
 'copyright' => 'लेखका सामाग्री $1 अनुसार उपलब्ध छ।',
@@ -323,7 +323,7 @@ $1',
 'youhavenewmessages' => 'तपाईंको लागि ($2) मा  $1 छ ।',
 'newmessageslink' => 'नयाँ सन्देशहरू',
 'newmessagesdifflink' => 'आखिरी परिवर्तन',
-'youhavenewmessagesfromwiki_users' => 'तपाईंको लागि  {{PLURAL:$3|प्रयोगकर्ता|$3 प्रयोगकर्ताहरु}} ($2) बाट $1',
+'youhavenewmessagesfromusers' => 'तपाईंको लागि  {{PLURAL:$3|प्रयोगकर्ता|$3 प्रयोगकर्ताहरु}} ($2) बाट $1',
 'youhavenewmessagesmulti' => 'तपाईंको लागि $1 मा  नयाँ सन्देशहरू छन्',
 'editsection' => 'सम्पादन',
 'editsection-brackets' => '[$1]',
@@ -355,7 +355,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'लेख',
-'nstab-wiki_user' => 'प्रयोगकर्ता पृष्ठ',
+'nstab-user' => 'प्रयोगकर्ता पृष्ठ',
 'nstab-media' => 'माध्यम पृष्ठ',
 'nstab-special' => 'विशेष पृष्ठ',
 'nstab-project' => 'आयोजना पृष्ठ',
@@ -397,7 +397,7 @@ $1',
 यस्तो प्राय: मिति नाघिसकेको भिन्न वा इतिहास वा कुनै मेटिसकेको पानाको लिंक पहिल्याउनाले हुन्छ ।
 
 यदि यस्तो भएको होइन भने सफ्टवेयरको त्रुटि पनि हुनसक्छ ।
-कृपया यसको url खुलाइ [[Special:Listwiki_users/sysop|प्रबन्धक]]लाई उजुरी गर्नुहोस्',
+कृपया यसको url खुलाइ [[Special:ListUsers/sysop|प्रबन्धक]]लाई उजुरी गर्नुहोस्',
 'missingarticle-rev' => '(संशोधन #: $1)',
 'missingarticle-diff' => '(डिफ diff: $1, $2)',
 'readonly_lag' => 'डेटाबेस स्वतः बन्द गरिएकोछ जबकि अधिनस्थ डेटाबेस सर्वरले मूल पहिल्याउँदछ।',
@@ -445,7 +445,7 @@ $2',
 'customcssprotected' => 'तपाईलाई यस  पृष्ठ सम्पादन गर्ने अनुमति छैन, किनकी यसमा कुनै अर्को प्रयोगकर्ताको व्यक्तिगत अभिरुचीहरु संग्रहित छन् ।',
 'customjsprotected' => 'तपाईलाई यस जाभास्कृप्ट पृष्ठ सम्पादन गर्ने अनुमति छैन, किनकी यसमा कुनै अर्को प्रयोगकर्ताको व्यक्तिगत अभिरुचीहरु संग्रहित छन् ।',
 'ns-specialprotected' => 'विशेष पृष्ठ सम्पादन गर्न सकिदैन ।',
-'titleprotected' => ' [[wiki_user:$1|$1]]द्वारा यो शीर्षक निर्माणहुनबाट जोगाइएको छ।
+'titleprotected' => ' [[User:$1|$1]]द्वारा यो शीर्षक निर्माणहुनबाट जोगाइएको छ।
 कारण   "\'\'$2\'\'" हो ।',
 'filereadonlyerror' => 'फाइल "$1" लाई परिवर्तन गर्न सकिंदैन किन भनें फाइल भण्डार  "$2" केवल पढ्ने स्थिति (read-only mode)मा छ।
 
@@ -459,7 +459,7 @@ $2',
 
 # Login and logout pages
 'logouttext' => "'''तपाईं अहिले बाहिर निस्कनु भएको छ।'''
-तपाईंले नाम/खाताविनै पनि {{SITENAME}}मा प्रयोग गर्न सक्नुहुन्छ, अथवा अघिकै वा अर्कै कुनै नामको खाताबाट [[Special:wiki_userLogin|फेरि प्रवेश गर्न]] पनि सक्नुहुन्छ।
+तपाईंले नाम/खाताविनै पनि {{SITENAME}}मा प्रयोग गर्न सक्नुहुन्छ, अथवा अघिकै वा अर्कै कुनै नामको खाताबाट [[Special:UserLogin|फेरि प्रवेश गर्न]] पनि सक्नुहुन्छ।
 याद राख्नुहोस् तपाईंले ब्राउजरको स्मरण भण्डार खालि नगर्दासम्म कुनै पृष्ठहरूमा तपाईं अझै प्रवेश गरिराखेको देखाउन सक्छ।",
 'welcomecreation' => '== स्वागतम् , $1! ==
 तपाँईको खाता खोलिएको छ। [[Special:Preferences|{{SITENAME}} preferences]]मा आफ्ना अभिरुचिहरू परिवर्तन गर्न नबिर्सिनुहोला।',
@@ -473,21 +473,21 @@ $2',
 'login' => 'प्रवेश',
 'nav-login-createaccount' => 'प्रवेश गर्ने/नयाँ खाता बनाउने',
 'loginprompt' => 'तपाईंले {{SITENAME}}मा प्रवेश गर्न कुकीहरू सक्रिय बनाउनुपर्छ ।',
-'wiki_userlogin' => 'प्रवेश गर्ने / नयाँ खाता बनाउने',
-'wiki_userloginnocreate' => 'लग इन',
+'userlogin' => 'प्रवेश गर्ने / नयाँ खाता बनाउने',
+'userloginnocreate' => 'लग इन',
 'logout' => 'निर्गमन',
-'wiki_userlogout' => 'निर्गमन (लग आउउ)',
+'userlogout' => 'निर्गमन (लग आउउ)',
 'notloggedin' => 'प्रवेश (लग ईन) नगरिएको',
 'nologin' => 'तपाईको खाता छैन? $1 ।',
 'nologinlink' => 'नयाँ खाता खोल्नुहोस्',
 'createaccount' => 'खाता खोल्नुहोस्',
 'gotaccount' => "के तपाईँसँग पहिले देखि नै खाता छ ? '''$1''' ।",
 'gotaccountlink' => 'लग इन',
-'wiki_userlogin-resetlink' => 'प्रवेश सम्बन्धी विवरणहरु बिर्सनु भयो?',
+'userlogin-resetlink' => 'प्रवेश सम्बन्धी विवरणहरु बिर्सनु भयो?',
 'createaccountmail' => 'इ-मेलबाट',
 'createaccountreason' => 'कारण :',
 'badretype' => 'तपाईंले दिनुभएको पासवर्ड मिल्दैन।',
-'wiki_userexists' => 'तपाईले प्रविष्ट गर्नुभएको प्रयोगकर्ताको नाम पहिले देखिनै प्रयोगमा छ ।
+'userexists' => 'तपाईले प्रविष्ट गर्नुभएको प्रयोगकर्ताको नाम पहिले देखिनै प्रयोगमा छ ।
 कृपया फरक नाम छान्नुहोस् ।',
 'loginerror' => 'प्रवेश त्रुटि',
 'createaccounterror' => 'खाता बनाउन सकिएन: $1',
@@ -502,13 +502,13 @@ $2',
 'noname' => 'तपाईले सही प्रयोगकर्ता नाम दिनु भएन।',
 'loginsuccesstitle' => 'प्रवेश सफल',
 'loginsuccess' => "'''तपाईंले {{SITENAME}}मा  \"\$1\" को रुपमा प्रवेश गर्नुभएकोछ।'''",
-'nosuchwiki_user' => '"$1" को नामबाट कुनै पनि प्रयोगकर्ता भेटिएनन् ।
+'nosuchuser' => '"$1" को नामबाट कुनै पनि प्रयोगकर्ता भेटिएनन् ।
 प्रयोगकर्ता नाम वर्णसंवेदनशील हुन्छन् ।
-हिज्जे जाँच्नुहोस् , या [[Special:wiki_userLogin/signup|नयाँ खाता बनाउनुहोस्]].',
-'nosuchwiki_usershort' => ' "$1" नामको कुनै पनि प्रयोगकर्ता भेटिएन।
+हिज्जे जाँच्नुहोस् , या [[Special:UserLogin/signup|नयाँ खाता बनाउनुहोस्]].',
+'nosuchusershort' => ' "$1" नामको कुनै पनि प्रयोगकर्ता भेटिएन।
  तपाईँको हिज्जे जाँच्नुहोस् ।',
-'nowiki_userspecified' => 'तपाँईले प्रयोगकर्ताको नाम जनाउनुपर्छ।',
-'login-wiki_userblocked' => 'यस प्रयोगकर्तालाई रोक लगाइएको छ। प्रवेश गर्ने अनुमति छैन।',
+'nouserspecified' => 'तपाँईले प्रयोगकर्ताको नाम जनाउनुपर्छ।',
+'login-userblocked' => 'यस प्रयोगकर्तालाई रोक लगाइएको छ। प्रवेश गर्ने अनुमति छैन।',
 'wrongpassword' => 'पासवर्ड गलत हालियो । कृपया फेरि प्रयास गर्नुहोला ।',
 'wrongpasswordempty' => 'हालिएको पासवर्ड खालि थियो । कृपया फेरी प्रयास गर्नुहोला ।',
 'passwordtooshort' => 'पासवर्ड कम्तिमा {{PLURAL:$1|१ अक्षर |$1 अक्षरहरु}}को हुनुपर्छ ।',
@@ -545,16 +545,16 @@ $2',
 'accountcreatedtext' => '$1 कोलागि प्रयोगकर्ता खाता खोलियो।',
 'createaccount-title' => '{{SITENAME}}कोलागि खाता खोल्ने काम',
 'createaccount-text' => 'कसैले तपाईको इमेल ठेगानालाई {{SITENAME}} ($4) मा "$2" नामको खाता बनाएको छ, जसको पासवर्ड "$3" छ।',
-'wiki_usernamehasherror' => 'प्रयोगकर्तानाममा ह्यास अक्षरहरु राख्न मिल्दैन।',
+'usernamehasherror' => 'प्रयोगकर्तानाममा ह्यास अक्षरहरु राख्न मिल्दैन।',
 'login-throttled' => 'तपाईंले भर्खरै धेरै पल्ट प्रवेशको निम्ति प्रयास गर्नुभयो।
 कृपया पर्खेर केही समयपछि मात्र प्रयास गर्नुहोस्।',
 'login-abort-generic' => 'तपाईंको प्रवेश असफल भयो - छोड़ियो',
 'loginlanguagelabel' => 'भाषा: $1',
-'suspicious-wiki_userlogout' => 'तपाईंको निर्गमन अनुरोध अस्विकार गरिन्छ किन कि यो खराब ब्राउजर वा क्यासिङ प्रोक्सिले पठाएको जस्तो देखिन्छ।',
+'suspicious-userlogout' => 'तपाईंको निर्गमन अनुरोध अस्विकार गरिन्छ किन कि यो खराब ब्राउजर वा क्यासिङ प्रोक्सिले पठाएको जस्तो देखिन्छ।',
 
 # E-mail sending
 'php-mail-error-unknown' => 'PHP मेल() क्रियामा अज्ञात त्रुटि',
-'wiki_user-mail-no-addy' => 'इमेल ठेगाना बिना नै इमेल पठाउन खोजिएको थियो।',
+'user-mail-no-addy' => 'इमेल ठेगाना बिना नै इमेल पठाउन खोजिएको थियो।',
 
 # Change password dialog
 'resetpass' => 'प्रवेशशव्द परिवर्तन गर्नुहोस्',
@@ -581,7 +581,7 @@ $2',
 'passwordreset-legend' => 'प्रवेशशव्द पुनः तय गर्ने',
 'passwordreset-disabled' => 'प्रवेश शव्द पुनः निर्धारण गर्ने व्यवस्था यस विकिमा निस्क्रिय पारिएको छ।',
 'passwordreset-pretext' => '{{PLURAL:$1||तल दिएका आँकड़ाका टुकुरा मध्ये एउटा प्रविष्ट गर्नुहोस्}}',
-'passwordreset-wiki_username' => 'प्रयोगकर्ता-नाम:',
+'passwordreset-username' => 'प्रयोगकर्ता-नाम:',
 'passwordreset-domain' => 'डोमेन',
 'passwordreset-capture' => 'निस्कने इमेलको नमुना हेर्ने ?',
 'passwordreset-capture-help' => 'यदि तपाईंले यो कोठामा दाग दिनुभयो भनें यो इमेल (अस्थायी पासवर्ड सहित) तपाईंलाई देखा पर्नेछ साथै प्रयोगकर्तालाई पनि पठाइनेछ।',
@@ -593,7 +593,7 @@ $2
 
 {{PLURAL:$3|यो अस्थाई पासवर्डको|यी अस्थाई पासवर्डहरुको}} समय {{PLURAL:$5|एक दिन|$5 दिन}}मा सकिनेछ।
 तपाईंले प्रवेश गरेर अहिले नैं नयाँ पासवर्ड चुन्नुहोस्। यदि अरु कसैले अनुरोध गरेको भए अथवा यदि तपाईंलाई मूल पासवर्ड याद भए अनि यसलाई परिवर्तन गर्न चाहनु हुन्न भनें, तपाईंले यस सन्देशलाई अनदेखा गर्नुहोस् र पुरानै पासवर्डलाई चालू राख्नुहोस्।',
-'passwordreset-emailtext-wiki_user' => '{{SITENAME}} को $1 प्रयोगकर्ताले  {{SITENAME}} ($4)को लागि खाता विवरणको निम्ति एउटा अनुस्मारकको अनुरोध गरेको छ। निम्न प्रयोगकर्ता {{PLURAL:$3|खाता यस इमेल ठेगानासित सम्बन्धित छ|खाताहरु यस इमेल ठेगानासित सम्बन्धित छन्}}:
+'passwordreset-emailtext-user' => '{{SITENAME}} को $1 प्रयोगकर्ताले  {{SITENAME}} ($4)को लागि खाता विवरणको निम्ति एउटा अनुस्मारकको अनुरोध गरेको छ। निम्न प्रयोगकर्ता {{PLURAL:$3|खाता यस इमेल ठेगानासित सम्बन्धित छ|खाताहरु यस इमेल ठेगानासित सम्बन्धित छन्}}:
 
 $2
 
@@ -694,7 +694,7 @@ $2
 'loginreqlink' => 'प्रवेश (लग ईन)',
 'loginreqpagetext' => 'अरु पृष्ठहेर्न तपाईले $1 गर्नुपर्छ ।',
 'accmailtitle' => 'पासवर्ड पठाइयो',
-'accmailtext' => "जथाभावीरुपमा सृजना गरिएको प्रवेशशब्द प्रयोगकर्ता [[wiki_user talk:$1|$1]] को  $2 मा पठाइएको छ।
+'accmailtext' => "जथाभावीरुपमा सृजना गरिएको प्रवेशशब्द प्रयोगकर्ता [[User talk:$1|$1]] को  $2 मा पठाइएको छ।
 
 यो नयाँ खाताको प्रवेशशब्द  ''[[Special:ChangePassword|change password]]'' मा प्रवेश गरेर परिवर्तन गर्न सकिन्छ ।",
 'newarticle' => '(नयाँ)',
@@ -704,7 +704,7 @@ $2
 'anontalkpagetext' => "----''यो वार्तालाप पृष्ठ अज्ञात प्रयोगकर्ताको हो जसले अहिलेसम्म खाता बनाएकै छैन, अथवा जसले यस पृष्ठको उपयोग गर्दैन।
 यस कारण हामीले उसलाई उसको आइ पी (IP) ठेगानाले चिन्न सक्छौं। 
 यस्तो आइ पी (IP) ठेगाना धेरै प्रयोगकर्ताहरुको साझा हुनसक्छ।
-यदि तपाईं अज्ञात प्रयोगकर्ता हुनुहुन्छ र तपाईंमथि अचाहिँदो टिप्पणी भएको अनुभव गर्नुहुन्छ भनें भविष्यमा अन्य अज्ञात प्रयोगकर्तासितको भ्रमबाट बाँच्न कृपया [[Special:wiki_userLogin/signup|खाता खोल्नुहोस्]] अथवा [[Special:wiki_userLogin|प्रवेश गर्नुहोस्]] ''",
+यदि तपाईं अज्ञात प्रयोगकर्ता हुनुहुन्छ र तपाईंमथि अचाहिँदो टिप्पणी भएको अनुभव गर्नुहुन्छ भनें भविष्यमा अन्य अज्ञात प्रयोगकर्तासितको भ्रमबाट बाँच्न कृपया [[Special:UserLogin/signup|खाता खोल्नुहोस्]] अथवा [[Special:UserLogin|प्रवेश गर्नुहोस्]] ''",
 'noarticletext' => 'यस लेखमा अहिले केहि पनि पाठ छैन ।
 तपाईले अन्य पृष्ठमा [[Special:Search/{{PAGENAME}}|यस पृष्ठको शीर्षकको लागि खोज]] गर्न सक्नुहुन्छ ।
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} पृष्ठ संबंधित ढड्डामा खोज],
@@ -712,9 +712,9 @@ $2
 'noarticletext-nopermission' => 'यस लेखमा अहिले केहि पनि पाठ छैन ।
 तपाईंले अन्य पृष्ठमा [[Special:Search/{{PAGENAME}}|यस पृष्ठको शीर्षकको लागि खोज]] गर्न सक्नुहुन्छ,
 अथवा <span class="plainlinks">[{{fullurl:{{#Special:Log}}|पृष्ठ={{FULLPAGENAMEE}}}} सम्बन्धित लगहरु खोज्न सक्नुहुनेछ ]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => 'प्रयोगकर्ताको खाता  "<nowiki>$1</nowiki>" दर्ता गरिएको छैन ।
+'userpage-userdoesnotexist' => 'प्रयोगकर्ताको खाता  "<nowiki>$1</nowiki>" दर्ता गरिएको छैन ।
 तपाईँले पृष्ठ निर्माण/सम्पादन गर्न चाहनु भएको भए जाँच गर्नुहोस् ।',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'प्रयोगकर्ता खाता "$1" दर्ता गरिएको छैन।',
+'userpage-userdoesnotexist-view' => 'प्रयोगकर्ता खाता "$1" दर्ता गरिएको छैन।',
 'blocked-notice-logextract' => 'यो प्रयोगकर्ता हाल प्रतिबन्धित छ।
 भर्खरैको प्रतिबन्ध लग प्रविष्टि सन्दर्भको निम्ति तल दिइन्छ:',
 'clearyourcache' => "'''टिप्पणी''' संग्रह गरेपछि, परिवर्तन हेर्नको लागि तपाईँले आफ्नो ब्राउजर मा क्याश बाईपास गर्नु पर्ने हुन सक्छ।
@@ -722,31 +722,31 @@ $2
 *'''कन्क्वेरर:''' मा ''Reload'' क्लिक गर्नुहोस या ''F5'' दबाउनुहोस;
 *'''ओपेरा:''' ''Tools → Preferences'' मा गएर क्याश हटाउनुहोस;
 *''''इन्टरनेट एक्सप्लोरर'''': ''Ctrl'' लाई थिची राखेर ''Refresh'' क्लिक गर्नुहोस वा ''Ctrl-F5'' थिच्नुहोस",
-'wiki_usercssyoucanpreview' => "'''सुझाव:''' तपाईंको नयाँ CSS संग्रह गर्न अघि  \"{{int:showpreview}}\" बटन थिचेर जाँच्नुहोस् ।",
-'wiki_userjsyoucanpreview' => "'''सुझाव:''' तपाईंको नयाँ जाभा स्क्रिप्ट (JavaScript)  संग्रह गर्न अघि  \"{{int:showpreview}}\" बटन थिचेर जाँच्नुहोस् ।",
-'wiki_usercsspreview' => "'''याद राख्नुहोस तपाईँले आफ्नो प्रयोगकर्ता CSSको पूर्वावलोकन मात्र हेरिरहनु भएको छ। '''
+'usercssyoucanpreview' => "'''सुझाव:''' तपाईंको नयाँ CSS संग्रह गर्न अघि  \"{{int:showpreview}}\" बटन थिचेर जाँच्नुहोस् ।",
+'userjsyoucanpreview' => "'''सुझाव:''' तपाईंको नयाँ जाभा स्क्रिप्ट (JavaScript)  संग्रह गर्न अघि  \"{{int:showpreview}}\" बटन थिचेर जाँच्नुहोस् ।",
+'usercsspreview' => "'''याद राख्नुहोस तपाईँले आफ्नो प्रयोगकर्ता CSSको पूर्वावलोकन मात्र हेरिरहनु भएको छ। '''
 '''यसलाइ अहिले सम्म संग्रह गरिएको छैन!'''",
-'wiki_userjspreview' => "'''याद राख्नुहोस तपाईँले आफ्नो प्रयोगकर्ता JavaScript को पूर्वावलोकन मात्र हेरिरहनु भएको छ। '''
+'userjspreview' => "'''याद राख्नुहोस तपाईँले आफ्नो प्रयोगकर्ता JavaScript को पूर्वावलोकन मात्र हेरिरहनु भएको छ। '''
 '''यसलाइ अहिले सम्म संग्रह गरिएको छैन!'''",
 'sitecsspreview' => "'''याद राख्नुहोस तपाईँले केवल वैश्विक CSS. को पूर्वावलोकन मात्र अवलोकन गर्नु भएको छ। '''
 '''यसलाइ अहिले सम्म संग्रह गरिएको छैन!'''",
 'sitejspreview' => "याद राख्नुहोस तपाईँले केवल JavaScript code को पूर्वावलोकन मात्र हेरिरहनु भएको छ। '''
 '''यसलाइ अहिले सम्म संग्रह गरिएको छैन!'''",
-'wiki_userinvalidcssjstitle' => "'''चेतावनी:''' यहाँ कुनैपनि \"\$1\" नामको स्कीन छैन ।
-प्रचलित .css तथा .js पृष्ठहरुले lowercase शीर्षक प्रयोग गर्छन्, जस्तै {{ns:wiki_user}}:Foo/Vector.css को सट्टामा {{ns:wiki_user}}:Foo/vector.css",
+'userinvalidcssjstitle' => "'''चेतावनी:''' यहाँ कुनैपनि \"\$1\" नामको स्कीन छैन ।
+प्रचलित .css तथा .js पृष्ठहरुले lowercase शीर्षक प्रयोग गर्छन्, जस्तै {{ns:user}}:Foo/Vector.css को सट्टामा {{ns:user}}:Foo/vector.css",
 'updated' => 'नवीन',
 'note' => "'''सूचना:'''",
 'previewnote' => "'''यो केवल पूर्वालोकन मात्र हो; तपाईंका परिवर्तनहरू संग्रह भएका छैनन्!'''",
 'previewconflict' => 'यस पूर्वावलोकनले संपादन क्षेत्र को माथिल्लो भागको पाठ परिवर्तन गर्ने ठाउँको पाठलाइ देखाउँछ अनि तपाइले यसलाइ सेभ गरेपछि देखापर्छ।',
 'session_fail_preview' => "'''माफ गर्नुहोस्! सत्र-आँकड़ा (session data) हराउनाले हामीले तपाईंको सम्पादन प्रक्रिया अघि बढाउन सकेनौं।.'''
 कृपया पुनः प्रयास गर्नुहोस्।
-यदि फेरि पनि काम भएन भनें, [[Special:wiki_userLogout|बाहिर गई(लग आउट गरी)]]  फेरि प्रवेश गर्नुहोस्।",
+यदि फेरि पनि काम भएन भनें, [[Special:UserLogout|बाहिर गई(लग आउट गरी)]]  फेरि प्रवेश गर्नुहोस्।",
 'session_fail_preview_html' => "'''माफ गर्नुहोला! सत्र को डेटा को नोकसान को कारण ले गर्दा तपाइको सम्पादन लाइ जारी राख्न सकिएन।'''
 
 ''जावास्क्रिप्ट हमलाहरु रोक्नको लागि यो पूर्वावलोकन लाइ देखाइएको छैन किन कि {{SITENAME}} मा काँचो HTML को प्रयोग गर्न मिल्ने बनाइएको छ।''
 
 '''यदि यो एक वैध प्रयास हो भने, कृपया पुन: प्रयास गर्नुहोला.'''
-यदि अझै पनि काम गरेन भने [[Special:wiki_userLogout|निर्गमन(logging out)]] र पुन:आगमन(login) गर्ने प्रयास गर्नुहोला।",
+यदि अझै पनि काम गरेन भने [[Special:UserLogout|निर्गमन(logging out)]] र पुन:आगमन(login) गर्ने प्रयास गर्नुहोला।",
 'token_suffix_mismatch' => "'''सम्पादन टोकनमा विराम चिह्न र वर्ण सम्बन्धित गड़बड़ीको कारण तपाईंको सम्पादन अस्वीकार गरिएको छ'''
 पृष्ठको पाठ बचाउन सम्पादन अस्वीकार गरिएको हो।
 यस्तो त्यसबेला हुन्छ जब तपाईंले बगी वेवमा आधारित अज्ञात प्रोक्सी सेवा प्रयोग गर्नुहुन्छ।",
@@ -791,7 +791,7 @@ $2
 'edittools-upload' => '-',
 'nocreatetitle' => 'पृष्ठ सृजना सीमित गरिएको',
 'nocreatetext' => '{{SITENAME}} ले नयाँ पृष्ठ सृजना गर्न सक्ने क्षमतामा रोक लगाएको छ।
-तपाईँ पछाडि जानु भइ रहिआएको पृष्ठ सम्पादन गर्नसक्नुहुन्छ , अथवा [[Special:wiki_userLogin|प्रवेश गर्नुहोस या नयाँ खाता सृजना गर्नुहोस् ]]।',
+तपाईँ पछाडि जानु भइ रहिआएको पृष्ठ सम्पादन गर्नसक्नुहुन्छ , अथवा [[Special:UserLogin|प्रवेश गर्नुहोस या नयाँ खाता सृजना गर्नुहोस् ]]।',
 'nocreate-loggedin' => 'नयाँ पृष्ठ सृजनागर्नको लागि तपाईँलाई अनुमति छैन ।',
 'sectioneditnotsupported-title' => 'खण्ड सम्पादन असमर्थित',
 'sectioneditnotsupported-text' => 'यस पृष्ठमा खण्ड सम्पादन असमर्थित',
@@ -833,11 +833,11 @@ $2
 तपाईंले चाहेको कार्य गर्न कृपया तल दिएको तुलना जाँच गर्नुहोस्, र गरिएको सम्पादनलाई  अघिकै अवस्थामा लैजाने कार्य सम्पन्न गर्न तल गएर संग्रह  गर्नुहोस्।',
 'undo-failure' => 'सम्पादनमा अन्तर्द्वन्द्वको कारण सम्पादन रद्द गर्न सकिन्न।',
 'undo-norev' => 'यो मेटिएको या नरहेको कारणले गर्दा सम्पादन खारेज गर्न सकिन्न ।',
-'undo-summary' => '  $1द्वारा पुनरावलोकन [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|वार्तालाप]]) खारेज गर्नुहोस',
+'undo-summary' => '  $1द्वारा पुनरावलोकन [[Special:Contributions/$2|$2]] ([[User talk:$2|वार्तालाप]]) खारेज गर्नुहोस',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'खाता बनाउन सकिएन',
-'cantcreateaccount-text' => "IP ठेगाना ('''$1''')बाट खाता खोल्न  [[wiki_user:$3|$3]]द्वारा बन्देज लगाइएको छ।
+'cantcreateaccount-text' => "IP ठेगाना ('''$1''')बाट खाता खोल्न  [[User:$3|$3]]द्वारा बन्देज लगाइएको छ।
 
  $3ले दिनुभएको कारण  ''$2'' हो",
 
@@ -875,9 +875,9 @@ $2
 
 # Revision deletion
 'rev-deleted-comment' => '(सम्पादन सारांश हटाइयो)',
-'rev-deleted-wiki_user' => '(प्रयोगकर्ता नाम हटाइयो)',
+'rev-deleted-user' => '(प्रयोगकर्ता नाम हटाइयो)',
 'rev-deleted-event' => '(लग कार्य हटाइयो)',
-'rev-deleted-wiki_user-contribs' => '[प्रयोगकर्ताको नाम अथवा IP ठेगाना हटाइयो - योगदानहरुबाट सम्पादन लुकाइयो]',
+'rev-deleted-user-contribs' => '[प्रयोगकर्ताको नाम अथवा IP ठेगाना हटाइयो - योगदानहरुबाट सम्पादन लुकाइयो]',
 'rev-deleted-text-permission' => "यस पृष्ठको पुनरावलोकन '''मेटिएकोछ'''।
 यसको पूर्ण विवरण [{{fullurl:{{#Special:Log}}/delete|पृष्ठ={{FULLPAGENAMEE}}}}को मेटिएको लगमा पाउन सकिन्छ]।",
 'rev-deleted-text-unhide' => "यस पृष्ठको संशोधन '''मेटिएकोछ'''।
@@ -921,7 +921,7 @@ $2
 'revdelete-hide-image' => 'फाइल कमेन्ट लुकाउने',
 'revdelete-hide-name' => 'कार्य र गन्तब्य लुकाउने',
 'revdelete-hide-comment' => 'सम्पादन टिप्पणी लुकाउने',
-'revdelete-hide-wiki_user' => 'सम्पादकको प्रयोगकर्ता नाम/IP लुकाउने',
+'revdelete-hide-user' => 'सम्पादकको प्रयोगकर्ता नाम/IP लुकाउने',
 'revdelete-hide-restricted' => 'प्रवन्धक वा अरुबाट डेटा कम लिने',
 'revdelete-radio-same' => '(परिवर्तन नगर्नुहोस्)',
 'revdelete-radio-set' => 'हुन्छ',
@@ -1001,7 +1001,7 @@ $1",
 'showhideselectedversions' => 'छानिएका पुनरावलोकनहरु देखाउने/लुकाउने',
 'editundo' => 'रद्द गर्ने',
 'diff-multi' => '({{PLURAL:$2|एक प्रयोगकर्ता|$2 प्रयोगकर्ताहरु}}द्वारा {{PLURAL:$1|एउटा मध्यवर्ती संशोधन|$1 मध्यवर्ती संशोधनहरू}} नदेखाइएको)',
-'diff-multi-manywiki_users' => '($2 {{PLURAL:$2|भन्दा अधिक प्रयोगकर्ता|भन्दा अधिक प्रयोगकर्ताहरु}}द्वारा {{PLURAL:$1|एउटा मध्यवर्ती संशोधन|$1 मध्यवर्ती संशोधनहरु}} नदेखाइएको)',
+'diff-multi-manyusers' => '($2 {{PLURAL:$2|भन्दा अधिक प्रयोगकर्ता|भन्दा अधिक प्रयोगकर्ताहरु}}द्वारा {{PLURAL:$1|एउटा मध्यवर्ती संशोधन|$1 मध्यवर्ती संशोधनहरु}} नदेखाइएको)',
 
 # Search results
 'searchresults' => 'खोज नतिजाहरू',
@@ -1082,7 +1082,7 @@ $1",
 'mypreferences' => 'प्राथमिकताहरु',
 'prefs-edits' => 'सम्पादन संख्या:',
 'prefsnologin' => 'प्रवेश (लग ईन) नगरिएको',
-'prefsnologintext' => 'प्रयोगकर्ता अभिरूचि निर्धारण गर्न <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} ]</span>तपाईंले प्रवेश गरेको हुनुपर्छ।',
+'prefsnologintext' => 'प्रयोगकर्ता अभिरूचि निर्धारण गर्न <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} ]</span>तपाईंले प्रवेश गरेको हुनुपर्छ।',
 'changepassword' => 'पासवर्ड परिवर्तन गर्नुहोस्',
 'prefs-skin' => 'काँचुली',
 'skin-preview' => 'पूर्वावलोकन',
@@ -1154,7 +1154,7 @@ $1",
 'prefs-emailconfirm-label' => 'इ-मेल एकिन प्रक्रिया :',
 'prefs-textboxsize' => 'सम्पादन विन्डोको आकार',
 'youremail' => 'ईमेल',
-'wiki_username' => 'प्रयोगकर्ता नाम:',
+'username' => 'प्रयोगकर्ता नाम:',
 'uid' => 'प्रोगकर्ता आइडी:',
 'prefs-memberingroups' => 'निम्न {{PLURAL:$1|समूह | समूहहरू}}को सदस्य :',
 'prefs-memberingroups-type' => '$1',
@@ -1196,36 +1196,36 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'prefs-displaywatchlist' => 'प्रदर्शन विकल्पहरू',
 'prefs-diffs' => 'diffs(भिन्नता)',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'ई मेल ठेगाना मान्य भएको प्रतीत हुन्छ',
 'email-address-validity-invalid' => 'मान्य ईमेल ठेगाना दिनुहोस्',
 
-# wiki_user rights
-'wiki_userrights' => 'प्रयोगकर्ता अधिकार व्यवस्थापन',
-'wiki_userrights-lookup-wiki_user' => 'प्रयोगकर्ता समूह व्यवस्थापन गर्नुहोस',
-'wiki_userrights-wiki_user-editname' => 'प्रयोगकर्ता नाम दिनुहोस् :',
-'editwiki_usergroup' => 'प्रयोगकर्ता समूह सम्पादन गर्नुहोस्',
-'editingwiki_user' => "'''[[wiki_user:$1|$1]]''' $2 प्रयोगकर्ताको अधिकार परिवर्तन गरिंदै",
-'wiki_userrights-editwiki_usergroup' => 'प्रयोगकर्ता समूह सम्पादन गर्नुहोस्',
-'savewiki_usergroups' => 'प्रयोगकर्ता समूहरू संग्रह गर्नुहोस्',
-'wiki_userrights-groupsmember' => 'को सदस्य:',
-'wiki_userrights-groupsmember-auto' => 'अंतर्निहित सदस्य:',
-'wiki_userrights-groups-help' => 'यो प्रयोगकर्ता भएको समूहलाई अदलबदल गर्न सक्नुहुन्छ:
+# User rights
+'userrights' => 'प्रयोगकर्ता अधिकार व्यवस्थापन',
+'userrights-lookup-user' => 'प्रयोगकर्ता समूह व्यवस्थापन गर्नुहोस',
+'userrights-user-editname' => 'प्रयोगकर्ता नाम दिनुहोस् :',
+'editusergroup' => 'प्रयोगकर्ता समूह सम्पादन गर्नुहोस्',
+'editinguser' => "'''[[User:$1|$1]]''' $2 प्रयोगकर्ताको अधिकार परिवर्तन गरिंदै",
+'userrights-editusergroup' => 'प्रयोगकर्ता समूह सम्पादन गर्नुहोस्',
+'saveusergroups' => 'प्रयोगकर्ता समूहरू संग्रह गर्नुहोस्',
+'userrights-groupsmember' => 'को सदस्य:',
+'userrights-groupsmember-auto' => 'अंतर्निहित सदस्य:',
+'userrights-groups-help' => 'यो प्रयोगकर्ता भएको समूहलाई अदलबदल गर्न सक्नुहुन्छ:
 * बाकस चेक्ड(checked) हुनु्को अर्थ प्रयोगकर्ता त्यस समूहमा छ।
 * बाकस अनचेक्ड (unchecked) हुनु्को अर्थ प्रयोगकर्ता त्यस समूहमा छैन।
 *  *ले संकेत दिन्छ तपाईं त्यस समूहलाई हटाउन सक्नुहुन्न जब तपाईंले यसलाई जोड़िसक्नु भएकोछ अथवा अदला बदलि गर्नुभएकोछ।',
-'wiki_userrights-reason' => 'कारण :',
-'wiki_userrights-no-interwiki' => 'तपाईंलाई अन्य विकिमा प्रयोगकर्ता अधिकार सम्पादन गर्ने अनुमति छैन।',
-'wiki_userrights-nodatabase' => 'डेटाबेस $1 उपलब्ध छैन या स्थानीय हैन।',
-'wiki_userrights-nologin' => 'प्रयोगकर्ता अधिकार प्रदान गर्न तपाईंले प्रबन्धक खाताबाट [[Special:wiki_userLogin|प्रवेश]] गर्नुपर्छ।',
-'wiki_userrights-notallowed' => 'प्रयोगकर्तालाई अधिकार प्रदान गर्ने तपाईंलाई अनुमति छैन।',
-'wiki_userrights-changeable-col' => 'परिवर्तन गर्न सकिने समूहहरु',
-'wiki_userrights-unchangeable-col' => 'तपाईले परिवर्तन गर्न सक्नुनहुने समूहहरु',
-'wiki_userrights-irreversible-marker' => '$1*',
+'userrights-reason' => 'कारण :',
+'userrights-no-interwiki' => 'तपाईंलाई अन्य विकिमा प्रयोगकर्ता अधिकार सम्पादन गर्ने अनुमति छैन।',
+'userrights-nodatabase' => 'डेटाबेस $1 उपलब्ध छैन या स्थानीय हैन।',
+'userrights-nologin' => 'प्रयोगकर्ता अधिकार प्रदान गर्न तपाईंले प्रबन्धक खाताबाट [[Special:UserLogin|प्रवेश]] गर्नुपर्छ।',
+'userrights-notallowed' => 'प्रयोगकर्तालाई अधिकार प्रदान गर्ने तपाईंलाई अनुमति छैन।',
+'userrights-changeable-col' => 'परिवर्तन गर्न सकिने समूहहरु',
+'userrights-unchangeable-col' => 'तपाईले परिवर्तन गर्न सक्नुनहुने समूहहरु',
+'userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'समूह :',
-'group-wiki_user' => 'प्रयोगकर्ताहरु',
+'group-user' => 'प्रयोगकर्ताहरु',
 'group-autoconfirmed' => 'स्वत निश्चित गरिएका प्रयोगकर्ताहरु',
 'group-bot' => 'बोटहरु',
 'group-sysop' => 'प्रबन्धकहरू',
@@ -1233,14 +1233,14 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'group-suppress' => 'अतिदृष्टिहरु',
 'group-all' => '(सबै)',
 
-'group-wiki_user-member' => '{{GENDER:$1|प्रयोगकर्ता}}',
+'group-user-member' => '{{GENDER:$1|प्रयोगकर्ता}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|स्वनिर्धारित प्रयोगकर्ता}}',
 'group-bot-member' => '{{GENDER:$1|बोट}}',
 'group-sysop-member' => '{{GENDER:$1|प्रवन्धक}}',
 'group-bureaucrat-member' => '{{GENDER:$1|प्रशासक}}',
 'group-suppress-member' => '{{GENDER:$1|अतिदृष्टि}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:प्रयोगकर्ताहरु',
+'grouppage-user' => '{{ns:project}}:प्रयोगकर्ताहरु',
 'grouppage-autoconfirmed' => '{{ns:project}}:स्वनिर्धारित  प्रयोगकर्ताहरु',
 'grouppage-bot' => '{{ns:project}}:बोटहरु',
 'grouppage-sysop' => '{{ns:project}}: प्रबन्धकहरु',
@@ -1256,7 +1256,7 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'right-minoredit' => 'सम्पादनलाई सामान्य चिनो लगाउने',
 'right-move' => 'पृष्ठहरु सार्ने',
 'right-move-subpages' => 'तिनीहरुको सह-पृष्ठसहित पृष्ठहरु सार्ने',
-'right-move-rootwiki_userpages' => 'मूल(root) प्रयोगकर्ताको पृष्ठहरु सार्ने',
+'right-move-rootuserpages' => 'मूल(root) प्रयोगकर्ताको पृष्ठहरु सार्ने',
 'right-movefile' => 'फाइलहरु सार्ने',
 'right-suppressredirect' => 'पृष्ठ सार्दा स्रोत पृष्ठबाट पठाउने लिंक नबनाउने',
 'right-upload' => 'फाइलहरु उर्ध्वभरण गर्ने',
@@ -1280,16 +1280,16 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'right-suppressionlog' => 'व्यक्तिगत लगहरु हेर्ने',
 'right-block' => 'अरु प्रयोगकर्ताहरुलाई सम्पादन गर्नबाट रोक्नुहोस',
 'right-blockemail' => 'एक प्रयोगकर्तालाई इमेल पठाउनबाट रोक्ने',
-'right-hidewiki_user' => 'एक प्रयोगकर्ता नाम रोक्ने, सार्वजनिकहुनबाट लुकाउने',
+'right-hideuser' => 'एक प्रयोगकर्ता नाम रोक्ने, सार्वजनिकहुनबाट लुकाउने',
 'right-ipblock-exempt' => 'IP रोक,स्वत: रोक तथा स्तर रोक कटेर जाने',
 'right-proxyunbannable' => 'प्रोक्सिको स्वत: रोक कटेर जाने',
 'right-unblockself' => 'तिनीहरु आफैंलाई खुल्ला गर्छन्',
 'right-protect' => 'सुरक्षा स्तर परिवर्तन गर्ने र जोगाइएका पृष्ठहरु सम्पादन गर्ने',
 'right-editprotected' => 'जोगाइएका पृष्ठहरु सम्पादन गर्ने(क्यासकेडिङ्ग सुरक्षा नभएका)',
 'right-editinterface' => 'प्रयोगकर्ता अन्तरमोहडा सम्पादन गर्ने',
-'right-editwiki_usercssjs' => 'प्रयोगकर्ताको CSS र JS फाइलहरु सम्पादन गर्ने',
-'right-editwiki_usercss' => 'प्रयोगकर्ताको CSS फाइलहरु सम्पादन गर्ने',
-'right-editwiki_userjs' => 'प्रयोकर्ताको  JS फाइलहरु सम्पादनगर्ने',
+'right-editusercssjs' => 'प्रयोगकर्ताको CSS र JS फाइलहरु सम्पादन गर्ने',
+'right-editusercss' => 'प्रयोगकर्ताको CSS फाइलहरु सम्पादन गर्ने',
+'right-edituserjs' => 'प्रयोकर्ताको  JS फाइलहरु सम्पादनगर्ने',
 'right-rollback' => 'पछिल्लो प्रयोगकर्ताको सम्पादनहरुको छरितो रुपमा पछाडि पर्काउने',
 'right-markbotedits' => 'पछाडि फर्काउने सम्पादनहरुलाई बोट सम्पादनकारुपमा चिनो लगाउने',
 'right-noratelimit' => 'दर सीमाले  असर नपार्ने',
@@ -1300,14 +1300,14 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'right-patrolmarks' => 'हालका सम्पादन पट्रोल(गस्ती) चिनो लगाउने',
 'right-unwatchedpages' => 'निगरानी नगरिएका पृष्ठहरुको सूचीहेर्ने',
 'right-mergehistory' => 'पृष्ठका इतिहासहरु बुझाउने',
-'right-wiki_userrights' => 'प्रयोगकर्ताका अधिकारहरु सम्पादन गर्ने',
-'right-wiki_userrights-interwiki' => 'अरु विकिहरुमा प्रयोगकर्ताहरुको अधिकार सम्पादन गर्ने',
+'right-userrights' => 'प्रयोगकर्ताका अधिकारहरु सम्पादन गर्ने',
+'right-userrights-interwiki' => 'अरु विकिहरुमा प्रयोगकर्ताहरुको अधिकार सम्पादन गर्ने',
 'right-siteadmin' => 'डेटाबेसको ताल्चामार्ने र ताल्चाखोल्ने',
 'right-override-export-depth' => 'गहिराइ ५ सम्मको लिंक गरिएका पृष्ठहरु सहित निर्यात गर्ने',
 'right-sendemail' => 'अन्य प्रयोगकर्ताहरुलाई इमेल गर्ने',
 'right-passwordreset' => 'पासवर्ड परिवर्तन गर्ने ईमेलहरु हेर्नुहोस',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'प्रयोगकर्ता अधिकार लग',
 'rightslogtext' => 'यो प्रयोगकर्ता अधिकारहरुको परिवर्तन लग हो ।',
 'rightslogentry' => '$1 समूह सदस्याता $2 बाट $3 मा परिवर्तन गरिएको छ',
@@ -1323,7 +1323,7 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'action-minoredit' => 'यस सम्पादनलाई साधारणको रुपमा चिनो लगाउने',
 'action-move' => 'यो पृष्ठलाई सर्ने',
 'action-move-subpages' => 'यो पृष्ठ र यसका सह पृष्ठहरुलाई सर्ने',
-'action-move-rootwiki_userpages' => 'मूल प्रयोगकर्ता पृष्ठहरु सार्ने',
+'action-move-rootuserpages' => 'मूल प्रयोगकर्ता पृष्ठहरु सार्ने',
 'action-movefile' => 'यो फाइल सार्ने',
 'action-upload' => 'यो फाइल अपलोड गर्ने',
 'action-reupload' => 'रहिआएको फाइल अधिलेखन गर्ने',
@@ -1345,8 +1345,8 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'action-autopatrol' => 'तपाईंको सम्पादनलाई गश्त रुपमा दाग दिनुहोस्',
 'action-unwatchedpages' => 'अवलोकन नगरिएका  पृष्ठहरुको सूची हेर्ने',
 'action-mergehistory' => 'यस पृष्ठको इतिहासलाई मिसाउने',
-'action-wiki_userrights' => 'सबै प्रयोगकर्ताका अधिकारहरु सम्पादन गर्ने',
-'action-wiki_userrights-interwiki' => 'अरु विकिका प्रयोगकर्ताहरुको प्रयोगकर्ता अधिकारलाई सम्पादन गर्ने',
+'action-userrights' => 'सबै प्रयोगकर्ताका अधिकारहरु सम्पादन गर्ने',
+'action-userrights-interwiki' => 'अरु विकिका प्रयोगकर्ताहरुको प्रयोगकर्ता अधिकारलाई सम्पादन गर्ने',
 'action-siteadmin' => 'डेटाबेस बन्दगर्ने वा खोल्ने',
 'action-sendemail' => 'इमेलहरु पठाउने',
 
@@ -1378,7 +1378,7 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'newpageletter' => 'न',
 'boteditletter' => 'बो',
 'unpatrolledletter' => '!',
-'number_of_watching_wiki_users_pageview' => '[$1 निगरानी गर्दै{{PLURAL:$1|प्रयोगकर्ता|प्रयोगकर्ताहरु}}]',
+'number_of_watching_users_pageview' => '[$1 निगरानी गर्दै{{PLURAL:$1|प्रयोगकर्ता|प्रयोगकर्ताहरु}}]',
 'rc_categories' => 'श्रेणीहरुमा सीमित ("|" ले छुट्याउनुहोस्)',
 'rc_categories_any' => 'कुनै',
 'rc-change-size' => '$1',
@@ -1404,7 +1404,7 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'reuploaddesc' => 'उर्ध्वभरण रद्द गर्ने र उर्ध्वभरण फारमतिर जाने',
 'upload-tryagain' => 'संशोधित फाइल विवरण बुझाउने',
 'uploadnologin' => 'प्रवेश (लग ईन) नगरिएको',
-'uploadnologintext' => 'फाइल उर्ध्वभरण गर्न तपाईंले [[Special:wiki_userLogin|प्रवेश]] गर्नुपर्छ।',
+'uploadnologintext' => 'फाइल उर्ध्वभरण गर्न तपाईंले [[Special:UserLogin|प्रवेश]] गर्नुपर्छ।',
 'upload_directory_missing' => 'उर्ध्वभरण डाइरेक्टरी ($1) हराइरहेको छ र वेवसर्भरले नयाँ डाइरेक्टरी निर्माणगर्न असमर्थ भयो ।',
 'upload_directory_read_only' => 'उर्ध्व भरण डाइरेक्टरी ($1) वेवसर्भर द्वारा लेख्य छैन ।',
 'uploaderror' => 'उर्ध्वभरण त्रुटि',
@@ -1565,7 +1565,7 @@ $1',
 'listfiles' => 'फाइल सूची',
 'listfiles_date' => 'मिति',
 'listfiles_name' => 'नाम',
-'listfiles_wiki_user' => 'प्रयोगकर्ता',
+'listfiles_user' => 'प्रयोगकर्ता',
 'listfiles_size' => 'आकार',
 'listfiles_description' => 'वर्णन',
 'listfiles_count' => 'संस्करणहरु',
@@ -1582,7 +1582,7 @@ $1',
 'filehist-thumb' => 'थम्बनेल',
 'filehist-thumbtext' => 'थम्बनेल $1 सस्करणको रुपमा',
 'filehist-nothumb' => 'थम्बनेल नभएको',
-'filehist-wiki_user' => 'प्रयोगकर्ता',
+'filehist-user' => 'प्रयोगकर्ता',
 'filehist-dimensions' => 'आकारहरू',
 'filehist-filesize' => 'फाइल आकार',
 'filehist-comment' => 'टिप्पणी',
@@ -1651,7 +1651,7 @@ $1',
 'statistics-header-pages' => 'पृष्ठहरुको तथ्याङ्क',
 'statistics-header-edits' => 'सम्पादनहरुको तथ्याङ्क',
 'statistics-header-views' => 'तथ्याङ्क देखाउनुहोस्',
-'statistics-header-wiki_users' => 'प्रयोगकर्ता तथ्याङ्कहरु',
+'statistics-header-users' => 'प्रयोगकर्ता तथ्याङ्कहरु',
 'statistics-header-hooks' => 'अन्य तथ्याङ्कहरु',
 'statistics-articles' => 'सामग्री पृष्ठहरु',
 'statistics-pages' => 'पृष्ठहरु',
@@ -1661,9 +1661,9 @@ $1',
 'statistics-edits-average' => 'प्रतिपृष्ठ औसत सम्पादन',
 'statistics-views-total' => 'जम्मा हेर्नुहोस्',
 'statistics-views-peredit' => 'प्रति पृष्ठ सम्पादन',
-'statistics-wiki_users' => 'दर्तागरिएको [[Special:Listwiki_users|प्रयोगकर्ताहरु]]',
-'statistics-wiki_users-active' => 'सकृय प्रयोगकर्ताहरु',
-'statistics-wiki_users-active-desc' => 'प्रयोगकर्ताहरु जो{{PLURAL:$1|बितेको एक दिन|बितेका $1 दिनहरु}}देखि  जो सक्रिय छन्',
+'statistics-users' => 'दर्तागरिएको [[Special:ListUsers|प्रयोगकर्ताहरु]]',
+'statistics-users-active' => 'सकृय प्रयोगकर्ताहरु',
+'statistics-users-active-desc' => 'प्रयोगकर्ताहरु जो{{PLURAL:$1|बितेको एक दिन|बितेका $1 दिनहरु}}देखि  जो सक्रिय छन्',
 'statistics-mostpopular' => 'सबैभन्दा धेरै हेरिएको पृष्ठहरु',
 
 'disambiguations' => 'स्पष्टिकरण पृष्ठमा जोडिएका पृष्ठहरु',
@@ -1729,13 +1729,13 @@ $1',
 'protectedtitles' => 'सुरक्षा गरिएका शिर्षकहरु',
 'protectedtitlestext' => 'निम्न शिर्षकहरु शृजनाहुनबाट सुरक्षित गरिएको छ',
 'protectedtitlesempty' => 'दिइएको प्यारामिटर प्रयोग गरि सुरक्षा गरिएका शीर्षकहरु छैनन् ।',
-'listwiki_users' => 'प्रयोगकर्ता सूची',
-'listwiki_users-editsonly' => 'सम्पादन गरेका प्रयोगकर्तामात्र देखाउने',
-'listwiki_users-creationsort' => 'सृजना मिति अनुसार क्रमवद्ध गर्ने',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|सम्पादन|सम्पादनहरु}}',
-'wiki_usercreated' => ' $1को $2 मा सृजना गरिएको',
+'listusers' => 'प्रयोगकर्ता सूची',
+'listusers-editsonly' => 'सम्पादन गरेका प्रयोगकर्तामात्र देखाउने',
+'listusers-creationsort' => 'सृजना मिति अनुसार क्रमवद्ध गर्ने',
+'usereditcount' => '$1 {{PLURAL:$1|सम्पादन|सम्पादनहरु}}',
+'usercreated' => ' $1को $2 मा सृजना गरिएको',
 'newpages' => 'नयाँ पृष्ठहरू',
-'newpages-wiki_username' => 'प्रयोगकर्ता नाम:',
+'newpages-username' => 'प्रयोगकर्ता नाम:',
 'ancientpages' => 'सबैभन्दा पुराना पृष्ठहरु',
 'move' => 'सार्ने',
 'movethispage' => 'यो पृष्ठ सार्नुहोस्',
@@ -1752,7 +1752,7 @@ $1',
 'booksources-go' => 'जाउ',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'निष्पादक:',
+'specialloguserlabel' => 'निष्पादक:',
 'speciallogtitlelabel' => 'लक्ष्य (शीर्षक वा प्रयोगकर्ता)',
 'log' => 'लगहरु',
 'all-logs-page' => 'सबै सार्वजनिक लगहरु',
@@ -1799,23 +1799,23 @@ $1',
 'linksearch-line' => '$1 $2सित जोड़िएको छ।',
 'linksearch-error' => 'मूलनामको सुरुमा मात्र वाइल्डकार्ड देखापर्न सक्छ।',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'प्रयोगहरु देखाउन शुरु हुने यहाँ:',
-'listwiki_users-submit' => 'देखाउनुहोस्',
-'listwiki_users-noresult' => 'प्रयोगकर्ताहरु भेटिएनन्।',
-'listwiki_users-blocked' => '(प्रतिबन्धित)',
+# Special:ListUsers
+'listusersfrom' => 'प्रयोगहरु देखाउन शुरु हुने यहाँ:',
+'listusers-submit' => 'देखाउनुहोस्',
+'listusers-noresult' => 'प्रयोगकर्ताहरु भेटिएनन्।',
+'listusers-blocked' => '(प्रतिबन्धित)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'सक्रिय प्रयोगकर्ताहरुको सूची',
-'activewiki_users-intro' => 'यो सूची ती प्रयोगकर्ताहरुको हो जसले विगत $1 {{PLURAL:$1|दिन| दिन}}मा  गतिविधि देखाएकाछन्।',
-'activewiki_users-count' => 'विगत {{PLURAL:$3|दिनमा| $3 दिनहरुमा}}  $1 {{PLURAL:$1| सम्पादन गरियो|सम्पादनहरु गरिए}}',
-'activewiki_users-from' => 'यहाँबाट सुरु हुने प्रयोगकर्ताहरु देखाउनुहोस्:',
-'activewiki_users-hidebots' => 'बोटहरु लुकाउने',
-'activewiki_users-hidesysops' => 'प्रबन्धकहरु लुकाउने',
-'activewiki_users-noresult' => 'प्रयोगकर्ताहरु भेटिएनन्।',
+# Special:ActiveUsers
+'activeusers' => 'सक्रिय प्रयोगकर्ताहरुको सूची',
+'activeusers-intro' => 'यो सूची ती प्रयोगकर्ताहरुको हो जसले विगत $1 {{PLURAL:$1|दिन| दिन}}मा  गतिविधि देखाएकाछन्।',
+'activeusers-count' => 'विगत {{PLURAL:$3|दिनमा| $3 दिनहरुमा}}  $1 {{PLURAL:$1| सम्पादन गरियो|सम्पादनहरु गरिए}}',
+'activeusers-from' => 'यहाँबाट सुरु हुने प्रयोगकर्ताहरु देखाउनुहोस्:',
+'activeusers-hidebots' => 'बोटहरु लुकाउने',
+'activeusers-hidesysops' => 'प्रबन्धकहरु लुकाउने',
+'activeusers-noresult' => 'प्रयोगकर्ताहरु भेटिएनन्।',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'प्रयोगकर्ता श्रृजना लग',
+# Special:Log/newusers
+'newuserlogpage' => 'प्रयोगकर्ता श्रृजना लग',
 
 # Special:ListGroupRights
 'listgrouprights' => 'प्रयोगकर्ता समूह अधिकार',
@@ -1835,23 +1835,23 @@ $1',
 'listgrouprights-removegroup-self' => '{{PLURAL:$2|समूह|समूहहरु}} यस  $1 खाताबाट हटाउने',
 'listgrouprights-addgroup-self-all' => 'सबै समूहहरु निजी खातामा थप्ने',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'ईमेल पठाउने ठेगाना नै भएन ।',
-'mailnologintext' => 'तपाईले अरु प्रयोगकर्ताहरुलाई ईमेल पठाउनको लागि आफु पहिले [[Special:wiki_userLogin|प्रवेश(लगइन)गरेको]] हुनुपर्छ र [[Special:Preferences|आफ्नो रोजाइहरुमा]] एउटा वैध ईमेल ठेगाना भएको हुनुपर्छ।',
-'emailwiki_user' => 'यो प्रयोगकर्तालाई ई-मेल पठाउनुहोस्',
+'mailnologintext' => 'तपाईले अरु प्रयोगकर्ताहरुलाई ईमेल पठाउनको लागि आफु पहिले [[Special:UserLogin|प्रवेश(लगइन)गरेको]] हुनुपर्छ र [[Special:Preferences|आफ्नो रोजाइहरुमा]] एउटा वैध ईमेल ठेगाना भएको हुनुपर्छ।',
+'emailuser' => 'यो प्रयोगकर्तालाई ई-मेल पठाउनुहोस्',
 'emailpage' => 'प्रयोगकर्तालाई इमेल गर्नुहोस्',
-'wiki_usermailererror' => 'मेल अब्जेक्टले देखाएको त्रुटि:',
+'usermailererror' => 'मेल अब्जेक्टले देखाएको त्रुटि:',
 'defemailsubject' => '{{SITENAME}} प्रयपोगकर्ता "$1" बाट इमेल',
-'wiki_usermaildisabled' => 'प्रयोगकर्ता ई-मेल निरस्त गरिएको',
-'wiki_usermaildisabledtext' => 'यस विकिमा तपाईं अरु प्रयोगकर्तालाई ई-मेल पठाउन सक्नुहुन्न',
+'usermaildisabled' => 'प्रयोगकर्ता ई-मेल निरस्त गरिएको',
+'usermaildisabledtext' => 'यस विकिमा तपाईं अरु प्रयोगकर्तालाई ई-मेल पठाउन सक्नुहुन्न',
 'noemailtitle' => 'ईमेल ठेगाना नभएको',
 'noemailtext' => 'प्रयोगकर्ताले सही ई-मेल ठेगाना दर्शाएको छैन।',
 'nowikiemailtitle' => 'ई-मेलको अनुमति छैन',
 'nowikiemailtext' => 'यी प्रयोगकर्ताले अरु प्रयोगकर्ताहरुबाट ई-मेल स्वीकार नगर्ने छनोट गरेकाछन्।',
 'emailnotarget' => 'प्राप्तकर्ताको रुपमा नभएको अथवा अमान्य प्रयोगकर्ता।',
 'emailtarget' => 'प्राप्तकर्ताको प्रयोगकर्ता नाम हाल्नुहोस्',
-'emailwiki_username' => 'प्रयोगकर्ता-नाम:',
-'emailwiki_usernamesubmit' => 'बुझाउने',
+'emailusername' => 'प्रयोगकर्ता-नाम:',
+'emailusernamesubmit' => 'बुझाउने',
 'email-legend' => '{{SITENAME}}का अर्का प्रयोगकर्तालाई ई-मेल पठाउने',
 'emailfrom' => 'बाट:',
 'emailto' => 'लाई:',
@@ -1862,12 +1862,12 @@ $1',
 'emailccsubject' => 'तपाईँको सन्देशको प्रतिलिपि  $1: $2लाई',
 'emailsent' => 'इमेल पठाईयो',
 'emailsenttext' => 'तपाईंको ई-मेल सन्देश पठाइयो।',
-'emailwiki_userfooter' => 'यो ई-मेल $1 ले $2 लाई "ई-मेल प्रयोगकर्ता" कार्यानुरुप {{SITENAME}}मा पठाएको थियो।',
+'emailuserfooter' => 'यो ई-मेल $1 ले $2 लाई "ई-मेल प्रयोगकर्ता" कार्यानुरुप {{SITENAME}}मा पठाएको थियो।',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'प्रणाली सन्देश छोड़दै ।',
-'wiki_usermessage-editor' => 'प्रणाली सन्देशवाहक',
-'wiki_usermessage-template' => 'MediaWiki:wiki_userMessage',
+# User Messenger
+'usermessage-summary' => 'प्रणाली सन्देश छोड़दै ।',
+'usermessage-editor' => 'प्रणाली सन्देशवाहक',
+'usermessage-template' => 'MediaWiki:UserMessage',
 
 # Watchlist
 'watchlist' => 'मेरो अवलोकन',
@@ -1876,7 +1876,7 @@ $1',
 'nowatchlist' => 'तपाईको अवलोकन सूचीमा कुनै पनि सामाग्री छैन।',
 'watchlistanontext' => 'कृपया तपाईको निगरानी सुची हेर्न या सम्पादनगर्न $1 गर्नुहोस् ।',
 'watchnologin' => 'प्रवेश (लग ईन) नगरिएको',
-'watchnologintext' => 'आफ्नो अवलोकनलाइ परिवर्तन गर्नको लागि त तपाइ यसमा [[Special:wiki_userLogin|प्रवेश(लगइन)]] गर्नुपर्छ।',
+'watchnologintext' => 'आफ्नो अवलोकनलाइ परिवर्तन गर्नको लागि त तपाइ यसमा [[Special:UserLogin|प्रवेश(लगइन)]] गर्नुपर्छ।',
 'addwatch' => 'निगरानी सुचीमा थप्ने',
 'addedwatchtext' => '"[[:$1]]" पृष्ठ [[Special:Watchlist|अवलोकनसूची]]मा थपियो
 यो पृष्ठ र यससित सम्बद्ध वार्तालाप पृष्ठमा भविष्यमा हुने परिवर्तन  सूचिबद्ध गरिनेछ र यो पृष्ठ [[Special:RecentChanges|नयाँ परिवर्तनहरु]]मा छान्न सजिलोकोलागि गाढा अक्षरमा देखा पर्नेछ।',
@@ -1987,7 +1987,7 @@ proceed with caution.',
 'cantrollback' => 'फर्काउन सकिंदैन;
 अन्तिम योगदान कर्ता मात्र यस पृष्ठका लेखक थिए।',
 'editcomment' => "सम्पादन सारांश : \"''\$1''\" ।",
-'revertpage' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|वार्तालाप]])द्वारा [[wiki_user:$1|$1]]द्वारा गरिएको पछिल्लो संशोधनतर्फ उल्टाइएका सम्पादनहरु',
+'revertpage' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|वार्तालाप]])द्वारा [[User:$1|$1]]द्वारा गरिएको पछिल्लो संशोधनतर्फ उल्टाइएका सम्पादनहरु',
 'rollback-success' => '$1द्वारा उल्टाइएका सम्पादनहरु;
 पछिल्लो संशोधनमा $2द्वारा परिवर्तन गरि पुनः फर्काइएको।',
 
@@ -2126,13 +2126,13 @@ $3द्वारा $1को ($4को  समय $5 मा) मेटाइए
 'sp-contributions-uploads' => 'उर्ध्वभरणहरु',
 'sp-contributions-logs' => 'लगहरु',
 'sp-contributions-talk' => 'वार्ता',
-'sp-contributions-wiki_userrights' => 'प्रयोगकर्ता अधिकार व्यवस्थापन',
+'sp-contributions-userrights' => 'प्रयोगकर्ता अधिकार व्यवस्थापन',
 'sp-contributions-blocked-notice' => 'यो प्रयोगकर्तालाई अहिले रोक लगाइएको छ।
 नवीनतम रोकाइ गरेको लग प्रविष्टि सन्दर्भको निम्ति तल दिएकोछ:',
 'sp-contributions-blocked-notice-anon' => 'यो IP ठेगानालाई अहिले रोक लगाइएको छ।
 नवीनतम रोकाइ गरेको लग प्रविष्टि सन्दर्भको निम्ति तल दिएकोछ:',
 'sp-contributions-search' => 'योगदानहरु खोज्नुहोस्',
-'sp-contributions-wiki_username' => 'IP ठेगाना वा प्रयोगकर्ता नाम :',
+'sp-contributions-username' => 'IP ठेगाना वा प्रयोगकर्ता नाम :',
 'sp-contributions-toponly' => 'नवीनतम संशोधनका सम्पादनहरु देखाउनुहोस्',
 'sp-contributions-submit' => 'खोज',
 
@@ -2165,7 +2165,7 @@ $3द्वारा $1को ($4को  समय $5 मा) मेटाइए
 'blockiptext' => 'विशेष IP ठेगाना अथवा प्रयोगकर्तालाई रोक लगाउन निम्न प्रपत्र (form) प्रयोग गर्नुहोस्।
 यसो गर्नुको कारण [[{{MediaWiki:Policy-url}}|नीति]] अनुरुप विकिमा गरिने बर्बरताका कार्य रोक्नु मात्र हो।
 विशेष कारण देखाउँदै तलको प्रपत्र भर्नुहोस्  (उदाहरण, बर्बरताको कार्य गरिएको पृष्ठ दर्शाउँदै)',
-'ipadressorwiki_username' => ' ip ठेगाना या प्रयोगकर्ता नाम :',
+'ipadressorusername' => ' ip ठेगाना या प्रयोगकर्ता नाम :',
 'ipbexpiry' => 'समाप्ति:',
 'ipbreason' => 'कारण:',
 'ipbreasonotherlist' => 'अन्य कारण',
@@ -2187,8 +2187,8 @@ $3द्वारा $1को ($4को  समय $5 मा) मेटाइए
 'ipbotheroption' => 'अन्य',
 'ipbotherreason' => 'अन्य / थप कारणहरु:',
 'ipbhidename' => 'प्रयोगकर्ताको नाम सम्पादनबाट र सूचीबाट हटाउने',
-'ipbwatchwiki_user' => 'यो प्रयोगकर्ताको  प्रयपोगकर्ता र वार्तलाप पृष्ठ हेर्नुहोस्',
-'ipb-disablewiki_usertalk' => 'यस प्रयोगकर्तालाई निषेधित समयमा आफ्नै वार्तालाप पृष्ठ सम्पादन गर्न नदिने',
+'ipbwatchuser' => 'यो प्रयोगकर्ताको  प्रयपोगकर्ता र वार्तलाप पृष्ठ हेर्नुहोस्',
+'ipb-disableusertalk' => 'यस प्रयोगकर्तालाई निषेधित समयमा आफ्नै वार्तालाप पृष्ठ सम्पादन गर्न नदिने',
 'ipb-change-block' => 'निम्म स्थितीमा प्रयोगकर्तालाई पुन: निषेध गर्ने',
 'ipb-confirm' => 'रोक सुनिश्चित गर्ने',
 'badipaddress' => 'अमान्य IP ठेगाना',
@@ -2196,7 +2196,7 @@ $3द्वारा $1को ($4को  समय $5 मा) मेटाइए
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] निषेधगरिएको छ।<br />
 पुनरावलकोनको लागि [[Special:BlockList|आइ पी निषेध सूची]] हेर्नहोस् ।',
 'ipb-blockingself' => 'तपाईंले आफैंलाई रोक लगाउन गइरहनु भएको छ! के तपाईं पक्का यसो गर्न चाहनुहुन्छ?',
-'ipb-confirmhidewiki_user' => 'तपाईंले त्यस्तो प्रयोगकर्तालाई रोक लगाउन गइरहनु भएको छ जसको  "प्रयोगकर्ता लुकाउने" सक्रिय बनाइएको छ। यसो गर्दा सबै लग सूचीहरुबाट प्रयोगकर्ताको नाम गायब हुनेछ। के तपाईं पक्का यसो गर्न चाहनुहुन्छ?',
+'ipb-confirmhideuser' => 'तपाईंले त्यस्तो प्रयोगकर्तालाई रोक लगाउन गइरहनु भएको छ जसको  "प्रयोगकर्ता लुकाउने" सक्रिय बनाइएको छ। यसो गर्दा सबै लग सूचीहरुबाट प्रयोगकर्ताको नाम गायब हुनेछ। के तपाईं पक्का यसो गर्न चाहनुहुन्छ?',
 'ipb-edit-dropdown' => 'निषेध कारण सम्पादन गर्नुहोस्',
 'ipb-unblock-addr' => '$1 निषेध खारेज गर्ने',
 'ipb-unblock' => 'प्रयोगकर्ता वा IP माथिको निषेध खारेज गर्ने',
@@ -2205,13 +2205,13 @@ $3द्वारा $1को ($4को  समय $5 मा) मेटाइए
 'unblockip' => 'प्रयोगकर्ताको निषेध खारेज गर्नुहोस्',
 'unblockiptext' => 'IP ठेगाना अथवा प्रयोगकर्तामाथि पहिले लगाइएको रोक फुकुवा गर्न तलको प्रपत्र प्रयोग गर्नुहोस्।',
 'ipusubmit' => 'यो रोक हटाउने',
-'unblocked' => '[[wiki_user:$1|$1]] लाई रोक लगाउने',
+'unblocked' => '[[User:$1|$1]] लाई रोक लगाउने',
 'unblocked-range' => '$1 लाई अनिषेधित गरियो',
 'unblocked-id' => '$1 रोक हटाइएको छ',
 'blocklist' => 'निषेधित प्रयोगकर्ताहरु',
 'ipblocklist' => 'निषेधित प्रयोगकर्ताहरु',
 'ipblocklist-legend' => 'रोकलगाइएका प्रयोगकर्ताहरु खोज्नुहोस',
-'blocklist-wiki_userblocks' => 'खाता निषेधित  लुकाउने',
+'blocklist-userblocks' => 'खाता निषेधित  लुकाउने',
 'blocklist-tempblocks' => 'अस्थाई रोकहरु लुकाउने',
 'blocklist-addressblocks' => 'एक्लो आई पी रोक लुकाउने',
 'blocklist-rangeblocks' => 'रेन्ज रोकहरु लुकाउने',
@@ -2230,7 +2230,7 @@ $3द्वारा $1को ($4को  समय $5 मा) मेटाइए
 'noautoblockblock' => 'स्वत: निषेध निस्क्रिय गरिएको',
 'createaccountblock' => 'खाता खोल्न बन्देज गरिएको',
 'emailblock' => 'इमेल बन्देज गरिएको',
-'blocklist-nowiki_usertalk' => 'आफ्नै वार्तालाप पृष्ठ सम्पादन गर्न सकिंदैन',
+'blocklist-nousertalk' => 'आफ्नै वार्तालाप पृष्ठ सम्पादन गर्न सकिंदैन',
 'ipblocklist-empty' => 'निषेध सूची खाली छ ।',
 'ipblocklist-no-results' => 'अनुरोध गरिएको प्रयोगकर्ता नाम  वा आई पी ठेगाना निषेधित गरिएको छैन ।',
 'blocklink' => 'रोक्ने',
@@ -2238,7 +2238,7 @@ $3द्वारा $1को ($4को  समय $5 मा) मेटाइए
 'change-blocklink' => 'रोकमा परिवर्तन गर्ने',
 'contribslink' => 'योगदानहरु',
 'emaillink' => 'इमेल पठाउने',
-'autoblocker' => 'तपाईंको आई पी ठेगाना  "[[wiki_user:$1|$1]]" द्वारा  भर्खरै प्रयोग गरिएकोले स्वत: बन्देज गरिएको।
+'autoblocker' => 'तपाईंको आई पी ठेगाना  "[[User:$1|$1]]" द्वारा  भर्खरै प्रयोग गरिएकोले स्वत: बन्देज गरिएको।
 $1को बन्देजको कारण : "$2" हो',
 'blocklogpage' => 'निषेध लग',
 'blocklog-showlog' => 'यो प्रयोगकर्तालाई पहिला रोक लगाइएको थियो।
@@ -2255,7 +2255,7 @@ $1को बन्देजको कारण : "$2" हो',
 'block-log-flags-nocreate' => 'खाता खोल्न निस्क्रिय पारिएको',
 'block-log-flags-noautoblock' => 'स्वत: निषेध निस्क्रिय गरिएको',
 'block-log-flags-noemail' => 'इमेल बन्देज गरिएको',
-'block-log-flags-nowiki_usertalk' => 'आफ्नै वार्तालाप पृष्ठ सम्पादन गर्न सकिंदैन',
+'block-log-flags-nousertalk' => 'आफ्नै वार्तालाप पृष्ठ सम्पादन गर्न सकिंदैन',
 'block-log-flags-angry-autoblock' => 'सुदृढ स्वतरोक सक्रिय',
 'block-log-flags-hiddenname' => 'प्रयोगकर्ता नाम लुकाइएको',
 'range_block_disabled' => 'प्रवन्धकको रेन्ज रोक सिर्जना गर्ने क्षमतालाई निश्कृय पारिएको छ।',
@@ -2266,7 +2266,7 @@ $1को बन्देजको कारण : "$2" हो',
 'ipb-needreblock' => '$1लाई अघिबाट नैं प्रतिबन्ध लगाइएकोछ।
 के तपाईं यसको व्यवस्थालाई परिवर्तन गर्न चाहनुहुन्छ?',
 'ipb-otherblocks-header' => 'अरु {{PLURAL:$1|रोक|रोकहरु}}',
-'unblock-hidewiki_user' => 'यस प्रयोगकर्तालाई रोक फुकुवा गर्न सक्नु हुन्न, यस प्रयोगकर्ताको नाम लुकेको छ।',
+'unblock-hideuser' => 'यस प्रयोगकर्तालाई रोक फुकुवा गर्न सक्नु हुन्न, यस प्रयोगकर्ताको नाम लुकेको छ।',
 'ipb_cant_unblock' => 'त्रुटी: रोक आइडी $1 भेटिएन। या यो पहिले नै खोलिइसकेको हुनसक्छ ।',
 'ipb_blocked_as_range' => 'त्रुटी:  IP ठेगाना $1 is लाई सिधै रोकलगाइएको छैन र यस रोकलाई खोल्न मिल्दैन
 यो एक रेन्ज रोक $2, को अन्तर्गत रहेको छ जसलाई रोक खोल्न मिल्छ ।',
@@ -2283,8 +2283,8 @@ $1को बन्देजको कारण : "$2" हो',
 'sorbs_create_account_reason' => 'तपाईको IP ठेगाना खुल्ला प्रोक्सीको रुपमा  DNSBL मा सुचीकरण गरिएको छ यसलाई{{SITENAME}}ले प्रयोगमा ल्याएको छ।
 तपाईले खाता खोल्न सक्नुहुन्न ।',
 'cant-block-while-blocked' => 'तपाईलाई रोक लागेको बेला अर्को प्रयोगकर्ताहरुलाई रोक लगाउन सक्नुहुन्न ।',
-'cant-see-hidden-wiki_user' => 'तपाईले रोक लगाउन खोज्नु भएको प्रयोगकर्ता पहिले नै रोकलगाइ लुकाइ सकिएको छ ।
-तपाईसँग hidewiki_user अधिकार नभएकोले यसलाई हेर्ना या सम्पादन गर्न सक्नुहुन्न ।',
+'cant-see-hidden-user' => 'तपाईले रोक लगाउन खोज्नु भएको प्रयोगकर्ता पहिले नै रोकलगाइ लुकाइ सकिएको छ ।
+तपाईसँग hideuser अधिकार नभएकोले यसलाई हेर्ना या सम्पादन गर्न सक्नुहुन्न ।',
 'ipbblocked' => 'तपाईंले अरु प्रयोगकर्ताहरुलाई प्रतिबन्धित गर्न वा उनीहरुको प्रतिबन्ध खोल्न सक्नुहुन्न किनभनें तपाईं आफैं प्रतिबन्धित हुनुहुन्छ।',
 'ipbnounblockself' => 'तपाई आफैले आफैलाई रोक खुलाउन सक्नुहुन्न ।',
 
@@ -2323,13 +2323,13 @@ $1को बन्देजको कारण : "$2" हो',
 
 यस्तो भएमा, तपाईंको इच्छाले आफैंले (manually) पृष्ठ सार्नु अथवा मिलाउनु पर्ने हुन्छ।",
 'movearticle' => 'पृष्ठ सार्नुहोस्',
-'movewiki_userpage-warning' => "'''चेतावनी:''' तपाईंले प्रयोगकर्ता पृष्ठ सार्न आँट्नु भएकोछ। कृपया याद राख्नुहोस् पृष्ठ मात्र सारिने छ र प्रयोगकर्ताको अर्को नाम राख्न '''सकिंदैन'''।",
+'moveuserpage-warning' => "'''चेतावनी:''' तपाईंले प्रयोगकर्ता पृष्ठ सार्न आँट्नु भएकोछ। कृपया याद राख्नुहोस् पृष्ठ मात्र सारिने छ र प्रयोगकर्ताको अर्को नाम राख्न '''सकिंदैन'''।",
 'movenologin' => 'प्रवेश (लग ईन) नगरिएको',
-'movenologintext' => 'पृष्ठ सार्नको लागि तपाई दर्ता गरिएको र [[Special:wiki_userLogin|प्रवेश गरेको]] प्रयोगकर्ता हुनुपर्छ ।',
+'movenologintext' => 'पृष्ठ सार्नको लागि तपाई दर्ता गरिएको र [[Special:UserLogin|प्रवेश गरेको]] प्रयोगकर्ता हुनुपर्छ ।',
 'movenotallowed' => 'तपाईँलाई पृष्ठ सार्ने अनुमति छैन',
 'movenotallowedfile' => 'फाइल हटाउने अनुमति तपाईँलाई  छैन।',
-'cant-move-wiki_user-page' => 'तपाईसँग प्रयोगकर्ता पृष्ठहरु सार्न अनुमती छैन (सहपृष्ठहरु बाहेक)',
-'cant-move-to-wiki_user-page' => 'तपाईसँग पृष्ठहरु प्रयोगकर्ता पृष्ठमा सार्न अनुमती छैन (प्रयोगकर्ता सहपृष्ठहरमा बाहेक)',
+'cant-move-user-page' => 'तपाईसँग प्रयोगकर्ता पृष्ठहरु सार्न अनुमती छैन (सहपृष्ठहरु बाहेक)',
+'cant-move-to-user-page' => 'तपाईसँग पृष्ठहरु प्रयोगकर्ता पृष्ठमा सार्न अनुमती छैन (प्रयोगकर्ता सहपृष्ठहरमा बाहेक)',
 'newtitle' => 'नयाँ शीर्षकमा :',
 'move-watch' => 'यो पृष्ठ निगरानीमा राख्नुहोस्',
 'movepagebtn' => 'पृष्ठ सार्नुहोस्',
@@ -2454,8 +2454,8 @@ $1को बन्देजको कारण : "$2" हो',
 'import-logentry-interwiki-detail' => '$2 देखि $1 {{PLURAL:$1|पुनरावलोकन|पुनरावलोकनहरु}}',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'तपाईको प्रयोगकर्ता पृष्ठ',
-'tooltip-pt-anonwiki_userpage' => 'तपाईले जुन IP ठेगानाको रुपमा सम्पादन गर्दै हुनुहुन्छ , त्यसको प्रयोगकर्ता पृष्ठ निम्न छ :',
+'tooltip-pt-userpage' => 'तपाईको प्रयोगकर्ता पृष्ठ',
+'tooltip-pt-anonuserpage' => 'तपाईले जुन IP ठेगानाको रुपमा सम्पादन गर्दै हुनुहुन्छ , त्यसको प्रयोगकर्ता पृष्ठ निम्न छ :',
 'tooltip-pt-mytalk' => 'तपाईको वार्ता पृष्ठ',
 'tooltip-pt-anontalk' => 'यो IP ठेगानाबाट गरिएका सम्पादनका बारेमा बार्तालाप',
 'tooltip-pt-preferences' => 'तपाईंका अभिरुचिहरू',
@@ -2493,13 +2493,13 @@ $1को बन्देजको कारण : "$2" हो',
 'tooltip-feed-rss' => 'यो पृष्ठको लागि RSS फिड',
 'tooltip-feed-atom' => 'यो पृष्ठको लागि Atom फिड',
 'tooltip-t-contributions' => 'यस प्रयोगकर्ताका योगदानहरूको सूची हेर्नुहोस्',
-'tooltip-t-emailwiki_user' => 'यो प्रयोगकर्तालाई इमेल पठाउनुहोस्',
+'tooltip-t-emailuser' => 'यो प्रयोगकर्तालाई इमेल पठाउनुहोस्',
 'tooltip-t-upload' => 'फाइल उर्ध्वभरण(upload) गर्ने',
 'tooltip-t-specialpages' => 'सबै विशेष पृष्ठहरूको सूची',
 'tooltip-t-print' => 'यो पृष्ठको मुद्रण योग्य संस्करण',
 'tooltip-t-permalink' => 'पृष्ठको यो पुनरावलोकनको लागि स्थाई लिङ्क',
 'tooltip-ca-nstab-main' => 'सामग्री पृष्ठ हेर्नुहोस',
-'tooltip-ca-nstab-wiki_user' => 'प्रयोगकर्ता पृष्ठ हेर्नुहोस्',
+'tooltip-ca-nstab-user' => 'प्रयोगकर्ता पृष्ठ हेर्नुहोस्',
 'tooltip-ca-nstab-media' => 'मिडिया पृष्ठ हेर्नुहोस्',
 'tooltip-ca-nstab-special' => 'यो विशेष पृष्ठ हो , तपाईँले आफै सम्पादन गर्न सक्नुहुन्न',
 'tooltip-ca-nstab-project' => 'आयोजान पृष्ठ हेर्नुहोस्',
@@ -2543,13 +2543,13 @@ $1को बन्देजको कारण : "$2" हो',
 
 # Attribution
 'anonymous' => '{{SITENAME}} का {{PLURAL:$1||}} नाम नभएका सदस्य',
-'sitewiki_user' => '{{SITENAME}} प्रयोगकर्ता $1',
-'anonwiki_user' => '{{SITENAME}} अनाम प्रयोगकर्ता $1',
+'siteuser' => '{{SITENAME}} प्रयोगकर्ता $1',
+'anonuser' => '{{SITENAME}} अनाम प्रयोगकर्ता $1',
 'lastmodifiedatby' => 'यो पृष्ठ अन्तिमपटक $3द्वारा $2, $1 मा परिवर्तन गरिएको थियो।',
 'othercontribs' => '$1 को कामको आधारमा',
 'others' => 'अन्य',
-'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|प्रयोगकर्ता|प्रयोगकर्ताहरु}} $1',
-'anonwiki_users' => '{{SITENAME}} का नाम नभएका {{PLURAL:$2| प्रयोगकर्ता|प्रयोगकर्ताहरु}} $1',
+'siteusers' => '{{SITENAME}} {{PLURAL:$2|प्रयोगकर्ता|प्रयोगकर्ताहरु}} $1',
+'anonusers' => '{{SITENAME}} का नाम नभएका {{PLURAL:$2| प्रयोगकर्ता|प्रयोगकर्ताहरु}} $1',
 'creditspage' => 'क्रेडिट पृष्ठ',
 'nocredits' => 'यो पृष्ठको लागि कुनै श्रेय उपलब्ध छैन ।',
 
@@ -2558,7 +2558,7 @@ $1को बन्देजको कारण : "$2" हो',
 'spamprotectiontext' => 'तपाईंले जुन पन्ना लाइ सेभ गर्न चाहनुहुन्थ्यो त्यसलाई रद्दी छननी कार्यक्रमले रोक लगाएको छ।
 यो संभवतः कुनै कर्पसूचित बाहिरी स्थल संग सम्बन्धित कडी को कारणले भएको हुन सक्छ।',
 'spamprotectionmatch' => 'निम्न पाठले हाम्रो स्प्प्याम फिल्टर : $1 घच्घच्यायो',
-'spambot_wiki_username' => 'MediaWiki स्पाम सर-सफाइ',
+'spambot_username' => 'MediaWiki स्पाम सर-सफाइ',
 'spam_reverting' => '$1 मा कडीहरू  नभएका पुरानो अवतरणमा पुनर्स्थापित गर्दै',
 'spam_blanking' => '$1 का सबै अवतरणहरूमा कडीहरू  भेटिए, मेटाएर खालि गर्दै',
 
@@ -2714,7 +2714,7 @@ Others will be hidden by default.
 'exif-compressedbitsperpixel' => 'चित्र सम्पीडन मोड',
 'exif-pixelydimension' => 'चित्रको  चौड़ाई',
 'exif-pixelxdimension' => 'चित्रको उचाई',
-'exif-wiki_usercomment' => 'प्रयोगकर्ताका टिप्पणखरु:',
+'exif-usercomment' => 'प्रयोगकर्ताका टिप्पणखरु:',
 'exif-relatedsoundfile' => 'सम्बन्धित अडियो फाइल',
 'exif-datetimeoriginal' => 'डेटा सञ्चालनको मिति र समय',
 'exif-datetimedigitized' => 'मिति र समय अंकीयकरण',
@@ -3095,7 +3095,7 @@ $8',
 कोडको मान्य अवधी समाप्त भएको हुनसक्छ ।',
 'confirmemail_needlogin' => 'तपाईले आफ्नो इमेल प्रमाणिकरण गराउन $1 गर्नु पर्छ ।',
 'confirmemail_success' => 'तपाईको इमेल ठेगाना प्रमाणिकरण गरिएको छ।
-तपाई [[Special:wiki_userLogin|प्रवेश गरी]] विकिको मजा लिन सक्नुहुन्छ ।',
+तपाई [[Special:UserLogin|प्रवेश गरी]] विकिको मजा लिन सक्नुहुन्छ ।',
 'confirmemail_loggedin' => 'तपाईको इमेल ठेगाना प्रमाणित भयो।',
 'confirmemail_error' => 'तपाईंको निश्चयलाई संग्रह गर्दा केहि त्रुटि भएकोछ।',
 'confirmemail_subject' => '{{SITENAME}} ई मेलl ठेगानाको पुष्टि',
@@ -3145,10 +3145,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''चेतावनी''': तपाईंले सम्पादन सुरु गरेपछि यो पृष्ठ मेटिएकोछ!",
-'confirmrecreate' => "प्रयोगकर्ता [[wiki_user:$1|$1]] ([[wiki_user talk:$1|वार्तालाप]])ले  तपाईंले  सम्पादन सुरु गरेपछि यो पृष्ठ मेटेकाछन् । कारण थियो:
+'confirmrecreate' => "प्रयोगकर्ता [[User:$1|$1]] ([[User talk:$1|वार्तालाप]])ले  तपाईंले  सम्पादन सुरु गरेपछि यो पृष्ठ मेटेकाछन् । कारण थियो:
 : ''$2''
 कृपया सुनिश्चित गर्नुहोस् कि तपाईं यो पृष्ठ साँच्चै निर्माण गर्न चाहनुहुन्छ।",
-'confirmrecreate-noreason' => 'प्रयोगकर्ता [[wiki_user:$1|$1]] ले ([[wiki_user talk:$1|वार्तालाप ]])पृष्ठ तपाईले सम्पादन गर्न थाले पछि हटाइएका छन् । यो पृष्ठलाई पुन: सिर्जना गर्ने भए कृपया पुष्टि गर्नुहोस?',
+'confirmrecreate-noreason' => 'प्रयोगकर्ता [[User:$1|$1]] ले ([[User talk:$1|वार्तालाप ]])पृष्ठ तपाईले सम्पादन गर्न थाले पछि हटाइएका छन् । यो पृष्ठलाई पुन: सिर्जना गर्ने भए कृपया पुष्टि गर्नुहोस?',
 'recreate' => 'पुनर्निर्माण',
 
 'unit-pixel' => 'पिक्सेल',
@@ -3296,7 +3296,7 @@ $5
 'hebrew-calendar-m12-gen' => 'एलल्',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]]',
+'signature' => '[[{{ns:user}}:$1|$2]]',
 'timezone-utc' => 'युटिसी(UTC)',
 
 # Core parser functions
@@ -3360,7 +3360,7 @@ $5
 'specialpages-group-login' => 'प्रवेशगर्नुहोस/खाता शृजना गर्नुहोस',
 'specialpages-group-changes' => 'भर्खरैका परिवर्तन र लगहरु',
 'specialpages-group-media' => 'मेडिया प्रतिवेदन र उर्ध्वभरणहरु',
-'specialpages-group-wiki_users' => 'प्रयोगकर्ता र अधिकारहरु',
+'specialpages-group-users' => 'प्रयोगकर्ता र अधिकारहरु',
 'specialpages-group-highuse' => 'उच्च प्रयोग भएका पृष्ठहरु',
 'specialpages-group-pages' => 'पृष्ठहरूको सूची:',
 'specialpages-group-pagetools' => 'पृष्ठ उपकरणहरू',
@@ -3439,7 +3439,7 @@ $5
 'revdelete-restricted' => 'प्रबन्धकहरुमाथि सीमितता लागू गरियो',
 'revdelete-unrestricted' => 'प्रवन्धककोलागि निषेधहरु हटाइयो ।',
 'logentry-move-move' => '$1 द्वारा $3 पृष्ठलाई $4 मा सारियो',
-'newwiki_userlog-byemail' => 'इ मेलबाट पठाइएको प्रवेशशव्द',
+'newuserlog-byemail' => 'इ मेलबाट पठाइएको प्रवेशशव्द',
 
 # Feedback
 'feedback-subject' => 'विषय:',

@@ -52,13 +52,13 @@ class ParserTest {
 	 * Our connection to the database
 	 * @var DatabaseBase
 	 */
-	private ;
+	private $db;
 
 	/**
 	 * Database clone helper
 	 * @var CloneDatabase
 	 */
-	private Clone;
+	private $dbClone;
 
 	/**
 	 * string $oldTablePrefix Original table prefix
@@ -136,7 +136,7 @@ class ParserTest {
 
 	static function setUp() {
 		global $wgParser, $wgParserConf, $IP, $messageMemc, $wgMemc,
-			$wgwiki_user, $wgLang, $wgOut, $wgRequest, $wgStyleDirectory, $wgEnableParserCache,
+			$wgUser, $wgLang, $wgOut, $wgRequest, $wgStyleDirectory, $wgEnableParserCache,
 			$wgNamespaceAliases, $wgNamespaceProtection, $wgLocalFileRepo,
 			$parserMemc, $wgThumbnailScriptPath, $wgScriptPath,
 			$wgArticlePath, $wgStyleSheetPath, $wgScript, $wgStylePath, $wgExtensionAssetsPath,
@@ -193,7 +193,7 @@ class ParserTest {
 		$parserMemc = wfGetParserCacheStorage();
 
 		// $wgContLang = new StubContLang;
-		$wgwiki_user = new wiki_user;
+		$wgUser = new User;
 		$context = new RequestContext;
 		$wgLang = $context->getLanguage();
 		$wgOut = $context->getOutput();
@@ -245,8 +245,8 @@ class ParserTest {
 
 		$numTotal = 0;
 		$numSuccess = 0;
-		$wiki_user = new wiki_user;
-		$opts = ParserOptions::newFromwiki_user( $wiki_user );
+		$user = new User;
+		$opts = ParserOptions::newFromUser( $user );
 		$title = Title::makeTitle( NS_MAIN, 'Parser_test' );
 
 		while ( true ) {
@@ -345,7 +345,7 @@ class ParserTest {
 
 		$functions = get_defined_functions();
 
-		foreach ( $functions['wiki_user'] as $function ) {
+		foreach ( $functions['user'] as $function ) {
 			$rf = new ReflectionFunction( $function );
 			$memStats["$function()"] = strlen( serialize( $rf->getStaticVariables() ) );
 		}
@@ -453,7 +453,7 @@ class ParserTest {
 		$opts = $this->parseOptions( $opts );
 		$context = $this->setupGlobals( $opts, $config );
 
-		$wiki_user = $context->getwiki_user();
+		$user = $context->getUser();
 		$options = ParserOptions::newFromContext( $context );
 
 		if ( isset( $opts['title'] ) ) {
@@ -469,7 +469,7 @@ class ParserTest {
 		$title = Title::newFromText( $titleText );
 
 		if ( isset( $opts['pst'] ) ) {
-			$out = $parser->preSaveTransform( $input, $title, $wiki_user, $options );
+			$out = $parser->preSaveTransform( $input, $title, $user, $options );
 		} elseif ( isset( $opts['msg'] ) ) {
 			$out = $parser->transformMsg( $input, $options, $title );
 		} elseif ( isset( $opts['section'] ) ) {
@@ -727,7 +727,7 @@ class ParserTest {
 		$GLOBALS['wgLang'] = $context->getLanguage();
 		$GLOBALS['wgOut'] = $context->getOutput();
 
-		$GLOBALS['wgwiki_user'] = new wiki_user();
+		$GLOBALS['wgUser'] = new User();
 
 		global $wgHooks;
 
@@ -744,13 +744,13 @@ class ParserTest {
 	 * Some of these probably aren't necessary.
 	 */
 	private function listTables() {
-		$tables = array( 'wiki_user', 'wiki_user_properties', 'wiki_user_former_groups', 'page', 'page_restrictions',
+		$tables = array( 'user', 'user_properties', 'user_former_groups', 'page', 'page_restrictions',
 			'protected_titles', 'revision', 'text', 'pagelinks', 'imagelinks',
 			'categorylinks', 'templatelinks', 'externallinks', 'langlinks', 'iwlinks',
 			'site_stats', 'hitcounter',	'ipblocks', 'image', 'oldimage',
 			'recentchanges', 'watchlist', 'interwiki', 'logging',
 			'querycache', 'objectcache', 'job', 'l10n_cache', 'redirect', 'querycachetwo',
-			'archive', 'wiki_user_groups', 'page_props', 'category', 'msg_resource', 'msg_resource_links'
+			'archive', 'user_groups', 'page_props', 'category', 'msg_resource', 'msg_resource_links'
 		);
 
 		if ( in_array( $this->db->getType(), array( 'mysql', 'sqlite', 'oracle' ) ) ) {
@@ -778,9 +778,9 @@ class ParserTest {
 		}
 
 		$this->db = wfGetDB( DB_MASTER );
-		Type = $this->db->getType();
+		$dbType = $this->db->getType();
 
-		if ( $wgDBprefix === 'parsertest_' || ( Type == 'oracle' && $wgDBprefix === 'pt_' ) ) {
+		if ( $wgDBprefix === 'parsertest_' || ( $dbType == 'oracle' && $wgDBprefix === 'pt_' ) ) {
 			throw new MWException( 'setupDatabase should be called before setupGlobals' );
 		}
 
@@ -797,21 +797,21 @@ class ParserTest {
 			$this->useTemporaryTables = false;
 		}
 
-		$temporary = $this->useTemporaryTables || Type == 'postgres';
-		$prefix = Type != 'oracle' ? 'parsertest_' : 'pt_';
+		$temporary = $this->useTemporaryTables || $dbType == 'postgres';
+		$prefix = $dbType != 'oracle' ? 'parsertest_' : 'pt_';
 
 		$this->dbClone = new CloneDatabase( $this->db, $this->listTables(), $prefix );
 		$this->dbClone->useTemporaryTables( $temporary );
 		$this->dbClone->cloneTableStructure();
 
-		if ( Type == 'oracle' ) {
+		if ( $dbType == 'oracle' ) {
 			$this->db->query( 'BEGIN FILL_WIKI_INFO; END;' );
-			# Insert 0 wiki_user to prevent FK violations
+			# Insert 0 user to prevent FK violations
 
-			# Anonymous wiki_user
-			$this->db->insert( 'wiki_user', array(
-				'wiki_user_id'         => 0,
-				'wiki_user_name'       => 'Anonymous' ) );
+			# Anonymous user
+			$this->db->insert( 'user', array(
+				'user_id'         => 0,
+				'user_name'       => 'Anonymous' ) );
 		}
 
 		# Hack: insert a few Wikipedia in-project interwiki prefixes,
@@ -859,7 +859,7 @@ class ParserTest {
 		MessageCache::singleton()->clear();
 
 		$this->uploadDir = $this->setupUploadDir();
-		$wiki_user = wiki_user::createNew( 'WikiSysop' );
+		$user = User::createNew( 'WikiSysop' );
 		$image = wfLocalFile( Title::makeTitle( NS_FILE, 'Foobar.jpg' ) );
 		$image->recordUpload2( '', 'Upload of some lame file', 'Some lame file', array(
 			'size'        => 12345,
@@ -871,7 +871,7 @@ class ParserTest {
 			'metadata'    => serialize( array() ),
 			'sha1'        => wfBaseConvert( '', 16, 36, 31 ),
 			'fileExists'  => true
-			), $this->db->timestamp( '20010115123500' ), $wiki_user );
+			), $this->db->timestamp( '20010115123500' ), $user );
 
 		# This image will be blacklisted in [[MediaWiki:Bad image list]]
 		$image = wfLocalFile( Title::makeTitle( NS_FILE, 'Bad.jpg' ) );
@@ -885,7 +885,7 @@ class ParserTest {
 			'metadata'    => serialize( array() ),
 			'sha1'        => wfBaseConvert( '', 16, 36, 31 ),
 			'fileExists'  => true
-			), $this->db->timestamp( '20010115123500' ), $wiki_user );
+			), $this->db->timestamp( '20010115123500' ), $user );
 	}
 
 	public function teardownDatabase() {

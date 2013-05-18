@@ -34,13 +34,13 @@ class EnotifNotifyJob extends Job {
 
 	function run() {
 		$enotif = new EmailNotification();
-		// Get the wiki_user from ID (rename safe). Anons are 0, so defer to name.
+		// Get the user from ID (rename safe). Anons are 0, so defer to name.
 		if( isset( $this->params['editorID'] ) && $this->params['editorID'] ) {
-			$editor = wiki_user::newFromId( $this->params['editorID'] );
+			$editor = User::newFromId( $this->params['editorID'] );
 		// B/C, only the name might be given.
 		} else {
 			# FIXME: newFromName could return false on a badly configured wiki.
-			$editor = wiki_user::newFromName( $this->params['editor'], false );
+			$editor = User::newFromName( $this->params['editor'], false );
 		}
 		$enotif->actuallyNotifyOnPageChange(
 			$editor,

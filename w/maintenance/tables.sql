@@ -39,84 +39,84 @@
 
 
 --
--- The wiki_user table contains basic account information,
+-- The user table contains basic account information,
 -- authentication keys, etc.
 --
--- Some multi-wiki sites may share a single central wiki_user table
+-- Some multi-wiki sites may share a single central user table
 -- between separate wikis using the $wgSharedDB setting.
 --
 -- Note that when a external authentication plugin is used,
--- wiki_user table entries still need to be created to store
+-- user table entries still need to be created to store
 -- preferences and to key tracking information in the other
 -- tables.
 --
-CREATE TABLE /*_*/wiki_user (
-  wiki_user_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE /*_*/user (
+  user_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
 
-  -- wiki_usernames must be unique, must not be in the form of
+  -- Usernames must be unique, must not be in the form of
   -- an IP address. _Shouldn't_ allow slashes or case
   -- conflicts. Spaces are allowed, and are _not_ converted
-  -- to underscores like titles. See the wiki_user::newFromName() for
-  -- the specific tests that wiki_usernames have to pass.
-  wiki_user_name varchar(255) binary NOT NULL default '',
+  -- to underscores like titles. See the User::newFromName() for
+  -- the specific tests that usernames have to pass.
+  user_name varchar(255) binary NOT NULL default '',
 
   -- Optional 'real name' to be displayed in credit listings
-  wiki_user_real_name varchar(255) binary NOT NULL default '',
+  user_real_name varchar(255) binary NOT NULL default '',
 
-  -- Password hashes, see wiki_user::crypt() and wiki_user::comparePasswords()
-  -- in wiki_user.php for the algorithm
-  wiki_user_password tinyblob NOT NULL,
+  -- Password hashes, see User::crypt() and User::comparePasswords()
+  -- in User.php for the algorithm
+  user_password tinyblob NOT NULL,
 
   -- When using 'mail me a new password', a random
   -- password is generated and the hash stored here.
   -- The previous password is left in place until
   -- someone actually logs in with the new password,
-  -- at which point the hash is moved to wiki_user_password
+  -- at which point the hash is moved to user_password
   -- and the old password is invalidated.
-  wiki_user_newpassword tinyblob NOT NULL,
+  user_newpassword tinyblob NOT NULL,
 
   -- Timestamp of the last time when a new password was
   -- sent, for throttling and expiring purposes
   -- Emailed passwords will expire $wgNewPasswordExpiry
-  -- (a week) after being set. If wiki_user_newpass_time is NULL
+  -- (a week) after being set. If user_newpass_time is NULL
   -- (eg. created by mail) it doesn't expire.
-  wiki_user_newpass_time binary(14),
+  user_newpass_time binary(14),
 
   -- Note: email should be restricted, not public info.
   -- Same with passwords.
-  wiki_user_email tinytext NOT NULL,
+  user_email tinytext NOT NULL,
 
-  -- This is a timestamp which is updated when a wiki_user
+  -- This is a timestamp which is updated when a user
   -- logs in, logs out, changes preferences, or performs
   -- some other action requiring HTML cache invalidation
   -- to ensure that the UI is updated.
-  wiki_user_touched binary(14) NOT NULL default '',
+  user_touched binary(14) NOT NULL default '',
 
   -- A pseudorandomly generated value that is stored in
   -- a cookie when the "remember password" feature is
   -- used (previously, a hash of the password was used, but
   -- this was vulnerable to cookie-stealing attacks)
-  wiki_user_token binary(32) NOT NULL default '',
+  user_token binary(32) NOT NULL default '',
 
-  -- Initially NULL; when a wiki_user's e-mail address has been
+  -- Initially NULL; when a user's e-mail address has been
   -- validated by returning with a mailed token, this is
   -- set to the current timestamp.
-  wiki_user_email_authenticated binary(14),
+  user_email_authenticated binary(14),
 
   -- Randomly generated token created when the e-mail address
   -- is set and a confirmation test mail sent.
-  wiki_user_email_token binary(32),
+  user_email_token binary(32),
 
-  -- Expiration date for the wiki_user_email_token
-  wiki_user_email_token_expires binary(14),
+  -- Expiration date for the user_email_token
+  user_email_token_expires binary(14),
 
   -- Timestamp of account registration.
   -- Accounts predating this schema addition may contain NULL.
-  wiki_user_registration binary(14),
+  user_registration binary(14),
 
   -- Count of edits and edit-like actions.
   --
-  -- *NOT* intended to be an accurate copy of COUNT(*) WHERE rev_wiki_user=wiki_user_id
+  -- *NOT* intended to be an accurate copy of COUNT(*) WHERE rev_user=user_id
   -- May contain NULL for old accounts if batch-update scripts haven't been
   -- run, as well as listing deleted edits and other myriad ways it could be
   -- out of sync.
@@ -124,83 +124,83 @@ CREATE TABLE /*_*/wiki_user (
   -- Meant primarily for heuristic checks to give an impression of whether
   -- the account has been used much.
   --
-  wiki_user_editcount int
+  user_editcount int
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/wiki_user_name ON /*_*/wiki_user (wiki_user_name);
-CREATE INDEX /*i*/wiki_user_email_token ON /*_*/wiki_user (wiki_user_email_token);
-CREATE INDEX /*i*/wiki_user_email ON /*_*/wiki_user (wiki_user_email(50));
+CREATE UNIQUE INDEX /*i*/user_name ON /*_*/user (user_name);
+CREATE INDEX /*i*/user_email_token ON /*_*/user (user_email_token);
+CREATE INDEX /*i*/user_email ON /*_*/user (user_email(50));
 
 
 --
--- wiki_user permissions have been broken out to a separate table;
--- this allows sites with a shared wiki_user table to have different
--- permissions assigned to a wiki_user in each project.
+-- User permissions have been broken out to a separate table;
+-- this allows sites with a shared user table to have different
+-- permissions assigned to a user in each project.
 --
--- This table replaces the old wiki_user_rights field which used a
+-- This table replaces the old user_rights field which used a
 -- comma-separated blob.
 --
-CREATE TABLE /*_*/wiki_user_groups (
-  -- Key to wiki_user_id
-  ug_wiki_user int unsigned NOT NULL default 0,
+CREATE TABLE /*_*/user_groups (
+  -- Key to user_id
+  ug_user int unsigned NOT NULL default 0,
 
   -- Group names are short symbolic string keys.
   -- The set of group names is open-ended, though in practice
   -- only some predefined ones are likely to be used.
   --
   -- At runtime $wgGroupPermissions will associate group keys
-  -- with particular permissions. A wiki_user will have the combined
+  -- with particular permissions. A user will have the combined
   -- permissions of any group they're explicitly in, plus
-  -- the implicit '*' and 'wiki_user' groups.
+  -- the implicit '*' and 'user' groups.
   ug_group varbinary(32) NOT NULL default ''
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/ug_wiki_user_group ON /*_*/wiki_user_groups (ug_wiki_user,ug_group);
-CREATE INDEX /*i*/ug_group ON /*_*/wiki_user_groups (ug_group);
+CREATE UNIQUE INDEX /*i*/ug_user_group ON /*_*/user_groups (ug_user,ug_group);
+CREATE INDEX /*i*/ug_group ON /*_*/user_groups (ug_group);
 
--- Stores the groups the wiki_user has once belonged to.
--- The wiki_user may still belong to these groups (check wiki_user_groups).
--- wiki_users are not autopromoted to groups from which they were removed.
-CREATE TABLE /*_*/wiki_user_former_groups (
-  -- Key to wiki_user_id
-  ufg_wiki_user int unsigned NOT NULL default 0,
+-- Stores the groups the user has once belonged to.
+-- The user may still belong to these groups (check user_groups).
+-- Users are not autopromoted to groups from which they were removed.
+CREATE TABLE /*_*/user_former_groups (
+  -- Key to user_id
+  ufg_user int unsigned NOT NULL default 0,
   ufg_group varbinary(32) NOT NULL default ''
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/ufg_wiki_user_group ON /*_*/wiki_user_former_groups (ufg_wiki_user,ufg_group);
+CREATE UNIQUE INDEX /*i*/ufg_user_group ON /*_*/user_former_groups (ufg_user,ufg_group);
 
 --
--- Stores notifications of wiki_user talk page changes, for the display
+-- Stores notifications of user talk page changes, for the display
 -- of the "you have new messages" box
 --
-CREATE TABLE /*_*/wiki_user_newtalk (
-  -- Key to wiki_user.wiki_user_id
-  wiki_user_id int NOT NULL default 0,
-  -- If the wiki_user is an anonymous wiki_user their IP address is stored here
-  -- since the wiki_user_id of 0 is ambiguous
-  wiki_user_ip varbinary(40) NOT NULL default '',
+CREATE TABLE /*_*/user_newtalk (
+  -- Key to user.user_id
+  user_id int NOT NULL default 0,
+  -- If the user is an anonymous user their IP address is stored here
+  -- since the user_id of 0 is ambiguous
+  user_ip varbinary(40) NOT NULL default '',
   -- The highest timestamp of revisions of the talk page viewed
-  -- by this wiki_user
-  wiki_user_last_timestamp varbinary(14) NULL default NULL
+  -- by this user
+  user_last_timestamp varbinary(14) NULL default NULL
 ) /*$wgDBTableOptions*/;
 
 -- Indexes renamed for SQLite in 1.14
-CREATE INDEX /*i*/un_wiki_user_id ON /*_*/wiki_user_newtalk (wiki_user_id);
-CREATE INDEX /*i*/un_wiki_user_ip ON /*_*/wiki_user_newtalk (wiki_user_ip);
+CREATE INDEX /*i*/un_user_id ON /*_*/user_newtalk (user_id);
+CREATE INDEX /*i*/un_user_ip ON /*_*/user_newtalk (user_ip);
 
 
 --
--- wiki_user preferences and perhaps other fun stuff. :)
--- Replaces the old wiki_user.wiki_user_options blob, with a couple nice properties:
+-- User preferences and perhaps other fun stuff. :)
+-- Replaces the old user.user_options blob, with a couple nice properties:
 --
 -- 1) We only store non-default settings, so changes to the defauls
 --    are now reflected for everybody, not just new accounts.
 -- 2) We can more easily do bulk lookups, statistics, or modifications of
 --    saved options since it's a sane table structure.
 --
-CREATE TABLE /*_*/wiki_user_properties (
-  -- Foreign key to wiki_user.wiki_user_id
-  up_wiki_user int NOT NULL,
+CREATE TABLE /*_*/user_properties (
+  -- Foreign key to user.user_id
+  up_user int NOT NULL,
 
   -- Name of the option being saved. This is indexed for bulk lookup.
   up_property varbinary(255) NOT NULL,
@@ -209,8 +209,8 @@ CREATE TABLE /*_*/wiki_user_properties (
   up_value blob
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/wiki_user_properties_wiki_user_property ON /*_*/wiki_user_properties (up_wiki_user,up_property);
-CREATE INDEX /*i*/wiki_user_properties_property ON /*_*/wiki_user_properties (up_property);
+CREATE UNIQUE INDEX /*i*/user_properties_user_property ON /*_*/user_properties (up_user,up_property);
+CREATE INDEX /*i*/user_properties_property ON /*_*/user_properties (up_property);
 
 --
 -- Core of the wiki: each page has an entry here which identifies
@@ -291,17 +291,17 @@ CREATE TABLE /*_*/revision (
   -- rendered in a subset of wiki markup by Linker::formatComment()
   rev_comment tinyblob NOT NULL,
 
-  -- Key to wiki_user.wiki_user_id of the wiki_user who made this edit.
+  -- Key to user.user_id of the user who made this edit.
   -- Stores 0 for anonymous edits and for some mass imports.
-  rev_wiki_user int unsigned NOT NULL default 0,
+  rev_user int unsigned NOT NULL default 0,
 
-  -- Text wiki_username or IP address of the editor.
-  rev_wiki_user_text varchar(255) binary NOT NULL default '',
+  -- Text username or IP address of the editor.
+  rev_user_text varchar(255) binary NOT NULL default '',
 
   -- Timestamp of when revision was created
   rev_timestamp binary(14) NOT NULL default '',
 
-  -- Records whether the wiki_user marked the 'minor edit' checkbox.
+  -- Records whether the user marked the 'minor edit' checkbox.
   -- Many automated edits are marked as minor.
   rev_minor_edit tinyint unsigned NOT NULL default 0,
 
@@ -324,9 +324,9 @@ CREATE TABLE /*_*/revision (
 CREATE UNIQUE INDEX /*i*/rev_page_id ON /*_*/revision (rev_page, rev_id);
 CREATE INDEX /*i*/rev_timestamp ON /*_*/revision (rev_timestamp);
 CREATE INDEX /*i*/page_timestamp ON /*_*/revision (rev_page,rev_timestamp);
-CREATE INDEX /*i*/wiki_user_timestamp ON /*_*/revision (rev_wiki_user,rev_timestamp);
-CREATE INDEX /*i*/wiki_usertext_timestamp ON /*_*/revision (rev_wiki_user_text,rev_timestamp);
-CREATE INDEX /*i*/page_wiki_user_timestamp ON /*_*/revision (rev_page,rev_wiki_user,rev_timestamp);
+CREATE INDEX /*i*/user_timestamp ON /*_*/revision (rev_user,rev_timestamp);
+CREATE INDEX /*i*/usertext_timestamp ON /*_*/revision (rev_user_text,rev_timestamp);
+CREATE INDEX /*i*/page_user_timestamp ON /*_*/revision (rev_page,rev_user,rev_timestamp);
 
 --
 -- Holds text of individual page revisions.
@@ -382,8 +382,8 @@ CREATE TABLE /*_*/archive (
 
   -- Basic revision stuff...
   ar_comment tinyblob NOT NULL,
-  ar_wiki_user int unsigned NOT NULL default 0,
-  ar_wiki_user_text varchar(255) binary NOT NULL,
+  ar_user int unsigned NOT NULL default 0,
+  ar_user_text varchar(255) binary NOT NULL,
   ar_timestamp binary(14) NOT NULL default '',
   ar_minor_edit tinyint NOT NULL default 0,
 
@@ -431,7 +431,7 @@ CREATE TABLE /*_*/archive (
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/name_title_timestamp ON /*_*/archive (ar_namespace,ar_title,ar_timestamp);
-CREATE INDEX /*i*/ar_wiki_usertext_timestamp ON /*_*/archive (ar_wiki_user_text,ar_timestamp);
+CREATE INDEX /*i*/ar_usertext_timestamp ON /*_*/archive (ar_user_text,ar_timestamp);
 CREATE INDEX /*i*/ar_revid ON /*_*/archive (ar_rev_id);
 
 
@@ -510,7 +510,7 @@ CREATE TABLE /*_*/categorylinks (
   -- . page_title if cl_sortkey_prefix is nonempty.
   cl_sortkey varbinary(230) NOT NULL default '',
 
-  -- A prefix for the raw sortkey manually specified by the wiki_user, either via
+  -- A prefix for the raw sortkey manually specified by the user, either via
   -- [[Category:Foo|prefix]] or {{defaultsort:prefix}}.  If nonempty, it's
   -- concatenated with a line break followed by the page title before the sortkey
   -- conversion algorithm is run.  We store this so that we can update
@@ -590,12 +590,12 @@ CREATE TABLE /*_*/externallinks (
   -- The URL
   el_to blob NOT NULL,
 
-  -- In the case of HTTP URLs, this is the URL with any wiki_username or password
+  -- In the case of HTTP URLs, this is the URL with any username or password
   -- removed, and with the labels in the hostname reversed and converted to
   -- lower case. An extra dot is added to allow for matching of either
   -- example.com or *.example.com in a single scan.
   -- Example:
-  --      http://wiki_user:password@sub.example.com/page.html
+  --      http://user:password@sub.example.com/page.html
   --   becomes
   --      http://com.example.sub./page.html
   -- which allows for fast searching for all pages under example.com with the
@@ -610,17 +610,17 @@ CREATE INDEX /*i*/el_index ON /*_*/externallinks (el_index(60));
 
 
 --
--- Track external wiki_user accounts, if ExternalAuth is used
+-- Track external user accounts, if ExternalAuth is used
 --
-CREATE TABLE /*_*/external_wiki_user (
-  -- Foreign key to wiki_user_id
+CREATE TABLE /*_*/external_user (
+  -- Foreign key to user_id
   eu_local_id int unsigned NOT NULL PRIMARY KEY,
 
   -- Some opaque identifier provided by the external database
   eu_external_id varchar(255) binary NOT NULL
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/eu_external_id ON /*_*/external_wiki_user (eu_external_id);
+CREATE UNIQUE INDEX /*i*/eu_external_id ON /*_*/external_user (eu_external_id);
 
 
 --
@@ -683,11 +683,11 @@ CREATE TABLE /*_*/site_stats (
   -- Total pages, theoretically equal to SELECT COUNT(*) FROM page; except faster
   ss_total_pages bigint default '-1',
 
-  -- Number of wiki_users, theoretically equal to SELECT COUNT(*) FROM wiki_user;
-  ss_wiki_users bigint default '-1',
+  -- Number of users, theoretically equal to SELECT COUNT(*) FROM user;
+  ss_users bigint default '-1',
 
-  -- Number of wiki_users that still edit
-  ss_active_wiki_users bigint default '-1',
+  -- Number of users that still edit
+  ss_active_users bigint default '-1',
 
   -- Deprecated, no longer updated as of 1.5
   ss_admins int default '-1',
@@ -720,16 +720,16 @@ CREATE TABLE /*_*/ipblocks (
   -- Primary key, introduced for privacy.
   ipb_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 
-  -- Blocked IP address in dotted-quad form or wiki_user name.
+  -- Blocked IP address in dotted-quad form or user name.
   ipb_address tinyblob NOT NULL,
 
-  -- Blocked wiki_user ID or 0 for IP blocks.
-  ipb_wiki_user int unsigned NOT NULL default 0,
+  -- Blocked user ID or 0 for IP blocks.
+  ipb_user int unsigned NOT NULL default 0,
 
-  -- wiki_user ID who made the block.
+  -- User ID who made the block.
   ipb_by int unsigned NOT NULL default 0,
 
-  -- wiki_user name of blocker
+  -- User name of blocker
   ipb_by_text varchar(255) binary NOT NULL default '',
 
   -- Text comment made by blocker.
@@ -740,11 +740,11 @@ CREATE TABLE /*_*/ipblocks (
   ipb_timestamp binary(14) NOT NULL default '',
 
   -- Indicates that the IP address was banned because a banned
-  -- wiki_user accessed a page through it. If this is 1, ipb_address
+  -- user accessed a page through it. If this is 1, ipb_address
   -- will be hidden, and the block identified by block ID number.
   ipb_auto bool NOT NULL default 0,
 
-  -- If set to 1, block applies only to logged-out wiki_users
+  -- If set to 1, block applies only to logged-out users
   ipb_anon_only bool NOT NULL default 0,
 
   -- Block prevents account creation from matching IP addresses
@@ -762,14 +762,14 @@ CREATE TABLE /*_*/ipblocks (
   ipb_range_start tinyblob NOT NULL,
   ipb_range_end tinyblob NOT NULL,
 
-  -- Flag for entries hidden from wiki_users and Sysops
+  -- Flag for entries hidden from users and Sysops
   ipb_deleted bool NOT NULL default 0,
 
-  -- Block prevents wiki_user from accessing Special:Emailwiki_user
+  -- Block prevents user from accessing Special:Emailuser
   ipb_block_email bool NOT NULL default 0,
 
-  -- Block allows wiki_user to edit their own talk page
-  ipb_allow_wiki_usertalk bool NOT NULL default 0,
+  -- Block allows user to edit their own talk page
+  ipb_allow_usertalk bool NOT NULL default 0,
 
   -- ID of the block that caused this block to exist
   -- Autoblocks set this to the original block
@@ -779,11 +779,11 @@ CREATE TABLE /*_*/ipblocks (
 
 ) /*$wgDBTableOptions*/;
 
--- Unique index to support "wiki_user already blocked" messages
+-- Unique index to support "user already blocked" messages
 -- Any new options which prevent collisions should be included
-CREATE UNIQUE INDEX /*i*/ipb_address ON /*_*/ipblocks (ipb_address(255), ipb_wiki_user, ipb_auto, ipb_anon_only);
+CREATE UNIQUE INDEX /*i*/ipb_address ON /*_*/ipblocks (ipb_address(255), ipb_user, ipb_auto, ipb_anon_only);
 
-CREATE INDEX /*i*/ipb_wiki_user ON /*_*/ipblocks (ipb_wiki_user);
+CREATE INDEX /*i*/ipb_user ON /*_*/ipblocks (ipb_user);
 CREATE INDEX /*i*/ipb_range ON /*_*/ipblocks (ipb_range_start(8), ipb_range_end(8));
 CREATE INDEX /*i*/ipb_timestamp ON /*_*/ipblocks (ipb_timestamp);
 CREATE INDEX /*i*/ipb_expiry ON /*_*/ipblocks (ipb_expiry);
@@ -829,9 +829,9 @@ CREATE TABLE /*_*/image (
   -- This is displayed in image upload history and logs.
   img_description tinyblob NOT NULL,
 
-  -- wiki_user_id and wiki_user_name of uploader.
-  img_wiki_user int unsigned NOT NULL default 0,
-  img_wiki_user_text varchar(255) binary NOT NULL,
+  -- user_id and user_name of uploader.
+  img_user int unsigned NOT NULL default 0,
+  img_user_text varchar(255) binary NOT NULL,
 
   -- Time of the upload.
   img_timestamp varbinary(14) NOT NULL default '',
@@ -840,7 +840,7 @@ CREATE TABLE /*_*/image (
   img_sha1 varbinary(32) NOT NULL default ''
 ) /*$wgDBTableOptions*/;
 
-CREATE INDEX /*i*/img_wiki_usertext_timestamp ON /*_*/image (img_wiki_user_text,img_timestamp);
+CREATE INDEX /*i*/img_usertext_timestamp ON /*_*/image (img_user_text,img_timestamp);
 -- Used by Special:ListFiles for sort-by-size
 CREATE INDEX /*i*/img_size ON /*_*/image (img_size);
 -- Used by Special:Newimages and Special:ListFiles
@@ -868,8 +868,8 @@ CREATE TABLE /*_*/oldimage (
   oi_height int NOT NULL default 0,
   oi_bits int NOT NULL default 0,
   oi_description tinyblob NOT NULL,
-  oi_wiki_user int unsigned NOT NULL default 0,
-  oi_wiki_user_text varchar(255) binary NOT NULL,
+  oi_user int unsigned NOT NULL default 0,
+  oi_user_text varchar(255) binary NOT NULL,
   oi_timestamp binary(14) NOT NULL default '',
 
   oi_metadata mediumblob NOT NULL,
@@ -880,7 +880,7 @@ CREATE TABLE /*_*/oldimage (
   oi_sha1 varbinary(32) NOT NULL default ''
 ) /*$wgDBTableOptions*/;
 
-CREATE INDEX /*i*/oi_wiki_usertext_timestamp ON /*_*/oldimage (oi_wiki_user_text,oi_timestamp);
+CREATE INDEX /*i*/oi_usertext_timestamp ON /*_*/oldimage (oi_user_text,oi_timestamp);
 CREATE INDEX /*i*/oi_name_timestamp ON /*_*/oldimage (oi_name,oi_timestamp);
 -- oi_archive_name truncated to 14 to avoid key length overflow
 CREATE INDEX /*i*/oi_name_archive_name ON /*_*/oldimage (oi_name,oi_archive_name(14));
@@ -913,7 +913,7 @@ CREATE TABLE /*_*/filearchive (
   fa_storage_key varbinary(64) default '',
 
   -- Deletion information, if this file is deleted.
-  fa_deleted_wiki_user int,
+  fa_deleted_user int,
   fa_deleted_timestamp binary(14) default '',
   fa_deleted_reason text,
 
@@ -927,8 +927,8 @@ CREATE TABLE /*_*/filearchive (
   fa_major_mime ENUM("unknown", "application", "audio", "image", "text", "video", "message", "model", "multipart") default "unknown",
   fa_minor_mime varbinary(100) default "unknown",
   fa_description tinyblob,
-  fa_wiki_user int unsigned default 0,
-  fa_wiki_user_text varchar(255) binary,
+  fa_user int unsigned default 0,
+  fa_user_text varchar(255) binary,
   fa_timestamp binary(14) default '',
 
   -- Visibility of deleted revisions, bitfield
@@ -942,7 +942,7 @@ CREATE INDEX /*i*/fa_storage_group ON /*_*/filearchive (fa_storage_group, fa_sto
 -- sort by deletion time
 CREATE INDEX /*i*/fa_deleted_timestamp ON /*_*/filearchive (fa_deleted_timestamp);
 -- sort by uploader
-CREATE INDEX /*i*/fa_wiki_user_timestamp ON /*_*/filearchive (fa_wiki_user_text,fa_timestamp);
+CREATE INDEX /*i*/fa_user_timestamp ON /*_*/filearchive (fa_user_text,fa_timestamp);
 
 
 --
@@ -952,8 +952,8 @@ CREATE INDEX /*i*/fa_wiki_user_timestamp ON /*_*/filearchive (fa_wiki_user_text,
 CREATE TABLE /*_*/uploadstash (
   us_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
 
-  -- the wiki_user who uploaded the file.
-  us_wiki_user int unsigned NOT NULL,
+  -- the user who uploaded the file.
+  us_user int unsigned NOT NULL,
 
   -- file key. this is how applications actually search for the file.
   -- this might go away, or become the primary key.
@@ -991,8 +991,8 @@ CREATE TABLE /*_*/uploadstash (
 
 ) /*$wgDBTableOptions*/;
 
--- sometimes there's a delete for all of a wiki_user's stuff.
-CREATE INDEX /*i*/us_wiki_user ON /*_*/uploadstash (us_wiki_user);
+-- sometimes there's a delete for all of a user's stuff.
+CREATE INDEX /*i*/us_user ON /*_*/uploadstash (us_user);
 -- pick out files by key, enforce key uniqueness
 CREATE UNIQUE INDEX /*i*/us_key ON /*_*/uploadstash (us_key);
 -- the abandoned upload cleanup script needs this
@@ -1012,8 +1012,8 @@ CREATE TABLE /*_*/recentchanges (
   rc_cur_time varbinary(14) NOT NULL default '',
 
   -- As in revision
-  rc_wiki_user int unsigned NOT NULL default 0,
-  rc_wiki_user_text varchar(255) binary NOT NULL,
+  rc_user int unsigned NOT NULL default 0,
+  rc_user_text varchar(255) binary NOT NULL,
 
   -- When pages are renamed, their RC entries do _not_ change.
   rc_namespace int NOT NULL default 0,
@@ -1023,7 +1023,7 @@ CREATE TABLE /*_*/recentchanges (
   rc_comment varchar(255) binary NOT NULL default '',
   rc_minor tinyint unsigned NOT NULL default 0,
 
-  -- Edits by wiki_user accounts with the 'bot' rights key are
+  -- Edits by user accounts with the 'bot' rights key are
   -- marked with a 1 here, and will be hidden from the
   -- default view.
   rc_bot tinyint unsigned NOT NULL default 0,
@@ -1050,7 +1050,7 @@ CREATE TABLE /*_*/recentchanges (
   rc_moved_to_title varchar(255) binary NOT NULL default '',
 
   -- If the Recent Changes Patrol option is enabled,
-  -- wiki_users may mark edits as having been reviewed to
+  -- users may mark edits as having been reviewed to
   -- remove a warning flag on the RC list.
   -- A value of 1 indicates the page has been reviewed.
   rc_patrolled tinyint unsigned NOT NULL default 0,
@@ -1082,27 +1082,27 @@ CREATE INDEX /*i*/rc_namespace_title ON /*_*/recentchanges (rc_namespace, rc_tit
 CREATE INDEX /*i*/rc_cur_id ON /*_*/recentchanges (rc_cur_id);
 CREATE INDEX /*i*/new_name_timestamp ON /*_*/recentchanges (rc_new,rc_namespace,rc_timestamp);
 CREATE INDEX /*i*/rc_ip ON /*_*/recentchanges (rc_ip);
-CREATE INDEX /*i*/rc_ns_wiki_usertext ON /*_*/recentchanges (rc_namespace, rc_wiki_user_text);
-CREATE INDEX /*i*/rc_wiki_user_text ON /*_*/recentchanges (rc_wiki_user_text, rc_timestamp);
+CREATE INDEX /*i*/rc_ns_usertext ON /*_*/recentchanges (rc_namespace, rc_user_text);
+CREATE INDEX /*i*/rc_user_text ON /*_*/recentchanges (rc_user_text, rc_timestamp);
 
 
 CREATE TABLE /*_*/watchlist (
-  -- Key to wiki_user.wiki_user_id
-  wl_wiki_user int unsigned NOT NULL,
+  -- Key to user.user_id
+  wl_user int unsigned NOT NULL,
 
   -- Key to page_namespace/page_title
-  -- Note that wiki_users may watch pages which do not exist yet,
+  -- Note that users may watch pages which do not exist yet,
   -- or existed in the past but have been deleted.
   wl_namespace int NOT NULL default 0,
   wl_title varchar(255) binary NOT NULL default '',
 
-  -- Timestamp when wiki_user was last sent a notification e-mail;
-  -- cleared when the wiki_user visits the page.
+  -- Timestamp when user was last sent a notification e-mail;
+  -- cleared when the user visits the page.
   wl_notificationtimestamp varbinary(14)
 
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/wl_wiki_user ON /*_*/watchlist (wl_wiki_user, wl_namespace, wl_title);
+CREATE UNIQUE INDEX /*i*/wl_user ON /*_*/watchlist (wl_user, wl_namespace, wl_title);
 CREATE INDEX /*i*/namespace_title ON /*_*/watchlist (wl_namespace, wl_title);
 
 
@@ -1213,14 +1213,14 @@ CREATE TABLE /*_*/logging (
   -- Timestamp. Duh.
   log_timestamp binary(14) NOT NULL default '19700101000000',
 
-  -- The wiki_user who performed this action; key to wiki_user_id
-  log_wiki_user int unsigned NOT NULL default 0,
+  -- The user who performed this action; key to user_id
+  log_user int unsigned NOT NULL default 0,
 
-  -- Name of the wiki_user who performed this action
-  log_wiki_user_text varchar(255) binary NOT NULL default '',
+  -- Name of the user who performed this action
+  log_user_text varchar(255) binary NOT NULL default '',
 
-  -- Key to the page affected. Where a wiki_user is the target,
-  -- this will point to the wiki_user page.
+  -- Key to the page affected. Where a user is the target,
+  -- this will point to the user page.
   log_namespace int NOT NULL default 0,
   log_title varchar(255) binary NOT NULL default '',
   log_page int unsigned NULL,
@@ -1236,16 +1236,16 @@ CREATE TABLE /*_*/logging (
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/type_time ON /*_*/logging (log_type, log_timestamp);
-CREATE INDEX /*i*/wiki_user_time ON /*_*/logging (log_wiki_user, log_timestamp);
+CREATE INDEX /*i*/user_time ON /*_*/logging (log_user, log_timestamp);
 CREATE INDEX /*i*/page_time ON /*_*/logging (log_namespace, log_title, log_timestamp);
 CREATE INDEX /*i*/times ON /*_*/logging (log_timestamp);
-CREATE INDEX /*i*/log_wiki_user_type_time ON /*_*/logging (log_wiki_user, log_type, log_timestamp);
+CREATE INDEX /*i*/log_user_type_time ON /*_*/logging (log_user, log_type, log_timestamp);
 CREATE INDEX /*i*/log_page_id_time ON /*_*/logging (log_page,log_timestamp);
 CREATE INDEX /*i*/type_action ON /*_*/logging (log_type, log_action, log_timestamp);
 
 
 CREATE TABLE /*_*/log_search (
-  -- The type of ID (rev ID, log ID, rev timestamp, wiki_username)
+  -- The type of ID (rev ID, log ID, rev timestamp, username)
   ls_field varbinary(32) NOT NULL,
   -- The value of the ID
   ls_value varchar(255) NOT NULL,
@@ -1345,8 +1345,8 @@ CREATE TABLE /*_*/page_restrictions (
   pr_level varbinary(60) NOT NULL,
   -- Whether or not to cascade the protection down to pages transcluded.
   pr_cascade tinyint NOT NULL,
-  -- Field for future support of per-wiki_user restriction.
-  pr_wiki_user int NULL,
+  -- Field for future support of per-user restriction.
+  pr_user int NULL,
   -- Field for time-limited protection.
   pr_expiry varbinary(14) NULL,
   -- Field for an ID for this restrictions row (sort-key for Special:ProtectedPages)
@@ -1363,7 +1363,7 @@ CREATE INDEX /*i*/pr_cascade ON /*_*/page_restrictions (pr_cascade);
 CREATE TABLE /*_*/protected_titles (
   pt_namespace int NOT NULL,
   pt_title varchar(255) binary NOT NULL,
-  pt_wiki_user int unsigned NOT NULL,
+  pt_user int unsigned NOT NULL,
   pt_reason tinyblob,
   pt_timestamp binary(14) NOT NULL,
   pt_expiry varbinary(14) NOT NULL default '',

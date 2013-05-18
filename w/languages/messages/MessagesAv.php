@@ -38,10 +38,10 @@ $messages = array(
 'talkpage' => 'Гьумералда тlасан бахlс',
 'talk' => 'Бахlс',
 'toolbox' => 'Алатал',
-'wiki_userpage' => 'ГӀахьалчиясул гьумер',
+'userpage' => 'ГӀахьалчиясул гьумер',
 'otherlanguages' => 'Цойги мацӀазда',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Жакъасел лъугьа-бахъинал',
 'mainpage' => 'БетӀераб гьумер',
 'mainpage-description' => 'БетӀераб гьумер',
@@ -59,8 +59,8 @@ $messages = array(
 'viewsource' => 'Код бихьи',
 
 # Login and logout pages
-'wiki_userlogin' => 'ЦIар бице',
-'wiki_userlogout' => 'Къватlиве лъугьине',
+'userlogin' => 'ЦIар бице',
+'userlogout' => 'Къватlиве лъугьине',
 
 # Edit pages
 'savearticle' => 'Хъвай-хъвай цӀунизе',
@@ -69,8 +69,8 @@ $messages = array(
 'preferences' => 'Рекъезаби',
 'localtime' => 'Бакlалъул заман',
 
-# wiki_user rights
-'wiki_userrights-wiki_user-editname' => 'ГӀахьалчиясул цӀар хъвай:',
+# User rights
+'userrights-user-editname' => 'ГӀахьалчиясул цӀар хъвай:',
 
 # Recent changes
 'recentchanges' => 'ЦӀиял хиса-басал',
@@ -99,10 +99,10 @@ $messages = array(
 # Miscellaneous special pages
 'shortpages' => 'Къокъал макъалаби',
 'longpages' => 'Кlудиял гьумерал',
-'listwiki_users' => 'Гlахьалчагlазул сияхl',
+'listusers' => 'Гlахьалчагlазул сияхl',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'ГӀахьалчи:',
+'specialloguserlabel' => 'ГӀахьалчи:',
 
 # Special:AllPages
 'allarticles' => 'Киналго макъалаби',

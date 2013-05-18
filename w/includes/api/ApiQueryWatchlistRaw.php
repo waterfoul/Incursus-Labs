@@ -26,7 +26,7 @@
 
 /**
  * This query action allows clients to retrieve a list of pages
- * on the logged-in wiki_user's watchlist.
+ * on the logged-in user's watchlist.
  *
  * @ingroup API
  */
@@ -53,7 +53,7 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 
 		$params = $this->extractRequestParams();
 
-		$wiki_user = $this->getWatchlistwiki_user( $params );
+		$user = $this->getWatchlistUser( $params );
 
 		$prop = array_flip( (array)$params['prop'] );
 		$show = array_flip( (array)$params['show'] );
@@ -64,7 +64,7 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 		$this->addTables( 'watchlist' );
 		$this->addFields( array( 'wl_namespace', 'wl_title' ) );
 		$this->addFieldsIf( 'wl_notificationtimestamp', isset( $prop['changed'] ) );
-		$this->addWhereFld( 'wl_wiki_user', $wiki_user->getId() );
+		$this->addWhereFld( 'wl_user', $user->getId() );
 		$this->addWhereFld( 'wl_namespace', $params['namespace'] );
 		$this->addWhereIf( 'wl_notificationtimestamp IS NOT NULL', isset( $show['changed'] ) );
 		$this->addWhereIf( 'wl_notificationtimestamp IS NULL', isset( $show['!changed'] ) );
@@ -159,7 +159,7 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 				)
 			),
 			'owner' => array(
-				ApiBase::PARAM_TYPE => 'wiki_user'
+				ApiBase::PARAM_TYPE => 'user'
 			),
 			'token' => array(
 				ApiBase::PARAM_TYPE => 'string'
@@ -181,11 +181,11 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 			'limit' => 'How many total results to return per request',
 			'prop' => array(
 				'Which additional properties to get (non-generator mode only)',
-				' changed  - Adds timestamp of when the wiki_user was last notified about the edit',
+				' changed  - Adds timestamp of when the user was last notified about the edit',
 			),
 			'show' => 'Only list items that meet these criteria',
-			'owner' => 'The name of the wiki_user whose watchlist you\'d like to access',
-			'token' => 'Give a security token (settable in preferences) to allow access to another wiki_user\'s watchlist',
+			'owner' => 'The name of the user whose watchlist you\'d like to access',
+			'token' => 'Give a security token (settable in preferences) to allow access to another user\'s watchlist',
 			'dir' => 'Direction to sort the titles and namespaces in',
 		);
 	}
@@ -206,14 +206,14 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 	}
 
 	public function getDescription() {
-		return "Get all pages on the logged in wiki_user's watchlist";
+		return "Get all pages on the logged in user's watchlist";
 	}
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'notloggedin', 'info' => 'You must be logged-in to have a watchlist' ),
 			array( 'show' ),
-			array( 'code' => 'bad_wlowner', 'info' => 'Specified wiki_user does not exist' ),
+			array( 'code' => 'bad_wlowner', 'info' => 'Specified user does not exist' ),
 			array( 'code' => 'bad_wltoken', 'info' => 'Incorrect watchlist token provided -- please set a correct token in Special:Preferences' ),
 		) );
 	}

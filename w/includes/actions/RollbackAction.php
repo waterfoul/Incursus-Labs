@@ -1,6 +1,6 @@
 <?php
 /**
- * Edit rollback wiki_user interface
+ * Edit rollback user interface
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
  */
 
 /**
- * wiki_user interface for the rollback action
+ * User interface for the rollback action
  *
  * @ingroup Actions
  */
@@ -46,7 +46,7 @@ class RollbackAction extends FormlessAction {
 			$request->getVal( 'token' ),
 			$request->getBool( 'bot' ),
 			$details,
-			$this->getwiki_user()
+			$this->getUser()
 		);
 
 		if ( in_array( array( 'actionthrottledtext' ), $result ) ) {
@@ -72,7 +72,7 @@ class RollbackAction extends FormlessAction {
 		}
 
 		# Display permissions errors before read-only message -- there's no
-		# point in misleading the wiki_user into thinking the inability to rollback
+		# point in misleading the user into thinking the inability to rollback
 		# is only temporary.
 		if ( !empty( $result ) && $result !== array( array( 'readonlytext' ) ) ) {
 			# array_diff is completely broken for arrays of arrays, sigh.
@@ -96,19 +96,19 @@ class RollbackAction extends FormlessAction {
 		$this->getOutput()->setPageTitle( $this->msg( 'actioncomplete' ) );
 		$this->getOutput()->setRobotPolicy( 'noindex,nofollow' );
 
-		if ( $current->getwiki_userText() === '' ) {
-			$old = $this->msg( 'rev-deleted-wiki_user' )->escaped();
+		if ( $current->getUserText() === '' ) {
+			$old = $this->msg( 'rev-deleted-user' )->escaped();
 		} else {
-			$old = Linker::wiki_userLink( $current->getwiki_user(), $current->getwiki_userText() )
-				. Linker::wiki_userToolLinks( $current->getwiki_user(), $current->getwiki_userText() );
+			$old = Linker::userLink( $current->getUser(), $current->getUserText() )
+				. Linker::userToolLinks( $current->getUser(), $current->getUserText() );
 		}
 
-		$new = Linker::wiki_userLink( $target->getwiki_user(), $target->getwiki_userText() )
-			. Linker::wiki_userToolLinks( $target->getwiki_user(), $target->getwiki_userText() );
+		$new = Linker::userLink( $target->getUser(), $target->getUserText() )
+			. Linker::userToolLinks( $target->getUser(), $target->getUserText() );
 		$this->getOutput()->addHTML( $this->msg( 'rollback-success' )->rawParams( $old, $new )->parseAsBlock() );
 		$this->getOutput()->returnToMain( false, $this->getTitle() );
 
-		if ( !$request->getBool( 'hidediff', false ) && !$this->getwiki_user()->getBoolOption( 'norollbackdiff', false ) ) {
+		if ( !$request->getBool( 'hidediff', false ) && !$this->getUser()->getBoolOption( 'norollbackdiff', false ) ) {
 			$de = new DifferenceEngine( $this->getContext(), $current->getId(), $newId, false, true );
 			$de->showDiff( '', '' );
 		}

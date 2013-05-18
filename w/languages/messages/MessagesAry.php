@@ -16,7 +16,7 @@
  */
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Ṣetter l-lyanaṫ:',
 'tog-justify' => 'Jusṫifyé l-paragrafaṫ',
 'tog-hideminor' => 'Ĥebbi ṫ-ṫeĝdilaṫ l-leĥĥrin',
@@ -40,7 +40,7 @@ $messages = array(
 'tog-previewonfirst' => 'Ůbiyn moaayana maa awal tadil',
 'tog-nocache' => 'attl takhzin lmotassafih lsfha',
 'tog-enotifwatchlistpages' => 'sift liya barid electroni ila tbdlat chi sfha f qaaimat lmoraqaba diali',
-'tog-enotifwiki_usertalkpages' => 'sift liya rissala electronia ila tbdlat sfht niqach dyali',
+'tog-enotifusertalkpages' => 'sift liya rissala electronia ila tbdlat sfht niqach dyali',
 'tog-enotifminoredits' => 'sift liya risala electronia hta bnisba ltadilat tafifa',
 'tog-enotifrevealaddr' => 'biyn lbarid lelectroni dyali f halat rassaail laikhtar',
 'tog-shownumberswatching' => 'biyn aadad lmostakhdimin lmoraqibin',
@@ -224,7 +224,7 @@ $messages = array(
 'talk' => 'Modakara',
 'views' => 'Afiċaj',
 'toolbox' => "Ṣendoq l-'adawaṫ",
-'wiki_userpage' => 'Ċof ṣ-ṣefḫa de l-mosṫeĥdim',
+'userpage' => 'Ċof ṣ-ṣefḫa de l-mosṫeĥdim',
 'projectpage' => 'Ċof ṣ-ṣefḫa de lmchroa',
 'imagepage' => 'ċof ṣ-ṣefḫa dyal l-fiċyé',
 'mediawikipage' => 'Ċof ṣ-ṣefḫa de risala',
@@ -250,7 +250,7 @@ $1',
 'pool-queuefull' => 'Ṣeff l-ĥedma ĝamṛa',
 'pool-errorunknown' => 'khata mjhol',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Kolċi ĝla {{SITENAME}}',
 'aboutpage' => 'Project:Meĝlomaṫ',
 'copyright' => 'L-moḫṫawa mojod fe $1',
@@ -316,7 +316,7 @@ chof [[Special:Version|sfht lversion]]',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'ṣfḫa',
-'nstab-wiki_user' => 'Ṣ-Ṣefḫa dyal l-mosṫeĥdim',
+'nstab-user' => 'Ṣ-Ṣefḫa dyal l-mosṫeĥdim',
 'nstab-media' => 'sfha dyal media',
 'nstab-special' => 'Ṣefḫa ĥaṣṣa',
 'nstab-project' => 'Ṣefḫa dyal meċroĝ',
@@ -364,7 +364,7 @@ l-idari lli qflha ĝta had ṫfsir: $1',
 Ĝomoman had ċ-ċi kay-iwqeĝ faċ kaṫ-ṫbeĝ ċi lyan le waḫed d-diff l-li daz ĝlih l-weqṫ ola le l-historik dyal ċi ṣefḫa memḫiya.
 
 Ila ma kanṫċ, imken ikon ċi bog fe l-program.
-Ĝafak ĝlem [[Special:Listwiki_users/sysop|l-adminisṫrator]] bla ma ṫnsa ma ṫĝtih l-ĝonwan dyal l-lyan.',
+Ĝafak ĝlem [[Special:ListUsers/sysop|l-adminisṫrator]] bla ma ṫnsa ma ṫĝtih l-ĝonwan dyal l-lyan.',
 'missingarticle-rev' => '(n-nemra dyal l-vérsyon : $1)',
 'missingarticle-diff' => '(lfarq: $1, $2)',
 'readonly_lag' => "qaĝidaṫ l-bayanaṫ ṫqflaṫ ṫilqa'iyyan mlli kanṫ l-ĥwadim ṫ-ṫabiĝa l-ĥadom r-ra'isi ka-ṫlṫaḫq bih.",
@@ -407,7 +407,7 @@ $2',
 'customcssprotected' => 'ma msmoh-likċ baċ ṫĝddl had ṣfḫa d-CSS, ḫqaċ fiha iĝdadaṫ ċĥṣiyya dial ċi mosṫĥdim aĥoṛ.',
 'customjsprotected' => 'ma msmoh-likċ baċ ṫĝddl had ṣfḫa d-JavaScript, ḫqaċ fiha iĝdadaṫ ċĥṣiyya dial ċi mosṫĥdim aĥoṛ.',
 'ns-specialprotected' => 'sfahi lkhassa maymknch taadlha',
-'titleprotected' => 'had l-ĝonwan mnĝo [[wiki_user:$1|$1]] mn l-inċa\'.
+'titleprotected' => 'had l-ĝonwan mnĝo [[User:$1|$1]] mn l-inċa\'.
 ossabab lli ĝtah hwwa "\'\'$2\'\'".',
 
 # Virus scanner
@@ -418,7 +418,7 @@ ossabab lli ĝtah hwwa "\'\'$2\'\'".',
 # Login and logout pages
 'logouttext' => "''' nta daba kharj.'''
 
-ila bghiti tqdr tstamr tstaml {{SITENAME}}  kamjhol , olla ila bghiti [[Special:wiki_userLogin|tdkhl aawtani]] bnafs smiya ola bsmiya khra.
+ila bghiti tqdr tstamr tstaml {{SITENAME}}  kamjhol , olla ila bghiti [[Special:UserLogin|tdkhl aawtani]] bnafs smiya ola bsmiya khra.
 
 tqdr tchof baad sfahi bhal ila msjl hta tfrgh lcache dyalk",
 'welcomecreation' => '== mrhba bik, $1! ==
@@ -434,21 +434,21 @@ matnsach tbddl[[Special:Preferences|{{SITENAME}} tfdilat dyal]].',
 'login' => 'Dĥel',
 'nav-login-createaccount' => 'Ṫkonékta / Ĥṫareĝ ċi konṫ',
 'loginprompt' => 'ĥask tkon mĥddm l-cookies baċ ṫdĥol l-{{SITENAME}}.',
-'wiki_userlogin' => 'Ṫkonnékta / Ṣayeb ċi ḫsab',
-'wiki_userloginnocreate' => 'Ṫkonékta',
+'userlogin' => 'Ṫkonnékta / Ṣayeb ċi ḫsab',
+'userloginnocreate' => 'Ṫkonékta',
 'logout' => 'Ṫdékonékta',
-'wiki_userlogout' => 'Ĥrej',
+'userlogout' => 'Ĥrej',
 'notloggedin' => 'nta mamkoniktich',
 'nologin' => 'maandkch  cont ? $1',
 'nologinlink' => 'Ḫell ċi ḫsab',
 'createaccount' => 'Ḫell ċi ḫsab',
 'gotaccount' => 'aandk deja cont ? $1',
 'gotaccountlink' => 'Ṫkonékta',
-'wiki_userlogin-resetlink' => 'yak-ma nsiṫi ṫ-ṫafaṣil dial d-doĥol taĝk?',
+'userlogin-resetlink' => 'yak-ma nsiṫi ṫ-ṫafaṣil dial d-doĥol taĝk?',
 'createaccountmail' => "b l'email",
 'createaccountreason' => 'sabab:',
 'badretype' => 'klmaṫ ṣ-ṣeṛṛ lli dĥĥalṫi maċi b-ḫal b-ḫal.',
-'wiki_userexists' => 'smiṫ l-mosṫĥdim lli ḍĥĥolṫi ĥddam bih ċi waḫd.
+'userexists' => 'smiṫ l-mosṫĥdim lli ḍĥĥolṫi ĥddam bih ċi waḫd.
 ċof lik ċi ṣmiya aĥra.',
 'loginerror' => 'khataa f dokhol',
 'createaccounterror' => "kayn chi mchkil f incha' lcont : $1",
@@ -464,13 +464,13 @@ l-cookies ma ĥddam-ċ ĝndk.
 'noname' => 'Ma kṫebṫiċ ċi smiyṫ l-mosṫeĥdim mqadda.',
 'loginsuccesstitle' => 'dkhlti mzyan',
 'loginsuccess' => 'Dĥelṫi mezyan fe {{SITENAME}} be smiyṫ "$1".',
-'nosuchwiki_user' => 'ma kayn-ċ ċi mosṫĥdim smiṫo "$1".
+'nosuchuser' => 'ma kayn-ċ ċi mosṫĥdim smiṫo "$1".
 s-smiyyaṫ l-mosṫĥdimin raha ḫssasa lla caz (yĝni majuscule o-minuscule).
-ċof l-kṫaḅa waċ hia hadik, wlla [[Special:wiki_userLogin/signup|ṣayb ċi ḫisab jdid]].',
-'nosuchwiki_usershort' => 'ma kayn-ċ ċi mosṫĥdim smiṫo "$1".
+ċof l-kṫaḅa waċ hia hadik, wlla [[Special:UserLogin/signup|ṣayb ċi ḫisab jdid]].',
+'nosuchusershort' => 'ma kayn-ċ ċi mosṫĥdim smiṫo "$1".
 ċof l-kṫaḅa waċ hia hadik.',
-'nowiki_userspecified' => 'khassk tdkhl ism lmostakhdim.',
-'login-wiki_userblocked' => 'Had l-mosṫeĥdim meḫbos. Konnéksyon memnoĝa.',
+'nouserspecified' => 'khassk tdkhl ism lmostakhdim.',
+'login-userblocked' => 'Had l-mosṫeĥdim meḫbos. Konnéksyon memnoĝa.',
 'wrongpassword' => 'S-Saroṫ ĝendek ġalet.
 Ĝafak ĝawed keṫbo.',
 'wrongpasswordempty' => 'Ma kṫebṫiċ s-saroṫ.
@@ -514,16 +514,16 @@ kṫeb ċi ĝonwan moṣaġ mzian wlla mseḫ dakċi lli kṫbṫi.',
 ĥaṣṣk ṫdĥol o-ṫbddl klmṫ s-sṛṛ daba.
 
 ma ṫḍreb ḫsab l-had l-mesaj ila ṫṣĝyb had l-ḫisab ĝen tariq l-ĥata\'.',
-'wiki_usernamehasherror' => 'smiṫ l-mosṫĥdim ma ymkn-ċ ikon fiha karakterat dial l-hachage.',
+'usernamehasherror' => 'smiṫ l-mosṫĥdim ma ymkn-ċ ikon fiha karakterat dial l-hachage.',
 'login-throttled' => 'drṫi bẓẓaf dial l-moḫawalaṫ ṫaĝ d-doĥol.
 ṫsnna ċwiya o-ĝawd.',
 'login-abort-generic' => "d-doĥol ṫaĝk ma njaḫ-ċ — ilġa'",
 'loginlanguagelabel' => 'Loġa: $1',
-'suspicious-wiki_userlogout' => 't-talab dialk baċ ṫdĥol mrfoḍ ḫqqaċ tayḍhṛ billa rah ṫsift mn moṫaṣffiḫ mĝtob wlla caching proxy.',
+'suspicious-userlogout' => 't-talab dialk baċ ṫdĥol mrfoḍ ḫqqaċ tayḍhṛ billa rah ṫsift mn moṫaṣffiḫ mĝtob wlla caching proxy.',
 
 # E-mail sending
 'php-mail-error-unknown' => "ĥata' ma mĝrof-ċ fl-mail() function taĝ l-PHP.",
-'wiki_user-mail-no-addy' => 'ḫawlṫi ṫsift email bla ĝonwan l-email.',
+'user-mail-no-addy' => 'ḫawlṫi ṫsift email bla ĝonwan l-email.',
 
 # Change password dialog
 'resetpass' => 'tbdl lmot de passe',
@@ -551,7 +551,7 @@ ymkn ṫkon bddalṫiha bĝda wlla ṫlbti klmṫ srr mo'qaṫa jdida.",
 'passwordreset-legend' => 'ĝawd klmṫ s-srr',
 'passwordreset-disabled' => 'maymkn-ċ ṫĝawd klmṫ s-srr f-had l-wiki.',
 'passwordreset-pretext' => '{{PLURAL:$1||kṫb wḫda mn l-bayanaṫ l-ṫḫṫ}}',
-'passwordreset-wiki_username' => 'smiṫ l-mosṫĥdim:',
+'passwordreset-username' => 'smiṫ l-mosṫĥdim:',
 'passwordreset-email' => 'ĝonwan l-email:',
 'passwordreset-emailtitle' => 'ṫafaṣil l-ḫisab f-{{SITENAME}}',
 'passwordreset-emailtext-ip' => "ċi waḫd (ġaliban nṫa, mn ĝonwan l-IP $1) tlḅ ṫdkir
@@ -563,7 +563,7 @@ $2
 had {{PLURAL:$3|klmṫ|klmaṫ}} s-srr l-mo'qaṫa ġadi ṫṫḫyyad mn bĝd {{PLURAL:$5|nhar waḫd|$5 yyam/yom}}.
 ĥaṣṣk ṫdĥol o-ṫbddal klmṫ s-srr. ila kan ċi waḫd aĥor hwwa lli dar had
 talab, wlla ila ṫfkkarṫi klmṫ s-srr l-qdima, o-ma bqiti-ċ baġi ṫbddalha, ġir bqa ĥddam biha o-nsa ĝlik had l-mesaj.",
-'passwordreset-emailtext-wiki_user' => "l_mosṫĥdim $1 f-{{SITENAME}} tlḅ ṫdkir b-ṫṫafaṣil dial l-ḫisab ṫaĝk f-{{SITENAME}} ($4). {{PLURAL:$3|l-ḫisab lli mrṫabt|l-ḫisabat lli mrṫabta}} b-had l-ĝonwan dl-email {{PLURAL:$3|howa|hiya}}:
+'passwordreset-emailtext-user' => "l_mosṫĥdim $1 f-{{SITENAME}} tlḅ ṫdkir b-ṫṫafaṣil dial l-ḫisab ṫaĝk f-{{SITENAME}} ($4). {{PLURAL:$3|l-ḫisab lli mrṫabt|l-ḫisabat lli mrṫabta}} b-had l-ĝonwan dl-email {{PLURAL:$3|howa|hiya}}:
 
 $2
 
@@ -664,7 +664,7 @@ yqdr ikon ṫnql wlla ṫḫyyd mlli knṫi kaṫċof had ṣfḫa.',
 'loginreqlink' => 'Ṫkonékta',
 'loginreqpagetext' => 'ĥaṣṣk ddir $1 baċ ṣfaḫi ĥrin.',
 'accmailtitle' => 'lmot de passe tsaft.',
-'accmailtext' => "waḫd klmṫ s-srr mṣayba ĝċwa'iyyn ĝla ḫsab [[wiki_user talk:$1|$1]] ṫsiftaṫ l-$2.
+'accmailtext' => "waḫd klmṫ s-srr mṣayba ĝċwa'iyyn ĝla ḫsab [[User talk:$1|$1]] ṫsiftaṫ l-$2.
 
 ṫqdr ṫbddal klmṫ s-srr dialt had l-ḫisab j-jdid f-ṣṣfḫa ṫaĝ ''[[Special:ChangePassword|bḍḍel klmṫ s-srr]]'' mn bĝdmma ṫdĥol.",
 'newarticle' => '(jdid)',
@@ -674,7 +674,7 @@ Ila wṣelṫi hnaya ĝla ġefla, brek ĝla l-boton '''rjeĝ''' dyal n-navigaṫ
 'anontalkpagetext' => "----''hada niqaċ ṫaĝ waḫd l-mosṫĥdim anonim lli mazal ma ṣayb-ċ ċi ḫisab, wlla ma kayĥdam-ċ bih.
 dakċċi ĝlaċ raḫna ĥddamin b-ĝonwan l-IP ṛ-ṛqmi baċ nĝaṛṛfoh.
 bḫal had ĝanawin l-IP ymkn iṫċarko fiha bẓẓaf dl-mosṫĥdimin.
-ina konṫi ḫṫṫa nṫa mosṫĥdim anonim o-ḫssiṫi billa wjjah lik ċi ḫadd ċi ṫĝalq ġalat,[[Special:wiki_userLogin/signup|ṣayb ċi ḫisab]] wlla [[Special:wiki_userLogin|dĥol]] baċ ṫqil raṣk mn ay ġalat fl-mosṫqbal.''",
+ina konṫi ḫṫṫa nṫa mosṫĥdim anonim o-ḫssiṫi billa wjjah lik ċi ḫadd ċi ṫĝalq ġalat,[[Special:UserLogin/signup|ṣayb ċi ḫisab]] wlla [[Special:UserLogin|dĥol]] baċ ṫqil raṣk mn ay ġalat fl-mosṫqbal.''",
 'noarticletext' => 'Ma kayen fe had s-saĝa ḫṫa neṣ fe had ṣ-ṣefḫa.
 Imken lek [[Special:Search/{{PAGENAME}}|ṫqelleb ĝla ṣefḫa be had l-ĝonwan]] fe ṣ-ṣefḫaṫ l-ĥrin,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ṫqelleb fe l-ĝamaliyaṫ l-mlaqyin]
@@ -683,9 +683,9 @@ ola [{{fullurl:{{FULLPAGENAME}}|action=edit}} ṫsayeb ṣ-ṣefḫa]</span>.',
 Imken lek [[Special:Search/{{PAGENAME}}|ṫqelleb ĝla ṣefḫa be had l-ĝonwan]] fe ṣ-ṣefḫaṫ l-ĥrin,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ṫqelleb fe l-ĝamaliyaṫ l-mlaqyin]
 ola [{{fullurl:{{FULLPAGENAME}}|action=edit}} ṫsayeb ṣ-ṣefḫa]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => 'ḫisab l-mosṫĥdim "$1" ma msjjal-ċ.
+'userpage-userdoesnotexist' => 'ḫisab l-mosṫĥdim "$1" ma msjjal-ċ.
 ċof waċ baġi ṫṣayb/ṫĝddal had ṣfḫa.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'L-Ḫsab dyal l-mosṫeĥdim "$1" ma mċejjelċ.',
+'userpage-userdoesnotexist-view' => 'L-Ḫsab dyal l-mosṫeĥdim "$1" ma mċejjelċ.',
 'blocked-notice-logextract' => 'had l-mosṫĥdim mbloki daba.
 aĥir mdĥl f-sijill l-blok mĝti lṫḫṫ:',
 'clearyourcache' => "'''molaḫaḍa:''' bĝd l-ḫifḍ, ymkn iĥṣṣak ṫhddaṫ ṣfḫa wlla ṫĥwi l-kaċ baċ ibano ṫĥyiraṫ.
@@ -694,18 +694,18 @@ aĥir mdĥl f-sijill l-blok mĝti lṫḫṫ:',
 * '''Internet Explorer:''' bqa bark ĝla ''Ctrl'' o-kliki ''Refresh'', wlla wta ĝla ''Ctrl-F5''
 * '''Konqueror:''' kliki ''Reload'' wlla wta ''F5''
 * '''Opera:''' ĥwi l-kaċ ''Tools → Preferences''",
-'wiki_usercssyoucanpreview' => "'''fikra:''' sṫĝmel botona d-\"{{int:showpreview}}\" baċ ṫjṛṛḅ s-CSS j-jdid qbl ma ṫsajjl.",
-'wiki_userjsyoucanpreview' => "'''fikra:''' sṫĝmel botona d-\"{{int:showpreview}}\" baċ ṫjṛṛḅ j-JavaScript j-jdid qbl ma ṫsajjl.",
-'wiki_usercsspreview' => "'''ma tnsa-ċ billa CSS ṫaĝk mazal f-mrḫalt l-iĝdad.'''
+'usercssyoucanpreview' => "'''fikra:''' sṫĝmel botona d-\"{{int:showpreview}}\" baċ ṫjṛṛḅ s-CSS j-jdid qbl ma ṫsajjl.",
+'userjsyoucanpreview' => "'''fikra:''' sṫĝmel botona d-\"{{int:showpreview}}\" baċ ṫjṛṛḅ j-JavaScript j-jdid qbl ma ṫsajjl.",
+'usercsspreview' => "'''ma tnsa-ċ billa CSS ṫaĝk mazal f-mrḫalt l-iĝdad.'''
 '''rah mazal ma ṫsjjal-ċ!'''",
-'wiki_userjspreview' => "'''ma tnsa-ċ billa JavaScript ṫaĝk mazal f-mrḫalt l-iĝdad o-ṫjriba.'''
+'userjspreview' => "'''ma tnsa-ċ billa JavaScript ṫaĝk mazal f-mrḫalt l-iĝdad o-ṫjriba.'''
 '''rah mazal ma ṫsjjal-ċ!'''",
 'sitecsspreview' => "'''ma tnsa-ċ billa CSS ṫaĝk mazal ġir f-mrḫalt l-iĝdad.'''
 '''rah mazal ma ṫsjjal-ċ!'''",
 'sitejspreview' => "'''ma tnsa-ċ billa JavaScript ṫaĝk mazal ġir f-mrḫalt l-iĝdad.'''
 '''rah mazal ma ṫsjjal-ċ!'''",
-'wiki_userinvalidcssjstitle' => "'''ṫḫdir:''' ma kayn ḫṫṫa ċi skin \"\$1\".
-ṣfaḫi .css o-.js l-moĥṣṣaṣa ĥddama b-ĝanawin minuscule, bḫal {{ns:wiki_user}}:Foo/vector.css o-maċi bḫal {{ns:wiki_user}}:Foo/Vector.css.",
+'userinvalidcssjstitle' => "'''ṫḫdir:''' ma kayn ḫṫṫa ċi skin \"\$1\".
+ṣfaḫi .css o-.js l-moĥṣṣaṣa ĥddama b-ĝanawin minuscule, bḫal {{ns:user}}:Foo/vector.css o-maċi bḫal {{ns:user}}:Foo/Vector.css.",
 'updated' => '(mohdata)',
 'note' => "'''molahada:'''",
 'previewnote' => "'''Dir fe balek belli hadċi ġir prévizualizasyon.'''
@@ -713,13 +713,13 @@ Dakċi li beddelṫi mazal ma ṫċejjel !",
 'previewconflict' => 'had l-iĝdad taybiyyin n-naṣṣ lli foq mintaqṫ ṫḫrir n-nosos kima ġadi yban il ĥṫariṫi ṫsajjlo.',
 'session_fail_preview' => "'''lil-asaf! ma ymkn-ċ ṫsjil ṫĝdilaṫ ṫaĝk b-sbab ḍayaĝ l-bayanaṫ d-had s-session.'''
 ĝawd mṛṛa oĥra.
-ila ma ĥdmaṫ-ċ, jṛṛeb [[Special:wiki_userLogout|l-ĥoroj]] o-ddoĥol ĝawṫṫani.",
+ila ma ĥdmaṫ-ċ, jṛṛeb [[Special:UserLogout|l-ĥoroj]] o-ddoĥol ĝawṫṫani.",
 'session_fail_preview_html' => "'''lil-asaf! ma ymkn-ċ ṫsjil ṫĝdilaṫ ṫaĝk b-sbab ḍayaĝ l-bayanaṫ d-had s-session.'''
 
 ''ḫqqaċ {{SITENAME}} ĥdam bl-HTML brute, l-iĝdad ma bayn-ċ ll-wiqaya mn l-hojomaṫ ṫaĝ JavaScript.''
 
 '''ila kanṫ hadi moḫawala ṫaĝ t-ṫĝdil mṣroĝa, jṛṛeb mṛṛa oĥra.'''
-ila ma ĥdmaṫ-ċ, jṛṛeb [[Special:wiki_userLogout|l-ĥoroj]] o-ddoĥol ĝawṫṫani.",
+ila ma ĥdmaṫ-ċ, jṛṛeb [[Special:UserLogout|l-ĥoroj]] o-ddoĥol ĝawṫṫani.",
 'token_suffix_mismatch' => "'''ṫ-ṫĝdil ṫaĝk ṫrfḍ ḫiṫ l-moṫaṣffih taĝk ĥllaṫ bin ĝalamaṫ ṫ-ṫrqim fl-moĝrrif ṫaĝ ṫ-ṛĝdil.'''
 ṫ-ṫĝdil ṫrfḍ ḫiṫ baċ ma yĥṣr-ċ n-naṣṣ lli f-ṣfḫa.
 ṫaṫwqĝ ċi mṛṛa mlli ka-ṫĥdam b-ċi ''serveur mandataire anonyme problématique basé sur le web''.",
@@ -792,7 +792,7 @@ raha kayna bĝda.',
 # "Undo" feature
 'undo-failure' => 'ma ṣlaḫ-ċ ṫredd ṫ-ṫĝdil ḫiṫ tra ċi ṫĝdil mn morah.',
 'undo-norev' => 'ma ṣlaḫ-ċ ṫredd ṫ-ṫĝdil ḫiṫ ma kayn-ċ wlla ṫhyyed.',
-'undo-summary' => 'reḍḍ l-morajaĝa $1 d-[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|niqaċ]])',
+'undo-summary' => 'reḍḍ l-morajaĝa $1 d-[[Special:Contributions/$2|$2]] ([[User talk:$2|niqaċ]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'lcont maymknch tnchaa',
@@ -827,9 +827,9 @@ raha kayna bĝda.',
 
 # Revision deletion
 'rev-deleted-comment' => '(taaliq thiyd)',
-'rev-deleted-wiki_user' => '(ism lmostkhdim thiyd)',
+'rev-deleted-user' => '(ism lmostkhdim thiyd)',
 'rev-deleted-event' => '(feĝl d-sijill ṫhyyed)',
-'rev-deleted-wiki_user-contribs' => '[smiṫ mosṫĥdim wlla ĝonwan IP ṫhyyed - ṫĝdil ma kayban-ċ fl-mosahamaṫ]',
+'rev-deleted-user-contribs' => '[smiṫ mosṫĥdim wlla ĝonwan IP ṫhyyed - ṫĝdil ma kayban-ċ fl-mosahamaṫ]',
 'rev-deleted-text-permission' => "l-moṛajaĝa d-ṣṣfḫa '''ṫḫdfaṫ'''.
 ṫ-ṫafaṣil f-[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} sijill l-ḫdf].",
 'rev-delundel' => 'Biyyen/Ĥebbi',
@@ -849,7 +849,7 @@ raha kayna bĝda.',
 'revdelete-hide-image' => 'khbi lmohtawa dyal lfichier',
 'revdelete-hide-name' => 'khbi lfiil olhadaf',
 'revdelete-hide-comment' => 'khhbi taaliq taadil',
-'revdelete-hide-wiki_user' => 'khbbi ism lmostakhdim/ip',
+'revdelete-hide-user' => 'khbbi ism lmostakhdim/ip',
 'revdelete-hide-restricted' => 'ĥḅḅeĝ l-bayanaṫ mn l-idariyyin o-laĥrin',
 'revdelete-radio-same' => '(matghiyrch)',
 'revdelete-radio-set' => 'iyih',
@@ -914,7 +914,7 @@ $1",
 'showhideselectedversions' => 'wrri/ĥbbi l-morajaĝṫ l-mĥṫaṛa',
 'editundo' => 'Rjeĝ',
 'diff-multi' => '({{PLURAL:$1|ṃoṛajaĝa waṣita wḫda|$1 dl-ṃoṛajaĝaṫ l-waṣita}} ṫaĝṫ {{PLURAL:$2|mosṫĥdim waḫf|$2 dl-mosṫĥdimin}} ma mbeyyna-ċ)',
-'diff-multi-manywiki_users' => '({{PLURAL:$1|ṃoṛajaĝa waṣita wḫda|$1 dl-ṃoṛajaĝaṫ l-waṣita}} ṫaĝṫ kṫr mn $2 {{PLURAL:$2|l-mosṫĥdim|dl-mosṫĥdimin}} ma mbeyyna-ċ)',
+'diff-multi-manyusers' => '({{PLURAL:$1|ṃoṛajaĝa waṣita wḫda|$1 dl-ṃoṛajaĝaṫ l-waṣita}} ṫaĝṫ kṫr mn $2 {{PLURAL:$2|l-mosṫĥdim|dl-mosṫĥdimin}} ma mbeyyna-ċ)',
 
 # Search results
 'searchresults' => "N-Naṫa'ij dyal l-beḫṫ",
@@ -995,7 +995,7 @@ Laḫed ana imken ikono l-indexaṫ dial {{SITENAME}} qdam o ma bqaoċ ṣalḫi
 'mypreferences' => 'Ḫajaṫ li kanfeḍḍel',
 'prefs-edits' => 'ĝadad ṫ-ṫĝdilaṫ:',
 'prefsnologin' => 'nta mamkoniktich',
-'prefsnologintext' => 'ĥaṣṣk ṫkon  <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} daĥol]</span> baċ ṫĝyyer ṫfḍilaṫ l-moṣṫĥdim.',
+'prefsnologintext' => 'ĥaṣṣk ṫkon  <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} daĥol]</span> baċ ṫĝyyer ṫfḍilaṫ l-moṣṫĥdim.',
 'changepassword' => 'tbdl lmot de passe',
 'prefs-skin' => 'skin',
 'skin-preview' => 'L-Prévizualizasyon',
@@ -1060,7 +1060,7 @@ Laḫed ana imken ikono l-indexaṫ dial {{SITENAME}} qdam o ma bqaoċ ṣalḫi
 'prefs-emailconfirm-label' => "konfirmi l'email:",
 'prefs-textboxsize' => 'hajm nafidat tahrir',
 'youremail' => 'I-Méyl',
-'wiki_username' => 'smiṫ l-mosṫĥdim:',
+'username' => 'smiṫ l-mosṫĥdim:',
 'uid' => 'raqm lmostakhdim :',
 'prefs-memberingroups' => 'odw f  {{PLURAL:$1|mjmoaa|mjmoaat}}:',
 'prefs-registration' => 'wqt tasjil:',
@@ -1091,31 +1091,31 @@ Laḫed ana imken ikono l-indexaṫ dial {{SITENAME}} qdam o ma bqaoċ ṣalḫi
 'prefs-displaywatchlist' => 'khiyarat laard',
 'prefs-diffs' => 'foroqat',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'tayban billa l-email rah ṣalḫ',
 'email-address-validity-invalid' => 'kṫb ĝonwan email ṣḫiḫ',
 
-# wiki_user rights
-'wiki_userrights' => 'ṫdbir ṣalaḫiyyaṫ l-mosṫĥdim',
-'wiki_userrights-lookup-wiki_user' => 'idarat mjmoat lmostkhdim',
-'wiki_userrights-wiki_user-editname' => 'dkhl ism mostakhdim :',
-'editwiki_usergroup' => 'addl mjmoat lmostakhdim',
-'wiki_userrights-editwiki_usergroup' => 'tadil mjmoaat lmostakhdim',
-'savewiki_usergroups' => 'hifd mjmoat lmotakhdim',
-'wiki_userrights-groupsmember' => 'odw fi :',
-'wiki_userrights-groupsmember-auto' => 'odw dimni f :',
-'wiki_userrights-reason' => 'S-Sbab:',
-'wiki_userrights-no-interwiki' => 'ma msmoḫ-likċ ṫĝddel hoqoq l-mosṫĥdim fl-wikiat loĥra.',
-'wiki_userrights-nodatabase' => 'qaĝidaṫ l-bayanaṫ $1 ma kayna-ċ wlla kayna walakin maċi f-had l-wiki.',
-'wiki_userrights-nologin' => 'ĥaṣṣk [[Special:wiki_userLogin|ṫdĥol]] b-ĥisab idari baċ ṫĝti hoqoq l-mosṫĥdim.',
-'wiki_userrights-notallowed' => 'l-ḫisab ṫaĝk ma mṣmoh-lihċ iĝti ḫoqoq l-mosṫĥdim.',
-'wiki_userrights-changeable-col' => 'lmojmoat li imkn li tghiyrha',
-'wiki_userrights-unchangeable-col' => 'lmjmoat li maymknch lik tghyrha',
-'wiki_userrights-irreversible-marker' => '$1*',
+# User rights
+'userrights' => 'ṫdbir ṣalaḫiyyaṫ l-mosṫĥdim',
+'userrights-lookup-user' => 'idarat mjmoat lmostkhdim',
+'userrights-user-editname' => 'dkhl ism mostakhdim :',
+'editusergroup' => 'addl mjmoat lmostakhdim',
+'userrights-editusergroup' => 'tadil mjmoaat lmostakhdim',
+'saveusergroups' => 'hifd mjmoat lmotakhdim',
+'userrights-groupsmember' => 'odw fi :',
+'userrights-groupsmember-auto' => 'odw dimni f :',
+'userrights-reason' => 'S-Sbab:',
+'userrights-no-interwiki' => 'ma msmoḫ-likċ ṫĝddel hoqoq l-mosṫĥdim fl-wikiat loĥra.',
+'userrights-nodatabase' => 'qaĝidaṫ l-bayanaṫ $1 ma kayna-ċ wlla kayna walakin maċi f-had l-wiki.',
+'userrights-nologin' => 'ĥaṣṣk [[Special:UserLogin|ṫdĥol]] b-ĥisab idari baċ ṫĝti hoqoq l-mosṫĥdim.',
+'userrights-notallowed' => 'l-ḫisab ṫaĝk ma mṣmoh-lihċ iĝti ḫoqoq l-mosṫĥdim.',
+'userrights-changeable-col' => 'lmojmoat li imkn li tghiyrha',
+'userrights-unchangeable-col' => 'lmjmoat li maymknch lik tghyrha',
+'userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'majmoaa:',
-'group-wiki_user' => 'Mosṫeĥdimon',
+'group-user' => 'Mosṫeĥdimon',
 'group-autoconfirmed' => 'mostakhdimon maakadon automatikiyan',
 'group-bot' => 'botat',
 'group-sysop' => 'Wébmodirin',
@@ -1123,14 +1123,14 @@ Laḫed ana imken ikono l-indexaṫ dial {{SITENAME}} qdam o ma bqaoċ ṣalḫi
 'group-suppress' => 'noddar',
 'group-all' => '(kolchi)',
 
-'group-wiki_user-member' => '{{GENDER:$1|Mosṫeĥdim}}',
+'group-user-member' => '{{GENDER:$1|Mosṫeĥdim}}',
 'group-autoconfirmed-member' => "Mosṫeĥdim moakkad tilqa'iyan",
 'group-bot-member' => 'bot',
 'group-sysop-member' => 'Wébmodirin',
 'group-bureaucrat-member' => 'biroqrat',
 'group-suppress-member' => 'nadhir',
 
-'grouppage-wiki_user' => '{{ns:project}}:mostakhdimon',
+'grouppage-user' => '{{ns:project}}:mostakhdimon',
 'grouppage-autoconfirmed' => '{{ns:project}}:mostakhdimon mofaalon tilqaiyan',
 'grouppage-bot' => '{{ns:project}}:Botat',
 'grouppage-sysop' => '{{ns:project}}:Wébmodirin',
@@ -1146,7 +1146,7 @@ Laḫed ana imken ikono l-indexaṫ dial {{SITENAME}} qdam o ma bqaoċ ṣalḫi
 'right-minoredit' => 'taalim ala koll taadilat katafifa',
 'right-move' => 'Neqqel ṣ-ṣefḫa',
 'right-move-subpages' => 'naql sfahi maa sfahiha lfariya',
-'right-move-rootwiki_userpages' => 'naql sfahi d lmostakhdimin lassassiya',
+'right-move-rootuserpages' => 'naql sfahi d lmostakhdimin lassassiya',
 'right-movefile' => 'naql lfichiyat',
 'right-suppressredirect' => 'ma ṫḫwwel-ċ mn ṣ-ṣfaḫi dl-maṣadir mlli tkon ka-ṫnqqel ṣfaḫi.',
 'right-upload' => 'Ṣifet ċi fiċyé',
@@ -1166,16 +1166,16 @@ Laḫed ana imken ikono l-indexaṫ dial {{SITENAME}} qdam o ma bqaoċ ṣalḫi
 'right-suppressionlog' => 'chouf sijillat sirriya',
 'right-block' => 'bloki l-mosṫĥdimin l-aĥrin mn ṫĝdil',
 'right-blockemail' => 'bloki ċi mosṫĥdim baċ ma ysift-ċ email',
-'right-hidewiki_user' => 'bloki ċi mosṫĥdim, bla ma yċofo l-jmhoṛ',
+'right-hideuser' => 'bloki ċi mosṫĥdim, bla ma yċofo l-jmhoṛ',
 'right-ipblock-exempt' => "ṫjnneb l-blokaṫ dl-IP ol-otoblokaṫ or-''range''blokaṫ",
 'right-proxyunbannable' => 'ṫjnneb l-otoblokaṫ dl-proksiaṫ',
 'right-unblockself' => 'ihiydo lblokage ala ryoshom',
 'right-protect' => 'taghyir mostawayat lhimaya wtadil sfahi li mhmiyin',
 'right-editprotected' => 'ṣfaḫi mḫmyya mn ṫĝdil (bla ḫimaya mṫslsla)',
 'right-editinterface' => 'ĝddel wajihaṫ l-mosṫĥdim',
-'right-editwiki_usercssjs' => 'ĝddel milffaṫ CSS o-JavaScript ṫaĝ mosṫĥdimin aĥrin',
-'right-editwiki_usercss' => 'ĝddel milffaṫ CSS ṫaĝ mosṫĥdimin aĥrin',
-'right-editwiki_userjs' => 'ĝddel milffaṫ JavaScript ṫaĝ mosṫĥdimin aĥrin',
+'right-editusercssjs' => 'ĝddel milffaṫ CSS o-JavaScript ṫaĝ mosṫĥdimin aĥrin',
+'right-editusercss' => 'ĝddel milffaṫ CSS ṫaĝ mosṫĥdimin aĥrin',
+'right-edituserjs' => 'ĝddel milffaṫ JavaScript ṫaĝ mosṫĥdimin aĥrin',
 'right-rollback' => 'srtjaa taadilat akhr mostkhdim  adl sfha mayana',
 'right-noratelimit' => "mamt'atrch b hodod lmoaddal",
 'right-import' => 'importé sfahi mn wikiat khrin',
@@ -1185,13 +1185,13 @@ Laḫed ana imken ikono l-indexaṫ dial {{SITENAME}} qdam o ma bqaoċ ṣalḫi
 'right-patrolmarks' => 'chof alamat lmorajaa f ahdat tghyirat',
 'right-unwatchedpages' => 'chof sfahi li mamraqbinch',
 'right-mergehistory' => 'dmj tarikh sfahi',
-'right-wiki_userrights' => 'taadil kol  salahiyat lmostkhdimin',
-'right-wiki_userrights-interwiki' => 'taadil salahiyat lmostkhdim lmostkhdimin f lwikiyat lkhrin',
+'right-userrights' => 'taadil kol  salahiyat lmostkhdimin',
+'right-userrights-interwiki' => 'taadil salahiyat lmostkhdim lmostkhdimin f lwikiyat lkhrin',
 'right-siteadmin' => 'sd o zl qaidat lbayant',
 'right-override-export-depth' => 'tsdir sfahi obinha sfahi lmawsola hta lomq 5',
 'right-sendemail' => 'sift email lmostkhdimin lkhrin',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Ĝamaliyaṫ ḫoqoq l-mosṫeĥdim',
 'rightslogtext' => 'hada sijil btaghyirat f salahiyat lmostkhdimin',
 'rightslogentry' => 'ghyr salahiyat $1 mn $2 l $3',
@@ -1206,7 +1206,7 @@ Laḫed ana imken ikono l-indexaṫ dial {{SITENAME}} qdam o ma bqaoċ ṣalḫi
 'action-minoredit' => 'allm had tghyir katafif',
 'action-move' => 'Neqqel had ṣ-ṣefḫa',
 'action-move-subpages' => 'nql had sfha osfahi lfaraiya dyalha',
-'action-move-rootwiki_userpages' => 'naql sfahi d lmostakhdimin lassassiya',
+'action-move-rootuserpages' => 'naql sfahi d lmostakhdimin lassassiya',
 'action-movefile' => 'Neqqel had lfichier',
 'action-upload' => 'Ṣifet ċi fiċyé',
 'action-reupload' => 'kṫb foq had l-milef l-mojod.',
@@ -1228,8 +1228,8 @@ Laḫed ana imken ikono l-indexaṫ dial {{SITENAME}} qdam o ma bqaoċ ṣalḫi
 'action-autopatrol' => 'alm taadil dualk kamorajaa',
 'action-unwatchedpages' => 'chof lista dyal sfahi li mamraqbach',
 'action-mergehistory' => 'dmj tarikh had sfha',
-'action-wiki_userrights' => 'taadil kol  salahiyat lmostkhdimin',
-'action-wiki_userrights-interwiki' => 'taadil salahiyat lmostkhdimin f lwikiyat lkhrin',
+'action-userrights' => 'taadil kol  salahiyat lmostkhdimin',
+'action-userrights-interwiki' => 'taadil salahiyat lmostkhdimin f lwikiyat lkhrin',
 'action-siteadmin' => 'sd o7l qaidat lbayant',
 
 # Recent changes
@@ -1259,7 +1259,7 @@ Laḫed ana imken ikono l-indexaṫ dial {{SITENAME}} qdam o ma bqaoċ ṣalḫi
 'minoreditletter' => 'ṣ',
 'newpageletter' => 'J',
 'boteditletter' => 'b',
-'number_of_watching_wiki_users_pageview' => '[$1 katchof  {{PLURAL:$1|mostkhdim|mostkhdimin}}]',
+'number_of_watching_users_pageview' => '[$1 katchof  {{PLURAL:$1|mostkhdim|mostkhdimin}}]',
 'rc_categories' => 'limiti tsnifat (frqha b  "|")',
 'rc_categories_any' => 'ay wahd',
 'rc-change-size' => '$1',
@@ -1283,7 +1283,7 @@ Laḫed ana imken ikono l-indexaṫ dial {{SITENAME}} qdam o ma bqaoċ ṣalḫi
 'reuploaddesc' => "ilgha' rojoa orjaa l upload form",
 'upload-tryagain' => 'fist lmodifikasyon',
 'uploadnologin' => 'nta mamkoniktich',
-'uploadnologintext' => 'khassk  [[Special:wiki_userLogin|tsjl]] bach tsift fichier.',
+'uploadnologintext' => 'khassk  [[Special:UserLogin|tsjl]] bach tsift fichier.',
 'uploaderror' => "ĥata' ṫḫmil",
 'upload-permitted' => 'nwaĝ taĝ milffaṫ mesmoḫa: $1.',
 'upload-preferred' => 'nwaĝ taĝ milffaṫ mfeḍḍla: $1.',
@@ -1396,7 +1396,7 @@ $1',
 'listfiles_thumb' => 'miniatir',
 'listfiles_date' => 'tarikh',
 'listfiles_name' => 'smiya',
-'listfiles_wiki_user' => 'Mosṫeĥdim',
+'listfiles_user' => 'Mosṫeĥdim',
 'listfiles_size' => 'lhajm',
 'listfiles_description' => 'wasf',
 'listfiles_count' => 'naskh',
@@ -1413,7 +1413,7 @@ $1',
 'filehist-thumb' => 'miniatir',
 'filehist-thumbtext' => 'Ṫ-Ṫeṣġir dyal l-vérsyon dyal nhar $2 mĝa s-saĝa $3',
 'filehist-nothumb' => 'la tasghir',
-'filehist-wiki_user' => 'Mosṫeĥdim',
+'filehist-user' => 'Mosṫeĥdim',
 'filehist-dimensions' => 'T-Tol o l-ĝerḍ',
 'filehist-filesize' => 'hajm lfichier',
 'filehist-comment' => 'Ĝelleq',
@@ -1472,7 +1472,7 @@ $1',
 'statistics-header-pages' => "ihsa'at sfahi",
 'statistics-header-edits' => "ihsa'at taadilat",
 'statistics-header-views' => "ihsa'at lmochahada",
-'statistics-header-wiki_users' => "ihsa'at lmstkhdimin",
+'statistics-header-users' => "ihsa'at lmstkhdimin",
 'statistics-header-hooks' => "ihsa'at khra",
 'statistics-articles' => 'sfht mohtawa',
 'statistics-pages' => 'ṣfaḫi',
@@ -1480,7 +1480,7 @@ $1',
 'statistics-edits-average' => 'otawassit taadilat lkol sfha',
 'statistics-views-total' => 'chof total',
 'statistics-views-peredit' => 'l-moċahadaĝ l-koll ṫĝdil',
-'statistics-wiki_users-active' => 'mostakhdimon nachtin',
+'statistics-users-active' => 'mostakhdimon nachtin',
 'statistics-mostpopular' => 'aktar sfahi mochahada',
 
 'disambiguations' => 'sfahi dyal tawdih',
@@ -1536,13 +1536,13 @@ daba ka ṫḫwwal l-[[$2]].',
 'protectedpages-indef' => 'ġi l-ḫimaya maċi l-mḫdeda',
 'protectedpages-cascade' => 'ġi l-ḫimaya l-mṫslsla',
 'protectedtitles' => 'Ĝanawin meḫmiya',
-'listwiki_users' => 'lista dyal lmostkhdimin',
-'listwiki_users-editsonly' => 'Werri ġir l-mosṫeĥdimin li fayeṫ sahmo.',
-'listwiki_users-creationsort' => 'Jmeĝ ĝla ḫsab ṫariĥ l-ĥṫiraĝ',
-'wiki_usereditcount' => '$1 ṫeĝdil{{PLURAL:$1||aṫ}}',
-'wiki_usercreated' => "tnch' f $1 saaa $2",
+'listusers' => 'lista dyal lmostkhdimin',
+'listusers-editsonly' => 'Werri ġir l-mosṫeĥdimin li fayeṫ sahmo.',
+'listusers-creationsort' => 'Jmeĝ ĝla ḫsab ṫariĥ l-ĥṫiraĝ',
+'usereditcount' => '$1 ṫeĝdil{{PLURAL:$1||aṫ}}',
+'usercreated' => "tnch' f $1 saaa $2",
 'newpages' => 'Ṣefḫaṫ jdad',
-'newpages-wiki_username' => 'smiṫ l-mosṫĥdim:',
+'newpages-username' => 'smiṫ l-mosṫĥdim:',
 'ancientpages' => 'aqdam sfahi',
 'move' => 'Neqqel',
 'movethispage' => 'Neqqel had ṣ-ṣefḫa',
@@ -1561,7 +1561,7 @@ daba ka ṫḫwwal l-[[$2]].',
 'booksources-go' => 'Sir',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Mosṫeĥdim:',
+'specialloguserlabel' => 'Mosṫeĥdim:',
 'speciallogtitlelabel' => "l'adresse:",
 'log' => 'sijillaṫ',
 'all-logs-page' => 'kol sijillat laama',
@@ -1600,22 +1600,22 @@ daba ka ṫḫwwal l-[[$2]].',
 'linksearch-ok' => 'Qelleb',
 'linksearch-line' => '$1 moṣola mn $2',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'wrri l-mosṫĥdimin lli badyin mn:',
-'listwiki_users-submit' => 'Werri',
-'listwiki_users-noresult' => 'ta mostakhdim matlgach.',
-'listwiki_users-blocked' => '(mbloki)',
+# Special:ListUsers
+'listusersfrom' => 'wrri l-mosṫĥdimin lli badyin mn:',
+'listusers-submit' => 'Werri',
+'listusers-noresult' => 'ta mostakhdim matlgach.',
+'listusers-blocked' => '(mbloki)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'lista dyal lmostkhdimin nachtin',
-'activewiki_users-from' => 'wrri l-mosṫĥdimin lli badyin mn:',
-'activewiki_users-hidebots' => 'khbbi lbotat',
-'activewiki_users-hidesysops' => 'Khbbi lidariyin',
-'activewiki_users-noresult' => 'ta mostakhdim matlgach.',
+# Special:ActiveUsers
+'activeusers' => 'lista dyal lmostkhdimin nachtin',
+'activeusers-from' => 'wrri l-mosṫĥdimin lli badyin mn:',
+'activeusers-hidebots' => 'khbbi lbotat',
+'activeusers-hidesysops' => 'Khbbi lidariyin',
+'activeusers-noresult' => 'ta mostakhdim matlgach.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Ṫariĥ dyal l-ḫsabaṫ j-jdad',
-'newwiki_userlogpagetext' => "hada sijill d-inċa'aṫ l-moṣṫĥdimin.",
+# Special:Log/newusers
+'newuserlogpage' => 'Ṫariĥ dyal l-ḫsabaṫ j-jdad',
+'newuserlogpagetext' => "hada sijill d-inċa'aṫ l-moṣṫĥdimin.",
 
 # Special:ListGroupRights
 'listgrouprights' => 'salahiyat mjmoat lmostkhdimin',
@@ -1632,21 +1632,21 @@ daba ka ṫḫwwal l-[[$2]].',
 'listgrouprights-addgroup-self' => 'zid ll-ḫisab ṫaĝi {{PLURAL:$2|mjmoĝṫ|mjmoĝaṫ}}: $1',
 'listgrouprights-removegroup-self' => 'hyyed mn l-ḫisab ṫaĝi {{PLURAL:$2|mjmoĝṫ|mjmoĝaṫ}}: $1',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'Ma kayenċ l-ĝonwan dyal l-morasil',
-'emailwiki_user' => 'Ṣifet imayl le had l-mosṫeĥdim',
+'emailuser' => 'Ṣifet imayl le had l-mosṫeĥdim',
 'emailpage' => 'sift email lhad lmostkhdim',
-'wiki_usermailererror' => "naṣṣ l-email ĝta ĥata':",
+'usermailererror' => "naṣṣ l-email ĝta ĥata':",
 'defemailsubject' => 'Imayl dyal {{SITENAME}}',
-'wiki_usermaildisabled' => 'L-Mosṫeḫdim ma mĥeddemċ l-imayl dyalo.',
-'wiki_usermaildisabledtext' => 'Ma ymken lekċ ṫṣifet ċi imayl le l-mosṫeĥdimin l-ĥrin fe had l-wiki',
+'usermaildisabled' => 'L-Mosṫeḫdim ma mĥeddemċ l-imayl dyalo.',
+'usermaildisabledtext' => 'Ma ymken lekċ ṫṣifet ċi imayl le l-mosṫeĥdimin l-ĥrin fe had l-wiki',
 'noemailtitle' => 'Ma kayen ḫṫa ĝonwan dial l-email',
 'noemailtext' => 'Had l-mosṫeĥdim ma ĝendoċ imayl mqadd.',
 'nowikiemailtitle' => 'makaynch email msmoh bih',
 'nowikiemailtext' => 'Had l-mosṫeĥdim ma bġa iṫweṣṣel be ḫṫa ċi imayl men ay mosṫeḫdim.',
 'emailtarget' => 'kṫb smiṫ l-mosṫĥdim l-morsal ilayh',
-'emailwiki_username' => 'smiṫ l-mosṫĥdim:',
-'emailwiki_usernamesubmit' => 'ṣift',
+'emailusername' => 'smiṫ l-mosṫĥdim:',
+'emailusernamesubmit' => 'ṣift',
 'email-legend' => 'Sifet ċi imayl le ċi mosṫeĥdim aĥor dyal {{SITENAME}}',
 'emailfrom' => 'mn:',
 'emailto' => 'l:',
@@ -1657,11 +1657,11 @@ daba ka ṫḫwwal l-[[$2]].',
 'emailccsubject' => 'copie rissala dyalk l  $1: $2',
 'emailsent' => "l'email tsfit",
 'emailsenttext' => 'L-Imayl dyalek ṫṣifet mezyan.',
-'emailwiki_userfooter' => 'Had l-imayl ṣifto « $1 » le « $2 » be waṣitaṫ « Ṣifet ċi imayl le l-mosṫeḫdim » fe {{SITENAME}}.',
+'emailuserfooter' => 'Had l-imayl ṣifto « $1 » le « $2 » be waṣitaṫ « Ṣifet ċi imayl le l-mosṫeḫdim » fe {{SITENAME}}.',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'Ĥella waḫed l-meṣaj sistém.',
-'wiki_usermessage-editor' => 'Morasil s-sistém',
+# User Messenger
+'usermessage-summary' => 'Ĥella waḫed l-meṣaj sistém.',
+'usermessage-editor' => 'Morasil s-sistém',
 
 # Watchlist
 'watchlist' => 'L-Lista de s-suivi dyalṫi',
@@ -1670,7 +1670,7 @@ daba ka ṫḫwwal l-[[$2]].',
 'nowatchlist' => 'Ma kayna ḫṫa ċi ṣefḫa fe l-lista dyal s-suivi dyalṫek.',
 'watchlistanontext' => 'Ĝafak $1 baċ ṫċof ola baċ ṫṣayeb ṣ-ṣefḫaṫ li fe l-lista dyal s-suivi.',
 'watchnologin' => 'nta mamkoniktich',
-'watchnologintext' => 'Ĥaṣṣek ṫkon [[Special:wiki_userLogin|dĥelṫi le ḫsabek]] baċ ṫṣayeb l-lista dyal s-suivi.',
+'watchnologintext' => 'Ĥaṣṣek ṫkon [[Special:UserLogin|dĥelṫi le ḫsabek]] baċ ṫṣayeb l-lista dyal s-suivi.',
 'addwatch' => "zid l-qa'imaṫ l-moṛaqaḅa",
 'addedwatchtext' => "Ṣ-Ṣefḫa \"[[:\$1]]\" ṫzadeṫ le [[Special:Watchlist|l-lista dyal s-suivi dyalṫek]].
 Ṫ-Ṫeġyiraṫ j-jayyin dyal had ṣ-ṣefḫa o dyal ṣ-ṣefḫa de n-niqaċ l-mnasba ġayṫċejjlo fiha.
@@ -1827,9 +1827,9 @@ Imken lek ṫbeddel l-mosṫawa de l-ḫimaya dyal had ṣ-ṣefḫa bla ma i\'e
 'sp-contributions-uploads' => 'ṫḫmilaṫ',
 'sp-contributions-logs' => 'sijillaṫ',
 'sp-contributions-talk' => 'ṫnaqeċ',
-'sp-contributions-wiki_userrights' => 'ṫdbir ṣalaḫiyyaṫ l-mosṫĥdim',
+'sp-contributions-userrights' => 'ṫdbir ṣalaḫiyyaṫ l-mosṫĥdim',
 'sp-contributions-search' => 'Qelleb ĝla ċi mosahamaṫ',
-'sp-contributions-wiki_username' => 'Ĝonwan IP ola smiyṫ l-mosṫeĥdim',
+'sp-contributions-username' => 'Ĝonwan IP ola smiyṫ l-mosṫeĥdim',
 'sp-contributions-toponly' => 'wrri ġi ṫĝdilaṫ lli hiya l-ṃoṛajaĝṫ l-aĥrra',
 'sp-contributions-submit' => 'Qelleb',
 
@@ -1855,7 +1855,7 @@ Imken lek ṫbeddel l-mosṫawa de l-ḫimaya dyal had ṣ-ṣefḫa bla ma i\'e
 'blockip' => 'Bloké l-mosṫeĥdim',
 'blockip-title' => 'Bloki l-mosṫeḫdim',
 'blockip-legend' => 'Bloki l-mosṫeḫdim',
-'ipadressorwiki_username' => 'Ĝonwan IP ola smiyṫ l-mosṫeĥdim',
+'ipadressorusername' => 'Ĝonwan IP ola smiyṫ l-mosṫeĥdim',
 'ipbexpiry' => 'Ġayṫqada fe :',
 'ipbreason' => 'sabab:',
 'ipbreasonotherlist' => 'Sabab weḫdaĥor',
@@ -1868,7 +1868,7 @@ Imken lek ṫbeddel l-mosṫawa de l-ḫimaya dyal had ṣ-ṣefḫa bla ma i\'e
 'ipbotheroption' => 'ḫwayej ĥrin',
 'ipbotherreason' => 'Sabab weḫdaĥor/zayed:',
 'ipbhidename' => 'Ĥebbi smiyṫ l-mosṫeĥdim men ṫ-ṫeġyiraṫ o men l-listaṫ',
-'ipbwatchwiki_user' => 'Ṫbeĝ ṣ-ṣefḫaṫ dyal l-mosṫeḫdim o de n-niqaċ dyal had l-mosṫeĥdim',
+'ipbwatchuser' => 'Ṫbeĝ ṣ-ṣefḫaṫ dyal l-mosṫeḫdim o de n-niqaċ dyal had l-mosṫeĥdim',
 'ipb-change-block' => "Ĝawed bloki had l-mosṫeĥdim be had l-'iĝdadaṫ",
 'badipaddress' => 'Ĝonwan IP ġalet',
 'blockipsuccesssub' => 'Blokaj najeḫ',
@@ -1879,13 +1879,13 @@ Imken lek ṫbeddel l-mosṫawa de l-ḫimaya dyal had ṣ-ṣefḫa bla ma i\'e
 'ipb-blocklist-contribs' => 'L-Mosahamaṫ dyal $1',
 'unblockip' => 'Débloki ċi mosṫeĥdim ola ċi ĝonwan IP',
 'ipusubmit' => 'Mḫi l-blokaj',
-'unblocked' => '[[wiki_user:$1|$1]] ma bqaċ mbloki',
+'unblocked' => '[[User:$1|$1]] ma bqaċ mbloki',
 'unblocked-range' => '$1 ddebloka',
 'unblocked-id' => 'L-Blokaj $1 ṫṫemḫa',
 'blocklist' => 'l-mosṫĥdimin lli ṫblokaw',
 'ipblocklist' => 'Ĝanawin IP o smiyyaṫ l-mosṫeĥdim meḫbosin',
 'ipblocklist-legend' => 'Qelleb ĝla ċi mosṫeĥdim memḫi',
-'blocklist-wiki_userblocks' => 'ĥbbi blokaṫ l-ḫisab',
+'blocklist-userblocks' => 'ĥbbi blokaṫ l-ḫisab',
 'blocklist-tempblocks' => "ĥbbi l-blokaṫ l-mo'qqaṫa",
 'blocklist-timestamp' => 'tabĝ zamani',
 'blocklist-target' => 'hadaf',
@@ -1902,7 +1902,7 @@ Imken lek ṫbeddel l-mosṫawa de l-ḫimaya dyal had ṣ-ṣefḫa bla ma i\'e
 'noautoblockblock' => 'blokaj otomaṫiki mḫiyyed',
 'createaccountblock' => 'memnoĝ ṫsayeb ċi ḫsab',
 'emailblock' => 'imayl mbloki',
-'blocklist-nowiki_usertalk' => 'ma ymken loċ yṣayeb ṣfeḫṫo dyal n-niqaċ',
+'blocklist-nousertalk' => 'ma ymken loċ yṣayeb ṣfeḫṫo dyal n-niqaċ',
 'ipblocklist-empty' => 'L-Lista dyal l-ĝanawin IP li mblokyin raha daba ĥawya.',
 'ipblocklist-no-results' => 'L-Ĝonwan IP ola l-mosṫeĥdim li tlebṫiw ma mblokiċ.',
 'blocklink' => 'Bloki',
@@ -1916,7 +1916,7 @@ Imken lek ṫbeddel l-mosṫawa de l-ḫimaya dyal had ṣ-ṣefḫa bla ma i\'e
 'block-log-flags-nocreate' => 'mmnoĝ ṫsayeb ċi ḫsab',
 'block-log-flags-noautoblock' => 'blokaj otomaṫiki dyal l-ĝanawin IP mḫiyyed',
 'block-log-flags-noemail' => 'imayl mbloki',
-'block-log-flags-nowiki_usertalk' => 'ma ymken loċ yṣayeb ṣfeḫṫo dyal n-niqaċ',
+'block-log-flags-nousertalk' => 'ma ymken loċ yṣayeb ṣfeḫṫo dyal n-niqaċ',
 'block-log-flags-angry-autoblock' => 'blokaj otomaṫiki mḫessen ĥeddam',
 'block-log-flags-hiddenname' => 'smiyṫ l-mosṫeĥdim mĥebbya',
 'ipb_expiry_invalid' => 'L-weqṫ li bqa ġalet.',
@@ -1966,7 +1966,7 @@ Imken hadċi y'eddi ṫeġyiraṫ hammin ila kaneṫ ċi ṣefḫa kayqrawha n-n
 'movenologin' => 'Mdékonnékti',
 'movenotallowed' => 'ma ĝndek-ċ l-heqq ṫneqqel ṣ-ṣfaḫi.',
 'movenotallowedfile' => 'ma ĝndekċ l-heqq ṫnqqel l-milffaṫ.',
-'cant-move-wiki_user-page' => "Ma ĝendekċ l-ḫeqq ṫneqqel ṣ-ṣefḫaṫ r-ra'isiyya.",
+'cant-move-user-page' => "Ma ĝendekċ l-ḫeqq ṫneqqel ṣ-ṣefḫaṫ r-ra'isiyya.",
 'newtitle' => 'Le ċi ĝonwan jdid',
 'move-watch' => 'Ṫebbeĝ had ṣ-ṣefḫa',
 'movepagebtn' => 'Neqqel ṣ-ṣefḫa',
@@ -2051,7 +2051,7 @@ Imken hadċi y'eddi ṫeġyiraṫ hammin ila kaneṫ ċi ṣefḫa kayqrawha n-n
 'import-logentry-interwiki' => 'importé blwiki $1',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Ṣ-Ṣefḫa de l-mosṫeĥdim dyalṫek',
+'tooltip-pt-userpage' => 'Ṣ-Ṣefḫa de l-mosṫeĥdim dyalṫek',
 'tooltip-pt-mytalk' => 'Ṣfeḫṫek dyal n-niqaċ',
 'tooltip-pt-preferences' => 'Li kaṫfeddel',
 'tooltip-pt-watchlist' => 'L-Lista dyal ṣ-ṣefḫaṫ li kaṫṫebbĝo',
@@ -2086,13 +2086,13 @@ Imken lek ṫċof l-ĝin dyalha.',
 'tooltip-feed-rss' => 'L-Flu RSS dyal had ṣ-ṣefḫa',
 'tooltip-feed-atom' => 'L-Flu Atom dyal had ṣ-ṣefḫa',
 'tooltip-t-contributions' => 'Ċof l-lista dyal mosahamaṫ had l-mosṫeĝmil',
-'tooltip-t-emailwiki_user' => 'Ṣifet imayl le had l-mosṫeĥdim',
+'tooltip-t-emailuser' => 'Ṣifet imayl le had l-mosṫeĥdim',
 'tooltip-t-upload' => 'Ṣifet ci fiċyé',
 'tooltip-t-specialpages' => 'Lisṫa dyal ṣ-sefḫaṫ l-ĥaṣin kollhom',
 'tooltip-t-print' => 'Vérsyon dyal ṣ-ṣefḫa l-li imken lik ṫetbeĝ',
 'tooltip-t-permalink' => 'Lyan dayem le had l-vérsyon dyal ṣ-ṣefḫa',
 'tooltip-ca-nstab-main' => 'Ċof l-li fe ṣ-ṣefḫa',
-'tooltip-ca-nstab-wiki_user' => 'Ċof ṣ-ṣefḫa de l-mosṫeĥdim',
+'tooltip-ca-nstab-user' => 'Ċof ṣ-ṣefḫa de l-mosṫeĥdim',
 'tooltip-ca-nstab-media' => 'tchof sfht lmedia',
 'tooltip-ca-nstab-special' => 'Hadi ṣefḫa ĥaṣa, ma imkenlikċ ṫṣayebha',
 'tooltip-ca-nstab-project' => 'Ċof ṣ-ṣefḫa dyal l-meċroĝ',
@@ -2121,7 +2121,7 @@ Imken lek ṫċof l-ĝin dyalha.',
 'creditspage' => 'ichadat sfha',
 
 # Spam protection
-'spambot_wiki_username' => 'tandif spam mediawiki',
+'spambot_username' => 'tandif spam mediawiki',
 
 # Info page
 'pageinfo-title' => 'mĝlomaṫ l-"$1"',
@@ -2267,7 +2267,7 @@ Ila ṫbeddel l-fiċyé men ḫalṫo l-'aṣliya, kaynin ċi ṫafaṣil ma mna
 'exif-compressedbitsperpixel' => 'tor daght sora',
 'exif-pixelydimension' => 'ard sora sahih',
 'exif-pixelxdimension' => 'tol sora sahih',
-'exif-wiki_usercomment' => 'taaliqat lmostakhdim',
+'exif-usercomment' => 'taaliqat lmostakhdim',
 'exif-relatedsoundfile' => 'milf sawti mortabit',
 'exif-datetimeoriginal' => 'tarikh o wqt tawlid lbayanat',
 'exif-datetimedigitized' => 'tarikh tahwil raqmi',
@@ -2530,7 +2530,7 @@ Ila ṫbeddel l-fiċyé men ḫalṫo l-'aṣliya, kaynin ċi ṫafaṣil ma mna
 l-cod ṫqdar ṫkon ṫqaḍaṫ ṣalaḫyṫo.",
 'confirmemail_needlogin' => "ĥaṣṣ $1 baċ ṫ'kked l-email ṫaĝk.",
 'confirmemail_success' => "ṫ'kked ĝonwan l-email ṫaĝk.
-daba ymkn lik [[Special:wiki_userLogin|ṫdĥol]] o-ṫsṫmṫĝ bl-wiki.",
+daba ymkn lik [[Special:UserLogin|ṫdĥol]] o-ṫsṫmṫĝ bl-wiki.",
 'confirmemail_loggedin' => "l'email dyalk tkonfirma daba",
 'confirmemail_error' => "khayn chi khata' mlli bghiti tsjl lkonfirmation dyalk",
 'confirmemail_subject' => "rissala ta'kid mn  {{SITENAME}}",
@@ -2658,7 +2658,7 @@ jrreb l-ĝṛḍ l-ĝadi.',
 'specialpages-group-login' => 'dkhl/tqiyd',
 'specialpages-group-changes' => 'akhir taghiyrat  osijillat',
 'specialpages-group-media' => 'taqarir kmedia o rafa',
-'specialpages-group-wiki_users' => 'lmostakhdimon o salahiyat',
+'specialpages-group-users' => 'lmostakhdimon o salahiyat',
 'specialpages-group-highuse' => 'sfahi istikhdam ali',
 'specialpages-group-pages' => 'listat dyal sfahi',
 'specialpages-group-pagetools' => 'adawat sfahi',
@@ -2720,6 +2720,6 @@ jrreb l-ĝṛḍ l-ĝadi.',
 # New logging system
 'revdelete-restricted' => 'tḅḅq ḍ-ḍawaḅit ll-idariyyin',
 'revdelete-unrestricted' => 'ḫyyd ḍ-ḍawaḅit ll-idariyyin',
-'newwiki_userlog-byemail' => "lmot de passe raha tsiftat f l'email",
+'newuserlog-byemail' => "lmot de passe raha tsiftat f l'email",
 
 );

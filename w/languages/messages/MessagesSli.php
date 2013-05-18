@@ -24,7 +24,7 @@
 $fallback = 'de';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Verknipfonga unterstreeicha:',
 'tog-justify' => 'Obschniete eim Block setza',
 'tog-hideminor' => 'Klänne Änneronga ausblenda',
@@ -48,7 +48,7 @@ $messages = array(
 'tog-previewonfirst' => 'Beim erschta Bearbta emmer de Vurschau oazeiga',
 'tog-nocache' => 'Zwischaspeicharn derr Seite (eim cache) deaktiviern',
 'tog-enotifwatchlistpages' => 'Bei Änderunga voo beobachteta Seyta mer an E-mail schicka',
-'tog-enotifwiki_usertalkpages' => 'Bei Änderunga oa menner Benutzer-Dischkurseite E-mail oa mich schicka',
+'tog-enotifusertalkpages' => 'Bei Änderunga oa menner Benutzer-Dischkurseite E-mail oa mich schicka',
 'tog-enotifminoredits' => 'Au bei klenn Änderunga E-mail oa mich schicka',
 'tog-enotifrevealaddr' => 'Denne E-mail Oaschrift wart ei Benoachrichtigungs-E-mails oagezäat',
 'tog-shownumberswatching' => 'Oazoahl derr beobachtenden Nutzer oazäan',
@@ -213,7 +213,7 @@ $messages = array(
 'talk' => 'Dischkur',
 'views' => 'Oansichta',
 'toolbox' => 'Werkzeuge',
-'wiki_userpage' => 'Nutzerseyte oazeiga',
+'userpage' => 'Nutzerseyte oazeiga',
 'projectpage' => 'Projektseyte',
 'imagepage' => 'Dateiseyte oazeiga',
 'mediawikipage' => 'Meldungsseite oazeiga',
@@ -235,7 +235,7 @@ Bitte warte eenige Minuta, bevur du 's noo eemool versuchst.
 
 $1",
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Ieber {{SITENAME}}',
 'aboutpage' => 'Project:Ieber',
 'copyright' => 'Inhalt ies verfügbar unter der $1.',
@@ -288,7 +288,7 @@ $1",
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Seite',
-'nstab-wiki_user' => 'Benutzerseyte',
+'nstab-user' => 'Benutzerseyte',
 'nstab-media' => 'Media',
 'nstab-special' => 'Spezialseyte',
 'nstab-project' => 'Projektseite',
@@ -324,7 +324,7 @@ De Datenbank meldete dann Fahler: „<tt>$3: $4</tt>“.",
 
 Die Seite ist möglicherweise gelöscht oder verschoben worden.
 
-Falls dies nicht  zutrifft, hast du eventuell einen Fehler in der Software gefunden. Bitte melde dies einem [[Special:Listwiki_users/sysop|Administrator]] unter Nennung der URL.',
+Falls dies nicht  zutrifft, hast du eventuell einen Fehler in der Software gefunden. Bitte melde dies einem [[Special:ListUsers/sysop|Administrator]] unter Nennung der URL.',
 'missingarticle-rev' => '(Versionsnummer: $1)',
 'fileappenderror' => 'Konnte „$1“ ne oa „$2“ oahänga.',
 'unexpected' => 'Unerwarteter Wert: „$1“=„$2“.',
@@ -353,7 +353,7 @@ $2',
 'namespaceprotected' => "Du host kenne Berechtigung, de Seite eim '''$1'''-Noamensraum zu bearbta.",
 'ns-specialprotected' => 'Spezialseyta kinna nicht beoarbeet warn.',
 'titleprotected' => "Enne Seite miet dam della Noama koan nicht oageläat warn.
-De Sperre wurde durch [[wiki_user:$1|$1]] miet der Begrindung ''„$2“'' eigerichtet.",
+De Sperre wurde durch [[User:$1|$1]] miet der Begrindung ''„$2“'' eigerichtet.",
 
 # Virus scanner
 'virus-badscanner' => "Fahlerhofte Konfiguration: unbekoannter Virenskänner: ''$1''",
@@ -363,7 +363,7 @@ De Sperre wurde durch [[wiki_user:$1|$1]] miet der Begrindung ''„$2“'' eiger
 # Login and logout pages
 'logouttext' => "'''Du best nun obgemeldet.'''
 
-Du koast {{SITENAME}} jitz anonym wetter nutzen, oder diech erneut under damm selba oder a'm andern Nutzernoama [[Special:wiki_userLogin|oamelda]].
+Du koast {{SITENAME}} jitz anonym wetter nutzen, oder diech erneut under damm selba oder a'm andern Nutzernoama [[Special:UserLogin|oamelda]].
 Beachte, doas einige Seyta noo oazeiga kinna, doas du oagemeldet best, sulange du ne denn Browsercache gelaart host.",
 'welcomecreation' => '== Willkumma, $1! ==
 
@@ -378,19 +378,19 @@ Vergiss nä, denne [[Special:Preferences|{{SITENAME}}-Eistellunga]] oazupoassa.'
 'login' => 'Oanmelda',
 'nav-login-createaccount' => 'Oamelda / a Konto oalega',
 'loginprompt' => 'Zer Oameldung missa Cookies aktiviert sei.',
-'wiki_userlogin' => 'Oanmelda / Nutzerkonto erstella',
+'userlogin' => 'Oanmelda / Nutzerkonto erstella',
 'logout' => 'Oabmelda',
-'wiki_userlogout' => 'Oabmelda',
+'userlogout' => 'Oabmelda',
 'notloggedin' => 'Nä oangemeldet',
 'nologin' => "Du hast keen Benutzerkonto? '''$1'''.",
 'nologinlink' => 'Neues Benutzerkonto oanleega',
 'createaccount' => 'Benutzerkonto oanlega',
 'gotaccount' => "Du hast bereits a Benutzerkonto? '''$1'''.",
 'gotaccountlink' => 'Oanmelda',
-'wiki_userlogin-resetlink' => 'Die Anmeldedaten vergessen?',
+'userlogin-resetlink' => 'Die Anmeldedaten vergessen?',
 'createaccountmail' => 'ieber E-Mail',
 'badretype' => 'De beida Passwörter stimma nä ieberein.',
-'wiki_userexists' => 'Dar delle Benutzernoame ies schunt vergahn. Bitte wähle enn andern.',
+'userexists' => 'Dar delle Benutzernoame ies schunt vergahn. Bitte wähle enn andern.',
 'loginerror' => 'Fahler bei dar Oameldung',
 'createaccounterror' => 'Nutzerkonto konnte ne erstellt waan: $1',
 'nocookiesnew' => 'Der Nutzerzugang wurde erstellt, oaber du biest ne oagemeldet. {{SITENAME}} beneetigt fier diese Funksjonn Cookies, bitte aktiviere diese und melde diech dann miet demm neua Nutzernoama und damm zugehieriga Poaßwurt oa.',
@@ -398,10 +398,10 @@ Vergiss nä, denne [[Special:Preferences|{{SITENAME}}-Eistellunga]] oazupoassa.'
 'noname' => 'Du muußt enn giltiga Nutzernoama oangahn.',
 'loginsuccesstitle' => 'Oameldung erfolgreich',
 'loginsuccess' => 'Du biest jitz ols „$1“ bei {{SITENAME}} oagemeldet.',
-'nosuchwiki_user' => 'Dar Nutzernoame „$1“ existiert ne.
-Ieberpriefe de Schreibweise (Gruß-/Kleenschreibung beachta) oder [[Special:wiki_userLogin/signup|melde diech ols neuer Benutzer oa]].',
-'nosuchwiki_usershort' => 'Dar Nutzernoame „$1“ existiert ne. Bitte ieberpriefe de Schreibweise.',
-'nowiki_userspecified' => 'Bitte gieb enn Benutzernoamen oa.',
+'nosuchuser' => 'Dar Nutzernoame „$1“ existiert ne.
+Ieberpriefe de Schreibweise (Gruß-/Kleenschreibung beachta) oder [[Special:UserLogin/signup|melde diech ols neuer Benutzer oa]].',
+'nosuchusershort' => 'Dar Nutzernoame „$1“ existiert ne. Bitte ieberpriefe de Schreibweise.',
+'nouserspecified' => 'Bitte gieb enn Benutzernoamen oa.',
 'wrongpassword' => 'Doas Passwurt ies foalsch (oder fehlt). Bitte versuche is erneut.',
 'wrongpasswordempty' => 'Is wurde kei Poaßwurt eigegahn. Bitte versuchs nuch amool.',
 'passwordtooshort' => 'Poaßwärter missa mindestens {{PLURAL:$1|1 Zeecha|$1 Zeecha}} lang sei.',
@@ -440,7 +440,7 @@ Besicher, de diese IP-Atresse verwenden, kinna momentan keene Nutzerkonta meh er
 'createaccount-text' => 'Is wurde fier diech a Nutzerkonto „$2“ uff {{SITENAME}} ($4) erstellt. Doas automatisch generierte Poaßwurt fier „$2“ ies „$3“. Du sulltest diech nun oamelda und doas Poaßwurt ändern.
 
 Foalls doas Nutzerkonto irrtümlich oagelagt wurde, koast du diese Noachricht ignoriera.',
-'wiki_usernamehasherror' => 'Nutzernoama dirfa kee Rautenzeecha enthaala',
+'usernamehasherror' => 'Nutzernoama dirfa kee Rautenzeecha enthaala',
 'login-throttled' => 'Du host zu uffte versicht, diech oazumelda.
 Bitte warte, bevor du is erneut probierst.',
 'loginlanguagelabel' => 'Sproache: $1',
@@ -536,34 +536,34 @@ Vermutlich wurde ar verschuba oder geläscht, nachdem du de Seite uffgeruffa hos
 'newarticletext' => "Du best an'm Link zu anner Seite gefulgt, de nee vorhanden ies.
 Im de Seite oazulega, trage denn Text ei de undastehende Box a (siehe de [[{{MediaWiki:Helppage}}|Hilfeseite]] fier meh Informationen).
 Best du fälschlicherweise hier, klicke de '''Zerricke'''-Schaltfläche dennes Browsers.",
-'anontalkpagetext' => "----''Diese Seite dient dazu, a'm nee oagemeldeta Benutzer Noachrichta zu hinterlassa. 'S werd senne IP-Atresse zur Identifizierung verwendet. IP-Atressen kinna vu mehrera Nutzern gemeensam verwendet waan. Wenn du miet dann Kommentarn uff dieser Seite nischt oafanga koast, richta se siech vermutlich oa an'n friehera Inhaber denner IP-Atresse und du koast se ignorieren. Du koast dir au a [[Special:wiki_userLogin/signup|Nutzerkonto erstalla]] oder dich [[Special:wiki_userLogin|oamelda]], im kinftig Verwechslunga miet andern anonyma Nutzern zu vermeida.''",
+'anontalkpagetext' => "----''Diese Seite dient dazu, a'm nee oagemeldeta Benutzer Noachrichta zu hinterlassa. 'S werd senne IP-Atresse zur Identifizierung verwendet. IP-Atressen kinna vu mehrera Nutzern gemeensam verwendet waan. Wenn du miet dann Kommentarn uff dieser Seite nischt oafanga koast, richta se siech vermutlich oa an'n friehera Inhaber denner IP-Atresse und du koast se ignorieren. Du koast dir au a [[Special:UserLogin/signup|Nutzerkonto erstalla]] oder dich [[Special:UserLogin|oamelda]], im kinftig Verwechslunga miet andern anonyma Nutzern zu vermeida.''",
 'noarticletext' => 'Diese Seite enthält momentan noo kenn Text.
 Du koast diesen Tittel uffa andern Seita [[Special:Search/{{PAGENAME}}|sucha]],
 <span class="plainlinks"> ei dan zugeheeriga [{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} Logbichern sucha] oder diese Seite [{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbta]</span>.',
 'noarticletext-nopermission' => 'Diese Seite enthält momentan noo kenn Text.
 Du koast diesen Tittel uff dann andern Seita [[Special:Search/{{PAGENAME}}|sucha]]
 oder de zugehieriga <span class="plainlinks">[{{fullurl:{{#special:Log}}|page={{FULLPAGENAMEE}}}} Logbichern betrachta].</span>',
-'wiki_userpage-wiki_userdoesnotexist' => 'Doas Nutzerkonto „<nowiki>$1</nowiki>“ ies nee vurhanda. Bitte priefe, ob du diese Seite wirklich erstella/beoarbta wielst.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Nutzerkonto „$1“ existiert ne.',
+'userpage-userdoesnotexist' => 'Doas Nutzerkonto „<nowiki>$1</nowiki>“ ies nee vurhanda. Bitte priefe, ob du diese Seite wirklich erstella/beoarbta wielst.',
+'userpage-userdoesnotexist-view' => 'Nutzerkonto „$1“ existiert ne.',
 'clearyourcache' => "'''Hinweis - Laare noach damm Speichern dann Browser-Cache, im de Änderungen sahn zu kinna:''' '''Mozilla/Firefox/Safari:''' ''Shift'' gedrückt halten und uff ''Aktualisiera'' klicka oder alternativ entweder ''Strg-F5'' oder ''Strg-R'' (''Befehlstaste-R'' bei Mac) dricka; '''Konqueror: '''Uff ''Aktualisiera'' klicka oder ''F5'' dricka; '''Opera:''' Cache under ''Extras → Eenstellunga'' laara; '''Internet Explorer:''' ''Strg-F5'' dricka oder ''Strg'' gedrickt halta und dabei ''Aktualisiera'' oaklicka.",
-'wiki_usercssyoucanpreview' => "'''Tipp:''' Benutze dann Vurschau-Button, im dei neues CSS vur damm Speichern zu testa.",
-'wiki_userjsyoucanpreview' => "'''Tipp:''' Benutze dann Vurschau-Button, im dei neues JS vur damm Speichern zu testa.",
-'wiki_usercsspreview' => "== Vurschau Dennes Nutzer-CSS ==
+'usercssyoucanpreview' => "'''Tipp:''' Benutze dann Vurschau-Button, im dei neues CSS vur damm Speichern zu testa.",
+'userjsyoucanpreview' => "'''Tipp:''' Benutze dann Vurschau-Button, im dei neues JS vur damm Speichern zu testa.",
+'usercsspreview' => "== Vurschau Dennes Nutzer-CSS ==
 '''Beachte:''' Noach damm Speichern mußt du dennen Browser oaweisa, de neue Version zu loada: '''Mozilla/Firefox:''' ''Strg-Shift-R'', '''Internet Explorer:''' ''Strg-F5'', '''Opera:''' ''F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror:''' ''F5''.",
-'wiki_userjspreview' => "== Vurschau Dennes Nutzer-JavaScript ==
+'userjspreview' => "== Vurschau Dennes Nutzer-JavaScript ==
 '''Beachte:''' Noach damm Speichern mußt du dennen Browser oaweisa, de neue Version zu loada: '''Mozilla/Firefox:''' ''Strg-Shift-R'', '''Internet Explorer:''' ''Strg-F5'', '''Opera:''' ''F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror:''' ''F5''.",
-'wiki_userinvalidcssjstitle' => "'''OCHTICHE:''' Skin „$1“ existiert ne. Bedenke, doß nutzerspezifische .css- und .js-Seyta miet a'm Kleenbuchstaba oafanga missa, olso beispielsweise ''{{ns:wiki_user}}:Mustermann/vector.css'' oa Stalle vu ''{{ns:wiki_user}}:Mustermoan/Vector.css''.",
+'userinvalidcssjstitle' => "'''OCHTICHE:''' Skin „$1“ existiert ne. Bedenke, doß nutzerspezifische .css- und .js-Seyta miet a'm Kleenbuchstaba oafanga missa, olso beispielsweise ''{{ns:user}}:Mustermann/vector.css'' oa Stalle vu ''{{ns:user}}:Mustermoan/Vector.css''.",
 'previewnote' => "'''Dies ies ock anne Vurschau, de Seite wurde noo nee gespeichert!'''",
 'previewconflict' => "Diese Vurschau gitt 'n Inhalt des obern Textfeldes wieder. Su werd de Seite aussahn, wenn du jitz speicherst.",
 'session_fail_preview' => "'''Denne Beoarbeetung konnte ne gespeichert waan, do Sitzungsdaten verlorn geganga sein.
 Bitte versiche is erneut, indem du under dar fulgenda Textvurschau noo amols uff „Seyte speichern“ klickst.
-Sullte doas Problem bestiehn bleiba, [[Special:wiki_userLogout|melde diech ob]] und danone wieder oa.'''",
+Sullte doas Problem bestiehn bleiba, [[Special:UserLogout|melde diech ob]] und danone wieder oa.'''",
 'session_fail_preview_html' => "'''Denne Beoarbeetung konnte ne gespeichert waan, do Sitzungsdaten verloren gegangen sein.'''
 
 ''Do ei {{SITENAME}} doas Speichern vu reinem HTML aktiviert ies, wurde de Vurschau ausgeblendet, im JavaScript-Attacken vorzubeugen.''
 
 '''Bitte versuche is erneut, indem du under dar folgenden Textvurschau noo amols uff „Seyte speichern“ klickst.
-Sullte doas Problem bestieha bleiba, [[Special:wiki_userLogout|melde diech ob]] und danach wieder oa.'''",
+Sullte doas Problem bestieha bleiba, [[Special:UserLogout|melde diech ob]] und danach wieder oa.'''",
 'token_suffix_mismatch' => "'''Denne Bearbeetung wurde zerrickegewiesa, do dei Browser Zeecha eim Bearbta-Token verstümmelt hoot.
 Anne Speicherung koan dann Seitainhalt zerstiera. Dies geschieht bisweilen durch de Benutzung annes anonyma Proxy-Dienstes, der fahlerhaft arbtet.'''",
 'editing' => 'Bearbta vu $1',
@@ -603,7 +603,7 @@ Grund fier de Sperre: $1",
 'template-semiprotected' => '(schreibgeschietzt fier unoagemeldete und neue Nutzer)',
 'hiddencategories' => 'Diese Seite ies Mitglied vun {{PLURAL:$1|1 versteckter Kategorie|$1 versteckta Kategoria}}:',
 'nocreatetitle' => 'De Erstellung neuer Seyta ies eengeschränkt.',
-'nocreatetext' => 'Uff {{SITENAME}} wurde doas Erstalla neuer Seyta eengeschränkt. Du koast bestiehende Seyten ändern oder diech [[Special:wiki_userLogin|oamelda]].',
+'nocreatetext' => 'Uff {{SITENAME}} wurde doas Erstalla neuer Seyta eengeschränkt. Du koast bestiehende Seyten ändern oder diech [[Special:UserLogin|oamelda]].',
 'nocreate-loggedin' => 'Du host kenne Berechtigung, neue Seyta zu erstalla.',
 'permissionserrorstext' => 'Du best ne berechtigt, de Aksjonn auszufiehra. {{PLURAL:$1|Grund|Grinde}}:',
 'permissionserrorstext-withaction' => 'Du best nee berechtigt, $2.
@@ -637,11 +637,11 @@ Se wurde anscheinend geläscht.',
 'undo-success' => 'Im de Änderung rickgängig zu macha, bitte de Beoarbeetung ei der Vergleichsansicht kontrolliera und dann uff „Seyte speichern“ klicka.',
 'undo-failure' => 'De Änderung konnte ne rickgängig gemacht waan, do dar betroffene Obschnitt zwischazeitlich verändert wurde.',
 'undo-norev' => 'De Beoarbeetung konnte ne rickgängig gemacht waan, do se ne vorhanden ies oder geläscht wurde.',
-'undo-summary' => 'Änderung $1 vu [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Dischkur]]) wurde rickgängig gemacht.',
+'undo-summary' => 'Änderung $1 vu [[Special:Contributions/$2|$2]] ([[User talk:$2|Dischkur]]) wurde rickgängig gemacht.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Nutzerkonto koan ne erstallt waan',
-'cantcreateaccount-text' => "De Erstellung annes Nutzerkontos vu dar IP-Atresse '''($1)''' aus wurde durch [[wiki_user:$3|$3]] gesperrt.
+'cantcreateaccount-text' => "De Erstellung annes Nutzerkontos vu dar IP-Atresse '''($1)''' aus wurde durch [[User:$3|$3]] gesperrt.
 
 Grund dar Sperre: ''$2''",
 
@@ -674,7 +674,7 @@ Grund dar Sperre: ''$2''",
 
 # Revision deletion
 'rev-deleted-comment' => '(Beorbeetungskommentar entfernt)',
-'rev-deleted-wiki_user' => '(Benutzernoame entfernt)',
+'rev-deleted-user' => '(Benutzernoame entfernt)',
 'rev-deleted-event' => '(Logbuchaksjonn entfernt)',
 'rev-deleted-text-permission' => "Diese Version wurde '''geläscht'''.
 Nähere Oagoaba zum Läschvorgang suwie anne Begrindung fenda siech eim [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Läsch-Logbuch].",
@@ -700,7 +700,7 @@ Andere Administratoren uff {{SITENAME}} hoan Zugriff uff dann versteckta Inhalt 
 'revdelete-hide-image' => 'Bildinhalt verstecka',
 'revdelete-hide-name' => 'Logbichl-Aksjonn verstecka',
 'revdelete-hide-comment' => 'Beorbeetungskommentar verstecka',
-'revdelete-hide-wiki_user' => 'Benutzernoame/de IP des Beorbeeters verstecka',
+'revdelete-hide-user' => 'Benutzernoame/de IP des Beorbeeters verstecka',
 'revdelete-hide-restricted' => 'Daten au vur Administratorn und andern underdricka',
 'revdelete-suppress' => 'Grund der Läschung au vor Administratora verstecka',
 'revdelete-unsuppress' => 'Einschränkungen fier wiederhergestallte Versionn uffhebn',
@@ -822,7 +822,7 @@ Stelle sicher, doaß de Versionsgeschichte anner Seite historisch korrekt ies.',
 'mypreferences' => 'Meene Eistellunga',
 'prefs-edits' => 'Oazoahl dar Beoarbeetunga:',
 'prefsnologin' => 'Ne oagemeldet',
-'prefsnologintext' => 'Du mußt <span class="plainlinks">[{{fullurl:{{#special:wiki_userLogin}}|returnto=$1}} oagemeldet]</span> sei, im denne Einstellunga ändern zu kinna.',
+'prefsnologintext' => 'Du mußt <span class="plainlinks">[{{fullurl:{{#special:UserLogin}}|returnto=$1}} oagemeldet]</span> sei, im denne Einstellunga ändern zu kinna.',
 'changepassword' => 'Poaßwurt ändern',
 'prefs-personal' => 'Nutzerdaten',
 'prefs-rc' => 'Letzte Änderunga',
@@ -855,7 +855,7 @@ Stelle sicher, doaß de Versionsgeschichte anner Seite historisch korrekt ies.',
 'prefs-custom-js' => 'Nutzerdefiniertes JS',
 'prefs-textboxsize' => 'Griße des Beoarbeetungsfansters',
 'youremail' => 'E-Mail-Adresse:',
-'wiki_username' => 'Benutzernoame:',
+'username' => 'Benutzernoame:',
 'prefs-memberingroups' => 'Mitglied dar {{PLURAL:$1|Nutzergruppe|Nutzergruppen}}:',
 'yourrealname' => 'Echter Noame:',
 'yourlanguage' => 'Sproache der Benutzeroberfläche:',
@@ -873,31 +873,31 @@ Stelle sicher, doaß de Versionsgeschichte anner Seite historisch korrekt ies.',
 'prefs-timeoffset' => 'Zeitunderschied',
 'prefs-displayrc' => 'Oazeigeoptiona',
 
-# wiki_user rights
-'wiki_userrights' => 'Nutzerrechteverwaltung',
-'wiki_userrights-lookup-wiki_user' => 'Gruppenzugehierigkeit verwalten',
-'wiki_userrights-wiki_user-editname' => 'Nutzernoame:',
-'editwiki_usergroup' => 'Benutzerrechte bearbta',
-'editingwiki_user' => "Ändere Nutzerrechte vu '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'wiki_userrights-editwiki_usergroup' => 'Nutzer-Gruppenzugehierigkeit bearbta',
-'savewiki_usergroups' => 'Gruppazugehierigkeit ändern',
-'wiki_userrights-groupsmember' => 'Mitglied vun:',
-'wiki_userrights-groups-help' => 'Du koast de Gruppenzugehierigkeit fier diesen Nutzer ändern:
+# User rights
+'userrights' => 'Nutzerrechteverwaltung',
+'userrights-lookup-user' => 'Gruppenzugehierigkeit verwalten',
+'userrights-user-editname' => 'Nutzernoame:',
+'editusergroup' => 'Benutzerrechte bearbta',
+'editinguser' => "Ändere Nutzerrechte vu '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Nutzer-Gruppenzugehierigkeit bearbta',
+'saveusergroups' => 'Gruppazugehierigkeit ändern',
+'userrights-groupsmember' => 'Mitglied vun:',
+'userrights-groups-help' => 'Du koast de Gruppenzugehierigkeit fier diesen Nutzer ändern:
 * A markiertes Kästchen bedeutet, doaß dar Nutzer Mitglied dieser Gruppe ies
 * A * bedeutet, doaß du doas Nutzerrecht noach Erteilung ne wieder zerrickenahma koast (oder umgekehrt).',
-'wiki_userrights-no-interwiki' => 'Du host kenne Berechtigung, Nutzerrechte ei andern Wikis zu ändern.',
-'wiki_userrights-nodatabase' => 'De Datenbank $1 ies ne vurhanda oder ne lokal.',
-'wiki_userrights-nologin' => "Du mußt diech miet a'm Administrator-Nutzerkonto [[Special:wiki_userLogin|oamelda]], im Nutzerrechte zu ändern.",
-'wiki_userrights-notallowed' => 'Du besitzt ne de erforderlichen Berechtigunga, im Nutzerrechte zu vergahn.',
-'wiki_userrights-changeable-col' => 'Gruppazugehierigkeit, de du ändern koast',
-'wiki_userrights-unchangeable-col' => 'Gruppazugehierigkeit, de du ne ändern koast',
+'userrights-no-interwiki' => 'Du host kenne Berechtigung, Nutzerrechte ei andern Wikis zu ändern.',
+'userrights-nodatabase' => 'De Datenbank $1 ies ne vurhanda oder ne lokal.',
+'userrights-nologin' => "Du mußt diech miet a'm Administrator-Nutzerkonto [[Special:UserLogin|oamelda]], im Nutzerrechte zu ändern.",
+'userrights-notallowed' => 'Du besitzt ne de erforderlichen Berechtigunga, im Nutzerrechte zu vergahn.',
+'userrights-changeable-col' => 'Gruppazugehierigkeit, de du ändern koast',
+'userrights-unchangeable-col' => 'Gruppazugehierigkeit, de du ne ändern koast',
 
 # Groups
 'group-sysop' => 'Administratora',
 'group-bureaucrat' => 'Birokrata',
 'group-all' => '(olle)',
 
-'group-wiki_user-member' => 'Notzer',
+'group-user-member' => 'Notzer',
 'group-autoconfirmed-member' => 'Automatisch bestätigter Nutzer',
 'group-bureaucrat-member' => 'Birokrat',
 
@@ -914,7 +914,7 @@ Stelle sicher, doaß de Versionsgeschichte anner Seite historisch korrekt ies.',
 'right-minoredit' => 'Beoarbeetunga ols kleen markiern',
 'right-move' => 'Seyta verschieba',
 'right-move-subpages' => 'Seita inklusive Underseita verschieba',
-'right-move-rootwiki_userpages' => 'Heet-Nutzerseyta verschieba',
+'right-move-rootuserpages' => 'Heet-Nutzerseyta verschieba',
 'right-movefile' => 'Dateien verschieba',
 'right-suppressredirect' => "Beim Verschieba de Erstellung a'r Weiterleitung underdricka",
 'right-upload' => 'Dateien huchloada',
@@ -938,15 +938,15 @@ Stelle sicher, doaß de Versionsgeschichte anner Seite historisch korrekt ies.',
 'right-suppressionlog' => 'Private Logbicher oasahn',
 'right-block' => 'Nutzer sperra (Schreibrecht)',
 'right-blockemail' => 'Nutzer oam Versenda vu E-Mails hindern',
-'right-hidewiki_user' => 'Nutzernoama sperra und verberga',
+'right-hideuser' => 'Nutzernoama sperra und verberga',
 'right-ipblock-exempt' => 'Ausnahm vu IP-Sperra, Autoblocks und Rangesperra',
 'right-proxyunbannable' => 'Ausnahme vu automatischa Proxysperra',
 'right-protect' => 'Seytaschutzstatus ändern',
 'right-editprotected' => 'Geschitzte Seita bearbta (ohne Kaskadenschutz)',
 'right-editinterface' => 'Nutzeräberfläche bearbta',
-'right-editwiki_usercssjs' => 'Fremde CSS- und JavaScript-Dateien bearbta',
-'right-editwiki_usercss' => 'Fremde CSS-Dateien bearbta',
-'right-editwiki_userjs' => 'Fremde JavaScript-Dateien bearbta',
+'right-editusercssjs' => 'Fremde CSS- und JavaScript-Dateien bearbta',
+'right-editusercss' => 'Fremde CSS-Dateien bearbta',
+'right-edituserjs' => 'Fremde JavaScript-Dateien bearbta',
 'right-rollback' => 'Schnelles zerrickesetza',
 'right-markbotedits' => 'Schnell zerrickegesetzte Beoarbeetunga ols Bot-Beoarbeetung markieren',
 'right-noratelimit' => 'Kenne Beschränkung durch Limits',
@@ -957,12 +957,12 @@ Stelle sicher, doaß de Versionsgeschichte anner Seite historisch korrekt ies.',
 'right-patrolmarks' => 'Kontrollmarkierungen enn letzta Änderunga sahn',
 'right-unwatchedpages' => 'Liste dar unbeobachteten Seyta oasahn',
 'right-mergehistory' => 'Versionsgeschichten vu Seyta vereinen',
-'right-wiki_userrights' => 'Nutzerrechte bearbta',
-'right-wiki_userrights-interwiki' => 'Nutzerrechte ei andern Wikis bearbta',
+'right-userrights' => 'Nutzerrechte bearbta',
+'right-userrights-interwiki' => 'Nutzerrechte ei andern Wikis bearbta',
 'right-siteadmin' => 'Datenbank sperra und entsperra',
 'right-sendemail' => 'E-Mails oa andere Nutzer senda',
 
-# wiki_user rights log
+# User rights log
 'rightslogtext' => 'Dies ies doas Logbuch dar Änderunga dar Nutzerrechte.',
 'rightslogentry' => 'änderte de Nutzerrechte fier „$1“ vu „$2“ uff „$3“',
 
@@ -975,7 +975,7 @@ Stelle sicher, doaß de Versionsgeschichte anner Seite historisch korrekt ies.',
 'action-minoredit' => 'diese Beoarbeetung ols kleen zu markiern',
 'action-move' => 'de Seite zu verschieba',
 'action-move-subpages' => 'diese Seite und zugehierige Underseita zu verschieba',
-'action-move-rootwiki_userpages' => 'Haupt-Nutzerseyta zu verschieba',
+'action-move-rootuserpages' => 'Haupt-Nutzerseyta zu verschieba',
 'action-movefile' => 'Diese Datei verschieba',
 'action-upload' => 'Dateien huchzuloada',
 'action-reupload' => 'de vorhandene Datei zu ieberschreiba',
@@ -997,8 +997,8 @@ Stelle sicher, doaß de Versionsgeschichte anner Seite historisch korrekt ies.',
 'action-autopatrol' => 'eegene Beoarbeetunga ols kontrolliert zu markieren',
 'action-unwatchedpages' => 'de Liste dar unbeobachteten Seyta einzusahn',
 'action-mergehistory' => 'de Versionengeschichta vu Seyta zu vereinen',
-'action-wiki_userrights' => 'Nutzerrechte zu ändern',
-'action-wiki_userrights-interwiki' => 'de Rechte vu Nutzern ei andern Wikis zu ändern',
+'action-userrights' => 'Nutzerrechte zu ändern',
+'action-userrights-interwiki' => 'de Rechte vu Nutzern ei andern Wikis zu ändern',
 'action-siteadmin' => 'de Datenbank zu sperra oder freizugahn',
 
 # Recent changes
@@ -1028,7 +1028,7 @@ Stelle sicher, doaß de Versionsgeschichte anner Seite historisch korrekt ies.',
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'boteditletter' => 'b',
-'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|beobachtender|beobachtende}} Nutzer]',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|beobachtender|beobachtende}} Nutzer]',
 'rc_categories' => 'Ock Seyta aus dann Kategorien (getrennt miet „|“):',
 'rc_categories_any' => 'Olle',
 'newsectionsummary' => 'Neuer Obschnitt /* $1 */',
@@ -1051,7 +1051,7 @@ Stelle sicher, doaß de Versionsgeschichte anner Seite historisch korrekt ies.',
 'reuploaddesc' => 'Oabbrecha un zurieck zur Huchloada-Seete',
 'upload-tryagain' => 'Geänderte Dateibeschreibung obschicka',
 'uploadnologin' => 'Nä oangemeldet',
-'uploadnologintext' => 'Du muoßt [[Special:wiki_userLogin|oagemeldet sei]], im Dateien huchloada zu kinna.',
+'uploadnologintext' => 'Du muoßt [[Special:UserLogin|oagemeldet sei]], im Dateien huchloada zu kinna.',
 'upload_directory_missing' => 'Doas Upload-Verzeichnis ($1) fahlt und konnte durch dann Webserver au ne erstellt waan.',
 'upload_directory_read_only' => 'Dar Webserver hoot kenne Schreibrechte fier doas Upload-Verzeichnis ($1).',
 'uploaderror' => 'Fehler beim Huchloada',
@@ -1099,11 +1099,11 @@ Bitte gieb dar Datei an'n Noama, dar dann Inhalt besser beschreibt.",
 'upload-proto-error' => 'Foalsches Protokoll',
 'upload-proto-error-text' => 'De URL muuß miet <code>http://</code> oder <code>ftp://</code> beginna.',
 'upload-file-error-text' => "Bei dar Erstellung a'r temporären Datei uff'd Server ies a interner Fahler uffgetreta.
-Bitte informiere an'n [[Special:Listwiki_users/sysop|System-Administrator]].",
+Bitte informiere an'n [[Special:ListUsers/sysop|System-Administrator]].",
 'upload-misc-error' => 'Unbekennter Fahler beim Huchloada',
 'upload-misc-error-text' => "Beim Huchloada ies a unbekennter Fahler uffgetreta.
 Priefe de URL uff Fahler, dann Online-Status der Seite und versuche 's erneut.
-Wenn doas Problem wetter bestieht, informiere anna [[Special:Listwiki_users/sysop|System-Administrator]].",
+Wenn doas Problem wetter bestieht, informiere anna [[Special:ListUsers/sysop|System-Administrator]].",
 'upload-too-many-redirects' => 'De URL beinhaltete zu viele Wetterleitunga',
 'upload-unknown-size' => 'Unbekennte Grieße',
 'upload-http-error' => 'A HTTP-Fahler ies uffgetreta: $1',
@@ -1143,7 +1143,7 @@ Wenn doas Problem wetter bestieht, informiere anna [[Special:Listwiki_users/syso
 'filehist-thumb' => 'Vurschaubild',
 'filehist-thumbtext' => 'Vurschaubild fier Version vum $1',
 'filehist-nothumb' => 'Kee Vurschaubild vurhanda',
-'filehist-wiki_user' => 'Nutzer',
+'filehist-user' => 'Nutzer',
 'filehist-dimensions' => 'Moaße',
 'filehist-filesize' => 'Dateigrieße',
 'filehist-comment' => 'Kommentar',
@@ -1226,8 +1226,8 @@ Ieberpriefe andere Links zu den Vurlooga, bevur du diese läscht.',
 'statistics-edits-average' => 'Bearbeetunga pro Seite eim Durchschnitt',
 'statistics-views-total' => 'Seytaaufrufe gesamt',
 'statistics-views-peredit' => 'Seyta uffruffe pro Beoarbeetung',
-'statistics-wiki_users' => 'Registrierte [[Special:Listwiki_users|Nutzer]]',
-'statistics-wiki_users-active-desc' => 'Nutzer miet Beoarbeetunga {{PLURAL:$1|enn letzta 24 Stunden|enn vergangenen $1 Tagen}}',
+'statistics-users' => 'Registrierte [[Special:ListUsers|Nutzer]]',
+'statistics-users-active-desc' => 'Nutzer miet Beoarbeetunga {{PLURAL:$1|enn letzta 24 Stunden|enn vergangenen $1 Tagen}}',
 'statistics-mostpopular' => 'Meistbesichte Seyta',
 
 'disambiguations' => 'Begriffsklärungsseyta',
@@ -1286,13 +1286,13 @@ Jede Zeile enthält Links zu dar erschta und zweeta Wetterleitung suwie doas Zie
 'protectedtitles' => 'Gesperrte Tittel',
 'protectedtitlestext' => 'De folgenden Tittel wurden zur Neuerstellung gesperrt.',
 'protectedtitlesempty' => 'Zurzeit sein miet dann oagegebena Parametern kenne Seyta zur Neuerstellung gesperrt.',
-'listwiki_users' => 'Nutzerverzeichnis',
-'listwiki_users-editsonly' => 'Zeige ock Nutzer miet Beiträga',
-'listwiki_users-creationsort' => 'Noach Erstelldatum sortiera',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|Beoarbeetung|Beoarbeetunga}}',
-'wiki_usercreated' => '{{GENDER:$3|Erstallt}} oam $1 im $2 Seeger',
+'listusers' => 'Nutzerverzeichnis',
+'listusers-editsonly' => 'Zeige ock Nutzer miet Beiträga',
+'listusers-creationsort' => 'Noach Erstelldatum sortiera',
+'usereditcount' => '$1 {{PLURAL:$1|Beoarbeetung|Beoarbeetunga}}',
+'usercreated' => '{{GENDER:$3|Erstallt}} oam $1 im $2 Seeger',
 'newpages' => 'Neue Seyta',
-'newpages-wiki_username' => 'Benutzernoame:',
+'newpages-username' => 'Benutzernoame:',
 'ancientpages' => 'Seit längerem unbeoarbeetete Seyta',
 'move' => 'Verschieba',
 'movethispage' => 'Seite verschieba',
@@ -1358,16 +1358,16 @@ Siehe au de Liste der [[Special:WantedCategories|gewinschta Kategorien]].',
 'linksearch-line' => '$1 ies verlinkt vun $2',
 'linksearch-error' => 'Wildcards kinna ock oam Oanfang dar URL verwendet waan.',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'Zeige Benutzer ob:',
-'listwiki_users-noresult' => 'Kenn Benutzer gefunda.',
+# Special:ListUsers
+'listusersfrom' => 'Zeige Benutzer ob:',
+'listusers-noresult' => 'Kenn Benutzer gefunda.',
 
-# Special:Activewiki_users
-'activewiki_users-noresult' => 'Kenne Benutzer gefunda.',
+# Special:ActiveUsers
+'activeusers-noresult' => 'Kenne Benutzer gefunda.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Neuoameldungs-Logbuch',
-'newwiki_userlogpagetext' => 'Dies ies a Logbuch fier neu erstellte Nutzerkonten.',
+# Special:Log/newusers
+'newuserlogpage' => 'Neuoameldungs-Logbuch',
+'newuserlogpagetext' => 'Dies ies a Logbuch fier neu erstellte Nutzerkonten.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Nutzergruppen-Rechte',
@@ -1380,14 +1380,14 @@ Zusätzliche Informationen ieber einzelne Rechte kinna [[{{MediaWiki:Listgroupri
 'listgrouprights-addgroup-all' => 'Nutzer zu olla Gruppa hinzufiega',
 'listgrouprights-removegroup-all' => 'Nutzer aus olla Gruppa entferna',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'Fahler beim E-Mail-Versand',
-'mailnologintext' => 'Du mußt [[Special:wiki_userLogin|oagemeldet sei]] und anne bestätigte E-Mail-Atresse ei denn [[Special:Preferences|Einstellunga]] eingetraga hoan, im andern Nutzern E-Mails schicka zu kinna.',
-'emailwiki_user' => 'E-Mail oa diesa Benutzer',
+'mailnologintext' => 'Du mußt [[Special:UserLogin|oagemeldet sei]] und anne bestätigte E-Mail-Atresse ei denn [[Special:Preferences|Einstellunga]] eingetraga hoan, im andern Nutzern E-Mails schicka zu kinna.',
+'emailuser' => 'E-Mail oa diesa Benutzer',
 'emailpage' => 'E-Mail oa Benutzer',
 'emailpagetext' => 'Du koast damm Nutzer miet damm onda stiehenda Formular anne E-Mail senda.
 Ols Obsender werd de E-Mail-Adtresse aus denn [[Special:Preferences|Einstellunga]] eingetraga, damit dar Nutzer dir antwurta koan.',
-'wiki_usermailererror' => "Doas E-Mail-Objekt gab an'n Fahler zerricke:",
+'usermailererror' => "Doas E-Mail-Objekt gab an'n Fahler zerricke:",
 'noemailtitle' => 'Kenne E-Mail-Atresse',
 'noemailtext' => 'Dieser Nutzer hoot kenne giltige E-Mail-Atresse oagegahn.',
 'nowikiemailtitle' => 'E-Mail-Versand nee meegliech',
@@ -1399,7 +1399,7 @@ Ols Obsender werd de E-Mail-Adtresse aus denn [[Special:Preferences|Einstellunga
 'emailccme' => 'Sende anne Kopie dar E-Mail oa miech',
 'emailccsubject' => 'Kopie denner Noachricht oa $1: $2',
 'emailsenttext' => 'Denne E-Mail wurde verschickt.',
-'emailwiki_userfooter' => 'Diese E-Mail wurde vu {{SITENAME}}-Nutzer „$1“ oa „$2“ gesendet.',
+'emailuserfooter' => 'Diese E-Mail wurde vu {{SITENAME}}-Nutzer „$1“ oa „$2“ gesendet.',
 
 # Watchlist
 'watchlist' => 'Beobachtungsliste',
@@ -1408,7 +1408,7 @@ Ols Obsender werd de E-Mail-Adtresse aus denn [[Special:Preferences|Einstellunga
 'nowatchlist' => 'Du host kenne Einträge uff denner Beobachtungsliste.',
 'watchlistanontext' => 'Du muoßt diech $1, im denne Beobachtungsliste zu sahn oder Einträge uff ihr zu bearbta.',
 'watchnologin' => 'Du best ne oagemeldet',
-'watchnologintext' => 'Du muoßt [[Special:wiki_userLogin|oagemeldet]] sei, im denne Beobachtungsliste bearbta zu kinna.',
+'watchnologintext' => 'Du muoßt [[Special:UserLogin|oagemeldet]] sei, im denne Beobachtungsliste bearbta zu kinna.',
 'addedwatchtext' => 'De Seite „<nowiki>$1</nowiki>“ wurde zu denner [[Special:Watchlist|Beobachtungsliste]] hinzugefiegt.
 
 Spätere Änneronga oa dieser Seite und der dazugeheeriga Dischkursseite waan durt gelistet und
@@ -1501,11 +1501,11 @@ Rickmeldungen und wettere Hilfe: {{canonicalurl:{{MediaWiki:Helppage}}}}',
 'rollbacklink' => 'Zerrickesetza',
 'rollbackfailed' => 'Zerrickesetza gescheitert',
 'cantrollback' => 'De Änderung koan ne zerrickegesetzt waan, do is kenne friehera Autoren gibt.',
-'alreadyrolled' => 'Doas Zerrickesetza der Änderunga vu [[wiki_user:$2|$2]] ([[wiki_user talk:$2|Dischkur]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) oa [[:$1]] ies gescheitert, do ei der Zwischenzeit a anderer Nutzer de Seite geändert hoot.
+'alreadyrolled' => 'Doas Zerrickesetza der Änderunga vu [[User:$2|$2]] ([[User talk:$2|Dischkur]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) oa [[:$1]] ies gescheitert, do ei der Zwischenzeit a anderer Nutzer de Seite geändert hoot.
 
-De letzte Änderung stommt vu [[wiki_user:$3|$3]] ([[wiki_user talk:$3|Dischkur]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+De letzte Änderung stommt vu [[User:$3|$3]] ([[User talk:$3|Dischkur]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "De Änderungszusommafassung lautet: ''„$1“''.",
-'revertpage' => 'Änderunga vu [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Dischkur]]) rickgängig gemacht und letzte Version vu [[wiki_user:$1|$1]] wiederhergestellt',
+'revertpage' => 'Änderunga vu [[Special:Contributions/$2|$2]] ([[User talk:$2|Dischkur]]) rickgängig gemacht und letzte Version vu [[User:$1|$1]] wiederhergestellt',
 'rollback-success' => 'De Änderunga vu $1 wurden rickgängig gemacht und de letzte Version vu $2 wurde wiederhergestellt.',
 
 # Edit tokens
@@ -1628,9 +1628,9 @@ $1",
 'sp-contributions-uploads' => 'Hochgeladene Dateien',
 'sp-contributions-logs' => 'Logbicher',
 'sp-contributions-talk' => 'Dischkur',
-'sp-contributions-wiki_userrights' => 'Nutzerrechteverwaltung',
+'sp-contributions-userrights' => 'Nutzerrechteverwaltung',
 'sp-contributions-search' => 'Suche noach Benutzerbeiträga',
-'sp-contributions-wiki_username' => 'IP-Atresse oder Benutzernoame:',
+'sp-contributions-username' => 'IP-Atresse oder Benutzernoame:',
 'sp-contributions-toponly' => 'Nur aktuelle Versionen zeigen',
 'sp-contributions-submit' => 'Sucha',
 
@@ -1659,7 +1659,7 @@ $1",
 'blockiptext' => "Mit diesem Formular sperrst du anne IP-Atresse oder an'n Nutzernoama, su doaß vu dort kenne Änderunga meh vorgenumma waan kinna.
 Dies sullte ock erfolga, im Vandalismus zu verhindern und ei Iebereinstimmung miet dann [[{{MediaWiki:Policy-url}}|Richtlinien]].
 Bitte gib dann Grund fier de Sperre oa.",
-'ipadressorwiki_username' => 'IP-Atresse oder Benutzernoame:',
+'ipadressorusername' => 'IP-Atresse oder Benutzernoame:',
 'ipbreason' => 'Begriendung:',
 'ipbreasonotherlist' => 'Andere Begrindung',
 'ipbreason-dropdown' => '* Allgemeene Sperrgrinde
@@ -1679,7 +1679,7 @@ Bitte gib dann Grund fier de Sperre oa.",
 'ipbotheroption' => 'Oandere Dauer',
 'ipbotherreason' => 'Andere/ergänzende Begrindung:',
 'ipbhidename' => 'Nutzernoame ei Beoarbeetunga und Listen verstecka',
-'ipbwatchwiki_user' => 'Nutzer(dischkur)seite beobachta',
+'ipbwatchuser' => 'Nutzer(dischkur)seite beobachta',
 'ipb-change-block' => 'Sperre miet diesen Sperrparametern erneuern',
 'badipaddress' => 'De IP-Atresse hoot a foalsches Furmat.',
 'blockipsuccesstext' => 'Dar Nutzer/de IP-Atresse [[Special:Contributions/$1|$1]] wurde gesperrt.<br />
@@ -1692,7 +1692,7 @@ Zur Uffhebung dar Sperre siehe ie [[Special:BlockList|Liste oller aktiven Sperra
 'unblockip' => 'IP-Atresse freigahn',
 'unblockiptext' => "Miet diesem Formular koast du anne IP-Atresse oder an'n Nutzer freigahn.",
 'ipusubmit' => 'Freigahn',
-'unblocked' => '[[wiki_user:$1|$1]] wurde freigegahn',
+'unblocked' => '[[User:$1|$1]] wurde freigegahn',
 'unblocked-id' => 'Sperr-ID $1 wurde freigegahn',
 'ipblocklist' => 'Gesperrte Benutzer',
 'ipblocklist-legend' => "Suche noach a'm gesperrta Nutzer",
@@ -1701,14 +1701,14 @@ Zur Uffhebung dar Sperre siehe ie [[Special:BlockList|Liste oller aktiven Sperra
 'expiringblock' => 'endet oam $1 im $2 Seeger',
 'anononlyblock' => 'ocke Anonyme',
 'createaccountblock' => 'Erstellung vu Nutzerkonten gesperrt',
-'blocklist-nowiki_usertalk' => 'darf eegne Dischkurseite nee bearbta',
+'blocklist-nousertalk' => 'darf eegne Dischkurseite nee bearbta',
 'ipblocklist-empty' => 'De Liste enthält kenne Eenträge.',
 'ipblocklist-no-results' => 'De gesuchte IP-Atresse/dar Nutzernoame ies ne gesperrt.',
 'blocklink' => 'Sperra',
 'unblocklink' => 'freigahn',
 'change-blocklink' => 'Sperre ändern',
 'contribslink' => 'Beiträge',
-'autoblocker' => 'Automatische Sperre, do du anne gemeinsame IP-Atresse miet [[wiki_user:$1|$1]] benutzt. Grund dar Nutzersperre: „$2“.',
+'autoblocker' => 'Automatische Sperre, do du anne gemeinsame IP-Atresse miet [[User:$1|$1]] benutzt. Grund dar Nutzersperre: „$2“.',
 'blocklogpage' => 'Benutzersperr-Logbuch',
 'blocklogentry' => 'sperrte „[[$1]]“ fier dan Zeitraum: $2 $3',
 'reblock-logentry' => 'änderte de Sperre fier „[[$1]]“ fier dann Zeitraum: $2 $3',
@@ -1718,7 +1718,7 @@ Siehe de [[Special:BlockList|Liste dar gesperrta IP-Atressa und Nutzernoama]] fi
 'unblocklogentry' => 'hoot de Sperre voo „$1“ uffgehoba',
 'block-log-flags-anononly' => 'ock Anonyme',
 'block-log-flags-nocreate' => 'Erstellung voo Benutzerkonta gesperrt',
-'block-log-flags-nowiki_usertalk' => 'darf eegne Dischkurseite nee beoarbta',
+'block-log-flags-nousertalk' => 'darf eegne Dischkurseite nee beoarbta',
 'block-log-flags-hiddenname' => 'Nutzernoame versteckt',
 'range_block_disabled' => 'De Meeglichkeit, ganze Atressräume zu sperra, ies ne aktiviert.',
 'ipb_expiry_invalid' => 'De eingegebene Dauer ies ungiltig.',
@@ -1775,10 +1775,10 @@ Ei diesa Fäll muußt du, foalls gewinscht, den Inhalt der Seite vu Hand verschi
 Bitte den '''neua''' Tittel under '''Ziel''' eintraga, darunder de Umbenennung bitte '''begrienda.'''",
 'movearticle' => 'Seite verschieba:',
 'movenologin' => 'Nä oangemeldet',
-'movenologintext' => 'Du muoßt a registrierter Nutzer und [[Special:wiki_userLogin|oagemeldet]] sei, im anne Seite zu verschieba.',
+'movenologintext' => 'Du muoßt a registrierter Nutzer und [[Special:UserLogin|oagemeldet]] sei, im anne Seite zu verschieba.',
 'movenotallowed' => 'Du host kenne Berechtigung, Seyta zu verschieba.',
-'cant-move-wiki_user-page' => 'Du host kenne Berechtigung, Nutzerhauptseyta zu verschieba.',
-'cant-move-to-wiki_user-page' => 'Du host ne de Berechtigung, Seyta uff anne Nutzerseyte zu verschieba (miet Ausnahme vu Nutzerunderseyta).',
+'cant-move-user-page' => 'Du host kenne Berechtigung, Nutzerhauptseyta zu verschieba.',
+'cant-move-to-user-page' => 'Du host ne de Berechtigung, Seyta uff anne Nutzerseyte zu verschieba (miet Ausnahme vu Nutzerunderseyta).',
 'move-watch' => 'Diese Seite beobachta',
 'movepagebtn' => 'Seite verschieba',
 'movepage-moved' => "'''De Seite „$1“ wurde noach „$2“ verschoba.'''",
@@ -1893,8 +1893,8 @@ Olle Transwiki-Import-Aksjonna waan eim [[Special:Log/import|Import-Logbuch]] pr
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|Version|Versiona}} vun $2',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Denne Nutzerseyte',
-'tooltip-pt-anonwiki_userpage' => 'Nutzerseite dar IP-Atresse vu dar aus du Änderunga durchfiehrst',
+'tooltip-pt-userpage' => 'Denne Nutzerseyte',
+'tooltip-pt-anonuserpage' => 'Nutzerseite dar IP-Atresse vu dar aus du Änderunga durchfiehrst',
 'tooltip-pt-mytalk' => 'Denne Dischkursseyte',
 'tooltip-pt-anontalk' => 'Dischkur ieber Änderunga vu dieser IP-Atresse',
 'tooltip-pt-preferences' => 'Eegene Eenstellunga',
@@ -1931,13 +1931,13 @@ Olle Transwiki-Import-Aksjonna waan eim [[Special:Log/import|Import-Logbuch]] pr
 'tooltip-feed-rss' => 'RSS-Feed fier diese Seite',
 'tooltip-feed-atom' => 'Atom-Feed fier diese Seite',
 'tooltip-t-contributions' => 'Liste dar Beiträge voo diesem Benutzer oasahn',
-'tooltip-t-emailwiki_user' => 'Eene E-Mail oa diesa Benutzer senda',
+'tooltip-t-emailuser' => 'Eene E-Mail oa diesa Benutzer senda',
 'tooltip-t-upload' => 'Dateien huchloada',
 'tooltip-t-specialpages' => 'Liste oller Spezialseyta',
 'tooltip-t-print' => 'Druckonsicht dieser Seite',
 'tooltip-t-permalink' => 'Dauerhofter Link zu dieser Seytaversion',
 'tooltip-ca-nstab-main' => 'Seytainhalt oazeega',
-'tooltip-ca-nstab-wiki_user' => 'Benutzerseyte oazeega',
+'tooltip-ca-nstab-user' => 'Benutzerseyte oazeega',
 'tooltip-ca-nstab-media' => 'Mediendateienseyte oazeiga',
 'tooltip-ca-nstab-special' => 'Dies ies anne Spezialseyte. Se koan ne beorbeetet waan.',
 'tooltip-ca-nstab-project' => 'Portalseite oazeiga',
@@ -1963,11 +1963,11 @@ Olle Transwiki-Import-Aksjonna waan eim [[Special:Log/import|Import-Logbuch]] pr
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|Anonymer Nutzer|Anonyme Nutzer}} uff {{SITENAME}}',
-'sitewiki_user' => '{{SITENAME}}-Benutzer $1',
+'siteuser' => '{{SITENAME}}-Benutzer $1',
 'lastmodifiedatby' => 'Diese Seite wurde zuletzt oam $1 im $2 Seeger vu $3 geändert.',
 'othercontribs' => 'Basierend uff der Arbeet vu $1.',
 'others' => 'oandera',
-'sitewiki_users' => '{{SITENAME}}-{{PLURAL:$2|Nutzer|Nutzer}} $1',
+'siteusers' => '{{SITENAME}}-{{PLURAL:$2|Nutzer|Nutzer}} $1',
 'creditspage' => 'Seytainformationa',
 'nocredits' => 'Fier diese Seite sein kenne Informationen vurhanda.',
 
@@ -2076,7 +2076,7 @@ Weitere werden standardmäßig nicht angezeigt.
 'exif-colorspace' => 'Forbraum',
 'exif-pixelydimension' => 'Giltige Bildbreite',
 'exif-pixelxdimension' => 'Giltige Bildhiehe',
-'exif-wiki_usercomment' => 'Nutzerkommentare',
+'exif-usercomment' => 'Nutzerkommentare',
 'exif-relatedsoundfile' => 'Zugehierige Tondatei',
 'exif-exposuretime-format' => '$1 Sekunda ($2)',
 'exif-maxaperturevalue' => 'Grießte Blende',
@@ -2199,7 +2199,7 @@ Bitte priefe de E-Mail-Atresse uff ungiltige Zeecha.
 Rickmeldung des Mailservers: $1',
 'confirmemail_invalid' => 'Ungiltiger Bestätigungscode. Meeglicherweise ies dar Bestätigungszeitraum verstrichen. Versuche bitte, de Bestätigung zu wiederhulla.',
 'confirmemail_needlogin' => 'Du musst diech $1, im denne E-Mail-Atresse zu bestätiga.',
-'confirmemail_success' => 'Denne E-Mail-Atresse wurde erfolgreich bestätigt. Du koast diech jitz [[Special:wiki_userLogin|oamelda]].',
+'confirmemail_success' => 'Denne E-Mail-Atresse wurde erfolgreich bestätigt. Du koast diech jitz [[Special:UserLogin|oamelda]].',
 'confirmemail_loggedin' => 'Denne E-Mail-Atresse wurde erfolgreich bestätigt.',
 'confirmemail_error' => "Is gab an'n Fahler bei dar Bestätigung denner E-Mail-Atresse.",
 'confirmemail_subject' => '[{{SITENAME}}] - Bestätigung dar E-Mail-Atresse',
@@ -2230,7 +2230,7 @@ Dieser Bestätigungscode ies giltig bis $6, $7 Seeger.',
 # Delete conflict
 'deletedwhileediting' => 'Ochtiche: Diese Seite wurde geläscht, nachdem du oagefanga host se zu bearbta!
 Eim [{{fullurl:{{#special:Log}}|type=delete&page={{FULLPAGENAMEE}}}} Läsch-Logbuch] fendest du den Grund fier de Läschung. Wenn du de Seite speicherst, werd se neu oagelegt.',
-'confirmrecreate' => "Nutzer [[wiki_user:$1|$1]] ([[wiki_user talk:$1|Dischkur]]) hoot diese Seite geläscht, nachdem du oagefanga host, se zu bearbta. De Begrindung lautete:
+'confirmrecreate' => "Nutzer [[User:$1|$1]] ([[User talk:$1|Dischkur]]) hoot diese Seite geläscht, nachdem du oagefanga host, se zu bearbta. De Begrindung lautete:
 :''$2''
 Bitte bestätige, doaß du diese Seite wirklich neu erstella mechta.",
 'recreate' => 'Erneut oalähn',
@@ -2331,7 +2331,7 @@ De Eengabe muuß ohne dann Zusatz „{{ns:file}}:“ erfolga.',
 'specialpages-group-login' => 'Oamelda',
 'specialpages-group-changes' => 'Letzte Änderunga und Logbicher',
 'specialpages-group-media' => 'Media',
-'specialpages-group-wiki_users' => 'Benutzer on Rechte',
+'specialpages-group-users' => 'Benutzer on Rechte',
 'specialpages-group-highuse' => 'Häufig benutzte Seyta',
 'specialpages-group-pages' => 'Lista vu Seyta',
 'specialpages-group-pagetools' => 'Seytawerkzeuge',
@@ -2371,6 +2371,6 @@ De Eengabe muuß ohne dann Zusatz „{{ns:file}}:“ erfolga.',
 # New logging system
 'revdelete-restricted' => 'Einschränkungen gelten au fier Administratorn',
 'revdelete-unrestricted' => 'Einschränkungen fier Administratorn uffgehobn',
-'newwiki_userlog-byemail' => 'doas Passwurt wourde per E-Mail versandt',
+'newuserlog-byemail' => 'doas Passwurt wourde per E-Mail versandt',
 
 );

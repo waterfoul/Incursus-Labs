@@ -48,12 +48,12 @@ $specialPageAliases = array(
 	'Preferences'               => array( 'ÀwọnÌfẹ́ràn' ),
 	'Recentchanges'             => array( 'ÀwọnÀtúnṣeTuntun' ),
 	'Specialpages'              => array( 'ÀwọnOjúewéPàtàkì' ),
-	'wiki_userlogin'                 => array( 'ÌwọléOníse' ),
-	'wiki_userlogout'                => array( 'Ìbọ̀sódeOníṣe' ),
+	'Userlogin'                 => array( 'ÌwọléOníse' ),
+	'Userlogout'                => array( 'Ìbọ̀sódeOníṣe' ),
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Ìfàlàsábẹ́ àwọn àjápọ̀:',
 'tog-justify' => "Ṣ'àlàyé gbólóhùn ọ̀rọ̀",
 'tog-hideminor' => 'Ìbòmọ́lẹ̀ àwọn àtúnṣe kékeré nínú àwọn àtúnse tuntun',
@@ -77,7 +77,7 @@ $messages = array(
 'tog-previewonfirst' => "S'àfihàn àgbéwò fún àtúnse àkọ́kọ́",
 'tog-nocache' => 'Ìdínà fífi ojúewé pamọ́ sínú cache',
 'tog-enotifwatchlistpages' => 'Fi e-mail ránṣẹ́ sí mi tí ojúewé tàbí fáìlì tí mò ún mójútó bá yípadà',
-'tog-enotifwiki_usertalkpages' => 'Fi e-mail ránṣẹ́ sími tí ojúewé oníṣe mi bá yípadà',
+'tog-enotifusertalkpages' => 'Fi e-mail ránṣẹ́ sími tí ojúewé oníṣe mi bá yípadà',
 'tog-enotifminoredits' => 'Fi e-mail ránṣẹ́ sí mi bákannà fún àtúnṣe kékékèé sí àwọn ojúewé àti fáìlì',
 'tog-enotifrevealaddr' => "Ṣ'àfihàn àdírẹ́ẹ̀sì e-mail mi nínú àwọn ìránṣẹ́ e-mail",
 'tog-shownumberswatching' => "S'àfihàn iye àwọn oníṣe tí wọn tẹjú mọ́ọ",
@@ -258,7 +258,7 @@ $messages = array(
 'talk' => 'Ìfọ̀rọ̀wérọ̀',
 'views' => 'Àwọn ìwò',
 'toolbox' => 'Àpótí irinṣẹ',
-'wiki_userpage' => 'Wo ojúewé oníṣe',
+'userpage' => 'Wo ojúewé oníṣe',
 'projectpage' => 'Wo ojúewé iṣẹ́ọwọ́',
 'imagepage' => 'Wo ojúewé fáìlì',
 'mediawikipage' => 'Wo ojúewé ìránṣẹ́',
@@ -284,7 +284,7 @@ $1',
 'pool-queuefull' => 'Oríìlà dátà ti kún',
 'pool-errorunknown' => 'Àsìṣe àwámárìdí',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Nípa {{SITENAME}}',
 'aboutpage' => 'Project:Nípa',
 'copyright' => 'Gbogbo ohun inú ibí yìí wà lábẹ́  $1.',
@@ -317,8 +317,8 @@ $1',
 'youhavenewmessages' => 'Ẹ ní $1 ($2).',
 'newmessageslink' => 'ìránṣẹ́ tuntun',
 'newmessagesdifflink' => 'àtúnṣe tógbẹ̀yìn',
-'youhavenewmessagesfromwiki_users' => 'Ẹ ní $1 láti ọ̀dọ̀ {{PLURAL:$3|oníṣe míràn|àwọn oníṣe $3}} ($2).',
-'youhavenewmessagesmanywiki_users' => 'Ẹ ní $1 láti ọ̀dọ̀ àwọn oníṣe púpọ̀ ($2).',
+'youhavenewmessagesfromusers' => 'Ẹ ní $1 láti ọ̀dọ̀ {{PLURAL:$3|oníṣe míràn|àwọn oníṣe $3}} ($2).',
+'youhavenewmessagesmanyusers' => 'Ẹ ní $1 láti ọ̀dọ̀ àwọn oníṣe púpọ̀ ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|ìránṣẹ́ tuntun kan|àwọn ìránṣẹ́ tuntun}}',
 'newmessagesdifflinkplural' => '{{PLURAL:$1|àtúnṣe|àwọn àtúnṣe}} tógbẹ̀yìn',
 'youhavenewmessagesmulti' => 'Ẹ ní ìránsẹ́ tuntun ni $1',
@@ -349,7 +349,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Ojúewé',
-'nstab-wiki_user' => 'Ojúewé oníṣe',
+'nstab-user' => 'Ojúewé oníṣe',
 'nstab-media' => 'Ojúewé amóhùnmáwòrán',
 'nstab-special' => 'Ojúewé pàtàkì',
 'nstab-project' => 'Ojúewé iṣẹ́ọwọ́',
@@ -394,7 +394,7 @@ Olùmójútó tó tìípa ṣe àlàyé yìí: $1',
 Ohun tó ún fa èyí ní ìtẹ̀lé ìjapọ̀ "ìyàtọ́" tótipẹ́ tàbí ìjápọ̀ ìtàn ojúewé tí a ti parẹ́.
 
 Tí kì bá ṣe bẹ́ẹ̀, ó lè jẹ́ pé ẹ ti rí àsìṣe nínú atòlànà kọ̀mpútà náà.
-Ẹjọ̀wọ́ ẹ fi èyí tó [[Special:Listwiki_users/sysop|alámùójútó]] kan létí, kí ẹ sí mọ́ gbàgbé láti fúun ní URL ọ̀hún.',
+Ẹjọ̀wọ́ ẹ fi èyí tó [[Special:ListUsers/sysop|alámùójútó]] kan létí, kí ẹ sí mọ́ gbàgbé láti fúun ní URL ọ̀hún.',
 'missingarticle-rev' => '(àtúnyẹ̀wò#: $1)',
 'missingarticle-diff' => '(Ìyàtọ̀: $1, $2)',
 'readonly_lag' => 'Ibùdó dátà ti jẹ́ títìpa fúnrararẹ̀ kí àwọn ẹ̀rọ awọ̀fà ẹrú ibùdó dátà le baà yára bíi ti àwọn ẹ̀rọ awọ̀fà ọ̀gà.',
@@ -444,7 +444,7 @@ Láti ṣ'àfikún tàbí ṣ'àyípadà àwọn ìyédèpadà fún gbogbo àw�
 'customcssprotected' => 'Ẹ kò ní ìyọ̀nda láti ṣàtúnṣe ojúewé CSS yìí nítorípé ó ní àwọn ìtòjọ oníṣe ẹlòmíràn.',
 'customjsprotected' => 'Ẹ kò ní ìyọ̀nda láti ṣàtúnṣe ojúewé JavaScript yìí nítorípé ó ní àwọn ìtòjọ oníṣe ẹlòmíràn.',
 'ns-specialprotected' => 'Àtúnṣe kò ṣe é ṣe sí àwọn ojúewé pàtàkì.',
-'titleprotected' => "[[wiki_user:$1|$1]] ti dínà sí dídá àkọlé yìí. Ìdí rẹ̀ ni pé ''$2''.",
+'titleprotected' => "[[User:$1|$1]] ti dínà sí dídá àkọlé yìí. Ìdí rẹ̀ ni pé ''$2''.",
 'filereadonlyerror' => 'Àtúnṣe kò ṣe é ṣe sí fáìlì "$1" nítorípé ibi-àkójọ fáìlì "$2" jẹ́ fún wíwò nìkàn.
 
 Olùṣeàmójútó tó típa ṣe àlàyé yìí: "$3".',
@@ -461,7 +461,7 @@ Olùṣeàmójútó tó típa ṣe àlàyé yìí: "$3".',
 # Login and logout pages
 'logouttext' => "'''Ẹ ti bọ́sọ́de.'''
 
-Ẹ le tẹ̀síwájú sí ní lo {{SITENAME}} láìmorúkọ yín, tàbí kí ẹ [[Special:wiki_userLogin|padà wọlé]] bí ẹnikanan tàbí ẹlòmíràn.
+Ẹ le tẹ̀síwájú sí ní lo {{SITENAME}} láìmorúkọ yín, tàbí kí ẹ [[Special:UserLogin|padà wọlé]] bí ẹnikanan tàbí ẹlòmíràn.
 Àkíyèsí wípé àwọn ojúewé kan le hàn b'ígbà tójẹ́pé ẹ sì wọlé títí tí ẹ ó fi jọ̀wọ́ cache browser yín.",
 'welcomecreation' => "== Ẹ kú àbọ̀, $1! ==
 
@@ -478,21 +478,21 @@ A ti ṣ'èdá àpamọ́ yín.
 'login' => 'Ìwọlé',
 'nav-login-createaccount' => 'Ìwọlé / Ìforúkọ sílẹ̀',
 'loginprompt' => 'Ẹ gbọ́dọ̀ jọ̀wọ́ cookies láti wọlé sí {{SITENAME}}.',
-'wiki_userlogin' => 'Ìwọlé / ìforúkọ sílẹ̀',
-'wiki_userloginnocreate' => 'Ìwọlé',
+'userlogin' => 'Ìwọlé / ìforúkọ sílẹ̀',
+'userloginnocreate' => 'Ìwọlé',
 'logout' => 'Ìjáde',
-'wiki_userlogout' => 'Ìjáde',
+'userlogout' => 'Ìjáde',
 'notloggedin' => "Ẹ kò tí w'ọlé",
 'nologin' => "Ṣé ẹ fẹ́ wọlé? '''$1'''.",
 'nologinlink' => 'Ìforúkọsílẹ̀',
 'createaccount' => 'Ẹ fi orúkọ sílẹ̀',
 'gotaccount' => "Ṣé ẹ ti ní àpamọ́ tẹ́lẹ̀? '''$1'''.",
 'gotaccountlink' => "Ẹ w'ọlé",
-'wiki_userlogin-resetlink' => 'À bí ẹ gbàgbé ìwọlé yín?',
+'userlogin-resetlink' => 'À bí ẹ gbàgbé ìwọlé yín?',
 'createaccountmail' => 'pẹ̀lú e-mail',
 'createaccountreason' => 'Ìdíẹ̀:',
 'badretype' => 'Àwọn ọ̀rọ̀ìpamọ́ tí ẹ kọ kò jọ ra wọn.',
-'wiki_userexists' => 'Orúkọ oníṣe tí ẹ mú wà lọ́wọ́ ẹlòmíràn.
+'userexists' => 'Orúkọ oníṣe tí ẹ mú wà lọ́wọ́ ẹlòmíràn.
 Ẹjọ̀wọ́ ẹ yan orúkọ mìíràn tó yàtọ̀.',
 'loginerror' => 'Àsìṣe ìwọlé',
 'createaccounterror' => 'Kò le dá àkópamọ́: $1',
@@ -508,13 +508,13 @@ A ti ṣ'èdá àpamọ́ yín.
 'noname' => 'Ẹ kò tọ́kasí orúkọ oníṣe tó ní ìbámu.',
 'loginsuccesstitle' => 'Ìwọlé ti yọrí sí rere',
 'loginsuccess' => "'''Ẹ ti wọlé sínú {{SITENAME}} gẹ́gẹ́ bi \"\$1\".'''",
-'nosuchwiki_user' => 'Kò sí oníṣe kankan pẹ̀lú orúkọ "$1".
+'nosuchuser' => 'Kò sí oníṣe kankan pẹ̀lú orúkọ "$1".
 Àwọn lẹ́tà àwọn orúkọ oníṣe gbọ́dọ̀ jẹ́ irúkanna.
-Ẹ yẹ lẹ́tà yín wò, tàbí [[Special:wiki_userLogin/signup|kí ẹ dá àkópamọ́ tuntun]].',
-'nosuchwiki_usershort' => "Kò sí oníṣe t'ón jẹ́ $1.
+Ẹ yẹ lẹ́tà yín wò, tàbí [[Special:UserLogin/signup|kí ẹ dá àkópamọ́ tuntun]].',
+'nosuchusershort' => "Kò sí oníṣe t'ón jẹ́ $1.
 Ẹ yẹ lẹ́tà ọ̀rọ̀ yín wò.",
-'nowiki_userspecified' => 'Ẹ gbọ́dọ̀ tọ́kasí orúkọ oníṣe kan.',
-'login-wiki_userblocked' => 'Oníṣe yìí jẹ́ dídínà. Ìwọlé kò jẹ́ gbígbà láyè.',
+'nouserspecified' => 'Ẹ gbọ́dọ̀ tọ́kasí orúkọ oníṣe kan.',
+'login-userblocked' => 'Oníṣe yìí jẹ́ dídínà. Ìwọlé kò jẹ́ gbígbà láyè.',
 'wrongpassword' => 'Ọ̀rọ̀ìpamọ́ tí ẹ kìbọlé kòtọ́.
 Ẹ jọ̀wọ́ ẹ gbìyànjú lẹ́ẹ̀kansí.',
 'wrongpasswordempty' => 'Ọ̀ròìpamọ́ jẹ́ òfo.
@@ -559,16 +559,16 @@ E-mail kankan kò ní jẹ́ fífiránṣẹ́ fún ìkankan nínú àwọn ìn�
 Ẹ gbọ́dọ̀ wọlé kí ẹ sì ṣàyípadà ọ́rọ́ìpamọ́ yín nísinsìyí.
 
 Ẹ le fojúfo ìránṣẹ́ yìí, tó bá jẹ́ pé àpamọ́ yìí jẹ́ dídá nítorí àsìṣe.',
-'wiki_usernamehasherror' => 'Orúkọ oníṣe yín kò gbọdọ̀ ní àmílẹ́tà hash',
+'usernamehasherror' => 'Orúkọ oníṣe yín kò gbọdọ̀ ní àmílẹ́tà hash',
 'login-throttled' => 'Ẹ ti gbìyànjú bó ṣe yẹ lọ láti wọlé.
 Ẹ jọ̀wọ́ ẹ dúró ná kí ẹ tó gbìyànjú lẹ́ẹ̀kan síi.',
 'login-abort-generic' => 'Ìwọlé yín kò yọrísírere - ó ti jẹ́ kíkáwọ́dà',
 'loginlanguagelabel' => 'Èdè: $1',
-'suspicious-wiki_userlogout' => 'Ìtọrọ tí ẹ ṣe láti bọ́sóde jẹ̀ kíkọ̀ nítorípé ó dà bí pé ó jẹ́ fífiránṣẹ́ látọ̀dọ̀ awòtakùn (browser) àìdára tàbí ẹ̀rọ-ìwọ̀fà ìmúpamọ́ onígbàdíẹ̀.',
+'suspicious-userlogout' => 'Ìtọrọ tí ẹ ṣe láti bọ́sóde jẹ̀ kíkọ̀ nítorípé ó dà bí pé ó jẹ́ fífiránṣẹ́ látọ̀dọ̀ awòtakùn (browser) àìdára tàbí ẹ̀rọ-ìwọ̀fà ìmúpamọ́ onígbàdíẹ̀.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'Àsìṣe àìmọ̀ nínú ìgbéṣe mail() ti PHP',
-'wiki_user-mail-no-addy' => 'Ó fẹ́ fi e-mail ránṣẹ́ láìsí àdírẹ́sì e-mail.',
+'user-mail-no-addy' => 'Ó fẹ́ fi e-mail ránṣẹ́ láìsí àdírẹ́sì e-mail.',
 
 # Change password dialog
 'resetpass' => 'Ìyípadà ọ̀rọ̀ìpamọ́',
@@ -594,7 +594,7 @@ Láti parí ìmúwọlẹ́, ẹ gbọ́dọ̀ ṣètò ọ̀rọ̀ìpamọ́ tu
 'passwordreset-legend' => 'Ìtúntò ọ̀rọ̀ìpamọ́',
 'passwordreset-disabled' => 'Ìdálẹ́kun ìtúntò ọ̀rọ̀ìpamọ́ lórí wiki yìí.',
 'passwordreset-pretext' => '{{PLURAL:$1||Ẹ kọ ìkan nínú àwọn wẹ́wẹ́ dátà ìsàlẹ̀}}',
-'passwordreset-wiki_username' => 'Orúkọ oníṣe:',
+'passwordreset-username' => 'Orúkọ oníṣe:',
 'passwordreset-domain' => 'Àbùgbé:',
 'passwordreset-capture' => 'Wo e-mail tí yíò jáde?',
 'passwordreset-capture-help' => 'Tí ẹ bá fagi sínú àpótí yìí, e-mail náà (pẹ̀lú ọ̀rọ̀ìpamọ́ onígbàdíẹ̀) yíò hàn si yín bákannáà yíò jẹ́ fífiránṣẹ́ sí oníṣe náà.',
@@ -606,7 +606,7 @@ $2
 
 {{PLURAL:$3|Ọ̀rọ̀ìpamọ́ onígbàdíẹ̀ yìí|Àwọn ọ̀rọ̀ìpamọ́ onígbàdíẹ̀ wọ̀nyí}} yíò dópin lẹ́yìn {{PLURAL:$5|ọjọ́ kan|ọjọ́ $5}}.
 Ẹ gbọ́dọ̀ lọ yan ọ̀rọ̀ìpamọ́ tuntun báyìí. Tóbá jẹ́ pé ẹ̀lòmíràn ló ṣe ìtọrọ yìí, tàbí tọ́bá jẹ́ pé ẹ ti rántí ọ̀rọ̀ìpamọ́ àtètèkọ́ṣe yín, tí ẹ kọ̀ sí fẹ́ yíipadà mọ́, ẹ lé ṣàìkàsí ìránṣẹ́ yìí, kí ẹ sì tẹ̀síwájú ní lo ọ̀rọ̀ìpamọ́ àtijọ́ yín.',
-'passwordreset-emailtext-wiki_user' => 'Oníṣe $1 lórí {{SITENAME}} tọrọ ìránlétí àwọn ẹ̀kúnrẹ́rẹ́ àkópamọ́ yín fùn {{SITENAME}} ($4). {{PLURAL:$3|Àkópamọ́|Àwọn àkópamọ́}} oníṣe ìsàlẹ̀ yìí ní ìbáṣe pọ̀ mọ́ àdírẹ̀sì e-mail yìí:
+'passwordreset-emailtext-user' => 'Oníṣe $1 lórí {{SITENAME}} tọrọ ìránlétí àwọn ẹ̀kúnrẹ́rẹ́ àkópamọ́ yín fùn {{SITENAME}} ($4). {{PLURAL:$3|Àkópamọ́|Àwọn àkópamọ́}} oníṣe ìsàlẹ̀ yìí ní ìbáṣe pọ̀ mọ́ àdírẹ̀sì e-mail yìí:
 
 $2
 
@@ -708,7 +708,7 @@ $1 ni ó ṣe ìdínà.
 'loginreqlink' => 'wọlé',
 'loginreqpagetext' => 'Ẹ gbọ́dọ̀ $1 láti wo àwọn ojúewé míràn.',
 'accmailtitle' => 'Ti fi ọ̀rọ̀ìpamọ́ ránṣẹ́.',
-'accmailtext' => "A ti fi ọ̀rọ̀ìpamọ́ àrìnàkò tí a pèsè fún [[wiki_user talk:$1|$1]] ránṣẹ́ sí $2.
+'accmailtext' => "A ti fi ọ̀rọ̀ìpamọ́ àrìnàkò tí a pèsè fún [[User talk:$1|$1]] ránṣẹ́ sí $2.
 
 Ẹ le ṣe àyípadà ọ̀rọ̀ìpamọ́ fún àpamọ́ tuntun yìí ní ''[[Special:ChangePassword|change password]]'' lẹ́yìn tí ẹ bá ti wọlé.",
 'newarticle' => '(Tuntun)',
@@ -718,7 +718,7 @@ T'óbá sepé àsìse ló gbé yin dé bi, ẹ kọn bọ́tìnì ìpadàsẹ́y
 'anontalkpagetext' => "''Ojúewé ìfọ̀rọ̀wérọ̀ yìí wà fún oníṣe aláílórúkọ tí kò tíì dá àkópamọ́, tàbí tí kò lò ó rárá.
 Bí bẹ́ẹ̀ laṣe únlo àdírẹ́ẹ̀sì IP oníyenọ́mbà láti dáamọ̀.
 Irú àdírẹ́ẹ̀sì IP báun ṣeéṣe kó jẹ́ pínpínlọ̀ pẹ̀lú àwọn oníṣe míràn.
-Tó bá jẹ́ pé oníṣe aláìlórúkọ ni yín, tí ẹ sì ri pé wọ́n ùnsọ̀rọ̀ tí kò kàn yín sí i yín, ẹ jọ̀wọ́ [[Special:wiki_userLogin/signup|ẹ dá àkópamọ́ kan]] tàbí [[Special:wiki_userLogin|kí ẹ wọlẹ́]] kó mọ́ baà sí ìdàrúpọ̀ lọ́jọ́ọwájú mọ́ àwọn oníṣe aláìlórúkọ mírán.''",
+Tó bá jẹ́ pé oníṣe aláìlórúkọ ni yín, tí ẹ sì ri pé wọ́n ùnsọ̀rọ̀ tí kò kàn yín sí i yín, ẹ jọ̀wọ́ [[Special:UserLogin/signup|ẹ dá àkópamọ́ kan]] tàbí [[Special:UserLogin|kí ẹ wọlẹ́]] kó mọ́ baà sí ìdàrúpọ̀ lọ́jọ́ọwájú mọ́ àwọn oníṣe aláìlórúkọ mírán.''",
 'noarticletext' => 'Lọ́wọ́lọ́wọ́ kò sí ìkọ̀ nínú ojúewé yìí.
 Ẹ le [[Special:Search/{{PAGENAME}}|wá àkọlé ojúewé yìí]] nínú àwọn ojúewé mìíràn,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} wá àkọọ́lẹ̀ rẹ̀], tàbí [{{fullurl:{{FULLPAGENAME}}|action=edit}} kí ẹ ṣ\'àtúnṣe ojúewé òún]</span>.',
@@ -729,9 +729,9 @@ Tó bá jẹ́ pé oníṣe aláìlórúkọ ni yín, tí ẹ sì ri pé wọ́n
 
 Èyí únsábà ṣẹlẹ̀ nítorípé ẹ tẹ̀lé ìtàn àjápọ̀ tí kò ṣiṣẹ́ mọ́ wá sí orí ojúewé tó ti jẹ́ píparẹ́.
 Ẹ̀kúnrẹ́rẹ́ wà nínú [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} àkọọ́lẹ̀ ìparẹ́].',
-'wiki_userpage-wiki_userdoesnotexist' => 'Àkópamọ́ oníṣe "<nowiki>$1</nowiki>" kò tíì jẹ́ fíforúkọsílẹ̀.
+'userpage-userdoesnotexist' => 'Àkópamọ́ oníṣe "<nowiki>$1</nowiki>" kò tíì jẹ́ fíforúkọsílẹ̀.
 Ẹjọ̀wọ́ ẹ ṣ\'àgbéyẹ̀wò bóyá ẹ fẹ́ dá/ṣàtúnṣe ojúewé yìí.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Àpamọ́ oníṣe "$1" kò jẹ́ fífilórúkọsílẹ̀.',
+'userpage-userdoesnotexist-view' => 'Àpamọ́ oníṣe "$1" kò jẹ́ fífilórúkọsílẹ̀.',
 'blocked-notice-logextract' => 'Lọ́wọ́lọ́wọ́ oníṣe yìí jẹ́ dídílọ́nà.
 Àkọsílẹ̀ ìdínà àìpẹ́ nìyí nísàlẹ̀ fún ìtọ́kasí:',
 'clearyourcache' => "'''Àkíyèsí:''' Lẹ́yìn ìmúpamọ́, ó ṣe é ṣe kó jẹ́ pé ẹ gbọ́dọ̀ fo cache agbétàkùn yín láti rí àwọn ìyípadà.
@@ -739,18 +739,18 @@ Tó bá jẹ́ pé oníṣe aláìlórúkọ ni yín, tí ẹ sì ri pé wọ́n
 * '''Google Chrome:''' Ẹ tẹ ''Ctrl-Shift-R'' (''⌘-Shift-R'' lórí Mac)
 * '''Internet Explorer:''' Ẹ di ''Ctrl'' mú bí ẹ ṣe ún tẹ ''Refresh,'' tàbí kí ẹ tẹ ''Ctrl-F5''
 * '''Opera:''' Ẹ pa cache rẹ́ nínú ''Tools → Preferences''",
-'wiki_usercssyoucanpreview' => "'''Ìrànlọ́wọ́:''' Ẹ lo bọ́tìnì \"{{int:showpreview}}\" fún dídánwò CSS tuntun yín kí ẹ tó múupamọ́.",
-'wiki_userjsyoucanpreview' => "'''Ìrànlọ́wọ́:''' Ẹ lo bọ́tìnì \"{{int:showpreview}}\" fún dídánwò JavaScript tuntun yín kí ẹ tó múupamọ́.",
-'wiki_usercsspreview' => "''''Ẹ mọ́ gbàgbé pé àkọ́yẹ̀wò CSS oníṣe yín nìyí.'''
+'usercssyoucanpreview' => "'''Ìrànlọ́wọ́:''' Ẹ lo bọ́tìnì \"{{int:showpreview}}\" fún dídánwò CSS tuntun yín kí ẹ tó múupamọ́.",
+'userjsyoucanpreview' => "'''Ìrànlọ́wọ́:''' Ẹ lo bọ́tìnì \"{{int:showpreview}}\" fún dídánwò JavaScript tuntun yín kí ẹ tó múupamọ́.",
+'usercsspreview' => "''''Ẹ mọ́ gbàgbé pé àkọ́yẹ̀wò CSS oníṣe yín nìyí.'''
 '''Kò tíì jẹ́ mímúpamọ́!'''",
-'wiki_userjspreview' => "''''Ẹ mọ́ gbàgbé pé àdánwò/àkọ́yẹ̀wò JavaScript oníṣe yín nìyí.'''
+'userjspreview' => "''''Ẹ mọ́ gbàgbé pé àdánwò/àkọ́yẹ̀wò JavaScript oníṣe yín nìyí.'''
 '''Kò tíì jẹ́ mímúpamọ́!'''",
 'sitecsspreview' => "'''Ẹ rántí pé àkọ́yẹ̀wò CSS nìyí.'''
 '''Kò tíì jẹ́ mímúpamọ!'''",
 'sitejspreview' => "'''Ẹ rántí pé àkọ́yẹ̀wò àmìọ̀rọ̀ JavaScript nìyí.'''
 '''Kò tíì jẹ́ mímúpamọ!'''",
-'wiki_userinvalidcssjstitle' => "'''Ìkìlọ̀:''' Kò sí awọ-ìbojú \"\$1\".
-Ẹ rántí pé àwọn ojúewé àkànṣe .css àti .js únlo àkọlé onílẹ́tà kékeré, f.a. {{ns:wiki_user}}:Foo/vector.css yàtò sí {{ns:wiki_user}}:Foo/Vector.css.",
+'userinvalidcssjstitle' => "'''Ìkìlọ̀:''' Kò sí awọ-ìbojú \"\$1\".
+Ẹ rántí pé àwọn ojúewé àkànṣe .css àti .js únlo àkọlé onílẹ́tà kékeré, f.a. {{ns:user}}:Foo/vector.css yàtò sí {{ns:user}}:Foo/Vector.css.",
 'updated' => '(Sísọdọ̀tun)',
 'note' => "'''Àkíyèsí:'''",
 'previewnote' => "'''Ẹ rántí pé àyẹ̀wò lásán nì yí.'''
@@ -759,13 +759,13 @@ Tó bá jẹ́ pé oníṣe aláìlórúkọ ni yín, tí ẹ sì ri pé wọ́n
 'previewconflict' => 'Àkọ́wò yìí jẹ́ bí ìkọ̀rọ̀ inú àlà ìtúnṣe ìkọ̀rọ̀ òkè yíò ṣe hàn tí ẹ bá yàn láti ṣàmúpamọ́.',
 'session_fail_preview' => "'''Àforíjìn! A kò le gbésẹ̀ àtúnṣe yín nítorí ìpòfo data ìsinsìyí.
 Ẹ jọ̀wọ́ ẹ gbìyànjú lẹ́ẹ̀kan si.
-Tí kò bá sì tún ṣiṣẹ́, ẹ gbìyànjú láti [[Special:wiki_userLogout|bọ̀sòde]] kí ẹ sì padá wọlé.'''",
+Tí kò bá sì tún ṣiṣẹ́, ẹ gbìyànjú láti [[Special:UserLogout|bọ̀sòde]] kí ẹ sì padá wọlé.'''",
 'session_fail_preview_html' => "'''Àforíjìn! A kò le gbéṣẹ̀ àtúnṣe yín nítorí ìpòfo dátà ìgbànáà.'''
 
 ''Nítorípé {{SITENAME}} gba HTML àìgbéṣe láàyè, àkọ́kọ́yẹ̀wò jẹ́ bíbòmọ́lẹ̀ láti dínà àwọn ìkọlù JavaScript.''
 
 '''Tó bá ṣe pé ìgbìyànj ìṣàtúnṣe gidi nìyí, ẹ jọ̀wọ́ ẹ gbìyànjú lẹ́ẹ̀kansíi.'''
-Tí kò bá ṣiṣẹ́ síbẹ̀, ẹ gbìyànjú láti [[Special:wiki_userLogout|jáde]] kí ẹ sì padà wọlé.",
+Tí kò bá ṣiṣẹ́ síbẹ̀, ẹ gbìyànjú láti [[Special:UserLogout|jáde]] kí ẹ sì padà wọlé.",
 'token_suffix_mismatch' => "'''Àtúnṣe yín ti jẹ́ kíkọ̀sílẹ̀ nítorípé ẹ̀rọ yín ṣèdàrú àwọn àmììkọ̀rọ̀ ojúìgúnlẹ̀ mọ́ra wọn nínú ìtọ́wò àtúnṣe.'''
 Àtúnṣe náà ti jẹ́ kíkọ̀sílẹ̀ láti baà dènà ìdíbàjẹ́ ìkọọ̀rọ̀ inú ojúewé.
 Èyí únsábà ṣẹlẹ̀ nígbàtí ẹ bá únlo ẹ̀rọ-ìwọ̀fà ẹlòmíràn aláìlórúkọ torí Internet tí kò dára.",
@@ -817,7 +817,7 @@ Olùmójútó tó tìípadé ṣe àlàyé yìí: $1",
 'hiddencategories' => 'Ojúewé yìí jẹ́ ìkan nínú {{PLURAL:$1|ẹ̀ka bíbòmọ́lẹ̀ 1|àwọn ẹ̀ka bíbòmọ́lẹ̀ $1}}:',
 'nocreatetitle' => 'Ìdènà ìdá ojúewé',
 'nocreatetext' => "{{SITENAME}} ti pààlà ààyè láti ṣ'èdá ojúewé tuntun.
-Ẹ le padà sẹ́yìn kí ẹ ṣ'àtúnṣe ojúewé tó wà, tàbí [[Special:wiki_userLogin|kí ẹ wọlé tàbí kí ẹ ṣ'èdá àpamọ́]].",
+Ẹ le padà sẹ́yìn kí ẹ ṣ'àtúnṣe ojúewé tó wà, tàbí [[Special:UserLogin|kí ẹ wọlé tàbí kí ẹ ṣ'èdá àpamọ́]].",
 'nocreate-loggedin' => "Ẹ kò ní ìyọ̀nda láti ṣe'dá ojúewé tuntun.",
 'sectioneditnotsupported-title' => 'Ko sí títìlẹ́yìn àtúnṣe abala',
 'sectioneditnotsupported-text' => 'Ko sí títìlẹ́yìn àtúnṣe abala lórí ojúewé yìí.',
@@ -868,11 +868,11 @@ Kò ṣe àlàyé kankan.',
 Ẹ jọ̀wọ́ ẹ wo ìfiwéra ìsàlẹ̀ láti rídájú pé ohun tí ẹ fẹ́ nì yẹn, nígbà náà ẹ mú àwọn àtúnṣe náà pamọ́ láti parí ìmúkúrò àtúnṣe.',
 'undo-failure' => 'Àtúnṣe náà kò ṣe é múkúrò nítorí títakora àwọn àtúnṣe inú àrin.',
 'undo-norev' => 'Àtúnṣe náà kò ṣe é múkúrò nítorí pé kò sí tàbí pé ó ti jẹ́ píparẹ́.',
-'undo-summary' => 'Ìmúkúrò àtúnyẹ̀wò $1 ti [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|ọ̀rọ̀]])',
+'undo-summary' => 'Ìmúkúrò àtúnyẹ̀wò $1 ti [[Special:Contributions/$2|$2]] ([[User talk:$2|ọ̀rọ̀]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Ìforúkọsílẹ̀ kò se é se',
-'cantcreateaccount-text' => "[[wiki_user:$3|$3]] ti dènà dídá àkópamọ́ láti orí àdírẹ́ẹ̀sì IP yìí ('''$1''').
+'cantcreateaccount-text' => "[[User:$3|$3]] ti dènà dídá àkópamọ́ láti orí àdírẹ́ẹ̀sì IP yìí ('''$1''').
 
 Ìdí tí $3 ṣe ṣèyí ni ''$2''",
 
@@ -910,9 +910,9 @@ Kò ṣe àlàyé kankan.',
 
 # Revision deletion
 'rev-deleted-comment' => '(ìyọkúrò àkótán àtúnṣe)',
-'rev-deleted-wiki_user' => '(orúkọ oníṣe ti jẹ́ yíyọkúrò)',
+'rev-deleted-user' => '(orúkọ oníṣe ti jẹ́ yíyọkúrò)',
 'rev-deleted-event' => '(àkọọ́lẹ̀ ti jẹ́ yíyọkúrò)',
-'rev-deleted-wiki_user-contribs' => '[orúkọ oníṣe tàbí àdírẹ́sì IP jẹ́ yíyọkúrò - àtúnṣe jẹ́ bíbòmọ́lẹ̀ kúrò nínú àwọn àfikún]',
+'rev-deleted-user-contribs' => '[orúkọ oníṣe tàbí àdírẹ́sì IP jẹ́ yíyọkúrò - àtúnṣe jẹ́ bíbòmọ́lẹ̀ kúrò nínú àwọn àfikún]',
 'rev-deleted-text-permission' => "Àtúnyẹ̀wò ojúewé yìí ti jẹ́ '''píparẹ́'''.
 Ẹ̀kúnrẹ́rẹ́ wà nínú [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} àkọọ́lẹ̀ ìparẹ́].",
 'rev-deleted-text-unhide' => "Àtúnyẹ̀wò ojúewé yìí ti jẹ́ '''píparẹ́'''.
@@ -964,7 +964,7 @@ Kò ṣe àlàyé kankan.',
 'revdelete-hide-image' => 'Ìbòmọ́lẹ̀ àkóónú fáìlì',
 'revdelete-hide-name' => 'Ìbòmọ́lẹ̀ ìgbéṣe àti wíwá',
 'revdelete-hide-comment' => 'Ìbòmọ́lẹ̀ àríwí àtúnṣe',
-'revdelete-hide-wiki_user' => 'Ìbòmọ́lẹ̀ orúkọ oníṣe/IP olóòtú',
+'revdelete-hide-user' => 'Ìbòmọ́lẹ̀ orúkọ oníṣe/IP olóòtú',
 'revdelete-hide-restricted' => 'Ìbòmọ́lẹ̀ àwọn ìpèsè ti àwọn alámùójútó àti ti àwọn yìókù',
 'revdelete-radio-same' => '(láì yípadà)',
 'revdelete-radio-set' => 'Bẹ́ẹ̀ni',
@@ -1051,7 +1051,7 @@ Kò ṣe é bòmọ́lẹ̀.',
 'showhideselectedversions' => 'Ìfihàn/ìbòmọ́lẹ̀ àwọn àtúnyẹ̀wò ṣíṣàyàn',
 'editundo' => 'dápadà',
 'diff-multi' => '({{PLURAL:$1|Àtúnyẹ̀wò inú àrin kan|Àwọn àtúnyẹ̀wò inú àrin $1}} látọwọ́ {{PLURAL:$2|oníṣe kan|àwọn oníṣe $2}} kò jẹ́ fífihàn)',
-'diff-multi-manywiki_users' => '({{PLURAL:$1|Àtúnyẹ̀wò inú àrin kan|Àwọn àtúnyẹ̀wò inú àrin $1}} látọwọ́ {{PLURAL:$2|oníṣe|àwọn oníṣe}} tó pọ̀ju $2 lọ kò jẹ́ fífihàn)',
+'diff-multi-manyusers' => '({{PLURAL:$1|Àtúnyẹ̀wò inú àrin kan|Àwọn àtúnyẹ̀wò inú àrin $1}} látọwọ́ {{PLURAL:$2|oníṣe|àwọn oníṣe}} tó pọ̀ju $2 lọ kò jẹ́ fífihàn)',
 'difference-missing-revision' => '{{PLURAL:$2|Àtúnyẹ̀wò kan|Àwọn àtúnyẹ̀wò $2}} ìyàtọ̀ yìí ($1) kò {{PLURAL:$2|sí|sí}}.
 
 Èyí ṣẹlẹ̀ nítorí pé ẹ tẹ̀lé àjápọ̀ ìyàtọ̀ tí kò ṣiṣẹ́ mọ́ wá sí ojúewé tó ti jẹ́ píparẹ́.
@@ -1136,7 +1136,7 @@ Ní báyìí ná ẹ le ṣàwárí lọ́dọ̀ Google.
 'mypreferences' => 'Àwọn ìfẹ́ràn',
 'prefs-edits' => 'Iye àwọn àtúnṣe:',
 'prefsnologin' => 'Ẹ kò tíì wọlé',
-'prefsnologintext' => 'Ẹ gbọ́dọ̀ <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} wọlé]</span> láti to àwọn ìfẹ́ràn oníṣe.',
+'prefsnologintext' => 'Ẹ gbọ́dọ̀ <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} wọlé]</span> láti to àwọn ìfẹ́ràn oníṣe.',
 'changepassword' => 'Ìyípadà ọ̀rọ̀ìpamọ́',
 'prefs-skin' => 'Skin (Àwọ̀)',
 'skin-preview' => 'Àkọ́yẹ̀wò',
@@ -1144,7 +1144,7 @@ Ní báyìí ná ẹ le ṣàwárí lọ́dọ̀ Google.
 'prefs-beta' => 'Àwọn ìní Beta',
 'prefs-datetime' => 'Ọjọ́ọdún àti àkókò',
 'prefs-labs' => 'Àwọn ìní ibiàdánwò',
-'prefs-wiki_user-pages' => 'Àwọn ojúewé oníṣe',
+'prefs-user-pages' => 'Àwọn ojúewé oníṣe',
 'prefs-personal' => 'Ọ̀rọ̀ nípa oníṣe',
 'prefs-rc' => 'Àwọn àtúnṣe tuntun',
 'prefs-watchlist' => 'Ìmójútó',
@@ -1209,7 +1209,7 @@ Kò ní ṣeé dápadà mọ́.',
 'prefs-emailconfirm-label' => 'E-mail ìmúdájú:',
 'prefs-textboxsize' => 'Ìtóbi fèrèsé àtúnṣe',
 'youremail' => 'E-mail:',
-'wiki_username' => 'Orúkọ oníṣe:',
+'username' => 'Orúkọ oníṣe:',
 'uid' => 'Nọmba ìdámọ̀ fún oníṣe:',
 'prefs-memberingroups' => 'Ọ̀kan nínú {{PLURAL:$1|ẹgbẹ́|àwọn ẹgbẹ́}}:',
 'prefs-registration' => 'Àsìkò ìforúkọsílẹ́:',
@@ -1251,35 +1251,35 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 'prefs-displaywatchlist' => 'Ìfihàn àwọn àṣàyàn',
 'prefs-diffs' => 'Àwọn ìyàtọ̀',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'Àdírẹ́ẹ̀sì e-mail dà bí èyí tótọ́',
 'email-address-validity-invalid' => 'Ẹ tẹ e-mail tótọ́',
 
-# wiki_user rights
-'wiki_userrights' => 'Ìmójútó àwọn ẹ̀tọ́ oníṣe',
-'wiki_userrights-lookup-wiki_user' => 'Àkóso àwọn àdìpò oníṣe',
-'wiki_userrights-wiki_user-editname' => 'Ẹ tẹ orúkọ oníṣe kan:',
-'editwiki_usergroup' => 'Àtúnṣe àwọn ẹgbẹ́ oníṣe',
-'editingwiki_user' => "Ṣíṣàyípadà àwọn ẹ̀tọ́ oníṣe fún oníṣe '''[[wiki_user:$1|$1]]''' $2",
-'wiki_userrights-editwiki_usergroup' => 'Àtúnṣe àwọn ẹgbẹ́ oníṣe',
-'savewiki_usergroups' => 'Ìmúpamọ́ àwọn ẹgbẹ́ oníṣe',
-'wiki_userrights-groupsmember' => 'Ọ̀kan nínú:',
-'wiki_userrights-groupsmember-auto' => 'Ẹlẹgbẹ́ tódájú:',
-'wiki_userrights-groups-help' => 'Ẹ le ṣàyípadà àwọn ẹgbẹ́ tí oníṣe wà nínú wọn:
+# User rights
+'userrights' => 'Ìmójútó àwọn ẹ̀tọ́ oníṣe',
+'userrights-lookup-user' => 'Àkóso àwọn àdìpò oníṣe',
+'userrights-user-editname' => 'Ẹ tẹ orúkọ oníṣe kan:',
+'editusergroup' => 'Àtúnṣe àwọn ẹgbẹ́ oníṣe',
+'editinguser' => "Ṣíṣàyípadà àwọn ẹ̀tọ́ oníṣe fún oníṣe '''[[User:$1|$1]]''' $2",
+'userrights-editusergroup' => 'Àtúnṣe àwọn ẹgbẹ́ oníṣe',
+'saveusergroups' => 'Ìmúpamọ́ àwọn ẹgbẹ́ oníṣe',
+'userrights-groupsmember' => 'Ọ̀kan nínú:',
+'userrights-groupsmember-auto' => 'Ẹlẹgbẹ́ tódájú:',
+'userrights-groups-help' => 'Ẹ le ṣàyípadà àwọn ẹgbẹ́ tí oníṣe wà nínú wọn:
 * Àpótí aṣàmìsí túmọ̀sí pé oníṣe náà wà nínú ẹgbẹ́ náà.
 * Àpótí aláìsàmìsí túmọ̀sí pé oníṣe náà kò sí nínú ẹgbẹ́ náà
 * Àmì * kan fihàn pé ẹ kò le yọ ẹgbẹ́ náà kúrò mọ́ tí ẹ bá ti ṣàfikún rẹ̀, tàbí lódì kejì.',
-'wiki_userrights-reason' => 'Ìdíẹ̀:',
-'wiki_userrights-no-interwiki' => 'Ẹ kò ní ìyọ̀nda láti ṣàtúnṣe àwọn ẹ̀tọ́ oníṣe lórí àwọn wiki míràn.',
-'wiki_userrights-nodatabase' => 'Ibùdó dátà $1 kò sí tàbí kò sí lábẹ́lé.',
-'wiki_userrights-nologin' => 'Ẹ gbọ́dọ̀ [[Special:wiki_userLogin|wọlé]] pẹ̀lú àpamọ́ alámòójútó láti pín àwọn ẹ̀tọ́ oníṣe.',
-'wiki_userrights-notallowed' => 'Àpamọ́ yín kò ní ìyọ̀nda láti ṣàfikún tàbí ṣàyọkúrò àwọn ẹ̀tọ́ oníṣe.',
-'wiki_userrights-changeable-col' => 'Àwọn ẹgbẹ́ tí ẹ le túnṣe',
-'wiki_userrights-unchangeable-col' => 'Àwọn ẹgbẹ́ tí ẹ kò le túnṣe',
+'userrights-reason' => 'Ìdíẹ̀:',
+'userrights-no-interwiki' => 'Ẹ kò ní ìyọ̀nda láti ṣàtúnṣe àwọn ẹ̀tọ́ oníṣe lórí àwọn wiki míràn.',
+'userrights-nodatabase' => 'Ibùdó dátà $1 kò sí tàbí kò sí lábẹ́lé.',
+'userrights-nologin' => 'Ẹ gbọ́dọ̀ [[Special:UserLogin|wọlé]] pẹ̀lú àpamọ́ alámòójútó láti pín àwọn ẹ̀tọ́ oníṣe.',
+'userrights-notallowed' => 'Àpamọ́ yín kò ní ìyọ̀nda láti ṣàfikún tàbí ṣàyọkúrò àwọn ẹ̀tọ́ oníṣe.',
+'userrights-changeable-col' => 'Àwọn ẹgbẹ́ tí ẹ le túnṣe',
+'userrights-unchangeable-col' => 'Àwọn ẹgbẹ́ tí ẹ kò le túnṣe',
 
 # Groups
 'group' => 'Ìdìpọ̀:',
-'group-wiki_user' => 'Àwọn oníṣe',
+'group-user' => 'Àwọn oníṣe',
 'group-autoconfirmed' => 'Àwọn oníṣe aláàmúdájúarawọn',
 'group-bot' => 'Àwọn Bot',
 'group-sysop' => 'Àwọn alámùójútó',
@@ -1287,14 +1287,14 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 'group-suppress' => 'Àwọn alábẹ̀wò',
 'group-all' => '(gbogbo)',
 
-'group-wiki_user-member' => '{{GENDER:$1|oníṣe}}',
+'group-user-member' => '{{GENDER:$1|oníṣe}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|oníṣe amúdájúaraẹnì}}',
 'group-bot-member' => '{{GENDER:$1|bot}}',
 'group-sysop-member' => '{{GENDER:$1|amójútó}}',
 'group-bureaucrat-member' => '{{GENDER:$1|aṣeibiṣẹ́}}',
 'group-suppress-member' => '{{GENDER:$1|akíyèsí}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Àwọn oníṣe',
+'grouppage-user' => '{{ns:project}}:Àwọn oníṣe',
 'grouppage-autoconfirmed' => '{{ns:project}}:Àwọn oníṣe ìmúdájú fùnrawọn',
 'grouppage-bot' => '{{ns:project}}:Àwọn Bot',
 'grouppage-sysop' => '{{ns:project}}:Àwọn alámùójútó',
@@ -1310,7 +1310,7 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 'right-minoredit' => "Ṣ'àmì sí àwọn àtúnṣe bíi kékeré",
 'right-move' => 'Yípò ojúewé',
 'right-move-subpages' => 'Yípò ojúewé pẹ̀lú àwọn ọmọ ojúewẹ́ rẹ̀',
-'right-move-rootwiki_userpages' => 'Ìyípòdà gbọ̀ngàn àwọn ojúewé oníṣe',
+'right-move-rootuserpages' => 'Ìyípòdà gbọ̀ngàn àwọn ojúewé oníṣe',
 'right-movefile' => 'Yípò fáìlì',
 'right-suppressredirect' => 'Mọ́ dàá àwọn àtúnjúwe lati ojúewé orísun nígbà tí ojúewé bá únyípòdà',
 'right-upload' => 'Ìrùsókè àwọn faili',
@@ -1336,16 +1336,16 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 'right-suppressionlog' => 'Ẹ wo àwọn àkọọ́lẹ̀ àdáni',
 'right-block' => 'Ìdínà àwọn oníṣe yìókù láti ṣàtúnṣe',
 'right-blockemail' => 'Ìdínà oníṣe kan láti fi e-mail ránṣẹ́',
-'right-hidewiki_user' => 'Ìdínà orúkọ oníṣe kan, ìbòmọ́lẹ̀ rẹ̀ kúrò ní ìgboro',
+'right-hideuser' => 'Ìdínà orúkọ oníṣe kan, ìbòmọ́lẹ̀ rẹ̀ kúrò ní ìgboro',
 'right-ipblock-exempt' => 'Fo àwọn ìdínà IP, ìdínà araẹni àti àwọn ìdínà àdìmọ́',
 'right-proxyunbannable' => 'Fo àwọn ìdínà aláraẹni àwọn ẹ̀rọ-ìwọ̀fà ẹlọ̀míràn',
 'right-unblockself' => 'Ìmúkúrò ìdínà ara wọn',
 'right-protect' => 'Ìyípadà àwọn ìpele àbò àti àtúnṣe àwọn ojúewé aláàbò',
 'right-editprotected' => 'Àtúnṣe àwọn ojúewé aláàbò (láìsí àbò àjámọ́ra)',
 'right-editinterface' => 'Àtúnṣe ìfojúkojú oníṣe',
-'right-editwiki_usercssjs' => 'Àtúnṣe àwọn fáìlì CSS àti JS ti àwọn oníṣe mìíràn',
-'right-editwiki_usercss' => 'Àtúnṣe àwọn fáìlì CSS ti àwọn oníṣe mìíràn',
-'right-editwiki_userjs' => 'Àtúnṣe àwọn fáìlì JS ti àwọn oníṣe mìíràn',
+'right-editusercssjs' => 'Àtúnṣe àwọn fáìlì CSS àti JS ti àwọn oníṣe mìíràn',
+'right-editusercss' => 'Àtúnṣe àwọn fáìlì CSS ti àwọn oníṣe mìíràn',
+'right-edituserjs' => 'Àtúnṣe àwọn fáìlì JS ti àwọn oníṣe mìíràn',
 'right-rollback' => 'Kíákíá yí àwọn àtúnṣe oníṣe tó ṣàtúnṣe ojúewé kan pàtó gbẹ̀yìn sẹ́yìn',
 'right-markbotedits' => 'Ṣe àmì sí àwọn àtúnṣe àyípadà bíi àtúnṣe bot',
 'right-noratelimit' => 'Kò ní ní òpin ìdíye',
@@ -1356,14 +1356,14 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 'right-patrolmarks' => 'Ìwo àwọn àtúnṣe tuntun tí wọ́n ní àmì ìṣọ́',
 'right-unwatchedpages' => 'Ìwo àtòjọ àwọn ojúewé aláìṣọ́',
 'right-mergehistory' => 'Ìdàpọ̀ ìtàn àwọn ojúewé',
-'right-wiki_userrights' => 'Àtúnṣe gbogbo àwọn ẹ̀tọ́ oníṣe',
-'right-wiki_userrights-interwiki' => 'Àtúnṣe àwọn ẹ̀tọ́ oníṣe àwọn oníṣe lórí àwọn wiki míràn',
+'right-userrights' => 'Àtúnṣe gbogbo àwọn ẹ̀tọ́ oníṣe',
+'right-userrights-interwiki' => 'Àtúnṣe àwọn ẹ̀tọ́ oníṣe àwọn oníṣe lórí àwọn wiki míràn',
 'right-siteadmin' => 'Ìtìpa àti ìṣí ibùdó dátà',
 'right-override-export-depth' => 'Ìkójáde àwọn ojúewé lámùúpọ̀ mọ́ àwọn ojúewé jíjápọ̀ títí dé ìbú 5',
 'right-sendemail' => 'Fi e-mail ránṣẹ́ sí àwọn oníṣe míràn',
 'right-passwordreset' => 'Ìwo àwọn e-mail fún ìtúntò ọ̀rọ̀ìpamọ́',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Àwọn ẹ̀tọ́ oníṣe',
 'rightslogtext' => 'Èyì ni àkọọ́lẹ̀ kan àwọn àtúnṣe sí àwọn ẹ̀tọ́ oníṣe.',
 'rightslogentry' => 'yí ẹgbẹ́ tí $1 wà kúrò láti $2 sí $3',
@@ -1379,7 +1379,7 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 'action-minoredit' => 'fagisí àtúnṣe yìí gẹ́gẹ́ bíi kékeré',
 'action-move' => 'yípò ojúewé yìí',
 'action-move-subpages' => 'yípò ojúewé yìí àti àwọn ọmọ ojúewé rẹ̀',
-'action-move-rootwiki_userpages' => 'yípòdà gbọ̀ngàn àwọn ojúewé oníṣe',
+'action-move-rootuserpages' => 'yípòdà gbọ̀ngàn àwọn ojúewé oníṣe',
 'action-movefile' => 'yípò fáìlì yìí',
 'action-upload' => 'ìrùsókè fáìlì yìí',
 'action-reupload' => 'kọléṣórí fáìlì tó wà yìí',
@@ -1402,8 +1402,8 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 'action-autopatrol' => 'mú kí àwọn àtúnṣe yín ó jẹ́ ṣíṣáàmì sí bíi onísíṣọ́',
 'action-unwatchedpages' => 'ìwo àtòjọ àwọn ojúewé aláìṣọ́',
 'action-mergehistory' => 'ìdàpọ̀ ìtàn ojúewé yìí',
-'action-wiki_userrights' => 'àtúnṣe gbogbo àwọn ẹ̀tọ́ oníṣe',
-'action-wiki_userrights-interwiki' => 'àtúnṣe àwọn ẹ̀tọ́ oníṣe àwọn oníṣe lórí àwọn wiki míràn',
+'action-userrights' => 'àtúnṣe gbogbo àwọn ẹ̀tọ́ oníṣe',
+'action-userrights-interwiki' => 'àtúnṣe àwọn ẹ̀tọ́ oníṣe àwọn oníṣe lórí àwọn wiki míràn',
 'action-siteadmin' => 'tìpa tàbí ṣí ibùdó dátà',
 'action-sendemail' => 'fi e-mail ránṣẹ́',
 
@@ -1434,7 +1434,7 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 'minoreditletter' => 'k',
 'newpageletter' => 'T',
 'boteditletter' => 'b',
-'number_of_watching_wiki_users_pageview' => '[{{PLURAL:$1|Oníṣe $1|Àwọn oníṣe $1}} ún ṣe ìmójútó]',
+'number_of_watching_users_pageview' => '[{{PLURAL:$1|Oníṣe $1|Àwọn oníṣe $1}} ún ṣe ìmójútó]',
 'rc_categories' => 'Òpin sí àwọn ẹ̀ka (pínsọ́tọ̀ pẹ̀lú "|")',
 'rc_categories_any' => 'Èyíkéyìí',
 'rc-change-size-new' => '$1 {{PLURAL:$1|byte|bytes}} lẹ́yìn àtúnṣe',
@@ -1460,7 +1460,7 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 'reuploaddesc' => 'Fagilé ìrùsókè kí ó tó padà sí fọ́ọ̀mù ìrùsókè',
 'upload-tryagain' => 'Ìkóólẹ̀ fáìlì ìjúwe aláàtúnṣe',
 'uploadnologin' => 'Ẹ kò tíì wọlé',
-'uploadnologintext' => 'Ẹ gbọ́dọ̀ [[Special:wiki_userLogin|wọlè]] láti rùsókè faili.',
+'uploadnologintext' => 'Ẹ gbọ́dọ̀ [[Special:UserLogin|wọlè]] láti rùsókè faili.',
 'upload_directory_missing' => 'Àpò ìrùsókè ($1) kòsí bẹ́ẹ̀sìni kò le jẹ́ dídá látọwọ́ ẹ̀rọ-ìwọ̀fà.',
 'upload_directory_read_only' => 'Àpò ìrùsókè ($1) kò ṣeékọ sí nínú látọwọ́ ẹ̀rọ-ìwọ̀fà.',
 'uploaderror' => 'Àsìse ìrùsókè',
@@ -1588,11 +1588,11 @@ $1',
 'upload-proto-error-text' => 'Ìrùsókè ọ̀ọ́kán pọndandan pé kí àwọn URL ó bẹ̀rẹ̀ pẹ̀lú <code>http://</code> tàbí <code>ftp://</code>.',
 'upload-file-error' => 'Àsiṣe ínú',
 'upload-file-error-text' => 'Àsìṣe abẹ́inú wáyé nígbà ìgbéra láti dá fáìlì onígbàdíẹ̀ kan lórí ẹ̀rọ-ìwọ̀fà náà.
-Ẹ jọ̀wọ́ ẹ bẹ [[Special:Listwiki_users/sysop|olùmójútó]] kan wò fún ìrànlọ́wọ́.',
+Ẹ jọ̀wọ́ ẹ bẹ [[Special:ListUsers/sysop|olùmójútó]] kan wò fún ìrànlọ́wọ́.',
 'upload-misc-error' => 'Àsìṣe àìmọ̀ ìrùsókè',
 'upload-misc-error-text' => 'Àsìṣe àìmọ̀ kan ṣẹlẹ̀ lásìkò ìrùsókè.
 Ẹ jọ̀wọ́ ẹ ridájú pé URL náà jẹ́ oníbáámu, tó sí ṣe é bọ́sí, kí ẹ tó tún gbìyànjú.
-Tí ìṣòro náà ò bá jáwọ́, ẹ bẹ [[Special:Listwiki_users/sysop|olùmójútó]] kan wò fún ìrànlọ́wọ́.',
+Tí ìṣòro náà ò bá jáwọ́, ẹ bẹ [[Special:ListUsers/sysop|olùmójútó]] kan wò fún ìrànlọ́wọ́.',
 'upload-too-many-redirects' => 'URL náà ní àwọn àtúnjúwe pípọ̀jùlọ',
 'upload-unknown-size' => 'Iye ìtóbi kòsí',
 'upload-http-error' => 'Àṣìṣe HTTP ti ṣẹlẹ̀: $1',
@@ -1711,7 +1711,7 @@ Tó bá jẹ́ jíjọ̀ gẹ́gẹ́bí oníṣe, àwọn fáìlì tí oníṣe
 'listfiles_thumb' => 'Àwòrán kékeré',
 'listfiles_date' => 'Ọjọ́ọdún',
 'listfiles_name' => 'Orúkọ',
-'listfiles_wiki_user' => 'Oníṣe',
+'listfiles_user' => 'Oníṣe',
 'listfiles_size' => 'Ìtóbi',
 'listfiles_description' => 'Ìjúwe',
 'listfiles_count' => 'Àwọn àtẹ̀jáde',
@@ -1728,7 +1728,7 @@ Tó bá jẹ́ jíjọ̀ gẹ́gẹ́bí oníṣe, àwọn fáìlì tí oníṣe
 'filehist-thumb' => 'Àwòrán kékeré',
 'filehist-thumbtext' => 'Àwòrán kékeré fún ní $1',
 'filehist-nothumb' => 'Kò sí àwòrán kékeré',
-'filehist-wiki_user' => 'Oníṣe',
+'filehist-user' => 'Oníṣe',
 'filehist-dimensions' => 'Àwọn ìwọ̀n',
 'filehist-filesize' => 'Ìtóbi fáìlì',
 'filehist-comment' => 'Àríwí',
@@ -1820,7 +1820,7 @@ Tó bá jẹ́ jíjọ̀ gẹ́gẹ́bí oníṣe, àwọn fáìlì tí oníṣe
 'statistics-header-pages' => 'Àwọn statistiki ojúewé',
 'statistics-header-edits' => 'Àwọn statistiki àtúnṣe',
 'statistics-header-views' => 'Ẹ wo àwọn statístíkì',
-'statistics-header-wiki_users' => 'Àwọn statistiki oníṣe',
+'statistics-header-users' => 'Àwọn statistiki oníṣe',
 'statistics-header-hooks' => 'Àwọn statistiki míràn',
 'statistics-articles' => 'Àwọn ojúewé àkóónú',
 'statistics-pages' => 'Àwọn ojúewé',
@@ -1831,9 +1831,9 @@ Tó bá jẹ́ jíjọ̀ gẹ́gẹ́bí oníṣe, àwọn fáìlì tí oníṣe
 'statistics-views-total' => 'Àpapọ̀ iye ìwò',
 'statistics-views-total-desc' => 'Ìwò sí àwọn ojúewé tí kò sí àti àwọn ojúewé pàtàkì kò jẹ́ àmúpọ̀.',
 'statistics-views-peredit' => 'Iye ìwò fún àtúnṣe kọ̀ọ̀kan',
-'statistics-wiki_users' => '[[Special:Listwiki_users|Àwọn oníṣe]] ajẹ́fífilórúkọsílẹ̀',
-'statistics-wiki_users-active' => 'Àwọn oníṣe agbéṣe',
-'statistics-wiki_users-active-desc' => 'Àwọn oníṣe tí wọ́n ti ṣe ìgbéṣe kan ní {{PLURAL:$1|ọjọ́ kan|ọjọ́ $1}} sẹ́yìn',
+'statistics-users' => '[[Special:ListUsers|Àwọn oníṣe]] ajẹ́fífilórúkọsílẹ̀',
+'statistics-users-active' => 'Àwọn oníṣe agbéṣe',
+'statistics-users-active-desc' => 'Àwọn oníṣe tí wọ́n ti ṣe ìgbéṣe kan ní {{PLURAL:$1|ọjọ́ kan|ọjọ́ $1}} sẹ́yìn',
 'statistics-mostpopular' => 'Àwọn ojúewé tí wọ́n jẹ́ wíwò jùlọ',
 
 'disambiguations' => 'Àwọn ojúewé tó jápọ̀ mọ́ àwọn ojúewé ìṣeojútùú',
@@ -1911,13 +1911,13 @@ Oríìlà kọ̀ọ̀kan ní àjápọ̀ sí àtúnjúwe àkọ́kọ́ àti èk
 'protectedtitles' => 'Àwọn àkọlé ajẹ́dídáàbòbò',
 'protectedtitlestext' => 'Àwọn àkọlé ìsàlẹ̀ yìí jẹ́ dídáàbòbò láti dá',
 'protectedtitlesempty' => 'Kò sí àwọn àkolé kankan tó ní àbò pẹ̀lú àwọn pàrámítà wọ̀nyí.',
-'listwiki_users' => 'Àkójọ àwọn oníṣe',
-'listwiki_users-editsonly' => 'Ìfihàn àwọn oníṣe tí wọ́n ní àtúnṣe níkan',
-'listwiki_users-creationsort' => 'Ìtò gẹ́gẹ́bí ọjọ́ ìdá',
-'wiki_usereditcount' => '{{PLURAL:$1|Àtúnṣe|Àwọn àtúnṣe}} $1',
-'wiki_usercreated' => '{{GENDER:$3|Dídá}} ní ọjọ́ $1 ní ago $2',
+'listusers' => 'Àkójọ àwọn oníṣe',
+'listusers-editsonly' => 'Ìfihàn àwọn oníṣe tí wọ́n ní àtúnṣe níkan',
+'listusers-creationsort' => 'Ìtò gẹ́gẹ́bí ọjọ́ ìdá',
+'usereditcount' => '{{PLURAL:$1|Àtúnṣe|Àwọn àtúnṣe}} $1',
+'usercreated' => '{{GENDER:$3|Dídá}} ní ọjọ́ $1 ní ago $2',
 'newpages' => 'Àwọn ojúewé tuntun',
-'newpages-wiki_username' => 'Orúkọ oníṣe:',
+'newpages-username' => 'Orúkọ oníṣe:',
 'ancientpages' => 'Àwọn ojúewé tópẹ́jùlọ',
 'move' => 'Ìyípòdà',
 'movethispage' => 'Yípò ojúewé yìí',
@@ -1941,7 +1941,7 @@ Oríìlà kọ̀ọ̀kan ní àjápọ̀ sí àtúnjúwe àkọ́kọ́ àti èk
 'booksources-invalid-isbn' => 'ISBN náà kò dà bíi pé ó jẹ́ oníìbámu; ẹ yẹ̀ ẹ́ wò bóyá àsìṣe wà láti ibi tó jẹ́ kíkọ wá.',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Olùṣe:',
+'specialloguserlabel' => 'Olùṣe:',
 'speciallogtitlelabel' => 'Àfojúsùn (àkọlé tàbí oníṣe):',
 'log' => 'Àwọn àkọọ́lẹ̀',
 'all-logs-page' => 'Gbogbo àkọsílẹ̀',
@@ -1997,24 +1997,24 @@ Bákannáà ẹ wo [[Special:WantedCategories|àwọn ẹ̀ka wíwá]].',
 'linksearch-line' => '$1 jẹ́ jíjápọ̀ láti $2',
 'linksearch-error' => 'Àwọn ọ̀rọ̀ àfiwá le hàn ní ìbẹ̀rẹ̀ orúkọ ibiìtakùn (hostname) nìkan.',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'Ìfihàn àwọn oníṣe nípa bíbẹ̀rẹ̀ láti:',
-'listwiki_users-submit' => 'Ìfihan',
-'listwiki_users-noresult' => 'Kò rí oníṣe kankan.',
-'listwiki_users-blocked' => '(dídínà)',
+# Special:ListUsers
+'listusersfrom' => 'Ìfihàn àwọn oníṣe nípa bíbẹ̀rẹ̀ láti:',
+'listusers-submit' => 'Ìfihan',
+'listusers-noresult' => 'Kò rí oníṣe kankan.',
+'listusers-blocked' => '(dídínà)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'Àtòjọ àwọn oníṣe aláàgbéṣe',
-'activewiki_users-intro' => 'Èyí ni àtòjọ àwọn oníṣe tí wọ́n ní irú àgbéṣe kan láàrin {{PLURAL:$1|ọjọ́|ọjọ́}} $1 sẹ́yìn.',
-'activewiki_users-count' => '{{PLURAL:$1|Àtúnṣe|Àwọn àtúnṣe}} $1 ní {{PLURAL:$3|ọjọ́|ọjọ́}} $3 sẹ́yìn',
-'activewiki_users-from' => 'Ìfihàn àwọn oníṣe nípa bíbẹ̀rẹ̀ láti:',
-'activewiki_users-hidebots' => 'Ìbòmọ́lẹ̀ àwọn bọt',
-'activewiki_users-hidesysops' => 'Ìbòmọ́lẹ̀ àwọn olùmójútó',
-'activewiki_users-noresult' => 'Kò rí oníṣe kankan.',
+# Special:ActiveUsers
+'activeusers' => 'Àtòjọ àwọn oníṣe aláàgbéṣe',
+'activeusers-intro' => 'Èyí ni àtòjọ àwọn oníṣe tí wọ́n ní irú àgbéṣe kan láàrin {{PLURAL:$1|ọjọ́|ọjọ́}} $1 sẹ́yìn.',
+'activeusers-count' => '{{PLURAL:$1|Àtúnṣe|Àwọn àtúnṣe}} $1 ní {{PLURAL:$3|ọjọ́|ọjọ́}} $3 sẹ́yìn',
+'activeusers-from' => 'Ìfihàn àwọn oníṣe nípa bíbẹ̀rẹ̀ láti:',
+'activeusers-hidebots' => 'Ìbòmọ́lẹ̀ àwọn bọt',
+'activeusers-hidesysops' => 'Ìbòmọ́lẹ̀ àwọn olùmójútó',
+'activeusers-noresult' => 'Kò rí oníṣe kankan.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Àkọsílẹ̀ ìdá oníṣe',
-'newwiki_userlogpagetext' => 'Àkọọ́lẹ̀ àwọn ìdá oníṣe nì yí.',
+# Special:Log/newusers
+'newuserlogpage' => 'Àkọsílẹ̀ ìdá oníṣe',
+'newuserlogpagetext' => 'Àkọọ́lẹ̀ àwọn ìdá oníṣe nì yí.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Àwọn ẹ̀tọ́ ẹgbẹ́ oníṣe',
@@ -2035,27 +2035,27 @@ Bákannáà ẹ wo [[Special:WantedCategories|àwọn ẹ̀ka wíwá]].',
 'listgrouprights-addgroup-self-all' => 'Ìfikún gbogbo ẹgbẹ́ mọ́ àpamọ́ araẹni',
 'listgrouprights-removegroup-self-all' => 'Ìyọkúrò gbogbo ẹgbẹ́ kúrò nínú àpamọ́ araẹni',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'Kò sí àdírẹ́sì àfiránṣẹ́',
-'mailnologintext' => 'Ẹ gbọ́dọ̀ ti [[Special:wiki_userLogin|wọlé]] kí ẹ sì ní àdírẹ́ẹ̀sì e-mail oníìbámu nínú [[Special:Preferences|àwọn ìfẹ́ràn]] yín láti le baà le fi e-mail ránṣẹ́ sí àwọn onísẹ míràn.',
-'emailwiki_user' => 'Ẹ fi e-mail ránṣẹ́ sí oníṣe yìí',
-'emailwiki_user-title-target' => 'E-mail sí {{GENDER:$1|oníṣe}} yìí',
-'emailwiki_user-title-notarget' => 'E-mail sí oníṣe',
+'mailnologintext' => 'Ẹ gbọ́dọ̀ ti [[Special:UserLogin|wọlé]] kí ẹ sì ní àdírẹ́ẹ̀sì e-mail oníìbámu nínú [[Special:Preferences|àwọn ìfẹ́ràn]] yín láti le baà le fi e-mail ránṣẹ́ sí àwọn onísẹ míràn.',
+'emailuser' => 'Ẹ fi e-mail ránṣẹ́ sí oníṣe yìí',
+'emailuser-title-target' => 'E-mail sí {{GENDER:$1|oníṣe}} yìí',
+'emailuser-title-notarget' => 'E-mail sí oníṣe',
 'emailpage' => 'E-mail sí oníṣe',
 'emailpagetext' => 'Ẹ le lo fọ́ọ̀mù ìsàlẹ̀ yìí láti fi e-mail ránṣẹ́ sí {{GENDER:$1|oníṣe}} yìí.
 Àdírẹ́ẹ̀sì e-mail tí ẹ tìbọ sínú [[Special:Preferences|àwọn ìfẹ́ràn oníṣe yín]] yíò hàn bíi "Láti" àdírẹ́ẹ̀sì e-mail náà, kí agbaìránṣẹ́ ó le baà fi ìdáhùn ránṣẹ́ tààrà sí yín.',
-'wiki_usermailererror' => 'Ẹ̀rọ ìránṣẹ́ mú àsìṣe padà:',
+'usermailererror' => 'Ẹ̀rọ ìránṣẹ́ mú àsìṣe padà:',
 'defemailsubject' => 'E-mail {{SITENAME}} látọwọ́ oníṣe "$1"',
-'wiki_usermaildisabled' => 'Àdálẹ́kun e-mail oníṣe',
-'wiki_usermaildisabledtext' => 'Ẹ kò le fi e-mail ránṣẹ́ sí àwọn oníṣe míràn lórí wiki yìí',
+'usermaildisabled' => 'Àdálẹ́kun e-mail oníṣe',
+'usermaildisabledtext' => 'Ẹ kò le fi e-mail ránṣẹ́ sí àwọn oníṣe míràn lórí wiki yìí',
 'noemailtitle' => 'Kò sí àdírẹ̀sì e-mail',
 'noemailtext' => 'Oníṣe yìí kò tìí ṣètò àdírẹ́ẹ̀sì e-mail tótọ́ kankan.',
 'nowikiemailtitle' => 'E-mail kankan kò jẹ́ gbígbà láyè',
 'nowikiemailtext' => 'Oníṣe yìí ti yàn láti mọ́ gba e-mail látọ̀dọ̀ àwọn oníṣe míràn.',
 'emailnotarget' => 'Orúkọ oníṣe aláìníìbámu tàbí aláìsí fún agbaìránṣẹ́.',
 'emailtarget' => 'Ìtìbọnú orúkọ oníṣe agbaìránṣẹ́',
-'emailwiki_username' => 'Orúkọ oníṣe:',
-'emailwiki_usernamesubmit' => 'Fúnsílẹ̀',
+'emailusername' => 'Orúkọ oníṣe:',
+'emailusernamesubmit' => 'Fúnsílẹ̀',
 'email-legend' => 'Fi e-mail ránṣẹ́ sí oníṣe {{SITENAME}} mìíràn',
 'emailfrom' => 'Láti:',
 'emailto' => 'Sí:',
@@ -2066,11 +2066,11 @@ Bákannáà ẹ wo [[Special:WantedCategories|àwọn ẹ̀ka wíwá]].',
 'emailccsubject' => 'Àwòkọ ìránṣẹ́ yín sí $1: $2',
 'emailsent' => 'E-mail ti jẹ́ fìfiránṣẹ́',
 'emailsenttext' => 'Ìránṣẹ̀ e-mail yín ti jẹ́ fífiránṣé.',
-'emailwiki_userfooter' => 'E-mail yìí wá látọ̀dọ̀ $1 sí $2 pẹ̀lú ìfigbéṣe "E-mail oníṣe" ní {{SITENAME}}.',
+'emailuserfooter' => 'E-mail yìí wá látọ̀dọ̀ $1 sí $2 pẹ̀lú ìfigbéṣe "E-mail oníṣe" ní {{SITENAME}}.',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'Ẹ̀ únfi sístẹ́mù ìránṣẹ́ sílẹ̀.',
-'wiki_usermessage-editor' => 'Sìstẹ́mú olúránṣẹ́',
+# User Messenger
+'usermessage-summary' => 'Ẹ̀ únfi sístẹ́mù ìránṣẹ́ sílẹ̀.',
+'usermessage-editor' => 'Sìstẹ́mú olúránṣẹ́',
 
 # Watchlist
 'watchlist' => 'Ìmójútó mi',
@@ -2079,7 +2079,7 @@ Bákannáà ẹ wo [[Special:WantedCategories|àwọn ẹ̀ka wíwá]].',
 'nowatchlist' => 'Ẹ kò ní ohun kankan nínú ìmójútó yín.',
 'watchlistanontext' => 'Ẹ jọ̀wọ́ $1 láti wò tàbí ṣàtúnṣe àwọn ohun inú ìmójútó yín.',
 'watchnologin' => 'Ẹ kò tíì wọlé',
-'watchnologintext' => 'Ẹ gbọ́dọ̀ [[Special:wiki_userLogin|wọlè]] láti ṣàtúnṣe ìmójútó yín.',
+'watchnologintext' => 'Ẹ gbọ́dọ̀ [[Special:UserLogin|wọlè]] láti ṣàtúnṣe ìmójútó yín.',
 'addwatch' => 'Ìfikún mọ́ ìmójútó',
 'addedwatchtext' => 'A ti ṣ\'àfikún "[[:$1]]" sí [[Special:Watchlist|ìmójútó]] yín.
 A óò ṣ\'àkójọ àwọn àtúnṣe ọjọ́wajú sí ojúewé yìí àti ojúewé ọ̀rọ̀ rẹ̀ sí bẹ̀.',
@@ -2193,12 +2193,12 @@ Fún ìrànwọ́ àti ìbérè:
 'rollbackfailed' => 'Ìyípadà kùnà',
 'cantrollback' => 'Kò le dá àtúnṣe padà;
 oníṣe tógbẹ̀yìn nìkan ni olùdá ojúewé yìí.',
-'alreadyrolled' => 'Kò le ṣe ìdápadà àtúnṣe tógbèyìn sí [[:$1]] látọwọ́ [[wiki_user:$2|$2]] ([[wiki_user talk:$2|ọ̀rọ̀]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]); ẹlòmíràn ti ṣàtúnṣe tàbí ṣe ìdápadà ojúewé náà tẹ̀lẹ̀.
+'alreadyrolled' => 'Kò le ṣe ìdápadà àtúnṣe tógbèyìn sí [[:$1]] látọwọ́ [[User:$2|$2]] ([[User talk:$2|ọ̀rọ̀]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]); ẹlòmíràn ti ṣàtúnṣe tàbí ṣe ìdápadà ojúewé náà tẹ̀lẹ̀.
 
-Àtúnṣe tógbẹ̀yìn sí ojúewé náà wá látọwọ́ [[wiki_user:$3|$3]] ([[wiki_user talk:$3|ọ̀rọ̀]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+Àtúnṣe tógbẹ̀yìn sí ojúewé náà wá látọwọ́ [[User:$3|$3]] ([[User talk:$3|ọ̀rọ̀]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "Àkótán àtúnṣe náà jẹ́: \"''\$1''\".",
-'revertpage' => 'Ìdápadà àwọn àtúnṣe ti [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|ọ̀rọ̀]]) sí àtúnyẹ̀wò tógbẹ̀yìn látọwó [[wiki_user:$1|$1]]',
-'revertpage-nowiki_user' => 'Ìdápadà àwọn àtúnṣe ti (ọrúkọ oníṣe jẹ́ yíyọkúrò) sí àtúnyẹ̀wò tógbẹ̀yìn látọwọ́ [[wiki_user:$1|$1]]',
+'revertpage' => 'Ìdápadà àwọn àtúnṣe ti [[Special:Contributions/$2|$2]] ([[User talk:$2|ọ̀rọ̀]]) sí àtúnyẹ̀wò tógbẹ̀yìn látọwó [[User:$1|$1]]',
+'revertpage-nouser' => 'Ìdápadà àwọn àtúnṣe ti (ọrúkọ oníṣe jẹ́ yíyọkúrò) sí àtúnyẹ̀wò tógbẹ̀yìn látọwọ́ [[User:$1|$1]]',
 'rollback-success' => 'Ìdápadà àwọn àtúnṣe ti $1;
 jẹ́ yíyípadà sí àtúnyẹ̀wò tógbẹ̀yìn látọwọ́ $2.',
 
@@ -2355,13 +2355,13 @@ $1',
 'sp-contributions-uploads' => 'àwọn ìrùsókè',
 'sp-contributions-logs' => 'àwọn àkọọ́lẹ̀',
 'sp-contributions-talk' => 'ọ̀rọ̀',
-'sp-contributions-wiki_userrights' => 'ìmójútó àwọn ẹ̀tọ́ oníṣe',
+'sp-contributions-userrights' => 'ìmójútó àwọn ẹ̀tọ́ oníṣe',
 'sp-contributions-blocked-notice' => 'Lọ́wọ́lọ́wọ́ oníṣe yìí jẹ́ dídílọ́nà.
 Àkọsílẹ̀ ìdínà àìpẹ́ nìyí nísàlẹ̀ fún ìtọ́kasí:',
 'sp-contributions-blocked-notice-anon' => 'Lọ́wọ́lọ́wọ́ àdírẹ́ẹ̀sì IP yìí jẹ́ dídílọ́nà.
 Àkọọ́lẹ̀ ìdínà àìpẹ́ nìyí nísàlẹ̀ fún ìtọ́kasí:',
 'sp-contributions-search' => 'Àwáàrí fún àwọn àfikún',
-'sp-contributions-wiki_username' => 'Àdírẹ́ẹ̀sì IP tàbí orúkọ oníṣe:',
+'sp-contributions-username' => 'Àdírẹ́ẹ̀sì IP tàbí orúkọ oníṣe:',
 'sp-contributions-toponly' => 'Ìfihàn àwọn àtúnṣe tí wọn jẹ́ àtúnyẹ̀wò àìpẹ́ nìkan',
 'sp-contributions-submit' => 'Ṣàwárí',
 
@@ -2394,7 +2394,7 @@ $1',
 'blockiptext' => 'Ẹ lo fọ́ọ̀mù ìsàlẹ̀ láti dínà ìle kọ láti ọ̀dọ̀ àdírẹ́ẹ̀sì IP pàtó kan tàbí orúkọ oníṣe.
 Ẹyí gbọ́dọ̀ jẹ́ síṣe láti dínà ìṣèbàjẹ́ nìkan, àtí gẹ́gẹ́bí [[{{MediaWiki:Policy-url}}|ètò ìsiṣẹ́]].
 Ẹ sọ ìdí pàtó nísàlẹ̀ (fún àpẹrẹ, ìtọ́kasí àwọn ojúewé pàtó tí wọ́n jẹ́ bíbàjẹ́).',
-'ipadressorwiki_username' => 'Àdírẹ́ẹ̀sì IP tàbí orúkọ oníṣe:',
+'ipadressorusername' => 'Àdírẹ́ẹ̀sì IP tàbí orúkọ oníṣe:',
 'ipbexpiry' => 'Ìwásópin:',
 'ipbreason' => 'Ìdíẹ̀:',
 'ipbreasonotherlist' => 'Ìdí mìíràn',
@@ -2416,8 +2416,8 @@ $1',
 'ipbotheroption' => 'òmíràn',
 'ipbotherreason' => 'Ìdí míràn/àfikún:',
 'ipbhidename' => 'Ìbómọ́lẹ̀ orúkọ oníṣe nínú àwọn àtúnṣe àti àwọn àkójọ',
-'ipbwatchwiki_user' => 'Ìmójútó àwọn ojúewé oníṣe àti ọ̀rọ̀ oníṣe yìí',
-'ipb-disablewiki_usertalk' => 'Ìdínà oníṣe yìí láti ṣàtúnṣe ojúewé ọ̀rọ̀ wọn lásìkò kannáà tí wọ́n jẹ́ dídílọ́nà',
+'ipbwatchuser' => 'Ìmójútó àwọn ojúewé oníṣe àti ọ̀rọ̀ oníṣe yìí',
+'ipb-disableusertalk' => 'Ìdínà oníṣe yìí láti ṣàtúnṣe ojúewé ọ̀rọ̀ wọn lásìkò kannáà tí wọ́n jẹ́ dídílọ́nà',
 'ipb-change-block' => 'Ìtún dílọ́nà oníṣe pẹ̀lú àwọn ìtòólẹ̀ yìí',
 'ipb-confirm' => 'Ìmúdájú ìdínà',
 'badipaddress' => 'Àdírẹ́ẹ̀sì IP tíkòtọ́',
@@ -2425,7 +2425,7 @@ $1',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] ti jẹ́ dídílọ́nà.<br />
 Ẹ wo [[Special:BlockList|àtòjọ ìdínà]] láti ṣàtúnyẹ̀wò àwọn ìdínà.',
 'ipb-blockingself' => 'Ẹ ti fẹ́ dínà ara yín! Ṣé èyí dáa yín lójú?',
-'ipb-confirmhidewiki_user' => 'Ẹ ti fẹ́ dínà oníṣe pẹ̀lú "ìbómọ́lẹ̀ oníṣe" ní ṣíṣí. Èyí yíò ṣe ìrẹ̀mọ́lẹ̀ orúkọ oníṣe nínú gbogbo àtòjọ àtí àkọọ́lẹ̀. Ṣé ó dá yín lójú pé èyí ní ẹ fẹ́ ṣe?',
+'ipb-confirmhideuser' => 'Ẹ ti fẹ́ dínà oníṣe pẹ̀lú "ìbómọ́lẹ̀ oníṣe" ní ṣíṣí. Èyí yíò ṣe ìrẹ̀mọ́lẹ̀ orúkọ oníṣe nínú gbogbo àtòjọ àtí àkọọ́lẹ̀. Ṣé ó dá yín lójú pé èyí ní ẹ fẹ́ ṣe?',
 'ipb-edit-dropdown' => 'Àtúnṣe àwọn ìdí ìdínà',
 'ipb-unblock-addr' => 'Ìmúkúrò ìdínà $1',
 'ipb-unblock' => 'Ìmúkúrò ìdínà orúkọ oníṣe kan tàbí àdírẹ́sì IP',
@@ -2434,13 +2434,13 @@ $1',
 'unblockip' => 'Ìmúkúrò ìdínà oníṣe',
 'unblockiptext' => 'Lo fọ́ọ́mù ìsàlẹ̀ láti dá ẹ̀tọ́ ìkọ padà fún àdírẹ́ẹ̀sì IP tàbí orúkọ oníṣe dídílọ́nà tẹ́lẹ̀.',
 'ipusubmit' => 'Ìmúkúrò ìdínà yìí',
-'unblocked' => '[[wiki_user:$1|$1]] ti jẹ́ mímú kúrò nínú ìdínà',
+'unblocked' => '[[User:$1|$1]] ti jẹ́ mímú kúrò nínú ìdínà',
 'unblocked-range' => '$1 ti jẹ́ aláìdílọ́nà',
 'unblocked-id' => 'Ìdínà $1 ti jẹ́ mímúkúrò',
 'blocklist' => 'Àwọn oníṣe aládìílọ́nà',
 'ipblocklist' => 'Àwọn oníṣe adílọ́nà',
 'ipblocklist-legend' => 'Wá oníṣe adílọ́nà kan',
-'blocklist-wiki_userblocks' => 'Ìbòmọ́lẹ̀ àwọn ìdínà àpamọ́',
+'blocklist-userblocks' => 'Ìbòmọ́lẹ̀ àwọn ìdínà àpamọ́',
 'blocklist-tempblocks' => 'Ìbòmọ́lẹ̀ àwọn ìdínà onígbàdíẹ̀',
 'blocklist-addressblocks' => 'Ìbòmọ́lẹ̀ àwọn ìdínà IP ẹyọkan',
 'blocklist-rangeblocks' => 'Ìbòmọ́lẹ̀ àwọn ìdínà àdìmọ́',
@@ -2459,7 +2459,7 @@ $1',
 'noautoblockblock' => 'dídálẹ́kun ìdínà fúnrararẹ̀',
 'createaccountblock' => 'ìdínà ìṣèdá àkópamọ́',
 'emailblock' => 'e-mail jẹ́ dídílọ́nà',
-'blocklist-nowiki_usertalk' => 'kò le ṣàtúnṣe ojúewé ọ̀rọ̀ taraẹni',
+'blocklist-nousertalk' => 'kò le ṣàtúnṣe ojúewé ọ̀rọ̀ taraẹni',
 'ipblocklist-empty' => 'Àkójọ ìdínà jẹ́ òfo.',
 'ipblocklist-no-results' => 'Àdírẹ́sì IP àti orúkọ oníṣe tì ẹ tọrọ kó jẹ́ dídílọ́nà.',
 'blocklink' => 'dínà',
@@ -2467,7 +2467,7 @@ $1',
 'change-blocklink' => 'yí ìdínà padà',
 'contribslink' => 'àfikún',
 'emaillink' => 'fi e-mail ránṣẹ́',
-'autoblocker' => 'Ẹ ti jẹ́ dídílọ́nà nítọrípé àdírẹ́ẹ̀sì IP yín ti jẹ́ lílò láìpẹ́ látọwọ́ "[[wiki_user:$1|$1]]".
+'autoblocker' => 'Ẹ ti jẹ́ dídílọ́nà nítọrípé àdírẹ́ẹ̀sì IP yín ti jẹ́ lílò láìpẹ́ látọwọ́ "[[User:$1|$1]]".
 Ìdíẹ̀ fún ìdínà $1 ni: "$2"',
 'blocklogpage' => 'Àkosílẹ̀ ìdínà',
 'blocklog-showlog' => 'Oníṣe yìí ti jẹ́ dídílọ́nà tẹ́lẹ̀.
@@ -2484,7 +2484,7 @@ $1',
 'block-log-flags-nocreate' => 'ìdálẹ́kun ṣíṣèdá àkópamọ́',
 'block-log-flags-noautoblock' => 'dídálẹ́kun ìdínà fúnrararẹ̀',
 'block-log-flags-noemail' => 'e-mail jẹ́ dídílọ́nà',
-'block-log-flags-nowiki_usertalk' => 'kò le ṣàtúnṣe ojúewé ọ̀rọ̀ taraẹni',
+'block-log-flags-nousertalk' => 'kò le ṣàtúnṣe ojúewé ọ̀rọ̀ taraẹni',
 'block-log-flags-angry-autoblock' => 'ìgbàyè ìdínà ìfúnraẹni oníkíkan',
 'block-log-flags-hiddenname' => 'orúkọ oníṣe jẹ́ bíbòmọ́lẹ̀',
 'range_block_disabled' => 'Agbára olùmójútó láti dá ìdínà àdìmọ́ jẹ́ dídálẹ́kun.',
@@ -2494,7 +2494,7 @@ $1',
 'ipb_already_blocked' => '"$1" jẹ́ dídèlọ́nà tẹ́lẹ̀',
 'ipb-needreblock' => '"$1" jẹ́ dídèlọ́nà tẹ́lẹ̀. Ṣé ẹ fẹ́ yí àwọn ìtòólẹ̀ yí padà?',
 'ipb-otherblocks-header' => '{{PLURAL:$1|Ìdínà|Àwọn ìdínà}} mìíràn',
-'unblock-hidewiki_user' => 'Ẹ kò le gbé ìdínà oníṣe yìí kúrò, orúkọ rẹ̀ ti jẹ́ bíbòmọ́lẹ̀.',
+'unblock-hideuser' => 'Ẹ kò le gbé ìdínà oníṣe yìí kúrò, orúkọ rẹ̀ ti jẹ́ bíbòmọ́lẹ̀.',
 'ipb_cant_unblock' => 'Àsìṣe: Ìdínà ID $1 kò sí. Ó le ti jẹ́ aláìjẹ́ dídílọ́nà tẹ́lẹ̀.',
 'ipb_blocked_as_range' => 'Àsìṣe: Àdírẹ́ẹ̀sì IP $1 kò jẹ́ dídílọ́nà tààrà, bí bẹ́ẹ̀ kò ṣe é mọ́ dí lọ́nà.
 Sùgbọ́n ó jẹ́ dídílọ́nà gẹ́gẹ́bí ìkan nínú ìgbàjá $2, èyí sì ṣe é mọ́ dí lọ́nà mọ́.',
@@ -2509,7 +2509,7 @@ Sùgbọ́n ó jẹ́ dídílọ́nà gẹ́gẹ́bí ìkan nínú ìgbàjá $2,
 'sorbs_create_account_reason' => 'Àdírẹ́ẹ̀sì IP yín jẹ́ títòjọ bíi ẹ̀rọ-ìwọ̀fà ẹlòmíràn àsíílẹ̀ nínú DNSBL tí {{SITENAME}} lò.
 Ẹ kò le dá àpamọ́.',
 'cant-block-while-blocked' => 'Ẹ kò le dínà àwọn oníṣe míràn lásìkò kannáà tí ẹ jẹ́ dídílọ́nà.',
-'cant-see-hidden-wiki_user' => 'Oníṣe tí ẹ fẹ́ dínà tilẹ̀ ti jẹ́ dídílọ́nà, ó sì jẹ́ bíbòmọ́lẹ̀.
+'cant-see-hidden-user' => 'Oníṣe tí ẹ fẹ́ dínà tilẹ̀ ti jẹ́ dídílọ́nà, ó sì jẹ́ bíbòmọ́lẹ̀.
 Nítorípé ẹ kò ní ẹ̀tọ́ ìbòmọ́lẹ̀ oníṣe, ẹ kò le rí tàbí ṣàtúnṣe ìdínà oníṣe náà.',
 'ipbblocked' => 'Ẹ kò le dínà tàbí ṣe àìdínà àwọn oníṣe míràn nítorípé ẹ̀yin gangan jẹ́ dídínà.',
 'ipbnounblockself' => 'Ẹ kò le yí ìdínà ara yín padà',
@@ -2567,13 +2567,13 @@ Ojúṣe yín ni láti rí pé àwọn àjápọ̀ únnawọ́ sí ibi tó yẹ 
 
 Tí ó bá jẹ́ báhun, ẹ gbúdọ̀ ṣe ìyípò rẹ̀ fúnra yín.",
 'movearticle' => 'Yípò ojúewé:',
-'movewiki_userpage-warning' => "'''Ìkìlọ̀:''' Ẹ ti fẹ́ yí ipò ojúewé oníṣe kan padà. Ẹ kíyèsi pé ojúewé ọ̀hún nìkan ni yíò jẹ́ yíyípòpadà, oníṣe ọ̀hún ''kò'' ní jẹ́ títúnsọlọ́rúkọ.",
+'moveuserpage-warning' => "'''Ìkìlọ̀:''' Ẹ ti fẹ́ yí ipò ojúewé oníṣe kan padà. Ẹ kíyèsi pé ojúewé ọ̀hún nìkan ni yíò jẹ́ yíyípòpadà, oníṣe ọ̀hún ''kò'' ní jẹ́ títúnsọlọ́rúkọ.",
 'movenologin' => 'Ẹ kò tíì wọlé',
-'movenologintext' => 'Ẹ gbọ́dọ̀ jẹ́ oníṣe ajẹ́fíforúkọsílẹ̀ kí ẹ sì [[Special:wiki_userLogin|wọlẹ́]] láti yípò ojúewé kan.',
+'movenologintext' => 'Ẹ gbọ́dọ̀ jẹ́ oníṣe ajẹ́fíforúkọsílẹ̀ kí ẹ sì [[Special:UserLogin|wọlẹ́]] láti yípò ojúewé kan.',
 'movenotallowed' => 'Ẹ kò ní ìyọ̀nda láti yípò ojúewé.',
 'movenotallowedfile' => 'Ẹ kò ní ìyọ̀nda láti yípò fáìlì.',
-'cant-move-wiki_user-page' => 'Ẹ kò ní ìyọ̀nda láti yípò àwọn ojúewé oníṣe (àyàfi láti ọ̀dọ̀ àwọn abẹ́ojúewé).',
-'cant-move-to-wiki_user-page' => 'Ẹ kò ní ìyọ̀nda láti yípò àwọn ojúewé sí ojúewé oníṣe (àyàfi sí abẹ́ojúewé oníṣe).',
+'cant-move-user-page' => 'Ẹ kò ní ìyọ̀nda láti yípò àwọn ojúewé oníṣe (àyàfi láti ọ̀dọ̀ àwọn abẹ́ojúewé).',
+'cant-move-to-user-page' => 'Ẹ kò ní ìyọ̀nda láti yípò àwọn ojúewé sí ojúewé oníṣe (àyàfi sí abẹ́ojúewé oníṣe).',
 'newtitle' => 'Sí àkọlé tuntun:',
 'move-watch' => 'Mójútó ojúewé yìí',
 'movepagebtn' => 'Yípò ojúewé',
@@ -2751,8 +2751,8 @@ Fáìlì náà jẹ́ rírùsóké ní àbọ̀.',
 'javascripttest-qunit-heading' => 'Ibi ìdánwò QUnit JavaScript MediaWiki',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Ojúewé oníṣe yín',
-'tooltip-pt-anonwiki_userpage' => 'Ojúewé oníṣe fún àdírẹ́ẹ̀sì IP tí ẹ únlò láti ṣàtúnṣe',
+'tooltip-pt-userpage' => 'Ojúewé oníṣe yín',
+'tooltip-pt-anonuserpage' => 'Ojúewé oníṣe fún àdírẹ́ẹ̀sì IP tí ẹ únlò láti ṣàtúnṣe',
 'tooltip-pt-mytalk' => 'Ojúewé ọ̀rọ̀ yín',
 'tooltip-pt-anontalk' => 'Ọ̀rọ̀ nípa àtúnṣe láti àdírẹ́ẹ̀sì IP yìí',
 'tooltip-pt-preferences' => 'Àwọn ìfẹ́ràn mi',
@@ -2791,13 +2791,13 @@ Fáìlì náà jẹ́ rírùsóké ní àbọ̀.',
 'tooltip-feed-rss' => 'RSS feed fùn ojúewé yìí',
 'tooltip-feed-atom' => 'Atom feed fún ojúewé yìí',
 'tooltip-t-contributions' => 'Ẹ wo àkójọ àwọn àfikún oníṣe yìí',
-'tooltip-t-emailwiki_user' => 'Ẹ fi e-mail ránṣẹ́ sí oníṣe yìí',
+'tooltip-t-emailuser' => 'Ẹ fi e-mail ránṣẹ́ sí oníṣe yìí',
 'tooltip-t-upload' => 'Ìrùsókè àwọn fáìlì',
 'tooltip-t-specialpages' => 'Àkójọ gbogbo àwọn ojúewé pàtàkì',
 'tooltip-t-print' => "Ojúewé tí ó ṣe é tẹ̀ ṣ'íwèé",
 'tooltip-t-permalink' => 'Ìjápọ̀ tíkòyípadà sí àtúnyẹ̀wò fún ojúewé náà',
 'tooltip-ca-nstab-main' => 'Ìfihàn inú ojúewé',
-'tooltip-ca-nstab-wiki_user' => 'Ẹ wo ojúewé oníṣe',
+'tooltip-ca-nstab-user' => 'Ẹ wo ojúewé oníṣe',
 'tooltip-ca-nstab-media' => 'Ẹ wò ojúewé amóhùnmáwòrán',
 'tooltip-ca-nstab-special' => "Ojúewé yìí ṣe pàtàkì, ẹ kò le è ṣ'àtúnṣe rẹ̀",
 'tooltip-ca-nstab-project' => 'Ẹ wo ojúewé iṣẹ́ọwọ́',
@@ -2826,13 +2826,13 @@ Fáìlì náà jẹ́ rírùsóké ní àbọ̀.',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|Oníṣe|Àwọn oníṣe}} aláìlórúkọ ti {{SITENAME}}',
-'sitewiki_user' => 'Oníṣe $1 lórí {{SITENAME}}',
-'anonwiki_user' => 'Oníṣe aláìlórúkọ $1 {{SITENAME}}',
+'siteuser' => 'Oníṣe $1 lórí {{SITENAME}}',
+'anonuser' => 'Oníṣe aláìlórúkọ $1 {{SITENAME}}',
 'lastmodifiedatby' => 'Ìgbà tí a ṣe àtúnṣe sí ojúewé yìí gbẹ̀yín ni $2, $1 látọwọ́ $3.',
 'othercontribs' => 'Dídálórí iṣẹ́ ti $1.',
 'others' => 'àwọn mìíràn',
-'sitewiki_users' => '{{PLURAL:$2|Oníṣe|Àwọn oníṣe}} $1  {{SITENAME}}',
-'anonwiki_users' => '{{PLURAL:$2|Oníṣe|Àwọn oníṣe}} aláìlórúkọ $1 {{SITENAME}}',
+'siteusers' => '{{PLURAL:$2|Oníṣe|Àwọn oníṣe}} $1  {{SITENAME}}',
+'anonusers' => '{{PLURAL:$2|Oníṣe|Àwọn oníṣe}} aláìlórúkọ $1 {{SITENAME}}',
 'creditspage' => 'Àwọn ìdáwìn ojúewé',
 'nocredits' => 'Kò sí ẹ̀kúnrẹ́rẹ́ọ̀rọ̀ ìdáwìn fún ojúewé yìí.',
 
@@ -2841,7 +2841,7 @@ Fáìlì náà jẹ́ rírùsóké ní àbọ̀.',
 'spamprotectiontext' => 'Ikọ-ọ̀rọ̀ tí ẹ fẹ́ múpamọ́ ti jẹ́ dídílọ́nà látọwọ́ ajọ̀ spam.
 Èyí le jẹ́ nítorí àjápọ̀ sí ibi-ìtakùn òde adílọ́nà.',
 'spamprotectionmatch' => 'Ikọ-ọ̀rọ̀ ìsàlẹ̀ yìí ló fa ajọ̀ spam: $1',
-'spambot_wiki_username' => 'Ìgbálẹ̀ spam MediaWiki',
+'spambot_username' => 'Ìgbálẹ̀ spam MediaWiki',
 'spam_reverting' => 'Ìdápadà sí àtúnyẹ̀wò tó gbẹ̀yìn tí kò ní àjápọ̀ sí $1',
 'spam_blanking' => 'Gbogbo àtúnyẹ̀wò ní àjápọ̀ sí $1, ìmúkúrò',
 'spam_deleting' => 'Gbogbo àtúnyẹ̀wò ní àjápọ̀ sí $1, ìparẹ́',
@@ -2865,9 +2865,9 @@ Fáìlì náà jẹ́ rírùsóké ní àbọ̀.',
 'pageinfo-redirects-name' => 'Àwọn àtúnjúwe sí ojúewé yìí',
 'pageinfo-subpages-name' => 'Àwọn ojúewé tó wà lábẹ́ ojúewé yìí',
 'pageinfo-subpages-value' => '$1 ({{PLURAL:$2|àtúnjúwe|àtúnjúwe}} $2; {{PLURAL:$3|àìjẹ́-àtúnjúwe|àìjẹ́-àtúnjúwe}} $3)',
-'pageinfo-firstwiki_user' => 'Olùdá ojúewé',
+'pageinfo-firstuser' => 'Olùdá ojúewé',
 'pageinfo-firsttime' => 'Ọjọ́ ìdá ojúewé',
-'pageinfo-lastwiki_user' => 'Olùtúnṣe ìkẹ́yìn',
+'pageinfo-lastuser' => 'Olùtúnṣe ìkẹ́yìn',
 'pageinfo-lasttime' => 'Ọjọ́ àtúnṣe ìkẹ́yìn',
 'pageinfo-edits' => 'Àpapọ̀ iye àwọn àtúnṣe',
 'pageinfo-authors' => 'Àpapọ̀ iye àwọn olùdá ọ̀tọ̀ọ̀tọ̀',
@@ -3009,7 +3009,7 @@ Tóbájẹ́pé fáìlì ọ̀hún ti jẹ́ títúnṣe sí bóṣewà ní bẹ
 'exif-compressedbitsperpixel' => 'Àyè ìtẹ̀pọ̀ àwòrán',
 'exif-pixelydimension' => 'Ìfẹ̀ àwòrán',
 'exif-pixelxdimension' => 'Ìga àwòrán',
-'exif-wiki_usercomment' => 'Àwọn àwìsọ oníṣe',
+'exif-usercomment' => 'Àwọn àwìsọ oníṣe',
 'exif-relatedsoundfile' => 'Fáìlì ìfohùn tó jọra',
 'exif-datetimeoriginal' => 'Ọjọ́ àti àsìkò tí dátà jade',
 'exif-datetimedigitized' => 'Ọjọ́ àti àsìkò ìsọdi dígítà',
@@ -3247,7 +3247,7 @@ Tóbájẹ́pé fáìlì ọ̀hún ti jẹ́ títúnṣe sí bóṣewà ní bẹ
 Ó ṣe é ṣe kó jẹ́ pé àmìọ̀rọ̀ kò ṣiṣẹ́ mọ́.',
 'confirmemail_needlogin' => 'Ẹ gbọ́dò $1 láti ṣe ìmúdájú àdírẹ́ẹ́sì e-mail yín.',
 'confirmemail_success' => 'Àdírẹ́ẹ́sì e-mail yín ti jẹ́ mímúdájú.
-Ẹ le [[Special:wiki_userLogin|wọlé]] nísìnhin láti gbádùn wiki yìí.',
+Ẹ le [[Special:UserLogin|wọlé]] nísìnhin láti gbádùn wiki yìí.',
 'confirmemail_loggedin' => 'Àdírẹ́ẹ̀sì e-mail yín ti dájú.',
 'confirmemail_error' => 'Àsìṣe ṣẹlẹ̀ láti fi ìmójútó yín pamọ́.',
 'confirmemail_subject' => 'Ìmúdájú àdírẹ́ẹ̀sì e-mail fún {{SITENAME}}',
@@ -3297,10 +3297,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''Ìkìlọ̀''': Ojúewé yìí ti jẹ́ píparẹ́ lẹ́yìn tí ẹ bẹ̀rẹ̀ àtúnṣe rẹ̀!",
-'confirmrecreate' => "Oníṣe [[wiki_user:$1|$1]] ([[wiki_user talk:$1|ọ̀rọ̀]]) pa ojúewé yìí rẹ́ lẹ́yìn tí ẹ bẹ̀rẹ̀ àtúnṣe lórí rẹ̀ nítorípè:
+'confirmrecreate' => "Oníṣe [[User:$1|$1]] ([[User talk:$1|ọ̀rọ̀]]) pa ojúewé yìí rẹ́ lẹ́yìn tí ẹ bẹ̀rẹ̀ àtúnṣe lórí rẹ̀ nítorípè:
 : ''$2''
 Ẹ jọ̀wọ́ ẹ ṣe ìmúdájú pé ẹ fẹ́ tún ojúewé yìí dá.",
-'confirmrecreate-noreason' => 'Oníṣe [[wiki_user:$1|$1]] ([[wiki_user talk:$1|ọ̀rọ̀]]) pa ojúewé yìí rẹ́ lẹ́yìn tí ẹ bẹ̀rẹ̀ àtúnṣe lórí rẹ̀ nítorípè. Ẹ jọ̀wọ́ ẹ ṣe ìmúdájú pé ẹ fẹ́ tún ojúewé yìí dá.',
+'confirmrecreate-noreason' => 'Oníṣe [[User:$1|$1]] ([[User talk:$1|ọ̀rọ̀]]) pa ojúewé yìí rẹ́ lẹ́yìn tí ẹ bẹ̀rẹ̀ àtúnṣe lórí rẹ̀ nítorípè. Ẹ jọ̀wọ́ ẹ ṣe ìmúdájú pé ẹ fẹ́ tún ojúewé yìí dá.',
 'recreate' => 'Ìtúndá',
 
 # action=purge
@@ -3367,7 +3367,7 @@ $5
 'watchlisttools-raw' => "Ẹ ṣ'àtúnṣe àkójọ ìmójútó látìbẹ̀rẹ̀",
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|ọ̀rọ̀]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|ọ̀rọ̀]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Àlẹ̀mọ́ ìfàgùn àìdámọ̀ "$1"',
@@ -3423,7 +3423,7 @@ $5
 'specialpages-group-login' => 'Ìwọlé / ìdá àpamọ́',
 'specialpages-group-changes' => 'Àwọn àtúnṣe àti àkọọ́lẹ̀ àìpẹ́',
 'specialpages-group-media' => 'Ìrùsókè àti àbọ̀ amóhùnmáwòrán',
-'specialpages-group-wiki_users' => 'Àwọn oníṣe àti àwọn ẹ̀tọ́ wọn',
+'specialpages-group-users' => 'Àwọn oníṣe àti àwọn ẹ̀tọ́ wọn',
 'specialpages-group-highuse' => 'Àwọn ojúewé ìlò gíga',
 'specialpages-group-pages' => 'Àkójọ àwọn ojúewé',
 'specialpages-group-pagetools' => 'Àwọn irinṣẹ́ ojúewé',
@@ -3523,11 +3523,11 @@ Ibiìtakùn yìí únkojú ìsòro ìṣìṣẹ́ẹ̀rọ.',
 'logentry-move-move_redir-noredirect' => '$1 ṣeyípòdà ojúewé $3 sí $4 lórí àtúnjúwe láìfi àtúnjúwe sílẹ̀',
 'logentry-patrol-patrol' => '$1 ṣe àmí àtúnyẹ̀wò $4 ojúewé $3 bíi sísọ́',
 'logentry-patrol-patrol-auto' => '$1 fúnraẹni ṣàmì àtúnyẹ̀wò $4 ti ojúewé $3 bíi síṣọ́',
-'logentry-newwiki_users-newwiki_users' => 'Àpamọ́ oníṣe $1 jẹ́ dídá',
-'logentry-newwiki_users-create' => 'Àpamọ́ oníṣe $1 jẹ́ dídá',
-'logentry-newwiki_users-create2' => 'Àpamọ́ oníṣe $3 jẹ́ dídá látọwọ́ $1',
-'logentry-newwiki_users-autocreate' => 'Àkópamọ́ $1 jẹ́ dídá fúnrarẹ̀',
-'newwiki_userlog-byemail' => 'ọ̀rọ̀ìpamọ́ jẹ́ fífiránṣẹ́ pẹ̀lú e-mail',
+'logentry-newusers-newusers' => 'Àpamọ́ oníṣe $1 jẹ́ dídá',
+'logentry-newusers-create' => 'Àpamọ́ oníṣe $1 jẹ́ dídá',
+'logentry-newusers-create2' => 'Àpamọ́ oníṣe $3 jẹ́ dídá látọwọ́ $1',
+'logentry-newusers-autocreate' => 'Àkópamọ́ $1 jẹ́ dídá fúnrarẹ̀',
+'newuserlog-byemail' => 'ọ̀rọ̀ìpamọ́ jẹ́ fífiránṣẹ́ pẹ̀lú e-mail',
 
 # Feedback
 'feedback-bugornote' => 'Tí ẹ bá ti ṣetán láti ṣàlàyé ìsòrò iṣẹ́ẹ̀rọ́ lẹ́ẹ̀kúnrẹ́rẹ́ ẹ jọ̀wọ́ [$1 ẹ sọ irú ìsòro náà]

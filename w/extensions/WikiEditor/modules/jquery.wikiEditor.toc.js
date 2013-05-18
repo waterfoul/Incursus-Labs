@@ -285,7 +285,7 @@ fn: {
 	},
 	unhighlight: function( context ) {
 		// FIXME: For some reason, IE calls this function twice, the first time with context undefined
-		// Investigate this when you have time please! In the meantime, the wiki_user interaction is working just
+		// Investigate this when you have time please! In the meantime, the user interaction is working just
 		// fine because the second call is valid
 		if ( context ) {
 			context.modules.toc.$toc.find( 'div' ).removeClass( 'current' );
@@ -469,7 +469,7 @@ fn: {
 							'start': 0,
 							'startContainer': wrapper
 						} );
-						// Bring wiki_user's eyes to the point we've now jumped to
+						// Bring user's eyes to the point we've now jumped to
 						context.fn.highlightLine( $( wrapper ) );
 						// Highlight the clicked link
 						//remove highlighting of toc after a second. Temporary hack till the highlight works --pdhanda

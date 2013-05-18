@@ -15,19 +15,19 @@
 
 /* Configuration */
 
-// Each module may be configured individually to be globally on/off or wiki_user preference based
+// Each module may be configured individually to be globally on/off or user preference based
 $wgVectorFeatures = array(
-	'collapsiblenav' => array( 'global' => true, 'wiki_user' => true ),
-	'collapsibletabs' => array( 'global' => true, 'wiki_user' => false ),
-	'editwarning' => array( 'global' => false, 'wiki_user' => true ),
+	'collapsiblenav' => array( 'global' => true, 'user' => true ),
+	'collapsibletabs' => array( 'global' => true, 'user' => false ),
+	'editwarning' => array( 'global' => false, 'user' => true ),
 	// The follwing are experimental and likely unstable - use at your own risk
-	'expandablesearch' => array( 'global' => false, 'wiki_user' => false ),
-	'footercleanup' => array( 'global' => false, 'wiki_user' => false ),
-	'sectioneditlinks' => array( 'global' => false, 'wiki_user' => false ),
+	'expandablesearch' => array( 'global' => false, 'user' => false ),
+	'footercleanup' => array( 'global' => false, 'user' => false ),
+	'sectioneditlinks' => array( 'global' => false, 'user' => false ),
 );
 
 // The Vector skin has a basic version of simple search, which is a prerequisite for the enhanced one
-$wgDefaultwiki_userOptions['vector-simplesearch'] = 1;
+$wgDefaultUserOptions['vector-simplesearch'] = 1;
 
 // Enable bucket testing for new version of collapsible nav
 $wgCollapsibleNavBucketTest = false;
@@ -36,7 +36,7 @@ $wgCollapsibleNavForceNewVersion = false;
 
 // Enable bucket testing for new version of section edit links
 $wgVectorSectionEditLinksBucketTest = false;
-// Percentage of wiki_users who's use of section edit links will be tracked - half of which will see the
+// Percentage of users who's use of section edit links will be tracked - half of which will see the
 // new section edit links - default 5%
 $wgVectorSectionEditLinksLotteryOdds = 5;
 // Version number of the current experiment - Buckets from previous experiments will be overwritten

@@ -45,10 +45,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class ExtRealnames {
   /**
-   * A cache of realnames for given wiki_users
+   * A cache of realnames for given users
    * @since 2011-09-16, 0.1
    */
-  // this used to be a cache of wiki_user objects as $wiki_users
+  // this used to be a cache of User objects as $users
   protected static $realnames = array();
 
   /**
@@ -68,12 +68,12 @@ class ExtRealnames {
     // matches come from static::lookForBare()'s regular experession
     $m = array(
       'all' => $matches[0],
-      'wiki_username' => $matches[1],
+      'username' => $matches[1],
     );
 
     wfDebugLog('realnames', __METHOD__.': '.print_r($m,true));
 
-    // we do not currently do any checks on Bare replacements, a wiki_user: find is
+    // we do not currently do any checks on Bare replacements, a User: find is
     // always valid but we could add one in the future, and the debug
     // information is still conveniant and keeps things consistent with checkLink
 
@@ -93,18 +93,18 @@ class ExtRealnames {
     $m = array(
       'all' => $matches[0],
       'linkstart' => $matches[1],
-      'linkwiki_user' => $matches[2],
-      'wiki_username' => $matches[3],
+      'linkuser' => $matches[2],
+      'username' => $matches[3],
       'linkend' => $matches[4],
     );
 
     wfDebugLog('realnames', __METHOD__.': '.print_r($m,true));
 
-    // some links point to wiki_user pages but do not display the wiki_username, we can safely ignore those
+    // some links point to user pages but do not display the username, we can safely ignore those
     // we need to urldecode the link for accents and special characters,
-    // and ensure our wiki_username has underscores instead of spaces to match our link
+    // and ensure our username has underscores instead of spaces to match our link
     // before being able to do the comparison.
-    if (urldecode($m['linkwiki_user']) != str_replace(' ','_',$m['wiki_username'])) {
+    if (urldecode($m['linkuser']) != str_replace(' ','_',$m['username'])) {
       return $m['all'];
     }
 
@@ -115,7 +115,7 @@ class ExtRealnames {
    * formats the final string in the configured style to display the real name.
    * @param[in] $m \array keyed with strings called
    *    \li<em>linkstart</em>
-   *    \li<em>wiki_username</em>
+   *    \li<em>username</em>
    *    \li<em>realname</em>
    *    \li<em>linkend</em>
    * @return \string formatted text to replace the match with
@@ -154,23 +154,23 @@ class ExtRealnames {
       return $m['all'];
     }
 
-    // we have a blank wiki_username, and the admin doesn't want to see them,
-    // or his chosen format will not display a wiki_username at all
+    // we have a blank username, and the admin doesn't want to see them,
+    // or his chosen format will not display a username at all
     if (empty($m['realname']) && (
       !$wgRealnamesBlank || strpos($format,'$2') === false
       )) {
-      // swap in the wiki_username where they expected the realname
+      // swap in the username where they expected the realname
       $format = str_replace('$3','$2',$format);
     }
 
     if ($wgRealnamesSmart !== FALSE
         && $wgRealnamesSmart['same'] === TRUE
-        && $m['wiki_username'] === $m['realname']
+        && $m['username'] === $m['realname']
         && strpos($format, '$2') !== FALSE
         && strpos($format, '$3') !== FALSE
       ) {
-      // we only do this if both wiki_username and realname will be displayed iin
-      // the wiki_user's format
+      // we only do this if both username and realname will be displayed iin
+      // the user's format
 
       wfDebugLog('realnames', __METHOD__.': smart dupe detected');
 
@@ -184,7 +184,7 @@ class ExtRealnames {
     // plug in our values to the format desired
     $text = wfMsgReplaceArgs($format, array( // redo to ensure order
       $m['linkstart'],
-      str_replace('_', ' ',$m['wiki_username']),
+      str_replace('_', ' ',$m['username']),
       str_replace('_', ' ',$m['realname']),
       $m['linkend']
       ));
@@ -209,16 +209,16 @@ class ExtRealnames {
     }
 
     // always catch this one
-    $namespaces = array('wiki_user:', 'wiki_user talk:');
+    $namespaces = array('User:', 'User talk:');
 
-    // add in wiki_user specified ones
+    // add in user specified ones
     $namespaces = array_merge($namespaces, array_values($wgRealnamesNamespaces));
 
     // try to figure out the wiki language
     //! get language from the context somehow? (2011-09-26, ofb)
     $lang = $wgContLang;
 
-    // wiki_user namespace's primary name in the wiki lang
+    // user namespace's primary name in the wiki lang
     $namespaces[] = $lang->getNsText ( NS_USER );
     $namespaces[] = $lang->getNsText ( NS_USER_TALK );
 
@@ -243,7 +243,7 @@ class ExtRealnames {
   } // function
 
   /**
-   * change all wiki_usernames to realnames
+   * change all usernames to realnames
    * @param[inout] &$out OutputPage The OutputPage object.
    * @param[inout] &$sk Skin object that will be used to generate the page, added in 1.13.
    * @return \bool true, continue hook processing
@@ -261,9 +261,9 @@ class ExtRealnames {
       // article title
       wfDebugLog('realnames', __METHOD__.": searching article title...");
 
-      // special wiki_user page handling
-      if (in_array($title->getNamespace(), array(NS_USER, NS_USER_TALK))) { // wiki_user:
-        // swap out the specific wiki_username from title
+      // special user page handling
+      if (in_array($title->getNamespace(), array(NS_USER, NS_USER_TALK))) { // User:
+        // swap out the specific username from title
         // this overcomes the problem lookForBare has with spaces and underscores in names
         $out->setPagetitle(static::lookForBare($out->getPageTitle(),'/'.static::getNamespacePrefixes().'\s*('.$title->getText().')(?:\/.+)?/'));
       }
@@ -288,7 +288,7 @@ class ExtRealnames {
   } // function
 
   /**
-   * change all wiki_usernames to realnames in url bar
+   * change all usernames to realnames in url bar
    * @param[inout] &$personal_urls \array the array of URLs set up so far
    * @param[inout] &$title \obj the Title object of the current article
    * @return \bool true, continue hook processing
@@ -297,20 +297,20 @@ class ExtRealnames {
    * @note requires MediaWiki 1.7.0
    */
   public static function hookPersonalUrls(&$personal_urls, &$title) {
-    global $wgwiki_user, $wgRealnamesReplacements;
+    global $wgUser, $wgRealnamesReplacements;
 
     if ($wgRealnamesReplacements['personnal'] === TRUE) {
       wfDebugLog('realnames', __METHOD__.": searching personnal urls...");
 
-      // replace the name of the logged in wiki_user
-      if (isset($personal_urls['wiki_userpage']) && isset($personal_urls['wiki_userpage']['text'])) {
+      // replace the name of the logged in user
+      if (isset($personal_urls['userpage']) && isset($personal_urls['userpage']['text'])) {
         // fake the match, we know it's there
         $m = array(
-          'all' => $personal_urls['wiki_userpage']['text'],
-          'wiki_username' => $personal_urls['wiki_userpage']['text'],
-          'realname' => $wgwiki_user->getRealname(),
+          'all' => $personal_urls['userpage']['text'],
+          'username' => $personal_urls['userpage']['text'],
+          'realname' => $wgUser->getRealname(),
         );
-        $personal_urls['wiki_userpage']['text'] = static::replace($m);
+        $personal_urls['userpage']['text'] = static::replace($m);
       }
     } // opt out
 
@@ -318,13 +318,13 @@ class ExtRealnames {
   } // function
 
   /**
-   * scan and replace plain wiki_usernames of the form wiki_user:wiki_username into real names.
+   * scan and replace plain usernames of the form User:username into real names.
    * @param[in] \string text to scan
    * @param[in] \string pattern to match, \bool false for default
    * @return \string with realnames replaced in
    * @since 2011-09-16, 0.1
-   * @bug we have problems with wiki_users with underscores (they become spaces) or spaces,
-   *    we tend to just strip the wiki_user: and leave the wiki_username, but we only modify the
+   * @bug we have problems with users with underscores (they become spaces) or spaces,
+   *    we tend to just strip the User: and leave the username, but we only modify the
    *    first word so some weird style might screw it up (2011-09-17, ofb)
    */
   protected static function lookForBare($text,$pattern=false) {
@@ -342,7 +342,7 @@ class ExtRealnames {
   } // function
 
   /**
-   * scan and replace wiki_username links into realname links
+   * scan and replace username links into realname links
    * @param[in] \string text to scan
    * @param[in] \string pattern to match, \bool false for default
    * @return \string with realnames replaced in
@@ -360,10 +360,10 @@ class ExtRealnames {
   } // function
 
   /**
-   * obtains wiki_user information based on a match for future replacement
+   * obtains user information based on a match for future replacement
    * @param[in] $m \array keyed with strings called
    *    \li<em>linkstart</em> (optional)
-   *    \li<em>wiki_username</em>
+   *    \li<em>username</em>
    *    \li<em>realname</em> (optional)
    *    \li<em>linkend</em> (optional)
    * @return \string formatted text to replace the match with
@@ -372,7 +372,7 @@ class ExtRealnames {
   protected static function replace($m) {
     wfDebugLog('realnames', __METHOD__.": matched");
 
-    if (!isset(static::$realnames[$m['wiki_username']])) {
+    if (!isset(static::$realnames[$m['username']])) {
       // we don't have it cached
       $realname = null;
 
@@ -381,21 +381,21 @@ class ExtRealnames {
         $realname = $m['realname'];
       } else {
         // time to do a lookup
-        $wiki_user = wiki_user::newFromName( $m['wiki_username'] );
+        $user = User::newFromName( $m['username'] );
 
-        if (!is_object($wiki_user)) {
-          wfDebugLog('realnames', __METHOD__.": skipped, invalid wiki_user: ".$m['wiki_username']);
+        if (!is_object($user)) {
+          wfDebugLog('realnames', __METHOD__.": skipped, invalid user: ".$m['username']);
           return $m['all'];
         }
 
-        $realname = $wiki_user->getRealname();
+        $realname = $user->getRealname();
       }
 
-      static::$realnames[$m['wiki_username']] = htmlspecialchars( trim( $realname ));
+      static::$realnames[$m['username']] = htmlspecialchars( trim( $realname ));
     }
 
     // this may be blank
-    $m['realname'] = static::$realnames[$m['wiki_username']];
+    $m['realname'] = static::$realnames[$m['username']];
 
     return static::display($m);
   } // function

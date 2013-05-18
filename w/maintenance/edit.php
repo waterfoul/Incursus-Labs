@@ -32,7 +32,7 @@ class EditCLI extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Edit an article from the command line, text is from stdin";
-		$this->addOption( 'wiki_user', 'wiki_username', false, true, 'u' );
+		$this->addOption( 'user', 'Username', false, true, 'u' );
 		$this->addOption( 'summary', 'Edit summary', false, true, 's' );
 		$this->addOption( 'minor', 'Minor edit', false, false, 'm' );
 		$this->addOption( 'bot', 'Bot edit', false, false, 'b' );
@@ -42,21 +42,21 @@ class EditCLI extends Maintenance {
 	}
 
 	public function execute() {
-		global $wgwiki_user, $wgTitle;
+		global $wgUser, $wgTitle;
 
-		$wiki_userName = $this->getOption( 'wiki_user', 'Maintenance script' );
+		$userName = $this->getOption( 'user', 'Maintenance script' );
 		$summary = $this->getOption( 'summary', '' );
 		$minor = $this->hasOption( 'minor' );
 		$bot = $this->hasOption( 'bot' );
 		$autoSummary = $this->hasOption( 'autosummary' );
 		$noRC = $this->hasOption( 'no-rc' );
 
-		$wgwiki_user = wiki_user::newFromName( $wiki_userName );
-		if ( !$wgwiki_user ) {
-			$this->error( "Invalid wiki_username", true );
+		$wgUser = User::newFromName( $userName );
+		if ( !$wgUser ) {
+			$this->error( "Invalid username", true );
 		}
-		if ( $wgwiki_user->isAnon() ) {
-			$wgwiki_user->addToDatabase();
+		if ( $wgUser->isAnon() ) {
+			$wgUser->addToDatabase();
 		}
 
 		$wgTitle = Title::newFromText( $this->getArg() );

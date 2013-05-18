@@ -33,13 +33,13 @@ class SearchPostgres extends SearchEngine {
 	/**
 	 * @var DatabasePostgres
 	 */
-	protected ;
+	protected $db;
 	/**
 	 * Creates an instance of this class
-	 * @param  DatabaseSqlite: database object
+	 * @param $db DatabaseSqlite: database object
 	 */
-	function __construct(  ) {
-		parent::__construct(  );
+	function __construct( $db ) {
+		parent::__construct( $db );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class SearchPostgres extends SearchEngine {
 	}
 
 	/**
-	 * Transform the wiki_user's search string into a better form for tsearch2
+	 * Transform the user's search string into a better form for tsearch2
 	 * Returns an SQL fragment consisting of quoted text to search for.
 	 *
 	 * @param $term string

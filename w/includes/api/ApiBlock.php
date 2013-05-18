@@ -25,7 +25,7 @@
  */
 
 /**
-* API module that facilitates the blocking of wiki_users. Requires API write mode
+* API module that facilitates the blocking of users. Requires API write mode
 * to be enabled.
 *
  * @ingroup API
@@ -37,40 +37,40 @@ class ApiBlock extends ApiBase {
 	}
 
 	/**
-	 * Blocks the wiki_user specified in the parameters for the given expiry, with the
+	 * Blocks the user specified in the parameters for the given expiry, with the
 	 * given reason, and with all other settings provided in the params. If the block
 	 * succeeds, produces a result containing the details of the block and notice
 	 * of success. If it fails, the result will specify the nature of the error.
 	 */
 	public function execute() {
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 		$params = $this->extractRequestParams();
 
 		if ( $params['gettoken'] ) {
-			$res['blocktoken'] = $wiki_user->getEditToken();
+			$res['blocktoken'] = $user->getEditToken();
 			$this->getResult()->addValue( null, $this->getModuleName(), $res );
 			return;
 		}
 
-		if ( !$wiki_user->isAllowed( 'block' ) ) {
+		if ( !$user->isAllowed( 'block' ) ) {
 			$this->dieUsageMsg( 'cantblock' );
 		}
 		# bug 15810: blocked admins should have limited access here
-		if ( $wiki_user->isBlocked() ) {
-			$status = SpecialBlock::checkUnblockSelf( $params['wiki_user'], $wiki_user );
+		if ( $user->isBlocked() ) {
+			$status = SpecialBlock::checkUnblockSelf( $params['user'], $user );
 			if ( $status !== true ) {
 				$this->dieUsageMsg( array( $status ) );
 			}
 		}
-		if ( $params['hidename'] && !$wiki_user->isAllowed( 'hidewiki_user' ) ) {
+		if ( $params['hidename'] && !$user->isAllowed( 'hideuser' ) ) {
 			$this->dieUsageMsg( 'canthide' );
 		}
-		if ( $params['noemail'] && !SpecialBlock::canBlockEmail( $wiki_user ) ) {
+		if ( $params['noemail'] && !SpecialBlock::canBlockEmail( $user ) ) {
 			$this->dieUsageMsg( 'cantblock-email' );
 		}
 
 		$data = array(
-			'Target' => $params['wiki_user'],
+			'Target' => $params['user'],
 			'Reason' => array(
 				$params['reason'],
 				'other',
@@ -81,10 +81,10 @@ class ApiBlock extends ApiBase {
 			'CreateAccount' => $params['nocreate'],
 			'AutoBlock' => $params['autoblock'],
 			'DisableEmail' => $params['noemail'],
-			'Hidewiki_user' => $params['hidename'],
-			'DisableUTEdit' => !$params['allowwiki_usertalk'],
+			'HideUser' => $params['hidename'],
+			'DisableUTEdit' => !$params['allowusertalk'],
 			'AlreadyBlocked' => $params['reblock'],
-			'Watch' => $params['watchwiki_user'],
+			'Watch' => $params['watchuser'],
 			'Confirm' => true,
 		);
 
@@ -94,9 +94,9 @@ class ApiBlock extends ApiBase {
 			$this->dieUsageMsg( $retval );
 		}
 
-		list( $target, /*...*/ ) = SpecialBlock::getTargetAndType( $params['wiki_user'] );
-		$res['wiki_user'] = $params['wiki_user'];
-		$res['wiki_userID'] = $target instanceof wiki_user ? $target->getId() : 0;
+		list( $target, /*...*/ ) = SpecialBlock::getTargetAndType( $params['user'] );
+		$res['user'] = $params['user'];
+		$res['userID'] = $target instanceof User ? $target->getId() : 0;
 
 		$block = Block::newFromTarget( $target );
 		if( $block instanceof Block ){
@@ -126,11 +126,11 @@ class ApiBlock extends ApiBase {
 		if ( $params['hidename'] ) {
 			$res['hidename'] = '';
 		}
-		if ( $params['allowwiki_usertalk'] ) {
-			$res['allowwiki_usertalk'] = '';
+		if ( $params['allowusertalk'] ) {
+			$res['allowusertalk'] = '';
 		}
-		if ( $params['watchwiki_user'] ) {
-			$res['watchwiki_user'] = '';
+		if ( $params['watchuser'] ) {
+			$res['watchuser'] = '';
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $res );
@@ -146,7 +146,7 @@ class ApiBlock extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-			'wiki_user' => array(
+			'user' => array(
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true
 			),
@@ -162,27 +162,27 @@ class ApiBlock extends ApiBase {
 			'autoblock' => false,
 			'noemail' => false,
 			'hidename' => false,
-			'allowwiki_usertalk' => false,
+			'allowusertalk' => false,
 			'reblock' => false,
-			'watchwiki_user' => false,
+			'watchuser' => false,
 		);
 	}
 
 	public function getParamDescription() {
 		return array(
-			'wiki_user' => 'wiki_username, IP address or IP range you want to block',
+			'user' => 'Username, IP address or IP range you want to block',
 			'token' => 'A block token previously obtained through prop=info',
 			'gettoken' => 'If set, a block token will be returned, and no other action will be taken',
 			'expiry' => 'Relative expiry time, e.g. \'5 months\' or \'2 weeks\'. If set to \'infinite\', \'indefinite\' or \'never\', the block will never expire.',
 			'reason' => 'Reason for block',
-			'anononly' => 'Block anonymous wiki_users only (i.e. disable anonymous edits for this IP)',
+			'anononly' => 'Block anonymous users only (i.e. disable anonymous edits for this IP)',
 			'nocreate' => 'Prevent account creation',
 			'autoblock' => 'Automatically block the last used IP address, and any subsequent IP addresses they try to login from',
-			'noemail' => 'Prevent wiki_user from sending e-mail through the wiki. (Requires the "blockemail" right.)',
-			'hidename' => 'Hide the wiki_username from the block log. (Requires the "hidewiki_user" right.)',
-			'allowwiki_usertalk' => 'Allow the wiki_user to edit their own talk page (depends on $wgBlockAllowsUTEdit)',
-			'reblock' => 'If the wiki_user is already blocked, overwrite the existing block',
-			'watchwiki_user' => 'Watch the wiki_user/IP\'s wiki_user and talk pages',
+			'noemail' => 'Prevent user from sending e-mail through the wiki. (Requires the "blockemail" right.)',
+			'hidename' => 'Hide the username from the block log. (Requires the "hideuser" right.)',
+			'allowusertalk' => 'Allow the user to edit their own talk page (depends on $wgBlockAllowsUTEdit)',
+			'reblock' => 'If the user is already blocked, overwrite the existing block',
+			'watchuser' => 'Watch the user/IP\'s user and talk pages',
 		);
 	}
 
@@ -193,11 +193,11 @@ class ApiBlock extends ApiBase {
 					ApiBase::PROP_TYPE => 'string',
 					ApiBase::PROP_NULLABLE => true
 				),
-				'wiki_user' => array(
+				'user' => array(
 					ApiBase::PROP_TYPE => 'string',
 					ApiBase::PROP_NULLABLE => true
 				),
-				'wiki_userID' => array(
+				'userID' => array(
 					ApiBase::PROP_TYPE => 'integer',
 					ApiBase::PROP_NULLABLE => true
 				),
@@ -218,14 +218,14 @@ class ApiBlock extends ApiBase {
 				'autoblock' => 'boolean',
 				'noemail' => 'boolean',
 				'hidename' => 'boolean',
-				'allowwiki_usertalk' => 'boolean',
-				'watchwiki_user' => 'boolean'
+				'allowusertalk' => 'boolean',
+				'watchuser' => 'boolean'
 			)
 		);
 	}
 
 	public function getDescription() {
-		return 'Block a wiki_user';
+		return 'Block a user';
 	}
 
 	public function getPossibleErrors() {
@@ -248,8 +248,8 @@ class ApiBlock extends ApiBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=block&wiki_user=123.5.5.12&expiry=3%20days&reason=First%20strike',
-			'api.php?action=block&wiki_user=Vandal&expiry=never&reason=Vandalism&nocreate=&autoblock=&noemail='
+			'api.php?action=block&user=123.5.5.12&expiry=3%20days&reason=First%20strike',
+			'api.php?action=block&user=Vandal&expiry=never&reason=Vandalism&nocreate=&autoblock=&noemail='
 		);
 	}
 

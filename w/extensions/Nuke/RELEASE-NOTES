@@ -12,7 +12,7 @@ Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=med
 (2012-08-14)
 
 * Making use of of the new message methods introduced in MW 1.18 instead of wfMsg*.
-* Use of wiki_user::getEditToken rather then deprecated wiki_user::editToken.
+* Use of User::getEditToken rather then deprecated User::editToken.
 * Updated release notes, readme and install to reflect the Git migration.
 * Changed minimum required MediaWiki version from 1.18 to 1.19.
 
@@ -51,4 +51,4 @@ Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=med
 === Version 1.1 ===
 (2011-2-14)
 
-* Added a changable limit and the option to not filter the recent changes on a single wiki_user.
+* Added a changable limit and the option to not filter the recent changes on a single user.

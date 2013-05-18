@@ -1,5 +1,5 @@
 <form action="<?= $wgScript ?>?action=submit" method="POST">
-<input type="hidden" name="wpEditToken" value="<?= htmlspecialchars($wgwiki_user->editToken()) ?>" />
+<input type="hidden" name="wpEditToken" value="<?= htmlspecialchars($wgUser->editToken()) ?>" />
 <input type="hidden" name="wpEdittime" value="<?= $aclArticle ? $aclArticle->getTimestamp() : '' ?>" />
 <input type="hidden" name="wpStarttime" value="<?= wfTimestampNow() ?>" />
 <input type="hidden" id="wpTitle" name="title" value="<?= $aclArticle ? htmlspecialchars($aclTitle->getPrefixedText()) : '' ?>" />
@@ -34,7 +34,7 @@
   <p><b><?= wfMsg('hacl_edit_modify_definition') ?></b></p>
   <p>
    <select id="to_type" onchange="AE.to_type_change()" style="max-width: 200px">
-    <option value="wiki_user"><?= wfMsg('hacl_edit_wiki_user') ?></option>
+    <option value="user"><?= wfMsg('hacl_edit_user') ?></option>
     <option value="group"><?= wfMsg('hacl_edit_group') ?></option>
     <option value="*"><?= wfMsg('hacl_edit_all') ?></option>
     <option value="#"><?= wfMsg('hacl_edit_reg') ?></option>
@@ -82,9 +82,9 @@ exAttach(window, 'load', function()
 {
     var msg = {
 <?php foreach (explode(' ',
-        'edit_save edit_create regexp_wiki_user regexp_group'.
-        ' start_typing_wiki_user start_typing_group start_typing_page start_typing_category'.
-        ' edit_wiki_users_affected edit_groups_affected edit_no_wiki_users_affected edit_no_groups_affected'.
+        'edit_save edit_create regexp_user regexp_group'.
+        ' start_typing_user start_typing_group start_typing_page start_typing_category'.
+        ' edit_users_affected edit_groups_affected edit_no_users_affected edit_no_groups_affected'.
         ' indirect_grant indirect_grant_all indirect_grant_reg edit_sd_exists edit_define_rights'.
         ' edit_define_manager edit_define_tmanager edit_define_manager_np edit_ahint_all edit_ahint_manage'.
         ' edit_ahint_template edit_ahint_read edit_ahint_edit edit_ahint_create edit_ahint_delete'.

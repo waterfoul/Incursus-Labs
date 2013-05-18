@@ -20,12 +20,12 @@ class SearchEngineTest extends MediaWikiTestCase {
 		parent::setUp();
 		// Search tests require MySQL or SQLite with FTS
 		# Get database type and version
-		Type = $this->db->getType();
-		Supported =
-			(Type === 'mysql')
-			|| ( Type === 'sqlite' && $this->db->getFulltextSearchModule() == 'FTS3' );
+		$dbType = $this->db->getType();
+		$dbSupported =
+			($dbType === 'mysql')
+			|| ( $dbType === 'sqlite' && $this->db->getFulltextSearchModule() == 'FTS3' );
 
-		if( !Supported ) {
+		if( !$dbSupported ) {
 			$this->markTestSkipped( "MySQL or SQLite with FTS3 only" );
 		}
 
@@ -87,14 +87,14 @@ class SearchEngineTest extends MediaWikiTestCase {
 	function insertPage( $pageName, $text, $ns ) {
 		$title = Title::newFromText( $pageName );
 
-		$wiki_user = wiki_user::newFromName( 'WikiSysop' );
+		$user = User::newFromName( 'WikiSysop' );
 		$comment = 'Search Test';
 
 		// avoid memory leak...?
 		LinkCache::singleton()->clear();
 
 		$page = WikiPage::factory( $title );
-		$page->doEdit( $text, $comment, 0, false, $wiki_user );
+		$page->doEdit( $text, $comment, 0, false, $user );
 
 		$this->pageList[] = array( $title, $page->getId() );
 

@@ -36,7 +36,7 @@ class InitStats extends Maintenance {
 		$this->mDescription = "Re-initialise the site statistics tables";
 		$this->addOption( 'update', 'Update the existing statistics (preserves the ss_total_views field)' );
 		$this->addOption( 'noviews', "Don't update the page view counter" );
-		$this->addOption( 'active', 'Also update active wiki_users count' );
+		$this->addOption( 'active', 'Also update active users count' );
 		$this->addOption( 'use-master', 'Count using the master database' );
 	}
 
@@ -52,10 +52,10 @@ class InitStats extends Maintenance {
 		$this->output( "{$good}\nCounting total pages..." );
 
 		$pages = $counter->pages();
-		$this->output( "{$pages}\nCounting number of wiki_users..." );
+		$this->output( "{$pages}\nCounting number of users..." );
 
-		$wiki_users = $counter->wiki_users();
-		$this->output( "{$wiki_users}\nCounting number of images..." );
+		$users = $counter->users();
+		$this->output( "{$users}\nCounting number of images..." );
 
 		$image = $counter->files();
 		$this->output( "{$image}\n" );
@@ -67,7 +67,7 @@ class InitStats extends Maintenance {
 		}
 
 		if ( $this->hasOption( 'active' ) ) {
-			$this->output( "Counting active wiki_users..." );
+			$this->output( "Counting active users..." );
 			$active = SiteStatsUpdate::cacheUpdate( wfGetDB( DB_MASTER ) );
 			$this->output( "{$active}\n" );
 		}

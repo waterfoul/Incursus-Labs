@@ -33,7 +33,7 @@ class PostgresUpdater extends DatabaseUpdater {
 	/**
 	 * @var DatabasePostgres
 	 */
-	protected ;
+	protected $db;
 
 	/**
 	 * @todo FIXME: Postgres should use sequential updates like Mysql, Sqlite
@@ -43,11 +43,11 @@ class PostgresUpdater extends DatabaseUpdater {
 	protected function getCoreUpdateList() {
 		return array(
 			# rename tables 1.7.3
-			# r15791 Change reserved word table names "wiki_user" and "text"
-			array( 'renameTable', 'wiki_user', 'mwwiki_user' ),
+			# r15791 Change reserved word table names "user" and "text"
+			array( 'renameTable', 'user', 'mwuser' ),
 			array( 'renameTable', 'text', 'pagecontent' ),
-			array( 'renameIndex', 'mwwiki_user', 'wiki_user_pkey', 'mwwiki_user_pkey'),
-			array( 'renameIndex', 'mwwiki_user', 'wiki_user_wiki_user_name_key', 'mwwiki_user_wiki_user_name_key' ),
+			array( 'renameIndex', 'mwuser', 'user_pkey', 'mwuser_pkey'),
+			array( 'renameIndex', 'mwuser', 'user_user_name_key', 'mwuser_user_name_key' ),
 			array( 'renameIndex', 'pagecontent','text_pkey', 'pagecontent_pkey' ),
 
 			# renamed sequences
@@ -80,7 +80,7 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'addTable', 'change_tag',        'patch-change_tag.sql' ),
 			array( 'addTable', 'tag_summary',       'patch-tag_summary.sql' ),
 			array( 'addTable', 'valid_tag',         'patch-valid_tag.sql' ),
-			array( 'addTable', 'wiki_user_properties',   'patch-wiki_user_properties.sql' ),
+			array( 'addTable', 'user_properties',   'patch-user_properties.sql' ),
 			array( 'addTable', 'log_search',        'patch-log_search.sql' ),
 			array( 'addTable', 'l10n_cache',        'patch-l10n_cache.sql' ),
 			array( 'addTable', 'iwlinks',           'patch-iwlinks.sql' ),
@@ -88,8 +88,8 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'addTable', 'msg_resource_links','patch-msg_resource_links.sql' ),
 			array( 'addTable', 'module_deps',       'patch-module_deps.sql' ),
 			array( 'addTable', 'uploadstash',       'patch-uploadstash.sql' ),
-			array( 'addTable', 'wiki_user_former_groups','patch-wiki_user_former_groups.sql' ),
-			array( 'addTable', 'external_wiki_user',     'patch-external_wiki_user.sql' ),
+			array( 'addTable', 'user_former_groups','patch-user_former_groups.sql' ),
+			array( 'addTable', 'external_user',     'patch-external_user.sql' ),
 
 			# Needed before new field
 			array( 'convertArchive2' ),
@@ -104,7 +104,7 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'addPgField', 'categorylinks', 'cl_collation',         "TEXT NOT NULL DEFAULT 0"),
 			array( 'addPgField', 'categorylinks', 'cl_type',              "TEXT NOT NULL DEFAULT 'page'"),
 			array( 'addPgField', 'image',         'img_sha1',             "TEXT NOT NULL DEFAULT ''" ),
-			array( 'addPgField', 'ipblocks',      'ipb_allow_wiki_usertalk',   'SMALLINT NOT NULL DEFAULT 0' ),
+			array( 'addPgField', 'ipblocks',      'ipb_allow_usertalk',   'SMALLINT NOT NULL DEFAULT 0' ),
 			array( 'addPgField', 'ipblocks',      'ipb_anon_only',        'SMALLINT NOT NULL DEFAULT 0' ),
 			array( 'addPgField', 'ipblocks',      'ipb_by_text',          "TEXT NOT NULL DEFAULT ''" ),
 			array( 'addPgField', 'ipblocks',      'ipb_block_email',      'SMALLINT NOT NULL DEFAULT 0' ),
@@ -116,8 +116,8 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'addPgField', 'logging',       'log_deleted',          'SMALLINT NOT NULL DEFAULT 0' ),
 			array( 'addPgField', 'logging',       'log_id',               "INTEGER NOT NULL PRIMARY KEY DEFAULT nextval('logging_log_id_seq')" ),
 			array( 'addPgField', 'logging',       'log_params',           'TEXT' ),
-			array( 'addPgField', 'mwwiki_user',        'wiki_user_editcount',       'INTEGER' ),
-			array( 'addPgField', 'mwwiki_user',        'wiki_user_newpass_time',    'TIMESTAMPTZ' ),
+			array( 'addPgField', 'mwuser',        'user_editcount',       'INTEGER' ),
+			array( 'addPgField', 'mwuser',        'user_newpass_time',    'TIMESTAMPTZ' ),
 			array( 'addPgField', 'oldimage',      'oi_deleted',           'SMALLINT NOT NULL DEFAULT 0' ),
 			array( 'addPgField', 'oldimage',      'oi_major_mime',        "TEXT NOT NULL DEFAULT 'unknown'" ),
 			array( 'addPgField', 'oldimage',      'oi_media_type',        'TEXT' ),
@@ -138,9 +138,9 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'addPgField', 'revision',      'rev_deleted',          'SMALLINT NOT NULL DEFAULT 0' ),
 			array( 'addPgField', 'revision',      'rev_len',              'INTEGER' ),
 			array( 'addPgField', 'revision',      'rev_parent_id',        'INTEGER DEFAULT NULL' ),
-			array( 'addPgField', 'site_stats',    'ss_active_wiki_users',      "INTEGER DEFAULT '-1'" ),
-			array( 'addPgField', 'wiki_user_newtalk',  'wiki_user_last_timestamp',  'TIMESTAMPTZ' ),
-			array( 'addPgField', 'logging',       'log_wiki_user_text',        "TEXT NOT NULL DEFAULT ''" ),
+			array( 'addPgField', 'site_stats',    'ss_active_users',      "INTEGER DEFAULT '-1'" ),
+			array( 'addPgField', 'user_newtalk',  'user_last_timestamp',  'TIMESTAMPTZ' ),
+			array( 'addPgField', 'logging',       'log_user_text',        "TEXT NOT NULL DEFAULT ''" ),
 			array( 'addPgField', 'logging',       'log_page',             'INTEGER' ),
 			array( 'addPgField', 'interwiki',     'iw_api',               "TEXT NOT NULL DEFAULT ''"),
 			array( 'addPgField', 'interwiki',     'iw_wikiid',            "TEXT NOT NULL DEFAULT ''"),
@@ -172,8 +172,8 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'changeField', 'ipblocks',      'ipb_block_email', 'smallint', "CASE WHEN ipb_block_email=' ' THEN 0 ELSE ipb_block_email::smallint END DEFAULT 0" ),
 			array( 'changeField', 'ipblocks',      'ipb_address',     'text',     'ipb_address::text' ),
 			array( 'changeField', 'ipblocks',      'ipb_deleted',     'smallint', 'ipb_deleted::smallint DEFAULT 0' ),
-			array( 'changeField', 'mwwiki_user',        'wiki_user_token',      'text',     '' ),
-			array( 'changeField', 'mwwiki_user',        'wiki_user_email_token', 'text',     '' ),
+			array( 'changeField', 'mwuser',        'user_token',      'text',     '' ),
+			array( 'changeField', 'mwuser',        'user_email_token', 'text',     '' ),
 			array( 'changeField', 'objectcache',   'keyname',         'text',     '' ),
 			array( 'changeField', 'oldimage',      'oi_height',       'integer',  '' ),
 			array( 'changeField', 'oldimage',      'oi_metadata',     'bytea',    "decode(img_metadata,'escape')" ),
@@ -192,7 +192,7 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'changeField', 'revision',      'rev_deleted',     'smallint', 'rev_deleted::smallint DEFAULT 0' ),
 			array( 'changeField', 'revision',      'rev_minor_edit',  'smallint', 'rev_minor_edit::smallint DEFAULT 0' ),
 			array( 'changeField', 'templatelinks', 'tl_namespace',    'smallint', 'tl_namespace::smallint' ),
-			array( 'changeField', 'wiki_user_newtalk',  'wiki_user_ip',         'text',     'host(wiki_user_ip)' ),
+			array( 'changeField', 'user_newtalk',  'user_ip',         'text',     'host(user_ip)' ),
 			array( 'changeField', 'uploadstash',   'us_image_bits',   'smallint', '' ),
 
 			# null changes
@@ -207,7 +207,7 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'checkOiDeleted' ),
 
 			# New indexes
-			array( 'addPgIndex', 'archive',       'archive_wiki_user_text',      '(ar_wiki_user_text)' ),
+			array( 'addPgIndex', 'archive',       'archive_user_text',      '(ar_user_text)' ),
 			array( 'addPgIndex', 'image',         'img_sha1',               '(img_sha1)' ),
 			array( 'addPgIndex', 'ipblocks',      'ipb_parent_block_id',              '(ipb_parent_block_id)' ),
 			array( 'addPgIndex', 'oldimage',      'oi_sha1',                '(oi_sha1)' ),
@@ -216,8 +216,8 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'addPgIndex', 'revision',      'rev_text_id_idx',        '(rev_text_id)' ),
 			array( 'addPgIndex', 'recentchanges', 'rc_timestamp_bot',       '(rc_timestamp) WHERE rc_bot = 0' ),
 			array( 'addPgIndex', 'templatelinks', 'templatelinks_from',     '(tl_from)' ),
-			array( 'addPgIndex', 'watchlist',     'wl_wiki_user',                '(wl_wiki_user)' ),
-			array( 'addPgIndex', 'logging',       'logging_wiki_user_type_time', '(log_wiki_user, log_type, log_timestamp)' ),
+			array( 'addPgIndex', 'watchlist',     'wl_user',                '(wl_user)' ),
+			array( 'addPgIndex', 'logging',       'logging_user_type_time', '(log_user, log_type, log_timestamp)' ),
 			array( 'addPgIndex', 'logging',       'logging_page_id_time',   '(log_page,log_timestamp)' ),
 			array( 'addPgIndex', 'iwlinks',       'iwl_prefix_title_from',  '(iwl_prefix, iwl_title, iwl_from)' ),
 			array( 'addPgIndex', 'job',           'job_timestamp_idx',      '(job_timestamp)' ),
@@ -265,10 +265,10 @@ class PostgresUpdater extends DatabaseUpdater {
 				array('page_title', 'text_pattern_ops', 'btree', 0),
 			),
 			'CREATE INDEX "page_talk_title" ON "page" USING "btree" ("page_title" "text_pattern_ops") WHERE ("page_namespace" = 1)' ),
-			array( 'checkIndex', 'page_wiki_user_title', array(
+			array( 'checkIndex', 'page_user_title', array(
 				array('page_title', 'text_pattern_ops', 'btree', 0),
 			),
-			'CREATE INDEX "page_wiki_user_title" ON "page" USING "btree" ("page_title" "text_pattern_ops") WHERE ("page_namespace" = 2)' ),
+			'CREATE INDEX "page_user_title" ON "page" USING "btree" ("page_title" "text_pattern_ops") WHERE ("page_namespace" = 2)' ),
 			array( 'checkIndex', 'page_utalk_title', array(
 				array('page_title', 'text_pattern_ops', 'btree', 0),
 			),
@@ -284,47 +284,47 @@ class PostgresUpdater extends DatabaseUpdater {
 
 			array( 'checkOiNameConstraint' ),
 			array( 'checkPageDeletedTrigger' ),
-			array( 'checkRevwiki_userFkey' ),
+			array( 'checkRevUserFkey' ),
 			array( 'dropIndex', 'ipblocks', 'ipb_address'),
 			array( 'checkIndex', 'ipb_address_unique', array(
 				array('ipb_address', 'text_ops', 'btree', 0),
-				array('ipb_wiki_user',    'int4_ops', 'btree', 0),
+				array('ipb_user',    'int4_ops', 'btree', 0),
 				array('ipb_auto',    'int2_ops', 'btree', 0),
 				array('ipb_anon_only', 'int2_ops', 'btree', 0),
 			),
-			'CREATE UNIQUE INDEX ipb_address_unique ON ipblocks (ipb_address,ipb_wiki_user,ipb_auto,ipb_anon_only)' ),
+			'CREATE UNIQUE INDEX ipb_address_unique ON ipblocks (ipb_address,ipb_user,ipb_auto,ipb_anon_only)' ),
 
 			array( 'checkIwlPrefix' ),
 
 			# All FK columns should be deferred
-			array( 'changeFkeyDeferrable', 'archive',          'ar_wiki_user',         'mwwiki_user(wiki_user_id) ON DELETE SET NULL' ),
+			array( 'changeFkeyDeferrable', 'archive',          'ar_user',         'mwuser(user_id) ON DELETE SET NULL' ),
 			array( 'changeFkeyDeferrable', 'categorylinks',    'cl_from',         'page(page_id) ON DELETE CASCADE' ),
 			array( 'changeFkeyDeferrable', 'externallinks',    'el_from',         'page(page_id) ON DELETE CASCADE' ),
-			array( 'changeFkeyDeferrable', 'filearchive',      'fa_deleted_wiki_user', 'mwwiki_user(wiki_user_id) ON DELETE SET NULL' ),
-			array( 'changeFkeyDeferrable', 'filearchive',      'fa_wiki_user',         'mwwiki_user(wiki_user_id) ON DELETE SET NULL' ),
-			array( 'changeFkeyDeferrable', 'image',            'img_wiki_user',        'mwwiki_user(wiki_user_id) ON DELETE SET NULL' ),
+			array( 'changeFkeyDeferrable', 'filearchive',      'fa_deleted_user', 'mwuser(user_id) ON DELETE SET NULL' ),
+			array( 'changeFkeyDeferrable', 'filearchive',      'fa_user',         'mwuser(user_id) ON DELETE SET NULL' ),
+			array( 'changeFkeyDeferrable', 'image',            'img_user',        'mwuser(user_id) ON DELETE SET NULL' ),
 			array( 'changeFkeyDeferrable', 'imagelinks',       'il_from',         'page(page_id) ON DELETE CASCADE' ),
-			array( 'changeFkeyDeferrable', 'ipblocks',         'ipb_by',          'mwwiki_user(wiki_user_id) ON DELETE CASCADE' ),
-			array( 'changeFkeyDeferrable', 'ipblocks',         'ipb_wiki_user',        'mwwiki_user(wiki_user_id) ON DELETE SET NULL' ),
+			array( 'changeFkeyDeferrable', 'ipblocks',         'ipb_by',          'mwuser(user_id) ON DELETE CASCADE' ),
+			array( 'changeFkeyDeferrable', 'ipblocks',         'ipb_user',        'mwuser(user_id) ON DELETE SET NULL' ),
 			array( 'changeFkeyDeferrable', 'ipblocks',         'ipb_parent_block_id',       'ipblocks(ipb_id) ON DELETE SET NULL' ),
 			array( 'changeFkeyDeferrable', 'langlinks',        'll_from',         'page(page_id) ON DELETE CASCADE' ),
-			array( 'changeFkeyDeferrable', 'logging',          'log_wiki_user',        'mwwiki_user(wiki_user_id) ON DELETE SET NULL' ),
+			array( 'changeFkeyDeferrable', 'logging',          'log_user',        'mwuser(user_id) ON DELETE SET NULL' ),
 			array( 'changeFkeyDeferrable', 'oldimage',         'oi_name',         'image(img_name) ON DELETE CASCADE ON UPDATE CASCADE' ),
-			array( 'changeFkeyDeferrable', 'oldimage',         'oi_wiki_user',         'mwwiki_user(wiki_user_id) ON DELETE SET NULL' ),
+			array( 'changeFkeyDeferrable', 'oldimage',         'oi_user',         'mwuser(user_id) ON DELETE SET NULL' ),
 			array( 'changeFkeyDeferrable', 'pagelinks',        'pl_from',         'page(page_id) ON DELETE CASCADE' ),
 			array( 'changeFkeyDeferrable', 'page_props',       'pp_page',         'page (page_id) ON DELETE CASCADE' ),
 			array( 'changeFkeyDeferrable', 'page_restrictions', 'pr_page',         'page(page_id) ON DELETE CASCADE' ),
-			array( 'changeFkeyDeferrable', 'protected_titles', 'pt_wiki_user',         'mwwiki_user(wiki_user_id) ON DELETE SET NULL' ),
+			array( 'changeFkeyDeferrable', 'protected_titles', 'pt_user',         'mwuser(user_id) ON DELETE SET NULL' ),
 			array( 'changeFkeyDeferrable', 'recentchanges',    'rc_cur_id',       'page(page_id) ON DELETE SET NULL' ),
-			array( 'changeFkeyDeferrable', 'recentchanges',    'rc_wiki_user',         'mwwiki_user(wiki_user_id) ON DELETE SET NULL' ),
+			array( 'changeFkeyDeferrable', 'recentchanges',    'rc_user',         'mwuser(user_id) ON DELETE SET NULL' ),
 			array( 'changeFkeyDeferrable', 'redirect',         'rd_from',         'page(page_id) ON DELETE CASCADE' ),
 			array( 'changeFkeyDeferrable', 'revision',         'rev_page',        'page (page_id) ON DELETE CASCADE' ),
-			array( 'changeFkeyDeferrable', 'revision',         'rev_wiki_user',        'mwwiki_user(wiki_user_id) ON DELETE RESTRICT' ),
+			array( 'changeFkeyDeferrable', 'revision',         'rev_user',        'mwuser(user_id) ON DELETE RESTRICT' ),
 			array( 'changeFkeyDeferrable', 'templatelinks',    'tl_from',         'page(page_id) ON DELETE CASCADE' ),
-			array( 'changeFkeyDeferrable', 'wiki_user_groups',      'ug_wiki_user',         'mwwiki_user(wiki_user_id) ON DELETE CASCADE' ),
-			array( 'changeFkeyDeferrable', 'wiki_user_newtalk',     'wiki_user_id',         'mwwiki_user(wiki_user_id) ON DELETE CASCADE' ),
-			array( 'changeFkeyDeferrable', 'wiki_user_properties',  'up_wiki_user',         'mwwiki_user(wiki_user_id) ON DELETE CASCADE' ),
-			array( 'changeFkeyDeferrable', 'watchlist',        'wl_wiki_user',         'mwwiki_user(wiki_user_id) ON DELETE CASCADE' ),
+			array( 'changeFkeyDeferrable', 'user_groups',      'ug_user',         'mwuser(user_id) ON DELETE CASCADE' ),
+			array( 'changeFkeyDeferrable', 'user_newtalk',     'user_id',         'mwuser(user_id) ON DELETE CASCADE' ),
+			array( 'changeFkeyDeferrable', 'user_properties',  'up_user',         'mwuser(user_id) ON DELETE CASCADE' ),
+			array( 'changeFkeyDeferrable', 'watchlist',        'wl_user',         'mwuser(user_id) ON DELETE CASCADE' ),
 
 			# r81574
 			array( 'addInterwikiType' ),
@@ -720,11 +720,11 @@ END;
 		}
 	}
 
-	protected function checkRevwiki_userFkey() {
-		if ( $this->fkeyDeltype( 'revision_rev_wiki_user_fkey' ) == 'r' ) {
-			$this->output( "...constraint 'revision_rev_wiki_user_fkey' is ON DELETE RESTRICT\n" );
+	protected function checkRevUserFkey() {
+		if ( $this->fkeyDeltype( 'revision_rev_user_fkey' ) == 'r' ) {
+			$this->output( "...constraint 'revision_rev_user_fkey' is ON DELETE RESTRICT\n" );
 		} else {
-			$this->applyPatch( 'patch-revision_rev_wiki_user_fkey.sql', false, "Changing constraint 'revision_rev_wiki_user_fkey' to ON DELETE RESTRICT" );
+			$this->applyPatch( 'patch-revision_rev_user_fkey.sql', false, "Changing constraint 'revision_rev_user_fkey' to ON DELETE RESTRICT" );
 		}
 	}
 

@@ -109,7 +109,7 @@ pre, .mw-code {
 */
 
 /*
-** wiki_user styles
+** User styles
 */
 /* table standards */
 table.rimage {
@@ -401,13 +401,13 @@ input.searchButton {
 #p-personal li.active a:hover {
 	background-color: transparent;
 }
-/* the icon in front of the wiki_user name, single quotes
+/* the icon in front of the user name, single quotes
 in bg url to hide it from iemac */
-li#pt-wiki_userpage,
-li#pt-anonwiki_userpage,
+li#pt-userpage,
+li#pt-anonuserpage,
 li#pt-login {
 	/* @embed */
-	background: url(wiki_user.gif) top left no-repeat;
+	background: url(user.gif) top left no-repeat;
 	padding-left: 20px;
 	text-transform: none;
 }
@@ -652,8 +652,8 @@ td.htmlform-tip {
 	margin-top: 2em;
 }
 
-div#wiki_userloginForm,
-div#wiki_userlogin {
+div#userloginForm,
+div#userlogin {
 	margin: 0 3em 1em 0;
 	border: 1px solid #aaa;
 	clear: both;
@@ -662,18 +662,18 @@ div#wiki_userlogin {
 	float: left;
 }
 
-div#wiki_userloginForm table,
-div#wiki_userlogin table {
+div#userloginForm table,
+div#userlogin table {
 	background-color: #f9f9f9;
 }
 
-div#wiki_userloginForm h2,
-div#wiki_userlogin h2 {
+div#userloginForm h2,
+div#userlogin h2 {
 	padding-top: 0;
 }
 
-div#wiki_userlogin .captcha,
-div#wiki_userloginForm .captcha {
+div#userlogin .captcha,
+div#userloginForm .captcha {
 	border: 1px solid #bbb;
 	padding: 1.5em 2em;
 	background-color: white;
@@ -683,7 +683,7 @@ div#wiki_userloginForm .captcha {
 	clear: both;
 }
 
-#wiki_userloginprompt, #languagelinks {
+#userloginprompt, #languagelinks {
 	font-size: 85%;
 }
 
@@ -693,11 +693,11 @@ div#wiki_userloginForm .captcha {
 	padding-top: 2em;
 }
 
-#wiki_userlogin .loginText, #wiki_userlogin .loginPassword {
+#userlogin .loginText, #userlogin .loginPassword {
 	width: 12em;
 }
 
-#wiki_userloginlink a, #wpLoginattempt, #wpCreateaccount {
+#userloginlink a, #wpLoginattempt, #wpCreateaccount {
 	font-weight: bold;
 }
 

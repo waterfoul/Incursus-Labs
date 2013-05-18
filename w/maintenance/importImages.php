@@ -4,7 +4,7 @@
  * using the web-based interface.
  *
  * "Smart import" additions:
- * - aim: preserve the essential metadata (wiki_user, description) when importing medias from an existing wiki
+ * - aim: preserve the essential metadata (user, description) when importing medias from an existing wiki
  * - process:
  *      - interface with the source wiki, don't use bare files only (see --source-wiki-url).
  *      - fetch metadata from source wiki for each file to import.
@@ -31,7 +31,7 @@
  * @author Mij <mij@bitchx.it>
  */
 
-$optionsWithArgs = array( 'extensions', 'comment', 'comment-file', 'comment-ext', 'wiki_user', 'license', 'sleep', 'limit', 'from', 'source-wiki-url' );
+$optionsWithArgs = array( 'extensions', 'comment', 'comment-file', 'comment-ext', 'user', 'license', 'sleep', 'limit', 'from', 'source-wiki-url' );
 require_once( __DIR__ . '/commandLine.inc' );
 require_once( __DIR__ . '/importImages.inc' );
 $processed = $added = $ignored = $skipped = $overwritten = $failed = 0;
@@ -63,24 +63,24 @@ $extensions = isset( $options['extensions'] )
 # Search the path provided for candidates for import
 $files = findFiles( $dir, $extensions );
 
-# Initialise the wiki_user for this operation
-$wiki_user = isset( $options['wiki_user'] )
-	? wiki_user::newFromName( $options['wiki_user'] )
-	: wiki_user::newFromName( 'Maintenance script' );
-if ( !$wiki_user instanceof wiki_user ) {
-	$wiki_user = wiki_user::newFromName( 'Maintenance script' );
+# Initialise the user for this operation
+$user = isset( $options['user'] )
+	? User::newFromName( $options['user'] )
+	: User::newFromName( 'Maintenance script' );
+if ( !$user instanceof User ) {
+	$user = User::newFromName( 'Maintenance script' );
 }
-$wgwiki_user = $wiki_user;
+$wgUser = $user;
 
 # Get block check. If a value is given, this specified how often the check is performed
-if ( isset( $options['check-wiki_userblock'] ) ) {
-	if ( !$options['check-wiki_userblock'] ) {
-		$checkwiki_userBlock = 1;
+if ( isset( $options['check-userblock'] ) ) {
+	if ( !$options['check-userblock'] ) {
+		$checkUserBlock = 1;
 	} else {
-		$checkwiki_userBlock = (int)$options['check-wiki_userblock'];
+		$checkUserBlock = (int)$options['check-userblock'];
 	}
 } else {
-	$checkwiki_userBlock = false;
+	$checkUserBlock = false;
 }
 
 # Get --from
@@ -138,10 +138,10 @@ if ( $count > 0 ) {
 			}
 		}
 
-		if ( $checkwiki_userBlock && ( ( $processed % $checkwiki_userBlock ) == 0 ) ) {
-			$wiki_user->clearInstanceCache( 'name' ); // reload from DB!
-			if ( $wiki_user->isBlocked() ) {
-				echo( $wiki_user->getName() . " was blocked! Aborting.\n" );
+		if ( $checkUserBlock && ( ( $processed % $checkUserBlock ) == 0 ) ) {
+			$user->clearInstanceCache( 'name' ); // reload from DB!
+			if ( $user->isBlocked() ) {
+				echo( $user->getName() . " was blocked! Aborting.\n" );
 				break;
 			}
 		}
@@ -183,15 +183,15 @@ if ( $count > 0 ) {
 			else
 				$commentText = $real_comment;
 
-			/* find wiki_user directly from source wiki, through MW's API */
-			$real_wiki_user = getFilewiki_userFromSourceWiki( $options['source-wiki-url'], $base );
-			if ( $real_wiki_user === false ) {
-				$wgwiki_user = $wiki_user;
+			/* find user directly from source wiki, through MW's API */
+			$real_user = getFileUserFromSourceWiki( $options['source-wiki-url'], $base );
+			if ( $real_user === false ) {
+				$wgUser = $user;
 			} else {
-				$wgwiki_user = wiki_user::newFromName( $real_wiki_user );
-				if ( $wgwiki_user === false ) {
-					# wiki_user does not exist in target wiki
-					echo ( "failed: wiki_user '$real_wiki_user' does not exist in target wiki." );
+				$wgUser = User::newFromName( $real_user );
+				if ( $wgUser === false ) {
+					# user does not exist in target wiki
+					echo ( "failed: user '$real_user' does not exist in target wiki." );
 					continue;
 				}
 			}
@@ -218,7 +218,7 @@ if ( $count > 0 ) {
 
 		# Import the file
 		if ( isset( $options['dry'] ) ) {
-			echo( " publishing {$file} by '" . $wgwiki_user->getName() . "', comment '$commentText'... " );
+			echo( " publishing {$file} by '" . $wgUser->getName() . "', comment '$commentText'... " );
 		} else {
 			$archive = $image->publish( $file );
 			if ( !$archive->isGood() ) {
@@ -266,7 +266,7 @@ if ( $count > 0 ) {
 					}
 
 					$page = WikiPage::factory( $title );
-					$status = $page->doUpdateRestrictions( $restrictions, array(), $cascade, '', $wiki_user );
+					$status = $page->doUpdateRestrictions( $restrictions, array(), $cascade, '', $user );
 					echo( ( $status->isOK() ? 'done' : 'failed' ) . "\n" );
 			}
 
@@ -321,8 +321,8 @@ Options:
 						aborted imports. <name> should be the file's canonical database form.
 --skip-dupes		Skip images that were already uploaded under a different name (check SHA1)
 --sleep=<sec> 		Sleep between files. Useful mostly for debugging.
---wiki_user=<wiki_username> 	Set wiki_username of uploader, default 'Maintenance script'
---check-wiki_userblock 	Check if the wiki_user got blocked during import.
+--user=<username> 	Set username of uploader, default 'Maintenance script'
+--check-userblock 	Check if the user got blocked during import.
 --comment=<text>  	Set upload summary comment, default 'Importing image file'.
 --comment-file=<file>  	Set upload summary comment the the content of <file>.
 --comment-ext=<ext>  	Causes the comment for each file to be loaded from a file with the same name
@@ -331,7 +331,7 @@ Options:
 --dry			Dry run, don't import anything
 --protect=<protect>     Specify the protect value (autoconfirmed,sysop)
 --unprotect             Unprotects all uploaded images
---source-wiki-url   if specified, take wiki_user and Comment data for each imported file from this URL.
+--source-wiki-url   if specified, take User and Comment data for each imported file from this URL.
 					For example, --source-wiki-url="http://en.wikipedia.org/"
 
 TEXT;

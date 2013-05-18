@@ -59,8 +59,8 @@ $specialPageAliases = array(
 	'Lonelypages'               => array( 'Páiginas Uorfanas' ),
 	'Uncategorizedcategories'   => array( 'Catadories sien catadories' ),
 	'Uncategorizedimages'       => array( 'Eimaiges sien catadories' ),
-	'wiki_userlogin'                 => array( 'Antrar' ),
-	'wiki_userlogout'                => array( 'Salir' ),
+	'Userlogin'                 => array( 'Antrar' ),
+	'Userlogout'                => array( 'Salir' ),
 );
 
 $magicWords = array(
@@ -78,7 +78,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Sublinhar lhigaçones:',
 'tog-justify' => 'Justeficar parágrafos',
 'tog-hideminor' => 'Scunder eidiçones mais pequeinhas nas redadeiras altaraçones',
@@ -102,7 +102,7 @@ $messages = array(
 'tog-previewonfirst' => "Amostrar l'antebison na purmeira eidiçon",
 'tog-nocache' => 'Zatibar caching de páiginas',
 'tog-enotifwatchlistpages' => 'Notificar-me por correio eiletrónico quando ua páigina begiada ye altarada',
-'tog-enotifwiki_usertalkpages' => 'Abisar -me por correio eiletrónico quando la mie páigina de çcusson ye eiditada',
+'tog-enotifusertalkpages' => 'Abisar -me por correio eiletrónico quando la mie páigina de çcusson ye eiditada',
 'tog-enotifminoredits' => 'Abisar-me por correio eiletrónico tamien quando las eidiçones fúren pequeinhas',
 'tog-enotifrevealaddr' => 'Rebelar l miu andereço de correio eiletrónico nas noteficaçones',
 'tog-shownumberswatching' => "Amostrar l númaro d'outelizadores a begiar",
@@ -251,7 +251,7 @@ $messages = array(
 'talk' => 'Çcusson',
 'views' => 'Besitas',
 'toolbox' => 'Caixa de Ferramientas',
-'wiki_userpage' => 'Ber páigina de outelizador',
+'userpage' => 'Ber páigina de outelizador',
 'imagepage' => 'Ber páigina de fexeiro',
 'mediawikipage' => 'Ber páigina de mensaiges',
 'templatepage' => 'Ber páigina de modelos',
@@ -266,7 +266,7 @@ $messages = array(
 'jumptonavigation' => 'nabegaçon',
 'jumptosearch' => 'percura',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Subre {{SITENAME}}',
 'aboutpage' => 'Project:Subre',
 'copyright' => 'Cuntenido çponible subre la lhicença $1.',
@@ -317,7 +317,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Páigina',
-'nstab-wiki_user' => 'Páigina de l outelizador',
+'nstab-user' => 'Páigina de l outelizador',
 'nstab-media' => 'Páigina de média',
 'nstab-special' => 'Páigina special',
 'nstab-project' => 'Páigina de porjeto',
@@ -341,7 +341,7 @@ $messages = array(
 Esto normalmente ye por bias de la besita a ua lhigaçon zatualizada ó de stória dua páigina que fui apagada.
 
 Se nun fur este l causo, tu puodes tener ancuntrado algun porblema ne l software.
-Por fabor, diç esto a un [[Special:Listwiki_users/sysop|admenistrador]], dezindo la lhigaçon.',
+Por fabor, diç esto a un [[Special:ListUsers/sysop|admenistrador]], dezindo la lhigaçon.',
 'missingarticle-rev' => '(rebison#: $1)',
 'missingarticle-diff' => '(Dif.: $1, $2)',
 'internalerror' => 'Erro anterno',
@@ -375,9 +375,9 @@ Puode tener un ó mais carateres que nun puoden ser outelizados an títalos.',
 'login' => 'Antrar',
 'nav-login-createaccount' => 'Antrar / criar cuonta',
 'loginprompt' => 'Tenes que tener ls <i>cookies</i> atibos para te outenticares an{{SITENAME}}.',
-'wiki_userlogin' => 'Antrar / criar cuonta',
+'userlogin' => 'Antrar / criar cuonta',
 'logout' => 'Salir',
-'wiki_userlogout' => 'Salir',
+'userlogout' => 'Salir',
 'notloggedin' => 'Por outenticar',
 'nologin' => "Nun tenes ua cuonta? '''$1'''.",
 'nologinlink' => 'Criar ua cuonta',
@@ -388,12 +388,12 @@ Puode tener un ó mais carateres que nun puoden ser outelizados an títalos.',
 'loginerror' => 'Erro de outenticaçon',
 'loginsuccesstitle' => 'Antreste cumo debe de ser',
 'loginsuccess' => "'''Stás agora lhigado a {{SITENAME}} cumo \"\$1\"'''.",
-'nosuchwiki_user' => 'Num eisiste nanhun outelizador cul nome "$1".
+'nosuchuser' => 'Num eisiste nanhun outelizador cul nome "$1".
 Ls nomes de outelizador son defrentes an lhetra grande ó pequeinha.
-Bei cumo screbiste, ó [[Special:wiki_userLogin/signup|cria ua nuoba cuonta]].',
-'nosuchwiki_usershort' => 'Nun eisiste nanhun outelizador cul nome "$1".
+Bei cumo screbiste, ó [[Special:UserLogin/signup|cria ua nuoba cuonta]].',
+'nosuchusershort' => 'Nun eisiste nanhun outelizador cul nome "$1".
 Bei se l screbiste bien.',
-'nowiki_userspecified' => 'Tenes que dezir un nome de outelizador.',
+'nouserspecified' => 'Tenes que dezir un nome de outelizador.',
 'wrongpassword' => 'La palabra chabe ye ambálida.
 Por fabor, spurmenta outra beç.',
 'wrongpasswordempty' => 'Tenes que poner la palabra chabe.
@@ -468,7 +468,7 @@ La tue morada de IP atual ye $3 i l ID de l bloqueio ye $5. Por fabor, anclui un
 'loginreqlink' => 'antrar',
 'loginreqpagetext' => 'Percisas de $1 pa poder ber outras páiginas.',
 'accmailtitle' => 'Palabra-chabe ambiada.',
-'accmailtext' => "Ua palabra-chabe criada al calhas pa [[wiki_user talk:$1|$1]] fui ambiada pa $2.
+'accmailtext' => "Ua palabra-chabe criada al calhas pa [[User talk:$1|$1]] fui ambiada pa $2.
 
 La palabra-chabe para esta nuoba cuonta puode ser demudada na páigina pa ''[[Special:ChangePassword|demudar palabra-chabe]]'' apuis de la outenticaçon.",
 'newarticle' => '(Nuoba)',
@@ -495,7 +495,7 @@ Tu stás, al mesmo tiempo, a garantir-mos qu'esto ye algo screbido por ti, ó al
 'template-semiprotected' => '(semi-protegida)',
 'hiddencategories' => 'Esta páigina faç parte {{PLURAL:$1|dua catadorie scundida|$1 duas catadories scundidas}}:',
 'nocreatetext' => '{{SITENAME}} tem restringida la possibilidade de criar nuobas páginas.
-Pode boltar atrás i editar unha página yá eisistente, o [[Special:wiki_userLogin|autenticar-se o criar unha cuonta]].',
+Pode boltar atrás i editar unha página yá eisistente, o [[Special:UserLogin|autenticar-se o criar unha cuonta]].',
 'permissionserrorstext-withaction' => 'Tu nun tenes premisson pa $2, {{PLURAL:$1|pula seguinte rezon|pulas seguintes rezones}}:',
 'recreate-moveddeleted-warn' => "Abiso: Tu stás a criar ua páigina que yá fui d'atrás botada fuora.'''
 
@@ -601,7 +601,7 @@ Legenda: (atu) = defrénças de la berson atual,
 'prefs-files' => 'Fexeiros',
 'prefs-emailconfirm-label' => 'Cunfirmaçon de l correio eiletrónico:',
 'youremail' => 'Morada de correio eiletrónico:',
-'wiki_username' => 'Nome de outelizador:',
+'username' => 'Nome de outelizador:',
 'uid' => 'Númaro de eidentificaçon:',
 'prefs-memberingroups' => 'Nembro {{PLURAL:$1|de l grupo|de ls grupos}}:',
 'yourrealname' => 'Nome berdadeiro:',
@@ -617,13 +617,13 @@ Causo l çponiblizes, este será outelizado pa te dar crédito pul tou trabalho.
 'prefs-signature' => 'Assinatura',
 'prefs-dateformat' => 'Formato de la data',
 
-# wiki_user rights
-'editwiki_usergroup' => 'Eiditar grupos de outelizadores',
-'wiki_userrights-groupsmember' => 'Nembro de:',
+# User rights
+'editusergroup' => 'Eiditar grupos de outelizadores',
+'userrights-groupsmember' => 'Nembro de:',
 
 # Groups
 'group' => 'Grupo:',
-'group-wiki_user' => 'Outelizadores',
+'group-user' => 'Outelizadores',
 'group-bot' => 'Rubós',
 'group-sysop' => 'Admenistradores',
 'group-bureaucrat' => 'Burocratas',
@@ -640,7 +640,7 @@ Causo l çponiblizes, este será outelizado pa te dar crédito pul tou trabalho.
 'right-move' => 'Arrastrar páiginas',
 'right-movefile' => 'Arrastrar fexeiros',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Registro de dreitos de l outelizador',
 'rightsnone' => '(nanhun)',
 
@@ -715,7 +715,7 @@ Páiginas que steian ne ls [[Special:Watchlist|tous begiados]] son amostradas an
 'listfiles' => 'Fexeiros',
 'listfiles_date' => 'Data',
 'listfiles_name' => 'Nome',
-'listfiles_wiki_user' => 'Outelizador',
+'listfiles_user' => 'Outelizador',
 'listfiles_size' => 'Tamanho',
 'listfiles_description' => 'Çcriçon',
 
@@ -727,7 +727,7 @@ Páiginas que steian ne ls [[Special:Watchlist|tous begiados]] son amostradas an
 'filehist-datetime' => 'Data/Hora',
 'filehist-thumb' => 'Amostra',
 'filehist-thumbtext' => 'Amostra de la berson de las $1',
-'filehist-wiki_user' => 'Outelizador',
+'filehist-user' => 'Outelizador',
 'filehist-dimensions' => 'Tamanho',
 'filehist-filesize' => 'Tamanho de l fexeiro',
 'filehist-comment' => 'Comentairo',
@@ -767,7 +767,7 @@ Páiginas que steian ne ls [[Special:Watchlist|tous begiados]] son amostradas an
 'statistics' => 'Statísticas',
 'statistics-pages' => 'Páiginas',
 'statistics-views-total' => 'Total de bejitas',
-'statistics-wiki_users-active' => 'Outelizadores atibos',
+'statistics-users-active' => 'Outelizadores atibos',
 
 'disambiguations' => 'Páigina de zambiguaçon',
 
@@ -807,7 +807,7 @@ Páiginas que steian ne ls [[Special:Watchlist|tous begiados]] son amostradas an
 'longpages' => 'Páiginas cumpridas',
 'deadendpages' => 'Páiginas sin salida',
 'protectedpages' => 'Páginas protegidas',
-'listwiki_users' => 'Lhista de outelizadores',
+'listusers' => 'Lhista de outelizadores',
 'newpages' => 'Nuobas páiginas',
 'ancientpages' => 'Páiginas mais antigas',
 'move' => 'Arrastrar',
@@ -821,7 +821,7 @@ Páiginas que steian ne ls [[Special:Watchlist|tous begiados]] son amostradas an
 'booksources-go' => 'Bota',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Outelizador:',
+'specialloguserlabel' => 'Outelizador:',
 'speciallogtitlelabel' => 'Títalo:',
 'log' => 'Registros',
 'all-logs-page' => 'Todos ls registros públicos',
@@ -844,18 +844,18 @@ Páiginas que steian ne ls [[Special:Watchlist|tous begiados]] son amostradas an
 'linksearch' => 'Lhigaçones sternas',
 'linksearch-ok' => 'Percurar',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'Amostrar',
+# Special:ListUsers
+'listusers-submit' => 'Amostrar',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Registro de criaçon de outelizadores',
+# Special:Log/newusers
+'newuserlogpage' => 'Registro de criaçon de outelizadores',
 
 # Special:ListGroupRights
 'listgrouprights-rights' => 'Dreitos',
 'listgrouprights-members' => '(lista de nembros)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Ambiar carta eiletrónica a este outelizador',
+# E-mail user
+'emailuser' => 'Ambiar carta eiletrónica a este outelizador',
 'emailfrom' => 'De:',
 'emailto' => 'Para:',
 
@@ -950,7 +950,7 @@ Esta ye la cunfiguraçon atual pa la páigina '''$1''':",
 'sp-contributions-blocklog' => 'Registro de bloqueios',
 'sp-contributions-talk' => 'Cumbersa',
 'sp-contributions-search' => 'Percurar cuntribuiçones',
-'sp-contributions-wiki_username' => 'Morada de IP ó outelizador:',
+'sp-contributions-username' => 'Morada de IP ó outelizador:',
 'sp-contributions-submit' => 'Percurar',
 
 # What links here
@@ -1033,7 +1033,7 @@ Por fabor, scuolhe outro nome.',
 'importlogpage' => 'Registro de amportaçones',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => "Páigina d'outelizador",
+'tooltip-pt-userpage' => "Páigina d'outelizador",
 'tooltip-pt-mytalk' => 'Mie cumbersa',
 'tooltip-pt-preferences' => 'Las mies perfréncias',
 'tooltip-pt-watchlist' => 'Lhista de páiginas subre las quales stás a begiar las altaraçones.',
@@ -1065,13 +1065,13 @@ Por fabor, scuolhe outro nome.',
 'tooltip-feed-rss' => 'Feed RSS pa esta páigina',
 'tooltip-feed-atom' => 'Feed Atom pa esta páigina',
 'tooltip-t-contributions' => "Ber las cuntribuiçones d'este outelizador",
-'tooltip-t-emailwiki_user' => 'Ambiar ua carta eiletrónica a este outelizador',
+'tooltip-t-emailuser' => 'Ambiar ua carta eiletrónica a este outelizador',
 'tooltip-t-upload' => 'Cargar eimaiges ó fexeiros',
 'tooltip-t-specialpages' => 'Todas las páiginas speciales',
 'tooltip-t-print' => 'Berson pa ampremir desta páigina',
 'tooltip-t-permalink' => 'Lhigaçon pa siempre desta berson desta páigina',
 'tooltip-ca-nstab-main' => 'Ber la páigina de l cuntenido',
-'tooltip-ca-nstab-wiki_user' => 'Ber la páigina de l outelizador',
+'tooltip-ca-nstab-user' => 'Ber la páigina de l outelizador',
 'tooltip-ca-nstab-special' => 'Esta ye ua páigina special, nun puode ser eiditada.',
 'tooltip-ca-nstab-project' => 'Ber la páigina de l porjeto',
 'tooltip-ca-nstab-image' => 'Ber la páigina de l fexeiro',

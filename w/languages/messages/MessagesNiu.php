@@ -74,7 +74,7 @@ $messages = array(
 'jumptonavigation' => 'navikati',
 'jumptosearch' => 'kumi',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Hagaao ke he {{SITENAME}}',
 'aboutpage' => 'Project: Hagaao',
 'currentevents' => 'Tau Fakaholoaga Mogonei',
@@ -96,7 +96,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Lau',
-'nstab-wiki_user' => 'Lau he tagata',
+'nstab-user' => 'Lau he tagata',
 
 # General errors
 'viewsource' => 'Kitekite ke mouaga',
@@ -111,15 +111,15 @@ Ua nimo ke hiki e haau tau [[Special:Preferences|manako {{SITENAME}}]].',
 'remembermypassword' => 'Manatu e haaku loko ini (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'Hu ki loto',
 'nav-login-createaccount' => 'Hu ki loto / talaga e poko',
-'wiki_userlogin' => 'Hu ki loto / talaga e poko',
+'userlogin' => 'Hu ki loto / talaga e poko',
 'logout' => 'Hu mai ki tua',
-'wiki_userlogout' => 'Hu mai ki tua',
+'userlogout' => 'Hu mai ki tua',
 'notloggedin' => 'Ai la hu ki loto',
 'createaccount' => 'Talaga e poko',
 'gotaccountlink' => 'Hu ki loto',
 
 # Special:PasswordReset
-'passwordreset-wiki_username' => 'Matahigoa he tagata',
+'passwordreset-username' => 'Matahigoa he tagata',
 
 # Edit pages
 'summary' => 'Fakakatoakatoa:',
@@ -143,7 +143,7 @@ Ua nimo ke hiki e haau tau [[Special:Preferences|manako {{SITENAME}}]].',
 'prefs-rc' => 'Hikihikiaga mogoia',
 'searchresultshead' => 'Kumi',
 'youremail' => 'Meli hila:',
-'wiki_username' => 'Matahigoa he tagata:',
+'username' => 'Matahigoa he tagata:',
 'email' => 'Meli hila',
 
 # Recent changes
@@ -176,7 +176,7 @@ Ua nimo ke hiki e haau tau [[Special:Preferences|manako {{SITENAME}}]].',
 'brokenredirects-delete' => 'tamate',
 
 # Miscellaneous special pages
-'newpages-wiki_username' => 'Matahigoa he tagata:',
+'newpages-username' => 'Matahigoa he tagata:',
 'move' => 'Une',
 'movethispage' => 'Une e lau e',
 

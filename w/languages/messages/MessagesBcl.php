@@ -52,7 +52,7 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'NUMEROKANPAHINA', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'NUMEROKANARTIKULO', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'NUMEROKANDOKUMENTO', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', 'NUMEROKANPARAGAMIT', 'NUMBEROFUSERS' ),
+	'numberofusers'             => array( '1', 'NUMEROKANPARAGAMIT', 'NUMBEROFUSERS' ),
 	'numberofedits'             => array( '1', 'NUMEROKANLIGWAT', 'NUMBEROFEDITS' ),
 	'pagename'                  => array( '1', 'NGARANKANPAHINA', 'PAGENAME' ),
 	'pagenamee'                 => array( '1', 'KAGNGARANKANPAHINA', 'PAGENAMEE' ),
@@ -96,7 +96,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Linyahan an kilyawan:',
 'tog-justify' => 'Pantayón an mga talodtód',
 'tog-hideminor' => 'Tagóon an mga saradít na paghirá sa nakakaági pa sanáng pagbabàgo',
@@ -120,7 +120,7 @@ $messages = array(
 'tog-previewonfirst' => 'Ipahilíng an patànaw sa enot na paghirá',
 'tog-nocache' => 'Pundoha an pagsaray nin mga pahina sa kilyaw (browser)',
 'tog-enotifwatchlistpages' => 'E-suratan mo ako kunsoarin an sarong pahina o sagunson na yaon sa sakong bantay-listahan pinagliwat',
-'tog-enotifwiki_usertalkpages' => 'E-koreohan ako pag pigribáyan an pahina kan sakóng olay',
+'tog-enotifusertalkpages' => 'E-koreohan ako pag pigribáyan an pahina kan sakóng olay',
 'tog-enotifminoredits' => 'E-suratan man ako para sa saraditon na mga pagliwat kan mga pahina asin mga sagunson',
 'tog-enotifrevealaddr' => 'Ibuyágyag an sakong e-koreong address sa pan-abisong mga e-koreo',
 'tog-shownumberswatching' => 'Ihayag an numero kan nagbabantay na mga parágamit',
@@ -303,7 +303,7 @@ $messages = array(
 'talk' => 'Orolayan',
 'views' => 'Mga Tanawon',
 'toolbox' => 'Kagamitang kahon',
-'wiki_userpage' => 'Tanawon an pahina kan parágamit',
+'userpage' => 'Tanawon an pahina kan parágamit',
 'projectpage' => 'Tanawon an pahina kan proyekto',
 'imagepage' => 'Hilngón an pahina nin sagunson (file)',
 'mediawikipage' => 'Tanawon an pahina kan mensahe',
@@ -329,7 +329,7 @@ $1',
 'pool-queuefull' => 'An grupong panproseso panoon',
 'pool-errorunknown' => 'Bakong bistadong sala',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Dapít sa {{SITENAME}}',
 'aboutpage' => 'Project:Manonongód',
 'copyright' => 'Makukua an laog sa $1.',
@@ -361,8 +361,8 @@ $1',
 'youhavenewmessages' => 'Igwa ka nin $1 ($2).',
 'newmessageslink' => 'mga bàgong mensahe',
 'newmessagesdifflink' => 'huring pagbàgo',
-'youhavenewmessagesfromwiki_users' => 'Ika igwa nin $1 gikan sa {{PLURAL:$3|ibang paragamit|$3 mga paragamit}} ($2).',
-'youhavenewmessagesmanywiki_users' => 'Ika igwa nin $1 gikan sa kadakol na mga paragamit ($2).',
+'youhavenewmessagesfromusers' => 'Ika igwa nin $1 gikan sa {{PLURAL:$3|ibang paragamit|$3 mga paragamit}} ($2).',
+'youhavenewmessagesmanyusers' => 'Ika igwa nin $1 gikan sa kadakol na mga paragamit ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|sarong bagong mensahe|bagong mga mensahe}}',
 'newmessagesdifflinkplural' => 'huring {{PLURAL:$1|kaliwatan|mga kaliwatan}}',
 'youhavenewmessagesmulti' => 'Igwa ka nin mga bàgong mensahe sa $1',
@@ -394,7 +394,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Pahina',
-'nstab-wiki_user' => 'Pahina nin paragamít',
+'nstab-user' => 'Pahina nin paragamít',
 'nstab-media' => 'Pahina kan media',
 'nstab-special' => 'Espesyal na pahina',
 'nstab-project' => 'Pahina kan proyekto',
@@ -439,7 +439,7 @@ Ini an eksplikasyon kan tagamató na nagkandado kaini: $1',
 Ini pirmeng pinagkakausa sa paagi nin pagsusunod nin sarong lumaon na diff o historiyang kasugpunan na yaon sa sarong pahinang pinagpura na.
 
 Kun bako ini an kaso, ika nakanagbo nin sarong kubol sa kasungatan.
-Pakireport tabi ini sa [[Special:Listwiki_users/sysop|administrador]], na naka-antabay sa kilyawan.',
+Pakireport tabi ini sa [[Special:ListUsers/sysop|administrador]], na naka-antabay sa kilyawan.',
 'missingarticle-rev' => '(pagbàgo#: $1)',
 'missingarticle-diff' => '(Kaibhán: $1, $2)',
 'readonly_lag' => 'Tulostulos na pagkandado an base nin datos mantang makaabot an base nin datos na esklabo saiyang amo.',
@@ -489,7 +489,7 @@ $2',
 'customcssprotected' => 'Ika mayong permiso sa pagliwat kaining pahinang CSS, nin huli ta ini naglalaman kan personal na panuytoy (settings) kan ibang paragamit.',
 'customjsprotected' => 'Ika mayong permiso sa pagliwat kaining pahinang JavaScript, nin huli ta ini naglalaman kan personal na panuytoy (settings) kan ibang paragamit.',
 'ns-specialprotected' => 'An mga pahinang nasa {{ns:special}} na liang-liang dai pwedeng hirahón.',
-'titleprotected' => 'Ining titulo pinagprotektaran poon pagkamukna ni [[wiki_user:$1|$1]].
+'titleprotected' => 'Ining titulo pinagprotektaran poon pagkamukna ni [[User:$1|$1]].
 An rason na pinagtao iyo na "\'\'$2\'\'".',
 'filereadonlyerror' => 'Dae kinayang baguhon an sagunson (file) "$1$ nin huli ta an repositoryo kan sagunson "$2" yaon sa kamugtakan na basahon sana.
 
@@ -507,7 +507,7 @@ An administrador na iyo an nagkandado kaini nagpahayag kaining kapaliwanagan: "$
 # Login and logout pages
 'logouttext' => "'''Ika po sa ngunyan nakaluwas na.'''
 
-Ika makakadagos pa sa paggamit kan {{SITENAME}} na dai nagpapabisto, o ika [[Special:wiki_userLogin|Maglaog giraray]] bilang pareho o bilang ibang paragamit.
+Ika makakadagos pa sa paggamit kan {{SITENAME}} na dai nagpapabisto, o ika [[Special:UserLogin|Maglaog giraray]] bilang pareho o bilang ibang paragamit.
 Giromdoma na an ibang mga pahina mapuwedeng padagos na magpapahiling siring baga na kun ika garo yaon man sana sa laog, sagkod na saimong malinigan mo an sarayan sa kilyawan.",
 'welcomecreation' => '== Maogmang Pag-abot, $1! ==
 An saimong panindog (account) naimukna na tabi.
@@ -523,21 +523,21 @@ Dae ka man tabi malingaw na ribayan an saimong [[Special:Preferences|{{SITENAME}
 'login' => 'Maglaog',
 'nav-login-createaccount' => 'Maglaog / magmukna nin panindog',
 'loginprompt' => 'Ika kaipong paganahon an mga cookies tanganing makalaog sa {{SITENAME}}.',
-'wiki_userlogin' => 'Maglaog / magmukna nin panindog',
-'wiki_userloginnocreate' => 'Maglaog ka',
+'userlogin' => 'Maglaog / magmukna nin panindog',
+'userloginnocreate' => 'Maglaog ka',
 'logout' => 'Magluwas',
-'wiki_userlogout' => 'Magluwás',
+'userlogout' => 'Magluwás',
 'notloggedin' => 'Dae ka nakalaog',
 'nologin' => 'Mayò ka pa nin panindog (account)? $1.',
 'nologinlink' => 'Magmukna nin panindog',
 'createaccount' => 'Magmukna nin panindog',
 'gotaccount' => 'Igwa ka na tabi nin panindog? $1.',
 'gotaccountlink' => 'Maglaog',
-'wiki_userlogin-resetlink' => 'Nakalingaw ka sa panlaog mong detalye?',
+'userlogin-resetlink' => 'Nakalingaw ka sa panlaog mong detalye?',
 'createaccountmail' => 'Sa paagi nin e-koreo',
 'createaccountreason' => 'Rason:',
 'badretype' => 'An mga sekretong panlaog mong pinagtatak bakong pareho.',
-'wiki_userexists' => 'Paragamit na ngarang piglaog may naggagamit na.
+'userexists' => 'Paragamit na ngarang piglaog may naggagamit na.
 Pakipili nin ibang ngaran tabi.',
 'loginerror' => 'An paglaog napasalâ',
 'createaccounterror' => 'Dae tabi maimukna an panindog: $1.',
@@ -553,13 +553,13 @@ Pakipaseguro na saimong pinagana an cookies, ikarga giraray ining pahina asin pr
 'noname' => 'Ika dae tabi nakapagkaag nin sarong balidong pangaran nin paragamit.',
 'loginsuccesstitle' => 'Matrayumpo an saimong paglaog',
 'loginsuccess' => "'''Ika ngunyan nakalaog na sa {{SITENAME}} bilang si \"\$1\".'''",
-'nosuchwiki_user' => 'Dae pang paragamit na ginagamit an pangaran na "$1".
+'nosuchuser' => 'Dae pang paragamit na ginagamit an pangaran na "$1".
 An mga ngaran nin paragamit sensitibo gayo sa tipahan.
-Pakireparo kan saimong espeling, o [[Special:wiki_userLogin/signup|Magmukna nin bagong panindog]].',
-'nosuchwiki_usershort' => 'Mayo po tabing paragamit na an pangaran "$1".
+Pakireparo kan saimong espeling, o [[Special:UserLogin/signup|Magmukna nin bagong panindog]].',
+'nosuchusershort' => 'Mayo po tabing paragamit na an pangaran "$1".
 Paki-tsek an saimong espeling.',
-'nowiki_userspecified' => 'Kaipuhan mong magkaag nin sarong pangaran nin paragamit.',
-'login-wiki_userblocked' => 'An paragamit na ini pinagkubkob. An paglaog dae pinagtutugutan.',
+'nouserspecified' => 'Kaipuhan mong magkaag nin sarong pangaran nin paragamit.',
+'login-userblocked' => 'An paragamit na ini pinagkubkob. An paglaog dae pinagtutugutan.',
 'wrongpassword' => 'Salâ an pigtaták na sekretong panlaog.
 Tabi probaran giraray.',
 'wrongpasswordempty' => 'An sekretong panlaog pinagtatak na blangko.
@@ -598,15 +598,15 @@ Pakilaog sana tabi nin sarong tugmadong koreo o pabayae na mayong laman an surat
 'accountcreatedtext' => 'An paragamit na panindog para sa $1 pinagmukna na.',
 'createaccount-title' => 'Panindog na pagmukna para sa {{SITENAME}}',
 'createaccount-text' => 'May tawong nagmukna nin sarong panindog na gamit an saimong address na e-surat sa {{SITENAME}} ($4) na may ngaran na "$2, na may sikretong panlaog na "$3".',
-'wiki_usernamehasherror' => 'Paragamit na ngaran dae puwede na igwang simbolikong mga kabtang',
+'usernamehasherror' => 'Paragamit na ngaran dae puwede na igwang simbolikong mga kabtang',
 'login-throttled' => 'Nakapaghimo ka na nin kadakulon na pagprubar sa paglaog dae pa sana nahaloy. Mapuwede lang po na maghalat bago magprubar giraray.',
 'login-abort-generic' => 'An saimong paglaog dae nakadagos - Pinundo',
 'loginlanguagelabel' => 'Lengguwahe: $1',
-'suspicious-wiki_userlogout' => 'An hinahagad mong magluwas pinagpundo nin huli ta ini gayod pinagpadara sa paagi nin sarong pasang kilyaw o proksing hilom.',
+'suspicious-userlogout' => 'An hinahagad mong magluwas pinagpundo nin huli ta ini gayod pinagpadara sa paagi nin sarong pasang kilyaw o proksing hilom.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'Bakong bantog na kasalaan sa PHP mail() function.',
-'wiki_user-mail-no-addy' => 'Nagprubar na magpadara nin e-koreo na mayo nin e-koreong address.',
+'user-mail-no-addy' => 'Nagprubar na magpadara nin e-koreo na mayo nin e-koreong address.',
 
 # Change password dialog
 'resetpass' => 'Ribayan an sekretong panlaog',
@@ -633,7 +633,7 @@ Matriumpo mo nang nailaog an sekretong panlaog o nakua an bàgong temporaryong s
 'passwordreset-legend' => 'Pakibago kan sekretong panlaog',
 'passwordreset-disabled' => 'An pagbago kan sekretong panlaog pinagpundo sa wiking ini.',
 'passwordreset-pretext' => '{{PLURAL:$1||Pakilaog kan saro sa mga pedaso nin datos sa ibaba}}',
-'passwordreset-wiki_username' => 'Paragamit-ngaran:',
+'passwordreset-username' => 'Paragamit-ngaran:',
 'passwordreset-domain' => 'Kasakupan:',
 'passwordreset-capture' => 'Hilngon an kinaluwasang e-koreo?',
 'passwordreset-capture-help' => 'Kun saimong i-tsek ini box, an e-koreo (na igwang temporaryong sekretong panlaog) ipapahiling saimo siring na ini ipagpapadara sa paragamit.',
@@ -645,7 +645,7 @@ $2
 
 {{PLURAL:$3|Ining temporaryong sekretong panlaog|Ining mga temporaryong panlaog}} mapapaso sa {{PLURAL:$5|sarong aldaw|$5 mga aldaw}}.
 Ika dapat na maglaog asin magpili nin sarong bagong sekretong panlaog ngunyan. Kun ibang tawo an naghimo kaining kahagadan, o kun saimo nang nagiromdoman an saimong orihinal na sekretong panlaog, asin habo mo nang ribayan ini, ipasapara mo na sana an mensaheng ini asin ipadagos mo nang gamiton an saimong lumang sekretong panlaog.',
-'passwordreset-emailtext-wiki_user' => 'Paragamit $1 sa {{SITENAME}} naghahagad nin sarong pagiromdom kan detalye nin saimong panindog para sa {{SITENAME}}
+'passwordreset-emailtext-user' => 'Paragamit $1 sa {{SITENAME}} naghahagad nin sarong pagiromdom kan detalye nin saimong panindog para sa {{SITENAME}}
 ($4). An minasunod na paragamit {{PLURAL:$3|panindog iyo an|mga panindog iyo an}} na asosyado kaining e-koreong address:
 
 $2
@@ -747,7 +747,7 @@ Ini puwedeng pinagbalyo o pinagpara na habang saimong pinaghihiling an pahina.',
 'loginreqlink' => 'maglaog',
 'loginreqpagetext' => 'Kaipuhan kang $1 tangarig makahilíng nin ibang pahina.',
 'accmailtitle' => 'Napadará na an sekretong panlaog.',
-'accmailtext' => "An patsambang pagpuyos kan sekretong panlaog para ki [[wiki_user talk:$1|$1]] ipinagpadara na ki $2.
+'accmailtext' => "An patsambang pagpuyos kan sekretong panlaog para ki [[User talk:$1|$1]] ipinagpadara na ki $2.
 
 An sekretong panlaog para sa bagong panindog mapuwede tabing maribayan ''[[Special:ChangePassword|Ribayan an sekretong panlaog]]'' na pahina matapos na makalaog.",
 'newarticle' => '(Bàgo)',
@@ -758,7 +758,7 @@ Kun dai tinuyong nakaabot ka digdi, pindoton sana an back sa browser mo.',
 'anontalkpagetext' => "----''Ini iyo an pahina kan orolayan para an sarong dae bistadong paragamit na dae pa nakapagmukna nin panindog, o dae pa nakapaggamit kaini.
 Kaya kami kaipong gumamit nin numerikal na IP address sa pagbisto saiya.
 An arog kaining IP address puwedeng maikapagheras sa nagkapirang mga paragamit.
-Kun ika sarong dae pa bistadong paragamit asin mati mo na igwang irelebanteng sambit na pinanungod saimo, tabi paki [[Special:wiki_userLogin/signup|mukna nin panindog]] or [[Special:wiki_userLogin|maglaog ka]] tanganing malikayan an pagkaribong sa pag-iriba kan iba pang mga paragamit.''",
+Kun ika sarong dae pa bistadong paragamit asin mati mo na igwang irelebanteng sambit na pinanungod saimo, tabi paki [[Special:UserLogin/signup|mukna nin panindog]] or [[Special:UserLogin|maglaog ka]] tanganing malikayan an pagkaribong sa pag-iriba kan iba pang mga paragamit.''",
 'noarticletext' => 'Mayo tabi sa presente nin teksto sa pahinang ini.
 Ika mapuwedeng [[Special:Search/{{PAGENAME}}|maghanap para sa titulo kan pahinang ini]] sa iba pang mga pahina,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} maghanap sa magkasurundong mga talaan],
@@ -770,9 +770,9 @@ o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 
 
 Ini pirmihan na pinagkakausa sa paagi nin pagsusunod nin luwas na petsang historiya nin kasugpunan pasiring sa sarong pahinang pinagpura na.
 An mga detalye matatagboan sa [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} pinagpura na talaan].',
-'wiki_userpage-wiki_userdoesnotexist' => 'Paragamit na panindog "$1" bako tabing rehistrado.
+'userpage-userdoesnotexist' => 'Paragamit na panindog "$1" bako tabing rehistrado.
 Paki-tsek kun ika magustong magmukna/magliwat kaining pahina.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Paragamit na panindog "$1" bako tabing rehistrado.',
+'userpage-userdoesnotexist-view' => 'Paragamit na panindog "$1" bako tabing rehistrado.',
 'blocked-notice-logextract' => 'Ining paragamit sa presente nakakubkob.
 An pinakahuring entrada kan pagkubkob nakahaya sa ibaba bilang reperensiya:',
 'clearyourcache' => "'''Antabay:''' Matapos maitagama, ika mapuwedeng magsalimbaw sa sarayan kan saimong kilyaw tanganing hilingon an mga naribayan.
@@ -780,16 +780,16 @@ An pinakahuring entrada kan pagkubkob nakahaya sa ibaba bilang reperensiya:',
 * '''Google Chrome:''' Pinduton ''Ctrl-Shift-R'' (''⌘-Shift-R'' para sa Mac)
 * '''Internet Explorer:''' Pauntok na duon ''Ctrl'' habang pig-klik an ''Ipresko otro'', o pinduton ''Ctrl-F5''
 * '''Opera:''' Linigan an sarayan sa ''Mga Kagamitan → Mga Kabotan''",
-'wiki_usercssyoucanpreview' => "'''Tip:''' Gamita an \"{{int:showpreview}}\" na pindutan tanganing prubaran an saimong baguhong CSS bago ipagtagama.",
-'wiki_userjsyoucanpreview' => "'''Tip:''' Gamita an \"{{int:showpreview}}\" na pindutan tanganing prubaran an saimong baguhong JavaScript bago ipagtagama.",
-'wiki_usercsspreview' => "'''Giromdoma baya na ika nagtatanaw pa sana kan saimong paragamit sa CSS.'''
+'usercssyoucanpreview' => "'''Tip:''' Gamita an \"{{int:showpreview}}\" na pindutan tanganing prubaran an saimong baguhong CSS bago ipagtagama.",
+'userjsyoucanpreview' => "'''Tip:''' Gamita an \"{{int:showpreview}}\" na pindutan tanganing prubaran an saimong baguhong JavaScript bago ipagtagama.",
+'usercsspreview' => "'''Giromdoma baya na ika nagtatanaw pa sana kan saimong paragamit sa CSS.'''
 '''Ini dae pa tabi naitatagama!'''",
-'wiki_userjspreview' => "'''Giromdomon tabi na pigtetest/pighihiling mo sana an patanaw kan saimong JavaScript nin paragamit, dai pa ini naitagama!'''",
+'userjspreview' => "'''Giromdomon tabi na pigtetest/pighihiling mo sana an patanaw kan saimong JavaScript nin paragamit, dai pa ini naitagama!'''",
 'sitecsspreview' => "'''Giromdoma baya na ika nagtatanaw pa sana kaining CSS.'''
 '''Ini dae pa tabi naitatagama!'''",
 'sitejspreview' => "'''Giromdoma baya na ika nagtatatanaw pa sana kaining koda sa JavaScript.'''
 '''Ini dae pa tabi naitatagama!'''",
-'wiki_userinvalidcssjstitle' => "'''Patanid:''' Mayong ''skin'' na \"\$1\". Giromdomon tabî na an .css asin .js na mga páhina naggagamit nin titulong nakasurat sa sadit na letras, halimbawa {{ns:wiki_user}}:Foo/vector.css bakong {{ns:wiki_user}}:Foo/Vector.css.",
+'userinvalidcssjstitle' => "'''Patanid:''' Mayong ''skin'' na \"\$1\". Giromdomon tabî na an .css asin .js na mga páhina naggagamit nin titulong nakasurat sa sadit na letras, halimbawa {{ns:user}}:Foo/vector.css bakong {{ns:user}}:Foo/Vector.css.",
 'updated' => '(Binàgo)',
 'note' => "'''Paisi:'''",
 'previewnote' => "'''Giromdoma na ini sarong patanaw pa sana.'''
@@ -803,7 +803,7 @@ Probaran tabì giraray. Kun dai man giraray magibo, probaran na magluwas dangan 
 ''Nin huli ta {{SITENAME}} igwa nin bakong pang naprosesong HTML pinagpagana, an patanaw ipinagtago bilang pag-ingat kontra sa atake kan JavaScript.''
 
 '''Kun ini sarong lehitimong pagprubar nin pagliwat, paki-otro tabi giraray.'''
-Kun ini dae man giraray guminana, magprubar na [[Special:wiki_userLogout|magluwas]] asin maglaog giraray.",
+Kun ini dae man giraray guminana, magprubar na [[Special:UserLogout|magluwas]] asin maglaog giraray.",
 'token_suffix_mismatch' => "'''Dai pigtogotan an paghirá mo ta sinabrit kan client mo an punctuation characters.
 Dai pigtogotan ining paghirá tangarig maibitaran na maraot an teksto kan pahina.
 Nanyayari nanggad ini kun naggagamit ka nin bakong maraháy asin dai bistong web-based proxy service.'''",
@@ -851,7 +851,7 @@ An pinakahuring entrada sa talaan pinaghaya sa ibaba bilang reperensiya:",
 'edittools' => '<!-- An teksto digdi mahihiling sa babâ kan mga pormang pighihirá asin pigkakarga. -->',
 'nocreatetitle' => 'Limitado an paggibo nin pahina',
 'nocreatetext' => '{{SITENAME}} pinagpupugol an kakayanan na magmukna nin baguhong mga pahina.
-Ika makakabalik asin magliwat kan eksistidong nang pahina, o [[Special:wiki_userLogin|maglaog ka o magmukna nin sarong panindog]].',
+Ika makakabalik asin magliwat kan eksistidong nang pahina, o [[Special:UserLogin|maglaog ka o magmukna nin sarong panindog]].',
 'nocreate-loggedin' => 'Ika mayo tabi nin permiso tanganing magmukna nin baguhong mga pahina.',
 'sectioneditnotsupported-title' => 'An pagliliwat tabi sa seksyon bakong suportado',
 'sectioneditnotsupported-text' => 'An pagliliwat tabi sa seksyon bakong suportado sa pahinang ini.',
@@ -901,11 +901,11 @@ Ining mga argumento tabi pinagharali na.",
 'undo-success' => 'Pwedeng bawion an paghirá. Sosogon tabì an pagkakaiba sa babâ tangarig maberipikár kun ini an boot mong gibohon, dangan itagama an mga pagbabàgo sa babâ tangarig tapuson an pagbawì sa paghirá.',
 'undo-failure' => 'Dai napogol an paghirá ta igwa pang ibang paghirá sa tahaw na nagkokomplikto.',
 'undo-norev' => 'An pagliwat dae tabi magigibo nin huli ta ini bakong eksistido o pinagpura na.',
-'undo-summary' => 'Dae idagos an rebisyon $1 sa [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|olay]])',
+'undo-summary' => 'Dae idagos an rebisyon $1 sa [[Special:Contributions/$2|$2]] ([[User talk:$2|olay]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Dai makagibo nin account',
-'cantcreateaccount-text' => "An pagbukas nin account halì sa IP na ('''$1''') binágat ni [[wiki_user:$3|$3]].
+'cantcreateaccount-text' => "An pagbukas nin account halì sa IP na ('''$1''') binágat ni [[User:$3|$3]].
 
 ''$2'' an rason na pigtao ni $3",
 
@@ -944,9 +944,9 @@ Probaran tabì an [[Special:Search|pighahanap sa wiki]] para sa mga pahinang dap
 
 # Revision deletion
 'rev-deleted-comment' => '(pagliwat na sumaryo pinaghale)',
-'rev-deleted-wiki_user' => '(hinalì an parágamit)',
+'rev-deleted-user' => '(hinalì an parágamit)',
 'rev-deleted-event' => '(talaan kan aksyon pinaghale)',
-'rev-deleted-wiki_user-contribs' => '[Ngaran nin paragamit o IP address pinaghale - an pigliwat pinagtago gikan sa mga kontribusyon]',
+'rev-deleted-user-contribs' => '[Ngaran nin paragamit o IP address pinaghale - an pigliwat pinagtago gikan sa mga kontribusyon]',
 'rev-deleted-text-permission' => "An pinagbago tabi kaining pahina '''pinagpura'''.
 An mga detalye mananagboan sa [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} talaan kan pinagpura].",
 'rev-deleted-text-unhide' => "An pagbabago tabi kaining pahina '''pinagpura'''.
@@ -998,7 +998,7 @@ An ibang administrador sa {{SITENAME}} puwede pa man makagamit sa pinagtagong la
 'revdelete-hide-image' => 'Tagoon an laog kan file',
 'revdelete-hide-name' => 'Tagoon an aksyon asin target',
 'revdelete-hide-comment' => 'Tagoon an komento sa paghirá',
-'revdelete-hide-wiki_user' => 'Tagoon an pangaran kan editor/IP',
+'revdelete-hide-user' => 'Tagoon an pangaran kan editor/IP',
 'revdelete-hide-restricted' => 'Ilubog an mga datos gikan sa mga administrador asin man kan iba',
 'revdelete-radio-same' => '(dae pagribayan)',
 'revdelete-radio-set' => 'Iyo tabi',
@@ -1085,7 +1085,7 @@ Tandaan na an paggagamit kan nabigasyong nin mga kasurugponan makakapagliwat kai
 'showhideselectedversions' => 'Ihayag/itago mga piniling pagbabago',
 'editundo' => 'isulít',
 'diff-multi' => '({{PLURAL:$1|Saro intermediate na pagbabago|$1 mga intermediate na mga pagbabago}} by {{PLURAL:$2|sarong paragamit|$2 mga paragamit}} dae pinaghahayag)',
-'diff-multi-manywiki_users' => '({{PLURAL:$1|Sarong intermediate na pagbabago|$1 mga intermediate na mga pagbabago}} na sobra sa $2 {{PLURAL:$2|paragamit|mga paragamit}} dae pinaghahayag)',
+'diff-multi-manyusers' => '({{PLURAL:$1|Sarong intermediate na pagbabago|$1 mga intermediate na mga pagbabago}} na sobra sa $2 {{PLURAL:$2|paragamit|mga paragamit}} dae pinaghahayag)',
 'difference-missing-revision' => '{{PLURAL:$2|sarong rebisyon|$2 mga rebisyon}} kaining diperensiya ($1) {{PLURAL:$2|na iyo an|kaidto na iyo an}} dae nanagboan.
 
 Ini pirmihan na pinagkakausa sa paagi nin pagsusunod nin luwas sa petsang diff na kasugponan pasiring sa sarong pahina na pinagpura na.
@@ -1168,7 +1168,7 @@ Prubaran na panigmitan an saimong kahaputan nin ''all:'' sa paghanap kan gabos n
 'mypreferences' => 'Mga Kamuyahan ko',
 'prefs-edits' => 'Bilang kan mga hirá:',
 'prefsnologin' => 'Dai nakalaog',
-'prefsnologintext' => 'Ika dapat na magin <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} nakalaog na]</span> tanganing tuytuyon an mga kabotan nin paragamit.',
+'prefsnologintext' => 'Ika dapat na magin <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} nakalaog na]</span> tanganing tuytuyon an mga kabotan nin paragamit.',
 'changepassword' => 'Ribayan an sekretong panlaog',
 'prefs-skin' => "''Skin''",
 'skin-preview' => 'Tânawon',
@@ -1176,7 +1176,7 @@ Prubaran na panigmitan an saimong kahaputan nin ''all:'' sa paghanap kan gabos n
 'prefs-beta' => 'Mga posturang yaon sa beta',
 'prefs-datetime' => 'Petsa asin oras',
 'prefs-labs' => 'Mga posturang yaon sa Labs',
-'prefs-wiki_user-pages' => 'Paragamit na mga pahina',
+'prefs-user-pages' => 'Paragamit na mga pahina',
 'prefs-personal' => 'Pambisto nin parágamit',
 'prefs-rc' => 'Mga kaaagi pa sanang pagribay',
 'prefs-watchlist' => 'Pigbabantayan',
@@ -1241,7 +1241,7 @@ Ini dae tabi matitingkog.',
 'prefs-emailconfirm-label' => 'Kumpirmasyon sa E-koreo',
 'prefs-textboxsize' => 'Sukol kan bintana sa pagliliwat',
 'youremail' => 'E-koreo:',
-'wiki_username' => 'Pangaran kan parágamit:',
+'username' => 'Pangaran kan parágamit:',
 'uid' => 'ID kan parágamit:',
 'prefs-memberingroups' => 'Miembro kan {{PLURAL:$1|grupo|grupos}}:',
 'prefs-registration' => 'Rehistrasyong oras:',
@@ -1281,35 +1281,35 @@ An saimong e-surat na adres dae ipagbuyagyag kunsoarin na an ibang paragamit mak
 'prefs-displaywatchlist' => 'Ipahiling ang mga pagpipilian',
 'prefs-diffs' => 'Diffs',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'An e-koreo nagpapahiling na balido',
 'email-address-validity-invalid' => 'Magkaag nin sarong balidong e-koreong address',
 
-# wiki_user rights
-'wiki_userrights' => 'Pagmaneho kan mga derecho nin paragamit',
-'wiki_userrights-lookup-wiki_user' => 'Magmaného kan mga grupo nin parágamit',
-'wiki_userrights-wiki_user-editname' => 'Ilaog an pangaran kan parágamit:',
-'editwiki_usergroup' => 'Hirahón an mga Grupo kan Parágamit',
-'editingwiki_user' => "Sinasanglian an paragamit na karapatan kan paragamit '''[[wiki_user:$1|$1]]''' $2",
-'wiki_userrights-editwiki_usergroup' => 'Hirahón an mga grupo kan parágamit',
-'savewiki_usergroups' => 'Itagama an mga Grupo nin Páragamit',
-'wiki_userrights-groupsmember' => 'Myembro kan:',
-'wiki_userrights-groupsmember-auto' => 'Implisitong miyembro kan:',
-'wiki_userrights-groups-help' => 'Ika puwedeng magbago kan mga grupo na kinabalihan kaining paragamit:
+# User rights
+'userrights' => 'Pagmaneho kan mga derecho nin paragamit',
+'userrights-lookup-user' => 'Magmaného kan mga grupo nin parágamit',
+'userrights-user-editname' => 'Ilaog an pangaran kan parágamit:',
+'editusergroup' => 'Hirahón an mga Grupo kan Parágamit',
+'editinguser' => "Sinasanglian an paragamit na karapatan kan paragamit '''[[User:$1|$1]]''' $2",
+'userrights-editusergroup' => 'Hirahón an mga grupo kan parágamit',
+'saveusergroups' => 'Itagama an mga Grupo nin Páragamit',
+'userrights-groupsmember' => 'Myembro kan:',
+'userrights-groupsmember-auto' => 'Implisitong miyembro kan:',
+'userrights-groups-help' => 'Ika puwedeng magbago kan mga grupo na kinabalihan kaining paragamit:
 *An natsekan na kahon minapasabot na an paragamit kabali sa grupong yan.
 *An mayong tsek na kahon minapasabot na an paragamit bakong kabali sa grupong yan.
 * A * minapahiwatig na ika dae puwedeng makapaghale kan grupo kun naidagdag mo na ini, or vice versa.',
-'wiki_userrights-reason' => 'Rason:',
-'wiki_userrights-no-interwiki' => 'Ika mayo tabing permkso na magliwat sa paragamit na karapatan sa ibang wikis.',
-'wiki_userrights-nodatabase' => 'An datos-sarayan $1 bakong eksistido o bakong lokal.',
-'wiki_userrights-nologin' => 'Ika kaipuhan na [[Special:wiki_userLogin|maglaog ka]] na igwa nin panindog na administrador bago ka makapagtao nin karapatan sa paragamit.',
-'wiki_userrights-notallowed' => 'An saimong panindog mayo tabi nin permiso na magdagdag o maghale nin karapatan kan mga paragamit.',
-'wiki_userrights-changeable-col' => 'Mga grupo na mapuwede mong baguhon',
-'wiki_userrights-unchangeable-col' => 'Mga grupo na dae mo mapuwedeng baguhon',
+'userrights-reason' => 'Rason:',
+'userrights-no-interwiki' => 'Ika mayo tabing permkso na magliwat sa paragamit na karapatan sa ibang wikis.',
+'userrights-nodatabase' => 'An datos-sarayan $1 bakong eksistido o bakong lokal.',
+'userrights-nologin' => 'Ika kaipuhan na [[Special:UserLogin|maglaog ka]] na igwa nin panindog na administrador bago ka makapagtao nin karapatan sa paragamit.',
+'userrights-notallowed' => 'An saimong panindog mayo tabi nin permiso na magdagdag o maghale nin karapatan kan mga paragamit.',
+'userrights-changeable-col' => 'Mga grupo na mapuwede mong baguhon',
+'userrights-unchangeable-col' => 'Mga grupo na dae mo mapuwedeng baguhon',
 
 # Groups
 'group' => 'Grupo:',
-'group-wiki_user' => 'Mga Paragamit',
+'group-user' => 'Mga Paragamit',
 'group-autoconfirmed' => 'Paragamit na sadiring nagkonpirma',
 'group-bot' => 'Mga bots',
 'group-sysop' => 'Mga sysop',
@@ -1317,14 +1317,14 @@ An saimong e-surat na adres dae ipagbuyagyag kunsoarin na an ibang paragamit mak
 'group-suppress' => 'Mga Tagapagmato',
 'group-all' => '(gabos)',
 
-'group-wiki_user-member' => '{{GENDER:$1|paragamit}}',
+'group-user-member' => '{{GENDER:$1|paragamit}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|auto-kumpirmadong paragamit}}',
 'group-bot-member' => '{{GENDER:$1|bot}}',
 'group-sysop-member' => '{{GENDER:$1|administrador}}',
 'group-bureaucrat-member' => '{{GENDER:$1|burokrata}}',
 'group-suppress-member' => '{{GENDER:$1|tagapagmato}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Mga Paragamit',
+'grouppage-user' => '{{ns:project}}:Mga Paragamit',
 'grouppage-autoconfirmed' => '{{ns:project}}:Mga enseguidang nakonpirmar na parágamit',
 'grouppage-bot' => '{{ns:project}}:Mga bot',
 'grouppage-sysop' => '{{ns:project}}:Mga tagamató',
@@ -1340,7 +1340,7 @@ An saimong e-surat na adres dae ipagbuyagyag kunsoarin na an ibang paragamit mak
 'right-minoredit' => 'Markahan an mga pinagliwat bilang menor',
 'right-move' => 'Ibalyo an mga pahina',
 'right-move-subpages' => 'Ibalyo an mga pahina kaiba an saindang mga sub-pahina',
-'right-move-rootwiki_userpages' => 'Ibalyo an ugat nin mga pahina kan paragamit',
+'right-move-rootuserpages' => 'Ibalyo an ugat nin mga pahina kan paragamit',
 'right-movefile' => 'Ibalyo an mga sagunson',
 'right-suppressredirect' => 'Dae tabi magmukna nin paotrong direksyon gikan sa ginikanang mga pahina kunsoarin magbabalyo nin mga pahina',
 'right-upload' => 'Ipagkarga an mga sagunson (file)',
@@ -1366,16 +1366,16 @@ An saimong e-surat na adres dae ipagbuyagyag kunsoarin na an ibang paragamit mak
 'right-suppressionlog' => 'Tanawon an pribadong mga talaan',
 'right-block' => 'Kubkubon an ibang mga paragamit sa pagliliwat',
 'right-blockemail' => 'Kubkubon an paragamit na makapagpadara nin e-koreo',
-'right-hidewiki_user' => 'Kubkubon an pangaran nin paragamit, itago ini sa publiko',
+'right-hideuser' => 'Kubkubon an pangaran nin paragamit, itago ini sa publiko',
 'right-ipblock-exempt' => 'Sampawan an pangubkob kan IP, awtomatikong-kubkob asin panhalawig na kubkob',
 'right-proxyunbannable' => 'Sampawan an awtomatikong mga kubkob kan mga proksi',
 'right-unblockself' => 'Dae pagkubkubon sinda',
 'right-protect' => 'Ribayan an kurit kan proteksyon asin liwaton an protektadong mga pahina',
 'right-editprotected' => 'Liwaton an protektadong mga pahina (na bakong pinagsasalansan an proteksyon)',
 'right-editinterface' => 'Liwaton an paragamit na olay-panlaog',
-'right-editwiki_usercssjs' => 'Liwaton an CSS asin JavaScript na mga sagunson kan ibang mga paragamit',
-'right-editwiki_usercss' => 'Liwaton an CSS na mga sagunson kan ibang mga paragamit',
-'right-editwiki_userjs' => 'Liwaton an JavaScript na mga sagunson kan ibang mga paragamit',
+'right-editusercssjs' => 'Liwaton an CSS asin JavaScript na mga sagunson kan ibang mga paragamit',
+'right-editusercss' => 'Liwaton an CSS na mga sagunson kan ibang mga paragamit',
+'right-edituserjs' => 'Liwaton an JavaScript na mga sagunson kan ibang mga paragamit',
 'right-rollback' => 'Hidaling ibalik an mga niliwat kan huring paragamit na nagliwat nin sarong partikular na pahina',
 'right-markbotedits' => 'Markahan an pinagbalik na mga niliwat bilang bot na panliwat',
 'right-noratelimit' => 'Dae magin apektado sa paagi kan rata nin mga sagkodan',
@@ -1386,14 +1386,14 @@ An saimong e-surat na adres dae ipagbuyagyag kunsoarin na an ibang paragamit mak
 'right-patrolmarks' => 'Tanawon an pinakahuring mga pagbabago na markadong patrol',
 'right-unwatchedpages' => 'Tanawon an listahan kan mayong bantay na mga pahina',
 'right-mergehistory' => 'Pagkasararoon an historiya kan mga pahina',
-'right-wiki_userrights' => 'Liwaton gabos an karapatan kan mga paragamit',
-'right-wiki_userrights-interwiki' => 'Liwaton an karapatan kan mga paragamit kan ibang mga wikis',
+'right-userrights' => 'Liwaton gabos an karapatan kan mga paragamit',
+'right-userrights-interwiki' => 'Liwaton an karapatan kan mga paragamit kan ibang mga wikis',
 'right-siteadmin' => 'Kandaduhan asin dae pagkandaduhan an datos-sarayan',
 'right-override-export-depth' => 'Eksportaron an mga pahina kabali na an pinagkilyawan na mga pahina sagkod sa rarom na 5',
 'right-sendemail' => 'Magpadara nin e-koreo sa ibang mga paragamit',
 'right-passwordreset' => 'Tanawon an e-koreo kan pagbabago nin sekretong panlaog',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Usip nin derechos nin paragamit',
 'rightslogtext' => 'Ini an historial kan mga pagbabâgo sa mga derecho nin parágamit.',
 'rightslogentry' => 'Rinibayab an pagkamyembro ni $1 sa $2 sagkod sa $3',
@@ -1409,7 +1409,7 @@ An saimong e-surat na adres dae ipagbuyagyag kunsoarin na an ibang paragamit mak
 'action-minoredit' => 'marakahan ining pagliwat bilang menor',
 'action-move' => 'ibalyo ining pahina',
 'action-move-subpages' => 'ibalyo ining pahina, asin kaiba an mga sub-pahina',
-'action-move-rootwiki_userpages' => 'ibalyo an ugat kan mga pahina nin mga paragamit',
+'action-move-rootuserpages' => 'ibalyo an ugat kan mga pahina nin mga paragamit',
 'action-movefile' => 'ibalyo ining sagunson',
 'action-upload' => 'ikarga ining mga sagunson',
 'action-reupload' => 'sampawan ining eksistidong sagunson',
@@ -1432,8 +1432,8 @@ An saimong e-surat na adres dae ipagbuyagyag kunsoarin na an ibang paragamit mak
 'action-autopatrol' => 'Giboha na an saimong pagliwat markado bilang patrolyado',
 'action-unwatchedpages' => 'tanawon an listahan kan mayong bantay na mga pahina',
 'action-mergehistory' => 'Pagkasararoon an historiya kaining pahina',
-'action-wiki_userrights' => 'liwaton gabos na mga karapatan nin paragamit',
-'action-wiki_userrights-interwiki' => 'liwaton an paragamit na mga karapatan kan mga paragamit nin ibang wikis',
+'action-userrights' => 'liwaton gabos na mga karapatan nin paragamit',
+'action-userrights-interwiki' => 'liwaton an paragamit na mga karapatan kan mga paragamit nin ibang wikis',
 'action-siteadmin' => 'ikandado o dae ikandado an datos-sarayan',
 'action-sendemail' => 'magpadara nin mga e-koreo',
 
@@ -1464,7 +1464,7 @@ An saimong e-surat na adres dae ipagbuyagyag kunsoarin na an ibang paragamit mak
 'minoreditletter' => 's',
 'newpageletter' => 'B',
 'boteditletter' => 'b',
-'number_of_watching_wiki_users_pageview' => '[$1 naka-antabay sa {{PLURAL:$1|paragamit|mga paragamit}}]',
+'number_of_watching_users_pageview' => '[$1 naka-antabay sa {{PLURAL:$1|paragamit|mga paragamit}}]',
 'rc_categories' => 'Limitado sa mga kategorya (suhayon nin "|")',
 'rc_categories_any' => 'Dawà arín',
 'rc-change-size-new' => '$1 {{PLURAL:$1|byte|bytes}} pagtatapos kan pagbabago',
@@ -1490,7 +1490,7 @@ An mga pahina na yaon sa [[Special:Watchlist|saimong Bantay-listahan]] na '''tek
 'reuploaddesc' => 'Ikansela an pagkarga asin magbalik sa porma kan pagkakarga',
 'upload-tryagain' => 'Isumite an modipikadong deskripsyon kan sagunson',
 'uploadnologin' => 'Dai nakalaog',
-'uploadnologintext' => "Kaipuhan ika si [[Special:wiki_userLogin|nakadagos]]
+'uploadnologintext' => "Kaipuhan ika si [[Special:UserLogin|nakadagos]]
 para makakarga nin mga ''file''.",
 'upload_directory_missing' => 'An direktoriyo nin pagkarga ($1) nawawara tabi asin dae maikapagmukna sa paagi kan webserver.',
 'upload_directory_read_only' => 'An directoriong pagkarga na ($1) dai puedeng suratan kan serbidor nin web.',
@@ -1610,11 +1610,11 @@ $1',
 'upload-proto-error' => 'Salang protocolo',
 'upload-proto-error-text' => 'An pagkargang panharayo kaipuhan nin mga URLs na nagpopoon sa  <code>http://</code> o <code>ftp://</code>.',
 'upload-file-error' => 'Panlaog na salâ',
-'upload-file-error-text' => 'Sarong internal na kasalaan an nangyari kunsoarin na pinagprubaran na magmukna in sarong temporaryong sagunson sa tagapagsirbe. Pakikontak lang tabi nin sarong [[Special:Listwiki_users/sysop|administrador]].',
+'upload-file-error-text' => 'Sarong internal na kasalaan an nangyari kunsoarin na pinagprubaran na magmukna in sarong temporaryong sagunson sa tagapagsirbe. Pakikontak lang tabi nin sarong [[Special:ListUsers/sysop|administrador]].',
 'upload-misc-error' => 'Dai naaaram na error sa pagkarga',
 'upload-misc-error-text' => 'Sarong dae maiwasan na kasalaan an nangyari kan ika nagkukupkop.
 Paki arama tabi na an kilyawan balido asin nagagamit asin pakiotro giraray.
-Kun an problema yaon pa, pakikontak tabi nin sarong [[Special:Listwiki_users/sysop|administrador]].',
+Kun an problema yaon pa, pakikontak tabi nin sarong [[Special:ListUsers/sysop|administrador]].',
 'upload-too-many-redirects' => 'An kilyawan nagkaigwa nin kadakol na mga kaliwatan',
 'upload-unknown-size' => 'Dae aram an kadakulaan',
 'upload-http-error' => 'Sarong HTTP na kasalaan an nangyari: $1',
@@ -1731,7 +1731,7 @@ Kunsoarin na pinagsara nin paragamit, an mga sagunson sana kun saen an pinagkarg
 'listfiles_thumb' => 'Imaheng sadit',
 'listfiles_date' => 'Petsa',
 'listfiles_name' => 'Pangaran',
-'listfiles_wiki_user' => 'Parágamit',
+'listfiles_user' => 'Parágamit',
 'listfiles_size' => 'Sukol',
 'listfiles_description' => 'Deskripsión',
 'listfiles_count' => 'Mga Bersyon',
@@ -1748,7 +1748,7 @@ Kunsoarin na pinagsara nin paragamit, an mga sagunson sana kun saen an pinagkarg
 'filehist-thumb' => 'Imaheng sadit',
 'filehist-thumbtext' => 'Imaheng sadit para sa bersyon kan nakaaging $1',
 'filehist-nothumb' => 'Mayo nin imaheng sadit',
-'filehist-wiki_user' => 'Paragamít',
+'filehist-user' => 'Paragamít',
 'filehist-dimensions' => 'Mga dimensyón',
 'filehist-filesize' => 'Sokol nin file',
 'filehist-comment' => 'Komento',
@@ -1839,7 +1839,7 @@ Giromdoma baya na mag-tsek para sa iba pang kasugpon sa mga templato bago mo pag
 'statistics-header-pages' => 'Estadistikong pahina',
 'statistics-header-edits' => 'Estadistiko nin pagliwat',
 'statistics-header-views' => 'Estadistiko nin pagmansay',
-'statistics-header-wiki_users' => 'Mga estadistiko nin parágamit',
+'statistics-header-users' => 'Mga estadistiko nin parágamit',
 'statistics-header-hooks' => 'Iba pang estadistiko',
 'statistics-articles' => 'Laman na mga pahina',
 'statistics-pages' => 'Mga Pahina',
@@ -1850,9 +1850,9 @@ Giromdoma baya na mag-tsek para sa iba pang kasugpon sa mga templato bago mo pag
 'statistics-views-total' => 'Mga Kamansayan sa kabilogan',
 'statistics-views-total-desc' => 'Mga kamansayan sa dae pa eksistidong mga pahina asin espesyal na mga pahina bakong kabali',
 'statistics-views-peredit' => 'Mga kamansayan kada pagliwat',
-'statistics-wiki_users' => 'Rehistrado [[Special:Listwiki_users|wiki_users]]',
-'statistics-wiki_users-active' => 'Mga Aktibong Paragamit',
-'statistics-wiki_users-active-desc' => 'Mga paragamit na may ginibong aksyon sa nakaaging {{PLURAL:$1|aldaw|$1 mga aldaw}}',
+'statistics-users' => 'Rehistrado [[Special:ListUsers|users]]',
+'statistics-users-active' => 'Mga Aktibong Paragamit',
+'statistics-users-active-desc' => 'Mga paragamit na may ginibong aksyon sa nakaaging {{PLURAL:$1|aldaw|$1 mga aldaw}}',
 'statistics-mostpopular' => 'mga pinaka pighiling na pahina',
 
 'disambiguations' => 'Mga pahinang minatulay pasiring sa pampalinaw na mga pahina',
@@ -1930,13 +1930,13 @@ Ini ngunyan minatukdo-liwat pasiring sa [[$2]].',
 'protectedtitles' => 'Protektadong mga titulo',
 'protectedtitlestext' => 'An minasunod na mga titulo pinagprotektaran magpoon na muknaon',
 'protectedtitlesempty' => 'Mayong mga titulo sa presente an protektado kaining mga parametro.',
-'listwiki_users' => 'Lista nin paragamit',
-'listwiki_users-editsonly' => 'Ipahiling sana an mga paragamit na igwang mga pinagliwat',
-'listwiki_users-creationsort' => 'Salansanon sa paagi kan petsa nin pagmukna',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|pigliwat|mga pigliwat}}',
-'wiki_usercreated' => '{{GENDER:$3|Minukna}} kan $1 sa $2',
+'listusers' => 'Lista nin paragamit',
+'listusers-editsonly' => 'Ipahiling sana an mga paragamit na igwang mga pinagliwat',
+'listusers-creationsort' => 'Salansanon sa paagi kan petsa nin pagmukna',
+'usereditcount' => '$1 {{PLURAL:$1|pigliwat|mga pigliwat}}',
+'usercreated' => '{{GENDER:$3|Minukna}} kan $1 sa $2',
 'newpages' => 'Mga bàgong pahina',
-'newpages-wiki_username' => 'Pangaran kan parágamit:',
+'newpages-username' => 'Pangaran kan parágamit:',
 'ancientpages' => 'Mga pinakalumang pahina',
 'move' => 'Ibalyó',
 'movethispage' => 'Ibalyó ining pahina',
@@ -1960,7 +1960,7 @@ Pakigiromdom tabi na sa ibang websityo mapuwedeng nakatakod sa sarong sagunson n
 'booksources-invalid-isbn' => 'An pinagtaong ISBN dae minaluwas na balido; paki-tsek tabi nin mga sala sa pagkopya gikan sa orihinal na piggikanan.',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Paragibo:',
+'specialloguserlabel' => 'Paragibo:',
 'speciallogtitlelabel' => 'Target (titulo o paragamit):',
 'log' => 'Mga usip',
 'all-logs-page' => 'Gabos na pampublikong mga talaan',
@@ -2018,24 +2018,24 @@ Suportadong mga panundan: <code>$1</code> (dae magdagdag arinman kaini sa saimon
 'linksearch-line' => '$1 an nakatakod sa $2',
 'linksearch-error' => 'Mga pantsambang baraha mapuwedeng magluwas sana sa poon kan hostname.',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'Ipahiling an mga paragamit poon sa:',
-'listwiki_users-submit' => 'Ipahiling',
-'listwiki_users-noresult' => 'Mayong nakuang parágamit.',
-'listwiki_users-blocked' => '(pinagbarado)',
+# Special:ListUsers
+'listusersfrom' => 'Ipahiling an mga paragamit poon sa:',
+'listusers-submit' => 'Ipahiling',
+'listusers-noresult' => 'Mayong nakuang parágamit.',
+'listusers-blocked' => '(pinagbarado)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'Listahan kan aktibong paragamit',
-'activewiki_users-intro' => 'Iyo in an listahan kan mga paragamit na nagkaigwa nin mga ginibo sa laog kan nakaaging $1 {{PLURAL:$1|aldaw|mga aldaw}}.',
-'activewiki_users-count' => '$1 {{PLURAL:$1|pigliwat|mga pigliwat}} sa nakaaging {{PLURAL:$3|aldaw|$3 mga aldaw}}',
-'activewiki_users-from' => 'Ipahiling an mga paragamit magpoon sa:',
-'activewiki_users-hidebots' => 'Itago an mga panalnga',
-'activewiki_users-hidesysops' => 'Itago an mga administrador',
-'activewiki_users-noresult' => 'Mayong mga paragamit na nanagboan.',
+# Special:ActiveUsers
+'activeusers' => 'Listahan kan aktibong paragamit',
+'activeusers-intro' => 'Iyo in an listahan kan mga paragamit na nagkaigwa nin mga ginibo sa laog kan nakaaging $1 {{PLURAL:$1|aldaw|mga aldaw}}.',
+'activeusers-count' => '$1 {{PLURAL:$1|pigliwat|mga pigliwat}} sa nakaaging {{PLURAL:$3|aldaw|$3 mga aldaw}}',
+'activeusers-from' => 'Ipahiling an mga paragamit magpoon sa:',
+'activeusers-hidebots' => 'Itago an mga panalnga',
+'activeusers-hidesysops' => 'Itago an mga administrador',
+'activeusers-noresult' => 'Mayong mga paragamit na nanagboan.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Paragamit na talaan nin pagmukna',
-'newwiki_userlogpagetext' => 'Ini an talaan kan mga pagmukna nin paragamit.',
+# Special:Log/newusers
+'newuserlogpage' => 'Paragamit na talaan nin pagmukna',
+'newuserlogpagetext' => 'Ini an talaan kan mga pagmukna nin paragamit.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Mga karapatan kan grupo nin paragamit',
@@ -2056,29 +2056,29 @@ Puwedeng magkakaigwa nin [[{{MediaWiki:Listgrouprights-helppage}}|kadagdagang im
 'listgrouprights-addgroup-self-all' => 'Idagdag an gabos na mga grupo tanganing magkaigwa nin sadireng panindog',
 'listgrouprights-removegroup-self-all' => 'Halion an gabos na mga grupo gikan sa sadireng panindog',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'Mayong direksyón nin destino',
-'mailnologintext' => "Kaipuhan ika si [[Special:wiki_userLogin|nakalaog]]
+'mailnologintext' => "Kaipuhan ika si [[Special:UserLogin|nakalaog]]
 asin may marhay na ''e''-surat sa saimong [[Special:Preferences|Mga kabôtan]]
 para makapadara nin ''e''-surat sa ibang parágamit.",
-'emailwiki_user' => 'E-koreohan ining paragamit',
-'emailwiki_user-title-target' => 'E-surat kaining {{GENDER:$1|paragamit}}',
-'emailwiki_user-title-notarget' => 'E-surat na paragamit',
+'emailuser' => 'E-koreohan ining paragamit',
+'emailuser-title-target' => 'E-surat kaining {{GENDER:$1|paragamit}}',
+'emailuser-title-notarget' => 'E-surat na paragamit',
 'emailpage' => 'E-suratan an parágamit',
 'emailpagetext' => 'Ika makakagamit kan porma na yaon sa ibaba sa pagpadara nin mensahe na e-surat sa {{GENDER:$1|paragamit}}.
 An e-surat na estada sa saimong pinaglaog sa [[Special:Preferences|saimong paragamit na mga kamuyahan]] ipapahiling bilang iyo an "Gikan sa" estada kan e-surat, kaya an resipiyente makakapagsimbag direkta mismo saimo.',
-'wiki_usermailererror' => 'Error manonongod sa korreong binalik:',
+'usermailererror' => 'Error manonongod sa korreong binalik:',
 'defemailsubject' => '{{SITENAME}} e-surat gikan sa paragamit "$1"',
-'wiki_usermaildisabled' => 'Paragamit na e-surat pinagpundo',
-'wiki_usermaildisabledtext' => 'Ika dae makakapagpadara nin e-surat sa ibang mga paragamit kaining wiki',
+'usermaildisabled' => 'Paragamit na e-surat pinagpundo',
+'usermaildisabledtext' => 'Ika dae makakapagpadara nin e-surat sa ibang mga paragamit kaining wiki',
 'noemailtitle' => "Mayô nin ''e''-surat",
 'noemailtext' => 'Ining paragamit dae nagkaag nin sarong balidong e-surat na adres.',
 'nowikiemailtitle' => 'Mayong e-surat na pinagtutugutan',
 'nowikiemailtext' => 'Ining paragamit nagpili na mayong mareresibeng e-surat gikan sa ibang mga paragamit.',
 'emailnotarget' => 'Bakong eksistido o imbalido an ngaran nin paragamit para sa sinuratan.',
 'emailtarget' => 'Paki-entra an ngaran kan paragamit na sinuratan',
-'emailwiki_username' => 'Ngaran nin Paragamit:',
-'emailwiki_usernamesubmit' => 'Isumite',
+'emailusername' => 'Ngaran nin Paragamit:',
+'emailusernamesubmit' => 'Isumite',
 'email-legend' => 'Magpadara nin sarong e-surat sa ibang {{SITENAME}} na paragamit',
 'emailfrom' => 'Gikan ki:',
 'emailto' => 'Hasta:',
@@ -2089,11 +2089,11 @@ An e-surat na estada sa saimong pinaglaog sa [[Special:Preferences|saimong parag
 'emailccsubject' => 'Kopya kan saimong mensahe sa $1: $2',
 'emailsent' => 'Naipadará na an e-surat',
 'emailsenttext' => 'Naipadará na su e-surat mo.',
-'emailwiki_userfooter' => 'Ining e-surat ipinadara sa paagi nin $1 pasiring ki $2 kan "E-surat na paragamit" na punksyon kan {{SITENAME}}.',
+'emailuserfooter' => 'Ining e-surat ipinadara sa paagi nin $1 pasiring ki $2 kan "E-surat na paragamit" na punksyon kan {{SITENAME}}.',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'Magwawalat nin pansistemang mensahe.',
-'wiki_usermessage-editor' => 'Pansistemang mensahero',
+# User Messenger
+'usermessage-summary' => 'Magwawalat nin pansistemang mensahe.',
+'usermessage-editor' => 'Pansistemang mensahero',
 
 # Watchlist
 'watchlist' => 'Pigbabantayan ko',
@@ -2102,7 +2102,7 @@ An e-surat na estada sa saimong pinaglaog sa [[Special:Preferences|saimong parag
 'nowatchlist' => 'Mayo ka man na mga bagay saimong lista nin pigbabantayan.',
 'watchlistanontext' => 'Mag $1 tabi para mahiling o maghira nin mga bagay saimong lista nin mga pigbabantayan.',
 'watchnologin' => 'Mayô sa laog',
-'watchnologintext' => 'Dapat ika si [[Special:wiki_userLogin|nakalaog]] para puede kang magribay kan saimong lista nin mga pigbabantayán.',
+'watchnologintext' => 'Dapat ika si [[Special:UserLogin|nakalaog]] para puede kang magribay kan saimong lista nin mga pigbabantayán.',
 'addwatch' => 'Idagdag sa bantay-listahan',
 'addedwatchtext' => 'Ining pahina "[[:$1]]" dinadagdag sa saimong mga [[Special:Watchlist|Bantay-listahan]].
 An maabot na mga pagbabâgo sa páhinang ini asin sa asosyadong páhina nin olay paglilistahon duman.',
@@ -2213,13 +2213,13 @@ An pagpupura kaini mapuwedeng makapag-antala sa mga operasyon kan datos-sarayan 
 'rollbacklinkcount-morethan' => 'ibalik an sobrang $1  {{PLURAL:$1|pagliwat|mga pagliwat}}',
 'rollbackfailed' => 'Prakaso an pagbalík',
 'cantrollback' => 'Dai pwedeng bawîon an hirá; an huring kontribuidor iyo an unikong parásurat kan páhina.',
-'alreadyrolled' => 'Dae maibalik an huring pagliwat kan [[:$1]] ni [[wiki_user:$2|$2]] ([[wiki_user talk:$2|olay]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
+'alreadyrolled' => 'Dae maibalik an huring pagliwat kan [[:$1]] ni [[User:$2|$2]] ([[User talk:$2|olay]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
 may iba na tabing nagliwat o nagbalik kan pahina.
 
-An huring pagliwat sa pahina ginibo ni [[wiki_user:$3|$3]] ([[wiki_user talk:$3|olay]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
+An huring pagliwat sa pahina ginibo ni [[User:$3|$3]] ([[User talk:$3|olay]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment' => "An sumaryo kan pagliwat: \"''\$1''\".",
-'revertpage' => 'Ibinalik na mga pagliwat ni [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|talk]]) sagkod sa huring rebisyon ni [[wiki_user:$1|$1]]',
-'revertpage-nowiki_user' => 'Ibinalik na mga pagliwat ni (ngaran nin paragamit pinaghali) sagkod sa huring rebisyon ni [[wiki_user:$1|$1]]',
+'revertpage' => 'Ibinalik na mga pagliwat ni [[Special:Contributions/$2|$2]] ([[User talk:$2|talk]]) sagkod sa huring rebisyon ni [[User:$1|$1]]',
+'revertpage-nouser' => 'Ibinalik na mga pagliwat ni (ngaran nin paragamit pinaghali) sagkod sa huring rebisyon ni [[User:$1|$1]]',
 'rollback-success' => 'Binawî na mga paghirá ni $1; pigbalik sa dating bersyón ni $2.',
 
 # Edit tokens
@@ -2370,13 +2370,13 @@ $1",
 'sp-contributions-uploads' => 'mga ikinarga',
 'sp-contributions-logs' => 'mga tinalaan',
 'sp-contributions-talk' => 'olayan',
-'sp-contributions-wiki_userrights' => 'manihamento sa mga karapatan kan paragamit',
+'sp-contributions-userrights' => 'manihamento sa mga karapatan kan paragamit',
 'sp-contributions-blocked-notice' => 'Ining paragamit sa presente pinagbarahan.
 An pinakahuring entrada sa talaan nin pagbara nakahaya sa ibaba bilang reperensiya:',
 'sp-contributions-blocked-notice-anon' => 'Ining IP adres sa presente pinagbarahan.
 An pinakahuring entrada sa talaan nin pagbara nakahaya sa ibaba bilang reperensiya:',
 'sp-contributions-search' => 'Maghanap nin mga kontribusyon',
-'sp-contributions-wiki_username' => 'IP o ngaran kan parágamit:',
+'sp-contributions-username' => 'IP o ngaran kan parágamit:',
 'sp-contributions-toponly' => 'Minapahiling sana nin mga pagliwat na pinakahurihang mga rebisyon',
 'sp-contributions-submit' => 'Hanápon',
 
@@ -2409,7 +2409,7 @@ An pinakahuring entrada sa talaan nin pagbara nakahaya sa ibaba bilang reperensi
 'blockiptext' => 'Gamiton an pormularyo sa babâ para bagaton an pagsurat kan sarong espesipikong IP o ngaran nin parágamit.
 Dapat gibohon sana ini para maibitaran vandalismo, asin kompirmi sa [[{{MediaWiki:Policy-url}}|palakaw]].
 Magkaag nin espisipikong rason (halimbawa, magtao nin ehemplo kan mga páhinang rinaot).',
-'ipadressorwiki_username' => 'direksyon nin IP o gahâ:',
+'ipadressorusername' => 'direksyon nin IP o gahâ:',
 'ipbexpiry' => 'Pasó:',
 'ipbreason' => 'Rason:',
 'ipbreasonotherlist' => 'Ibang rason',
@@ -2431,8 +2431,8 @@ Magkaag nin espisipikong rason (halimbawa, magtao nin ehemplo kan mga páhinang 
 'ipbotheroption' => 'iba',
 'ipbotherreason' => 'Iba/dugang na rasón:',
 'ipbhidename' => 'Tagoon an ngaran nin paragamit gikan sa mga pagliliwat asin mga listahan',
-'ipbwatchwiki_user' => 'Bantayi ining gamit kan paragamit asin mga pahina nin olayan',
-'ipb-disablewiki_usertalk' => 'Pugulan ining paragamit na magliliwat kan saiyang sadireng pahina nin olayan habang ini barado',
+'ipbwatchuser' => 'Bantayi ining gamit kan paragamit asin mga pahina nin olayan',
+'ipb-disableusertalk' => 'Pugulan ining paragamit na magliliwat kan saiyang sadireng pahina nin olayan habang ini barado',
 'ipb-change-block' => 'Barahan-otro an paragamit na igwa kaining mga panuytoy',
 'ipb-confirm' => 'Kumpirmaron an pagbara',
 'badipaddress' => 'Dai pwede ining IP',
@@ -2440,7 +2440,7 @@ Magkaag nin espisipikong rason (halimbawa, magtao nin ehemplo kan mga páhinang 
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] pinagbarahan.<br />
 Hilngon an [[Special:BlockList|listahan kan binarahan]] tanganing repasohon an mga binara.',
 'ipb-blockingself' => 'Pagbabarahon mo an sadire mo! Segurado ka daw na saimong kagustuhan an gibohon ini?',
-'ipb-confirmhidewiki_user' => 'Ika magbabara nin sarong paragamit na igwang "tagoon an paragamit" na nakagana. Ini magtatago kan ngaran nin paragamit sa gabos na mga listahan asin mga entrada sa talaan. Segurado ka daw na saimong kagustuhan an gibohon ini?',
+'ipb-confirmhideuser' => 'Ika magbabara nin sarong paragamit na igwang "tagoon an paragamit" na nakagana. Ini magtatago kan ngaran nin paragamit sa gabos na mga listahan asin mga entrada sa talaan. Segurado ka daw na saimong kagustuhan an gibohon ini?',
 'ipb-edit-dropdown' => 'Hirahón an mga rasón sa pagbabagát',
 'ipb-unblock-addr' => 'Paagihon $1',
 'ipb-unblock' => 'Bawion an pagbagat nin ngaran nin paragamit o direccion nin IP',
@@ -2449,13 +2449,13 @@ Hilngon an [[Special:BlockList|listahan kan binarahan]] tanganing repasohon an m
 'unblockip' => 'Paagihon an parâgamit',
 'unblockiptext' => 'Gamiton an pormulario sa baba para puede giraray suratan an dating binagat na direccion nin IP address o ngaran nin paragamit.',
 'ipusubmit' => 'Haleon ining bara',
-'unblocked' => 'Binawi na an pagbagat ki [[wiki_user:$1|$1]]',
+'unblocked' => 'Binawi na an pagbagat ki [[User:$1|$1]]',
 'unblocked-range' => '$1 pinaghale na an bara',
 'unblocked-id' => 'Hinali na an bagat na $1',
 'blocklist' => 'Pinagbarang na mga paragamit',
 'ipblocklist' => 'Baradong mga paragamit',
 'ipblocklist-legend' => 'Hanapon an sarong binagát na paragamit',
-'blocklist-wiki_userblocks' => 'Tagoon an mga bara sa panindog',
+'blocklist-userblocks' => 'Tagoon an mga bara sa panindog',
 'blocklist-tempblocks' => 'Tagoon an temporaryong mga pambara',
 'blocklist-addressblocks' => 'Tagoon an solong pambara kan IP',
 'blocklist-rangeblocks' => 'Tagoon an mahiwason na mga pambara',
@@ -2474,7 +2474,7 @@ Hilngon an [[Special:BlockList|listahan kan binarahan]] tanganing repasohon an m
 'noautoblockblock' => 'pigpopondo an enseguidang pagbagat',
 'createaccountblock' => 'binagat an paggibo nin kuenta',
 'emailblock' => 'binagát an e-surat',
-'blocklist-nowiki_usertalk' => 'dae makakaliwat kan sadireng pahina nin olayan',
+'blocklist-nousertalk' => 'dae makakaliwat kan sadireng pahina nin olayan',
 'ipblocklist-empty' => 'Mayong laog an lista nin mga binagat.',
 'ipblocklist-no-results' => 'Dai nabagat an hinagad na direccion nin IP o ngaran nin paragamit.',
 'blocklink' => 'bagáton',
@@ -2482,7 +2482,7 @@ Hilngon an [[Special:BlockList|listahan kan binarahan]] tanganing repasohon an m
 'change-blocklink' => 'sanglián an pagbagat',
 'contribslink' => 'mga ambág',
 'emaillink' => 'ipadara an e-surat',
-'autoblocker' => 'Enseguidang binagat an saimong direccion nin IP ta kaaaging ginamit ini ni "[[wiki_user:$1|$1]]". An rason nin pagbagat ni $1: "$2"',
+'autoblocker' => 'Enseguidang binagat an saimong direccion nin IP ta kaaaging ginamit ini ni "[[User:$1|$1]]". An rason nin pagbagat ni $1: "$2"',
 'blocklogpage' => 'Usip nin pagbagat',
 'blocklog-showlog' => 'Ining paragamit dati nang pinagbarahan.
 An talaan nin pagbara nakahaya sa ibaba bilang reperensiya:',
@@ -2498,7 +2498,7 @@ Hilngon sa [[Special:BlockList|listahan nin kubkob]] para sa listahan kan presen
 'block-log-flags-nocreate' => "pigpopondohán an paggibo nin ''account'",
 'block-log-flags-noautoblock' => 'pigpopondo an enseguidang pagbagat',
 'block-log-flags-noemail' => 'binagát an e-surat',
-'block-log-flags-nowiki_usertalk' => 'dae makakaliwat nin sadireng pahina nin olay',
+'block-log-flags-nousertalk' => 'dae makakaliwat nin sadireng pahina nin olay',
 'block-log-flags-angry-autoblock' => 'pinakusog na awto-kubkob pinaandar',
 'block-log-flags-hiddenname' => 'pangaran nin paragamit itinago',
 'range_block_disabled' => 'Pigpopondo an abilidad kan sysop na maggibo nin bagat na hilera.',
@@ -2508,7 +2508,7 @@ Hilngon sa [[Special:BlockList|listahan nin kubkob]] para sa listahan kan presen
 'ipb_already_blocked' => 'An "$1" pinagkubkob na',
 'ipb-needreblock' => 'An $1 pinagkubkob na. Gusto mong liwaton an mga panuytoy?',
 'ipb-otherblocks-header' => 'An ibang {{PLURAL:$1|kubkob|mga kubkob}}',
-'unblock-hidewiki_user' => 'Ika dae makakakubkog kaining paragamit, siring na an saindang paragamit na ngaran itinatago.',
+'unblock-hideuser' => 'Ika dae makakakubkog kaining paragamit, siring na an saindang paragamit na ngaran itinatago.',
 'ipb_cant_unblock' => 'Error: Dai nahanap an ID nin binagat na $1. Puede ser na dati nang binawi an pagbagat kaini.',
 'ipb_blocked_as_range' => 'Kasalaan: An IP na estada $1 dae direktang pinagkubkob asin dae puwedeng dae makukubkob.
 Ini, baya, pinagkubkob bilang parte kan hidwas $2, na mapuwedeng daemakukubkob.',
@@ -2523,7 +2523,7 @@ Ini, baya, pinagkubkob bilang parte kan hidwas $2, na mapuwedeng daemakukubkob.'
 'sorbs_create_account_reason' => 'An saimong IP na estada pinaglista bilang sarong bukas na proksi sa laog kan DNSBL na ginagamit kan {{SITENAME}}.
 Ika dae makakamukna nin sarong panindog.',
 'cant-block-while-blocked' => 'Ika dae makakakubkob kan ibang mga paragamit mantang ika nakukubkob pa.',
-'cant-see-hidden-wiki_user' => 'An paragamit na pinagpubaran mong kubkubon pinagkubkob asin pinagtago na. Mala ta ika mayo nin karapatan na magtago nin paragamit, ika dae makakahiling or makakaliwat kan kinubkob na paragamit.',
+'cant-see-hidden-user' => 'An paragamit na pinagpubaran mong kubkubon pinagkubkob asin pinagtago na. Mala ta ika mayo nin karapatan na magtago nin paragamit, ika dae makakahiling or makakaliwat kan kinubkob na paragamit.',
 'ipbblocked' => 'Ika da makakakubkob or maghale nin kubkob sa ibang mga paragamit, nin huli ta ika mismo sa sadiri mo pinagkubkob na',
 'ipbnounblockself' => 'Ika dae pinagtutugutan na magkubkob kan sadiri mo',
 
@@ -2576,13 +2576,13 @@ pakipaseguro baya na ika nakakasabot sa mga konsekuwensiya kaini bago magpapadag
 
 Sa mga kasong iyan, kaipuhan mong ibalyo o isalak an páhina nin mano-mano kun boot mo.",
 'movearticle' => 'Ibalyó an pahina:',
-'movewiki_userpage-warning' => "'''Patanid:''' Ika magpopoon na magbalyo in sarong pahina nin paragamit. Pakitandaan tabi na an pahina sana na ipagbabalyo asin an paragamit '''dae''' maipagliliwat an pangaran.",
+'moveuserpage-warning' => "'''Patanid:''' Ika magpopoon na magbalyo in sarong pahina nin paragamit. Pakitandaan tabi na an pahina sana na ipagbabalyo asin an paragamit '''dae''' maipagliliwat an pangaran.",
 'movenologin' => 'Mayô sa laog',
-'movenologintext' => 'Kaipuhan na rehistradong parágamit ka asin si [[Special:wiki_userLogin|nakalaog]] tangarig makabalyó ka nin páhina.',
+'movenologintext' => 'Kaipuhan na rehistradong parágamit ka asin si [[Special:UserLogin|nakalaog]] tangarig makabalyó ka nin páhina.',
 'movenotallowed' => 'Mayô kang permiso na ibalyó an mga pahina sa wiki na ini.',
 'movenotallowedfile' => 'Ika mayo nin permiso na magbabalyo nin mga sagunson.',
-'cant-move-wiki_user-page' => 'Ika mayo nin permiso na magbabalyo nin mga pahina nin paragamit (laen pa sa mga sub-pahina).',
-'cant-move-to-wiki_user-page' => 'Ika mayo nin permiso na magbabalyo nin pahina paduman sa sa sarong pahina nin paragamit (laen pa sa sub-pahina nin paragamit).',
+'cant-move-user-page' => 'Ika mayo nin permiso na magbabalyo nin mga pahina nin paragamit (laen pa sa mga sub-pahina).',
+'cant-move-to-user-page' => 'Ika mayo nin permiso na magbabalyo nin pahina paduman sa sa sarong pahina nin paragamit (laen pa sa sub-pahina nin paragamit).',
 'newtitle' => 'Sa bàgong titulong:',
 'move-watch' => 'Bantayán ining pahina',
 'movepagebtn' => 'Ibalyó an pahina',
@@ -2760,8 +2760,8 @@ Paki-otro giraray.',
 'javascripttest-qunit-heading' => 'MediaWiki JavaScript QUnit kuwarto nin pagtesting',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'An saimong paragamit na pahina',
-'tooltip-pt-anonwiki_userpage' => 'An páhina nin páragamit para sa ip na pighihira mo bilang',
+'tooltip-pt-userpage' => 'An saimong paragamit na pahina',
+'tooltip-pt-anonuserpage' => 'An páhina nin páragamit para sa ip na pighihira mo bilang',
 'tooltip-pt-mytalk' => 'An saimong pahina sa olayan',
 'tooltip-pt-anontalk' => 'Mga olay manonongod sa mga hira halî sa ip na ini',
 'tooltip-pt-preferences' => 'Mga kabòtan ko',
@@ -2798,13 +2798,13 @@ Paki-otro giraray.',
 'tooltip-feed-rss' => 'Hungit na RSS sa pahinang ini',
 'tooltip-feed-atom' => 'Hungit na atomo sa pahinang iní',
 'tooltip-t-contributions' => 'Hilingón an lista kan mga kontribusyon kaining paragamit',
-'tooltip-t-emailwiki_user' => 'Padarahan nin e-koreo an paragamit na ini',
+'tooltip-t-emailuser' => 'Padarahan nin e-koreo an paragamit na ini',
 'tooltip-t-upload' => 'Ikarga an mga sagunson',
 'tooltip-t-specialpages' => 'Lista kan gabos na mga espesyal na pahina',
 'tooltip-t-print' => 'Naipiprint na bersyon kaining pahina',
 'tooltip-t-permalink' => 'Permanenteng takod sa bersyon kaining páhina',
 'tooltip-ca-nstab-main' => 'Hilingón an pahina nin laog',
-'tooltip-ca-nstab-wiki_user' => 'Hilingón an pahina nin paragamit',
+'tooltip-ca-nstab-user' => 'Hilingón an pahina nin paragamit',
 'tooltip-ca-nstab-media' => "Hilingón an pahina kan ''media''",
 'tooltip-ca-nstab-special' => 'Pahinang espesyal ini, dai mo ini pwedeng hirahón',
 'tooltip-ca-nstab-project' => 'Hilingón an pahina kan proyekto',
@@ -2841,13 +2841,13 @@ Paki-otro giraray.',
 
 # Attribution
 'anonymous' => 'Bako-bistadong {{PLURAL:$1|paragamit|mga paragamit}} kan {{SITENAME}}',
-'sitewiki_user' => 'Paragamit kan {{SITENAME}} na si $1',
-'anonwiki_user' => '{{SITENAME}} bako-bistadong paragamit $1',
+'siteuser' => 'Paragamit kan {{SITENAME}} na si $1',
+'anonuser' => '{{SITENAME}} bako-bistadong paragamit $1',
 'lastmodifiedatby' => 'Ining páhina huring binago sa $2, $1 ni $3.',
 'othercontribs' => 'Binase ini sa trabaho ni $1.',
 'others' => 'iba pa',
-'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|paragamit|mga paragamit}} $1',
-'anonwiki_users' => '{{SITENAME}} bako-bistadong {{PLURAL:$2|paragamit|mga paragamit}} $1',
+'siteusers' => '{{SITENAME}} {{PLURAL:$2|paragamit|mga paragamit}} $1',
+'anonusers' => '{{SITENAME}} bako-bistadong {{PLURAL:$2|paragamit|mga paragamit}} $1',
 'creditspage' => 'Mga krédito nin páhina',
 'nocredits' => 'Mayong talastas kan kredito para sa ining pahina.',
 
@@ -2856,7 +2856,7 @@ Paki-otro giraray.',
 'spamprotectiontext' => 'An teksto na saimong kinakaipong ipagtagama pinagbarahan kan saraan nin spam.
 Ini hurot na pinagkausa nin sarong sugpunan pasiring sa sarong pinagbawal na panluwas na sityo.',
 'spamprotectionmatch' => "An minasunod na teksto iyo an nagbukas kan ''spam filter'' mi: $1",
-'spambot_wiki_username' => 'paglimpya nin spam sa MediaWiki',
+'spambot_username' => 'paglimpya nin spam sa MediaWiki',
 'spam_reverting' => 'Mabalik sa huring bersion na mayong takod sa $1',
 'spam_blanking' => 'An gabos na mga pahirá na may takod sa $1, pigblablanko',
 'spam_deleting' => 'An gabos na mga rebisyon na igwang mga kasugpunan sa $1, pinupura',
@@ -2880,9 +2880,9 @@ Ini hurot na pinagkausa nin sarong sugpunan pasiring sa sarong pinagbawal na pan
 'pageinfo-redirects-name' => 'Maipalikwat pasiring sa pahina ini',
 'pageinfo-subpages-name' => 'Mga sub-pahina kaining pahina',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|panlikwat|mga panlikwat}}; $3 {{PLURAL:$3|bakong panlikwat|bakong mga panlikwat}})',
-'pageinfo-firstwiki_user' => 'Paramukna nin pahina',
+'pageinfo-firstuser' => 'Paramukna nin pahina',
 'pageinfo-firsttime' => 'Petsa kan pagmukna nin pahina',
-'pageinfo-lastwiki_user' => 'Pinakahuring paraliwat',
+'pageinfo-lastuser' => 'Pinakahuring paraliwat',
 'pageinfo-lasttime' => 'Petsa kan pinakahuring pagliwat',
 'pageinfo-edits' => 'Kabilogan na bilang kan mga pagliwat',
 'pageinfo-authors' => 'Kabilogan na bilang kan pinagpalaen na mga awtor',
@@ -3036,7 +3036,7 @@ An mga iba pagtatagoon sa paagi nin pirmehan.
 'exif-compressedbitsperpixel' => 'Moda nin kompresyon sa imahe',
 'exif-pixelydimension' => 'Lakbang kan imahe',
 'exif-pixelxdimension' => 'Langkaw kan imahe',
-'exif-wiki_usercomment' => 'Mga komento kan paragamít',
+'exif-usercomment' => 'Mga komento kan paragamít',
 'exif-relatedsoundfile' => 'Kaakibay kan sagunson na pandangog',
 'exif-datetimeoriginal' => 'Petsa asin oras kan henerasyon nin datos',
 'exif-datetimedigitized' => 'Petsa asin oras kan paghimong dihital',
@@ -3420,7 +3420,7 @@ Paradarang surat pinagbalik: $1',
 'confirmemail_invalid' => 'Salâ an kódigo nin konpirmasyon. Puede ser napasó na an kódigo.',
 'confirmemail_needlogin' => "Kaipuhan tabi $1 ikompirmar an saimong ''e''-surat.",
 'confirmemail_success' => 'An saimong e-surat na adres kumpirmado na.
-Puwede ka na ngunyan [[Special:wiki_userLogin|maglaog]] asin maogmang maggamit kan wiki.',
+Puwede ka na ngunyan [[Special:UserLogin|maglaog]] asin maogmang maggamit kan wiki.',
 'confirmemail_loggedin' => "Nakompirmar na an saimong ''e''-surat.",
 'confirmemail_error' => 'May nasalâ sa pagtagama kan saimong kompirmasyon.',
 'confirmemail_subject' => "kompirmasyón {{SITENAME}} kan direksyón nin ''e''-surat",
@@ -3473,10 +3473,10 @@ Ining pankumpirmang koda mapalso sa $4.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Patanid tabi''': Ining pahina pinagpura matapos na ika nagpoon na magliliwat!",
-'confirmrecreate' => "Si [[wiki_user:$1|$1]] ([[wiki_user talk:$1|olay]]) pigparâ ining páhina pagkatapos mong magpoon kan paghira ta:
+'confirmrecreate' => "Si [[User:$1|$1]] ([[User talk:$1|olay]]) pigparâ ining páhina pagkatapos mong magpoon kan paghira ta:
 : ''$2''
 Ikonpirmar tabi na talagang gusto mong gibohon giraray ining pahina.",
-'confirmrecreate-noreason' => 'Paragamit [[wiki_user:$1|$1]] ([[wiki_user talk:$1|Olay]]) an nagpura kaining pahina matapos na ika nagpoon na magliliwat. Pakikumpirma tabi na ika boot na muknaon otro ining pahina.',
+'confirmrecreate-noreason' => 'Paragamit [[User:$1|$1]] ([[User talk:$1|Olay]]) an nagpura kaining pahina matapos na ika nagpoon na magliliwat. Pakikumpirma tabi na ika boot na muknaon otro ining pahina.',
 'recreate' => 'Gibohón giraray',
 
 # action=purge
@@ -3552,7 +3552,7 @@ Pwede mo man [[Special:EditWatchlist|gamiton an standard editor]].',
 'watchlisttools-raw' => 'Hirahón an bàgong pigbabantayan',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|olay]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|olay]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'Bakong bistadong ekstensyon nin pagmarka "$1"',
@@ -3618,7 +3618,7 @@ Mga imahe ipinapahiling sa bilog na resolusyon, an iba pang tipo nin mga sagunso
 'specialpages-group-login' => 'Maglaog / magmukna nin panindog',
 'specialpages-group-changes' => 'Nakakaági pa sanáng mga pagbàgo asín laóg',
 'specialpages-group-media' => 'Mga talaan sa midya asin mga ikinarga',
-'specialpages-group-wiki_users' => 'Mga paragamit asin mga karapatan',
+'specialpages-group-users' => 'Mga paragamit asin mga karapatan',
 'specialpages-group-highuse' => 'Halangkawong gamit na mga pahina',
 'specialpages-group-pages' => 'Mga listahan kan mga pahina',
 'specialpages-group-pagetools' => 'Mga kagamitan sa pahina',
@@ -3717,11 +3717,11 @@ Ining sityo igwang naeksperiyensiyahan na mga kakundian sa teknikal.',
 'logentry-move-move_redir-noredirect' => '$1 pinagbalyo an pahina $3 paduman sa $4 sa paagi kan panlikwat na mayong iwinawalat na sarong panlikwat',
 'logentry-patrol-patrol' => '$1 pinagmarkahan an rebisyon $4 kan pahina $3 na patrolyado',
 'logentry-patrol-patrol-auto' => '$1 awtomatikong pinagmarkahan an rebisyonn $4 kan pahina $3 na patrolyado',
-'logentry-newwiki_users-newwiki_users' => 'An paragamit na panindog $1 pinagmukna na',
-'logentry-newwiki_users-create' => 'An paragamit na panindog $1 pinagmukna na',
-'logentry-newwiki_users-create2' => 'An paragamit na panindog $3 pinagmukna na ni $1',
-'logentry-newwiki_users-autocreate' => 'An paragamit na panindog $1 awtomatikong pinagmukna na',
-'newwiki_userlog-byemail' => 'an pasa-taramon ipinadara na sa paagi kan e-surat',
+'logentry-newusers-newusers' => 'An paragamit na panindog $1 pinagmukna na',
+'logentry-newusers-create' => 'An paragamit na panindog $1 pinagmukna na',
+'logentry-newusers-create2' => 'An paragamit na panindog $3 pinagmukna na ni $1',
+'logentry-newusers-autocreate' => 'An paragamit na panindog $1 awtomatikong pinagmukna na',
+'newuserlog-byemail' => 'an pasa-taramon ipinadara na sa paagi kan e-surat',
 
 # Feedback
 'feedback-bugornote' => 'Kun ika andam na iladawan an sarong teknikal na problema na igwang detalye tabi [$1 ipaaram an kuto].

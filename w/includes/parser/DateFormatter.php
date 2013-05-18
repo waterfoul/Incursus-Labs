@@ -22,7 +22,7 @@
  */
 
 /**
- * Date formatter, recognises dates in plain text and formats them accoding to wiki_user preferences.
+ * Date formatter, recognises dates in plain text and formats them accoding to user preferences.
  * @todo preferences, OutputPage
  * @ingroup Parser
  */
@@ -140,7 +140,7 @@ class DateFormatter {
 	}
 
 	/**
-	 * @param $preference String: wiki_user preference
+	 * @param $preference String: User preference
 	 * @param $text String: Text to reformat
 	 * @param $options Array: can contain 'linked' and/or 'match-whole'
 	 * @return mixed|String
@@ -163,7 +163,7 @@ class DateFormatter {
 				# General rules
 				$this->mTarget = $this->rules[self::ALL][$i];
 			} elseif ( $preference ) {
-				# wiki_user preference
+				# User preference
 				$this->mTarget = $preference;
 			} else {
 				# Default

@@ -1,6 +1,6 @@
-CREATE TABLE wiki_user_properties (
-  -- Foreign key to wiki_user.wiki_user_id
-  up_wiki_user BIGINT NOT NULL,
+CREATE TABLE user_properties (
+  -- Foreign key to user.user_id
+  up_user BIGINT NOT NULL,
   
   -- Name of the option being saved. This is indexed for bulk lookup.
   up_property VARCHAR(32) FOR BIT DATA NOT NULL,

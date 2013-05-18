@@ -9,7 +9,7 @@
 BEGIN;
 SET client_min_messages = 'ERROR';
 
-DROP SEQUENCE IF EXISTS wiki_user_wiki_user_id_seq CASCADE;
+DROP SEQUENCE IF EXISTS user_user_id_seq CASCADE;
 DROP SEQUENCE IF EXISTS page_page_id_seq CASCADE;
 DROP SEQUENCE IF EXISTS revision_rev_id_seq CASCADE;
 DROP SEQUENCE IF EXISTS page_restrictions_id_seq CASCADE;
@@ -23,48 +23,48 @@ DROP FUNCTION IF EXISTS ts2_page_title() CASCADE;
 DROP FUNCTION IF EXISTS ts2_page_text() CASCADE;
 DROP FUNCTION IF EXISTS add_interwiki(TEXT,INT,SMALLINT) CASCADE;
 
-CREATE SEQUENCE wiki_user_wiki_user_id_seq MINVALUE 0 START WITH 0;
-CREATE TABLE mwwiki_user ( -- replace reserved word 'wiki_user'
-  wiki_user_id                   INTEGER  NOT NULL  PRIMARY KEY DEFAULT nextval('wiki_user_wiki_user_id_seq'),
-  wiki_user_name                 TEXT     NOT NULL  UNIQUE,
-  wiki_user_real_name            TEXT,
-  wiki_user_password             TEXT,
-  wiki_user_newpassword          TEXT,
-  wiki_user_newpass_time         TIMESTAMPTZ,
-  wiki_user_token                TEXT,
-  wiki_user_email                TEXT,
-  wiki_user_email_token          TEXT,
-  wiki_user_email_token_expires  TIMESTAMPTZ,
-  wiki_user_email_authenticated  TIMESTAMPTZ,
-  wiki_user_touched              TIMESTAMPTZ,
-  wiki_user_registration         TIMESTAMPTZ,
-  wiki_user_editcount            INTEGER
+CREATE SEQUENCE user_user_id_seq MINVALUE 0 START WITH 0;
+CREATE TABLE mwuser ( -- replace reserved word 'user'
+  user_id                   INTEGER  NOT NULL  PRIMARY KEY DEFAULT nextval('user_user_id_seq'),
+  user_name                 TEXT     NOT NULL  UNIQUE,
+  user_real_name            TEXT,
+  user_password             TEXT,
+  user_newpassword          TEXT,
+  user_newpass_time         TIMESTAMPTZ,
+  user_token                TEXT,
+  user_email                TEXT,
+  user_email_token          TEXT,
+  user_email_token_expires  TIMESTAMPTZ,
+  user_email_authenticated  TIMESTAMPTZ,
+  user_touched              TIMESTAMPTZ,
+  user_registration         TIMESTAMPTZ,
+  user_editcount            INTEGER
 );
-CREATE INDEX wiki_user_email_token_idx ON mwwiki_user (wiki_user_email_token);
+CREATE INDEX user_email_token_idx ON mwuser (user_email_token);
 
--- Create a dummy wiki_user to satisfy fk contraints especially with revisions
-INSERT INTO mwwiki_user
+-- Create a dummy user to satisfy fk contraints especially with revisions
+INSERT INTO mwuser
   VALUES (DEFAULT,'Anonymous','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,now(),now());
 
-CREATE TABLE wiki_user_groups (
-  ug_wiki_user   INTEGER      NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+CREATE TABLE user_groups (
+  ug_user   INTEGER      NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
   ug_group  TEXT     NOT NULL
 );
-CREATE UNIQUE INDEX wiki_user_groups_unique ON wiki_user_groups (ug_wiki_user, ug_group);
+CREATE UNIQUE INDEX user_groups_unique ON user_groups (ug_user, ug_group);
 
-CREATE TABLE wiki_user_former_groups (
-  ufg_wiki_user   INTEGER      NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+CREATE TABLE user_former_groups (
+  ufg_user   INTEGER      NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
   ufg_group  TEXT     NOT NULL
 );
-CREATE UNIQUE INDEX ufg_wiki_user_group ON wiki_user_former_groups (ufg_wiki_user, ufg_group);
+CREATE UNIQUE INDEX ufg_user_group ON user_former_groups (ufg_user, ufg_group);
 
-CREATE TABLE wiki_user_newtalk (
-  wiki_user_id              INTEGER      NOT NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
-  wiki_user_ip              TEXT             NULL,
-  wiki_user_last_timestamp  TIMESTAMPTZ
+CREATE TABLE user_newtalk (
+  user_id              INTEGER      NOT NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+  user_ip              TEXT             NULL,
+  user_last_timestamp  TIMESTAMPTZ
 );
-CREATE INDEX wiki_user_newtalk_id_idx ON wiki_user_newtalk (wiki_user_id);
-CREATE INDEX wiki_user_newtalk_ip_idx ON wiki_user_newtalk (wiki_user_ip);
+CREATE INDEX user_newtalk_id_idx ON user_newtalk (user_id);
+CREATE INDEX user_newtalk_ip_idx ON user_newtalk (user_ip);
 
 
 CREATE SEQUENCE page_page_id_seq;
@@ -84,7 +84,7 @@ CREATE TABLE page (
 CREATE UNIQUE INDEX page_unique_name ON page (page_namespace, page_title);
 CREATE INDEX page_main_title         ON page (page_title text_pattern_ops) WHERE page_namespace = 0;
 CREATE INDEX page_talk_title         ON page (page_title text_pattern_ops) WHERE page_namespace = 1;
-CREATE INDEX page_wiki_user_title         ON page (page_title text_pattern_ops) WHERE page_namespace = 2;
+CREATE INDEX page_user_title         ON page (page_title text_pattern_ops) WHERE page_namespace = 2;
 CREATE INDEX page_utalk_title        ON page (page_title text_pattern_ops) WHERE page_namespace = 3;
 CREATE INDEX page_project_title      ON page (page_title text_pattern_ops) WHERE page_namespace = 4;
 CREATE INDEX page_mediawiki_title    ON page (page_title text_pattern_ops) WHERE page_namespace = 8;
@@ -108,8 +108,8 @@ CREATE TABLE revision (
   rev_page        INTEGER          NULL  REFERENCES page (page_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
   rev_text_id     INTEGER          NULL, -- FK
   rev_comment     TEXT,
-  rev_wiki_user        INTEGER      NOT NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE RESTRICT DEFERRABLE INITIALLY DEFERRED,
-  rev_wiki_user_text   TEXT         NOT NULL,
+  rev_user        INTEGER      NOT NULL  REFERENCES mwuser(user_id) ON DELETE RESTRICT DEFERRABLE INITIALLY DEFERRED,
+  rev_user_text   TEXT         NOT NULL,
   rev_timestamp   TIMESTAMPTZ  NOT NULL,
   rev_minor_edit  SMALLINT     NOT NULL  DEFAULT 0,
   rev_deleted     SMALLINT     NOT NULL  DEFAULT 0,
@@ -120,8 +120,8 @@ CREATE TABLE revision (
 CREATE UNIQUE INDEX revision_unique ON revision (rev_page, rev_id);
 CREATE INDEX rev_text_id_idx        ON revision (rev_text_id);
 CREATE INDEX rev_timestamp_idx      ON revision (rev_timestamp);
-CREATE INDEX rev_wiki_user_idx           ON revision (rev_wiki_user);
-CREATE INDEX rev_wiki_user_text_idx      ON revision (rev_wiki_user_text);
+CREATE INDEX rev_user_idx           ON revision (rev_user);
+CREATE INDEX rev_user_text_idx      ON revision (rev_user_text);
 
 
 CREATE SEQUENCE text_old_id_seq;
@@ -139,7 +139,7 @@ CREATE TABLE page_restrictions (
   pr_type    TEXT         NOT NULL,
   pr_level   TEXT         NOT NULL,
   pr_cascade SMALLINT     NOT NULL,
-  pr_wiki_user    INTEGER          NULL,
+  pr_user    INTEGER          NULL,
   pr_expiry  TIMESTAMPTZ      NULL
 );
 ALTER TABLE page_restrictions ADD CONSTRAINT page_restrictions_pk PRIMARY KEY (pr_page,pr_type);
@@ -160,8 +160,8 @@ CREATE TABLE archive (
   ar_parent_id   INTEGER          NULL,
   ar_sha1        TEXT         NOT NULL DEFAULT '',
   ar_comment     TEXT,
-  ar_wiki_user        INTEGER          NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
-  ar_wiki_user_text   TEXT         NOT NULL,
+  ar_user        INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
+  ar_user_text   TEXT         NOT NULL,
   ar_timestamp   TIMESTAMPTZ  NOT NULL,
   ar_minor_edit  SMALLINT     NOT NULL  DEFAULT 0,
   ar_flags       TEXT,
@@ -171,7 +171,7 @@ CREATE TABLE archive (
   ar_len         INTEGER          NULL
 );
 CREATE INDEX archive_name_title_timestamp ON archive (ar_namespace,ar_title,ar_timestamp);
-CREATE INDEX archive_wiki_user_text            ON archive (ar_wiki_user_text);
+CREATE INDEX archive_user_text            ON archive (ar_user_text);
 
 
 CREATE TABLE redirect (
@@ -226,12 +226,12 @@ CREATE TABLE externallinks (
 CREATE INDEX externallinks_from_to ON externallinks (el_from,el_to);
 CREATE INDEX externallinks_index   ON externallinks (el_index);
 
-CREATE TABLE external_wiki_user (
+CREATE TABLE external_user (
   eu_local_id     INTEGER  NOT NULL  PRIMARY KEY,
   eu_external_id TEXT
 );
 
-CREATE UNIQUE INDEX eu_external_id ON external_wiki_user (eu_external_id);
+CREATE UNIQUE INDEX eu_external_id ON external_user (eu_external_id);
 
 CREATE TABLE langlinks (
   ll_from    INTEGER  NOT NULL  REFERENCES page (page_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
@@ -248,8 +248,8 @@ CREATE TABLE site_stats (
   ss_total_edits    INTEGER            DEFAULT 0,
   ss_good_articles  INTEGER            DEFAULT 0,
   ss_total_pages    INTEGER            DEFAULT -1,
-  ss_wiki_users          INTEGER            DEFAULT -1,
-  ss_active_wiki_users   INTEGER            DEFAULT -1,
+  ss_users          INTEGER            DEFAULT -1,
+  ss_active_users   INTEGER            DEFAULT -1,
   ss_admins         INTEGER            DEFAULT -1,
   ss_images         INTEGER            DEFAULT 0
 );
@@ -263,8 +263,8 @@ CREATE SEQUENCE ipblocks_ipb_id_seq;
 CREATE TABLE ipblocks (
   ipb_id                INTEGER      NOT NULL  PRIMARY KEY DEFAULT nextval('ipblocks_ipb_id_seq'),
   ipb_address           TEXT             NULL,
-  ipb_wiki_user              INTEGER          NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
-  ipb_by                INTEGER      NOT NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+  ipb_user              INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
+  ipb_by                INTEGER      NOT NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
   ipb_by_text           TEXT         NOT NULL  DEFAULT '',
   ipb_reason            TEXT         NOT NULL,
   ipb_timestamp         TIMESTAMPTZ  NOT NULL,
@@ -277,12 +277,12 @@ CREATE TABLE ipblocks (
   ipb_range_end         TEXT,
   ipb_deleted           SMALLINT     NOT NULL  DEFAULT 0,
   ipb_block_email       SMALLINT     NOT NULL  DEFAULT 0,
-  ipb_allow_wiki_usertalk    SMALLINT     NOT NULL  DEFAULT 0,
+  ipb_allow_usertalk    SMALLINT     NOT NULL  DEFAULT 0,
   ipb_parent_block_id             INTEGER          NULL  REFERENCES ipblocks(ipb_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED
 
 );
-CREATE UNIQUE INDEX ipb_address_unique ON ipblocks (ipb_address,ipb_wiki_user,ipb_auto,ipb_anon_only);
-CREATE INDEX ipb_wiki_user    ON ipblocks (ipb_wiki_user);
+CREATE UNIQUE INDEX ipb_address_unique ON ipblocks (ipb_address,ipb_user,ipb_auto,ipb_anon_only);
+CREATE INDEX ipb_user    ON ipblocks (ipb_user);
 CREATE INDEX ipb_range   ON ipblocks (ipb_range_start,ipb_range_end);
 CREATE INDEX ipb_parent_block_id   ON ipblocks (ipb_parent_block_id);
 
@@ -298,8 +298,8 @@ CREATE TABLE image (
   img_major_mime   TEXT                DEFAULT 'unknown',
   img_minor_mime   TEXT                DEFAULT 'unknown',
   img_description  TEXT      NOT NULL,
-  img_wiki_user         INTEGER       NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
-  img_wiki_user_text    TEXT      NOT NULL,
+  img_user         INTEGER       NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
+  img_user_text    TEXT      NOT NULL,
   img_timestamp    TIMESTAMPTZ,
   img_sha1         TEXT      NOT NULL  DEFAULT ''
 );
@@ -315,8 +315,8 @@ CREATE TABLE oldimage (
   oi_height        INTEGER      NOT NULL,
   oi_bits          SMALLINT         NULL,
   oi_description   TEXT,
-  oi_wiki_user          INTEGER          NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
-  oi_wiki_user_text     TEXT         NOT NULL,
+  oi_user          INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
+  oi_user_text     TEXT         NOT NULL,
   oi_timestamp     TIMESTAMPTZ      NULL,
   oi_metadata      BYTEA        NOT NULL DEFAULT '',
   oi_media_type    TEXT             NULL,
@@ -338,7 +338,7 @@ CREATE TABLE filearchive (
   fa_archive_name       TEXT,
   fa_storage_group      TEXT,
   fa_storage_key        TEXT,
-  fa_deleted_wiki_user       INTEGER          NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
+  fa_deleted_user       INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
   fa_deleted_timestamp  TIMESTAMPTZ  NOT NULL,
   fa_deleted_reason     TEXT,
   fa_size               INTEGER      NOT NULL,
@@ -350,22 +350,22 @@ CREATE TABLE filearchive (
   fa_major_mime         TEXT                   DEFAULT 'unknown',
   fa_minor_mime         TEXT                   DEFAULT 'unknown',
   fa_description        TEXT         NOT NULL,
-  fa_wiki_user               INTEGER          NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
-  fa_wiki_user_text          TEXT         NOT NULL,
+  fa_user               INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
+  fa_user_text          TEXT         NOT NULL,
   fa_timestamp          TIMESTAMPTZ,
   fa_deleted            SMALLINT     NOT NULL DEFAULT 0
 );
 CREATE INDEX fa_name_time ON filearchive (fa_name, fa_timestamp);
 CREATE INDEX fa_dupe      ON filearchive (fa_storage_group, fa_storage_key);
 CREATE INDEX fa_notime    ON filearchive (fa_deleted_timestamp);
-CREATE INDEX fa_nowiki_user    ON filearchive (fa_deleted_wiki_user);
+CREATE INDEX fa_nouser    ON filearchive (fa_deleted_user);
 
 CREATE SEQUENCE uploadstash_us_id_seq;
 CREATE TYPE media_type AS ENUM ('UNKNOWN','BITMAP','DRAWING','AUDIO','VIDEO','MULTIMEDIA','OFFICE','TEXT','EXECUTABLE','ARCHIVE');
 
 CREATE TABLE uploadstash (
   us_id           INTEGER PRIMARY KEY NOT NULL DEFAULT nextval('uploadstash_us_id_seq'),
-  us_wiki_user         INTEGER,
+  us_user         INTEGER,
   us_key          TEXT,
   us_orig_path    TEXT,
   us_path         TEXT,
@@ -382,7 +382,7 @@ CREATE TABLE uploadstash (
   us_image_bits   SMALLINT
 );
 
-CREATE INDEX us_wiki_user_idx ON uploadstash (us_wiki_user);
+CREATE INDEX us_user_idx ON uploadstash (us_user);
 CREATE UNIQUE INDEX us_key_idx ON uploadstash (us_key);
 CREATE INDEX us_timestamp_idx ON uploadstash (us_timestamp);
 
@@ -392,8 +392,8 @@ CREATE TABLE recentchanges (
   rc_id              INTEGER      NOT NULL  PRIMARY KEY DEFAULT nextval('recentchanges_rc_id_seq'),
   rc_timestamp       TIMESTAMPTZ  NOT NULL,
   rc_cur_time        TIMESTAMPTZ  NOT NULL,
-  rc_wiki_user            INTEGER          NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
-  rc_wiki_user_text       TEXT         NOT NULL,
+  rc_user            INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
+  rc_user_text       TEXT         NOT NULL,
   rc_namespace       SMALLINT     NOT NULL,
   rc_title           TEXT         NOT NULL,
   rc_comment         TEXT,
@@ -425,13 +425,13 @@ CREATE INDEX rc_ip              ON recentchanges (rc_ip);
 
 
 CREATE TABLE watchlist (
-  wl_wiki_user                   INTEGER     NOT NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+  wl_user                   INTEGER     NOT NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
   wl_namespace              SMALLINT    NOT NULL  DEFAULT 0,
   wl_title                  TEXT        NOT NULL,
   wl_notificationtimestamp  TIMESTAMPTZ
 );
-CREATE UNIQUE INDEX wl_wiki_user_namespace_title ON watchlist (wl_namespace, wl_title, wl_wiki_user);
-CREATE INDEX wl_wiki_user ON watchlist (wl_wiki_user);
+CREATE UNIQUE INDEX wl_user_namespace_title ON watchlist (wl_namespace, wl_title, wl_user);
+CREATE INDEX wl_user ON watchlist (wl_user);
 
 
 CREATE TABLE interwiki (
@@ -489,20 +489,20 @@ CREATE TABLE logging (
   log_type        TEXT         NOT NULL,
   log_action      TEXT         NOT NULL,
   log_timestamp   TIMESTAMPTZ  NOT NULL,
-  log_wiki_user        INTEGER                REFERENCES mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
+  log_user        INTEGER                REFERENCES mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
   log_namespace   SMALLINT     NOT NULL,
   log_title       TEXT         NOT NULL,
   log_comment     TEXT,
   log_params      TEXT,
   log_deleted     SMALLINT     NOT NULL DEFAULT 0,
-  log_wiki_user_text   TEXT         NOT NULL DEFAULT '',
+  log_user_text   TEXT         NOT NULL DEFAULT '',
   log_page        INTEGER
 );
 CREATE INDEX logging_type_name ON logging (log_type, log_timestamp);
-CREATE INDEX logging_wiki_user_time ON logging (log_timestamp, log_wiki_user);
+CREATE INDEX logging_user_time ON logging (log_timestamp, log_user);
 CREATE INDEX logging_page_time ON logging (log_namespace, log_title, log_timestamp);
 CREATE INDEX logging_times ON logging (log_timestamp);
-CREATE INDEX logging_wiki_user_type_time ON logging (log_wiki_user, log_type, log_timestamp);
+CREATE INDEX logging_user_type_time ON logging (log_user, log_type, log_timestamp);
 CREATE INDEX logging_page_id_time ON logging (log_page, log_timestamp);
 
 CREATE TABLE log_search (
@@ -588,7 +588,7 @@ CREATE UNIQUE INDEX pf_name_server ON profiling (pf_name, pf_server);
 CREATE TABLE protected_titles (
   pt_namespace   SMALLINT    NOT NULL,
   pt_title       TEXT        NOT NULL,
-  pt_wiki_user        INTEGER         NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
+  pt_user        INTEGER         NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL DEFERRABLE INITIALLY DEFERRED,
   pt_reason      TEXT            NULL,
   pt_timestamp   TIMESTAMPTZ NOT NULL,
   pt_expiry      TIMESTAMPTZ     NULL,
@@ -641,13 +641,13 @@ CREATE TABLE valid_tag (
   vt_tag TEXT NOT NULL PRIMARY KEY
 );
 
-CREATE TABLE wiki_user_properties (
-  up_wiki_user     INTEGER      NULL  REFERENCES mwwiki_user(wiki_user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+CREATE TABLE user_properties (
+  up_user     INTEGER      NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
   up_property TEXT     NOT NULL,
   up_value    TEXT
 );
-CREATE UNIQUE INDEX wiki_user_properties_wiki_user_property ON wiki_user_properties (up_wiki_user,up_property);
-CREATE INDEX wiki_user_properties_property ON wiki_user_properties (up_property);
+CREATE UNIQUE INDEX user_properties_user_property ON user_properties (up_user,up_property);
+CREATE INDEX user_properties_property ON user_properties (up_property);
 
 CREATE TABLE l10n_cache (
   lc_lang   TEXT  NOT NULL,

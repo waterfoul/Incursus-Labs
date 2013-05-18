@@ -103,7 +103,7 @@ class SkinTemplate extends Skin {
 	 *
 	 * @param $out OutputPage
 	 */
-	function setupSkinwiki_userCss( OutputPage $out ) {
+	function setupSkinUserCss( OutputPage $out ) {
 		$out->addModuleStyles( array( 'mediawiki.legacy.shared', 'mediawiki.legacy.commonPrint' ) );
 	}
 
@@ -134,7 +134,7 @@ class SkinTemplate extends Skin {
 		global $wgXhtmlDefaultNamespace, $wgXhtmlNamespaces, $wgHtml5Version;
 		global $wgDisableCounters, $wgSitename, $wgLogo, $wgHideInterlanguageLinks;
 		global $wgMaxCredits, $wgShowCreditsIfMax;
-		global $wgPageShowWatchingwiki_users;
+		global $wgPageShowWatchingUsers;
 		global $wgArticlePath, $wgScriptPath, $wgServer;
 
 		wfProfileIn( __METHOD__ );
@@ -149,7 +149,7 @@ class SkinTemplate extends Skin {
 
 		$out = $this->getOutput();
 		$request = $this->getRequest();
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 		$title = $this->getTitle();
 
 		wfProfileIn( __METHOD__ . '-init' );
@@ -161,7 +161,7 @@ class SkinTemplate extends Skin {
 		wfProfileIn( __METHOD__ . '-stuff' );
 		$this->thispage = $title->getPrefixedDBkey();
 		$this->titletxt = $title->getPrefixedText();
-		$this->wiki_userpage = $wiki_user->getwiki_userPage()->getPrefixedText();
+		$this->userpage = $user->getUserPage()->getPrefixedText();
 		$query = array();
 		if ( !$request->wasPosted() ) {
 			$query = $request->getValues();
@@ -170,15 +170,15 @@ class SkinTemplate extends Skin {
 			unset( $query['returntoquery'] );
 		}
 		$this->thisquery = wfArrayToCGI( $query );
-		$this->loggedin = $wiki_user->isLoggedIn();
-		$this->wiki_username = $wiki_user->getName();
+		$this->loggedin = $user->isLoggedIn();
+		$this->username = $user->getName();
 
 		if ( $this->loggedin || $this->showIPinHeader() ) {
-			$this->wiki_userpageUrlDetails = self::makeUrlDetails( $this->wiki_userpage );
+			$this->userpageUrlDetails = self::makeUrlDetails( $this->userpage );
 		} else {
 			# This won't be used in the standard skins, but we define it to preserve the interface
 			# To save time, we check for existence
-			$this->wiki_userpageUrlDetails = self::makeKnownUrlDetails( $this->wiki_userpage );
+			$this->userpageUrlDetails = self::makeKnownUrlDetails( $this->userpage );
 		}
 
 		wfProfileOut( __METHOD__ . '-stuff' );
@@ -186,10 +186,10 @@ class SkinTemplate extends Skin {
 		wfProfileIn( __METHOD__ . '-stuff-head' );
 		if ( !$this->useHeadElement ) {
 			$tpl->set( 'pagecss', false );
-			$tpl->set( 'wiki_usercss', false );
+			$tpl->set( 'usercss', false );
 
-			$tpl->set( 'wiki_userjs', false );
-			$tpl->set( 'wiki_userjsprev', false );
+			$tpl->set( 'userjs', false );
+			$tpl->set( 'userjsprev', false );
 
 			$tpl->set( 'jsvarurl', false );
 
@@ -257,7 +257,7 @@ class SkinTemplate extends Skin {
 		/* XXX currently unused, might get useful later
 		$tpl->set( 'editable', ( !$title->isSpecialPage() ) );
 		$tpl->set( 'exists', $title->getArticleID() != 0 );
-		$tpl->set( 'watch', $wiki_user->isWatched( $title ) ? 'unwatch' : 'watch' );
+		$tpl->set( 'watch', $user->isWatched( $title ) ? 'unwatch' : 'watch' );
 		$tpl->set( 'protect', count( $title->isProtected() ) ? 'unprotect' : 'protect' );
 		$tpl->set( 'helppage', $this->msg( 'helppage' )->text() );
 		*/
@@ -271,34 +271,34 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'logopath', $wgLogo );
 		$tpl->setRef( 'sitename', $wgSitename );
 
-		$wiki_userLang = $this->getLanguage();
-		$wiki_userLangCode = $wiki_userLang->getHtmlCode();
-		$wiki_userLangDir  = $wiki_userLang->getDir();
+		$userLang = $this->getLanguage();
+		$userLangCode = $userLang->getHtmlCode();
+		$userLangDir  = $userLang->getDir();
 
-		$tpl->set( 'lang', $wiki_userLangCode );
-		$tpl->set( 'dir', $wiki_userLangDir );
-		$tpl->set( 'rtl', $wiki_userLang->isRTL() );
+		$tpl->set( 'lang', $userLangCode );
+		$tpl->set( 'dir', $userLangDir );
+		$tpl->set( 'rtl', $userLang->isRTL() );
 
-		$tpl->set( 'capitalizeallnouns', $wiki_userLang->capitalizeAllNouns() ? ' capitalize-all-nouns' : '' );
-		$tpl->set( 'showjumplinks', $wiki_user->getOption( 'showjumplinks' ) );
-		$tpl->set( 'wiki_username', $this->loggedin ? $this->wiki_username : null );
-		$tpl->setRef( 'wiki_userpage', $this->wiki_userpage );
-		$tpl->setRef( 'wiki_userpageurl', $this->wiki_userpageUrlDetails['href'] );
-		$tpl->set( 'wiki_userlang', $wiki_userLangCode );
+		$tpl->set( 'capitalizeallnouns', $userLang->capitalizeAllNouns() ? ' capitalize-all-nouns' : '' );
+		$tpl->set( 'showjumplinks', $user->getOption( 'showjumplinks' ) );
+		$tpl->set( 'username', $this->loggedin ? $this->username : null );
+		$tpl->setRef( 'userpage', $this->userpage );
+		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href'] );
+		$tpl->set( 'userlang', $userLangCode );
 
-		// wiki_users can have their language set differently than the
-		// content of the wiki. For these wiki_users, tell the web browser
+		// Users can have their language set differently than the
+		// content of the wiki. For these users, tell the web browser
 		// that interface elements are in a different language.
-		$tpl->set( 'wiki_userlangattributes', '' );
+		$tpl->set( 'userlangattributes', '' );
 		$tpl->set( 'specialpageattributes', '' ); # obsolete
 
-		if ( $wiki_userLangCode !== $wgContLang->getHtmlCode() || $wiki_userLangDir !== $wgContLang->getDir() ) {
-			$escwiki_userlang = htmlspecialchars( $wiki_userLangCode );
-			$escwiki_userdir = htmlspecialchars( $wiki_userLangDir );
+		if ( $userLangCode !== $wgContLang->getHtmlCode() || $userLangDir !== $wgContLang->getDir() ) {
+			$escUserlang = htmlspecialchars( $userLangCode );
+			$escUserdir = htmlspecialchars( $userLangDir );
 			// Attributes must be in double quotes because htmlspecialchars() doesn't
 			// escape single quotes
-			$attrs = " lang=\"$escwiki_userlang\" dir=\"$escwiki_userdir\"";
-			$tpl->set( 'wiki_userlangattributes', $attrs );
+			$attrs = " lang=\"$escUserlang\" dir=\"$escUserdir\"";
+			$tpl->set( 'userlangattributes', $attrs );
 		}
 
 		wfProfileOut( __METHOD__ . '-stuff2' );
@@ -311,7 +311,7 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'viewcount', false );
 		$tpl->set( 'lastmod', false );
 		$tpl->set( 'credits', false );
-		$tpl->set( 'numberofwatchingwiki_users', false );
+		$tpl->set( 'numberofwatchingusers', false );
 		if ( $out->isArticle() && $title->exists() ) {
 			if ( $this->isRevisionCurrent() ) {
 				if ( !$wgDisableCounters ) {
@@ -321,15 +321,15 @@ class SkinTemplate extends Skin {
 					}
 				}
 
-				if ( $wgPageShowWatchingwiki_users ) {
-					r = wfGetDB( DB_SLAVE );
-					$num = r->selectField( 'watchlist', 'COUNT(*)',
+				if ( $wgPageShowWatchingUsers ) {
+					$dbr = wfGetDB( DB_SLAVE );
+					$num = $dbr->selectField( 'watchlist', 'COUNT(*)',
 						array( 'wl_title' => $title->getDBkey(), 'wl_namespace' => $title->getNamespace() ),
 						__METHOD__
 					);
 					if ( $num > 0 ) {
-						$tpl->set( 'numberofwatchingwiki_users',
-							$this->msg( 'number_of_watching_wiki_users_pageview' )->numParams( $num )->parse()
+						$tpl->set( 'numberofwatchingusers',
+							$this->msg( 'number_of_watching_users_pageview' )->numParams( $num )->parse()
 						);
 					}
 				}
@@ -356,7 +356,7 @@ class SkinTemplate extends Skin {
 			'info' => array(
 				'lastmod',
 				'viewcount',
-				'numberofwatchingwiki_users',
+				'numberofwatchingusers',
 				'credits',
 				'copyright',
 			),
@@ -537,7 +537,7 @@ class SkinTemplate extends Skin {
 		/* set up the default links for the personal toolbar */
 		$personal_urls = array();
 
-		# Due to bug 32276, if a wiki_user does not have read permissions,
+		# Due to bug 32276, if a user does not have read permissions,
 		# $this->getTitle() will just give Special:Badtitle, which is
 		# not especially useful as a returnto parameter. Use the title
 		# from the request instead, if there was one.
@@ -553,19 +553,19 @@ class SkinTemplate extends Skin {
 		}
 		$returnto = wfArrayToCGI( $a );
 		if( $this->loggedin ) {
-			$personal_urls['wiki_userpage'] = array(
-				'text' => $this->wiki_username,
-				'href' => &$this->wiki_userpageUrlDetails['href'],
-				'class' => $this->wiki_userpageUrlDetails['exists'] ? false : 'new',
-				'active' => ( $this->wiki_userpageUrlDetails['href'] == $pageurl ),
+			$personal_urls['userpage'] = array(
+				'text' => $this->username,
+				'href' => &$this->userpageUrlDetails['href'],
+				'class' => $this->userpageUrlDetails['exists'] ? false : 'new',
+				'active' => ( $this->userpageUrlDetails['href'] == $pageurl ),
 				'dir' => 'auto'
 			);
-			$wiki_usertalkUrlDetails = $this->makeTalkUrlDetails( $this->wiki_userpage );
+			$usertalkUrlDetails = $this->makeTalkUrlDetails( $this->userpage );
 			$personal_urls['mytalk'] = array(
 				'text' => $this->msg( 'mytalk' )->text(),
-				'href' => &$wiki_usertalkUrlDetails['href'],
-				'class' => $wiki_usertalkUrlDetails['exists'] ? false : 'new',
-				'active' => ( $wiki_usertalkUrlDetails['href'] == $pageurl )
+				'href' => &$usertalkUrlDetails['href'],
+				'class' => $usertalkUrlDetails['exists'] ? false : 'new',
+				'active' => ( $usertalkUrlDetails['href'] == $pageurl )
 			);
 			$href = self::makeSpecialUrl( 'Preferences' );
 			$personal_urls['preferences'] = array(
@@ -591,22 +591,22 @@ class SkinTemplate extends Skin {
 			if( $origTitle instanceof Title && $origTitle->isSpecialPage() ) {
 				list( $spName, $spPar ) = SpecialPageFactory::resolveAlias( $origTitle->getText() );
 				$active = $spName == 'Contributions'
-					&& ( ( $spPar && $spPar == $this->wiki_username )
-						|| $request->getText( 'target' ) == $this->wiki_username );
+					&& ( ( $spPar && $spPar == $this->username )
+						|| $request->getText( 'target' ) == $this->username );
 			} else {
 				$active = false;
 			}
 
-			$href = self::makeSpecialUrlSubpage( 'Contributions', $this->wiki_username );
+			$href = self::makeSpecialUrlSubpage( 'Contributions', $this->username );
 			$personal_urls['mycontris'] = array(
 				'text' => $this->msg( 'mycontris' )->text(),
 				'href' => $href,
 				'active' => $active
 			);
 			$personal_urls['logout'] = array(
-				'text' => $this->msg( 'wiki_userlogout' )->text(),
-				'href' => self::makeSpecialUrl( 'wiki_userlogout',
-					// wiki_userlogout link must always contain an & character, otherwise we might not be able
+				'text' => $this->msg( 'userlogout' )->text(),
+				'href' => self::makeSpecialUrl( 'Userlogout',
+					// userlogout link must always contain an & character, otherwise we might not be able
 					// to detect a buggy precaching proxy (bug 17790)
 					$title->isSpecial( 'Preferences' ) ? 'noreturnto' : $returnto
 				),
@@ -614,7 +614,7 @@ class SkinTemplate extends Skin {
 			);
 		} else {
 			$useCombinedLoginLink = $this->useCombinedLoginLink();
-			$loginlink = $this->getwiki_user()->isAllowed( 'createaccount' ) && $useCombinedLoginLink
+			$loginlink = $this->getUser()->isAllowed( 'createaccount' ) && $useCombinedLoginLink
 				? 'nav-login-createaccount'
 				: 'login';
 			$is_signup = $request->getText( 'type' ) == 'signup';
@@ -626,36 +626,36 @@ class SkinTemplate extends Skin {
 			$login_id = $this->showIPinHeader() ? 'anonlogin' : 'login';
 			$login_url = array(
 				'text' => $this->msg( $loginlink )->text(),
-				'href' => self::makeSpecialUrl( 'wiki_userlogin', $returnto, $proto ),
-				'active' => $title->isSpecial( 'wiki_userlogin' ) && ( $loginlink == 'nav-login-createaccount' || !$is_signup ),
+				'href' => self::makeSpecialUrl( 'Userlogin', $returnto, $proto ),
+				'active' => $title->isSpecial( 'Userlogin' ) && ( $loginlink == 'nav-login-createaccount' || !$is_signup ),
 				'class' => $wgSecureLogin ? 'link-https' : ''
 			);
 			$createaccount_url = array(
 				'text' => $this->msg( 'createaccount' )->text(),
-				'href' => self::makeSpecialUrl( 'wiki_userlogin', "$returnto&type=signup", $proto ),
-				'active' => $title->isSpecial( 'wiki_userlogin' ) && $is_signup,
+				'href' => self::makeSpecialUrl( 'Userlogin', "$returnto&type=signup", $proto ),
+				'active' => $title->isSpecial( 'Userlogin' ) && $is_signup,
 				'class' => $wgSecureLogin ? 'link-https' : ''
 			);
 
 			if( $this->showIPinHeader() ) {
-				$href = &$this->wiki_userpageUrlDetails['href'];
-				$personal_urls['anonwiki_userpage'] = array(
-					'text' => $this->wiki_username,
+				$href = &$this->userpageUrlDetails['href'];
+				$personal_urls['anonuserpage'] = array(
+					'text' => $this->username,
 					'href' => $href,
-					'class' => $this->wiki_userpageUrlDetails['exists'] ? false : 'new',
+					'class' => $this->userpageUrlDetails['exists'] ? false : 'new',
 					'active' => ( $pageurl == $href )
 				);
-				$wiki_usertalkUrlDetails = $this->makeTalkUrlDetails( $this->wiki_userpage );
-				$href = &$wiki_usertalkUrlDetails['href'];
+				$usertalkUrlDetails = $this->makeTalkUrlDetails( $this->userpage );
+				$href = &$usertalkUrlDetails['href'];
 				$personal_urls['anontalk'] = array(
 					'text' => $this->msg( 'anontalk' )->text(),
 					'href' => $href,
-					'class' => $wiki_usertalkUrlDetails['exists'] ? false : 'new',
+					'class' => $usertalkUrlDetails['exists'] ? false : 'new',
 					'active' => ( $pageurl == $href )
 				);
 			}
 
-			if ( $this->getwiki_user()->isAllowed( 'createaccount' ) && !$useCombinedLoginLink ) {
+			if ( $this->getUser()->isAllowed( 'createaccount' ) && !$useCombinedLoginLink ) {
 				$personal_urls['createaccount'] = $createaccount_url;
 			}
 
@@ -759,7 +759,7 @@ class SkinTemplate extends Skin {
 	 *
 	 * Views also have an extra key which can be used:
 	 * - primary: If this is not true skins like vector may try to hide the tab
-	 *            when the wiki_user has limited space in their browser window
+	 *            when the user has limited space in their browser window
 	 *
 	 * content_navigation using code also expects these ids to be present on the
 	 * links, however these are usually automatically generated by SkinTemplate
@@ -782,7 +782,7 @@ class SkinTemplate extends Skin {
 
 		$out = $this->getOutput();
 		$request = $this->getRequest();
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 
 		$content_navigation = array(
 			'namespaces' => array(),
@@ -794,7 +794,7 @@ class SkinTemplate extends Skin {
 		// parameters
 		$action = $request->getVal( 'action', 'view' );
 
-		$wiki_userCanRead = $title->quickwiki_userCan( 'read', $wiki_user );
+		$userCanRead = $title->quickUserCan( 'read', $user );
 
 		$preventActiveTabs = false;
 		wfRunHooks( 'SkinTemplatePreventOtherActiveTabs', array( &$this, &$preventActiveTabs ) );
@@ -825,15 +825,15 @@ class SkinTemplate extends Skin {
 				array_unshift( $subjectMsg, 'mainpage-nstab' );
 			}
 			$content_navigation['namespaces'][$subjectId] = $this->tabAction(
-				$subjectPage, $subjectMsg, !$isTalk && !$preventActiveTabs, '', $wiki_userCanRead
+				$subjectPage, $subjectMsg, !$isTalk && !$preventActiveTabs, '', $userCanRead
 			);
 			$content_navigation['namespaces'][$subjectId]['context'] = 'subject';
 			$content_navigation['namespaces'][$talkId] = $this->tabAction(
-				$talkPage, array( "nstab-$talkId", 'talk' ), $isTalk && !$preventActiveTabs, '', $wiki_userCanRead
+				$talkPage, array( "nstab-$talkId", 'talk' ), $isTalk && !$preventActiveTabs, '', $userCanRead
 			);
 			$content_navigation['namespaces'][$talkId]['context'] = 'talk';
 
-			if ( $wiki_userCanRead ) {
+			if ( $userCanRead ) {
 				// Adds view view link
 				if ( $title->exists() ) {
 					$content_navigation['views']['view'] = $this->tabAction(
@@ -847,11 +847,11 @@ class SkinTemplate extends Skin {
 
 				wfProfileIn( __METHOD__ . '-edit' );
 
-				// Checks if wiki_user can edit the current page if it exists or create it otherwise
-				if ( $title->quickwiki_userCan( 'edit', $wiki_user ) && ( $title->exists() || $title->quickwiki_userCan( 'create', $wiki_user ) ) ) {
+				// Checks if user can edit the current page if it exists or create it otherwise
+				if ( $title->quickUserCan( 'edit', $user ) && ( $title->exists() || $title->quickUserCan( 'create', $user ) ) ) {
 					// Builds CSS class for talk page links
 					$isTalkClass = $isTalk ? ' istalk' : '';
-					// Whether the wiki_user is editing the page
+					// Whether the user is editing the page
 					$isEditing = $onPage && ( $action == 'edit' || $action == 'submit' );
 					// Whether to show the "Add a new section" tab
 					// Checks if this is a current rev of talk page and is not forced to be hidden
@@ -901,7 +901,7 @@ class SkinTemplate extends Skin {
 						'rel' => 'archives',
 					);
 
-					if ( $title->quickwiki_userCan( 'delete', $wiki_user ) ) {
+					if ( $title->quickUserCan( 'delete', $user ) ) {
 						$content_navigation['actions']['delete'] = array(
 							'class' => ( $onPage && $action == 'delete' ) ? 'selected' : false,
 							'text' => wfMessageFallback( "$skname-action-delete", 'delete' )->setContext( $this->getContext() )->text(),
@@ -909,7 +909,7 @@ class SkinTemplate extends Skin {
 						);
 					}
 
-					if ( $title->quickwiki_userCan( 'move', $wiki_user ) ) {
+					if ( $title->quickUserCan( 'move', $user ) ) {
 						$moveTitle = SpecialPage::getTitleFor( 'Movepage', $title->getPrefixedDBkey() );
 						$content_navigation['actions']['move'] = array(
 							'class' => $this->getTitle()->isSpecial( 'Movepage' ) ? 'selected' : false,
@@ -919,12 +919,12 @@ class SkinTemplate extends Skin {
 					}
 				} else {
 					// article doesn't exist or is deleted
-					if ( $wiki_user->isAllowed( 'deletedhistory' ) ) {
+					if ( $user->isAllowed( 'deletedhistory' ) ) {
 						$n = $title->isDeleted();
 						if ( $n ) {
 							$undelTitle = SpecialPage::getTitleFor( 'Undelete' );
-							// If the wiki_user can't undelete but can view deleted history show them a "View .. deleted" tab instead
-							$msgKey = $wiki_user->isAllowed( 'undelete' ) ? 'undelete' : 'viewdeleted';
+							// If the user can't undelete but can view deleted history show them a "View .. deleted" tab instead
+							$msgKey = $user->isAllowed( 'undelete' ) ? 'undelete' : 'viewdeleted';
 							$content_navigation['actions']['undelete'] = array(
 								'class' => $this->getTitle()->isSpecial( 'Undelete' ) ? 'selected' : false,
 								'text' => wfMessageFallback( "$skname-action-$msgKey", "{$msgKey}_short" )
@@ -935,7 +935,7 @@ class SkinTemplate extends Skin {
 					}
 				}
 
-				if ( $title->getNamespace() !== NS_MEDIAWIKI && $title->quickwiki_userCan( 'protect', $wiki_user ) ) {
+				if ( $title->getNamespace() !== NS_MEDIAWIKI && $title->quickUserCan( 'protect', $user ) ) {
 					$mode = $title->isProtected() ? 'unprotect' : 'protect';
 					$content_navigation['actions'][$mode] = array(
 						'class' => ( $onPage && $action == $mode ) ? 'selected' : false,
@@ -946,7 +946,7 @@ class SkinTemplate extends Skin {
 
 				wfProfileOut( __METHOD__ . '-live' );
 
-				// Checks if the wiki_user is logged in
+				// Checks if the user is logged in
 				if ( $this->loggedin ) {
 					/**
 					 * The following actions use messages which, if made particular to
@@ -957,8 +957,8 @@ class SkinTemplate extends Skin {
 					 * a change to that procedure these messages will have to remain as
 					 * the global versions.
 					 */
-					$mode = $wiki_user->isWatched( $title ) ? 'unwatch' : 'watch';
-					$token = WatchAction::getWatchToken( $title, $wiki_user, $mode );
+					$mode = $user->isWatched( $title ) ? 'unwatch' : 'watch';
+					$token = WatchAction::getWatchToken( $title, $user, $mode );
 					$content_navigation['actions'][$mode] = array(
 						'class' => $onPage && ( $action == 'watch' || $action == 'unwatch' ) ? 'selected' : false,
 						// uses 'watch' or 'unwatch' message
@@ -970,14 +970,14 @@ class SkinTemplate extends Skin {
 
 			wfRunHooks( 'SkinTemplateNavigation', array( &$this, &$content_navigation ) );
 
-			if ( $wiki_userCanRead && !$wgDisableLangConversion ) {
+			if ( $userCanRead && !$wgDisableLangConversion ) {
 				$pageLang = $title->getPageLanguage();
 				// Gets list of language variants
 				$variants = $pageLang->getVariants();
 				// Checks that language conversion is enabled and variants exist
 				// And if it is not in the special namespace
 				if ( count( $variants ) > 1 ) {
-					// Gets preferred variant (note that wiki_user preference is
+					// Gets preferred variant (note that user preference is
 					// only possible for wiki content language variant)
 					$preferred = $pageLang->getPreferredVariant();
 					// Loops over each variant
@@ -1121,7 +1121,7 @@ class SkinTemplate extends Skin {
 		$nav_urls['mainpage'] = array( 'href' => self::makeMainPageUrl() );
 		if( $wgUploadNavigationUrl ) {
 			$nav_urls['upload'] = array( 'href' => $wgUploadNavigationUrl );
-		} elseif( UploadBase::isEnabled() && UploadBase::isAllowed( $this->getwiki_user() ) === true ) {
+		} elseif( UploadBase::isEnabled() && UploadBase::isAllowed( $this->getUser() ) === true ) {
 			$nav_urls['upload'] = array( 'href' => self::makeSpecialUrl( 'Upload' ) );
 		} else {
 			$nav_urls['upload'] = false;
@@ -1135,7 +1135,7 @@ class SkinTemplate extends Skin {
 		$nav_urls['contributions'] = false;
 		$nav_urls['log'] = false;
 		$nav_urls['blockip'] = false;
-		$nav_urls['emailwiki_user'] = false;
+		$nav_urls['emailuser'] = false;
 
 		// A print stylesheet is attached to all pages, but nobody ever
 		// figures that out. :)  Add a link...
@@ -1173,27 +1173,27 @@ class SkinTemplate extends Skin {
 			}
 		}
 
-		$wiki_user = $this->getRelevantwiki_user();
-		if ( $wiki_user ) {
-			$rootwiki_user = $wiki_user->getName();
+		$user = $this->getRelevantUser();
+		if ( $user ) {
+			$rootUser = $user->getName();
 
 			$nav_urls['contributions'] = array(
-				'href' => self::makeSpecialUrlSubpage( 'Contributions', $rootwiki_user )
+				'href' => self::makeSpecialUrlSubpage( 'Contributions', $rootUser )
 			);
 
 			$nav_urls['log'] = array(
-				'href' => self::makeSpecialUrlSubpage( 'Log', $rootwiki_user )
+				'href' => self::makeSpecialUrlSubpage( 'Log', $rootUser )
 			);
 
-			if ( $this->getwiki_user()->isAllowed( 'block' ) ) {
+			if ( $this->getUser()->isAllowed( 'block' ) ) {
 				$nav_urls['blockip'] = array(
-					'href' => self::makeSpecialUrlSubpage( 'Block', $rootwiki_user )
+					'href' => self::makeSpecialUrlSubpage( 'Block', $rootUser )
 				);
 			}
 
-			if ( $this->showEmailwiki_user( $wiki_user ) ) {
-				$nav_urls['emailwiki_user'] = array(
-					'href' => self::makeSpecialUrlSubpage( 'Emailwiki_user', $rootwiki_user )
+			if ( $this->showEmailUser( $user ) ) {
+				$nav_urls['emailuser'] = array(
+					'href' => self::makeSpecialUrlSubpage( 'Emailuser', $rootUser )
 				);
 			}
 		}
@@ -1394,7 +1394,7 @@ abstract class BaseTemplate extends QuickTemplate {
 				$toolbox['feeds']['links'][$key]['class'] = 'feedlink';
 			}
 		}
-		foreach ( array( 'contributions', 'log', 'blockip', 'emailwiki_user', 'upload', 'specialpages' ) as $special ) {
+		foreach ( array( 'contributions', 'log', 'blockip', 'emailuser', 'upload', 'specialpages' ) as $special ) {
 			if ( isset( $this->data['nav_urls'][$special] ) && $this->data['nav_urls'][$special] ) {
 				$toolbox[$special] = $this->data['nav_urls'][$special];
 				$toolbox[$special]['id'] = "t-$special";

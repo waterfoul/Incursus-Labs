@@ -39,7 +39,7 @@
  */
 class DBLockManager extends QuorumLockManager {
 	/** @var Array Map of DB names to server config */
-	protected Servers; // (DB name => server config array)
+	protected $dbServers; // (DB name => server config array)
 	/** @var BagOStuff */
 	protected $statusCache;
 
@@ -59,8 +59,8 @@ class DBLockManager extends QuorumLockManager {
 	 *                     - host        : DB server name
 	 *                     - dbname      : DB name
 	 *                     - type        : DB type (mysql,postgres,...)
-	 *                     - wiki_user        : DB wiki_user
-	 *                     - password    : DB wiki_user password
+	 *                     - user        : DB user
+	 *                     - password    : DB user password
 	 *                     - tablePrefix : DB table prefix
 	 *                     - flags       : DB flags (see DatabaseBase)
 	 *   - dbsByBucket : Array of 1-16 consecutive integer keys, starting from 0,
@@ -129,8 +129,8 @@ class DBLockManager extends QuorumLockManager {
 					$data[] = array( 'fle_key' => $key );
 				}
 				# Wait on any existing writers and block new ones if we get in
-				 = $this->getConnection( $lockSrv ); // checked in isServerUp()
-				->insert( 'filelocks_exclusive', $data, __METHOD__ );
+				$db = $this->getConnection( $lockSrv ); // checked in isServerUp()
+				$db->insert( 'filelocks_exclusive', $data, __METHOD__ );
 			} catch ( DBError $e ) {
 				foreach ( $paths as $path ) {
 					$status->fatal( 'lockmanager-fail-acquirelock', $path );
@@ -156,10 +156,10 @@ class DBLockManager extends QuorumLockManager {
 	protected function releaseAllLocks() {
 		$status = Status::newGood();
 
-		foreach ( $this->conns as $lockDb =>  ) {
-			if ( ->trxLevel() ) { // in transaction
+		foreach ( $this->conns as $lockDb => $db ) {
+			if ( $db->trxLevel() ) { // in transaction
 				try {
-					->rollback( __METHOD__ ); // finish transaction and kill any rows
+					$db->rollback( __METHOD__ ); // finish transaction and kill any rows
 				} catch ( DBError $e ) {
 					$status->fatal( 'lockmanager-fail-db-release', $lockDb );
 				}
@@ -195,18 +195,18 @@ class DBLockManager extends QuorumLockManager {
 	 */
 	protected function getConnection( $lockDb ) {
 		if ( !isset( $this->conns[$lockDb] ) ) {
-			 = null;
+			$db = null;
 			if ( $lockDb === 'localDBMaster' ) {
 				$lb = wfGetLBFactory()->newMainLB();
-				 = $lb->getConnection( DB_MASTER );
+				$db = $lb->getConnection( DB_MASTER );
 			} elseif ( isset( $this->dbServers[$lockDb] ) ) {
 				$config = $this->dbServers[$lockDb];
-				 = DatabaseBase::factory( $config['type'], $config );
+				$db = DatabaseBase::factory( $config['type'], $config );
 			}
-			if ( ! ) {
+			if ( !$db ) {
 				return null; // config error?
 			}
-			$this->conns[$lockDb] = ;
+			$this->conns[$lockDb] = $db;
 			$this->conns[$lockDb]->clearFlag( DBO_TRX );
 			# If the connection drops, try to avoid letting the DB rollback
 			# and release the locks before the file operations are finished.
@@ -228,11 +228,11 @@ class DBLockManager extends QuorumLockManager {
 	 * Do additional initialization for new lock DB connection
 	 *
 	 * @param $lockDb string
-	 * @param  DatabaseBase
+	 * @param $db DatabaseBase
 	 * @return void
 	 * @throws DBError
 	 */
-	protected function initConnection( $lockDb, DatabaseBase  ) {}
+	protected function initConnection( $lockDb, DatabaseBase $db ) {}
 
 	/**
 	 * Checks if the DB has not recently had connection/query errors.
@@ -274,15 +274,15 @@ class DBLockManager extends QuorumLockManager {
 	 * Make sure remaining locks get cleared for sanity
 	 */
 	function __destruct() {
-		foreach ( $this->conns as  ) {
-			if ( ->trxLevel() ) { // in transaction
+		foreach ( $this->conns as $db ) {
+			if ( $db->trxLevel() ) { // in transaction
 				try {
-					->rollback( __METHOD__ ); // finish transaction and kill any rows
+					$db->rollback( __METHOD__ ); // finish transaction and kill any rows
 				} catch ( DBError $e ) {
 					// oh well
 				}
 			}
-			->close();
+			$db->close();
 		}
 	}
 }
@@ -303,11 +303,11 @@ class MySqlLockManager extends DBLockManager {
 
 	/**
 	 * @param $lockDb string
-	 * @param  DatabaseBase
+	 * @param $db DatabaseBase
 	 */
-	protected function initConnection( $lockDb, DatabaseBase  ) {
+	protected function initConnection( $lockDb, DatabaseBase $db ) {
 		# Let this transaction see lock rows from other transactions
-		->query( "SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;" );
+		$db->query( "SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;" );
 	}
 
 	/**
@@ -320,7 +320,7 @@ class MySqlLockManager extends DBLockManager {
 	protected function getLocksOnServer( $lockSrv, array $paths, $type ) {
 		$status = Status::newGood();
 
-		 = $this->getConnection( $lockSrv ); // checked in isServerUp()
+		$db = $this->getConnection( $lockSrv ); // checked in isServerUp()
 		$keys = array_unique( array_map( 'LockManager::sha1Base36', $paths ) );
 		# Build up values for INSERT clause
 		$data = array();
@@ -328,22 +328,22 @@ class MySqlLockManager extends DBLockManager {
 			$data[] = array( 'fls_key' => $key, 'fls_session' => $this->session );
 		}
 		# Block new writers...
-		->insert( 'filelocks_shared', $data, __METHOD__, array( 'IGNORE' ) );
+		$db->insert( 'filelocks_shared', $data, __METHOD__, array( 'IGNORE' ) );
 		# Actually do the locking queries...
 		if ( $type == self::LOCK_SH ) { // reader locks
 			# Bail if there are any existing writers...
-			$blocked = ->selectField( 'filelocks_exclusive', '1',
+			$blocked = $db->selectField( 'filelocks_exclusive', '1',
 				array( 'fle_key' => $keys ),
 				__METHOD__
 			);
 			# Prospective writers that haven't yet updated filelocks_exclusive
 			# will recheck filelocks_shared after doing so and bail due to our entry.
 		} else { // writer locks
-			$encSession = ->addQuotes( $this->session );
+			$encSession = $db->addQuotes( $this->session );
 			# Bail if there are any existing writers...
 			# The may detect readers, but the safe check for them is below.
 			# Note: if two writers come at the same time, both bail :)
-			$blocked = ->selectField( 'filelocks_shared', '1',
+			$blocked = $db->selectField( 'filelocks_shared', '1',
 				array( 'fls_key' => $keys, "fls_session != $encSession" ),
 				__METHOD__
 			);
@@ -354,9 +354,9 @@ class MySqlLockManager extends DBLockManager {
 					$data[] = array( 'fle_key' => $key );
 				}
 				# Block new readers/writers...
-				->insert( 'filelocks_exclusive', $data, __METHOD__ );
+				$db->insert( 'filelocks_exclusive', $data, __METHOD__ );
 				# Bail if there are any existing readers...
-				$blocked = ->selectField( 'filelocks_shared', '1',
+				$blocked = $db->selectField( 'filelocks_shared', '1',
 					array( 'fls_key' => $keys, "fls_session != $encSession" ),
 					__METHOD__
 				);

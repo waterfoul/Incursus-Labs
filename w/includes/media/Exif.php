@@ -179,9 +179,9 @@ class Exif {
 				'PixelYDimension' => Exif::SHORT.','.Exif::LONG,		# Valid image width
 				'PixelXDimension' => Exif::SHORT.','.Exif::LONG,		# Valid image height
 
-				# Tags relating to related wiki_user information
+				# Tags relating to related user information
 				'MakerNote' => Exif::IGNORE,				# Manufacturer notes
-				'wiki_userComment' => Exif::UNDEFINED,			# wiki_user comments #p34
+				'UserComment' => Exif::UNDEFINED,			# User comments #p34
 
 				# Tags relating to related file information
 				'RelatedSoundFile' => Exif::ASCII,			# Related audio file
@@ -349,10 +349,10 @@ class Exif {
 	* This converts some fields from exif form, to a more friendly form.
 	* For example GPS latitude to a single number.
 	*
-	* The rationale behind this is that we're storing data, not presenting to the wiki_user
+	* The rationale behind this is that we're storing data, not presenting to the user
 	* For example a longitude is a single number describing how far away you are from
 	* the prime meridian. Well it might be nice to split it up into minutes and seconds
-	* for the wiki_user, it doesn't really make sense to split a single number into 4 parts
+	* for the user, it doesn't really make sense to split a single number into 4 parts
 	* for storage. (degrees, minutes, second, direction vs single floating point number).
 	*
 	* Other things this might do (not really sure if they make sense or not):
@@ -385,7 +385,7 @@ class Exif {
 		$this->exifPropToOrd( 'FileSource' );
 		$this->exifPropToOrd( 'SceneType' );
 
-		$this->charCodeString( 'wiki_userComment' );
+		$this->charCodeString( 'UserComment' );
 		$this->charCodeString( 'GPSProcessingMethod');
 		$this->charCodeString( 'GPSAreaInformation' );
 		
@@ -433,7 +433,7 @@ class Exif {
 
 	}
 	/**
-	* Do wiki_userComment tags and similar. See pg. 34 of exif standard.
+	* Do userComment tags and similar. See pg. 34 of exif standard.
 	* basically first 8 bytes is charset, rest is value.
 	* This has not been tested on any shift-JIS strings.
 	* @param $prop String prop name.
@@ -540,7 +540,7 @@ class Exif {
 	}
 
 	/**
-	 * Use FormatMetadata to create formatted values for display to wiki_user
+	 * Use FormatMetadata to create formatted values for display to user
 	 * (is this ever used?)
 	 *
 	 * @deprecated since 1.18
@@ -573,7 +573,7 @@ class Exif {
 	/**
 	 * Get $this->mFormattedExifData
 	 *
-	 * This returns the data for display to wiki_user.
+	 * This returns the data for display to user.
 	 * Its unclear if this is ever used.
 	 *
 	 * @deprecated since 1.18

@@ -14,7 +14,7 @@
 $fallback = 'fi';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Linkitten alleviivaus',
 'tog-justify' => 'Tassaa kappalheet',
 'tog-hideminor' => 'Piilota pienet muutokset vereksen muutoksitten listasta',
@@ -38,7 +38,7 @@ $messages = array(
 'tog-previewonfirst' => 'Näytä esitarkastelu kun mookkaus alethaan',
 'tog-nocache' => 'Älä säästä sivuja weppilukijan välimuisthiin',
 'tog-enotifwatchlistpages' => 'Lähätä e-postipreivi mulle kun sivu minun valvontalistala on muutettu',
-'tog-enotifwiki_usertalkpages' => 'Lähätä sähköposti, kun käyttäjäsivun keskustelusivu muuttuu',
+'tog-enotifusertalkpages' => 'Lähätä sähköposti, kun käyttäjäsivun keskustelusivu muuttuu',
 'tog-enotifminoredits' => 'Lähätä epostieto pienistäki muutoksista',
 'tog-enotifrevealaddr' => 'Näytä minun eposti atressin muile lähetetyissä ilmoituksissa',
 'tog-shownumberswatching' => 'Näytä kuinka moni käyttäjä valvoo sivua',
@@ -172,7 +172,7 @@ $messages = array(
 'jumptonavigation' => 'Navikeerinki',
 'jumptosearch' => 'Hae',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Asiasta {{GRAMMAR:elative|{{SITENAME}}}}',
 'aboutpage' => 'Project: Tioista',
 'copyrightpage' => '{{ns:project}}:Tekijänoikeuet',
@@ -207,7 +207,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Sivu',
-'nstab-wiki_user' => 'Käyttäjäsivu',
+'nstab-user' => 'Käyttäjäsivu',
 'nstab-special' => 'Spesiaali sivut',
 'nstab-project' => 'Prujektisivu',
 'nstab-image' => 'Fiili',
@@ -220,7 +220,7 @@ $messages = array(
 Useimiten tämä johtuu vanhentuneesta vertailu- tai histuuriasivulinkistä poistethuun sivhuun.
 
 Jos kysheessä ei ole poistettu sivu, olet piian löytäny virheen ohjelmassa.
-Ilmota tämän sivun atressi wikin [[Special:Listwiki_users/sysop|atministratöörile]].',
+Ilmota tämän sivun atressi wikin [[Special:ListUsers/sysop|atministratöörile]].',
 'missingarticle-rev' => '(versuuni: $1)',
 'badtitle' => 'Virheelinen titteli',
 'badtitletext' => 'Pyytämästi sivurypriikki oli virheelinen, tyhjä eli titteli on väärin linkitetty muusta wikistä. Se saattaa sisältää yhen eli monta sympoolia, joita ei saa käyttää sivutittelissä.',
@@ -234,14 +234,14 @@ Ilmota tämän sivun atressi wikin [[Special:Listwiki_users/sysop|atministratö�
 'login' => 'Lokkaa sisäle',
 'nav-login-createaccount' => 'Lokkaa sisäle / luo konttu',
 'loginprompt' => 'Lokkauksheen tähhään {{SITENAME}} tarvithaan ette olet aktiveeranu kuukit .',
-'wiki_userlogin' => 'Lokkaa sisäle/ luo konttu',
-'wiki_userlogout' => 'Lokkaa ulos',
+'userlogin' => 'Lokkaa sisäle/ luo konttu',
+'userlogout' => 'Lokkaa ulos',
 'nologin' => "Eikos sulla ole käyttäjäkonttua, '''$1'''.",
 'nologinlink' => 'Luo käyttäjäkonttu',
 'createaccount' => 'Luo käyttäjäkonttu',
 'gotaccount' => "Jos sulla on käyttäjäkonttu,  voit '''$1'''.",
 'gotaccountlink' => 'Lokkaa sisäle',
-'wiki_userlogin-resetlink' => 'Unhoutitko sinun salasanan?',
+'userlogin-resetlink' => 'Unhoutitko sinun salasanan?',
 'mailmypassword' => 'Lähätä e-postissa uusi salasana',
 'loginlanguagelabel' => 'Kieli: $1',
 
@@ -440,7 +440,7 @@ $1 sisäle lokaattuja käyttäjiä',
 'filehist-datetime' => 'Päivä/Aika',
 'filehist-thumb' => 'Peukalokuva',
 'filehist-thumbtext' => 'Peukalokuva säästetystä versuunista  $1',
-'filehist-wiki_user' => 'Käyttäjä',
+'filehist-user' => 'Käyttäjä',
 'filehist-dimensions' => 'Timensuunit',
 'filehist-comment' => 'Komentti',
 'imagelinks' => 'Fiilin käyttö',
@@ -461,7 +461,7 @@ Tiot [$2 fiilin kuvvaussivulta] näkyvät tässä alla.',
 'nbytes' => '$1 {{PLURAL:$1|tavu|tavua}}',
 'nmembers' => '$1 {{PLURAL:$1|jäsen|jäsentä}}',
 'prefixindex' => 'Kaikki sivut prefiksilä',
-'wiki_usercreated' => 'Luottu $1 $2',
+'usercreated' => 'Luottu $1 $2',
 'newpages' => 'Uuet sivut',
 'move' => 'Siirä',
 'pager-newer-n' => '← {{PLURAL:$1|1 uuempi|$1 uuempaa}}',
@@ -487,14 +487,14 @@ Tiot [$2 fiilin kuvvaussivulta] näkyvät tässä alla.',
 # Special:LinkSearch
 'linksearch-line' => '$1 on linkattu sivulta $2',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Uuitten käyttäjitten loki',
+# Special:Log/newusers
+'newuserlogpage' => 'Uuitten käyttäjitten loki',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(jäsenlista)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Lähätä e-posti tälle käyttäjälle',
+# E-mail user
+'emailuser' => 'Lähätä e-posti tälle käyttäjälle',
 
 # Watchlist
 'watchlist' => 'Valvontalista',
@@ -542,7 +542,7 @@ Tiot [$2 fiilin kuvvaussivulta] näkyvät tässä alla.',
 'sp-contributions-logs' => 'lokit',
 'sp-contributions-talk' => 'keskustelu',
 'sp-contributions-search' => 'Hae käyttäjitten bitraakia',
-'sp-contributions-wiki_username' => 'IP-atressi eli käyttäjänimi',
+'sp-contributions-username' => 'IP-atressi eli käyttäjänimi',
 'sp-contributions-toponly' => 'Näytä vain mookkaukset, jokka on vasta tehtyjä versuunia',
 'sp-contributions-submit' => 'Hae',
 
@@ -591,7 +591,7 @@ Tiot [$2 fiilin kuvvaussivulta] näkyvät tässä alla.',
 'thumbnail_error' => 'Pienoiskuvan luominen epäonnistui: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Oma käyttäjäsivu',
+'tooltip-pt-userpage' => 'Oma käyttäjäsivu',
 'tooltip-pt-mytalk' => 'Oma keskustelusivu',
 'tooltip-pt-preferences' => 'Omat inställninkit',
 'tooltip-pt-watchlist' => 'Lista sivuista, joitten mookkauksia valvot',
@@ -623,13 +623,13 @@ Tiot [$2 fiilin kuvvaussivulta] näkyvät tässä alla.',
 'tooltip-t-recentchangeslinked' => 'Verekset mookkaukset sivuissa, jokka on länkattu tästä sivusta',
 'tooltip-feed-atom' => 'Atom-syöte tälle sivule',
 'tooltip-t-contributions' => 'Näytä lista tämän käyttäjän mookkauksista',
-'tooltip-t-emailwiki_user' => 'Lähätä sähköposti tälle käyttäjälle',
+'tooltip-t-emailuser' => 'Lähätä sähköposti tälle käyttäjälle',
 'tooltip-t-upload' => 'Lattaa ylös fiiliä',
 'tooltip-t-specialpages' => 'Lista kaikista spesiaalisivuista',
 'tooltip-t-print' => 'Printtausmaholinen versuuni',
 'tooltip-t-permalink' => 'Ikunen linkki tämän sivun  versuunhiin',
 'tooltip-ca-nstab-main' => 'Näytä sisältösivu',
-'tooltip-ca-nstab-wiki_user' => 'Näytä käyttäjäsivu',
+'tooltip-ca-nstab-user' => 'Näytä käyttäjäsivu',
 'tooltip-ca-nstab-special' => 'Tämä on spesiaalisivu; sie et saata mookata itteä sivua',
 'tooltip-ca-nstab-project' => 'Näytä prujektisivu',
 'tooltip-ca-nstab-image' => 'Näytä fiilisivu',

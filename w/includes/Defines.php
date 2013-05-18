@@ -153,7 +153,7 @@ define( 'ALF_NO_BLOCK_LOCK', 8 );
 /**@}*/
 
 /**@{
- * Date format selectors; used in wiki_user preference storage and by
+ * Date format selectors; used in user preference storage and by
  * Language::date() and co.
  */
 /*define( 'MW_DATE_DEFAULT', '0' );

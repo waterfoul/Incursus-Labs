@@ -37,7 +37,7 @@
  * @ingroup FileRepo
  */
 class ForeignAPIRepo extends FileRepo {
-	/* This version string is used in the wiki_user agent for requests and will help
+	/* This version string is used in the user agent for requests and will help
 	 * server maintainers in identify ForeignAPI usage.
 	 * Update the version every time you make breaking or significant changes. */
 	const VERSION = "2.1";
@@ -372,15 +372,15 @@ class ForeignAPIRepo extends FileRepo {
 	}
 
 	/**
-	 * The wiki_user agent the ForeignAPIRepo will use.
+	 * The user agent the ForeignAPIRepo will use.
 	 * @return string
 	 */
-	public static function getwiki_userAgent() {
-		return Http::wiki_userAgent() . " ForeignAPIRepo/" . self::VERSION;
+	public static function getUserAgent() {
+		return Http::userAgent() . " ForeignAPIRepo/" . self::VERSION;
 	}
 
 	/**
-	 * Like a Http:get request, but with custom wiki_user-Agent.
+	 * Like a Http:get request, but with custom User-Agent.
 	 * @see Http:get
 	 * @param $url string
 	 * @param $timeout string
@@ -399,7 +399,7 @@ class ForeignAPIRepo extends FileRepo {
 		}
 
 		$req = MWHttpRequest::factory( $url, $options );
-		$req->setwiki_userAgent( ForeignAPIRepo::getwiki_userAgent() );
+		$req->setUserAgent( ForeignAPIRepo::getUserAgent() );
 		$status = $req->execute();
 
 		if ( $status->isOK() ) {

@@ -110,9 +110,9 @@ img.thumbborder {
 }
 
 /**
- * Basic styles for the wiki_user login and create account forms
+ * Basic styles for the user login and create account forms
  */
-#wiki_userlogin, #wiki_userloginForm {
+#userlogin, #userloginForm {
 	border: solid 1px #cccccc;
 	padding: 1.2em;
 	margin: .5em;

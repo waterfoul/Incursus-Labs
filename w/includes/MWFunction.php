@@ -30,8 +30,8 @@ class MWFunction {
 	protected static function cleanCallback( $callback ) {
 		if( is_string( $callback ) ) {
 			if ( strpos( $callback, '::' ) !== false ) {
-				// PHP 5.1 cannot use call_wiki_user_func( 'Class::Method' )
-				// It can only handle only call_wiki_user_func( array( 'Class', 'Method' ) )
+				// PHP 5.1 cannot use call_user_func( 'Class::Method' )
+				// It can only handle only call_user_func( array( 'Class', 'Method' ) )
 				$callback = explode( '::', $callback, 2);
 			}
 		}
@@ -55,7 +55,7 @@ class MWFunction {
 
 		$args = func_get_args();
 
-		return call_user_func_array( 'call_wiki_user_func', $args );
+		return call_user_func_array( 'call_user_func', $args );
 	}
 
 	/**

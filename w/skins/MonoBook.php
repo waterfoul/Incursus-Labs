@@ -41,9 +41,9 @@ class SkinMonoBook extends SkinTemplate {
 	/**
 	 * @param $out OutputPage
 	 */
-	function setupSkinwiki_userCss( OutputPage $out ) {
+	function setupSkinUserCss( OutputPage $out ) {
 		global $wgHandheldStyle;
-		parent::setupSkinwiki_userCss( $out );
+		parent::setupSkinUserCss( $out );
 
 		$out->addModuleStyles( 'skins.monobook' );
 
@@ -87,11 +87,11 @@ class MonoBookTemplate extends BaseTemplate {
 	<h1 id="firstHeading" class="firstHeading"><span dir="auto"><?php $this->html('title') ?></span></h1>
 	<div id="bodyContent" class="mw-body">
 		<div id="siteSub"><?php $this->msg('tagline') ?></div>
-		<div id="contentSub"<?php $this->html('wiki_userlangattributes') ?>><?php $this->html('subtitle') ?></div>
+		<div id="contentSub"<?php $this->html('userlangattributes') ?>><?php $this->html('subtitle') ?></div>
 <?php if($this->data['undelete']) { ?>
 		<div id="contentSub2"><?php $this->html('undelete') ?></div>
 <?php } ?><?php if($this->data['newtalk'] ) { ?>
-		<div class="wiki_usermessage"><?php $this->html('newtalk')  ?></div>
+		<div class="usermessage"><?php $this->html('newtalk')  ?></div>
 <?php } ?><?php if($this->data['showjumplinks']) { ?>
 		<div id="jump-to-nav" class="mw-jump"><?php $this->msg('jumpto') ?> <a href="#column-one"><?php $this->msg('jumptonavigation') ?></a><?php $this->msg( 'comma-separator' ) ?><a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div>
 <?php } ?>
@@ -103,12 +103,12 @@ class MonoBookTemplate extends BaseTemplate {
 		<div class="visualClear"></div>
 	</div>
 </div></div>
-<div id="column-one"<?php $this->html('wiki_userlangattributes')  ?>>
+<div id="column-one"<?php $this->html('userlangattributes')  ?>>
 <?php $this->cactions(); ?>
 	<div class="portlet" id="p-personal">
 		<h5><?php $this->msg('personaltools') ?></h5>
 		<div class="pBody">
-			<ul<?php $this->html('wiki_userlangattributes') ?>>
+			<ul<?php $this->html('userlangattributes') ?>>
 <?php		foreach($this->getPersonalTools() as $key => $item) { ?>
 				<?php echo $this->makeListItem($key, $item); ?>
 
@@ -134,7 +134,7 @@ class MonoBookTemplate extends BaseTemplate {
 	$validFooterLinks = $this->getFooterLinks( "flat" ); // Additional footer links
 
 	if ( count( $validFooterIcons ) + count( $validFooterLinks ) > 0 ) { ?>
-<div id="footer"<?php $this->html('wiki_userlangattributes') ?>>
+<div id="footer"<?php $this->html('userlangattributes') ?>>
 <?php
 		$footerEnd = '</div>';
 	} else {
@@ -268,7 +268,7 @@ echo $footerEnd;
 		if( $this->data['language_urls'] ) {
 ?>
 	<div id="p-lang" class="portlet">
-		<h5<?php $this->html('wiki_userlangattributes') ?>><?php $this->msg('otherlanguages') ?></h5>
+		<h5<?php $this->html('userlangattributes') ?>><?php $this->msg('otherlanguages') ?></h5>
 		<div class="pBody">
 			<ul>
 <?php		foreach($this->data['language_urls'] as $key => $langlink) { ?>

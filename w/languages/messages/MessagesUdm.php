@@ -43,7 +43,7 @@ $fallback8bitEncoding = 'windows-1251';
 $separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Линкъёс ултӥз гожен сызоно',
 'tog-hideminor' => 'Берпуметӥ тупатонъёслэн списоксэс ичи воштонъёстэк возьматыны',
 'tog-hidepatrolled' => 'Берпуметӥ тупатонъёслэн списоксэс партрулировать каремын воштонъёстэк возьматыны',
@@ -192,7 +192,7 @@ $messages = array(
 'jumptonavigation' => 'навигация',
 'jumptosearch' => 'утчан',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Выль иворъёс',
 'currentevents-url' => 'Project:Выль иворъёс',
 'helppage' => 'Help:Валэктон',
@@ -209,7 +209,7 @@ $messages = array(
 'red-link-title' => '$1 (со бам ӧвӧл на)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-wiki_user' => 'Викиавтор',
+'nstab-user' => 'Викиавтор',
 'nstab-mediawiki' => 'Ивортон',
 
 # General errors
@@ -218,9 +218,9 @@ $messages = array(
 # Login and logout pages
 'login' => 'Википедие пырон',
 'nav-login-createaccount' => 'Нимдэс вераны / Регистрациез ортчытыны',
-'wiki_userlogin' => 'Регистрациез ортчытыны яке Википедие пырыны',
+'userlogin' => 'Регистрациез ортчытыны яке Википедие пырыны',
 'logout' => 'Кошкыны',
-'wiki_userlogout' => 'Кошкыны',
+'userlogout' => 'Кошкыны',
 'createaccount' => 'выль вики-авторлэн регистрациез',
 
 # Edit pages
@@ -268,7 +268,7 @@ $messages = array(
 'nbytes' => '$1 байт',
 'move' => 'Мукет интые выжтыны',
 
-# E-mail wiki_user
+# E-mail user
 'emailmessage' => 'Ивортон:',
 
 # Watchlist

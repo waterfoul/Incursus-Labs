@@ -53,7 +53,7 @@ $messages = array(
 'talk' => 'Discussiòun',
 'jumptosearch' => 'Zerca',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'currentevents' => 'Fât e prugèt ed tót',
 'currentevents-url' => 'Project:Prugèt_ed_tót',
 'helppage' => 'Help:Introduzione',
@@ -69,13 +69,13 @@ $messages = array(
 
 Putiv cuntinuèr ad usèr {{SITENAME}} anonimamèint, o putiv cunnètterv dòp cun al stèss nàmm o cun un èter.
 Nutêv ca alcuni pàgini i putrèbber cuntinuèr a cràdder ca vueter a-sîv discunnès, finchè non purghê la cache dal vòster browser.",
-'wiki_userlogin' => 'Entrèr / Argistrères',
+'userlogin' => 'Entrèr / Argistrères',
 'logout' => 'va fôra',
-'wiki_userlogout' => 'Va fôra',
-'wiki_userexists' => "Al nòmm ch'èt scélt l'è stê bèle usê: càten un èter, per piasêr.",
+'userlogout' => 'Va fôra',
+'userexists' => "Al nòmm ch'èt scélt l'è stê bèle usê: càten un èter, per piasêr.",
 'loginsuccess' => "'''Adèsa sèt cunês in {{SITENAME}} cun al nàmm d'utèint \"\$1\".'''",
 'wrongpassword' => "La password ch'et méss l'è sbajèda. Pròva ancàrra.",
-'blocked-mailpassword' => "Al tô indirézz IP l'an pôl più feèr di cambiamèint, e l'en brisa abilitê par wiki_user la funziòun ed recópper ed password par evitèr di abûs.",
+'blocked-mailpassword' => "Al tô indirézz IP l'an pôl più feèr di cambiamèint, e l'en brisa abilitê par user la funziòun ed recópper ed password par evitèr di abûs.",
 'accountcreated' => 'Et criê un nôv account',
 
 # Edit pages
@@ -86,7 +86,7 @@ Nutêv ca alcuni pàgini i putrèbber cuntinuèr a cràdder ca vueter a-sîv dis
 'showpreview' => 'Anteprémma',
 'showdiff' => 'Guèrda al differèinzi',
 'anoneditwarning' => "'''Attenziòun:''' An sîv ménga vgnû dèinter. Al vòster indirézz IP al vrà signê in d'la stòria d'i cambiamèint ed sta pagina chè..",
-'anontalkpagetext' => "----''Sta chè l'éla pàgina ed discussiòun d'un utèint anònim c'al n'à brisa criê un sô account o c'an l'usa ménga. Bsògna quindi usêr al sô indirézz IP par identifichèrel. L'istèss indirézz IP al pôl èsser usê da di mòndi utèint. Se sèt un utèint anònim e pèinset c'a-t in sun stèdi fâti di cummèint irrilevànt, per piasér [[Special:wiki_userLogin|criêt un account o fê al log-in]] par evitèr confusiòuni futuri cun di èter utèint anònim.''",
+'anontalkpagetext' => "----''Sta chè l'éla pàgina ed discussiòun d'un utèint anònim c'al n'à brisa criê un sô account o c'an l'usa ménga. Bsògna quindi usêr al sô indirézz IP par identifichèrel. L'istèss indirézz IP al pôl èsser usê da di mòndi utèint. Se sèt un utèint anònim e pèinset c'a-t in sun stèdi fâti di cummèint irrilevànt, per piasér [[Special:UserLogin|criêt un account o fê al log-in]] par evitèr confusiòuni futuri cun di èter utèint anònim.''",
 'editing' => 'Cambiamèint ed $1',
 'yourdiff' => 'Differèinzi',
 'templatesused' => '{{PLURAL:$1|Modêl|Modêl}} usèdi in sta pàgina:',
@@ -124,13 +124,13 @@ Nutêv ca alcuni pàgini i putrèbber cuntinuèr a cràdder ca vueter a-sîv dis
 'move' => 'Môv',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Utèint:',
+'specialloguserlabel' => 'Utèint:',
 
 # Special:AllPages
 'allpages' => 'Tôt al pàgin',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Regestér di nōv utèint',
+# Special:Log/newusers
+'newuserlogpage' => 'Regestér di nōv utèint',
 
 # Watchlist
 'watchlist' => 'Al còsi ca guèrd',

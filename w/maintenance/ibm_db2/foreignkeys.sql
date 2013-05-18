@@ -1,16 +1,16 @@
 -- good
-ALTER TABLE wiki_user_groups ADD CONSTRAINT USER_GROUPS_FK1 FOREIGN KEY (ug_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE CASCADE
+ALTER TABLE user_groups ADD CONSTRAINT USER_GROUPS_FK1 FOREIGN KEY (ug_user) REFERENCES user(user_id) ON DELETE CASCADE
 ;
 
 -- good
-ALTER TABLE wiki_user_newtalk ADD CONSTRAINT USER_NEWTALK_FK1 FOREIGN KEY (wiki_user_id) REFERENCES wiki_user(wiki_user_id) ON DELETE CASCADE
+ALTER TABLE user_newtalk ADD CONSTRAINT USER_NEWTALK_FK1 FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE
 ;
 
 -- referenced value not found
 ALTER TABLE revision ADD CONSTRAINT REVISION_PAGE_FK FOREIGN KEY (rev_page) REFERENCES page(page_id) ON DELETE CASCADE
 ;
 -- referenced value not found
-ALTER TABLE revision ADD CONSTRAINT REVISION_USER_FK FOREIGN KEY (rev_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE RESTRICT
+ALTER TABLE revision ADD CONSTRAINT REVISION_USER_FK FOREIGN KEY (rev_user) REFERENCES user(user_id) ON DELETE RESTRICT
 ;
 
 -- good
@@ -22,7 +22,7 @@ ALTER TABLE page_props ADD CONSTRAINT PAGE_PROPS_PAGE_FK FOREIGN KEY (pp_page) R
 ;
 
 -- cannot contain null values
--- ALTER TABLE archive ADD CONSTRAINT ARCHIVE_USER_FK FOREIGN KEY (ar_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE SET NULL
+-- ALTER TABLE archive ADD CONSTRAINT ARCHIVE_USER_FK FOREIGN KEY (ar_user) REFERENCES user(user_id) ON DELETE SET NULL
 --;
 
 -- referenced value not found
@@ -54,19 +54,19 @@ ALTER TABLE langlinks ADD CONSTRAINT LANGLINKS_FROM_FK FOREIGN KEY (ll_from) REF
 ;
 
 -- cannot contain null values
--- ALTER TABLE ipblocks ADD CONSTRAINT IPBLOCKS_USER_FK FOREIGN KEY (ipb_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE SET NULL
+-- ALTER TABLE ipblocks ADD CONSTRAINT IPBLOCKS_USER_FK FOREIGN KEY (ipb_user) REFERENCES user(user_id) ON DELETE SET NULL
 --;
 
 -- good
-ALTER TABLE ipblocks ADD CONSTRAINT IPBLOCKS_BY_FK FOREIGN KEY (ipb_by) REFERENCES wiki_user(wiki_user_id) ON DELETE CASCADE
+ALTER TABLE ipblocks ADD CONSTRAINT IPBLOCKS_BY_FK FOREIGN KEY (ipb_by) REFERENCES user(user_id) ON DELETE CASCADE
 ;
 
 -- cannot contain null values
--- ALTER TABLE image ADD CONSTRAINT IMAGE_USER_FK FOREIGN KEY (img_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE SET NULL
+-- ALTER TABLE image ADD CONSTRAINT IMAGE_USER_FK FOREIGN KEY (img_user) REFERENCES user(user_id) ON DELETE SET NULL
 --;
 
 -- cannot contain null values
--- ALTER TABLE oldimage ADD CONSTRAINT OLDIMAGE_USER_FK FOREIGN KEY (oi_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE SET NULL
+-- ALTER TABLE oldimage ADD CONSTRAINT OLDIMAGE_USER_FK FOREIGN KEY (oi_user) REFERENCES user(user_id) ON DELETE SET NULL
 --;
 
 -- good
@@ -74,15 +74,15 @@ ALTER TABLE oldimage ADD CONSTRAINT OLDIMAGE_NAME_FK FOREIGN KEY (oi_name) REFER
 ;
 
 -- cannot contain null values
--- ALTER TABLE filearchive ADD CONSTRAINT FILEARCHIVE_DELETED_USER_FK FOREIGN KEY (fa_deleted_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE SET NULL
+-- ALTER TABLE filearchive ADD CONSTRAINT FILEARCHIVE_DELETED_USER_FK FOREIGN KEY (fa_deleted_user) REFERENCES user(user_id) ON DELETE SET NULL
 --;
 
 -- cannot contain null values
--- ALTER TABLE filearchive ADD CONSTRAINT FILEARCHIVE_USER_FK FOREIGN KEY (fa_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE SET NULL
+-- ALTER TABLE filearchive ADD CONSTRAINT FILEARCHIVE_USER_FK FOREIGN KEY (fa_user) REFERENCES user(user_id) ON DELETE SET NULL
 --;
 
 -- cannot contain null values
--- ALTER TABLE recentchanges ADD CONSTRAINT RECENTCHANGES_USER_FK FOREIGN KEY (rc_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE SET NULL
+-- ALTER TABLE recentchanges ADD CONSTRAINT RECENTCHANGES_USER_FK FOREIGN KEY (rc_user) REFERENCES user(user_id) ON DELETE SET NULL
 --;
 
 -- cannot contain null values
@@ -90,13 +90,13 @@ ALTER TABLE oldimage ADD CONSTRAINT OLDIMAGE_NAME_FK FOREIGN KEY (oi_name) REFER
 --;
 
 -- good
-ALTER TABLE watchlist ADD CONSTRAINT WATCHLIST_USER_FK FOREIGN KEY (wl_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE CASCADE
+ALTER TABLE watchlist ADD CONSTRAINT WATCHLIST_USER_FK FOREIGN KEY (wl_user) REFERENCES user(user_id) ON DELETE CASCADE
 ;
 
 -- cannot contain null values
--- ALTER TABLE protected_titles ADD CONSTRAINT PROTECTED_TITLES_USER_FK FOREIGN KEY (pt_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE SET NULL
+-- ALTER TABLE protected_titles ADD CONSTRAINT PROTECTED_TITLES_USER_FK FOREIGN KEY (pt_user) REFERENCES user(user_id) ON DELETE SET NULL
 --;
 
 -- cannot contain null values
--- ALTER TABLE logging ADD CONSTRAINT LOGGING_USER_FK FOREIGN KEY (log_wiki_user) REFERENCES wiki_user(wiki_user_id) ON DELETE SET NULL
+-- ALTER TABLE logging ADD CONSTRAINT LOGGING_USER_FK FOREIGN KEY (log_user) REFERENCES user(user_id) ON DELETE SET NULL
 --;

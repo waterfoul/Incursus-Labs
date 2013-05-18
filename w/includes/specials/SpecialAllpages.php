@@ -175,7 +175,7 @@ class SpecialAllpages extends IncludableSpecialPage {
 		# TODO: Either make this *much* faster or cache the title index points
 		# in the querycache table.
 
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$out = "";
 		$where = array( 'page_namespace' => $namespace );
 
@@ -189,22 +189,22 @@ class SpecialAllpages extends IncludableSpecialPage {
 		$to = ( $to && $to->isLocal() ) ? $to->getDBkey() : null;
 
 		if( isset($from) )
-			$where[] = 'page_title >= '.r->addQuotes( $from );
+			$where[] = 'page_title >= '.$dbr->addQuotes( $from );
 		if( isset($to) )
-			$where[] = 'page_title <= '.r->addQuotes( $to );
+			$where[] = 'page_title <= '.$dbr->addQuotes( $to );
 
 		global $wgMemc;
 		$key = wfMemcKey( 'allpages', 'ns', $namespace, $from, $to );
 		$lines = $wgMemc->get( $key );
 
-		$count = r->estimateRowCount( 'page', '*', $where, __METHOD__ );
+		$count = $dbr->estimateRowCount( 'page', '*', $where, __METHOD__ );
 		$maxPerSubpage = intval($count/$this->maxLineCount);
 		$maxPerSubpage = max($maxPerSubpage,$this->maxPerPage);
 
 		if( !is_array( $lines ) ) {
 			$options = array( 'LIMIT' => 1 );
 			$options['ORDER BY'] = 'page_title ASC';
-			$firstTitle = r->selectField( 'page', 'page_title', $where, __METHOD__, $options );
+			$firstTitle = $dbr->selectField( 'page', 'page_title', $where, __METHOD__, $options );
 			$lastTitle = $firstTitle;
 			# This array is going to hold the page_titles in order.
 			$lines = array( $firstTitle );
@@ -214,20 +214,20 @@ class SpecialAllpages extends IncludableSpecialPage {
 				// Fetch the last title of this chunk and the first of the next
 				$chunk = ( $lastTitle === false )
 					? array()
-					: array( 'page_title >= ' . r->addQuotes( $lastTitle ) );
-				$res = r->select( 'page', /* FROM */
+					: array( 'page_title >= ' . $dbr->addQuotes( $lastTitle ) );
+				$res = $dbr->select( 'page', /* FROM */
 					'page_title', /* WHAT */
 					array_merge($where,$chunk),
 					__METHOD__,
 					array ('LIMIT' => 2, 'OFFSET' => $maxPerSubpage - 1, 'ORDER BY' => 'page_title ASC')
 				);
 
-				$s = r->fetchObject( $res );
+				$s = $dbr->fetchObject( $res );
 				if( $s ) {
 					array_push( $lines, $s->page_title );
 				} else {
 					// Final chunk, but ended prematurely. Go back and find the end.
-					$endTitle = r->selectField( 'page', 'MAX(page_title)',
+					$endTitle = $dbr->selectField( 'page', 'MAX(page_title)',
 						array_merge($where,$chunk),
 						__METHOD__ );
 					array_push( $lines, $endTitle );
@@ -350,10 +350,10 @@ class SpecialAllpages extends IncludableSpecialPage {
 			list( $namespace, $fromKey, $from ) = $fromList;
 			list( , $toKey, $to ) = $toList;
 
-			r = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$conds = array(
 				'page_namespace' => $namespace,
-				'page_title >= ' . r->addQuotes( $fromKey )
+				'page_title >= ' . $dbr->addQuotes( $fromKey )
 			);
 
 			if ( $hideredirects ) {
@@ -361,10 +361,10 @@ class SpecialAllpages extends IncludableSpecialPage {
 			}
 
 			if( $toKey !== "" ) {
-				$conds[] = 'page_title <= ' . r->addQuotes( $toKey );
+				$conds[] = 'page_title <= ' . $dbr->addQuotes( $toKey );
 			}
 
-			$res = r->select( 'page',
+			$res = $dbr->select( 'page',
 				array( 'page_namespace', 'page_title', 'page_is_redirect', 'page_id' ),
 				$conds,
 				__METHOD__,
@@ -380,7 +380,7 @@ class SpecialAllpages extends IncludableSpecialPage {
 				while( ( $n < $this->maxPerPage ) && ( $s = $res->fetchObject() ) ) {
 					$t = Title::newFromRow( $s );
 					// <IntraACL>
-					if ( $t && !$t->wiki_userCanReadEx() ) {
+					if ( $t && !$t->userCanReadEx() ) {
 						continue;
 					}
 					// </IntraACL>
@@ -417,11 +417,11 @@ class SpecialAllpages extends IncludableSpecialPage {
 				$prevTitle = null;
 			} else {
 				# Get the last title from previous chunk
-				r = wfGetDB( DB_SLAVE );
-				$res_prev = r->select(
+				$dbr = wfGetDB( DB_SLAVE );
+				$res_prev = $dbr->select(
 					'page',
 					'page_title',
-					array( 'page_namespace' => $namespace, 'page_title < '.r->addQuotes($from) ),
+					array( 'page_namespace' => $namespace, 'page_title < '.$dbr->addQuotes($from) ),
 					__METHOD__,
 					array( 'ORDER BY' => 'page_title DESC',
 						'LIMIT' => $this->maxPerPage, 'OFFSET' => ($this->maxPerPage - 1 )
@@ -429,17 +429,17 @@ class SpecialAllpages extends IncludableSpecialPage {
 				);
 
 				# Get first title of previous complete chunk
-				if( r->numrows( $res_prev ) >= $this->maxPerPage ) {
-					$pt = r->fetchObject( $res_prev );
+				if( $dbr->numrows( $res_prev ) >= $this->maxPerPage ) {
+					$pt = $dbr->fetchObject( $res_prev );
 					$prevTitle = Title::makeTitle( $namespace, $pt->page_title );
 				} else {
 					# The previous chunk is not complete, need to link to the very first title
 					# available in the database
 					$options = array( 'LIMIT' => 1 );
-					if ( ! r->implicitOrderby() ) {
+					if ( ! $dbr->implicitOrderby() ) {
 						$options['ORDER BY'] = 'page_title';
 					}
-					$reallyFirstPage_title = r->selectField( 'page', 'page_title',
+					$reallyFirstPage_title = $dbr->selectField( 'page', 'page_title',
 						array( 'page_namespace' => $namespace ), __METHOD__, $options );
 					# Show the previous link if it s not the current requested chunk
 					if( $from != $reallyFirstPage_title ) {

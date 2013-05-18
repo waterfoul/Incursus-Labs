@@ -66,15 +66,15 @@ class WikiMap {
 	}
 
 	/**
-	 * Convenience to get a link to a wiki_user page on a foreign wiki
+	 * Convenience to get a link to a user page on a foreign wiki
 	 *
 	 * @param $wikiID String: wiki'd id (generally database name)
-	 * @param $wiki_user String: wiki_user name (must be normalised before calling this function!)
-	 * @param $text String: link's text; optional, default to "wiki_user:$wiki_user"
+	 * @param $user String: user name (must be normalised before calling this function!)
+	 * @param $text String: link's text; optional, default to "User:$user"
 	 * @return String: HTML link or false if the wiki was not found
 	 */
-	public static function foreignwiki_userLink( $wikiID, $wiki_user, $text=null ) {
-		return self::makeForeignLink( $wikiID, "wiki_user:$wiki_user", $text );
+	public static function foreignUserLink( $wikiID, $user, $text=null ) {
+		return self::makeForeignLink( $wikiID, "User:$user", $text );
 	}
 
 	/**
@@ -156,7 +156,7 @@ class WikiReference {
 	}
 
 	/**
-	 * Get the the URL in a way to de displayed to the wiki_user
+	 * Get the the URL in a way to de displayed to the user
 	 * More or less Wikimedia specific
 	 *
 	 * @return String

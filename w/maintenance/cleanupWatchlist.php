@@ -39,7 +39,7 @@ require_once( __DIR__ . '/cleanupTable.inc' );
 class WatchlistCleanup extends TableCleanup {
 	protected $defaultParams = array(
 		'table' => 'watchlist',
-		'index' => array( 'wl_wiki_user', 'wl_namespace', 'wl_title' ),
+		'index' => array( 'wl_user', 'wl_namespace', 'wl_title' ),
 		'conds' => array(),
 		'callback' => 'processRow'
 	);
@@ -64,8 +64,8 @@ class WatchlistCleanup extends TableCleanup {
 		$verified = $wgContLang->normalize( $display );
 		$title = Title::newFromText( $verified );
 
-		if ( $row->wl_wiki_user == 0 || is_null( $title ) || !$title->equals( $current ) ) {
-			$this->output( "invalid watch by {$row->wl_wiki_user} for ({$row->wl_namespace}, \"{$row->wl_title}\")\n" );
+		if ( $row->wl_user == 0 || is_null( $title ) || !$title->equals( $current ) ) {
+			$this->output( "invalid watch by {$row->wl_user} for ({$row->wl_namespace}, \"{$row->wl_title}\")\n" );
 			$updated = $this->removeWatch( $row );
 			$this->progress( $updated );
 			return;
@@ -75,9 +75,9 @@ class WatchlistCleanup extends TableCleanup {
 
 	private function removeWatch( $row ) {
 		if ( !$this->dryrun && $this->hasOption( 'fix' ) ) {
-			w = wfGetDB( DB_MASTER );
-			w->delete( 'watchlist', array(
-				'wl_wiki_user'      => $row->wl_wiki_user,
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->delete( 'watchlist', array(
+				'wl_user'      => $row->wl_user,
 				'wl_namespace' => $row->wl_namespace,
 				'wl_title'     => $row->wl_title ),
 			__METHOD__ );

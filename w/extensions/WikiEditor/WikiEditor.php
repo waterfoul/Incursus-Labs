@@ -15,34 +15,34 @@
 
 /* Configuration */
 
-// Each module may be configured individually to be globally on/off or wiki_user preference based
+// Each module may be configured individually to be globally on/off or user preference based
 $wgWikiEditorFeatures = array(
 
 	/* Textarea / i-frame compatible (OK to deploy) */
 
-	'toolbar' => array( 'global' => false, 'wiki_user' => true ),
+	'toolbar' => array( 'global' => false, 'user' => true ),
 	// Provides interactive tools
-	'dialogs' => array( 'global' => false, 'wiki_user' => true ),
+	'dialogs' => array( 'global' => false, 'user' => true ),
 	// Hide signature button from main namespace
-	'hidesig' => array( 'global' => true, 'wiki_user' => false ),
+	'hidesig' => array( 'global' => true, 'user' => false ),
 
 	/* Textarea / i-frame compatible, but still experimental and unstable (do not deploy!) */
 
 	// Adds a tab for previewing in-line
-	'preview' => array( 'global' => false, 'wiki_user' => true ),
+	'preview' => array( 'global' => false, 'user' => true ),
 	// Adds a button for previewing in a dialog
-	'previewDialog' => array( 'global' => false, 'wiki_user' => false ),
+	'previewDialog' => array( 'global' => false, 'user' => false ),
 	//  Adds a button and dialog for step-by-step publishing
-	'publish' => array( 'global' => false, 'wiki_user' => true ),
+	'publish' => array( 'global' => false, 'user' => true ),
 
 	/* I-frame dependent (do not deploy!) */
 
 	// Failry stable table of contents
-	'toc' => array( 'global' => false, 'wiki_user' => true ),
+	'toc' => array( 'global' => false, 'user' => true ),
 	// Pretty broken template collapsing/editing
-	'templateEditor' => array( 'global' => false, 'wiki_user' => false ),
+	'templateEditor' => array( 'global' => false, 'user' => false ),
 	// Bare-bones (probably broken) template collapsing
-	'templates' => array( 'global' => false, 'wiki_user' => false ),
+	'templates' => array( 'global' => false, 'user' => false ),
 
 );
 

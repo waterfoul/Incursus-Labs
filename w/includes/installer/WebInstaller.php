@@ -76,7 +76,7 @@ class WebInstaller extends Installer {
 	);
 
 	/**
-	 * Out of sequence pages, selectable by the wiki_user at any time.
+	 * Out of sequence pages, selectable by the user at any time.
 	 * @var array
 	 */
 	protected $otherPages = array(
@@ -485,7 +485,7 @@ class WebInstaller extends Installer {
 			$wgLanguageCode = $this->getAcceptLanguage();
 			$wgLang = $wgContLang = Language::factory( $wgLanguageCode );
 			$this->setVar( 'wgLanguageCode', $wgLanguageCode );
-			$this->setVar( '_wiki_userLang', $wgLanguageCode );
+			$this->setVar( '_UserLang', $wgLanguageCode );
 		} else {
 			$wgLanguageCode = $this->getVar( 'wgLanguageCode' );
 			$wgContLang = Language::factory( $wgLanguageCode );

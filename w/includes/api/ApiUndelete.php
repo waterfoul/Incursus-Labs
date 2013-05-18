@@ -36,11 +36,11 @@ class ApiUndelete extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 
-		if ( !$this->getwiki_user()->isAllowed( 'undelete' ) ) {
+		if ( !$this->getUser()->isAllowed( 'undelete' ) ) {
 			$this->dieUsageMsg( 'permdenied-undelete' );
 		}
 
-		if ( $this->getwiki_user()->isBlocked() ) {
+		if ( $this->getUser()->isBlocked() ) {
 			$this->dieUsageMsg( 'blockedtext' );
 		}
 
@@ -68,7 +68,7 @@ class ApiUndelete extends ApiBase {
 
 		if ( $retval[1] ) {
 			wfRunHooks( 'FileUndeleteComplete',
-				array( $titleObj, array(), $this->getwiki_user(), $params['reason'] ) );
+				array( $titleObj, array(), $this->getUser(), $params['reason'] ) );
 		}
 
 		$this->setWatch( $params['watchlist'], $titleObj );

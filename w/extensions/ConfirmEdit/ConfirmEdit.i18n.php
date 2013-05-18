@@ -29,7 +29,7 @@ While these spam links can be removed, they are a significant nuisance.
 Sometimes, especially when adding new web links to a page, the wiki may show you an image of colored or distorted text and ask you to type the words shown.
 Since this is a task that's hard to automate, it will allow most real humans to make their posts while stopping most spammers and other robotic attackers.
 
-Unfortunately this may inconvenience wiki_users with limited vision or using text-based or speech-based browsers.
+Unfortunately this may inconvenience users with limited vision or using text-based or speech-based browsers.
 At the moment we do not have an audio alternative available.
 Please contact the  [[{{MediaWiki:Grouppage-sysop}}|site administrators]] for assistance if this is unexpectedly preventing you from making legitimate actions.
 
@@ -62,15 +62,15 @@ See also
 *{{msg-mw|Fancycaptcha-edit}}',
 	'captcha-desc' => '{{desc}}',
 	'captcha-label' => 'Label field for input field shown in forms',
-	'captcha-addurl' => 'The explanation of CAPTCHA shown to wiki_users trying to add new external links.
+	'captcha-addurl' => 'The explanation of CAPTCHA shown to users trying to add new external links.
 See also
 *{{msg-mw|Questycaptcha-addurl}}
 *{{msg-mw|Fancycaptcha-addurl}}',
-	'captcha-badlogin' => 'The explanation of CAPTCHA shown to wiki_users failed three times to type in correct password.
+	'captcha-badlogin' => 'The explanation of CAPTCHA shown to users failed three times to type in correct password.
 See also
 *{{msg-mw|Questycaptcha-badlogin}}
 *{{msg-mw|Fancycaptcha-badlogin}}',
-	'captcha-createaccount' => 'The explanation of CAPTCHA shown to wiki_users trying to create a new account.
+	'captcha-createaccount' => 'The explanation of CAPTCHA shown to users trying to create a new account.
 See also
 *{{msg-mw|Questycaptcha-createaccount}}
 *{{msg-mw|Fancycaptcha-createaccount}}',
@@ -998,7 +998,7 @@ While these spam links can be removed, they are a significant nuisance.
 Sometimes, especially when adding new web links to a page, the wiki may show you an image of coloured or distorted text and ask you to type the words shown.
 Since this is a task that's hard to automate, it will allow most real humans to make their posts while stopping most spammers and other robotic attackers.
 
-Unfortunately this may inconvenience wiki_users with limited vision or using text-based or speech-based browsers.
+Unfortunately this may inconvenience users with limited vision or using text-based or speech-based browsers.
 At the moment we do not have an audio alternative available.
 Please contact the  [[{{MediaWiki:Grouppage-sysop}}|site administrators]] for assistance if this is unexpectedly preventing you from making legitimate posts.
 
@@ -1015,7 +1015,7 @@ While these spam links can be removed, they are a significant nuisance.
 Sometimes, especially when adding new web links to a page, the wiki may show you an image of coloured or distorted text and ask you to type the words shown.
 Since this is a task that's hard to automate, it will allow most real humans to make their posts while stopping most spammers and other robotic attackers.
 
-Unfortunately this may inconvenience wiki_users with limited vision or using text-based or speech-based browsers.
+Unfortunately this may inconvenience users with limited vision or using text-based or speech-based browsers.
 At the moment we do not have an audio alternative available.
 Please contact the  [[{{MediaWiki:Grouppage-sysop}}|site administrators]] for assistance if this is unexpectedly preventing you from making legitimate posts.
 
@@ -2201,7 +2201,7 @@ un don de Antwoot en dat Käßje endraare. ([[Special:Captcha/help|Verklierung]]
 	'captcha-sendemail-fail' => 'De Bestätijungszahl fählt udder es verkeeht.',
 	'captcha-disabledinapi' => 'För di Aufjab moß en extra Bestätejon enjejovve wääde, un dat künne mer nit övver de API.',
 	'captchahelp-title' => 'Äklierung zum Kaptscha SPAM-Schotz',
-	'captchahelp-cookies-needed' => 'Do moß <i lang="en">Cookies</i> en Dingem Brawiki_user enjeschalldt han, domet da hee fluppe kann.',
+	'captchahelp-cookies-needed' => 'Do moß <i lang="en">Cookies</i> en Dingem Brauser enjeschalldt han, domet da hee fluppe kann.',
 	'captchahelp-text' => 'Op Web Saits wi dat Wiki hee, wo jeder jät beidraare kann, do kumme se öff wi de Fleeje un don met Projramme un fun Hand bloß Reklame-Lingks op de eije Websigge affläje, oohne Sinn un Verstand. Esu en SPAM kam_mer widder fott maache, dat määt ävver Ärjer un Opwand.
 
 Su jät wulle_mer nit hann, un donn_et jlish widder fottschmiiße.
@@ -2214,10 +2214,10 @@ Dat es e beßßje läßtish för der Minsch, ävver de Robbotter hälld et unß 
 
 Wann De Dich ens fordeis, es och nit schlimm, De wees norr_enß jefrooch. Wat De jetipp häs, kütt nit fott.
 
-Schaad es, mer hann noch keine Wääsh, dat met Shprooch odder sönswi ze maache, su dat Lück met Shprooch_Ußßjaave, Braille, un met nur Tex em Brawiki_user oohne Bellder, em Räähn shtonn künnte. Dooht Ühr Zeush eets enß oohne Lengk speischere, un saat dä [[{{MediaWiki:Grouppage-sysop}}|Wikki_Köbesse]],
+Schaad es, mer hann noch keine Wääsh, dat met Shprooch odder sönswi ze maache, su dat Lück met Shprooch_Ußßjaave, Braille, un met nur Tex em Brauser oohne Bellder, em Räähn shtonn künnte. Dooht Ühr Zeush eets enß oohne Lengk speischere, un saat dä [[{{MediaWiki:Grouppage-sysop}}|Wikki_Köbesse]],
 wann Ühr Probbleme hatt. Do weed_Üch jehollfe weede.
 
-Jetz kanns De met Dingem Brawiki_user singem „Zeröck“-Knopp wigger maache, wo De fürher woohß.',
+Jetz kanns De met Dingem Brauser singem „Zeröck“-Knopp wigger maache, wo De fürher woohß.',
 	'captcha-addurl-whitelist' => ' #<!-- Lohß di Reih he jenou esu wi se es --> <pre>
 # Dä Opbou es:
 # * Alles fun enem #-Zeiche bes an et Engk fun ene Reih es ene Kommentaa för de Minsche
@@ -3570,7 +3570,7 @@ Pikeun nyegah spam, mangga eusian itungan di handap ieu
 
 Sometimes, especially when adding new web links to a page, the wiki may show you an image of colored or distorted text and ask you to type the words shown. Since this is a task that's hard to automate, it will allow most real humans to make their posts while stopping most spammers and other robotic attackers.
 
-Unfortunately this may inconvenience wiki_users with limited vision or using text-based or speech-based browsers. At the moment we do not have an audio alternative available. Please contact the site administrators for assistance if this is unexpectedly preventing you from making legitimate posts.
+Unfortunately this may inconvenience users with limited vision or using text-based or speech-based browsers. At the moment we do not have an audio alternative available. Please contact the site administrators for assistance if this is unexpectedly preventing you from making legitimate posts.
 
 You will need to have cookies enabled in your browser for this to work.
 

@@ -89,7 +89,7 @@ $messages = array(
 'jumptonavigation' => 'arata’i',
 'jumptosearch' => 'haere',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Nō {{SITENAME}}',
 'aboutpage' => 'Project:Nō',
 'edithelp' => 'Tauturu',
@@ -104,7 +104,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Parau pāpa’i',
-'nstab-wiki_user' => 'Ta’ata',
+'nstab-user' => 'Ta’ata',
 'nstab-special' => 'Ta’a ’ē',
 'nstab-image' => 'Hōho’a',
 'nstab-mediawiki' => 'Poro’i',
@@ -129,17 +129,17 @@ $messages = array(
 'recentchanges' => 'Te mau fa’ahuru-’ē-ra’a ’āpī',
 
 # Special:ListFiles
-'listfiles_wiki_user' => 'Ta’ata fa’a’ohipa',
+'listfiles_user' => 'Ta’ata fa’a’ohipa',
 
 # File description page
 'file-anchor-link' => 'Hōho’a',
-'filehist-wiki_user' => 'Ta’ata',
+'filehist-user' => 'Ta’ata',
 
 # Random page
 'randompage' => '’Api mā’iti-haere-noa',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Ta’ata fa’a’ohipa :',
+'specialloguserlabel' => 'Ta’ata fa’a’ohipa :',
 
 # Special:AllPages
 'allpagessubmit' => 'Haere',

@@ -19,7 +19,7 @@
  */
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Joṛaoko latarre dag udugoḱma:',
 'tog-justify' => 'Olaḱ kạli mońjte sajao:',
 'tog-hideminor' => 'Nitaḱ bodolaḱre huḍiṅ kạmi danaṅme',
@@ -43,7 +43,7 @@ $messages = array(
 'tog-previewonfirst' => 'Pạhil joṛao purạore unuduḱ hoyoḱma',
 'tog-nocache' => 'Brajar sakam reaḱ kasiṅ bondoemẽ',
 'tog-enotifwatchlistpages' => 'E-mailạńme one tinre in̕aḱ n̕eloḱ tạlika do bodolok',
-'tog-enotifwiki_usertalkpages' => 'E-mailạn̕me one tinre in̕aḱ roṛaḱ laṛcaṛ sakam do bodoloḱa',
+'tog-enotifusertalkpages' => 'E-mailạn̕me one tinre in̕aḱ roṛaḱ laṛcaṛ sakam do bodoloḱa',
 'tog-enotifminoredits' => 'E-mailạn̕me arhõ one tinre in̕aḱ sakamre huḍiń kạmi hoyoḱ',
 'tog-enotifrevealaddr' => 'Dhạrwạk reaḱ sakamre ińaḱ e-mail ṭhikạna sodor hoyoḱma',
 'tog-shownumberswatching' => 'Ńelok laṛcaṛkoaḱ songkha uduḱme',
@@ -224,7 +224,7 @@ $messages = array(
 'talk' => 'Galmarao',
 'views' => 'Ñel koyoḱ',
 'toolbox' => 'Jontopạti baḱso',
-'wiki_userpage' => 'Laṛcaṛićaḱ sakam uduḱme',
+'userpage' => 'Laṛcaṛićaḱ sakam uduḱme',
 'projectpage' => 'Porjakṭ sakam uduḱme',
 'imagepage' => 'Rẽt sakam uduḱme',
 'mediawikipage' => 'Mesag sakam uduḱme',
@@ -249,7 +249,7 @@ $1',
 'pool-queuefull' => 'Pul reaḱ sakam perećena',
 'pool-errorunknown' => 'Bań baḍayaḱ bhul',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'babo̠tre',
 'aboutpage' => 'Project: Babo̠t',
 'copyright' => '$1 re bhitrire ńamoḱa.',
@@ -310,7 +310,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Sakam',
-'nstab-wiki_user' => 'Laṛcaṛicaḱ sakam',
+'nstab-user' => 'Laṛcaṛicaḱ sakam',
 'nstab-media' => 'Midiạ sakam',
 'nstab-special' => 'Jạruṛ pata',
 'nstab-project' => 'Porject reaḱ sakam',
@@ -351,7 +351,7 @@ Sasetić do noa kathae roṛ keda: $1',
 'missing-article' => '"$1" $2 noa ńutumanaḱ sakhiyạ̣t sakamre olakanaḱ do bań ṅamoka.
 Noa hoy renaḱ karon do hoyoḱkana cabak tạrik pharak se noare joṛao sakam do get́ giḍi akana.
 Judi noa do karon bań hoylen khan, noa do am sopṭoyer re kạtićtem ńam daṛeyaḱa.
-Daya katet́ noa do nonde [[Special:Listwiki_users/sysop|administrator]],  ṭhen lạime, URL hotete.',
+Daya katet́ noa do nonde [[Special:ListUsers/sysop|administrator]],  ṭhen lạime, URL hotete.',
 'missingarticle-rev' => '(Nãwã aro#: $1)',
 'missingarticle-diff' => '(Pharak: $1, $2)',
 'readonly_lag' => 'Ḍaṭabes do aćhote tege bondo hoe akana, je lekate udhin reaḱ ḍaṭabes sarvarkor mukhiạ ḍaṭabes sarvar lekate heć daṛeaḱ.',
@@ -410,21 +410,21 @@ Amaḱ [[Special:Preferance {{SITENAME}} pạsindko]] thir dohoe lạgit́te alo
 'login' => "bolok' duar",
 'nav-login-createaccount' => 'Boloḱ́ duạr / ekaunt tearme',
 'loginprompt' => '{{SITENAME}}-re boloḱem meneḱ khan amaḱ sendrare kuki kạmi ehoṕ hoyoḱtama.',
-'wiki_userlogin' => 'Bhitri bolon / ekaunṭ tear',
-'wiki_userloginnocreate' => 'Bhitri bolo',
+'userlogin' => 'Bhitri bolon / ekaunṭ tear',
+'userloginnocreate' => 'Bhitri bolo',
 'logout' => 'Bahre oḍoń',
-'wiki_userlogout' => 'Bahre oḍoń',
+'userlogout' => 'Bahre oḍoń',
 'notloggedin' => 'Bhitri baṅ bolokana',
 'nologin' => "Amaḱ do cet́ wikipeḍiare ekaunṭ banuḱtama? Ado '''$1'''",
 'nologinlink' => 'account tear me',
 'createaccount' => 'Ṭhai benaome',
 'gotaccount' => 'Amaḱ do cet́ miṭten ekaunṭ tear menaḱtama? $1 tearmẽ.',
 'gotaccountlink' => 'Bhitri bolon',
-'wiki_userlogin-resetlink' => 'Amaḱ boloḱ talam cạbi sanamem hiṛińkeda?',
+'userlogin-resetlink' => 'Amaḱ boloḱ talam cạbi sanamem hiṛińkeda?',
 'createaccountmail' => 'E-mail hotete',
 'createaccountreason' => 'Karon',
 'badretype' => 'Am do okaṭaḱ oku nambarkom em keda ona do baṅ milạolena.',
-'wiki_userexists' => 'Laṛcaṛicaḱ ńutum em hoyena ona do beohar hoyakana.
+'userexists' => 'Laṛcaṛicaḱ ńutum em hoyena ona do beohar hoyakana.
 Dayakatet́ eṭagaḱ ńutum bachaome.',
 'loginerror' => 'Bhitri bolok do vulgea',
 'createaccounterror' => 'Ekaunṭ do baṅ tear lena: $1',
@@ -436,12 +436,12 @@ Ale do baḍae ocolem amaḱ kuki doe kạmikana, sakam do arhõ rakaṕ lạgit
 'noname' => 'Am do asol beoharićaḱ ńutum ṭhikte bam emakada.',
 'loginsuccesstitle' => 'Bhitri boloḱ do moctege puraoena',
 'loginsuccess' => '\'\'\'Am do nitge "$1" ńutumte {{SITENAME}} rem bolo akana.',
-'nosuchwiki_user' => '"$1" ńutuman jahan beoharić bạnuea.
+'nosuchuser' => '"$1" ńutuman jahan beoharić bạnuea.
 Beoharićaḱ ńutum do bukṛogea.
-Amaḱ bananko ńelmẽ, se [[Special:wiki_userlogin/signup nãwã mit́ṭen ekaunṭ tearmẽ]].',
-'nosuchwiki_usershort' => '"$1" ńutuman jahãe beoharko do banuḱkoa. Ńutum reaḱ banan biḍaomẽ.',
-'nowiki_userspecified' => 'Am do pusṭaote laṛcaṛićaḱ ńutum em hoyoḱtama.',
-'login-wiki_userblocked' => 'Nui laṛcaṛic doe esetgea. bhitri boloḱ ạidạri bań emoḱ kana.',
+Amaḱ bananko ńelmẽ, se [[Special:Userlogin/signup nãwã mit́ṭen ekaunṭ tearmẽ]].',
+'nosuchusershort' => '"$1" ńutuman jahãe beoharko do banuḱkoa. Ńutum reaḱ banan biḍaomẽ.',
+'nouserspecified' => 'Am do pusṭaote laṛcaṛićaḱ ńutum em hoyoḱtama.',
+'login-userblocked' => 'Nui laṛcaṛic doe esetgea. bhitri boloḱ ạidạri bań emoḱ kana.',
 'wrongpassword' => 'Bań milaoaḱ oku nambar em hoyakana.
 Daya kate arhõ mitdhom kurumuṭuyme.',
 'wrongpasswordempty' => 'Em hoyen oku nambar do cetge banuḱa.
@@ -469,14 +469,14 @@ Daya kate ńam porte arhõ bhitri boloḱme.',
 'createaccount-title' => '{{SITENAME}} lạgit́te ekaunṭ benao',
 'createaccount-text' => 'Okoe co am lạgit́te mitṭen ekaunṭko amaḱ e-mail ṭhikạna lạgit {{SITENAME}} re ($4) ńutum "$2", oku nambar "$3".
 Am do mesagem baṅ daṛeyaḱa, judi noa ekaunṭ do vulge benaolen khan.',
-'wiki_usernamehasherror' => 'Beoharićaḱ ńutumre hes horop baṅ tahẽdaṛeaḱa',
+'usernamehasherror' => 'Beoharićaḱ ńutumre hes horop baṅ tahẽdaṛeaḱa',
 'login-throttled' => 'Am do mitghạri lahare por por aema dhao boloḱem kurumuṭu keda.
 Arhõ kurumuṭue lahare dayakate thoṛagan tạṅgiemẽ.',
 'login-abort-generic' => 'Amaḱ bhitri boloḱ do baṅ hoylena - batena.',
 'loginlanguagelabel' => 'katha: $1',
 
 # E-mail sending
-'wiki_user-mail-no-addy' => 'Jahan e-mail ṭhikana bạgi kate e-mail kul kurumuṭu hoena.',
+'user-mail-no-addy' => 'Jahan e-mail ṭhikana bạgi kate e-mail kul kurumuṭu hoena.',
 
 # Change password dialog
 'resetpass' => 'Oku nambar bodol',
@@ -499,7 +499,7 @@ Nitoḱ do am bhitritem boloḱkana...',
 'passwordreset-legend' => 'Nãwãte oku nambar emme',
 'passwordreset-disabled' => 'Noa wikire amaḱ uku nambar nãwãte em lạgit subita do bando gea.',
 'passwordreset-pretext' => '{{PLURAL:$1 latar re menaḱ ḍaṭako khon mit́ṭen emmẽ}}',
-'passwordreset-wiki_username' => 'Beoharicaḱ ńutum:',
+'passwordreset-username' => 'Beoharicaḱ ńutum:',
 'passwordreset-domain' => 'Ḍomen:',
 'passwordreset-capture' => 'Sendra fol reaḱ e-mail ńelmẽ?',
 'passwordreset-capture-help' => 'Am do judi noa jacạy baksom lin lekhan, tobe nit lạgit́te em akan uku nambar são mit́ṭen e-mail ame uduḱama ar ona sãote beoharić ṭhen ona kuluḱa.',
@@ -564,7 +564,7 @@ Amaḱ IP ṭhikana do noa sakam sompadon jạṛre rekorḍoḱa.",
 'loginreqlink' => 'Bhitri boloḱ',
 'loginreqpagetext' => 'Eṭagaḱ sakamko ńel lạgit́te do am $1 hoyoḱ jạruṛtama.',
 'accmailtitle' => 'Uku nambar do kulena.',
-'accmailtext' => '[[wiki_user talk:$1 $1]] lạgit́te aćte benaoen uku nambar do $2 kul hoena.
+'accmailtext' => '[[User talk:$1 $1]] lạgit́te aćte benaoen uku nambar do $2 kul hoena.
 Bhitri bolo kateḱ noa nãwã ekaunṭ lạgit uku nambar "[[Special:ChangePassword Change password]]" sakam khonem bodol daṛyakya.',
 'newarticle' => '(Nãwa)',
 'newarticletext' => "Am do oka mitṭen joṛaoem pańja akada, onaṭak do bạnuḱa.
@@ -579,8 +579,8 @@ or [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page]</span>.',
 
 You can [[Special:Search/{{PAGENAME}}|search for this page title]] in other pages,
 or <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} search the related logs]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => '"<nowiki>$1</nowiki>" ńutuman jahãe beoharićaḱ ekaunṭ do baṅ resṭri hoeakana. Daya kate biḍạo katet́ ńelmẽ noa sakam do benoa/sompadonem menet́ kana se baṅ.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Beoharićaḱ "$1" ekaunṭ do baṅ resṭire akana.',
+'userpage-userdoesnotexist' => '"<nowiki>$1</nowiki>" ńutuman jahãe beoharićaḱ ekaunṭ do baṅ resṭri hoeakana. Daya kate biḍạo katet́ ńelmẽ noa sakam do benoa/sompadonem menet́ kana se baṅ.',
+'userpage-userdoesnotexist-view' => 'Beoharićaḱ "$1" ekaunṭ do baṅ resṭire akana.',
 'blocked-notice-logextract' => 'Nui beoharić do nitoḱe esetgea.
 Refarens lạgit́te nahaḱ boloḱ do latare em hoena:',
 'updated' => '(Halot ruaṛ)',
@@ -666,9 +666,9 @@ Unuduḱ: '''({{int:cur}})''' = nahaḱ nãwã aroeko saõte tulạo, '''({{int:
 
 # Revision deletion
 'rev-deleted-comment' => '(Sompadon reaḱ guṭ katha do ocoǵ hoena)',
-'rev-deleted-wiki_user' => '(laṛcaṛić ńutum ocoḱena)',
+'rev-deleted-user' => '(laṛcaṛić ńutum ocoḱena)',
 'rev-deleted-event' => '(Log kạmi do ocog hoena)',
-'rev-deleted-wiki_user-contribs' => '[Beoharićaḱ ńutum se IP ṭhikạna do ocog hoena - kạmi khon sompadon do uku hoe akana]',
+'rev-deleted-user-contribs' => '[Beoharićaḱ ńutum se IP ṭhikạna do ocog hoena - kạmi khon sompadon do uku hoe akana]',
 'rev-delundel' => 'ńeloḱ/danaṅ',
 'rev-showdeleted' => 'Uduḱme',
 'revisiondelete' => 'Get giḍi/nãwã aro baṅ getgiḍi',
@@ -679,7 +679,7 @@ Unuduḱ: '''({{int:cur}})''' = nahaḱ nãwã aroeko saõte tulạo, '''({{int:
 'revdelete-hide-image' => 'Rẽt reaḱ babotko ukue mẽ',
 'revdelete-hide-name' => 'Kạmi ar bejha ukue mẽ',
 'revdelete-hide-comment' => 'Sompadon gut katha ukue mẽ',
-'revdelete-hide-wiki_user' => 'Sompadonićaḱ beohar ńutum/IP ṭhikạna ukuemẽ',
+'revdelete-hide-user' => 'Sompadonićaḱ beohar ńutum/IP ṭhikạna ukuemẽ',
 'revdelete-radio-same' => '(alom bodola)',
 'revdelete-radio-set' => 'Hẽ',
 'revdelete-radio-unset' => 'Baṅ',
@@ -765,7 +765,7 @@ Unuduḱ: '''({{int:cur}})''' = nahaḱ nãwã aroeko saõte tulạo, '''({{int:
 'timezoneregion-australia' => 'Ausṭralia',
 'prefs-files' => 'Rẽtko',
 'youremail' => 'E-mail:',
-'wiki_username' => 'Beoharićaḱ ńutum:',
+'username' => 'Beoharićaḱ ńutum:',
 'uid' => 'Beoharićaḱ cinhạo nombor',
 'yourrealname' => 'Sạri ńutum',
 'yourlanguage' => 'Pạrsi:',
@@ -776,17 +776,17 @@ Unuduḱ: '''({{int:cur}})''' = nahaḱ nãwã aroeko saõte tulạo, '''({{int:
 'prefs-help-email-others' => 'Am são e-mail hotete jogajog dohoy lạgitte mitṭen joṛao se amaḱ katha roṛaḱ sakam bachao jońme.
 Amaḱ e-mail ṭhikạna do bań cabaḱa tinre onko do ko beohara',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'E-mail ṭhikạna do jewetge ńamena',
 'email-address-validity-invalid' => 'Amaḱ jewet e-mail ṭhkạna emmẽ',
 
-# wiki_user rights
-'wiki_userrights' => 'Beoharićaḱ laṛcaṛ ektiạrko',
-'wiki_userrights-lookup-wiki_user' => 'Beoharkoaḱ gãotako laṛcaṛ',
-'wiki_userrights-wiki_user-editname' => 'Beoharićaḱ ńutum emmẽ',
-'editwiki_usergroup' => 'Beoharićaḱ gãotako toṅgeymẽ',
-'wiki_userrights-editwiki_usergroup' => 'Beoharićaḱ gãotako toṅgeymẽ',
-'savewiki_usergroups' => 'Beoharićaḱ gãotako rukhiyaymẽ',
+# User rights
+'userrights' => 'Beoharićaḱ laṛcaṛ ektiạrko',
+'userrights-lookup-user' => 'Beoharkoaḱ gãotako laṛcaṛ',
+'userrights-user-editname' => 'Beoharićaḱ ńutum emmẽ',
+'editusergroup' => 'Beoharićaḱ gãotako toṅgeymẽ',
+'userrights-editusergroup' => 'Beoharićaḱ gãotako toṅgeymẽ',
+'saveusergroups' => 'Beoharićaḱ gãotako rukhiyaymẽ',
 
 # Rights
 'right-read' => 'Sakamko paṛhaomẽ',
@@ -866,7 +866,7 @@ Amaḱ e-mail ṭhikạna do bań cabaḱa tinre onko do ko beohara',
 'listfiles' => 'Rẽt reaḱ tạlika',
 'listfiles_date' => 'Tạrikh',
 'listfiles_name' => 'Ńutum',
-'listfiles_wiki_user' => 'Beoharić, Laṛcaṛic',
+'listfiles_user' => 'Beoharić, Laṛcaṛic',
 
 # File description page
 'file-anchor-link' => 'Re̕t',
@@ -879,7 +879,7 @@ Amaḱ e-mail ṭhikạna do bań cabaḱa tinre onko do ko beohara',
 'filehist-datetime' => '̣Tạrikh/So̠mo̠y',
 'filehist-thumb' => 'Ṭip',
 'filehist-thumbtext' => '$1 lekan thambnail varson',
-'filehist-wiki_user' => 'Laṛcaṛić',
+'filehist-user' => 'Laṛcaṛić',
 'filehist-dimensions' => 'Maṕ',
 'filehist-comment' => 'Roṛ',
 'imagelinks' => 'Fael bebohar',
@@ -903,10 +903,10 @@ Noa reaḱ pasnao katha [$2 rẽt pasnao sakam] latare emena',
 'prefixindex' => 'Sanam sakam re joṛao menaḱ',
 'shortpages' => 'Huḍiń sakamko',
 'longpages' => 'Jiliń sakamko',
-'listwiki_users' => 'beoharićaḱ tạlika',
-'wiki_usercreated' => '{{JẠT: $3 | benawakan}} $1 tarikre $2 okte',
+'listusers' => 'beoharićaḱ tạlika',
+'usercreated' => '{{JẠT: $3 | benawakan}} $1 tarikre $2 okte',
 'newpages' => 'Nãwa Patako',
-'newpages-wiki_username' => 'Beoharićaḱ ńutum:',
+'newpages-username' => 'Beoharićaḱ ńutum:',
 'ancientpages' => 'Mare sakamko',
 'move' => 'Ocoḱme, Kulme',
 'movethispage' => 'Noa sakam ocogmẽ',
@@ -935,12 +935,12 @@ Noa reaḱ pasnao katha [$2 rẽt pasnao sakam] latare emena',
 # Special:LinkSearch
 'linksearch-line' => '$2 khon $1 re joṛao hoeakana',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'Udugmẽ',
-'listwiki_users-blocked' => '(Esetgea)',
+# Special:ListUsers
+'listusers-submit' => 'Udugmẽ',
+'listusers-blocked' => '(Esetgea)',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Laṛcaṛićaḱ tear cạbi',
+# Special:Log/newusers
+'newuserlogpage' => 'Laṛcaṛićaḱ tear cạbi',
 
 # Special:ListGroupRights
 'listgrouprights-group' => 'Gaõta',
@@ -950,12 +950,12 @@ Noa reaḱ pasnao katha [$2 rẽt pasnao sakam] latare emena',
 'listgrouprights-addgroup-all' => 'Joto gaõtare ko soṅgekom',
 'listgrouprights-removegroup-all' => 'Joto gaõtaren ko ocoḱgiḍikom',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Nui beoharić e-mail emayme',
+# E-mail user
+'emailuser' => 'Nui beoharić e-mail emayme',
 'emailpage' => 'E-mail beoharić',
 'noemailtitle' => 'E-mail ṭhikạna do banuḱa',
-'emailwiki_username' => 'Beoharićaḱ ńutum:',
-'emailwiki_usernamesubmit' => 'Em',
+'emailusername' => 'Beoharićaḱ ńutum:',
+'emailusernamesubmit' => 'Em',
 'emailfrom' => 'Kulić:',
 'emailto' => 'Ńamić:',
 'emailmessage' => 'Mesag',
@@ -1021,7 +1021,7 @@ Noa reaḱ pasnao katha [$2 rẽt pasnao sakam] latare emena',
 'sp-contributions-logs' => 'Tala',
 'sp-contributions-talk' => 'Roṛ',
 'sp-contributions-search' => 'Kạmiko emoḱ lạgitte sendrayme',
-'sp-contributions-wiki_username' => 'IP ṭhikạna se laṛcaṛićaḱ n̕utum',
+'sp-contributions-username' => 'IP ṭhikạna se laṛcaṛićaḱ n̕utum',
 'sp-contributions-toponly' => 'Khạli nahaḱ nãwã aroyen joṛao kamiko udukme',
 'sp-contributions-submit' => 'Sendra',
 
@@ -1090,7 +1090,7 @@ Noa reaḱ pasnao katha [$2 rẽt pasnao sakam] latare emena',
 'import-upload-filename' => 'Rẽt ńutum',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Amaḱ́ bebo̠harić sakam',
+'tooltip-pt-userpage' => 'Amaḱ́ bebo̠harić sakam',
 'tooltip-pt-mytalk' => 'Amaḱ katha ro̠ṛrenaḱ́ sakam',
 'tooltip-pt-preferences' => 'Amaḱ pạsindko',
 'tooltip-pt-watchlist' => 'Sakam tạlika okaṭak̕katet́ am do nãwã aroy lạgitem ńeleḱkan',
@@ -1123,13 +1123,13 @@ Ona te source em ńel daṛeaḱ',
 'tooltip-t-recentchangeslinked' => 'Noa sakam re nitaḱ bodol akan sakam renaḱ linked',
 'tooltip-feed-atom' => 'Noa sakam lạgit́ atom jomaḱ',
 'tooltip-t-contributions' => 'Beoharićak kami reaḱ tạ̣lika',
-'tooltip-t-emailwiki_user' => 'Nui beoharić mitṭen e-mail kulayme',
+'tooltip-t-emailuser' => 'Nui beoharić mitṭen e-mail kulayme',
 'tooltip-t-upload' => 'Failko aploḍ̣me',
 'tooltip-t-specialpages' => 'Jạruṛ patakureaḱ tạlikạ',
 'tooltip-t-print' => 'Printoḱ lekan sakam',
 'tooltip-t-permalink' => 'Terejuge joṛaokam ñel sakam',
 'tooltip-ca-nstab-main' => 'Bahal sakam ńel me',
-'tooltip-ca-nstab-wiki_user' => 'Beoharićaḱ sakam uduḱme',
+'tooltip-ca-nstab-user' => 'Beoharićaḱ sakam uduḱme',
 'tooltip-ca-nstab-special' => 'Noa do nij/bises sakam kana, amem menle rehõ bam joṛao dareaḱa',
 'tooltip-ca-nstab-project' => "project page nel' me",
 'tooltip-ca-nstab-image' => 'Fael sakam ńel',

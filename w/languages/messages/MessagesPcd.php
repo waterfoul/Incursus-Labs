@@ -14,7 +14,7 @@
 $fallback = 'fr';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Loïens soulinés:',
 'tog-justify' => 'Aligner ches paragrafes',
 'tog-hideminor' => 'Muche ches tiots edits din ches nouvieus cangemints',
@@ -35,7 +35,7 @@ $messages = array(
 'tog-previewontop' => "Aficher l'prévue édvint el bouéte édite",
 'tog-previewonfirst' => "Aficher l'prévue au preumié édite.",
 'tog-enotifwatchlistpages' => "M'éspédier un imèle quante eune pache su m'lisse à suire est cangée",
-'tog-enotifwiki_usertalkpages' => 'Éspédier un imèle su em bouéte quante m\'pache "Dvise Uzeu" est candgée.',
+'tog-enotifusertalkpages' => 'Éspédier un imèle su em bouéte quante m\'pache "Dvise Uzeu" est candgée.',
 'tog-enotifminoredits' => "M'éspédier étou un imèle pou chés tiots canjemints d'chés paches o d'chés fichiés",
 'tog-shownumberswatching' => "Aficher ch'nombe ed gins qu'ont vu.",
 'tog-watchlisthideown' => 'Muche ems édicions dseur el lisse à suire',
@@ -201,7 +201,7 @@ $messages = array(
 'talk' => 'distchuter',
 'views' => 'Vues',
 'toolbox' => 'Boéte à otis',
-'wiki_userpage' => 'Vir el pache dech uzeu',
+'userpage' => 'Vir el pache dech uzeu',
 'projectpage' => "Vir l'pache dech prodjé",
 'imagepage' => 'Vir el pache dech fichié',
 'mediawikipage' => 'Vir messache pache',
@@ -219,7 +219,7 @@ $messages = array(
 'jumptonavigation' => 'navigachon',
 'jumptosearch' => 'tracher',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'à pérpos éd {{SITENAME}}',
 'aboutpage' => 'Project:à pérpos',
 'copyright' => "Ch'contnu, il est disponipe dsou $1.",
@@ -271,7 +271,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Pache',
-'nstab-wiki_user' => 'Pache dech uzeu',
+'nstab-user' => 'Pache dech uzeu',
 'nstab-media' => 'Média pache',
 'nstab-special' => 'Pache éspéchiale',
 'nstab-project' => 'Pache éd prodjé',
@@ -290,7 +290,7 @@ $messages = array(
 'laggedslavemode' => "'''Afute:''' Pététe éq l'pache-lo n'o poin chés darins canjemints.",
 'missing-article' => "El base éd dounées n'o poin treuvé ech teske d'eune pache éq ale d'vroait treuver, aveuc ch'nom  \"\$1\" \$2. <br />  Généralemint, ch'est pasqué in o sui eune anthieusse diff o bin un histourique érlié aveuc eune pache défachée.
 
-Si s'n'est poin ch'cas-lo, pététe éq ch'est un bogue din ch'businkillache. <br /> I feut signaler ch'probléme-lo à un [[Special:Listwiki_users/sysop|administrateu]], aveuc l'URL.",
+Si s'n'est poin ch'cas-lo, pététe éq ch'est un bogue din ch'businkillache. <br /> I feut signaler ch'probléme-lo à un [[Special:ListUsers/sysop|administrateu]], aveuc l'URL.",
 'missingarticle-rev' => '(révision#: $1)',
 'missingarticle-diff' => '(Diff: $1, $2)',
 'internalerror' => 'Bérlurache intérne',
@@ -328,26 +328,26 @@ N'obliez poin d'parsonnaliser vos [[Special:Preferences|préférinches édseur {
 'login' => 'Intrer',
 'nav-login-createaccount' => 'Intrer / créer vote conpte',
 'loginprompt' => 'I feut avoèr dés coukies pou pouvoèr intrer din {{SITENAME}}.',
-'wiki_userlogin' => 'Intrer / créer vote conpte',
+'userlogin' => 'Intrer / créer vote conpte',
 'logout' => 'Sortir',
-'wiki_userlogout' => 'Sortir',
+'userlogout' => 'Sortir',
 'notloggedin' => 'Poin connékté',
 'nologin' => "os n'avez mie un conpte? '''$1'''.",
 'nologinlink' => 'Créer un conpte',
 'createaccount' => 'Créer un conpte',
 'gotaccount' => "Jou qu'os avez piécha un conpte? '''$1'''.",
 'gotaccountlink' => 'Intrer',
-'wiki_userlogin-resetlink' => "Vos avez oblié vous détals d'connécsion ?",
+'userlogin-resetlink' => "Vos avez oblié vous détals d'connécsion ?",
 'createaccountmail' => 'par imèle',
 'badretype' => "Chés mots d'passe intrés, is sont poin bon.",
-'wiki_userexists' => "Nom d’utilisateur entré déjà utilisé.
+'userexists' => "Nom d’utilisateur entré déjà utilisé.
 Nom d’uzeu intré déjo donné.
 i feut prinde un eute nom.
 j'm'escuse mais i feut prinde un aute nom.",
 'loginerror' => 'Bérlurache del intrée',
 'noname' => "Os n'avez poin donné un nom d'uzeu valabe.",
 'loginsuccess' => "'''Achteur os ètes intré{{GENDER:||e|(e)}} din {{SITENAME}} conme \"\$1\".'''",
-'nowiki_userspecified' => "Os dvez intrer un nom d'uzeu.",
+'nouserspecified' => "Os dvez intrer un nom d'uzeu.",
 'mailmypassword' => "Imèle un nouvieu mot d'passe",
 'passwordremindertitle' => "Nouvieu mot d'passe tanporoère pou {{SITENAME}}",
 'noemail' => "I n'y o poin d'adél pou echl' uzeu  « $1 ».",
@@ -528,7 +528,7 @@ Léginde : ({{MediaWiki:Cur}}) = différinches aveuc el vérchon à ch'momint-ch
 'changepassword' => "Canger ch'mot d'passe",
 'timezoneregion-europe' => 'Urope',
 'youremail' => 'Imèle:',
-'wiki_username' => "Nom d'uzeu:",
+'username' => "Nom d'uzeu:",
 'uid' => 'ID dech uzeu:',
 'prefs-memberingroups' => 'Mimbe éd {{PLURAL:$1|groupe|groupes}}:',
 'yourrealname' => 'Vrai nom:',
@@ -542,11 +542,11 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 'prefs-help-email-others' => "Os pouvez auchi couésir d'laicher les eutes vos contacter par imèle aveuc un loïen édseur vote pache éd distchussion d'uzeu sans qu'i soèche nécessaire ed révéler vote idintité.",
 'prefs-help-email-required' => 'I feut eune iméle adérche',
 
-# wiki_user rights
-'wiki_userrights-groupsmember' => 'Mimbe éd:',
+# User rights
+'userrights-groupsmember' => 'Mimbe éd:',
 
 # Groups
-'group-wiki_user' => 'Uzeus',
+'group-user' => 'Uzeus',
 'group-autoconfirmed' => 'Uzeus inrégistrés',
 'group-sysop' => 'Aménistrateus',
 'group-bureaucrat' => 'Buroécrates',
@@ -556,7 +556,7 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 
 'grouppage-sysop' => '{{ns:project}}:Aménistrateus',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => "Jornal d'chés droés dechl uzeu",
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -568,7 +568,7 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 'action-minoredit' => 'mértcher chol canjemint conme mineur',
 'action-move' => "érlonmer l'pache-lo",
 'action-move-subpages' => 'érlonmer chol pache et pi ses dsous-paches',
-'action-move-rootwiki_userpages' => "érlonmer l' pache princhipale d’un uzeu",
+'action-move-rootuserpages' => "érlonmer l' pache princhipale d’un uzeu",
 'action-movefile' => "érlonmer ch'fichié-lo",
 'action-upload' => 'téléquértcher ech fichié',
 'action-reupload' => "écatir l'anchien fichié",
@@ -644,7 +644,7 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 'filehist-datetime' => 'Date/Tans',
 'filehist-thumb' => 'Tiote image',
 'filehist-thumbtext' => "Image pou l'vérchon éd $1",
-'filehist-wiki_user' => 'Uzeu',
+'filehist-user' => 'Uzeu',
 'filehist-dimensions' => 'Diminsions',
 'filehist-comment' => 'Fichié éd chés conmints',
 'imagelinks' => 'Usage dech fichié',
@@ -672,7 +672,7 @@ Vir apré ([$2 pache]).",
 
 # Statistics
 'statistics' => 'Éstatistikes',
-'statistics-wiki_users' => '[[Special:Listwiki_users|Uzeus]] inrégistrés',
+'statistics-users' => '[[Special:ListUsers|Uzeus]] inrégistrés',
 
 'disambiguations' => 'Paches aveuc des loïens vers des paches du meume nom',
 'disambiguationspage' => 'Template:Omonymie',
@@ -703,8 +703,8 @@ Vir apré ([$2 pache]).",
 'deadendpages' => "Paches in tchul d'so",
 'protectedpages' => 'Paches défènnées',
 'protectedtitles' => 'Tites défènnés',
-'listwiki_users' => 'Lisse des uzeus',
-'wiki_usercreated' => '{{GENDER:$3|Créé}} ech $1 à $2',
+'listusers' => 'Lisse des uzeus',
+'usercreated' => '{{GENDER:$3|Créé}} ech $1 à $2',
 'newpages' => 'Novèles paches',
 'ancientpages' => 'Paches les pus vieilles',
 'move' => 'Déplacher',
@@ -745,18 +745,18 @@ Vir apré ([$2 pache]).",
 'linksearch' => 'Loïens éstérieurs',
 'linksearch-line' => '$1 est loïé édpuis $2',
 
-# Special:Activewiki_users
-'activewiki_users' => 'Lisse des ouvreus uzeus',
+# Special:ActiveUsers
+'activeusers' => 'Lisse des ouvreus uzeus',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => "Jornal éd chés créachons d'comptes d'uzeu",
+# Special:Log/newusers
+'newuserlogpage' => "Jornal éd chés créachons d'comptes d'uzeu",
 
 # Special:ListGroupRights
 'listgrouprights-summary' => "L'pache-lo ch'est ène lisse d'chés groupes d'uzeus définis édseur ech wiki aveuc chés drouots d'intrèe achuchonnés.<br />I put y avoèr ichi d'eutes [[MediaWiki:Listgrouprights-helppage|informacions]] édseur chés drouots individuèls. ([[{{MediaWiki:Listgrouprights-helppage}}|vir]])",
 'listgrouprights-members' => '(lisse éd chés mimbes)',
 
-# E-mail wiki_user
-'emailwiki_user' => "Imèle echl'uzeu-lo",
+# E-mail user
+'emailuser' => "Imèle echl'uzeu-lo",
 'emailpage' => 'Imèle dech uzeu',
 
 # Watchlist
@@ -793,10 +793,10 @@ Vir $2 pou eune lisse d'chés darinnes défachons.",
 'rollbackfailed' => 'Értour loupé',
 'cantrollback' => "éj peus mie invérser l'édition;
 ch'darin contérbucheu, ch'est ch'seu auteur del pache-lo.",
-'alreadyrolled' => "éj pus mie invérser el darin édition éd [[:$1]] par [[wiki_user:$2|$2]] ([[wiki_user talk:$2|Talk]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
+'alreadyrolled' => "éj pus mie invérser el darin édition éd [[:$1]] par [[User:$2|$2]] ([[User talk:$2|Talk]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
 queuque-un il o édité ou invérsé l'pache déjo.
 
-L' passèie édition del pache étoait par  [[wiki_user:$3|$3]] ([[wiki_user talk:$3|Talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).",
+L' passèie édition del pache étoait par  [[User:$3|$3]] ([[User talk:$3|Talk]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).",
 
 # Protect
 'protectlogpage' => 'Gasète éd chés protéccions',
@@ -848,7 +848,7 @@ Vlo chés réglages del pache '''$1''' à ch'momint-chi:",
 'sp-contributions-logs' => 'Gasètes',
 'sp-contributions-talk' => 'Dviser',
 'sp-contributions-search' => 'Tracher pou chés contérbuchons',
-'sp-contributions-wiki_username' => "Adérche IP ou nom d'uzeu",
+'sp-contributions-username' => "Adérche IP ou nom d'uzeu",
 'sp-contributions-toponly' => "n'montrer qu'chés darins canjemints",
 'sp-contributions-submit' => 'Tracher',
 
@@ -930,7 +930,7 @@ Din chés cas-lo, I feut érlonmer ou ratatouiller l'pache aveuc l'main.",
 'thumbnail_error' => "Bérlurage tandir l'créachon éd la miniature : $1",
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Vote pache éd uzeu',
+'tooltip-pt-userpage' => 'Vote pache éd uzeu',
 'tooltip-pt-mytalk' => "Vote pache d'pérlache",
 'tooltip-pt-preferences' => 'Vos préférinches',
 'tooltip-pt-watchlist' => "El lisse d'chés paches éq vos suivez chés canjemints",
@@ -966,13 +966,13 @@ Os pouvez vir l'source",
 'tooltip-feed-rss' => "RSS pipe pou l'pache-lo",
 'tooltip-feed-atom' => 'Fil Atom pou chol pache',
 'tooltip-t-contributions' => "Vir l'lisse éd chés contérbuchons dech uzeu-lo",
-'tooltip-t-emailwiki_user' => "Éspédier un imèle à cht'uzeu-lo",
+'tooltip-t-emailuser' => "Éspédier un imèle à cht'uzeu-lo",
 'tooltip-t-upload' => 'Quértcher chés fichiés',
 'tooltip-t-specialpages' => 'Lisse éd tous chés paches éspéchiales',
 'tooltip-t-print' => 'Imprimabe vérchon del pache-lo',
 'tooltip-t-permalink' => "Loïen définitive aveuc cht'canjemint del pache",
 'tooltip-ca-nstab-main' => "Vir echl'étnu del pache",
-'tooltip-ca-nstab-wiki_user' => 'Vir el pache dech uzeu',
+'tooltip-ca-nstab-user' => 'Vir el pache dech uzeu',
 'tooltip-ca-nstab-special' => "Ch'est eune pache éspéchiale, os n'pouvez poin éditer l'pache-lo",
 'tooltip-ca-nstab-project' => "Vir l'pache dech proujé",
 'tooltip-ca-nstab-image' => "Vir ch'fichié del pache",
@@ -1067,12 +1067,12 @@ Chés eutes cans is s'ront muchés pèr défeut.
 'specialpages-note' => '----
 * Paches éspéchiales conformes.
 * <span class="mw-specialpagerestricted">Paches éspéchiales réstrintes.</span>
-* <span class="mw-specialpagecached">Paches éspéchiales seulemint in muche (pétète des viwiki_useries).</span>',
+* <span class="mw-specialpagecached">Paches éspéchiales seulemint in muche (pétète des viuseries).</span>',
 'specialpages-group-maintenance' => "Rapports d'maintenanche",
 'specialpages-group-other' => 'Eutes paches éspéchiales',
 'specialpages-group-changes' => 'Darins canjemints pi gazètes',
 'specialpages-group-media' => "Rapports pi imports d'chés fichiés médias",
-'specialpages-group-wiki_users' => 'Uzeus pi leus droués',
+'specialpages-group-users' => 'Uzeus pi leus droués',
 'specialpages-group-highuse' => 'Paches bougrémint implouéyées',
 'specialpages-group-pages' => "Lisses d'chés paches",
 'specialpages-group-pagetools' => 'Otis pour chés paches',

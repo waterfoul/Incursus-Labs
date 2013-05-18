@@ -9,7 +9,7 @@
  *
  * @author Philip <philip.npc@gmail.com>
  * @author Symane
- * @author Vipwiki_user
+ * @author Vipuser
  */
 
 $fallback = 'gan-hant, zh-hant, zh-hans';

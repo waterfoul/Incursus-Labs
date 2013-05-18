@@ -118,7 +118,7 @@ class XmlTypeCheck {
 	 * @param $attribs
 	 */
 	private function elementOpen( $parser, $name, $attribs ) {
-		if( call_wiki_user_func( $this->filterCallback, $name, $attribs ) ) {
+		if( call_user_func( $this->filterCallback, $name, $attribs ) ) {
 			// Filter hit!
 			$this->filterMatch = true;
 		}

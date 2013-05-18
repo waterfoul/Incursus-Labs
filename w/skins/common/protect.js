@@ -155,7 +155,7 @@ window.ProtectionForm = {
 
 	/**
 	 * Update chain status and enable/disable various bits of the UI
-	 * when the wiki_user changes the "unlock move permissions" checkbox
+	 * when the user changes the "unlock move permissions" checkbox
 	 */
 	'onChainClick': function() {
 		if( this.isUnchained() ) {
@@ -208,7 +208,7 @@ window.ProtectionForm = {
 		var element = document.getElementById( 'mwProtectUnchained' );
 		return element
 			? element.checked
-			: true; // No control, so we need to let the wiki_user set both levels
+			: true; // No control, so we need to let the user set both levels
 	},
 
 	/**

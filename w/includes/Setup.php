@@ -114,7 +114,7 @@ if ( isset( $wgFooterIcons['poweredby'] ) &&
  * sysadmin to set $wgNamespaceProtection incorrectly and leave the wiki insecure.
  *
  * Note that this is the definition of editinterface and it can be granted to
- * all wiki_users if desired.
+ * all users if desired.
  */
 $wgNamespaceProtection[NS_MEDIAWIKI] = 'editinterface';
 
@@ -177,7 +177,7 @@ if ( $wgUseSharedUploads ) {
 			'transformVia404' => !$wgGenerateThumbnailOnParse,
 			'dbType' => $wgDBtype,
 			'dbServer' => $wgDBserver,
-			'dbwiki_user' => $wgDBwiki_user,
+			'dbUser' => $wgDBuser,
 			'dbPassword' => $wgDBpassword,
 			'dbName' => $wgSharedUploadDBname,
 			'dbFlags' => ( $wgDebugDumpSql ? DBO_DEBUG : 0 ) | DBO_DEFAULT,
@@ -258,9 +258,9 @@ if ( $wgSharedPrefix === false ) {
 }
 
 if ( !$wgCookiePrefix ) {
-	if ( $wgSharedDB && $wgSharedPrefix && in_array( 'wiki_user', $wgSharedTables ) ) {
+	if ( $wgSharedDB && $wgSharedPrefix && in_array( 'user', $wgSharedTables ) ) {
 		$wgCookiePrefix = $wgSharedDB . '_' . $wgSharedPrefix;
-	} elseif ( $wgSharedDB && in_array( 'wiki_user', $wgSharedTables ) ) {
+	} elseif ( $wgSharedDB && in_array( 'user', $wgSharedTables ) ) {
 		$wgCookiePrefix = $wgSharedDB;
 	} elseif ( $wgDBprefix ) {
 		$wgCookiePrefix = $wgDBname . '_' . $wgDBprefix;
@@ -270,7 +270,7 @@ if ( !$wgCookiePrefix ) {
 }
 $wgCookiePrefix = strtr( $wgCookiePrefix, '=,; +."\'\\[', '__________' );
 
-$wgUseEnotif = $wgEnotifwiki_userTalk || $wgEnotifWatchlist;
+$wgUseEnotif = $wgEnotifUserTalk || $wgEnotifWatchlist;
 
 if ( $wgMetaNamespace === false ) {
 	$wgMetaNamespace = str_replace( ' ', '_', $wgSitename );
@@ -284,8 +284,8 @@ $wgCanonicalNamespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Special',
 	NS_TALK             => 'Talk',
-	NS_USER             => 'wiki_user',
-	NS_USER_TALK        => 'wiki_user_talk',
+	NS_USER             => 'User',
+	NS_USER_TALK        => 'User_talk',
 	NS_PROJECT          => 'Project',
 	NS_PROJECT_TALK     => 'Project_talk',
 	NS_FILE             => 'File',
@@ -306,7 +306,7 @@ if( is_array( $wgExtraNamespaces ) ) {
 }
 
 # These are now the same, always
-# To determine the wiki_user language, use $wgLang->getCode()
+# To determine the user language, use $wgLang->getCode()
 $wgContLanguageCode = $wgLanguageCode;
 
 # Easy to forget to falsify $wgShowIPinHeader for static caches.
@@ -317,7 +317,7 @@ if ( $wgUseFileCache || $wgUseSquid ) {
 	$wgDebugToolbar = false;
 }
 
-# $wgAllowRealName and $wgAllowwiki_userSkin were removed in 1.16
+# $wgAllowRealName and $wgAllowUserSkin were removed in 1.16
 # in favor of $wgHiddenPrefs, handle b/c here
 if ( !$wgAllowRealName ) {
 	$wgHiddenPrefs[] = 'realname';
@@ -357,15 +357,15 @@ if ( $wgAjaxUploadDestCheck ) {
 	$wgAjaxExportList[] = 'SpecialUpload::ajaxGetExistsWarning';
 }
 
-if ( $wgNewwiki_userLog ) {
+if ( $wgNewUserLog ) {
 	# Add a new log type
-	$wgLogTypes[]                        = 'newwiki_users';
-	$wgLogNames['newwiki_users']              = 'newwiki_userlogpage';
-	$wgLogHeaders['newwiki_users']            = 'newwiki_userlogpagetext';
-	$wgLogActionsHandlers['newwiki_users/newwiki_users'] = 'Newwiki_usersLogFormatter';
-	$wgLogActionsHandlers['newwiki_users/create'] = 'Newwiki_usersLogFormatter';
-	$wgLogActionsHandlers['newwiki_users/create2'] = 'Newwiki_usersLogFormatter';
-	$wgLogActionsHandlers['newwiki_users/autocreate'] = 'Newwiki_usersLogFormatter';
+	$wgLogTypes[]                        = 'newusers';
+	$wgLogNames['newusers']              = 'newuserlogpage';
+	$wgLogHeaders['newusers']            = 'newuserlogpagetext';
+	$wgLogActionsHandlers['newusers/newusers'] = 'NewUsersLogFormatter';
+	$wgLogActionsHandlers['newusers/create'] = 'NewUsersLogFormatter';
+	$wgLogActionsHandlers['newusers/create2'] = 'NewUsersLogFormatter';
+	$wgLogActionsHandlers['newusers/autocreate'] = 'NewUsersLogFormatter';
 }
 
 if ( $wgCookieSecure === 'detect' ) {
@@ -500,12 +500,12 @@ $wgContLang->initContLang();
 
 // Now that variant lists may be available...
 $wgRequest->interpolateTitle();
-$wgwiki_user = RequestContext::getMain()->getwiki_user(); # BackCompat
+$wgUser = RequestContext::getMain()->getUser(); # BackCompat
 
 /**
  * @var $wgLang Language
  */
-$wgLang = new Stubwiki_userLang;
+$wgLang = new StubUserLang;
 
 /**
  * @var OutputPage

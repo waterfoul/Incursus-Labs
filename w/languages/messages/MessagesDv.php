@@ -37,7 +37,7 @@ $specialPageAliases = array(
 	'Allpages'                  => array( 'ހުރިހާ ސަފްޙާއެއް' ),
 	'Contributions'             => array( 'ޙިއްސާ' ),
 	'CreateAccount'             => array( 'މެމްބަރުކަން ހާސިލްކުރައްވާ' ),
-	'Emailwiki_user'                 => array( 'މެމްބަރަށް އީ-މެއިލް ފޮނުވާ' ),
+	'Emailuser'                 => array( 'މެމްބަރަށް އީ-މެއިލް ފޮނުވާ' ),
 	'BlockList'                 => array( 'ބްލޮކް ކުރެވިފައިވާ ލިސްޓް' ),
 	'Listfiles'                 => array( 'ފައިލް ލިސްޓް' ),
 	'Longpages'                 => array( 'ދިގު ސަފްޙާތައް' ),
@@ -53,12 +53,12 @@ $specialPageAliases = array(
 	'Unusedcategories'          => array( 'ބޭނުން ނުކުރާ ޤިސްމުތައް' ),
 	'Unusedimages'              => array( 'ބޭނުން ނުކުރާ ފައިލް' ),
 	'Upload'                    => array( 'ފޮނުއްވާ' ),
-	'wiki_userlogin'                 => array( 'ވަދެވަޑައިގަންނަވާ' ),
-	'wiki_userlogout'                => array( 'ބޭރަށް ވަޑައިގަންނަވާ' ),
+	'Userlogin'                 => array( 'ވަދެވަޑައިގަންނަވާ' ),
+	'Userlogout'                => array( 'ބޭރަށް ވަޑައިގަންނަވާ' ),
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-hideminor' => 'ކުދި އުނި އިތުރުތައް އެންމެފަހުގެ ބަދަލުތަކުގެ ލިސްޓުން ފޮރުއްވަވާ',
 'tog-ccmeonemails' => 'އަޅުގަނޑު އެހެން މެމްބަރުންނަށް ފޮނުވާ އީމެއިލްގެ ނަކަލެއް އަޅުގަނޑަށް ފޮނުވާ',
 'tog-showhiddencats' => 'ފޮރުވިފައިވާ ޤިސްމުތައް ދައްކަވާ',
@@ -203,7 +203,7 @@ $messages = array(
 'talk' => 'ބަހުސް',
 'views' => 'ހިޔާލުފުޅުތައް',
 'toolbox' => 'އަތްމަތީފޮށި',
-'wiki_userpage' => 'މެންބަރުގެ ޞަފްޙާ ބައްލަވާ',
+'userpage' => 'މެންބަރުގެ ޞަފްޙާ ބައްލަވާ',
 'projectpage' => 'މަޝްރޫޢު ޞަފްޙާ ބައްލަވާ',
 'imagepage' => 'ފައިލު ޞަފްޙާ ބައްލަވާ',
 'mediawikipage' => 'މެސެޖު ޞަފްޙާ ބައްލަވާ',
@@ -225,7 +225,7 @@ $messages = array(
 $1',
 'pool-errorunknown' => 'ކޮންމެވެސް ކުށެއް',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}}ގެ ތަޢާރަފު',
 'aboutpage' => 'Project:ތަޢާރަފު',
 'copyright' => 'ހުރިހާ މާއްދާއެއް $1 ގެ ދަށުން ލިބެން އެބަހުއްޓެވެ.',
@@ -267,7 +267,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'މަޒުމޫނު',
-'nstab-wiki_user' => 'މެންބަރު ޞަފްޙާ',
+'nstab-user' => 'މެންބަރު ޞަފްޙާ',
 'nstab-media' => 'މީޑިއާ ޞަފްޙާ',
 'nstab-special' => 'ޚާއްސަ ޞަފްޙާ',
 'nstab-project' => 'މަޝްރޫޢު ޞަފްޙާ',
@@ -302,19 +302,19 @@ $1',
 'login' => 'ވަދެވަޑައިގަންނަވާ',
 'nav-login-createaccount' => 'ވަންނަވާ / މެންބަރަކަށް ވެވަޑައިގަންނަވާ',
 'loginprompt' => '{{SITENAME}}އަށް ވަންނަވަން ކުކީޒް ބޭނުންވާނެއެވެ.',
-'wiki_userlogin' => 'ވަންނަވާ / މެންބަރަކަށް ވެ ވަޑައިގަންނަވާ',
-'wiki_userloginnocreate' => 'ވަދެވަޑައިގަންނަވާ',
+'userlogin' => 'ވަންނަވާ / މެންބަރަކަށް ވެ ވަޑައިގަންނަވާ',
+'userloginnocreate' => 'ވަދެވަޑައިގަންނަވާ',
 'logout' => 'ބޭރަށް ވަޑައިގަންނަވާ',
-'wiki_userlogout' => 'ބޭރަށް ވަޑައިގަންނަވާ',
+'userlogout' => 'ބޭރަށް ވަޑައިގަންނަވާ',
 'nologin' => "މެމްބަރުކަން ހާސިލް ކުރައްވާފައި ނުވޭތޯ؟ '''$1'''",
 'nologinlink' => 'މެމްބަރުކަން ހާސިލް ކުރައްވާ!',
 'createaccount' => 'މެންބަރަކަށް ވެ ވަޑައިގަންނަވާ',
 'gotaccount' => 'މެމްބަރުކަން ހާސިލް ކުރައްވާފައި ނުވޭތޯ؟ $1',
 'gotaccountlink' => 'ވަދެވަޑައިގަންނަވާ',
-'wiki_userlogin-resetlink' => 'ވަދެވަޑައިގަތުމުގެ ސިއްރު ބަހާއި މެމްބަރު ނަން ހަނދާންނެތުނީތޯ؟',
+'userlogin-resetlink' => 'ވަދެވަޑައިގަތުމުގެ ސިއްރު ބަހާއި މެމްބަރު ނަން ހަނދާންނެތުނީތޯ؟',
 'createaccountreason' => 'ސަބަބު:',
 'badretype' => 'ތިޔަ ލިޔުއްވި ދެ ސިއްރުބަސް އެއް ސިއްރު ބަހާއި އަނެއް ސިއްރު ބަހާއި ދިމަލެއް ނުވޭ. އަދި ސިއްރުބަސް ރަނގަޅަށް ޖައްސަވާށެވެ!',
-'wiki_userexists' => 'ތިޔަ ލިޔުއްވި ނަން މިހާރުވެސް ދަނީ ބޭނުން ކުރެވެމުންނެވެ.
+'userexists' => 'ތިޔަ ލިޔުއްވި ނަން މިހާރުވެސް ދަނީ ބޭނުން ކުރެވެމުންނެވެ.
 އައު ނަމެއް އިހުތިޔާރު ކުރައްވާށެވެ.',
 'loginerror' => 'ވަނުމުގެ ކުށެއް',
 'createaccounterror' => 'ތިޔަ އެކައުންޓް ހެދޭގޮތެއް ނުވިއެވެ.: $1',
@@ -479,7 +479,7 @@ $1',
 'timezoneregion-europe' => 'ވިލާތު',
 'prefs-files' => 'ފައިލުތައް',
 'youremail' => '٭ އީމޭލު',
-'wiki_username' => 'މެންބަރުނަން:',
+'username' => 'މެންބަރުނަން:',
 'yourrealname' => '* އަސްލު ނަން',
 'yourlanguage' => 'ބަސް:',
 'yournick' => 'ލަގަބު/ކުއްނިއްޔާ:',
@@ -489,13 +489,13 @@ $1',
 'email' => 'އީމޭލު',
 'prefs-signature' => 'ސޮއި',
 
-# wiki_user rights
-'wiki_userrights' => 'މެންބަރުގެ ހައްގުތަކުގެ އިންތިޒާމް',
-'wiki_userrights-wiki_user-editname' => 'މެންބަރުނަން ލިޔުއްވާ:',
+# User rights
+'userrights' => 'މެންބަރުގެ ހައްގުތަކުގެ އިންތިޒާމް',
+'userrights-user-editname' => 'މެންބަރުނަން ލިޔުއްވާ:',
 
 # Groups
 'group' => 'ގްރޫޕް:',
-'group-wiki_user' => 'މެމްބަރުން',
+'group-user' => 'މެމްބަރުން',
 'group-autoconfirmed' => 'އޮޓޯމެމްބަރުން',
 'group-bot' => 'ބޮޓުން',
 'group-sysop' => 'އެޑްމިނިސްޓްރޭޓަރުން',
@@ -540,7 +540,7 @@ $1',
 'filehist-current' => 'މިހާރު',
 'filehist-datetime' => 'ތާރީޚް/ގަޑި',
 'filehist-thumb' => 'ތަމްބްނެއިލް',
-'filehist-wiki_user' => 'މެމްބަރު',
+'filehist-user' => 'މެމްބަރު',
 'filehist-comment' => 'ޚިޔާލު',
 'imagelinks' => 'ފާލަންތައް',
 'sharedupload-desc-here' => 'މި ފައިލަކީ $1ގެ ފައިލެކެވެ. އަދި އެހެން މަޝްރޫޢުތަކުގައި ބޭނުން ކުރެވިފައި ހުރެދާނެއެވެ.
@@ -554,7 +554,7 @@ $1',
 'statistics-header-pages' => 'ޞަފްޙާގެ ތަފާސްހިސާބު',
 'statistics-header-edits' => 'އުނިއިތުރުތަކުގެ ތަފާސްހިސާބު',
 'statistics-header-views' => 'ތަފާސްހިސާބު ބައްލަވާ',
-'statistics-header-wiki_users' => 'މެންބަރުގެ ތަފާސްހިސާބު',
+'statistics-header-users' => 'މެންބަރުގެ ތަފާސްހިސާބު',
 'statistics-header-hooks' => 'އެހެނިހެން ތަފާސްހިސާބު',
 'statistics-articles' => 'މަޒުމޫނުތައް',
 'statistics-pages' => 'ޞަފްޙާތައް',
@@ -562,9 +562,9 @@ $1',
 'statistics-files' => 'ފޮނުވިފައިވާ ފައިލުތައް',
 'statistics-edits' => '{{SITENAME}} ފެށުނުތާ ޞަފްޙާތަކަށް އުނިއިތުރު ގެނެވުނު އަދަދު',
 'statistics-edits-average' => 'ޞަފްޙާއަކަށް ގެނެވޭ އެވަރަޖު އުނިއިތުރު',
-'statistics-wiki_users' => 'ރަޖިސްޓަރކުރެވިފައިވާ [[Special:Listwiki_users|މެމްބަރުން]]',
-'statistics-wiki_users-active' => 'ހަރަކާތްތެރި މެމްބަރުން',
-'statistics-wiki_users-active-desc' => 'ފާއިތުވެދިޔަ {{PLURAL:$1|ދުވަސް|$1 ދުވަސްތައް}} ތެރޭގައި ކޮންމެވެސް ކަމެއް ކޮށްފައިވާ މެމްބަރުން',
+'statistics-users' => 'ރަޖިސްޓަރކުރެވިފައިވާ [[Special:ListUsers|މެމްބަރުން]]',
+'statistics-users-active' => 'ހަރަކާތްތެރި މެމްބަރުން',
+'statistics-users-active-desc' => 'ފާއިތުވެދިޔަ {{PLURAL:$1|ދުވަސް|$1 ދުވަސްތައް}} ތެރޭގައި ކޮންމެވެސް ކަމެއް ކޮށްފައިވާ މެމްބަރުން',
 'statistics-mostpopular' => 'އެންމެ މަޤްބޫލް ޞަފްޙާތައް',
 
 'brokenredirects' => 'އޮޅިފައިވާ މިސްރާބުތައް',
@@ -608,16 +608,16 @@ $1',
 [[Special:UnusedCategories|Unused categories]] are not shown here.
 Also see [[Special:WantedCategories|wanted categories]].',
 
-# Special:Activewiki_users
-'activewiki_users' => 'ހަރަކާތްތެރި މެމްބަރުންގެ ލިސްޓު',
-'activewiki_users-hidebots' => 'ބޮޓް ފޮރުއްވާ',
-'activewiki_users-hidesysops' => 'އެޑްމިނިސްޓްރޭޓަރުން ފޮރުއްވާ',
+# Special:ActiveUsers
+'activeusers' => 'ހަރަކާތްތެރި މެމްބަރުންގެ ލިސްޓު',
+'activeusers-hidebots' => 'ބޮޓް ފޮރުއްވާ',
+'activeusers-hidesysops' => 'އެޑްމިނިސްޓްރޭޓަރުން ފޮރުއްވާ',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(މެމްބަރުންގެ ލިސްޓު)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'މި މެންބަރަށް އީމޭލު ފޮނުއްވާ',
+# E-mail user
+'emailuser' => 'މި މެންބަރަށް އީމޭލު ފޮނުއްވާ',
 
 # Watchlist
 'watchlist' => 'މަގޭ ނަޒަރު',
@@ -664,7 +664,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'mycontris' => 'މަގޭ ހިއްސާ',
 
 'sp-contributions-talk' => 'ވާހަކަ',
-'sp-contributions-wiki_userrights' => 'މެންބަރުގެ ހައްގުތަކުގެ އިންތިޒާމް',
+'sp-contributions-userrights' => 'މެންބަރުގެ ހައްގުތަކުގެ އިންތިޒާމް',
 'sp-contributions-search' => 'ހިއްސާތަށް ހޯއްދަވާ',
 
 # What links here
@@ -711,7 +711,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'thumbnail-more' => 'ބޮޑުކުރައްވާ',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'ތިބޭފުޅާގެ މެމްބަރު ޞަފްޙާ',
+'tooltip-pt-userpage' => 'ތިބޭފުޅާގެ މެމްބަރު ޞަފްޙާ',
 'tooltip-pt-mytalk' => 'މަގޭ ވާހަކަ',
 'tooltip-pt-preferences' => 'ތިބޭފުޅާގެ ޚިޔާރުކުރުންތައް',
 'tooltip-pt-watchlist' => 'ބައްލަވާ ލިސްޓު',
@@ -742,13 +742,13 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'tooltip-t-whatlinkshere' => 'މި ޞަފްޙާއާ ގުޅިފައިވާ ހުރިހާ ޞަފްޙާތައް.',
 'tooltip-t-recentchangeslinked' => 'މި ޞަފްޙާއާ ގުޅުންހުރި ބަދަލުތައް',
 'tooltip-t-contributions' => 'މި މެމްބަރުގެ ޙިއްސާގެ ލިސްޓު',
-'tooltip-t-emailwiki_user' => 'މި މެމްބަރަށް އީމެއިލް ފޮނުއްވަވާ',
+'tooltip-t-emailuser' => 'މި މެމްބަރަށް އީމެއިލް ފޮނުއްވަވާ',
 'tooltip-t-upload' => 'ފައިލު ފޮނުވާ',
 'tooltip-t-specialpages' => 'ޚާއްސަ ޞަފްޙާތަކުގެ ލިސްޓު',
 'tooltip-t-print' => 'ޕްރިންޓަށްފަހި ޞަފްޙާ',
 'tooltip-t-permalink' => 'ނުސްހާއަށް ދާއިމީ ފާލަން',
 'tooltip-ca-nstab-main' => 'މަޢުލޫމާތު ޞަފްޙާ ބައްލަވާ',
-'tooltip-ca-nstab-wiki_user' => 'މެމްބަރު ޞަފްޙާ ބައްލަވާ',
+'tooltip-ca-nstab-user' => 'މެމްބަރު ޞަފްޙާ ބައްލަވާ',
 'tooltip-ca-nstab-special' => 'މިއީ ޚާއްސަ ޞަފްޙާއެކެވެ. މި ޞަފްޙާއަށް އުނިއިތުރު ނުގެނެވޭނެއެވެ.',
 'tooltip-ca-nstab-project' => 'މަޝްރޫޢު ޞަފްޙާ ބައްލަވާ',
 'tooltip-ca-nstab-image' => 'ފައިލު ޞަފްޙާ ބައްލަވާ',

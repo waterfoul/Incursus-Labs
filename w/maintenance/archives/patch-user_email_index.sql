@@ -1,1 +1,1 @@
-CREATE INDEX /*i*/wiki_user_email ON /*_*/wiki_user (wiki_user_email(50));
+CREATE INDEX /*i*/user_email ON /*_*/user (user_email(50));

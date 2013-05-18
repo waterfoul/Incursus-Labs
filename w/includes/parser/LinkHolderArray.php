@@ -293,7 +293,7 @@ class LinkHolderArray {
 		$output = $this->parent->getOutput();
 
 		wfProfileIn( __METHOD__.'-check' );
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$threshold = $this->parent->getOptions()->getStubThreshold();
 
 		# Sort by namespace
@@ -341,7 +341,7 @@ class LinkHolderArray {
 		if ( $queries ) {
 			$where = array();
 			foreach( $queries as $ns => $pages ){
-				$where[] = r->makeList(
+				$where[] = $dbr->makeList(
 					array(
 						'page_namespace' => $ns,
 						'page_title' => $pages,
@@ -350,10 +350,10 @@ class LinkHolderArray {
 				);
 			}
 
-			$res = r->select(
+			$res = $dbr->select(
 				'page',
 				array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_len', 'page_latest' ),
-				r->makeList( $where, LIST_OR ),
+				$dbr->makeList( $where, LIST_OR ),
 				__METHOD__
 			);
 
@@ -535,10 +535,10 @@ class LinkHolderArray {
 
 		if(!$linkBatch->isEmpty()){
 			// construct query
-			r = wfGetDB( DB_SLAVE );
-			$varRes = r->select( 'page',
+			$dbr = wfGetDB( DB_SLAVE );
+			$varRes = $dbr->select( 'page',
 				array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_len', 'page_latest' ),
-				$linkBatch->constructSet( 'page', r ),
+				$linkBatch->constructSet( 'page', $dbr ),
 				__METHOD__
 			);
 

@@ -73,7 +73,7 @@ $specialPageAliases = array(
 	'CreateAccount'             => array( 'FormyaAkont' ),
 	'DeletedContributions'      => array( 'KevrohowDiles' ),
 	'EditWatchlist'             => array( 'ChanjyaRolGolyas' ),
-	'Emailwiki_user'                 => array( 'EbostyaDevnydhyer' ),
+	'Emailuser'                 => array( 'EbostyaDevnydhyer' ),
 	'Export'                    => array( 'Esperthi' ),
 	'Import'                    => array( 'Ymperthi' ),
 	'MIMEsearch'                => array( 'HwilansMIME' ),
@@ -95,9 +95,9 @@ $specialPageAliases = array(
 	'Uncategorizedpages'        => array( 'FolednowHebKlass' ),
 	'Uncategorizedtemplates'    => array( 'SkantlynsHebKlass' ),
 	'Upload'                    => array( 'Ughkarga' ),
-	'wiki_userlogin'                 => array( 'Omgelmi' ),
-	'wiki_userlogout'                => array( 'Digelmi' ),
-	'wiki_userrights'                => array( 'GwiryowDevnydhyer' ),
+	'Userlogin'                 => array( 'Omgelmi' ),
+	'Userlogout'                => array( 'Digelmi' ),
+	'Userrights'                => array( 'GwiryowDevnydhyer' ),
 	'Version'                   => array( 'Versyon' ),
 	'Wantedcategories'          => array( 'KlassysHwansus' ),
 	'Wantedfiles'               => array( 'RestrednowHwansus' ),
@@ -108,7 +108,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Islinenna kevrennow:',
 'tog-hideminor' => 'Cudha chanjyow bian yn chanjyow a-dhiwedhes',
 'tog-showtoolbar' => 'Disqwedhes an toulvar chanjya (res yw JavaScript)',
@@ -277,7 +277,7 @@ $messages = array(
 'talk' => 'Kescows',
 'views' => 'Gwelow',
 'toolbox' => 'Box toulys',
-'wiki_userpage' => 'Folen devnydhyer',
+'userpage' => 'Folen devnydhyer',
 'projectpage' => 'Folen meta',
 'imagepage' => 'Gweles folen an restren',
 'mediawikipage' => 'Gweles folen an messajys',
@@ -300,7 +300,7 @@ Gortowgh pols kens why dhe assaya hedhes an folen-ma arta, mar pleg.
 $1',
 'pool-errorunknown' => 'Gwall ancoth',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'A-dro dhe {{SITENAME}}',
 'aboutpage' => 'Project:Kedhlow',
 'copyright' => 'Cavadow yw an dalgh yn-dann $1.',
@@ -327,8 +327,8 @@ $1',
 'youhavenewmessages' => 'Yma $1 genowgh ($2).',
 'newmessageslink' => 'messajys noweth',
 'newmessagesdifflink' => 'chanj diwettha',
-'youhavenewmessagesfromwiki_users' => 'Yma $1 dhywgh dhyworth {{PLURAL:$3|devnydhyer aral|$3 devnydhyer}} ($2).',
-'youhavenewmessagesmanywiki_users' => 'Yma $1 dhywgh dhyworth lies devnydhyer ($2).',
+'youhavenewmessagesfromusers' => 'Yma $1 dhywgh dhyworth {{PLURAL:$3|devnydhyer aral|$3 devnydhyer}} ($2).',
+'youhavenewmessagesmanyusers' => 'Yma $1 dhywgh dhyworth lies devnydhyer ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|messach noweth}}',
 'newmessagesdifflinkplural' => '{{PLURAL:$1|chanj diwettha}}',
 'youhavenewmessagesmulti' => 'Yma messajys noweth genowgh war $1',
@@ -354,7 +354,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Erthygel',
-'nstab-wiki_user' => 'Folen devnydhyer',
+'nstab-user' => 'Folen devnydhyer',
 'nstab-media' => 'Folen media',
 'nstab-special' => 'Folen arbennek',
 'nstab-project' => 'Folen ragdres',
@@ -393,21 +393,21 @@ Na wrewgh ankevy dhe janjya agas [[Special:Preferences|dowisyansow {{SITENAME}}]
 'login' => 'Omgelmy',
 'nav-login-createaccount' => 'Omgelmy / Formya acont noweth',
 'loginprompt' => 'Res yw dhywgh galosegy cookies rag omgelmy orth {{SITENAME}}.',
-'wiki_userlogin' => 'Omgelmy / formya acont noweth',
-'wiki_userloginnocreate' => 'Omgelmy',
+'userlogin' => 'Omgelmy / formya acont noweth',
+'userloginnocreate' => 'Omgelmy',
 'logout' => 'Digelmy',
-'wiki_userlogout' => 'Digelmy',
+'userlogout' => 'Digelmy',
 'notloggedin' => 'Digelmys',
 'nologin' => "A nyns eus acont dhywgh? '''$1'''.",
 'nologinlink' => 'Formyowgh acont',
 'createaccount' => 'Formya acont noweth',
 'gotaccount' => "Eus acont dhis seulabres? '''$1'''.",
 'gotaccountlink' => 'Omgelmy',
-'wiki_userlogin-resetlink' => 'Eus ankevys genowgh agas manylyon omgelmy?',
+'userlogin-resetlink' => 'Eus ankevys genowgh agas manylyon omgelmy?',
 'createaccountmail' => 'der e-bost',
 'createaccountreason' => 'Acheson:',
 'badretype' => 'Ny wrug omdhesedhes an geryow tremena entrys genowgh.',
-'wiki_userexists' => "Yma'n hanow usyer entrys genowgh ow pos usys seulabres.
+'userexists' => "Yma'n hanow usyer entrys genowgh ow pos usys seulabres.
 Dowisowgh hanow aral mar pleg.",
 'loginerror' => 'Gwall omgelmy',
 'createaccounterror' => 'Ny veu possybyl formya an acont: $1',
@@ -421,7 +421,7 @@ Gwrewgh aga galosegi hag assaya arta.',
 'noname' => 'Ny wrussowgh why ry hanow usyer da.',
 'loginsuccesstitle' => 'Omgelmy a sowenas',
 'loginsuccess' => "'''Omgelmys owgh why lemmyn orth {{SITENAME}} avel \"\$1\".'''",
-'nowiki_userspecified' => 'Res yw dhywgh ry hanow usyer.',
+'nouserspecified' => 'Res yw dhywgh ry hanow usyer.',
 'wrongpassword' => 'Camm o an ger tremena.
 Assayowgh arta mar pleg.',
 'wrongpasswordempty' => 'Gwag o an ger-tremena res. Assayowgh arta mar pleg.',
@@ -450,7 +450,7 @@ Entrowgh trigva da y furv po gwakhowgh an furvlen-na.',
 Why a dalvia omgelmy ha chanjya agas ger tremena lemmyn.
 
 Why a yll sconya aswon an messach-ma, mar peu an acont-ma formyes yn gwall.',
-'wiki_usernamehasherror' => "Ny yllowgh why usya lytherennow hash y'gas ger tremena",
+'usernamehasherror' => "Ny yllowgh why usya lytherennow hash y'gas ger tremena",
 'loginlanguagelabel' => 'Yeth: $1',
 
 # Change password dialog
@@ -475,7 +475,7 @@ Orth agas omgelmy lemmyn...',
 'passwordreset-legend' => 'Dassettya ger tremena',
 'passwordreset-disabled' => "Dialosegys yw dassettya geryow tremena war'n wiki ma.",
 'passwordreset-pretext' => "{{PLURAL:$1||Entrowgh onen a'n tymmyn a dhata a-woles}}",
-'passwordreset-wiki_username' => 'Hanow usyer:',
+'passwordreset-username' => 'Hanow usyer:',
 'passwordreset-domain' => 'Tiredh:',
 'passwordreset-email' => 'Trigva ebost:',
 'passwordreset-emailtitle' => 'Manylyon agas acont war {{SITENAME}}',
@@ -528,9 +528,9 @@ Why a yll [[Special:Search/{{PAGENAME}}|whilas titel an folen-ma]] yn folennow e
 po [{{fullurl:{{FULLPAGENAME}}|action=edit}} chanjya an folen-ma]</span>.',
 'noarticletext-nopermission' => 'Nyns eus text y\'n folen-ma a-lemmyn.
 Why a yll [[Special:Search/{{PAGENAME}}|whilas titel an folen-ma]] yn folennow erel, po <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} whilas y\'n covnotennow kelmys]</span>, mes nyns eus cummyes dhywgh a wruthyl an folen-ma.',
-'wiki_userpage-wiki_userdoesnotexist' => 'Nyns yw covscrifys an acont devnydhyer "$1".
+'userpage-userdoesnotexist' => 'Nyns yw covscrifys an acont devnydhyer "$1".
 Gwrewgh checkya mars yw whans dhywgh gwruthyl/chanjya an folen-ma.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Nyns yw covscrifys an acont devnydher "$1".',
+'userpage-userdoesnotexist-view' => 'Nyns yw covscrifys an acont devnydher "$1".',
 'updated' => '(Nowedhys)',
 'note' => "'''Noten:'''",
 'previewnote' => "Gwrewgh perthy cov, nyns yw hemma marnas ragwel.''' Nyns yw gwithys agas chanjyow whath!",
@@ -552,7 +552,7 @@ Yma covnoten dhileans ha gwayans an folen a-woles.',
 'log-fulllog' => 'Gweles an govnoten dien',
 
 # "Undo" feature
-'undo-summary' => 'Diswul amendyans $1 gans [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|kescows]])',
+'undo-summary' => 'Diswul amendyans $1 gans [[Special:Contributions/$2|$2]] ([[User talk:$2|kescows]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Nyns yw possybyl formya an acont',
@@ -669,7 +669,7 @@ Gwrewgh assaya rag-gorra agas govyn gans ''all:'' rag whilas yn pub teller (ynna
 'prefs-skin' => 'Crohen',
 'skin-preview' => 'Ragweles',
 'prefs-datetime' => 'Dedhyans hag eur',
-'prefs-wiki_user-pages' => 'Folennow devnydhyer',
+'prefs-user-pages' => 'Folennow devnydhyer',
 'prefs-personal' => 'Profil devnydhyer',
 'prefs-rc' => 'Chanjyow a-dhiwedhes',
 'prefs-watchlist' => 'Rol golyas',
@@ -702,7 +702,7 @@ Gwrewgh assaya rag-gorra agas govyn gans ''all:'' rag whilas yn pub teller (ynna
 'prefs-searchoptions' => 'Whilas',
 'prefs-files' => 'Restrednow',
 'youremail' => 'E-bost:',
-'wiki_username' => 'Hanow-usyer:',
+'username' => 'Hanow-usyer:',
 'uid' => 'ID devnydhyer:',
 'prefs-memberingroups' => "Esel a'n {{PLURAL:$1|bagas|bagasow}}:",
 'yourrealname' => 'Hanow gwir:',
@@ -726,23 +726,23 @@ Nyns yw disqwedhys agas trigva ebost pan wrella devnydhyoryon erel kestava dhywg
 'prefs-displaysearchoptions' => 'Etholyow disqwedhes',
 'prefs-displaywatchlist' => 'Etholyow disqwedhes',
 
-# wiki_user rights
-'wiki_userrights-wiki_user-editname' => 'Entrowgh hanow usyer:',
-'wiki_userrights-groupsmember' => 'Esel a:',
-'wiki_userrights-reason' => 'Acheson:',
+# User rights
+'userrights-user-editname' => 'Entrowgh hanow usyer:',
+'userrights-groupsmember' => 'Esel a:',
+'userrights-reason' => 'Acheson:',
 
 # Groups
 'group' => 'Bagas:',
-'group-wiki_user' => 'Devnydhyoryon',
+'group-user' => 'Devnydhyoryon',
 'group-bot' => 'Bottow',
 'group-sysop' => 'Menystroryon',
 'group-all' => '(oll)',
 
-'group-wiki_user-member' => '{{GENDER:$1|Devnydhyer}}',
+'group-user-member' => '{{GENDER:$1|Devnydhyer}}',
 'group-bot-member' => '{{GENDER:$1|bott}}',
 'group-sysop-member' => '{{GENDER:$1|menystrer}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Devnydhyoryon',
+'grouppage-user' => '{{ns:project}}:Devnydhyoryon',
 'grouppage-bot' => '{{ns:project}}:Bottow',
 'grouppage-sysop' => '{{ns:project}}:Menystroryon',
 
@@ -756,7 +756,7 @@ Nyns yw disqwedhys agas trigva ebost pan wrella devnydhyoryon erel kestava dhywg
 'right-upload' => 'Ughcarga restrennow',
 'right-delete' => 'Dilea folennow',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Covnoten wiryow an devnydhyer',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -810,7 +810,7 @@ Nyns yw disqwedhys agas trigva ebost pan wrella devnydhyoryon erel kestava dhywg
 'uploadbtn' => 'Ughcarga restren',
 'reuploaddesc' => "Hedhy ughcarga ha dewheles dhe'n furvlen ughcarga",
 'uploadnologin' => 'Digelmys',
-'uploadnologintext' => 'Res yw bos [[Special:wiki_userLogin|omgelmys]] rag ughcarga restrennow.',
+'uploadnologintext' => 'Res yw bos [[Special:UserLogin|omgelmys]] rag ughcarga restrennow.',
 'uploaderror' => 'Gwall ughcarga',
 'uploadlogpage' => 'Covnoten ughcarga',
 'filename' => 'Hanow an restren',
@@ -825,7 +825,7 @@ Nyns yw disqwedhys agas trigva ebost pan wrella devnydhyoryon erel kestava dhywg
 'imgfile' => 'restren',
 'listfiles_date' => 'Dedhyans',
 'listfiles_name' => 'Hanow',
-'listfiles_wiki_user' => 'Devnydhyer',
+'listfiles_user' => 'Devnydhyer',
 'listfiles_size' => 'Mens',
 'listfiles_description' => 'Descrifans',
 'listfiles_count' => 'Versyons',
@@ -842,7 +842,7 @@ Nyns yw disqwedhys agas trigva ebost pan wrella devnydhyoryon erel kestava dhywg
 'filehist-thumb' => 'Skeusennik',
 'filehist-thumbtext' => 'Skeusennik rag an versyon a-ban $1',
 'filehist-nothumb' => 'Nyns eus skeudennik',
-'filehist-wiki_user' => 'Devnydhyer',
+'filehist-user' => 'Devnydhyer',
 'filehist-dimensions' => 'Mensow',
 'filehist-filesize' => 'Mens an restren',
 'filehist-comment' => 'Ger',
@@ -903,9 +903,9 @@ Yma'n descrifans war y [$2 folen dhescrifans] disqwedhys a-woles.",
 'longpages' => 'Folennow hir',
 'protectedpages' => 'Folennow difresys',
 'protectedtitles' => 'Titlys difresys',
-'wiki_usercreated' => '{{GENDER:$3|Formyes}} an $1 dhe $2',
+'usercreated' => '{{GENDER:$3|Formyes}} an $1 dhe $2',
 'newpages' => 'Folennow noweth',
-'newpages-wiki_username' => 'Hanow-usyer:',
+'newpages-username' => 'Hanow-usyer:',
 'ancientpages' => 'An cottha folennow',
 'move' => 'Gwaya',
 'movethispage' => 'Gwaya an folen-ma',
@@ -918,7 +918,7 @@ Yma'n descrifans war y [$2 folen dhescrifans] disqwedhys a-woles.",
 'booksources-go' => 'Mos',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Awtour:',
+'specialloguserlabel' => 'Awtour:',
 'speciallogtitlelabel' => 'Titel:',
 'log' => 'Covnotennow',
 
@@ -945,17 +945,17 @@ Yma'n descrifans war y [$2 folen dhescrifans] disqwedhys a-woles.",
 'linksearch-ok' => 'Whilas',
 'linksearch-line' => 'Kevrennys yw $1 dhyworth $2',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'Disqwedhes',
+# Special:ListUsers
+'listusers-submit' => 'Disqwedhes',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Covnoten formya acontow devnydhyer',
+# Special:Log/newusers
+'newuserlogpage' => 'Covnoten formya acontow devnydhyer',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(rol esely)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'E-bostya an devnydhyer-ma',
+# E-mail user
+'emailuser' => 'E-bostya an devnydhyer-ma',
 'emailpage' => 'E-bostya devnydhyer',
 'defemailsubject' => 'Ebost danvenys dre {{SITENAME}} gans an devnydhyer "$1"',
 'emailfrom' => 'Dhyworth:',
@@ -1044,7 +1044,7 @@ Gwelowgh $2 rag covadh a dhileansow a-dhiwedhes.',
 'sp-contributions-logs' => 'covnotennow',
 'sp-contributions-talk' => 'kescows',
 'sp-contributions-search' => 'Whilas kevrohow',
-'sp-contributions-wiki_username' => 'Trigva IP po hanow-usyer:',
+'sp-contributions-username' => 'Trigva IP po hanow-usyer:',
 'sp-contributions-toponly' => 'Disqwedhes yn unnik chanjyow yw amendyansow diwettha',
 'sp-contributions-submit' => 'Whilas',
 
@@ -1068,7 +1068,7 @@ Gwelowgh $2 rag covadh a dhileansow a-dhiwedhes.',
 
 # Block/unblock
 'blockip' => 'Lettya devnydhyer',
-'ipadressorwiki_username' => 'Trigva IP po hanow-usyer:',
+'ipadressorusername' => 'Trigva IP po hanow-usyer:',
 'ipbreason' => 'Acheson:',
 'ipbreasonotherlist' => 'Acheson aral',
 'ipboptions' => '2 our:2 hours,1 dhedh:1 day,3 dedh:3 days,1 seythen:1 week,2 seythen:2 weeks,1 vis:1 month,3 mis:3 months,6 mis:6 months,1 vledhen:1 year,heb diwedh:infinite',
@@ -1121,7 +1121,7 @@ Gwelowgh $2 rag covadh a dhileansow a-dhiwedhes.',
 'import-noarticle' => 'Nyns eus folen veth dhe ymperthy!',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Agas folen dhevnydhyer',
+'tooltip-pt-userpage' => 'Agas folen dhevnydhyer',
 'tooltip-pt-mytalk' => 'Agas folen gows',
 'tooltip-pt-preferences' => 'Agas dowisyansow',
 'tooltip-pt-watchlist' => 'Rol a folennow esowgh why ow colyas rag chanjyow',
@@ -1155,13 +1155,13 @@ Why a yll gweles hy fennfenten.',
 'tooltip-feed-rss' => 'Feed RSS rag an folen-ma',
 'tooltip-feed-atom' => 'Feed Atom rag an folen-ma',
 'tooltip-t-contributions' => 'Gweles rol a gevrohow an devnydhyer-ma',
-'tooltip-t-emailwiki_user' => "Danvon e-bost dhe'n devnydhyer-ma",
+'tooltip-t-emailuser' => "Danvon e-bost dhe'n devnydhyer-ma",
 'tooltip-t-upload' => 'Ughcarga restrennow',
 'tooltip-t-specialpages' => 'Rol a geniver folen arbennek',
 'tooltip-t-print' => "Versyon pryntyadow a'n folen-ma",
 'tooltip-t-permalink' => "Kevren fast dhe'n amendyans-ma a'n folen",
 'tooltip-ca-nstab-main' => 'Gweles an folen',
-'tooltip-ca-nstab-wiki_user' => 'Gweles an folen devnydhyer',
+'tooltip-ca-nstab-user' => 'Gweles an folen devnydhyer',
 'tooltip-ca-nstab-special' => 'Folen arbennek yw hemma; ny yllowgh why chanjya an folen hy honen.',
 'tooltip-ca-nstab-project' => 'Gweles folen an wiki',
 'tooltip-ca-nstab-image' => 'Gweles folen an restren',
@@ -1178,9 +1178,9 @@ Why a yll gweles hy fennfenten.',
 'tooltip-summary' => 'Entrowgh derivas cot',
 
 # Attribution
-'sitewiki_user' => 'devnydhyer {{SITENAME}} $1',
+'siteuser' => 'devnydhyer {{SITENAME}} $1',
 'lastmodifiedatby' => 'An folen-ma a veu kens chanjys dhe $2, $1 gans $3.',
-'sitewiki_users' => '{{PLURAL:$2|devnydhyer|devnydhyoryon}} {{SITENAME}} $1',
+'siteusers' => '{{PLURAL:$2|devnydhyer|devnydhyoryon}} {{SITENAME}} $1',
 
 # Browsing diffs
 'previousdiff' => '← Chanj cottha',
@@ -1277,7 +1277,7 @@ Why a yll [[Special:EditWatchlist|usya an janjyel usadow]] ynwedh.',
 'watchlisttools-raw' => 'Chanjya restren an rol golyas',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|kescows]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|kescows]])',
 
 # Special:Version
 'version' => 'Versyon',

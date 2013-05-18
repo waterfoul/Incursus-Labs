@@ -24,8 +24,8 @@ class LinksUpdateTest extends MediaWikiTestCase {
 	}
 
 	function setUp() {
-		w = wfGetDB( DB_MASTER );
-		w->replace( 'interwiki',
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->replace( 'interwiki',
 						array('iw_prefix'),
 						array( 'iw_prefix' => 'linksupdatetest',
 						       'iw_url' => 'http://testing.com/wiki/$1',

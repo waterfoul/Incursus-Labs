@@ -22,7 +22,7 @@
  */
 
 /**
- * A special page for unblocking wiki_users
+ * A special page for unblocking users
  *
  * @ingroup SpecialPage
  */
@@ -77,14 +77,14 @@ class SpecialUnblock extends SpecialPage {
 		$fields = array(
 			'Target' => array(
 				'type' => 'text',
-				'label-message' => 'ipadressorwiki_username',
+				'label-message' => 'ipadressorusername',
 				'tabindex' => '1',
 				'size' => '45',
 				'required' => true,
 			),
 			'Name' => array(
 				'type' => 'info',
-				'label-message' => 'ipadressorwiki_username',
+				'label-message' => 'ipadressorusername',
 			),
 			'Reason' => array(
 				'type' => 'text',
@@ -96,8 +96,8 @@ class SpecialUnblock extends SpecialPage {
 			list( $target, $type ) = $this->block->getTargetAndType();
 
 			# Autoblocks are logged as "autoblock #123 because the IP was recently used by
-			# wiki_user:Foo, and we've just got any block, auto or not, that applies to a target
-			# the wiki_user has specified.  Someone could be fishing to connect IPs to autoblocks,
+			# User:Foo, and we've just got any block, auto or not, that applies to a target
+			# the user has specified.  Someone could be fishing to connect IPs to autoblocks,
 			# so don't show any distinction between unblocked IPs and autoblocked IPs
 			if( $type == Block::TYPE_AUTO && $this->type == Block::TYPE_IP ){
 				$fields['Target']['default'] = $this->target;
@@ -110,7 +110,7 @@ class SpecialUnblock extends SpecialPage {
 					case Block::TYPE_USER:
 					case Block::TYPE_IP:
 						$fields['Name']['default'] = Linker::link(
-							$target->getwiki_userPage(),
+							$target->getUserPage(),
 							$target->getName()
 						);
 						$fields['Name']['raw'] = true;
@@ -152,7 +152,7 @@ class SpecialUnblock extends SpecialPage {
 	 * @return Array( Array(message key, parameters) ) on failure, True on success
 	 */
 	public static function processUnblock( array $data, IContextSource $context ){
-		$performer = $context->getwiki_user();
+		$performer = $context->getUser();
 		$target = $data['Target'];
 		$block = Block::newFromTarget( $data['Target'] );
 
@@ -176,10 +176,10 @@ class SpecialUnblock extends SpecialPage {
 			 return array( array( 'ipb_blocked_as_range', $target, $range ) );
 		}
 
-		# If the name was hidden and the blocking wiki_user cannot hide
+		# If the name was hidden and the blocking user cannot hide
 		# names, then don't allow any block removals...
-		if( !$performer->isAllowed( 'hidewiki_user' ) && $block->mHideName ) {
-			return array( 'unblock-hidewiki_user' );
+		if( !$performer->isAllowed( 'hideuser' ) && $block->mHideName ) {
+			return array( 'unblock-hideuser' );
 		}
 
 		# Delete block
@@ -189,20 +189,20 @@ class SpecialUnblock extends SpecialPage {
 
 		# Unset _deleted fields as needed
 		if( $block->mHideName ) {
-			# Something is deeply FUBAR if this is not a wiki_user object, but who knows?
-			$id = $block->getTarget() instanceof wiki_user
+			# Something is deeply FUBAR if this is not a User object, but who knows?
+			$id = $block->getTarget() instanceof User
 				? $block->getTarget()->getID()
-				: wiki_user::idFromName( $block->getTarget() );
+				: User::idFromName( $block->getTarget() );
 
-			RevisionDeletewiki_user::unsuppresswiki_userName( $block->getTarget(), $id );
+			RevisionDeleteUser::unsuppressUserName( $block->getTarget(), $id );
 		}
 
 		# Redact the name (IP address) for autoblocks
 		if ( $block->getType() == Block::TYPE_AUTO ) {
 			$page = Title::makeTitle( NS_USER, '#' . $block->getId() );
 		} else {
-			$page = $block->getTarget() instanceof wiki_user
-				? $block->getTarget()->getwiki_userpage()
+			$page = $block->getTarget() instanceof User
+				? $block->getTarget()->getUserpage()
 				: Title::makeTitle( NS_USER, $block->getTarget() );
 		}
 

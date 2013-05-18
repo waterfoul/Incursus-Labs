@@ -41,7 +41,7 @@ class LogPage {
 	var $type, $action, $comment, $params;
 
 	/**
-	 * @var wiki_user
+	 * @var User
 	 */
 	var $doer;
 
@@ -73,25 +73,25 @@ class LogPage {
 	protected function saveContent() {
 		global $wgLogRestrictions;
 
-		w = wfGetDB( DB_MASTER );
-		$log_id = w->nextSequenceValue( 'logging_log_id_seq' );
+		$dbw = wfGetDB( DB_MASTER );
+		$log_id = $dbw->nextSequenceValue( 'logging_log_id_seq' );
 
 		$this->timestamp = $now = wfTimestampNow();
 		$data = array(
 			'log_id' => $log_id,
 			'log_type' => $this->type,
 			'log_action' => $this->action,
-			'log_timestamp' => w->timestamp( $now ),
-			'log_wiki_user' => $this->doer->getId(),
-			'log_wiki_user_text' => $this->doer->getName(),
+			'log_timestamp' => $dbw->timestamp( $now ),
+			'log_user' => $this->doer->getId(),
+			'log_user_text' => $this->doer->getName(),
 			'log_namespace' => $this->target->getNamespace(),
 			'log_title' => $this->target->getDBkey(),
 			'log_page' => $this->target->getArticleID(),
 			'log_comment' => $this->comment,
 			'log_params' => $this->params
 		);
-		w->insert( 'logging', $data, __METHOD__ );
-		$newId = !is_null( $log_id ) ? $log_id : w->insertId();
+		$dbw->insert( 'logging', $data, __METHOD__ );
+		$newId = !is_null( $log_id ) ? $log_id : $dbw->insertId();
 
 		# And update recentchanges
 		if( $this->updateRecentChanges ) {
@@ -257,11 +257,11 @@ class LogPage {
 					$rightsnone = wfMessage( 'rightsnone' )->inLanguage( $langObj )->text();
 
 					if( $skin ) {
-						$wiki_username = $title->getText();
+						$username = $title->getText();
 						foreach ( $params as &$param ) {
 							$groupArray = array_map( 'trim', explode( ',', $param ) );
 							foreach( $groupArray as &$group ) {
-								$group = wiki_user::getGroupMember( $group, $wiki_username );
+								$group = User::getGroupMember( $group, $username );
 							}
 							$param = $wgLang->listToText( $groupArray );
 						}
@@ -282,7 +282,7 @@ class LogPage {
 					$details = '';
 					array_unshift( $params, $titleLink );
 
-					// wiki_user suppression
+					// User suppression
 					if ( preg_match( '/^(block|suppress)\/(block|reblock)$/', $key ) ) {
 						if ( $skin ) {
 							$params[1] = '<span class="blockExpiry" dir="ltr" title="' . htmlspecialchars( $params[1] ). '">' .
@@ -350,7 +350,7 @@ class LogPage {
 	 * @return String
 	 */
 	protected static function getTitleLink( $type, $lang, $title, &$params ) {
-		global $wgContLang, $wgwiki_userrightsInterwikiDelimiter;
+		global $wgContLang, $wgUserrightsInterwikiDelimiter;
 
 		if( !$lang ) {
 			return $title->getPrefixedText();
@@ -381,19 +381,19 @@ class LogPage {
 				if( substr( $title->getText(), 0, 1 ) == '#' ) {
 					$titleLink = $title->getText();
 				} else {
-					// @todo Store the wiki_user identifier in the parameters
+					// @todo Store the user identifier in the parameters
 					// to make this faster for future log entries
-					$id = wiki_user::idFromName( $title->getText() );
-					$titleLink = Linker::wiki_userLink( $id, $title->getText() )
-						. Linker::wiki_userToolLinks( $id, $title->getText(), false, Linker::TOOL_LINKS_NOBLOCK );
+					$id = User::idFromName( $title->getText() );
+					$titleLink = Linker::userLink( $id, $title->getText() )
+						. Linker::userToolLinks( $id, $title->getText(), false, Linker::TOOL_LINKS_NOBLOCK );
 				}
 				break;
 			case 'rights':
 				$text = $wgContLang->ucfirst( $title->getText() );
-				$parts = explode( $wgwiki_userrightsInterwikiDelimiter, $text, 2 );
+				$parts = explode( $wgUserrightsInterwikiDelimiter, $text, 2 );
 
 				if ( count( $parts ) == 2 ) {
-					$titleLink = WikiMap::foreignwiki_userLink( $parts[1], $parts[0],
+					$titleLink = WikiMap::foreignUserLink( $parts[1], $parts[0],
 						htmlspecialchars( $title->getPrefixedText() ) );
 
 					if ( $titleLink !== false ) {
@@ -445,7 +445,7 @@ class LogPage {
 	 * @param $target Title object
 	 * @param $comment String: description associated
 	 * @param $params Array: parameters passed later to wfMessage function
-	 * @param $doer wiki_user object: the wiki_user doing the action
+	 * @param $doer User object: the user doing the action
 	 *
 	 * @return int log_id of the inserted log entry
 	 */
@@ -469,10 +469,10 @@ class LogPage {
 		$this->params = LogPage::makeParamBlob( $params );
 
 		if ( $doer === null ) {
-			global $wgwiki_user;
-			$doer = $wgwiki_user;
+			global $wgUser;
+			$doer = $wgUser;
 		} elseif ( !is_object( $doer ) ) {
-			$doer = wiki_user::newFromId( $doer );
+			$doer = User::newFromId( $doer );
 		}
 
 		$this->doer = $doer;
@@ -515,8 +515,8 @@ class LogPage {
 			);
 		}
 
-		w = wfGetDB( DB_MASTER );
-		w->insert( 'log_search', $data, __METHOD__, 'IGNORE' );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->insert( 'log_search', $data, __METHOD__, 'IGNORE' );
 
 		return true;
 	}
@@ -587,7 +587,7 @@ class LogPage {
 			// * block-log-flags-noautoblock
 			// * block-log-flags-nocreate
 			// * block-log-flags-noemail
-			// * block-log-flags-nowiki_usertalk
+			// * block-log-flags-nousertalk
 			$msg = wfMessage( 'block-log-flags-' . $flag )->inLanguage( $lang );
 
 			if ( $msg->exists() ) {
@@ -643,7 +643,7 @@ class LogPage {
 		if ( isset( $wgLogRestrictions[$this->type] ) ) {
 			$restriction = $wgLogRestrictions[$this->type];
 		} else {
-			// '' always returns true with $wiki_user->isAllowed()
+			// '' always returns true with $user->isAllowed()
 			$restriction = '';
 		}
 		return $restriction;

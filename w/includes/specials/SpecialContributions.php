@@ -22,7 +22,7 @@
  */
 
 /**
- * Special:Contributions, show wiki_user contributions in a paged list
+ * Special:Contributions, show user contributions in a paged list
  *
  * @ingroup SpecialPage
  */
@@ -58,7 +58,7 @@ class SpecialContributions extends SpecialPage {
 			$target = 'newbies';
 			$this->opts['contribs'] = 'newbie';
 		} else {
-			$this->opts['contribs'] = 'wiki_user';
+			$this->opts['contribs'] = 'user';
 		}
 
 		$this->opts['deletedOnly'] = $request->getBool( 'deletedOnly' );
@@ -68,9 +68,9 @@ class SpecialContributions extends SpecialPage {
 			return;
 		}
 
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 
-		$this->opts['limit'] = $request->getInt( 'limit', $wiki_user->getOption( 'rclimit' ) );
+		$this->opts['limit'] = $request->getInt( 'limit', $user->getOption( 'rclimit' ) );
 		$this->opts['target'] = $target;
 		$this->opts['topOnly'] = $request->getBool( 'topOnly' );
 
@@ -79,18 +79,18 @@ class SpecialContributions extends SpecialPage {
 			$out->addHTML( $this->getForm() );
 			return;
 		}
-		$wiki_userObj = wiki_user::newFromName( $nt->getText(), false );
-		if ( !$wiki_userObj ) {
+		$userObj = User::newFromName( $nt->getText(), false );
+		if ( !$userObj ) {
 			$out->addHTML( $this->getForm() );
 			return;
 		}
-		$id = $wiki_userObj->getID();
+		$id = $userObj->getID();
 
 		if ( $this->opts['contribs'] != 'newbie' ) {
 			$target = $nt->getText();
-			$out->addSubtitle( $this->contributionsSub( $wiki_userObj ) );
+			$out->addSubtitle( $this->contributionsSub( $userObj ) );
 			$out->setHTMLTitle( $this->msg( 'pagetitle', $this->msg( 'contributions-title', $target )->plain() ) );
-			$this->getSkin()->setRelevantwiki_user( $wiki_userObj );
+			$this->getSkin()->setRelevantUser( $userObj );
 		} else {
 			$out->addSubtitle( $this->msg( 'sp-contributions-newbies-sub' ) );
 			$out->setHTMLTitle( $this->msg( 'pagetitle', $this->msg( 'sp-contributions-newbies-title' )->plain() ) );
@@ -110,7 +110,7 @@ class SpecialContributions extends SpecialPage {
 
 		// Allows reverts to have the bot flag in recent changes. It is just here to
 		// be passed in the form at the top of the page
-		if ( $wiki_user->isAllowed( 'markbotedits' ) && $request->getBool( 'bot' ) ) {
+		if ( $user->isAllowed( 'markbotedits' ) && $request->getBool( 'bot' ) ) {
 			$this->opts['bot'] = '1';
 		}
 
@@ -131,7 +131,7 @@ class SpecialContributions extends SpecialPage {
 			$apiParams = array(
 				'action' => 'feedcontributions',
 				'feedformat' => $feedType,
-				'wiki_user' => $target,
+				'user' => $target,
 			);
 			if ( $this->opts['topOnly'] ) {
 				$apiParams['toponly'] = true;
@@ -159,7 +159,7 @@ class SpecialContributions extends SpecialPage {
 		}
 
 		// Add RSS/atom links
-		$this->addFeedLinks( array( 'action' => 'feedcontributions', 'wiki_user' => $target ) );
+		$this->addFeedLinks( array( 'action' => 'feedcontributions', 'user' => $target ) );
 
 		if ( wfRunHooks( 'SpecialContributionsBeforeMainOutput', array( $id ) ) ) {
 
@@ -198,8 +198,8 @@ class SpecialContributions extends SpecialPage {
 				$message = 'sp-contributions-footer-newbies';
 			} elseif( IP::isIPAddress( $target ) ) {
 				$message = 'sp-contributions-footer-anon';
-			} elseif( $wiki_userObj->isAnon() ) {
-				// No message for non-existing wiki_users
+			} elseif( $userObj->isAnon() ) {
+				// No message for non-existing users
 				$message = '';
 			} else {
 				$message = 'sp-contributions-footer';
@@ -217,27 +217,27 @@ class SpecialContributions extends SpecialPage {
 
 	/**
 	 * Generates the subheading with links
-	 * @param $wiki_userObj wiki_user object for the target
+	 * @param $userObj User object for the target
 	 * @return String: appropriately-escaped HTML to be output literally
 	 * @todo FIXME: Almost the same as getSubTitle in SpecialDeletedContributions.php. Could be combined.
 	 */
-	protected function contributionsSub( $wiki_userObj ) {
-		if ( $wiki_userObj->isAnon() ) {
-			$wiki_user = htmlspecialchars( $wiki_userObj->getName() );
+	protected function contributionsSub( $userObj ) {
+		if ( $userObj->isAnon() ) {
+			$user = htmlspecialchars( $userObj->getName() );
 		} else {
-			$wiki_user = Linker::link( $wiki_userObj->getwiki_userPage(), htmlspecialchars( $wiki_userObj->getName() ) );
+			$user = Linker::link( $userObj->getUserPage(), htmlspecialchars( $userObj->getName() ) );
 		}
-		$nt = $wiki_userObj->getwiki_userPage();
-		$talk = $wiki_userObj->getTalkPage();
+		$nt = $userObj->getUserPage();
+		$talk = $userObj->getTalkPage();
 		$links = '';
 		if ( $talk ) {
-			$tools = $this->getwiki_userLinks( $nt, $talk, $wiki_userObj );
+			$tools = $this->getUserLinks( $nt, $talk, $userObj );
 			$links = $this->getLanguage()->pipeList( $tools );
 
-			// Show a note if the wiki_user is blocked and display the last block log entry.
+			// Show a note if the user is blocked and display the last block log entry.
 			// Do not expose the autoblocks, since that may lead to a leak of accounts' IPs,
 			// and also this will display a totally irrelevant log entry as a current block.
-			if ( $wiki_userObj->isBlocked() && $wiki_userObj->getBlock()->getType() != Block::TYPE_AUTO ) {
+			if ( $userObj->isBlocked() && $userObj->getBlock()->getType() != Block::TYPE_AUTO ) {
 				$out = $this->getOutput(); // showLogExtract() wants first parameter by reference
 				LogEventsList::showLogExtract(
 					$out,
@@ -248,10 +248,10 @@ class SpecialContributions extends SpecialPage {
 						'lim' => 1,
 						'showIfEmpty' => false,
 						'msgKey' => array(
-							$wiki_userObj->isAnon() ?
+							$userObj->isAnon() ?
 								'sp-contributions-blocked-notice-anon' :
 								'sp-contributions-blocked-notice',
-							$wiki_userObj->getName() # Support GENDER in 'sp-contributions-blocked-notice'
+							$userObj->getName() # Support GENDER in 'sp-contributions-blocked-notice'
 						),
 						'offset' => '' # don't use WebRequest parameter offset
 					)
@@ -260,47 +260,47 @@ class SpecialContributions extends SpecialPage {
 		}
 
 		// Old message 'contribsub' had one parameter, but that doesn't work for
-		// languages that want to put the "for" bit right after $wiki_user but before
+		// languages that want to put the "for" bit right after $user but before
 		// $links.  If 'contribsub' is around, use it for reverse compatibility,
 		// otherwise use 'contribsub2'.
 		// @todo Should this be removed at some point?
 		$oldMsg = $this->msg( 'contribsub' );
 		if ( $oldMsg->exists() ) {
 			$linksWithParentheses = $this->msg( 'parentheses' )->rawParams( $links )->escaped();
-			return $oldMsg->rawParams( "$wiki_user $linksWithParentheses" );
+			return $oldMsg->rawParams( "$user $linksWithParentheses" );
 		} else {
-			return $this->msg( 'contribsub2' )->rawParams( $wiki_user, $links );
+			return $this->msg( 'contribsub2' )->rawParams( $user, $links );
 		}
 	}
 
 	/**
 	 * Links to different places.
-	 * @param $wiki_userpage Title: Target wiki_user page
+	 * @param $userpage Title: Target user page
 	 * @param $talkpage Title: Talk page
-	 * @param $target wiki_user: Target wiki_user object
+	 * @param $target User: Target user object
 	 * @return array
 	 */
-	public function getwiki_userLinks( Title $wiki_userpage, Title $talkpage, wiki_user $target ) {
+	public function getUserLinks( Title $userpage, Title $talkpage, User $target ) {
 
 		$id = $target->getId();
-		$wiki_username = $target->getName();
+		$username = $target->getName();
 
 		$tools[] = Linker::link( $talkpage, $this->msg( 'sp-contributions-talk' )->escaped() );
 
-		if ( ( $id !== null ) || ( $id === null && IP::isIPAddress( $wiki_username ) ) ) {
-			if ( $this->getwiki_user()->isAllowed( 'block' ) ) { # Block / Change block / Unblock links
+		if ( ( $id !== null ) || ( $id === null && IP::isIPAddress( $username ) ) ) {
+			if ( $this->getUser()->isAllowed( 'block' ) ) { # Block / Change block / Unblock links
 				if ( $target->isBlocked() ) {
 					$tools[] = Linker::linkKnown( # Change block link
-						SpecialPage::getTitleFor( 'Block', $wiki_username ),
+						SpecialPage::getTitleFor( 'Block', $username ),
 						$this->msg( 'change-blocklink' )->escaped()
 					);
 					$tools[] = Linker::linkKnown( # Unblock link
-						SpecialPage::getTitleFor( 'Unblock', $wiki_username ),
+						SpecialPage::getTitleFor( 'Unblock', $username ),
 						$this->msg( 'unblocklink' )->escaped()
 					);
-				} else { # wiki_user is not blocked
+				} else { # User is not blocked
 					$tools[] = Linker::linkKnown( # Block link
-						SpecialPage::getTitleFor( 'Block', $wiki_username ),
+						SpecialPage::getTitleFor( 'Block', $username ),
 						$this->msg( 'blocklink' )->escaped()
 					);
 				}
@@ -311,41 +311,41 @@ class SpecialContributions extends SpecialPage {
 				$this->msg( 'sp-contributions-blocklog' )->escaped(),
 				array(),
 				array(
-					'page' => $wiki_userpage->getPrefixedText()
+					'page' => $userpage->getPrefixedText()
 				)
 			);
 		}
 		# Uploads
 		$tools[] = Linker::linkKnown(
-			SpecialPage::getTitleFor( 'Listfiles', $wiki_username ),
+			SpecialPage::getTitleFor( 'Listfiles', $username ),
 			$this->msg( 'sp-contributions-uploads' )->escaped()
 		);
 
 		# Other logs link
 		$tools[] = Linker::linkKnown(
-			SpecialPage::getTitleFor( 'Log', $wiki_username ),
+			SpecialPage::getTitleFor( 'Log', $username ),
 			$this->msg( 'sp-contributions-logs' )->escaped()
 		);
 
-		# Add link to deleted wiki_user contributions for priviledged wiki_users
-		if ( $this->getwiki_user()->isAllowed( 'deletedhistory' ) ) {
+		# Add link to deleted user contributions for priviledged users
+		if ( $this->getUser()->isAllowed( 'deletedhistory' ) ) {
 			$tools[] = Linker::linkKnown(
-				SpecialPage::getTitleFor( 'DeletedContributions', $wiki_username ),
+				SpecialPage::getTitleFor( 'DeletedContributions', $username ),
 				$this->msg( 'sp-contributions-deleted' )->escaped()
 			);
 		}
 
-		# Add a link to change wiki_user rights for privileged wiki_users
-		$wiki_userrightsPage = new wiki_userrightsPage();
-		$wiki_userrightsPage->setContext( $this->getContext() );
-		if ( $wiki_userrightsPage->wiki_userCanChangeRights( $target ) ) {
+		# Add a link to change user rights for privileged users
+		$userrightsPage = new UserrightsPage();
+		$userrightsPage->setContext( $this->getContext() );
+		if ( $userrightsPage->userCanChangeRights( $target ) ) {
 			$tools[] = Linker::linkKnown(
-				SpecialPage::getTitleFor( 'wiki_userrights', $wiki_username ),
-				$this->msg( 'sp-contributions-wiki_userrights' )->escaped()
+				SpecialPage::getTitleFor( 'Userrights', $username ),
+				$this->msg( 'sp-contributions-userrights' )->escaped()
 			);
 		}
 
-		wfRunHooks( 'ContributionsToolLinks', array( $id, $wiki_userpage, &$tools ) );
+		wfRunHooks( 'ContributionsToolLinks', array( $id, $userpage, &$tools ) );
 		return $tools;
 	}
 
@@ -376,7 +376,7 @@ class SpecialContributions extends SpecialPage {
 		}
 
 		if ( !isset( $this->opts['contribs'] ) ) {
-			$this->opts['contribs'] = 'wiki_user';
+			$this->opts['contribs'] = 'user';
 		}
 
 		if ( !isset( $this->opts['year'] ) ) {
@@ -430,11 +430,11 @@ class SpecialContributions extends SpecialPage {
 				array( 'class' => 'mw-input' )
 			) . '<br />' .
 			Xml::radioLabel(
-				$this->msg( 'sp-contributions-wiki_username' )->text(),
+				$this->msg( 'sp-contributions-username' )->text(),
 				'contribs',
-				'wiki_user',
-				'wiki_user',
-				$this->opts['contribs'] == 'wiki_user',
+				'user',
+				'user',
+				$this->opts['contribs'] == 'user',
 				array( 'class' => 'mw-input' )
 			) . ' ' .
 			Html::input(
@@ -572,7 +572,7 @@ class ContribsPager extends ReverseChronologicalPager {
 		}
 
 		$this->target = isset( $options['target'] ) ? $options['target'] : '';
-		$this->contribs = isset( $options['contribs'] ) ? $options['contribs'] : 'wiki_users';
+		$this->contribs = isset( $options['contribs'] ) ? $options['contribs'] : 'users';
 		$this->namespace = isset( $options['namespace'] ) ? $options['namespace'] : '';
 		$this->tagFilter = isset( $options['tagfilter'] ) ? $options['tagfilter'] : false;
 		$this->nsInvert = isset( $options['nsInvert'] ) ? $options['nsInvert'] : false;
@@ -655,29 +655,29 @@ class ContribsPager extends ReverseChronologicalPager {
 	}
 
 	function getQueryInfo() {
-		list( $tables, $index, $wiki_userCond, $join_cond ) = $this->getwiki_userCond();
+		list( $tables, $index, $userCond, $join_cond ) = $this->getUserCond();
 
-		$wiki_user = $this->getwiki_user();
-		$conds = array_merge( $wiki_userCond, $this->getNamespaceCond() );
+		$user = $this->getUser();
+		$conds = array_merge( $userCond, $this->getNamespaceCond() );
 
 		// Paranoia: avoid brute force searches (bug 17342)
-		if ( !$wiki_user->isAllowed( 'deletedhistory' ) ) {
+		if ( !$user->isAllowed( 'deletedhistory' ) ) {
 			$conds[] = $this->mDb->bitAnd( 'rev_deleted', Revision::DELETED_USER ) . ' = 0';
-		} elseif ( !$wiki_user->isAllowed( 'suppressrevision' ) ) {
+		} elseif ( !$user->isAllowed( 'suppressrevision' ) ) {
 			$conds[] = $this->mDb->bitAnd( 'rev_deleted', Revision::SUPPRESSED_USER ) .
 				' != ' . Revision::SUPPRESSED_USER;
 		}
 
 		# Don't include orphaned revisions
 		$join_cond['page'] = Revision::pageJoinCond();
-		# Get the current wiki_user name for accounts
-		$join_cond['wiki_user'] = Revision::wiki_userJoinCond();
+		# Get the current user name for accounts
+		$join_cond['user'] = Revision::userJoinCond();
 
 		$queryInfo = array(
 			'tables'     => $tables,
 			'fields'     => array_merge(
 				Revision::selectFields(),
-				Revision::selectwiki_userFields(),
+				Revision::selectUserFields(),
 				array( 'page_namespace', 'page_title', 'page_is_new',
 					'page_latest', 'page_is_redirect', 'page_len' )
 			),
@@ -699,35 +699,35 @@ class ContribsPager extends ReverseChronologicalPager {
 		return $queryInfo;
 	}
 
-	function getwiki_userCond() {
+	function getUserCond() {
 		$condition = array();
 		$join_conds = array();
-		$tables = array( 'revision', 'page', 'wiki_user' );
+		$tables = array( 'revision', 'page', 'user' );
 		if ( $this->contribs == 'newbie' ) {
-			$max = $this->mDb->selectField( 'wiki_user', 'max(wiki_user_id)', false, __METHOD__ );
-			$condition[] = 'rev_wiki_user >' . (int)( $max - $max / 100 );
-			$index = 'wiki_user_timestamp';
+			$max = $this->mDb->selectField( 'user', 'max(user_id)', false, __METHOD__ );
+			$condition[] = 'rev_user >' . (int)( $max - $max / 100 );
+			$index = 'user_timestamp';
 			# ignore local groups with the bot right
 			# @todo FIXME: Global groups may have 'bot' rights
-			$groupsWithBotPermission = wiki_user::getGroupsWithPermission( 'bot' );
+			$groupsWithBotPermission = User::getGroupsWithPermission( 'bot' );
 			if( count( $groupsWithBotPermission ) ) {
-				$tables[] = 'wiki_user_groups';
+				$tables[] = 'user_groups';
 				$condition[] = 'ug_group IS NULL';
-				$join_conds['wiki_user_groups'] = array(
+				$join_conds['user_groups'] = array(
 					'LEFT JOIN', array(
-						'ug_wiki_user = rev_wiki_user',
+						'ug_user = rev_user',
 						'ug_group' => $groupsWithBotPermission
 					)
 				);
 			}
 		} else {
-			$uid = wiki_user::idFromName( $this->target );
+			$uid = User::idFromName( $this->target );
 			if ( $uid ) {
-				$condition['rev_wiki_user'] = $uid;
-				$index = 'wiki_user_timestamp';
+				$condition['rev_user'] = $uid;
+				$index = 'user_timestamp';
 			} else {
-				$condition['rev_wiki_user_text'] = $this->target;
-				$index = 'wiki_usertext_timestamp';
+				$condition['rev_user_text'] = $this->target;
+				$index = 'usertext_timestamp';
 			}
 		}
 		if ( $this->deletedOnly ) {
@@ -778,9 +778,9 @@ class ContribsPager extends ReverseChronologicalPager {
 				$revIds[] = $row->rev_parent_id;
 			}
 			if ( isset( $row->rev_id ) ) {
-				if ( $this->contribs === 'newbie' ) { // multiple wiki_users
-					$batch->add( NS_USER, $row->wiki_user_name );
-					$batch->add( NS_USER_TALK, $row->wiki_user_name );
+				if ( $this->contribs === 'newbie' ) { // multiple users
+					$batch->add( NS_USER, $row->user_name );
+					$batch->add( NS_USER_TALK, $row->user_name );
 				}
 				$batch->add( $row->page_namespace, $row->page_title );
 			}
@@ -808,9 +808,9 @@ class ContribsPager extends ReverseChronologicalPager {
 	 * Generates each row in the contributions list.
 	 *
 	 * Contributions which are marked "top" are currently on top of the history.
-	 * For these contributions, a [rollback] link is shown for wiki_users with roll-
+	 * For these contributions, a [rollback] link is shown for users with roll-
 	 * back privileges. The rollback link restores the most recent version that
-	 * was not written by the target wiki_user.
+	 * was not written by the target user.
 	 *
 	 * @todo This would probably look a lot nicer in a table.
 	 * @param $row
@@ -846,19 +846,19 @@ class ContribsPager extends ReverseChronologicalPager {
 			);
 			# Mark current revisions
 			$topmarktext = '';
-			$wiki_user = $this->getwiki_user();
+			$user = $this->getUser();
 			if ( $row->rev_id == $row->page_latest ) {
 				$topmarktext .= '<span class="mw-uctop">' . $this->messages['uctop'] . '</span>';
 				# Add rollback link
-				if ( !$row->page_is_new && $page->quickwiki_userCan( 'rollback', $wiki_user )
-					&& $page->quickwiki_userCan( 'edit', $wiki_user ) )
+				if ( !$row->page_is_new && $page->quickUserCan( 'rollback', $user )
+					&& $page->quickUserCan( 'edit', $user ) )
 				{
 					$this->preventClickjacking();
 					$topmarktext .= ' ' . Linker::generateRollback( $rev, $this->getContext() );
 				}
 			}
 			# Is there a visible previous revision?
-			if ( $rev->wiki_userCan( Revision::DELETED_TEXT, $wiki_user ) && $rev->getParentId() !== 0 ) {
+			if ( $rev->userCan( Revision::DELETED_TEXT, $user ) && $rev->getParentId() !== 0 ) {
 				$difftext = Linker::linkKnown(
 					$page,
 					$this->messages['diff'],
@@ -891,8 +891,8 @@ class ContribsPager extends ReverseChronologicalPager {
 
 			$lang = $this->getLanguage();
 			$comment = $lang->getDirMark() . Linker::revComment( $rev, false, true );
-			$date = $lang->wiki_userTimeAndDate( $row->rev_timestamp, $wiki_user );
-			if ( $rev->wiki_userCan( Revision::DELETED_TEXT, $wiki_user ) ) {
+			$date = $lang->userTimeAndDate( $row->rev_timestamp, $user );
+			if ( $rev->userCan( Revision::DELETED_TEXT, $user ) ) {
 				$d = Linker::linkKnown(
 					$page,
 					htmlspecialchars( $date ),
@@ -906,14 +906,14 @@ class ContribsPager extends ReverseChronologicalPager {
 				$d = '<span class="history-deleted">' . $d . '</span>';
 			}
 
-			# Show wiki_user names for /newbies as there may be different wiki_users.
-			# Note that we already excluded rows with hidden wiki_user names.
+			# Show user names for /newbies as there may be different users.
+			# Note that we already excluded rows with hidden user names.
 			if ( $this->contribs == 'newbie' ) {
-				$wiki_userlink = ' . . ' . Linker::wiki_userLink( $rev->getwiki_user(), $rev->getwiki_userText() );
-				$wiki_userlink .= ' ' . $this->msg( 'parentheses' )->rawParams(
-					Linker::wiki_userTalkLink( $rev->getwiki_user(), $rev->getwiki_userText() ) )->escaped() . ' ';
+				$userlink = ' . . ' . Linker::userLink( $rev->getUser(), $rev->getUserText() );
+				$userlink .= ' ' . $this->msg( 'parentheses' )->rawParams(
+					Linker::userTalkLink( $rev->getUser(), $rev->getUserText() ) )->escaped() . ' ';
 			} else {
-				$wiki_userlink = '';
+				$userlink = '';
 			}
 
 			if ( $rev->getParentId() === 0 ) {
@@ -928,17 +928,17 @@ class ContribsPager extends ReverseChronologicalPager {
 				$mflag = '';
 			}
 
-			$del = Linker::getRevDeleteLink( $wiki_user, $rev, $page );
+			$del = Linker::getRevDeleteLink( $user, $rev, $page );
 			if ( $del !== '' ) {
 				$del .= ' ';
 			}
 
 			$diffHistLinks = $this->msg( 'parentheses' )->rawParams( $difftext . $this->messages['pipe-separator'] . $histlink )->escaped();
-			$ret = "{$del}{$d} {$diffHistLinks}{$chardiff}{$nflag}{$mflag} {$link}{$wiki_userlink} {$comment} {$topmarktext}";
+			$ret = "{$del}{$d} {$diffHistLinks}{$chardiff}{$nflag}{$mflag} {$link}{$userlink} {$comment} {$topmarktext}";
 
-			# Denote if wiki_username is redacted for this edit
+			# Denote if username is redacted for this edit
 			if ( $rev->isDeleted( Revision::DELETED_USER ) ) {
-				$ret .= " <strong>" . $this->msg( 'rev-deleted-wiki_user-contribs' )->escaped() . "</strong>";
+				$ret .= " <strong>" . $this->msg( 'rev-deleted-user-contribs' )->escaped() . "</strong>";
 			}
 
 			# Tags, if any.

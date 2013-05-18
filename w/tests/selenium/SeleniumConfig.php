@@ -37,8 +37,8 @@ class SeleniumConfig {
 			$seleniumSettings['host'] = $configArray['SeleniumSettings']['host'];
 			$seleniumSettings['port'] = $configArray['SeleniumSettings']['port'];
 			$seleniumSettings['wikiUrl'] = $configArray['SeleniumSettings']['wikiUrl'];
-			$seleniumSettings['wiki_username'] = $configArray['SeleniumSettings']['wiki_username'];
-			$seleniumSettings['wiki_userPassword'] = $configArray['SeleniumSettings']['wiki_userPassword'];
+			$seleniumSettings['username'] = $configArray['SeleniumSettings']['username'];
+			$seleniumSettings['userPassword'] = $configArray['SeleniumSettings']['userPassword'];
 			$seleniumSettings['testBrowser'] = $configArray['SeleniumSettings']['testBrowser'];
 			$seleniumSettings['startserver'] = $configArray['SeleniumSettings']['startserver'];
 			$seleniumSettings['stopserver'] = $configArray['SeleniumSettings']['stopserver'];

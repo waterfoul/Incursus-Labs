@@ -16,7 +16,7 @@
 $fallback = 'ro';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Subliniaere legătuls:',
 
 # Dates
@@ -97,7 +97,7 @@ $messages = array(
 'jumptonavigation' => 'navigacion',
 'jumptosearch' => 'kaută',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Dajpul {{SITENAME}}',
 'aboutpage' => 'Project:Dajpul {{SITENAME}}',
 'copyrightpage' => "{{ns:project}}:Prava d'autoru",
@@ -128,7 +128,7 @@ $messages = array(
 'page-atom-feed' => '"$1" Atom Fitul',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-wiki_user' => "Pažu d'utilizatoru",
+'nstab-user' => "Pažu d'utilizatoru",
 'nstab-project' => 'Projektu',
 'nstab-image' => 'fişirul',
 'nstab-category' => 'kategoria',
@@ -140,8 +140,8 @@ $messages = array(
 'yourname' => "Nom d'utilizatoru:",
 'login' => 'Prilasnaere',
 'nav-login-createaccount' => 'Prilasnaere / Nažbe',
-'wiki_userlogin' => 'Prilasnaere / kreare nutilizatoru',
-'wiki_userlogout' => 'otlastaere',
+'userlogin' => 'Prilasnaere / kreare nutilizatoru',
+'userlogout' => 'otlastaere',
 
 # Edit page toolbar
 'bold_sample' => 'Eskrire aldin',
@@ -228,7 +228,7 @@ $3',
 'filehist' => 'Historia fişirulu',
 'filehist-current' => 'kurentu',
 'filehist-datetime' => 'Data/Temp',
-'filehist-wiki_user' => 'Utilizatoru',
+'filehist-user' => 'Utilizatoru',
 'filehist-dimensions' => 'Dimencions',
 'filehist-comment' => 'komentarul',
 'imagelinks' => 'Legătul fişirul de media',
@@ -299,7 +299,7 @@ $3',
 'thumbnail_error' => 'Eru vec kreare de thumbnail: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => "Moj pažu d'utilizatoru",
+'tooltip-pt-userpage' => "Moj pažu d'utilizatoru",
 'tooltip-pt-mytalk' => 'Maj pažu diskuţus',
 'tooltip-pt-preferences' => 'Maj prefirenţu',
 'tooltip-pt-watchlist' => 'Lista pažinilor pe care le monitorizez.',
@@ -321,7 +321,7 @@ $3',
 'tooltip-t-contributions' => "Vu lista de kontribuţi de c'utilizatoru",
 'tooltip-t-upload' => 'Tremer fişirul',
 'tooltip-t-specialpages' => 'Lista de toat paži specialus',
-'tooltip-ca-nstab-wiki_user' => "Vu l'pažu d'utilizatoru",
+'tooltip-ca-nstab-user' => "Vu l'pažu d'utilizatoru",
 'tooltip-ca-nstab-project' => "Vu l'pažu de projektu",
 'tooltip-ca-nstab-category' => "Vu l'pažu de kategoria",
 'tooltip-minoredit' => "ce-est n'modifikacion minoru",

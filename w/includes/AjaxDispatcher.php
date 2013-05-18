@@ -48,7 +48,7 @@ class AjaxDispatcher {
 	private $args;
 
 	/**
-	 * Load up our object with wiki_user supplied data
+	 * Load up our object with user supplied data
 	 */
 	function __construct() {
 		wfProfileIn( __METHOD__ );
@@ -92,12 +92,12 @@ class AjaxDispatcher {
 
 	/**
 	 * Pass the request to our internal function.
-	 * BEWARE! Data are passed as they have been supplied by the wiki_user,
+	 * BEWARE! Data are passed as they have been supplied by the user,
 	 * they should be carefully handled in the function processing the
 	 * request.
 	 */
 	function performAction() {
-		global $wgAjaxExportList, $wgwiki_user;
+		global $wgAjaxExportList, $wgUser;
 
 		if ( empty( $this->mode ) ) {
 			return;
@@ -113,8 +113,8 @@ class AjaxDispatcher {
 				'Bad Request',
 				"unknown function " . (string) $this->func_name
 			);
-		} elseif ( !in_array( 'read', wiki_user::getGroupPermissions( array( '*' ) ), true )
-			&& !$wgwiki_user->isAllowed( 'read' ) )
+		} elseif ( !in_array( 'read', User::getGroupPermissions( array( '*' ) ), true )
+			&& !$wgUser->isAllowed( 'read' ) )
 		{
 			wfHttpError(
 				403,

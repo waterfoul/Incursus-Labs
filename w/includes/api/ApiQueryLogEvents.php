@@ -36,13 +36,13 @@ class ApiQueryLogEvents extends ApiQueryBase {
 	}
 
 	private $fld_ids = false, $fld_title = false, $fld_type = false,
-		$fld_action = false, $fld_wiki_user = false, $fld_wiki_userid = false,
+		$fld_action = false, $fld_user = false, $fld_userid = false,
 		$fld_timestamp = false, $fld_comment = false, $fld_parsedcomment = false,
 		$fld_details = false, $fld_tags = false;
 
 	public function execute() {
 		$params = $this->extractRequestParams();
-		 = $this->getDB();
+		$db = $this->getDB();
 
 		$prop = array_flip( $params['prop'] );
 
@@ -50,25 +50,25 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		$this->fld_title = isset( $prop['title'] );
 		$this->fld_type = isset( $prop['type'] );
 		$this->fld_action = isset ( $prop['action'] );
-		$this->fld_wiki_user = isset( $prop['wiki_user'] );
-		$this->fld_wiki_userid = isset( $prop['wiki_userid'] );
+		$this->fld_user = isset( $prop['user'] );
+		$this->fld_userid = isset( $prop['userid'] );
 		$this->fld_timestamp = isset( $prop['timestamp'] );
 		$this->fld_comment = isset( $prop['comment'] );
 		$this->fld_parsedcomment = isset ( $prop['parsedcomment'] );
 		$this->fld_details = isset( $prop['details'] );
 		$this->fld_tags = isset( $prop['tags'] );
 
-		$hideLogs = LogEventsList::getExcludeClause(  );
+		$hideLogs = LogEventsList::getExcludeClause( $db );
 		if ( $hideLogs !== false ) {
 			$this->addWhere( $hideLogs );
 		}
 
 		// Order is significant here
-		$this->addTables( array( 'logging', 'wiki_user', 'page' ) );
+		$this->addTables( array( 'logging', 'user', 'page' ) );
 		$this->addOption( 'STRAIGHT_JOIN' );
 		$this->addJoinConds( array(
-			'wiki_user' => array( 'JOIN',
-				'wiki_user_id=log_wiki_user' ),
+			'user' => array( 'JOIN',
+				'user_id=log_user' ),
 			'page' => array( 'LEFT JOIN',
 				array(	'log_namespace=page_namespace',
 					'log_title=page_title' ) ) ) );
@@ -82,8 +82,8 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		) );
 
 		$this->addFieldsIf( array( 'log_id', 'page_id' ), $this->fld_ids );
-		$this->addFieldsIf( array( 'log_wiki_user', 'wiki_user_name' ), $this->fld_wiki_user );
-		$this->addFieldsIf( 'wiki_user_id', $this->fld_wiki_userid );
+		$this->addFieldsIf( array( 'log_user', 'user_name' ), $this->fld_user );
+		$this->addFieldsIf( 'user_id', $this->fld_userid );
 		$this->addFieldsIf( array( 'log_namespace', 'log_title' ), $this->fld_title || $this->fld_parsedcomment );
 		$this->addFieldsIf( 'log_comment', $this->fld_comment || $this->fld_parsedcomment );
 		$this->addFieldsIf( 'log_params', $this->fld_details );
@@ -116,14 +116,14 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		$limit = $params['limit'];
 		$this->addOption( 'LIMIT', $limit + 1 );
 
-		$wiki_user = $params['wiki_user'];
-		if ( !is_null( $wiki_user ) ) {
-			$wiki_userid = wiki_user::idFromName( $wiki_user );
-			if ( !$wiki_userid ) {
-				$this->dieUsage( "wiki_user name $wiki_user not found", 'param_wiki_user' );
+		$user = $params['user'];
+		if ( !is_null( $user ) ) {
+			$userid = User::idFromName( $user );
+			if ( !$userid ) {
+				$this->dieUsage( "User name $user not found", 'param_user' );
 			}
-			$this->addWhereFld( 'log_wiki_user', $wiki_userid );
-			$index['logging'] = 'wiki_user_time';
+			$this->addWhereFld( 'log_user', $userid );
+			$index['logging'] = 'user_time';
 		}
 
 		$title = $params['title'];
@@ -135,8 +135,8 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			$this->addWhereFld( 'log_namespace', $titleObj->getNamespace() );
 			$this->addWhereFld( 'log_title', $titleObj->getDBkey() );
 
-			// Use the title index in preference to the wiki_user index if there is a conflict
-			$index['logging'] = is_null( $wiki_user ) ? 'page_time' : array( 'page_time', 'wiki_user_time' );
+			// Use the title index in preference to the user index if there is a conflict
+			$index['logging'] = is_null( $user ) ? 'page_time' : array( 'page_time', 'user_time' );
 		}
 
 		$prefix = $params['prefix'];
@@ -152,17 +152,17 @@ class ApiQueryLogEvents extends ApiQueryBase {
 				$this->dieUsage( "Bad title value '$prefix'", 'param_prefix' );
 			}
 			$this->addWhereFld( 'log_namespace',  $title->getNamespace() );
-			$this->addWhere( 'log_title ' . ->buildLike( $title->getDBkey(), ->anyString() ) );
+			$this->addWhere( 'log_title ' . $db->buildLike( $title->getDBkey(), $db->anyString() ) );
 		}
 
 		$this->addOption( 'USE INDEX', $index );
 
 		// Paranoia: avoid brute force searches (bug 17342)
 		if ( !is_null( $title ) ) {
-			$this->addWhere( ->bitAnd( 'log_deleted', LogPage::DELETED_ACTION ) . ' = 0' );
+			$this->addWhere( $db->bitAnd( 'log_deleted', LogPage::DELETED_ACTION ) . ' = 0' );
 		}
-		if ( !is_null( $wiki_user ) ) {
-			$this->addWhere( ->bitAnd( 'log_deleted', LogPage::DELETED_USER ) . ' = 0' );
+		if ( !is_null( $user ) ) {
+			$this->addWhere( $db->bitAnd( 'log_deleted', LogPage::DELETED_USER ) . ' = 0' );
 		}
 
 		$count = 0;
@@ -311,18 +311,18 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			}
 		}
 
-		if ( $this->fld_wiki_user || $this->fld_wiki_userid ) {
+		if ( $this->fld_user || $this->fld_userid ) {
 			if ( LogEventsList::isDeleted( $row, LogPage::DELETED_USER ) ) {
-				$vals['wiki_userhidden'] = '';
+				$vals['userhidden'] = '';
 			} else {
-				if ( $this->fld_wiki_user ) {
-					$vals['wiki_user'] = $row->wiki_user_name;
+				if ( $this->fld_user ) {
+					$vals['user'] = $row->user_name;
 				}
-				if ( $this->fld_wiki_userid ) {
-					$vals['wiki_userid'] = $row->wiki_user_id;
+				if ( $this->fld_userid ) {
+					$vals['userid'] = $row->user_id;
 				}
 
-				if ( !$row->log_wiki_user ) {
+				if ( !$row->log_user ) {
 					$vals['anon'] = '';
 				}
 			}
@@ -361,7 +361,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 	public function getCacheMode( $params ) {
 		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
 			// formatComment() calls wfMessage() among other things
-			return 'anon-public-wiki_user-private';
+			return 'anon-public-user-private';
 		} else {
 			return 'public';
 		}
@@ -372,13 +372,13 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		return array(
 			'prop' => array(
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_DFLT => 'ids|title|type|wiki_user|timestamp|comment|details',
+				ApiBase::PARAM_DFLT => 'ids|title|type|user|timestamp|comment|details',
 				ApiBase::PARAM_TYPE => array(
 					'ids',
 					'title',
 					'type',
-					'wiki_user',
-					'wiki_userid',
+					'user',
+					'userid',
 					'timestamp',
 					'comment',
 					'parsedcomment',
@@ -405,7 +405,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 					'older'
 				)
 			),
-			'wiki_user' => null,
+			'user' => null,
 			'title' => null,
 			'prefix' => null,
 			'tag' => null,
@@ -427,8 +427,8 @@ class ApiQueryLogEvents extends ApiQueryBase {
 				' ids            - Adds the ID of the log event',
 				' title          - Adds the title of the page for the log event',
 				' type           - Adds the type of log event',
-				' wiki_user           - Adds the wiki_user responsible for the log event',
-				' wiki_userid         - Adds the wiki_user ID who was responsible for the log event',
+				' user           - Adds the user responsible for the log event',
+				' userid         - Adds the user ID who was responsible for the log event',
 				' timestamp      - Adds the timestamp for the event',
 				' comment        - Adds the comment of the event',
 				' parsedcomment  - Adds the parsed comment of the event',
@@ -440,7 +440,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			'start' => 'The timestamp to start enumerating from',
 			'end' => 'The timestamp to end enumerating',
 			'dir' => $this->getDirectionDescription( $p ),
-			'wiki_user' => 'Filter entries to those made by the given wiki_user',
+			'user' => 'Filter entries to those made by the given user',
 			'title' => 'Filter entries to those related to a page',
 			'prefix' => 'Filter entries that start with this prefix. Disabled in Miser Mode',
 			'limit' => 'How many total event entries to return',
@@ -468,17 +468,17 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			'details' => array(
 				'actionhidden' => 'boolean'
 			),
-			'wiki_user' => array(
-				'wiki_userhidden' => 'boolean',
-				'wiki_user' => array(
+			'user' => array(
+				'userhidden' => 'boolean',
+				'user' => array(
 					ApiBase::PROP_TYPE => 'string',
 					ApiBase::PROP_NULLABLE => true
 				),
 				'anon' => 'boolean'
 			),
-			'wiki_userid' => array(
-				'wiki_userhidden' => 'boolean',
-				'wiki_userid' => array(
+			'userid' => array(
+				'userhidden' => 'boolean',
+				'userid' => array(
 					ApiBase::PROP_TYPE => 'integer',
 					ApiBase::PROP_NULLABLE => true
 				),
@@ -510,7 +510,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'param_wiki_user', 'info' => 'wiki_user name $wiki_user not found' ),
+			array( 'code' => 'param_user', 'info' => 'User name $user not found' ),
 			array( 'code' => 'param_title', 'info' => 'Bad title value \'title\'' ),
 			array( 'code' => 'param_prefix', 'info' => 'Bad title value \'prefix\'' ),
 			array( 'code' => 'prefixsearchdisabled', 'info' => 'Prefix search disabled in Miser Mode' ),

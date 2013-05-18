@@ -146,8 +146,8 @@ Newtalk:
 	key: $wgDBname:newtalk:ip:$ip
 	ex: wikidb:newtalk:ip:123.45.67.89
 	stores: integer, 0 or 1
-	set in: wiki_user::loadFromDatabase()
-	cleared by: wiki_user::saveSettings() # ?
+	set in: User::loadFromDatabase()
+	cleared by: User::saveSettings() # ?
 	expiry: 30 minutes
 
 Parser Cache:
@@ -156,7 +156,7 @@ Parser Cache:
 	key: $wgDBname:pcache:idhash:$pageid-$renderkey!$hash
 		$pageid: id of the page
 		$renderkey: 1 if action=render, 0 otherwise
-		$hash: hash of wiki_user options applied to the page, see ParserOptions::optionsHash()
+		$hash: hash of user options applied to the page, see ParserOptions::optionsHash()
 	ex: wikidb:pcache:idhash:1-0!1!0!!en!2
 	stores: ParserOutput object
 	modified by: WikiPage::doEditUpdates() or PoolWorkArticleView::doWork()
@@ -171,14 +171,14 @@ Parser Cache:
 Ping limiter:
 	controlled by: $wgRateLimits
 	key: $wgDBname:limiter:action:$action:ip:$ip,
-		$wgDBname:limiter:action:$action:wiki_user:$id,
+		$wgDBname:limiter:action:$action:user:$id,
 		mediawiki:limiter:action:$action:ip:$ip and
 		mediawiki:limiter:action:$action:subnet:$sub
 	ex: wikidb:limiter:action:edit:ip:123.45.67.89,
-		wikidb:limiter:action:edit:wiki_user:1012
+		wikidb:limiter:action:edit:user:1012
 		mediawiki:limiter:action:edit:ip:123.45.67.89 and
 		mediawiki:limiter:action:$action:subnet:123.45.67
-	stores: number of action made by wiki_user/ip/subnet
+	stores: number of action made by user/ip/subnet
 	cleared by: nothing
 	expiry: expiry set for the action and group in $wgRateLimits
 
@@ -241,11 +241,11 @@ Statistics:
 	expiry: none (?)
 	cleared by: maintenance/clear_stats.php script
 
-wiki_user:
-	key: $wgDBname:wiki_user:id:$sId
-	ex: wikidb:wiki_user:id:51
-	stores: instance of class wiki_user
-	set in: wiki_user::saveToCache()
-	cleared by: wiki_user::saveSettings(), wiki_user::clearSharedCache()
+User:
+	key: $wgDBname:user:id:$sId
+	ex: wikidb:user:id:51
+	stores: instance of class User
+	set in: User::saveToCache()
+	cleared by: User::saveSettings(), User::clearSharedCache()
 	
 ... more to come ...

@@ -147,7 +147,7 @@ DIRECTION_RTL_RE = re.compile(r'%s(rtl)' % DIRECTION_RE)
 # We want to be able to switch left with right and vice versa anywhere
 # we encounter left/right strings, EXCEPT inside the background:url(). The next
 # two regexes are for that purpose. We have alternate IN_URL versions of the
-# regexes compiled in case the wiki_user passes the flag that they do
+# regexes compiled in case the user passes the flag that they do
 # actually want to have left and right swapped inside of background:urls.
 LEFT_RE = re.compile('%s(%s)%s%s' % (LOOKBEHIND_NOT_LETTER,
                                      LEFT,
@@ -180,7 +180,7 @@ COMMENT_RE = re.compile('(%s)' % csslex.COMMENT, re.I)
 
 NOFLIP_TOKEN = r'\@noflip'
 # The NOFLIP_TOKEN inside of a comment. For now, this requires that comments
-# be in the input, which means wiki_users of a css compiler would have to run
+# be in the input, which means users of a css compiler would have to run
 # this script first if they want this functionality.
 NOFLIP_ANNOTATION = r'/\*%s%s%s\*/' % (csslex.WHITESPACE,
                                        NOFLIP_TOKEN,

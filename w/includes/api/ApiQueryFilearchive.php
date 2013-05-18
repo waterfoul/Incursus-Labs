@@ -38,20 +38,20 @@ class ApiQueryFilearchive extends ApiQueryBase {
 	}
 
 	public function execute() {
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 		// Before doing anything at all, let's check permissions
-		if ( !$wiki_user->isAllowed( 'deletedhistory' ) ) {
+		if ( !$user->isAllowed( 'deletedhistory' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view deleted file information', 'permissiondenied' );
 		}
 
-		 = $this->getDB();
+		$db = $this->getDB();
 
 		$params = $this->extractRequestParams();
 
 		$prop = array_flip( $params['prop'] );
 		$fld_sha1 = isset( $prop['sha1'] );
 		$fld_timestamp = isset( $prop['timestamp'] );
-		$fld_wiki_user = isset( $prop['wiki_user'] );
+		$fld_user = isset( $prop['user'] );
 		$fld_size = isset( $prop['size'] );
 		$fld_dimensions = isset( $prop['dimensions'] );
 		$fld_description = isset( $prop['description'] ) || isset( $prop['parseddescription'] );
@@ -66,7 +66,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 		$this->addFields( array( 'fa_name', 'fa_deleted' ) );
 		$this->addFieldsIf( 'fa_storage_key', $fld_sha1 );
 		$this->addFieldsIf( 'fa_timestamp', $fld_timestamp );
-		$this->addFieldsIf( array( 'fa_wiki_user', 'fa_wiki_user_text' ), $fld_wiki_user );
+		$this->addFieldsIf( array( 'fa_user', 'fa_user_text' ), $fld_user );
 		$this->addFieldsIf( array( 'fa_height', 'fa_width', 'fa_size' ), $fld_dimensions || $fld_size );
 		$this->addFieldsIf( 'fa_description', $fld_description );
 		$this->addFieldsIf( array( 'fa_major_mime', 'fa_minor_mime' ), $fld_mime );
@@ -82,7 +82,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 					"original value returned by the previous query", "_badcontinue" );
 			}
 			$op = $params['dir'] == 'descending' ? '<' : '>';
-			$cont_from = ->addQuotes( $cont[0] );
+			$cont_from = $db->addQuotes( $cont[0] );
 			$this->addWhere( "fa_name $op= $cont_from" );
 		}
 
@@ -95,7 +95,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 		$to = ( is_null( $params['to'] ) ? null : $this->titlePartToKey( $params['to'] ) );
 		$this->addWhereRange( 'fa_name', $dir, $from, $to );
 		if ( isset( $params['prefix'] ) ) {
-			$this->addWhere( 'fa_name' . ->buildLike( $this->titlePartToKey( $params['prefix'] ), ->anyString() ) );
+			$this->addWhere( 'fa_name' . $db->buildLike( $this->titlePartToKey( $params['prefix'] ), $db->anyString() ) );
 		}
 
 		$sha1Set = isset( $params['sha1'] );
@@ -119,12 +119,12 @@ class ApiQueryFilearchive extends ApiQueryBase {
 				$sha1 = $params['sha1base36'];
 			}
 			if ( $sha1 ) {
-				$this->addWhere( 'fa_storage_key ' . ->buildLike( "{$sha1}.", ->anyString() ) );
+				$this->addWhere( 'fa_storage_key ' . $db->buildLike( "{$sha1}.", $db->anyString() ) );
 			}
 		}
 
-		if ( !$wiki_user->isAllowed( 'suppressrevision' ) ) {
-			// Filter out revisions that the wiki_user is not allowed to see. There
+		if ( !$user->isAllowed( 'suppressrevision' ) ) {
+			// Filter out revisions that the user is not allowed to see. There
 			// is no way to indicate that we have skipped stuff because the
 			// continuation parameter is fa_name
 
@@ -160,9 +160,9 @@ class ApiQueryFilearchive extends ApiQueryBase {
 			if ( $fld_timestamp ) {
 				$file['timestamp'] = wfTimestamp( TS_ISO_8601, $row->fa_timestamp );
 			}
-			if ( $fld_wiki_user ) {
-				$file['wiki_userid'] = $row->fa_wiki_user;
-				$file['wiki_user'] = $row->fa_wiki_user_text;
+			if ( $fld_user ) {
+				$file['userid'] = $row->fa_user;
+				$file['user'] = $row->fa_user_text;
 			}
 			if ( $fld_size || $fld_dimensions ) {
 				$file['size'] = $row->fa_size;
@@ -207,7 +207,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 				$file['commenthidden'] = '';
 			}
 			if ( $row->fa_deleted & File::DELETED_USER ) {
-				$file['wiki_userhidden'] = '';
+				$file['userhidden'] = '';
 			}
 			if ( $row->fa_deleted & File::DELETED_RESTRICTED ) {
 				// This file is deleted for normal admins
@@ -253,7 +253,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => array(
 					'sha1',
 					'timestamp',
-					'wiki_user',
+					'user',
 					'size',
 					'dimensions',
 					'description',
@@ -282,7 +282,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 				'What image information to get:',
 				' sha1              - Adds SHA-1 hash for the image',
 				' timestamp         - Adds timestamp for the uploaded version',
-				' wiki_user              - Adds wiki_user who uploaded the image version',
+				' user              - Adds user who uploaded the image version',
 				' size              - Adds the size of the image in bytes and the height, width and page count (if applicable)',
 				' dimensions        - Alias for size',
 				' description       - Adds description the image version',
@@ -304,7 +304,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 				'title' => 'string',
 				'filehidden' => 'boolean',
 				'commenthidden' => 'boolean',
-				'wiki_userhidden' => 'boolean',
+				'userhidden' => 'boolean',
 				'suppressed' => 'boolean'
 			),
 			'sha1' => array(
@@ -313,9 +313,9 @@ class ApiQueryFilearchive extends ApiQueryBase {
 			'timestamp' => array(
 				'timestamp' => 'timestamp'
 			),
-			'wiki_user' => array(
-				'wiki_userid' => 'integer',
-				'wiki_user' => 'string'
+			'user' => array(
+				'userid' => 'integer',
+				'user' => 'string'
 			),
 			'size' => array(
 				'size' => 'integer',

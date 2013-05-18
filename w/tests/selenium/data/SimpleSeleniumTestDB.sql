@@ -27,8 +27,8 @@ CREATE TABLE `mw_archive` (
   `ar_title` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `ar_text` mediumblob NOT NULL,
   `ar_comment` tinyblob NOT NULL,
-  `ar_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `ar_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `ar_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `ar_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `ar_timestamp` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
   `ar_minor_edit` tinyint(4) NOT NULL DEFAULT '0',
   `ar_flags` tinyblob NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `mw_archive` (
   `ar_page_id` int(10) unsigned DEFAULT NULL,
   `ar_parent_id` int(10) unsigned DEFAULT NULL,
   KEY `name_title_timestamp` (`ar_namespace`,`ar_title`,`ar_timestamp`),
-  KEY `wiki_usertext_timestamp` (`ar_wiki_user_text`,`ar_timestamp`),
+  KEY `usertext_timestamp` (`ar_user_text`,`ar_timestamp`),
   KEY `ar_revid` (`ar_rev_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -143,13 +143,13 @@ LOCK TABLES `mw_change_tag` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `mw_external_wiki_user`
+-- Table structure for table `mw_external_user`
 --
 
-DROP TABLE IF EXISTS `mw_external_wiki_user`;
+DROP TABLE IF EXISTS `mw_external_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mw_external_wiki_user` (
+CREATE TABLE `mw_external_user` (
   `eu_local_id` int(10) unsigned NOT NULL,
   `eu_external_id` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   PRIMARY KEY (`eu_local_id`),
@@ -158,12 +158,12 @@ CREATE TABLE `mw_external_wiki_user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mw_external_wiki_user`
+-- Dumping data for table `mw_external_user`
 --
 
-LOCK TABLES `mw_external_wiki_user` WRITE;
-/*!40000 ALTER TABLE `mw_external_wiki_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mw_external_wiki_user` ENABLE KEYS */;
+LOCK TABLES `mw_external_user` WRITE;
+/*!40000 ALTER TABLE `mw_external_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mw_external_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -206,7 +206,7 @@ CREATE TABLE `mw_filearchive` (
   `fa_archive_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT '',
   `fa_storage_group` varbinary(16) DEFAULT NULL,
   `fa_storage_key` varbinary(64) DEFAULT '',
-  `fa_deleted_wiki_user` int(11) DEFAULT NULL,
+  `fa_deleted_user` int(11) DEFAULT NULL,
   `fa_deleted_timestamp` binary(14) DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
   `fa_deleted_reason` text,
   `fa_size` int(10) unsigned DEFAULT '0',
@@ -218,15 +218,15 @@ CREATE TABLE `mw_filearchive` (
   `fa_major_mime` enum('unknown','application','audio','image','text','video','message','model','multipart') DEFAULT 'unknown',
   `fa_minor_mime` varbinary(100) DEFAULT 'unknown',
   `fa_description` tinyblob,
-  `fa_wiki_user` int(10) unsigned DEFAULT '0',
-  `fa_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
+  `fa_user` int(10) unsigned DEFAULT '0',
+  `fa_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
   `fa_timestamp` binary(14) DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
   `fa_deleted` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`fa_id`),
   KEY `fa_name` (`fa_name`,`fa_timestamp`),
   KEY `fa_storage_group` (`fa_storage_group`,`fa_storage_key`),
   KEY `fa_deleted_timestamp` (`fa_deleted_timestamp`),
-  KEY `fa_wiki_user_timestamp` (`fa_wiki_user_text`,`fa_timestamp`)
+  KEY `fa_user_timestamp` (`fa_user_text`,`fa_timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -278,12 +278,12 @@ CREATE TABLE `mw_image` (
   `img_major_mime` enum('unknown','application','audio','image','text','video','message','model','multipart') NOT NULL DEFAULT 'unknown',
   `img_minor_mime` varbinary(100) NOT NULL DEFAULT 'unknown',
   `img_description` tinyblob NOT NULL,
-  `img_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `img_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `img_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `img_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `img_timestamp` varbinary(14) NOT NULL DEFAULT '',
   `img_sha1` varbinary(32) NOT NULL DEFAULT '',
   PRIMARY KEY (`img_name`),
-  KEY `img_wiki_usertext_timestamp` (`img_wiki_user_text`,`img_timestamp`),
+  KEY `img_usertext_timestamp` (`img_user_text`,`img_timestamp`),
   KEY `img_size` (`img_size`),
   KEY `img_timestamp` (`img_timestamp`),
   KEY `img_sha1` (`img_sha1`)
@@ -361,7 +361,7 @@ DROP TABLE IF EXISTS `mw_ipblocks`;
 CREATE TABLE `mw_ipblocks` (
   `ipb_id` int(11) NOT NULL AUTO_INCREMENT,
   `ipb_address` tinyblob NOT NULL,
-  `ipb_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `ipb_user` int(10) unsigned NOT NULL DEFAULT '0',
   `ipb_by` int(10) unsigned NOT NULL DEFAULT '0',
   `ipb_by_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `ipb_reason` tinyblob NOT NULL,
@@ -375,10 +375,10 @@ CREATE TABLE `mw_ipblocks` (
   `ipb_range_end` tinyblob NOT NULL,
   `ipb_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `ipb_block_email` tinyint(1) NOT NULL DEFAULT '0',
-  `ipb_allow_wiki_usertalk` tinyint(1) NOT NULL DEFAULT '0',
+  `ipb_allow_usertalk` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ipb_id`),
-  UNIQUE KEY `ipb_address` (`ipb_address`(255),`ipb_wiki_user`,`ipb_auto`,`ipb_anon_only`),
-  KEY `ipb_wiki_user` (`ipb_wiki_user`),
+  UNIQUE KEY `ipb_address` (`ipb_address`(255),`ipb_user`,`ipb_auto`,`ipb_anon_only`),
+  KEY `ipb_user` (`ipb_user`),
   KEY `ipb_range` (`ipb_range_start`(8),`ipb_range_end`(8)),
   KEY `ipb_timestamp` (`ipb_timestamp`),
   KEY `ipb_expiry` (`ipb_expiry`)
@@ -532,8 +532,8 @@ CREATE TABLE `mw_logging` (
   `log_type` varbinary(32) NOT NULL DEFAULT '',
   `log_action` varbinary(32) NOT NULL DEFAULT '',
   `log_timestamp` binary(14) NOT NULL DEFAULT '19700101000000',
-  `log_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `log_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
+  `log_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `log_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `log_namespace` int(11) NOT NULL DEFAULT '0',
   `log_title` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `log_page` int(10) unsigned DEFAULT NULL,
@@ -542,10 +542,10 @@ CREATE TABLE `mw_logging` (
   `log_deleted` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`log_id`),
   KEY `type_time` (`log_type`,`log_timestamp`),
-  KEY `wiki_user_time` (`log_wiki_user`,`log_timestamp`),
+  KEY `user_time` (`log_user`,`log_timestamp`),
   KEY `page_time` (`log_namespace`,`log_title`,`log_timestamp`),
   KEY `times` (`log_timestamp`),
-  KEY `log_wiki_user_type_time` (`log_wiki_user`,`log_type`,`log_timestamp`),
+  KEY `log_user_type_time` (`log_user`,`log_type`,`log_timestamp`),
   KEY `log_page_id_time` (`log_page`,`log_timestamp`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -607,7 +607,7 @@ CREATE TABLE `mw_module_deps` (
 
 LOCK TABLES `mw_module_deps` WRITE;
 /*!40000 ALTER TABLE `mw_module_deps` DISABLE KEYS */;
-INSERT INTO `mw_module_deps` VALUES ('ext.vector.collapsibleNav','vector','[\"\\/home\\/pdhanda\\/deployment\\/extensions\\/Vector\\/modules\\/.\\/images\\/portal-break.png\",\"\\/home\\/pdhanda\\/deployment\\/extensions\\/Vector\\/modules\\/.\\/images\\/open.png\",\"\\/home\\/pdhanda\\/deployment\\/extensions\\/Vector\\/modules\\/.\\/images\\/closed-ltr.png\"]'),('jquery.wikiEditor','vector','[\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/loading.gif\"]'),('jquery.wikiEditor.toolbar','vector','{\"0\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/base.png\",\"1\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/loading.gif\",\"2\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/button-sprite.png\",\"3\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/arrow-right.png\",\"4\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/arrow-left.png\",\"5\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/arrow-down.png\",\"7\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/loading-small.gif\"}'),('mediawiki.legacy.shared','vector','[\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/feed-icon.png\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/remove.png\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/add.png\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/ajax-loader.gif\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/spinner.gif\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/help-question.gif\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/help-question-hover.gif\"]'),('skins.vector','vector','{\"0\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/page-base.png\",\"1\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/border.png\",\"2\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/page-fade.png\",\"4\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/tab-break.png\",\"5\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/tab-normal-fade.png\",\"6\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/tab-current-fade.png\",\"8\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/arrow-down-icon.png\",\"11\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/search-fade.png\",\"12\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/portal-break.png\",\"14\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/preferences-break.png\",\"16\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/preferences-fade.png\",\"17\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/preferences-base.png\",\"18\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/bullet-icon.png\",\"19\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/external-link-ltr-icon.png\",\"20\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/lock-icon.png\",\"21\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/mail-icon.png\",\"22\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/news-icon.png\",\"23\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/file-icon.png\",\"24\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/talk-icon.png\",\"25\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/audio-icon.png\",\"26\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/video-icon.png\",\"27\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/document-icon.png\",\"28\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/wiki_user-icon.png\",\"29\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/watch-icons.png\",\"30\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/watch-icon-loading.gif\"}');
+INSERT INTO `mw_module_deps` VALUES ('ext.vector.collapsibleNav','vector','[\"\\/home\\/pdhanda\\/deployment\\/extensions\\/Vector\\/modules\\/.\\/images\\/portal-break.png\",\"\\/home\\/pdhanda\\/deployment\\/extensions\\/Vector\\/modules\\/.\\/images\\/open.png\",\"\\/home\\/pdhanda\\/deployment\\/extensions\\/Vector\\/modules\\/.\\/images\\/closed-ltr.png\"]'),('jquery.wikiEditor','vector','[\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/loading.gif\"]'),('jquery.wikiEditor.toolbar','vector','{\"0\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/base.png\",\"1\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/loading.gif\",\"2\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/button-sprite.png\",\"3\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/arrow-right.png\",\"4\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/arrow-left.png\",\"5\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/arrow-down.png\",\"7\":\"\\/home\\/pdhanda\\/deployment\\/extensions\\/WikiEditor\\/modules\\/.\\/images\\/toolbar\\/loading-small.gif\"}'),('mediawiki.legacy.shared','vector','[\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/feed-icon.png\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/remove.png\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/add.png\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/ajax-loader.gif\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/spinner.gif\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/help-question.gif\",\"\\/home\\/pdhanda\\/deployment\\/skins\\/common\\/images\\/help-question-hover.gif\"]'),('skins.vector','vector','{\"0\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/page-base.png\",\"1\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/border.png\",\"2\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/page-fade.png\",\"4\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/tab-break.png\",\"5\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/tab-normal-fade.png\",\"6\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/tab-current-fade.png\",\"8\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/arrow-down-icon.png\",\"11\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/search-fade.png\",\"12\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/portal-break.png\",\"14\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/preferences-break.png\",\"16\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/preferences-fade.png\",\"17\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/preferences-base.png\",\"18\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/bullet-icon.png\",\"19\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/external-link-ltr-icon.png\",\"20\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/lock-icon.png\",\"21\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/mail-icon.png\",\"22\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/news-icon.png\",\"23\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/file-icon.png\",\"24\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/talk-icon.png\",\"25\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/audio-icon.png\",\"26\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/video-icon.png\",\"27\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/document-icon.png\",\"28\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/user-icon.png\",\"29\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/watch-icons.png\",\"30\":\"\\/home\\/pdhanda\\/deployment\\/skins\\/vector\\/images\\/watch-icon-loading.gif\"}');
 /*!40000 ALTER TABLE `mw_module_deps` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -633,7 +633,7 @@ CREATE TABLE `mw_msg_resource` (
 
 LOCK TABLES `mw_msg_resource` WRITE;
 /*!40000 ALTER TABLE `mw_msg_resource` DISABLE KEYS */;
-INSERT INTO `mw_msg_resource` VALUES ('ext.vector.collapsibleNav','en','{\"vector-collapsiblenav-more\":\"More languages\"}','20110108005000'),('ext.vector.collapsibleTabs','en','{}','20110108005000'),('ext.vector.simpleSearch','en','{\"vector-simplesearch-search\":\"Search\",\"vector-simplesearch-containing\":\"containing...\"}','20110108005000'),('ext.wikiEditor','en','{}','20110110172914'),('ext.wikiEditor.toolbar','en','{\"wikieditor-toolbar-loading\":\"Loading...\",\"wikieditor-toolbar-tool-bold\":\"Bold\",\"wikieditor-toolbar-tool-bold-example\":\"Bold text\",\"wikieditor-toolbar-tool-italic\":\"Italic\",\"wikieditor-toolbar-tool-italic-example\":\"Italic text\",\"wikieditor-toolbar-tool-ilink\":\"Internal link\",\"wikieditor-toolbar-tool-ilink-example\":\"Link title\",\"wikieditor-toolbar-tool-xlink\":\"External link (remember http:\\/\\/ prefix)\",\"wikieditor-toolbar-tool-xlink-example\":\"http:\\/\\/www.example.com link title\",\"wikieditor-toolbar-tool-link\":\"Link\",\"wikieditor-toolbar-tool-link-title\":\"Insert link\",\"wikieditor-toolbar-tool-link-int\":\"To a wiki page\",\"wikieditor-toolbar-tool-link-int-target\":\"Target page or URL:\",\"wikieditor-toolbar-tool-link-int-target-tooltip\":\"Page title or URL\",\"wikieditor-toolbar-tool-link-int-text\":\"Text to display:\",\"wikieditor-toolbar-tool-link-int-text-tooltip\":\"Text to be displayed\",\"wikieditor-toolbar-tool-link-ext\":\"To an external web page\",\"wikieditor-toolbar-tool-link-ext-target\":\"Link URL:\",\"wikieditor-toolbar-tool-link-ext-text\":\"Link text:\",\"wikieditor-toolbar-tool-link-insert\":\"Insert link\",\"wikieditor-toolbar-tool-link-cancel\":\"Cancel\",\"wikieditor-toolbar-tool-link-int-target-status-exists\":\"Page exists\",\"wikieditor-toolbar-tool-link-int-target-status-notexists\":\"Page does not exist\",\"wikieditor-toolbar-tool-link-int-target-status-invalid\":\"Invalid title\",\"wikieditor-toolbar-tool-link-int-target-status-external\":\"External link\",\"wikieditor-toolbar-tool-link-int-target-status-loading\":\"Checking page existence...\",\"wikieditor-toolbar-tool-link-int-invalid\":\"The title you specified is invalid.\",\"wikieditor-toolbar-tool-link-lookslikeinternal\":\"The URL you specified looks like it was intended as a link to another wiki page.\\nDo you want to make it an internal link?\",\"wikieditor-toolbar-tool-link-lookslikeinternal-int\":\"Internal link\",\"wikieditor-toolbar-tool-link-lookslikeinternal-ext\":\"External link\",\"wikieditor-toolbar-tool-link-empty\":\"You did not enter anything to link to.\",\"wikieditor-toolbar-tool-file\":\"Embedded file\",\"wikieditor-toolbar-tool-file-pre\":\"$1{{ns:file}}:\",\"wikieditor-toolbar-tool-file-example\":\"Example.jpg\",\"wikieditor-toolbar-tool-reference\":\"Reference\",\"wikieditor-toolbar-tool-reference-title\":\"Insert reference\",\"wikieditor-toolbar-tool-reference-cancel\":\"Cancel\",\"wikieditor-toolbar-tool-reference-text\":\"Reference text\",\"wikieditor-toolbar-tool-reference-insert\":\"Insert\",\"wikieditor-toolbar-tool-reference-example\":\"Insert footnote text here\",\"wikieditor-toolbar-tool-signature\":\"Signature and timestamp\",\"wikieditor-toolbar-section-advanced\":\"Advanced\",\"wikieditor-toolbar-tool-heading\":\"Heading\",\"wikieditor-toolbar-tool-heading-1\":\"Level 1\",\"wikieditor-toolbar-tool-heading-2\":\"Level 2\",\"wikieditor-toolbar-tool-heading-3\":\"Level 3\",\"wikieditor-toolbar-tool-heading-4\":\"Level 4\",\"wikieditor-toolbar-tool-heading-5\":\"Level 5\",\"wikieditor-toolbar-tool-heading-example\":\"Heading text\",\"wikieditor-toolbar-group-format\":\"Format\",\"wikieditor-toolbar-tool-ulist\":\"Bulleted list\",\"wikieditor-toolbar-tool-ulist-example\":\"Bulleted list item\",\"wikieditor-toolbar-tool-olist\":\"Numbered list\",\"wikieditor-toolbar-tool-olist-example\":\"Numbered list item\",\"wikieditor-toolbar-tool-indent\":\"Indentation\",\"wikieditor-toolbar-tool-indent-example\":\"Indented line\",\"wikieditor-toolbar-tool-nowiki\":\"No wiki formatting\",\"wikieditor-toolbar-tool-nowiki-example\":\"Insert non-formatted text here\",\"wikieditor-toolbar-tool-redirect\":\"Redirect\",\"wikieditor-toolbar-tool-redirect-example\":\"Target page name\",\"wikieditor-toolbar-tool-big\":\"Big\",\"wikieditor-toolbar-tool-big-example\":\"Big text\",\"wikieditor-toolbar-tool-small\":\"Small\",\"wikieditor-toolbar-tool-small-example\":\"Small text\",\"wikieditor-toolbar-tool-superscript\":\"Superscript\",\"wikieditor-toolbar-tool-superscript-example\":\"Superscript text\",\"wikieditor-toolbar-tool-subscript\":\"Subscript\",\"wikieditor-toolbar-tool-subscript-example\":\"Subscript text\",\"wikieditor-toolbar-group-insert\":\"Insert\",\"wikieditor-toolbar-tool-gallery\":\"Picture gallery\",\"wikieditor-toolbar-tool-gallery-example\":\"{{ns:file}}:Example.jpg|Caption1\\n{{ns:file}}:Example.jpg|Caption2\",\"wikieditor-toolbar-tool-newline\":\"New line\",\"wikieditor-toolbar-tool-table\":\"Table\",\"wikieditor-toolbar-tool-table-example-old\":\"-\\n! header 1\\n! header 2\\n! header 3\\n|-\\n| row 1, cell 1\\n| row 1, cell 2\\n| row 1, cell 3\\n|-\\n| row 2, cell 1\\n| row 2, cell 2\\n| row 2, cell 3\",\"wikieditor-toolbar-tool-table-example-cell-text\":\"Cell text\",\"wikieditor-toolbar-tool-table-example\":\"Example\",\"wikieditor-toolbar-tool-table-example-header\":\"Header text\",\"wikieditor-toolbar-tool-table-title\":\"Insert table\",\"wikieditor-toolbar-tool-table-dimensions-rows\":\"Rows\",\"wikieditor-toolbar-tool-table-dimensions-columns\":\"Columns\",\"wikieditor-toolbar-tool-table-dimensions-header\":\"Add header row\",\"wikieditor-toolbar-tool-table-wikitable\":\"Style with borders\",\"wikieditor-toolbar-tool-table-sortable\":\"Make table sortable\",\"wikieditor-toolbar-tool-table-insert\":\"Insert\",\"wikieditor-toolbar-tool-table-cancel\":\"Cancel\",\"wikieditor-toolbar-tool-table-example-text\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec purus diam. Sed aliquam imperdiet nunc quis lacinia. Donec rutrum consectetur placerat. Sed volutpat neque non purus faucibus id ultricies enim euismod.\",\"wikieditor-toolbar-tool-table-toomany\":\"Inserting a table with more than $1 cells is not possible with this dialog.\",\"wikieditor-toolbar-tool-table-invalidnumber\":\"You have not entered a valid number of rows or columns.\",\"wikieditor-toolbar-tool-table-zero\":\"You cannot insert a table with zero rows or columns.\",\"wikieditor-toolbar-tool-replace\":\"Search and replace\",\"wikieditor-toolbar-tool-replace-title\":\"Search and replace\",\"wikieditor-toolbar-tool-replace-search\":\"Search for:\",\"wikieditor-toolbar-tool-replace-replace\":\"Replace with:\",\"wikieditor-toolbar-tool-replace-case\":\"Match case\",\"wikieditor-toolbar-tool-replace-regex\":\"Treat search string as a regular expression\",\"wikieditor-toolbar-tool-replace-button-findnext\":\"Find next\",\"wikieditor-toolbar-tool-replace-button-replacenext\":\"Replace next\",\"wikieditor-toolbar-tool-replace-button-replaceall\":\"Replace all\",\"wikieditor-toolbar-tool-replace-close\":\"Close\",\"wikieditor-toolbar-tool-replace-nomatch\":\"Your search did not match anything.\",\"wikieditor-toolbar-tool-replace-success\":\"$1 replacement(s) made.\",\"wikieditor-toolbar-tool-replace-emptysearch\":\"You did not enter anything to search for.\",\"wikieditor-toolbar-tool-replace-invalidregex\":\"The regular expression you entered is invalid: $1\",\"wikieditor-toolbar-section-characters\":\"Special characters\",\"wikieditor-toolbar-characters-page-latin\":\"Latin\",\"wikieditor-toolbar-characters-page-latinextended\":\"Latin extended\",\"wikieditor-toolbar-characters-page-ipa\":\"IPA\",\"wikieditor-toolbar-characters-page-symbols\":\"Symbols\",\"wikieditor-toolbar-characters-page-greek\":\"Greek\",\"wikieditor-toolbar-characters-page-cyrillic\":\"Cyrillic\",\"wikieditor-toolbar-characters-page-arabic\":\"Arabic\",\"wikieditor-toolbar-characters-page-persian\":\"Persian\",\"wikieditor-toolbar-characters-page-hebrew\":\"Hebrew\",\"wikieditor-toolbar-characters-page-bangla\":\"Bangla\",\"wikieditor-toolbar-characters-page-telugu\":\"Telugu\",\"wikieditor-toolbar-characters-page-sinhala\":\"Sinhala\",\"wikieditor-toolbar-characters-page-gujarati\":\"Gujarati\",\"wikieditor-toolbar-characters-page-thai\":\"Thai\",\"wikieditor-toolbar-characters-page-lao\":\"Lao\",\"wikieditor-toolbar-characters-page-khmer\":\"Khmer\",\"wikieditor-toolbar-section-help\":\"Help\",\"wikieditor-toolbar-help-heading-description\":\"Description\",\"wikieditor-toolbar-help-heading-syntax\":\"What you type\",\"wikieditor-toolbar-help-heading-result\":\"What you get\",\"wikieditor-toolbar-help-page-format\":\"Formatting\",\"wikieditor-toolbar-help-page-link\":\"Links\",\"wikieditor-toolbar-help-page-heading\":\"Headings\",\"wikieditor-toolbar-help-page-list\":\"Lists\",\"wikieditor-toolbar-help-page-file\":\"Files\",\"wikieditor-toolbar-help-page-reference\":\"References\",\"wikieditor-toolbar-help-page-discussion\":\"Discussion\",\"wikieditor-toolbar-help-content-bold-description\":\"Bold\",\"wikieditor-toolbar-help-content-bold-syntax\":\"\'\'\'Bold text\'\'\'\",\"wikieditor-toolbar-help-content-bold-result\":\"<strong>Bold text<\\/strong>\",\"wikieditor-toolbar-help-content-italic-description\":\"Italic\",\"wikieditor-toolbar-help-content-italic-syntax\":\"\'\'Italic text\'\'\",\"wikieditor-toolbar-help-content-italic-result\":\"<em>Italic text<\\/em>\",\"wikieditor-toolbar-help-content-bolditalic-description\":\"Bold &amp; italic\",\"wikieditor-toolbar-help-content-bolditalic-syntax\":\"\'\'\'\'\'Bold &amp; italic text\'\'\'\'\'\",\"wikieditor-toolbar-help-content-bolditalic-result\":\"<strong><em>Bold &amp; italic text<\\/em><\\/strong>\",\"wikieditor-toolbar-help-content-ilink-description\":\"Internal link\",\"wikieditor-toolbar-help-content-ilink-syntax\":\"[[Page title|Link label]]<br \\/>[[Page title]]\",\"wikieditor-toolbar-help-content-ilink-result\":\"<a href=\'#\'>Link label<\\/a><br \\/><a href=\'#\'>Page title<\\/a>\",\"wikieditor-toolbar-help-content-xlink-description\":\"External link\",\"wikieditor-toolbar-help-content-xlink-syntax\":\"[http:\\/\\/www.example.org Link label]<br \\/>[http:\\/\\/www.example.org]<br \\/>http:\\/\\/www.example.org\",\"wikieditor-toolbar-help-content-xlink-result\":\"<a href=\'#\' class=\'external\'>Link label<\\/a><br \\/><a href=\'#\' class=\'external autonumber\'>[1]<\\/a><br \\/><a href=\'#\' class=\'external\'>http:\\/\\/www.example.org<\\/a>\",\"wikieditor-toolbar-help-content-heading1-description\":\"&lt;wikieditor-toolbar-help-content-heading1-description&gt;\",\"wikieditor-toolbar-help-content-heading1-syntax\":\"&lt;wikieditor-toolbar-help-content-heading1-syntax&gt;\",\"wikieditor-toolbar-help-content-heading1-result\":\"&lt;wikieditor-toolbar-help-content-heading1-result&gt;\",\"wikieditor-toolbar-help-content-heading2-description\":\"2nd level heading\",\"wikieditor-toolbar-help-content-heading2-syntax\":\"== Heading text ==\",\"wikieditor-toolbar-help-content-heading2-result\":\"<h2>Heading text<\\/h2>\",\"wikieditor-toolbar-help-content-heading3-description\":\"3rd level heading\",\"wikieditor-toolbar-help-content-heading3-syntax\":\"=== Heading text ===\",\"wikieditor-toolbar-help-content-heading3-result\":\"<h3>Heading text<\\/h3>\",\"wikieditor-toolbar-help-content-heading4-description\":\"4th level heading\",\"wikieditor-toolbar-help-content-heading4-syntax\":\"==== Heading text ====\",\"wikieditor-toolbar-help-content-heading4-result\":\"<h4>Heading text<\\/h4>\",\"wikieditor-toolbar-help-content-heading5-description\":\"5th level heading\",\"wikieditor-toolbar-help-content-heading5-syntax\":\"===== Heading text =====\",\"wikieditor-toolbar-help-content-heading5-result\":\"<h5>Heading text<\\/h5>\",\"wikieditor-toolbar-help-content-ulist-description\":\"Bulleted list\",\"wikieditor-toolbar-help-content-ulist-syntax\":\"* List item<br \\/>* List item\",\"wikieditor-toolbar-help-content-ulist-result\":\"<ul><li>List item<\\/li><li>List item<\\/li><\\/ul>\",\"wikieditor-toolbar-help-content-olist-description\":\"Numbered list\",\"wikieditor-toolbar-help-content-olist-syntax\":\"# List item<br \\/># List item\",\"wikieditor-toolbar-help-content-olist-result\":\"<ol><li>List item<\\/li><li>List item<\\/li><\\/ol>\",\"wikieditor-toolbar-help-content-file-description\":\"Embedded file\",\"wikieditor-toolbar-help-content-file-syntax\":\"[[{{ns:file}}:Example.png|thumb|Caption text]]\",\"wikieditor-toolbar-help-content-file-result\":\"<div style=\'width:104px;\' class=\'thumbinner\'><a title=\'Caption text\' class=\'image\' href=\'#\'><img height=\'50\' width=\'100\' border=\'0\' class=\'thumbimage\' src=\'extensions\\/UsabilityInitiative\\/images\\/wikiEditor\\/toolbar\\/example-image.png\' alt=\'\'\\/><\\/a><div class=\'thumbcaption\'><div class=\'magnify\'><a title=\'Enlarge\' class=\'internal\' href=\'#\'><img height=\'11\' width=\'15\' alt=\'\' src=\'$1\\/common\\/images\\/magnify-clip.png\'\\/><\\/a><\\/div>Caption text<\\/div><\\/div>\",\"wikieditor-toolbar-help-content-reference-description\":\"Reference\",\"wikieditor-toolbar-help-content-reference-syntax\":\"Page text.&lt;ref name=\\\"test\\\"&gt;[http:\\/\\/www.example.org Link text], additional text.&lt;\\/ref&gt;\",\"wikieditor-toolbar-help-content-reference-result\":\"Page text.<sup><a href=\'#\'>[1]<\\/a><\\/sup>\",\"wikieditor-toolbar-help-content-rereference-description\":\"Additional use of same reference\",\"wikieditor-toolbar-help-content-rereference-syntax\":\"&lt;ref name=\\\"test\\\" \\/&gt;\",\"wikieditor-toolbar-help-content-rereference-result\":\"Page text.<sup><a href=\'#\'>[1]<\\/a><\\/sup>\",\"wikieditor-toolbar-help-content-showreferences-description\":\"Display references\",\"wikieditor-toolbar-help-content-showreferences-syntax\":\"&lt;references \\/&gt;\",\"wikieditor-toolbar-help-content-showreferences-result\":\"<ol class=\'references\'><li id=\'cite_note-test-0\'><b><a title=\'\' href=\'#\'>^<\\/a><\\/b> <a rel=\'nofollow\' title=\'http:\\/\\/www.example.org\' class=\'external text\' href=\'#\'>Link text<\\/a>, additional text.<\\/li><\\/ol>\",\"wikieditor-toolbar-help-content-signaturetimestamp-description\":\"Signature with timestamp\",\"wikieditor-toolbar-help-content-signaturetimestamp-syntax\":\"~~~~\",\"wikieditor-toolbar-help-content-signaturetimestamp-result\":\"<a href=\'#\' title=\'{{#special:mypage}}\'>wiki_username<\\/a> (<a href=\'#\' title=\'{{#special:mytalk}}\'>talk<\\/a>) 15:54, 10 June 2009 (UTC)\",\"wikieditor-toolbar-help-content-signature-description\":\"Signature\",\"wikieditor-toolbar-help-content-signature-syntax\":\"~~~\",\"wikieditor-toolbar-help-content-signature-result\":\"<a href=\'#\' title=\'{{#special:mypage}}\'>wiki_username<\\/a> (<a href=\'#\' title=\'{{#special:mytalk}}\'>talk<\\/a>)\",\"wikieditor-toolbar-help-content-indent-description\":\"Indent\",\"wikieditor-toolbar-help-content-indent-syntax\":\"Normal text<br \\/>:Indented text<br \\/>::Indented text\",\"wikieditor-toolbar-help-content-indent-result\":\"Normal text<dl><dd>Indented text<dl><dd>Indented text<\\/dd><\\/dl><\\/dd><\\/dl>\"}','20110110172914'),('jquery.async','en','{}','20110110172915'),('jquery.autoEllipsis','en','{}','20110110172915'),('jquery.checkboxShiftClick','en','{}','20110110172915'),('jquery.client','en','{}','20110110172915'),('jquery.collapsibleTabs','en','{}','20110110172915'),('jquery.cookie','en','{}','20110110172915'),('jquery.delayedBind','en','{}','20110110172915'),('jquery.highlightText','en','{}','20110110172915'),('jquery.makeCollapsible','en','{\"collapsible-expand\":\"Expand\",\"collapsible-collapse\":\"Collapse\"}','20110110172915'),('jquery.placeholder','en','{}','20110110172915'),('jquery.suggestions','en','{}','20110110172915'),('jquery.tabIndex','en','{}','20110110172915'),('jquery.textSelection','en','{}','20110110172915'),('jquery.wikiEditor','en','{\"wikieditor-wikitext-tab\":\"Wikitext\",\"wikieditor-loading\":\"Loading\"}','20110110172914'),('jquery.wikiEditor.toolbar','en','{}','20110110172914'),('mediawiki.action.watch.ajax','en','{}','20110110172915'),('mediawiki.language','en','{}','20110110172915'),('mediawiki.legacy.ajax','en','{\"watch\":\"Watch\",\"unwatch\":\"Unwatch\",\"watching\":\"Watching...\",\"unwatching\":\"Unwatching...\",\"tooltip-ca-watch\":\"Add this page to your watchlist\",\"tooltip-ca-unwatch\":\"Remove this page from your watchlist\"}','20110110172915'),('mediawiki.legacy.edit','en','{}','20110110172915'),('mediawiki.legacy.wikibits','en','{\"showtoc\":\"show\",\"hidetoc\":\"hide\"}','20110110172915'),('mediawiki.util','en','{}','20110110172915');
+INSERT INTO `mw_msg_resource` VALUES ('ext.vector.collapsibleNav','en','{\"vector-collapsiblenav-more\":\"More languages\"}','20110108005000'),('ext.vector.collapsibleTabs','en','{}','20110108005000'),('ext.vector.simpleSearch','en','{\"vector-simplesearch-search\":\"Search\",\"vector-simplesearch-containing\":\"containing...\"}','20110108005000'),('ext.wikiEditor','en','{}','20110110172914'),('ext.wikiEditor.toolbar','en','{\"wikieditor-toolbar-loading\":\"Loading...\",\"wikieditor-toolbar-tool-bold\":\"Bold\",\"wikieditor-toolbar-tool-bold-example\":\"Bold text\",\"wikieditor-toolbar-tool-italic\":\"Italic\",\"wikieditor-toolbar-tool-italic-example\":\"Italic text\",\"wikieditor-toolbar-tool-ilink\":\"Internal link\",\"wikieditor-toolbar-tool-ilink-example\":\"Link title\",\"wikieditor-toolbar-tool-xlink\":\"External link (remember http:\\/\\/ prefix)\",\"wikieditor-toolbar-tool-xlink-example\":\"http:\\/\\/www.example.com link title\",\"wikieditor-toolbar-tool-link\":\"Link\",\"wikieditor-toolbar-tool-link-title\":\"Insert link\",\"wikieditor-toolbar-tool-link-int\":\"To a wiki page\",\"wikieditor-toolbar-tool-link-int-target\":\"Target page or URL:\",\"wikieditor-toolbar-tool-link-int-target-tooltip\":\"Page title or URL\",\"wikieditor-toolbar-tool-link-int-text\":\"Text to display:\",\"wikieditor-toolbar-tool-link-int-text-tooltip\":\"Text to be displayed\",\"wikieditor-toolbar-tool-link-ext\":\"To an external web page\",\"wikieditor-toolbar-tool-link-ext-target\":\"Link URL:\",\"wikieditor-toolbar-tool-link-ext-text\":\"Link text:\",\"wikieditor-toolbar-tool-link-insert\":\"Insert link\",\"wikieditor-toolbar-tool-link-cancel\":\"Cancel\",\"wikieditor-toolbar-tool-link-int-target-status-exists\":\"Page exists\",\"wikieditor-toolbar-tool-link-int-target-status-notexists\":\"Page does not exist\",\"wikieditor-toolbar-tool-link-int-target-status-invalid\":\"Invalid title\",\"wikieditor-toolbar-tool-link-int-target-status-external\":\"External link\",\"wikieditor-toolbar-tool-link-int-target-status-loading\":\"Checking page existence...\",\"wikieditor-toolbar-tool-link-int-invalid\":\"The title you specified is invalid.\",\"wikieditor-toolbar-tool-link-lookslikeinternal\":\"The URL you specified looks like it was intended as a link to another wiki page.\\nDo you want to make it an internal link?\",\"wikieditor-toolbar-tool-link-lookslikeinternal-int\":\"Internal link\",\"wikieditor-toolbar-tool-link-lookslikeinternal-ext\":\"External link\",\"wikieditor-toolbar-tool-link-empty\":\"You did not enter anything to link to.\",\"wikieditor-toolbar-tool-file\":\"Embedded file\",\"wikieditor-toolbar-tool-file-pre\":\"$1{{ns:file}}:\",\"wikieditor-toolbar-tool-file-example\":\"Example.jpg\",\"wikieditor-toolbar-tool-reference\":\"Reference\",\"wikieditor-toolbar-tool-reference-title\":\"Insert reference\",\"wikieditor-toolbar-tool-reference-cancel\":\"Cancel\",\"wikieditor-toolbar-tool-reference-text\":\"Reference text\",\"wikieditor-toolbar-tool-reference-insert\":\"Insert\",\"wikieditor-toolbar-tool-reference-example\":\"Insert footnote text here\",\"wikieditor-toolbar-tool-signature\":\"Signature and timestamp\",\"wikieditor-toolbar-section-advanced\":\"Advanced\",\"wikieditor-toolbar-tool-heading\":\"Heading\",\"wikieditor-toolbar-tool-heading-1\":\"Level 1\",\"wikieditor-toolbar-tool-heading-2\":\"Level 2\",\"wikieditor-toolbar-tool-heading-3\":\"Level 3\",\"wikieditor-toolbar-tool-heading-4\":\"Level 4\",\"wikieditor-toolbar-tool-heading-5\":\"Level 5\",\"wikieditor-toolbar-tool-heading-example\":\"Heading text\",\"wikieditor-toolbar-group-format\":\"Format\",\"wikieditor-toolbar-tool-ulist\":\"Bulleted list\",\"wikieditor-toolbar-tool-ulist-example\":\"Bulleted list item\",\"wikieditor-toolbar-tool-olist\":\"Numbered list\",\"wikieditor-toolbar-tool-olist-example\":\"Numbered list item\",\"wikieditor-toolbar-tool-indent\":\"Indentation\",\"wikieditor-toolbar-tool-indent-example\":\"Indented line\",\"wikieditor-toolbar-tool-nowiki\":\"No wiki formatting\",\"wikieditor-toolbar-tool-nowiki-example\":\"Insert non-formatted text here\",\"wikieditor-toolbar-tool-redirect\":\"Redirect\",\"wikieditor-toolbar-tool-redirect-example\":\"Target page name\",\"wikieditor-toolbar-tool-big\":\"Big\",\"wikieditor-toolbar-tool-big-example\":\"Big text\",\"wikieditor-toolbar-tool-small\":\"Small\",\"wikieditor-toolbar-tool-small-example\":\"Small text\",\"wikieditor-toolbar-tool-superscript\":\"Superscript\",\"wikieditor-toolbar-tool-superscript-example\":\"Superscript text\",\"wikieditor-toolbar-tool-subscript\":\"Subscript\",\"wikieditor-toolbar-tool-subscript-example\":\"Subscript text\",\"wikieditor-toolbar-group-insert\":\"Insert\",\"wikieditor-toolbar-tool-gallery\":\"Picture gallery\",\"wikieditor-toolbar-tool-gallery-example\":\"{{ns:file}}:Example.jpg|Caption1\\n{{ns:file}}:Example.jpg|Caption2\",\"wikieditor-toolbar-tool-newline\":\"New line\",\"wikieditor-toolbar-tool-table\":\"Table\",\"wikieditor-toolbar-tool-table-example-old\":\"-\\n! header 1\\n! header 2\\n! header 3\\n|-\\n| row 1, cell 1\\n| row 1, cell 2\\n| row 1, cell 3\\n|-\\n| row 2, cell 1\\n| row 2, cell 2\\n| row 2, cell 3\",\"wikieditor-toolbar-tool-table-example-cell-text\":\"Cell text\",\"wikieditor-toolbar-tool-table-example\":\"Example\",\"wikieditor-toolbar-tool-table-example-header\":\"Header text\",\"wikieditor-toolbar-tool-table-title\":\"Insert table\",\"wikieditor-toolbar-tool-table-dimensions-rows\":\"Rows\",\"wikieditor-toolbar-tool-table-dimensions-columns\":\"Columns\",\"wikieditor-toolbar-tool-table-dimensions-header\":\"Add header row\",\"wikieditor-toolbar-tool-table-wikitable\":\"Style with borders\",\"wikieditor-toolbar-tool-table-sortable\":\"Make table sortable\",\"wikieditor-toolbar-tool-table-insert\":\"Insert\",\"wikieditor-toolbar-tool-table-cancel\":\"Cancel\",\"wikieditor-toolbar-tool-table-example-text\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec purus diam. Sed aliquam imperdiet nunc quis lacinia. Donec rutrum consectetur placerat. Sed volutpat neque non purus faucibus id ultricies enim euismod.\",\"wikieditor-toolbar-tool-table-toomany\":\"Inserting a table with more than $1 cells is not possible with this dialog.\",\"wikieditor-toolbar-tool-table-invalidnumber\":\"You have not entered a valid number of rows or columns.\",\"wikieditor-toolbar-tool-table-zero\":\"You cannot insert a table with zero rows or columns.\",\"wikieditor-toolbar-tool-replace\":\"Search and replace\",\"wikieditor-toolbar-tool-replace-title\":\"Search and replace\",\"wikieditor-toolbar-tool-replace-search\":\"Search for:\",\"wikieditor-toolbar-tool-replace-replace\":\"Replace with:\",\"wikieditor-toolbar-tool-replace-case\":\"Match case\",\"wikieditor-toolbar-tool-replace-regex\":\"Treat search string as a regular expression\",\"wikieditor-toolbar-tool-replace-button-findnext\":\"Find next\",\"wikieditor-toolbar-tool-replace-button-replacenext\":\"Replace next\",\"wikieditor-toolbar-tool-replace-button-replaceall\":\"Replace all\",\"wikieditor-toolbar-tool-replace-close\":\"Close\",\"wikieditor-toolbar-tool-replace-nomatch\":\"Your search did not match anything.\",\"wikieditor-toolbar-tool-replace-success\":\"$1 replacement(s) made.\",\"wikieditor-toolbar-tool-replace-emptysearch\":\"You did not enter anything to search for.\",\"wikieditor-toolbar-tool-replace-invalidregex\":\"The regular expression you entered is invalid: $1\",\"wikieditor-toolbar-section-characters\":\"Special characters\",\"wikieditor-toolbar-characters-page-latin\":\"Latin\",\"wikieditor-toolbar-characters-page-latinextended\":\"Latin extended\",\"wikieditor-toolbar-characters-page-ipa\":\"IPA\",\"wikieditor-toolbar-characters-page-symbols\":\"Symbols\",\"wikieditor-toolbar-characters-page-greek\":\"Greek\",\"wikieditor-toolbar-characters-page-cyrillic\":\"Cyrillic\",\"wikieditor-toolbar-characters-page-arabic\":\"Arabic\",\"wikieditor-toolbar-characters-page-persian\":\"Persian\",\"wikieditor-toolbar-characters-page-hebrew\":\"Hebrew\",\"wikieditor-toolbar-characters-page-bangla\":\"Bangla\",\"wikieditor-toolbar-characters-page-telugu\":\"Telugu\",\"wikieditor-toolbar-characters-page-sinhala\":\"Sinhala\",\"wikieditor-toolbar-characters-page-gujarati\":\"Gujarati\",\"wikieditor-toolbar-characters-page-thai\":\"Thai\",\"wikieditor-toolbar-characters-page-lao\":\"Lao\",\"wikieditor-toolbar-characters-page-khmer\":\"Khmer\",\"wikieditor-toolbar-section-help\":\"Help\",\"wikieditor-toolbar-help-heading-description\":\"Description\",\"wikieditor-toolbar-help-heading-syntax\":\"What you type\",\"wikieditor-toolbar-help-heading-result\":\"What you get\",\"wikieditor-toolbar-help-page-format\":\"Formatting\",\"wikieditor-toolbar-help-page-link\":\"Links\",\"wikieditor-toolbar-help-page-heading\":\"Headings\",\"wikieditor-toolbar-help-page-list\":\"Lists\",\"wikieditor-toolbar-help-page-file\":\"Files\",\"wikieditor-toolbar-help-page-reference\":\"References\",\"wikieditor-toolbar-help-page-discussion\":\"Discussion\",\"wikieditor-toolbar-help-content-bold-description\":\"Bold\",\"wikieditor-toolbar-help-content-bold-syntax\":\"\'\'\'Bold text\'\'\'\",\"wikieditor-toolbar-help-content-bold-result\":\"<strong>Bold text<\\/strong>\",\"wikieditor-toolbar-help-content-italic-description\":\"Italic\",\"wikieditor-toolbar-help-content-italic-syntax\":\"\'\'Italic text\'\'\",\"wikieditor-toolbar-help-content-italic-result\":\"<em>Italic text<\\/em>\",\"wikieditor-toolbar-help-content-bolditalic-description\":\"Bold &amp; italic\",\"wikieditor-toolbar-help-content-bolditalic-syntax\":\"\'\'\'\'\'Bold &amp; italic text\'\'\'\'\'\",\"wikieditor-toolbar-help-content-bolditalic-result\":\"<strong><em>Bold &amp; italic text<\\/em><\\/strong>\",\"wikieditor-toolbar-help-content-ilink-description\":\"Internal link\",\"wikieditor-toolbar-help-content-ilink-syntax\":\"[[Page title|Link label]]<br \\/>[[Page title]]\",\"wikieditor-toolbar-help-content-ilink-result\":\"<a href=\'#\'>Link label<\\/a><br \\/><a href=\'#\'>Page title<\\/a>\",\"wikieditor-toolbar-help-content-xlink-description\":\"External link\",\"wikieditor-toolbar-help-content-xlink-syntax\":\"[http:\\/\\/www.example.org Link label]<br \\/>[http:\\/\\/www.example.org]<br \\/>http:\\/\\/www.example.org\",\"wikieditor-toolbar-help-content-xlink-result\":\"<a href=\'#\' class=\'external\'>Link label<\\/a><br \\/><a href=\'#\' class=\'external autonumber\'>[1]<\\/a><br \\/><a href=\'#\' class=\'external\'>http:\\/\\/www.example.org<\\/a>\",\"wikieditor-toolbar-help-content-heading1-description\":\"&lt;wikieditor-toolbar-help-content-heading1-description&gt;\",\"wikieditor-toolbar-help-content-heading1-syntax\":\"&lt;wikieditor-toolbar-help-content-heading1-syntax&gt;\",\"wikieditor-toolbar-help-content-heading1-result\":\"&lt;wikieditor-toolbar-help-content-heading1-result&gt;\",\"wikieditor-toolbar-help-content-heading2-description\":\"2nd level heading\",\"wikieditor-toolbar-help-content-heading2-syntax\":\"== Heading text ==\",\"wikieditor-toolbar-help-content-heading2-result\":\"<h2>Heading text<\\/h2>\",\"wikieditor-toolbar-help-content-heading3-description\":\"3rd level heading\",\"wikieditor-toolbar-help-content-heading3-syntax\":\"=== Heading text ===\",\"wikieditor-toolbar-help-content-heading3-result\":\"<h3>Heading text<\\/h3>\",\"wikieditor-toolbar-help-content-heading4-description\":\"4th level heading\",\"wikieditor-toolbar-help-content-heading4-syntax\":\"==== Heading text ====\",\"wikieditor-toolbar-help-content-heading4-result\":\"<h4>Heading text<\\/h4>\",\"wikieditor-toolbar-help-content-heading5-description\":\"5th level heading\",\"wikieditor-toolbar-help-content-heading5-syntax\":\"===== Heading text =====\",\"wikieditor-toolbar-help-content-heading5-result\":\"<h5>Heading text<\\/h5>\",\"wikieditor-toolbar-help-content-ulist-description\":\"Bulleted list\",\"wikieditor-toolbar-help-content-ulist-syntax\":\"* List item<br \\/>* List item\",\"wikieditor-toolbar-help-content-ulist-result\":\"<ul><li>List item<\\/li><li>List item<\\/li><\\/ul>\",\"wikieditor-toolbar-help-content-olist-description\":\"Numbered list\",\"wikieditor-toolbar-help-content-olist-syntax\":\"# List item<br \\/># List item\",\"wikieditor-toolbar-help-content-olist-result\":\"<ol><li>List item<\\/li><li>List item<\\/li><\\/ol>\",\"wikieditor-toolbar-help-content-file-description\":\"Embedded file\",\"wikieditor-toolbar-help-content-file-syntax\":\"[[{{ns:file}}:Example.png|thumb|Caption text]]\",\"wikieditor-toolbar-help-content-file-result\":\"<div style=\'width:104px;\' class=\'thumbinner\'><a title=\'Caption text\' class=\'image\' href=\'#\'><img height=\'50\' width=\'100\' border=\'0\' class=\'thumbimage\' src=\'extensions\\/UsabilityInitiative\\/images\\/wikiEditor\\/toolbar\\/example-image.png\' alt=\'\'\\/><\\/a><div class=\'thumbcaption\'><div class=\'magnify\'><a title=\'Enlarge\' class=\'internal\' href=\'#\'><img height=\'11\' width=\'15\' alt=\'\' src=\'$1\\/common\\/images\\/magnify-clip.png\'\\/><\\/a><\\/div>Caption text<\\/div><\\/div>\",\"wikieditor-toolbar-help-content-reference-description\":\"Reference\",\"wikieditor-toolbar-help-content-reference-syntax\":\"Page text.&lt;ref name=\\\"test\\\"&gt;[http:\\/\\/www.example.org Link text], additional text.&lt;\\/ref&gt;\",\"wikieditor-toolbar-help-content-reference-result\":\"Page text.<sup><a href=\'#\'>[1]<\\/a><\\/sup>\",\"wikieditor-toolbar-help-content-rereference-description\":\"Additional use of same reference\",\"wikieditor-toolbar-help-content-rereference-syntax\":\"&lt;ref name=\\\"test\\\" \\/&gt;\",\"wikieditor-toolbar-help-content-rereference-result\":\"Page text.<sup><a href=\'#\'>[1]<\\/a><\\/sup>\",\"wikieditor-toolbar-help-content-showreferences-description\":\"Display references\",\"wikieditor-toolbar-help-content-showreferences-syntax\":\"&lt;references \\/&gt;\",\"wikieditor-toolbar-help-content-showreferences-result\":\"<ol class=\'references\'><li id=\'cite_note-test-0\'><b><a title=\'\' href=\'#\'>^<\\/a><\\/b> <a rel=\'nofollow\' title=\'http:\\/\\/www.example.org\' class=\'external text\' href=\'#\'>Link text<\\/a>, additional text.<\\/li><\\/ol>\",\"wikieditor-toolbar-help-content-signaturetimestamp-description\":\"Signature with timestamp\",\"wikieditor-toolbar-help-content-signaturetimestamp-syntax\":\"~~~~\",\"wikieditor-toolbar-help-content-signaturetimestamp-result\":\"<a href=\'#\' title=\'{{#special:mypage}}\'>Username<\\/a> (<a href=\'#\' title=\'{{#special:mytalk}}\'>talk<\\/a>) 15:54, 10 June 2009 (UTC)\",\"wikieditor-toolbar-help-content-signature-description\":\"Signature\",\"wikieditor-toolbar-help-content-signature-syntax\":\"~~~\",\"wikieditor-toolbar-help-content-signature-result\":\"<a href=\'#\' title=\'{{#special:mypage}}\'>Username<\\/a> (<a href=\'#\' title=\'{{#special:mytalk}}\'>talk<\\/a>)\",\"wikieditor-toolbar-help-content-indent-description\":\"Indent\",\"wikieditor-toolbar-help-content-indent-syntax\":\"Normal text<br \\/>:Indented text<br \\/>::Indented text\",\"wikieditor-toolbar-help-content-indent-result\":\"Normal text<dl><dd>Indented text<dl><dd>Indented text<\\/dd><\\/dl><\\/dd><\\/dl>\"}','20110110172914'),('jquery.async','en','{}','20110110172915'),('jquery.autoEllipsis','en','{}','20110110172915'),('jquery.checkboxShiftClick','en','{}','20110110172915'),('jquery.client','en','{}','20110110172915'),('jquery.collapsibleTabs','en','{}','20110110172915'),('jquery.cookie','en','{}','20110110172915'),('jquery.delayedBind','en','{}','20110110172915'),('jquery.highlightText','en','{}','20110110172915'),('jquery.makeCollapsible','en','{\"collapsible-expand\":\"Expand\",\"collapsible-collapse\":\"Collapse\"}','20110110172915'),('jquery.placeholder','en','{}','20110110172915'),('jquery.suggestions','en','{}','20110110172915'),('jquery.tabIndex','en','{}','20110110172915'),('jquery.textSelection','en','{}','20110110172915'),('jquery.wikiEditor','en','{\"wikieditor-wikitext-tab\":\"Wikitext\",\"wikieditor-loading\":\"Loading\"}','20110110172914'),('jquery.wikiEditor.toolbar','en','{}','20110110172914'),('mediawiki.action.watch.ajax','en','{}','20110110172915'),('mediawiki.language','en','{}','20110110172915'),('mediawiki.legacy.ajax','en','{\"watch\":\"Watch\",\"unwatch\":\"Unwatch\",\"watching\":\"Watching...\",\"unwatching\":\"Unwatching...\",\"tooltip-ca-watch\":\"Add this page to your watchlist\",\"tooltip-ca-unwatch\":\"Remove this page from your watchlist\"}','20110110172915'),('mediawiki.legacy.edit','en','{}','20110110172915'),('mediawiki.legacy.wikibits','en','{\"showtoc\":\"show\",\"hidetoc\":\"hide\"}','20110110172915'),('mediawiki.util','en','{}','20110110172915');
 /*!40000 ALTER TABLE `mw_msg_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -701,8 +701,8 @@ CREATE TABLE `mw_oldimage` (
   `oi_height` int(11) NOT NULL DEFAULT '0',
   `oi_bits` int(11) NOT NULL DEFAULT '0',
   `oi_description` tinyblob NOT NULL,
-  `oi_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `oi_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `oi_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `oi_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `oi_timestamp` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
   `oi_metadata` mediumblob NOT NULL,
   `oi_media_type` enum('UNKNOWN','BITMAP','DRAWING','AUDIO','VIDEO','MULTIMEDIA','OFFICE','TEXT','EXECUTABLE','ARCHIVE') DEFAULT NULL,
@@ -710,7 +710,7 @@ CREATE TABLE `mw_oldimage` (
   `oi_minor_mime` varbinary(100) NOT NULL DEFAULT 'unknown',
   `oi_deleted` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `oi_sha1` varbinary(32) NOT NULL DEFAULT '',
-  KEY `oi_wiki_usertext_timestamp` (`oi_wiki_user_text`,`oi_timestamp`),
+  KEY `oi_usertext_timestamp` (`oi_user_text`,`oi_timestamp`),
   KEY `oi_name_timestamp` (`oi_name`,`oi_timestamp`),
   KEY `oi_name_archive_name` (`oi_name`,`oi_archive_name`(14)),
   KEY `oi_sha1` (`oi_sha1`)
@@ -798,7 +798,7 @@ CREATE TABLE `mw_page_restrictions` (
   `pr_type` varbinary(60) NOT NULL,
   `pr_level` varbinary(60) NOT NULL,
   `pr_cascade` tinyint(4) NOT NULL,
-  `pr_wiki_user` int(11) DEFAULT NULL,
+  `pr_user` int(11) DEFAULT NULL,
   `pr_expiry` varbinary(14) DEFAULT NULL,
   `pr_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`pr_id`),
@@ -853,7 +853,7 @@ DROP TABLE IF EXISTS `mw_protected_titles`;
 CREATE TABLE `mw_protected_titles` (
   `pt_namespace` int(11) NOT NULL,
   `pt_title` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
-  `pt_wiki_user` int(10) unsigned NOT NULL,
+  `pt_user` int(10) unsigned NOT NULL,
   `pt_reason` tinyblob,
   `pt_timestamp` binary(14) NOT NULL,
   `pt_expiry` varbinary(14) NOT NULL DEFAULT '',
@@ -960,8 +960,8 @@ CREATE TABLE `mw_recentchanges` (
   `rc_id` int(11) NOT NULL AUTO_INCREMENT,
   `rc_timestamp` varbinary(14) NOT NULL DEFAULT '',
   `rc_cur_time` varbinary(14) NOT NULL DEFAULT '',
-  `rc_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `rc_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `rc_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `rc_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `rc_namespace` int(11) NOT NULL DEFAULT '0',
   `rc_title` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `rc_comment` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
@@ -989,8 +989,8 @@ CREATE TABLE `mw_recentchanges` (
   KEY `rc_cur_id` (`rc_cur_id`),
   KEY `new_name_timestamp` (`rc_new`,`rc_namespace`,`rc_timestamp`),
   KEY `rc_ip` (`rc_ip`),
-  KEY `rc_ns_wiki_usertext` (`rc_namespace`,`rc_wiki_user_text`),
-  KEY `rc_wiki_user_text` (`rc_wiki_user_text`,`rc_timestamp`)
+  KEY `rc_ns_usertext` (`rc_namespace`,`rc_user_text`),
+  KEY `rc_user_text` (`rc_user_text`,`rc_timestamp`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1043,8 +1043,8 @@ CREATE TABLE `mw_revision` (
   `rev_page` int(10) unsigned NOT NULL,
   `rev_text_id` int(10) unsigned NOT NULL,
   `rev_comment` tinyblob NOT NULL,
-  `rev_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
-  `rev_wiki_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
+  `rev_user` int(10) unsigned NOT NULL DEFAULT '0',
+  `rev_user_text` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `rev_timestamp` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
   `rev_minor_edit` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `rev_deleted` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -1054,8 +1054,8 @@ CREATE TABLE `mw_revision` (
   UNIQUE KEY `rev_page_id` (`rev_page`,`rev_id`),
   KEY `rev_timestamp` (`rev_timestamp`),
   KEY `page_timestamp` (`rev_page`,`rev_timestamp`),
-  KEY `wiki_user_timestamp` (`rev_wiki_user`,`rev_timestamp`),
-  KEY `wiki_usertext_timestamp` (`rev_wiki_user_text`,`rev_timestamp`)
+  KEY `user_timestamp` (`rev_user`,`rev_timestamp`),
+  KEY `usertext_timestamp` (`rev_user_text`,`rev_timestamp`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 MAX_ROWS=10000000 AVG_ROW_LENGTH=1024;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1092,7 +1092,7 @@ CREATE TABLE `mw_searchindex` (
 
 LOCK TABLES `mw_searchindex` WRITE;
 /*!40000 ALTER TABLE `mw_searchindex` DISABLE KEYS */;
-INSERT INTO `mw_searchindex` VALUES (1,'main page','  mediawiki hasu800 been successfully installed.  consult theu800 wiki_user wiki_user\'su800 guide foru800 information onu800 using theu800 wiki software. getting started getting started getting started configuration settings list mediawiki faqu800 mediawiki release mailing list '),(2,'testresources',' test theu800 theu800 simpleselenium database wasu800 loaded correctly ');
+INSERT INTO `mw_searchindex` VALUES (1,'main page','  mediawiki hasu800 been successfully installed.  consult theu800 user user\'su800 guide foru800 information onu800 using theu800 wiki software. getting started getting started getting started configuration settings list mediawiki faqu800 mediawiki release mailing list '),(2,'testresources',' test theu800 theu800 simpleselenium database wasu800 loaded correctly ');
 /*!40000 ALTER TABLE `mw_searchindex` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1109,8 +1109,8 @@ CREATE TABLE `mw_site_stats` (
   `ss_total_edits` bigint(20) unsigned DEFAULT '0',
   `ss_good_articles` bigint(20) unsigned DEFAULT '0',
   `ss_total_pages` bigint(20) DEFAULT '-1',
-  `ss_wiki_users` bigint(20) DEFAULT '-1',
-  `ss_active_wiki_users` bigint(20) DEFAULT '-1',
+  `ss_users` bigint(20) DEFAULT '-1',
+  `ss_active_users` bigint(20) DEFAULT '-1',
   `ss_admins` int(11) DEFAULT '-1',
   `ss_images` int(11) DEFAULT '0',
   UNIQUE KEY `ss_row_id` (`ss_row_id`)
@@ -1200,7 +1200,7 @@ CREATE TABLE `mw_text` (
 
 LOCK TABLES `mw_text` WRITE;
 /*!40000 ALTER TABLE `mw_text` DISABLE KEYS */;
-INSERT INTO `mw_text` VALUES (1,'\'\'\'MediaWiki has been successfully installed.\'\'\'\n\nConsult the [http://meta.wikimedia.org/wiki/Help:Contents wiki_user\'s Guide] for information on using the wiki software.\n\n== Getting started ==\n* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]\n* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]\n* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]','utf-8'),(2,'Test the the SimpleSelenium database was loaded correctly','utf-8');
+INSERT INTO `mw_text` VALUES (1,'\'\'\'MediaWiki has been successfully installed.\'\'\'\n\nConsult the [http://meta.wikimedia.org/wiki/Help:Contents User\'s Guide] for information on using the wiki software.\n\n== Getting started ==\n* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]\n* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]\n* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]','utf-8'),(2,'Test the the SimpleSelenium database was loaded correctly','utf-8');
 /*!40000 ALTER TABLE `mw_text` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1276,121 +1276,121 @@ CREATE TABLE `mw_updatelog` (
 
 LOCK TABLES `mw_updatelog` WRITE;
 /*!40000 ALTER TABLE `mw_updatelog` DISABLE KEYS */;
-INSERT INTO `mw_updatelog` VALUES ('cl_fields_update',NULL),('convert transcache field',NULL),('mime_minor_length',NULL),('populate category',NULL),('populate rev_len',NULL),('populate rev_parent_id',NULL),('updatelist-1.18alpha-1294425799','a:128:{i:0;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:6:\"ipb_id\";i:3;s:18:\"patch-ipblocks.sql\";}i:1;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:10:\"ipb_expiry\";i:3;s:20:\"patch-ipb_expiry.sql\";}i:2;a:1:{i:0;s:17:\"doInterwikiUpdate\";}i:3;a:1:{i:0;s:13:\"doIndexUpdate\";}i:4;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"hitcounter\";i:2;s:20:\"patch-hitcounter.sql\";}i:5;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:7:\"rc_type\";i:3;s:17:\"patch-rc_type.sql\";}i:6;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"wiki_user\";i:2;s:14:\"wiki_user_real_name\";i:3;s:23:\"patch-wiki_user-realname.sql\";}i:7;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"querycache\";i:2;s:20:\"patch-querycache.sql\";}i:8;a:3:{i:0;s:8:\"addTable\";i:1;s:11:\"objectcache\";i:2;s:21:\"patch-objectcache.sql\";}i:9;a:3:{i:0;s:8:\"addTable\";i:1;s:13:\"categorylinks\";i:2;s:23:\"patch-categorylinks.sql\";}i:10;a:1:{i:0;s:16:\"doOldLinksUpdate\";}i:11;a:1:{i:0;s:22:\"doFixAncientImagelinks\";}i:12;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:5:\"rc_ip\";i:3;s:15:\"patch-rc_ip.sql\";}i:13;a:4:{i:0;s:8:\"addIndex\";i:1;s:5:\"image\";i:2;s:7:\"PRIMARY\";i:3;s:28:\"patch-image_name_primary.sql\";}i:14;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:5:\"rc_id\";i:3;s:15:\"patch-rc_id.sql\";}i:15;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:12:\"rc_patrolled\";i:3;s:19:\"patch-rc-patrol.sql\";}i:16;a:3:{i:0;s:8:\"addTable\";i:1;s:7:\"logging\";i:2;s:17:\"patch-logging.sql\";}i:17;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"wiki_user\";i:2;s:10:\"wiki_user_token\";i:3;s:20:\"patch-wiki_user_token.sql\";}i:18;a:4:{i:0;s:8:\"addField\";i:1;s:9:\"watchlist\";i:2;s:24:\"wl_notificationtimestamp\";i:3;s:28:\"patch-email-notification.sql\";}i:19;a:1:{i:0;s:17:\"doWatchlistUpdate\";}i:20;a:4:{i:0;s:9:\"dropField\";i:1;s:4:\"wiki_user\";i:2;s:33:\"wiki_user_emailauthenticationtimestamp\";i:3;s:30:\"patch-email-authentication.sql\";}i:21;a:1:{i:0;s:21:\"doSchemaRestructuring\";}i:22;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"logging\";i:2;s:10:\"log_params\";i:3;s:20:\"patch-log_params.sql\";}i:23;a:4:{i:0;s:8:\"checkBin\";i:1;s:7:\"logging\";i:2;s:9:\"log_title\";i:3;s:23:\"patch-logging-title.sql\";}i:24;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:9:\"ar_rev_id\";i:3;s:24:\"patch-archive-rev_id.sql\";}i:25;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"page\";i:2;s:8:\"page_len\";i:3;s:18:\"patch-page_len.sql\";}i:26;a:4:{i:0;s:9:\"dropField\";i:1;s:8:\"revision\";i:2;s:17:\"inverse_timestamp\";i:3;s:27:\"patch-inverse_timestamp.sql\";}i:27;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"revision\";i:2;s:11:\"rev_text_id\";i:3;s:21:\"patch-rev_text_id.sql\";}i:28;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"revision\";i:2;s:11:\"rev_deleted\";i:3;s:21:\"patch-rev_deleted.sql\";}i:29;a:4:{i:0;s:8:\"addField\";i:1;s:5:\"image\";i:2;s:9:\"img_width\";i:3;s:19:\"patch-img_width.sql\";}i:30;a:4:{i:0;s:8:\"addField\";i:1;s:5:\"image\";i:2;s:12:\"img_metadata\";i:3;s:22:\"patch-img_metadata.sql\";}i:31;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"wiki_user\";i:2;s:16:\"wiki_user_email_token\";i:3;s:26:\"patch-wiki_user_email_token.sql\";}i:32;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:10:\"ar_text_id\";i:3;s:25:\"patch-archive-text_id.sql\";}i:33;a:1:{i:0;s:15:\"doNamespaceSize\";}i:34;a:4:{i:0;s:8:\"addField\";i:1;s:5:\"image\";i:2;s:14:\"img_media_type\";i:3;s:24:\"patch-img_media_type.sql\";}i:35;a:1:{i:0;s:17:\"doPagelinksUpdate\";}i:36;a:4:{i:0;s:9:\"dropField\";i:1;s:5:\"image\";i:2;s:8:\"img_type\";i:3;s:23:\"patch-drop_img_type.sql\";}i:37;a:1:{i:0;s:18:\"dowiki_userUniqueUpdate\";}i:38;a:1:{i:0;s:18:\"dowiki_userGroupsUpdate\";}i:39;a:4:{i:0;s:8:\"addField\";i:1;s:10:\"site_stats\";i:2;s:14:\"ss_total_pages\";i:3;s:27:\"patch-ss_total_articles.sql\";}i:40;a:3:{i:0;s:8:\"addTable\";i:1;s:12:\"wiki_user_newtalk\";i:2;s:22:\"patch-wiki_usernewtalk2.sql\";}i:41;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"transcache\";i:2;s:20:\"patch-transcache.sql\";}i:42;a:4:{i:0;s:8:\"addField\";i:1;s:9:\"interwiki\";i:2;s:8:\"iw_trans\";i:3;s:25:\"patch-interwiki-trans.sql\";}i:43;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"trackbacks\";i:2;s:20:\"patch-trackbacks.sql\";}i:44;a:1:{i:0;s:15:\"doWatchlistNull\";}i:45;a:4:{i:0;s:8:\"addIndex\";i:1;s:7:\"logging\";i:2;s:5:\"times\";i:3;s:29:\"patch-logging-times-index.sql\";}i:46;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:15:\"ipb_range_start\";i:3;s:25:\"patch-ipb_range_start.sql\";}i:47;a:1:{i:0;s:18:\"doPageRandomUpdate\";}i:48;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"wiki_user\";i:2;s:17:\"wiki_user_registration\";i:3;s:27:\"patch-wiki_user_registration.sql\";}i:49;a:1:{i:0;s:21:\"doTemplatelinksUpdate\";}i:50;a:3:{i:0;s:8:\"addTable\";i:1;s:13:\"externallinks\";i:2;s:23:\"patch-externallinks.sql\";}i:51;a:3:{i:0;s:8:\"addTable\";i:1;s:3:\"job\";i:2;s:13:\"patch-job.sql\";}i:52;a:4:{i:0;s:8:\"addField\";i:1;s:10:\"site_stats\";i:2;s:9:\"ss_images\";i:3;s:19:\"patch-ss_images.sql\";}i:53;a:3:{i:0;s:8:\"addTable\";i:1;s:9:\"langlinks\";i:2;s:19:\"patch-langlinks.sql\";}i:54;a:3:{i:0;s:8:\"addTable\";i:1;s:15:\"querycache_info\";i:2;s:24:\"patch-querycacheinfo.sql\";}i:55;a:3:{i:0;s:8:\"addTable\";i:1;s:11:\"filearchive\";i:2;s:21:\"patch-filearchive.sql\";}i:56;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:13:\"ipb_anon_only\";i:3;s:23:\"patch-ipb_anon_only.sql\";}i:57;a:4:{i:0;s:8:\"addIndex\";i:1;s:13:\"recentchanges\";i:2;s:14:\"rc_ns_wiki_usertext\";i:3;s:31:\"patch-recentchanges-utindex.sql\";}i:58;a:4:{i:0;s:8:\"addIndex\";i:1;s:13:\"recentchanges\";i:2;s:12:\"rc_wiki_user_text\";i:3;s:28:\"patch-rc_wiki_user_text-index.sql\";}i:59;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"wiki_user\";i:2;s:17:\"wiki_user_newpass_time\";i:3;s:27:\"patch-wiki_user_newpass_time.sql\";}i:60;a:3:{i:0;s:8:\"addTable\";i:1;s:8:\"redirect\";i:2;s:18:\"patch-redirect.sql\";}i:61;a:3:{i:0;s:8:\"addTable\";i:1;s:13:\"querycachetwo\";i:2;s:23:\"patch-querycachetwo.sql\";}i:62;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:20:\"ipb_enable_autoblock\";i:3;s:32:\"patch-ipb_optional_autoblock.sql\";}i:63;a:1:{i:0;s:26:\"doBacklinkingIndicesUpdate\";}i:64;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:10:\"rc_old_len\";i:3;s:16:\"patch-rc_len.sql\";}i:65;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"wiki_user\";i:2;s:14:\"wiki_user_editcount\";i:3;s:24:\"patch-wiki_user_editcount.sql\";}i:66;a:1:{i:0;s:20:\"doRestrictionsUpdate\";}i:67;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"logging\";i:2;s:6:\"log_id\";i:3;s:16:\"patch-log_id.sql\";}i:68;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"revision\";i:2;s:13:\"rev_parent_id\";i:3;s:23:\"patch-rev_parent_id.sql\";}i:69;a:4:{i:0;s:8:\"addField\";i:1;s:17:\"page_restrictions\";i:2;s:5:\"pr_id\";i:3;s:35:\"patch-page_restrictions_sortkey.sql\";}i:70;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"revision\";i:2;s:7:\"rev_len\";i:3;s:17:\"patch-rev_len.sql\";}i:71;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:10:\"rc_deleted\";i:3;s:20:\"patch-rc_deleted.sql\";}i:72;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"logging\";i:2;s:11:\"log_deleted\";i:3;s:21:\"patch-log_deleted.sql\";}i:73;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:10:\"ar_deleted\";i:3;s:20:\"patch-ar_deleted.sql\";}i:74;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:11:\"ipb_deleted\";i:3;s:21:\"patch-ipb_deleted.sql\";}i:75;a:4:{i:0;s:8:\"addField\";i:1;s:11:\"filearchive\";i:2;s:10:\"fa_deleted\";i:3;s:20:\"patch-fa_deleted.sql\";}i:76;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:6:\"ar_len\";i:3;s:16:\"patch-ar_len.sql\";}i:77;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:15:\"ipb_block_email\";i:3;s:22:\"patch-ipb_emailban.sql\";}i:78;a:1:{i:0;s:28:\"doCategorylinksIndicesUpdate\";}i:79;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"oldimage\";i:2;s:11:\"oi_metadata\";i:3;s:21:\"patch-oi_metadata.sql\";}i:80;a:4:{i:0;s:8:\"addIndex\";i:1;s:7:\"archive\";i:2;s:18:\"wiki_usertext_timestamp\";i:3;s:28:\"patch-archive-wiki_user-index.sql\";}i:81;a:4:{i:0;s:8:\"addIndex\";i:1;s:5:\"image\";i:2;s:22:\"img_wiki_usertext_timestamp\";i:3;s:26:\"patch-image-wiki_user-index.sql\";}i:82;a:4:{i:0;s:8:\"addIndex\";i:1;s:8:\"oldimage\";i:2;s:21:\"oi_wiki_usertext_timestamp\";i:3;s:29:\"patch-oldimage-wiki_user-index.sql\";}i:83;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:10:\"ar_page_id\";i:3;s:25:\"patch-archive-page_id.sql\";}i:84;a:4:{i:0;s:8:\"addField\";i:1;s:5:\"image\";i:2;s:8:\"img_sha1\";i:3;s:18:\"patch-img_sha1.sql\";}i:85;a:3:{i:0;s:8:\"addTable\";i:1;s:16:\"protected_titles\";i:2;s:26:\"patch-protected_titles.sql\";}i:86;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:11:\"ipb_by_text\";i:3;s:21:\"patch-ipb_by_text.sql\";}i:87;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"page_props\";i:2;s:20:\"patch-page_props.sql\";}i:88;a:3:{i:0;s:8:\"addTable\";i:1;s:9:\"updatelog\";i:2;s:19:\"patch-updatelog.sql\";}i:89;a:3:{i:0;s:8:\"addTable\";i:1;s:8:\"category\";i:2;s:18:\"patch-category.sql\";}i:90;a:1:{i:0;s:20:\"doCategoryPopulation\";}i:91;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:12:\"ar_parent_id\";i:3;s:22:\"patch-ar_parent_id.sql\";}i:92;a:4:{i:0;s:8:\"addField\";i:1;s:12:\"wiki_user_newtalk\";i:2;s:19:\"wiki_user_last_timestamp\";i:3;s:29:\"patch-wiki_user_last_timestamp.sql\";}i:93;a:1:{i:0;s:18:\"doPopulateParentId\";}i:94;a:4:{i:0;s:8:\"checkBin\";i:1;s:16:\"protected_titles\";i:2;s:8:\"pt_title\";i:3;s:27:\"patch-pt_title-encoding.sql\";}i:95;a:1:{i:0;s:28:\"doMaybeProfilingMemoryUpdate\";}i:96;a:1:{i:0;s:26:\"doFilearchiveIndicesUpdate\";}i:97;a:4:{i:0;s:8:\"addField\";i:1;s:10:\"site_stats\";i:2;s:15:\"ss_active_wiki_users\";i:3;s:25:\"patch-ss_active_wiki_users.sql\";}i:98;a:1:{i:0;s:17:\"doActivewiki_usersInit\";}i:99;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:18:\"ipb_allow_wiki_usertalk\";i:3;s:28:\"patch-ipb_allow_wiki_usertalk.sql\";}i:100;a:1:{i:0;s:14:\"doUniquePlTlIl\";}i:101;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"change_tag\";i:2;s:20:\"patch-change_tag.sql\";}i:102;a:3:{i:0;s:8:\"addTable\";i:1;s:11:\"tag_summary\";i:2;s:20:\"patch-change_tag.sql\";}i:103;a:3:{i:0;s:8:\"addTable\";i:1;s:9:\"valid_tag\";i:2;s:20:\"patch-change_tag.sql\";}i:104;a:3:{i:0;s:8:\"addTable\";i:1;s:15:\"wiki_user_properties\";i:2;s:25:\"patch-wiki_user_properties.sql\";}i:105;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"log_search\";i:2;s:20:\"patch-log_search.sql\";}i:106;a:1:{i:0;s:21:\"doLogSearchPopulation\";}i:107;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"logging\";i:2;s:13:\"log_wiki_user_text\";i:3;s:23:\"patch-log_wiki_user_text.sql\";}i:108;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"l10n_cache\";i:2;s:20:\"patch-l10n_cache.sql\";}i:109;a:3:{i:0;s:8:\"addTable\";i:1;s:13:\"external_wiki_user\";i:2;s:23:\"patch-external_wiki_user.sql\";}i:110;a:4:{i:0;s:8:\"addIndex\";i:1;s:10:\"log_search\";i:2;s:12:\"ls_field_val\";i:3;s:33:\"patch-log_search-rename-index.sql\";}i:111;a:4:{i:0;s:8:\"addIndex\";i:1;s:10:\"change_tag\";i:2;s:17:\"change_tag_rc_tag\";i:3;s:28:\"patch-change_tag-indexes.sql\";}i:112;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"redirect\";i:2;s:12:\"rd_interwiki\";i:3;s:22:\"patch-rd_interwiki.sql\";}i:113;a:1:{i:0;s:23:\"doUpdateTranscacheField\";}i:114;a:1:{i:0;s:14:\"renameEuWikiId\";}i:115;a:1:{i:0;s:22:\"doUpdateMimeMinorField\";}i:116;a:1:{i:0;s:16:\"doPopulateRevLen\";}i:117;a:3:{i:0;s:8:\"addTable\";i:1;s:7:\"iwlinks\";i:2;s:17:\"patch-iwlinks.sql\";}i:118;a:4:{i:0;s:8:\"addIndex\";i:1;s:7:\"iwlinks\";i:2;s:21:\"iwl_prefix_title_from\";i:3;s:27:\"patch-rename-iwl_prefix.sql\";}i:119;a:4:{i:0;s:8:\"addField\";i:1;s:9:\"updatelog\";i:2;s:8:\"ul_value\";i:3;s:18:\"patch-ul_value.sql\";}i:120;a:4:{i:0;s:8:\"addField\";i:1;s:9:\"interwiki\";i:2;s:6:\"iw_api\";i:3;s:27:\"patch-iw_api_and_wikiid.sql\";}i:121;a:4:{i:0;s:9:\"dropIndex\";i:1;s:7:\"iwlinks\";i:2;s:10:\"iwl_prefix\";i:3;s:25:\"patch-kill-iwl_prefix.sql\";}i:122;a:4:{i:0;s:9:\"dropIndex\";i:1;s:7:\"iwlinks\";i:2;s:21:\"iwl_prefix_from_title\";i:3;s:22:\"patch-kill-iwl_pft.sql\";}i:123;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"categorylinks\";i:2;s:12:\"cl_collation\";i:3;s:40:\"patch-categorylinks-better-collation.sql\";}i:124;a:1:{i:0;s:16:\"doClFieldsUpdate\";}i:125;a:1:{i:0;s:17:\"doCollationUpdate\";}i:126;a:3:{i:0;s:8:\"addTable\";i:1;s:12:\"msg_resource\";i:2;s:22:\"patch-msg_resource.sql\";}i:127;a:3:{i:0;s:8:\"addTable\";i:1;s:11:\"module_deps\";i:2;s:21:\"patch-module_deps.sql\";}}');
+INSERT INTO `mw_updatelog` VALUES ('cl_fields_update',NULL),('convert transcache field',NULL),('mime_minor_length',NULL),('populate category',NULL),('populate rev_len',NULL),('populate rev_parent_id',NULL),('updatelist-1.18alpha-1294425799','a:128:{i:0;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:6:\"ipb_id\";i:3;s:18:\"patch-ipblocks.sql\";}i:1;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:10:\"ipb_expiry\";i:3;s:20:\"patch-ipb_expiry.sql\";}i:2;a:1:{i:0;s:17:\"doInterwikiUpdate\";}i:3;a:1:{i:0;s:13:\"doIndexUpdate\";}i:4;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"hitcounter\";i:2;s:20:\"patch-hitcounter.sql\";}i:5;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:7:\"rc_type\";i:3;s:17:\"patch-rc_type.sql\";}i:6;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"user\";i:2;s:14:\"user_real_name\";i:3;s:23:\"patch-user-realname.sql\";}i:7;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"querycache\";i:2;s:20:\"patch-querycache.sql\";}i:8;a:3:{i:0;s:8:\"addTable\";i:1;s:11:\"objectcache\";i:2;s:21:\"patch-objectcache.sql\";}i:9;a:3:{i:0;s:8:\"addTable\";i:1;s:13:\"categorylinks\";i:2;s:23:\"patch-categorylinks.sql\";}i:10;a:1:{i:0;s:16:\"doOldLinksUpdate\";}i:11;a:1:{i:0;s:22:\"doFixAncientImagelinks\";}i:12;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:5:\"rc_ip\";i:3;s:15:\"patch-rc_ip.sql\";}i:13;a:4:{i:0;s:8:\"addIndex\";i:1;s:5:\"image\";i:2;s:7:\"PRIMARY\";i:3;s:28:\"patch-image_name_primary.sql\";}i:14;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:5:\"rc_id\";i:3;s:15:\"patch-rc_id.sql\";}i:15;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:12:\"rc_patrolled\";i:3;s:19:\"patch-rc-patrol.sql\";}i:16;a:3:{i:0;s:8:\"addTable\";i:1;s:7:\"logging\";i:2;s:17:\"patch-logging.sql\";}i:17;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"user\";i:2;s:10:\"user_token\";i:3;s:20:\"patch-user_token.sql\";}i:18;a:4:{i:0;s:8:\"addField\";i:1;s:9:\"watchlist\";i:2;s:24:\"wl_notificationtimestamp\";i:3;s:28:\"patch-email-notification.sql\";}i:19;a:1:{i:0;s:17:\"doWatchlistUpdate\";}i:20;a:4:{i:0;s:9:\"dropField\";i:1;s:4:\"user\";i:2;s:33:\"user_emailauthenticationtimestamp\";i:3;s:30:\"patch-email-authentication.sql\";}i:21;a:1:{i:0;s:21:\"doSchemaRestructuring\";}i:22;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"logging\";i:2;s:10:\"log_params\";i:3;s:20:\"patch-log_params.sql\";}i:23;a:4:{i:0;s:8:\"checkBin\";i:1;s:7:\"logging\";i:2;s:9:\"log_title\";i:3;s:23:\"patch-logging-title.sql\";}i:24;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:9:\"ar_rev_id\";i:3;s:24:\"patch-archive-rev_id.sql\";}i:25;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"page\";i:2;s:8:\"page_len\";i:3;s:18:\"patch-page_len.sql\";}i:26;a:4:{i:0;s:9:\"dropField\";i:1;s:8:\"revision\";i:2;s:17:\"inverse_timestamp\";i:3;s:27:\"patch-inverse_timestamp.sql\";}i:27;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"revision\";i:2;s:11:\"rev_text_id\";i:3;s:21:\"patch-rev_text_id.sql\";}i:28;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"revision\";i:2;s:11:\"rev_deleted\";i:3;s:21:\"patch-rev_deleted.sql\";}i:29;a:4:{i:0;s:8:\"addField\";i:1;s:5:\"image\";i:2;s:9:\"img_width\";i:3;s:19:\"patch-img_width.sql\";}i:30;a:4:{i:0;s:8:\"addField\";i:1;s:5:\"image\";i:2;s:12:\"img_metadata\";i:3;s:22:\"patch-img_metadata.sql\";}i:31;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"user\";i:2;s:16:\"user_email_token\";i:3;s:26:\"patch-user_email_token.sql\";}i:32;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:10:\"ar_text_id\";i:3;s:25:\"patch-archive-text_id.sql\";}i:33;a:1:{i:0;s:15:\"doNamespaceSize\";}i:34;a:4:{i:0;s:8:\"addField\";i:1;s:5:\"image\";i:2;s:14:\"img_media_type\";i:3;s:24:\"patch-img_media_type.sql\";}i:35;a:1:{i:0;s:17:\"doPagelinksUpdate\";}i:36;a:4:{i:0;s:9:\"dropField\";i:1;s:5:\"image\";i:2;s:8:\"img_type\";i:3;s:23:\"patch-drop_img_type.sql\";}i:37;a:1:{i:0;s:18:\"doUserUniqueUpdate\";}i:38;a:1:{i:0;s:18:\"doUserGroupsUpdate\";}i:39;a:4:{i:0;s:8:\"addField\";i:1;s:10:\"site_stats\";i:2;s:14:\"ss_total_pages\";i:3;s:27:\"patch-ss_total_articles.sql\";}i:40;a:3:{i:0;s:8:\"addTable\";i:1;s:12:\"user_newtalk\";i:2;s:22:\"patch-usernewtalk2.sql\";}i:41;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"transcache\";i:2;s:20:\"patch-transcache.sql\";}i:42;a:4:{i:0;s:8:\"addField\";i:1;s:9:\"interwiki\";i:2;s:8:\"iw_trans\";i:3;s:25:\"patch-interwiki-trans.sql\";}i:43;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"trackbacks\";i:2;s:20:\"patch-trackbacks.sql\";}i:44;a:1:{i:0;s:15:\"doWatchlistNull\";}i:45;a:4:{i:0;s:8:\"addIndex\";i:1;s:7:\"logging\";i:2;s:5:\"times\";i:3;s:29:\"patch-logging-times-index.sql\";}i:46;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:15:\"ipb_range_start\";i:3;s:25:\"patch-ipb_range_start.sql\";}i:47;a:1:{i:0;s:18:\"doPageRandomUpdate\";}i:48;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"user\";i:2;s:17:\"user_registration\";i:3;s:27:\"patch-user_registration.sql\";}i:49;a:1:{i:0;s:21:\"doTemplatelinksUpdate\";}i:50;a:3:{i:0;s:8:\"addTable\";i:1;s:13:\"externallinks\";i:2;s:23:\"patch-externallinks.sql\";}i:51;a:3:{i:0;s:8:\"addTable\";i:1;s:3:\"job\";i:2;s:13:\"patch-job.sql\";}i:52;a:4:{i:0;s:8:\"addField\";i:1;s:10:\"site_stats\";i:2;s:9:\"ss_images\";i:3;s:19:\"patch-ss_images.sql\";}i:53;a:3:{i:0;s:8:\"addTable\";i:1;s:9:\"langlinks\";i:2;s:19:\"patch-langlinks.sql\";}i:54;a:3:{i:0;s:8:\"addTable\";i:1;s:15:\"querycache_info\";i:2;s:24:\"patch-querycacheinfo.sql\";}i:55;a:3:{i:0;s:8:\"addTable\";i:1;s:11:\"filearchive\";i:2;s:21:\"patch-filearchive.sql\";}i:56;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:13:\"ipb_anon_only\";i:3;s:23:\"patch-ipb_anon_only.sql\";}i:57;a:4:{i:0;s:8:\"addIndex\";i:1;s:13:\"recentchanges\";i:2;s:14:\"rc_ns_usertext\";i:3;s:31:\"patch-recentchanges-utindex.sql\";}i:58;a:4:{i:0;s:8:\"addIndex\";i:1;s:13:\"recentchanges\";i:2;s:12:\"rc_user_text\";i:3;s:28:\"patch-rc_user_text-index.sql\";}i:59;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"user\";i:2;s:17:\"user_newpass_time\";i:3;s:27:\"patch-user_newpass_time.sql\";}i:60;a:3:{i:0;s:8:\"addTable\";i:1;s:8:\"redirect\";i:2;s:18:\"patch-redirect.sql\";}i:61;a:3:{i:0;s:8:\"addTable\";i:1;s:13:\"querycachetwo\";i:2;s:23:\"patch-querycachetwo.sql\";}i:62;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:20:\"ipb_enable_autoblock\";i:3;s:32:\"patch-ipb_optional_autoblock.sql\";}i:63;a:1:{i:0;s:26:\"doBacklinkingIndicesUpdate\";}i:64;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:10:\"rc_old_len\";i:3;s:16:\"patch-rc_len.sql\";}i:65;a:4:{i:0;s:8:\"addField\";i:1;s:4:\"user\";i:2;s:14:\"user_editcount\";i:3;s:24:\"patch-user_editcount.sql\";}i:66;a:1:{i:0;s:20:\"doRestrictionsUpdate\";}i:67;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"logging\";i:2;s:6:\"log_id\";i:3;s:16:\"patch-log_id.sql\";}i:68;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"revision\";i:2;s:13:\"rev_parent_id\";i:3;s:23:\"patch-rev_parent_id.sql\";}i:69;a:4:{i:0;s:8:\"addField\";i:1;s:17:\"page_restrictions\";i:2;s:5:\"pr_id\";i:3;s:35:\"patch-page_restrictions_sortkey.sql\";}i:70;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"revision\";i:2;s:7:\"rev_len\";i:3;s:17:\"patch-rev_len.sql\";}i:71;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"recentchanges\";i:2;s:10:\"rc_deleted\";i:3;s:20:\"patch-rc_deleted.sql\";}i:72;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"logging\";i:2;s:11:\"log_deleted\";i:3;s:21:\"patch-log_deleted.sql\";}i:73;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:10:\"ar_deleted\";i:3;s:20:\"patch-ar_deleted.sql\";}i:74;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:11:\"ipb_deleted\";i:3;s:21:\"patch-ipb_deleted.sql\";}i:75;a:4:{i:0;s:8:\"addField\";i:1;s:11:\"filearchive\";i:2;s:10:\"fa_deleted\";i:3;s:20:\"patch-fa_deleted.sql\";}i:76;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:6:\"ar_len\";i:3;s:16:\"patch-ar_len.sql\";}i:77;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:15:\"ipb_block_email\";i:3;s:22:\"patch-ipb_emailban.sql\";}i:78;a:1:{i:0;s:28:\"doCategorylinksIndicesUpdate\";}i:79;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"oldimage\";i:2;s:11:\"oi_metadata\";i:3;s:21:\"patch-oi_metadata.sql\";}i:80;a:4:{i:0;s:8:\"addIndex\";i:1;s:7:\"archive\";i:2;s:18:\"usertext_timestamp\";i:3;s:28:\"patch-archive-user-index.sql\";}i:81;a:4:{i:0;s:8:\"addIndex\";i:1;s:5:\"image\";i:2;s:22:\"img_usertext_timestamp\";i:3;s:26:\"patch-image-user-index.sql\";}i:82;a:4:{i:0;s:8:\"addIndex\";i:1;s:8:\"oldimage\";i:2;s:21:\"oi_usertext_timestamp\";i:3;s:29:\"patch-oldimage-user-index.sql\";}i:83;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:10:\"ar_page_id\";i:3;s:25:\"patch-archive-page_id.sql\";}i:84;a:4:{i:0;s:8:\"addField\";i:1;s:5:\"image\";i:2;s:8:\"img_sha1\";i:3;s:18:\"patch-img_sha1.sql\";}i:85;a:3:{i:0;s:8:\"addTable\";i:1;s:16:\"protected_titles\";i:2;s:26:\"patch-protected_titles.sql\";}i:86;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:11:\"ipb_by_text\";i:3;s:21:\"patch-ipb_by_text.sql\";}i:87;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"page_props\";i:2;s:20:\"patch-page_props.sql\";}i:88;a:3:{i:0;s:8:\"addTable\";i:1;s:9:\"updatelog\";i:2;s:19:\"patch-updatelog.sql\";}i:89;a:3:{i:0;s:8:\"addTable\";i:1;s:8:\"category\";i:2;s:18:\"patch-category.sql\";}i:90;a:1:{i:0;s:20:\"doCategoryPopulation\";}i:91;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"archive\";i:2;s:12:\"ar_parent_id\";i:3;s:22:\"patch-ar_parent_id.sql\";}i:92;a:4:{i:0;s:8:\"addField\";i:1;s:12:\"user_newtalk\";i:2;s:19:\"user_last_timestamp\";i:3;s:29:\"patch-user_last_timestamp.sql\";}i:93;a:1:{i:0;s:18:\"doPopulateParentId\";}i:94;a:4:{i:0;s:8:\"checkBin\";i:1;s:16:\"protected_titles\";i:2;s:8:\"pt_title\";i:3;s:27:\"patch-pt_title-encoding.sql\";}i:95;a:1:{i:0;s:28:\"doMaybeProfilingMemoryUpdate\";}i:96;a:1:{i:0;s:26:\"doFilearchiveIndicesUpdate\";}i:97;a:4:{i:0;s:8:\"addField\";i:1;s:10:\"site_stats\";i:2;s:15:\"ss_active_users\";i:3;s:25:\"patch-ss_active_users.sql\";}i:98;a:1:{i:0;s:17:\"doActiveUsersInit\";}i:99;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"ipblocks\";i:2;s:18:\"ipb_allow_usertalk\";i:3;s:28:\"patch-ipb_allow_usertalk.sql\";}i:100;a:1:{i:0;s:14:\"doUniquePlTlIl\";}i:101;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"change_tag\";i:2;s:20:\"patch-change_tag.sql\";}i:102;a:3:{i:0;s:8:\"addTable\";i:1;s:11:\"tag_summary\";i:2;s:20:\"patch-change_tag.sql\";}i:103;a:3:{i:0;s:8:\"addTable\";i:1;s:9:\"valid_tag\";i:2;s:20:\"patch-change_tag.sql\";}i:104;a:3:{i:0;s:8:\"addTable\";i:1;s:15:\"user_properties\";i:2;s:25:\"patch-user_properties.sql\";}i:105;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"log_search\";i:2;s:20:\"patch-log_search.sql\";}i:106;a:1:{i:0;s:21:\"doLogSearchPopulation\";}i:107;a:4:{i:0;s:8:\"addField\";i:1;s:7:\"logging\";i:2;s:13:\"log_user_text\";i:3;s:23:\"patch-log_user_text.sql\";}i:108;a:3:{i:0;s:8:\"addTable\";i:1;s:10:\"l10n_cache\";i:2;s:20:\"patch-l10n_cache.sql\";}i:109;a:3:{i:0;s:8:\"addTable\";i:1;s:13:\"external_user\";i:2;s:23:\"patch-external_user.sql\";}i:110;a:4:{i:0;s:8:\"addIndex\";i:1;s:10:\"log_search\";i:2;s:12:\"ls_field_val\";i:3;s:33:\"patch-log_search-rename-index.sql\";}i:111;a:4:{i:0;s:8:\"addIndex\";i:1;s:10:\"change_tag\";i:2;s:17:\"change_tag_rc_tag\";i:3;s:28:\"patch-change_tag-indexes.sql\";}i:112;a:4:{i:0;s:8:\"addField\";i:1;s:8:\"redirect\";i:2;s:12:\"rd_interwiki\";i:3;s:22:\"patch-rd_interwiki.sql\";}i:113;a:1:{i:0;s:23:\"doUpdateTranscacheField\";}i:114;a:1:{i:0;s:14:\"renameEuWikiId\";}i:115;a:1:{i:0;s:22:\"doUpdateMimeMinorField\";}i:116;a:1:{i:0;s:16:\"doPopulateRevLen\";}i:117;a:3:{i:0;s:8:\"addTable\";i:1;s:7:\"iwlinks\";i:2;s:17:\"patch-iwlinks.sql\";}i:118;a:4:{i:0;s:8:\"addIndex\";i:1;s:7:\"iwlinks\";i:2;s:21:\"iwl_prefix_title_from\";i:3;s:27:\"patch-rename-iwl_prefix.sql\";}i:119;a:4:{i:0;s:8:\"addField\";i:1;s:9:\"updatelog\";i:2;s:8:\"ul_value\";i:3;s:18:\"patch-ul_value.sql\";}i:120;a:4:{i:0;s:8:\"addField\";i:1;s:9:\"interwiki\";i:2;s:6:\"iw_api\";i:3;s:27:\"patch-iw_api_and_wikiid.sql\";}i:121;a:4:{i:0;s:9:\"dropIndex\";i:1;s:7:\"iwlinks\";i:2;s:10:\"iwl_prefix\";i:3;s:25:\"patch-kill-iwl_prefix.sql\";}i:122;a:4:{i:0;s:9:\"dropIndex\";i:1;s:7:\"iwlinks\";i:2;s:21:\"iwl_prefix_from_title\";i:3;s:22:\"patch-kill-iwl_pft.sql\";}i:123;a:4:{i:0;s:8:\"addField\";i:1;s:13:\"categorylinks\";i:2;s:12:\"cl_collation\";i:3;s:40:\"patch-categorylinks-better-collation.sql\";}i:124;a:1:{i:0;s:16:\"doClFieldsUpdate\";}i:125;a:1:{i:0;s:17:\"doCollationUpdate\";}i:126;a:3:{i:0;s:8:\"addTable\";i:1;s:12:\"msg_resource\";i:2;s:22:\"patch-msg_resource.sql\";}i:127;a:3:{i:0;s:8:\"addTable\";i:1;s:11:\"module_deps\";i:2;s:21:\"patch-module_deps.sql\";}}');
 /*!40000 ALTER TABLE `mw_updatelog` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `mw_wiki_user`
+-- Table structure for table `mw_user`
 --
 
-DROP TABLE IF EXISTS `mw_wiki_user`;
+DROP TABLE IF EXISTS `mw_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mw_wiki_user` (
-  `wiki_user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `wiki_user_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
-  `wiki_user_real_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
-  `wiki_user_password` tinyblob NOT NULL,
-  `wiki_user_newpassword` tinyblob NOT NULL,
-  `wiki_user_newpass_time` binary(14) DEFAULT NULL,
-  `wiki_user_email` tinytext NOT NULL,
-  `wiki_user_touched` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
-  `wiki_user_token` binary(32) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
-  `wiki_user_email_authenticated` binary(14) DEFAULT NULL,
-  `wiki_user_email_token` binary(32) DEFAULT NULL,
-  `wiki_user_email_token_expires` binary(14) DEFAULT NULL,
-  `wiki_user_registration` binary(14) DEFAULT NULL,
-  `wiki_user_editcount` int(11) DEFAULT NULL,
-  PRIMARY KEY (`wiki_user_id`),
-  UNIQUE KEY `wiki_user_name` (`wiki_user_name`),
-  KEY `wiki_user_email_token` (`wiki_user_email_token`)
+CREATE TABLE `mw_user` (
+  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
+  `user_real_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
+  `user_password` tinyblob NOT NULL,
+  `user_newpassword` tinyblob NOT NULL,
+  `user_newpass_time` binary(14) DEFAULT NULL,
+  `user_email` tinytext NOT NULL,
+  `user_touched` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
+  `user_token` binary(32) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
+  `user_email_authenticated` binary(14) DEFAULT NULL,
+  `user_email_token` binary(32) DEFAULT NULL,
+  `user_email_token_expires` binary(14) DEFAULT NULL,
+  `user_registration` binary(14) DEFAULT NULL,
+  `user_editcount` int(11) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_name` (`user_name`),
+  KEY `user_email_token` (`user_email_token`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mw_wiki_user`
+-- Dumping data for table `mw_user`
 --
 
-LOCK TABLES `mw_wiki_user` WRITE;
-/*!40000 ALTER TABLE `mw_wiki_user` DISABLE KEYS */;
-INSERT INTO `mw_wiki_user` VALUES (1,'WikiSysop','',':B:9c595470:df2c1237ae75896744457e7dfbeb7f90','',NULL,'','','20110110173136','5e3b582786fa8150118cfa78f18de0c5',NULL,'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0',NULL,'20110107184113',1);
-/*!40000 ALTER TABLE `mw_wiki_user` ENABLE KEYS */;
+LOCK TABLES `mw_user` WRITE;
+/*!40000 ALTER TABLE `mw_user` DISABLE KEYS */;
+INSERT INTO `mw_user` VALUES (1,'WikiSysop','',':B:9c595470:df2c1237ae75896744457e7dfbeb7f90','',NULL,'','','20110110173136','5e3b582786fa8150118cfa78f18de0c5',NULL,'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0',NULL,'20110107184113',1);
+/*!40000 ALTER TABLE `mw_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `mw_wiki_user_groups`
+-- Table structure for table `mw_user_groups`
 --
 
-DROP TABLE IF EXISTS `mw_wiki_user_groups`;
+DROP TABLE IF EXISTS `mw_user_groups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mw_wiki_user_groups` (
-  `ug_wiki_user` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `mw_user_groups` (
+  `ug_user` int(10) unsigned NOT NULL DEFAULT '0',
   `ug_group` varbinary(16) NOT NULL DEFAULT '',
-  UNIQUE KEY `ug_wiki_user_group` (`ug_wiki_user`,`ug_group`),
+  UNIQUE KEY `ug_user_group` (`ug_user`,`ug_group`),
   KEY `ug_group` (`ug_group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mw_wiki_user_groups`
+-- Dumping data for table `mw_user_groups`
 --
 
-LOCK TABLES `mw_wiki_user_groups` WRITE;
-/*!40000 ALTER TABLE `mw_wiki_user_groups` DISABLE KEYS */;
-INSERT INTO `mw_wiki_user_groups` VALUES (1,'bureaucrat'),(1,'sysop');
-/*!40000 ALTER TABLE `mw_wiki_user_groups` ENABLE KEYS */;
+LOCK TABLES `mw_user_groups` WRITE;
+/*!40000 ALTER TABLE `mw_user_groups` DISABLE KEYS */;
+INSERT INTO `mw_user_groups` VALUES (1,'bureaucrat'),(1,'sysop');
+/*!40000 ALTER TABLE `mw_user_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `mw_wiki_user_newtalk`
+-- Table structure for table `mw_user_newtalk`
 --
 
-DROP TABLE IF EXISTS `mw_wiki_user_newtalk`;
+DROP TABLE IF EXISTS `mw_user_newtalk`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mw_wiki_user_newtalk` (
-  `wiki_user_id` int(11) NOT NULL DEFAULT '0',
-  `wiki_user_ip` varbinary(40) NOT NULL DEFAULT '',
-  `wiki_user_last_timestamp` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
-  KEY `wiki_user_id` (`wiki_user_id`),
-  KEY `wiki_user_ip` (`wiki_user_ip`)
+CREATE TABLE `mw_user_newtalk` (
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `user_ip` varbinary(40) NOT NULL DEFAULT '',
+  `user_last_timestamp` binary(14) NOT NULL DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0',
+  KEY `user_id` (`user_id`),
+  KEY `user_ip` (`user_ip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mw_wiki_user_newtalk`
+-- Dumping data for table `mw_user_newtalk`
 --
 
-LOCK TABLES `mw_wiki_user_newtalk` WRITE;
-/*!40000 ALTER TABLE `mw_wiki_user_newtalk` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mw_wiki_user_newtalk` ENABLE KEYS */;
+LOCK TABLES `mw_user_newtalk` WRITE;
+/*!40000 ALTER TABLE `mw_user_newtalk` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mw_user_newtalk` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `mw_wiki_user_properties`
+-- Table structure for table `mw_user_properties`
 --
 
-DROP TABLE IF EXISTS `mw_wiki_user_properties`;
+DROP TABLE IF EXISTS `mw_user_properties`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mw_wiki_user_properties` (
-  `up_wiki_user` int(11) NOT NULL,
+CREATE TABLE `mw_user_properties` (
+  `up_user` int(11) NOT NULL,
   `up_property` varbinary(32) NOT NULL,
   `up_value` blob,
-  UNIQUE KEY `wiki_user_properties_wiki_user_property` (`up_wiki_user`,`up_property`),
-  KEY `wiki_user_properties_property` (`up_property`)
+  UNIQUE KEY `user_properties_user_property` (`up_user`,`up_property`),
+  KEY `user_properties_property` (`up_property`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mw_wiki_user_properties`
+-- Dumping data for table `mw_user_properties`
 --
 
-LOCK TABLES `mw_wiki_user_properties` WRITE;
-/*!40000 ALTER TABLE `mw_wiki_user_properties` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mw_wiki_user_properties` ENABLE KEYS */;
+LOCK TABLES `mw_user_properties` WRITE;
+/*!40000 ALTER TABLE `mw_user_properties` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mw_user_properties` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1423,11 +1423,11 @@ DROP TABLE IF EXISTS `mw_watchlist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mw_watchlist` (
-  `wl_wiki_user` int(10) unsigned NOT NULL,
+  `wl_user` int(10) unsigned NOT NULL,
   `wl_namespace` int(11) NOT NULL DEFAULT '0',
   `wl_title` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
   `wl_notificationtimestamp` varbinary(14) DEFAULT NULL,
-  UNIQUE KEY `wl_wiki_user` (`wl_wiki_user`,`wl_namespace`,`wl_title`),
+  UNIQUE KEY `wl_user` (`wl_user`,`wl_namespace`,`wl_title`),
   KEY `namespace_title` (`wl_namespace`,`wl_title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;

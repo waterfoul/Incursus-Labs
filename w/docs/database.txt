@@ -17,18 +17,18 @@ description of the tables and their contents, please see:
 
 To make a read query, something like this usually suffices:
 
-r = wfGetDB( DB_SLAVE );
-$res = r->select( /* ...see docs... */ );
+$dbr = wfGetDB( DB_SLAVE );
+$res = $dbr->select( /* ...see docs... */ );
 foreach ( $res as $row ) {
 	...
 }
 
 For a write query, use something like:
 
-w = wfGetDB( DB_MASTER );
-w->insert( /* ...see docs... */ );
+$dbw = wfGetDB( DB_MASTER );
+$dbw->insert( /* ...see docs... */ );
 
-We use the convention r for read and w for write to help you keep
+We use the convention $dbr for read and $dbw for write to help you keep
 track of whether the database object is a slave (read-only) or a master
 (read/write). If you write to a slave, the world will explode. Or to be
 precise, a subsequent write query which succeeded on the master may fail
@@ -94,14 +94,14 @@ seconds lag.
 
 If all slaves are lagged by more than 30 seconds, MediaWiki will stop
 writing to the database. All edits and other write operations will be
-refused, with an error returned to the wiki_user. This gives the slaves a
+refused, with an error returned to the user. This gives the slaves a
 chance to catch up. Before we had this mechanism, the slaves would
 regularly lag by several minutes, making review of recent edits
 difficult.
 
-In addition to this, MediaWiki attempts to ensure that the wiki_user sees
+In addition to this, MediaWiki attempts to ensure that the user sees
 events occurring on the wiki in chronological order. A few seconds of lag
-can be tolerated, as long as the wiki_user sees a consistent picture from
+can be tolerated, as long as the user sees a consistent picture from
 subsequent requests. This is done by saving the master binlog position
 in the session, and then at the start of each request, waiting for the
 slave to catch up to that position before doing any reads from it. If
@@ -133,7 +133,7 @@ from the master 3) If it doesn't, run the full query on the master
 
 To avoid swamping the master every time the slaves lag, use of this
 approach should be kept to a minimum. In most cases you should just read
-from the slave and let the wiki_user deal with the delay.
+from the slave and let the user deal with the delay.
 
 
 ------------------------------------------------------------------------
@@ -152,10 +152,10 @@ Often this approach is not good enough, and it becomes necessary to
 enclose small groups of queries in their own transaction. Use the
 following syntax:
 
-w = wfGetDB( DB_MASTER );
-w->begin( __METHOD__ );
+$dbw = wfGetDB( DB_MASTER );
+$dbw->begin( __METHOD__ );
 /* Do queries */
-w->commit( __METHOD__ );
+$dbw->commit( __METHOD__ );
 
 Use of locking reads (e.g. the FOR UPDATE clause) is not advised. They
 are poorly implemented in InnoDB and will cause regular deadlock errors.

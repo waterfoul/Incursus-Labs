@@ -16,7 +16,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	# for Special:Version
-	'gadgets-desc'      => 'Lets wiki_users select custom [[Special:Gadgets|CSS and JavaScript gadgets]] in their [[Special:Preferences#mw-prefsection-gadgets|preferences]]',
+	'gadgets-desc'      => 'Lets users select custom [[Special:Gadgets|CSS and JavaScript gadgets]] in their [[Special:Preferences#mw-prefsection-gadgets|preferences]]',
 
 	# for Special:Preferences
 	'prefs-gadgets'     => 'Gadgets',
@@ -24,14 +24,14 @@ $messages['en'] = array(
 These gadgets are mostly based on JavaScript, so JavaScript has to be enabled in your browser for them to work.
 Note that these gadgets will have no effect on this preferences page.
 
-Also note that these special gadgets are not part of the MediaWiki software, and are usually developed and maintained by wiki_users on your local wiki.
+Also note that these special gadgets are not part of the MediaWiki software, and are usually developed and maintained by users on your local wiki.
 Local administrators can edit the [[MediaWiki:Gadgets-definition|definitions]] and [[Special:Gadgets|descriptions]] of available gadgets.',
 
 	# for Special:Gadgets
 	'gadgets'           => 'Gadgets',
 	'gadgets-definition' => '', # do not translate or duplicate this message to other languages
 	'gadgets-title'     => 'Gadgets',
-	'gadgets-pagetext'  => "Below is a list of special gadgets wiki_users can enable on their [[Special:Preferences#mw-prefsection-gadgets|preferences page]], as defined by the [[MediaWiki:Gadgets-definition|definitions]].
+	'gadgets-pagetext'  => "Below is a list of special gadgets users can enable on their [[Special:Preferences#mw-prefsection-gadgets|preferences page]], as defined by the [[MediaWiki:Gadgets-definition|definitions]].
 This overview provides easy access to the system message pages that define each gadget's description and code.",
 	'gadgets-uses'      => 'Uses',
 	'gadgets-required-rights' => 'Requires the following {{PLURAL:$2|right|rights}}:
@@ -63,7 +63,7 @@ You must have appropriate permissions on destination wiki (including the right t
  */
 $messages['qqq'] = array(
 	'gadgets-desc' => '{{desc}}',
-	'prefs-gadgets' => 'In Gadgets extension. The name of a tab in [[Special:Preferences#mw-prefsection-gadgets|Special:Preferences]] where wiki_user set their preferences for the extension.
+	'prefs-gadgets' => 'In Gadgets extension. The name of a tab in [[Special:Preferences#mw-prefsection-gadgets|Special:Preferences]] where user set their preferences for the extension.
 
 {{Identical|Gadgets}}',
 	'gadgets-prefstext' => 'In Gadgets extension. This is the explanation text displayed under the Gadgets tab in [[Special:Preferences#mw-prefsection-gadgets|Special:Preferences]].',
@@ -1784,7 +1784,7 @@ $messages['ksh'] = array(
 	'prefs-gadgets' => 'Gadgets',
 	'gadgets-prefstext' => 'Hee is en Liss met bestemmpte <i lang="en">Gadgets</i>,
 di för jede Metmaacher enjeschalldt wäde könne.
-Di boue miets op Javascrip op, drom moß mer\'t em Brawiki_user
+Di boue miets op Javascrip op, drom moß mer\'t em Brauser
 enschallde, domet dat klapp.
 <i lang="en">Gadgets</i> werke nimmohls op dä Sigg hee,
 met Dinge persönleche Enstellunge.

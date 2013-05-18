@@ -43,11 +43,11 @@ class SearchEngine {
 	/**
 	 * @var DatabaseBase
 	 */
-	protected ;
+	protected $db;
 
-	function __construct( = null) {
-		if (  ) {
-			$this->db = ;
+	function __construct($db = null) {
+		if ( $db ) {
+			$this->db = $db;
 		} else {
 			$this->db = wfGetDB( DB_SLAVE );
 		}
@@ -236,14 +236,14 @@ class SearchEngine {
 
 		# Entering an IP address goes to the contributions page
 		if ( $wgEnableSearchContributorsByIP ) {
-			if ( ( $title->getNamespace() == NS_USER && wiki_user::isIP( $title->getText() ) )
-				|| wiki_user::isIP( trim( $searchterm ) ) ) {
+			if ( ( $title->getNamespace() == NS_USER && User::isIP( $title->getText() ) )
+				|| User::isIP( trim( $searchterm ) ) ) {
 				return SpecialPage::getTitleFor( 'Contributions', $title->getDBkey() );
 			}
 		}
 
 
-		# Entering a wiki_user goes to the wiki_user page whether it's there or not
+		# Entering a user goes to the user page whether it's there or not
 		if ( $title->getNamespace() == NS_USER ) {
 			return $title;
 		}
@@ -353,28 +353,28 @@ class SearchEngine {
 	}
 
 	/**
-	 * Extract default namespaces to search from the given wiki_user's
+	 * Extract default namespaces to search from the given user's
 	 * settings, returning a list of index numbers.
 	 *
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @return Array
 	 */
-	public static function wiki_userNamespaces( $wiki_user ) {
+	public static function userNamespaces( $user ) {
 		global $wgSearchEverythingOnlyLoggedIn;
 
 		$searchableNamespaces = SearchEngine::searchableNamespaces();
 
-		// get search everything preference, that can be set to be read for logged-in wiki_users
+		// get search everything preference, that can be set to be read for logged-in users
 		// it overrides other options
-		if ( !$wgSearchEverythingOnlyLoggedIn || $wiki_user->isLoggedIn() ) {
-			if ( $wiki_user->getOption( 'searcheverything' ) ) {
+		if ( !$wgSearchEverythingOnlyLoggedIn || $user->isLoggedIn() ) {
+			if ( $user->getOption( 'searcheverything' ) ) {
 				return array_keys( $searchableNamespaces );
 			}
 		}
 
 		$arr = array();
 		foreach ( $searchableNamespaces as $ns => $name ) {
-			if ( $wiki_user->getOption( 'searchNs' . $ns ) ) {
+			if ( $user->getOption( 'searchNs' . $ns ) ) {
 				$arr[] = $ns;
 			}
 		}
@@ -383,11 +383,11 @@ class SearchEngine {
 	}
 
 	/**
-	 * Find snippet highlight settings for all wiki_users
+	 * Find snippet highlight settings for all users
 	 *
 	 * @return Array contextlines, contextchars
 	 */
-	public static function wiki_userHighlightPrefs() {
+	public static function userHighlightPrefs() {
 		$contextlines = 2; // Hardcode this. Old defaults sucked. :)
 		$contextchars = 75; // same as above.... :P
 		return array( $contextlines, $contextchars );
@@ -451,14 +451,14 @@ class SearchEngine {
 	 */
 	public static function create() {
 		global $wgSearchType;
-		r = null;
+		$dbr = null;
 		if ( $wgSearchType ) {
 			$class = $wgSearchType;
 		} else {
-			r = wfGetDB( DB_SLAVE );
-			$class = r->getSearchEngine();
+			$dbr = wfGetDB( DB_SLAVE );
+			$class = $dbr->getSearchEngine();
 		}
-		$search = new $class( r );
+		$search = new $class( $dbr );
 		$search->setLimitOffset( 0, 0 );
 		return $search;
 	}
@@ -804,9 +804,9 @@ class SearchResult {
 	 * @return String: highlighted text snippet, null (and not '') if not supported
 	 */
 	function getTextSnippet( $terms ) {
-		global $wgwiki_user, $wgAdvancedSearchHighlighting;
+		global $wgUser, $wgAdvancedSearchHighlighting;
 		$this->initText();
-		list( $contextlines, $contextchars ) = SearchEngine::wiki_userHighlightPrefs( $wgwiki_user );
+		list( $contextlines, $contextchars ) = SearchEngine::userHighlightPrefs( $wgUser );
 		$h = new SearchHighlighter();
 		if ( $wgAdvancedSearchHighlighting )
 			return $h->highlightText( $this->mText, $terms, $contextlines, $contextchars );

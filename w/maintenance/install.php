@@ -44,7 +44,7 @@ class CommandLineInstaller extends Maintenance {
 
 		$this->addArg( 'name', 'The name of the wiki', true);
 
-		$this->addArg( 'admin', 'The wiki_username of the wiki administrator (WikiSysop)', true );
+		$this->addArg( 'admin', 'The username of the wiki administrator (WikiSysop)', true );
 		$this->addOption( 'pass', 'The password for the wiki administrator.', true, true );
 		/* $this->addOption( 'email', 'The email for the wiki administrator', false, true ); */
 		$this->addOption( 'scriptpath', 'The relative path of the wiki in the web server (/wiki)', false, true );
@@ -58,10 +58,10 @@ class CommandLineInstaller extends Maintenance {
 		$this->addOption( 'dbname', 'The database name (my_wiki)', false, true );
 		$this->addOption( 'dbpath', 'The path for the SQLite DB (/var/data)', false, true );
 		$this->addOption( 'dbprefix', 'Optional database table name prefix', false, true );
-		$this->addOption( 'installdbwiki_user', 'The wiki_user to use for installing (root)', false, true );
-		$this->addOption( 'installdbpass', 'The pasword for the DB wiki_user to install as.', false, true );
-		$this->addOption( 'dbwiki_user', 'The wiki_user to use for normal operations (wikiwiki_user)', false, true );
-		$this->addOption( 'dbpass', 'The pasword for the DB wiki_user for normal operations', false, true );
+		$this->addOption( 'installdbuser', 'The user to use for installing (root)', false, true );
+		$this->addOption( 'installdbpass', 'The pasword for the DB user to install as.', false, true );
+		$this->addOption( 'dbuser', 'The user to use for normal operations (wikiuser)', false, true );
+		$this->addOption( 'dbpass', 'The pasword for the DB user for normal operations', false, true );
 		$this->addOption( 'dbpassfile', 'An alternative way to provide dbpass option, as the contents of this file', false, true );
 		$this->addOption( 'confpath', "Path to write LocalSettings.php to, default $IP", false, true );
 		/* $this->addOption( 'dbschema', 'The schema for the MediaWiki DB in pg (mediawiki)', false, true ); */
@@ -75,15 +75,15 @@ class CommandLineInstaller extends Maintenance {
 		$adminName = isset( $this->mArgs[1] ) ? $this->mArgs[1] : null;
 		$wgTitle = Title::newFromText( 'Installer script' );
 
-		passfile = $this->getOption( 'dbpassfile', false );
-		if ( passfile !== false ) {
+		$dbpassfile = $this->getOption( 'dbpassfile', false );
+		if ( $dbpassfile !== false ) {
 			wfSuppressWarnings();
-			pass = file_get_contents( passfile );
+			$dbpass = file_get_contents( $dbpassfile );
 			wfRestoreWarnings();
-			if ( pass === false ) {
-				$this->error( "Couldn't open passfile", true );
+			if ( $dbpass === false ) {
+				$this->error( "Couldn't open $dbpassfile", true );
 			}
-			$this->mOptions['dbpass'] = trim( pass, "\r\n" );
+			$this->mOptions['dbpass'] = trim( $dbpass, "\r\n" );
 		}
 
 		$installer =

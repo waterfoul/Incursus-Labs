@@ -33,7 +33,7 @@
  * sub-class thereof. It must have an execute() method, which sends the HTML
  * for the special page to $wgOut. The parent class has an execute() method
  * which distributes the call to the historical global functions. Additionally,
- * execute() also checks if the wiki_user has the necessary access privileges
+ * execute() also checks if the user has the necessary access privileges
  * and bails out if not.
  *
  * To add a core special page, use the similar static list in
@@ -82,10 +82,10 @@ class SpecialPageFactory {
 		'Listredirects'             => 'ListredirectsPage',
 
 		// Login/create account
-		'wiki_userlogin'                 => 'LoginForm',
+		'Userlogin'                 => 'LoginForm',
 		'CreateAccount'             => 'SpecialCreateAccount',
 
-		// wiki_users and rights
+		// Users and rights
 		'Block'                     => 'SpecialBlock',
 		'Unblock'                   => 'SpecialUnblock',
 		'BlockList'                 => 'SpecialBlockList',
@@ -95,11 +95,11 @@ class SpecialPageFactory {
 		'Preferences'               => 'SpecialPreferences',
 		'Contributions'             => 'SpecialContributions',
 		'Listgrouprights'           => 'SpecialListGroupRights',
-		'Listwiki_users'                 => 'SpecialListwiki_users' ,
+		'Listusers'                 => 'SpecialListUsers' ,
 		'Listadmins'                => 'SpecialListAdmins',
 		'Listbots'                  => 'SpecialListBots',
-		'Activewiki_users'               => 'SpecialActivewiki_users',
-		'wiki_userrights'                => 'wiki_userrightsPage',
+		'Activeusers'               => 'SpecialActiveUsers',
+		'Userrights'                => 'UserrightsPage',
 		'EditWatchlist'             => 'SpecialEditWatchlist',
 
 		// Recent changes and logs
@@ -154,7 +154,7 @@ class SpecialPageFactory {
 		// Unlisted / redirects
 		'Blankpage'                 => 'SpecialBlankpage',
 		'Blockme'                   => 'SpecialBlockme',
-		'Emailwiki_user'                 => 'SpecialEmailwiki_user',
+		'Emailuser'                 => 'SpecialEmailUser',
 		'JavaScriptTest'            => 'SpecialJavaScriptTest',
 		'Movepage'                  => 'MovePageForm',
 		'Mycontributions'           => 'SpecialMycontributions',
@@ -164,7 +164,7 @@ class SpecialPageFactory {
 		'PermanentLink'             => 'SpecialPermanentLink',
 		'Revisiondelete'            => 'SpecialRevisionDelete',
 		'Specialpages'              => 'SpecialSpecialpages',
-		'wiki_userlogout'                => 'Specialwiki_userlogout',
+		'Userlogout'                => 'SpecialUserlogout',
 	);
 
 	private static $mAliases;
@@ -356,23 +356,23 @@ class SpecialPageFactory {
 
 	/**
 	 * Return categorised listable special pages which are available
-	 * for the current wiki_user, and everyone.
+	 * for the current user, and everyone.
 	 *
-	 * @param $wiki_user wiki_user object to check permissions, $wgwiki_user will be used
+	 * @param $user User object to check permissions, $wgUser will be used
 	 *              if not provided
 	 * @return Array( String => Specialpage )
 	 */
-	public static function getUsablePages( wiki_user $wiki_user = null ) {
+	public static function getUsablePages( User $user = null ) {
 		$pages = array();
-		if ( $wiki_user === null ) {
-			global $wgwiki_user;
-			$wiki_user = $wgwiki_user;
+		if ( $user === null ) {
+			global $wgUser;
+			$user = $wgUser;
 		}
 		foreach ( self::getList() as $name => $rec ) {
 			$page = self::getPage( $name );
 			if ( $page // not null
 				&& $page->isListed()
-				&& ( !$page->isRestricted() || $page->wiki_userCanExecute( $wiki_user ) )
+				&& ( !$page->isRestricted() || $page->userCanExecute( $user ) )
 			) {
 				$pages[$name] = $page;
 			}
@@ -381,7 +381,7 @@ class SpecialPageFactory {
 	}
 
 	/**
-	 * Return categorised listable special pages for all wiki_users
+	 * Return categorised listable special pages for all users
 	 *
 	 * @return Array( String => Specialpage )
 	 */
@@ -398,19 +398,19 @@ class SpecialPageFactory {
 
 	/**
 	 * Return categorised listable special pages which are available
-	 * for the current wiki_user, but not for everyone
+	 * for the current user, but not for everyone
 	 *
 	 * @return Array( String => Specialpage )
 	 */
 	public static function getRestrictedPages() {
-		global $wgwiki_user;
+		global $wgUser;
 		$pages = array();
 		foreach ( self::getList() as $name => $rec ) {
 			$page = self::getPage( $name );
 			if (
 				$page->isListed()
 				&& $page->isRestricted()
-				&& $page->wiki_userCanExecute( $wgwiki_user )
+				&& $page->userCanExecute( $wgUser )
 			) {
 				$pages[$name] = $page;
 			}
@@ -503,7 +503,7 @@ class SpecialPageFactory {
 	 * successful or false if there was no such special page, or a title object
 	 * if it was a redirect.
 	 *
-	 * Also saves the current $wgTitle, $wgOut, $wgRequest, $wgwiki_user and $wgLang
+	 * Also saves the current $wgTitle, $wgOut, $wgRequest, $wgUser and $wgLang
 	 * variables so that the special page will get the context it'd expect on a
 	 * normal request, and then restores them to their previous values after.
 	 *
@@ -513,20 +513,20 @@ class SpecialPageFactory {
 	 * @return String: HTML fragment
 	 */
 	static function capturePath( Title $title, IContextSource $context ) {
-		global $wgOut, $wgTitle, $wgRequest, $wgwiki_user, $wgLang;
+		global $wgOut, $wgTitle, $wgRequest, $wgUser, $wgLang;
 
 		// Save current globals
 		$oldTitle = $wgTitle;
 		$oldOut = $wgOut;
 		$oldRequest = $wgRequest;
-		$oldwiki_user = $wgwiki_user;
+		$oldUser = $wgUser;
 		$oldLang = $wgLang;
 
 		// Set the globals to the current context
 		$wgTitle = $title;
 		$wgOut = $context->getOutput();
 		$wgRequest = $context->getRequest();
-		$wgwiki_user = $context->getwiki_user();
+		$wgUser = $context->getUser();
 		$wgLang = $context->getLanguage();
 
 		// The useful part
@@ -536,7 +536,7 @@ class SpecialPageFactory {
 		$wgTitle = $oldTitle;
 		$wgOut = $oldOut;
 		$wgRequest = $oldRequest;
-		$wgwiki_user = $oldwiki_user;
+		$wgUser = $oldUser;
 		$wgLang = $oldLang;
 
 		return $ret;

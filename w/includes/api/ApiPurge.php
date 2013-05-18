@@ -39,9 +39,9 @@ class ApiPurge extends ApiBase {
 	 * Purges the cache of a page
 	 */
 	public function execute() {
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 		$params = $this->extractRequestParams();
-		if ( !$wiki_user->isAllowed( 'purge' ) && !$this->getMain()->isInternalMode() &&
+		if ( !$user->isAllowed( 'purge' ) && !$this->getMain()->isInternalMode() &&
 				!$this->getRequest()->wasPosted() ) {
 			$this->dieUsageMsg( array( 'mustbeposted', $this->getModuleName() ) );
 		}
@@ -85,7 +85,7 @@ class ApiPurge extends ApiBase {
 			$r['purged'] = '';
 
 			if( $forceLinkUpdate ) {
-				if ( !$wiki_user->pingLimiter() ) {
+				if ( !$user->pingLimiter() ) {
 					global $wgParser, $wgEnableParserCache;
 
 					$popts = $page->makeParserOptions( 'canonical' );
@@ -164,7 +164,7 @@ class ApiPurge extends ApiBase {
 
 	public function getDescription() {
 		return array( 'Purge the cache for the given titles.',
-			'Requires a POST request if the wiki_user is not logged in.'
+			'Requires a POST request if the user is not logged in.'
 		);
 	}
 

@@ -7,7 +7,7 @@ index 3bb2bc9..bb07f9d 100644
  	function addSubcategory( Title $title, $sortkey, $pageLength ) {
  		wfDeprecated( __METHOD__, '1.17' );
 +		// <IntraACL>
-+		if ( !$title->wiki_userCanReadEx() ) {
++		if ( !$title->userCanReadEx() ) {
 +			return;
 +		}
 +		// </IntraACL>
@@ -19,7 +19,7 @@ index 3bb2bc9..bb07f9d 100644
  	 */
  	function addPage( $title, $sortkey, $pageLength, $isRedirect = false ) {
 +		/*op-patch|TS|2009-06-19|HaloACL|SafeTitle|start*/
-+		if (!$title->wiki_userCanReadEx()) {
++		if (!$title->userCanReadEx()) {
 +			return;
 +		}
 +		/*op-patch|TS|2009-06-19|end*/  
@@ -36,18 +36,18 @@ index ee4c2d6..3ee0f1c 100644
  	public function execute( $feed, $rows, $lastmod, $opts ) {
 -		global $wgLang, $wgRenderHashAppend;
 -
-+		global $wgLang, $wgRenderHashAppend, $wgwiki_user;
++		global $wgLang, $wgRenderHashAppend, $wgUser;
 +		
  		if ( !FeedUtils::checkFeedOutput( $this->format ) ) {
  			return null;
  		}
  
-+		$wiki_userid = $wgwiki_user->getId();
++		$userid = $wgUser->getId();
  		$optionsHash = md5( serialize( $opts->getAllValues() ) ) . $wgRenderHashAppend;
 -		$timekey = wfMemcKey( $this->type, $this->format, $wgLang->getCode(), $optionsHash, 'timestamp' );
 -		$key = wfMemcKey( $this->type, $this->format, $wgLang->getCode(), $optionsHash );
-+		$timekey = wfMemcKey( $this->type, $this->format, $wiki_userid, $wgLang->getCode(), $optionsHash, 'timestamp' );
-+		$key = wfMemcKey( $this->type, $this->format, $wiki_userid, $wgLang->getCode(), $optionsHash );
++		$timekey = wfMemcKey( $this->type, $this->format, $userid, $wgLang->getCode(), $optionsHash, 'timestamp' );
++		$key = wfMemcKey( $this->type, $this->format, $userid, $wgLang->getCode(), $optionsHash );
  
  		FeedUtils::checkPurge( $timekey, $key );
  
@@ -56,7 +56,7 @@ index ee4c2d6..3ee0f1c 100644
  		foreach( $sorted as $obj ) {
  			$title = Title::makeTitle( $obj->rc_namespace, $obj->rc_title );
 +			// <IntraACL>
-+			if( !$title || method_exists( $title, 'wiki_userCanReadEx' ) && !$title->wiki_userCanReadEx() ) {
++			if( !$title || method_exists( $title, 'userCanReadEx' ) && !$title->userCanReadEx() ) {
 +				continue;
 +			}
 +			// </IntraACL>
@@ -71,13 +71,13 @@ index 11b2675..3714a01 100644
  					$actiontext,
  					Linker::formatComment( $comment ) ) ) ) . "</p>\n";
  
--		// NOTE: Check permissions for anonymous wiki_users, not current wiki_user.
+-		// NOTE: Check permissions for anonymous users, not current user.
 -		//       No "privileged" version should end up in the cache.
 -		//       Most feed readers will not log in anway.
--		$anon = new wiki_user();
--		$accErrors = $title->getwiki_userPermissionsErrors( 'read', $anon, true );
-+		// NOTE: Check permissions for current wiki_user. -- HaloACL
-+		$accErrors = $title->getwiki_userPermissionsErrors( 'read', $wgwiki_user, true );
+-		$anon = new User();
+-		$accErrors = $title->getUserPermissionsErrors( 'read', $anon, true );
++		// NOTE: Check permissions for current user. -- HaloACL
++		$accErrors = $title->getUserPermissionsErrors( 'read', $wgUser, true );
  
  		// Can't diff special pages, unreadable pages or pages with no new revision
  		// to compare against: just return the text.
@@ -90,7 +90,7 @@ index 56626bd..fe8da85 100644
  						array( 'action' => 'edit' )
  					);
 +				// <IntraACL>
-+				} elseif ( !$titleObj->wiki_userCanRead() ) {
++				} elseif ( !$titleObj->userCanRead() ) {
 +					continue;
 +				// </IntraACL>
  				} else {
@@ -146,7 +146,7 @@ index b4a81bb..55fd7a8 100644
  		}
 -		if ( !is_object( $titleObj ) ) {
 +		/*patch|2011-04-05|IntraACL|start*/
-+		if ( !$titleObj instanceof Title || method_exists( $titleObj, 'wiki_userCanReadEx' ) && !$titleObj->wiki_userCanReadEx() ) {
++		if ( !$titleObj instanceof Title || method_exists( $titleObj, 'userCanReadEx' ) && !$titleObj->userCanReadEx() ) {
 +		/*patch|2011-04-05|IntraACL|end*/
  			$titleObj = Title::newMainPage();
  		}
@@ -158,10 +158,10 @@ index ac559dc..b9964c2 100644
 @@ -585,6 +585,12 @@ abstract class QueryPage extends SpecialPage {
  			# $res might contain the whole 1,000 rows, so we read up to
  			# $num [should update this to use a Pager]
- 			for ( $i = 0; $i < $num && $row = r->fetchObject( $res ); $i++ ) {
+ 			for ( $i = 0; $i < $num && $row = $dbr->fetchObject( $res ); $i++ ) {
 +				// <IntraACL>
 +				$title = Title::makeTitleSafe( $row->namespace, $row->title );
-+				if ( !$title || !$title->wiki_userCanReadEx() ) {
++				if ( !$title || !$title->userCanReadEx() ) {
 +					continue;
 +				}
 +				// </IntraACL>
@@ -238,9 +238,9 @@ index 1b5e21d..f8a5da4 100644
 +// <IntraACL>
 +	/**
 +	 * This function is called from the patches for HaloACL for secure listings
-+	 * (e.g. Special:AllPages). It checks, whether the current wiki_user is allowed
++	 * (e.g. Special:AllPages). It checks, whether the current user is allowed
 +	 * to read the article for this title object. For normal pages this is
-+	 * evaluate in the method <wiki_userCanRead>.
++	 * evaluate in the method <userCanRead>.
 +	 * However, the special pages that generate listings, often create title
 +	 * objects before the can check their accessibility. The fallback mechanism
 +	 * of HaloACL creates the title "Permission denied" for the article that
@@ -252,7 +252,7 @@ index 1b5e21d..f8a5da4 100644
 +	 * 		true, if this title can be read
 +	 * 		false, if the title is protected or "Permission denied".
 +	 */
-+	public function wiki_userCanReadEx( $otherwiki_user = NULL ) {
++	public function userCanReadEx( $otherUser = NULL ) {
 +		if ( !defined( 'HACL_HALOACL_VERSION' ) ) {
 +			// IntraACL is disabled
 +			return true;
@@ -262,12 +262,12 @@ index 1b5e21d..f8a5da4 100644
 +			// Special handling of "Permission denied" page
 +			return false;
 +		}
-+		if ( $otherwiki_user ) {
++		if ( $otherUser ) {
 +			$canRead = false;
-+			$status = HACLEvaluator::wiki_userCan( $this, $otherwiki_user, 'read', $canRead );
++			$status = HACLEvaluator::userCan( $this, $otherUser, 'read', $canRead );
 +			return $canRead;
 +		}
-+		return $this->wiki_userCanRead();
++		return $this->userCanRead();
 +	}
 +
 +	/**
@@ -307,17 +307,17 @@ index 1b5e21d..f8a5da4 100644
 +				case 'create':
 +				case 'move':
 +				case 'delete':
-+					$allowed = $this->wiki_userCan($action);
++					$allowed = $this->userCan($action);
 +					break;
 +				case 'edit':
 +					// If the article does not exist and edit right was requested,
 +					// check for create right.
-+					$allowed = $this->wiki_userCan($this->exists() ? 'edit' : 'create');
++					$allowed = $this->userCan($this->exists() ? 'edit' : 'create');
 +					break;
 +				default:
-+					// If the wiki_user has no read access to a non-existing page,
++					// If the user has no read access to a non-existing page,
 +					// but has the right to create it - allow him to "read" it
-+					$allowed = $this->wiki_userCanRead() || !$this->exists() && $this->wiki_userCan('create');
++					$allowed = $this->userCanRead() || !$this->exists() && $this->userCan('create');
 +			}
 +			$permissionCache[$index] = $allowed;
 +		}
@@ -333,11 +333,11 @@ index 1b5e21d..f8a5da4 100644
 +	}
 +// </IntraACL>
  }
-diff --git a/includes/wiki_user.php b/includes/wiki_user.php
+diff --git a/includes/User.php b/includes/User.php
 index 0a3db4c..245f9b5 100644
---- a/includes/wiki_user.php
-+++ b/includes/wiki_user.php
-@@ -274,7 +274,13 @@ class wiki_user {
+--- a/includes/User.php
++++ b/includes/User.php
+@@ -274,7 +274,13 @@ class User {
  				$this->loadDefaults();
  				break;
  			case 'name':
@@ -349,24 +349,24 @@ index 0a3db4c..245f9b5 100644
 +					haclfRestoreTitlePatch( $hacl );
 +				}
  				if ( !$this->mId ) {
- 					# Nonexistent wiki_user placeholder object
+ 					# Nonexistent user placeholder object
  					$this->loadDefaults( $this->mName );
-@@ -556,6 +562,12 @@ class wiki_user {
- 	public static function isValidwiki_userName( $name ) {
+@@ -556,6 +562,12 @@ class User {
+ 	public static function isValidUserName( $name ) {
  		global $wgContLang, $wgMaxNameChars;
  
 +		# Disable HaloACL title check as the main and/or
-+		# wiki_user namespaces may be protected
++		# user namespaces may be protected
 +		if ( defined( 'HACL_HALOACL_VERSION' ) ) {
 +			$hacl = haclfDisableTitlePatch();
 +		}
 +		
  		if ( $name == ''
- 		|| wiki_user::isIP( $name )
+ 		|| User::isIP( $name )
  		|| strpos( $name, '/' ) !== false
-@@ -563,6 +575,9 @@ class wiki_user {
+@@ -563,6 +575,9 @@ class User {
  		|| $name != $wgContLang->ucfirst( $name ) ) {
- 			wfDebugLog( 'wiki_username', __METHOD__ .
+ 			wfDebugLog( 'username', __METHOD__ .
  				": '$name' invalid due to empty, IP, slash, length, or lowercase" );
 +			if ( defined( 'HACL_HALOACL_VERSION' ) ) {
 +				haclfRestoreTitlePatch( $hacl );
@@ -374,9 +374,9 @@ index 0a3db4c..245f9b5 100644
  			return false;
  		}
  
-@@ -575,6 +590,9 @@ class wiki_user {
+@@ -575,6 +590,9 @@ class User {
  			|| strcmp( $name, $parsed->getPrefixedText() ) ) {
- 			wfDebugLog( 'wiki_username', __METHOD__ .
+ 			wfDebugLog( 'username', __METHOD__ .
  				": '$name' invalid due to ambiguous prefixes" );
 +			if ( defined( 'HACL_HALOACL_VERSION' ) ) {
 +				haclfRestoreTitlePatch( $hacl );
@@ -384,9 +384,9 @@ index 0a3db4c..245f9b5 100644
  			return false;
  		}
  
-@@ -591,9 +609,14 @@ class wiki_user {
+@@ -591,9 +609,14 @@ class User {
  		if( preg_match( $unicodeBlacklist, $name ) ) {
- 			wfDebugLog( 'wiki_username', __METHOD__ .
+ 			wfDebugLog( 'username', __METHOD__ .
  				": '$name' invalid due to blacklisted characters" );
 +			if ( defined( 'HACL_HALOACL_VERSION' ) ) {
 +				haclfRestoreTitlePatch( $hacl );
@@ -400,22 +400,22 @@ index 0a3db4c..245f9b5 100644
  		return true;
  	}
  
-@@ -765,6 +788,14 @@ class wiki_user {
+@@ -765,6 +788,14 @@ class User {
  	 * @return bool|string
  	 */
  	public static function getCanonicalName( $name, $validate = 'valid' ) {
 +		// <IntraACL>
 +		# Disable IntraACL title check as the main and/or
-+		# wiki_user namespaces may be protected
++		# user namespaces may be protected
 +		if ( defined( 'HACL_HALOACL_VERSION' ) ) {
 +			$hacl = haclfDisableTitlePatch();
 +		}
 +		// </IntraACL>
 +		
- 		# Force wiki_usernames to capital
+ 		# Force usernames to capital
  		global $wgContLang;
  		$name = $wgContLang->ucfirst( $name );
-@@ -780,6 +811,9 @@ class wiki_user {
+@@ -780,6 +811,9 @@ class User {
  			Title::newFromText( $name ) : Title::makeTitle( NS_USER, $name );
  		# Check for invalid titles
  		if( is_null( $t ) ) {
@@ -425,7 +425,7 @@ index 0a3db4c..245f9b5 100644
  			return false;
  		}
  
-@@ -808,6 +842,9 @@ class wiki_user {
+@@ -808,6 +842,9 @@ class User {
  			default:
  				throw new MWException( 'Invalid parameter value for $validate in ' . __METHOD__ );
  		}
@@ -435,7 +435,7 @@ index 0a3db4c..245f9b5 100644
  		return $name;
  	}
  
-@@ -3448,7 +3485,13 @@ class wiki_user {
+@@ -3448,7 +3485,13 @@ class User {
  	 */
  	protected function getTokenUrl( $page, $token ) {
  		// Hack to bypass localization of 'Special:'
@@ -449,19 +449,19 @@ index 0a3db4c..245f9b5 100644
  		return $title->getCanonicalUrl();
  	}
  
-diff --git a/includes/wiki_userMailer.php b/includes/wiki_userMailer.php
+diff --git a/includes/UserMailer.php b/includes/UserMailer.php
 index 01e7132..8d1ba40 100644
---- a/includes/wiki_userMailer.php
-+++ b/includes/wiki_userMailer.php
+--- a/includes/UserMailer.php
++++ b/includes/UserMailer.php
 @@ -564,7 +564,12 @@ class EmailNotification {
  				continue;
  			}
- 			$wiki_user = wiki_user::newFromName( $name );
--			$this->compose( $wiki_user );
+ 			$user = User::newFromName( $name );
+-			$this->compose( $user );
 +			/*op-patch|TS|2011-02-09|IntraACL|start*/
-+			if ( !method_exists( $title, 'wiki_userCanReadEx' ) || $title->wiki_userCanReadEx( $wiki_user ) ) {
++			if ( !method_exists( $title, 'userCanReadEx' ) || $title->userCanReadEx( $user ) ) {
 +				// Check IntraACL read access
-+				$this->compose( $wiki_user );
++				$this->compose( $user );
 +			}
 +			/*op-patch|TS|2011-02-09|end*/
  		}
@@ -472,17 +472,17 @@ index 4de1a97..d1cf98e 100644
 --- a/includes/logging/LogEventsList.php
 +++ b/includes/logging/LogEventsList.php
 @@ -308,6 +308,12 @@ class LogEventsList extends ContextSource {
- 		$formatter->setShowwiki_userToolLinks( !( $this->flags & self::NO_EXTRA_USER_LINKS ) );
+ 		$formatter->setShowUserToolLinks( !( $this->flags & self::NO_EXTRA_USER_LINKS ) );
  
  		$title = $entry->getTarget();
 +		// <IntraACL>
-+		if ( !$title->wiki_userCanReadEx() ) {
++		if ( !$title->userCanReadEx() ) {
 +			return '';
 +		}
 +		// </IntraACL>
 +		
- 		$time = htmlspecialchars( $this->getLanguage()->wiki_userTimeAndDate(
- 			$entry->getTimestamp(), $this->getwiki_user() ) );
+ 		$time = htmlspecialchars( $this->getLanguage()->userTimeAndDate(
+ 			$entry->getTimestamp(), $this->getUser() ) );
  
 diff --git a/includes/parser/LinkHolderArray.php b/includes/parser/LinkHolderArray.php
 index d9356b4..fcdcacc 100644
@@ -569,7 +569,7 @@ index 2a24bee..8be5b38 100644
 -					if ( !wfIsBadImage( $nt->getDBkey(), $this->mTitle ) ) {
 +					// <IntraACL>
 +					if ( !wfIsBadImage( $nt->getDBkey(), $this->mTitle ) &&
-+						( $canRead = $nt->wiki_userCanRead() ) ) {
++						( $canRead = $nt->userCanRead() ) ) {
 +					// </IntraACL>
  						if ( $wasblank ) {
  							# if no parameters were passed, $text
@@ -621,7 +621,7 @@ index 2a24bee..8be5b38 100644
  				array( $parser, $title, &$skip, &$id ) );
 -
 +			
-+			$canRead = $canRead && $title->wiki_userCanRead();
++			$canRead = $canRead && $title->userCanRead();
  			if ( $skip ) {
  				$text = false;
  				$deps[] = array(
@@ -687,7 +687,7 @@ index 0f8b255..a8a28ea 100644
  				while( ( $n < $this->maxPerPage ) && ( $s = $res->fetchObject() ) ) {
  					$t = Title::newFromRow( $s );
 +					// <IntraACL>
-+					if ( $t && !$t->wiki_userCanReadEx() ) {
++					if ( $t && !$t->userCanReadEx() ) {
 +						continue;
 +					}
 +					// </IntraACL>
@@ -703,7 +703,7 @@ index fe338a0..710b233 100644
  		$target = $this->getRedirectTarget( $result );
  		if( $target ) {
 +			// <IntraACL>
-+			if ( !$target->wiki_userCanReadEx() ) {
++			if ( !$target->userCanReadEx() ) {
 +				return '';
 +			}
 +			// </IntraACL>
@@ -719,13 +719,13 @@ index 8e15d55..c880340 100644
  		$dm = $lang->getDirMark();
  
 +		// <IntraACL>
-+		if ( !$title->wiki_userCanReadEx() ) {
++		if ( !$title->userCanReadEx() ) {
 +			return '';
 +		}
 +		// </IntraACL>
 +		
  		$spanTime = Html::element( 'span', array( 'class' => 'mw-newpages-time' ),
- 			$lang->wiki_userTimeAndDate( $result->rc_timestamp, $this->getwiki_user() )
+ 			$lang->userTimeAndDate( $result->rc_timestamp, $this->getUser() )
  		);
 diff --git a/includes/specials/SpecialPrefixindex.php b/includes/specials/SpecialPrefixindex.php
 index 7740b32..b8cc7fa 100644
@@ -736,7 +736,7 @@ index 7740b32..b8cc7fa 100644
  				while( ( $n < $this->maxPerPage ) && ( $s = $res->fetchObject() ) ) {
  					$t = Title::makeTitle( $s->page_namespace, $s->page_title );
 +					/*op-patch|TS|2009-06-19|HaloACL|SafeTitle|start*/
-+					if ($t && !$t->wiki_userCanReadEx()) {
++					if ($t && !$t->userCanReadEx()) {
 +						continue; 
 +					}
 +					/*op-patch|TS|2009-06-19|end*/ 
@@ -751,7 +751,7 @@ index 307088e..740b1d5 100644
  			$this->getOutput()->addWikiMsg( strtolower( $this->getName() ) . '-nopages',
  				$this->getNsList(), count( $this->namespaces ) );
  			return;
-+		} elseif ( method_exists( $title, 'wiki_userCanReadEx' ) && !$title->wiki_userCanReadEx() ) {
++		} elseif ( method_exists( $title, 'userCanReadEx' ) && !$title->userCanReadEx() ) {
 +			$article = new Article( $title );
 +			$article->view();
 +			return;
@@ -768,7 +768,7 @@ index 2bd8b0a..4531716 100644
  		foreach( $rows as $obj ) {
 +			// <IntraACL>
 +			$rc = RecentChange::newFromRow( $obj );
-+			if ( !$rc->getTitle()->wiki_userCanReadEx() ) {
++			if ( !$rc->getTitle()->userCanReadEx() ) {
 +				continue;
 +			}
 +			// </IntraACL>
@@ -790,7 +790,7 @@ index 5f5b6b4..1d9bdf3 100644
 -			$out .= $this->showHit( $result, $terms );
 +			/*op-patch|TS|2011-02-08|HaloACL|SafeTitle|start*/
 +			if (($result->getTitle() != NULL) 
-+			    && ($result->getTitle()->wiki_userCanReadEx())) {
++			    && ($result->getTitle()->userCanReadEx())) {
 +			/*op-patch|TS|2011-02-08|end*/  
 +				$out .= $this->showHit( $result, $terms );
 +			/*op-patch|TS|2011-02-08|HaloACL|SafeTitle|start*/
@@ -799,17 +799,17 @@ index 5f5b6b4..1d9bdf3 100644
  			$result = $matches->next();
  		}
  		$out .= "</ul>\n";
-diff --git a/includes/specials/Specialwiki_userlogin.php b/includes/specials/Specialwiki_userlogin.php
+diff --git a/includes/specials/SpecialUserlogin.php b/includes/specials/SpecialUserlogin.php
 index 58da77d..1a0663f 100644
---- a/includes/specials/Specialwiki_userlogin.php
-+++ b/includes/specials/Specialwiki_userlogin.php
+--- a/includes/specials/SpecialUserlogin.php
++++ b/includes/specials/SpecialUserlogin.php
 @@ -961,7 +961,9 @@ class LoginForm extends SpecialPage {
  		}
  
  		$returnToTitle = Title::newFromText( $returnTo );
 -		if ( !$returnToTitle ) {
 +		/*patch|2011-04-05|IntraACL|start*/
-+		if ( !$titleObj instanceof Title || method_exists( $titleObj, 'wiki_userCanReadEx' ) && !$titleObj->wiki_userCanReadEx() ) {
++		if ( !$titleObj instanceof Title || method_exists( $titleObj, 'userCanReadEx' ) && !$titleObj->userCanReadEx() ) {
 +		/*patch|2011-04-05|IntraACL|end*/
  			$returnToTitle = Title::newMainPage();
  		}
@@ -823,7 +823,7 @@ index 5dfc113..cfef364 100644
  			# Make RC entry
  			$rc = RecentChange::newFromRow( $obj );
 +			// <IntraACL>
-+			if ( !$rc->getTitle()->wiki_userCanReadEx() ) {
++			if ( !$rc->getTitle()->userCanReadEx() ) {
 +				continue;
 +			}
 +			// </IntraACL>
@@ -840,7 +840,7 @@ index f135649..de0b125 100644
  			$nt = Title::makeTitle( $row->page_namespace, $row->page_title );
 -
 +			/*op-patch|TS|2009-06-19|HaloACL|SafeTitle|start*/
-+			if (!$nt->wiki_userCanReadEx()) {
++			if (!$nt->userCanReadEx()) {
 +				continue;
 +			}
 +			/*op-patch|TS|2009-06-19|end*/  

@@ -63,10 +63,10 @@ class ApiQueryIWLinks extends ApiQueryBase {
 					'original value returned by the previous query', '_badcontinue' );
 			}
 			$op = $params['dir'] == 'descending' ? '<' : '>';
-			 = $this->getDB();
+			$db = $this->getDB();
 			$iwlfrom = intval( $cont[0] );
-			$iwlprefix = ->addQuotes( $cont[1] );
-			$iwltitle = ->addQuotes( $cont[2] );
+			$iwlprefix = $db->addQuotes( $cont[1] );
+			$iwltitle = $db->addQuotes( $cont[2] );
 			$this->addWhere(
 				"iwl_from $op $iwlfrom OR " .
 				"(iwl_from = $iwlfrom AND " .

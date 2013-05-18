@@ -37,13 +37,13 @@ class UploadFromStash extends UploadBase {
 	private $repo;
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $stash UploadStash
 	 * @param $repo FileRepo
 	 */
-	public function __construct( $wiki_user = false, $stash = false, $repo = false ) {
-		// wiki_user object. sometimes this won't exist, as when running from cron.
-		$this->wiki_user = $wiki_user;
+	public function __construct( $user = false, $stash = false, $repo = false ) {
+		// user object. sometimes this won't exist, as when running from cron.
+		$this->user = $user;
 
 		if( $repo ) {
 			$this->repo = $repo;
@@ -54,13 +54,13 @@ class UploadFromStash extends UploadBase {
 		if( $stash ) {
 			$this->stash = $stash;
 		} else {
-			if( $wiki_user ) {
-				wfDebug( __METHOD__ . " creating new UploadStash instance for " . $wiki_user->getId() . "\n" );
+			if( $user ) {
+				wfDebug( __METHOD__ . " creating new UploadStash instance for " . $user->getId() . "\n" );
 			} else {
-				wfDebug( __METHOD__ . " creating new UploadStash instance with no wiki_user\n" );
+				wfDebug( __METHOD__ . " creating new UploadStash instance with no user\n" );
 			}
 
-			$this->stash = new UploadStash( $this->repo, $this->wiki_user );
+			$this->stash = new UploadStash( $this->repo, $this->user );
 		}
 	}
 
@@ -94,7 +94,7 @@ class UploadFromStash extends UploadBase {
 		 * Confirming a temporarily stashed upload.
 		 * We don't want path names to be forged, so we keep
 		 * them in the session on the server and just give
-		 * an opaque key to the wiki_user agent.
+		 * an opaque key to the user agent.
 		 */
 		$metadata = $this->stash->getMetadata( $key );
 		$this->initializePathInfo( $name,
@@ -171,11 +171,11 @@ class UploadFromStash extends UploadBase {
 	 * @param $comment string
 	 * @param $pageText string
 	 * @param $watch bool
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @return Status
 	 */
-	public function performUpload( $comment, $pageText, $watch, $wiki_user ) {
-		$rv = parent::performUpload( $comment, $pageText, $watch, $wiki_user );
+	public function performUpload( $comment, $pageText, $watch, $user ) {
+		$rv = parent::performUpload( $comment, $pageText, $watch, $user );
 		$this->unsaveUploadedFile();
 		return $rv;
 	}

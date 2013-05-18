@@ -137,7 +137,7 @@ class ApiQueryDuplicateFiles extends ApiQueryGeneratorBase {
 				} else {
 					$r = array(
 						'name' => $dupName,
-						'wiki_user' => $dupFile->getwiki_user( 'text' ),
+						'user' => $dupFile->getUser( 'text' ),
 						'timestamp' => wfTimestamp( TS_ISO_8601, $dupFile->getTimestamp() )
 					);
 					if( !$dupFile->isLocal() ) {
@@ -193,7 +193,7 @@ class ApiQueryDuplicateFiles extends ApiQueryGeneratorBase {
 		return array(
 			'' => array(
 				'name' => 'string',
-				'wiki_user' => 'string',
+				'user' => 'string',
 				'timestamp' => 'timestamp',
 				'shared' => 'boolean',
 			)

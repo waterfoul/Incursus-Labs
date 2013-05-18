@@ -11,7 +11,7 @@
  */
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'A shaya zaruruwa',
 'tog-justify' => 'A daidaita sakin layuka',
 'tog-hideminor' => 'A ɓoye ƙananan gyare-gyare na baya-bayan nan',
@@ -35,7 +35,7 @@ $messages = array(
 'tog-previewonfirst' => 'A nuna rigya-gani tun gyaran farin',
 'tog-nocache' => 'A tsayar da kacin shafi',
 'tog-enotifwatchlistpages' => 'A shaida mani ta Imel idan wani shafin jeerina na bin-sau ya sauya',
-'tog-enotifwiki_usertalkpages' => 'A shaida mani ta Imel idan shafina na muhawara ya sauya',
+'tog-enotifusertalkpages' => 'A shaida mani ta Imel idan shafina na muhawara ya sauya',
 'tog-enotifminoredits' => 'A shaida mani ta Imel game da ko da ƙaramin gyara ne',
 'tog-enotifrevealaddr' => "A bayyana Imel kina a cikin sak'wanni na shaidarwa",
 'tog-shownumberswatching' => "A nuna adadin ma'aikata masu bin sawun wannan shafi",
@@ -177,7 +177,7 @@ $messages = array(
 'jumptonavigation' => 'Shawagi',
 'jumptosearch' => 'nema',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Game da {{SITENAME}}',
 'aboutpage' => 'Project:Game da',
 'copyright' => 'Bayannai sun samu a ƙarƙashin $1.',
@@ -213,7 +213,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Shafi',
-'nstab-wiki_user' => "Shafin ma'aikaci",
+'nstab-user' => "Shafin ma'aikaci",
 'nstab-special' => 'Shafi na musamman',
 'nstab-project' => 'Shafin shiri',
 'nstab-image' => 'Fayil',
@@ -226,7 +226,7 @@ $messages = array(
 Mafarin haka yawanci shi ne mahaɗi mai zuwa ga shafin da aka soke ko aka gusar.
 
 In ba haka ba ne, to kun takalo wata tangarɗa a safuwai kin.
-Don Allah a aika ruhoto zuwa ga [[Special:Listwiki_users/sysop|administrator]], tare da nuna URL kin.',
+Don Allah a aika ruhoto zuwa ga [[Special:ListUsers/sysop|administrator]], tare da nuna URL kin.',
 'missingarticle-rev' => '(lambar zubi: $1)',
 'badtitletext' => "Kan shafin da aka nema bai da ma'ana, ko kango ne, ko kuma wani kai ne na tsakanin harsuna ko shire-shire da bai da mahaɗi mai kyau.
 Tana yiyuwa yana da harafi ko haruffa da ba su karɓuwa cikin kanu.",
@@ -238,9 +238,9 @@ Tana yiyuwa yana da harafi ko haruffa da ba su karɓuwa cikin kanu.",
 'remembermypassword' => 'Adana bayannan logina a wannan kwafyuta (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login' => 'Logi',
 'nav-login-createaccount' => 'logi / sabon akwanti',
-'wiki_userlogin' => 'Logi / sabon akwanti',
+'userlogin' => 'Logi / sabon akwanti',
 'logout' => 'Ban kwana',
-'wiki_userlogout' => 'Ban kwana',
+'userlogout' => 'Ban kwana',
 'nologinlink' => 'Buɗa sabon akwanti',
 'createaccountreason' => 'Dalili:',
 'mailmypassword' => 'Aiken kalmar sirri ta Imel',
@@ -366,15 +366,15 @@ Ku gwada tare da amfani da \"all:\" don bincikar duka shafunan (har da shafunan 
 'mypreferences' => 'Saituttukana',
 'searchresultshead' => 'Nema',
 
-# wiki_user rights
-'wiki_userrights-reason' => 'Dalili:',
+# User rights
+'userrights-reason' => 'Dalili:',
 
 # Groups
 'group-sysop' => 'Masu hukunci',
 
 'grouppage-sysop' => '{{ns:project}}:Masu hukunci',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => "Rajistan bayar da izini ga ma'aikata",
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -425,7 +425,7 @@ Ku gwada tare da amfani da \"all:\" don bincikar duka shafunan (har da shafunan 
 'filehist-datetime' => 'Rana/Lokaci',
 'filehist-thumb' => 'Wadar sufa',
 'filehist-thumbtext' => 'Wadar sufa ta zubin $1',
-'filehist-wiki_user' => "Ma'aikaci",
+'filehist-user' => "Ma'aikaci",
 'filehist-dimensions' => 'Kusurwowi',
 'filehist-comment' => 'Bahasi',
 'imagelinks' => 'Amfani da fayil',
@@ -480,17 +480,17 @@ Ku gwada tare da amfani da \"all:\" don bincikar duka shafunan (har da shafunan 
 'linksearch-ns' => 'Sararin suna:',
 'linksearch-ok' => 'Nema',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'Nuna',
+# Special:ListUsers
+'listusers-submit' => 'Nuna',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Rajistan sabbin akwantoci',
+# Special:Log/newusers
+'newuserlogpage' => 'Rajistan sabbin akwantoci',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(jerin mambobi)',
 
-# E-mail wiki_user
-'emailwiki_user' => "Aika wa wannan ma'aikaci imel",
+# E-mail user
+'emailuser' => "Aika wa wannan ma'aikaci imel",
 
 # Watchlist
 'watchlist' => 'Jerina na bin sawu',
@@ -575,7 +575,7 @@ Kuna iya sake wa wannan shafi matakin kariya, amma hakan ba zai yi tasiri ga kar
 'sp-contributions-newbies' => 'Nuna gudummuwar sabbin akwantoci kawai',
 'sp-contributions-blocklog' => 'rajistan hani',
 'sp-contributions-search' => 'Nemo gudummuwa',
-'sp-contributions-wiki_username' => "Adireshin IP ko sunan ma'aikaci:",
+'sp-contributions-username' => "Adireshin IP ko sunan ma'aikaci:",
 'sp-contributions-submit' => 'Nemo',
 
 # What links here
@@ -651,7 +651,7 @@ Don Allah ku game su da hannu.'''",
 'thumbnail-more' => 'Faɗaɗa',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Shafinku na marhabin',
+'tooltip-pt-userpage' => 'Shafinku na marhabin',
 'tooltip-pt-mytalk' => 'Shafinku na mahawara',
 'tooltip-pt-preferences' => 'Saituttukanku',
 'tooltip-pt-watchlist' => 'Jerin shafunan da kuke bin sawun sauye-sauyensu',
@@ -685,13 +685,13 @@ Kuna iya duba tushensa.',
 'tooltip-feed-rss' => 'Kwararen RSS na wannan shafi',
 'tooltip-feed-atom' => 'Kwararen Atom na wannan shafi',
 'tooltip-t-contributions' => "Duba jerin gudummuwar wannan ma'aikaci",
-'tooltip-t-emailwiki_user' => "Aika wa wannan ma'aikaci imel",
+'tooltip-t-emailuser' => "Aika wa wannan ma'aikaci imel",
 'tooltip-t-upload' => 'Girke fayiloli',
 'tooltip-t-specialpages' => 'Jerin duk shafuna na musamman',
 'tooltip-t-print' => 'Wannan shafi a sufar bugawa',
 'tooltip-t-permalink' => 'Mahaɗin dindindin zuwa ga zubin baya na wannan shafi',
 'tooltip-ca-nstab-main' => 'Duba shafin bayannai',
-'tooltip-ca-nstab-wiki_user' => "Duba shafin ma'aikaci",
+'tooltip-ca-nstab-user' => "Duba shafin ma'aikaci",
 'tooltip-ca-nstab-special' => 'Wannan shafi ne na musamman, ba za ku iya yi masa gyara ba',
 'tooltip-ca-nstab-project' => 'Duba shafin shirin',
 'tooltip-ca-nstab-image' => 'Duba shafin fayil',

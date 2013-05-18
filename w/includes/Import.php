@@ -80,7 +80,7 @@ class WikiImporter {
 		array_shift( $params );
 
 		if ( is_callable( $this->mNoticeCallback ) ) {
-			call_wiki_user_func( $this->mNoticeCallback, $msg, $params );
+			call_user_func( $this->mNoticeCallback, $msg, $params );
 		} else { # No ImportReporter -> CLI
 			echo wfMessage( $msg, $params )->text() . "\n";
 		}
@@ -252,8 +252,8 @@ class WikiImporter {
 	 * @return bool
 	 */
 	public function importRevision( $revision ) {
-		w = wfGetDB( DB_MASTER );
-		return w->deadlockLoop( array( $revision, 'importOldRevision' ) );
+		$dbw = wfGetDB( DB_MASTER );
+		return $dbw->deadlockLoop( array( $revision, 'importOldRevision' ) );
 	}
 
 	/**
@@ -262,8 +262,8 @@ class WikiImporter {
 	 * @return bool
 	 */
 	public function importLogItem( $rev ) {
-		w = wfGetDB( DB_MASTER );
-		return w->deadlockLoop( array( $rev, 'importLogItem' ) );
+		$dbw = wfGetDB( DB_MASTER );
+		return $dbw->deadlockLoop( array( $rev, 'importLogItem' ) );
 	}
 
 	/**
@@ -272,8 +272,8 @@ class WikiImporter {
 	 * @return bool
 	 */
 	public function importUpload( $revision ) {
-		w = wfGetDB( DB_MASTER );
-		return w->deadlockLoop( array( $revision, 'importUpload' ) );
+		$dbw = wfGetDB( DB_MASTER );
+		return $dbw->deadlockLoop( array( $revision, 'importUpload' ) );
 	}
 
 	/**
@@ -301,7 +301,7 @@ class WikiImporter {
 		} else {
 			$this->debug( "-- Title: <invalid>" );
 		}
-		$this->debug( "-- wiki_user: " . $revision->wiki_user_text );
+		$this->debug( "-- User: " . $revision->user_text );
 		$this->debug( "-- Timestamp: " . $revision->timestamp );
 		$this->debug( "-- Comment: " . $revision->comment );
 		$this->debug( "-- Text: " . $revision->text );
@@ -313,7 +313,7 @@ class WikiImporter {
 	 */
 	function pageCallback( $title ) {
 		if( isset( $this->mPageCallback ) ) {
-			call_wiki_user_func( $this->mPageCallback, $title );
+			call_user_func( $this->mPageCallback, $title );
 		}
 	}
 
@@ -541,10 +541,10 @@ class WikiImporter {
 		}
 
 		if ( isset( $logInfo['contributor']['ip'] ) ) {
-			$revision->setwiki_userIP( $logInfo['contributor']['ip'] );
+			$revision->setUserIP( $logInfo['contributor']['ip'] );
 		}
-		if ( isset( $logInfo['contributor']['wiki_username'] ) ) {
-			$revision->setwiki_userName( $logInfo['contributor']['wiki_username'] );
+		if ( isset( $logInfo['contributor']['username'] ) ) {
+			$revision->setUserName( $logInfo['contributor']['username'] );
 		}
 
 		return $this->logItemCallback( $revision );
@@ -672,10 +672,10 @@ class WikiImporter {
 			$revision->setMinor( true );
 		}
 		if ( isset( $revisionInfo['contributor']['ip'] ) ) {
-			$revision->setwiki_userIP( $revisionInfo['contributor']['ip'] );
+			$revision->setUserIP( $revisionInfo['contributor']['ip'] );
 		}
-		if ( isset( $revisionInfo['contributor']['wiki_username'] ) ) {
-			$revision->setwiki_userName( $revisionInfo['contributor']['wiki_username'] );
+		if ( isset( $revisionInfo['contributor']['username'] ) ) {
+			$revision->setUserName( $revisionInfo['contributor']['username'] );
 		}
 		$revision->setNoUpdates( $this->mNoUpdates );
 
@@ -775,21 +775,21 @@ class WikiImporter {
 		$revision->setComment( $uploadInfo['comment'] );
 
 		if ( isset( $uploadInfo['contributor']['ip'] ) ) {
-			$revision->setwiki_userIP( $uploadInfo['contributor']['ip'] );
+			$revision->setUserIP( $uploadInfo['contributor']['ip'] );
 		}
-		if ( isset( $uploadInfo['contributor']['wiki_username'] ) ) {
-			$revision->setwiki_userName( $uploadInfo['contributor']['wiki_username'] );
+		if ( isset( $uploadInfo['contributor']['username'] ) ) {
+			$revision->setUserName( $uploadInfo['contributor']['username'] );
 		}
 		$revision->setNoUpdates( $this->mNoUpdates );
 
-		return call_wiki_user_func( $this->mUploadCallback, $revision );
+		return call_user_func( $this->mUploadCallback, $revision );
 	}
 
 	/**
 	 * @return array
 	 */
 	private function handleContributor() {
-		$fields = array( 'id', 'ip', 'wiki_username' );
+		$fields = array( 'id', 'ip', 'username' );
 		$info = array();
 
 		while ( $this->reader->read() ) {
@@ -840,12 +840,12 @@ class WikiImporter {
 		} elseif( !$title->canExist() ) {
 			$this->notice( 'import-error-special', $title->getPrefixedText() );
 			return false;
-		} elseif( !$title->wiki_userCan( 'edit' ) && !$wgCommandLineMode ) {
-			# Do not import if the importing wiki wiki_user cannot edit this page
+		} elseif( !$title->userCan( 'edit' ) && !$wgCommandLineMode ) {
+			# Do not import if the importing wiki user cannot edit this page
 			$this->notice( 'import-error-edit', $title->getPrefixedText() );
 			return false;
-		} elseif( !$title->exists() && !$title->wiki_userCan( 'create' ) && !$wgCommandLineMode ) {
-			# Do not import if the importing wiki wiki_user cannot create this page
+		} elseif( !$title->exists() && !$title->userCan( 'create' ) && !$wgCommandLineMode ) {
+			# Do not import if the importing wiki user cannot create this page
 			$this->notice( 'import-error-create', $title->getPrefixedText() );
 			return false;
 		}
@@ -1006,8 +1006,8 @@ class WikiRevision {
 	var $title = null;
 	var $id = 0;
 	var $timestamp = "20010115000000";
-	var $wiki_user = 0;
-	var $wiki_user_text = "";
+	var $user = 0;
+	var $user_text = "";
 	var $text = "";
 	var $comment = "";
 	var $minor = false;
@@ -1051,17 +1051,17 @@ class WikiRevision {
 	}
 
 	/**
-	 * @param $wiki_user
+	 * @param $user
 	 */
-	function setwiki_username( $wiki_user ) {
-		$this->wiki_user_text = $wiki_user;
+	function setUsername( $user ) {
+		$this->user_text = $user;
 	}
 
 	/**
 	 * @param $ip
 	 */
-	function setwiki_userIP( $ip ) {
-		$this->wiki_user_text = $ip;
+	function setUserIP( $ip ) {
+		$this->user_text = $ip;
 	}
 
 	/**
@@ -1181,8 +1181,8 @@ class WikiRevision {
 	/**
 	 * @return string
 	 */
-	function getwiki_user() {
-		return $this->wiki_user_text;
+	function getUser() {
+		return $this->user_text;
 	}
 
 	/**
@@ -1283,18 +1283,18 @@ class WikiRevision {
 	 * @return bool
 	 */
 	function importOldRevision() {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		# Sneak a single revision into place
-		$wiki_user = wiki_user::newFromName( $this->getwiki_user() );
-		if( $wiki_user ) {
-			$wiki_userId = intval( $wiki_user->getId() );
-			$wiki_userText = $wiki_user->getName();
-			$wiki_userObj = $wiki_user;
+		$user = User::newFromName( $this->getUser() );
+		if( $user ) {
+			$userId = intval( $user->getId() );
+			$userText = $user->getName();
+			$userObj = $user;
 		} else {
-			$wiki_userId = 0;
-			$wiki_userText = $this->getwiki_user();
-			$wiki_userObj = new wiki_user;
+			$userId = 0;
+			$userText = $this->getUser();
+			$userObj = new User;
 		}
 
 		// avoid memory leak...?
@@ -1304,17 +1304,17 @@ class WikiRevision {
 		$page = WikiPage::factory( $this->title );
 		if( !$page->exists() ) {
 			# must create the page...
-			$pageId = $page->insertOn( w );
+			$pageId = $page->insertOn( $dbw );
 			$created = true;
 			$oldcountable = null;
 		} else {
 			$pageId = $page->getId();
 			$created = false;
 
-			$prior = w->selectField( 'revision', '1',
+			$prior = $dbw->selectField( 'revision', '1',
 				array( 'rev_page' => $pageId,
-					'rev_timestamp' => w->timestamp( $this->timestamp ),
-					'rev_wiki_user_text' => $wiki_userText,
+					'rev_timestamp' => $dbw->timestamp( $this->timestamp ),
+					'rev_user_text' => $userText,
 					'rev_comment'   => $this->getComment() ),
 				__METHOD__
 			);
@@ -1333,17 +1333,17 @@ class WikiRevision {
 			'page'       => $pageId,
 			'text'       => $this->getText(),
 			'comment'    => $this->getComment(),
-			'wiki_user'       => $wiki_userId,
-			'wiki_user_text'  => $wiki_userText,
+			'user'       => $userId,
+			'user_text'  => $userText,
 			'timestamp'  => $this->timestamp,
 			'minor_edit' => $this->minor,
 			) );
-		$revision->insertOn( w );
-		$changed = $page->updateIfNewerOn( w, $revision );
+		$revision->insertOn( $dbw );
+		$changed = $page->updateIfNewerOn( $dbw, $revision );
 
 		if ( $changed !== false && !$this->mNoUpdates ) {
 			wfDebug( __METHOD__ . ": running updates\n" );
-			$page->doEditUpdates( $revision, $wiki_userObj, array( 'created' => $created, 'oldcountable' => $oldcountable ) );
+			$page->doEditUpdates( $revision, $userObj, array( 'created' => $created, 'oldcountable' => $oldcountable ) );
 		}
 
 		return true;
@@ -1353,7 +1353,7 @@ class WikiRevision {
 	 * @return mixed
 	 */
 	function importLogItem() {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		# @todo FIXME: This will not record autoblocks
 		if( !$this->getTitle() ) {
 			wfDebug( __METHOD__ . ": skipping invalid {$this->type}/{$this->action} log time, timestamp " .
@@ -1362,14 +1362,14 @@ class WikiRevision {
 		}
 		# Check if it exists already
 		// @todo FIXME: Use original log ID (better for backups)
-		$prior = w->selectField( 'logging', '1',
+		$prior = $dbw->selectField( 'logging', '1',
 			array( 'log_type' => $this->getType(),
 				'log_action'    => $this->getAction(),
-				'log_timestamp' => w->timestamp( $this->timestamp ),
+				'log_timestamp' => $dbw->timestamp( $this->timestamp ),
 				'log_namespace' => $this->getTitle()->getNamespace(),
 				'log_title'     => $this->getTitle()->getDBkey(),
 				'log_comment'   => $this->getComment(),
-				#'log_wiki_user_text' => $this->wiki_user_text,
+				#'log_user_text' => $this->user_text,
 				'log_params'    => $this->params ),
 			__METHOD__
 		);
@@ -1379,20 +1379,20 @@ class WikiRevision {
 				$this->timestamp . "\n" );
 			return;
 		}
-		$log_id = w->nextSequenceValue( 'logging_log_id_seq' );
+		$log_id = $dbw->nextSequenceValue( 'logging_log_id_seq' );
 		$data = array(
 			'log_id' => $log_id,
 			'log_type' => $this->type,
 			'log_action' => $this->action,
-			'log_timestamp' => w->timestamp( $this->timestamp ),
-			'log_wiki_user' => wiki_user::idFromName( $this->wiki_user_text ),
-			#'log_wiki_user_text' => $this->wiki_user_text,
+			'log_timestamp' => $dbw->timestamp( $this->timestamp ),
+			'log_user' => User::idFromName( $this->user_text ),
+			#'log_user_text' => $this->user_text,
 			'log_namespace' => $this->getTitle()->getNamespace(),
 			'log_title' => $this->getTitle()->getDBkey(),
 			'log_comment' => $this->getComment(),
 			'log_params' => $this->params
 		);
-		w->insert( 'logging', $data, __METHOD__ );
+		$dbw->insert( 'logging', $data, __METHOD__ );
 	}
 
 	/**
@@ -1441,15 +1441,15 @@ class WikiRevision {
 			return false;
 		}
 
-		$wiki_user = wiki_user::newFromName( $this->wiki_user_text );
+		$user = User::newFromName( $this->user_text );
 
 		# Do the actual upload
 		if ( $archiveName ) {
 			$status = $file->uploadOld( $source, $archiveName,
-				$this->getTimestamp(), $this->getComment(), $wiki_user, $flags );
+				$this->getTimestamp(), $this->getComment(), $user, $flags );
 		} else {
 			$status = $file->upload( $source, $this->getComment(), $this->getComment(),
-				$flags, false, $this->getTimestamp(), $wiki_user );
+				$flags, false, $this->getTimestamp(), $user );
 		}
 
 		if ( $status->isGood() ) {
@@ -1601,7 +1601,7 @@ class ImportStreamSource {
 	static function newFromURL( $url, $method = 'GET' ) {
 		wfDebug( __METHOD__ . ": opening $url\n" );
 		# Use the standard HTTP fetch function; it times out
-		# quicker and sorts out wiki_user-agent problems which might
+		# quicker and sorts out user-agent problems which might
 		# otherwise prevent importing from large sites, such
 		# as the Wikimedia cluster, etc.
 		$data = Http::request( $method, $url, array( 'followRedirects' => true ) );

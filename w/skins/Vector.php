@@ -61,12 +61,12 @@ class SkinVector extends SkinTemplate {
 	}
 
 	/**
-	 * Load skin and wiki_user CSS files in the correct order
+	 * Load skin and user CSS files in the correct order
 	 * fixes bug 22916
 	 * @param $out OutputPage object
 	 */
-	function setupSkinwiki_userCss( OutputPage $out ){
-		parent::setupSkinwiki_userCss( $out );
+	function setupSkinUserCss( OutputPage $out ){
+		parent::setupSkinUserCss( $out );
 		$out->addModuleStyles( 'skins.vector' );
 	}
 
@@ -98,12 +98,12 @@ class VectorTemplate extends BaseTemplate {
 	 */
 	public function execute() {
 		global $wgVectorUseIconWatch;
-		
+
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
 
 		if ( $wgVectorUseIconWatch ) {
-			$mode = $this->getSkin()->getwiki_user()->isWatched( $this->getSkin()->getRelevantTitle() ) ? 'unwatch' : 'watch';
+			$mode = $this->getSkin()->getUser()->isWatched( $this->getSkin()->getRelevantTitle() ) ? 'unwatch' : 'watch';
 			if ( isset( $nav['actions'][$mode] ) ) {
 				$nav['views'][$mode] = $nav['actions'][$mode];
 				$nav['views'][$mode]['class'] = rtrim( 'icon ' . $nav['views'][$mode]['class'], ' ' );
@@ -153,18 +153,12 @@ class VectorTemplate extends BaseTemplate {
 		// Output HTML Page
 		$this->html( 'headelement' );
 ?>
-                <div class="wrap">
-		<?php
-			$extra = "";
-			include("../header.php");
-		?>
-		<div class="wrap2">
 		<div id="mw-page-base" class="noprint"></div>
 		<div id="mw-head-base" class="noprint"></div>
 		<!-- content -->
 		<div id="content" class="mw-body">
 			<a id="top"></a>
-			<div id="mw-js-message" style="display:none;"<?php $this->html( 'wiki_userlangattributes' ) ?>></div>
+			<div id="mw-js-message" style="display:none;"<?php $this->html( 'userlangattributes' ) ?>></div>
 			<?php if ( $this->data['sitenotice'] ): ?>
 			<!-- sitenotice -->
 			<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
@@ -174,14 +168,14 @@ class VectorTemplate extends BaseTemplate {
 			<h1 id="firstHeading" class="firstHeading"><span dir="auto"><?php $this->html( 'title' ) ?></span></h1>
 			<!-- /firstHeading -->
 			<!-- bodyContent -->
-		<div id="bodyContent">
-			<?php if ( $this->data['isarticle'] ): ?>
+			<div id="bodyContent">
+				<?php if ( $this->data['isarticle'] ): ?>
 				<!-- tagline -->
 				<div id="siteSub"><?php $this->msg( 'tagline' ) ?></div>
 				<!-- /tagline -->
 				<?php endif; ?>
 				<!-- subtitle -->
-				<div id="contentSub"<?php $this->html( 'wiki_userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
+				<div id="contentSub"<?php $this->html( 'userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
 				<!-- /subtitle -->
 				<?php if ( $this->data['undelete'] ): ?>
 				<!-- undelete -->
@@ -190,7 +184,7 @@ class VectorTemplate extends BaseTemplate {
 				<?php endif; ?>
 				<?php if( $this->data['newtalk'] ): ?>
 				<!-- newtalk -->
-				<div class="wiki_usermessage"><?php $this->html( 'newtalk' )  ?></div>
+				<div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
 				<!-- /newtalk -->
 				<?php endif; ?>
 				<?php if ( $this->data['showjumplinks'] ): ?>
@@ -250,7 +244,7 @@ class VectorTemplate extends BaseTemplate {
 			</div>
 		<!-- /panel -->
 		<!-- footer -->
-		<div id="footer"<?php $this->html( 'wiki_userlangattributes' ) ?>>
+		<div id="footer"<?php $this->html( 'userlangattributes' ) ?>>
 			<?php foreach( $this->getFooterLinks() as $category => $links ): ?>
 				<ul id="footer-<?php echo $category ?>">
 					<?php foreach( $links as $link ): ?>
@@ -275,7 +269,7 @@ class VectorTemplate extends BaseTemplate {
 		</div>
 		<!-- /footer -->
 		<?php $this->printTrail(); ?>
-	</div></div>
+
 	</body>
 </html>
 <?php
@@ -334,7 +328,7 @@ class VectorTemplate extends BaseTemplate {
 		}
 		?>
 <div class="portal" id='<?php echo Sanitizer::escapeId( "p-$name" ) ?>'<?php echo Linker::tooltip( 'p-' . $name ) ?>>
-	<h5<?php $this->html( 'wiki_userlangattributes' ) ?>><?php $msgObj = wfMessage( $msg ); echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg ); ?></h5>
+	<h5<?php $this->html( 'userlangattributes' ) ?>><?php $msgObj = wfMessage( $msg ); echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg ); ?></h5>
 	<div class="body">
 <?php
 		if ( is_array( $content ) ): ?>
@@ -385,7 +379,7 @@ class VectorTemplate extends BaseTemplate {
 ?>
 <div id="p-namespaces" class="vectorTabs<?php if ( count( $this->data['namespace_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><?php $this->msg( 'namespaces' ) ?></h5>
-	<ul<?php $this->html( 'wiki_userlangattributes' ) ?>>
+	<ul<?php $this->html( 'userlangattributes' ) ?>>
 		<?php foreach ( $this->data['namespace_urls'] as $link ): ?>
 			<li <?php echo $link['attributes'] ?>><span><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></span></li>
 		<?php endforeach; ?>
@@ -418,7 +412,7 @@ class VectorTemplate extends BaseTemplate {
 ?>
 <div id="p-views" class="vectorTabs<?php if ( count( $this->data['view_urls'] ) == 0 ) { echo ' emptyPortlet'; } ?>">
 	<h5><?php $this->msg('views') ?></h5>
-	<ul<?php $this->html('wiki_userlangattributes') ?>>
+	<ul<?php $this->html('userlangattributes') ?>>
 		<?php foreach ( $this->data['view_urls'] as $link ): ?>
 			<li<?php echo $link['attributes'] ?>><span><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php
 				// $link['text'] can be undefined - bug 27764
@@ -436,7 +430,7 @@ class VectorTemplate extends BaseTemplate {
 <div id="p-cactions" class="vectorMenu<?php if ( count( $this->data['action_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><span><?php $this->msg( 'actions' ) ?></span><a href="#"></a></h5>
 	<div class="menu">
-		<ul<?php $this->html( 'wiki_userlangattributes' ) ?>>
+		<ul<?php $this->html( 'userlangattributes' ) ?>>
 			<?php foreach ( $this->data['action_urls'] as $link ): ?>
 				<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></li>
 			<?php endforeach; ?>
@@ -449,7 +443,7 @@ class VectorTemplate extends BaseTemplate {
 ?>
 <div id="p-personal" class="<?php if ( count( $this->data['personal_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><?php $this->msg( 'personaltools' ) ?></h5>
-	<ul<?php $this->html( 'wiki_userlangattributes' ) ?>>
+	<ul<?php $this->html( 'userlangattributes' ) ?>>
 <?php			foreach( $this->getPersonalTools() as $key => $item ) { ?>
 		<?php echo $this->makeListItem( $key, $item ); ?>
 
@@ -461,9 +455,9 @@ class VectorTemplate extends BaseTemplate {
 				case 'SEARCH':
 ?>
 <div id="p-search">
-	<h5<?php $this->html( 'wiki_userlangattributes' ) ?>><label for="searchInput"><?php $this->msg( 'search' ) ?></label></h5>
+	<h5<?php $this->html( 'userlangattributes' ) ?>><label for="searchInput"><?php $this->msg( 'search' ) ?></label></h5>
 	<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-		<?php if ( $wgVectorUseSimpleSearch && $this->getSkin()->getwiki_user()->getOption( 'vector-simplesearch' ) ): ?>
+		<?php if ( $wgVectorUseSimpleSearch && $this->getSkin()->getUser()->getOption( 'vector-simplesearch' ) ): ?>
 		<div id="simpleSearch">
 			<?php if ( $this->data['rtl'] ): ?>
 			<?php echo $this->makeSearchButton( 'image', array( 'id' => 'searchButton', 'src' => $this->getSkin()->getSkinStylePath( 'images/search-rtl.png' ), 'width' => '12', 'height' => '13' ) ); ?>

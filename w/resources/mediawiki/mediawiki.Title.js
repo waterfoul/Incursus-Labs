@@ -207,7 +207,7 @@ var
 		 */
 		pages: {},
 		/**
-		 * @example Declare existing titles: Title.exist.set(['wiki_user:John_Doe', ...]);
+		 * @example Declare existing titles: Title.exist.set(['User:John_Doe', ...]);
 		 * @example Declare titles nonexistent: Title.exist.set(['File:Foo_bar.jpg', ...], false);
 		 * @param titles {String|Array} Title(s) in strict prefixedDb title form.
 		 * @param state {Boolean} (optional) State of the given titles. Defaults to true.

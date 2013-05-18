@@ -45,7 +45,7 @@ class SpecialJavaScriptTest extends SpecialPage {
 		$out = $this->getOutput();
 
 		$this->setHeaders();
-		$out->disallowwiki_userJs();
+		$out->disallowUserJs();
 
 		// Abort early if we're disabled
 		if ( $wgEnableJavaScriptTest !== true ) {
@@ -141,14 +141,14 @@ class SpecialJavaScriptTest extends SpecialPage {
 			->params( $wgJavaScriptTestConfig['qunit']['documentation'] )
 			->parseAsBlock();
 		$header = $this->msg( 'javascripttest-qunit-heading' )->escaped();
-		$wiki_userDir = $this->getLanguage()->getDir();
+		$userDir = $this->getLanguage()->getDir();
 
 		$baseHtml = <<<HTML
 <div class="mw-content-ltr">
-<div id="qunit-header"><span dir="$wiki_userDir">$header</span></div>
+<div id="qunit-header"><span dir="$userDir">$header</span></div>
 <div id="qunit-banner"></div>
 <div id="qunit-testrunner-toolbar"></div>
-<div id="qunit-wiki_userAgent"></div>
+<div id="qunit-userAgent"></div>
 <ol id="qunit-tests"></ol>
 <div id="qunit-fixture">test markup, will be hidden</div>
 </div>

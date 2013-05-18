@@ -29,8 +29,8 @@
  */
 class SpecialStatistics extends SpecialPage {
 
-	private $views, $edits, $good, $images, $total, $wiki_users,
-			$activewiki_users = 0;
+	private $views, $edits, $good, $images, $total, $users,
+			$activeUsers = 0;
 
 	public function __construct() {
 		parent::__construct( 'Statistics' );
@@ -47,8 +47,8 @@ class SpecialStatistics extends SpecialPage {
 		$this->good = SiteStats::articles();
 		$this->images = SiteStats::images();
 		$this->total = SiteStats::pages();
-		$this->wiki_users = SiteStats::wiki_users();
-		$this->activewiki_users = SiteStats::activewiki_users();
+		$this->users = SiteStats::users();
+		$this->activeUsers = SiteStats::activeUsers();
 		$this->hook = '';
 
 		# Staticic - views
@@ -57,13 +57,13 @@ class SpecialStatistics extends SpecialPage {
 			$viewsStats = $this->getViewsStats();
 		}
 
-		# Set active wiki_user count
+		# Set active user count
 		if( !$wgMiserMode ) {
-			$key = wfMemcKey( 'sitestats', 'activewiki_users-updated' );
+			$key = wfMemcKey( 'sitestats', 'activeusers-updated' );
 			// Re-calculate the count if the last tally is old...
 			if( !$wgMemc->get($key) ) {
-				w = wfGetDB( DB_MASTER );
-				SiteStatsUpdate::cacheUpdate( w );
+				$dbw = wfGetDB( DB_MASTER );
+				SiteStatsUpdate::cacheUpdate( $dbw );
 				$wgMemc->set( $key, '1', 24*3600 ); // don't update for 1 day
 			}
 		}
@@ -76,10 +76,10 @@ class SpecialStatistics extends SpecialPage {
 		# Statistic - edits
 		$text .= $this->getEditStats();
 
-		# Statistic - wiki_users
-		$text .= $this->getwiki_userStats();
+		# Statistic - users
+		$text .= $this->getUserStats();
 
-		# Statistic - wiki_usergroups
+		# Statistic - usergroups
 		$text .= $this->getGroupStats();
 		$text .= $viewsStats;
 
@@ -163,23 +163,23 @@ class SpecialStatistics extends SpecialPage {
 						array( 'class' => 'mw-statistics-edits-average' ) );
 	}
 
-	private function getwiki_userStats() {
-		global $wgActivewiki_userDays;
+	private function getUserStats() {
+		global $wgActiveUserDays;
 		return Xml::openElement( 'tr' ) .
-			Xml::tags( 'th', array( 'colspan' => '2' ), $this->msg( 'statistics-header-wiki_users' )->parse() ) .
+			Xml::tags( 'th', array( 'colspan' => '2' ), $this->msg( 'statistics-header-users' )->parse() ) .
 			Xml::closeElement( 'tr' ) .
-				$this->formatRow( $this->msg( 'statistics-wiki_users' )->parse(),
-						$this->getLanguage()->formatNum( $this->wiki_users ),
-						array( 'class' => 'mw-statistics-wiki_users' ) ) .
-				$this->formatRow( $this->msg( 'statistics-wiki_users-active' )->parse() . ' ' .
+				$this->formatRow( $this->msg( 'statistics-users' )->parse(),
+						$this->getLanguage()->formatNum( $this->users ),
+						array( 'class' => 'mw-statistics-users' ) ) .
+				$this->formatRow( $this->msg( 'statistics-users-active' )->parse() . ' ' .
 							Linker::linkKnown(
-								SpecialPage::getTitleFor( 'Activewiki_users' ),
+								SpecialPage::getTitleFor( 'Activeusers' ),
 								$this->msg( 'listgrouprights-members' )->escaped()
 							),
-						$this->getLanguage()->formatNum( $this->activewiki_users ),
-						array( 'class' => 'mw-statistics-wiki_users-active' ),
-						'statistics-wiki_users-active-desc',
-						$this->getLanguage()->formatNum( $wgActivewiki_userDays ) );
+						$this->getLanguage()->formatNum( $this->activeUsers ),
+						array( 'class' => 'mw-statistics-users-active' ),
+						'statistics-users-active-desc',
+						$this->getLanguage()->formatNum( $wgActiveUserDays ) );
 	}
 
 	private function getGroupStats() {
@@ -209,19 +209,19 @@ class SpecialStatistics extends SpecialPage {
 				htmlspecialchars( $groupnameLocalized )
 			);
 			$grouplink = Linker::linkKnown(
-				SpecialPage::getTitleFor( 'Listwiki_users' ),
+				SpecialPage::getTitleFor( 'Listusers' ),
 				$this->msg( 'listgrouprights-members' )->escaped(),
 				array(),
 				array( 'group' => $group )
 			);
-			# Add a class when a wiki_usergroup contains no members to allow hiding these rows
+			# Add a class when a usergroup contains no members to allow hiding these rows
 			$classZero = '';
-			$countwiki_users = SiteStats::numberingroup( $groupname );
-			if( $countwiki_users == 0 ) {
+			$countUsers = SiteStats::numberingroup( $groupname );
+			if( $countUsers == 0 ) {
 				$classZero = ' statistics-group-zero';
 			}
 			$text .= $this->formatRow( $grouppage . ' ' . $grouplink,
-				$this->getLanguage()->formatNum( $countwiki_users ),
+				$this->getLanguage()->formatNum( $countUsers ),
 				array( 'class' => 'statistics-group-' . Sanitizer::escapeClass( $group ) . $classZero )  );
 		}
 		return $text;
@@ -242,8 +242,8 @@ class SpecialStatistics extends SpecialPage {
 
 	private function getMostViewedPages() {
 		$text = '';
-		r = wfGetDB( DB_SLAVE );
-		$res = r->select(
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
 				'page',
 				array(
 					'page_namespace',

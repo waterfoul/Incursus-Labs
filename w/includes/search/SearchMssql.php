@@ -29,10 +29,10 @@ class SearchMssql extends SearchEngine {
 
 	/**
 	 * Creates an instance of this class
-	 * @param  DatabaseMssql: database object
+	 * @param $db DatabaseMssql: database object
 	 */
-	function __construct(  ) {
-		parent::__construct(  );
+	function __construct( $db ) {
+		parent::__construct( $db );
 	}
 
 	/**

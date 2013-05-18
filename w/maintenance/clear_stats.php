@@ -37,21 +37,21 @@ class clear_stats extends Maintenance {
 
 	public function execute() {
 		global $wgLocalDatabases, $wgMemc;
-		foreach ( $wgLocalDatabases as  ) {
-			$wgMemc->delete( ":stats:request_with_session" );
-			$wgMemc->delete( ":stats:request_without_session" );
-			$wgMemc->delete( ":stats:pcache_hit" );
-			$wgMemc->delete( ":stats:pcache_miss_expired" );
-			$wgMemc->delete( ":stats:pcache_miss_absent" );
-			$wgMemc->delete( ":stats:pcache_miss_stub" );
-			$wgMemc->delete( ":stats:image_cache_hit" );
-			$wgMemc->delete( ":stats:image_cache_miss" );
-			$wgMemc->delete( ":stats:image_cache_update" );
-			$wgMemc->delete( ":stats:diff_cache_hit" );
-			$wgMemc->delete( ":stats:diff_cache_miss" );
-			$wgMemc->delete( ":stats:diff_uncacheable" );
-			$wgMemc->delete( ":stats:job-insert" );
-			$wgMemc->delete( ":stats:job-pop" );
+		foreach ( $wgLocalDatabases as $db ) {
+			$wgMemc->delete( "$db:stats:request_with_session" );
+			$wgMemc->delete( "$db:stats:request_without_session" );
+			$wgMemc->delete( "$db:stats:pcache_hit" );
+			$wgMemc->delete( "$db:stats:pcache_miss_expired" );
+			$wgMemc->delete( "$db:stats:pcache_miss_absent" );
+			$wgMemc->delete( "$db:stats:pcache_miss_stub" );
+			$wgMemc->delete( "$db:stats:image_cache_hit" );
+			$wgMemc->delete( "$db:stats:image_cache_miss" );
+			$wgMemc->delete( "$db:stats:image_cache_update" );
+			$wgMemc->delete( "$db:stats:diff_cache_hit" );
+			$wgMemc->delete( "$db:stats:diff_cache_miss" );
+			$wgMemc->delete( "$db:stats:diff_uncacheable" );
+			$wgMemc->delete( "$db:stats:job-insert" );
+			$wgMemc->delete( "$db:stats:job-pop" );
 		}
 	}
 }

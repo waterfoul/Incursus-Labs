@@ -22,7 +22,7 @@
  */
 
 /**
- * Special page allowing wiki_users with the appropriate permissions to
+ * Special page allowing users with the appropriate permissions to
  * merge article histories, with some restrictions
  *
  * @ingroup SpecialPage
@@ -57,7 +57,7 @@ class SpecialMergeHistory extends SpecialPage {
 		}
 		$this->mComment = $request->getText( 'wpComment' );
 
-		$this->mMerge = $request->wasPosted() && $this->getwiki_user()->matchEditToken( $request->getVal( 'wpEditToken' ) );
+		$this->mMerge = $request->wasPosted() && $this->getUser()->matchEditToken( $request->getVal( 'wpEditToken' ) );
 		// target page
 		if( $this->mSubmitted ) {
 			$this->mTargetObj = Title::newFromURL( $this->mTarget );
@@ -184,7 +184,7 @@ class SpecialMergeHistory extends SpecialPage {
 		$out->addHTML( $top );
 
 		if( $haveRevisions ) {
-			# Format the wiki_user-visible controls (comment field, submission button)
+			# Format the user-visible controls (comment field, submission button)
 			# in a nice little table
 			$table =
 				Xml::openElement( 'fieldset' ) .
@@ -237,7 +237,7 @@ class SpecialMergeHistory extends SpecialPage {
 		$misc .= Html::hidden( 'destID', $this->mDestObj->getArticleID() );
 		$misc .= Html::hidden( 'target', $this->mTarget );
 		$misc .= Html::hidden( 'dest', $this->mDest );
-		$misc .= Html::hidden( 'wpEditToken', $this->getwiki_user()->getEditToken() );
+		$misc .= Html::hidden( 'wpEditToken', $this->getUser()->getEditToken() );
 		$misc .= Xml::closeElement( 'form' );
 		$out->addHTML( $misc );
 
@@ -253,11 +253,11 @@ class SpecialMergeHistory extends SpecialPage {
 		$ts = wfTimestamp( TS_MW, $row->rev_timestamp );
 		$checkBox = Xml::radio( 'mergepoint', $ts, false );
 
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 
 		$pageLink = Linker::linkKnown(
 			$rev->getTitle(),
-			htmlspecialchars( $this->getLanguage()->wiki_userTimeAndDate( $ts, $wiki_user ) ),
+			htmlspecialchars( $this->getLanguage()->userTimeAndDate( $ts, $user ) ),
 			array(),
 			array( 'oldid' => $rev->getId() )
 		);
@@ -266,7 +266,7 @@ class SpecialMergeHistory extends SpecialPage {
 		}
 
 		# Last link
-		if( !$rev->wiki_userCan( Revision::DELETED_TEXT, $wiki_user ) ) {
+		if( !$rev->userCan( Revision::DELETED_TEXT, $user ) ) {
 			$last = $this->message['last'];
 		} elseif( isset( $this->prevId[$row->rev_id] ) ) {
 			$last = Linker::linkKnown(
@@ -280,7 +280,7 @@ class SpecialMergeHistory extends SpecialPage {
 			);
 		}
 
-		$wiki_userLink = Linker::revwiki_userTools( $rev );
+		$userLink = Linker::revUserTools( $rev );
 
 		$size = $row->rev_len;
 		if( !is_null( $size ) ) {
@@ -289,7 +289,7 @@ class SpecialMergeHistory extends SpecialPage {
 		$comment = Linker::revComment( $rev );
 
 		return Html::rawElement( 'li', array(),
-			$this->msg( 'mergehistory-revisionrow' )->rawParams( $checkBox, $last, $pageLink, $wiki_userLink, $stxt, $comment )->escaped() );
+			$this->msg( 'mergehistory-revisionrow' )->rawParams( $checkBox, $last, $pageLink, $userLink, $stxt, $comment )->escaped() );
 	}
 
 	function merge() {
@@ -306,11 +306,11 @@ class SpecialMergeHistory extends SpecialPage {
 		}
 		# Verify that this timestamp is valid
 		# Must be older than the destination page
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		# Get timestamp into DB format
-		$this->mTimestamp = $this->mTimestamp ? w->timestamp( $this->mTimestamp ) : '';
+		$this->mTimestamp = $this->mTimestamp ? $dbw->timestamp( $this->mTimestamp ) : '';
 		# Max timestamp should be min of destination page
-		$maxtimestamp = w->selectField(
+		$maxtimestamp = $dbw->selectField(
 			'revision',
 			'MIN(rev_timestamp)',
 			array( 'rev_page' => $this->mDestID ),
@@ -322,7 +322,7 @@ class SpecialMergeHistory extends SpecialPage {
 			return false;
 		}
 		# Get the latest timestamp of the source
-		$lasttimestamp = w->selectField(
+		$lasttimestamp = $dbw->selectField(
 			array( 'page', 'revision' ),
 			'rev_timestamp',
 			array( 'page_id' => $this->mTargetID, 'page_latest = rev_id' ),
@@ -342,16 +342,16 @@ class SpecialMergeHistory extends SpecialPage {
 			$timestampLimit = wfTimestamp( TS_MW, $lasttimestamp );
 		}
 		# Do the moving...
-		w->update(
+		$dbw->update(
 			'revision',
 			array( 'rev_page' => $this->mDestID ),
 			array( 'rev_page' => $this->mTargetID, $timewhere ),
 			__METHOD__
 		);
 
-		$count = w->affectedRows();
+		$count = $dbw->affectedRows();
 		# Make the source page a redirect if no revisions are left
-		$haveRevisions = w->selectField(
+		$haveRevisions = $dbw->selectField(
 			'revision',
 			'rev_timestamp',
 			array( 'rev_page' => $this->mTargetID  ),
@@ -380,13 +380,13 @@ class SpecialMergeHistory extends SpecialPage {
 				'page'    => $this->mTargetID,
 				'comment' => $comment,
 				'text'    => $redirectText ) );
-			$redirectRevision->insertOn( w );
-			$redirectPage->updateRevisionOn( w, $redirectRevision );
+			$redirectRevision->insertOn( $dbw );
+			$redirectPage->updateRevisionOn( $dbw, $redirectRevision );
 
 			# Now, we record the link from the redirect to the new title.
 			# It should have no other outgoing links...
-			w->delete( 'pagelinks', array( 'pl_from' => $this->mDestID ), __METHOD__ );
-			w->insert( 'pagelinks',
+			$dbw->delete( 'pagelinks', array( 'pl_from' => $this->mDestID ), __METHOD__ );
+			$dbw->insert( 'pagelinks',
 				array(
 					'pl_from'      => $this->mDestID,
 					'pl_namespace' => $destTitle->getNamespace(),
@@ -427,8 +427,8 @@ class MergeHistoryPager extends ReverseChronologicalPager {
 		$this->title = $source;
 		$this->articleID = $source->getArticleID();
 
-		r = wfGetDB( DB_SLAVE );
-		$maxtimestamp = r->selectField(
+		$dbr = wfGetDB( DB_SLAVE );
+		$maxtimestamp = $dbr->selectField(
 			'revision',
 			'MIN(rev_timestamp)',
 			array( 'rev_page' => $dest->getArticleID() ),
@@ -447,8 +447,8 @@ class MergeHistoryPager extends ReverseChronologicalPager {
 		# Give some pointers to make (last) links
 		$this->mForm->prevId = array();
 		foreach ( $this->mResult as $row ) {
-			$batch->addObj( Title::makeTitleSafe( NS_USER, $row->wiki_user_name ) );
-			$batch->addObj( Title::makeTitleSafe( NS_USER_TALK, $row->wiki_user_name ) );
+			$batch->addObj( Title::makeTitleSafe( NS_USER, $row->user_name ) );
+			$batch->addObj( Title::makeTitleSafe( NS_USER_TALK, $row->user_name ) );
 
 			$rev_id = isset( $rev_id ) ? $rev_id : $row->rev_id;
 			if( $rev_id > $row->rev_id ) {
@@ -476,12 +476,12 @@ class MergeHistoryPager extends ReverseChronologicalPager {
 		$conds['rev_page'] = $this->articleID;
 		$conds[] = "rev_timestamp < {$this->maxTimestamp}";
 		return array(
-			'tables' => array( 'revision', 'page', 'wiki_user' ),
-			'fields' => array_merge( Revision::selectFields(), Revision::selectwiki_userFields() ),
+			'tables' => array( 'revision', 'page', 'user' ),
+			'fields' => array_merge( Revision::selectFields(), Revision::selectUserFields() ),
 			'conds'  => $conds,
 			'join_conds' => array(
 				'page' => Revision::pageJoinCond(),
-				'wiki_user' => Revision::wiki_userJoinCond() )
+				'user' => Revision::userJoinCond() )
 		);
 	}
 

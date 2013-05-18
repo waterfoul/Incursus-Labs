@@ -1,6 +1,6 @@
 <?php
 /**
- * Implements Special:wiki_userLogin
+ * Implements Special:UserLogin
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
  */
 
 /**
- * Implements Special:wiki_userLogin
+ * Implements Special:UserLogin
  *
  * @ingroup SpecialPage
  */
@@ -43,7 +43,7 @@ class LoginForm extends SpecialPage {
 	const NEED_TOKEN = 12;
 	const WRONG_TOKEN = 13;
 
-	var $mwiki_username, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
+	var $mUsername, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail;
 	var $mLoginattempt, $mRemember, $mEmail, $mDomain, $mLanguage;
 	var $mSkipCookieCheck, $mReturnToQuery, $mToken, $mStickHTTPS;
@@ -52,9 +52,9 @@ class LoginForm extends SpecialPage {
 	private $mLoaded = false;
 
 	/**
-	 * @var Externalwiki_user
+	 * @var ExternalUser
 	 */
-	private $mExtwiki_user = null;
+	private $mExtUser = null;
 
 	/**
 	 * @ var WebRequest
@@ -65,7 +65,7 @@ class LoginForm extends SpecialPage {
 	 * @param WebRequest $request
 	 */
 	public function __construct( $request = null ) {
-		parent::__construct( 'wiki_userlogin' );
+		parent::__construct( 'Userlogin' );
 
 		$this->mOverrideRequest = $request;
 	}
@@ -88,7 +88,7 @@ class LoginForm extends SpecialPage {
 		}
 
 		$this->mType = $request->getText( 'type' );
-		$this->mwiki_username = $request->getText( 'wpName' );
+		$this->mUsername = $request->getText( 'wpName' );
 		$this->mPassword = $request->getText( 'wpPassword' );
 		$this->mRetype = $request->getText( 'wpRetype' );
 		$this->mDomain = $request->getText( 'wpDomain' );
@@ -129,7 +129,7 @@ class LoginForm extends SpecialPage {
 		#    but goto Wiki start page (Main_Page) instead ( bug 33997 )
 		$returnToTitle = Title::newFromText( $this->mReturnTo );
 		if( is_object( $returnToTitle ) && (
-			$returnToTitle->isSpecial( 'wiki_userlogout' )
+			$returnToTitle->isSpecial( 'Userlogout' )
 			|| $returnToTitle->isSpecial( 'PasswordReset' ) ) ) {
 			$this->mReturnTo = '';
 			$this->mReturnToQuery = '';
@@ -137,8 +137,8 @@ class LoginForm extends SpecialPage {
 	}
 
 	function getDescription() {
-		return $this->msg( $this->getwiki_user()->isAllowed( 'createaccount' ) ?
-			'wiki_userlogin' : 'wiki_userloginnocreate' )->text();
+		return $this->msg( $this->getUser()->isAllowed( 'createaccount' ) ?
+			'userlogin' : 'userloginnocreate' )->text();
 	}
 
 	public function execute( $par ) {
@@ -149,7 +149,7 @@ class LoginForm extends SpecialPage {
 		$this->load();
 		$this->setHeaders();
 
-		if ( $par == 'signup' ) { # Check for [[Special:wiki_userlogin/signup]]
+		if ( $par == 'signup' ) { # Check for [[Special:Userlogin/signup]]
 			$this->mType = 'signup';
 		}
 
@@ -192,7 +192,7 @@ class LoginForm extends SpecialPage {
 		$result = $this->mailPasswordInternal( $u, false, 'createaccount-title', 'createaccount-text' );
 
 		wfRunHooks( 'AddNewAccount', array( $u, true ) );
-		$u->addNewwiki_userLogEntry( true, $this->mReason );
+		$u->addNewUserLogEntry( true, $this->mReason );
 
 		$out = $this->getOutput();
 		$out->setPageTitle( $this->msg( 'accmailtitle' ) );
@@ -210,7 +210,7 @@ class LoginForm extends SpecialPage {
 	 * @return bool
 	 */
 	function addNewAccount() {
-		global $wgwiki_user, $wgEmailAuthentication, $wgLoginLanguageSelector;
+		global $wgUser, $wgEmailAuthentication, $wgLoginLanguageSelector;
 
 		# Create the account and abort if there's a problem doing so
 		$u = $this->addNewAccountInternal();
@@ -219,7 +219,7 @@ class LoginForm extends SpecialPage {
 		}
 
 		# If we showed up language selection links, and one was in use, be
-		# smart (and sensible) and save that language as the wiki_user's preference
+		# smart (and sensible) and save that language as the user's preference
 		if( $wgLoginLanguageSelector && $this->mLanguage ) {
 			$u->setOption( 'language', $this->mLanguage );
 		}
@@ -242,15 +242,15 @@ class LoginForm extends SpecialPage {
 		# If not logged in, assume the new account as the current one and set
 		# session cookies then show a "welcome" message or a "need cookies"
 		# message as needed
-		if( $this->getwiki_user()->isAnon() ) {
+		if( $this->getUser()->isAnon() ) {
 			$u->setCookies();
-			$wgwiki_user = $u;
+			$wgUser = $u;
 			// This should set it for OutputPage and the Skin
 			// which is needed or the personal links will be
 			// wrong.
-			$this->getContext()->setwiki_user( $u );
+			$this->getContext()->setUser( $u );
 			wfRunHooks( 'AddNewAccount', array( $u, false ) );
-			$u->addNewwiki_userLogEntry();
+			$u->addNewUserLogEntry();
 			if( $this->hasSessionCookie() ) {
 				$this->successfulCreation();
 			} else {
@@ -262,33 +262,33 @@ class LoginForm extends SpecialPage {
 			$out->addWikiMsg( 'accountcreatedtext', $u->getName() );
 			$out->addReturnTo( $this->getTitle() );
 			wfRunHooks( 'AddNewAccount', array( $u, false ) );
-			$u->addNewwiki_userLogEntry( false, $this->mReason );
+			$u->addNewUserLogEntry( false, $this->mReason );
 		}
 		return true;
 	}
 
 	/**
 	 * @private
-	 * @return bool|wiki_user
+	 * @return bool|User
 	 */
 	function addNewAccountInternal() {
 		global $wgAuth, $wgMemc, $wgAccountCreationThrottle,
 			$wgMinimalPasswordLength, $wgEmailConfirmToEdit;
 
-		// If the wiki_user passes an invalid domain, something is fishy
+		// If the user passes an invalid domain, something is fishy
 		if( !$wgAuth->validDomain( $this->mDomain ) ) {
 			$this->mainLoginForm( $this->msg( 'wrongpassword' )->text() );
 			return false;
 		}
 
-		// If we are not allowing wiki_users to login locally, we should be checking
-		// to see if the wiki_user is actually able to authenticate to the authenti-
+		// If we are not allowing users to login locally, we should be checking
+		// to see if the user is actually able to authenticate to the authenti-
 		// cation server before they create an account (otherwise, they can
-		// create a local account and login as any domain wiki_user). We only need
+		// create a local account and login as any domain user). We only need
 		// to check this for domains that aren't local.
 		if( 'local' != $this->mDomain && $this->mDomain != '' ) {
-			if( !$wgAuth->canCreateAccounts() && ( !$wgAuth->wiki_userExists( $this->mwiki_username )
-				|| !$wgAuth->authenticate( $this->mwiki_username, $this->mPassword ) ) ) {
+			if( !$wgAuth->canCreateAccounts() && ( !$wgAuth->userExists( $this->mUsername )
+				|| !$wgAuth->authenticate( $this->mUsername, $this->mPassword ) ) ) {
 				$this->mainLoginForm( $this->msg( 'wrongpassword' )->text() );
 				return false;
 			}
@@ -305,7 +305,7 @@ class LoginForm extends SpecialPage {
 			return false;
 		}
 
-		# The wiki_user didn't pass a createaccount token
+		# The user didn't pass a createaccount token
 		if ( !$this->mToken ) {
 			$this->mainLoginForm( $this->msg( 'sessionfailure' )->text() );
 			return false;
@@ -318,36 +318,36 @@ class LoginForm extends SpecialPage {
 		}
 
 		# Check permissions
-		$currentwiki_user = $this->getwiki_user();
-		if ( !$currentwiki_user->isAllowed( 'createaccount' ) ) {
+		$currentUser = $this->getUser();
+		if ( !$currentUser->isAllowed( 'createaccount' ) ) {
 			throw new PermissionsError( 'createaccount' );
-		} elseif ( $currentwiki_user->isBlockedFromCreateAccount() ) {
-			$this->wiki_userBlockedMessage( $currentwiki_user->isBlockedFromCreateAccount() );
+		} elseif ( $currentUser->isBlockedFromCreateAccount() ) {
+			$this->userBlockedMessage( $currentUser->isBlockedFromCreateAccount() );
 			return false;
 		}
 
 		# Include checks that will include GlobalBlocking (Bug 38333)
-		$permErrors = $this->getTitle()->getwiki_userPermissionsErrors( 'createaccount', $currentwiki_user, true );
+		$permErrors = $this->getTitle()->getUserPermissionsErrors( 'createaccount', $currentUser, true );
 		if ( count( $permErrors ) ) {
 				throw new PermissionsError( 'createaccount', $permErrors );
 		}
 
 		$ip = $this->getRequest()->getIP();
-		if ( $currentwiki_user->isDnsBlacklisted( $ip, true /* check $wgProxyWhitelist */ ) ) {
+		if ( $currentUser->isDnsBlacklisted( $ip, true /* check $wgProxyWhitelist */ ) ) {
 			$this->mainLoginForm( $this->msg( 'sorbs_create_account_reason' )->text() . ' ' . $this->msg( 'parentheses', $ip )->escaped() );
 			return false;
 		}
 
-		# Now create a dummy wiki_user ($u) and check if it is valid
-		$name = trim( $this->mwiki_username );
-		$u = wiki_user::newFromName( $name, 'creatable' );
+		# Now create a dummy user ($u) and check if it is valid
+		$name = trim( $this->mUsername );
+		$u = User::newFromName( $name, 'creatable' );
 		if ( !is_object( $u ) ) {
 			$this->mainLoginForm( $this->msg( 'noname' )->text() );
 			return false;
 		}
 
 		if ( 0 != $u->idForName() ) {
-			$this->mainLoginForm( $this->msg( 'wiki_userexists' )->text() );
+			$this->mainLoginForm( $this->msg( 'userexists' )->text() );
 			return false;
 		}
 
@@ -389,7 +389,7 @@ class LoginForm extends SpecialPage {
 		}
 
 		# Set some additional data so the AbortNewAccount hook can be used for
-		# more than just wiki_username validation
+		# more than just username validation
 		$u->setEmail( $this->mEmail );
 		$u->setRealName( $this->mRealName );
 
@@ -405,7 +405,7 @@ class LoginForm extends SpecialPage {
 		if ( !wfRunHooks( 'ExemptFromAccountCreationThrottle', array( $ip ) ) ) {
 			wfDebug( "LoginForm::exemptFromAccountCreationThrottle: a hook allowed account creation w/o throttle\n" );
 		} else {
-			if ( ( $wgAccountCreationThrottle && $currentwiki_user->isPingLimitable() ) ) {
+			if ( ( $wgAccountCreationThrottle && $currentUser->isPingLimitable() ) ) {
 				$key = wfMemcKey( 'acctcreate', 'ip', $ip );
 				$value = $wgMemc->get( $key );
 				if ( !$value ) {
@@ -419,25 +419,25 @@ class LoginForm extends SpecialPage {
 			}
 		}
 
-		if( !$wgAuth->addwiki_user( $u, $this->mPassword, $this->mEmail, $this->mRealName ) ) {
+		if( !$wgAuth->addUser( $u, $this->mPassword, $this->mEmail, $this->mRealName ) ) {
 			$this->mainLoginForm( $this->msg( 'externaldberror' )->text() );
 			return false;
 		}
 
 		self::clearCreateaccountToken();
-		return $this->initwiki_user( $u, false );
+		return $this->initUser( $u, false );
 	}
 
 	/**
-	 * Actually add a wiki_user to the database.
-	 * Give it a wiki_user object that has been initialised with a name.
+	 * Actually add a user to the database.
+	 * Give it a User object that has been initialised with a name.
 	 *
-	 * @param $u wiki_user object.
+	 * @param $u User object.
 	 * @param $autocreate boolean -- true if this is an autocreation via auth plugin
-	 * @return wiki_user object.
+	 * @return User object.
 	 * @private
 	 */
-	function initwiki_user( $u, $autocreate ) {
+	function initUser( $u, $autocreate ) {
 		global $wgAuth;
 
 		$u->addToDatabase();
@@ -450,11 +450,11 @@ class LoginForm extends SpecialPage {
 		$u->setRealName( $this->mRealName );
 		$u->setToken();
 
-		$wgAuth->initwiki_user( $u, $autocreate );
+		$wgAuth->initUser( $u, $autocreate );
 
-		if ( $this->mExtwiki_user ) {
-			$this->mExtwiki_user->linkToLocal( $u->getId() );
-			$email = $this->mExtwiki_user->getPref( 'emailaddress' );
+		if ( $this->mExtUser ) {
+			$this->mExtUser->linkToLocal( $u->getId() );
+			$email = $this->mExtUser->getPref( 'emailaddress' );
 			if ( $email && !$this->mEmail ) {
 				$u->setEmail( $email );
 			}
@@ -463,7 +463,7 @@ class LoginForm extends SpecialPage {
 		$u->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
 		$u->saveSettings();
 
-		# Update wiki_user count
+		# Update user count
 		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
 		$ssUpdate->doUpdate();
 
@@ -478,12 +478,12 @@ class LoginForm extends SpecialPage {
 	 * creation.
 	 * @return int
 	 */
-	public function authenticatewiki_userData() {
-		global $wgwiki_user, $wgAuth;
+	public function authenticateUserData() {
+		global $wgUser, $wgAuth;
 
 		$this->load();
 
-		if ( $this->mwiki_username == '' ) {
+		if ( $this->mUsername == '' ) {
 			return self::NO_NAME;
 		}
 
@@ -492,17 +492,17 @@ class LoginForm extends SpecialPage {
 		// token-less login attempts don't count towards the throttle
 		// but wrong-token attempts do.
 
-		// If the wiki_user doesn't have a login token yet, set one.
+		// If the user doesn't have a login token yet, set one.
 		if ( !self::getLoginToken() ) {
 			self::setLoginToken();
 			return self::NEED_TOKEN;
 		}
-		// If the wiki_user didn't pass a login token, tell them we need one
+		// If the user didn't pass a login token, tell them we need one
 		if ( !$this->mToken ) {
 			return self::NEED_TOKEN;
 		}
 
-		$throttleCount = self::incLoginThrottle( $this->mwiki_username );
+		$throttleCount = self::incLoginThrottle( $this->mUsername );
 		if ( $throttleCount === true ) {
 			return self::THROTTLED;
 		}
@@ -512,23 +512,23 @@ class LoginForm extends SpecialPage {
 			return self::WRONG_TOKEN;
 		}
 
-		// Load the current wiki_user now, and check to see if we're logging in as
-		// the same name. This is necessary because loading the current wiki_user
-		// (say by calling getName()) calls the wiki_userLoadFromSession hook, which
-		// potentially creates the wiki_user in the database. Until we load $wgwiki_user,
-		// checking for wiki_user existence using wiki_user::newFromName($name)->getId() below
+		// Load the current user now, and check to see if we're logging in as
+		// the same name. This is necessary because loading the current user
+		// (say by calling getName()) calls the UserLoadFromSession hook, which
+		// potentially creates the user in the database. Until we load $wgUser,
+		// checking for user existence using User::newFromName($name)->getId() below
 		// will effectively be using stale data.
-		if ( $this->getwiki_user()->getName() === $this->mwiki_username ) {
-			wfDebug( __METHOD__ . ": already logged in as {$this->mwiki_username}\n" );
+		if ( $this->getUser()->getName() === $this->mUsername ) {
+			wfDebug( __METHOD__ . ": already logged in as {$this->mUsername}\n" );
 			return self::SUCCESS;
 		}
 
-		$this->mExtwiki_user = Externalwiki_user::newFromName( $this->mwiki_username );
+		$this->mExtUser = ExternalUser::newFromName( $this->mUsername );
 
 		# TODO: Allow some magic here for invalid external names, e.g., let the
-		# wiki_user choose a different wiki name.
-		$u = wiki_user::newFromName( $this->mwiki_username );
-		if( !( $u instanceof wiki_user ) || !wiki_user::isUsableName( $u->getName() ) ) {
+		# user choose a different wiki name.
+		$u = User::newFromName( $this->mUsername );
+		if( !( $u instanceof User ) || !User::isUsableName( $u->getName() ) ) {
 			return self::ILLEGAL;
 		}
 
@@ -543,11 +543,11 @@ class LoginForm extends SpecialPage {
 		} else {
 			global $wgExternalAuthType, $wgAutocreatePolicy;
 			if ( $wgExternalAuthType && $wgAutocreatePolicy != 'never'
-			&& is_object( $this->mExtwiki_user )
-			&& $this->mExtwiki_user->authenticate( $this->mPassword ) ) {
-				# The external wiki_user and local wiki_user have the same name and
+			&& is_object( $this->mExtUser )
+			&& $this->mExtUser->authenticate( $this->mPassword ) ) {
+				# The external user and local user have the same name and
 				# password, so we assume they're the same.
-				$this->mExtwiki_user->linkToLocal( $u->getID() );
+				$this->mExtUser->linkToLocal( $u->getID() );
 			}
 
 			$u->load();
@@ -568,14 +568,14 @@ class LoginForm extends SpecialPage {
 				// pen mail reader.
 				//
 				// Allow it to be used only to reset the password a single time
-				// to a new value, which won't be in the wiki_user's e-mail ar-
+				// to a new value, which won't be in the user's e-mail ar-
 				// chives.
 				//
 				// For backwards compatibility, we'll still recognize it at the
 				// login form to minimize surprises for people who have been
 				// logging in with a temporary password for some time.
 				//
-				// As a side-effect, we can authenticate the wiki_user's e-mail ad-
+				// As a side-effect, we can authenticate the user's e-mail ad-
 				// dress if it's not already done, since the temporary password
 				// was sent via e-mail.
 				if( !$u->isEmailConfirmed() ) {
@@ -591,23 +591,23 @@ class LoginForm extends SpecialPage {
 				$retval = ( $this->mPassword  == '' ) ? self::EMPTY_PASS : self::WRONG_PASS;
 			}
 		} elseif ( $wgBlockDisablesLogin && $u->isBlocked() ) {
-			// If we've enabled it, make it so that a blocked wiki_user cannot login
+			// If we've enabled it, make it so that a blocked user cannot login
 			$retval = self::USER_BLOCKED;
 		} else {
-			$wgAuth->updatewiki_user( $u );
-			$wgwiki_user = $u;
+			$wgAuth->updateUser( $u );
+			$wgUser = $u;
 			// This should set it for OutputPage and the Skin
 			// which is needed or the personal links will be
 			// wrong.
-			$this->getContext()->setwiki_user( $u );
+			$this->getContext()->setUser( $u );
 
 			// Please reset throttle for successful logins, thanks!
 			if ( $throttleCount ) {
-				self::clearLoginThrottle( $this->mwiki_username );
+				self::clearLoginThrottle( $this->mUsername );
 			}
 
 			if ( $isAutoCreated ) {
-				// Must be run after $wgwiki_user is set, for correct new wiki_user log
+				// Must be run after $wgUser is set, for correct new user log
 				wfRunHooks( 'AuthPluginAutoCreate', array( $u ) );
 			}
 
@@ -618,18 +618,18 @@ class LoginForm extends SpecialPage {
 	}
 
 	/**
-	 * Increment the login attempt throttle hit count for the (wiki_username,current IP)
+	 * Increment the login attempt throttle hit count for the (username,current IP)
 	 * tuple unless the throttle was already reached.
-	 * @param $wiki_username string The wiki_user name
+	 * @param $username string The user name
 	 * @return Bool|Integer The integer hit count or True if it is already at the limit
 	 */
-	public static function incLoginThrottle( $wiki_username ) {
+	public static function incLoginThrottle( $username ) {
 		global $wgPasswordAttemptThrottle, $wgMemc, $wgRequest;
-		$wiki_username = trim( $wiki_username ); // sanity
+		$username = trim( $username ); // sanity
 
 		$throttleCount = 0;
 		if ( is_array( $wgPasswordAttemptThrottle ) ) {
-			$throttleKey = wfMemcKey( 'password-throttle', $wgRequest->getIP(), md5( $wiki_username ) );
+			$throttleKey = wfMemcKey( 'password-throttle', $wgRequest->getIP(), md5( $username ) );
 			$count = $wgPasswordAttemptThrottle['count'];
 			$period = $wgPasswordAttemptThrottle['seconds'];
 
@@ -647,46 +647,46 @@ class LoginForm extends SpecialPage {
 	}
 
 	/**
-	 * Clear the login attempt throttle hit count for the (wiki_username,current IP) tuple.
-	 * @param $wiki_username string The wiki_user name
+	 * Clear the login attempt throttle hit count for the (username,current IP) tuple.
+	 * @param $username string The user name
 	 * @return void
 	 */
-	public static function clearLoginThrottle( $wiki_username ) {
+	public static function clearLoginThrottle( $username ) {
 		global $wgMemc, $wgRequest;
-		$wiki_username = trim( $wiki_username ); // sanity
+		$username = trim( $username ); // sanity
 
-		$throttleKey = wfMemcKey( 'password-throttle', $wgRequest->getIP(), md5( $wiki_username ) );
+		$throttleKey = wfMemcKey( 'password-throttle', $wgRequest->getIP(), md5( $username ) );
 		$wgMemc->delete( $throttleKey );
 	}
 
 	/**
-	 * Attempt to automatically create a wiki_user on login. Only succeeds if there
+	 * Attempt to automatically create a user on login. Only succeeds if there
 	 * is an external authentication method which allows it.
 	 *
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 *
 	 * @return integer Status code
 	 */
-	function attemptAutoCreate( $wiki_user ) {
+	function attemptAutoCreate( $user ) {
 		global $wgAuth, $wgAutocreatePolicy;
 
-		if ( $this->getwiki_user()->isBlockedFromCreateAccount() ) {
-			wfDebug( __METHOD__ . ": wiki_user is blocked from account creation\n" );
+		if ( $this->getUser()->isBlockedFromCreateAccount() ) {
+			wfDebug( __METHOD__ . ": user is blocked from account creation\n" );
 			return self::CREATE_BLOCKED;
 		}
 
 		/**
 		 * If the external authentication plugin allows it, automatically cre-
-		 * ate a new account for wiki_users that are externally defined but have not
+		 * ate a new account for users that are externally defined but have not
 		 * yet logged in.
 		 */
-		if ( $this->mExtwiki_user ) {
-			# mExtwiki_user is neither null nor false, so use the new ExternalAuth
+		if ( $this->mExtUser ) {
+			# mExtUser is neither null nor false, so use the new ExternalAuth
 			# system.
 			if ( $wgAutocreatePolicy == 'never' ) {
 				return self::NOT_EXISTS;
 			}
-			if ( !$this->mExtwiki_user->authenticate( $this->mPassword ) ) {
+			if ( !$this->mExtUser->authenticate( $this->mPassword ) ) {
 				return self::WRONG_PLUGIN_PASS;
 			}
 		} else {
@@ -694,18 +694,18 @@ class LoginForm extends SpecialPage {
 			if ( !$wgAuth->autoCreate() ) {
 				return self::NOT_EXISTS;
 			}
-			if ( !$wgAuth->wiki_userExists( $wiki_user->getName() ) ) {
-				wfDebug( __METHOD__ . ": wiki_user does not exist\n" );
+			if ( !$wgAuth->userExists( $user->getName() ) ) {
+				wfDebug( __METHOD__ . ": user does not exist\n" );
 				return self::NOT_EXISTS;
 			}
-			if ( !$wgAuth->authenticate( $wiki_user->getName(), $this->mPassword ) ) {
+			if ( !$wgAuth->authenticate( $user->getName(), $this->mPassword ) ) {
 				wfDebug( __METHOD__ . ": \$wgAuth->authenticate() returned false, aborting\n" );
 				return self::WRONG_PLUGIN_PASS;
 			}
 		}
 
 		$abortError = '';
-		if( !wfRunHooks( 'AbortAutoAccount', array( $wiki_user, &$abortError ) ) ) {
+		if( !wfRunHooks( 'AbortAutoAccount', array( $user, &$abortError ) ) ) {
 			// Hook point to add extra creation throttles and blocks
 			wfDebug( "LoginForm::attemptAutoCreate: a hook blocked creation: $abortError\n" );
 			$this->mAbortLoginErrorMsg = $abortError;
@@ -713,39 +713,39 @@ class LoginForm extends SpecialPage {
 		}
 
 		wfDebug( __METHOD__ . ": creating account\n" );
-		$this->initwiki_user( $wiki_user, true );
+		$this->initUser( $user, true );
 		return self::SUCCESS;
 	}
 
 	function processLogin() {
 		global $wgMemc, $wgLang;
 
-		switch ( $this->authenticatewiki_userData() ) {
+		switch ( $this->authenticateUserData() ) {
 			case self::SUCCESS:
 				# We've verified now, update the real record
-				$wiki_user = $this->getwiki_user();
-				if( (bool)$this->mRemember != (bool)$wiki_user->getOption( 'rememberpassword' ) ) {
-					$wiki_user->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
-					$wiki_user->saveSettings();
+				$user = $this->getUser();
+				if( (bool)$this->mRemember != (bool)$user->getOption( 'rememberpassword' ) ) {
+					$user->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
+					$user->saveSettings();
 				} else {
-					$wiki_user->invalidateCache();
+					$user->invalidateCache();
 				}
-				$wiki_user->setCookies();
+				$user->setCookies();
 				self::clearLoginToken();
 
 				// Reset the throttle
 				$request = $this->getRequest();
-				$key = wfMemcKey( 'password-throttle', $request->getIP(), md5( $this->mwiki_username ) );
+				$key = wfMemcKey( 'password-throttle', $request->getIP(), md5( $this->mUsername ) );
 				$wgMemc->delete( $key );
 
 				if( $this->hasSessionCookie() || $this->mSkipCookieCheck ) {
-					/* Replace the language object to provide wiki_user interface in
+					/* Replace the language object to provide user interface in
 					 * correct language immediately on this first page load.
 					 */
-					$code = $request->getVal( 'uselang', $wiki_user->getOption( 'language' ) );
-					$wiki_userLang = Language::factory( $code );
-					$wgLang = $wiki_userLang;
-					$this->getContext()->setLanguage( $wiki_userLang );
+					$code = $request->getVal( 'uselang', $user->getOption( 'language' ) );
+					$userLang = Language::factory( $code );
+					$wgLang = $userLang;
+					$this->getContext()->setLanguage( $userLang );
 					// Reset SessionID on Successful login (bug 40995)
 					$this->renewSessionId();
 					$this->successfulLogin();
@@ -768,12 +768,12 @@ class LoginForm extends SpecialPage {
 				$this->mainLoginForm( $this->msg( 'wrongpassword' )->text() );
 				break;
 			case self::NOT_EXISTS:
-				if( $this->getwiki_user()->isAllowed( 'createaccount' ) ) {
-					$this->mainLoginForm( $this->msg( 'nosuchwiki_user',
-						wfEscapeWikiText( $this->mwiki_username ) )->parse() );
+				if( $this->getUser()->isAllowed( 'createaccount' ) ) {
+					$this->mainLoginForm( $this->msg( 'nosuchuser',
+						wfEscapeWikiText( $this->mUsername ) )->parse() );
 				} else {
-					$this->mainLoginForm( $this->msg( 'nosuchwiki_usershort',
-						wfEscapeWikiText( $this->mwiki_username ) )->text() );
+					$this->mainLoginForm( $this->msg( 'nosuchusershort',
+						wfEscapeWikiText( $this->mUsername ) )->text() );
 				}
 				break;
 			case self::WRONG_PASS:
@@ -786,14 +786,14 @@ class LoginForm extends SpecialPage {
 				$this->resetLoginForm( $this->msg( 'resetpass_announce' )->text() );
 				break;
 			case self::CREATE_BLOCKED:
-				$this->wiki_userBlockedMessage( $this->getwiki_user()->mBlock );
+				$this->userBlockedMessage( $this->getUser()->mBlock );
 				break;
 			case self::THROTTLED:
 				$this->mainLoginForm( $this->msg( 'login-throttled' )->text() );
 				break;
 			case self::USER_BLOCKED:
-				$this->mainLoginForm( $this->msg( 'login-wiki_userblocked',
-					$this->mwiki_username )->escaped() );
+				$this->mainLoginForm( $this->msg( 'login-userblocked',
+					$this->mUsername )->escaped() );
 				break;
 			case self::ABORTED:
 				$this->mainLoginForm( $this->msg( $this->mAbortLoginErrorMsg )->text() );
@@ -811,7 +811,7 @@ class LoginForm extends SpecialPage {
 	}
 
 	/**
-	 * @param $u wiki_user object
+	 * @param $u User object
 	 * @param $throttle Boolean
 	 * @param $emailTitle String: message name of email title
 	 * @param $emailText String: message name of email text
@@ -828,16 +828,16 @@ class LoginForm extends SpecialPage {
 			return Status::newFatal( 'badipaddress' );
 		}
 
-		$currentwiki_user = $this->getwiki_user();
-		wfRunHooks( 'wiki_user::mailPasswordInternal', array( &$currentwiki_user, &$ip, &$u ) );
+		$currentUser = $this->getUser();
+		wfRunHooks( 'User::mailPasswordInternal', array( &$currentUser, &$ip, &$u ) );
 
 		$np = $u->randomPassword();
 		$u->setNewpassword( $np, $throttle );
 		$u->saveSettings();
-		$wiki_userLanguage = $u->getOption( 'language' );
+		$userLanguage = $u->getOption( 'language' );
 		$m = $this->msg( $emailText, $ip, $u->getName(), $np, $wgServer . $wgScript,
-			round( $wgNewPasswordExpiry / 86400 ) )->inLanguage( $wiki_userLanguage )->text();
-		$result = $u->sendMail( $this->msg( $emailTitle )->inLanguage( $wiki_userLanguage )->text(), $m );
+			round( $wgNewPasswordExpiry / 86400 ) )->inLanguage( $userLanguage )->text();
+		$result = $u->sendMail( $this->msg( $emailTitle )->inLanguage( $userLanguage )->text(), $m );
 
 		return $result;
 	}
@@ -855,9 +855,9 @@ class LoginForm extends SpecialPage {
 	 */
 	function successfulLogin() {
 		# Run any hooks; display injected HTML if any, else redirect
-		$currentwiki_user = $this->getwiki_user();
+		$currentUser = $this->getUser();
 		$injected_html = '';
-		wfRunHooks( 'wiki_userLoginComplete', array( &$currentwiki_user, &$injected_html ) );
+		wfRunHooks( 'UserLoginComplete', array( &$currentUser, &$injected_html ) );
 
 		if( $injected_html !== '' ) {
 			$this->displaySuccessfulLogin( 'loginsuccess', $injected_html );
@@ -868,17 +868,17 @@ class LoginForm extends SpecialPage {
 
 	/**
 	 * Run any hooks registered for logins, then display a message welcoming
-	 * the wiki_user.
+	 * the user.
 	 *
 	 * @private
 	 */
 	function successfulCreation() {
 		# Run any hooks; display injected HTML
-		$currentwiki_user = $this->getwiki_user();
+		$currentUser = $this->getUser();
 		$injected_html = '';
 		$welcome_creation_msg = 'welcomecreation';
 
-		wfRunHooks( 'wiki_userLoginComplete', array( &$currentwiki_user, &$injected_html ) );
+		wfRunHooks( 'UserLoginComplete', array( &$currentUser, &$injected_html ) );
 
 		/**
 		 * Let any extensions change what message is shown.
@@ -899,7 +899,7 @@ class LoginForm extends SpecialPage {
 		$out = $this->getOutput();
 		$out->setPageTitle( $this->msg( 'loginsuccesstitle' ) );
 		if( $msgname ){
-			$out->addWikiMsg( $msgname, wfEscapeWikiText( $this->getwiki_user()->getName() ) );
+			$out->addWikiMsg( $msgname, wfEscapeWikiText( $this->getUser()->getName() ) );
 		}
 
 		$out->addHTML( $injected_html );
@@ -908,17 +908,17 @@ class LoginForm extends SpecialPage {
 	}
 
 	/**
-	 * Output a message that informs the wiki_user that they cannot create an account because
+	 * Output a message that informs the user that they cannot create an account because
 	 * there is a block on them or their IP which prevents account creation.  Note that
-	 * wiki_user::isBlockedFromCreateAccount(), which gets this block, ignores the 'hardblock'
+	 * User::isBlockedFromCreateAccount(), which gets this block, ignores the 'hardblock'
 	 * setting on blocks (bug 13611).
 	 * @param $block Block the block causing this error
 	 */
-	function wiki_userBlockedMessage( Block $block ) {
+	function userBlockedMessage( Block $block ) {
 		# Let's be nice about this, it's likely that this feature will be used
 		# for blocking large numbers of innocent people, e.g. range blocks on
-		# schools. Don't blame it on the wiki_user. There's a small chance that it
-		# really is the wiki_user's fault, i.e. the wiki_username is blocked and they
+		# schools. Don't blame it on the user. There's a small chance that it
+		# really is the user's fault, i.e. the username is blocked and they
 		# haven't bothered to log out before trying to create an account to
 		# evade it, but we'll leave that to their guilty conscience to figure
 		# out.
@@ -962,7 +962,7 @@ class LoginForm extends SpecialPage {
 
 		$returnToTitle = Title::newFromText( $returnTo );
 		/*patch|2011-04-05|IntraACL|start*/
-		if ( !$titleObj instanceof Title || method_exists( $titleObj, 'wiki_userCanReadEx' ) && !$titleObj->wiki_userCanReadEx() ) {
+		if ( !$titleObj instanceof Title || method_exists( $titleObj, 'userCanReadEx' ) && !$titleObj->userCanReadEx() ) {
 		/*patch|2011-04-05|IntraACL|end*/
 			$returnToTitle = Title::newMainPage();
 		}
@@ -982,44 +982,44 @@ class LoginForm extends SpecialPage {
 	 * @private
 	 */
 	function mainLoginForm( $msg, $msgtype = 'error' ) {
-		global $wgEnableEmail, $wgEnablewiki_userEmail;
+		global $wgEnableEmail, $wgEnableUserEmail;
 		global $wgHiddenPrefs, $wgLoginLanguageSelector;
 		global $wgAuth, $wgEmailConfirmToEdit, $wgCookieExpiration;
 		global $wgSecureLogin, $wgPasswordResetRoutes;
 
 		$titleObj = $this->getTitle();
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 
 		if ( $this->mType == 'signup' ) {
-			// Block signup here if in readonly. Keeps wiki_user from
+			// Block signup here if in readonly. Keeps user from
 			// going through the process (filling out data, etc)
 			// and being informed later.
-			$permErrors = $titleObj->getwiki_userPermissionsErrors( 'createaccount', $wiki_user, true );
+			$permErrors = $titleObj->getUserPermissionsErrors( 'createaccount', $user, true );
 			if ( count( $permErrors ) ) {
 				throw new PermissionsError( 'createaccount', $permErrors );
-			} elseif ( $wiki_user->isBlockedFromCreateAccount() ) {
-				$this->wiki_userBlockedMessage( $wiki_user->isBlockedFromCreateAccount() );
+			} elseif ( $user->isBlockedFromCreateAccount() ) {
+				$this->userBlockedMessage( $user->isBlockedFromCreateAccount() );
 				return;
 			} elseif ( wfReadOnly() ) {
 				throw new ReadOnlyError;
 			}
 		}
 
-		if ( $this->mwiki_username == '' ) {
-			if ( $wiki_user->isLoggedIn() ) {
-				$this->mwiki_username = $wiki_user->getName();
+		if ( $this->mUsername == '' ) {
+			if ( $user->isLoggedIn() ) {
+				$this->mUsername = $user->getName();
 			} else {
-				$this->mwiki_username = $this->getRequest()->getCookie( 'wiki_userName' );
+				$this->mUsername = $this->getRequest()->getCookie( 'UserName' );
 			}
 		}
 
 		if ( $this->mType == 'signup' ) {
-			$template = new wiki_usercreateTemplate();
+			$template = new UsercreateTemplate();
 			$q = 'action=submitlogin&type=signup';
 			$linkq = 'type=login';
 			$linkmsg = 'gotaccount';
 		} else {
-			$template = new wiki_userloginTemplate();
+			$template = new UserloginTemplate();
 			$q = 'action=submitlogin&type=login';
 			$linkq = 'type=signup';
 			$linkmsg = 'nologin';
@@ -1035,8 +1035,8 @@ class LoginForm extends SpecialPage {
 			$linkq .= $returnto;
 		}
 
-		# Don't show a "create account" link if the wiki_user can't
-		if( $this->showCreateOrLoginLink( $wiki_user ) ) {
+		# Don't show a "create account" link if the user can't
+		if( $this->showCreateOrLoginLink( $user ) ) {
 			# Pass any language selection on to the mode switch link
 			if( $wgLoginLanguageSelector && $this->mLanguage ) {
 				$linkq .= '&uselang=' . $this->mLanguage;
@@ -1054,7 +1054,7 @@ class LoginForm extends SpecialPage {
 			: is_array( $wgPasswordResetRoutes ) && in_array( true, array_values( $wgPasswordResetRoutes ) );
 
 		$template->set( 'header', '' );
-		$template->set( 'name', $this->mwiki_username );
+		$template->set( 'name', $this->mUsername );
 		$template->set( 'password', $this->mPassword );
 		$template->set( 'retype', $this->mRetype );
 		$template->set( 'email', $this->mEmail );
@@ -1065,16 +1065,16 @@ class LoginForm extends SpecialPage {
 		$template->set( 'action', $titleObj->getLocalURL( $q ) );
 		$template->set( 'message', $msg );
 		$template->set( 'messagetype', $msgtype );
-		$template->set( 'createemail', $wgEnableEmail && $wiki_user->isLoggedIn() );
-		$template->set( 'wiki_userealname', !in_array( 'realname', $wgHiddenPrefs ) );
+		$template->set( 'createemail', $wgEnableEmail && $user->isLoggedIn() );
+		$template->set( 'userealname', !in_array( 'realname', $wgHiddenPrefs ) );
 		$template->set( 'useemail', $wgEnableEmail );
 		$template->set( 'emailrequired', $wgEmailConfirmToEdit );
-		$template->set( 'emailothers', $wgEnablewiki_userEmail );
+		$template->set( 'emailothers', $wgEnableUserEmail );
 		$template->set( 'canreset', $wgAuth->allowPasswordChange() );
 		$template->set( 'resetlink', $resetLink );
 		$template->set( 'canremember', ( $wgCookieExpiration > 0 ) );
-		$template->set( 'wiki_usereason', $wiki_user->isLoggedIn() );
-		$template->set( 'remember', $wiki_user->getOption( 'rememberpassword' ) || $this->mRemember );
+		$template->set( 'usereason', $user->isLoggedIn() );
+		$template->set( 'remember', $user->getOption( 'rememberpassword' ) || $this->mRemember );
 		$template->set( 'cansecurelogin', ( $wgSecureLogin === true ) );
 		$template->set( 'stickHTTPS', $this->mStickHTTPS );
 
@@ -1117,27 +1117,27 @@ class LoginForm extends SpecialPage {
 		// Give authentication and captcha plugins a chance to modify the form
 		$wgAuth->modifyUITemplate( $template, $this->mType );
 		if ( $this->mType == 'signup' ) {
-			wfRunHooks( 'wiki_userCreateForm', array( &$template ) );
+			wfRunHooks( 'UserCreateForm', array( &$template ) );
 		} else {
-			wfRunHooks( 'wiki_userLoginForm', array( &$template ) );
+			wfRunHooks( 'UserLoginForm', array( &$template ) );
 		}
 
 		$out = $this->getOutput();
-		$out->disallowwiki_userJs(); // just in case...
+		$out->disallowUserJs(); // just in case...
 		$out->addTemplate( $template );
 	}
 
 	/**
 	 * @private
 	 *
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 *
 	 * @return Boolean
 	 */
-	function showCreateOrLoginLink( &$wiki_user ) {
+	function showCreateOrLoginLink( &$user ) {
 		if( $this->mType == 'signup' ) {
 			return true;
-		} elseif( $wiki_user->isAllowed( 'createaccount' ) ) {
+		} elseif( $user->isAllowed( 'createaccount' ) ) {
 			return true;
 		} else {
 			return false;
@@ -1173,7 +1173,7 @@ class LoginForm extends SpecialPage {
 	 */
 	public static function setLoginToken() {
 		global $wgRequest;
-		// Generate a token directly instead of using $wiki_user->editToken()
+		// Generate a token directly instead of using $user->editToken()
 		// because the latter reuses $_SESSION['wsEditToken']
 		$wgRequest->setSessionData( 'wsLoginToken', MWCryptRand::generateHex( 32 ) );
 	}
@@ -1212,7 +1212,7 @@ class LoginForm extends SpecialPage {
 	}
 
 	/**
-	 * Renew the wiki_user's session id, using strong entropy
+	 * Renew the user's session id, using strong entropy
 	 */
 	private function renewSessionId() {
 		if ( wfCheckEntropy() ) {
@@ -1232,7 +1232,7 @@ class LoginForm extends SpecialPage {
 	 * @private
 	 */
 	function cookieRedirectCheck( $type ) {
-		$titleObj = SpecialPage::getTitleFor( 'wiki_userlogin' );
+		$titleObj = SpecialPage::getTitleFor( 'Userlogin' );
 		$query = array( 'wpCookieCheck' => $type );
 		if ( $this->mReturnTo !== '' ) {
 			$query['returnto'] = $this->mReturnTo;
@@ -1269,7 +1269,7 @@ class LoginForm extends SpecialPage {
 	}
 
 	/**
-	 * Produce a bar of links which allow the wiki_user to select another language
+	 * Produce a bar of links which allow the user to select another language
 	 * during login/registration but retain "returnto"
 	 *
 	 * @return string

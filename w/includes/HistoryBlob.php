@@ -237,8 +237,8 @@ class HistoryBlobStub {
 		if( isset( self::$blobCache[$this->mOldId] ) ) {
 			$obj = self::$blobCache[$this->mOldId];
 		} else {
-			r = wfGetDB( DB_SLAVE );
-			$row = r->selectRow( 'text', array( 'old_flags', 'old_text' ), array( 'old_id' => $this->mOldId ) );
+			$dbr = wfGetDB( DB_SLAVE );
+			$row = $dbr->selectRow( 'text', array( 'old_flags', 'old_text' ), array( 'old_id' => $this->mOldId ) );
 			if( !$row ) {
 				return false;
 			}
@@ -321,8 +321,8 @@ class HistoryBlobCurStub {
 	 * @return string|bool
 	 */
 	function getText() {
-		r = wfGetDB( DB_SLAVE );
-		$row = r->selectRow( 'cur', array( 'cur_text' ), array( 'cur_id' => $this->mCurId ) );
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow( 'cur', array( 'cur_text' ), array( 'cur_id' => $this->mCurId ) );
 		if( !$row ) {
 			return false;
 		}

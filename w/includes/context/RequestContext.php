@@ -50,9 +50,9 @@ class RequestContext implements IContextSource {
 	private $output;
 
 	/**
-	 * @var wiki_user
+	 * @var User
 	 */
-	private $wiki_user;
+	private $user;
 
 	/**
 	 * @var Language
@@ -181,24 +181,24 @@ class RequestContext implements IContextSource {
 	}
 
 	/**
-	 * Set the wiki_user object
+	 * Set the User object
 	 *
-	 * @param $u wiki_user
+	 * @param $u User
 	 */
-	public function setwiki_user( wiki_user $u ) {
-		$this->wiki_user = $u;
+	public function setUser( User $u ) {
+		$this->user = $u;
 	}
 
 	/**
-	 * Get the wiki_user object
+	 * Get the User object
 	 *
-	 * @return wiki_user
+	 * @return User
 	 */
-	public function getwiki_user() {
-		if ( $this->wiki_user === null ) {
-			$this->wiki_user = wiki_user::newFromSession( $this->getRequest() );
+	public function getUser() {
+		if ( $this->user === null ) {
+			$this->user = User::newFromSession( $this->getRequest() );
 		}
-		return $this->wiki_user;
+		return $this->user;
 	}
 
 	/**
@@ -215,7 +215,7 @@ class RequestContext implements IContextSource {
 
 		# Validate $code
 		if( empty( $code ) || !Language::isValidCode( $code ) || ( $code === 'qqq' ) ) {
-			wfDebug( "Invalid wiki_user language code\n" );
+			wfDebug( "Invalid user language code\n" );
 			$code = $wgLanguageCode;
 		}
 
@@ -262,7 +262,7 @@ class RequestContext implements IContextSource {
 
 	/**
 	 * Get the Language object.
-	 * Initialization of wiki_user or request objects can depend on this.
+	 * Initialization of user or request objects can depend on this.
 	 *
 	 * @return Language
 	 * @since 1.19
@@ -282,12 +282,12 @@ class RequestContext implements IContextSource {
 			global $wgLanguageCode, $wgContLang;
 
 			$request = $this->getRequest();
-			$wiki_user = $this->getwiki_user();
+			$user = $this->getUser();
 
-			$code = $request->getVal( 'uselang', $wiki_user->getOption( 'language' ) );
+			$code = $request->getVal( 'uselang', $user->getOption( 'language' ) );
 			$code = self::sanitizeLangCode( $code );
 
-			wfRunHooks( 'wiki_userGetLanguageObject', array( $wiki_user, &$code, $this ) );
+			wfRunHooks( 'UserGetLanguageObject', array( $user, &$code, $this ) );
 
 			if( $code === $wgLanguageCode ) {
 				$this->lang = $wgContLang;
@@ -336,16 +336,16 @@ class RequestContext implements IContextSource {
 			if ( $this->skin === null ) {
 				global $wgHiddenPrefs;
 				if( !in_array( 'skin', $wgHiddenPrefs ) ) {
-					# get the wiki_user skin
-					$wiki_userSkin = $this->getwiki_user()->getOption( 'skin' );
-					$wiki_userSkin = $this->getRequest()->getVal( 'useskin', $wiki_userSkin );
+					# get the user skin
+					$userSkin = $this->getUser()->getOption( 'skin' );
+					$userSkin = $this->getRequest()->getVal( 'useskin', $userSkin );
 				} else {
-					# if we're not allowing wiki_users to override, then use the default
+					# if we're not allowing users to override, then use the default
 					global $wgDefaultSkin;
-					$wiki_userSkin = $wgDefaultSkin;
+					$userSkin = $wgDefaultSkin;
 				}
 
-				$this->skin = Skin::newFromKey( $wiki_userSkin );
+				$this->skin = Skin::newFromKey( $userSkin );
 			}
 
 			// After all that set a context on whatever skin got created
@@ -388,10 +388,10 @@ class RequestContext implements IContextSource {
 	 * external to the current session.
 	 * - Title is specified by argument
 	 * - Request is a FauxRequest, or a FauxRequest can be specified by argument
-	 * - wiki_user is an anonymous wiki_user, for separation IPv4 localhost is used
-	 * - Language will be based on the anonymous wiki_user and request, may be content
+	 * - User is an anonymous user, for separation IPv4 localhost is used
+	 * - Language will be based on the anonymous user and request, may be content
 	 *   language or a uselang param in the fauxrequest data may change the lang
-	 * - Skin will be based on the anonymous wiki_user, should be the wiki's default skin
+	 * - Skin will be based on the anonymous user, should be the wiki's default skin
 	 *
 	 * @param Title $title Title to use for the extraneous request
 	 * @param WebRequest|array $request A WebRequest or data to use for a FauxRequest
@@ -405,7 +405,7 @@ class RequestContext implements IContextSource {
 		} else {
 			$context->setRequest( new FauxRequest( $request ) );
 		}
-		$context->wiki_user = wiki_user::newFromName( '127.0.0.1', false );
+		$context->user = User::newFromName( '127.0.0.1', false );
 		return $context;
 	}
 

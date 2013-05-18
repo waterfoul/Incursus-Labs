@@ -49,8 +49,8 @@ class RevisionStorageTest extends MediaWikiTestCase {
 
 		$rev = new Revision( $props );
 
-		w = wfgetDB( DB_MASTER );
-		$rev->insertOn( w );
+		$dbw = wfgetDB( DB_MASTER );
+		$rev->insertOn( $dbw );
 
 		return $rev;
 	}
@@ -74,7 +74,7 @@ class RevisionStorageTest extends MediaWikiTestCase {
 		$this->assertEquals( $orig->getId(), $rev->getId() );
 		$this->assertEquals( $orig->getPage(), $rev->getPage() );
 		$this->assertEquals( $orig->getTimestamp(), $rev->getTimestamp() );
-		$this->assertEquals( $orig->getwiki_user(), $rev->getwiki_user() );
+		$this->assertEquals( $orig->getUser(), $rev->getUser() );
 		$this->assertEquals( $orig->getSha1(), $rev->getSha1() );
 	}
 
@@ -85,8 +85,8 @@ class RevisionStorageTest extends MediaWikiTestCase {
 	{
 		$orig = $this->makeRevision();
 
-		r = wfgetDB( DB_SLAVE );
-		$res = r->select( 'revision', '*', array( 'rev_id' => $orig->getId() ) );
+		$dbr = wfgetDB( DB_SLAVE );
+		$res = $dbr->select( 'revision', '*', array( 'rev_id' => $orig->getId() ) );
 		$this->assertTrue( is_object( $res ), 'query failed' );
 
 		$row = $res->fetchObject();
@@ -104,8 +104,8 @@ class RevisionStorageTest extends MediaWikiTestCase {
 	{
 		$orig = $this->makeRevision();
 
-		r = wfgetDB( DB_SLAVE );
-		$res = r->select( 'revision', '*', array( 'rev_id' => $orig->getId() ) );
+		$dbr = wfgetDB( DB_SLAVE );
+		$res = $dbr->select( 'revision', '*', array( 'rev_id' => $orig->getId() ) );
 		$this->assertTrue( is_object( $res ), 'query failed' );
 
 		$row = $res->fetchObject();
@@ -126,8 +126,8 @@ class RevisionStorageTest extends MediaWikiTestCase {
 		$orig = $page->getRevision();
 		$page->doDeleteArticle( 'test Revision::newFromArchiveRow' );
 
-		r = wfgetDB( DB_SLAVE );
-		$res = r->select( 'archive', '*', array( 'ar_rev_id' => $orig->getId() ) );
+		$dbr = wfgetDB( DB_SLAVE );
+		$res = $dbr->select( 'archive', '*', array( 'ar_rev_id' => $orig->getId() ) );
 		$this->assertTrue( is_object( $res ), 'query failed' );
 
 		$row = $res->fetchObject();
@@ -184,7 +184,7 @@ class RevisionStorageTest extends MediaWikiTestCase {
 		$this->assertTrue( in_array( 'rev_id', $fields ), 'missing rev_id in list of fields');
 		$this->assertTrue( in_array( 'rev_page', $fields ), 'missing rev_page in list of fields');
 		$this->assertTrue( in_array( 'rev_timestamp', $fields ), 'missing rev_timestamp in list of fields');
-		$this->assertTrue( in_array( 'rev_wiki_user', $fields ), 'missing rev_wiki_user in list of fields');
+		$this->assertTrue( in_array( 'rev_user', $fields ), 'missing rev_user in list of fields');
 	}
 
 	/**
@@ -302,106 +302,106 @@ class RevisionStorageTest extends MediaWikiTestCase {
 		$page = $this->createPage( 'RevisionStorageTest_testNewNullRevision', 'some testing text' );
 		$orig = $page->getRevision();
 
-		w = wfGetDB( DB_MASTER );
-		$rev = Revision::newNullRevision( w, $page->getId(), 'a null revision', false );
+		$dbw = wfGetDB( DB_MASTER );
+		$rev = Revision::newNullRevision( $dbw, $page->getId(), 'a null revision', false );
 
 		$this->assertNotEquals( $orig->getId(), $rev->getId(), 'new null revision shold have a different id from the original revision' );
 		$this->assertEquals( $orig->getTextId(), $rev->getTextId(), 'new null revision shold have the same text id as the original revision' );
 		$this->assertEquals( 'some testing text', $rev->getText() );
 	}
 
-	public function datawiki_userWasLastToEdit() {
+	public function dataUserWasLastToEdit() {
 		return array(
 			array( #0
 				3, true, # actually the last edit
 			),
 			array( #1
-				2, true, # not the current edit, but still by this wiki_user
+				2, true, # not the current edit, but still by this user
 			),
 			array( #2
-				1, false, # edit by another wiki_user
+				1, false, # edit by another user
 			),
 			array( #3
-				0, false, # first edit, by this wiki_user, but another wiki_user edited in the mean time
+				0, false, # first edit, by this user, but another user edited in the mean time
 			),
 		);
 	}
 
 	/**
-	 * @dataProvider datawiki_userWasLastToEdit
+	 * @dataProvider dataUserWasLastToEdit
 	 */
-	public function testwiki_userWasLastToEdit( $sinceIdx, $expectedLast ) {
-		$wiki_userA = \wiki_user::newFromName( "RevisionStorageTest_wiki_userA" );
-		$wiki_userB = \wiki_user::newFromName( "RevisionStorageTest_wiki_userB" );
+	public function testUserWasLastToEdit( $sinceIdx, $expectedLast ) {
+		$userA = \User::newFromName( "RevisionStorageTest_userA" );
+		$userB = \User::newFromName( "RevisionStorageTest_userB" );
 
-		if ( $wiki_userA->getId() === 0 ) {
-			$wiki_userA = \wiki_user::createNew( $wiki_userA->getName() );
+		if ( $userA->getId() === 0 ) {
+			$userA = \User::createNew( $userA->getName() );
 		}
 
-		if ( $wiki_userB->getId() === 0 ) {
-			$wiki_userB = \wiki_user::createNew( $wiki_userB->getName() );
+		if ( $userB->getId() === 0 ) {
+			$userB = \User::createNew( $userB->getName() );
 		}
 
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$revisions = array();
 
 		// create revisions -----------------------------
-		$page = WikiPage::factory( Title::newFromText( 'RevisionStorageTest_testwiki_userWasLastToEdit' ) );
+		$page = WikiPage::factory( Title::newFromText( 'RevisionStorageTest_testUserWasLastToEdit' ) );
 
 		# zero
 		$revisions[0] = new Revision( array(
 			'page' => $page->getId(),
 			'timestamp' => '20120101000000',
-			'wiki_user' => $wiki_userA->getId(),
+			'user' => $userA->getId(),
 			'text' => 'zero',
 			'summary' => 'edit zero'
 		) );
-		$revisions[0]->insertOn( w );
+		$revisions[0]->insertOn( $dbw );
 
 		# one
 		$revisions[1] = new Revision( array(
 			'page' => $page->getId(),
 			'timestamp' => '20120101000100',
-			'wiki_user' => $wiki_userA->getId(),
+			'user' => $userA->getId(),
 			'text' => 'one',
 			'summary' => 'edit one'
 		) );
-		$revisions[1]->insertOn( w );
+		$revisions[1]->insertOn( $dbw );
 
 		# two
 		$revisions[2] = new Revision( array(
 			'page' => $page->getId(),
 			'timestamp' => '20120101000200',
-			'wiki_user' => $wiki_userB->getId(),
+			'user' => $userB->getId(),
 			'text' => 'two',
 			'summary' => 'edit two'
 		) );
-		$revisions[2]->insertOn( w );
+		$revisions[2]->insertOn( $dbw );
 
 		# three
 		$revisions[3] = new Revision( array(
 			'page' => $page->getId(),
 			'timestamp' => '20120101000300',
-			'wiki_user' => $wiki_userA->getId(),
+			'user' => $userA->getId(),
 			'text' => 'three',
 			'summary' => 'edit three'
 		) );
-		$revisions[3]->insertOn( w );
+		$revisions[3]->insertOn( $dbw );
 
 		# four
 		$revisions[4] = new Revision( array(
 			'page' => $page->getId(),
 			'timestamp' => '20120101000200',
-			'wiki_user' => $wiki_userA->getId(),
+			'user' => $userA->getId(),
 			'text' => 'zero',
 			'summary' => 'edit four'
 		) );
-		$revisions[4]->insertOn( w );
+		$revisions[4]->insertOn( $dbw );
 
 		// test it ---------------------------------
 		$since = $revisions[ $sinceIdx ]->getTimestamp();
 
-		$wasLast = Revision::wiki_userWasLastToEdit( w, $page->getId(), $wiki_userA->getId(), $since );
+		$wasLast = Revision::userWasLastToEdit( $dbw, $page->getId(), $userA->getId(), $since );
 
 		$this->assertEquals( $expectedLast, $wasLast );
 	}

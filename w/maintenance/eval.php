@@ -1,7 +1,7 @@
 <?php
 /**
  * PHP lacks an interactive mode, but this can be very helpful when debugging.
- * This script lets a command-line wiki_user start up the wiki engine and then poke
+ * This script lets a command-line user start up the wiki engine and then poke
  * about by issuing PHP commands directly.
  *
  * Unlike eg Python, you need to use a 'return' statement explicitly for the

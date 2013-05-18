@@ -23,7 +23,7 @@
  */
 
 $options = array( 'help', 'nooverwrite', 'norc' );
-$optionsWithArgs = array( 'title', 'wiki_user', 'comment' );
+$optionsWithArgs = array( 'title', 'user', 'comment' );
 require_once( __DIR__ . '/commandLine.inc' );
 echo( "Import Text File\n\n" );
 
@@ -44,23 +44,23 @@ if ( count( $args ) < 1 || isset( $options['help'] ) ) {
 			if ( !$title->exists() || !isset( $options['nooverwrite'] ) ) {
 
 				$text = file_get_contents( $filename );
-				$wiki_user = isset( $options['wiki_user'] ) ? $options['wiki_user'] : 'Maintenance script';
-				$wiki_user = wiki_user::newFromName( $wiki_user );
+				$user = isset( $options['user'] ) ? $options['user'] : 'Maintenance script';
+				$user = User::newFromName( $user );
 
-				if ( is_object( $wiki_user ) ) {
+				if ( is_object( $user ) ) {
 
-					echo( "\nUsing wiki_username '" . $wiki_user->getName() . "'..." );
-					$wgwiki_user =& $wiki_user;
+					echo( "\nUsing username '" . $user->getName() . "'..." );
+					$wgUser =& $user;
 					$comment = isset( $options['comment'] ) ? $options['comment'] : 'Importing text file';
 					$flags = 0 | ( isset( $options['norc'] ) ? EDIT_SUPPRESS_RC : 0 );
 
 					echo( "\nPerforming edit..." );
 					$page = WikiPage::factory( $title );
-					$page->doEdit( $text, $comment, $flags, false, $wiki_user );
+					$page->doEdit( $text, $comment, $flags, false, $user );
 					echo( "done.\n" );
 
 				} else {
-					echo( "invalid wiki_username.\n" );
+					echo( "invalid username.\n" );
 				}
 
 			} else {
@@ -93,8 +93,8 @@ Options:
 
 --title <title>
 	Title for the new page; default is to use the filename as a base
---wiki_user <wiki_user>
-	wiki_user to be associated with the edit
+--user <user>
+	User to be associated with the edit
 --comment <comment>
 	Edit summary
 --nooverwrite

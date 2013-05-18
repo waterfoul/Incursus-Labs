@@ -117,7 +117,7 @@ See RELEASE-NOTES for more details about new and changed options.
 
 == Upgrading from 1.7 or earlier ==
 
-$wgDefaultwiki_userOptions now contains all the defaults, not only overrides.
+$wgDefaultUserOptions now contains all the defaults, not only overrides.
 If you're setting this as a complete array(), you may need to change it
 to set only specific items as recommended in DefaultSettings.php.
 
@@ -157,7 +157,7 @@ $wgDisableUploads has been replaced with $wgEnableUploads.
 
 $wgWhitelistAccount has been replaced by the 'createaccount' permission
 key in $wgGroupPermissions. To emulate the old effect of setting:
-  $wgWhitelistAccount['wiki_user'] = 0;
+  $wgWhitelistAccount['user'] = 0;
 set:
   $wgGroupPermissions['*']['createaccount'] = false;
 
@@ -168,8 +168,8 @@ set:
   $wgGroupPermissions['*']['edit'] = false;
 
 If $wgWhitelistRead is set, you must also disable the 'read' permission
-for it to take affect on anonymous wiki_users:
-  $wgWhitelistRead = array( "Main Page", "Special:wiki_userlogin" );
+for it to take affect on anonymous users:
+  $wgWhitelistRead = array( "Main Page", "Special:Userlogin" );
   $wgGroupPermissions['*']['read'] = false;
 
 Note that you can disable/enable several other permissions by modifying
@@ -273,7 +273,7 @@ and restore it. Sorry.
 
 This is less thoroughly tested, but should work.
 
-You need to specify the *admin* database wiki_username and password to the
+You need to specify the *admin* database username and password to the
 installer in order for it to successfully upgrade the database structure.
 You may wish to manually change the GRANTs later.
 

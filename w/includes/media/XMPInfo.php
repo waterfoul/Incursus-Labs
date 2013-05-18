@@ -502,7 +502,7 @@ class XMPInfo {
 				'map_group' => 'exif',
 				'mode'      => XMPReader::MODE_SIMPLE,
 			),
-			// This tag should perhaps be displayed to wiki_user better.
+			// This tag should perhaps be displayed to user better.
 			'SubjectArea'       => array(
 				'map_group' => 'exif',
 				'mode'      => XMPReader::MODE_SEQ,
@@ -520,7 +520,7 @@ class XMPInfo {
 				'mode'      => XMPReader::MODE_SEQ,
 				'validate'  => 'validateInteger',
 			),
-			'wiki_userComment'       => array(
+			'UserComment'       => array(
 				'map_group' => 'exif',
 				'mode'      => XMPReader::MODE_LANG,
 			),

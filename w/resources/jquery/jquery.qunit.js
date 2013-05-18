@@ -692,7 +692,7 @@ extend( QUnit, {
 				"<h1 id='qunit-header'>" + escapeInnerText( document.title ) + "</h1>" +
 				"<h2 id='qunit-banner'></h2>" +
 				"<div id='qunit-testrunner-toolbar'></div>" +
-				"<h2 id='qunit-wiki_userAgent'></h2>" +
+				"<h2 id='qunit-userAgent'></h2>" +
 				"<ol id='qunit-tests'></ol>";
 		}
 
@@ -925,7 +925,7 @@ QUnit.load = function() {
 	runLoggingCallbacks( "begin", QUnit, {} );
 
 	// Initialize the config, saving the execution queue
-	var banner, filter, i, label, len, main, ol, toolbar, wiki_userAgent, val, urlConfigCheckboxes, moduleFilter,
+	var banner, filter, i, label, len, main, ol, toolbar, userAgent, val, urlConfigCheckboxes, moduleFilter,
 	    numModules = 0,
 	    moduleFilterHtml = "",
 		urlConfigHtml = "",
@@ -960,10 +960,10 @@ QUnit.load = function() {
 	}
 	moduleFilterHtml += "</select>";
 
-	// `wiki_userAgent` initialized at top of scope
-	wiki_userAgent = id( "qunit-wiki_userAgent" );
-	if ( wiki_userAgent ) {
-		wiki_userAgent.innerHTML = navigator.wiki_userAgent;
+	// `userAgent` initialized at top of scope
+	userAgent = id( "qunit-userAgent" );
+	if ( userAgent ) {
+		userAgent.innerHTML = navigator.userAgent;
 	}
 
 	// `banner` initialized at top of scope

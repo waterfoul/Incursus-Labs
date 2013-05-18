@@ -47,7 +47,7 @@
 	 * Returns a function suitable for use as a global, to construct strings from the message key (and optional replacements).
 	 * e.g.
 	 *       window.gM = mediaWiki.parser.getMessageFunction( options );
-	 *       $( 'p#headline' ).html( gM( 'hello-wiki_user', wiki_username ) );
+	 *       $( 'p#headline' ).html( gM( 'hello-user', username ) );
 	 *
 	 * Like the old gM() function this returns only strings, so it destroys any bindings. If you want to preserve bindings use the
 	 * jQuery plugin version instead. This is only included for backwards compatibility with gM().
@@ -78,8 +78,8 @@
 	 * the current selector. Bindings to passed-in jquery elements are preserved. Functions become click handlers for [$1 linktext] links.
 	 * e.g.
 	 *        $.fn.msg = mediaWiki.parser.getJqueryPlugin( options );
-	 *        var wiki_userlink = $( '<a>' ).click( function () { alert( "hello!!") } );
-	 *        $( 'p#headline' ).msg( 'hello-wiki_user', wiki_userlink );
+	 *        var userlink = $( '<a>' ).click( function () { alert( "hello!!") } );
+	 *        $( 'p#headline' ).msg( 'hello-user', userlink );
 	 *
 	 * @param {Array} parser options
 	 * @return {Function} function suitable for assigning to jQuery plugin, such as $.fn.msg
@@ -646,8 +646,8 @@
 
 		/**
 		 * Transform parsed structure into gender
-		 * Usage {{gender:[gender| mw.wiki_user object ] | masculine|feminine|neutral}}.
-		 * @param {Array} of nodes, [ {String|mw.wiki_user}, {String}, {String} , {String} ]
+		 * Usage {{gender:[gender| mw.user object ] | masculine|feminine|neutral}}.
+		 * @param {Array} of nodes, [ {String|mw.User}, {String}, {String} , {String} ]
 		 * @return {String} selected gender form according to current language
 		 */
 		gender: function ( nodes ) {

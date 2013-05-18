@@ -94,7 +94,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 				);
 				if ( !$fit ) {
 					if ( count( $pageIds[NS_FILE] ) == 1 ) {
-						// The wiki_user is screwed. imageinfo can't be solely
+						// The user is screwed. imageinfo can't be solely
 						// responsible for exceeding the limit in this case,
 						// so set a query-continue that just returns the same
 						// thing again. When the violating queries have been
@@ -125,7 +125,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 							$finalThumbParams, $params['metadataversion'] ) );
 					if ( !$fit ) {
 						if ( count( $pageIds[NS_FILE] ) == 1 ) {
-							// See the 'the wiki_user is screwed' comment above
+							// See the 'the user is screwed' comment above
 							$this->setContinueEnumParameter( 'start',
 								wfTimestamp( TS_ISO_8601, $img->getTimestamp() ) );
 						} else {
@@ -278,20 +278,20 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $file->getTimestamp() );
 		}
 
-		$wiki_user = isset( $prop['wiki_user'] );
-		$wiki_userid = isset( $prop['wiki_userid'] );
+		$user = isset( $prop['user'] );
+		$userid = isset( $prop['userid'] );
 
-		if ( $wiki_user || $wiki_userid ) {
+		if ( $user || $userid ) {
 			if ( $file->isDeleted( File::DELETED_USER ) ) {
-				$vals['wiki_userhidden'] = '';
+				$vals['userhidden'] = '';
 			} else {
-				if ( $wiki_user ) {
-					$vals['wiki_user'] = $file->getwiki_user();
+				if ( $user ) {
+					$vals['user'] = $file->getUser();
 				}
-				if ( $wiki_userid ) {
-					$vals['wiki_userid'] = $file->getwiki_user( 'id' );
+				if ( $userid ) {
+					$vals['userid'] = $file->getUser( 'id' );
 				}
-				if ( !$file->getwiki_user( 'id' ) ) {
+				if ( !$file->getUser( 'id' ) ) {
 					$vals['anon'] = '';
 				}
 			}
@@ -443,7 +443,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		return array(
 			'prop' => array(
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_DFLT => 'timestamp|wiki_user',
+				ApiBase::PARAM_DFLT => 'timestamp|user',
 				ApiBase::PARAM_TYPE => self::getPropertyNames()
 			),
 			'limit' => array(
@@ -499,8 +499,8 @@ class ApiQueryImageInfo extends ApiQueryBase {
 	private static function getProperties( $modulePrefix = '' ) {
 		return array(
 			'timestamp' =>      ' timestamp     - Adds timestamp for the uploaded version',
-			'wiki_user' =>           ' wiki_user          - Adds the wiki_user who uploaded the image version',
-			'wiki_userid' =>         ' wiki_userid        - Add the wiki_user ID that uploaded the image version',
+			'user' =>           ' user          - Adds the user who uploaded the image version',
+			'userid' =>         ' userid        - Add the user ID that uploaded the image version',
 			'comment' =>        ' comment       - Comment on the version',
 			'parsedcomment' =>  ' parsedcomment - Parse the comment on the version',
 			'url' =>            ' url           - Gives URL to the image and the description page',
@@ -559,14 +559,14 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			'timestamp' => array(
 				'timestamp' => 'timestamp'
 			),
-			'wiki_user' => array(
-				'wiki_userhidden' => 'boolean',
-				'wiki_user' => 'string',
+			'user' => array(
+				'userhidden' => 'boolean',
+				'user' => 'string',
 				'anon' => 'boolean'
 			),
-			'wiki_userid' => array(
-				'wiki_userhidden' => 'boolean',
-				'wiki_userid' => 'integer',
+			'userid' => array(
+				'userhidden' => 'boolean',
+				'userid' => 'integer',
 				'anon' => 'boolean'
 			),
 			'size' => array(
@@ -680,7 +680,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 	public function getExamples() {
 		return array(
 			'api.php?action=query&titles=File:Albert%20Einstein%20Head.jpg&prop=imageinfo',
-			'api.php?action=query&titles=File:Test.jpg&prop=imageinfo&iilimit=50&iiend=20071231235959&iiprop=timestamp|wiki_user|url',
+			'api.php?action=query&titles=File:Test.jpg&prop=imageinfo&iilimit=50&iiend=20071231235959&iiprop=timestamp|user|url',
 		);
 	}
 

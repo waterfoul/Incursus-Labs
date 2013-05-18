@@ -1,13 +1,13 @@
 /**
- * wiki_user-agent detection
+ * User-agent detection
  */
 ( function ( $ ) {
 
 	/* Private Members */
 
 	/**
-	 * @var profileCache {Object} Keyed by wiki_userAgent string,
-	 * value is the parsed $.client.profile object for that wiki_user agent.
+	 * @var profileCache {Object} Keyed by userAgent string,
+	 * value is the parsed $.client.profile object for that user agent.
 	 */
 	var profileCache = {};
 
@@ -18,7 +18,7 @@
 		/**
 		 * Get an object containing information about the client.
 		 *
-		 * @param nav {Object} An object with atleast a 'wiki_userAgent' and 'platform' key.
+		 * @param nav {Object} An object with atleast a 'userAgent' and 'platform' key.
 		 * Defaults to the global Navigator object.
 		 * @return {Object} The resulting client object will be in the following format:
 		 *  {
@@ -38,7 +38,7 @@
 				nav = window.navigator;
 			}
 			// Use the cached version if possible
-			if ( profileCache[nav.wiki_userAgent] === undefined ) {
+			if ( profileCache[nav.userAgent] === undefined ) {
 
 				/* Configuration */
 
@@ -46,10 +46,10 @@
 				var uk = 'unknown';
 				// Generic version digit
 				var x = 'x';
-				// Strings found in wiki_user agent strings that need to be conformed
-				var wildwiki_userAgents = ['Opera', 'Navigator', 'Minefield', 'KHTML', 'Chrome', 'PLAYSTATION 3'];
-				// Translations for conforming wiki_user agent strings
-				var wiki_userAgentTranslations = [
+				// Strings found in user agent strings that need to be conformed
+				var wildUserAgents = ['Opera', 'Navigator', 'Minefield', 'KHTML', 'Chrome', 'PLAYSTATION 3'];
+				// Translations for conforming user agent strings
+				var userAgentTranslations = [
 					// Tons of browsers lie about being something they are not
 					[/(Firefox|MSIE|KHTML,\slike\sGecko|Konqueror)/, ''],
 					// Chrome lives in the shadow of Safari still
@@ -63,7 +63,7 @@
 					// This prevents version extraction issues, otherwise translation would happen later
 					['PLAYSTATION 3', 'PS3']
 				];
-				// Strings which precede a version number in a wiki_user agent string - combined and used as match 1 in
+				// Strings which precede a version number in a user agent string - combined and used as match 1 in
 				// version detectection
 				var versionPrefixes = [
 					'camino', 'chrome', 'firefox', 'netscape', 'netscape6', 'opera', 'version', 'konqueror',
@@ -104,7 +104,7 @@
 
 				/* Pre-processing */
 
-				var	ua = nav.wiki_userAgent,
+				var	ua = nav.userAgent,
 					match,
 					name = uk,
 					layout = uk,
@@ -112,9 +112,9 @@
 					platform = uk,
 					version = x;
 
-				if ( match = new RegExp( '(' + wildwiki_userAgents.join( '|' ) + ')' ).exec( ua ) ) {
-					// Takes a wiki_userAgent string and translates given text into something we can more easily work with
-					ua = translate( ua, wiki_userAgentTranslations );
+				if ( match = new RegExp( '(' + wildUserAgents.join( '|' ) + ')' ).exec( ua ) ) {
+					// Takes a userAgent string and translates given text into something we can more easily work with
+					ua = translate( ua, userAgentTranslations );
 				}
 				// Everything will be in lowercase from now on
 				ua = ua.toLowerCase();
@@ -137,7 +137,7 @@
 					version = match[3];
 				}
 
-				/* Edge Cases -- did I mention about how wiki_user agent string lie? */
+				/* Edge Cases -- did I mention about how user agent string lie? */
 
 				// Decode Safari's crazy 400+ version numbers
 				if ( name.match( /safari/ ) && version > 400 ) {
@@ -151,7 +151,7 @@
 
 				/* Caching */
 
-				profileCache[nav.wiki_userAgent] = {
+				profileCache[nav.userAgent] = {
 					name: name,
 					layout: layout,
 					layoutVersion: layoutversion,
@@ -161,7 +161,7 @@
 					versionNumber: versionNumber
 				};
 			}
-			return profileCache[nav.wiki_userAgent];
+			return profileCache[nav.userAgent];
 		},
 
 		/**

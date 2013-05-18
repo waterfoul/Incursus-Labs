@@ -93,7 +93,7 @@ $dateFormats = array(
 );
 
 $specialPageAliases = array(
-	'Activewiki_users'               => array( 'អ្នកប្រើប្រាស់សកម្ម' ),
+	'Activeusers'               => array( 'អ្នកប្រើប្រាស់សកម្ម' ),
 	'Allmessages'               => array( 'គ្រប់សារ' ),
 	'Allpages'                  => array( 'គ្រប់ទំព័រ' ),
 	'Ancientpages'              => array( 'ទំព័រចាស់ៗ' ),
@@ -112,7 +112,7 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( 'ការរួមចំណែកដែលត្រូវបានលុបចោល' ),
 	'Disambiguations'           => array( 'ចំណងជើងស្រដៀងគ្នា' ),
 	'DoubleRedirects'           => array( 'ការបញ្ជូនបន្តទ្វេដង' ),
-	'Emailwiki_user'                 => array( 'អ្នកប្រើប្រាស់អ៊ីមែល' ),
+	'Emailuser'                 => array( 'អ្នកប្រើប្រាស់អ៊ីមែល' ),
 	'Export'                    => array( 'នាំចេញ' ),
 	'Fewestrevisions'           => array( 'ទំព័រមានកំណែតិចជាងគេ' ),
 	'FileDuplicateSearch'       => array( 'ស្វែងរកឯកសារដូចគ្នាបេះបិទ' ),
@@ -126,7 +126,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'បញ្ជីរូបភាព' ),
 	'Listgrouprights'           => array( 'បញ្ជីក្រុមសិទ្ធិ' ),
 	'Listredirects'             => array( 'បញ្ជីទំព័របញ្ជូនបន្ត' ),
-	'Listwiki_users'                 => array( 'បញ្ជីឈ្មោះអ្នកប្រើប្រាស់' ),
+	'Listusers'                 => array( 'បញ្ជីឈ្មោះអ្នកប្រើប្រាស់' ),
 	'Lockdb'                    => array( 'ចាក់សោមូលដ្ឋានទិន្នន័យ' ),
 	'Log'                       => array( 'កំណត់ហេតុ' ),
 	'Lonelypages'               => array( 'ទំព័រកំព្រា' ),
@@ -175,9 +175,9 @@ $specialPageAliases = array(
 	'Unusedtemplates'           => array( 'ទំព័រគំរូដែលមិនត្រូវបានប្រើប្រាស់' ),
 	'Unwatchedpages'            => array( 'ទំព័រលែងបានតាមដាន' ),
 	'Upload'                    => array( 'ផ្ទុកឯកសារឡើង' ),
-	'wiki_userlogin'                 => array( 'ការកត់ឈ្មោះចូលរបស់អ្នកប្រើប្រាស់' ),
-	'wiki_userlogout'                => array( 'ការចាកចេញរបស់អ្នកប្រើប្រាស់' ),
-	'wiki_userrights'                => array( 'សិទ្ធិអ្នកប្រើប្រាស់' ),
+	'Userlogin'                 => array( 'ការកត់ឈ្មោះចូលរបស់អ្នកប្រើប្រាស់' ),
+	'Userlogout'                => array( 'ការចាកចេញរបស់អ្នកប្រើប្រាស់' ),
+	'Userrights'                => array( 'សិទ្ធិអ្នកប្រើប្រាស់' ),
 	'Version'                   => array( 'កំណែ' ),
 	'Wantedcategories'          => array( 'ចំណាត់ថ្នាក់ក្រុមប្រើប្រាស់ច្រើន' ),
 	'Wantedfiles'               => array( 'រូបភាពប្រើប្រាស់ច្រើន' ),
@@ -209,7 +209,7 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'ចំនួនទំព័រ', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'ចំនួនអត្ថបទ', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'ចំនួនឯកសារ', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', 'ចំនួនអ្នកប្រើប្រាស់', 'NUMBEROFUSERS' ),
+	'numberofusers'             => array( '1', 'ចំនួនអ្នកប្រើប្រាស់', 'NUMBEROFUSERS' ),
 	'numberofedits'             => array( '1', 'ចំនួនកំណែប្រែ', 'NUMBEROFEDITS' ),
 	'pagename'                  => array( '1', 'ឈ្មោះទំព័រ', 'PAGENAME' ),
 	'namespace'                 => array( '1', 'លំហឈ្មោះ', 'NAMESPACE' ),
@@ -262,7 +262,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'គូសបន្ទាត់ក្រោម​តំណភ្ជាប់៖',
 'tog-justify' => 'តំរឹម​កថាខណ្ឌ',
 'tog-hideminor' => 'លាក់​កំណែប្រែតិចតួច​ក្នុងបញ្ជីបំលាស់ប្ដូរថ្មីៗ',
@@ -286,7 +286,7 @@ $messages = array(
 'tog-previewonfirst' => 'បង្ហាញ​ការមើលមុន​ចំពោះ​កំណែប្រែ​ដំបូង',
 'tog-nocache' => 'មិនប្រើសតិភ្ជាប់​នៃ​ទំព័រ',
 'tog-enotifwatchlistpages' => 'ផ្ញើអ៊ីមែល​មកខ្ញុំ​កាលបើ​មានបំលាស់ប្ដូរនៃទំព័រ​ណាមួយដែលមានក្នុងបញ្ជីតាមដានរបស់ខ្ញុំ',
-'tog-enotifwiki_usertalkpages' => 'ផ្ញើអ៊ីមែល​មកខ្ញុំ​កាលបើ​មានបំលាស់ប្ដូរ​នៅ​ក្នុងទំព័រពិភាក្សា​របស់ខ្ញុំ',
+'tog-enotifusertalkpages' => 'ផ្ញើអ៊ីមែល​មកខ្ញុំ​កាលបើ​មានបំលាស់ប្ដូរ​នៅ​ក្នុងទំព័រពិភាក្សា​របស់ខ្ញុំ',
 'tog-enotifminoredits' => 'ផ្ញើអ៊ីមែល​មកខ្ញុំពេលមានបំលាស់ប្ដូរតិចតួច​លើទំព័រឬឯកសារផងដែរ​',
 'tog-enotifrevealaddr' => 'បង្ហាញ​អាសយដ្ឋានអ៊ីមែល​របស់ខ្ញុំ​ក្នុង​​មែល​ក្រើនរំលឹក​នានា',
 'tog-shownumberswatching' => 'បង្ហាញ​ចំនួនអ្នកប្រើប្រាស់​ដែលតាមដាន​ទំព័រនេះ',
@@ -467,7 +467,7 @@ $messages = array(
 'talk' => 'ការពិភាក្សា',
 'views' => 'គំហើញ',
 'toolbox' => 'ប្រអប់​ឧបករណ៍',
-'wiki_userpage' => 'មើលទំព័រអ្នកប្រើប្រាស់',
+'userpage' => 'មើលទំព័រអ្នកប្រើប្រាស់',
 'projectpage' => 'មើល​ទំព័រគម្រោង',
 'imagepage' => 'មើល​ទំព័រ​ឯកសារ',
 'mediawikipage' => 'មើល​ទំព័រសារ',
@@ -493,7 +493,7 @@ $messages = array(
 $1',
 'pool-errorunknown' => 'កំហុសមិនស្គាល់',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'អំពី{{SITENAME}}',
 'aboutpage' => 'Project:អំពី',
 'copyright' => 'រក្សាសិទ្ធិគ្រប់យ៉ាងដោយ$1។',
@@ -528,8 +528,8 @@ $1',
 'youhavenewmessages' => 'អ្នកមាន $1 ($2)។',
 'newmessageslink' => 'សារថ្មីៗ',
 'newmessagesdifflink' => 'បំលាស់ប្ដូរចុងក្រោយ',
-'youhavenewmessagesfromwiki_users' => 'អ្នកមាន $1 ទទួលបានពី {{PLURAL:$3|អ្នកប្រើប្រាស់ម្នាក់|អុ្នកប្រើប្រាស់ចំនួន $3 នាក់}} ($2)។',
-'youhavenewmessagesmanywiki_users' => 'អ្នកមាន $1 ទទួលបានពីអ្នកប្រើប្រាស់ជាច្រើន ($2)។',
+'youhavenewmessagesfromusers' => 'អ្នកមាន $1 ទទួលបានពី {{PLURAL:$3|អ្នកប្រើប្រាស់ម្នាក់|អុ្នកប្រើប្រាស់ចំនួន $3 នាក់}} ($2)។',
+'youhavenewmessagesmanyusers' => 'អ្នកមាន $1 ទទួលបានពីអ្នកប្រើប្រាស់ជាច្រើន ($2)។',
 'newmessageslinkplural' => '{{PLURAL:$1|សារថ្មីមួយ|សារថ្មី}}',
 'newmessagesdifflinkplural' => '{{PLURAL:$1|បំលាស់ប្ដូរ|បំលាស់ប្ដូរ}}ចុងក្រោយ',
 'youhavenewmessagesmulti' => 'អ្នកមានសារថ្មីៗនៅ $1',
@@ -560,7 +560,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'អត្ថបទ',
-'nstab-wiki_user' => 'ទំព័រអ្នកប្រើប្រាស់',
+'nstab-user' => 'ទំព័រអ្នកប្រើប្រាស់',
 'nstab-media' => 'ទំព័រមេឌា',
 'nstab-special' => 'ទំព័រពិសេស',
 'nstab-project' => 'ទំព័រគម្រោង',
@@ -593,7 +593,7 @@ $1',
 នេះតែងតែកើតឡើងដោយសារតែ​ការ​តាមដានភាពខុសគ្នាដែលហួសសម័យ ឬតំណបណ្ដាញប្រវត្តិទៅទំព័រមួយដែលត្រូវបានលុបហើយ​។
 
 ប្រសិន មិនមែនជាករណីនេះទេ អ្នកប្រហែលជាបានរកឃើញ​កំហុស​ (bug) នៅក្នុង​សូហ្វវែរ​នេះ​។
-សូមធ្វើការ​រាយការណ៍ទៅកាន់​ [[Special:Listwiki_users/sysop|administrator]] ដើម្បីកំណត់សម្គាល់លើអាសយដ្ឋាន URL នេះ​។',
+សូមធ្វើការ​រាយការណ៍ទៅកាន់​ [[Special:ListUsers/sysop|administrator]] ដើម្បីកំណត់សម្គាល់លើអាសយដ្ឋាន URL នេះ​។',
 'missingarticle-rev' => '(កំណែ#៖ $1)',
 'missingarticle-diff' => '(ភាពខុសគ្នា: $1, $2)',
 'readonly_lag' => 'មូលដ្ឋានទិន្នន័យត្រូវបានចាក់សោដោយស្វ័យប្រវត្តិ ខណៈពេលដែលម៉ាស៊ីនបម្រើ(server)មូលដ្ឋានទិន្នន័យរង​កំពុង​ទាក់ទង​ទៅម៉ាស៊ីនបម្រើ​មូលដ្ឋានទិន្នន័យមេ',
@@ -643,7 +643,7 @@ $2',
 'customcssprotected' => 'អ្នកមិនមាន​ការអនុញ្ញាត​ក្នុងការកែប្រែទំព័រ CSS នេះទេ ព្រោះវាផ្ទុកការកំណត់ផ្ទាល់ខ្លួនផ្សេងៗរបស់អ្នកប្រើប្រាស់ម្នាក់ផ្សេងទៀត។',
 'customjsprotected' => 'អ្នកមិនមាន​ការអនុញ្ញាត​ក្នុងការកែប្រែទំព័រ JavaScript នេះទេ ព្រោះវាផ្ទុកការកំណត់ផ្ទាល់ខ្លួនផ្សេងៗរបស់អ្នកប្រើប្រាស់ម្នាក់ផ្សេងទៀត។',
 'ns-specialprotected' => 'ទំព័រពិសេសៗមិនអាចកែប្រែបានទេ។',
-'titleprotected' => "ចំណងជើងនេះត្រូវបានការពារមិនឱ្យបង្កើត​ដោយ [[wiki_user:$1|$1]]។
+'titleprotected' => "ចំណងជើងនេះត្រូវបានការពារមិនឱ្យបង្កើត​ដោយ [[User:$1|$1]]។
 ហេតុផលលើកឡើងគឺ ''$2''។",
 'filereadonlyerror' => 'មិនអាចកែប្រែឯកសារ "$1" បានទេពីព្រោះថតឯកសារ "$2" ស្ថិតក្នុងម៉ូដសំរាប់តែអានប៉ុណ្ណោះ។
 
@@ -659,7 +659,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''ឥឡូវនេះលោកអ្នកបានកត់ឈ្មោះចេញពីគណនីរបស់លោកអ្នកហើយ។'''
 
-អ្នកអាចបន្តប្រើប្រាស់{{SITENAME}}ក្នុងភាពអនាមិក ឬ [[Special:wiki_userLogin|កត់ឈ្មោះចូលម្ដងទៀត]]ក្នុងនាមជាអ្នកប្រើប្រាស់ដដែលឬផ្សេងទៀត។
+អ្នកអាចបន្តប្រើប្រាស់{{SITENAME}}ក្នុងភាពអនាមិក ឬ [[Special:UserLogin|កត់ឈ្មោះចូលម្ដងទៀត]]ក្នុងនាមជាអ្នកប្រើប្រាស់ដដែលឬផ្សេងទៀត។
 
 សូមកត់សំគាល់ថាទំព័រមួយចំនួនប្រហែលជានៅតែបង្ហាញដូចពេលលោកអ្នកកត់ឈ្មោះចូលក្នុងគណនីរបស់លោកអ្នកដដែល។ ប្រសិនបើមានករណីនេះកើតឡើង សូមសំអាត សតិភ្ជាប់នៃកម្មវិធីរុករករបស់លោកអ្នក។",
 'welcomecreation' => '== សូមស្វាគមន៍ $1! ==
@@ -678,21 +678,21 @@ $2',
 'login' => 'កត់ឈ្មោះចូល',
 'nav-login-createaccount' => 'កត់ឈ្មោះចូលឬបង្កើតគណនី',
 'loginprompt' => 'អ្នក​ត្រូវតែ​មាន​ខូគី ដើម្បី​អាច​កត់ឈ្មោះចូល​{{SITENAME}}។',
-'wiki_userlogin' => 'កត់ឈ្មោះចូលឬបង្កើតគណនី',
-'wiki_userloginnocreate' => 'កត់ឈ្មោះចូល',
+'userlogin' => 'កត់ឈ្មោះចូលឬបង្កើតគណនី',
+'userloginnocreate' => 'កត់ឈ្មោះចូល',
 'logout' => 'កត់ឈ្មោះចេញ',
-'wiki_userlogout' => 'កត់ឈ្មោះចេញ',
+'userlogout' => 'កត់ឈ្មោះចេញ',
 'notloggedin' => 'មិនទាន់កត់ឈ្មោះចូល',
 'nologin' => "​បើលោកអ្នក​មិនទាន់មាន​គណនី​សម្រាប់​ប្រើ​ទេ​ សូម'''$1''' ។",
 'nologinlink' => 'បង្កើតគណនី',
 'createaccount' => 'បង្កើតគណនី',
 'gotaccount' => "បើលោកអ្នកមានគណនីសម្រាប់ប្រើហើយ  សូម'''$1'''។",
 'gotaccountlink' => 'កត់ឈ្មោះចូល',
-'wiki_userlogin-resetlink' => 'តើអ្នកភ្លេចព័ត៌មានលំអិតសំរាប់កត់ឈ្មោះចូលហើយ?',
+'userlogin-resetlink' => 'តើអ្នកភ្លេចព័ត៌មានលំអិតសំរាប់កត់ឈ្មោះចូលហើយ?',
 'createaccountmail' => 'តាមរយៈអ៊ីមែល',
 'createaccountreason' => 'មូលហេតុ៖',
 'badretype' => 'ពាក្យសំងាត់ដែលអ្នកបានបញ្ចូលនោះ គឺមិនស៊ីគ្នាទេ។',
-'wiki_userexists' => 'អត្តនាមដែលអ្នកបានវាយបញ្ចូលមានគេប្រើហើយ។
+'userexists' => 'អត្តនាមដែលអ្នកបានវាយបញ្ចូលមានគេប្រើហើយ។
 សូមជ្រើសរើសអត្តនាមផ្សេងពីនេះ។',
 'loginerror' => 'កំហុសនៃការកត់ឈ្មោះចូល',
 'createaccounterror' => 'មិនអាចបង្កើតគណនីបានទេ៖ $1',
@@ -711,14 +711,14 @@ $2',
 'noname' => 'អ្នកមិនបានផ្ដល់អត្តនាមត្រឹមត្រូវទេ។',
 'loginsuccesstitle' => 'កត់ឈ្មោះចូលបានសំរេច',
 'loginsuccess' => "'''ពេលនេះអ្នកបានកត់ឈ្មោះចូល{{SITENAME}}ដោយប្រើឈ្មោះ \"\$1\"។'''",
-'nosuchwiki_user' => 'មិនមានអ្នកប្រើដែលមានឈ្មោះ "$1" ទេ។
+'nosuchuser' => 'មិនមានអ្នកប្រើដែលមានឈ្មោះ "$1" ទេ។
 
-សូម​ពិនិត្យ​ក្រែង​លោ​មានកំហុស​អក្ខរាវិរុទ្ធឬ [[Special:wiki_userLogin/signup|បង្កើត​គណនី​ថ្មី]]។',
-'nosuchwiki_usershort' => 'គ្មានអ្នកប្រើដែលមានឈ្មោះ $1" ទេ។
+សូម​ពិនិត្យ​ក្រែង​លោ​មានកំហុស​អក្ខរាវិរុទ្ធឬ [[Special:UserLogin/signup|បង្កើត​គណនី​ថ្មី]]។',
+'nosuchusershort' => 'គ្មានអ្នកប្រើដែលមានឈ្មោះ $1" ទេ។
 
 សូម​ពិនិត្យ​​អក្ខរាវិរុទ្ធ​របស់អ្នក ។',
-'nowiki_userspecified' => 'អ្នកត្រូវតែ​ផ្ដល់អត្តនាម។',
-'login-wiki_userblocked' => 'អ្នកប្រើប្រាស់នេះស្ថិតក្រោមការហាមឃាត់។ មិនអនុញ្ញាតអោយកត់ឈ្មោះចូលទេ។',
+'nouserspecified' => 'អ្នកត្រូវតែ​ផ្ដល់អត្តនាម។',
+'login-userblocked' => 'អ្នកប្រើប្រាស់នេះស្ថិតក្រោមការហាមឃាត់។ មិនអនុញ្ញាតអោយកត់ឈ្មោះចូលទេ។',
 'wrongpassword' => 'ពាក្យសំងាត់​ដែលបានបញ្ចូល​មិនត្រឹមត្រូវទេ។
 
 សូមព្យាយាម​ម្តងទៀត។',
@@ -770,7 +770,7 @@ $2',
 អ្នកគួរតែកត់ឈ្មោះចូលហើយផ្លាស់ប្តូរពាក្យសំងាត់របស់អ្នកនៅពេលនេះ។
 
 អ្នកអាចបំភ្លេចពីសារនេះ ប្រសិនបើ​គណនីនេះត្រូវបានបង្កើតដោយមានបញ្ហា។',
-'wiki_usernamehasherror' => 'អត្តនាមមិនអាចមានតួអក្សរដែលជាសញ្ញាបានទេ',
+'usernamehasherror' => 'អត្តនាមមិនអាចមានតួអក្សរដែលជាសញ្ញាបានទេ',
 'login-throttled' => 'អ្នកបានកត់ឈ្មោះចូលមិនបានសំរេចច្រើនដងពេកហើយ។​
 
 សូមរងចាំមួយរយៈ មុនពេលសាកល្បងម្ដងទៀត។',
@@ -779,7 +779,7 @@ $2',
 
 # E-mail sending
 'php-mail-error-unknown' => 'កំហុសមិនស្គាល់នៅក្នុងអនុគមន៍ mail() របស់ PHP',
-'wiki_user-mail-no-addy' => 'បានព្យាយាមផ្ញើអ៊ីមែលដោយមិនបានដាក់អាសដ្ឋានអ៊ីមែល។',
+'user-mail-no-addy' => 'បានព្យាយាមផ្ញើអ៊ីមែលដោយមិនបានដាក់អាសដ្ឋានអ៊ីមែល។',
 
 # Change password dialog
 'resetpass' => '​ប្តូរ​ពាក្យសំងាត់​',
@@ -808,7 +808,7 @@ $2',
 'passwordreset-legend' => 'ប្ដូរទៅពាក្យសំងាត់ដើម',
 'passwordreset-disabled' => 'មុខងារប្ដូរទៅពាក្យសំងាត់ដើមត្រូវបានបិទមិនអោយប្រើនៅលើវិគីនេះ។',
 'passwordreset-pretext' => '{{PLURAL:$1||វាយបញ្ចូលផ្នែកមួយនៃទិន្នន័យខាងក្រោម}}',
-'passwordreset-wiki_username' => 'អត្តនាម៖',
+'passwordreset-username' => 'អត្តនាម៖',
 'passwordreset-domain' => 'ដូម៉ែន៖',
 'passwordreset-capture' => 'មើលអ៊ីមែលលទ្ធផល?',
 'passwordreset-capture-help' => 'ប្រសិនបើអ្នកគូសធីកប្រអប់នេះ អ៊ីមែល (ដែលមានពាក្យសំងាត់បណ្ដោះអាសន្ន) មិនត្រូវបានបង្ហាញដូចគ្នានឹងអ៊ីមែលដែលនឹងត្រូវផ្ញើទៅទៅកាន់អ្នកប្រើប្រាស់ដែរ។',
@@ -824,7 +824,7 @@ $2
 យកល្អអ្នកគួរតែកត់ឈ្មោះរួចជ្រើសរើសពាក្យសំងាត់ថ្មីមួយ។ ប្រសិនបើមាននរណាម្នាក់ផ្សេងធ្វើការស្នើសុំនេះ 
 ឬប្រសិនបើអ្នកនឹកឃើញពាក្យសំងាត់ដើមរបស់អ្នកហើយអ្នកមិនប្រាថ្នាផ្លាស់ប្ដូរវាទៀតទេនោះ អ្នកគ្រាន់តែ
 កុំខ្វល់ជាមួយសារមួយនេះ ហើយបន្តប្រើប្រាស់ពាក្យសំងាត់ចាស់របស់អ្នកទៅបានហើយ។',
-'passwordreset-emailtext-wiki_user' => 'អ្នកប្រើប្រាស់ $1 នៅក្នុង {{SITENAME}} បានស្នើសុំសារក្រើនរំលឹកអំពីព័ត៌មានពិស្ដាររបស់គណនីរបស់អ្នកនៅក្នុង {{SITENAME}} ($4)។
+'passwordreset-emailtext-user' => 'អ្នកប្រើប្រាស់ $1 នៅក្នុង {{SITENAME}} បានស្នើសុំសារក្រើនរំលឹកអំពីព័ត៌មានពិស្ដាររបស់គណនីរបស់អ្នកនៅក្នុង {{SITENAME}} ($4)។
  {{PLURAL:$3|គណនី|គណនី}}អ្នកប្រើប្រាស់ដូចតទៅនេះមានជាប់ទាក់ទិននឹងអាស័យដ្ឋានអ៊ីមែលនេះ៖
 
 $2
@@ -937,7 +937,7 @@ $2
 'loginreqlink' => 'កត់ឈ្មោះចូល',
 'loginreqpagetext' => 'អ្នកត្រូវតែ$1ដើម្បីមើលទំព័រដទៃផ្សេងទៀត។',
 'accmailtitle' => 'ពាក្យសំងាត់ត្រូវបានផ្ញើរួចហើយ។',
-'accmailtext' => "ពាក្យសំងាត់​ដែល​បាន​បង្កើត​ដោយ​ចៃដន្យ​សម្រាប់ [[wiki_user talk:$1|$1]] ត្រូវបានផ្ញើទៅ $2 ហើយ​។
+'accmailtext' => "ពាក្យសំងាត់​ដែល​បាន​បង្កើត​ដោយ​ចៃដន្យ​សម្រាប់ [[User talk:$1|$1]] ត្រូវបានផ្ញើទៅ $2 ហើយ​។
 
 ពាក្យសំងាត់​សម្រាប់​​គណនី​ថ្មី​នេះ អាច​​ប្ដូរ​បាននៅ​​ទំព័រ ''[[Special:ChangePassword|ប្ដូរ​ពាក្យសំងាត់]]'' បន្ទាប់ពីកត់ឈ្មោះចូលហើយ​។",
 'newarticle' => '(ថ្មី)',
@@ -948,17 +948,17 @@ $2
 
 អាសយដ្ឋានIPទាំងនោះអាចនឹងត្រូវប្រើដោយមនុស្សច្រើននាក់។
 
-ប្រសិនបើអ្នកជាអ្នកប្រើប្រាស់អនាមិក​ហើយ​ប្រសិនបើអ្នកឃើញមានការបញ្ចេញយោបល់មកអ្នកពីអ្វី​ដែល​មិន​ទាក់ទងទៅនឹងអ្វីដែល​អ្នកបាន​ធ្វើ​ សូម[[Special:wiki_userLogin/signup|បង្កើតគណនី]] ឬ [[Special:wiki_userLogin|កត់ឈ្មោះចូល]] ដើម្បីចៀសវាង​ការភ័ន្តច្រឡំ​ណាមួយជាយថាហេតុជាមួយនិងអ្នកប្រើប្រាស់អនាមិកដទៃទៀត។''",
+ប្រសិនបើអ្នកជាអ្នកប្រើប្រាស់អនាមិក​ហើយ​ប្រសិនបើអ្នកឃើញមានការបញ្ចេញយោបល់មកអ្នកពីអ្វី​ដែល​មិន​ទាក់ទងទៅនឹងអ្វីដែល​អ្នកបាន​ធ្វើ​ សូម[[Special:UserLogin/signup|បង្កើតគណនី]] ឬ [[Special:UserLogin|កត់ឈ្មោះចូល]] ដើម្បីចៀសវាង​ការភ័ន្តច្រឡំ​ណាមួយជាយថាហេតុជាមួយនិងអ្នកប្រើប្រាស់អនាមិកដទៃទៀត។''",
 'noarticletext' => 'បច្ចុប្បន្នគ្មានអត្ថបទក្នុងទំព័រនេះទេ។
 
 អ្នកអាច [[Special:Search/{{PAGENAME}}|ស្វែងរក​ចំណងជើង​នៃទំព័រនេះ]]ក្នុងទំព័រដទៃទៀត​​ ឬ [{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ស្វែង​រក​កំណត់​ហេតុ​ដែល​ពាក់ព័ន្ធ] ឬ [{{fullurl:{{FULLPAGENAME}}|action=edit}} កែប្រែ​ទំព័រនេះ]។',
 'noarticletext-nopermission' => 'បច្ចុប្បន្ន គ្មានអត្ថបទណាមួយក្នុងទំព័រនេះទេ។
 
 អ្នកអាច [[Special:Search/{{PAGENAME}}|ស្វែងរក​ចំណងជើង​នៃទំព័រនេះ]] ក្នុងទំព័រ​ផ្សេងៗ ឬ<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ស្វែង​រក​កំណត់​ហេតុ​ដែល​ពាក់ព័ន្ធ]</span>។ ប៉ុន្តែអ្នកគ្មានសិទ្ធិក្នុងការបង្កើតទំព័រនេះទេ។',
-'wiki_userpage-wiki_userdoesnotexist' => 'គណនីអ្នកប្រើឈ្មោះ"<nowiki>$1</nowiki>" មិនទាន់បានចុះបញ្ជី។
+'userpage-userdoesnotexist' => 'គណនីអ្នកប្រើឈ្មោះ"<nowiki>$1</nowiki>" មិនទាន់បានចុះបញ្ជី។
 
 ចូរគិតម្ដងទៀតថាអ្នកចង់ បង្កើត / កែប្រែ ទំព័រនេះឬទេ។',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'គណនីអ្នកប្រើប្រាស់ដែលមានឈ្មោះ "$1"មិនទាន់បានចុះឈ្មោះទេ។',
+'userpage-userdoesnotexist-view' => 'គណនីអ្នកប្រើប្រាស់ដែលមានឈ្មោះ "$1"មិនទាន់បានចុះឈ្មោះទេ។',
 'blocked-notice-logextract' => 'អ្នកប្រើប្រាស់នេះត្រូវបានហាមឃាត់ហើយនាពេលនេះ។
 កំណត់ត្រាស្ដីពីការហាមឃាត់ចុងក្រោយមានបង្ហាញដូចខាងក្រោមនេះ៖',
 'clearyourcache' => "'''សម្គាល់:''' បន្ទាប់ពីបានរក្សាទុករួចហើយ លោកអ្នកគួរតែសំអាត browser's cache របស់លោកអ្នកដើម្បីមើលការផ្លាស់ប្តូរ។ ខាងក្រោមនេះជាវិធីសំអាត browser's cache ចំពោះកម្មវិធីរុករក(Browser)មួយចំនួន។
@@ -967,16 +967,16 @@ $2
 * '''IE(Internet Explorer):''' សង្កត់ [Ctrl] ឱ្យជាប់ រួចចុច ''Refresh''ប៊ូតុង ឬក៏ចុច ''Ctrl-F5''​។
 * '''Konqueror:''' ចុចប៊ូតុង  ''Reload'' ឬក៏ចុច ''F5''
 * '''Opera:''' សូមសំអាតcacheនៅក្នុង  ''[Tools]→[Preferences]''​",
-'wiki_usercssyoucanpreview' => "'''គន្លឹះ ៖ ''' សូមប្រើប្រាស់ប៊ូតុង\"{{int:showpreview}}\"ដើម្បី​ធ្វើតេស្ត​សន្លឹក CSS ថ្មីរបស់អ្នក​មុននឹង​រក្សាទុកវា ។",
-'wiki_userjsyoucanpreview' => "'''គន្លឹះ ៖ ''' សូមប្រើប្រាស់​ប៊ូតុង \"{{int:showpreview}}\" ដើម្បី​ធ្វើតេស្ត​សន្លឹក JS ថ្មីរបស់អ្នក​មុននឹង​រក្សាទុកវា ។",
-'wiki_usercsspreview' => "'''កុំភ្លេចថា​អ្នកគ្រាន់តែ​កំពុងមើលជាមុនសន្លឹក CSS របស់អ្នក។
+'usercssyoucanpreview' => "'''គន្លឹះ ៖ ''' សូមប្រើប្រាស់ប៊ូតុង\"{{int:showpreview}}\"ដើម្បី​ធ្វើតេស្ត​សន្លឹក CSS ថ្មីរបស់អ្នក​មុននឹង​រក្សាទុកវា ។",
+'userjsyoucanpreview' => "'''គន្លឹះ ៖ ''' សូមប្រើប្រាស់​ប៊ូតុង \"{{int:showpreview}}\" ដើម្បី​ធ្វើតេស្ត​សន្លឹក JS ថ្មីរបស់អ្នក​មុននឹង​រក្សាទុកវា ។",
+'usercsspreview' => "'''កុំភ្លេចថា​អ្នកគ្រាន់តែ​កំពុងមើលជាមុនសន្លឹក CSS របស់អ្នក។
 វាមិនទាន់​ត្រូវបានរក្សាទុកទេ!'''",
-'wiki_userjspreview' => "'កុំភ្លេចថាអ្នកគ្រាន់តែកំពុង ធ្វើតេស្ត/មើលមុន ទំព័រអ្នកប្រើប្រាស់  JavaScript របស់អ្នក។ វាមិនទាន់ត្រូវបានរក្សាទុកទេ!'''",
+'userjspreview' => "'កុំភ្លេចថាអ្នកគ្រាន់តែកំពុង ធ្វើតេស្ត/មើលមុន ទំព័រអ្នកប្រើប្រាស់  JavaScript របស់អ្នក។ វាមិនទាន់ត្រូវបានរក្សាទុកទេ!'''",
 'sitecsspreview' => '"កុំភ្លេចថាអ្នកកំពុងតែមើលមុន CSS នេះប៉ុណ្ណោះ។"
 "វាមិនទាន់ត្រូវបានរក្សាទុកទេ!"',
 'sitejspreview' => '"កុំភ្លេចថាអ្នកកំពុងតែមើលមុន កូដJavaScript  នេះប៉ុណ្ណោះ។"
 "វាមិនទាន់ត្រូវបានរក្សាទុកទេ!"',
-'wiki_userinvalidcssjstitle' => "'''ប្រយ័ត្ន៖''' គ្មានសំបក \"\$1\"។ ចងចាំថា ទំព័រផ្ទាល់ខ្លួន .css និង .js ប្រើប្រាស់ ចំណងជើង ជាអក្សរតូច, ឧទាហរណ៍  {{ns:wiki_user}}:Foo/vector.css ត្រឹមត្រូវ, រីឯ {{ns:wiki_user}}:Foo/Vector.css មិនត្រឹមត្រូវ។",
+'userinvalidcssjstitle' => "'''ប្រយ័ត្ន៖''' គ្មានសំបក \"\$1\"។ ចងចាំថា ទំព័រផ្ទាល់ខ្លួន .css និង .js ប្រើប្រាស់ ចំណងជើង ជាអក្សរតូច, ឧទាហរណ៍  {{ns:user}}:Foo/vector.css ត្រឹមត្រូវ, រីឯ {{ns:user}}:Foo/Vector.css មិនត្រឹមត្រូវ។",
 'updated' => '(បានបន្ទាន់សម័យ)',
 'note' => "'''ចំណាំ៖'''",
 'previewnote' => "'''សូមចាំថានេះគ្រាន់តែជា​ការបង្ហាញការមើលជាមុនប៉ុណ្ណោះ។ បំលាស់ប្ដូរ​របស់អ្នកមិនទាន់បាន​រក្សាទុកទេ!'''",
@@ -986,14 +986,14 @@ $2
 
 សូមព្យាយាមម្តងទៀត។
 
-បើនៅតែមិនបានទេ សូមព្យាយាម[[Special:wiki_userLogout|កត់ឈ្មោះចេញ]] រួចកត់ឈ្មោះចូលឡើងវិញ។'''",
+បើនៅតែមិនបានទេ សូមព្យាយាម[[Special:UserLogout|កត់ឈ្មោះចេញ]] រួចកត់ឈ្មោះចូលឡើងវិញ។'''",
 'session_fail_preview_html' => "'''សូមអភ័យទោស! យើងមិនអាចរក្សាទុកកំណែប្រែរបស់លោកអ្នកបានទេ ដោយសារបាត់ទិន្នន័យវេនការងារ។'''
 
 ''ដោយសារ {{SITENAME}} មានអក្សរកូដ HTMLឆៅ ត្រូវបានបើកឱ្យប្រើប្រាស់ ហេតុនេះទំព័រមើលមុនត្រូវបានបិទបាំង ដើម្បីចៀសវាងការវាយលុកដោយ JavaScript ។''
 
 '''បើនេះជាការប៉ុនប៉ងកែប្រែសមស្រប សូមព្យាយាមម្តងទៀត។
 
-បើនៅតែមិនបានទេ សូមព្យាយាម[[Special:wiki_userLogout|កត់ឈ្មោះចេញ]] រួចកត់ឈ្មោះចូលឡើងវិញ។'''",
+បើនៅតែមិនបានទេ សូមព្យាយាម[[Special:UserLogout|កត់ឈ្មោះចេញ]] រួចកត់ឈ្មោះចូលឡើងវិញ។'''",
 'editing' => 'កំពុងកែប្រែ​ $1',
 'creating' => 'កំពុងបង្កើត $1',
 'editingsection' => "កំពុងកែប្រែ'''$1'''(ផ្នែក)",
@@ -1042,7 +1042,7 @@ $2
 'hiddencategories' => 'ទំព័រនេះស្ថិតនៅក្នុង {{PLURAL:$1|ចំណាត់ថ្នាក់ក្រុមដែលត្រូវបានបិទបាំងមួយ|ចំណាត់ថ្នាក់ក្រុមដែលត្រូវបានបិទបាំងចំនួន$1}}:',
 'nocreatetitle' => 'ការបង្កើតទំព័រ​ត្រូវបានកម្រិត',
 'nocreatetext' => '{{SITENAME}} បានដាក់កំហិតលទ្ធភាពបង្កើតទំព័រថ្មី ។
-អ្នកអាចត្រឡប់ក្រោយ និង កែប្រែទំព័រមានស្រាប់ ឬ  [[Special:wiki_userLogin|កត់ឈ្មោះចូលឬបង្កើតគណនី]]។',
+អ្នកអាចត្រឡប់ក្រោយ និង កែប្រែទំព័រមានស្រាប់ ឬ  [[Special:UserLogin|កត់ឈ្មោះចូលឬបង្កើតគណនី]]។',
 'nocreate-loggedin' => 'អ្នកគ្មានការអនុញ្ញាត​ឱ្យបង្កើតទំព័រថ្មី​ទេ។',
 'sectioneditnotsupported-title' => 'មិនអនុញ្ញាតអោយធ្វើការកែប្រែដោយផ្នែកទេ',
 'sectioneditnotsupported-text' => 'មិនអនុញ្ញាតអោយធ្វើការកែប្រែដោយផ្នែកនៅក្នុងទំព័រនេះទេ។',
@@ -1082,11 +1082,11 @@ $2
 'undo-success' => 'ការកែប្រែគឺមិនអាចបញ្ចប់។ សូមពិនិត្យ​ការប្រៀបធៀបខាងក្រោមដើម្បីផ្ទៀងផ្ទាត់ថា​នេះគឺជាអ្វីដែលអ្នកចង់ធ្វើហើយបន្ទាប់មកទៀត​រក្សាបំលាស់ប្ដូរខាងក្រោមទុក ដើម្បីបញ្ចប់ការកែប្រែដែលមិនទាន់រួចរាល់។',
 'undo-failure' => 'កំណែ​មិន​អាច​មិន​ធ្វើ​ឡើង​វិញ​បាន​ទេ​ ដោយ​សារ​ការ​ធ្វើ​ឲ្យ​មាន​ជម្លោះ​កំណែ​នៅ​ចន្លោះ​កណ្ដាល​។',
 'undo-norev' => 'កំណែ​មិន​អាច​មិន​ធ្វើ​ឡើង​វិញ​បាន​ទេ​ ពីព្រោះ​វា​មិន​មាន​ឬ​ត្រូវ​បាន​លុប​បាត់​ទៅ​ហើយ​។',
-'undo-summary' => 'មិន​ធ្វើ​វិញ​នូវ​កំណែ​ប្រែ $1 ដោយ​ [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|ការពិភាក្សា​]])',
+'undo-summary' => 'មិន​ធ្វើ​វិញ​នូវ​កំណែ​ប្រែ $1 ដោយ​ [[Special:Contributions/$2|$2]] ([[User talk:$2|ការពិភាក្សា​]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'មិនអាចបង្កើតគណនីបានទេ',
-'cantcreateaccount-text' => "ការបង្កើតគណនីពីអាសយដ្ឋាន IP ('''$1''') នេះ ត្រូវបានរារាំងដោយ [[wiki_user:$3|$3]]។
+'cantcreateaccount-text' => "ការបង្កើតគណនីពីអាសយដ្ឋាន IP ('''$1''') នេះ ត្រូវបានរារាំងដោយ [[User:$3|$3]]។
 
 ហេតុផលដែលត្រូវលើកឡើងដោយ $3 គឺ ''$2''",
 
@@ -1124,9 +1124,9 @@ $2
 
 # Revision deletion
 'rev-deleted-comment' => '(ចំណារពន្យល់ត្រូវបានដកចេញ)',
-'rev-deleted-wiki_user' => '(អត្តនាមត្រូវបានលុបចេញ)',
+'rev-deleted-user' => '(អត្តនាមត្រូវបានលុបចេញ)',
 'rev-deleted-event' => '(កំណត់ហេតុសកម្មភាពត្រូវបានដកចេញ)',
-'rev-deleted-wiki_user-contribs' => '[បានលុបចេញអត្តនាមឬអាសដ្ឋានIP នេះហើយ - ការកែប្រែលាក់មិនអោយអ្នករួមចំណែកដទៃមើលឃើញ]',
+'rev-deleted-user-contribs' => '[បានលុបចេញអត្តនាមឬអាសដ្ឋានIP នេះហើយ - ការកែប្រែលាក់មិនអោយអ្នករួមចំណែកដទៃមើលឃើញ]',
 'rev-deleted-text-permission' => "កំណែ​ប្រែ​នៃ​ទំព័រ​នេះ​ត្រូវ​បាន'''​លុបចោល'''​។
 ប្រហែល​ជា​មាន​ព័ត៌មាន​លម្អិត​នៅ​ក្នុង​[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} កំណត់​ហេតុ​នៃ​ការ​លុប​ចោល]។",
 'rev-deleted-text-unhide' => "កំណែ​ប្រែ​នៃ​ទំព័រ​នេះ​ត្រូវ​បាន'''​លុបចោល'''​។
@@ -1173,7 +1173,7 @@ $2
 'revdelete-hide-image' => 'បិទបាំងខ្លឹមសារនៃឯកសារ',
 'revdelete-hide-name' => 'បិទបាំងសកម្មភាពនិងគោលដៅ',
 'revdelete-hide-comment' => 'បិទបាំងកំណែប្រែវិចារ',
-'revdelete-hide-wiki_user' => 'បិទបាំងអត្តនាម​ឬអាសយដ្ឋានIP របស់អ្នកកែប្រែ',
+'revdelete-hide-user' => 'បិទបាំងអត្តនាម​ឬអាសយដ្ឋានIP របស់អ្នកកែប្រែ',
 'revdelete-hide-restricted' => 'ដាក់កំហិត​ទិន្នន័យ​ពី​អ្នកអភិបាល ក៏​ដូចជា​អ្នក​ដទៃ​ទៀត',
 'revdelete-radio-same' => '(មិនផ្លាស់ប្ដូរ)',
 'revdelete-radio-set' => 'បាទ/ចាស',
@@ -1256,7 +1256,7 @@ $1",
 'showhideselectedversions' => 'បង្ហាញ​/លាក់​កំណែប្រែ​ដែលបាន​ជ្រើសយក',
 'editundo' => 'មិនធ្វើវិញ',
 'diff-multi' => '({{PLURAL:$1|កំណែប្រែកម្រិតបង្គួរមួយ|កំណែប្រែកម្រិតបង្គួរចំនួន $1}}មិនត្រូវបានបង្ហាញ)',
-'diff-multi-manywiki_users' => '({{PLURAL:$1|កំណែប្រែកម្រិតបង្គួរមួយ|កំណែប្រែកម្រិតបង្គួរចំនួន $1}}មិនត្រូវបានបង្ហាញ)',
+'diff-multi-manyusers' => '({{PLURAL:$1|កំណែប្រែកម្រិតបង្គួរមួយ|កំណែប្រែកម្រិតបង្គួរចំនួន $1}}មិនត្រូវបានបង្ហាញ)',
 'difference-missing-revision' => ' {{PLURAL:$2|រកមិនឃើញ|រកមិនឃើញ}}{{PLURAL:$2|កំណែមួយ|កំណែចំនួន $2}} របស់ភាពខុសគ្នានេះ ($1) ទេ។
 
 ជាធម្មតានេះបណ្ដាលមកពីការតាមទៅកាន់តំនភ្ជាប់ភាពខុសគ្នារបស់ទំព័រដែលត្រូវបានលុបចោល។
@@ -1341,7 +1341,7 @@ $1",
 'mypreferences' => 'ចំណង់ចំណូលចិត្ត​',
 'prefs-edits' => 'ចំនួនកំណែប្រែ៖',
 'prefsnologin' => 'មិនទាន់កត់ឈ្មោះចូលទេ',
-'prefsnologintext' => 'អ្នកចាំបាច់ត្រូវតែ<span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} កត់ឈ្មោះចូល]</span> ដើម្បីកំណត់ចំណង់ចំណូលចិត្តរបស់អ្នក។',
+'prefsnologintext' => 'អ្នកចាំបាច់ត្រូវតែ<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} កត់ឈ្មោះចូល]</span> ដើម្បីកំណត់ចំណង់ចំណូលចិត្តរបស់អ្នក។',
 'changepassword' => 'ប្តូរពាក្យសំងាត់',
 'prefs-skin' => 'សំបក',
 'skin-preview' => 'មើលជាមុន',
@@ -1349,7 +1349,7 @@ $1",
 'prefs-beta' => 'មុខងារពិសេសថ្មីៗរបស់ស៊េរីបេតា',
 'prefs-datetime' => 'កាលបរិច្ឆេទនិងល្វែងម៉ោង',
 'prefs-labs' => 'មុខងារពិសេសថ្មីៗដែលស្ថិតក្រោមការពិសោធន៍នៅឡើយ',
-'prefs-wiki_user-pages' => 'ទំព័រអ្នកប្រើប្រាស់',
+'prefs-user-pages' => 'ទំព័រអ្នកប្រើប្រាស់',
 'prefs-personal' => 'ប្រវត្តិរូប',
 'prefs-rc' => 'បំលាស់ប្ដូរថ្មីៗ',
 'prefs-watchlist' => 'បញ្ជីតាមដាន',
@@ -1411,7 +1411,7 @@ $1",
 'prefs-emailconfirm-label' => 'បញ្ជាក់ទទួលស្គាល់អ៊ីមែល៖',
 'prefs-textboxsize' => 'ទំហំរបស់ផ្ទាំងកែប្រែទំព័រ',
 'youremail' => 'អ៊ីមែល៖',
-'wiki_username' => 'អត្តនាម៖',
+'username' => 'អត្តនាម៖',
 'uid' => 'អត្តលេខ៖',
 'prefs-memberingroups' => 'សមាជិកក្នុង{{PLURAL:$1|ក្រុម|ក្រុម}}៖',
 'prefs-registration' => 'កាលបរិច្ឆេទចុះឈ្មោះ៖',
@@ -1449,35 +1449,35 @@ $1",
 'prefs-displaywatchlist' => 'ជំរើសការបង្ហាញ',
 'prefs-diffs' => 'ភាពខុសគ្នា',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'អាសយដ្ឋានអ៊ីមែលហាក់មានសុពលភាព',
 'email-address-validity-invalid' => 'បញ្ចូលអាសយដ្ឋានអ៊ីមែលដែលមានសុពលភាព',
 
-# wiki_user rights
-'wiki_userrights' => 'ការគ្រប់គ្រងសិទ្ធិអ្នកប្រើប្រាស់',
-'wiki_userrights-lookup-wiki_user' => 'គ្រប់គ្រងក្រុមអ្នកប្រើប្រាស់',
-'wiki_userrights-wiki_user-editname' => 'បញ្ចូលអត្តនាម៖',
-'editwiki_usergroup' => 'កែប្រែក្រុមអ្នកប្រើប្រាស់',
-'editingwiki_user' => "ប្ដូរសិទ្ធរបស់អ្នកប្រើប្រាស់ '''[[wiki_user:$1|$1]]''' $2",
-'wiki_userrights-editwiki_usergroup' => 'កែប្រែក្រុមអ្នកប្រើប្រាស់',
-'savewiki_usergroups' => 'រក្សាក្រុមអ្នកប្រើប្រាស់ទុក',
-'wiki_userrights-groupsmember' => 'ក្រុមសមាជិកភាព៖',
-'wiki_userrights-groupsmember-auto' => 'សមាជិកស្វ័យប្រវត្តិរបស់៖',
-'wiki_userrights-groups-help' => 'អ្នកអាចប្ដូរក្រុមនានាដែលអ្នកប្រើប្រាស់នេះនៅ៖
+# User rights
+'userrights' => 'ការគ្រប់គ្រងសិទ្ធិអ្នកប្រើប្រាស់',
+'userrights-lookup-user' => 'គ្រប់គ្រងក្រុមអ្នកប្រើប្រាស់',
+'userrights-user-editname' => 'បញ្ចូលអត្តនាម៖',
+'editusergroup' => 'កែប្រែក្រុមអ្នកប្រើប្រាស់',
+'editinguser' => "ប្ដូរសិទ្ធរបស់អ្នកប្រើប្រាស់ '''[[User:$1|$1]]''' $2",
+'userrights-editusergroup' => 'កែប្រែក្រុមអ្នកប្រើប្រាស់',
+'saveusergroups' => 'រក្សាក្រុមអ្នកប្រើប្រាស់ទុក',
+'userrights-groupsmember' => 'ក្រុមសមាជិកភាព៖',
+'userrights-groupsmember-auto' => 'សមាជិកស្វ័យប្រវត្តិរបស់៖',
+'userrights-groups-help' => 'អ្នកអាចប្ដូរក្រុមនានាដែលអ្នកប្រើប្រាស់នេះនៅ៖
 * ប្រអប់ដែលមានគូសធីកមានន័យថាអ្នកប្រើប្រាស់នេះស្ថិតនៅក្នុងនោះរួចហើយ
 * ប្រអប់ដែលគ្មានគូសធីកមានន័យថាអ្នកប្រើប្រាស់នេះមិនស្ថិតនៅក្នុងនោះទេ
 * សញ្ញា * បញ្ជាក់ថាអ្នកមិនអាចប្ដូរក្រុមនោះចេញទេពេលដែលអ្នកបាន​បន្ថែមវាហើយ។',
-'wiki_userrights-reason' => 'មូលហេតុ៖',
-'wiki_userrights-no-interwiki' => 'អ្នកគ្មានការអនុញ្ញាតកែប្រែសិទ្ធិរបស់អ្នកប្រើប្រាស់លើវិគីផ្សេងទេ។',
-'wiki_userrights-nodatabase' => 'មូលដ្ឋានទិន្នន័យ $1 មិនមាន ឬ ស្ថិតនៅខាងក្រៅ។',
-'wiki_userrights-nologin' => 'អ្នកត្រូវតែ [[Special:wiki_userLogin|កត់ឈ្មោះចូល]]ដោយប្រើគណនីអ្នកអភិបាលដើម្បីផ្ដល់សិទ្ធិឱ្យអ្នកប្រើប្រាស់​។',
-'wiki_userrights-notallowed' => 'គណនីរបស់អ្នកគ្មានការអនុញ្ញាតដើម្បីបន្ថែមឬដកសិទ្ធិរបស់អ្នកប្រើប្រាស់ដទៃទេ។',
-'wiki_userrights-changeable-col' => 'ក្រុមនានាដែលអ្នកអាចផ្លាស់ប្ដូរបាន',
-'wiki_userrights-unchangeable-col' => 'ក្រុមនានាដែលអ្នកមិនអាចផ្លាស់ប្ដូរបាន',
+'userrights-reason' => 'មូលហេតុ៖',
+'userrights-no-interwiki' => 'អ្នកគ្មានការអនុញ្ញាតកែប្រែសិទ្ធិរបស់អ្នកប្រើប្រាស់លើវិគីផ្សេងទេ។',
+'userrights-nodatabase' => 'មូលដ្ឋានទិន្នន័យ $1 មិនមាន ឬ ស្ថិតនៅខាងក្រៅ។',
+'userrights-nologin' => 'អ្នកត្រូវតែ [[Special:UserLogin|កត់ឈ្មោះចូល]]ដោយប្រើគណនីអ្នកអភិបាលដើម្បីផ្ដល់សិទ្ធិឱ្យអ្នកប្រើប្រាស់​។',
+'userrights-notallowed' => 'គណនីរបស់អ្នកគ្មានការអនុញ្ញាតដើម្បីបន្ថែមឬដកសិទ្ធិរបស់អ្នកប្រើប្រាស់ដទៃទេ។',
+'userrights-changeable-col' => 'ក្រុមនានាដែលអ្នកអាចផ្លាស់ប្ដូរបាន',
+'userrights-unchangeable-col' => 'ក្រុមនានាដែលអ្នកមិនអាចផ្លាស់ប្ដូរបាន',
 
 # Groups
 'group' => 'ក្រុម៖',
-'group-wiki_user' => 'អ្នកប្រើប្រាស់',
+'group-user' => 'អ្នកប្រើប្រាស់',
 'group-autoconfirmed' => 'អ្នកប្រើប្រាស់ទទួលស្គាល់ដោយស្វ័យប្រវត្តិ',
 'group-bot' => 'រូបយន្ត',
 'group-sysop' => 'អ្នកអភិបាល',
@@ -1485,14 +1485,14 @@ $1",
 'group-suppress' => 'អធិការ',
 'group-all' => '(ទាំងអស់)',
 
-'group-wiki_user-member' => '{{GENDER:$1|អ្នកប្រើប្រាស់}}',
+'group-user-member' => '{{GENDER:$1|អ្នកប្រើប្រាស់}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|អ្នកប្រើប្រាស់ទទួលស្គាល់ដោយស្វ័យប្រវត្តិ}}',
 'group-bot-member' => '{{GENDER:$1|រូបយន្ត}}',
 'group-sysop-member' => '{{GENDER:$1|អ្នកអភិបាល}}',
 'group-bureaucrat-member' => '{{GENDER:$1|អ្នកការិយាល័យ}}',
 'group-suppress-member' => '{{GENDER:$1|អធិការ}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:អ្នកប្រើប្រាស់',
+'grouppage-user' => '{{ns:project}}:អ្នកប្រើប្រាស់',
 'grouppage-autoconfirmed' => '{{ns:project}}:អ្នកប្រើប្រាស់ទទួលស្គាល់ដោយស្វ័យប្រវត្តិ',
 'grouppage-bot' => '{{ns:project}}:រូបយន្ត',
 'grouppage-sysop' => '{{ns:project}}:អភិបាល',
@@ -1508,7 +1508,7 @@ $1",
 'right-minoredit' => 'កំណត់ចំណាំកំណែប្រែថាជាកំណែប្រែតិចតួច',
 'right-move' => 'ប្ដូរទីតាំងទំព័រ',
 'right-move-subpages' => 'ប្ដូរទីតាំងទំព័ររួមជាមួយទំព័ររងរបស់វា',
-'right-move-rootwiki_userpages' => 'ប្ដូរទីតាំងឫសទំព័រអ្នកប្រើប្រាស់',
+'right-move-rootuserpages' => 'ប្ដូរទីតាំងឫសទំព័រអ្នកប្រើប្រាស់',
 'right-movefile' => 'ប្ដូរទីតាំងឯកសារ',
 'right-suppressredirect' => 'មិនបង្កើតការបញ្ជូនបន្តពីទំព័រប្រភពនៅពេលប្ដូរទីតាំងទំព័រ',
 'right-upload' => 'ផ្ទុកឡើងឯកសារ',
@@ -1530,16 +1530,16 @@ $1",
 'right-suppressionlog' => 'មើលកំណត់ហេតុឯកជន',
 'right-block' => 'ហាមមិនឱ្យអ្នកប្រើប្រាស់ដទៃទៀតធ្វើការកែប្រែ',
 'right-blockemail' => 'ហាមឃាត់អ្នកប្រើប្រាស់ម្នាក់មិនអោយផ្ញើអ៊ីមែល',
-'right-hidewiki_user' => 'ហាមឃាត់អ្នកប្រើប្រាស់ម្នាក់ រួចលាក់មិនអោយបង្ហាញជាសាធារណៈ',
+'right-hideuser' => 'ហាមឃាត់អ្នកប្រើប្រាស់ម្នាក់ រួចលាក់មិនអោយបង្ហាញជាសាធារណៈ',
 'right-ipblock-exempt' => 'ការហាមឃាត់IPជាប្រយោល ការហាមឃាត់ស្វ័យប្រវត្តិនិងការហាមឃាត់មានកំរិត',
 'right-proxyunbannable' => 'ពង្វាងការរាំងខ្ទប់ស្វ័យប្រវត្តិរបស់ប្រុកស៊ី',
 'right-unblockself' => 'ឈប់ហាមឃាត់ពួកគេ',
 'right-protect' => 'ប្ដូរកម្រិតការពាររួចកែប្រែទំព័រដែលបានការពារ',
 'right-editprotected' => 'កែប្រែទំព័រដែលបានការពារ (ដោយមិនរំលាយការការពារ)',
 'right-editinterface' => 'កែប្រែអន្តរមុខអ្នកប្រើប្រាស់',
-'right-editwiki_usercssjs' => 'កែប្រែឯកសារ CSS និង JS របស់អ្នកប្រើប្រាស់ផ្សេងទៀត',
-'right-editwiki_usercss' => 'កែប្រែឯកសារ CSS របស់អ្នកប្រើប្រាស់ផ្សេងទៀត',
-'right-editwiki_userjs' => 'កែប្រែឯកសារ JS របស់អ្នកប្រើប្រាស់ផ្សេងទៀត',
+'right-editusercssjs' => 'កែប្រែឯកសារ CSS និង JS របស់អ្នកប្រើប្រាស់ផ្សេងទៀត',
+'right-editusercss' => 'កែប្រែឯកសារ CSS របស់អ្នកប្រើប្រាស់ផ្សេងទៀត',
+'right-edituserjs' => 'កែប្រែឯកសារ JS របស់អ្នកប្រើប្រាស់ផ្សេងទៀត',
 'right-rollback' => 'ត្រឡប់យ៉ាងរហ័សនូវកំណែប្រែទំព័រវិសេសណាមួយ​ដែលធ្វើឡើងដោយ​អ្នកប្រើប្រាស់ចុងក្រោយគេ។',
 'right-markbotedits' => 'ចំនាំកំនែប្រែត្រឡប់ឡើងវិញទាំងឡាយថាជាកំនែប្រែដោយរូបយន្ត',
 'right-noratelimit' => 'មិនទទួលរងឥទ្ធិពលពីការដាក់កំហិតណាទាំងអស់',
@@ -1550,14 +1550,14 @@ $1",
 'right-patrolmarks' => 'មើក​កំណត់​សម្គាល់​ល្បាត​ដែល​ផ្លាស់​ប្តូរ​ថ្មី​ៗ​',
 'right-unwatchedpages' => 'បង្ហាញបញ្ជីទំព័រនានាដែលមិនត្រូវបានមើល',
 'right-mergehistory' => 'ច្របាច់ប្រវត្តិរបស់ទំព័រនានាបញ្ចូលគ្នា',
-'right-wiki_userrights' => 'កែប្រែរាល់សិទ្ធិនៃអ្នកប្រើប្រាស់',
-'right-wiki_userrights-interwiki' => 'កែប្រែសិទ្ធិអ្នកប្រើប្រាស់នៅលើវិគីផ្សេងៗទៀត',
+'right-userrights' => 'កែប្រែរាល់សិទ្ធិនៃអ្នកប្រើប្រាស់',
+'right-userrights-interwiki' => 'កែប្រែសិទ្ធិអ្នកប្រើប្រាស់នៅលើវិគីផ្សេងៗទៀត',
 'right-siteadmin' => 'ចាក់សោនិងបើកសោមូលដ្ឋានទិន្នន័យ',
 'right-override-export-depth' => 'នាំចេញទំព័ររួមទាំងទំព័រដែលមានភ្ជាប់តំណភ្ជាប់​រហូតដល់លំដាប់ទី៥',
 'right-sendemail' => 'ផ្ញើអ៊ីមែលទៅកាន់អ្នកប្រើដទៃ',
 'right-passwordreset' => 'មើលអ៊ីមែលសំរាប់កំណត់ពាក្យសំងាត់ឡើងវិញ',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'កំណត់ហេតុនៃការប្តូរសិទ្ធិអ្នកប្រើប្រាស់',
 'rightslogtext' => 'នេះ​ជា​កំណត់ហេតុនៃបំលាស់ប្ដូរចំពោះកាប្ដូរក្រុមសមាជិកភាព​របស់​អ្នកប្រើប្រាស់។',
 'rightslogentry' => 'បានប្ដូរក្រុមសមាជិកភាពសម្រាប់ $1 ពី $2 ទៅ $3',
@@ -1573,7 +1573,7 @@ $1",
 'action-minoredit' => 'ចំណាំកំណែប្រែនេះថាជាកំណែប្រែតិចតួច',
 'action-move' => 'ប្ដូរទីតាំងទំព័រនេះ',
 'action-move-subpages' => 'ប្ដូរទីតាំងទំព័រនេះព្រមទាំងអនុទំព័ររបស់វា',
-'action-move-rootwiki_userpages' => 'ប្ដូរទីតាំងឫសទំព័រអ្នកប្រើប្រាស់',
+'action-move-rootuserpages' => 'ប្ដូរទីតាំងឫសទំព័រអ្នកប្រើប្រាស់',
 'action-movefile' => 'ប្ដូរទីតាំងឯកសារនេះ',
 'action-upload' => 'ផ្ទុកឡើងឯកសារនេះ',
 'action-reupload' => 'ផ្ទុកជាន់ពីលើឯកសារដែលមានស្រាប់ហើយនេះ',
@@ -1595,8 +1595,8 @@ $1",
 'action-autopatrol' => 'ផ្ដល់សិទ្ធិឱ្យគេចំណាំកំណែរបស់អ្នកថាបានល្បាត',
 'action-unwatchedpages' => 'មើលបញ្ជីនៃទំព័រមិនតាមដាន',
 'action-mergehistory' => 'ច្របាច់បញ្ចូលប្រវត្តិរបស់ទំព័រនេះ',
-'action-wiki_userrights' => 'កែប្រែសិទ្ធិរបស់អ្នកប្រើប្រាស់ទាំងអស់',
-'action-wiki_userrights-interwiki' => 'កែប្រែសិទ្ធិនានារបស់អ្នកប្រើប្រាស់នៅលើវិគីដទៃ',
+'action-userrights' => 'កែប្រែសិទ្ធិរបស់អ្នកប្រើប្រាស់ទាំងអស់',
+'action-userrights-interwiki' => 'កែប្រែសិទ្ធិនានារបស់អ្នកប្រើប្រាស់នៅលើវិគីដទៃ',
 'action-siteadmin' => 'ចាក់សោឬដោះសោមូលដ្ឋានទិន្នន័យ',
 'action-sendemail' => 'ផ្ញើអ៊ីមែល',
 
@@ -1627,7 +1627,7 @@ $1",
 'minoreditletter' => 'តិច',
 'newpageletter' => 'ថ្មី',
 'boteditletter' => 'រូបយន្ត',
-'number_of_watching_wiki_users_pageview' => '[មាន{{PLURAL:$1|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}}$1នាក់កំពុងមើល]',
+'number_of_watching_users_pageview' => '[មាន{{PLURAL:$1|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}}$1នាក់កំពុងមើល]',
 'rc_categories' => 'កម្រិតទីតាំងចំណាត់ថ្នាក់ក្រុម(ខណ្ឌដោយសញ្ញា "|")',
 'rc_categories_any' => 'មួយណាក៏បាន',
 'rc-change-size' => '$1',
@@ -1653,7 +1653,7 @@ $1",
 'reuploaddesc' => 'ឈប់ផ្ទុកឡើងរួចត្រឡប់ទៅបែបបទផ្ទុកឡើងវិញ។',
 'upload-tryagain' => 'ដាក់ស្នើការពណ៌នារបស់ឯកសារដែលបានកែរួច',
 'uploadnologin' => 'មិនទាន់កត់ឈ្មោះចូលទេ',
-'uploadnologintext' => 'អ្នកត្រូវតែ [[Special:wiki_userLogin|កត់ឈ្មោះចូល]] ដើម្បីមានសិទ្ធិផ្ទុកឯកសារទាំងឡាយឡើង។',
+'uploadnologintext' => 'អ្នកត្រូវតែ [[Special:UserLogin|កត់ឈ្មោះចូល]] ដើម្បីមានសិទ្ធិផ្ទុកឯកសារទាំងឡាយឡើង។',
 'upload_directory_missing' => 'ថតសំរាប់ទុកឯកសារផ្ទុកឡើង ($1) បាត់ ហើយប្រព័ន្ធបំរើការមិនអាចបង្កើតវាបានទេ។',
 'upload_directory_read_only' => 'ប្រព័ន្ធបំរើការមិនអាចសរសេរចូលទៅក្នុងថតសំរាប់ទុកឯកសារផ្ទុកឡើង ($1) ទេ។',
 'uploaderror' => 'បញ្ហាក្នុងការផ្ទុកឡើង',
@@ -1803,13 +1803,13 @@ $1',
 'upload-file-error' => 'បញ្ហាផ្នែកខាងក្នុង',
 'upload-file-error-text' => 'បញ្ហាផ្នែកខាងក្នុងបានកើតឡើង​ នៅពេលព្យាយាមបង្កើតឯកសារបណ្ដោះអាសន្នមួយ​នៅក្នុងម៉ាស៊ីនបម្រើការ។
 
-សូមទំនាក់ទំនង[[Special:Listwiki_users/sysop|អ្នកអភិបាល]]។',
+សូមទំនាក់ទំនង[[Special:ListUsers/sysop|អ្នកអភិបាល]]។',
 'upload-misc-error' => 'បញ្ហាក្នុងការផ្ទុកឡើង',
 'upload-misc-error-text' => 'បញ្ហាដែលមិនស្គាល់មួយបានកើតឡើងនៅក្នុងកំឡុងពេលផ្ទុកឡើង។
 
 ចូរផ្ទៀងផ្ទាត់ថា URL គឺមានសុពលភាពហើយអាចដំណើរការ រួចហើយ​ព្យាយាមម្តងទៀត។
 
-ប្រសិនបើបញ្ហានៅតែកើតឡើង សូមទំនាក់ទំនង[[Special:Listwiki_users/sysop|អ្នកអភិបាល]]។',
+ប្រសិនបើបញ្ហានៅតែកើតឡើង សូមទំនាក់ទំនង[[Special:ListUsers/sysop|អ្នកអភិបាល]]។',
 'upload-too-many-redirects' => 'URLនេះមានតំនភ្ជាប់បញ្ជូនបន្តច្រើនពេកហើយ',
 'upload-unknown-size' => 'មិនដឹងទំហំ',
 'upload-http-error' => 'មានកំហុសHTTPមួយបានកើតឡើង៖ $1',
@@ -1873,7 +1873,7 @@ $1',
 'listfiles_thumb' => 'កូនរូបភាព',
 'listfiles_date' => 'កាលបរិច្ឆេទ',
 'listfiles_name' => 'ឈ្មោះ',
-'listfiles_wiki_user' => 'អ្នកប្រើប្រាស់',
+'listfiles_user' => 'អ្នកប្រើប្រាស់',
 'listfiles_size' => 'ទំហំ',
 'listfiles_description' => 'ការពិពណ៌នា',
 'listfiles_count' => 'កំណែ',
@@ -1890,7 +1890,7 @@ $1',
 'filehist-thumb' => 'កូនរូបភាព',
 'filehist-thumbtext' => 'កូន​រូប​ភាព​​សម្រាប់​កំណែ​ (version) កាល​ពី​​ $1',
 'filehist-nothumb' => 'គ្មានកូនរូបភាព',
-'filehist-wiki_user' => 'អ្នកប្រើប្រាស់',
+'filehist-user' => 'អ្នកប្រើប្រាស់',
 'filehist-dimensions' => 'វិមាត្រ',
 'filehist-filesize' => 'ទំហំឯកសារ',
 'filehist-comment' => 'យោបល់',
@@ -1978,7 +1978,7 @@ $1',
 'statistics-header-pages' => 'ស្ថិតិទំព័រ',
 'statistics-header-edits' => 'ស្ថិតិកំណែប្រែ',
 'statistics-header-views' => 'មើលស្ថិតិ',
-'statistics-header-wiki_users' => 'ស្ថិតិអ្នកប្រើប្រាស់',
+'statistics-header-users' => 'ស្ថិតិអ្នកប្រើប្រាស់',
 'statistics-header-hooks' => 'ស្ថិតិ​ដទៃទៀត​',
 'statistics-articles' => 'ទំព័រខ្លឹមសារ',
 'statistics-pages' => 'ចំនួនទំព័រសរុប',
@@ -1989,9 +1989,9 @@ $1',
 'statistics-views-total' => 'ចំនួនការចូលមើលសរុប',
 'statistics-views-total-desc' => 'មិនរាប់បញ្ចូលការចូលមើលទំព័រដែលមិនមាននិងទំព័រពិសេសៗទេ',
 'statistics-views-peredit' => 'ចំនួនការចូលមើលក្នុងមួយកំណែប្រែ',
-'statistics-wiki_users' => '[[Special:Listwiki_users|អ្នកប្រើប្រាស់]]ដែលបានចុះឈ្មោះ',
-'statistics-wiki_users-active' => 'អ្នកប្រើប្រាស់សកម្ម',
-'statistics-wiki_users-active-desc' => 'អ្នក​ប្រើប្រាស់​ដែល​បាន​អនុវត្ត​សកម្មភាព​ក្នុង​{{PLURAL:$1|ថ្ងៃ​}}ចុង​ក្រោយ​',
+'statistics-users' => '[[Special:ListUsers|អ្នកប្រើប្រាស់]]ដែលបានចុះឈ្មោះ',
+'statistics-users-active' => 'អ្នកប្រើប្រាស់សកម្ម',
+'statistics-users-active-desc' => 'អ្នក​ប្រើប្រាស់​ដែល​បាន​អនុវត្ត​សកម្មភាព​ក្នុង​{{PLURAL:$1|ថ្ងៃ​}}ចុង​ក្រោយ​',
 'statistics-mostpopular' => 'ទំព័រដែលត្រូវបានមើលច្រើនបំផុត',
 
 'disambiguations' => 'ទំព័រដែលភ្ជាប់ទៅទំព័រមានចំណងជើងស្រដៀងគ្នា',
@@ -2069,13 +2069,13 @@ $1',
 'protectedtitles' => 'ចំណងជើងត្រូវបានការពារ',
 'protectedtitlestext' => 'ចំណងជើងទំព័រត្រូវបានការពារមិនឱ្យបង្កើត',
 'protectedtitlesempty' => 'មិន​មាន​ចំណងជើង​ណា​ដែល​ត្រូវ​បាន​ការពារ​ជាមួយនឹង​ប៉ារ៉ាម៉ែត​ទាំងនេះ​ទេ​នាពេលថ្មីៗនេះ។',
-'listwiki_users' => 'បញ្ជីអ្នកប្រើប្រាស់',
-'listwiki_users-editsonly' => 'បង្ហាញតែអ្នកប្រើប្រាស់ដែលបានកែប្រែអត្ថបទប៉ុណ្ណោះ',
-'listwiki_users-creationsort' => 'តំរៀបតាមលំដាប់កាលបរិច្ឆេទបង្កើត',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|កំណែប្រែ|កំណែប្រែ}}',
-'wiki_usercreated' => '{{GENDER:$3|បានបង្កើត}}នៅ$1  $2',
+'listusers' => 'បញ្ជីអ្នកប្រើប្រាស់',
+'listusers-editsonly' => 'បង្ហាញតែអ្នកប្រើប្រាស់ដែលបានកែប្រែអត្ថបទប៉ុណ្ណោះ',
+'listusers-creationsort' => 'តំរៀបតាមលំដាប់កាលបរិច្ឆេទបង្កើត',
+'usereditcount' => '$1 {{PLURAL:$1|កំណែប្រែ|កំណែប្រែ}}',
+'usercreated' => '{{GENDER:$3|បានបង្កើត}}នៅ$1  $2',
 'newpages' => 'ទំព័រថ្មីៗ',
-'newpages-wiki_username' => 'អត្តនាម៖',
+'newpages-username' => 'អត្តនាម៖',
 'ancientpages' => 'ទំព័រ​ចាស់ៗ',
 'move' => 'ប្ដូរទីតាំង',
 'movethispage' => 'ប្ដូរទីតាំងទំព័រនេះ',
@@ -2101,7 +2101,7 @@ $1',
 'booksources-invalid-isbn' => 'លេខISBNដែលអ្នកផ្ដល់អោយហាក់ដូចជាមិនត្រឹមត្រូវទេ។ សូមពិនិត្យក្រែងលោមានកំហុសក្នុងការចម្លងចេញពីប្រភពដើម។',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'អ្នកប្រព្រឹត្តិ៖',
+'specialloguserlabel' => 'អ្នកប្រព្រឹត្តិ៖',
 'speciallogtitlelabel' => 'គោលដៅ (ចំណងជើងអត្តបទឬអត្តនាមអ្នកប្រើប្រាស់)៖',
 'log' => 'កំណត់ហេតុ',
 'all-logs-page' => 'កំណត់ហេតុសាធារណៈទាំងអស់',
@@ -2157,24 +2157,24 @@ $1',
 ប្រូតូខូលប្រើបាន៖ <code>$1</code> (កុំបន្ថែមវាទាំងនេះទៅក្នុងការស្វែងរករបស់អ្នកអោយសោះ)។',
 'linksearch-line' => '$1បានតភ្ជាប់ពី$2',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'បង្ហាញអ្នកប្រើប្រាស់ចាប់ផ្តើមពី៖',
-'listwiki_users-submit' => 'បង្ហាញ',
-'listwiki_users-noresult' => 'មិនមានអ្នកប្រើប្រាស់នៅក្នុងក្រុមនេះទេ។',
-'listwiki_users-blocked' => '(ស្ថិតក្រោមការហាមឃាត់)',
+# Special:ListUsers
+'listusersfrom' => 'បង្ហាញអ្នកប្រើប្រាស់ចាប់ផ្តើមពី៖',
+'listusers-submit' => 'បង្ហាញ',
+'listusers-noresult' => 'មិនមានអ្នកប្រើប្រាស់នៅក្នុងក្រុមនេះទេ។',
+'listusers-blocked' => '(ស្ថិតក្រោមការហាមឃាត់)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'បញ្ជីរាយនាមអ្នកប្រើប្រាស់សកម្ម',
-'activewiki_users-intro' => 'នេះជាបញ្ជីរាយនាមអ្នកប្រើប្រាស់ដែលមានសកម្មភាពក្នុងរូបភាពណាមួយក្នុងរយៈពេល $1 {{PLURAL:$1|ថ្ងៃ|ថ្ងៃ}}ចុងក្រោយ។',
-'activewiki_users-count' => '$1 {{PLURAL:$1|កំនែប្រែ|កំនែប្រែ}}ក្នុងរយៈពេល{{PLURAL:$3|ថ្ងៃ|$3 ថ្ងៃ}}ចុងក្រោយ',
-'activewiki_users-from' => 'បង្ហាញអត្តនាមផ្ដើមដោយ៖',
-'activewiki_users-hidebots' => 'លាក់រូបយន្ត',
-'activewiki_users-hidesysops' => 'លាក់អ្នកអភិបាល',
-'activewiki_users-noresult' => 'អ្នកប្រើប្រាស់​រកមិនឃើញ​។​',
+# Special:ActiveUsers
+'activeusers' => 'បញ្ជីរាយនាមអ្នកប្រើប្រាស់សកម្ម',
+'activeusers-intro' => 'នេះជាបញ្ជីរាយនាមអ្នកប្រើប្រាស់ដែលមានសកម្មភាពក្នុងរូបភាពណាមួយក្នុងរយៈពេល $1 {{PLURAL:$1|ថ្ងៃ|ថ្ងៃ}}ចុងក្រោយ។',
+'activeusers-count' => '$1 {{PLURAL:$1|កំនែប្រែ|កំនែប្រែ}}ក្នុងរយៈពេល{{PLURAL:$3|ថ្ងៃ|$3 ថ្ងៃ}}ចុងក្រោយ',
+'activeusers-from' => 'បង្ហាញអត្តនាមផ្ដើមដោយ៖',
+'activeusers-hidebots' => 'លាក់រូបយន្ត',
+'activeusers-hidesysops' => 'លាក់អ្នកអភិបាល',
+'activeusers-noresult' => 'អ្នកប្រើប្រាស់​រកមិនឃើញ​។​',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'កំណត់ហេតុនៃការបង្កើតគណនី',
-'newwiki_userlogpagetext' => 'នេះជាកំណត់ហេតុនៃការបង្កើតអ្នកប្រើប្រាស់។',
+# Special:Log/newusers
+'newuserlogpage' => 'កំណត់ហេតុនៃការបង្កើតគណនី',
+'newuserlogpagetext' => 'នេះជាកំណត់ហេតុនៃការបង្កើតអ្នកប្រើប្រាស់។',
 
 # Special:ListGroupRights
 'listgrouprights' => 'សិទ្ធិនិងក្រុមអ្នកប្រើប្រាស់',
@@ -2194,27 +2194,27 @@ $1',
 'listgrouprights-addgroup-self-all' => 'បន្ថែម​ក្រុម​ទាំងអស់​ទៅ​គណនី​ផ្ទាល់ខ្លួន​',
 'listgrouprights-removegroup-self-all' => 'យក​ចេញ​​ក្រុម​ទាំងអស់​ពី​​គណនី​ផ្ទាល់ខ្លួន​',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'មិនមានអាសយដ្ឋានផ្ញើទេ',
-'mailnologintext' => 'អ្នកត្រូវតែ [[Special:wiki_userLogin|កត់ឈ្មោះចូល]] និង មានអាសយដ្ឋានអ៊ីមែលមានសុពលភាពមួយ ក្នុង[[Special:Preferences|ចំណង់ចំណូលចិត្ត]]របស់អ្នក ដើម្បីមានសិទ្ធិផ្ញើអ៊ីមែលទៅអ្នកប្រើប្រាស់ដទៃទៀត។',
-'emailwiki_user' => 'ផ្ញើអ៊ីមែល​ទៅកាន់​អ្នក​ប្រើប្រាស់នេះ',
-'emailwiki_user-title-target' => 'ផ្ញើសារទៅកាន់ {{GENDER:$1|អ្នកប្រើប្រាស់}} នេះ',
-'emailwiki_user-title-notarget' => 'ផ្ញើអ៊ីមែលទៅកាន់អ្នកប្រើប្រាស់',
+'mailnologintext' => 'អ្នកត្រូវតែ [[Special:UserLogin|កត់ឈ្មោះចូល]] និង មានអាសយដ្ឋានអ៊ីមែលមានសុពលភាពមួយ ក្នុង[[Special:Preferences|ចំណង់ចំណូលចិត្ត]]របស់អ្នក ដើម្បីមានសិទ្ធិផ្ញើអ៊ីមែលទៅអ្នកប្រើប្រាស់ដទៃទៀត។',
+'emailuser' => 'ផ្ញើអ៊ីមែល​ទៅកាន់​អ្នក​ប្រើប្រាស់នេះ',
+'emailuser-title-target' => 'ផ្ញើសារទៅកាន់ {{GENDER:$1|អ្នកប្រើប្រាស់}} នេះ',
+'emailuser-title-notarget' => 'ផ្ញើអ៊ីមែលទៅកាន់អ្នកប្រើប្រាស់',
 'emailpage' => 'ផ្ញើអ៊ីមែលទៅកាន់អ្នកប្រើប្រាស់',
 'emailpagetext' => 'អ្នក​អាច​ប្រើសំនុំ​បែប​បទ​ខាង​ក្រោម​ក្នុង​ការ​ផ្ញើ​សារ​ជា​អ៊ីមែល​ទៅ​កាន់​{{GENDER:$1|អ្នកប្រើប្រាស់}}នេះ។
 អាសយដ្ឋាន​អ៊ីមែល​ដែល​អ្នក​បាន​វាយ​បញ្ចូល​ក្នុង [[Special:Preferences|ចំណង់ចំណូលចិត្តរបស់អ្នក]]នឹង​បង្ហាញ​ជា​អាសយដ្ឋាន​អ៊ីមែល "From" ដូច្នោះ​អ្នក​ទទួល​នឹង​អាច​ឆ្លើយ​តប​ទៅ​អ្នក​វិញ​ដោយ​ផ្ទាល់​។',
-'wiki_usermailererror' => 'កំហុសឆ្គងក្នុងចំណងជើងអ៊ីមែល៖',
+'usermailererror' => 'កំហុសឆ្គងក្នុងចំណងជើងអ៊ីមែល៖',
 'defemailsubject' => 'អ៊ីមែល{{SITENAME}}ពី "$1"',
-'wiki_usermaildisabled' => 'មិនប្រើអ៊ីមែល',
-'wiki_usermaildisabledtext' => 'អ្នកមិនអាចផ្ញើអ៊ីមែលទៅកាន់អ្នកប្រើប្រាស់ដទៃទៀតនៅលើវិគីនេះបានទេ',
+'usermaildisabled' => 'មិនប្រើអ៊ីមែល',
+'usermaildisabledtext' => 'អ្នកមិនអាចផ្ញើអ៊ីមែលទៅកាន់អ្នកប្រើប្រាស់ដទៃទៀតនៅលើវិគីនេះបានទេ',
 'noemailtitle' => 'គ្មានអាសយដ្ឋានអ៊ីមែល',
 'noemailtext' => 'អ្នកប្រើប្រាស់នេះមិនបានផ្ដល់អាសយដ្ឋានអ៊ីមែលដែលមានសុពលភាពទេ។',
 'nowikiemailtitle' => 'មិនអនុញ្ញាតអោយប្រើអ៊ីមែល',
 'nowikiemailtext' => 'អ្នក​ប្រើប្រាស់​នេះ​បាន​ជ្រើសរើស​មិន​ទទួល​អ៊ីមែល​ពីអ្នកប្រើប្រាស់​ដទៃ​ទៀត​។',
 'emailnotarget' => 'អត្តនាមអ្នកទទួលមិនត្រឹមត្រូវឬជាអត្តនាមដែលគ្មាន។',
 'emailtarget' => 'វាយបញ្ចូលអត្តនាមអ្នកទទួល',
-'emailwiki_username' => 'អត្តនាម៖',
-'emailwiki_usernamesubmit' => 'ដាក់ស្នើ',
+'emailusername' => 'អត្តនាម៖',
+'emailusernamesubmit' => 'ដាក់ស្នើ',
 'email-legend' => 'ផ្ញើអ៊ីមែលទៅអ្នកប្រើប្រាស់{{SITENAME}}ម្នាក់ទៀត',
 'emailfrom' => 'ពី៖',
 'emailto' => 'ទៅកាន់៖',
@@ -2225,11 +2225,11 @@ $1',
 'emailccsubject' => 'ច្បាប់ចម្លងនៃសារដែលអ្នកផ្ញើទៅកាន់ $1 ៖ $2',
 'emailsent' => 'អ៊ីមែលត្រូវបានផ្ញើទៅហើយ',
 'emailsenttext' => 'សារអ៊ីមែលរបស់អ្នកត្រូវបានផ្ញើរួចហើយ។',
-'emailwiki_userfooter' => 'អ៊ីមែលនេះត្រូវបានផ្ញើដោយ$1ទៅកាន់$2ដោយប្រើមុខងារ"អ៊ីមែលអ្នកប្រើប្រាស់"របស់{{SITENAME}}។',
+'emailuserfooter' => 'អ៊ីមែលនេះត្រូវបានផ្ញើដោយ$1ទៅកាន់$2ដោយប្រើមុខងារ"អ៊ីមែលអ្នកប្រើប្រាស់"របស់{{SITENAME}}។',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'ទុកសារ',
-'wiki_usermessage-editor' => 'ប្រព័ន្ធផ្ញើសារ',
+# User Messenger
+'usermessage-summary' => 'ទុកសារ',
+'usermessage-editor' => 'ប្រព័ន្ធផ្ញើសារ',
 
 # Watchlist
 'watchlist' => 'បញ្ជីតាមដានរបស់ខ្ញុំ',
@@ -2238,7 +2238,7 @@ $1',
 'nowatchlist' => 'គ្មានអ្វីនៅក្នុងបញ្ជីតាមដានរបស់អ្នកទេ។',
 'watchlistanontext' => 'សូម $1 ដើម្បី​មើល​ឬ​កែប្រែ​របស់​ក្នុង​បញ្ជីតាមដាន​របស់អ្នក។',
 'watchnologin' => 'មិនទាន់កត់ឈ្មោះចូលទេ',
-'watchnologintext' => 'អ្នកចាំបាច់ត្រូវតែ[[Special:wiki_userLogin|កត់ឈ្មោះចូល]]ដើម្បីកែប្រែបញ្ជីតាមដានរបស់អ្នក។',
+'watchnologintext' => 'អ្នកចាំបាច់ត្រូវតែ[[Special:UserLogin|កត់ឈ្មោះចូល]]ដើម្បីកែប្រែបញ្ជីតាមដានរបស់អ្នក។',
 'addwatch' => 'បន្ថែមទៅបញ្ជីតាមដាន',
 'addedwatchtext' => "ទំព័រ \"[[:\$1]]\" ត្រូវបានដាក់បញ្ចូលទៅក្នុង​[[Special:Watchlist|បញ្ជីតាមដាន]]របស់លោកអ្នកហើយ ។ រាល់ការផ្លាស់ប្ដូរនៃទំព័រនេះ រួមទាំងទំព័រពិភាក្សារបស់វាផងដែរ នឹងត្រូវបានដាក់បញ្ចូលក្នុងបញ្ជីនៅទីនោះ។  ទំព័រនេះនឹងបង្ហាញជា'''អក្សរដិត''' នៅក្នុង [[Special:RecentChanges|បញ្ជីបំលាស់ប្ដូរថ្មីៗ]] ងាយស្រួលក្នុងការស្វែងរក។ ប្រសិនបើលោកអ្នកចង់យកវាចេញពី [[Special:Watchlist|បញ្ជីតាមដាន]]របស់លោកអ្នក សូមចុច '''ឈប់តាមដាន''' នៅលើរបារចំហៀងផ្នែកខាងលើ។",
 'removewatch' => 'ដកចេញពីបញ្ជីតាមដាន',
@@ -2355,13 +2355,13 @@ $UNWATCHURL
 'rollbacklink' => 'ត្រឡប់',
 'rollbackfailed' => 'ការ​ត្រឡប់​ក្រោយមិនបានសំរេច',
 'cantrollback' => 'មិនអាចត្រឡប់កំណែប្រែ។ អ្នករួមចំណែកចុងក្រោយទើបជាអ្នកនិពន្ធ​របស់ទំព័រនេះ។',
-'alreadyrolled' => 'មិនអាចធ្វើការត្រឡប់ [[:$1]] ទៅកាន់កំណែចុងក្រោយរបស់អ្នកប្រើឈ្មោះ [[wiki_user:$2|$2]] ([[wiki_user talk:$2|ការពិភាក្សា]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) ទេ។
+'alreadyrolled' => 'មិនអាចធ្វើការត្រឡប់ [[:$1]] ទៅកាន់កំណែចុងក្រោយរបស់អ្នកប្រើឈ្មោះ [[User:$2|$2]] ([[User talk:$2|ការពិភាក្សា]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) ទេ។
 
 មាននរណាម្នាក់បានកែប្រែឬត្រឡប់ទំព័រនោះរួចហើយ។
 
-កំណែប្រែចុងក្រោយរបស់ទំព័រនេះធ្វើឡើងដោយអ្នកប្រើឈ្មោះ [[wiki_user:$3|$3]] ([[wiki_user talk:$3|ការពិភាក្សា]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]])។',
+កំណែប្រែចុងក្រោយរបស់ទំព័រនេះធ្វើឡើងដោយអ្នកប្រើឈ្មោះ [[User:$3|$3]] ([[User talk:$3|ការពិភាក្សា]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]])។',
 'editcomment' => "ចំណារពន្យល់ពីការកែប្រែគឺ៖ \"''\$1''\"។",
-'revertpage' => 'បានត្រឡប់កំណែប្រែដោយ[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|Talk]]) ទៅកំណែប្រែចុងក្រោយដោយ [[wiki_user:$1|$1]]',
+'revertpage' => 'បានត្រឡប់កំណែប្រែដោយ[[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) ទៅកំណែប្រែចុងក្រោយដោយ [[User:$1|$1]]',
 'rollback-success' => 'កំណែ​ដែល​ត្រូវ​បាន​ត្រឡប់​ដោយ​ $1។
 បាន​ផ្លាស់​ប្ដូរ​ទៅ​កំណែ​ចុង​ក្រោយ​វិញ​ដោយ $2។',
 
@@ -2516,13 +2516,13 @@ $1',
 'sp-contributions-uploads' => 'ឯកសារផ្ទុកឡើង',
 'sp-contributions-logs' => 'កំណត់​ហេតុ​',
 'sp-contributions-talk' => 'ការពិភាក្សា',
-'sp-contributions-wiki_userrights' => 'ការគ្រប់គ្រងសិទ្ធិអ្នកប្រើប្រាស់',
+'sp-contributions-userrights' => 'ការគ្រប់គ្រងសិទ្ធិអ្នកប្រើប្រាស់',
 'sp-contributions-blocked-notice' => 'អ្នកប្រើប្រាស់នេះត្រូវបានហាមឃាត់ហើយនាពេលនេះ។
 កំណត់ត្រាស្ដីពីការហាមឃាត់ចុងក្រោយមានបង្ហាញដូចខាងក្រោមនេះ៖',
 'sp-contributions-blocked-notice-anon' => 'អាសយដ្ឋានIPនេះត្រូវបានហាមឃាត់ហើយនាពេលនេះ។
 កំណត់ត្រាស្ដីពីការហាមឃាត់ចុងក្រោយមានបង្ហាញដូចខាងក្រោមនេះ៖',
 'sp-contributions-search' => 'ស្វែងរកការរួមចំណែក',
-'sp-contributions-wiki_username' => 'អាសយដ្ឋានIP ឬអត្តនាម៖',
+'sp-contributions-username' => 'អាសយដ្ឋានIP ឬអត្តនាម៖',
 'sp-contributions-toponly' => 'បង្ហាញតែការកែប្រែណាដែលជាកំណែថ្មីៗជាងគេប៉ុណ្ណោះ',
 'sp-contributions-submit' => 'ស្វែងរក',
 
@@ -2555,7 +2555,7 @@ $1',
 'blockiptext' => 'សូម​ប្រើប្រាស់​សំណុំ​បែបបទ​ខាងក្រោម​ដើម្បី​ហាមឃាត់ការសរសេរ​ពី​អាសយដ្ឋាន IP ឬ​ឈ្មោះ​អ្នកប្រើប្រាស់ណាមួយ​។
 ការ​ធ្វើ​បែបនេះ​គួរតែ​ធ្វើឡើង​ក្នុង​គោលបំណង​បង្ការ​ការប៉ុនប៉ង​បំផ្លាញ(vandalism)ដូច​ដែល​មាន​ចែង​ក្នុង[[{{MediaWiki:Policy-url}}|គោលការណ៍]]។
 សូមបំពេញមូលហេតុច្បាស់លាស់មួយខាងក្រោម (ឧទាហរណ៍៖ រាយឈ្មោះទំព័រនានាដែលត្រូវបានគេបំផ្លាញ)។',
-'ipadressorwiki_username' => 'អាសយដ្ឋានIP ឬអត្តនាម៖',
+'ipadressorusername' => 'អាសយដ្ឋានIP ឬអត្តនាម៖',
 'ipbexpiry' => 'រយៈពេលផុតកំណត់៖',
 'ipbreason' => 'មូលហេតុ៖',
 'ipbreasonotherlist' => 'មូលហេតុផ្សេងទៀត',
@@ -2576,14 +2576,14 @@ $1',
 'ipbotheroption' => 'ផ្សេងៗទៀត',
 'ipbotherreason' => 'មូលហេតុ(ផ្សេងទៀតឬបន្ថែម)៖',
 'ipbhidename' => 'លាក់​ឈ្មោះ​អ្នក​ប្រើ​ប្រាស់​ពី​កំណែ​ប្រែ​នឹង​បញ្ជី​',
-'ipbwatchwiki_user' => 'តាមដានទំព័រអ្នកប្រើប្រាស់និងទំព័រពិភាក្សារបស់អ្នកប្រើប្រាស់នេះ។',
-'ipb-disablewiki_usertalk' => 'ហាមអ្នកប្រើប្រាស់នេះមិនអោយធ្វើការកែប្រែទំព័រពិភាក្សារបស់ខ្លួនពេលត្រូវបានហាមឃាត់។',
+'ipbwatchuser' => 'តាមដានទំព័រអ្នកប្រើប្រាស់និងទំព័រពិភាក្សារបស់អ្នកប្រើប្រាស់នេះ។',
+'ipb-disableusertalk' => 'ហាមអ្នកប្រើប្រាស់នេះមិនអោយធ្វើការកែប្រែទំព័រពិភាក្សារបស់ខ្លួនពេលត្រូវបានហាមឃាត់។',
 'ipb-change-block' => 'ហាមឃាត់អ្នកប្រើប្រាស់នេះឡើងវិញតាមការកំណត់ទាំងនេះ',
 'ipb-confirm' => 'បញ្ជាក់ទទួលស្គាល់ការហាមឃាត់',
 'badipaddress' => 'អាសយដ្ឋានIPមិនត្រឹមត្រូវ',
 'blockipsuccesssub' => 'ដាក់ការហាមឃាត់បានសំរេច',
 'ipb-blockingself' => 'អ្នករៀបនឹងរាំងខ្ទប់ខ្លួនឯងហើយ! តើអ្នកប្រាកដថាចង់ធ្វើបែបនេះមែនទេ?',
-'ipb-confirmhidewiki_user' => 'អ្នករៀបនឹងរាំងខ្ទប់អ្នកប្រើប្រាស់ម្នាក់ដែលមានប្រើមុខងារ "អ្នកប្រើប្រាស់លាក់មុខ"។ ការធ្វើបែបនេះនឹងលាក់ឈ្មោះរបស់អ្នកប្រើប្រាស់នេះនៅក្នុងបញ្ជីនិងកំណត់ហេតុទាំងអស់។ តើអ្នកប្រាកដថាចង់ធ្វើបែបនេះមែនទេ?',
+'ipb-confirmhideuser' => 'អ្នករៀបនឹងរាំងខ្ទប់អ្នកប្រើប្រាស់ម្នាក់ដែលមានប្រើមុខងារ "អ្នកប្រើប្រាស់លាក់មុខ"។ ការធ្វើបែបនេះនឹងលាក់ឈ្មោះរបស់អ្នកប្រើប្រាស់នេះនៅក្នុងបញ្ជីនិងកំណត់ហេតុទាំងអស់។ តើអ្នកប្រាកដថាចង់ធ្វើបែបនេះមែនទេ?',
 'ipb-edit-dropdown' => 'កែប្រែមូលហេតុនៃការហាមឃាត់',
 'ipb-unblock-addr' => 'ដកការហាមឃាត់លើ $1',
 'ipb-unblock' => 'ដកការហាមឃាត់លើអ្នកប្រើប្រាស់ ឬ អាសយដ្ឋាន IP',
@@ -2592,13 +2592,13 @@ $1',
 'unblockip' => 'ដកការហាមឃាត់លើអ្នកប្រើប្រាស់',
 'unblockiptext' => 'សូម​ប្រើប្រាស់​ទម្រង់​បែបបទ​ខាងក្រោម​នេះ ដើម្បី​បើក​សិទ្ឋិ​សរសេរ​ឡើងវិញ សម្រាប់​អាសយដ្ឋាន​IP​ឬ​អ្នកប្រើប្រាស់​ដែល​ត្រូវ​បាន​ហាមឃាត់ពីមុន​។',
 'ipusubmit' => 'ដក​ការហាមឃាត់នេះ​ចេញ',
-'unblocked' => '[[wiki_user:$1|$1]] ត្រូវបានដកការហាមឃាត់ហើយ',
+'unblocked' => '[[User:$1|$1]] ត្រូវបានដកការហាមឃាត់ហើយ',
 'unblocked-range' => '$1 ត្រូវបានដកការហាមឃាត់ហើយ',
 'unblocked-id' => '$1 ត្រូវបានដកការហាមឃាត់ហើយ',
 'blocklist' => 'អ្នកប្រើប្រាស់ដែលជាប់ការហាមឃាត់',
 'ipblocklist' => 'អ្នកប្រើប្រាស់ដែលជាប់ការហាមឃាត់',
 'ipblocklist-legend' => 'ស្វែងរកអ្នកប្រើប្រាស់ដែលជាប់ការហាមឃាត់',
-'blocklist-wiki_userblocks' => 'លាក់ការហាមឃាត់លើគណនី',
+'blocklist-userblocks' => 'លាក់ការហាមឃាត់លើគណនី',
 'blocklist-tempblocks' => 'លាក់ការហាមឃាត់បណ្ណោះអាសន្ន',
 'blocklist-addressblocks' => 'លាក់ការហាមឃាត់ IP ទោល',
 'blocklist-timestamp' => 'ត្រាពេលវេលា',
@@ -2614,7 +2614,7 @@ $1',
 'noautoblockblock' => 'ការហាមឃាត់ដោយស្វ័យប្រវត្តិមិនត្រូវបានអនុញ្ញាតទេ',
 'createaccountblock' => 'ការបង្កើតគណនីត្រូវបានហាមឃាត់',
 'emailblock' => 'អ៊ីមែលដែលត្រូវបានហាមឃាត់',
-'blocklist-nowiki_usertalk' => 'មិនអាចកែប្រែទំព័រពិភាក្សាខ្លួនឯងទេ',
+'blocklist-nousertalk' => 'មិនអាចកែប្រែទំព័រពិភាក្សាខ្លួនឯងទេ',
 'ipblocklist-empty' => 'បញ្ជីហាមឃាត់គឺទទេ។',
 'ipblocklist-no-results' => 'អាសយដ្ឋានIPឬអត្តនាមដែលបានផ្ដល់មកគឺមិនស្ថិតក្នុងបញ្ជីការហាមឃាត់ទេ។',
 'blocklink' => 'ដាក់ការហាមឃាត់',
@@ -2622,7 +2622,7 @@ $1',
 'change-blocklink' => 'ផ្លាស់ប្ដូរការហាមឃាត់',
 'contribslink' => 'ការរួមចំណែក',
 'emaillink' => 'ផ្ញើអ៊ីមែល',
-'autoblocker' => 'អ្នកបានត្រូវបានហាមឃាត់ដោយស្វ័យប្រវត្តិ ពីព្រោះអាសយដ្ឋានIPរបស់អ្នកត្រូវបានប្រើប្រាស់ដោយ"[[wiki_user:$1|$1]]"។ មូលហេតុលើកឡើងចំពោះការហាមឃាត់$1គឺ៖ "$2"',
+'autoblocker' => 'អ្នកបានត្រូវបានហាមឃាត់ដោយស្វ័យប្រវត្តិ ពីព្រោះអាសយដ្ឋានIPរបស់អ្នកត្រូវបានប្រើប្រាស់ដោយ"[[User:$1|$1]]"។ មូលហេតុលើកឡើងចំពោះការហាមឃាត់$1គឺ៖ "$2"',
 'blocklogpage' => 'កំណត់ហេតុនៃការហាមឃាត់',
 'blocklog-showlog' => 'អ្នកប្រើប្រាស់នេះត្រូវបានរាំងខ្ទប់មុននេះម្ដងហើយ។
 កំណត់ហេតុស្ដីពីការរាំងខ្ទប់ត្រូវបានផ្ដល់អោយដូចខាងក្រោម៖',
@@ -2633,13 +2633,13 @@ $1',
 'block-log-flags-nocreate' => 'ការបង្កើតគណនីត្រូវបានហាមឃាត់',
 'block-log-flags-noautoblock' => 'ការហាមឃាត់ដោយស្វ័យប្រវត្តិមិនត្រូវបានអនុញ្ញាតទេ',
 'block-log-flags-noemail' => 'អ៊ីមែលត្រូវបានហាមឃាត់',
-'block-log-flags-nowiki_usertalk' => 'មិនអាចកែប្រែទំព័រពិភាក្សាផ្ទាល់ខ្លួនទេ',
+'block-log-flags-nousertalk' => 'មិនអាចកែប្រែទំព័រពិភាក្សាផ្ទាល់ខ្លួនទេ',
 'block-log-flags-hiddenname' => 'លាក់អត្តនាម',
 'ipb_expiry_invalid' => 'កាលបរិច្ឆេទផុតកំណត់មិនត្រឹមត្រូវទេ។',
 'ipb_already_blocked' => '"$1"ត្រូវបានហាមឃាត់ហើយ',
 'ipb-needreblock' => '$1 ត្រូវ​បាន​ហាមឃាត់ហើយ​។ តើ​អ្នក​ចង់​ធ្វើការ​ផ្លាស់ប្ដូរ​ការកំណត់ឬ​?',
 'ipb-otherblocks-header' => '{{PLURAL:$1|ការហាមឃាត់|ការហាមឃាត់}}ផ្សេងទៀត',
-'unblock-hidewiki_user' => 'អ្នកមិនអាចដកការហាមឃាត់លើអ្នកប្រើប្រាស់នេះទេ ព្រោះអត្តនាមរបស់ពួកគេត្រូវបានលាក់។',
+'unblock-hideuser' => 'អ្នកមិនអាចដកការហាមឃាត់លើអ្នកប្រើប្រាស់នេះទេ ព្រោះអត្តនាមរបស់ពួកគេត្រូវបានលាក់។',
 'ipb_cant_unblock' => 'កំហុស៖ រកមិនឃើញ ID $1  ដែលត្រូវបានហាមឃាត់ទេ ។
 
 វាប្រហែលជាត្រូវបានគេដកការហាមឃាត់ហើយ។',
@@ -2697,13 +2697,13 @@ $1',
 
 ក្នុង​ករណី​ទាំង​នោះ អ្នក​នឹង​ត្រូវតែ​ប្តូរឈ្មោះ​ទំព័រ​ឬ​បញ្ចូលរួមគ្នា​បើ​អ្នក​ចង់។",
 'movearticle' => 'ប្ដូរទីតាំងទំព័រ៖',
-'movewiki_userpage-warning' => "'''ប្រយ័ត្ន៖''' អ្នកបំរុងនឹងប្ដូរទីតាំងទំព័រអ្នកប្រើប្រាស់មួយហើយ។ សូមសំគាល់ថា ទំព័រនឹងត្រូវបានប្ដូរទីតាំង ក៏ប៉ុន្តែអ្នកប្រើប្រាស់នឹង''មិន''ត្រូវបានប្ដូរឈ្មោះទេ។",
+'moveuserpage-warning' => "'''ប្រយ័ត្ន៖''' អ្នកបំរុងនឹងប្ដូរទីតាំងទំព័រអ្នកប្រើប្រាស់មួយហើយ។ សូមសំគាល់ថា ទំព័រនឹងត្រូវបានប្ដូរទីតាំង ក៏ប៉ុន្តែអ្នកប្រើប្រាស់នឹង''មិន''ត្រូវបានប្ដូរឈ្មោះទេ។",
 'movenologin' => 'មិនទាន់កត់ឈ្មោះចូលទេ',
-'movenologintext' => 'អ្នក​ត្រូវតែ​ជា​អ្នកប្រើប្រាស់​ដែល​បាន​ចុះឈ្មោះ ហើយបាន [[Special:wiki_userLogin|កត់ឈ្មោះចូល]] ដើម្បីប្ដូរទីតាំងទំព័រមួយ។',
+'movenologintext' => 'អ្នក​ត្រូវតែ​ជា​អ្នកប្រើប្រាស់​ដែល​បាន​ចុះឈ្មោះ ហើយបាន [[Special:UserLogin|កត់ឈ្មោះចូល]] ដើម្បីប្ដូរទីតាំងទំព័រមួយ។',
 'movenotallowed' => 'អ្នកមិនត្រូវបាន​អនុញ្ញាត​ឱ្យ​ប្តូរទីតាំងទំព័រ​ទេ។',
 'movenotallowedfile' => 'អ្នកគ្មានការអនុញ្ញាតអោយប្ដូរទីតាំងឯកសារនានាទេ។',
-'cant-move-wiki_user-page' => 'អ្នកមិនត្រូវបានអនុញ្ញាតឱ្យប្ដូរទីតាំងទំព័រអ្នកប្រើប្រាស់នានា(ដាច់ពីអនុទំព័ររបស់វា)ទេ។',
-'cant-move-to-wiki_user-page' => 'អ្នកគ្មានការអនុញ្ញាតអោយប្ដូរទីតាំងទំព័រមួយទៅកាន់ទំព័រអ្នកប្រើប្រាស់មួយទេ (លើកលែងតែទៅកាន់ទំព័ររងមួយ)។',
+'cant-move-user-page' => 'អ្នកមិនត្រូវបានអនុញ្ញាតឱ្យប្ដូរទីតាំងទំព័រអ្នកប្រើប្រាស់នានា(ដាច់ពីអនុទំព័ររបស់វា)ទេ។',
+'cant-move-to-user-page' => 'អ្នកគ្មានការអនុញ្ញាតអោយប្ដូរទីតាំងទំព័រមួយទៅកាន់ទំព័រអ្នកប្រើប្រាស់មួយទេ (លើកលែងតែទៅកាន់ទំព័ររងមួយ)។',
 'newtitle' => 'ទៅចំណងជើងថ្មី៖',
 'move-watch' => 'តាមដានទំព័រនេះ',
 'movepagebtn' => 'ប្ដូរទីតាំង',
@@ -2843,7 +2843,7 @@ $1',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|កំណែ}} ពី $2',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'ទំព័រអ្នកប្រើប្រាស់​របស់អ្នក​',
+'tooltip-pt-userpage' => 'ទំព័រអ្នកប្រើប្រាស់​របស់អ្នក​',
 'tooltip-pt-mytalk' => 'ទំព័រពិភាក្សា​របស់អ្នក​',
 'tooltip-pt-anontalk' => 'ការពិភាក្សាអំពីកំណែប្រែដែល​ធ្វើ​ឡើង​ចេញ​ពីអាសយដ្ឋាន IP នេះ',
 'tooltip-pt-preferences' => 'ចំណង់ចំណូលចិត្ត',
@@ -2880,13 +2880,13 @@ $1',
 'tooltip-feed-rss' => 'បម្រែបម្រួល RSS ចំពោះទំព័រនេះ',
 'tooltip-feed-atom' => 'បម្រែបម្រួល Atom ចំពោះទំព័រនេះ',
 'tooltip-t-contributions' => 'បង្ហាញបញ្ជីរួមចំណែករបស់អ្នកប្រើប្រាស់នេះ',
-'tooltip-t-emailwiki_user' => 'ផ្ញើអ៊ីមែលទៅកាន់អ្នកប្រើប្រាស់នេះ',
+'tooltip-t-emailuser' => 'ផ្ញើអ៊ីមែលទៅកាន់អ្នកប្រើប្រាស់នេះ',
 'tooltip-t-upload' => 'ឯកសារផ្ទុកឡើង',
 'tooltip-t-specialpages' => 'បញ្ជីទំព័រពិសេសៗទាំងអស់',
 'tooltip-t-print' => 'ទម្រង់សម្រាប់បោះពុម្ភរបស់ទំព័រនេះ',
 'tooltip-t-permalink' => 'តំណភ្ជាប់អចិន្ត្រៃយ៍ដែលភ្ជាប់មកកំណែនៃទំព័រនេះ',
 'tooltip-ca-nstab-main' => 'មើលទំព័រមាតិកា',
-'tooltip-ca-nstab-wiki_user' => 'មើលទំព័រអ្នកប្រើប្រាស់',
+'tooltip-ca-nstab-user' => 'មើលទំព័រអ្នកប្រើប្រាស់',
 'tooltip-ca-nstab-media' => 'មើលទំព័រមេឌា',
 'tooltip-ca-nstab-special' => 'នេះជាទំព័រពិសេស​។ អ្នកមិនអាចកែប្រែទំព័រនេះបានទេ។',
 'tooltip-ca-nstab-project' => 'មើលទំព័រគម្រោង',
@@ -2922,14 +2922,14 @@ $1',
 'vector.css' => '/* CSS បានដាក់ទីនេះនឹងមានអនុភាពលើអ្នកប្រើប្រាស់នៃសំបក Vector */',
 
 # Attribution
-'anonymous' => '{{PLURAL:$1|wiki_user|អ្នកប្រើប្រាស់}}អនាមិកនៃ {{SITENAME}}',
-'sitewiki_user' => 'អ្នកប្រើប្រាស់{{SITENAME}} $1',
-'anonwiki_user' => 'អ្នកប្រើប្រាស់{{SITENAME}}អនាមិក $1',
+'anonymous' => '{{PLURAL:$1|user|អ្នកប្រើប្រាស់}}អនាមិកនៃ {{SITENAME}}',
+'siteuser' => 'អ្នកប្រើប្រាស់{{SITENAME}} $1',
+'anonuser' => 'អ្នកប្រើប្រាស់{{SITENAME}}អនាមិក $1',
 'lastmodifiedatby' => 'ទំព័រនេះត្រូវបានប្តូរចុងក្រោយដោយ$3នៅវេលា$2,$1។',
 'othercontribs' => 'ផ្អែកលើការងាររបស់$1។',
 'others' => 'ផ្សេងៗទៀត',
-'sitewiki_users' => '{{PLURAL:$2|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}} {{SITENAME}} $1',
-'anonwiki_users' => '{{PLURAL:$2|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}} {{SITENAME}} ជាអនាមិក $1',
+'siteusers' => '{{PLURAL:$2|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}} {{SITENAME}} $1',
+'anonusers' => '{{PLURAL:$2|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}} {{SITENAME}} ជាអនាមិក $1',
 'creditspage' => 'ក្រេឌិតទំព័រ',
 'nocredits' => 'គ្មានព័ត៌មានក្រេឌីតសំរាប់ទំព័រនេះទេ។',
 
@@ -2939,7 +2939,7 @@ $1',
 
 នេះ​ប្រហែល​ជា​មកពី​ទំព័រ​នេះ​មាន​តំណភ្ជាប់​ទៅ​សៃថ៍​ខាងក្រៅ​ដែល​មាន​ឈ្មោះ​ក្នុង​បញ្ជីខ្មៅ​។',
 'spamprotectionmatch' => 'អត្ថបទខាងក្រោមនេះជាបុព្វហេតុដែលធ្វើអោយតម្រងការពារស្ប៉ាមរបស់យើងដើរ៖ $1',
-'spambot_wiki_username' => 'ការសំអាតស្ប៉ាមរបស់ MediaWiki',
+'spambot_username' => 'ការសំអាតស្ប៉ាមរបស់ MediaWiki',
 
 # Info page
 'pageinfo-title' => 'ព័ត៌មានសម្រាប់ "$1"',
@@ -2960,9 +2960,9 @@ $1',
 'pageinfo-redirects-name' => 'ចំនួនការបញ្ជូនបន្តមកកាន់ទំព័រនេះ',
 'pageinfo-subpages-name' => 'ទំព័ររងរបស់ទំព័រនេះ',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|ទំព័របញ្ជូនបន្ត|ទំព័របញ្ជូនបន្ត}}; $3 {{PLURAL:$3|ទំព័រមិនបញ្ជូនបន្ត|ទំព័រមិនបញ្ជូនបន្ត}})',
-'pageinfo-firstwiki_user' => 'អ្នកបង្កើតទំព័រ',
+'pageinfo-firstuser' => 'អ្នកបង្កើតទំព័រ',
 'pageinfo-firsttime' => 'កាលបរិច្ឆេទបង្កើតទំព័រ',
-'pageinfo-lastwiki_user' => 'អ្នកកែប្រែចុងក្រោយ',
+'pageinfo-lastuser' => 'អ្នកកែប្រែចុងក្រោយ',
 'pageinfo-lasttime' => 'កាលបរិច្ឆេទនៃការកែប្រែចុងក្រោយ',
 'pageinfo-edits' => 'ចំនួនកំណែប្រែសរុប',
 'pageinfo-authors' => 'ចំនួនអ្នកនិពន្ធសរុប',
@@ -3101,7 +3101,7 @@ $1',
 'exif-compressedbitsperpixel' => 'កម្រិតហាប់ នៃរូបភាព (ប៊ិត/ចំណុច)',
 'exif-pixelydimension' => 'ទទឹងរូបភាព',
 'exif-pixelxdimension' => 'កម្ពស់រូបភាព',
-'exif-wiki_usercomment' => 'យោបល់របស់អ្នកប្រើប្រាស់',
+'exif-usercomment' => 'យោបល់របស់អ្នកប្រើប្រាស់',
 'exif-relatedsoundfile' => 'ឯកសារសំឡេងពាក់ព័ន្ធ',
 'exif-datetimeoriginal' => 'ពេលវេលានិងកាលបរិច្ឆេទបង្កើតទិន្នន័យ',
 'exif-datetimedigitized' => 'ពេលវេលានិងការបរិច្ឆេទធ្វើជាឌីជីថល',
@@ -3365,7 +3365,7 @@ Mailer បាន​ត្រឡប់​មក​វិញ៖ $1',
 'confirmemail_invalid' => 'កូដបញ្ជាក់ទទួលស្គាល់មិនត្រឹមត្រូវទេ។
 កូដនេះប្រហែលជាផុតកំណត់ហើយ។',
 'confirmemail_needlogin' => 'អ្នកត្រូវការ$1ដើម្បីបញ្ជាក់ទទួលស្គាល់អាសយដ្ឋានអ៊ីមែលរបស់អ្នក។',
-'confirmemail_success' => 'អាសយដ្ឋានអ៊ីមែលរបស់អ្នកត្រូវបានបញ្ជាក់ទទួលស្គាល់ហើយ។ ពេលនេះអ្នកអាច[[Special:wiki_userLogin|កត់ឈ្មោះចូល]] និងចូលរួមសប្បាយរីករាយជាមួយវិគីបានហើយ។',
+'confirmemail_success' => 'អាសយដ្ឋានអ៊ីមែលរបស់អ្នកត្រូវបានបញ្ជាក់ទទួលស្គាល់ហើយ។ ពេលនេះអ្នកអាច[[Special:UserLogin|កត់ឈ្មោះចូល]] និងចូលរួមសប្បាយរីករាយជាមួយវិគីបានហើយ។',
 'confirmemail_loggedin' => 'អាសយដ្ឋានអ៊ីមែលរបស់អ្នកត្រូវបានបញ្ជាក់ទទួលស្គាល់ហើយនាពេលនេះ។',
 'confirmemail_error' => 'រក្សាទុក ​ការបញ្ជាក់ទទួលស្គាល់ របស់អ្នក មានបញ្ហា ។',
 'confirmemail_subject' => 'ការបញ្ជាក់ទទួលស្គាល់អាសយដ្ឋានអ៊ីមែល{{SITENAME}}',
@@ -3417,12 +3417,12 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''ប្រយ័ត្ន''' ៖ ទំព័រនេះបានត្រូវលុបចោល បន្ទាប់ពីអ្នកបានចាប់ផ្តើមកែប្រែ!",
-'confirmrecreate' => "អ្នកប្រើប្រាស់ [[wiki_user:$1|$1]] ([[wiki_user talk:$1|talk]]) បានលុបទំព័រនេះចោលបន្ទាប់ពីអ្នកចាប់ផ្ដើមកែប្រែវា ដោយមានហេតុផលថា៖
+'confirmrecreate' => "អ្នកប្រើប្រាស់ [[User:$1|$1]] ([[User talk:$1|talk]]) បានលុបទំព័រនេះចោលបន្ទាប់ពីអ្នកចាប់ផ្ដើមកែប្រែវា ដោយមានហេតុផលថា៖
 
 ៖ ''$2''
 
 សូមអះអាងថាអ្នកពិតជាចង់បង្កើតទំព័រនេះឡើងវិញពិតប្រាកដមែន។",
-'confirmrecreate-noreason' => 'អ្នកប្រើប្រាស់ [[wiki_user:$1|$1]] ([[wiki_user talk:$1|talk]]) បានលុបទំព័រនេះចោលបន្ទាប់ពីអ្នកចាប់ផ្ដើមកែប្រែវា។ សូមអះអាងថាអ្នកពិតជាចង់បង្កើតទំព័រនេះឡើងវិញមែន។
+'confirmrecreate-noreason' => 'អ្នកប្រើប្រាស់ [[User:$1|$1]] ([[User talk:$1|talk]]) បានលុបទំព័រនេះចោលបន្ទាប់ពីអ្នកចាប់ផ្ដើមកែប្រែវា។ សូមអះអាងថាអ្នកពិតជាចង់បង្កើតទំព័រនេះឡើងវិញមែន។
 
 សូមអះអាងថាអ្នកពិតជាចង់បង្កើតទំព័រនេះឡើងវិញពិតប្រាកដមែន។',
 'recreate' => 'បង្កើតឡើងវិញ',
@@ -3509,7 +3509,7 @@ $5
 'watchlisttools-raw' => 'កែប្រែបញ្ជីតាមដានឆៅ',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|ការពិភាក្សា]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|ការពិភាក្សា]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'ស្លាក​នៃផ្នែកបន្ថែម "$1" មិនស្គាល់',
@@ -3563,7 +3563,7 @@ $5
 'specialpages-group-login' => 'កត់ឈ្មោះចូល / បង្កើតគណនី',
 'specialpages-group-changes' => 'បំលាស់ប្តូរថ្មីៗនិងកំណត់ហេតុ',
 'specialpages-group-media' => 'របាយការណ៍មេឌានិងការផ្ទុកឯកសារ',
-'specialpages-group-wiki_users' => 'អ្នកប្រើប្រាស់និងសិទ្ធិ',
+'specialpages-group-users' => 'អ្នកប្រើប្រាស់និងសិទ្ធិ',
 'specialpages-group-highuse' => 'ទំព័រដែលត្រូវបានប្រើច្រើន',
 'specialpages-group-pages' => 'បញ្ជីទំព័រនានា',
 'specialpages-group-pagetools' => 'ឧបករណ៍ទំព័រ',
@@ -3635,11 +3635,11 @@ $5
 'logentry-move-move-noredirect' => '$1 បានប្ដូរទីតាំង ទំព័រ $3 ពី $4 ដោយមិនបន្សល់ទុកតំនភ្ជាប់បញ្ជូនបន្ត',
 'logentry-move-move_redir' => '$1 បានប្ដូរទីតាំង ទំព័រ $3 ពី $4 តាមរយៈការបញ្ជូនបន្ត',
 'logentry-move-move_redir-noredirect' => '$1 បានប្ដូរទីតាំង ទំព័រ $3 ពី $4 តាមរយៈការបញ្ជូនបន្ត ដោយមិនបន្សល់ទុកតំនភ្ជាប់បញ្ជូនបន្ត',
-'logentry-newwiki_users-newwiki_users' => 'បានបង្កើតគណនីអ្នកប្រើប្រាស់ $1',
-'logentry-newwiki_users-create' => 'បានបង្កើតគណនីអ្នកប្រើប្រាស់ $1',
-'logentry-newwiki_users-create2' => ' $3 បានបង្កើតគណនីអ្នកប្រើប្រាស់ $1',
-'logentry-newwiki_users-autocreate' => 'គណនី $1 ត្រូវបានបង្កើតដោយស្វ័យប្រវត្តិ',
-'newwiki_userlog-byemail' => 'ពាក្យសំងាត់ត្រូវបានផ្ញើតាមអ៊ីមែល',
+'logentry-newusers-newusers' => 'បានបង្កើតគណនីអ្នកប្រើប្រាស់ $1',
+'logentry-newusers-create' => 'បានបង្កើតគណនីអ្នកប្រើប្រាស់ $1',
+'logentry-newusers-create2' => ' $3 បានបង្កើតគណនីអ្នកប្រើប្រាស់ $1',
+'logentry-newusers-autocreate' => 'គណនី $1 ត្រូវបានបង្កើតដោយស្វ័យប្រវត្តិ',
+'newuserlog-byemail' => 'ពាក្យសំងាត់ត្រូវបានផ្ញើតាមអ៊ីមែល',
 
 # Feedback
 'feedback-subject' => 'កម្មវត្ថុ ៖',

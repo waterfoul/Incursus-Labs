@@ -74,16 +74,16 @@ class ChangesFeed {
 	 * @return null|bool True or null
 	 */
 	public function execute( $feed, $rows, $lastmod, $opts ) {
-		global $wgLang, $wgRenderHashAppend, $wgwiki_user;
+		global $wgLang, $wgRenderHashAppend, $wgUser;
 		
 		if ( !FeedUtils::checkFeedOutput( $this->format ) ) {
 			return null;
 		}
 
-		$wiki_userid = $wgwiki_user->getId();
+		$userid = $wgUser->getId();
 		$optionsHash = md5( serialize( $opts->getAllValues() ) ) . $wgRenderHashAppend;
-		$timekey = wfMemcKey( $this->type, $this->format, $wiki_userid, $wgLang->getCode(), $optionsHash, 'timestamp' );
-		$key = wfMemcKey( $this->type, $this->format, $wiki_userid, $wgLang->getCode(), $optionsHash );
+		$timekey = wfMemcKey( $this->type, $this->format, $userid, $wgLang->getCode(), $optionsHash, 'timestamp' );
+		$key = wfMemcKey( $this->type, $this->format, $userid, $wgLang->getCode(), $optionsHash );
 
 		FeedUtils::checkPurge( $timekey, $key );
 
@@ -170,7 +170,7 @@ class ChangesFeed {
 
 		$feed->outHeader();
 
-		# Merge adjacent edits by one wiki_user
+		# Merge adjacent edits by one user
 		$sorted = array();
 		$n = 0;
 		foreach( $rows as $obj ) {
@@ -178,7 +178,7 @@ class ChangesFeed {
 				$obj->rc_type == RC_EDIT &&
 				$obj->rc_namespace >= 0 &&
 				$obj->rc_cur_id == $sorted[$n-1]->rc_cur_id &&
-				$obj->rc_wiki_user_text == $sorted[$n-1]->rc_wiki_user_text ) {
+				$obj->rc_user_text == $sorted[$n-1]->rc_user_text ) {
 				$sorted[$n-1]->rc_last_oldid = $obj->rc_last_oldid;
 			} else {
 				$sorted[$n] = $obj;
@@ -189,7 +189,7 @@ class ChangesFeed {
 		foreach( $sorted as $obj ) {
 			$title = Title::makeTitle( $obj->rc_namespace, $obj->rc_title );
 			// <IntraACL>
-			if( !$title || method_exists( $title, 'wiki_userCanReadEx' ) && !$title->wiki_userCanReadEx() ) {
+			if( !$title || method_exists( $title, 'userCanReadEx' ) && !$title->userCanReadEx() ) {
 				continue;
 			}
 			// </IntraACL>
@@ -212,7 +212,7 @@ class ChangesFeed {
 				FeedUtils::formatDiff( $obj ),
 				$url,
 				$obj->rc_timestamp,
-				( $obj->rc_deleted & Revision::DELETED_USER ) ? wfMessage( 'rev-deleted-wiki_user' )->escaped() : $obj->rc_wiki_user_text,
+				( $obj->rc_deleted & Revision::DELETED_USER ) ? wfMessage( 'rev-deleted-user' )->escaped() : $obj->rc_user_text,
 				$talkpage
 			);
 			$feed->outItem( $item );

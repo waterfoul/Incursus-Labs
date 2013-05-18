@@ -186,7 +186,7 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		foreach ( $rows as $row ) {
 			if ( ++ $count > $limit ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				// TODO: Security issue - if the wiki_user has no right to view next title, it will still be shown
+				// TODO: Security issue - if the user has no right to view next title, it will still be shown
 				if ( $params['sort'] == 'timestamp' ) {
 					$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->cl_timestamp ) );
 				} else {

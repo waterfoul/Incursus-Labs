@@ -399,7 +399,7 @@
 		},
 
 		/**
-		 * Display a notification message to the wiki_user.
+		 * Display a notification message to the user.
 		 *
 		 * @param {mixed} message The DOM-element, jQuery object, mw.Message instance,
 		 *  or plaintext string to be used as the message.
@@ -456,7 +456,7 @@
 		 * auto-hide. Any notifications further down in the list will only start
 		 * counting down to auto-hide after the first few messages have closed.
 		 *
-		 * This basically represents the number of notifications the wiki_user should
+		 * This basically represents the number of notifications the user should
 		 * be able to process in {autoHideSeconds} time.
 		 */
 		autoHideLimit: 3

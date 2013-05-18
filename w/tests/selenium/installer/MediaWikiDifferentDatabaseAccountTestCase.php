@@ -54,8 +54,8 @@ class MediaWikiDifferentDatabaseAccountTestCase extends MediaWikiInstallationCom
         // Click on the 'Use the same account as for installation' check box
         $this->click( "mysql__SameAccount" );
 
-        // Change the 'Database wiki_username'
-        $this->type( "mysql_wgDBwiki_user", DB_WEB_USER );
+        // Change the 'Database username'
+        $this->type( "mysql_wgDBuser", DB_WEB_USER );
 
         // Enter 'Database password:'
         $this->type( "mysql_wgDBpassword", DB_WEB_USER_PASSWORD );
@@ -71,7 +71,7 @@ class MediaWikiDifferentDatabaseAccountTestCase extends MediaWikiInstallationCom
         parent::clickContinueButton();
 
         // 'Install' page
-        $this->assertEquals("Creating database wiki_user... done",
+        $this->assertEquals("Creating database user... done",
                 $this->getText( LINK_FORM."ul/li[3]"));
         parent::clickContinueButton();
 

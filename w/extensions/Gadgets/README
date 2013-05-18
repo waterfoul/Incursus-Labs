@@ -5,8 +5,8 @@ Licenses: GNU General Public Licence (GPL)
           GNU Free Documentation License (GFDL)
 --------------------------------------------------------------------------
 
-The Gadgets extension provides a way for wiki_users to pick JavaScript or CSS
-based "gadgets" that other wiki wiki_users provide.
+The Gadgets extension provides a way for users to pick JavaScript or CSS
+based "gadgets" that other wiki users provide.
 
 <https://mediawiki.org/wiki/Extension:Gadgets>
 
@@ -32,11 +32,11 @@ See http://www.mediawiki.org/wiki/Extension:Gadgets#Usage
 
 == Caveats ==
 
-* Gadgets do not apply to Special:Preferences, Special:wiki_userLogin and
-  Special:ResetPass so wiki_users can always disable any broken gadgets they
+* Gadgets do not apply to Special:Preferences, Special:UserLogin and
+  Special:ResetPass so users can always disable any broken gadgets they
   may have enabled, and malicious gadgets will be unable to steal passwords.
 * Uses BeforePageDisplay hook, thus only works with MonoBook based skins;
   specifically, does not work with CologneBlue.
-* Gadget code is included after wiki_user code - that means that wiki_user JS has no
-  access to things defined in gadgets, and wiki_user CSS is overwritten by CSS
+* Gadget code is included after user code - that means that user JS has no
+  access to things defined in gadgets, and user CSS is overwritten by CSS
   from gadgets. (pending a better way to insert things into the HTML head)

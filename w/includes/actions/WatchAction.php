@@ -44,7 +44,7 @@ class WatchAction extends FormAction {
 
 	public function onSubmit( $data ) {
 		wfProfileIn( __METHOD__ );
-		self::doWatch( $this->getTitle(), $this->getwiki_user() );
+		self::doWatch( $this->getTitle(), $this->getUser() );
 		wfProfileOut( __METHOD__ );
 		return true;
 	}
@@ -55,14 +55,14 @@ class WatchAction extends FormAction {
 	public function show() {
 		$this->setHeaders();
 
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 		// This will throw exceptions if there's a problem
-		$this->checkCanExecute( $wiki_user );
+		$this->checkCanExecute( $user );
 
 		// Must have valid token for this action/title
 		$salt = array( $this->getName(), $this->getTitle()->getDBkey() );
 
-		if ( $wiki_user->matchEditToken( $this->getRequest()->getVal( 'token' ), $salt ) ) {
+		if ( $user->matchEditToken( $this->getRequest()->getVal( 'token' ), $salt ) ) {
 			$this->onSubmit( array() );
 			$this->onSuccess();
 		} else {
@@ -73,45 +73,45 @@ class WatchAction extends FormAction {
 		}
 	}
 
-	protected function checkCanExecute( wiki_user $wiki_user ) {
+	protected function checkCanExecute( User $user ) {
 		// Must be logged in
-		if ( $wiki_user->isAnon() ) {
+		if ( $user->isAnon() ) {
 			throw new ErrorPageError( 'watchnologin', 'watchnologintext' );
 		}
 
-		return parent::checkCanExecute( $wiki_user );
+		return parent::checkCanExecute( $user );
 	}
 
-	public static function doWatch( Title $title, wiki_user $wiki_user  ) {
+	public static function doWatch( Title $title, User $user  ) {
 		$page = WikiPage::factory( $title );
 
-		if ( wfRunHooks( 'WatchArticle', array( &$wiki_user, &$page ) ) ) {
-			$wiki_user->addWatch( $title );
-			wfRunHooks( 'WatchArticleComplete', array( &$wiki_user, &$page ) );
+		if ( wfRunHooks( 'WatchArticle', array( &$user, &$page ) ) ) {
+			$user->addWatch( $title );
+			wfRunHooks( 'WatchArticleComplete', array( &$user, &$page ) );
 		}
 		return true;
 	}
 
-	public static function doUnwatch( Title $title, wiki_user $wiki_user  ) {
+	public static function doUnwatch( Title $title, User $user  ) {
 		$page = WikiPage::factory( $title );
 
-		if ( wfRunHooks( 'UnwatchArticle', array( &$wiki_user, &$page ) ) ) {
-			$wiki_user->removeWatch( $title );
-			wfRunHooks( 'UnwatchArticleComplete', array( &$wiki_user, &$page ) );
+		if ( wfRunHooks( 'UnwatchArticle', array( &$user, &$page ) ) ) {
+			$user->removeWatch( $title );
+			wfRunHooks( 'UnwatchArticleComplete', array( &$user, &$page ) );
 		}
 		return true;
 	}
 
 	/**
-	 * Get token to watch (or unwatch) a page for a wiki_user
+	 * Get token to watch (or unwatch) a page for a user
 	 *
 	 * @param Title $title Title object of page to watch
-	 * @param wiki_user $wiki_user wiki_user for whom the action is going to be performed
+	 * @param User $user User for whom the action is going to be performed
 	 * @param string $action Optionally override the action to 'unwatch'
 	 * @return string Token
 	 * @since 1.18
 	 */
-	public static function getWatchToken( Title $title, wiki_user $wiki_user, $action = 'watch' ) {
+	public static function getWatchToken( Title $title, User $user, $action = 'watch' ) {
 		if ( $action != 'unwatch' ) {
 			$action = 'watch';
 		}
@@ -119,20 +119,20 @@ class WatchAction extends FormAction {
 
 		// This token stronger salted and not compatible with ApiWatch
 		// It's title/action specific because index.php is GET and API is POST
-		return $wiki_user->getEditToken( $salt );
+		return $user->getEditToken( $salt );
 	}
 
 	/**
-	 * Get token to unwatch (or watch) a page for a wiki_user
+	 * Get token to unwatch (or watch) a page for a user
 	 *
 	 * @param Title $title Title object of page to unwatch
-	 * @param wiki_user $wiki_user wiki_user for whom the action is going to be performed
+	 * @param User $user User for whom the action is going to be performed
 	 * @param string $action Optionally override the action to 'watch'
 	 * @return string Token
 	 * @since 1.18
 	 */
-	public static function getUnwatchToken( Title $title, wiki_user $wiki_user, $action = 'unwatch' ) {
-		return self::getWatchToken( $title, $wiki_user, $action );
+	public static function getUnwatchToken( Title $title, User $user, $action = 'unwatch' ) {
+		return self::getWatchToken( $title, $user, $action );
 	}
 
 	protected function alterForm( HTMLForm $form ) {
@@ -160,7 +160,7 @@ class UnwatchAction extends WatchAction {
 
 	public function onSubmit( $data ) {
 		wfProfileIn( __METHOD__ );
-		self::doUnwatch( $this->getTitle(), $this->getwiki_user() );
+		self::doUnwatch( $this->getTitle(), $this->getUser() );
 		wfProfileOut( __METHOD__ );
 		return true;
 	}

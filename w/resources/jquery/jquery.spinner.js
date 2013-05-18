@@ -21,7 +21,7 @@
 		 *
 		 * It is a good practice to keep a reference to the created spinner to be able to remove it later.
 		 * Alternatively one can use the id option and removeSpinner() (but make sure to choose an id
-		 * that's unlikely to cause conflicts, e.g. with extensions, gadgets or wiki_user scripts).
+		 * that's unlikely to cause conflicts, e.g. with extensions, gadgets or user scripts).
 		 *
 		 * CSS classes used:
 		 *   .mw-spinner for every spinner

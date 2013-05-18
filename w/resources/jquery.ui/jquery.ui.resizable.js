@@ -284,7 +284,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 		// Calculate the attrs that will be change
 		var data = trigger.apply(this, [event, dx, dy]), ie6 = $.browser.msie && $.browser.version < 7, csdif = this.sizeDiff;
 
-		// Put this in the mouseDrag handler since the wiki_user can start pressing shift while resizing
+		// Put this in the mouseDrag handler since the user can start pressing shift while resizing
 		this._updateVirtualBoundaries(event.shiftKey);
 		if (this._aspectRatio || event.shiftKey)
 			data = this._updateRatio(data, event);
@@ -304,7 +304,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 		this._updateCache(data);
 
-		// calling the wiki_user callback at the end
+		// calling the user callback at the end
 		this._trigger('resize', event, this.ui());
 
 		return false;

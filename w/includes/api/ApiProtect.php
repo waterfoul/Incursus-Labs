@@ -40,7 +40,7 @@ class ApiProtect extends ApiBase {
 		$pageObj = $this->getTitleOrPageId( $params, 'fromdbmaster' );
 		$titleObj = $pageObj->getTitle();
 
-		$errors = $titleObj->getwiki_userPermissionsErrors( 'protect', $this->getwiki_user() );
+		$errors = $titleObj->getUserPermissionsErrors( 'protect', $this->getUser() );
 		if ( $errors ) {
 			// We don't care about multiple errors, just report one of them
 			$this->dieUsageMsg( reset( $errors ) );
@@ -56,7 +56,7 @@ class ApiProtect extends ApiBase {
 		}
 
 		$restrictionTypes = $titleObj->getRestrictionTypes();
-		 = $this->getDB();
+		$db = $this->getDB();
 
 		$protections = array();
 		$expiryarray = array();
@@ -80,7 +80,7 @@ class ApiProtect extends ApiBase {
 			}
 
 			if ( in_array( $expiry[$i], array( 'infinite', 'indefinite', 'never' ) ) ) {
-				$expiryarray[$p[0]] = ->getInfinity();
+				$expiryarray[$p[0]] = $db->getInfinity();
 			} else {
 				$exp = strtotime( $expiry[$i] );
 				if ( $exp < 0 || !$exp ) {
@@ -94,7 +94,7 @@ class ApiProtect extends ApiBase {
 				$expiryarray[$p[0]] = $exp;
 			}
 			$resultProtections[] = array( $p[0] => $protections[$p[0]],
-					'expiry' => ( $expiryarray[$p[0]] == ->getInfinity() ?
+					'expiry' => ( $expiryarray[$p[0]] == $db->getInfinity() ?
 								'infinite' :
 								wfTimestamp( TS_ISO_8601, $expiryarray[$p[0]] ) ) );
 		}
@@ -104,7 +104,7 @@ class ApiProtect extends ApiBase {
 		$watch = $params['watch'] ? 'watch' : $params['watchlist'];
 		$this->setWatch( $watch, $titleObj );
 
-		$status = $pageObj->doUpdateRestrictions( $protections, $expiryarray, $cascade, $params['reason'], $this->getwiki_user() );
+		$status = $pageObj->doUpdateRestrictions( $protections, $expiryarray, $cascade, $params['reason'], $this->getUser() );
 
 		if ( !$status->isOK() ) {
 			$errors = $status->getErrorsArray();

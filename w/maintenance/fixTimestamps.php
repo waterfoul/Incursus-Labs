@@ -49,11 +49,11 @@ class FixTimestamps extends Maintenance {
 		$grace = 60; // maximum normal clock offset
 
 		# Find bounding revision IDs
-		w = wfGetDB( DB_MASTER );
-		$revisionTable = w->tableName( 'revision' );
-		$res = w->query( "SELECT MIN(rev_id) as minrev, MAX(rev_id) as maxrev FROM $revisionTable " .
+		$dbw = wfGetDB( DB_MASTER );
+		$revisionTable = $dbw->tableName( 'revision' );
+		$res = $dbw->query( "SELECT MIN(rev_id) as minrev, MAX(rev_id) as maxrev FROM $revisionTable " .
 			"WHERE rev_timestamp BETWEEN '{$start}' AND '{$end}'", __METHOD__ );
-		$row = w->fetchObject( $res );
+		$row = $dbw->fetchObject( $res );
 
 		if ( is_null( $row->minrev ) ) {
 			$this->error( "No revisions in search period.", true );
@@ -72,7 +72,7 @@ class FixTimestamps extends Maintenance {
 			$expectedSign = 1;
 		}
 
-		$res = w->query( $sql, __METHOD__ );
+		$res = $dbw->query( $sql, __METHOD__ );
 
 		$lastNormal = 0;
 		$badRevs = array();
@@ -118,8 +118,8 @@ class FixTimestamps extends Maintenance {
 		$fixup = -$offset;
 		$sql = "UPDATE $revisionTable " .
 			"SET rev_timestamp=DATE_FORMAT(DATE_ADD(rev_timestamp, INTERVAL $fixup SECOND), '%Y%m%d%H%i%s') " .
-			"WHERE rev_id IN (" . w->makeList( $badRevs ) . ')';
-		w->query( $sql, __METHOD__ );
+			"WHERE rev_id IN (" . $dbw->makeList( $badRevs ) . ')';
+		$dbw->query( $sql, __METHOD__ );
 		$this->output( "Done\n" );
 	}
 }

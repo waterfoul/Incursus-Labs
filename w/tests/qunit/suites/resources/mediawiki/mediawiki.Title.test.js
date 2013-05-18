@@ -8,8 +8,8 @@ var config = {
 		"-1": "Special",
 		"0": "",
 		"1": "Talk",
-		"2": "wiki_user",
-		"3": "wiki_user talk",
+		"2": "User",
+		"3": "User talk",
 		"4": "Wikipedia",
 		"5": "Wikipedia talk",
 		"6": "File",
@@ -30,8 +30,8 @@ var config = {
 		"special": -1,
 		"": 0,
 		"talk": 1,
-		"wiki_user": 2,
-		"wiki_user_talk": 3,
+		"user": 2,
+		"user_talk": 3,
 		"wikipedia": 4,
 		"wikipedia_talk": 5,
 		"file": 6,
@@ -67,13 +67,13 @@ QUnit.test( 'Transformation', 8, function ( assert ) {
 	title = new mw.Title( 'File:Glarg_foo_glang.jpg' );
 	assert.equal( title.getNameText(), 'Glarg foo glang' );
 
-	title = new mw.Title( 'wiki_user:ABC.DEF' );
-	assert.equal( title.toText(), 'wiki_user:ABC.DEF' );
+	title = new mw.Title( 'User:ABC.DEF' );
+	assert.equal( title.toText(), 'User:ABC.DEF' );
 	assert.equal( title.getNamespaceId(), 2 );
-	assert.equal( title.getNamespacePrefix(), 'wiki_user:' );
+	assert.equal( title.getNamespacePrefix(), 'User:' );
 
 	title = new mw.Title( 'uSEr:hAshAr' );
-	assert.equal( title.toText(), 'wiki_user:HAshAr' );
+	assert.equal( title.toText(), 'User:HAshAr' );
 	assert.equal( title.getNamespaceId(), 2 );
 
 	title = new mw.Title( '   MediaWiki:  Foo   bar   .js   ' );
@@ -101,8 +101,8 @@ QUnit.test( 'Namespace detection and conversion', 6, function ( assert ) {
 	assert.equal( title.toString(), 'File:Something.PDF' );
 
 	title = new mw.Title( 'NeilK', 3 );
-	assert.equal( title.toString(), 'wiki_user_talk:NeilK' );
-	assert.equal( title.toText(), 'wiki_user talk:NeilK' );
+	assert.equal( title.toString(), 'User_talk:NeilK' );
+	assert.equal( title.toText(), 'User talk:NeilK' );
 
 	title = new mw.Title( 'Frobisher', 100 );
 	assert.equal( title.toString(), 'Penguins:Frobisher' );
@@ -136,7 +136,7 @@ QUnit.test( 'Case-sensivity', 3, function ( assert ) {
 	assert.equal( title.toString(), 'article', '$wgCapitalLinks=false: Article namespace is sensitive, first-letter case stays lowercase' );
 
 	title = new mw.Title( 'john', 2 );
-	assert.equal( title.toString(), 'wiki_user:John', '$wgCapitalLinks=false: wiki_user namespace is insensitive, first-letter becomes uppercase' );
+	assert.equal( title.toString(), 'User:John', '$wgCapitalLinks=false: User namespace is insensitive, first-letter becomes uppercase' );
 });
 
 QUnit.test( 'toString / toText', 2, function ( assert ) {
@@ -154,7 +154,7 @@ QUnit.test( 'getExtension', 7, function ( assert ) {
 	}
 
 	extTest( 'MediaWiki:Vector.js', 'js' );
-	extTest( 'wiki_user:Example/common.css', 'css' );
+	extTest( 'User:Example/common.css', 'css' );
 	extTest( 'File:Example.longextension', 'longextension', 'Extension parsing not limited (bug 36151)' );
 	extTest( 'Example/information.json', 'json', 'Extension parsing not restricted from any namespace' );
 	extTest( 'Foo.', null, 'Trailing dot is not an extension' );
@@ -174,8 +174,8 @@ QUnit.test( 'exists', 3, function ( assert ) {
 	assert.strictEqual( title.exists(), null, 'Return null with empty existance registry' );
 
 	// Basic registry, checks default to boolean
-	mw.Title.exist.set( ['Does_exist', 'wiki_user_talk:NeilK', 'Wikipedia:Sandbox_rules'], true );
-	mw.Title.exist.set( ['Does_not_exist', 'wiki_user:John', 'Foobar'], false );
+	mw.Title.exist.set( ['Does_exist', 'User_talk:NeilK', 'Wikipedia:Sandbox_rules'], true );
+	mw.Title.exist.set( ['Does_not_exist', 'User:John', 'Foobar'], false );
 
 	title = new mw.Title( 'Project:Sandbox rules' );
 	assert.assertTrue( title.exists(), 'Return true for page titles marked as existing' );
@@ -194,7 +194,7 @@ QUnit.test( 'getUrl', 2, function ( assert ) {
 	assert.equal( title.getUrl(), '/wiki/Foobar', 'Basic functionally, toString passing to wikiGetlink' );
 
 	title = new mw.Title( 'John Doe', 3 );
-	assert.equal( title.getUrl(), '/wiki/wiki_user_talk:John_Doe', 'Escaping in title and namespace for urls' );
+	assert.equal( title.getUrl(), '/wiki/User_talk:John_Doe', 'Escaping in title and namespace for urls' );
 });
 
 }() );

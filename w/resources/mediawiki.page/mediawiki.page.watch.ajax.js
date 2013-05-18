@@ -164,7 +164,7 @@
 					);
 					msg = mw.messsage( 'watcherrortext', link );
 
-					// Report to wiki_user about the error
+					// Report to user about the error
 					mw.notify( msg, { tag: 'watch-self' } );
 
 				}

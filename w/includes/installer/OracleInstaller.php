@@ -32,7 +32,7 @@ class OracleInstaller extends DatabaseInstaller {
 	protected $globalNames = array(
 		'wgDBserver',
 		'wgDBname',
-		'wgDBwiki_user',
+		'wgDBuser',
 		'wgDBpassword',
 		'wgDBprefix',
 	);
@@ -40,7 +40,7 @@ class OracleInstaller extends DatabaseInstaller {
 	protected $internalDefaults = array(
 		'_OracleDefTS' => 'USERS',
 		'_OracleTempTS' => 'TEMP',
-		'_Installwiki_user' => 'SYSDBA',
+		'_InstallUser' => 'SYSDBA',
 	);
 
 	public $minimumVersion = '9.0.1'; // 9iR1
@@ -68,20 +68,20 @@ class OracleInstaller extends DatabaseInstaller {
 			$this->getTextBox( '_OracleTempTS', 'config-oracle-temp-ts', array(), $this->parent->getHelpBox( 'config-db-oracle-help' ) ) .
 			Html::closeElement( 'fieldset' ) .
 			$this->parent->getWarningBox( wfMessage( 'config-db-account-oracle-warn' )->text() ).
-			$this->getInstallwiki_userBox().
-			$this->getWebwiki_userBox();
+			$this->getInstallUserBox().
+			$this->getWebUserBox();
 	}
 
-	public function submitInstallwiki_userBox() {
-		parent::submitInstallwiki_userBox();
-		$this->parent->setVar( '_InstallDBname', $this->getVar( '_Installwiki_user' ) );
+	public function submitInstallUserBox() {
+		parent::submitInstallUserBox();
+		$this->parent->setVar( '_InstallDBname', $this->getVar( '_InstallUser' ) );
 		return Status::newGood();
 	}
 
 	public function submitConnectForm() {
 		// Get variables from the request
-		$newValues = $this->setVarsFromRequest( array( 'wgDBserver', 'wgDBprefix', 'wgDBwiki_user', 'wgDBpassword' ) );
-		$this->parent->setVar( 'wgDBname', $this->getVar( 'wgDBwiki_user' ) );
+		$newValues = $this->setVarsFromRequest( array( 'wgDBserver', 'wgDBprefix', 'wgDBuser', 'wgDBpassword' ) );
+		$this->parent->setVar( 'wgDBname', $this->getVar( 'wgDBuser' ) );
 
 		// Validate them
 		$status = Status::newGood();
@@ -97,8 +97,8 @@ class OracleInstaller extends DatabaseInstaller {
 			return $status;
 		}
 
-		// Submit wiki_user box
-		$status = $this->submitInstallwiki_userBox();
+		// Submit user box
+		$status = $this->submitInstallUserBox();
 		if ( !$status->isOK() ) {
 			return $status;
 		}
@@ -108,9 +108,9 @@ class OracleInstaller extends DatabaseInstaller {
 		$status = $this->getConnection();
 		if ( !$status->isOK() ) {
 			if ( $this->connError == 28009 ) {
-				// _Installwiki_user seems to be a SYSDBA
-				// Scenario 2: Create wiki_user with SYSDBA and install with new wiki_user
-				$status = $this->submitWebwiki_userBox();
+				// _InstallUser seems to be a SYSDBA
+				// Scenario 2: Create user with SYSDBA and install with new user
+				$status = $this->submitWebUserBox();
 				if ( !$status->isOK() ) {
 					return $status;
 				}
@@ -125,9 +125,9 @@ class OracleInstaller extends DatabaseInstaller {
 				return $status;
 			}
 		} else {
-			// check for web wiki_user credentials
-			// Scenario 3: Install with a priviliged wiki_user but use a restricted wiki_user
-			$statusIS3 = $this->submitWebwiki_userBox();
+			// check for web user credentials
+			// Scenario 3: Install with a priviliged user but use a restricted user
+			$statusIS3 = $this->submitWebUserBox();
 			if ( !$statusIS3->isOK() ) {
 				return $statusIS3;
 			}
@@ -150,15 +150,15 @@ class OracleInstaller extends DatabaseInstaller {
 	public function openConnection() {
 		$status = Status::newGood();
 		try {
-			 = new DatabaseOracle(
+			$db = new DatabaseOracle(
 				$this->getVar( 'wgDBserver' ),
-				$this->getVar( '_Installwiki_user' ),
+				$this->getVar( '_InstallUser' ),
 				$this->getVar( '_InstallPassword' ),
 				$this->getVar( '_InstallDBname' ),
 				0,
 				$this->getVar( 'wgDBprefix' )
 			);
-			$status->value = ;
+			$status->value = $db;
 		} catch ( DBConnectionError $e ) {
 			$this->connError = $e->db->lastErrno();
 			$status->fatal( 'config-connection-error', $e->getMessage() );
@@ -169,15 +169,15 @@ class OracleInstaller extends DatabaseInstaller {
 	public function openSYSDBAConnection() {
 		$status = Status::newGood();
 		try {
-			 = new DatabaseOracle(
+			$db = new DatabaseOracle(
 				$this->getVar( 'wgDBserver' ),
-				$this->getVar( '_Installwiki_user' ),
+				$this->getVar( '_InstallUser' ),
 				$this->getVar( '_InstallPassword' ),
 				$this->getVar( '_InstallDBname' ),
 				DBO_SYSDBA,
 				$this->getVar( 'wgDBprefix' )
 			);
-			$status->value = ;
+			$status->value = $db;
 		} catch ( DBConnectionError $e ) {
 			$this->connError = $e->db->lastErrno();
 			$status->fatal( 'config-connection-error', $e->getMessage() );
@@ -187,17 +187,17 @@ class OracleInstaller extends DatabaseInstaller {
 
 	public function needsUpgrade() {
 		$tempDBname = $this->getVar( 'wgDBname' );
-		$this->parent->setVar( 'wgDBname', $this->getVar( 'wgDBwiki_user' ) );
+		$this->parent->setVar( 'wgDBname', $this->getVar( 'wgDBuser' ) );
 		$retVal = parent::needsUpgrade();
 		$this->parent->setVar( 'wgDBname', $tempDBname );
 		return $retVal;
 	}
 
 	public function preInstall() {
-		# Add our wiki_user callback to installSteps, right before the tables are created.
+		# Add our user callback to installSteps, right before the tables are created.
 		$callback = array(
-			'name' => 'wiki_user',
-			'callback' => array( $this, 'setupwiki_user' )
+			'name' => 'user',
+			'callback' => array( $this, 'setupUser' )
 		);
 		$this->parent->addInstallStep( $callback, 'database' );
 	}
@@ -208,18 +208,18 @@ class OracleInstaller extends DatabaseInstaller {
 		return $status;
 	}
 
-	public function setupwiki_user() {
+	public function setupUser() {
 		global $IP;
 
 		if ( !$this->getVar( '_CreateDBAccount' ) ) {
 			return Status::newGood();
 		}
 
-		// normaly only SYSDBA wiki_users can create accounts
+		// normaly only SYSDBA users can create accounts
 		$status = $this->openSYSDBAConnection();
 		if ( !$status->isOK() ) {
 			if ( $this->connError == 1031 ) {
-				// insufficient  privileges (looks like a normal wiki_user)
+				// insufficient  privileges (looks like a normal user)
 				$status = $this->openConnection();
 				if ( !$status->isOK() ) {
 					return $status;
@@ -231,25 +231,25 @@ class OracleInstaller extends DatabaseInstaller {
 		$this->db = $status->value;
 		$this->setupSchemaVars();
 
-		if ( !$this->db->selectDB( $this->getVar( 'wgDBwiki_user' ) ) ) {
+		if ( !$this->db->selectDB( $this->getVar( 'wgDBuser' ) ) ) {
 			$this->db->setFlag( DBO_DDLMODE );
-			$error = $this->db->sourceFile( "$IP/maintenance/oracle/wiki_user.sql" );
-			if ( $error !== true || !$this->db->selectDB( $this->getVar( 'wgDBwiki_user' ) ) ) {
-				$status->fatal( 'config-install-wiki_user-failed', $this->getVar( 'wgDBwiki_user' ), $error );
+			$error = $this->db->sourceFile( "$IP/maintenance/oracle/user.sql" );
+			if ( $error !== true || !$this->db->selectDB( $this->getVar( 'wgDBuser' ) ) ) {
+				$status->fatal( 'config-install-user-failed', $this->getVar( 'wgDBuser' ), $error );
 			}
 		} elseif ( $this->db->getFlag( DBO_SYSDBA ) ) {
-			$status->fatal( 'config-db-sys-wiki_user-exists-oracle', $this->getVar( 'wgDBwiki_user' ) );
+			$status->fatal( 'config-db-sys-user-exists-oracle', $this->getVar( 'wgDBuser' ) );
 		}
 
 		if ($status->isOK()) {
-			// wiki_user created or already existing, switching back to a normal connection
-			// as the new wiki_user has all needed privileges to setup the rest of the schema
-			// i will be using that wiki_user as _Installwiki_user from this point on
+			// user created or already existing, switching back to a normal connection
+			// as the new user has all needed privileges to setup the rest of the schema
+			// i will be using that user as _InstallUser from this point on
 			$this->db->close();
 			$this->db = false;
-			$this->parent->setVar( '_Installwiki_user', $this->getVar( 'wgDBwiki_user' ) );
+			$this->parent->setVar( '_InstallUser', $this->getVar( 'wgDBuser' ) );
 			$this->parent->setVar( '_InstallPassword', $this->getVar( 'wgDBpassword' ) );
-			$this->parent->setVar( '_InstallDBname', $this->getVar( 'wgDBwiki_user' ) );
+			$this->parent->setVar( '_InstallDBname', $this->getVar( 'wgDBuser' ) );
 			$status = $this->getConnection();
 		}
 
@@ -263,7 +263,7 @@ class OracleInstaller extends DatabaseInstaller {
 	public function createTables() {
 		$this->setupSchemaVars();
 		$this->db->setFlag( DBO_DDLMODE );
-		$this->parent->setVar( 'wgDBname', $this->getVar( 'wgDBwiki_user' ) );
+		$this->parent->setVar( 'wgDBname', $this->getVar( 'wgDBuser' ) );
 		$status = parent::createTables();
 		$this->db->clearFlag( DBO_DDLMODE );
 
@@ -274,10 +274,10 @@ class OracleInstaller extends DatabaseInstaller {
 
 	public function getSchemaVars() {
 		$varNames = array(
-			# These variables are used by maintenance/oracle/wiki_user.sql
+			# These variables are used by maintenance/oracle/user.sql
 			'_OracleDefTS',
 			'_OracleTempTS',
-			'wgDBwiki_user',
+			'wgDBuser',
 			'wgDBpassword',
 
 			# These are used by tables.sql

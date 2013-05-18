@@ -37,9 +37,9 @@ class FeedUtils {
 	 * @param $key String: cache key of feed's content
 	 */
 	public static function checkPurge( $timekey, $key ) {
-		global $wgRequest, $wgwiki_user, $messageMemc;
+		global $wgRequest, $wgUser, $messageMemc;
 		$purge = $wgRequest->getVal( 'action' ) === 'purge';
-		if ( $purge && $wgwiki_user->isAllowed('purge') ) {
+		if ( $purge && $wgUser->isAllowed('purge') ) {
 			$messageMemc->delete( $timekey );
 			$messageMemc->delete( $key );
 		}
@@ -48,7 +48,7 @@ class FeedUtils {
 	/**
 	 * Check whether feeds can be used and that $type is a valid feed type
 	 *
-	 * @param $type String: feed type, as requested by the wiki_user
+	 * @param $type String: feed type, as requested by the user
 	 * @return Boolean
 	 */
 	public static function checkFeedOutput( $type ) {
@@ -113,8 +113,8 @@ class FeedUtils {
 					$actiontext,
 					Linker::formatComment( $comment ) ) ) ) . "</p>\n";
 
-		// NOTE: Check permissions for current wiki_user. -- HaloACL
-		$accErrors = $title->getwiki_userPermissionsErrors( 'read', $wgwiki_user, true );
+		// NOTE: Check permissions for current user. -- HaloACL
+		$accErrors = $title->getUserPermissionsErrors( 'read', $wgUser, true );
 
 		// Can't diff special pages, unreadable pages or pages with no new revision
 		// to compare against: just return the text.

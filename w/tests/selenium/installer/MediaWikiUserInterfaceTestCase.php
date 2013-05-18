@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MediaWikiwiki_userInterfaceTestCase
+ * MediaWikiUserInterfaceTestCase
  *
  * @file
  * @ingroup Maintenance
@@ -37,7 +37,7 @@ require_once (__DIR__.'/'.'MediaWikiInstallationCommonFunction.php');
 */
 
 
-class MediaWikiwiki_userInterfaceTestCase extends MediaWikiInstallationCommonFunction {
+class MediaWikiUserInterfaceTestCase extends MediaWikiInstallationCommonFunction {
     
     function setUp() {
         parent::setUp();
@@ -77,7 +77,7 @@ class MediaWikiwiki_userInterfaceTestCase extends MediaWikiInstallationCommonFun
                 $this->getText( LINK_FORM."div[1]/div[1]/label" ));
         
         // 'Your language' dropdown available
-        $this->assertTrue( $this->isElementPresent( "wiki_userLang" ));
+        $this->assertTrue( $this->isElementPresent( "UserLang" ));
         
         // 'Wiki language' label available
         $this->assertEquals( "Wiki language:",
@@ -138,18 +138,18 @@ class MediaWikiwiki_userInterfaceTestCase extends MediaWikiInstallationCommonFun
         $this->assertEquals( "Database table prefix:",
                 $this->getText( "//div[@id='DB_wrapper_mysql']/fieldset[1]/div[2]/div[1]/label" ));
         
-        // 'wiki_user account for installation' section available
+        // 'User account for installation' section available
         $this->assertTrue( $this->isElementPresent( "//div[@id='DB_wrapper_mysql']/fieldset[2]/legend" ));
         
-        // 'wiki_user account for installation' label available
-        $this->assertEquals( "wiki_user account for installation", $this->getText( "//div[@id='DB_wrapper_mysql']/fieldset[2]/legend" ));
+        // 'User account for installation' label available
+        $this->assertEquals( "User account for installation", $this->getText( "//div[@id='DB_wrapper_mysql']/fieldset[2]/legend" ));
         
-        // 'Database wiki_username' label available
-        $this->assertEquals( "Database wiki_username:",
+        // 'Database username' label available
+        $this->assertEquals( "Database username:",
                 $this->getText( "//div[@id='DB_wrapper_mysql']/fieldset[2]/div[1]/div[1]/label" ));
         
-        // 'Database wiki_username' text box defaults to 'root'
-        $this->assertEquals("root", $this->getValue( "mysql__Installwiki_user" ));
+        // 'Database username' text box defaults to 'root'
+        $this->assertEquals("root", $this->getValue( "mysql__InstallUser" ));
         
         // 'Database password' label available
         $this->assertEquals( "Database password:",
@@ -184,11 +184,11 @@ class MediaWikiwiki_userInterfaceTestCase extends MediaWikiInstallationCommonFun
         // verify 'Use the same account as for installation' check box is not selected
         $this->assertEquals( "off", $this->getValue( "mysql__SameAccount" ));
         
-        // 'Database wiki_username' label available
-        $this->assertEquals( "Database wiki_username:", $this->getText( "//div[@id='dbOtherAccount']/div[1]/div[1]/label" ));
+        // 'Database username' label available
+        $this->assertEquals( "Database username:", $this->getText( "//div[@id='dbOtherAccount']/div[1]/div[1]/label" ));
         
-        // 'Database wiki_username' text box is default to the 'wikiwiki_user'
-        $this->assertEquals( "wikiwiki_user", $this->getValue( "mysql_wgDBwiki_user" ));
+        // 'Database username' text box is default to the 'wikiuser'
+        $this->assertEquals( "wikiuser", $this->getValue( "mysql_wgDBuser" ));
         
         // 'Database password' label available
         $this->assertEquals( "Database password:", $this->getText( "//div[@id='dbOtherAccount']/div[2]/div[1]/label" ));
@@ -406,7 +406,7 @@ class MediaWikiwiki_userInterfaceTestCase extends MediaWikiInstallationCommonFun
                 $this->getText( LINK_FORM."ul/li[1]" ));
         $this->assertEquals( "Creating tables... done",
                 $this->getText( LINK_FORM."ul/li[2]" ));
-        $this->assertEquals( "Creating database wiki_user... done",
+        $this->assertEquals( "Creating database user... done",
                 $this->getText( LINK_FORM."ul/li[3]" ));
         $this->assertEquals( "Populating default interwiki table... done",
                 $this->getText( LINK_FORM."ul/li[4]" ));
@@ -414,7 +414,7 @@ class MediaWikiwiki_userInterfaceTestCase extends MediaWikiInstallationCommonFun
                 $this->getText( LINK_FORM."ul/li[5]" ));
         $this->assertEquals( "Generating default upgrade key... done",
                 $this->getText( LINK_FORM."ul/li[6]" ));
-        $this->assertEquals( "Creating administrator wiki_user account... done",
+        $this->assertEquals( "Creating administrator user account... done",
                 $this->getText( LINK_FORM."ul/li[7]" ));
         $this->assertEquals( "Creating main page with default content... done",
                 $this->getText( LINK_FORM."ul/li[8]" ));

@@ -46,7 +46,7 @@ class FetchText extends Maintenance {
 	 * note that that the text string itself is *not* followed by newline
 	 */
 	 public function execute() {
-		 = wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$stdin = $this->getStdin();
 		while ( !feof( $stdin ) ) {
 			$line = fgets( $stdin );
@@ -55,7 +55,7 @@ class FetchText extends Maintenance {
 				break;
 			}
 			$textId = intval( $line );
-			$text = $this->doGetText( , $textId );
+			$text = $this->doGetText( $db, $textId );
 			if ($text === false) {
 				# actual error, not zero-length text
 				$textLen = "-1";
@@ -69,13 +69,13 @@ class FetchText extends Maintenance {
 
 	/**
 	 * May throw a database error if, say, the server dies during query.
-	 * @param  DatabaseBase object
+	 * @param $db DatabaseBase object
 	 * @param $id int The old_id
 	 * @return String
 	 */
-	private function doGetText( , $id ) {
+	private function doGetText( $db, $id ) {
 		$id = intval( $id );
-		$row = ->selectRow( 'text',
+		$row = $db->selectRow( 'text',
 			array( 'old_text', 'old_flags' ),
 			array( 'old_id' => $id ),
 			__METHOD__ );

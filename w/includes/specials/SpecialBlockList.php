@@ -66,7 +66,7 @@ class SpecialBlockList extends SpecialPage {
 		$fields = array(
 			'Target' => array(
 				'type' => 'text',
-				'label-message' => 'ipadressorwiki_username',
+				'label-message' => 'ipadressorusername',
 				'tabindex' => '1',
 				'size' => '45',
 				'default' => $this->target,
@@ -74,7 +74,7 @@ class SpecialBlockList extends SpecialPage {
 			'Options' => array(
 				'type' => 'multiselect',
 				'options' => array(
-					$this->msg( 'blocklist-wiki_userblocks' )->text() => 'wiki_userblocks',
+					$this->msg( 'blocklist-userblocks' )->text() => 'userblocks',
 					$this->msg( 'blocklist-tempblocks' )->text() => 'tempblocks',
 					$this->msg( 'blocklist-addressblocks' )->text() => 'addressblocks',
 					$this->msg( 'blocklist-rangeblocks' )->text() => 'rangeblocks',
@@ -82,7 +82,7 @@ class SpecialBlockList extends SpecialPage {
 				'flatlist' => true,
 			),
 			'Limit' => array(
-				'class' => 'HTMLBlockedwiki_usersItemSelect',
+				'class' => 'HTMLBlockedUsersItemSelect',
 				'label-message' => 'table_pager_limit_label',
 				'options' => array(
 					$lang->formatNum( 20 ) => 20,
@@ -112,8 +112,8 @@ class SpecialBlockList extends SpecialPage {
 		}
 
 		$conds = array();
-		# Is the wiki_user allowed to see hidden blocks?
-		if ( !$this->getwiki_user()->isAllowed( 'hidewiki_user' ) ){
+		# Is the user allowed to see hidden blocks?
+		if ( !$this->getUser()->isAllowed( 'hideuser' ) ){
 			$conds['ipb_deleted'] = 0;
 		}
 
@@ -129,8 +129,8 @@ class SpecialBlockList extends SpecialPage {
 				case Block::TYPE_IP:
 				case Block::TYPE_RANGE:
 					list( $start, $end ) = IP::parseRange( $target );
-					r = wfGetDB( DB_SLAVE );
-					$conds[] = r->makeList(
+					$dbr = wfGetDB( DB_SLAVE );
+					$conds[] = $dbr->makeList(
 						array(
 							'ipb_address' => $target,
 							Block::getRangeCond( $start, $end )
@@ -148,14 +148,14 @@ class SpecialBlockList extends SpecialPage {
 		}
 
 		# Apply filters
-		if( in_array( 'wiki_userblocks', $this->options ) ) {
-			$conds['ipb_wiki_user'] = 0;
+		if( in_array( 'userblocks', $this->options ) ) {
+			$conds['ipb_user'] = 0;
 		}
 		if( in_array( 'tempblocks', $this->options ) ) {
 			$conds['ipb_expiry'] = 'infinity';
 		}
 		if( in_array( 'addressblocks', $this->options ) ) {
-			$conds[] = "ipb_wiki_user != 0 OR ipb_range_end > ipb_range_start";
+			$conds[] = "ipb_user != 0 OR ipb_range_end > ipb_range_start";
 		}
 		if( in_array( 'rangeblocks', $this->options ) ) {
 			$conds[] = "ipb_range_end = ipb_range_start";
@@ -250,7 +250,7 @@ class BlockListPager extends TablePager {
 				'createaccountblock',
 				'noautoblockblock',
 				'emailblock',
-				'blocklist-nowiki_usertalk',
+				'blocklist-nousertalk',
 				'unblocklink',
 				'change-blocklink',
 				'infiniteblock',
@@ -265,7 +265,7 @@ class BlockListPager extends TablePager {
 
 		switch( $name ) {
 			case 'ipb_timestamp':
-				$formatted = $this->getLanguage()->wiki_userTimeAndDate( $value, $this->getwiki_user() );
+				$formatted = $this->getLanguage()->userTimeAndDate( $value, $this->getUser() );
 				break;
 
 			case 'ipb_target':
@@ -276,8 +276,8 @@ class BlockListPager extends TablePager {
 					switch( $type ){
 						case Block::TYPE_USER:
 						case Block::TYPE_IP:
-							$formatted = Linker::wiki_userLink( $target->getId(), $target );
-							$formatted .= Linker::wiki_userToolLinks(
+							$formatted = Linker::userLink( $target->getId(), $target );
+							$formatted .= Linker::userToolLinks(
 								$target->getId(),
 								$target,
 								false,
@@ -291,8 +291,8 @@ class BlockListPager extends TablePager {
 				break;
 
 			case 'ipb_expiry':
-				$formatted = $this->getLanguage()->formatExpiry( $value, /* wiki_user preference timezone */ true );
-				if( $this->getwiki_user()->isAllowed( 'block' ) ){
+				$formatted = $this->getLanguage()->formatExpiry( $value, /* User preference timezone */ true );
+				if( $this->getUser()->isAllowed( 'block' ) ){
 					if( $row->ipb_auto ){
 						$links[] = Linker::linkKnown(
 							SpecialPage::getTitleFor( 'Unblock' ),
@@ -320,11 +320,11 @@ class BlockListPager extends TablePager {
 				break;
 
 			case 'ipb_by':
-				if ( isset( $row->by_wiki_user_name ) ) {
-					$formatted = Linker::wiki_userLink( $value, $row->by_wiki_user_name );
-					$formatted .= Linker::wiki_userToolLinks( $value, $row->by_wiki_user_name );
+				if ( isset( $row->by_user_name ) ) {
+					$formatted = Linker::userLink( $value, $row->by_user_name );
+					$formatted .= Linker::userToolLinks( $value, $row->by_user_name );
 				} else {
-					$formatted = htmlspecialchars( $row->ipb_by_text ); // foreign wiki_user?
+					$formatted = htmlspecialchars( $row->ipb_by_text ); // foreign user?
 				}
 				break;
 
@@ -340,7 +340,7 @@ class BlockListPager extends TablePager {
 				if ( $row->ipb_create_account ) {
 					$properties[] = $msg['createaccountblock'];
 				}
-				if ( $row->ipb_wiki_user && !$row->ipb_enable_autoblock ) {
+				if ( $row->ipb_user && !$row->ipb_enable_autoblock ) {
 					$properties[] = $msg['noautoblockblock'];
 				}
 
@@ -348,8 +348,8 @@ class BlockListPager extends TablePager {
 					$properties[] = $msg['emailblock'];
 				}
 
-				if ( !$row->ipb_allow_wiki_usertalk ) {
-					$properties[] = $msg['blocklist-nowiki_usertalk'];
+				if ( !$row->ipb_allow_usertalk ) {
+					$properties[] = $msg['blocklist-nousertalk'];
 				}
 
 				$formatted = $this->getLanguage()->commaList( $properties );
@@ -365,14 +365,14 @@ class BlockListPager extends TablePager {
 
 	function getQueryInfo() {
 		$info = array(
-			'tables' => array( 'ipblocks', 'wiki_user' ),
+			'tables' => array( 'ipblocks', 'user' ),
 			'fields' => array(
 				'ipb_id',
 				'ipb_address',
-				'ipb_wiki_user',
+				'ipb_user',
 				'ipb_by',
 				'ipb_by_text',
-				'by_wiki_user_name' => 'wiki_user_name',
+				'by_user_name' => 'user_name',
 				'ipb_reason',
 				'ipb_timestamp',
 				'ipb_auto',
@@ -384,14 +384,14 @@ class BlockListPager extends TablePager {
 				'ipb_range_end',
 				'ipb_deleted',
 				'ipb_block_email',
-				'ipb_allow_wiki_usertalk',
+				'ipb_allow_usertalk',
 			),
 			'conds' => $this->conds,
-			'join_conds' => array( 'wiki_user' => array( 'LEFT JOIN', 'wiki_user_id = ipb_by' ) )
+			'join_conds' => array( 'user' => array( 'LEFT JOIN', 'user_id = ipb_by' ) )
 		);
 
-		# Is the wiki_user allowed to see hidden blocks?
-		if ( !$this->getwiki_user()->isAllowed( 'hidewiki_user' ) ){
+		# Is the user allowed to see hidden blocks?
+		if ( !$this->getUser()->isAllowed( 'hideuser' ) ){
 			$info['conds']['ipb_deleted'] = 0;
 		}
 
@@ -424,21 +424,21 @@ class BlockListPager extends TablePager {
 		$lb = new LinkBatch;
 		$lb->setCaller( __METHOD__ );
 
-		$wiki_userids = array();
+		$userids = array();
 
 		foreach ( $result as $row ) {
-			$wiki_userids[] = $row->ipb_by;
+			$userids[] = $row->ipb_by;
 
-			# wiki_usernames and titles are in fact related by a simple substitution of space -> underscore
+			# Usernames and titles are in fact related by a simple substitution of space -> underscore
 			# The last few lines of Title::secureAndSplit() tell the story.
 			$name = str_replace( ' ', '_', $row->ipb_address );
 			$lb->add( NS_USER, $name );
 			$lb->add( NS_USER_TALK, $name );
 		}
 
-		$ua = wiki_userArray::newFromIDs( $wiki_userids );
-		foreach( $ua as $wiki_user ){
-			$name = str_replace( ' ', '_', $wiki_user->getName() );
+		$ua = UserArray::newFromIDs( $userids );
+		foreach( $ua as $user ){
+			$name = str_replace( ' ', '_', $user->getName() );
 			$lb->add( NS_USER, $name );
 			$lb->add( NS_USER_TALK, $name );
 		} 
@@ -453,7 +453,7 @@ class BlockListPager extends TablePager {
  *
  * @todo Do not release 1.19 with this.
  */
-class HTMLBlockedwiki_usersItemSelect extends HTMLSelectField {
+class HTMLBlockedUsersItemSelect extends HTMLSelectField {
 	/**
 	 * Basically don't do any validation. If it's a number that's fine. Also,
 	 * add it to the list if it's not there already

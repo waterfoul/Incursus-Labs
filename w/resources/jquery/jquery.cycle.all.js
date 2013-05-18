@@ -772,7 +772,7 @@ $.fn.cycle.updateActivePagerLink = function(pager, currSlide, clsName) {
 // calculate timeout value for current transition
 function getTimeout(curr, next, opts, fwd) {
 	if (opts.timeoutFn) {
-		// call wiki_user provided calc fn
+		// call user provided calc fn
 		var t = opts.timeoutFn.call(curr,curr,next,opts,fwd);
 		while (opts.fx != 'none' && (t - opts.speed) < 250) // sanitize timeout
 			t += opts.speed;

@@ -26,7 +26,7 @@
  */
 
 /**
- * PHP Parser - Processes wiki markup (which uses a more wiki_user-friendly
+ * PHP Parser - Processes wiki markup (which uses a more user-friendly
  * syntax, such as "[[link]]" for making links), and provides a one-way
  * transformation of that wiki markup it into XHTML output / markup
  * (which in turn the browser understands, and can display).
@@ -51,7 +51,7 @@
  * Globals used:
  *    object: $wgContLang
  *
- * @warning $wgwiki_user or $wgTitle or $wgRequest or $wgLang. Keep them away!
+ * @warning $wgUser or $wgTitle or $wgRequest or $wgLang. Keep them away!
  *
  * @par Settings:
  * $wgLocaltimezone
@@ -171,9 +171,9 @@ class Parser {
 	var $mShowToc, $mForceTocPosition;
 
 	/**
-	 * @var wiki_user
+	 * @var User
 	 */
-	var $mwiki_user; # wiki_user object; only used when doing pre-save transform
+	var $mUser; # User object; only used when doing pre-save transform
 
 	# Temporary
 	# These are variables reset at least once per parse regardless of $clearState
@@ -192,7 +192,7 @@ class Parser {
 	var $mRevisionObject; # The revision object of the specified revision ID
 	var $mRevisionId;   # ID to display in {{REVISIONID}} tags
 	var $mRevisionTimestamp; # The timestamp of the specified revision ID
-	var $mRevisionwiki_user; # wiki_user to display in {{REVISIONUSER}} tag
+	var $mRevisionUser; # User to display in {{REVISIONUSER}} tag
 	var $mRevIdForTs;   # The revision ID which was used to fetch the timestamp
 
 	/**
@@ -279,9 +279,9 @@ class Parser {
 		$this->mLinkHolders = new LinkHolderArray( $this );
 		$this->mLinkID = 0;
 		$this->mRevisionObject = $this->mRevisionTimestamp =
-			$this->mRevisionId = $this->mRevisionwiki_user = null;
+			$this->mRevisionId = $this->mRevisionUser = null;
 		$this->mVarCache = array();
-		$this->mwiki_user = null;
+		$this->mUser = null;
 
 		/**
 		 * Prefix for temporary replacement strings for the multipass parser.
@@ -356,12 +356,12 @@ class Parser {
 		$oldRevisionId = $this->mRevisionId;
 		$oldRevisionObject = $this->mRevisionObject;
 		$oldRevisionTimestamp = $this->mRevisionTimestamp;
-		$oldRevisionwiki_user = $this->mRevisionwiki_user;
+		$oldRevisionUser = $this->mRevisionUser;
 		if ( $revid !== null ) {
 			$this->mRevisionId = $revid;
 			$this->mRevisionObject = null;
 			$this->mRevisionTimestamp = null;
-			$this->mRevisionwiki_user = null;
+			$this->mRevisionUser = null;
 		}
 
 		wfRunHooks( 'ParserBeforeStrip', array( &$this, &$text, &$this->mStripState ) );
@@ -392,7 +392,7 @@ class Parser {
 		 * a) It's disabled
 		 * b) Content isn't converted
 		 * c) It's a conversion table
-		 * d) it is an interface message (which is in the wiki_user language)
+		 * d) it is an interface message (which is in the user language)
 		 */
 		if ( !( $options->getDisableContentConversion()
 				|| isset( $this->mDoubleUnderscores['nocontentconvert'] ) ) )
@@ -476,7 +476,7 @@ class Parser {
 
 		wfRunHooks( 'ParserAfterTidy', array( &$this, &$text ) );
 
-		# Information on include size limits, for the benefit of wiki_users who try to skirt them
+		# Information on include size limits, for the benefit of users who try to skirt them
 		if ( $this->mOptions->getEnableLimitReport() ) {
 			$max = $this->mOptions->getMaxIncludeSize();
 			$PFreport = "Expensive parser function count: {$this->mExpensiveFunctionCount}/{$this->mOptions->getExpensiveParserFunctionLimit()}\n";
@@ -497,7 +497,7 @@ class Parser {
 		$this->mRevisionId = $oldRevisionId;
 		$this->mRevisionObject = $oldRevisionObject;
 		$this->mRevisionTimestamp = $oldRevisionTimestamp;
-		$this->mRevisionwiki_user = $oldRevisionwiki_user;
+		$this->mRevisionUser = $oldRevisionUser;
 		wfProfileOut( $fname );
 		wfProfileOut( __METHOD__ );
 
@@ -593,13 +593,13 @@ class Parser {
 	}
 
 	/**
-	 * Set the current wiki_user.
+	 * Set the current user.
 	 * Should only be used when doing pre-save transform.
 	 *
-	 * @param $wiki_user Mixed: wiki_user object or null (to reset)
+	 * @param $user Mixed: User object or null (to reset)
 	 */
-	function setwiki_user( $wiki_user ) {
-		$this->mwiki_user = $wiki_user;
+	function setUser( $user ) {
+		$this->mUser = $user;
 	}
 
 	/**
@@ -748,7 +748,7 @@ class Parser {
 		if ( $target !== null ) {
 			return $target;
 		} elseif( $this->mOptions->getInterfaceMessage() ) {
-			return $this->mOptions->getwiki_userLangObj();
+			return $this->mOptions->getUserLangObj();
 		} elseif( is_null( $this->mTitle ) ) {
 			throw new MWException( __METHOD__ . ': $this->mTitle is null' );
 		}
@@ -769,16 +769,16 @@ class Parser {
 	}
 
 	/**
-	 * Get a wiki_user object either from $this->mwiki_user, if set, or from the
+	 * Get a User object either from $this->mUser, if set, or from the
 	 * ParserOptions object otherwise
 	 *
-	 * @return wiki_user object
+	 * @return User object
 	 */
-	function getwiki_user() {
-		if ( !is_null( $this->mwiki_user ) ) {
-			return $this->mwiki_user;
+	function getUser() {
+		if ( !is_null( $this->mUser ) ) {
+			return $this->mUser;
 		}
-		return $this->mOptions->getwiki_user();
+		return $this->mOptions->getUser();
 	}
 
 	/**
@@ -1252,7 +1252,7 @@ class Parser {
 	}
 
 	/**
-	 * Make a free external link, given a wiki_user-supplied URL
+	 * Make a free external link, given a user-supplied URL
 	 *
 	 * @param $url string
 	 *
@@ -1574,7 +1574,7 @@ class Parser {
 			$url = Sanitizer::cleanUrl( $url );
 
 			# Use the encoded URL
-			# This means that wiki_users can paste URLs directly into the text
+			# This means that users can paste URLs directly into the text
 			# Funny characters like ö aren't valid in URLs anyway
 			# This was changed in August 2004
 			$s .= Linker::makeExternalLink( $url, $text, false, $linktype,
@@ -1971,7 +1971,7 @@ class Parser {
 					wfProfileIn( __METHOD__."-image" );
 					// <IntraACL>
 					if ( !wfIsBadImage( $nt->getDBkey(), $this->mTitle ) &&
-						( $canRead = $nt->wiki_userCanRead() ) ) {
+						( $canRead = $nt->userCanRead() ) ) {
 					// </IntraACL>
 						if ( $wasblank ) {
 							# if no parameters were passed, $text
@@ -2764,7 +2764,7 @@ class Parser {
 				$pageid = $this->getTitle()->getArticleId();
 				if( $pageid == 0 ) {
 					# 0 means the page doesn't exist in the database,
-					# which means the wiki_user is previewing a new page.
+					# which means the user is previewing a new page.
 					# The vary-revision flag must be set, because the magic word
 					# will have a different value once the page is saved.
 					$this->mOutput->setFlag( 'vary-revision' );
@@ -2821,12 +2821,12 @@ class Parser {
 				wfDebug( __METHOD__ . ": {{REVISIONTIMESTAMP}} used, setting vary-revision...\n" );
 				$value = $this->getRevisionTimestamp();
 				break;
-			case 'revisionwiki_user':
+			case 'revisionuser':
 				# Let the edit saving system know we should parse the page
 				# *after* a revision ID has been assigned. This is for null edits.
 				$this->mOutput->setFlag( 'vary-revision' );
 				wfDebug( __METHOD__ . ": {{REVISIONUSER}} used, setting vary-revision...\n" );
-				$value = $this->getRevisionwiki_user();
+				$value = $this->getRevisionUser();
 				break;
 			case 'namespace':
 				$value = str_replace( '_',' ',$wgContLang->getNsText( $this->mTitle->getNamespace() ) );
@@ -2895,11 +2895,11 @@ class Parser {
 			case 'numberoffiles':
 				$value = $pageLang->formatNum( SiteStats::images() );
 				break;
-			case 'numberofwiki_users':
-				$value = $pageLang->formatNum( SiteStats::wiki_users() );
+			case 'numberofusers':
+				$value = $pageLang->formatNum( SiteStats::users() );
 				break;
-			case 'numberofactivewiki_users':
-				$value = $pageLang->formatNum( SiteStats::activewiki_users() );
+			case 'numberofactiveusers':
+				$value = $pageLang->formatNum( SiteStats::activeUsers() );
 				break;
 			case 'numberofpages':
 				$value = $pageLang->formatNum( SiteStats::pages() );
@@ -3092,8 +3092,8 @@ class Parser {
 	}
 
 	/**
-	 * Warn the wiki_user when a parser limitation is reached
-	 * Will warn at most once the wiki_user per limitation type
+	 * Warn the user when a parser limitation is reached
+	 * Will warn at most once the user per limitation type
 	 *
 	 * @param $limitationType String: should be one of:
 	 *   'expensive-parserfunction' (corresponding messages:
@@ -3365,8 +3365,8 @@ class Parser {
 					$context = new RequestContext;
 					$context->setTitle( $title );
 					$context->setRequest( new FauxRequest( $pageArgs ) );
-					$context->setwiki_user( $this->getwiki_user() );
-					$context->setLanguage( $this->mOptions->getwiki_userLangObj() );
+					$context->setUser( $this->getUser() );
+					$context->setLanguage( $this->mOptions->getUserLangObj() );
 					$ret = SpecialPageFactory::capturePath( $title, $context );
 					if ( $ret ) {
 						$text = $context->getOutput()->getHTML();
@@ -3511,8 +3511,8 @@ class Parser {
 		$titleText = $title->getPrefixedDBkey();
 
 		if ( isset( $this->mTplRedirCache[$titleText] ) ) {
-			list( $ns, k ) = $this->mTplRedirCache[$titleText];
-			$title = Title::makeTitle( $ns, k );
+			list( $ns, $dbk ) = $this->mTplRedirCache[$titleText];
+			$title = Title::makeTitle( $ns, $dbk );
 			$titleText = $title->getPrefixedDBkey();
 		}
 		if ( isset( $this->mTplDomCache[$titleText] ) ) {
@@ -3545,7 +3545,7 @@ class Parser {
 	 */
 	function fetchTemplateAndTitle( $title ) {
 		$templateCb = $this->mOptions->getTemplateCallback(); # Defaults to Parser::statelessFetchTemplate()
-		$stuff = call_wiki_user_func( $templateCb, $title, $this );
+		$stuff = call_user_func( $templateCb, $title, $this );
 		$text = $stuff['text'];
 		$finalTitle = isset( $stuff['finalTitle'] ) ? $stuff['finalTitle'] : $title;
 		if ( isset( $stuff['deps'] ) ) {
@@ -3588,7 +3588,7 @@ class Parser {
 			wfRunHooks( 'BeforeParserFetchTemplateAndtitle',
 				array( $parser, $title, &$skip, &$id ) );
 			
-			$canRead = $canRead && $title->wiki_userCanRead();
+			$canRead = $canRead && $title->userCanRead();
 			if ( $skip ) {
 				$text = false;
 				$deps[] = array(
@@ -3752,10 +3752,10 @@ class Parser {
 	 */
 	function fetchScaryTemplateMaybeFromCache( $url ) {
 		global $wgTranscludeCacheExpiry;
-		r = wfGetDB( DB_SLAVE );
-		$tsCond = r->timestamp( time() - $wgTranscludeCacheExpiry );
-		$obj = r->selectRow( 'transcache', array('tc_time', 'tc_contents' ),
-				array( 'tc_url' => $url, "tc_time >= " . r->addQuotes( $tsCond ) ) );
+		$dbr = wfGetDB( DB_SLAVE );
+		$tsCond = $dbr->timestamp( time() - $wgTranscludeCacheExpiry );
+		$obj = $dbr->selectRow( 'transcache', array('tc_time', 'tc_contents' ),
+				array( 'tc_url' => $url, "tc_time >= " . $dbr->addQuotes( $tsCond ) ) );
 		if ( $obj ) {
 			return $obj->tc_contents;
 		}
@@ -3765,10 +3765,10 @@ class Parser {
 			return wfMessage( 'scarytranscludefailed', $url )->inContentLanguage()->text();
 		}
 
-		w = wfGetDB( DB_MASTER );
-		w->replace( 'transcache', array('tc_url'), array(
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->replace( 'transcache', array('tc_url'), array(
 			'tc_url' => $url,
-			'tc_time' => w->timestamp( time() ),
+			'tc_time' => $dbw->timestamp( time() ),
 			'tc_contents' => $text)
 		);
 		return $text;
@@ -4035,8 +4035,8 @@ class Parser {
 	/**
 	 * This function accomplishes several tasks:
 	 * 1) Auto-number headings if that option is enabled
-	 * 2) Add an [edit] link to sections for wiki_users who have enabled the option and can edit the page
-	 * 3) Add a Table of contents on the top for wiki_users who have enabled the option
+	 * 2) Add an [edit] link to sections for users who have enabled the option and can edit the page
+	 * 3) Add a Table of contents on the top for users who have enabled the option
 	 * 4) Auto-anchor headings
 	 *
 	 * It loops through all headlines, collects the necessary data, then splits up the
@@ -4072,13 +4072,13 @@ class Parser {
 		$enoughToc = $this->mShowToc &&
 			( ( $numMatches >= 4 ) || $this->mForceTocPosition );
 
-		# Allow wiki_user to stipulate that a page should have a "new section"
+		# Allow user to stipulate that a page should have a "new section"
 		# link added via __NEWSECTIONLINK__
 		if ( isset( $this->mDoubleUnderscores['newsectionlink'] ) ) {
 			$this->mOutput->setNewSection( true );
 		}
 
-		# Allow wiki_user to remove the "new section"
+		# Allow user to remove the "new section"
 		# link via __NONEWSECTIONLINK__
 		if ( isset( $this->mDoubleUnderscores['nonewsectionlink'] ) ) {
 			$this->mOutput->hideNewSection( true );
@@ -4326,7 +4326,7 @@ class Parser {
 				// We use a bit of pesudo-xml for editsection markers. The language converter is run later on
 				// Using a UNIQ style marker leads to the converter screwing up the tokens when it converts stuff
 				// And trying to insert strip tags fails too. At this point all real inputted tags have already been escaped
-				// so we don't have to worry about a wiki_user trying to input one of these markers directly.
+				// so we don't have to worry about a user trying to input one of these markers directly.
 				// We use a page and section attribute to stop the language converter from converting these important bits
 				// of data, but put the headline hint inside a content block because the language converter is supposed to
 				// be able to convert that piece of data.
@@ -4358,7 +4358,7 @@ class Parser {
 			if ( $prevtoclevel > 0 && $prevtoclevel < $wgMaxTocLevel ) {
 				$toc .= Linker::tocUnindent( $prevtoclevel - 1 );
 			}
-			$toc = Linker::tocList( $toc, $this->mOptions->getwiki_userLangObj() );
+			$toc = Linker::tocList( $toc, $this->mOptions->getUserLangObj() );
 			$this->mOutput->setTOCHTML( $toc );
 		}
 
@@ -4416,25 +4416,25 @@ class Parser {
 	 *
 	 * @param $text String: the text to transform
 	 * @param $title Title: the Title object for the current article
-	 * @param $wiki_user wiki_user: the wiki_user object describing the current wiki_user
+	 * @param $user User: the User object describing the current user
 	 * @param $options ParserOptions: parsing options
 	 * @param $clearState Boolean: whether to clear the parser state first
 	 * @return String: the altered wiki markup
 	 */
-	public function preSaveTransform( $text, Title $title, wiki_user $wiki_user, ParserOptions $options, $clearState = true ) {
+	public function preSaveTransform( $text, Title $title, User $user, ParserOptions $options, $clearState = true ) {
 		$this->startParse( $title, $options, self::OT_WIKI, $clearState );
-		$this->setwiki_user( $wiki_user );
+		$this->setUser( $user );
 
 		$pairs = array(
 			"\r\n" => "\n",
 		);
 		$text = str_replace( array_keys( $pairs ), array_values( $pairs ), $text );
 		if( $options->getPreSaveTransform() ) {
-			$text = $this->pstPass2( $text, $wiki_user );
+			$text = $this->pstPass2( $text, $user );
 		}
 		$text = $this->mStripState->unstripBoth( $text );
 
-		$this->setwiki_user( null ); #Reset
+		$this->setUser( null ); #Reset
 
 		return $text;
 	}
@@ -4444,17 +4444,17 @@ class Parser {
 	 * @private
 	 *
 	 * @param $text string
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 *
 	 * @return string
 	 */
-	function pstPass2( $text, $wiki_user ) {
+	function pstPass2( $text, $user ) {
 		global $wgContLang, $wgLocaltimezone;
 
 		# Note: This is the timestamp saved as hardcoded wikitext to
 		# the database, we use $wgContLang here in order to give
 		# everyone the same signature and use the default one rather
-		# than the one selected in each wiki_user's preferences.
+		# than the one selected in each user's preferences.
 		# (see also bug 12815)
 		$ts = $this->mOptions->getTimestamp();
 		if ( isset( $wgLocaltimezone ) ) {
@@ -4486,11 +4486,11 @@ class Parser {
 		# Because mOutputType is OT_WIKI, this will only process {{subst:xxx}} type tags
 		$text = $this->replaceVariables( $text );
 
-		# This works almost by chance, as the replaceVariables are done before the getwiki_userSig(),
+		# This works almost by chance, as the replaceVariables are done before the getUserSig(),
 		# which may corrupt this parser instance via its wfMessage()->text() call-
 
 		# Signatures
-		$sigText = $this->getwiki_userSig( $wiki_user );
+		$sigText = $this->getUserSig( $user );
 		$text = strtr( $text, array(
 			'~~~~~' => $d,
 			'~~~~' => "$sigText $d",
@@ -4529,37 +4529,37 @@ class Parser {
 	}
 
 	/**
-	 * Fetch the wiki_user's signature text, if any, and normalize to
+	 * Fetch the user's signature text, if any, and normalize to
 	 * validated, ready-to-insert wikitext.
 	 * If you have pre-fetched the nickname or the fancySig option, you can
 	 * specify them here to save a database query.
-	 * Do not reuse this parser instance after calling getwiki_userSig(),
+	 * Do not reuse this parser instance after calling getUserSig(),
 	 * as it may have changed if it's the $wgParser.
 	 *
-	 * @param $wiki_user wiki_user
-	 * @param $nickname String|bool nickname to use or false to use wiki_user's default nickname
+	 * @param $user User
+	 * @param $nickname String|bool nickname to use or false to use user's default nickname
 	 * @param $fancySig Boolean|null whether the nicknname is the complete signature
 	 *                  or null to use default value
 	 * @return string
 	 */
-	function getwiki_userSig( &$wiki_user, $nickname = false, $fancySig = null ) {
+	function getUserSig( &$user, $nickname = false, $fancySig = null ) {
 		global $wgMaxSigChars;
 
-		$wiki_username = $wiki_user->getName();
+		$username = $user->getName();
 
-		# If not given, retrieve from the wiki_user object.
+		# If not given, retrieve from the user object.
 		if ( $nickname === false )
-			$nickname = $wiki_user->getOption( 'nickname' );
+			$nickname = $user->getOption( 'nickname' );
 
 		if ( is_null( $fancySig ) ) {
-			$fancySig = $wiki_user->getBoolOption( 'fancysig' );
+			$fancySig = $user->getBoolOption( 'fancysig' );
 		}
 
-		$nickname = $nickname == null ? $wiki_username : $nickname;
+		$nickname = $nickname == null ? $username : $nickname;
 
 		if ( mb_strlen( $nickname ) > $wgMaxSigChars ) {
-			$nickname = $wiki_username;
-			wfDebug( __METHOD__ . ": $wiki_username has overlong signature.\n" );
+			$nickname = $username;
+			wfDebug( __METHOD__ . ": $username has overlong signature.\n" );
 		} elseif ( $fancySig !== false ) {
 			# Sig. might contain markup; validate this
 			if ( $this->validateSig( $nickname ) !== false ) {
@@ -4567,24 +4567,24 @@ class Parser {
 				return $this->cleanSig( $nickname, true );
 			} else {
 				# Failed to validate; fall back to the default
-				$nickname = $wiki_username;
-				wfDebug( __METHOD__.": $wiki_username has bad XML tags in signature.\n" );
+				$nickname = $username;
+				wfDebug( __METHOD__.": $username has bad XML tags in signature.\n" );
 			}
 		}
 
 		# Make sure nickname doesnt get a sig in a sig
 		$nickname = self::cleanSigInSig( $nickname );
 
-		# If we're still here, make it a link to the wiki_user page
-		$wiki_userText = wfEscapeWikiText( $wiki_username );
+		# If we're still here, make it a link to the user page
+		$userText = wfEscapeWikiText( $username );
 		$nickText = wfEscapeWikiText( $nickname );
-		$msgName = $wiki_user->isAnon() ? 'signature-anon' : 'signature';
+		$msgName = $user->isAnon() ? 'signature-anon' : 'signature';
 
-		return wfMessage( $msgName, $wiki_userText, $nickText )->inContentLanguage()->title( $this->getTitle() )->text();
+		return wfMessage( $msgName, $userText, $nickText )->inContentLanguage()->title( $this->getTitle() )->text();
 	}
 
 	/**
-	 * Check that the wiki_user's signature contains no bad XML
+	 * Check that the user's signature contains no bad XML
 	 *
 	 * @param $text String
 	 * @return mixed An expanded string, or false if invalid.
@@ -5076,7 +5076,7 @@ class Parser {
 		#  * center     center the image
 		#  * frame      Keep original image size, no magnify-button.
 		#  * framed     Same as "frame"
-		#  * frameless  like 'thumb' but without a frame. Keeps wiki_user preferences for width
+		#  * frameless  like 'thumb' but without a frame. Keeps user preferences for width
 		#  * upright    reduce width for upright images, rounded to full __0 px
 		#  * border     draw a 1px border around the image
 		#  * alt        Text for HTML alt attribute (defaults to empty)
@@ -5566,12 +5566,12 @@ class Parser {
 			$timestamp = $revObject ? $revObject->getTimestamp() : wfTimestampNow();
 
 			# The cryptic '' timezone parameter tells to use the site-default
-			# timezone offset instead of the wiki_user settings.
+			# timezone offset instead of the user settings.
 			#
 			# Since this value will be saved into the parser cache, served
-			# to other wiki_users, and potentially even used inside links and such,
+			# to other users, and potentially even used inside links and such,
 			# it needs to be consistent for all visitors.
-			$this->mRevisionTimestamp = $wgContLang->wiki_userAdjust( $timestamp, '' );
+			$this->mRevisionTimestamp = $wgContLang->userAdjust( $timestamp, '' );
 
 			wfProfileOut( __METHOD__ );
 		}
@@ -5579,23 +5579,23 @@ class Parser {
 	}
 
 	/**
-	 * Get the name of the wiki_user that edited the last revision
+	 * Get the name of the user that edited the last revision
 	 *
-	 * @return String: wiki_user name
+	 * @return String: user name
 	 */
-	function getRevisionwiki_user() {
-		if( is_null( $this->mRevisionwiki_user ) ) {
+	function getRevisionUser() {
+		if( is_null( $this->mRevisionUser ) ) {
 			$revObject = $this->getRevisionObject();
 
 			# if this template is subst: the revision id will be blank,
-			# so just use the current wiki_user's name
+			# so just use the current user's name
 			if( $revObject ) {
-				$this->mRevisionwiki_user = $revObject->getwiki_userText();
+				$this->mRevisionUser = $revObject->getUserText();
 			} elseif( $this->ot['wiki'] || $this->mOptions->getIsPreview() ) {
-				$this->mRevisionwiki_user = $this->getwiki_user()->getName();
+				$this->mRevisionUser = $this->getUser()->getName();
 			}
 		}
-		return $this->mRevisionwiki_user;
+		return $this->mRevisionUser;
 	}
 
 	/**
@@ -5672,8 +5672,8 @@ class Parser {
 	 *
 	 * Accepts a text string and then removes all wikitext from the
 	 * string and leaves only the resultant text (i.e. the result of
-	 * [[wiki_user:WikiSysop|Sysop]] would be "Sysop" and the result of
-	 * [[wiki_user:WikiSysop]] would be "wiki_user:WikiSysop") - this is intended
+	 * [[User:WikiSysop|Sysop]] would be "Sysop" and the result of
+	 * [[User:WikiSysop]] would be "User:WikiSysop") - this is intended
 	 * to create valid section anchors by mimicing the output of the
 	 * parser when headings are parsed.
 	 *
@@ -5726,7 +5726,7 @@ class Parser {
 	 * @return string
 	 */
 	function testPst( $text, Title $title, ParserOptions $options ) {
-		return $this->preSaveTransform( $text, $title, $options->getwiki_user(), $options );
+		return $this->preSaveTransform( $text, $title, $options->getUser(), $options );
 	}
 
 	/**
@@ -5761,10 +5761,10 @@ class Parser {
 		while ( $i < strlen( $s ) ) {
 			$markerStart = strpos( $s, $this->mUniqPrefix, $i );
 			if ( $markerStart === false ) {
-				$out .= call_wiki_user_func( $callback, substr( $s, $i ) );
+				$out .= call_user_func( $callback, substr( $s, $i ) );
 				break;
 			} else {
-				$out .= call_wiki_user_func( $callback, substr( $s, $i, $markerStart - $i ) );
+				$out .= call_user_func( $callback, substr( $s, $i, $markerStart - $i ) );
 				$markerEnd = strpos( $s, self::MARKER_SUFFIX, $markerStart );
 				if ( $markerEnd === false ) {
 					$out .= substr( $s, $markerStart );

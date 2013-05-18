@@ -37,7 +37,7 @@ $namespaceNames = array(
 );
 
 $specialPageAliases = array(
-	'Activewiki_users'               => array( 'Usatores_activ' ),
+	'Activeusers'               => array( 'Usatores_activ' ),
 	'Allmessages'               => array( 'Omni_li_missages' ),
 	'Allpages'                  => array( 'Omni_li_págines' ),
 	'Ancientpages'              => array( 'Págines_antiqui' ),
@@ -56,7 +56,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'Disambiguitones' ),
 	'DoubleRedirects'           => array( 'Redirectionmentes_duplic' ),
 	'EditWatchlist'             => array( 'Redacter_liste_de_págines_vigilat' ),
-	'Emailwiki_user'                 => array( 'Email_de_usator' ),
+	'Emailuser'                 => array( 'Email_de_usator' ),
 	'Export'                    => array( 'Exportar' ),
 	'Fewestrevisions'           => array( 'Revisiones_max_poc' ),
 	'FileDuplicateSearch'       => array( 'Sercha_de_file_duplicat' ),
@@ -70,7 +70,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Liste_de_files', 'Liste_de_file', 'Liste_de_figura' ),
 	'Listgrouprights'           => array( 'Jures_de_gruppe_de_liste', 'Jures_de_gruppe_de_usator' ),
 	'Listredirects'             => array( 'Liste_de_redirectionmentes' ),
-	'Listwiki_users'                 => array( 'Liste_de_usatores', 'Liste_de_usator' ),
+	'Listusers'                 => array( 'Liste_de_usatores', 'Liste_de_usator' ),
 	'Lockdb'                    => array( 'Serrar_DB' ),
 	'Log'                       => array( 'Diarium', 'Diariumes' ),
 	'Lonelypages'               => array( 'Págines_solitari', 'Págines_orfan' ),
@@ -121,9 +121,9 @@ $specialPageAliases = array(
 	'Unwatchedpages'            => array( 'Págines_desvigilat' ),
 	'Upload'                    => array( 'Cargar_file' ),
 	'UploadStash'               => array( 'Cargamente_stash_de_file' ),
-	'wiki_userlogin'                 => array( 'Intrar' ),
-	'wiki_userlogout'                => array( 'Surtida' ),
-	'wiki_userrights'                => array( 'Jures_de_usator', 'Crear_administrator', 'Crear_machine' ),
+	'Userlogin'                 => array( 'Intrar' ),
+	'Userlogout'                => array( 'Surtida' ),
+	'Userrights'                => array( 'Jures_de_usator', 'Crear_administrator', 'Crear_machine' ),
 	'Wantedcategories'          => array( 'Categories_carit' ),
 	'Wantedfiles'               => array( 'Files_carit' ),
 	'Wantedpages'               => array( 'Págines_carit', 'Catenunes_ínperfect' ),
@@ -134,7 +134,7 @@ $specialPageAliases = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Ultracatenun:',
 'tog-justify' => 'Justificar paragrafes',
 'tog-hideminor' => 'Ocultar redactiones minori in nov changes',
@@ -157,7 +157,7 @@ $messages = array(
 'tog-previewonfirst' => 'Monstrar prevision in prim redaction',
 'tog-nocache' => 'Desvalidar caching de págine',
 'tog-enotifwatchlistpages' => 'Inviar me e-mail quande un págine de mi liste de págines vigilat es changeat',
-'tog-enotifwiki_usertalkpages' => 'Inviar me e-mail quande mi págine de discussion es changeat',
+'tog-enotifusertalkpages' => 'Inviar me e-mail quande mi págine de discussion es changeat',
 'tog-enotifrevealaddr' => 'Revelar mi adresse de e-mail in notificationes de e-mail',
 'tog-shownumberswatching' => 'Monstrar li númere de usatores vigilant',
 'tog-oldsig' => 'Prevision de signature in existentie:',
@@ -319,7 +319,7 @@ $messages = array(
 'talk' => 'Discussion',
 'views' => 'Vistas',
 'toolbox' => 'Buxe de utensiles',
-'wiki_userpage' => 'Vider págine del usator',
+'userpage' => 'Vider págine del usator',
 'projectpage' => 'Vider págine de projecte',
 'imagepage' => 'Vider li págine de figura',
 'templatepage' => 'Vider li págine de avise',
@@ -340,7 +340,7 @@ Pleser atende un témpor quelc ante que vu prova accesser ti págine denov.
 
 $1',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Concernent {{SITENAME}}',
 'aboutpage' => 'Project:Concernent',
 'copyright' => 'Contenete disponibil sub $1.',
@@ -385,7 +385,7 @@ Vider [[Special:Version|págine de version]].',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Articul',
-'nstab-wiki_user' => 'Págine de usator',
+'nstab-user' => 'Págine de usator',
 'nstab-special' => 'Págine special',
 'nstab-project' => 'Págine de projecte',
 'nstab-image' => 'Figura',
@@ -401,7 +401,7 @@ Vider [[Special:Version|págine de version]].',
 Ti es usualmen causat per sequent un diferentie ne modernisat o catenun de historie por un págine que ha esset deletet.
 
 Si ti ne es li casu, vu posse have constatat un bug in li software.
-Pleser raporta it por un [[Special:Listwiki_users/sysop|administrator]], formant note de li URL.',
+Pleser raporta it por un [[Special:ListUsers/sysop|administrator]], formant note de li URL.',
 'missingarticle-rev' => '(revision#: $1)',
 'unexpected' => 'Valor ínexpectat: "$1"="$2".',
 'badtitle' => 'Titul mal',
@@ -412,7 +412,7 @@ Function: $1<br />
 Question: $2',
 'viewsource' => 'Vider fonte',
 'viewsourcetext' => 'Vu posse vider e copiar li contenete de ti págine:',
-'titleprotected' => 'Ti titul ha esset gardat de creation per [[wiki_user:$1|$1]]. 
+'titleprotected' => 'Ti titul ha esset gardat de creation per [[User:$1|$1]]. 
 Li motive dat es "\'\'$2\'\'".',
 
 # Virus scanner
@@ -422,7 +422,7 @@ Li motive dat es "\'\'$2\'\'".',
 
 # Login and logout pages
 'logouttext' => "'''Vu ha terminat vor session.'''
-Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse [[Special:wiki_userLogin|aperter un session denov]] quam li sam usator o quam un diferent usator.
+Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse [[Special:UserLogin|aperter un session denov]] quam li sam usator o quam un diferent usator.
 Nota que alcun págines posse continuar esser monstrat quam si vu esset registrat, til que vu vacua li cache de tui navigator.",
 'welcomecreation' => '== Benevenit, $1! == 
 Tui conto hat esset creat. 
@@ -435,19 +435,19 @@ Ne oblivia de mutar tui [[Special:Preferences|preferenties de {{SITENAME}}]].',
 'login' => 'Aperter session',
 'nav-login-createaccount' => 'Crear un conto o intrar',
 'loginprompt' => 'Cookies deve esser permisset por intrar in {{SITENAME}}.',
-'wiki_userlogin' => 'Crear un conto o intrar',
-'wiki_userloginnocreate' => 'Intrar',
+'userlogin' => 'Crear un conto o intrar',
+'userloginnocreate' => 'Intrar',
 'logout' => 'Surtida',
-'wiki_userlogout' => 'Surtida',
+'userlogout' => 'Surtida',
 'notloggedin' => 'Vu ne ha intrat',
 'nologin' => 'Ne have un conto? $1.',
 'nologinlink' => 'Crear un conto',
 'createaccount' => 'Crear un conto',
 'gotaccount' => 'Ja have un conto? $1.',
 'gotaccountlink' => 'Intrar',
-'wiki_userlogin-resetlink' => 'Obliviat tui detallies de registre?',
+'userlogin-resetlink' => 'Obliviat tui detallies de registre?',
 'badretype' => 'Li passa-paroles queles vu tippat ne es identic.',
-'wiki_userexists' => 'Nómine de usator ja in usu.
+'userexists' => 'Nómine de usator ja in usu.
 Pleser opta por un nómine diferent.',
 'loginerror' => 'Erra in initiation del session',
 'nocookieslogin' => '{{SITENAME}} utilisa cookies por far intrar usatores. Vu nu ne permisse cookies. Ples permisser les e provar denov.',
@@ -461,9 +461,9 @@ Pleser prova denov.',
 'throttled-mailpassword' => 'Un parol-clave amemora ha ja esset inviat, intra li ultim {{PLURAL:$1|hor|$1 hores}}.
 Por preventer misusa, solmen un parol-clave amemora va esser inviat per {{PLURAL:$1|hor|$1 hores}}.',
 'acct_creation_throttle_hit' => 'Vu ja ha creat $1 contos. Vu ne posse crear pli mult quam to.',
-'wiki_usernamehasherror' => 'Nómine de usator ne posse contene mixtura de carácteres',
+'usernamehasherror' => 'Nómine de usator ne posse contene mixtura de carácteres',
 'loginlanguagelabel' => 'Lingue: $1',
-'suspicious-wiki_userlogout' => 'Tui petition por surtir esset desaprobat pro que probabilmen esset inviat per un navigator ruptet o servitor de autorisation che caching.',
+'suspicious-userlogout' => 'Tui petition por surtir esset desaprobat pro que probabilmen esset inviat per un navigator ruptet o servitor de autorisation che caching.',
 
 # Change password dialog
 'oldpassword' => 'Anteyan passa-parol:',
@@ -471,7 +471,7 @@ Por preventer misusa, solmen un parol-clave amemora va esser inviat per {{PLURAL
 'retypenew' => 'Confirmar nov passa-parol',
 
 # Special:PasswordReset
-'passwordreset-wiki_username' => 'Vor nómine usatori',
+'passwordreset-username' => 'Vor nómine usatori',
 
 # Edit page toolbar
 'bold_sample' => 'Textu in nigri',
@@ -518,17 +518,17 @@ Vu posse [[Special:Search/{{PAGENAME}}|serchar por ti titul de págine]] in altr
 'noarticletext-nopermission' => 'Vi currentmen ne textu in ti págine.
 Vu posse [[Special:Search/{{PAGENAME}}|serchar por titul de ti págine]] in altri págines,
 o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} serchar li diariumes relatet]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => 'Conto de usator "$1" ne es registrat.
+'userpage-userdoesnotexist' => 'Conto de usator "$1" ne es registrat.
 Pleser controla si vu cari crear/redacter ti págine.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'Conto de usator "$1" ne es registrat.',
-'wiki_usercssyoucanpreview' => "'''Punta:''' Usa li buton \"{{int:showpreview}}\" por provar tui nov CSS ante de conservar.",
-'wiki_userjsyoucanpreview' => "'''Punta:''' Usa li buton \"{{int:showpreview}}\" por provar tui nov JavaScript ante de conservar.",
-'wiki_usercsspreview' => "'''Memora que vu es solmen vident un prevision de tui CSS de usator.'''
+'userpage-userdoesnotexist-view' => 'Conto de usator "$1" ne es registrat.',
+'usercssyoucanpreview' => "'''Punta:''' Usa li buton \"{{int:showpreview}}\" por provar tui nov CSS ante de conservar.",
+'userjsyoucanpreview' => "'''Punta:''' Usa li buton \"{{int:showpreview}}\" por provar tui nov JavaScript ante de conservar.",
+'usercsspreview' => "'''Memora que vu es solmen vident un prevision de tui CSS de usator.'''
 '''It ne have esset conservat ancor!'''",
-'wiki_userjspreview' => "'''Memora que vu es solmen provant/monstrant tui JavaScript de usator.'''
+'userjspreview' => "'''Memora que vu es solmen provant/monstrant tui JavaScript de usator.'''
 '''It ne ha esset conservat ancor!'''",
-'wiki_userinvalidcssjstitle' => "'''Advertiment:''' Ne vi pelle \"\$1\".
-Memora que hábitu .css e págines .js usa un titul plu bass, e.g. {{ns:wiki_user}}:Foo/vector.css quam oposit por {{ns:wiki_user}}:Foo/Vector.css.",
+'userinvalidcssjstitle' => "'''Advertiment:''' Ne vi pelle \"\$1\".
+Memora que hábitu .css e págines .js usa un titul plu bass, e.g. {{ns:user}}:Foo/vector.css quam oposit por {{ns:user}}:Foo/Vector.css.",
 'updated' => '(Modernisat)',
 'previewnote' => "'''Memora se que ti es solmen un prevision.'''
 Tui changes ancor ne ha esset conservat!",
@@ -570,7 +570,7 @@ Tis argumentes have esset omisset.",
 'undo-success' => 'Li redaction posse es desfat. Pleser controla li comparation sub verificar que ti es quo vu cari acter, e tande conservar li changes infra por terminar e desfar li redaction.',
 'undo-failure' => 'Li redaction ne posse esser desfat payand conflicte de redactiones.',
 'undo-norev' => 'Li redaction ne posse esser defat pro que it ne existe o esset deletet.',
-'undo-summary' => 'Desfat revision $1 per [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|discussion]])',
+'undo-summary' => 'Desfat revision $1 per [[Special:Contributions/$2|$2]] ([[User talk:$2|discussion]])',
 
 # History pages
 'viewpagelogs' => 'Vider diariumes por ti págine',
@@ -679,7 +679,7 @@ Vider li [[Special:IPBlockList|liste de bloc de IP]] por li liste de bloces e ba
 'timezoneregion-indian' => 'Ocean Indian',
 'timezoneregion-pacific' => 'Ocean Pacific',
 'youremail' => 'E-mail:',
-'wiki_username' => 'Nómine de usator:',
+'username' => 'Nómine de usator:',
 'uid' => 'Identification de usator:',
 'yourrealname' => 'Nómine real:',
 'yourlanguage' => 'Lingue:',
@@ -690,37 +690,37 @@ Vider li [[Special:IPBlockList|liste de bloc de IP]] por li liste de bloces e ba
 'prefs-help-email-others' => 'Vu posse anc optar por permisser altri contacter vu per e-mail complet che un catenun in tui págine de usator o págine de discussion.
 Tui adresse de e-mail ne es revelat quande altri usatores contacter vu.',
 
-# wiki_user rights
-'wiki_userrights' => 'Gerement de jures de usator',
-'wiki_userrights-lookup-wiki_user' => 'Gerer gruppes de usator',
-'wiki_userrights-wiki_user-editname' => 'Intrar un nómine de usator:',
-'wiki_userrights-editwiki_usergroup' => 'Redacter gruppes de usator',
-'wiki_userrights-groupsmember' => 'Membre de:',
-'wiki_userrights-groupsmember-auto' => 'Membre implicit de:',
-'wiki_userrights-groups-help' => 'Vu posse alterar li gruppes de ti usator in:
+# User rights
+'userrights' => 'Gerement de jures de usator',
+'userrights-lookup-user' => 'Gerer gruppes de usator',
+'userrights-user-editname' => 'Intrar un nómine de usator:',
+'userrights-editusergroup' => 'Redacter gruppes de usator',
+'userrights-groupsmember' => 'Membre de:',
+'userrights-groupsmember-auto' => 'Membre implicit de:',
+'userrights-groups-help' => 'Vu posse alterar li gruppes de ti usator in:
 * Un buxe controlat significa que li usator es in ti gruppe.
 * Un buxe descontrolat significa que li usator ne es in ti gruppe.
 * Un * indica que vu ne posse remover li gruppe un vez que vu have adjuntet it, o inversi.',
-'wiki_userrights-reason' => 'Motive:',
-'wiki_userrights-no-interwiki' => 'Vu ne have permission por redacter jures de usator in altri wikis.',
-'wiki_userrights-nodatabase' => 'Funde de data $1 ne existe o ne es local.',
-'wiki_userrights-nologin' => 'Vu deve [[Special:wiki_userLogin|registrar]] che un conto de administrator por atribuer jures de usator.',
-'wiki_userrights-notallowed' => 'Tui conto ne have permission por atribuer jures de usator.',
-'wiki_userrights-changeable-col' => 'Gruppes que vu posse changear',
-'wiki_userrights-unchangeable-col' => 'Gruppes que vu ne posse changear',
+'userrights-reason' => 'Motive:',
+'userrights-no-interwiki' => 'Vu ne have permission por redacter jures de usator in altri wikis.',
+'userrights-nodatabase' => 'Funde de data $1 ne existe o ne es local.',
+'userrights-nologin' => 'Vu deve [[Special:UserLogin|registrar]] che un conto de administrator por atribuer jures de usator.',
+'userrights-notallowed' => 'Tui conto ne have permission por atribuer jures de usator.',
+'userrights-changeable-col' => 'Gruppes que vu posse changear',
+'userrights-unchangeable-col' => 'Gruppes que vu ne posse changear',
 
 # Groups
-'group-wiki_user' => 'Usatores',
+'group-user' => 'Usatores',
 'group-sysop' => 'Administratores',
 
-'group-wiki_user-member' => 'Usator',
+'group-user-member' => 'Usator',
 
-'grouppage-wiki_user' => '{{ns:project}}:Usatores',
+'grouppage-user' => '{{ns:project}}:Usatores',
 'grouppage-sysop' => '{{ns:project}}:Administratores',
 'grouppage-bureaucrat' => '{{ns:project}}:Burócrates',
 'grouppage-suppress' => '{{ns:project}}:Vigilatores',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Diarium de jures de usator',
 'rightsnone' => '(null)',
 
@@ -772,7 +772,7 @@ Págines in [[Special:Watchlist|tui liste de págines vigilat]] es '''nigri'''."
 'upload' => 'Cargar file',
 'uploadbtn' => 'Cargar file',
 'uploadnologin' => 'Vu ne ha intrat',
-'uploadnologintext' => 'Vu deve esser [[Special:wiki_userLogin|registrat]] por cargar files.',
+'uploadnologintext' => 'Vu deve esser [[Special:UserLogin|registrat]] por cargar files.',
 'uploaderror' => 'Errore de cargament',
 'uploadtext' => "Usa li forme infra por cargar files.
 Por vider o serchar files cargat anteriorimen ear por li [[Special:FileList|liste de files cargat]], (re)cargamentes es anc registrat in li [[Special:Log/upload|diarium de cargament]], deletiones in li [[Special:Log/delete|diarium de deletion]].
@@ -813,11 +813,11 @@ $1',
 'upload-proto-error-text' => 'Cargament distant exige comense che <code>http://</code> o <code>ftp://</code>.',
 'upload-file-error' => 'Errore intern',
 'upload-file-error-text' => 'Un errore intern ocurret quande atentant crear un file temporari in li servitor.
-Pleser parla che un [[Special:Listwiki_users/sysop|administrator]].',
+Pleser parla che un [[Special:ListUsers/sysop|administrator]].',
 'upload-misc-error' => 'Errore desconosset de cargament',
 'upload-misc-error-text' => 'Un errore desconosset ocurret durante li cargament.
 Pleser verificar que li URL es valid e accessibil e prova denov.
-Si li problema persister, parla che un [[Special:Listwiki_users/sysop|administrator]].',
+Si li problema persister, parla che un [[Special:ListUsers/sysop|administrator]].',
 'upload-http-error' => 'Un errore HTTP ocurret: $1',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
@@ -845,7 +845,7 @@ Vu posse provar in un témpor minu activ.',
 'filehist-datetime' => 'Date/Témpor',
 'filehist-thumb' => 'Miniatura',
 'filehist-thumbtext' => 'Miniatura por version quam de $1',
-'filehist-wiki_user' => 'Usator',
+'filehist-user' => 'Usator',
 'filehist-dimensions' => 'Dimensiones',
 'filehist-filesize' => 'Mesura de file',
 'filehist-comment' => 'Comentarie',
@@ -881,7 +881,7 @@ Li descrition es in li [$2 págine de descrition del file] ta e es monstrat in i
 'statistics-header-pages' => 'Statistica del págine',
 'statistics-header-edits' => 'Redacter statistica',
 'statistics-header-views' => 'Vider statistica',
-'statistics-header-wiki_users' => 'Statistica de usator',
+'statistics-header-users' => 'Statistica de usator',
 'statistics-header-hooks' => 'Altri statistica',
 'statistics-articles' => 'Págines de contenete',
 'statistics-pages' => 'Págines',
@@ -891,9 +891,9 @@ Li descrition es in li [$2 págine de descrition del file] ta e es monstrat in i
 'statistics-edits-average' => 'Valore medial de redactiones per págine',
 'statistics-views-total' => 'Total de vistas',
 'statistics-views-peredit' => 'Vider por redaction',
-'statistics-wiki_users' => '[[Special:Listwiki_users|Usatores]] registrat',
-'statistics-wiki_users-active' => 'Usatores activ',
-'statistics-wiki_users-active-desc' => 'Usatores qui have efectuat un action in li ultim {{PLURAL:$1|die|dies}}',
+'statistics-users' => '[[Special:ListUsers|Usatores]] registrat',
+'statistics-users-active' => 'Usatores activ',
+'statistics-users-active-desc' => 'Usatores qui have efectuat un action in li ultim {{PLURAL:$1|die|dies}}',
 'statistics-mostpopular' => 'Págines max visitat',
 
 'disambiguationspage' => 'Template:disambig',
@@ -930,9 +930,9 @@ Li descrition es in li [$2 págine de descrition del file] ta e es monstrat in i
 'shortpages' => 'Págines curt',
 'longpages' => 'Págines long',
 'deadendpages' => 'Págines sin exeada',
-'listwiki_users' => 'Liste de usatores',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|redaction|redactiones}}',
-'wiki_usercreated' => '{{GENDER:$3|Creat}} in $1 in $2',
+'listusers' => 'Liste de usatores',
+'usereditcount' => '$1 {{PLURAL:$1|redaction|redactiones}}',
+'usercreated' => '{{GENDER:$3|Creat}} in $1 in $2',
 'newpages' => 'Nov págines',
 'ancientpages' => 'Li max old págines',
 'move' => 'Mover',
@@ -949,7 +949,7 @@ Li descrition es in li [$2 págine de descrition del file] ta e es monstrat in i
 'booksources-go' => 'Ear',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Executor:',
+'specialloguserlabel' => 'Executor:',
 'speciallogtitlelabel' => 'Cible (titul o usator):',
 'log' => 'Diariumes',
 'all-logs-page' => 'Omni li diariumes public',
@@ -972,22 +972,22 @@ Li descrition es in li [$2 págine de descrition del file] ta e es monstrat in i
 'linksearch-ns' => 'Spacie de nómine:',
 'linksearch-line' => '$1 es ligat de $2',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Diarium de creation de usator',
+# Special:Log/newusers
+'newuserlogpage' => 'Diarium de creation de usator',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(liste de membres)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Parlar che ti usator',
-'wiki_usermailererror' => 'Objecte de postage retornat errore:',
-'wiki_usermaildisabled' => 'E-mail de usator desvalidat',
-'wiki_usermaildisabledtext' => 'Vu ne posse inviar e-mail por altri usatores in ti wiki',
+# E-mail user
+'emailuser' => 'Parlar che ti usator',
+'usermailererror' => 'Objecte de postage retornat errore:',
+'usermaildisabled' => 'E-mail de usator desvalidat',
+'usermaildisabledtext' => 'Vu ne posse inviar e-mail por altri usatores in ti wiki',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'Abandonant missage del sistema',
-'wiki_usermessage-editor' => 'Missagero del sistema',
-'wiki_usermessage-template' => 'MediaWiki:wiki_userMessage',
+# User Messenger
+'usermessage-summary' => 'Abandonant missage del sistema',
+'usermessage-editor' => 'Missagero del sistema',
+'usermessage-template' => 'MediaWiki:UserMessage',
 
 # Watchlist
 'watchlist' => 'Liste de págines vigilat',
@@ -995,7 +995,7 @@ Li descrition es in li [$2 págine de descrition del file] ta e es monstrat in i
 'watchlistfor2' => 'Por $1 $2',
 'watchlistanontext' => 'Pleser $1 por vider o redacter articules in tui liste de págines vigilat.',
 'watchnologin' => 'Vu ne ha intrat',
-'watchnologintext' => 'Vu deve esser [[Special:wiki_userLogin|registrat]] por redacter tui liste de págines vigilat.',
+'watchnologintext' => 'Vu deve esser [[Special:UserLogin|registrat]] por redacter tui liste de págines vigilat.',
 'addedwatchtext' => "Li págine ''[[$1]]'' ha esset adjuntet a vor [[Special:Watchlist|liste de sequet págines]]. Li proxim modificationes de ti ci págine e del associat págine de discussion va esser listat ci, e li págine va aperir '''aspessat''' in li [[Special:RecentChanges|liste de recent modificationes]] por esser trovat plu facilmen. Por supresser ti ci págine ex vor liste, ples claccar sur « Ne plu sequer » in li cadre de navigation.",
 'watch' => 'Vigilar',
 'watchthispage' => 'Vigilar ti págine',
@@ -1114,7 +1114,7 @@ $1',
 'sp-contributions-logs' => 'diariumes',
 'sp-contributions-talk' => 'Discussion',
 'sp-contributions-search' => 'Serchar por contributiones',
-'sp-contributions-wiki_username' => 'Adresse de IP o nómine de usator:',
+'sp-contributions-username' => 'Adresse de IP o nómine de usator:',
 'sp-contributions-toponly' => 'Solmen monstrar redactiones que es in max recent revisiones',
 'sp-contributions-submit' => 'Serchar',
 
@@ -1186,8 +1186,8 @@ Pleser fuse les manualmen.'''",
 'xml-error-string' => '$1 in linea $2, col $3 (byte $4): $5',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Tui págine de usator',
-'tooltip-pt-anonwiki_userpage' => 'Li págine de usator por li adresse de IP vu es redactent quam',
+'tooltip-pt-userpage' => 'Tui págine de usator',
+'tooltip-pt-anonuserpage' => 'Li págine de usator por li adresse de IP vu es redactent quam',
 'tooltip-pt-mytalk' => 'Tui págine de discussion',
 'tooltip-pt-anontalk' => 'Discussion pri redactiones de adresses de IP',
 'tooltip-pt-preferences' => 'Tui preferenties',
@@ -1224,13 +1224,13 @@ Pleser fuse les manualmen.'''",
 'tooltip-feed-rss' => 'Feed RSS por ti págine',
 'tooltip-feed-atom' => 'Feed atom por ti págine',
 'tooltip-t-contributions' => 'Vider li liste de contributiones de ti usator',
-'tooltip-t-emailwiki_user' => 'Inviar un e-mail por ti usator',
+'tooltip-t-emailuser' => 'Inviar un e-mail por ti usator',
 'tooltip-t-upload' => 'Cargar files',
 'tooltip-t-specialpages' => 'Liste de omni págines special',
 'tooltip-t-print' => 'Version por impression de ti págine',
 'tooltip-t-permalink' => 'Catenun permanent por ti revision de págine',
 'tooltip-ca-nstab-main' => 'Vider li págine de contenete',
-'tooltip-ca-nstab-wiki_user' => 'Vider li págine de usator',
+'tooltip-ca-nstab-user' => 'Vider li págine de usator',
 'tooltip-ca-nstab-media' => 'Vider li págine de media',
 'tooltip-ca-nstab-special' => 'Ti es un págine special, vu ne posse redacter it',
 'tooltip-ca-nstab-project' => 'Vider li págine de projecte',
@@ -1388,7 +1388,7 @@ Vu posse anc [[Special:EditWatchlist|usar li redactor uniform]].',
 'specialpages-group-login' => 'Intrar / crear conto',
 'specialpages-group-changes' => 'Nov changes e diariumes',
 'specialpages-group-media' => 'Raportes de media e cargamentes de files',
-'specialpages-group-wiki_users' => 'Usatores e jures',
+'specialpages-group-users' => 'Usatores e jures',
 'specialpages-group-highuse' => 'Págines de alt usu',
 'specialpages-group-pages' => 'Listes de págines',
 'specialpages-group-pagetools' => 'Utensiles de págine',

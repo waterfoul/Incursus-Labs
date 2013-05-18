@@ -37,13 +37,13 @@ class CheckImages extends Maintenance {
 
 	public function execute() {
 		$start = '';
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$numImages = 0;
 		$numGood = 0;
 
 		do {
-			$res = r->select( 'image', '*', array( 'img_name > ' . r->addQuotes( $start ) ),
+			$res = $dbr->select( 'image', '*', array( 'img_name > ' . $dbr->addQuotes( $start ) ),
 				__METHOD__, array( 'LIMIT' => $this->mBatchSize ) );
 			foreach ( $res as $row ) {
 				$numImages++;

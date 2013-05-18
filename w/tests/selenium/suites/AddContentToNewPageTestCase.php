@@ -148,7 +148,7 @@ class AddContentToNewPageTestCase extends SeleniumTestCase {
     }
 
     // Add signature and verify output in the preview
-    public function testAddwiki_userSignature() {
+    public function testAddUserSignature() {
         $this->getExistingPage();
         $this->clickEditLink();
         $this->loadWikiEditor();
@@ -159,8 +159,8 @@ class AddContentToNewPageTestCase extends SeleniumTestCase {
 
         // Verify signature displayed on mediawiki preview
         $source = $this->getText( "//*[@id='wikiPreview']/p/a" );
-        $wiki_username = $this->getText( "//*[@id='pt-wiki_userpage']/a" );
-        $correct = strstr( $source, $wiki_username );
+        $username = $this->getText( "//*[@id='pt-userpage']/a" );
+        $correct = strstr( $source, $username );
         $this->assertEquals( $correct, true );
     }
 

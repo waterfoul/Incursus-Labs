@@ -35,13 +35,13 @@ class Protect extends Maintenance {
 		$this->addOption( 'unprotect', 'Removes protection' );
 		$this->addOption( 'semiprotect', 'Adds semi-protection' );
 		$this->addOption( 'cascade', 'Add cascading protection' );
-		$this->addOption( 'wiki_user', 'wiki_username to protect with', false, true, 'u' );
+		$this->addOption( 'user', 'Username to protect with', false, true, 'u' );
 		$this->addOption( 'reason', 'Reason for un/protection', false, true, 'r' );
 		$this->addArg( 'title', 'Title to protect', true );
 	}
 
 	public function execute() {
-		$wiki_userName = $this->getOption( 'u', 'Maintenance script' );
+		$userName = $this->getOption( 'u', 'Maintenance script' );
 		$reason = $this->getOption( 'r', '' );
 
 		$cascade = $this->hasOption( 'cascade' );
@@ -53,9 +53,9 @@ class Protect extends Maintenance {
 			$protection = "";
 		}
 
-		$wiki_user = wiki_user::newFromName( $wiki_userName );
-		if ( !$wiki_user ) {
-			$this->error( "Invalid wiki_username", true );
+		$user = User::newFromName( $userName );
+		if ( !$user ) {
+			$this->error( "Invalid username", true );
 		}
 
 		$restrictions = array( 'edit' => $protection, 'move' => $protection );
@@ -74,7 +74,7 @@ class Protect extends Maintenance {
 		$this->output( "Updating protection status... " );
 
 		$page = WikiPage::factory( $t );
-		$status = $page->doUpdateRestrictions( $restrictions, array(), $cascade, $reason, $wiki_user );
+		$status = $page->doUpdateRestrictions( $restrictions, array(), $cascade, $reason, $user );
 
 		if ( $status->isOK() ) {
 			$this->output( "done\n" );

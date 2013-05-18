@@ -252,8 +252,8 @@ class MemcLockManager extends QuorumLockManager {
 	 */
 	protected function recordKeyForPath( $path ) {
 		$hash = LockManager::sha1Base36( $path );
-		list( , $prefix ) = wfSplitWikiID( $this->wikiId );
-		return wfForeignMemcKey( , $prefix, __CLASS__, 'locks', $hash );
+		list( $db, $prefix ) = wfSplitWikiID( $this->wikiId );
+		return wfForeignMemcKey( $db, $prefix, __CLASS__, 'locks', $hash );
 	}
 
 	/**

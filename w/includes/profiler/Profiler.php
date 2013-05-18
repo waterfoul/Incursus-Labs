@@ -306,8 +306,8 @@ class Profiler {
 	 * $wgRUstart. Will return null if not able to find data.
 	 *
 	 * @param $metric string|false: metric to use, with the following possibilities:
-	 *   - wiki_user: wiki_user CPU time (without system calls)
-	 *   - cpu: Total CPU time (wiki_user and system calls)
+	 *   - user: User CPU time (without system calls)
+	 *   - cpu: Total CPU time (user and system calls)
 	 *   - wall (or any other string): elapsed time
 	 *   - false (default): will fall back to default metric
 	 * @return float|null
@@ -317,14 +317,14 @@ class Profiler {
 			$metric = $this->mTimeMetric;
 		}
 
-		if ( $metric === 'cpu' || $this->mTimeMetric === 'wiki_user' ) {
+		if ( $metric === 'cpu' || $this->mTimeMetric === 'user' ) {
 			if ( !function_exists( 'getrusage' ) ) {
 				return 0;
 			}
 			$ru = getrusage();
 			$time = $ru['ru_utime.tv_sec'] + $ru['ru_utime.tv_usec'] / 1e6;
 			if ( $metric === 'cpu' ) {
-				# This is the time of system calls, added to the wiki_user time
+				# This is the time of system calls, added to the user time
 				# it gives the total CPU time
 				$time += $ru['ru_stime.tv_sec'] + $ru['ru_stime.tv_usec'] / 1e6;
 			}
@@ -339,8 +339,8 @@ class Profiler {
 	 * $wgRUstart. Will return null if not able to find data.
 	 *
 	 * @param $metric string|false: metric to use, with the following possibilities:
-	 *   - wiki_user: wiki_user CPU time (without system calls)
-	 *   - cpu: Total CPU time (wiki_user and system calls)
+	 *   - user: User CPU time (without system calls)
+	 *   - cpu: Total CPU time (user and system calls)
 	 *   - wall (or any other string): elapsed time
 	 *   - false (default): will fall back to default metric
 	 * @return float|null
@@ -352,14 +352,14 @@ class Profiler {
 			$metric = $this->mTimeMetric;
 		}
 
-		if ( $metric === 'cpu' || $this->mTimeMetric === 'wiki_user' ) {
+		if ( $metric === 'cpu' || $this->mTimeMetric === 'user' ) {
 			if ( !count( $wgRUstart ) ) {
 				return null;
 			}
 
 			$time = $wgRUstart['ru_utime.tv_sec'] + $wgRUstart['ru_utime.tv_usec'] / 1e6;
 			if ( $metric === 'cpu' ) {
-				# This is the time of system calls, added to the wiki_user time
+				# This is the time of system calls, added to the user time
 				# it gives the total CPU time
 				$time += $wgRUstart['ru_stime.tv_sec'] + $wgRUstart['ru_stime.tv_usec'] / 1e6;
 			}
@@ -519,12 +519,12 @@ class Profiler {
 			return;
 		}
 
-		w = wfGetDB( DB_MASTER );
-		if( !is_object( w ) ) {
+		$dbw = wfGetDB( DB_MASTER );
+		if( !is_object( $dbw ) ) {
 			return;
 		}
 
-		$errorState = w->ignoreErrors( true );
+		$errorState = $dbw->ignoreErrors( true );
 
 		if( $wgProfilePerHost ){
 			$pfhost = wfHostname();
@@ -544,7 +544,7 @@ class Profiler {
 			$timeSum = ($timeSum >= 0) ? $timeSum : 0;
 			$memorySum = ($memorySum >= 0) ? $memorySum : 0;
 
-			w->update( 'profiling',
+			$dbw->update( 'profiling',
 				array(
 					"pf_count=pf_count+{$eventCount}",
 					"pf_time=pf_time+{$timeSum}",
@@ -556,9 +556,9 @@ class Profiler {
 				),
 				__METHOD__ );
 
-			$rc = w->affectedRows();
+			$rc = $dbw->affectedRows();
 			if ( $rc == 0 ) {
-				w->insert('profiling', array ('pf_name' => $name, 'pf_count' => $eventCount,
+				$dbw->insert('profiling', array ('pf_name' => $name, 'pf_count' => $eventCount,
 					'pf_time' => $timeSum, 'pf_memory' => $memorySum, 'pf_server' => $pfhost ),
 					__METHOD__, array ('IGNORE'));
 			}
@@ -569,7 +569,7 @@ class Profiler {
 			//     "pf_time=pf_time + VALUES(pf_time)";
 		}
 
-		w->ignoreErrors( $errorState );
+		$dbw->ignoreErrors( $errorState );
 	}
 
 	/**

@@ -27,7 +27,7 @@ The GNU Lesser General Public License or LGPL is written for software libraries
 in the first place. We expressly want the LGPL to be valid for this artwork
 library too.
 KDE Crystal theme icons is a special kind of software library, it is an
-artwork library, it's elements can be used in a Graphical wiki_user Interface, or
+artwork library, it's elements can be used in a Graphical User Interface, or
 GUI.
 Source code, for this library means:
  - for vectors svg;

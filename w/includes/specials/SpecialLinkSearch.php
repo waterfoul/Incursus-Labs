@@ -138,8 +138,8 @@ class LinkSearchPage extends QueryPage {
 		if ( $rv === false ) {
 			// LinkFilter doesn't handle wildcard in IP, so we'll have to munge here.
 			if (preg_match('/^(:?[0-9]{1,3}\.)+\*\s*$|^(:?[0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]*\*\s*$/', $query)) {
-				r = wfGetDB( DB_SLAVE );
-				$rv = array( $prot . rtrim( $query, " \t*" ), r->anyString() );
+				$dbr = wfGetDB( DB_SLAVE );
+				$rv = array( $prot . rtrim( $query, " \t*" ), $dbr->anyString() );
 				$field = 'el_to';
 			}
 		}
@@ -158,7 +158,7 @@ class LinkSearchPage extends QueryPage {
 
 	function getQueryInfo() {
 		global $wgMiserMode;
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		// strip everything past first wildcard, so that
 		// index-based-only lookup would be done
 		list( $this->mMungedQuery, $clause ) = self::mungeQuery(
@@ -168,7 +168,7 @@ class LinkSearchPage extends QueryPage {
 			return array( 'tables' => 'page', 'fields' => 'page_id', 'conds' => '0=1' );
 
 		$stripped = LinkFilter::keepOneWildcard( $this->mMungedQuery );
-		$like = r->buildLike( $stripped );
+		$like = $dbr->buildLike( $stripped );
 		$retval = array (
 			'tables' => array ( 'page', 'externallinks' ),
 			'fields' => array ( 'namespace' => 'page_namespace',

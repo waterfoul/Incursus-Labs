@@ -18,75 +18,75 @@
 
 
 --
--- The wiki_user table contains basic account information,
+-- The user table contains basic account information,
 -- authentication keys, etc.
 --
--- Some multi-wiki sites may share a single central wiki_user table
+-- Some multi-wiki sites may share a single central user table
 -- between separate wikis using the $wgSharedDB setting.
 --
 -- Note that when a external authentication plugin is used,
--- wiki_user table entries still need to be created to store
+-- user table entries still need to be created to store
 -- preferences and to key tracking information in the other
 -- tables.
 
 -- LINE:53
-CREATE TABLE /*$wgDBprefix*/wiki_user (
-   wiki_user_id           INT           NOT NULL  PRIMARY KEY IDENTITY(0,1),
-   wiki_user_name         NVARCHAR(255)  NOT NULL UNIQUE DEFAULT '',
-   wiki_user_real_name    NVARCHAR(255)  NOT NULL DEFAULT '',
-   wiki_user_password     NVARCHAR(255)  NOT NULL DEFAULT '',
-   wiki_user_newpassword  NVARCHAR(255)  NOT NULL DEFAULT '',
-   wiki_user_newpass_time DATETIME NULL,
-   wiki_user_email        NVARCHAR(255)  NOT NULL DEFAULT '',
-   wiki_user_options      NVARCHAR(MAX) NOT NULL DEFAULT '',
-   wiki_user_touched      DATETIME      NOT NULL DEFAULT GETDATE(),
-   wiki_user_token        NCHAR(32)      NOT NULL DEFAULT '',
-   wiki_user_email_authenticated DATETIME DEFAULT NULL,
-   wiki_user_email_token  NCHAR(32) DEFAULT '',
-   wiki_user_email_token_expires DATETIME DEFAULT NULL,
-   wiki_user_registration DATETIME DEFAULT NULL,
-   wiki_user_editcount    INT NULL
+CREATE TABLE /*$wgDBprefix*/user (
+   user_id           INT           NOT NULL  PRIMARY KEY IDENTITY(0,1),
+   user_name         NVARCHAR(255)  NOT NULL UNIQUE DEFAULT '',
+   user_real_name    NVARCHAR(255)  NOT NULL DEFAULT '',
+   user_password     NVARCHAR(255)  NOT NULL DEFAULT '',
+   user_newpassword  NVARCHAR(255)  NOT NULL DEFAULT '',
+   user_newpass_time DATETIME NULL,
+   user_email        NVARCHAR(255)  NOT NULL DEFAULT '',
+   user_options      NVARCHAR(MAX) NOT NULL DEFAULT '',
+   user_touched      DATETIME      NOT NULL DEFAULT GETDATE(),
+   user_token        NCHAR(32)      NOT NULL DEFAULT '',
+   user_email_authenticated DATETIME DEFAULT NULL,
+   user_email_token  NCHAR(32) DEFAULT '',
+   user_email_token_expires DATETIME DEFAULT NULL,
+   user_registration DATETIME DEFAULT NULL,
+   user_editcount    INT NULL
 );
-CREATE        INDEX /*$wgDBprefix*/wiki_user_email_token ON /*$wgDBprefix*/[wiki_user](wiki_user_email_token);
-CREATE UNIQUE INDEX /*$wgDBprefix*/[wiki_user_name]        ON /*$wgDBprefix*/[wiki_user]([wiki_user_name]);
+CREATE        INDEX /*$wgDBprefix*/user_email_token ON /*$wgDBprefix*/[user](user_email_token);
+CREATE UNIQUE INDEX /*$wgDBprefix*/[user_name]        ON /*$wgDBprefix*/[user]([user_name]);
 ;
 
 --
--- wiki_user permissions have been broken out to a separate table;
--- this allows sites with a shared wiki_user table to have different
--- permissions assigned to a wiki_user in each project.
+-- User permissions have been broken out to a separate table;
+-- this allows sites with a shared user table to have different
+-- permissions assigned to a user in each project.
 --
--- This table replaces the old wiki_user_rights field which used a
+-- This table replaces the old user_rights field which used a
 -- comma-separated blob.
-CREATE TABLE /*$wgDBprefix*/wiki_user_groups (
-   ug_wiki_user  INT     NOT NULL REFERENCES /*$wgDBprefix*/[wiki_user](wiki_user_id) ON DELETE CASCADE,
+CREATE TABLE /*$wgDBprefix*/user_groups (
+   ug_user  INT     NOT NULL REFERENCES /*$wgDBprefix*/[user](user_id) ON DELETE CASCADE,
    ug_group NVARCHAR(16) NOT NULL DEFAULT '',
 );
-CREATE UNIQUE clustered INDEX /*$wgDBprefix*/wiki_user_groups_unique ON /*$wgDBprefix*/wiki_user_groups(ug_wiki_user, ug_group);
-CREATE INDEX /*$wgDBprefix*/wiki_user_group ON /*$wgDBprefix*/wiki_user_groups(ug_group);
+CREATE UNIQUE clustered INDEX /*$wgDBprefix*/user_groups_unique ON /*$wgDBprefix*/user_groups(ug_user, ug_group);
+CREATE INDEX /*$wgDBprefix*/user_group ON /*$wgDBprefix*/user_groups(ug_group);
 
--- Stores notifications of wiki_user talk page changes, for the display
+-- Stores notifications of user talk page changes, for the display
 -- of the "you have new messages" box
--- Changed wiki_user_id column to mwwiki_user_id to avoid clashing with wiki_user_id function
-CREATE TABLE /*$wgDBprefix*/wiki_user_newtalk (
-   wiki_user_id INT         NOT NULL DEFAULT 0 REFERENCES /*$wgDBprefix*/[wiki_user](wiki_user_id) ON DELETE CASCADE,
-   wiki_user_ip NVARCHAR(40) NOT NULL DEFAULT '',
-   wiki_user_last_timestamp DATETIME NOT NULL DEFAULT '',
+-- Changed user_id column to mwuser_id to avoid clashing with user_id function
+CREATE TABLE /*$wgDBprefix*/user_newtalk (
+   user_id INT         NOT NULL DEFAULT 0 REFERENCES /*$wgDBprefix*/[user](user_id) ON DELETE CASCADE,
+   user_ip NVARCHAR(40) NOT NULL DEFAULT '',
+   user_last_timestamp DATETIME NOT NULL DEFAULT '',
 );
-CREATE INDEX /*$wgDBprefix*/wiki_user_group_id ON /*$wgDBprefix*/wiki_user_newtalk([wiki_user_id]);
-CREATE INDEX /*$wgDBprefix*/wiki_user_ip       ON /*$wgDBprefix*/wiki_user_newtalk(wiki_user_ip);
+CREATE INDEX /*$wgDBprefix*/user_group_id ON /*$wgDBprefix*/user_newtalk([user_id]);
+CREATE INDEX /*$wgDBprefix*/user_ip       ON /*$wgDBprefix*/user_newtalk(user_ip);
 
 -- 
--- wiki_user preferences and other fun stuff
--- replaces old wiki_user.wiki_user_options BLOB
+-- User preferences and other fun stuff
+-- replaces old user.user_options BLOB
 -- 
-CREATE TABLE /*$wgDBprefix*/wiki_user_properties (
-	up_wiki_user INT NOT NULL,
+CREATE TABLE /*$wgDBprefix*/user_properties (
+	up_user INT NOT NULL,
 	up_property NVARCHAR(32) NOT NULL,
 	up_value NVARCHAR(MAX),
 );
-CREATE UNIQUE clustered INDEX /*$wgDBprefix*/wiki_user_props_wiki_user_prop ON /*$wgDBprefix*/wiki_user_properties(up_wiki_user, up_property);
-CREATE INDEX /*$wgDBprefix*/wiki_user_props_prop ON /*$wgDBprefix*/wiki_user_properties(up_property);
+CREATE UNIQUE clustered INDEX /*$wgDBprefix*/user_props_user_prop ON /*$wgDBprefix*/user_properties(up_user, up_property);
+CREATE INDEX /*$wgDBprefix*/user_props_prop ON /*$wgDBprefix*/user_properties(up_property);
 
 
 --
@@ -121,8 +121,8 @@ CREATE TABLE /*$wgDBprefix*/revision (
    rev_page INT NOT NULL,
    rev_text_id INT  NOT NULL,
    rev_comment NVARCHAR(max) NOT NULL,
-   rev_wiki_user INT  NOT NULL DEFAULT 0 /*REFERENCES [wiki_user](wiki_user_id)*/,
-   rev_wiki_user_text NVARCHAR(255) NOT NULL DEFAULT '',
+   rev_user INT  NOT NULL DEFAULT 0 /*REFERENCES [user](user_id)*/,
+   rev_user_text NVARCHAR(255) NOT NULL DEFAULT '',
    rev_timestamp DATETIME NOT NULL DEFAULT GETDATE(),
    rev_minor_edit BIT NOT NULL DEFAULT 0,
    rev_deleted BIT  NOT NULL DEFAULT 0,
@@ -134,8 +134,8 @@ CREATE UNIQUE clustered INDEX /*$wgDBprefix*/revision_unique ON /*$wgDBprefix*/r
 CREATE UNIQUE INDEX /*$wgDBprefix*/rev_id             ON /*$wgDBprefix*/revision(rev_id);
 CREATE        INDEX /*$wgDBprefix*/rev_timestamp      ON /*$wgDBprefix*/revision(rev_timestamp);
 CREATE        INDEX /*$wgDBprefix*/page_timestamp     ON /*$wgDBprefix*/revision(rev_page, rev_timestamp);
-CREATE        INDEX /*$wgDBprefix*/wiki_user_timestamp     ON /*$wgDBprefix*/revision(rev_wiki_user, rev_timestamp);
-CREATE        INDEX /*$wgDBprefix*/wiki_usertext_timestamp ON /*$wgDBprefix*/revision(rev_wiki_user_text, rev_timestamp);
+CREATE        INDEX /*$wgDBprefix*/user_timestamp     ON /*$wgDBprefix*/revision(rev_user, rev_timestamp);
+CREATE        INDEX /*$wgDBprefix*/usertext_timestamp ON /*$wgDBprefix*/revision(rev_user_text, rev_timestamp);
 ;
 
 --
@@ -163,8 +163,8 @@ CREATE TABLE /*$wgDBprefix*/archive (
    ar_title NVARCHAR(255) NOT NULL DEFAULT '',
    ar_text NVARCHAR(MAX) NOT NULL,
    ar_comment NVARCHAR(255) NOT NULL,
-   ar_wiki_user INT NULL REFERENCES /*$wgDBprefix*/[wiki_user](wiki_user_id) ON DELETE SET NULL,
-   ar_wiki_user_text NVARCHAR(255) NOT NULL,
+   ar_user INT NULL REFERENCES /*$wgDBprefix*/[user](user_id) ON DELETE SET NULL,
+   ar_user_text NVARCHAR(255) NOT NULL,
    ar_timestamp DATETIME NOT NULL DEFAULT GETDATE(),
    ar_minor_edit BIT NOT NULL DEFAULT 0,
    ar_flags NVARCHAR(255) NOT NULL,
@@ -176,8 +176,8 @@ CREATE TABLE /*$wgDBprefix*/archive (
    ar_parent_id INT NULL,
 );
 CREATE INDEX /*$wgDBprefix*/ar_name_title_timestamp ON /*$wgDBprefix*/archive(ar_namespace,ar_title,ar_timestamp);
-CREATE INDEX /*$wgDBprefix*/ar_wiki_usertext_timestamp ON /*$wgDBprefix*/archive(ar_wiki_user_text,ar_timestamp);
-CREATE INDEX /*$wgDBprefix*/ar_wiki_user_text    ON /*$wgDBprefix*/archive(ar_wiki_user_text);
+CREATE INDEX /*$wgDBprefix*/ar_usertext_timestamp ON /*$wgDBprefix*/archive(ar_user_text,ar_timestamp);
+CREATE INDEX /*$wgDBprefix*/ar_user_text    ON /*$wgDBprefix*/archive(ar_user_text);
 
 
 --
@@ -306,15 +306,15 @@ CREATE TABLE /*$wgDBprefix*/externallinks (
 CREATE INDEX /*$wgDBprefix*/externallinks_index   ON /*$wgDBprefix*/externallinks(el_index);
 
 -- 
--- Track external wiki_user accounts, if ExternalAuth is used
+-- Track external user accounts, if ExternalAuth is used
 -- 
-CREATE TABLE /*$wgDBprefix*/external_wiki_user (
-	-- Foreign key to wiki_user_id
+CREATE TABLE /*$wgDBprefix*/external_user (
+	-- Foreign key to user_id
 	eu_local_id INT NOT NULL PRIMARY KEY,
 	-- opaque identifier provided by the external database
 	eu_external_id NVARCHAR(255) NOT NULL,
 );
-CREATE UNIQUE INDEX /*$wgDBprefix*/eu_external_idx ON /*$wgDBprefix*/external_wiki_user(eu_external_id);
+CREATE UNIQUE INDEX /*$wgDBprefix*/eu_external_idx ON /*$wgDBprefix*/external_user(eu_external_id);
 
 --
 -- Track INTerlanguage links
@@ -355,8 +355,8 @@ CREATE TABLE /*$wgDBprefix*/site_stats (
    ss_total_edits   BIGINT DEFAULT 0,
    ss_good_articles BIGINT DEFAULT 0,
    ss_total_pages   BIGINT DEFAULT -1,
-   ss_wiki_users         BIGINT DEFAULT -1,
-   ss_active_wiki_users  BIGINT DEFAULT -1,
+   ss_users         BIGINT DEFAULT -1,
+   ss_active_users  BIGINT DEFAULT -1,
    ss_admins        INT    DEFAULT -1,
    ss_images INT DEFAULT 0,
 );
@@ -381,7 +381,7 @@ CREATE TABLE /*$wgDBprefix*/hitcounter (
 CREATE TABLE /*$wgDBprefix*/ipblocks (
 	ipb_id      INT NOT NULL  PRIMARY KEY,
 	ipb_address NVARCHAR(255) NOT NULL,
-	ipb_wiki_user    INT NOT NULL DEFAULT 0,
+	ipb_user    INT NOT NULL DEFAULT 0,
 	ipb_by      INT NOT NULL DEFAULT 0,
 	ipb_by_text NVARCHAR(255) NOT NULL DEFAULT '',
 	ipb_reason  NVARCHAR(255) NOT NULL,
@@ -395,14 +395,14 @@ CREATE TABLE /*$wgDBprefix*/ipblocks (
 	ipb_range_end NVARCHAR(32) NOT NULL DEFAULT '',
 	ipb_deleted BIT NOT NULL DEFAULT 0,
 	ipb_block_email BIT NOT NULL DEFAULT 0,
-	ipb_allow_wiki_usertalk BIT NOT NULL DEFAULT 0,
+	ipb_allow_usertalk BIT NOT NULL DEFAULT 0,
 	ipb_parent_block_id   INT DEFAULT NULL,
 );
--- Unique index to support "wiki_user already blocked" messages
+-- Unique index to support "user already blocked" messages
 -- Any new options which prevent collisions should be included
---UNIQUE INDEX ipb_address (ipb_address(255), ipb_wiki_user, ipb_auto, ipb_anon_only),
-CREATE UNIQUE INDEX /*$wgDBprefix*/ipb_address   ON /*$wgDBprefix*/ipblocks(ipb_address, ipb_wiki_user, ipb_auto, ipb_anon_only);
-CREATE        INDEX /*$wgDBprefix*/ipb_wiki_user      ON /*$wgDBprefix*/ipblocks(ipb_wiki_user);
+--UNIQUE INDEX ipb_address (ipb_address(255), ipb_user, ipb_auto, ipb_anon_only),
+CREATE UNIQUE INDEX /*$wgDBprefix*/ipb_address   ON /*$wgDBprefix*/ipblocks(ipb_address, ipb_user, ipb_auto, ipb_anon_only);
+CREATE        INDEX /*$wgDBprefix*/ipb_user      ON /*$wgDBprefix*/ipblocks(ipb_user);
 CREATE        INDEX /*$wgDBprefix*/ipb_range     ON /*$wgDBprefix*/ipblocks(ipb_range_start, ipb_range_end);
 CREATE        INDEX /*$wgDBprefix*/ipb_timestamp ON /*$wgDBprefix*/ipblocks(ipb_timestamp);
 CREATE        INDEX /*$wgDBprefix*/ipb_expiry    ON /*$wgDBprefix*/ipblocks(ipb_expiry);
@@ -421,8 +421,8 @@ CREATE TABLE /*$wgDBprefix*/image (
    img_major_mime NVARCHAR(MAX) DEFAULT 'UNKNOWN',
    img_minor_mime NVARCHAR(MAX) NOT NULL DEFAULT 'unknown',
    img_description NVARCHAR(MAX) NOT NULL,
-   img_wiki_user INT NOT NULL DEFAULT 0,
-   img_wiki_user_text VARCHAR(255) NOT NULL DEFAULT '',
+   img_user INT NOT NULL DEFAULT 0,
+   img_user_text VARCHAR(255) NOT NULL DEFAULT '',
    img_timestamp DATETIME NOT NULL DEFAULT GETDATE(),
    img_sha1 VARCHAR(255) NOT NULL default '',
 );
@@ -445,8 +445,8 @@ CREATE TABLE /*$wgDBprefix*/oldimage (
    oi_height INT NOT NULL DEFAULT 0,
    oi_bits SMALLINT NOT NULL DEFAULT 0,
    oi_description NVARCHAR(MAX) NOT NULL,
-   oi_wiki_user INT NOT NULL DEFAULT 0,
-   oi_wiki_user_text VARCHAR(255) NOT NULL DEFAULT '',
+   oi_user INT NOT NULL DEFAULT 0,
+   oi_user_text VARCHAR(255) NOT NULL DEFAULT '',
    oi_timestamp DATETIME NOT NULL DEFAULT GETDATE(),
    oi_metadata TEXT NOT NULL,
    oi_media_type NVARCHAR(MAX) DEFAULT 'UNKNOWN',
@@ -455,7 +455,7 @@ CREATE TABLE /*$wgDBprefix*/oldimage (
    oi_deleted BIT NOT NULL default 0,
    oi_sha1 VARCHAR(255) NOT NULL default '',
 );
-CREATE INDEX /*$wgDBprefix*/oi_wiki_usertext_timestamp ON /*$wgDBprefix*/oldimage(oi_wiki_user_text,oi_timestamp);
+CREATE INDEX /*$wgDBprefix*/oi_usertext_timestamp ON /*$wgDBprefix*/oldimage(oi_user_text,oi_timestamp);
 CREATE INDEX /*$wgDBprefix*/oi_name_timestamp ON /*$wgDBprefix*/oldimage(oi_name, oi_timestamp);
 CREATE INDEX /*$wgDBprefix*/oi_name_archive_name ON /*$wgDBprefix*/oldimage(oi_name,oi_archive_name);
 CREATE INDEX /*$wgDBprefix*/[oi_sha1] ON /*$wgDBprefix*/oldimage(oi_sha1);
@@ -469,7 +469,7 @@ CREATE TABLE /*$wgDBprefix*/filearchive (
    fa_archive_name NVARCHAR(255)  DEFAULT '',
    fa_storage_group NVARCHAR(16),
    fa_storage_key NVARCHAR(64)  DEFAULT '',
-   fa_deleted_wiki_user INT,
+   fa_deleted_user INT,
    fa_deleted_timestamp NVARCHAR(14) DEFAULT NULL,
    fa_deleted_reason NVARCHAR(255),
    fa_size SMALLINT  DEFAULT 0,
@@ -481,8 +481,8 @@ CREATE TABLE /*$wgDBprefix*/filearchive (
    fa_major_mime NVARCHAR(11) DEFAULT 'unknown',
    fa_minor_mime NVARCHAR(32) DEFAULT 'unknown',
    fa_description NVARCHAR(255),
-   fa_wiki_user INT DEFAULT 0,
-   fa_wiki_user_text NVARCHAR(255) DEFAULT '',
+   fa_user INT DEFAULT 0,
+   fa_user_text NVARCHAR(255) DEFAULT '',
    fa_timestamp DATETIME DEFAULT GETDATE(),
    fa_deleted BIT NOT NULL DEFAULT 0,
 );
@@ -493,7 +493,7 @@ CREATE INDEX /*$wgDBprefix*/filearchive_dupe ON /*$wgDBprefix*/filearchive(fa_st
 -- Pick by deletion time
 CREATE INDEX /*$wgDBprefix*/filearchive_time ON /*$wgDBprefix*/filearchive(fa_deleted_timestamp);
 -- Pick by deleter
-CREATE INDEX /*$wgDBprefix*/filearchive_wiki_user ON /*$wgDBprefix*/filearchive(fa_deleted_wiki_user);
+CREATE INDEX /*$wgDBprefix*/filearchive_user ON /*$wgDBprefix*/filearchive(fa_deleted_user);
 
 --
 -- Primarily a summary table for Special:Recentchanges,
@@ -504,8 +504,8 @@ CREATE TABLE /*$wgDBprefix*/recentchanges (
    rc_id INT NOT NULL,
    rc_timestamp DATETIME DEFAULT GETDATE(),
    rc_cur_time DATETIME DEFAULT GETDATE(),
-   rc_wiki_user INT DEFAULT 0,
-   rc_wiki_user_text NVARCHAR(255) DEFAULT '',
+   rc_user INT DEFAULT 0,
+   rc_user_text NVARCHAR(255) DEFAULT '',
    rc_namespace SMALLINT DEFAULT 0,
    rc_title NVARCHAR(255)  DEFAULT '',
    rc_comment NVARCHAR(255) DEFAULT '',
@@ -533,12 +533,12 @@ CREATE INDEX /*$wgDBprefix*/rc_namespace_title ON /*$wgDBprefix*/recentchanges(r
 CREATE INDEX /*$wgDBprefix*/rc_cur_id          ON /*$wgDBprefix*/recentchanges(rc_cur_id);
 CREATE INDEX /*$wgDBprefix*/new_name_timestamp ON /*$wgDBprefix*/recentchanges(rc_new,rc_namespace,rc_timestamp);
 CREATE INDEX /*$wgDBprefix*/rc_ip              ON /*$wgDBprefix*/recentchanges(rc_ip);
-CREATE INDEX /*$wgDBprefix*/rc_ns_wiki_usertext     ON /*$wgDBprefix*/recentchanges(rc_namespace, rc_wiki_user_text);
-CREATE INDEX /*$wgDBprefix*/rc_wiki_user_text       ON /*$wgDBprefix*/recentchanges(rc_wiki_user_text, rc_timestamp);
+CREATE INDEX /*$wgDBprefix*/rc_ns_usertext     ON /*$wgDBprefix*/recentchanges(rc_namespace, rc_user_text);
+CREATE INDEX /*$wgDBprefix*/rc_user_text       ON /*$wgDBprefix*/recentchanges(rc_user_text, rc_timestamp);
 ;
 
 CREATE TABLE /*$wgDBprefix*/watchlist (
-   wl_wiki_user INT NOT NULL,
+   wl_user INT NOT NULL,
    wl_namespace SMALLINT NOT NULL DEFAULT 0,
    wl_title NVARCHAR(255)  NOT NULL DEFAULT '',
    wl_notificationtimestamp NVARCHAR(14) DEFAULT NULL,
@@ -615,8 +615,8 @@ CREATE TABLE /*$wgDBprefix*/logging (
    log_type NCHAR(10) NOT NULL DEFAULT '',
    log_action NCHAR(10) NOT NULL DEFAULT '',
    log_timestamp DATETIME NOT NULL DEFAULT GETDATE(),
-   log_wiki_user INT NOT NULL DEFAULT 0,
-   log_wiki_user_text NVARCHAR(255) NOT NULL DEFAULT '',
+   log_user INT NOT NULL DEFAULT 0,
+   log_user_text NVARCHAR(255) NOT NULL DEFAULT '',
    log_namespace INT NOT NULL DEFAULT 0,
    log_title NVARCHAR(255)  NOT NULL DEFAULT '',
    log_page INT NULL DEFAULT NULL,
@@ -625,14 +625,14 @@ CREATE TABLE /*$wgDBprefix*/logging (
    log_deleted BIT NOT NULL DEFAULT 0,
 );
 CREATE INDEX /*$wgDBprefix*/type_time ON /*$wgDBprefix*/logging (log_type, log_timestamp);
-CREATE INDEX /*$wgDBprefix*/wiki_user_time ON /*$wgDBprefix*/logging (log_wiki_user, log_timestamp);
+CREATE INDEX /*$wgDBprefix*/user_time ON /*$wgDBprefix*/logging (log_user, log_timestamp);
 CREATE INDEX /*$wgDBprefix*/page_time ON /*$wgDBprefix*/logging (log_namespace, log_title, log_timestamp);
 CREATE INDEX /*$wgDBprefix*/times ON /*$wgDBprefix*/logging (log_timestamp);
-CREATE INDEX /*$wgDBprefix*/log_wiki_user_type_time ON /*$wgDBprefix*/logging (log_wiki_user, log_type, log_timestamp);
+CREATE INDEX /*$wgDBprefix*/log_user_type_time ON /*$wgDBprefix*/logging (log_user, log_type, log_timestamp);
 CREATE INDEX /*$wgDBprefix*/log_page_id_time ON /*$wgDBprefix*/logging (log_page,log_timestamp);
 
 CREATE TABLE /*$wgDBprefix*/log_search (
-	-- The type of ID (rev ID, log ID, rev timestamp, wiki_username)
+	-- The type of ID (rev ID, log ID, rev timestamp, username)
 	ls_field NVARCHAR(32) NOT NULL,
 	-- The value of the ID
 	ls_value NVARCHAR(255) NOT NULL,
@@ -689,7 +689,7 @@ CREATE TABLE /*$wgDBprefix*/page_restrictions (
    pr_type NVARCHAR(200) NOT NULL,
    pr_level NVARCHAR(200) NOT NULL,
    pr_cascade SMALLINT NOT NULL,
-   pr_wiki_user INT NULL,
+   pr_user INT NULL,
    pr_expiry DATETIME NULL,
    pr_id INT UNIQUE IDENTITY,
    CONSTRAINT /*$wgDBprefix*/pr_pagetype PRIMARY KEY(pr_page,pr_type),
@@ -704,7 +704,7 @@ CREATE INDEX /*$wgDBprefix*/pr_cascade   ON /*$wgDBprefix*/page_restrictions(pr_
 CREATE TABLE /*$wgDBprefix*/protected_titles (
   pt_namespace int NOT NULL,
   pt_title NVARCHAR(255) NOT NULL,
-  pt_wiki_user int NOT NULL,
+  pt_user int NOT NULL,
   pt_reason NVARCHAR(3555),
   pt_timestamp DATETIME NOT NULL,
   pt_expiry DATETIME NOT NULL default '',
@@ -732,10 +732,10 @@ CREATE TABLE /*$wgDBprefix*/updatelog (
 -- AND assign a password for the FDHOST process to run under
 -- Once you have assigned a password to that account, you need to run the following stored procedure
 -- replacing XXXXX with the password you used.
--- EXEC sp_fulltext_resetfdhostaccount @wiki_username = 'FDH$MSSQLSERVER', @password = 'XXXXXX' ;
+-- EXEC sp_fulltext_resetfdhostaccount @username = 'FDH$MSSQLSERVER', @password = 'XXXXXX' ;
 
 
---- Add the full-text capabilities, depricated in SQL Server 2005, FTS is enabled on all wiki_user created tables by default unless you are using SQL Server 2005 Express
+--- Add the full-text capabilities, depricated in SQL Server 2005, FTS is enabled on all user created tables by default unless you are using SQL Server 2005 Express
 --sp_fulltext_database 'enable';
 --sp_fulltext_catalog 'WikiCatalog', 'create'
 --sp_fulltext_table

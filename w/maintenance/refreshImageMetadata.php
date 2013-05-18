@@ -39,7 +39,7 @@ class RefreshImageMetadata extends Maintenance {
 	/**
 	 * @var DatabaseBase
 	 */
-	protected w;
+	protected $dbw;
 
 	function __construct() {
 		parent::__construct();
@@ -69,18 +69,18 @@ class RefreshImageMetadata extends Maintenance {
 		$leftAlone = 0;
 		$error = 0;
 
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		if ( $this->mBatchSize <= 0 ) {
 			$this->error( "Batch size is too low...", 12 );
 		}
 
 		$repo = RepoGroup::singleton()->getLocalRepo();
-		$conds = $this->getConditions( w );
+		$conds = $this->getConditions( $dbw );
 
 		// For the WHERE img_name > 'foo' condition that comes after doing a batch
 		$conds2 = array();
 		if ( $start !== false ) {
-			$conds2[] = 'img_name >= ' . w->addQuotes( $start );
+			$conds2[] = 'img_name >= ' . $dbw->addQuotes( $start );
 		}
 
 		$options = array(
@@ -89,7 +89,7 @@ class RefreshImageMetadata extends Maintenance {
 		);
 
 		do {
-			$res = w->select(
+			$res = $dbw->select(
 				'image',
 				'*',
 				array_merge( $conds, $conds2 ),
@@ -149,7 +149,7 @@ class RefreshImageMetadata extends Maintenance {
 				}
 
 			}
-			$conds2 = array( 'img_name > ' . w->addQuotes( $row->img_name ) );
+			$conds2 = array( 'img_name > ' . $dbw->addQuotes( $row->img_name ) );
 			wfWaitForSlaves();
 		} while( $res->numRows() === $this->mBatchSize );
 
@@ -162,10 +162,10 @@ class RefreshImageMetadata extends Maintenance {
 	}
 
 	/**
-	 * @param w DatabaseBase
+	 * @param $dbw DatabaseBase
 	 * @return array
 	 */
-	function getConditions( w ) {
+	function getConditions( $dbw ) {
 		$conds = array();
 
 		$end = $this->getOption( 'end', false );
@@ -173,7 +173,7 @@ class RefreshImageMetadata extends Maintenance {
 		$like = $this->getOption( 'metadata-contains', false );
 
 		if ( $end !== false ) {
-			$conds[] = 'img_name <= ' . w->addQuotes( $end ) ;
+			$conds[] = 'img_name <= ' . $dbw->addQuotes( $end ) ;
 		}
 		if ( $mime !== false ) {
 			list( $major, $minor ) = File::splitMime( $mime );
@@ -183,7 +183,7 @@ class RefreshImageMetadata extends Maintenance {
 			}
 		}
 		if ( $like ) {
-			$conds[] = 'img_metadata ' . w->buildLike( w->anyString(), $like, w->anyString() );
+			$conds[] = 'img_metadata ' . $dbw->buildLike( $dbw->anyString(), $like, $dbw->anyString() );
 		}
 		return $conds;
 	}

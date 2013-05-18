@@ -30,7 +30,7 @@
 require_once 'PHPUnit/Framework.php';
 require_once 'PHPUnit/Framework/TestSuite.php';
 
-require_once ( __DIR__ . '/MediaWikiwiki_userInterfaceTestCase.php' );
+require_once ( __DIR__ . '/MediaWikiUserInterfaceTestCase.php' );
 require_once ( __DIR__ . '/MediaWikiButtonsAvailabilityTestCase.php' );
 require_once ( __DIR__ . '/MediaWikiHelpFieldHintTestCase.php' );
 require_once ( __DIR__ . '/MediaWikiRightFrameworkLinksTestCase.php' );

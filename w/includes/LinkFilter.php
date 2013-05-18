@@ -81,7 +81,7 @@ class LinkFilter {
 	 * @return Array to be passed to DatabaseBase::buildLike() or false on error
 	 */
 	 public static function makeLikeArray( $filterEntry , $prot = 'http://' ) {
-		 = wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_MASTER );
 		if ( substr( $filterEntry, 0, 2 ) == '*.' ) {
 			$subdomains = true;
 			$filterEntry = substr( $filterEntry, 2 );
@@ -114,11 +114,11 @@ class LinkFilter {
 			$mailparts = explode( '@', $host );
 			$domainpart = strtolower( implode( '.', array_reverse( explode( '.', $mailparts[1] ) ) ) );
 			$host = $domainpart . '@' . $mailparts[0];
-			$like = array( "$prot$host", ->anyString() );
+			$like = array( "$prot$host", $db->anyString() );
 		} elseif ( $prot == 'mailto:' ) {
 			// domainpart of email adress only. do not add '.'
 			$host = strtolower( implode( '.', array_reverse( explode( '.', $host ) ) ) );	
-			$like = array( "$prot$host", ->anyString() );			
+			$like = array( "$prot$host", $db->anyString() );			
 		} else {
 			$host = strtolower( implode( '.', array_reverse( explode( '.', $host ) ) ) );	
 			if ( substr( $host, -1, 1 ) !== '.' ) {
@@ -127,11 +127,11 @@ class LinkFilter {
 			$like = array( "$prot$host" );
 
 			if ( $subdomains ) {
-				$like[] = ->anyString();
+				$like[] = $db->anyString();
 			}
 			if ( !$subdomains || $path !== '/' ) {
 				$like[] = $path;
-				$like[] = ->anyString();
+				$like[] = $db->anyString();
 			}
 		}
 		return $like;

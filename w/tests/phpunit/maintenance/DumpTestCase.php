@@ -70,10 +70,10 @@ abstract class DumpTestCase extends MediaWikiLangTestCase {
 	/**
 	 * Default set up function.
 	 *
-	 * Clears $wgwiki_user, and reports errors from addDBData to PHPUnit
+	 * Clears $wgUser, and reports errors from addDBData to PHPUnit
 	 */
 	public function setUp() {
-		global $wgwiki_user;
+		global $wgUser;
 
 		parent::setUp();
 
@@ -83,7 +83,7 @@ abstract class DumpTestCase extends MediaWikiLangTestCase {
 			throw $this->exceptionFromAddDBData;
 		}
 
-		$wgwiki_user = new wiki_user();
+		$wgUser = new User();
 	}
 
 	/**

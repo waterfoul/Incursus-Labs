@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/halo_acl_rights (
     right_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     actions INT NOT NULL,
     groups TEXT,
-    wiki_users TEXT,
+    users TEXT,
     description TEXT,
     name TEXT,
     origin_id INT UNSIGNED NOT NULL
@@ -26,19 +26,19 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/halo_acl_security_descriptors (
     pe_id INT,
     type ENUM('category', 'page', 'namespace', 'right') DEFAULT 'page' NOT NULL,
     mr_groups TEXT,
-    mr_wiki_users TEXT
+    mr_users TEXT
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/halo_acl_groups (
     group_id INT UNSIGNED NOT NULL PRIMARY KEY,
     group_name VARCHAR(255) NOT NULL,
     mg_groups TEXT,
-    mg_wiki_users TEXT
+    mg_users TEXT
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/halo_acl_group_members (
     parent_group_id INT UNSIGNED NOT NULL,
-    child_type ENUM('group', 'wiki_user') DEFAULT 'wiki_user' NOT NULL,
+    child_type ENUM('group', 'user') DEFAULT 'user' NOT NULL,
     child_id INT NOT NULL,
     PRIMARY KEY (parent_group_id, child_type, child_id)
 ) /*$wgDBTableOptions*/;
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/halo_acl_special_pages (
 
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/halo_acl_quickacl (
     sd_id INT NOT NULL,
-    wiki_user_id INT NOT NULL,
+    user_id INT NOT NULL,
     qa_default TINYINT(1) NOT NULL,
-    PRIMARY KEY (sd_id, wiki_user_id)
+    PRIMARY KEY (sd_id, user_id)
 ) /*$wgDBTableOptions*/;

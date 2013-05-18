@@ -30,8 +30,8 @@
  */
 class RCCacheEntry extends RecentChange {
 	var $secureName, $link;
-	var $curlink , $difflink, $lastlink, $wiki_usertalklink, $versionlink;
-	var $wiki_userlink, $timestamp, $watched;
+	var $curlink , $difflink, $lastlink, $usertalklink, $versionlink;
+	var $userlink, $timestamp, $watched;
 
 	/**
 	 * @param $rc RecentChange
@@ -77,30 +77,30 @@ class ChangesList extends ContextSource {
 
 	/**
 	 * Fetch an appropriate changes list class for the main context
-	 * This first argument used to be an wiki_user object.
+	 * This first argument used to be an User object.
 	 *
 	 * @deprecated in 1.18; use newFromContext() instead
-	 * @param $unused string|wiki_user Unused
+	 * @param $unused string|User Unused
 	 * @return ChangesList|EnhancedChangesList|OldChangesList derivative
 	 */
-	public static function newFromwiki_user( $unused ) {
+	public static function newFromUser( $unused ) {
 		wfDeprecated( __METHOD__, '1.18' );
 		return self::newFromContext( RequestContext::getMain() );
 	}
 
 	/**
 	 * Fetch an appropriate changes list class for the specified context
-	 * Some wiki_users might want to use an enhanced list format, for instance
+	 * Some users might want to use an enhanced list format, for instance
 	 *
 	 * @param $context IContextSource to use
 	 * @return ChangesList|EnhancedChangesList|OldChangesList derivative
 	 */
 	public static function newFromContext( IContextSource $context ) {
-		$wiki_user = $context->getwiki_user();
+		$user = $context->getUser();
 		$sk = $context->getSkin();
 		$list = null;
-		if( wfRunHooks( 'FetchChangesList', array( $wiki_user, &$sk, &$list ) ) ) {
-			$new = $context->getRequest()->getBool( 'enhanced', $wiki_user->getOption( 'usenewrc' ) );
+		if( wfRunHooks( 'FetchChangesList', array( $user, &$sk, &$list ) ) ) {
+			$new = $context->getRequest()->getBool( 'enhanced', $user->getOption( 'usenewrc' ) );
 			return $new ? new EnhancedChangesList( $context ) : new OldChangesList( $context );
 		} else {
 			return $list;
@@ -288,7 +288,7 @@ class ChangesList extends ContextSource {
 
 	public function insertDateHeader( &$s, $rc_timestamp ) {
 		# Make date header if necessary
-		$date = $this->getLanguage()->wiki_userDate( $rc_timestamp, $this->getwiki_user() );
+		$date = $this->getLanguage()->userDate( $rc_timestamp, $this->getUser() );
 		if( $date != $this->lastdate ) {
 			if( $this->lastdate != '' ) {
 				$s .= "</ul>\n";
@@ -314,7 +314,7 @@ class ChangesList extends ContextSource {
 		# Diff link
 		if( $rc->mAttribs['rc_type'] == RC_NEW || $rc->mAttribs['rc_type'] == RC_LOG ) {
 			$diffLink = $this->message['diff'];
-		} elseif ( !self::wiki_userCan( $rc, Revision::DELETED_TEXT, $this->getwiki_user() ) ) {
+		} elseif ( !self::userCan( $rc, Revision::DELETED_TEXT, $this->getUser() ) ) {
 			$diffLink = $this->message['diff'];
 		} else {
 			$query = array(
@@ -356,7 +356,7 @@ class ChangesList extends ContextSource {
 	 */
 	public function insertArticleLink( &$s, &$rc, $unpatrolled, $watched ) {
 		# If it's a new article, there is no diff link, but if it hasn't been
-		# patrolled yet, we need to give wiki_users a way to do so
+		# patrolled yet, we need to give users a way to do so
 		$params = array();
 
 		if ( $unpatrolled && $rc->mAttribs['rc_type'] == RC_NEW ) {
@@ -372,7 +372,7 @@ class ChangesList extends ContextSource {
 		if( $this->isDeleted($rc,Revision::DELETED_TEXT) ) {
 			$articlelink = '<span class="history-deleted">' . $articlelink . '</span>';
 		}
-		# To allow for boldening pages watched by this wiki_user
+		# To allow for boldening pages watched by this user
 		$articlelink = "<span class=\"mw-title\">{$articlelink}</span>";
 		# RTL/LTR marker
 		$articlelink .= $this->getLanguage()->getDirMark();
@@ -389,22 +389,22 @@ class ChangesList extends ContextSource {
 	 */
 	public function insertTimestamp( &$s, $rc ) {
 		$s .= $this->message['semicolon-separator'] . '<span class="mw-changeslist-date">' .
-			$this->getLanguage()->wiki_userTime( $rc->mAttribs['rc_timestamp'], $this->getwiki_user() ) . '</span> <span class="mw-changeslist-separator">. .</span> ';
+			$this->getLanguage()->userTime( $rc->mAttribs['rc_timestamp'], $this->getUser() ) . '</span> <span class="mw-changeslist-separator">. .</span> ';
 	}
 
 	/**
-	 * Insert links to wiki_user page, wiki_user talk page and eventually a blocking link
+	 * Insert links to user page, user talk page and eventually a blocking link
 	 *
 	 * @param &$s String HTML to update
 	 * @param &$rc RecentChange
 	 */
-	public function insertwiki_userRelatedLinks( &$s, &$rc ) {
+	public function insertUserRelatedLinks( &$s, &$rc ) {
 		if( $this->isDeleted( $rc, Revision::DELETED_USER ) ) {
-			$s .= ' <span class="history-deleted">' . $this->msg( 'rev-deleted-wiki_user' )->escaped() . '</span>';
+			$s .= ' <span class="history-deleted">' . $this->msg( 'rev-deleted-user' )->escaped() . '</span>';
 		} else {
-			$s .= $this->getLanguage()->getDirMark() . Linker::wiki_userLink( $rc->mAttribs['rc_wiki_user'],
-				$rc->mAttribs['rc_wiki_user_text'] );
-			$s .= Linker::wiki_userToolLinks( $rc->mAttribs['rc_wiki_user'], $rc->mAttribs['rc_wiki_user_text'] );
+			$s .= $this->getLanguage()->getDirMark() . Linker::userLink( $rc->mAttribs['rc_user'],
+				$rc->mAttribs['rc_user_text'] );
+			$s .= Linker::userToolLinks( $rc->mAttribs['rc_user'], $rc->mAttribs['rc_user_text'] );
 		}
 	}
 
@@ -417,7 +417,7 @@ class ChangesList extends ContextSource {
 	public function insertLogEntry( $rc ) {
 		$formatter = LogFormatter::newFromRow( $rc->mAttribs );
 		$formatter->setContext( $this->getContext() );
-		$formatter->setShowwiki_userToolLinks( true );
+		$formatter->setShowUserToolLinks( true );
 		$mark = $this->getLanguage()->getDirMark();
 		return $formatter->getActionText() . " $mark" . $formatter->getComment();
 	}
@@ -442,19 +442,19 @@ class ChangesList extends ContextSource {
 	 * @return Boolean
 	 */
 	public static function usePatrol() {
-		global $wgwiki_user;
-		return $wgwiki_user->useRCPatrol();
+		global $wgUser;
+		return $wgUser->useRCPatrol();
 	}
 
 	/**
-	 * Returns the string which indicates the number of watching wiki_users
+	 * Returns the string which indicates the number of watching users
 	 * @return string
 	 */
-	protected function numberofWatchingwiki_users( $count ) {
+	protected function numberofWatchingusers( $count ) {
 		static $cache = array();
 		if( $count > 0 ) {
 			if( !isset( $cache[$count] ) ) {
-				$cache[$count] = $this->msg( 'number_of_watching_wiki_users_RCview' )->numParams( $count )->escaped();
+				$cache[$count] = $this->msg( 'number_of_watching_users_RCview' )->numParams( $count )->escaped();
 			}
 			return $cache[$count];
 		} else {
@@ -473,18 +473,18 @@ class ChangesList extends ContextSource {
 	}
 
 	/**
-	 * Determine if the current wiki_user is allowed to view a particular
+	 * Determine if the current user is allowed to view a particular
 	 * field of this revision, if it's marked as deleted.
 	 * @param $rc RCCacheEntry
 	 * @param $field Integer
-	 * @param $wiki_user wiki_user object to check, or null to use $wgwiki_user
+	 * @param $user User object to check, or null to use $wgUser
 	 * @return Boolean
 	 */
-	public static function wiki_userCan( $rc, $field, wiki_user $wiki_user = null ) {
+	public static function userCan( $rc, $field, User $user = null ) {
 		if( $rc->mAttribs['rc_type'] == RC_LOG ) {
-			return LogEventsList::wiki_userCanBitfield( $rc->mAttribs['rc_deleted'], $field, $wiki_user );
+			return LogEventsList::userCanBitfield( $rc->mAttribs['rc_deleted'], $field, $user );
 		} else {
-			return Revision::wiki_userCanBitfield( $rc->mAttribs['rc_deleted'], $field, $wiki_user );
+			return Revision::userCanBitfield( $rc->mAttribs['rc_deleted'], $field, $user );
 		}
 	}
 
@@ -511,12 +511,12 @@ class ChangesList extends ContextSource {
 			$page = $rc->getTitle();
 			/** Check for rollback and edit permissions, disallow special pages, and only
 			  * show a link on the top-most revision */
-			if ( $this->getwiki_user()->isAllowed('rollback') && $rc->mAttribs['page_latest'] == $rc->mAttribs['rc_this_oldid'] )
+			if ( $this->getUser()->isAllowed('rollback') && $rc->mAttribs['page_latest'] == $rc->mAttribs['rc_this_oldid'] )
 			{
 				$rev = new Revision( array(
 					'id'        => $rc->mAttribs['rc_this_oldid'],
-					'wiki_user'      => $rc->mAttribs['rc_wiki_user'],
-					'wiki_user_text' => $rc->mAttribs['rc_wiki_user_text'],
+					'user'      => $rc->mAttribs['rc_user'],
+					'user_text' => $rc->mAttribs['rc_user_text'],
 					'deleted'   => $rc->mAttribs['rc_deleted']
 				) );
 				$rev->setTitle( $page );
@@ -546,9 +546,9 @@ class ChangesList extends ContextSource {
 	protected function showAsUnpatrolled( RecentChange $rc ) {
 		$unpatrolled = false;
 		if ( !$rc->mAttribs['rc_patrolled'] ) {
-			if ( $this->getwiki_user()->useRCPatrol() ) {
+			if ( $this->getUser()->useRCPatrol() ) {
 				$unpatrolled = true;
-			} elseif ( $this->getwiki_user()->useNPPatrol() && $rc->mAttribs['rc_type'] == RC_NEW ) {
+			} elseif ( $this->getUser()->useNPPatrol() && $rc->mAttribs['rc_type'] == RC_NEW ) {
 				$unpatrolled = true;
 			}
 		}
@@ -635,8 +635,8 @@ class OldChangesList extends ChangesList {
 		if ( $rc->mAttribs['rc_type'] == RC_LOG ) {
 			$s .= $this->insertLogEntry( $rc );
 		} else {
-			# wiki_user tool links
-			$this->insertwiki_userRelatedLinks( $s, $rc );
+			# User tool links
+			$this->insertUserRelatedLinks( $s, $rc );
 			# LTR/RTL direction mark
 			$s .= $this->getLanguage()->getDirMark();
 			$s .= $this->insertComment( $rc );
@@ -649,9 +649,9 @@ class OldChangesList extends ChangesList {
 		# For subclasses
 		$this->insertExtra( $s, $rc, $classes );
 
-		# How many wiki_users watch this page
-		if( $rc->numberofWatchingwiki_users > 0 ) {
-			$s .= ' ' . $this->numberofWatchingwiki_users( $rc->numberofWatchingwiki_users );
+		# How many users watch this page
+		if( $rc->numberofWatchingusers > 0 ) {
+			$s .= ' ' . $this->numberofWatchingusers( $rc->numberofWatchingusers );
 		}
 
 		if( $this->watchlist ) {
@@ -703,7 +703,7 @@ class EnhancedChangesList extends ChangesList {
 		$curIdEq = array( 'curid' => $rc->mAttribs['rc_cur_id'] );
 
 		# If it's a new day, add the headline and flush the cache
-		$date = $this->getLanguage()->wiki_userDate( $rc->mAttribs['rc_timestamp'], $this->getwiki_user() );
+		$date = $this->getLanguage()->userDate( $rc->mAttribs['rc_timestamp'], $this->getUser() );
 		$ret = '';
 		if( $date != $this->lastdate ) {
 			# Process current cache
@@ -747,15 +747,15 @@ class EnhancedChangesList extends ChangesList {
 		}
 
 		# Don't show unusable diff links
-		if ( !ChangesList::wiki_userCan( $rc, Revision::DELETED_TEXT, $this->getwiki_user() ) ) {
+		if ( !ChangesList::userCan( $rc, Revision::DELETED_TEXT, $this->getUser() ) ) {
 			$showdifflinks = false;
 		}
 
-		$time = $this->getLanguage()->wiki_userTime( $rc->mAttribs['rc_timestamp'], $this->getwiki_user() );
+		$time = $this->getLanguage()->userTime( $rc->mAttribs['rc_timestamp'], $this->getUser() );
 		$rc->watched = $watched;
 		$rc->link = $clink;
 		$rc->timestamp = $time;
-		$rc->numberofWatchingwiki_users = $baseRC->numberofWatchingwiki_users;
+		$rc->numberofWatchingusers = $baseRC->numberofWatchingusers;
 
 		# Make "cur" and "diff" links.  Do not use link(), it is too slow if
 		# called too many times (50% of CPU time on RecentChanges!).
@@ -798,12 +798,12 @@ class EnhancedChangesList extends ChangesList {
 				array(), $curIdEq + array('diff' => $thisOldid, 'oldid' => $lastOldid) + $rcIdQuery );
 		}
 
-		# Make wiki_user links
+		# Make user links
 		if( $this->isDeleted( $rc, Revision::DELETED_USER ) ) {
-			$rc->wiki_userlink = ' <span class="history-deleted">' . $this->msg( 'rev-deleted-wiki_user' )->escaped() . '</span>';
+			$rc->userlink = ' <span class="history-deleted">' . $this->msg( 'rev-deleted-user' )->escaped() . '</span>';
 		} else {
-			$rc->wiki_userlink = Linker::wiki_userLink( $rc->mAttribs['rc_wiki_user'], $rc->mAttribs['rc_wiki_user_text'] );
-			$rc->wiki_usertalklink = Linker::wiki_userToolLinks( $rc->mAttribs['rc_wiki_user'], $rc->mAttribs['rc_wiki_user_text'] );
+			$rc->userlink = Linker::userLink( $rc->mAttribs['rc_user'], $rc->mAttribs['rc_user_text'] );
+			$rc->usertalklink = Linker::userToolLinks( $rc->mAttribs['rc_user'], $rc->mAttribs['rc_user_text'] );
 		}
 
 		$rc->lastlink = $lastLink;
@@ -857,8 +857,8 @@ class EnhancedChangesList extends ChangesList {
 		$r = Html::openElement( 'table', array( 'class' => $classes ) ) .
 			Html::openElement( 'tr' );
 
-		# Collate list of wiki_users
-		$wiki_userlinks = array();
+		# Collate list of users
+		$userlinks = array();
 		# Other properties
 		$unpatrolled = false;
 		$isnew = false;
@@ -876,9 +876,9 @@ class EnhancedChangesList extends ChangesList {
 			if( !$this->isDeleted( $rcObj, LogPage::DELETED_ACTION ) ) {
 				$namehidden = false;
 			}
-			$u = $rcObj->wiki_userlink;
-			if( !isset( $wiki_userlinks[$u] ) ) {
-				$wiki_userlinks[$u] = 0;
+			$u = $rcObj->userlink;
+			if( !isset( $userlinks[$u] ) ) {
+				$userlinks[$u] = 0;
 			}
 			if( $rcObj->unpatrolled ) {
 				$unpatrolled = true;
@@ -896,25 +896,25 @@ class EnhancedChangesList extends ChangesList {
 			}
 
 			$bot = $rcObj->mAttribs['rc_bot'];
-			$wiki_userlinks[$u]++;
+			$userlinks[$u]++;
 		}
 
 		# Sort the list and convert to text
-		krsort( $wiki_userlinks );
-		asort( $wiki_userlinks );
-		$wiki_users = array();
-		foreach( $wiki_userlinks as $wiki_userlink => $count) {
-			$text = $wiki_userlink;
+		krsort( $userlinks );
+		asort( $userlinks );
+		$users = array();
+		foreach( $userlinks as $userlink => $count) {
+			$text = $userlink;
 			$text .= $this->getLanguage()->getDirMark();
 			if( $count > 1 ) {
 				$text .= ' ' . $this->msg( 'parentheses' )->rawParams( $this->getLanguage()->formatNum( $count ) . '×' )->escaped();
 			}
-			array_push( $wiki_users, $text );
+			array_push( $users, $text );
 		}
 
-		$wiki_users = ' <span class="changedby">'
+		$users = ' <span class="changedby">'
 			. $this->msg( 'brackets' )->rawParams(
-				implode( $this->message['semicolon-separator'], $wiki_users )
+				implode( $this->message['semicolon-separator'], $users )
 			)->escaped() . '</span>';
 
 		$tl = '<span class="mw-collapsible-toggle mw-enhancedchanges-arrow"></span>';
@@ -953,7 +953,7 @@ class EnhancedChangesList extends ChangesList {
 		$r .= ' ';
 		$logtext = '';
 		if( !$allLogs ) {
-			if( !ChangesList::wiki_userCan( $rcObj, Revision::DELETED_TEXT, $this->getwiki_user() ) ) {
+			if( !ChangesList::userCan( $rcObj, Revision::DELETED_TEXT, $this->getUser() ) ) {
 				$logtext .= $nchanges[$n];
 			} elseif( $isnew ) {
 				$logtext .= $nchanges[$n];
@@ -1017,8 +1017,8 @@ class EnhancedChangesList extends ChangesList {
 			}
 		}
 
-		$r .= $wiki_users;
-		$r .= $this->numberofWatchingwiki_users($block[0]->numberofWatchingwiki_users);
+		$r .= $users;
+		$r .= $this->numberofWatchingusers($block[0]->numberofWatchingusers);
 
 		# Sub-entries
 		foreach( $block as $rcObj ) {
@@ -1045,7 +1045,7 @@ class EnhancedChangesList extends ChangesList {
 			if( $type == RC_LOG ) {
 				$link = $rcObj->timestamp;
 			# Revision link
-			} elseif( !ChangesList::wiki_userCan( $rcObj, Revision::DELETED_TEXT, $this->getwiki_user() ) ) {
+			} elseif( !ChangesList::userCan( $rcObj, Revision::DELETED_TEXT, $this->getUser() ) ) {
 				$link = '<span class="history-deleted">'.$rcObj->timestamp.'</span> ';
 			} else {
 				if ( $rcObj->unpatrolled && $type == RC_NEW) {
@@ -1079,9 +1079,9 @@ class EnhancedChangesList extends ChangesList {
 			if ( $rcObj->mAttribs['rc_type'] == RC_LOG ) {
 				$r .= $this->insertLogEntry( $rcObj );
 			} else {
-				# wiki_user links
-				$r .= $rcObj->wiki_userlink;
-				$r .= $rcObj->wiki_usertalklink;
+				# User links
+				$r .= $rcObj->userlink;
+				$r .= $rcObj->usertalklink;
 				$r .= $this->insertComment( $rcObj );
 			}
 
@@ -1214,7 +1214,7 @@ class EnhancedChangesList extends ChangesList {
 		if ( $type == RC_LOG ) {
 			$r .= $this->insertLogEntry( $rcObj );
 		} else {
-			$r .= ' '.$rcObj->wiki_userlink . $rcObj->wiki_usertalklink;
+			$r .= ' '.$rcObj->userlink . $rcObj->usertalklink;
 			$r .= $this->insertComment( $rcObj );
 			$this->insertRollback( $r, $rcObj );
 		}
@@ -1222,7 +1222,7 @@ class EnhancedChangesList extends ChangesList {
 		# Tags
 		$this->insertTags( $r, $rcObj, $classes );
 		# Show how many people are watching this if enabled
-		$r .= $this->numberofWatchingwiki_users($rcObj->numberofWatchingwiki_users);
+		$r .= $this->numberofWatchingusers($rcObj->numberofWatchingusers);
 
 		$r .= "</td></tr></table>\n";
 

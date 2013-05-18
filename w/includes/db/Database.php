@@ -50,13 +50,13 @@ interface DatabaseType {
 	 * Open a connection to the database. Usually aborts on failure
 	 *
 	 * @param $server String: database server host
-	 * @param $wiki_user String: database wiki_user name
-	 * @param $password String: database wiki_user password
-	 * @param Name String: database name
+	 * @param $user String: database user name
+	 * @param $password String: database user password
+	 * @param $dbName String: database name
 	 * @return bool
 	 * @throws DBConnectionError
 	 */
-	function open( $server, $wiki_user, $password, Name );
+	function open( $server, $user, $password, $dbName );
 
 	/**
 	 * Fetch the next row from the given result object, in object form.
@@ -112,9 +112,9 @@ interface DatabaseType {
 	 * The value inserted should be fetched from nextSequenceValue()
 	 *
 	 * Example:
-	 * $id = w->nextSequenceValue('page_page_id_seq');
-	 * w->insert('page',array('page_id' => $id));
-	 * $id = w->insertId();
+	 * $id = $dbw->nextSequenceValue('page_page_id_seq');
+	 * $dbw->insert('page',array('page_id' => $id));
+	 * $id = $dbw->insertId();
 	 *
 	 * @return int
 	 */
@@ -201,7 +201,7 @@ interface DatabaseType {
 
 	/**
 	 * A string describing the current software version, and possibly
-	 * other details in a wiki_user-friendly way.  Will be listed on Special:Version, etc.
+	 * other details in a user-friendly way.  Will be listed on Special:Version, etc.
 	 * Use getServerVersion() to get machine-friendly information.
 	 *
 	 * @return string: Version information from the database server
@@ -223,7 +223,7 @@ abstract class DatabaseBase implements DatabaseType {
 	protected $mDoneWrites = false;
 	protected $mPHPError = false;
 
-	protected $mServer, $mwiki_user, $mPassword, $mDBname;
+	protected $mServer, $mUser, $mPassword, $mDBname;
 
 	protected $mConn = null;
 	protected $mOpened = false;
@@ -256,7 +256,7 @@ abstract class DatabaseBase implements DatabaseType {
 
 	/**
 	 * A string describing the current software version, and possibly
-	 * other details in a wiki_user-friendly way.  Will be listed on Special:Version, etc.
+	 * other details in a user-friendly way.  Will be listed on Special:Version, etc.
 	 * Use getServerVersion() to get machine-friendly information.
 	 *
 	 * @return string: Version information from the database server
@@ -606,13 +606,13 @@ abstract class DatabaseBase implements DatabaseType {
 	/**
 	 * Constructor.
 	 * @param $server String: database server host
-	 * @param $wiki_user String: database wiki_user name
-	 * @param $password String: database wiki_user password
-	 * @param Name String: database name
+	 * @param $user String: database user name
+	 * @param $password String: database user password
+	 * @param $dbName String: database name
 	 * @param $flags
 	 * @param $tablePrefix String: database table prefixes. By default use the prefix gave in LocalSettings.php
 	 */
-	function __construct( $server = false, $wiki_user = false, $password = false, Name = false,
+	function __construct( $server = false, $user = false, $password = false, $dbName = false,
 		$flags = 0, $tablePrefix = 'get from global'
 	) {
 		global $wgDBprefix, $wgCommandLineMode, $wgDebugDBTransactions;
@@ -640,8 +640,8 @@ abstract class DatabaseBase implements DatabaseType {
 			$this->mTablePrefix = $tablePrefix;
 		}
 
-		if ( $wiki_user ) {
-			$this->open( $server, $wiki_user, $password, Name );
+		if ( $user ) {
+			$this->open( $server, $user, $password, $dbName );
 		}
 	}
 
@@ -665,28 +665,28 @@ abstract class DatabaseBase implements DatabaseType {
 	 * an extension, et cetera). Do not use this to connect to the MediaWiki
 	 * database. Example uses in core:
 	 * @see LoadBalancer::reallyOpenConnection()
-	 * @see Externalwiki_user_MediaWiki::initFromCond()
+	 * @see ExternalUser_MediaWiki::initFromCond()
 	 * @see ForeignDBRepo::getMasterDB()
 	 * @see WebInstaller_DBConnect::execute()
 	 *
 	 * @since 1.18
 	 *
-	 * @param Type String A possible DB type
+	 * @param $dbType String A possible DB type
 	 * @param $p Array An array of options to pass to the constructor.
-	 *    Valid options are: host, wiki_user, password, dbname, flags, tablePrefix
+	 *    Valid options are: host, user, password, dbname, flags, tablePrefix
 	 * @return DatabaseBase subclass or null
 	 */
-	public final static function factory( Type, $p = array() ) {
+	public final static function factory( $dbType, $p = array() ) {
 		$canonicalDBTypes = array(
 			'mysql', 'postgres', 'sqlite', 'oracle', 'mssql', 'ibm_db2'
 		);
-		Type = strtolower( Type );
-		$class = 'Database' . ucfirst( Type );
+		$dbType = strtolower( $dbType );
+		$class = 'Database' . ucfirst( $dbType );
 
-		if( in_array( Type, $canonicalDBTypes ) || ( class_exists( $class ) && is_subclass_of( $class, 'DatabaseBase' ) ) ) {
+		if( in_array( $dbType, $canonicalDBTypes ) || ( class_exists( $class ) && is_subclass_of( $class, 'DatabaseBase' ) ) ) {
 			return new $class(
 				isset( $p['host'] ) ? $p['host'] : false,
-				isset( $p['wiki_user'] ) ? $p['wiki_user'] : false,
+				isset( $p['user'] ) ? $p['user'] : false,
 				isset( $p['password'] ) ? $p['password'] : false,
 				isset( $p['dbname'] ) ? $p['dbname'] : false,
 				isset( $p['flags'] ) ? $p['flags'] : 0,
@@ -797,7 +797,7 @@ abstract class DatabaseBase implements DatabaseType {
 	 *
 	 * In new code, the query wrappers select(), insert(), update(), delete(),
 	 * etc. should be used where possible, since they give much better DBMS
-	 * independence and automatically quote or validate wiki_user input in a variety
+	 * independence and automatically quote or validate user input in a variety
 	 * of contexts. This function is generally only useful for queries which are
 	 * explicitly DBMS-dependent and are unsupported by the query wrappers, such
 	 * as CREATE TABLE.
@@ -839,17 +839,17 @@ abstract class DatabaseBase implements DatabaseType {
 		}
 
 		# Add a comment for easy SHOW PROCESSLIST interpretation
-		global $wgwiki_user;
-		if ( is_object( $wgwiki_user ) && $wgwiki_user->isItemLoaded( 'name' ) ) {
-			$wiki_userName = $wgwiki_user->getName();
-			if ( mb_strlen( $wiki_userName ) > 15 ) {
-				$wiki_userName = mb_substr( $wiki_userName, 0, 15 ) . '...';
+		global $wgUser;
+		if ( is_object( $wgUser ) && $wgUser->isItemLoaded( 'name' ) ) {
+			$userName = $wgUser->getName();
+			if ( mb_strlen( $userName ) > 15 ) {
+				$userName = mb_substr( $userName, 0, 15 ) . '...';
 			}
-			$wiki_userName = str_replace( '/', '', $wiki_userName );
+			$userName = str_replace( '/', '', $userName );
 		} else {
-			$wiki_userName = '';
+			$userName = '';
 		}
-		$commentedSql = preg_replace( '/\s/', " /* $fname $wiki_userName */ ", $sql, 1 );
+		$commentedSql = preg_replace( '/\s/', " /* $fname $userName */ ", $sql, 1 );
 
 		# If DBO_TRX is set, start a transaction
 		if ( ( $this->mFlags & DBO_TRX ) && !$this->trxLevel() &&
@@ -1060,7 +1060,7 @@ abstract class DatabaseBase implements DatabaseType {
 	 *
 	 * @param $table string|array Table name. See DatabaseBase::select() for details.
 	 * @param $var string The field name to select. This must be a valid SQL
-	 *   fragment: do not use unvalidated wiki_user input.
+	 *   fragment: do not use unvalidated user input.
 	 * @param $cond string|array The condition array. See DatabaseBase::select() for details.
 	 * @param $fname string The function name of the caller.
 	 * @param $options string|array The query options. See DatabaseBase::select() for details.
@@ -1209,10 +1209,10 @@ abstract class DatabaseBase implements DatabaseType {
 	 * May be either an array of table names, or a single string holding a table
 	 * name. If an array is given, table aliases can be specified, for example:
 	 *
-	 *    array( 'a' => 'wiki_user' )
+	 *    array( 'a' => 'user' )
 	 *
-	 * This includes the wiki_user table in the query, with the alias "a" available
-	 * for use in field names (e.g. a.wiki_user_name).
+	 * This includes the user table in the query, with the alias "a" available
+	 * for use in field names (e.g. a.user_name).
 	 *
 	 * All of the table names given here are automatically run through
 	 * DatabaseBase::tableName(), which causes the table prefix (if any) to be
@@ -1880,15 +1880,15 @@ abstract class DatabaseBase implements DatabaseType {
 	 *
 	 * @todo Explain what exactly will fail if this is not overridden.
 	 *
-	 * @param 
+	 * @param $db
 	 *
 	 * @return bool Success or failure
 	 */
-	public function selectDB(  ) {
+	public function selectDB( $db ) {
 		# Stub.  Shouldn't cause serious problems if it's not overridden, but
 		# if your database engine supports a concept similar to MySQL's
 		# databases you may as well.
-		$this->mDBname = ;
+		$this->mDBname = $db;
 		return true;
 	}
 
@@ -1947,11 +1947,11 @@ abstract class DatabaseBase implements DatabaseType {
 		# Split database and table into proper variables.
 		# We reverse the explode so that database.table and table both output
 		# the correct table.
-		Details = array_reverse( explode( '.', $name, 2 ) );
-		if ( isset( Details[1] ) ) {
-			list( $table, $database ) = Details;
+		$dbDetails = array_reverse( explode( '.', $name, 2 ) );
+		if ( isset( $dbDetails[1] ) ) {
+			list( $table, $database ) = $dbDetails;
 		} else {
-			list( $table ) = Details;
+			list( $table ) = $dbDetails;
 		}
 		$prefix = $this->mTablePrefix; # Default prefix
 
@@ -1996,9 +1996,9 @@ abstract class DatabaseBase implements DatabaseType {
 	 * This is handy when you need to construct SQL for joins
 	 *
 	 * Example:
-	 * extract(r->tableNames('wiki_user','watchlist'));
-	 * $sql = "SELECT wl_namespace,wl_title FROM $watchlist,$wiki_user
-	 *         WHERE wl_wiki_user=wiki_user_id AND wl_wiki_user=$nameWithQuotes";
+	 * extract($dbr->tableNames('user','watchlist'));
+	 * $sql = "SELECT wl_namespace,wl_title FROM $watchlist,$user
+	 *         WHERE wl_user=user_id AND wl_user=$nameWithQuotes";
 	 *
 	 * @return array
 	 */
@@ -2018,9 +2018,9 @@ abstract class DatabaseBase implements DatabaseType {
 	 * This is handy when you need to construct SQL for joins
 	 *
 	 * Example:
-	 * list( $wiki_user, $watchlist ) = r->tableNamesN('wiki_user','watchlist');
-	 * $sql = "SELECT wl_namespace,wl_title FROM $watchlist,$wiki_user
-	 *         WHERE wl_wiki_user=wiki_user_id AND wl_wiki_user=$nameWithQuotes";
+	 * list( $user, $watchlist ) = $dbr->tableNamesN('user','watchlist');
+	 * $sql = "SELECT wl_namespace,wl_title FROM $watchlist,$user
+	 *         WHERE wl_user=user_id AND wl_user=$nameWithQuotes";
 	 *
 	 * @return array
 	 */
@@ -2172,9 +2172,9 @@ abstract class DatabaseBase implements DatabaseType {
 	protected function indexName( $index ) {
 		// Backwards-compatibility hack
 		$renamed = array(
-			'ar_wiki_usertext_timestamp'	=> 'wiki_usertext_timestamp',
-			'un_wiki_user_id'		=> 'wiki_user_id',
-			'un_wiki_user_ip'		=> 'wiki_user_ip',
+			'ar_usertext_timestamp'	=> 'usertext_timestamp',
+			'un_user_id'		=> 'user_id',
+			'un_user_ip'		=> 'user_ip',
 		);
 
 		if ( isset( $renamed[$index] ) ) {
@@ -2247,9 +2247,9 @@ abstract class DatabaseBase implements DatabaseType {
 	 * containing either string literals that will be escaped or tokens returned by anyChar() or anyString().
 	 * Alternatively, the function could be provided with an array of aforementioned parameters.
 	 *
-	 * Example: r->buildLike( 'My_page_title/', r->anyString() ) returns a LIKE clause that searches
+	 * Example: $dbr->buildLike( 'My_page_title/', $dbr->anyString() ) returns a LIKE clause that searches
 	 * for subpages of 'My page title'.
-	 * Alternatively: $pattern = array( 'My_page_title/', r->anyString() ); $query .= r->buildLike( $pattern );
+	 * Alternatively: $pattern = array( 'My_page_title/', $dbr->anyString() ); $query .= $dbr->buildLike( $pattern );
 	 *
 	 * @since 1.16
 	 * @return String: fully built LIKE statement
@@ -2728,7 +2728,7 @@ abstract class DatabaseBase implements DatabaseType {
 	 * will be rolled back and the callback function will be called again.
 	 *
 	 * Usage:
-	 *   w->deadlockLoop( callback, ... );
+	 *   $dbw->deadlockLoop( callback, ... );
 	 *
 	 * Extra arguments are passed through to the specified callback function.
 	 *
@@ -3168,9 +3168,9 @@ abstract class DatabaseBase implements DatabaseType {
 	public function patchPath( $patch ) {
 		global $IP;
 
-		Type = $this->getType();
-		if ( file_exists( "$IP/maintenance/Type/archives/$patch" ) ) {
-			return "$IP/maintenance/Type/archives/$patch";
+		$dbType = $this->getType();
+		if ( file_exists( "$IP/maintenance/$dbType/archives/$patch" ) ) {
+			return "$IP/maintenance/$dbType/archives/$patch";
 		} else {
 			return "$IP/maintenance/archives/$patch";
 		}
@@ -3207,7 +3207,7 @@ abstract class DatabaseBase implements DatabaseType {
 
 		while ( !feof( $fp ) ) {
 			if ( $lineCallback ) {
-				call_wiki_user_func( $lineCallback );
+				call_user_func( $lineCallback );
 			}
 
 			$line = trim( fgets( $fp ) );
@@ -3231,12 +3231,12 @@ abstract class DatabaseBase implements DatabaseType {
 			if ( $done || feof( $fp ) ) {
 				$cmd = $this->replaceVars( $cmd );
 				if ( $inputCallback ) {
-					call_wiki_user_func( $inputCallback, $cmd );
+					call_user_func( $inputCallback, $cmd );
 				}
 				$res = $this->query( $cmd, $fname );
 
 				if ( $resultCallback ) {
-					call_wiki_user_func( $resultCallback, $res, $this );
+					call_user_func( $resultCallback, $res, $this );
 				}
 
 				if ( false === $res ) {

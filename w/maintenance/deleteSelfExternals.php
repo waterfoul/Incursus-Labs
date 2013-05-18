@@ -39,15 +39,15 @@ class DeleteSelfExternals extends Maintenance {
 	public function execute() {
 		global $wgServer;
 		$this->output( "Deleting self externals from $wgServer\n" );
-		 = wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_MASTER );
 		while ( 1 ) {
 			wfWaitForSlaves();
-			->commit( __METHOD__ );
-			$q = ->limitResult( "DELETE /* deleteSelfExternals */ FROM externallinks WHERE el_to"
-				. ->buildLike( $wgServer . '/', ->anyString() ), $this->mBatchSize );
+			$db->commit( __METHOD__ );
+			$q = $db->limitResult( "DELETE /* deleteSelfExternals */ FROM externallinks WHERE el_to"
+				. $db->buildLike( $wgServer . '/', $db->anyString() ), $this->mBatchSize );
 			$this->output( "Deleting a batch\n" );
-			->query( $q );
-			if ( !->affectedRows() ) return;
+			$db->query( $q );
+			if ( !$db->affectedRows() ) return;
 		}
 	}
 }

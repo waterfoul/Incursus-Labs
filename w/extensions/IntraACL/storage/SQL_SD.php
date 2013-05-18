@@ -38,15 +38,15 @@ class IntraACL_SQL_SD
      */
     public function saveSD(HACLSecurityDescriptor $sd)
     {
-        w = wfGetDB(DB_MASTER);
+        $dbw = wfGetDB(DB_MASTER);
         $mgGroups = implode(',', $sd->getManageGroups());
-        $mgwiki_users = implode(',', $sd->getManagewiki_users());
-        w->replace('halo_acl_security_descriptors', NULL, array(
+        $mgUsers = implode(',', $sd->getManageUsers());
+        $dbw->replace('halo_acl_security_descriptors', NULL, array(
             'sd_id'     => $sd->getSDID(),
             'pe_id'     => $sd->getPEID(),
             'type'      => $sd->getPEType(),
             'mr_groups' => $mgGroups,
-            'mr_wiki_users'  => $mgwiki_users), __METHOD__);
+            'mr_users'  => $mgUsers), __METHOD__);
     }
 
     /**
@@ -65,8 +65,8 @@ class IntraACL_SQL_SD
      */
     public function addRightToSD($parentRightID, $childRightID)
     {
-        w = wfGetDB(DB_MASTER);
-        w->replace('halo_acl_rights_hierarchy', NULL, array(
+        $dbw = wfGetDB(DB_MASTER);
+        $dbw->replace('halo_acl_rights_hierarchy', NULL, array(
             'parent_right_id' => $parentRightID,
             'child_id'        => $childRightID), __METHOD__);
     }
@@ -90,16 +90,16 @@ class IntraACL_SQL_SD
      */
     public function setInlineRightsForProtectedElements($ir_ids, $sd_ids)
     {
-        w = wfGetDB(DB_MASTER);
+        $dbw = wfGetDB(DB_MASTER);
         foreach ($sd_ids as $sd)
         {
             // retrieve the protected element and its type
-            $obj = w->selectRow('halo_acl_security_descriptors', 'pe_id, type', array('sd_id' => $sd), __METHOD__);
+            $obj = $dbw->selectRow('halo_acl_security_descriptors', 'pe_id, type', array('sd_id' => $sd), __METHOD__);
             if (!$obj)
                 continue;
             foreach ($ir_ids as $ir)
             {
-                w->replace('halo_acl_pe_rights', NULL, array(
+                $dbw->replace('halo_acl_pe_rights', NULL, array(
                     'pe_id'    => $obj->pe_id,
                     'type'     => $obj->type,
                     'right_id' => $ir), __METHOD__);
@@ -124,14 +124,14 @@ class IntraACL_SQL_SD
     {
         if (empty($sdIDs))
             return array();
-        r = wfGetDB(DB_SLAVE);
-        $res = r->select(
+        $dbr = wfGetDB(DB_SLAVE);
+        $res = $dbr->select(
             'halo_acl_rights', '*',
             array('origin_id' => $sdIDs), __METHOD__
         );
 
         $irs = array();
-        while ($row = r->fetchObject($res))
+        while ($row = $dbr->fetchObject($res))
             $irs[] = $asObject ? IACLStorage::get('IR')->rowToRight($row) : (int)$row->right_id;
         return $irs;
     }
@@ -150,7 +150,7 @@ class IntraACL_SQL_SD
      *         An array of predefined right IDs without duplicates.
      */
     public function getPredefinedRightsOfSD($sdID, $recursively) {
-        r = wfGetDB( DB_SLAVE );
+        $dbr = wfGetDB( DB_SLAVE );
 
         $parentIDs = array($sdID);
         $childIDs = array();
@@ -159,7 +159,7 @@ class IntraACL_SQL_SD
             if (empty($parentIDs)) {
                 break;
             }
-            $res = r->select(
+            $res = $dbr->select(
                 'halo_acl_rights_hierarchy', 'child_id',
                 array('parent_right_id' => $parentIDs), __METHOD__,
                 array('DISTINCT')
@@ -168,7 +168,7 @@ class IntraACL_SQL_SD
             $exclude = array_merge($exclude, $parentIDs);
             $parentIDs = array();
 
-            while ($row = r->fetchObject($res)) {
+            while ($row = $dbr->fetchObject($res)) {
                 $cid = (int) $row->child_id;
                 if (!in_array($cid, $childIDs)) {
                     $childIDs[] = $cid;
@@ -178,8 +178,8 @@ class IntraACL_SQL_SD
                     $parentIDs[] = $cid;
                 }
             }
-            $numRows = r->numRows($res);
-            r->freeResult($res);
+            $numRows = $dbr->numRows($res);
+            $dbr->freeResult($res);
             if ($numRows == 0 || !$recursively) {
                 // No further children found
                 break;
@@ -202,13 +202,13 @@ class IntraACL_SQL_SD
      */
     public function getSDsIncludingPR($prID)
     {
-        r = wfGetDB(DB_SLAVE);
+        $dbr = wfGetDB(DB_SLAVE);
 
         $result = array($prID => true);
         $childIDs = array($prID);
         while ($childIDs)
         {
-            $res = r->select(
+            $res = $dbr->select(
                 'halo_acl_rights_hierarchy', 'parent_right_id',
                 array('child_id' => $childIDs), __METHOD__,
                 array('DISTINCT')
@@ -233,8 +233,8 @@ class IntraACL_SQL_SD
      */
     public function getFullSDHierarchy()
     {
-        r = wfGetDB(DB_SLAVE);
-        $res = r->select('halo_acl_rights_hierarchy', '*', '1', __METHOD__);
+        $dbr = wfGetDB(DB_SLAVE);
+        $res = $dbr->select('halo_acl_rights_hierarchy', '*', '1', __METHOD__);
         $rows = array();
         foreach ($res as $row)
             $rows[] = $row;
@@ -258,15 +258,15 @@ class IntraACL_SQL_SD
     {
         if (!$SDID)
             return is_array($SDID) ? array() : NULL;
-        r = wfGetDB(DB_SLAVE);
-        $res = r->select(
+        $dbr = wfGetDB(DB_SLAVE);
+        $res = $dbr->select(
             array('sd' => 'halo_acl_security_descriptors', 'page'),
             'sd.*, page_title',
             array('sd_id' => $SDID, 'page_id=sd_id'),
             __METHOD__
         );
         if (!is_array($SDID))
-            return $this->rowToSD(r->fetchObject($res));
+            return $this->rowToSD($dbr->fetchObject($res));
         elseif (is_array($SDID))
         {
             $byid = array();
@@ -297,7 +297,7 @@ class IntraACL_SQL_SD
             (int)$row->pe_id,
             $row->type,
             IACLStorage::explode($row->mr_groups),
-            IACLStorage::explode($row->mr_wiki_users)
+            IACLStorage::explode($row->mr_users)
         );
     }
 
@@ -317,7 +317,7 @@ class IntraACL_SQL_SD
      */
     public function deleteSD($SDID, $rightsOnly = false)
     {
-        w = wfGetDB(DB_MASTER);
+        $dbw = wfGetDB(DB_MASTER);
         wfDebug("-- deleteSD $SDID $rightsOnly\n");
 
         // Delete all inline rights that are defined by the SD (and the
@@ -339,12 +339,12 @@ class IntraACL_SQL_SD
             foreach ($sds as $sd)
             {
                 // retrieve the protected element and its type
-                $obj = w->selectRow('halo_acl_security_descriptors', 'pe_id, type',
+                $obj = $dbw->selectRow('halo_acl_security_descriptors', 'pe_id, type',
                     array('sd_id' => $sd), __METHOD__);
                 if (!$obj)
                     continue;
 
-                w->delete('halo_acl_pe_rights', array(
+                $dbw->delete('halo_acl_pe_rights', array(
                     'right_id' => $irs,
                     'pe_id' => $obj->pe_id,
                     'type' => $obj->type), __METHOD__);
@@ -353,8 +353,8 @@ class IntraACL_SQL_SD
 
         // Delete the SD from the hierarchy of rights in halo_acl_rights_hierarchy
         //if (!$rightsOnly)
-        //    w->delete('halo_acl_rights_hierarchy', array('child_id' => $SDID));
-        w->delete('halo_acl_rights_hierarchy', array('parent_right_id' => $SDID), __METHOD__);
+        //    $dbw->delete('halo_acl_rights_hierarchy', array('child_id' => $SDID));
+        $dbw->delete('halo_acl_rights_hierarchy', array('parent_right_id' => $SDID), __METHOD__);
 
         // Rematerialize the rights of the parents of $SDID
         foreach ($parents as $p)
@@ -368,7 +368,7 @@ class IntraACL_SQL_SD
 
         // Delete definition of SD from halo_acl_security_descriptors
         if (!$rightsOnly)
-            w->delete('halo_acl_security_descriptors', array('sd_id' => $SDID), __METHOD__);
+            $dbw->delete('halo_acl_security_descriptors', array('sd_id' => $SDID), __METHOD__);
     }
 
     /**
@@ -382,8 +382,8 @@ class IntraACL_SQL_SD
      *         <false> otherwise
      */
     public function sdExists($sdID) {
-        r = wfGetDB( DB_SLAVE );
-        $obj = r->selectRow('halo_acl_security_descriptors', 'sd_id',
+        $dbr = wfGetDB( DB_SLAVE );
+        $obj = $dbr->selectRow('halo_acl_security_descriptors', 'sd_id',
             array('sd_id' => $sdID), __METHOD__);
         return ($obj !== false);
     }
@@ -403,8 +403,8 @@ class IntraACL_SQL_SD
      */
     public function getSDForPE($peID, $peType)
     {
-        r = wfGetDB( DB_SLAVE );
-        $obj = r->selectRow('halo_acl_security_descriptors', 'sd_id',
+        $dbr = wfGetDB( DB_SLAVE );
+        $obj = $dbr->selectRow('halo_acl_security_descriptors', 'sd_id',
             array('pe_id' => $peID, 'type' => $peType), __METHOD__);
         return ($obj === false) ? false : $obj->sd_id;
     }
@@ -414,7 +414,7 @@ class IntraACL_SQL_SD
      */
     public function getSDs2($type = NULL, $prefix = NULL, $limit = NULL, $as_object = true)
     {
-        r = wfGetDB(DB_SLAVE);
+        $dbr = wfGetDB(DB_SLAVE);
         $options = array('ORDER BY' => 'page_title');
         if ($limit)
             $options['LIMIT'] = $limit;
@@ -422,9 +422,9 @@ class IntraACL_SQL_SD
         if ($type !== NULL)
             $where['type'] = $type;
         if (strlen($prefix))
-            $where[] = 'page_title LIKE '.r->addQuotes('%'.str_replace(' ', '_', $prefix).'%');
-        $res = r->select(array('halo_acl_security_descriptors', 'page'),
-            'sd_id, pe_id, type, mr_groups, mr_wiki_users, page_namespace, page_title',
+            $where[] = 'page_title LIKE '.$dbr->addQuotes('%'.str_replace(' ', '_', $prefix).'%');
+        $res = $dbr->select(array('halo_acl_security_descriptors', 'page'),
+            'sd_id, pe_id, type, mr_groups, mr_users, page_namespace, page_title',
             $where, __METHOD__,
             $options
         );
@@ -435,7 +435,7 @@ class IntraACL_SQL_SD
                 $rights[] = new HACLSecurityDescriptor(
                     $r->sd_id, $r->page_title, $r->pe_id,
                     $r->type, $r->mr_groups ? $r->mr_groups : array(),
-                    $r->mr_wiki_users ? $r->mr_wiki_users : array()
+                    $r->mr_users ? $r->mr_users : array()
                 );
             else
                 $rights[] = $r;
@@ -455,16 +455,16 @@ class IntraACL_SQL_SD
     public function getSDPages($types, $name, $offset, $limit, &$total)
     {
         global $haclgContLang;
-        r = wfGetDB(DB_SLAVE);
+        $dbr = wfGetDB(DB_SLAVE);
         $t = $types ? array_flip(IACLStorage::explode($types)) : NULL;
         $n = str_replace(' ', '_', $name);
         $where = array();
         foreach ($haclgContLang->getPetAliases() as $k => $v)
             if (!$t || array_key_exists($v, $t))
-                $where[] = 'CAST(page_title AS CHAR CHARACTER SET utf8) COLLATE utf8_unicode_ci LIKE '.r->addQuotes($k.'/'.$n.'%');
+                $where[] = 'CAST(page_title AS CHAR CHARACTER SET utf8) COLLATE utf8_unicode_ci LIKE '.$dbr->addQuotes($k.'/'.$n.'%');
         $where = 'page_namespace='.HACL_NS_ACL.' AND ('.implode(' OR ', $where).')';
         // Select SDs
-        $res = r->select('page', '*', $where, __METHOD__, array(
+        $res = $dbr->select('page', '*', $where, __METHOD__, array(
             'SQL_CALC_FOUND_ROWS',
             'ORDER BY' => 'page_title',
             'OFFSET' => $offset,
@@ -479,11 +479,11 @@ class IntraACL_SQL_SD
         if (!$rows)
             return $rows;
         // Select total page count
-        $res = r->query('SELECT FOUND_ROWS()', __METHOD__);
+        $res = $dbr->query('SELECT FOUND_ROWS()', __METHOD__);
         $total = $res->fetchRow();
         $total = $total[0];
         // Select single-inclusion information
-        $res = r->select(array('i' => 'halo_acl_rights_hierarchy', 'r' => 'halo_acl_rights', 'p' => 'page'),
+        $res = $dbr->select(array('i' => 'halo_acl_rights_hierarchy', 'r' => 'halo_acl_rights', 'p' => 'page'),
             'i.parent_right_id, p.*',
             array('r.origin_id IS NULL', 'i.parent_right_id' => array_keys($rows)),
             __METHOD__,
@@ -524,7 +524,7 @@ class IntraACL_SQL_SD
      */
     public function getEmbedded($peID, $sdID, $linkstable)
     {
-        r = wfGetDB(DB_SLAVE);
+        $dbr = wfGetDB(DB_SLAVE);
         if ($linkstable == 'imagelinks')
         {
             $linksjoin = "p1.page_title=il1.il_to AND p1.page_namespace=".NS_FILE;
@@ -538,12 +538,12 @@ class IntraACL_SQL_SD
         else
             die("Unknown \$linkstable='$linkstable' passed to ".__METHOD__);
         $linksjoin2 = str_replace('il1.', 'il2.', $linksjoin);
-        $il = r->tableName($linkstable);
-        $p  = r->tableName('page');
-        $sd = r->tableName('halo_acl_security_descriptors');
-        $r  = r->tableName('halo_acl_rights');
-        $rh = r->tableName('halo_acl_rights_hierarchy');
-        $rev = r->tableName('revision');
+        $il = $dbr->tableName($linkstable);
+        $p  = $dbr->tableName('page');
+        $sd = $dbr->tableName('halo_acl_security_descriptors');
+        $r  = $dbr->tableName('halo_acl_rights');
+        $rh = $dbr->tableName('halo_acl_rights_hierarchy');
+        $rev = $dbr->tableName('revision');
         $sql_is_single = $sdID ?
                 "(SELECT 1=SUM(CASE WHEN child_id=$sdID THEN 1 ELSE 2 END)
                   FROM $rh rh WHERE rh.parent_right_id=sd.sd_id)" : "0";
@@ -559,7 +559,7 @@ class IntraACL_SQL_SD
                 WHERE il1.$linksfield=$peID
                 GROUP BY p1.page_id
                 ORDER BY p1.page_namespace, p1.page_title";
-        $res = r->query($sql, __METHOD__);
+        $res = $dbr->query($sql, __METHOD__);
         $embedded = array();
         foreach ($res as $obj)
         {
@@ -587,12 +587,12 @@ class IntraACL_SQL_SD
         if (!$id)
             return array();
         // First retrieve IDs of categories which have corresponding page
-        r = wfGetDB(DB_SLAVE);
+        $dbr = wfGetDB(DB_SLAVE);
         $catids = array();
         $ids = array($id => true);
         while ($ids)
         {
-            $res = r->select(
+            $res = $dbr->select(
                 array('categorylinks', 'page'), 'page_id',
                 array(
                     'cl_from' => array_keys($ids),
@@ -611,7 +611,7 @@ class IntraACL_SQL_SD
         // Then retrieve their SDs if they exist
         if (!$catids)
             return array();
-        $res = r->select(
+        $res = $dbr->select(
             array('p' => 'page', 'halo_acl_security_descriptors'), 'p.*',
             array('page_id=sd_id', 'pe_id' => array_keys($catids), 'type' => HACLLanguage::PET_CATEGORY),
             __METHOD__

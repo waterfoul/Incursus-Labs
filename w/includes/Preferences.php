@@ -1,6 +1,6 @@
 <?php
 /**
- * Form to edit wiki_user perferences.
+ * Form to edit user perferences.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,11 +32,11 @@
  * the label it is to be given in the form, callbacks for validation and
  * 'filtering', and other pertinent information. Note that the 'default' field
  * is named for generic forms, and does not represent the preference's default
- * (which is stored in $wgDefaultwiki_userOptions), but the default for the form
- * field, which should be whatever the wiki_user has set for that preference. There
+ * (which is stored in $wgDefaultUserOptions), but the default for the form
+ * field, which should be whatever the user has set for that preference. There
  * is no need to override it unless you have some special storage logic (for
  * instance, those not presently stored as options, but which are best set from
- * the wiki_user preferences view).
+ * the user preferences view).
  *
  * Field types are implemented as subclasses of the generic HTMLFormField
  * object, and typically implement at least getInputHTML, which generates the
@@ -58,29 +58,29 @@ class Preferences {
 
 	/**
 	 * @throws MWException
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @return array|null
 	 */
-	static function getPreferences( $wiki_user, IContextSource $context ) {
+	static function getPreferences( $user, IContextSource $context ) {
 		if ( self::$defaultPreferences ) {
 			return self::$defaultPreferences;
 		}
 
 		$defaultPreferences = array();
 
-		self::profilePreferences( $wiki_user, $context, $defaultPreferences );
-		self::skinPreferences( $wiki_user, $context, $defaultPreferences );
-		self::filesPreferences( $wiki_user, $context, $defaultPreferences );
-		self::datetimePreferences( $wiki_user, $context, $defaultPreferences );
-		self::renderingPreferences( $wiki_user, $context, $defaultPreferences );
-		self::editingPreferences( $wiki_user, $context, $defaultPreferences );
-		self::rcPreferences( $wiki_user, $context, $defaultPreferences );
-		self::watchlistPreferences( $wiki_user, $context, $defaultPreferences );
-		self::searchPreferences( $wiki_user, $context, $defaultPreferences );
-		self::miscPreferences( $wiki_user, $context, $defaultPreferences );
+		self::profilePreferences( $user, $context, $defaultPreferences );
+		self::skinPreferences( $user, $context, $defaultPreferences );
+		self::filesPreferences( $user, $context, $defaultPreferences );
+		self::datetimePreferences( $user, $context, $defaultPreferences );
+		self::renderingPreferences( $user, $context, $defaultPreferences );
+		self::editingPreferences( $user, $context, $defaultPreferences );
+		self::rcPreferences( $user, $context, $defaultPreferences );
+		self::watchlistPreferences( $user, $context, $defaultPreferences );
+		self::searchPreferences( $user, $context, $defaultPreferences );
+		self::miscPreferences( $user, $context, $defaultPreferences );
 
-		wfRunHooks( 'GetPreferences', array( $wiki_user, &$defaultPreferences ) );
+		wfRunHooks( 'GetPreferences', array( $user, &$defaultPreferences ) );
 
 		## Remove preferences that wikis don't want to use
 		global $wgHiddenPrefs;
@@ -90,11 +90,11 @@ class Preferences {
 			}
 		}
 
-		## Prod in defaults from the wiki_user
+		## Prod in defaults from the user
 		foreach ( $defaultPreferences as $name => &$info ) {
-			$prefFromwiki_user = self::getOptionFromwiki_user( $name, $info, $wiki_user );
+			$prefFromUser = self::getOptionFromUser( $name, $info, $user );
 			$field = HTMLForm::loadInputFromParameters( $name, $info ); // For validation
-			$defaultOptions = wiki_user::getDefaultOptions();
+			$defaultOptions = User::getDefaultOptions();
 			$globalDefault = isset( $defaultOptions[$name] )
 				? $defaultOptions[$name]
 				: null;
@@ -103,10 +103,10 @@ class Preferences {
 			if ( isset( $info['default'] ) ) {
 				// Already set, no problem
 				continue;
-			} elseif ( !is_null( $prefFromwiki_user ) && // Make sure we're not just pulling nothing
-					$field->validate( $prefFromwiki_user, $wiki_user->getOptions() ) === true ) {
-				$info['default'] = $prefFromwiki_user;
-			} elseif ( $field->validate( $globalDefault, $wiki_user->getOptions() ) === true ) {
+			} elseif ( !is_null( $prefFromUser ) && // Make sure we're not just pulling nothing
+					$field->validate( $prefFromUser, $user->getOptions() ) === true ) {
+				$info['default'] = $prefFromUser;
+			} elseif ( $field->validate( $globalDefault, $user->getOptions() ) === true ) {
 				$info['default'] = $globalDefault;
 			} else {
 				throw new MWException( "Global default '$globalDefault' is invalid for field $name" );
@@ -119,15 +119,15 @@ class Preferences {
 	}
 
 	/**
-	 * Pull option from a wiki_user account. Handles stuff like array-type preferences.
+	 * Pull option from a user account. Handles stuff like array-type preferences.
 	 *
 	 * @param $name
 	 * @param $info
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @return array|String
 	 */
-	static function getOptionFromwiki_user( $name, $info, $wiki_user ) {
-		$val = $wiki_user->getOption( $name );
+	static function getOptionFromUser( $name, $info, $user ) {
+		$val = $user->getOption( $name );
 
 		// Handling for array-type preferences
 		if ( ( isset( $info['type'] ) && $info['type'] == 'multiselect' ) ||
@@ -137,7 +137,7 @@ class Preferences {
 			$val = array();
 
 			foreach ( $options as $value ) {
-				if ( $wiki_user->getOption( "$prefix$value" ) ) {
+				if ( $user->getOption( "$prefix$value" ) ) {
 					$val[] = $value;
 				}
 			}
@@ -147,59 +147,59 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @param $defaultPreferences
 	 * @return void
 	 */
-	static function profilePreferences( $wiki_user, IContextSource $context, &$defaultPreferences ) {
+	static function profilePreferences( $user, IContextSource $context, &$defaultPreferences ) {
 		global $wgAuth, $wgContLang, $wgParser, $wgCookieExpiration, $wgLanguageCode,
 			$wgDisableTitleConversion, $wgDisableLangConversion, $wgMaxSigChars,
-			$wgEnableEmail, $wgEmailConfirmToEdit, $wgEnablewiki_userEmail, $wgEmailAuthentication,
-			$wgEnotifWatchlist, $wgEnotifwiki_userTalk, $wgEnotifRevealEditorAddress;
+			$wgEnableEmail, $wgEmailConfirmToEdit, $wgEnableUserEmail, $wgEmailAuthentication,
+			$wgEnotifWatchlist, $wgEnotifUserTalk, $wgEnotifRevealEditorAddress;
 
-		## wiki_user info #####################################
+		## User info #####################################
 		// Information panel
-		$defaultPreferences['wiki_username'] = array(
+		$defaultPreferences['username'] = array(
 			'type' => 'info',
-			'label-message' => 'wiki_username',
-			'default' => $wiki_user->getName(),
+			'label-message' => 'username',
+			'default' => $user->getName(),
 			'section' => 'personal/info',
 		);
 
-		$defaultPreferences['wiki_userid'] = array(
+		$defaultPreferences['userid'] = array(
 			'type' => 'info',
 			'label-message' => 'uid',
-			'default' => $wiki_user->getId(),
+			'default' => $user->getId(),
 			'section' => 'personal/info',
 		);
 
-		# Get groups to which the wiki_user belongs
-		$wiki_userEffectiveGroups = $wiki_user->getEffectiveGroups();
-		$wiki_userGroups = $wiki_userMembers = array();
-		foreach ( $wiki_userEffectiveGroups as $ueg ) {
+		# Get groups to which the user belongs
+		$userEffectiveGroups = $user->getEffectiveGroups();
+		$userGroups = $userMembers = array();
+		foreach ( $userEffectiveGroups as $ueg ) {
 			if ( $ueg == '*' ) {
 				// Skip the default * group, seems useless here
 				continue;
 			}
-			$groupName  = wiki_user::getGroupName( $ueg );
-			$wiki_userGroups[] = wiki_user::makeGroupLinkHTML( $ueg, $groupName );
+			$groupName  = User::getGroupName( $ueg );
+			$userGroups[] = User::makeGroupLinkHTML( $ueg, $groupName );
 
-			$memberName = wiki_user::getGroupMember( $ueg, $wiki_user->getName() );
-			$wiki_userMembers[] = wiki_user::makeGroupLinkHTML( $ueg, $memberName );
+			$memberName = User::getGroupMember( $ueg, $user->getName() );
+			$userMembers[] = User::makeGroupLinkHTML( $ueg, $memberName );
 		}
-		asort( $wiki_userGroups );
-		asort( $wiki_userMembers );
+		asort( $userGroups );
+		asort( $userMembers );
 
 		$lang = $context->getLanguage();
 
-		$defaultPreferences['wiki_usergroups'] = array(
+		$defaultPreferences['usergroups'] = array(
 			'type' => 'info',
 			'label' => $context->msg( 'prefs-memberingroups' )->numParams(
-				count( $wiki_userGroups ) )->parse(),
+				count( $userGroups ) )->parse(),
 			'default' => $context->msg( 'prefs-memberingroups-type',
-				$lang->commaList( $wiki_userGroups ),
-				$lang->commaList( $wiki_userMembers )
+				$lang->commaList( $userGroups ),
+				$lang->commaList( $userMembers )
 			)->plain(),
 			'raw' => true,
 			'section' => 'personal/info',
@@ -208,21 +208,21 @@ class Preferences {
 		$defaultPreferences['editcount'] = array(
 			'type' => 'info',
 			'label-message' => 'prefs-edits',
-			'default' => $lang->formatNum( $wiki_user->getEditCount() ),
+			'default' => $lang->formatNum( $user->getEditCount() ),
 			'section' => 'personal/info',
 		);
 
-		if ( $wiki_user->getRegistration() ) {
-			$displaywiki_user = $context->getwiki_user();
-			$wiki_userRegistration = $wiki_user->getRegistration();
+		if ( $user->getRegistration() ) {
+			$displayUser = $context->getUser();
+			$userRegistration = $user->getRegistration();
 			$defaultPreferences['registrationdate'] = array(
 				'type' => 'info',
 				'label-message' => 'prefs-registration',
 				'default' => $context->msg(
 					'prefs-registration-date-time',
-					$lang->wiki_userTimeAndDate( $wiki_userRegistration, $displaywiki_user ),
-					$lang->wiki_userDate( $wiki_userRegistration, $displaywiki_user ),
-					$lang->wiki_userTime( $wiki_userRegistration, $displaywiki_user )
+					$lang->userTimeAndDate( $userRegistration, $displayUser ),
+					$lang->userDate( $userRegistration, $displayUser ),
+					$lang->userTime( $userRegistration, $displayUser )
 				)->parse(),
 				'section' => 'personal/info',
 			);
@@ -231,7 +231,7 @@ class Preferences {
 		// Actually changeable stuff
 		$defaultPreferences['realname'] = array(
 			'type' => $wgAuth->allowPropChange( 'realname' ) ? 'text' : 'info',
-			'default' => $wiki_user->getRealName(),
+			'default' => $user->getRealName(),
 			'section' => 'personal/info',
 			'label-message' => 'yourrealname',
 			'help-message' => 'prefs-help-realname',
@@ -327,7 +327,7 @@ class Preferences {
 		}
 
 		// show a preview of the old signature first
-		$oldsigWikiText = $wgParser->preSaveTransform( "~~~", $context->getTitle(), $wiki_user, ParserOptions::newFromContext( $context ) );
+		$oldsigWikiText = $wgParser->preSaveTransform( "~~~", $context->getTitle(), $user, ParserOptions::newFromContext( $context ) );
 		$oldsigHTML = $context->getOutput()->parseInline( $oldsigWikiText, true, true );
 		$defaultPreferences['oldsig'] = array(
 			'type' => 'info',
@@ -358,18 +358,18 @@ class Preferences {
 					? 'prefs-help-email-required'
 					: 'prefs-help-email' ;
 
-			if( $wgEnablewiki_userEmail ) {
-				// additional messages when wiki_users can send email to each other
+			if( $wgEnableUserEmail ) {
+				// additional messages when users can send email to each other
 				$helpMessages[] = 'prefs-help-email-others';
 			}
 
 			$link = Linker::link(
 				SpecialPage::getTitleFor( 'ChangeEmail' ),
-				$context->msg( $wiki_user->getEmail() ? 'prefs-changeemail' : 'prefs-setemail' )->escaped(),
+				$context->msg( $user->getEmail() ? 'prefs-changeemail' : 'prefs-setemail' )->escaped(),
 				array(),
 				array( 'returnto' => SpecialPage::getTitleFor( 'Preferences' ) ) );
 
-			$emailAddress = $wiki_user->getEmail() ? htmlspecialchars( $wiki_user->getEmail() ) : '';
+			$emailAddress = $user->getEmail() ? htmlspecialchars( $user->getEmail() ) : '';
 			if ( $wgAuth->allowPropChange( 'emailaddress' ) ) {
 				$emailAddress .= $emailAddress == '' ? $link : (
 					$context->msg( 'word-separator' )->plain()
@@ -392,16 +392,16 @@ class Preferences {
 
 			$emailauthenticationclass = 'mw-email-not-authenticated';
 			if ( $wgEmailAuthentication ) {
-				if ( $wiki_user->getEmail() ) {
-					if ( $wiki_user->getEmailAuthenticationTimestamp() ) {
+				if ( $user->getEmail() ) {
+					if ( $user->getEmailAuthenticationTimestamp() ) {
 						// date and time are separate parameters to facilitate localisation.
 						// $time is kept for backward compat reasons.
 						// 'emailauthenticated' is also used in SpecialConfirmemail.php
-						$displaywiki_user = $context->getwiki_user();
-						$emailTimestamp = $wiki_user->getEmailAuthenticationTimestamp();
-						$time = $lang->wiki_userTimeAndDate( $emailTimestamp, $displaywiki_user );
-						$d = $lang->wiki_userDate( $emailTimestamp, $displaywiki_user );
-						$t = $lang->wiki_userTime( $emailTimestamp, $displaywiki_user );
+						$displayUser = $context->getUser();
+						$emailTimestamp = $user->getEmailAuthenticationTimestamp();
+						$time = $lang->userTimeAndDate( $emailTimestamp, $displayUser );
+						$d = $lang->userDate( $emailTimestamp, $displayUser );
+						$t = $lang->userTime( $emailTimestamp, $displayUser );
 						$emailauthenticated = $context->msg( 'emailauthenticated',
 							$time, $d, $t )->parse() . '<br />';
 						$disableEmailPrefs = false;
@@ -433,7 +433,7 @@ class Preferences {
 			}
 			$defaultPreferences['emailaddress']['cssclass'] = $emailauthenticationclass;
 
-			if ( $wgEnablewiki_userEmail && $wiki_user->isAllowed( 'sendemail' ) ) {
+			if ( $wgEnableUserEmail && $user->isAllowed( 'sendemail' ) ) {
 				$defaultPreferences['disablemail'] = array(
 					'type' => 'toggle',
 					'invert' => true,
@@ -457,15 +457,15 @@ class Preferences {
 					'disabled' => $disableEmailPrefs,
 				);
 			}
-			if ( $wgEnotifwiki_userTalk ) {
-				$defaultPreferences['enotifwiki_usertalkpages'] = array(
+			if ( $wgEnotifUserTalk ) {
+				$defaultPreferences['enotifusertalkpages'] = array(
 					'type' => 'toggle',
 					'section' => 'personal/email',
-					'label-message' => 'tog-enotifwiki_usertalkpages',
+					'label-message' => 'tog-enotifusertalkpages',
 					'disabled' => $disableEmailPrefs,
 				);
 			}
-			if ( $wgEnotifwiki_userTalk || $wgEnotifWatchlist ) {
+			if ( $wgEnotifUserTalk || $wgEnotifWatchlist ) {
 				$defaultPreferences['enotifminoredits'] = array(
 					'type' => 'toggle',
 					'section' => 'personal/email',
@@ -486,35 +486,35 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @param $defaultPreferences
 	 * @return void
 	 */
-	static function skinPreferences( $wiki_user, IContextSource $context, &$defaultPreferences ) {
+	static function skinPreferences( $user, IContextSource $context, &$defaultPreferences ) {
 		## Skin #####################################
-		global $wgAllowwiki_userCss, $wgAllowwiki_userJs;
+		global $wgAllowUserCss, $wgAllowUserJs;
 
 		$defaultPreferences['skin'] = array(
 			'type' => 'radio',
-			'options' => self::generateSkinOptions( $wiki_user, $context ),
+			'options' => self::generateSkinOptions( $user, $context ),
 			'label' => '&#160;',
 			'section' => 'rendering/skin',
 		);
 
-		# Create links to wiki_user CSS/JS pages for all skins
+		# Create links to user CSS/JS pages for all skins
 		# This code is basically copied from generateSkinOptions().  It'd
 		# be nice to somehow merge this back in there to avoid redundancy.
-		if ( $wgAllowwiki_userCss || $wgAllowwiki_userJs ) {
+		if ( $wgAllowUserCss || $wgAllowUserJs ) {
 			$linkTools = array();
 
-			if ( $wgAllowwiki_userCss ) {
-				$cssPage = Title::makeTitleSafe( NS_USER, $wiki_user->getName() . '/common.css' );
+			if ( $wgAllowUserCss ) {
+				$cssPage = Title::makeTitleSafe( NS_USER, $user->getName() . '/common.css' );
 				$linkTools[] = Linker::link( $cssPage, $context->msg( 'prefs-custom-css' )->escaped() );
 			}
 
-			if ( $wgAllowwiki_userJs ) {
-				$jsPage = Title::makeTitleSafe( NS_USER, $wiki_user->getName() . '/common.js' );
+			if ( $wgAllowUserJs ) {
+				$jsPage = Title::makeTitleSafe( NS_USER, $user->getName() . '/common.js' );
 				$linkTools[] = Linker::link( $jsPage, $context->msg( 'prefs-custom-js' )->escaped() );
 			}
 
@@ -527,7 +527,7 @@ class Preferences {
 			);
 		}
 
-		$selectedSkin = $wiki_user->getOption( 'skin' );
+		$selectedSkin = $user->getOption( 'skin' );
 		if ( in_array( $selectedSkin, array( 'cologneblue', 'standard' ) ) ) {
 			$settings = array_flip( $context->getLanguage()->getQuickbarSettings() );
 
@@ -541,11 +541,11 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @param $defaultPreferences Array
 	 */
-	static function filesPreferences( $wiki_user, IContextSource $context, &$defaultPreferences ) {
+	static function filesPreferences( $user, IContextSource $context, &$defaultPreferences ) {
 		## Files #####################################
 		$defaultPreferences['imagesize'] = array(
 			'type' => 'select',
@@ -562,12 +562,12 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @param $defaultPreferences
 	 * @return void
 	 */
-	static function datetimePreferences( $wiki_user, IContextSource $context, &$defaultPreferences ) {
+	static function datetimePreferences( $user, IContextSource $context, &$defaultPreferences ) {
 		## Date and time #####################################
 		$dateOptions = self::getDateOptions( $context );
 		if ( $dateOptions ) {
@@ -604,7 +604,7 @@ class Preferences {
 		);
 
 		// Grab existing pref.
-		$tzOffset = $wiki_user->getOption( 'timecorrection' );
+		$tzOffset = $user->getOption( 'timecorrection' );
 		$tz = explode( '|', $tzOffset, 3 );
 
 		$tzOptions = self::getTimezoneOptions( $context );
@@ -617,9 +617,9 @@ class Preferences {
 			!in_array( $tzOffset, HTMLFormField::flattenOptions( $tzOptions ) ) )
 		{
 			# Timezone offset can vary with DST
-			$wiki_userTZ = timezone_open( $tz[2] );
-			if ( $wiki_userTZ !== false ) {
-				$minDiff = floor( timezone_offset_get( $wiki_userTZ, date_create( 'now' ) ) / 60 );
+			$userTZ = timezone_open( $tz[2] );
+			if ( $userTZ !== false ) {
+				$minDiff = floor( timezone_offset_get( $userTZ, date_create( 'now' ) ) / 60 );
 				$tzSetting = "ZoneInfo|$minDiff|{$tz[2]}";
 			}
 		}
@@ -635,14 +635,14 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @param $defaultPreferences Array
 	 */
-	static function renderingPreferences( $wiki_user, IContextSource $context, &$defaultPreferences ) {
+	static function renderingPreferences( $user, IContextSource $context, &$defaultPreferences ) {
 		## Page Rendering ##############################
-		global $wgAllowwiki_userCssPrefs;
-		if ( $wgAllowwiki_userCssPrefs ) {
+		global $wgAllowUserCssPrefs;
+		if ( $wgAllowUserCssPrefs ) {
 			$defaultPreferences['underline'] = array(
 				'type' => 'select',
 				'options' => array(
@@ -669,7 +669,7 @@ class Preferences {
 			'label' => $context->msg( 'stub-threshold' )->text(), // Raw HTML message. Yay?
 		);
 
-		if ( $wgAllowwiki_userCssPrefs ) {
+		if ( $wgAllowUserCssPrefs ) {
 			$defaultPreferences['showtoc'] = array(
 				'type' => 'toggle',
 				'section' => 'rendering/advancedrendering',
@@ -692,7 +692,7 @@ class Preferences {
 			'label-message' => 'tog-showjumplinks',
 		);
 
-		if ( $wgAllowwiki_userCssPrefs ) {
+		if ( $wgAllowUserCssPrefs ) {
 			$defaultPreferences['justify'] = array(
 				'type' => 'toggle',
 				'section' => 'rendering/advancedrendering',
@@ -708,12 +708,12 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @param $defaultPreferences Array
 	 */
-	static function editingPreferences( $wiki_user, IContextSource $context, &$defaultPreferences ) {
-		global $wgUseExternalEditor, $wgAllowwiki_userCssPrefs;
+	static function editingPreferences( $user, IContextSource $context, &$defaultPreferences ) {
+		global $wgUseExternalEditor, $wgAllowUserCssPrefs;
 
 		## Editing #####################################
 		$defaultPreferences['cols'] = array(
@@ -731,7 +731,7 @@ class Preferences {
 			'max' => 1000,
 		);
 
-		if ( $wgAllowwiki_userCssPrefs ) {
+		if ( $wgAllowUserCssPrefs ) {
 			$defaultPreferences['editfont'] = array(
 				'type' => 'select',
 				'section' => 'editing/advancedediting',
@@ -755,7 +755,7 @@ class Preferences {
 			'label-message' => 'tog-previewonfirst',
 		);
 
-		if ( $wgAllowwiki_userCssPrefs ) {
+		if ( $wgAllowUserCssPrefs ) {
 			$defaultPreferences['editsection'] = array(
 				'type' => 'toggle',
 				'section' => 'editing/advancedediting',
@@ -778,7 +778,7 @@ class Preferences {
 			'label-message' => 'tog-showtoolbar',
 		);
 
-		if ( $wiki_user->isAllowed( 'minoredit' ) ) {
+		if ( $user->isAllowed( 'minoredit' ) ) {
 			$defaultPreferences['minordefault'] = array(
 				'type' => 'toggle',
 				'section' => 'editing/advancedediting',
@@ -814,12 +814,12 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @param $defaultPreferences Array
 	 */
-	static function rcPreferences( $wiki_user, IContextSource $context, &$defaultPreferences ) {
-		global $wgRCMaxAge, $wgRCShowWatchingwiki_users;
+	static function rcPreferences( $user, IContextSource $context, &$defaultPreferences ) {
+		global $wgRCMaxAge, $wgRCShowWatchingUsers;
 
 		## RecentChanges #####################################
 		$defaultPreferences['rcdays'] = array(
@@ -848,7 +848,7 @@ class Preferences {
 			'section' => 'rc/advancedrc',
 		);
 
-		if ( $wiki_user->useRCPatrol() ) {
+		if ( $user->useRCPatrol() ) {
 			$defaultPreferences['hidepatrolled'] = array(
 				'type' => 'toggle',
 				'section' => 'rc/advancedrc',
@@ -861,7 +861,7 @@ class Preferences {
 			);
 		}
 
-		if ( $wgRCShowWatchingwiki_users ) {
+		if ( $wgRCShowWatchingUsers ) {
 			$defaultPreferences['shownumberswatching'] = array(
 				'type' => 'toggle',
 				'section' => 'rc/advancedrc',
@@ -871,11 +871,11 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @param $defaultPreferences
 	 */
-	static function watchlistPreferences( $wiki_user, IContextSource $context, &$defaultPreferences ) {
+	static function watchlistPreferences( $user, IContextSource $context, &$defaultPreferences ) {
 		global $wgUseRCPatrol, $wgEnableAPI, $wgRCMaxAge;
 
 		$watchlistdaysMax = ceil( $wgRCMaxAge / ( 3600 * 24 ) );
@@ -957,12 +957,12 @@ class Preferences {
 		);
 
 		// Kinda hacky
-		if ( $wiki_user->isAllowed( 'createpage' ) || $wiki_user->isAllowed( 'createtalk' ) ) {
+		if ( $user->isAllowed( 'createpage' ) || $user->isAllowed( 'createtalk' ) ) {
 			$watchTypes['read'] = 'watchcreations';
 		}
 
 		foreach ( $watchTypes as $action => $pref ) {
-			if ( $wiki_user->isAllowed( $action ) ) {
+			if ( $user->isAllowed( $action ) ) {
 				$defaultPreferences[$pref] = array(
 					'type' => 'toggle',
 					'section' => 'watchlist/advancedwatchlist',
@@ -973,11 +973,11 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @param $defaultPreferences Array
 	 */
-	static function searchPreferences( $wiki_user, IContextSource $context, &$defaultPreferences ) {
+	static function searchPreferences( $user, IContextSource $context, &$defaultPreferences ) {
 		global $wgContLang, $wgVectorUseSimpleSearch;
 
 		## Search #####################################
@@ -1036,11 +1036,11 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @param $defaultPreferences Array
 	 */
-	static function miscPreferences( $wiki_user, IContextSource $context, &$defaultPreferences ) {
+	static function miscPreferences( $user, IContextSource $context, &$defaultPreferences ) {
 		global $wgContLang;
 
 		## Misc #####################################
@@ -1055,8 +1055,8 @@ class Preferences {
 			'label-message' => 'tog-norollbackdiff',
 		);
 
-		// Stuff from Language::getExtrawiki_userToggles()
-		$toggles = $wgContLang->getExtrawiki_userToggles();
+		// Stuff from Language::getExtraUserToggles()
+		$toggles = $wgContLang->getExtraUserToggles();
 
 		foreach ( $toggles as $toggle ) {
 			$defaultPreferences[$toggle] = array(
@@ -1068,12 +1068,12 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user The wiki_user object
+	 * @param $user User The User object
 	 * @param $context IContextSource
 	 * @return Array: text/links to display as key; $skinkey as value
 	 */
-	static function generateSkinOptions( $wiki_user, IContextSource $context ) {
-		global $wgDefaultSkin, $wgAllowwiki_userCss, $wgAllowwiki_userJs;
+	static function generateSkinOptions( $user, IContextSource $context ) {
+		global $wgDefaultSkin, $wgAllowUserCss, $wgAllowUserJs;
 		$ret = array();
 
 		$mptitle = Title::newMainPage();
@@ -1105,14 +1105,14 @@ class Preferences {
 			$mplink = htmlspecialchars( $mptitle->getLocalURL( "useskin=$skinkey" ) );
 			$linkTools[] = "<a target='_blank' href=\"$mplink\">$previewtext</a>";
 
-			# Create links to wiki_user CSS/JS pages
-			if ( $wgAllowwiki_userCss ) {
-				$cssPage = Title::makeTitleSafe( NS_USER, $wiki_user->getName() . '/' . $skinkey . '.css' );
+			# Create links to user CSS/JS pages
+			if ( $wgAllowUserCss ) {
+				$cssPage = Title::makeTitleSafe( NS_USER, $user->getName() . '/' . $skinkey . '.css' );
 				$linkTools[] = Linker::link( $cssPage, $context->msg( 'prefs-custom-css' )->escaped() );
 			}
 
-			if ( $wgAllowwiki_userJs ) {
-				$jsPage = Title::makeTitleSafe( NS_USER, $wiki_user->getName() . '/' . $skinkey . '.js' );
+			if ( $wgAllowUserJs ) {
+				$jsPage = Title::makeTitleSafe( NS_USER, $user->getName() . '/' . $skinkey . '.js' );
 				$linkTools[] = Linker::link( $jsPage, $context->msg( 'prefs-custom-js' )->escaped() );
 			}
 
@@ -1139,10 +1139,10 @@ class Preferences {
 										// Bug 19237
 			}
 
-			// KLUGE: site default might not be valid for wiki_user language
-			global $wgDefaultwiki_userOptions;
-			if ( !in_array( $wgDefaultwiki_userOptions['date'], $dateopts ) ) {
-				$wgDefaultwiki_userOptions['date'] = 'default';
+			// KLUGE: site default might not be valid for user language
+			global $wgDefaultUserOptions;
+			if ( !in_array( $wgDefaultUserOptions['date'], $dateopts ) ) {
+				$wgDefaultUserOptions['date'] = 'default';
 			}
 
 			$epoch = wfTimestampNow();
@@ -1233,14 +1233,14 @@ class Preferences {
 	}
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @param $context IContextSource
 	 * @param $formClass string
 	 * @param $remove Array: array of items to remove
 	 * @return HtmlForm
 	 */
-	static function getFormObject( $wiki_user, IContextSource $context, $formClass = 'PreferencesForm', array $remove = array() ) {
-		$formDescriptor = Preferences::getPreferences( $wiki_user, $context );
+	static function getFormObject( $user, IContextSource $context, $formClass = 'PreferencesForm', array $remove = array() ) {
+		$formDescriptor = Preferences::getPreferences( $user, $context );
 		if ( count( $remove ) ) {
 			$removeKeys = array_flip( $remove );
 			$formDescriptor = array_diff_key( $formDescriptor, $removeKeys );
@@ -1258,7 +1258,7 @@ class Preferences {
 		 */
 		$htmlForm = new $formClass( $formDescriptor, $context, 'prefs' );
 
-		$htmlForm->setModifiedwiki_user( $wiki_user );
+		$htmlForm->setModifiedUser( $user );
 		$htmlForm->setId( 'mw-prefs-form' );
 		$htmlForm->setSubmitText( $context->msg( 'saveprefs' )->text() );
 		# Used message keys: 'accesskey-preferences-save', 'tooltip-preferences-save'
@@ -1315,7 +1315,7 @@ class Preferences {
 
 				# timezone_identifiers_list() returns a number of
 				# backwards-compatibility entries. This filters them out of the
-				# list presented to the wiki_user.
+				# list presented to the user.
 				if ( count( $z ) != 2 || !array_key_exists( $z[0], $tzRegions ) ) {
 					continue;
 				}
@@ -1382,14 +1382,14 @@ class Preferences {
 	static function tryFormSubmit( $formData, $form, $entryPoint = 'internal' ) {
 		global $wgHiddenPrefs;
 
-		$wiki_user = $form->getModifiedwiki_user();
+		$user = $form->getModifiedUser();
 		$result = true;
 
 		// Filter input
 		foreach ( array_keys( $formData ) as $name ) {
 			if ( isset( self::$saveFilters[$name] ) ) {
 				$formData[$name] =
-					call_wiki_user_func( self::$saveFilters[$name], $formData[$name], $formData );
+					call_user_func( self::$saveFilters[$name], $formData[$name], $formData );
 			}
 		}
 
@@ -1402,32 +1402,32 @@ class Preferences {
 		// Fortunately, the realname field is MUCH simpler
 		if ( !in_array( 'realname', $wgHiddenPrefs ) ) {
 			$realName = $formData['realname'];
-			$wiki_user->setRealName( $realName );
+			$user->setRealName( $realName );
 		}
 
 		foreach ( $saveBlacklist as $b ) {
 			unset( $formData[$b] );
 		}
 
-		# If wiki_users have saved a value for a preference which has subsequently been disabled
+		# If users have saved a value for a preference which has subsequently been disabled
 		# via $wgHiddenPrefs, we don't want to destroy that setting in case the preference
 		# is subsequently re-enabled
 		# TODO: maintenance script to actually delete these
 		foreach( $wgHiddenPrefs as $pref ){
-			# If the wiki_user has not set a non-default value here, the default will be returned
+			# If the user has not set a non-default value here, the default will be returned
 			# and subsequently discarded
-			$formData[$pref] = $wiki_user->getOption( $pref, null, true );
+			$formData[$pref] = $user->getOption( $pref, null, true );
 		}
 
 		//  Keeps old preferences from interfering due to back-compat
 		//  code, etc.
-		$wiki_user->resetOptions();
+		$user->resetOptions();
 
 		foreach ( $formData as $key => $value ) {
-			$wiki_user->setOption( $key, $value );
+			$user->setOption( $key, $value );
 		}
 
-		$wiki_user->saveSettings();
+		$user->saveSettings();
 
 		return $result;
 	}
@@ -1458,19 +1458,19 @@ class Preferences {
 	}
 
 	/**
-	 * Try to set a wiki_user's email address.
+	 * Try to set a user's email address.
 	 * This does *not* try to validate the address.
 	 * Caller is responsible for checking $wgAuth.
 	 *
-	 * @deprecated in 1.20; use wiki_user::setEmailWithConfirmation() instead.
-	 * @param $wiki_user wiki_user
+	 * @deprecated in 1.20; use User::setEmailWithConfirmation() instead.
+	 * @param $user User
 	 * @param $newaddr string New email address
 	 * @return Array (true on success or Status on failure, info string)
 	 */
-	public static function trySetwiki_userEmail( wiki_user $wiki_user, $newaddr ) {
+	public static function trySetUserEmail( User $user, $newaddr ) {
 		wfDeprecated( __METHOD__, '1.20' );
 
-		$result = $wiki_user->setEmailWithConfirmation( $newaddr );
+		$result = $user->setEmailWithConfirmation( $newaddr );
 		if ( $result->isGood() ) {
 			return array( true, $result->value );
 		} else {
@@ -1480,10 +1480,10 @@ class Preferences {
 
 	/**
 	 * @deprecated in 1.19; will be removed in 1.20.
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @return array
 	 */
-	public static function loadOldSearchNs( $wiki_user ) {
+	public static function loadOldSearchNs( $user ) {
 		wfDeprecated( __METHOD__, '1.19' );
 
 		$searchableNamespaces = SearchEngine::searchableNamespaces();
@@ -1491,7 +1491,7 @@ class Preferences {
 		$arr = array();
 
 		foreach ( $searchableNamespaces as $ns => $name ) {
-			if ( $wiki_user->getOption( 'searchNs' . $ns ) ) {
+			if ( $user->getOption( 'searchNs' . $ns ) ) {
 				$arr[] = $ns;
 			}
 		}
@@ -1505,23 +1505,23 @@ class PreferencesForm extends HTMLForm {
 	// Override default value from HTMLForm
 	protected $mSubSectionBeforeFields = false;
 
-	private $modifiedwiki_user;
+	private $modifiedUser;
 
 	/**
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 */
-	public function setModifiedwiki_user( $wiki_user ) {
-		$this->modifiedwiki_user = $wiki_user;
+	public function setModifiedUser( $user ) {
+		$this->modifiedUser = $user;
 	}
 
 	/**
-	 * @return wiki_user
+	 * @return User
 	 */
-	public function getModifiedwiki_user() {
-		if ( $this->modifiedwiki_user === null ) {
-			return $this->getwiki_user();
+	public function getModifiedUser() {
+		if ( $this->modifiedUser === null ) {
+			return $this->getUser();
 		} else {
-			return $this->modifiedwiki_user;
+			return $this->modifiedUser;
 		}
 	}
 

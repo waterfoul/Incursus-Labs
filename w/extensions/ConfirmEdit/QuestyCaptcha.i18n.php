@@ -683,7 +683,7 @@ Donn Desh aan de [[{{MediaWiki:Grouppage-sysop}}|Köbeße vum Wiki]] wende,
 wann et Der trozdämm en de Fööß kütt, un De Dinge aanshtändejje Beijdraach
 nit en et Wiki kriß!
 
-Dä „Retuur“-Lengk udder -Knopp vun Dingem Brawiki_user brängk Desch wider op
+Dä „Retuur“-Lengk udder -Knopp vun Dingem Brauser brängk Desch wider op
 di Sigg zom Ändere, woh De jraad wohß.',
 );
 

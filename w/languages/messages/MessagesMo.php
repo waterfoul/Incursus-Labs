@@ -108,7 +108,7 @@ $messages = array(
 'jumptonavigation' => 'навигацие',
 'jumptosearch' => 'кэутаре',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Деспре {{SITENAME}}',
 'aboutpage' => 'Project:Деспре',
 'copyright' => 'Концинутул есте диспонибил суб $1.',
@@ -144,7 +144,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Паӂинэ',
-'nstab-wiki_user' => 'Паӂина утилизаторулуй',
+'nstab-user' => 'Паӂина утилизаторулуй',
 'nstab-special' => 'Сервичий',
 'nstab-project' => 'Паӂина проектулуй',
 'nstab-image' => 'Фишиер',
@@ -157,16 +157,16 @@ $messages = array(
 Ын мод нормал фаптул есте кауза де урмэриря уней диф неактуализатэ сау а уней легэтурь дин историк спре о паӂинэ каре а фост штярсэ.
 
 Дакэ ну ачеста е мотивул, с-ар путя сэ фи гэсит ун буг ын програм.
-Те рог анунцэ ачест аспект унуй [[Special:Listwiki_users/sysop|администратор]], индикынду-ь адреса УРЛ.',
+Те рог анунцэ ачест аспект унуй [[Special:ListUsers/sysop|администратор]], индикынду-ь адреса УРЛ.',
 'viewsource' => 'Везь сурса',
 
 # Login and logout pages
 'yourname' => 'Нуме де утилизатор:',
 'yourpassword' => 'Паролэ:',
 'nav-login-createaccount' => 'Креязэ конт / Аутентификаре',
-'wiki_userlogin' => 'Креязэ конт / Аутентификаре',
+'userlogin' => 'Креязэ конт / Аутентификаре',
 'logout' => 'Ынкиде сесиуня',
-'wiki_userlogout' => 'Ынкиде сесиуня',
+'userlogout' => 'Ынкиде сесиуня',
 'nologinlink' => 'Креязэ конт',
 
 # Edit page toolbar
@@ -274,7 +274,7 @@ $messages = array(
 
 'grouppage-sysop' => '{{ns:project}}:Администраторь',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Журнал дрептурь де утилизатор',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -323,7 +323,7 @@ $messages = array(
 'filehist-datetime' => 'Дата/Ора',
 'filehist-thumb' => 'Миниатурэ',
 'filehist-thumbtext' => 'Миниатурэ пентру версиуня дин $1',
-'filehist-wiki_user' => 'Утилизатор',
+'filehist-user' => 'Утилизатор',
 'filehist-dimensions' => 'Дименсиунь',
 'filehist-comment' => 'Коментариу',
 'imagelinks' => 'Легэтурь',
@@ -363,14 +363,14 @@ $messages = array(
 # Special:LinkSearch
 'linksearch' => 'Легэтурь екстерне',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Журнал утилизаторь ной',
+# Special:Log/newusers
+'newuserlogpage' => 'Журнал утилизаторь ной',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(листэ де мембрь)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Тримите прин поштэ електроникэ ун месаж ачестуй утилизатор',
+# E-mail user
+'emailuser' => 'Тримите прин поштэ електроникэ ун месаж ачестуй утилизатор',
 
 # Watchlist
 'watchlist' => 'Паӂинь привите',
@@ -440,7 +440,7 @@ $messages = array(
 'sp-contributions-blocklog' => 'журнал блокэрь',
 'sp-contributions-talk' => 'Дискуций',
 'sp-contributions-search' => 'Каутэ контрибуций',
-'sp-contributions-wiki_username' => 'Адресэ IP сау нуме де утилизатор:',
+'sp-contributions-username' => 'Адресэ IP сау нуме де утилизатор:',
 'sp-contributions-submit' => 'Каутэ',
 
 # What links here
@@ -485,7 +485,7 @@ $messages = array(
 'thumbnail-more' => 'Екстинде',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Паӂина та де утилизатор',
+'tooltip-pt-userpage' => 'Паӂина та де утилизатор',
 'tooltip-pt-mytalk' => 'Паӂина та де дискуций',
 'tooltip-pt-preferences' => 'Преферинцеле меле',
 'tooltip-pt-watchlist' => 'Листа паӂинилор пе каре ле мониторизезь',
@@ -518,13 +518,13 @@ $messages = array(
 'tooltip-feed-rss' => 'Агрегат RSS пентру ачастэ паӂинэ',
 'tooltip-feed-atom' => 'Агрегат Atom пентру ачастэ паӂинэ',
 'tooltip-t-contributions' => 'Везь листа де контрибуций але ачестуй утилизатор',
-'tooltip-t-emailwiki_user' => 'Тримите прин поштэ електроникэ ун месаж ачестуй утилизатор',
+'tooltip-t-emailuser' => 'Тримите прин поштэ електроникэ ун месаж ачестуй утилизатор',
 'tooltip-t-upload' => 'Тримите имаӂинь сау фишиере медия',
 'tooltip-t-specialpages' => 'Листа тутурор паӂинилор де сервичиу',
 'tooltip-t-print' => 'Версиуня де типэрит а ачестей паӂинь',
 'tooltip-t-permalink' => 'Легэтура перманентэ кэтре ачастэ версиуне а паӂиний',
 'tooltip-ca-nstab-main' => 'Везь паӂина де концинут',
-'tooltip-ca-nstab-wiki_user' => 'Везь паӂина де утилизатор',
+'tooltip-ca-nstab-user' => 'Везь паӂина де утилизатор',
 'tooltip-ca-nstab-special' => 'Ачаста есте о паӂинэ спечиалэ, ну о поць модифика директ.',
 'tooltip-ca-nstab-project' => 'Везь паӂина проектулуй',
 'tooltip-ca-nstab-image' => 'Везь паӂина фишиерулуй',

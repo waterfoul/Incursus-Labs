@@ -43,7 +43,7 @@ abstract class DatabaseInstaller {
 	 *
 	 * @var DatabaseBase
 	 */
-	public  = null;
+	public $db = null;
 
 	/**
 	 * Internal variables for installation.
@@ -120,7 +120,7 @@ abstract class DatabaseInstaller {
 	}
 
 	/**
-	 * Open a connection to the database using the administrative wiki_user/password
+	 * Open a connection to the database using the administrative user/password
 	 * currently defined in the session, without any caching. Returns a status
 	 * object. On success, the status object will contain a Database object in
 	 * its value member.
@@ -138,7 +138,7 @@ abstract class DatabaseInstaller {
 	public abstract function setupDatabase();
 
 	/**
-	 * Connect to the database using the administrative wiki_user/password currently
+	 * Connect to the database using the administrative user/password currently
 	 * defined in the session. Returns a status object. On success, the status
 	 * object will contain a Database object in its value member.
 	 *
@@ -198,7 +198,7 @@ abstract class DatabaseInstaller {
 	}
 
 	/**
-	 * Create the tables for each extension the wiki_user enabled
+	 * Create the tables for each extension the user enabled
 	 * @return Status
 	 */
 	public function createExtensionTables() {
@@ -502,36 +502,36 @@ abstract class DatabaseInstaller {
 	}
 
 	/**
-	 * Get a standard install-wiki_user fieldset.
+	 * Get a standard install-user fieldset.
 	 *
 	 * @return String
 	 */
-	public function getInstallwiki_userBox() {
+	public function getInstallUserBox() {
 		return
 			Html::openElement( 'fieldset' ) .
 			Html::element( 'legend', array(), wfMessage( 'config-db-install-account' )->text() ) .
-			$this->getTextBox( '_Installwiki_user', 'config-db-wiki_username', array( 'dir' => 'ltr' ), $this->parent->getHelpBox( 'config-db-install-wiki_username' ) ) .
+			$this->getTextBox( '_InstallUser', 'config-db-username', array( 'dir' => 'ltr' ), $this->parent->getHelpBox( 'config-db-install-username' ) ) .
 			$this->getPasswordBox( '_InstallPassword', 'config-db-password', array( 'dir' => 'ltr' ), $this->parent->getHelpBox( 'config-db-install-password' ) ) .
 			Html::closeElement( 'fieldset' );
 	}
 
 	/**
-	 * Submit a standard install wiki_user fieldset.
+	 * Submit a standard install user fieldset.
 	 * @return Status
 	 */
-	public function submitInstallwiki_userBox() {
-		$this->setVarsFromRequest( array( '_Installwiki_user', '_InstallPassword' ) );
+	public function submitInstallUserBox() {
+		$this->setVarsFromRequest( array( '_InstallUser', '_InstallPassword' ) );
 		return Status::newGood();
 	}
 
 	/**
-	 * Get a standard web-wiki_user fieldset
+	 * Get a standard web-user fieldset
 	 * @param $noCreateMsg String: Message to display instead of the creation checkbox.
 	 *   Set this to false to show a creation checkbox.
 	 *
 	 * @return String
 	 */
-	public function getWebwiki_userBox( $noCreateMsg = false ) {
+	public function getWebUserBox( $noCreateMsg = false ) {
 		$wrapperStyle = $this->getVar( '_SameAccount' ) ? 'display: none' : '';
 		$s = Html::openElement( 'fieldset' ) .
 			Html::element( 'legend', array(), wfMessage( 'config-db-web-account' )->text() ) .
@@ -540,7 +540,7 @@ abstract class DatabaseInstaller {
 				array( 'class' => 'hideShowRadio', 'rel' => 'dbOtherAccount' )
 			) .
 			Html::openElement( 'div', array( 'id' => 'dbOtherAccount', 'style' => $wrapperStyle ) ) .
-			$this->getTextBox( 'wgDBwiki_user', 'config-db-wiki_username' ) .
+			$this->getTextBox( 'wgDBuser', 'config-db-username' ) .
 			$this->getPasswordBox( 'wgDBpassword', 'config-db-password' ) .
 			$this->parent->getHelpBox( 'config-db-web-help' );
 		if ( $noCreateMsg ) {
@@ -553,22 +553,22 @@ abstract class DatabaseInstaller {
 	}
 
 	/**
-	 * Submit the form from getWebwiki_userBox().
+	 * Submit the form from getWebUserBox().
 	 *
 	 * @return Status
 	 */
-	public function submitWebwiki_userBox() {
+	public function submitWebUserBox() {
 		$this->setVarsFromRequest(
-			array( 'wgDBwiki_user', 'wgDBpassword', '_SameAccount', '_CreateDBAccount' )
+			array( 'wgDBuser', 'wgDBpassword', '_SameAccount', '_CreateDBAccount' )
 		);
 
 		if ( $this->getVar( '_SameAccount' ) ) {
-			$this->setVar( 'wgDBwiki_user', $this->getVar( '_Installwiki_user' ) );
+			$this->setVar( 'wgDBuser', $this->getVar( '_InstallUser' ) );
 			$this->setVar( 'wgDBpassword', $this->getVar( '_InstallPassword' ) );
 		}
 
 		if( $this->getVar( '_CreateDBAccount' ) && strval( $this->getVar( 'wgDBpassword' ) ) == '' ) {
-			return Status::newFatal( 'config-db-password-empty', $this->getVar( 'wgDBwiki_user' ) );
+			return Status::newFatal( 'config-db-password-empty', $this->getVar( 'wgDBuser' ) );
 		}
 
 		return Status::newGood();

@@ -15,7 +15,7 @@
 $fallback = 'da';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Understreg henvesnenger',
 'tog-justify' => 'Ves ertikler ve lege margener',
 'tog-hideminor' => "Skjul mendre ændrenger i'n liste åver seneste ændrenger",
@@ -37,7 +37,7 @@ $messages = array(
 'tog-previewonfirst' => 'Ves førhåndsvesnenge når du stårtst ve at redigære',
 'tog-nocache' => 'Slå caching åf sider frå',
 'tog-enotifwatchlistpages' => 'Send mig en e-mail ve sideændrenger',
-'tog-enotifwiki_usertalkpages' => 'Send mig en e-mail når miin brugerdiskusjeside ændres',
+'tog-enotifusertalkpages' => 'Send mig en e-mail når miin brugerdiskusjeside ændres',
 'tog-enotifminoredits' => 'Send mig også en e-mail ve mendre ændrenger åf åvervågede sider',
 'tog-enotifrevealaddr' => "Ves miin e-mail-adresse i mails ve besked ændrenger'm",
 'tog-shownumberswatching' => 'Ves åntal brugere, der åvervåger',
@@ -178,7 +178,7 @@ $messages = array(
 'talk' => 'Diskusje',
 'views' => 'Vesnenger',
 'toolbox' => "Værktø'r",
-'wiki_userpage' => "Se'n brugerside",
+'userpage' => "Se'n brugerside",
 'projectpage' => "Se'n projektside",
 'imagepage' => "Se'n billetside",
 'mediawikipage' => 'Vese endholtsside',
@@ -196,7 +196,7 @@ $messages = array(
 'jumptonavigation' => 'navigasje',
 'jumptosearch' => 'Søĝnenge',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => "{{SITENAME}}'m",
 'aboutpage' => 'Project:Åm',
 'copyright' => 'Endholtet er udgævet under $1.',
@@ -250,7 +250,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'ertikel',
-'nstab-wiki_user' => 'brugerside',
+'nstab-user' => 'brugerside',
 'nstab-media' => 'medie',
 'nstab-special' => 'sonst',
 'nstab-project' => 'åm',
@@ -311,9 +311,9 @@ Førespørgsel: $2',
 'login' => 'Loĝ på',
 'nav-login-createaccount' => 'Åpret æ konto æller loĝ på',
 'loginprompt' => 'Du skal have cookies slået til før at kunne loĝge på {{SITENAME}}.',
-'wiki_userlogin' => 'Åpret æ konto æller loĝ på',
+'userlogin' => 'Åpret æ konto æller loĝ på',
 'logout' => 'Loĝ åf',
-'wiki_userlogout' => 'Loĝ åf',
+'userlogout' => 'Loĝ åf',
 'nologin' => "Du har engen brugerkonto? '''$1'''.",
 'nologinlink' => 'Åpret ny brugerkonto',
 'createaccount' => 'Åpret en ny konto',
@@ -321,9 +321,9 @@ Førespørgsel: $2',
 'gotaccountlink' => 'Loĝ på',
 'loginsuccesstitle' => 'Du er nu loĝget på',
 'loginsuccess' => 'Du er nu loĝget på {{SITENAME}} søm "$1".',
-'nosuchwiki_user' => 'Der er ig\'n bruger ve navnet "$1". Kontrollér æ stavemåde ig\'n, æller brug æ formulår herunder til at åprette en ny brugerkonto.',
-'nosuchwiki_usershort' => 'Der er ig\'n bruger ve navn "$1". Tjek din stavnenge.',
-'nowiki_userspecified' => 'Angæv venlegst et brugernavn.',
+'nosuchuser' => 'Der er ig\'n bruger ve navnet "$1". Kontrollér æ stavemåde ig\'n, æller brug æ formulår herunder til at åprette en ny brugerkonto.',
+'nosuchusershort' => 'Der er ig\'n bruger ve navn "$1". Tjek din stavnenge.',
+'nouserspecified' => 'Angæv venlegst et brugernavn.',
 'wrongpassword' => "Den endtastede adgangskode var førkert. Prøv ig'n.",
 'wrongpasswordempty' => "Du glemte at endtaste password. Prøv ig'n.",
 'passwordtooshort' => 'Dit kodeort er før kårt. Det skal være mendst $1 tegn langt.',
@@ -404,7 +404,7 @@ Du lover os hermed, at du selv '''har skrevet skrevselenger''', at skrevselenger
 'templatesusedpreview' => 'Følgende skablåner bruges åf denne ertikelførhåndsvesnenge:',
 'template-protected' => '(skrevebeskyttet)',
 'template-semiprotected' => '(skrevebeskyttet før ekke ånmeldte og nye brugere)',
-'nocreatetext' => "Æ'n åpdiin har begrænset åprettelse åf nye sider. Bestående sider ken ændres æller [[Special:wiki_userLogin|loĝge på]].",
+'nocreatetext' => "Æ'n åpdiin har begrænset åprettelse åf nye sider. Bestående sider ken ændres æller [[Special:UserLogin|loĝge på]].",
 'recreate-moveddeleted-warn' => "'''Advarsel: Du er ve at genskabe en tidligere slettet side.'''
 
 Åvervej det'm er passende at genåprette'n side. De slettede hersenenger før
@@ -455,7 +455,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 
 'grouppage-sysop' => '{{ns:project}}:Administråtorer',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Rettigheds-logbåĝ',
 
 # Recent changes
@@ -503,7 +503,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'filehist-help' => "Klik på'n dato/tid før at se den hersenenge åf gøret.",
 'filehist-current' => 'nuværende',
 'filehist-datetime' => 'Dato/tid',
-'filehist-wiki_user' => 'Bruger',
+'filehist-user' => 'Bruger',
 'filehist-dimensions' => 'Treflåksjener',
 'filehist-filesize' => 'Gøretstørrelse',
 'filehist-comment' => 'Biskrevselenge',
@@ -565,7 +565,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'longpages' => 'Långe ertikler',
 'deadendpages' => 'Blendgydesider',
 'protectedpages' => 'Skrevebeskyttede sider',
-'listwiki_users' => 'Brugerliste',
+'listusers' => 'Brugerliste',
 'newpages' => 'Nyeste ertikler',
 'ancientpages' => 'Ældste ertikler',
 'move' => 'Flyt',
@@ -575,7 +575,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'booksources' => 'Boĝkelder',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Bruger:',
+'specialloguserlabel' => 'Bruger:',
 'speciallogtitlelabel' => 'Skrevselenge:',
 'log' => 'Loglister',
 'all-logs-page' => 'Åle loglister',
@@ -606,12 +606,12 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'linksearch-line' => '$2 linker til $1',
 'linksearch-error' => "Wildkårter må ken benyttes i'n stårt åf håstnavnet.",
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Brugeråprettelseslog',
-'newwiki_userlogpagetext' => "Dett'er en log åver de senest åprettede brugere.",
+# Special:Log/newusers
+'newuserlogpage' => 'Brugeråprettelseslog',
+'newuserlogpagetext' => "Dett'er en log åver de senest åprettede brugere.",
 
-# E-mail wiki_user
-'emailwiki_user' => 'E-mail til denne bruger',
+# E-mail user
+'emailuser' => 'E-mail til denne bruger',
 
 # Watchlist
 'watchlist' => 'Åvervågnengsliste',
@@ -755,7 +755,7 @@ navn du harst valgt er ekke gyldegt. Vælg et andet navn.',
 'importlogpage' => 'Importlog',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Min brugersside',
+'tooltip-pt-userpage' => 'Min brugersside',
 'tooltip-pt-mytalk' => 'Min diskusjesside',
 'tooltip-pt-preferences' => 'Min endstellenger',
 'tooltip-pt-watchlist' => 'Æ liste åver sider du åvervåger før ændrenger.',
@@ -780,10 +780,10 @@ navn du harst valgt er ekke gyldegt. Vælg et andet navn.',
 'tooltip-n-help' => 'Vordan gør a ...',
 'tooltip-t-whatlinkshere' => 'Liste ve ål sider søm henveser hertil',
 'tooltip-t-contributions' => 'Se denne brugers bidråg',
-'tooltip-t-emailwiki_user' => 'Send en e-mail til denne bruger',
+'tooltip-t-emailuser' => 'Send en e-mail til denne bruger',
 'tooltip-t-upload' => 'Læĝ æ billet, æ sunnåm æller anden mediagøret åp',
 'tooltip-t-specialpages' => 'Liste ve ål sonst sider',
-'tooltip-ca-nstab-wiki_user' => "Se'n brugerside",
+'tooltip-ca-nstab-user' => "Se'n brugerside",
 'tooltip-ca-nstab-project' => "Vese'n wiki'mside",
 'tooltip-ca-nstab-image' => "Se'n billetside",
 'tooltip-ca-nstab-template' => "Se'n skablån",
@@ -855,6 +855,6 @@ Kun endholtet åf æ liste (lenjer startende ve *) bliver brugt. Den første hen
 'specialpages' => 'Sonst sider',
 
 # New logging system
-'newwiki_userlog-byemail' => 'kodeort tilsend via e-mail',
+'newuserlog-byemail' => 'kodeort tilsend via e-mail',
 
 );

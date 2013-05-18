@@ -45,15 +45,15 @@ if ( isset( $options['limit'] ) ) {
 $type = isset( $options['type'] ) ? $options['type'] : 'ConcatenatedGzipHistoryBlob';
 
 
-r = wfGetDB( DB_SLAVE );
-$res = r->select(
+$dbr = wfGetDB( DB_SLAVE );
+$res = $dbr->select(
 	array( 'page', 'revision', 'text' ),
 	'*',
 	array(
 		'page_namespace' => $title->getNamespace(),
 		'page_title' => $title->getDBkey(),
 		'page_id=rev_page',
-		'rev_timestamp > ' . r->addQuotes( r->timestamp( $start ) ),
+		'rev_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $start ) ),
 		'rev_text_id=old_id'
 	), __FILE__, array( 'LIMIT' => $limit )
 );

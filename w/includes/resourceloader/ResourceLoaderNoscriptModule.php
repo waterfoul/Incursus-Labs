@@ -1,6 +1,6 @@
 <?php
 /**
- * Resource loader for site customizations for wiki_users without JavaScript enabled.
+ * Resource loader for site customizations for users without JavaScript enabled.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -44,7 +44,7 @@ class CLDRPluralRuleEvaluator {
 
 	/**
 	 * Evaluate a compiled set of rules returned by compile(). Do not allow
-	 * the wiki_user to edit the compiled form, or else PHP errors may result.
+	 * the user to edit the compiled form, or else PHP errors may result.
 	 */
 	public static function evaluateCompiled( $number, array $rules ) {
 		// The compiled form is RPN, with tokens strictly delimited by

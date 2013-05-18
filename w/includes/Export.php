@@ -73,7 +73,7 @@ class WikiExporter {
 	 * make additional queries to pull source data while the
 	 * main query is still running.
 	 *
-	 * @param  DatabaseBase
+	 * @param $db DatabaseBase
 	 * @param $history Mixed: one of WikiExporter::FULL, WikiExporter::CURRENT,
 	 *                 WikiExporter::RANGE or WikiExporter::STABLE,
 	 *                 or an associative array:
@@ -83,9 +83,9 @@ class WikiExporter {
 	 * @param $buffer Int: one of WikiExporter::BUFFER or WikiExporter::STREAM
 	 * @param $text Int: one of WikiExporter::TEXT or WikiExporter::STUB
 	 */
-	function __construct( &, $history = WikiExporter::CURRENT,
+	function __construct( &$db, $history = WikiExporter::CURRENT,
 			$buffer = WikiExporter::BUFFER, $text = WikiExporter::TEXT ) {
-		$this->db =& ;
+		$this->db =& $db;
 		$this->history = $history;
 		$this->buffer  = $buffer;
 		$this->writer  = new XmlDumpWriter();
@@ -214,7 +214,7 @@ class WikiExporter {
 
 		$res = $this->db->select(
 			array( 'page', 'revision' ),
-			array( 'DISTINCT rev_wiki_user_text', 'rev_wiki_user' ),
+			array( 'DISTINCT rev_user_text', 'rev_user' ),
 			array(
 				$this->db->bitAnd( 'rev_deleted', Revision::DELETED_USER ) . ' = 0',
 				$cond,
@@ -225,11 +225,11 @@ class WikiExporter {
 
 		foreach ( $res as $row ) {
 			$this->author_list .= "<contributor>" .
-				"<wiki_username>" .
-				htmlentities( $row->rev_wiki_user_text )  .
-				"</wiki_username>" .
+				"<username>" .
+				htmlentities( $row->rev_user_text )  .
+				"</username>" .
 				"<id>" .
-				$row->rev_wiki_user .
+				$row->rev_user .
 				"</id>" .
 				"</contributor>";
 		}
@@ -246,7 +246,7 @@ class WikiExporter {
 		wfProfileIn( __METHOD__ );
 		# For logging dumps...
 		if ( $this->history & self::LOGS ) {
-			$where = array( 'wiki_user_id = log_wiki_user' );
+			$where = array( 'user_id = log_user' );
 			# Hide private logs
 			$hideLogs = LogEventsList::getExcludeClause( $this->db );
 			if ( $hideLogs ) $where[] = $hideLogs;
@@ -260,8 +260,8 @@ class WikiExporter {
 			}
 			$wrapper = null; // Assuring $wrapper is not undefined, if exception occurs early
 			try {
-				$result = $this->db->select( array( 'logging', 'wiki_user' ),
-					array( "{$logging}.*", 'wiki_user_name' ), // grab the wiki_user name
+				$result = $this->db->select( array( 'logging', 'user' ),
+					array( "{$logging}.*", 'user_name' ), // grab the user name
 					$where,
 					__METHOD__,
 					array( 'ORDER BY' => 'log_id', 'USE INDEX' => array( 'logging' => 'PRIMARY' ) )
@@ -645,7 +645,7 @@ class XmlDumpWriter {
 		if ( $row->rev_deleted & Revision::DELETED_USER ) {
 			$out .= "      " . Xml::element( 'contributor', array( 'deleted' => 'deleted' ) ) . "\n";
 		} else {
-			$out .= $this->writeContributor( $row->rev_wiki_user, $row->rev_wiki_user_text );
+			$out .= $this->writeContributor( $row->rev_user, $row->rev_user_text );
 		}
 
 		if ( $row->rev_minor_edit ) {
@@ -706,7 +706,7 @@ class XmlDumpWriter {
 		if ( $row->log_deleted & LogPage::DELETED_USER ) {
 			$out .= "    " . Xml::element( 'contributor', array( 'deleted' => 'deleted' ) ) . "\n";
 		} else {
-			$out .= $this->writeContributor( $row->log_wiki_user, $row->wiki_user_name, "    " );
+			$out .= $this->writeContributor( $row->log_user, $row->user_name, "    " );
 		}
 
 		if ( $row->log_deleted & LogPage::DELETED_COMMENT ) {
@@ -753,7 +753,7 @@ class XmlDumpWriter {
 	function writeContributor( $id, $text, $indent = "      " ) {
 		$out = $indent . "<contributor>\n";
 		if ( $id || !IP::isValid( $text ) ) {
-			$out .= $indent . "  " . Xml::elementClean( 'wiki_username', null, strval( $text ) ) . "\n";
+			$out .= $indent . "  " . Xml::elementClean( 'username', null, strval( $text ) ) . "\n";
 			$out .= $indent . "  " . Xml::element( 'id', null, strval( $id ) ) . "\n";
 		} else {
 			$out .= $indent . "  " . Xml::elementClean( 'ip', null, strval( $text ) ) . "\n";
@@ -811,7 +811,7 @@ class XmlDumpWriter {
 		}
 		return "    <upload>\n" .
 			$this->writeTimestamp( $file->getTimestamp() ) .
-			$this->writeContributor( $file->getwiki_user( 'id' ), $file->getwiki_user( 'text' ) ) .
+			$this->writeContributor( $file->getUser( 'id' ), $file->getUser( 'text' ) ) .
 			"      " . $comment . "\n" .
 			"      " . Xml::element( 'filename', null, $file->getName() ) . "\n" .
 			$archiveName .
@@ -826,7 +826,7 @@ class XmlDumpWriter {
 	/**
 	 * Return prefixed text form of title, but using the content language's
 	 * canonical namespace. This skips any special-casing such as gendered
-	 * wiki_user namespaces -- which while useful, are not yet listed in the
+	 * user namespaces -- which while useful, are not yet listed in the
 	 * XML "<siteinfo>" data so are unsafe in export.
 	 *
 	 * @param Title $title

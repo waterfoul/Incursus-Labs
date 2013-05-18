@@ -39,19 +39,19 @@ class ApiRollback extends ApiBase {
 	private $mTitleObj = null;
 
 	/**
-	 * @var wiki_user
+	 * @var User
 	 */
-	private $mwiki_user = null;
+	private $mUser = null;
 
 	public function execute() {
 		$params = $this->extractRequestParams();
 
-		// wiki_user and title already validated in call to getTokenSalt from Main
+		// User and title already validated in call to getTokenSalt from Main
 		$titleObj = $this->getRbTitle();
 		$pageObj = WikiPage::factory( $titleObj );
 		$summary = $params['summary'];
 		$details = array();
-		$retval = $pageObj->doRollback( $this->getRbwiki_user(), $summary, $params['token'], $params['markbot'], $details, $this->getwiki_user() );
+		$retval = $pageObj->doRollback( $this->getRbUser(), $summary, $params['token'], $params['markbot'], $details, $this->getUser() );
 
 		if ( $retval ) {
 			// We don't care about multiple errors, just report one of them
@@ -86,7 +86,7 @@ class ApiRollback extends ApiBase {
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true
 			),
-			'wiki_user' => array(
+			'user' => array(
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true
 			),
@@ -111,7 +111,7 @@ class ApiRollback extends ApiBase {
 	public function getParamDescription() {
 		return array(
 			'title' => 'Title of the page you want to rollback.',
-			'wiki_user' => 'Name of the wiki_user whose edits are to be rolled back. If set incorrectly, you\'ll get a badtoken error.',
+			'user' => 'Name of the user whose edits are to be rolled back. If set incorrectly, you\'ll get a badtoken error.',
 			'token' => "A rollback token previously retrieved through {$this->getModulePrefix()}prop=revisions",
 			'summary' => 'Custom edit summary. If empty, default summary will be used',
 			'markbot' => 'Mark the reverted edits and the revert as bot edits',
@@ -134,7 +134,7 @@ class ApiRollback extends ApiBase {
 
 	public function getDescription() {
 		return array(
-			'Undo the last edit to the page. If the last wiki_user who edited the page made multiple edits in a row,',
+			'Undo the last edit to the page. If the last user who edited the page made multiple edits in a row,',
 			'they will all be rolled back'
 		);
 	}
@@ -143,7 +143,7 @@ class ApiRollback extends ApiBase {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'invalidtitle', 'title' ),
 			array( 'notanarticle' ),
-			array( 'invalidwiki_user', 'wiki_user' ),
+			array( 'invaliduser', 'user' ),
 		) );
 	}
 
@@ -152,25 +152,25 @@ class ApiRollback extends ApiBase {
 	}
 
 	public function getTokenSalt() {
-		return array( $this->getRbTitle()->getPrefixedText(), $this->getRbwiki_user() );
+		return array( $this->getRbTitle()->getPrefixedText(), $this->getRbUser() );
 	}
 
-	private function getRbwiki_user() {
-		if ( $this->mwiki_user !== null ) {
-			return $this->mwiki_user;
+	private function getRbUser() {
+		if ( $this->mUser !== null ) {
+			return $this->mUser;
 		}
 
 		$params = $this->extractRequestParams();
 
 		// We need to be able to revert IPs, but getCanonicalName rejects them
-		$this->mwiki_user = wiki_user::isIP( $params['wiki_user'] )
-			? $params['wiki_user']
-			: wiki_user::getCanonicalName( $params['wiki_user'] );
-		if ( !$this->mwiki_user ) {
-			$this->dieUsageMsg( array( 'invalidwiki_user', $params['wiki_user'] ) );
+		$this->mUser = User::isIP( $params['user'] )
+			? $params['user']
+			: User::getCanonicalName( $params['user'] );
+		if ( !$this->mUser ) {
+			$this->dieUsageMsg( array( 'invaliduser', $params['user'] ) );
 		}
 
-		return $this->mwiki_user;
+		return $this->mUser;
 	}
 
 	/**
@@ -197,8 +197,8 @@ class ApiRollback extends ApiBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=rollback&title=Main%20Page&wiki_user=Catrope&token=123ABC',
-			'api.php?action=rollback&title=Main%20Page&wiki_user=217.121.114.116&token=123ABC&summary=Reverting%20vandalism&markbot=1'
+			'api.php?action=rollback&title=Main%20Page&user=Catrope&token=123ABC',
+			'api.php?action=rollback&title=Main%20Page&user=217.121.114.116&token=123ABC&summary=Reverting%20vandalism&markbot=1'
 		);
 	}
 

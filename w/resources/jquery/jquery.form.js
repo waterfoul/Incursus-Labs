@@ -181,7 +181,7 @@ $.fn.ajaxSubmit = function(options) {
     log("fileAPI :" + fileAPI);
     var shouldUseFrame = (hasFileInputs || multipart) && !fileAPI;
 
-    // options.iframe allows wiki_user to force iframe mode
+    // options.iframe allows user to force iframe mode
     // 06-NOV-09: now defaulting to iframe mode if file input is detected
     if (options.iframe !== false && (options.iframe || shouldUseFrame)) {
         // hack to fix Safari hang (thanks to Tim Molendijk for this)
@@ -548,7 +548,7 @@ $.fn.ajaxSubmit = function(options) {
                 var dt = (s.dataType || '').toLowerCase();
                 var scr = /(json|script|text)/.test(dt);
                 if (scr || s.textarea) {
-                    // see if wiki_user embedded response in textarea
+                    // see if user embedded response in textarea
                     var ta = doc.getElementsByTagName('textarea')[0];
                     if (ta) {
                         xhr.responseText = ta.value;
@@ -775,7 +775,7 @@ $.fn.ajaxFormUnbind = function() {
  * Each object in the array has both a 'name' and 'value' property.  An example of
  * an array for a simple login form might be:
  *
- * [ { name: 'wiki_username', value: 'jresig' }, { name: 'password', value: 'secret' } ]
+ * [ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ]
  *
  * It is this array that is passed to pre-submit callback functions provided to the
  * ajaxSubmit() and ajaxForm() methods.

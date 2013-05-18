@@ -103,8 +103,8 @@ class WikiPageTest extends MediaWikiLangTestCase {
 		$this->assertEquals( $text, $retrieved, 'retrieved text doesn\'t equal original' );
 
 		# ------------------------
-		r = wfGetDB( DB_SLAVE );
-		$res = r->select( 'pagelinks', '*', array( 'pl_from' => $id ) );
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'pagelinks', '*', array( 'pl_from' => $id ) );
 		$n = $res->numRows();
 		$res->free();
 
@@ -112,12 +112,12 @@ class WikiPageTest extends MediaWikiLangTestCase {
 	}
 
 	public function testDoQuickEdit() {
-		global $wgwiki_user;
+		global $wgUser;
 
 		$page = $this->createPage( "WikiPageTest_testDoQuickEdit", "original text" );
 
 		$text = "quick text";
-		$page->doQuickEdit( $text, $wgwiki_user, "testing q" );
+		$page->doQuickEdit( $text, $wgUser, "testing q" );
 
 		# ---------------------
 		$page = new WikiPage( $page->getTitle() );
@@ -137,8 +137,8 @@ class WikiPageTest extends MediaWikiLangTestCase {
 		$this->assertFalse( $t->exists(), "Title::exists should return false after page was deleted" );
 
 		# ------------------------
-		r = wfGetDB( DB_SLAVE );
-		$res = r->select( 'pagelinks', '*', array( 'pl_from' => $id ) );
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'pagelinks', '*', array( 'pl_from' => $id ) );
 		$n = $res->numRows();
 		$res->free();
 
@@ -152,8 +152,8 @@ class WikiPageTest extends MediaWikiLangTestCase {
 		$page->doDeleteUpdates( $id );
 
 		# ------------------------
-		r = wfGetDB( DB_SLAVE );
-		$res = r->select( 'pagelinks', '*', array( 'pl_from' => $id ) );
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'pagelinks', '*', array( 'pl_from' => $id ) );
 		$n = $res->numRows();
 		$res->free();
 
@@ -226,7 +226,7 @@ class WikiPageTest extends MediaWikiLangTestCase {
 			array( 'WikiPageTest_testHasViewableContent', false, true ),
 			array( 'Special:WikiPageTest_testHasViewableContent', false ),
 			array( 'MediaWiki:WikiPageTest_testHasViewableContent', false ),
-			array( 'Special:wiki_userlogin', true ),
+			array( 'Special:Userlogin', true ),
 			array( 'MediaWiki:help', true ),
 		);
 	}
@@ -534,44 +534,44 @@ more stuff
 	 * @todo FIXME: this is a better rollback test than the one below, but it keeps failing in jenkins for some reason.
 	 */
 	public function broken_testDoRollback() {
-		$admin = new wiki_user();
+		$admin = new User();
 		$admin->setName("Admin");
 
 		$text = "one";
 		$page = $this->newPage( "WikiPageTest_testDoRollback" );
 		$page->doEdit( $text, "section one", EDIT_NEW, false, $admin );
 
-		$wiki_user1 = new wiki_user();
-		$wiki_user1->setName( "127.0.1.11" );
+		$user1 = new User();
+		$user1->setName( "127.0.1.11" );
 		$text .= "\n\ntwo";
 		$page = new WikiPage( $page->getTitle() );
-		$page->doEdit( $text, "adding section two", 0, false, $wiki_user1 );
+		$page->doEdit( $text, "adding section two", 0, false, $user1 );
 
-		$wiki_user2 = new wiki_user();
-		$wiki_user2->setName( "127.0.2.13" );
+		$user2 = new User();
+		$user2->setName( "127.0.2.13" );
 		$text .= "\n\nthree";
 		$page = new WikiPage( $page->getTitle() );
-		$page->doEdit( $text, "adding section three", 0, false, $wiki_user2 );
+		$page->doEdit( $text, "adding section three", 0, false, $user2 );
 
 		# we are having issues with doRollback spuriously failing. apparently the last revision somehow goes missing
-		# or not committed under some circumstances. so, make sure the last revision has the right wiki_user name.
-		r = wfGetDB( DB_SLAVE );
-		$this->assertEquals( 3, Revision::countByPageId( r, $page->getId() ) );
+		# or not committed under some circumstances. so, make sure the last revision has the right user name.
+		$dbr = wfGetDB( DB_SLAVE );
+		$this->assertEquals( 3, Revision::countByPageId( $dbr, $page->getId() ) );
 
 		$page = new WikiPage( $page->getTitle() );
 		$rev3 = $page->getRevision();
-		$this->assertEquals( '127.0.2.13', $rev3->getwiki_userText() );
+		$this->assertEquals( '127.0.2.13', $rev3->getUserText() );
 
 		$rev2 = $rev3->getPrevious();
-		$this->assertEquals( '127.0.1.11', $rev2->getwiki_userText() );
+		$this->assertEquals( '127.0.1.11', $rev2->getUserText() );
 
 		$rev1 = $rev2->getPrevious();
-		$this->assertEquals( 'Admin', $rev1->getwiki_userText() );
+		$this->assertEquals( 'Admin', $rev1->getUserText() );
 
 		# now, try the actual rollback
-		$admin->addGroup( "sysop" ); #XXX: make the test wiki_user a sysop...
-		$token = $admin->getEditToken( array( $page->getTitle()->getPrefixedText(), $wiki_user2->getName() ), null );
-		$errors = $page->doRollback( $wiki_user2->getName(), "testing revert", $token, false, $details, $admin );
+		$admin->addGroup( "sysop" ); #XXX: make the test user a sysop...
+		$token = $admin->getEditToken( array( $page->getTitle()->getPrefixedText(), $user2->getName() ), null );
+		$errors = $page->doRollback( $user2->getName(), "testing revert", $token, false, $details, $admin );
 
 		if ( $errors ) {
 			$this->fail( "Rollback failed:\n" . print_r( $errors, true ) . ";\n" . print_r( $details, true ) );
@@ -586,7 +586,7 @@ more stuff
 	 * @todo FIXME: the above rollback test is better, but it keeps failing in jenkins for some reason.
 	 */
 	public function testDoRollback() {
-		$admin = new wiki_user();
+		$admin = new User();
 		$admin->setName("Admin");
 
 		$text = "one";
@@ -594,16 +594,16 @@ more stuff
 		$page->doEdit( $text, "section one", EDIT_NEW, false, $admin );
 		$rev1 = $page->getRevision();
 
-		$wiki_user1 = new wiki_user();
-		$wiki_user1->setName( "127.0.1.11" );
+		$user1 = new User();
+		$user1->setName( "127.0.1.11" );
 		$text .= "\n\ntwo";
 		$page = new WikiPage( $page->getTitle() );
-		$page->doEdit( $text, "adding section two", 0, false, $wiki_user1 );
+		$page->doEdit( $text, "adding section two", 0, false, $user1 );
 
 		# now, try the rollback
-		$admin->addGroup( "sysop" ); #XXX: make the test wiki_user a sysop...
-		$token = $admin->getEditToken( array( $page->getTitle()->getPrefixedText(), $wiki_user1->getName() ), null );
-		$errors = $page->doRollback( $wiki_user1->getName(), "testing revert", $token, false, $details, $admin );
+		$admin->addGroup( "sysop" ); #XXX: make the test user a sysop...
+		$token = $admin->getEditToken( array( $page->getTitle()->getPrefixedText(), $user1->getName() ), null );
+		$errors = $page->doRollback( $user1->getName(), "testing revert", $token, false, $details, $admin );
 
 		if ( $errors ) {
 			$this->fail( "Rollback failed:\n" . print_r( $errors, true ) . ";\n" . print_r( $details, true ) );
@@ -728,19 +728,19 @@ more stuff
 	 * @dataProvider dataGetAutoDeleteReason
 	 */
 	public function testGetAutoDeleteReason( $edits, $expectedResult, $expectedHistory ) {
-		global $wgwiki_user;
+		global $wgUser;
 
 		$page = $this->newPage( "WikiPageTest_testGetAutoDeleteReason" );
 
 		$c = 1;
 
 		foreach ( $edits as $edit ) {
-			$wiki_user = new wiki_user();
+			$user = new User();
 
-			if ( !empty( $edit[1] ) ) $wiki_user->setName( $edit[1] );
-			else $wiki_user = $wgwiki_user;
+			if ( !empty( $edit[1] ) ) $user->setName( $edit[1] );
+			else $user = $wgUser;
 
-			$page->doEdit( $edit[0], "test edit $c", $c < 2 ? EDIT_NEW : 0, false, $wiki_user );
+			$page->doEdit( $edit[0], "test edit $c", $c < 2 ? EDIT_NEW : 0, false, $user );
 
 			$c += 1;
 		}
@@ -771,11 +771,11 @@ more stuff
 	 */
 	public function testPreSaveTransform( $text, $expected ) {
 		$this->hideDeprecated( 'WikiPage::preSaveTransform' );
-		$wiki_user = new wiki_user();
-		$wiki_user->setName("127.0.0.1");
+		$user = new User();
+		$user->setName("127.0.0.1");
 
 		$page = $this->newPage( "WikiPageTest_testPreloadTransform" );
-		$text = $page->preSaveTransform( $text, $wiki_user );
+		$text = $page->preSaveTransform( $text, $user );
 
 		$this->assertEquals( $expected, $text );
 	}

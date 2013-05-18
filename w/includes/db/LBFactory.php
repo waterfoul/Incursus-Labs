@@ -190,7 +190,7 @@ class LBFactory_Simple extends LBFactory {
 		if ( $wgDBservers ) {
 			$servers = $wgDBservers;
 		} else {
-			global $wgDBserver, $wgDBwiki_user, $wgDBpassword, $wgDBname, $wgDBtype, $wgDebugDumpSql;
+			global $wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname, $wgDBtype, $wgDebugDumpSql;
 			global $wgDBssl, $wgDBcompress;
 
 			$flags = ( $wgDebugDumpSql ? DBO_DEBUG : 0 ) | DBO_DEFAULT;
@@ -203,7 +203,7 @@ class LBFactory_Simple extends LBFactory {
 
 			$servers = array(array(
 				'host' => $wgDBserver,
-				'wiki_user' => $wgDBwiki_user,
+				'user' => $wgDBuser,
 				'password' => $wgDBpassword,
 				'dbname' => $wgDBname,
 				'type' => $wgDBtype,
@@ -319,7 +319,7 @@ class DBAccessError extends MWException {
 }
 
 /**
- * Class for ensuring a consistent ordering of events as seen by the wiki_user, despite replication.
+ * Class for ensuring a consistent ordering of events as seen by the user, despite replication.
  * Kind of like Hawking's [[Chronology Protection Agency]].
  */
 class ChronologyProtector {
@@ -367,13 +367,13 @@ class ChronologyProtector {
 			return;
 		}
 		// Only save the position if writes have been done on the connection
-		 = $lb->getAnyOpenConnection( 0 );
+		$db = $lb->getAnyOpenConnection( 0 );
 		$info = $lb->parentInfo();
-		if ( ! || !->doneWrites() ) {
+		if ( !$db || !$db->doneWrites() ) {
 			wfDebug( __METHOD__.": LB {$info['id']}, no writes done\n" );
 			return;
 		}
-		$pos = ->getMasterPos();
+		$pos = $db->getMasterPos();
 		wfDebug( __METHOD__.": LB {$info['id']} has master pos $pos\n" );
 		$this->shutdownPos[$masterName] = $pos;
 	}

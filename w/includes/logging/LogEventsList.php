@@ -89,7 +89,7 @@ class LogEventsList extends ContextSource {
 	 * Show options for the log list
 	 *
 	 * @param $types string or Array
-	 * @param $wiki_user String
+	 * @param $user String
 	 * @param $page String
 	 * @param $pattern String
 	 * @param $year Integer: year
@@ -97,7 +97,7 @@ class LogEventsList extends ContextSource {
 	 * @param $filter: array
 	 * @param $tagFilter: array?
 	 */
-	public function showOptions( $types=array(), $wiki_user='', $page='', $pattern='', $year='',
+	public function showOptions( $types=array(), $user='', $page='', $pattern='', $year='',
 		$month = '', $filter = null, $tagFilter='' ) {
 		global $wgScript, $wgMiserMode;
 
@@ -112,7 +112,7 @@ class LogEventsList extends ContextSource {
 
 		// Basic selectors
 		$html .= $this->getTypeMenu( $types ) . "\n";
-		$html .= $this->getwiki_userInput( $wiki_user ) . "\n";
+		$html .= $this->getUserInput( $user ) . "\n";
 		$html .= $this->getTitleInput( $page ) . "\n";
 		$html .= $this->getExtraInputs( $types ) . "\n";
 
@@ -215,7 +215,7 @@ class LogEventsList extends ContextSource {
 		foreach(  LogPage::validTypes() as $type ) {
 			$page = new LogPage( $type );
 			$restriction = $page->getRestriction();
-			if ( $this->getwiki_user()->isAllowed( $restriction ) ) {
+			if ( $this->getUser()->isAllowed( $restriction ) ) {
 				$typesByName[$type] = $page->getName()->text();
 			}
 		}
@@ -237,12 +237,12 @@ class LogEventsList extends ContextSource {
 	}
 
 	/**
-	 * @param $wiki_user String
+	 * @param $user String
 	 * @return String: Formatted HTML
 	 */
-	private function getwiki_userInput( $wiki_user ) {
+	private function getUserInput( $user ) {
 		return '<span style="white-space: nowrap">' .
-			Xml::inputLabel( $this->msg( 'speciallogwiki_userlabel' )->text(), 'wiki_user', 'mw-log-wiki_user', 15, $wiki_user ) .
+			Xml::inputLabel( $this->msg( 'specialloguserlabel' )->text(), 'user', 'mw-log-user', 15, $user ) .
 			'</span>';
 	}
 
@@ -272,8 +272,8 @@ class LogEventsList extends ContextSource {
 	 */
 	private function getExtraInputs( $types ) {
 		$offender = $this->getRequest()->getVal( 'offender' );
-		$wiki_user = wiki_user::newFromName( $offender, false );
-		if( !$wiki_user || ($wiki_user->getId() == 0 && !IP::isIPAddress($offender) ) ) {
+		$user = User::newFromName( $offender, false );
+		if( !$user || ($user->getId() == 0 && !IP::isIPAddress($offender) ) ) {
 			$offender = ''; // Blank field if invalid
 		}
 		if( count($types) == 1 && $types[0] == 'suppress' ) {
@@ -305,17 +305,17 @@ class LogEventsList extends ContextSource {
 		$entry = DatabaseLogEntry::newFromRow( $row );
 		$formatter = LogFormatter::newFromEntry( $entry );
 		$formatter->setContext( $this->getContext() );
-		$formatter->setShowwiki_userToolLinks( !( $this->flags & self::NO_EXTRA_USER_LINKS ) );
+		$formatter->setShowUserToolLinks( !( $this->flags & self::NO_EXTRA_USER_LINKS ) );
 
 		$title = $entry->getTarget();
 		// <IntraACL>
-		if ( !$title->wiki_userCanReadEx() ) {
+		if ( !$title->userCanReadEx() ) {
 			return '';
 		}
 		// </IntraACL>
 		
-		$time = htmlspecialchars( $this->getLanguage()->wiki_userTimeAndDate(
-			$entry->getTimestamp(), $this->getwiki_user() ) );
+		$time = htmlspecialchars( $this->getLanguage()->userTimeAndDate(
+			$entry->getTimestamp(), $this->getUser() ) );
 
 		$action = $formatter->getActionText();
 
@@ -330,7 +330,7 @@ class LogEventsList extends ContextSource {
 
 		$comment = $formatter->getComment();
 
-		// Some wiki_user can hide log items and have review links
+		// Some user can hide log items and have review links
 		$del = $this->getShowHideLinks( $row );
 
 		// Any tags...
@@ -354,19 +354,19 @@ class LogEventsList extends ContextSource {
 			return '';
 		}
 		$del = '';
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 		// Don't show useless checkbox to people who cannot hide log entries
-		if( $wiki_user->isAllowed( 'deletedhistory' ) ) {
-			if( $row->log_deleted || $wiki_user->isAllowed( 'deletelogentry' ) ) {
-				$canHide = $wiki_user->isAllowed( 'deletelogentry' );
+		if( $user->isAllowed( 'deletedhistory' ) ) {
+			if( $row->log_deleted || $user->isAllowed( 'deletelogentry' ) ) {
+				$canHide = $user->isAllowed( 'deletelogentry' );
 				if ( $this->flags & self::USE_REVDEL_CHECKBOXES ) { // Show checkboxes instead of links.
-					if ( !self::wiki_userCan( $row, LogPage::DELETED_RESTRICTED, $wiki_user ) ) { // If event was hidden from sysops
+					if ( !self::userCan( $row, LogPage::DELETED_RESTRICTED, $user ) ) { // If event was hidden from sysops
 						$del = Xml::check( 'deleterevisions', false, array( 'disabled' => 'disabled' ) );
 					} else {
 						$del = Xml::check( 'showhiderevisions', false, array( 'name' => 'ids[' . $row->log_id . ']' ) );
 					}
 				} else {
-					if ( !self::wiki_userCan( $row, LogPage::DELETED_RESTRICTED, $wiki_user ) ) { // If event was hidden from sysops
+					if ( !self::userCan( $row, LogPage::DELETED_RESTRICTED, $user ) ) { // If event was hidden from sysops
 						$del = Linker::revDeleteLinkDisabled( $canHide );
 					} else {
 						$query = array(
@@ -396,36 +396,36 @@ class LogEventsList extends ContextSource {
 			$match = is_array( $action ) ?
 				in_array( $row->log_action, $action ) : $row->log_action == $action;
 			if( $match && $right ) {
-				global $wgwiki_user;
-				$match = $wgwiki_user->isAllowed( $right );
+				global $wgUser;
+				$match = $wgUser->isAllowed( $right );
 			}
 		}
 		return $match;
 	}
 
 	/**
-	 * Determine if the current wiki_user is allowed to view a particular
+	 * Determine if the current user is allowed to view a particular
 	 * field of this log row, if it's marked as deleted.
 	 *
 	 * @param $row Row
 	 * @param $field Integer
-	 * @param $wiki_user wiki_user object to check, or null to use $wgwiki_user
+	 * @param $user User object to check, or null to use $wgUser
 	 * @return Boolean
 	 */
-	public static function wiki_userCan( $row, $field, wiki_user $wiki_user = null ) {
-		return self::wiki_userCanBitfield( $row->log_deleted, $field, $wiki_user );
+	public static function userCan( $row, $field, User $user = null ) {
+		return self::userCanBitfield( $row->log_deleted, $field, $user );
 	}
 
 	/**
-	 * Determine if the current wiki_user is allowed to view a particular
+	 * Determine if the current user is allowed to view a particular
 	 * field of this log row, if it's marked as deleted.
 	 *
 	 * @param $bitfield Integer (current field)
 	 * @param $field Integer
-	 * @param $wiki_user wiki_user object to check, or null to use $wgwiki_user
+	 * @param $user User object to check, or null to use $wgUser
 	 * @return Boolean
 	 */
-	public static function wiki_userCanBitfield( $bitfield, $field, wiki_user $wiki_user = null ) {
+	public static function userCanBitfield( $bitfield, $field, User $user = null ) {
 		if( $bitfield & $field ) {
 			if ( $bitfield & LogPage::DELETED_RESTRICTED ) {
 				$permission = 'suppressrevision';
@@ -433,11 +433,11 @@ class LogEventsList extends ContextSource {
 				$permission = 'deletedhistory';
 			}
 			wfDebug( "Checking for $permission due to $field match on $bitfield\n" );
-			if ( $wiki_user === null ) {
-				global $wgwiki_user;
-				$wiki_user = $wgwiki_user;
+			if ( $user === null ) {
+				global $wgUser;
+				$user = $wgUser;
 			}
-			return $wiki_user->isAllowed( $permission );
+			return $user->isAllowed( $permission );
 		} else {
 			return true;
 		}
@@ -458,7 +458,7 @@ class LogEventsList extends ContextSource {
 	 * @param $out OutputPage|String-by-reference
 	 * @param $types String|Array Log types to show
 	 * @param $page String|Title The page title to show log entries for
-	 * @param $wiki_user String The wiki_user who made the log entries
+	 * @param $user String The user who made the log entries
 	 * @param $param array Associative Array with the following additional options:
 	 * - lim Integer Limit of items to show, default is 50
 	 * - conds Array Extra conditions for the query (e.g. "log_action != 'revision'")
@@ -474,7 +474,7 @@ class LogEventsList extends ContextSource {
 	 * @return Integer Number of total log items (not limited by $lim)
 	 */
 	public static function showLogExtract(
-		&$out, $types=array(), $page='', $wiki_user='', $param = array()
+		&$out, $types=array(), $page='', $user='', $param = array()
 	) {
 		$defaultParameters = array(
 			'lim' => 25,
@@ -506,7 +506,7 @@ class LogEventsList extends ContextSource {
 
 		# Insert list of top 50 (or top $lim) items
 		$loglist = new LogEventsList( $context, null, $flags );
-		$pager = new LogPager( $loglist, $types, $wiki_user, $page, '', $conds );
+		$pager = new LogPager( $loglist, $types, $user, $page, '', $conds );
 		if ( isset( $param['offset'] ) ) { # Tell pager to ignore WebRequest offset
 			$pager->setOffset( $param['offset'] );
 		}
@@ -541,8 +541,8 @@ class LogEventsList extends ContextSource {
 			} elseif ( $page != '' ) {
 				$urlParam['page'] = $page;
 			}
-			if ( $wiki_user != '')
-				$urlParam['wiki_user'] = $wiki_user;
+			if ( $user != '')
+				$urlParam['user'] = $user;
 			if ( !is_array( $types ) ) # Make it an array, if it isn't
 				$types = array( $types );
 			# If there is exactly one log type, we can link to Special:Log?type=foo
@@ -564,7 +564,7 @@ class LogEventsList extends ContextSource {
 		}
 
 		/* hook can return false, if we don't want the message to be emitted (Wikia BugId:7093) */
-		if ( wfRunHooks( 'LogEventsListShowLogExtract', array( &$s, $types, $page, $wiki_user, $param ) ) ) {
+		if ( wfRunHooks( 'LogEventsListShowLogExtract', array( &$s, $types, $page, $user, $param ) ) ) {
 			// $out can be either an OutputPage object or a String-by-reference
 			if ( $out instanceof OutputPage ){
 				$out->addHTML( $s );
@@ -577,27 +577,27 @@ class LogEventsList extends ContextSource {
 	}
 
 	/**
-	 * SQL clause to skip forbidden log types for this wiki_user
+	 * SQL clause to skip forbidden log types for this user
 	 *
-	 * @param  DatabaseBase
-	 * @param $audience string, public/wiki_user
+	 * @param $db DatabaseBase
+	 * @param $audience string, public/user
 	 * @return Mixed: string or false
 	 */
-	public static function getExcludeClause( , $audience = 'public' ) {
-		global $wgLogRestrictions, $wgwiki_user;
+	public static function getExcludeClause( $db, $audience = 'public' ) {
+		global $wgLogRestrictions, $wgUser;
 		// Reset the array, clears extra "where" clauses when $par is used
 		$hiddenLogs = array();
-		// Don't show private logs to unprivileged wiki_users
+		// Don't show private logs to unprivileged users
 		foreach( $wgLogRestrictions as $logType => $right ) {
-			if( $audience == 'public' || !$wgwiki_user->isAllowed($right) ) {
-				$safeType = ->strencode( $logType );
+			if( $audience == 'public' || !$wgUser->isAllowed($right) ) {
+				$safeType = $db->strencode( $logType );
 				$hiddenLogs[] = $safeType;
 			}
 		}
 		if( count($hiddenLogs) == 1 ) {
-			return 'log_type != ' . ->addQuotes( $hiddenLogs[0] );
+			return 'log_type != ' . $db->addQuotes( $hiddenLogs[0] );
 		} elseif( $hiddenLogs ) {
-			return 'log_type NOT IN (' . ->makeList($hiddenLogs) . ')';
+			return 'log_type NOT IN (' . $db->makeList($hiddenLogs) . ')';
 		}
 		return false;
 	}

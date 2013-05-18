@@ -67,11 +67,11 @@ abstract class RdfMetaData {
 		$this->element( 'identifier', $this->reallyFullUrl() );
 		$this->element( 'date', $this->date( $this->mArticle->getTimestamp() ) );
 
-		$lastEditor = wiki_user::newFromId( $this->mArticle->getwiki_user() );
+		$lastEditor = User::newFromId( $this->mArticle->getUser() );
 		$this->person( 'creator', $lastEditor );
 
-		foreach( $this->mArticle->getContributors() as $wiki_user ){
-			$this->person( 'contributor', $wiki_user );
+		foreach( $this->mArticle->getContributors() as $user ){
+			$this->person( 'contributor', $user );
 		}
 
 		$this->rights();
@@ -115,19 +115,19 @@ abstract class RdfMetaData {
 		print "\t\t<dc:{$name} rdf:resource=\"{$url}\" />\n";
 	}
 
-	protected function person( $name, wiki_user $wiki_user ) {
-		if( $wiki_user->isAnon() ){
+	protected function person( $name, User $user ) {
+		if( $user->isAnon() ){
 			$this->element( $name, wfMessage( 'anonymous' )->numParams( 1 )->text() );
 		} else {
-			$real = $wiki_user->getRealName();
+			$real = $user->getRealName();
 			if( $real ) {
 				$this->element( $name, $real );
 			} else {
-				$wiki_userName = $wiki_user->getName();
+				$userName = $user->getName();
 				$this->pageOrString(
 					$name,
-					$wiki_user->getwiki_userPage(),
-					wfMessage( 'sitewiki_user', $wiki_userName, $wiki_userName )->text()
+					$user->getUserPage(),
+					wfMessage( 'siteuser', $userName, $userName )->text()
 				);
 			}
 		}

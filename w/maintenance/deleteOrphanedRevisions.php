@@ -43,14 +43,14 @@ class DeleteOrphanedRevisions extends Maintenance {
 
 		$report = $this->hasOption( 'report' );
 
-		w = wfGetDB( DB_MASTER );
-		w->begin( __METHOD__ );
-		list( $page, $revision ) = w->tableNamesN( 'page', 'revision' );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin( __METHOD__ );
+		list( $page, $revision ) = $dbw->tableNamesN( 'page', 'revision' );
 
 		# Find all the orphaned revisions
 		$this->output( "Checking for orphaned revisions..." );
 		$sql = "SELECT rev_id FROM {$revision} LEFT JOIN {$page} ON rev_page = page_id WHERE page_namespace IS NULL";
-		$res = w->query( $sql, 'deleteOrphanedRevisions' );
+		$res = $dbw->query( $sql, 'deleteOrphanedRevisions' );
 
 		# Stash 'em all up for deletion (if needed)
 		$revisions = array();
@@ -61,17 +61,17 @@ class DeleteOrphanedRevisions extends Maintenance {
 
 		# Nothing to do?
 		if ( $report || $count == 0 ) {
-			w->commit();
+			$dbw->commit();
 			exit( 0 );
 		}
 
 		# Delete each revision
 		$this->output( "Deleting..." );
-		$this->deleteRevs( $revisions, w );
+		$this->deleteRevs( $revisions, $dbw );
 		$this->output( "done.\n" );
 
 		# Close the transaction and call the script to purge unused text records
-		w->commit( __METHOD__ );
+		$dbw->commit( __METHOD__ );
 		$this->purgeRedundantText( true );
 	}
 
@@ -80,12 +80,12 @@ class DeleteOrphanedRevisions extends Maintenance {
 	 * Do this inside a transaction
 	 *
 	 * @param $id Array of revision id values
-	 * @param w DatabaseBase class (needs to be a master)
+	 * @param $dbw DatabaseBase class (needs to be a master)
 	 */
-	private function deleteRevs( $id, &w ) {
+	private function deleteRevs( $id, &$dbw ) {
 		if ( !is_array( $id ) )
 			$id = array( $id );
-		w->delete( 'revision', array( 'rev_id' => $id ), __METHOD__ );
+		$dbw->delete( 'revision', array( 'rev_id' => $id ), __METHOD__ );
 	}
 }
 

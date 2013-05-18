@@ -23,7 +23,7 @@
 
 /**
  * This class stores an arbitrary value along with its dependencies.
- * wiki_users should typically only use DependencyWrapper::getValueFromCache(),
+ * Users should typically only use DependencyWrapper::getValueFromCache(),
  * rather than instantiating one of these objects directly.
  * @ingroup Cache
  */
@@ -33,7 +33,7 @@ class DependencyWrapper {
 
 	/**
 	 * Create an instance.
-	 * @param $value Mixed: the wiki_user-supplied value
+	 * @param $value Mixed: the user-supplied value
 	 * @param $deps Mixed: a dependency or dependency array. All dependencies
 	 *        must be objects implementing CacheDependency.
 	 */
@@ -73,7 +73,7 @@ class DependencyWrapper {
 	}
 
 	/**
-	 * Get the wiki_user-defined value
+	 * Get the user-defined value
 	 * @return bool|\Mixed
 	 */
 	function getValue() {
@@ -219,7 +219,7 @@ class FileDependency extends CacheDependency {
  */
 class TitleDependency extends CacheDependency {
 	var $titleObj;
-	var $ns, k;
+	var $ns, $dbk;
 	var $touched;
 
 	/**
@@ -305,21 +305,21 @@ class TitleListDependency extends CacheDependency {
 		# Initialise values to false
 		$timestamps = array();
 
-		foreach ( $this->getLinkBatch()->data as $ns => ks ) {
-			if ( count( ks ) > 0 ) {
+		foreach ( $this->getLinkBatch()->data as $ns => $dbks ) {
+			if ( count( $dbks ) > 0 ) {
 				$timestamps[$ns] = array();
 
-				foreach ( ks as k => $value ) {
-					$timestamps[$ns][k] = false;
+				foreach ( $dbks as $dbk => $value ) {
+					$timestamps[$ns][$dbk] = false;
 				}
 			}
 		}
 
 		# Do the query
 		if ( count( $timestamps ) ) {
-			r = wfGetDB( DB_SLAVE );
-			$where = $this->getLinkBatch()->constructSet( 'page', r );
-			$res = r->select(
+			$dbr = wfGetDB( DB_SLAVE );
+			$where = $this->getLinkBatch()->constructSet( 'page', $dbr );
+			$res = $dbr->select(
 				'page',
 				array( 'page_namespace', 'page_title', 'page_touched' ),
 				$where,
@@ -362,9 +362,9 @@ class TitleListDependency extends CacheDependency {
 	function isExpired() {
 		$newTimestamps = $this->calculateTimestamps();
 
-		foreach ( $this->timestamps as $ns => ks ) {
-			foreach ( ks as k => $oldTimestamp ) {
-				$newTimestamp = $newTimestamps[$ns][k];
+		foreach ( $this->timestamps as $ns => $dbks ) {
+			foreach ( $dbks as $dbk => $oldTimestamp ) {
+				$newTimestamp = $newTimestamps[$ns][$dbk];
 
 				if ( $oldTimestamp === false ) {
 					if ( $newTimestamp === false ) {

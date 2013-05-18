@@ -27,22 +27,22 @@
  *
  */
 
-class wiki_userPreferencesTestCase extends SeleniumTestCase {
+class UserPreferencesTestCase extends SeleniumTestCase {
 
-    // Verify wiki_user information
-    public function testwiki_userInfoDisplay() {
+    // Verify user information
+    public function testUserInfoDisplay() {
 
         $this->open( $this->getUrl() .
                 '/index.php?title=Main_Page&action=edit' );
         $this->click( SeleniumTestConstants::LINK_START."My preferences" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
 
-        // Verify correct wiki_username displayed in wiki_user Preferences
-        $this->assertEquals( $this->getText( "//li[@id='pt-wiki_userpage']/a" ),
+        // Verify correct username displayed in User Preferences
+        $this->assertEquals( $this->getText( "//li[@id='pt-userpage']/a" ),
                 $this->getText( "//table[@id='mw-htmlform-info']/tbody/tr[1]/td[2]" ));
 
         // Verify existing Signature Displayed correctly
-        $this->assertEquals( $this->selenium->getwiki_user(),
+        $this->assertEquals( $this->selenium->getUser(),
                 $this->getTable( "mw-htmlform-signature.0.1" ) );
     }
 
@@ -93,7 +93,7 @@ class wiki_userPreferencesTestCase extends SeleniumTestCase {
         $this->click( SeleniumTestConstants::LINK_START."My preferences" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
 
-        $this->type( "mw-input-realname", "Test wiki_user" );
+        $this->type( "mw-input-realname", "Test User" );
         $this->click( "prefcontrol" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
 
@@ -118,7 +118,7 @@ class wiki_userPreferencesTestCase extends SeleniumTestCase {
         $this->click( "prefcontrol" );
         $this->waitForPageToLoad( SeleniumTestConstants::WIKI_TEST_WAIT_TIME );
 
-        // Verify change wiki_user signature
+        // Verify change user signature
         $this->assertEquals( "TestSignature", $this->getText( SeleniumTestConstants::LINK_START."TestSignature" ));
         $this->type( "mw-input-nickname", "Test" );
         $this->click( "prefcontrol" );

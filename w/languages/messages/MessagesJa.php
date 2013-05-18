@@ -111,7 +111,7 @@ $namespaceAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activewiki_users'               => array( '活動中の利用者', '活動中の利用者一覧' ),
+	'Activeusers'               => array( '活動中の利用者', '活動中の利用者一覧' ),
 	'Allmessages'               => array( 'メッセージ一覧', 'システムメッセージの一覧', '表示メッセージの一覧' ),
 	'Allpages'                  => array( 'ページ一覧', '全ページ' ),
 	'Ancientpages'              => array( '更新されていないページ' ),
@@ -133,7 +133,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( '曖昧さ回避のページ', '曖昧さ回避' ),
 	'DoubleRedirects'           => array( '二重リダイレクト' ),
 	'EditWatchlist'             => array( 'ウォッチリストの編集', 'ウォッチリスト編集' ),
-	'Emailwiki_user'                 => array( 'メール送信', 'ウィキメール' ),
+	'Emailuser'                 => array( 'メール送信', 'ウィキメール' ),
 	'Export'                    => array( 'データ書き出し', 'データー書き出し', 'エクスポート' ),
 	'Fewestrevisions'           => array( '編集履歴の少ないページ', '版の少ない項目', '版の少ないページ' ),
 	'FileDuplicateSearch'       => array( '重複ファイル検索' ),
@@ -147,7 +147,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'ファイル一覧', 'ファイルリスト' ),
 	'Listgrouprights'           => array( '利用者グループ権限', '利用者グループの権限一覧', '利用者権限一覧' ),
 	'Listredirects'             => array( 'リダイレクト一覧', 'リダイレクトの一覧', 'リダイレクトリスト' ),
-	'Listwiki_users'                 => array( '登録利用者一覧', '登録利用者の一覧' ),
+	'Listusers'                 => array( '登録利用者一覧', '登録利用者の一覧' ),
 	'Lockdb'                    => array( 'データベースロック' ),
 	'Log'                       => array( 'ログ', '記録' ),
 	'Lonelypages'               => array( '孤立しているページ' ),
@@ -198,9 +198,9 @@ $specialPageAliases = array(
 	'Unwatchedpages'            => array( 'ウォッチされていないページ' ),
 	'Upload'                    => array( 'アップロード' ),
 	'UploadStash'               => array( '未公開アップロード' ),
-	'wiki_userlogin'                 => array( 'ログイン' ),
-	'wiki_userlogout'                => array( 'ログアウト' ),
-	'wiki_userrights'                => array( '利用者権限', '利用者権限の変更' ),
+	'Userlogin'                 => array( 'ログイン' ),
+	'Userlogout'                => array( 'ログアウト' ),
+	'Userrights'                => array( '利用者権限', '利用者権限の変更' ),
 	'Version'                   => array( 'バージョン情報', 'バージョン' ),
 	'Wantedcategories'          => array( '存在しないカテゴリへのリンク', '赤リンクカテゴリ' ),
 	'Wantedfiles'               => array( 'ファイルページが存在しないファイル', '赤リンクファイル' ),
@@ -244,8 +244,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'ページ数', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', '記事数', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'ファイル数', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', '利用者数', 'NUMBEROFUSERS' ),
-	'numberofactivewiki_users'       => array( '1', '活動利用者数', '有効な利用者数', '有効利用者数', 'NUMBEROFACTIVEUSERS' ),
+	'numberofusers'             => array( '1', '利用者数', 'NUMBEROFUSERS' ),
+	'numberofactiveusers'       => array( '1', '活動利用者数', '有効な利用者数', '有効利用者数', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', '編集回数', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', '閲覧回数', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'ページ名', 'PAGENAME' ),
@@ -318,7 +318,7 @@ $magicWords = array(
 	'revisionmonth1'            => array( '1', '版の月1', 'REVISIONMONTH1' ),
 	'revisionyear'              => array( '1', '版の年', 'リビジョン年', '差分年', 'REVISIONYEAR' ),
 	'revisiontimestamp'         => array( '1', '版のタイムスタンプ', 'リビジョンタイムスタンプ', 'REVISIONTIMESTAMP' ),
-	'revisionwiki_user'              => array( '1', '版の利用者', 'リビジョンユーザー', 'リビジョンユーザ', 'リビジョン利用者', '差分利用者', 'REVISIONUSER' ),
+	'revisionuser'              => array( '1', '版の利用者', 'リビジョンユーザー', 'リビジョンユーザ', 'リビジョン利用者', '差分利用者', 'REVISIONUSER' ),
 	'plural'                    => array( '0', '複数:', '複数：', 'PLURAL:' ),
 	'fullurl'                   => array( '0', '完全なURL:', 'フルURL:', '完全なＵＲＬ：', 'フルＵＲＬ：', 'FULLURL:' ),
 	'fullurle'                  => array( '0', '完全なURLE:', 'フルURLE:', '完全なＵＲＬＥ：', 'フルＵＲＬＥ：', 'FULLURLE:' ),
@@ -363,7 +363,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'リンクの下線:',
 'tog-justify' => '段落に均等割り付けを設定',
 'tog-hideminor' => '最近の更新に細部の編集を表示しない',
@@ -387,7 +387,7 @@ $messages = array(
 'tog-previewonfirst' => '編集開始時にもプレビューを表示',
 'tog-nocache' => 'ブラウザーによるページのキャッシュを無効にする',
 'tog-enotifwatchlistpages' => 'ウォッチリストにあるページやファイルが更新されたらメールを受け取る',
-'tog-enotifwiki_usertalkpages' => '自分のトークページが更新されたらメールを受け取る',
+'tog-enotifusertalkpages' => '自分のトークページが更新されたらメールを受け取る',
 'tog-enotifminoredits' => 'ページやファイルへの細部の編集でもメールを受け取る',
 'tog-enotifrevealaddr' => '通知メールで自分のメールアドレスを明示',
 'tog-shownumberswatching' => 'ページをウォッチしている利用者数を表示',
@@ -569,7 +569,7 @@ $messages = array(
 'talk' => '議論',
 'views' => '表示',
 'toolbox' => 'ツールボックス',
-'wiki_userpage' => '利用者ページを表示',
+'userpage' => '利用者ページを表示',
 'projectpage' => 'プロジェクトのページを表示',
 'imagepage' => 'ファイルのページを表示',
 'mediawikipage' => 'メッセージのページを表示',
@@ -595,7 +595,7 @@ $1',
 'pool-queuefull' => 'プールキューがいっぱいです',
 'pool-errorunknown' => '不明なエラー',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}}について',
 'aboutpage' => 'Project:{{SITENAME}}について',
 'copyright' => '内容は$1のライセンスで利用できます。',
@@ -628,8 +628,8 @@ $1',
 'youhavenewmessages' => '$1があります ($2)。',
 'newmessageslink' => '新着メッセージ',
 'newmessagesdifflink' => '最新の差分',
-'youhavenewmessagesfromwiki_users' => '{{PLURAL:$3|他の利用者|$3 人の利用者}}からの$1があります ($2)。',
-'youhavenewmessagesmanywiki_users' => '多数の利用者からの$1があります ($2)。',
+'youhavenewmessagesfromusers' => '{{PLURAL:$3|他の利用者|$3 人の利用者}}からの$1があります ($2)。',
+'youhavenewmessagesmanyusers' => '多数の利用者からの$1があります ($2)。',
 'newmessageslinkplural' => '{{PLURAL:$1|新着メッセージ}}',
 'newmessagesdifflinkplural' => '{{PLURAL:$1|最新の差分|最新版までの差分}}',
 'youhavenewmessagesmulti' => '$1に新着メッセージがあります',
@@ -662,7 +662,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'ページ',
-'nstab-wiki_user' => '利用者ページ',
+'nstab-user' => '利用者ページ',
 'nstab-media' => 'メディアページ',
 'nstab-special' => '特別ページ',
 'nstab-project' => 'プロジェクトページ',
@@ -707,7 +707,7 @@ URL を間違って入力したか、正しくないリンクをたどった可�
 通常、削除されたページの版への古い差分表示や固定リンクをたどった際に、このようなことが起きます。
 
 それ以外の操作でこのメッセージが表示された場合、ソフトウェアのバグである可能性があります。
-[[Special:Listwiki_users/sysop|管理者]]までその URL を添えてお知らせください。',
+[[Special:ListUsers/sysop|管理者]]までその URL を添えてお知らせください。',
 'missingarticle-rev' => '(版番号: $1)',
 'missingarticle-diff' => '(差分: $1, $2)',
 'readonly_lag' => 'データベースはスレーブのデータベースサーバーがマスターに同期するまで自動的にロックされています',
@@ -759,7 +759,7 @@ $2',
 'customcssprotected' => 'この CSS ページは他の利用者の個人設定を含んでいるため、あなたには編集する権限がありません。',
 'customjsprotected' => 'この JavaScript ページは他の利用者の個人設定を含んでいるため、あなたには編集する権限がありません。',
 'ns-specialprotected' => '特別ページは編集できません。',
-'titleprotected' => "[[wiki_user:$1|$1]]によりこのページ名を持つページの作成は保護されています。
+'titleprotected' => "[[User:$1|$1]]によりこのページ名を持つページの作成は保護されています。
 理由は「''$2''」です。",
 'filereadonlyerror' => 'ファイルリポジトリ「$2」が読み取り専用の状態にあるため、ファイル「$1」を変更できません。
 
@@ -777,7 +777,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''ログアウトしました。'''
 
-このまま匿名で{{SITENAME}}の使用を続行できます。同じまたは別の利用者として[[Special:wiki_userLogin|もう一度ログイン]]することもできます。
+このまま匿名で{{SITENAME}}の使用を続行できます。同じまたは別の利用者として[[Special:UserLogin|もう一度ログイン]]することもできます。
 なお、ページによっては、ブラウザーのキャッシュをクリアするまで、ログインしているかのように表示され続ける場合があるためご注意ください。",
 'welcomecreation' => '== ようこそ、$1 さん! ==
 アカウントが作成されました。
@@ -793,21 +793,21 @@ $2',
 'login' => 'ログイン',
 'nav-login-createaccount' => 'ログインまたはアカウント作成',
 'loginprompt' => '{{SITENAME}}にログインするにはCookieを有効にする必要があります。',
-'wiki_userlogin' => 'ログインまたはアカウント作成',
-'wiki_userloginnocreate' => 'ログイン',
+'userlogin' => 'ログインまたはアカウント作成',
+'userloginnocreate' => 'ログイン',
 'logout' => 'ログアウト',
-'wiki_userlogout' => 'ログアウト',
+'userlogout' => 'ログアウト',
 'notloggedin' => 'ログインしていません',
 'nologin' => '登録がまだの場合、$1。',
 'nologinlink' => 'アカウントを作成してください',
 'createaccount' => 'アカウント作成',
 'gotaccount' => 'アカウントを既に持っている場合、$1。',
 'gotaccountlink' => 'ログインしてください',
-'wiki_userlogin-resetlink' => 'ログイン情報をお忘れですか？',
+'userlogin-resetlink' => 'ログイン情報をお忘れですか？',
 'createaccountmail' => 'メールで送信',
 'createaccountreason' => '理由:',
 'badretype' => '入力したパスワードが一致しません。',
-'wiki_userexists' => '入力された利用者名は既に使用されています。
+'userexists' => '入力された利用者名は既に使用されています。
 他の名前を選んでください。',
 'loginerror' => 'ログインのエラー',
 'createaccounterror' => 'アカウントを作成できませんでした: $1',
@@ -824,13 +824,13 @@ Cookieを有効にしていることを確認して、このページを再読�
 'noname' => '利用者名を正しく指定していません。',
 'loginsuccesstitle' => 'ログイン成功',
 'loginsuccess' => "'''{{SITENAME}}に「$1」としてログインしました。'''",
-'nosuchwiki_user' => '「$1」という名前の利用者は見当たりません。
+'nosuchuser' => '「$1」という名前の利用者は見当たりません。
 利用者名では大文字と小文字を区別します。
-綴りが正しいことを確認するか、[[Special:wiki_userLogin/signup|新たにアカウントを作成]]してください。',
-'nosuchwiki_usershort' => '「$1」という名前の利用者は存在しません。
+綴りが正しいことを確認するか、[[Special:UserLogin/signup|新たにアカウントを作成]]してください。',
+'nosuchusershort' => '「$1」という名前の利用者は存在しません。
 綴りを確認してください。',
-'nowiki_userspecified' => '利用者名を指定してください。',
-'login-wiki_userblocked' => 'この利用者はブロックされています。ログインは拒否されます。',
+'nouserspecified' => '利用者名を指定してください。',
+'login-userblocked' => 'この利用者はブロックされています。ログインは拒否されます。',
 'wrongpassword' => 'パスワードが間違っています。 
 もう一度やり直してください。',
 'wrongpasswordempty' => 'パスワードを空欄にはできません。
@@ -876,16 +876,16 @@ Cookieを有効にしていることを確認して、このページを再読�
 今すぐログインしてパスワードを変更してください。
 
 このアカウントが何かの手違いで作成された場合は、このメッセージを無視してください。',
-'wiki_usernamehasherror' => '利用者名には番号記号を含めることができません',
+'usernamehasherror' => '利用者名には番号記号を含めることができません',
 'login-throttled' => 'ログインの失敗が制限回数を超えました。
 しばらく時間をおいてから再度試してください。',
 'login-abort-generic' => 'ログインに失敗しました - 中止',
 'loginlanguagelabel' => '言語: $1',
-'suspicious-wiki_userlogout' => '壊れたブラウザーまたはキャッシュプロキシによって送信された可能性があるため、ログアウト要求は拒否されました。',
+'suspicious-userlogout' => '壊れたブラウザーまたはキャッシュプロキシによって送信された可能性があるため、ログアウト要求は拒否されました。',
 
 # E-mail sending
 'php-mail-error-unknown' => 'PHPのmail()関数での不明なエラーです。',
-'wiki_user-mail-no-addy' => 'メールアドレスなしでメールを送信しようとしました。',
+'user-mail-no-addy' => 'メールアドレスなしでメールを送信しようとしました。',
 
 # Change password dialog
 'resetpass' => 'パスワードの変更',
@@ -913,7 +913,7 @@ Cookieを有効にしていることを確認して、このページを再読�
 'passwordreset-legend' => 'パスワードの再設定',
 'passwordreset-disabled' => 'パスワードの再設定は、このウィキでは無効になっています。',
 'passwordreset-pretext' => '{{PLURAL:$1||下記のデータのいずれか 1 つを入力してください}}',
-'passwordreset-wiki_username' => '利用者名:',
+'passwordreset-username' => '利用者名:',
 'passwordreset-domain' => 'ドメイン:',
 'passwordreset-capture' => 'お送りするメールの内容を表示しますか?',
 'passwordreset-capture-help' => 'このボックスにチェックを入れると、利用者に送信されるメールの内容（仮パスワードを含む）をあなたも閲覧できます。',
@@ -930,7 +930,7 @@ $2
 これが他の誰かによる申請である場合、あるいはあなたが自分の元のパスワードを
 覚えていてそれを変更したくない場合には、このメッセージを無視して以前のパスワードを
 使用し続けることができます。',
-'passwordreset-emailtext-wiki_user' => '{{SITENAME}} の利用者 $1 があなたの {{SITENAME}} ($4)
+'passwordreset-emailtext-user' => '{{SITENAME}} の利用者 $1 があなたの {{SITENAME}} ($4)
 におけるアカウントの詳細情報を送信するよう申請しました。
 以下の利用者{{PLURAL:$3|アカウント|アカウント群}}がこのメールアドレスと紐付けられています。
 
@@ -1038,7 +1038,7 @@ $1または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこのブロッ�
 'loginreqlink' => 'ログイン',
 'loginreqpagetext' => '他のページを閲覧するには$1する必要があります。',
 'accmailtitle' => 'パスワードをお送りしました。',
-'accmailtext' => "[[wiki_user talk:$1|$1]]のために無作為に生成したパスワードを、$2に送信しました。
+'accmailtext' => "[[User talk:$1|$1]]のために無作為に生成したパスワードを、$2に送信しました。
 
 この新アカウントのパスワードは、ログインした際に''[[Special:ChangePassword|パスワード変更]]''ページで変更できます。",
 'newarticle' => '(新)',
@@ -1048,7 +1048,7 @@ $1または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこのブロッ�
 'anontalkpagetext' => "----''このページはアカウントをまだ作成していないか使用していない匿名利用者のための議論ページです。
 匿名利用者を識別するために、利用者名の代わりにIPアドレスが使用されています。
 IP アドレスは複数の利用者で共有されている場合があります。
-もし、あなたが匿名利用者であり、自分に関係のないコメントが寄せられている考えられる場合は、[[Special:wiki_userLogin/signup|アカウントを作成する]]か[[Special:wiki_userLogin|ログインして]]他の匿名利用者と間違えられないようにしてください。''",
+もし、あなたが匿名利用者であり、自分に関係のないコメントが寄せられている考えられる場合は、[[Special:UserLogin/signup|アカウントを作成する]]か[[Special:UserLogin|ログインして]]他の匿名利用者と間違えられないようにしてください。''",
 'noarticletext' => '現在このページには内容がありません。
 他のページ内で[[Special:Search/{{PAGENAME}}|このページ名を検索]]、
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 関連する記録を検索]、
@@ -1059,9 +1059,9 @@ IP アドレスは複数の利用者で共有されている場合がありま�
 
 通常、削除されたページの版への古い差分表示や固定リンクをたどった際に、このようなことが起きます。 
 詳細は[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 削除記録]を参照してください。',
-'wiki_userpage-wiki_userdoesnotexist' => '「$1」という利用者アカウントは登録されていません。
+'userpage-userdoesnotexist' => '「$1」という利用者アカウントは登録されていません。
 このページの作成/編集が適切かご確認ください。',
-'wiki_userpage-wiki_userdoesnotexist-view' => '利用者アカウント「$1」は登録されていません。',
+'userpage-userdoesnotexist-view' => '利用者アカウント「$1」は登録されていません。',
 'blocked-notice-logextract' => 'この利用者は現在ブロックされています。
 参考のために最新のブロック記録項目を以下に表示します:',
 'clearyourcache' => "'''注意:''' 保存後、変更を確認するにはブラウザーのキャッシュを消去する必要がある場合があります。
@@ -1069,18 +1069,18 @@ IP アドレスは複数の利用者で共有されている場合がありま�
 * '''Google Chrome:''' ''Ctrl-Shift-R'' を押してください (Mac では ''&#x2318;-Shift-R'')
 * '''Internet Explorer:''' ''Ctrl'' を押しながら ''最新の情報に更新'' をクリックするか、''Ctrl-F5'' を押してください
 * '''Opera:''' ''ツール → 設定'' からキャッシュをクリアしてください。",
-'wiki_usercssyoucanpreview' => "'''ヒント:'''「{{int:showpreview}}」ボタンを使うと、保存前に新しいCSSを試験できます。",
-'wiki_userjsyoucanpreview' => "'''ヒント:'''「{{int:showpreview}}」ボタンを使うと、保存前に新しいJavaScriptを試験できます。",
-'wiki_usercsspreview' => "'''利用者CSSをプレビューしているだけに過ぎません。'''
+'usercssyoucanpreview' => "'''ヒント:'''「{{int:showpreview}}」ボタンを使うと、保存前に新しいCSSを試験できます。",
+'userjsyoucanpreview' => "'''ヒント:'''「{{int:showpreview}}」ボタンを使うと、保存前に新しいJavaScriptを試験できます。",
+'usercsspreview' => "'''利用者CSSをプレビューしているだけに過ぎません。'''
 '''まだ保存されていません!'''",
-'wiki_userjspreview' => "'''利用者JavaScriptを試験/プレビューしているだけに過ぎません。'''
+'userjspreview' => "'''利用者JavaScriptを試験/プレビューしているだけに過ぎません。'''
 '''まだ保存されていません!'''",
 'sitecsspreview' => "'''ここでは、CSSをプレビューしているだけに過ぎません。'''
 '''まだ保存されていません!'''",
 'sitejspreview' => "'''ここでは、JavaScriptをプレビューしているだけに過ぎません。'''
 '''まだ保存されていません!'''",
-'wiki_userinvalidcssjstitle' => "'''警告:'''「$1」という外装はありません。
-カスタム .css/.js ページではページ名を小文字にしてください。例: {{ns:wiki_user}}:Hoge/Vector.css ではなく {{ns:wiki_user}}:Hoge/vector.css",
+'userinvalidcssjstitle' => "'''警告:'''「$1」という外装はありません。
+カスタム .css/.js ページではページ名を小文字にしてください。例: {{ns:user}}:Hoge/Vector.css ではなく {{ns:user}}:Hoge/vector.css",
 'updated' => '(更新)',
 'note' => "'''お知らせ:'''",
 'previewnote' => "'''これはプレビューです。'''
@@ -1089,13 +1089,13 @@ IP アドレスは複数の利用者で共有されている場合がありま�
 'previewconflict' => 'これは、上の編集エリアの文章を保存した場合にどう表示されるかを示すプレビューです。',
 'session_fail_preview' => "'''申し訳ありません! セッションデータが消失したため編集を処理できませんでした。'''
 もう一度やり直してください。
-それでも失敗する場合、[[Special:wiki_userLogout|ログアウト]]してからログインし直してください。",
+それでも失敗する場合、[[Special:UserLogout|ログアウト]]してからログインし直してください。",
 'session_fail_preview_html' => "'''申し訳ありません! セッション データが消失したため編集を処理できませんでした。'''
 
 ''{{SITENAME}}では生のHTMLが有効であり、JavaScriptでの攻撃を予防するためにプレビューを表示していません。''
 
 '''この編集が問題ない場合はもう一度保存してください。'''
-それでもうまくいかない場合は一度[[Special:wiki_userLogout|ログアウト]]して、ログインし直してみてください。",
+それでもうまくいかない場合は一度[[Special:UserLogout|ログアウト]]して、ログインし直してみてください。",
 'token_suffix_mismatch' => "'''ご使用中のクライアントが編集トークン内の句読点を正しく処理していないため、編集を受け付けられません。'''
 ページ本文の破損を防ぐため、編集は反映されません。
 問題のある匿名プロキシ サービスを使用していると、これが発生する場合があります。",
@@ -1147,7 +1147,7 @@ IP アドレスは複数の利用者で共有されている場合がありま�
 'edittools' => '<!-- ここに書いたテキストは編集及びアップロードのフォームの下に表示されます。 -->',
 'nocreatetitle' => 'ページの作成が制限されています',
 'nocreatetext' => '{{SITENAME}}ではページの新規作成を制限しています。
-元のページに戻って既存のページを編集するか、[[Special:wiki_userLogin|ログインまたはアカウント作成]]をしてください。',
+元のページに戻って既存のページを編集するか、[[Special:UserLogin|ログインまたはアカウント作成]]をしてください。',
 'nocreate-loggedin' => '新しいページを作成する権限がありません。',
 'sectioneditnotsupported-title' => '節単位編集はサポートされていません',
 'sectioneditnotsupported-text' => 'このページでは節単位編集はサポートされません。',
@@ -1198,11 +1198,11 @@ IP アドレスは複数の利用者で共有されている場合がありま�
 下記の差分を確認して、本当に取り消していいか検証してください。よろしければ変更を保存して取り消しを完了してください。',
 'undo-failure' => '中間の版での編集と競合したため、取り消せませんでした。',
 'undo-norev' => '取り消そうとした編集が存在しないか削除済みのため取り消せませんでした。',
-'undo-summary' => '[[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|トーク]]) による版 $1 を取り消し',
+'undo-summary' => '[[Special:Contributions/$2|$2]] ([[User talk:$2|トーク]]) による版 $1 を取り消し',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'アカウントを作成できません',
-'cantcreateaccount-text' => "このIPアドレス('''$1''')からのアカウント作成は[[wiki_user:$3|$3]]によってブロックされています。
+'cantcreateaccount-text' => "このIPアドレス('''$1''')からのアカウント作成は[[User:$3|$3]]によってブロックされています。
 
 $3が示した理由: ''$2''",
 
@@ -1240,9 +1240,9 @@ $3が示した理由: ''$2''",
 
 # Revision deletion
 'rev-deleted-comment' => '(要約は除去されています)',
-'rev-deleted-wiki_user' => '(利用者名は除去されています)',
+'rev-deleted-user' => '(利用者名は除去されています)',
 'rev-deleted-event' => '(記録は除去されています)',
-'rev-deleted-wiki_user-contribs' => '[利用者名またはIPアドレスは除去されました - その編集は投稿記録で非表示にされています]',
+'rev-deleted-user-contribs' => '[利用者名またはIPアドレスは除去されました - その編集は投稿記録で非表示にされています]',
 'rev-deleted-text-permission' => "この版は'''削除されています'''。
 [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 削除記録]に詳細情報があるかもしれません。",
 'rev-deleted-text-unhide' => "この版は'''削除されています'''。
@@ -1294,7 +1294,7 @@ $3が示した理由: ''$2''",
 'revdelete-hide-image' => 'ファイル内容を隠す',
 'revdelete-hide-name' => '操作および対象を隠す',
 'revdelete-hide-comment' => '編集の要約を隠す',
-'revdelete-hide-wiki_user' => '投稿者の利用者名またはIPを隠す',
+'revdelete-hide-user' => '投稿者の利用者名またはIPを隠す',
 'revdelete-hide-restricted' => '他の利用者と同様に管理者からもデータを隠す',
 'revdelete-radio-same' => '(変更しない)',
 'revdelete-radio-set' => 'はい',
@@ -1381,7 +1381,7 @@ $1",
 'showhideselectedversions' => '選択した版を表示/非表示',
 'editundo' => '取り消し',
 'diff-multi' => '({{PLURAL:$2|$2人の利用者}}による、{{PLURAL:$1|間の$1版}}が非表示)',
-'diff-multi-manywiki_users' => '({{PLURAL:$2|$2人を超える利用者}}による、{{PLURAL:$1|間の$1版}}が非表示)',
+'diff-multi-manyusers' => '({{PLURAL:$2|$2人を超える利用者}}による、{{PLURAL:$1|間の$1版}}が非表示)',
 'difference-missing-revision' => '指定された{{PLURAL:$2|$2版}}の差分 ($1) が見つかりませんでした。
 
 通常、削除されたページの版への古い差分表示や固定リンクをたどった際に、このようなことが起きます。 
@@ -1466,7 +1466,7 @@ $1",
 'mypreferences' => '個人設定',
 'prefs-edits' => '編集回数:',
 'prefsnologin' => 'ログインしていません',
-'prefsnologintext' => '個人設定を変更するためには<span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} ログイン]</span>する必要があります。',
+'prefsnologintext' => '個人設定を変更するためには<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} ログイン]</span>する必要があります。',
 'changepassword' => 'パスワードの変更',
 'prefs-skin' => '外装',
 'skin-preview' => 'プレビュー',
@@ -1474,7 +1474,7 @@ $1",
 'prefs-beta' => 'ベータ版機能',
 'prefs-datetime' => '日付と時刻',
 'prefs-labs' => 'ラボの機能',
-'prefs-wiki_user-pages' => '利用者ページ',
+'prefs-user-pages' => '利用者ページ',
 'prefs-personal' => '利用者情報',
 'prefs-rc' => '最近の更新',
 'prefs-watchlist' => 'ウォッチリスト',
@@ -1539,7 +1539,7 @@ $1",
 'prefs-emailconfirm-label' => 'メールアドレスの確認:',
 'prefs-textboxsize' => '編集画面の大きさ',
 'youremail' => 'メールアドレス:',
-'wiki_username' => '利用者名:',
+'username' => '利用者名:',
 'uid' => '利用者 ID:',
 'prefs-memberingroups' => '所属{{PLURAL:$1|グループ}}:',
 'prefs-memberingroups-type' => '$1',
@@ -1583,36 +1583,36 @@ $1 {{PLURAL:$1|文字}}以下である必要があります。',
 'prefs-displaywatchlist' => '表示の設定',
 'prefs-diffs' => '差分',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'メールアドレスは有効のようです',
 'email-address-validity-invalid' => '有効なメールアドレスを入力してください',
 
-# wiki_user rights
-'wiki_userrights' => '利用者権限を管理',
-'wiki_userrights-lookup-wiki_user' => '利用者グループを管理',
-'wiki_userrights-wiki_user-editname' => '利用者名を入力:',
-'editwiki_usergroup' => '利用者グループを編集',
-'editingwiki_user' => "利用者''' [[wiki_user:$1|$1]]''' $2 の権限を変更",
-'wiki_userrights-editwiki_usergroup' => '利用者グループを編集',
-'savewiki_usergroups' => '利用者グループを保存',
-'wiki_userrights-groupsmember' => '所属グループ:',
-'wiki_userrights-groupsmember-auto' => '自動的に付与される権限:',
-'wiki_userrights-groups-help' => 'この利用者が属するグループを変更できます。
+# User rights
+'userrights' => '利用者権限を管理',
+'userrights-lookup-user' => '利用者グループを管理',
+'userrights-user-editname' => '利用者名を入力:',
+'editusergroup' => '利用者グループを編集',
+'editinguser' => "利用者''' [[User:$1|$1]]''' $2 の権限を変更",
+'userrights-editusergroup' => '利用者グループを編集',
+'saveusergroups' => '利用者グループを保存',
+'userrights-groupsmember' => '所属グループ:',
+'userrights-groupsmember-auto' => '自動的に付与される権限:',
+'userrights-groups-help' => 'この利用者が属するグループを変更できます。
 * チェックが入っているボックスは、この利用者がそのグループに属していることを意味します。
 * チェックが入っていないボックスは、この利用者がそのグループに属していないことを意味します。
 * 「*」はグループに一旦追加した場合に除去（あるいはその逆）ができないことを示しています。',
-'wiki_userrights-reason' => '理由:',
-'wiki_userrights-no-interwiki' => '他ウィキ上における利用者権限の編集権限はありません。',
-'wiki_userrights-nodatabase' => 'データベース$1は存在しないか、ローカル上にありません。',
-'wiki_userrights-nologin' => '利用者権限を付与するには、管理者アカウントで[[Special:wiki_userLogin|ログイン]]する必要があります。',
-'wiki_userrights-notallowed' => 'あなたのアカウントには利用者権限を追加または除去する権限がありません。',
-'wiki_userrights-changeable-col' => '変更できるグループ',
-'wiki_userrights-unchangeable-col' => '変更できないグループ',
-'wiki_userrights-irreversible-marker' => '$1*',
+'userrights-reason' => '理由:',
+'userrights-no-interwiki' => '他ウィキ上における利用者権限の編集権限はありません。',
+'userrights-nodatabase' => 'データベース$1は存在しないか、ローカル上にありません。',
+'userrights-nologin' => '利用者権限を付与するには、管理者アカウントで[[Special:UserLogin|ログイン]]する必要があります。',
+'userrights-notallowed' => 'あなたのアカウントには利用者権限を追加または除去する権限がありません。',
+'userrights-changeable-col' => '変更できるグループ',
+'userrights-unchangeable-col' => '変更できないグループ',
+'userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'グループ:',
-'group-wiki_user' => '登録利用者',
+'group-user' => '登録利用者',
 'group-autoconfirmed' => '自動承認された利用者',
 'group-bot' => 'ボット',
 'group-sysop' => '管理者',
@@ -1620,14 +1620,14 @@ $1 {{PLURAL:$1|文字}}以下である必要があります。',
 'group-suppress' => '秘匿者',
 'group-all' => '(全員)',
 
-'group-wiki_user-member' => '{{GENDER:$1|登録利用者}}',
+'group-user-member' => '{{GENDER:$1|登録利用者}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|自動承認された利用者}}',
 'group-bot-member' => '{{GENDER:$1|ボット}}',
 'group-sysop-member' => '{{GENDER:$1|管理者}}',
 'group-bureaucrat-member' => '{{GENDER:$1|ビューロクラット}}',
 'group-suppress-member' => '{{GENDER:$1|秘匿者}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:登録利用者',
+'grouppage-user' => '{{ns:project}}:登録利用者',
 'grouppage-autoconfirmed' => '{{ns:project}}:自動承認された利用者',
 'grouppage-bot' => '{{ns:project}}:ボット',
 'grouppage-sysop' => '{{ns:project}}:管理者',
@@ -1643,7 +1643,7 @@ $1 {{PLURAL:$1|文字}}以下である必要があります。',
 'right-minoredit' => '細部の編集の印を付ける',
 'right-move' => 'ページを移動',
 'right-move-subpages' => '下位ページを含めてページを移動',
-'right-move-rootwiki_userpages' => '利用者ページ本体を移動',
+'right-move-rootuserpages' => '利用者ページ本体を移動',
 'right-movefile' => 'ファイルを移動',
 'right-suppressredirect' => '転送ページを作成せずにページを移動',
 'right-upload' => 'ファイルをアップロード',
@@ -1669,16 +1669,16 @@ $1 {{PLURAL:$1|文字}}以下である必要があります。',
 'right-suppressionlog' => '非公開記録を閲覧',
 'right-block' => '他の利用者の編集をブロック',
 'right-blockemail' => '利用者のメール送信をブロック',
-'right-hidewiki_user' => '利用者名をブロックして公開記録から隠す',
+'right-hideuser' => '利用者名をブロックして公開記録から隠す',
 'right-ipblock-exempt' => 'IPブロック、自動ブロック、広域ブロックを回避',
 'right-proxyunbannable' => 'プロキシの自動ブロックを回避',
 'right-unblockself' => '自身に対するブロックを解除',
 'right-protect' => '保護レベルを変更し、保護されたページを編集',
 'right-editprotected' => '保護ページ（カスケード保護を除く）を編集',
 'right-editinterface' => 'ユーザーインターフェイスを編集',
-'right-editwiki_usercssjs' => '他の利用者のCSSファイル/JavaScriptファイルを編集',
-'right-editwiki_usercss' => '他の利用者のCSSファイルを編集',
-'right-editwiki_userjs' => '他の利用者のJavaScriptファイルを編集',
+'right-editusercssjs' => '他の利用者のCSSファイル/JavaScriptファイルを編集',
+'right-editusercss' => '他の利用者のCSSファイルを編集',
+'right-edituserjs' => '他の利用者のJavaScriptファイルを編集',
 'right-rollback' => '特定ページを最後に編集した利用者の編集を即時巻き戻し',
 'right-markbotedits' => '巻き戻しをボットの編集として扱う',
 'right-noratelimit' => '速度制限を受けない',
@@ -1689,14 +1689,14 @@ $1 {{PLURAL:$1|文字}}以下である必要があります。',
 'right-patrolmarks' => '最近の更新で巡回済み印を閲覧',
 'right-unwatchedpages' => 'ウォッチされていないページ一覧を閲覧',
 'right-mergehistory' => 'ページの履歴を統合',
-'right-wiki_userrights' => '全利用者権限を編集',
-'right-wiki_userrights-interwiki' => '他のウィキの利用者の利用者権限を編集',
+'right-userrights' => '全利用者権限を編集',
+'right-userrights-interwiki' => '他のウィキの利用者の利用者権限を編集',
 'right-siteadmin' => 'データベースをロックおよびロック解除',
 'right-override-export-depth' => 'リンク先ページを5階層まで含めて書き出す',
 'right-sendemail' => '他の利用者にメールを送信',
 'right-passwordreset' => 'パスワード再設定メールを閲覧',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => '利用者権限変更記録',
 'rightslogtext' => '以下は利用者権限の変更記録です。',
 'rightslogentry' => '$1 の所属グループを $2 から $3 に変更しました',
@@ -1712,7 +1712,7 @@ $1 {{PLURAL:$1|文字}}以下である必要があります。',
 'action-minoredit' => '細部の編集の印を付ける',
 'action-move' => 'このページの移動',
 'action-move-subpages' => 'このページとその下位ページの移動',
-'action-move-rootwiki_userpages' => '利用者ページ本体の移動',
+'action-move-rootuserpages' => '利用者ページ本体の移動',
 'action-movefile' => 'このファイルの移動',
 'action-upload' => 'このファイルのアップロード',
 'action-reupload' => 'この既存のファイルへの上書き',
@@ -1735,8 +1735,8 @@ $1 {{PLURAL:$1|文字}}以下である必要があります。',
 'action-autopatrol' => '自分の編集を巡回済みにする',
 'action-unwatchedpages' => 'ウォッチされていないページ一覧の閲覧',
 'action-mergehistory' => 'このページの履歴の統合',
-'action-wiki_userrights' => '全利用者権限の編集',
-'action-wiki_userrights-interwiki' => '他のウィキの利用者の利用者権限変更',
+'action-userrights' => '全利用者権限の編集',
+'action-userrights-interwiki' => '他のウィキの利用者の利用者権限変更',
 'action-siteadmin' => 'データベースのロックまたはロック解除',
 'action-sendemail' => 'メールの送信',
 
@@ -1768,7 +1768,7 @@ $1 {{PLURAL:$1|文字}}以下である必要があります。',
 'newpageletter' => '新',
 'boteditletter' => 'ボ',
 'unpatrolledletter' => '!',
-'number_of_watching_wiki_users_pageview' => '[{{PLURAL:$1|$1 人の利用者}}がウォッチしています]',
+'number_of_watching_users_pageview' => '[{{PLURAL:$1|$1 人の利用者}}がウォッチしています]',
 'rc_categories' => 'カテゴリを限定（「|」で区切る）',
 'rc_categories_any' => 'すべて',
 'rc-change-size' => '$1',
@@ -1795,7 +1795,7 @@ $1 {{PLURAL:$1|文字}}以下である必要があります。',
 'reuploaddesc' => 'アップロードを中止してアップロードフォームへ戻る',
 'upload-tryagain' => '修正したファイル解説を投稿',
 'uploadnologin' => 'ログインしていません',
-'uploadnologintext' => 'ファイルをアップロードするには[[Special:wiki_userLogin|ログイン]]する必要があります。',
+'uploadnologintext' => 'ファイルをアップロードするには[[Special:UserLogin|ログイン]]する必要があります。',
 'upload_directory_missing' => 'アップロード先ディレクトリ ($1) が見つかりませんでした。ウェブ サーバーによる作成もできませんでした。',
 'upload_directory_read_only' => 'アップロード先ディレクトリ ($1) には、ウェブサーバーが書き込めません。',
 'uploaderror' => 'アップロードのエラー',
@@ -1938,11 +1938,11 @@ $1',
 'upload-proto-error-text' => '遠隔アップロード機能では、URLが<code>http://</code>または<code>ftp://</code>で始まっている必要があります。',
 'upload-file-error' => '内部エラー',
 'upload-file-error-text' => '内部エラーのため、サーバー上の一時ファイル作成に失敗しました。
-[[Special:Listwiki_users/sysop|管理者]]に連絡してください。',
+[[Special:ListUsers/sysop|管理者]]に連絡してください。',
 'upload-misc-error' => '不明なアップロードエラー',
 'upload-misc-error-text' => 'アップロード中に不明なエラーが発生しました。
 指定した URL が正しいこととアクセスできることを確認して、もう一度試してください。
-それでもこのエラーが発生する場合は、[[Special:Listwiki_users/sysop|管理者]]に連絡してください。',
+それでもこのエラーが発生する場合は、[[Special:ListUsers/sysop|管理者]]に連絡してください。',
 'upload-too-many-redirects' => 'そのURLに含まれるリダイレクトが多すぎます',
 'upload-unknown-size' => 'サイズ不明',
 'upload-http-error' => 'HTTPエラー発生：$1',
@@ -2062,7 +2062,7 @@ URLが正しいものであり、ウェブサイトが稼働していること�
 'listfiles_thumb' => 'サムネイル',
 'listfiles_date' => '日時',
 'listfiles_name' => '名前',
-'listfiles_wiki_user' => '利用者',
+'listfiles_user' => '利用者',
 'listfiles_size' => 'サイズ',
 'listfiles_description' => '概要',
 'listfiles_count' => '版数',
@@ -2079,7 +2079,7 @@ URLが正しいものであり、ウェブサイトが稼働していること�
 'filehist-thumb' => 'サムネイル',
 'filehist-thumbtext' => '$1時点における版のサムネイル',
 'filehist-nothumb' => 'サムネイルなし',
-'filehist-wiki_user' => '利用者',
+'filehist-user' => '利用者',
 'filehist-dimensions' => '解像度',
 'filehist-filesize' => 'ファイルサイズ',
 'filehist-comment' => 'コメント',
@@ -2173,7 +2173,7 @@ contenttype/subtypeの形式で入力してください (例: <code>image/jpeg</
 'statistics-header-pages' => 'ページに関する統計',
 'statistics-header-edits' => '編集に関する統計',
 'statistics-header-views' => '閲覧に関する統計',
-'statistics-header-wiki_users' => '利用者に関する統計',
+'statistics-header-users' => '利用者に関する統計',
 'statistics-header-hooks' => 'その他の統計',
 'statistics-articles' => '記事数',
 'statistics-pages' => '総ページ数',
@@ -2184,9 +2184,9 @@ contenttype/subtypeの形式で入力してください (例: <code>image/jpeg</
 'statistics-views-total' => '総閲覧回数',
 'statistics-views-total-desc' => '存在しないページと特別ページに対する閲覧は含まれていません',
 'statistics-views-peredit' => '1編集あたりの閲覧回数',
-'statistics-wiki_users' => '[[Special:Listwiki_users|利用者]]',
-'statistics-wiki_users-active' => '活動中の利用者',
-'statistics-wiki_users-active-desc' => '過去 {{PLURAL:$1|$1 日間}}に何らかの操作をした利用者',
+'statistics-users' => '[[Special:ListUsers|利用者]]',
+'statistics-users-active' => '活動中の利用者',
+'statistics-users-active-desc' => '過去 {{PLURAL:$1|$1 日間}}に何らかの操作をした利用者',
 'statistics-mostpopular' => '最も閲覧されているページ',
 
 'disambiguations' => '曖昧さ回避ページにリンクしているページ',
@@ -2264,13 +2264,13 @@ contenttype/subtypeの形式で入力してください (例: <code>image/jpeg</
 'protectedtitles' => '作成保護されているページ名',
 'protectedtitlestext' => '以下のページは新規作成が禁止されています',
 'protectedtitlesempty' => 'これらの引数で現在保護されているページはありません。',
-'listwiki_users' => '利用者一覧',
-'listwiki_users-editsonly' => '投稿記録のある利用者のみを表示',
-'listwiki_users-creationsort' => '作成日順に並べ替え',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|回編集}}',
-'wiki_usercreated' => '$1 $2 に{{GENDER:$3|作成}}',
+'listusers' => '利用者一覧',
+'listusers-editsonly' => '投稿記録のある利用者のみを表示',
+'listusers-creationsort' => '作成日順に並べ替え',
+'usereditcount' => '$1 {{PLURAL:$1|回編集}}',
+'usercreated' => '$1 $2 に{{GENDER:$3|作成}}',
 'newpages' => '新しいページ',
-'newpages-wiki_username' => '利用者名:',
+'newpages-username' => '利用者名:',
 'ancientpages' => '最古のページ',
 'move' => '移動',
 'movethispage' => 'このページを移動',
@@ -2295,7 +2295,7 @@ contenttype/subtypeの形式で入力してください (例: <code>image/jpeg</
 'booksources-invalid-isbn' => '指定した ISBN は有効ではないようです。情報源から写し間違えていないか確認してください。',
 
 # Special:Log
-'speciallogwiki_userlabel' => '実行者:',
+'specialloguserlabel' => '実行者:',
 'speciallogtitlelabel' => '対象 (ページまたは利用者):',
 'log' => '記録',
 'all-logs-page' => 'すべての公開記録',
@@ -2354,24 +2354,24 @@ contenttype/subtypeの形式で入力してください (例: <code>image/jpeg</
 'linksearch-line' => '$1 が $2 からリンクされています',
 'linksearch-error' => 'ワイルドカードはホスト名の先頭でのみ使用できます。',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => '最初に表示する利用者:',
-'listwiki_users-submit' => '表示',
-'listwiki_users-noresult' => '利用者が見つかりませんでした。',
-'listwiki_users-blocked' => '(ブロック中)',
+# Special:ListUsers
+'listusersfrom' => '最初に表示する利用者:',
+'listusers-submit' => '表示',
+'listusers-noresult' => '利用者が見つかりませんでした。',
+'listusers-blocked' => '(ブロック中)',
 
-# Special:Activewiki_users
-'activewiki_users' => '活動中の利用者一覧',
-'activewiki_users-intro' => 'これは過去 $1 {{PLURAL:$1|日|日間}}に何らかの活動をした利用者の一覧です。',
-'activewiki_users-count' => '過去 {{PLURAL:$3|1 日|$3 日間}}に $1 {{PLURAL:$1|回の操作}}',
-'activewiki_users-from' => '最初に表示する利用者:',
-'activewiki_users-hidebots' => 'ボットを隠す',
-'activewiki_users-hidesysops' => '管理者を隠す',
-'activewiki_users-noresult' => '利用者が見つかりませんでした。',
+# Special:ActiveUsers
+'activeusers' => '活動中の利用者一覧',
+'activeusers-intro' => 'これは過去 $1 {{PLURAL:$1|日|日間}}に何らかの活動をした利用者の一覧です。',
+'activeusers-count' => '過去 {{PLURAL:$3|1 日|$3 日間}}に $1 {{PLURAL:$1|回の操作}}',
+'activeusers-from' => '最初に表示する利用者:',
+'activeusers-hidebots' => 'ボットを隠す',
+'activeusers-hidesysops' => '管理者を隠す',
+'activeusers-noresult' => '利用者が見つかりませんでした。',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'アカウント作成記録',
-'newwiki_userlogpagetext' => '以下はアカウント作成の記録です。',
+# Special:Log/newusers
+'newuserlogpage' => 'アカウント作成記録',
+'newuserlogpagetext' => '以下はアカウント作成の記録です。',
 
 # Special:ListGroupRights
 'listgrouprights' => '利用者グループの権限',
@@ -2394,27 +2394,27 @@ contenttype/subtypeの形式で入力してください (例: <code>image/jpeg</
 'listgrouprights-addgroup-self-all' => '自分のアカウントに全グループを追加可能',
 'listgrouprights-removegroup-self-all' => '自分のアカウントから全グループを除去可能',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => '送信アドレスがありません',
-'mailnologintext' => '他の利用者宛にメールを送信するためには、[[Special:wiki_userLogin|ログイン]]し、[[Special:Preferences|個人設定]]で有効なメールアドレスを設定する必要があります。',
-'emailwiki_user' => 'この利用者にメールを送信',
-'emailwiki_user-title-target' => 'この{{GENDER:$1|利用者}}にメールを送信',
-'emailwiki_user-title-notarget' => '利用者にメールを送信',
+'mailnologintext' => '他の利用者宛にメールを送信するためには、[[Special:UserLogin|ログイン]]し、[[Special:Preferences|個人設定]]で有効なメールアドレスを設定する必要があります。',
+'emailuser' => 'この利用者にメールを送信',
+'emailuser-title-target' => 'この{{GENDER:$1|利用者}}にメールを送信',
+'emailuser-title-notarget' => '利用者にメールを送信',
 'emailpage' => '利用者にメールを送信',
 'emailpagetext' => '以下のフォームを使用してこの{{GENDER:$1|利用者}}にメールを送信できます。
 「差出人」として、[[Special:Preferences|利用者の個人設定]]で入力したメールアドレスが設定されます。これにより、受信者があなたに直接返信できるようになります。',
-'wiki_usermailererror' => 'メールが以下のエラーを返しました：',
+'usermailererror' => 'メールが以下のエラーを返しました：',
 'defemailsubject' => '{{SITENAME}} 利用者「$1」からのメール',
-'wiki_usermaildisabled' => '利用者メール機能は無効です',
-'wiki_usermaildisabledtext' => 'このウィキでは他の利用者にメールを送信できません',
+'usermaildisabled' => '利用者メール機能は無効です',
+'usermaildisabledtext' => 'このウィキでは他の利用者にメールを送信できません',
 'noemailtitle' => 'メールアドレスがありません',
 'noemailtext' => 'この利用者は有効なメールアドレスを登録していません。',
 'nowikiemailtitle' => 'メールは許可されていません',
 'nowikiemailtext' => 'この利用者は他の利用者からメールを受け取らない設定にしています。',
 'emailnotarget' => '受信者の利用者名が存在しない、あるいは無効です。',
 'emailtarget' => '受信者の利用者名を入力してください',
-'emailwiki_username' => '利用者名:',
-'emailwiki_usernamesubmit' => '送信',
+'emailusername' => '利用者名:',
+'emailusernamesubmit' => '送信',
 'email-legend' => '{{SITENAME}} の他の利用者にメールを送信',
 'emailfrom' => '差出人:',
 'emailto' => '宛先:',
@@ -2425,11 +2425,11 @@ contenttype/subtypeの形式で入力してください (例: <code>image/jpeg</
 'emailccsubject' => '$1 に送信したメールの控え: $2',
 'emailsent' => 'メールを送信しました',
 'emailsenttext' => 'メールを送信しました。',
-'emailwiki_userfooter' => 'このメールは$1から$2へ、{{SITENAME}}の「利用者にメールを送信」機能で送信されました。',
+'emailuserfooter' => 'このメールは$1から$2へ、{{SITENAME}}の「利用者にメールを送信」機能で送信されました。',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'システムメッセージを残す。',
-'wiki_usermessage-editor' => 'システムメッセンジャー',
+# User Messenger
+'usermessage-summary' => 'システムメッセージを残す。',
+'usermessage-editor' => 'システムメッセンジャー',
 
 # Watchlist
 'watchlist' => 'ウォッチリスト',
@@ -2438,7 +2438,7 @@ contenttype/subtypeの形式で入力してください (例: <code>image/jpeg</
 'nowatchlist' => 'ウォッチリストには何も項目がありません。',
 'watchlistanontext' => 'ウォッチリストにある項目を閲覧または編集するには、$1してください。',
 'watchnologin' => 'ログインしていません',
-'watchnologintext' => 'ウォッチリストを変更するためには、[[Special:wiki_userLogin|ログイン]]している必要があります。',
+'watchnologintext' => 'ウォッチリストを変更するためには、[[Special:UserLogin|ログイン]]している必要があります。',
 'addwatch' => 'ウォッチリストに追加',
 'addedwatchtext' => 'ページ「[[:$1]]」を[[Special:Watchlist|ウォッチリスト]]に追加しました。
 このページまたはそのトークページが変更されると、ウォッチリストに表示されます。',
@@ -2550,13 +2550,13 @@ $UNWATCHURL
 'rollbackfailed' => '巻き戻しに失敗しました',
 'cantrollback' => '編集を差し戻せません。
 最後の投稿者が、このページの唯一の作者です。',
-'alreadyrolled' => 'ページ[[:$1]]の[[wiki_user:$2|$2]]（[[wiki_user talk:$2|トーク]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]）による編集を巻き戻せません。
+'alreadyrolled' => 'ページ[[:$1]]の[[User:$2|$2]]（[[User talk:$2|トーク]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]）による編集を巻き戻せません。
 他の利用者が既に編集または巻き戻しを行ったためです。
 
-このページの最後の編集は[[wiki_user:$3|$3]]（[[wiki_user talk:$3|トーク]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]）によるものです。',
+このページの最後の編集は[[User:$3|$3]]（[[User talk:$3|トーク]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]）によるものです。',
 'editcomment' => "編集内容の要約:「''$1''」",
-'revertpage' => '[[Special:Contributions/$2|$2]]（[[wiki_user talk:$2|トーク]]）による編集を[[wiki_user:$1|$1]]による直前の版へ差し戻しました',
-'revertpage-nowiki_user' => '（利用者名削除）による編集を[[wiki_user:$1|$1]]による直前の版へ差し戻しました',
+'revertpage' => '[[Special:Contributions/$2|$2]]（[[User talk:$2|トーク]]）による編集を[[User:$1|$1]]による直前の版へ差し戻しました',
+'revertpage-nouser' => '（利用者名削除）による編集を[[User:$1|$1]]による直前の版へ差し戻しました',
 'rollback-success' => '$1による編集を差し戻しました。
 $2による直前の版へ変更されました。',
 
@@ -2714,13 +2714,13 @@ $1',
 'sp-contributions-uploads' => 'アップロード',
 'sp-contributions-logs' => '記録',
 'sp-contributions-talk' => 'トーク',
-'sp-contributions-wiki_userrights' => '利用者権限の管理',
+'sp-contributions-userrights' => '利用者権限の管理',
 'sp-contributions-blocked-notice' => 'この利用者は現在ブロックされています。
 参考のために最新のブロック記録項目を以下に表示します:',
 'sp-contributions-blocked-notice-anon' => 'このIPアドレスは現在ブロックされています。
 参考のために最近のブロック記録項目を以下に表示します:',
 'sp-contributions-search' => '投稿の検索',
-'sp-contributions-wiki_username' => 'IPアドレスまたは利用者名:',
+'sp-contributions-username' => 'IPアドレスまたは利用者名:',
 'sp-contributions-toponly' => '最新版の編集のみを表示',
 'sp-contributions-submit' => '検索',
 
@@ -2753,7 +2753,7 @@ $1',
 'blockiptext' => '以下のフォームを使用して、指定したIPアドレスまたは利用者からの書き込みアクセスをブロックできます。
 このような措置は、荒らしからの防御の目的のみに行われるべきで、また[[{{MediaWiki:Policy-url}}|方針]]に沿ったものであるべきです。
 以下にブロックの理由を具体的に書いてください (例えば、荒らされたページへの言及など)。',
-'ipadressorwiki_username' => 'IPアドレスまたは利用者名:',
+'ipadressorusername' => 'IPアドレスまたは利用者名:',
 'ipbexpiry' => '有効期限:',
 'ipbreason' => '理由:',
 'ipbreasonotherlist' => 'その他の理由',
@@ -2775,8 +2775,8 @@ $1',
 'ipbotheroption' => 'その他',
 'ipbotherreason' => '他の、または追加の理由:',
 'ipbhidename' => '利用者名を編集履歴や各種一覧から秘匿する',
-'ipbwatchwiki_user' => 'この利用者の利用者ページとトークページをウォッチ',
-'ipb-disablewiki_usertalk' => 'この利用者がブロック中に自身のトークページを編集することを禁止',
+'ipbwatchuser' => 'この利用者の利用者ページとトークページをウォッチ',
+'ipb-disableusertalk' => 'この利用者がブロック中に自身のトークページを編集することを禁止',
 'ipb-change-block' => 'これらの設定で、利用者を再びブロック',
 'ipb-confirm' => 'ブロックの確認',
 'badipaddress' => '無効なIPアドレス',
@@ -2784,7 +2784,7 @@ $1',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]]をブロックしました。<br />
 [[Special:BlockList|ブロックの一覧]]を参照してください。',
 'ipb-blockingself' => '自分自身をブロックしようとしています! 本当に実行しますか?',
-'ipb-confirmhidewiki_user' => '秘匿が有効になっている利用者をブロックしようとしています。実行すると、すべてのリストやログでこの利用者名が表示されません。本当に実行しますか?',
+'ipb-confirmhideuser' => '秘匿が有効になっている利用者をブロックしようとしています。実行すると、すべてのリストやログでこの利用者名が表示されません。本当に実行しますか?',
 'ipb-edit-dropdown' => 'ブロック理由を編集',
 'ipb-unblock-addr' => '$1のブロックを解除',
 'ipb-unblock' => '利用者またはIPアドレスのブロックを解除',
@@ -2793,13 +2793,13 @@ $1',
 'unblockip' => 'ブロックを解除',
 'unblockiptext' => '以下のフォームで利用者またはIPアドレスのブロックを解除できます。',
 'ipusubmit' => 'このブロックを解除',
-'unblocked' => '[[wiki_user:$1|$1]]のブロックを解除しました',
+'unblocked' => '[[User:$1|$1]]のブロックを解除しました',
 'unblocked-range' => '$1のブロックを解除しました',
 'unblocked-id' => 'ブロック$1を除去しました',
 'blocklist' => 'ブロックされている利用者',
 'ipblocklist' => 'ブロックされている利用者',
 'ipblocklist-legend' => 'ブロックされている利用者の検索',
-'blocklist-wiki_userblocks' => 'アカウントのブロックを非表示',
+'blocklist-userblocks' => 'アカウントのブロックを非表示',
 'blocklist-tempblocks' => '期限付きブロックを非表示',
 'blocklist-addressblocks' => '単一 IP のブロックを非表示',
 'blocklist-rangeblocks' => '範囲ブロックを非表示',
@@ -2818,7 +2818,7 @@ $1',
 'noautoblockblock' => '自動ブロック無効',
 'createaccountblock' => 'アカウント作成の禁止',
 'emailblock' => 'メール送信の禁止',
-'blocklist-nowiki_usertalk' => '自分のトークページの編集禁止',
+'blocklist-nousertalk' => '自分のトークページの編集禁止',
 'ipblocklist-empty' => 'ブロック一覧は空です。',
 'ipblocklist-no-results' => '指定されたIPアドレスまたは利用者名はブロックされていません。',
 'blocklink' => 'ブロック',
@@ -2826,7 +2826,7 @@ $1',
 'change-blocklink' => '設定を変更',
 'contribslink' => '投稿記録',
 'emaillink' => 'メールを送信',
-'autoblocker' => "この IP アドレスを「[[wiki_user:$1|$1]]」が最近使用したため、自動ブロックされています。
+'autoblocker' => "この IP アドレスを「[[User:$1|$1]]」が最近使用したため、自動ブロックされています。
 $1 のブロックの理由は「''$2''」です。",
 'blocklogpage' => 'ブロック記録',
 'blocklog-showlog' => 'この利用者は以前にブロックされたことがあります。
@@ -2843,7 +2843,7 @@ $1 のブロックの理由は「''$2''」です。",
 'block-log-flags-nocreate' => 'アカウント作成のブロック',
 'block-log-flags-noautoblock' => '自動ブロック無効',
 'block-log-flags-noemail' => 'メール送信のブロック',
-'block-log-flags-nowiki_usertalk' => '自分のトークページの編集禁止',
+'block-log-flags-nousertalk' => '自分のトークページの編集禁止',
 'block-log-flags-angry-autoblock' => '拡張自動ブロック有効',
 'block-log-flags-hiddenname' => '利用者名の秘匿',
 'range_block_disabled' => '範囲ブロックを作成する管理者機能は無効化されています。',
@@ -2853,7 +2853,7 @@ $1 のブロックの理由は「''$2''」です。",
 'ipb_already_blocked' => '「$1」は既にブロックされています',
 'ipb-needreblock' => '$1 は既にブロックされています。設定を変更しますか?',
 'ipb-otherblocks-header' => 'その他の{{PLURAL:$1|ブロック}}',
-'unblock-hidewiki_user' => '利用者名が隠されているため、この利用者のブロックを解除できません。',
+'unblock-hideuser' => '利用者名が隠されているため、この利用者のブロックを解除できません。',
 'ipb_cant_unblock' => 'エラー: ブロック ID $1 が見つかりません。ブロックが既に解除されている可能性があります。',
 'ipb_blocked_as_range' => 'エラー: IPアドレス$1は直接ブロックされておらず、ブロック解除できませんでした。
 ただし、$2の範囲でブロックされており、こちらのブロックは別途解除できます。',
@@ -2870,8 +2870,8 @@ $1 のブロックの理由は「''$2''」です。",
 'sorbs_create_account_reason' => 'ご使用中のIPアドレスが、{{SITENAME}}の使用しているDNSBLに公開プロキシとして記載されています。
 アカウント作成はできません',
 'cant-block-while-blocked' => 'ブロックされている間は、他の利用者をブロックできません。',
-'cant-see-hidden-wiki_user' => 'ブロックしようとしている利用者は、既にブロックされ隠されています。
-あなたには hidewiki_user 権限がないため、この利用者のブロックの閲覧/編集はできません。',
+'cant-see-hidden-user' => 'ブロックしようとしている利用者は、既にブロックされ隠されています。
+あなたには hideuser 権限がないため、この利用者のブロックの閲覧/編集はできません。',
 'ipbblocked' => '自分自身をブロックしているため、他の利用者のブロックやブロック解除はできません',
 'ipbnounblockself' => '自分自身のブロックは解除できません',
 
@@ -2927,13 +2927,13 @@ $1 のブロックの理由は「''$2''」です。",
 
 これらの場合、必要に応じて、トークページを移動または統合する必要があります。",
 'movearticle' => '移動するページ:',
-'movewiki_userpage-warning' => "'''警告:''' 利用者ページを移動しようとしています。この操作ではページのみが移動され、利用者名は''変更されない''点に注意してください。",
+'moveuserpage-warning' => "'''警告:''' 利用者ページを移動しようとしています。この操作ではページのみが移動され、利用者名は''変更されない''点に注意してください。",
 'movenologin' => 'ログインしていません',
-'movenologintext' => 'ページを移動するためには、登録利用者でありかつ、[[Special:wiki_userLogin|ログイン]]している必要があります。',
+'movenologintext' => 'ページを移動するためには、登録利用者でありかつ、[[Special:UserLogin|ログイン]]している必要があります。',
 'movenotallowed' => 'ページを移動する権限がありません。',
 'movenotallowedfile' => 'ファイルを移動する権限がありません。',
-'cant-move-wiki_user-page' => '利用者ページを移動させる権限がありません (下位ページ内を除く)。',
-'cant-move-to-wiki_user-page' => '利用者下位ページ以外の利用者ページに、ページを移動させる権限がありません。',
+'cant-move-user-page' => '利用者ページを移動させる権限がありません (下位ページ内を除く)。',
+'cant-move-to-user-page' => '利用者下位ページ以外の利用者ページに、ページを移動させる権限がありません。',
 'newtitle' => '新しいページ名:',
 'move-watch' => '移動元と移動先ページをウォッチ',
 'movepagebtn' => 'ページを移動',
@@ -3114,8 +3114,8 @@ MediaWiki 全般のローカライズ (地域化) に貢献したい場合は、
 'javascripttest-qunit-heading' => 'MediaWiki JavaScript QUnit テストスイート',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => '自分の利用者ページ',
-'tooltip-pt-anonwiki_userpage' => '自分が編集しているIPアドレスの利用者ページ',
+'tooltip-pt-userpage' => '自分の利用者ページ',
+'tooltip-pt-anonuserpage' => '自分が編集しているIPアドレスの利用者ページ',
 'tooltip-pt-mytalk' => '自分のトークページ',
 'tooltip-pt-anontalk' => 'このIPアドレスからなされた編集についての議論',
 'tooltip-pt-preferences' => '個人設定',
@@ -3153,13 +3153,13 @@ MediaWiki 全般のローカライズ (地域化) に貢献したい場合は、
 'tooltip-feed-rss' => 'このページのRSSフィード',
 'tooltip-feed-atom' => 'このページのAtomフィード',
 'tooltip-t-contributions' => 'この利用者の投稿の一覧',
-'tooltip-t-emailwiki_user' => 'この利用者にメールを送信する',
+'tooltip-t-emailuser' => 'この利用者にメールを送信する',
 'tooltip-t-upload' => 'ファイルをアップロードする',
 'tooltip-t-specialpages' => '特別ページの一覧',
 'tooltip-t-print' => 'このページの印刷用ページ',
 'tooltip-t-permalink' => 'このページのこの版への固定リンク',
 'tooltip-ca-nstab-main' => '本文を閲覧',
-'tooltip-ca-nstab-wiki_user' => '利用者ページを表示',
+'tooltip-ca-nstab-user' => '利用者ページを表示',
 'tooltip-ca-nstab-media' => 'メディアページを表示',
 'tooltip-ca-nstab-special' => 'これは特別ページです。編集はできません。',
 'tooltip-ca-nstab-project' => 'プロジェクトページを表示',
@@ -3223,13 +3223,13 @@ MediaWiki 全般のローカライズ (地域化) に貢献したい場合は、
 
 # Attribution
 'anonymous' => '{{SITENAME}}の匿名{{PLURAL:$1|利用者}}',
-'sitewiki_user' => '{{SITENAME}}の利用者 $1',
-'anonwiki_user' => '{{SITENAME}}の匿名利用者 $1',
+'siteuser' => '{{SITENAME}}の利用者 $1',
+'anonuser' => '{{SITENAME}}の匿名利用者 $1',
 'lastmodifiedatby' => 'このページの最終更新は $1 $2 に $3 によって行われました。',
 'othercontribs' => 'また、最終更新より前に $1 が編集しました。',
 'others' => 'その他',
-'sitewiki_users' => '{{SITENAME}}の{{PLURAL:$2|利用者}} $1',
-'anonwiki_users' => '{{SITENAME}}の匿名{{PLURAL:$2|利用者}} $1',
+'siteusers' => '{{SITENAME}}の{{PLURAL:$2|利用者}} $1',
+'anonusers' => '{{SITENAME}}の匿名{{PLURAL:$2|利用者}} $1',
 'creditspage' => 'ページの帰属表示',
 'nocredits' => 'このページに対する帰属情報がありません。',
 
@@ -3238,7 +3238,7 @@ MediaWiki 全般のローカライズ (地域化) に貢献したい場合は、
 'spamprotectiontext' => '保存しようとした文章はスパムフィルターによってブロックされました。
 これはおそらく、ブラックリストにある外部サイトへのリンクが原因で発生します。',
 'spamprotectionmatch' => '以下の文章はスパムフィルターが発動したものです：$1',
-'spambot_wiki_username' => 'MediaWikiスパム除去',
+'spambot_username' => 'MediaWikiスパム除去',
 'spam_reverting' => '$1へのリンクを含まない最新の版に差し戻し',
 'spam_blanking' => 'すべての版が$1へのリンクを含んでいます。白紙化します。',
 'spam_deleting' => 'すべての版が$1へのリンクを含んでいます。削除します。',
@@ -3263,9 +3263,9 @@ MediaWiki 全般のローカライズ (地域化) に貢献したい場合は、
 'pageinfo-redirects-value' => '$1',
 'pageinfo-subpages-name' => 'このページの下位ページ数',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|件のリダイレクト}}、$3 {{PLURAL:$3|件の非リダイレクト}})',
-'pageinfo-firstwiki_user' => 'ページの作成者',
+'pageinfo-firstuser' => 'ページの作成者',
 'pageinfo-firsttime' => 'ページの作成日時',
-'pageinfo-lastwiki_user' => '最終編集者',
+'pageinfo-lastuser' => '最終編集者',
 'pageinfo-lasttime' => '最終編集日時',
 'pageinfo-edits' => '総編集回数',
 'pageinfo-authors' => '総投稿者数',
@@ -3486,7 +3486,7 @@ Variants for Chinese language
 'exif-compressedbitsperpixel' => '画像圧縮モード',
 'exif-pixelydimension' => '実効画像の幅',
 'exif-pixelxdimension' => '実効画像の高さ',
-'exif-wiki_usercomment' => 'ユーザー コメント',
+'exif-usercomment' => 'ユーザー コメント',
 'exif-relatedsoundfile' => '関連音声ファイル',
 'exif-datetimeoriginal' => '原画像データの生成日時',
 'exif-datetimedigitized' => 'デジタルデータの作成日時',
@@ -3871,7 +3871,7 @@ Variants for Chinese language
 このコードの有効期限が切れている可能性があります。',
 'confirmemail_needlogin' => 'メールアドレスを確認するために$1が必要です。',
 'confirmemail_success' => 'メールアドレスは確認されました。
-[[Special:wiki_userLogin|ログイン]]してウィキを使用できます。',
+[[Special:UserLogin|ログイン]]してウィキを使用できます。',
 'confirmemail_loggedin' => 'メールアドレスは確認されました。',
 'confirmemail_error' => '確認情報を保存する際にエラーが発生しました。',
 'confirmemail_subject' => '{{SITENAME}} メールアドレスの確認',
@@ -3927,10 +3927,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''警告''': このページが、編集開始後に削除されました!",
-'confirmrecreate' => "あなたが編集を開始した後、[[wiki_user:$1|$1]] ([[wiki_user talk:$1|トーク]]) がこのページを以下の理由で削除しました:
+'confirmrecreate' => "あなたが編集を開始した後、[[User:$1|$1]] ([[User talk:$1|トーク]]) がこのページを以下の理由で削除しました:
 : ''$2''
 このままこのページを本当に再作成していいか確認してください。",
-'confirmrecreate-noreason' => 'あなたが編集を開始した後、[[wiki_user:$1|$1]] ([[wiki_user talk:$1|トーク]]) がこのページを削除しました。このページを本当に再作成していいかご確認ください。',
+'confirmrecreate-noreason' => 'あなたが編集を開始した後、[[User:$1|$1]] ([[User talk:$1|トーク]]) がこのページを削除しました。このページを本当に再作成していいかご確認ください。',
 'recreate' => '再作成する',
 
 # action=purge
@@ -4085,7 +4085,7 @@ $5
 'hebrew-calendar-m12-gen' => 'エルール',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]]（[[{{ns:wiki_user_talk}}:$1|トーク]]）',
+'signature' => '[[{{ns:user}}:$1|$2]]（[[{{ns:user_talk}}:$1|トーク]]）',
 
 # Core parser functions
 'unknown_extension_tag' => '不明な拡張機能タグ「$1」です',
@@ -4153,7 +4153,7 @@ MediaWikiは、有用であることを期待して配布されていますが�
 'specialpages-group-login' => 'ログインまたはアカウント作成',
 'specialpages-group-changes' => '最近の更新と記録',
 'specialpages-group-media' => 'メディア情報とアップロード',
-'specialpages-group-wiki_users' => '利用者と権限',
+'specialpages-group-users' => '利用者と権限',
 'specialpages-group-highuse' => 'よく利用されているページ',
 'specialpages-group-pages' => 'ページの一覧',
 'specialpages-group-pagetools' => 'ページツール',
@@ -4252,11 +4252,11 @@ MediaWikiは、有用であることを期待して配布されていますが�
 'logentry-move-move_redir-noredirect' => '$1 がページ「$3」をリダイレクトの「$4」に、リダイレクトを残さずに移動しました',
 'logentry-patrol-patrol' => '$1 がページ「$3」の版 $4 を巡回済みとしました',
 'logentry-patrol-patrol-auto' => '$1 が自動的にページ「$3」の版 $4 を巡回済みとしました',
-'logentry-newwiki_users-newwiki_users' => '利用者アカウント $1 が作成されました',
-'logentry-newwiki_users-create' => '利用者アカウント $1 が作成されました',
-'logentry-newwiki_users-create2' => '利用者アカウント $3 が $1 により作成されました',
-'logentry-newwiki_users-autocreate' => '利用者アカウント $1 が自動的に作成されました',
-'newwiki_userlog-byemail' => 'パスワードをメールで送信しました',
+'logentry-newusers-newusers' => '利用者アカウント $1 が作成されました',
+'logentry-newusers-create' => '利用者アカウント $1 が作成されました',
+'logentry-newusers-create2' => '利用者アカウント $3 が $1 により作成されました',
+'logentry-newusers-autocreate' => '利用者アカウント $1 が自動的に作成されました',
+'newuserlog-byemail' => 'パスワードをメールで送信しました',
 
 # Feedback
 'feedback-bugornote' => '技術的な問題の詳細を説明する準備ができている場合は、[$1 バグ報告]をお願いします。

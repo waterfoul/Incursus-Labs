@@ -28,7 +28,7 @@
  */
 class DBFileJournal extends FileJournal {
 	/** @var DatabaseBase */
-	protected w;
+	protected $dbw;
 
 	protected $wiki = false; // string; wiki DB name
 
@@ -53,7 +53,7 @@ class DBFileJournal extends FileJournal {
 		$status = Status::newGood();
 
 		try {
-			w = $this->getMasterDB();
+			$dbw = $this->getMasterDB();
 		} catch ( DBError $e ) {
 			$status->fatal( 'filejournal-fail-dbconnect', $this->backend );
 			return $status;
@@ -69,12 +69,12 @@ class DBFileJournal extends FileJournal {
 				'fj_op'         => $entry['op'],
 				'fj_path'       => $entry['path'],
 				'fj_new_sha1'   => $entry['newSha1'],
-				'fj_timestamp'  => w->timestamp( $now )
+				'fj_timestamp'  => $dbw->timestamp( $now )
 			);
 		}
 
 		try {
-			w->insert( 'filejournal', $data, __METHOD__ );
+			$dbw->insert( 'filejournal', $data, __METHOD__ );
 		} catch ( DBError $e ) {
 			$status->fatal( 'filejournal-fail-dbquery', $this->backend );
 			return $status;
@@ -89,12 +89,12 @@ class DBFileJournal extends FileJournal {
 	 * @throws DBError
 	 */
 	protected function doGetChangeEntries( $start, $limit ) {
-		w = $this->getMasterDB();
+		$dbw = $this->getMasterDB();
 
-		$res = w->select( 'filejournal', '*',
+		$res = $dbw->select( 'filejournal', '*',
 			array(
 				'fj_backend' => $this->backend,
-				'fj_id >= ' . w->addQuotes( (int)$start ) ), // $start may be 0
+				'fj_id >= ' . $dbw->addQuotes( (int)$start ) ), // $start may be 0
 			__METHOD__,
 			array_merge( array( 'ORDER BY' => 'fj_id ASC' ),
 				$limit ? array( 'LIMIT' => $limit ) : array() )
@@ -123,11 +123,11 @@ class DBFileJournal extends FileJournal {
 			return $status; // nothing to do
 		}
 
-		w = $this->getMasterDB();
-		Cutoff = w->timestamp( time() - 86400 * $this->ttlDays );
+		$dbw = $this->getMasterDB();
+		$dbCutoff = $dbw->timestamp( time() - 86400 * $this->ttlDays );
 
-		w->delete( 'filejournal',
-			array( 'fj_timestamp < ' . w->addQuotes( Cutoff ) ),
+		$dbw->delete( 'filejournal',
+			array( 'fj_timestamp < ' . $dbw->addQuotes( $dbCutoff ) ),
 			__METHOD__
 		);
 

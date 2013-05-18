@@ -51,9 +51,9 @@ This gives a huge speed improvement for very large links tables which are MyISAM
 	}
 
 	public function execute() {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
-		$type = w->getType();
+		$type = $dbw->getType();
 		if ( $type != 'mysql' ) {
 			$this->output( "Link table conversion not necessary for $type\n" );
 			return;
@@ -80,23 +80,23 @@ This gives a huge speed improvement for very large links tables which are MyISAM
 
 		# --------------------------------------------------------------------
 
-		list ( $cur, $links, $links_temp, $links_backup ) = w->tableNamesN( 'cur', 'links', 'links_temp', 'links_backup' );
+		list ( $cur, $links, $links_temp, $links_backup ) = $dbw->tableNamesN( 'cur', 'links', 'links_temp', 'links_backup' );
 
-		if( w->tableExists( 'pagelinks' ) ) {
+		if( $dbw->tableExists( 'pagelinks' ) ) {
 			$this->output( "...have pagelinks; skipping old links table updates\n" );
 			return;
 		}
 
-		$res = w->query( "SELECT l_from FROM $links LIMIT 1" );
-		if ( w->fieldType( $res, 0 ) == "int" ) {
+		$res = $dbw->query( "SELECT l_from FROM $links LIMIT 1" );
+		if ( $dbw->fieldType( $res, 0 ) == "int" ) {
 			$this->output( "Schema already converted\n" );
 			return;
 		}
 
-		$res = w->query( "SELECT COUNT(*) AS count FROM $links" );
-		$row = w->fetchObject( $res );
+		$res = $dbw->query( "SELECT COUNT(*) AS count FROM $links" );
+		$row = $dbw->fetchObject( $res );
 		$numRows = $row->count;
-		w->freeResult( $res );
+		$dbw->freeResult( $res );
 
 		if ( $numRows == 0 ) {
 			$this->output( "Updating schema (no rows to convert)...\n" );
@@ -116,8 +116,8 @@ This gives a huge speed improvement for very large links tables which are MyISAM
 			$this->performanceLog ( $fh, "Reading $numRows rows from cur table...\n" );
 			$this->performanceLog ( $fh, "rows read vs seconds elapsed:\n" );
 
-			w->bufferResults( false );
-			$res = w->query( "SELECT cur_namespace,cur_title,cur_id FROM $cur" );
+			$dbw->bufferResults( false );
+			$res = $dbw->query( "SELECT cur_namespace,cur_title,cur_id FROM $cur" );
 			$ids = array();
 
 			foreach ( $res as $row ) {
@@ -134,8 +134,8 @@ This gives a huge speed improvement for very large links tables which are MyISAM
 					}
 				}
 			}
-			w->freeResult( $res );
-			w->bufferResults( true );
+			$dbw->freeResult( $res );
+			$dbw->bufferResults( true );
 			$this->output( "Finished loading IDs.\n\n" );
 			$this->performanceLog( $fh, "Took " . ( $this->getMicroTime() - $baseTime ) . " seconds to load IDs.\n\n" );
 
@@ -152,8 +152,8 @@ This gives a huge speed improvement for very large links tables which are MyISAM
 
 			for ( $rowOffset = $initialRowOffset; $rowOffset < $numRows; $rowOffset += $linksConvInsertInterval ) {
 				$sqlRead = "SELECT * FROM $links ";
-				$sqlRead = w->limitResult( $sqlRead, $linksConvInsertInterval, $rowOffset );
-				$res = w->query( $sqlRead );
+				$sqlRead = $dbw->limitResult( $sqlRead, $linksConvInsertInterval, $rowOffset );
+				$res = $dbw->query( $sqlRead );
 				if ( $noKeys ) {
 					$sqlWrite = array( "INSERT INTO $links_temp (l_from,l_to) VALUES " );
 				} else {
@@ -175,13 +175,13 @@ This gives a huge speed improvement for very large links tables which are MyISAM
 						$numBadLinks++;
 					}
 				}
-				w->freeResult( $res );
+				$dbw->freeResult( $res );
 				# $this->output( "rowOffset: $rowOffset\ttuplesAdded: $tuplesAdded\tnumBadLinks: $numBadLinks\n" );
 				if ( $tuplesAdded != 0  ) {
 					if ( $reportLinksConvProgress ) {
 						$this->output( "Inserting $tuplesAdded tuples into $links_temp..." );
 					}
-					w->query( implode( "", $sqlWrite ) );
+					$dbw->query( implode( "", $sqlWrite ) );
 					$totalTuplesInserted += $tuplesAdded;
 					if ( $reportLinksConvProgress )
 						$this->output( " done. Total $totalTuplesInserted tuples inserted.\n" );
@@ -200,15 +200,15 @@ This gives a huge speed improvement for very large links tables which are MyISAM
 		if ( $overwriteLinksTable ) {
 			# Check for existing links_backup, and delete it if it exists.
 			$this->output( "Dropping backup links table if it exists..." );
-			w->query( "DROP TABLE IF EXISTS $links_backup", __METHOD__ );
+			$dbw->query( "DROP TABLE IF EXISTS $links_backup", __METHOD__ );
 			$this->output( " done.\n" );
 
 			# Swap in the new table, and move old links table to links_backup
 			$this->output( "Swapping tables '$links' to '$links_backup'; '$links_temp' to '$links'..." );
-			w->query( "RENAME TABLE links TO $links_backup, $links_temp TO $links", __METHOD__ );
+			$dbw->query( "RENAME TABLE links TO $links_backup, $links_temp TO $links", __METHOD__ );
 			$this->output( " done.\n\n" );
 
-			w->close();
+			$dbw->close();
 			$this->output( "Conversion complete. The old table remains at $links_backup;\n" );
 			$this->output( "delete at your leisure.\n" );
 		} else {
@@ -218,25 +218,25 @@ This gives a huge speed improvement for very large links tables which are MyISAM
 	}
 
 	private function createTempTable() {
-		Conn = wfGetDB( DB_MASTER );
+		$dbConn = wfGetDB( DB_MASTER );
 
-		if ( !( Conn->isOpen() ) ) {
+		if ( !( $dbConn->isOpen() ) ) {
 			$this->output( "Opening connection to database failed.\n" );
 			return;
 		}
-		$links_temp = Conn->tableName( 'links_temp' );
+		$links_temp = $dbConn->tableName( 'links_temp' );
 
 		$this->output( "Dropping temporary links table if it exists..." );
-		Conn->query( "DROP TABLE IF EXISTS $links_temp" );
+		$dbConn->query( "DROP TABLE IF EXISTS $links_temp" );
 		$this->output( " done.\n" );
 
 		$this->output( "Creating temporary links table..." );
 		if ( $this->hasOption( 'noKeys' ) ) {
-			Conn->query( "CREATE TABLE $links_temp ( " .
+			$dbConn->query( "CREATE TABLE $links_temp ( " .
 			"l_from int(8) unsigned NOT NULL default '0', " .
 			"l_to int(8) unsigned NOT NULL default '0')" );
 		} else {
-			Conn->query( "CREATE TABLE $links_temp ( " .
+			$dbConn->query( "CREATE TABLE $links_temp ( " .
 			"l_from int(8) unsigned NOT NULL default '0', " .
 			"l_to int(8) unsigned NOT NULL default '0', " .
 			"UNIQUE KEY l_from(l_from,l_to), " .

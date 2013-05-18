@@ -1,6 +1,6 @@
 define mw_prefix='{$wgDBprefix}';
 
-ALTER TABLE &mw_prefix.archive MODIFY ar_wiki_user DEFAULT 0 NOT NULL;
+ALTER TABLE &mw_prefix.archive MODIFY ar_user DEFAULT 0 NOT NULL;
 ALTER TABLE &mw_prefix.archive MODIFY ar_deleted CHAR(1);
 CREATE INDEX &mw_prefix.archive_i03 ON &mw_prefix.archive (ar_rev_id);
 
@@ -17,25 +17,25 @@ DROP INDEX &mw_prefix.categorylinks_i01;
 CREATE INDEX &mw_prefix.categorylinks_i01 ON &mw_prefix.categorylinks (cl_to,cl_type,cl_sortkey,cl_from);
 CREATE INDEX &mw_prefix.categorylinks_i03 ON &mw_prefix.categorylinks (cl_collation);
 
-ALTER TABLE &mw_prefix.filearchive MODIFY fa_deleted_wiki_user DEFAULT 0 NOT NULL;
+ALTER TABLE &mw_prefix.filearchive MODIFY fa_deleted_user DEFAULT 0 NOT NULL;
 ALTER TABLE &mw_prefix.filearchive MODIFY fa_size DEFAULT 0;
 ALTER TABLE &mw_prefix.filearchive MODIFY fa_width DEFAULT 0;
 ALTER TABLE &mw_prefix.filearchive MODIFY fa_height DEFAULT 0;
 ALTER TABLE &mw_prefix.filearchive MODIFY fa_bits DEFAULT 0 NOT NULL;
-ALTER TABLE &mw_prefix.filearchive MODIFY fa_wiki_user DEFAULT 0 NOT NULL;
+ALTER TABLE &mw_prefix.filearchive MODIFY fa_user DEFAULT 0 NOT NULL;
 ALTER TABLE &mw_prefix.filearchive MODIFY fa_deleted DEFAULT 0;
 
 ALTER TABLE &mw_prefix.image MODIFY img_size DEFAULT 0;
 ALTER TABLE &mw_prefix.image MODIFY img_width DEFAULT 0;
 ALTER TABLE &mw_prefix.image MODIFY img_height DEFAULT 0;
 ALTER TABLE &mw_prefix.image MODIFY img_bits DEFAULT 0 NOT NULL;
-ALTER TABLE &mw_prefix.image MODIFY img_wiki_user DEFAULT 0 NOT NULL;
+ALTER TABLE &mw_prefix.image MODIFY img_user DEFAULT 0 NOT NULL;
 
 ALTER TABLE &mw_prefix.interwiki ADD iw_api BLOB DEFAULT EMPTY_BLOB();
 ALTER TABLE &mw_prefix.interwiki MODIFY iw_api DEFAULT NULL NOT NULL;
 ALTER TABLE &mw_prefix.interwiki ADD iw_wikiid VARCHAR2(64);
 
-ALTER TABLE &mw_prefix.ipblocks MODIFY ipb_wiki_user DEFAULT 0 NOT NULL;
+ALTER TABLE &mw_prefix.ipblocks MODIFY ipb_user DEFAULT 0 NOT NULL;
 ALTER TABLE &mw_prefix.ipblocks MODIFY ipb_by DEFAULT 0;
 
 CREATE TABLE &mw_prefix.iwlinks (
@@ -46,7 +46,7 @@ CREATE TABLE &mw_prefix.iwlinks (
 CREATE UNIQUE INDEX &mw_prefix.iwlinks_ui01 ON &mw_prefix.iwlinks (iwl_from, iwl_prefix, iwl_title);
 CREATE UNIQUE INDEX &mw_prefix.iwlinks_ui02 ON &mw_prefix.iwlinks (iwl_prefix, iwl_title, iwl_from);
 
-ALTER TABLE &mw_prefix.logging MODIFY log_wiki_user DEFAULT 0 NOT NULL;
+ALTER TABLE &mw_prefix.logging MODIFY log_user DEFAULT 0 NOT NULL;
 ALTER TABLE &mw_prefix.logging MODIFY log_deleted CHAR(1);
 
 CREATE TABLE &mw_prefix.module_deps (
@@ -75,11 +75,11 @@ ALTER TABLE &mw_prefix.oldimage MODIFY oi_size DEFAULT 0;
 ALTER TABLE &mw_prefix.oldimage MODIFY oi_width DEFAULT 0;
 ALTER TABLE &mw_prefix.oldimage MODIFY oi_height DEFAULT 0;
 ALTER TABLE &mw_prefix.oldimage MODIFY oi_bits DEFAULT 0;
-ALTER TABLE &mw_prefix.oldimage MODIFY oi_wiki_user DEFAULT 0 NOT NULL;
+ALTER TABLE &mw_prefix.oldimage MODIFY oi_user DEFAULT 0 NOT NULL;
 
 ALTER TABLE &mw_prefix.querycache MODIFY qc_value DEFAULT 0;
 
-ALTER TABLE &mw_prefix.recentchanges MODIFY rc_wiki_user DEFAULT 0 NOT NULL;
+ALTER TABLE &mw_prefix.recentchanges MODIFY rc_user DEFAULT 0 NOT NULL;
 ALTER TABLE &mw_prefix.recentchanges MODIFY rc_cur_id DEFAULT 0 NOT NULL;
 ALTER TABLE &mw_prefix.recentchanges MODIFY rc_this_oldid DEFAULT 0;
 ALTER TABLE &mw_prefix.recentchanges MODIFY rc_last_oldid DEFAULT 0;
@@ -88,11 +88,11 @@ ALTER TABLE &mw_prefix.recentchanges MODIFY rc_deleted CHAR(1);
 ALTER TABLE &mw_prefix.recentchanges MODIFY rc_logid DEFAULT 0;
 
 ALTER TABLE &mw_prefix.revision MODIFY rev_page NOT NULL;
-ALTER TABLE &mw_prefix.revision MODIFY rev_wiki_user DEFAULT 0;
+ALTER TABLE &mw_prefix.revision MODIFY rev_user DEFAULT 0;
 
 ALTER TABLE &mw_prefix.updatelog ADD ul_value BLOB;
 
-ALTER TABLE &mw_prefix.wiki_user_groups MODIFY ug_wiki_user DEFAULT 0 NOT NULL;
+ALTER TABLE &mw_prefix.user_groups MODIFY ug_user DEFAULT 0 NOT NULL;
 
-ALTER TABLE &mw_prefix.wiki_user_newtalk MODIFY wiki_user_id DEFAULT 0;
+ALTER TABLE &mw_prefix.user_newtalk MODIFY user_id DEFAULT 0;
 

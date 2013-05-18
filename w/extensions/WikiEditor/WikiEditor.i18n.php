@@ -261,10 +261,10 @@ $1:Example.jpg|Caption2",
 	'wikieditor-toolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>Link text</a>, additional text.</li></ol>",
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'Signature with timestamp',
 	'wikieditor-toolbar-help-content-signaturetimestamp-syntax' => '~~~~',
-	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>wiki_username</a> (<a href='#' title='{{#special:mytalk}}'>talk</a>) 15:54, 10 June 2009 (UTC)",
+	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Username</a> (<a href='#' title='{{#special:mytalk}}'>talk</a>) 15:54, 10 June 2009 (UTC)",
 	'wikieditor-toolbar-help-content-signature-description' => 'Signature',
 	'wikieditor-toolbar-help-content-signature-syntax' => '~~~',
-	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>wiki_username</a> (<a href='#' title='{{#special:mytalk}}'>talk</a>)",
+	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Username</a> (<a href='#' title='{{#special:mytalk}}'>talk</a>)",
 	'wikieditor-toolbar-help-content-indent-description' => 'Indent',
 	'wikieditor-toolbar-help-content-indent-syntax' => 'Normal text<br />:Indented text<br />::Indented text',
 	'wikieditor-toolbar-help-content-indent-result' => 'Normal text<dl><dd>Indented text<dl><dd>Indented text</dd></dl></dd></dl>',
@@ -300,7 +300,7 @@ I guess that 'feature-providing modules' means the same as 'modules providing fe
 	'wikieditor-preview-tab' => 'Caption of the tab containing the preview
 
 {{Identical|Preview}}',
-	'wikieditor-preview-changes-tab' => "Caption of the tab containing a diff of the wiki_user's changes, à la ''{{int:Showdiff}}'' ({{msg-mw|Showdiff|notext=1}}).
+	'wikieditor-preview-changes-tab' => "Caption of the tab containing a diff of the user's changes, à la ''{{int:Showdiff}}'' ({{msg-mw|Showdiff|notext=1}}).
 
 {{Identical|Change}}",
 	'wikieditor-preview-loading' => 'Alt text for spinner displayed while preview is being loaded
@@ -311,22 +311,22 @@ I guess that 'feature-providing modules' means the same as 'modules providing fe
 	'wikieditor-previewDialog-loading' => 'Alt text for spinner displayed while preview is being loaded
 {{Identical|Loading}}',
 	'wikieditor-publish-preference' => "Option in [[Special:Preferences]], tab ''{{int:prefs-editing}}''",
-	'wikieditor-publish-button-publish' => 'Button to the right of the Edit/Preview tabs that opens a dialog window that lets the wiki_user save their edit
+	'wikieditor-publish-button-publish' => 'Button to the right of the Edit/Preview tabs that opens a dialog window that lets the user save their edit
 
 {{Identical|Publish}}',
 	'wikieditor-publish-button-cancel' => 'Button to the right of the Edit/Preview tabs that has the same effect as the {{msg-mw|Cancel}} link below the edit box.
 
 {{Identical|Cancel}}',
-	'wikieditor-publish-dialog-title' => 'Title of the dialog that opens when the wiki_user clicks the Publish button',
-	'wikieditor-publish-dialog-summary' => 'Label for the edit summary textbox in the dialog that opens when the wiki_user clicks the Publish button. See also {{msg-mw|Summary}}.',
-	'wikieditor-publish-dialog-minor' => 'Label for the minor edit checkbox in the dialog that opens when the wiki_user clicks the Publish button. See also {{msg-mw|Minoredit}}',
-	'wikieditor-publish-dialog-watch' => 'Label for the watch checkbox in the dialog that opens when the wiki_user clicks the Publish button
+	'wikieditor-publish-dialog-title' => 'Title of the dialog that opens when the user clicks the Publish button',
+	'wikieditor-publish-dialog-summary' => 'Label for the edit summary textbox in the dialog that opens when the user clicks the Publish button. See also {{msg-mw|Summary}}.',
+	'wikieditor-publish-dialog-minor' => 'Label for the minor edit checkbox in the dialog that opens when the user clicks the Publish button. See also {{msg-mw|Minoredit}}',
+	'wikieditor-publish-dialog-watch' => 'Label for the watch checkbox in the dialog that opens when the user clicks the Publish button
 
 {{Identical|Watch this page}}',
-	'wikieditor-publish-dialog-publish' => "Button that saves the wiki_user's edit in the dialog that opens when the wiki_user clicks the Publish button
+	'wikieditor-publish-dialog-publish' => "Button that saves the user's edit in the dialog that opens when the user clicks the Publish button
 
 {{Identical|Publish}}",
-	'wikieditor-publish-dialog-goback' => 'Button that closes the dialog that opens when the wiki_user clicks the Publish button
+	'wikieditor-publish-dialog-goback' => 'Button that closes the dialog that opens when the user clicks the Publish button
 
 {{Identical|Go back}}',
 	'wikieditor-template-editor-dialog-submit' => '{{Identical|Update}}',
@@ -350,12 +350,12 @@ For more information, see http://www.mediawiki.org/wiki/Extension:WikiEditor/Too
 	'wikieditor-toolbar-tool-xlink-example' => "www.example.com is not a real website, but it has been reserved to use in software documentation, and will never be sold or used for advertising. If you translate the word example and try to go to that web address then you might get a message that it doesn't exist. But somebody may have created a commercial web page for that address, such as www.Beispiel.org, using the German word for example. It is therefore recommended that you do not translate http://www.example.com at all. If you do wish to translate it you should first check where the translated link takes you, and bear in mind that anybody could purchase that name in the future.",
 	'wikieditor-toolbar-tool-link' => '{{Identical|Link}}',
 	'wikieditor-toolbar-tool-link-cancel' => '{{Identical|Cancel}}',
-	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'Text shown when the title the wiki_user entered exists',
-	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'Text shown when the title the wiki_user entered does not exist',
-	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Text shown when the title the wiki_user entered is invalid',
-	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Text shown when the link target the wiki_user entered points to an external web site
+	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'Text shown when the title the user entered exists',
+	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'Text shown when the title the user entered does not exist',
+	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Text shown when the title the user entered is invalid',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Text shown when the link target the user entered points to an external web site
 {{Identical|External link}}',
-	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'alt text and title text for the image shown while the title the wiki_user entered is being checked for existence',
+	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'alt text and title text for the image shown while the title the user entered is being checked for existence',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'This message appears when you try to create an internal link but the page title in the link is invalid.',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => '{{Identical|Internal link}}',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => '{{Identical|External link}}',
@@ -420,7 +420,7 @@ This message does not support PLURAL on $1.',
 	'wikieditor-toolbar-tool-replace-regex' => 'A "regular expression" is a syntax to find strings based on patterns, for more see [[wikipedia:Regular expression|the Wikipedia article]].
 
 More notes:
-* "Regular expression" is mostly a programmer tool, which is sometimes exposed to normal wiki_users too. It\'s almost as an programming language, but it is used to describe different kinds of strings (sometimes also called patterns and pattern matching), and is often used to change (parts of) the strings too.',
+* "Regular expression" is mostly a programmer tool, which is sometimes exposed to normal users too. It\'s almost as an programming language, but it is used to describe different kinds of strings (sometimes also called patterns and pattern matching), and is often used to change (parts of) the strings too.',
 	'wikieditor-toolbar-tool-replace-button-replace' => '{{Identical|Replace}}',
 	'wikieditor-toolbar-tool-replace-close' => '{{Identical|Close}}',
 	'wikieditor-toolbar-tool-replace-success' => '[[file:Bulbgraph.png|left|22px]]
@@ -429,7 +429,7 @@ This message does not support PLURAL on $1.',
 
 A "regular expression" is a syntax to find strings based on patterns, for more see [[wikipedia:Regular expression|the Wikipedia article]].
 
-Regular expressions are mostly a programmer tool, which is sometimes exposed to normal wiki_users too. It\'s almost as an programming language, but it is used to describe different kinds of strings (sometimes also called patterns and pattern matching), and is often used to change (parts of) the strings too.',
+Regular expressions are mostly a programmer tool, which is sometimes exposed to normal users too. It\'s almost as an programming language, but it is used to describe different kinds of strings (sometimes also called patterns and pattern matching), and is often used to change (parts of) the strings too.',
 	'wikieditor-toolbar-section-characters' => 'This will be a toolbar for special characters, like emoticons.
 For more information, see http://www.mediawiki.org/wiki/Extension:WikiEditor/Toolbar_customization',
 	'wikieditor-toolbar-characters-page-latin' => 'This is the name of a script, or alphabet, not a language',
@@ -5602,9 +5602,9 @@ $1:Příklad.jpg|Titulek 2',
 	'wikieditor-toolbar-help-content-showreferences-description' => 'Zobrazení poznámek',
 	'wikieditor-toolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>Text odkazu</a>, další text.</li></ol>",
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'Podpis a datum',
-	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{ns:wiki_user}}:Uživatelské jméno'>Uživatelské jméno</a> 23. 6. 2009, 10:43 (UTC)",
+	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{ns:User}}:Uživatelské jméno'>Uživatelské jméno</a> 23. 6. 2009, 10:43 (UTC)",
 	'wikieditor-toolbar-help-content-signature-description' => 'Podpis',
-	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{ns:wiki_user}}:Uživatelské jméno'>Uživatelské jméno</a>",
+	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{ns:User}}:Uživatelské jméno'>Uživatelské jméno</a>",
 	'wikieditor-toolbar-help-content-indent-description' => 'Odsazení',
 	'wikieditor-toolbar-help-content-indent-syntax' => 'Základní text<br />:Odsazený text<br />::Odsazený text',
 	'wikieditor-toolbar-help-content-indent-result' => 'Základní text<dl><dd>Odsazený text<dl><dd>Odsazený text</dd></dl></dd></dl>',

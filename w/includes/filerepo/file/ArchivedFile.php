@@ -42,8 +42,8 @@ class ArchivedFile {
 		$mime, # mime type
 		$media_type, # media type
 		$description, # upload description
-		$wiki_user, # wiki_user ID of uploader
-		$wiki_user_text, # wiki_user name of uploader
+		$user, # user ID of uploader
+		$user_text, # user name of uploader
 		$timestamp, # time of upload
 		$dataLoaded, # Whether or not all this has been loaded from the database (loadFromXxx)
 		$deleted, # Bitfield akin to rev_deleted
@@ -81,8 +81,8 @@ class ArchivedFile {
 		$this->mime = "unknown/unknown";
 		$this->media_type = '';
 		$this->description = '';
-		$this->wiki_user = 0;
-		$this->wiki_user_text = '';
+		$this->user = 0;
+		$this->user_text = '';
 		$this->timestamp = null;
 		$this->deleted = 0;
 		$this->dataLoaded = false;
@@ -132,8 +132,8 @@ class ArchivedFile {
 		}
 
 		if( !$this->title || $this->title->getNamespace() == NS_FILE ) {
-			r = wfGetDB( DB_SLAVE );
-			$res = r->select( 'filearchive',
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select( 'filearchive',
 				array(
 					'fa_id',
 					'fa_name',
@@ -149,18 +149,18 @@ class ArchivedFile {
 					'fa_major_mime',
 					'fa_minor_mime',
 					'fa_description',
-					'fa_wiki_user',
-					'fa_wiki_user_text',
+					'fa_user',
+					'fa_user_text',
 					'fa_timestamp',
 					'fa_deleted' ),
 				$conds,
 				__METHOD__,
 				array( 'ORDER BY' => 'fa_timestamp DESC' ) );
-			if ( $res == false || r->numRows( $res ) == 0 ) {
+			if ( $res == false || $dbr->numRows( $res ) == 0 ) {
 			// this revision does not exist?
 				return null;
 			}
-			$ret = r->resultObject( $res );
+			$ret = $dbr->resultObject( $res );
 			$row = $ret->fetchObject();
 
 			// initialize fields for filestore image object
@@ -177,8 +177,8 @@ class ArchivedFile {
 			$this->mime = "$row->fa_major_mime/$row->fa_minor_mime";
 			$this->media_type = $row->fa_media_type;
 			$this->description = $row->fa_description;
-			$this->wiki_user = $row->fa_wiki_user;
-			$this->wiki_user_text = $row->fa_wiki_user_text;
+			$this->user = $row->fa_user;
+			$this->user_text = $row->fa_user_text;
 			$this->timestamp = $row->fa_timestamp;
 			$this->deleted = $row->fa_deleted;
 		} else {
@@ -213,8 +213,8 @@ class ArchivedFile {
 		$file->mime = "$row->fa_major_mime/$row->fa_minor_mime";
 		$file->media_type = $row->fa_media_type;
 		$file->description = $row->fa_description;
-		$file->wiki_user = $row->fa_wiki_user;
-		$file->wiki_user_text = $row->fa_wiki_user_text;
+		$file->user = $row->fa_user;
+		$file->user_text = $row->fa_user_text;
 		$file->timestamp = $row->fa_timestamp;
 		$file->deleted = $row->fa_deleted;
 
@@ -381,30 +381,30 @@ class ArchivedFile {
 	}
 
 	/**
-	 * Return the wiki_user ID of the uploader.
+	 * Return the user ID of the uploader.
 	 *
 	 * @return int
 	 */
-	public function getwiki_user() {
+	public function getUser() {
 		$this->load();
 		if( $this->isDeleted( File::DELETED_USER ) ) {
 			return 0;
 		} else {
-			return $this->wiki_user;
+			return $this->user;
 		}
 	}
 
 	/**
-	 * Return the wiki_user name of the uploader.
+	 * Return the user name of the uploader.
 	 *
 	 * @return string
 	 */
-	public function getwiki_userText() {
+	public function getUserText() {
 		$this->load();
 		if( $this->isDeleted( File::DELETED_USER ) ) {
 			return 0;
 		} else {
-			return $this->wiki_user_text;
+			return $this->user_text;
 		}
 	}
 
@@ -423,23 +423,23 @@ class ArchivedFile {
 	}
 
 	/**
-	 * Return the wiki_user ID of the uploader.
+	 * Return the user ID of the uploader.
 	 *
 	 * @return int
 	 */
-	public function getRawwiki_user() {
+	public function getRawUser() {
 		$this->load();
-		return $this->wiki_user;
+		return $this->user;
 	}
 
 	/**
-	 * Return the wiki_user name of the uploader.
+	 * Return the user name of the uploader.
 	 *
 	 * @return string
 	 */
-	public function getRawwiki_userText() {
+	public function getRawUserText() {
 		$this->load();
-		return $this->wiki_user_text;
+		return $this->user_text;
 	}
 
 	/**
@@ -473,14 +473,14 @@ class ArchivedFile {
 	}
 
 	/**
-	 * Determine if the current wiki_user is allowed to view a particular
+	 * Determine if the current user is allowed to view a particular
 	 * field of this FileStore image file, if it's marked as deleted.
 	 * @param $field Integer
-	 * @param $wiki_user wiki_user object to check, or null to use $wgwiki_user
+	 * @param $user User object to check, or null to use $wgUser
 	 * @return bool
 	 */
-	public function wiki_userCan( $field, wiki_user $wiki_user = null ) {
+	public function userCan( $field, User $user = null ) {
 		$this->load();
-		return Revision::wiki_userCanBitfield( $this->deleted, $field, $wiki_user );
+		return Revision::userCanBitfield( $this->deleted, $field, $user );
 	}
 }

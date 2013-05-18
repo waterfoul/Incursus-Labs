@@ -63,7 +63,7 @@ class MediaWikiHelpFieldHintTestCase extends MediaWikiInstallationCommonFunction
         $this->assertEquals(MYSQL_DATABASE_TABLE_PREFIX_HELP,
                 $this->getText("//div[@id='DB_wrapper_mysql']/fieldset[1]/div[1]/div[1]/div/span[2]/p[1]" ));
 
-        // Verify help field for 'Database wiki_username'
+        // Verify help field for 'Database username'
         $this->click( "//div[@id='DB_wrapper_mysql']/fieldset[2]/div[1]/div[1]/div/span[1]" );
         $this->assertEquals( MYSQL_DATBASE_USERNAME_HELP,
                 $this->getText( "//div[@id='DB_wrapper_mysql']/fieldset[2]/div[1]/div[1]/div/span[2]" ));

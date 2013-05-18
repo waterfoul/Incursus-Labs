@@ -38,7 +38,7 @@ This is because of MediaWiki by-design openness and extensibility
 and the need for direct database queries from extension code.
 
 You should check that all your extensions perform access right checks
-using <tt>$title->wiki_userCanRead()</tt> before displaying $title content.
+using <tt>$title->userCanRead()</tt> before displaying $title content.
 
 == MediaWiki 4 Intranet ==
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Re-assign wiki_users from an old group to a new one
+ * Re-assign users from an old group to a new one
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,16 +24,16 @@
 require_once( __DIR__ . '/Maintenance.php' );
 
 /**
- * Maintenance script that re-assigns wiki_users from an old group to a new one.
+ * Maintenance script that re-assigns users from an old group to a new one.
  *
  * @ingroup Maintenance
  */
-class Migratewiki_userGroup extends Maintenance {
+class MigrateUserGroup extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Re-assign wiki_users from an old group to a new one";
-		$this->addArg( 'oldgroup', 'Old wiki_user group key', true );
-		$this->addArg( 'newgroup', 'New wiki_user group key', true );
+		$this->mDescription = "Re-assign users from an old group to a new one";
+		$this->addArg( 'oldgroup', 'Old user group key', true );
+		$this->addArg( 'newgroup', 'New user group key', true );
 		$this->setBatchSize( 200 );
 	}
 
@@ -41,44 +41,44 @@ class Migratewiki_userGroup extends Maintenance {
 		$count = 0;
 		$oldGroup = $this->getArg( 0 );
 		$newGroup = $this->getArg( 1 );
-		w = wfGetDB( DB_MASTER );
-		$start = w->selectField( 'wiki_user_groups', 'MIN(ug_wiki_user)',
+		$dbw = wfGetDB( DB_MASTER );
+		$start = $dbw->selectField( 'user_groups', 'MIN(ug_user)',
 			array( 'ug_group' => $oldGroup ), __FUNCTION__ );
-		$end = w->selectField( 'wiki_user_groups', 'MAX(ug_wiki_user)',
+		$end = $dbw->selectField( 'user_groups', 'MAX(ug_user)',
 			array( 'ug_group' => $oldGroup ), __FUNCTION__ );
 		if ( $start === null ) {
-			$this->error( "Nothing to do - no wiki_users in the '$oldGroup' group", true );
+			$this->error( "Nothing to do - no users in the '$oldGroup' group", true );
 		}
 		# Do remaining chunk
 		$end += $this->mBatchSize - 1;
 		$blockStart = $start;
 		$blockEnd = $start + $this->mBatchSize - 1;
-		// Migrate wiki_users over in batches...
+		// Migrate users over in batches...
 		while ( $blockEnd <= $end ) {
-			$this->output( "Doing wiki_users $blockStart to $blockEnd\n" );
-			w->begin( __METHOD__ );
-			w->update( 'wiki_user_groups',
+			$this->output( "Doing users $blockStart to $blockEnd\n" );
+			$dbw->begin( __METHOD__ );
+			$dbw->update( 'user_groups',
 				array( 'ug_group' => $newGroup ),
 				array( 'ug_group' => $oldGroup,
-					"ug_wiki_user BETWEEN $blockStart AND $blockEnd" ),
+					"ug_user BETWEEN $blockStart AND $blockEnd" ),
 				__METHOD__,
 				array( 'IGNORE' )
 			);
-			$count += w->affectedRows();
-			w->delete( 'wiki_user_groups',
+			$count += $dbw->affectedRows();
+			$dbw->delete( 'user_groups',
 				array( 'ug_group' => $oldGroup,
-					"ug_wiki_user BETWEEN $blockStart AND $blockEnd" ),
+					"ug_user BETWEEN $blockStart AND $blockEnd" ),
 				__METHOD__
 			);
-			$count += w->affectedRows();
-			w->commit( __METHOD__ );
+			$count += $dbw->affectedRows();
+			$dbw->commit( __METHOD__ );
 			$blockStart += $this->mBatchSize;
 			$blockEnd += $this->mBatchSize;
 			wfWaitForSlaves();
 		}
-		$this->output( "Done! $count wiki_user(s) in group '$oldGroup' are now in '$newGroup' instead.\n" );
+		$this->output( "Done! $count user(s) in group '$oldGroup' are now in '$newGroup' instead.\n" );
 	}
 }
 
-$maintClass = "Migratewiki_userGroup";
+$maintClass = "MigrateUserGroup";
 require_once( RUN_MAINTENANCE_IF_MAIN );

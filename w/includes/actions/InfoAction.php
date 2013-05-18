@@ -33,7 +33,7 @@ class InfoAction extends FormlessAction {
 	}
 
 	/**
-	 * Whether this action can still be executed by a blocked wiki_user.
+	 * Whether this action can still be executed by a blocked user.
 	 *
 	 * @return bool
 	 */
@@ -165,17 +165,17 @@ class InfoAction extends FormlessAction {
 	protected function pageInfo() {
 		global $wgContLang, $wgRCMaxAge;
 
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 		$lang = $this->getLanguage();
 		$title = $this->getTitle();
 		$id = $title->getArticleID();
 
 		// Get page information that would be too "expensive" to retrieve by normal means
-		$pageCounts = self::pageCounts( $title, $wiki_user );
+		$pageCounts = self::pageCounts( $title, $user );
 
 		// Get page properties
-		r = wfGetDB( DB_SLAVE );
-		$result = r->select(
+		$dbr = wfGetDB( DB_SLAVE );
+		$result = $dbr->select(
 			'page_props',
 			array( 'pp_propname', 'pp_value' ),
 			array( 'pp_page' => $id ),
@@ -277,7 +277,7 @@ class InfoAction extends FormlessAction {
 			$protectionLevel = implode( ', ', $title->getRestrictions( $restrictionType ) );
 
 			if ( $protectionLevel == '' ) {
-				// Allow all wiki_users
+				// Allow all users
 				$message = $this->msg( 'protect-default' )->escaped();
 			} else {
 				// Administrators only
@@ -306,8 +306,8 @@ class InfoAction extends FormlessAction {
 
 		// Page creator
 		$pageInfo['header-edits'][] = array(
-			$this->msg( 'pageinfo-firstwiki_user' ),
-			Linker::revwiki_userTools( $firstRev )
+			$this->msg( 'pageinfo-firstuser' ),
+			Linker::revUserTools( $firstRev )
 		);
 
 		// Date of page creation
@@ -315,7 +315,7 @@ class InfoAction extends FormlessAction {
 			$this->msg( 'pageinfo-firsttime' ),
 			Linker::linkKnown(
 				$title,
-				$lang->wiki_userTimeAndDate( $firstRev->getTimestamp(), $wiki_user ),
+				$lang->userTimeAndDate( $firstRev->getTimestamp(), $user ),
 				array(),
 				array( 'oldid' => $firstRev->getId() )
 			)
@@ -323,8 +323,8 @@ class InfoAction extends FormlessAction {
 
 		// Latest editor
 		$pageInfo['header-edits'][] = array(
-			$this->msg( 'pageinfo-lastwiki_user' ),
-			Linker::revwiki_userTools( $this->page->getRevision() )
+			$this->msg( 'pageinfo-lastuser' ),
+			Linker::revUserTools( $this->page->getRevision() )
 		);
 
 		// Date of latest edit
@@ -332,7 +332,7 @@ class InfoAction extends FormlessAction {
 			$this->msg( 'pageinfo-lasttime' ),
 			Linker::linkKnown(
 				$title,
-				$lang->wiki_userTimeAndDate( $this->page->getTimestamp(), $wiki_user ),
+				$lang->userTimeAndDate( $this->page->getTimestamp(), $user ),
 				array(),
 				array( 'oldid' => $this->page->getLatest() )
 			)
@@ -419,21 +419,21 @@ class InfoAction extends FormlessAction {
 	 * Returns page counts that would be too "expensive" to retrieve by normal means.
 	 *
 	 * @param $title Title object
-	 * @param $wiki_user wiki_user object
+	 * @param $user User object
 	 * @return array
 	 */
-	protected static function pageCounts( $title, $wiki_user ) {
+	protected static function pageCounts( $title, $user ) {
 		global $wgRCMaxAge, $wgDisableCounters;
 
 		wfProfileIn( __METHOD__ );
 		$id = $title->getArticleID();
 
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$result = array();
 
 		if ( !$wgDisableCounters ) {
 			// Number of views
-			$views = (int) r->selectField(
+			$views = (int) $dbr->selectField(
 				'page',
 				'page_counter',
 				array( 'page_id' => $id ),
@@ -442,9 +442,9 @@ class InfoAction extends FormlessAction {
 			$result['views'] = $views;
 		}
 
-		if ( $wiki_user->isAllowed( 'unwatchedpages' ) ) {
+		if ( $user->isAllowed( 'unwatchedpages' ) ) {
 			// Number of page watchers
-			$watchers = (int) r->selectField(
+			$watchers = (int) $dbr->selectField(
 				'watchlist',
 				'COUNT(*)',
 				array(
@@ -457,7 +457,7 @@ class InfoAction extends FormlessAction {
 		}
 
 		// Total number of edits
-		$edits = (int) r->selectField(
+		$edits = (int) $dbr->selectField(
 			'revision',
 			'COUNT(rev_page)',
 			array( 'rev_page' => $id ),
@@ -466,19 +466,19 @@ class InfoAction extends FormlessAction {
 		$result['edits'] = $edits;
 
 		// Total number of distinct authors
-		$authors = (int) r->selectField(
+		$authors = (int) $dbr->selectField(
 			'revision',
-			'COUNT(DISTINCT rev_wiki_user_text)',
+			'COUNT(DISTINCT rev_user_text)',
 			array( 'rev_page' => $id ),
 			__METHOD__
 		);
 		$result['authors'] = $authors;
 
 		// "Recent" threshold defined by $wgRCMaxAge
-		$threshold = r->timestamp( time() - $wgRCMaxAge );
+		$threshold = $dbr->timestamp( time() - $wgRCMaxAge );
 
 		// Recent number of edits
-		$edits = (int) r->selectField(
+		$edits = (int) $dbr->selectField(
 			'revision',
 			'COUNT(rev_page)',
 			array(
@@ -490,9 +490,9 @@ class InfoAction extends FormlessAction {
 		$result['recent_edits'] = $edits;
 
 		// Recent number of distinct authors
-		$authors = (int) r->selectField(
+		$authors = (int) $dbr->selectField(
 			'revision',
-			'COUNT(DISTINCT rev_wiki_user_text)',
+			'COUNT(DISTINCT rev_user_text)',
 			array(
 				'rev_page' => $id,
 				"rev_timestamp >= $threshold"
@@ -504,11 +504,11 @@ class InfoAction extends FormlessAction {
 		// Subpages (if enabled)
 		if ( MWNamespace::hasSubpages( $title->getNamespace() ) ) {
 			$conds = array( 'page_namespace' => $title->getNamespace() );
-			$conds[] = 'page_title ' . r->buildLike( $title->getDBkey() . '/', r->anyString() );
+			$conds[] = 'page_title ' . $dbr->buildLike( $title->getDBkey() . '/', $dbr->anyString() );
 
 			// Subpages of this page (redirects)
 			$conds['page_is_redirect'] = 1;
-			$result['subpages']['redirects'] = (int) r->selectField(
+			$result['subpages']['redirects'] = (int) $dbr->selectField(
 				'page',
 				'COUNT(page_id)',
 				$conds,
@@ -516,7 +516,7 @@ class InfoAction extends FormlessAction {
 
 			// Subpages of this page (non-redirects)
 			$conds['page_is_redirect'] = 0;
-			$result['subpages']['nonredirects'] = (int) r->selectField(
+			$result['subpages']['nonredirects'] = (int) $dbr->selectField(
 				'page',
 				'COUNT(page_id)',
 				$conds,
@@ -550,21 +550,21 @@ class InfoAction extends FormlessAction {
 
 		$contributors = $this->page->getContributors();
 		$real_names = array();
-		$wiki_user_names = array();
+		$user_names = array();
 		$anon_ips = array();
 
-		# Sift for real versus wiki_user names
-		foreach ( $contributors as $wiki_user ) {
-			$page = $wiki_user->isAnon()
-				? SpecialPage::getTitleFor( 'Contributions', $wiki_user->getName() )
-				: $wiki_user->getwiki_userPage();
+		# Sift for real versus user names
+		foreach ( $contributors as $user ) {
+			$page = $user->isAnon()
+				? SpecialPage::getTitleFor( 'Contributions', $user->getName() )
+				: $user->getUserPage();
 
-			if ( $wiki_user->getID() == 0 ) {
-				$anon_ips[] = Linker::link( $page, htmlspecialchars( $wiki_user->getName() ) );
-			} elseif ( !in_array( 'realname', $wgHiddenPrefs ) && $wiki_user->getRealName() ) {
-				$real_names[] = Linker::link( $page, htmlspecialchars( $wiki_user->getRealName() ) );
+			if ( $user->getID() == 0 ) {
+				$anon_ips[] = Linker::link( $page, htmlspecialchars( $user->getName() ) );
+			} elseif ( !in_array( 'realname', $wgHiddenPrefs ) && $user->getRealName() ) {
+				$real_names[] = Linker::link( $page, htmlspecialchars( $user->getRealName() ) );
 			} else {
-				$wiki_user_names[] = Linker::link( $page, htmlspecialchars( $wiki_user->getName() ) );
+				$user_names[] = Linker::link( $page, htmlspecialchars( $user->getName() ) );
 			}
 		}
 
@@ -572,16 +572,16 @@ class InfoAction extends FormlessAction {
 
 		$real = $lang->listToText( $real_names );
 
-		# "ThisSite wiki_user(s) A, B and C"
-		if ( count( $wiki_user_names ) ) {
-			$wiki_user = $this->msg( 'sitewiki_users' )->rawParams( $lang->listToText( $wiki_user_names ) )->params(
-				count( $wiki_user_names ) )->escaped();
+		# "ThisSite user(s) A, B and C"
+		if ( count( $user_names ) ) {
+			$user = $this->msg( 'siteusers' )->rawParams( $lang->listToText( $user_names ) )->params(
+				count( $user_names ) )->escaped();
 		} else {
-			$wiki_user = false;
+			$user = false;
 		}
 
 		if ( count( $anon_ips ) ) {
-			$anon = $this->msg( 'anonwiki_users' )->rawParams( $lang->listToText( $anon_ips ) )->params(
+			$anon = $this->msg( 'anonusers' )->rawParams( $lang->listToText( $anon_ips ) )->params(
 				count( $anon_ips ) )->escaped();
 		} else {
 			$anon = false;
@@ -589,7 +589,7 @@ class InfoAction extends FormlessAction {
 
 		# This is the big list, all mooshed together. We sift for blank strings
 		$fulllist = array();
-		foreach ( array( $real, $wiki_user, $anon ) as $s ) {
+		foreach ( array( $real, $user, $anon ) as $s ) {
 			if ( $s !== '' ) {
 				array_push( $fulllist, $s );
 			}

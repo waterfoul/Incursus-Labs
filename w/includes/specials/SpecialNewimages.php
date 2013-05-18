@@ -71,25 +71,25 @@ class NewFilesPager extends ReverseChronologicalPager {
 		$tables = array( 'image' );
 
 		if( !$this->showbots ) {
-			$groupsWithBotPermission = wiki_user::getGroupsWithPermission( 'bot' );
+			$groupsWithBotPermission = User::getGroupsWithPermission( 'bot' );
 			if( count( $groupsWithBotPermission ) ) {
-				$tables[] = 'wiki_user_groups';
+				$tables[] = 'user_groups';
 				$conds[] = 'ug_group IS NULL';
-				$jconds['wiki_user_groups'] = array(
+				$jconds['user_groups'] = array(
 					'LEFT JOIN',
 					array(
 						'ug_group' => $groupsWithBotPermission,
-						'ug_wiki_user = img_wiki_user'
+						'ug_user = img_user'
 					)
 				);
 			}
 		}
 
 		if( !$wgMiserMode && $this->like !== null ){
-			r = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$likeObj = Title::newFromURL( $this->like );
 			if( $likeObj instanceof Title ){
-				$like = r->buildLike( r->anyString(), strtolower( $likeObj->getDBkey() ), r->anyString() );
+				$like = $dbr->buildLike( $dbr->anyString(), strtolower( $likeObj->getDBkey() ), $dbr->anyString() );
 				$conds[] = "LOWER(img_name) $like";
 			}
 		}
@@ -121,15 +121,15 @@ class NewFilesPager extends ReverseChronologicalPager {
 
 	function formatRow( $row ) {
 		$name = $row->img_name;
-		$wiki_user = wiki_user::newFromId( $row->img_wiki_user );
+		$user = User::newFromId( $row->img_user );
 
 		$title = Title::makeTitle( NS_FILE, $name );
-		$ul = Linker::link( $wiki_user->getwiki_userpage(), $wiki_user->getName() );
+		$ul = Linker::link( $user->getUserpage(), $user->getName() );
 
 		$this->gallery->add(
 			$title,
 			"$ul<br />\n<i>"
-				. htmlspecialchars( $this->getLanguage()->wiki_userTimeAndDate( $row->img_timestamp, $this->getwiki_user() ) )
+				. htmlspecialchars( $this->getLanguage()->userTimeAndDate( $row->img_timestamp, $this->getUser() ) )
 				. "</i><br />\n"
 		);
 	}

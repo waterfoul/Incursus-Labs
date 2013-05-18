@@ -94,8 +94,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'АГlОНИЙ_ДУКХАЛЛА', 'КОЛИЧЕСТВО_СТРАНИЦ', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'ЯЗЗАМАШИ_ДУКХАЛЛА', 'КОЛИЧЕСТВО_СТАТЕЙ', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'ХlУМНИЙ_ДУКХАЛЛА', 'КОЛИЧЕСТВО_ФАЙЛОВ', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', 'ДЕКЪАШХОЙ_ДУКХАЛЛА', 'КОЛИЧЕСТВО_УЧАСТНИКОВ', 'NUMBEROFUSERS' ),
-	'numberofactivewiki_users'       => array( '1', 'ДУКХАЛЛА_ЖИГАРА_ДЕКЪАШХОЙ', 'КОЛИЧЕСТВО_АКТИВНЫХ_УЧАСТНИКОВ', 'NUMBEROFACTIVEUSERS' ),
+	'numberofusers'             => array( '1', 'ДЕКЪАШХОЙ_ДУКХАЛЛА', 'КОЛИЧЕСТВО_УЧАСТНИКОВ', 'NUMBEROFUSERS' ),
+	'numberofactiveusers'       => array( '1', 'ДУКХАЛЛА_ЖИГАРА_ДЕКЪАШХОЙ', 'КОЛИЧЕСТВО_АКТИВНЫХ_УЧАСТНИКОВ', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'НИСДАРШИЙ_ДУКХАЛЛА', 'КОЛИЧЕСТВО_ПРАВОК', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'ХЬАЖАРИЙ_ДУКХАЛЛА', 'КОЛИЧЕСТВО_ПРОСМОТРОВ', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'АГlОН_ЦlЕ', 'НАЗВАНИЕ_СТРАНИЦЫ', 'PAGENAME' ),
@@ -165,7 +165,7 @@ $magicWords = array(
 	'revisionmonth'             => array( '1', 'БЕТТА_БАШХО', 'МЕСЯЦ_ВЕРСИИ', 'REVISIONMONTH' ),
 	'revisionyear'              => array( '1', 'ШО_БАШХО', 'ГОД_ВЕРСИИ', 'REVISIONYEAR' ),
 	'revisiontimestamp'         => array( '1', 'КЪАСТАМ_ХЕНА_БАШХО', 'ОТМЕТКА_ВРЕМЕНИ_ВЕРСИИ', 'REVISIONTIMESTAMP' ),
-	'revisionwiki_user'              => array( '1', 'ДЕКЪАШХОН_БАШХО', 'ВЕРСИЯ_УЧАСНИКА', 'REVISIONUSER' ),
+	'revisionuser'              => array( '1', 'ДЕКЪАШХОН_БАШХО', 'ВЕРСИЯ_УЧАСНИКА', 'REVISIONUSER' ),
 	'plural'                    => array( '0', 'ДУКХАЛЛИН_ТЕРАХЬ:', 'МНОЖЕСТВЕННОЕ_ЧИСЛО:', 'PLURAL:' ),
 	'fullurl'                   => array( '0', 'МАЙАРРА_МЕТТИГ:', 'ПОЛНЫЙ_АДРЕС:', 'FULLURL:' ),
 	'fullurle'                  => array( '0', 'МАЙАРРА_МЕТТИГ_2:', 'ПОЛНЫЙ_АДРЕС_2:', 'FULLURLE:' ),
@@ -209,7 +209,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Кlел сиз хьака хьажориган:',
 'tog-justify' => 'Нисде йоза шораллий агlонца',
 'tog-hideminor' => 'Къайладаха кигийра нисдарш оц могlама керла хийцамехь',
@@ -233,7 +233,7 @@ $messages = array(
 'tog-previewonfirst' => 'Гайта хьалххьажар рéдоккхуче дехьа волуш',
 'tog-nocache' => 'Ма латае гойтучун къайлаха латториг',
 'tog-enotifwatchlistpages' => 'Хаам бо зlе чухул, тергаме могlаман хийцамах лаьцна',
-'tog-enotifwiki_usertalkpages' => 'Хаам бо зlе чухул, долахь йолу дийцаре агlон хийцамах лаьцна',
+'tog-enotifusertalkpages' => 'Хаам бо зlе чухул, долахь йолу дийцаре агlон хийцамах лаьцна',
 'tog-enotifminoredits' => 'Хаам бо зlе чухул, цхьа жимма а хийцамаш биняхь',
 'tog-enotifrevealaddr' => 'Гайта сан зlе оцу хаамаш барехь',
 'tog-shownumberswatching' => 'Гайта декъашхойн терахь, агlо латийна болу шай тергаме могlам юкъа',
@@ -416,7 +416,7 @@ $messages = array(
 'talk' => 'Дийцаре',
 'views' => 'Хьажарш',
 'toolbox' => 'Гlирсаш',
-'wiki_userpage' => 'Хьажа декъашхочуьна агlоне',
+'userpage' => 'Хьажа декъашхочуьна агlоне',
 'projectpage' => 'Хьажа кхолламан агlоне',
 'imagepage' => 'Хьажа хlуман агlоне',
 'mediawikipage' => 'Хьагайта хааман агlо',
@@ -442,7 +442,7 @@ $1',
 'pool-queuefull' => 'Дехаршан чоь йуззина йу',
 'pool-errorunknown' => 'Дойзаш доцу гlалат',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{grammar:genitive|{{SITENAME}}}} лаьцна',
 'aboutpage' => 'Project:Цуьнах лаьцна',
 'copyright' => 'Чулацам лело мега догlуш хиларца оцу $1.',
@@ -505,7 +505,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Яззам',
-'nstab-wiki_user' => 'Декъашхо',
+'nstab-user' => 'Декъашхо',
 'nstab-special' => 'Белха агlо',
 'nstab-project' => 'Кхолламех',
 'nstab-image' => 'Хlум',
@@ -527,7 +527,7 @@ $1',
 Иштнарг наггахь хуьлу хьажориг дlайаьккхина йалхь йа хийцам бина тиша хьажоригца дехьа вала гlоьртича.
 
 Нагахьсан гlулкх цуьнах доьзна дацахь, хьуна карийна гlирс латточехь гlалат.
-Дехар до, хаам бе оцуьнах [[Special:Listwiki_users/sysop|адаманкуьйгалхога]], гойтуш URL.',
+Дехар до, хаам бе оцуьнах [[Special:ListUsers/sysop|адаманкуьйгалхога]], гойтуш URL.',
 'missingarticle-rev' => '(варси № $1)',
 'missingarticle-diff' => '(тейп тайпнара: $1, $2)',
 'internalerror' => 'Чоьхьара гlалат',
@@ -548,10 +548,10 @@ $1',
 'login' => 'Вовзийта хьой гlирсан',
 'nav-login-createaccount' => 'Вовзийта хьой / дlавазло',
 'loginprompt' => 'Ахьа бакъо йала йеза оцу «cookies» хьайна вовзийта лаахь гlирсан.',
-'wiki_userlogin' => 'Чу вала йа дlавазло',
-'wiki_userloginnocreate' => 'Вовзийта хьой',
+'userlogin' => 'Чу вала йа дlавазло',
+'userloginnocreate' => 'Вовзийта хьой',
 'logout' => 'Ара валар',
-'wiki_userlogout' => 'Ара валар',
+'userlogout' => 'Ара валар',
 'notloggedin' => 'Хьо вовзита веза гlирсан',
 'nologin' => "Хlинца дlа вазвин вац? '''$1'''.",
 'nologinlink' => 'Кхолла керла дlавазвалар',
@@ -563,9 +563,9 @@ $1',
 'nocookiesforlogin' => '{{int:nocookieslogin}}',
 'loginsuccesstitle' => 'Хьо вовзар хаз чакхдели',
 'loginsuccess' => 'Хlинца ахьа болх бó оцу цlарца $1.',
-'nosuchwiki_user' => 'Декъашхо цlарца $1 воцаш ву.
+'nosuchuser' => 'Декъашхо цlарца $1 воцаш ву.
 Декъашхой цlераш хаалуш йу дlайазвалрца элраш.
-Нийса юьй хьажа цlе йа [[Special:wiki_userLogin/signup|дlайазвалар кхолла керла]].',
+Нийса юьй хьажа цlе йа [[Special:UserLogin/signup|дlайазвалар кхолла керла]].',
 'wrongpassword' => 'Ахьа язъйина йолу ишар нийса яц. Хьажа йуху цхьаъз.',
 'mailmypassword' => 'Схьаэца керла ишар',
 'accountcreated' => 'Дlавазвар кхоллина дели',
@@ -615,7 +615,7 @@ $1',
 'summary-preview' => 'Цуьнах лаьцна хирду:',
 'blockedtitle' => 'Декъашхо сацийна',
 'accmailtitle' => 'Ишар дlаяхьийтина.',
-'accmailtext' => "Ишар декъашхочуьна [[wiki_user talk:$1|$1]], йина ша шех хитта делла чу элпашах, дlаяхийтина хьокху хааман зlен чу $2.
+'accmailtext' => "Ишар декъашхочуьна [[User talk:$1|$1]], йина ша шех хитта делла чу элпашах, дlаяхийтина хьокху хааман зlен чу $2.
 
 Дlаязвинчултlяхьа, кху гlирса чохь шуьга хийцалур ю ''[[Special:ChangePassword|шай ишар]]''.",
 'newarticle' => '(Kерла)',
@@ -625,7 +625,7 @@ $1',
 'anontalkpagetext' => "----''Хlара дийцаре агIо къайлаха волу декъашхочуьна  ю, хlинца дlавазвина воцуш, йа лелош воцуш.
 Цундела иза вовзийта лелош ду терахьца IP-долу метаг.
 Иза терахь долу меттиг хила мега кхечу декъашхойчух терра.
-Нагахь хьо къайлах волу декъашхо валахь хьайна хаам кхаьчна аьлла хеташн, хьуна хьажийна доцуш, дехар до, кхолла хьай меттиг кху чохь[[Special:wiki_userLogin/signup|дlавазло]] йа [[Special:wiki_userLogin|хьой вовзийта]],",
+Нагахь хьо къайлах волу декъашхо валахь хьайна хаам кхаьчна аьлла хеташн, хьуна хьажийна доцуш, дехар до, кхолла хьай меттиг кху чохь[[Special:UserLogin/signup|дlавазло]] йа [[Special:UserLogin|хьой вовзийта]],",
 'noarticletext' => "Хlокх хан чохь кху агlонца йоза дац.
 Шуьга далундерг [[Special:Search/{{PAGENAME}}|лахар ишта хьехош йолу цlе]] кхечу яззамашкахь,
 <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} лахар кхечу тептаршкахь],
@@ -633,7 +633,7 @@ $1',
 'noarticletext-nopermission' => 'Хlокх хан чохь кху агlонца йоза дац.
 Шуьга далундерг [[Special:Search/{{PAGENAME}}|лахар ишта хьехош йолу цlе]] кхечу яззамашкахь,
 йа <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} лаха оцуьнах терадерг кхечу тептаршкахь].</span>',
-'wiki_userpage-wiki_userdoesnotexist' => 'Ишта дlайазвар «<nowiki>$1</nowiki>» хlинца дац. Хьажа билгал, хьуна бакъалла лаьи кхолла йа хийцам ба хlокху агlон.',
+'userpage-userdoesnotexist' => 'Ишта дlайазвар «<nowiki>$1</nowiki>» хlинца дац. Хьажа билгал, хьуна бакъалла лаьи кхолла йа хийцам ба хlокху агlон.',
 'updated' => '(Карла йаькхина)',
 'note' => "'''Билгалдаккхар:'''",
 'previewnote' => "'''Хlара хьалх хьажар ду, йоза хlинца язданза ду!'''",
@@ -792,7 +792,7 @@ $1',
 'prefs-searchoptions' => 'Лахарна гlирс нисба',
 'prefs-files' => 'Хlумнаш',
 'youremail' => 'Кехат яздо зlе цlе:',
-'wiki_username' => 'Дlаязвиначуьна цlе:',
+'username' => 'Дlаязвиначуьна цlе:',
 'yourrealname' => 'Хьан бакъ цlе:',
 'yourlanguage' => 'Юкъардекъа мотт:',
 'yourvariant' => 'Метта башхо',
@@ -803,32 +803,32 @@ $1',
 'prefs-help-email' => 'Кехат яздо зlен цlе цахlоттийча аъ хlумма дац, амма иза оьшар ю, нагахь хьуна хьай ишар йицлахь.',
 'prefs-diffs' => 'Башхон варси',
 
-# wiki_user rights
-'wiki_userrights' => 'Декъашхочуьн бакъона урхалладар',
-'editingwiki_user' => "Хийца декъашхочуьна бакъо '''[[wiki_user:$1|$1]]''' ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+# User rights
+'userrights' => 'Декъашхочуьн бакъона урхалладар',
+'editinguser' => "Хийца декъашхочуьна бакъо '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Groups
 'group' => 'Тоба:',
-'group-wiki_user' => 'Декъашхой',
+'group-user' => 'Декъашхой',
 'group-bot' => 'Шаболххой',
 'group-sysop' => 'Адаманкуьйгалхой',
 'group-bureaucrat' => 'Даржахой',
 'group-suppress' => 'Левисорхой',
 'group-all' => '(массо)',
 
-'group-wiki_user-member' => '{{GENDER:$1|декъашхо}}',
+'group-user-member' => '{{GENDER:$1|декъашхо}}',
 'group-bot-member' => 'шаболххо',
 'group-sysop-member' => 'адманкуьйгалхо',
 'group-bureaucrat-member' => 'даржахо',
 'group-suppress-member' => 'левисорхо',
 
-'grouppage-wiki_user' => '{{ns:project}}:Декъашхой',
+'grouppage-user' => '{{ns:project}}:Декъашхой',
 'grouppage-bot' => '{{ns:project}}:Шаболххой',
 'grouppage-sysop' => '{{ns:project}}:Адаманкуьйгалхой',
 'grouppage-bureaucrat' => '{{ns:project}}:Даржахой',
 'grouppage-suppress' => '{{ns:project}}:Левисорхой',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Декъашхон бакъона тéптар',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -901,7 +901,7 @@ PICT # тайп тайпан
 'imgfile' => 'хlум',
 'listfiles' => 'Хlумнаши могlам',
 'listfiles_name' => 'Хlуман цlе',
-'listfiles_wiki_user' => 'Декъашхо',
+'listfiles_user' => 'Декъашхо',
 'listfiles_size' => 'Барам',
 'listfiles_description' => 'Цуьнах лаьцна',
 
@@ -915,7 +915,7 @@ PICT # тайп тайпан
 'filehist-datetime' => 'Терахь/Хан',
 'filehist-thumb' => 'Жима',
 'filehist-thumbtext' => 'Жимо башхо оцу $1',
-'filehist-wiki_user' => 'Декъашхо',
+'filehist-user' => 'Декъашхо',
 'filehist-dimensions' => 'Хlуман барам',
 'filehist-comment' => 'Билгалдаккхар',
 'imagelinks' => 'Хьажоригаш оцу хlуман',
@@ -955,15 +955,15 @@ PICT # тайп тайпан
 'statistics' => 'Бухехьдерг',
 'statistics-header-pages' => 'Агlонашан жамlа',
 'statistics-header-edits' => 'Нисдаран жамlа',
-'statistics-header-wiki_users' => 'Декъашхойн жамlа',
+'statistics-header-users' => 'Декъашхойн жамlа',
 'statistics-articles' => 'Яззамаш',
 'statistics-pages' => 'Агlонаш',
 'statistics-pages-desc' => 'Массо вики агlонаш, дийцаре агlонашцани, дlасахьаждарш а кхин дерш.',
 'statistics-files' => 'Чуйаьхна хlумнаш',
 'statistics-edits' => 'Нисдаран дукхалла {{grammar:genitive|{{SITENAME}}}} дlа йолайаларца',
 'statistics-edits-average' => 'Йукъера агlонан нисдаран терхь',
-'statistics-wiki_users-active' => 'Жигар декъашхой',
-'statistics-wiki_users-active-desc' => 'Декъашхой, муьлха цхьа хlум дина болу, кху {{PLURAL:$1|тlаьххьара $1 динахь|тlаьххьара $1 дийнахь}}',
+'statistics-users-active' => 'Жигар декъашхой',
+'statistics-users-active-desc' => 'Декъашхой, муьлха цхьа хlум дина болу, кху {{PLURAL:$1|тlаьххьара $1 динахь|тlаьххьара $1 дийнахь}}',
 
 'disambiguations' => 'Дуккха маьIнаш долу хьажорца йолу агIонаш',
 
@@ -1006,9 +1006,9 @@ PICT # тайп тайпан
 'deadendpages' => 'Дика йоцу агIонаш',
 'protectedpages' => 'ГIаролла дина агIонаш',
 'protectedtitles' => 'Ца магийна йолу цIераш',
-'listwiki_users' => 'Декъашхой могlам',
+'listusers' => 'Декъашхой могlам',
 'newpages' => 'Керла агlонаш',
-'newpages-wiki_username' => 'Декъашхо:',
+'newpages-username' => 'Декъашхо:',
 'ancientpages' => 'Яззамаш оцу терахьца тяххьара редаккхар дина долу',
 'move' => 'Цlе хийца',
 'movethispage' => 'Хlокху агlон цlе хийца',
@@ -1022,7 +1022,7 @@ PICT # тайп тайпан
 'booksources-go' => 'Лаха',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Декъашхо:',
+'specialloguserlabel' => 'Декъашхо:',
 'speciallogtitlelabel' => 'Корта:',
 'log' => 'Тéптарш',
 'all-logs-page' => 'Деригге тléкхочучéхь долу тéптарш',
@@ -1055,14 +1055,14 @@ PICT # тайп тайпан
 'linksearch-ok' => 'Лаха',
 'linksearch-line' => '$2 — хьажориг кху $1',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'Гайта',
+# Special:ListUsers
+'listusers-submit' => 'Гайта',
 
-# Special:Activewiki_users
-'activewiki_users' => 'Жигар декъашхой могlам',
+# Special:ActiveUsers
+'activeusers' => 'Жигар декъашхой могlам',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Декъашхой дlабазбина тептар',
+# Special:Log/newusers
+'newuserlogpage' => 'Декъашхой дlабазбина тептар',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Декъашхойн тобанаши бакъонаш',
@@ -1070,8 +1070,8 @@ PICT # тайп тайпан
 'listgrouprights-helppage' => 'Help:Тобан бакъонаш',
 'listgrouprights-members' => '(тобан могlам)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Декъашхочун хааман кехат',
+# E-mail user
+'emailuser' => 'Декъашхочун хааман кехат',
 'defemailsubject' => 'Хаам {{grammar:genitive|{{SITENAME}}}} чура бу',
 'emailmessage' => 'Хаам:',
 
@@ -1117,7 +1117,7 @@ PICT # тайп тайпан
 
 # Rollback
 'rollbacklink' => 'йухаяккха',
-'revertpage' => 'Нисдарш [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|дийцаре]]) йуха йаьхна башхаллийн [[wiki_user:$1|$1]]',
+'revertpage' => 'Нисдарш [[Special:Contributions/$2|$2]] ([[User talk:$2|дийцаре]]) йуха йаьхна башхаллийн [[User:$1|$1]]',
 
 # Protect
 'protectlogpage' => 'Гlаролли тептар',
@@ -1176,9 +1176,9 @@ PICT # тайп тайпан
 'sp-contributions-blocklog' => 'сацораш',
 'sp-contributions-logs' => 'тéптарш',
 'sp-contributions-talk' => 'дийцаре',
-'sp-contributions-wiki_userrights' => 'декъашхочуьн бакъона урхалладар',
+'sp-contributions-userrights' => 'декъашхочуьн бакъона урхалладар',
 'sp-contributions-search' => 'Къинхьегам лахар',
-'sp-contributions-wiki_username' => 'IP-долу меттиг йа декъашхон цlе:',
+'sp-contributions-username' => 'IP-долу меттиг йа декъашхон цlе:',
 'sp-contributions-submit' => 'Лаха',
 
 # What links here
@@ -1199,14 +1199,14 @@ PICT # тайп тайпан
 
 # Block/unblock
 'blockip' => 'Сацаве',
-'ipadressorwiki_username' => 'IP-долу меттиг йа декъашхон цlе:',
+'ipadressorusername' => 'IP-долу меттиг йа декъашхон цlе:',
 'ipbreasonotherlist' => 'Кхин бахьан',
 'ipboptions' => '2 сахьат:2 hours,1 де:1 day,3 де:3 days,1 кlиран:1 week,2 кlиран:2 weeks,1 бутт:1 month,3 бутт:3 months,6 бутт:6 months,1 шо:1 year,цlкъа:infinite',
 'blockipsuccesssub' => 'Сацавар чакхдели',
 'blockipsuccesstext' => '[[Special:Contributions/$1|«$1»]] сацийна ву.<br />
 Хьажа. [[Special:BlockList|могlам сацийна IP-долу меттигаш]].',
 'ipb-blocklist-contribs' => 'Декъашхон къинхьегам $1',
-'unblocked' => '[[wiki_user:$1|$1]] хьайаьстина.',
+'unblocked' => '[[User:$1|$1]] хьайаьстина.',
 'ipblocklist' => 'Сацийна IP-долу меттиг а дlалаьрра язбаларш',
 'ipblocklist-submit' => 'Лаха',
 'blocklink' => 'сацаве',
@@ -1292,7 +1292,7 @@ PICT # тайп тайпан
 'import-upload-filename' => 'Хlуман цlе:',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Декъашхочуьна агlо',
+'tooltip-pt-userpage' => 'Декъашхочуьна агlо',
 'tooltip-pt-mytalk' => 'Сан дийцаре агlо',
 'tooltip-pt-preferences' => 'Хьан гlирс нисбар',
 'tooltip-pt-watchlist' => 'Ахьа тергам бо агlонаши хийцаман могlам',
@@ -1326,13 +1326,13 @@ PICT # тайп тайпан
 'tooltip-feed-rss' => 'Хьагайтар оцу RSS цани хlокху агlон',
 'tooltip-feed-atom' => 'Хьагайтар оцу Atom цани хlокху агlон',
 'tooltip-t-contributions' => 'Хlокху декъашхочо хийцина йолу агlонашан могlам',
-'tooltip-t-emailwiki_user' => 'Дlабахьийта хаам оцу декъашхона',
+'tooltip-t-emailuser' => 'Дlабахьийта хаам оцу декъашхона',
 'tooltip-t-upload' => 'Чудаха суьрташ йа шагойтуш йолу хlумнаш',
 'tooltip-t-specialpages' => 'Белха агlонаши могlам',
 'tooltip-t-print' => 'Хlокху агlонна зорба туху башхо',
 'tooltip-t-permalink' => 'Даимна йолу хьажориг хlокху башха агlонна',
 'tooltip-ca-nstab-main' => 'Яззамна чулацам',
-'tooltip-ca-nstab-wiki_user' => 'Хlора декъашхон долахь йолу агlо',
+'tooltip-ca-nstab-user' => 'Хlора декъашхон долахь йолу агlо',
 'tooltip-ca-nstab-media' => 'Медиа-хlум',
 'tooltip-ca-nstab-special' => 'Хlара белха агlо йу, хlара рéдаккхалуш яц',
 'tooltip-ca-nstab-project' => 'Кхолламан дакъа',
@@ -1360,9 +1360,9 @@ PICT # тайп тайпан
 'monobook.js' => '/* Кхузе чу яззийна йолу JavaScript ишар, чу йера йу, массо MonoBook хатl лелош болу декъашхошна */',
 
 # Attribution
-'sitewiki_user' => 'декъашхо {{grammar:genitive|{{SITENAME}}}} $1',
+'siteuser' => 'декъашхо {{grammar:genitive|{{SITENAME}}}} $1',
 'others' => 'кхин',
-'sitewiki_users' => '{{PLURAL:$2|декъашхо|декъашхой}} {{grammar:genitive|{{SITENAME}}}} $1',
+'siteusers' => '{{PLURAL:$2|декъашхо|декъашхой}} {{grammar:genitive|{{SITENAME}}}} $1',
 'nocredits' => 'Бац декъашхойн могlам хlокху яззамца',
 
 # Spam protection
@@ -1434,7 +1434,7 @@ PICT # тайп тайпан
 'limitall' => 'массо',
 
 # Delete conflict
-'confirmrecreate' => "Декъашхо [[wiki_user:$1|$1]] ([[wiki_user talk:$1|дийцаре]]) хlара агlо дlадайина, хьо иза нисда вола велча, дlадайарна бахьан:
+'confirmrecreate' => "Декъашхо [[User:$1|$1]] ([[User talk:$1|дийцаре]]) хlара агlо дlадайина, хьо иза нисда вола велча, дlадайарна бахьан:
 : ''$2''
 Дехар до, тешал де, хьо иза агlо метта хlотто лууш ву але.",
 
@@ -1491,7 +1491,7 @@ PICT # тайп тайпан
 'specialpages-group-login' => 'Хьой вовзийта / Дlавазло',
 'specialpages-group-changes' => 'Керла нисдарш а тéптарш',
 'specialpages-group-media' => 'Жамlаш оцу медиа-гlирсашан а чуяхарш',
-'specialpages-group-wiki_users' => 'Декъашхой а бакъонаш',
+'specialpages-group-users' => 'Декъашхой а бакъонаш',
 'specialpages-group-highuse' => 'Уггаре дукха лелайо агlонаш',
 'specialpages-group-pages' => 'Агlонаши могlамаш',
 'specialpages-group-pagetools' => 'Гlирсаш оцу агlонашан',

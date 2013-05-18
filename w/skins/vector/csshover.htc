@@ -69,7 +69,7 @@ window.CSSHover = (function(){
 		init:function() {
 			// don't run in IE8 standards; expressions don't work in standards mode anyway, 
 			// and the stuff we're trying to fix should already work properly
-			if(!REG_MSIE.test(navigator.wiki_userAgent) && !REG_COMPAT.test(window.document.compatMode)) {
+			if(!REG_MSIE.test(navigator.userAgent) && !REG_COMPAT.test(window.document.compatMode)) {
 				return;
 			}
 

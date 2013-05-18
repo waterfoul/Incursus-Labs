@@ -28,11 +28,11 @@
  */
 class ForeignDBRepo extends LocalRepo {
 	# Settings
-	var Type, Server, wiki_user, Password, Name, Flags,
+	var $dbType, $dbServer, $dbUser, $dbPassword, $dbName, $dbFlags,
 		$tablePrefix, $hasSharedCache;
 
 	# Other stuff
-	var Conn;
+	var $dbConn;
 	var $fileFactory = array( 'ForeignDBFile', 'newFromTitle' );
 	var $fileFromRowFactory = array( 'ForeignDBFile', 'newFromRow' );
 
@@ -43,7 +43,7 @@ class ForeignDBRepo extends LocalRepo {
 		parent::__construct( $info );
 		$this->dbType = $info['dbType'];
 		$this->dbServer = $info['dbServer'];
-		$this->dbwiki_user = $info['dbwiki_user'];
+		$this->dbUser = $info['dbUser'];
 		$this->dbPassword = $info['dbPassword'];
 		$this->dbName = $info['dbName'];
 		$this->dbFlags = $info['dbFlags'];
@@ -59,7 +59,7 @@ class ForeignDBRepo extends LocalRepo {
 			$this->dbConn = DatabaseBase::factory( $this->dbType,
 				array(
 					'host' => $this->dbServer,
-					'wiki_user'   => $this->dbwiki_user,
+					'user'   => $this->dbUser,
 					'password' => $this->dbPassword,
 					'dbname' => $this->dbName,
 					'flags' => $this->dbFlags,

@@ -35,14 +35,14 @@ class ImportSiteScripts extends Maintenance {
 		$this->mDescription = 'Import site scripts from a site';
 		$this->addArg( 'api', 'API base url' );
 		$this->addArg( 'index', 'index.php base url' );
-		$this->addOption( 'wiki_username', 'wiki_user name of the script importer' );
+		$this->addOption( 'username', 'User name of the script importer' );
 	}
 
 	public function execute() {
-		global $wgwiki_user;
+		global $wgUser;
 
-		$wiki_user = wiki_user::newFromName( $this->getOption( 'wiki_username', 'ScriptImporter' ) );
-		$wgwiki_user = $wiki_user;
+		$user = User::newFromName( $this->getOption( 'username', 'ScriptImporter' ) );
+		$wgUser = $user;
 
 		$baseUrl = $this->getArg( 1 );
 		$pageList = $this->fetchScriptList();
@@ -62,7 +62,7 @@ class ImportSiteScripts extends Maintenance {
 			$text = Http::get( $url );
 
 			$wikiPage = WikiPage::factory( $title );
-			$wikiPage->doEdit( $text, "Importing from $url", 0, false, $wiki_user );
+			$wikiPage->doEdit( $text, "Importing from $url", 0, false, $user );
 		}
 
 	}

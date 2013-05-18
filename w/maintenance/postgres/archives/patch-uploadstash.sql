@@ -3,7 +3,7 @@ CREATE TYPE media_type AS ENUM ('UNKNOWN','BITMAP','DRAWING','AUDIO','VIDEO','MU
 
 CREATE TABLE uploadstash (
   us_id           INTEGER PRIMARY KEY NOT NULL DEFAULT nextval('uploadstash_us_id_seq'),
-  us_wiki_user         INTEGER,
+  us_user         INTEGER,
   us_key		  TEXT,
   us_orig_path    TEXT,
   us_path		  TEXT,
@@ -19,6 +19,6 @@ CREATE TABLE uploadstash (
   us_image_bits   INTEGER
 );
 
-CREATE INDEX us_wiki_user_idx ON uploadstash (us_wiki_user);
+CREATE INDEX us_user_idx ON uploadstash (us_user);
 CREATE UNIQUE INDEX us_key_idx ON uploadstash (us_key);
 CREATE INDEX us_timestamp_idx ON uploadstash (us_timestamp);

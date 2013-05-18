@@ -65,11 +65,11 @@ abstract class Job {
 	static function pop_type( $type ) {
 		wfProfilein( __METHOD__ );
 
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
-		w->begin( __METHOD__ );
+		$dbw->begin( __METHOD__ );
 
-		$row = w->selectRow(
+		$row = $dbw->selectRow(
 			'job',
 			'*',
 			array( 'job_cmd' => $type ),
@@ -78,15 +78,15 @@ abstract class Job {
 		);
 
 		if ( $row === false ) {
-			w->commit( __METHOD__ );
+			$dbw->commit( __METHOD__ );
 			wfProfileOut( __METHOD__ );
 			return false;
 		}
 
 		/* Ensure we "own" this row */
-		w->delete( 'job', array( 'job_id' => $row->job_id ), __METHOD__ );
-		$affected = w->affectedRows();
-		w->commit( __METHOD__ );
+		$dbw->delete( 'job', array( 'job_id' => $row->job_id ), __METHOD__ );
+		$affected = $dbw->affectedRows();
+		$dbw->commit( __METHOD__ );
 
 		if ( $affected == 0 ) {
 			wfProfileOut( __METHOD__ );
@@ -95,8 +95,8 @@ abstract class Job {
 
 		wfIncrStats( 'job-pop' );
 		$namespace = $row->job_namespace;
-		key = $row->job_title;
-		$title = Title::makeTitleSafe( $namespace, key );
+		$dbkey = $row->job_title;
+		$title = Title::makeTitleSafe( $namespace, $dbkey );
 		$job = Job::factory( $row->job_cmd, $title, Job::extractBlob( $row->job_params ),
 			$row->job_id );
 
@@ -115,7 +115,7 @@ abstract class Job {
 	static function pop( $offset = 0 ) {
 		wfProfileIn( __METHOD__ );
 
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		/* Get a job from the slave, start with an offset,
 			scan full set afterwards, avoid hitting purged rows
@@ -129,7 +129,7 @@ abstract class Job {
 		$offset = intval( $offset );
 		$options = array( 'ORDER BY' => 'job_id', 'USE INDEX' => 'PRIMARY' );
 
-		$row = r->selectRow( 'job', '*',
+		$row = $dbr->selectRow( 'job', '*',
 			array_merge( $conditions, array( "job_id >= $offset" ) ),
 			__METHOD__,
 			$options
@@ -140,7 +140,7 @@ abstract class Job {
 		//
 		if ( $row === false ) {
 			if ( $offset != 0 ) {
-				$row = r->selectRow( 'job', '*', $conditions, __METHOD__, $options );
+				$row = $dbr->selectRow( 'job', '*', $conditions, __METHOD__, $options );
 			}
 
 			if ( $row === false ) {
@@ -150,14 +150,14 @@ abstract class Job {
 		}
 
 		// Try to delete it from the master
-		w = wfGetDB( DB_MASTER );
-		w->delete( 'job', array( 'job_id' => $row->job_id ), __METHOD__ );
-		$affected = w->affectedRows();
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete( 'job', array( 'job_id' => $row->job_id ), __METHOD__ );
+		$affected = $dbw->affectedRows();
 
 		if ( !$affected ) {
 			// Failed, someone else beat us to it
 			// Try getting a random row
-			$row = w->selectRow( 'job', array( 'minjob' => 'MIN(job_id)',
+			$row = $dbw->selectRow( 'job', array( 'minjob' => 'MIN(job_id)',
 				'maxjob' => 'MAX(job_id)' ), '1=1', __METHOD__ );
 			if ( $row === false || is_null( $row->minjob ) || is_null( $row->maxjob ) ) {
 				// No jobs to get
@@ -165,7 +165,7 @@ abstract class Job {
 				return false;
 			}
 			// Get the random row
-			$row = w->selectRow( 'job', '*',
+			$row = $dbw->selectRow( 'job', '*',
 				'job_id >= ' . mt_rand( $row->minjob, $row->maxjob ), __METHOD__ );
 			if ( $row === false ) {
 				// Random job gone before we got the chance to select it
@@ -174,8 +174,8 @@ abstract class Job {
 				return false;
 			}
 			// Delete the random row
-			w->delete( 'job', array( 'job_id' => $row->job_id ), __METHOD__ );
-			$affected = w->affectedRows();
+			$dbw->delete( 'job', array( 'job_id' => $row->job_id ), __METHOD__ );
+			$affected = $dbw->affectedRows();
 
 			if ( !$affected ) {
 				// Random job gone before we exclusively deleted it
@@ -189,8 +189,8 @@ abstract class Job {
 		// by this thread. Hence the concurrent pop was successful.
 		wfIncrStats( 'job-pop' );
 		$namespace = $row->job_namespace;
-		key = $row->job_title;
-		$title = Title::makeTitleSafe( $namespace, key );
+		$dbkey = $row->job_title;
+		$title = Title::makeTitleSafe( $namespace, $dbkey );
 
 		if ( is_null( $title ) ) {
 			wfProfileOut( __METHOD__ );
@@ -262,7 +262,7 @@ abstract class Job {
 		if ( !count( $jobs ) ) {
 			return;
 		}
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$rows = array();
 
 		/**
@@ -272,16 +272,16 @@ abstract class Job {
 			$rows[] = $job->insertFields();
 			if ( count( $rows ) >= 50 ) {
 				# Do a small transaction to avoid slave lag
-				w->begin( __METHOD__ );
-				w->insert( 'job', $rows, __METHOD__, 'IGNORE' );
-				w->commit( __METHOD__ );
+				$dbw->begin( __METHOD__ );
+				$dbw->insert( 'job', $rows, __METHOD__, 'IGNORE' );
+				$dbw->commit( __METHOD__ );
 				$rows = array();
 			}
 		}
 		if ( $rows ) { // last chunk
-			w->begin( __METHOD__ );
-			w->insert( 'job', $rows, __METHOD__, 'IGNORE' );
-			w->commit( __METHOD__ );
+			$dbw->begin( __METHOD__ );
+			$dbw->insert( 'job', $rows, __METHOD__, 'IGNORE' );
+			$dbw->commit( __METHOD__ );
 		}
 		wfIncrStats( 'job-insert', count( $jobs ) );
 	}
@@ -299,17 +299,17 @@ abstract class Job {
 		if ( !count( $jobs ) ) {
 			return;
 		}
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$rows = array();
 		foreach ( $jobs as $job ) {
 			$rows[] = $job->insertFields();
 			if ( count( $rows ) >= 500 ) {
-				w->insert( 'job', $rows, __METHOD__, 'IGNORE' );
+				$dbw->insert( 'job', $rows, __METHOD__, 'IGNORE' );
 				$rows = array();
 			}
 		}
 		if ( $rows ) { // last chunk
-			w->insert( 'job', $rows, __METHOD__, 'IGNORE' );
+			$dbw->insert( 'job', $rows, __METHOD__, 'IGNORE' );
 		}
 		wfIncrStats( 'job-insert', count( $jobs ) );
 	}
@@ -327,9 +327,9 @@ abstract class Job {
 		global $wgJobTypesExcludedFromDefaultQueue;
 		$conditions = array();
 		if ( count( $wgJobTypesExcludedFromDefaultQueue ) > 0 ) {
-			r = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			foreach ( $wgJobTypesExcludedFromDefaultQueue as $cmdType ) {
-				$conditions[] = "job_cmd != " . r->addQuotes( $cmdType );
+				$conditions[] = "job_cmd != " . $dbr->addQuotes( $cmdType );
 			}
 		}
 		return $conditions;
@@ -363,29 +363,29 @@ abstract class Job {
 	function insert() {
 		$fields = $this->insertFields();
 
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		if ( $this->removeDuplicates ) {
-			$res = w->select( 'job', array( '1' ), $fields, __METHOD__ );
-			if ( w->numRows( $res ) ) {
+			$res = $dbw->select( 'job', array( '1' ), $fields, __METHOD__ );
+			if ( $dbw->numRows( $res ) ) {
 				return true;
 			}
 		}
 		wfIncrStats( 'job-insert' );
-		return w->insert( 'job', $fields, __METHOD__ );
+		return $dbw->insert( 'job', $fields, __METHOD__ );
 	}
 
 	/**
 	 * @return array
 	 */
 	protected function insertFields() {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return array(
-			'job_id' => w->nextSequenceValue( 'job_job_id_seq' ),
+			'job_id' => $dbw->nextSequenceValue( 'job_job_id_seq' ),
 			'job_cmd' => $this->command,
 			'job_namespace' => $this->title->getNamespace(),
 			'job_title' => $this->title->getDBkey(),
-			'job_timestamp' => w->timestamp(),
+			'job_timestamp' => $dbw->timestamp(),
 			'job_params' => Job::makeBlob( $this->params )
 		);
 	}
@@ -402,11 +402,11 @@ abstract class Job {
 		$fields = $this->insertFields();
 		unset( $fields['job_id'] );
 		unset( $fields['job_timestamp'] );
-		w = wfGetDB( DB_MASTER );
-		w->begin( __METHOD__ );
-		w->delete( 'job', $fields, __METHOD__ );
-		$affected = w->affectedRows();
-		w->commit( __METHOD__ );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin( __METHOD__ );
+		$dbw->delete( 'job', $fields, __METHOD__ );
+		$affected = $dbw->affectedRows();
+		$dbw->commit( __METHOD__ );
 		if ( $affected ) {
 			wfIncrStats( 'job-dup-delete', $affected );
 		}

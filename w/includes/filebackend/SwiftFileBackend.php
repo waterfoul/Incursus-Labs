@@ -40,7 +40,7 @@ class SwiftFileBackend extends FileBackendStore {
 	/** @var CF_Authentication */
 	protected $auth; // Swift authentication handler
 	protected $authTTL; // integer seconds
-	protected $swiftAnonwiki_user; // string; wiki_username to handle unauthenticated requests
+	protected $swiftAnonUser; // string; username to handle unauthenticated requests
 	protected $swiftUseCDN; // boolean; whether CloudFiles CDN is enabled
 	protected $swiftCDNExpiry; // integer; how long to cache things in the CDN
 	protected $swiftCDNPurgable; // boolean; whether object CDN purging is enabled
@@ -63,12 +63,12 @@ class SwiftFileBackend extends FileBackendStore {
 	 * @see FileBackendStore::__construct()
 	 * Additional $config params include:
 	 *   - swiftAuthUrl       : Swift authentication server URL
-	 *   - swiftwiki_user          : Swift wiki_user used by MediaWiki (account:wiki_username)
-	 *   - swiftKey           : Swift authentication key for the above wiki_user
+	 *   - swiftUser          : Swift user used by MediaWiki (account:username)
+	 *   - swiftKey           : Swift authentication key for the above user
 	 *   - swiftAuthTTL       : Swift authentication TTL (seconds)
-	 *   - swiftAnonwiki_user      : Swift wiki_user used for end-wiki_user requests (account:wiki_username).
+	 *   - swiftAnonUser      : Swift user used for end-user requests (account:username).
 	 *                          If set, then views of public containers are assumed to go
-	 *                          through this wiki_user. If not set, then public containers are
+	 *                          through this user. If not set, then public containers are
 	 *                          accessible to unauthenticated requests via ".r:*" in the ACL.
 	 *   - swiftUseCDN        : Whether a Cloud Files Content Delivery Network is set up
 	 *   - swiftCDNExpiry     : How long (in seconds) to store content in the CDN.
@@ -92,7 +92,7 @@ class SwiftFileBackend extends FileBackendStore {
 		}
 		// Required settings
 		$this->auth = new CF_Authentication(
-			$config['swiftwiki_user'],
+			$config['swiftUser'],
 			$config['swiftKey'],
 			null, // account; unused
 			$config['swiftAuthUrl']
@@ -101,8 +101,8 @@ class SwiftFileBackend extends FileBackendStore {
 		$this->authTTL = isset( $config['swiftAuthTTL'] )
 			? $config['swiftAuthTTL']
 			: 5 * 60; // some sane number
-		$this->swiftAnonwiki_user = isset( $config['swiftAnonwiki_user'] )
-			? $config['swiftAnonwiki_user']
+		$this->swiftAnonUser = isset( $config['swiftAnonUser'] )
+			? $config['swiftAnonUser']
 			: '';
 		$this->shardViaHashLevels = isset( $config['shardViaHashLevels'] )
 			? $config['shardViaHashLevels']
@@ -609,10 +609,10 @@ class SwiftFileBackend extends FileBackendStore {
 		try {
 			$contObj = $this->createContainer( $fullCont );
 			if ( !empty( $params['noAccess'] ) ) {
-				// Make container private to end-wiki_users...
+				// Make container private to end-users...
 				$status->merge( $this->doSecureInternal( $fullCont, $dir, $params ) );
 			} else {
-				// Make container public to end-wiki_users...
+				// Make container public to end-users...
 				$status->merge( $this->doPublishInternal( $fullCont, $dir, $params ) );
 			}
 			if ( $this->swiftUseCDN ) { // Rackspace style CDN
@@ -638,18 +638,18 @@ class SwiftFileBackend extends FileBackendStore {
 			return $status; // nothing to do
 		}
 
-		// Restrict container from end-wiki_users...
+		// Restrict container from end-users...
 		try {
 			// doPrepareInternal() should have been called,
 			// so the Swift container should already exist...
 			$contObj = $this->getContainer( $fullCont ); // normally a cache hit
 			// NoSuchContainerException not thrown: container must exist
 
-			// Make container private to end-wiki_users...
+			// Make container private to end-users...
 			$status->merge( $this->setContainerAccess(
 				$contObj,
-				array( $this->auth->wiki_username ), // read
-				array( $this->auth->wiki_username ) // write
+				array( $this->auth->username ), // read
+				array( $this->auth->username ) // write
 			) );
 			if ( $this->swiftUseCDN && $contObj->is_public() ) { // Rackspace style CDN
 				$contObj->make_private();
@@ -670,25 +670,25 @@ class SwiftFileBackend extends FileBackendStore {
 	protected function doPublishInternal( $fullCont, $dir, array $params ) {
 		$status = Status::newGood();
 
-		// Unrestrict container from end-wiki_users...
+		// Unrestrict container from end-users...
 		try {
 			// doPrepareInternal() should have been called,
 			// so the Swift container should already exist...
 			$contObj = $this->getContainer( $fullCont ); // normally a cache hit
 			// NoSuchContainerException not thrown: container must exist
 
-			// Make container public to end-wiki_users...
-			if ( $this->swiftAnonwiki_user != '' ) {
+			// Make container public to end-users...
+			if ( $this->swiftAnonUser != '' ) {
 				$status->merge( $this->setContainerAccess(
 					$contObj,
-					array( $this->auth->wiki_username, $this->swiftAnonwiki_user ), // read
-					array( $this->auth->wiki_username, $this->swiftAnonwiki_user ) // write
+					array( $this->auth->username, $this->swiftAnonUser ), // read
+					array( $this->auth->username, $this->swiftAnonUser ) // write
 				) );
 			} else {
 				$status->merge( $this->setContainerAccess(
 					$contObj,
-					array( $this->auth->wiki_username, '.r:*' ), // read
-					array( $this->auth->wiki_username ) // write
+					array( $this->auth->username, '.r:*' ), // read
+					array( $this->auth->username ) // write
 				) );
 			}
 			if ( $this->swiftUseCDN && !$contObj->is_public() ) { // Rackspace style CDN
@@ -1137,7 +1137,7 @@ class SwiftFileBackend extends FileBackendStore {
 	 *
 	 * $readGrps is a list of the possible criteria for a request to have
 	 * access to read a container. Each item is one of the following formats:
-	 *   - account:wiki_user       : Grants access if the request is by the given wiki_user
+	 *   - account:user       : Grants access if the request is by the given user
 	 *   - .r:<regex>         : Grants access if the request is from a referrer host that
 	 *                          matches the expression and the request is not for a listing.
 	 *                          Setting this to '*' effectively makes a container public.
@@ -1146,11 +1146,11 @@ class SwiftFileBackend extends FileBackendStore {
 	 *
 	 * $writeGrps is a list of the possible criteria for a request to have
 	 * access to write to a container. Each item is of the following format:
-	 *   - account:wiki_user       : Grants access if the request is by the given wiki_user
+	 *   - account:user       : Grants access if the request is by the given user
 	 *
 	 * @see http://swift.openstack.org/misc.html#acls
 	 *
-	 * In general, we don't allow listings to end-wiki_users. It's not useful, isn't well-defined
+	 * In general, we don't allow listings to end-users. It's not useful, isn't well-defined
 	 * (lists are truncated to 10000 item with no way to page), and is just a performance risk.
 	 *
 	 * @param $contObj CF_Container Swift container
@@ -1217,7 +1217,7 @@ class SwiftFileBackend extends FileBackendStore {
 		if ( !$this->conn || $reAuth ) {
 			$this->sessionStarted = 0;
 			$this->connContainerCache->clear();
-			$cacheKey = $this->getCredsCacheKey( $this->auth->wiki_username );
+			$cacheKey = $this->getCredsCacheKey( $this->auth->username );
 			$creds = $this->srvCache->get( $cacheKey ); // credentials
 			if ( is_array( $creds ) ) { // cache hit
 				$this->auth->load_cached_credentials(
@@ -1259,11 +1259,11 @@ class SwiftFileBackend extends FileBackendStore {
 	/**
 	 * Get the cache key for a container
 	 *
-	 * @param $wiki_username string
+	 * @param $username string
 	 * @return string
 	 */
-	private function getCredsCacheKey( $wiki_username ) {
-		return wfMemcKey( 'backend', $this->getName(), 'wiki_usercreds', $wiki_username );
+	private function getCredsCacheKey( $username ) {
+		return wfMemcKey( 'backend', $this->getName(), 'usercreds', $username );
 	}
 
 	/**
@@ -1368,7 +1368,7 @@ class SwiftFileBackend extends FileBackendStore {
 			trigger_error( "$func: " . $e->getMessage(), E_USER_WARNING );
 		}
 		if ( $e instanceof InvalidResponseException ) { // possibly a stale token
-			$this->srvCache->delete( $this->getCredsCacheKey( $this->auth->wiki_username ) );
+			$this->srvCache->delete( $this->getCredsCacheKey( $this->auth->username ) );
 			$this->closeConnection(); // force a re-connect and re-auth next time
 		}
 		wfDebugLog( 'SwiftBackend',

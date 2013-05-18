@@ -31,8 +31,8 @@ class IntraACL_SQL_Groups
         global $wgAuth;
 	$bb = $wgAuth->connect($wiki);
 	$tables["group"]=$wgAuth->_GroupsTB;
-	$tables["wiki_users"]=$wgAuth->_wiki_userTB;
-	$tables["wiki_usergroups"]=$wgAuth->_wiki_user_GroupTB;
+	$tables["users"]=$wgAuth->_UserTB;
+	$tables["usergroups"]=$wgAuth->_User_GroupTB;
     }
     /**
      * Returns the name of the group with the ID $groupID.
@@ -96,8 +96,8 @@ class IntraACL_SQL_Groups
                 $groupID = $row->group_id;
                 $groupName = $row->group_name;
                 $mgGroups = array(5);
-                $mgwiki_users = array();
-                $groups[] = new HACLGroup($groupID, $groupName, $mgGroups, $mgwiki_users);
+                $mgUsers = array();
+                $groups[] = new HACLGroup($groupID, $groupName, $mgGroups, $mgUsers);
             }
         }
         else
@@ -112,7 +112,7 @@ class IntraACL_SQL_Groups
 		$rowArray[2] = "5";
                 $rowArray["mg_groups"] = $rowArray[2];
 		$rowArray[3] = "";
-                $rowArray["mg_wiki_users"] = $rowArray[3];
+                $rowArray["mg_users"] = $rowArray[3];
                 $groups[] = $rowArray;
 	    }
         }
@@ -146,9 +146,9 @@ class IntraACL_SQL_Groups
         if ($row = mysql_fetch_object($qry)){
             $groupID = $row->group_id;
             $mgGroups = array(5);
-            $mgwiki_users  = array();
+            $mgUsers  = array();
 
-            $group = new HACLGroup($groupID, $groupName, $mgGroups, $mgwiki_users);
+            $group = new HACLGroup($groupID, $groupName, $mgGroups, $mgUsers);
         }
 
         return $group;
@@ -175,24 +175,24 @@ class IntraACL_SQL_Groups
             $groupID = $row->group_id;
 	    $groupName = $row->group_name;
             $mgGroups = array(5);
-            $mgwiki_users  = array();
+            $mgUsers  = array();
 
-            $group = new HACLGroup($groupID, $groupName, $mgGroups, $mgwiki_users);
+            $group = new HACLGroup($groupID, $groupName, $mgGroups, $mgUsers);
         }
 
         return $group;
     }
 
     /**
-     * Adds the wiki_user with the ID $wiki_userID to the group with the ID $groupID.
+     * Adds the user with the ID $userID to the group with the ID $groupID.
      *
      * @param int $groupID
-     *         The ID of the group to which the wiki_user is added.
-     * @param int $wiki_userID
-     *         The ID of the wiki_user who is added to the group.
+     *         The ID of the group to which the user is added.
+     * @param int $userID
+     *         The ID of the user who is added to the group.
      *
      */
-    public function addwiki_userToGroup($groupID, $wiki_userID) {
+    public function addUserToGroup($groupID, $userID) {
     }
 
     /**
@@ -210,22 +210,22 @@ class IntraACL_SQL_Groups
     }
 
     /**
-     * Removes the wiki_user with the ID $wiki_userID from the group with the ID $groupID.
+     * Removes the user with the ID $userID from the group with the ID $groupID.
      *
      * @param $groupID
-     *         The ID of the group from which the wiki_user is removed.
-     * @param int $wiki_userID
-     *         The ID of the wiki_user who is removed from the group.
+     *         The ID of the group from which the user is removed.
+     * @param int $userID
+     *         The ID of the user who is removed from the group.
      *
      */
-    public function removewiki_userFromGroup($groupID, $wiki_userID) {
+    public function removeUserFromGroup($groupID, $userID) {
     }
 
     /**
      * Removes all members from the group with the ID $groupID.
      *
      * @param $groupID
-     *         The ID of the group from which the wiki_user is removed.
+     *         The ID of the group from which the user is removed.
      *
      */
     public function removeAllMembersFromGroup($groupID) {
@@ -245,14 +245,14 @@ class IntraACL_SQL_Groups
     }
 
     /**
-     * Returns the IDs of all wiki_users or groups that are a member of the group
+     * Returns the IDs of all users or groups that are a member of the group
      * with the ID $groupID.
      *
      * @param string $memberType
-     *         'wiki_user' => ask for all wiki_user IDs
+     *         'user' => ask for all user IDs
      *         'group' => ask for all group IDs
      * @return array(int)
-     *         List of IDs of all direct wiki_users or groups in this group.
+     *         List of IDs of all direct users or groups in this group.
      *
      */
     public function getMembersOfGroup($groupID, $memberType)
@@ -261,17 +261,17 @@ class IntraACL_SQL_Groups
 	    return array();
 	
 	$this->getDBConn($bb, $wiki, $tables);
-        $qry = mysql_query("SELECT b.login_name_clean FROM " . $tables["wiki_usergroups"] . " as a JOIN " . $tables["wiki_users"] . " AS b ON a.wiki_user_id = b.wiki_user_id WHERE a.group_id = '" . mysql_real_escape_string($groupID) . "'", $bb);
+        $qry = mysql_query("SELECT b.login_name_clean FROM " . $tables["usergroups"] . " as a JOIN " . $tables["users"] . " AS b ON a.user_id = b.user_id WHERE a.group_id = '" . mysql_real_escape_string($groupID) . "'", $bb);
 
         $members = array();
         while ($row = mysql_fetch_object($qry))
 	{
-	    $qry2 = mysql_query("SELECT wiki_user_id FROM wiki_user WHERE wiki_user_name = '" . $row->login_name_clean . "'");
+	    $qry2 = mysql_query("SELECT user_id FROM user WHERE user_name = '" . $row->login_name_clean . "'");
 	    if($row2 = $mysql_fetch_object($qry2))
-            	$members[] = (int) $row2->wiki_user_id;
+            	$members[] = (int) $row2->user_id;
 	}
 
-        r->freeResult($res);
+        $dbr->freeResult($res);
 
         return $members;
     }
@@ -285,15 +285,15 @@ class IntraACL_SQL_Groups
             return array();
 	$members = array();
 	foreach($ids as $id)
-		$members[$id]["wiki_user"] = getMembersOfGroup($id,"wiki_user");
+		$members[$id]["user"] = getMembersOfGroup($id,"user");
         return $members;
     }
 
     /**
-     * Returns all groups the wiki_user is member of
+     * Returns all groups the user is member of
      *
-     * @param  string $memberType: 'wiki_user' or 'group'
-     * @param  int $memberID: ID of asked wiki_user or group
+     * @param  string $memberType: 'user' or 'group'
+     * @param  int $memberID: ID of asked user or group
      * @param  boolean $recurse: recursive or no
      * @return array(int): parent group IDs
      */
@@ -303,7 +303,7 @@ class IntraACL_SQL_Groups
 	    return array();
 	
 	$this->getDBConn($bb, $wiki, $tables);
-        $qry = mysql_query("SELECT group_id FROM " . $tables["wiki_usergroups"] . " WHERE wiki_user_id = '" . mysql_real_escape_string($memberID) . "'", $bb);
+        $qry = mysql_query("SELECT group_id FROM " . $tables["usergroups"] . " WHERE user_id = '" . mysql_real_escape_string($memberID) . "'", $bb);
 
         $members = array();
         while ($row = mysql_fetch_object($qry))
@@ -315,17 +315,17 @@ class IntraACL_SQL_Groups
     }
 
     /**
-     * Checks if the given wiki_user or group with the ID $childID belongs to the
+     * Checks if the given user or group with the ID $childID belongs to the
      * group with the ID $parentID.
      *
      * @param int $parentID
      *         ID of the group that is checked for a member.
      *
      * @param int $childID
-     *         ID of the group or wiki_user that is checked for membership.
+     *         ID of the group or user that is checked for membership.
      *
      * @param string $memberType
-     *         HACLGroup::USER  : Checks for membership of a wiki_user
+     *         HACLGroup::USER  : Checks for membership of a user
      *         HACLGroup::GROUP : Checks for membership of a group
      *
      * @param bool recursive
@@ -343,15 +343,15 @@ class IntraACL_SQL_Groups
 	if($memberType == HACLGroup::GROUP)
 	    return array();
 	$this->getDBConn($bb, $wiki, $tables);
-        $qry = mysql_query("SELECT group_id FROM " . $tables["wiki_usergroups"] . " WHERE group_id = '" . mysql_real_escape_string($parentID) . "' AND user_id = '" . mysql_real_escape_string($childID) . "'");
+        $qry = mysql_query("SELECT group_id FROM " . $tables["usergroups"] . " WHERE group_id = '" . mysql_real_escape_string($parentID) . "' AND user_id = '" . mysql_real_escape_string($childID) . "'");
         $group = NULL;
-print(mysql_error());
+
         if ($row = mysql_fetch_object($qry)){
             $groupID = $row->group_id;
             $mgGroups = array(5);
-            $mgwiki_users  = array();
+            $mgUsers  = array();
 
-            $group = new HACLGroup($groupID, $groupName, $mgGroups, $mgwiki_users);
+            $group = new HACLGroup($groupID, $groupName, $mgGroups, $mgUsers);
         }
 
         return $group;
@@ -359,7 +359,7 @@ print(mysql_error());
 
     public function getGroupMembersRecursive($groupID, $children = array())
     {
-	return getMembersOfGroup($groupID,"wiki_user");
+	return getMembersOfGroup($groupID,"user");
     }
 
     /**

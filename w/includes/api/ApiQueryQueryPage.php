@@ -76,7 +76,7 @@ class ApiQueryQueryPage extends ApiQueryGeneratorBase {
 		$result = $this->getResult();
 
 		$qp = new $this->qpMap[$params['page']]();
-		if ( !$qp->wiki_userCanExecute( $this->getwiki_user() ) ) {
+		if ( !$qp->userCanExecute( $this->getUser() ) ) {
 			$this->dieUsageMsg( 'specialpage-cantexecute' );
 		}
 

@@ -35,7 +35,7 @@ class SpecialPage {
 	// The local name of this special page
 	private $mLocalName;
 
-	// Minimum wiki_user level required to access this page, or "" for anyone.
+	// Minimum user level required to access this page, or "" for anyone.
 	// Also used to categorise the pages in Special:Specialpages
 	private $mRestriction;
 
@@ -194,20 +194,20 @@ class SpecialPage {
 
 	/**
 	 * Return categorised listable special pages which are available
-	 * for the current wiki_user, and everyone.
+	 * for the current user, and everyone.
 	 *
-	 * @param $wiki_user wiki_user object to check permissions, $wgwiki_user will be used
+	 * @param $user User object to check permissions, $wgUser will be used
 	 *              if not provided
 	 * @return array Associative array mapping page's name to its SpecialPage object
 	 * @deprecated since 1.18 call SpecialPageFactory method directly
 	 */
-	static function getUsablePages( wiki_user $wiki_user = null ) {
+	static function getUsablePages( User $user = null ) {
 		wfDeprecated( __METHOD__, '1.18' );
-		return SpecialPageFactory::getUsablePages( $wiki_user );
+		return SpecialPageFactory::getUsablePages( $user );
 	}
 
 	/**
-	 * Return categorised listable special pages for all wiki_users
+	 * Return categorised listable special pages for all users
 	 *
 	 * @return array Associative array mapping page's name to its SpecialPage object
 	 * @deprecated since 1.18 call SpecialPageFactory method directly
@@ -219,7 +219,7 @@ class SpecialPage {
 
 	/**
 	 * Return categorised listable special pages which are available
-	 * for the current wiki_user, but not for everyone
+	 * for the current user, but not for everyone
 	 *
 	 * @return array Associative array mapping page's name to its SpecialPage object
 	 * @deprecated since 1.18 call SpecialPageFactory method directly
@@ -309,15 +309,15 @@ class SpecialPage {
 	/**
 	 * Default constructor for special pages
 	 * Derivative classes should call this from their constructor
-	 *     Note that if the wiki_user does not have the required level, an error message will
+	 *     Note that if the user does not have the required level, an error message will
 	 *     be displayed by the default execute() method, without the global function ever
 	 *     being called.
 	 *
-	 *     If you override execute(), you can recover the default behaviour with wiki_userCanExecute()
+	 *     If you override execute(), you can recover the default behaviour with userCanExecute()
 	 *     and displayRestrictionError()
 	 *
 	 * @param $name String: name of the special page, as seen in links and URLs
-	 * @param $restriction String: wiki_user right required, e.g. "block" or "delete"
+	 * @param $restriction String: user right required, e.g. "block" or "delete"
 	 * @param $listed Bool: whether the page is listed in Special:Specialpages
 	 * @param $function Callback|Bool: function called by execute(). By default it is constructed from $name
 	 * @param $file String: file which is included by execute(). It is also constructed from $name by default
@@ -334,7 +334,7 @@ class SpecialPage {
 	 * Do the real work for the constructor, mainly so __call() can intercept
 	 * calls to SpecialPage()
 	 * @param $name String: name of the special page, as seen in links and URLs
-	 * @param $restriction String: wiki_user right required, e.g. "block" or "delete"
+	 * @param $restriction String: user right required, e.g. "block" or "delete"
 	 * @param $listed Bool: whether the page is listed in Special:Specialpages
 	 * @param $function Callback|Bool: function called by execute(). By default it is constructed from $name
 	 * @param $file String: file which is included by execute(). It is also constructed from $name by default
@@ -393,7 +393,7 @@ class SpecialPage {
 	}
 
 	/**
-	 * Get the permission that a wiki_user must have to execute this page
+	 * Get the permission that a user must have to execute this page
 	 * @return String
 	 */
 	function getRestriction() {
@@ -538,31 +538,31 @@ class SpecialPage {
 	}
 
 	/**
-	 * Checks if the given wiki_user (identified by an object) can execute this
+	 * Checks if the given user (identified by an object) can execute this
 	 * special page (as defined by $mRestriction).  Can be overridden by sub-
 	 * classes with more complicated permissions schemes.
 	 *
-	 * @param $wiki_user wiki_user: the wiki_user to check
-	 * @return Boolean: does the wiki_user have permission to view the page?
+	 * @param $user User: the user to check
+	 * @return Boolean: does the user have permission to view the page?
 	 */
-	public function wiki_userCanExecute( wiki_user $wiki_user ) {
-		return $wiki_user->isAllowed( $this->mRestriction );
+	public function userCanExecute( User $user ) {
+		return $user->isAllowed( $this->mRestriction );
 	}
 
 	/**
-	 * Output an error message telling the wiki_user what access level they have to have
+	 * Output an error message telling the user what access level they have to have
 	 */
 	function displayRestrictionError() {
 		throw new PermissionsError( $this->mRestriction );
 	}
 
 	/**
-	 * Checks if wiki_userCanExecute, and if not throws a PermissionsError
+	 * Checks if userCanExecute, and if not throws a PermissionsError
 	 *
 	 * @since 1.19
 	 */
 	public function checkPermissions() {
-		if ( !$this->wiki_userCanExecute( $this->getwiki_user() ) ) {
+		if ( !$this->userCanExecute( $this->getUser() ) ) {
 			$this->displayRestrictionError();
 		}
 	}
@@ -646,7 +646,7 @@ class SpecialPage {
 
 	/**
 	 * Default execute method
-	 * Checks wiki_user permissions, calls the function given in mFunction
+	 * Checks user permissions, calls the function given in mFunction
 	 *
 	 * This must be overridden by subclasses; it will be made abstract in a future version
 	 *
@@ -662,7 +662,7 @@ class SpecialPage {
 			require_once( $this->mFile );
 		}
 		$this->outputHeader();
-		call_wiki_user_func( $func, $subPage, $this );
+		call_user_func( $func, $subPage, $this );
 	}
 
 	/**
@@ -758,13 +758,13 @@ class SpecialPage {
 	}
 
 	/**
-	 * Shortcut to get the wiki_user executing this instance
+	 * Shortcut to get the User executing this instance
 	 *
-	 * @return wiki_user
+	 * @return User
 	 * @since 1.18
 	 */
-	public function getwiki_user() {
-		return $this->getContext()->getwiki_user();
+	public function getUser() {
+		return $this->getContext()->getUser();
 	}
 
 	/**
@@ -778,7 +778,7 @@ class SpecialPage {
 	}
 
 	/**
-	 * Shortcut to get wiki_user's language
+	 * Shortcut to get user's language
 	 *
 	 * @deprecated 1.19 Use getLanguage instead
 	 * @return Language
@@ -790,7 +790,7 @@ class SpecialPage {
 	}
 
 	/**
-	 * Shortcut to get wiki_user's language
+	 * Shortcut to get user's language
 	 *
 	 * @return Language
 	 * @since 1.19
@@ -824,7 +824,7 @@ class SpecialPage {
 		$message = call_user_func_array( array( $this->getContext(), 'msg' ), $args );
 		// RequestContext passes context to wfMessage, and the language is set from
 		// the context, but setting the language for Message class removes the
-		// interface message status, which breaks for example wiki_usernameless gender
+		// interface message status, which breaks for example usernameless gender
 		// invokations. Restore the flag when not including special page in content.
 		if ( $this->including() ) {
 			$message->setInterfaceMessageFlag( false );
@@ -918,7 +918,7 @@ abstract class FormSpecialPage extends SpecialPage {
 	public abstract function onSuccess();
 
 	/**
-	 * Basic SpecialPage workflow: get a form, send it to the wiki_user; get some data back,
+	 * Basic SpecialPage workflow: get a form, send it to the user; get some data back,
 	 *
 	 * @param $par String Subpage string if one was specified
 	 */
@@ -927,7 +927,7 @@ abstract class FormSpecialPage extends SpecialPage {
 		$this->setHeaders();
 
 		// This will throw exceptions if there's a problem
-		$this->checkExecutePermissions( $this->getwiki_user() );
+		$this->checkExecutePermissions( $this->getUser() );
 
 		$form = $this->getForm();
 		if ( $form->show() ) {
@@ -942,18 +942,18 @@ abstract class FormSpecialPage extends SpecialPage {
 	protected function setParameter( $par ) {}
 
 	/**
-	 * Called from execute() to check if the given wiki_user can perform this action.
+	 * Called from execute() to check if the given user can perform this action.
 	 * Failures here must throw subclasses of ErrorPageError.
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @return Bool true
 	 * @throws ErrorPageError
 	 */
-	protected function checkExecutePermissions( wiki_user $wiki_user ) {
+	protected function checkExecutePermissions( User $user ) {
 		$this->checkPermissions();
 
-		if ( $this->requiresUnblock() && $wiki_user->isBlocked() ) {
-			$block = $wiki_user->getBlock();
-			throw new wiki_userBlockedError( $block );
+		if ( $this->requiresUnblock() && $user->isBlocked() ) {
+			$block = $user->getBlock();
+			throw new UserBlockedError( $block );
 		}
 
 		if ( $this->requiresWrite() ) {
@@ -972,7 +972,7 @@ abstract class FormSpecialPage extends SpecialPage {
 	}
 
 	/**
-	 * Whether this action cannot be executed by a blocked wiki_user
+	 * Whether this action cannot be executed by a blocked user
 	 * @return Bool
 	 */
 	public function requiresUnblock() {
@@ -1102,43 +1102,43 @@ abstract class SpecialRedirectToSpecial extends RedirectSpecialPage {
 }
 
 /**
- * ListAdmins --> Listwiki_users/sysop
+ * ListAdmins --> ListUsers/sysop
  */
 class SpecialListAdmins extends SpecialRedirectToSpecial {
 	function __construct() {
-		parent::__construct( 'Listadmins', 'Listwiki_users', 'sysop' );
+		parent::__construct( 'Listadmins', 'Listusers', 'sysop' );
 	}
 }
 
 /**
- * ListBots --> Listwiki_users/bot
+ * ListBots --> ListUsers/bot
  */
 class SpecialListBots extends SpecialRedirectToSpecial {
 	function __construct() {
-		parent::__construct( 'Listbots', 'Listwiki_users', 'bot' );
+		parent::__construct( 'Listbots', 'Listusers', 'bot' );
 	}
 }
 
 /**
- * CreateAccount --> wiki_userLogin/signup
+ * CreateAccount --> UserLogin/signup
  * @todo FIXME: This (and the rest of the login frontend) needs to die a horrible painful death
  */
 class SpecialCreateAccount extends SpecialRedirectToSpecial {
 	function __construct() {
-		parent::__construct( 'CreateAccount', 'wiki_userlogin', 'signup', array( 'uselang' ) );
+		parent::__construct( 'CreateAccount', 'Userlogin', 'signup', array( 'uselang' ) );
 	}
 }
 /**
  * SpecialMypage, SpecialMytalk and SpecialMycontributions special pages
- * are used to get wiki_user independant links pointing to the wiki_user page, talk
+ * are used to get user independant links pointing to the user page, talk
  * page and list of contributions.
  * This can let us cache a single copy of any generated content for all
- * wiki_users.
+ * users.
  */
 
 /**
- * Superclass for any RedirectSpecialPage which redirects the wiki_user
- * to a particular article (as opposed to wiki_user contributions, logs, etc.).
+ * Superclass for any RedirectSpecialPage which redirects the user
+ * to a particular article (as opposed to user contributions, logs, etc.).
  *
  * For security reasons these special pages are restricted to pass on
  * the following subset of GET parameters to the target page while
@@ -1146,18 +1146,18 @@ class SpecialCreateAccount extends SpecialRedirectToSpecial {
  *
  * - useskin, uselang, printable: to alter the appearance of the resulting page
  *
- * - redirect: allows viewing one's wiki_user page or talk page even if it is a
+ * - redirect: allows viewing one's user page or talk page even if it is a
  * redirect.
  *
- * - rdfrom: allows redirecting to one's wiki_user page or talk page from an
+ * - rdfrom: allows redirecting to one's user page or talk page from an
  * external wiki with the "Redirect from..." notice.
  *
- * - limit, offset: Useful for linking to history of one's own wiki_user page or
- * wiki_user talk page. For example, this would be a link to "the last edit to your
- * wiki_user talk page in the year 2010":
+ * - limit, offset: Useful for linking to history of one's own user page or
+ * user talk page. For example, this would be a link to "the last edit to your
+ * user talk page in the year 2010":
  * http://en.wikipedia.org/w/index.php?title=Special:MyPage&offset=20110000000000&limit=1&action=history
  *
- * - feed: would allow linking to the current wiki_user's RSS feed for their wiki_user
+ * - feed: would allow linking to the current user's RSS feed for their user
  * talk page:
  * http://en.wikipedia.org/w/index.php?title=Special:MyTalk&action=history&feed=rss
  *
@@ -1165,9 +1165,9 @@ class SpecialCreateAccount extends SpecialRedirectToSpecial {
  * preloaded new comment on one's own talk page.
  *
  * - summary : Can be used to provide a default edit summary for a preloaded
- * edit to one's own wiki_user page or talk page.
+ * edit to one's own user page or talk page.
  *
- * - preview: Allows showing/hiding preview on first edit regardless of wiki_user
+ * - preview: Allows showing/hiding preview on first edit regardless of user
  * preference, useful for preloaded edits where you know preview wouldn't be
  * useful.
  *
@@ -1175,14 +1175,14 @@ class SpecialCreateAccount extends SpecialRedirectToSpecial {
  * internal/external editor, e.g. to force the internal editor for
  * short/simple preloaded edits.
  *
- * - redlink: Affects the message the wiki_user sees if their talk page/wiki_user talk
- * page does not currently exist. Avoids confusion for newbies with no wiki_user
+ * - redlink: Affects the message the user sees if their talk page/user talk
+ * page does not currently exist. Avoids confusion for newbies with no user
  * pages over why they got a "permission error" following this link:
  * http://en.wikipedia.org/w/index.php?title=Special:MyPage&redlink=1
  *
  * - debug: determines whether the debug parameter is passed to load.php,
  * which disables reformatting and allows scripts to be debugged. Useful
- * when debugging scripts that manipulate one's own wiki_user page or talk page.
+ * when debugging scripts that manipulate one's own user page or talk page.
  *
  * @par Hook extension:
  * Extensions can add to the redirect parameters list by using the hook
@@ -1210,7 +1210,7 @@ abstract class RedirectSpecialArticle extends RedirectSpecialPage {
 			'redirect', 'rdfrom',
 			# Options for preloaded edits
 			'preload', 'editintro', 'preloadtitle', 'summary',
-			# Options for overriding wiki_user settings
+			# Options for overriding user settings
 			'preview', 'internaledit', 'externaledit', 'mode',
 			# Options for history/diffs
 			'section', 'oldid', 'diff', 'dir',
@@ -1227,7 +1227,7 @@ abstract class RedirectSpecialArticle extends RedirectSpecialPage {
 }
 
 /**
- * Shortcut to construct a special page pointing to current wiki_user wiki_user's page.
+ * Shortcut to construct a special page pointing to current user user's page.
  * @ingroup SpecialPage
  */
 class SpecialMypage extends RedirectSpecialArticle {
@@ -1237,15 +1237,15 @@ class SpecialMypage extends RedirectSpecialArticle {
 
 	function getRedirect( $subpage ) {
 		if ( strval( $subpage ) !== '' ) {
-			return Title::makeTitle( NS_USER, $this->getwiki_user()->getName() . '/' . $subpage );
+			return Title::makeTitle( NS_USER, $this->getUser()->getName() . '/' . $subpage );
 		} else {
-			return Title::makeTitle( NS_USER, $this->getwiki_user()->getName() );
+			return Title::makeTitle( NS_USER, $this->getUser()->getName() );
 		}
 	}
 }
 
 /**
- * Shortcut to construct a special page pointing to current wiki_user talk page.
+ * Shortcut to construct a special page pointing to current user talk page.
  * @ingroup SpecialPage
  */
 class SpecialMytalk extends RedirectSpecialArticle {
@@ -1255,15 +1255,15 @@ class SpecialMytalk extends RedirectSpecialArticle {
 
 	function getRedirect( $subpage ) {
 		if ( strval( $subpage ) !== '' ) {
-			return Title::makeTitle( NS_USER_TALK, $this->getwiki_user()->getName() . '/' . $subpage );
+			return Title::makeTitle( NS_USER_TALK, $this->getUser()->getName() . '/' . $subpage );
 		} else {
-			return Title::makeTitle( NS_USER_TALK, $this->getwiki_user()->getName() );
+			return Title::makeTitle( NS_USER_TALK, $this->getUser()->getName() );
 		}
 	}
 }
 
 /**
- * Shortcut to construct a special page pointing to current wiki_user contributions.
+ * Shortcut to construct a special page pointing to current user contributions.
  * @ingroup SpecialPage
  */
 class SpecialMycontributions extends RedirectSpecialPage {
@@ -1274,12 +1274,12 @@ class SpecialMycontributions extends RedirectSpecialPage {
 	}
 
 	function getRedirect( $subpage ) {
-		return SpecialPage::getTitleFor( 'Contributions', $this->getwiki_user()->getName() );
+		return SpecialPage::getTitleFor( 'Contributions', $this->getUser()->getName() );
 	}
 }
 
 /**
- * Redirect to Special:Listfiles?wiki_user=$wgwiki_user
+ * Redirect to Special:Listfiles?user=$wgUser
  */
 class SpecialMyuploads extends RedirectSpecialPage {
 	function __construct() {
@@ -1288,7 +1288,7 @@ class SpecialMyuploads extends RedirectSpecialPage {
 	}
 
 	function getRedirect( $subpage ) {
-		return SpecialPage::getTitleFor( 'Listfiles', $this->getwiki_user()->getName() );
+		return SpecialPage::getTitleFor( 'Listfiles', $this->getUser()->getName() );
 	}
 }
 

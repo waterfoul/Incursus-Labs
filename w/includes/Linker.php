@@ -30,7 +30,7 @@
 class Linker {
 
 	/**
-	 * Flags for wiki_userToolLinks()
+	 * Flags for userToolLinks()
 	 */
 	const TOOL_LINKS_NOBLOCK = 1;
 	const TOOL_LINKS_EMAIL   = 2;
@@ -131,7 +131,7 @@ class Linker {
 	 * Return the CSS colour of a known link
 	 *
 	 * @param $t Title object
-	 * @param $threshold Integer: wiki_user defined threshold
+	 * @param $threshold Integer: user defined threshold
 	 * @return String: CSS class
 	 */
 	public static function getLinkColour( $t, $threshold ) {
@@ -310,7 +310,7 @@ class Linker {
 	 */
 	private static function linkAttribs( $target, $attribs, $options ) {
 		wfProfileIn( __METHOD__ );
-		global $wgwiki_user;
+		global $wgUser;
 		$defaults = array();
 
 		if ( !in_array( 'noclasses', $options ) ) {
@@ -327,7 +327,7 @@ class Linker {
 			}
 
 			if ( !in_array( 'broken', $options ) ) { # Avoid useless calls to LinkCache (see r50387)
-				$colour = self::getLinkColour( $target, $wgwiki_user->getStubThreshold() );
+				$colour = self::getLinkColour( $target, $wgUser->getStubThreshold() );
 				if ( $colour !== '' ) {
 					$classes[] = $colour; # mw-redirect or stub
 				}
@@ -398,10 +398,10 @@ class Linker {
 	 * @deprecated since 1.17
 	 */
 	static function makeSizeLinkObj( $size, $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
-		global $wgwiki_user;
+		global $wgUser;
 		wfDeprecated( __METHOD__, '1.17' );
 
-		$threshold = $wgwiki_user->getStubThreshold();
+		$threshold = $wgUser->getStubThreshold();
 		$colour = ( $size < $threshold ) ? 'stub' : '';
 		// @todo FIXME: Replace deprecated makeColouredLinkObj by link()
 		return self::makeColouredLinkObj( $nt, $colour, $text, $query, $trail, $prefix );
@@ -547,7 +547,7 @@ class Linker {
 	 *       to transform(). Typical keys are "width" and "page".
 	 * @param $time String: timestamp of the file, set as false for current
 	 * @param $query String: query params for desc url
-	 * @param $widthOption: Used by the parser to remember the wiki_user preference thumbnailsize
+	 * @param $widthOption: Used by the parser to remember the user preference thumbnailsize
 	 * @since 1.20
 	 * @return String: HTML for an image, with links, wrappers, etc.
 	 */
@@ -594,7 +594,7 @@ class Linker {
 		}
 		if ( $file && !isset( $hp['width'] ) ) {
 			if ( isset( $hp['height'] ) && $file->isVectorized() ) {
-				// If its a vector image, and wiki_user only specifies height
+				// If its a vector image, and user only specifies height
 				// we don't want it to be limited by its "normal" width.
 				global $wgSVGMaxSize;
 				$hp['width'] = $wgSVGMaxSize;
@@ -605,7 +605,7 @@ class Linker {
 			if ( isset( $fp['thumbnail'] ) || isset( $fp['framed'] ) || isset( $fp['frameless'] ) || !$hp['width'] ) {
 				global $wgThumbLimits, $wgThumbUpright;
 				if ( !isset( $widthOption ) || !isset( $wgThumbLimits[$widthOption] ) ) {
-					$widthOption = wiki_user::getDefaultOption( 'thumbsize' );
+					$widthOption = User::getDefaultOption( 'thumbsize' );
 				}
 
 				// Reduce width for upright images when parameter 'upright' is used
@@ -617,7 +617,7 @@ class Linker {
 					round( $wgThumbLimits[$widthOption] * $fp['upright'], -1 ) :
 					$wgThumbLimits[$widthOption];
 
-				// Use width which is smaller: real image width or wiki_user preference width
+				// Use width which is smaller: real image width or user preference width
 				// Unless image is scalable vector.
 				if ( !isset( $hp['height'] ) && ( $hp['width'] <= 0 ||
 						$prefWidth < $hp['width'] || $file->isVectorized() ) ) {
@@ -632,7 +632,7 @@ class Linker {
 			# left-aligned for RTL languages)
 			#
 			# If a thumbnail width has not been provided, it is set
-			# to the default wiki_user option as specified in Language*.php
+			# to the default user option as specified in Language*.php
 			if ( $fp['align'] == '' ) {
 				if( $parser instanceof Parser ) {
 					$fp['align'] = $parser->getTargetLanguage()->alignEnd();
@@ -1016,76 +1016,76 @@ class Linker {
 	}
 
 	/**
-	 * Make wiki_user link (or wiki_user contributions for unregistered wiki_users)
-	 * @param $wiki_userId   Integer: wiki_user id in database.
-	 * @param $wiki_userName String: wiki_user name in database.
-	 * @param $altwiki_userName String: text to display instead of the wiki_user name (optional)
+	 * Make user link (or user contributions for unregistered users)
+	 * @param $userId   Integer: user id in database.
+	 * @param $userName String: user name in database.
+	 * @param $altUserName String: text to display instead of the user name (optional)
 	 * @return String: HTML fragment
-	 * @since 1.19 Method exists for a long time. $altwiki_userName was added in 1.19.
+	 * @since 1.19 Method exists for a long time. $altUserName was added in 1.19.
 	 */
-	public static function wiki_userLink( $wiki_userId, $wiki_userName, $altwiki_userName = false ) {
-		if ( $wiki_userId == 0 ) {
-			$page = SpecialPage::getTitleFor( 'Contributions', $wiki_userName );
+	public static function userLink( $userId, $userName, $altUserName = false ) {
+		if ( $userId == 0 ) {
+			$page = SpecialPage::getTitleFor( 'Contributions', $userName );
 		} else {
-			$page = Title::makeTitle( NS_USER, $wiki_userName );
+			$page = Title::makeTitle( NS_USER, $userName );
 		}
 
 		return self::link(
 			$page,
-			htmlspecialchars( $altwiki_userName !== false ? $altwiki_userName : $wiki_userName ),
-			array( 'class' => 'mw-wiki_userlink' )
+			htmlspecialchars( $altUserName !== false ? $altUserName : $userName ),
+			array( 'class' => 'mw-userlink' )
 		);
 	}
 
 	/**
-	 * Generate standard wiki_user tool links (talk, contributions, block link, etc.)
+	 * Generate standard user tool links (talk, contributions, block link, etc.)
 	 *
-	 * @param $wiki_userId Integer: wiki_user identifier
-	 * @param $wiki_userText String: wiki_user name or IP address
+	 * @param $userId Integer: user identifier
+	 * @param $userText String: user name or IP address
 	 * @param $redContribsWhenNoEdits Boolean: should the contributions link be
-	 *        red if the wiki_user has no edits?
+	 *        red if the user has no edits?
 	 * @param $flags Integer: customisation flags (e.g. Linker::TOOL_LINKS_NOBLOCK and Linker::TOOL_LINKS_EMAIL)
-	 * @param $edits Integer: wiki_user edit count (optional, for performance)
+	 * @param $edits Integer: user edit count (optional, for performance)
 	 * @return String: HTML fragment
 	 */
-	public static function wiki_userToolLinks(
-		$wiki_userId, $wiki_userText, $redContribsWhenNoEdits = false, $flags = 0, $edits = null
+	public static function userToolLinks(
+		$userId, $userText, $redContribsWhenNoEdits = false, $flags = 0, $edits = null
 	) {
-		global $wgwiki_user, $wgDisableAnonTalk, $wgLang;
-		$talkable = !( $wgDisableAnonTalk && 0 == $wiki_userId );
+		global $wgUser, $wgDisableAnonTalk, $wgLang;
+		$talkable = !( $wgDisableAnonTalk && 0 == $userId );
 		$blockable = !( $flags & self::TOOL_LINKS_NOBLOCK );
-		$addEmailLink = $flags & self::TOOL_LINKS_EMAIL && $wiki_userId;
+		$addEmailLink = $flags & self::TOOL_LINKS_EMAIL && $userId;
 
 		$items = array();
 		if ( $talkable ) {
-			$items[] = self::wiki_userTalkLink( $wiki_userId, $wiki_userText );
+			$items[] = self::userTalkLink( $userId, $userText );
 		}
-		if ( $wiki_userId ) {
-			// check if the wiki_user has an edit
+		if ( $userId ) {
+			// check if the user has an edit
 			$attribs = array();
 			if ( $redContribsWhenNoEdits ) {
-				$count = !is_null( $edits ) ? $edits : wiki_user::edits( $wiki_userId );
+				$count = !is_null( $edits ) ? $edits : User::edits( $userId );
 				if ( $count == 0 ) {
 					$attribs['class'] = 'new';
 				}
 			}
-			$contribsPage = SpecialPage::getTitleFor( 'Contributions', $wiki_userText );
+			$contribsPage = SpecialPage::getTitleFor( 'Contributions', $userText );
 
 			$items[] = self::link( $contribsPage, wfMessage( 'contribslink' )->escaped(), $attribs );
 		}
-		if ( $blockable && $wgwiki_user->isAllowed( 'block' ) ) {
-			$items[] = self::blockLink( $wiki_userId, $wiki_userText );
+		if ( $blockable && $wgUser->isAllowed( 'block' ) ) {
+			$items[] = self::blockLink( $userId, $userText );
 		}
 
-		if ( $addEmailLink && $wgwiki_user->canSendEmail() ) {
-			$items[] = self::emailLink( $wiki_userId, $wiki_userText );
+		if ( $addEmailLink && $wgUser->canSendEmail() ) {
+			$items[] = self::emailLink( $userId, $userText );
 		}
 
-		wfRunHooks( 'wiki_userToolLinksEdit', array( $wiki_userId, $wiki_userText, &$items ) );
+		wfRunHooks( 'UserToolLinksEdit', array( $userId, $userText, &$items ) );
 
 		if ( $items ) {
 			return wfMessage( 'word-separator' )->plain()
-				. '<span class="mw-wiki_usertoollinks">'
+				. '<span class="mw-usertoollinks">'
 				. wfMessage( 'parentheses' )->rawParams( $wgLang->pipeList( $items ) )->escaped()
 				. '</span>';
 		} else {
@@ -1094,64 +1094,64 @@ class Linker {
 	}
 
 	/**
-	 * Alias for wiki_userToolLinks( $wiki_userId, $wiki_userText, true );
-	 * @param $wiki_userId Integer: wiki_user identifier
-	 * @param $wiki_userText String: wiki_user name or IP address
-	 * @param $edits Integer: wiki_user edit count (optional, for performance)
+	 * Alias for userToolLinks( $userId, $userText, true );
+	 * @param $userId Integer: user identifier
+	 * @param $userText String: user name or IP address
+	 * @param $edits Integer: user edit count (optional, for performance)
 	 * @return String
 	 */
-	public static function wiki_userToolLinksRedContribs( $wiki_userId, $wiki_userText, $edits = null ) {
-		return self::wiki_userToolLinks( $wiki_userId, $wiki_userText, true, 0, $edits );
+	public static function userToolLinksRedContribs( $userId, $userText, $edits = null ) {
+		return self::userToolLinks( $userId, $userText, true, 0, $edits );
 	}
 
 
 	/**
-	 * @param $wiki_userId Integer: wiki_user id in database.
-	 * @param $wiki_userText String: wiki_user name in database.
-	 * @return String: HTML fragment with wiki_user talk link
+	 * @param $userId Integer: user id in database.
+	 * @param $userText String: user name in database.
+	 * @return String: HTML fragment with user talk link
 	 */
-	public static function wiki_userTalkLink( $wiki_userId, $wiki_userText ) {
-		$wiki_userTalkPage = Title::makeTitle( NS_USER_TALK, $wiki_userText );
-		$wiki_userTalkLink = self::link( $wiki_userTalkPage, wfMessage( 'talkpagelinktext' )->escaped() );
-		return $wiki_userTalkLink;
+	public static function userTalkLink( $userId, $userText ) {
+		$userTalkPage = Title::makeTitle( NS_USER_TALK, $userText );
+		$userTalkLink = self::link( $userTalkPage, wfMessage( 'talkpagelinktext' )->escaped() );
+		return $userTalkLink;
 	}
 
 	/**
-	 * @param $wiki_userId Integer: wiki_userid
-	 * @param $wiki_userText String: wiki_user name in database.
+	 * @param $userId Integer: userid
+	 * @param $userText String: user name in database.
 	 * @return String: HTML fragment with block link
 	 */
-	public static function blockLink( $wiki_userId, $wiki_userText ) {
-		$blockPage = SpecialPage::getTitleFor( 'Block', $wiki_userText );
+	public static function blockLink( $userId, $userText ) {
+		$blockPage = SpecialPage::getTitleFor( 'Block', $userText );
 		$blockLink = self::link( $blockPage, wfMessage( 'blocklink' )->escaped() );
 		return $blockLink;
 	}
 
 	/**
-	 * @param $wiki_userId Integer: wiki_userid
-	 * @param $wiki_userText String: wiki_user name in database.
-	 * @return String: HTML fragment with e-mail wiki_user link
+	 * @param $userId Integer: userid
+	 * @param $userText String: user name in database.
+	 * @return String: HTML fragment with e-mail user link
 	 */
-	public static function emailLink( $wiki_userId, $wiki_userText ) {
-		$emailPage = SpecialPage::getTitleFor( 'Emailwiki_user', $wiki_userText );
+	public static function emailLink( $userId, $userText ) {
+		$emailPage = SpecialPage::getTitleFor( 'Emailuser', $userText );
 		$emailLink = self::link( $emailPage, wfMessage( 'emaillink' )->escaped() );
 		return $emailLink;
 	}
 
 	/**
-	 * Generate a wiki_user link if the current wiki_user is allowed to view it
+	 * Generate a user link if the current user is allowed to view it
 	 * @param $rev Revision object.
-	 * @param $isPublic Boolean: show only if all wiki_users can see it
+	 * @param $isPublic Boolean: show only if all users can see it
 	 * @return String: HTML fragment
 	 */
-	public static function revwiki_userLink( $rev, $isPublic = false ) {
+	public static function revUserLink( $rev, $isPublic = false ) {
 		if ( $rev->isDeleted( Revision::DELETED_USER ) && $isPublic ) {
-			$link = wfMessage( 'rev-deleted-wiki_user' )->escaped();
-		} elseif ( $rev->wiki_userCan( Revision::DELETED_USER ) ) {
-			$link = self::wiki_userLink( $rev->getwiki_user( Revision::FOR_THIS_USER ),
-				$rev->getwiki_userText( Revision::FOR_THIS_USER ) );
+			$link = wfMessage( 'rev-deleted-user' )->escaped();
+		} elseif ( $rev->userCan( Revision::DELETED_USER ) ) {
+			$link = self::userLink( $rev->getUser( Revision::FOR_THIS_USER ),
+				$rev->getUserText( Revision::FOR_THIS_USER ) );
 		} else {
-			$link = wfMessage( 'rev-deleted-wiki_user' )->escaped();
+			$link = wfMessage( 'rev-deleted-user' )->escaped();
 		}
 		if ( $rev->isDeleted( Revision::DELETED_USER ) ) {
 			return '<span class="history-deleted">' . $link . '</span>';
@@ -1160,22 +1160,22 @@ class Linker {
 	}
 
 	/**
-	 * Generate a wiki_user tool link cluster if the current wiki_user is allowed to view it
+	 * Generate a user tool link cluster if the current user is allowed to view it
 	 * @param $rev Revision object.
-	 * @param $isPublic Boolean: show only if all wiki_users can see it
+	 * @param $isPublic Boolean: show only if all users can see it
 	 * @return string HTML
 	 */
-	public static function revwiki_userTools( $rev, $isPublic = false ) {
+	public static function revUserTools( $rev, $isPublic = false ) {
 		if ( $rev->isDeleted( Revision::DELETED_USER ) && $isPublic ) {
-			$link = wfMessage( 'rev-deleted-wiki_user' )->escaped();
-		} elseif ( $rev->wiki_userCan( Revision::DELETED_USER ) ) {
-			$wiki_userId = $rev->getwiki_user( Revision::FOR_THIS_USER );
-			$wiki_userText = $rev->getwiki_userText( Revision::FOR_THIS_USER );
-			$link = self::wiki_userLink( $wiki_userId, $wiki_userText )
+			$link = wfMessage( 'rev-deleted-user' )->escaped();
+		} elseif ( $rev->userCan( Revision::DELETED_USER ) ) {
+			$userId = $rev->getUser( Revision::FOR_THIS_USER );
+			$userText = $rev->getUserText( Revision::FOR_THIS_USER );
+			$link = self::userLink( $userId, $userText )
 				. wfMessage( 'word-separator' )->plain()
-				. self::wiki_userToolLinks( $wiki_userId, $wiki_userText );
+				. self::userToolLinks( $userId, $userText );
 		} else {
-			$link = wfMessage( 'rev-deleted-wiki_user' )->escaped();
+			$link = wfMessage( 'rev-deleted-user' )->escaped();
 		}
 		if ( $rev->isDeleted( Revision::DELETED_USER ) ) {
 			return ' <span class="history-deleted">' . $link . '</span>';
@@ -1185,7 +1185,7 @@ class Linker {
 
 	/**
 	 * This function is called by all recent changes variants, by the page history,
-	 * and by the wiki_user contributions list. It is responsible for formatting edit
+	 * and by the user contributions list. It is responsible for formatting edit
 	 * comments. It escapes any HTML in the comment, but adds some CSS to format
 	 * auto-generated comments (from section editing) and formats [[wikilinks]].
 	 *
@@ -1266,7 +1266,7 @@ class Linker {
 			if ( $title ) {
 				$section = $auto;
 
-				# Remove links that a wiki_user may have manually put in the autosummary
+				# Remove links that a user may have manually put in the autosummary
 				# This could be improved by copying as much of Parser::stripSectionName as desired.
 				$section = str_replace( '[[:', '', $section );
 				$section = str_replace( '[[', '', $section );
@@ -1514,11 +1514,11 @@ class Linker {
 
 	/**
 	 * Wrap and format the given revision's comment block, if the current
-	 * wiki_user is allowed to view it.
+	 * user is allowed to view it.
 	 *
 	 * @param $rev Revision object
 	 * @param $local Boolean: whether section links should refer to local page
-	 * @param $isPublic Boolean: show only if all wiki_users can see it
+	 * @param $isPublic Boolean: show only if all users can see it
 	 * @return String: HTML fragment
 	 */
 	public static function revComment( Revision $rev, $local = false, $isPublic = false ) {
@@ -1527,7 +1527,7 @@ class Linker {
 		}
 		if ( $rev->isDeleted( Revision::DELETED_COMMENT ) && $isPublic ) {
 			$block = " <span class=\"comment\">" . wfMessage( 'rev-deleted-comment' )->escaped() . "</span>";
-		} elseif ( $rev->wiki_userCan( Revision::DELETED_COMMENT ) ) {
+		} elseif ( $rev->userCan( Revision::DELETED_COMMENT ) ) {
 			$block = self::commentBlock( $rev->getComment( Revision::FOR_THIS_USER ),
 				$rev->getTitle(), $local );
 		} else {
@@ -1601,7 +1601,7 @@ class Linker {
 	 * Wraps the TOC in a table and provides the hide/collapse javascript.
 	 *
 	 * @param $toc String: html of the Table Of Contents
-	 * @param $lang String|Language|false: Language for the toc title, defaults to wiki_user language
+	 * @param $lang String|Language|false: Language for the toc title, defaults to user language
 	 * @return String: full html of the TOC
 	 */
 	public static function tocList( $toc, $lang = false ) {
@@ -1691,13 +1691,13 @@ class Linker {
 	/**
 	 * Generate a rollback link for a given revision.  Currently it's the
 	 * caller's responsibility to ensure that the revision is the top one. If
-	 * it's not, of course, the wiki_user will get an error message.
+	 * it's not, of course, the user will get an error message.
 	 *
 	 * If the calling page is called with the parameter &bot=1, all rollback
 	 * links also get that parameter. It causes the edit itself and the rollback
 	 * to be marked as "bot" edits. Bot edits are hidden by default from recent
 	 * changes, so this allows sysops to combat a busy vandal without bothering
-	 * other wiki_users.
+	 * other users.
 	 *
 	 * @param $rev Revision object
 	 * @param $context IContextSource context to use or null for the main context.
@@ -1734,8 +1734,8 @@ class Linker {
 		$title = $rev->getTitle();
 		$query = array(
 			'action' => 'rollback',
-			'from' => $rev->getwiki_userText(),
-			'token' => $context->getwiki_user()->getEditToken( array( $title->getPrefixedText(), $rev->getwiki_userText() ) ),
+			'from' => $rev->getUserText(),
+			'token' => $context->getUser()->getEditToken( array( $title->getPrefixedText(), $rev->getUserText() ) ),
 		);
 		if ( $context->getRequest()->getBool( 'bot' ) ) {
 			$query['bot'] = '1';
@@ -1753,11 +1753,11 @@ class Linker {
 		}
 
 		if( !$disableRollbackEditCount && is_int( $wgShowRollbackEditCount ) && $wgShowRollbackEditCount > 0 ) {
-			r = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 
 			// Up to the value of $wgShowRollbackEditCount revisions are counted
-			$res = r->select( 'revision',
-				array( 'rev_id', 'rev_wiki_user_text' ),
+			$res = $dbr->select( 'revision',
+				array( 'rev_id', 'rev_user_text' ),
 				// $rev->getPage() returns null sometimes
 				array( 'rev_page' => $rev->getTitle()->getArticleID() ),
 				__METHOD__,
@@ -1767,8 +1767,8 @@ class Linker {
 			);
 
 			$editCount = 0;
-			while( $row = r->fetchObject( $res ) ) {
-				if( $rev->getwiki_userText() != $row->rev_wiki_user_text ) {
+			while( $row = $dbr->fetchObject( $res ) ) {
+				if( $rev->getUserText() != $row->rev_user_text ) {
 					break;
 				}
 				$editCount++;
@@ -1843,7 +1843,7 @@ class Linker {
 				} else {
 					$protected = '';
 				}
-				if ( $titleObj->quickwiki_userCan( 'edit' ) ) {
+				if ( $titleObj->quickUserCan( 'edit' ) ) {
 					$editLink = self::link(
 						$titleObj,
 						wfMessage( 'editlink' )->text(),
@@ -1851,7 +1851,7 @@ class Linker {
 						array( 'action' => 'edit' )
 					);
 				// <IntraACL>
-				} elseif ( !$titleObj->wiki_userCanRead() ) {
+				} elseif ( !$titleObj->userCanRead() ) {
 					continue;
 				// </IntraACL>
 				} else {
@@ -1990,24 +1990,24 @@ class Linker {
 
 	/**
 	 * Get a revision-deletion link, or disabled link, or nothing, depending
-	 * on wiki_user permissions & the settings on the revision.
+	 * on user permissions & the settings on the revision.
 	 *
 	 * Will use forward-compatible revision ID in the Special:RevDelete link
 	 * if possible, otherwise the timestamp-based ID which may break after
 	 * undeletion.
 	 *
-	 * @param wiki_user $wiki_user
+	 * @param User $user
 	 * @param Revision $rev
 	 * @param Revision $title
 	 * @return string HTML fragment
 	 */
-	public static function getRevDeleteLink( wiki_user $wiki_user, Revision $rev, Title $title ) {
-		$canHide = $wiki_user->isAllowed( 'deleterevision' );
-		if ( !$canHide && !( $rev->getVisibility() && $wiki_user->isAllowed( 'deletedhistory' ) ) ) {
+	public static function getRevDeleteLink( User $user, Revision $rev, Title $title ) {
+		$canHide = $user->isAllowed( 'deleterevision' );
+		if ( !$canHide && !( $rev->getVisibility() && $user->isAllowed( 'deletedhistory' ) ) ) {
 			return '';
 		}
 
-		if ( !$rev->wiki_userCan( Revision::DELETED_RESTRICTED, $wiki_user ) ) {
+		if ( !$rev->userCan( Revision::DELETED_RESTRICTED, $user ) ) {
 			return Linker::revDeleteLinkDisabled( $canHide ); // revision was hidden from sysops
 		} else {
 			if ( $rev->getId() ) {

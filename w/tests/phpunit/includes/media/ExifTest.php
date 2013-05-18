@@ -32,14 +32,14 @@ class ExifTest extends MediaWikiTestCase {
 		$this->assertEquals( $expected, $data, '', 0.0000000001 );
 	}
 
-	public function testUnicodewiki_userComment() {
-		$filename = $this->mediaPath . 'exif-wiki_user-comment.jpg';
+	public function testUnicodeUserComment() {
+		$filename = $this->mediaPath . 'exif-user-comment.jpg';
 		$seg = JpegMetadataExtractor::segmentSplitter( $filename ); 
 		$exif = new Exif( $filename, $seg['byteOrder'] );
 		$data = $exif->getFilteredData();
 
 		$expected = array(
-			'wiki_userComment' => 'test⁔comment'
+			'UserComment' => 'test⁔comment'
 		);
 		$this->assertEquals( $expected, $data );
 	}

@@ -80,7 +80,7 @@ class TextPassDumper extends BackupDumper {
 	/**
 	 * @var DatabaseBase
 	 */
-	protected ;
+	protected $db;
 
 
 	/**

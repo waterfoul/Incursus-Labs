@@ -23,9 +23,9 @@ require_once( __DIR__ . '/../Maintenance.php' );
 
 class StorageTypeStats extends Maintenance {
 	function execute() {
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
-		$endId = r->selectField( 'text', 'MAX(old_id)', false, __METHOD__ );
+		$endId = $dbr->selectField( 'text', 'MAX(old_id)', false, __METHOD__ );
 		if ( !$endId ) {
 			echo "No text rows!\n";
 			exit( 1 );
@@ -62,7 +62,7 @@ SQL;
 			if ( $rangeStart / $binSize % 10 == 0 ) {
 				echo "$rangeStart\r";
 			}
-			$res = r->select(
+			$res = $dbr->select(
 				'text',
 				array(
 					'old_flags',

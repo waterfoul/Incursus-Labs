@@ -82,7 +82,7 @@
         /* Actual browser storage (localStorage or globalStorage['domain']) */
         _storage_service = {jStorage:"{}"},
 
-        /* DOM element for older IE versions, holds wiki_userData behavior */
+        /* DOM element for older IE versions, holds userData behavior */
         _storage_elm = null,
 
         /* How much space does the storage take */
@@ -164,7 +164,7 @@
 
     /**
      * Initialization function. Detects if the browser supports DOM Storage
-     * or wiki_userData behavior and behaves accordingly.
+     * or userData behavior and behaves accordingly.
      * @returns undefined
      */
     function _init(){
@@ -197,15 +197,15 @@
                 }
             } catch(E4) {/* Firefox fails when touching localStorage and cookies are disabled */}
         }
-        /* Check if browser supports wiki_userData behavior */
+        /* Check if browser supports userData behavior */
         else {
             _storage_elm = document.createElement('link');
             if(_storage_elm.addBehavior){
 
-                /* Use a DOM element to act as wiki_userData storage */
-                _storage_elm.style.behavior = 'url(#default#wiki_userData)';
+                /* Use a DOM element to act as userData storage */
+                _storage_elm.style.behavior = 'url(#default#userData)';
 
-                /* wiki_userData element needs to be inserted into the DOM! */
+                /* userData element needs to be inserted into the DOM! */
                 document.getElementsByTagName('head')[0].appendChild(_storage_elm);
 
                 _storage_elm.load("jStorage");
@@ -214,7 +214,7 @@
                     data = _storage_elm.getAttribute("jStorage");
                 }catch(E5){}
                 _storage_service.jStorage = data;
-                _backend = "wiki_userDataBehavior";
+                _backend = "userDataBehavior";
             }else{
                 _storage_elm = null;
                 return;
@@ -250,7 +250,7 @@
     function _save(){
         try{
             _storage_service.jStorage = json_encode(_storage);
-            // If wiki_userData is used as the storage engine, additional
+            // If userData is used as the storage engine, additional
             if(_storage_elm) {
                 _storage_elm.setAttribute("jStorage",_storage_service.jStorage);
                 _storage_elm.save("jStorage");
@@ -507,10 +507,10 @@
                 _storage_elm.parentNode.replaceChild(new_storage_elm, _storage_elm);
                 _storage_elm = new_storage_elm;
 
-                /* Use a DOM element to act as wiki_userData storage */
-                _storage_elm.style.behavior = 'url(#default#wiki_userData)';
+                /* Use a DOM element to act as userData storage */
+                _storage_elm.style.behavior = 'url(#default#userData)';
 
-                /* wiki_userData element needs to be inserted into the DOM! */
+                /* userData element needs to be inserted into the DOM! */
                 document.getElementsByTagName('head')[0].appendChild(_storage_elm);
 
                 _storage_elm.load("jStorage");
@@ -519,7 +519,7 @@
                     data = _storage_elm.getAttribute("jStorage");
                 }catch(E5){}
                 _storage_service.jStorage = data;
-                _backend = "wiki_userDataBehavior";
+                _backend = "userDataBehavior";
             }
 
             _load_storage();

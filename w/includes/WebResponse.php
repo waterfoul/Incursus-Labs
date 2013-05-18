@@ -1,6 +1,6 @@
 <?php
 /**
- * Classes used to send headers and cookies back to the wiki_user
+ * Classes used to send headers and cookies back to the user
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

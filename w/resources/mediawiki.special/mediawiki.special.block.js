@@ -6,8 +6,8 @@ jQuery( function( $ ) {
 		$blockTarget = $( '#mw-bi-target' ),
 		$anonOnlyRow = $( '#mw-input-wpHardBlock' ).closest( 'tr' ),
 		$enableAutoblockRow = $( '#mw-input-wpAutoBlock' ).closest( 'tr' ),
-		$hidewiki_user = $( '#mw-input-wpHidewiki_user' ).closest( 'tr' ),
-		$watchwiki_user = $( '#mw-input-wpWatch' ).closest( 'tr' );
+		$hideUser = $( '#mw-input-wpHideUser' ).closest( 'tr' ),
+		$watchUser = $( '#mw-input-wpWatch' ).closest( 'tr' );
 
 	var updateBlockOptions = function( instant ) {
 		if ( !$blockTarget.length ) {
@@ -21,10 +21,10 @@ jQuery( function( $ ) {
 
 		if ( isIp && !isEmpty ) {
 			$enableAutoblockRow.goOut( instant );
-			$hidewiki_user.goOut( instant );
+			$hideUser.goOut( instant );
 		} else {
 			$enableAutoblockRow.goIn( instant );
-			$hidewiki_user.goIn( instant );
+			$hideUser.goIn( instant );
 		}
 		if ( !isIp && !isEmpty ) {
 			$anonOnlyRow.goOut( instant );
@@ -32,9 +32,9 @@ jQuery( function( $ ) {
 			$anonOnlyRow.goIn( instant );
 		}
 		if ( isIpRange && !isEmpty ) {
-			$watchwiki_user.goOut( instant );
+			$watchUser.goOut( instant );
 		} else {
-			$watchwiki_user.goIn( instant );
+			$watchUser.goIn( instant );
 		}
 	};
 

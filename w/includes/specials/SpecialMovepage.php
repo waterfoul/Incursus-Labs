@@ -22,7 +22,7 @@
  */
 
 /**
- * A special page that allows wiki_users to change page titles
+ * A special page that allows users to change page titles
  *
  * @ingroup SpecialPage
  */
@@ -72,13 +72,13 @@ class MovePageForm extends UnlistedSpecialPage {
 			: Title::makeTitleSafe( $newTitleTextNs, $newTitleTextMain );
 
 
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 
 		# Check rights
-		$permErrors = $this->oldTitle->getwiki_userPermissionsErrors( 'move', $wiki_user );
+		$permErrors = $this->oldTitle->getUserPermissionsErrors( 'move', $user );
 		if ( count( $permErrors ) ) {
-			// Auto-block wiki_user's IP if the account was "hard" blocked
-			$wiki_user->spreadAnyEditBlock();
+			// Auto-block user's IP if the account was "hard" blocked
+			$user->spreadAnyEditBlock();
 			throw new PermissionsError( 'move', $permErrors );
 		}
 
@@ -91,10 +91,10 @@ class MovePageForm extends UnlistedSpecialPage {
 		$this->moveSubpages = $request->getBool( 'wpMovesubpages', false );
 		$this->deleteAndMove = $request->getBool( 'wpDeleteAndMove' ) && $request->getBool( 'wpConfirm' );
 		$this->moveOverShared = $request->getBool( 'wpMoveOverSharedFile', false );
-		$this->watch = $request->getCheck( 'wpWatch' ) && $wiki_user->isLoggedIn();
+		$this->watch = $request->getCheck( 'wpWatch' ) && $user->isLoggedIn();
 
 		if ( 'submit' == $request->getVal( 'action' ) && $request->wasPosted()
-			&& $wiki_user->matchEditToken( $request->getVal( 'wpEditToken' ) ) ) {
+			&& $user->matchEditToken( $request->getVal( 'wpEditToken' ) ) ) {
 			$this->doSubmit();
 		} else {
 			$this->showForm( array() );
@@ -135,10 +135,10 @@ class MovePageForm extends UnlistedSpecialPage {
 			}
 		}
 
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 
 		if ( count( $err ) == 1 && isset( $err[0][0] ) && $err[0][0] == 'articleexists'
-			&& $newTitle->quickwiki_userCan( 'delete', $wiki_user )
+			&& $newTitle->quickUserCan( 'delete', $user )
 		) {
 			$out->addWikiMsg( 'delete_and_move_text', $newTitle->getPrefixedText() );
 			$movepagebtn = $this->msg( 'delete_and_move' )->text();
@@ -153,7 +153,7 @@ class MovePageForm extends UnlistedSpecialPage {
 			$err = array();
 		} else {
 			if ($this->oldTitle->getNamespace() == NS_USER && !$this->oldTitle->isSubpage() ) {
-				$out->wrapWikiMsg( "<div class=\"error mw-movewiki_userpage-warning\">\n$1\n</div>", 'movewiki_userpage-warning' );
+				$out->wrapWikiMsg( "<div class=\"error mw-moveuserpage-warning\">\n$1\n</div>", 'moveuserpage-warning' );
 			}
 			$out->addWikiMsg( $wgFixDoubleRedirects ? 'movepagetext' :
 				'movepagetext-noredirectfixer' );
@@ -163,7 +163,7 @@ class MovePageForm extends UnlistedSpecialPage {
 		}
 
 		if ( count( $err ) == 1 && isset( $err[0][0] ) && $err[0][0] == 'file-exists-sharedrepo'
-			&& $wiki_user->isAllowed( 'reupload-shared' )
+			&& $user->isAllowed( 'reupload-shared' )
 		) {
 			$out->addWikiMsg( 'move-over-sharedrepo', $newTitle->getPrefixedText() );
 			$submitVar = 'wpMoveOverSharedFile';
@@ -175,7 +175,7 @@ class MovePageForm extends UnlistedSpecialPage {
 		$oldTitleTalkSubpages = $this->oldTitle->getTalkPage()->hasSubpages();
 
 		$canMoveSubpage = ( $oldTitleSubpages || $oldTitleTalkSubpages ) &&
-			!count( $this->oldTitle->getwiki_userPermissionsErrors( 'move-subpages', $wiki_user ) );
+			!count( $this->oldTitle->getUserPermissionsErrors( 'move-subpages', $user ) );
 
 		# We also want to be able to move assoc. subpage talk-pages even if base page
 		# has no associated talk page, so || with $oldTitleTalkSubpages.
@@ -183,9 +183,9 @@ class MovePageForm extends UnlistedSpecialPage {
 			( $oldTalk->exists()
 				|| ( $oldTitleTalkSubpages && $canMoveSubpage ) );
 
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		if ( $wgFixDoubleRedirects ) {
-			$hasRedirects = r->selectField( 'redirect', '1',
+			$hasRedirects = $dbr->selectField( 'redirect', '1',
 				array(
 					'rd_namespace' => $this->oldTitle->getNamespace(),
 					'rd_title' => $this->oldTitle->getDBkey(),
@@ -309,7 +309,7 @@ class MovePageForm extends UnlistedSpecialPage {
 			);
 		}
 
-		if ( $wiki_user->isAllowed( 'suppressredirect' ) ) {
+		if ( $user->isAllowed( 'suppressredirect' ) ) {
 			$out->addHTML( "
 				<tr>
 					<td></td>
@@ -357,10 +357,10 @@ class MovePageForm extends UnlistedSpecialPage {
 			);
 		}
 
-		$watchChecked = $wiki_user->isLoggedIn() && ($this->watch || $wiki_user->getBoolOption( 'watchmoves' )
-			|| $wiki_user->isWatched( $this->oldTitle ) );
-		# Don't allow watching if wiki_user is not logged in
-		if( $wiki_user->isLoggedIn() ) {
+		$watchChecked = $user->isLoggedIn() && ($this->watch || $user->getBoolOption( 'watchmoves' )
+			|| $user->isWatched( $this->oldTitle ) );
+		# Don't allow watching if user is not logged in
+		if( $user->isLoggedIn() ) {
 			$out->addHTML( "
 			<tr>
 				<td></td>
@@ -379,7 +379,7 @@ class MovePageForm extends UnlistedSpecialPage {
 				"</td>
 			</tr>" .
 			Xml::closeElement( 'table' ) .
-			Html::hidden( 'wpEditToken', $wiki_user->getEditToken() ) .
+			Html::hidden( 'wpEditToken', $user->getEditToken() ) .
 			Xml::closeElement( 'fieldset' ) .
 			Xml::closeElement( 'form' ) .
 			"\n"
@@ -393,9 +393,9 @@ class MovePageForm extends UnlistedSpecialPage {
 	function doSubmit() {
 		global $wgMaximumMovedPages, $wgFixDoubleRedirects;
 
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 
-		if ( $wiki_user->pingLimiter( 'move' ) ) {
+		if ( $user->pingLimiter( 'move' ) ) {
 			throw new ThrottledError;
 		}
 
@@ -410,7 +410,7 @@ class MovePageForm extends UnlistedSpecialPage {
 
 		# Show a warning if the target file exists on a shared repo
 		if ( $nt->getNamespace() == NS_FILE
-			&& !( $this->moveOverShared && $wiki_user->isAllowed( 'reupload-shared' ) )
+			&& !( $this->moveOverShared && $user->isAllowed( 'reupload-shared' ) )
 			&& !RepoGroup::singleton()->getLocalRepo()->findFile( $nt )
 			&& wfFindFile( $nt ) )
 		{
@@ -421,7 +421,7 @@ class MovePageForm extends UnlistedSpecialPage {
 
 		# Delete to make way if requested
 		if ( $this->deleteAndMove ) {
-			$permErrors = $nt->getwiki_userPermissionsErrors( 'delete', $wiki_user );
+			$permErrors = $nt->getUserPermissionsErrors( 'delete', $user );
 			if ( count( $permErrors ) ) {
 				# Only show the first error
 				$this->showForm( $permErrors );
@@ -440,14 +440,14 @@ class MovePageForm extends UnlistedSpecialPage {
 
 			$error = ''; // passed by ref
 			$page = WikiPage::factory( $nt );
-			$deleteStatus = $page->doDeleteArticleReal( $reason, false, 0, true, $error, $wiki_user );
+			$deleteStatus = $page->doDeleteArticleReal( $reason, false, 0, true, $error, $user );
 			if ( !$deleteStatus->isGood() ) {
 				$this->showForm( $deleteStatus->getErrorsArray() );
 				return;
 			}
 		}
 
-		if ( $wiki_user->isAllowed( 'suppressredirect' ) ) {
+		if ( $user->isAllowed( 'suppressredirect' ) ) {
 			$createRedirect = $this->leaveRedirect;
 		} else {
 			$createRedirect = true;
@@ -491,7 +491,7 @@ class MovePageForm extends UnlistedSpecialPage {
 			$this->moveTalk = false;
 		}
 
-		if ( count( $ot->getwiki_userPermissionsErrors( 'move-subpages', $wiki_user ) ) ) {
+		if ( count( $ot->getUserPermissionsErrors( 'move-subpages', $user ) ) ) {
 			$this->moveSubpages = false;
 		}
 
@@ -508,7 +508,7 @@ class MovePageForm extends UnlistedSpecialPage {
 		# @todo FIXME: A specific error message should be given in this case.
 
 		// @todo FIXME: Use Title::moveSubpages() here
-		r = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_MASTER );
 		if( $this->moveSubpages && (
 			MWNamespace::hasSubpages( $nt->getNamespace() ) || (
 				$this->moveTalk &&
@@ -516,8 +516,8 @@ class MovePageForm extends UnlistedSpecialPage {
 			)
 		) ) {
 			$conds = array(
-				'page_title' . r->buildLike( $ot->getDBkey() . '/', r->anyString() )
-					.' OR page_title = ' . r->addQuotes( $ot->getDBkey() )
+				'page_title' . $dbr->buildLike( $ot->getDBkey() . '/', $dbr->anyString() )
+					.' OR page_title = ' . $dbr->addQuotes( $ot->getDBkey() )
 			);
 			$conds['page_namespace'] = array();
 			if( MWNamespace::hasSubpages( $nt->getNamespace() ) ) {
@@ -539,7 +539,7 @@ class MovePageForm extends UnlistedSpecialPage {
 		$extraPages = array();
 		if( !is_null( $conds ) ) {
 			$extraPages = TitleArray::newFromResult(
-				r->select( 'page',
+				$dbr->select( 'page',
 					array( 'page_id', 'page_namespace', 'page_title' ),
 					$conds,
 					__METHOD__
@@ -575,7 +575,7 @@ class MovePageForm extends UnlistedSpecialPage {
 				continue;
 			}
 
-			# This was copy-pasted from Renamewiki_user, bleh.
+			# This was copy-pasted from Renameuser, bleh.
 			if ( $newSubpage->exists() && !$oldSubpage->isValidMoveTarget( $newSubpage ) ) {
 				$link = Linker::linkKnown( $newSubpage );
 				$extraOutput []= $this->msg( 'movepage-page-exists' )->rawParams( $link )->escaped();
@@ -612,12 +612,12 @@ class MovePageForm extends UnlistedSpecialPage {
 		}
 
 		# Deal with watches (we don't watch subpages)
-		if( $this->watch && $wiki_user->isLoggedIn() ) {
-			$wiki_user->addWatch( $ot );
-			$wiki_user->addWatch( $nt );
+		if( $this->watch && $user->isLoggedIn() ) {
+			$user->addWatch( $ot );
+			$user->addWatch( $nt );
 		} else {
-			$wiki_user->removeWatch( $ot );
-			$wiki_user->removeWatch( $nt );
+			$user->removeWatch( $ot );
+			$user->removeWatch( $nt );
 		}
 
 		# Re-clear the file redirect cache, which may have been polluted by

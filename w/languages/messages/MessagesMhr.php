@@ -83,7 +83,7 @@ $magicWords = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Кузе кылвер-влакым ӱлычын удыралаш?',
 'tog-justify' => 'Абзацым лопкыт дене тӧрлаш',
 'tog-hideminor' => 'Пытартыш тӧрлатымаш-влак лӱмер гыч изирак тӧрлатымаш-влакым ончыкташ огыл',
@@ -104,7 +104,7 @@ $messages = array(
 'tog-previewonfirst' => 'Ончылгоч ончымашым икымше тӧрлатымаш годым ончыкташ',
 'tog-nocache' => 'Лаштыкым кешироватлымым чараш',
 'tog-enotifwatchlistpages' => 'Мыйын эскерыме лӱмер гыч лаштыкыште тӧрлатымыш нерген электрон почто гоч шижтараш',
-'tog-enotifwiki_usertalkpages' => 'Мыйын каҥашымаш лаштыкыште тӧрлатымыш нерген электрон почто гоч шижтараш',
+'tog-enotifusertalkpages' => 'Мыйын каҥашымаш лаштыкыште тӧрлатымыш нерген электрон почто гоч шижтараш',
 'tog-oldsig' => 'Кидпалын ончылгоч ончымаш:',
 'tog-showjumplinks' => '"Куснаш …" ешартыш кылверым чӱкташ',
 'tog-watchlisthideown' => 'Эскерыме лӱмер гыч мыйын тӧрлатымаш-влакым ончыкташ огыл',
@@ -244,7 +244,7 @@ $messages = array(
 'talk' => 'Каҥашымаш',
 'views' => 'Ончалаш',
 'toolbox' => 'Ӱзгар-влак',
-'wiki_userpage' => 'Пайдаланышын лаштыкым ончалаш',
+'userpage' => 'Пайдаланышын лаштыкым ончалаш',
 'imagepage' => 'Файлын лаштыкым ончалаш',
 'templatepage' => 'Ямдылыкын лаштыкым ончалаш',
 'viewhelppage' => 'Полшык лаштыкым ончалаш',
@@ -260,7 +260,7 @@ $messages = array(
 'jumptosearch' => 'кычалмашшке',
 'pool-errorunknown' => 'Палыдыме йоҥылыш',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} нерген',
 'aboutpage' => 'Project:Нерген',
 'copyright' => 'Лаштыкыште возымо $1 йӧн дене почмо.',
@@ -302,7 +302,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Лаштык',
-'nstab-wiki_user' => 'Пайдаланышын лаштыкше',
+'nstab-user' => 'Пайдаланышын лаштыкше',
 'nstab-media' => 'Мультимедиа',
 'nstab-special' => 'Лӱмын ыштыме лаштык',
 'nstab-project' => 'Проект нерген',
@@ -322,7 +322,7 @@ $messages = array(
 Кунам тый тоштемше кылвер почеш шӧрымӧ вашталтымаш лаштыкыш (але эртымгорно лаштыкыш) куснет, тыге лийын кертеш.
 
 Тыге огыл гын, очыни, тый программыште йоҥылышым муынат.
-Тидын нерген URL-ым ончыктен [[Special:Listwiki_users/sysop|сайтвиктарышым]] шижтаре.',
+Тидын нерген URL-ым ончыктен [[Special:ListUsers/sysop|сайтвиктарышым]] шижтаре.',
 'missingarticle-rev' => '(тӱрлык#: $1)',
 'internalerror' => 'Кӧргысӧ йоҥылыш',
 'internalerror_info' => 'Кӧргысӧ йоҥылыш: $1',
@@ -347,21 +347,21 @@ $messages = array(
 'login' => 'Шке денет палымым ыште',
 'nav-login-createaccount' => 'Пураш/Регистрацийым эрте',
 'loginprompt' => '{{SITENAME}} тый денет палыме лиймашлан, cookies чӱкталтын улшаш.',
-'wiki_userlogin' => 'Шке денет палымым ыште/Регистрацийым эрте',
+'userlogin' => 'Шке денет палымым ыште/Регистрацийым эрте',
 'logout' => 'Лекташ',
-'wiki_userlogout' => 'Лекташ',
+'userlogout' => 'Лекташ',
 'nologin' => "Тый регистрацийым эше эртен отыл? '''$1'''.",
 'nologinlink' => 'Регистрацийым эрте',
 'createaccount' => 'Регистрацийым эрте',
 'gotaccount' => "Тый регистрацийым эртенат? '''$1'''.",
 'gotaccountlink' => 'Шке денет палымым ыште',
 'createaccountmail' => 'e-mail дене',
-'nosuchwiki_user' => '"$1" лӱман пайдаланыше уке.
+'nosuchuser' => '"$1" лӱман пайдаланыше уке.
 Пайдаланышын лӱмыштӧ йӱкпале-влакын кугытшо тӱрыс лийшаш.
-Лӱмым чын возымым терге але [[Special:wiki_userLogin/signup|регистрацийым эрте]].',
-'nosuchwiki_usershort' => '"$1" лӱман пайдаланыше уке.
+Лӱмым чын возымым терге але [[Special:UserLogin/signup|регистрацийым эрте]].',
+'nosuchusershort' => '"$1" лӱман пайдаланыше уке.
 Лӱмым чын возымым терге.',
-'nowiki_userspecified' => 'Тылат пайдаланышын лӱмжым пуртыман.',
+'nouserspecified' => 'Тылат пайдаланышын лӱмжым пуртыман.',
 'wrongpassword' => 'Тый йоҥылыш шолыпмутым пуртенат.
 Эше ик гана ыштен ончо.',
 'wrongpasswordempty' => 'Тый яра шолыпмутым пуртенат.
@@ -386,7 +386,7 @@ $messages = array(
 'resetpass-submit-loggedin' => 'Шолыпмутым вашталташ',
 
 # Special:PasswordReset
-'passwordreset-wiki_username' => 'Пайдаланышын лӱмжӧ',
+'passwordreset-username' => 'Пайдаланышын лӱмжӧ',
 
 # Edit page toolbar
 'bold_sample' => 'Кӱжгӧ текст',
@@ -468,7 +468,7 @@ $messages = array(
 'rev-delundel' => 'ончыкташ/шылташ',
 'rev-showdeleted' => 'ончыкташ',
 'revdelete-hide-image' => 'Файл кӧргым шылташ',
-'revdelete-hide-wiki_user' => 'Тӧрлатышын лӱмжым шылташ',
+'revdelete-hide-user' => 'Тӧрлатышын лӱмжым шылташ',
 'revdelete-radio-set' => 'Йӧ',
 'revdelete-radio-unset' => 'Уке',
 'revdel-restore' => 'Койымашым вашталташ',
@@ -568,7 +568,7 @@ $messages = array(
 'prefs-files' => 'Файл-влак',
 'prefs-emailconfirm-label' => 'Электрон почто пеҥгыдемдыме:',
 'youremail' => 'Электрон почто:',
-'wiki_username' => 'Пайдаланышын лӱмжӧ:',
+'username' => 'Пайдаланышын лӱмжӧ:',
 'uid' => 'Пайдаланышын ID-же:',
 'prefs-memberingroups' => '{{PLURAL:$1|Тӱшкаште шогышо|Тӱшка-влакыште шогышо}}:',
 'yourrealname' => 'Чын лӱмжӧ:',
@@ -591,7 +591,7 @@ $messages = array(
 'grouppage-bot' => '{{ns:project}}:Бот-влак',
 'grouppage-sysop' => '{{ns:project}}:Сайтвиктарыше-влак',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Пайдаланышын кертыж нерген журнал',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -647,7 +647,7 @@ $messages = array(
 
 # Special:ListFiles
 'imgfile' => 'файл',
-'listfiles_wiki_user' => 'Пайдаланыше',
+'listfiles_user' => 'Пайдаланыше',
 
 # File description page
 'file-anchor-link' => 'Файл',
@@ -658,7 +658,7 @@ $messages = array(
 'filehist-datetime' => 'Кече/жап',
 'filehist-thumb' => 'Иземдыме сӱрет',
 'filehist-thumbtext' => '$1 тӱрлыклан иземдыме сӱрет',
-'filehist-wiki_user' => 'Пайдаланыше',
+'filehist-user' => 'Пайдаланыше',
 'filehist-dimensions' => 'Кугытшо',
 'filehist-filesize' => 'Файлын кугытшо',
 'filehist-comment' => 'Файл нерген:',
@@ -685,7 +685,7 @@ $messages = array(
 'statistics-header-pages' => 'Лаштык коклам иктешлымаш',
 'statistics-header-edits' => 'Тӧрлатымаш коклам иктешлымаш',
 'statistics-header-views' => 'Ончымаш коклам иктешлымаш',
-'statistics-header-wiki_users' => 'Пайдаланыше коклам иктешлымаш',
+'statistics-header-users' => 'Пайдаланыше коклам иктешлымаш',
 'statistics-header-hooks' => 'Тӱрлӧ коклам иктешлымаш',
 'statistics-articles' => 'Возымо лаштык-влак',
 'statistics-pages' => 'Лаштык-влак',
@@ -695,9 +695,9 @@ $messages = array(
 'statistics-edits-average' => 'Ик лаштыкым покшел тӧрлымӧ чот',
 'statistics-views-total' => 'Чылажге ончымо',
 'statistics-views-peredit' => 'Ик тӧрлатымашлан ончымо',
-'statistics-wiki_users' => 'Регистрацийым эртыше [[Special:Listwiki_users|пайдаланыше-влак]]',
-'statistics-wiki_users-active' => 'Чӱчкыдын пайдаланыше-влак',
-'statistics-wiki_users-active-desc' => 'Пытартыш {{PLURAL:$1|кечыште|$1 кечыште}} иктаж-мом ыштыше пайаланыше-влак',
+'statistics-users' => 'Регистрацийым эртыше [[Special:ListUsers|пайдаланыше-влак]]',
+'statistics-users-active' => 'Чӱчкыдын пайдаланыше-влак',
+'statistics-users-active-desc' => 'Пытартыш {{PLURAL:$1|кечыште|$1 кечыште}} иктаж-мом ыштыше пайаланыше-влак',
 'statistics-mostpopular' => 'Эн чӱчкыдын ончымо лаштык-влак',
 
 'brokenredirects' => 'Пудыртымо вес верек колтымаш-влак',
@@ -719,9 +719,9 @@ $messages = array(
 'shortpages' => 'Кӱчык лаштык-влак',
 'longpages' => 'Кужу лаштык-влак',
 'protectedpages' => 'Тӧрлатымаш деч аралыме лаштык-влак',
-'wiki_usercreated' => '$1, $2 шагатлан {{GENDER:$3|регистрацийым эртен|регистрацийым эртен}}',
+'usercreated' => '$1, $2 шагатлан {{GENDER:$3|регистрацийым эртен|регистрацийым эртен}}',
 'newpages' => 'У лаштык-влак',
-'newpages-wiki_username' => 'Пайдаланышын лӱмжӧ:',
+'newpages-username' => 'Пайдаланышын лӱмжӧ:',
 'move' => 'Кусараш',
 'movethispage' => 'Тиде лаштыкым кусараш',
 'pager-newer-n' => '{{PLURAL:$1|вес|вес}}',
@@ -733,7 +733,7 @@ $messages = array(
 'booksources-go' => 'Муаш',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Пайдаланыше:',
+'specialloguserlabel' => 'Пайдаланыше:',
 'log' => 'Журнал-влак',
 
 # Special:AllPages
@@ -753,24 +753,24 @@ $messages = array(
 'linksearch-ns' => 'Лӱм-влакын кумдыкышт:',
 'linksearch-ok' => 'Кычал',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'ончыкташ',
-'listwiki_users-blocked' => '(йӧн петырыме)',
+# Special:ListUsers
+'listusers-submit' => 'ончыкташ',
+'listusers-blocked' => '(йӧн петырыме)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'Чӱчкыдын пайдаланыше-влак лӱмер',
-'activewiki_users-count' => 'Пытартыш $3 {{PLURAL:$3|кечыште|кечылаште}} $1 {{PLURAL:$1|тӧрлатымаш|тӧрлатымаш-влак}}',
-'activewiki_users-hidebots' => 'Бот-влакым шылташ',
-'activewiki_users-hidesysops' => 'Сайтвиктарыше-влакым шылташ',
+# Special:ActiveUsers
+'activeusers' => 'Чӱчкыдын пайдаланыше-влак лӱмер',
+'activeusers-count' => 'Пытартыш $3 {{PLURAL:$3|кечыште|кечылаште}} $1 {{PLURAL:$1|тӧрлатымаш|тӧрлатымаш-влак}}',
+'activeusers-hidebots' => 'Бот-влакым шылташ',
+'activeusers-hidesysops' => 'Сайтвиктарыше-влакым шылташ',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'У пайдаланыше регистрацийым эртарыме журнал',
+# Special:Log/newusers
+'newuserlogpage' => 'У пайдаланыше регистрацийым эртарыме журнал',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(тӱшкаште улшо-влак)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Пайдаланыше дек серыш',
+# E-mail user
+'emailuser' => 'Пайдаланыше дек серыш',
 
 # Watchlist
 'watchlist' => 'Мыйын эскерымаш лӱмер',
@@ -859,7 +859,7 @@ $messages = array(
 'sp-contributions-blocklog' => 'йӧным вашталтыме журнал',
 'sp-contributions-talk' => 'каҥашымаш',
 'sp-contributions-search' => 'Пашам кычалаш',
-'sp-contributions-wiki_username' => 'IP-адрес ала пайдаланышын лӱмжӧ:',
+'sp-contributions-username' => 'IP-адрес ала пайдаланышын лӱмжӧ:',
 'sp-contributions-submit' => 'Кычал',
 
 # What links here
@@ -944,7 +944,7 @@ $messages = array(
 'thumbnail-more' => 'Кугемдаш',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Тыйын лаштыкет',
+'tooltip-pt-userpage' => 'Тыйын лаштыкет',
 'tooltip-pt-mytalk' => 'Тыйын каҥашымаш лаштыкет',
 'tooltip-pt-preferences' => 'Мыйын келыштарымаш',
 'tooltip-pt-watchlist' => 'Мыйын эскерыме лаштык-влак лӱмер',
@@ -978,13 +978,13 @@ $messages = array(
 'tooltip-feed-rss' => 'Тиде лаштыклан RSS-кыл',
 'tooltip-feed-atom' => 'Тиде лаштыклан Atom-кыл',
 'tooltip-t-contributions' => 'Пайдаланышын паша лӱмерым ончалаш',
-'tooltip-t-emailwiki_user' => 'Тиде пайдаланышылан электрон серышым возаш',
+'tooltip-t-emailuser' => 'Тиде пайдаланышылан электрон серышым возаш',
 'tooltip-t-upload' => 'Файл-влакым пурташ',
 'tooltip-t-specialpages' => 'Лӱмын ыштыме лаштык-влак лӱмер',
 'tooltip-t-print' => 'Савыкташлан келыштараш',
 'tooltip-t-permalink' => 'Тиде лаштык тӱрлыкыш эре улшо кылвер',
 'tooltip-ca-nstab-main' => 'Лаштыкыште возымым ончыкташ',
-'tooltip-ca-nstab-wiki_user' => 'Пайдаланышын лаштыкшым ончалаш',
+'tooltip-ca-nstab-user' => 'Пайдаланышын лаштыкшым ончалаш',
 'tooltip-ca-nstab-special' => 'Тиде лӱмын ыштыме лаштык, тудым тый тӧрлатен от керт',
 'tooltip-ca-nstab-project' => 'Проект нерген лаштыкым ончыкташ',
 'tooltip-ca-nstab-image' => 'Файлын лаштыкшым ончалаш',
@@ -1087,7 +1087,7 @@ $messages = array(
 'specialpages' => 'Лӱмын ыштыме лаштык-влак',
 'specialpages-group-other' => 'Весе лӱмын ыштыме лаштык-влак',
 'specialpages-group-login' => 'Пурымаш / регистрацийым эрташ',
-'specialpages-group-wiki_users' => 'Пайдаланыше-влак да нунын йӧн-влак',
+'specialpages-group-users' => 'Пайдаланыше-влак да нунын йӧн-влак',
 'specialpages-group-highuse' => 'Чӱчкыдын пайдалын кучылтышо лаштык-влак',
 'specialpages-group-pages' => 'Лаштык лӱмер-влак',
 'specialpages-group-pagetools' => 'Лаштык ӱзгар-влак',

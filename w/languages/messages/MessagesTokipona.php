@@ -58,7 +58,7 @@ $messages = array(
 'otherlanguages' => 'toki ante',
 'redirectedfrom' => '(tan $1)',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'lipu sona pi toki pona li seme?',
 'aboutpage' => 'Project:lipu sona pi toki pona li seme?',
 'copyright' => 'lipu ken $1 li lawa e lipu ni.',
@@ -79,7 +79,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'lipu sona',
-'nstab-wiki_user' => 'lipu jan',
+'nstab-user' => 'lipu jan',
 'nstab-special' => 'suli',
 'nstab-image' => 'lipu nanpa',
 'nstab-mediawiki' => 'nimi',
@@ -89,7 +89,7 @@ $messages = array(
 
 # Login and logout pages
 'logout' => 'mi o tawa',
-'wiki_userlogout' => 'mi o tawa',
+'userlogout' => 'mi o tawa',
 
 # Edit pages
 'summary' => 'ante li seme:',

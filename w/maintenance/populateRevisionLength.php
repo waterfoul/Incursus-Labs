@@ -45,14 +45,14 @@ class PopulateRevisionLength extends LoggedUpdateMaintenance {
 	}
 
 	public function doDBUpdates() {
-		 = $this->getDB( DB_MASTER );
-		if ( !->tableExists( 'revision' ) ) {
+		$db = $this->getDB( DB_MASTER );
+		if ( !$db->tableExists( 'revision' ) ) {
 			$this->error( "revision table does not exist", true );
 		}
 		$this->output( "Populating rev_len column\n" );
 
-		$start = ->selectField( 'revision', 'MIN(rev_id)', false, __METHOD__ );
-		$end = ->selectField( 'revision', 'MAX(rev_id)', false, __METHOD__ );
+		$start = $db->selectField( 'revision', 'MIN(rev_id)', false, __METHOD__ );
+		$end = $db->selectField( 'revision', 'MAX(rev_id)', false, __METHOD__ );
 		if ( !$start || !$end ) {
 			$this->output( "...revision table seems to be empty.\n" );
 			return true;
@@ -65,7 +65,7 @@ class PopulateRevisionLength extends LoggedUpdateMaintenance {
 		$missing = 0;
 		while ( $blockStart <= $end ) {
 			$this->output( "...doing rev_id from $blockStart to $blockEnd\n" );
-			$res = ->select( 'revision',
+			$res = $db->select( 'revision',
 						Revision::selectFields(),
 						array( "rev_id >= $blockStart",
 						   "rev_id <= $blockEnd",
@@ -82,7 +82,7 @@ class PopulateRevisionLength extends LoggedUpdateMaintenance {
 				}
 				else {
 					# Update the row...
-					->update( 'revision',
+					$db->update( 'revision',
 							 array( 'rev_len' => strlen( $text ) ),
 							 array( 'rev_id' => $row->rev_id ),
 							 __METHOD__ );

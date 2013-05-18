@@ -1,11 +1,11 @@
 <?php
 /**
  * Deletes a batch of pages.
- * Usage: php deleteBatch.php [-u <wiki_user>] [-r <reason>] [-i <interval>] [listfile]
+ * Usage: php deleteBatch.php [-u <user>] [-r <reason>] [-i <interval>] [listfile]
  * where
  *	[listfile] is a file where each line contains the title of a page to be
  *             deleted, standard input is used if listfile is not given.
- *	<wiki_user> is the wiki_username
+ *	<user> is the username
  *	<reason> is the delete reason
  *	<interval> is the number of seconds to sleep for after each delete
  *
@@ -40,7 +40,7 @@ class DeleteBatch extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Deletes a batch of pages";
-		$this->addOption( 'u', "wiki_user to perform deletion", false, true );
+		$this->addOption( 'u', "User to perform deletion", false, true );
 		$this->addOption( 'r', "Reason to delete page", false, true );
 		$this->addOption( 'i', "Interval to sleep between deletions" );
 		$this->addArg( 'listfile', 'File with titles to delete, separated by newlines. ' .
@@ -48,22 +48,22 @@ class DeleteBatch extends Maintenance {
 	}
 
 	public function execute() {
-		global $wgwiki_user;
+		global $wgUser;
 
 		# Change to current working directory
 		$oldCwd = getcwd();
 		chdir( $oldCwd );
 
 		# Options processing
-		$wiki_username = $this->getOption( 'u', 'Delete page script' );
+		$username = $this->getOption( 'u', 'Delete page script' );
 		$reason = $this->getOption( 'r', '' );
 		$interval = $this->getOption( 'i', 0 );
 
-		$wiki_user = wiki_user::newFromName( $wiki_username );
-		if ( !$wiki_user ) {
-			$this->error( "Invalid wiki_username", true );
+		$user = User::newFromName( $username );
+		if ( !$user ) {
+			$this->error( "Invalid username", true );
 		}
-		$wgwiki_user = $wiki_user;
+		$wgUser = $user;
 
 		if ( $this->hasArg() ) {
 			$file = fopen( $this->getArg(), 'r' );
@@ -76,7 +76,7 @@ class DeleteBatch extends Maintenance {
 			$this->error( "Unable to read file, exiting", true );
 		}
 
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		# Handle each entry
 		for ( $linenum = 1; !feof( $file ); $linenum++ ) {
@@ -95,7 +95,7 @@ class DeleteBatch extends Maintenance {
 			}
 
 			$this->output( $title->getPrefixedText() );
-			w->begin( __METHOD__ );
+			$dbw->begin( __METHOD__ );
 			if ( $title->getNamespace() == NS_FILE ) {
 				$img = wfFindFile( $title );
 				if ( $img && $img->isLocal() && !$img->delete( $reason ) ) {
@@ -104,8 +104,8 @@ class DeleteBatch extends Maintenance {
 			}
 			$page = WikiPage::factory( $title );
 			$error = '';
-			$success = $page->doDeleteArticle( $reason, false, 0, false, $error, $wiki_user );
-			w->commit( __METHOD__ );
+			$success = $page->doDeleteArticle( $reason, false, 0, false, $error, $user );
+			$dbw->commit( __METHOD__ );
 			if ( $success ) {
 				$this->output( " Deleted!\n" );
 			} else {

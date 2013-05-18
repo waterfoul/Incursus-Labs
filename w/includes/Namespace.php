@@ -27,7 +27,7 @@
  * names of the namespaces are handled by Language.php.
  *
  * These are synonyms for the names given in the language file
- * wiki_users and translators should not change them
+ * Users and translators should not change them
  *
  */
 class MWNamespace {

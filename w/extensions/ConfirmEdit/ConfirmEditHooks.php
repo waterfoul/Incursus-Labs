@@ -27,32 +27,32 @@ class ConfirmEditHooks {
 		return self::getInstance()->confirmEditAPI( $editPage, $newtext, $resultArr );
 	}
 
-	static function injectwiki_userCreate( &$template ) {
-		return self::getInstance()->injectwiki_userCreate( $template );
+	static function injectUserCreate( &$template ) {
+		return self::getInstance()->injectUserCreate( $template );
 	}
 
-	static function confirmwiki_userCreate( $u, &$message ) {
-		return self::getInstance()->confirmwiki_userCreate( $u, $message );
+	static function confirmUserCreate( $u, &$message ) {
+		return self::getInstance()->confirmUserCreate( $u, $message );
 	}
 
-	static function triggerwiki_userLogin( $wiki_user, $password, $retval ) {
-		return self::getInstance()->triggerwiki_userLogin( $wiki_user, $password, $retval );
+	static function triggerUserLogin( $user, $password, $retval ) {
+		return self::getInstance()->triggerUserLogin( $user, $password, $retval );
 	}
 
-	static function injectwiki_userLogin( &$template ) {
-		return self::getInstance()->injectwiki_userLogin( $template );
+	static function injectUserLogin( &$template ) {
+		return self::getInstance()->injectUserLogin( $template );
 	}
 
-	static function confirmwiki_userLogin( $u, $pass, &$retval ) {
-		return self::getInstance()->confirmwiki_userLogin( $u, $pass, $retval );
+	static function confirmUserLogin( $u, $pass, &$retval ) {
+		return self::getInstance()->confirmUserLogin( $u, $pass, $retval );
 	}
 
-	static function injectEmailwiki_user( &$form ) {
-		return self::getInstance()->injectEmailwiki_user( $form );
+	static function injectEmailUser( &$form ) {
+		return self::getInstance()->injectEmailUser( $form );
 	}
 
-	static function confirmEmailwiki_user( $from, $to, $subject, $text, &$error ) {
-		return self::getInstance()->confirmEmailwiki_user( $from, $to, $subject, $text, $error );
+	static function confirmEmailUser( $from, $to, $subject, $text, &$error ) {
+		return self::getInstance()->confirmEmailUser( $from, $to, $subject, $text, $error );
 	}
 
 	public static function APIGetAllowedParams( &$module, &$params ) {

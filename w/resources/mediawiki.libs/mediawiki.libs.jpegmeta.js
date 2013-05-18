@@ -360,9 +360,9 @@
 	    40962 : ["Pixel X Dimension", "PixelXDimension"],
 	    40963 : ["Pixel Y Dimension", "PixelYDimension"],
 	    
-	    /* D. Tags Relating to wiki_user Information */
+	    /* D. Tags Relating to User Information */
 	    37500 : ["Manufacturer notes", "MakerNote"],
-	    37510 : ["wiki_user comments", "wiki_userComment"],
+	    37510 : ["User comments", "UserComment"],
 	    
 	    /* E. Tag Relating to Related File Information */
 	    40964 : ["Related audio file", "RelatedSoundFile"],

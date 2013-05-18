@@ -112,7 +112,7 @@ $namespaceAliases = array(
 $namespaceGenderAliases = array();
 
 $specialPageAliases = array(
-	'Activewiki_users'               => array( 'Актив_кулланучылар' ),
+	'Activeusers'               => array( 'Актив_кулланучылар' ),
 	'Allmessages'               => array( 'Барлык_хатлар' ),
 	'Allpages'                  => array( 'Барлык_битләр' ),
 	'Ancientpages'              => array( 'Иске_битләр' ),
@@ -123,7 +123,7 @@ $specialPageAliases = array(
 	'Contributions'             => array( 'Кертемнәр' ),
 	'CreateAccount'             => array( 'Теркәлү' ),
 	'DoubleRedirects'           => array( 'Икеле_күчеш' ),
-	'Emailwiki_user'                 => array( 'Кулланучының_E-mail\'лы' ),
+	'Emailuser'                 => array( 'Кулланучының_E-mail\'лы' ),
 	'Export'                    => array( 'Экспорт' ),
 	'Fewestrevisions'           => array( 'Кечкенә_үзгәртүләр' ),
 	'Import'                    => array( 'Импорт' ),
@@ -131,7 +131,7 @@ $specialPageAliases = array(
 	'Listbots'                  => array( 'Ботлар_исемлеге' ),
 	'Listfiles'                 => array( 'Файллар_исемлеге' ),
 	'Listgrouprights'           => array( 'Төркемнәр_исемлеге' ),
-	'Listwiki_users'                 => array( 'Кулланучылар_исемлеге' ),
+	'Listusers'                 => array( 'Кулланучылар_исемлеге' ),
 	'Log'                       => array( 'Көндәлек' ),
 	'Longpages'                 => array( 'Озын_битләр' ),
 	'Mostcategories'            => array( 'Зур_төркемнәр' ),
@@ -160,8 +160,8 @@ $specialPageAliases = array(
 	'Unusedcategories'          => array( 'Кулланылмаган_төркемнәр' ),
 	'Unusedimages'              => array( 'Кулланылмаучы__файллар' ),
 	'Upload'                    => array( 'Йөкләү' ),
-	'wiki_userlogin'                 => array( 'Кулланучы_исеме' ),
-	'wiki_userlogout'                => array( 'Чыгу' ),
+	'Userlogin'                 => array( 'Кулланучы_исеме' ),
+	'Userlogout'                => array( 'Чыгу' ),
 	'Version'                   => array( 'Юрама' ),
 	'Wantedcategories'          => array( 'Мондый_бүлек_юк' ),
 	'Wantedfiles'               => array( 'Мондый_файл_юк' ),
@@ -209,7 +209,7 @@ $magicWords = array(
 $linkTrail = '/^([a-zабвгдеёжзийклмнопрстуфхцчшщъыьэюяӘәӨөҮүҖҗҢңҺһ]+)(.*)$/sDu';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Сылтамаларның астына сызу:',
 'tog-justify' => 'Текст киңлек буенча тигезләнсен',
 'tog-hideminor' => 'Соңгы үзгәртүләр исемлегендә кече үзгәртүләр яшерелсен',
@@ -233,7 +233,7 @@ $messages = array(
 'tog-previewonfirst' => 'Үзгәртү битенә күчкәндә башта алдан карау бите күрсәтелсен',
 'tog-nocache' => 'Битләр кэшлауны тыелсын',
 'tog-enotifwatchlistpages' => 'Күзәтү исемлегемдәге бит үзгәртелү турында электрон почтага хәбәр җибәрелсен',
-'tog-enotifwiki_usertalkpages' => 'Бәхәс битем үзгәртелү турында электрон почтага хәбәр җибәрелсен',
+'tog-enotifusertalkpages' => 'Бәхәс битем үзгәртелү турында электрон почтага хәбәр җибәрелсен',
 'tog-enotifminoredits' => 'Кече үзгәртүләр турында да электрон почтага хәбәр җибәрелсен',
 'tog-enotifrevealaddr' => 'Хәбәрләрдә e-mail адресым күрсәтелсен',
 'tog-shownumberswatching' => 'Битне күзәтү исемлекләренә өстәгән кулланучылар санын күрсәтелсен',
@@ -416,7 +416,7 @@ $messages = array(
 'talk' => 'Бәхәс',
 'views' => 'Караулар',
 'toolbox' => 'Кораллар',
-'wiki_userpage' => 'Кулланучы битен карау',
+'userpage' => 'Кулланучы битен карау',
 'projectpage' => 'Проект битен карау',
 'imagepage' => 'Файл битен карау',
 'mediawikipage' => 'Хәбәр битен карау',
@@ -442,7 +442,7 @@ $1',
 'pool-queuefull' => 'Сорауларны саклау  бите тулы',
 'pool-errorunknown' => 'Билгесез  хата',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} турында',
 'aboutpage' => 'Project:Тасвирлама',
 'copyright' => 'Мәгълүмат $1 буенча таратыла.',
@@ -507,7 +507,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Бит',
-'nstab-wiki_user' => 'Кулланучы бите',
+'nstab-user' => 'Кулланучы бите',
 'nstab-media' => 'Мультимедиа',
 'nstab-special' => 'Махсус бит',
 'nstab-project' => 'Проект бите',
@@ -552,7 +552,7 @@ $1',
 Бу, гадәттә, искергән сылтама буенча бетерелгән битнең үзгәртү тарихына күчкәндә килеп чыга.
 
 Әгәр хата монда түгел икән, сез программада хата тапкан булырга мөмкинсез.
-Зинһар өчен, URLны күрсәтеп, бу турыда [[Special:Listwiki_users/sysop|идарәчегә]] хәбәр итегез.',
+Зинһар өчен, URLны күрсәтеп, бу турыда [[Special:ListUsers/sysop|идарәчегә]] хәбәр итегез.',
 'missingarticle-rev' => '(юрама № $1)',
 'missingarticle-diff' => '(аерма: $1, $2)',
 'readonly_lag' => 'Мәгълүматлар базасы, өстәмә сервер төп сервер белән синхронизацияләшкәнче, үзгәрүләрдән автомат рәвештә ябылды.',
@@ -595,7 +595,7 @@ $2',
 'customcssprotected' => 'Сез бу CSS-сәхифәне үзгәртә алмыйсыз, чөнки монда башка кулланучының шәхси көйләнмәләре саклана',
 'customjsprotected' => 'Сез бу JavaScript-сәхифәне үзгәртә алмыйсыз, чөнк монда башка кулланучының шәхси көйләнмәләре саклана',
 'ns-specialprotected' => 'Махсус битләрне үзгәртеп булмый.',
-'titleprotected' => "Бу исем белән бит ясау [[wiki_user:$1|$1]] тарафыннан тыелган.
+'titleprotected' => "Бу исем белән бит ясау [[User:$1|$1]] тарафыннан тыелган.
 Ул күрсәткән сәбәп: ''$2''.",
 
 # Virus scanner
@@ -606,7 +606,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''Сез хисап язмагыздан чыктыгыз.'''
 
-Сез {{SITENAME}} проектында аноним рәвештә кала яисә шул ук яки башка исем белән яңадан [[Special:wiki_userLogin|керә]] аласыз.
+Сез {{SITENAME}} проектында аноним рәвештә кала яисә шул ук яки башка исем белән яңадан [[Special:UserLogin|керә]] аласыз.
 Кайбер битләр Сез кергән кебек күрсәтелергә мөмкин. Моны бетерү өчен браузер кэшын чистартыгыз.",
 'welcomecreation' => '== Рәхим итегез, $1! ==
 Сез теркәлдегез.
@@ -621,21 +621,21 @@ $2',
 'login' => 'Керү',
 'nav-login-createaccount' => 'Керү / теркәлү',
 'loginprompt' => '{{SITENAME}} проектына керү өчен «cookies» рөхсәт ителгән булырга тиеш.',
-'wiki_userlogin' => 'Керү / теркәлү',
-'wiki_userloginnocreate' => 'Керү',
+'userlogin' => 'Керү / теркәлү',
+'userloginnocreate' => 'Керү',
 'logout' => 'Чыгу',
-'wiki_userlogout' => 'Чыгу',
+'userlogout' => 'Чыгу',
 'notloggedin' => 'Сез хисап язмагызга кермәгәнсез',
 'nologin' => "Кулланучы исемең юкмы? '''$1'''",
 'nologinlink' => 'Хисап язмасы төзегез',
 'createaccount' => 'Яңа кулланучы теркәү',
 'gotaccount' => "Сез инде теркәлдегезме? '''$1'''.",
 'gotaccountlink' => 'Керү',
-'wiki_userlogin-resetlink' => 'Серсүзегезне оныттыгызмы?',
+'userlogin-resetlink' => 'Серсүзегезне оныттыгызмы?',
 'createaccountmail' => 'электрон почта аша',
 'createaccountreason' => 'Сәбәп:',
 'badretype' => 'Кертелгән серсүзләр бер үк түгел.',
-'wiki_userexists' => 'Кертелгән исем кулланыла.
+'userexists' => 'Кертелгән исем кулланыла.
 Зинһар, башка исем сайлагыз.',
 'loginerror' => 'Керү хатасы',
 'createaccounterror' => 'Хисап язмасын төзеп булмый: $1',
@@ -645,12 +645,12 @@ $2',
 'noname' => 'Сез кулланучы исемегезне күрсәтергә тиешсез.',
 'loginsuccesstitle' => 'Керү уңышлы үтте',
 'loginsuccess' => "'''Сез {{SITENAME}} проектына $1 исеме белән кердегез.'''",
-'nosuchwiki_user' => '$1 исемле кулланучы юк.
+'nosuchuser' => '$1 исемле кулланучы юк.
 Кулланучы исеменең дөреслеге регистрга бәйле.
-Язылышыгызны тикшерегез яки [[Special:wiki_userLogin/signup|яңа хисап язмасы төзегез]].',
-'nosuchwiki_usershort' => '$1 исемле кулланучы юк. Язылышыгызны тикшерегез.',
-'nowiki_userspecified' => 'Сез теркәү исмегезне күрсәтергә тиешсез.',
-'login-wiki_userblocked' => 'Бу кулланучы тыелды. Керү тыелган.',
+Язылышыгызны тикшерегез яки [[Special:UserLogin/signup|яңа хисап язмасы төзегез]].',
+'nosuchusershort' => '$1 исемле кулланучы юк. Язылышыгызны тикшерегез.',
+'nouserspecified' => 'Сез теркәү исмегезне күрсәтергә тиешсез.',
+'login-userblocked' => 'Бу кулланучы тыелды. Керү тыелган.',
 'wrongpassword' => 'Язылган серсүз дөрес түгел. Тагын бер тапкыр сынагыз.',
 'wrongpasswordempty' => 'Серсүз юлы буш булырга тиеш түгел.',
 'passwordtooshort' => 'Сезсүз $1 {{PLURAL:$1|символдан}} торырга тиеш.',
@@ -683,16 +683,16 @@ $2',
 'createaccount-text' => 'Кемдер, электрон почта адресыгызны күрсәтеп, {{SITENAME}} ($4) проектында «$3» серсүзе белән «$2» исемле хисап язмасы теркәде. Сез керергә һәм серсүзегезне үзгәртергә тиеш.
 
 Хисап язмасы төзү хата булса, бу хатны онытыгыз.',
-'wiki_usernamehasherror' => 'Кулланучы исемендә "#" символы була алмый',
+'usernamehasherror' => 'Кулланучы исемендә "#" символы була алмый',
 'login-throttled' => 'Сез артык күп тапкыр керергә тырыштыгыз.
 Яңадан кабатлаганчы бераз көтүегез сорала.',
 'login-abort-generic' => 'Системага уңышсыз керү очрагы',
 'loginlanguagelabel' => 'Тел: $1',
-'suspicious-wiki_userlogout' => 'Сезнең эшчәнлекне бетерү соравыгыз кире кагылды, чөнки ул ялгыш браузер яисә кэшлаучы прокси аша җибәрелергэ мөмкин.',
+'suspicious-userlogout' => 'Сезнең эшчәнлекне бетерү соравыгыз кире кагылды, чөнки ул ялгыш браузер яисә кэшлаучы прокси аша җибәрелергэ мөмкин.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'PHP mail() функциясендә билгесез хата',
-'wiki_user-mail-no-addy' => 'Электрон почта адресыннан башка электрон хат җибәрмәкче булды',
+'user-mail-no-addy' => 'Электрон почта адресыннан башка электрон хат җибәрмәкче булды',
 
 # Change password dialog
 'resetpass' => 'Серсүзне үзгәртү',
@@ -718,7 +718,7 @@ $2',
 'passwordreset-legend' => 'Серсүзне яңадан кую',
 'passwordreset-disabled' => 'Бу викида серсүз бетереп булмый',
 'passwordreset-pretext' => '{{PLURAL:$1||Түбәндә күрсәтелгән мәгълүматларның бер өлешен языгыз}}',
-'passwordreset-wiki_username' => 'Кулланучы исеме:',
+'passwordreset-username' => 'Кулланучы исеме:',
 'passwordreset-domain' => 'Домен:',
 'passwordreset-capture' => 'Килеп чыккан хатны күрсәтелсенме?',
 'passwordreset-capture-help' => 'Әгәр сез бу тамганы куйсагыз, сезгә кулланучыга вакытлы серсүз белән җибәреләчәк хат күрсәтеләчәк.',
@@ -734,7 +734,7 @@ $2
 Әгәр сез серсүз сорамаган булсагыз яки элеккеге серсүзегезне искә төшерсәгез 
 һәм аны үзгәртергә теләмәсәгез, бу хатка җавап бирмәгез
 һәм элеккеге серсүзегезне кулланыгыз.',
-'passwordreset-emailtext-wiki_user' => '{{SITENAME}} проектыннан $1 кулланучысы {{SITENAME}} ($4) проектында сезнең серсүзне искә төшерүне сорады.
+'passwordreset-emailtext-user' => '{{SITENAME}} проектыннан $1 кулланучысы {{SITENAME}} ($4) проектында сезнең серсүзне искә төшерүне сорады.
 {{PLURAL:$3|Түбәндәге хисап язмасы|Түбәндәге хисап язмалары}} бу электрон әрҗә адресы белән бәйле:
 
 $2
@@ -836,7 +836,7 @@ $2
 'loginreqlink' => 'керү',
 'loginreqpagetext' => 'Сез башка битләр карау өчен $1 тиеш.',
 'accmailtitle' => 'Серсүз җибәрелде.',
-'accmailtext' => "[[wiki_user talk:$1|$1]] кулланучысы өчен төзелгән серсүз $2 адресына җибәрелде.
+'accmailtext' => "[[User talk:$1|$1]] кулланучысы өчен төзелгән серсүз $2 адресына җибәрелде.
 
 Сайтка кергәч сез ''[[Special:ChangePassword|серсүзегезне үзгәртә аласыз]]''.",
 'newarticle' => '(Яңа)',
@@ -845,7 +845,7 @@ $2
 Әгәр сез бу биткә ялгышлык белән эләккән булсагыз, браузерыгызның '''артка''' төймәсенә басыгыз.",
 'anontalkpagetext' => "----''Бу бәхәс бите системада теркәлмәгән яисә үз исеме белән кермәгән кулланучыныкы.
 Аны тану өчен IP адресы файдаланыла.
-Әгәр сез аноним кулланучы һәм сезгә юлланмаган хәбәрләр алдым дип саныйсыз икән (бер IP адресы күп кулланучы өчен булырга мөмкин), башка мондый аңлашылмаучанлыклар килеп чыкмасын өчен [[Special:wiki_userLogin|системага керегез]] яисә [[Special:wiki_userLogin/signup|теркәлегез]].''",
+Әгәр сез аноним кулланучы һәм сезгә юлланмаган хәбәрләр алдым дип саныйсыз икән (бер IP адресы күп кулланучы өчен булырга мөмкин), башка мондый аңлашылмаучанлыклар килеп чыкмасын өчен [[Special:UserLogin|системага керегез]] яисә [[Special:UserLogin/signup|теркәлегез]].''",
 'noarticletext' => "Хәзерге вакытта бу биттә текст юк.
 Сез [[Special:Search/{{PAGENAME}}|бу исем кергән башка мәкаләләрне]],
 <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} көндәлекләрдәге язмаларны] таба
@@ -853,8 +853,8 @@ $2
 'noarticletext-nopermission' => 'Хәзерге вакытта бу биттә текст юк.
 Сез [[Special:Search/{{PAGENAME}}|бу исем кергән башка мәкаләләрне]] башка битләрдә,
 яисә <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} көндәлекләрдәге язмаларны] таба аласыз.</span> Сезнең бу битне ясарга хакыгыз юк.',
-'wiki_userpage-wiki_userdoesnotexist' => '«<nowiki>$1</nowiki>» исемле хисап язмасы юк. Сез чынлап та бу битне ясарга яисә үзгәртергә телисезме?',
-'wiki_userpage-wiki_userdoesnotexist-view' => '"$1" исемле хисап язмасы юк.',
+'userpage-userdoesnotexist' => '«<nowiki>$1</nowiki>» исемле хисап язмасы юк. Сез чынлап та бу битне ясарга яисә үзгәртергә телисезме?',
+'userpage-userdoesnotexist-view' => '"$1" исемле хисап язмасы юк.',
 'blocked-notice-logextract' => 'Бу кулланучы хәзергә тыелды.
 Түбәндә тыю көндәлегенең соңгы язу бирелгән:',
 'clearyourcache' => "'''Искәрмә:''' Сез саклаган үзгәртүләр кулланышка керсен өчен браузерыгызның кешын чистартырга туры киләчәк. 
@@ -863,27 +863,27 @@ $2
 * '''Internet Explorer.''' ''Ctrl''  төймәсенә баскан килеш  ''Яңарту (Обновить)'' язуына, яисә ''Ctrl-F5'' басыгыз
 * '''Konqueror.''' ''Яңарту (Обновить)'' язуына, яисә ''F5'' басыгыз
 * '''Opera.''' Менюдан кеш чистартуны сайлагыз: ''Җиһазлар (Инструменты) → Көйләнмәләр (Настройки)''",
-'wiki_usercssyoucanpreview' => "'''Ярдәм:''' \"{{int:showpreview}} төймәсенә басып, яңа CSS-файлны тикшереп була.",
-'wiki_userjsyoucanpreview' => "'''Ярдәм:''' \"{{int:showpreview}}\" төймәсенә басып, яңа JS-файлны тикшереп була.",
-'wiki_usercsspreview' => "'''Бу бары тик CSS-файлны алдан карау гына, ул әле сакланмаган!'''",
-'wiki_userjspreview' => "'''Бу бары тик JavaScript файлын алдан карау гына, ул әле сакланмаган!'''",
+'usercssyoucanpreview' => "'''Ярдәм:''' \"{{int:showpreview}} төймәсенә басып, яңа CSS-файлны тикшереп була.",
+'userjsyoucanpreview' => "'''Ярдәм:''' \"{{int:showpreview}}\" төймәсенә басып, яңа JS-файлны тикшереп була.",
+'usercsspreview' => "'''Бу бары тик CSS-файлны алдан карау гына, ул әле сакланмаган!'''",
+'userjspreview' => "'''Бу бары тик JavaScript файлын алдан карау гына, ул әле сакланмаган!'''",
 'sitecsspreview' => "'''онытмагыз, бу бары тик CSS-файлны алдан карау гына.'''
 '''Ул әле сакланмаган!'''",
 'sitejspreview' => "'''Бу бары тик JavaScript файлын алдан карау гына.'''
 '''Ул әле сакланмаган!'''",
-'wiki_userinvalidcssjstitle' => "'''Игътибар:''' \"\$1\" бизәү темасы табылмады. Кулланучының .css һәм .js битләре исемнәре бары тик кечкенә (юл) хәрефләрдән генә торырга тиеш икәнен онытмагыз. Мисалга: {{ns:wiki_user}}:Foo/vector.css, ә {{ns:wiki_user}}:Foo/Vector.css түгел!",
+'userinvalidcssjstitle' => "'''Игътибар:''' \"\$1\" бизәү темасы табылмады. Кулланучының .css һәм .js битләре исемнәре бары тик кечкенә (юл) хәрефләрдән генә торырга тиеш икәнен онытмагыз. Мисалга: {{ns:user}}:Foo/vector.css, ә {{ns:user}}:Foo/Vector.css түгел!",
 'updated' => '(Яңартылды)',
 'note' => "'''Искәрмә:'''",
 'previewnote' => "'''Бу фәкать алдан карау гына, үзгәртүләрегез әле сакланмаган!'''",
 'previewconflict' => 'Әлеге алдан карау битендә сакланачак текстның ничек күренәчәге күрсәтелә.',
 'session_fail_preview' => "'''Кызганычка, сезнең сессия идентификаторыгыз югалды. Нәтиҗәдә сервер үзгәртүләрегезне кабул итә алмый.
 Тагын бер тапкыр кабатлавыгыз сорала.
-Бу хата тагын кабатланса, [[Special:wiki_userLogout|чыгыгыз]] һәм яңадан керегез.'''",
+Бу хата тагын кабатланса, [[Special:UserLogout|чыгыгыз]] һәм яңадан керегез.'''",
 'session_fail_preview_html' => "'''Кызганычка, сезнең сессия турында мәгълүматлар югалды. Нәтиҗәдә сервер үзгәртүләрегезне кабул итә алмый.'''
 
 ''{{SITENAME}} чиста HTML кулланырга рөхсәт итә, ә бу үз чиратында JavaScript-атакалар оештыру өчен кулланылырга мөмкин. Шул сәбәпле сезнең өчен алдан карау мөмкинлеге ябык.''
 
-'''Әгәр сез үзгәртүне яхшы ният белән башкарасыз икән, тагын бер тапкыр кабатлап карагыз. Хата кабатланса, сайттан [[Special:wiki_userLogout|чыгыгыз]] һәм яңадан керегез.'''",
+'''Әгәр сез үзгәртүне яхшы ният белән башкарасыз икән, тагын бер тапкыр кабатлап карагыз. Хата кабатланса, сайттан [[Special:UserLogout|чыгыгыз]] һәм яңадан керегез.'''",
 'token_suffix_mismatch' => "'''Сезнең үзгәртү кабул ителмәде.'''
 Сәбәбе: браузерыгыз үзгәртү өлкәсендәге пунктуацияне дөрес күрсәтми, нәтиҗәдә текст бозылырга мөмкин.
 Мондый хаталар аноним web-проксилар кулланганда килеп чыгарга мөмкин.",
@@ -932,7 +932,7 @@ $2
 'hiddencategories' => 'Бу бит $1 {{PLURAL:$1|яшерен төркемгә}} керә:',
 'nocreatetitle' => 'Битләр төзү чикләнгән',
 'nocreatetext' => '{{SITENAME}}: сайтта яңа битләр төзү чикләнгән.
-Сез артка кайтып, төзелгән битне үзгәртә аласыз. [[Special:wiki_userLogin|Керергә яисә теркәлергә]] тәгъдим ителә.',
+Сез артка кайтып, төзелгән битне үзгәртә аласыз. [[Special:UserLogin|Керергә яисә теркәлергә]] тәгъдим ителә.',
 'nocreate-loggedin' => 'Сезгә яңа битләр төзү хокукы бирелмәгән.',
 'sectioneditnotsupported-title' => 'Бүлекләрне үзгәртү рөхсәт ителми.',
 'sectioneditnotsupported-text' => 'Бу биттә бүлекләрне үзгәртү рөхсәт ителми.',
@@ -978,11 +978,11 @@ $2
 Юрамалараны чагыштыруны карагыз һәм, үзгәртүләр Сез теләгәнчә булса, битне саклагыз.',
 'undo-failure' => 'Аралыктагы үзгәртүләр туры килмәү сәбәпле, үзгәртүдән баш тартып булмый.',
 'undo-norev' => 'Үзгәртү юк яисә ул бетерелгән, шуңа аннан баш тартып булмый.',
-'undo-summary' => '[[Special:Contributions/$2|$2]] кулланучысының ([[wiki_user talk:$2|бәхәс]]) $1 үзгәртүеннән баш тарту',
+'undo-summary' => '[[Special:Contributions/$2|$2]] кулланучысының ([[User talk:$2|бәхәс]]) $1 үзгәртүеннән баш тарту',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Хисап язмасын төзеп булмый',
-'cantcreateaccount-text' => "Бу IP адресыннан (<b>$1</b>) хисап язмалары төзү тыела. Тыючы: [[wiki_user:$3|$3]].
+'cantcreateaccount-text' => "Бу IP адресыннан (<b>$1</b>) хисап язмалары төзү тыела. Тыючы: [[User:$3|$3]].
 
 $3 күрсәткән сәбәп: ''$2''",
 
@@ -1019,9 +1019,9 @@ $3 күрсәткән сәбәп: ''$2''",
 
 # Revision deletion
 'rev-deleted-comment' => '(үзгәртүләрнең тасвиры бетерелгән)',
-'rev-deleted-wiki_user' => '(автор исеме бетерелгән)',
+'rev-deleted-user' => '(автор исеме бетерелгән)',
 'rev-deleted-event' => '(язма бетерелгән)',
-'rev-deleted-wiki_user-contribs' => '[кулланучының исеме яки  IP-юлламасы бетерелгән  — үзгәртү кертем битеннән яшерелгән]',
+'rev-deleted-user-contribs' => '[кулланучының исеме яки  IP-юлламасы бетерелгән  — үзгәртү кертем битеннән яшерелгән]',
 'rev-deleted-text-permission' => "Битнең бу юрамасы '''бетерелгән'''.
 [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} Бетерүләр көндәлегендә] аңлатмалар калдырылган булырга мөмкин.",
 'rev-deleted-text-unhide' => "Битнең бу юрамасы '''бетерелгән'''.
@@ -1066,7 +1066,7 @@ $3 күрсәткән сәбәп: ''$2''",
 'revdelete-hide-image' => 'Файл эчендәгеләрне качыр',
 'revdelete-hide-name' => 'Гамәлне һәм объектны яшерү',
 'revdelete-hide-comment' => 'Үзгәртүләр тасвирламасы яшерелсен',
-'revdelete-hide-wiki_user' => 'Үзгәртүченең исемен/IP адресын яшер',
+'revdelete-hide-user' => 'Үзгәртүченең исемен/IP адресын яшер',
 'revdelete-hide-restricted' => 'Мәгълүматлар идарәчеләрдән дә яшерелсен',
 'revdelete-radio-same' => '(үзгәртмәү)',
 'revdelete-radio-set' => 'Әйе',
@@ -1184,7 +1184,7 @@ $1",
 'mypreferences' => 'Көйләнмәләр',
 'prefs-edits' => 'Үзгәртүләр исәбе:',
 'prefsnologin' => 'Кермәгәнсез',
-'prefsnologintext' => 'Кулланучы көйләнмәләрене үзгәртү өчен, сез <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} керергә]</span> тиешсез.',
+'prefsnologintext' => 'Кулланучы көйләнмәләрене үзгәртү өчен, сез <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} керергә]</span> тиешсез.',
 'changepassword' => 'Серсүзне үзгәртү',
 'prefs-skin' => 'Күренеш',
 'skin-preview' => 'Алдан карау',
@@ -1251,7 +1251,7 @@ $1",
 'prefs-emailconfirm-label' => 'E-mail раслау',
 'prefs-textboxsize' => 'Үзгәртү тәрәзәсенең зурлыгы',
 'youremail' => 'Электрон почта:',
-'wiki_username' => 'Кулланучы исеме:',
+'username' => 'Кулланучы исеме:',
 'uid' => 'Кулланучының идентификаторы:',
 'prefs-memberingroups' => 'Төркем {{PLURAL:$1|әгъзасы}}:',
 'prefs-memberingroups-type' => '$1',
@@ -1290,30 +1290,30 @@ $1",
 'prefs-displaywatchlist' => 'Күрсәтү көйләнмәләре',
 'prefs-diffs' => 'Юрамалар аермасы',
 
-# wiki_user rights
-'wiki_userrights' => 'Кулланучы хокуклары белән идарә итү',
-'wiki_userrights-lookup-wiki_user' => 'Кулланучы төркемнәре белән идарә итү',
-'wiki_userrights-wiki_user-editname' => 'Кулланучының исемен кертегез:',
-'editwiki_usergroup' => 'Кулланучының төркемнәрен алмаштыру',
-'editingwiki_user' => "'''[[wiki_user:$1|$1]]''' кулланучысының хокукларын үзгәртү ([[wiki_user talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'wiki_userrights-editwiki_usergroup' => 'Кулланучының төркемнәрен алмаштыру',
-'savewiki_usergroups' => 'Кулланучы төркемнәрен саклау',
-'wiki_userrights-groupsmember' => 'Әгъза:',
-'wiki_userrights-groupsmember-auto' => 'Билгесез әгъза:',
-'wiki_userrights-groups-help' => 'Сез бу кулланучының хокукларын үзгәртә алмыйсыз.
+# User rights
+'userrights' => 'Кулланучы хокуклары белән идарә итү',
+'userrights-lookup-user' => 'Кулланучы төркемнәре белән идарә итү',
+'userrights-user-editname' => 'Кулланучының исемен кертегез:',
+'editusergroup' => 'Кулланучының төркемнәрен алмаштыру',
+'editinguser' => "'''[[User:$1|$1]]''' кулланучысының хокукларын үзгәртү ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Кулланучының төркемнәрен алмаштыру',
+'saveusergroups' => 'Кулланучы төркемнәрен саклау',
+'userrights-groupsmember' => 'Әгъза:',
+'userrights-groupsmember-auto' => 'Билгесез әгъза:',
+'userrights-groups-help' => 'Сез бу кулланучының хокукларын үзгәртә алмыйсыз.
 *Әгәр дә кулланучы исеме янда тамга торса, димәк бу кулланучы бирелгән төркемнең әгъзасы.
 *Әгәр дә кулланучы исеме янда тамга тормаса, димәк бу кулланучы бирелгән төркемнең әгъзасы түгел.
 *"*" тамгасы торса сез бу кулланучыны бу төркемнән бетерә алмыйсыз.',
-'wiki_userrights-reason' => 'Сәбәп:',
-'wiki_userrights-no-interwiki' => 'Сезнең башка викиларда кулланучыларның хокукларын үзгәртергә хокукларыгыз юк.',
-'wiki_userrights-nodatabase' => 'Бирелгән $1 базасы юк яисә  локаль булып тормый.',
-'wiki_userrights-changeable-col' => 'Сезнең тарафтан үзгәртә ала торган төркемнәр',
-'wiki_userrights-unchangeable-col' => 'Сезнең тарафтан үзгәртә алмый торган төркемнәр',
-'wiki_userrights-irreversible-marker' => '$1*',
+'userrights-reason' => 'Сәбәп:',
+'userrights-no-interwiki' => 'Сезнең башка викиларда кулланучыларның хокукларын үзгәртергә хокукларыгыз юк.',
+'userrights-nodatabase' => 'Бирелгән $1 базасы юк яисә  локаль булып тормый.',
+'userrights-changeable-col' => 'Сезнең тарафтан үзгәртә ала торган төркемнәр',
+'userrights-unchangeable-col' => 'Сезнең тарафтан үзгәртә алмый торган төркемнәр',
+'userrights-irreversible-marker' => '$1*',
 
 # Groups
 'group' => 'Төркем:',
-'group-wiki_user' => 'Кулланучылар',
+'group-user' => 'Кулланучылар',
 'group-autoconfirmed' => 'Авторасланган кулланучы',
 'group-bot' => 'Ботлар',
 'group-sysop' => 'Идарәчеләр',
@@ -1321,14 +1321,14 @@ $1",
 'group-suppress' => 'Тикшерүчеләр',
 'group-all' => '(барлык)',
 
-'group-wiki_user-member' => '{{GENDER:$1|кулланучы}}',
+'group-user-member' => '{{GENDER:$1|кулланучы}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|авторасланган кулланучы}}',
 'group-bot-member' => '{{GENDER:$1|бот}}',
 'group-sysop-member' => '{{GENDER:$1|идарәче}}',
 'group-bureaucrat-member' => '{{GENDER:$1|бюрократ}}',
 'group-suppress-member' => '{{GENDER:$1|Тикшерүче}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Кулланучылар',
+'grouppage-user' => '{{ns:project}}:Кулланучылар',
 'grouppage-autoconfirmed' => '{{ns:project}}:Авторасланган кулланучылар',
 'grouppage-bot' => '{{ns:project}}:Ботлар',
 'grouppage-sysop' => '{{ns:project}}:Идарәчеләр',
@@ -1348,7 +1348,7 @@ $1",
 'right-delete' => 'битләрне бетерү',
 'right-editinterface' => 'Кулланучы интерфейсын үзгәртү',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Кулланучының хокуклары көндәлеге',
 'rightslogentry' => '$1 кулланучысын $2 группасыннан $3 группасына күчерде',
 'rightsnone' => '(юк)',
@@ -1387,7 +1387,7 @@ $1",
 'minoreditletter' => 'к',
 'newpageletter' => 'Я',
 'boteditletter' => 'б',
-'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|күзәтеп тора кулланучы}}]',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|күзәтеп тора кулланучы}}]',
 'rc_categories' => 'Төркемнәрдә генә тора («|» бүлүче)',
 'rc_categories_any' => 'Һәрбер',
 'newsectionsummary' => '/* $1 */ яңа бүлек',
@@ -1411,7 +1411,7 @@ $1",
 'reuploaddesc' => 'Файлны йөкләүгә кире кату',
 'upload-tryagain' => 'Яңартылган файлны җибәрү',
 'uploadnologin' => 'Сез хисап язмагызга кермәгәнсез',
-'uploadnologintext' => 'Файлны йөкләү өчен сез бу биткә [[Special:wiki_userLogin|керергә]] тиешсез.',
+'uploadnologintext' => 'Файлны йөкләү өчен сез бу биткә [[Special:UserLogin|керергә]] тиешсез.',
 'upload_directory_missing' => '$1 Йөкләнү директориясе юк',
 'upload_directory_read_only' => 'Моңа Сезнең хокукларыгыз юк һәм веб-сервер $1 папкасыны йөкли алмый.',
 'uploaderror' => 'Файлны йөкләүдә хата',
@@ -1503,7 +1503,7 @@ PICT # төрле
 'listfiles_thumb' => 'Миниатюра',
 'listfiles_date' => 'Вакыт',
 'listfiles_name' => 'Ат',
-'listfiles_wiki_user' => 'Кулланучы',
+'listfiles_user' => 'Кулланучы',
 'listfiles_size' => 'Үлчәм',
 'listfiles_description' => 'Тасвир',
 'listfiles_count' => 'Юрамалар',
@@ -1520,7 +1520,7 @@ PICT # төрле
 'filehist-thumb' => 'Миниатюра',
 'filehist-thumbtext' => '$1 көнне булган версиянең эскизы',
 'filehist-nothumb' => 'Миниатюрасы юк',
-'filehist-wiki_user' => 'Кулланучы',
+'filehist-user' => 'Кулланучы',
 'filehist-dimensions' => 'Зурлык',
 'filehist-filesize' => 'Файлның зурлыгы',
 'filehist-comment' => 'Искәрмә',
@@ -1575,7 +1575,7 @@ PICT # төрле
 'statistics-header-pages' => 'Битләр хисапнамәсе',
 'statistics-header-edits' => 'Үзгәртүләр хисапнамәсе',
 'statistics-header-views' => 'Караулар хисапнамәсе',
-'statistics-header-wiki_users' => 'Кулланучылар буенча хисапнамә',
+'statistics-header-users' => 'Кулланучылар буенча хисапнамә',
 'statistics-header-hooks' => 'Башка хисапнамәләр',
 'statistics-articles' => 'Мәкаләләр саны',
 'statistics-pages' => 'Битләр саны',
@@ -1585,9 +1585,9 @@ PICT # төрле
 'statistics-edits-average' => 'Бер биткә уртача үзгәртүләр исәбе',
 'statistics-views-total' => 'Барлык каралган битләр',
 'statistics-views-peredit' => 'Үзгәртүләргә карау',
-'statistics-wiki_users' => 'Теркәлгән [[Special:Listwiki_users|кулланучылар]]',
-'statistics-wiki_users-active' => 'Актив кулланучылар',
-'statistics-wiki_users-active-desc' => '{{PLURAL:$1|$1 көн }} өчендә нинди дә булса үзгәртүләр керткән кулланучылар',
+'statistics-users' => 'Теркәлгән [[Special:ListUsers|кулланучылар]]',
+'statistics-users-active' => 'Актив кулланучылар',
+'statistics-users-active-desc' => '{{PLURAL:$1|$1 көн }} өчендә нинди дә булса үзгәртүләр керткән кулланучылар',
 'statistics-mostpopular' => 'Иң күп каралучы битләр',
 
 'disambiguations' => 'Күп мәгънәле сүзләр турында битләр',
@@ -1635,10 +1635,10 @@ PICT # төрле
 'deadendpages' => 'Тупик битләре',
 'protectedpages' => 'Якланган битләр',
 'protectedtitles' => 'Тыелган исемнәр',
-'listwiki_users' => 'Кулланучылар исемлеге',
-'wiki_usercreated' => '$3 $1 көнне $2 вакытта {{GENDER:$3|теркәлде}}',
+'listusers' => 'Кулланучылар исемлеге',
+'usercreated' => '$3 $1 көнне $2 вакытта {{GENDER:$3|теркәлде}}',
 'newpages' => 'Яңа битләр',
-'newpages-wiki_username' => 'Кулланучы:',
+'newpages-username' => 'Кулланучы:',
 'ancientpages' => 'Иң иске битләр',
 'move' => 'Күчерү',
 'movethispage' => 'Бу битне күчерү',
@@ -1656,7 +1656,7 @@ PICT # төрле
 'booksources-invalid-isbn' => 'Бирелгән ISBN саны бәлки хаталдыр. Зинһар, бирелгән саннарны яңадан тикшерегез.',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Кулланучы:',
+'specialloguserlabel' => 'Кулланучы:',
 'speciallogtitlelabel' => 'Башлам:',
 'log' => 'Көндәлекләр',
 'all-logs-page' => 'Барлык көндәлекләр',
@@ -1697,20 +1697,20 @@ PICT # төрле
 'linksearch-ok' => 'Эзләү',
 'linksearch-line' => '$2 мәкаләсеннән $1 мәкаләгә сылтама',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'Күрсәтү',
-'listwiki_users-noresult' => 'Кулланучыларны табылмады.',
-'listwiki_users-blocked' => '(тыелган)',
+# Special:ListUsers
+'listusers-submit' => 'Күрсәтү',
+'listusers-noresult' => 'Кулланучыларны табылмады.',
+'listusers-blocked' => '(тыелган)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'Актив кулланучылар исемлеге',
-'activewiki_users-hidebots' => 'Ботларны яшер',
-'activewiki_users-hidesysops' => 'Идарәчеләрне яшер',
-'activewiki_users-noresult' => 'Кулланучылар табылмады.',
+# Special:ActiveUsers
+'activeusers' => 'Актив кулланучылар исемлеге',
+'activeusers-hidebots' => 'Ботларны яшер',
+'activeusers-hidesysops' => 'Идарәчеләрне яшер',
+'activeusers-noresult' => 'Кулланучылар табылмады.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Кулланучыларны теркәү көндәлеге',
-'newwiki_userlogpagetext' => 'Яңа теркәлгән кулланучылар исемлеге',
+# Special:Log/newusers
+'newuserlogpage' => 'Кулланучыларны теркәү көндәлеге',
+'newuserlogpagetext' => 'Яңа теркәлгән кулланучылар исемлеге',
 
 # Special:ListGroupRights
 'listgrouprights' => 'Кулланучы төркемнәренең хокуклары',
@@ -1719,10 +1719,10 @@ PICT # төрле
 'listgrouprights-helppage' => 'Help:Төркемнәрнең хокуклары',
 'listgrouprights-members' => '(төркем исемлеге)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Бу кулланучыга хат',
-'emailwiki_user-title-target' => '{{GENDER:$1|Кулланучыга}} электрон хат язу',
-'emailwiki_user-title-notarget' => 'Кулланучыга хат җибәрү',
+# E-mail user
+'emailuser' => 'Бу кулланучыга хат',
+'emailuser-title-target' => '{{GENDER:$1|Кулланучыга}} электрон хат язу',
+'emailuser-title-notarget' => 'Кулланучыга хат җибәрү',
 'emailpage' => 'Кулланучыга хат җибәрү',
 'emailpagetext' => 'Әлеге форма ярдәмендә {{GENDER:$1|кулланучының}} электрон почта адресына хат җибәрергә мөмкин. Җибәрелгән адрес исемендә Сезнең [[Special:Preferences|көйләнмәләрдә]] күрсәтелгән адресыгыз күрсәтеләчәк, шуның ярдәмендә Сез ул кулланучы белән турыдан-туры сөйләшә аласыз.',
 'defemailsubject' => '{{SITENAME}}: хат',
@@ -1732,8 +1732,8 @@ PICT # төрле
 'nowikiemailtext' => 'Бу кулланучы башкалардан хат алырга теләмәвен белдерде.',
 'emailnotarget' => 'Кулланучы-хатны алучының булмаган яки хаталы исеме.',
 'emailtarget' => 'Кулланучы-хатны алучының исемен языгыз',
-'emailwiki_username' => 'Кулланучы исеме:',
-'emailwiki_usernamesubmit' => 'Җибәрү',
+'emailusername' => 'Кулланучы исеме:',
+'emailusernamesubmit' => 'Җибәрү',
 'emailfrom' => 'Кемнән:',
 'emailto' => 'Кемгә:',
 'emailsubject' => 'Тема:',
@@ -1750,7 +1750,7 @@ PICT # төрле
 'watchlistfor2' => '$1 $2 өчен',
 'nowatchlist' => 'Күзәтү исемлегегездә битләр юк.',
 'watchnologin' => 'Кермәдегез',
-'watchnologintext' => 'Күзәтү исемлегегезне үзгәртү өчен сез [[Special:wiki_userLogin|керергә]] тиешсез.',
+'watchnologintext' => 'Күзәтү исемлегегезне үзгәртү өчен сез [[Special:UserLogin|керергә]] тиешсез.',
 'addedwatchtext' => "\"[[:\$1]]\" бите [[Special:Watchlist|күзәтү исемлегегезгә]] өстәлде.
 Бу биттә һәм аның бәхәслегендә барлык булачак үзгәртүләр шунда күрсәтелер, һәм, [[Special:RecentChanges|соңгы үзгәртүләр]] исемлегендә бу битне җиңелрәк табу өчен, ул '''калын мәтен''' белән күрсәтелер.",
 'removedwatchtext' => '«[[:$1]]» бите [[Special:Watchlist|сезнең күзәтү исемлегеннән]] бетерелде.',
@@ -1833,7 +1833,7 @@ $UNWATCHURL
 'rollback_short' => 'Кире кайтару',
 'rollbacklink' => 'кире кайтару',
 'editcomment' => "Үзгәртү өчен тасвир: \"''\$1''\".",
-'revertpage' => '[[Special:Contributions/$2|$2]] үзгәртүләре ([[wiki_user talk:$2|бәхәс]])  [[wiki_user:$1|$1]] юрамасына кадәр кире кайтарылды',
+'revertpage' => '[[Special:Contributions/$2|$2]] үзгәртүләре ([[User talk:$2|бәхәс]])  [[User:$1|$1]] юрамасына кадәр кире кайтарылды',
 
 # Protect
 'protectlogpage' => 'Яклану көндәлеге',
@@ -1931,7 +1931,7 @@ $1',
 'sp-contributions-logs' => 'көндәлекләр',
 'sp-contributions-talk' => 'бәхәс',
 'sp-contributions-search' => 'Кертемне эзләү',
-'sp-contributions-wiki_username' => 'Кулланучының IP адресы яки исеме:',
+'sp-contributions-username' => 'Кулланучының IP адресы яки исеме:',
 'sp-contributions-toponly' => 'Соңгы версия булган үзгәртүләрне генә күрсәтергә',
 'sp-contributions-submit' => 'Эзләү',
 
@@ -1957,7 +1957,7 @@ $1',
 'blockip' => 'Кулланучыны тыю',
 'blockip-title' => 'Кулланучыны тыю',
 'blockip-legend' => 'Кулланучыны тыю',
-'ipadressorwiki_username' => 'IP адресы яки кулланучы исеме:',
+'ipadressorusername' => 'IP адресы яки кулланучы исеме:',
 'ipbexpiry' => 'Бетә:',
 'ipbreason' => 'Сәбәп:',
 'ipbreasonotherlist' => 'Башка сәбәп',
@@ -2092,7 +2092,7 @@ $1',
 'import-logentry-interwiki' => '«$1» — викиара  импортлау',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Кулланучы битегез',
+'tooltip-pt-userpage' => 'Кулланучы битегез',
 'tooltip-pt-mytalk' => 'Бәхәс битегез',
 'tooltip-pt-preferences' => 'Көйләнмәләрегез',
 'tooltip-pt-watchlist' => 'Сез күзәтелгән төзәтмәле битләр исемлеге',
@@ -2125,13 +2125,13 @@ $1',
 'tooltip-feed-rss' => 'Бу бит өчен RSS трансляциясе',
 'tooltip-feed-atom' => 'Бу бит өчен Atom трансляциясе',
 'tooltip-t-contributions' => 'Кулланучы кертеменең исемлегене карау',
-'tooltip-t-emailwiki_user' => 'Бу кулланучыга хат җибәрү',
+'tooltip-t-emailuser' => 'Бу кулланучыга хат җибәрү',
 'tooltip-t-upload' => 'Файлларны йөкләү',
 'tooltip-t-specialpages' => 'Барлык махсус битләр исемлеге',
 'tooltip-t-print' => 'Бу битнең бастыру версиясе',
 'tooltip-t-permalink' => 'Битнең бу юрамасына даими сылтама',
 'tooltip-ca-nstab-main' => 'Мәкаләнең эчтәлеге',
-'tooltip-ca-nstab-wiki_user' => 'Кулланучының шәхси бите',
+'tooltip-ca-nstab-user' => 'Кулланучының шәхси бите',
 'tooltip-ca-nstab-media' => 'Медиа-файл',
 'tooltip-ca-nstab-special' => 'Бу махсус бит, сез аны үзгәртү алмыйсыз',
 'tooltip-ca-nstab-project' => 'Проектның бите',
@@ -2158,9 +2158,9 @@ $1',
 
 # Attribution
 'anonymous' => '{{SITENAME}} сайтының аноним {{PLURAL:$1|кулланучысы|кулланучылары}}',
-'sitewiki_user' => '{{SITENAME}} кулланучысы $1',
+'siteuser' => '{{SITENAME}} кулланучысы $1',
 'othercontribs' => '«$1» эшенә нигезләнә.',
-'sitewiki_users' => '{{SITENAME}} {{PLURAL:$2|кулланучысы|кулланучылары}} $1',
+'siteusers' => '{{SITENAME}} {{PLURAL:$2|кулланучысы|кулланучылары}} $1',
 'creditspage' => 'Рәхмәтләр',
 
 # Spam protection
@@ -2259,7 +2259,7 @@ $1',
 'exif-compressedbitsperpixel' => 'Кысылудан соң төснең тирәнлеге',
 'exif-pixelydimension' => 'Рәсемнең киңлеге',
 'exif-pixelxdimension' => 'Рәсемнең биеклеге',
-'exif-wiki_usercomment' => 'Өстәмә җавап',
+'exif-usercomment' => 'Өстәмә җавап',
 'exif-relatedsoundfile' => 'Тавыш файлы җавабы',
 'exif-datetimeoriginal' => 'Чын вакыты',
 'exif-datetimedigitized' => 'Санлаштыру вакыты',
@@ -2470,7 +2470,7 @@ $1',
 'specialpages-group-login' => 'Керү / теркәлү',
 'specialpages-group-changes' => 'Соңгы үзгәртүләр',
 'specialpages-group-media' => 'Йөкләү һәм медиа-файллар хисапнамәсе',
-'specialpages-group-wiki_users' => 'Кулланучылар һәм аларның хокуклары',
+'specialpages-group-users' => 'Кулланучылар һәм аларның хокуклары',
 'specialpages-group-highuse' => 'Еш кулланылучы битләр',
 'specialpages-group-pages' => 'Битләр исемлеге',
 'specialpages-group-pagetools' => 'Бит өчен җиһазлар',
@@ -2536,11 +2536,11 @@ $1',
 'logentry-move-move_redir-noredirect' => '$1 $3 сәхифәсен $4 юнәлтү аша үзгәртте һәм юнәлтүне калдырмады',
 'logentry-patrol-patrol' => '$1 $3 мәкаләсенең  $4 санлы версиясен тикшерде',
 'logentry-patrol-patrol-auto' => '$1 $3 мәкаләсенең $4 санлы версиясен автоматик рәвештә тикшерде',
-'logentry-newwiki_users-newwiki_users' => '$1 кулланучының хисап язмасын төзеде',
-'logentry-newwiki_users-create' => '$1 хисап язмасы төзеде',
-'logentry-newwiki_users-create2' => '$1 $3 кулланучы хисап язмасын төзеде',
-'logentry-newwiki_users-autocreate' => 'Автоматик рәвештә $1 хисап язмасы төзелде.',
-'newwiki_userlog-byemail' => 'серсүз электрон почта аша җибәрелде',
+'logentry-newusers-newusers' => '$1 кулланучының хисап язмасын төзеде',
+'logentry-newusers-create' => '$1 хисап язмасы төзеде',
+'logentry-newusers-create2' => '$1 $3 кулланучы хисап язмасын төзеде',
+'logentry-newusers-autocreate' => 'Автоматик рәвештә $1 хисап язмасы төзелде.',
+'newuserlog-byemail' => 'серсүз электрон почта аша җибәрелде',
 
 # Feedback
 'feedback-bugornote' => 'Әгәр дә сез техник проблеманы җентекләп тасвирларга әзер икәнсез, зинһар өчен, [$1 хата турында хәбәр итегез].

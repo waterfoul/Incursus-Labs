@@ -57,7 +57,7 @@ All titles except special pages must be less than 255 bytes when encoded with
 UTF-8, because that is the size of the database field. Special page titles may
 be up to 512 bytes.
 
-Note that Unicode Normal Form C (NFC) is enforced by MediaWiki's wiki_user interface
+Note that Unicode Normal Form C (NFC) is enforced by MediaWiki's user interface
 input functions, and so titles will typically be in this form. 
 
 getArticleID() needs some explanation: for "internal" articles, it should return

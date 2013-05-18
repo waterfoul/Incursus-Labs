@@ -174,25 +174,25 @@ class WikiEditorHooks {
 	 * @return bool
 	 */
 	public static function isEnabled( $name ) {
-		global $wgWikiEditorFeatures, $wgwiki_user;
+		global $wgWikiEditorFeatures, $wgUser;
 
 		// Features with global set to true are always enabled
 		if ( !isset( $wgWikiEditorFeatures[$name] ) || $wgWikiEditorFeatures[$name]['global'] ) {
 			return true;
 		}
-		// Features with wiki_user preference control can have any number of preferences to be specific values to be enabled
-		if ( $wgWikiEditorFeatures[$name]['wiki_user'] ) {
+		// Features with user preference control can have any number of preferences to be specific values to be enabled
+		if ( $wgWikiEditorFeatures[$name]['user'] ) {
 			if ( isset( self::$features[$name]['requirements'] ) ) {
 				foreach ( self::$features[$name]['requirements'] as $requirement => $value ) {
 					// Important! We really do want fuzzy evaluation here
-					if ( $wgwiki_user->getOption( $requirement ) != $value ) {
+					if ( $wgUser->getOption( $requirement ) != $value ) {
 						return false;
 					}
 				}
 			}
 			return true;
 		}
-		// Features controlled by $wgWikiEditorFeatures with both global and wiki_user set to false are awlways disabled
+		// Features controlled by $wgWikiEditorFeatures with both global and user set to false are awlways disabled
 		return false;
 	}
 
@@ -242,17 +242,17 @@ class WikiEditorHooks {
 	 *
 	 * Adds WikiEditor-releated items to the preferences
 	 *
-	 * @param $wiki_user wiki_user current wiki_user
-	 * @param $defaultPreferences array list of default wiki_user preference controls
+	 * @param $user User current user
+	 * @param $defaultPreferences array list of default user preference controls
 	 * @return bool
 	 */
-	public static function getPreferences( $wiki_user, &$defaultPreferences ) {
+	public static function getPreferences( $user, &$defaultPreferences ) {
 		global $wgWikiEditorFeatures;
 
 		foreach ( self::$features as $name => $feature ) {
 			if (
 				isset( $feature['preferences'] ) &&
-				( !isset( $wgWikiEditorFeatures[$name] ) || $wgWikiEditorFeatures[$name]['wiki_user'] )
+				( !isset( $wgWikiEditorFeatures[$name] ) || $wgWikiEditorFeatures[$name]['user'] )
 			) {
 				foreach ( $feature['preferences'] as $key => $options ) {
 					$defaultPreferences[$key] = $options;

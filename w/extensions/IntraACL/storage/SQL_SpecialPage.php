@@ -39,14 +39,14 @@ class IntraACL_SQL_SpecialPage
      *         with normal page IDs.
      */
     public function idForSpecial($name) {
-        w = wfGetDB( DB_MASTER );
+        $dbw = wfGetDB( DB_MASTER );
 
-        $obj = w->selectRow('halo_acl_special_pages', 'id', array('name' => $name), __METHOD__);
+        $obj = $dbw->selectRow('halo_acl_special_pages', 'id', array('name' => $name), __METHOD__);
         if ($obj === false) {
             // ID not found => create a new one
-            w->insert('halo_acl_special_pages', array('name' => $name), __METHOD__);
+            $dbw->insert('halo_acl_special_pages', array('name' => $name), __METHOD__);
             // retrieve the auto-incremented ID of the right
-            return -w->insertId();
+            return -$dbw->insertId();
         } else {
             return -$obj->id;
         }
@@ -63,8 +63,8 @@ class IntraACL_SQL_SpecialPage
      *         The name of the page if the ID is valid. <0> otherwise
      */
     public function specialForID($id) {
-        w = wfGetDB( DB_MASTER );
-        $obj = w->selectRow('halo_acl_special_pages', 'name', array('id' => -$id), __METHOD__);
+        $dbw = wfGetDB( DB_MASTER );
+        $obj = $dbw->selectRow('halo_acl_special_pages', 'name', array('id' => -$id), __METHOD__);
         return ($obj === false) ? 0 : $obj->name;
     }
 }

@@ -2,8 +2,8 @@
 /**
  * Classes to walk into a list of Title objects.
  *
- * Note: this entire file is a byte-for-byte copy of wiki_userArray.php with
- * s/wiki_user/Title/.  If anyone can figure out how to do this nicely with inheri-
+ * Note: this entire file is a byte-for-byte copy of UserArray.php with
+ * s/User/Title/.  If anyone can figure out how to do this nicely with inheri-
  * tance or something, please do so.
  *
  * This program is free software; you can redistribute it and/or modify

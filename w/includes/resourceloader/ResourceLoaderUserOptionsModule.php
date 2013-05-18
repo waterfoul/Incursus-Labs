@@ -1,6 +1,6 @@
 <?php
 /**
- * Resource loader module for wiki_user preference customizations.
+ * Resource loader module for user preference customizations.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
  */
 
 /**
- * Module for wiki_user preference customizations
+ * Module for user preference customizations
  */
 class ResourceLoaderUserOptionsModule extends ResourceLoaderModule {
 
@@ -45,8 +45,8 @@ class ResourceLoaderUserOptionsModule extends ResourceLoaderModule {
 			return $this->modifiedTime[$hash];
 		}
 
-		global $wgwiki_user;
-		return $this->modifiedTime[$hash] = wfTimestamp( TS_UNIX, $wgwiki_user->getTouched() );
+		global $wgUser;
+		return $this->modifiedTime[$hash] = wfTimestamp( TS_UNIX, $wgUser->getTouched() );
 	}
 
 	/**
@@ -54,9 +54,9 @@ class ResourceLoaderUserOptionsModule extends ResourceLoaderModule {
 	 * @return string
 	 */
 	public function getScript( ResourceLoaderContext $context ) {
-		global $wgwiki_user;
-		return Xml::encodeJsCall( 'mw.wiki_user.options.set',
-			array( $wgwiki_user->getOptions() ) );
+		global $wgUser;
+		return Xml::encodeJsCall( 'mw.user.options.set',
+			array( $wgUser->getOptions() ) );
 	}
 
 	/**

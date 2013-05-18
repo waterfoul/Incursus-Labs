@@ -66,8 +66,8 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				case 'statistics':
 					$fit = $this->appendStatistics( $p );
 					break;
-				case 'wiki_usergroups':
-					$fit = $this->appendwiki_userGroups( $p, $params['numberingroup'] );
+				case 'usergroups':
+					$fit = $this->appendUserGroups( $p, $params['numberingroup'] );
 					break;
 				case 'extensions':
 					$fit = $this->appendExtensions( $p );
@@ -369,14 +369,14 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		}
 		$data['edits'] = intval( SiteStats::edits() );
 		$data['images'] = intval( SiteStats::images() );
-		$data['wiki_users'] = intval( SiteStats::wiki_users() );
-		$data['activewiki_users'] = intval( SiteStats::activewiki_users() );
+		$data['users'] = intval( SiteStats::users() );
+		$data['activeusers'] = intval( SiteStats::activeUsers() );
 		$data['admins'] = intval( SiteStats::numberingroup( 'sysop' ) );
 		$data['jobs'] = intval( SiteStats::jobs() );
 		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
-	protected function appendwiki_userGroups( $property, $numberInGroup ) {
+	protected function appendUserGroups( $property, $numberInGroup ) {
 		global $wgGroupPermissions, $wgAddGroups, $wgRemoveGroups, $wgGroupsAddToSelf, $wgGroupsRemoveFromSelf;
 
 		$data = array();
@@ -390,8 +390,8 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			if ( $numberInGroup ) {
 				global $wgAutopromote;
 
-				if ( $group == 'wiki_user' ) {
-					$arr['number'] = SiteStats::wiki_users();
+				if ( $group == 'user' ) {
+					$arr['number'] = SiteStats::users();
 
 				// '*' and autopromote groups have no size
 				} elseif ( $group !== '*' && !isset( $wgAutopromote[$group] ) ) {
@@ -586,7 +586,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 					'interwikimap',
 					'dbrepllag',
 					'statistics',
-					'wiki_usergroups',
+					'usergroups',
 					'extensions',
 					'fileextensions',
 					'rightsinfo',
@@ -623,7 +623,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				' statistics            - Returns site statistics',
 				" interwikimap          - Returns interwiki map (optionally filtered, (optionally localised by using {$p}inlanguagecode))",
 				' dbrepllag             - Returns database server with the highest replication lag',
-				' wiki_usergroups            - Returns wiki_user groups and the associated permissions',
+				' usergroups            - Returns user groups and the associated permissions',
 				' extensions            - Returns extensions installed on the wiki',
 				' fileextensions        - Returns list of file extensions allowed to be uploaded',
 				' rightsinfo            - Returns wiki rights (license) information if available',
@@ -636,7 +636,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			),
 			'filteriw' =>  'Return only local or only nonlocal entries of the interwiki map',
 			'showalldb' => 'List all database servers, not just the one lagging the most',
-			'numberingroup' => 'Lists the number of wiki_users in wiki_user groups',
+			'numberingroup' => 'Lists the number of users in user groups',
 			'inlanguagecode' => 'Language code for localised language names (best effort, use CLDR extension)',
 		);
 	}

@@ -5,8 +5,8 @@
 class RecentChangeTest extends MediaWikiTestCase {
 	protected $title;
 	protected $target;
-	protected $wiki_user;
-	protected $wiki_user_comment;
+	protected $user;
+	protected $user_comment;
 	protected $context;
 
 	function __construct() {
@@ -14,9 +14,9 @@ class RecentChangeTest extends MediaWikiTestCase {
 
 		$this->title  = Title::newFromText( 'SomeTitle' );
 		$this->target = Title::newFromText( 'TestTarget' );
-		$this->wiki_user   = wiki_user::newFromName( 'wiki_userName' );
+		$this->user   = User::newFromName( 'UserName' );
 
-		$this->wiki_user_comment = '<wiki_user comment about action>';
+		$this->user_comment = '<User comment about action>';
 		$this->context = RequestContext::newExtraneousContext( $this->title );
 	}
 
@@ -28,7 +28,7 @@ class RecentChangeTest extends MediaWikiTestCase {
 	 * to fetch the i18n messages from the wiki and then analyze the IRC feed
 	 * to reverse engineer the $1, $2 messages.
 	 * One thing bots can not detect is when MediaWiki change the meaning of
-	 * a message like what happened when we deployed 1.19. $1 became the wiki_user
+	 * a message like what happened when we deployed 1.19. $1 became the user
 	 * performing the action which broke basically all bots around.
 	 *
 	 * Should cover the following log actions (which are most commonly used by bots):
@@ -36,9 +36,9 @@ class RecentChangeTest extends MediaWikiTestCase {
 	 * - block/unblock
 	 * - delete/delete
 	 * - delete/restore
-	 * - newwiki_users/create
-	 * - newwiki_users/create2
-	 * - newwiki_users/autocreate
+	 * - newusers/create
+	 * - newusers/create2
+	 * - newusers/autocreate
 	 * - move/move
 	 * - move/move_redir
 	 * - protect/protect
@@ -59,17 +59,17 @@ class RecentChangeTest extends MediaWikiTestCase {
 	function testIrcMsgForLogTypeBlock() {
 		# block/block
 		$this->assertIRCComment(
-			$this->context->msg( 'blocklogentry', 'SomeTitle' )->plain() . ': ' .  $this->wiki_user_comment,
+			$this->context->msg( 'blocklogentry', 'SomeTitle' )->plain() . ': ' .  $this->user_comment,
 			'block', 'block',
 			array(),
-			$this->wiki_user_comment
+			$this->user_comment
 		);
 		# block/unblock
 		$this->assertIRCComment(
-			$this->context->msg( 'unblocklogentry', 'SomeTitle' )->plain() . ': ' .  $this->wiki_user_comment,
+			$this->context->msg( 'unblocklogentry', 'SomeTitle' )->plain() . ': ' .  $this->user_comment,
 			'block', 'unblock',
 			array(),
-			$this->wiki_user_comment
+			$this->user_comment
 		);
 	}
 
@@ -79,43 +79,43 @@ class RecentChangeTest extends MediaWikiTestCase {
 	function testIrcMsgForLogTypeDelete() {
 		# delete/delete
 		$this->assertIRCComment(
-			$this->context->msg( 'deletedarticle', 'SomeTitle' )->plain() . ': ' .  $this->wiki_user_comment,
+			$this->context->msg( 'deletedarticle', 'SomeTitle' )->plain() . ': ' .  $this->user_comment,
 			'delete', 'delete',
 			array(),
-			$this->wiki_user_comment
+			$this->user_comment
 		);
 
 		# delete/restore
 		$this->assertIRCComment(
-			$this->context->msg( 'undeletedarticle', 'SomeTitle' )->plain() . ': ' .  $this->wiki_user_comment,
+			$this->context->msg( 'undeletedarticle', 'SomeTitle' )->plain() . ': ' .  $this->user_comment,
 			'delete', 'restore',
 			array(),
-			$this->wiki_user_comment
+			$this->user_comment
 		);
 	}
 
 	/**
 	 * @covers LogFormatter::getIRCActionText
 	 */
-	function testIrcMsgForLogTypeNewwiki_users() {
+	function testIrcMsgForLogTypeNewusers() {
 		$this->assertIRCComment(
-			'New wiki_user account',
-			'newwiki_users', 'newwiki_users',
+			'New user account',
+			'newusers', 'newusers',
 			array()
 		);
 		$this->assertIRCComment(
-			'New wiki_user account',
-			'newwiki_users', 'create',
+			'New user account',
+			'newusers', 'create',
 			array()
 		);
 		$this->assertIRCComment(
 			'created new account SomeTitle',
-			'newwiki_users', 'create2',
+			'newusers', 'create2',
 			array()
 		);
 		$this->assertIRCComment(
 			'Account created automatically',
-			'newwiki_users', 'autocreate',
+			'newusers', 'autocreate',
 			array()
 		);
 	}
@@ -131,18 +131,18 @@ class RecentChangeTest extends MediaWikiTestCase {
 
 		# move/move
 		$this->assertIRCComment(
-			$this->context->msg( '1movedto2', 'SomeTitle', 'TestTarget' )->plain() . ': ' .  $this->wiki_user_comment,
+			$this->context->msg( '1movedto2', 'SomeTitle', 'TestTarget' )->plain() . ': ' .  $this->user_comment,
 			'move', 'move',
 			$move_params,
-			$this->wiki_user_comment
+			$this->user_comment
 		);
 
 		# move/move_redir
 		$this->assertIRCComment(
-			$this->context->msg( '1movedto2_redir', 'SomeTitle', 'TestTarget' )->plain() . ': ' .  $this->wiki_user_comment,
+			$this->context->msg( '1movedto2_redir', 'SomeTitle', 'TestTarget' )->plain() . ': ' .  $this->user_comment,
 			'move', 'move_redir',
 			$move_params,
-			$this->wiki_user_comment
+			$this->user_comment
 		);
 	}
 
@@ -172,26 +172,26 @@ class RecentChangeTest extends MediaWikiTestCase {
 
 		# protect/protect
 		$this->assertIRCComment(
-			$this->context->msg( 'protectedarticle', 'SomeTitle ' . $protectParams[0] )->plain() . ': ' .  $this->wiki_user_comment,
+			$this->context->msg( 'protectedarticle', 'SomeTitle ' . $protectParams[0] )->plain() . ': ' .  $this->user_comment,
 			'protect', 'protect',
 			$protectParams,
-			$this->wiki_user_comment
+			$this->user_comment
 		);
 
 		# protect/unprotect
 		$this->assertIRCComment(
-			$this->context->msg( 'unprotectedarticle', 'SomeTitle' )->plain() . ': ' .  $this->wiki_user_comment,
+			$this->context->msg( 'unprotectedarticle', 'SomeTitle' )->plain() . ': ' .  $this->user_comment,
 			'protect', 'unprotect',
 			array(),
-			$this->wiki_user_comment
+			$this->user_comment
 		);
 
 		# protect/modify
 		$this->assertIRCComment(
-			$this->context->msg( 'modifiedarticleprotection', 'SomeTitle ' . $protectParams[0] )->plain() . ': ' .  $this->wiki_user_comment,
+			$this->context->msg( 'modifiedarticleprotection', 'SomeTitle ' . $protectParams[0] )->plain() . ': ' .  $this->user_comment,
 			'protect', 'modify',
 			$protectParams,
-			$this->wiki_user_comment
+			$this->user_comment
 		);
 	}
 
@@ -201,18 +201,18 @@ class RecentChangeTest extends MediaWikiTestCase {
 	function testIrcMsgForLogTypeUpload() {
 		# upload/upload
 		$this->assertIRCComment(
-			$this->context->msg( 'uploadedimage', 'SomeTitle' )->plain() . ': ' .  $this->wiki_user_comment,
+			$this->context->msg( 'uploadedimage', 'SomeTitle' )->plain() . ': ' .  $this->user_comment,
 			'upload', 'upload',
 			array(),
-			$this->wiki_user_comment
+			$this->user_comment
 		);
 
 		# upload/overwrite
 		$this->assertIRCComment(
-			$this->context->msg( 'overwroteimage', 'SomeTitle' )->plain() . ': ' .  $this->wiki_user_comment,
+			$this->context->msg( 'overwroteimage', 'SomeTitle' )->plain() . ': ' .  $this->user_comment,
 			'upload', 'overwrite',
 			array(),
-			$this->wiki_user_comment
+			$this->user_comment
 		);
 	}
 
@@ -250,7 +250,7 @@ class RecentChangeTest extends MediaWikiTestCase {
 	function assertIRCComment( $expected, $type, $action, $params, $comment = null, $msg = '' ) {
 
 		$logEntry = new ManualLogEntry( $type, $action );
-		$logEntry->setPerformer( $this->wiki_user );
+		$logEntry->setPerformer( $this->user );
 		$logEntry->setTarget( $this->title );
 		if ( $comment !== null ) {
 			$logEntry->setComment( $comment );

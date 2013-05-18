@@ -109,7 +109,7 @@ class SpecialBookSources extends SpecialPage {
 	}
 
 	/**
-	 * Generate a form to allow wiki_users to enter an ISBN
+	 * Generate a form to allow users to enter an ISBN
 	 *
 	 * @return string
 	 */

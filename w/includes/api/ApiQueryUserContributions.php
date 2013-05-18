@@ -25,7 +25,7 @@
  */
 
 /**
- * This query action adds a list of a specified wiki_user's contributions to the output.
+ * This query action adds a list of a specified user's contributions to the output.
  *
  * @ingroup API
  */
@@ -35,7 +35,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		parent::__construct( $query, $moduleName, 'uc' );
 	}
 
-	private $params, $prefixMode, $wiki_userprefix, $multiwiki_userMode, $wiki_usernames, $parentLens;
+	private $params, $prefixMode, $userprefix, $multiUserMode, $usernames, $parentLens;
 	private $fld_ids = false, $fld_title = false, $fld_timestamp = false,
 			$fld_comment = false, $fld_parsedcomment = false, $fld_flags = false,
 			$fld_patrolled = false, $fld_tags = false, $fld_size = false, $fld_sizediff = false;
@@ -59,23 +59,23 @@ class ApiQueryContributions extends ApiQueryBase {
 		// TODO: if the query is going only against the revision table, should this be done?
 		$this->selectNamedDB( 'contributions', DB_SLAVE, 'contributions' );
 
-		if ( isset( $this->params['wiki_userprefix'] ) ) {
+		if ( isset( $this->params['userprefix'] ) ) {
 			$this->prefixMode = true;
-			$this->multiwiki_userMode = true;
-			$this->wiki_userprefix = $this->params['wiki_userprefix'];
+			$this->multiUserMode = true;
+			$this->userprefix = $this->params['userprefix'];
 		} else {
-			$this->wiki_usernames = array();
-			if ( !is_array( $this->params['wiki_user'] ) ) {
-				$this->params['wiki_user'] = array( $this->params['wiki_user'] );
+			$this->usernames = array();
+			if ( !is_array( $this->params['user'] ) ) {
+				$this->params['user'] = array( $this->params['user'] );
 			}
-			if ( !count( $this->params['wiki_user'] ) ) {
-				$this->dieUsage( 'wiki_user parameter may not be empty.', 'param_wiki_user' );
+			if ( !count( $this->params['user'] ) ) {
+				$this->dieUsage( 'User parameter may not be empty.', 'param_user' );
 			}
-			foreach ( $this->params['wiki_user'] as $u ) {
-				$this->preparewiki_username( $u );
+			foreach ( $this->params['user'] as $u ) {
+				$this->prepareUsername( $u );
 			}
 			$this->prefixMode = false;
-			$this->multiwiki_userMode = ( count( $this->params['wiki_user'] ) > 1 );
+			$this->multiUserMode = ( count( $this->params['user'] ) > 1 );
 		}
 
 		$this->prepareQuery();
@@ -102,7 +102,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		foreach ( $res as $row ) {
 			if ( ++ $count > $limit ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				if ( $this->multiwiki_userMode ) {
+				if ( $this->multiUserMode ) {
 					$this->setContinueEnumParameter( 'continue', $this->continueStr( $row ) );
 				} else {
 					$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->rev_timestamp ) );
@@ -113,7 +113,7 @@ class ApiQueryContributions extends ApiQueryBase {
 			$vals = $this->extractRowInfo( $row );
 			$fit = $this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $vals );
 			if ( !$fit ) {
-				if ( $this->multiwiki_userMode ) {
+				if ( $this->multiUserMode ) {
 					$this->setContinueEnumParameter( 'continue', $this->continueStr( $row ) );
 				} else {
 					$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->rev_timestamp ) );
@@ -126,23 +126,23 @@ class ApiQueryContributions extends ApiQueryBase {
 	}
 
 	/**
-	 * Validate the 'wiki_user' parameter and set the value to compare
-	 * against `revision`.`rev_wiki_user_text`
+	 * Validate the 'user' parameter and set the value to compare
+	 * against `revision`.`rev_user_text`
 	 *
-	 * @param $wiki_user string
+	 * @param $user string
 	 */
-	private function preparewiki_username( $wiki_user ) {
-		if ( !is_null( $wiki_user ) && $wiki_user !== '' ) {
-			$name = wiki_user::isIP( $wiki_user )
-				? $wiki_user
-				: wiki_user::getCanonicalName( $wiki_user, 'valid' );
+	private function prepareUsername( $user ) {
+		if ( !is_null( $user ) && $user !== '' ) {
+			$name = User::isIP( $user )
+				? $user
+				: User::getCanonicalName( $user, 'valid' );
 			if ( $name === false ) {
-				$this->dieUsage( "wiki_user name {$wiki_user} is not valid", 'param_wiki_user' );
+				$this->dieUsage( "User name {$user} is not valid", 'param_user' );
 			} else {
-				$this->wiki_usernames[] = $name;
+				$this->usernames[] = $name;
 			}
 		} else {
-			$this->dieUsage( 'wiki_user parameter may not be empty', 'param_wiki_user' );
+			$this->dieUsage( 'User parameter may not be empty', 'param_user' );
 		}
 	}
 
@@ -153,42 +153,42 @@ class ApiQueryContributions extends ApiQueryBase {
 		// We're after the revision table, and the corresponding page
 		// row for anything we retrieve. We may also need the
 		// recentchanges row and/or tag summary row.
-		$wiki_user = $this->getwiki_user();
+		$user = $this->getUser();
 		$tables = array( 'page', 'revision' ); // Order may change
 		$this->addWhere( 'page_id=rev_page' );
 
 		// Handle continue parameter
-		if ( $this->multiwiki_userMode && !is_null( $this->params['continue'] ) ) {
+		if ( $this->multiUserMode && !is_null( $this->params['continue'] ) ) {
 			$continue = explode( '|', $this->params['continue'] );
 			if ( count( $continue ) != 2 ) {
 				$this->dieUsage( 'Invalid continue param. You should pass the original ' .
 					'value returned by the previous query', '_badcontinue' );
 			}
-			 = $this->getDB();
-			$encwiki_user = ->addQuotes( $continue[0] );
-			$encTS = ->addQuotes( ->timestamp( $continue[1] ) );
+			$db = $this->getDB();
+			$encUser = $db->addQuotes( $continue[0] );
+			$encTS = $db->addQuotes( $db->timestamp( $continue[1] ) );
 			$op = ( $this->params['dir'] == 'older' ? '<' : '>' );
 			$this->addWhere(
-				"rev_wiki_user_text $op $encwiki_user OR " .
-				"(rev_wiki_user_text = $encwiki_user AND " .
+				"rev_user_text $op $encUser OR " .
+				"(rev_user_text = $encUser AND " .
 				"rev_timestamp $op= $encTS)"
 			);
 		}
 
-		if ( !$wiki_user->isAllowed( 'hidewiki_user' ) ) {
+		if ( !$user->isAllowed( 'hideuser' ) ) {
 			$this->addWhere( $this->getDB()->bitAnd( 'rev_deleted', Revision::DELETED_USER ) . ' = 0' );
 		}
-		// We only want pages by the specified wiki_users.
+		// We only want pages by the specified users.
 		if ( $this->prefixMode ) {
-			$this->addWhere( 'rev_wiki_user_text' . $this->getDB()->buildLike( $this->wiki_userprefix, $this->getDB()->anyString() ) );
+			$this->addWhere( 'rev_user_text' . $this->getDB()->buildLike( $this->userprefix, $this->getDB()->anyString() ) );
 		} else {
-			$this->addWhereFld( 'rev_wiki_user_text', $this->wiki_usernames );
+			$this->addWhereFld( 'rev_user_text', $this->usernames );
 		}
 		// ... and in the specified timeframe.
-		// Ensure the same sort order for rev_wiki_user_text and rev_timestamp
+		// Ensure the same sort order for rev_user_text and rev_timestamp
 		// so our query is indexed
-		if ( $this->multiwiki_userMode ) {
-			$this->addWhereRange( 'rev_wiki_user_text', $this->params['dir'], null, null );
+		if ( $this->multiUserMode ) {
+			$this->addWhereRange( 'rev_user_text', $this->params['dir'], null, null );
 		}
 		$this->addTimestampWhereRange( 'rev_timestamp',
 			$this->params['dir'], $this->params['start'], $this->params['end'] );
@@ -208,43 +208,43 @@ class ApiQueryContributions extends ApiQueryBase {
 			$this->addWhereIf( 'rc_patrolled != 0', isset( $show['patrolled'] ) );
 		}
 		$this->addOption( 'LIMIT', $this->params['limit'] + 1 );
-		$index = array( 'revision' => 'wiki_usertext_timestamp' );
+		$index = array( 'revision' => 'usertext_timestamp' );
 
 		// Mandatory fields: timestamp allows request continuation
-		// ns+title checks if the wiki_user has access rights for this page
-		// wiki_user_text is necessary if multiple wiki_users were specified
+		// ns+title checks if the user has access rights for this page
+		// user_text is necessary if multiple users were specified
 		$this->addFields( array(
 			'rev_timestamp',
 			'page_namespace',
 			'page_title',
-			'rev_wiki_user',
-			'rev_wiki_user_text',
+			'rev_user',
+			'rev_user_text',
 			'rev_deleted'
 		) );
 
 		if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ||
 				 $this->fld_patrolled ) {
-			if ( !$wiki_user->useRCPatrol() && !$wiki_user->useNPPatrol() ) {
+			if ( !$user->useRCPatrol() && !$user->useNPPatrol() ) {
 				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
 			}
 
 			// Use a redundant join condition on both
 			// timestamp and ID so we can use the timestamp
 			// index
-			$index['recentchanges'] = 'rc_wiki_user_text';
+			$index['recentchanges'] = 'rc_user_text';
 			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
 				// Put the tables in the right order for
 				// STRAIGHT_JOIN
 				$tables = array( 'revision', 'recentchanges', 'page' );
 				$this->addOption( 'STRAIGHT_JOIN' );
-				$this->addWhere( 'rc_wiki_user_text=rev_wiki_user_text' );
+				$this->addWhere( 'rc_user_text=rev_user_text' );
 				$this->addWhere( 'rc_timestamp=rev_timestamp' );
 				$this->addWhere( 'rc_this_oldid=rev_id' );
 			} else {
 				$tables[] = 'recentchanges';
 				$this->addJoinConds( array( 'recentchanges' => array(
 					'LEFT JOIN', array(
-						'rc_wiki_user_text=rev_wiki_user_text',
+						'rc_user_text=rev_user_text',
 						'rc_timestamp=rev_timestamp',
 						'rc_this_oldid=rev_id' ) ) ) );
 			}
@@ -291,10 +291,10 @@ class ApiQueryContributions extends ApiQueryBase {
 	private function extractRowInfo( $row ) {
 		$vals = array();
 
-		$vals['wiki_userid'] = $row->rev_wiki_user;
-		$vals['wiki_user'] = $row->rev_wiki_user_text;
+		$vals['userid'] = $row->rev_user;
+		$vals['user'] = $row->rev_user_text;
 		if ( $row->rev_deleted & Revision::DELETED_USER ) {
-			$vals['wiki_userhidden'] = '';
+			$vals['userhidden'] = '';
 		}
 		if ( $this->fld_ids ) {
 			$vals['pageid'] = intval( $row->rev_page );
@@ -365,14 +365,14 @@ class ApiQueryContributions extends ApiQueryBase {
 	}
 
 	private function continueStr( $row ) {
-		return $row->rev_wiki_user_text . '|' .
+		return $row->rev_user_text . '|' .
 			wfTimestamp( TS_ISO_8601, $row->rev_timestamp );
 	}
 
 	public function getCacheMode( $params ) {
 		// This module provides access to deleted revisions and patrol flags if
 		// the requester is logged in
-		return 'anon-public-wiki_user-private';
+		return 'anon-public-user-private';
 	}
 
 	public function getAllowedParams() {
@@ -391,10 +391,10 @@ class ApiQueryContributions extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => 'timestamp'
 			),
 			'continue' => null,
-			'wiki_user' => array(
+			'user' => array(
 				ApiBase::PARAM_ISMULTI => true
 			),
-			'wiki_userprefix' => null,
+			'userprefix' => null,
 			'dir' => array(
 				ApiBase::PARAM_DFLT => 'older',
 				ApiBase::PARAM_TYPE => array(
@@ -444,8 +444,8 @@ class ApiQueryContributions extends ApiQueryBase {
 			'start' => 'The start timestamp to return from',
 			'end' => 'The end timestamp to return to',
 			'continue' => 'When more results are available, use this to continue',
-			'wiki_user' => 'The wiki_users to retrieve contributions for',
-			'wiki_userprefix' => "Retrieve contibutions for all wiki_users whose names begin with this value. Overrides {$p}wiki_user",
+			'user' => 'The users to retrieve contributions for',
+			'userprefix' => "Retrieve contibutions for all users whose names begin with this value. Overrides {$p}user",
 			'dir' => $this->getDirectionDescription( $p ),
 			'namespace' => 'Only list contributions in these namespaces',
 			'prop' => array(
@@ -471,9 +471,9 @@ class ApiQueryContributions extends ApiQueryBase {
 	public function getResultProperties() {
 		return array(
 			'' => array(
-				'wiki_userid' => 'integer',
-				'wiki_user' => 'string',
-				'wiki_userhidden' => 'boolean'
+				'userid' => 'integer',
+				'user' => 'string',
+				'userhidden' => 'boolean'
 			),
 			'ids' => array(
 				'pageid' => 'integer',
@@ -524,13 +524,13 @@ class ApiQueryContributions extends ApiQueryBase {
 	}
 
 	public function getDescription() {
-		return 'Get all edits by a wiki_user';
+		return 'Get all edits by a user';
 	}
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'param_wiki_user', 'info' => 'wiki_user parameter may not be empty.' ),
-			array( 'code' => 'param_wiki_user', 'info' => 'wiki_user name wiki_user is not valid' ),
+			array( 'code' => 'param_user', 'info' => 'User parameter may not be empty.' ),
+			array( 'code' => 'param_user', 'info' => 'User name user is not valid' ),
 			array( 'show' ),
 			array( 'code' => 'permissiondenied', 'info' => 'You need the patrol right to request the patrolled flag' ),
 		) );
@@ -538,13 +538,13 @@ class ApiQueryContributions extends ApiQueryBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=query&list=wiki_usercontribs&ucwiki_user=YurikBot',
-			'api.php?action=query&list=wiki_usercontribs&ucwiki_userprefix=217.121.114.',
+			'api.php?action=query&list=usercontribs&ucuser=YurikBot',
+			'api.php?action=query&list=usercontribs&ucuserprefix=217.121.114.',
 		);
 	}
 
 	public function getHelpUrls() {
-		return 'https://www.mediawiki.org/wiki/API:wiki_usercontribs';
+		return 'https://www.mediawiki.org/wiki/API:Usercontribs';
 	}
 
 	public function getVersion() {

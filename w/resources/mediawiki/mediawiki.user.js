@@ -1,26 +1,26 @@
 /*
- * Implementation for mediaWiki.wiki_user
+ * Implementation for mediaWiki.user
  */
 
 ( function ( mw, $ ) {
 
 	/**
-	 * wiki_user object
+	 * User object
 	 */
-	function wiki_user( options, tokens ) {
-		var wiki_user, callbacks;
+	function User( options, tokens ) {
+		var user, callbacks;
 
 		/* Private Members */
 
-		wiki_user = this;
+		user = this;
 		callbacks = {};
 
 		/**
-		 * Gets the current wiki_user's groups or rights.
+		 * Gets the current user's groups or rights.
 		 * @param {String} info: One of 'groups' or 'rights'.
 		 * @param {Function} callback
 		 */
-		function getwiki_userInfo( info, callback ) {
+		function getUserInfo( info, callback ) {
 			var api;
 			if ( callbacks[info] ) {
 				callbacks[info].add( callback );
@@ -32,13 +32,13 @@
 			api = new mw.Api();
 			api.get( {
 				action: 'query',
-				meta: 'wiki_userinfo',
+				meta: 'userinfo',
 				uiprop: 'rights|groups'
 			} ).always( function ( data ) {
 				var rights, groups;
-				if ( data.query && data.query.wiki_userinfo ) {
-					rights = data.query.wiki_userinfo.rights;
-					groups = data.query.wiki_userinfo.groups;
+				if ( data.query && data.query.userinfo ) {
+					rights = data.query.userinfo.rights;
+					groups = data.query.userinfo.groups;
 				}
 				callbacks.rights.fire( rights || [] );
 				callbacks.groups.fire( groups || [] );
@@ -54,9 +54,9 @@
 		/* Public Methods */
 
 		/**
-		 * Generates a random wiki_user session ID (32 alpha-numeric characters).
+		 * Generates a random user session ID (32 alpha-numeric characters).
 		 *
-		 * This information would potentially be stored in a cookie to identify a wiki_user during a
+		 * This information would potentially be stored in a cookie to identify a user during a
 		 * session or series of sessions. Its uniqueness should not be depended on.
 		 *
 		 * @return String: Random set of 32 alpha-numeric characters
@@ -73,35 +73,35 @@
 		}
 
 		/**
-		 * Gets the current wiki_user's name.
+		 * Gets the current user's name.
 		 *
-		 * @return Mixed: wiki_user name string or null if wiki_users is anonymous
+		 * @return Mixed: User name string or null if users is anonymous
 		 */
 		this.getName = function () {
-			return mw.config.get( 'wgwiki_userName' );
+			return mw.config.get( 'wgUserName' );
 		};
 
 		/**
-		 * @deprecated since 1.20 use mw.wiki_user.getName() instead
+		 * @deprecated since 1.20 use mw.user.getName() instead
 		 */
 		this.name = function () {
 			return this.getName();
 		};
 
 		/**
-		 * Checks if the current wiki_user is anonymous.
+		 * Checks if the current user is anonymous.
 		 *
 		 * @return Boolean
 		 */
 		this.isAnon = function () {
-			return wiki_user.getName() === null;
+			return user.getName() === null;
 		};
 
 		/**
-		 * @deprecated since 1.20 use mw.wiki_user.isAnon() instead
+		 * @deprecated since 1.20 use mw.user.isAnon() instead
 		 */
 		this.anonymous = function () {
-			return wiki_user.isAnon();
+			return user.isAnon();
 		};
 
 		/**
@@ -110,38 +110,38 @@
 		 * This ID is ephemeral for everyone, staying in their browser only until they close
 		 * their browser.
 		 *
-		 * @return String: wiki_user name or random session ID
+		 * @return String: User name or random session ID
 		 */
 		this.sessionId = function () {
-			var sessionId = $.cookie( 'mediaWiki.wiki_user.sessionId' );
+			var sessionId = $.cookie( 'mediaWiki.user.sessionId' );
 			if ( typeof sessionId === 'undefined' || sessionId === null ) {
 				sessionId = generateId();
-				$.cookie( 'mediaWiki.wiki_user.sessionId', sessionId, { 'expires': null, 'path': '/' } );
+				$.cookie( 'mediaWiki.user.sessionId', sessionId, { 'expires': null, 'path': '/' } );
 			}
 			return sessionId;
 		};
 
 		/**
-		 * Gets the current wiki_user's name or a random ID automatically generated and kept in a cookie.
+		 * Gets the current user's name or a random ID automatically generated and kept in a cookie.
 		 *
-		 * This ID is persistent for anonymous wiki_users, staying in their browser up to 1 year. The
+		 * This ID is persistent for anonymous users, staying in their browser up to 1 year. The
 		 * expiration time is reset each time the ID is queried, so in most cases this ID will
-		 * persist until the browser's cookies are cleared or the wiki_user doesn't visit for 1 year.
+		 * persist until the browser's cookies are cleared or the user doesn't visit for 1 year.
 		 *
-		 * @return String: wiki_user name or random session ID
+		 * @return String: User name or random session ID
 		 */
 		this.id = function() {
 			var id,
-				name = wiki_user.getName();
+				name = user.getName();
 			if ( name ) {
 				return name;
 			}
-			id = $.cookie( 'mediaWiki.wiki_user.id' );
+			id = $.cookie( 'mediaWiki.user.id' );
 			if ( typeof id === 'undefined' || id === null ) {
 				id = generateId();
 			}
 			// Set cookie if not set, or renew it if already set
-			$.cookie( 'mediaWiki.wiki_user.id', id, {
+			$.cookie( 'mediaWiki.user.id', id, {
 				expires: 365,
 				path: '/'
 			} );
@@ -149,7 +149,7 @@
 		};
 
 		/**
-		 * Gets the wiki_user's bucket, placing them in one at random based on set odds if needed.
+		 * Gets the user's bucket, placing them in one at random based on set odds if needed.
 		 *
 		 * @param key String: Name of bucket
 		 * @param options Object: Bucket configuration options
@@ -159,12 +159,12 @@
 		 * (optional, default: 0)
 		 * @param options.tracked Boolean: Track the event of bucketing through the API module of
 		 * the ClickTracking extension (optional, default: false)
-		 * @param options.expires Number: Length of time (in days) until the wiki_user gets rebucketed
+		 * @param options.expires Number: Length of time (in days) until the user gets rebucketed
 		 * (optional, default: 30)
 		 * @return String: Bucket name - the randomly chosen key of the options.buckets object
 		 *
 		 * @example
-		 *     mw.wiki_user.bucket( 'test', {
+		 *     mw.user.bucket( 'test', {
 		 *         'buckets': { 'ignored': 50, 'control': 25, 'test': 25 },
 		 *         'version': 1,
 		 *         'tracked': true,
@@ -182,7 +182,7 @@
 				expires: 30
 			}, options || {} );
 
-			cookie = $.cookie( 'mediaWiki.wiki_user.bucket:' + key );
+			cookie = $.cookie( 'mediaWiki.user.bucket:' + key );
 
 			// Bucket information is stored as 2 integers, together as version:bucket like: "1:2"
 			if ( typeof cookie === 'string' && cookie.length > 2 && cookie.indexOf( ':' ) > 0 ) {
@@ -216,12 +216,12 @@
 				if ( options.tracked ) {
 					mw.loader.using( 'jquery.clickTracking', function () {
 						$.trackAction(
-							'mediaWiki.wiki_user.bucket:' + key + '@' + version + ':' + bucket
+							'mediaWiki.user.bucket:' + key + '@' + version + ':' + bucket
 						);
 					} );
 				}
 				$.cookie(
-					'mediaWiki.wiki_user.bucket:' + key,
+					'mediaWiki.user.bucket:' + key,
 					version + ':' + bucket,
 					{ 'path': '/', 'expires': Number( options.expires ) }
 				);
@@ -230,22 +230,22 @@
 		};
 
 		/**
-		 * Gets the current wiki_user's groups.
+		 * Gets the current user's groups.
 		 */
 		this.getGroups = function ( callback ) {
-			getwiki_userInfo( 'groups', callback );
+			getUserInfo( 'groups', callback );
 		};
 
 		/**
-		 * Gets the current wiki_user's rights.
+		 * Gets the current user's rights.
 		 */
 		this.getRights = function ( callback ) {
-			getwiki_userInfo( 'rights', callback );
+			getUserInfo( 'rights', callback );
 		};
 	}
 
-	// Extend the skeleton mw.wiki_user from mediawiki.js
+	// Extend the skeleton mw.user from mediawiki.js
 	// This is kind of ugly but we're stuck with this for b/c reasons
-	mw.wiki_user = new wiki_user( mw.wiki_user.options, mw.wiki_user.tokens );
+	mw.user = new User( mw.user.options, mw.user.tokens );
 
 }( mediaWiki, jQuery ) );

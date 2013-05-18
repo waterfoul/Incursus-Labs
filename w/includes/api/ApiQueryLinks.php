@@ -243,7 +243,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		return array(
 			"api.php?action=query&prop={$name}&titles=Main%20Page" => "Get {$desc}s from the [[Main Page]]:",
 			"api.php?action=query&generator={$name}&titles=Main%20Page&prop=info" => "Get information about the {$desc} pages in the [[Main Page]]:",
-			"api.php?action=query&prop={$name}&titles=Main%20Page&{$this->prefix}namespace=2|10" => "Get {$desc}s from the Main Page in the wiki_user and Template namespaces:",
+			"api.php?action=query&prop={$name}&titles=Main%20Page&{$this->prefix}namespace=2|10" => "Get {$desc}s from the Main Page in the User and Template namespaces:",
 		);
 	}
 

@@ -40,7 +40,7 @@ Een lijst met bestaande speciale pagina’s staat op [[Special:SpecialPages|spec
 Dit kan voorkomen als je een verouderde verwijzing naar het verschil tussen twee versies van een pagina volgt of een versie opvraagt die is verwijderd.
 
 Als dit niet het geval is, heb je wellicht een fout in de software gevonden.
-Maak hiervan melding bij een [[Special:Listwiki_users/sysop|systeembeheerder]] van {{SITENAME}} en vermeld daarbij de URL van deze pagina.',
+Maak hiervan melding bij een [[Special:ListUsers/sysop|systeembeheerder]] van {{SITENAME}} en vermeld daarbij de URL van deze pagina.',
 'actionthrottledtext' => 'Als maatregel tegen spam is het aantal keren per tijdseenheid dat je deze handeling kunt verrichten beperkt.
 De limiet is overschreden.
 Probeer het over een aantal minuten opnieuw.',
@@ -53,7 +53,7 @@ Overweeg voor vertalingen om [//translatewiki.net/wiki/Main_Page?setlang=nl tran
 # Login and logout pages
 'logouttext' => "'''Je bent nu afgemeld.'''
 
-Je kunt {{SITENAME}} nu anoniem gebruiken of weer [[Special:wiki_userLogin|aanmelden]] als dezelfde of een andere gebruiker.
+Je kunt {{SITENAME}} nu anoniem gebruiken of weer [[Special:UserLogin|aanmelden]] als dezelfde of een andere gebruiker.
 Mogelijk worden nog een aantal pagina's weergegeven alsof je aangemeld bent totdat je de cache van uw browser leegt.",
 'welcomecreation' => '== Welkom, $1! ==
 Je gebruiker is geregistreerd.
@@ -71,7 +71,7 @@ Cookies zijn uitgeschakeld in je browser.
 Schakel deze optie aan en probeer het opnieuw.',
 'noname' => 'Je hebt geen geldige gebruikersnaam opgegeven.',
 'loginsuccess' => "'''Je bent nu aangemeld bij {{SITENAME}} als \"\$1\".'''",
-'nowiki_userspecified' => 'Je dient een gebruikersnaam op te geven.',
+'nouserspecified' => 'Je dient een gebruikersnaam op te geven.',
 'password-name-match' => 'Je wachtwoord en uw gebruikersnaam mogen niet overeenkomen.',
 'passwordremindertext' => 'Iemand, waarschijnlijk jijzelf, heeft vanaf IP-adres $1 een verzoek
 gedaan tot het toezenden van een nieuw wachtwoord voor {{SITENAME}}
@@ -105,7 +105,7 @@ Meld je aan en wijzig je wachtwoord.
 Negeer dit bericht als deze gebruiker zonder jouw medeweten is aangemaakt.',
 'login-throttled' => 'Je hebt recentelijk te vaak geprobeerd aan te melden met een onjuist wachtwoord.
 Wacht even voordat je het opnieuw probeert.',
-'suspicious-wiki_userlogout' => 'Je verzoek om af te melden is genegeerd, omdat het lijkt alsof het verzoek is verzonden door een browser of cacheproxy die stuk is.',
+'suspicious-userlogout' => 'Je verzoek om af te melden is genegeerd, omdat het lijkt alsof het verzoek is verzonden door een browser of cacheproxy die stuk is.',
 
 # Change password dialog
 'resetpass_announce' => 'Je bent aangemeld met een tijdelijke code die je per e-mail is toegezonden.
@@ -170,38 +170,38 @@ Gebruik de knop '''vorige''' in je browser als je hier per ongeluk terecht bent 
 Daarom wordt het IP-adres ter identificatie gebruikt.
 Het is mogelijk dat meerdere personen hetzelfde IP-adres gebruiken.
 Mogelijk ontvang je hier berichten die niet voor je bedoeld zijn.
-Als je dat wilt voorkomen, [[Special:wiki_userLogin/signup|registreer je]] of [[Special:wiki_userLogin|meld je aan]] om verwarring met andere anonieme gebruikers te voorkomen.''",
+Als je dat wilt voorkomen, [[Special:UserLogin/signup|registreer je]] of [[Special:UserLogin|meld je aan]] om verwarring met andere anonieme gebruikers te voorkomen.''",
 'noarticletext' => 'Deze pagina bevat geen tekst.
 Je kunt [[Special:Search/{{PAGENAME}}|naar deze term zoeken]] in andere pagina\'s, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} de logboeken doorzoeken] of [{{fullurl:{{FULLPAGENAME}}|action=edit}} deze pagina bewerken]</span>.',
 'noarticletext-nopermission' => 'Deze pagina bevat geen tekst.
 Je kunt [[Special:Search/{{PAGENAME}}|naar deze term zoeken]] in andere pagina\'s of
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} de logboeken doorzoeken]</span>.',
-'wiki_userpage-wiki_userdoesnotexist' => 'Je bewerkt een gebruikerspagina van een gebruiker die niet bestaat (gebruiker "<nowiki>$1</nowiki>").
+'userpage-userdoesnotexist' => 'Je bewerkt een gebruikerspagina van een gebruiker die niet bestaat (gebruiker "<nowiki>$1</nowiki>").
 Controleer of je deze pagina wel wilt aanmaken/bewerken.',
 'clearyourcache' => "'''Let op!''' Nadat je de wijzigingen hebt opgeslagen is het wellicht nodig je browsercache te legen.
 * '''Firefox / Safari:''' houd ''Shift'' ingedrukt terwijl je op ''Vernieuwen'' klikt of druk op ''Ctrl-F5'' of ''Ctrl-R'' (''⌘-Shift-R'' op een Mac)
 * '''Google Chrome:''' druk op ''Ctrl-Shift-R'' (''⌘-Shift-R'' op een Mac)
 * '''Internet Explorer:''' houd ''Ctrl'' ingedrukt terwijl je op ''Vernieuwen'' klikt of druk op ''Ctrl-F5''
 * '''Opera:''' leeg je cache in ''Extra → Voorkeuren''",
-'wiki_usercssyoucanpreview' => "'''Tip:''' Gebruik de knop \"{{int:showpreview}}\" om je nieuwe CSS te testen alvorens op te slaan.",
-'wiki_userjsyoucanpreview' => "'''Tip:''' Gebruik de knop \"{{int:showpreview}}\" om je nieuwe JavaScript te testen alvorens op te slaan.",
-'wiki_usercsspreview' => "'''Dit is alleen een voorvertoning van je persoonlijke CSS.
+'usercssyoucanpreview' => "'''Tip:''' Gebruik de knop \"{{int:showpreview}}\" om je nieuwe CSS te testen alvorens op te slaan.",
+'userjsyoucanpreview' => "'''Tip:''' Gebruik de knop \"{{int:showpreview}}\" om je nieuwe JavaScript te testen alvorens op te slaan.",
+'usercsspreview' => "'''Dit is alleen een voorvertoning van je persoonlijke CSS.
 Deze is nog niet opgeslagen!'''",
-'wiki_userjspreview' => "'''Let op: je test nu je persoonlijke JavaScript.'''
+'userjspreview' => "'''Let op: je test nu je persoonlijke JavaScript.'''
 '''De pagina is niet opgeslagen!'''",
-'wiki_userinvalidcssjstitle' => "'''Waarschuwing:''' er is geen skin \"\$1\".
-Let op: je eigen .css- en .js-pagina's beginnen met een kleine letter, bijvoorbeeld {{ns:wiki_user}}:Naam/vector.css in plaats van {{ns:wiki_user}}:Naam/Vector.css.",
+'userinvalidcssjstitle' => "'''Waarschuwing:''' er is geen skin \"\$1\".
+Let op: je eigen .css- en .js-pagina's beginnen met een kleine letter, bijvoorbeeld {{ns:user}}:Naam/vector.css in plaats van {{ns:user}}:Naam/Vector.css.",
 'previewnote' => "'''Let op: dit is een controlepagina; je tekst is niet opgeslagen!'''",
 'previewconflict' => 'Deze voorvertoning geeft aan hoe de tekst in het bovenste veld eruit ziet als je deze opslaat.',
 'session_fail_preview' => "'''Je bewerking is niet verwerkt, omdat de sessiegegevens verloren zijn gegaan.
 Probeer het opnieuw.
-Als het dan nog niet lukt, [[Special:wiki_userLogout|meld jezelf dan af]] en weer aan.'''",
+Als het dan nog niet lukt, [[Special:UserLogout|meld jezelf dan af]] en weer aan.'''",
 'session_fail_preview_html' => "'''Je bewerking is niet verwerkt, omdat sessiegegevens verloren zijn gegaan.'''
 
 ''Omdat in {{SITENAME}} ruwe HTML is ingeschakeld, is een voorvertoning niet mogelijk als bescherming tegen aanvallen met JavaScript.''
 
 '''Als dit een legitieme bewerking is, probeer het dan opnieuw.
-Als het dan nog niet lukt, [[Special:wiki_userLogout|meld jezelf dan af]] en weer aan.'''",
+Als het dan nog niet lukt, [[Special:UserLogout|meld jezelf dan af]] en weer aan.'''",
 'token_suffix_mismatch' => "'''Je bewerking is geweigerd, omdat je browser de leestekens in het bewerkingstoken onjuist heeft behandeld.
 De bewerking is geweigerd om verminking van de paginatekst te voorkomen.
 Dit gebeurt soms als er een webgebaseerde proxydienst wordt gebruikt die fouten bevat.'''",
@@ -231,7 +231,7 @@ Het is misschien verstandig om je tekst tijdelijk in een tekstbestand op te slaa
 
 Een beheerder heeft de database geblokkeerd om de volgende reden: $1",
 'nocreatetext' => "{{SITENAME}} heeft de mogelijkheid om nieuwe pagina's te maken beperkt.
-Je kunt reeds bestaande pagina's wijzigen of je kunt [[Special:wiki_userLogin|jezelf aanmelden of registreren]].",
+Je kunt reeds bestaande pagina's wijzigen of je kunt [[Special:UserLogin|jezelf aanmelden of registreren]].",
 'nocreate-loggedin' => "Je hebt geen rechten om nieuwe pagina's te maken.",
 'permissionserrorstext' => 'Je hebt geen rechten om dit te doen om de volgende {{PLURAL:$1|reden|redenen}}:',
 'permissionserrorstext-withaction' => 'Je hebt geen rechten om $2 om de volgende {{PLURAL:$1|reden|redenen}}:',
@@ -294,7 +294,7 @@ Je kunt gebruik maken van Google.
 De gegevens over {{SITENAME}} zijn mogelijk niet bijgewerkt.',
 
 # Preferences page
-'prefsnologintext' => 'Je moet <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} aangemeld]</span> zijn om je voorkeuren te kunnen instellen.',
+'prefsnologintext' => 'Je moet <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} aangemeld]</span> zijn om je voorkeuren te kunnen instellen.',
 'prefs-help-watchlist-token' => 'Door hier een geheime sleutel in te vullen wordt een RSS-feed voor je volglijst aangemaakt.
 Iedereen die deze sleutel kent kan je volglijst lezen, dus kies een veilige sleutel.
 Hier volgt een willekeurig gegenereerde waarde die je kunt gebruiken: $1',
@@ -310,23 +310,23 @@ Deze moet minder dan $1 {{PLURAL:$1|karakters|karakters}} bevatten.',
 'prefs-help-email' => 'E-mailadres is optioneel, maar maakt het mogelijk om je jouw wachtwoord te e-mailen als je het bent vergeten.
 Je kunt ook anderen in staat stellen per e-mail contact met je op te nemen via een verwijzing op je gebruikers- en overlegpagina zonder dat u uw identiteit prijsgeeft.',
 
-# wiki_user rights
-'wiki_userrights-groups-help' => 'Je kunt de groepen wijzigen waar deze gebruiker lid van is.
+# User rights
+'userrights-groups-help' => 'Je kunt de groepen wijzigen waar deze gebruiker lid van is.
 * Een aangekruist vakje betekent dat de gebruiker lid is van de groep.
 * Een niet aangekruist vakje betekent dat de gebruiker geen lid is van de groep.
 * Een "*" betekent dat je een gebruiker niet uit een groep kunt verwijderen nadat je die hebt toegevoegd of vice versa.',
-'wiki_userrights-no-interwiki' => "Je hebt geen rechten om gebruikersrechten op andere wiki's te wijzigen.",
-'wiki_userrights-nologin' => 'Je moet jezelf [[Special:wiki_userLogin|aanmelden]] met een gebruiker met de juiste rechten om gebruikersrechten toe te wijzen.',
-'wiki_userrights-notallowed' => 'Je hebt geen rechten om gebruikersrechten toe te wijzen.',
-'wiki_userrights-changeable-col' => 'Groepen die je kunt beheren',
-'wiki_userrights-unchangeable-col' => 'Groepen die je niet kunt beheren',
+'userrights-no-interwiki' => "Je hebt geen rechten om gebruikersrechten op andere wiki's te wijzigen.",
+'userrights-nologin' => 'Je moet jezelf [[Special:UserLogin|aanmelden]] met een gebruiker met de juiste rechten om gebruikersrechten toe te wijzen.',
+'userrights-notallowed' => 'Je hebt geen rechten om gebruikersrechten toe te wijzen.',
+'userrights-changeable-col' => 'Groepen die je kunt beheren',
+'userrights-unchangeable-col' => 'Groepen die je niet kunt beheren',
 
 # Recent changes linked
 'recentchangeslinked-summary' => "Deze speciale pagina geeft de laatste bewerkingen weer op pagina's waarheen verwezen wordt vanaf een aangegeven pagina of vanuit pagina's in een aangegeven pagina een categorie.
 Pagina's die op [[Special:Watchlist|je volglijst]] staan worden '''vet''' weergegeven.",
 
 # Upload
-'uploadnologintext' => 'Je moet [[Special:wiki_userLogin|aangemeld]] zijn om bestanden te uploaden.',
+'uploadnologintext' => 'Je moet [[Special:UserLogin|aangemeld]] zijn om bestanden te uploaden.',
 'empty-file' => 'Het bestand dat je probeerde te uploaden had geen inhoud.',
 'file-too-large' => 'Het bestand dat je probeerde te uploaden was te groot.',
 'hookaborted' => 'De wijziging die je probeerde te maken is afgebroken door een uitbreidingshook.',
@@ -400,19 +400,19 @@ Je kunt het misschien proberen als het minder druk is.',
 'alllogstext' => 'Dit is het gecombineerde logboek van {{SITENAME}}.
 Je kunt ook kiezen voor specifieke logboeken en filteren op gebruiker (hoofdlettergevoelig) en paginanaam (hoofdlettergevoelig).',
 
-# E-mail wiki_user
-'mailnologintext' => 'Je moet [[Special:wiki_userLogin|aangemeld]] zijn en een geldig e-mailadres in je [[Special:Preferences|voorkeuren]] vermelden om andere gebruikers te kunnen e-mailen.',
+# E-mail user
+'mailnologintext' => 'Je moet [[Special:UserLogin|aangemeld]] zijn en een geldig e-mailadres in je [[Special:Preferences|voorkeuren]] vermelden om andere gebruikers te kunnen e-mailen.',
 'emailpagetext' => 'Via dit formulier kun je een e-mail aan deze gebruiker verzenden.
 Het e-mailadres dat je hebt opgegeven bij [[Special:Preferences|je voorkeuren]] wordt als afzender gebruikt.
 De ontvanger kan dus direct naar je reageren.',
-'wiki_usermaildisabledtext' => 'Je kunt geen e-mail verzenden naar andere gebruikers op deze wiki',
+'usermaildisabledtext' => 'Je kunt geen e-mail verzenden naar andere gebruikers op deze wiki',
 'emailccsubject' => 'Kopie van je bericht aan $1: $2',
 'emailsenttext' => 'Je e-mail is verzonden.',
 
 # Watchlist
 'nowatchlist' => 'Je volglijst is leeg.',
 'watchlistanontext' => 'Om je volglijst te bekijken of te bewerken moet je je $1.',
-'watchnologintext' => 'Je dient [[Special:wiki_userLogin|aangemeld]] te zijn om je volglijst te bewerken.',
+'watchnologintext' => 'Je dient [[Special:UserLogin|aangemeld]] te zijn om je volglijst te bewerken.',
 'addedwatchtext' => "De pagina \"[[:\$1]]\" is toegevoegd aan je [[Special:Watchlist|volglijst]].
 Toekomstige bewerkingen van deze pagina en de bijbehorende overlegpagina worden op [[Special:Watchlist|je volglijst]] vermeld en worden '''vet''' weergegeven in de [[Special:RecentChanges|lijst van recente wijzigingen]].",
 'removedwatchtext' => 'De pagina "[[:$1]]" is van [[Special:Watchlist|je volglijst]] verwijderd.',
@@ -482,8 +482,8 @@ Neem contact op met je Internet-provider of je helpdesk en stel die op de hoogte
 'sorbs_create_account_reason' => 'Je IP-adres staat bekend als open proxyserver in de DNS-blacklist die {{SITENAME}} gebruikt.
 Je kunt geen gebruiker registreren.',
 'cant-block-while-blocked' => 'Je kunt andere gebruikers niet blokkeren terwijl je zelf geblokkeerd bent.',
-'cant-see-hidden-wiki_user' => "De gebruiker die je probeert te blokken is al geblokkeerd en verborgen.
-Omdat je het recht 'hidewiki_user' niet hebt, kun je de blokkade van de gebruiker niet bekijken of bewerken.",
+'cant-see-hidden-user' => "De gebruiker die je probeert te blokken is al geblokkeerd en verborgen.
+Omdat je het recht 'hideuser' niet hebt, kun je de blokkade van de gebruiker niet bekijken of bewerken.",
 'ipbblocked' => 'Je kunt geen andere gebruikers (de)blokkeren, omdat je zelf geblokkeerd bent',
 'ipbnounblockself' => 'Je mag jezelf niet deblokkeren',
 
@@ -514,13 +514,13 @@ Zorg ervoor dat je die gevolgen overziet voordat je deze handeling uitvoert.",
 'movepagetalktext' => "De bijbehorende overlegpagina krijgt automatisch een andere naam, '''tenzij''':
 * De overlegpagina onder de nieuwe naam al bestaat;
 * Je het onderstaande vinkje deselecteert.",
-'movewiki_userpage-warning' => "'''Waarschuwing:''' Je gaat een gebruikerspagina hernoemen.
+'moveuserpage-warning' => "'''Waarschuwing:''' Je gaat een gebruikerspagina hernoemen.
 Houd er rekening mee dat alleen de pagina wordt hernoemd, ''niet'' de gebruiker.",
-'movenologintext' => 'Je moet [[Special:wiki_userLogin|aangemeld]] zijn om een pagina te hernoemen.',
+'movenologintext' => 'Je moet [[Special:UserLogin|aangemeld]] zijn om een pagina te hernoemen.',
 'movenotallowed' => "Je hebt geen rechten om pagina's te hernoemen.",
 'movenotallowedfile' => 'Je hebt geen rechten om bestanden te hernoemen.',
-'cant-move-wiki_user-page' => "Je hebt geen rechten om gebruikerspagina's te hernoemen (met uitzondering van subpagina's).",
-'cant-move-to-wiki_user-page' => 'Je hebt geen rechten om een pagina naar een gebruikerspagina te hernoemen. Hernoemen naar een subpagina is wel mogelijk.',
+'cant-move-user-page' => "Je hebt geen rechten om gebruikerspagina's te hernoemen (met uitzondering van subpagina's).",
+'cant-move-to-user-page' => 'Je hebt geen rechten om een pagina naar een gebruikerspagina te hernoemen. Hernoemen naar een subpagina is wel mogelijk.',
 'cantmove-titleprotected' => 'Je kunt geen pagina naar deze paginaam hernoemen, omdat deze paginanaam beveiligd is tegen het aanmaken ervan.',
 'delete_and_move_text' => '==Verwijdering nodig==
 Onder de naam "[[:$1]]" bestaat al een pagina.
@@ -542,8 +542,8 @@ Ga naar [//www.mediawiki.org/wiki/Localisation MediaWiki-lokalisatie] en [//tran
 'importtext' => 'Gebruik de [[Special:Export|exportfunctie]] in de wiki waar de informatie vandaan komt, sla de uitvoer op je eigen systeem op, en voeg die daarna hier toe.',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Jouw gebruikerspagina',
-'tooltip-pt-anonwiki_userpage' => 'Gebruikerspagina voor je IP-adres',
+'tooltip-pt-userpage' => 'Jouw gebruikerspagina',
+'tooltip-pt-anonuserpage' => 'Gebruikerspagina voor je IP-adres',
 'tooltip-pt-mytalk' => 'Jouw overlegpagina',
 'tooltip-pt-watchlist' => "Overzicht van pagina's die je volgt",
 'tooltip-pt-mycontris' => 'Overzicht van je bijdragen',
@@ -586,7 +586,7 @@ Controleer je e-mailadres op ongeldige tekens.
 Het e-mailprogramma meldde: $1',
 'confirmemail_needlogin' => 'Je moet $1 om je e-mailadres te bevestigen.',
 'confirmemail_success' => 'Je e-mailadres is bevestigd.
-Je kunt jezelf nu [[Special:wiki_userLogin|aanmelden]] en {{SITENAME}} gebruiken.',
+Je kunt jezelf nu [[Special:UserLogin|aanmelden]] en {{SITENAME}} gebruiken.',
 'confirmemail_loggedin' => 'Je e-mailadres is nu bevestigd.',
 'confirmemail_error' => 'Er is iets verkeerd gegaan tijdens het opslaan van je bevestiging.',
 'confirmemail_body' => 'Iemand, waarschijnlijk jijzelf, met het IP-adres $1,
@@ -616,7 +616,7 @@ De bevestigingscode vervalt op $4.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Let op''': deze pagina is verwijderd terwijl je bezig was met je bewerking!",
-'confirmrecreate' => "Nadat je begonnen bent met je wijziging heeft [[wiki_user:$1|$1]] ([[wiki_user talk:$1|overleg]]) deze pagina verwijderd met opgave van de volgende reden:
+'confirmrecreate' => "Nadat je begonnen bent met je wijziging heeft [[User:$1|$1]] ([[User talk:$1|overleg]]) deze pagina verwijderd met opgave van de volgende reden:
 : ''$2''
 Bevestig dat je de pagina opnieuw wilt aanmaken.",
 

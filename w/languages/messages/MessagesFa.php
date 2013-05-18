@@ -67,7 +67,7 @@ $namespaceAliases = array(
 );
 
 $specialPageAliases = array(
-	'Activewiki_users'               => array( 'کاربران_فعال' ),
+	'Activeusers'               => array( 'کاربران_فعال' ),
 	'Allmessages'               => array( 'تمام_پیغام‌ها' ),
 	'Allpages'                  => array( 'تمام_صفحه‌ها' ),
 	'Ancientpages'              => array( 'صفحه‌های_قدیمی' ),
@@ -89,7 +89,7 @@ $specialPageAliases = array(
 	'Disambiguations'           => array( 'ابهام‌زدایی' ),
 	'DoubleRedirects'           => array( 'تغییرمسیرهای_دوتایی' ),
 	'EditWatchlist'             => array( 'ویرایش_پی‌گیری‌ها' ),
-	'Emailwiki_user'                 => array( 'نامه_به_کاربر' ),
+	'Emailuser'                 => array( 'نامه_به_کاربر' ),
 	'Export'                    => array( 'برون_بری_صفحه' ),
 	'Fewestrevisions'           => array( 'کمترین_نسخه' ),
 	'FileDuplicateSearch'       => array( 'جستجوی_پرونده_تکراری' ),
@@ -103,7 +103,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'فهرست_پرونده‌ها', 'فهرست_تصاویر' ),
 	'Listgrouprights'           => array( 'اختیارات_گروه‌های_کاربری' ),
 	'Listredirects'             => array( 'فهرست_تغییرمسیرها' ),
-	'Listwiki_users'                 => array( 'فهرست_کاربران' ),
+	'Listusers'                 => array( 'فهرست_کاربران' ),
 	'Lockdb'                    => array( 'قفل_کردن_پایگاه_داده' ),
 	'Log'                       => array( 'سیاهه‌ها' ),
 	'Lonelypages'               => array( 'صفحه‌های_یتیم' ),
@@ -154,9 +154,9 @@ $specialPageAliases = array(
 	'Unwatchedpages'            => array( 'صفحه‌های_پی‌گیری_نشده' ),
 	'Upload'                    => array( 'بارگذاری_پرونده' ),
 	'UploadStash'               => array( 'بارگذاری_انبوه' ),
-	'wiki_userlogin'                 => array( 'ورود_به_سامانه' ),
-	'wiki_userlogout'                => array( 'خروج_از_سامانه' ),
-	'wiki_userrights'                => array( 'اختیارات_کاربر' ),
+	'Userlogin'                 => array( 'ورود_به_سامانه' ),
+	'Userlogout'                => array( 'خروج_از_سامانه' ),
+	'Userrights'                => array( 'اختیارات_کاربر' ),
 	'Version'                   => array( 'نسخه' ),
 	'Wantedcategories'          => array( 'رده‌های_مورد_نیاز' ),
 	'Wantedfiles'               => array( 'پرونده‌های_مورد_نیاز' ),
@@ -191,7 +191,7 @@ $rtl = true;
 
 
 /**
- * A list of date format preference keys which can be selected in wiki_user
+ * A list of date format preference keys which can be selected in user
  * preferences. New preference keys can be added, provided they are supported
  * by the language class's timeanddate(). Only the 5 keys listed below are
  * supported by the wikitext converter (DateFormatter.php).
@@ -210,7 +210,7 @@ $datePreferences = array(
 );
 
 /**
- * The date format to use for generated dates in the wiki_user interface.
+ * The date format to use for generated dates in the user interface.
  * This may be one of the above date preferences, or the special value
  * "dmy or mdy", which uses mdy if $wgAmericanDates is true, and dmy
  * if $wgAmericanDates is false.
@@ -219,7 +219,7 @@ $defaultDateFormat = 'dmy or mdy';
 
 /**
  * Associative array mapping old numeric date formats, which may still be
- * stored in wiki_user preferences, to the new string formats.
+ * stored in user preferences, to the new string formats.
  */
 $datePreferenceMigrationMap = array(
 	'default',
@@ -296,8 +296,8 @@ $magicWords = array(
 	'numberofpages'             => array( '1', 'تعدادصفحه‌ها', 'NUMBEROFPAGES' ),
 	'numberofarticles'          => array( '1', 'تعدادمقاله‌ها', 'NUMBEROFARTICLES' ),
 	'numberoffiles'             => array( '1', 'تعدادپرونده‌ها', 'NUMBEROFFILES' ),
-	'numberofwiki_users'             => array( '1', 'تعدادکاربران', 'NUMBEROFUSERS' ),
-	'numberofactivewiki_users'       => array( '1', 'کاربران‌فعال', 'کاربران_فعال', 'NUMBEROFACTIVEUSERS' ),
+	'numberofusers'             => array( '1', 'تعدادکاربران', 'NUMBEROFUSERS' ),
+	'numberofactiveusers'       => array( '1', 'کاربران‌فعال', 'کاربران_فعال', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'             => array( '1', 'تعدادویرایش‌ها', 'NUMBEROFEDITS' ),
 	'numberofviews'             => array( '1', 'تعدادبازدید', 'NUMBEROFVIEWS' ),
 	'pagename'                  => array( '1', 'نام‌صفحه', 'نام_صفحه', 'PAGENAME' ),
@@ -371,7 +371,7 @@ $magicWords = array(
 	'revisionmonth1'            => array( '1', 'ماه‌نسخه۱', 'ماه_نسخه_۱', 'REVISIONMONTH1' ),
 	'revisionyear'              => array( '1', 'سال‌نسخه', 'سال_نسخه', 'REVISIONYEAR' ),
 	'revisiontimestamp'         => array( '1', 'زمان‌یونیکسی‌نسخه', 'زمان‌نسخه', 'زمان_یونیکسی_نسخه', 'زمان_نسخه', 'REVISIONTIMESTAMP' ),
-	'revisionwiki_user'              => array( '1', 'کاربرنسخه', 'کاربر_نسخه', 'REVISIONUSER' ),
+	'revisionuser'              => array( '1', 'کاربرنسخه', 'کاربر_نسخه', 'REVISIONUSER' ),
 	'plural'                    => array( '0', 'جمع:', 'PLURAL:' ),
 	'fullurl'                   => array( '0', 'نشانی‌کامل:', 'نشانی_کامل:', 'FULLURL:' ),
 	'fullurle'                  => array( '0', 'نشانی‌کامل‌کد:', 'نشانی_کامل_کد:', 'FULLURLE:' ),
@@ -431,7 +431,7 @@ $imageFiles = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'خط کشیدن زیر پیوندها:',
 'tog-justify' => 'بندها تمام‌چین نمایش یابند',
 'tog-hideminor' => 'تغییرات جزئی از فهرست تغییرات اخیر پنهان شوند',
@@ -455,7 +455,7 @@ $messages = array(
 'tog-previewonfirst' => 'پیش‌نمایش هنگام اولین ویرایش نمایش یابد',
 'tog-nocache' => 'حافظهٔ نهانی مرورگر از کار انداخته شود',
 'tog-enotifwatchlistpages' => 'اگر صفحه یا پرونده‌ای از فهرست پی‌گیری‌هایم ویرایش شد به من نامه‌ای فرستاده شود',
-'tog-enotifwiki_usertalkpages' => 'هنگامی که در صفحهٔ بحث کاربری‌ام تغییری صورت می‌گیرد به من نامه‌ای فرستاده شود',
+'tog-enotifusertalkpages' => 'هنگامی که در صفحهٔ بحث کاربری‌ام تغییری صورت می‌گیرد به من نامه‌ای فرستاده شود',
 'tog-enotifminoredits' => 'برای تغییرات جزئی در صفحه‌ها و پرونده‌ها هم به من نامه‌ای فرستاده شود',
 'tog-enotifrevealaddr' => 'نشانی رایانامهٔ من در رایانامه‌های اطلاع‌رسانی نمایش یابد',
 'tog-shownumberswatching' => 'شمار کاربران پی‌گیری‌کننده نمایش یابد',
@@ -637,7 +637,7 @@ $messages = array(
 'talk' => 'بحث',
 'views' => 'بازدیدها',
 'toolbox' => 'جعبه‌ابزار',
-'wiki_userpage' => 'نمایش صفحهٔ کاربر',
+'userpage' => 'نمایش صفحهٔ کاربر',
 'projectpage' => 'دیدن صفحهٔ پروژه',
 'imagepage' => 'نمایش صفحهٔ پرونده',
 'mediawikipage' => 'نمایش صفحهٔ پیغام',
@@ -663,7 +663,7 @@ $1',
 'pool-queuefull' => 'صف مخزن پر است',
 'pool-errorunknown' => 'خطای ناشناخته',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'دربارهٔ {{SITENAME}}',
 'aboutpage' => 'Project:درباره',
 'copyright' => 'محتوا تحت اجازه‌نامهٔ $1 در دسترس است.',
@@ -697,8 +697,8 @@ $1',
 'youhavenewmessages' => '$1 دارید ($2).',
 'newmessageslink' => 'پیام‌های جدید',
 'newmessagesdifflink' => 'آخرین تغییر',
-'youhavenewmessagesfromwiki_users' => 'شما از {{PLURAL:$3|یک کاربر دیگر|$3  کاربر}} $1 دارید ($2).',
-'youhavenewmessagesmanywiki_users' => 'شما از تعدادی کاربر $1 دارید ($2).',
+'youhavenewmessagesfromusers' => 'شما از {{PLURAL:$3|یک کاربر دیگر|$3  کاربر}} $1 دارید ($2).',
+'youhavenewmessagesmanyusers' => 'شما از تعدادی کاربر $1 دارید ($2).',
 'newmessageslinkplural' => '{{PLURAL:$1|پیام جدید}}',
 'newmessagesdifflinkplural' => '{{formatnum:$1}} {{PLURAL:$1|تغییر|تغییر}} اخیر',
 'youhavenewmessagesmulti' => 'پیام‌های جدیدی در $1 دارید.',
@@ -731,7 +731,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'صفحه',
-'nstab-wiki_user' => 'صفحهٔ کاربر',
+'nstab-user' => 'صفحهٔ کاربر',
 'nstab-media' => 'رسانه',
 'nstab-special' => 'صفحهٔ ویژه',
 'nstab-project' => 'صفحهٔ پروژه',
@@ -778,7 +778,7 @@ $1',
 این مشکل معمولاً به علت دنبال‌کردن یک پیوند تفاوت تاریخ‌گذشته یا تاریخچهٔ صفحه‌ای که حذف شده‌است، رخ می‌دهد.
 
 در غیر این صورت ممکن است اشکالی در نرم‌افزار پیدا کرده باشد.
-لطفاً این مشکل را با ذکر نشانی اینترنتی به یکی از [[Special:Listwiki_users/sysop|مدیران]] گزارش دهید.',
+لطفاً این مشکل را با ذکر نشانی اینترنتی به یکی از [[Special:ListUsers/sysop|مدیران]] گزارش دهید.',
 'missingarticle-rev' => '(شمارهٔ نسخه: $1)',
 'missingarticle-diff' => '(تفاوت: $1، $2)',
 'readonly_lag' => 'پایگاه داده به طور خودکار قفل شده‌است تا نسخه‌های پشتیبان با نسخهٔ اصلی هماهنگ شوند',
@@ -830,7 +830,7 @@ $2',
 'customcssprotected' => 'شما اجازهٔ ویرایش این صفحهٔ سی‌اس‌اس را ندارید، زیرا حاوی تنظیم‌های شخصی یک کاربر دیگر است.',
 'customjsprotected' => 'شما اجازهٔ ویرایش این صفحهٔ جاوااسکریپت را ندارید، زیرا حاوی تنظیم‌های شخصی یک کاربر دیگر است.',
 'ns-specialprotected' => 'صفحه‌های ویژه غیر قابل ویرایش هستند.',
-'titleprotected' => "این عنوان توسط [[wiki_user:$1|$1]] در برابر ایجاد محافظت شده‌است.
+'titleprotected' => "این عنوان توسط [[User:$1|$1]] در برابر ایجاد محافظت شده‌است.
 دلیل ارائه‌شده این است: «''$2''».",
 'filereadonlyerror' => 'تغییر پرونده «$1» ممکن نیست چون مخزن پرونده «$2» در حالت فقط خواندنی قرار دارد.
 
@@ -848,7 +848,7 @@ $2',
 # Login and logout pages
 'logouttext' => "'''هم‌اکنون از سامانه خارج شدید.'''
 
-شما می‌توانید به استفادهٔ گمنام از {{SITENAME}} ادامه دهید، یا با همین حساب کاربری یا حسابی دیگر [[Special:wiki_userLogin|به سامانه وارد شوید]].
+شما می‌توانید به استفادهٔ گمنام از {{SITENAME}} ادامه دهید، یا با همین حساب کاربری یا حسابی دیگر [[Special:UserLogin|به سامانه وارد شوید]].
 توجه کنید که تا زمانی که میانگیر مرورگرتان را پاک نکنید، بعضی صفحه‌ها ممکن است به گونه‌ای نمایش یابند که گویی هنوز از سامانه خارج نشده‌اید.",
 'welcomecreation' => '==$1، خوش آمدید!==
 حساب شما ایجاد شد.
@@ -864,21 +864,21 @@ $2',
 'login' => 'ورود به سامانه',
 'nav-login-createaccount' => 'ورود به سامانه / ایجاد حساب کاربری',
 'loginprompt' => 'برای ورود به {{SITENAME}} باید کوکی‌ها را فعال کنید.',
-'wiki_userlogin' => 'ورود به سامانه / ایجاد حساب کاربری',
-'wiki_userloginnocreate' => 'ورود به سامانه',
+'userlogin' => 'ورود به سامانه / ایجاد حساب کاربری',
+'userloginnocreate' => 'ورود به سامانه',
 'logout' => 'خروج از سامانه',
-'wiki_userlogout' => 'خروج از سامانه',
+'userlogout' => 'خروج از سامانه',
 'notloggedin' => 'به سامانه وارد نشده‌اید',
 'nologin' => 'حساب کاربری ندارید؟ $1.',
 'nologinlink' => 'یک حساب کاربری جدید بسازید',
 'createaccount' => 'ایجاد حساب کاربری',
 'gotaccount' => 'حساب کاربری دارید؟ $1.',
 'gotaccountlink' => 'به سامانه وارد شوید',
-'wiki_userlogin-resetlink' => 'جزئیات ورود را فراموش کرده‌اید؟',
+'userlogin-resetlink' => 'جزئیات ورود را فراموش کرده‌اید؟',
 'createaccountmail' => 'با رایانامه',
 'createaccountreason' => 'دلیل:',
 'badretype' => 'گذرواژه‌هایی که وارد کرده‌اید یکسان نیستند.',
-'wiki_userexists' => 'نام کاربری‌ای که وارد کردید قبلاً استفاده شده‌است.
+'userexists' => 'نام کاربری‌ای که وارد کردید قبلاً استفاده شده‌است.
 لطفاً یک نام دیگر انتخاب کنید.',
 'loginerror' => 'خطا در ورود به سامانه',
 'createaccounterror' => 'امکان ساختن این حساب وجود ندارد: $1',
@@ -894,13 +894,13 @@ $2',
 'noname' => 'شما نام کاربری معتبری مشخص نکرده‌اید.',
 'loginsuccesstitle' => 'ورود موفقیت‌آمیز به سامانه',
 'loginsuccess' => "'''شما اکنون با نام «$1» به {{SITENAME}} وارد شده‌اید.'''",
-'nosuchwiki_user' => 'کاربری با نام «$1» وجود ندارد.
+'nosuchuser' => 'کاربری با نام «$1» وجود ندارد.
 نام کاربری به بزرگی و کوچکی حروف حساس است.
-املای نام را بررسی کنید، یا [[Special:wiki_userLogin/signup|یک حساب کاربری جدید بسازید]].',
-'nosuchwiki_usershort' => "هیچ کاربری با نام ''$1'' وجود ندارد.
+املای نام را بررسی کنید، یا [[Special:UserLogin/signup|یک حساب کاربری جدید بسازید]].',
+'nosuchusershort' => "هیچ کاربری با نام ''$1'' وجود ندارد.
 املایتان را وارسی کنید.",
-'nowiki_userspecified' => 'باید یک نام کاربری مشخص کنید.',
-'login-wiki_userblocked' => 'این کاربر بسته شده‌است. ورود به سامانه مجاز نیست.',
+'nouserspecified' => 'باید یک نام کاربری مشخص کنید.',
+'login-userblocked' => 'این کاربر بسته شده‌است. ورود به سامانه مجاز نیست.',
 'wrongpassword' => 'گذرواژه‌ای که وارد کردید نادرست است.
 لطفاً دوباره امتحان کنید.',
 'wrongpasswordempty' => 'گذرواژه‌ای که وارد کرده‌اید، خالی است.
@@ -944,16 +944,16 @@ $2',
 شما باید به سامانه وارد شوید تا گذرواژهٔ خود را تغییر بدهید.
 
 اگر این حساب اشتباهی ساخته شده است، این پیغام را نادیده بگیرید.',
-'wiki_usernamehasherror' => 'نام کاربری نمی‌تواند شامل نویسه‌های درهم باشد',
+'usernamehasherror' => 'نام کاربری نمی‌تواند شامل نویسه‌های درهم باشد',
 'login-throttled' => 'شما چندین‌بار برای ورود به سامانه تلاش کرده‌اید.
 لطفاً پیش از آنکه دوباره تلاش کنید کمی صبر کنید.',
 'login-abort-generic' => 'ورود شما به سیستم ناموفق بود - خاتمهٔ ناگهانی داده شد',
 'loginlanguagelabel' => 'زبان: $1',
-'suspicious-wiki_userlogout' => 'درخواست شما برای خروج از سامانه رد شد زیرا به نظر می‌رسد که این درخواست توسط یک مرورگر معیوب یا پروکسی میانگیر ارسال شده باشد.',
+'suspicious-userlogout' => 'درخواست شما برای خروج از سامانه رد شد زیرا به نظر می‌رسد که این درخواست توسط یک مرورگر معیوب یا پروکسی میانگیر ارسال شده باشد.',
 
 # E-mail sending
 'php-mail-error-unknown' => 'خطای ناشناخته در تابع  mail()‎ پی‌اچ‌پی',
-'wiki_user-mail-no-addy' => 'تلاش برای ارسال نامه بدون یک آدرس رایانامه.',
+'user-mail-no-addy' => 'تلاش برای ارسال نامه بدون یک آدرس رایانامه.',
 
 # Change password dialog
 'resetpass' => 'تغییر گذرواژه',
@@ -981,7 +981,7 @@ $2',
 'passwordreset-legend' => 'بازنشانی گذرواژه',
 'passwordreset-disabled' => 'بازنشانی گذرواژه در این ویکی غیرفعال شده است.',
 'passwordreset-pretext' => '{{PLURAL:$1||یکی از قطعه‌های داده را در زیر وارد کنید}}',
-'passwordreset-wiki_username' => 'نام کاربری:',
+'passwordreset-username' => 'نام کاربری:',
 'passwordreset-domain' => 'دامنه:',
 'passwordreset-capture' => 'رایانامهٔ نهایی نشان داده شود؟',
 'passwordreset-capture-help' => 'اگر این گزینه را علامت بزنید رایانامهٔ (حاوی گذرواژهٔ موقت) به شما نشان داده خواهد شد و برای کاربر نیز فرستاده خواهد شد.',
@@ -993,7 +993,7 @@ $2
 
 {{PLURAL:$3|این گذرواژهٔ موقت|این گذرواژه‌های موقت}} پس از {{PLURAL:$5|یک روز|$5 روز}} باطل خواهند شد.
 شما باید اکنون وارد سایت شوید و گذرواژه‌ای جدید برگزینید. اگر فکر می‌کنید شخص دیگری این درخواست را داده‌است یا اگر گذرواژهٔ اصلی‌تان را به یاد آوردید و دیگر نمی‌خواهید آن را تغییر دهید، می‌توانید این پیغام را نادیده بگیرید و به استفاده از گذرواژهٔ قبلی‌تان ادامه دهید.',
-'passwordreset-emailtext-wiki_user' => 'کاربر $1 از {{SITENAME}} درخواست یادآور جزئیات حساب شما را برای {{SITENAME}}
+'passwordreset-emailtext-user' => 'کاربر $1 از {{SITENAME}} درخواست یادآور جزئیات حساب شما را برای {{SITENAME}}
 ($4) کرده است. {{PLURAL:$3|حساب|حساب‌های}} کاربری زیر با این رایانشانی مرتبط است:
 
 $2
@@ -1094,7 +1094,7 @@ $2
 'loginreqlink' => 'به سامانه وارد شوید',
 'loginreqpagetext' => 'برای دیدن صفحه‌های دیگر باید $1.',
 'accmailtitle' => 'گذرواژه فرستاده شد.',
-'accmailtext' => "یک گذرواژهٔ تصادفی ساخته شده برای [[wiki_user talk:$1|$1]] برای $2 ارسال شد.
+'accmailtext' => "یک گذرواژهٔ تصادفی ساخته شده برای [[User talk:$1|$1]] برای $2 ارسال شد.
 
 گذرواژهٔ این حساب کاربری تازه، پس از ورود به سامانه از طریق ''[[Special:ChangePassword|تغییر گذرواژه]]'' قابل تغییر است.",
 'newarticle' => '(جدید)',
@@ -1104,7 +1104,7 @@ $2
 'anontalkpagetext' => "----''این صفحهٔ بحث برای کاربر گمنامی است که هنوز حسابی درست نکرده است یا از آن استفاده نمی‌کند.
 بنا بر این برای شناسایی‌اش مجبوریم از نشانی آی‌پی عددی استفاده کنیم.
 چنین نشانی‌های آی‌پی ممکن است توسط چندین کاربر به شکل مشترک استفاده شود.
-اگر شما کاربر گمنامی هستید و تصور می‌کنید اظهار نظرات نامربوط به شما صورت گرفته است، لطفاً برای پیشگیری از اشتباه گرفته شدن با کاربران گمنام دیگر در آینده [[Special:wiki_userLogin/signup|حسابی ایجاد کنید]] یا [[Special:wiki_userLogin|به سامانه وارد شوید]].''",
+اگر شما کاربر گمنامی هستید و تصور می‌کنید اظهار نظرات نامربوط به شما صورت گرفته است، لطفاً برای پیشگیری از اشتباه گرفته شدن با کاربران گمنام دیگر در آینده [[Special:UserLogin/signup|حسابی ایجاد کنید]] یا [[Special:UserLogin|به سامانه وارد شوید]].''",
 'noarticletext' => 'این صفحه هم‌اکنون دارای هیچ متنی نیست.
 شما می‌توانید در صفحه‌های دیگر [[Special:Search/{{PAGENAME}}|عنوان این صفحه را جستجو کنید]]،
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} سیاهه‌های مرتبط را جستجو کنید]،
@@ -1116,9 +1116,9 @@ $2
 
 معمولاً در اثر پیوند به تاریخچهٔ به‌روز نشدهٔ صفحهٔ حذف شده است.
 می‌توانید جزئیات بیشتر را در [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} سیاههٔ حذف] بیابید.',
-'wiki_userpage-wiki_userdoesnotexist' => 'حساب کاربر «<nowiki>$1</nowiki>» ثبت نشده‌است.
+'userpage-userdoesnotexist' => 'حساب کاربر «<nowiki>$1</nowiki>» ثبت نشده‌است.
 لطفاً مطمئن شوید که می‌خواهید این صفحه را ایجاد یا ویرایش کنید.',
-'wiki_userpage-wiki_userdoesnotexist-view' => 'حساب کاربری «$1» ثبت نشده‌است.',
+'userpage-userdoesnotexist-view' => 'حساب کاربری «$1» ثبت نشده‌است.',
 'blocked-notice-logextract' => 'دسترسی این کاربر در حال حاضر بسته است.
 آخرین مورد سیاهه قطع دسترسی در زیر آمده‌است:',
 'clearyourcache' => "'''نکته:''' پس از ذخیره‌کردن ممکن است برای دیدن تغییرات نیاز باشد که حافظهٔ نهانی مرورگر خود را پاک کنید.
@@ -1126,18 +1126,18 @@ $2
 *'''گوگل کروم:'''کلیدهای ''Ctrl+Shift+R'' را با هم فشار دهید. (در رایانه‌های اپل مکینتاش کلید‌های ''⌘-Shift-R'')
 *'''اینترنت اکسپلورر:''' کلید ''Ctrl'' را نگه‌دارید و روی دکمهٔ ''Refresh'' کلیک کنید، یا کلید‌های ''Ctrl-F5'' را با هم فشار دهید
 *'''اپرا:''' حافظهٔ نهانی مرورگر را از طریق منوی ''Tools &rarr; Preferences'' پاک کنید",
-'wiki_usercssyoucanpreview' => "'''نکته:''' پیش از ذخیره‌کردن فایل سی‌اس‌اس خود، با دکمهٔ '''{{int:showpreview}}''' آن را آزمایش کنید.",
-'wiki_userjsyoucanpreview' => "'''نکته:''' پیش از ذخیره‌کردن فایل جاوااسکریپت خود، با دکمهٔ '''{{int:showpreview}}''' آن را آزمایش کنید.",
-'wiki_usercsspreview' => "'''فراموش مکنید که شما فقط دارید پیش‌نمایش سی‌اس‌اس کاربری‌تان را می‌بینید.'''
+'usercssyoucanpreview' => "'''نکته:''' پیش از ذخیره‌کردن فایل سی‌اس‌اس خود، با دکمهٔ '''{{int:showpreview}}''' آن را آزمایش کنید.",
+'userjsyoucanpreview' => "'''نکته:''' پیش از ذخیره‌کردن فایل جاوااسکریپت خود، با دکمهٔ '''{{int:showpreview}}''' آن را آزمایش کنید.",
+'usercsspreview' => "'''فراموش مکنید که شما فقط دارید پیش‌نمایش سی‌اس‌اس کاربری‌تان را می‌بینید.'''
 '''این سی‌اس‌اس هنوز ذخیره نشده‌است!'''",
-'wiki_userjspreview' => "'''به یاد داشته باشید که شما فقط دارید جاوااسکریپت کاربری‌تان را امتحان می‌کنید/پیش‌نمایش آن را می‌بینید.'''
+'userjspreview' => "'''به یاد داشته باشید که شما فقط دارید جاوااسکریپت کاربری‌تان را امتحان می‌کنید/پیش‌نمایش آن را می‌بینید.'''
 '''این جاوااسکریپت هنوز ذخیره نشده‌است!'''",
 'sitecsspreview' => "'''به یاد داشته باشید که شما فقط دارید پیش‌نمایش این سی‌اس‌اس را می‌بینید.'''
 '''این سی‌اس‌اس هنوز ذخیره نشده‌است!'''",
 'sitejspreview' => "'''به یاد داشته باشید که شما فقط دارید پیش‌نمایش این جاوااسکریپت را می‌بینید.'''
 '''این جاوااسکریپت هنوز ذخیره نشده‌است!'''",
-'wiki_userinvalidcssjstitle' => "'''هشدار:''' پوسته‌ای به نام «$1» وجود ندارد.
-به یاد داشته باشید که صفحه‌های شخصی ‎.css و ‎.js باید عنوانی با حروف کوچک داشته باشند؛ نمونه: {{ns:wiki_user}}:فو/vector.css در مقابل {{ns:wiki_user}}:فو/Vector.css.",
+'userinvalidcssjstitle' => "'''هشدار:''' پوسته‌ای به نام «$1» وجود ندارد.
+به یاد داشته باشید که صفحه‌های شخصی ‎.css و ‎.js باید عنوانی با حروف کوچک داشته باشند؛ نمونه: {{ns:user}}:فو/vector.css در مقابل {{ns:user}}:فو/Vector.css.",
 'updated' => '(به‌روز شد)',
 'note' => "'''نکته:'''",
 'previewnote' => "'''به یاد داشته باشید که این فقط پیش‌نمایش است.'''
@@ -1146,13 +1146,13 @@ $2
 'previewconflict' => 'این پیش‌نمایش منعکس‌کنندهٔ متن ناحیهٔ ویرایش متن بالایی است، به شکلی که اگر متن را ذخیره کنید نمایش خواهد یافت.',
 'session_fail_preview' => "'''شرمنده! به علت از دست رفتن اطلاعات نشست کاربری نمی‌توانیم ویرایش شما را پردازش کنیم.'''
 لطفاً دوباره سعی کنید.
-اگر دوباره به همین پیام برخوردید از سامانه [[Special:wiki_userLogout|خارج شوید]] و دوباره وارد شوید.",
+اگر دوباره به همین پیام برخوردید از سامانه [[Special:UserLogout|خارج شوید]] و دوباره وارد شوید.",
 'session_fail_preview_html' => "'''متاسفانه امکان ثبت ویرایش شما به خاطر از دست رفتن اطلاعات نشست کاربری وجود ندارد.'''
 
 ''با توجه به این که در {{SITENAME}} امکان درج اچ‌تی‌ام‌ال خام فعال است، پیش‌نمایش صفحه پنهان شده تا امکان حملات مبتنی بر جاوااسکریپت وجود نداشته باشد.''
 
 '''اگر مطمئن هستید که این پیش‌نمایش یک ویرایش مجاز است، آن را تکرار کنید.'''
-اگر تکرار پیش‌نمایش نتیجه نداد، از سامانه [[Special:wiki_userLogout|خارج شوید]] و دوباره وارد شوید.",
+اگر تکرار پیش‌نمایش نتیجه نداد، از سامانه [[Special:UserLogout|خارج شوید]] و دوباره وارد شوید.",
 'token_suffix_mismatch' => "'''ویرایش شما ذخیره نشد، زیرا مرورگر شما نویسه‌های نقطه‌گذاری را در کد امنیتی ویرایش از هم پاشیده‌است.'''
 ویرایش شما مردود شد تا از خراب شدن متن صفحه جلوگیری شود.
 گاهی این اشکال زمانی پیش می‌آید که شما از یک پروکسی تحت وب استفاده کنید.",
@@ -1204,7 +1204,7 @@ $2
 'edittools' => '<!-- متن این قسمت زیر صفحه‌های ویرایش و بارگذاری نشان داده می‌شود -->',
 'nocreatetitle' => 'ایجاد صفحه محدود شده‌است',
 'nocreatetext' => '{{SITENAME}} قابلیت ایجاد صفحه‌های جدید را محدود کرده‌است.
-می‌توانید بازگردید و صفحه‌ای موجود را ویرایش کنید یا اینکه  [[Special:wiki_userLogin|به سامانه وارد شوید یا حساب کاربری ایجاد کنید]].',
+می‌توانید بازگردید و صفحه‌ای موجود را ویرایش کنید یا اینکه  [[Special:UserLogin|به سامانه وارد شوید یا حساب کاربری ایجاد کنید]].',
 'nocreate-loggedin' => 'شما اجازهٔ ایجاد صفحه‌های جدید را ندارید.',
 'sectioneditnotsupported-title' => 'ویرایش بخش‌ها پشتیبانی نمی‌شود',
 'sectioneditnotsupported-text' => 'این صفحه از ویرایش بخش‌ها پشتیبانی نمی‌کند.',
@@ -1255,11 +1255,11 @@ $2
 لطفاً تفاوت زیر را بررسی کنید تا تأیید کنید که این چیزی است که می‌خواهید انجام دهید، سپس تغییرات زیر را ذخیره کنید تا خنثی‌سازی ویرایش را به پایان ببرید.',
 'undo-failure' => 'به علت تعارض با ویرایش‌های میانی، این ویرایش را نمی‌توان خنثی کرد.',
 'undo-norev' => 'این ویرایش را نمی‌توان خنثی کرد چون وجود ندارد یا حذف شده‌است.',
-'undo-summary' => 'خنثی‌سازی ویرایش $1 توسط [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|بحث]])',
+'undo-summary' => 'خنثی‌سازی ویرایش $1 توسط [[Special:Contributions/$2|$2]] ([[User talk:$2|بحث]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'نمی‌توان حساب باز کرد',
-'cantcreateaccount-text' => "امكان ساختن حساب کاربری از این این نشانی آی‌پی ('''$1''') توسط [[wiki_user:$3|$3]] سلب شده است.
+'cantcreateaccount-text' => "امكان ساختن حساب کاربری از این این نشانی آی‌پی ('''$1''') توسط [[User:$3|$3]] سلب شده است.
 
 دلیل ارائه شده توسط $3 چنین است: $2",
 
@@ -1297,9 +1297,9 @@ $2
 
 # Revision deletion
 'rev-deleted-comment' => '(خلاصه ویرایش حذف شد)',
-'rev-deleted-wiki_user' => '(نام کاربری حذف شد)',
+'rev-deleted-user' => '(نام کاربری حذف شد)',
 'rev-deleted-event' => '(مورد از سیاهه پاک شده)',
-'rev-deleted-wiki_user-contribs' => '[نام کاربری یا نشانی آی‌پی حذف شده - ویرایش مخفی شده در مشارکت‌ها]',
+'rev-deleted-user-contribs' => '[نام کاربری یا نشانی آی‌پی حذف شده - ویرایش مخفی شده در مشارکت‌ها]',
 'rev-deleted-text-permission' => "این ویرایش از این صفحه '''حذف شده‌است'''.
 ممکن است اطلاعات مرتبط با آن در [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} سیاههٔ حذف] موجود باشد.",
 'rev-deleted-text-unhide' => "این ویرایش از این صفحه '''حذف شده‌است'''.
@@ -1351,7 +1351,7 @@ $2
 'revdelete-hide-image' => 'نهفتن محتویات پرونده',
 'revdelete-hide-name' => 'نهفتن عمل و هدف',
 'revdelete-hide-comment' => 'نهفتن توضیح ویرایش',
-'revdelete-hide-wiki_user' => 'نام کاربری/نشانی آی‌پی ویراستار پنهان شود',
+'revdelete-hide-user' => 'نام کاربری/نشانی آی‌پی ویراستار پنهان شود',
 'revdelete-hide-restricted' => 'فرونشانی اطلاعات برای مدیران به همراه دیگران',
 'revdelete-radio-same' => '(بدون تغییر)',
 'revdelete-radio-set' => 'بله',
@@ -1435,7 +1435,7 @@ $1",
 'showhideselectedversions' => 'نمایش/نهفتن نسخه‌های انتخاب شده',
 'editundo' => 'خنثی‌سازی',
 'diff-multi' => '({{PLURAL:$1|یک|$1}} ویرایش میانی توسط {{PLURAL:$2|یک|$2}} کاربر نشان داده نشده‌است)',
-'diff-multi-manywiki_users' => '({{PLURAL:$1|یک|$1}} ویرایش میانی توسط بیش از {{PLURAL:$2|یک|$2}} کاربر نشان داده نشده‌است)',
+'diff-multi-manyusers' => '({{PLURAL:$1|یک|$1}} ویرایش میانی توسط بیش از {{PLURAL:$2|یک|$2}} کاربر نشان داده نشده‌است)',
 'difference-missing-revision' => '{{PLURAL:$2|یک ویرایش|$2 ویرایش}}  از تفاوت نسخه‌ها ($1) {{PLURAL:$2|یافت|یافت}}  نشد.
 
 معمولاً در اثر پیوند به تاریخچهٔ به‌روز نشدهٔ صفحهٔ حذف شده است.
@@ -1520,7 +1520,7 @@ $1",
 'mypreferences' => 'ترجیحات',
 'prefs-edits' => 'تعداد ویرایش‌ها:',
 'prefsnologin' => 'به سامانه وارد نشده‌اید',
-'prefsnologintext' => 'برای تنظیم ترجیحات کاربر باید <span class="plainlinks">[{{fullurl:{{#Special:wiki_userLogin}}|returnto=$1}} به سامانه وارد شوید]</span>.',
+'prefsnologintext' => 'برای تنظیم ترجیحات کاربر باید <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} به سامانه وارد شوید]</span>.',
 'changepassword' => 'تغییر گذرواژه',
 'prefs-skin' => 'پوسته',
 'skin-preview' => 'پیش‌نمایش',
@@ -1528,7 +1528,7 @@ $1",
 'prefs-beta' => 'ویژگی های بتا',
 'prefs-datetime' => 'تاریخ و زمان',
 'prefs-labs' => 'گزینه‌های آزمایشی',
-'prefs-wiki_user-pages' => 'صفحه‌های کاربری',
+'prefs-user-pages' => 'صفحه‌های کاربری',
 'prefs-personal' => 'داده‌های کاربر',
 'prefs-rc' => 'تغییرات اخیر',
 'prefs-watchlist' => 'فهرست پی‌گیری‌ها',
@@ -1593,7 +1593,7 @@ $1",
 'prefs-emailconfirm-label' => 'تأیید رایانامه:',
 'prefs-textboxsize' => 'اندازهٔ جعبهٔ ویرایش',
 'youremail' => 'رایانامه:',
-'wiki_username' => 'نام کاربری:',
+'username' => 'نام کاربری:',
 'uid' => 'شناسهٔ کاربر:',
 'prefs-memberingroups' => 'عضو این {{PLURAL:$1|گروه|گروه‌ها}}:',
 'prefs-registration' => 'زمان ثبت‌نام:',
@@ -1635,35 +1635,35 @@ $1",
 'prefs-displaywatchlist' => 'گزینه‌های نمایش',
 'prefs-diffs' => 'تفاوت‌ها',
 
-# wiki_user preference: e-mail validation using jQuery
+# User preference: e-mail validation using jQuery
 'email-address-validity-valid' => 'نشانی رایانامه معتبر به نظر می رسد',
 'email-address-validity-invalid' => 'نشانی رایانامهٔ معتبر وارد کنید',
 
-# wiki_user rights
-'wiki_userrights' => 'مدیریت اختیارات کاربر',
-'wiki_userrights-lookup-wiki_user' => 'مدیریت گروه‌های کاربری',
-'wiki_userrights-wiki_user-editname' => 'یک نام کاربری وارد کنید:',
-'editwiki_usergroup' => 'ویرایش گروه‌های کاربری',
-'editingwiki_user' => "تغییر اختیارات کاربری کاربر '''[[wiki_user:$1|$1]]''' $2",
-'wiki_userrights-editwiki_usergroup' => 'ویرایش گروه‌های کاربری',
-'savewiki_usergroups' => 'ثبت گروه‌های کاربری',
-'wiki_userrights-groupsmember' => 'عضو:',
-'wiki_userrights-groupsmember-auto' => 'عضو ضمنی:',
-'wiki_userrights-groups-help' => 'شما می‌توانید گروه‌هایی را که کاربر در آن قرار دارد تغییر دهید:
+# User rights
+'userrights' => 'مدیریت اختیارات کاربر',
+'userrights-lookup-user' => 'مدیریت گروه‌های کاربری',
+'userrights-user-editname' => 'یک نام کاربری وارد کنید:',
+'editusergroup' => 'ویرایش گروه‌های کاربری',
+'editinguser' => "تغییر اختیارات کاربری کاربر '''[[User:$1|$1]]''' $2",
+'userrights-editusergroup' => 'ویرایش گروه‌های کاربری',
+'saveusergroups' => 'ثبت گروه‌های کاربری',
+'userrights-groupsmember' => 'عضو:',
+'userrights-groupsmember-auto' => 'عضو ضمنی:',
+'userrights-groups-help' => 'شما می‌توانید گروه‌هایی را که کاربر در آن قرار دارد تغییر دهید:
 * جعبهٔ علامت‌خورده نشانهٔ بودن کاربر در آن گروه است.
 * جعبهٔ خالی نشانهٔ نبودن کاربر در آن گروه است.
 * علامت * به این معنی‌است که اگر آن گروه را بیفزایید نمی‌توانید بعداً برش دارید، و برعکس.',
-'wiki_userrights-reason' => 'دلیل:',
-'wiki_userrights-no-interwiki' => 'شما اجازهٔ تغییر اختیارات کاربران دیگر ویکی‌ها را ندارید.',
-'wiki_userrights-nodatabase' => 'پایگاه دادهٔ $1 وجود ندارد یا محلی نیست.',
-'wiki_userrights-nologin' => 'شما باید با یک حساب کاربری مدیر [[Special:wiki_userLogin|به سامانه وارد شوید]] تا بتوانید اختیارات کاربران را تعیین کنید.',
-'wiki_userrights-notallowed' => 'حساب کاربری شما اجازه افزودن یا حذف کردن اختیارات کاربری را ندارد.',
-'wiki_userrights-changeable-col' => 'گروه‌هایی که می‌توانید تغییر دهید',
-'wiki_userrights-unchangeable-col' => 'گروه‌هایی که نمی‌توانید تغییر دهید',
+'userrights-reason' => 'دلیل:',
+'userrights-no-interwiki' => 'شما اجازهٔ تغییر اختیارات کاربران دیگر ویکی‌ها را ندارید.',
+'userrights-nodatabase' => 'پایگاه دادهٔ $1 وجود ندارد یا محلی نیست.',
+'userrights-nologin' => 'شما باید با یک حساب کاربری مدیر [[Special:UserLogin|به سامانه وارد شوید]] تا بتوانید اختیارات کاربران را تعیین کنید.',
+'userrights-notallowed' => 'حساب کاربری شما اجازه افزودن یا حذف کردن اختیارات کاربری را ندارد.',
+'userrights-changeable-col' => 'گروه‌هایی که می‌توانید تغییر دهید',
+'userrights-unchangeable-col' => 'گروه‌هایی که نمی‌توانید تغییر دهید',
 
 # Groups
 'group' => 'گروه:',
-'group-wiki_user' => 'کاربران',
+'group-user' => 'کاربران',
 'group-autoconfirmed' => 'کاربران تاییدشده',
 'group-bot' => 'ربات‌ها',
 'group-sysop' => 'مدیران',
@@ -1671,14 +1671,14 @@ $1",
 'group-suppress' => 'ناظران',
 'group-all' => '(همه)',
 
-'group-wiki_user-member' => '{{GENDER:$1|کاربر}}',
+'group-user-member' => '{{GENDER:$1|کاربر}}',
 'group-autoconfirmed-member' => '{{GENDER:$1|کاربر تاییدشده}}',
 'group-bot-member' => 'ربات',
 'group-sysop-member' => '{{GENDER:$1|مدیر}}',
 'group-bureaucrat-member' => '{{GENDER:$1|دیوانسالار}}',
 'group-suppress-member' => '{{GENDER:$1|نظارت}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:کاربران',
+'grouppage-user' => '{{ns:project}}:کاربران',
 'grouppage-autoconfirmed' => '{{ns:project}}:کاربران تأییدشده',
 'grouppage-bot' => '{{ns:project}}:ربات‌ها',
 'grouppage-sysop' => '{{ns:project}}:مدیران',
@@ -1694,7 +1694,7 @@ $1",
 'right-minoredit' => 'علامت‌زدن ویرایش‌ها به عنوان جزئی',
 'right-move' => 'انتقال صفحه',
 'right-move-subpages' => 'انتقال صفحه‌ها به همراه زیر‌صفحه‌هایشان',
-'right-move-rootwiki_userpages' => 'انتقال صفحه‌های کاربری سرشاخه',
+'right-move-rootuserpages' => 'انتقال صفحه‌های کاربری سرشاخه',
 'right-movefile' => 'انتقال پرونده‌ها',
 'right-suppressredirect' => 'انتقال صفحه بدون ایجاد تغییرمسیر از نام قبلی',
 'right-upload' => 'بارگذاری پرونده',
@@ -1720,16 +1720,16 @@ $1",
 'right-suppressionlog' => 'مشاهدهٔ سیاهه‌های خصوصی',
 'right-block' => 'قطع دسترسی ویرایشی دیگر کاربران',
 'right-blockemail' => 'قطع دسترسی دیگر کاربران برای ارسال رایانامه',
-'right-hidewiki_user' => 'قطع دسترسی کاربر و پنهان کردن آن از دید عموم',
+'right-hideuser' => 'قطع دسترسی کاربر و پنهان کردن آن از دید عموم',
 'right-ipblock-exempt' => 'تاثیر نپذیرفتن از قطع دسترسی‌های آی‌پی، خودکار یا فاصله‌ای',
 'right-proxyunbannable' => 'تاثیر نپذیرفتن از قطع دسترسی خودکار پروکسی‌ها',
 'right-unblockself' => 'دسترسی خود را باز کنند',
 'right-protect' => 'تغییر میزان محافظت صفحه‌ها و ویرایش صفحه‌های محافظت شده',
 'right-editprotected' => 'ویرایش صفحه‌های محافظت شده (به شرط نبود محافظت آبشاری)',
 'right-editinterface' => 'ویرایش واسط کاربری',
-'right-editwiki_usercssjs' => 'ویرایش صفحه‌های CSS و JS دیگر کاربرها',
-'right-editwiki_usercss' => 'ویرایش صفحه‌های CSS دیگر کاربرها',
-'right-editwiki_userjs' => 'ویرایش صفحه‌های JS دیگر کاربرها',
+'right-editusercssjs' => 'ویرایش صفحه‌های CSS و JS دیگر کاربرها',
+'right-editusercss' => 'ویرایش صفحه‌های CSS دیگر کاربرها',
+'right-edituserjs' => 'ویرایش صفحه‌های JS دیگر کاربرها',
 'right-rollback' => 'واگردانی سریع ویرایش‌های آخرین کاربری که یک صفحه را ویرایش کرده‌است',
 'right-markbotedits' => 'علامت زدن ویرایش‌های واگردانی شده به عنوان ویرایش ربات',
 'right-noratelimit' => 'تاثیر نپذیرفتن از محدودیت سرعت',
@@ -1740,14 +1740,14 @@ $1",
 'right-patrolmarks' => 'مشاهدهٔ برچسب گشت تغییرات اخیر',
 'right-unwatchedpages' => 'مشاهدهٔ فهرست صفحه‌هایی که پیگیری نمی‌شوند',
 'right-mergehistory' => 'ادغام تاریخچهٔ صفحه‌ها',
-'right-wiki_userrights' => 'ویرایش تمام اختیارات کاربرها',
-'right-wiki_userrights-interwiki' => 'ویرایش اختیارات کاربرهای ویکی‌های دیگر',
+'right-userrights' => 'ویرایش تمام اختیارات کاربرها',
+'right-userrights-interwiki' => 'ویرایش اختیارات کاربرهای ویکی‌های دیگر',
 'right-siteadmin' => 'قفل کردن و باز کردن پایگاه داده',
 'right-override-export-depth' => 'برون‌بری صفحه‌ها شامل صفحه‌های پیوند شده تا عمق ۵',
 'right-sendemail' => 'ارسال رایانامه به دیگر کاربران',
 'right-passwordreset' => 'مشاهدهٔ نامه‌های تنظیم مجدد گذرواژه',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'سیاههٔ اختیارات کاربر',
 'rightslogtext' => 'این سیاههٔ تغییرات اختیارات کاربر است.',
 'rightslogentry' => 'عضویت $1 را از گروه $2 به $3 تغییر داد',
@@ -1763,7 +1763,7 @@ $1",
 'action-minoredit' => 'علامت زدن این ویرایش به عنوان جزئی',
 'action-move' => 'انتقال این صفحه',
 'action-move-subpages' => 'انتقال این صفحه و زیرصفحه‌های آن',
-'action-move-rootwiki_userpages' => 'انتقال صفحه‌های کاربری سرشاخه',
+'action-move-rootuserpages' => 'انتقال صفحه‌های کاربری سرشاخه',
 'action-movefile' => 'این پرونده را انتقال بده',
 'action-upload' => 'بارگذاری این پرونده',
 'action-reupload' => 'نوشتن روی این پرونده موجود',
@@ -1786,8 +1786,8 @@ $1",
 'action-autopatrol' => 'گشت زدن ویرایش خودتان',
 'action-unwatchedpages' => 'مشاهدهٔ صفحه‌های پی‌گیری نشده',
 'action-mergehistory' => 'ادغام تاریخچهٔ این صفحه',
-'action-wiki_userrights' => 'ویرایش همهٔ اختیارات کاربری',
-'action-wiki_userrights-interwiki' => 'ویرایش اختیارات کاربری کاربران یک ویکی دیگر',
+'action-userrights' => 'ویرایش همهٔ اختیارات کاربری',
+'action-userrights-interwiki' => 'ویرایش اختیارات کاربری کاربران یک ویکی دیگر',
 'action-siteadmin' => 'قفل کردن و باز کردن پایگاه داده',
 'action-sendemail' => 'ارسال ایمیل',
 
@@ -1818,7 +1818,7 @@ $1",
 'minoreditletter' => 'جز',
 'newpageletter' => 'نو',
 'boteditletter' => 'ر',
-'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|کاربر|کاربر}} پی‌گیری‌کننده]',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|کاربر|کاربر}} پی‌گیری‌کننده]',
 'rc_categories' => 'محدود به این رده‌ها (رده‌ها را با «|» جدا کنید)',
 'rc_categories_any' => 'هر کدام',
 'rc-change-size-new' => '$1 {{PLURAL:$1|بایت}} پس از تغییر',
@@ -1844,7 +1844,7 @@ $1",
 'reuploaddesc' => 'بازگشت به فرم بارگذاری',
 'upload-tryagain' => 'ارسال توضیحات تغییر یافته پرونده',
 'uploadnologin' => 'به سامانه وارد نشده‌اید',
-'uploadnologintext' => 'برای بارگذاری پرونده‌ها باید [[Special:wiki_userLogin|به سامانه وارد شوید]].',
+'uploadnologintext' => 'برای بارگذاری پرونده‌ها باید [[Special:UserLogin|به سامانه وارد شوید]].',
 'upload_directory_missing' => 'شاخهٔ بارگذاری ($1) وجود ندارد و قابل ایجاد نیست.',
 'upload_directory_read_only' => 'شاخهٔ بارگذاری ($1) از طرف سرور وب قابل نوشتن نیست.',
 'uploaderror' => 'خطای بارگذاری',
@@ -1972,11 +1972,11 @@ $1',
 'upload-proto-error-text' => 'بارگذاری از دوردست به نشانی‌هایی که با <code dir=ltr>http://</code> یا <code dir=ltr>ftp://</code> آغاز شوند نیاز دارد.',
 'upload-file-error' => 'خطای داخلی',
 'upload-file-error-text' => 'هنگام تلاش برای ایجاد یک پروندهٔ  موقت در سرور یک خطای داخلی رخ داد.
-لطفاً با یک [[Special:Listwiki_users/sysop|مدیر]] تماس بگیرید.',
+لطفاً با یک [[Special:ListUsers/sysop|مدیر]] تماس بگیرید.',
 'upload-misc-error' => 'خطای نامعلوم در بارگذاری',
 'upload-misc-error-text' => 'هنگام بارگذاری، خطایی نامعلوم رخ داد.
 لطفاً اطمینان حاصل کنید که نشانی اینترنتی معتبر و قابل دسترسی است و بعد دوباره تلاش کنید.
-اگر مشکل همچنان برقرار بود با یکی از [[Special:Listwiki_users/sysop|مدیران]] تماس بگیرید.',
+اگر مشکل همچنان برقرار بود با یکی از [[Special:ListUsers/sysop|مدیران]] تماس بگیرید.',
 'upload-too-many-redirects' => 'نشانی اینترتی حاوی تعداد بیش از اندازه‌ای تغییرمسیر است',
 'upload-unknown-size' => 'اندازهٔ نامشخص',
 'upload-http-error' => 'یک خطای اچ‌تی‌تی‌پی رخ داد: $1',
@@ -2096,7 +2096,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 'listfiles_thumb' => 'بندانگشتی',
 'listfiles_date' => 'تاریخ',
 'listfiles_name' => 'نام',
-'listfiles_wiki_user' => 'کاربر',
+'listfiles_user' => 'کاربر',
 'listfiles_size' => 'اندازه',
 'listfiles_description' => 'توضیح',
 'listfiles_count' => 'نسخه‌ها',
@@ -2113,7 +2113,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 'filehist-thumb' => 'بندانگشتی',
 'filehist-thumbtext' => 'تصویر بندانگشتی از نسخهٔ مورخ $1',
 'filehist-nothumb' => 'فاقد بندانگشتی',
-'filehist-wiki_user' => 'کاربر',
+'filehist-user' => 'کاربر',
 'filehist-dimensions' => 'ابعاد',
 'filehist-filesize' => 'اندازهٔ پرونده',
 'filehist-comment' => 'توضیح',
@@ -2206,7 +2206,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 'statistics-header-pages' => 'آمار صفحه‌ها',
 'statistics-header-edits' => 'آمار ویرایش‌ها',
 'statistics-header-views' => 'آمار بازدیدها',
-'statistics-header-wiki_users' => 'آمار کاربران',
+'statistics-header-users' => 'آمار کاربران',
 'statistics-header-hooks' => 'آمارهای دیگر',
 'statistics-articles' => 'صفحه‌های محتوایی',
 'statistics-pages' => 'صفحه‌ها',
@@ -2217,9 +2217,9 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 'statistics-views-total' => 'مجموع بازدیدها',
 'statistics-views-total-desc' => 'بازدید صفحه‌های ناموجود و صفحه‌های ویژه شامل نشده‌است',
 'statistics-views-peredit' => 'تعداد بازدید به ازای هر ویرایش',
-'statistics-wiki_users' => '[[Special:Listwiki_users|کاربران]] ثبت‌نام کرده',
-'statistics-wiki_users-active' => 'کاربران فعال',
-'statistics-wiki_users-active-desc' => 'کاربرانی که در {{PLURAL:$1|روز|$1 روز}} قبل فعالیتی انجام داده‌اند',
+'statistics-users' => '[[Special:ListUsers|کاربران]] ثبت‌نام کرده',
+'statistics-users-active' => 'کاربران فعال',
+'statistics-users-active-desc' => 'کاربرانی که در {{PLURAL:$1|روز|$1 روز}} قبل فعالیتی انجام داده‌اند',
 'statistics-mostpopular' => 'صفحه‌هایی که بیشترین تعداد بازدیدکننده را داشته‌اند',
 
 'disambiguations' => 'صفحه‌های دارای پیوند به صفحه‌های ابهام‌زدایی',
@@ -2296,13 +2296,13 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 'protectedtitles' => 'عنوان‌های محافظت‌شده',
 'protectedtitlestext' => 'عنوان‌های زیر از ایجاد محافظت شده‌اند',
 'protectedtitlesempty' => 'در حال حاضر هیچ عنوانی با این پارامترها محافظت نشده‌است.',
-'listwiki_users' => 'فهرست کاربران',
-'listwiki_users-editsonly' => 'فقط کاربرانی که ویرایش دارند را نشان بده',
-'listwiki_users-creationsort' => 'مرتب کردن بر اساس تاریخ ایجاد',
-'wiki_usereditcount' => '$1 {{PLURAL:$1|ویرایش|ویرایش}}',
-'wiki_usercreated' => '{{GENDER:$3|ایجادشده}} در تاریخ $1 در ساعت $2',
+'listusers' => 'فهرست کاربران',
+'listusers-editsonly' => 'فقط کاربرانی که ویرایش دارند را نشان بده',
+'listusers-creationsort' => 'مرتب کردن بر اساس تاریخ ایجاد',
+'usereditcount' => '$1 {{PLURAL:$1|ویرایش|ویرایش}}',
+'usercreated' => '{{GENDER:$3|ایجادشده}} در تاریخ $1 در ساعت $2',
 'newpages' => 'صفحه‌های تازه',
-'newpages-wiki_username' => 'نام کاربری:',
+'newpages-username' => 'نام کاربری:',
 'ancientpages' => 'قدیمی‌ترین صفحه‌ها',
 'move' => 'انتقال',
 'movethispage' => 'انتقال این صفحه',
@@ -2327,7 +2327,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 'booksources-invalid-isbn' => 'شابک داده شده مجاز به نظر نمی‌رسد؛ از جهت اشکالات هنگام کپی کردن از منبع اصلی بررسی کنید.',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'مجری:',
+'specialloguserlabel' => 'مجری:',
 'speciallogtitlelabel' => 'هدف (عنوان یا کاربر):',
 'log' => 'سیاهه‌ها',
 'all-logs-page' => 'تمام سیاهه‌های عمومی',
@@ -2385,24 +2385,24 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 'linksearch-line' => '$1 از $2 پیوند دارد',
 'linksearch-error' => 'نشانه‌ها فقط در ابتدای نام میزبان اینترنتی می‌توانند استفاده شوند.',
 
-# Special:Listwiki_users
-'listwiki_usersfrom' => 'نمایش کاربران با شروع از:',
-'listwiki_users-submit' => 'نمایش',
-'listwiki_users-noresult' => 'هیچ کاربری یافت نشد.',
-'listwiki_users-blocked' => '(بسته شده)',
+# Special:ListUsers
+'listusersfrom' => 'نمایش کاربران با شروع از:',
+'listusers-submit' => 'نمایش',
+'listusers-noresult' => 'هیچ کاربری یافت نشد.',
+'listusers-blocked' => '(بسته شده)',
 
-# Special:Activewiki_users
-'activewiki_users' => 'فهرست کاربران فعال',
-'activewiki_users-intro' => 'در زیر فهرستی از کاربرانی را می‌بینید که در $1 {{PLURAL:$1|روز|روز}} گذشته فعالیتی داشته‌اند.',
-'activewiki_users-count' => '$1 {{PLURAL:$1|ویرایش|ویرایش}} در {{PLURAL:$3|روز|$3 روز}} اخیر',
-'activewiki_users-from' => 'نمایش کاربران با آغاز از:',
-'activewiki_users-hidebots' => 'نهفتن ربات‌ها',
-'activewiki_users-hidesysops' => 'نهفتن مدیران',
-'activewiki_users-noresult' => 'کاربری پیدا نشد.',
+# Special:ActiveUsers
+'activeusers' => 'فهرست کاربران فعال',
+'activeusers-intro' => 'در زیر فهرستی از کاربرانی را می‌بینید که در $1 {{PLURAL:$1|روز|روز}} گذشته فعالیتی داشته‌اند.',
+'activeusers-count' => '$1 {{PLURAL:$1|ویرایش|ویرایش}} در {{PLURAL:$3|روز|$3 روز}} اخیر',
+'activeusers-from' => 'نمایش کاربران با آغاز از:',
+'activeusers-hidebots' => 'نهفتن ربات‌ها',
+'activeusers-hidesysops' => 'نهفتن مدیران',
+'activeusers-noresult' => 'کاربری پیدا نشد.',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'سیاههٔ ایجاد کاربر',
-'newwiki_userlogpagetext' => 'این سیاهه‌ای از نام‌های کاربری تازه‌ساخته‌شده است.',
+# Special:Log/newusers
+'newuserlogpage' => 'سیاههٔ ایجاد کاربر',
+'newuserlogpagetext' => 'این سیاهه‌ای از نام‌های کاربری تازه‌ساخته‌شده است.',
 
 # Special:ListGroupRights
 'listgrouprights' => 'اختیارات گروه‌های کاربری',
@@ -2423,27 +2423,27 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 'listgrouprights-addgroup-self-all' => 'می‌تواند حساب خود را به تمام گروه‌ها اضافه کند',
 'listgrouprights-removegroup-self-all' => 'می‌تواند حساب خود را از تمام گروه‌ها حذف کند',
 
-# E-mail wiki_user
+# E-mail user
 'mailnologin' => 'نشانی‌ای از فرستنده موجود نیست',
-'mailnologintext' => 'برای فرستادن رایانامه به کاربران دیگر باید [[Special:wiki_userLogin|به سامانه وارد شوید]] و نشانی رایانامهٔ معتبری در [[Special:Preferences|ترجیحات]] خود داشته باشید.',
-'emailwiki_user' => 'فرستادن نامه به این کاربر',
-'emailwiki_user-title-target' => 'ایمیل این {{GENDER:$1| کاربر}}',
-'emailwiki_user-title-notarget' => 'رایانامه به کاربر',
+'mailnologintext' => 'برای فرستادن رایانامه به کاربران دیگر باید [[Special:UserLogin|به سامانه وارد شوید]] و نشانی رایانامهٔ معتبری در [[Special:Preferences|ترجیحات]] خود داشته باشید.',
+'emailuser' => 'فرستادن نامه به این کاربر',
+'emailuser-title-target' => 'ایمیل این {{GENDER:$1| کاربر}}',
+'emailuser-title-notarget' => 'رایانامه به کاربر',
 'emailpage' => 'رایانامه به کاربر',
 'emailpagetext' => 'شما می‌توانید از فرم زیر برای ارسال یک رایانامه به این {{GENDER:$1|کاربر}} استفاده کنید.
 نشانی رایانامه‌ای که در [[Special:Preferences|ترجیحات کاربریتان]] وارد کرده‌اید در نشانی فرستنده (From) نامه خواهد آمد، تا گیرنده بتواند پاسخ دهد.',
-'wiki_usermailererror' => 'رایانامه دچار خطا شد:',
+'usermailererror' => 'رایانامه دچار خطا شد:',
 'defemailsubject' => 'رایانامه {{SITENAME}} از طرف کاربر «$1»',
-'wiki_usermaildisabled' => 'رایانامهٔ کاربر غیرقعال است',
-'wiki_usermaildisabledtext' => 'شما در این ویکی نمی‌توانید به دیگر کاربران رایانامه بفرستید',
+'usermaildisabled' => 'رایانامهٔ کاربر غیرقعال است',
+'usermaildisabledtext' => 'شما در این ویکی نمی‌توانید به دیگر کاربران رایانامه بفرستید',
 'noemailtitle' => 'نشانی رایانامه موجود نیست',
 'noemailtext' => 'این کاربر نشانی رایانامهٔ معتبری مشخص نکرده است،',
 'nowikiemailtitle' => 'اجازهٔ ارسال رایانامه داده نشده‌است',
 'nowikiemailtext' => 'این کاربر انتخاب کرده که از دیگر کاربران رایانامه دریافت نکند.',
 'emailnotarget' => 'نام کاربری ناموجود یا نامعتبر برای گیرنده.',
 'emailtarget' => 'نام کاربری دریافت‌کننده را وارد کنید',
-'emailwiki_username' => 'نام کاربری:',
-'emailwiki_usernamesubmit' => 'ارسال',
+'emailusername' => 'نام کاربری:',
+'emailusernamesubmit' => 'ارسال',
 'email-legend' => 'ارسال یک نامه به کاربر دیگر {{SITENAME}}',
 'emailfrom' => 'از:',
 'emailto' => 'به:',
@@ -2454,11 +2454,11 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 'emailccsubject' => 'رونوشت پیغام شما به $1: $2',
 'emailsent' => 'رایانامه فرستاده شد',
 'emailsenttext' => 'پیغام رایانامه شما فرستاده شد.',
-'emailwiki_userfooter' => 'این رایانامه با استفاده از ویژگی «فرستادن نامه به این کاربر» {{SITENAME}} توسط $1 به $2 فرستاده شد.',
+'emailuserfooter' => 'این رایانامه با استفاده از ویژگی «فرستادن نامه به این کاربر» {{SITENAME}} توسط $1 به $2 فرستاده شد.',
 
-# wiki_user Messenger
-'wiki_usermessage-summary' => 'گذاشتن پیغام سامانه.',
-'wiki_usermessage-editor' => 'پیغام رسان سامانه',
+# User Messenger
+'usermessage-summary' => 'گذاشتن پیغام سامانه.',
+'usermessage-editor' => 'پیغام رسان سامانه',
 
 # Watchlist
 'watchlist' => 'فهرست پی‌گیری‌های من',
@@ -2467,7 +2467,7 @@ https://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 'nowatchlist' => 'در فهرست پی‌گیری‌های شما هیچ موردی نیست.',
 'watchlistanontext' => 'برای مشاهده و ویرایش فهرست پی‌گیری‌های خود از $1 استفاده کنید.',
 'watchnologin' => 'به سامانه وارد نشده‌اید',
-'watchnologintext' => 'برای تغییر فهرست پی‌گیری‌هایتان باید [[Special:wiki_userLogin|به سامانه وارد شوید]].',
+'watchnologintext' => 'برای تغییر فهرست پی‌گیری‌هایتان باید [[Special:UserLogin|به سامانه وارد شوید]].',
 'addwatch' => 'افزودن به فهرست پی‌گیری',
 'addedwatchtext' => 'صفحهٔ «[[:$1]]» به [[Special:Watchlist|فهرست پی‌گیری‌های]] شما اضافه شد.
 تغییرات این صفحه و صفحهٔ بحث متناظرش در آینده در اینجا فهرست خواهد شد.',
@@ -2577,13 +2577,13 @@ $NEWPAGE
 'rollbackfailed' => 'واگردانی نشد',
 'cantrollback' => 'نمی‌توان ویرایش را واگرداند؛
 آخرین مشارکت‌کننده تنها مؤلف این مقاله است.',
-'alreadyrolled' => 'واگردانی آخرین ویرایش [[:$1]] توسط [[wiki_user:$2|$2]] ([[wiki_user talk:$2|بحث]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) ممکن نیست؛
+'alreadyrolled' => 'واگردانی آخرین ویرایش [[:$1]] توسط [[User:$2|$2]] ([[User talk:$2|بحث]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) ممکن نیست؛
 پیش از این شخص دیگری مقاله را ویرایش یا واگردانی کرده‌است.
 
-آخرین ویرایش توسط [[wiki_user:$3|$3]] ([[wiki_user talk:$3|بحث]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) انجام شده‌است.',
+آخرین ویرایش توسط [[User:$3|$3]] ([[User talk:$3|بحث]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) انجام شده‌است.',
 'editcomment' => "خلاصهٔ ویرایش این بود: «''$1''».",
-'revertpage' => 'ویرایش [[Special:Contributions/$2|$2]] ([[wiki_user talk:$2|بحث]]) به آخرین تغییری که [[wiki_user:$1|$1]] انجام داده بود واگردانده شد',
-'revertpage-nowiki_user' => 'ویرایش‌های انجام‌شده توسط (نام کاربری حذف شده‌است) به آخرین ویرایش [[wiki_user:$1|$1]] واگردانی شد.',
+'revertpage' => 'ویرایش [[Special:Contributions/$2|$2]] ([[User talk:$2|بحث]]) به آخرین تغییری که [[User:$1|$1]] انجام داده بود واگردانده شد',
+'revertpage-nouser' => 'ویرایش‌های انجام‌شده توسط (نام کاربری حذف شده‌است) به آخرین ویرایش [[User:$1|$1]] واگردانی شد.',
 'rollback-success' => 'ویرایش‌های $1 واگردانی شد؛
 صفحه به آخرین ویرایش $2 برگردانده شد.',
 
@@ -2741,13 +2741,13 @@ $1',
 'sp-contributions-uploads' => 'بارگذاری‌ها',
 'sp-contributions-logs' => 'سیاهه‌ها',
 'sp-contributions-talk' => 'بحث',
-'sp-contributions-wiki_userrights' => 'مدیریت اختیارات کاربر',
+'sp-contributions-userrights' => 'مدیریت اختیارات کاربر',
 'sp-contributions-blocked-notice' => 'این کاربر در حال حاضر بسته شده‌است.
 آخرین سیاههٔ بسته شدن در زیر آمده‌است:',
 'sp-contributions-blocked-notice-anon' => 'این نشانی آی‌پی در حال حاضر بسته است.
 آخرین سیاههٔ بسته شدن در زیر آمده‌است:',
 'sp-contributions-search' => 'جستجوی مشارکت‌ها',
-'sp-contributions-wiki_username' => 'نشانی آی‌پی یا نام کاربری:',
+'sp-contributions-username' => 'نشانی آی‌پی یا نام کاربری:',
 'sp-contributions-toponly' => 'فقط ویرایش‌هایی که آخرین نسخه‌اند نمایش داده شود',
 'sp-contributions-submit' => 'جستجو',
 
@@ -2780,7 +2780,7 @@ $1',
 'blockiptext' => 'از فرم زیر برای بستن دسترسی ویرایش یک نشانی آی‌پی یا نام کاربری مشخص استفاده کنید.
 این کار فقط فقط باید برای جلوگیری از خرابکاری و بر اساس [[{{MediaWiki:Policy-url}}|سیاست قطع دسترسی]] انجام شود.
 دلیل مشخص این کار را در زیر ذکر کنید (مثلاً با ذکر صفحه‌های به‌خصوصی که مورد خرابکاری واقع شده‌اند).',
-'ipadressorwiki_username' => 'نشانی آی‌پی یا نام کاربری:',
+'ipadressorusername' => 'نشانی آی‌پی یا نام کاربری:',
 'ipbexpiry' => 'زمان سرآمدن:',
 'ipbreason' => 'دلیل:',
 'ipbreasonotherlist' => 'دلیل دیگر',
@@ -2802,8 +2802,8 @@ $1',
 'ipbotheroption' => 'دیگر',
 'ipbotherreason' => 'دلیل دیگر/اضافی:',
 'ipbhidename' => 'نهفتن نام کاربری از ویرایش‌ها و فهرست‌ها',
-'ipbwatchwiki_user' => 'پیگیری صفحهٔ کاربری و بحث این کاربر',
-'ipb-disablewiki_usertalk' => 'جلوگیری از ویرایشی صفحهً بحث توسط خود کاربر در زمانی که بسته است',
+'ipbwatchuser' => 'پیگیری صفحهٔ کاربری و بحث این کاربر',
+'ipb-disableusertalk' => 'جلوگیری از ویرایشی صفحهً بحث توسط خود کاربر در زمانی که بسته است',
 'ipb-change-block' => 'بستن دوبارهٔ کاربر با این تنظیم‌ها',
 'ipb-confirm' => 'تأیید بستن',
 'badipaddress' => 'نشانی آی‌پی غیر مجاز',
@@ -2811,7 +2811,7 @@ $1',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] بسته شد.<br />
 برای بررسی بسته‌شده‌ها [[Special:BlockList|فهرست بسته‌شده‌ها]] را ببینید.',
 'ipb-blockingself' => 'شما در حال بستن خودتان هستید!  آیا مطمئن هستید که می‌خواهید چنین کاری انجام دهید؟',
-'ipb-confirmhidewiki_user' => 'شما در حال بستن یک کاربر هستید که «پنهان‌سازی کاربر» برایش فعال شد‌ه‌است. این کار نام کاربر را از همهٔ فهرست‌ها و سیاهه‌ها مخفی می‌کند. آیا مطمئن هستید که می‌خواهید آن را انجام دهید؟',
+'ipb-confirmhideuser' => 'شما در حال بستن یک کاربر هستید که «پنهان‌سازی کاربر» برایش فعال شد‌ه‌است. این کار نام کاربر را از همهٔ فهرست‌ها و سیاهه‌ها مخفی می‌کند. آیا مطمئن هستید که می‌خواهید آن را انجام دهید؟',
 'ipb-edit-dropdown' => 'ویرایش دلایل قطع‌دسترسی',
 'ipb-unblock-addr' => 'باز کردن $1',
 'ipb-unblock' => 'باز کردن نام کاربری یا نشانی آی‌پی',
@@ -2820,13 +2820,13 @@ $1',
 'unblockip' => 'باز کردن کاربر',
 'unblockiptext' => 'برای بازگرداندن دسترسی نوشتن به یک نشانی آی‌پی یا نام کاربری بسته‌شده از فرم زیر استفاده کنید.',
 'ipusubmit' => 'باز کردن دسترسی',
-'unblocked' => 'دسترسی [[wiki_user:$1|$1]] دوباره برقرار شد',
+'unblocked' => 'دسترسی [[User:$1|$1]] دوباره برقرار شد',
 'unblocked-range' => '$1 باز شد',
 'unblocked-id' => 'قطع دسترسی شماره $1 خاتمه یافت',
 'blocklist' => 'کاربران بسته‌شده',
 'ipblocklist' => 'کاربران بسته‌شده',
 'ipblocklist-legend' => 'جستجوی کاربر بسته شده',
-'blocklist-wiki_userblocks' => 'پنهان‌کردن بسته‌شدن‌های حساب',
+'blocklist-userblocks' => 'پنهان‌کردن بسته‌شدن‌های حساب',
 'blocklist-tempblocks' => 'پنهان‌کردن بستن‌های موقت',
 'blocklist-addressblocks' => 'پنهان‌کردن تک آی‌پی‌های بسته شده',
 'blocklist-rangeblocks' => 'پنهان کردنی قطع دسترسی بازه‌ها',
@@ -2845,7 +2845,7 @@ $1',
 'noautoblockblock' => 'بستن خودکار غیرفعال است',
 'createaccountblock' => 'امکان ایجاد حساب مسدود است',
 'emailblock' => 'رایانامه مسدود شد',
-'blocklist-nowiki_usertalk' => 'نمی تواند صفحهٔ بحث خود را ویرایش کند',
+'blocklist-nousertalk' => 'نمی تواند صفحهٔ بحث خود را ویرایش کند',
 'ipblocklist-empty' => 'فهرست بسته‌شدن‌ها خالی‌است.',
 'ipblocklist-no-results' => 'دسترسی حساب کاربری یا نشانی آی‌پی مورد نظر قطع نیست.',
 'blocklink' => 'بستن',
@@ -2853,7 +2853,7 @@ $1',
 'change-blocklink' => 'تغییر قطع دسترسی',
 'contribslink' => 'مشارکت‌ها',
 'emaillink' => 'ارسال رایانامه',
-'autoblocker' => 'به طور خودکار بسته شد چون آی‌پی شما به تازگی توسط کاربر «[[wiki_user:$1|$1]]» استفاده شده‌است.
+'autoblocker' => 'به طور خودکار بسته شد چون آی‌پی شما به تازگی توسط کاربر «[[User:$1|$1]]» استفاده شده‌است.
 دلیل قطع دسترسی $1 چنین است: «$2»',
 'blocklogpage' => 'سیاههٔ بسته‌شدن‌ها',
 'blocklog-showlog' => 'دسترسی این کاربر در گذشته بسته شده‌است.
@@ -2870,7 +2870,7 @@ $1',
 'block-log-flags-nocreate' => 'قابلیت ایجاد حساب غیرفعال شد',
 'block-log-flags-noautoblock' => 'قطع دسترسی خودکار غیرفعال شد',
 'block-log-flags-noemail' => 'رایانامه مسدود شد',
-'block-log-flags-nowiki_usertalk' => 'صفحهٔ بحث خود را نمی‌تواند ویرایش کند',
+'block-log-flags-nousertalk' => 'صفحهٔ بحث خود را نمی‌تواند ویرایش کند',
 'block-log-flags-angry-autoblock' => 'قطع دسترسی خودکار پیشرفته فعال شد',
 'block-log-flags-hiddenname' => 'نام کاربری پنهان',
 'range_block_disabled' => 'بستن یک بازه توسط مدیران غیر فعال است.',
@@ -2880,7 +2880,7 @@ $1',
 'ipb_already_blocked' => '«$1» همین الان هم بسته‌است',
 'ipb-needreblock' => 'دسترسی $1 از قبل بسته است. آیا می‌خواهید تنظیمات آن را تغییر دهید؟',
 'ipb-otherblocks-header' => 'سایر {{PLURAL:$1|قطع دسترسی‌ها|قطع دسترسی‌ها}}',
-'unblock-hidewiki_user' => '‫به این خاطر که حساب کاربری این کاربر مخفی شده‌است شما نمی‌توانید آن را باز کنید.‬',
+'unblock-hideuser' => '‫به این خاطر که حساب کاربری این کاربر مخفی شده‌است شما نمی‌توانید آن را باز کنید.‬',
 'ipb_cant_unblock' => 'خطا: شناسه بسته‌شدن $1 یافت نشد. ممکن است پیشتر باز شده باشد.',
 'ipb_blocked_as_range' => 'خطا: نشانی آی‌پی $1 به شکل مستقیم بسته نشده‌است و نمی‌تواند باز شود.
 این نشانی به همراه بازه $2 بسته شده که قابل باز شدن است.',
@@ -2896,7 +2896,7 @@ $1',
 'sorbs_create_account_reason' => 'نشانی آی‌پی شما توسط DNSBL مورد استفاده {{SITENAME}} به عنوان یک پروکسی باز گزارش شده‌است.
 شما اجازهٔ ساختن حساب کاربری ندارید.',
 'cant-block-while-blocked' => 'در مدتی که دسترسی شما بسته است نمی‌توانید دسترسی کاربران دیگر را قطع کنید.',
-'cant-see-hidden-wiki_user' => 'کاربری که می‌خواهید ببندید قبلاً بسته شده و پنهان گردیده است. چون شما دسترسی پنهان کردن کاربران را ندارید، نمی‌توانید قطع دسترسی کاربر را ببینید یا ویرایش کنید.',
+'cant-see-hidden-user' => 'کاربری که می‌خواهید ببندید قبلاً بسته شده و پنهان گردیده است. چون شما دسترسی پنهان کردن کاربران را ندارید، نمی‌توانید قطع دسترسی کاربر را ببینید یا ویرایش کنید.',
 'ipbblocked' => 'شما نمی‌توانید دسترسی دیگر کاربران را ببندید یا باز کنید زیرا دسترسی خودتان بسته است.',
 'ipbnounblockself' => 'شما مجاز به باز کردن دسترسی خود نیستید.',
 
@@ -2955,13 +2955,13 @@ $1',
 
 در این حالات، باید صفحه را بطور دستی انتقال داده و یا محتویات دو صفحه را با ویرایش ادغام کنید.",
 'movearticle' => 'انتقال صفحه:',
-'movewiki_userpage-warning' => "'''هشدار:''' شما در حال انتقال دادن یک صفحهٔ کاربر هستید. توجه داشته باشید که تنها صفحه منتقل می‌شود و نام کاربر تغییر '''نمی‌یابد'''.",
+'moveuserpage-warning' => "'''هشدار:''' شما در حال انتقال دادن یک صفحهٔ کاربر هستید. توجه داشته باشید که تنها صفحه منتقل می‌شود و نام کاربر تغییر '''نمی‌یابد'''.",
 'movenologin' => 'به سامانه وارد نشده‌اید',
-'movenologintext' => 'برای انتقال صفحه‌ها باید کاربر ثبت‌شده بوده و [[Special:wiki_userLogin|به سامانه وارد شوید]].',
+'movenologintext' => 'برای انتقال صفحه‌ها باید کاربر ثبت‌شده بوده و [[Special:UserLogin|به سامانه وارد شوید]].',
 'movenotallowed' => 'شما اجازهٔ انتقال دادن صفحه‌ها را ندارید.',
 'movenotallowedfile' => 'شما اجازهٔ انتقال پرونده‌ها را ندارید.',
-'cant-move-wiki_user-page' => 'شما اجازه ندارید صفحه‌های کاربری سرشاخه را انتقال دهید.',
-'cant-move-to-wiki_user-page' => 'شما اجازه ندارید که یک صفحه را به یک صفحهٔ کاربر انتقال دهید (به استثنای زیر صفحه‌های کاربری).',
+'cant-move-user-page' => 'شما اجازه ندارید صفحه‌های کاربری سرشاخه را انتقال دهید.',
+'cant-move-to-user-page' => 'شما اجازه ندارید که یک صفحه را به یک صفحهٔ کاربر انتقال دهید (به استثنای زیر صفحه‌های کاربری).',
 'newtitle' => 'به عنوان جدید',
 'move-watch' => 'پی‌گیری این صفحه',
 'movepagebtn' => 'صفحه منتقل شود',
@@ -3140,8 +3140,8 @@ $1',
 'javascripttest-qunit-heading' => 'مجموعه آزمایش QUnit جاوااسکریپت برای مدیاویکی',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'صفحهٔ کاربری شما',
-'tooltip-pt-anonwiki_userpage' => 'صفحهٔ کاربری نشانی آی‌پی‌ای که با آن ویرایش می‌کنید',
+'tooltip-pt-userpage' => 'صفحهٔ کاربری شما',
+'tooltip-pt-anonuserpage' => 'صفحهٔ کاربری نشانی آی‌پی‌ای که با آن ویرایش می‌کنید',
 'tooltip-pt-mytalk' => 'صفحهٔ بحث شما',
 'tooltip-pt-anontalk' => 'بحث پیرامون ویرایش‌های این نشانی آی‌پی',
 'tooltip-pt-preferences' => 'ترجیحات من',
@@ -3179,13 +3179,13 @@ $1',
 'tooltip-feed-rss' => 'خبرنامه آراس‌اس برای این صفحه',
 'tooltip-feed-atom' => 'خبرنامهٔ اتم برای این صفحه',
 'tooltip-t-contributions' => 'فهرست مشارکت‌های این کاربر',
-'tooltip-t-emailwiki_user' => 'فرستادن رایانامه به این کاربر',
+'tooltip-t-emailuser' => 'فرستادن رایانامه به این کاربر',
 'tooltip-t-upload' => 'بارگذاری تصاویر و پرونده‌های دیگر',
 'tooltip-t-specialpages' => 'فهرستی از همهٔ صفحه‌های ویژه',
 'tooltip-t-print' => 'نسخهٔ قابل چاپ این صفحه',
 'tooltip-t-permalink' => 'پیوند پایدار به این نسخه از صفحه',
 'tooltip-ca-nstab-main' => 'دیدن صفحهٔ محتویات',
-'tooltip-ca-nstab-wiki_user' => 'نمایش صفحهٔ کاربر',
+'tooltip-ca-nstab-user' => 'نمایش صفحهٔ کاربر',
 'tooltip-ca-nstab-media' => 'دیدن صفحهٔ مدیا',
 'tooltip-ca-nstab-special' => 'این یک صفحهٔ ویژه است، نمی‌توانید خود صفحه را ویرایش کنید',
 'tooltip-ca-nstab-project' => 'نمایش صفحهٔ پروژه',
@@ -3218,13 +3218,13 @@ $1',
 
 # Attribution
 'anonymous' => '{{PLURAL:$1|کاربر|کاربران}} گمنام {{SITENAME}}',
-'sitewiki_user' => '$1، کاربر {{SITENAME}}',
-'anonwiki_user' => '$1 کاربر ناشناس {{SITENAME}}',
+'siteuser' => '$1، کاربر {{SITENAME}}',
+'anonuser' => '$1 کاربر ناشناس {{SITENAME}}',
 'lastmodifiedatby' => 'این صفحه آخرین بار در $2، $1 به دست $3 تغییر یافته‌است.',
 'othercontribs' => 'بر اساس اثری از $1',
 'others' => 'دیگران',
-'sitewiki_users' => '$1، {{PLURAL:$2|کاربر|کاربران}} {{SITENAME}}',
-'anonwiki_users' => '$1 {{PLURAL:$2|کاربر|کاربران}} ناشناس {{SITENAME}}',
+'siteusers' => '$1، {{PLURAL:$2|کاربر|کاربران}} {{SITENAME}}',
+'anonusers' => '$1 {{PLURAL:$2|کاربر|کاربران}} ناشناس {{SITENAME}}',
 'creditspage' => 'اعتبارات این صفحه',
 'nocredits' => 'اطلاعات سازندگان این صفحه موجود نیست.',
 
@@ -3233,7 +3233,7 @@ $1',
 'spamprotectiontext' => 'از ذخیره کردن صفحه توسط پالایهٔ هرزنگاری‌ها جلوگیری شد.
 معمولاً این اتفاق زمانی می‌افتد که متن جدید صفحه، حاوی پیوندی به یک نشانی وب باشد که در فهرست سیاه قرار دارد.',
 'spamprotectionmatch' => 'متن زیر چیزی‌است که پالایهٔ هرزه‌نگاری ما را به کارانداخت: $1',
-'spambot_wiki_username' => 'هرزه‌تمیزکارِ مدیاویکی',
+'spambot_username' => 'هرزه‌تمیزکارِ مدیاویکی',
 'spam_reverting' => 'واگردانی به آخرین نسخه‌ای که پیوندی به $1 ندارد.',
 'spam_blanking' => 'تمام نسخه‌ها حاوی پیوند به $1 بود، در حال خالی کردن',
 'spam_deleting' => 'تمام نسخه‌ها حاوی پیوند به $1 بود، در حال حذف',
@@ -3257,9 +3257,9 @@ $1',
 'pageinfo-redirects-name' => 'تغییرمسیرها به این صفحه',
 'pageinfo-subpages-name' => 'زیرصفحه‌های این صفحه',
 'pageinfo-subpages-value' => '$1 ($2 {{PLURAL:$2|تغییرمسیر|تغییرمسیر}}; $3 {{PLURAL:$3|غیرتغییرمسیر|غیرتغییرمسیر}})',
-'pageinfo-firstwiki_user' => 'به‌وجود آورندهٔ صفحه',
+'pageinfo-firstuser' => 'به‌وجود آورندهٔ صفحه',
 'pageinfo-firsttime' => 'زمان ایجاد صفحه',
-'pageinfo-lastwiki_user' => 'آخرین ویرایشگر',
+'pageinfo-lastuser' => 'آخرین ویرایشگر',
 'pageinfo-lasttime' => 'تاریخ آخرین ویرایش',
 'pageinfo-edits' => 'شمار کلی ویرایش‌ها',
 'pageinfo-authors' => 'تعداد کلی نویسندگان یکتا',
@@ -3418,7 +3418,7 @@ $1',
 'exif-compressedbitsperpixel' => 'حالت فشرده‌سازی تصویر',
 'exif-pixelydimension' => 'پهنای تصویر',
 'exif-pixelxdimension' => 'بلندی تصویر',
-'exif-wiki_usercomment' => 'توضیحات کاربر',
+'exif-usercomment' => 'توضیحات کاربر',
 'exif-relatedsoundfile' => 'پروندهٔ صوتی مربوط',
 'exif-datetimeoriginal' => 'تاریخ و زمان تولید داده‌ها',
 'exif-datetimedigitized' => 'تاریخ و زمان دیجیتالی‌شدن',
@@ -3802,7 +3802,7 @@ $1',
 'confirmemail_needlogin' => 'برای تأیید نشانی رایانامه‌تان نیاز به $1 دارید.',
 'confirmemail_success' => 'نشانی رایانامهٔ شما تأیید شده‌است.
 
-هم‌اینک می‌توانید [[Special:wiki_userLogin|به سامانه وارد شوید]] و از ویکی لذت ببرید.',
+هم‌اینک می‌توانید [[Special:UserLogin|به سامانه وارد شوید]] و از ویکی لذت ببرید.',
 'confirmemail_loggedin' => 'نشانی رایانامهٔ شما تأیید شد.',
 'confirmemail_error' => 'هنگام ذخیرهٔ تأیید شما به مشکلی برخورده شد.',
 'confirmemail_subject' => 'تأیید نشانی رایانامهٔ شما {{SITENAME}}',
@@ -3851,10 +3851,10 @@ $5
 
 # Delete conflict
 'deletedwhileediting' => "'''هشدار''': این صفحه پس از اینکه شما آغاز به ویرایش آن کرده‌اید، حذف شده است!",
-'confirmrecreate' => "کاربر [[wiki_user:$1|$1]] ([[wiki_user talk:$1|بحث]]) این مقاله را پس از اینکه شما آغاز به ویرایش آن نموده‌اید به دلیل زیر حذف کرده است :
+'confirmrecreate' => "کاربر [[User:$1|$1]] ([[User talk:$1|بحث]]) این مقاله را پس از اینکه شما آغاز به ویرایش آن نموده‌اید به دلیل زیر حذف کرده است :
 : ''$2''
 لطفاً تأیید کنید که مجدداً می‌خواهید این مقاله را بسازید.",
-'confirmrecreate-noreason' => 'کاربر [[wiki_user:$1|$1]] ([[wiki_user talk:$1|بحث]]) این صفحه را پس از شروع ویرایش‌تان پاک کرده‌است.  لطفاً تأیید کنید که شما واقعاً می‌خواهید آن را دوباره ایجاد کنید.',
+'confirmrecreate-noreason' => 'کاربر [[User:$1|$1]] ([[User talk:$1|بحث]]) این صفحه را پس از شروع ویرایش‌تان پاک کرده‌است.  لطفاً تأیید کنید که شما واقعاً می‌خواهید آن را دوباره ایجاد کنید.',
 'recreate' => 'بازایجاد',
 
 # action=purge
@@ -3997,7 +3997,7 @@ $5
 'hebrew-calendar-m12-gen' => 'ایلول',
 
 # Signatures
-'signature' => '[[{{ns:wiki_user}}:$1|$2]] ([[{{ns:wiki_user_talk}}:$1|بحث]])',
+'signature' => '[[{{ns:user}}:$1|$2]] ([[{{ns:user_talk}}:$1|بحث]])',
 
 # Core parser functions
 'unknown_extension_tag' => 'برچسب ناشناختهٔ افزونه «$1»',
@@ -4065,7 +4065,7 @@ $5
 'specialpages-group-login' => 'ورود / ثبت نام',
 'specialpages-group-changes' => 'تغییرات اخیر و سیاهه‌ها',
 'specialpages-group-media' => 'گزارش بارگذاری رسانه‌ها',
-'specialpages-group-wiki_users' => 'کاربرها و دسترسی‌ها',
+'specialpages-group-users' => 'کاربرها و دسترسی‌ها',
 'specialpages-group-highuse' => 'صفحه‌های پربازدید',
 'specialpages-group-pages' => 'فهرست‌های صفحه‌ها',
 'specialpages-group-pagetools' => 'ابزارهای صفحه‌ها',
@@ -4164,11 +4164,11 @@ $5
 'logentry-move-move_redir-noredirect' => '$1 صفحهٔ $3 را بدون برجای‌گذاشتن تغییرمسیر به $4 که تغییرمسیر بود منتقل کرد',
 'logentry-patrol-patrol' => '$1 نسخه $4 صفحه $3 را به عنوان گشت خورده علامت زد',
 'logentry-patrol-patrol-auto' => '$1 نسخه $4 صفحه $3 را به طور خودکار به عنوان گشت خورده علامت زد',
-'logentry-newwiki_users-newwiki_users' => 'حساب کاربری $1 ایجاد شد',
-'logentry-newwiki_users-create' => 'حساب کاربری $1 ایجاد شد',
-'logentry-newwiki_users-create2' => 'حساب کاربری $3 توسط $1 ایجاد شد',
-'logentry-newwiki_users-autocreate' => 'حساب $1  به شکل خودکار ساخته شد',
-'newwiki_userlog-byemail' => 'گذرواژه بوسیله رایانامه ارسال شد',
+'logentry-newusers-newusers' => 'حساب کاربری $1 ایجاد شد',
+'logentry-newusers-create' => 'حساب کاربری $1 ایجاد شد',
+'logentry-newusers-create2' => 'حساب کاربری $3 توسط $1 ایجاد شد',
+'logentry-newusers-autocreate' => 'حساب $1  به شکل خودکار ساخته شد',
+'newuserlog-byemail' => 'گذرواژه بوسیله رایانامه ارسال شد',
 
 # Feedback
 'feedback-bugornote' => 'اگر آماده‌اید تا مشکلی فنی را با جزئیاتش شرح دهید لطفاً [$1 یک ایراد گزارش دهید]. در غیر این صورت می‌توانید از فرم سادهٔ زیر استفاده کنید. نظر شما به همراه نام کاربری و مرورگرتان به صفحهٔ «[$2 $3]» افزوده خواهد شد.',

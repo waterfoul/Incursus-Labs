@@ -46,14 +46,14 @@ $wgExtensionCredits['antispam'][] = array(
 
 /**
  * The 'skipcaptcha' permission key can be given out to
- * let known-good wiki_users perform triggering actions without
+ * let known-good users perform triggering actions without
  * having to go through the captcha.
  *
  * By default, sysops and registered bot accounts will be
  * able to skip, while others have to go through it.
  */
 $wgGroupPermissions['*'            ]['skipcaptcha'] = false;
-$wgGroupPermissions['wiki_user'         ]['skipcaptcha'] = false;
+$wgGroupPermissions['user'         ]['skipcaptcha'] = false;
 $wgGroupPermissions['autoconfirmed']['skipcaptcha'] = false;
 $wgGroupPermissions['bot'          ]['skipcaptcha'] = true; // registered bots
 $wgGroupPermissions['sysop'        ]['skipcaptcha'] = true;
@@ -89,10 +89,10 @@ $wgCaptchaClass = 'SimpleCaptcha';
 $wgCaptchaTriggers = array();
 $wgCaptchaTriggers['edit']          = false; // Would check on every edit
 $wgCaptchaTriggers['create']        = false; // Check on page creation.
-$wgCaptchaTriggers['sendemail']     = false; // Special:Emailwiki_user
+$wgCaptchaTriggers['sendemail']     = false; // Special:Emailuser
 $wgCaptchaTriggers['addurl']        = true;  // Check on edits that add URLs
-$wgCaptchaTriggers['createaccount'] = true;  // Special:wiki_userlogin&type=signup
-$wgCaptchaTriggers['badlogin']      = true;  // Special:wiki_userlogin after failure
+$wgCaptchaTriggers['createaccount'] = true;  // Special:Userlogin&type=signup
+$wgCaptchaTriggers['badlogin']      = true;  // Special:Userlogin after failure
 
 /**
  * You may wish to apply special rules for captcha triggering on some namespaces.
@@ -140,7 +140,7 @@ $wgCaptchaSessionExpiration = 30 * 60;
 $wgCaptchaBadLoginExpiration = 5 * 60;
 
 /**
- * Allow wiki_users who have confirmed their e-mail addresses to post
+ * Allow users who have confirmed their e-mail addresses to post
  * URL links without being harassed by the captcha.
  */
 $ceAllowConfirmedEmail = false;
@@ -178,13 +178,13 @@ $wgExtensionMessagesFiles['ConfirmEdit'] = "$wgConfirmEditIP/ConfirmEdit.i18n.ph
 $wgExtensionMessagesFiles['ConfirmEditAlias'] = "$wgConfirmEditIP/ConfirmEdit.alias.php";
 
 $wgHooks['EditFilterMerged'][] = 'ConfirmEditHooks::confirmEditMerged';
-$wgHooks['wiki_userCreateForm'][] = 'ConfirmEditHooks::injectwiki_userCreate';
-$wgHooks['AbortNewAccount'][] = 'ConfirmEditHooks::confirmwiki_userCreate';
-$wgHooks['LoginAuthenticateAudit'][] = 'ConfirmEditHooks::triggerwiki_userLogin';
-$wgHooks['wiki_userLoginForm'][] = 'ConfirmEditHooks::injectwiki_userLogin';
-$wgHooks['AbortLogin'][] = 'ConfirmEditHooks::confirmwiki_userLogin';
-$wgHooks['Emailwiki_userForm'][] = 'ConfirmEditHooks::injectEmailwiki_user';
-$wgHooks['Emailwiki_user'][] = 'ConfirmEditHooks::confirmEmailwiki_user';
+$wgHooks['UserCreateForm'][] = 'ConfirmEditHooks::injectUserCreate';
+$wgHooks['AbortNewAccount'][] = 'ConfirmEditHooks::confirmUserCreate';
+$wgHooks['LoginAuthenticateAudit'][] = 'ConfirmEditHooks::triggerUserLogin';
+$wgHooks['UserLoginForm'][] = 'ConfirmEditHooks::injectUserLogin';
+$wgHooks['AbortLogin'][] = 'ConfirmEditHooks::confirmUserLogin';
+$wgHooks['EmailUserForm'][] = 'ConfirmEditHooks::injectEmailUser';
+$wgHooks['EmailUser'][] = 'ConfirmEditHooks::confirmEmailUser';
 # Register API hook
 $wgHooks['APIEditBeforeSave'][] = 'ConfirmEditHooks::confirmEditAPI';
 $wgHooks['APIGetAllowedParams'][] = 'ConfirmEditHooks::APIGetAllowedParams';
@@ -205,7 +205,7 @@ function confirmEditSetup() {
 	global $wgGroupPermissions, $wgCaptchaTriggers;
 	if ( !$wgGroupPermissions['*']['read'] && $wgCaptchaTriggers['badlogin'] ) {
 		// We need to ensure that the captcha interface is accessible
-		// so that unauthenticated wiki_users can actually get in after a
+		// so that unauthenticated users can actually get in after a
 		// mistaken password typing.
 		global $wgWhitelistRead;
 		$image = SpecialPage::getTitleFor( 'Captcha', 'image' );

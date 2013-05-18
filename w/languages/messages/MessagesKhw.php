@@ -15,7 +15,7 @@ $fallback = 'ur';
 $rtl = true;
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'ربطو خط کشیدگی',
 'tog-justify' => 'خطان  برابری',
 'tog-hideminor' => 'موجودہ وختہ بیرو تبدیلیان موژار معمولی ترمیماتن کھوشتاؤے',
@@ -39,7 +39,7 @@ $messages = array(
 'tog-previewonfirst' => 'آویلو ترمیما نمائش پشاؤے',
 'tog-nocache' => 'بطن کاری صفحہو غیر فعال ساؤزاوے',
 'tog-enotifwatchlistpages' => 'کیاوتکہ مہ  زیرِنظرفہرستہو کیہ صفحہا تبدیلی واقع کہ ہوی تھے متے بشلی کغاز انزاوے',
-'tog-enotifwiki_usertalkpages' => 'کیاوتکہ مہ تبادلۂ خیالو صفحہ تبدیلی واقع کہ ہویی تھے متے بشلی کغاز(ای میل) انځاوے جما',
+'tog-enotifusertalkpages' => 'کیاوتکہ مہ تبادلۂ خیالو صفحہ تبدیلی واقع کہ ہویی تھے متے بشلی کغاز(ای میل) انځاوے جما',
 'tog-enotifminoredits' => 'صفحاتہ معمولی ترمیماتن بارا دی متے بشلی کغاز انزاوے',
 'tog-enotifrevealaddr' => 'خبرداری بشلی کغازا مہ ای میل پتو ظاہر کورے',
 'tog-shownumberswatching' => 'لوڑاک ممبرانن تعدادان پشاؤے',
@@ -217,7 +217,7 @@ $messages = array(
 'talk' => 'تبادلہٴ خیال',
 'views' => 'خیالات',
 'toolbox' => 'ٹول بکس',
-'wiki_userpage' => 'یوزرو صفحو لوڑے',
+'userpage' => 'یوزرو صفحو لوڑے',
 'projectpage' => 'کھوار منصوبو صفحہو لوڑے',
 'imagepage' => 'ھوٹوو صفحو لوڑے',
 'mediawikipage' => 'پیغامو صفحہو لوڑے',
@@ -241,7 +241,7 @@ $messages = array(
 $1',
 'pool-errorunknown' => 'نامعلوم خطا',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'تعارف {{SITENAME}}',
 'aboutpage' => 'Project:کھوار ویکیپیڈیو تعارف',
 'copyright' => 'تمام مواد $1 تحتہ میانسار شیر',
@@ -304,7 +304,7 @@ $1 (صفحہ موجود نیکی)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'صفحہ',
-'nstab-wiki_user' => 'یوزرو صفحہ',
+'nstab-user' => 'یوزرو صفحہ',
 'nstab-media' => 'صفحۂ میڈیا',
 'nstab-special' => 'خاص صفحہ',
 'nstab-project' => 'صفحۂ کھوار منصوبہ',
@@ -350,7 +350,7 @@ MySQL جوابِ خطاء پرائے "$3: $4"',
 
 اگر ھیہ وجہ نو، تھے تہ مصنع‌لطیفا چاری داخل بیتی آسور.
 برائے مہربانی، URL ھو نشان دیتی کیہ  
-[[Special:Listwiki_users/sysop|منتظمو]] سوم ھے بارا کھوارا کغاز نیویشے.\',',
+[[Special:ListUsers/sysop|منتظمو]] سوم ھے بارا کھوارا کغاز نیویشے.\',',
 'missingarticle-rev' => '(نظرثانی#: $1)',
 'missingarticle-diff' => '(مختلفات: $1, $2)',
 'readonly_lag' => 'ڈیٹابیس خودکار طورا قلف کورونو بیتی شیر تاکہ ماتحت ڈیٹابیسی معیلاتن درجہ آقو بوئے',
@@ -384,7 +384,7 @@ MySQL جوابِ خطاء پرائے "$3: $4"',
 'sqlhidden' => '(SQL استفسارہ کھوشت)',
 'namespaceprotected' => "\"تتے '''\$1''' فضائے نامہ صفحاتن تدوینو کوریکو اِجازت نیکی.\",",
 'ns-specialprotected' => 'خاص صفحاتن تدوین کوریکو اجازت نیکی',
-'titleprotected' => 'ھیہ عنوانو [[wiki_user:$1|$1]] تخلیق کوریکاری محفوظ کوری آسور.
+'titleprotected' => 'ھیہ عنوانو [[User:$1|$1]] تخلیق کوریکاری محفوظ کوری آسور.
 وجہ ھیہ شیر: "\'\'$2\'\'"',
 
 # Virus scanner
@@ -394,7 +394,7 @@ MySQL جوابِ خطاء پرائے "$3: $4"',
 
 # Login and logout pages
 'logouttext' => "'''ھنیسے تو خارج بیتی آسوس'''<br />
-تو خفی الاسم {{SITENAME}}  استعمال جاری لاکھیکو بوس، یا دوبارہ ھیہ نامو یا مختلف نامان سورا داخل دی بیکو بوس۔  ھیہ یاد آوری کورے کہ ای کما صفحات ھش [[Special:wiki_userLogin|دوباری لاگن بوس]] غیچھی گونی کہ تو ھنیسے خارج نو بیتی آسوس، کلہ پت کہ تو تان تفصحہ (براؤزرو) ابطن (cache) صاف نوکوروس۔\",",
+تو خفی الاسم {{SITENAME}}  استعمال جاری لاکھیکو بوس، یا دوبارہ ھیہ نامو یا مختلف نامان سورا داخل دی بیکو بوس۔  ھیہ یاد آوری کورے کہ ای کما صفحات ھش [[Special:UserLogin|دوباری لاگن بوس]] غیچھی گونی کہ تو ھنیسے خارج نو بیتی آسوس، کلہ پت کہ تو تان تفصحہ (براؤزرو) ابطن (cache) صاف نوکوروس۔\",",
 'welcomecreation' => '== رحمت عزیز چترالی تتے خوشان گیے ریران، $1 ! ==
 
 تہ  کھاتہ ساوزینو بیتی شیر تو تان [[Special:Preferences|{{SITENAME}} ترجیحات]]ن مرتب کوریکو مو روخڅے.',
@@ -407,31 +407,31 @@ MySQL جوابِ خطاء پرائے "$3: $4"',
 'login' => 'داخل بوس',
 'nav-login-createaccount' => 'کھاتہ کھولاو کورے یا اندراج کورے',
 'loginprompt' => '{{SITENAME}} کھوار ویکیپیڈیا داخلو بچے تہ سوم پاسورڈ بیک ضروری شیر',
-'wiki_userlogin' => 'کھاتہ ساوزاوے یا اندراج کورے',
-'wiki_userloginnocreate' => 'داخل نوشتہ بوس',
+'userlogin' => 'کھاتہ ساوزاوے یا اندراج کورے',
+'userloginnocreate' => 'داخل نوشتہ بوس',
 'logout' => 'لاگ آوٹ',
-'wiki_userlogout' => 'لاگ آوٹ',
+'userlogout' => 'لاگ آوٹ',
 'notloggedin' => 'داخلہ نو ہوی',
 'nologin' => 'تو کھاتہ نو ساوزے آسوسا؟ $1',
 'nologinlink' => 'کھاتہ ساوزاوے',
 'createaccount' => 'کھاتہ کھولاو کورے',
 'gotaccount' => "پروشٹی تان کھاتا ساوزینو بیتی شیر؟'''$1'''.",
 'gotaccountlink' => 'لاگن بوس',
-'wiki_userlogin-resetlink' => 'آوا داخل بیکو بچے تان تفصیلاتن روخڅی اسوم',
+'userlogin-resetlink' => 'آوا داخل بیکو بچے تان تفصیلاتن روخڅی اسوم',
 'createaccountmail' => 'بذریعۂ بشلی ڈاک',
 'createaccountreason' => 'وجہ:',
 'badretype' => 'درج شدہ کلمۂ شناخت اصلو مطابقت نو لاکھویان',
-'wiki_userexists' => 'تو کہ نامو کہ درج کوری آسوس ھیس پروشٹیاری استعمالہ شیر۔ مختلف نام استعمال کورے',
+'userexists' => 'تو کہ نامو کہ درج کوری آسوس ھیس پروشٹیاری استعمالہ شیر۔ مختلف نام استعمال کورے',
 'loginerror' => 'داخلا غلطی',
 'createaccounterror' => 'کھاتہ $1 ساوزینو نو بویان',
 'noname' => 'تو تان صحیح اسم صارفو داخل نو آرو',
 'loginsuccesstitle' => 'داخلہ کامیاب',
 'loginsuccess' => "'''ھانیسے تو {{SITENAME}} بنام \"\$1\" داخل بیتی آسوس'''",
-'nosuchwiki_user' => '"$1" نامو سورا کیہ صارف موجود نیکی.
+'nosuchuser' => '"$1" نامو سورا کیہ صارف موجود نیکی.
 برائے مہربانی! ہجان درست اندراجان تصدیقو کورے.
-اگر تو کہ مناسب جوشیتاو تھے [[Special:wiki_userLogin/signup|نوغ کھاتہ دی ساوزیکو بوس]].',
-'nowiki_userspecified' => 'تہ ای اسمِ صارفو مخصوص کوریلک',
-'login-wiki_userblocked' => 'ھیہ صارفو سورا پاوبندی شیر. داخلِ نوشتہ بیکو اجازت نیکی',
+اگر تو کہ مناسب جوشیتاو تھے [[Special:UserLogin/signup|نوغ کھاتہ دی ساوزیکو بوس]].',
+'nouserspecified' => 'تہ ای اسمِ صارفو مخصوص کوریلک',
+'login-userblocked' => 'ھیہ صارفو سورا پاوبندی شیر. داخلِ نوشتہ بیکو اجازت نیکی',
 'wrongpassword' => 'تو غلط کلمۂ شناخت درج کوری آسوس دوبارہ کو شش کورے',
 'wrongpasswordempty' => 'کلمۂ شناخت ندارد۔ دوبارہ کوشش کورے',
 'passwordtooshort' => 'تہ منتخب کردہ پارلوظ(پاسورڈ) مختصار شیر. پارلوظ کم از کم {{PLURAL:$1|1 حرف|$1 حروف}} بیلک.',
@@ -465,7 +465,7 @@ MySQL جوابِ خطاء پرائے "$3: $4"',
 'accountcreated' => 'تخلیقِ کھاتہ',
 'accountcreatedtext' => 'تخیلقِ کھاتۂ ممبار براۓ $1۔',
 'createaccount-title' => 'کھاتہ سازی برائے {{SITENAME}}',
-'wiki_usernamehasherror' => 'اسمِ صارفہ قیٹ پیٹ حروف استعمال کوریکو اجازت نیکی',
+'usernamehasherror' => 'اسمِ صارفہ قیٹ پیٹ حروف استعمال کوریکو اجازت نیکی',
 'login-throttled' => 'تو داخلِ نوشتہ بیکو بچے بو زیادہ کوششیں آرو.
 دوبارہ کوشش کوریکو بچے پھوک مدا انتظار کورے.',
 'loginlanguagelabel' => 'زبان: $1',
@@ -489,7 +489,7 @@ MySQL جوابِ خطاء پرائے "$3: $4"',
 
 # Special:PasswordReset
 'passwordreset' => 'پاسورڈو ری سیٹ کورے',
-'passwordreset-wiki_username' => 'ممبارو نم',
+'passwordreset-username' => 'ممبارو نم',
 
 # Special:ChangeEmail
 'changeemail-none' => '(نو)',
@@ -623,7 +623,7 @@ MySQL جوابِ خطاء پرائے "$3: $4"',
 'lineno' => 'لکیر $1:',
 'compareselectedversions' => 'منتخب متـنو موازنہ',
 'editundo' => 'استرجع',
-'diff-multi' => '({{PLURAL:$1|One intermediate revision|$1 intermediate revisions}} by {{PLURAL:$2|one wiki_user|$2 wiki_users}} not shown)',
+'diff-multi' => '({{PLURAL:$1|One intermediate revision|$1 intermediate revisions}} by {{PLURAL:$2|one user|$2 users}} not shown)',
 
 # Search results
 'searchresults' => 'تلاشو نتیجہ',
@@ -678,7 +678,7 @@ MySQL جوابِ خطاء پرائے "$3: $4"',
 'mypreferences' => 'مہ ترجیہات',
 'skin-preview' => 'نمائش',
 'youremail' => 'بشلی کغاز',
-'wiki_username' => 'ممبارو نم',
+'username' => 'ممبارو نم',
 'uid' => 'ممبارو لمبار:',
 'prefs-memberingroups' => '{{PLURAL:$1|گروہ|گروہاں}} رُکن:',
 'prefs-registration-date-time' => '$1',
@@ -702,7 +702,7 @@ HTML tags لوڑے.',",
 'right-upload' => 'فائل انځاوے',
 'right-delete' => 'صفحان ضائع کورے',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'یوزروت مختص شدہ حقوق',
 'rightsnone' => '(نو)',
 
@@ -768,7 +768,7 @@ HTML tags لوڑے.',",
 'filehist-datetime' => 'تاریخ/وخت',
 'filehist-thumb' => 'اظفورہ',
 'filehist-thumbtext' => '$1 صارفو څیق ھوٹو',
-'filehist-wiki_user' => 'صارف',
+'filehist-user' => 'صارف',
 'filehist-dimensions' => 'ابعاد',
 'filehist-comment' => 'تبصرہ',
 'imagelinks' => 'مسلو روابط',
@@ -809,11 +809,11 @@ HTML tags لوڑے.',",
 'deadendpages' => 'بیردو صفحات',
 'protectedpages' => 'محفوظ شدہ صفحہ',
 'protectedtitles' => 'محفوظ شدہ صفحہ',
-'listwiki_users' => 'فہرست ارکان',
-'wiki_usercreated' => '
+'listusers' => 'فہرست ارکان',
+'usercreated' => '
 {{GENDER:$3|تخلیق شدہ}}  بتاریخ $1 بوقت $2',
 'newpages' => 'نوغ صفحات',
-'newpages-wiki_username' => 'اسمِ رکنیت',
+'newpages-username' => 'اسمِ رکنیت',
 'move' => 'منتقل',
 'movethispage' => 'ھیہ صفحو خور ژاغا  منتقل کورے',
 'pager-newer-n' => '{{PLURAL:$1|نوغ1|نوغ $1}}',
@@ -825,7 +825,7 @@ HTML tags لوڑے.',",
 'booksources-go' => 'Go/بوغے',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'یوزر',
+'specialloguserlabel' => 'یوزر',
 'speciallogtitlelabel' => 'عنوان:',
 'log' => 'نوشتہ جات',
 
@@ -852,14 +852,14 @@ HTML tags لوڑے.',",
 'linksearch-ok' => 'Search/تلاش',
 'linksearch-line' => '$1 مربوط شیر $2 ری',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'نوشتۂ آمد صارف',
+# Special:Log/newusers
+'newuserlogpage' => 'نوشتۂ آمد صارف',
 
 # Special:ListGroupRights
 'listgrouprights-members' => 'ممبارانن فھرست',
 
-# E-mail wiki_user
-'emailwiki_user' => 'ممباروت بشلی کغاز انڅاوے',
+# E-mail user
+'emailuser' => 'ممباروت بشلی کغاز انڅاوے',
 
 # Watchlist
 'watchlist' => 'مہ واچ لسٹ',
@@ -937,7 +937,7 @@ HTML tags لوڑے.',",
 'sp-contributions-logs' => 'لاگز',
 'sp-contributions-talk' => 'تبادلہ خیال',
 'sp-contributions-search' => 'تان نیویشیرو مضمونن تلاش کورے',
-'sp-contributions-wiki_username' => 'آئی.پی پتہ یا اسمِ صارف:',
+'sp-contributions-username' => 'آئی.پی پتہ یا اسمِ صارف:',
 'sp-contributions-toponly' => 'صرف حالیہ ترین نظرثانی ترمیماتن پشاؤے',
 'sp-contributions-submit' => 'Search/تلاش',
 
@@ -997,7 +997,7 @@ HTML tags لوڑے.',",
 'thumbnail_error' => '$1 څیق سایزو ھوٹو ساوزیکا مسئلہ',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'تہ صارفی صفحہ',
+'tooltip-pt-userpage' => 'تہ صارفی صفحہ',
 'tooltip-pt-mytalk' => 'تہ صفحۂ مشقولگی',
 'tooltip-pt-preferences' => ' تہ ترجیحات',
 'tooltip-pt-watchlist' => 'ھتے صفحاتن فہرست کہ ھتیتان تبدیلی تہ زیرِنظر شینی',
@@ -1032,13 +1032,13 @@ HTML tags لوڑے.',",
 'tooltip-feed-rss' => 'ھیہ صفحو بچے اسس خورد',
 'tooltip-feed-atom' => 'ھیہ صفحو بچے آٹوم فیڈ',
 'tooltip-t-contributions' => 'نوغ تدوین',
-'tooltip-t-emailwiki_user' => 'ھیہ ممباروت بشلی کغاز(ای میل) انڅاوے',
+'tooltip-t-emailuser' => 'ھیہ ممباروت بشلی کغاز(ای میل) انڅاوے',
 'tooltip-t-upload' => 'اپلوڈ فایل',
 'tooltip-t-specialpages' => 'سف خاص صفحاتن فہرست',
 'tooltip-t-print' => 'ھیہ صفحو قابل طبع نسخہ',
 'tooltip-t-permalink' => 'صفحہعو موجودہ نظرثانیو مستقل لنک',
 'tooltip-ca-nstab-main' => 'مضمونو صفحو لوڑے',
-'tooltip-ca-nstab-wiki_user' => 'ممبارو صفحو لوڑے',
+'tooltip-ca-nstab-user' => 'ممبارو صفحو لوڑے',
 'tooltip-ca-nstab-special' => 'ھیہ ای خاص صفحہ شیر، تو ھیارا ترمیم کوریکو نو بوس',
 'tooltip-ca-nstab-project' => 'پروجیکٹو صفحو لوڑے',
 'tooltip-ca-nstab-image' => 'مسلو صفحو لوڑے',

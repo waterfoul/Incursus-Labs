@@ -18,7 +18,7 @@
 $fallback = 'es';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Miñcewirilpe lasun',
 'tog-justify' => 'Xvrvmpe cijkantvkun',
 'tog-showtoolbar' => 'Pengelün kümeelün ñi chemkün (JavaScript duamyengey)',
@@ -166,7 +166,7 @@ $messages = array(
 'talk' => 'Nütramkawün',
 'views' => 'Adngelün',
 'toolbox' => 'Küdawpeyüm',
-'wiki_userpage' => 'Adkintun kellufe ñi wülngiñ',
+'userpage' => 'Adkintun kellufe ñi wülngiñ',
 'projectpage' => 'Adkintun zeumanzugu wülngiñ',
 'imagepage' => 'Adkintun ad wülngiñ',
 'mediawikipage' => 'Adkintun werkün wülngiñ',
@@ -184,7 +184,7 @@ $messages = array(
 'jumptosearch' => 'kintun',
 'pool-errorunknown' => 'Kimnoelchi welulkan',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => '{{SITENAME}} ñi dungu',
 'aboutpage' => 'Project:Dungu',
 'copyrightpage' => '{{ns:project}}:Norkülelu ñi ngenngelu ñi deumakelu',
@@ -232,7 +232,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Wülngiñ',
-'nstab-wiki_user' => 'Kellufe',
+'nstab-user' => 'Kellufe',
 'nstab-media' => 'Ad ñi wülngiñ',
 'nstab-special' => 'Wichu wülngiñ',
 'nstab-project' => 'Deumandungu wülngiñ',
@@ -251,7 +251,7 @@ $messages = array(
 
 Chi kiñe rakizuamün ta pünefalkülenuchi kalelu kam nülkükawlelu liftungepelu wülngiñ ñi rupañmael.
 
-Femnuale, welulkafuy feychi küzauwe. Feypimi tüfachi dungu kiñe [[Special:Listwiki_users/sysop|ngünefe]]. Wirituymi feychi URL.',
+Femnuale, welulkafuy feychi küzauwe. Feypimi tüfachi dungu kiñe [[Special:ListUsers/sysop|ngünefe]]. Wirituymi feychi URL.',
 'missingarticle-rev' => '(malün ñi rakin: $1)',
 'filedeleteerror' => 'Pepiñamümüngelay "$1".',
 'filenotfound' => 'Pepipelafuy "$1".',
@@ -269,17 +269,17 @@ Nieafuy falinochi wirin püñamtuam wülngiñ ñi üy.',
 'login' => 'Konkülen',
 'nav-login-createaccount' => 'konkülen/dewman konün',
 'loginprompt' => 'Müley "Cookies" ñi püneleael wirintukuwam {{SITENAME}} mew.',
-'wiki_userlogin' => 'Konkülen/dewman konün',
-'wiki_userloginnocreate' => 'Konün',
+'userlogin' => 'Konkülen/dewman konün',
+'userloginnocreate' => 'Konün',
 'logout' => 'Tripan',
-'wiki_userlogout' => 'Tripan',
+'userlogout' => 'Tripan',
 'notloggedin' => 'Petu konlaymi.',
 'nologin' => 'Nielaymi kiñe konün? $1.',
 'nologinlink' => 'Dewmafinge konün',
 'createaccount' => 'Dewmafinge konün',
 'gotaccount' => 'Dew nieymi konün? $1.',
 'gotaccountlink' => 'Konün',
-'wiki_userlogin-resetlink' => 'Ngoyüniengetuymi chumngechi konün?',
+'userlogin-resetlink' => 'Ngoyüniengetuymi chumngechi konün?',
 'createaccountreason' => 'Dungu:',
 'mailmypassword' => 'Amulün we nülawe werküwe mew',
 'loginlanguagelabel' => 'Cezugun: $1',
@@ -445,7 +445,7 @@ Rulpakünuy feychi kangelkülelu dungu.",
 'timezoneregion-asia' => 'Asia',
 'timezoneregion-europe' => 'Ewropa',
 'youremail' => 'Werküwe:',
-'wiki_username' => 'Üy kellufe:',
+'username' => 'Üy kellufe:',
 'yourrealname' => 'Mupiñ üy:',
 'yourlanguage' => 'Cezugun:',
 'gender-male' => 'Wentru',
@@ -453,18 +453,18 @@ Rulpakünuy feychi kangelkülelu dungu.",
 'prefs-help-email' => 'Mülelay mi eluael feychi werküwe, welu zuamafimi wüñoeltuael tami nülawe ngoyünienngelu.',
 'prefs-help-email-others' => 'Müley kiñe lasun tami wülngiñ kam nütramkawe wülngiñ mew amulam werküwe mew. Tami werküwe ñi üy pengelngelay.',
 
-# wiki_user rights
-'wiki_userrights-wiki_user-editname' => 'Wirin kiñe üy kellufe mew:',
+# User rights
+'userrights-user-editname' => 'Wirin kiñe üy kellufe mew:',
 
 # Groups
 'group' => 'Kisuwen:',
-'group-wiki_user' => 'Pu kellufe',
+'group-user' => 'Pu kellufe',
 'group-sysop' => 'Pu ngünefe',
 'group-all' => '(kom pu che)',
 
-'group-wiki_user-member' => '{{GENDER:$1|Kellufe}}',
+'group-user-member' => '{{GENDER:$1|Kellufe}}',
 
-'grouppage-wiki_user' => '{{ns:project}}: Pu kellufe',
+'grouppage-user' => '{{ns:project}}: Pu kellufe',
 
 # Rights
 'right-edit' => 'Wirin pakina',
@@ -475,7 +475,7 @@ Rulpakünuy feychi kangelkülelu dungu.",
 'right-browsearchive' => 'kintun pakina ñamümüngelu',
 'right-undelete' => 'Wüñoñamümün kiñe pakina',
 
-# wiki_user rights log
+# User rights log
 'rightsnone' => 'chemnorume',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -515,7 +515,7 @@ Rulpakünuy feychi kangelkülelu dungu.",
 'minoreditletter' => 'p',
 'newpageletter' => 'W',
 'boteditletter' => 'küdauwe',
-'number_of_watching_wiki_users_pageview' => '[$1 {{PLURAL:$1|Kellufe|Kellufe}} wiñamüy]',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|Kellufe|Kellufe}} wiñamüy]',
 'rc-enhanced-expand' => 'Adkintun doy dungu (JavaScript duamyengey)',
 'rc-enhanced-hide' => 'Ellkan doy dungu',
 
@@ -544,7 +544,7 @@ Rulpakünuy feychi kangelkülelu dungu.",
 # Special:ListFiles
 'listfiles_search_for' => 'Kintun üy ad:',
 'listfiles_name' => 'Üy',
-'listfiles_wiki_user' => 'Kellufe',
+'listfiles_user' => 'Kellufe',
 
 # File description page
 'file-anchor-link' => 'Eltukawün',
@@ -557,7 +557,7 @@ Rulpakünuy feychi kangelkülelu dungu.",
 'filehist-datetime' => 'Antü/Ora',
 'filehist-thumb' => 'Pichi pegel',
 'filehist-thumbtext' => 'Tripay tüfachi pichi pegel $1 mew',
-'filehist-wiki_user' => 'Kellufe',
+'filehist-user' => 'Kellufe',
 'filehist-dimensions' => 'Tunten ngen',
 'filehist-comment' => 'Ngütramkawün',
 'imagelinks' => 'Eltukawün ñi pünelelu',
@@ -599,9 +599,9 @@ Fey ñi chumngen mülelu ($2 fey ñi chumngen wülngiñ) pengeli tüfa mew.',
 'nviews' => '$1 {{PLURAL:$1|pen|pen}}',
 'prefixindex' => 'Kom wülngiñ engu wüne konkülelu nemül',
 'shortpages' => 'Pichi pakina',
-'wiki_usercreated' => '{{GENDER:$3|Dewmangey}} $1, $2 mew',
+'usercreated' => '{{GENDER:$3|Dewmangey}} $1, $2 mew',
 'newpages' => 'Weke wülngiñ',
-'newpages-wiki_username' => 'Kellufe ñi üy',
+'newpages-username' => 'Kellufe ñi üy',
 'move' => 'Wiñamün',
 'movethispage' => 'Nengümün tüfachi pakina',
 'pager-newer-n' => '{{PLURAL: Kangelu $1}}',
@@ -613,7 +613,7 @@ Fey ñi chumngen mülelu ($2 fey ñi chumngen wülngiñ) pengeli tüfa mew.',
 'booksources-go' => 'Amun',
 
 # Special:Log
-'speciallogwiki_userlabel' => 'Kellufe:',
+'specialloguserlabel' => 'Kellufe:',
 'speciallogtitlelabel' => 'Chew ñi amuael (Üy):',
 'log' => 'Wirintukun',
 
@@ -631,17 +631,17 @@ Fey ñi chumngen mülelu ($2 fey ñi chumngen wülngiñ) pengeli tüfa mew.',
 'linksearch-ok' => 'Kintun',
 'linksearch-line' => '$1 nülkükawlelu $2 mew',
 
-# Special:Listwiki_users
-'listwiki_users-submit' => 'Pengelün',
+# Special:ListUsers
+'listusers-submit' => 'Pengelün',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'We kellufe ñi wirintukun',
+# Special:Log/newusers
+'newuserlogpage' => 'We kellufe ñi wirintukun',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(koneltulu kellufe ñi wif)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Amulün werküwe tüfachi kellufe',
+# E-mail user
+'emailuser' => 'Amulün werküwe tüfachi kellufe',
 'emailsubject' => 'Dungu',
 'emailmessage' => 'Dungu',
 'emailsend' => 'Werkün',
@@ -723,7 +723,7 @@ Fey ñi chumngen mülelu ($2 fey ñi chumngen wülngiñ) pengeli tüfa mew.',
 'sp-contributions-logs' => 'Wirintukun',
 'sp-contributions-talk' => 'Nütramkan',
 'sp-contributions-search' => 'Kintun fill kellufe ñi wirin',
-'sp-contributions-wiki_username' => 'IP ñi nütramkawe kam üy kellufe:',
+'sp-contributions-username' => 'IP ñi nütramkawe kam üy kellufe:',
 'sp-contributions-toponly' => 'Adkintun doy weke malün müten',
 'sp-contributions-submit' => 'Kintun',
 
@@ -791,7 +791,7 @@ Fey ñi chumngen mülelu ($2 fey ñi chumngen wülngiñ) pengeli tüfa mew.',
 'thumbnail_error' => 'Welulkan deumayam pichi pegel adentun: $1',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Tami wülngiñ',
+'tooltip-pt-userpage' => 'Tami wülngiñ',
 'tooltip-pt-mytalk' => 'Tami nütramkawe',
 'tooltip-pt-preferences' => 'Tami dullin',
 'tooltip-pt-watchlist' => 'Mi llaytulu wülngiñ ñi wif',
@@ -823,13 +823,13 @@ Fey ñi chumngen mülelu ($2 fey ñi chumngen wülngiñ) pengeli tüfa mew.',
 'tooltip-t-recentchangeslinked' => 'Weke kalekünun kake wülngiñ nülkükawlu tüfa mew',
 'tooltip-feed-atom' => 'Atom ñi amuldungu tüfachi wülngiñ ngealu',
 'tooltip-t-contributions' => 'Tüfachi kellufe ñi wirin ñi wif',
-'tooltip-t-emailwiki_user' => 'Amulün werküwe tüfachi kellufe',
+'tooltip-t-emailuser' => 'Amulün werküwe tüfachi kellufe',
 'tooltip-t-upload' => 'Püramün adentun kam fill dungu eltukawün',
 'tooltip-t-specialpages' => 'Kom wichuke wülngiñ ñi wif',
 'tooltip-t-print' => 'Tripan tüfachi wülngiñ nentuwirinael',
 'tooltip-t-permalink' => 'Mülekalelu lasun nülkükawley tüfachi wülngiñ ñi malün',
 'tooltip-ca-nstab-main' => 'Adkintun trokiñdungu wülngiñ',
-'tooltip-ca-nstab-wiki_user' => 'Adkintun kellufe ñi wülngiñ',
+'tooltip-ca-nstab-user' => 'Adkintun kellufe ñi wülngiñ',
 'tooltip-ca-nstab-special' => 'Tüfa ta wichu wülngiñ. Pepi wiritulaymi tüfa mew.',
 'tooltip-ca-nstab-project' => 'Adkintun deumandungu wülngiñ',
 'tooltip-ca-nstab-image' => 'Pen adentun ñi wülngiñ',
@@ -847,9 +847,9 @@ Fey ñi chumngen mülelu ($2 fey ñi chumngen wülngiñ) pengeli tüfa mew.',
 'tooltip-summary' => 'Tukuymi pichi trokiñünzugu',
 
 # Attribution
-'sitewiki_user' => 'Kellufe $1 {{SITENAME}}',
+'siteuser' => 'Kellufe $1 {{SITENAME}}',
 'others' => 'fill',
-'sitewiki_users' => '{{PLURAL:$2|Kellufe|Kellufe}} $1 {{SITENAME}}',
+'siteusers' => '{{PLURAL:$2|Kellufe|Kellufe}} $1 {{SITENAME}}',
 
 # Browsing diffs
 'previousdiff' => '← Füta wirin',

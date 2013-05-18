@@ -57,7 +57,7 @@
  * Authentication plugin interface. Instantiate a subclass of AuthPlugin
  * and set $wgAuth to it to authenticate against some external tool.
  *
- * The default behavior is not to do anything, and use the local wiki_user
+ * The default behavior is not to do anything, and use the local user
  * database for all authentication. A subclass can require that all
  * accounts authenticate externally, or use it only as a fallback; also
  * you can transparently create internal wiki accounts the first time
@@ -70,34 +70,34 @@
 interface iAuthPlugin {
 
 	/**
-	 * Check whether there exists a wiki_user account with the given name.
+	 * Check whether there exists a user account with the given name.
 	 * The name will be normalized to MediaWiki's requirements, so
 	 * you might need to munge it (for instance, for lowercase initial
 	 * letters).
 	 *
-	 * @param $wiki_username String: wiki_username.
+	 * @param $username String: username.
 	 * @return bool
 	 * @public
 	 */
-	public function wiki_userExists( $wiki_username );
+	public function userExists( $username );
 
 	/**
-	 * Check if a wiki_username+password pair is a valid login.
+	 * Check if a username+password pair is a valid login.
 	 * The name will be normalized to MediaWiki's requirements, so
 	 * you might need to munge it (for instance, for lowercase initial
 	 * letters).
 	 *
-	 * @param $wiki_username String: wiki_username.
-	 * @param $password String: wiki_user password.
+	 * @param $username String: username.
+	 * @param $password String: user password.
 	 * @return bool
 	 * @public
 	 */
-	public function authenticate( $wiki_username, $password );
+	public function authenticate( $username, $password );
 
 	/**
 	 * Modify options in the login template.
 	 *
-	 * @param $template wiki_userLoginTemplate object.
+	 * @param $template UserLoginTemplate object.
 	 * @public
 	 */
 	public function modifyUITemplate( &$template );
@@ -120,21 +120,21 @@ interface iAuthPlugin {
 	public function validDomain( $domain );
 
 	/**
-	 * When a wiki_user logs in, optionally fill in preferences and such.
+	 * When a user logs in, optionally fill in preferences and such.
 	 * For instance, you might pull the email address or real name from the
-	 * external wiki_user database.
+	 * external user database.
 	 *
-	 * The wiki_user object is passed by reference so it can be modified; don't
+	 * The User object is passed by reference so it can be modified; don't
 	 * forget the & on your function declaration.
 	 *
-	 * @param wiki_user $wiki_user
+	 * @param User $user
 	 * @public
 	 */
-	public function updatewiki_user( &$wiki_user );
+	public function updateUser( &$user );
 
 	/**
 	 * Return true if the wiki should create a new local account automatically
-	 * when asked to login a wiki_user who doesn't exist locally but does in the
+	 * when asked to login a user who doesn't exist locally but does in the
 	 * external auth database.
 	 *
 	 * If you don't automatically create accounts, you must still create
@@ -149,7 +149,7 @@ interface iAuthPlugin {
 	public function autoCreate();
 
 	/**
-	 * Can wiki_users change their passwords?
+	 * Can users change their passwords?
 	 *
 	 * @return bool
 	 */
@@ -163,22 +163,22 @@ interface iAuthPlugin {
 	 *
 	 * Return true if successful.
 	 *
-	 * @param $wiki_user wiki_user object.
+	 * @param $user User object.
 	 * @param $password String: password.
 	 * @return bool
 	 * @public
 	 */
-	public function setPassword( $wiki_user, $password );
+	public function setPassword( $user, $password );
 
 	/**
-	 * Update wiki_user information in the external authentication database.
+	 * Update user information in the external authentication database.
 	 * Return true if successful.
 	 *
-	 * @param $wiki_user wiki_user object.
+	 * @param $user User object.
 	 * @return bool
 	 * @public
 	 */
-	public function updateExternalDB( $wiki_user );
+	public function updateExternalDB( $user );
 
 	/**
 	 * Check to see if external accounts can be created.
@@ -189,17 +189,17 @@ interface iAuthPlugin {
 	public function canCreateAccounts();
 
 	/**
-	 * Add a wiki_user to the external authentication database.
+	 * Add a user to the external authentication database.
 	 * Return true if successful.
 	 *
-	 * @param wiki_user $wiki_user - only the name should be assumed valid at this point
+	 * @param User $user - only the name should be assumed valid at this point
 	 * @param string $password
 	 * @param string $email
 	 * @param string $realname
 	 * @return bool
 	 * @public
 	 */
-	public function addwiki_user( $wiki_user, $password, $email='', $realname='' );
+	public function addUser( $user, $password, $email='', $realname='' );
 
 	/**
 	 * Return true to prevent logins that don't authenticate here from being
@@ -213,24 +213,24 @@ interface iAuthPlugin {
 	public function strict();
 
 	/**
-	 * When creating a wiki_user account, optionally fill in preferences and such.
+	 * When creating a user account, optionally fill in preferences and such.
 	 * For instance, you might pull the email address or real name from the
-	 * external wiki_user database.
+	 * external user database.
 	 *
-	 * The wiki_user object is passed by reference so it can be modified; don't
+	 * The User object is passed by reference so it can be modified; don't
 	 * forget the & on your function declaration.
 	 *
-	 * @param $wiki_user wiki_user object.
-	 * @param $autocreate bool True if wiki_user is being autocreated on login
+	 * @param $user User object.
+	 * @param $autocreate bool True if user is being autocreated on login
 	 * @public
 	 */
-	public function initwiki_user( &$wiki_user, $autocreate=false );
+	public function initUser( &$user, $autocreate=false );
 
 	/**
 	 * If you want to munge the case of an account name before the final
 	 * check, now is your chance.
 	 */
-	public function getCanonicalName( $wiki_username );
+	public function getCanonicalName( $username );
 }
 
 ?>

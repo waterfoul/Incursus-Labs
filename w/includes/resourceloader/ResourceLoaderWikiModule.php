@@ -25,7 +25,7 @@
 /**
  * Abstraction for resource loader modules which pull from wiki pages
  *
- * This can only be used for wiki pages in the MediaWiki and wiki_user namespaces,
+ * This can only be used for wiki pages in the MediaWiki and User namespaces,
  * because of its dependence on the functionality of
  * Title::isCssJsSubpage.
  */
@@ -33,7 +33,7 @@ abstract class ResourceLoaderWikiModule extends ResourceLoaderModule {
 
 	/* Protected Members */
 
-	# Origin is wiki_user-supplied code
+	# Origin is user-supplied code
 	protected $origin = self::ORIGIN_USER_SITEWIDE;
 
 	// In-object cache for title mtimes
@@ -171,8 +171,8 @@ abstract class ResourceLoaderWikiModule extends ResourceLoaderModule {
 	 * @return array( prefixed DB key => UNIX timestamp ), nonexistent titles are dropped
 	 */
 	protected function getTitleMtimes( ResourceLoaderContext $context ) {
-		r = $this->getDB();
-		if ( !r ) {
+		$dbr = $this->getDB();
+		if ( !$dbr ) {
 			// We're dealing with a subclass that doesn't have a DB
 			return array();
 		}
@@ -189,9 +189,9 @@ abstract class ResourceLoaderWikiModule extends ResourceLoaderModule {
 		}
 
 		if ( !$batch->isEmpty() ) {
-			$res = r->select( 'page',
+			$res = $dbr->select( 'page',
 				array( 'page_namespace', 'page_title', 'page_touched' ),
-				$batch->constructSet( 'page', r ),
+				$batch->constructSet( 'page', $dbr ),
 				__METHOD__
 			);
 			foreach ( $res as $row ) {

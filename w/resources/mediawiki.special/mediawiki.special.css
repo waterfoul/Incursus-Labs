@@ -32,12 +32,12 @@ table.mw-allpages-table-form tr {
 }
 
 /**** Special:Block ****/
-tr.mw-block-hidewiki_user {
+tr.mw-block-hideuser {
 	font-weight: bold;
 }
 
 /**** Special:BlockList ****/
-table.mw-blocklist span.mw-wiki_usertoollinks,
+table.mw-blocklist span.mw-usertoollinks,
 span.mw-blocklist-actions{
 	white-space: nowrap;
 	font-size: 90%;
@@ -48,12 +48,12 @@ span.mw-blocklist-actions{
 	font-weight: bold;
 }
 
-/**** Special:Emailwiki_user ****/
-table.mw-emailwiki_user-table {
+/**** Special:EmailUser ****/
+table.mw-emailuser-table {
 	width: 98%;
 }
-td#mw-emailwiki_user-sender,
-td#mw-emailwiki_user-recipient {
+td#mw-emailuser-sender,
+td#mw-emailuser-recipient {
 	font-weight: bold;
 }
 
@@ -264,11 +264,11 @@ td.mw-statistics-numbers {
 	text-align: right;
 }
 
-/**** Special:wiki_userRights ****/
-.mw-wiki_userrights-disabled {
+/**** Special:UserRights ****/
+.mw-userrights-disabled {
 	color: #888;
 }
-table.mw-wiki_userrights-groups * td,
-table.mw-wiki_userrights-groups * th {
+table.mw-userrights-groups * td,
+table.mw-userrights-groups * th {
 	padding-right: 1.5em;
 }

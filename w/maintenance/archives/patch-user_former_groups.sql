@@ -1,9 +1,9 @@
--- Stores the groups the wiki_user has once belonged to. 
--- The wiki_user may still belong these groups. Check wiki_user_groups.
-CREATE TABLE /*_*/wiki_user_former_groups (
-  -- Key to wiki_user_id
-  ufg_wiki_user int unsigned NOT NULL default 0,
+-- Stores the groups the user has once belonged to. 
+-- The user may still belong these groups. Check user_groups.
+CREATE TABLE /*_*/user_former_groups (
+  -- Key to user_id
+  ufg_user int unsigned NOT NULL default 0,
   ufg_group varbinary(32) NOT NULL default ''
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/ufg_wiki_user_group ON /*_*/wiki_user_former_groups (ufg_wiki_user,ufg_group);
+CREATE UNIQUE INDEX /*i*/ufg_user_group ON /*_*/user_former_groups (ufg_user,ufg_group);

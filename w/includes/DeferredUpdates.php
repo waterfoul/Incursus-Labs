@@ -84,19 +84,19 @@ class DeferredUpdates {
 
 		$doCommit = $commit == 'commit';
 		if ( $doCommit ) {
-			w = wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 		}
 
 		foreach ( $updates as $update ) {
 			try {
 				$update->doUpdate();
 
-				if ( $doCommit && w->trxLevel() ) {
-					w->commit( __METHOD__ );
+				if ( $doCommit && $dbw->trxLevel() ) {
+					$dbw->commit( __METHOD__ );
 				}
 			} catch ( MWException $e ) {
 				// We don't want exceptions thrown during deferred updates to
-				// be reported to the wiki_user since the output is already sent.
+				// be reported to the user since the output is already sent.
 				// Instead we just log them.
 				if ( !$e instanceof ErrorPageError ) {
 					wfDebugLog( 'exception', $e->getLogMessage() );

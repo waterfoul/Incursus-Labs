@@ -37,7 +37,7 @@
 	 * var api = new mw.Api();
 	 * api.get( {
 	 *     action: 'query',
-	 *     meta: 'wiki_userinfo'
+	 *     meta: 'userinfo'
 	 * }, {
 	 *     ok: function () { console.log( arguments ); }
 	 * } );

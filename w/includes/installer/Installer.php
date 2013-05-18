@@ -51,7 +51,7 @@ abstract class Installer {
 	 *
 	 * @var array
 	 */
-	protected Installers = array();
+	protected $dbInstallers = array();
 
 	/**
 	 * Minimum memory size in MB.
@@ -83,7 +83,7 @@ abstract class Installer {
 	 *
 	 * @var array
 	 */
-	protected static Types = array(
+	protected static $dbTypes = array(
 		'mysql',
 		'postgres',
 		'oracle',
@@ -141,8 +141,8 @@ abstract class Installer {
 		'wgRightsUrl',
 		'wgMainCacheType',
 		'wgEnableEmail',
-		'wgEnablewiki_userEmail',
-		'wgEnotifwiki_userTalk',
+		'wgEnableUserEmail',
+		'wgEnotifUserTalk',
 		'wgEnotifWatchlist',
 		'wgEmailAuthentication',
 		'wgDBtype',
@@ -172,7 +172,7 @@ abstract class Installer {
 	 * @var array
 	 */
 	protected $internalDefaults = array(
-		'_wiki_userLang' => 'en',
+		'_UserLang' => 'en',
 		'_Environment' => false,
 		'_CompiledDBs' => array(),
 		'_SafeMode' => false,
@@ -184,7 +184,7 @@ abstract class Installer {
 		'_SameAccount' => true,
 		'_CreateDBAccount' => false,
 		'_NamespaceType' => 'site-name',
-		'_AdminName' => '', // will be set later, when the wiki_user selects language
+		'_AdminName' => '', // will be set later, when the user selects language
 		'_AdminPassword' => '',
 		'_AdminPassword2' => '',
 		'_AdminEmail' => '',
@@ -225,7 +225,7 @@ abstract class Installer {
 	);
 
 	/**
-	 * wiki_user rights profiles.
+	 * User rights profiles.
 	 *
 	 * @var array
 	 */
@@ -310,7 +310,7 @@ abstract class Installer {
 	 * UI interface for displaying a short message
 	 * The parameters are like parameters to wfMessage().
 	 * The messages will be in wikitext format, which will be converted to an
-	 * output format such as HTML or text before being sent to the wiki_user.
+	 * output format such as HTML or text before being sent to the user.
 	 * @param $msg
 	 */
 	public abstract function showMessage( $msg /*, ... */ );
@@ -322,7 +322,7 @@ abstract class Installer {
 	public abstract function showError( $msg /*, ... */ );
 
 	/**
-	 * Show a message to the installing wiki_user by using a Status object
+	 * Show a message to the installing user by using a Status object
 	 * @param $status Status
 	 */
 	public abstract function showStatusMessage( Status $status );
@@ -331,7 +331,7 @@ abstract class Installer {
 	 * Constructor, always call this from child classes.
 	 */
 	public function __construct() {
-		global $wgExtensionMessagesFiles, $wgwiki_user;
+		global $wgExtensionMessagesFiles, $wgUser;
 
 		// Disable the i18n cache and LoadBalancer
 		Language::getLocalisationCache()->disableBackend();
@@ -341,8 +341,8 @@ abstract class Installer {
 		$wgExtensionMessagesFiles['MediawikiInstaller'] =
 			__DIR__ . '/Installer.i18n.php';
 
-		// Having a wiki_user with id = 0 safeguards us from DB access via wiki_user::loadOptions().
-		$wgwiki_user = wiki_user::newFromId( 0 );
+		// Having a user with id = 0 safeguards us from DB access via User::loadOptions().
+		$wgUser = User::newFromId( 0 );
 
 		$this->settings = $this->internalDefaults;
 
@@ -382,7 +382,7 @@ abstract class Installer {
 	 * @return array
 	 */
 	public static function getDBTypes() {
-		return self::Types;
+		return self::$dbTypes;
 	}
 
 	/**
@@ -499,7 +499,7 @@ abstract class Installer {
 	}
 
 	/**
-	 * Get a fake password for sending back to the wiki_user in HTML.
+	 * Get a fake password for sending back to the user in HTML.
 	 * This is a security mechanism to avoid compromise of the password in the
 	 * event of session ID compromise.
 	 *
@@ -528,8 +528,8 @@ abstract class Installer {
 	 * On POSIX systems return the primary group of the webserver we're running under.
 	 * On other systems just returns null.
 	 *
-	 * This is used to advice the wiki_user that he should chgrp his mw-config/data/images directory as the
-	 * webserver wiki_user before he can install.
+	 * This is used to advice the user that he should chgrp his mw-config/data/images directory as the
+	 * webserver user before he can install.
 	 *
 	 * Public because SqliteInstaller needs it, and doesn't subclass Installer.
 	 *
@@ -618,7 +618,7 @@ abstract class Installer {
 			'ss_total_edits' => 0,
 			'ss_good_articles' => 0,
 			'ss_total_pages' => 0,
-			'ss_wiki_users' => 0,
+			'ss_users' => 0,
 			'ss_images' => 0 ),
 			__METHOD__, 'IGNORE' );
 		return Status::newGood();
@@ -657,14 +657,14 @@ abstract class Installer {
 		}
 
 		$databases = array_flip ( $databases );
-		foreach ( array_keys( $databases ) as  ) {
-			$installer = $this->getDBInstaller(  );
+		foreach ( array_keys( $databases ) as $db ) {
+			$installer = $this->getDBInstaller( $db );
 			$status = $installer->checkPrerequisites();
 			if ( !$status->isGood() ) {
 				$this->showStatusMessage( $status );
 			}
 			if ( !$status->isOK() ) {
-				unset( $databases[] );
+				unset( $databases[$db] );
 			}
 		}
 		$databases = array_flip( $databases );
@@ -791,7 +791,7 @@ abstract class Installer {
 	 *
 	 * @note If this check were to fail, the parser would
 	 *   probably throw an exception before the result
-	 *   of this check is shown to the wiki_user.
+	 *   of this check is shown to the user.
 	 * @return bool
 	 */
 	protected function envCheckPCRE() {
@@ -862,7 +862,7 @@ abstract class Installer {
 	}
 
 	/**
-	 * Scare wiki_user to death if they have mod_security
+	 * Scare user to death if they have mod_security
 	 * @return bool
 	 */
 	protected function envCheckModSecurity() {
@@ -1300,7 +1300,7 @@ abstract class Installer {
 	 */
 	public function setParserLanguage( $lang ) {
 		$this->parserOptions->setTargetLanguage( $lang );
-		$this->parserOptions->setwiki_userLang( $lang );
+		$this->parserOptions->setUserLang( $lang );
 	}
 
 	/**
@@ -1451,10 +1451,10 @@ abstract class Installer {
 			call_user_func_array( $startCB, array( $name ) );
 
 			// Perform the callback step
-			$status = call_wiki_user_func( $stepObj['callback'], $installer );
+			$status = call_user_func( $stepObj['callback'], $installer );
 
 			// Output and save the results
-			call_wiki_user_func( $endCB, $name, $status );
+			call_user_func( $endCB, $name, $status );
 			$installResults[$name] = $status;
 
 			// If we've hit some sort of fatal, we need to bail.
@@ -1513,36 +1513,36 @@ abstract class Installer {
 	}
 
 	/**
-	 * Create the first wiki_user account, grant it sysop and bureaucrat rights
+	 * Create the first user account, grant it sysop and bureaucrat rights
 	 *
 	 * @return Status
 	 */
 	protected function createSysop() {
 		$name = $this->getVar( '_AdminName' );
-		$wiki_user = wiki_user::newFromName( $name );
+		$user = User::newFromName( $name );
 
-		if ( !$wiki_user ) {
+		if ( !$user ) {
 			// We should've validated this earlier anyway!
-			return Status::newFatal( 'config-admin-error-wiki_user', $name );
+			return Status::newFatal( 'config-admin-error-user', $name );
 		}
 
-		if ( $wiki_user->idForName() == 0 ) {
-			$wiki_user->addToDatabase();
+		if ( $user->idForName() == 0 ) {
+			$user->addToDatabase();
 
 			try {
-				$wiki_user->setPassword( $this->getVar( '_AdminPassword' ) );
+				$user->setPassword( $this->getVar( '_AdminPassword' ) );
 			} catch( PasswordError $pwe ) {
 				return Status::newFatal( 'config-admin-error-password', $name, $pwe->getMessage() );
 			}
 
-			$wiki_user->addGroup( 'sysop' );
-			$wiki_user->addGroup( 'bureaucrat' );
+			$user->addGroup( 'sysop' );
+			$user->addGroup( 'bureaucrat' );
 			if( $this->getVar( '_AdminEmail' ) ) {
-				$wiki_user->setEmail( $this->getVar( '_AdminEmail' ) );
+				$user->setEmail( $this->getVar( '_AdminEmail' ) );
 			}
-			$wiki_user->saveSettings();
+			$user->saveSettings();
 
-			// Update wiki_user count
+			// Update user count
 			$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
 			$ssUpdate->doUpdate();
 		}
@@ -1567,7 +1567,7 @@ abstract class Installer {
 
 		// Mailman doesn't support as many languages as we do, so check to make
 		// sure their selected language is available
-		$myLang = $this->getVar( '_wiki_userLang' );
+		$myLang = $this->getVar( '_UserLang' );
 		if( in_array( $myLang, $this->mediaWikiAnnounceLanguages ) ) {
 			$myLang = $myLang == 'pt-br' ? 'pt_BR' : $myLang; // rewrite to Mailman's pt_BR
 			$params['language'] = $myLang;
@@ -1599,7 +1599,7 @@ abstract class Installer {
 					'',
 					EDIT_NEW,
 					false,
-					wiki_user::newFromName( 'MediaWiki default' )
+					User::newFromName( 'MediaWiki default' )
 			);
 		} catch (MWException $e) {
 			//using raw, because $wgShowExceptionDetails can not be set yet

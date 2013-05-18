@@ -121,7 +121,7 @@ class ParserOptions {
 	var $mRemoveComments = true;
 	
 	/**
-	 * Callback for template fetching. Used as first argument to call_wiki_user_func().
+	 * Callback for template fetching. Used as first argument to call_user_func().
 	 */
 	var $mTemplateCallback =
 		array( 'Parser', 'statelessFetchTemplate' );
@@ -170,12 +170,12 @@ class ParserOptions {
 	var $mNumberHeadings;
 	
 	/**
-	 * wiki_user math preference (as integer). Not used (1.19)
+	 * User math preference (as integer). Not used (1.19)
 	 */
 	var $mMath;
 	
 	/**
-	 * Thumb size preferred by the wiki_user.
+	 * Thumb size preferred by the user.
 	 */
 	var $mThumbSize;
 	
@@ -185,15 +185,15 @@ class ParserOptions {
 	private $mStubThreshold;
 	
 	/**
-	 * Language object of the wiki_user language.
+	 * Language object of the User language.
 	 */
-	var $mwiki_userLang;
+	var $mUserLang;
 
 	/**
-	 * @var wiki_user 
-	 * Stored wiki_user object
+	 * @var User 
+	 * Stored user object
 	 */
-	var $mwiki_user;
+	var $mUser;
 	
 	/**
 	 * Parsing the page for a "preview" operation?
@@ -257,7 +257,7 @@ class ParserOptions {
 	function getIsSectionPreview()              { return $this->mIsSectionPreview; }
 	function getIsPrintable()                   { $this->optionUsed( 'printable' );
 												  return $this->mIsPrintable; }
-	function getwiki_user()                          { return $this->mwiki_user; }
+	function getUser()                          { return $this->mUser; }
 	function getPreSaveTransform()              { return $this->mPreSaveTransform; }
 
 	/**
@@ -273,7 +273,7 @@ class ParserOptions {
 	function getDateFormat() {
 		$this->optionUsed( 'dateformat' );
 		if ( !isset( $this->mDateFormat ) ) {
-			$this->mDateFormat = $this->mwiki_user->getDatePreference();
+			$this->mDateFormat = $this->mUser->getDatePreference();
 		}
 		return $this->mDateFormat;
 	}
@@ -293,19 +293,19 @@ class ParserOptions {
 	 * @return Language object
 	 * @since 1.19
 	 */
-	function getwiki_userLangObj() {
-		$this->optionUsed( 'wiki_userlang' );
-		return $this->mwiki_userLang;
+	function getUserLangObj() {
+		$this->optionUsed( 'userlang' );
+		return $this->mUserLang;
 	}
 
 	/**
-	 * Same as getwiki_userLangObj() but returns a string instead.
+	 * Same as getUserLangObj() but returns a string instead.
 	 *
 	 * @return String   Language code
 	 * @since 1.17
 	 */
-	function getwiki_userLang() {
-		return $this->getwiki_userLangObj()->getCode();
+	function getUserLang() {
+		return $this->getUserLangObj()->getCode();
 	}
 
 	function setUseDynamicDates( $x )           { return wfSetVar( $this->mUseDynamicDates, $x ); }
@@ -338,11 +338,11 @@ class ParserOptions {
 	function disableContentConversion( $x = true ) { return wfSetVar( $this->mDisableContentConversion, $x ); }
 	function disableTitleConversion( $x = true ) { return wfSetVar( $this->mDisableTitleConversion, $x ); }
 	function setMath( $x )                      { return wfSetVar( $this->mMath, $x ); }
-	function setwiki_userLang( $x )                  {
+	function setUserLang( $x )                  {
 		if ( is_string( $x ) ) {
 			$x = Language::factory( $x );
 		}
-		return wfSetVar( $this->mwiki_userLang, $x );
+		return wfSetVar( $this->mUserLang, $x );
 	}
 	function setThumbSize( $x )                 { return wfSetVar( $this->mThumbSize, $x ); }
 	function setStubThreshold( $x )             { return wfSetVar( $this->mStubThreshold, $x ); }
@@ -361,16 +361,16 @@ class ParserOptions {
 
 	/**
 	 * Constructor
-	 * @param $wiki_user wiki_user object
+	 * @param $user User object
 	 * @param $lang Language object
 	 */
-	function __construct( $wiki_user = null, $lang = null ) {
-		if ( $wiki_user === null ) {
-			global $wgwiki_user;
-			if ( $wgwiki_user === null ) {
-				$wiki_user = new wiki_user;
+	function __construct( $user = null, $lang = null ) {
+		if ( $user === null ) {
+			global $wgUser;
+			if ( $wgUser === null ) {
+				$user = new User;
 			} else {
-				$wiki_user = $wgwiki_user;
+				$user = $wgUser;
 			}
 		}
 		if ( $lang === null ) {
@@ -380,29 +380,29 @@ class ParserOptions {
 			}
 			$lang = $wgLang;
 		}
-		$this->initialiseFromwiki_user( $wiki_user, $lang );
+		$this->initialiseFromUser( $user, $lang );
 	}
 
 	/**
-	 * Get a ParserOptions object from a given wiki_user.
+	 * Get a ParserOptions object from a given user.
 	 * Language will be taken from $wgLang.
 	 *
-	 * @param $wiki_user wiki_user object
+	 * @param $user User object
 	 * @return ParserOptions object
 	 */
-	public static function newFromwiki_user( $wiki_user ) {
-		return new ParserOptions( $wiki_user );
+	public static function newFromUser( $user ) {
+		return new ParserOptions( $user );
 	}
 
 	/**
-	 * Get a ParserOptions object from a given wiki_user and language
+	 * Get a ParserOptions object from a given user and language
 	 *
-	 * @param $wiki_user wiki_user object
+	 * @param $user User object
 	 * @param $lang Language object
 	 * @return ParserOptions object
 	 */
-	public static function newFromwiki_userAndLang( wiki_user $wiki_user, Language $lang ) {
-		return new ParserOptions( $wiki_user, $lang );
+	public static function newFromUserAndLang( User $user, Language $lang ) {
+		return new ParserOptions( $user, $lang );
 	}
 
 	/**
@@ -412,16 +412,16 @@ class ParserOptions {
 	 * @return ParserOptions object
 	 */
 	public static function newFromContext( IContextSource $context ) {
-		return new ParserOptions( $context->getwiki_user(), $context->getLanguage() );
+		return new ParserOptions( $context->getUser(), $context->getLanguage() );
 	}
 
 	/** 
-	 * Get wiki_user options 
+	 * Get user options 
 	 *
-	 * @param $wiki_user wiki_user object
+	 * @param $user User object
 	 * @param $lang Language object
 	 */
-	private function initialiseFromwiki_user( $wiki_user, $lang ) {
+	private function initialiseFromUser( $user, $lang ) {
 		global $wgUseDynamicDates, $wgInterwikiMagic, $wgAllowExternalImages,
 			$wgAllowExternalImagesFrom, $wgEnableImageWhitelist, $wgAllowSpecialInclusion,
 			$wgMaxArticleSize, $wgMaxPPNodeCount, $wgMaxTemplateDepth, $wgMaxPPExpandDepth,
@@ -447,12 +447,12 @@ class ParserOptions {
 		$this->mDisableContentConversion = $wgDisableLangConversion;
 		$this->mDisableTitleConversion = $wgDisableLangConversion || $wgDisableTitleConversion;
 
-		$this->mwiki_user = $wiki_user;
-		$this->mNumberHeadings = $wiki_user->getOption( 'numberheadings' );
-		$this->mMath = $wiki_user->getOption( 'math' );
-		$this->mThumbSize = $wiki_user->getOption( 'thumbsize' );
-		$this->mStubThreshold = $wiki_user->getStubThreshold();
-		$this->mwiki_userLang = $lang;
+		$this->mUser = $user;
+		$this->mNumberHeadings = $user->getOption( 'numberheadings' );
+		$this->mMath = $user->getOption( 'math' );
+		$this->mThumbSize = $user->getOption( 'thumbsize' );
+		$this->mStubThreshold = $user->getStubThreshold();
+		$this->mUserLang = $lang;
 
 		wfProfileOut( __METHOD__ );
 	}
@@ -470,7 +470,7 @@ class ParserOptions {
 	 */
 	protected function optionUsed( $optionName ) {
 		if ( $this->onAccessCallback ) {
-			call_wiki_user_func( $this->onAccessCallback, $optionName );
+			call_user_func( $this->onAccessCallback, $optionName );
 		}
 	}
 
@@ -482,7 +482,7 @@ class ParserOptions {
 	 */
 	public static function legacyOptions() {
 		global $wgUseDynamicDates;
-		$legacyOpts = array( 'math', 'stubthreshold', 'numberheadings', 'wiki_userlang', 'thumbsize', 'editsection', 'printable' );
+		$legacyOpts = array( 'math', 'stubthreshold', 'numberheadings', 'userlang', 'thumbsize', 'editsection', 'printable' );
 		if ( $wgUseDynamicDates ) {
 			$legacyOpts[] = 'dateformat';
 		}
@@ -493,10 +493,10 @@ class ParserOptions {
 	 * Generate a hash string with the values set on these ParserOptions
 	 * for the keys given in the array.
 	 * This will be used as part of the hash key for the parser cache,
-	 * so wiki_users sharign the options with vary for the same page share
+	 * so users sharign the options with vary for the same page share
 	 * the same cached data safely.
 	 *
-	 * Replaces wiki_user::getPageRenderingHash()
+	 * Replaces User::getPageRenderingHash()
 	 *
 	 * Extensions which require it should install 'PageRenderingHash' hook,
 	 * which will give them a chance to modify this key based on their own
@@ -538,8 +538,8 @@ class ParserOptions {
 			$confstr .= '!*';
 		}
 
-		if ( in_array( 'wiki_userlang', $forOptions ) ) {
-			$confstr .= '!' . $this->mwiki_userLang->getCode();
+		if ( in_array( 'userlang', $forOptions ) ) {
+			$confstr .= '!' . $this->mUserLang->getCode();
 		} else {
 			$confstr .= '!*';
 		}
@@ -551,7 +551,7 @@ class ParserOptions {
 		}
 
 		// add in language specific options, if any
-		// @todo FIXME: This is just a way of retrieving the url/wiki_user preferred variant
+		// @todo FIXME: This is just a way of retrieving the url/user preferred variant
 		if( !is_null( $title ) ) {
 			$confstr .= $title->getPageLanguage()->getExtraHashOptions();
 		} else {

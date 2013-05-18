@@ -29,7 +29,7 @@
  * before committing them to the db. But we want to see their thumbnails and get other information
  * about them.
  *
- * Since this is based on the wiki_user's session, in effect this creates a private temporary file area.
+ * Since this is based on the user's session, in effect this creates a private temporary file area.
  * However, the URLs for the files cannot be shared.
  */
 class SpecialUploadStash extends UnlistedSpecialPage {
@@ -304,7 +304,7 @@ class SpecialUploadStash extends UnlistedSpecialPage {
 	/**
 	 * Static callback for the HTMLForm in showUploads, to process
 	 * Note the stash has to be recreated since this is being called in a static context.
-	 * This works, because there really is only one stash per logged-in wiki_user, despite appearances.
+	 * This works, because there really is only one stash per logged-in user, despite appearances.
 	 *
 	 * @return Status
 	 */

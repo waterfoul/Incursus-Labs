@@ -357,15 +357,15 @@ class LinksUpdate extends SqlDataUpdate {
 	 */
 	private function getLinkInsertions( $existing = array() ) {
 		$arr = array();
-		foreach( $this->mLinks as $ns => keys ) {
+		foreach( $this->mLinks as $ns => $dbkeys ) {
 			$diffs = isset( $existing[$ns] )
-				? array_diff_key( keys, $existing[$ns] )
-				: keys;
-			foreach ( $diffs as k => $id ) {
+				? array_diff_key( $dbkeys, $existing[$ns] )
+				: $dbkeys;
+			foreach ( $diffs as $dbk => $id ) {
 				$arr[] = array(
 					'pl_from'      => $this->mId,
 					'pl_namespace' => $ns,
-					'pl_title'     => k
+					'pl_title'     => $dbk
 				);
 			}
 		}
@@ -379,13 +379,13 @@ class LinksUpdate extends SqlDataUpdate {
 	 */
 	private function getTemplateInsertions( $existing = array() ) {
 		$arr = array();
-		foreach( $this->mTemplates as $ns => keys ) {
-			$diffs = isset( $existing[$ns] ) ? array_diff_key( keys, $existing[$ns] ) : keys;
-			foreach ( $diffs as k => $id ) {
+		foreach( $this->mTemplates as $ns => $dbkeys ) {
+			$diffs = isset( $existing[$ns] ) ? array_diff_key( $dbkeys, $existing[$ns] ) : $dbkeys;
+			foreach ( $diffs as $dbk => $id ) {
 				$arr[] = array(
 					'tl_from'      => $this->mId,
 					'tl_namespace' => $ns,
-					'tl_title'     => k
+					'tl_title'     => $dbk
 				);
 			}
 		}
@@ -520,13 +520,13 @@ class LinksUpdate extends SqlDataUpdate {
 	 */
 	private function getInterwikiInsertions( $existing = array() ) {
 		$arr = array();
-		foreach( $this->mInterwikis as $prefix => keys ) {
-			$diffs = isset( $existing[$prefix] ) ? array_diff_key( keys, $existing[$prefix] ) : keys;
-			foreach ( $diffs as k => $id ) {
+		foreach( $this->mInterwikis as $prefix => $dbkeys ) {
+			$diffs = isset( $existing[$prefix] ) ? array_diff_key( $dbkeys, $existing[$prefix] ) : $dbkeys;
+			foreach ( $diffs as $dbk => $id ) {
 				$arr[] = array(
 					'iwl_from'   => $this->mId,
 					'iwl_prefix' => $prefix,
-					'iwl_title'  => k
+					'iwl_title'  => $dbk
 				);
 			}
 		}
@@ -541,7 +541,7 @@ class LinksUpdate extends SqlDataUpdate {
 	 */
 	private function getLinkDeletions( $existing ) {
 		$del = array();
-		foreach ( $existing as $ns => keys ) {
+		foreach ( $existing as $ns => $dbkeys ) {
 			if ( isset( $this->mLinks[$ns] ) ) {
 				$del[$ns] = array_diff_key( $existing[$ns], $this->mLinks[$ns] );
 			} else {
@@ -559,7 +559,7 @@ class LinksUpdate extends SqlDataUpdate {
 	 */
 	private function getTemplateDeletions( $existing ) {
 		$del = array();
-		foreach ( $existing as $ns => keys ) {
+		foreach ( $existing as $ns => $dbkeys ) {
 			if ( isset( $this->mTemplates[$ns] ) ) {
 				$del[$ns] = array_diff_key( $existing[$ns], $this->mTemplates[$ns] );
 			} else {
@@ -626,7 +626,7 @@ class LinksUpdate extends SqlDataUpdate {
 	 */
 	private function getInterwikiDeletions( $existing ) {
 		$del = array();
-		foreach ( $existing as $prefix => keys ) {
+		foreach ( $existing as $prefix => $dbkeys ) {
 			if ( isset( $this->mInterwikis[$prefix] ) ) {
 				$del[$prefix] = array_diff_key( $existing[$prefix], $this->mInterwikis[$prefix] );
 			} else {

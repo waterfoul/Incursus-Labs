@@ -523,19 +523,19 @@ class LoadBalancer {
 	public function reuseConnection( $conn ) {
 		$serverIndex = $conn->getLBInfo('serverIndex');
 		$refCount = $conn->getLBInfo('foreignPoolRefCount');
-		Name = $conn->getDBname();
+		$dbName = $conn->getDBname();
 		$prefix = $conn->tablePrefix();
 		if ( strval( $prefix ) !== '' ) {
-			$wiki = "Name-$prefix";
+			$wiki = "$dbName-$prefix";
 		} else {
-			$wiki = Name;
+			$wiki = $dbName;
 		}
 		if ( $serverIndex === null || $refCount === null ) {
 			wfDebug( __METHOD__.": this connection was not opened as a foreign connection\n" );
 			/**
 			 * This can happen in code like:
-			 *   foreach ( s as  ) {
-			 *     $conn = $lb->getConnection( DB_SLAVE, array(),  );
+			 *   foreach ( $dbs as $db ) {
+			 *     $conn = $lb->getConnection( DB_SLAVE, array(), $db );
 			 *     ...
 			 *     $lb->reuseConnection( $conn );
 			 *   }
@@ -616,7 +616,7 @@ class LoadBalancer {
 	 */
 	function openForeignConnection( $i, $wiki ) {
 		wfProfileIn(__METHOD__);
-		list( Name, $prefix ) = wfSplitWikiID( $wiki );
+		list( $dbName, $prefix ) = wfSplitWikiID( $wiki );
 		if ( isset( $this->mConns['foreignUsed'][$i][$wiki] ) ) {
 			// Reuse an already-used connection
 			$conn = $this->mConns['foreignUsed'][$i][$wiki];
@@ -632,8 +632,8 @@ class LoadBalancer {
 			$conn = reset( $this->mConns['foreignFree'][$i] );
 			$oldWiki = key( $this->mConns['foreignFree'][$i] );
 
-			if ( !$conn->selectDB( Name ) ) {
-				$this->mLastError = "Error selecting database Name on server " .
+			if ( !$conn->selectDB( $dbName ) ) {
+				$this->mLastError = "Error selecting database $dbName on server " .
 					$conn->getServer() . " from client host " . wfHostname() . "\n";
 				$this->mErrorConnection = $conn;
 				$conn = false;
@@ -648,7 +648,7 @@ class LoadBalancer {
 			$server = $this->mServers[$i];
 			$server['serverIndex'] = $i;
 			$server['foreignPoolRefCount'] = 0;
-			$conn = $this->reallyOpenConnection( $server, Name );
+			$conn = $this->reallyOpenConnection( $server, $dbName );
 			if ( !$conn->isOpen() ) {
 				wfDebug( __METHOD__.": error opening connection for $i/$wiki\n" );
 				$this->mErrorConnection = $conn;
@@ -689,45 +689,45 @@ class LoadBalancer {
 	 * @access private
 	 *
 	 * @param $server
-	 * @param NameOverride bool
+	 * @param $dbNameOverride bool
 	 * @return DatabaseBase
 	 */
-	function reallyOpenConnection( $server, NameOverride = false ) {
+	function reallyOpenConnection( $server, $dbNameOverride = false ) {
 		if( !is_array( $server ) ) {
 			throw new MWException( 'You must update your load-balancing configuration. ' .
 				'See DefaultSettings.php entry for $wgDBservers.' );
 		}
 
 		$host = $server['host'];
-		name = $server['dbname'];
+		$dbname = $server['dbname'];
 
-		if ( NameOverride !== false ) {
-			$server['dbname'] = name = NameOverride;
+		if ( $dbNameOverride !== false ) {
+			$server['dbname'] = $dbname = $dbNameOverride;
 		}
 
 		# Create object
-		wfDebug( "Connecting to $host name...\n" );
+		wfDebug( "Connecting to $host $dbname...\n" );
 		try {
-			 = DatabaseBase::factory( $server['type'], $server );
+			$db = DatabaseBase::factory( $server['type'], $server );
 		} catch ( DBConnectionError $e ) {
 			// FIXME: This is probably the ugliest thing I have ever done to
 			// PHP. I'm half-expecting it to segfault, just out of disgust. -- TS
-			 = $e->db;
+			$db = $e->db;
 		}
 
-		if ( ->isOpen() ) {
-			wfDebug( "Connected to $host name.\n" );
+		if ( $db->isOpen() ) {
+			wfDebug( "Connected to $host $dbname.\n" );
 		} else {
-			wfDebug( "Connection failed to $host name.\n" );
+			wfDebug( "Connection failed to $host $dbname.\n" );
 		}
-		->setLBInfo( $server );
+		$db->setLBInfo( $server );
 		if ( isset( $server['fakeSlaveLag'] ) ) {
-			->setFakeSlaveLag( $server['fakeSlaveLag'] );
+			$db->setFakeSlaveLag( $server['fakeSlaveLag'] );
 		}
 		if ( isset( $server['fakeMaster'] ) ) {
-			->setFakeMaster( true );
+			$db->setFakeMaster( true );
 		}
-		return ;
+		return $db;
 	}
 
 	/**

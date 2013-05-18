@@ -292,11 +292,11 @@ interface IORMTable {
 	/**
 	 * Set the database type to use for read operations.
 	 *
-	 * @param integer 
+	 * @param integer $db
 	 *
 	 * @since 1.20
 	 */
-	public function setReadDb(  );
+	public function setReadDb( $db );
 
 	/**
 	 * Update the records matching the provided conditions by

@@ -59,7 +59,7 @@ class Title {
 	var $mTextform = '';              // /< Text form (spaces not underscores) of the main part
 	var $mUrlform = '';               // /< URL-encoded form of the main part
 	var $mDbkeyform = '';             // /< Main part with underscores
-	var $mwiki_userCaseDBKey;              // /< DB key with the initial letter in the case specified by the wiki_user
+	var $mUserCaseDBKey;              // /< DB key with the initial letter in the case specified by the user
 	var $mNamespace = NS_MAIN;        // /< Namespace index, i.e. one of the NS_xxxx constants
 	var $mInterwiki = '';             // /< Interwiki prefix (or null string)
 	var $mFragment;                   // /< Title fragment (i.e. the bit after the #)
@@ -80,10 +80,10 @@ class Title {
 	# places.  See bug 696.
 	var $mDefaultNamespace = NS_MAIN; // /< Namespace index when there is no namespace
 									  # Zero except in {{transclusion}} tags
-	var $mWatched = null;             // /< Is $wgwiki_user watching this page? null if unfilled, accessed through wiki_userIsWatching()
+	var $mWatched = null;             // /< Is $wgUser watching this page? null if unfilled, accessed through userIsWatching()
 	var $mLength = -1;                // /< The page length, 0 for special pages
 	var $mRedirect = null;            // /< Is the article at this title a redirect?
-	var $mNotificationTimestamp = array(); // /< Associative array of wiki_user ID -> timestamp/false
+	var $mNotificationTimestamp = array(); // /< Associative array of user ID -> timestamp/false
 	var $mHasSubpage;                 // /< Whether a page has any subpages
 	// @}
 
@@ -214,8 +214,8 @@ class Title {
 	 * @return Title the new object, or NULL on an error
 	 */
 	public static function newFromID( $id, $flags = 0 ) {
-		 = ( $flags & self::GAID_FOR_UPDATE ) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
-		$row = ->selectRow(
+		$db = ( $flags & self::GAID_FOR_UPDATE ) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
+		$row = $db->selectRow(
 			'page',
 			array(
 				'page_namespace', 'page_title', 'page_id',
@@ -242,9 +242,9 @@ class Title {
 		if ( !count( $ids ) ) {
 			return array();
 		}
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
-		$res = r->select(
+		$res = $dbr->select(
 			'page',
 			array(
 				'page_namespace', 'page_title', 'page_id',
@@ -302,7 +302,7 @@ class Title {
 	 * It's assumed that $ns and $title are *valid*, for instance when
 	 * they came directly from the database or a special page name.
 	 * For convenience, spaces are converted to underscores so that
-	 * eg wiki_user_text fields can be used directly.
+	 * eg user_text fields can be used directly.
 	 *
 	 * @param $ns Int the namespace of the article
 	 * @param $title String the unprefixed database key form
@@ -329,7 +329,7 @@ class Title {
 	/**
 	 * Create a new Title from a namespace index and a DB key.
 	 * The parameters will be checked for validity, which is a bit slower
-	 * than makeTitle() but safer for wiki_user-provided data.
+	 * than makeTitle() but safer for user-provided data.
 	 *
 	 * @param $ns Int the namespace of the article
 	 * @param $title String database key form
@@ -476,9 +476,9 @@ class Title {
 	 * @return Title an object representing the article, or NULL if no such article was found
 	 */
 	public static function nameOf( $id ) {
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
-		$s = r->selectRow(
+		$s = $dbr->selectRow(
 			'page',
 			array( 'page_namespace', 'page_title' ),
 			array( 'page_id' => $id ),
@@ -697,12 +697,12 @@ class Title {
 	}
 
 	/**
-	 * Get the DB key with the initial letter case as specified by the wiki_user
+	 * Get the DB key with the initial letter case as specified by the user
 	 *
 	 * @return String DB key
 	 */
-	function getwiki_userCaseDBKey() {
-		return $this->mwiki_userCaseDBKey;
+	function getUserCaseDBKey() {
+		return $this->mUserCaseDBKey;
 	}
 
 	/**
@@ -783,7 +783,7 @@ class Title {
 	}
 
 	/**
-	 * Can this title be added to a wiki_user's watchlist?
+	 * Can this title be added to a user's watchlist?
 	 *
 	 * @return Bool TRUE or FALSE
 	 */
@@ -976,7 +976,7 @@ class Title {
 	}
 
 	/**
-	 * Is this a .css or .js subpage of a wiki_user page?
+	 * Is this a .css or .js subpage of a user page?
 	 * @return Bool
 	 */
 	public function isCssJsSubpage() {
@@ -998,7 +998,7 @@ class Title {
 	}
 
 	/**
-	 * Is this a .css subpage of a wiki_user page?
+	 * Is this a .css subpage of a user page?
 	 *
 	 * @return Bool
 	 */
@@ -1007,7 +1007,7 @@ class Title {
 	}
 
 	/**
-	 * Is this a .js subpage of a wiki_user page?
+	 * Is this a .js subpage of a user page?
 	 *
 	 * @return Bool
 	 */
@@ -1338,9 +1338,9 @@ class Title {
 			$url = $interwiki->getURL( $namespace . $this->getDBkey() );
 			$url = wfAppendQuery( $url, $query );
 		} else {
-			key = wfUrlencode( $this->getPrefixedDBkey() );
+			$dbkey = wfUrlencode( $this->getPrefixedDBkey() );
 			if ( $query == '' ) {
-				$url = str_replace( '$1', key, $wgArticlePath );
+				$url = str_replace( '$1', $dbkey, $wgArticlePath );
 				wfRunHooks( 'GetLocalURL::Article', array( &$this, &$url ) );
 			} else {
 				global $wgVariantArticlePath, $wgActionPaths;
@@ -1356,7 +1356,7 @@ class Title {
 						if ( isset( $matches[4] ) ) {
 							$query .= $matches[4];
 						}
-						$url = str_replace( '$1', key, $wgActionPaths[$action] );
+						$url = str_replace( '$1', $dbkey, $wgActionPaths[$action] );
 						if ( $query != '' ) {
 							$url = wfAppendQuery( $url, $query );
 						}
@@ -1373,7 +1373,7 @@ class Title {
 						// Only do the variant replacement if the given variant is a valid
 						// variant for the page's language.
 						$url = str_replace( '$2', urlencode( $variant ), $wgVariantArticlePath );
-						$url = str_replace( '$1', key, $url );
+						$url = str_replace( '$1', $dbkey, $url );
 					}
 				}
 
@@ -1381,7 +1381,7 @@ class Title {
 					if ( $query == '-' ) {
 						$query = '';
 					}
-					$url = "{$wgScript}?title={key}&{$query}";
+					$url = "{$wgScript}?title={$dbkey}&{$query}";
 				}
 			}
 
@@ -1528,38 +1528,38 @@ class Title {
 	}
 
 	/**
-	 * Is $wgwiki_user watching this page?
+	 * Is $wgUser watching this page?
 	 *
-	 * @deprecated in 1.20; use wiki_user::isWatched() instead.
+	 * @deprecated in 1.20; use User::isWatched() instead.
 	 * @return Bool
 	 */
-	public function wiki_userIsWatching() {
-		global $wgwiki_user;
+	public function userIsWatching() {
+		global $wgUser;
 
 		if ( is_null( $this->mWatched ) ) {
-			if ( NS_SPECIAL == $this->mNamespace || !$wgwiki_user->isLoggedIn() ) {
+			if ( NS_SPECIAL == $this->mNamespace || !$wgUser->isLoggedIn() ) {
 				$this->mWatched = false;
 			} else {
-				$this->mWatched = $wgwiki_user->isWatched( $this );
+				$this->mWatched = $wgUser->isWatched( $this );
 			}
 		}
 		return $this->mWatched;
 	}
 
 	/**
-	 * Can $wgwiki_user read this page?
+	 * Can $wgUser read this page?
 	 *
-	 * @deprecated in 1.19; use wiki_userCan(), quickwiki_userCan() or getwiki_userPermissionsErrors() instead
+	 * @deprecated in 1.19; use userCan(), quickUserCan() or getUserPermissionsErrors() instead
 	 * @return Bool
-	 * @todo fold these checks into wiki_userCan()
+	 * @todo fold these checks into userCan()
 	 */
-	public function wiki_userCanRead() {
+	public function userCanRead() {
 		wfDeprecated( __METHOD__, '1.19' );
-		return $this->wiki_userCan( 'read' );
+		return $this->userCan( 'read' );
 	}
 
 	/**
-	 * Can $wiki_user perform $action on this page?
+	 * Can $user perform $action on this page?
 	 * This skips potentially expensive cascading permission checks
 	 * as well as avoids expensive error formatting
 	 *
@@ -1569,47 +1569,47 @@ class Title {
 	 * May provide false positives, but should never provide a false negative.
 	 *
 	 * @param $action String action that permission needs to be checked for
-	 * @param $wiki_user wiki_user to check (since 1.19); $wgwiki_user will be used if not
+	 * @param $user User to check (since 1.19); $wgUser will be used if not
 	 *              provided.
 	 * @return Bool
 	 */
-	public function quickwiki_userCan( $action, $wiki_user = null ) {
-		return $this->wiki_userCan( $action, $wiki_user, false );
+	public function quickUserCan( $action, $user = null ) {
+		return $this->userCan( $action, $user, false );
 	}
 
 	/**
-	 * Can $wiki_user perform $action on this page?
+	 * Can $user perform $action on this page?
 	 *
 	 * @param $action String action that permission needs to be checked for
-	 * @param $wiki_user wiki_user to check (since 1.19); $wgwiki_user will be used if not
+	 * @param $user User to check (since 1.19); $wgUser will be used if not
 	 *   provided.
 	 * @param $doExpensiveQueries Bool Set this to false to avoid doing
 	 *   unnecessary queries.
 	 * @return Bool
 	 */
-	public function wiki_userCan( $action, $wiki_user = null, $doExpensiveQueries = true ) {
-		if ( !$wiki_user instanceof wiki_user ) {
-			global $wgwiki_user;
-			$wiki_user = $wgwiki_user;
+	public function userCan( $action, $user = null, $doExpensiveQueries = true ) {
+		if ( !$user instanceof User ) {
+			global $wgUser;
+			$user = $wgUser;
 		}
-		return !count( $this->getwiki_userPermissionsErrorsInternal( $action, $wiki_user, $doExpensiveQueries, true ) );
+		return !count( $this->getUserPermissionsErrorsInternal( $action, $user, $doExpensiveQueries, true ) );
 	}
 
 	/**
-	 * Can $wiki_user perform $action on this page?
+	 * Can $user perform $action on this page?
 	 *
-	 * @todo FIXME: This *does not* check throttles (wiki_user::pingLimiter()).
+	 * @todo FIXME: This *does not* check throttles (User::pingLimiter()).
 	 *
 	 * @param $action String action that permission needs to be checked for
-	 * @param $wiki_user wiki_user to check
+	 * @param $user User to check
 	 * @param $doExpensiveQueries Bool Set this to false to avoid doing unnecessary
-	 *   queries by skipping checks for cascading protections and wiki_user blocks.
+	 *   queries by skipping checks for cascading protections and user blocks.
 	 * @param $ignoreErrors Array of Strings Set this to a list of message keys
 	 *   whose corresponding errors may be ignored.
 	 * @return Array of arguments to wfMessage to explain permissions problems.
 	 */
-	public function getwiki_userPermissionsErrors( $action, $wiki_user, $doExpensiveQueries = true, $ignoreErrors = array() ) {
-		$errors = $this->getwiki_userPermissionsErrorsInternal( $action, $wiki_user, $doExpensiveQueries );
+	public function getUserPermissionsErrors( $action, $user, $doExpensiveQueries = true, $ignoreErrors = array() ) {
+		$errors = $this->getUserPermissionsErrorsInternal( $action, $user, $doExpensiveQueries );
 
 		// Remove the errors being ignored.
 		foreach ( $errors as $index => $error ) {
@@ -1627,59 +1627,59 @@ class Title {
 	 * Permissions checks that fail most often, and which are easiest to test.
 	 *
 	 * @param $action String the action to check
-	 * @param $wiki_user wiki_user wiki_user to check
+	 * @param $user User user to check
 	 * @param $errors Array list of current errors
 	 * @param $doExpensiveQueries Boolean whether or not to perform expensive queries
 	 * @param $short Boolean short circuit on first error
 	 *
 	 * @return Array list of errors
 	 */
-	private function checkQuickPermissions( $action, $wiki_user, $errors, $doExpensiveQueries, $short ) {
+	private function checkQuickPermissions( $action, $user, $errors, $doExpensiveQueries, $short ) {
 		if ( $action == 'create' ) {
-			if ( ( $this->isTalkPage() && !$wiki_user->isAllowed( 'createtalk' ) ) ||
-				 ( !$this->isTalkPage() && !$wiki_user->isAllowed( 'createpage' ) ) ) {
-				$errors[] = $wiki_user->isAnon() ? array( 'nocreatetext' ) : array( 'nocreate-loggedin' );
+			if ( ( $this->isTalkPage() && !$user->isAllowed( 'createtalk' ) ) ||
+				 ( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) ) {
+				$errors[] = $user->isAnon() ? array( 'nocreatetext' ) : array( 'nocreate-loggedin' );
 			}
 		} elseif ( $action == 'move' ) {
-			if ( !$wiki_user->isAllowed( 'move-rootwiki_userpages' )
+			if ( !$user->isAllowed( 'move-rootuserpages' )
 					&& $this->mNamespace == NS_USER && !$this->isSubpage() ) {
-				// Show wiki_user page-specific message only if the wiki_user can move other pages
-				$errors[] = array( 'cant-move-wiki_user-page' );
+				// Show user page-specific message only if the user can move other pages
+				$errors[] = array( 'cant-move-user-page' );
 			}
 
-			// Check if wiki_user is allowed to move files if it's a file
-			if ( $this->mNamespace == NS_FILE && !$wiki_user->isAllowed( 'movefile' ) ) {
+			// Check if user is allowed to move files if it's a file
+			if ( $this->mNamespace == NS_FILE && !$user->isAllowed( 'movefile' ) ) {
 				$errors[] = array( 'movenotallowedfile' );
 			}
 
-			if ( !$wiki_user->isAllowed( 'move' ) ) {
-				// wiki_user can't move anything
+			if ( !$user->isAllowed( 'move' ) ) {
+				// User can't move anything
 				global $wgGroupPermissions;
-				$wiki_userCanMove = false;
-				if ( isset( $wgGroupPermissions['wiki_user']['move'] ) ) {
-					$wiki_userCanMove = $wgGroupPermissions['wiki_user']['move'];
+				$userCanMove = false;
+				if ( isset( $wgGroupPermissions['user']['move'] ) ) {
+					$userCanMove = $wgGroupPermissions['user']['move'];
 				}
 				$autoconfirmedCanMove = false;
 				if ( isset( $wgGroupPermissions['autoconfirmed']['move'] ) ) {
 					$autoconfirmedCanMove = $wgGroupPermissions['autoconfirmed']['move'];
 				}
-				if ( $wiki_user->isAnon() && ( $wiki_userCanMove || $autoconfirmedCanMove ) ) {
-					// custom message if logged-in wiki_users without any special rights can move
+				if ( $user->isAnon() && ( $userCanMove || $autoconfirmedCanMove ) ) {
+					// custom message if logged-in users without any special rights can move
 					$errors[] = array( 'movenologintext' );
 				} else {
 					$errors[] = array( 'movenotallowed' );
 				}
 			}
 		} elseif ( $action == 'move-target' ) {
-			if ( !$wiki_user->isAllowed( 'move' ) ) {
-				// wiki_user can't move anything
+			if ( !$user->isAllowed( 'move' ) ) {
+				// User can't move anything
 				$errors[] = array( 'movenotallowed' );
-			} elseif ( !$wiki_user->isAllowed( 'move-rootwiki_userpages' )
+			} elseif ( !$user->isAllowed( 'move-rootuserpages' )
 					&& $this->mNamespace == NS_USER && !$this->isSubpage() ) {
-				// Show wiki_user page-specific message only if the wiki_user can move other pages
-				$errors[] = array( 'cant-move-to-wiki_user-page' );
+				// Show user page-specific message only if the user can move other pages
+				$errors[] = array( 'cant-move-to-user-page' );
 			}
-		} elseif ( !$wiki_user->isAllowed( $action ) ) {
+		} elseif ( !$user->isAllowed( $action ) ) {
 			$errors[] = $this->missingPermissionError( $action, $short );
 		}
 
@@ -1715,26 +1715,26 @@ class Title {
 	 * Check various permission hooks
 	 *
 	 * @param $action String the action to check
-	 * @param $wiki_user wiki_user wiki_user to check
+	 * @param $user User user to check
 	 * @param $errors Array list of current errors
 	 * @param $doExpensiveQueries Boolean whether or not to perform expensive queries
 	 * @param $short Boolean short circuit on first error
 	 *
 	 * @return Array list of errors
 	 */
-	private function checkPermissionHooks( $action, $wiki_user, $errors, $doExpensiveQueries, $short ) {
-		// Use getwiki_userPermissionsErrors instead
+	private function checkPermissionHooks( $action, $user, $errors, $doExpensiveQueries, $short ) {
+		// Use getUserPermissionsErrors instead
 		$result = '';
-		if ( !wfRunHooks( 'wiki_userCan', array( &$this, &$wiki_user, $action, &$result ) ) ) {
+		if ( !wfRunHooks( 'userCan', array( &$this, &$user, $action, &$result ) ) ) {
 			return $result ? array() : array( array( 'badaccess-group0' ) );
 		}
-		// Check getwiki_userPermissionsErrors hook
-		if ( !wfRunHooks( 'getwiki_userPermissionsErrors', array( &$this, &$wiki_user, $action, &$result ) ) ) {
+		// Check getUserPermissionsErrors hook
+		if ( !wfRunHooks( 'getUserPermissionsErrors', array( &$this, &$user, $action, &$result ) ) ) {
 			$errors = $this->resultToError( $errors, $result );
 		}
-		// Check getwiki_userPermissionsErrorsExpensive hook
+		// Check getUserPermissionsErrorsExpensive hook
 		if ( $doExpensiveQueries && !( $short && count( $errors ) > 0 ) &&
-			 !wfRunHooks( 'getwiki_userPermissionsErrorsExpensive', array( &$this, &$wiki_user, $action, &$result ) ) ) {
+			 !wfRunHooks( 'getUserPermissionsErrorsExpensive', array( &$this, &$user, $action, &$result ) ) ) {
 			$errors = $this->resultToError( $errors, $result );
 		}
 
@@ -1745,14 +1745,14 @@ class Title {
 	 * Check permissions on special pages & namespaces
 	 *
 	 * @param $action String the action to check
-	 * @param $wiki_user wiki_user wiki_user to check
+	 * @param $user User user to check
 	 * @param $errors Array list of current errors
 	 * @param $doExpensiveQueries Boolean whether or not to perform expensive queries
 	 * @param $short Boolean short circuit on first error
 	 *
 	 * @return Array list of errors
 	 */
-	private function checkSpecialsAndNSPermissions( $action, $wiki_user, $errors, $doExpensiveQueries, $short ) {
+	private function checkSpecialsAndNSPermissions( $action, $user, $errors, $doExpensiveQueries, $short ) {
 		# Only 'createaccount' and 'execute' can be performed on
 		# special pages, which don't actually exist in the DB.
 		$specialOKActions = array( 'createaccount', 'execute', 'read' );
@@ -1761,7 +1761,7 @@ class Title {
 		}
 
 		# Check $wgNamespaceProtection for restricted namespaces
-		if ( $this->isNamespaceProtected( $wiki_user ) ) {
+		if ( $this->isNamespaceProtected( $user ) ) {
 			$ns = $this->mNamespace == NS_MAIN ?
 				wfMessage( 'nstab-main' )->text() : $this->getNsText();
 			$errors[] = $this->mNamespace == NS_MEDIAWIKI ?
@@ -1775,22 +1775,22 @@ class Title {
 	 * Check CSS/JS sub-page permissions
 	 *
 	 * @param $action String the action to check
-	 * @param $wiki_user wiki_user wiki_user to check
+	 * @param $user User user to check
 	 * @param $errors Array list of current errors
 	 * @param $doExpensiveQueries Boolean whether or not to perform expensive queries
 	 * @param $short Boolean short circuit on first error
 	 *
 	 * @return Array list of errors
 	 */
-	private function checkCSSandJSPermissions( $action, $wiki_user, $errors, $doExpensiveQueries, $short ) {
-		# Protect css/js subpages of wiki_user pages
+	private function checkCSSandJSPermissions( $action, $user, $errors, $doExpensiveQueries, $short ) {
+		# Protect css/js subpages of user pages
 		# XXX: this might be better using restrictions
-		# XXX: right 'editwiki_usercssjs' is deprecated, for backward compatibility only
-		if ( $action != 'patrol' && !$wiki_user->isAllowed( 'editwiki_usercssjs' )
-				&& !preg_match( '/^' . preg_quote( $wiki_user->getName(), '/' ) . '\//', $this->mTextform ) ) {
-			if ( $this->isCssSubpage() && !$wiki_user->isAllowed( 'editwiki_usercss' ) ) {
+		# XXX: right 'editusercssjs' is deprecated, for backward compatibility only
+		if ( $action != 'patrol' && !$user->isAllowed( 'editusercssjs' )
+				&& !preg_match( '/^' . preg_quote( $user->getName(), '/' ) . '\//', $this->mTextform ) ) {
+			if ( $this->isCssSubpage() && !$user->isAllowed( 'editusercss' ) ) {
 				$errors[] = array( 'customcssprotected' );
-			} elseif ( $this->isJsSubpage() && !$wiki_user->isAllowed( 'editwiki_userjs' ) ) {
+			} elseif ( $this->isJsSubpage() && !$user->isAllowed( 'edituserjs' ) ) {
 				$errors[] = array( 'customjsprotected' );
 			}
 		}
@@ -1800,27 +1800,27 @@ class Title {
 
 	/**
 	 * Check against page_restrictions table requirements on this
-	 * page. The wiki_user must possess all required rights for this
+	 * page. The user must possess all required rights for this
 	 * action.
 	 *
 	 * @param $action String the action to check
-	 * @param $wiki_user wiki_user wiki_user to check
+	 * @param $user User user to check
 	 * @param $errors Array list of current errors
 	 * @param $doExpensiveQueries Boolean whether or not to perform expensive queries
 	 * @param $short Boolean short circuit on first error
 	 *
 	 * @return Array list of errors
 	 */
-	private function checkPageRestrictions( $action, $wiki_user, $errors, $doExpensiveQueries, $short ) {
+	private function checkPageRestrictions( $action, $user, $errors, $doExpensiveQueries, $short ) {
 		foreach ( $this->getRestrictions( $action ) as $right ) {
 			// Backwards compatibility, rewrite sysop -> protect
 			if ( $right == 'sysop' ) {
 				$right = 'protect';
 			}
-			if ( $right != '' && !$wiki_user->isAllowed( $right ) ) {
-				// wiki_users with 'editprotected' permission can edit protected pages
+			if ( $right != '' && !$user->isAllowed( $right ) ) {
+				// Users with 'editprotected' permission can edit protected pages
 				// without cascading option turned on.
-				if ( $action != 'edit' || !$wiki_user->isAllowed( 'editprotected' )
+				if ( $action != 'edit' || !$user->isAllowed( 'editprotected' )
 					|| $this->mCascadeRestriction )
 				{
 					$errors[] = array( 'protectedpagetext', $right );
@@ -1835,14 +1835,14 @@ class Title {
 	 * Check restrictions on cascading pages.
 	 *
 	 * @param $action String the action to check
-	 * @param $wiki_user wiki_user to check
+	 * @param $user User to check
 	 * @param $errors Array list of current errors
 	 * @param $doExpensiveQueries Boolean whether or not to perform expensive queries
 	 * @param $short Boolean short circuit on first error
 	 *
 	 * @return Array list of errors
 	 */
-	private function checkCascadingSourcesRestrictions( $action, $wiki_user, $errors, $doExpensiveQueries, $short ) {
+	private function checkCascadingSourcesRestrictions( $action, $user, $errors, $doExpensiveQueries, $short ) {
 		if ( $doExpensiveQueries && !$this->isCssJsSubpage() ) {
 			# We /could/ use the protection level on the source page, but it's
 			# fairly ugly as we have to establish a precedence hierarchy for pages
@@ -1857,7 +1857,7 @@ class Title {
 			if ( isset( $restrictions[$action] ) ) {
 				foreach ( $restrictions[$action] as $right ) {
 					$right = ( $right == 'sysop' ) ? 'protect' : $right;
-					if ( $right != '' && !$wiki_user->isAllowed( $right ) ) {
+					if ( $right != '' && !$user->isAllowed( $right ) ) {
 						$pages = '';
 						foreach ( $cascadingSources as $page )
 							$pages .= '* [[:' . $page->getPrefixedText() . "]]\n";
@@ -1874,18 +1874,18 @@ class Title {
 	 * Check action permissions not already checked in checkQuickPermissions
 	 *
 	 * @param $action String the action to check
-	 * @param $wiki_user wiki_user to check
+	 * @param $user User to check
 	 * @param $errors Array list of current errors
 	 * @param $doExpensiveQueries Boolean whether or not to perform expensive queries
 	 * @param $short Boolean short circuit on first error
 	 *
 	 * @return Array list of errors
 	 */
-	private function checkActionPermissions( $action, $wiki_user, $errors, $doExpensiveQueries, $short ) {
+	private function checkActionPermissions( $action, $user, $errors, $doExpensiveQueries, $short ) {
 		global $wgDeleteRevisionsLimit, $wgLang;
 
 		if ( $action == 'protect' ) {
-			if ( count( $this->getwiki_userPermissionsErrorsInternal( 'edit', $wiki_user, $doExpensiveQueries, true ) ) ) {
+			if ( count( $this->getUserPermissionsErrorsInternal( 'edit', $user, $doExpensiveQueries, true ) ) ) {
 				// If they can't edit, they shouldn't protect.
 				$errors[] = array( 'protect-cantedit' );
 			}
@@ -1896,9 +1896,9 @@ class Title {
 					$title_protection['pt_create_perm'] = 'protect'; // B/C
 				}
 				if( $title_protection['pt_create_perm'] == '' ||
-					!$wiki_user->isAllowed( $title_protection['pt_create_perm'] ) )
+					!$user->isAllowed( $title_protection['pt_create_perm'] ) )
 				{
-					$errors[] = array( 'titleprotected', wiki_user::whoIs( $title_protection['pt_wiki_user'] ), $title_protection['pt_reason'] );
+					$errors[] = array( 'titleprotected', User::whoIs( $title_protection['pt_user'] ), $title_protection['pt_reason'] );
 				}
 			}
 		} elseif ( $action == 'move' ) {
@@ -1918,7 +1918,7 @@ class Title {
 			}
 		} elseif ( $action == 'delete' ) {
 			if ( $doExpensiveQueries && $wgDeleteRevisionsLimit
-				&& !$this->wiki_userCan( 'bigdelete', $wiki_user ) && $this->isBigDeletion() )
+				&& !$this->userCan( 'bigdelete', $user ) && $this->isBigDeletion() )
 			{
 				$errors[] = array( 'delete-toobig', $wgLang->formatNum( $wgDeleteRevisionsLimit ) );
 			}
@@ -1927,18 +1927,18 @@ class Title {
 	}
 
 	/**
-	 * Check that the wiki_user isn't blocked from editting.
+	 * Check that the user isn't blocked from editting.
 	 *
 	 * @param $action String the action to check
-	 * @param $wiki_user wiki_user to check
+	 * @param $user User to check
 	 * @param $errors Array list of current errors
 	 * @param $doExpensiveQueries Boolean whether or not to perform expensive queries
 	 * @param $short Boolean short circuit on first error
 	 *
 	 * @return Array list of errors
 	 */
-	private function checkwiki_userBlock( $action, $wiki_user, $errors, $doExpensiveQueries, $short ) {
-		// Account creation blocks handled at wiki_userlogin.
+	private function checkUserBlock( $action, $user, $errors, $doExpensiveQueries, $short ) {
+		// Account creation blocks handled at userlogin.
 		// Unblocking handled in SpecialUnblock
 		if( !$doExpensiveQueries || in_array( $action, array( 'createaccount', 'unblock' ) ) ) {
 			return $errors;
@@ -1946,28 +1946,28 @@ class Title {
 
 		global $wgContLang, $wgLang, $wgEmailConfirmToEdit;
 
-		if ( $wgEmailConfirmToEdit && !$wiki_user->isEmailConfirmed() ) {
+		if ( $wgEmailConfirmToEdit && !$user->isEmailConfirmed() ) {
 			$errors[] = array( 'confirmedittext' );
 		}
 
-		if ( ( $action == 'edit' || $action == 'create' ) && !$wiki_user->isBlockedFrom( $this ) ) {
-			// Don't block the wiki_user from editing their own talk page unless they've been
+		if ( ( $action == 'edit' || $action == 'create' ) && !$user->isBlockedFrom( $this ) ) {
+			// Don't block the user from editing their own talk page unless they've been
 			// explicitly blocked from that too.
-		} elseif( $wiki_user->isBlocked() && $wiki_user->mBlock->prevents( $action ) !== false ) {
-			$block = $wiki_user->getBlock();
+		} elseif( $user->isBlocked() && $user->mBlock->prevents( $action ) !== false ) {
+			$block = $user->getBlock();
 
 			// This is from OutputPage::blockedPage
 			// Copied at r23888 by werdna
 
-			$id = $wiki_user->blockedBy();
-			$reason = $wiki_user->blockedFor();
+			$id = $user->blockedBy();
+			$reason = $user->blockedFor();
 			if ( $reason == '' ) {
 				$reason = wfMessage( 'blockednoreason' )->text();
 			}
-			$ip = $wiki_user->getRequest()->getIP();
+			$ip = $user->getRequest()->getIP();
 
 			if ( is_numeric( $id ) ) {
-				$name = wiki_user::whoIs( $id );
+				$name = User::whoIs( $id );
 			} else {
 				$name = $id;
 			}
@@ -1992,17 +1992,17 @@ class Title {
 	}
 
 	/**
-	 * Check that the wiki_user is allowed to read this page.
+	 * Check that the user is allowed to read this page.
 	 *
 	 * @param $action String the action to check
-	 * @param $wiki_user wiki_user to check
+	 * @param $user User to check
 	 * @param $errors Array list of current errors
 	 * @param $doExpensiveQueries Boolean whether or not to perform expensive queries
 	 * @param $short Boolean short circuit on first error
 	 *
 	 * @return Array list of errors
 	 */
-	private function checkReadPermissions( $action, $wiki_user, $errors, $doExpensiveQueries, $short ) {
+	private function checkReadPermissions( $action, $user, $errors, $doExpensiveQueries, $short ) {
 		global $wgWhitelistRead, $wgGroupPermissions, $wgRevokePermissions;
 		static $useShortcut = null;
 
@@ -2016,12 +2016,12 @@ class Title {
 				/**
 				 * Iterate through each group with permissions being revoked (key not included since we don't care
 				 * what the group name is), then check if the read permission is being revoked. If it is, then
-				 * we don't use the shortcut below since the wiki_user might not be able to read, even though anon
+				 * we don't use the shortcut below since the user might not be able to read, even though anon
 				 * reading is allowed.
 				 */
 				foreach ( $wgRevokePermissions as $perms ) {
 					if ( !empty( $perms['read'] ) ) {
-						# We might be removing the read right from the wiki_user, so no shortcut
+						# We might be removing the read right from the user, so no shortcut
 						$useShortcut = false;
 						break;
 					}
@@ -2033,10 +2033,10 @@ class Title {
 		if ( $useShortcut ) {
 			# Shortcut for public wikis, allows skipping quite a bit of code
 			$whitelisted = true;
-		} elseif ( $wiki_user->isAllowed( 'read' ) ) {
-			# If the wiki_user is allowed to read pages, he is allowed to read all pages
+		} elseif ( $user->isAllowed( 'read' ) ) {
+			# If the user is allowed to read pages, he is allowed to read all pages
 			$whitelisted = true;
-		} elseif ( $this->isSpecial( 'wiki_userlogin' )
+		} elseif ( $this->isSpecial( 'Userlogin' )
 			|| $this->isSpecial( 'ChangePassword' )
 			|| $this->isSpecial( 'PasswordReset' )
 		) {
@@ -2047,10 +2047,10 @@ class Title {
 			# Time to check the whitelist
 			# Only do these checks is there's something to check against
 			$name = $this->getPrefixedText();
-			Name = $this->getPrefixedDBKey();
+			$dbName = $this->getPrefixedDBKey();
 
 			// Check for explicit whitelisting with and without underscores
-			if ( in_array( $name, $wgWhitelistRead, true ) || in_array( Name, $wgWhitelistRead, true ) ) {
+			if ( in_array( $name, $wgWhitelistRead, true ) || in_array( $dbName, $wgWhitelistRead, true ) ) {
 				$whitelisted = true;
 			} elseif ( $this->getNamespace() == NS_MAIN ) {
 				# Old settings might have the title prefixed with
@@ -2073,7 +2073,7 @@ class Title {
 
 		if ( !$whitelisted ) {
 			# If the title is not whitelisted, give extensions a chance to do so...
-			wfRunHooks( 'TitleReadWhitelist', array( $this, $wiki_user, &$whitelisted ) );
+			wfRunHooks( 'TitleReadWhitelist', array( $this, $user, &$whitelisted ) );
 			if ( !$whitelisted ) {
 				$errors[] = $this->missingPermissionError( $action, $short );
 			}
@@ -2083,21 +2083,21 @@ class Title {
 	}
 
 	/**
-	 * Get a description array when the wiki_user doesn't have the right to perform
-	 * $action (i.e. when wiki_user::isAllowed() returns false)
+	 * Get a description array when the user doesn't have the right to perform
+	 * $action (i.e. when User::isAllowed() returns false)
 	 *
 	 * @param $action String the action to check
 	 * @param $short Boolean short circuit on first error
 	 * @return Array list of errors
 	 */
 	private function missingPermissionError( $action, $short ) {
-		// We avoid expensive display logic for quickwiki_userCan's and such
+		// We avoid expensive display logic for quickUserCan's and such
 		if ( $short ) {
 			return array( 'badaccess-group0' );
 		}
 
-		$groups = array_map( array( 'wiki_user', 'makeGroupLinkWiki' ),
-			wiki_user::getGroupsWithPermission( $action ) );
+		$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
+			User::getGroupsWithPermission( $action ) );
 
 		if ( count( $groups ) ) {
 			global $wgLang;
@@ -2112,17 +2112,17 @@ class Title {
 	}
 
 	/**
-	 * Can $wiki_user perform $action on this page? This is an internal function,
-	 * which checks ONLY that previously checked by wiki_userCan (i.e. it leaves out
+	 * Can $user perform $action on this page? This is an internal function,
+	 * which checks ONLY that previously checked by userCan (i.e. it leaves out
 	 * checks on wfReadOnly() and blocks)
 	 *
 	 * @param $action String action that permission needs to be checked for
-	 * @param $wiki_user wiki_user to check
+	 * @param $user User to check
 	 * @param $doExpensiveQueries Bool Set this to false to avoid doing unnecessary queries.
 	 * @param $short Bool Set this to true to stop after the first permission error.
 	 * @return Array of arrays of the arguments to wfMessage to explain permissions problems.
 	 */
-	protected function getwiki_userPermissionsErrorsInternal( $action, $wiki_user, $doExpensiveQueries = true, $short = false ) {
+	protected function getUserPermissionsErrorsInternal( $action, $user, $doExpensiveQueries = true, $short = false ) {
 		wfProfileIn( __METHOD__ );
 
 		# Read has special handling
@@ -2140,7 +2140,7 @@ class Title {
 				'checkPageRestrictions',
 				'checkCascadingSourcesRestrictions',
 				'checkActionPermissions',
-				'checkwiki_userBlock'
+				'checkUserBlock'
 			);
 		}
 
@@ -2148,7 +2148,7 @@ class Title {
 		while( count( $checks ) > 0 &&
 				!( $short && count( $errors ) > 0 ) ) {
 			$method = array_shift( $checks );
-			$errors = $this->$method( $action, $wiki_user, $errors, $doExpensiveQueries, $short );
+			$errors = $this->$method( $action, $user, $errors, $doExpensiveQueries, $short );
 		}
 
 		wfProfileOut( __METHOD__ );
@@ -2156,31 +2156,31 @@ class Title {
 	}
 
 	/**
-	 * Protect css subpages of wiki_user pages: can $wgwiki_user edit
+	 * Protect css subpages of user pages: can $wgUser edit
 	 * this page?
 	 *
-	 * @deprecated in 1.19; will be removed in 1.20. Use getwiki_userPermissionsErrors() instead.
+	 * @deprecated in 1.19; will be removed in 1.20. Use getUserPermissionsErrors() instead.
 	 * @return Bool
 	 */
-	public function wiki_userCanEditCssSubpage() {
-		global $wgwiki_user;
+	public function userCanEditCssSubpage() {
+		global $wgUser;
 		wfDeprecated( __METHOD__, '1.19' );
-		return ( ( $wgwiki_user->isAllowedAll( 'editwiki_usercssjs', 'editwiki_usercss' ) )
-			|| preg_match( '/^' . preg_quote( $wgwiki_user->getName(), '/' ) . '\//', $this->mTextform ) );
+		return ( ( $wgUser->isAllowedAll( 'editusercssjs', 'editusercss' ) )
+			|| preg_match( '/^' . preg_quote( $wgUser->getName(), '/' ) . '\//', $this->mTextform ) );
 	}
 
 	/**
-	 * Protect js subpages of wiki_user pages: can $wgwiki_user edit
+	 * Protect js subpages of user pages: can $wgUser edit
 	 * this page?
 	 *
-	 * @deprecated in 1.19; will be removed in 1.20. Use getwiki_userPermissionsErrors() instead.
+	 * @deprecated in 1.19; will be removed in 1.20. Use getUserPermissionsErrors() instead.
 	 * @return Bool
 	 */
-	public function wiki_userCanEditJsSubpage() {
-		global $wgwiki_user;
+	public function userCanEditJsSubpage() {
+		global $wgUser;
 		wfDeprecated( __METHOD__, '1.19' );
-		return ( ( $wgwiki_user->isAllowedAll( 'editwiki_usercssjs', 'editwiki_userjs' ) )
-			   || preg_match( '/^' . preg_quote( $wgwiki_user->getName(), '/' ) . '\//', $this->mTextform ) );
+		return ( ( $wgUser->isAllowedAll( 'editusercssjs', 'edituserjs' ) )
+			   || preg_match( '/^' . preg_quote( $wgUser->getName(), '/' ) . '\//', $this->mTextform ) );
 	}
 
 	/**
@@ -2247,13 +2247,13 @@ class Title {
 		}
 
 		if ( !isset( $this->mTitleProtection ) ) {
-			r = wfGetDB( DB_SLAVE );
-			$res = r->select( 'protected_titles', '*',
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select( 'protected_titles', '*',
 				array( 'pt_namespace' => $this->getNamespace(), 'pt_title' => $this->getDBkey() ),
 				__METHOD__ );
 
 			// fetchRow returns false if there are no rows.
-			$this->mTitleProtection = r->fetchRow( $res );
+			$this->mTitleProtection = $dbr->fetchRow( $res );
 		}
 		return $this->mTitleProtection;
 	}
@@ -2270,13 +2270,13 @@ class Title {
 	public function updateTitleProtection( $create_perm, $reason, $expiry ) {
 		wfDeprecated( __METHOD__, '1.19' );
 
-		global $wgwiki_user;
+		global $wgUser;
 
 		$limit = array( 'create' => $create_perm );
 		$expiry = array( 'create' => $expiry );
 
 		$page = WikiPage::factory( $this );
-		$status = $page->doUpdateRestrictions( $limit, $expiry, false, $reason, $wgwiki_user );
+		$status = $page->doUpdateRestrictions( $limit, $expiry, false, $reason, $wgUser );
 
 		return $status->isOK();
 	}
@@ -2285,9 +2285,9 @@ class Title {
 	 * Remove any title protection due to page existing
 	 */
 	public function deleteTitleProtection() {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
-		w->delete(
+		$dbw->delete(
 			'protected_titles',
 			array( 'pt_namespace' => $this->getNamespace(), 'pt_title' => $this->getDBkey() ),
 			__METHOD__
@@ -2354,18 +2354,18 @@ class Title {
 	}
 
 	/**
-	 * Determines if $wiki_user is unable to edit this page because it has been protected
+	 * Determines if $user is unable to edit this page because it has been protected
 	 * by $wgNamespaceProtection.
 	 *
-	 * @param $wiki_user wiki_user object to check permissions
+	 * @param $user User object to check permissions
 	 * @return Bool
 	 */
-	public function isNamespaceProtected( wiki_user $wiki_user ) {
+	public function isNamespaceProtected( User $user ) {
 		global $wgNamespaceProtection;
 
 		if ( isset( $wgNamespaceProtection[$this->mNamespace] ) ) {
 			foreach ( (array)$wgNamespaceProtection[$this->mNamespace] as $right ) {
-				if ( $right != '' && !$wiki_user->isAllowed( $right ) ) {
+				if ( $right != '' && !$user->isAllowed( $right ) ) {
 					return true;
 				}
 			}
@@ -2405,7 +2405,7 @@ class Title {
 
 		wfProfileIn( __METHOD__ );
 
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		if ( $this->getNamespace() == NS_FILE ) {
 			$tables = array( 'imagelinks', 'page_restrictions' );
@@ -2433,7 +2433,7 @@ class Title {
 			$cols = array( 'pr_expiry' );
 		}
 
-		$res = r->select( $tables, $cols, $where_clauses, __METHOD__ );
+		$res = $dbr->select( $tables, $cols, $where_clauses, __METHOD__ );
 
 		$sources = $getPages ? array() : false;
 		$now = wfTimestampNow();
@@ -2551,7 +2551,7 @@ class Title {
 	 */
 	public function loadRestrictionsFromRows( $rows, $oldFashionedRestrictions = null ) {
 		global $wgContLang;
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$restrictionTypes = $this->getRestrictionTypes();
 
@@ -2565,7 +2565,7 @@ class Title {
 		# Backwards-compatibility: also load the restrictions from the page record (old format).
 
 		if ( $oldFashionedRestrictions === null ) {
-			$oldFashionedRestrictions = r->selectField( 'page', 'page_restrictions',
+			$oldFashionedRestrictions = $dbr->selectField( 'page', 'page_restrictions',
 				array( 'page_id' => $this->getArticleID() ), __METHOD__ );
 		}
 
@@ -2635,9 +2635,9 @@ class Title {
 		global $wgContLang;
 		if ( !$this->mRestrictionsLoaded ) {
 			if ( $this->exists() ) {
-				r = wfGetDB( DB_SLAVE );
+				$dbr = wfGetDB( DB_SLAVE );
 
-				$res = r->select(
+				$res = $dbr->select(
 					'page_restrictions',
 					'*',
 					array( 'pr_page' => $this->getArticleID() ),
@@ -2681,16 +2681,16 @@ class Title {
 	 * Purge expired restrictions from the page_restrictions table
 	 */
 	static function purgeExpiredRestrictions() {
-		w = wfGetDB( DB_MASTER );
-		w->delete(
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete(
 			'page_restrictions',
-			array( 'pr_expiry < ' . w->addQuotes( w->timestamp() ) ),
+			array( 'pr_expiry < ' . $dbw->addQuotes( $dbw->timestamp() ) ),
 			__METHOD__
 		);
 
-		w->delete(
+		$dbw->delete(
 			'protected_titles',
-			array( 'pt_expiry < ' . w->addQuotes( w->timestamp() ) ),
+			array( 'pt_expiry < ' . $dbw->addQuotes( $dbw->timestamp() ) ),
 			__METHOD__
 		);
 	}
@@ -2733,15 +2733,15 @@ class Title {
 			return array();
 		}
 
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$conds['page_namespace'] = $this->getNamespace();
-		$conds[] = 'page_title ' . r->buildLike( $this->getDBkey() . '/', r->anyString() );
+		$conds[] = 'page_title ' . $dbr->buildLike( $this->getDBkey() . '/', $dbr->anyString() );
 		$options = array();
 		if ( $limit > -1 ) {
 			$options['LIMIT'] = $limit;
 		}
 		return $this->mSubpages = TitleArray::newFromResult(
-			r->select( 'page',
+			$dbr->select( 'page',
 				array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect' ),
 				$conds,
 				__METHOD__,
@@ -2759,14 +2759,14 @@ class Title {
 		if ( $this->getNamespace() < 0 ) {
 			$n = 0;
 		} else {
-			r = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 
-			$n = r->selectField( 'archive', 'COUNT(*)',
+			$n = $dbr->selectField( 'archive', 'COUNT(*)',
 				array( 'ar_namespace' => $this->getNamespace(), 'ar_title' => $this->getDBkey() ),
 				__METHOD__
 			);
 			if ( $this->getNamespace() == NS_FILE ) {
-				$n += r->selectField( 'filearchive', 'COUNT(*)',
+				$n += $dbr->selectField( 'filearchive', 'COUNT(*)',
 					array( 'fa_name' => $this->getDBkey() ),
 					__METHOD__
 				);
@@ -2784,13 +2784,13 @@ class Title {
 		if ( $this->getNamespace() < 0 ) {
 			return false;
 		}
-		r = wfGetDB( DB_SLAVE );
-		$deleted = (bool)r->selectField( 'archive', '1',
+		$dbr = wfGetDB( DB_SLAVE );
+		$deleted = (bool)$dbr->selectField( 'archive', '1',
 			array( 'ar_namespace' => $this->getNamespace(), 'ar_title' => $this->getDBkey() ),
 			__METHOD__
 		);
 		if ( !$deleted && $this->getNamespace() == NS_FILE ) {
-			$deleted = (bool)r->selectField( 'filearchive', '1',
+			$deleted = (bool)$dbr->selectField( 'filearchive', '1',
 				array( 'fa_name' => $this->getDBkey() ),
 				__METHOD__
 			);
@@ -2948,37 +2948,37 @@ class Title {
 		$this->mInterwiki = $this->mFragment = '';
 		$this->mNamespace = $this->mDefaultNamespace; # Usually NS_MAIN
 
-		key = $this->mDbkeyform;
+		$dbkey = $this->mDbkeyform;
 
 		# Strip Unicode bidi override characters.
 		# Sometimes they slip into cut-n-pasted page titles, where the
 		# override chars get included in list displays.
-		key = preg_replace( '/\xE2\x80[\x8E\x8F\xAA-\xAE]/S', '', key );
+		$dbkey = preg_replace( '/\xE2\x80[\x8E\x8F\xAA-\xAE]/S', '', $dbkey );
 
 		# Clean up whitespace
 		# Note: use of the /u option on preg_replace here will cause
 		# input with invalid UTF-8 sequences to be nullified out in PHP 5.2.x,
 		# conveniently disabling them.
-		key = preg_replace( '/[ _\xA0\x{1680}\x{180E}\x{2000}-\x{200A}\x{2028}\x{2029}\x{202F}\x{205F}\x{3000}]+/u', '_', key );
-		key = trim( key, '_' );
+		$dbkey = preg_replace( '/[ _\xA0\x{1680}\x{180E}\x{2000}-\x{200A}\x{2028}\x{2029}\x{202F}\x{205F}\x{3000}]+/u', '_', $dbkey );
+		$dbkey = trim( $dbkey, '_' );
 
-		if ( key == '' ) {
+		if ( $dbkey == '' ) {
 			return false;
 		}
 
-		if ( false !== strpos( key, UTF8_REPLACEMENT ) ) {
+		if ( false !== strpos( $dbkey, UTF8_REPLACEMENT ) ) {
 			# Contained illegal UTF-8 sequences or forbidden Unicode chars.
 			return false;
 		}
 
-		$this->mDbkeyform = key;
+		$this->mDbkeyform = $dbkey;
 
 		# Initial colon indicates main namespace rather than specified default
 		# but should not create invalid {ns,title} pairs such as {0,Project:Foo}
-		if ( ':' == key[0] ) {
+		if ( ':' == $dbkey[0] ) {
 			$this->mNamespace = NS_MAIN;
-			key = substr( key, 1 ); # remove the colon but continue processing
-			key = trim( key, '_' ); # remove any subsequent whitespace
+			$dbkey = substr( $dbkey, 1 ); # remove the colon but continue processing
+			$dbkey = trim( $dbkey, '_' ); # remove any subsequent whitespace
 		}
 
 		# Namespace or interwiki prefix
@@ -2986,14 +2986,14 @@ class Title {
 		$prefixRegexp = "/^(.+?)_*:_*(.*)$/S";
 		do {
 			$m = array();
-			if ( preg_match( $prefixRegexp, key, $m ) ) {
+			if ( preg_match( $prefixRegexp, $dbkey, $m ) ) {
 				$p = $m[1];
 				if ( ( $ns = $wgContLang->getNsIndex( $p ) ) !== false ) {
 					# Ordinary namespace
-					key = $m[2];
+					$dbkey = $m[2];
 					$this->mNamespace = $ns;
 					# For Talk:X pages, check if X has a "namespace" prefix
-					if ( $ns == NS_TALK && preg_match( $prefixRegexp, key, $x ) ) {
+					if ( $ns == NS_TALK && preg_match( $prefixRegexp, $dbkey, $x ) ) {
 						if ( $wgContLang->getNsIndex( $x[1] ) ) {
 							# Disallow Talk:File:x type titles...
 							return false;
@@ -3010,14 +3010,14 @@ class Title {
 					}
 
 					# Interwiki link
-					key = $m[2];
+					$dbkey = $m[2];
 					$this->mInterwiki = $wgContLang->lc( $p );
 
 					# Redundant interwiki prefix to the local wiki
 					if ( $wgLocalInterwiki !== false
 						&& 0 == strcasecmp( $this->mInterwiki, $wgLocalInterwiki ) )
 					{
-						if ( key == '' ) {
+						if ( $dbkey == '' ) {
 							# Can't have an empty self-link
 							return false;
 						}
@@ -3029,9 +3029,9 @@ class Title {
 
 					# If there's an initial colon after the interwiki, that also
 					# resets the default namespace
-					if ( key !== '' && key[0] == ':' ) {
+					if ( $dbkey !== '' && $dbkey[0] == ':' ) {
 						$this->mNamespace = NS_MAIN;
-						key = substr( key, 1 );
+						$dbkey = substr( $dbkey, 1 );
 					}
 				}
 				# If there's no recognized interwiki or namespace,
@@ -3044,38 +3044,38 @@ class Title {
 		if ( $this->mInterwiki != '' || NS_SPECIAL == $this->mNamespace ) {
 			$this->mArticleID = 0;
 		}
-		$fragment = strstr( key, '#' );
+		$fragment = strstr( $dbkey, '#' );
 		if ( false !== $fragment ) {
 			$this->setFragment( $fragment );
-			key = substr( key, 0, strlen( key ) - strlen( $fragment ) );
+			$dbkey = substr( $dbkey, 0, strlen( $dbkey ) - strlen( $fragment ) );
 			# remove whitespace again: prevents "Foo_bar_#"
 			# becoming "Foo_bar_"
-			key = preg_replace( '/_*$/', '', key );
+			$dbkey = preg_replace( '/_*$/', '', $dbkey );
 		}
 
 		# Reject illegal characters.
 		$rxTc = self::getTitleInvalidRegex();
-		if ( preg_match( $rxTc, key ) ) {
+		if ( preg_match( $rxTc, $dbkey ) ) {
 			return false;
 		}
 
 		# Pages with "/./" or "/../" appearing in the URLs will often be un-
 		# reachable due to the way web browsers deal with 'relative' URLs.
 		# Also, they conflict with subpage syntax.  Forbid them explicitly.
-		if ( strpos( key, '.' ) !== false &&
-			 ( key === '.' || key === '..' ||
-			   strpos( key, './' ) === 0  ||
-			   strpos( key, '../' ) === 0 ||
-			   strpos( key, '/./' ) !== false ||
-			   strpos( key, '/../' ) !== false  ||
-			   substr( key, -2 ) == '/.' ||
-			   substr( key, -3 ) == '/..' ) )
+		if ( strpos( $dbkey, '.' ) !== false &&
+			 ( $dbkey === '.' || $dbkey === '..' ||
+			   strpos( $dbkey, './' ) === 0  ||
+			   strpos( $dbkey, '../' ) === 0 ||
+			   strpos( $dbkey, '/./' ) !== false ||
+			   strpos( $dbkey, '/../' ) !== false  ||
+			   substr( $dbkey, -2 ) == '/.' ||
+			   substr( $dbkey, -3 ) == '/..' ) )
 		{
 			return false;
 		}
 
 		# Magic tilde sequences? Nu-uh!
-		if ( strpos( key, '~~~' ) !== false ) {
+		if ( strpos( $dbkey, '~~~' ) !== false ) {
 			return false;
 		}
 
@@ -3083,8 +3083,8 @@ class Title {
 		# underlying database field. We make an exception for special pages, which
 		# don't need to be stored in the database, and may edge over 255 bytes due
 		# to subpage syntax for long titles, e.g. [[Special:Block/Long name]]
-		if ( ( $this->mNamespace != NS_SPECIAL && strlen( key ) > 255 ) ||
-		  strlen( key ) > 512 )
+		if ( ( $this->mNamespace != NS_SPECIAL && strlen( $dbkey ) > 255 ) ||
+		  strlen( $dbkey ) > 512 )
 		{
 			return false;
 		}
@@ -3092,37 +3092,37 @@ class Title {
 		# Normally, all wiki links are forced to have an initial capital letter so [[foo]]
 		# and [[Foo]] point to the same place.  Don't force it for interwikis, since the
 		# other site might be case-sensitive.
-		$this->mwiki_userCaseDBKey = key;
+		$this->mUserCaseDBKey = $dbkey;
 		if ( $this->mInterwiki == '' ) {
-			key = self::capitalize( key, $this->mNamespace );
+			$dbkey = self::capitalize( $dbkey, $this->mNamespace );
 		}
 
 		# Can't make a link to a namespace alone... "empty" local links can only be
 		# self-links with a fragment identifier.
-		if ( key == '' && $this->mInterwiki == '' && $this->mNamespace != NS_MAIN ) {
+		if ( $dbkey == '' && $this->mInterwiki == '' && $this->mNamespace != NS_MAIN ) {
 			return false;
 		}
 
-		// Allow IPv6 wiki_usernames to start with '::' by canonicalizing IPv6 titles.
+		// Allow IPv6 usernames to start with '::' by canonicalizing IPv6 titles.
 		// IP names are not allowed for accounts, and can only be referring to
 		// edits from the IP. Given '::' abbreviations and caps/lowercaps,
 		// there are numerous ways to present the same IP. Having sp:contribs scan
 		// them all is silly and having some show the edits and others not is
-		// inconsistent. Same for talk/wiki_userpages. Keep them normalized instead.
-		key = ( $this->mNamespace == NS_USER || $this->mNamespace == NS_USER_TALK )
-			? IP::sanitizeIP( key )
-			: key;
+		// inconsistent. Same for talk/userpages. Keep them normalized instead.
+		$dbkey = ( $this->mNamespace == NS_USER || $this->mNamespace == NS_USER_TALK )
+			? IP::sanitizeIP( $dbkey )
+			: $dbkey;
 
 		// Any remaining initial :s are illegal.
-		if ( key !== '' && ':' == key[0] ) {
+		if ( $dbkey !== '' && ':' == $dbkey[0] ) {
 			return false;
 		}
 
 		# Fill fields
-		$this->mDbkeyform = key;
-		$this->mUrlform = wfUrlencode( key );
+		$this->mDbkeyform = $dbkey;
+		$this->mUrlform = wfUrlencode( $dbkey );
 
-		$this->mTextform = str_replace( '_', ' ', key );
+		$this->mTextform = str_replace( '_', ' ', $dbkey );
 
 		return true;
 	}
@@ -3131,7 +3131,7 @@ class Title {
 	 * Get an array of Title objects linking to this Title
 	 * Also stores the IDs in the link cache.
 	 *
-	 * WARNING: do not use this function on arbitrary wiki_user-supplied titles!
+	 * WARNING: do not use this function on arbitrary user-supplied titles!
 	 * On heavily-used templates it will max out the memory.
 	 *
 	 * @param $options Array: may be FOR UPDATE
@@ -3141,12 +3141,12 @@ class Title {
 	 */
 	public function getLinksTo( $options = array(), $table = 'pagelinks', $prefix = 'pl' ) {
 		if ( count( $options ) > 0 ) {
-			 = wfGetDB( DB_MASTER );
+			$db = wfGetDB( DB_MASTER );
 		} else {
-			 = wfGetDB( DB_SLAVE );
+			$db = wfGetDB( DB_SLAVE );
 		}
 
-		$res = ->select(
+		$res = $db->select(
 			array( 'page', $table ),
 			array( 'page_namespace', 'page_title', 'page_id', 'page_len', 'page_is_redirect', 'page_latest' ),
 			array(
@@ -3175,7 +3175,7 @@ class Title {
 	 * Get an array of Title objects using this Title as a template
 	 * Also stores the IDs in the link cache.
 	 *
-	 * WARNING: do not use this function on arbitrary wiki_user-supplied titles!
+	 * WARNING: do not use this function on arbitrary user-supplied titles!
 	 * On heavily-used templates it will max out the memory.
 	 *
 	 * @param $options Array: may be FOR UPDATE
@@ -3189,7 +3189,7 @@ class Title {
 	 * Get an array of Title objects linked from this Title
 	 * Also stores the IDs in the link cache.
 	 *
-	 * WARNING: do not use this function on arbitrary wiki_user-supplied titles!
+	 * WARNING: do not use this function on arbitrary user-supplied titles!
 	 * On heavily-used templates it will max out the memory.
 	 *
 	 * @param $options Array: may be FOR UPDATE
@@ -3206,15 +3206,15 @@ class Title {
 		}
 
 		if ( count( $options ) > 0 ) {
-			 = wfGetDB( DB_MASTER );
+			$db = wfGetDB( DB_MASTER );
 		} else {
-			 = wfGetDB( DB_SLAVE );
+			$db = wfGetDB( DB_SLAVE );
 		}
 
 		$namespaceFiled = "{$prefix}_namespace";
 		$titleField = "{$prefix}_title";
 
-		$res = ->select(
+		$res = $db->select(
 			array( $table, 'page' ),
 			array( $namespaceFiled, $titleField, 'page_id', 'page_len', 'page_is_redirect', 'page_latest' ),
 			array( "{$prefix}_from" => $id ),
@@ -3245,7 +3245,7 @@ class Title {
 	 * Get an array of Title objects used on this Title as a template
 	 * Also stores the IDs in the link cache.
 	 *
-	 * WARNING: do not use this function on arbitrary wiki_user-supplied titles!
+	 * WARNING: do not use this function on arbitrary user-supplied titles!
 	 * On heavily-used templates it will max out the memory.
 	 *
 	 * @param $options Array: may be FOR UPDATE
@@ -3267,8 +3267,8 @@ class Title {
 			return array();
 		}
 
-		r = wfGetDB( DB_SLAVE );
-		$res = r->select(
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
 			array( 'page', 'pagelinks' ),
 			array( 'pl_namespace', 'pl_title' ),
 			array(
@@ -3331,7 +3331,7 @@ class Title {
 	 * Move this page without authentication
 	 *
 	 * @param $nt Title the new page Title
-	 * @return Mixed true on success, getwiki_userPermissionsErrors()-like array on failure
+	 * @return Mixed true on success, getUserPermissionsErrors()-like array on failure
 	 */
 	public function moveNoAuth( &$nt ) {
 		return $this->moveTo( $nt, false );
@@ -3339,16 +3339,16 @@ class Title {
 
 	/**
 	 * Check whether a given move operation would be valid.
-	 * Returns true if ok, or a getwiki_userPermissionsErrors()-like array otherwise
+	 * Returns true if ok, or a getUserPermissionsErrors()-like array otherwise
 	 *
 	 * @param $nt Title the new title
-	 * @param $auth Bool indicates whether $wgwiki_user's permissions
+	 * @param $auth Bool indicates whether $wgUser's permissions
 	 *  should be checked
 	 * @param $reason String is the log summary of the move, used for spam checking
-	 * @return Mixed True on success, getwiki_userPermissionsErrors()-like array on failure
+	 * @return Mixed True on success, getUserPermissionsErrors()-like array on failure
 	 */
 	public function isValidMoveOperation( &$nt, $auth = true, $reason = '' ) {
-		global $wgwiki_user;
+		global $wgUser;
 
 		$errors = array();
 		if ( !$nt ) {
@@ -3392,10 +3392,10 @@ class Title {
 
 		if ( $auth ) {
 			$errors = wfMergeErrorArrays( $errors,
-				$this->getwiki_userPermissionsErrors( 'move', $wgwiki_user ),
-				$this->getwiki_userPermissionsErrors( 'edit', $wgwiki_user ),
-				$nt->getwiki_userPermissionsErrors( 'move-target', $wgwiki_user ),
-				$nt->getwiki_userPermissionsErrors( 'edit', $wgwiki_user ) );
+				$this->getUserPermissionsErrors( 'move', $wgUser ),
+				$this->getUserPermissionsErrors( 'edit', $wgUser ),
+				$nt->getUserPermissionsErrors( 'move-target', $wgUser ),
+				$nt->getUserPermissionsErrors( 'edit', $wgUser ) );
 		}
 
 		$match = EditPage::matchSummarySpamRegex( $reason );
@@ -3405,7 +3405,7 @@ class Title {
 		}
 
 		$err = null;
-		if ( !wfRunHooks( 'AbortMove', array( $this, $nt, $wgwiki_user, &$err, $reason ) ) ) {
+		if ( !wfRunHooks( 'AbortMove', array( $this, $nt, $wgUser, &$err, $reason ) ) ) {
 			$errors[] = array( 'hookaborted', $err );
 		}
 
@@ -3420,7 +3420,7 @@ class Title {
 		} else {
 			$tp = $nt->getTitleProtection();
 			$right = ( $tp['pt_create_perm'] == 'sysop' ) ? 'protect' : $tp['pt_create_perm'];
-			if ( $tp and !$wgwiki_user->isAllowed( $right ) ) {
+			if ( $tp and !$wgUser->isAllowed( $right ) ) {
 				$errors[] = array( 'cantmove-titleprotected' );
 			}
 		}
@@ -3436,7 +3436,7 @@ class Title {
 	 * @return array List of errors
 	 */
 	protected function validateFileMoveOperation( $nt ) {
-		global $wgwiki_user;
+		global $wgUser;
 
 		$errors = array();
 
@@ -3462,7 +3462,7 @@ class Title {
 		// wfFindFile( $nt ) / wfLocalFile( $nt ) is allowed below here
 
 		$destFile = wfLocalFile( $nt );
-		if ( !$wgwiki_user->isAllowed( 'reupload-shared' ) && !$destFile->exists() && wfFindFile( $nt ) ) {
+		if ( !$wgUser->isAllowed( 'reupload-shared' ) && !$destFile->exists() && wfFindFile( $nt ) ) {
 			$errors[] = array( 'file-exists-sharedrepo' );
 		}
 
@@ -3473,29 +3473,29 @@ class Title {
 	 * Move a title to a new location
 	 *
 	 * @param $nt Title the new title
-	 * @param $auth Bool indicates whether $wgwiki_user's permissions
+	 * @param $auth Bool indicates whether $wgUser's permissions
 	 *  should be checked
 	 * @param $reason String the reason for the move
 	 * @param $createRedirect Bool Whether to create a redirect from the old title to the new title.
-	 *  Ignored if the wiki_user doesn't have the suppressredirect right.
-	 * @return Mixed true on success, getwiki_userPermissionsErrors()-like array on failure
+	 *  Ignored if the user doesn't have the suppressredirect right.
+	 * @return Mixed true on success, getUserPermissionsErrors()-like array on failure
 	 */
 	public function moveTo( &$nt, $auth = true, $reason = '', $createRedirect = true ) {
-		global $wgwiki_user;
+		global $wgUser;
 		$err = $this->isValidMoveOperation( $nt, $auth, $reason );
 		if ( is_array( $err ) ) {
-			// Auto-block wiki_user's IP if the account was "hard" blocked
-			$wgwiki_user->spreadAnyEditBlock();
+			// Auto-block user's IP if the account was "hard" blocked
+			$wgUser->spreadAnyEditBlock();
 			return $err;
 		}
 		// Check suppressredirect permission
-		if ( $auth && !$wgwiki_user->isAllowed( 'suppressredirect' ) ) {
+		if ( $auth && !$wgUser->isAllowed( 'suppressredirect' ) ) {
 			$createRedirect = true;
 		}
 
 		// If it is a file, move it first.
 		// It is done before all other moving stuff is done because it's hard to revert.
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		if ( $this->getNamespace() == NS_FILE ) {
 			$file = wfLocalFile( $this );
 			if ( $file->exists() ) {
@@ -3509,7 +3509,7 @@ class Title {
 			RepoGroup::singleton()->clearCache( $nt ); # clear false negative cache
 		}
 
-		w->begin( __METHOD__ ); # If $file was a LocalFile, its transaction would have closed our own.
+		$dbw->begin( __METHOD__ ); # If $file was a LocalFile, its transaction would have closed our own.
 		$pageid = $this->getArticleID( self::GAID_FOR_UPDATE );
 		$protected = $this->isProtected();
 
@@ -3518,7 +3518,7 @@ class Title {
 
 		// Refresh the sortkey for this row.  Be careful to avoid resetting
 		// cl_timestamp, which may disturb time-based lists on some sites.
-		$prefixes = w->select(
+		$prefixes = $dbw->select(
 			'categorylinks',
 			array( 'cl_sortkey_prefix', 'cl_to' ),
 			array( 'cl_from' => $pageid ),
@@ -3527,7 +3527,7 @@ class Title {
 		foreach ( $prefixes as $prefixRow ) {
 			$prefix = $prefixRow->cl_sortkey_prefix;
 			$catTo = $prefixRow->cl_to;
-			w->update( 'categorylinks',
+			$dbw->update( 'categorylinks',
 				array(
 					'cl_sortkey' => Collation::singleton()->getSortKey(
 						$nt->getCategorySortkey( $prefix ) ),
@@ -3543,13 +3543,13 @@ class Title {
 
 		if ( $protected ) {
 			# Protect the redirect title as the title used to be...
-			w->insertSelect( 'page_restrictions', 'page_restrictions',
+			$dbw->insertSelect( 'page_restrictions', 'page_restrictions',
 				array(
 					'pr_page'    => $redirid,
 					'pr_type'    => 'pr_type',
 					'pr_level'   => 'pr_level',
 					'pr_cascade' => 'pr_cascade',
-					'pr_wiki_user'    => 'pr_wiki_user',
+					'pr_user'    => 'pr_user',
 					'pr_expiry'  => 'pr_expiry'
 				),
 				array( 'pr_page' => $pageid ),
@@ -3580,9 +3580,9 @@ class Title {
 			WatchedItem::duplicateEntries( $this, $nt );
 		}
 
-		w->commit( __METHOD__ );
+		$dbw->commit( __METHOD__ );
 
-		wfRunHooks( 'TitleMoveComplete', array( &$this, &$nt, &$wgwiki_user, $pageid, $redirid ) );
+		wfRunHooks( 'TitleMoveComplete', array( &$this, &$nt, &$wgUser, $pageid, $redirid ) );
 		return true;
 	}
 
@@ -3593,11 +3593,11 @@ class Title {
 	 * @param $nt Title the page to move to, which should be a redirect or nonexistent
 	 * @param $reason String The reason for the move
 	 * @param $createRedirect Bool Whether to leave a redirect at the old title. Does not check
-	 *   if the wiki_user has the suppressredirect right
+	 *   if the user has the suppressredirect right
 	 * @throws MWException
 	 */
 	private function moveToInternal( &$nt, $reason = '', $createRedirect = true ) {
-		global $wgwiki_user, $wgContLang;
+		global $wgUser, $wgContLang;
 
 		if ( $nt->exists() ) {
 			$moveOverRedirect = true;
@@ -3610,7 +3610,7 @@ class Title {
 		$redirectSuppressed = !$createRedirect;
 
 		$logEntry = new ManualLogEntry( 'move', $logType );
-		$logEntry->setPerformer( $wgwiki_user );
+		$logEntry->setPerformer( $wgUser );
 		$logEntry->setTarget( $this );
 		$logEntry->setComment( $reason );
 		$logEntry->setParameters( array(
@@ -3629,7 +3629,7 @@ class Title {
 
 		$oldid = $this->getArticleID();
 
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		$newpage = WikiPage::factory( $nt );
 
@@ -3640,20 +3640,20 @@ class Title {
 			# by definition if we've got here it's rather uninteresting.
 			# We have to remove it so that the next step doesn't trigger
 			# a conflict on the unique namespace+title index...
-			w->delete( 'page', array( 'page_id' => $newid ), __METHOD__ );
+			$dbw->delete( 'page', array( 'page_id' => $newid ), __METHOD__ );
 
 			$newpage->doDeleteUpdates( $newid );
 		}
 
 		# Save a null revision in the page's history notifying of the move
-		$nullRevision = Revision::newNullRevision( w, $oldid, $comment, true );
+		$nullRevision = Revision::newNullRevision( $dbw, $oldid, $comment, true );
 		if ( !is_object( $nullRevision ) ) {
 			throw new MWException( 'No valid null revision produced in ' . __METHOD__ );
 		}
-		$nullRevId = $nullRevision->insertOn( w );
+		$nullRevId = $nullRevision->insertOn( $dbw );
 
 		# Change the name of the target page:
-		w->update( 'page',
+		$dbw->update( 'page',
 			/* SET */ array(
 				'page_namespace' => $nt->getNamespace(),
 				'page_title'     => $nt->getDBkey(),
@@ -3665,12 +3665,12 @@ class Title {
 		$this->resetArticleID( 0 );
 		$nt->resetArticleID( $oldid );
 
-		$newpage->updateRevisionOn( w, $nullRevision );
+		$newpage->updateRevisionOn( $dbw, $nullRevision );
 
 		wfRunHooks( 'NewRevisionFromEditComplete',
-			array( $newpage, $nullRevision, $nullRevision->getParentId(), $wgwiki_user ) );
+			array( $newpage, $nullRevision, $nullRevision->getParentId(), $wgUser ) );
 
-		$newpage->doEditUpdates( $nullRevision, $wgwiki_user, array( 'changed' => false ) );
+		$newpage->doEditUpdates( $nullRevision, $wgUser, array( 'changed' => false ) );
 
 		if ( !$moveOverRedirect ) {
 			WikiPage::onArticleCreate( $nt );
@@ -3683,19 +3683,19 @@ class Title {
 			$mwRedir = MagicWord::get( 'redirect' );
 			$redirectText = $mwRedir->getSynonym( 0 ) . ' [[' . $nt->getPrefixedText() . "]]\n";
 			$redirectArticle = WikiPage::factory( $this );
-			$newid = $redirectArticle->insertOn( w );
+			$newid = $redirectArticle->insertOn( $dbw );
 			if ( $newid ) { // sanity
 				$redirectRevision = new Revision( array(
 					'page'    => $newid,
 					'comment' => $comment,
 					'text'    => $redirectText ) );
-				$redirectRevision->insertOn( w );
-				$redirectArticle->updateRevisionOn( w, $redirectRevision, 0 );
+				$redirectRevision->insertOn( $dbw );
+				$redirectArticle->updateRevisionOn( $dbw, $redirectRevision, 0 );
 
 				wfRunHooks( 'NewRevisionFromEditComplete',
-					array( $redirectArticle, $redirectRevision, false, $wgwiki_user ) );
+					array( $redirectArticle, $redirectRevision, false, $wgUser ) );
 
-				$redirectArticle->doEditUpdates( $redirectRevision, $wgwiki_user, array( 'created' => true ) );
+				$redirectArticle->doEditUpdates( $redirectRevision, $wgUser, array( 'created' => true ) );
 			}
 		}
 
@@ -3708,10 +3708,10 @@ class Title {
 	 * Move this page's subpages to be subpages of $nt
 	 *
 	 * @param $nt Title Move target
-	 * @param $auth bool Whether $wgwiki_user's permissions should be checked
+	 * @param $auth bool Whether $wgUser's permissions should be checked
 	 * @param $reason string The reason for the move
 	 * @param $createRedirect bool Whether to create redirects from the old subpages to
-	 *     the new ones Ignored if the wiki_user doesn't have the 'suppressredirect' right
+	 *     the new ones Ignored if the user doesn't have the 'suppressredirect' right
 	 * @return mixed array with old page titles as keys, and strings (new page titles) or
 	 *     arrays (errors) as values, or an error array with numeric indices if no pages
 	 *     were moved
@@ -3719,7 +3719,7 @@ class Title {
 	public function moveSubpages( $nt, $auth = true, $reason = '', $createRedirect = true ) {
 		global $wgMaximumMovedPages;
 		// Check permissions
-		if ( !$this->wiki_userCan( 'move-subpages' ) ) {
+		if ( !$this->userCan( 'move-subpages' ) ) {
 			return array( 'cant-move-subpages' );
 		}
 		// Do the source and target namespaces support subpages?
@@ -3784,9 +3784,9 @@ class Title {
 	 * @return Bool
 	 */
 	public function isSingleRevRedirect() {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		# Is it a redirect?
-		$row = w->selectRow( 'page',
+		$row = $dbw->selectRow( 'page',
 			array( 'page_is_redirect', 'page_latest', 'page_id' ),
 			$this->pageCond(),
 			__METHOD__,
@@ -3800,7 +3800,7 @@ class Title {
 			return false;
 		}
 		# Does the article have a history?
-		$row = w->selectField( array( 'page', 'revision' ),
+		$row = $dbw->selectField( array( 'page', 'revision' ),
 			'rev_id',
 			array( 'page_namespace' => $this->getNamespace(),
 				'page_title' => $this->getDBkey(),
@@ -3878,9 +3878,9 @@ class Title {
 			return $data;
 		}
 
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
-		$res = r->select( 'categorylinks', '*',
+		$res = $dbr->select( 'categorylinks', '*',
 			array(
 				'cl_from' => $titleKey,
 			),
@@ -3888,7 +3888,7 @@ class Title {
 			array()
 		);
 
-		if ( r->numRows( $res ) > 0 ) {
+		if ( $dbr->numRows( $res ) > 0 ) {
 			foreach ( $res as $row ) {
 				// $data[] = Title::newFromText($wgContLang->getNSText ( NS_CATEGORY ).':'.$row->cl_to);
 				$data[$wgContLang->getNSText( NS_CATEGORY ) . ':' . $row->cl_to] = $this->getFullText();
@@ -3947,8 +3947,8 @@ class Title {
 	 * @return Int|Bool Old revision ID, or FALSE if none exists
 	 */
 	public function getPreviousRevisionID( $revId, $flags = 0 ) {
-		 = ( $flags & self::GAID_FOR_UPDATE ) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
-		$revId = ->selectField( 'revision', 'rev_id',
+		$db = ( $flags & self::GAID_FOR_UPDATE ) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
+		$revId = $db->selectField( 'revision', 'rev_id',
 			array(
 				'rev_page' => $this->getArticleID( $flags ),
 				'rev_id < ' . intval( $revId )
@@ -3972,8 +3972,8 @@ class Title {
 	 * @return Int|Bool Next revision ID, or FALSE if none exists
 	 */
 	public function getNextRevisionID( $revId, $flags = 0 ) {
-		 = ( $flags & self::GAID_FOR_UPDATE ) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
-		$revId = ->selectField( 'revision', 'rev_id',
+		$db = ( $flags & self::GAID_FOR_UPDATE ) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
+		$revId = $db->selectField( 'revision', 'rev_id',
 			array(
 				'rev_page' => $this->getArticleID( $flags ),
 				'rev_id > ' . intval( $revId )
@@ -3998,8 +3998,8 @@ class Title {
 	public function getFirstRevision( $flags = 0 ) {
 		$pageId = $this->getArticleID( $flags );
 		if ( $pageId ) {
-			 = ( $flags & self::GAID_FOR_UPDATE ) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
-			$row = ->selectRow( 'revision', Revision::selectFields(),
+			$db = ( $flags & self::GAID_FOR_UPDATE ) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
+			$row = $db->selectRow( 'revision', Revision::selectFields(),
 				array( 'rev_page' => $pageId ),
 				__METHOD__,
 				array( 'ORDER BY' => 'rev_timestamp ASC', 'LIMIT' => 1 )
@@ -4028,8 +4028,8 @@ class Title {
 	 * @return bool
 	 */
 	public function isNewPage() {
-		r = wfGetDB( DB_SLAVE );
-		return (bool)r->selectField( 'page', 'page_is_new', $this->pageCond(), __METHOD__ );
+		$dbr = wfGetDB( DB_SLAVE );
+		return (bool)$dbr->selectField( 'page', 'page_is_new', $this->pageCond(), __METHOD__ );
 	}
 
 	/**
@@ -4059,8 +4059,8 @@ class Title {
 		}
 
 		if ( $this->mEstimateRevisions === null ) {
-			r = wfGetDB( DB_SLAVE );
-			$this->mEstimateRevisions = r->estimateRowCount( 'revision', '*',
+			$dbr = wfGetDB( DB_SLAVE );
+			$this->mEstimateRevisions = $dbr->estimateRowCount( 'revision', '*',
 				array( 'rev_page' => $this->getArticleID() ), __METHOD__ );
 		}
 
@@ -4085,12 +4085,12 @@ class Title {
 		if ( !$old || !$new ) {
 			return 0; // nothing to compare
 		}
-		r = wfGetDB( DB_SLAVE );
-		return (int)r->selectField( 'revision', 'count(*)',
+		$dbr = wfGetDB( DB_SLAVE );
+		return (int)$dbr->selectField( 'revision', 'count(*)',
 			array(
 				'rev_page' => $this->getArticleID(),
-				'rev_timestamp > ' . r->addQuotes( r->timestamp( $old->getTimestamp() ) ),
-				'rev_timestamp < ' . r->addQuotes( r->timestamp( $new->getTimestamp() ) )
+				'rev_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $old->getTimestamp() ) ),
+				'rev_timestamp < ' . $dbr->addQuotes( $dbr->timestamp( $new->getTimestamp() ) )
 			),
 			__METHOD__
 		);
@@ -4143,18 +4143,18 @@ class Title {
 			if ( $old_cmp === '>' || $new_cmp === '<' ) {
 				return ( $old_cmp === '>' && $new_cmp === '<' ) ? 0 : 1;
 			}
-			return ( $old->getRawwiki_userText() === $new->getRawwiki_userText() ) ? 1 : 2;
+			return ( $old->getRawUserText() === $new->getRawUserText() ) ? 1 : 2;
 		}
-		r = wfGetDB( DB_SLAVE );
-		$res = r->select( 'revision', 'DISTINCT rev_wiki_user_text',
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'revision', 'DISTINCT rev_user_text',
 			array(
 				'rev_page' => $this->getArticleID(),
-				"rev_timestamp $old_cmp " . r->addQuotes( r->timestamp( $old->getTimestamp() ) ),
-				"rev_timestamp $new_cmp " . r->addQuotes( r->timestamp( $new->getTimestamp() ) )
+				"rev_timestamp $old_cmp " . $dbr->addQuotes( $dbr->timestamp( $old->getTimestamp() ) ),
+				"rev_timestamp $new_cmp " . $dbr->addQuotes( $dbr->timestamp( $new->getTimestamp() ) )
 			), __METHOD__,
 			array( 'LIMIT' => $limit + 1 ) // add one so caller knows it was truncated
 		);
-		return (int)r->numRows( $res );
+		return (int)$dbr->numRows( $res );
 	}
 
 	/**
@@ -4323,10 +4323,10 @@ class Title {
 		if ( wfReadOnly() ) {
 			return false;
 		}
-		w = wfGetDB( DB_MASTER );
-		$success = w->update(
+		$dbw = wfGetDB( DB_MASTER );
+		$success = $dbw->update(
 			'page',
-			array( 'page_touched' => w->timestamp() ),
+			array( 'page_touched' => $dbw->timestamp() ),
 			$this->pageCond(),
 			__METHOD__
 		);
@@ -4352,29 +4352,29 @@ class Title {
 	/**
 	 * Get the last touched timestamp
 	 *
-	 * @param  DatabaseBase: optional db
+	 * @param $db DatabaseBase: optional db
 	 * @return String last-touched timestamp
 	 */
-	public function getTouched(  = null ) {
-		 = isset(  ) ?  : wfGetDB( DB_SLAVE );
-		$touched = ->selectField( 'page', 'page_touched', $this->pageCond(), __METHOD__ );
+	public function getTouched( $db = null ) {
+		$db = isset( $db ) ? $db : wfGetDB( DB_SLAVE );
+		$touched = $db->selectField( 'page', 'page_touched', $this->pageCond(), __METHOD__ );
 		return $touched;
 	}
 
 	/**
-	 * Get the timestamp when this page was updated since the wiki_user last saw it.
+	 * Get the timestamp when this page was updated since the user last saw it.
 	 *
-	 * @param $wiki_user wiki_user
+	 * @param $user User
 	 * @return String|Null
 	 */
-	public function getNotificationTimestamp( $wiki_user = null ) {
-		global $wgwiki_user, $wgShowUpdatedMarker;
-		// Assume current wiki_user if none given
-		if ( !$wiki_user ) {
-			$wiki_user = $wgwiki_user;
+	public function getNotificationTimestamp( $user = null ) {
+		global $wgUser, $wgShowUpdatedMarker;
+		// Assume current user if none given
+		if ( !$user ) {
+			$user = $wgUser;
 		}
 		// Check cache first
-		$uid = $wiki_user->getId();
+		$uid = $user->getId();
 		// avoid isset here, as it'll return false for null entries
 		if ( array_key_exists( $uid, $this->mNotificationTimestamp ) ) {
 			return $this->mNotificationTimestamp[$uid];
@@ -4386,11 +4386,11 @@ class Title {
 		if ( count( $this->mNotificationTimestamp ) >= self::CACHE_MAX ) {
 			$this->mNotificationTimestamp = array();
 		}
-		r = wfGetDB( DB_SLAVE );
-		$this->mNotificationTimestamp[$uid] = r->selectField( 'watchlist',
+		$dbr = wfGetDB( DB_SLAVE );
+		$this->mNotificationTimestamp[$uid] = $dbr->selectField( 'watchlist',
 			'wl_notificationtimestamp',
 			array(
-				'wl_wiki_user' => $wiki_user->getId(),
+				'wl_user' => $user->getId(),
 				'wl_namespace' => $this->getNamespace(),
 				'wl_title' => $this->getDBkey(),
 			),
@@ -4439,7 +4439,7 @@ class Title {
 	public function getRedirectsHere( $ns = null ) {
 		$redirs = array();
 
-		r = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$where = array(
 			'rd_namespace' => $this->getNamespace(),
 			'rd_title' => $this->getDBkey(),
@@ -4448,13 +4448,13 @@ class Title {
 		if ( $this->isExternal() ) {
 			$where['rd_interwiki'] = $this->getInterwiki();
 		} else {
-			$where[] = 'rd_interwiki = ' . r->addQuotes( '' ) . ' OR rd_interwiki IS NULL';
+			$where[] = 'rd_interwiki = ' . $dbr->addQuotes( '' ) . ' OR rd_interwiki IS NULL';
 		}
 		if ( !is_null( $ns ) ) {
 			$where['page_namespace'] = $ns;
 		}
 
-		$res = r->select(
+		$res = $dbr->select(
 			array( 'redirect', 'page' ),
 			array( 'page_namespace', 'page_title' ),
 			$where,
@@ -4475,8 +4475,8 @@ class Title {
 	public function isValidRedirectTarget() {
 		global $wgInvalidRedirectTargets;
 
-		// invalid redirect targets are stored in a global array, but explicity disallow wiki_userlogout here
-		if ( $this->isSpecial( 'wiki_userlogout' ) ) {
+		// invalid redirect targets are stored in a global array, but explicity disallow Userlogout here
+		if ( $this->isSpecial( 'Userlogout' ) ) {
 			return false;
 		}
 
@@ -4504,11 +4504,11 @@ class Title {
 	 * @return Boolean
 	 */
 	public function canUseNoindex() {
-		global $wgContentNamespaces, $wgExemptFromwiki_userRobotsControl;
+		global $wgContentNamespaces, $wgExemptFromUserRobotsControl;
 
-		$bannedNamespaces = is_null( $wgExemptFromwiki_userRobotsControl )
+		$bannedNamespaces = is_null( $wgExemptFromUserRobotsControl )
 			? $wgContentNamespaces
-			: $wgExemptFromwiki_userRobotsControl;
+			: $wgExemptFromUserRobotsControl;
 
 		return !in_array( $this->mNamespace, $bannedNamespaces );
 
@@ -4529,7 +4529,7 @@ class Title {
 
 		// Anything that uses this hook should only depend
 		// on the Title object passed in, and should probably
-		// tell the wiki_users to run updateCollations.php --force
+		// tell the users to run updateCollations.php --force
 		// in order to re-sort existing category relations.
 		wfRunHooks( 'GetDefaultSortkey', array( $this, &$unprefixed ) );
 		if ( $prefix !== '' ) {
@@ -4546,7 +4546,7 @@ class Title {
 	/**
 	 * Get the language in which the content of this page is written in
 	 * wikitext. Defaults to $wgContLang, but in certain cases it can be
-	 * e.g. $wgLang (such as special pages, which are in the wiki_user language).
+	 * e.g. $wgLang (such as special pages, which are in the user language).
 	 *
 	 * @since 1.18
 	 * @return Language
@@ -4554,7 +4554,7 @@ class Title {
 	public function getPageLanguage() {
 		global $wgLang;
 		if ( $this->isSpecialPage() ) {
-			// special pages are in the wiki_user language
+			// special pages are in the user language
 			return $wgLang;
 		} elseif ( $this->isCssOrJsPage() || $this->isCssJsSubpage() ) {
 			// css/js should always be LTR and is, in fact, English
@@ -4574,8 +4574,8 @@ class Title {
 
 	/**
 	 * Get the language in which the content of this page is written when
-	 * viewed by wiki_user. Defaults to $wgContLang, but in certain cases it can be
-	 * e.g. $wgLang (such as special pages, which are in the wiki_user language).
+	 * viewed by user. Defaults to $wgContLang, but in certain cases it can be
+	 * e.g. $wgLang (such as special pages, which are in the user language).
 	 *
 	 * @since 1.20
 	 * @return Language
@@ -4587,7 +4587,7 @@ class Title {
 			&& !$this->isCssOrJsPage() && !$this->isCssJsSubpage()
 			&& $this->getNamespace() !== NS_MEDIAWIKI
 		) {
-			// If the wiki_user chooses a variant, the content is actually
+			// If the user chooses a variant, the content is actually
 			// in a language whose code is the variant code.
 			$variant = $pageLang->getPreferredVariant();
 			if ( $pageLang->getCode() !== $variant ) {
@@ -4600,9 +4600,9 @@ class Title {
 // <IntraACL>
 	/**
 	 * This function is called from the patches for HaloACL for secure listings
-	 * (e.g. Special:AllPages). It checks, whether the current wiki_user is allowed
+	 * (e.g. Special:AllPages). It checks, whether the current user is allowed
 	 * to read the article for this title object. For normal pages this is
-	 * evaluate in the method <wiki_userCanRead>.
+	 * evaluate in the method <userCanRead>.
 	 * However, the special pages that generate listings, often create title
 	 * objects before the can check their accessibility. The fallback mechanism
 	 * of HaloACL creates the title "Permission denied" for the article that
@@ -4614,7 +4614,7 @@ class Title {
 	 * 		true, if this title can be read
 	 * 		false, if the title is protected or "Permission denied".
 	 */
-	public function wiki_userCanReadEx( $otherwiki_user = NULL ) {
+	public function userCanReadEx( $otherUser = NULL ) {
 		if ( !defined( 'HACL_HALOACL_VERSION' ) ) {
 			// IntraACL is disabled
 			return true;
@@ -4624,12 +4624,12 @@ class Title {
 			// Special handling of "Permission denied" page
 			return false;
 		}
-		if ( $otherwiki_user ) {
+		if ( $otherUser ) {
 			$canRead = false;
-			$status = HACLEvaluator::wiki_userCan( $this, $otherwiki_user, 'read', $canRead );
+			$status = HACLEvaluator::userCan( $this, $otherUser, 'read', $canRead );
 			return $canRead;
 		}
-		return $this->wiki_userCanRead();
+		return $this->userCanRead();
 	}
 
 	/**
@@ -4669,17 +4669,17 @@ class Title {
 				case 'create':
 				case 'move':
 				case 'delete':
-					$allowed = $this->wiki_userCan($action);
+					$allowed = $this->userCan($action);
 					break;
 				case 'edit':
 					// If the article does not exist and edit right was requested,
 					// check for create right.
-					$allowed = $this->wiki_userCan($this->exists() ? 'edit' : 'create');
+					$allowed = $this->userCan($this->exists() ? 'edit' : 'create');
 					break;
 				default:
-					// If the wiki_user has no read access to a non-existing page,
+					// If the user has no read access to a non-existing page,
 					// but has the right to create it - allow him to "read" it
-					$allowed = $this->wiki_userCanRead() || !$this->exists() && $this->wiki_userCan('create');
+					$allowed = $this->userCanRead() || !$this->exists() && $this->userCan('create');
 			}
 			$permissionCache[$index] = $allowed;
 		}

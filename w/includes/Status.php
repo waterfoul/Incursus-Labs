@@ -28,7 +28,7 @@
  *
  * "OK" means the operation was partially or wholly completed.
  *
- * An operation which is not OK should have errors so that the wiki_user can be
+ * An operation which is not OK should have errors so that the user can be
  * informed as to what went wrong. Calling the fatal() function sets an error
  * message and simultaneously switches off the OK flag.
  */
@@ -159,7 +159,7 @@ class Status {
 		}
 		$cleanParams = array();
 		foreach ( $params as $i => $param ) {
-			$cleanParams[$i] = call_wiki_user_func( $this->cleanCallback, $param );
+			$cleanParams[$i] = call_user_func( $this->cleanCallback, $param );
 		}
 		return $cleanParams;
 	}

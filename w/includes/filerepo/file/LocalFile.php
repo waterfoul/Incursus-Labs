@@ -65,7 +65,7 @@ class LocalFile extends File {
 		$metadata,         # Handler-specific metadata
 		$timestamp,        # Upload timestamp
 		$sha1,             # SHA-1 base 36 content hash
-		$wiki_user, $wiki_user_text, # wiki_user, who uploaded the file
+		$user, $user_text, # User, who uploaded the file
 		$description,      # Description of current revision of the file
 		$dataLoaded,       # Whether or not all this has been loaded from the database (loadFromXxx)
 		$upgraded,         # Whether the row was upgraded on load
@@ -126,14 +126,14 @@ class LocalFile extends File {
 	 * @return bool|LocalFile
 	 */
 	static function newFromKey( $sha1, $repo, $timestamp = false ) {
-		r = $repo->getSlaveDB();
+		$dbr = $repo->getSlaveDB();
 
 		$conds = array( 'img_sha1' => $sha1 );
 		if ( $timestamp ) {
-			$conds['img_timestamp'] = r->timestamp( $timestamp );
+			$conds['img_timestamp'] = $dbr->timestamp( $timestamp );
 		}
 
-		$row = r->selectRow( 'image', self::selectFields(), $conds, __METHOD__ );
+		$row = $dbr->selectRow( 'image', self::selectFields(), $conds, __METHOD__ );
 		if ( $row ) {
 			return self::newFromRow( $row, $repo );
 		} else {
@@ -157,8 +157,8 @@ class LocalFile extends File {
 			'img_major_mime',
 			'img_minor_mime',
 			'img_description',
-			'img_wiki_user',
-			'img_wiki_user_text',
+			'img_user',
+			'img_user_text',
 			'img_timestamp',
 			'img_sha1',
 		);
@@ -269,7 +269,7 @@ class LocalFile extends File {
 	 */
 	function getCacheFields( $prefix = 'img_' ) {
 		static $fields = array( 'size', 'width', 'height', 'bits', 'media_type',
-			'major_mime', 'minor_mime', 'metadata', 'timestamp', 'sha1', 'wiki_user', 'wiki_user_text', 'description' );
+			'major_mime', 'minor_mime', 'metadata', 'timestamp', 'sha1', 'user', 'user_text', 'description' );
 		static $results = array();
 
 		if ( $prefix == '' ) {
@@ -298,9 +298,9 @@ class LocalFile extends File {
 		# Unconditionally set loaded=true, we don't want the accessors constantly rechecking
 		$this->dataLoaded = true;
 
-		r = $this->repo->getMasterDB();
+		$dbr = $this->repo->getMasterDB();
 
-		$row = r->selectRow( 'image', $this->getCacheFields( 'img_' ),
+		$row = $dbr->selectRow( 'image', $this->getCacheFields( 'img_' ),
 			array( 'img_name' => $this->getName() ), $fname );
 
 		if ( $row ) {
@@ -429,7 +429,7 @@ class LocalFile extends File {
 			return;
 		}
 
-		w = $this->repo->getMasterDB();
+		$dbw = $this->repo->getMasterDB();
 		list( $major, $minor ) = self::splitMime( $this->mime );
 
 		if ( wfReadOnly() ) {
@@ -438,7 +438,7 @@ class LocalFile extends File {
 		}
 		wfDebug( __METHOD__ . ': upgrading ' . $this->getName() . " to the current schema\n" );
 
-		w->update( 'image',
+		$dbw->update( 'image',
 			array(
 				'img_size'       => $this->size, // sanity
 				'img_width'      => $this->width,
@@ -550,18 +550,18 @@ class LocalFile extends File {
 	}
 
 	/**
-	 * Returns ID or name of wiki_user who uploaded the file
+	 * Returns ID or name of user who uploaded the file
 	 *
 	 * @param $type string 'text' or 'id'
 	 * @return int|string
 	 */
-	function getwiki_user( $type = 'text' ) {
+	function getUser( $type = 'text' ) {
 		$this->load();
 
 		if ( $type == 'text' ) {
-			return $this->wiki_user_text;
+			return $this->user_text;
 		} elseif ( $type == 'id' ) {
-			return $this->wiki_user;
+			return $this->user;
 		}
 	}
 
@@ -836,19 +836,19 @@ class LocalFile extends File {
 	 * @return array
 	 */
 	function getHistory( $limit = null, $start = null, $end = null, $inc = true ) {
-		r = $this->repo->getSlaveDB();
+		$dbr = $this->repo->getSlaveDB();
 		$tables = array( 'oldimage' );
 		$fields = OldLocalFile::selectFields();
 		$conds = $opts = $join_conds = array();
 		$eq = $inc ? '=' : '';
-		$conds[] = "oi_name = " . r->addQuotes( $this->title->getDBkey() );
+		$conds[] = "oi_name = " . $dbr->addQuotes( $this->title->getDBkey() );
 
 		if ( $start ) {
-			$conds[] = "oi_timestamp <$eq " . r->addQuotes( r->timestamp( $start ) );
+			$conds[] = "oi_timestamp <$eq " . $dbr->addQuotes( $dbr->timestamp( $start ) );
 		}
 
 		if ( $end ) {
-			$conds[] = "oi_timestamp >$eq " . r->addQuotes( r->timestamp( $end ) );
+			$conds[] = "oi_timestamp >$eq " . $dbr->addQuotes( $dbr->timestamp( $end ) );
 		}
 
 		if ( $limit ) {
@@ -863,12 +863,12 @@ class LocalFile extends File {
 		wfRunHooks( 'LocalFile::getHistory', array( &$this, &$tables, &$fields,
 			&$conds, &$opts, &$join_conds ) );
 
-		$res = r->select( $tables, $fields, $conds, __METHOD__, $opts, $join_conds );
+		$res = $dbr->select( $tables, $fields, $conds, __METHOD__, $opts, $join_conds );
 		$r = array();
 
 		foreach ( $res as $row ) {
 			if ( $this->repo->oldFileFromRowFactory ) {
-				$r[] = call_wiki_user_func( $this->repo->oldFileFromRowFactory, $row, $this->repo );
+				$r[] = call_user_func( $this->repo->oldFileFromRowFactory, $row, $this->repo );
 			} else {
 				$r[] = OldLocalFile::newFromRow( $row, $this->repo );
 			}
@@ -894,10 +894,10 @@ class LocalFile extends File {
 		# Polymorphic function name to distinguish foreign and local fetches
 		$fname = get_class( $this ) . '::' . __FUNCTION__;
 
-		r = $this->repo->getSlaveDB();
+		$dbr = $this->repo->getSlaveDB();
 
 		if ( $this->historyLine == 0 ) {// called for the first time, return line from cur
-			$this->historyRes = r->select( 'image',
+			$this->historyRes = $dbr->select( 'image',
 				array(
 					'*',
 					"'' AS oi_archive_name",
@@ -908,12 +908,12 @@ class LocalFile extends File {
 				$fname
 			);
 
-			if ( 0 == r->numRows( $this->historyRes ) ) {
+			if ( 0 == $dbr->numRows( $this->historyRes ) ) {
 				$this->historyRes = null;
 				return false;
 			}
 		} elseif ( $this->historyLine == 1 ) {
-			$this->historyRes = r->select( 'oldimage', '*',
+			$this->historyRes = $dbr->select( 'oldimage', '*',
 				array( 'oi_name' => $this->title->getDBkey() ),
 				$fname,
 				array( 'ORDER BY' => 'oi_timestamp DESC' )
@@ -921,7 +921,7 @@ class LocalFile extends File {
 		}
 		$this->historyLine ++;
 
-		return r->fetchObject( $this->historyRes );
+		return $dbr->fetchObject( $this->historyRes );
 	}
 
 	/**
@@ -958,12 +958,12 @@ class LocalFile extends File {
 	 *               upload time when uploading virtual URLs for which the file info
 	 *               is already known
 	 * @param $timestamp String|bool: timestamp for img_timestamp, or false to use the current time
-	 * @param $wiki_user wiki_user|null: wiki_user object or null to use $wgwiki_user
+	 * @param $user User|null: User object or null to use $wgUser
 	 *
 	 * @return FileRepoStatus object. On success, the value member contains the
 	 *     archive name, or an empty string if it was a new file.
 	 */
-	function upload( $srcPath, $comment, $pageText, $flags = 0, $props = false, $timestamp = false, $wiki_user = null ) {
+	function upload( $srcPath, $comment, $pageText, $flags = 0, $props = false, $timestamp = false, $user = null ) {
 		global $wgContLang;
 
 		if ( $this->getRepo()->getReadOnlyReason() !== false ) {
@@ -980,7 +980,7 @@ class LocalFile extends File {
 			# Essentially we are displacing any existing current file and saving
 			# a new current file at the old location. If just the first succeeded,
 			# we still need to displace the current DB entry and put in a new one.
-			if ( !$this->recordUpload2( $status->value, $comment, $pageText, $props, $timestamp, $wiki_user ) ) {
+			if ( !$this->recordUpload2( $status->value, $comment, $pageText, $props, $timestamp, $user ) ) {
 				$status->fatal( 'filenotfound', $srcPath );
 			}
 		}
@@ -1011,8 +1011,8 @@ class LocalFile extends File {
 		}
 
 		if ( $watch ) {
-			global $wgwiki_user;
-			$wgwiki_user->addWatch( $this->getTitle() );
+			global $wgUser;
+			$wgUser->addWatch( $this->getTitle() );
 		}
 		return true;
 	}
@@ -1024,21 +1024,21 @@ class LocalFile extends File {
 	 * @param $pageText string
 	 * @param $props bool|array
 	 * @param $timestamp bool|string
-	 * @param $wiki_user null|wiki_user
+	 * @param $user null|User
 	 * @return bool
 	 */
 	function recordUpload2(
-		$oldver, $comment, $pageText, $props = false, $timestamp = false, $wiki_user = null
+		$oldver, $comment, $pageText, $props = false, $timestamp = false, $user = null
 	) {
 		wfProfileIn( __METHOD__ );
 
-		if ( is_null( $wiki_user ) ) {
-			global $wgwiki_user;
-			$wiki_user = $wgwiki_user;
+		if ( is_null( $user ) ) {
+			global $wgUser;
+			$user = $wgUser;
 		}
 
-		w = $this->repo->getMasterDB();
-		w->begin( __METHOD__ );
+		$dbw = $this->repo->getMasterDB();
+		$dbw->begin( __METHOD__ );
 
 		if ( !$props ) {
 			wfProfileIn( __METHOD__ . '-getProps' );
@@ -1047,12 +1047,12 @@ class LocalFile extends File {
 		}
 
 		if ( $timestamp === false ) {
-			$timestamp = w->timestamp();
+			$timestamp = $dbw->timestamp();
 		}
 
 		$props['description'] = $comment;
-		$props['wiki_user'] = $wiki_user->getId();
-		$props['wiki_user_text'] = $wiki_user->getName();
+		$props['user'] = $user->getId();
+		$props['user_text'] = $user->getName();
 		$props['timestamp'] = wfTimestamp( TS_MW, $timestamp ); // DB -> TS_MW
 		$this->setProps( $props );
 
@@ -1068,7 +1068,7 @@ class LocalFile extends File {
 		# Test to see if the row exists using INSERT IGNORE
 		# This avoids race conditions by locking the row until the commit, and also
 		# doesn't deadlock. SELECT FOR UPDATE causes a deadlock for every race condition.
-		w->insert( 'image',
+		$dbw->insert( 'image',
 			array(
 				'img_name'        => $this->getName(),
 				'img_size'        => $this->size,
@@ -1080,35 +1080,35 @@ class LocalFile extends File {
 				'img_minor_mime'  => $this->minor_mime,
 				'img_timestamp'   => $timestamp,
 				'img_description' => $comment,
-				'img_wiki_user'        => $wiki_user->getId(),
-				'img_wiki_user_text'   => $wiki_user->getName(),
+				'img_user'        => $user->getId(),
+				'img_user_text'   => $user->getName(),
 				'img_metadata'    => $this->metadata,
 				'img_sha1'        => $this->sha1
 			),
 			__METHOD__,
 			'IGNORE'
 		);
-		if ( w->affectedRows() == 0 ) {
+		if ( $dbw->affectedRows() == 0 ) {
 			# (bug 34993) Note: $oldver can be empty here, if the previous
 			# version of the file was broken. Allow registration of the new
 			# version to continue anyway, because that's better than having
-			# an image that's not fixable by wiki_user operations.
+			# an image that's not fixable by user operations.
 
 			$reupload = true;
 			# Collision, this is an update of a file
 			# Insert previous contents into oldimage
-			w->insertSelect( 'oldimage', 'image',
+			$dbw->insertSelect( 'oldimage', 'image',
 				array(
 					'oi_name'         => 'img_name',
-					'oi_archive_name' => w->addQuotes( $oldver ),
+					'oi_archive_name' => $dbw->addQuotes( $oldver ),
 					'oi_size'         => 'img_size',
 					'oi_width'        => 'img_width',
 					'oi_height'       => 'img_height',
 					'oi_bits'         => 'img_bits',
 					'oi_timestamp'    => 'img_timestamp',
 					'oi_description'  => 'img_description',
-					'oi_wiki_user'         => 'img_wiki_user',
-					'oi_wiki_user_text'    => 'img_wiki_user_text',
+					'oi_user'         => 'img_user',
+					'oi_user_text'    => 'img_user_text',
 					'oi_metadata'     => 'img_metadata',
 					'oi_media_type'   => 'img_media_type',
 					'oi_major_mime'   => 'img_major_mime',
@@ -1120,7 +1120,7 @@ class LocalFile extends File {
 			);
 
 			# Update the current image row
-			w->update( 'image',
+			$dbw->update( 'image',
 				array( /* SET */
 					'img_size'        => $this->size,
 					'img_width'       => intval( $this->width ),
@@ -1131,8 +1131,8 @@ class LocalFile extends File {
 					'img_minor_mime'  => $this->minor_mime,
 					'img_timestamp'   => $timestamp,
 					'img_description' => $comment,
-					'img_wiki_user'        => $wiki_user->getId(),
-					'img_wiki_user_text'   => $wiki_user->getName(),
+					'img_user'        => $user->getId(),
+					'img_user_text'   => $user->getName(),
 					'img_metadata'    => $this->metadata,
 					'img_sha1'        => $this->sha1
 				),
@@ -1151,7 +1151,7 @@ class LocalFile extends File {
 		# Add the log entry
 		$log = new LogPage( 'upload' );
 		$action = $reupload ? 'overwrite' : 'upload';
-		$logId = $log->addEntry( $action, $descTitle, $comment, array(), $wiki_user );
+		$logId = $log->addEntry( $action, $descTitle, $comment, array(), $user );
 
 		wfProfileIn( __METHOD__ . '-edit' );
 		$exists = $descTitle->exists();
@@ -1160,16 +1160,16 @@ class LocalFile extends File {
 			# Create a null revision
 			$latest = $descTitle->getLatestRevID();
 			$nullRevision = Revision::newNullRevision(
-				w,
+				$dbw,
 				$descTitle->getArticleID(),
 				$log->getRcComment(),
 				false
 			);
 			if (!is_null($nullRevision)) {
-				$nullRevision->insertOn( w );
+				$nullRevision->insertOn( $dbw );
 
-				wfRunHooks( 'NewRevisionFromEditComplete', array( $wikiPage, $nullRevision, $latest, $wiki_user ) );
-				$wikiPage->updateRevisionOn( w, $nullRevision );
+				wfRunHooks( 'NewRevisionFromEditComplete', array( $wikiPage, $nullRevision, $latest, $user ) );
+				$wikiPage->updateRevisionOn( $dbw, $nullRevision );
 			}
 		}
 
@@ -1177,7 +1177,7 @@ class LocalFile extends File {
 		# The most important thing is that files don't get lost, especially archives
 		# NOTE: once we have support for nested transactions, the commit may be moved
 		#       to after $wikiPage->doEdit has been called.
-		w->commit( __METHOD__ );
+		$dbw->commit( __METHOD__ );
 
 		if ( $exists ) {
 			# Invalidate the cache for the description page
@@ -1187,16 +1187,16 @@ class LocalFile extends File {
 			# New file; create the description page.
 			# There's already a log entry, so don't make a second RC entry
 			# Squid and file cache for the description page are purged by doEdit.
-			$status = $wikiPage->doEdit( $pageText, $comment, EDIT_NEW | EDIT_SUPPRESS_RC, false, $wiki_user );
+			$status = $wikiPage->doEdit( $pageText, $comment, EDIT_NEW | EDIT_SUPPRESS_RC, false, $user );
 
 			if ( isset( $status->value['revision'] ) ) { // XXX; doEdit() uses a transaction
-				w->begin();
-				w->update( 'logging',
+				$dbw->begin();
+				$dbw->update( 'logging',
 					array( 'log_page' => $status->value['revision']->getPage() ),
 					array( 'log_id' => $logId ),
 					__METHOD__
 				);
-				w->commit(); // commit before anything bad can happen
+				$dbw->commit(); // commit before anything bad can happen
 			}
 		}
 		wfProfileOut( __METHOD__ . '-edit' );
@@ -1484,12 +1484,12 @@ class LocalFile extends File {
 	/**
 	 * @return string
 	 */
-	function getDescription( $audience = self::FOR_PUBLIC, wiki_user $wiki_user = null ) {
+	function getDescription( $audience = self::FOR_PUBLIC, User $user = null ) {
 		$this->load();
 		if ( $audience == self::FOR_PUBLIC && $this->isDeleted( self::DELETED_COMMENT ) ) {
 			return '';
 		} elseif ( $audience == self::FOR_THIS_USER
-			&& !$this->wiki_userCan( self::DELETED_COMMENT, $wiki_user ) )
+			&& !$this->userCan( self::DELETED_COMMENT, $user ) )
 		{
 			return '';
 		} else {
@@ -1516,8 +1516,8 @@ class LocalFile extends File {
 
 			$this->sha1 = $this->repo->getFileSha1( $this->getPath() );
 			if ( !wfReadOnly() && strval( $this->sha1 ) != '' ) {
-				w = $this->repo->getMasterDB();
-				w->update( 'image',
+				$dbw = $this->repo->getMasterDB();
+				$dbw->update( 'image',
 					array( 'img_sha1' => $this->sha1 ),
 					array( 'img_name' => $this->getName() ),
 					__METHOD__ );
@@ -1544,14 +1544,14 @@ class LocalFile extends File {
 	 * @return boolean True if the image exists, false otherwise
 	 */
 	function lock() {
-		w = $this->repo->getMasterDB();
+		$dbw = $this->repo->getMasterDB();
 
 		if ( !$this->locked ) {
-			w->begin( __METHOD__ );
+			$dbw->begin( __METHOD__ );
 			$this->locked++;
 		}
 
-		return w->selectField( 'image', '1',
+		return $dbw->selectField( 'image', '1',
 			array( 'img_name' => $this->getName() ), __METHOD__, array( 'FOR UPDATE' ) );
 	}
 
@@ -1563,8 +1563,8 @@ class LocalFile extends File {
 		if ( $this->locked ) {
 			--$this->locked;
 			if ( !$this->locked ) {
-				w = $this->repo->getMasterDB();
-				w->commit( __METHOD__ );
+				$dbw = $this->repo->getMasterDB();
+				$dbw->commit( __METHOD__ );
 			}
 		}
 	}
@@ -1574,8 +1574,8 @@ class LocalFile extends File {
 	 */
 	function unlockAndRollback() {
 		$this->locked = false;
-		w = $this->repo->getMasterDB();
-		w->rollback( __METHOD__ );
+		$dbw = $this->repo->getMasterDB();
+		$dbw->rollback( __METHOD__ );
 	}
 
 	/**
@@ -1634,8 +1634,8 @@ class LocalFileDeleteBatch {
 	function addOlds() {
 		$archiveNames = array();
 
-		w = $this->file->repo->getMasterDB();
-		$result = w->select( 'oldimage',
+		$dbw = $this->file->repo->getMasterDB();
+		$result = $dbw->select( 'oldimage',
 			array( 'oi_archive_name' ),
 			array( 'oi_name' => $this->file->getName() ),
 			__METHOD__
@@ -1677,11 +1677,11 @@ class LocalFileDeleteBatch {
 		}
 
 		if ( count( $oldRels ) ) {
-			w = $this->file->repo->getMasterDB();
-			$res = w->select(
+			$dbw = $this->file->repo->getMasterDB();
+			$res = $dbw->select(
 				'oldimage',
 				array( 'oi_archive_name', 'oi_sha1' ),
-				'oi_archive_name IN (' . w->makeList( array_keys( $oldRels ) ) . ')',
+				'oi_archive_name IN (' . $dbw->makeList( array_keys( $oldRels ) ) . ')',
 				__METHOD__
 			);
 
@@ -1693,7 +1693,7 @@ class LocalFileDeleteBatch {
 
 					if ( $props['fileExists'] ) {
 						// Upgrade the oldimage row
-						w->update( 'oldimage',
+						$dbw->update( 'oldimage',
 							array( 'oi_sha1' => $props['sha1'] ),
 							array( 'oi_name' => $this->file->getName(), 'oi_archive_name' => $row->oi_archive_name ),
 							__METHOD__ );
@@ -1724,16 +1724,16 @@ class LocalFileDeleteBatch {
 	}
 
 	function doDBInserts() {
-		global $wgwiki_user;
+		global $wgUser;
 
-		w = $this->file->repo->getMasterDB();
-		$encTimestamp = w->addQuotes( w->timestamp() );
-		$encwiki_userId = w->addQuotes( $wgwiki_user->getId() );
-		$encReason = w->addQuotes( $this->reason );
-		$encGroup = w->addQuotes( 'deleted' );
+		$dbw = $this->file->repo->getMasterDB();
+		$encTimestamp = $dbw->addQuotes( $dbw->timestamp() );
+		$encUserId = $dbw->addQuotes( $wgUser->getId() );
+		$encReason = $dbw->addQuotes( $this->reason );
+		$encGroup = $dbw->addQuotes( 'deleted' );
 		$ext = $this->file->getExtension();
 		$dotExt = $ext === '' ? '' : ".$ext";
-		$encExt = w->addQuotes( $dotExt );
+		$encExt = $dbw->addQuotes( $dotExt );
 		list( $oldRels, $deleteCurrent ) = $this->getOldRels();
 
 		// Bitfields to further suppress the content
@@ -1749,13 +1749,13 @@ class LocalFileDeleteBatch {
 		}
 
 		if ( $deleteCurrent ) {
-			$concat = w->buildConcat( array( "img_sha1", $encExt ) );
+			$concat = $dbw->buildConcat( array( "img_sha1", $encExt ) );
 			$where = array( 'img_name' => $this->file->getName() );
-			w->insertSelect( 'filearchive', 'image',
+			$dbw->insertSelect( 'filearchive', 'image',
 				array(
 					'fa_storage_group' => $encGroup,
 					'fa_storage_key'   => "CASE WHEN img_sha1='' THEN '' ELSE $concat END",
-					'fa_deleted_wiki_user'      => $encwiki_userId,
+					'fa_deleted_user'      => $encUserId,
 					'fa_deleted_timestamp' => $encTimestamp,
 					'fa_deleted_reason'    => $encReason,
 					'fa_deleted'		   => $this->suppress ? $bitfield : 0,
@@ -1771,22 +1771,22 @@ class LocalFileDeleteBatch {
 					'fa_major_mime'   => 'img_major_mime',
 					'fa_minor_mime'   => 'img_minor_mime',
 					'fa_description'  => 'img_description',
-					'fa_wiki_user'         => 'img_wiki_user',
-					'fa_wiki_user_text'    => 'img_wiki_user_text',
+					'fa_user'         => 'img_user',
+					'fa_user_text'    => 'img_user_text',
 					'fa_timestamp'    => 'img_timestamp'
 				), $where, __METHOD__ );
 		}
 
 		if ( count( $oldRels ) ) {
-			$concat = w->buildConcat( array( "oi_sha1", $encExt ) );
+			$concat = $dbw->buildConcat( array( "oi_sha1", $encExt ) );
 			$where = array(
 				'oi_name' => $this->file->getName(),
-				'oi_archive_name IN (' . w->makeList( array_keys( $oldRels ) ) . ')' );
-			w->insertSelect( 'filearchive', 'oldimage',
+				'oi_archive_name IN (' . $dbw->makeList( array_keys( $oldRels ) ) . ')' );
+			$dbw->insertSelect( 'filearchive', 'oldimage',
 				array(
 					'fa_storage_group' => $encGroup,
 					'fa_storage_key'   => "CASE WHEN oi_sha1='' THEN '' ELSE $concat END",
-					'fa_deleted_wiki_user'      => $encwiki_userId,
+					'fa_deleted_user'      => $encUserId,
 					'fa_deleted_timestamp' => $encTimestamp,
 					'fa_deleted_reason'    => $encReason,
 					'fa_deleted'           => $this->suppress ? $bitfield : 'oi_deleted',
@@ -1802,19 +1802,19 @@ class LocalFileDeleteBatch {
 					'fa_major_mime'   => 'oi_major_mime',
 					'fa_minor_mime'   => 'oi_minor_mime',
 					'fa_description'  => 'oi_description',
-					'fa_wiki_user'         => 'oi_wiki_user',
-					'fa_wiki_user_text'    => 'oi_wiki_user_text',
+					'fa_user'         => 'oi_user',
+					'fa_user_text'    => 'oi_user_text',
 					'fa_timestamp'    => 'oi_timestamp',
 				), $where, __METHOD__ );
 		}
 	}
 
 	function doDBDeletes() {
-		w = $this->file->repo->getMasterDB();
+		$dbw = $this->file->repo->getMasterDB();
 		list( $oldRels, $deleteCurrent ) = $this->getOldRels();
 
 		if ( count( $oldRels ) ) {
-			w->delete( 'oldimage',
+			$dbw->delete( 'oldimage',
 				array(
 					'oi_name' => $this->file->getName(),
 					'oi_archive_name' => array_keys( $oldRels )
@@ -1822,7 +1822,7 @@ class LocalFileDeleteBatch {
 		}
 
 		if ( $deleteCurrent ) {
-			w->delete( 'image', array( 'img_name' => $this->file->getName() ), __METHOD__ );
+			$dbw->delete( 'image', array( 'img_name' => $this->file->getName() ), __METHOD__ );
 		}
 	}
 
@@ -1837,14 +1837,14 @@ class LocalFileDeleteBatch {
 		// Leave private files alone
 		$privateFiles = array();
 		list( $oldRels, $deleteCurrent ) = $this->getOldRels();
-		w = $this->file->repo->getMasterDB();
+		$dbw = $this->file->repo->getMasterDB();
 
 		if ( !empty( $oldRels ) ) {
-			$res = w->select( 'oldimage',
+			$res = $dbw->select( 'oldimage',
 				array( 'oi_archive_name' ),
 				array( 'oi_name' => $this->file->getName(),
-					'oi_archive_name IN (' . w->makeList( array_keys( $oldRels ) ) . ')',
-					w->bitAnd( 'oi_deleted', File::DELETED_FILE ) => File::DELETED_FILE ),
+					'oi_archive_name IN (' . $dbw->makeList( array_keys( $oldRels ) ) . ')',
+					$dbw->bitAnd( 'oi_deleted', File::DELETED_FILE ) => File::DELETED_FILE ),
 				__METHOD__ );
 
 			foreach ( $res as $row ) {
@@ -1993,7 +1993,7 @@ class LocalFileRestoreBatch {
 		}
 
 		$exists = $this->file->lock();
-		w = $this->file->repo->getMasterDB();
+		$dbw = $this->file->repo->getMasterDB();
 		$status = $this->file->repo->newGood();
 
 		// Fetch all or selected archived revisions for the file,
@@ -2001,10 +2001,10 @@ class LocalFileRestoreBatch {
 		$conditions = array( 'fa_name' => $this->file->getName() );
 
 		if ( !$this->all ) {
-			$conditions[] = 'fa_id IN (' . w->makeList( $this->ids ) . ')';
+			$conditions[] = 'fa_id IN (' . $dbw->makeList( $this->ids ) . ')';
 		}
 
-		$result = w->select( 'filearchive', '*',
+		$result = $dbw->select( 'filearchive', '*',
 			$conditions,
 			__METHOD__,
 			array( 'ORDER BY' => 'fa_timestamp DESC' )
@@ -2074,8 +2074,8 @@ class LocalFileRestoreBatch {
 					'img_major_mime'  => $props['major_mime'],
 					'img_minor_mime'  => $props['minor_mime'],
 					'img_description' => $row->fa_description,
-					'img_wiki_user'        => $row->fa_wiki_user,
-					'img_wiki_user_text'   => $row->fa_wiki_user_text,
+					'img_user'        => $row->fa_user,
+					'img_user_text'   => $row->fa_user_text,
 					'img_timestamp'   => $row->fa_timestamp,
 					'img_sha1'        => $sha1
 				);
@@ -2110,8 +2110,8 @@ class LocalFileRestoreBatch {
 					'oi_height'       => $row->fa_height,
 					'oi_bits'         => $row->fa_bits,
 					'oi_description'  => $row->fa_description,
-					'oi_wiki_user'         => $row->fa_wiki_user,
-					'oi_wiki_user_text'    => $row->fa_wiki_user_text,
+					'oi_user'         => $row->fa_user,
+					'oi_user_text'    => $row->fa_user_text,
 					'oi_timestamp'    => $row->fa_timestamp,
 					'oi_metadata'     => $props['metadata'],
 					'oi_media_type'   => $props['media_type'],
@@ -2168,16 +2168,16 @@ class LocalFileRestoreBatch {
 		// public zone.
 		// This is not ideal, which is why it's important to lock the image row.
 		if ( $insertCurrent ) {
-			w->insert( 'image', $insertCurrent, __METHOD__ );
+			$dbw->insert( 'image', $insertCurrent, __METHOD__ );
 		}
 
 		if ( $insertBatch ) {
-			w->insert( 'oldimage', $insertBatch, __METHOD__ );
+			$dbw->insert( 'oldimage', $insertBatch, __METHOD__ );
 		}
 
 		if ( $deleteIds ) {
-			w->delete( 'filearchive',
-				array( 'fa_id IN (' . w->makeList( $deleteIds ) . ')' ),
+			$dbw->delete( 'filearchive',
+				array( 'fa_id IN (' . $dbw->makeList( $deleteIds ) . ')' ),
 				__METHOD__ );
 		}
 
@@ -2310,7 +2310,7 @@ class LocalFileMoveBatch {
 	/**
 	 * @var DatabaseBase
 	 */
-	var ;
+	var $db;
 
 	/**
 	 * @param File $file
@@ -2442,17 +2442,17 @@ class LocalFileMoveBatch {
 	function doDBUpdates() {
 		$repo = $this->file->repo;
 		$status = $repo->newGood();
-		w = $this->db;
+		$dbw = $this->db;
 
 		// Update current image
-		w->update(
+		$dbw->update(
 			'image',
 			array( 'img_name' => $this->newName ),
 			array( 'img_name' => $this->oldName ),
 			__METHOD__
 		);
 
-		if ( w->affectedRows() ) {
+		if ( $dbw->affectedRows() ) {
 			$status->successCount++;
 		} else {
 			$status->failCount++;
@@ -2461,18 +2461,18 @@ class LocalFileMoveBatch {
 		}
 
 		// Update old images
-		w->update(
+		$dbw->update(
 			'oldimage',
 			array(
 				'oi_name' => $this->newName,
-				'oi_archive_name = ' . w->strreplace( 'oi_archive_name',
-					w->addQuotes( $this->oldName ), w->addQuotes( $this->newName ) ),
+				'oi_archive_name = ' . $dbw->strreplace( 'oi_archive_name',
+					$dbw->addQuotes( $this->oldName ), $dbw->addQuotes( $this->newName ) ),
 			),
 			array( 'oi_name' => $this->oldName ),
 			__METHOD__
 		);
 
-		$affected = w->affectedRows();
+		$affected = $dbw->affectedRows();
 		$total = $this->oldCount;
 		$status->successCount += $affected;
 		// Bug 34934: $total is based on files that actually exist.

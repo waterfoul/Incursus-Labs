@@ -25,11 +25,11 @@
  */
 
 /**
- * Look for duplicate wiki_user table entries and optionally prune them.
+ * Look for duplicate user table entries and optionally prune them.
  * @ingroup Maintenance
  */
-class wiki_userDupes {
-	var ;
+class UserDupes {
+	var $db;
 	var $reassigned;
 	var $trimmed;
 	var $failed;
@@ -45,18 +45,18 @@ class wiki_userDupes {
 	 * @param $str String Text to print
 	 */
 	private function out( $str ) {
-		call_wiki_user_func( $this->outputCallback, $str );
+		call_user_func( $this->outputCallback, $str );
 	}
 
 	/**
-	 * Check if this database's wiki_user table has already had a unique
-	 * wiki_user_name index applied.
+	 * Check if this database's user table has already had a unique
+	 * user_name index applied.
 	 * @return bool
 	 */
 	function hasUniqueIndex() {
-		$info = $this->db->indexInfo( 'wiki_user', 'wiki_user_name', __METHOD__ );
+		$info = $this->db->indexInfo( 'user', 'user_name', __METHOD__ );
 		if ( !$info ) {
-			$this->out( "WARNING: doesn't seem to have wiki_user_name index at all!\n" );
+			$this->out( "WARNING: doesn't seem to have user_name index at all!\n" );
 			return false;
 		}
 
@@ -67,9 +67,9 @@ class wiki_userDupes {
 	}
 
 	/**
-	 * Checks the database for duplicate wiki_user account records
+	 * Checks the database for duplicate user account records
 	 * and remove them in preparation for application of a unique
-	 * index on the wiki_user_name field. Returns true if the table is
+	 * index on the user_name field. Returns true if the table is
 	 * clean or if duplicates have been resolved automatically.
 	 *
 	 * May return false if there are unresolvable problems.
@@ -82,9 +82,9 @@ class wiki_userDupes {
 	}
 
 	/**
-	 * Checks the database for duplicate wiki_user account records
+	 * Checks the database for duplicate user account records
 	 * in preparation for application of a unique index on the
-	 * wiki_user_name field. Returns true if the table is clean or
+	 * user_name field. Returns true if the table is clean or
 	 * if duplicates can be resolved automatically.
 	 *
 	 * Returns false if there are duplicates and resolution was
@@ -97,7 +97,7 @@ class wiki_userDupes {
 	 */
 	function checkDupes( $doDelete = false ) {
 		if ( $this->hasUniqueIndex() ) {
-			echo wfWikiID() . " already has a unique index on its wiki_user table.\n";
+			echo wfWikiID() . " already has a unique index on its user table.\n";
 			return true;
 		}
 
@@ -129,9 +129,9 @@ class wiki_userDupes {
 
 		if ( $this->trimmed > 0 ) {
 			if ( $doDelete ) {
-				$this->out( "$this->trimmed duplicate wiki_user records were deleted from " . wfWikiID() . ".\n" );
+				$this->out( "$this->trimmed duplicate user records were deleted from " . wfWikiID() . ".\n" );
 			} else {
-				$this->out( "$this->trimmed duplicate wiki_user accounts were found on " . wfWikiID() . " which can be removed safely.\n" );
+				$this->out( "$this->trimmed duplicate user accounts were found on " . wfWikiID() . " which can be removed safely.\n" );
 			}
 		}
 
@@ -141,7 +141,7 @@ class wiki_userDupes {
 		}
 
 		if ( $this->trimmed == 0 || $doDelete ) {
-			$this->out( "It is now safe to apply the unique index on wiki_user_name.\n" );
+			$this->out( "It is now safe to apply the unique index on user_name.\n" );
 			return true;
 		} else {
 			$this->out( "Run this script again with the --fix option to automatically delete them.\n" );
@@ -155,9 +155,9 @@ class wiki_userDupes {
 	 */
 	function lock() {
 		if ( $this->newSchema() ) {
-			$set = array( 'wiki_user', 'revision' );
+			$set = array( 'user', 'revision' );
 		} else {
-			$set = array( 'wiki_user', 'cur', 'old' );
+			$set = array( 'user', 'cur', 'old' );
 		}
 		$names = array_map( array( $this, 'lockTable' ), $set );
 		$tables = implode( ',', $names );
@@ -185,27 +185,27 @@ class wiki_userDupes {
 	}
 
 	/**
-	 * Grab wiki_usernames for which multiple records are present in the database.
+	 * Grab usernames for which multiple records are present in the database.
 	 * @return array
 	 * @access private
 	 */
 	function getDupes() {
-		$wiki_user = $this->db->tableName( 'wiki_user' );
+		$user = $this->db->tableName( 'user' );
 		$result = $this->db->query(
-			 "SELECT wiki_user_name,COUNT(*) AS n
-				FROM $wiki_user
-			GROUP BY wiki_user_name
+			 "SELECT user_name,COUNT(*) AS n
+				FROM $user
+			GROUP BY user_name
 			  HAVING n > 1", __METHOD__ );
 
 		$list = array();
 		foreach ( $result as $row ) {
-			$list[] = $row->wiki_user_name;
+			$list[] = $row->user_name;
 		}
 		return $list;
 	}
 
 	/**
-	 * Examine wiki_user records for the given name. Try to see which record
+	 * Examine user records for the given name. Try to see which record
 	 * will be the one that actually gets used, then check remaining records
 	 * for edits. If the dupes have no edits, we can safely remove them.
 	 * @param $name string
@@ -213,17 +213,17 @@ class wiki_userDupes {
 	 * @access private
 	 */
 	function examine( $name, $doDelete ) {
-		$result = $this->db->select( 'wiki_user',
-			array( 'wiki_user_id' ),
-			array( 'wiki_user_name' => $name ),
+		$result = $this->db->select( 'user',
+			array( 'user_id' ),
+			array( 'user_name' => $name ),
 			__METHOD__ );
 
 		$firstRow = $this->db->fetchObject( $result );
-		$firstId  = $firstRow->wiki_user_id;
-		$this->out( "Record that will be used for '$name' is wiki_user_id=$firstId\n" );
+		$firstId  = $firstRow->user_id;
+		$this->out( "Record that will be used for '$name' is user_id=$firstId\n" );
 
 		foreach ( $result as $row ) {
-			$dupeId = $row->wiki_user_id;
+			$dupeId = $row->user_id;
 			$this->out( "... dupe id $dupeId: " );
 			$edits = $this->editCount( $dupeId );
 			if ( $edits > 0 ) {
@@ -236,7 +236,7 @@ class wiki_userDupes {
 						$this->out( "confirmed cleaned. " );
 					} else {
 						$this->failed++;
-						$this->out( "WARNING! $newEdits remaining edits for $dupeId; NOT deleting wiki_user.\n" );
+						$this->out( "WARNING! $newEdits remaining edits for $dupeId; NOT deleting user.\n" );
 						continue;
 					}
 				} else {
@@ -254,19 +254,19 @@ class wiki_userDupes {
 	}
 
 	/**
-	 * Count the number of edits attributed to this wiki_user.
+	 * Count the number of edits attributed to this user.
 	 * Does not currently check log table or other things
 	 * where it might show up...
-	 * @param $wiki_userid int
+	 * @param $userid int
 	 * @return int
 	 * @access private
 	 */
-	function editCount( $wiki_userid ) {
+	function editCount( $userid ) {
 		if ( $this->newSchema() ) {
-			return $this->editCountOn( 'revision', 'rev_wiki_user', $wiki_userid );
+			return $this->editCountOn( 'revision', 'rev_user', $userid );
 		} else {
-			return $this->editCountOn( 'cur', 'cur_wiki_user', $wiki_userid ) +
-				$this->editCountOn( 'old', 'old_wiki_user', $wiki_userid );
+			return $this->editCountOn( 'cur', 'cur_user', $userid ) +
+				$this->editCountOn( 'old', 'old_user', $userid );
 		}
 	}
 
@@ -274,15 +274,15 @@ class wiki_userDupes {
 	 * Count the number of hits on a given table for this account.
 	 * @param $table string
 	 * @param $field string
-	 * @param $wiki_userid int
+	 * @param $userid int
 	 * @return int
 	 * @access private
 	 */
-	function editCountOn( $table, $field, $wiki_userid ) {
+	function editCountOn( $table, $field, $userid ) {
 		return intval( $this->db->selectField(
 			$table,
 			'COUNT(*)',
-			array( $field => $wiki_userid ),
+			array( $field => $userid ),
 			__METHOD__ ) );
 	}
 
@@ -293,8 +293,8 @@ class wiki_userDupes {
 	 */
 	function reassignEdits( $from, $to ) {
 		$set = $this->newSchema()
-			? array( 'revision' => 'rev_wiki_user' )
-			: array( 'cur' => 'cur_wiki_user', 'old' => 'old_wiki_user' );
+			? array( 'revision' => 'rev_user' )
+			: array( 'cur' => 'cur_user', 'old' => 'old_user' );
 		foreach ( $set as $table => $field ) {
 			$this->reassignEditsOn( $table, $field, $from, $to );
 		}
@@ -317,13 +317,13 @@ class wiki_userDupes {
 	}
 
 	/**
-	 * Remove a wiki_user account line.
-	 * @param $wiki_userid int
+	 * Remove a user account line.
+	 * @param $userid int
 	 * @access private
 	 */
-	function trimAccount( $wiki_userid ) {
+	function trimAccount( $userid ) {
 		$this->out( "deleting..." );
-		$this->db->delete( 'wiki_user', array( 'wiki_user_id' => $wiki_userid ), __METHOD__ );
+		$this->db->delete( 'user', array( 'user_id' => $userid ), __METHOD__ );
 		$this->out( " ok" );
 	}
 

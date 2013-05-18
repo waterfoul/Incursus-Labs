@@ -78,9 +78,9 @@ class LinkCache {
 	 * @return mixed
 	 */
 	public function getGoodLinkFieldObj( $title, $field ) {
-		key = $title->getPrefixedDbKey();
-		if ( array_key_exists( key, $this->mGoodLinkFields ) ) {
-			return $this->mGoodLinkFields[key][$field];
+		$dbkey = $title->getPrefixedDbKey();
+		if ( array_key_exists( $dbkey, $this->mGoodLinkFields ) ) {
+			return $this->mGoodLinkFields[$dbkey][$field];
 		} else {
 			return null;
 		}
@@ -104,9 +104,9 @@ class LinkCache {
 	 * @param $revision Integer: latest revision's ID
 	 */
 	public function addGoodLinkObj( $id, $title, $len = -1, $redir = null, $revision = false ) {
-		key = $title->getPrefixedDbKey();
-		$this->mGoodLinks[key] = intval( $id );
-		$this->mGoodLinkFields[key] = array(
+		$dbkey = $title->getPrefixedDbKey();
+		$this->mGoodLinks[$dbkey] = intval( $id );
+		$this->mGoodLinkFields[$dbkey] = array(
 			'length' => intval( $len ),
 			'redirect' => intval( $redir ),
 			'revision' => intval( $revision ) );
@@ -120,9 +120,9 @@ class LinkCache {
 	 *  page_latest
 	 */
 	public function addGoodLinkObjFromRow( $title, $row ) {
-		key = $title->getPrefixedDbKey();
-		$this->mGoodLinks[key] = intval( $row->page_id );
-		$this->mGoodLinkFields[key] = array(
+		$dbkey = $title->getPrefixedDbKey();
+		$this->mGoodLinks[$dbkey] = intval( $row->page_id );
+		$this->mGoodLinkFields[$dbkey] = array(
 			'length' => intval( $row->page_len ),
 			'redirect' => intval( $row->page_is_redirect ),
 			'revision' => intval( $row->page_latest ),
@@ -133,9 +133,9 @@ class LinkCache {
 	 * @param $title Title
 	 */
 	public function addBadLinkObj( $title ) {
-		key = $title->getPrefixedDbKey();
-		if ( !$this->isBadLink( key ) ) {
-			$this->mBadLinks[key] = 1;
+		$dbkey = $title->getPrefixedDbKey();
+		if ( !$this->isBadLink( $dbkey ) ) {
+			$this->mBadLinks[$dbkey] = 1;
 		}
 	}
 
@@ -147,10 +147,10 @@ class LinkCache {
 	 * @param $title Title
 	 */
 	public function clearLink( $title ) {
-		key = $title->getPrefixedDbKey();
-		unset( $this->mBadLinks[key] );
-		unset( $this->mGoodLinks[key] );
-		unset( $this->mGoodLinkFields[key] );
+		$dbkey = $title->getPrefixedDbKey();
+		unset( $this->mBadLinks[$dbkey] );
+		unset( $this->mGoodLinks[$dbkey] );
+		unset( $this->mGoodLinkFields[$dbkey] );
 	}
 
 	public function getGoodLinks() { return $this->mGoodLinks; }
@@ -199,18 +199,18 @@ class LinkCache {
 
 		# Some fields heavily used for linking...
 		if ( $this->mForUpdate ) {
-			 = wfGetDB( DB_MASTER );
+			$db = wfGetDB( DB_MASTER );
 			if ( !( $wgAntiLockFlags & ALF_NO_LINK_LOCK ) ) {
 				$options = array( 'FOR UPDATE' );
 			} else {
 				$options = array();
 			}
 		} else {
-			 = wfGetDB( DB_SLAVE );
+			$db = wfGetDB( DB_SLAVE );
 			$options = array();
 		}
 
-		$s = ->selectRow( 'page',
+		$s = $db->selectRow( 'page',
 			array( 'page_id', 'page_len', 'page_is_redirect', 'page_latest' ),
 			array( 'page_namespace' => $nt->getNamespace(), 'page_title' => $nt->getDBkey() ),
 			__METHOD__, $options );

@@ -23,22 +23,22 @@
  */
 
 /**
- * @defgroup Externalwiki_user Externalwiki_user
+ * @defgroup ExternalUser ExternalUser
  */
 
 /**
  * A class intended to supplement, and perhaps eventually replace, AuthPlugin.
  * See: http://www.mediawiki.org/wiki/ExternalAuth
  *
- * The class represents a wiki_user whose data is in a foreign database.  The
+ * The class represents a user whose data is in a foreign database.  The
  * database may have entirely different conventions from MediaWiki, but it's
- * assumed to at least support the concept of a wiki_user id (possibly not an
- * integer), a wiki_user name (possibly not meeting MediaWiki's wiki_username
+ * assumed to at least support the concept of a user id (possibly not an
+ * integer), a user name (possibly not meeting MediaWiki's username
  * requirements), and a password.
  *
- * @ingroup Externalwiki_user
+ * @ingroup ExternalUser
  */
-abstract class Externalwiki_user {
+abstract class ExternalUser {
 	protected function __construct() {}
 
 	/**
@@ -47,7 +47,7 @@ abstract class Externalwiki_user {
 
 	/**
 	 * @param $name string
-	 * @return mixed Externalwiki_user, or false on failure
+	 * @return mixed ExternalUser, or false on failure
 	 */
 	public static function newFromName( $name ) {
 		global $wgExternalAuthType;
@@ -63,7 +63,7 @@ abstract class Externalwiki_user {
 
 	/**
 	 * @param $id string
-	 * @return mixed Externalwiki_user, or false on failure
+	 * @return mixed ExternalUser, or false on failure
 	 */
 	public static function newFromId( $id ) {
 		global $wgExternalAuthType;
@@ -78,7 +78,7 @@ abstract class Externalwiki_user {
 	}
 
 	/**
-	 * @return mixed Externalwiki_user, or false on failure
+	 * @return mixed ExternalUser, or false on failure
 	 */
 	public static function newFromCookie() {
 		global $wgExternalAuthType;
@@ -93,16 +93,16 @@ abstract class Externalwiki_user {
 	}
 
 	/**
-	 * Creates the object corresponding to the given wiki_user object, assuming the
-	 * wiki_user exists on the wiki and is linked to an external account.  If either
+	 * Creates the object corresponding to the given User object, assuming the
+	 * user exists on the wiki and is linked to an external account.  If either
 	 * of these is false, this will return false.
 	 *
 	 * This is a wrapper around newFromId().
 	 *
-	 * @param $wiki_user wiki_user
-	 * @return Externalwiki_user|bool False on failure
+	 * @param $user User
+	 * @return ExternalUser|bool False on failure
 	 */
-	public static function newFromwiki_user( $wiki_user ) {
+	public static function newFromUser( $user ) {
 		global $wgExternalAuthType;
 		if ( is_null( $wgExternalAuthType ) ) {
 			# Short-circuit to avoid database query in common case so no one
@@ -110,9 +110,9 @@ abstract class Externalwiki_user {
 			return false;
 		}
 
-		r = wfGetDB( DB_SLAVE );
-		$id = r->selectField( 'external_wiki_user', 'eu_external_id',
-			array( 'eu_local_id' => $wiki_user->getId() ), __METHOD__ );
+		$dbr = wfGetDB( DB_SLAVE );
+		$id = $dbr->selectField( 'external_user', 'eu_external_id',
+			array( 'eu_local_id' => $user->getId() ), __METHOD__ );
 		if ( $id === false ) {
 			return false;
 		}
@@ -120,9 +120,9 @@ abstract class Externalwiki_user {
 	}
 
 	/**
-	 * Given a name, which is a string exactly as input by the wiki_user in the
+	 * Given a name, which is a string exactly as input by the user in the
 	 * login form but with whitespace stripped, initialize this object to be
-	 * the corresponding Externalwiki_user.  Return true if successful, otherwise
+	 * the corresponding ExternalUser.  Return true if successful, otherwise
 	 * false.
 	 *
 	 * @param $name string
@@ -132,7 +132,7 @@ abstract class Externalwiki_user {
 
 	/**
 	 * Given an id, which was at some previous point in history returned by
-	 * getId(), initialize this object to be the corresponding Externalwiki_user.
+	 * getId(), initialize this object to be the corresponding ExternalUser.
 	 * Return true if successful, false otherwise.
 	 *
 	 * @param $id string
@@ -141,7 +141,7 @@ abstract class Externalwiki_user {
 	protected abstract function initFromId( $id );
 
 	/**
-	 * Try to magically initialize the wiki_user from cookies or similar information
+	 * Try to magically initialize the user from cookies or similar information
 	 * so he or she can be logged in on just viewing the wiki.  If this is
 	 * impossible to do, just return false.
 	 *
@@ -155,15 +155,15 @@ abstract class Externalwiki_user {
 
 	/**
 	 * This must return some identifier that stably, uniquely identifies the
-	 * wiki_user.  In a typical web application, this could be an integer
-	 * representing the "wiki_user id".  In other cases, it might be a string.  In
+	 * user.  In a typical web application, this could be an integer
+	 * representing the "user id".  In other cases, it might be a string.  In
 	 * any event, the return value should be a string between 1 and 255
-	 * characters in length; must uniquely identify the wiki_user in the foreign
+	 * characters in length; must uniquely identify the user in the foreign
 	 * database; and, if at all possible, should be permanent.
 	 *
-	 * This will only ever be used to reconstruct this Externalwiki_user object via
+	 * This will only ever be used to reconstruct this ExternalUser object via
 	 * newFromId().  The resulting object in that case should correspond to the
-	 * same wiki_user, even if details have changed in the interim (e.g., renames or
+	 * same user, even if details have changed in the interim (e.g., renames or
 	 * preference changes).
 	 *
 	 * @return string
@@ -171,11 +171,11 @@ abstract class Externalwiki_user {
 	abstract public function getId();
 
 	/**
-	 * This must return the name that the wiki_user would normally use for login to
+	 * This must return the name that the user would normally use for login to
 	 * the external database.  It is subject to no particular restrictions
 	 * beyond rudimentary sanity, and in particular may be invalid as a
-	 * MediaWiki wiki_username.  It's used to auto-generate an account name that
-	 * *is* valid for MediaWiki, either with or without wiki_user input, but
+	 * MediaWiki username.  It's used to auto-generate an account name that
+	 * *is* valid for MediaWiki, either with or without user input, but
 	 * basically is only a hint.
 	 *
 	 * @return string
@@ -183,7 +183,7 @@ abstract class Externalwiki_user {
 	abstract public function getName();
 
 	/**
-	 * Is the given password valid for the external wiki_user?  The password is
+	 * Is the given password valid for the external user?  The password is
 	 * provided in plaintext.
 	 *
 	 * @param $password string
@@ -200,7 +200,7 @@ abstract class Externalwiki_user {
 	 *
 	 * The value must meet MediaWiki's requirements for values of this type,
 	 * and will be checked for validity before use.  If the preference makes no
-	 * sense for the backend, or it makes sense but is unset for this wiki_user, or
+	 * sense for the backend, or it makes sense but is unset for this user, or
 	 * is unrecognized, return null.
 	 *
 	 * $pref will never equal 'password', since passwords are usually hashed
@@ -208,7 +208,7 @@ abstract class Externalwiki_user {
 	 * instead.
 	 *
 	 * TODO: Currently this is only called for 'emailaddress'; generalize!  Add
-	 * some config option to decide which values are grabbed on wiki_user
+	 * some config option to decide which values are grabbed on user
 	 * initialization.
 	 *
 	 * @param $pref string
@@ -219,7 +219,7 @@ abstract class Externalwiki_user {
 	}
 
 	/**
-	 * Return an array of identifiers for all the foreign groups that this wiki_user
+	 * Return an array of identifiers for all the foreign groups that this user
 	 * has.  The identifiers are opaque objects that only need to be
 	 * specifiable by the administrator in LocalSettings.php when configuring
 	 * $wgAutopromote.  They may be, for instance, strings or integers.
@@ -234,7 +234,7 @@ abstract class Externalwiki_user {
 
 	/**
 	 * Given a preference key (e.g., 'emailaddress'), provide an HTML message
-	 * telling the wiki_user how to change it in the external database.  The
+	 * telling the user how to change it in the external database.  The
 	 * administrator has specified that this preference cannot be changed on
 	 * the wiki, and may only be changed in the foreign database.  If no
 	 * message is available, such as for an unrecognized preference, return
@@ -272,17 +272,17 @@ abstract class Externalwiki_user {
 
 	/**
 	 * Create a link for future reference between this object and the provided
-	 * wiki_user_id.  If the wiki_user was already linked, the old link will be
+	 * user_id.  If the user was already linked, the old link will be
 	 * overwritten.
 	 *
 	 * This is part of the core code and is not overridable by specific
 	 * plugins.  It's in this class only for convenience.
 	 *
-	 * @param $id int wiki_user_id
+	 * @param $id int user_id
 	 */
 	public final function linkToLocal( $id ) {
-		w = wfGetDB( DB_MASTER );
-		w->replace( 'external_wiki_user',
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->replace( 'external_user',
 			array( 'eu_local_id', 'eu_external_id' ),
 			array( 'eu_local_id' => $id,
 				   'eu_external_id' => $this->getId() ),
@@ -290,19 +290,19 @@ abstract class Externalwiki_user {
 	}
 	
 	/**
-	 * Check whether this external wiki_user id is already linked with
-	 * a local wiki_user.
-	 * @return Mixed wiki_user if the account is linked, Null otherwise.
+	 * Check whether this external user id is already linked with
+	 * a local user.
+	 * @return Mixed User if the account is linked, Null otherwise.
 	 */
-	public final function getLocalwiki_user(){
-		r = wfGetDB( DB_SLAVE );
-		$row = r->selectRow(
-			'external_wiki_user',
+	public final function getLocalUser(){
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow(
+			'external_user',
 			'*',
 			array( 'eu_external_id' => $this->getId() )
 		);
 		return $row
-			? wiki_user::newFromId( $row->eu_local_id )
+			? User::newFromId( $row->eu_local_id )
 			: null;
 	}
 	

@@ -168,16 +168,16 @@ function setupTestResources( $testResourceName, $testSqlFile, $testImageZip ) {
 	}
 	
 	// create tables
-	w = wfGetDB( DB_MASTER );
-	w->query( 'DROP DATABASE IF EXISTS ' . $testResourceName );
-	w->query( 'CREATE DATABASE ' . $testResourceName );
+	$dbw = wfGetDB( DB_MASTER );
+	$dbw->query( 'DROP DATABASE IF EXISTS ' . $testResourceName );
+	$dbw->query( 'CREATE DATABASE ' . $testResourceName );
 
 	// do not set the new DB name before database is setup
 	$wgDBname = $testResourceName;
-	w->selectDB( $testResourceName );
+	$dbw->selectDB( $testResourceName );
 	// populate from SQL file
 	if ( $testSqlFile ) {
-		w->sourceFile( $testSqlFile );
+		$dbw->sourceFile( $testSqlFile );
 	}
 
 	// create test image dir
@@ -196,8 +196,8 @@ function setupTestResources( $testResourceName, $testSqlFile, $testImageZip ) {
 
 function teardownTestResources( $testResourceName ) {
 	// remove test database
-	w = wfGetDB( DB_MASTER );
-	w->query( 'DROP DATABASE IF EXISTS ' . $testResourceName );
+	$dbw = wfGetDB( DB_MASTER );
+	$dbw->query( 'DROP DATABASE IF EXISTS ' . $testResourceName );
 
 	$testUploadPath = getTestUploadPathFromResourceName( $testResourceName );
 	// remove test image dir
@@ -207,14 +207,14 @@ function teardownTestResources( $testResourceName ) {
 }
 
 function switchToTestResources( $testResourceName, $switchDB = true ) {
-	global $wgDBwiki_user, $wgDBpassword, $wgDBname;
-	global $wgDBtestwiki_user, $wgDBtestpassword;
+	global $wgDBuser, $wgDBpassword, $wgDBname;
+	global $wgDBtestuser, $wgDBtestpassword;
 	global $wgUploadPath;
 
 	if ( $switchDB ) {
 		$wgDBname = $testResourceName;
 	}
-	$wgDBwiki_user = $wgDBtestwiki_user;
+	$wgDBuser = $wgDBtestuser;
 	$wgDBpassword = $wgDBtestpassword;
 
 	$testUploadPath = getTestUploadPathFromResourceName( $testResourceName );

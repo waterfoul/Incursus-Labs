@@ -241,9 +241,9 @@ abstract class ORMTable implements IORMTable {
 	 */
 	public function rawSelectRow( array $fields, array $conditions = array(),
 								  array $options = array(), $functionName = null ) {
-		r = wfGetDB( $this->getReadDb() );
+		$dbr = wfGetDB( $this->getReadDb() );
 
-		return r->selectRow(
+		return $dbr->selectRow(
 			$this->getName(),
 			$fields,
 			$conditions,
@@ -410,12 +410,12 @@ abstract class ORMTable implements IORMTable {
 	/**
 	 * Set the database type to use for read operations.
 	 *
-	 * @param integer 
+	 * @param integer $db
 	 *
 	 * @since 1.20
 	 */
-	public function setReadDb(  ) {
-		$this->readDb = ;
+	public function setReadDb( $db ) {
+		$this->readDb = $db;
 	}
 
 	/**
@@ -431,9 +431,9 @@ abstract class ORMTable implements IORMTable {
 	 * @return boolean Success indicator
 	 */
 	public function update( array $values, array $conditions = array() ) {
-		w = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
-		return w->update(
+		return $dbw->update(
 			$this->getName(),
 			$this->getPrefixedValues( $values ),
 			$this->getPrefixedValues( $conditions ),

@@ -16,8 +16,8 @@ $namespaceNames = array(
 	NS_MEDIA            => 'Medya',
 	NS_SPECIAL          => 'Spesial',
 	NS_TALK             => 'Nkɔmbɔ',
-	NS_USER             => 'wiki_user',
-	NS_USER_TALK        => 'wiki_user_nkɔmbɔ',
+	NS_USER             => 'User',
+	NS_USER_TALK        => 'User_nkɔmbɔ',
 	NS_PROJECT_TALK     => '$1_nkɔmbɔ',
 	NS_FILE             => 'Fayl',
 	NS_FILE_TALK        => 'Fayl_nkɔmbɔ',
@@ -32,7 +32,7 @@ $namespaceNames = array(
 );
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Twa lenk nyina ase:',
 'tog-justify' => 'Gyastefae mparagraf',
 'tog-hideminor' => 'Suma nsesae a wɔakɔ so a wɔnnkyɛree koraa',
@@ -78,7 +78,7 @@ $messages = array(
 'talk' => 'Nkɔmbɔ',
 'jumptosearch' => 'hwehwɛ',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Fa {{SITENAME}} ho',
 'mainpage' => 'Krataafa Titiriw',
 
@@ -89,9 +89,9 @@ $messages = array(
 # Login and logout pages
 'login' => 'Bra mu',
 'nav-login-createaccount' => 'Bra mu / yɛ akawnt',
-'wiki_userlogin' => 'Bra mu / yɛ akawnt',
+'userlogin' => 'Bra mu / yɛ akawnt',
 'logout' => 'Pue',
-'wiki_userlogout' => 'Pue',
+'userlogout' => 'Pue',
 'notloggedin' => 'Mmbaa mu',
 'nologin' => 'Wo nni akawnt anaa? $1.',
 

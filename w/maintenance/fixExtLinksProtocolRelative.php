@@ -46,14 +46,14 @@ class FixExtLinksProtocolRelative extends LoggedUpdateMaintenance {
 	}
 
 	protected function doDBUpdates() {
-		 = wfGetDB( DB_MASTER );
-		if ( !->tableExists( 'externallinks' ) ) {
+		$db = wfGetDB( DB_MASTER );
+		if ( !$db->tableExists( 'externallinks' ) ) {
 			$this->error( "externallinks table does not exist" );
 			return false;
 		}
 		$this->output( "Fixing protocol-relative entries in the externallinks table...\n" );
-		$res = ->select( 'externallinks', array( 'el_from', 'el_to', 'el_index' ),
-			array( 'el_index' . ->buildLike( '//', ->anyString() ) ),
+		$res = $db->select( 'externallinks', array( 'el_from', 'el_to', 'el_index' ),
+			array( 'el_index' . $db->buildLike( '//', $db->anyString() ) ),
 			__METHOD__
 		);
 		$count = 0;
@@ -63,7 +63,7 @@ class FixExtLinksProtocolRelative extends LoggedUpdateMaintenance {
 				$this->output( $count . "\n" );
 				wfWaitForSlaves();
 			}
-			->insert( 'externallinks',
+			$db->insert( 'externallinks',
 				array(
 					array(
 						'el_from' => $row->el_from,
@@ -77,7 +77,7 @@ class FixExtLinksProtocolRelative extends LoggedUpdateMaintenance {
 					)
 				), __METHOD__, array( 'IGNORE' )
 			);
-			->delete( 'externallinks', array( 'el_index' => $row->el_index, 'el_from' => $row->el_from, 'el_to' => $row->el_to ), __METHOD__ );
+			$db->delete( 'externallinks', array( 'el_index' => $row->el_index, 'el_from' => $row->el_from, 'el_to' => $row->el_to ), __METHOD__ );
 		}
 		$this->output( "Done, $count rows updated.\n" );
 		return true;

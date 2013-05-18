@@ -39,17 +39,17 @@ class SkinSimple extends SkinTemplate {
 	/**
 	 * @param $out OutputPage
 	 */
-	function setupSkinwiki_userCss( OutputPage $out ) {
-		parent::setupSkinwiki_userCss( $out );
+	function setupSkinUserCss( OutputPage $out ) {
+		parent::setupSkinUserCss( $out );
 
 		$out->addModuleStyles( 'skins.simple' );
 
-		/* Add some wiki_userprefs specific CSS styling */
+		/* Add some userprefs specific CSS styling */
 		$rules = array();
 		$underline = "";
 
-		if ( $this->getwiki_user()->getOption( 'underline' ) < 2 ) {
-			$underline = "text-decoration: " . $this->getwiki_user()->getOption( 'underline' ) ? 'underline !important' : 'none' . ";";
+		if ( $this->getUser()->getOption( 'underline' ) < 2 ) {
+			$underline = "text-decoration: " . $this->getUser()->getOption( 'underline' ) ? 'underline !important' : 'none' . ";";
 		}
 		$style = implode( "\n", $rules );
 		$out->addInlineStyle( $style, 'flip' );

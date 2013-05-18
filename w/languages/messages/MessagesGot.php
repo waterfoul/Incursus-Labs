@@ -155,7 +155,7 @@ $messages = array(
 'jumptonavigation'  => '𐍃𐌴𐌹𐌳𐍉𐌲𐌰𐍅𐌹𐍃𐍃',
 'jumptosearch'      => 'sokeiþ',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '𐍆𐍂𐌰𐌼 {{SITENAME}}',
 'aboutpage'            => 'Project:𐌿𐍆𐌰𐍂',
 'copyrightpage'        => '{{ns:project}}:Manleikawitoþa',
@@ -189,7 +189,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'     => '𐍃𐌴𐌹𐌳𐍉',
-'nstab-wiki_user'     => '𐌽𐌹𐌿𐍄𐌰𐌽𐌳𐌹𐍃𐍃𐌴𐌹𐌳𐍉',
+'nstab-user'     => '𐌽𐌹𐌿𐍄𐌰𐌽𐌳𐌹𐍃𐍃𐌴𐌹𐌳𐍉',
 'nstab-special'  => '𐌿𐍃𐍃𐌹𐌽𐌳𐍃𐌴𐌹𐌳𐍉',
 'nstab-project'  => '𐍂𐌴𐌹𐌺𐌹𐍃𐌴𐌹𐌳𐍉',
 'nstab-image'    => '𐌼𐌰𐌽𐌻𐌴𐌹𐌺𐌰',
@@ -205,9 +205,9 @@ $messages = array(
 'yourpassword'            => '𐌰𐌽𐌰𐌻𐌰𐌿𐌲𐌽𐍃 𐍅𐌰𐌿𐍂𐌳𐌰:',
 'login'                   => 'Atgaggan',
 'nav-login-createaccount' => '𐌰𐍄𐌲𐌰𐌲𐌲𐌰𐌽 / 𐌲𐌰𐌻𐌰𐌽𐌲𐌾𐌰𐌽 𐌽𐌹𐌿𐍄𐌰𐌽𐌳𐌹𐍃',
-'wiki_userlogin'               => 'Atgaggan / gaskapjan niutandis',
+'userlogin'               => 'Atgaggan / gaskapjan niutandis',
 'logout'                  => '𐌻𐌴𐌹𐌸𐌰𐌽',
-'wiki_userlogout'              => '𐌻𐌴𐌹𐌸𐌰𐌽',
+'userlogout'              => '𐌻𐌴𐌹𐌸𐌰𐌽',
 'nologinlink'             => 'Gaskapjan þein niutandis',
 'createaccount'           => '𐌲𐌰𐌻𐌰𐌲𐌾𐌰𐌽 𐌽𐌹𐌿𐍄𐌰𐌽𐌳𐌹𐍃',
 'gotaccount'              => "Habiþ þu niutandis? '''$1'''",
@@ -289,7 +289,7 @@ $messages = array(
 
 'grouppage-sysop' => '{{ns:project}}:𐍃𐌴𐌹𐌳𐍉𐍆𐌰𐌸𐍃',
 
-# wiki_user rights log
+# User rights log
 'rightslog'  => 'Niutandis stutjanlog',
 'rightsnone' => '(ni áinshun)',
 
@@ -330,7 +330,7 @@ $messages = array(
 'filehist'            => 'Feilans áiris',
 'filehist-current'    => 'nu',
 'filehist-datetime'   => 'Ƕeila',
-'filehist-wiki_user'       => 'Niutandis',
+'filehist-user'       => 'Niutandis',
 'filehist-dimensions' => 'Wahstus',
 'filehist-filesize'   => 'Feilans wahstus',
 'filehist-comment'    => 'Leitilaspillon',
@@ -362,13 +362,13 @@ $messages = array(
 'wantedpages'  => 'Gaírnedum seidam',
 'shortpages'   => '𐌻𐌴𐌹𐍄𐌹𐌻𐌰 𐍃𐌴𐌹𐌳𐍉𐍃',
 'longpages'    => '𐌻𐌰𐌲𐌲𐌰 𐍃𐌴𐌹𐌳𐍉𐍃',
-'listwiki_users'    => '𐍂𐌴𐌲𐌹𐍃𐍄𐍂𐌴𐍂𐌰𐌳𐌴 𐌱𐍂𐌿𐌺𐌾𐌰𐌽𐌳𐍃',
+'listusers'    => '𐍂𐌴𐌲𐌹𐍃𐍄𐍂𐌴𐍂𐌰𐌳𐌴 𐌱𐍂𐌿𐌺𐌾𐌰𐌽𐌳𐍃',
 'newpages'     => '𐌽𐌹𐌿𐌾𐌰 𐍃𐌴𐌹𐌳𐍉𐍃',
 'move'         => '𐌽𐌰𐌼𐌾𐌰𐌽 𐌰𐍆𐍄𐍂𐌰',
 'movethispage' => '𐍃𐌺𐌹𐌿𐌱𐌰𐌽 𐍃𐌰 𐍃𐌴𐌹𐌳𐍉',
 
 # Special:Log
-'speciallogwiki_userlabel'  => 'Niutand:',
+'specialloguserlabel'  => 'Niutand:',
 'speciallogtitlelabel' => 'Namo:',
 'log'                  => '𐌻𐍉𐌲𐌱𐍉𐌺𐍉𐍃',
 'all-logs-page'        => '𐌰𐌻𐌻𐌰 𐌻𐍉𐌲𐍉𐍃',
@@ -387,8 +387,8 @@ $messages = array(
 # Special:LinkSearch
 'linksearch-ns' => '𐍃𐌴𐌹𐌳𐍉𐍆𐌴𐍂𐌰:',
 
-# E-mail wiki_user
-'emailwiki_user' => '𐍃𐌰𐌽𐌳𐌾𐌰𐌽 𐌸𐍉 𐌽𐌹𐌿𐍄𐌰𐌽𐌳 𐌱𐍉𐌺𐍉𐌼',
+# E-mail user
+'emailuser' => '𐍃𐌰𐌽𐌳𐌾𐌰𐌽 𐌸𐍉 𐌽𐌹𐌿𐍄𐌰𐌽𐌳 𐌱𐍉𐌺𐍉𐌼',
 
 # Watchlist
 'watchlist'         => '𐌼𐌴𐌹𐌽𐍉𐍃 𐍅𐌹𐍄𐌰𐌽𐌳𐍃𐌻𐌴𐌹𐍃𐍄𐌰',
@@ -482,7 +482,7 @@ $messages = array(
 'thumbnail-more' => 'Biáuknan',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage'            => 'Meina niutandisseido',
+'tooltip-pt-userpage'            => 'Meina niutandisseido',
 'tooltip-pt-mytalk'              => 'Meina maþleiseido',
 'tooltip-pt-preferences'         => 'Meinos brukjamaideineis',
 'tooltip-pt-mycontris'           => 'Tala af meina gibom',
@@ -496,7 +496,7 @@ $messages = array(
 'tooltip-n-mainpage-description' => '𐍃𐌰𐌹𐍈𐌰𐌽 𐍃𐌰 𐌷𐌰𐌿𐌱𐌹𐌳𐌰𐍃𐌴𐌹𐌳𐍉',
 'tooltip-t-upload'               => '𐌿𐍃𐌷𐌻𐌰𐌸𐌰𐌹𐌸 𐍆𐌴𐌹𐌻𐌰𐌽𐍃',
 'tooltip-t-specialpages'         => 'Findiþ alla ussindseidos',
-'tooltip-ca-nstab-wiki_user'          => '𐍃𐌰𐌹𐍈𐌰𐌽 𐍃𐌰 𐌽𐌹𐌿𐍄𐌰𐌽𐌳𐌹𐍃𐍃𐌴𐌹𐌳𐍉',
+'tooltip-ca-nstab-user'          => '𐍃𐌰𐌹𐍈𐌰𐌽 𐍃𐌰 𐌽𐌹𐌿𐍄𐌰𐌽𐌳𐌹𐍃𐍃𐌴𐌹𐌳𐍉',
 'tooltip-save'                   => 'Skreiban þein máideins',
 
 # Browsing diffs

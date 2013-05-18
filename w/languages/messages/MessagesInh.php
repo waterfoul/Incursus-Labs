@@ -17,7 +17,7 @@
 $fallback = 'ru';
 
 $messages = array(
-# wiki_user preference toggles
+# User preference toggles
 'tog-underline' => 'Ӏинкаш белгалде:',
 'tog-justify' => 'Яздам оагӀува шоралца хьанийсде',
 'tog-hideminor' => 'ЗӀамига хувцамаш керда хувцаман дагарленашках къайлаяккха',
@@ -41,7 +41,7 @@ $messages = array(
 'tog-previewonfirst' => 'ГӀалатнийсдаре дехьавоалаш/йоалаш бӀаргтассам хьахьокха',
 'tog-nocache' => 'Укхазара оагӀувнаший лочкъараш дӀадоаде',
 'tog-enotifwatchlistpages' => 'ОагӀувний хувцамахи теркама дагарленахи лаьца, д-хоамнец хоам бе',
-'tog-enotifwiki_usertalkpages' => 'Са дувцама оагӀув тӀа хувцамаш хилача, д-хоамнец хоам бе',
+'tog-enotifusertalkpages' => 'Са дувцама оагӀув тӀа хувцамаш хилача, д-хоамнец хоам бе',
 'tog-enotifminoredits' => 'Геттара зӀамига хувцамаш хилача, д-хоамнец хоам бе',
 'tog-enotifrevealaddr' => 'ЗӀы хоамаш тӀа са хоамни моттиг хьахьокха',
 'tog-shownumberswatching' => 'Ший теркама дагарленгах оагӀув чулаьца бола дакъалаьцархой таьрах хьахьокха',
@@ -217,7 +217,7 @@ $messages = array(
 'talk' => 'Дувцам',
 'views' => 'БӀаргтассамаш',
 'toolbox' => 'ГӀорсаш',
-'wiki_userpage' => 'Дакъалаьцачунна оагӀуве бӀаргтасса',
+'userpage' => 'Дакъалаьцачунна оагӀуве бӀаргтасса',
 'projectpage' => 'Хьахьоадайтама оагӀуве бӀаргтасса',
 'imagepage' => 'Паьла оагӀув тӀа бӀаргтасса',
 'mediawikipage' => 'Xоаман оагӀув хьахьокха',
@@ -238,7 +238,7 @@ $messages = array(
 'pool-queuefull' => 'Хаттарий цӀа хьалдизад',
 'pool-errorunknown' => 'Довзаш доаца гӀалат',
 
-# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of wiki_user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite' => 'Лоацам {{SITENAME}}',
 'aboutpage' => 'Project:Лоацам',
 'copyright' => '$1 чулоацамаца тIакхоачаш да.',
@@ -294,7 +294,7 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Йоазув',
-'nstab-wiki_user' => 'Дакъалаьцархо',
+'nstab-user' => 'Дакъалаьцархо',
 'nstab-media' => 'Медифаг',
 'nstab-special' => 'ГӀулакха оагӀув',
 'nstab-project' => 'Хьахоадайтамах лаьца',
@@ -315,7 +315,7 @@ $messages = array(
 Из мо гӀалат нийсалуш хула, саг тишъенна Ӏинкаца, д|адаьккха дола оагӀувни хувца искара тӀа чувала гӀертача.
 
 Наггахь санна из иштта децe, шоана гӀорса Ӏалаш деча гӀалат кораяь хила мега.
-Дехар да, [[Special:Listwiki_users/sysop|мазакулгалхочоа]] хоам бе, URL хьахьокхаш.',
+Дехар да, [[Special:ListUsers/sysop|мазакулгалхочоа]] хоам бе, URL хьахьокхаш.',
 'missingarticle-rev' => '(бӀаргоагӀув № $1)',
 'internalerror' => 'Чура гӀалат',
 'internalerror_info' => 'Чура гӀалат: $1',
@@ -338,17 +338,17 @@ $messages = array(
 'login' => 'Чувала/яла',
 'nav-login-createaccount' => 'ЦӀи яьккха/Ший oагӀув ела',
 'loginprompt' => 'Укх белхацхьоагIоца доттагӀал лаца, шун "cookies" йийла хьалдеза.',
-'wiki_userlogin' => 'ЦӀи яьккха/ОагӀув ела',
-'wiki_userloginnocreate' => 'Чувала/яла',
+'userlogin' => 'ЦӀи яьккха/ОагӀув ела',
+'userloginnocreate' => 'Чувала/яла',
 'logout' => 'Аравала/яла',
-'wiki_userlogout' => 'Аравала/яла',
+'userlogout' => 'Аравала/яла',
 'notloggedin' => 'Оаш шоай цӀи хьааьннадац',
 'nologin' => "Леламе дIаяздар дац? '''$1'''.",
 'nologinlink' => 'Леламе дIаяздар кхолла',
 'createaccount' => 'Керда дакъалаьцархо кхолла',
 'gotaccount' => "Укхаза дӀаязабенна дий шо? '''$1'''.",
 'gotaccountlink' => 'Чувала/яла',
-'wiki_userlogin-resetlink' => 'Чувала/яла цӀии дIоагӀаи дийцаденнадий?',
+'userlogin-resetlink' => 'Чувала/яла цӀии дIоагӀаи дийцаденнадий?',
 'createaccountmail' => 'КъайладIоагIа д-хоамнец хьадайта',
 'createaccountreason' => 'Бахьан:',
 'badretype' => 'Оаша яьккха дIоагIий цIераш шоайл таралуш яц.',
@@ -367,7 +367,7 @@ $messages = array(
 'resetpass-submit-cancel' => 'Юхавал/ялa',
 
 # Special:PasswordReset
-'passwordreset-wiki_username' => 'Дакъалаьцархочунна цӀи:',
+'passwordreset-username' => 'Дакъалаьцархочунна цӀи:',
 'passwordreset-email' => 'Д-хоамни моттиг:',
 
 # Edit page toolbar
@@ -592,7 +592,7 @@ $messages = array(
 'prefs-searchoptions' => 'Тохкама оттамаш',
 'prefs-files' => 'Паьлаш',
 'youremail' => 'Д-хоамни:',
-'wiki_username' => 'Дакъалаьцархочунна цIи:',
+'username' => 'Дакъалаьцархочунна цIи:',
 'yourrealname' => 'Шун цIи:',
 'yourlanguage' => 'Мотт:',
 'gender-male' => 'МаIа',
@@ -602,27 +602,27 @@ $messages = array(
 'prefs-help-email-others' => 'Кхыбола дакъалаьцархоша шоаца бувзам я йийшхургья шун оагIува тIа гIолла, д-хоамни хьаела ца езаш.',
 'prefs-signature' => 'Кулгяздар',
 
-# wiki_user rights
-'wiki_userrights-wiki_user-editname' => 'Дакъалаьцархочунна цIи Iоязаде',
-'editwiki_usergroup' => 'Дакъалаьцархочунна тоабаш хувца',
-'savewiki_usergroups' => 'Дакъалаьцархочунна тоабаш дита',
-'wiki_userrights-groupsmember' => 'Тоабий дакъалаьцархо:',
-'wiki_userrights-reason' => 'Бахьан:',
-'wiki_userrights-changeable-col' => 'Оаш хувца мегаш йола тоабаш',
-'wiki_userrights-unchangeable-col' => 'Оаш хувца мегаш йоаца тоабаш',
+# User rights
+'userrights-user-editname' => 'Дакъалаьцархочунна цIи Iоязаде',
+'editusergroup' => 'Дакъалаьцархочунна тоабаш хувца',
+'saveusergroups' => 'Дакъалаьцархочунна тоабаш дита',
+'userrights-groupsmember' => 'Тоабий дакъалаьцархо:',
+'userrights-reason' => 'Бахьан:',
+'userrights-changeable-col' => 'Оаш хувца мегаш йола тоабаш',
+'userrights-unchangeable-col' => 'Оаш хувца мегаш йоаца тоабаш',
 
 # Groups
 'group' => 'Тоаб:',
-'group-wiki_user' => 'Дакъалаьцархой',
+'group-user' => 'Дакъалаьцархой',
 'group-bot' => 'БIаташ',
 'group-sysop' => 'Мазакулгалхой',
 'group-all' => '(деррига)',
 
-'group-wiki_user-member' => '{{GENDER:$1|дакъалаьцархо|дакъалаьцархо}}',
+'group-user-member' => '{{GENDER:$1|дакъалаьцархо|дакъалаьцархо}}',
 'group-bot-member' => '{{GENDER:$1|бIат}}',
 'group-sysop-member' => '{{GENDER:$1|мазакулгалхо}}',
 
-'grouppage-wiki_user' => '{{ns:project}}:Дакъалаьцархой',
+'grouppage-user' => '{{ns:project}}:Дакъалаьцархой',
 'grouppage-bot' => '{{ns:project}}:БIаташ',
 'grouppage-sysop' => '{{ns:project}}:Мазакулгалхой',
 
@@ -633,7 +633,7 @@ $messages = array(
 'right-move' => 'ОагIувний цIи хувца',
 'right-movefile' => 'Паьлий цIи хувца',
 
-# wiki_user rights log
+# User rights log
 'rightslog' => 'Дакъалаьцархочунна бокъона тептар',
 'rightsnone' => '(а)',
 
@@ -699,7 +699,7 @@ $messages = array(
 'listfiles' => 'Паьлий дагарче',
 'listfiles_date' => 'Денха',
 'listfiles_name' => 'Паьла цIи',
-'listfiles_wiki_user' => 'Дакъалаьцархо',
+'listfiles_user' => 'Дакъалаьцархо',
 'listfiles_size' => 'Дустам',
 'listfiles_description' => 'Лоацам',
 'listfiles_count' => 'Доржамаш',
@@ -713,7 +713,7 @@ $messages = array(
 'filehist-datetime' => 'Дентаьрах/Ха',
 'filehist-thumb' => 'ЗIамигасуртанче',
 'filehist-thumbtext' => '$1 доржаме зIамигсуртанчoa',
-'filehist-wiki_user' => 'Дакъалаьцархо',
+'filehist-user' => 'Дакъалаьцархо',
 'filehist-dimensions' => 'ХIамана дустам',
 'filehist-filesize' => 'Паьла юстарал',
 'filehist-comment' => 'ХIамоалар',
@@ -760,7 +760,7 @@ $messages = array(
 'prefixindex' => 'ОагIувнаший хьалхера цIи хьагойтар',
 'shortpages' => 'Лоаца оагIувнаш',
 'longpages' => 'Доккхий оагIувнаш',
-'wiki_usercreated' => '{{GENDER:$3|Чуваьннав|Чуяьннай}} $1  $2',
+'usercreated' => '{{GENDER:$3|Чуваьннав|Чуяьннай}} $1  $2',
 'newpages' => 'Керда оагIувнаш',
 'move' => 'ЦIи хувца',
 'movethispage' => 'Укх оагIува цIи хувца',
@@ -792,14 +792,14 @@ $messages = array(
 'linksearch-ok' => 'Лаха',
 'linksearch-line' => '$1 тIа Iинк $2 юкъера',
 
-# Special:Log/newwiki_users
-'newwiki_userlogpage' => 'Дакъалаьцархоший дIаязбeнна таптар',
+# Special:Log/newusers
+'newuserlogpage' => 'Дакъалаьцархоший дIаязбeнна таптар',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(тоабий дагарче)',
 
-# E-mail wiki_user
-'emailwiki_user' => 'Дакъалаьцархочоа д-хоамни:',
+# E-mail user
+'emailuser' => 'Дакъалаьцархочоа д-хоамни:',
 
 # Watchlist
 'watchlist' => 'Теркама дагарче',
@@ -887,7 +887,7 @@ $messages = array(
 'sp-contributions-logs' => 'тептараш',
 'sp-contributions-talk' => 'дувцам',
 'sp-contributions-search' => 'Къахьегама лахар',
-'sp-contributions-wiki_username' => 'IP-моттиг е цIи:',
+'sp-contributions-username' => 'IP-моттиг е цIи:',
 'sp-contributions-toponly' => 'ТIехьара доржамаш лоархаш дола хувцамаш мара ма хьокха',
 'sp-contributions-submit' => 'Хьалаха',
 
@@ -978,7 +978,7 @@ $messages = array(
 'import-upload-filename' => 'ПаьлацIи:',
 
 # Tooltip help for the actions
-'tooltip-pt-wiki_userpage' => 'Дакъалаьцархочунна оагIув',
+'tooltip-pt-userpage' => 'Дакъалаьцархочунна оагIув',
 'tooltip-pt-mytalk' => 'Шун дувцамий оагIув',
 'tooltip-pt-preferences' => 'Шун оттамаш',
 'tooltip-pt-watchlist' => 'ОоагIувна дагарле, шо бIаргалокхаш йола',
@@ -1011,13 +1011,13 @@ $messages = array(
 'tooltip-feed-rss' => 'Укх оагIувна RSSчу гойтар',
 'tooltip-feed-atom' => 'Укх оаг|увна Atomчу гойтар',
 'tooltip-t-contributions' => 'Укх дакъалаьцархочу хьийца йола оагIувнаш хьахьокха',
-'tooltip-t-emailwiki_user' => 'Укх дакъалаьцархочоа зIы яхьийта',
+'tooltip-t-emailuser' => 'Укх дакъалаьцархочоа зIы яхьийта',
 'tooltip-t-upload' => 'Паьлаш чуяьккха',
 'tooltip-t-specialpages' => 'ГIулакха оагIувний дагарчe',
 'tooltip-t-print' => 'Укх оаугIувна каьхатзарбане доржам',
 'tooltip-t-permalink' => 'Укх оагIув доржама даим латта Iинк',
 'tooltip-ca-nstab-main' => 'Йоазува чулоацам',
-'tooltip-ca-nstab-wiki_user' => 'Дакъалаьцархочунна ший оагIув',
+'tooltip-ca-nstab-user' => 'Дакъалаьцархочунна ший оагIув',
 'tooltip-ca-nstab-special' => 'Ер гIулакха оагIув я, из хувца хьо бокъо йолаш вац/яц.',
 'tooltip-ca-nstab-project' => 'Хьахьоадайтама оагIув',
 'tooltip-ca-nstab-image' => 'Паьла оагIув',
@@ -1145,7 +1145,7 @@ $messages = array(
 
 # Special:SpecialPages
 'specialpages' => 'ГIулакхий оагIувнаш',
-'specialpages-group-wiki_users' => 'Дакъалаьцархой, цара бокъо',
+'specialpages-group-users' => 'Дакъалаьцархой, цара бокъо',
 'specialpages-group-pages' => 'ОагIувний дагарченаш',
 'specialpages-group-pagetools' => 'ОагIувнаша гIирсаш',
 

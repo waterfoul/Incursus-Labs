@@ -424,7 +424,7 @@ $.widget( "ui.tabs", {
 	},
 
     _getIndex: function( index ) {
-		// meta-function to give wiki_users option to provide a href string instead of a numerical index.
+		// meta-function to give users option to provide a href string instead of a numerical index.
 		// also sanitizes numerical indexes to valid values.
 		if ( typeof index == "string" ) {
 			index = this.anchors.index( this.anchors.filter( "[href$='" + index + "']" ) );
@@ -652,7 +652,7 @@ $.widget( "ui.tabs", {
 				self._trigger( "load", null, self._ui( self.anchors[ index ], self.panels[ index ] ) );
 				try {
 					// Passing index avoid a race condition when this method is
-					// called after the wiki_user has selected another tab.
+					// called after the user has selected another tab.
 					// Pass the anchor that initiated this request allows
 					// loadError to manipulate the tab content panel via $(a.hash)
 					o.ajaxOptions.error( xhr, s, index, a );

@@ -219,7 +219,7 @@ $messages['ksh'] = array(
 	'asirra-createaccount' => 'Heh dat Wiki well sesch jääje automattesch aanjelaate „Metmaacher“ schöze. Dröm moß mer heh nor_en Prööfong aflääje, dat mer ene Minsch un kei Projramm es. Söhk bloß de Katzebelder em Kaßte us:',
 	'asirra-createaccount-fail' => 'Bes esu jood un don de Kazebelder ußwähle.',
 	'asirra-create' => 'Heh dat Wiki well sesch jääje automattesch neu aanjelaate Sigge schöze. Dröm moß mer heh nor_en Prööfong aflääje, dat mer ene Minsch un kei Projramm es. Söhk bloß de Katzebelder em Kaßte us:',
-	'asirra-nojs' => "'''Bes esu jood un donn JavaSkrep en Dingem Brawiki_user aanschallde un scheck heh di Sigg norr_ens af.'''",
+	'asirra-nojs' => "'''Bes esu jood un donn JavaSkrep en Dingem Brauser aanschallde un scheck heh di Sigg norr_ens af.'''",
 	'asirra-failed' => 'Bes esu jood un don all de Kazebelder ußwähle.',
 );
 

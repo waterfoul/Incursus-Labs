@@ -40,16 +40,16 @@ class UpdateRestrictions extends Maintenance {
 	}
 
 	public function execute() {
-		 = wfGetDB( DB_MASTER );
-		if ( !->tableExists( 'page_restrictions' ) ) {
+		$db = wfGetDB( DB_MASTER );
+		if ( !$db->tableExists( 'page_restrictions' ) ) {
 			$this->error( "page_restrictions table does not exist", true );
 		}
 
-		$start = ->selectField( 'page', 'MIN(page_id)', false, __METHOD__ );
+		$start = $db->selectField( 'page', 'MIN(page_id)', false, __METHOD__ );
 		if ( !$start ) {
 			$this->error( "Nothing to do.", true );
 		}
-		$end = ->selectField( 'page', 'MAX(page_id)', false, __METHOD__ );
+		$end = $db->selectField( 'page', 'MAX(page_id)', false, __METHOD__ );
 
 		# Do remaining chunk
 		$end += $this->mBatchSize - 1;
@@ -59,7 +59,7 @@ class UpdateRestrictions extends Maintenance {
 		while ( $blockEnd <= $end ) {
 			$this->output( "...doing page_id from $blockStart to $blockEnd\n" );
 			$cond = "page_id BETWEEN $blockStart AND $blockEnd AND page_restrictions !=''";
-			$res = ->select( 'page', array( 'page_id', 'page_namespace', 'page_restrictions' ), $cond, __METHOD__ );
+			$res = $db->select( 'page', array( 'page_id', 'page_namespace', 'page_restrictions' ), $cond, __METHOD__ );
 			$batch = array();
 			foreach ( $res as $row ) {
 				$oldRestrictions = array();
@@ -76,7 +76,7 @@ class UpdateRestrictions extends Maintenance {
 				}
 				# Clear invalid columns
 				if ( $row->page_namespace == NS_MEDIAWIKI ) {
-					->update( 'page', array( 'page_restrictions' => '' ),
+					$db->update( 'page', array( 'page_restrictions' => '' ),
 						array( 'page_id' => $row->page_id ), __FUNCTION__ );
 					$this->output( "...removed dead page_restrictions column for page {$row->page_id}\n" );
 				}
@@ -94,7 +94,7 @@ class UpdateRestrictions extends Maintenance {
 			# We use insert() and not replace() as Article.php replaces
 			# page_restrictions with '' when protected in the restrictions table
 			if ( count( $batch ) ) {
-				$ok = ->deadlockLoop( array( , 'insert' ), 'page_restrictions',
+				$ok = $db->deadlockLoop( array( $db, 'insert' ), 'page_restrictions',
 					$batch, __FUNCTION__, array( 'IGNORE' ) );
 				if ( !$ok ) {
 					throw new MWException( "Deadlock loop failed wtf :(" );
@@ -106,9 +106,9 @@ class UpdateRestrictions extends Maintenance {
 		}
 		$this->output( "...removing dead rows from page_restrictions\n" );
 		// Kill any broken rows from previous imports
-		->delete( 'page_restrictions', array( 'pr_level' => '' ) );
+		$db->delete( 'page_restrictions', array( 'pr_level' => '' ) );
 		// Kill other invalid rows
-		->deleteJoin( 'page_restrictions', 'page', 'pr_page', 'page_id', array( 'page_namespace' => NS_MEDIAWIKI ) );
+		$db->deleteJoin( 'page_restrictions', 'page', 'pr_page', 'page_id', array( 'page_namespace' => NS_MEDIAWIKI ) );
 		$this->output( "...Done!\n" );
 	}
 }
