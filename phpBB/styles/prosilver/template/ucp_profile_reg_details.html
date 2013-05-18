@@ -12,9 +12,29 @@
 
 	<fieldset>
 	<!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
+	<!-- Start Sep Login Name Mod -->
+	<dl>
+		<dt><label <!-- IF S_CHANGE_USERNAME -->for="loginname"<!-- ENDIF -->>{L_LOGINNAME}:</label><br /><span>{L_LOGINNAME_EXPLAIN}</span></dt>
+		<dd><!-- IF S_CHANGE_LOGINNAME -->
+			<input type="text" class="inputbox" name="loginname" id="loginname" size="30" value="{LOGINNAME}" title="{L_LOGINNAME}"/>
+		<!-- ELSE -->
+			<strong>{LOGINNAME}</strong>
+		<!-- ENDIF --></dd>
+	</dl>
+	<!-- End Sep Login Name Mod -->
 	<dl>
 		<dt><label <!-- IF S_CHANGE_USERNAME -->for="username"<!-- ENDIF -->>{L_USERNAME}:</label><br /><span>{L_USERNAME_EXPLAIN}</span></dt>
-		<dd><!-- IF S_CHANGE_USERNAME --><input type="text" name="username" id="username" value="{USERNAME}" class="inputbox" title="{L_USERNAME}" /><!-- ELSE --><strong>{USERNAME}</strong><!-- ENDIF --></dd>
+		<dd><!-- IF S_CHANGE_USERNAME -->
+		<select class="post" name="username" id="username" class="inputbox" title="{L_USERNAME}">
+			<!-- BEGIN characters -->
+				<option value="{characters.ID}:{characters.NAME}" <!-- IF characters.NAMECOMPARE == USERNAME -->selected <!-- ENDIF -->>{characters.NAME}</option>
+			<!-- BEGINELSE -->
+				<option>{LOGINNAME} Unconfirmed</option>
+			<!-- END characters -->
+		</select>
+		<!-- ELSE -->
+			<strong>{USERNAME}</strong>
+		<!-- ENDIF --></dd>
 	</dl>
 	<dl>
 		<dt><label for="email">{L_EMAIL_ADDRESS}:</label></dt>

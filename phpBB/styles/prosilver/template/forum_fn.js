@@ -437,6 +437,80 @@ function apply_onkeypress_event()
 	}
 }
 
+function checkAPI(ident)
+{
+	getElementFromID(ident + "_check_return").innerHTML = "Checking....";
+	xhr = getXmlHttp();
+	xhr.ident = ident;
+	xhr.onreadystatechange=function()
+  	{
+  		if (this.readyState==4 && this.status==200)
+    	{
+    		val = this.responseText.split(",");
+    		if(val[0] == "BAD KEY OR VCODE")
+    			getElementFromID(this.ident + "_check_return").innerHTML="Bad API Credentials, please retry";
+    		else
+    		{
+    			if(val.contains("DEFCON 3"))
+    				getElementFromID(this.ident + "_check_return").innerHTML="Incursion Community Verified Capable";
+    			if(val.contains("DEFCON 2"))
+    				getElementFromID(this.ident + "_check_return").innerHTML="Lowsec Community Capable";
+    			if(val.contains("DEFCON 1"))
+    				getElementFromID(this.ident + "_check_return").innerHTML="Corporation Capable";
+    			if(val.contains("SKILLS"))
+    				getElementFromID(this.ident + "_check_return").innerHTML+=", Skill Features Enabled";
+    			if(val.contains("STANDINGS"))
+    				getElementFromID(this.ident + "_check_return").innerHTML+=", Standings Features Enabled";
+    		}
+    	}
+ 	}
+	xhr.open("GET","../apiSync/APIkey.php?eveAPIgrab=STATUS&key=" + getElementFromID(ident + "_key").value + "&vcode=" + getElementFromID(ident + "_vcode").value,true);
+	xhr.send();
+}
+function resetApiLevel(ident)
+{
+	getElementFromID(ident + "_level").selectedIndex = 0;
+	getElementFromID(ident + "_level").disabled = true;
+}
+function getElementFromID(id)
+{
+	 var itm = null;
+	if (document.getElementById)
+	{
+		itm = document.getElementById(id);
+	}
+	else if (document.all)
+	{
+		itm = document.all[id];
+	}
+	else if (document.layers)
+	{
+		itm = document.layers[id];
+	}
+	return itm;
+}
+function getXmlHttp(){
+	var xmlhttp;
+    if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+  		xmlhttp=new XMLHttpRequest();
+  	}
+	else
+  	{// code for IE6, IE5
+  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  	}
+  	return xmlhttp;
+}
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
 /**
 * Detect JQuery existance. We currently do not deliver it, but some styles do, so why not benefit from it. ;)
 */
