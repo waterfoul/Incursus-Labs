@@ -94,24 +94,23 @@
 	<div id="page-header">
 		<!-- PHP -->
 		    global $extra;
-                    $extra = '<li><a href="' . $this->_rootref['U_FAQ'] . '" title="' . $user->lang['FAQ_EXPLAIN'] . '">' . $user->lang['FAQ'] . '</a></li>';
-                    if($this->_rootref['S_DISPLAY_MEMBERLIST'])
-                        $extra .= '<li><a href="' . $this->_rootref['U_MEMBERLIST'] . '" title="' . $user->lang['MEMBERLIST_EXPLAIN'] . '">' . $user->lang['MEMBERLIST'] . '</a></li>';
-                    if($this->_rootref['S_DISPLAY_SEARCH'])
-                    	$extra .= '<li><a href="' . $this->_rootref['U_SEARCH'] . '" title="' . $user->lang['SEARCH_EXPLAIN'] . '">' . $user->lang['SEARCH'] . '</a></li>';
-                    if($this->_rootref['S_USER_LOGGED_IN'])
-                    {
-                    	$extra .= '<li><a href="' . $this->_rootref['U_PROFILE'] . '" title="' . $user->lang['PROFILE_EXPLAIN'] . '">' . $user->lang['PROFILE'] . '</a></li>';
-			if($this->_rootref['S_DISPLAY_PM'])
-                            $extra .= '<li><a href="' . $this->_rootref['U_PRIVATEMSGS'] . '">' . $this->_rootref['PRIVATE_MESSAGE_INFO'] . '</a></li>';
-			if($this->_rootref['S_DISPLAY_SEARCH'])
-			    $extra .= '<li><a href="' . $this->_rootref['U_SEARCH_SELF'] . '">' . $user->lang['SEARCH_SELF'] . '</a></li>';
-			if($this->_rootref['U_RESTORE_PERMISSIONS'])
-                            $extra .= '<li><a href="' . $this->_rootref['U_RESTORE_PERMISSIONS'] . '">' . $user->lang['RESTORE_PERMISSIONS'] . '</a></li>';
-                    }
-                    if(!$this->_rootref['S_USER_LOGGED_IN'] && $this->_rootref['S_REGISTER_ENABLED'] && !($this->_rootref['S_SHOW_COPPA'] || $this->_rootref['S_REGISTRATION']))
-                        $extra .= '<li><a href="' . $this->_rootref['U_REGISTER'] . '">' . $user->lang['REGISTER'] . '</a></li>';
-                <!-- ENDPHP -->
+            $extra = '<li><a href="' . $this->_rootref['U_FAQ'] . '" title="' . $user->lang['FAQ_EXPLAIN'] . '">' . $user->lang['FAQ'] . '</a></li>';
+            if($this->_rootref['S_DISPLAY_MEMBERLIST'])
+                $extra .= '<li><a href="' . $this->_rootref['U_MEMBERLIST'] . '" title="' . $user->lang['MEMBERLIST_EXPLAIN'] . '">' . $user->lang['MEMBERLIST'] . '</a></li>';
+            if($this->_rootref['S_DISPLAY_SEARCH'])
+            	$extra .= '<li><a href="' . $this->_rootref['U_SEARCH'] . '" title="' . $user->lang['SEARCH_EXPLAIN'] . '">' . $user->lang['SEARCH'] . '</a></li>';
+            if($this->_rootref['S_USER_LOGGED_IN'])
+            {
+				if($this->_rootref['S_DISPLAY_PM'])
+                    $extra .= '<li><a href="' . $this->_rootref['U_PRIVATEMSGS'] . '">' . $this->_rootref['PRIVATE_MESSAGE_INFO'] . '</a></li>';
+				if($this->_rootref['S_DISPLAY_SEARCH'])
+	    			$extra .= '<li><a href="' . $this->_rootref['U_SEARCH_SELF'] . '">' . $user->lang['SEARCH_SELF'] . '</a></li>';
+				if($this->_rootref['U_RESTORE_PERMISSIONS'])
+                    $extra .= '<li><a href="' . $this->_rootref['U_RESTORE_PERMISSIONS'] . '">' . $user->lang['RESTORE_PERMISSIONS'] . '</a></li>';
+            }
+            if(!$this->_rootref['S_USER_LOGGED_IN'] && $this->_rootref['S_REGISTER_ENABLED'] && !($this->_rootref['S_SHOW_COPPA'] || $this->_rootref['S_REGISTRATION']))
+                $extra .= '<li><a href="' . $this->_rootref['U_REGISTER'] . '">' . $user->lang['REGISTER'] . '</a></li>';
+        <!-- ENDPHP -->
 		<!-- INCLUDEPHP ../header.php -->
 		<div class="headerbar">
 			<div class="inner"><span class="corners-top"><span></span></span>

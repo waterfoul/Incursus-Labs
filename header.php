@@ -1,10 +1,19 @@
 <?php
 	include("config.php");
 	//define('IN_PHPBB', true);
-        define('ROOT_PATH', "../phpBB");
-       	$phpEx = "php";
-        $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : ROOT_PATH . '/';
-        require_once($phpbb_root_path . 'common.' . $phpEx);
+	
+	if(!defined("ROOT_PATH"))
+	{
+		$location = split("/", dirname($_SERVER['PHP_SELF']));
+		$path = "";
+		foreach($location as $loc)
+			if($loc != "")
+				$path .= "../";
+        define('ROOT_PATH', $path . "phpBB");
+	}
+   	$phpEx = "php";
+    $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : ROOT_PATH . '/';
+    require_once($phpbb_root_path . 'common.' . $phpEx);
 	global $user, $auth;
         
 	$loggedIn = false;
@@ -12,7 +21,7 @@
 	$auth->acl($user->data);
 	if(!empty($_POST['naa_loginname']))
 	{
-	    $auth->login($_POST["naa_loginname"], $_POST["naa_password"], true, 1, 0);
+	    $auth->login($_POST["naa_loginname"], $_POST["naa_password"], true, 1, 1);
 	    print("<script type='text/javascript'>window.location.reload(true);</script>");
 	    exit();
 	}
@@ -48,10 +57,18 @@
         <ul>
             <li><a href="/phpBB" title="Forums">Forums</a></li>
             <li><a href="/wiki" title="Wiki">Wiki</a></li>
-	    <?php global $extra; print($extra); ?>
+            <?php
+                if($loggedIn)
+				{
+					if($user->data['loginname'] =="waterfoul")
+						print('<li><a href="/industry/index.php">Industry Calc</a></li>');
+				}
+			?>
+	    	<?php global $extra; print($extra); ?>
             <?php
                 if($loggedIn)
                 {
+                	print('<li><a href="/phpBB/ucp.php">Logged in as ' . $user->data['username'] . '</a></li>');
                     print('<li><a href="/phpBB/ucp.php?mode=logout" title="Logoff">Logoff</a></li>'); 
                 }
                 else
