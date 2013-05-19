@@ -35,7 +35,7 @@
 	    //logon wiki
 	}
 	$uri = (explode("?", $_SERVER['REQUEST_URI']));
-	if($uri[0] == "/phpBB/ucp.php" && $_GET["mode"] == "logout")
+	if($uri[0] == "/phpBB/ucp.php" && !empty($_GET["mode"]) && $_GET["mode"] == "logout")
 	{
 	    $user->session_kill();
 	    $user->session_begin();
@@ -60,7 +60,7 @@
             <?php
                 if($loggedIn)
 				{
-					if($user->data['loginname'] =="waterfoul")
+					if($user->data['loginname'] =="waterfoul" || $user->data['loginname'] == "MrWacko" || $user->data['loginname'] == "themastercheif92")
 						print('<li><a href="/industry/index.php">Industry Calc</a></li>');
 				}
 			?>
