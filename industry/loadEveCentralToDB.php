@@ -2,7 +2,6 @@
 	include("../config.php");
 	$db = new mysqli($mysql_host, $mysql_evecentral_username, $mysql_evecentral_password, $mysql_evecentral);
 	$qry = $db->query("SELECT typeID FROM " . $mysql_eve_dbDump . ".invTypes WHERE marketGroupID IS NOT NULL and marketGroupID < 100000");
-	$context  = stream_context_create(array('http' => array('header' => 'Accept: application/xml')));
 	$urlbase = "http://api.eve-central.com/api/marketstat?usesystem=30000142";
 	$urls = array($urlbase);
 	$i=0;
@@ -17,7 +16,7 @@
 	}
 	foreach($urls as $url)
 	{
-		$items = new SimpleXMLElement(file_get_contents($url, false, $context));
+		$items = new SimpleXMLElement(file_get_contents($url));
 		foreach($items->marketstat->type as $v)
 		{
 			$db->query("
