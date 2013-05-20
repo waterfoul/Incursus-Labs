@@ -92,7 +92,9 @@
 	function getCentralPrice($type, $col, $itemID, $time, $db)
 	{
 		$qry = "SELECT `" . $col . "` as a FROM `marketStat` WHERE `Type` = '" . $type . "' and `itemID` = '" . $itemID . "' and grabbedAt < '" . $time . "' ORDER BY `grabbedAt` DESC LIMIT 1";
-		print($qry);
 		$qry = $db->query($qry);
-		return $qry->fetch_object()->a;
+		if($row = $qry->fetch_object())
+       		return $row->a;
+        else
+       		return 10^10;
 	}

@@ -4,9 +4,10 @@
 	$time = date("Y-m-d H:i:s");
 	$db = new mysqli($mysql_host, $mysql_evecentral_username, $mysql_evecentral_password, $mysql_evecentral);
 	$dump = new mysqli($mysql_host, $mysql_evecentral_username, $mysql_evecentral_password, $mysql_eve_dbDump);
- 	$q=$dump->query("SELECT `groupID` FROM invGroups WHERE `categoryID` != 7");
+	$excludeGroups = array();
+ 	/*$q=$dump->query("SELECT `groupID` FROM invGroups WHERE `categoryID` != 7");
 	while($r=$q->fetch_object())
-        $excludeGroups[] = $r->groupID;
+        $excludeGroups[] = $r->groupID;*/
 	$i=5;
 	$itemIDs = array();
 	$q=$dump->query("SELECT `typeID` FROM `dgmTypeAttributes` WHERE  `valueInt` = 2 AND  `attributeID` = 422");
@@ -19,13 +20,11 @@
 		}
 	}
 	$q=$dump->query("
-		SELECT DISTINCT i.typeID
-		FROM invTypes i
-		  INNER JOIN invMetaTypes m ON m.parentTypeID = i.typeID
-		  INNER JOIN invGroups g ON g.groupID = i.groupID
-		WHERE 
-		  AND i.published > 0 
-		  AND m.metaGroupID = 1
+		SELECT b.`productTypeId` as typeID FROM `invBlueprintTypes` as b
+			LEFT OUTER JOIN `dgmTypeAttributes` as d ON d.`typeID` = b.`productTypeID` AND d.`attributeID` = 422
+			LEFT OUTER JOIN `dgmTypeAttributes` as d2 ON d2.`typeID` = b.`productTypeID` AND d2.`attributeID` = 633
+		WHERE (d.`typeID` IS NULL OR d.`valueInt` != 2 OR d.`valueFloat` != 2)
+		AND (d2.`typeID` IS NULL OR d2.`valueInt` = 0 OR d2.`valueFloat` = 0)
 	");
 	while($r=$q->fetch_object())
 	{
