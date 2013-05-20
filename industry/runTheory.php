@@ -4,7 +4,7 @@
 	$time = date("Y-m-d H:i:s");
 	$db = new mysqli($mysql_host, $mysql_evecentral_username, $mysql_evecentral_password, $mysql_evecentral);
 	$dump = new mysqli($mysql_host, $mysql_evecentral_username, $mysql_evecentral_password, $mysql_eve_dbDump);
-	$excludeGroups = array();
+	$excludeGroups = array(23, 30, 237, 280, 283, 300, 303, 307, 308, 310, 311, 314, 536, 547, 588, 659, 744, 883, 892);
  	/*$q=$dump->query("SELECT `groupID` FROM invGroups WHERE `categoryID` != 7");
 	while($r=$q->fetch_object())
         $excludeGroups[] = $r->groupID;*/
@@ -39,11 +39,14 @@
 		$q4=$dump->query("SELECT `researchTechTime`,`productionTime`,`researchCopyTime` FROM `invBlueprintTypes` WHERE `productTypeID` = " . $item[0]);
         $r4=$q4->fetch_object();
 		if($r4){
-            $copytime = ($r4->researchCopyTime * 2)/60/60;
             $buildtime = $r4->productionTime/60/60;
             $inventtime = 0;
+            $copytime = 0;
             if($item[1] == 2)
+            {
+            	$copytime = ($r4->researchCopyTime * 2)/60/60;
             	$inventtime = $r4->researchTechTime/60/60;
+        	}
             $totaltime = $copytime/10 + $buildtime + $inventtime/10;
 		}
 		$itemID = $item[0];
