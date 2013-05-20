@@ -25,7 +25,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 --------------------------------------------------------------------------
 	- Special credit to: 
-	Cedric Wartel, cnx.claude@free.fr, Florent Hirchy, Váry Péter, 
+	Cedric Wartel, cnx.claude@free.fr, Florent Hirchy, Vï¿½ry Pï¿½ter, 
 	Anthony Maes, Nuovella Williams, Fuggerbit, Venkata Seshagiri Rao 
 	Raya, Piepiax, Manuel Kern, Baladhandayutham for active contribution 
 	and/or inspiration
@@ -82,7 +82,7 @@ var TF = function(id)
 		try{ this.nbCells = this.GetCellsNb(this.refRow) }
 		catch(e){ this.nbCells = this.GetCellsNb(0) }
 		
-		this.basePath = f.base_path!=undefined ? f.base_path : 'TableFilter/'; //default script base path
+		this.basePath = f.base_path!=undefined ? f.base_path : ''; //default script base path
 		
 		if(this.enableModules){
 			/*** Modules: features of the script ***/
@@ -388,7 +388,7 @@ var TF = function(id)
 		this.eqOperator =			f.equal_operator!=undefined ? f.equal_operator : '=';
 		this.stOperator =			f.start_with_operator!=undefined ? f.start_with_operator : '{';
 		this.enOperator =			f.end_with_operator!=undefined ? f.end_with_operator : '}';
-		this.curExp =				f.cur_exp!=undefined ? f.cur_exp : '^[¥£€$]';
+		this.curExp =				f.cur_exp!=undefined ? f.cur_exp : '^[ï¿½ï¿½ï¿½$]';
 		this.separator = 			f.separator!=undefined ? f.separator : ',';
 		
 		/*** rows counter ***/
@@ -2165,7 +2165,7 @@ TF.prototype = {
 		var regexp;
 		var modifier = (this.matchCase) ? 'g' : 'gi';
 		var exactMatch = (forceMatch==undefined) ? this.exactMatch : forceMatch;
-		if(exactMatch || (fltType!=this.fltTypeInp && fltType!=undefined))//Váry Péter's patch
+		if(exactMatch || (fltType!=this.fltTypeInp && fltType!=undefined))//Vï¿½ry Pï¿½ter's patch
 			regexp = new RegExp('(^\\s*)'+tf_RegexpEscape(arg)+'(\\s*$)', modifier);							
 		else
 			regexp = new RegExp(tf_RegexpEscape(arg), modifier);
@@ -2280,8 +2280,8 @@ function tf_RegexpEscape(s)
 	- Many thanks to Cedric Wartel for this fn
 =====================================================*/
 {
-	// traite les caractères spéciaux [\^$.|?*+()
-	//remplace le carctère c par \c
+	// traite les caractï¿½res spï¿½ciaux [\^$.|?*+()
+	//remplace le carctï¿½re c par \c
 	function escape(e)
 	{
 		a = new RegExp('\\'+e,'g');
