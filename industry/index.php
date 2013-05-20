@@ -6,9 +6,8 @@
 		<link type="text/css" href="../header.css" rel="stylesheet" />
 		<link type="text/css" href="filtergrid.css" rel="stylesheet" />
 		<script type="text/javascript" src="tablefilter.js"></script>
-		<script type="text/javascript">new TF('maintable').AddGrid();</script>
 	</head>
-	<body>
+	<body onload="new TF('maintable').AddGrid();">
 		<div id="wrap">
 			<?php
 				define('IN_PHPBB', true);
