@@ -5,7 +5,7 @@
 	<head>
 		<link type="text/css" href="../header.css" rel="stylesheet" />
 		<script type="text/javascript" href="tablefilter.js"></script>
-		<script type="text/javascript" href="sorttable.js"></script>
+		<script type="text/javascript">new TF('maintable').AddGrid();</script>
 	</head>
 	<body>
 		<div id="wrap">
@@ -22,7 +22,7 @@
 					ORDER BY  `c`.`Profit` DESC,
 						      `c`.`Date` DESC
 				");
-				print("<table class='sortable filterable'><tr><th>Item ID</th><th>Profit</th><th>Date</th><th>Item Name</th></tr>");
+				print("<table id='maintable'><tr><th>Item ID</th><th>Profit</th><th>Date</th><th>Item Name</th></tr>");
 				while($row = $qry->fetch_object())
 				{
 					print("<tr><td>" . $row->itemID . "</td><td>" . $row->Profit . "</td><td>" . $row->Date . "</td><td>" . $row->typeName . "</td></tr>");
