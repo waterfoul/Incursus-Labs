@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<link type="text/css" href="../header.css" rel="stylesheet" />
-		<script type="text/javascript" href="tablefilter.js"></script>
+		<script type="text/javascript" src="tablefilter.js"></script>
 		<script type="text/javascript">new TF('maintable').AddGrid();</script>
 	</head>
 	<body>
