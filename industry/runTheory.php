@@ -1,9 +1,9 @@
 <?php
 	include("../config.php");
-	include("../marketLib.php");
+	include("marketLib.php");
 	$time = date("Y-m-d H:i:s");
 	$db = new mysqli($mysql_host, $mysql_evecentral_username, $mysql_evecentral_password, $mysql_evecentral);
-	$dump = new mysqli($mysql_host, $mysql_eve_dbDump, $mysql_evecentral_password, $mysql_evecentral);
+	$dump = new mysqli($mysql_host, $mysql_evecentral_username, $mysql_evecentral_password, $mysql_eve_dbDump);
  	$q=$dump->query("SELECT `groupID` FROM invGroups WHERE `categoryID` != 7");
 	while($r=$q->fetch_object())
         $excludeGroups[] = $r->groupID;
@@ -18,7 +18,15 @@
         	$itemIDs[] = array($r->typeID, 2);
 		}
 	}
-	$q=$dump->query("SELECT `typeID` FROM `dgmTypeAttributes` WHERE  `valueInt` = 0 AND  `attributeID` = 633");
+	$q=$dump->query("
+		SELECT DISTINCT i.typeID
+		FROM invTypes i
+		  INNER JOIN invMetaTypes m ON m.parentTypeID = i.typeID
+		  INNER JOIN invGroups g ON g.groupID = i.groupID
+		WHERE 
+		  AND i.published > 0 
+		  AND m.metaGroupID = 1
+	");
 	while($r=$q->fetch_object())
 	{
 		$q2=$dump->query("SELECT `groupID`,`typeName` FROM `invTypes` WHERE `typeID` = '" . $r->typeID . "'");
@@ -49,7 +57,7 @@
         foreach($mats as $i=>$v){
         	$profit -= getCentralPrice("buy", "max", $i, $time, $db) * $v;
         }
-        $db->query("INSERT INTO `calculatedTheory` (`itemID`, `Profit`, `Date`) VALUES ('" . $r->typeID . "', '" . $profit . "', '" . $time . "');");
+        $db->query("INSERT INTO `calculatedTheory` (`itemID`, `Profit`, `Date`) VALUES ('" . $itemID . "', '" . $profit . "', '" . $time . "');");
 	}
 
 ?>
