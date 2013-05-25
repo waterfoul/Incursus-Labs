@@ -36,19 +36,6 @@
 	}
 	foreach($itemIDs as $item)
 	{
-		$q4=$dump->query("SELECT `researchTechTime`,`productionTime`,`researchCopyTime` FROM `invBlueprintTypes` WHERE `productTypeID` = " . $item[0]);
-        $r4=$q4->fetch_object();
-		if($r4){
-            $buildtime = $r4->productionTime/60/60;
-            $inventtime = 0;
-            $copytime = 0;
-            if($item[1] == 2)
-            {
-            	$copytime = ($r4->researchCopyTime * 2)/60/60;
-            	$inventtime = $r4->researchTechTime/60/60;
-        	}
-            $totaltime = $copytime/10 + $buildtime + $inventtime/10;
-		}
 		$itemID = $item[0];
         $waste=getWaste($itemID);
         $mats=getBaseMaterials($itemID,-4,$waste);
