@@ -80,14 +80,14 @@
  
 			$(document).ready(function() {
 			    /* Initialise the DataTable */
-			    var oTable = $('#example').dataTable( {
+			    var oTable = $('#maintable').dataTable( {
 			        "oLanguage": {
 			            "sSearch": "Search all columns:"
 			        }
 			    } );
 			     
 			    /* Add a select menu for each TH element in the table footer */
-			    $("tfoot th").each( function ( i ) {
+			    $("#maintable tr.filter").each( function ( i ) {
 			        this.innerHTML = fnCreateSelect( oTable.fnGetColumnData(i) );
 			        $('select', this).change( function () {
 			            oTable.fnFilter( $(this).val(), i );
@@ -115,7 +115,7 @@
 					ORDER BY  `c`.`Profit` DESC,
 						      `c`.`Date` ASC
 				");
-				print("<table id='maintable'><tr><th>Item Name</th><th>Group</th><th>Profit Margin</th><th>Profit/Min</th><th>Build Time</th><th>Invent Time</th><th>Copy Time</th><th>Total Time</th><th>Date</th><th>Item ID</th></tr>");
+				print("<table id='maintable'><tr class='filter'></tr><tr><th>Item Name</th><th>Group</th><th>Profit Margin</th><th>Profit/Min</th><th>Build Time</th><th>Invent Time</th><th>Copy Time</th><th>Total Time</th><th>Date</th><th>Item ID</th></tr>");
 				while($row = $qry->fetch_object())
 				{
 					$buildtime = $row->productionTime/60/60;
