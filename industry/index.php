@@ -96,6 +96,35 @@
                         oTable.fnFilter( $(this).val(), $td.index() );
                     } );
                 } );
+                
+                $("#maintable #filter .text").keyup( function () {
+			        /* Filter on the column (the index) of this element */
+			        oTable.fnFilter( this.value, $(this).index() );
+			    } );
+			    
+			    /*
+			     * Support functions to provide a little bit of 'user friendlyness' to the textboxes in
+			     * the footer
+			     */
+			    $("#maintable #filter .text").each( function (i) {
+			        asInitVals[i] = this.value;
+			    } );
+			     
+			    $("#maintable #filter .text").focus( function () {
+			        if ( this.className == "search_init" )
+			        {
+			            this.className = "";
+			            this.value = "";
+			        }
+			    } );
+			     
+			    $("#maintable #filter .text").blur( function (i) {
+			        if ( this.value == "" )
+			        {
+			            this.className = "search_init";
+			            this.value = asInitVals[$("tfoot input").index(this)];
+			        }
+			    } );
             } );
 	    </script>
     </head>
